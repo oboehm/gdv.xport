@@ -46,21 +46,14 @@ public class VorsatzTest extends AbstractSatzTest {
 	public void testVorsatz() throws IOException {
 		StringWriter swriter = new StringWriter(768);
 		vorsatz.export(swriter);
-		String data = swriter.toString();
-		log.info("data: " + data.substring(0, 40) + "...");
-		assertEquals(768, data.length());
-		assertEquals("0001" + VU_NUMMER, data.substring(0, 9));
+		checkExport(1, 9, "0001" + VU_NUMMER);
 	}
 	
 	@Test
 	public void testSetAbsender() throws IOException {
-		String absender = "agentes AG";
-		vorsatz.setAbsender(absender);
-		StringWriter swriter = new StringWriter(768);
-		vorsatz.export(swriter);
-		String data = swriter.toString();
-		log.info("data: " + data.substring(0, 40) + "...");
-		assertEquals(absender, data.substring(9, 39).trim());
+		String absender = "agentes AG                    ";
+		vorsatz.setAbsender(absender.trim());
+		checkExport(10, 39, absender);
 	}
 	
 	@Test
@@ -83,7 +76,7 @@ public class VorsatzTest extends AbstractSatzTest {
 		String data = swriter.toString();
 		assertEquals(768, data.length());
 		String toBeChecked = data.substring(startByte-1, endByte);
-		log.info("data: " + data.substring(0, 20) + "..." + toBeChecked + "...");
+		log.info("data: " + data.substring(0, 9) + "..." + toBeChecked + "...");
 		assertEquals(expected, toBeChecked);
 	}
 
