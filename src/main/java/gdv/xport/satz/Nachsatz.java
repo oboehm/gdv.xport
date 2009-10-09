@@ -20,7 +20,7 @@
 
 package gdv.xport.satz;
 
-import gdv.xport.feld.Nummer;
+import gdv.xport.feld.NumFeld;
 
 
 /**
@@ -31,7 +31,7 @@ import gdv.xport.feld.Nummer;
  */
 public final class Nachsatz extends Datensatz {
 	
-	private final Nummer anzahlSaetze = new Nummer("00000", 5);
+	private final NumFeld anzahlSaetze = new NumFeld("00000", 5);
 
 	public Nachsatz() {
 		super("9999");

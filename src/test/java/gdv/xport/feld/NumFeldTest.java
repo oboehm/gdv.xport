@@ -30,14 +30,14 @@ import org.junit.Test;
  * @version $Revision$
  *
  */
-public class NummerTest {
+public class NumFeldTest {
 
 	/**
-	 * Test method for {@link gdv.xport.feld.Nummer#setInhalt(int)}.
+	 * Test method for {@link gdv.xport.feld.NumFeld#setInhalt(int)}.
 	 */
 	@Test
 	public void testSetInhaltInt() {
-		Nummer nummer = new Nummer("0001");
+		NumFeld nummer = new NumFeld("0001");
 		nummer.setInhalt(2);
 		assertEquals("0002", nummer.toString());
 	}

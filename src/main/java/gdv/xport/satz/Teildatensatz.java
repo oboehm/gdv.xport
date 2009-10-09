@@ -39,13 +39,13 @@ public class Teildatensatz extends Datensatz {
 	protected final char satznummer;
 	private StringBuffer data = new StringBuffer(256);
 	
-	public Teildatensatz(Nummer satzart) {
+	public Teildatensatz(NumFeld satzart) {
 		super(satzart);
 		this.satznummer = ' ';
 		this.initData();
 	}
 	
-	public Teildatensatz(Nummer satzart, int nr) {
+	public Teildatensatz(NumFeld satzart, int nr) {
 		super(satzart);
 		if ((nr < 1) || (nr > 9)) {
 			throw new IllegalArgumentException("Satznummer (" + nr

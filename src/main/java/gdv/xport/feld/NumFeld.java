@@ -16,17 +16,17 @@ import org.apache.commons.lang.StringUtils;
  * 
  * @author oliver
  */
-public class Nummer extends Feld {
+public class NumFeld extends Feld {
 	
-	public Nummer(String s) {
+	public NumFeld(String s) {
 		super(s);
 	}
 	
-	public Nummer(String s, int start) {
+	public NumFeld(String s, int start) {
 		super(s, start);
 	}
 	
-	public Nummer(int length, int start) {
+	public NumFeld(int length, int start) {
 		super(length, start);
 	}
 	

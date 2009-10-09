@@ -3,7 +3,7 @@
  */
 package gdv.xport.satz;
 
-import gdv.xport.feld.Nummer;
+import gdv.xport.feld.NumFeld;
 
 import java.io.*;
 
@@ -14,7 +14,7 @@ import java.io.*;
 public class Datensatz {
 	
 	/** 4 Zeichen */
-	protected final Nummer satzart = new Nummer(4, 1);
+	protected final NumFeld satzart = new NumFeld(4, 1);
 	/** Teildatensaetze */
 	protected Teildatensatz[] teildatensatz;
 	
@@ -22,7 +22,7 @@ public class Datensatz {
 		this.satzart.setInhalt(art);
 	}
 	
-	public Datensatz(Nummer art) {
+	public Datensatz(NumFeld art) {
 		this(art.getInhalt());
 	}
 	
