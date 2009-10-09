@@ -11,18 +11,18 @@ import java.io.*;
  * @author oliver
  *
  */
-public class Datensatz {
+public class Satz {
 	
 	/** 4 Zeichen */
 	protected final NumFeld satzart = new NumFeld(4, 1);
 	/** Teildatensaetze */
 	protected Teildatensatz[] teildatensatz;
 	
-	public Datensatz(String art) {
+	public Satz(String art) {
 		this.satzart.setInhalt(art);
 	}
 	
-	public Datensatz(NumFeld art) {
+	public Satz(NumFeld art) {
 		this(art.getInhalt());
 	}
 	

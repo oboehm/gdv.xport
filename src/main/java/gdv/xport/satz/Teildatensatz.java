@@ -34,7 +34,7 @@ import gdv.xport.feld.*;
  * @since 04.10.2009
  * @version $Revision$
  */
-public class Teildatensatz extends Datensatz {
+public class Teildatensatz extends Satz {
 	
 	protected final char satznummer;
 	private StringBuffer data = new StringBuffer(256);

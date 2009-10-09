@@ -47,7 +47,7 @@ public class NachsatzTest extends AbstractSatzTest {
 	}
 
 	/**
-	 * Test method for {@link gdv.xport.satz.Datensatz#export(java.io.Writer)}.
+	 * Test method for {@link gdv.xport.satz.Satz#export(java.io.Writer)}.
 	 * @throws IOException 
 	 */
 	@Test

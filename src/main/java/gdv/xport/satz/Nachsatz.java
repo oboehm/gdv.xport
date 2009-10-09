@@ -29,7 +29,7 @@ import gdv.xport.feld.NumFeld;
  * @version $Revision$
  * 
  */
-public final class Nachsatz extends Datensatz {
+public final class Nachsatz extends Satz {
 	
 	private final NumFeld anzahlSaetze = new NumFeld("00000", 5);
 

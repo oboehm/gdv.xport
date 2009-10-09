@@ -10,7 +10,7 @@ import gdv.xport.feld.*;
 /**
  * @author oliver
  */
-public final class Vorsatz extends Datensatz {
+public final class Vorsatz extends Satz {
 	
 	/** 5 Zeichen, Byte 5 - 9 */
 	protected AlphaNumFeld vuNummer = new VUNummer(Config.getVUNummer(), 5);
