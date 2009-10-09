@@ -35,7 +35,6 @@ public final class Nachsatz extends Datensatz {
 
 	public Nachsatz() {
 		super("9999");
-		this.vuNummer.resetInhalt();
 		this.createTeildatensaetze(1);
 		this.setAnzahlSaetze(0);
 	}
@@ -46,8 +45,3 @@ public final class Nachsatz extends Datensatz {
 	}
 
 }
-
-/*
- * $Log$
- * $Source$
- */

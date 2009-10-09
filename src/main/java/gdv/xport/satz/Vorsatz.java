@@ -3,6 +3,7 @@
  */
 package gdv.xport.satz;
 
+import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
 
@@ -11,16 +12,18 @@ import gdv.xport.feld.*;
  */
 public final class Vorsatz extends Datensatz {
 	
+	/** 5 Zeichen, Byte 5 - 9 */
+	protected AlphaNumFeld vuNummer = new VUNummer(Config.getVUNummer(), 5);
 	/** 30 Zeichen, Byte 10 - 39 */
-	private Zeichen absender = new Zeichen(30, 10);
+	private AlphaNumFeld absender = new AlphaNumFeld(30, 10);
 	/** 30 Zeichen, Byte 40 - 69 */
-	private Zeichen adressat = new Zeichen(30, 40);
+	private AlphaNumFeld adressat = new AlphaNumFeld(30, 40);
 	/** 8 Zeichen, Byte 70 - 77 */
 	private Datum von = new Datum(70);
 	/** 8 Zeichen, Byte 78 - 85 */
 	private Datum bis = new Datum(78);
 	/** 10 Zeichen, Byte 86 - 95 */
-	private Zeichen vermittler = new Zeichen(10, 86);
+	private AlphaNumFeld vermittler = new AlphaNumFeld(10, 86);
 
 	public Vorsatz() {
 		super("0001");

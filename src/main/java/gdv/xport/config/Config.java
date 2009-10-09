@@ -18,13 +18,16 @@
 
 package gdv.xport.config;
 
+import gdv.xport.feld.VUNummer;
+
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.*;
 
 /**
- * Ueber diese Klasse koennen globale Werte (wie z.B. die VU-Nummer) abgefragt
- * werden, die sich im Laufe des Programmes nicht aendern.
- * Momentan koennen (und muessen) diese Werte als System-Property gesetzt
- * werden.
+ * Ueber diese Klasse koennen globale Werte (wie z.B. die VU-Nummer) konfiguriert
+ * (d.h. gesetzt) und auch abgefragt werden.
+ * Ueblicherweise sollten diese Werte am Anfang programmatisch gesetzt werden.
+ * Alternativ koennen sie auch ueber System-Properties konfiguriert werden.
  * 
  * @author oliver
  * @since 08.10.2009
@@ -32,14 +35,41 @@ import org.apache.commons.lang.StringUtils;
  */
 public class Config {
 	
+	private static final Log log = LogFactory.getLog(Config.class);
 	protected static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
+	private static VUNummer vunummer;
 	
-	public static String getVUnummer() {
-		String vuNummer = System.getProperty(GDV_VU_NUMMER);
-		if (StringUtils.isBlank(vuNummer)) {
-			throw new ConfigException("Property '" + GDV_VU_NUMMER + "' ist nicht gesetzt!");
+	/**
+	 * Diese Methode dient zwar hauptsaechlich zu Testzwecken, kann aber auch
+	 * aufgerufen werden, wenn man nicht mehr sicher ist, was denn alles
+	 * konfiguriert ist.
+	 */
+	public static void reset() {
+		vunummer = null;
+	}
+	
+	public static synchronized void setVUNummer(String nr) {
+		setVUNummer(new VUNummer(nr));
+	}
+	
+	public static synchronized void setVUNummer(VUNummer nr) {
+		vunummer = nr;
+		log.info("konfigurierte VU-Nummer: " + vunummer);
+	}
+	
+	public static synchronized VUNummer getVUNummer() {
+		if (vunummer == null) {
+			vunummer = new VUNummer(getStringProperty(GDV_VU_NUMMER));
 		}
-		return vuNummer;
+		return vunummer;
+	}
+	
+	private static String getStringProperty(String key) {
+		String value = System.getProperty(key);
+		if (StringUtils.isBlank(value)) {
+			throw new ConfigException("Property '" + key + "' ist nicht gesetzt!");
+		}
+		return value;
 	}
 
 }

@@ -28,7 +28,6 @@ import org.junit.Test;
  * @author oliver
  * @since 08.10.2009
  * @version $Revision$
- *
  */
 public class ConfigTest {
 	
@@ -41,15 +40,16 @@ public class ConfigTest {
 	 */
 	@Test
 	public void testGetVUnummer() {
+		Config.reset();
 		String vuNummer = System.getProperty(Config.GDV_VU_NUMMER);
 		if (StringUtils.isEmpty(vuNummer)) {
 			try {
-				Config.getVUnummer();
+				Config.getVUNummer();
 			} catch (ConfigException expected) {
 				log.info("expected: " + expected);
 			}
 		} else {
-			assertEquals(vuNummer, Config.getVUnummer());
+			assertEquals(vuNummer, Config.getVUNummer().toString().trim());
 		}
 	}
 

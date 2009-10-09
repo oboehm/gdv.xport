@@ -33,7 +33,7 @@ import org.junit.Test;
  * @version $Revision$
  *
  */
-public class NachsatzTest {
+public class NachsatzTest extends AbstractSatzTest {
 	
 	private static final Log log = LogFactory.getLog(NachsatzTest.class);
 	private Nachsatz nachsatz = new Nachsatz();

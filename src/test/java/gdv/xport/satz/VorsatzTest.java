@@ -20,12 +20,12 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.*;
 
 import org.apache.commons.logging.*;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * @author oliver
@@ -33,7 +33,7 @@ import org.junit.Test;
  * @version $Revision$
  *
  */
-public class VorsatzTest {
+public class VorsatzTest extends AbstractSatzTest {
 	
 	private static final Log log = LogFactory.getLog(VorsatzTest.class);
 	private Vorsatz vorsatz = new Vorsatz();
@@ -49,7 +49,7 @@ public class VorsatzTest {
 		String data = swriter.toString();
 		log.info("data: " + data.substring(0, 40) + "...");
 		assertEquals(768, data.length());
-		assertEquals("0001", data.substring(0, 4));
+		assertEquals("0001" + VU_NUMMER, data.substring(0, 9));
 	}
 	
 	@Test

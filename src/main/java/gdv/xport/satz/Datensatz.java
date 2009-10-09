@@ -3,9 +3,9 @@
  */
 package gdv.xport.satz;
 
-import java.io.*;
+import gdv.xport.feld.Nummer;
 
-import gdv.xport.feld.*;
+import java.io.*;
 
 /**
  * @author oliver
@@ -15,8 +15,6 @@ public class Datensatz {
 	
 	/** 4 Zeichen */
 	protected final Nummer satzart = new Nummer(4, 1);
-	/** 5 Zeichen, linksbuendig */
-	protected Zeichen vuNummer = new Zeichen(System.getProperty("gdv.xport.vuNummer", "k.A. "), 5);
 	/** Teildatensaetze */
 	protected Teildatensatz[] teildatensatz;
 	
@@ -32,7 +30,6 @@ public class Datensatz {
 		teildatensatz = new Teildatensatz[n];
 		for (int i = 0; i < n; i++) {
 			teildatensatz[i] = new Teildatensatz(satzart, i+1);
-			teildatensatz[i].setData(vuNummer);
 		}
 	}
 	
