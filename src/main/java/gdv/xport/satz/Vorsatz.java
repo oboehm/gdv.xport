@@ -52,5 +52,18 @@ public final class Vorsatz extends Satz {
 			teildatensatz[i].setData(this.absender);			
 		}
 	}
+	
+	/**
+	 * @param startDatum im Format "TTMMJJJJ"
+	 * @param endDatum im Format "TTMMJJJJ"
+	 */
+	public void setErstellungsZeitraum(String startDatum, String endDatum) {
+		this.von.setInhalt(startDatum);
+		this.bis.setInhalt(endDatum);
+		for (int i = 0; i < teildatensatz.length; i++) {
+			teildatensatz[i].setData(this.von);
+			teildatensatz[i].setData(this.bis);
+		}
+	}
 
 }

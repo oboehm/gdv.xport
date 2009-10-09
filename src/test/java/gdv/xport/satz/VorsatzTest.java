@@ -62,6 +62,30 @@ public class VorsatzTest extends AbstractSatzTest {
 		log.info("data: " + data.substring(0, 40) + "...");
 		assertEquals(absender, data.substring(9, 39).trim());
 	}
+	
+	@Test
+	public void testSetErstellungsZeitraum() throws IOException {
+		String startDatum = "01011900";
+		String endDatum = "09102009";
+		vorsatz.setErstellungsZeitraum(startDatum, endDatum);
+		checkExport(70, 85, startDatum + endDatum);
+	}
+	
+	/**
+	 * @param startByte beginnend bei 1
+	 * @param endByte   beginnend bei 1
+	 * @param expected
+	 * @throws IOException 
+	 */
+	private void checkExport(int startByte, int endByte, String expected) throws IOException {
+		StringWriter swriter = new StringWriter(768);
+		vorsatz.export(swriter);
+		String data = swriter.toString();
+		assertEquals(768, data.length());
+		String toBeChecked = data.substring(startByte-1, endByte);
+		log.info("data: " + data.substring(0, 20) + "..." + toBeChecked + "...");
+		assertEquals(expected, toBeChecked);
+	}
 
 }
 

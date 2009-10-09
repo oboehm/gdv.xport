@@ -1,7 +1,5 @@
 /*
- * $Id$
- *
- * Copyright (c) 2009 by Oliver Boehm
+ * Copyright (c) 2009 by agentes
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,38 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * 
- * (c)reated 04.10.2009 by oliver (ob@oasd.de)
+ * (c)reated 09.10.2009 by Oli B. (oliver.boehm@agentes.de)
  */
 
-package gdv.xport.feld;
+package gdv.xport.satz;
+
+import gdv.xport.config.Config;
+import gdv.xport.feld.VUNummer;
+
+import org.junit.BeforeClass;
 
 /**
+ * Hier setzen wir eine Standard-Konfiguration auf, die wir in den
+ * verschiedenen JUnit-Tests verwenden.
+ * 
  * @author oliver
- * @since 04.10.2009
+ * @since 09.10.2009
  * @version $Revision$
  */
-public class Datum extends Feld {
-	
-	public Datum() {
-		super("        ");
+public class AbstractSatzTest {
+
+	/** zum Testen nehmen wir hier die VU-Nr. der Oerag */
+	protected static final VUNummer VU_NUMMER = new VUNummer("5183");
+
+	@BeforeClass
+	public static void setUpBeforeClass() {
+		Config.setVUNummer(VU_NUMMER);
 	}
-	
-	/**
-	 * @param s im Format TTMMJJJJ
-	 */
-	public Datum(String s) {
-		super(s);
-		assert s.length() == 8 : s + " ist ungueltiges Datumsformat";
-	}
-	
-	public Datum(int start) {
-		super(8, start);
-	}
-	
+
 }
 
-
-/*
- * $Log$
- * $Source$
- */
