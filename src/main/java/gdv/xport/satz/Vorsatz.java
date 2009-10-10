@@ -24,6 +24,8 @@ public final class Vorsatz extends Satz {
 	private Datum bis = new Datum(78);
 	/** 10 Zeichen, Byte 86 - 95 */
 	private AlphaNumFeld vermittler = new AlphaNumFeld(10, 86);
+	/** 3 Zeichen, Byte 225 - 227 */
+	private Version versionNachsatz = new Version("1.1", 225);
 
 	public Vorsatz() {
 		super("0001");
@@ -40,6 +42,7 @@ public final class Vorsatz extends Satz {
 			teildatensatz[i].setData(this.bis);
 			teildatensatz[i].setData(this.vermittler);
 		}
+		teildatensatz[0].setData(this.versionNachsatz);
 	}
 	
 	/**
