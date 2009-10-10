@@ -46,7 +46,11 @@ public class VorsatzTest extends AbstractSatzTest {
 	public void testVorsatz() throws IOException {
 		StringWriter swriter = new StringWriter(768);
 		vorsatz.export(swriter);
-		checkExport(1, 9, "0001" + VU_NUMMER);
+		String expected = "0001" + VU_NUMMER;
+		checkExport(1, 9, expected);
+		checkExport(257, 265, expected);
+		checkExport(256+246, 256+256, "          2");
+		checkExport(225, 227, "1.1");
 	}
 	
 	@Test
