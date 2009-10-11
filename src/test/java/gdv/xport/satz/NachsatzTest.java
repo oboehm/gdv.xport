@@ -20,11 +20,10 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.io.*;
+import java.io.IOException;
 
-import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
@@ -35,7 +34,6 @@ import org.junit.Test;
  */
 public class NachsatzTest extends AbstractSatzTest {
 	
-	private static final Log log = LogFactory.getLog(NachsatzTest.class);
 	private Nachsatz nachsatz = new Nachsatz();
 
 	/**
@@ -52,13 +50,19 @@ public class NachsatzTest extends AbstractSatzTest {
 	 */
 	@Test
 	public void testExport() throws IOException {
-		StringWriter swriter = new StringWriter(256);
-		nachsatz.export(swriter);
-		String data = swriter.toString();
-		log.info("data: " + data.substring(0, 40) + "...");
-		assertEquals(256, data.length());
-		assertEquals("999900000          ", data.substring(0, 19));
-		assertEquals("          ", data.substring(245, 255));
+		checkExport(1, 19, "999900000          ");
+		checkExport(246, 255, "          ");
+	}
+	
+	
+	/**
+	 * @param startByte beginnend bei 1
+	 * @param endByte   beginnend bei 1
+	 * @param expected
+	 * @throws IOException 
+	 */
+	private void checkExport(int startByte, int endByte, String expected) throws IOException {
+		super.checkExport(this.nachsatz, startByte, endByte, expected, 256);
 	}
 
 }

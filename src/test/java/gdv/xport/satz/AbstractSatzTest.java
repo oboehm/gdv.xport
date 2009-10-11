@@ -18,9 +18,14 @@
 
 package gdv.xport.satz;
 
+import static org.junit.Assert.assertEquals;
+
+import java.io.*;
+
 import gdv.xport.config.Config;
 import gdv.xport.feld.VUNummer;
 
+import org.apache.commons.logging.*;
 import org.junit.BeforeClass;
 
 /**
@@ -33,12 +38,31 @@ import org.junit.BeforeClass;
  */
 public class AbstractSatzTest {
 
+	private static final Log log = LogFactory.getLog(AbstractSatzTest.class);
 	/** zum Testen nehmen wir hier die VU-Nr. der Oerag */
 	protected static final VUNummer VU_NUMMER = new VUNummer("5183");
 
 	@BeforeClass
 	public static void setUpBeforeClass() {
 		Config.setVUNummer(VU_NUMMER);
+	}
+	
+	/**
+	 * @param satz 
+	 * @param startByte beginnend bei 1
+	 * @param endByte   beginnend bei 1
+	 * @param expected
+	 * @throws IOException 
+	 */
+	protected void checkExport(Satz satz, int startByte, int endByte,
+			String expected, int expectedLength) throws IOException {
+		StringWriter swriter = new StringWriter(768);
+		satz.export(swriter);
+		String data = swriter.toString();
+		assertEquals(expectedLength, data.length());
+		String toBeChecked = data.substring(startByte - 1, endByte);
+		log.info("data: " + data.substring(0, 9) + "..." + toBeChecked + "...");
+		assertEquals(expected, toBeChecked);
 	}
 
 }

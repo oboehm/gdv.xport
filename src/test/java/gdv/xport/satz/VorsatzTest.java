@@ -20,12 +20,9 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.*;
 
-import org.apache.commons.logging.*;
-import org.junit.*;
+import org.junit.Test;
 
 /**
  * @author oliver
@@ -35,7 +32,6 @@ import org.junit.*;
  */
 public class VorsatzTest extends AbstractSatzTest {
 	
-	private static final Log log = LogFactory.getLog(VorsatzTest.class);
 	private Vorsatz vorsatz = new Vorsatz();
 
 	/**
@@ -44,8 +40,6 @@ public class VorsatzTest extends AbstractSatzTest {
 	 */
 	@Test
 	public void testVorsatz() throws IOException {
-		StringWriter swriter = new StringWriter(768);
-		vorsatz.export(swriter);
 		String expected = "0001" + VU_NUMMER;
 		checkExport(1, 9, expected);
 		checkExport(257, 265, expected);
@@ -75,13 +69,7 @@ public class VorsatzTest extends AbstractSatzTest {
 	 * @throws IOException 
 	 */
 	private void checkExport(int startByte, int endByte, String expected) throws IOException {
-		StringWriter swriter = new StringWriter(768);
-		vorsatz.export(swriter);
-		String data = swriter.toString();
-		assertEquals(768, data.length());
-		String toBeChecked = data.substring(startByte-1, endByte);
-		log.info("data: " + data.substring(0, 9) + "..." + toBeChecked + "...");
-		assertEquals(expected, toBeChecked);
+		super.checkExport(this.vorsatz, startByte, endByte, expected, 768);
 	}
 
 }
