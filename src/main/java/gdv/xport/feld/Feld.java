@@ -63,8 +63,16 @@ public class Feld {
 		}
 		this.inhalt.replace(0, s.length(), s);
 		for (int i = s.length() + 1; i < anzahlBytes; i++) {
-			this.inhalt.replace(i, i, " ");
+			this.inhalt.setCharAt(i, ' ');
 		}
+	}
+	
+	/**
+	 * @param c zu setzendes Zeichen
+	 * @param i index, beginnend bei 0
+	 */
+	public void setInhalt(char c, int i) {
+		this.inhalt.setCharAt(i, c);
 	}
 	
 	public String getInhalt() {

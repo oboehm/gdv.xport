@@ -24,6 +24,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 
+import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
@@ -34,6 +35,7 @@ import org.junit.Test;
  */
 public class NachsatzTest extends AbstractSatzTest {
 	
+	private static final Log log = LogFactory.getLog(NachsatzTest.class);
 	private Nachsatz nachsatz = new Nachsatz();
 
 	/**
@@ -52,6 +54,7 @@ public class NachsatzTest extends AbstractSatzTest {
 	public void testExport() throws IOException {
 		checkExport(1, 19, "999900000          ");
 		checkExport(246, 255, "          ");
+		log.info(nachsatz);
 	}
 	
 	

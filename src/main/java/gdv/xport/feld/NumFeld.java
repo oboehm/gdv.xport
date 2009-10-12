@@ -28,6 +28,7 @@ public class NumFeld extends Feld {
 	
 	public NumFeld(int length, int start) {
 		super(length, start);
+		this.setInhalt(0);
 	}
 	
 	public void setInhalt(int n) {

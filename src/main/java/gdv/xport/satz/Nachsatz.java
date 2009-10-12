@@ -20,7 +20,7 @@
 
 package gdv.xport.satz;
 
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 
 
 /**
@@ -32,11 +32,28 @@ import gdv.xport.feld.NumFeld;
 public final class Nachsatz extends Satz {
 	
 	private final NumFeld anzahlSaetze = new NumFeld("00000", 5);
+	private final AlphaNumFeld vermittler = new AlphaNumFeld(10, 15);
+	private final Betrag gesamtBeitrag = new Betrag(15, 25);
+	private final VorzeichenBetrag gesamtBeitragBrutto = new VorzeichenBetrag(15, 40);
+	private final VorzeichenBetrag gesamtProvisionsBetrag = new VorzeichenBetrag(15, 55);
+	private final VorzeichenBetrag versicherungsLeistungen = new VorzeichenBetrag(15, 70);
+	private final VorzeichenBetrag schadenbearbeitunsKosten = new VorzeichenBetrag(15, 85);
 
 	public Nachsatz() {
 		super("9999");
-		this.createTeildatensaetze(1);
+		this.createTeildatensatz();
 		this.setAnzahlSaetze(0);
+	}
+	
+	private void createTeildatensatz() {
+		this.createTeildatensaetze(1);
+		this.teildatensatz[0].setData(this.anzahlSaetze);
+		this.teildatensatz[0].setData(this.vermittler);
+		this.teildatensatz[0].setData(this.gesamtBeitrag);
+		this.teildatensatz[0].setData(this.gesamtBeitragBrutto);
+		this.teildatensatz[0].setData(this.gesamtProvisionsBetrag);
+		this.teildatensatz[0].setData(this.versicherungsLeistungen);
+		this.teildatensatz[0].setData(this.schadenbearbeitunsKosten);
 	}
 
 	public void setAnzahlSaetze(int n) {
