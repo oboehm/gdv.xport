@@ -37,9 +37,19 @@ public class FeldTest {
 	 */
 	@Test
 	public void testResetInhalt() {
-		Feld feld = new Feld("abc");
+		Feld feld = new Feld("abc", Align.LEFT);
 		feld.resetInhalt();
 		assertEquals("   ", feld.toString());
+	}
+	
+	@Test
+	public void testSetInhalt() {
+		Feld linksbuendig = new Feld("hello", Align.LEFT);
+		linksbuendig.setInhalt("abc");
+		assertEquals("abc  ", linksbuendig.toString());
+		Feld rechtsbuendig = new Feld("world", Align.RIGHT);
+		rechtsbuendig.setInhalt("hi");
+		assertEquals("   hi", rechtsbuendig.toString());
 	}
 
 }

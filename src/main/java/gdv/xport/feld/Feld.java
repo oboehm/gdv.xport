@@ -33,26 +33,30 @@ public class Feld {
 	protected final StringBuffer inhalt;
 	/** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256 */
 	protected final int byteAdresse;
+	/** Ausrichtung: rechts- oder linksbuendig */
+	protected final Align ausrichtung;
 	
-	public Feld(String s) {
-		this(s, 1);
+	public Feld(String s, Align alignment) {
+		this(s, 1, alignment);
 	}
 	
-	public Feld(String s, int start) {
+	public Feld(String s, int start, Align alignment) {
 		this.inhalt = new StringBuffer(s);
-		this.byteAdresse = start;		
+		this.byteAdresse = start;	
+		this.ausrichtung = alignment;
 	}
 	
-	public Feld(int length) {
-		this(length, 1);
+	public Feld(int length, Align alignment) {
+		this(length, 1, alignment);
 	}
 	
-	public Feld(int length, int start) {
+	public Feld(int length, int start, Align alignment) {
 		this.inhalt = new StringBuffer(length);
 		for (int i = 0; i < length; i++) {
 			this.inhalt.append(' ');
 		}
 		this.byteAdresse = start;
+		this.ausrichtung = alignment;
 	}
 	
 	public void setInhalt(String s) {
@@ -61,10 +65,21 @@ public class Feld {
 			throw new IllegalArgumentException("Parameter (\"" + s
 					+ "\" ist laenger als " + anzahlBytes + " Zeichen!");
 		}
-		this.inhalt.replace(0, s.length(), s);
-		for (int i = s.length() + 1; i < anzahlBytes; i++) {
-			this.inhalt.setCharAt(i, ' ');
+		this.resetInhalt();
+		switch (this.ausrichtung) {
+		case LEFT:	this.inhalt.replace(0, s.length(), s);
+					break;
+		case RIGHT: int l = s.length();
+					int start = anzahlBytes - l;
+					this.inhalt.replace(start, start + l, s);
+					break;
+		default:	throw new IllegalStateException("object was not properly initialized");
 		}
+	}
+	
+	public void setInhalt(char c) {
+		this.resetInhalt();
+		this.setInhalt(c, 0);
 	}
 	
 	/**

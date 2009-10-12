@@ -28,19 +28,19 @@ package gdv.xport.feld;
 public class Datum extends Feld {
 	
 	public Datum() {
-		super("        ");
+		super("00000000", Align.RIGHT);
 	}
 	
 	/**
 	 * @param s im Format TTMMJJJJ
 	 */
 	public Datum(String s) {
-		super(s);
+		super(s, Align.RIGHT);
 		assert s.length() == 8 : s + " ist ungueltiges Datumsformat";
 	}
 	
 	public Datum(int start) {
-		super(8, start);
+		super(8, start, Align.RIGHT);
 	}
 	
 }

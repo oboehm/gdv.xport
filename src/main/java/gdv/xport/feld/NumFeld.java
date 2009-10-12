@@ -19,15 +19,15 @@ import org.apache.commons.lang.StringUtils;
 public class NumFeld extends Feld {
 	
 	public NumFeld(String s) {
-		super(s);
+		super(s, Align.RIGHT);
 	}
 	
 	public NumFeld(String s, int start) {
-		super(s, start);
+		super(s, start, Align.RIGHT);
 	}
 	
 	public NumFeld(int length, int start) {
-		super(length, start);
+		super(length, start, Align.RIGHT);
 		this.setInhalt(0);
 	}
 	

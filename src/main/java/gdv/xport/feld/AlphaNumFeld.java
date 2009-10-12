@@ -12,15 +12,19 @@ package gdv.xport.feld;
 public class AlphaNumFeld extends Feld {
 
 	public AlphaNumFeld(String s) {
-		super(s);
+		super(s, Align.LEFT);
 	}
 	
 	public AlphaNumFeld(String s, int start) {
-		super(s, start);
+		super(s, start, Align.LEFT);
 	}
 	
 	public AlphaNumFeld(int length, int start) {
-		super(length, start);
+		super(length, start, Align.LEFT);
+	}
+	
+	public AlphaNumFeld(int length, int start, Align alignment) {
+		super(length, start, alignment);
 	}
 	
 	/**
