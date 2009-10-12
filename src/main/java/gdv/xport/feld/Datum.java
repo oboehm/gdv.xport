@@ -40,7 +40,11 @@ public class Datum extends Feld {
 	}
 	
 	public Datum(int start) {
-		super(8, start, Align.RIGHT);
+		this(8, start);
+	}
+	
+	public Datum(int length, int start) {
+		super(length, start, Align.RIGHT);
 	}
 	
 }
