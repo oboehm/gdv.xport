@@ -12,7 +12,7 @@
   <groupId>gdv</groupId>
   <artifactId>xport</artifactId>
   <packaging>jar</packaging>
-  <version>0.0.1</version>
+  <version>0.0.1-SNAPSHOT</version>
   <name>GDV-Xport</name>
   <url>http://github.com/oboehm/gdv.xport</url>
     
@@ -36,6 +36,9 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.4.2</version>
         <configuration>
+          <excludes>
+            <exclude>**/Abstract*.java</exclude>
+          </excludes>
           <systemProperties>
             <property>
               <name>gdv.VU-Nummer</name>
