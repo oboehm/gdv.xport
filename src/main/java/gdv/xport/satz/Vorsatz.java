@@ -35,14 +35,14 @@ public final class Vorsatz extends Satz {
 	
 	private void initTeildatensaetze() {
 		for (int i = 0; i < teildatensatz.length; i++) {
-			teildatensatz[i].setData(this.vuNummer);
-			teildatensatz[i].setData(this.absender);
-			teildatensatz[i].setData(this.adressat);
-			teildatensatz[i].setData(this.von);
-			teildatensatz[i].setData(this.bis);
-			teildatensatz[i].setData(this.vermittler);
+			teildatensatz[i].setDatenfeld(this.vuNummer);
+			teildatensatz[i].setDatenfeld(this.absender);
+			teildatensatz[i].setDatenfeld(this.adressat);
+			teildatensatz[i].setDatenfeld(this.von);
+			teildatensatz[i].setDatenfeld(this.bis);
+			teildatensatz[i].setDatenfeld(this.vermittler);
 		}
-		teildatensatz[0].setData(this.versionNachsatz);
+		teildatensatz[0].setDatenfeld(this.versionNachsatz);
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public final class Vorsatz extends Satz {
 	public void setAbsender(String absender) {
 		this.absender.setInhalt(absender);
 		for (int i = 0; i < teildatensatz.length; i++) {
-			teildatensatz[i].setData(this.absender);			
+			teildatensatz[i].setDatenfeld(this.absender);			
 		}
 	}
 	
@@ -64,8 +64,8 @@ public final class Vorsatz extends Satz {
 		this.von.setInhalt(startDatum);
 		this.bis.setInhalt(endDatum);
 		for (int i = 0; i < teildatensatz.length; i++) {
-			teildatensatz[i].setData(this.von);
-			teildatensatz[i].setData(this.bis);
+			teildatensatz[i].setDatenfeld(this.von);
+			teildatensatz[i].setDatenfeld(this.bis);
 		}
 	}
 

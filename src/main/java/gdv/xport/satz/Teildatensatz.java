@@ -21,28 +21,26 @@
 package gdv.xport.satz;
 
 import java.io.*;
+import java.util.*;
 
 import gdv.xport.feld.*;
 
 /**
- * Ein Teildatensatz hat immer genau 256 Bytes.
- * Fuer einen ersten Prototyp wird dabei ein StringBuffer fuer die Ablage
- * benutzt, was aus Performance-Gruenden sicherlich nicht die beste Wahl
- * darstellt. Aber das kann ja spaeter immer noch geaendert werden...
+ * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
+ * beruecksichtigt. Und ein Teildatensatz besteht aus mehreren Datenfeldern.
  * 
- * @author oliver
+ * @author oliver.boehm@agentes.de
  * @since 04.10.2009
- * @version $Revision$
  */
 public class Teildatensatz extends Satz {
 	
-	protected final char satznummer;
-	private StringBuffer data = new StringBuffer(256);
+	private final Map<String, Feld> datenfelder = new HashMap<String, Feld>();
+	private final AlphaNumFeld satznummer = new AlphaNumFeld(1, 256);
 	
 	public Teildatensatz(NumFeld satzart) {
 		super(satzart);
-		this.satznummer = ' ';
-		this.initData();
+		this.satznummer.setInhalt(' ');
+		this.initDatenfelder();
 	}
 	
 	public Teildatensatz(NumFeld satzart, int nr) {
@@ -51,31 +49,28 @@ public class Teildatensatz extends Satz {
 			throw new IllegalArgumentException("Satznummer (" + nr
 					+ ") muss zwischen 1 und 9 liegen");
 		}
-		this.satznummer = Character.forDigit(nr, 10);
-		this.initData();
+		this.satznummer.setInhalt(Character.forDigit(nr, 10));
+		this.initDatenfelder();
+	}
+	
+	private void initDatenfelder() {
+		datenfelder.put("Satzart", this.satzart);
+		datenfelder.put("Satznummer", this.satznummer);
 	}
 	
 	/**
-	 * Die Satznummer ist einstellig und liegt immer zwischen 1 und 9.
-	 * @return Satznummer
+	 * Falls ein Datenfeld kein Name hat, benennen wir ihn einfach mit seinem
+	 * Hashwert.
+	 * 
+	 * @param feld
 	 */
-	public final char getSatznummer() {
-		return this.satznummer;
+	public void setDatenfeld(Feld feld) {
+		String name = "Feld@" + feld.hashCode();
+		datenfelder.put(name, feld);
 	}
 	
-	private void initData() {
-		for (int i = 0; i < 255; i++) {
-			this.data.append(' ');
-		}
-		this.data.append(this.getSatznummer());
-		assert (this.data.length() == 256) : "wrong record length " + data.length();
-		this.setData(this.satzart);
-	}
-	
-	public void setData(Feld feld) {
-		int start = feld.getByteAdresse() - 1;
-		int end = start + feld.getAnzahlBytes();
-		data.replace(start, end, feld.toString());
+	public void setDatenfeld(String name, Feld feld) {
+		datenfelder.put(name, feld);
 	}
 
 	/* (non-Javadoc)
@@ -83,7 +78,18 @@ public class Teildatensatz extends Satz {
 	 */
 	@Override
 	public void export(Writer writer) throws IOException {
-		writer.write(this.data.toString());
+	    StringBuffer data = new StringBuffer(256);
+	    for (int i = 0; i < 256; i++) {
+			data.append(' ');
+		}
+	    datenfelder.keySet().iterator();
+	    for (String key : datenfelder.keySet()) {
+			Feld feld = datenfelder.get(key);
+			int start = feld.getByteAdresse() - 1;
+			int end = start + feld.getAnzahlBytes();
+			data.replace(start, end, feld.toString());
+		}
+		writer.write(data.toString());
 	}
 
 }

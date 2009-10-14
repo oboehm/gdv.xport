@@ -53,12 +53,12 @@ public class Datensatz extends Satz {
 	protected void createTeildatensaetze(int n) {
 		super.createTeildatensaetze(n);
 		for (int i = 0; i < n; i++) {
-			teildatensatz[i].setData(this.vuNummer);
-			teildatensatz[i].setData(this.buendelungsKennzeichen);
-			teildatensatz[i].setData(this.sparte);
-			teildatensatz[i].setData(this.versicherungsscheinNr);
-			teildatensatz[i].setData(this.folgeNr);
-			teildatensatz[i].setData(this.vermittler);
+			teildatensatz[i].setDatenfeld(this.vuNummer);
+			teildatensatz[i].setDatenfeld(this.buendelungsKennzeichen);
+			teildatensatz[i].setDatenfeld(this.sparte);
+			teildatensatz[i].setDatenfeld(this.versicherungsscheinNr);
+			teildatensatz[i].setDatenfeld(this.folgeNr);
+			teildatensatz[i].setDatenfeld(this.vermittler);
 		}
 	}
 
