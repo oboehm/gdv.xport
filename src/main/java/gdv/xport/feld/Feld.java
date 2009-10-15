@@ -30,6 +30,8 @@ import java.io.*;
  */
 public class Feld {
 	
+	/** optional: Name des Felds */
+    protected final String bezeichnung;
 	protected final StringBuffer inhalt;
 	/** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256 */
 	protected final int byteAdresse;
@@ -44,6 +46,7 @@ public class Feld {
 		this.inhalt = new StringBuffer(s);
 		this.byteAdresse = start;	
 		this.ausrichtung = alignment;
+		this.bezeichnung = createBezeichnung();
 	}
 	
 	public Feld(int length, Align alignment) {
@@ -57,6 +60,15 @@ public class Feld {
 		}
 		this.byteAdresse = start;
 		this.ausrichtung = alignment;
+		this.bezeichnung = createBezeichnung();
+	}
+	
+	private String createBezeichnung() {
+		return "Feld@" + this.hashCode();
+	}
+	
+	public String getBezeichnung() {
+		return this.bezeichnung;
 	}
 	
 	public void setInhalt(String s) {

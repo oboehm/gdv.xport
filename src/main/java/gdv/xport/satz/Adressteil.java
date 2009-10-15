@@ -27,6 +27,11 @@ import gdv.xport.feld.*;
  */
 public class Adressteil extends Datensatz {
 	
+	private Feld[] felder = {
+			new AlphaNumFeld(1, 43),
+			new AlphaNumFeld(30, 44)
+	};
+	
 	private AlphaNumFeld anredeSchluessel = new AlphaNumFeld(1, 43);
 	private AlphaNumFeld name1 = new AlphaNumFeld(30, 44);
 	private AlphaNumFeld name2 = new AlphaNumFeld(30, 74);
@@ -70,6 +75,13 @@ public class Adressteil extends Datensatz {
 	
 	public void setAnredeSchluessel(char c) {
 		this.anredeSchluessel.setInhalt(c);
+	}
+	
+	private void setUpTeildatensaetze() {
+		setUpTeildatensatz1();
+	}
+	
+	private void setUpTeildatensatz1() {
 	}
 
 }

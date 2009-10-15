@@ -65,7 +65,7 @@ public class Teildatensatz extends Satz {
 	 * @param feld
 	 */
 	public void setDatenfeld(Feld feld) {
-		String name = "Feld@" + feld.hashCode();
+		String name = feld.getBezeichnung();
 		datenfelder.put(name, feld);
 	}
 	

@@ -53,7 +53,7 @@ public class Datensatz extends Satz {
 		this.setUpTeildatensaetze();
 	}
 
-	protected void setUpTeildatensaetze() {
+	private void setUpTeildatensaetze() {
 		for (int i = 0; i < teildatensatz.length; i++) {
 			teildatensatz[i].setDatenfeld("VU-Nummer", this.vuNummer);
 			teildatensatz[i].setDatenfeld("Buendelungskennzeichen", this.buendelungsKennzeichen);
