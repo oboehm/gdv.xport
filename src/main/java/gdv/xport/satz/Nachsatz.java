@@ -40,13 +40,12 @@ public final class Nachsatz extends Satz {
 	private final VorzeichenBetrag schadenbearbeitunsKosten = new VorzeichenBetrag(15, 85);
 
 	public Nachsatz() {
-		super("9999");
-		this.createTeildatensatz();
+		super("9999", 1);
+		this.setUpTeildatensatz();
 		this.setAnzahlSaetze(0);
 	}
 	
-	private void createTeildatensatz() {
-		this.createTeildatensaetze(1);
+	private void setUpTeildatensatz() {
 		this.teildatensatz[0].setDatenfeld(this.anzahlSaetze);
 		this.teildatensatz[0].setDatenfeld(this.vermittler);
 		this.teildatensatz[0].setDatenfeld(this.gesamtBeitrag);

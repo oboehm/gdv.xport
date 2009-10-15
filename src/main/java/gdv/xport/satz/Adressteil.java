@@ -64,8 +64,7 @@ public class Adressteil extends Datensatz {
 	private NumFeld lfdPersonennrGeVo = new NumFeld(6, 250+256);
 	
 	public Adressteil() {
-		super("0100");
-		this.createTeildatensaetze(5);
+		super("0100", 5);
 		this.setAnredeSchluessel('0');
 	}
 	

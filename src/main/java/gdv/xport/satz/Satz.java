@@ -29,7 +29,17 @@ public class Satz {
 		this(art.getInhalt());
 	}
 	
-	protected void createTeildatensaetze(int n) {
+	public Satz(NumFeld art, int n) {
+		this(art);
+		this.createTeildatensaetze(n);
+	}
+	
+	public Satz(String art, int n) {
+		this.satzart.setInhalt(art);
+		this.createTeildatensaetze(n);
+	}
+	
+	private void createTeildatensaetze(int n) {
 		teildatensatz = new Teildatensatz[n];
 		for (int i = 0; i < n; i++) {
 			teildatensatz[i] = new Teildatensatz(satzart, i+1);

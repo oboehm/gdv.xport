@@ -28,8 +28,7 @@ public final class Vorsatz extends Satz {
 	private Version versionNachsatz = new Version("1.1", 225);
 
 	public Vorsatz() {
-		super("0001");
-		this.createTeildatensaetze(3);
+		super("0001", 3);
 		initTeildatensaetze();
 	}
 	

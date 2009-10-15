@@ -24,8 +24,6 @@ import gdv.xport.feld.*;
 /**
  * @author oliver
  * @since 12.10.2009
- * @version $Revision$
- *
  */
 public class Datensatz extends Satz {
 	
@@ -45,14 +43,18 @@ public class Datensatz extends Satz {
 	public Datensatz(String satzart) {
 		super(satzart);
 	}
-
-	/* (non-Javadoc)
-	 * @see gdv.xport.satz.Satz#createTeildatensaetze(int)
+	
+	/**
+	 * @param satzart
+	 * @param n Anzahl der Teildatensaetze
 	 */
-	@Override
-	protected void createTeildatensaetze(int n) {
-		super.createTeildatensaetze(n);
-		for (int i = 0; i < n; i++) {
+	public Datensatz(String satzart, int n) {
+		super(satzart, n);
+		this.setUpTeildatensaetze();
+	}
+
+	protected void setUpTeildatensaetze() {
+		for (int i = 0; i < teildatensatz.length; i++) {
 			teildatensatz[i].setDatenfeld(this.vuNummer);
 			teildatensatz[i].setDatenfeld(this.buendelungsKennzeichen);
 			teildatensatz[i].setDatenfeld(this.sparte);
