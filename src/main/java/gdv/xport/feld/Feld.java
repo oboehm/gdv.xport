@@ -59,10 +59,7 @@ public class Feld {
 	}
 	
 	public Feld(int length, int start, Align alignment) {
-		this.inhalt = new StringBuffer(length);
-		for (int i = 0; i < length; i++) {
-			this.inhalt.append(' ');
-		}
+		this.inhalt = getEmptyStringBuffer(length);
 		this.byteAdresse = start;
 		this.ausrichtung = alignment;
 		this.bezeichnung = createBezeichnung();
@@ -77,13 +74,18 @@ public class Feld {
 	
 	public Feld(String name, int length, int start, char c, Align alignment) {
 		this.bezeichnung = name;
-		this.inhalt = new StringBuffer(length);
-		for (int i = 0; i < length; i++) {
-			this.inhalt.append(' ');
-		}
+		this.inhalt = getEmptyStringBuffer(length);
 		this.byteAdresse = start;
 		this.ausrichtung = alignment;
 		this.setInhalt(c);
+	}
+
+	private static StringBuffer getEmptyStringBuffer(int length) {
+		StringBuffer sbuf = new StringBuffer(length);
+		for (int i = 0; i < length; i++) {
+			sbuf.append(' ');
+		}
+		return sbuf;
 	}
 	
 	private String createBezeichnung() {
