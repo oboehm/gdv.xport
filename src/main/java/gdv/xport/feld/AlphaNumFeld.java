@@ -22,6 +22,10 @@ public class AlphaNumFeld extends Feld {
 	public AlphaNumFeld(String name, int length, int start) {
 		super(name, length, start, Align.LEFT);
 	}
+
+	public AlphaNumFeld(String name, int length, int start, Align alignment) {
+		super(name, length, start, alignment);
+	}
 	
 	public AlphaNumFeld(int length, int start) {
 		super(length, start, Align.LEFT);
