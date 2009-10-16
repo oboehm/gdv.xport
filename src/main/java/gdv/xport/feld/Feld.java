@@ -30,6 +30,8 @@ import java.io.*;
  */
 public class Feld {
 	
+	/** statt "null" */
+	public static final Feld NULL_FELD = new Feld("null", 0, 0, Align.UNKNOWN);
 	/** optional: Name des Felds */
     protected final String bezeichnung;
 	protected final StringBuffer inhalt;
@@ -38,13 +40,27 @@ public class Feld {
 	/** Ausrichtung: rechts- oder linksbuendig */
 	protected final Align ausrichtung;
 	
-	@Deprecated
-	public Feld(String s, Align alignment) {
-		this(1, s, alignment);
-	}
-	
 	public Feld(String name, String s, Align alignment) {
 		this(name, 1, s, alignment);
+	}
+	
+	public Feld(String name, int start, String s, Align alignment) {
+		this.bezeichnung = name;
+		this.inhalt = new StringBuffer(s);
+		this.byteAdresse = start;
+		this.ausrichtung = alignment;
+	}
+	
+	public Feld(String name, int length, int start, Align alignment) {
+		this.bezeichnung = name;
+		this.inhalt = getEmptyStringBuffer(length);
+		this.byteAdresse = start;
+		this.ausrichtung = alignment;
+	}
+	
+	public Feld(String name, int length, int start, char c, Align alignment) {
+		this(name, length, start, alignment);
+		this.setInhalt(c);
 	}
 	
 	public Feld(int start, String s, Align alignment) {
@@ -63,21 +79,6 @@ public class Feld {
 		this.byteAdresse = start;
 		this.ausrichtung = alignment;
 		this.bezeichnung = createBezeichnung();
-	}
-	
-	public Feld(String name, int start, String s, Align alignment) {
-		this.bezeichnung = name;
-		this.inhalt = new StringBuffer(s);
-		this.byteAdresse = start;
-		this.ausrichtung = alignment;
-	}
-	
-	public Feld(String name, int length, int start, char c, Align alignment) {
-		this.bezeichnung = name;
-		this.inhalt = getEmptyStringBuffer(length);
-		this.byteAdresse = start;
-		this.ausrichtung = alignment;
-		this.setInhalt(c);
 	}
 
 	private static StringBuffer getEmptyStringBuffer(int length) {

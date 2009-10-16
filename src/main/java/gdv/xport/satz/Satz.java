@@ -51,6 +51,45 @@ public class Satz {
 		this.teildatensatz[n-1].add(feld);
 	}
 	
+	/**
+	 * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es
+	 * gefunden wird. Normalerweise braeuchten wir eigentlich nur die erste
+	 * Fundstelle setzen, da die anderen Teildatensaetze (hoffentlich) auf
+	 * die gleiche Referenz verweisen - aber sicher ist sicher.
+	 * Falls das Feld nicht gefunden wird, wird eine IllegalArgumentException
+	 * geworfen.
+	 * 
+	 * @param name Name des Felds (Bezeichnung)
+	 * @param value
+	 */
+	public void set(String name, String value) {
+		boolean found = false;
+		for (int i = 0; i < teildatensatz.length; i++) {
+			Feld x = teildatensatz[i].get(name);
+			if (x != Feld.NULL_FELD) {
+				x.setInhalt(value);
+				found = true;
+			}
+		}
+		if (!found) {
+			throw new IllegalArgumentException("Feld \"" + name +"\" not found");
+		}
+	}
+	
+	/**
+	 * @param name gesuchte Feld
+	 * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
+	 */
+	public Feld get(String name) {
+		for (int i = 0; i < teildatensatz.length; i++) {
+			Feld x = teildatensatz[i].get(name);
+			if (x != Feld.NULL_FELD) {
+				return x;
+			}
+		}
+		return Feld.NULL_FELD;
+	}
+	
 	public int getSatzart() {
 		return satzart.toInt();
 	}

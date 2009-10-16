@@ -40,7 +40,7 @@ public class VUNummer extends AlphaNumFeld {
 	}
 	
 	public VUNummer(VUNummer nr, int start) {
-		super(nr.toString(), start);
+		super(VU_NUMMER, start, nr.toString());
 	}
 
 }

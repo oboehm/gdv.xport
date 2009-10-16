@@ -69,8 +69,17 @@ public class Teildatensatz extends Satz {
 		datenfelder.put(name, feld);
 	}
 	
-	public void setDatenfeld(String name, Feld feld) {
+	public void set(String name, Feld feld) {
 		datenfelder.put(name, feld);
+	}
+	
+	public Feld get(String name) {
+		Feld found = datenfelder.get(name);
+		if (found == null) {
+			return Feld.NULL_FELD;
+		} else {
+			return found;
+		}
 	}
 
 	/* (non-Javadoc)
