@@ -31,7 +31,7 @@ import gdv.xport.feld.*;
  */
 public final class Nachsatz extends Satz {
 	
-	private final NumFeld anzahlSaetze = new NumFeld("00000", 5);
+	private final NumFeld anzahlSaetze = new NumFeld(5, "00000");
 	private final AlphaNumFeld vermittler = new AlphaNumFeld(10, 15);
 	private final Betrag gesamtBeitrag = new Betrag(15, 25);
 	private final VorzeichenBetrag gesamtBeitragBrutto = new VorzeichenBetrag(15, 40);
