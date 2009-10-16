@@ -11,8 +11,13 @@ package gdv.xport.feld;
  */
 public class AlphaNumFeld extends Feld {
 
+	@Deprecated
 	public AlphaNumFeld(String s) {
-		super(s, Align.LEFT);
+		super("unbekannt", s, Align.LEFT);
+	}
+	
+	public AlphaNumFeld(String name, String s) {
+		super(name, s, Align.LEFT);
 	}
 	
 	public AlphaNumFeld(String s, int start) {

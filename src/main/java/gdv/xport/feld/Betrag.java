@@ -28,9 +28,14 @@ package gdv.xport.feld;
  */
 public class Betrag extends NumFeld {
 
+	@Deprecated
 	public Betrag() {
-		super("00000000000000");
+		super("unbekannt", "00000000000000");
 		assert this.getAnzahlBytes() == 14 : "ups, interner Fehler";
+	}
+	
+	public Betrag(String name) {
+		super(name, "00000000000000");
 	}
 	
 	public Betrag(int length, int start) {

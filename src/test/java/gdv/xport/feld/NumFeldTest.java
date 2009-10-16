@@ -43,7 +43,7 @@ public class NumFeldTest {
 	 */
 	@Test
 	public void testSetInhaltInt() {
-		NumFeld nummer = new NumFeld("0001");
+		NumFeld nummer = new NumFeld("Feld X", "0001");
 		nummer.setInhalt(2);
 		assertEquals("0002", nummer.toString());
 	}

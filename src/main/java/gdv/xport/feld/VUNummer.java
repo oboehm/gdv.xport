@@ -18,6 +18,8 @@
 
 package gdv.xport.feld;
 
+import static gdv.xport.feld.Bezeichner.*;
+
 /**
  * Die VUNummer (Versicherungs-Unternehmen-Nummer) ist ein fuenfstelliges
  * alphanumerisches Feld (ab 1.1.1993 wohl nur noch vierstellig).
@@ -32,7 +34,7 @@ public class VUNummer extends AlphaNumFeld {
 	 * @param nr
 	 */
 	public VUNummer(String nr) {
-		super(nr);
+		super(VU_NUMMER, nr);
 		assert nr.length() <= 5 : "nur max. 5 Stellen erlaubt";
 		super.setAnzahlBytes(5);
 	}

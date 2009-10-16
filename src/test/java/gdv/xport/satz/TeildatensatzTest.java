@@ -38,7 +38,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
 	 */
 	@Test
 	public void testExport() throws IOException {
-		Teildatensatz teildatensatz = new Teildatensatz(new NumFeld("0042"), 1);
+		Teildatensatz teildatensatz = new Teildatensatz(new NumFeld("Feld42", "0042"), 1);
 		this.checkExport(teildatensatz, 1, 4, "0042", 256);
 		this.checkExport(teildatensatz, 255, 256, " 1", 256);
 	}

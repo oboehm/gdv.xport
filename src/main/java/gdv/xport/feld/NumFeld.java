@@ -18,8 +18,13 @@ import org.apache.commons.lang.StringUtils;
  */
 public class NumFeld extends Feld {
 	
+	@Deprecated
 	public NumFeld(String s) {
-		super(s, Align.RIGHT);
+		super("unbekannt", s, Align.RIGHT);
+	}
+	
+	public NumFeld(String name, String s) {
+		super(name, s, Align.RIGHT);
 	}
 	
 	public NumFeld(String s, int start) {
