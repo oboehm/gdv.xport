@@ -27,18 +27,8 @@ package gdv.xport.feld;
  */
 public class Datum extends Feld {
 	
-	@Deprecated
-	public Datum() {
-		super("unbekannt", "00000000", Align.RIGHT);
-	}
-	
-	/**
-	 * @param s im Format TTMMJJJJ
-	 */
-	@Deprecated
-	public Datum(String s) {
-		super("unbekannt", s, Align.RIGHT);
-		assert s.length() == 8 : s + " ist ungueltiges Datumsformat";
+	public Datum(String name, int length, int start) {
+		super(name, length, start, Align.RIGHT);
 	}
 	
 	public Datum(int start) {
@@ -50,9 +40,3 @@ public class Datum extends Feld {
 	}
 	
 }
-
-
-/*
- * $Log$
- * $Source$
- */
