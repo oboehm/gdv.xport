@@ -23,7 +23,7 @@ public class NumFeld extends Feld {
 	}
 	
 	public NumFeld(String s, int start) {
-		super(s, start, Align.RIGHT);
+		super(start, s, Align.RIGHT);
 	}
 	
 	public NumFeld(int length, int start) {

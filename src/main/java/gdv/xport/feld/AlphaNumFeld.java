@@ -16,7 +16,7 @@ public class AlphaNumFeld extends Feld {
 	}
 	
 	public AlphaNumFeld(String s, int start) {
-		super(s, start, Align.LEFT);
+		super(start, s, Align.LEFT);
 	}
 	
 	public AlphaNumFeld(int length, int start) {
@@ -25,6 +25,10 @@ public class AlphaNumFeld extends Feld {
 	
 	public AlphaNumFeld(int length, int start, Align alignment) {
 		super(length, start, alignment);
+	}
+	
+	public AlphaNumFeld(String name, int length, int start, char inhalt) {
+		super(name, length, start, inhalt, Align.LEFT);
 	}
 	
 	/**

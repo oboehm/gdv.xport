@@ -51,6 +51,12 @@ public class FeldTest {
 		rechtsbuendig.setInhalt("hi");
 		assertEquals("   hi", rechtsbuendig.toString());
 	}
+	
+	@Test
+	public void testFeld() {
+		Feld zeichen = new Feld("Testfeld", 1, 1, 'x', Align.LEFT);
+		assertEquals("x", zeichen.getInhalt());
+	}
 
 }
 

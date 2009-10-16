@@ -3,7 +3,7 @@
  */
 package gdv.xport.satz;
 
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 
 import java.io.*;
 
@@ -44,6 +44,11 @@ public class Satz {
 		for (int i = 0; i < n; i++) {
 			teildatensatz[i] = new Teildatensatz(satzart, i+1);
 		}
+	}
+	
+	public void add(Feld feld) {
+		int n = feld.getTeildatensatzNr();
+		this.teildatensatz[n-1].add(feld);
 	}
 	
 	public int getSatzart() {

@@ -38,11 +38,16 @@ public class Feld {
 	/** Ausrichtung: rechts- oder linksbuendig */
 	protected final Align ausrichtung;
 	
+	@Deprecated
 	public Feld(String s, Align alignment) {
-		this(s, 1, alignment);
+		this(1, s, alignment);
 	}
 	
-	public Feld(String s, int start, Align alignment) {
+	public Feld(String name, String s, Align alignment) {
+		this(name, 1, s, alignment);
+	}
+	
+	public Feld(int start, String s, Align alignment) {
 		this.inhalt = new StringBuffer(s);
 		this.byteAdresse = start;	
 		this.ausrichtung = alignment;
@@ -61,6 +66,24 @@ public class Feld {
 		this.byteAdresse = start;
 		this.ausrichtung = alignment;
 		this.bezeichnung = createBezeichnung();
+	}
+	
+	public Feld(String name, int start, String s, Align alignment) {
+		this.bezeichnung = name;
+		this.inhalt = new StringBuffer(s);
+		this.byteAdresse = start;
+		this.ausrichtung = alignment;
+	}
+	
+	public Feld(String name, int length, int start, char c, Align alignment) {
+		this.bezeichnung = name;
+		this.inhalt = new StringBuffer(length);
+		for (int i = 0; i < length; i++) {
+			this.inhalt.append(' ');
+		}
+		this.byteAdresse = start;
+		this.ausrichtung = alignment;
+		this.setInhalt(c);
 	}
 	
 	private String createBezeichnung() {
@@ -109,7 +132,8 @@ public class Feld {
 	public void resetInhalt() {
 		int anzahlBytes = this.getAnzahlBytes();
 		for (int i = 0; i < anzahlBytes; i++) {
-			this.inhalt.replace(i, i+1, " ");
+			//this.inhalt.replace(i, i+1, " ");
+			this.inhalt.setCharAt(i, ' ');
 		}
 	}
 	
@@ -117,8 +141,29 @@ public class Feld {
 		return this.inhalt.length();
 	}
 	
+	/**
+	 * @return Byte-Adresse, beginnend bei 1
+	 */
 	public int getByteAdresse() {
 		return this.byteAdresse;
+	}
+	
+	public int getEndAdresse() {
+		return this.byteAdresse + this.getAnzahlBytes() - 1;
+	}
+	
+	/**
+	 * Wenn die ByteAdresse > 256 ist, kann hierueber der Teildatensatz
+	 * bestimmt werden, in der das Feld liegen muesste.
+	 * 
+	 * @return Nummer des Teildatensatzes, beginnend bei 1
+	 */
+	public int getTeildatensatzNr() {
+		if (this.byteAdresse > 256) {
+			return 1 + (this.byteAdresse - 1) / 256;
+		} else {
+			return 1;
+		}
 	}
 	
 	public void write(Writer writer) throws IOException {

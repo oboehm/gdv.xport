@@ -64,7 +64,7 @@ public class Teildatensatz extends Satz {
 	 * 
 	 * @param feld
 	 */
-	public void setDatenfeld(Feld feld) {
+	public void add(Feld feld) {
 		String name = feld.getBezeichnung();
 		datenfelder.put(name, feld);
 	}
@@ -85,10 +85,11 @@ public class Teildatensatz extends Satz {
 	    datenfelder.keySet().iterator();
 	    for (String key : datenfelder.keySet()) {
 			Feld feld = datenfelder.get(key);
-			int start = feld.getByteAdresse() - 1;
+			int start = (feld.getByteAdresse() - 1) % 256;
 			int end = start + feld.getAnzahlBytes();
 			data.replace(start, end, feld.toString());
 		}
+	    assert data.length() == 256 : "Teildatensatz ist nicht 256 Bytes lang";
 		writer.write(data.toString());
 	}
 

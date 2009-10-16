@@ -46,18 +46,18 @@ public final class Nachsatz extends Satz {
 	}
 	
 	private void setUpTeildatensatz() {
-		this.teildatensatz[0].setDatenfeld(this.anzahlSaetze);
-		this.teildatensatz[0].setDatenfeld(this.vermittler);
-		this.teildatensatz[0].setDatenfeld(this.gesamtBeitrag);
-		this.teildatensatz[0].setDatenfeld(this.gesamtBeitragBrutto);
-		this.teildatensatz[0].setDatenfeld(this.gesamtProvisionsBetrag);
-		this.teildatensatz[0].setDatenfeld(this.versicherungsLeistungen);
-		this.teildatensatz[0].setDatenfeld(this.schadenbearbeitunsKosten);
+		this.teildatensatz[0].add(this.anzahlSaetze);
+		this.teildatensatz[0].add(this.vermittler);
+		this.teildatensatz[0].add(this.gesamtBeitrag);
+		this.teildatensatz[0].add(this.gesamtBeitragBrutto);
+		this.teildatensatz[0].add(this.gesamtProvisionsBetrag);
+		this.teildatensatz[0].add(this.versicherungsLeistungen);
+		this.teildatensatz[0].add(this.schadenbearbeitunsKosten);
 	}
 
 	public void setAnzahlSaetze(int n) {
 		this.anzahlSaetze.setInhalt(n);
-		this.teildatensatz[0].setDatenfeld(anzahlSaetze);
+		this.teildatensatz[0].add(anzahlSaetze);
 	}
 
 }
