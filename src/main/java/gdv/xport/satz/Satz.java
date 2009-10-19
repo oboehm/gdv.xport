@@ -48,6 +48,11 @@ public class Satz {
 		}
 	}
 	
+	/**
+	 * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu
+	 * TODO: Konflikterkennung bei ueberlappenden Feldern (-> Exception)
+	 * @param feld
+	 */
 	public void add(Feld feld) {
 		int n = feld.getTeildatensatzNr();
 		this.teildatensatz[n-1].add(feld);

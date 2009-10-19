@@ -74,6 +74,26 @@ public class Adressteil extends Datensatz {
         add(new AlphaNumFeld(KOMMUNIKATIONSTYP7, 2, 167+512));
         add(new AlphaNumFeld(KOMMUNIKATIONSNR7, 60, 169+512));
         add(new AlphaNumFeld(RECHTSFORM, 2, 229+512));
+        // Teildatensatz 4
+        add(new AlphaNumFeld(GEBURTSNAME, 30, 43+768));
+        add(new AlphaNumFeld(NAME_KREDITINSTITUT1, 30, 73+768));
+        add(new AlphaNumFeld(TYP_BANKVERBINDUNG1, 2, 103+768));
+        add(new AlphaNumFeld(TYP_BANKVERBINDUNG2, 2, 105+768));
+        add(new AlphaNumFeld(KONTONR2, 12, 107+768));
+        add(new AlphaNumFeld(BLZ2, 8, 119+768));
+        add(new AlphaNumFeld(ABWEICHENDER_KONTOINHABER2, 30, 127+768));
+        add(new AlphaNumFeld(NAME_KREDITINSTITUT2, 30, 157+768));
+        add(new AlphaNumFeld(BIC1, 11, 187+768));
+        add(new AlphaNumFeld(BIC2, 11, 198+768));
+        add(new AlphaNumFeld(IBAN1, 34, 209+768));
+        // Teildatensatz 5
+        add(new AlphaNumFeld(IBAN2, 34, 43+1024));
+        add(new AlphaNumFeld(GEBURTSORT, 30, 77+1024));
+        add(new AlphaNumFeld(GEBURTSLAND, 3, 107+1024));
+        add(new AlphaNumFeld(STEUERNR_JURISTISCHE_PERSON, 17, 110+1024));
+        add(new AlphaNumFeld(UMSATZSTEUER_ID, 17, 127+1024));
+        add(new AlphaNumFeld(VORZUGSSTEUERBERECHTIGUNG, 1, 144+1024));
+        add(new AlphaNumFeld(VORZUGSSEUERBERECHTIGUNG_PROZENT, 5, 145+1024));
 	}
 	
 	public Adressteil() {
