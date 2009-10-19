@@ -10,5 +10,6 @@
 	<classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.15/log4j-1.2.15.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/c2/fit/fit/1.1/fit-1.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/fitnesse/fitnesse/20081201/fitnesse-20081201.jar"/>
+	<classpathentry kind="var" path="M2_REPO/net/sf/patterntesting/patterntesting-rt/0.9.7/patterntesting-rt-0.9.7.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

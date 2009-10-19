@@ -18,7 +18,8 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.ANREDESCHLUESSEL;
+import static org.junit.Assert.*;
+import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.feld.AlphaNumFeld;
 
 import java.io.IOException;
@@ -47,6 +48,14 @@ public class DatensatzTest extends AbstractSatzTest {
 		adressteil.add(new AlphaNumFeld(ANREDESCHLUESSEL, 1, 43, '6'));
 		log.info("adressteil=" + adressteil.toShortString());
 		checkExport(adressteil, 43, 43, "6", 1280);
+	}
+	
+	@Test
+	public void testSet() {
+		Datensatz ds = new Datensatz("0200", 2);
+		ds.add(new AlphaNumFeld(INKASSOART, 1, 43));
+		ds.set(INKASSOART, "2");
+		assertEquals(ds.get(INKASSOART), "2");
 	}
 
 }

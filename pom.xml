@@ -83,6 +83,12 @@
       <version>[4.4,]</version>
       <scope>test</scope>
     </dependency>
+	<!-- PatternTesting -->
+    <dependency>
+      <groupId>net.sf.patterntesting</groupId>
+      <artifactId>patterntesting-rt</artifactId>
+      <version>0.9.7</version>
+    </dependency>
 
   </dependencies>
   

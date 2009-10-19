@@ -3,6 +3,8 @@
  */
 package gdv.xport.satz;
 
+import static patterntesting.runtime.NullConstants.*;
+
 import gdv.xport.feld.*;
 
 import java.io.*;
@@ -65,7 +67,7 @@ public class Satz {
 	public void set(String name, String value) {
 		boolean found = false;
 		for (int i = 0; i < teildatensatz.length; i++) {
-			Feld x = teildatensatz[i].get(name);
+			Feld x = teildatensatz[i].getFeld(name);
 			if (x != Feld.NULL_FELD) {
 				x.setInhalt(value);
 				found = true;
@@ -77,12 +79,26 @@ public class Satz {
 	}
 	
 	/**
-	 * @param name gesuchte Feld
+	 * @param name gesuchtes Feld
+	 * @return Inhalt des gefundenden Felds
+	 *         (NULL_STRING, falls 'name' nicht gefunden wurde)
+	 */
+	public String get(String name) {
+		Feld f = getFeld(name);
+		if (f == Feld.NULL_FELD) {
+			return NULL_STRING;
+		} else {
+			return f.getInhalt();
+		}
+	}
+	
+	/**
+	 * @param name gesuchtes Feld
 	 * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
 	 */
-	public Feld get(String name) {
+	public Feld getFeld(String name) {
 		for (int i = 0; i < teildatensatz.length; i++) {
-			Feld x = teildatensatz[i].get(name);
+			Feld x = teildatensatz[i].getFeld(name);
 			if (x != Feld.NULL_FELD) {
 				return x;
 			}
