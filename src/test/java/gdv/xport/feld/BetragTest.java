@@ -36,7 +36,7 @@ public class BetragTest {
 	@Test
 	public void testBetrag() {
 		Betrag betrag = new Betrag(5, 1);
-		assertEquals("00000", betrag.toString());
+		assertEquals("00000", betrag.getInhalt());
 	}
 
 }

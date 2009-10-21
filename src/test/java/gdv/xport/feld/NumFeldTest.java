@@ -35,7 +35,7 @@ public class NumFeldTest {
 	@Test
 	public void testNumFeld() {
 		NumFeld nummer = new NumFeld(4, 1);
-		assertEquals("0000", nummer.toString());
+		assertEquals("0000", nummer.getInhalt());
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class NumFeldTest {
 	public void testSetInhaltInt() {
 		NumFeld nummer = new NumFeld("Feld X", "0001");
 		nummer.setInhalt(2);
-		assertEquals("0002", nummer.toString());
+		assertEquals("0002", nummer.getInhalt());
 	}
 
 }

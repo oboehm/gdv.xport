@@ -36,7 +36,7 @@ public class Satz {
 	}
 	
 	public Satz(NumFeld art, int n) {
-		this(art);
+		this.satzart.setInhalt(art.getInhalt());
 		this.createTeildatensaetze(n);
 	}
 	

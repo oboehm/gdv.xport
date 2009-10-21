@@ -63,6 +63,11 @@ public class Feld {
 		this.setInhalt(c);
 	}
 	
+	public Feld(String name, int length, int start, String s, Align alignment) {
+		this(name, length, start, alignment);
+		this.setInhalt(s);
+	}
+	
 	public Feld(int start, String s, Align alignment) {
 		this.inhalt = new StringBuffer(s);
 		this.byteAdresse = start;	
@@ -189,7 +194,9 @@ public class Feld {
 
 	@Override
 	public String toString() {
-		return this.inhalt.toString();
+		return this.getClass().getSimpleName() + " \"" + this.bezeichnung
+				+ "\" (" + this.byteAdresse + "-" + this.getEndAdresse()
+				+ ")";
 	}
 
 }

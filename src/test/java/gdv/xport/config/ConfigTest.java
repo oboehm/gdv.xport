@@ -49,7 +49,7 @@ public class ConfigTest {
 				log.info("expected: " + expected);
 			}
 		} else {
-			assertEquals(vuNummer, Config.getVUNummer().toString().trim());
+			assertEquals(vuNummer, Config.getVUNummer().getInhalt().trim());
 		}
 	}
 

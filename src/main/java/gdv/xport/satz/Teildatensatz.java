@@ -104,7 +104,7 @@ public class Teildatensatz extends Satz {
 			Feld feld = datenfelder.get(key);
 			int start = (feld.getByteAdresse() - 1) % 256;
 			int end = start + feld.getAnzahlBytes();
-			data.replace(start, end, feld.toString());
+			data.replace(start, end, feld.getInhalt());
 		}
 	    assert data.length() == 256 : "Teildatensatz ist nicht 256 Bytes lang";
 		writer.write(data.toString());

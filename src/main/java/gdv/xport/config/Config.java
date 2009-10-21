@@ -61,6 +61,7 @@ public class Config {
 		if (vunummer == null) {
 			vunummer = new VUNummer(getStringProperty(GDV_VU_NUMMER));
 		}
+		assert vunummer != null : "property '" + GDV_VU_NUMMER + "' not set";
 		return vunummer;
 	}
 	

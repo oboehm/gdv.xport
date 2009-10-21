@@ -39,7 +39,7 @@ public class VUNummerTest {
 	public void testVUNummerString() {
 		VUNummer vunr = new VUNummer("1234");
 		assertEquals(5, vunr.getAnzahlBytes());
-		assertEquals("1234 ", vunr.toString());
+		assertEquals("1234 ", vunr.getInhalt());
 	}
 
 }

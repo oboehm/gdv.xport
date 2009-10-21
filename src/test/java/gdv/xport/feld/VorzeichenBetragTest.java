@@ -36,7 +36,7 @@ public class VorzeichenBetragTest {
 	@Test
 	public void testVorzeichenBetrag() {
 		VorzeichenBetrag betrag = new VorzeichenBetrag(4, 1);
-		assertEquals("000+", betrag.toString());
+		assertEquals("000+", betrag.getInhalt());
 	}
 
 }
