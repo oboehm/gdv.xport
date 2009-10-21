@@ -38,13 +38,13 @@ public class Teildatensatz extends Satz {
 	private final AlphaNumFeld satznummer = new AlphaNumFeld(1, 256);
 	
 	public Teildatensatz(NumFeld satzart) {
-		super(satzart);
+		super(satzart, 0);
 		this.satznummer.setInhalt(' ');
 		this.initDatenfelder();
 	}
 	
 	public Teildatensatz(NumFeld satzart, int nr) {
-		super(satzart);
+		super(satzart, 0);
 		if ((nr < 1) || (nr > 9)) {
 			throw new IllegalArgumentException("Satznummer (" + nr
 					+ ") muss zwischen 1 und 9 liegen");
@@ -53,18 +53,26 @@ public class Teildatensatz extends Satz {
 		this.initDatenfelder();
 	}
 	
+	protected void createTeildatensaetze(int n) {
+		assert n == 0 : "ein Teildatensatz hat keine weiteren Teildatensaetze";
+		this.teildatensatz = null;
+	}
+	
 	private void initDatenfelder() {
 		datenfelder.put("Satzart", this.satzart);
 		datenfelder.put("Satznummer", this.satznummer);
 	}
 	
 	/**
-	 * Falls ein Datenfeld kein Name hat, benennen wir ihn einfach mit seinem
-	 * Hashwert.
-	 * 
-	 * @param feld
+	 * @param feld Feld mit Name
 	 */
 	public void add(Feld feld) {
+		for (Iterator<Feld> iterator = datenfelder.values().iterator(); iterator.hasNext();) {
+			Feld f = iterator.next();
+			if (feld.overlapsWith(f)) {
+				throw new IllegalArgumentException("conflict: " + feld + " overlaps with " + f);
+			}
+		}
 		String name = feld.getBezeichnung();
 		datenfelder.put(name, feld);
 	}

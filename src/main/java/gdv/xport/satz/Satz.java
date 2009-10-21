@@ -23,11 +23,15 @@ public class Satz {
 	/** Teildatensaetze */
 	protected Teildatensatz[] teildatensatz;
 	
-	public Satz(String art) {
-		this.satzart.setInhalt(art);
+	protected Satz(int art) {
+		this(art, 1);
 	}
 	
-	public Satz(NumFeld art) {
+	protected Satz(String art) {
+		this(art, 1);
+	}
+	
+	protected Satz(NumFeld art) {
 		this(art.getInhalt());
 	}
 	
@@ -41,7 +45,16 @@ public class Satz {
 		this.createTeildatensaetze(n);
 	}
 	
-	private void createTeildatensaetze(int n) {
+	/**
+	 * @param art z.B. 100 (f. Adressteil)
+	 * @param n Anzahl der Teildatensaetze
+	 */
+	public Satz(int art, int n) {
+		this.satzart.setInhalt(art);
+		this.createTeildatensaetze(n);
+	}
+	
+	protected void createTeildatensaetze(int n) {
 		teildatensatz = new Teildatensatz[n];
 		for (int i = 0; i < n; i++) {
 			teildatensatz[i] = new Teildatensatz(satzart, i+1);

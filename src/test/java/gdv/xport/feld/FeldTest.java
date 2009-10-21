@@ -57,6 +57,18 @@ public class FeldTest {
 		Feld zeichen = new Feld("Testfeld", 1, 1, 'x', Align.LEFT);
 		assertEquals("x", zeichen.getInhalt());
 	}
+	
+	@Test
+	public void testOverlapsWith() {
+		Feld a = new Feld("a", 2, 1, Align.LEFT);	// Byte 1-2
+		Feld b = new Feld("b", 2, 3, Align.LEFT);	// Byte 3-4
+		Feld c = new Feld("c", 2, 2, Align.LEFT);	// Byte 2-3
+		assertFalse(a + " overlaps with " + b, a.overlapsWith(b));
+		assertFalse(b + " overlaps with " + a, b.overlapsWith(a));
+		assertTrue(b + " doesn't overlap with " + c, b.overlapsWith(c));
+		assertTrue(c + " doesn't overlap with " + a, c.overlapsWith(a));
+		assertTrue(c + " doesn't overlap with " + b, c.overlapsWith(b));
+	}
 
 }
 

@@ -156,6 +156,20 @@ public class Feld {
 	}
 	
 	/**
+	 * @param other das andere Feld
+	 * @return true, falls sich die Felder ueberlappen
+	 */
+	public boolean overlapsWith(Feld other) {
+		if (this.byteAdresse == other.byteAdresse) {
+			return false;
+		}
+		if (this.byteAdresse < other.byteAdresse) {
+			return (this.getEndAdresse() >= other.byteAdresse);
+		}
+		return (other.getEndAdresse() >= this.byteAdresse);
+	}
+	
+	/**
 	 * Wenn die ByteAdresse > 256 ist, kann hierueber der Teildatensatz
 	 * bestimmt werden, in der das Feld liegen muesste.
 	 * 
