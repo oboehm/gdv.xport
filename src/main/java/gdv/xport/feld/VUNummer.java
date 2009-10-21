@@ -43,5 +43,14 @@ public class VUNummer extends AlphaNumFeld {
 		super(VU_NUMMER, 5, start, nr.getInhalt());
 	}
 
+	/* (non-Javadoc)
+	 * @see gdv.xport.feld.Feld#toString()
+	 */
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName() + " " + this.inhalt + " ("
+				+ this.byteAdresse + "-" + this.getEndAdresse() + ")";
+	}
+
 }
 

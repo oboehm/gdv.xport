@@ -148,7 +148,7 @@ public class Satz {
 	}
 	
 	public String toShortString() {
-		return "Satzart " + this.satzart + " ("
+		return "Satzart " + this.satzart.getInhalt() + " ("
 				+ this.toLongString().substring(0, 60) + "...)";
 	}
 	
