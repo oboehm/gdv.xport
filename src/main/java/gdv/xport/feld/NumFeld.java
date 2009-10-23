@@ -36,6 +36,10 @@ public class NumFeld extends Feld {
 	}
 	
 	public void setInhalt(int n) {
+		this.setInhalt((long) n);
+	}
+	
+	public void setInhalt(long n) {
 		String pattern = StringUtils.repeat("0", this.getAnzahlBytes());
 		NumberFormat format = new DecimalFormat(pattern);
 		String formatted = format.format(n);

@@ -45,6 +45,31 @@ public class Betrag extends NumFeld {
 	public Betrag(int length, int start) {
 		super(length, start);
 	}
+
+	/* (non-Javadoc)
+	 * @see gdv.xport.feld.NumFeld#setInhalt(int)
+	 */
+	@Override
+	public void setInhalt(int n) {
+		super.setInhalt(n * 100);
+	}
+	
+	public void setInhalt(double x) {
+		long n = Math.round(x * 100);
+		super.setInhalt(n);
+	}
+
+	/* (non-Javadoc)
+	 * @see gdv.xport.feld.NumFeld#toInt()
+	 */
+	@Override
+	public int toInt() {
+		return super.toInt() / 100;
+	}
+	
+	public double toDouble() {
+		return super.toInt() / 100.0;
+	}
 	
 }
 
