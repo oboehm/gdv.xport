@@ -38,6 +38,39 @@ public final class Datenpaket {
 	private List<Datensatz> datensaetze = new ArrayList<Datensatz>();
 	private final Nachsatz nachsatz = new Nachsatz();
 	
+	/**
+	 * @return the datensaetze
+	 */
+	public List<Datensatz> getDatensaetze() {
+		return datensaetze;
+	}
+
+	/**
+	 * @param datensaetze the datensaetze to set
+	 */
+	public void setDatensaetze(List<Datensatz> datensaetze) {
+		this.datensaetze = datensaetze;
+	}
+
+	/**
+	 * @return the vorsatz
+	 */
+	public Vorsatz getVorsatz() {
+		return vorsatz;
+	}
+
+	/**
+	 * @return the nachsatz
+	 */
+	public Nachsatz getNachsatz() {
+		return nachsatz;
+	}
+
+	public void add(Datensatz datensatz) {
+		datensaetze.add(datensatz);
+		vorsatz.setVersionFor(datensatz);
+	}
+	
 	public void export(Writer writer) throws IOException {
 		vorsatz.export(writer);
 		for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext();) {

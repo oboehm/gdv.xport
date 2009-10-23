@@ -25,9 +25,13 @@ package gdv.xport.feld;
  *
  */
 public class Version extends Feld {
-
-	public Version(String v, int start) {
-		super(start, v, Align.LEFT);
+	
+	public Version(String name, int start) {
+		super(name, 3, start, Align.LEFT);
+	}
+	
+	public Version(String name, int start, String v) {
+		super(name, 3, start, v, Align.LEFT);
 		assert v.length() == 3 : "Version hat nicht das Format x.x";
 	}
 

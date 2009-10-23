@@ -27,6 +27,10 @@ package gdv.xport.feld;
  */
 public class Datum extends Feld {
 	
+	public Datum(String name, int start) {
+		this(name, 8, start);
+	}
+	
 	public Datum(String name, int length, int start) {
 		super(name, length, start, Align.RIGHT);
 	}

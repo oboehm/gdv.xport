@@ -28,8 +28,10 @@ package gdv.xport.feld;
  */
 public class Bezeichner {
 	
+	public static final String ABSENDER = "Absender";
 	public static final String ABWEICHENDER_KONTOINHABER1 = "Abweichender Kontoinhaber 1";
 	public static final String ABWEICHENDER_KONTOINHABER2 = "Abweichender Kontoinhaber 2";
+	public static final String ADRESSAT = "Adressat";
 	public static final String ADRESSKENNZEICHEN = "Adresskennzeichen";
 	public static final String AKTENZEICHEN_SICHERUNGSGLAEUBIGER = "Aktenzeichen des Sicherungsglaeubigers";
 	public static final String ANREDESCHLUESSEL = "Anredeschluessel";
@@ -37,6 +39,8 @@ public class Bezeichner {
 	public static final String BIC2 = "BIC 2";
 	public static final String BLZ1 = "Bankleitzahl 1";
 	public static final String BLZ2 = "Bankleitzahl 2";
+	public static final String ERSTELLUNGSDATUM_ZEITRAUM_BIS = "Erstellungs-Datum-Zeitraum bis";
+	public static final String ERSTELLUNGSDATUM_ZEITRAUM_VOM = "Erstellungs-Datum-Zeitraum vom";
 	public static final String FAMILIENSTAND = "Familienstand";
 	public static final String GEBURTSDATUM = "Geburtsdatum";
 	public static final String GEBURTSLAND = "Geburtsland";
@@ -86,6 +90,11 @@ public class Bezeichner {
 	public static final String TYP_BANKVERBINDUNG1 = "Typ der Bankverbindung 1";
 	public static final String TYP_BANKVERBINDUNG2 = "Typ der Bankverbindung 2";
 	public static final String UMSATZSTEUER_ID = "Umsatzsteuer-Identifikationsnummer";
+	public static final String VERMITTLER = "Geschaeftsstelle/Vermittler";
+	public static final String VERSION_ADRESSSATZ = "Version Adresssatz Satzart 0100";
+	public static final String VERSION_ALLGEMEINER_VERTRAGSTEIL = "Version Allgemeiner Vertragsteil Satzart 0200";
+	public static final String VERSION_NACHSATZ = "Version Nachsatz Satzart 9999";
+	public static final String VERSION_VORSATZ = "Version Vorsatz Satzart 0001";
 	public static final String VORZUGSSTEUERBERECHTIGUNG = "Vorsteuerabszugsberechtigung Ja/Nein";
 	public static final String VORZUGSSEUERBERECHTIGUNG_PROZENT = "Vorsteuerabszugsberechtigung in Prozent";
 	public static final String ZAHLUNGSART = "Zahlungsart /-weg";
