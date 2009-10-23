@@ -31,9 +31,9 @@ import gdv.xport.feld.*;
  */
 public final class Nachsatz extends Satz {
 	
-	private final NumFeld anzahlSaetze = new NumFeld(5, "00000");
-	private final AlphaNumFeld vermittler = new AlphaNumFeld(10, 15);
-	private final Betrag gesamtBeitrag = new Betrag(15, 25);
+	private final NumFeld anzahlSaetze = new NumFeld("Anzahl der Saetze", 10, 5);
+	private final AlphaNumFeld vermittler = new AlphaNumFeld("Geschaeftsstelle/Vermittler", 10, 15);
+	private final Betrag gesamtBeitrag = new Betrag("Gesamtbeitrag", 15, 25);
 	private final VorzeichenBetrag gesamtBeitragBrutto = new VorzeichenBetrag(15, 40);
 	private final VorzeichenBetrag gesamtProvisionsBetrag = new VorzeichenBetrag(15, 55);
 	private final VorzeichenBetrag versicherungsLeistungen = new VorzeichenBetrag(15, 70);
@@ -46,18 +46,22 @@ public final class Nachsatz extends Satz {
 	}
 	
 	private void setUpTeildatensatz() {
-		this.teildatensatz[0].add(this.anzahlSaetze);
-		this.teildatensatz[0].add(this.vermittler);
-		this.teildatensatz[0].add(this.gesamtBeitrag);
-		this.teildatensatz[0].add(this.gesamtBeitragBrutto);
-		this.teildatensatz[0].add(this.gesamtProvisionsBetrag);
-		this.teildatensatz[0].add(this.versicherungsLeistungen);
-		this.teildatensatz[0].add(this.schadenbearbeitunsKosten);
+		add(this.anzahlSaetze);
+		add(this.vermittler);
+		add(this.gesamtBeitrag);
+		add(this.gesamtBeitragBrutto);
+		add(this.gesamtProvisionsBetrag);
+		add(this.versicherungsLeistungen);
+		add(this.schadenbearbeitunsKosten);
 	}
 
 	public void setAnzahlSaetze(int n) {
 		this.anzahlSaetze.setInhalt(n);
 		this.teildatensatz[0].add(anzahlSaetze);
+	}
+	
+	public int getAnzahlSaetze() {
+		return this.anzahlSaetze.toInt();
 	}
 
 }

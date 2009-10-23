@@ -38,6 +38,10 @@ public class Betrag extends NumFeld {
 		super(name, "00000000000000");
 	}
 	
+	public Betrag(String name, int length, int start) {
+		super(name, length, start);
+	}
+	
 	public Betrag(int length, int start) {
 		super(length, start);
 	}

@@ -52,11 +52,10 @@ public class NachsatzTest extends AbstractSatzTest {
 	 */
 	@Test
 	public void testExport() throws IOException {
-		checkExport(1, 19, "999900000          ");
+		checkExport(1, 19, "99990000000000     ");
 		checkExport(246, 255, "          ");
 		log.info(nachsatz);
 	}
-	
 	
 	/**
 	 * @param startByte beginnend bei 1
@@ -66,6 +65,12 @@ public class NachsatzTest extends AbstractSatzTest {
 	 */
 	private void checkExport(int startByte, int endByte, String expected) throws IOException {
 		super.checkExport(this.nachsatz, startByte, endByte, expected, 256);
+	}
+	
+	@Test
+	public void testSetAnzahl() {
+		nachsatz.setAnzahlSaetze(42);
+		assertEquals(42, nachsatz.getAnzahlSaetze());
 	}
 
 }
