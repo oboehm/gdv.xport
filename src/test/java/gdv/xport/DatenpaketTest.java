@@ -22,10 +22,11 @@ import static org.junit.Assert.*;
 import static gdv.xport.feld.Bezeichner.*;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.VUNummer;
+import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
 import java.io.*;
+import java.util.Date;
 
 import org.junit.*;
 
@@ -39,7 +40,9 @@ public class DatenpaketTest {
 
 	/** zum Testen nehmen wir hier die VU-Nr. der Oerag */
 	protected static final VUNummer VU_NUMMER = new VUNummer("5183");
-
+	/** fuer jeden Test gibt es ein frisches Datenpaket */
+	private Datenpaket datenpaket = new Datenpaket();
+	
 	@BeforeClass
 	public static void setUpBeforeClass() {
 		Config.setVUNummer(VU_NUMMER);
@@ -60,13 +63,26 @@ public class DatenpaketTest {
 	
 	@Test
 	public void testAdd() {
-		Datenpaket datenpaket = new Datenpaket();
 		Datensatz datensatz = new Adressteil();
 		datenpaket.add(datensatz);
 		Vorsatz vorsatz = datenpaket.getVorsatz();
 		assertEquals("1.0", vorsatz.getVersion(VERSION_VORSATZ));
 		assertEquals("1.0", vorsatz.getVersion(VERSION_ADRESSSATZ));
 		assertEquals("1.0", vorsatz.getVersion(VERSION_NACHSATZ));
+	}
+	
+	/**
+	 * Falls kein Datum gesetzt wird, sollte als Default das heutige DAtum
+	 * zurueckgegeben werden.
+	 */
+	@Test
+	public void testGetErstellungsDatum() {
+		Datum von = datenpaket.getErstellungsDatumVon();
+		Datum bis = datenpaket.getErstellungsDatumBis();
+		Datum heute = Datum.heute();
+		Date today = heute.toDate();
+		assertEquals(today, von.toDate());
+		assertEquals(today, bis.toDate());
 	}
 
 }

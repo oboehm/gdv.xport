@@ -20,12 +20,18 @@
 
 package gdv.xport.feld;
 
+import java.text.*;
+import java.util.Date;
+
 /**
  * @author oliver
  * @since 04.10.2009
  * @version $Revision$
  */
 public class Datum extends Feld {
+	
+	/** Standard-Format fuer Umwandlungen */
+	private static final DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 	
 	public Datum(String name, int start) {
 		this(name, 8, start);
@@ -35,12 +41,39 @@ public class Datum extends Feld {
 		super(name, length, start, Align.RIGHT);
 	}
 	
+	public Datum() {
+		this(1);
+	}
+	
 	public Datum(int start) {
 		this(8, start);
 	}
 	
 	public Datum(int length, int start) {
 		super(length, start, Align.RIGHT);
+	}
+	
+	public void setInhalt(Datum d) {
+		this.setInhalt(d.getInhalt());
+	}
+	
+	public void setInhalt(Date d) {
+		this.setInhalt(dateFormat.format(d));
+	}
+	
+	public Date toDate() {
+		try {
+			return dateFormat.parse(this.getInhalt());
+		} catch (ParseException e) {
+			throw new IllegalStateException(this + " has an invalid date (\""
+					+ this.getInhalt() + "\")");
+		}
+	}
+	
+	public static Datum heute() {
+		Datum d = new Datum();
+		d.setInhalt(new Date());
+		return d;
 	}
 	
 }

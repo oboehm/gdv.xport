@@ -18,11 +18,14 @@
 
 package gdv.xport;
 
+import static gdv.xport.feld.Bezeichner.*;
+
 import java.io.*;
 import java.util.*;
 
 import org.apache.commons.logging.*;
 
+import gdv.xport.feld.Datum;
 import gdv.xport.satz.*;
 
 /**
@@ -37,6 +40,12 @@ public final class Datenpaket {
 	private final Vorsatz vorsatz = new Vorsatz();
 	private List<Datensatz> datensaetze = new ArrayList<Datensatz>();
 	private final Nachsatz nachsatz = new Nachsatz();
+	
+	public Datenpaket() {
+		Datum heute = Datum.heute();
+		this.setErstellungsDatumVon(heute);
+		this.setErstellungsDatumBis(heute);
+	}
 	
 	/**
 	 * @return the datensaetze
@@ -79,6 +88,24 @@ public final class Datenpaket {
 		}
 		nachsatz.export(writer);
 		log.info(datensaetze.size() + " Datensaetze exported.");
+	}
+	
+	public void setErstellungsDatumVon(Datum d) {
+		Datum von = this.getErstellungsDatumVon();
+		von.setInhalt(d);
+	}
+
+	public Datum getErstellungsDatumVon() {
+		return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDATUM_ZEITRAUM_VOM);
+	}
+	
+	public void setErstellungsDatumBis(Datum d) {
+		Datum bis = this.getErstellungsDatumBis();
+		bis.setInhalt(d);
+	}
+
+	public Datum getErstellungsDatumBis() {
+		return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDATUM_ZEITRAUM_BIS);
 	}
 
 }
