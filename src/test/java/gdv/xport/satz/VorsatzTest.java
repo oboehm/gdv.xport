@@ -45,6 +45,7 @@ public class VorsatzTest extends AbstractSatzTest {
 		checkExport(257, 265, expected);
 		checkExport(256+246, 256+256, "          2");
 		checkExport(225, 227, "1.0");
+		checkExport(768, 768, "3");
 	}
 	
 	@Test
