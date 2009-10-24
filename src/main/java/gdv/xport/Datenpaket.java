@@ -25,7 +25,8 @@ import java.util.*;
 
 import org.apache.commons.logging.*;
 
-import gdv.xport.feld.Datum;
+import gdv.xport.config.Config;
+import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
 /**
@@ -45,6 +46,7 @@ public final class Datenpaket {
 		Datum heute = Datum.heute();
 		this.setErstellungsDatumVon(heute);
 		this.setErstellungsDatumBis(heute);
+		this.setAdressat(Config.getVUNummer().getInhalt());
 	}
 	
 	/**
@@ -115,6 +117,19 @@ public final class Datenpaket {
 
 	public Datum getErstellungsDatumBis() {
 		return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDATUM_ZEITRAUM_BIS);
+	}
+	
+	public void setAdressat(String s) {
+		Feld adressat = this.getAdressatFeld();
+		adressat.setInhalt(s);
+	}
+	
+	public String getAdressat() {
+		return this.getAdressatFeld().getInhalt();
+	}
+	
+	private Feld getAdressatFeld() {
+		return this.vorsatz.getFeld(ADRESSAT);
 	}
 
 }
