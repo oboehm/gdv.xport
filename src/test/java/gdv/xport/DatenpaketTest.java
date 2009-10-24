@@ -19,6 +19,7 @@
 package gdv.xport;
 
 import static org.junit.Assert.*;
+import static gdv.xport.feld.Bezeichner.*;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.VUNummer;
@@ -63,7 +64,9 @@ public class DatenpaketTest {
 		Datensatz datensatz = new Adressteil();
 		datenpaket.add(datensatz);
 		Vorsatz vorsatz = datenpaket.getVorsatz();
-		assertEquals("1.0", vorsatz.getVersionAdresssatz());
+		assertEquals("1.0", vorsatz.getVersion(VERSION_VORSATZ));
+		assertEquals("1.0", vorsatz.getVersion(VERSION_ADRESSSATZ));
+		assertEquals("1.0", vorsatz.getVersion(VERSION_NACHSATZ));
 	}
 
 }

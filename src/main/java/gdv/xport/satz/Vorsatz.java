@@ -88,10 +88,6 @@ public final class Vorsatz extends Satz {
 		}
 	}
 	
-	public String getVersionAdresssatz() {
-		return this.getFeld(VERSION_ADRESSSATZ).getInhalt();
-	}
-	
 	/**
 	 * Momentan wird die Version immer auf "1.0" fuer den uebergebenen
 	 * Datensatz gesetzt.
@@ -102,6 +98,19 @@ public final class Vorsatz extends Satz {
 		int satzart = datensatz.getSatzart();
 		Version version = versions.get(satzart);
 		version.setInhalt("1.0");
+	}
+	
+	/**
+	 * Ermittelt die Version des uebergebenen Bezeichners.
+	 * 
+	 * @param bezeichner
+	 *            z.B. VERSION_VORSATZ; hier koennen alle die
+	 *            Bezeichner-Konstanten gewaehlt werden, die mit "VERSION_"
+	 *            anfangen.
+	 * @return Version des gewuenschten Bezeichners
+	 */
+	public String getVersion(String bezeichner) {
+		return this.getFeld(bezeichner).getInhalt();
 	}
 
 }
