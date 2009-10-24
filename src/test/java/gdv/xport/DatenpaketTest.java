@@ -102,5 +102,12 @@ public class DatenpaketTest {
 		datenpaket.setAbsender(absender);
 		assertEquals(absender, datenpaket.getAbsender());
 	}
+	
+	@Test
+	public void testGetVermittler() {
+		String vermittler = "08/15";
+		datenpaket.setVermittler(vermittler);
+		assertEquals(vermittler, datenpaket.getVermittler());
+	}
 
 }

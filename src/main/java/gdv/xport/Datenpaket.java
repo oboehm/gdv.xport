@@ -144,6 +144,19 @@ public final class Datenpaket {
 	private Feld getAdressatFeld() {
 		return this.vorsatz.getFeld(ADRESSAT);
 	}
+	
+	public void setVermittler(String s) {
+		Feld vermittler = this.getVermittlerFeld();
+		vermittler.setInhalt(s);
+	}
+	
+	public String getVermittler() {
+		return this.getVermittlerFeld().getInhalt().trim();
+	}
+	
+	private Feld getVermittlerFeld() {
+		return this.vorsatz.getFeld(VERMITTLER);
+	}
 
 }
 
