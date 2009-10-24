@@ -46,7 +46,7 @@ public final class Datenpaket {
 		Datum heute = Datum.heute();
 		this.setErstellungsDatumVon(heute);
 		this.setErstellungsDatumBis(heute);
-		this.setAdressat(Config.getVUNummer().getInhalt());
+		this.setAbsender(Config.getVUNummer().getInhalt());
 	}
 	
 	/**
@@ -119,13 +119,26 @@ public final class Datenpaket {
 		return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDATUM_ZEITRAUM_BIS);
 	}
 	
+	public void setAbsender(String s) {
+		Feld absender = this.getAbsenderFeld();
+		absender.setInhalt(s);
+	}
+	
+	public String getAbsender() {
+		return this.getAbsenderFeld().getInhalt().trim();
+	}
+	
+	private Feld getAbsenderFeld() {
+		return this.vorsatz.getFeld(ABSENDER);
+	}
+	
 	public void setAdressat(String s) {
 		Feld adressat = this.getAdressatFeld();
 		adressat.setInhalt(s);
 	}
 	
 	public String getAdressat() {
-		return this.getAdressatFeld().getInhalt();
+		return this.getAdressatFeld().getInhalt().trim();
 	}
 	
 	private Feld getAdressatFeld() {

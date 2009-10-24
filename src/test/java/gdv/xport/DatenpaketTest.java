@@ -95,5 +95,12 @@ public class DatenpaketTest {
 		assertEquals(today, von.toDate());
 		assertEquals(today, bis.toDate());
 	}
+	
+	@Test
+	public void testGetAbsender() {
+		String absender = "Dagobert Duck";
+		datenpaket.setAbsender(absender);
+		assertEquals(absender, datenpaket.getAbsender());
+	}
 
 }
