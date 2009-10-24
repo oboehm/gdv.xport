@@ -28,6 +28,7 @@ import gdv.xport.satz.*;
 import java.io.*;
 import java.util.Date;
 
+import org.apache.commons.logging.*;
 import org.junit.*;
 
 /**
@@ -38,6 +39,7 @@ import org.junit.*;
  */
 public class DatenpaketTest {
 
+	private static final Log log = LogFactory.getLog(Datenpaket.class);
 	/** zum Testen nehmen wir hier die VU-Nr. der Oerag */
 	protected static final VUNummer VU_NUMMER = new VUNummer("5183");
 	/** fuer jeden Test gibt es ein frisches Datenpaket */
@@ -59,6 +61,15 @@ public class DatenpaketTest {
 		empty.export(swriter);
 		String data = swriter.toString();
 		assertEquals(1024, data.length());
+	}
+	
+	@Test
+	public void testExportFile() throws IOException {
+		File file = File.createTempFile("datenpaket", ".txt");
+		datenpaket.export(file);
+		log.info(datenpaket + " was exported to " + file);
+		assertTrue(file + " was not created", file.exists());
+		assertEquals(1024, file.length());
 	}
 	
 	@Test

@@ -80,6 +80,15 @@ public final class Datenpaket {
 		vorsatz.setVersionFor(datensatz);
 	}
 	
+	public void export(File file) throws IOException {
+		Writer writer = new FileWriter(file);
+		try {
+			export(writer);
+		} finally {
+			writer.close();
+		}
+	}
+	
 	public void export(Writer writer) throws IOException {
 		vorsatz.export(writer);
 		for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext();) {
