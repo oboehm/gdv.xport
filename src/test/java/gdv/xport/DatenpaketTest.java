@@ -111,10 +111,14 @@ public class DatenpaketTest {
 	}
 	
 	@Test
-	public void testGetVermittler() {
+	public void testSetVermittler() {
 		String vermittler = "08/15";
 		datenpaket.setVermittler(vermittler);
 		assertEquals(vermittler, datenpaket.getVermittler());
+		Vorsatz vorsatz = datenpaket.getVorsatz();
+		assertEquals(vermittler, vorsatz.getFeld(VERMITTLER).getInhalt().trim());
+		Nachsatz nachsatz = datenpaket.getNachsatz();
+		assertEquals(vermittler, nachsatz.getFeld(VERMITTLER).getInhalt().trim());
 	}
 
 }

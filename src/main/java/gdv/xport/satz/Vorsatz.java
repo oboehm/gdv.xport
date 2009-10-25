@@ -88,6 +88,19 @@ public final class Vorsatz extends Satz {
 		}
 	}
 	
+	public void setVermittler(String s) {
+		Feld vermittler = this.getVermittlerFeld();
+		vermittler.setInhalt(s);
+	}
+	
+	public String getVermittler() {
+		return this.getVermittlerFeld().getInhalt().trim();
+	}
+	
+	public AlphaNumFeld getVermittlerFeld() {
+		return (AlphaNumFeld) this.getFeld(VERMITTLER);
+	}
+	
 	/**
 	 * Momentan wird die Version immer auf "1.0" fuer den uebergebenen
 	 * Datensatz gesetzt.

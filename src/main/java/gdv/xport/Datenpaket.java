@@ -147,16 +147,15 @@ public final class Datenpaket {
 	}
 	
 	public void setVermittler(String s) {
-		Feld vermittler = this.getVermittlerFeld();
-		vermittler.setInhalt(s);
+		this.vorsatz.setVermittler(s);
+		this.nachsatz.setVermittler(s);
 	}
 	
 	public String getVermittler() {
-		return this.getVermittlerFeld().getInhalt().trim();
-	}
-	
-	private Feld getVermittlerFeld() {
-		return this.vorsatz.getFeld(VERMITTLER);
+		String vermittler = this.vorsatz.getVermittler();
+		assert vermittler.equals(this.nachsatz.getVermittler()) : vorsatz
+				+ " or " + nachsatz + " is corrupt";
+		return vermittler;
 	}
 
 }

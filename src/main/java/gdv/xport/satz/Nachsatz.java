@@ -20,6 +20,7 @@
 
 package gdv.xport.satz;
 
+import static gdv.xport.feld.Bezeichner.VERMITTLER;
 import gdv.xport.feld.*;
 
 
@@ -67,6 +68,19 @@ public final class Nachsatz extends Satz {
 	public void increaseAnzahlSaetze() {
 		int n = this.getAnzahlSaetze();
 		this.setAnzahlSaetze(n + 1);
+	}
+	
+	public void setVermittler(String s) {
+		Feld vermittler = this.getVermittlerFeld();
+		vermittler.setInhalt(s);
+	}
+	
+	public String getVermittler() {
+		return this.getVermittlerFeld().getInhalt().trim();
+	}
+	
+	public AlphaNumFeld getVermittlerFeld() {
+		return (AlphaNumFeld) this.getFeld(VERMITTLER);
 	}
 
 }
