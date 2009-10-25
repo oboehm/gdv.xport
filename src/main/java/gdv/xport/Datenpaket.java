@@ -79,6 +79,7 @@ public final class Datenpaket {
 
 	public void add(Datensatz datensatz) {
 		datensaetze.add(datensatz);
+		nachsatz.increaseAnzahlSaetze();
 		vorsatz.setVersionFor(datensatz);
 	}
 	

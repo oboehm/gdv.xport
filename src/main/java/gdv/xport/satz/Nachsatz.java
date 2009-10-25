@@ -63,5 +63,10 @@ public final class Nachsatz extends Satz {
 	public int getAnzahlSaetze() {
 		return this.anzahlSaetze.toInt();
 	}
+	
+	public void increaseAnzahlSaetze() {
+		int n = this.getAnzahlSaetze();
+		this.setAnzahlSaetze(n + 1);
+	}
 
 }

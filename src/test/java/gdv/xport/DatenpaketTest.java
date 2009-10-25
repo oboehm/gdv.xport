@@ -61,6 +61,11 @@ public class DatenpaketTest {
 		empty.export(swriter);
 		String data = swriter.toString();
 		assertEquals(1024, data.length());
+		Vorsatz vorsatz = datenpaket.getVorsatz();
+		assertEquals("1.0", vorsatz.getVersion(VERSION_VORSATZ));
+		assertEquals("1.0", vorsatz.getVersion(VERSION_NACHSATZ));
+		Nachsatz nachsatz = datenpaket.getNachsatz();
+		assertEquals(0, nachsatz.getAnzahlSaetze());
 	}
 	
 	@Test
@@ -80,6 +85,8 @@ public class DatenpaketTest {
 		assertEquals("1.0", vorsatz.getVersion(VERSION_VORSATZ));
 		assertEquals("1.0", vorsatz.getVersion(VERSION_ADRESSSATZ));
 		assertEquals("1.0", vorsatz.getVersion(VERSION_NACHSATZ));
+		Nachsatz nachsatz = datenpaket.getNachsatz();
+		assertEquals(1, nachsatz.getAnzahlSaetze());
 	}
 	
 	/**
