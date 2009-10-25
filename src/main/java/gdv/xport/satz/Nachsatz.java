@@ -95,8 +95,24 @@ public final class Nachsatz extends Satz {
 		this.gesamtBeitrag.setInhalt(beitrag);
 	}
 	
-	public Betrag getGesamtBeitragBrutto() {
+	public BetragMitVorzeichen getGesamtBeitragBrutto() {
 		return this.gesamtBeitragBrutto;
+	}
+	
+	public void setVersicherungsLeistungen(Double betrag) {
+		this.versicherungsLeistungen.setInhalt(betrag);
+	}
+	
+	public BetragMitVorzeichen getVersicherungsLeistungen() {
+		return this.versicherungsLeistungen;
+	}
+	
+	public void setSchadenbearbeitungsKosten(double kosten) {
+		this.schadenbearbeitungsKosten.setInhalt(kosten);
+	}
+	
+	public BetragMitVorzeichen getSchadenbearbeitungsKosten() {
+		return this.schadenbearbeitungsKosten;
 	}
 	
 }

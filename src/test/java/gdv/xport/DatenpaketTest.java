@@ -66,10 +66,16 @@ public class DatenpaketTest {
 		assertEquals("1.0", vorsatz.getVersion(VERSION_NACHSATZ));
 		Nachsatz nachsatz = datenpaket.getNachsatz();
 		assertEquals(0, nachsatz.getAnzahlSaetze());
+		assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
+		assertEquals(0.0, nachsatz.getGesamtBeitragBrutto().toDouble(), 0.001);
+		assertEquals(0.0, nachsatz.getVersicherungsLeistungen().toDouble(), 0.001);
+		assertEquals(0.0, nachsatz.getSchadenbearbeitungsKosten().toDouble(), 0.001);
 	}
 	
 	@Test
 	public void testExportFile() throws IOException {
+		datenpaket.setAdressat("Test-Adressat");
+		datenpaket.setVermittler("845/666666");
 		File file = File.createTempFile("datenpaket", ".txt");
 		datenpaket.export(file);
 		log.info(datenpaket + " was exported to " + file);
@@ -119,8 +125,6 @@ public class DatenpaketTest {
 		assertEquals(vermittler, vorsatz.getVermittler());
 		Nachsatz nachsatz = datenpaket.getNachsatz();
 		assertEquals(vermittler, nachsatz.getVermittler());
-		assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
-		assertEquals(0.0, nachsatz.getGesamtBeitragBrutto().toDouble(), 0.001);
 	}
 
 }
