@@ -38,6 +38,7 @@ public class BetragTest {
 	@Test
 	public void testBetrag() {
 		assertEquals("00000", betrag.getInhalt());
+		assertEquals(0.0, betrag.toDouble(), 0.001);
 	}
 	
 	@Test

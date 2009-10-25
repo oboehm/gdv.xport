@@ -116,9 +116,10 @@ public class DatenpaketTest {
 		datenpaket.setVermittler(vermittler);
 		assertEquals(vermittler, datenpaket.getVermittler());
 		Vorsatz vorsatz = datenpaket.getVorsatz();
-		assertEquals(vermittler, vorsatz.getFeld(VERMITTLER).getInhalt().trim());
+		assertEquals(vermittler, vorsatz.getVermittler());
 		Nachsatz nachsatz = datenpaket.getNachsatz();
-		assertEquals(vermittler, nachsatz.getFeld(VERMITTLER).getInhalt().trim());
+		assertEquals(vermittler, nachsatz.getVermittler());
+		assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
 	}
 
 }

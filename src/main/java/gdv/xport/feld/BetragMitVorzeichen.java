@@ -25,13 +25,13 @@ package gdv.xport.feld;
  * @since 11.10.2009
  * @version $Revision$
  */
-public class VorzeichenBetrag extends Betrag {
+public class BetragMitVorzeichen extends Betrag {
 
 	/**
 	 * @param length das Vorzeichen muss dabei mitgezaehlt werden
 	 * @param start
 	 */
-	public VorzeichenBetrag(int length, int start) {
+	public BetragMitVorzeichen(int length, int start) {
 		super(length, start);
 		this.setInhalt('+', length-1);
 	}

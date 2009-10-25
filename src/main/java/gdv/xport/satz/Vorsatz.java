@@ -59,8 +59,8 @@ public final class Vorsatz extends Satz {
 	private void setUpDatensaetze() {
 	}
 	
-	private void addVersion(Integer satzart, Version version) {
-		versions.put(satzart, version);
+	private void addVersion(Integer art, Version version) {
+		versions.put(art, version);
 		add(version);
 	}
 	
@@ -89,16 +89,11 @@ public final class Vorsatz extends Satz {
 	}
 	
 	public void setVermittler(String s) {
-		Feld vermittler = this.getVermittlerFeld();
-		vermittler.setInhalt(s);
+		this.vermittler.setInhalt(s);
 	}
 	
 	public String getVermittler() {
-		return this.getVermittlerFeld().getInhalt().trim();
-	}
-	
-	public AlphaNumFeld getVermittlerFeld() {
-		return (AlphaNumFeld) this.getFeld(VERMITTLER);
+		return this.vermittler.getInhalt().trim();
 	}
 	
 	/**
@@ -108,8 +103,8 @@ public final class Vorsatz extends Satz {
 	 * @param datensatz
 	 */
 	public void setVersionFor(Datensatz datensatz) {
-		int satzart = datensatz.getSatzart();
-		Version version = versions.get(satzart);
+		int art = datensatz.getSatzart();
+		Version version = versions.get(art);
 		version.setInhalt("1.0");
 	}
 	

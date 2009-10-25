@@ -20,7 +20,6 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.VERMITTLER;
 import gdv.xport.feld.*;
 
 
@@ -35,10 +34,10 @@ public final class Nachsatz extends Satz {
 	private final NumFeld anzahlSaetze = new NumFeld("Anzahl der Saetze", 10, 5);
 	private final AlphaNumFeld vermittler = new AlphaNumFeld("Geschaeftsstelle/Vermittler", 10, 15);
 	private final Betrag gesamtBeitrag = new Betrag("Gesamtbeitrag", 15, 25);
-	private final VorzeichenBetrag gesamtBeitragBrutto = new VorzeichenBetrag(15, 40);
-	private final VorzeichenBetrag gesamtProvisionsBetrag = new VorzeichenBetrag(15, 55);
-	private final VorzeichenBetrag versicherungsLeistungen = new VorzeichenBetrag(15, 70);
-	private final VorzeichenBetrag schadenbearbeitunsKosten = new VorzeichenBetrag(15, 85);
+	private final BetragMitVorzeichen gesamtBeitragBrutto = new BetragMitVorzeichen(15, 40);
+	private final BetragMitVorzeichen gesamtProvisionsBetrag = new BetragMitVorzeichen(15, 55);
+	private final BetragMitVorzeichen versicherungsLeistungen = new BetragMitVorzeichen(15, 70);
+	private final BetragMitVorzeichen schadenbearbeitunsKosten = new BetragMitVorzeichen(15, 85);
 
 	public Nachsatz() {
 		super("9999", 1);
@@ -71,16 +70,19 @@ public final class Nachsatz extends Satz {
 	}
 	
 	public void setVermittler(String s) {
-		Feld vermittler = this.getVermittlerFeld();
-		vermittler.setInhalt(s);
+		this.vermittler.setInhalt(s);
 	}
 	
 	public String getVermittler() {
-		return this.getVermittlerFeld().getInhalt().trim();
+		return this.vermittler.getInhalt().trim();
 	}
 	
-	public AlphaNumFeld getVermittlerFeld() {
-		return (AlphaNumFeld) this.getFeld(VERMITTLER);
+	public void setGesamtBeitrag(double beitrag) {
+		this.gesamtBeitrag.setInhalt(beitrag);
 	}
-
+	
+	public Betrag getGesamtBeitrag() {
+		return this.gesamtBeitrag;
+	}
+	
 }

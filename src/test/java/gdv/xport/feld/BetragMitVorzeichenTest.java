@@ -28,14 +28,14 @@ import org.junit.Test;
  * @version $Revision$
  *
  */
-public class VorzeichenBetragTest {
+public class BetragMitVorzeichenTest {
 
 	/**
-	 * Test method for {@link gdv.xport.feld.VorzeichenBetrag#VorzeichenBetrag(int, int)}.
+	 * Test method for {@link gdv.xport.feld.BetragMitVorzeichen#VorzeichenBetrag(int, int)}.
 	 */
 	@Test
 	public void testVorzeichenBetrag() {
-		VorzeichenBetrag betrag = new VorzeichenBetrag(4, 1);
+		BetragMitVorzeichen betrag = new BetragMitVorzeichen(4, 1);
 		assertEquals("000+", betrag.getInhalt());
 	}
 
