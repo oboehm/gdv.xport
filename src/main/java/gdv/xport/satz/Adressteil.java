@@ -30,7 +30,7 @@ public class Adressteil extends Datensatz {
 	
 	private void setUpDatenfelder() {
 		// Teildatensatz 1
-		add(new AlphaNumFeld(ANREDESCHLUESSEL, 1, 43, '0'));
+		add(new Zeichen(ANREDESCHLUESSEL, 43, '0'));
 	    add(new AlphaNumFeld(NAME1, 30, 44));
 	    add(new AlphaNumFeld(NAME2, 30, 74));
 	    add(new AlphaNumFeld(NAME3, 30, 104));
@@ -45,9 +45,9 @@ public class Adressteil extends Datensatz {
         add(new AlphaNumFeld(ADRESSKENNZEICHEN, 2, 237));
         add(new AlphaNumFeld(AKTENZEICHEN_SICHERUNGSGLAEUBIGER, 12, 239));
         add(new AlphaNumFeld(ZIELGRUPPENSCHLUESSEL, 2, 251));
-        add(new AlphaNumFeld(GROSSRISIKEN, 1, 253));
-        add(new AlphaNumFeld(POSTALISCHES_KENNZEICHEN, 1, 254));
-        add(new AlphaNumFeld(GESCHLECHT, 1, 255));
+        add(new Zeichen(GROSSRISIKEN, 253));
+        add(new Zeichen(POSTALISCHES_KENNZEICHEN, 254));
+        add(new Zeichen(GESCHLECHT, 255));
         // Teildatensatz 2
         add(new AlphaNumFeld(KUNDENNR_VERSICHERER, 17, 256+43, Align.RIGHT));
         add(new AlphaNumFeld(KUNDENNR_VERMITTLER, 17, 256+60, Align.RIGHT));
@@ -63,8 +63,8 @@ public class Adressteil extends Datensatz {
         add(new AlphaNumFeld(KOMMUNIKATIONSNR3, 20, 203+256));
         add(new AlphaNumFeld(KOMMUNIKATIONSTYP4, 2, 223+256));
         add(new AlphaNumFeld(KOMMUNIKATIONSNR4, 20, 225+256));
-        add(new AlphaNumFeld(ZAHLUNGSART, 1, 245+256));
-        add(new AlphaNumFeld(FAMILIENSTAND, 1, 246+256));
+        add(new Zeichen(ZAHLUNGSART, 245+256));
+        add(new Zeichen(FAMILIENSTAND, 246+256));
         add(new NumFeld(LFD_PERSONENNR_GEVO, 6, 250+256));
         // Teildatensatz 3
         add(new AlphaNumFeld(KOMMUNIKATIONSTYP5, 2, 43+512));
@@ -92,7 +92,7 @@ public class Adressteil extends Datensatz {
         add(new AlphaNumFeld(GEBURTSLAND, 3, 107+1024));
         add(new AlphaNumFeld(STEUERNR_JURISTISCHE_PERSON, 17, 110+1024));
         add(new AlphaNumFeld(UMSATZSTEUER_ID, 17, 127+1024));
-        add(new AlphaNumFeld(VORZUGSSTEUERBERECHTIGUNG, 1, 144+1024));
+        add(new Zeichen(VORZUGSSTEUERBERECHTIGUNG, 144+1024));
         add(new AlphaNumFeld(VORZUGSSEUERBERECHTIGUNG_PROZENT, 5, 145+1024));
 	}
 	

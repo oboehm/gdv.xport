@@ -87,6 +87,7 @@ public class Bezeichner {
 	public static final String POSTLEITZAHL = "Postleitzahl";
 	public static final String VU_NUMMER = "VU-Nummer";
 	public static final String RECHTSFORM = "Rechtsform";
+	public static final String SATZNUMMER = "Satznummer";
 	public static final String SCHADENBEARBEITUNGSKOSTEN = "Schadenbearbeitungskosten";
 	public static final String STRASSE = "Strasse";
 	public static final String STAATSANGEHOERIGKEIT = "Staatsangehoerigkeit";

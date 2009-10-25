@@ -20,6 +20,8 @@
 
 package gdv.xport.satz;
 
+import static gdv.xport.feld.Bezeichner.*;
+
 import java.io.*;
 import java.util.*;
 
@@ -35,7 +37,7 @@ import gdv.xport.feld.*;
 public class Teildatensatz extends Satz {
 	
 	private final Map<String, Feld> datenfelder = new HashMap<String, Feld>();
-	private final AlphaNumFeld satznummer = new AlphaNumFeld(1, 256);
+	private final Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
 	
 	public Teildatensatz(NumFeld satzart) {
 		super(satzart, 0);
