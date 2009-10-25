@@ -95,7 +95,7 @@ public class Feld {
 	}
 	
 	private String createBezeichnung() {
-		return "Feld@" + this.hashCode();
+		return this.getClass().getSimpleName() + "@" + Integer.toHexString(this.hashCode());
 	}
 	
 	public String getBezeichnung() {
@@ -140,7 +140,6 @@ public class Feld {
 	public void resetInhalt() {
 		int anzahlBytes = this.getAnzahlBytes();
 		for (int i = 0; i < anzahlBytes; i++) {
-			//this.inhalt.replace(i, i+1, " ");
 			this.inhalt.setCharAt(i, ' ');
 		}
 	}

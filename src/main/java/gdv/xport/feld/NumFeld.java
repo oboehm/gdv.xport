@@ -43,6 +43,17 @@ public class NumFeld extends Feld {
 		this.setInhalt(formatted);
 	}
 	
+	/* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#resetInhalt()
+     */
+    @Override	
+	public void resetInhalt() {
+		int anzahlBytes = this.getAnzahlBytes();
+		for (int i = 0; i < anzahlBytes; i++) {
+			this.inhalt.setCharAt(i, '0');
+		}
+	}
+
 	public int toInt() {
 		return Integer.parseInt(this.inhalt.toString());
 	}

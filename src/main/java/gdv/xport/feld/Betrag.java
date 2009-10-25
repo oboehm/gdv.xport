@@ -45,10 +45,12 @@ public class Betrag extends NumFeld {
 	 */
 	@Override
 	public void setInhalt(int n) {
+		assert n >= 0 : "Betrag can't store negative number (" + n + ")";
 		super.setInhalt(n * 100);
 	}
 	
 	public void setInhalt(double x) {
+		assert x >= 0 : "Betrag can't store negative number (" + x + ")";
 		long n = Math.round(x * 100);
 		super.setInhalt(n);
 	}

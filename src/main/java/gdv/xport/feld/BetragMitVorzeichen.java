@@ -26,15 +26,91 @@ package gdv.xport.feld;
  * @version $Revision$
  */
 public class BetragMitVorzeichen extends Betrag {
-
+	
 	/**
 	 * @param length das Vorzeichen muss dabei mitgezaehlt werden
 	 * @param start
 	 */
-	public BetragMitVorzeichen(int length, int start) {
-		super(length, start);
-		this.setInhalt('+', length-1);
+	public BetragMitVorzeichen(String name, int length, int start) {
+		super(name, length, start);
+		this.setVorzeichen('+');
 	}
+	
+	public void setVorzeichen(char c) {
+		this.setInhalt(c, this.getAnzahlBytes() - 1);
+	}
+	
+	public char getVorzeichen() {
+		String s = this.getInhalt();
+		return s.charAt(s.length() - 1);
+	}
+
+	/* (non-Javadoc)
+     * @see gdv.xport.feld.Betrag#setInhalt(double)
+     */
+    @Override
+    public void setInhalt(double x) {
+    	if (x >= 0) {
+		    super.setInhalt(x * 10);
+		    this.setVorzeichen('+');
+    	} else {
+    		super.setInhalt(-x * 10);
+    		this.setVorzeichen('-');
+    	}
+    }
+
+	/* (non-Javadoc)
+     * @see gdv.xport.feld.Betrag#setInhalt(int)
+     */
+    @Override
+    public void setInhalt(int n) {
+	    this.setInhalt((long) n);
+    }
+
+	/* (non-Javadoc)
+     * @see gdv.xport.feld.NumFeld#setInhalt(long)
+     */
+    @Override
+    public void setInhalt(long n) {
+    	if (n >= 0) {
+		    super.setInhalt(n * 10);
+		    this.setVorzeichen('+');
+    	} else {
+    		super.setInhalt(-n * 10);
+    		this.setVorzeichen('-');
+    	}
+    }
+
+	/* (non-Javadoc)
+     * @see gdv.xport.feld.Betrag#toDouble()
+     */
+    @Override
+    public double toDouble() {
+    	String s = this.inhalt.toString();
+	    double x = Integer.parseInt(s.substring(0, s.length() - 1)) / 100.0;
+	    return (this.getVorzeichen() == '-') ? -x : x;
+    }
+
+	/* (non-Javadoc)
+     * @see gdv.xport.feld.Betrag#toInt()
+     */
+    @Override
+    public int toInt() {
+    	String s = this.inhalt.toString();
+	    int x = Integer.parseInt(s.substring(0, s.length() - 1)) / 100;
+	    return (this.getVorzeichen() == '-') ? -x : x;
+    }
+
+	/* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#resetInhalt()
+     */
+    @Override
+    public void resetInhalt() {
+	    super.resetInhalt();
+	    this.setVorzeichen('+');
+    }
+	
+	
 	
 }
 

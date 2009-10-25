@@ -35,6 +35,7 @@ public class Bezeichner {
 	public static final String ADRESSKENNZEICHEN = "Adresskennzeichen";
 	public static final String AKTENZEICHEN_SICHERUNGSGLAEUBIGER = "Aktenzeichen des Sicherungsglaeubigers";
 	public static final String ANREDESCHLUESSEL = "Anredeschluessel";
+	public static final String ANZAHL_SAETZE = "Anzahl der Saetze";
 	public static final String BIC1 = "BIC 1";
 	public static final String BIC2 = "BIC 2";
 	public static final String BLZ1 = "Bankleitzahl 1";
@@ -46,6 +47,9 @@ public class Bezeichner {
 	public static final String GEBURTSLAND = "Geburtsland";
 	public static final String GEBURTSNAME = "Geburtsname";
 	public static final String GEBURTSORT = "Geburtsort";
+	public static final String GESAMTBEITRAG = "Gesamtbeitrag";
+	public static final String GESAMTBEITRAG_BRUTTO = "Gesamtbeitrag-Brutto(Inkasso)";
+	public static final String GESAMTPROVISIONSBETRAG = "Gesamtprovisions-Betrag";
 	public static final String GESCHLECHT = "Geschlecht";
 	public static final String GROSSRISIKEN = "Aufsichtsfreier Versicherungsnehmer (Grossrisiken)";
 	public static final String IBAN1 = "IBAN 1";
@@ -83,6 +87,7 @@ public class Bezeichner {
 	public static final String POSTLEITZAHL = "Postleitzahl";
 	public static final String VU_NUMMER = "VU-Nummer";
 	public static final String RECHTSFORM = "Rechtsform";
+	public static final String SCHADENBEARBEITUNGSKOSTEN = "Schadenbearbeitungskosten";
 	public static final String STRASSE = "Strasse";
 	public static final String STAATSANGEHOERIGKEIT = "Staatsangehoerigkeit";
 	public static final String STEUERNR_JURISTISCHE_PERSON = "Steuernummer bei juristischen Personen";
@@ -95,6 +100,7 @@ public class Bezeichner {
 	public static final String VERSION_ALLGEMEINER_VERTRAGSTEIL = "Version Allgemeiner Vertragsteil Satzart 0200";
 	public static final String VERSION_NACHSATZ = "Version Nachsatz Satzart 9999";
 	public static final String VERSION_VORSATZ = "Version Vorsatz Satzart 0001";
+	public static final String VERSICHERUNGSLEISTUNGEN = "Versicherungsleistungen";
 	public static final String VORZUGSSTEUERBERECHTIGUNG = "Vorsteuerabszugsberechtigung Ja/Nein";
 	public static final String VORZUGSSEUERBERECHTIGUNG_PROZENT = "Vorsteuerabszugsberechtigung in Prozent";
 	public static final String ZAHLUNGSART = "Zahlungsart /-weg";

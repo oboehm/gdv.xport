@@ -20,6 +20,8 @@
 
 package gdv.xport.satz;
 
+import static gdv.xport.feld.Bezeichner.*;
+
 import gdv.xport.feld.*;
 
 
@@ -31,13 +33,17 @@ import gdv.xport.feld.*;
  */
 public final class Nachsatz extends Satz {
 	
-	private final NumFeld anzahlSaetze = new NumFeld("Anzahl der Saetze", 10, 5);
-	private final AlphaNumFeld vermittler = new AlphaNumFeld("Geschaeftsstelle/Vermittler", 10, 15);
-	private final Betrag gesamtBeitrag = new Betrag("Gesamtbeitrag", 15, 25);
-	private final BetragMitVorzeichen gesamtBeitragBrutto = new BetragMitVorzeichen(15, 40);
-	private final BetragMitVorzeichen gesamtProvisionsBetrag = new BetragMitVorzeichen(15, 55);
-	private final BetragMitVorzeichen versicherungsLeistungen = new BetragMitVorzeichen(15, 70);
-	private final BetragMitVorzeichen schadenbearbeitunsKosten = new BetragMitVorzeichen(15, 85);
+	private final NumFeld anzahlSaetze = new NumFeld(ANZAHL_SAETZE, 10, 5);
+	private final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 15);
+	private final Betrag gesamtBeitrag = new Betrag(GESAMTBEITRAG, 15, 25);
+	private final BetragMitVorzeichen gesamtBeitragBrutto = new BetragMitVorzeichen(
+	        GESAMTBEITRAG_BRUTTO, 15, 40);
+	private final BetragMitVorzeichen gesamtProvisionsBetrag = new BetragMitVorzeichen(
+	        GESAMTPROVISIONSBETRAG, 15, 55);
+	private final BetragMitVorzeichen versicherungsLeistungen = new BetragMitVorzeichen(
+	        VERSICHERUNGSLEISTUNGEN, 15, 70);
+	private final BetragMitVorzeichen schadenbearbeitungsKosten = new BetragMitVorzeichen(
+	        SCHADENBEARBEITUNGSKOSTEN, 15, 85);
 
 	public Nachsatz() {
 		super("9999", 1);
@@ -52,7 +58,7 @@ public final class Nachsatz extends Satz {
 		add(this.gesamtBeitragBrutto);
 		add(this.gesamtProvisionsBetrag);
 		add(this.versicherungsLeistungen);
-		add(this.schadenbearbeitunsKosten);
+		add(this.schadenbearbeitungsKosten);
 	}
 
 	public void setAnzahlSaetze(int n) {
@@ -83,6 +89,14 @@ public final class Nachsatz extends Satz {
 	
 	public Betrag getGesamtBeitrag() {
 		return this.gesamtBeitrag;
+	}
+	
+	public void setGesamtBeitragBrutto(double beitrag) {
+		this.gesamtBeitrag.setInhalt(beitrag);
+	}
+	
+	public Betrag getGesamtBeitragBrutto() {
+		return this.gesamtBeitragBrutto;
 	}
 	
 }

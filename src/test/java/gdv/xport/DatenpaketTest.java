@@ -120,6 +120,7 @@ public class DatenpaketTest {
 		Nachsatz nachsatz = datenpaket.getNachsatz();
 		assertEquals(vermittler, nachsatz.getVermittler());
 		assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
+		assertEquals(0.0, nachsatz.getGesamtBeitragBrutto().toDouble(), 0.001);
 	}
 
 }
