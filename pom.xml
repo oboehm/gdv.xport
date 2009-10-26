@@ -10,7 +10,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>gdv</groupId>
-  <artifactId>xport</artifactId>
+  <artifactId>gdv-xport</artifactId>
   <packaging>jar</packaging>
   <version>0.0.2-SNAPSHOT</version>
   <name>GDV-Xport</name>
@@ -98,6 +98,21 @@
    -->
   <reporting>
     <plugins>
+      <!-- 
+          Changes
+          see http://maven.apache.org/plugins/maven-changes-plugin/usage.html
+       -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changes-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>changes-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
   	  <!-- Javadoc -->
 	  <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
@@ -159,8 +174,8 @@
   
   <!-- More Project Information -->
   <description>
-    gdv.xport is a library for the GDV format.
-    It simplifies the export (and import) of it.
+    gdv.xport ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
+    Sie erleichtert den Export in dieses Datenformat, aber (noch) nicht den Import.
   </description>
   <inceptionYear>2009</inceptionYear>
   <developers>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Infos</title>
+    <author email="oliver.boehm@agentes.de">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="GDV-Format">
+      <p>
+        Das GDV-Datenformat ist ein Austausch-Format zwischen den einzelnen
+        Versicherungs-Unternehmen (VU), das in den 80er Jahren vom
+        Gesamtverband der Deutschen Versicherungswirtschaft (GDV) spezifiziert wurde
+        und seitdem mehrfach aktualisiert wurde.
+      </p>
+      <subsection name="Weitere Infos">
+        <ul>
+        	<li>
+              GDV-Spezifikation:
+              <a href="http://www.gdv-online.de/vuvm/bestand/best_2007.htm">www.gdv-online.de/vuvm/bestand/best_2007.htm</a>
+            </li>
+        	<li>
+              Beispiel:
+              <a href="http://www.gdv-online.de/vuvm/musterdatei_bestand/muster.html">www.gdv-online.de/vuvm/musterdatei_bestand/muster.html</a>
+            </li>
+        </ul>
+      </subsection>
+    </section>
+    
+  </body>
+
+</document>

@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Check-Liste</title>
+    <author email="oliver.boehm@agentes.de">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Check-Liste">
+      <p>
+        Diese Check-Liste ist fuer die Auslieferung eines neuen Releases gedacht.
+      </p>
+      <table>
+      	<tr>
+          <th>Zeitpunkt</th>
+          <th>Prozess</th>
+          <th>Aufgabe</th>
+          <th>Anmerkungen</th>
+        </tr>
+        <tr>
+          <td>vorher</td>
+          <td></td>
+          <td>Release-Notes erstellen</td>
+          <td>src/changes/changes.xml aktualisieren</td>
+        </tr>
+        <tr>
+          <td>D-Day</td>
+          <td></td>
+          <td>Versions-Nummer aktualisieren</td>
+          <td>in pom.xml überall "-SNAPSHOT" entfernen</td>
+        </tr>
+        <tr>
+          <td>D-Day</td>
+          <td></td>
+          <td>Finaler Release-Build und Release-Test</td>
+          <td>'mvn clean install' (beinhaltet auch 'mvn test')</td>
+        </tr>
+        <tr>
+          <td>D-Day</td>
+          <td></td>
+          <td>Auslieferung</td>
+          <td>
+            Jar-File (target/gdv-xport-0.0.x.jar) unter http://www.agentes.de/maven2/repository
+            kopieren
+          </td>
+        </tr>
+        <tr>
+          <td>D-Day</td>
+          <td>offen</td>
+          <td>Doku und Reports generieren</td>
+          <td>'mvn site' und anschliessend target/site nach
+            http://repository.agentes.de/gdv/gdv-xport/site/...
+            kopieren (noch nicht eingerichtet!)
+          </td>
+        </tr>
+        <tr>
+          <td>nachher</td>
+          <td></td>
+          <td>Beginn mit naechstem Snapshot</td>
+          <td>pom.xml: Version hochzaehlen, "-SNAPSHOT" anhaengen</td>
+        </tr>
+        <tr>
+          <td>nachher</td>
+          <td>offen</td>
+          <td>Auslieferung bekanntmachen</td>
+          <td>Ralf Klein Bescheid geben</td>
+        </tr>
+      </table>
+    </section>
+
+  </body>
+
+</document>

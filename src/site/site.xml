@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	@see http://maven.apache.org/guides/mini/guide-site.html
+	@see http://www.sonatype.com/book/reference/site-generation.html
+	
+	(c)reated: 26-Oct-2009 by oliver.boehm@agentes.de
+-->
+
+<project name="gdv.xport">
+
+  <bannerLeft>
+    <name> gdv.xport </name>
+  </bannerLeft>
+ 
+  <bannerRight>
+    <name> gdv.xport </name>
+  </bannerRight>
+ 
+  <publishDate format="dd-MMM-yyyy" />
+
+  <body>
+
+    <head>
+      <meta name="keywords" content="GDV, Austauschformat, Versicherung"/>
+    </head>
+  
+    <links>
+      <item name="gdv.xport@github" href="http://github.com/oboehm/gdv.xport"/>
+      <item name="agentes" href="http://www.agentes.de"/>
+    </links>
+    
+    <menu name="gdv.xport" href="index.html">
+      <item name="GDV-Format"				href="info.html" />
+      <item name="Kontakt"					href="contact.html" />
+      <item name="Entwickler"               href="/dev/index.html" collapse="true" >
+        <item name="Checkliste"             href="/dev/checklist.html"/>
+      </item>
+    </menu>
+
+    <menu ref="modules" />
+
+    <menu ref="reports" />
+	  
+	${reports}
+	  
+  </body>
+
+</project>
