@@ -32,7 +32,7 @@
     
     <menu name="gdv.xport" href="index.html">
       <item name="Release Notes"		    href="changes-report.html" />
-      <item name="&uuml;ber gdv.xport"			href="index.html" />
+      <item name="about gdv.xport"			href="index.html" />
       <item name="GDV-Format"				href="info.html" />
       <item name="Entwickler"               href="/dev/index.html" collapse="true" >
         <item name="Checkliste"             href="/dev/checklist.html"/>

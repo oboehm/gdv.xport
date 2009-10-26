@@ -15,7 +15,7 @@
         Sie erleichtert den Export in dieses Datenformat, aber (noch) nicht den Import.
       </p>
       <p>
-        Das "x" in port steht für "im"- und "ex"-port (auch wenn der Import noch nicht
+        Das "x" in port steht fur "im"- und "ex"-port (auch wenn der Import noch nicht
         unterstuetzt wird).      
       </p>
     </section>
@@ -44,7 +44,7 @@
         Diese Bibliothek soll eine erste Hilfe fuer diejenigen Java-Entwickler sein,
         die sich mit dem GDV-Format zum ersten Mal konfrontiert sehen.
         Natuerlich hoffen wir, dass dabei moeglichst viele Entwickler an diesem
-        Projekt beteiligen, so dass wir mit dieser Bibliothek nach Möglichkeit
+        Projekt beteiligen, so dass wir mit dieser Bibliothek nach Moeglichkeit
         den kompletten Funktionsumfang des GDV-Formates unterstuetzen koenn.
       </p>
       <p>
