@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<!-- 
+    A kind of release notes. This document describes the changes in the
+    different releases.
+    
+    see http://maven.apache.org/plugins/maven-changes-plugin/usage.html
+    see http://maven.apache.org/plugins/maven-changes-plugin/changes.html
+ -->
+
+<document>
+
+  <properties>
+    <title>Main changes</title>
+    <author email="oliver.boehm@agentes.de">Oli B.</author>
+  </properties>
+
+  <body>
+
+    <release version="0.0.2" date="26-Okt-2009"
+             description="Datenpaket hinzugefuegt">
+      <action dev="oboehm" type="add">
+        Klasse "Datenpaket" hinzugefuegt, zu dem verschiedene Satz-Klassen hinzugefuegt werden
+        koennen. Damit ist ein leerer Export (der nur aus Vorsatz und Nachsatz besteht) moeglich.
+      </action>
+      <action dev="oboehm" type="update">
+        Export mit anderen Datensaetze sind prinzipiell auch moeglich, erfordern aber etwas mehr
+        Aufwand, da eine Datensatz-spezifische Unterstuetzung noch weitgehend fehlt.
+      </action>
+    </release>
+
+    <release version="0.0.1" date="09-Okt-2009"
+             description="erster Prototyp">
+      <action dev="oboehm" type="add">
+        Basisklassen wie Feld, NumFeld oder Satz bereitgestellt.
+      </action>
+    </release>
+
+  </body>
+
+</document>
