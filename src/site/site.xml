@@ -26,16 +26,18 @@
     </head>
   
     <links>
-      <item name="gdv.xport@github" href="http://github.com/oboehm/gdv.xport"/>
+      <item name="Home"    href="index.html"/>
       <item name="agentes" href="http://www.agentes.de"/>
     </links>
     
     <menu name="gdv.xport" href="index.html">
+      <item name="Release Notes"		    href="changes-report.html" />
+      <item name="&uuml;ber gdv.xport"			href="index.html" />
       <item name="GDV-Format"				href="info.html" />
-      <item name="Kontakt"					href="contact.html" />
       <item name="Entwickler"               href="/dev/index.html" collapse="true" >
         <item name="Checkliste"             href="/dev/checklist.html"/>
       </item>
+      <item name="Kontakt"					href="contact.html" />
     </menu>
 
     <menu ref="modules" />

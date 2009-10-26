@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Was ist "gdv.xport"?</title>
+    <author email="oliver.boehm@agentes.de">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Was ist gdv.xport?">
+      <p>
+        <i>gdv.xport</i> ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
+        Sie erleichtert den Export in dieses Datenformat, aber (noch) nicht den Import.
+      </p>
+      <p>
+        Das "x" in port steht für "im"- und "ex"-port (auch wenn der Import noch nicht
+        unterstuetzt wird).      
+      </p>
+    </section>
+    
+    <section name="Warum gdv.xport?">
+      <p>
+        Als ich mich im Sommer 2009 auf der Suche nach Java-Bibliotheken fuer das
+        GDV-Austauschformat machte, war die Ausbeute gleich null.
+        Zwar gab und gibt es innerhalb von <a href="http://www.agentes.de">agentes</a>
+        mehrere Projekte im Versicherungsbereicht (u.a. in Zusammenarbeit mit
+        <a href="http://www.indatex.de">indatex</a>), aber wenig zum GDV-Format.
+        Von daher wurde die Idee geboren, das vorhandene Knowhow zu Sammeln und
+        in eine gemeinsame Bibliothek fliessen zu lassen - der <b>gdv.xport</b>.
+      </p>
+      <p>
+        Gleichzeitig dient das Projekt dazu, Erfahrungen mit
+        verteilter Versions-Kontrolle, genauer: mit <a href="http://git-scm.com/">git</a>,
+        zu sammeln. Derzeitiges Fazit: <a href="http://git-scm.com/">git</a> ist sauschnell
+        (vor allem im Vergleich zu Subversion) und viel besser fuer die mobile Entwicklung
+        (in denen man oft offline ist) geeignet als CVS oder Subversion.
+      </p>
+    </section>
+    
+    <section name="Warum Open Source?" >
+      <p>
+        Diese Bibliothek soll eine erste Hilfe fuer diejenigen Java-Entwickler sein,
+        die sich mit dem GDV-Format zum ersten Mal konfrontiert sehen.
+        Natuerlich hoffen wir, dass dabei moeglichst viele Entwickler an diesem
+        Projekt beteiligen, so dass wir mit dieser Bibliothek nach Möglichkeit
+        den kompletten Funktionsumfang des GDV-Formates unterstuetzen koenn.
+      </p>
+      <p>
+        Auf der anderen Seite erhoffen wir dadurch, dass wir als Ansprechpartner
+        fuer Fragen um den GDV-Export bzw. -Import gefunden werden. Wenn Sie also
+        Hilfe zum GDV-Format (oder zum Versichungsbereich) brauchen,
+        sind Sie bei uns genau richtig (-> Mail an oliver.boehm@agentes.de 
+        mit "GDV-Format" als Betreff).
+      </p>
+    </section>
+
+  </body>
+
+</document>
