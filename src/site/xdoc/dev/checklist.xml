@@ -49,6 +49,14 @@
         </tr>
         <tr>
           <td>D-Day</td>
+          <td></td>
+          <td>Label setzen</td>
+          <td>
+            z.B. git tag GIT_XPORT_0_0_2
+          </td>
+        </tr>
+        <tr>
+          <td>D-Day</td>
           <td>offen</td>
           <td>Doku und Reports generieren</td>
           <td>'mvn site' und anschliessend target/site nach
