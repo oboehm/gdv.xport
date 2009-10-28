@@ -16,6 +16,14 @@
   </properties>
 
   <body>
+  
+    <release version="0.1.0" date="Nov-2009"
+             description="versch. Vertragsteile hinzugefuegt">
+      <action dev="oboehm" type="add">
+        Allgemeiner und Spartenspezifischer Vertragsteil als Klassen
+        hinzugefuegt.
+      </action>
+    </release>
 
     <release version="0.0.2" date="26-Okt-2009"
              description="Datenpaket hinzugefuegt">

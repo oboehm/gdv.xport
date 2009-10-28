@@ -27,6 +27,11 @@ public class NumFeld extends Feld {
 		this.setInhalt(0);
 	}
 	
+	public NumFeld(String name, int length, int start, int value) {
+		super(name, length, start, Align.RIGHT);
+		this.setInhalt(value);
+	}
+	
 	public NumFeld(int length, int start) {
 		super(length, start, Align.RIGHT);
 		this.setInhalt(0);

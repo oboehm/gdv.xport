@@ -18,6 +18,7 @@
 
 package gdv.xport.satz;
 
+import static gdv.xport.feld.Bezeichner.SPARTE;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
@@ -32,7 +33,7 @@ public class Datensatz extends Satz {
 	/** 1 Zeichen, Byte 10 */
 	protected AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(1, 10);
 	/** 3 Zeichen, Byte 11 - 13 */
-	protected NumFeld sparte = new NumFeld(3, 11);
+	protected NumFeld sparte = new NumFeld(SPARTE, 3, 11);
 	/** 17 Zeichen, Byte 14 - 30 */
 	protected AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(17, 14);
 	/** 2 Zeichen, Byte 31 + 32 */
@@ -44,11 +45,20 @@ public class Datensatz extends Satz {
 		super(satzart);
 	}
 	
+	public Datensatz(int satzart) {
+		super(satzart);
+	}
+	
 	/**
 	 * @param satzart
 	 * @param n Anzahl der Teildatensaetze
 	 */
 	public Datensatz(String satzart, int n) {
+		super(satzart, n);
+		this.setUpTeildatensaetze();
+	}
+	
+	public Datensatz(int satzart, int n) {
 		super(satzart, n);
 		this.setUpTeildatensaetze();
 	}
@@ -62,6 +72,10 @@ public class Datensatz extends Satz {
 			teildatensatz[i].set("Folgenummer", this.folgeNr);
 			teildatensatz[i].set("Vermittler", this.vermittler);
 		}
+	}
+	
+	public int getSparte() {
+		return this.sparte.toInt();
 	}
 
 }

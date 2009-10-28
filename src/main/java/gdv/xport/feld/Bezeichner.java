@@ -118,6 +118,7 @@ public class Bezeichner {
 	public static final String RESTLAUFZEIT_VERTRAG = "Restlaufzeit des Vertrages";
 	public static final String SATZNUMMER = "Satznummer";
 	public static final String SCHADENBEARBEITUNGSKOSTEN = "Schadenbearbeitungskosten";
+	public static final String SPARTE = "Sparte";
 	public static final String SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = "Spezifikation der Referenz-Versicherungsscheinnummer";
 	public static final String STRASSE = "Strasse";
 	public static final String STAATSANGEHOERIGKEIT = "Staatsangehoerigkeit";
