@@ -69,6 +69,16 @@ public class FeldTest {
 		assertTrue(c + " doesn't overlap with " + a, c.overlapsWith(a));
 		assertTrue(c + " doesn't overlap with " + b, c.overlapsWith(b));
 	}
+	
+	@Test
+	public void testIsValid() {
+		Feld a = new Feld("a", 257, -1, Align.UNKNOWN);
+		assertFalse(a + " is not valid - to long, wrong start byte, unknow alignment", a.isValid());
+		Feld b = new Feld("b", 2, 256, Align.LEFT);
+		assertFalse(b + " geht ueber Satz-Grenze hinweg", b.isValid());
+		Feld c = new Feld("c", 1, 'c');
+		assertTrue(c + " should be valid", c.isValid());
+	}
 
 }
 

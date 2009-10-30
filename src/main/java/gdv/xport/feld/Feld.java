@@ -22,14 +22,15 @@ package gdv.xport.feld;
 
 import java.io.*;
 
+import org.apache.commons.logging.*;
+
 /**
  * @author oliver
  * @since 04.10.2009
- * @version $Revision$
- *
  */
 public class Feld {
 	
+	private static final Log log = LogFactory.getLog(Feld.class);
 	/** statt "null" */
 	public static final Feld NULL_FELD = new Feld("null", 0, 0, Align.UNKNOWN);
 	/** optional: Name des Felds */
@@ -66,6 +67,10 @@ public class Feld {
 	public Feld(String name, int length, int start, String s, Align alignment) {
 		this(name, length, start, alignment);
 		this.setInhalt(s);
+	}
+	
+	public Feld(String name, int start, char c) {
+		this(name, 1, start, c, Align.LEFT);
 	}
 	
 	public Feld(int start, String s, Align alignment) {
@@ -155,6 +160,9 @@ public class Feld {
 		return this.byteAdresse;
 	}
 	
+	/**
+	 * @return absolute End-Adresse
+	 */
 	public int getEndAdresse() {
 		return this.byteAdresse + this.getAnzahlBytes() - 1;
 	}
@@ -180,15 +188,42 @@ public class Feld {
 	 * @return Nummer des Teildatensatzes, beginnend bei 1
 	 */
 	public int getTeildatensatzNr() {
-		if (this.byteAdresse > 256) {
-			return 1 + (this.byteAdresse - 1) / 256;
+		return getTeildatensatzNr(this.byteAdresse);
+	}
+	
+	private static int getTeildatensatzNr(int byteAdresse) {
+		if (byteAdresse > 256) {
+			return 1 + (byteAdresse - 1) / 256;
 		} else {
 			return 1;
-		}
+		}		
 	}
 	
 	public void write(Writer writer) throws IOException {
 		writer.write(this.inhalt.toString());
+	}
+	
+	/**
+	 * Valid bedeutet: Byte-Adresse >= 1, Feld geht nicht ueber
+	 * (Teil-)Datensatz-Grenze hinaus, Ausrichtung ist bekannt.
+	 * 
+	 * @return false, falls Verletzung erkannt wird
+	 * @since 0.1.0
+	 */
+	public boolean isValid() {
+		if (this.getByteAdresse() < 1) {
+			log.info(this + " is invalid: byteAdresse < 1");
+			return false;
+		}
+		if (this.getTeildatensatzNr() != getTeildatensatzNr(this.getEndAdresse())) {
+			log.info(this + " is invalid: boundary exceeded");
+			return false;
+		}
+		if (this.ausrichtung == Align.UNKNOWN) {
+			log.info(this + " is invalid: unknown alignment");
+			return false;
+		}
+		return true;
 	}
 
 	@Override
