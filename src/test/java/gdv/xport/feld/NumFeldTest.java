@@ -53,7 +53,7 @@ public class NumFeldTest {
 		NumFeld x = new NumFeld("x", "xxxx");
 		assertFalse(x + " is invalid", x.isValid());
 	}
-
+	
 }
 
 

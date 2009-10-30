@@ -100,6 +100,13 @@ public class SatzTest {
 		Satz a = new Satz("xxxx", 1);
 		assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
 	}
+	
+	@Test
+	public void testIsValidWithInvalidFeld() {
+		NumFeld schrott = new NumFeld("schrott", "xxxx");
+		satz.add(schrott);
+		assertFalse(satz + " has invalid fields!", satz.isValid());
+	}
 
 }
 

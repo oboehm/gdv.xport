@@ -112,6 +112,24 @@ public class Teildatensatz extends Satz {
 		writer.write(data.toString());
 	}
 
+	/* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#isValid()
+     */
+    @Override
+    public boolean isValid() {
+	    if (!super.isValid()) {
+	    	return false;
+	    }
+	    for (Feld feld : datenfelder.values()) {
+	        if (!feld.isValid()) {
+	        	return false;
+	        }
+        }
+	    return true;
+    }
+	
+	
+
 }
 
 

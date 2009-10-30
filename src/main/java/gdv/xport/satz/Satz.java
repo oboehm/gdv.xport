@@ -14,7 +14,6 @@ import org.apache.commons.logging.*;
 
 /**
  * @author oliver
- *
  */
 public class Satz {
 	
@@ -139,6 +138,14 @@ public class Satz {
 		if (!this.satzart.isValid()) {
 			log.info(this + " is invalid: invalid Satzart " + this.satzart);
 			return false;
+		}
+		if (this.teildatensatz != null) {
+			for (int i = 0; i < teildatensatz.length; i++) {
+		        if (!teildatensatz[i].isValid()) {
+		        	log.info("Teildatensatz " + (i+1) + " is invalid");
+		        	return false;
+		        }
+	        }
 		}
 		return true;
 	}
