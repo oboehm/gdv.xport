@@ -18,7 +18,7 @@
   <body>
   
     <release version="0.1.0" date="Nov-2009"
-             description="versch. Vertragsteile hinzugefuegt">
+             description="Einsatz von Validatoren">
       <action dev="oboehm" type="add">
         Allgemeiner und Spartenspezifischer Vertragsteil als Klassen
         hinzugefuegt.
