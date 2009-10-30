@@ -116,6 +116,7 @@ public class Bezeichner {
 	public static final String REFERENZ_VERSICHERUNGSSCHEINNUMMER = "Referenz-Versicherungsscheinnummer";
 	public static final String REGISTRIERUNGSNUMMER_VERMITTLER = "Registrierungsnummer Vermittler";
 	public static final String RESTLAUFZEIT_VERTRAG = "Restlaufzeit des Vertrages";
+	public static final String SATZART = "Satzart";
 	public static final String SATZNUMMER = "Satznummer";
 	public static final String SCHADENBEARBEITUNGSKOSTEN = "Schadenbearbeitungskosten";
 	public static final String SPARTE = "Sparte";

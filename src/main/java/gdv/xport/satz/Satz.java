@@ -4,6 +4,7 @@
 package gdv.xport.satz;
 
 import static patterntesting.runtime.NullConstants.*;
+import static gdv.xport.feld.Bezeichner.*;
 
 import gdv.xport.feld.*;
 
@@ -19,7 +20,7 @@ public class Satz {
 	
 	private static final Log log = LogFactory.getLog(Satz.class);
 	/** 4 Zeichen */
-	protected final NumFeld satzart = new NumFeld(4, 1);
+	protected final NumFeld satzart = new NumFeld(SATZART, 4, 1);
 	/** Teildatensaetze */
 	protected Teildatensatz[] teildatensatz;
 	
@@ -132,6 +133,14 @@ public class Satz {
 		for (int i = 0; i < teildatensatz.length; i++) {
 			teildatensatz[i].export(writer);
 		}
+	}
+	
+	public boolean isValid() {
+		if (!this.satzart.isValid()) {
+			log.info(this + " is invalid: invalid Satzart " + this.satzart);
+			return false;
+		}
+		return true;
 	}
 
 	/* (non-Javadoc)

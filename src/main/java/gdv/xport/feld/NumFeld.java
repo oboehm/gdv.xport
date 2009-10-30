@@ -6,6 +6,7 @@ package gdv.xport.feld;
 import java.text.*;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.*;
 
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
@@ -17,6 +18,8 @@ import org.apache.commons.lang.StringUtils;
  * @author oliver
  */
 public class NumFeld extends Feld {
+	
+	private static final Log log = LogFactory.getLog(NumFeld.class);
 	
 	public NumFeld(String name, String s) {
 		super(name, s, Align.RIGHT);
@@ -61,6 +64,19 @@ public class NumFeld extends Feld {
 
 	public int toInt() {
 		return Integer.parseInt(this.inhalt.toString());
+	}
+	
+	public boolean isValid() {
+		if (!super.isValid()) {
+			return false;
+		}
+		try {
+			this.toInt();
+		} catch (NumberFormatException nfe) {
+			log.info(this + " is invalid: not a number (" + nfe + ")");
+			return false;
+		}
+		return true;
 	}
 
 }

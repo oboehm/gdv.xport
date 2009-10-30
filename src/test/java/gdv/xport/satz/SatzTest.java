@@ -94,6 +94,12 @@ public class SatzTest {
 		 assertEquals(256, content.length());
 		 assertEquals(satz.getSatzart(), Integer.parseInt(content.substring(0, 4)));
 	}
+	
+	@Test
+	public void testIsValid() {
+		Satz a = new Satz("xxxx", 1);
+		assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
+	}
 
 }
 

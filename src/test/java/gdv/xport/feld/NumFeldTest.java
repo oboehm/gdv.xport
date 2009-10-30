@@ -47,6 +47,12 @@ public class NumFeldTest {
 		nummer.setInhalt(2);
 		assertEquals("0002", nummer.getInhalt());
 	}
+	
+	@Test
+	public void testIsValid() {
+		NumFeld x = new NumFeld("x", "xxxx");
+		assertFalse(x + " is invalid", x.isValid());
+	}
 
 }
 
