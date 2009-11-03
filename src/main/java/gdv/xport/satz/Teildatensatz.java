@@ -158,6 +158,9 @@ public class Teildatensatz extends Satz {
     }
     
     public boolean equals(Teildatensatz other) {
+    	if (this.datenfelder.size() != other.datenfelder.size()) {
+    		return false;
+    	}
 	    for (Feld feld : datenfelder.values()) {
 	        if (!feld.equals(other.getFeld(feld.getBezeichnung()))) {
 	        	return false;
