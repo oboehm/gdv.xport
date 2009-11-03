@@ -55,7 +55,9 @@ public class SatzFactory {
 				break;
 			default:
 				log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzart);
-				return new Satz(content);
+				satz = new Datensatz(content);
+				satz.addFiller();
+				break;
 		}
 		try {
 	        satz.importFrom(content);

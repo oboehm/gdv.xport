@@ -74,8 +74,26 @@ public class Datensatz extends Satz {
 		}
 	}
 	
+	/* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#addFiller()
+     */
+    @Override
+    public void addFiller() {
+	    for (int i = 0; i < teildatensatz.length; i++) {
+	    	teildatensatz[i].add(new AlphaNumFeld("unknown-" + i, 213, 43));
+	    }
+    }
+
 	public int getSparte() {
 		return this.sparte.toInt();
+	}
+	
+	public void setVuNummer(String s) {
+		this.vuNummer.setInhalt(s);
+	}
+	
+	public String getVuNummer() {
+		return this.vuNummer.getInhalt();
 	}
 
 }

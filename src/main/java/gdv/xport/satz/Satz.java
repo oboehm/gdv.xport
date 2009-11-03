@@ -28,20 +28,7 @@ public class Satz {
 	}
 	
 	protected Satz(String art) {
-		this.satzart.setInhalt(art.substring(0, 4));
-		int n = (art.length() + 255) / 256;
-		this.createTeildatensaetze(n);
-		Feld unbekannt = new AlphaNumFeld("unbekannt", 251, 5);
-		for (int i = 0; i < n; i++) {
-			teildatensatz[i].add(unbekannt);
-		}
-		if (art.length() > 4) {
-			try {
-	            this.importFrom(art);
-            } catch (IOException ioe) {
-	            throw new IllegalArgumentException("1st argument too short", ioe);
-            }
-		}
+		this(art, (art.length() + 255) / 256);
 	}
 	
 	protected Satz(NumFeld art) {
@@ -89,6 +76,13 @@ public class Satz {
 	public void add(Feld feld) {
 		int n = feld.getTeildatensatzNr();
 		this.teildatensatz[n-1].add(feld);
+	}
+	
+	/**
+	 * Fuellt fuer alle leeren Stellen ein entsprechendes Fuellfeld auf.
+	 */
+	public void addFiller() {
+		throw new UnsupportedOperationException("not yet implemented");
 	}
 	
 	/**
