@@ -20,6 +20,8 @@ package gdv.xport.satz;
 
 import java.io.IOException;
 
+import org.apache.commons.logging.*;
+
 /**
  * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem
  * Import kommt, in den entsprechende Satz wandeln zu koennen.
@@ -29,10 +31,12 @@ import java.io.IOException;
  */
 public class SatzFactory {
 	
+	private static final Log log = LogFactory.getLog(SatzFactory.class);
+	
 	public static Satz getSatz(String content) {
-		String satzart = content.substring(0, 4);
+		int satzart = Integer.parseInt(content.substring(0, 4));
 		Satz satz;
-		switch (Integer.parseInt(satzart)) {
+		switch (satzart) {
 			case 1:
 				satz = new Vorsatz();
 				break;
@@ -42,11 +46,16 @@ public class SatzFactory {
 			case 200:
 				satz = new AllgemeinerVertragsteil();
 				break;
+			case 210:
+				int sparte = Integer.parseInt(content.substring(10, 13));
+				satz = new SpartenspezifischerVertragsteil(sparte);
+				break;
 			case 9999:
 				satz = new Nachsatz();
 				break;
 			default:
-				throw new UnsupportedOperationException("unsupported or unknown Satzart " + satzart);
+				log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzart);
+				return new Satz(content);
 		}
 		try {
 	        satz.importFrom(content);
