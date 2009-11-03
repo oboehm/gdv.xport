@@ -96,6 +96,22 @@ public class SatzTest {
 	}
 	
 	@Test
+	public void testImport() throws IOException {
+		Satz x = new Satz(123);
+		x.add(new AlphaNumFeld("F1", 5, 5));
+		StringBuffer sbuf = new StringBuffer(256);
+		sbuf.append("0123Hello                                                       ");
+		sbuf.append("                                                                ");
+		sbuf.append("                                                                ");
+		sbuf.append("                                                               1");
+		assertEquals(256, sbuf.length());
+		x.importFrom(sbuf.toString());
+		assertEquals(123, x.getSatzart());
+		assertEquals("Hello", x.getFeld("F1").getInhalt());
+		assertEquals(sbuf.toString(), x.toLongString());
+	}
+	
+	@Test
 	public void testIsValid() {
 		Satz a = new Satz("xxxx", 1);
 		assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
@@ -106,6 +122,16 @@ public class SatzTest {
 		NumFeld schrott = new NumFeld("schrott", "xxxx");
 		satz.add(schrott);
 		assertFalse(satz + " has invalid fields!", satz.isValid());
+	}
+	
+	@Test
+	public void testIsEquals() {
+		Satz a = new Satz(123);
+		Satz b = new Satz(123);
+		assertEquals(a, b);
+		assertEquals(a.hashCode(), b.hashCode());
+		b.add(new Feld("c", 5, 'c'));
+		assertFalse(a + " differs from " + b, a.equals(b));
 	}
 
 }

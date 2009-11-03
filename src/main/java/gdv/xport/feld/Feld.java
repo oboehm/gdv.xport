@@ -233,6 +233,32 @@ public class Feld {
 				+ ")";
 	}
 
+	/* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object other) {
+	    try {
+	    	return this.equals((Feld) other);
+	    } catch (ClassCastException cce) {
+	    	return false;
+	    }
+    }
+    
+    public boolean equals(Feld other) {
+		return this.bezeichnung.equals(other.bezeichnung)
+		        && this.getInhalt().equals(other.getInhalt())
+		        && (this.byteAdresse == other.byteAdresse) && this.ausrichtung == other.ausrichtung;
+    }
+
+	/* (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+	    return this.byteAdresse + this.getInhalt().hashCode();
+    }
+
 }
 
 

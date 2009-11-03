@@ -79,6 +79,16 @@ public class FeldTest {
 		Feld c = new Feld("c", 1, 'c');
 		assertTrue(c + " should be valid", c.isValid());
 	}
+	
+	@Test
+	public void testEquals() {
+		Feld a = new Feld("x", 2, 1, Align.LEFT);
+		Feld b = new Feld("x", 2, 1, Align.LEFT);
+		assertEquals(a, b);
+		assertEquals(a.hashCode(), b.hashCode());
+		b.setInhalt('b');
+		assertFalse(a + " differs from " + b, a.equals(b));
+	}
 
 }
 

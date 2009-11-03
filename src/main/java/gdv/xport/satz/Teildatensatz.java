@@ -113,6 +113,23 @@ public class Teildatensatz extends Satz {
 	}
 
 	/* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
+     */
+    @Override
+    public void importFrom(String content) throws IOException {
+	    for (Feld feld : datenfelder.values()) {
+	        int begin = (feld.getByteAdresse() - 1) % 256;
+	        int end = begin + feld.getAnzahlBytes();
+	        if (end > content.length()) {
+				throw new IOException("input string is too short (" + (end - content.length())
+				        + " bytes missing): " + content);
+	        }
+	        String s = content.substring(begin, end);
+	    	feld.setInhalt(s);
+        }
+    }
+
+	/* (non-Javadoc)
      * @see gdv.xport.satz.Satz#isValid()
      */
     @Override
@@ -127,8 +144,35 @@ public class Teildatensatz extends Satz {
         }
 	    return true;
     }
-	
-	
+
+	/* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object other) {
+	    try {
+	    	return this.equals((Teildatensatz) other);
+	    } catch (ClassCastException cce) {
+	    	return false;
+	    }
+    }
+    
+    public boolean equals(Teildatensatz other) {
+	    for (Feld feld : datenfelder.values()) {
+	        if (!feld.equals(other.getFeld(feld.getBezeichnung()))) {
+	        	return false;
+	        }
+        }
+	    return true;
+    }
+
+	/* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#hashCode()
+     */
+    @Override
+    public int hashCode() {
+	    return this.getSatzart() + this.satznummer.getInhalt().hashCode();
+    }
 
 }
 

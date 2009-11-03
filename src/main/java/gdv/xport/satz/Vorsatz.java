@@ -5,6 +5,7 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
 
+import java.io.IOException;
 import java.util.*;
 
 import gdv.xport.config.Config;
@@ -36,6 +37,15 @@ public final class Vorsatz extends Satz {
 		setUpTeildatensaetze();
 		setUpVersions();
 		setUpDatensaetze();
+	}
+	
+	public Vorsatz(String content) {
+		this();
+		try {
+	        this.importFrom(content);
+        } catch (IOException ioe) {
+            throw new IllegalArgumentException("argument too short", ioe);
+        }
 	}
 	
 	private void setUpTeildatensaetze() {

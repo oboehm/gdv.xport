@@ -20,6 +20,7 @@
 
 package gdv.xport.satz;
 
+import static org.junit.Assert.*;
 import java.io.*;
 
 import org.junit.Test;
@@ -71,6 +72,14 @@ public class VorsatzTest extends AbstractSatzTest {
 	 */
 	private void checkExport(int startByte, int endByte, String expected) throws IOException {
 		super.checkExport(this.vorsatz, startByte, endByte, expected, 768);
+	}
+	
+	@Test
+	public void testImport() {
+		String content = vorsatz.toLongString();
+		Vorsatz imported = new Vorsatz(content);
+		assertEquals(content, imported.toLongString());
+		//assertEquals(vorsatz, imported);
 	}
 
 }

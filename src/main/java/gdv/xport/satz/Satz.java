@@ -28,7 +28,7 @@ public class Satz {
 	}
 	
 	protected Satz(String art) {
-		this(art, 1);
+		this(art, (art.length() + 255) / 256);
 	}
 	
 	protected Satz(NumFeld art) {
@@ -40,9 +40,16 @@ public class Satz {
 		this.createTeildatensaetze(n);
 	}
 	
-	public Satz(String art, int n) {
-		this.satzart.setInhalt(art);
+	public Satz(String content, int n) {
+		this.satzart.setInhalt(content.substring(0, 4));
 		this.createTeildatensaetze(n);
+		if (content.length() > 4) {
+			try {
+	            this.importFrom(content);
+            } catch (IOException ioe) {
+	            throw new IllegalArgumentException("1st argument too short", ioe);
+            }
+		}
 	}
 	
 	/**
@@ -134,6 +141,19 @@ public class Satz {
 		}
 	}
 	
+	/**
+	 * Eigentlich wollte ich ja diese Methode "import" nennen, aber das
+	 * kollidiert leider mit dem Schluesselwort "import" in Java.
+	 * 
+	 * @param s
+	 * @throws IOException 
+	 */
+	public void importFrom(String s) throws IOException {
+		for (int i = 0; i < teildatensatz.length; i++) {
+			teildatensatz[i].importFrom(s.substring(i * 256));
+		}
+	}
+	
 	public boolean isValid() {
 		if (!this.satzart.isValid()) {
 			log.info(this + " is invalid: invalid Satzart " + this.satzart);
@@ -178,5 +198,37 @@ public class Satz {
 		}
 		return swriter.toString();
 	}
+
+	/* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object other) {
+	    try {
+	    	return this.equals((Satz) other);
+	    } catch (ClassCastException cce) {
+	    	return false;
+	    }
+    }
+    
+    public boolean equals(Satz other) {
+    	if (this.getSatzart() != other.getSatzart()) {
+    		return false;
+    	}
+    	for (int i = 0; i < teildatensatz.length; i++) {
+    		if (!this.teildatensatz[i].equals(other.teildatensatz[i])) {
+    			return false;
+    		}
+    	}
+    	return true;
+    }
+
+	/* (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+	    return this.toLongString().hashCode();
+    }
 
 }
