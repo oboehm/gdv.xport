@@ -26,7 +26,15 @@ package gdv.xport.satz;
 public class SpartenspezifischerVertragsteil extends Datensatz {
 	
 	public SpartenspezifischerVertragsteil(int sparte) {
-		super(210, 1);
+		this(sparte, 1);
+	}
+	
+	/**
+	 * @param sparte
+	 * @param n Anzahl Teildatensaetze
+	 */
+	public SpartenspezifischerVertragsteil(int sparte, int n) {
+		super(210, n);
 		this.sparte.setInhalt(sparte);
 	}
 

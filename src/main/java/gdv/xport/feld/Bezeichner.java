@@ -30,9 +30,11 @@ public class Bezeichner {
 	
 	public static final String ABGANGSDATUM = "Abgangsdatum";
 	public static final String ABGANGSGRUND = "Abgangsgrund";
+	public static final String ABSCHLUSSPROVISION = "Abschlussprovision";
 	public static final String ABSENDER = "Absender";
 	public static final String ABWEICHENDER_KONTOINHABER1 = "Abweichender Kontoinhaber 1";
 	public static final String ABWEICHENDER_KONTOINHABER2 = "Abweichender Kontoinhaber 2";
+	public static final String ABWEICHENDE_VU_NR = "Abweichende VU-Nr.";
 	public static final String ADRESSAT = "Adressat";
 	public static final String ADRESSKENNZEICHEN = "Adresskennzeichen";
 	public static final String AENDERUNGSDATUM = "Aenderungsdatum";
@@ -47,6 +49,9 @@ public class Bezeichner {
 	public static final String AUFTRAGSNR_VERMITTLER = "Auftrags-Nr. des Vermittlers";
 	public static final String AUFSICHTSFREIER_VERTRAG = "Aufsichtsfreier Vertrag";
 	public static final String AUFTEILUNG_VERSICHERUNGSSTEUER = "Aufteilung Versicherungsteuer gemaess EU-Richtlinien";
+	public static final String AUSSCHLUSS = "Ausschluss";
+	public static final String BEGINN = "Beginn";
+	public static final String BEITRAG_IN_WAEHRUNGSEINHEITEN = "Beitrag in Waehrungseinheiten";
 	public static final String BIC1 = "BIC 1";
 	public static final String BIC2 = "BIC 2";
 	public static final String BLZ1 = "Bankleitzahl 1";
@@ -57,6 +62,7 @@ public class Bezeichner {
 	public static final String ERSTELLUNGSDATUM_ZEITRAUM_VOM = "Erstellungs-Datum-Zeitraum vom";
 	public static final String ERWEITERUNGSSATZ_VORHANDEN = "Erweiterungssatz vorhanden";
 	public static final String FAMILIENSTAND = "Familienstand";
+	public static final String FOLGEPROVISION = "Folgeprovision";
 	public static final String GEBURTSDATUM = "Geburtsdatum";
 	public static final String GEBURTSLAND = "Geburtsland";
 	public static final String GEBURTSNAME = "Geburtsname";
@@ -72,6 +78,9 @@ public class Bezeichner {
 	public static final String IBAN1 = "IBAN 1";
 	public static final String IBAN2 = "IBAN 2";
 	public static final String INKASSOART = "Inkassoart";
+	public static final String KENNZEICHEN_ABWEICHENDE_ABSCHLUSSPROVISION = "Kennzeichen fuer abweichende Abschlussprovision";
+	public static final String KENNZEICHEN_ABWEICHENDE_FOLGEPROVISION = "Kennzeichen fuer abweichende Folgeprovision";
+	public static final String KENNZEICHEN_ABWEICHENDE_VU_NR = "Kennzeichen zur Erlaeuterung der abweichenden VU-Nr.";
 	public static final String KENNZEICHEN_VERS_STEUER_FREI = "Kennzeichen Vers.-Steuer frei";
 	public static final String KOMMUNIKATIONSTYP1 = "Kommunikationstyp 1";
 	public static final String KOMMUNIKATIONSTYP2 = "Kommunikationstyp 2";
@@ -113,6 +122,7 @@ public class Bezeichner {
 	public static final String PRODUKTNAME = "Produktname";
 	public static final String RATENZAHLUNGSZUSCHLAG_IN_PROZENT = "Ratenzahlungszuschlag in %";
 	public static final String RECHTSFORM = "Rechtsform";
+	public static final String REFERENZNUMMER = "Referenznummer";
 	public static final String REFERENZ_VERSICHERUNGSSCHEINNUMMER = "Referenz-Versicherungsscheinnummer";
 	public static final String REGISTRIERUNGSNUMMER_VERMITTLER = "Registrierungsnummer Vermittler";
 	public static final String RESTLAUFZEIT_VERTRAG = "Restlaufzeit des Vertrages";

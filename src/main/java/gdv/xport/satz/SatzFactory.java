@@ -48,7 +48,7 @@ public class SatzFactory {
 				break;
 			case 210:
 				int sparte = Integer.parseInt(content.substring(10, 13));
-				satz = new SpartenspezifischerVertragsteil(sparte);
+				satz = createSpartenspezifischerVertragsteil(sparte);
 				break;
 			case 9999:
 				satz = new Nachsatz();
@@ -65,6 +65,17 @@ public class SatzFactory {
         } catch (IOException ioe) {
 	        throw new IllegalArgumentException("can't parse " + content, ioe);
         }
+	}
+	
+	private static SpartenspezifischerVertragsteil createSpartenspezifischerVertragsteil(int sparte) {
+		switch (sparte) {
+			case 70:
+				return new SpartenspezifischerVertragsteilRechtsschutz();
+			default:
+				log.warn("reduced functionality of SpartenspezifischerVertragsteil for "
+						+ "(unknown or unsupported) Sparte " + sparte);
+				return new SpartenspezifischerVertragsteil(sparte);
+		}
 	}
 
 }
