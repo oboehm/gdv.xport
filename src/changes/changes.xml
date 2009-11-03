@@ -35,6 +35,9 @@
         Export mit anderen Datensaetze sind prinzipiell auch moeglich, erfordern aber etwas mehr
         Aufwand, da eine Datensatz-spezifische Unterstuetzung noch weitgehend fehlt.
       </action>
+      <action dev="oboehm" type="add">
+        Einsatz der PatternTesting-Bibliothek und Umwandlung in ein AspectJ-Projekt.
+      </action>
     </release>
 
     <release version="0.0.1" date="09-Okt-2009"
