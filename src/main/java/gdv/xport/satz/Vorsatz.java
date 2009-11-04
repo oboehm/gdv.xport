@@ -74,15 +74,23 @@ public final class Vorsatz extends Satz {
 		add(version);
 	}
 	
+	public String getVuNummer() {
+		return this.vuNummer.getInhalt().trim();
+	}
+	
 	/**
 	 * Absender ist Byte 10 - 39 im Teildatensatz.
 	 * @param absender
 	 */
 	public void setAbsender(String absender) {
 		this.absender.setInhalt(absender);
-		for (int i = 0; i < teildatensatz.length; i++) {
-			teildatensatz[i].add(this.absender);			
-		}
+//		for (int i = 0; i < teildatensatz.length; i++) {
+//			teildatensatz[i].add(this.absender);			
+//		}
+	}
+	
+	public String getAbsender() {
+		return this.absender.getInhalt().trim();
 	}
 	
 	/**
@@ -92,10 +100,10 @@ public final class Vorsatz extends Satz {
 	public void setErstellungsZeitraum(String startDatum, String endDatum) {
 		this.von.setInhalt(startDatum);
 		this.bis.setInhalt(endDatum);
-		for (int i = 0; i < teildatensatz.length; i++) {
-			teildatensatz[i].add(this.von);
-			teildatensatz[i].add(this.bis);
-		}
+//		for (int i = 0; i < teildatensatz.length; i++) {
+//			teildatensatz[i].add(this.von);
+//			teildatensatz[i].add(this.bis);
+//		}
 	}
 	
 	public void setVermittler(String s) {

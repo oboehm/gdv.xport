@@ -161,6 +161,52 @@ public class Satz {
 		}
 	}
 	
+	public void importFrom(InputStream istream) throws IOException {
+		importFrom(new InputStreamReader(istream));
+	}
+		
+	public void importFrom(Reader reader) throws IOException {
+		importFrom(new PushbackReader(reader, 4));
+	}
+	
+	public void importFrom(PushbackReader reader) throws IOException {
+		char[] cbuf = new char[256];
+		for (int i = 0; i < teildatensatz.length; i++) {
+			int art = readSatzart(reader);
+			if (art != this.getSatzart()) {
+				log.warn((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
+				        + ", but got data for Satzart " + art);
+				break;
+			}
+			reader.read(cbuf);
+			teildatensatz[i].importFrom(new String(cbuf));
+			skipNewline(reader);
+		}
+	}
+	
+	/**
+	 * Liest 4 Bytes, um die Satzart zu bestimmen und stellt die Bytes
+	 * anschliessend wieder zurueck in den Reader.
+	 * 
+	 * @param reader
+	 * @return Satzart
+	 * @throws IOException
+	 */
+	private static int readSatzart(PushbackReader reader) throws IOException {
+		char[] cbuf = new char[4];
+		reader.read(cbuf);
+		reader.unread(cbuf);
+		return Integer.parseInt(new String(cbuf));
+	}
+	
+	private static void skipNewline(PushbackReader reader) throws IOException {
+		char[] cbuf = new char[1];
+		do {
+			reader.read(cbuf);
+		} while ((cbuf[0] == '\n') || (cbuf[0] == '\r'));
+		reader.unread(cbuf);
+	}
+	
 	public boolean isValid() {
 		if (!this.satzart.isValid()) {
 			log.info(this + " is invalid: invalid Satzart " + this.satzart);

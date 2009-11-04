@@ -79,7 +79,20 @@ public class VorsatzTest extends AbstractSatzTest {
 		String content = vorsatz.toLongString();
 		Vorsatz imported = new Vorsatz(content);
 		assertEquals(content, imported.toLongString());
-		//assertEquals(vorsatz, imported);
+		assertEquals(vorsatz, imported);
+	}
+	
+	@Test
+	public void testImportReader() throws IOException {
+		InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
+		try {
+	        vorsatz.importFrom(istream);
+	        assertTrue(vorsatz + " should be valid", vorsatz.isValid());
+	        assertEquals("9999", vorsatz.getVuNummer());
+	        assertEquals("XXX Versicherung AG", vorsatz.getAbsender());
+        } finally {
+	        istream.close();
+        }
 	}
 
 }

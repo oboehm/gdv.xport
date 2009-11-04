@@ -25,6 +25,8 @@ import java.util.*;
 
 import org.apache.commons.logging.*;
 
+import patterntesting.runtime.annotation.NotYetImplemented;
+
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
@@ -100,6 +102,15 @@ public final class Datenpaket {
 		}
 		nachsatz.export(writer);
 		log.info(datensaetze.size() + " Datensaetze exported.");
+	}
+	
+	public void importFrom(InputStream istream) {
+		importFrom(new InputStreamReader(istream));
+	}
+	
+	@NotYetImplemented
+	public void importFrom(Reader reader) {
+		//vorsatz.importFrom(reader);
 	}
 	
 	public void setErstellungsDatumVon(Datum d) {
