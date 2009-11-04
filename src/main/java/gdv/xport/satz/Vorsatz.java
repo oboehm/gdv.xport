@@ -39,7 +39,6 @@ public final class Vorsatz extends Satz {
 		super("0001", 3);
 		setUpTeildatensaetze();
 		setUpVersions();
-		setUpDatensaetze();
 	}
 	
 	public Vorsatz(String content) {
@@ -64,17 +63,30 @@ public final class Vorsatz extends Satz {
 	
 	private void setUpVersions() {
 		addVersion(1, new Version(VERSION_VORSATZ, 96, "1.0"));
-		addVersion(100, new Version(VERSION_ADRESSSATZ, 99));
-		addVersion(200, new Version(VERSION_ALLGEMEINER_VERTRAGSTEIL, 102));
+		addVersion(100, 99);
+		addVersion(200, 102);
+		addVersion(210, 50, 105);
+		addVersion(220, 51, 108);
+		addVersion(220, 52, 111);
+		addVersion(220, 53, 114);
+		addVersion(220, 54, 117);
+		addVersion(220, 59, 120);
 		addVersion(9999, new Version(VERSION_NACHSATZ, 225, "1.0"));
-	}
-	
-	private void setUpDatensaetze() {
 	}
 	
 	private void addVersion(Integer art, Version version) {
 		versions.put(art, version);
 		add(version);
+	}
+	
+	private void addVersion(int art, int byteadresse) {
+		addVersion(art, new Version("Version Satzart " + art, byteadresse));
+	}
+	
+	private void addVersion(int art, int sparte, int byteadresse) {
+		assert sparte < 1000 : "unbekannte Sparte " + sparte;
+		addVersion(art * 1000 + sparte, new Version("Version Satzart " + art + " " + sparte,
+		        byteadresse));
 	}
 	
 	public String getVuNummer() {
@@ -145,6 +157,14 @@ public final class Vorsatz extends Satz {
 	 */
 	public String getVersion(String bezeichner) {
 		return this.getFeld(bezeichner).getInhalt();
+	}
+	
+	public String getVersion(int art) {
+		return this.getVersion("Version Satzart " + art);
+	}
+	
+	public String getVersion(int art, int sparte) {
+		return this.getVersion("Version Satzart " + art + " " + sparte);
 	}
 
 }

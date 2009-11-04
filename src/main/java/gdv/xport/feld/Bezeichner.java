@@ -139,8 +139,6 @@ public class Bezeichner {
 	public static final String TYP_BANKVERBINDUNG2 = "Typ der Bankverbindung 2";
 	public static final String UMSATZSTEUER_ID = "Umsatzsteuer-Identifikationsnummer";
 	public static final String VERMITTLER = "Geschaeftsstelle/Vermittler";
-	public static final String VERSION_ADRESSSATZ = "Version Adresssatz Satzart 0100";
-	public static final String VERSION_ALLGEMEINER_VERTRAGSTEIL = "Version Allgemeiner Vertragsteil Satzart 0200";
 	public static final String VERSION_NACHSATZ = "Version Nachsatz Satzart 9999";
 	public static final String VERSION_VORSATZ = "Version Vorsatz Satzart 0001";
 	public static final String VERSICHERUNGSLEISTUNGEN = "Versicherungsleistungen";

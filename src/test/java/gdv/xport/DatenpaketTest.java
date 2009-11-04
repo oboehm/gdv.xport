@@ -89,7 +89,7 @@ public class DatenpaketTest {
 		datenpaket.add(datensatz);
 		Vorsatz vorsatz = datenpaket.getVorsatz();
 		assertEquals("1.0", vorsatz.getVersion(VERSION_VORSATZ));
-		assertEquals("1.0", vorsatz.getVersion(VERSION_ADRESSSATZ));
+		assertEquals("1.0", vorsatz.getVersion(100));
 		assertEquals("1.0", vorsatz.getVersion(VERSION_NACHSATZ));
 		Nachsatz nachsatz = datenpaket.getNachsatz();
 		assertEquals(1, nachsatz.getAnzahlSaetze());
