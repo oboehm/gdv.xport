@@ -42,6 +42,7 @@ public class SatzFactoryTest extends AbstractSatzTest {
 	public void testGetUnsupportedSatz() {
 		Datensatz unsupported = new Datensatz("0123");
 		unsupported.setVuNummer("56789");
+		unsupported.setSparte(88);
 		unsupported.add(new NumFeld("zweiundvierzig", 4, 200, 42));
 		String content = unsupported.toLongString();
 		Satz imported = SatzFactory.getSatz(content);

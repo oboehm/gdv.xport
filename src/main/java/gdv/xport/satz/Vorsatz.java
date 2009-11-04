@@ -8,6 +8,8 @@ import static gdv.xport.feld.Bezeichner.*;
 import java.io.IOException;
 import java.util.*;
 
+import org.apache.commons.logging.*;
+
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
@@ -17,6 +19,7 @@ import gdv.xport.feld.*;
  */
 public final class Vorsatz extends Satz {
 	
+	private static final Log log = LogFactory.getLog(Vorsatz.class);
 	/** 5 Zeichen, Byte 5 - 9 */
 	protected AlphaNumFeld vuNummer = new VUNummer(Config.getVUNummer(), 5);
 	/** 30 Zeichen, Byte 10 - 39 */
@@ -124,7 +127,11 @@ public final class Vorsatz extends Satz {
 	public void setVersionFor(Datensatz datensatz) {
 		int art = datensatz.getSatzart();
 		Version version = versions.get(art);
-		version.setInhalt("1.0");
+		if (version == null) {
+			log.warn("version for Satzart " + art + " not yet supported - no version set!");
+		} else {
+			version.setInhalt("1.0");
+		}
 	}
 	
 	/**

@@ -19,6 +19,9 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.SPARTE;
+
+import java.io.*;
+
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
@@ -43,10 +46,11 @@ public class Datensatz extends Satz {
 	
 	public Datensatz(String satzart) {
 		super(satzart);
+		this.setUpTeildatensaetze();
 	}
 	
 	public Datensatz(int satzart) {
-		super(satzart);
+		this(satzart, 1);
 	}
 	
 	/**
@@ -83,6 +87,10 @@ public class Datensatz extends Satz {
 	    	teildatensatz[i].add(new AlphaNumFeld("unknown-" + i, 213, 43));
 	    }
     }
+    
+    public void setSparte(int x) {
+    	this.sparte.setInhalt(x);
+    }
 
 	public int getSparte() {
 		return this.sparte.toInt();
@@ -94,6 +102,21 @@ public class Datensatz extends Satz {
 	
 	public String getVuNummer() {
 		return this.vuNummer.getInhalt();
+	}
+	
+	/**
+	 * Liest 14 Bytes, um die Satzart zu bestimmen und stellt die Bytes
+	 * anschliessend wieder zurueck in den Reader.
+	 * 
+	 * @param reader
+	 * @return Satzart
+	 * @throws IOException
+	 */
+	public static int readSparte(PushbackReader reader) throws IOException {
+		char[] cbuf = new char[14];
+		reader.read(cbuf);
+		reader.unread(cbuf);
+		return Integer.parseInt(new String(cbuf).substring(10, 13));
 	}
 
 }

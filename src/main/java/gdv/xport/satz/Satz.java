@@ -192,7 +192,7 @@ public class Satz {
 	 * @return Satzart
 	 * @throws IOException
 	 */
-	private static int readSatzart(PushbackReader reader) throws IOException {
+	public static int readSatzart(PushbackReader reader) throws IOException {
 		char[] cbuf = new char[4];
 		reader.read(cbuf);
 		reader.unread(cbuf);
@@ -202,7 +202,10 @@ public class Satz {
 	private static void skipNewline(PushbackReader reader) throws IOException {
 		char[] cbuf = new char[1];
 		do {
-			reader.read(cbuf);
+			if (reader.read(cbuf) == -1) {
+				log.info("end of file detected");
+				return;
+			}
 		} while ((cbuf[0] == '\n') || (cbuf[0] == '\r'));
 		reader.unread(cbuf);
 	}

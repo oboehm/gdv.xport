@@ -22,6 +22,7 @@ package gdv.xport.feld;
 
 import java.io.*;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.*;
 
 /**
@@ -201,6 +202,10 @@ public class Feld {
 	
 	public void write(Writer writer) throws IOException {
 		writer.write(this.inhalt.toString());
+	}
+	
+	public boolean isEmpty() {
+		return StringUtils.isBlank(this.getInhalt());
 	}
 	
 	/**

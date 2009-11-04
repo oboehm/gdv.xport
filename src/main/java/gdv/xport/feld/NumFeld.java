@@ -70,6 +70,9 @@ public class NumFeld extends Feld {
 		if (!super.isValid()) {
 			return false;
 		}
+		if (this.isEmpty()) {
+			return true;
+		}
 		try {
 			this.toInt();
 		} catch (NumberFormatException nfe) {

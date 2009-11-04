@@ -126,5 +126,16 @@ public class DatenpaketTest {
 		Nachsatz nachsatz = datenpaket.getNachsatz();
 		assertEquals(vermittler, nachsatz.getVermittler());
 	}
+	
+	@Test
+	public void testImportReader() throws IOException {
+		InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
+		try {
+			datenpaket.importFrom(istream);
+			assertTrue(datenpaket.isValid());
+        } finally {
+	        istream.close();
+        }
+	}
 
 }

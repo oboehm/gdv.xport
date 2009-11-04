@@ -19,17 +19,14 @@
 package gdv.xport;
 
 import static gdv.xport.feld.Bezeichner.*;
+import gdv.xport.config.Config;
+import gdv.xport.feld.*;
+import gdv.xport.satz.*;
 
 import java.io.*;
 import java.util.*;
 
 import org.apache.commons.logging.*;
-
-import patterntesting.runtime.annotation.NotYetImplemented;
-
-import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
 
 /**
  * @author oliver
@@ -104,13 +101,28 @@ public final class Datenpaket {
 		log.info(datensaetze.size() + " Datensaetze exported.");
 	}
 	
-	public void importFrom(InputStream istream) {
-		importFrom(new InputStreamReader(istream));
+	public void importFrom(InputStream istream) throws IOException {
+		importFrom(new InputStreamReader(istream, Config.DEFAULT_ENCODING));
 	}
 	
-	@NotYetImplemented
-	public void importFrom(Reader reader) {
-		//vorsatz.importFrom(reader);
+	public void importFrom(Reader reader) throws IOException {
+		importFrom(new PushbackReader(reader, 14));
+	}
+	
+	public void importFrom(PushbackReader reader) throws IOException {
+		this.vorsatz.importFrom(reader);
+		while(true) {
+			int satzart = Satz.readSatzart(reader);
+			log.debug("reading Satzart " + satzart + "...");
+			if (satzart == 9999) {
+				break;
+			}
+			int sparte = Datensatz.readSparte(reader);
+			Datensatz satz = SatzFactory.getDatensatz(satzart, sparte);
+			satz.importFrom(reader);
+			this.add(satz);
+		}
+		this.nachsatz.importFrom(reader);
 	}
 	
 	public void setErstellungsDatumVon(Datum d) {
@@ -167,6 +179,24 @@ public final class Datenpaket {
 		assert vermittler.equals(this.nachsatz.getVermittler()) : vorsatz
 				+ " or " + nachsatz + " is corrupt";
 		return vermittler;
+	}
+	
+	public boolean isValid() {
+		if (!this.vorsatz.isValid()) {
+			log.info(this.vorsatz + " is not valid");
+			return false;
+		}
+		if (!this.nachsatz.isValid()) {
+			log.info(this.nachsatz + " is not valid");
+			return false;
+		}
+		for (Datensatz satz : this.datensaetze) {
+	        if (!satz.isValid()) {
+	        	log.info(satz + " is not valid");
+	        	return false;
+	        }
+        }
+		return true;
 	}
 
 }

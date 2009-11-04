@@ -40,25 +40,14 @@ public class SatzFactory {
 			case 1:
 				satz = new Vorsatz();
 				break;
-			case 100:
-				satz = new Adressteil();
-				break;
-			case 200:
-				satz = new AllgemeinerVertragsteil();
-				break;
-			case 210:
-				int sparte = Integer.parseInt(content.substring(10, 13));
-				satz = createSpartenspezifischerVertragsteil(sparte);
-				break;
 			case 9999:
 				satz = new Nachsatz();
 				break;
 			default:
-				log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzart);
-				satz = new Datensatz(content);
-				satz.addFiller();
+				int sparte = Integer.parseInt(content.substring(10, 13));
+				satz = getDatensatz(satzart, sparte);
 				break;
-		}
+		}		
 		try {
 	        satz.importFrom(content);
 	        return satz;
@@ -66,6 +55,27 @@ public class SatzFactory {
 	        throw new IllegalArgumentException("can't parse " + content, ioe);
         }
 	}
+
+	/**
+     * @param satzart
+     * @param content
+     * @return
+     */
+    public static Datensatz getDatensatz(int satzart, int sparte) {
+	    switch (satzart) {
+			case 100:
+				return new Adressteil();
+			case 200:
+				return new AllgemeinerVertragsteil();
+			case 210:
+				return createSpartenspezifischerVertragsteil(sparte);
+			default:
+				log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzart);
+				Datensatz satz = new Datensatz(satzart);
+				satz.addFiller();
+				return satz;
+		}
+    }
 	
 	private static SpartenspezifischerVertragsteil createSpartenspezifischerVertragsteil(int sparte) {
 		switch (sparte) {
