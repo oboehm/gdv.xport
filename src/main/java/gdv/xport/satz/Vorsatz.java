@@ -80,17 +80,22 @@ public final class Vorsatz extends Satz {
 	
 	/**
 	 * Absender ist Byte 10 - 39 im Teildatensatz.
-	 * @param absender
+	 * @param name
 	 */
-	public void setAbsender(String absender) {
-		this.absender.setInhalt(absender);
-//		for (int i = 0; i < teildatensatz.length; i++) {
-//			teildatensatz[i].add(this.absender);			
-//		}
+	public void setAbsender(String name) {
+		this.absender.setInhalt(name);
 	}
 	
 	public String getAbsender() {
 		return this.absender.getInhalt().trim();
+	}
+	
+	public void setAdressat(String name) {
+		this.adressat.setInhalt(name);
+	}
+	
+	public String getAdressat() {
+		return this.adressat.getInhalt().trim();
 	}
 	
 	/**
@@ -100,10 +105,6 @@ public final class Vorsatz extends Satz {
 	public void setErstellungsZeitraum(String startDatum, String endDatum) {
 		this.von.setInhalt(startDatum);
 		this.bis.setInhalt(endDatum);
-//		for (int i = 0; i < teildatensatz.length; i++) {
-//			teildatensatz[i].add(this.von);
-//			teildatensatz[i].add(this.bis);
-//		}
 	}
 	
 	public void setVermittler(String s) {

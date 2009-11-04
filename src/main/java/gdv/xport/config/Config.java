@@ -18,6 +18,8 @@
 
 package gdv.xport.config;
 
+import java.nio.charset.Charset;
+
 import gdv.xport.feld.VUNummer;
 
 import org.apache.commons.lang.StringUtils;
@@ -38,6 +40,7 @@ public class Config {
 	private static final Log log = LogFactory.getLog(Config.class);
 	protected static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
 	private static VUNummer vunummer;
+	public static Charset DEFAULT_ENCODING = Charset.forName("ISO-8859-1");
 	
 	/**
 	 * Diese Methode dient zwar hauptsaechlich zu Testzwecken, kann aber auch

@@ -90,6 +90,7 @@ public class VorsatzTest extends AbstractSatzTest {
 	        assertTrue(vorsatz + " should be valid", vorsatz.isValid());
 	        assertEquals("9999", vorsatz.getVuNummer());
 	        assertEquals("XXX Versicherung AG", vorsatz.getAbsender());
+	        assertEquals("BRBRIENNEE,J\u00dcRGEN", vorsatz.getAdressat());
         } finally {
 	        istream.close();
         }

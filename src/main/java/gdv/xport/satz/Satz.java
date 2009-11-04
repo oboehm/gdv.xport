@@ -3,9 +3,9 @@
  */
 package gdv.xport.satz;
 
-import static patterntesting.runtime.NullConstants.*;
-import static gdv.xport.feld.Bezeichner.*;
-
+import static gdv.xport.feld.Bezeichner.SATZART;
+import static patterntesting.runtime.NullConstants.NULL_STRING;
+import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
 import java.io.*;
@@ -162,7 +162,7 @@ public class Satz {
 	}
 	
 	public void importFrom(InputStream istream) throws IOException {
-		importFrom(new InputStreamReader(istream));
+		importFrom(new InputStreamReader(istream, Config.DEFAULT_ENCODING));
 	}
 		
 	public void importFrom(Reader reader) throws IOException {
