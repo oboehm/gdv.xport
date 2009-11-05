@@ -22,6 +22,11 @@ package gdv.xport.feld;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
+import net.sf.oval.ConstraintViolation;
+
+import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
@@ -32,6 +37,8 @@ import org.junit.Test;
  */
 public class FeldTest {
 
+	private static final Log log = LogFactory.getLog(FeldTest.class);
+	
 	/**
 	 * Test method for {@link gdv.xport.feld.Feld#resetInhalt()}.
 	 */
@@ -78,6 +85,16 @@ public class FeldTest {
 		assertFalse(b + " geht ueber Satz-Grenze hinweg", b.isValid());
 		Feld c = new Feld("c", 1, 'c');
 		assertTrue(c + " should be valid", c.isValid());
+	}
+	
+	@Test
+	public void testValidate() {
+		Feld a = new Feld("a", 10, -1, Align.UNKNOWN);
+		List<ConstraintViolation> violations = a.validate();
+		for (ConstraintViolation violation : violations) {
+	        log.info("ConstraintViolation: " + violation);
+        }
+		assertEquals(2, violations.size());
 	}
 	
 	@Test

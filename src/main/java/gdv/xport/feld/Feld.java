@@ -21,6 +21,11 @@
 package gdv.xport.feld;
 
 import java.io.*;
+import java.util.List;
+
+import net.sf.oval.*;
+import net.sf.oval.constraint.*;
+import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.*;
@@ -38,8 +43,10 @@ public class Feld {
     protected final String bezeichnung;
 	protected final StringBuffer inhalt;
 	/** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256 */
+	@Min(1)
 	protected final int byteAdresse;
 	/** Ausrichtung: rechts- oder linksbuendig */
+	@NotEqual("UNKNOWN")
 	protected final Align ausrichtung;
 	
 	public Feld(String name, String s, Align alignment) {
@@ -230,6 +237,19 @@ public class Feld {
 		}
 		return true;
 	}
+	
+	public List<ConstraintViolation> validate() {
+		Validator validator = new Validator();
+		List<ConstraintViolation> violations = validator.validate(this);
+		if (this.getTeildatensatzNr() != getTeildatensatzNr(this.getEndAdresse())) {
+			ConstraintViolation cv = new ConstraintViolation(new SizeCheck(),
+			        this + ": boundary exceeded", this, this.getEndAdresse(),
+			        new ClassContext(this.getClass()));
+			violations.add(cv);
+		}
+		return violations;
+	}
+
 
 	@Override
 	public String toString() {
