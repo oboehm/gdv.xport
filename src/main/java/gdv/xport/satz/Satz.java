@@ -215,17 +215,25 @@ public class Satz {
 		reader.unread(cbuf);
 	}
 	
+	/**
+	 * Aus Performance-Gruenden stuetzt sich diese Methode nicht auf die
+	 * validate()-Methode ab.
+	 * 
+	 * @return true/false
+	 */
 	public boolean isValid() {
-		List<ConstraintViolation> violations = this.validate();
-//		if (this.teildatensatz != null) {
-//			for (int i = 0; i < teildatensatz.length; i++) {
-//		        if (!teildatensatz[i].isValid()) {
-//		        	log.info("Teildatensatz " + (i+1) + " is invalid");
-//		        	return false;
-//		        }
-//	        }
-//		}
-		return violations.isEmpty();
+		if (!this.satzart.isValid()) {
+			return false;
+		}
+		if (this.teildatensatz != null) {
+			for (int i = 0; i < teildatensatz.length; i++) {
+		        if (!teildatensatz[i].isValid()) {
+		        	log.info("Teildatensatz " + (i+1) + " is invalid");
+		        	return false;
+		        }
+	        }
+		}
+		return true;
 	}
 	
 	public List<ConstraintViolation> validate() {
