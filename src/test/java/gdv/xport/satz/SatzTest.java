@@ -134,8 +134,10 @@ public class SatzTest {
 		Satz a = new Satz("xxxx", 1);
 		assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
 		List<ConstraintViolation> violations = a.validate();
-		assertEquals(1, violations.size());
-		log.info("ConstraintViolation: " + violations.get(0));
+		for (ConstraintViolation violation : violations) {
+	        log.info("ConstraintViolation: " + violation);
+        }
+		assertEquals(2, violations.size());
 	}
 	
 	@Test

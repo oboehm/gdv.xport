@@ -217,14 +217,14 @@ public class Satz {
 	
 	public boolean isValid() {
 		List<ConstraintViolation> violations = this.validate();
-		if (this.teildatensatz != null) {
-			for (int i = 0; i < teildatensatz.length; i++) {
-		        if (!teildatensatz[i].isValid()) {
-		        	log.info("Teildatensatz " + (i+1) + " is invalid");
-		        	return false;
-		        }
-	        }
-		}
+//		if (this.teildatensatz != null) {
+//			for (int i = 0; i < teildatensatz.length; i++) {
+//		        if (!teildatensatz[i].isValid()) {
+//		        	log.info("Teildatensatz " + (i+1) + " is invalid");
+//		        	return false;
+//		        }
+//	        }
+//		}
 		return violations.isEmpty();
 	}
 	
@@ -236,6 +236,11 @@ public class Satz {
 			        + this.satzart.getInhalt(), this, this.satzart, new ClassContext(this
 			        .getClass()));
 			violations.add(cv);
+		}
+		if (this.teildatensatz != null) {
+			for (int i = 0; i < teildatensatz.length; i++) {
+	            violations.addAll(teildatensatz[i].validate());
+            }
 		}
 		return violations;
 	}

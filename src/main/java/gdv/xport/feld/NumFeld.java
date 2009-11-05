@@ -4,6 +4,11 @@
 package gdv.xport.feld;
 
 import java.text.*;
+import java.util.List;
+
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.constraint.MatchPatternCheck;
+import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.*;
@@ -81,5 +86,24 @@ public class NumFeld extends Feld {
 		}
 		return true;
 	}
+
+	/* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#validate()
+     */
+    @Override
+    public List<ConstraintViolation> validate() {
+		List<ConstraintViolation> violations = super.validate();
+		if (!this.isEmpty()) {
+			try {
+				this.toInt();
+			} catch (NumberFormatException nfe) {
+				ConstraintViolation cv = new ConstraintViolation(new MatchPatternCheck(),
+				        "not a number (" + nfe + ")", this, this.getInhalt(), new ClassContext(this
+				                .getClass()));
+				violations.add(cv);
+			}
+		}
+		return violations;
+    }
 
 }

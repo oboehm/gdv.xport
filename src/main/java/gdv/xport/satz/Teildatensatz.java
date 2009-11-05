@@ -25,6 +25,8 @@ import static gdv.xport.feld.Bezeichner.*;
 import java.io.*;
 import java.util.*;
 
+import net.sf.oval.*;
+
 import gdv.xport.feld.*;
 
 /**
@@ -143,6 +145,19 @@ public class Teildatensatz extends Satz {
 	        }
         }
 	    return true;
+    }
+
+	/* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#validate()
+     */
+    @Override
+    public List<ConstraintViolation> validate() {
+		Validator validator = new Validator();
+		List<ConstraintViolation> violations = validator.validate(this);
+	    for (Feld feld : datenfelder.values()) {
+	        violations.addAll(feld.validate());
+        }
+	    return violations;
     }
 
 	/* (non-Javadoc)
