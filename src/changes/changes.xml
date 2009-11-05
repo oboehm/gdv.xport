@@ -17,8 +17,8 @@
 
   <body>
   
-    <release version="0.1.0" date="Nov-2009"
-             description="Einsatz von Validatoren">
+    <release version="0.1.0" date="06-Nov-2009"
+             description="Import-Unterstuetzung">
       <action dev="oboehm" type="add">
         Import-Unterstuetzung mit ISO-8859-1 als Default-Encoding.
       </action>
