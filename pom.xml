@@ -136,6 +136,12 @@
       <artifactId>patterntesting-check-rt</artifactId>
       <version>0.9.7</version>
     </dependency>
+    <!-- Object Validation Framework (OVal) -->
+    <dependency>
+      <groupId>net.sf.oval</groupId>
+      <artifactId>oval</artifactId>
+      <version>1.40</version>
+    </dependency>
 
   </dependencies>
   

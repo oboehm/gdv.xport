@@ -22,6 +22,10 @@
       <action dev="oboehm" type="add">
         Import-Unterstuetzung mit ISO-8859-1 als Default-Encoding.
       </action>
+      <action>
+        Einsatz von Validatoren, basierend auf OVal
+        (http://oval.sourceforge.net/)
+      </action>
       <action dev="oboehm" type="add">
         Allgemeiner und Spartenspezifischer Vertragsteil als Klassen
         hinzugefuegt.

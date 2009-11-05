@@ -9,6 +9,11 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
 import java.io.*;
+import java.util.List;
+
+import net.sf.oval.*;
+import net.sf.oval.constraint.AssertCheck;
+import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.logging.*;
 
@@ -211,10 +216,7 @@ public class Satz {
 	}
 	
 	public boolean isValid() {
-		if (!this.satzart.isValid()) {
-			log.info(this + " is invalid: invalid Satzart " + this.satzart);
-			return false;
-		}
+		List<ConstraintViolation> violations = this.validate();
 		if (this.teildatensatz != null) {
 			for (int i = 0; i < teildatensatz.length; i++) {
 		        if (!teildatensatz[i].isValid()) {
@@ -223,7 +225,19 @@ public class Satz {
 		        }
 	        }
 		}
-		return true;
+		return violations.isEmpty();
+	}
+	
+	public List<ConstraintViolation> validate() {
+		Validator validator = new Validator();
+		List<ConstraintViolation> violations = validator.validate(this);
+		if (!this.satzart.isValid()) {
+			ConstraintViolation cv = new ConstraintViolation(new AssertCheck(), "invalid Satzart "
+			        + this.satzart.getInhalt(), this, this.satzart, new ClassContext(this
+			        .getClass()));
+			violations.add(cv);
+		}
+		return violations;
 	}
 
 	/* (non-Javadoc)

@@ -21,5 +21,6 @@
 			<attribute name="org.eclipse.ajdt.aspectpath" value="org.eclipse.ajdt.aspectpath"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/net/sf/oval/oval/1.40/oval-1.40.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

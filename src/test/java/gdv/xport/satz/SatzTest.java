@@ -22,9 +22,13 @@ import static org.junit.Assert.*;
 import static gdv.xport.feld.Bezeichner.*;
 
 import java.io.*;
+import java.util.List;
 
 import gdv.xport.feld.*;
 
+import net.sf.oval.ConstraintViolation;
+
+import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
@@ -35,6 +39,7 @@ import org.junit.Test;
  */
 public class SatzTest {
 	
+	private static final Log log = LogFactory.getLog(SatzTest.class);
 	private Satz satz = new Satz(123);
 
 	@Test
@@ -122,6 +127,15 @@ public class SatzTest {
 		NumFeld schrott = new NumFeld("schrott", "xxxx");
 		satz.add(schrott);
 		assertFalse(satz + " has invalid fields!", satz.isValid());
+	}
+	
+	@Test
+	public void testValidate() {
+		Satz a = new Satz("xxxx", 1);
+		assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
+		List<ConstraintViolation> violations = a.validate();
+		assertEquals(1, violations.size());
+		log.info("ConstraintViolation: " + violations.get(0));
 	}
 	
 	@Test
