@@ -179,7 +179,7 @@ public class Satz {
 		for (int i = 0; i < teildatensatz.length; i++) {
 			int art = readSatzart(reader);
 			if (art != this.getSatzart()) {
-				log.warn((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
+				log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
 				        + ", but got data for Satzart " + art);
 				break;
 			}
