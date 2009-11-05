@@ -25,7 +25,7 @@ import gdv.xport.feld.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (03.11.2009)
  */
-public class SpartenspezifischerVertragsteilRechtsschutz extends SpartenspezifischerVertragsteil {
+public class VertragsspezifischerTeilRechtsschutz extends VertragsspezifischerTeil {
 
 	private void setUpDatenfelder() {
 		// Teildatensatz 1
@@ -51,7 +51,7 @@ public class SpartenspezifischerVertragsteilRechtsschutz extends Spartenspezifis
 		add(new AlphaNumFeld(REFERENZNUMMER, 7, 147));
 	}
 
-	public SpartenspezifischerVertragsteilRechtsschutz() {
+	public VertragsspezifischerTeilRechtsschutz() {
 		super(70);
 		this.setUpDatenfelder();
 	}

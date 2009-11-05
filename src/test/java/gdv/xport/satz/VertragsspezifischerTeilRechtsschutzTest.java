@@ -29,16 +29,16 @@ import org.junit.Test;
  * @since 0.1.0 (03.11.2009)
  *
  */
-public class SpartenspezifischerVertragsteilRechtsschutzTest extends AbstractSatzTest {
+public class VertragsspezifischerTeilRechtsschutzTest extends AbstractSatzTest {
 	
-	private static final Log log = LogFactory.getLog(SpartenspezifischerVertragsteilRechtsschutzTest.class);
+	private static final Log log = LogFactory.getLog(VertragsspezifischerTeilRechtsschutzTest.class);
 
 	/**
-	 * Test method for {@link gdv.xport.satz.SpartenspezifischerVertragsteilRechtsschutz#SpartenspezifischerVertragsteilRechtsschutz()}.
+	 * Test method for {@link gdv.xport.satz.VertragsspezifischerTeilRechtsschutz#SpartenspezifischerVertragsteilRechtsschutz()}.
 	 */
 	@Test
 	public void testSpartenspezifischerVertragsteilRechtsschutz() {
-		SpartenspezifischerVertragsteil vertragsteil = new SpartenspezifischerVertragsteilRechtsschutz();
+		VertragsspezifischerTeil vertragsteil = new VertragsspezifischerTeilRechtsschutz();
 		log.info(vertragsteil + " created.");
 		assertEquals(70, vertragsteil.getSparte());
 	}

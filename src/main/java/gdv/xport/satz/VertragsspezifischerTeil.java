@@ -18,31 +18,24 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
-
-import java.io.IOException;
-
-import org.apache.commons.logging.*;
-import org.junit.Test;
-
 /**
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (28.10.2009)
+ *
  */
-public class SpartenspezifischerVertragsteilTest extends AbstractSatzTest {
+public class VertragsspezifischerTeil extends Datensatz {
 	
-	private static final Log log = LogFactory.getLog(SpartenspezifischerVertragsteilTest.class);
-
+	public VertragsspezifischerTeil(int sparte) {
+		this(sparte, 1);
+	}
+	
 	/**
-	 * Test method for {@link gdv.xport.satz.SpartenspezifischerVertragsteil#SpartenspezifischerVertragsteil(int)}.
-	 * @throws IOException 
+	 * @param sparte
+	 * @param n Anzahl Teildatensaetze
 	 */
-	@Test
-	public void testSpartenspezifischerVertragsteil() throws IOException {
-		SpartenspezifischerVertragsteil vertragsteil = new SpartenspezifischerVertragsteil(70);
-		log.info(vertragsteil + " created.");
-		assertEquals(70, vertragsteil.getSparte());
-		checkExport(vertragsteil, 11, 13, "070", 256);
+	public VertragsspezifischerTeil(int sparte, int n) {
+		super(210, n);
+		this.sparte.setInhalt(sparte);
 	}
 
 }

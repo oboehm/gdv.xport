@@ -68,7 +68,7 @@ public class SatzFactory {
 			case 200:
 				return new AllgemeinerVertragsteil();
 			case 210:
-				return createSpartenspezifischerVertragsteil(sparte);
+				return createVertragsspezifischerTeil(sparte);
 			default:
 				log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzart);
 				Datensatz satz = new Datensatz(satzart);
@@ -77,7 +77,8 @@ public class SatzFactory {
 		}
     }
 	
-	private static SpartenspezifischerVertragsteil createSpartenspezifischerVertragsteil(int sparte) {
+	private static VertragsspezifischerTeil createVertragsspezifischerTeil(int sparte) {
+		VertragsspezifischerTeil vertragsteil;
 		switch (sparte) {
 			case 30:
 			case 40:
@@ -87,8 +88,8 @@ public class SatzFactory {
 			case 190:
 			case 510:
 			case 550:
-				log.warn("reduced functionality for (not yet supported) Satzart 210." + sparte);
-				return new SpartenspezifischerVertragsteil(sparte);
+				vertragsteil = new VertragsspezifischerTeil(sparte);
+				break;
 			case 0:
 			case 10:
 			case 20:
@@ -96,14 +97,17 @@ public class SatzFactory {
 			case 130:
 			case 170:
 			case 580:
-				log.warn("reduced functionality for (not yet supported) Satzart 210." + sparte);
-				return new SpartenspezifischerVertragsteil(sparte, 2);
+				vertragsteil = new VertragsspezifischerTeil(sparte, 2);
+				break;
 			case 70:
-				return new SpartenspezifischerVertragsteilRechtsschutz();
+				return new VertragsspezifischerTeilRechtsschutz();
 			default:
-				log.warn("reduced functionality for (unknown) Satzart 210." + sparte);
-				return new SpartenspezifischerVertragsteil(sparte);
+				vertragsteil = new VertragsspezifischerTeil(sparte);
+				break;
 		}
+		log.warn("reduced functionality for (unsupported or unknown) Satzart 210." + sparte);
+		vertragsteil.addFiller();
+		return vertragsteil;
 	}
 
 }
