@@ -79,11 +79,29 @@ public class SatzFactory {
 	
 	private static SpartenspezifischerVertragsteil createSpartenspezifischerVertragsteil(int sparte) {
 		switch (sparte) {
+			case 30:
+			case 40:
+			case 80:
+			case 110:
+			case 140:
+			case 190:
+			case 510:
+			case 550:
+				log.warn("reduced functionality for (not yet supported) Satzart 210." + sparte);
+				return new SpartenspezifischerVertragsteil(sparte);
+			case 0:
+			case 10:
+			case 20:
+			case 50:
+			case 130:
+			case 170:
+			case 580:
+				log.warn("reduced functionality for (not yet supported) Satzart 210." + sparte);
+				return new SpartenspezifischerVertragsteil(sparte, 2);
 			case 70:
 				return new SpartenspezifischerVertragsteilRechtsschutz();
 			default:
-				log.warn("reduced functionality of SpartenspezifischerVertragsteil for "
-						+ "(unknown or unsupported) Sparte " + sparte);
+				log.warn("reduced functionality for (unknown) Satzart 210." + sparte);
 				return new SpartenspezifischerVertragsteil(sparte);
 		}
 	}
