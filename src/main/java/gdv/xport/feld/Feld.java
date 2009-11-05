@@ -28,7 +28,6 @@ import net.sf.oval.constraint.*;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.*;
 
 /**
  * @author oliver
@@ -36,7 +35,6 @@ import org.apache.commons.logging.*;
  */
 public class Feld {
 	
-	private static final Log log = LogFactory.getLog(Feld.class);
 	/** statt "null" */
 	public static final Feld NULL_FELD = new Feld("null", 0, 0, Align.UNKNOWN);
 	/** optional: Name des Felds */
@@ -223,19 +221,7 @@ public class Feld {
 	 * @since 0.1.0
 	 */
 	public boolean isValid() {
-		if (this.getByteAdresse() < 1) {
-			log.info(this + " is invalid: byteAdresse < 1");
-			return false;
-		}
-		if (this.getTeildatensatzNr() != getTeildatensatzNr(this.getEndAdresse())) {
-			log.info(this + " is invalid: boundary exceeded");
-			return false;
-		}
-		if (this.ausrichtung == Align.UNKNOWN) {
-			log.info(this + " is invalid: unknown alignment");
-			return false;
-		}
-		return true;
+		return this.validate().isEmpty();
 	}
 	
 	public List<ConstraintViolation> validate() {
