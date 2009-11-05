@@ -216,12 +216,26 @@ public class Feld {
 	/**
 	 * Valid bedeutet: Byte-Adresse >= 1, Feld geht nicht ueber
 	 * (Teil-)Datensatz-Grenze hinaus, Ausrichtung ist bekannt.
+	 * <br/>
+	 * Auf Performance-Gruenden wurde diese Methode stuetzt sich diese
+	 * Methode nicht auf validate(), sondern implementiert die entsprechenden
+	 * Abfragen selbst.
 	 * 
 	 * @return false, falls Verletzung erkannt wird
 	 * @since 0.1.0
 	 */
 	public boolean isValid() {
-		return this.validate().isEmpty();
+		//return this.validate().isEmpty();
+		if (this.getByteAdresse() < 1) {
+			return false;
+		}
+		if (this.getTeildatensatzNr() != getTeildatensatzNr(this.getEndAdresse())) {
+			return false;
+		}
+		if (this.ausrichtung == Align.UNKNOWN) {
+			return false;
+		}
+		return true;
 	}
 	
 	public List<ConstraintViolation> validate() {
