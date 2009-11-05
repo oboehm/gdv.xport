@@ -22,7 +22,7 @@
       <action dev="oboehm" type="add">
         Import-Unterstuetzung mit ISO-8859-1 als Default-Encoding.
       </action>
-      <action>
+      <action dev="oboehm" type="add">
         Einsatz von Validatoren, basierend auf OVal
         (http://oval.sourceforge.net/)
       </action>

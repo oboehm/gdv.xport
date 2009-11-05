@@ -61,7 +61,7 @@
           <td>Doku und Reports generieren</td>
           <td>'mvn site' und anschliessend target/site nach
             http://repository.agentes.de/gdv/gdv-xport/site/...
-            kopieren (noch nicht eingerichtet!)
+            kopieren
           </td>
         </tr>
         <tr>
