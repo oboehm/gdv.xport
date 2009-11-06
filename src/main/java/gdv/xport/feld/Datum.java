@@ -30,9 +30,6 @@ import java.util.Date;
  */
 public class Datum extends Feld {
 	
-	/** Standard-Format fuer Umwandlungen */
-	private static final DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
-	
 	public Datum(String name, int start) {
 		this(name, 8, start);
 	}
@@ -58,11 +55,13 @@ public class Datum extends Feld {
 	}
 	
 	public void setInhalt(Date d) {
+		DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 		this.setInhalt(dateFormat.format(d));
 	}
 	
 	public Date toDate() {
 		try {
+			DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 			return dateFormat.parse(this.getInhalt());
 		} catch (ParseException e) {
 			throw new IllegalStateException(this + " has an invalid date (\""
