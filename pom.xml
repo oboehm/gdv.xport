@@ -230,7 +230,9 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
         <configuration>
-          <xmlOutput>false</xmlOutput>
+          <findbugsXmlOutput>true</findbugsXmlOutput>
+          <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+          <xmlOutput>true</xmlOutput>
           <threshold>Normal</threshold>
           <effort>Max</effort>
           <omitVisitors>FindDeadLocalStores</omitVisitors>
