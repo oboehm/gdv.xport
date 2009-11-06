@@ -15,6 +15,13 @@
   <version>0.1.1-SNAPSHOT</version>
   <name>GDV-Xport</name>
   <url>http://github.com/oboehm/gdv.xport</url>
+  <!-- see http://maven.apache.org/pom.html#Licenses -->
+  <licenses>
+    <license>
+      <name>Apache 2</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
     
   <build>
   
