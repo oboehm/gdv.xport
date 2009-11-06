@@ -12,11 +12,11 @@
     <section name="Was ist gdv.xport?">
       <p>
         <i>gdv.xport</i> ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
-        Sie erleichtert den Export in dieses Datenformat, aber (noch) nicht den Import.
+        Sie vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung
+        der verschiedenen Datensaetze.
       </p>
       <p>
-        Das "x" in port steht fur "im"- und "ex"-port (auch wenn der Import noch nicht
-        unterstuetzt wird).      
+        Das "x" in port steht fur "im"- und "ex"-port.      
       </p>
     </section>
     

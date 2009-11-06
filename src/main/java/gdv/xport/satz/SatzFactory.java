@@ -68,7 +68,7 @@ public class SatzFactory {
 			case 200:
 				return new AllgemeinerVertragsteil();
 			case 210:
-				return createVertragsspezifischerTeil(sparte);
+				return new VertragsspezifischerTeil(sparte);
 			case 220:
 				return createSpartenspezifischerTeil(sparte);
 			default:
@@ -78,40 +78,7 @@ public class SatzFactory {
 				return satz;
 		}
     }
-	
-	private static VertragsspezifischerTeil createVertragsspezifischerTeil(int sparte) {
-		VertragsspezifischerTeil vertragsteil;
-		switch (sparte) {
-			case 30:
-			case 40:
-			case 80:
-			case 110:
-			case 140:
-			case 190:
-			case 510:
-			case 550:
-				vertragsteil = new VertragsspezifischerTeil(sparte);
-				break;
-			case 0:
-			case 10:
-			case 20:
-			case 50:
-			case 130:
-			case 170:
-			case 580:
-				vertragsteil = new VertragsspezifischerTeil(sparte, 2);
-				break;
-			case 70:
-				return new VertragsspezifischerTeilRechtsschutz();
-			default:
-				vertragsteil = new VertragsspezifischerTeil(sparte);
-				break;
-		}
-		log.warn("reduced functionality for (unsupported or unknown) Satzart 210." + sparte);
-		vertragsteil.addFiller();
-		return vertragsteil;
-	}
-	
+		
 	private static Datensatz createSpartenspezifischerTeil(int sparte) {
 		SpartenspezifischerTeil datensatz;
 		switch (sparte) {
