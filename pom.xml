@@ -221,6 +221,24 @@
           <targetJdk>1.5</targetJdk>
         </configuration>
 	  </plugin>
+      <!-- 
+          findbugs
+          start 'mvn findbugs:findbugs'
+          http://mojo.codehaus.org/findbugs-maven-plugin/
+       -->    
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <configuration>
+          <xmlOutput>false</xmlOutput>
+          <threshold>Normal</threshold>
+          <effort>Max</effort>
+          <omitVisitors>FindDeadLocalStores</omitVisitors>
+          <onlyAnalyze>gdv.xport.-</onlyAnalyze>
+          <debug>true</debug>
+          <relaxed>false</relaxed>
+        </configuration>
+      </plugin>
   	  <!-- 
   		  Cobertura
   		  see http://mojo.codehaus.org/cobertura-maven-plugin/usage.html
