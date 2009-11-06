@@ -70,56 +70,13 @@ public class SatzFactory {
 			case 210:
 				return new VertragsspezifischerTeil(sparte);
 			case 220:
-				return createSpartenspezifischerTeil(sparte);
+				return new SpartenspezifischerTeil(sparte);
 			default:
 				log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzart);
 				Datensatz satz = new Datensatz(satzart);
 				satz.addFiller();
 				return satz;
 		}
-    }
-		
-	private static Datensatz createSpartenspezifischerTeil(int sparte) {
-		SpartenspezifischerTeil datensatz;
-		switch (sparte) {
-			case 0:
-			case 20:
-			case 110:
-			case 130:
-			case 510:
-			case 550:
-				datensatz = new SpartenspezifischerTeil(sparte);
-				break;
-			case 40:
-			case 51:
-			case 52:
-			case 53:
-			case 54:
-			case 55:
-			case 59:
-			case 70:
-			case 80:
-			case 140:
-			case 190:
-			case 580:
-				datensatz = new SpartenspezifischerTeil(sparte, 2);
-				break;
-			case 170:
-				datensatz = new SpartenspezifischerTeil(sparte, 3);
-				break;
-			case 30:
-				datensatz = new SpartenspezifischerTeil(sparte, 4);
-				break;
-			case 10:
-				datensatz = new SpartenspezifischerTeil(sparte, 9);
-				break;
-			default:
-				datensatz = new SpartenspezifischerTeil(sparte);
-				break;
-		}
-		log.warn("reduced functionality for (unsupported or unknown) Satzart 220." + sparte);
-		datensatz.addFiller();
-		return datensatz;
     }
 
 }
