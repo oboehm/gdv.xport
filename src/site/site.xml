@@ -38,6 +38,7 @@
         <item name="Checkliste"             href="/dev/checklist.html"/>
       </item>
       <item name="Kontakt"					href="contact.html" />
+      <item name="Download"                 href="downloads.html" />
     </menu>
 
     <menu ref="modules" />

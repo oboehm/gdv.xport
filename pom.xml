@@ -263,6 +263,11 @@
   	  http://source.valtech.com/repo/content/repositories/releases/
    -->
   <repositories>
+    <repository>
+      <id>agentes</id>
+      <name>agentes Repository</name>
+      <url>http://repository.agentes.de</url>
+    </repository>
   </repositories>
 
 </project>

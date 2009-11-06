@@ -18,7 +18,10 @@
   <body>
 
     <release version="0.1.1" date="Nov-2009"
-             description="Refactoring">
+             description="Dokumentation aktualisiert">
+      <action dev="oboehm" type="update">
+        Dokumentation aktualisiert (u.a. Download-Sektion hinzugefuegt)
+      </action>
       <action dev="oboehm" type="update">
         Unterklassen von VertragsspezifischerTeil entsorgt
         (die verschiedenen Sparten werden jetzt direkt von dieser
