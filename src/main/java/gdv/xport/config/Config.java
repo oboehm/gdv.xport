@@ -40,7 +40,8 @@ public class Config {
 	private static final Log log = LogFactory.getLog(Config.class);
 	protected static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
 	private static VUNummer vunummer;
-	public static Charset DEFAULT_ENCODING = Charset.forName("ISO-8859-1");
+	/** Standard-Encoding ist "ISO-8859-1" */
+	public static final Charset DEFAULT_ENCODING = Charset.forName("ISO-8859-1");
 	
 	/**
 	 * Diese Methode dient zwar hauptsaechlich zu Testzwecken, kann aber auch
