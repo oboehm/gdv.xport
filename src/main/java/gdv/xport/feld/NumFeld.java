@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package gdv.xport.feld;
 
@@ -19,7 +19,7 @@ import org.apache.commons.logging.*;
  * <br/>
  * Siehe Broschuere_gdv-datensatz_vu-vermittler.pdf, Seite 16
  * ("Datenfelder/Feldformate").
- * 
+ *
  * @author oliver
  */
 public class NumFeld extends Feld {

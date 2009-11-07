@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package gdv.xport.satz;
 
@@ -96,7 +96,7 @@ public class Satz {
 	 * die gleiche Referenz verweisen - aber sicher ist sicher.
 	 * Falls das Feld nicht gefunden wird, wird eine IllegalArgumentException
 	 * geworfen.
-	 * 
+	 *
 	 * @param name Name des Felds (Bezeichnung)
 	 * @param value
 	 */
@@ -155,9 +155,9 @@ public class Satz {
 	/**
 	 * Eigentlich wollte ich ja diese Methode "import" nennen, aber das
 	 * kollidiert leider mit dem Schluesselwort "import" in Java.
-	 * 
+	 *
 	 * @param s
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public void importFrom(String s) throws IOException {
 		for (int i = 0; i < teildatensatz.length; i++) {
@@ -191,7 +191,7 @@ public class Satz {
 	/**
 	 * Liest 4 Bytes, um die Satzart zu bestimmen und stellt die Bytes
 	 * anschliessend wieder zurueck in den Reader.
-	 * 
+	 *
 	 * @param reader
 	 * @return Satzart
 	 * @throws IOException
@@ -217,7 +217,7 @@ public class Satz {
 	/**
 	 * Aus Performance-Gruenden stuetzt sich diese Methode nicht auf die
 	 * validate()-Methode ab.
-	 * 
+	 *
 	 * @return true/false
 	 */
 	public boolean isValid() {
@@ -292,7 +292,7 @@ public class Satz {
 	    	return false;
 	    }
     }
-    
+   
     public boolean equals(Satz other) {
     	if (this.getSatzart() != other.getSatzart()) {
     		return false;

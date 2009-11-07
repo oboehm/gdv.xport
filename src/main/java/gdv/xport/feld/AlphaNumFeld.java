@@ -1,12 +1,12 @@
 /**
- * 
+ *
  */
 package gdv.xport.feld;
 
 /**
  * Klasse fuer alphanumerische Zeichen. Die Default-Einstellung fuer die
  * Darstellung ist linksbuendig.
- * 
+ *
  * @author oliver
  */
 public class AlphaNumFeld extends Feld {
@@ -46,7 +46,7 @@ public class AlphaNumFeld extends Feld {
 	/**
 	 * Wenn sich das Feld vergroessert, werden rechts Leerzeichen aufgefuellt
 	 * (alphanumerische Zeichen sind standardmaessig linksbuendig).
-	 * 
+	 *
 	 * @param n
 	 */
 	public void setAnzahlBytes(int n) {

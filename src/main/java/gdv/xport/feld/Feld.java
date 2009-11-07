@@ -6,15 +6,15 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express orimplied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * (c)reated 04.10.2009 by Oli B. (oliver.boehm@agentes.de)
  */
 
@@ -190,7 +190,7 @@ public class Feld {
 	/**
 	 * Wenn die ByteAdresse > 256 ist, kann hierueber der Teildatensatz
 	 * bestimmt werden, in der das Feld liegen muesste.
-	 * 
+	 *
 	 * @return Nummer des Teildatensatzes, beginnend bei 1
 	 */
 	public int getTeildatensatzNr() {
@@ -220,7 +220,7 @@ public class Feld {
 	 * Auf Performance-Gruenden wurde diese Methode stuetzt sich diese
 	 * Methode nicht auf validate(), sondern implementiert die entsprechenden
 	 * Abfragen selbst.
-	 * 
+	 *
 	 * @return false, falls Verletzung erkannt wird
 	 * @since 0.1.0
 	 */
@@ -269,7 +269,7 @@ public class Feld {
 	    	return false;
 	    }
     }
-    
+   
     public boolean equals(Feld other) {
 		return this.bezeichnung.equals(other.bezeichnung)
 		        && this.getInhalt().equals(other.getInhalt())

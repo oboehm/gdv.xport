@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package gdv.xport.satz;
 
@@ -133,7 +133,7 @@ public final class Vorsatz extends Satz {
 	/**
 	 * Momentan wird die Version immer auf "1.0" fuer den uebergebenen
 	 * Datensatz gesetzt.
-	 * 
+	 *
 	 * @param datensatz
 	 */
 	public void setVersionFor(Datensatz datensatz) {
@@ -148,7 +148,7 @@ public final class Vorsatz extends Satz {
 	
 	/**
 	 * Ermittelt die Version des uebergebenen Bezeichners.
-	 * 
+	 *
 	 * @param bezeichner
 	 *            z.B. VERSION_VORSATZ; hier koennen alle die
 	 *            Bezeichner-Konstanten gewaehlt werden, die mit "VERSION_"
