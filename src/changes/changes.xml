@@ -17,7 +17,7 @@
 
   <body>
 
-    <release version="0.1.1" date="Nov-2009"
+    <release version="0.1.1" date="07-Nov-2009"
              description="Dokumentation aktualisiert">
       <action dev="oboehm" type="update">
         Dokumentation aktualisiert (u.a. Download-Sektion hinzugefuegt)
