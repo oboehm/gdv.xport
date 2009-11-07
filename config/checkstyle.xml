@@ -72,7 +72,9 @@ under the License.
         <!-- See http://checkstyle.sf.net/config_javadoc.html -->
         <module name="JavadocMethod"/>
         <module name="JavadocType"/>
-        <module name="JavadocVariable"/>
+        <module name="JavadocVariable">
+          <property name="scope" value="protected"/>
+        </module>
         <module name="JavadocStyle"/>
 
 

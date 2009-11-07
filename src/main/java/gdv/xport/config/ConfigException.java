@@ -27,7 +27,8 @@ public class ConfigException extends RuntimeException {
     private static final long serialVersionUID = 20091008L;
 
     /**
-     * @param message
+     * Falls mal die Konfiguration nicht stimmt...
+     * @param message Hinweis fuer die Ursache
      */
     public ConfigException(final String message) {
         super(message);
