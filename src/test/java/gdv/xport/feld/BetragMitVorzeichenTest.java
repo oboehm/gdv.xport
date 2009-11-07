@@ -30,29 +30,29 @@ import org.junit.Test;
  */
 public class BetragMitVorzeichenTest {
 
-	private BetragMitVorzeichen betrag = new BetragMitVorzeichen("Test", 5, 1);
+    private BetragMitVorzeichen betrag = new BetragMitVorzeichen("Test", 5, 1);
 
-	/**
-	 * Test method for {@link gdv.xport.feld.BetragMitVorzeichen#VorzeichenBetrag(int, int)}.
-	 */
-	@Test
-	public void testBetragMitVorzeichen() {
-		assertEquals("0000+", betrag.getInhalt());
-	}
-	
-	@Test
-	public void testToDoublePositive() {
-		betrag.setInhalt(1.2);
-		assertEquals("0120+", betrag.getInhalt());
-		assertEquals(1.2, betrag.toDouble(), 0.001);
-	}
-	
-	@Test
-	public void testToDoubleNegative() {
-		betrag.setInhalt(-1.2);
-		assertEquals("0120-", betrag.getInhalt());
-		assertEquals(-1.2, betrag.toDouble(), 0.001);
-	}
+    /**
+     * Test method for {@link gdv.xport.feld.BetragMitVorzeichen#VorzeichenBetrag(int, int)}.
+     */
+    @Test
+    public void testBetragMitVorzeichen() {
+        assertEquals("0000+", betrag.getInhalt());
+    }
+
+    @Test
+    public void testToDoublePositive() {
+        betrag.setInhalt(1.2);
+        assertEquals("0120+", betrag.getInhalt());
+        assertEquals(1.2, betrag.toDouble(), 0.001);
+    }
+
+    @Test
+    public void testToDoubleNegative() {
+        betrag.setInhalt(-1.2);
+        assertEquals("0120-", betrag.getInhalt());
+        assertEquals(-1.2, betrag.toDouble(), 0.001);
+    }
 
 }
 

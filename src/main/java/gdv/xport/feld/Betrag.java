@@ -28,44 +28,44 @@ package gdv.xport.feld;
  */
 public class Betrag extends NumFeld {
 
-	public Betrag(String name) {
-		super(name, "00000000000000");
-	}
-	
-	public Betrag(String name, int length, int start) {
-		super(name, length, start);
-	}
-	
-	public Betrag(int length, int start) {
-		super(length, start);
-	}
+    public Betrag(String name) {
+        super(name, "00000000000000");
+    }
 
-	/* (non-Javadoc)
-	 * @see gdv.xport.feld.NumFeld#setInhalt(int)
-	 */
-	@Override
-	public void setInhalt(int n) {
-		assert n >= 0 : "Betrag can't store negative number (" + n + ")";
-		super.setInhalt(n * 100);
-	}
-	
-	public void setInhalt(double x) {
-		assert x >= 0 : "Betrag can't store negative number (" + x + ")";
-		long n = Math.round(x * 100);
-		super.setInhalt(n);
-	}
+    public Betrag(String name, int length, int start) {
+        super(name, length, start);
+    }
 
-	/* (non-Javadoc)
-	 * @see gdv.xport.feld.NumFeld#toInt()
-	 */
-	@Override
-	public int toInt() {
-		return super.toInt() / 100;
-	}
-	
-	public double toDouble() {
-		return super.toInt() / 100.0;
-	}
-	
+    public Betrag(int length, int start) {
+        super(length, start);
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.NumFeld#setInhalt(int)
+     */
+    @Override
+    public void setInhalt(int n) {
+        assert n >= 0 : "Betrag can't store negative number (" + n + ")";
+        super.setInhalt(n * 100);
+    }
+
+    public void setInhalt(double x) {
+        assert x >= 0 : "Betrag can't store negative number (" + x + ")";
+        long n = Math.round(x * 100);
+        super.setInhalt(n);
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.NumFeld#toInt()
+     */
+    @Override
+    public int toInt() {
+        return super.toInt() / 100;
+    }
+
+    public double toDouble() {
+        return super.toInt() / 100.0;
+    }
+
 }
 

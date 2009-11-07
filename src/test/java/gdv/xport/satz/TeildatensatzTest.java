@@ -32,16 +32,16 @@ import org.junit.Test;
  */
 public class TeildatensatzTest extends AbstractSatzTest {
 
-	/**
-	 * Test method for {@link gdv.xport.satz.Teildatensatz#export(java.io.Writer)}.
-	 * @throws IOException
-	 */
-	@Test
-	public void testExport() throws IOException {
-		Teildatensatz teildatensatz = new Teildatensatz(new NumFeld("Feld42", "0042"), 1);
-		this.checkExport(teildatensatz, 1, 4, "0042", 256);
-		this.checkExport(teildatensatz, 255, 256, " 1", 256);
-	}
+    /**
+     * Test method for {@link gdv.xport.satz.Teildatensatz#export(java.io.Writer)}.
+     * @throws IOException
+     */
+    @Test
+    public void testExport() throws IOException {
+        Teildatensatz teildatensatz = new Teildatensatz(new NumFeld("Feld42", "0042"), 1);
+        this.checkExport(teildatensatz, 1, 4, "0042", 256);
+        this.checkExport(teildatensatz, 255, 256, " 1", 256);
+    }
 
 }
 

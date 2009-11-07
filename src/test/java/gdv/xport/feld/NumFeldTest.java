@@ -31,29 +31,29 @@ import org.junit.Test;
  *
  */
 public class NumFeldTest {
-	
-	@Test
-	public void testNumFeld() {
-		NumFeld nummer = new NumFeld(4, 1);
-		assertEquals("0000", nummer.getInhalt());
-	}
 
-	/**
-	 * Test method for {@link gdv.xport.feld.NumFeld#setInhalt(int)}.
-	 */
-	@Test
-	public void testSetInhaltInt() {
-		NumFeld nummer = new NumFeld("Feld X", "0001");
-		nummer.setInhalt(2);
-		assertEquals("0002", nummer.getInhalt());
-	}
-	
-	@Test
-	public void testIsValid() {
-		NumFeld x = new NumFeld("x", "xxxx");
-		assertFalse(x + " is invalid", x.isValid());
-	}
-	
+    @Test
+    public void testNumFeld() {
+        NumFeld nummer = new NumFeld(4, 1);
+        assertEquals("0000", nummer.getInhalt());
+    }
+
+    /**
+     * Test method for {@link gdv.xport.feld.NumFeld#setInhalt(int)}.
+     */
+    @Test
+    public void testSetInhaltInt() {
+        NumFeld nummer = new NumFeld("Feld X", "0001");
+        nummer.setInhalt(2);
+        assertEquals("0002", nummer.getInhalt());
+    }
+
+    @Test
+    public void testIsValid() {
+        NumFeld x = new NumFeld("x", "xxxx");
+        assertFalse(x + " is invalid", x.isValid());
+    }
+
 }
 
 

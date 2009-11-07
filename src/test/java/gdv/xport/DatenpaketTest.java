@@ -39,103 +39,103 @@ import org.junit.*;
  */
 public class DatenpaketTest {
 
-	private static final Log log = LogFactory.getLog(Datenpaket.class);
-	/** zum Testen nehmen wir hier die VU-Nr. der Oerag */
-	protected static final VUNummer VU_NUMMER = new VUNummer("5183");
-	/** fuer jeden Test gibt es ein frisches Datenpaket */
-	private Datenpaket datenpaket = new Datenpaket();
-	
-	@BeforeClass
-	public static void setUpBeforeClass() {
-		Config.setVUNummer(VU_NUMMER);
-	}
+    private static final Log log = LogFactory.getLog(Datenpaket.class);
+    /** zum Testen nehmen wir hier die VU-Nr. der Oerag */
+    protected static final VUNummer VU_NUMMER = new VUNummer("5183");
+    /** fuer jeden Test gibt es ein frisches Datenpaket */
+    private Datenpaket datenpaket = new Datenpaket();
 
-	/**
-	 * Test method for {@link gdv.xport.Datenpaket#export(java.io.Writer)}.
-	 * @throws IOException
-	 */
-	@Test
-	public void testEmptyExport() throws IOException {
-		Datenpaket empty = new Datenpaket();
-		StringWriter swriter = new StringWriter(1024);
-		empty.export(swriter);
-		String data = swriter.toString();
-		assertEquals(1024, data.length());
-		Vorsatz vorsatz = datenpaket.getVorsatz();
-		assertEquals("1.0", vorsatz.getVersion(VERSION_VORSATZ));
-		assertEquals("1.0", vorsatz.getVersion(VERSION_NACHSATZ));
-		Nachsatz nachsatz = datenpaket.getNachsatz();
-		assertEquals(0, nachsatz.getAnzahlSaetze());
-		assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
-		assertEquals(0.0, nachsatz.getGesamtBeitragBrutto().toDouble(), 0.001);
-		assertEquals(0.0, nachsatz.getVersicherungsLeistungen().toDouble(), 0.001);
-		assertEquals(0.0, nachsatz.getSchadenbearbeitungsKosten().toDouble(), 0.001);
-	}
-	
-	@Test
-	public void testExportFile() throws IOException {
-		datenpaket.setAdressat("Test-Adressat");
-		datenpaket.setVermittler("845/666666");
-		File file = File.createTempFile("datenpaket", ".txt");
-		datenpaket.export(file);
-		log.info(datenpaket + " was exported to " + file);
-		assertTrue(file + " was not created", file.exists());
-		assertEquals(1024, file.length());
-	}
-	
-	@Test
-	public void testAdd() {
-		Datensatz datensatz = new Adressteil();
-		datenpaket.add(datensatz);
-		Vorsatz vorsatz = datenpaket.getVorsatz();
-		assertEquals("1.0", vorsatz.getVersion(VERSION_VORSATZ));
-		assertEquals("1.0", vorsatz.getVersion(100));
-		assertEquals("1.0", vorsatz.getVersion(VERSION_NACHSATZ));
-		Nachsatz nachsatz = datenpaket.getNachsatz();
-		assertEquals(1, nachsatz.getAnzahlSaetze());
-	}
-	
-	/**
-	 * Falls kein Datum gesetzt wird, sollte als Default das heutige DAtum
-	 * zurueckgegeben werden.
-	 */
-	@Test
-	public void testGetErstellungsDatum() {
-		Datum von = datenpaket.getErstellungsDatumVon();
-		Datum bis = datenpaket.getErstellungsDatumBis();
-		Datum heute = Datum.heute();
-		Date today = heute.toDate();
-		assertEquals(today, von.toDate());
-		assertEquals(today, bis.toDate());
-	}
-	
-	@Test
-	public void testGetAbsender() {
-		String absender = "Dagobert Duck";
-		datenpaket.setAbsender(absender);
-		assertEquals(absender, datenpaket.getAbsender());
-	}
-	
-	@Test
-	public void testSetVermittler() {
-		String vermittler = "08/15";
-		datenpaket.setVermittler(vermittler);
-		assertEquals(vermittler, datenpaket.getVermittler());
-		Vorsatz vorsatz = datenpaket.getVorsatz();
-		assertEquals(vermittler, vorsatz.getVermittler());
-		Nachsatz nachsatz = datenpaket.getNachsatz();
-		assertEquals(vermittler, nachsatz.getVermittler());
-	}
-	
-	@Test
-	public void testImportReader() throws IOException {
-		InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
-		try {
-			datenpaket.importFrom(istream);
-			assertTrue(datenpaket.isValid());
+    @BeforeClass
+    public static void setUpBeforeClass() {
+        Config.setVUNummer(VU_NUMMER);
+    }
+
+    /**
+     * Test method for {@link gdv.xport.Datenpaket#export(java.io.Writer)}.
+     * @throws IOException
+     */
+    @Test
+    public void testEmptyExport() throws IOException {
+        Datenpaket empty = new Datenpaket();
+        StringWriter swriter = new StringWriter(1024);
+        empty.export(swriter);
+        String data = swriter.toString();
+        assertEquals(1024, data.length());
+        Vorsatz vorsatz = datenpaket.getVorsatz();
+        assertEquals("1.0", vorsatz.getVersion(VERSION_VORSATZ));
+        assertEquals("1.0", vorsatz.getVersion(VERSION_NACHSATZ));
+        Nachsatz nachsatz = datenpaket.getNachsatz();
+        assertEquals(0, nachsatz.getAnzahlSaetze());
+        assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
+        assertEquals(0.0, nachsatz.getGesamtBeitragBrutto().toDouble(), 0.001);
+        assertEquals(0.0, nachsatz.getVersicherungsLeistungen().toDouble(), 0.001);
+        assertEquals(0.0, nachsatz.getSchadenbearbeitungsKosten().toDouble(), 0.001);
+    }
+
+    @Test
+    public void testExportFile() throws IOException {
+        datenpaket.setAdressat("Test-Adressat");
+        datenpaket.setVermittler("845/666666");
+        File file = File.createTempFile("datenpaket", ".txt");
+        datenpaket.export(file);
+        log.info(datenpaket + " was exported to " + file);
+        assertTrue(file + " was not created", file.exists());
+        assertEquals(1024, file.length());
+    }
+
+    @Test
+    public void testAdd() {
+        Datensatz datensatz = new Adressteil();
+        datenpaket.add(datensatz);
+        Vorsatz vorsatz = datenpaket.getVorsatz();
+        assertEquals("1.0", vorsatz.getVersion(VERSION_VORSATZ));
+        assertEquals("1.0", vorsatz.getVersion(100));
+        assertEquals("1.0", vorsatz.getVersion(VERSION_NACHSATZ));
+        Nachsatz nachsatz = datenpaket.getNachsatz();
+        assertEquals(1, nachsatz.getAnzahlSaetze());
+    }
+
+    /**
+     * Falls kein Datum gesetzt wird, sollte als Default das heutige DAtum
+     * zurueckgegeben werden.
+     */
+    @Test
+    public void testGetErstellungsDatum() {
+        Datum von = datenpaket.getErstellungsDatumVon();
+        Datum bis = datenpaket.getErstellungsDatumBis();
+        Datum heute = Datum.heute();
+        Date today = heute.toDate();
+        assertEquals(today, von.toDate());
+        assertEquals(today, bis.toDate());
+    }
+
+    @Test
+    public void testGetAbsender() {
+        String absender = "Dagobert Duck";
+        datenpaket.setAbsender(absender);
+        assertEquals(absender, datenpaket.getAbsender());
+    }
+
+    @Test
+    public void testSetVermittler() {
+        String vermittler = "08/15";
+        datenpaket.setVermittler(vermittler);
+        assertEquals(vermittler, datenpaket.getVermittler());
+        Vorsatz vorsatz = datenpaket.getVorsatz();
+        assertEquals(vermittler, vorsatz.getVermittler());
+        Nachsatz nachsatz = datenpaket.getNachsatz();
+        assertEquals(vermittler, nachsatz.getVermittler());
+    }
+
+    @Test
+    public void testImportReader() throws IOException {
+        InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
+        try {
+            datenpaket.importFrom(istream);
+            assertTrue(datenpaket.isValid());
         } finally {
-	        istream.close();
+            istream.close();
         }
-	}
+    }
 
 }

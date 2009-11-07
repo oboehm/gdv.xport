@@ -25,10 +25,10 @@ package gdv.xport.feld;
  * @version $Revision$
  */
 public enum Align {
-	UNKNOWN,
-	/** linksbuendig */
-	LEFT,
-	/** rechtsbuendig */
-	RIGHT
+    UNKNOWN,
+    /** linksbuendig */
+    LEFT,
+    /** rechtsbuendig */
+    RIGHT
 }
 

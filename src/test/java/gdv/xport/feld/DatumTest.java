@@ -32,16 +32,16 @@ import org.junit.Test;
  */
 public class DatumTest {
 
-	/**
-	 * Test method for {@link gdv.xport.feld.Datum#setInhalt(java.util.Date)}.
-	 */
-	@Test
-	public void testSetInhaltDate() {
-		Date today = Datum.heute().toDate();
-		Datum datum = new Datum();
-		datum.setInhalt(today);
-		assertEquals(today, datum.toDate());
-	}
+    /**
+     * Test method for {@link gdv.xport.feld.Datum#setInhalt(java.util.Date)}.
+     */
+    @Test
+    public void testSetInhaltDate() {
+        Date today = Datum.heute().toDate();
+        Datum datum = new Datum();
+        datum.setInhalt(today);
+        assertEquals(today, datum.toDate());
+    }
 
 }
 

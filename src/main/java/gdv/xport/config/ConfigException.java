@@ -26,14 +26,14 @@ package gdv.xport.config;
  */
 public class ConfigException extends RuntimeException {
 
-	private static final long serialVersionUID = 20091008L;
+    private static final long serialVersionUID = 20091008L;
 
-	/**
-	 * @param message
-	 */
-	public ConfigException(String message) {
-		super(message);
-	}
+    /**
+     * @param message
+     */
+    public ConfigException(String message) {
+        super(message);
+    }
 
 }
 

@@ -32,69 +32,69 @@ import org.junit.Test;
  *
  */
 public class VorsatzTest extends AbstractSatzTest {
-	
-	private Vorsatz vorsatz = new Vorsatz();
 
-	/**
-	 * Test method for {@link gdv.xport.satz.Vorsatz#Vorsatz()}.
-	 * @throws IOException
-	 */
-	@Test
-	public void testVorsatz() throws IOException {
-		String expected = "0001" + VU_NUMMER.getInhalt();
-		checkExport(1, 9, expected);
-		checkExport(257, 265, expected);
-		checkExport(256+246, 256+256, "          2");
-		checkExport(225, 227, "1.0");
-		checkExport(768, 768, "3");
-	}
-	
-	@Test
-	public void testSetAbsender() throws IOException {
-		String absender = "agentes AG                    ";
-		vorsatz.setAbsender(absender.trim());
-		checkExport(10, 39, absender);
-	}
-	
-	@Test
-	public void testSetErstellungsZeitraum() throws IOException {
-		String startDatum = "01011900";
-		String endDatum = "09102009";
-		vorsatz.setErstellungsZeitraum(startDatum, endDatum);
-		checkExport(70, 85, startDatum + endDatum);
-	}
-	
-	/**
-	 * @param startByte beginnend bei 1
-	 * @param endByte   beginnend bei 1
-	 * @param expected
-	 * @throws IOException
-	 */
-	private void checkExport(int startByte, int endByte, String expected) throws IOException {
-		super.checkExport(this.vorsatz, startByte, endByte, expected, 768);
-	}
-	
-	@Test
-	public void testImport() {
-		String content = vorsatz.toLongString();
-		Vorsatz imported = new Vorsatz(content);
-		assertEquals(content, imported.toLongString());
-		assertEquals(vorsatz, imported);
-	}
-	
-	@Test
-	public void testImportReader() throws IOException {
-		InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
-		try {
-	        vorsatz.importFrom(istream);
-	        assertTrue(vorsatz + " should be valid", vorsatz.isValid());
-	        assertEquals("9999", vorsatz.getVuNummer());
-	        assertEquals("XXX Versicherung AG", vorsatz.getAbsender());
-	        assertEquals("BRBRIENNEE,J\u00dcRGEN", vorsatz.getAdressat());
+    private Vorsatz vorsatz = new Vorsatz();
+
+    /**
+     * Test method for {@link gdv.xport.satz.Vorsatz#Vorsatz()}.
+     * @throws IOException
+     */
+    @Test
+    public void testVorsatz() throws IOException {
+        String expected = "0001" + VU_NUMMER.getInhalt();
+        checkExport(1, 9, expected);
+        checkExport(257, 265, expected);
+        checkExport(256+246, 256+256, "          2");
+        checkExport(225, 227, "1.0");
+        checkExport(768, 768, "3");
+    }
+
+    @Test
+    public void testSetAbsender() throws IOException {
+        String absender = "agentes AG                    ";
+        vorsatz.setAbsender(absender.trim());
+        checkExport(10, 39, absender);
+    }
+
+    @Test
+    public void testSetErstellungsZeitraum() throws IOException {
+        String startDatum = "01011900";
+        String endDatum = "09102009";
+        vorsatz.setErstellungsZeitraum(startDatum, endDatum);
+        checkExport(70, 85, startDatum + endDatum);
+    }
+
+    /**
+     * @param startByte beginnend bei 1
+     * @param endByte   beginnend bei 1
+     * @param expected
+     * @throws IOException
+     */
+    private void checkExport(int startByte, int endByte, String expected) throws IOException {
+        super.checkExport(this.vorsatz, startByte, endByte, expected, 768);
+    }
+
+    @Test
+    public void testImport() {
+        String content = vorsatz.toLongString();
+        Vorsatz imported = new Vorsatz(content);
+        assertEquals(content, imported.toLongString());
+        assertEquals(vorsatz, imported);
+    }
+
+    @Test
+    public void testImportReader() throws IOException {
+        InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
+        try {
+            vorsatz.importFrom(istream);
+            assertTrue(vorsatz + " should be valid", vorsatz.isValid());
+            assertEquals("9999", vorsatz.getVuNummer());
+            assertEquals("XXX Versicherung AG", vorsatz.getAbsender());
+            assertEquals("BRBRIENNEE,J\u00dcRGEN", vorsatz.getAdressat());
         } finally {
-	        istream.close();
+            istream.close();
         }
-	}
+    }
 
 }
 

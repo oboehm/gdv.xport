@@ -36,46 +36,46 @@ import org.apache.commons.logging.*;
  * @version $Revision$
  */
 public class Config {
-	
-	private static final Log log = LogFactory.getLog(Config.class);
-	protected static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
-	private static VUNummer vunummer;
-	/** Standard-Encoding ist "ISO-8859-1" */
-	public static final Charset DEFAULT_ENCODING = Charset.forName("ISO-8859-1");
-	
-	/**
-	 * Diese Methode dient zwar hauptsaechlich zu Testzwecken, kann aber auch
-	 * aufgerufen werden, wenn man nicht mehr sicher ist, was denn alles
-	 * konfiguriert ist.
-	 */
-	public static void reset() {
-		vunummer = null;
-	}
-	
-	public static synchronized void setVUNummer(String nr) {
-		setVUNummer(new VUNummer(nr));
-	}
-	
-	public static synchronized void setVUNummer(VUNummer nr) {
-		vunummer = nr;
-		log.info("konfigurierte VU-Nummer: " + vunummer);
-	}
-	
-	public static synchronized VUNummer getVUNummer() {
-		if (vunummer == null) {
-			vunummer = new VUNummer(getStringProperty(GDV_VU_NUMMER));
-		}
-		assert vunummer != null : "property '" + GDV_VU_NUMMER + "' not set";
-		return vunummer;
-	}
-	
-	private static String getStringProperty(String key) {
-		String value = System.getProperty(key);
-		if (StringUtils.isBlank(value)) {
-			throw new ConfigException("Property '" + key + "' ist nicht gesetzt!");
-		}
-		return value;
-	}
+
+    private static final Log log = LogFactory.getLog(Config.class);
+    protected static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
+    private static VUNummer vunummer;
+    /** Standard-Encoding ist "ISO-8859-1" */
+    public static final Charset DEFAULT_ENCODING = Charset.forName("ISO-8859-1");
+
+    /**
+     * Diese Methode dient zwar hauptsaechlich zu Testzwecken, kann aber auch
+     * aufgerufen werden, wenn man nicht mehr sicher ist, was denn alles
+     * konfiguriert ist.
+     */
+    public static void reset() {
+        vunummer = null;
+    }
+
+    public static synchronized void setVUNummer(String nr) {
+        setVUNummer(new VUNummer(nr));
+    }
+
+    public static synchronized void setVUNummer(VUNummer nr) {
+        vunummer = nr;
+        log.info("konfigurierte VU-Nummer: " + vunummer);
+    }
+
+    public static synchronized VUNummer getVUNummer() {
+        if (vunummer == null) {
+            vunummer = new VUNummer(getStringProperty(GDV_VU_NUMMER));
+        }
+        assert vunummer != null : "property '" + GDV_VU_NUMMER + "' not set";
+        return vunummer;
+    }
+
+    private static String getStringProperty(String key) {
+        String value = System.getProperty(key);
+        if (StringUtils.isBlank(value)) {
+            throw new ConfigException("Property '" + key + "' ist nicht gesetzt!");
+        }
+        return value;
+    }
 
 }
 

@@ -30,25 +30,25 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class AdressteilTest extends AbstractSatzTest {
-	
-	private Adressteil adressteil = new Adressteil();
 
-	/**
-	 * Test method for {@link gdv.xport.satz.Adressteil#Adressteil()}.
-	 * @throws IOException
-	 */
-	@Test
-	public void testAdressteil() throws IOException {
-		checkExport(adressteil, 256, 256, "1", 1280);
-		checkExport(adressteil, 512, 512, "2", 1280);
-	}
-	
-	@Test
-	public void testSetName() {
-		adressteil.setName("Donald", "Duck");
-		assertEquals("Donald", adressteil.getName(1));
-		assertEquals("Duck", adressteil.getName(3));
-	}
+    private Adressteil adressteil = new Adressteil();
+
+    /**
+     * Test method for {@link gdv.xport.satz.Adressteil#Adressteil()}.
+     * @throws IOException
+     */
+    @Test
+    public void testAdressteil() throws IOException {
+        checkExport(adressteil, 256, 256, "1", 1280);
+        checkExport(adressteil, 512, 512, "2", 1280);
+    }
+
+    @Test
+    public void testSetName() {
+        adressteil.setName("Donald", "Duck");
+        assertEquals("Donald", adressteil.getName(1));
+        assertEquals("Duck", adressteil.getName(3));
+    }
 
 }
 

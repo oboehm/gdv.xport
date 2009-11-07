@@ -27,13 +27,13 @@ import static gdv.xport.feld.Bezeichner.*;
  * @version $Revision$
  */
 public class Adressteil extends Datensatz {
-	
-	private void setUpDatenfelder() {
-		// Teildatensatz 1
-		add(new Zeichen(ANREDESCHLUESSEL, 43, '0'));
-	    add(new AlphaNumFeld(NAME1, 30, 44));
-	    add(new AlphaNumFeld(NAME2, 30, 74));
-	    add(new AlphaNumFeld(NAME3, 30, 104));
+
+    private void setUpDatenfelder() {
+        // Teildatensatz 1
+        add(new Zeichen(ANREDESCHLUESSEL, 43, '0'));
+        add(new AlphaNumFeld(NAME1, 30, 44));
+        add(new AlphaNumFeld(NAME2, 30, 74));
+        add(new AlphaNumFeld(NAME3, 30, 104));
         add(new AlphaNumFeld(TITEL, 20, 134));
         add(new AlphaNumFeld(LAENDERKENNZEICHEN, 3, 154));
         add(new AlphaNumFeld(POSTLEITZAHL, 6, 157, Align.LEFT));
@@ -94,35 +94,35 @@ public class Adressteil extends Datensatz {
         add(new AlphaNumFeld(UMSATZSTEUER_ID, 17, 127+1024));
         add(new Zeichen(VORZUGSSTEUERBERECHTIGUNG, 144+1024));
         add(new AlphaNumFeld(VORZUGSSEUERBERECHTIGUNG_PROZENT, 5, 145+1024));
-	}
-	
-	public Adressteil() {
-		super("0100", 5);
-		this.setUpDatenfelder();
-	}
-	
-	public void setName(String vorname, String nachname) {
-		this.set(NAME1, vorname);
-		this.set(NAME3, nachname);
-	}
-	
-	/**
-	 * @param n 1, 2 oder 3
-	 * @return Name1, Name2 oder Name3
-	 */
-	public String getName(int n) {
-		assert (n >= 1) && (n <= 3) : "1 <= n <= 3 expected";
-		switch(n) {
-		case 1:
-			return this.getFeld(NAME1).getInhalt().trim();
-		case 2:
-			return this.getFeld(NAME2).getInhalt().trim();
-		case 3:
-			return this.getFeld(NAME3).getInhalt().trim();
-		default:
-			throw new IllegalArgumentException("1 <= n <= 3 expected");
-		}
-	}
+    }
+
+    public Adressteil() {
+        super("0100", 5);
+        this.setUpDatenfelder();
+    }
+
+    public void setName(String vorname, String nachname) {
+        this.set(NAME1, vorname);
+        this.set(NAME3, nachname);
+    }
+
+    /**
+     * @param n 1, 2 oder 3
+     * @return Name1, Name2 oder Name3
+     */
+    public String getName(int n) {
+        assert (n >= 1) && (n <= 3) : "1 <= n <= 3 expected";
+        switch(n) {
+        case 1:
+            return this.getFeld(NAME1).getInhalt().trim();
+        case 2:
+            return this.getFeld(NAME2).getInhalt().trim();
+        case 3:
+            return this.getFeld(NAME3).getInhalt().trim();
+        default:
+            throw new IllegalArgumentException("1 <= n <= 3 expected");
+        }
+    }
 
 }
 

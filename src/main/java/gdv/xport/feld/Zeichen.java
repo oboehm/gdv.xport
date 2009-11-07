@@ -25,18 +25,18 @@ package gdv.xport.feld;
  * @since 0.0.2
  */
 public class Zeichen extends AlphaNumFeld {
-	
-	public Zeichen(int start, char c) {
-		super(1, start);
-		super.setInhalt(c);
-	}
-	
-	public Zeichen(String name, int start) {
-		super(name, 1, start);
-	}
 
-	public Zeichen(String name, int start, char c) {
-	    super(name, 1, start, c);
+    public Zeichen(int start, char c) {
+        super(1, start);
+        super.setInhalt(c);
+    }
+
+    public Zeichen(String name, int start) {
+        super(name, 1, start);
+    }
+
+    public Zeichen(String name, int start, char c) {
+        super(name, 1, start, c);
     }
 
 }

@@ -30,20 +30,20 @@ import org.junit.Test;
  * @since 0.1.0 (28.10.2009)
  */
 public class VertragsspezifischerTeilTest extends AbstractSatzTest {
-	
-	private static final Log log = LogFactory.getLog(VertragsspezifischerTeilTest.class);
 
-	/**
-	 * Test method for {@link gdv.xport.satz.VertragsspezifischerTeil#SpartenspezifischerVertragsteil(int)}.
-	 * @throws IOException
-	 */
-	@Test
-	public void testSpartenspezifischerVertragsteil() throws IOException {
-		VertragsspezifischerTeil vertragsteil = new VertragsspezifischerTeil(70);
-		log.info(vertragsteil + " created.");
-		assertEquals(70, vertragsteil.getSparte());
-		checkExport(vertragsteil, 11, 13, "070", 256);
-	}
+    private static final Log log = LogFactory.getLog(VertragsspezifischerTeilTest.class);
+
+    /**
+     * Test method for {@link gdv.xport.satz.VertragsspezifischerTeil#SpartenspezifischerVertragsteil(int)}.
+     * @throws IOException
+     */
+    @Test
+    public void testSpartenspezifischerVertragsteil() throws IOException {
+        VertragsspezifischerTeil vertragsteil = new VertragsspezifischerTeil(70);
+        log.info(vertragsteil + " created.");
+        assertEquals(70, vertragsteil.getSparte());
+        checkExport(vertragsteil, 11, 13, "070", 256);
+    }
 
 }
 

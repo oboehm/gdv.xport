@@ -28,15 +28,15 @@ import org.junit.Test;
  */
 public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
 
-	private AllgemeinerVertragsteil vertragsteil = new AllgemeinerVertragsteil();
+    private AllgemeinerVertragsteil vertragsteil = new AllgemeinerVertragsteil();
 
-	/**
-	 * Test method for {@link gdv.xport.satz.AllgemeinerVertragsteil#AllgemeinerVertragsteil()}.
-	 */
-	@Test
-	public void testAllgemeinerVertragsteil() {
-		assertEquals(200, vertragsteil.getSatzart());
-	}
+    /**
+     * Test method for {@link gdv.xport.satz.AllgemeinerVertragsteil#AllgemeinerVertragsteil()}.
+     */
+    @Test
+    public void testAllgemeinerVertragsteil() {
+        assertEquals(200, vertragsteil.getSatzart());
+    }
 
 }
 

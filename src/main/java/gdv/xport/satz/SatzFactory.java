@@ -30,53 +30,53 @@ import org.apache.commons.logging.*;
  * @since 0.1.0 (30.10.2009)
  */
 public class SatzFactory {
-	
-	private static final Log log = LogFactory.getLog(SatzFactory.class);
-	
-	public static Satz getSatz(String content) {
-		int satzart = Integer.parseInt(content.substring(0, 4));
-		Satz satz;
-		switch (satzart) {
-			case 1:
-				satz = new Vorsatz();
-				break;
-			case 9999:
-				satz = new Nachsatz();
-				break;
-			default:
-				int sparte = Integer.parseInt(content.substring(10, 13));
-				satz = getDatensatz(satzart, sparte);
-				break;
-		}		
-		try {
-	        satz.importFrom(content);
-	        return satz;
-        } catch (IOException ioe) {
-	        throw new IllegalArgumentException("can't parse " + content, ioe);
-        }
-	}
 
-	/**
+    private static final Log log = LogFactory.getLog(SatzFactory.class);
+
+    public static Satz getSatz(String content) {
+        int satzart = Integer.parseInt(content.substring(0, 4));
+        Satz satz;
+        switch (satzart) {
+            case 1:
+                satz = new Vorsatz();
+                break;
+            case 9999:
+                satz = new Nachsatz();
+                break;
+            default:
+                int sparte = Integer.parseInt(content.substring(10, 13));
+                satz = getDatensatz(satzart, sparte);
+                break;
+        }    
+        try {
+            satz.importFrom(content);
+            return satz;
+        } catch (IOException ioe) {
+            throw new IllegalArgumentException("can't parse " + content, ioe);
+        }
+    }
+
+    /**
      * @param satzart
      * @param content
      * @return
      */
     public static Datensatz getDatensatz(int satzart, int sparte) {
-	    switch (satzart) {
-			case 100:
-				return new Adressteil();
-			case 200:
-				return new AllgemeinerVertragsteil();
-			case 210:
-				return new VertragsspezifischerTeil(sparte);
-			case 220:
-				return new SpartenspezifischerTeil(sparte);
-			default:
-				log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzart);
-				Datensatz satz = new Datensatz(satzart);
-				satz.addFiller();
-				return satz;
-		}
+        switch (satzart) {
+            case 100:
+                return new Adressteil();
+            case 200:
+                return new AllgemeinerVertragsteil();
+            case 210:
+                return new VertragsspezifischerTeil(sparte);
+            case 220:
+                return new SpartenspezifischerTeil(sparte);
+            default:
+                log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzart);
+                Datensatz satz = new Datensatz(satzart);
+                satz.addFiller();
+                return satz;
+        }
     }
 
 }

@@ -32,15 +32,15 @@ import org.junit.Test;
  */
 public class VUNummerTest {
 
-	/**
-	 * Test method for {@link gdv.xport.feld.VUNummer#VUNummer(java.lang.String)}.
-	 */
-	@Test
-	public void testVUNummerString() {
-		VUNummer vunr = new VUNummer("1234");
-		assertEquals(5, vunr.getAnzahlBytes());
-		assertEquals("1234 ", vunr.getInhalt());
-	}
+    /**
+     * Test method for {@link gdv.xport.feld.VUNummer#VUNummer(java.lang.String)}.
+     */
+    @Test
+    public void testVUNummerString() {
+        VUNummer vunr = new VUNummer("1234");
+        assertEquals(5, vunr.getAnzahlBytes());
+        assertEquals("1234 ", vunr.getInhalt());
+    }
 
 }
 

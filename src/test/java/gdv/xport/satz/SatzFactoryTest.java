@@ -29,26 +29,26 @@ import org.junit.Test;
  */
 public class SatzFactoryTest extends AbstractSatzTest {
 
-	@Test
-	public void testGetSatz() {
-		Satz vorsatz = new Vorsatz();
-		String content = vorsatz.toLongString();
-		Satz satz = SatzFactory.getSatz(vorsatz.toLongString());
-		assertEquals(content, satz.toLongString());
-		assertEquals(Vorsatz.class, satz.getClass());
-	}
-	
-	@Test
-	public void testGetUnsupportedSatz() {
-		Datensatz unsupported = new Datensatz("0123");
-		unsupported.setVuNummer("56789");
-		unsupported.setSparte(88);
-		unsupported.add(new NumFeld("zweiundvierzig", 4, 200, 42));
-		String content = unsupported.toLongString();
-		Satz imported = SatzFactory.getSatz(content);
-		assertEquals(content, imported.toLongString());
-		assertTrue(imported + " should be valid", imported.isValid());
-	}
-	
+    @Test
+    public void testGetSatz() {
+        Satz vorsatz = new Vorsatz();
+        String content = vorsatz.toLongString();
+        Satz satz = SatzFactory.getSatz(vorsatz.toLongString());
+        assertEquals(content, satz.toLongString());
+        assertEquals(Vorsatz.class, satz.getClass());
+    }
+
+    @Test
+    public void testGetUnsupportedSatz() {
+        Datensatz unsupported = new Datensatz("0123");
+        unsupported.setVuNummer("56789");
+        unsupported.setSparte(88);
+        unsupported.add(new NumFeld("zweiundvierzig", 4, 200, 42));
+        String content = unsupported.toLongString();
+        Satz imported = SatzFactory.getSatz(content);
+        assertEquals(content, imported.toLongString());
+        assertTrue(imported + " should be valid", imported.isValid());
+    }
+
 }
 

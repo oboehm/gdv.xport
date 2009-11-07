@@ -30,28 +30,28 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class ConfigTest {
-	
-	private static final Log log = LogFactory.getLog(ConfigTest.class);
 
-	/**
-	 * Test method for {@link gdv.xport.config.Config#getVUnummer()}:
-	 * Entweder ist die entsprechende Property gesetzt, oder wir erwarten hier
-	 * eine ConfigException.
-	 */
-	@Test
-	public void testGetVUnummer() {
-		Config.reset();
-		String vuNummer = System.getProperty(Config.GDV_VU_NUMMER);
-		if (StringUtils.isEmpty(vuNummer)) {
-			try {
-				Config.getVUNummer();
-			} catch (ConfigException expected) {
-				log.info("expected: " + expected);
-			}
-		} else {
-			assertEquals(vuNummer, Config.getVUNummer().getInhalt().trim());
-		}
-	}
+    private static final Log log = LogFactory.getLog(ConfigTest.class);
+
+    /**
+     * Test method for {@link gdv.xport.config.Config#getVUnummer()}:
+     * Entweder ist die entsprechende Property gesetzt, oder wir erwarten hier
+     * eine ConfigException.
+     */
+    @Test
+    public void testGetVUnummer() {
+        Config.reset();
+        String vuNummer = System.getProperty(Config.GDV_VU_NUMMER);
+        if (StringUtils.isEmpty(vuNummer)) {
+            try {
+                Config.getVUNummer();
+            } catch (ConfigException expected) {
+                log.info("expected: " + expected);
+            }
+        } else {
+            assertEquals(vuNummer, Config.getVUNummer().getInhalt().trim());
+        }
+    }
 
 }
 
