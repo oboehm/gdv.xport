@@ -222,6 +222,14 @@
         </configuration>
 	  </plugin>
       <!-- 
+        Cobertura
+        see http://mojo.codehaus.org/cobertura-maven-plugin/usage.html
+       -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+      </plugin>
+      <!-- 
           findbugs
           start 'mvn findbugs:findbugs'
           http://mojo.codehaus.org/findbugs-maven-plugin/
@@ -241,13 +249,13 @@
           <relaxed>false</relaxed>
         </configuration>
       </plugin>
-  	  <!-- 
-  		  Cobertura
-  		  see http://mojo.codehaus.org/cobertura-maven-plugin/usage.html
-  	   -->
+      <!-- 
+          Checkstyle
+          see http://maven.apache.org/plugins/maven-checkstyle-plugin
+       -->
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>cobertura-maven-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
       </plugin>
     </plugins>
   </reporting>
