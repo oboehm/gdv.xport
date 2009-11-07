@@ -21,8 +21,6 @@ package gdv.xport.config;
 /**
  * @author oliver
  * @since 08.10.2009
- * @version $Revision$
- *
  */
 public class ConfigException extends RuntimeException {
 
@@ -31,7 +29,7 @@ public class ConfigException extends RuntimeException {
     /**
      * @param message
      */
-    public ConfigException(String message) {
+    public ConfigException(final String message) {
         super(message);
     }
 
