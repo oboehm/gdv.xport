@@ -144,7 +144,7 @@ public class Bezeichner {
     public static final String VERSICHERUNGSLEISTUNGEN = "Versicherungsleistungen";
     public static final String VERSICHERUNGSSCHEINNUMMER_VM = "Versicherungsscheinnummer VM";
     public static final String VERTRAGSABLAUF = "Vertragsablauf";
-    public static final String VERTRAGSBEGINN ="Vertragsbeginn";
+    public static final String VERTRAGSBEGINN = "Vertragsbeginn";
     public static final String VERTRAGSSATUS = "Vertragsstatus";
     public static final String VORZUGSSTEUERBERECHTIGUNG = "Vorsteuerabszugsberechtigung Ja/Nein";
     public static final String VORZUGSSEUERBERECHTIGUNG_PROZENT = "Vorsteuerabszugsberechtigung in Prozent";
