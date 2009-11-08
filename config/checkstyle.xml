@@ -139,7 +139,9 @@ under the License.
         <module name="TypecastParenPad"/>
         <module name="TabCharacter"/>
         <module name="WhitespaceAfter"/>
-        <module name="WhitespaceAround"/>
+        <module name="WhitespaceAround">
+          <property name="tokens" value="ASSIGN"/>
+        </module>
 
 
         <!-- Modifier Checks                                    -->
