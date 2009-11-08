@@ -18,6 +18,9 @@
 
 package gdv.xport.satz;
 
+import static gdv.xport.feld.Bezeichner.*;
+import gdv.xport.feld.*;
+
 import org.apache.commons.logging.*;
 
 /**
@@ -40,6 +43,7 @@ public class SpartenspezifischerTeil extends Datensatz {
     public SpartenspezifischerTeil(int sparte, int n) {
         super(220, n);
         this.sparte.setInhalt(sparte);
+        this.setUpDatenfelder(sparte);
     }
 
     private static int getNumberOfTeildatensaetzeFor(int sparte) {
@@ -74,6 +78,54 @@ public class SpartenspezifischerTeil extends Datensatz {
                 log.warn("unknown Sparte " + sparte + " -> mapped to 1 Teildatensatz");
                 return 1;
         }
+    }
+    
+    private void setUpDatenfelder(int sparte) {
+        switch (sparte) {
+            case 70:
+                this.setUpDatenfelder70();
+                break;
+            default:
+                log.warn("Sparte " + sparte + " not yet fully supported");
+                this.addFiller();
+                break;
+        }
+    }
+
+    private void setUpDatenfelder70() {
+        // Teildatensatz 1
+        add(new AlphaNumFeld(RISIKOGRUPPE_RISIKOART, 5, 43));
+        add(new NumFeld(LFD_NUMMER, 5, 48));
+        add(new NumFeld(SATZNUMMER, 1, 53, 1));
+        add(new Zeichen(VERTRAGSSATUS, 54));
+        add(new Datum(BEGINN, 55));
+        add(new Datum(AUSSCHLUSS, 63));
+        add(new Datum(AENDERUNGSDATUM, 71));
+        add(new Zeichen(ZAHLUNGSWEISE, 79));
+        add(new Datum(HAUPTFAELLIGKEIT, 80));
+        add(new AlphaNumFeld(WAEHRUNGSSCHLUESSEL, 3, 88));
+        add(new Betrag(BEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 91));
+        add(new AlphaNumFeld(RISIKOTEXT, 30, 103));
+        add(new AlphaNumFeld(TARIFIERUNGSMERKMAL_LAUFZEIT, 2, 133));
+        add(new Datum(VORAUSSICHTLICHES_ENDE, 135));
+        add(new Zeichen(SELBSTBETEILIGUNG, 143));
+        add(new Betrag(SELBSTBETEILIGUNG_IN_PROZENT, 5, 144));
+        add(new Betrag(SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN, 12, 149));
+        add(new Zeichen(BEITRAGSANGLEICHUNGSKLAUSEL, 161));
+        add(new Datum(DATUM_LETZTE_BEITRAGSANGLEICHUNG, 162));
+        add(new Zeichen(BEITRAGSKLASSE, 170));
+        add(new AlphaNumFeld(BERUFSGRUPPENEINTEILUNG, 4, 171));
+        add(new Zeichen(BEITRAGSREGULIERUNG, 175));
+        add(new NumFeld(DECKUNGSSUMME_IN_TSD_WAEHRUNGSEINHEITEN, 9, 176));
+        add(new NumFeld(RISKIOEINHEIT1, 7, 185));
+        add(new NumFeld(RISKIOEINHEIT2, 7, 192));
+        add(new NumFeld(ARB, 4, 199));
+        add(new Zeichen(SONDERVEREINBARUNGEN, 203));
+        add(new NumFeld(TARIFJAHR, 4, 204));
+        add(new AlphaNumFeld(AMTL_KENNZEICHEN, 12, 208));
+        add(new Zeichen(WARTEZEIT, 220));
+        // Teildatensatz 2
+        // TODO: t.b.c.
     }
 
 }

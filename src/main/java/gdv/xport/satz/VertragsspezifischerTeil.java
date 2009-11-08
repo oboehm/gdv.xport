@@ -108,6 +108,5 @@ public class VertragsspezifischerTeil extends Datensatz {
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 147));
     }
 
-
 }
 
