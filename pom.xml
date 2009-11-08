@@ -263,6 +263,8 @@
         <version>2.3</version>
         <configuration>
           <configLocation>config/checkstyle.xml</configLocation>
+          <suppressionsLocation>config/checkstyle-suppressions.xml</suppressionsLocation>
+          <suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>
         </configuration>
       </plugin>
     </plugins>
