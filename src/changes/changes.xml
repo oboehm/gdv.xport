@@ -17,7 +17,7 @@
 
   <body>
 
-    <release version="0.1.2" date="Nov-2009"
+    <release version="0.1.2" date="09-Nov-2009"
              description="Satz 0220.070 definiert">
       <action dev="oboehm" type="add">
         Datensatz 220 hinzugefuegt,
