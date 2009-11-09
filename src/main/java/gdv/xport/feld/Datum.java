@@ -153,4 +153,12 @@ public class Datum extends Feld {
         return super.equals(other);
     }
 
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
 }
