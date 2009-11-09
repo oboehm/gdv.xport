@@ -78,8 +78,14 @@ public class Satz {
      * @param feld
      */
     public void add(Feld feld) {
-        int n = feld.getTeildatensatzNr();
-        this.teildatensatz[n-1].add(feld);
+        this.add(feld, 1);
+    }
+    
+    public void add(Feld feld, int teildatensatzNr) {
+        if (feld.getByteAdresse() > 256) {
+            throw new IllegalArgumentException(feld + " ueberschreitet Teildatensatz-Grenze");
+        }
+        this.teildatensatz[teildatensatzNr-1].add(feld);
     }
 
     /**

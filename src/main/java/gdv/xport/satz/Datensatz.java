@@ -18,7 +18,7 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.SPARTE;
+import static gdv.xport.feld.Bezeichner.*;
 
 import java.io.*;
 
@@ -34,15 +34,15 @@ public class Datensatz extends Satz {
     /** 5 Zeichen, Byte 5 - 9 */
     protected VUNummer vuNummer = new VUNummer(Config.getVUNummer(), 5);
     /** 1 Zeichen, Byte 10 */
-    protected AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(1, 10);
+    protected AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(BUENDELUNGSKENNZEICHEN, 1, 10);
     /** 3 Zeichen, Byte 11 - 13 */
     protected NumFeld sparte = new NumFeld(SPARTE, 3, 11);
     /** 17 Zeichen, Byte 14 - 30 */
-    protected AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(17, 14);
+    protected AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(VERSICHERUNGSSCHEINNUMMER, 17, 14);
     /** 2 Zeichen, Byte 31 + 32 */
-    protected NumFeld folgeNr = new NumFeld(2, 31);
+    protected NumFeld folgeNr = new NumFeld(FOLGENUMMER, 2, 31);
     /** 10 Zeichen, Byte 33 - 42 */
-    protected AlphaNumFeld vermittler = new AlphaNumFeld(10, 33);
+    protected AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 33);
 
     public Datensatz(String satzart) {
         super(satzart);
@@ -69,12 +69,12 @@ public class Datensatz extends Satz {
 
     private void setUpTeildatensaetze() {
         for (int i = 0; i < teildatensatz.length; i++) {
-            teildatensatz[i].set("VU-Nummer", this.vuNummer);
-            teildatensatz[i].set("Buendelungskennzeichen", this.buendelungsKennzeichen);
-            teildatensatz[i].set("Sparte", this.sparte);
-            teildatensatz[i].set("Versicherungschein-Nummer", this.versicherungsscheinNr);
-            teildatensatz[i].set("Folgenummer", this.folgeNr);
-            teildatensatz[i].set("Vermittler", this.vermittler);
+            teildatensatz[i].add(this.vuNummer);
+            teildatensatz[i].add(this.buendelungsKennzeichen);
+            teildatensatz[i].add(this.sparte);
+            teildatensatz[i].add(this.versicherungsscheinNr);
+            teildatensatz[i].add(this.folgeNr);
+            teildatensatz[i].add(this.vermittler);
         }
     }
 
@@ -84,7 +84,7 @@ public class Datensatz extends Satz {
     @Override
     public void addFiller() {
         for (int i = 0; i < teildatensatz.length; i++) {
-            teildatensatz[i].add(new AlphaNumFeld("unknown-" + i, 213, 43));
+            teildatensatz[i].add(new AlphaNumFeld(LEERSTELLEN, 213, 43));
         }
     }
    

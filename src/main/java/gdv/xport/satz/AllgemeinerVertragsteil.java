@@ -61,17 +61,17 @@ public class AllgemeinerVertragsteil extends Datensatz {
         add(new Zeichen(ERWEITERUNGSSATZ_VORHANDEN, 247));
         add(new Zeichen(EINZAHLUNG_AUSSCHUETTUNG, 248));
         // Teildatensatz 2
-        add(new Zeichen(KUENDIGUNGSKLAUSEL, 256+43));
-        add(new AlphaNumFeld(VERSICHERUNGSSCHEINNUMMER_VM, 17, 256+44));
-        add(new AlphaNumFeld(PRODUKTFORM, 5, 256+61));
-        add(new Datum(PRODUKTFORM_GUELTIG_AB, 6, 256+66));
-        add(new Betrag(GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN, 12, 256+72));
-        add(new AlphaNumFeld(DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER, 30, 256+84));
-        add(new AlphaNumFeld(PRODUKTNAME, 20, 256+114));
-        add(new NumFeld(RATENZAHLUNGSZUSCHLAG_IN_PROZENT, 5, 256+134));
-        add(new Datum(ANTRAGSEINGANGSDATUM, 256+139));
-        add(new Datum(POLICIERUNGSDATUM, 256+147));
-        add(new AlphaNumFeld(REGISTRIERUNGSNUMMER_VERMITTLER, 15, 256+155));
+        add(new Zeichen(KUENDIGUNGSKLAUSEL, 43), 2);
+        add(new AlphaNumFeld(VERSICHERUNGSSCHEINNUMMER_VM, 17, 44), 2);
+        add(new AlphaNumFeld(PRODUKTFORM, 5, 61), 2);
+        add(new Datum(PRODUKTFORM_GUELTIG_AB, 6, 66), 2);
+        add(new Betrag(GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN, 12, 72), 2);
+        add(new AlphaNumFeld(DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER, 30, 84), 2);
+        add(new AlphaNumFeld(PRODUKTNAME, 20, 114), 2);
+        add(new NumFeld(RATENZAHLUNGSZUSCHLAG_IN_PROZENT, 5, 134), 2);
+        add(new Datum(ANTRAGSEINGANGSDATUM, 139), 2);
+        add(new Datum(POLICIERUNGSDATUM, 147), 2);
+        add(new AlphaNumFeld(REGISTRIERUNGSNUMMER_VERMITTLER, 15, 155), 2);
     }
 
     public AllgemeinerVertragsteil() {

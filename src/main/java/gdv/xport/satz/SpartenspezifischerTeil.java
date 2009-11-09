@@ -94,8 +94,10 @@ public class SpartenspezifischerTeil extends Datensatz {
 
     private void setUpDatenfelder70() {
         // Teildatensatz 1
-        add(new AlphaNumFeld(RISIKOGRUPPE_RISIKOART, 5, 43));
-        add(new NumFeld(LFD_NUMMER, 5, 48));
+        Feld risikoGruppe = new AlphaNumFeld(RISIKOGRUPPE_RISIKOART, 5, 43);
+        add(risikoGruppe);
+        Feld lfdNummer = new NumFeld(LFD_NUMMER, 5, 48);
+        add(lfdNummer);
         add(new NumFeld(SATZNUMMER, 1, 53, 1));
         add(new Zeichen(VERTRAGSSATUS, 54));
         add(new Datum(BEGINN, 55));
@@ -125,7 +127,23 @@ public class SpartenspezifischerTeil extends Datensatz {
         add(new AlphaNumFeld(AMTL_KENNZEICHEN, 12, 208));
         add(new Zeichen(WARTEZEIT, 220));
         // Teildatensatz 2
-        // TODO: t.b.c.
+        add(risikoGruppe, 2);
+        add(lfdNummer, 2);
+        add(new Zeichen(SATZNUMMER, 53, '2'), 2);
+        add(new Betrag(ZUSCHLAG1_IN_PROZENT, 5, 54), 2);
+        add(new Betrag(ZUSCHLAG1_IN_WAEHRUNGSEINHEITEN, 6, 59), 2);
+        add(new Betrag(ZUSCHLAG2_IN_PROZENT, 5, 65), 2);
+        add(new Betrag(ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN, 6, 70), 2);
+        add(new Betrag(ABSCHLAG1_IN_PROZENT, 5, 76), 2);
+        add(new Betrag(ABSCHLAG1_IN_WAEHRUNGSEINHEITEN, 6, 81), 2);
+        add(new Betrag(ABSCHLAG2_IN_PROZENT, 5, 87), 2);
+        add(new Betrag(ABSCHLAG2_IN_WAEHRUNGSEINHEITEN, 6, 92), 2);
+        add(new Betrag(ABSCHLAG3_IN_PROZENT, 5, 98), 2);
+        add(new Betrag(ABSCHLAG3_IN_WAEHRUNGSEINHEITEN, 6, 103), 2);
+        add(new AlphaNumFeld(VERSICHERTES_OBJEKT, 80, 109), 2);
+        add(new AlphaNumFeld(MITVERSICHERTE_PERSON_FAMILIENNAME, 30, 189), 2);
+        add(new AlphaNumFeld(MITVERSICHERTE_PERSON_VORNAME, 30, 219), 2);
+        add(new AlphaNumFeld(REFERENZNUMMER, 7, 249), 2);
     }
 
 }

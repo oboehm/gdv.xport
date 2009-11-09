@@ -80,6 +80,11 @@ public class Teildatensatz extends Satz {
         String name = feld.getBezeichnung();
         datenfelder.put(name, feld);
     }
+    
+    public void set(Feld feld) {
+        String name = feld.getBezeichnung();
+        this.set(name, feld);
+    }
 
     public void set(String name, Feld feld) {
         datenfelder.put(name, feld);

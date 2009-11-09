@@ -187,23 +187,23 @@ public class Feld {
         return (other.getEndAdresse() >= this.byteAdresse);
     }
 
-    /**
-     * Wenn die ByteAdresse > 256 ist, kann hierueber der Teildatensatz
-     * bestimmt werden, in der das Feld liegen muesste.
-     *
-     * @return Nummer des Teildatensatzes, beginnend bei 1
-     */
-    public int getTeildatensatzNr() {
-        return getTeildatensatzNr(this.byteAdresse);
-    }
-
-    private static int getTeildatensatzNr(int byteAdresse) {
-        if (byteAdresse > 256) {
-            return 1 + (byteAdresse - 1) / 256;
-        } else {
-            return 1;
-        }    
-    }
+//    /**
+//     * Wenn die ByteAdresse > 256 ist, kann hierueber der Teildatensatz
+//     * bestimmt werden, in der das Feld liegen muesste.
+//     *
+//     * @return Nummer des Teildatensatzes, beginnend bei 1
+//     */
+//    public int getTeildatensatzNr() {
+//        return getTeildatensatzNr(this.byteAdresse);
+//    }
+//
+//    private static int getTeildatensatzNr(int byteAdresse) {
+//        if (byteAdresse > 256) {
+//            return 1 + (byteAdresse - 1) / 256;
+//        } else {
+//            return 1;
+//        }    
+//    }
 
     public void write(Writer writer) throws IOException {
         writer.write(this.inhalt.toString());
@@ -229,7 +229,7 @@ public class Feld {
         if (this.getByteAdresse() < 1) {
             return false;
         }
-        if (this.getTeildatensatzNr() != getTeildatensatzNr(this.getEndAdresse())) {
+        if (this.getEndAdresse() > 256) {
             return false;
         }
         if (this.ausrichtung == Align.UNKNOWN) {
@@ -241,7 +241,7 @@ public class Feld {
     public List<ConstraintViolation> validate() {
         Validator validator = new Validator();
         List<ConstraintViolation> violations = validator.validate(this);
-        if (this.getTeildatensatzNr() != getTeildatensatzNr(this.getEndAdresse())) {
+        if (this.getEndAdresse() > 256) {
             ConstraintViolation cv = new ConstraintViolation(new SizeCheck(),
                     this + ": boundary exceeded", this, this.getEndAdresse(),
                     new ClassContext(this.getClass()));

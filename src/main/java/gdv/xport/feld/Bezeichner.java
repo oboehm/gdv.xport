@@ -30,6 +30,12 @@ public class Bezeichner {
 
     public static final String ABGANGSDATUM = "Abgangsdatum";
     public static final String ABGANGSGRUND = "Abgangsgrund";
+    public static final String ABSCHLAG1_IN_PROZENT = "Abschlag-1 in %";
+    public static final String ABSCHLAG1_IN_WAEHRUNGSEINHEITEN = "Abschlag-1 in Waehrungseinheiten";
+    public static final String ABSCHLAG2_IN_PROZENT = "Abschlag-2 in %";
+    public static final String ABSCHLAG2_IN_WAEHRUNGSEINHEITEN = "Abschlag-2 in Waehrungseinheiten";
+    public static final String ABSCHLAG3_IN_PROZENT = "Abschlag-3 in %";
+    public static final String ABSCHLAG3_IN_WAEHRUNGSEINHEITEN = "Abschlag-3 in Waehrungseinheiten";
     public static final String ABSCHLUSSPROVISION = "Abschlussprovision";
     public static final String ABSENDER = "Absender";
     public static final String ABWEICHENDER_KONTOINHABER1 = "Abweichender Kontoinhaber 1";
@@ -62,6 +68,7 @@ public class Bezeichner {
     public static final String BIC2 = "BIC 2";
     public static final String BLZ1 = "Bankleitzahl 1";
     public static final String BLZ2 = "Bankleitzahl 2";
+    public static final String BUENDELUNGSKENNZEICHEN = "Buendelungskennzeichen";
     public static final String DATUM_LETZTE_BEITRAGSANGLEICHUNG = "Datum der letzten Beitragsangleichung";
     public static final String DECKUNGSSUMME_IN_TSD_WAEHRUNGSEINHEITEN = "Deckungssumme in Tausend Waehrungseinheiten";
     public static final String DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER = "Druckaufbereitete Versicherungsscheinnummer";
@@ -70,6 +77,7 @@ public class Bezeichner {
     public static final String ERSTELLUNGSDATUM_ZEITRAUM_VOM = "Erstellungs-Datum-Zeitraum vom";
     public static final String ERWEITERUNGSSATZ_VORHANDEN = "Erweiterungssatz vorhanden";
     public static final String FAMILIENSTAND = "Familienstand";
+    public static final String FOLGENUMMER = "Folgenummer";
     public static final String FOLGEPROVISION = "Folgeprovision";
     public static final String GEBURTSDATUM = "Geburtsdatum";
     public static final String GEBURTSLAND = "Geburtsland";
@@ -112,12 +120,15 @@ public class Bezeichner {
     public static final String KUNDENNR_VERSICHERER = "Personen-/Kundennummer des Versicherers";
     public static final String LAENDERKENNZEICHEN = "Laenderkennzeichen";
     public static final String MEHRZWECKFELD = "Mehrzweckfeld";
+    public static final String MITVERSICHERTE_PERSON_FAMILIENNAME = "Mitversicherte Person Familienname";
+    public static final String MITVERSICHERTE_PERSON_VORNAME = "Mitversicherte Person Vorname";
     public static final String NAME_KREDITINSTITUT1 = "Name des Kreditinstituts 1";
     public static final String NAME_KREDITINSTITUT2 = "Name des Kreditinstituts 2";
     public static final String NAME1 = "Name 1";
     public static final String NAME2 = "Name 3";
     public static final String NAME3 = "Name 3";
     public static final String LAUFZEITRABATT_IN_PROZENT = "Laufzeitrabatt in %";
+    public static final String LEERSTELLEN = "Leerstellen";
     public static final String LFD_NUMMER = "Lfd. Nummer";
     public static final String LFD_PERSONENNR_GEVO = "Lfd. Personennummer im GeVo";
     public static final String ORDNUNGSBEGRIFF = "Ordnungsbegriff";
@@ -161,7 +172,9 @@ public class Bezeichner {
     public static final String VERMITTLER = "Geschaeftsstelle/Vermittler";
     public static final String VERSION_NACHSATZ = "Version Nachsatz Satzart 9999";
     public static final String VERSION_VORSATZ = "Version Vorsatz Satzart 0001";
+    public static final String VERSICHERTES_OBJEKT = "Versichertes Objekt";
     public static final String VERSICHERUNGSLEISTUNGEN = "Versicherungsleistungen";
+    public static final String VERSICHERUNGSSCHEINNUMMER = "Versicherungsschein-Nummer";
     public static final String VERSICHERUNGSSCHEINNUMMER_VM = "Versicherungsscheinnummer VM";
     public static final String VERTRAGSABLAUF = "Vertragsablauf";
     public static final String VERTRAGSBEGINN = "Vertragsbeginn";
@@ -175,6 +188,10 @@ public class Bezeichner {
     public static final String ZAHLUNGSART = "Zahlungsart /-weg";
     public static final String ZAHLUNGSWEISE = "Zahlungsweise";
     public static final String ZIELGRUPPENSCHLUESSEL = "Zielgruppenschluessel";
+    public static final String ZUSCHLAG1_IN_PROZENT = "Zuschlag-1 in %";
+    public static final String ZUSCHLAG1_IN_WAEHRUNGSEINHEITEN = "Zuschlag-1 in Waehrungseinheiten";
+    public static final String ZUSCHLAG2_IN_PROZENT = "Zuschlag-2 in %";
+    public static final String ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN = "Zuschlag-2 in Waehrungseinheiten";
 
 }
 
