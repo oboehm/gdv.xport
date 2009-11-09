@@ -127,5 +127,13 @@ public class Datensatz extends Satz {
         return super.equals(other);
     }
 
+    /* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
 }
 
