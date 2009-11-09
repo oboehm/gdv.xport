@@ -30,7 +30,7 @@
           <td>D-Day</td>
           <td></td>
           <td>Versions-Nummer aktualisieren</td>
-          <td>in pom.xml überall "-SNAPSHOT" entfernen</td>
+          <td>in pom.xml ueberall "-SNAPSHOT" entfernen</td>
         </tr>
         <tr>
           <td>D-Day</td>
@@ -52,9 +52,9 @@
           <td></td>
           <td>Label setzen</td>
           <td>
-            git push git@github.com:oboehm/gdv.xport.git tag GIT_XPORT_0_2_0 (remote)
-            <br/>
             git tag GIT_XPORT_0_2_0 (lokal)
+            <br/>
+            git push git@github.com:oboehm/gdv.xport.git tag GIT_XPORT_0_2_0 (remote)
           </td>
         </tr>
         <tr>
