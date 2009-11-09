@@ -237,6 +237,10 @@ public class Feld {
         }
         return true;
     }
+    
+    public boolean isInvalid() {
+        return !isValid();
+    }
 
     public List<ConstraintViolation> validate() {
         Validator validator = new Validator();
@@ -253,9 +257,9 @@ public class Feld {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " \"" + this.bezeichnung
-                + "\" (" + this.byteAdresse + "-" + this.getEndAdresse()
-                + ")";
+        return this.getClass().getSimpleName() + " " + this.bezeichnung
+                + "(" + this.byteAdresse + "-" + this.getEndAdresse()
+                + "): \"" + this.getInhalt().trim() + "\"";
     }
 
     /* (non-Javadoc)

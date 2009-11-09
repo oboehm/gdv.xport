@@ -25,6 +25,8 @@ import static gdv.xport.feld.Bezeichner.*;
 import java.io.*;
 import java.util.*;
 
+import org.apache.commons.logging.*;
+
 import net.sf.oval.*;
 
 import gdv.xport.feld.*;
@@ -38,6 +40,7 @@ import gdv.xport.feld.*;
  */
 public class Teildatensatz extends Satz {
 
+    private static final Log log = LogFactory.getLog(Teildatensatz.class);
     private final Map<String, Feld> datenfelder = new HashMap<String, Feld>();
     private final Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
 
@@ -146,6 +149,7 @@ public class Teildatensatz extends Satz {
         }
         for (Feld feld : datenfelder.values()) {
             if (!feld.isValid()) {
+                log.info(feld + " is not valid");
                 return false;
             }
         }

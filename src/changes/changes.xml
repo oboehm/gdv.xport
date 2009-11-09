@@ -17,6 +17,17 @@
 
   <body>
 
+    <release version="0.1.2" date="Nov-2009"
+             description="Satz 0220.070 definiert">
+      <action dev="oboehm" type="add">
+        Datensatz 220 hinzugefuegt,
+        Felder fuer Sparte 70 (Rechtsschutz) definiert. 
+      </action>
+      <action dev="oboehm" type="update">
+        Datum-Felder werden jetzt auch auf gueltiges Datum validiert.
+      </action>
+    </release>
+
     <release version="0.1.1" date="07-Nov-2009"
              description="Dokumentation aktualisiert">
       <action dev="oboehm" type="update">
