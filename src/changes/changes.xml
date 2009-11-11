@@ -17,6 +17,14 @@
 
   <body>
 
+    <release version="0.2.0" date="Nov-2009"
+             description="Registrierung eigener Datensaetze">
+      <action dev="oboehm" type="add">
+        Ueber die SatzFactory-Klasse koennen jetzt eigene Datensaetze
+        registriert und/oder bestehende Datensaetze ersetzt werden.
+      </action>
+    </release>
+
     <release version="0.1.2" date="09-Nov-2009"
              description="Satz 0220.070 definiert">
       <action dev="oboehm" type="add">

@@ -49,6 +49,13 @@ public class SatzFactoryTest extends AbstractSatzTest {
         assertEquals(content, imported.toLongString());
         assertTrue(imported + " should be valid", imported.isValid());
     }
+    
+    @Test
+    public void testRegister() {
+        SatzFactory.register(Datensatz.class, 42);
+        Satz satz = SatzFactory.getSatz(42);
+        assertEquals(Datensatz.class, satz.getClass());
+    }
 
 }
 

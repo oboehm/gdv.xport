@@ -19,6 +19,8 @@
 package gdv.xport.satz;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.util.*;
 
 import org.apache.commons.logging.*;
 
@@ -32,6 +34,36 @@ import org.apache.commons.logging.*;
 public class SatzFactory {
 
     private static final Log log = LogFactory.getLog(SatzFactory.class);
+    private static Map<Integer, Class<? extends Satz>> registeredClasses = new HashMap<Integer, Class<? extends Satz>>();
+    
+    /**
+     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
+     * unterstuetzte Datensaetze) registriert werden.
+     * 
+     * @param clazz
+     * @param satzart
+     */
+    public static void register(Class<? extends Satz> clazz, int satzart) {
+        registeredClasses.put(satzart, clazz);
+    }
+    
+    public static Satz getSatz(int satzart) {
+        Class<? extends Satz> clazz = registeredClasses.get(satzart);
+        if (clazz == null) {
+            throw new IllegalArgumentException("unregistered Satzart " + satzart);
+        }
+        try {
+            return clazz.newInstance();
+        } catch (Exception e) {
+            try {
+                log.info("default ctor does not work (" + e +"), trying another ctor...");
+                Constructor<? extends Satz> ctor = clazz.getConstructor(int.class);
+                return ctor.newInstance(satzart);
+            } catch (Exception ce) {
+                throw new RuntimeException("constructor problem with " + clazz, ce);
+            }
+        }
+    }
 
     public static Satz getSatz(String content) {
         int satzart = Integer.parseInt(content.substring(0, 4));
