@@ -23,6 +23,8 @@ package gdv.xport.feld;
 import java.text.*;
 import java.util.*;
 
+import org.apache.commons.logging.*;
+
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.constraint.MatchPatternCheck;
 import net.sf.oval.context.ClassContext;
@@ -34,6 +36,7 @@ import net.sf.oval.context.ClassContext;
  */
 public class Datum extends Feld {
 
+    private static final Log log = LogFactory.getLog(Feld.class);
     private DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 
     public Datum(String name, int start) {
@@ -103,12 +106,21 @@ public class Datum extends Feld {
         }
     }
 
-    /* (non-Javadoc)
+    /**
+     * Aus Performance-Gruenden verwenden wir hier nicht die
+     * validate()-Methode.
      * @see gdv.xport.feld.Feld#isValid()
+     * @return true/false
      */
     @Override
     public boolean isValid() {
-        return this.validate().isEmpty();
+        if (this.isEmpty()) {
+            return true;
+        }
+        if (!super.isValid()) {
+            return false;
+        }
+        return this.hasValidDate();
     }
     
     /* (non-Javadoc)
@@ -117,6 +129,18 @@ public class Datum extends Feld {
     @Override
     public boolean isInvalid() {
         return !this.isValid();
+    }
+    
+    private boolean hasValidDate() {
+        try {
+            Date date = this.toDate();
+            String conv = this.dateFormat.format(date);
+            String orig = this.getInhalt();
+            return conv.equals(orig);
+        } catch (RuntimeException e) {
+            log.info(e + " -> mapped to false");
+            return false;
+        }
     }
 
     /* (non-Javadoc)
@@ -129,12 +153,8 @@ public class Datum extends Feld {
             return violations;
         }
         try {
-            Date date = this.toDate();
-            String conv = this.dateFormat.format(date);
-            String orig = this.getInhalt();
-            if (!conv.equals(orig)) {
-                throw new RuntimeException(orig + " is not a valid date (would be interpreted as "
-                        + conv + ")");
+            if (!this.hasValidDate()) {
+                throw new RuntimeException(this.getInhalt() + " is not a valid date");
             }
         } catch (RuntimeException e) {
             ConstraintViolation cv = new ConstraintViolation(new MatchPatternCheck(), e
