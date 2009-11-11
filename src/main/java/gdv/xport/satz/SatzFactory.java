@@ -79,17 +79,12 @@ public class SatzFactory {
     public static Satz getSatz(String content) {
         int satzart = Integer.parseInt(content.substring(0, 4));
         Satz satz;
-        switch (satzart) {
-            case 1:
-                satz = new Vorsatz();
-                break;
-            case 9999:
-                satz = new Nachsatz();
-                break;
-            default:
-                int sparte = Integer.parseInt(content.substring(10, 13));
-                satz = getDatensatz(satzart, sparte);
-                break;
+        try {
+            satz = getSatz(satzart);
+        } catch (RuntimeException e) {
+            log.debug("can't get Satz " + satzart + " (" + e + "), parsing Sparte...");
+            int sparte = Integer.parseInt(content.substring(10, 13));
+            satz = getDatensatz(satzart, sparte);
         }    
         try {
             satz.importFrom(content);
