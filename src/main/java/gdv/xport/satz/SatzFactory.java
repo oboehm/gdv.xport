@@ -36,17 +36,28 @@ public class SatzFactory {
     private static final Log log = LogFactory.getLog(SatzFactory.class);
     private static Map<Integer, Class<? extends Satz>> registeredClasses = new HashMap<Integer, Class<? extends Satz>>();
     
+    static {
+        registeredClasses.put(1, Vorsatz.class);
+        registeredClasses.put(9999, Nachsatz.class);
+    }
+    
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
      * unterstuetzte Datensaetze) registriert werden.
      * 
      * @param clazz
      * @param satzart
+     * @since 0.2
      */
     public static void register(Class<? extends Satz> clazz, int satzart) {
         registeredClasses.put(satzart, clazz);
     }
     
+    /**
+     * @param satzart
+     * @return angeforderte Satz
+     * @since 0.2
+     */
     public static Satz getSatz(int satzart) {
         Class<? extends Satz> clazz = registeredClasses.get(satzart);
         if (clazz == null) {

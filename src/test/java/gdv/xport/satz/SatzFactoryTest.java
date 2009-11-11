@@ -37,6 +37,12 @@ public class SatzFactoryTest extends AbstractSatzTest {
         assertEquals(content, satz.toLongString());
         assertEquals(Vorsatz.class, satz.getClass());
     }
+    
+    @Test
+    public void testGetSatzInt() {
+        Satz satz = SatzFactory.getSatz(1);
+        assertEquals(Vorsatz.class, satz.getClass());
+    }
 
     @Test
     public void testGetUnsupportedSatz() {
