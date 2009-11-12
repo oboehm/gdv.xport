@@ -26,7 +26,6 @@ import org.apache.commons.logging.*;
 /**
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (05.11.2009)
- *
  */
 public class SpartenspezifischerTeil extends Datensatz {
 
@@ -41,8 +40,7 @@ public class SpartenspezifischerTeil extends Datensatz {
      * @param n Anzahl Teildatensaetze
      */
     public SpartenspezifischerTeil(int sparte, int n) {
-        super(220, n);
-        this.sparte.setInhalt(sparte);
+        super(220, sparte, n);
         this.setUpDatenfelder(sparte);
     }
 

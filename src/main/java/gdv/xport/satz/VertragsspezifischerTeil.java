@@ -41,8 +41,7 @@ public class VertragsspezifischerTeil extends Datensatz {
      * @param n Anzahl Teildatensaetze
      */
     public VertragsspezifischerTeil(int sparte, int n) {
-        super(210, n);
-        this.sparte.setInhalt(sparte);
+        super(210, sparte, n);
         this.setUpDatenfelder(sparte);
     }
 

@@ -50,7 +50,8 @@ public class Datensatz extends Satz {
     }
 
     public Datensatz(int satzart) {
-        this(satzart, 1);
+        super(satzart, 1);
+        this.setUpTeildatensaetze();
     }
 
     /**
@@ -62,8 +63,13 @@ public class Datensatz extends Satz {
         this.setUpTeildatensaetze();
     }
 
-    public Datensatz(int satzart, int n) {
+    public Datensatz(int satzart, int sparte) {
+        this(satzart, sparte, 1);
+    }
+    
+    public Datensatz(int satzart, int sparte, int n) {
         super(satzart, n);
+        this.setSparte(sparte);
         this.setUpTeildatensaetze();
     }
 

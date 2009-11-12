@@ -57,10 +57,18 @@ public class SatzFactoryTest extends AbstractSatzTest {
     }
     
     @Test
-    public void testRegister() {
-        SatzFactory.register(Datensatz.class, 42);
-        Satz satz = SatzFactory.getSatz(42);
+    public void testRegisterSatz() {
+        SatzFactory.register(Datensatz.class, 47);
+        Satz satz = SatzFactory.getSatz(47);
         assertEquals(Datensatz.class, satz.getClass());
+        assertEquals(47, satz.getSatzart());
+    }
+    
+    @Test
+    public void testRegisterDatensatz() {
+        SatzFactory.register(Adressteil.class, 47, 11);
+        Datensatz satz = SatzFactory.getDatensatz(47, 11);
+        assertEquals(Adressteil.class, satz.getClass());
     }
 
 }
