@@ -29,52 +29,111 @@ import net.sf.oval.ConstraintViolation;
 import net.sf.oval.constraint.MatchPatternCheck;
 import net.sf.oval.context.ClassContext;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class Datum.
+ * 
  * @author oliver
  * @since 04.10.2009
  * @version $Revision$
  */
-public class Datum extends Feld {
+public final class Datum extends Feld {
 
     private static final Log log = LogFactory.getLog(Feld.class);
     private DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
 
+    /**
+     * Instantiates a new datum.
+     * 
+     * @param name the name
+     * @param start the start
+     */
     public Datum(String name, int start) {
         this(name, 8, start);
     }
     
+    /**
+     * Instantiates a new datum.
+     * 
+     * @param name the name
+     * @param mmddjjjj the mmddjjjj
+     */
     public Datum(String name, String mmddjjjj) {
         this(name, 8, 1, mmddjjjj);
     }
 
+    /**
+     * Instantiates a new datum.
+     * 
+     * @param name the name
+     * @param length the length
+     * @param start the start
+     */
     public Datum(String name, int length, int start) {
         super(name, length, start, Align.RIGHT);
     }
     
+    /**
+     * Instantiates a new datum.
+     * 
+     * @param name the name
+     * @param length the length
+     * @param start the start
+     * @param mmddjjjj the mmddjjjj
+     */
     public Datum(String name, int length, int start, String mmddjjjj) {
         super(name, length, start, mmddjjjj, Align.RIGHT);
     }
 
+    /**
+     * Instantiates a new datum.
+     */
     public Datum() {
         this(1);
     }
 
+    /**
+     * Instantiates a new datum.
+     * 
+     * @param start the start
+     */
     public Datum(int start) {
         this(8, start);
     }
 
+    /**
+     * Instantiates a new datum.
+     * 
+     * @param length the length
+     * @param start the start
+     */
     public Datum(int length, int start) {
         super(length, start, Align.RIGHT);
     }
 
+    /**
+     * Sets the inhalt.
+     * 
+     * @param d the new inhalt
+     */
     public void setInhalt(Datum d) {
         this.setInhalt(d.getInhalt());
     }
 
+    /**
+     * Sets the inhalt.
+     * 
+     * @param d the new inhalt
+     */
     public void setInhalt(Date d) {
         this.setInhalt(dateFormat.format(d));
     }
 
+    /**
+     * To date.
+     * 
+     * @return the date
+     */
     public Date toDate() {
         try {
             return dateFormat.parse(this.getInhalt());
@@ -84,6 +143,11 @@ public class Datum extends Feld {
         }
     }
 
+    /**
+     * Heute.
+     * 
+     * @return the datum
+     */
     public static Datum heute() {
         Datum d = new Datum();
         d.setInhalt(new Date());
@@ -109,8 +173,10 @@ public class Datum extends Feld {
     /**
      * Aus Performance-Gruenden verwenden wir hier nicht die
      * validate()-Methode.
-     * @see gdv.xport.feld.Feld#isValid()
+     * 
      * @return true/false
+     * 
+     * @see gdv.xport.feld.Feld#isValid()
      */
     @Override
     public boolean isValid() {
