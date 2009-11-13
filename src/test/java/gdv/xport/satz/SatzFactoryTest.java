@@ -19,7 +19,9 @@
 package gdv.xport.satz;
 
 import static org.junit.Assert.*;
-import gdv.xport.feld.NumFeld;
+import static gdv.xport.feld.Bezeichner.*;
+
+import gdv.xport.feld.*;
 
 import org.junit.Test;
 
@@ -90,11 +92,13 @@ public class SatzFactoryTest extends AbstractSatzTest {
     }
     
     @Test
-    public void testGetVertragsspezifischerTeil() {
-        Datensatz datensatz = SatzFactory.getDatensatz(210, 70);
-        assertEquals(VertragsspezifischerTeil.class, datensatz.getClass());
-        assertEquals(210, datensatz.getSatzart());
+    public void testGetSpartenspezifischerTeil() {
+        Datensatz datensatz = SatzFactory.getDatensatz(220, 70);
+        assertEquals(SpartenspezifischerTeil.class, datensatz.getClass());
+        assertEquals(220, datensatz.getSatzart());
         assertEquals(70, datensatz.getSparte());
+        Feld satznummer = datensatz.getFeld(SATZNUMMER, 2);
+        assertEquals("2", satznummer.getInhalt());
     }
 
 }

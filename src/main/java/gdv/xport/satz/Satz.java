@@ -135,7 +135,7 @@ public class Satz {
     }
 
     /**
-     * @param name gesuchtes Feld
+     * @param name gewuenschter Bezeichner des Feldes
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
      */
     public Feld getFeld(String name) {
@@ -146,6 +146,17 @@ public class Satz {
             }
         }
         return Feld.NULL_FELD;
+    }
+    
+    /**
+     * @param name gewuenschter Bezeichner des Feldes
+     * @param nr Nummer des Teildatensatzes (1, 2, ...)
+     * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
+     * @since 0.2
+     */
+    public Feld getFeld(String name, int nr) {
+        assert (0 < nr) &&  (nr <= teildatensatz.length) : nr + " liegt ausserhalb des Bereichs";
+        return teildatensatz[nr-1].getFeld(name);
     }
 
     public int getSatzart() {
