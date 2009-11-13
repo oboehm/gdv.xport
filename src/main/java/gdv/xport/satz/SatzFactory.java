@@ -19,7 +19,7 @@
 package gdv.xport.satz;
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
+import java.lang.reflect.*;
 import java.util.*;
 
 import org.apache.commons.logging.*;
@@ -38,7 +38,11 @@ public class SatzFactory {
     private static Map<Integer, Class<? extends Datensatz>> registeredDatensatzClasses = new HashMap<Integer, Class<? extends Datensatz>>();
     
     static {
-        registeredSatzClasses.put(1, Vorsatz.class);
+        registeredSatzClasses.put(   1, Vorsatz.class);
+        registeredSatzClasses.put( 100, Adressteil.class);
+        registeredSatzClasses.put( 200, AllgemeinerVertragsteil.class);
+        registeredSatzClasses.put( 210, VertragsspezifischerTeil.class);
+        registeredSatzClasses.put( 220, SpartenspezifischerTeil.class);
         registeredSatzClasses.put(9999, Nachsatz.class);
     }
     
@@ -52,6 +56,10 @@ public class SatzFactory {
      */
     public static void register(Class<? extends Satz> clazz, int satzart) {
         registeredSatzClasses.put(satzart, clazz);
+    }
+    
+    public static void unregister(int satzart) {
+        registeredSatzClasses.remove(satzart);
     }
     
     /**
@@ -68,6 +76,10 @@ public class SatzFactory {
         assert (0 <= sparte) && (sparte <= 999)    : "Sparte muss zwischen 0 und 999 liegen";
         int key = getAsKey(satzart, sparte);
         registeredDatensatzClasses.put(key, clazz);
+    }
+    
+    public static void unregister(int satzart, int sparte) {
+        registeredDatensatzClasses.remove(getAsKey(satzart, sparte));
     }
     
     private static int getAsKey(int satzart, int sparte) {
@@ -121,15 +133,19 @@ public class SatzFactory {
      * @return
      */
     public static Datensatz getDatensatz(int satzart, int sparte) {
-        switch (satzart) {
-            case 100:
-                return new Adressteil();
-            case 200:
-                return new AllgemeinerVertragsteil();
-            case 210:
-                return new VertragsspezifischerTeil(sparte);
-            case 220:
-                return new SpartenspezifischerTeil(sparte);
+//        switch (satzart) {
+//            case 100:
+//                return new Adressteil();
+//            case 200:
+//                return new AllgemeinerVertragsteil();
+//            case 210:
+//                return new VertragsspezifischerTeil(sparte);
+//            case 220:
+//                return new SpartenspezifischerTeil(sparte);
+//        }
+        Class<? extends Satz> satzClass = registeredSatzClasses.get(satzart);
+        if (satzClass != null) {
+            return newInstanceOf(satzClass, sparte);
         }
         int key = getAsKey(satzart, sparte);
         Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(key);
@@ -155,6 +171,29 @@ public class SatzFactory {
                 } catch (Exception exWithOneParam) {
                     throw new RuntimeException("constructor problem with " + clazz, exWithOneParam);
                 }
+            }
+        }
+    }
+    
+    /**
+     * Hier wird versucht, den Ctor mit der Sparte als Parameter aufzurufen.
+     * 
+     * @param clazz
+     * @param sparte
+     * @return ein Datensatz-Objekt
+     * @since 0.2
+     */
+    @SuppressWarnings("unchecked")
+    private static Datensatz newInstanceOf(Class<? extends Satz> clazz, int sparte) {
+        Class<? extends Datensatz> datensatzClazz = (Class<? extends Datensatz>) clazz;
+        try {
+            Constructor<? extends Datensatz> ctor = datensatzClazz.getConstructor(int.class);
+            return ctor.newInstance(sparte);
+        } catch (Exception e) {
+            try {
+                return datensatzClazz.newInstance();
+            } catch (Exception ie) {
+                throw new IllegalArgumentException("can't instantiate " + clazz, ie);
             }
         }
     }

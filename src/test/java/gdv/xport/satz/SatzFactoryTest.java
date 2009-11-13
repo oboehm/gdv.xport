@@ -62,6 +62,7 @@ public class SatzFactoryTest extends AbstractSatzTest {
         Satz satz = SatzFactory.getSatz(47);
         assertEquals(Datensatz.class, satz.getClass());
         assertEquals(47, satz.getSatzart());
+        SatzFactory.unregister(47);
     }
     
     @Test
@@ -69,6 +70,31 @@ public class SatzFactoryTest extends AbstractSatzTest {
         SatzFactory.register(Adressteil.class, 47, 11);
         Datensatz satz = SatzFactory.getDatensatz(47, 11);
         assertEquals(Adressteil.class, satz.getClass());
+        SatzFactory.unregister(47, 11);
+    }
+    
+    @Test
+    public void testGetAdressteil() {
+        checkGetDatensatz(100, Adressteil.class);
+    }
+    
+    @Test
+    public void testGetAllgemeinerVertragsteil() {
+        checkGetDatensatz(200, AllgemeinerVertragsteil.class);
+    }
+    
+    private static void checkGetDatensatz(int satzart, Class<? extends Datensatz> clazz) {
+        Datensatz datensatz = SatzFactory.getDatensatz(satzart, 0);
+        assertEquals(clazz, datensatz.getClass());
+        assertEquals(satzart, datensatz.getSatzart());
+    }
+    
+    @Test
+    public void testGetVertragsspezifischerTeil() {
+        Datensatz datensatz = SatzFactory.getDatensatz(210, 70);
+        assertEquals(VertragsspezifischerTeil.class, datensatz.getClass());
+        assertEquals(210, datensatz.getSatzart());
+        assertEquals(70, datensatz.getSparte());
     }
 
 }
