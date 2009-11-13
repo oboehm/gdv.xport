@@ -38,7 +38,7 @@ public class SatzFactory {
     private static final Log log = LogFactory.getLog(SatzFactory.class);
     private static Map<Integer, Class<? extends Satz>> registeredSatzClasses = new HashMap<Integer, Class<? extends Satz>>();
     private static Map<Integer, Class<? extends Datensatz>> registeredDatensatzClasses = new HashMap<Integer, Class<? extends Datensatz>>();
-    
+
     static {
         registeredSatzClasses.put(   1, Vorsatz.class);
         registeredSatzClasses.put( 100, Adressteil.class);
@@ -47,11 +47,11 @@ public class SatzFactory {
         registeredSatzClasses.put( 220, SpartenspezifischerTeil.class);
         registeredSatzClasses.put(9999, Nachsatz.class);
     }
-    
+
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
      * unterstuetzte Datensaetze) registriert werden.
-     * 
+     *
      * @param clazz
      * @param satzart
      * @since 0.2
@@ -59,15 +59,15 @@ public class SatzFactory {
     public static void register(Class<? extends Satz> clazz, int satzart) {
         registeredSatzClasses.put(satzart, clazz);
     }
-    
+
     public static void unregister(int satzart) {
         registeredSatzClasses.remove(satzart);
     }
-    
+
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
      * unterstuetzte Datensaetze) registriert werden.
-     * 
+     *
      * @param clazz
      * @param satzart
      * @param sparte
@@ -79,15 +79,15 @@ public class SatzFactory {
         int key = getAsKey(satzart, sparte);
         registeredDatensatzClasses.put(key, clazz);
     }
-    
+
     public static void unregister(int satzart, int sparte) {
         registeredDatensatzClasses.remove(getAsKey(satzart, sparte));
     }
-    
+
     private static int getAsKey(int satzart, int sparte) {
         return satzart * 1000 + sparte;
     }
-    
+
     /**
      * @param satzart
      * @return angeforderte Satz
@@ -128,7 +128,7 @@ public class SatzFactory {
             log.debug("can't get Satz " + satzart + " (" + e + "), parsing Sparte...");
             int sparte = Integer.parseInt(content.substring(10, 13));
             satz = getDatensatz(satzart, sparte);
-        }    
+        }
         try {
             satz.importFrom(content);
             return satz;
@@ -136,7 +136,7 @@ public class SatzFactory {
             throw new IllegalArgumentException("can't parse " + content, ioe);
         }
     }
-    
+
     public static Datensatz getDatensatz(int satzart) {
         return (Datensatz) getSatz(satzart);
     }

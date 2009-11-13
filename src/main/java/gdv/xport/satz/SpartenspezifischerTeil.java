@@ -33,13 +33,13 @@ public class SpartenspezifischerTeil extends Datensatz {
 
     /**
      * Dieser Konstruktor wird fuer die SatzFactory benoetigt.
-     * 
+     *
      * @since 0.2
      */
     public SpartenspezifischerTeil() {
         super(220);
     }
-    
+
     public SpartenspezifischerTeil(int sparte) {
         this(sparte, getNumberOfTeildatensaetzeFor(sparte));
     }
@@ -86,7 +86,7 @@ public class SpartenspezifischerTeil extends Datensatz {
                 return 1;
         }
     }
-    
+
     private void setUpDatenfelder(int sparte) {
         switch (sparte) {
             case 70:
@@ -156,7 +156,7 @@ public class SpartenspezifischerTeil extends Datensatz {
     /**
      * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
      * Teildatensaetze aufsetzen.
-     * 
+     *
      * @param x
      * @see gdv.xport.satz.Datensatz#setSparte(int)
      */

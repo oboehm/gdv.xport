@@ -41,7 +41,7 @@ public class SatzFactoryTest extends AbstractSatzTest {
         assertEquals(content, satz.toLongString());
         assertEquals(Vorsatz.class, satz.getClass());
     }
-    
+
     @Test
     public void testGetSatzInt() {
         Satz satz = SatzFactory.getSatz(1);
@@ -59,7 +59,7 @@ public class SatzFactoryTest extends AbstractSatzTest {
         assertEquals(content, imported.toLongString());
         assertTrue(imported + " should be valid", imported.isValid());
     }
-    
+
     @Test
     public void testRegisterSatz() {
         SatzFactory.register(Datensatz.class, 47);
@@ -68,7 +68,7 @@ public class SatzFactoryTest extends AbstractSatzTest {
         assertEquals(47, satz.getSatzart());
         SatzFactory.unregister(47);
     }
-    
+
     @Test
     public void testRegisterDatensatz() {
         SatzFactory.register(Adressteil.class, 47, 11);
@@ -76,33 +76,33 @@ public class SatzFactoryTest extends AbstractSatzTest {
         assertEquals(Adressteil.class, satz.getClass());
         SatzFactory.unregister(47, 11);
     }
-    
+
     @Test
     public void testGetAdressteil() {
         checkGetDatensatz(100, Adressteil.class);
     }
-    
+
     @Test
     public void testGetAllgemeinerVertragsteil() {
         checkGetDatensatz(200, AllgemeinerVertragsteil.class);
     }
-    
+
     private static void checkGetDatensatz(int satzart, Class<? extends Datensatz> clazz) {
         Datensatz datensatz = SatzFactory.getDatensatz(satzart);
         assertEquals(clazz, datensatz.getClass());
         assertEquals(satzart, datensatz.getSatzart());
     }
-    
+
     @Test
     public void testGetSpartenspezifischerTeil() {
         checkGetDatensatz(220, 70, SpartenspezifischerTeil.class);
     }
-    
+
     @Test
     public void testGetVertragsspezifischerTeil() {
         checkGetDatensatz(210, 70, VertragsspezifischerTeil.class);
     }
-    
+
     private static void checkGetDatensatz(int satzart, int sparte, Class<? extends Datensatz> clazz) {
         Datensatz datensatz = SatzFactory.getDatensatz(satzart, sparte);
         assertEquals(clazz, datensatz.getClass());

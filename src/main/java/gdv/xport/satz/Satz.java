@@ -80,7 +80,7 @@ public class Satz {
     public void add(Feld feld) {
         this.add(feld, 1);
     }
-    
+
     public void add(Feld feld, int teildatensatzNr) {
         if (feld.getByteAdresse() > 256) {
             throw new IllegalArgumentException(feld + " ueberschreitet Teildatensatz-Grenze");
@@ -147,7 +147,7 @@ public class Satz {
         }
         return Feld.NULL_FELD;
     }
-    
+
     /**
      * @param name gewuenschter Bezeichner des Feldes
      * @param nr Nummer des Teildatensatzes (1, 2, ...)
@@ -185,7 +185,7 @@ public class Satz {
     public void importFrom(InputStream istream) throws IOException {
         importFrom(new InputStreamReader(istream, Config.DEFAULT_ENCODING));
     }
-    
+
     public void importFrom(Reader reader) throws IOException {
         importFrom(new PushbackReader(reader, 4));
     }
@@ -309,7 +309,7 @@ public class Satz {
             return false;
         }
     }
-   
+
     public boolean equals(Satz other) {
         if (this.getSatzart() != other.getSatzart()) {
             return false;

@@ -29,7 +29,7 @@ import org.junit.Test;
  *
  */
 public class SpartenspezifischerTeilTest extends AbstractSatzTest {
-    
+
     private static final Log log = LogFactory.getLog(SpartenspezifischerTeilTest.class);
 
     /**

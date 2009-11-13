@@ -32,7 +32,7 @@ import net.sf.oval.context.ClassContext;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Datum.
- * 
+ *
  * @author oliver
  * @since 04.10.2009
  * @version $Revision$
@@ -44,17 +44,17 @@ public final class Datum extends Feld {
 
     /**
      * Instantiates a new datum.
-     * 
+     *
      * @param name the name
      * @param start the start
      */
     public Datum(String name, int start) {
         this(name, 8, start);
     }
-    
+
     /**
      * Instantiates a new datum.
-     * 
+     *
      * @param name the name
      * @param mmddjjjj the mmddjjjj
      */
@@ -64,7 +64,7 @@ public final class Datum extends Feld {
 
     /**
      * Instantiates a new datum.
-     * 
+     *
      * @param name the name
      * @param length the length
      * @param start the start
@@ -72,10 +72,10 @@ public final class Datum extends Feld {
     public Datum(String name, int length, int start) {
         super(name, length, start, Align.RIGHT);
     }
-    
+
     /**
      * Instantiates a new datum.
-     * 
+     *
      * @param name the name
      * @param length the length
      * @param start the start
@@ -94,7 +94,7 @@ public final class Datum extends Feld {
 
     /**
      * Instantiates a new datum.
-     * 
+     *
      * @param start the start
      */
     public Datum(int start) {
@@ -103,7 +103,7 @@ public final class Datum extends Feld {
 
     /**
      * Instantiates a new datum.
-     * 
+     *
      * @param length the length
      * @param start the start
      */
@@ -113,7 +113,7 @@ public final class Datum extends Feld {
 
     /**
      * Sets the inhalt.
-     * 
+     *
      * @param d the new inhalt
      */
     public void setInhalt(Datum d) {
@@ -122,7 +122,7 @@ public final class Datum extends Feld {
 
     /**
      * Sets the inhalt.
-     * 
+     *
      * @param d the new inhalt
      */
     public void setInhalt(Date d) {
@@ -131,7 +131,7 @@ public final class Datum extends Feld {
 
     /**
      * To date.
-     * 
+     *
      * @return the date
      */
     public Date toDate() {
@@ -145,7 +145,7 @@ public final class Datum extends Feld {
 
     /**
      * Heute.
-     * 
+     *
      * @return the datum
      */
     public static Datum heute() {
@@ -173,9 +173,9 @@ public final class Datum extends Feld {
     /**
      * Aus Performance-Gruenden verwenden wir hier nicht die
      * validate()-Methode.
-     * 
+     *
      * @return true/false
-     * 
+     *
      * @see gdv.xport.feld.Feld#isValid()
      */
     @Override

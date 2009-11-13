@@ -202,7 +202,7 @@ public class Feld {
 //            return 1 + (byteAdresse - 1) / 256;
 //        } else {
 //            return 1;
-//        }    
+//        }
 //    }
 
     public void write(Writer writer) throws IOException {
@@ -237,7 +237,7 @@ public class Feld {
         }
         return true;
     }
-    
+
     public boolean isInvalid() {
         return !isValid();
     }
@@ -273,7 +273,7 @@ public class Feld {
             return false;
         }
     }
-   
+
     public boolean equals(Feld other) {
         return this.bezeichnung.equals(other.bezeichnung)
                 && this.getInhalt().equals(other.getInhalt())

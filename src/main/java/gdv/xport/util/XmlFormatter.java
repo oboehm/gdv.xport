@@ -25,14 +25,14 @@ import gdv.xport.feld.Feld;
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
  * XML-Struktur ausgeben zu koennen.
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.2 (13.11.2009)
  */
 public class XmlFormatter {
-    
+
     private final Writer writer;
-    
+
     /**
      * Der einzige Konstruktor.
      * @param writer
@@ -40,12 +40,12 @@ public class XmlFormatter {
     public XmlFormatter(Writer writer) {
         this.writer = writer;
     }
-    
+
     /**
      * Ausgabe eines Feldes als XML
-     * 
+     *
      * @param feld the feld
-     * 
+     *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void write(Feld feld) throws IOException {

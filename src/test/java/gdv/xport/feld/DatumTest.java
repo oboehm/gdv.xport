@@ -34,7 +34,7 @@ import org.junit.Test;
  *
  */
 public class DatumTest {
-    
+
     private static final Log log = LogFactory.getLog(DatumTest.class);
 
     /**
@@ -47,7 +47,7 @@ public class DatumTest {
         datum.setInhalt(today);
         assertEquals(today, datum.toDate());
     }
-    
+
     @Test(expected=IllegalStateException.class)
     public void testToDate() {
         Datum silvester = new Datum("Silvester", "31122009");
@@ -55,30 +55,30 @@ public class DatumTest {
         Datum invalid = new Datum("invalid", "xxxxxxxx");
         log.info("invalid date: " + invalid.toDate());
     }
-    
+
     @Test
     public void testIsValid() {
         Datum xmas = new Datum("Xmas", "24122009");
         assertTrue(xmas + " should be a valid date", xmas.isValid());
         assertEquals(0, xmas.validate().size());
     }
-    
+
     @Test
     public void testValidateEmptyDatum() {
         Datum empty = new Datum();
         assertTrue(empty + " should be valid", empty.isValid());
     }
-    
+
     @Test
     public void testIsInvalid() {
         checkInvalidDatum("xxxxxxxx");
     }
-    
+
     @Test
     public void testInvalidDatum() {
         checkInvalidDatum("29022009");
     }
-    
+
     private void checkInvalidDatum(String mmddjjjj) {
         Datum datum = new Datum("Test-Datum", mmddjjjj);
         assertTrue(datum + " is not a valid date!", datum.isInvalid());
@@ -86,9 +86,9 @@ public class DatumTest {
         for (ConstraintViolation violation : violations) {
             log.info(violation);
         }
-        assertEquals(1, violations.size());        
+        assertEquals(1, violations.size());
     }
-    
+
     @Test
     public void testIsEmpty() {
         Datum empty = new Datum("empty", "00000000");

@@ -66,7 +66,7 @@ public class Datensatz extends Satz {
     public Datensatz(int satzart, int sparte) {
         this(satzart, sparte, 1);
     }
-    
+
     public Datensatz(int satzart, int sparte, int n) {
         super(satzart, n);
         this.setSparte(sparte);
@@ -93,7 +93,7 @@ public class Datensatz extends Satz {
             teildatensatz[i].add(new AlphaNumFeld(LEERSTELLEN, 213, 43));
         }
     }
-   
+
     public void setSparte(int x) {
         this.sparte.setInhalt(x);
     }
