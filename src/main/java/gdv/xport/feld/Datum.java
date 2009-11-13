@@ -122,7 +122,7 @@ public class Datum extends Feld {
         }
         return this.hasValidDate();
     }
-    
+
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#isInvalid()
      */
@@ -130,7 +130,7 @@ public class Datum extends Feld {
     public boolean isInvalid() {
         return !this.isValid();
     }
-    
+
     private boolean hasValidDate() {
         try {
             Date date = this.toDate();
