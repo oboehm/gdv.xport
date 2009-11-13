@@ -31,6 +31,15 @@ public class SpartenspezifischerTeil extends Datensatz {
 
     private static final Log log = LogFactory.getLog(SpartenspezifischerTeil.class);
 
+    /**
+     * Dieser Konstruktor wird fuer die SatzFactory benoetigt.
+     * 
+     * @since 0.2
+     */
+    public SpartenspezifischerTeil() {
+        super(220);
+    }
+    
     public SpartenspezifischerTeil(int sparte) {
         this(sparte, getNumberOfTeildatensaetzeFor(sparte));
     }
@@ -142,6 +151,23 @@ public class SpartenspezifischerTeil extends Datensatz {
         add(new AlphaNumFeld(MITVERSICHERTE_PERSON_FAMILIENNAME, 30, 189), 2);
         add(new AlphaNumFeld(MITVERSICHERTE_PERSON_VORNAME, 30, 219), 2);
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 249), 2);
+    }
+
+    /**
+     * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
+     * Teildatensaetze aufsetzen.
+     * 
+     * @param x
+     * @see gdv.xport.satz.Datensatz#setSparte(int)
+     */
+    @Override
+    public void setSparte(int x) {
+        if (this.getSatzart() == x) {
+            log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
+        }
+        super.setSparte(x);
+        this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
+        this.setUpDatenfelder(x);
     }
 
 }

@@ -106,6 +106,23 @@ public class VertragsspezifischerTeil extends Datensatz {
         add(new AlphaNumFeld(PRODUKTNAME, 20, 127));
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 147));
     }
+    
+    /**
+     * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
+     * Teildatensaetze aufsetzen.
+     * 
+     * @param x
+     * @see gdv.xport.satz.Datensatz#setSparte(int)
+     */
+    @Override
+    public void setSparte(int x) {
+        if (this.getSatzart() == x) {
+            log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
+        }
+        super.setSparte(x);
+        this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
+        this.setUpDatenfelder(x);
+    }
 
 }
 

@@ -18,6 +18,8 @@
 
 package gdv.xport.satz;
 
+import gdv.xport.util.NotRegisteredException;
+
 import java.io.IOException;
 import java.lang.reflect.*;
 import java.util.*;
@@ -94,17 +96,25 @@ public class SatzFactory {
     public static Satz getSatz(int satzart) {
         Class<? extends Satz> clazz = registeredSatzClasses.get(satzart);
         if (clazz == null) {
-            throw new IllegalArgumentException("unregistered Satzart " + satzart);
+            throw new NotRegisteredException(satzart);
         }
         try {
             return clazz.newInstance();
         } catch (Exception e) {
+            log.info("default ctor does not work (" + e + "), trying another ctor...");
+            Constructor<? extends Satz> ctor = null;
             try {
-                log.info("default ctor does not work (" + e +"), trying another ctor...");
-                Constructor<? extends Satz> ctor = clazz.getConstructor(int.class);
+                ctor = clazz.getConstructor(int.class);
                 return ctor.newInstance(satzart);
-            } catch (Exception ce) {
-                throw new RuntimeException("constructor problem with " + clazz, ce);
+            } catch (InvocationTargetException ite) {
+                throw new RuntimeException(ite.getTargetException() + " in " + ctor, ite);
+            } catch (NoSuchMethodException nsme) {
+                throw new UnsupportedOperationException("registered " + clazz
+                        + " has not the required ctor", nsme);
+            } catch (InstantiationException ie) {
+                throw new RuntimeException("registered " + clazz + " can't be instantiated", ie);
+            } catch (IllegalAccessException iae) {
+                throw new IllegalStateException("registered " + clazz + " can't be accessed", iae);
             }
         }
     }
@@ -126,6 +136,10 @@ public class SatzFactory {
             throw new IllegalArgumentException("can't parse " + content, ioe);
         }
     }
+    
+    public static Datensatz getDatensatz(int satzart) {
+        return (Datensatz) getSatz(satzart);
+    }
 
     /**
      * @param satzart
@@ -133,27 +147,14 @@ public class SatzFactory {
      * @return
      */
     public static Datensatz getDatensatz(int satzart, int sparte) {
-//        switch (satzart) {
-//            case 100:
-//                return new Adressteil();
-//            case 200:
-//                return new AllgemeinerVertragsteil();
-//            case 210:
-//                return new VertragsspezifischerTeil(sparte);
-//            case 220:
-//                return new SpartenspezifischerTeil(sparte);
+//        Class<? extends Satz> satzClass = registeredSatzClasses.get(satzart);
+//        if (satzClass != null) {
+//            return newInstanceOf(satzClass, sparte);
 //        }
-        Class<? extends Satz> satzClass = registeredSatzClasses.get(satzart);
-        if (satzClass != null) {
-            return newInstanceOf(satzClass, sparte);
-        }
         int key = getAsKey(satzart, sparte);
         Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(key);
         if (clazz == null) {
-            log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzart);
-            Datensatz satz = new Datensatz(satzart, sparte);
-            satz.addFiller();
-            return satz;
+            return useFallback(satzart, sparte);
         }
         try {
             return clazz.newInstance();
@@ -162,9 +163,9 @@ public class SatzFactory {
                 log.info("default ctor does not work (" + e + "), trying another ctor...");
                 Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);
                 return ctor.newInstance(satzart, sparte);
-            } catch (Exception exWithtwoParams) {
+            } catch (Exception exWithTwoParams) {
                 try {
-                    log.info("default ctor does not work (" + exWithtwoParams
+                    log.info("default ctor does not work (" + exWithTwoParams
                             + "), trying another ctor...");
                     Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class);
                     return ctor.newInstance(satzart);
@@ -174,29 +175,42 @@ public class SatzFactory {
             }
         }
     }
-    
-    /**
-     * Hier wird versucht, den Ctor mit der Sparte als Parameter aufzurufen.
-     * 
-     * @param clazz
-     * @param sparte
-     * @return ein Datensatz-Objekt
-     * @since 0.2
-     */
-    @SuppressWarnings("unchecked")
-    private static Datensatz newInstanceOf(Class<? extends Satz> clazz, int sparte) {
-        Class<? extends Datensatz> datensatzClazz = (Class<? extends Datensatz>) clazz;
+
+    private static Datensatz useFallback(int satzart, int sparte) {
         try {
-            Constructor<? extends Datensatz> ctor = datensatzClazz.getConstructor(int.class);
-            return ctor.newInstance(sparte);
-        } catch (Exception e) {
-            try {
-                return datensatzClazz.newInstance();
-            } catch (Exception ie) {
-                throw new IllegalArgumentException("can't instantiate " + clazz, ie);
-            }
+            Datensatz fallback = (Datensatz) getSatz(satzart);
+            fallback.setSparte(sparte);
+            return fallback;
+        } catch (NotRegisteredException re) {
+            log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzart);
+            Datensatz satz = new Datensatz(satzart, sparte);
+            satz.addFiller();
+            return satz;
         }
     }
+    
+//    /**
+//     * Hier wird versucht, den Ctor mit der Sparte als Parameter aufzurufen.
+//     * 
+//     * @param clazz
+//     * @param sparte
+//     * @return ein Datensatz-Objekt
+//     * @since 0.2
+//     */
+//    @SuppressWarnings("unchecked")
+//    private static Datensatz newInstanceOf(Class<? extends Satz> clazz, int sparte) {
+//        Class<? extends Datensatz> datensatzClazz = (Class<? extends Datensatz>) clazz;
+//        try {
+//            Constructor<? extends Datensatz> ctor = datensatzClazz.getConstructor(int.class);
+//            return ctor.newInstance(sparte);
+//        } catch (Exception e) {
+//            try {
+//                return datensatzClazz.newInstance();
+//            } catch (Exception ie) {
+//                throw new IllegalArgumentException("can't instantiate " + clazz, ie);
+//            }
+//        }
+//    }
 
 }
 
