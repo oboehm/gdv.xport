@@ -16,12 +16,14 @@
  * (c)reated 30.10.2009 by Oli B. (oliver.boehm@agentes.de)
  */
 
-package gdv.xport.satz;
+package gdv.xport.util;
 
 import static org.junit.Assert.*;
 import static gdv.xport.feld.Bezeichner.*;
 
 import gdv.xport.feld.*;
+import gdv.xport.satz.*;
+import gdv.xport.util.SatzFactory;
 
 import org.junit.Test;
 

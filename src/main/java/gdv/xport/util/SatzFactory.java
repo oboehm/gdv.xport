@@ -16,9 +16,9 @@
  * (c)reated 30.10.2009 by Oli B. (oliver.boehm@agentes.de)
  */
 
-package gdv.xport.satz;
+package gdv.xport.util;
 
-import gdv.xport.util.NotRegisteredException;
+import gdv.xport.satz.*;
 
 import java.io.IOException;
 import java.lang.reflect.*;
@@ -147,10 +147,6 @@ public class SatzFactory {
      * @return
      */
     public static Datensatz getDatensatz(int satzart, int sparte) {
-//        Class<? extends Satz> satzClass = registeredSatzClasses.get(satzart);
-//        if (satzClass != null) {
-//            return newInstanceOf(satzClass, sparte);
-//        }
         int key = getAsKey(satzart, sparte);
         Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(key);
         if (clazz == null) {
@@ -188,29 +184,6 @@ public class SatzFactory {
             return satz;
         }
     }
-    
-//    /**
-//     * Hier wird versucht, den Ctor mit der Sparte als Parameter aufzurufen.
-//     * 
-//     * @param clazz
-//     * @param sparte
-//     * @return ein Datensatz-Objekt
-//     * @since 0.2
-//     */
-//    @SuppressWarnings("unchecked")
-//    private static Datensatz newInstanceOf(Class<? extends Satz> clazz, int sparte) {
-//        Class<? extends Datensatz> datensatzClazz = (Class<? extends Datensatz>) clazz;
-//        try {
-//            Constructor<? extends Datensatz> ctor = datensatzClazz.getConstructor(int.class);
-//            return ctor.newInstance(sparte);
-//        } catch (Exception e) {
-//            try {
-//                return datensatzClazz.newInstance();
-//            } catch (Exception ie) {
-//                throw new IllegalArgumentException("can't instantiate " + clazz, ie);
-//            }
-//        }
-//    }
 
 }
 

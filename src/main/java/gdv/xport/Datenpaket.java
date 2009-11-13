@@ -22,6 +22,7 @@ import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
+import gdv.xport.util.SatzFactory;
 
 import java.io.*;
 import java.util.*;
