@@ -19,6 +19,7 @@
 package gdv.xport.util;
 
 import gdv.xport.feld.*;
+import gdv.xport.satz.*;
 
 import java.io.StringReader;
 
@@ -32,7 +33,7 @@ import org.junit.Test;
  * @since 0.2 (14.11.2009)
  *
  */
-public class XmlFormatterTest {
+public class XmlFormatterTest extends AbstractTest {
 
     private static Log log = LogFactory.getLog(XmlFormatter.class);
     private static XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
@@ -42,10 +43,18 @@ public class XmlFormatterTest {
      * @throws XMLStreamException 
      */
     @Test
-    public void testWrite() throws XMLStreamException {
+    public void testWriteFeld() throws XMLStreamException {
         Feld x = new Feld("Hello", "World", Align.LEFT);
         String xmlString = XmlFormatter.toString(x);
         log.info(x + " as XML: " + xmlString);
+        checkXML(xmlString);
+    }
+    
+    @Test
+    public void testWriteTeildatensatz() throws XMLStreamException {
+        Teildatensatz teildatensatz = new Vorsatz().getTeildatensatz(1);
+        String xmlString = XmlFormatter.toString(teildatensatz);
+        log.info(teildatensatz + " as XML: " + xmlString);
         checkXML(xmlString);
     }
     

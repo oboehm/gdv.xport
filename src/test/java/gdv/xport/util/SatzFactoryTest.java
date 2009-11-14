@@ -31,7 +31,7 @@ import org.junit.Test;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (30.10.2009)
  */
-public class SatzFactoryTest extends AbstractSatzTest {
+public class SatzFactoryTest extends AbstractTest {
 
     @Test
     public void testGetSatz() {

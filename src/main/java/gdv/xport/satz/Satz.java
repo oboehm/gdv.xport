@@ -72,6 +72,17 @@ public class Satz {
             teildatensatz[i] = new Teildatensatz(satzart, i+1);
         }
     }
+    
+    /**
+     * Liefert den n-ten Teildatensatz zurueck.
+     * 
+     * @since 0.2
+     * @param n Nummer des Teildatensatzes (beginnend mit 1)
+     * @return
+     */
+    public Teildatensatz getTeildatensatz(int n) {
+        return teildatensatz[n-1];
+    }
 
     /**
      * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu

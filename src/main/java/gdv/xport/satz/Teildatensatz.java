@@ -101,6 +101,17 @@ public class Teildatensatz extends Satz {
             return found;
         }
     }
+    
+    /**
+     * Liefert alle Felder in der Reihenfolge innerhalb des Teildatensatzes
+     * zurueck. 
+     * 
+     * @since 0.2
+     * @return List der Felder (sortiert)
+     */
+    public List<Feld> getFelder() {
+        return new ArrayList<Feld>(datenfelder.values());
+    }
 
     /* (non-Javadoc)
      * @see gdv.xport.satz.Datensatz#export(java.io.Writer)
