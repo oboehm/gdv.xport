@@ -182,14 +182,20 @@
           </reportSet>
         </reportSets>
       </plugin>
-  	  <!-- Javadoc -->
+  	  <!-- 
+          Javadoc 
+          see http://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html
+      -->
 	  <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-javadoc-plugin</artifactId>
 		<configuration>
+          <source>1.6</source>
+          <show>protected</show>
 		  <links>
-		    <link>http://java.sun.com/j2se/1.5.0/docs/api</link>
+		    <link>http://java.sun.com/javase/6/docs/api/</link>
 			<link>http://www.eclipse.org/aspectj/doc/released/runtime-api</link>
+            <link>http://junit.sourceforge.net/javadoc/</link>
 		  </links>
 		</configuration>
 	  </plugin>
