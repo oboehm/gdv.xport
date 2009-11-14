@@ -33,7 +33,7 @@ import org.apache.commons.lang.StringUtils;
  * @author oliver
  * @since 04.10.2009
  */
-public class Feld {
+public class Feld implements Comparable<Feld> {
 
     /** statt "null" */
     public static final Feld NULL_FELD = new Feld("null", 0, 0, Align.UNKNOWN);
@@ -187,24 +187,6 @@ public class Feld {
         return (other.getEndAdresse() >= this.byteAdresse);
     }
 
-//    /**
-//     * Wenn die ByteAdresse > 256 ist, kann hierueber der Teildatensatz
-//     * bestimmt werden, in der das Feld liegen muesste.
-//     *
-//     * @return Nummer des Teildatensatzes, beginnend bei 1
-//     */
-//    public int getTeildatensatzNr() {
-//        return getTeildatensatzNr(this.byteAdresse);
-//    }
-//
-//    private static int getTeildatensatzNr(int byteAdresse) {
-//        if (byteAdresse > 256) {
-//            return 1 + (byteAdresse - 1) / 256;
-//        } else {
-//            return 1;
-//        }
-//    }
-
     public void write(Writer writer) throws IOException {
         writer.write(this.inhalt.toString());
     }
@@ -286,6 +268,17 @@ public class Feld {
     @Override
     public int hashCode() {
         return this.byteAdresse + this.getInhalt().hashCode();
+    }
+
+    /**
+     * Es gilt fuer Feld a und b: a < b, wenn die Start-Adresse von a
+     * vor b liegt.
+     * 
+     * @param other das andere Feld
+     * @return 0 wenn beide Felder die gleiche Startadresse haben
+     */
+    public int compareTo(Feld other) {
+        return this.byteAdresse - other.byteAdresse;
     }
 
 }

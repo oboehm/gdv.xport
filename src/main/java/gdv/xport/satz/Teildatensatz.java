@@ -109,8 +109,8 @@ public class Teildatensatz extends Satz {
      * @since 0.2
      * @return List der Felder (sortiert)
      */
-    public List<Feld> getFelder() {
-        return new ArrayList<Feld>(datenfelder.values());
+    public Collection<Feld> getFelder() {
+        return new TreeSet<Feld>(datenfelder.values());
     }
 
     /* (non-Javadoc)

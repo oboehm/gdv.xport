@@ -18,9 +18,12 @@
 
 package gdv.xport.satz;
 
-import gdv.xport.feld.NumFeld;
+import static org.junit.Assert.*;
+
+import gdv.xport.feld.*;
 
 import java.io.IOException;
+import java.util.*;
 
 import org.junit.Test;
 
@@ -42,6 +45,24 @@ public class TeildatensatzTest extends AbstractSatzTest {
         this.checkExport(teildatensatz, 1, 4, "0042", 256);
         this.checkExport(teildatensatz, 255, 256, " 1", 256);
     }
+    
+    /**
+     * Die einzelnen Felder sollten in der Reihenfolge der Byte-Adresse
+     * geliefert werden.
+     * 
+     * @since 0.2
+     */
+    @Test
+    public void testGetFelder() {
+        Teildatensatz teildatensatz = new Vorsatz().getTeildatensatz(1);
+        Iterator<Feld> iterator = teildatensatz.getFelder().iterator();
+        Feld prev = iterator.next();
+        while(iterator.hasNext()) {
+            Feld next = iterator.next();
+            assertTrue("wrong sorted: " + prev + " > " + next, prev.getByteAdresse() < next
+                    .getByteAdresse());
+            prev = next;
+        }
+    }
 
 }
-
