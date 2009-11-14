@@ -69,6 +69,16 @@ public class Teildatensatz extends Satz {
         datenfelder.put("Satzart", this.satzart);
         datenfelder.put("Satznummer", this.satznummer);
     }
+    
+    /**
+     * Liefert die Satznummer zurueck.
+     * 
+     * @since 0.2
+     * @return Satznummer als einzelnes Zeichen ('1' ... '9')
+     */
+    public Zeichen getNummer() {
+        return this.satznummer;
+    }
 
     /**
      * @param feld Feld mit Name

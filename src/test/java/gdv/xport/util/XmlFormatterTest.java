@@ -54,7 +54,7 @@ public class XmlFormatterTest extends AbstractTest {
     public void testWriteTeildatensatz() throws XMLStreamException {
         Teildatensatz teildatensatz = new Vorsatz().getTeildatensatz(1);
         String xmlString = XmlFormatter.toString(teildatensatz);
-        log.info(teildatensatz + " as XML: " + xmlString);
+        log.info(teildatensatz + " as XML:\n" + xmlString);
         checkXML(xmlString);
     }
     

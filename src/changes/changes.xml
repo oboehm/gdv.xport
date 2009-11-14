@@ -23,6 +23,9 @@
         Ueber die SatzFactory-Klasse koennen jetzt eigene Datensaetze
         registriert und/oder bestehende Datensaetze ersetzt werden.
       </action>
+      <action dev="oboehm" type="add">
+        (Teil-)Datensaetze koennen jetzt als XML ausgegeben werden.
+      </action>
     </release>
 
     <release version="0.1.2" date="09-Nov-2009"

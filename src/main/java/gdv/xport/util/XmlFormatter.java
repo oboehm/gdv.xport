@@ -28,8 +28,8 @@ import java.util.*;
 import javax.xml.stream.*;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.logging.*;
 
-// TODO: Auto-generated Javadoc
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
  * XML-Struktur ausgeben zu koennen.
@@ -39,10 +39,8 @@ import org.apache.commons.io.IOUtils;
  */
 public class XmlFormatter {
 
-    /** The Constant xmlOutputFactory. */
+    private static final Log log = LogFactory.getLog(XmlFormatter.class);
     private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
-    
-    /** The xml stream writer. */
     private final XMLStreamWriter xmlStreamWriter;
 
     /**
@@ -96,8 +94,10 @@ public class XmlFormatter {
      */
     public void write(Teildatensatz teildatensatz) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("teildatensatz");
+        xmlStreamWriter.writeAttribute("nr", teildatensatz.getNummer().getInhalt());
         xmlStreamWriter.writeCharacters("\n");
         for (Iterator<Feld> iterator = teildatensatz.getFelder().iterator(); iterator.hasNext();) {
+            writeIndent(1);
             Feld feld = iterator.next();
             write(feld);
             xmlStreamWriter.writeCharacters("\n");
@@ -142,6 +142,16 @@ public class XmlFormatter {
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
+    }
+    
+    private void writeIndent(int level) {
+        try {
+            for (int i = 0; i < level; i++) {
+                xmlStreamWriter.writeCharacters("  ");
+            }
+        } catch (XMLStreamException e) {
+            log.warn("can't indent " + this, e);
+        }
     }
 
 }
