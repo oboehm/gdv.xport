@@ -120,7 +120,9 @@ public class Datensatz extends Satz {
      */
     public static int readSparte(PushbackReader reader) throws IOException {
         char[] cbuf = new char[14];
-        reader.read(cbuf);
+        if (reader.read(cbuf) == -1) {
+            throw new IOException("can't read 14 bytes (" + new String(cbuf) + ") from " + reader);
+        }
         reader.unread(cbuf);
         return Integer.parseInt(new String(cbuf).substring(10, 13));
     }

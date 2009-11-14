@@ -199,9 +199,17 @@ public class Satz {
                         + ", but got data for Satzart " + art);
                 break;
             }
-            reader.read(cbuf);
+            importFrom(reader, cbuf);
             teildatensatz[i].importFrom(new String(cbuf));
             skipNewline(reader);
+        }
+    }
+    
+    private static void importFrom(Reader reader, char[]cbuf) throws IOException {
+        if (reader.read(cbuf) == -1) {
+            String s = new String(cbuf);
+            throw new IOException("can't read " + cbuf.length + " bytes from " + reader + ", only "
+                    + s.length() + " bytes: " + s);
         }
     }
 
@@ -215,7 +223,7 @@ public class Satz {
      */
     public static int readSatzart(PushbackReader reader) throws IOException {
         char[] cbuf = new char[4];
-        reader.read(cbuf);
+        importFrom(reader, cbuf);
         reader.unread(cbuf);
         return Integer.parseInt(new String(cbuf));
     }
