@@ -18,9 +18,9 @@
 
 package gdv.xport.util;
 
-import java.io.*;
-
 import gdv.xport.feld.Feld;
+
+import java.io.*;
 
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
@@ -51,7 +51,19 @@ public class XmlFormatter {
     public void write(Feld feld) throws IOException {
         this.writer.write("<Feld bezeichner=\"" + feld.getBezeichnung() + "\">");
         this.writer.write(feld.getInhalt());
-        this.writer.write("</Feld>\n");
+        this.writer.write("</Feld>");
+    }
+    
+    public static String toString(final Feld feld) {
+        StringWriter swriter = new StringWriter();
+        XmlFormatter formatter = new XmlFormatter(swriter);
+        try {
+            formatter.write(feld);
+            swriter.close();
+        } catch (IOException shouldnothappen) {
+            throw new RuntimeException("can't convert " + feld + " to String", shouldnothappen);
+        }
+        return swriter.toString();
     }
 
 }
