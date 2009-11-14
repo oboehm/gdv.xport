@@ -34,5 +34,15 @@ public class ConfigException extends RuntimeException {
         super(message);
     }
 
+    /**
+     * Falls mal die Konfiguration nicht stimmt...
+     * @since 0.2
+     * @param message Hinweis fuer die Ursache
+     * @param cause die schuldige Exception
+     */
+    public ConfigException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
 }
 

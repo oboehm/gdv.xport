@@ -112,6 +112,11 @@
       <artifactId>commons-logging</artifactId>
       <version>1.1.1</version>
     </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>1.4</version>
+    </dependency>
     <!-- FIT and FITnesse -->
     <dependency>
       <groupId>com.c2.fit</groupId>

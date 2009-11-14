@@ -18,9 +18,14 @@
 
 package gdv.xport.util;
 
+import gdv.xport.config.ConfigException;
 import gdv.xport.feld.Feld;
 
 import java.io.*;
+
+import javax.xml.stream.*;
+
+import org.apache.commons.io.IOUtils;
 
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
@@ -31,14 +36,25 @@ import java.io.*;
  */
 public class XmlFormatter {
 
-    private final Writer writer;
+    private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
+    private final XMLStreamWriter xmlStreamWriter;
 
     /**
      * Der einzige Konstruktor.
      * @param writer
      */
     public XmlFormatter(Writer writer) {
-        this.writer = writer;
+        try {
+            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(writer);
+        } catch (XMLStreamException e) {
+            throw new RuntimeException("you should never see this", e);
+        } catch (FactoryConfigurationError e) {
+            throw new ConfigException("XML problems", e);
+        }
+    }
+    
+    public XmlFormatter(XMLStreamWriter xmlStreamWriter) {
+        this.xmlStreamWriter = xmlStreamWriter;
     }
 
     /**
@@ -46,12 +62,14 @@ public class XmlFormatter {
      *
      * @param feld the feld
      *
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws XMLStreamException Signals that an I/O exception has occurred.
      */
-    public void write(Feld feld) throws IOException {
-        this.writer.write("<Feld bezeichner=\"" + feld.getBezeichnung() + "\">");
-        this.writer.write(feld.getInhalt());
-        this.writer.write("</Feld>");
+    public void write(Feld feld) throws XMLStreamException {
+        xmlStreamWriter.writeStartElement("feld");
+        xmlStreamWriter.writeAttribute("bezeichnung", feld.getBezeichnung());
+        xmlStreamWriter.writeAttribute("bytes", feld.getByteAdresse() + "-" + feld.getEndAdresse());
+        xmlStreamWriter.writeCharacters(feld.getInhalt());
+        xmlStreamWriter.writeEndElement();
     }
     
     public static String toString(final Feld feld) {
@@ -59,10 +77,10 @@ public class XmlFormatter {
         XmlFormatter formatter = new XmlFormatter(swriter);
         try {
             formatter.write(feld);
-            swriter.close();
-        } catch (IOException shouldnothappen) {
+        } catch (XMLStreamException shouldnothappen) {
             throw new RuntimeException("can't convert " + feld + " to String", shouldnothappen);
         }
+        IOUtils.closeQuietly(swriter);
         return swriter.toString();
     }
 
