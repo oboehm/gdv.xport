@@ -36,31 +36,42 @@ import org.apache.commons.logging.*;
 public class SatzFactory {
 
     private static final Log log = LogFactory.getLog(SatzFactory.class);
-    private static Map<Integer, Class<? extends Satz>> registeredSatzClasses = new HashMap<Integer, Class<? extends Satz>>();
-    private static Map<Integer, Class<? extends Datensatz>> registeredDatensatzClasses = new HashMap<Integer, Class<? extends Datensatz>>();
+    private static Map<Integer, Class<? extends Satz>> registeredSatzClasses =
+        new HashMap<Integer, Class<? extends Satz>>();
+    private static Map<Integer, Class<? extends Datensatz>> registeredDatensatzClasses =
+        new HashMap<Integer, Class<? extends Datensatz>>();
 
     static {
-        registeredSatzClasses.put(   1, Vorsatz.class);
-        registeredSatzClasses.put( 100, Adressteil.class);
-        registeredSatzClasses.put( 200, AllgemeinerVertragsteil.class);
-        registeredSatzClasses.put( 210, VertragsspezifischerTeil.class);
-        registeredSatzClasses.put( 220, SpartenspezifischerTeil.class);
+        registeredSatzClasses.put(1, Vorsatz.class);
+        registeredSatzClasses.put(100, Adressteil.class);
+        registeredSatzClasses.put(200, AllgemeinerVertragsteil.class);
+        registeredSatzClasses.put(210, VertragsspezifischerTeil.class);
+        registeredSatzClasses.put(220, SpartenspezifischerTeil.class);
         registeredSatzClasses.put(9999, Nachsatz.class);
     }
+    
+    private SatzFactory() {}
 
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
      * unterstuetzte Datensaetze) registriert werden.
-     *
+     * 
+     * @since 0.2
      * @param clazz
      * @param satzart
-     * @since 0.2
      */
-    public static void register(Class<? extends Satz> clazz, int satzart) {
+    public static void register(final Class<? extends Satz> clazz, int satzart) {
         registeredSatzClasses.put(satzart, clazz);
     }
 
-    public static void unregister(int satzart) {
+    /**
+     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
+     * Testen hilfreich sein kann)
+     * 
+     * @since 0.2
+     * @param satzart
+     */
+    public static void unregister(final int satzart) {
         registeredSatzClasses.remove(satzart);
     }
 
@@ -68,23 +79,32 @@ public class SatzFactory {
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
      * unterstuetzte Datensaetze) registriert werden.
      *
+     * @since 0.2
      * @param clazz
      * @param satzart
      * @param sparte
-     * @since 0.2
      */
-    public static void register(Class<? extends Datensatz> clazz, int satzart, int sparte) {
+    public static void register(final Class<? extends Datensatz> clazz, final int satzart,
+            final int sparte) {
         assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
         assert (0 <= sparte) && (sparte <= 999)    : "Sparte muss zwischen 0 und 999 liegen";
         int key = getAsKey(satzart, sparte);
         registeredDatensatzClasses.put(key, clazz);
     }
 
-    public static void unregister(int satzart, int sparte) {
+    /**
+     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
+     * Testen hilfreich sein kann)
+     * 
+     * @since 0.2
+     * @param satzart
+     * @param sparte
+     */
+    public static void unregister(final int satzart, final int sparte) {
         registeredDatensatzClasses.remove(getAsKey(satzart, sparte));
     }
 
-    private static int getAsKey(int satzart, int sparte) {
+    private static int getAsKey(final int satzart, final int sparte) {
         return satzart * 1000 + sparte;
     }
 
@@ -93,7 +113,7 @@ public class SatzFactory {
      * @return angeforderte Satz
      * @since 0.2
      */
-    public static Satz getSatz(int satzart) {
+    public static Satz getSatz(final int satzart) {
         Class<? extends Satz> clazz = registeredSatzClasses.get(satzart);
         if (clazz == null) {
             throw new NotRegisteredException(satzart);
@@ -119,7 +139,16 @@ public class SatzFactory {
         }
     }
 
-    public static Satz getSatz(String content) {
+    /**
+     * Versucht anhand des uebergebenen Strings herauszufinden, um was fuer
+     * eine Satzart es sich handelt und liefert dann einen entsprechende
+     * (gefuellten) Satz zurueck.
+     * 
+     * @param content
+     * @return einen gefuellten Satz
+     * @since 0.2
+     */
+    public static Satz getSatz(final String content) {
         int satzart = Integer.parseInt(content.substring(0, 4));
         Satz satz;
         try {
@@ -137,16 +166,21 @@ public class SatzFactory {
         }
     }
 
-    public static Datensatz getDatensatz(int satzart) {
+    /**
+     * @since 0.2
+     * @param satzart den registrierten Datensatz fuer
+     * @return den registrierten Datensatz fuer 'satzart'
+     */
+    public static Datensatz getDatensatz(final int satzart) {
         return (Datensatz) getSatz(satzart);
     }
 
     /**
      * @param satzart
      * @param content
-     * @return
+     * @return den registrierten Datensatz fuer 'satzart', 'sparte'
      */
-    public static Datensatz getDatensatz(int satzart, int sparte) {
+    public static Datensatz getDatensatz(final int satzart, final int sparte) {
         int key = getAsKey(satzart, sparte);
         Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(key);
         if (clazz == null) {
@@ -172,7 +206,7 @@ public class SatzFactory {
         }
     }
 
-    private static Datensatz useFallback(int satzart, int sparte) {
+    private static Datensatz useFallback(final int satzart, final int sparte) {
         try {
             Datensatz fallback = (Datensatz) getSatz(satzart);
             fallback.setSparte(sparte);
