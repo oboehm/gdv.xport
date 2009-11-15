@@ -18,6 +18,7 @@
 
 package gdv.xport.util;
 
+import gdv.xport.Datenpaket;
 import gdv.xport.config.ConfigException;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.*;
@@ -29,6 +30,8 @@ import javax.xml.stream.*;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.*;
+
+import patterntesting.runtime.annotation.UnsupportedOperation;
 
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
@@ -111,6 +114,13 @@ public class XmlFormatter {
         xmlStreamWriter.writeEndElement();        
     }
     
+    /**
+     * Ausgabe eines Datensatzes als XML.
+     * 
+     * @param satz der auszugebende (Daten-)Satz
+     * 
+     * @throws XMLStreamException the XML stream exception
+     */
     public void write(Satz satz) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("satz");
         xmlStreamWriter.writeAttribute("satzart", satz.getSatzart().getInhalt());
@@ -125,6 +135,20 @@ public class XmlFormatter {
         }
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.writeEndElement();
+    }
+    
+    /**
+     * Ausgabe eines kompletten Datenpakets als XML.
+     * 
+     * @param datenpaket
+     * @throws XMLStreamException
+     */
+    @UnsupportedOperation
+    public void write(Datenpaket datenpaket) throws XMLStreamException {
+        xmlStreamWriter.writeStartElement("datenpaket");
+        xmlStreamWriter.writeCharacters("\n");
+        // TODO t.b.c.
+        xmlStreamWriter.writeEndElement();        
     }
     
     /**
