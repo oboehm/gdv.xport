@@ -162,7 +162,7 @@ public class SpartenspezifischerTeil extends Datensatz {
      */
     @Override
     public void setSparte(int x) {
-        if (this.getSatzart() == x) {
+        if (this.getSatzart().toInt() == x) {
             log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
         }
         super.setSparte(x);

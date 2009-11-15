@@ -58,6 +58,14 @@ public class XmlFormatterTest extends AbstractTest {
         checkXML(xmlString);
     }
     
+    @Test
+    public void testWriteSatz() throws XMLStreamException {
+        Satz satz = new Nachsatz();
+        String xmlString = XmlFormatter.toString(satz);
+        log.info(satz + " as XML:\n" + xmlString);
+        checkXML(xmlString);
+    }
+    
     /**
      * We use the XMLStreams to validate the XML
      * 

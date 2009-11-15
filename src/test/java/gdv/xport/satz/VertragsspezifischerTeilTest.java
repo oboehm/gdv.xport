@@ -41,7 +41,7 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
     public void testSpartenspezifischerVertragsteil() throws IOException {
         VertragsspezifischerTeil vertragsteil = new VertragsspezifischerTeil(70);
         log.info(vertragsteil + " created.");
-        assertEquals(70, vertragsteil.getSparte());
+        assertEquals(70, vertragsteil.getSparte().toInt());
         checkExport(vertragsteil, 11, 13, "070", 256);
     }
 

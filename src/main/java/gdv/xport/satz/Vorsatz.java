@@ -153,7 +153,7 @@ public final class Vorsatz extends Satz {
      * @param datensatz
      */
     public void setVersionFor(Datensatz datensatz) {
-        int art = datensatz.getSatzart();
+        int art = datensatz.getSatzart().toInt();
         Version version = versions.get(art);
         if (version == null) {
             log.warn("version for Satzart " + art + " not yet supported - no version set!");

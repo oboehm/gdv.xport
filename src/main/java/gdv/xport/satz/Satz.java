@@ -66,13 +66,23 @@ public class Satz {
         this.createTeildatensaetze(n);
     }
 
-    protected void createTeildatensaetze(int n) {
+    protected void createTeildatensaetze(final int n) {
         teildatensatz = new Teildatensatz[n];
         for (int i = 0; i < n; i++) {
             teildatensatz[i] = new Teildatensatz(satzart, i+1);
         }
     }
-    
+
+    /**
+     * Liefert alle Teildatensaetze zurueck.
+     * 
+     * @since 0.2
+     * @return Teildatensaetze
+     */
+    public Teildatensatz[] getTeildatensaetze() {
+        return this.teildatensatz;
+    }
+
     /**
      * Liefert den n-ten Teildatensatz zurueck.
      * 
@@ -80,8 +90,8 @@ public class Satz {
      * @param n Nummer des Teildatensatzes (beginnend mit 1)
      * @return
      */
-    public Teildatensatz getTeildatensatz(int n) {
-        return teildatensatz[n-1];
+    public Teildatensatz getTeildatensatz(final int n) {
+        return this.teildatensatz[n-1];
     }
 
     /**
@@ -170,9 +180,19 @@ public class Satz {
         return teildatensatz[nr-1].getFeld(name);
     }
 
-    public int getSatzart() {
-        return satzart.toInt();
+    public NumFeld getSatzart() {
+        return this.satzart;
     }
+//
+//    /**
+//     * Falls man mal die Satzart lieber als String will...
+//     * 
+//     * @since 0.2
+//     * @return Satzart als String
+//     */
+//    public String getSatzartAsString() {
+//        return satzart.getInhalt();
+//    }
 
     public void export(Writer writer) throws IOException {
         for (int i = 0; i < teildatensatz.length; i++) {
@@ -205,7 +225,7 @@ public class Satz {
         char[] cbuf = new char[256];
         for (int i = 0; i < teildatensatz.length; i++) {
             int art = readSatzart(reader);
-            if (art != this.getSatzart()) {
+            if (art != this.getSatzart().toInt()) {
                 log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
                         + ", but got data for Satzart " + art);
                 break;
@@ -330,7 +350,7 @@ public class Satz {
     }
 
     public boolean equals(Satz other) {
-        if (this.getSatzart() != other.getSatzart()) {
+        if (this.getSatzart().toInt() != other.getSatzart().toInt()) {
             return false;
         }
         for (int i = 0; i < teildatensatz.length; i++) {

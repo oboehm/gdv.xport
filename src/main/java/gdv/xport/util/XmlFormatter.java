@@ -20,7 +20,7 @@ package gdv.xport.util;
 
 import gdv.xport.config.ConfigException;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.*;
 
 import java.io.*;
 import java.util.*;
@@ -93,16 +93,38 @@ public class XmlFormatter {
      * @throws XMLStreamException the XML stream exception
      */
     public void write(Teildatensatz teildatensatz) throws XMLStreamException {
+        write(teildatensatz, 0);
+    }
+    
+    private void write(Teildatensatz teildatensatz, int level) throws XMLStreamException {
+        writeIndent(level);
         xmlStreamWriter.writeStartElement("teildatensatz");
         xmlStreamWriter.writeAttribute("nr", teildatensatz.getNummer().getInhalt());
         xmlStreamWriter.writeCharacters("\n");
         for (Iterator<Feld> iterator = teildatensatz.getFelder().iterator(); iterator.hasNext();) {
-            writeIndent(1);
+            writeIndent(level+1);
             Feld feld = iterator.next();
             write(feld);
             xmlStreamWriter.writeCharacters("\n");
         }
+        writeIndent(level);
         xmlStreamWriter.writeEndElement();        
+    }
+    
+    public void write(Satz satz) throws XMLStreamException {
+        xmlStreamWriter.writeStartElement("satz");
+        xmlStreamWriter.writeAttribute("satzart", satz.getSatzart().getInhalt());
+        if (satz instanceof Datensatz) {
+            Datensatz datensatz = (Datensatz) satz;
+            xmlStreamWriter.writeAttribute("sparte", datensatz.getSparte().getInhalt());
+        }
+        xmlStreamWriter.writeCharacters("\n");
+        Teildatensatz[] teildatensaetze = satz.getTeildatensaetze();
+        for (int i = 0; i < teildatensaetze.length; i++) {
+            write(teildatensaetze[i], 1);
+        }
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.writeEndElement();
     }
     
     /**
@@ -138,6 +160,26 @@ public class XmlFormatter {
             formatter.write(teildatensatz);
         } catch (XMLStreamException shouldnothappen) {
             throw new RuntimeException("can't convert " + teildatensatz + " to String",
+                    shouldnothappen);
+        }
+        IOUtils.closeQuietly(swriter);
+        return swriter.toString();
+    }
+    
+    /**
+     * Wandelt den uebergebenen Satz in einen XML-String um.
+     * 
+     * @param satz ein Satz
+     * 
+     * @return Satz als XML-String
+     */
+    public static String toString(final Satz satz) {
+        StringWriter swriter = new StringWriter();
+        XmlFormatter formatter = new XmlFormatter(swriter);
+        try {
+            formatter.write(satz);
+        } catch (XMLStreamException shouldnothappen) {
+            throw new RuntimeException("can't convert " + satz + " to String",
                     shouldnothappen);
         }
         IOUtils.closeQuietly(swriter);

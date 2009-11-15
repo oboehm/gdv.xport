@@ -98,8 +98,8 @@ public class Datensatz extends Satz {
         this.sparte.setInhalt(x);
     }
 
-    public int getSparte() {
-        return this.sparte.toInt();
+    public NumFeld getSparte() {
+        return this.sparte;
     }
 
     public void setVuNummer(String s) {

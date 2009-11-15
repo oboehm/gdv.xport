@@ -65,7 +65,7 @@ public class SatzFactoryTest extends AbstractTest {
         SatzFactory.register(Datensatz.class, 47);
         Satz satz = SatzFactory.getSatz(47);
         assertEquals(Datensatz.class, satz.getClass());
-        assertEquals(47, satz.getSatzart());
+        assertEquals(47, satz.getSatzart().toInt());
         SatzFactory.unregister(47);
     }
 
@@ -90,7 +90,7 @@ public class SatzFactoryTest extends AbstractTest {
     private static void checkGetDatensatz(int satzart, Class<? extends Datensatz> clazz) {
         Datensatz datensatz = SatzFactory.getDatensatz(satzart);
         assertEquals(clazz, datensatz.getClass());
-        assertEquals(satzart, datensatz.getSatzart());
+        assertEquals(satzart, datensatz.getSatzart().toInt());
     }
 
     @Test
@@ -106,8 +106,8 @@ public class SatzFactoryTest extends AbstractTest {
     private static void checkGetDatensatz(int satzart, int sparte, Class<? extends Datensatz> clazz) {
         Datensatz datensatz = SatzFactory.getDatensatz(satzart, sparte);
         assertEquals(clazz, datensatz.getClass());
-        assertEquals(satzart, datensatz.getSatzart());
-        assertEquals(sparte, datensatz.getSparte());
+        assertEquals(satzart, datensatz.getSatzart().toInt());
+        assertEquals(sparte, datensatz.getSparte().toInt());
         Feld satznummer = datensatz.getFeld(SATZNUMMER, 1);
         assertEquals("1", satznummer.getInhalt());
     }
