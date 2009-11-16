@@ -18,6 +18,7 @@
 
 package gdv.xport.util;
 
+import gdv.xport.Datenpaket;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
@@ -50,6 +51,10 @@ public class XmlFormatterTest extends AbstractTest {
         checkXML(xmlString);
     }
     
+    /**
+     * Testet den Export eines Teildatensatzes als XML.
+     * @throws XMLStreamException
+     */
     @Test
     public void testWriteTeildatensatz() throws XMLStreamException {
         Teildatensatz teildatensatz = new Vorsatz().getTeildatensatz(1);
@@ -58,12 +63,24 @@ public class XmlFormatterTest extends AbstractTest {
         checkXML(xmlString);
     }
     
+    /**
+     * Testet den Export eines Satzes als XML.
+     * @throws XMLStreamException
+     */
     @Test
     public void testWriteSatz() throws XMLStreamException {
         Satz satz = new Nachsatz();
         String xmlString = XmlFormatter.toString(satz);
         log.info(satz + " as XML:\n" + xmlString);
         checkXML(xmlString);
+    }
+    
+    @Test
+    public void testWriteDatenpaket() throws XMLStreamException {
+        Datenpaket datenpaket = new Datenpaket();
+        String xmlString = XmlFormatter.toString(datenpaket);
+        log.info(datenpaket + " as XML:\n" + xmlString);
+        checkXML(xmlString);        
     }
     
     /**

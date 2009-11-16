@@ -31,8 +31,6 @@ import javax.xml.stream.*;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.*;
 
-import patterntesting.runtime.annotation.UnsupportedOperation;
-
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
  * XML-Struktur ausgeben zu koennen.
@@ -122,6 +120,11 @@ public class XmlFormatter {
      * @throws XMLStreamException the XML stream exception
      */
     public void write(Satz satz) throws XMLStreamException {
+        write(satz, 0);
+    }
+
+    private void write(Satz satz, int level) throws XMLStreamException {
+        writeIndent(level);
         xmlStreamWriter.writeStartElement("satz");
         xmlStreamWriter.writeAttribute("satzart", satz.getSatzart().getInhalt());
         if (satz instanceof Datensatz) {
@@ -131,9 +134,10 @@ public class XmlFormatter {
         xmlStreamWriter.writeCharacters("\n");
         Teildatensatz[] teildatensaetze = satz.getTeildatensaetze();
         for (int i = 0; i < teildatensaetze.length; i++) {
-            write(teildatensaetze[i], 1);
+            write(teildatensaetze[i], level+1);
         }
         xmlStreamWriter.writeCharacters("\n");
+        writeIndent(level);
         xmlStreamWriter.writeEndElement();
     }
     
@@ -143,11 +147,18 @@ public class XmlFormatter {
      * @param datenpaket
      * @throws XMLStreamException
      */
-    @UnsupportedOperation
     public void write(Datenpaket datenpaket) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("datenpaket");
         xmlStreamWriter.writeCharacters("\n");
-        // TODO t.b.c.
+        write(datenpaket.getVorsatz(), 1);
+        xmlStreamWriter.writeCharacters("\n");
+        for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext(); ) {
+            Datensatz datensatz = iterator.next();
+            write(datensatz, 1);
+            xmlStreamWriter.writeCharacters("\n");
+        }
+        write(datenpaket.getNachsatz(), 1);
+        xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.writeEndElement();        
     }
     
@@ -173,7 +184,8 @@ public class XmlFormatter {
     /**
      * Wandelt dens uebergebenen Teildatensatz in einen XML-String um.
      * 
-     * @param Teildatensatz ein Teildatensatz
+     * @param Teildatensatz
+     *            ein Teildatensatz
      * 
      * @return Teildatensatz als XML-String
      */
@@ -210,6 +222,26 @@ public class XmlFormatter {
         return swriter.toString();
     }
     
+    /**
+     * Wandelt das uebergebene Datenpaket in einen XML-String um.
+     * 
+     * @param datenpaket das Datenpaket
+     * 
+     * @return Datenpaket als XML-String
+     */
+    public static String toString(final Datenpaket datenpaket) {
+        StringWriter swriter = new StringWriter();
+        XmlFormatter formatter = new XmlFormatter(swriter);
+        try {
+            formatter.write(datenpaket);
+        } catch (XMLStreamException shouldnothappen) {
+            throw new RuntimeException("can't convert " + datenpaket + " to String",
+                    shouldnothappen);
+        }
+        IOUtils.closeQuietly(swriter);
+        return swriter.toString();
+    }
+
     private void writeIndent(int level) {
         try {
             for (int i = 0; i < level; i++) {
