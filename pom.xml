@@ -247,7 +247,8 @@
       <!-- 
           findbugs
           start 'mvn findbugs:findbugs'
-          http://mojo.codehaus.org/findbugs-maven-plugin/
+          http://mojo.codehaus.org/findbugs-maven-plugin/2.0.1/usage.html
+          http://docs.codehaus.org/display/MAVENUSER/FindBugs+Plugin
        -->    
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -258,7 +259,8 @@
           <xmlOutput>true</xmlOutput>
           <threshold>Normal</threshold>
           <effort>Max</effort>
-          <omitVisitors>FindDeadLocalStores</omitVisitors>
+          <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
+          <omitVisitors>FindDeadLocalStores,OverridingEqualsNotSymmetrical</omitVisitors>
           <onlyAnalyze>gdv.xport.-</onlyAnalyze>
           <debug>true</debug>
           <relaxed>false</relaxed>

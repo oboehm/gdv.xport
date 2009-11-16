@@ -59,8 +59,6 @@ under the License.
     <!-- See http://checkstyle.sf.net/config_misc.html#Translation -->
     <module name="Translation"/>
 
-    <module name="TabCharacter"/>
-
     <module name="TreeWalker">
 
         <property name="cacheFile" value="${checkstyle.cache.file}"/>
