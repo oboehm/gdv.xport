@@ -43,7 +43,7 @@
           <td></td>
           <td>Auslieferung</td>
           <td>
-            Jar-File (target/gdv-xport-0.0.x.jar) unter http://www.agentes.de/maven2/repository
+            Jar-File (target/gdv-xport-0.x.x.jar) unter http://www.agentes.de/maven2/repository
             kopieren
           </td>
         </tr>

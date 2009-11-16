@@ -18,7 +18,7 @@
   <body>
 
     <release version="0.2.0" date="16-Nov-2009"
-             description="Registrierung eigener Datensaetze">
+             description="Registrierung eigener Datensaetze, XML-Support">
       <action dev="oboehm" type="add">
         Ueber die SatzFactory-Klasse koennen jetzt eigene Datensaetze
         registriert und/oder bestehende Datensaetze ersetzt werden.

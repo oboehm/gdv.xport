@@ -179,22 +179,4 @@ public final class Vorsatz extends Satz {
         return this.getVersion(getVersionBezeichnung(art, sparte));
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Satz#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object other) {
-        // TODO Auto-generated method stub
-        return super.equals(other);
-    }
-
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Satz#hashCode()
-     */
-    @Override
-    public int hashCode() {
-        // TODO Auto-generated method stub
-        return super.hashCode();
-    }
-
 }

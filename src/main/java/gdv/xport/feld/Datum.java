@@ -231,20 +231,4 @@ public final class Datum extends Feld {
         return violations;
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.feld.Feld#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object other) {
-        return super.equals(other);
-    }
-
-    /* (non-Javadoc)
-     * @see gdv.xport.feld.Feld#hashCode()
-     */
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
 }

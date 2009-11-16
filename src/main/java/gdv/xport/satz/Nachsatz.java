@@ -114,20 +114,4 @@ public final class Nachsatz extends Satz {
         return this.schadenbearbeitungsKosten;
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Satz#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object other) {
-        return super.equals(other);
-    }
-
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Satz#hashCode()
-     */
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
 }
