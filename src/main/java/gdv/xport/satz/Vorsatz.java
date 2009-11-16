@@ -61,6 +61,7 @@ public final class Vorsatz extends Satz {
         this();
         try {
             this.importFrom(content);
+            log.debug(this + " created from \"" + content + '"');
         } catch (IOException ioe) {
             throw new IllegalArgumentException("argument too short", ioe);
         }
@@ -98,14 +99,22 @@ public final class Vorsatz extends Satz {
     }
 
     private void addVersion(int art, int byteadresse, String version) {
-        String s = new Formatter().format("Version Satzart %04d", art).toString();
+        String s = getVersionBezeichnung(art);
         addVersion(art, new Version(s, byteadresse, version));
     }
 
     private void addVersion(int art, int sparte, int byteadresse, String version) {
         assert sparte < 1000 : "unbekannte Sparte " + sparte;
-        String s = new Formatter().format("Version Satzart %04d %03d", art, sparte).toString();
+        String s = getVersionBezeichnung(art, sparte);
         addVersion(art * 1000 + sparte, new Version(s, byteadresse, version));
+    }
+    
+    private static String getVersionBezeichnung(int art) {
+        return new Formatter().format("Version Satzart %04d", art).toString();
+    }
+    
+    private static String getVersionBezeichnung(int art, int sparte) {
+        return new Formatter().format("Version Satzart %04d %03d", art, sparte).toString();
     }
 
     public String getVuNummer() {
@@ -150,22 +159,6 @@ public final class Vorsatz extends Satz {
     }
 
     /**
-     * Momentan wird die Version immer auf "1.0" fuer den uebergebenen
-     * Datensatz gesetzt.
-     *
-     * @param datensatz
-     */
-    public void setVersionFor(Datensatz datensatz) {
-        int art = datensatz.getSatzart().toInt();
-        Version version = versions.get(art);
-        if (version == null) {
-            log.warn("version for Satzart " + art + " not yet supported - no version set!");
-        } else {
-            version.setInhalt("1.0");
-        }
-    }
-
-    /**
      * Ermittelt die Version des uebergebenen Bezeichners.
      *
      * @param bezeichner
@@ -179,11 +172,11 @@ public final class Vorsatz extends Satz {
     }
 
     public String getVersion(int art) {
-        return this.getVersion("Version Satzart " + art);
+        return this.getVersion(getVersionBezeichnung(art));
     }
 
     public String getVersion(int art, int sparte) {
-        return this.getVersion("Version Satzart " + art + " " + sparte);
+        return this.getVersion(getVersionBezeichnung(art, sparte));
     }
 
     /* (non-Javadoc)

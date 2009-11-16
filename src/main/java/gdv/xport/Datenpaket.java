@@ -47,6 +47,7 @@ public final class Datenpaket {
         this.setErstellungsDatumVon(heute);
         this.setErstellungsDatumBis(heute);
         this.setAbsender(Config.getVUNummer().getInhalt());
+        log.debug(this + " created.");
     }
 
     /**
@@ -80,7 +81,6 @@ public final class Datenpaket {
     public void add(Datensatz datensatz) {
         datensaetze.add(datensatz);
         nachsatz.increaseAnzahlSaetze();
-        vorsatz.setVersionFor(datensatz);
     }
 
     public void export(File file) throws IOException {
