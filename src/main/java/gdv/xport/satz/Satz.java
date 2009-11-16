@@ -9,7 +9,7 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
 import java.io.*;
-import java.util.List;
+import java.util.*;
 
 import net.sf.oval.*;
 import net.sf.oval.constraint.AssertCheck;
@@ -79,8 +79,8 @@ public class Satz {
      * @since 0.2
      * @return Teildatensaetze
      */
-    public Teildatensatz[] getTeildatensaetze() {
-        return this.teildatensatz;
+    public Collection<Teildatensatz> getTeildatensaetze() {
+        return Arrays.asList(this.teildatensatz);
     }
 
     /**

@@ -132,9 +132,10 @@ public class XmlFormatter {
             xmlStreamWriter.writeAttribute("sparte", datensatz.getSparte().getInhalt());
         }
         xmlStreamWriter.writeCharacters("\n");
-        Teildatensatz[] teildatensaetze = satz.getTeildatensaetze();
-        for (int i = 0; i < teildatensaetze.length; i++) {
-            write(teildatensaetze[i], level+1);
+        for (Iterator<Teildatensatz> iterator = satz.getTeildatensaetze().iterator(); iterator
+                .hasNext();) {
+            Teildatensatz teildatensatz = iterator.next();
+            write(teildatensatz, level + 1);
             xmlStreamWriter.writeCharacters("\n");
         }
         writeIndent(level);
