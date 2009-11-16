@@ -58,16 +58,16 @@ public class Datensatz extends Satz {
      * @param satzart
      * @param n Anzahl der Teildatensaetze
      */
-    public Datensatz(String satzart, int n) {
+    public Datensatz(final String satzart, final int n) {
         super(satzart, n);
         this.setUpTeildatensaetze();
     }
 
-    public Datensatz(int satzart, int sparte) {
+    public Datensatz(final int satzart, final int sparte) {
         this(satzart, sparte, 1);
     }
 
-    public Datensatz(int satzart, int sparte, int n) {
+    public Datensatz(final int satzart, final int sparte, final int n) {
         super(satzart, n);
         this.setSparte(sparte);
         this.setUpTeildatensaetze();

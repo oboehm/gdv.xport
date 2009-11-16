@@ -35,15 +35,15 @@ import org.apache.commons.lang.StringUtils;
  */
 public class Feld implements Comparable<Feld> {
 
-    /** statt "null" */
+    /** statt "null". */
     public static final Feld NULL_FELD = new Feld("null", 0, 0, Align.UNKNOWN);
-    /** optional: Name des Felds */
-    protected final String bezeichnung;
+    /** optional: Name des Felds. */
+    private final String bezeichnung;
     protected final StringBuffer inhalt;
-    /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256 */
+    /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256. */
     @Min(1)
     protected final int byteAdresse;
-    /** Ausrichtung: rechts- oder linksbuendig */
+    /** Ausrichtung: rechts- oder linksbuendig. */
     @NotEqual("UNKNOWN")
     protected final Align ausrichtung;
 

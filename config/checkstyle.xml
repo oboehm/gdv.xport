@@ -59,6 +59,7 @@ under the License.
     <!-- See http://checkstyle.sf.net/config_misc.html#Translation -->
     <module name="Translation"/>
 
+    <module name="TabCharacter"/>
 
     <module name="TreeWalker">
 
@@ -69,7 +70,7 @@ under the License.
         <module name="JavadocMethod"/>
         <module name="JavadocType"/>
         <module name="JavadocVariable">
-          <property name="scope" value="protected"/>
+          <property name="scope" value="public"/>
         </module>
         <module name="JavadocStyle"/>
 
@@ -132,7 +133,6 @@ under the License.
         <module name="OperatorWrap"/>
         <module name="ParenPad"/>
         <module name="TypecastParenPad"/>
-        <module name="TabCharacter"/>
         <module name="WhitespaceAfter"/>
         <module name="WhitespaceAround">
           <property name="tokens" value="ASSIGN"/>
