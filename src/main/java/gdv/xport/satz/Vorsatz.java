@@ -78,16 +78,18 @@ public final class Vorsatz extends Satz {
     }
 
     private void setUpVersions() {
-        addVersion(1, new Version(VERSION_VORSATZ, 96, "1.0"));
-        addVersion(100, 99);
-        addVersion(200, 102);
-        addVersion(210, 50, 105);
-        addVersion(220, 51, 108);
-        addVersion(220, 52, 111);
-        addVersion(220, 53, 114);
-        addVersion(220, 54, 117);
-        addVersion(220, 59, 120);
-        addVersion(9999, new Version(VERSION_NACHSATZ, 225, "1.0"));
+        addVersion(1, new Version(VERSION_VORSATZ, 96, "2.1"));
+        addVersion(100, 99, "2.1");
+        addVersion(200, 102, "2.2");
+        addVersion(210, 50, 105, "   ");
+        addVersion(220, 51, 108, "   ");
+        addVersion(220, 52, 111, "   ");
+        addVersion(220, 53, 114, "   ");
+        addVersion(220, 54, 117, "   ");
+        addVersion(220, 59, 120, "   ");
+        addVersion(210, 70, 165, "1.4");
+        addVersion(220, 70, 168, "1.4");
+        addVersion(9999, new Version(VERSION_NACHSATZ, 225, "1.1"));
     }
 
     private void addVersion(Integer art, Version version) {
@@ -95,14 +97,15 @@ public final class Vorsatz extends Satz {
         add(version);
     }
 
-    private void addVersion(int art, int byteadresse) {
-        addVersion(art, new Version("Version Satzart " + art, byteadresse));
+    private void addVersion(int art, int byteadresse, String version) {
+        String s = new Formatter().format("Version Satzart %04d", art).toString();
+        addVersion(art, new Version(s, byteadresse, version));
     }
 
-    private void addVersion(int art, int sparte, int byteadresse) {
+    private void addVersion(int art, int sparte, int byteadresse, String version) {
         assert sparte < 1000 : "unbekannte Sparte " + sparte;
-        addVersion(art * 1000 + sparte, new Version("Version Satzart " + art + " " + sparte,
-                byteadresse));
+        String s = new Formatter().format("Version Satzart %04d %03d", art, sparte).toString();
+        addVersion(art * 1000 + sparte, new Version(s, byteadresse, version));
     }
 
     public String getVuNummer() {

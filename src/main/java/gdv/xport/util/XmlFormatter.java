@@ -135,8 +135,8 @@ public class XmlFormatter {
         Teildatensatz[] teildatensaetze = satz.getTeildatensaetze();
         for (int i = 0; i < teildatensaetze.length; i++) {
             write(teildatensaetze[i], level+1);
+            xmlStreamWriter.writeCharacters("\n");
         }
-        xmlStreamWriter.writeCharacters("\n");
         writeIndent(level);
         xmlStreamWriter.writeEndElement();
     }
