@@ -107,7 +107,7 @@ public class DatumTest {
 
     /**
      * Bei Datumsangaben ist bei Tag und Monat auch die Eingabe "00" gueltig
-     * (au§er im Vorsatz).
+     * (ausser im Vorsatz).
      * 
      * @since 0.2
      */

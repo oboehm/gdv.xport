@@ -125,6 +125,22 @@ public final class Datenpaket {
         }
         this.nachsatz.importFrom(reader);
     }
+    
+    /**
+     * Importieren einer Datei.
+     * 
+     * @since 0.2
+     * @param file Import-Datei
+     * @throws IOException
+     */
+    public void importFrom(final File file) throws IOException {
+        Reader reader = new FileReader(file);
+        try {
+            this.importFrom(reader);
+        } finally {
+            reader.close();
+        }
+    }
 
     public void setErstellungsDatumVon(Datum d) {
         Datum von = this.getErstellungsDatumVon();
