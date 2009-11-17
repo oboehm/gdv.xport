@@ -18,6 +18,9 @@ import net.sf.oval.context.ClassContext;
 import org.apache.commons.logging.*;
 
 /**
+ * Die Satz-Klasse ist die oberste Klasse, von der alle weiteren Saetze
+ * abgeleitet sind.
+ * 
  * @author oliver
  */
 public class Satz {
@@ -40,11 +43,23 @@ public class Satz {
         this(art.getInhalt());
     }
 
+    /**
+     * Instantiates a new satz.
+     * 
+     * @param art the art
+     * @param n the n
+     */
     public Satz(final NumFeld art, final int n) {
         this.satzart.setInhalt(art.getInhalt());
         this.createTeildatensaetze(n);
     }
 
+    /**
+     * Instantiates a new satz.
+     * 
+     * @param content the content
+     * @param n the n
+     */
     public Satz(final String content, final int n) {
         this.satzart.setInhalt(content.substring(0, 4));
         this.createTeildatensaetze(n);
@@ -58,6 +73,8 @@ public class Satz {
     }
 
     /**
+     * The Constructor.
+     * 
      * @param art z.B. 100 (f. Adressteil)
      * @param n Anzahl der Teildatensaetze
      */
@@ -76,8 +93,9 @@ public class Satz {
     /**
      * Liefert alle Teildatensaetze zurueck.
      * 
-     * @since 0.2
      * @return Teildatensaetze
+     * 
+     * @since 0.2
      */
     public Collection<Teildatensatz> getTeildatensaetze() {
         return Arrays.asList(this.teildatensatz);
@@ -86,22 +104,31 @@ public class Satz {
     /**
      * Liefert den n-ten Teildatensatz zurueck.
      * 
-     * @since 0.2
      * @param n Nummer des Teildatensatzes (beginnend mit 1)
-     * @return
+     * 
+     * @return the teildatensatz
+     * 
+     * @since 0.2
      */
     public Teildatensatz getTeildatensatz(final int n) {
         return this.teildatensatz[n-1];
     }
 
     /**
-     * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu
-     * @param feld
+     * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu.
+     * 
+     * @param feld the feld
      */
     public void add(final Feld feld) {
         this.add(feld, 1);
     }
 
+    /**
+     * Adds the.
+     * 
+     * @param feld the feld
+     * @param teildatensatzNr the teildatensatz nr
+     */
     public void add(final Feld feld, final int teildatensatzNr) {
         if (feld.getByteAdresse() > 256) {
             throw new IllegalArgumentException(feld + " ueberschreitet Teildatensatz-Grenze");
@@ -123,9 +150,9 @@ public class Satz {
      * die gleiche Referenz verweisen - aber sicher ist sicher.
      * Falls das Feld nicht gefunden wird, wird eine IllegalArgumentException
      * geworfen.
-     *
+     * 
      * @param name Name des Felds (Bezeichnung)
-     * @param value
+     * @param value the value
      */
     public void set(final String name, final String value) {
         boolean found = false;
@@ -142,9 +169,12 @@ public class Satz {
     }
 
     /**
+     * Liefert den Inhalt des gewuenschten Feldes.
+     * 
      * @param name gesuchtes Feld
+     * 
      * @return Inhalt des gefundenden Felds
-     *         (NULL_STRING, falls 'name' nicht gefunden wurde)
+     * (NULL_STRING, falls 'name' nicht gefunden wurde)
      */
     public String get(final String name) {
         Feld f = getFeld(name);
@@ -156,7 +186,10 @@ public class Satz {
     }
 
     /**
+     * Liefert das gewuenschte Feld.
+     * 
      * @param name gewuenschter Bezeichner des Feldes
+     * 
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
      */
     public Feld getFeld(final String name) {
@@ -170,9 +203,13 @@ public class Satz {
     }
 
     /**
+     * Liefert das gewuenschte Feld.
+     * 
      * @param name gewuenschter Bezeichner des Feldes
      * @param nr Nummer des Teildatensatzes (1, 2, ...)
+     * 
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
+     * 
      * @since 0.2
      */
     public Feld getFeld(final String name, int nr) {
@@ -180,10 +217,22 @@ public class Satz {
         return teildatensatz[nr-1].getFeld(name);
     }
 
+    /**
+     * Gets the satzart.
+     * 
+     * @return the satzart
+     */
     public NumFeld getSatzart() {
         return this.satzart;
     }
 
+    /**
+     * Export.
+     * 
+     * @param writer the writer
+     * 
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public void export(final Writer writer) throws IOException {
         for (int i = 0; i < teildatensatz.length; i++) {
             teildatensatz[i].export(writer);
@@ -193,9 +242,10 @@ public class Satz {
     /**
      * Eigentlich wollte ich ja diese Methode "import" nennen, aber das
      * kollidiert leider mit dem Schluesselwort "import" in Java.
-     *
-     * @param s
-     * @throws IOException
+     * 
+     * @param s the s
+     * 
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     public void importFrom(final String s) throws IOException {
         for (int i = 0; i < teildatensatz.length; i++) {
@@ -203,15 +253,36 @@ public class Satz {
         }
     }
 
-    public void importFrom(final InputStream istream) throws IOException {
+    /**
+     * Import from.
+     * 
+     * @param istream the istream
+     * 
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public final void importFrom(final InputStream istream) throws IOException {
         importFrom(new InputStreamReader(istream, Config.DEFAULT_ENCODING));
     }
 
-    public void importFrom(final Reader reader) throws IOException {
+    /**
+     * Import from.
+     * 
+     * @param reader the reader
+     * 
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public final void importFrom(final Reader reader) throws IOException {
         importFrom(new PushbackReader(reader, 4));
     }
 
-    public void importFrom(final PushbackReader reader) throws IOException {
+    /**
+     * Import from.
+     * 
+     * @param reader the reader
+     * 
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public final void importFrom(final PushbackReader reader) throws IOException {
         char[] cbuf = new char[256];
         for (int i = 0; i < teildatensatz.length; i++) {
             int art = readSatzart(reader);
@@ -237,10 +308,12 @@ public class Satz {
     /**
      * Liest 4 Bytes, um die Satzart zu bestimmen und stellt die Bytes
      * anschliessend wieder zurueck in den Reader.
-     *
-     * @param reader
+     * 
+     * @param reader the reader
+     * 
      * @return Satzart
-     * @throws IOException
+     * 
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     public static int readSatzart(final PushbackReader reader) throws IOException {
         char[] cbuf = new char[4];
@@ -263,7 +336,7 @@ public class Satz {
     /**
      * Aus Performance-Gruenden stuetzt sich diese Methode nicht auf die
      * validate()-Methode ab.
-     *
+     * 
      * @return true/false
      */
     public boolean isValid() {
@@ -281,6 +354,11 @@ public class Satz {
         return true;
     }
 
+    /**
+     * Validate.
+     * 
+     * @return the list< constraint violation>
+     */
     public List<ConstraintViolation> validate() {
         Validator validator = new Validator();
         List<ConstraintViolation> violations = validator.validate(this);
@@ -311,11 +389,21 @@ public class Satz {
         }
     }
 
+    /**
+     * To short string.
+     * 
+     * @return the string
+     */
     public String toShortString() {
         return "Satzart " + this.satzart.getInhalt() + " ("
                 + this.toLongString().substring(0, 60) + "...)";
     }
 
+    /**
+     * To long string.
+     * 
+     * @return the string
+     */
     public String toLongString() {
         StringWriter swriter = new StringWriter();
         try {
@@ -339,7 +427,14 @@ public class Satz {
         }
     }
 
-    public boolean equals(final Satz other) {
+    /**
+     * Equals.
+     * 
+     * @param other the other
+     * 
+     * @return true, if successful
+     */
+    public final boolean equals(final Satz other) {
         if (this.getSatzart().toInt() != other.getSatzart().toInt()) {
             return false;
         }
