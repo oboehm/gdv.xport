@@ -18,10 +18,8 @@
 
 package gdv.xport;
 
-import static org.junit.Assert.*;
 import static gdv.xport.feld.Bezeichner.*;
-
-import gdv.xport.config.Config;
+import static org.junit.Assert.*;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
@@ -29,7 +27,7 @@ import java.io.*;
 import java.util.Date;
 
 import org.apache.commons.logging.*;
-import org.junit.*;
+import org.junit.Test;
 
 /**
  * @author oliver
@@ -44,11 +42,6 @@ public class DatenpaketTest {
     protected static final VUNummer VU_NUMMER = new VUNummer("5183");
     /** fuer jeden Test gibt es ein frisches Datenpaket */
     private Datenpaket datenpaket = new Datenpaket();
-
-    @BeforeClass
-    public static void setUpBeforeClass() {
-        Config.setVUNummer(VU_NUMMER);
-    }
 
     /**
      * Test method for {@link gdv.xport.Datenpaket#export(java.io.Writer)}.

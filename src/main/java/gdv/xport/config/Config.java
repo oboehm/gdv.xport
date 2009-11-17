@@ -18,11 +18,10 @@
 
 package gdv.xport.config;
 
-import java.nio.charset.Charset;
-
 import gdv.xport.feld.VUNummer;
 
-import org.apache.commons.lang.StringUtils;
+import java.nio.charset.Charset;
+
 import org.apache.commons.logging.*;
 
 /**
@@ -63,19 +62,18 @@ public class Config {
 
     public static synchronized VUNummer getVUNummer() {
         if (vunummer == null) {
-            vunummer = new VUNummer(getStringProperty(GDV_VU_NUMMER));
+            vunummer = new VUNummer(System.getProperty(GDV_VU_NUMMER, "NN"));
         }
-        assert vunummer != null : "property '" + GDV_VU_NUMMER + "' not set";
         return vunummer;
     }
 
-    private static String getStringProperty(String key) {
-        String value = System.getProperty(key);
-        if (StringUtils.isBlank(value)) {
-            throw new ConfigException("Property '" + key + "' ist nicht gesetzt!");
-        }
-        return value;
-    }
+//    private static String getStringProperty(String key) {
+//        String value = System.getProperty(key);
+//        if (StringUtils.isBlank(value)) {
+//            throw new ConfigException("Property '" + key + "' ist nicht gesetzt!");
+//        }
+//        return value;
+//    }
 
 }
 
