@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="0.2.1" date="17-Nov-2009"
+             description="Bugfix Datums-Validierung">
+      <action dev="oboehm" type="fix">
+        Fehler in der Datums-Validierung behoben.
+      </action>
+    </release>
+
     <release version="0.2.0" date="16-Nov-2009"
              description="Registrierung eigener Datensaetze, XML-Support">
       <action dev="oboehm" type="add">

@@ -28,24 +28,24 @@ public class Satz {
     /** Teildatensaetze */
     protected Teildatensatz[] teildatensatz;
 
-    protected Satz(int art) {
+    protected Satz(final int art) {
         this(art, 1);
     }
 
-    protected Satz(String art) {
+    protected Satz(final String art) {
         this(art, (art.length() + 255) / 256);
     }
 
-    protected Satz(NumFeld art) {
+    protected Satz(final NumFeld art) {
         this(art.getInhalt());
     }
 
-    public Satz(NumFeld art, int n) {
+    public Satz(final NumFeld art, final int n) {
         this.satzart.setInhalt(art.getInhalt());
         this.createTeildatensaetze(n);
     }
 
-    public Satz(String content, int n) {
+    public Satz(final String content, final int n) {
         this.satzart.setInhalt(content.substring(0, 4));
         this.createTeildatensaetze(n);
         if (content.length() > 4) {
@@ -61,7 +61,7 @@ public class Satz {
      * @param art z.B. 100 (f. Adressteil)
      * @param n Anzahl der Teildatensaetze
      */
-    public Satz(int art, int n) {
+    public Satz(final int art, final int n) {
         this.satzart.setInhalt(art);
         this.createTeildatensaetze(n);
     }
@@ -98,11 +98,11 @@ public class Satz {
      * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu
      * @param feld
      */
-    public void add(Feld feld) {
+    public void add(final Feld feld) {
         this.add(feld, 1);
     }
 
-    public void add(Feld feld, int teildatensatzNr) {
+    public void add(final Feld feld, final int teildatensatzNr) {
         if (feld.getByteAdresse() > 256) {
             throw new IllegalArgumentException(feld + " ueberschreitet Teildatensatz-Grenze");
         }
@@ -127,7 +127,7 @@ public class Satz {
      * @param name Name des Felds (Bezeichnung)
      * @param value
      */
-    public void set(String name, String value) {
+    public void set(final String name, final String value) {
         boolean found = false;
         for (int i = 0; i < teildatensatz.length; i++) {
             Feld x = teildatensatz[i].getFeld(name);
@@ -146,7 +146,7 @@ public class Satz {
      * @return Inhalt des gefundenden Felds
      *         (NULL_STRING, falls 'name' nicht gefunden wurde)
      */
-    public String get(String name) {
+    public String get(final String name) {
         Feld f = getFeld(name);
         if (f == Feld.NULL_FELD) {
             return NULL_STRING;
@@ -159,7 +159,7 @@ public class Satz {
      * @param name gewuenschter Bezeichner des Feldes
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
      */
-    public Feld getFeld(String name) {
+    public Feld getFeld(final String name) {
         for (int i = 0; i < teildatensatz.length; i++) {
             Feld x = teildatensatz[i].getFeld(name);
             if (x != Feld.NULL_FELD) {
@@ -175,7 +175,7 @@ public class Satz {
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
      * @since 0.2
      */
-    public Feld getFeld(String name, int nr) {
+    public Feld getFeld(final String name, int nr) {
         assert (0 < nr) &&  (nr <= teildatensatz.length) : nr + " liegt ausserhalb des Bereichs";
         return teildatensatz[nr-1].getFeld(name);
     }
@@ -183,18 +183,8 @@ public class Satz {
     public NumFeld getSatzart() {
         return this.satzart;
     }
-//
-//    /**
-//     * Falls man mal die Satzart lieber als String will...
-//     * 
-//     * @since 0.2
-//     * @return Satzart als String
-//     */
-//    public String getSatzartAsString() {
-//        return satzart.getInhalt();
-//    }
 
-    public void export(Writer writer) throws IOException {
+    public void export(final Writer writer) throws IOException {
         for (int i = 0; i < teildatensatz.length; i++) {
             teildatensatz[i].export(writer);
         }
@@ -207,21 +197,21 @@ public class Satz {
      * @param s
      * @throws IOException
      */
-    public void importFrom(String s) throws IOException {
+    public void importFrom(final String s) throws IOException {
         for (int i = 0; i < teildatensatz.length; i++) {
             teildatensatz[i].importFrom(s.substring(i * 256));
         }
     }
 
-    public void importFrom(InputStream istream) throws IOException {
+    public void importFrom(final InputStream istream) throws IOException {
         importFrom(new InputStreamReader(istream, Config.DEFAULT_ENCODING));
     }
 
-    public void importFrom(Reader reader) throws IOException {
+    public void importFrom(final Reader reader) throws IOException {
         importFrom(new PushbackReader(reader, 4));
     }
 
-    public void importFrom(PushbackReader reader) throws IOException {
+    public void importFrom(final PushbackReader reader) throws IOException {
         char[] cbuf = new char[256];
         for (int i = 0; i < teildatensatz.length; i++) {
             int art = readSatzart(reader);
@@ -236,7 +226,7 @@ public class Satz {
         }
     }
     
-    private static void importFrom(Reader reader, char[]cbuf) throws IOException {
+    private static void importFrom(final Reader reader, final char[]cbuf) throws IOException {
         if (reader.read(cbuf) == -1) {
             String s = new String(cbuf);
             throw new IOException("can't read " + cbuf.length + " bytes from " + reader + ", only "
@@ -252,14 +242,14 @@ public class Satz {
      * @return Satzart
      * @throws IOException
      */
-    public static int readSatzart(PushbackReader reader) throws IOException {
+    public static int readSatzart(final PushbackReader reader) throws IOException {
         char[] cbuf = new char[4];
         importFrom(reader, cbuf);
         reader.unread(cbuf);
         return Integer.parseInt(new String(cbuf));
     }
 
-    private static void skipNewline(PushbackReader reader) throws IOException {
+    private static void skipNewline(final PushbackReader reader) throws IOException {
         char[] cbuf = new char[1];
         do {
             if (reader.read(cbuf) == -1) {
@@ -341,7 +331,7 @@ public class Satz {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object other) {
+    public boolean equals(final Object other) {
         try {
             return this.equals((Satz) other);
         } catch (ClassCastException cce) {
@@ -349,7 +339,7 @@ public class Satz {
         }
     }
 
-    public boolean equals(Satz other) {
+    public boolean equals(final Satz other) {
         if (this.getSatzart().toInt() != other.getSatzart().toInt()) {
             return false;
         }
