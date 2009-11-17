@@ -108,11 +108,11 @@ public final class Vorsatz extends Satz {
         String s = getVersionBezeichnung(art, sparte);
         addVersion(art * 1000 + sparte, new Version(s, byteadresse, version));
     }
-    
+
     private static String getVersionBezeichnung(int art) {
         return new Formatter().format("Version Satzart %04d", art).toString();
     }
-    
+
     private static String getVersionBezeichnung(int art, int sparte) {
         return new Formatter().format("Version Satzart %04d %03d", art, sparte).toString();
     }

@@ -273,7 +273,7 @@ public class Feld implements Comparable<Feld> {
     /**
      * Es gilt fuer Feld a und b: a < b, wenn die Start-Adresse von a
      * vor b liegt.
-     * 
+     *
      * @param other das andere Feld
      * @return 0 wenn beide Felder die gleiche Startadresse haben
      */

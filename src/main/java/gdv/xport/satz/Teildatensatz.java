@@ -69,10 +69,10 @@ public class Teildatensatz extends Satz {
         datenfelder.put("Satzart", this.satzart);
         datenfelder.put("Satznummer", this.satznummer);
     }
-    
+
     /**
      * Liefert die Satznummer zurueck.
-     * 
+     *
      * @since 0.2
      * @return Satznummer als einzelnes Zeichen ('1' ... '9')
      */
@@ -111,11 +111,11 @@ public class Teildatensatz extends Satz {
             return found;
         }
     }
-    
+
     /**
      * Liefert alle Felder in der Reihenfolge innerhalb des Teildatensatzes
-     * zurueck. 
-     * 
+     * zurueck.
+     *
      * @since 0.2
      * @return List der Felder (sortiert)
      */

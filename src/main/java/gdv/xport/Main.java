@@ -32,7 +32,7 @@ public class Main {
     /**
      * @since 0.2
      * @param args
-     * @throws IOException 
+     * @throws IOException
      */
     public static void main(String[] args) throws IOException {
         if (args.length != 1) {

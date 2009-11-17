@@ -53,7 +53,7 @@ public class BetragMitVorzeichenTest {
         assertEquals("0120-", betrag.getInhalt());
         assertEquals(-1.2, betrag.toDouble(), 0.001);
     }
-    
+
     @Test
     public void testIsValid() {
         betrag.setInhalt(99.99);

@@ -34,7 +34,7 @@ import org.apache.commons.logging.*;
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
  * XML-Struktur ausgeben zu koennen.
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.2 (13.11.2009)
  */
@@ -46,7 +46,7 @@ public class XmlFormatter {
 
     /**
      * Der einzige Konstruktor.
-     * 
+     *
      * @param writer the writer
      */
     public XmlFormatter(Writer writer) {
@@ -58,10 +58,10 @@ public class XmlFormatter {
             throw new ConfigException("XML problems", e);
         }
     }
-    
+
     /**
      * Instantiates a new xml formatter.
-     * 
+     *
      * @param xmlStreamWriter the xml stream writer
      */
     public XmlFormatter(XMLStreamWriter xmlStreamWriter) {
@@ -70,9 +70,9 @@ public class XmlFormatter {
 
     /**
      * Ausgabe eines Feldes als XML.
-     * 
+     *
      * @param feld the feld
-     * 
+     *
      * @throws XMLStreamException Signals that an I/O exception has occurred.
      */
     public void write(Feld feld) throws XMLStreamException {
@@ -85,18 +85,18 @@ public class XmlFormatter {
         xmlStreamWriter.writeCharacters(feld.getInhalt());
         xmlStreamWriter.writeEndElement();
     }
-    
+
     /**
      * Ausgabe eines Teildatensatzes als XML.
-     * 
+     *
      * @param teildatensatz the teildatensatz
-     * 
+     *
      * @throws XMLStreamException the XML stream exception
      */
     public void write(Teildatensatz teildatensatz) throws XMLStreamException {
         write(teildatensatz, 0);
     }
-    
+
     private void write(Teildatensatz teildatensatz, int level) throws XMLStreamException {
         writeIndent(level);
         xmlStreamWriter.writeStartElement("teildatensatz");
@@ -109,14 +109,14 @@ public class XmlFormatter {
             xmlStreamWriter.writeCharacters("\n");
         }
         writeIndent(level);
-        xmlStreamWriter.writeEndElement();        
+        xmlStreamWriter.writeEndElement();
     }
-    
+
     /**
      * Ausgabe eines Datensatzes als XML.
-     * 
+     *
      * @param satz der auszugebende (Daten-)Satz
-     * 
+     *
      * @throws XMLStreamException the XML stream exception
      */
     public void write(Satz satz) throws XMLStreamException {
@@ -141,10 +141,10 @@ public class XmlFormatter {
         writeIndent(level);
         xmlStreamWriter.writeEndElement();
     }
-    
+
     /**
      * Ausgabe eines kompletten Datenpakets als XML.
-     * 
+     *
      * @param datenpaket
      * @throws XMLStreamException
      */
@@ -160,14 +160,14 @@ public class XmlFormatter {
         }
         write(datenpaket.getNachsatz(), 1);
         xmlStreamWriter.writeCharacters("\n");
-        xmlStreamWriter.writeEndElement();        
+        xmlStreamWriter.writeEndElement();
     }
-    
+
     /**
      * Wandelt das uebergebenen Feld in einen XML-String um.
-     * 
+     *
      * @param feld ein Feld
-     * 
+     *
      * @return das Feld als XML-String
      */
     public static String toString(final Feld feld) {
@@ -181,13 +181,13 @@ public class XmlFormatter {
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
     }
-    
+
     /**
      * Wandelt dens uebergebenen Teildatensatz in einen XML-String um.
-     * 
+     *
      * @param Teildatensatz
      *            ein Teildatensatz
-     * 
+     *
      * @return Teildatensatz als XML-String
      */
     public static String toString(final Teildatensatz teildatensatz) {
@@ -202,12 +202,12 @@ public class XmlFormatter {
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
     }
-    
+
     /**
      * Wandelt den uebergebenen Satz in einen XML-String um.
-     * 
+     *
      * @param satz ein Satz
-     * 
+     *
      * @return Satz als XML-String
      */
     public static String toString(final Satz satz) {
@@ -222,12 +222,12 @@ public class XmlFormatter {
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
     }
-    
+
     /**
      * Wandelt das uebergebene Datenpaket in einen XML-String um.
-     * 
+     *
      * @param datenpaket das Datenpaket
-     * 
+     *
      * @return Datenpaket als XML-String
      */
     public static String toString(final Datenpaket datenpaket) {

@@ -21,7 +21,7 @@ package gdv.xport.feld;
 // TODO: Auto-generated Javadoc
 /**
  * Ein Zeichen ist ein Feld der Laenge 1.
- * 
+ *
  * @author oliver
  * @since 0.0.2
  */
@@ -29,7 +29,7 @@ public class Zeichen extends AlphaNumFeld {
 
     /**
      * Instantiates a new zeichen.
-     * 
+     *
      * @param start the start
      * @param c the c
      */
@@ -40,7 +40,7 @@ public class Zeichen extends AlphaNumFeld {
 
     /**
      * Instantiates a new zeichen.
-     * 
+     *
      * @param name the name
      * @param start the start
      */
@@ -50,7 +50,7 @@ public class Zeichen extends AlphaNumFeld {
 
     /**
      * Instantiates a new zeichen.
-     * 
+     *
      * @param name the name
      * @param start the start
      * @param c the c
@@ -61,7 +61,7 @@ public class Zeichen extends AlphaNumFeld {
 
     /**
      * Falls man keinen String will, sondern ein einzelnes Zeichen braucht.
-     * 
+     *
      * @return das einzige Zeichen
      */
     public char toChar() {

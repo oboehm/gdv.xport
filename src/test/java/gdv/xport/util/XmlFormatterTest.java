@@ -41,7 +41,7 @@ public class XmlFormatterTest extends AbstractTest {
 
     /**
      * Test method for {@link gdv.xport.util.XmlFormatter#write(gdv.xport.feld.Feld)}.
-     * @throws XMLStreamException 
+     * @throws XMLStreamException
      */
     @Test
     public void testWriteFeld() throws XMLStreamException {
@@ -50,7 +50,7 @@ public class XmlFormatterTest extends AbstractTest {
         log.info(x + " as XML: " + xmlString);
         checkXML(xmlString);
     }
-    
+
     /**
      * Testet den Export eines Teildatensatzes als XML.
      * @throws XMLStreamException
@@ -62,7 +62,7 @@ public class XmlFormatterTest extends AbstractTest {
         log.info(teildatensatz + " as XML:\n" + xmlString);
         checkXML(xmlString);
     }
-    
+
     /**
      * Testet den Export eines Satzes als XML.
      * @throws XMLStreamException
@@ -74,18 +74,18 @@ public class XmlFormatterTest extends AbstractTest {
         log.info(satz + " as XML:\n" + xmlString);
         checkXML(xmlString);
     }
-    
+
     @Test
     public void testWriteDatenpaket() throws XMLStreamException {
         Datenpaket datenpaket = new Datenpaket();
         String xmlString = XmlFormatter.toString(datenpaket);
         log.info(datenpaket + " as XML:\n" + xmlString);
-        checkXML(xmlString);        
+        checkXML(xmlString);
     }
-    
+
     /**
      * We use the XMLStreams to validate the XML
-     * 
+     *
      * @param xmlString
      * @throws XMLStreamException
      *             the given XML string is not a valid XML

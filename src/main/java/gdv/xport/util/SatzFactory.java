@@ -49,13 +49,13 @@ public class SatzFactory {
         registeredSatzClasses.put(220, SpartenspezifischerTeil.class);
         registeredSatzClasses.put(9999, Nachsatz.class);
     }
-    
+
     private SatzFactory() {}
 
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
      * unterstuetzte Datensaetze) registriert werden.
-     * 
+     *
      * @since 0.2
      * @param clazz
      * @param satzart
@@ -67,7 +67,7 @@ public class SatzFactory {
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
      * Testen hilfreich sein kann)
-     * 
+     *
      * @since 0.2
      * @param satzart
      */
@@ -95,7 +95,7 @@ public class SatzFactory {
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
      * Testen hilfreich sein kann)
-     * 
+     *
      * @since 0.2
      * @param satzart
      * @param sparte
@@ -143,7 +143,7 @@ public class SatzFactory {
      * Versucht anhand des uebergebenen Strings herauszufinden, um was fuer
      * eine Satzart es sich handelt und liefert dann einen entsprechende
      * (gefuellten) Satz zurueck.
-     * 
+     *
      * @param content
      * @return einen gefuellten Satz
      * @since 0.2

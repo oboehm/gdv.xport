@@ -125,10 +125,10 @@ public final class Datenpaket {
         }
         this.nachsatz.importFrom(reader);
     }
-    
+
     /**
      * Importieren einer Datei.
-     * 
+     *
      * @since 0.2
      * @param file Import-Datei
      * @throws IOException

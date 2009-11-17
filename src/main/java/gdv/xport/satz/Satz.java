@@ -20,7 +20,7 @@ import org.apache.commons.logging.*;
 /**
  * Die Satz-Klasse ist die oberste Klasse, von der alle weiteren Saetze
  * abgeleitet sind.
- * 
+ *
  * @author oliver
  */
 public class Satz {
@@ -45,7 +45,7 @@ public class Satz {
 
     /**
      * Instantiates a new satz.
-     * 
+     *
      * @param art the art
      * @param n the n
      */
@@ -56,7 +56,7 @@ public class Satz {
 
     /**
      * Instantiates a new satz.
-     * 
+     *
      * @param content the content
      * @param n the n
      */
@@ -74,7 +74,7 @@ public class Satz {
 
     /**
      * The Constructor.
-     * 
+     *
      * @param art z.B. 100 (f. Adressteil)
      * @param n Anzahl der Teildatensaetze
      */
@@ -92,9 +92,9 @@ public class Satz {
 
     /**
      * Liefert alle Teildatensaetze zurueck.
-     * 
+     *
      * @return Teildatensaetze
-     * 
+     *
      * @since 0.2
      */
     public Collection<Teildatensatz> getTeildatensaetze() {
@@ -103,11 +103,11 @@ public class Satz {
 
     /**
      * Liefert den n-ten Teildatensatz zurueck.
-     * 
+     *
      * @param n Nummer des Teildatensatzes (beginnend mit 1)
-     * 
+     *
      * @return the teildatensatz
-     * 
+     *
      * @since 0.2
      */
     public Teildatensatz getTeildatensatz(final int n) {
@@ -116,7 +116,7 @@ public class Satz {
 
     /**
      * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu.
-     * 
+     *
      * @param feld the feld
      */
     public void add(final Feld feld) {
@@ -125,7 +125,7 @@ public class Satz {
 
     /**
      * Adds the.
-     * 
+     *
      * @param feld the feld
      * @param teildatensatzNr the teildatensatz nr
      */
@@ -150,7 +150,7 @@ public class Satz {
      * die gleiche Referenz verweisen - aber sicher ist sicher.
      * Falls das Feld nicht gefunden wird, wird eine IllegalArgumentException
      * geworfen.
-     * 
+     *
      * @param name Name des Felds (Bezeichnung)
      * @param value the value
      */
@@ -170,9 +170,9 @@ public class Satz {
 
     /**
      * Liefert den Inhalt des gewuenschten Feldes.
-     * 
+     *
      * @param name gesuchtes Feld
-     * 
+     *
      * @return Inhalt des gefundenden Felds
      * (NULL_STRING, falls 'name' nicht gefunden wurde)
      */
@@ -187,9 +187,9 @@ public class Satz {
 
     /**
      * Liefert das gewuenschte Feld.
-     * 
+     *
      * @param name gewuenschter Bezeichner des Feldes
-     * 
+     *
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
      */
     public Feld getFeld(final String name) {
@@ -204,12 +204,12 @@ public class Satz {
 
     /**
      * Liefert das gewuenschte Feld.
-     * 
+     *
      * @param name gewuenschter Bezeichner des Feldes
      * @param nr Nummer des Teildatensatzes (1, 2, ...)
-     * 
+     *
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
-     * 
+     *
      * @since 0.2
      */
     public Feld getFeld(final String name, int nr) {
@@ -219,7 +219,7 @@ public class Satz {
 
     /**
      * Gets the satzart.
-     * 
+     *
      * @return the satzart
      */
     public NumFeld getSatzart() {
@@ -228,9 +228,9 @@ public class Satz {
 
     /**
      * Export.
-     * 
+     *
      * @param writer the writer
-     * 
+     *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void export(final Writer writer) throws IOException {
@@ -242,9 +242,9 @@ public class Satz {
     /**
      * Eigentlich wollte ich ja diese Methode "import" nennen, aber das
      * kollidiert leider mit dem Schluesselwort "import" in Java.
-     * 
+     *
      * @param s the s
-     * 
+     *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void importFrom(final String s) throws IOException {
@@ -255,9 +255,9 @@ public class Satz {
 
     /**
      * Import from.
-     * 
+     *
      * @param istream the istream
-     * 
+     *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public final void importFrom(final InputStream istream) throws IOException {
@@ -266,9 +266,9 @@ public class Satz {
 
     /**
      * Import from.
-     * 
+     *
      * @param reader the reader
-     * 
+     *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public final void importFrom(final Reader reader) throws IOException {
@@ -277,9 +277,9 @@ public class Satz {
 
     /**
      * Import from.
-     * 
+     *
      * @param reader the reader
-     * 
+     *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public final void importFrom(final PushbackReader reader) throws IOException {
@@ -296,7 +296,7 @@ public class Satz {
             skipNewline(reader);
         }
     }
-    
+
     private static void importFrom(final Reader reader, final char[]cbuf) throws IOException {
         if (reader.read(cbuf) == -1) {
             String s = new String(cbuf);
@@ -308,11 +308,11 @@ public class Satz {
     /**
      * Liest 4 Bytes, um die Satzart zu bestimmen und stellt die Bytes
      * anschliessend wieder zurueck in den Reader.
-     * 
+     *
      * @param reader the reader
-     * 
+     *
      * @return Satzart
-     * 
+     *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public static int readSatzart(final PushbackReader reader) throws IOException {
@@ -336,7 +336,7 @@ public class Satz {
     /**
      * Aus Performance-Gruenden stuetzt sich diese Methode nicht auf die
      * validate()-Methode ab.
-     * 
+     *
      * @return true/false
      */
     public boolean isValid() {
@@ -356,7 +356,7 @@ public class Satz {
 
     /**
      * Validate.
-     * 
+     *
      * @return the list< constraint violation>
      */
     public List<ConstraintViolation> validate() {
@@ -391,7 +391,7 @@ public class Satz {
 
     /**
      * To short string.
-     * 
+     *
      * @return the string
      */
     public String toShortString() {
@@ -401,7 +401,7 @@ public class Satz {
 
     /**
      * To long string.
-     * 
+     *
      * @return the string
      */
     public String toLongString() {
@@ -429,9 +429,9 @@ public class Satz {
 
     /**
      * Equals.
-     * 
+     *
      * @param other the other
-     * 
+     *
      * @return true, if successful
      */
     public final boolean equals(final Satz other) {

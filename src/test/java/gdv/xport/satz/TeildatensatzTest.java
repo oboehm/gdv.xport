@@ -45,11 +45,11 @@ public class TeildatensatzTest extends AbstractSatzTest {
         this.checkExport(teildatensatz, 1, 4, "0042", 256);
         this.checkExport(teildatensatz, 255, 256, " 1", 256);
     }
-    
+
     /**
      * Die einzelnen Felder sollten in der Reihenfolge der Byte-Adresse
      * geliefert werden.
-     * 
+     *
      * @since 0.2
      */
     @Test

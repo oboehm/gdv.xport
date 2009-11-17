@@ -88,18 +88,18 @@ public class DatumTest {
         }
         assertEquals(1, violations.size());
     }
-    
+
     /**
      * Wenn ein Datum nur aus 6 Zeichen besteht, hat es laut
      * Broschuere Vermittle das Format MMJJJJ.
-     * 
+     *
      * @since 0.2
      */
     @Test
     public void testDatumMMJJJJ() {
         checkDatum("112009");
     }
-    
+
     @Test
     public void testDatumTT() {
         checkDatum("30");
@@ -108,7 +108,7 @@ public class DatumTest {
     /**
      * Bei Datumsangaben ist bei Tag und Monat auch die Eingabe "00" gueltig
      * (ausser im Vorsatz).
-     * 
+     *
      * @since 0.2
      */
     @Test
@@ -118,13 +118,13 @@ public class DatumTest {
         checkDatum("00112009");
         checkDatum("00002009");
     }
-    
+
     private static void checkDatum(String inhalt) {
         Datum datum = new Datum("Test-Datum", inhalt);
         assertEquals(inhalt, datum.getInhalt());
-        assertTrue(datum + " should be a valid date", datum.isValid());        
+        assertTrue(datum + " should be a valid date", datum.isValid());
     }
-    
+
     @Test
     public void testIsEmpty() {
         Datum empty = new Datum("empty", "00000000");
