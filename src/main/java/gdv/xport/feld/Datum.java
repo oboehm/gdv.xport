@@ -23,11 +23,11 @@ package gdv.xport.feld;
 import java.text.*;
 import java.util.*;
 
-import org.apache.commons.logging.*;
-
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.constraint.MatchPatternCheck;
 import net.sf.oval.context.ClassContext;
+
+import org.apache.commons.logging.*;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -40,7 +40,7 @@ import net.sf.oval.context.ClassContext;
 public final class Datum extends Feld {
 
     private static final Log log = LogFactory.getLog(Feld.class);
-    private DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
+    private final DateFormat dateFormat;
 
     /**
      * Instantiates a new datum.
@@ -56,10 +56,10 @@ public final class Datum extends Feld {
      * Instantiates a new datum.
      *
      * @param name the name
-     * @param mmddjjjj the mmddjjjj
+     * @param inhalt Datum der Form "ddmmjjjj" oder "ddjjjj" oder "dd"
      */
-    public Datum(String name, String mmddjjjj) {
-        this(name, 8, 1, mmddjjjj);
+    public Datum(String name, String inhalt) {
+        this(name, inhalt.length(), 1, inhalt);
     }
 
     /**
@@ -71,6 +71,20 @@ public final class Datum extends Feld {
      */
     public Datum(String name, int length, int start) {
         super(name, length, start, Align.RIGHT);
+        switch(length) {
+            case 2:
+                dateFormat = new SimpleDateFormat("dd");
+                break;
+            case 6:
+                dateFormat = new SimpleDateFormat("MMyyyy");
+                break;
+            case 8:
+                dateFormat = new SimpleDateFormat("ddMMyyyy");
+                break;
+            default:
+                throw new IllegalArgumentException("length=" + length
+                        + " not allowed - only 2, 4 or 8");
+        }
     }
 
     /**
@@ -79,10 +93,11 @@ public final class Datum extends Feld {
      * @param name the name
      * @param length the length
      * @param start the start
-     * @param mmddjjjj the mmddjjjj
+     * @param inhalt Datum der Form "ddmmjjjj" oder "ddjjjj" oder "dd"
      */
-    public Datum(String name, int length, int start, String mmddjjjj) {
-        super(name, length, start, mmddjjjj, Align.RIGHT);
+    public Datum(String name, int length, int start, String inhalt) {
+        this(name, length, start);
+        this.setInhalt(inhalt);
     }
 
     /**
@@ -109,6 +124,20 @@ public final class Datum extends Feld {
      */
     public Datum(int length, int start) {
         super(length, start, Align.RIGHT);
+        switch(length) {
+            case 2:
+                dateFormat = new SimpleDateFormat("dd");
+                break;
+            case 6:
+                dateFormat = new SimpleDateFormat("MMyyyy");
+                break;
+            case 8:
+                dateFormat = new SimpleDateFormat("ddMMyyyy");
+                break;
+            default:
+                throw new IllegalArgumentException("length=" + length
+                        + " not allowed - only 2, 4 or 8");
+        }
     }
 
     /**
@@ -198,10 +227,13 @@ public final class Datum extends Feld {
     }
 
     private boolean hasValidDate() {
+        String orig = this.getInhalt();
+        if (orig.startsWith("00")) {
+            return true;
+        }
         try {
             Date date = this.toDate();
             String conv = this.dateFormat.format(date);
-            String orig = this.getInhalt();
             return conv.equals(orig);
         } catch (RuntimeException e) {
             log.info(e + " -> mapped to false");
