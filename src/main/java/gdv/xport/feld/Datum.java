@@ -71,20 +71,7 @@ public final class Datum extends Feld {
      */
     public Datum(String name, int length, int start) {
         super(name, length, start, Align.RIGHT);
-        switch(length) {
-            case 2:
-                dateFormat = new SimpleDateFormat("dd");
-                break;
-            case 6:
-                dateFormat = new SimpleDateFormat("MMyyyy");
-                break;
-            case 8:
-                dateFormat = new SimpleDateFormat("ddMMyyyy");
-                break;
-            default:
-                throw new IllegalArgumentException("length=" + length
-                        + " not allowed - only 2, 4 or 8");
-        }
+        dateFormat = getDateFormat(length);
     }
 
     /**
@@ -124,19 +111,22 @@ public final class Datum extends Feld {
      */
     public Datum(int length, int start) {
         super(length, start, Align.RIGHT);
-        switch(length) {
+        dateFormat = getDateFormat(length);
+    }
+    
+    private static DateFormat getDateFormat(int length) {
+        switch (length) {
             case 2:
-                dateFormat = new SimpleDateFormat("dd");
-                break;
+                return new SimpleDateFormat("dd");
+            case 4:
+                return new SimpleDateFormat("MMyy");
             case 6:
-                dateFormat = new SimpleDateFormat("MMyyyy");
-                break;
+                return new SimpleDateFormat("MMyyyy");
             case 8:
-                dateFormat = new SimpleDateFormat("ddMMyyyy");
-                break;
+                return new SimpleDateFormat("ddMMyyyy");
             default:
                 throw new IllegalArgumentException("length=" + length
-                        + " not allowed - only 2, 4 or 8");
+                        + " not allowed - only 2, 4, 6 or 8");
         }
     }
 
