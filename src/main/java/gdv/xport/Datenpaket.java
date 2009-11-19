@@ -133,6 +133,20 @@ public final class Datenpaket {
             writer.close();
         }
     }
+    
+    /**
+     * Falls wir einen Stream haben, koennen wir diese Methode benutzen.
+     * 
+     * @since 0.3
+     * @param ostream
+     * @throws IOException
+     */
+    public void export(OutputStream ostream) throws IOException {
+       Writer writer = new OutputStreamWriter(ostream);
+       export(writer);
+       writer.flush();
+       ostream.flush();
+    }
 
     public void export(Writer writer) throws IOException {
         vorsatz.export(writer);

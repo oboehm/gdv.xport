@@ -36,13 +36,15 @@ import org.apache.commons.logging.*;
  */
 public class Config {
 
-    private static final Log log = LogFactory.getLog(Config.class);
-    protected static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
-    private static VUNummer vunummer;
     /** Standard-Encoding ist "ISO-8859-1" */
     public static final Charset DEFAULT_ENCODING = Charset.forName("ISO-8859-1");
     /** Fals VUNummer nicht gesetzt ist, wird dies als Dummy eingesetzt */
     public static final String DUMMY_VU_NUMMER = "DUMMY";
+    private static final Log log = LogFactory.getLog(Config.class);
+    protected static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
+    private static VUNummer vunummer;
+    /* end of datensatz */
+    private static String eod = "";
     
     private Config() {}
 
@@ -69,6 +71,26 @@ public class Config {
             vunummer = new VUNummer(System.getProperty(GDV_VU_NUMMER, DUMMY_VU_NUMMER));
         }
         return vunummer;
+    }
+    
+    /**
+     * Hier kann der "End Of Datensatz" (EOD) gesetzt werden.
+     * Dieses Zeichen (oder Zeichenkette) wird am Ende jeden
+     * Datensatzes mit ausgegeben.
+     * 
+     * @since 0.3
+     * @param linefeed z.B. "\n"
+     */
+    public static void setEOD(String linefeed) {
+        eod = linefeed;
+    }
+    
+    /**
+     * @since 0.3
+     * @return End-of-Datensatz
+     */
+    public static String getEOD() {
+        return eod;
     }
 
 //    private static String getStringProperty(String key) {

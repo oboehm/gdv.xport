@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Manual</title>
+    <author email="oliver.boehm@agentes.de">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Die ersten Schritte">
+      <p>
+        gdv.xport ist in erster Linie eine Java-Bibliothek,
+        auch wenn diese ein kleines Main-Programm enthaelt.
+      </p>
+      <subsection name="Abhaengige Bibliotheken">
+      	<p>
+      	  gdv.xport haengt von einigen weiteren Bibliotheken ab, die Sie unter
+      	  <a href="../dependencies.html">dependencies.html</a> aufgelistet sehen.
+      	  Binden Sie diese Bibliotheken in den Classpath ein.
+      	</p>
+      </subsection>
+      <subsection name="Hello World">
+        <p>
+          Fuer ein erstes Beispiel wollen wir ein leeres Datenpaket erzeugen,
+          die VU-Nummer auf "Hello" und den Adressat (im Vorsatz) auf "World"
+          setzen.
+        </p>
+      </subsection>
+    </section>
+
+  </body>
+
+</document>

@@ -29,6 +29,7 @@ import org.apache.commons.logging.*;
 
 import net.sf.oval.*;
 
+import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
 /**
@@ -141,6 +142,7 @@ public class Teildatensatz extends Satz {
         }
         assert data.length() == 256 : "Teildatensatz ist nicht 256 Bytes lang";
         writer.write(data.toString());
+        writer.write(Config.getEOD());
     }
 
     /* (non-Javadoc)

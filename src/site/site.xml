@@ -40,6 +40,9 @@
       <item name="Kontakt"					href="contact.html" />
       <item name="Download"                 href="downloads.html" />
     </menu>
+    <menu name="Manual" href="manual/index.html">
+      <item name="getting started"          href="manual/firststeps.html" />
+    </menu>
 
     <menu ref="modules" />
 

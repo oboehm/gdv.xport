@@ -117,18 +117,6 @@
       <artifactId>commons-io</artifactId>
       <version>1.4</version>
     </dependency>
-    <!-- FIT and FITnesse -->
-    <dependency>
-      <groupId>com.c2.fit</groupId>
-  	  <artifactId>fit</artifactId>
-  	  <version>1.1</version>
-    </dependency>
-    <dependency>
-   	  <groupId>org.fitnesse</groupId>
-	  <artifactId>fitnesse</artifactId>
-      <version>20081201</version>
-      <scope>test</scope>
-    </dependency>
     <!-- @see http://mirrors.ibiblio.org/pub/mirrors/maven2/junit/junit/ -->
     <dependency>
       <groupId>junit</groupId>
