@@ -193,5 +193,7 @@ public class Bezeichner {
     public static final String ZUSCHLAG2_IN_PROZENT = "Zuschlag-2 in %";
     public static final String ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN = "Zuschlag-2 in Waehrungseinheiten";
 
+    private Bezeichner() {}
+    
 }
 

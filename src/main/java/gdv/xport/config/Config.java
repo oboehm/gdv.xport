@@ -41,6 +41,10 @@ public class Config {
     private static VUNummer vunummer;
     /** Standard-Encoding ist "ISO-8859-1" */
     public static final Charset DEFAULT_ENCODING = Charset.forName("ISO-8859-1");
+    /** Fals VUNummer nicht gesetzt ist, wird dies als Dummy eingesetzt */
+    public static final String DUMMY_VU_NUMMER = "DUMMY";
+    
+    private Config() {}
 
     /**
      * Diese Methode dient zwar hauptsaechlich zu Testzwecken, kann aber auch
@@ -62,7 +66,7 @@ public class Config {
 
     public static synchronized VUNummer getVUNummer() {
         if (vunummer == null) {
-            vunummer = new VUNummer(System.getProperty(GDV_VU_NUMMER, "NN"));
+            vunummer = new VUNummer(System.getProperty(GDV_VU_NUMMER, DUMMY_VU_NUMMER));
         }
         return vunummer;
     }

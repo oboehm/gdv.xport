@@ -31,11 +31,14 @@ import org.junit.BeforeClass;
  * @since 09.10.2009
  * @version $Revision$
  */
-public class AbstractTest {
+public abstract class AbstractTest {
 
     /** zum Testen nehmen wir hier die VU-Nr. der Oerag */
     protected static final VUNummer VU_NUMMER = new VUNummer("5183");
 
+    /**
+     * Hierueber setzen wir eine Default-VU-Nummer zum Testen.
+     */
     @BeforeClass
     public static void setUpBeforeClass() {
         Config.setVUNummer(VU_NUMMER);

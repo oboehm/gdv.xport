@@ -37,7 +37,7 @@ public final class Vorsatz extends Satz {
 
     private static final Log log = LogFactory.getLog(Vorsatz.class);
     /** 5 Zeichen, Byte 5 - 9 */
-    protected AlphaNumFeld vuNummer = new VUNummer(Config.getVUNummer(), 5);
+    private AlphaNumFeld vuNummer = new VUNummer(Config.getVUNummer(), 5);
     /** 30 Zeichen, Byte 10 - 39 */
     private AlphaNumFeld absender = new AlphaNumFeld(ABSENDER, 30, 10);
     /** 30 Zeichen, Byte 40 - 69 */
@@ -117,6 +117,18 @@ public final class Vorsatz extends Satz {
         return new Formatter().format("Version Satzart %04d %03d", art, sparte).toString();
     }
 
+    /**
+     * Um die VU-Nummer setzen zu koennen.
+     * @param s VU-Nummer (max. 5-stellig)
+     */
+    public void setVuNummer(String s) {
+        assert s.length() <= 5 : s + " darf nur max. 5 Zeichen lang sein";
+        this.vuNummer.setInhalt(s);
+    }
+    
+    /**
+     * @return VU-Nummer
+     */
     public String getVuNummer() {
         return this.vuNummer.getInhalt().trim();
     }

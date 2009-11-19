@@ -20,11 +20,14 @@ package gdv.xport;
 
 import static gdv.xport.feld.Bezeichner.*;
 import static org.junit.Assert.*;
+import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
 import java.io.*;
-import java.util.Date;
+import java.util.*;
+
+import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.logging.*;
 import org.junit.Test;
@@ -35,11 +38,9 @@ import org.junit.Test;
  * @version $Revision$
  *
  */
-public class DatenpaketTest {
+public final class DatenpaketTest {
 
     private static final Log log = LogFactory.getLog(Datenpaket.class);
-    /** zum Testen nehmen wir hier die VU-Nr. der Oerag */
-    protected static final VUNummer VU_NUMMER = new VUNummer("5183");
     /** fuer jeden Test gibt es ein frisches Datenpaket */
     private Datenpaket datenpaket = new Datenpaket();
 
@@ -128,6 +129,16 @@ public class DatenpaketTest {
             assertTrue(datenpaket.isValid());
         } finally {
             istream.close();
+        }
+    }
+    
+    @Test
+    public void testValidate() {
+        Datenpaket dummy = new Datenpaket(Config.DUMMY_VU_NUMMER);
+        List<ConstraintViolation> violations = dummy.validate();
+        assertTrue("at least 1 violation is expected (no VUNummer)", (violations.size() > 0));
+        for (ConstraintViolation cv : violations) {
+            log.info("Violation: " + cv);
         }
     }
 

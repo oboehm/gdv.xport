@@ -65,7 +65,9 @@ under the License.
 
         <!-- Checks for Javadoc comments.                     -->
         <!-- See http://checkstyle.sf.net/config_javadoc.html -->
-        <module name="JavadocMethod"/>
+        <module name="JavadocMethod">
+          <property name="scope" value="public"/>
+        </module>
         <module name="JavadocType"/>
         <module name="JavadocVariable">
           <property name="scope" value="public"/>
@@ -116,7 +118,7 @@ under the License.
         <!-- Checks for Size Violations.                    -->
         <!-- See http://checkstyle.sf.net/config_sizes.html -->
         <module name="LineLength">
-          <property name="max" value="100"/>
+          <property name="max" value="120"/>
         </module>
         <module name="MethodLength"/>
         <module name="ParameterNumber"/>
@@ -179,10 +181,12 @@ under the License.
         <!-- See http://checkstyle.sf.net/config_misc.html -->
         <module name="ArrayTypeStyle"/>
         <module name="FinalParameters"/>
+        <!-- 
         <module name="GenericIllegalRegexp">
             <property name="format" value="\s+$"/>
             <property name="message" value="Line has trailing spaces."/>
         </module>
+         -->
         <module name="TodoComment"/>
         <module name="UpperEll"/>
 

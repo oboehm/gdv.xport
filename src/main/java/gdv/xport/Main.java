@@ -30,6 +30,8 @@ import java.io.*;
 public class Main {
 
     /**
+     * Diese Main-Klasse dient hautpsaechlich zu Demo-Zwecken.
+     * 
      * @since 0.2
      * @param args
      * @throws IOException
@@ -46,6 +48,8 @@ public class Main {
             System.err.println(args[0] + " scheint ungueltige Felder zu enthalten");
         }
     }
+    
+    private Main() {}
 
 }
 

@@ -355,7 +355,7 @@ public class Satz {
     }
 
     /**
-     * Validate.
+     * Validiert die einzelnen Teildatensaetze.
      *
      * @return the list< constraint violation>
      */
@@ -380,7 +380,7 @@ public class Satz {
      * @see java.lang.Object#toString()
      */
     @Override
-    public String toString() {
+    public final String toString() {
         try {
             return this.toShortString();
         } catch (RuntimeException shouldNeverHappen) {

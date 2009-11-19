@@ -27,6 +27,10 @@ import gdv.xport.util.SatzFactory;
 import java.io.*;
 import java.util.*;
 
+import net.sf.oval.*;
+import net.sf.oval.constraint.AssertCheck;
+import net.sf.oval.context.ClassContext;
+
 import org.apache.commons.logging.*;
 
 /**
@@ -42,14 +46,52 @@ public final class Datenpaket {
     private List<Datensatz> datensaetze = new ArrayList<Datensatz>();
     private final Nachsatz nachsatz = new Nachsatz();
 
+    /**
+     * Wenn man den Default-Konstruktor verwendet, sollte man vorher die
+     * VU-Nummer konfiguriert haben.
+     * 
+     * @see Config#getVUNummer()
+     */
     public Datenpaket() {
+        this(Config.getVUNummer().getInhalt());
+    }
+    
+    /**
+     * Falls die VU-Nummer noch nicht konfiguriert ist, kann man zu diesem
+     * Konstruktor greifen.
+     * 
+     * @since 0.3
+     * @param vuNummer die Nummer des Versicherungsunternehmens (VU)
+     */
+    public Datenpaket(String vuNummer) {
         Datum heute = Datum.heute();
         this.setErstellungsDatumVon(heute);
         this.setErstellungsDatumBis(heute);
-        this.setAbsender(Config.getVUNummer().getInhalt());
+        this.setVuNummer(vuNummer);
+        this.setAbsender(vuNummer);
         log.debug(this + " created.");
     }
-
+    
+    /**
+     * Um die VU-Nummer setzen zu koennen.
+     * @param s VU-Nummer (max. 5-stellig)
+     */
+    public void setVuNummer(String vuNummer) {
+        this.vorsatz.setVuNummer(vuNummer);
+        for (Datensatz datensatz : this.datensaetze) {
+            datensatz.setVuNummer(vuNummer);
+        }
+    }
+    
+    /**
+     * Dazu verwenden wir den Vorsatz, um die VU-Nummer zu bestimmen.
+     * @since 0.3
+     * @return VU-Nummer aus dem Vorsatz
+     */
+    public String getVuNummer() {
+        return this.vorsatz.getVuNummer();
+    }
+    
     /**
      * @return the datensaetze
      */
@@ -214,6 +256,37 @@ public final class Datenpaket {
             }
         }
         return true;
+    }
+    
+    /**
+     * Validiert die einzelnen Saetze (inkl. Vorsatz und Nachsatz).
+     *
+     * @return the list< constraint violation>
+     */
+    public List<ConstraintViolation> validate() {
+        Validator validator = new Validator();
+        List<ConstraintViolation> violations = validator.validate(this);
+        if (Config.DUMMY_VU_NUMMER.equals(this.getVuNummer())) {
+            ConstraintViolation cv = new ConstraintViolation(new AssertCheck(),
+                    "VU-Nummer is not set", this, Config.DUMMY_VU_NUMMER, new ClassContext(this
+                            .getClass()));
+            violations.add(cv);
+        }
+        violations.addAll(this.vorsatz.validate());
+        for (Datensatz datensatz : this.datensaetze) {
+            violations.addAll(datensatz.validate());
+        }
+        violations.addAll(this.nachsatz.validate());
+        return violations;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + " for " + this.getAdressat() + " with "
+                + this.datensaetze.size() + "+2 (Daten-)Saetze";
     }
 
 }
