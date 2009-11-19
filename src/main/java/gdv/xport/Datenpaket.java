@@ -285,7 +285,7 @@ public final class Datenpaket {
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " for " + this.getAdressat() + " with "
+        return this.getClass().getSimpleName() + " for " + this.getVuNummer() + " with "
                 + this.datensaetze.size() + "+2 (Daten-)Saetze";
     }
 

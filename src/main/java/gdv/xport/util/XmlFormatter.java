@@ -19,8 +19,8 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.config.ConfigException;
-import gdv.xport.feld.Feld;
+import gdv.xport.config.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
 import java.io.*;
@@ -43,6 +43,8 @@ public class XmlFormatter {
     private static final Log log = LogFactory.getLog(XmlFormatter.class);
     private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
     private final XMLStreamWriter xmlStreamWriter;
+    /** den brauchen wir fuer close() */
+    private final Writer writer;
 
     /**
      * Der einzige Konstruktor.
@@ -52,6 +54,7 @@ public class XmlFormatter {
     public XmlFormatter(Writer writer) {
         try {
             this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(writer);
+            this.writer = writer;
         } catch (XMLStreamException e) {
             throw new RuntimeException("you should never see this", e);
         } catch (FactoryConfigurationError e) {
@@ -66,6 +69,11 @@ public class XmlFormatter {
      */
     public XmlFormatter(XMLStreamWriter xmlStreamWriter) {
         this.xmlStreamWriter = xmlStreamWriter;
+        this.writer = null;
+    }
+    
+    public XmlFormatter(File file) throws IOException {
+        this(new FileWriter(file));
     }
 
     /**
@@ -149,6 +157,9 @@ public class XmlFormatter {
      * @throws XMLStreamException
      */
     public void write(Datenpaket datenpaket) throws XMLStreamException {
+        long t0 = System.currentTimeMillis();
+        xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");
+        xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.writeStartElement("datenpaket");
         xmlStreamWriter.writeCharacters("\n");
         write(datenpaket.getVorsatz(), 1);
@@ -161,6 +172,26 @@ public class XmlFormatter {
         write(datenpaket.getNachsatz(), 1);
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.writeComment(" (c)reated by gdv-xport in "
+                + (System.currentTimeMillis() - t0) + " ms ");
+        xmlStreamWriter.writeEndDocument();
+    }
+    
+    /**
+     * Falls man diese Klasse mit dem File-Konstruktor geoeffnet hat, sollte
+     * man den Stream hierueber wieder schliessen.
+     * 
+     * @since 0.3
+     * @throws IOException
+     */
+    public void close() throws IOException {
+        try {
+            this.xmlStreamWriter.close();
+            this.writer.close();
+        } catch (XMLStreamException e) {
+            throw new IOException("can't close " + this.xmlStreamWriter, e);
+        }
     }
 
     /**
