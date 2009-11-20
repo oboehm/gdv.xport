@@ -24,12 +24,13 @@ import static gdv.xport.feld.Bezeichner.*;
 import java.io.*;
 import java.util.List;
 
+import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.logging.*;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * @author oliver
@@ -42,6 +43,17 @@ public class SatzTest {
     private static final Log log = LogFactory.getLog(SatzTest.class);
     private Satz satz = new Satz(123);
 
+    /**
+     * Damit die Assert's der Satzlaenge stimmen, muessen wir das 
+     * End-of-Datensatz abschalten.
+     * 
+     * @since 0.3
+     */
+    @BeforeClass
+    public static void setUpBeforeClass() {
+        Config.setEOD("");
+    }
+    
     @Test
     public void testSatz() {
         Satz satz100 = new Satz(100, 1);
