@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Manual</title>
+    <author email="oliver.boehm@agentes.de">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Eigene Erweiterungen">
+      <p>
+        Da das GDV-Format aus einer Vielzahl von Satzarten besteht und
+        laengst nicht alle Satzarten direkt unterstuetzt werden, koennen
+        eigene Datensaetze (die von
+        <a href="../apidocs/gdv/xport/satz/Datensatz.html">Datensatz</a>
+        oder
+        <a href="../apidocs/gdv/xport/satz/Satz.html">Satz</a>
+        abgeleitet werden muessen)
+        definiert und bei der
+        <a href="../apidocs/gdv/xport/util/SatzFactory.html">SatzFactory</a>
+        registriert werden.
+      </p>
+    </section>
+
+  </body>
+
+</document>
