@@ -30,7 +30,7 @@ import gdv.xport.satz.Vorsatz;
 public final class HelloWorld {
     
     /**
-     * In dieseem Beispiel erzeugen wir ein leeres Datenpaket, setzen die
+     * In diesem Beispiel erzeugen wir ein leeres Datenpaket, setzen die
      * VU-Nummer auf "Hello" und den Adressat (der im Vorsatz zu finden ist)
      * auf "World".
      * Am Ende "exportieren" wir dann das Datenpaket auf Systm.out.
@@ -40,9 +40,12 @@ public final class HelloWorld {
      * @throws IOException 
      */
     public static void main(String[] args) throws IOException {
+        // wir erzeugen ein Datenpaket mit "Hello" als VU-Nummer
         Datenpaket datenpaket = new Datenpaket("Hello");
+        // jetzt wollen wir den Adressat (der im Vorsatz steht) auf "World" setzen
         Vorsatz vorsatz = datenpaket.getVorsatz();
         vorsatz.setAdressat("World");
+        // und jetzt geben wir das Datenpaket auf System.out aus
         datenpaket.export(System.out);
     }
     

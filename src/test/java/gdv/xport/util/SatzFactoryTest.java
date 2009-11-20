@@ -37,7 +37,7 @@ public class SatzFactoryTest extends AbstractTest {
     public void testGetSatz() {
         Satz vorsatz = new Vorsatz();
         String content = vorsatz.toLongString();
-        Satz satz = SatzFactory.getSatz(vorsatz.toLongString());
+        Satz satz = SatzFactory.getSatz(content);
         assertEquals(content, satz.toLongString());
         assertEquals(Vorsatz.class, satz.getClass());
     }

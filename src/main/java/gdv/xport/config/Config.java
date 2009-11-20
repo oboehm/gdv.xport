@@ -44,7 +44,7 @@ public class Config {
     protected static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
     private static VUNummer vunummer;
     /* end of datensatz */
-    private static String eod = "";
+    private static String eod = "\n";
     
     private Config() {}
 

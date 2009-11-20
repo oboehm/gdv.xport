@@ -242,14 +242,29 @@ public class Satz {
     /**
      * Eigentlich wollte ich ja diese Methode "import" nennen, aber das
      * kollidiert leider mit dem Schluesselwort "import" in Java.
+     * Inzwischen beruecksichtigt diese Import-Methode auch zusaetzlich
+     * eingestreute Newlines ("\n") oder/und Wagenruecklaeufe ("\r").
      *
      * @param s the s
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void importFrom(final String s) throws IOException {
+        int satzlength = 256;
+        try {
+            char c256 = s.charAt(256);
+            if ((c256 == '\n') || (c256 == '\r')) {
+                satzlength = 257;
+            }
+            char c257 = s.charAt(257);
+            if ((c257 == '\n') || (c257 == '\r')) {
+                satzlength = 258;
+            }
+        } catch (StringIndexOutOfBoundsException e) {
+            log.debug("end of string \"" + s + "\" reached", e);
+        }
         for (int i = 0; i < teildatensatz.length; i++) {
-            teildatensatz[i].importFrom(s.substring(i * 256));
+            teildatensatz[i].importFrom(s.substring(i * satzlength));
         }
     }
 
