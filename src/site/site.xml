@@ -41,7 +41,9 @@
       <item name="Download"                 href="downloads.html" />
     </menu>
     <menu name="Manual" href="manual/index.html">
-      <item name="getting started"          href="manual/firststeps.html" />
+      <item name="Hello World"              href="manual/hello.html" />
+      <item name="Der erste Import"         href="manual/import.html" />
+      <item name="Erweiterungen"            href="manual/extend.html" />
     </menu>
 
     <menu ref="modules" />

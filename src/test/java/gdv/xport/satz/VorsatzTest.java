@@ -21,6 +21,8 @@
 package gdv.xport.satz;
 
 import static org.junit.Assert.*;
+import gdv.xport.feld.*;
+
 import java.io.*;
 
 import org.junit.Test;
@@ -31,13 +33,13 @@ import org.junit.Test;
  * @version $Revision$
  *
  */
-public class VorsatzTest extends AbstractSatzTest {
+public final class VorsatzTest extends AbstractSatzTest {
 
     private Vorsatz vorsatz = new Vorsatz();
 
     /**
      * Test method for {@link gdv.xport.satz.Vorsatz#Vorsatz()}.
-     * @throws IOException
+     * @throws IOException falls ser Export schief geht
      */
     @Test
     public void testVorsatz() throws IOException {
@@ -53,6 +55,8 @@ public class VorsatzTest extends AbstractSatzTest {
     public void testSetAbsender() throws IOException {
         String absender = "agentes AG                    ";
         vorsatz.setAbsender(absender.trim());
+        Feld absenderFeld = vorsatz.getFeld(Bezeichner.ABSENDER);
+        assertEquals(absenderFeld.getInhalt(), vorsatz.getAbsender());
         checkExport(10, 39, absender);
     }
 

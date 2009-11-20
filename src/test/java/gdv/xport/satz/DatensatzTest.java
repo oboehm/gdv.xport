@@ -40,7 +40,7 @@ public class DatensatzTest extends AbstractSatzTest {
 
     /**
      * Test method for {@link gdv.xport.satz.Datensatz#Datensatz(java.lang.String, int)}.
-     * @throws IOException
+     * @throws IOException falls der Export schief gegangen ist
      */
     @Test
     public void testDatensatzStringInt() throws IOException {

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Manual</title>
+    <author email="oliver.boehm@agentes.de">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Der erste Import">
+      <p>
+        Wenn Sie eine Datei wie z.B. die
+        <a href="http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt">musterdatei_041222.txt</a>
+        von <a href="http://www.gdv-online.de/">www.gdv-online.de</a>
+        importieren wollen, schauen Sie sich am besten das  
+        <a href="../xref/gdv/xport/Main.html#30">Main-Programm</a> an.
+        Dort wird eine beliebige Datei importiert (Option "-import"),
+        anschliessend validiert (falls die Option "-validate" gesetzt ist) und
+        am Ende als XML oder im GDV-Format exportiert (Option "-export").
+      </p>
+      <subsection name="Iterieren ueber die einzelnen Saetze..." >
+        <p>
+          Wenn Sie wissen wollen, wie Sie nach einem Import durch die einzelnen
+          Saetze iterieren koennen, schauen Sie sich am besten die
+          <a href="../xref/gdv/xport/Datenpaket.html">Datenpaket</a>-Klasse an,
+          wie die einzelnen Datensaetze in der export-Methode rausgeschrieben werden:
+        </p>
+<source><![CDATA[
+for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext();) {
+    Datensatz datensatz = iterator.next();
+    datensatz.export(writer);
+}
+]]></source>
+      </subsection>
+      <subsection name="Zugriff auf einzelne Felder">
+        <p>
+          Ueber einen <a href="../xref/gdv/xport/satz/Satz.html">Satz</a>
+          oder <a href="../xref/gdv/xport/satz/Datensatz.html">Datensatz</a>
+          kommen Sie an die einzelnen
+          <a href="../xref/gdv/xport/feld/Feld.html">Feld</a>er ran. Dazu geben
+          Sie den Namen des Feldes an:
+        </p>
+<source><![CDATA[
+Feld absenderFeld = vorsatz.getFeld("Absender");
+]]></source>
+        <p>
+          Statt "Absender" verwenden Sie besser die Konstanten, die in
+          <a href="../xref/gdv/xport/feld/Bezeichner.html">Bezeichner</a>
+          definiert sind:
+        </p>
+<source><![CDATA[
+Feld absenderFeld = vorsatz.getFeld(Bezeichner.ABSENDER);
+]]></source>
+        <p>
+          (siehe auch die testSetAbsender()-Methode in
+          <a href="../xref-test/gdv/xport/satz/VorsatzTest.html">VorsatzTest</a>)
+        </p>
+      </subsection>
+    </section>
+
+  </body>
+
+</document>

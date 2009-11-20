@@ -37,7 +37,7 @@ public class AdressteilTest extends AbstractSatzTest {
 
     /**
      * Test method for {@link gdv.xport.satz.Adressteil#Adressteil()}.
-     * @throws IOException
+     * @throws IOException falls der Export schief geht
      */
     @Test
     public void testAdressteil() throws IOException {
