@@ -33,7 +33,7 @@ public class BetragMitVorzeichenTest {
     private BetragMitVorzeichen betrag = new BetragMitVorzeichen("Test", 5, 1);
 
     /**
-     * Test method for {@link gdv.xport.feld.BetragMitVorzeichen#VorzeichenBetrag(int, int)}.
+     * Tested den Konstruktor
      */
     @Test
     public void testBetragMitVorzeichen() {

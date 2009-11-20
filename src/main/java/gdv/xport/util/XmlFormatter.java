@@ -216,9 +216,8 @@ public class XmlFormatter {
     /**
      * Wandelt dens uebergebenen Teildatensatz in einen XML-String um.
      *
-     * @param Teildatensatz
+     * @param teildatensatz
      *            ein Teildatensatz
-     *
      * @return Teildatensatz als XML-String
      */
     public static String toString(final Teildatensatz teildatensatz) {

@@ -74,7 +74,7 @@ public final class Datenpaket {
     
     /**
      * Um die VU-Nummer setzen zu koennen.
-     * @param s VU-Nummer (max. 5-stellig)
+     * @param vuNummer VU-Nummer (max. 5-stellig)
      */
     public void setVuNummer(String vuNummer) {
         this.vorsatz.setVuNummer(vuNummer);

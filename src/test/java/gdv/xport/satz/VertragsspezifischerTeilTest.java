@@ -34,8 +34,8 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
     private static final Log log = LogFactory.getLog(VertragsspezifischerTeilTest.class);
 
     /**
-     * Test method for {@link gdv.xport.satz.VertragsspezifischerTeil#SpartenspezifischerVertragsteil(int)}.
-     * @throws IOException
+     * Tested den Konstruktor.
+     * @throws IOException falls die Platte voll ist (oder sowas)
      */
     @Test
     public void testSpartenspezifischerVertragsteil() throws IOException {

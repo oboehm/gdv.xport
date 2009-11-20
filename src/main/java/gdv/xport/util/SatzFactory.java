@@ -176,8 +176,8 @@ public class SatzFactory {
     }
 
     /**
-     * @param satzart
-     * @param content
+     * @param satzart z.B. 210
+     * @param sparte z.B. 70 (Rechtsschutz)
      * @return den registrierten Datensatz fuer 'satzart', 'sparte'
      */
     public static Datensatz getDatensatz(final int satzart, final int sparte) {
@@ -199,6 +199,10 @@ public class SatzFactory {
                             + "), trying another ctor...");
                     Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class);
                     return ctor.newInstance(satzart);
+                } catch (NoSuchMethodException nsme) {
+                    throw new IllegalArgumentException(clazz + " found for Satzart " + satzart
+                            + ", but no default ctor, no " + clazz.getSimpleName() + "(" + sparte
+                            + ") ctor", nsme);
                 } catch (Exception exWithOneParam) {
                     throw new RuntimeException("constructor problem with " + clazz, exWithOneParam);
                 }

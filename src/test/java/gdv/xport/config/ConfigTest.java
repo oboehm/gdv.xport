@@ -34,7 +34,7 @@ public class ConfigTest {
     private static final Log log = LogFactory.getLog(ConfigTest.class);
 
     /**
-     * Test method for {@link gdv.xport.config.Config#getVUnummer()}:
+     * Test method for {@link gdv.xport.config.Config#getVUNummer()}:
      * Entweder ist die entsprechende Property gesetzt, oder wir erwarten hier
      * eine ConfigException.
      */
