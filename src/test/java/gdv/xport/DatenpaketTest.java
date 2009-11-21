@@ -25,12 +25,13 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.logging.*;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * @author oliver
@@ -43,10 +44,21 @@ public final class DatenpaketTest {
     private static final Log log = LogFactory.getLog(Datenpaket.class);
     /** fuer jeden Test gibt es ein frisches Datenpaket */
     private Datenpaket datenpaket = new Datenpaket();
+    
+    /**
+     * Damit die Assert's der Satzlaenge stimmen, muessen wir das 
+     * End-of-Datensatz abschalten.
+     * 
+     * @since 0.3
+     */
+    @BeforeClass
+    public static void setUpBeforeClass() {
+        Config.setEOD("");
+    }
 
     /**
      * Test method for {@link gdv.xport.Datenpaket#export(java.io.Writer)}.
-     * @throws IOException
+     * @throws IOException falls z.B. die Platte voll ist
      */
     @Test
     public void testEmptyExport() throws IOException {
@@ -122,7 +134,7 @@ public final class DatenpaketTest {
     }
 
     @Test
-    public void testImportReader() throws IOException {
+    public void testImportFromReader() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
         try {
             datenpaket.importFrom(istream);
@@ -130,6 +142,21 @@ public final class DatenpaketTest {
         } finally {
             istream.close();
         }
+    }
+    
+    @Test
+    public void testImportFromURL() throws IOException {
+        URL url = this.getClass().getResource("/musterdatei_041222.txt");
+        datenpaket.importFrom(url);
+        assertTrue(datenpaket.isValid());
+    }
+    
+    @Test
+    public void testImportFromHTTP() throws IOException {
+        URL url = new URL(
+                "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
+        datenpaket.importFrom(url);
+        assertTrue(datenpaket.isValid());
     }
     
     @Test

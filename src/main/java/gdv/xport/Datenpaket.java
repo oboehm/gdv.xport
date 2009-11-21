@@ -22,9 +22,10 @@ import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
-import gdv.xport.util.SatzFactory;
+import gdv.xport.util.*;
 
 import java.io.*;
+import java.net.*;
 import java.util.*;
 
 import net.sf.oval.*;
@@ -156,6 +157,16 @@ public final class Datenpaket {
         }
         nachsatz.export(writer);
         log.info(datensaetze.size() + " Datensaetze exported.");
+    }
+    
+    public void importFrom(URL url) throws IOException {
+        URLReader urlReader = new URLReader(url);
+        String content = urlReader.read();
+        importFrom(content);
+    }
+    
+    public void importFrom(String content) throws IOException {
+        importFrom(new StringReader(content));
     }
 
     public void importFrom(InputStream istream) throws IOException {
