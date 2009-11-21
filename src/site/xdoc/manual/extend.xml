@@ -22,6 +22,16 @@
         <a href="../apidocs/gdv/xport/util/SatzFactory.html">SatzFactory</a>
         registriert werden.
       </p>
+      <p>
+        Im <a href="../apidocs/gdv/xport/demo/package.html">demo</a>-Paket
+        befindet sich
+        <a href="../xref/gdv/xport/demo/MyUnfallDatensatz.html">MyUnfallDatensatz</a>
+        als Beispielklasse. In der main-Methode wird die Klasse im Framework
+        registriert, anschliessend wird das
+        <a href="http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt">Muster-Datenpaket</a>
+        von gdv-online importiert und der erste gefundene MyUnfallDatensatz
+        als XML ausgegeben.
+      </p>
     </section>
 
   </body>

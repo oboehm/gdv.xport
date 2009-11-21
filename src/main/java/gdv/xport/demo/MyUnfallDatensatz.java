@@ -78,7 +78,7 @@ public class MyUnfallDatensatz extends Datensatz {
     /**
      * Hier werden jetzt als Beispiel zwei Felder aufgesetzt:
      * das Beginn-Datum und der Waehrungsschluessel mit der jeweiligen
-     * Byte-Adresse und Länge.
+     * Byte-Adresse und Laenge.
      */
     private void setUpDatenfelder() {
         add(new Datum("mein Vertragsbeginn", 8, 44));
