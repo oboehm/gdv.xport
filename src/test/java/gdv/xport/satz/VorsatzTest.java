@@ -21,11 +21,12 @@
 package gdv.xport.satz;
 
 import static org.junit.Assert.*;
+import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
 import java.io.*;
 
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * @author oliver
@@ -36,6 +37,15 @@ import org.junit.Test;
 public final class VorsatzTest extends AbstractSatzTest {
 
     private Vorsatz vorsatz = new Vorsatz();
+    
+    /**
+     * Damit ein Datensatz auch 256 Bytes lang ist, setzen wir das
+     * EOD-Zeichen auf nichts ("").
+     */
+    @BeforeClass
+    public static void setUpBeforeClass() {
+        Config.setEOD("");
+    }
 
     /**
      * Test method for {@link gdv.xport.satz.Vorsatz#Vorsatz()}.
@@ -43,7 +53,7 @@ public final class VorsatzTest extends AbstractSatzTest {
      */
     @Test
     public void testVorsatz() throws IOException {
-        String expected = "0001" + VU_NUMMER.getInhalt();
+        String expected = "0001" + Config.getVUNummer().getInhalt();
         checkExport(1, 9, expected);
         checkExport(257, 265, expected);
         checkExport(256+246, 256+256, "          2");
@@ -56,7 +66,7 @@ public final class VorsatzTest extends AbstractSatzTest {
         String absender = "agentes AG                    ";
         vorsatz.setAbsender(absender.trim());
         Feld absenderFeld = vorsatz.getFeld(Bezeichner.ABSENDER);
-        assertEquals(absenderFeld.getInhalt(), vorsatz.getAbsender());
+        assertEquals(absenderFeld.getInhalt().trim(), vorsatz.getAbsender());
         checkExport(10, 39, absender);
     }
 
