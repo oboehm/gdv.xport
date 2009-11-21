@@ -151,7 +151,14 @@ public final class DatenpaketTest {
         assertTrue(datenpaket.isValid());
     }
     
-    @Test
+    /**
+     * Der Test wurde wieder deaktiviert, da dazu eine Online-Verbindung noetig
+     * ist (die nicht immer vorausgesetzt werden kann)
+     * 
+     * @since 0.3
+     * @throws IOException falls man z.B. offline ist
+     */
+    //@Test
     public void testImportFromHTTP() throws IOException {
         URL url = new URL(
                 "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");

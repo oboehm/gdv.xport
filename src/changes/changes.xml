@@ -23,6 +23,9 @@
         Vereinfachte und verbesserte XML-Generierung
         (u.a. mit XML-Header und Encoding)
       </action>
+      <action dev="oboehm" type="update">
+        Datenpakete koennen jetzt auch ueber HTTP importiert werden
+      </action>
     </release>
 
     <release version="0.2.1" date="17-Nov-2009"

@@ -238,6 +238,18 @@ public class Satz {
             teildatensatz[i].export(writer);
         }
     }
+    
+    /**
+     * @since 0.3
+     * @param ostream z.B. System.out
+     * @throws IOException falls mal was schief geht
+     */
+    public void export(final OutputStream ostream) throws IOException {
+        Writer writer = new OutputStreamWriter(ostream);
+        export(writer);
+        writer.flush();
+        ostream.flush();
+    }
 
     /**
      * Eigentlich wollte ich ja diese Methode "import" nennen, aber das

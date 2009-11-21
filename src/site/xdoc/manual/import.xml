@@ -17,8 +17,8 @@
         importieren wollen, schauen Sie sich am besten das  
         <a href="../xref/gdv/xport/Main.html#30">Main-Programm</a> an.
         Dort wird eine beliebige Datei importiert (Option "-import"),
-        anschliessend validiert (falls die Option "-validate" gesetzt ist) und
-        am Ende als XML oder im GDV-Format exportiert (Option "-export").
+        als XML (Option "-xml") ausgegeben und
+        anschliessend validiert (Option "-validate").
       </p>
       <subsection name="Iterieren ueber die einzelnen Saetze..." >
         <p>

@@ -21,6 +21,7 @@ package gdv.xport;
 import gdv.xport.util.XmlFormatter;
 
 import java.io.*;
+import java.net.*;
 import java.util.List;
 
 import javax.xml.stream.XMLStreamException;
@@ -42,9 +43,10 @@ public class Main {
      * das Ergebnis nach System.out geschrieben. <br/>
      * Mit "-help" bekommt man eine kleine Uebersicht der Optionen.
      * 
-     * @since 0.2
      * @param args
      *            die verschiendene Argumente
+     *            (z.B. -import http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     *            -validate -xml)
      * @throws IOException
      *             falls der Import oder Export schief gegangen ist
      * @throws XMLStreamException
@@ -64,7 +66,7 @@ public class Main {
             Datenpaket datenpaket = new Datenpaket();
             if (cmd.hasOption("import")) {
                 String filename = cmd.getOptionValue("import");
-                datenpaket.importFrom(new File(filename));
+                importFrom(filename, datenpaket);
             } else {
                 datenpaket.importFrom(System.in);
             }
@@ -94,6 +96,24 @@ public class Main {
             printHelp(options);
             System.exit(1);
         }
+    }
+    
+    /**
+     * Je nachdem, was als 'filename' uebergeben wird, wird von einer URL oder
+     * einer Datei importiert.
+     *
+     * @param filename kann sowohl ein Dateiname als auch eine URL sein
+     * @param datenpaket hierein wird importiert
+     * @throws IOException falls was schiefgelaufen ist
+     */
+    private static void importFrom(String filename, Datenpaket datenpaket) throws IOException {
+        try {
+            URL url = new URL(filename);
+            datenpaket.importFrom(url);
+        } catch (MalformedURLException e) {
+            datenpaket.importFrom(new File(filename));
+        }
+        
     }
     
     private static Options createOptions() {

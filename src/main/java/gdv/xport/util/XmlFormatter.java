@@ -160,6 +160,7 @@ public class XmlFormatter {
         }
         writeIndent(level);
         xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.flush();
     }
 
     /**

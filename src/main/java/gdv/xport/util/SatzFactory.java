@@ -188,7 +188,11 @@ public class SatzFactory {
         }
         try {
             return clazz.newInstance();
-        } catch (Exception e) {
+        } catch (RuntimeException re) {
+            throw re;
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException("can't access default ctor");
+        } catch (InstantiationException e) {
             try {
                 log.info("default ctor does not work (" + e + "), trying another ctor...");
                 Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);
