@@ -25,13 +25,30 @@
       <p>
         Im <a href="../apidocs/gdv/xport/demo/package.html">demo</a>-Paket
         befindet sich
-        <a href="../xref/gdv/xport/demo/MyUnfallDatensatz.html">MyUnfallDatensatz</a>
+        <a href="../xref/gdv/xport/demo/MyUnfallDatensatz.html#40">MyUnfallDatensatz</a>
         als Beispielklasse. In der main-Methode wird die Klasse im Framework
         registriert, anschliessend wird das
         <a href="http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt">Muster-Datenpaket</a>
         von gdv-online importiert und der erste gefundene MyUnfallDatensatz
-        als XML ausgegeben.
+        im GDV-Format und als XML ausgegeben:
       </p>
+<source><![CDATA[
+02109999  030      59999999999019999009999 01052004 ...
+<satz satzart="0210" sparte="030">
+  <teildatensatz nr=" ">
+    <feld bytes="  1-  4" bezeichnung="Satzart                       ">0210</feld>
+    <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+    <feld bytes=" 10- 10" bezeichnung="Buendelungskennzeichen        "> </feld>
+    <feld bytes=" 11- 13" bezeichnung="Sparte                        ">030</feld>
+    <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
+    <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
+    <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+    <feld bytes=" 44- 51" bezeichnung="mein Vertragsbeginn           ">01052004</feld>
+    <feld bytes=" 93- 95" bezeichnung="meine Waehrung                ">EUR</feld>
+    <feld bytes="256-256" bezeichnung="Satznummer                    "> </feld>
+  </teildatensatz>
+</satz>
+]]></source>
     </section>
 
   </body>

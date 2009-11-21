@@ -64,7 +64,7 @@ public final class Datenpaket {
      * @since 0.3
      * @param vuNummer die Nummer des Versicherungsunternehmens (VU)
      */
-    public Datenpaket(String vuNummer) {
+    public Datenpaket(final String vuNummer) {
         Datum heute = Datum.heute();
         this.setErstellungsDatumVon(heute);
         this.setErstellungsDatumBis(heute);
@@ -77,7 +77,7 @@ public final class Datenpaket {
      * Um die VU-Nummer setzen zu koennen.
      * @param vuNummer VU-Nummer (max. 5-stellig)
      */
-    public void setVuNummer(String vuNummer) {
+    public void setVuNummer(final String vuNummer) {
         this.vorsatz.setVuNummer(vuNummer);
         for (Datensatz datensatz : this.datensaetze) {
             datensatz.setVuNummer(vuNummer);
@@ -103,7 +103,7 @@ public final class Datenpaket {
     /**
      * @param datensaetze the datensaetze to set
      */
-    public void setDatensaetze(List<Datensatz> datensaetze) {
+    public void setDatensaetze(final List<Datensatz> datensaetze) {
         this.datensaetze = datensaetze;
     }
 
@@ -121,11 +121,18 @@ public final class Datenpaket {
         return nachsatz;
     }
 
-    public void add(Datensatz datensatz) {
+    /**
+     * @param datensatz Datensatz, der hinzugefuegt werden soll
+     */
+    public void add(final Datensatz datensatz) {
         datensaetze.add(datensatz);
         nachsatz.increaseAnzahlSaetze();
     }
 
+    /**
+     * @param file Datei, in die exportiert werden soll
+     * @throws IOException falls was schiefgelaufen ist (z.B. Platte voll)
+     */
     public void export(File file) throws IOException {
         Writer writer = new FileWriter(file);
         try {
@@ -139,8 +146,8 @@ public final class Datenpaket {
      * Falls wir einen Stream haben, koennen wir diese Methode benutzen.
      * 
      * @since 0.3
-     * @param ostream
-     * @throws IOException
+     * @param ostream z.B. System.out
+     * @throws IOException falls was schiefgelaufen ist
      */
     public void export(OutputStream ostream) throws IOException {
        Writer writer = new OutputStreamWriter(ostream);
@@ -149,6 +156,10 @@ public final class Datenpaket {
        ostream.flush();
     }
 
+    /**
+     * @param writer wird zum Export verwendet
+     * @throws IOException falls was schiefgelaufen ist
+     */
     public void export(Writer writer) throws IOException {
         vorsatz.export(writer);
         for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext();) {
@@ -159,25 +170,50 @@ public final class Datenpaket {
         log.info(datensaetze.size() + " Datensaetze exported.");
     }
     
+    /**
+     * @since 0.3
+     * @param url z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @throws IOException wenn z.B. das Netz weg ist
+     */
     public void importFrom(URL url) throws IOException {
         URLReader urlReader = new URLReader(url);
         String content = urlReader.read();
         importFrom(content);
     }
     
+    /**
+     * @since 0.3
+     * @param content Inhalt der eingelesen wird
+     * @throws IOException sollte eigentlich nicht vorkommen
+     */
     public void importFrom(String content) throws IOException {
         importFrom(new StringReader(content));
     }
 
+    /**
+     * @param istream z.B. Sytem.in
+     * @throws IOException falls es Fehler beim Lesen gibt
+     */
     public void importFrom(InputStream istream) throws IOException {
         Reader reader = new InputStreamReader(istream, Config.DEFAULT_ENCODING);
         importFrom(reader);
     }
 
+    /**
+     * @param reader hiervon wird importiert
+     * @throws IOException falls was schiefgelaufen ist
+     */
     public void importFrom(Reader reader) throws IOException {
         importFrom(new PushbackReader(reader, 14));
     }
 
+    /**
+     * Der hier verwendete PushbackReader wird benoetigt, damit die gelesene
+     * Satzart und Sparte wieder zurueckgesetllt werden kann.
+     * 
+     * @param reader PushbackReader mit einem Puffer von mind. 14 Zeichen
+     * @throws IOException falls was schiefgelaufen ist
+     */
     public void importFrom(PushbackReader reader) throws IOException {
         this.vorsatz.importFrom(reader);
         while(true) {
@@ -199,7 +235,7 @@ public final class Datenpaket {
      *
      * @since 0.2
      * @param file Import-Datei
-     * @throws IOException
+     * @throws IOException falls was schiefgelaufen ist
      */
     public void importFrom(final File file) throws IOException {
         Reader reader = new FileReader(file);
@@ -210,55 +246,91 @@ public final class Datenpaket {
         }
     }
 
+    /**
+     * @param d Erstellungsdatum von
+     */
     public void setErstellungsDatumVon(Datum d) {
         Datum von = this.getErstellungsDatumVon();
         von.setInhalt(d);
     }
 
+    /**
+     * @return Erstellungsdatum bis
+     */
     public Datum getErstellungsDatumVon() {
         return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDATUM_ZEITRAUM_VOM);
     }
 
+    /**
+     * @param d Erstellungsdatum bis
+     */
     public void setErstellungsDatumBis(Datum d) {
         Datum bis = this.getErstellungsDatumBis();
         bis.setInhalt(d);
     }
 
+    /**
+     * @return Erstellungdatum bis
+     */
     public Datum getErstellungsDatumBis() {
         return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDATUM_ZEITRAUM_BIS);
     }
 
+    /**
+     * @param s neuer Absender
+     */
     public void setAbsender(String s) {
         Feld absender = this.getAbsenderFeld();
         absender.setInhalt(s);
     }
 
+    /**
+     * @return Absender
+     */
     public String getAbsender() {
         return this.getAbsenderFeld().getInhalt().trim();
     }
 
+    /**
+     * @return das komplette Absender-Feld
+     */
     private Feld getAbsenderFeld() {
         return this.vorsatz.getFeld(ABSENDER);
     }
 
-    public void setAdressat(String s) {
+    /**
+     * @param s Adressat
+     */
+    public void setAdressat(final String s) {
         Feld adressat = this.getAdressatFeld();
         adressat.setInhalt(s);
     }
 
+    /**
+     * @return Adressat
+     */
     public String getAdressat() {
         return this.getAdressatFeld().getInhalt().trim();
     }
 
+    /**
+     * @return das komplette Adressat-Feld
+     */
     private Feld getAdressatFeld() {
         return this.vorsatz.getFeld(ADRESSAT);
     }
 
-    public void setVermittler(String s) {
+    /**
+     * @param s Vermittler
+     */
+    public void setVermittler(final String s) {
         this.vorsatz.setVermittler(s);
         this.nachsatz.setVermittler(s);
     }
 
+    /**
+     * @return Vermittler
+     */
     public String getVermittler() {
         String vermittler = this.vorsatz.getVermittler();
         assert vermittler.equals(this.nachsatz.getVermittler()) : vorsatz
@@ -266,6 +338,12 @@ public final class Datenpaket {
         return vermittler;
     }
 
+    /**
+     * Aus Performance-Gruenden wird nicht auf die validate-Methode
+     * zurueckgegriffen (die dauert zu lang).
+     * 
+     * @return true/false
+     */
     public boolean isValid() {
         if (!this.vorsatz.isValid()) {
             log.info(this.vorsatz + " is not valid");
