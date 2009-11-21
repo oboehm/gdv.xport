@@ -72,8 +72,20 @@ public class XmlFormatter {
         this.writer = null;
     }
     
+    /**
+     * @param file Ausgabe-Datein
+     * @throws IOException falls die uebergebene Date nicht existiert
+     */
     public XmlFormatter(File file) throws IOException {
         this(new FileWriter(file));
+    }
+    
+    /**
+     * @since 0.3
+     * @param ostream z.B. System.out
+     */
+    public XmlFormatter(OutputStream ostream) {
+        this(new OutputStreamWriter(ostream));
     }
 
     /**
@@ -153,8 +165,8 @@ public class XmlFormatter {
     /**
      * Ausgabe eines kompletten Datenpakets als XML.
      *
-     * @param datenpaket
-     * @throws XMLStreamException
+     * @param datenpaket Datenpaket, das als XML ausgegeben werden soll
+     * @throws XMLStreamException bei Problemen mit der XML-Generierung
      */
     public void write(Datenpaket datenpaket) throws XMLStreamException {
         long t0 = System.currentTimeMillis();
@@ -175,7 +187,9 @@ public class XmlFormatter {
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.writeComment(" (c)reated by gdv-xport in "
                 + (System.currentTimeMillis() - t0) + " ms ");
+        xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.writeEndDocument();
+        xmlStreamWriter.flush();
     }
     
     /**
@@ -183,7 +197,7 @@ public class XmlFormatter {
      * man den Stream hierueber wieder schliessen.
      * 
      * @since 0.3
-     * @throws IOException
+     * @throws IOException sollte eigentlich nicht vorkommen
      */
     public void close() throws IOException {
         try {

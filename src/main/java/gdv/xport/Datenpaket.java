@@ -159,7 +159,8 @@ public final class Datenpaket {
     }
 
     public void importFrom(InputStream istream) throws IOException {
-        importFrom(new InputStreamReader(istream, Config.DEFAULT_ENCODING));
+        Reader reader = new InputStreamReader(istream, Config.DEFAULT_ENCODING);
+        importFrom(reader);
     }
 
     public void importFrom(Reader reader) throws IOException {

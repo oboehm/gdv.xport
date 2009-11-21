@@ -21,6 +21,13 @@ package gdv.xport;
 import gdv.xport.util.XmlFormatter;
 
 import java.io.*;
+import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
+
+import net.sf.oval.ConstraintViolation;
+
+import org.apache.commons.cli.*;
 
 /**
  * @author oliver (oliver.boehm@agentes.de)
@@ -30,22 +37,84 @@ import java.io.*;
 public class Main {
 
     /**
-     * Diese Main-Klasse dient hautpsaechlich zu Demo-Zwecken.
+     * Diese Main-Klasse dient hautpsaechlich zu Demo-Zwecken. Werden keine
+     * Optionen angegeben, wird von der Standard-Eingabe (System.in) gelesen und
+     * das Ergebnis nach System.out geschrieben. <br/>
+     * Mit "-help" bekommt man eine kleine Uebersicht der Optionen.
      * 
      * @since 0.2
      * @param args
+     *            die verschiendene Argumente
      * @throws IOException
+     *             falls der Import oder Export schief gegangen ist
+     * @throws XMLStreamException
+     *             falls bei der XML-Generierung was schief gelaufen ist.
      */
-    public static void main(String[] args) throws IOException {
-        if (args.length != 1) {
-            System.err.println("usage: " + Main.class.getName() + " importfile");
+    public static void main(String[] args) throws IOException, XMLStreamException {
+        Options options = createOptions();
+        CommandLineParser parser = new GnuParser();
+        try {
+            CommandLine cmd = parser.parse(options, args);
+            //  Option "-help"
+            if (cmd.hasOption("help")) {
+                printHelp(options);
+                System.exit(0);
+            }
+            // Option "-import"
+            Datenpaket datenpaket = new Datenpaket();
+            if (cmd.hasOption("import")) {
+                String filename = cmd.getOptionValue("import");
+                datenpaket.importFrom(new File(filename));
+            } else {
+                datenpaket.importFrom(System.in);
+            }
+            // Option "-xml"
+            boolean xml = cmd.hasOption("xml");
+            // Option "-export"
+            if (cmd.hasOption("export")) {
+                File file = new File(cmd.getOptionValue("export"));
+                if (xml) {
+                    new XmlFormatter(file).write(datenpaket);
+                } else {
+                    datenpaket.export(file);
+                }
+            } else {
+                if (xml) {
+                    new XmlFormatter(System.out).write(datenpaket);
+                } else {
+                    datenpaket.export(System.out);
+                }
+            }
+            // Option "-validate"
+            if (cmd.hasOption("validate")) {
+                printViolations(datenpaket.validate());
+            }
+        } catch (ParseException e) {
+            System.err.println("Fehler beim Aufruf von " + Main.class);
+            printHelp(options);
             System.exit(1);
         }
-        Datenpaket datenpaket = new Datenpaket();
-        datenpaket.importFrom(new File(args[0]));
-        System.out.println(XmlFormatter.toString(datenpaket));
-        if (!datenpaket.isValid()) {
-            System.err.println(args[0] + " scheint ungueltige Felder zu enthalten");
+    }
+    
+    private static Options createOptions() {
+        Options options = new Options();
+        options.addOption("import", true, "Import-Datei");
+        options.addOption("validate", false, "Validierung der eingelesenen Datensaetze");
+        options.addOption("xml", false, "Ausgabe als XML");
+        options.addOption("export", true,
+                "Export-Datei (bei .xml als Endung ist das Format XML, ansonsten GDV)");
+        options.addOption("help", false, "Kurz-Hilfe");
+        return options;
+    }
+    
+    private static void printHelp(Options options) {
+        HelpFormatter formatter = new HelpFormatter();
+        formatter.printHelp(Main.class.getName(), options);
+    }
+    
+    private static void printViolations(List<ConstraintViolation> violations) {
+        for (ConstraintViolation violation : violations) {
+            System.err.println(violation.getValidatedObject() + ": " + violation.getMessage());
         }
     }
     

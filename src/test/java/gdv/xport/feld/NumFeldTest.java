@@ -22,6 +22,11 @@ package gdv.xport.feld;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
+import net.sf.oval.ConstraintViolation;
+
+import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
@@ -32,6 +37,8 @@ import org.junit.Test;
  */
 public class NumFeldTest {
 
+    private static final Log log = LogFactory.getLog(NumFeldTest.class);
+    
     @Test
     public void testNumFeld() {
         NumFeld nummer = new NumFeld(4, 1);
@@ -52,6 +59,16 @@ public class NumFeldTest {
     public void testIsValid() {
         NumFeld x = new NumFeld("x", "xxxx");
         assertFalse(x + " is invalid", x.isValid());
+    }
+
+    @Test
+    public void testValidate() {
+        NumFeld x = new NumFeld("x", "xxxx");
+        List<ConstraintViolation> violations = x.validate();
+        for (ConstraintViolation violation : violations) {
+            log.info(violation.getValidatedObject() + ": " + violation.getMessage());
+        }
+        assertEquals(1, violations.size());
     }
 
 }
