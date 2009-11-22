@@ -26,7 +26,7 @@ package gdv.xport.feld;
  * @author oliver
  * @since 15.10.2009
  */
-public class Bezeichner {
+public final class Bezeichner {
 
     public static final String ABGANGSDATUM = "Abgangsdatum";
     public static final String ABGANGSGRUND = "Abgangsgrund";
