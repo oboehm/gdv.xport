@@ -133,7 +133,7 @@ public final class Datenpaket {
      * @param file Datei, in die exportiert werden soll
      * @throws IOException falls was schiefgelaufen ist (z.B. Platte voll)
      */
-    public void export(File file) throws IOException {
+    public void export(final File file) throws IOException {
         Writer writer = new FileWriter(file);
         try {
             export(writer);
@@ -149,7 +149,7 @@ public final class Datenpaket {
      * @param ostream z.B. System.out
      * @throws IOException falls was schiefgelaufen ist
      */
-    public void export(OutputStream ostream) throws IOException {
+    public void export(final OutputStream ostream) throws IOException {
        Writer writer = new OutputStreamWriter(ostream);
        export(writer);
        writer.flush();
@@ -160,7 +160,7 @@ public final class Datenpaket {
      * @param writer wird zum Export verwendet
      * @throws IOException falls was schiefgelaufen ist
      */
-    public void export(Writer writer) throws IOException {
+    public void export(final Writer writer) throws IOException {
         vorsatz.export(writer);
         for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext();) {
             Datensatz datensatz = iterator.next();
@@ -175,7 +175,7 @@ public final class Datenpaket {
      * @param url z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
      * @throws IOException wenn z.B. das Netz weg ist
      */
-    public void importFrom(URL url) throws IOException {
+    public void importFrom(final URL url) throws IOException {
         URLReader urlReader = new URLReader(url);
         String content = urlReader.read();
         importFrom(content);
@@ -186,7 +186,7 @@ public final class Datenpaket {
      * @param content Inhalt der eingelesen wird
      * @throws IOException sollte eigentlich nicht vorkommen
      */
-    public void importFrom(String content) throws IOException {
+    public void importFrom(final String content) throws IOException {
         importFrom(new StringReader(content));
     }
 
@@ -214,7 +214,7 @@ public final class Datenpaket {
      * @param reader PushbackReader mit einem Puffer von mind. 14 Zeichen
      * @throws IOException falls was schiefgelaufen ist
      */
-    public void importFrom(PushbackReader reader) throws IOException {
+    public void importFrom(final PushbackReader reader) throws IOException {
         this.vorsatz.importFrom(reader);
         while(true) {
             int satzart = Satz.readSatzart(reader);
@@ -249,7 +249,7 @@ public final class Datenpaket {
     /**
      * @param d Erstellungsdatum von
      */
-    public void setErstellungsDatumVon(Datum d) {
+    public void setErstellungsDatumVon(final Datum d) {
         Datum von = this.getErstellungsDatumVon();
         von.setInhalt(d);
     }
@@ -264,7 +264,7 @@ public final class Datenpaket {
     /**
      * @param d Erstellungsdatum bis
      */
-    public void setErstellungsDatumBis(Datum d) {
+    public void setErstellungsDatumBis(final Datum d) {
         Datum bis = this.getErstellungsDatumBis();
         bis.setInhalt(d);
     }
