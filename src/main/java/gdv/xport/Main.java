@@ -35,7 +35,7 @@ import org.apache.commons.cli.*;
  * @since 0.2 (17.11.2009)
  *
  */
-public class Main {
+public final class Main {
 
     /**
      * Diese Main-Klasse dient hautpsaechlich zu Demo-Zwecken. Werden keine
@@ -106,7 +106,8 @@ public class Main {
      * @param datenpaket hierein wird importiert
      * @throws IOException falls was schiefgelaufen ist
      */
-    private static void importFrom(String filename, Datenpaket datenpaket) throws IOException {
+    private static void importFrom(final String filename, final Datenpaket datenpaket)
+            throws IOException {
         try {
             URL url = new URL(filename);
             datenpaket.importFrom(url);
@@ -127,17 +128,21 @@ public class Main {
         return options;
     }
     
-    private static void printHelp(Options options) {
+    private static void printHelp(final Options options) {
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp(Main.class.getName(), options);
     }
     
-    private static void printViolations(List<ConstraintViolation> violations) {
+    private static void printViolations(final List<ConstraintViolation> violations) {
         for (ConstraintViolation violation : violations) {
             System.err.println(violation.getValidatedObject() + ": " + violation.getMessage());
         }
     }
     
+    /**
+     * Damit niemand die Klasse aus Versehen instantiiert, ist der
+     * Default-Konstruktor private.
+     */
     private Main() {}
 
 }
