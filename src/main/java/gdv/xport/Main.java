@@ -52,7 +52,7 @@ public final class Main {
      * @throws XMLStreamException
      *             falls bei der XML-Generierung was schief gelaufen ist.
      */
-    public static void main(String[] args) throws IOException, XMLStreamException {
+    public static void main(final String[] args) throws IOException, XMLStreamException {
         Options options = createOptions();
         CommandLineParser parser = new GnuParser();
         try {

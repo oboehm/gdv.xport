@@ -194,7 +194,7 @@ public final class Datenpaket {
      * @param istream z.B. Sytem.in
      * @throws IOException falls es Fehler beim Lesen gibt
      */
-    public void importFrom(InputStream istream) throws IOException {
+    public void importFrom(final InputStream istream) throws IOException {
         Reader reader = new InputStreamReader(istream, Config.DEFAULT_ENCODING);
         importFrom(reader);
     }
@@ -203,7 +203,7 @@ public final class Datenpaket {
      * @param reader hiervon wird importiert
      * @throws IOException falls was schiefgelaufen ist
      */
-    public void importFrom(Reader reader) throws IOException {
+    public void importFrom(final Reader reader) throws IOException {
         importFrom(new PushbackReader(reader, 14));
     }
 
