@@ -74,6 +74,9 @@ public class AllgemeinerVertragsteil extends Datensatz {
         add(new AlphaNumFeld(REGISTRIERUNGSNUMMER_VERMITTLER, 15, 155), 2);
     }
 
+    /**
+     * Default-Konstruktor
+     */
     public AllgemeinerVertragsteil() {
         super("0200", 2);
         this.setUpDatenfelder();
