@@ -57,7 +57,7 @@ public class SatzTest {
     @Test
     public void testSatz() {
         Satz satz100 = new Satz(100, 1);
-        assertEquals(satz100.getSatzart().toInt(), 100);
+        assertEquals(satz100.getSatzart(), 100);
     }
 
     /**
@@ -109,7 +109,7 @@ public class SatzTest {
          swriter.close();
          String content = swriter.toString();
          assertEquals(256, content.length());
-         assertEquals(satz.getSatzart().getInhalt(), content.substring(0, 4));
+         assertEquals(satz.getSatzartFeld().getInhalt(), content.substring(0, 4));
     }
 
     @Test
@@ -123,7 +123,7 @@ public class SatzTest {
         sbuf.append("                                                               1");
         assertEquals(256, sbuf.length());
         x.importFrom(sbuf.toString());
-        assertEquals(123, x.getSatzart().toInt());
+        assertEquals(123, x.getSatzart());
         assertEquals("Hello", x.getFeld("F1").getInhalt());
         assertEquals(sbuf.toString(), x.toLongString());
     }

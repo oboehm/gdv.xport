@@ -35,7 +35,7 @@ public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
      */
     @Test
     public void testAllgemeinerVertragsteil() {
-        assertEquals(200, vertragsteil.getSatzart().toInt());
+        assertEquals(200, vertragsteil.getSatzart());
     }
 
 }

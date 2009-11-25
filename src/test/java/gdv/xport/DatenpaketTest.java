@@ -166,14 +166,46 @@ public final class DatenpaketTest {
         assertTrue(datenpaket.isValid());
     }
     
+    /**
+     * Wenn keine VU-Nummer gesetzt wurde, sollte es mind. ein Validierungs-
+     * Fehler geben.
+     */
     @Test
     public void testValidate() {
         Datenpaket dummy = new Datenpaket(Config.DUMMY_VU_NUMMER);
-        List<ConstraintViolation> violations = dummy.validate();
-        assertTrue("at least 1 violation is expected (no VUNummer)", (violations.size() > 0));
+        checkViolations(dummy);
+    }
+
+    private void checkViolations(Datenpaket defect) {
+        List<ConstraintViolation> violations = defect.validate();
+        assertTrue("at least 1 violation is expected", (violations.size() > 0));
         for (ConstraintViolation cv : violations) {
             log.info("Violation: " + cv);
         }
     }
+    
+    /**
+     * Fuer eine Versicherungsscheinnummer muss die Folgenummer immer mit 1
+     * anfangen. Taucht dieser Versicherungsscheinnummer fuer den gleichen Satz
+     * ein zweites Mal auf, muss die Folgenummer entsprechend erhoeht werden.
+     * 
+     * @since 0.3
+     */
+    @Test
+    public void testValidateFolgenummer() {
+        Datenpaket defect = new Datenpaket("08/15");
+        defect.add(createDatensatzWithFolgenummer(1));
+        defect.add(createDatensatzWithFolgenummer(3));
+        defect.add(createDatensatzWithFolgenummer(2));
+        checkViolations(defect);
+    }
+    
+    private static Datensatz createDatensatzWithFolgenummer(final int nr) {
+        Datensatz datensatz = new Adressteil();
+        datensatz.setVersicherungsscheinNummer("4711");
+        datensatz.setFolgenummer(nr);
+        return datensatz;
+    }
+    
 
 }

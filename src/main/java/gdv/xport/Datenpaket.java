@@ -359,6 +359,10 @@ public final class Datenpaket {
                 return false;
             }
         }
+        if (this.validateFolgenummern().size() > 0) {
+            log.info("Folgenummern stimmen nicht");
+            return false;
+        }
         return true;
     }
     
@@ -380,7 +384,47 @@ public final class Datenpaket {
         for (Datensatz datensatz : this.datensaetze) {
             violations.addAll(datensatz.validate());
         }
+        violations.addAll(this.validateFolgenummern());
         violations.addAll(this.nachsatz.validate());
+        return violations;
+    }
+    
+    /**
+     * Fuer eine Versicherungsscheinnummer muss die Folgenummer immer mit 1
+     * anfangen. Taucht dieser Versicherungsscheinnummer fuer den gleichen Satz
+     * ein zweites Mal auf, muss die Folgenummer entsprechend erhoeht werden.
+     * Es sei denn, es handelt sich doch noch um den gleichen Vertrag.
+     * Aber die Nummern duerfen keine Spruenge machen - dies wird hier
+     * kontrolliert.
+     *
+     * @since 0.3
+     * @return eine Liste, die die verletzten Folgenummern enthaelt
+     */
+    private List<ConstraintViolation> validateFolgenummern() {
+        List<ConstraintViolation> violations = new ArrayList<ConstraintViolation>();
+        Map<String, Integer> folgenummern = new HashMap<String, Integer>();
+        for (Datensatz datensatz : this.datensaetze) {
+            String nr = datensatz.getVersicherungsscheinNummer().trim();
+            String key = nr + datensatz.getSatzartFeld().getInhalt()
+                    + datensatz.getSparteFeld().getInhalt();
+            Integer expected = folgenummern.get(key);
+            if (expected == null) {
+                expected = 1;
+                folgenummern.put(key, expected);
+            }
+            int folgenr = datensatz.getFolgenummer();
+            if (folgenr == expected) {
+                continue;
+            }
+            expected++;
+            folgenummern.put(key, expected);
+            if (folgenr != expected) {
+                ConstraintViolation cv = new ConstraintViolation(new AssertCheck(),
+                        "falsche Folgenummer (erwartet: " + expected + ")", datensatz, folgenr,
+                        new ClassContext(this.getClass()));
+                violations.add(cv);
+            }
+        }
         return violations;
     }
 

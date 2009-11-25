@@ -146,10 +146,10 @@ public class XmlFormatter {
     private void write(Satz satz, int level) throws XMLStreamException {
         writeIndent(level);
         xmlStreamWriter.writeStartElement("satz");
-        xmlStreamWriter.writeAttribute("satzart", satz.getSatzart().getInhalt());
+        xmlStreamWriter.writeAttribute("satzart", satz.getSatzartFeld().getInhalt());
         if (satz instanceof Datensatz) {
             Datensatz datensatz = (Datensatz) satz;
-            xmlStreamWriter.writeAttribute("sparte", datensatz.getSparte().getInhalt());
+            xmlStreamWriter.writeAttribute("sparte", datensatz.getSparteFeld().getInhalt());
         }
         xmlStreamWriter.writeCharacters("\n");
         for (Iterator<Teildatensatz> iterator = satz.getTeildatensaetze().iterator(); iterator

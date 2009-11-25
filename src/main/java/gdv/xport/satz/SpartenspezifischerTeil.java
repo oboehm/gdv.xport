@@ -157,16 +157,17 @@ public class SpartenspezifischerTeil extends Datensatz {
      * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
      * Teildatensaetze aufsetzen.
      *
-     * @param x
+     * @param x z.B. 30
      * @see gdv.xport.satz.Datensatz#setSparte(int)
      */
     @Override
     public void setSparte(int x) {
-        if (this.getSatzart().toInt() == x) {
+        if (this.getSatzart() == x) {
             log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
         }
         super.setSparte(x);
         this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
+        super.setUpTeildatensaetze();
         this.setUpDatenfelder(x);
     }
 

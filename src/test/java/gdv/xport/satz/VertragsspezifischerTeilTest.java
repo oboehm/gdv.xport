@@ -20,10 +20,13 @@ package gdv.xport.satz;
 
 import static org.junit.Assert.*;
 
+import gdv.xport.config.Config;
+import gdv.xport.feld.*;
+
 import java.io.IOException;
 
 import org.apache.commons.logging.*;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * @author oliver (oliver.boehm@agentes.de)
@@ -34,6 +37,17 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
     private static final Log log = LogFactory.getLog(VertragsspezifischerTeilTest.class);
 
     /**
+     * Damit die Assert's der Satzlaenge stimmen, muessen wir das 
+     * End-of-Datensatz abschalten.
+     * 
+     * @since 0.3
+     */
+    @BeforeClass
+    public static void setUpBeforeClass() {
+        Config.setEOD("");
+    }
+
+    /**
      * Tested den Konstruktor.
      * @throws IOException falls die Platte voll ist (oder sowas)
      */
@@ -41,8 +55,22 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
     public void testSpartenspezifischerVertragsteil() throws IOException {
         VertragsspezifischerTeil vertragsteil = new VertragsspezifischerTeil(70);
         log.info(vertragsteil + " created.");
-        assertEquals(70, vertragsteil.getSparte().toInt());
+        assertEquals(70, vertragsteil.getSparte());
         checkExport(vertragsteil, 11, 13, "070", 256);
+    }
+    
+    /**
+     * Dieser Test dient nur zum Ueberpruefen, ob die Folgenummer auch
+     * tatsaechlich gesetzt ist.
+     */
+    @Test
+    public void testFolgenummer() {
+        VertragsspezifischerTeil vertragsteil = new VertragsspezifischerTeil(30);
+        vertragsteil.setFolgenummer(42);
+        Teildatensatz teildatensatz = vertragsteil.getTeildatensatz(1);
+        Feld feld = teildatensatz.getFeld(Bezeichner.FOLGENUMMER);
+        assertNotNull(feld);
+        assertEquals("42", feld.getInhalt());
     }
 
 }

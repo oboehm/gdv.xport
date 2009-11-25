@@ -221,7 +221,7 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public int hashCode() {
-        return this.getSatzart().toInt() + this.satznummer.getInhalt().hashCode();
+        return this.getSatzart() + this.satznummer.getInhalt().hashCode();
     }
 
 }

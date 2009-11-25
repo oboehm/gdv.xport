@@ -43,7 +43,7 @@ public class NachsatzTest extends AbstractSatzTest {
      */
     @Test
     public void testNachsatz() {
-        assertEquals(9999, nachsatz.getSatzart().toInt());
+        assertEquals(9999, nachsatz.getSatzart());
     }
 
     /**

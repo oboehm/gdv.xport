@@ -222,8 +222,16 @@ public class Satz {
      *
      * @return the satzart
      */
-    public NumFeld getSatzart() {
+    public NumFeld getSatzartFeld() {
         return this.satzart;
+    }
+    
+    /**
+     * @since 0.3
+     * @return die Satzart als int
+     */
+    public int getSatzart() {
+        return this.satzart.toInt();
     }
 
     /**
@@ -313,7 +321,7 @@ public class Satz {
         char[] cbuf = new char[256];
         for (int i = 0; i < teildatensatz.length; i++) {
             int art = readSatzart(reader);
-            if (art != this.getSatzart().toInt()) {
+            if (art != this.getSatzart()) {
                 log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
                         + ", but got data for Satzart " + art);
                 break;
@@ -462,7 +470,7 @@ public class Satz {
      * @return true, if successful
      */
     public final boolean equals(final Satz other) {
-        if (this.getSatzart().toInt() != other.getSatzart().toInt()) {
+        if (this.getSatzart() != other.getSatzart()) {
             return false;
         }
         for (int i = 0; i < teildatensatz.length; i++) {

@@ -99,7 +99,7 @@ public class VertragsspezifischerTeil extends Datensatz {
         add(new Zeichen(KENNZEICHEN_ABWEICHENDE_FOLGEPROVISION, 103));
         add(new AlphaNumFeld(ABWEICHENDE_VU_NR, 5, 104));
         add(new Zeichen(KENNZEICHEN_ABWEICHENDE_VU_NR, 109));
-        add(new NumFeld(RESTLAUFZEIT_VERTRAG, 2, 110));
+        add(new Datum(RESTLAUFZEIT_VERTRAG, 2, 110));
         add(new Betrag(LAUFZEITRABATT_IN_PROZENT, 4, 112));
         add(new AlphaNumFeld(PRODUKTFORM, 5, 116));
         add(new Datum(PRODUKTFORM_GUELTIG_AB, 6, 121));
@@ -116,11 +116,12 @@ public class VertragsspezifischerTeil extends Datensatz {
      */
     @Override
     public void setSparte(int x) {
-        if (this.getSatzart().toInt() == x) {
+        if (this.getSatzart() == x) {
             log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
         }
         super.setSparte(x);
         this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
+        super.setUpTeildatensaetze();
         this.setUpDatenfelder(x);
     }
 

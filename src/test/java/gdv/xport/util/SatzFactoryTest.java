@@ -21,6 +21,8 @@ package gdv.xport.util;
 import static org.junit.Assert.*;
 import static gdv.xport.feld.Bezeichner.*;
 
+import java.io.IOException;
+
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 import gdv.xport.util.SatzFactory;
@@ -65,7 +67,7 @@ public class SatzFactoryTest extends AbstractTest {
         SatzFactory.register(Datensatz.class, 47);
         Satz satz = SatzFactory.getSatz(47);
         assertEquals(Datensatz.class, satz.getClass());
-        assertEquals(47, satz.getSatzart().toInt());
+        assertEquals(47, satz.getSatzart());
         SatzFactory.unregister(47);
     }
 
@@ -90,7 +92,7 @@ public class SatzFactoryTest extends AbstractTest {
     private static void checkGetDatensatz(int satzart, Class<? extends Datensatz> clazz) {
         Datensatz datensatz = SatzFactory.getDatensatz(satzart);
         assertEquals(clazz, datensatz.getClass());
-        assertEquals(satzart, datensatz.getSatzart().toInt());
+        assertEquals(satzart, datensatz.getSatzart());
     }
 
     @Test
@@ -106,10 +108,25 @@ public class SatzFactoryTest extends AbstractTest {
     private static void checkGetDatensatz(int satzart, int sparte, Class<? extends Datensatz> clazz) {
         Datensatz datensatz = SatzFactory.getDatensatz(satzart, sparte);
         assertEquals(clazz, datensatz.getClass());
-        assertEquals(satzart, datensatz.getSatzart().toInt());
-        assertEquals(sparte, datensatz.getSparte().toInt());
+        assertEquals(satzart, datensatz.getSatzart());
+        assertEquals(sparte, datensatz.getSparte());
         Feld satznummer = datensatz.getFeld(SATZNUMMER, 1);
         assertEquals("1", satznummer.getInhalt());
+    }
+    
+    /**
+     * Die Daten zu diesem Test stammen aus der Musterdatei
+     * @throws IOException sollte eigentlich nicht vorkommen
+     */
+    @Test
+    public void testImport() throws IOException {
+        Datensatz datensatz = SatzFactory.getDatensatz(210, 30);
+        String s = "02109999  030      599999999990199990099991010520040105200901052"
+                 + "0040901 0000000000000000000 EUR000000000000000000000000000000041"
+                 + "1410000000000 0001000                                           "
+                 + "           000000                                               ";
+        datensatz.importFrom(s);
+        assertEquals(1, datensatz.getFolgenummer());
     }
 
 }

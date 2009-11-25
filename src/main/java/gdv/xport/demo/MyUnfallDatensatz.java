@@ -58,7 +58,7 @@ public class MyUnfallDatensatz extends Datensatz {
                 "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt"));
         // jetzt den ersten Datensatz 210, Sparte 30 suchen und ausgeben
         for (Datensatz datensatz : datenpaket.getDatensaetze()) {
-            if ((datensatz.getSatzart().toInt() == 210) && (datensatz.getSparte().toInt() == 30)) {
+            if ((datensatz.getSatzart() == 210) && (datensatz.getSparte() == 30)) {
                 datensatz.export(System.out);
                 new XmlFormatter(System.out).write(datensatz);
                 break;

@@ -39,7 +39,7 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
     public void testSpartenspezifischerTeil70() {
         SpartenspezifischerTeil rechtsschutz = new SpartenspezifischerTeil(70);
         log.info(rechtsschutz + " created.");
-        assertEquals(70, rechtsschutz.getSparte().toInt());
+        assertEquals(70, rechtsschutz.getSparte());
     }
 
 }

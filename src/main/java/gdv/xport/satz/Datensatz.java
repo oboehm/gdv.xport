@@ -55,7 +55,7 @@ public class Datensatz extends Satz {
     }
 
     /**
-     * @param satzart
+     * @param satzart z.B. 100
      * @param n Anzahl der Teildatensaetze
      */
     public Datensatz(final String satzart, final int n) {
@@ -73,7 +73,7 @@ public class Datensatz extends Satz {
         this.setUpTeildatensaetze();
     }
 
-    private void setUpTeildatensaetze() {
+    protected void setUpTeildatensaetze() {
         for (int i = 0; i < teildatensatz.length; i++) {
             teildatensatz[i].add(this.vuNummer);
             teildatensatz[i].add(this.buendelungsKennzeichen);
@@ -94,29 +94,74 @@ public class Datensatz extends Satz {
         }
     }
 
-    public void setSparte(int x) {
+    public void setSparte(final int x) {
         this.sparte.setInhalt(x);
     }
+    
+    /**
+     * @return die Sparte als int
+     */
+    public int getSparte() {
+        return this.sparte.toInt();
+    }
 
-    public NumFeld getSparte() {
+    /**
+     * @return die Sparte als Feld
+     */
+    public NumFeld getSparteFeld() {
         return this.sparte;
     }
 
-    public void setVuNummer(String s) {
+    public void setVuNummer(final String s) {
         this.vuNummer.setInhalt(s);
     }
 
     public String getVuNummer() {
         return this.vuNummer.getInhalt();
     }
+    
+    /**
+     * @since 0.3
+     * @param nr die Versicherungsschein-Nummer
+     */
+    public void setVersicherungsscheinNummer(final String nr) {
+        this.versicherungsscheinNr.setInhalt(nr);
+    }
+    
+    /**
+     * @since 0.3
+     * @return die Versicherungsschein-Nummer
+     */
+    public String getVersicherungsscheinNummer() {
+        return this.versicherungsscheinNr.getInhalt();
+    }
+    
+    /**
+     * Hiermit kann die Folgenummer gesetzt werden.
+     * 
+     * @since 0.3
+     * @param nr man sollte hier bei 1 anfangen mit zaehlen
+     */
+    public void setFolgenummer(final int nr) {
+        this.folgeNr.setInhalt(nr);
+    }
+    
+    /**
+     * @since 0.3
+     * @return die Folgenummer
+     */
+    public int getFolgenummer() {
+        return this.folgeNr.toInt();
+    }
 
     /**
      * Liest 14 Bytes, um die Satzart zu bestimmen und stellt die Bytes
      * anschliessend wieder zurueck in den Reader.
-     *
+     * 
      * @param reader
+     *            muss mind. einen Pushback-Puffer von 14 Zeichen bereitstellen
      * @return Satzart
-     * @throws IOException
+     * @throws IOException falls was schief gegangen ist
      */
     public static int readSparte(PushbackReader reader) throws IOException {
         char[] cbuf = new char[14];
