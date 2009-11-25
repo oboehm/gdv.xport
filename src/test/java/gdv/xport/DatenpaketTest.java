@@ -176,12 +176,22 @@ public final class DatenpaketTest {
         checkViolations(dummy);
     }
 
-    private void checkViolations(Datenpaket defect) {
-        List<ConstraintViolation> violations = defect.validate();
-        assertTrue("at least 1 violation is expected", (violations.size() > 0));
-        for (ConstraintViolation cv : violations) {
-            log.info("Violation: " + cv);
+    /**
+     * Da die Validierung ziemlich lange dauert, wurde sie einfach durch
+     * eine isValid()-Afrage ersetzt. Falls man die Validierung doch noch
+     * will, setzt man einfach den Log-Level auf TRACE.
+     * 
+     * @param defect das defekte Datenpaket
+     */
+    private void checkViolations(final Datenpaket defect) {
+        if (log.isTraceEnabled()) {
+            List<ConstraintViolation> violations = defect.validate();
+            assertTrue("at least 1 violation is expected", (violations.size() > 0));
+            for (ConstraintViolation cv : violations) {
+                log.trace("Violation: " + cv);
+            }
         }
+        assertFalse("at least 1 violation is expected", defect.isValid());
     }
     
     /**

@@ -363,6 +363,10 @@ public final class Datenpaket {
             log.info("Folgenummern stimmen nicht");
             return false;
         }
+        if (this.validateVUNummer().size() > 0) {
+            log.info("VU-Nummer is not set / not valid");
+            return false;
+        }
         return true;
     }
     
@@ -374,18 +378,24 @@ public final class Datenpaket {
     public List<ConstraintViolation> validate() {
         Validator validator = new Validator();
         List<ConstraintViolation> violations = validator.validate(this);
-        if (Config.DUMMY_VU_NUMMER.equals(this.getVuNummer())) {
-            ConstraintViolation cv = new ConstraintViolation(new AssertCheck(),
-                    "VU-Nummer is not set", this, Config.DUMMY_VU_NUMMER, new ClassContext(this
-                            .getClass()));
-            violations.add(cv);
-        }
+        violations.addAll(validateVUNummer());
         violations.addAll(this.vorsatz.validate());
         for (Datensatz datensatz : this.datensaetze) {
             violations.addAll(datensatz.validate());
         }
         violations.addAll(this.validateFolgenummern());
         violations.addAll(this.nachsatz.validate());
+        return violations;
+    }
+
+    private List<ConstraintViolation> validateVUNummer() {
+        List<ConstraintViolation> violations = new ArrayList<ConstraintViolation>();
+        if (Config.DUMMY_VU_NUMMER.equals(this.getVuNummer())) {
+            ConstraintViolation cv = new ConstraintViolation(new AssertCheck(),
+                    "VU-Nummer is not set", this, Config.DUMMY_VU_NUMMER, new ClassContext(this
+                            .getClass()));
+            violations.add(cv);
+        }
         return violations;
     }
     
