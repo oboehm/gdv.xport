@@ -114,11 +114,11 @@ public class Adressteil extends Datensatz {
         assert (n >= 1) && (n <= 3) : "1 <= n <= 3 expected";
         switch(n) {
         case 1:
-            return this.getFeld(NAME1).getInhalt().trim();
+            return this.getFeldInhalt(NAME1);
         case 2:
-            return this.getFeld(NAME2).getInhalt().trim();
+            return this.getFeldInhalt(NAME2);
         case 3:
-            return this.getFeld(NAME3).getInhalt().trim();
+            return this.getFeldInhalt(NAME3);
         default:
             throw new IllegalArgumentException("1 <= n <= 3 expected");
         }

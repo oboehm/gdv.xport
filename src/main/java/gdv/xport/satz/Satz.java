@@ -189,7 +189,6 @@ public class Satz {
      * Liefert das gewuenschte Feld.
      *
      * @param name gewuenschter Bezeichner des Feldes
-     *
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
      */
     public Feld getFeld(final String name) {
@@ -201,20 +200,41 @@ public class Satz {
         }
         return Feld.NULL_FELD;
     }
+    
+    /**
+     * Liefert den Inhalt des gewuenschten Feldes
+     * 
+     * @since 0.3
+     * @param name gewuenschter Bezeichner des Feldes
+     * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
+     */
+    public String getFeldInhalt(final String name) {
+        return this.getFeld(name).getInhalt().trim();
+    }
 
     /**
      * Liefert das gewuenschte Feld.
      *
      * @param name gewuenschter Bezeichner des Feldes
      * @param nr Nummer des Teildatensatzes (1, 2, ...)
-     *
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
-     *
      * @since 0.2
      */
     public Feld getFeld(final String name, int nr) {
         assert (0 < nr) &&  (nr <= teildatensatz.length) : nr + " liegt ausserhalb des Bereichs";
         return teildatensatz[nr-1].getFeld(name);
+    }
+    
+    /**
+     * Liefert den Inhalt des gewuenschten Feldes
+     * 
+     * @param name gewuenschter Bezeichner des Feldes
+     * @param nr Nummer des Teildatensatzes (1, 2, ...)
+     * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
+     * @since 0.3
+     */
+    public String getFeldInhalt(final String name, int nr) {
+        return this.getFeld(name, nr).getInhalt().trim();
     }
 
     /**
