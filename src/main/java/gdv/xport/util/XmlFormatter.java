@@ -174,6 +174,10 @@ public class XmlFormatter {
         xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.writeStartElement("datenpaket");
+        xmlStreamWriter.writeDefaultNamespace("http://repository.agentes.de");
+        xmlStreamWriter.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+        xmlStreamWriter.writeNamespace("schemaLocation",
+                "http://repository.agentes.de /gdv/datenpaket.xsd");
         xmlStreamWriter.writeCharacters("\n");
         write(datenpaket.getVorsatz(), 1);
         xmlStreamWriter.writeCharacters("\n");
