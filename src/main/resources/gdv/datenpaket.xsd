@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- 
+    Die XSD zu der von gdv.xport generierten XML-Datei
+    (c)readted: 27-Nov-2009 by oliver.boehm@agentes.de
+ -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" 
         targetNamespace="http://repository.agentes.de"
         elementFormDefault="qualified">

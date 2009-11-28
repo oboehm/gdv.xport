@@ -18,7 +18,7 @@ import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.*;
 
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.*;
 import org.xml.sax.SAXException;
 
 /**
@@ -29,28 +29,55 @@ import org.xml.sax.SAXException;
  */
 public class XmlHelper {
 	
-	private static Logger log = Logger.getLogger(XmlHelper.class);
+	private static final Log log = LogFactory.getLog(XmlHelper.class);
 
-	public static void validate(String xmlString, String xsdResource)
-			throws SAXException, IOException {
-		Reader reader = new StringReader(xmlString);
-		Source source = new StreamSource(reader);
-		log.debug("validating " + xmlString + "...");
-		validate(source, xsdResource);
-	}
+	/**
+	 * Wird hauptsaechlich zum Testen verwendet, um einen bestehenden
+	 * XML-String gegen eine XSD validieren zu koennen.
+	 * 
+	 * @since 0.3
+	 * @param xmlString der XML-String
+	 * @param xsdResource z.B. "/gdv/datenpaket.xsd"
+	 * @throws SAXException bei einem XML-Fehler
+	 * @throws IOException bei einem Lese-Fehler
+	 */
+    public static void validate(final String xmlString, final String xsdResource)
+            throws SAXException, IOException {
+        Reader reader = new StringReader(xmlString);
+        Source source = new StreamSource(reader);
+        log.debug("validating " + xmlString + "...");
+        validate(source, xsdResource);
+    }
 
-	public static void validate(Source source, String xsdResource)
-			throws SAXException, IOException {
-		Schema schema = getSchema(xsdResource);
-		Validator validator = schema.newValidator();
-		validator.validate(source);
-	}
-	
-	public static Schema getSchema(String resource) throws SAXException {
-		SchemaFactory factory = SchemaFactory
-				.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-		URL xsdURL = XmlHelper.class.getResource(resource);
-		return factory.newSchema(xsdURL);
-	}
+    /**
+     * Wird hauptsaechlich zum Testen verwendet, um einen bestehende Source
+     * gegen eine XSD validieren zu koennen.
+     * 
+     * @since 0.3
+     * @param source die Source mit dem XML-String
+     * @param xsdResource z.B. "/gdv/datenpaket.xsd"
+     * @throws SAXException bei einem XML-Fehler
+     * @throws IOException bei einem Lese-Fehler
+     */
+    public static void validate(final Source source, final String xsdResource) throws SAXException,
+            IOException {
+        Schema schema = getSchema(xsdResource);
+        Validator validator = schema.newValidator();
+        validator.validate(source);
+    }
+
+    /**
+     * Um das Schema zur uebergebenen Resource zu bekommen.
+     * 
+     * @since 0.3
+     * @param resource z.B. "/gdv/datenpaket.xsd"
+     * @return das entsprechende Schema
+     * @throws SAXException bei einem XML-Fehler
+     */
+    public static Schema getSchema(final String resource) throws SAXException {
+        SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        URL xsdURL = XmlHelper.class.getResource(resource);
+        return factory.newSchema(xsdURL);
+    }
 
 }
