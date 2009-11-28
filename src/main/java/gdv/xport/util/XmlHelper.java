@@ -22,14 +22,20 @@ import org.apache.commons.logging.*;
 import org.xml.sax.SAXException;
 
 /**
- * Helper class for XML
+ * Kleine Helper-Klasse fuer den Umgang mit XML.
  * 
  * @author oliver.boehm@agentes.de
  * @since 0.3
  */
-public class XmlHelper {
+public final class XmlHelper {
 	
 	private static final Log log = LogFactory.getLog(XmlHelper.class);
+	
+	/**
+	 * Privater Konstruktor, damit diese Klasse nicht instantiiert werden kann
+	 * (sie hat nur statische Methoden).
+	 */
+	private XmlHelper() {}
 
 	/**
 	 * Wird hauptsaechlich zum Testen verwendet, um einen bestehenden

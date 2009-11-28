@@ -22,9 +22,11 @@ import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.feld.*;
 
 /**
+ * Diese Klasse repraesentiert die Satzart 200
+ * (Allgemeiner Vertragsteil).
+ * 
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (27.10.2009)
- *
  */
 public class AllgemeinerVertragsteil extends Datensatz {
 
@@ -75,7 +77,7 @@ public class AllgemeinerVertragsteil extends Datensatz {
     }
 
     /**
-     * Default-Konstruktor
+     * Default-Konstruktor.
      */
     public AllgemeinerVertragsteil() {
         super("0200", 2);
