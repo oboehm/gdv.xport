@@ -37,7 +37,7 @@ import org.xml.sax.SAXException;
  */
 public class XmlFormatterTest extends AbstractTest {
 
-    private static Log log = LogFactory.getLog(XmlFormatter.class);
+    private static Log log = LogFactory.getLog(XmlFormatterTest.class);
     private static XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
     /**

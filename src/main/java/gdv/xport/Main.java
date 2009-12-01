@@ -92,6 +92,7 @@ public final class Main {
                 printViolations(datenpaket.validate());
             }
         } catch (ParseException e) {
+            e.printStackTrace();
             System.err.println("Fehler beim Aufruf von " + Main.class);
             printHelp(options);
             System.exit(1);

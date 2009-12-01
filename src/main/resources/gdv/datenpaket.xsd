@@ -4,7 +4,7 @@
     (c)reated: 27-Nov-2009 by oliver.boehm@agentes.de
  -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" 
-        targetNamespace="http://repository.agentes.de"
+        targetNamespace="http://labs.agentes.de"
         elementFormDefault="qualified">
   <element name="datenpaket">
     <complexType>

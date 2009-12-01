@@ -51,7 +51,7 @@ public class XmlFormatter {
      *
      * @param writer the writer
      */
-    public XmlFormatter(Writer writer) {
+    public XmlFormatter(final Writer writer) {
         try {
             this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(writer);
             this.writer = writer;
@@ -67,7 +67,7 @@ public class XmlFormatter {
      *
      * @param xmlStreamWriter the xml stream writer
      */
-    public XmlFormatter(XMLStreamWriter xmlStreamWriter) {
+    public XmlFormatter(final XMLStreamWriter xmlStreamWriter) {
         this.xmlStreamWriter = xmlStreamWriter;
         this.writer = null;
     }
@@ -76,7 +76,7 @@ public class XmlFormatter {
      * @param file Ausgabe-Datein
      * @throws IOException falls die uebergebene Date nicht existiert
      */
-    public XmlFormatter(File file) throws IOException {
+    public XmlFormatter(final File file) throws IOException {
         this(new FileWriter(file));
     }
     
@@ -84,7 +84,7 @@ public class XmlFormatter {
      * @since 0.3
      * @param ostream z.B. System.out
      */
-    public XmlFormatter(OutputStream ostream) {
+    public XmlFormatter(final OutputStream ostream) {
         this(new OutputStreamWriter(ostream));
     }
 
@@ -95,7 +95,7 @@ public class XmlFormatter {
      *
      * @throws XMLStreamException Signals that an I/O exception has occurred.
      */
-    public void write(Feld feld) throws XMLStreamException {
+    public void write(final Feld feld) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("feld");
         String s = new Formatter().format("%3d-%3d", feld.getByteAdresse(), feld.getEndAdresse())
                 .toString();
@@ -113,11 +113,12 @@ public class XmlFormatter {
      *
      * @throws XMLStreamException the XML stream exception
      */
-    public void write(Teildatensatz teildatensatz) throws XMLStreamException {
+    public void write(final Teildatensatz teildatensatz) throws XMLStreamException {
         write(teildatensatz, 0);
     }
 
-    private void write(Teildatensatz teildatensatz, int level) throws XMLStreamException {
+    private void write(final Teildatensatz teildatensatz, final int level)
+            throws XMLStreamException {
         writeIndent(level);
         xmlStreamWriter.writeStartElement("teildatensatz");
         xmlStreamWriter.writeAttribute("nr", teildatensatz.getNummer().getInhalt());
@@ -139,11 +140,11 @@ public class XmlFormatter {
      *
      * @throws XMLStreamException the XML stream exception
      */
-    public void write(Satz satz) throws XMLStreamException {
+    public void write(final Satz satz) throws XMLStreamException {
         write(satz, 0);
     }
 
-    private void write(Satz satz, int level) throws XMLStreamException {
+    private void write(final Satz satz, final int level) throws XMLStreamException {
         writeIndent(level);
         xmlStreamWriter.writeStartElement("satz");
         xmlStreamWriter.writeAttribute("satzart", satz.getSatzartFeld().getInhalt());
@@ -169,15 +170,15 @@ public class XmlFormatter {
      * @param datenpaket Datenpaket, das als XML ausgegeben werden soll
      * @throws XMLStreamException bei Problemen mit der XML-Generierung
      */
-    public void write(Datenpaket datenpaket) throws XMLStreamException {
+    public void write(final Datenpaket datenpaket) throws XMLStreamException {
         long t0 = System.currentTimeMillis();
         xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.writeStartElement("datenpaket");
-        xmlStreamWriter.writeDefaultNamespace("http://repository.agentes.de");
+        xmlStreamWriter.writeDefaultNamespace("http://labs.agentes.de");
         xmlStreamWriter.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
         xmlStreamWriter.writeNamespace("schemaLocation",
-                "http://repository.agentes.de /gdv/datenpaket.xsd");
+                "http://labs.agentes.de /repository/gdv/datenpaket.xsd");
         xmlStreamWriter.writeCharacters("\n");
         write(datenpaket.getVorsatz(), 1);
         xmlStreamWriter.writeCharacters("\n");
