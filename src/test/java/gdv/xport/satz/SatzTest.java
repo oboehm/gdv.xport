@@ -41,7 +41,7 @@ import org.junit.*;
 public class SatzTest {
 
     private static final Log log = LogFactory.getLog(SatzTest.class);
-    private Satz satz = new Satz(123);
+    private Satz satz = new Datensatz(123);
 
     /**
      * Damit die Assert's der Satzlaenge stimmen, muessen wir das 
@@ -56,7 +56,7 @@ public class SatzTest {
     
     @Test
     public void testSatz() {
-        Satz satz100 = new Satz(100, 1);
+        Satz satz100 = new Datensatz(100, 1);
         assertEquals(satz100.getSatzart(), 100);
     }
 
@@ -86,7 +86,7 @@ public class SatzTest {
      */
     @Test
     public void testGet() {
-        satz.add(new AlphaNumFeld(ORT, 30, 10));
+        satz.add(new AlphaNumFeld(ORT, 30, 50));
         satz.set(ORT, "Stuttgart");
         assertEquals("Stuttgart", satz.get(ORT).trim());
     }
@@ -114,7 +114,7 @@ public class SatzTest {
 
     @Test
     public void testImport() throws IOException {
-        Satz x = new Satz(123);
+        Satz x = new Datensatz(123);
         x.add(new AlphaNumFeld("F1", 5, 5));
         StringBuffer sbuf = new StringBuffer(256);
         sbuf.append("0123Hello                                                       ");
@@ -130,7 +130,7 @@ public class SatzTest {
 
     @Test
     public void testIsValid() {
-        Satz a = new Satz("xxxx", 1);
+        Satz a = new Datensatz("xxxx", 1);
         assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
     }
 
@@ -143,7 +143,7 @@ public class SatzTest {
 
     @Test
     public void testValidate() {
-        Satz a = new Satz("xxxx", 1);
+        Satz a = new Datensatz("xxxx", 1);
         assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
         List<ConstraintViolation> violations = a.validate();
         for (ConstraintViolation violation : violations) {
@@ -154,8 +154,8 @@ public class SatzTest {
 
     @Test
     public void testIsEquals() {
-        Satz a = new Satz(123);
-        Satz b = new Satz(123);
+        Satz a = new Datensatz(123);
+        Satz b = new Datensatz(123);
         assertEquals(a, b);
         assertEquals(a.hashCode(), b.hashCode());
         b.add(new Feld("c", 5, 'c'));

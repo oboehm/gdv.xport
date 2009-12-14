@@ -23,7 +23,7 @@ import org.apache.commons.logging.*;
  *
  * @author oliver
  */
-public class Satz {
+public abstract class Satz {
 
     private static final Log log = LogFactory.getLog(Satz.class);
     /** 4 Zeichen */
