@@ -113,7 +113,7 @@ public class SatzFactoryTest extends AbstractTest {
         Feld satznummer = datensatz.getFeld(SATZNUMMER, 1);
         assertEquals("1", satznummer.getInhalt());
     }
-    
+
     /**
      * Die Daten zu diesem Test stammen aus der Musterdatei
      * @throws IOException sollte eigentlich nicht vorkommen

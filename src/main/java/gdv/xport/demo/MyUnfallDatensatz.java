@@ -33,18 +33,18 @@ import javax.xml.stream.XMLStreamException;
  * gdv-xport-Framework registriert. Es repraesentiert den Datensatz
  * 0210.030 (Unfall, Vertragsspezifischer Teil), definiert aber nur
  * einige wenige ausgewaehlte Felder
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.3 (21.11.2009)
  */
 public class MyUnfallDatensatz extends Datensatz {
-    
+
     /**
      * Hier wird diese Klasse am Framework registriert und anschliessend das
      * Beispiel von
      * {@link "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt"}
      * importiert.
-     * 
+     *
      * @param args werden ignoriert
      * @throws IOException falls z.B. keine Netzverbindung da ist
      * @throws XMLStreamException falls die XML-Generierung nicht geklappt hat
@@ -74,7 +74,7 @@ public class MyUnfallDatensatz extends Datensatz {
         super(210, 30);
         this.setUpDatenfelder();
     }
-    
+
     /**
      * Hier werden jetzt als Beispiel zwei Felder aufgesetzt:
      * das Beginn-Datum und der Waehrungsschluessel mit der jeweiligen

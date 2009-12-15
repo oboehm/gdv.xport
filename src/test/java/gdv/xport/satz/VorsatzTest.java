@@ -37,7 +37,7 @@ import org.junit.*;
 public final class VorsatzTest extends AbstractSatzTest {
 
     private Vorsatz vorsatz = new Vorsatz();
-    
+
     /**
      * Damit ein Datensatz auch 256 Bytes lang ist, setzen wir das
      * EOD-Zeichen auf nichts ("").

@@ -28,16 +28,16 @@ import gdv.xport.satz.Vorsatz;
  * @since 0.3 (19.11.2009)
  */
 public final class HelloWorld {
-    
+
     /**
      * In diesem Beispiel erzeugen wir ein leeres Datenpaket, setzen die
      * VU-Nummer auf "Hello" und den Adressat (der im Vorsatz zu finden ist)
      * auf "World".
      * Am Ende "exportieren" wir dann das Datenpaket auf Systm.out.
-     * 
+     *
      * @since 0.3
      * @param args wird nicht ausgewertet.
-     * @throws IOException 
+     * @throws IOException
      */
     public static void main(String[] args) throws IOException {
         // wir erzeugen ein Datenpaket mit "Hello" als VU-Nummer
@@ -48,7 +48,7 @@ public final class HelloWorld {
         // und jetzt geben wir das Datenpaket auf System.out aus
         datenpaket.export(System.out);
     }
-    
+
     /**
      * Damit diese Klasse nicht instantiiert werden kann, ist der Konstruktor
      * "private".

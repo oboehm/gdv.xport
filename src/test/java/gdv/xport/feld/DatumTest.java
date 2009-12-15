@@ -99,7 +99,7 @@ public class DatumTest {
     public void testDatumMMJJJJ() {
         checkDatum("112009");
     }
-    
+
     @Test
     public void testDatumMMJJ() {
         checkDatum("1109");

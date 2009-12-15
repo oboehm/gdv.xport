@@ -42,7 +42,7 @@ public final class Main {
      * Optionen angegeben, wird von der Standard-Eingabe (System.in) gelesen und
      * das Ergebnis nach System.out geschrieben. <br/>
      * Mit "-help" bekommt man eine kleine Uebersicht der Optionen.
-     * 
+     *
      * @param args
      *            die verschiendene Argumente
      *            (z.B. -import http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
@@ -98,7 +98,7 @@ public final class Main {
             System.exit(1);
         }
     }
-    
+
     /**
      * Je nachdem, was als 'filename' uebergeben wird, wird von einer URL oder
      * einer Datei importiert.
@@ -115,9 +115,9 @@ public final class Main {
         } catch (MalformedURLException e) {
             datenpaket.importFrom(new File(filename));
         }
-        
+
     }
-    
+
     private static Options createOptions() {
         Options options = new Options();
         options.addOption("import", true, "Import-Datei");
@@ -128,18 +128,18 @@ public final class Main {
         options.addOption("help", false, "Kurz-Hilfe");
         return options;
     }
-    
+
     private static void printHelp(final Options options) {
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp(Main.class.getName(), options);
     }
-    
+
     private static void printViolations(final List<ConstraintViolation> violations) {
         for (ConstraintViolation violation : violations) {
             System.err.println(violation.getValidatedObject() + ": " + violation.getMessage());
         }
     }
-    
+
     /**
      * Damit niemand die Klasse aus Versehen instantiiert, ist der
      * Default-Konstruktor private.

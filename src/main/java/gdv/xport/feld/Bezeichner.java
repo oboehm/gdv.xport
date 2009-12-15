@@ -194,6 +194,6 @@ public final class Bezeichner {
     public static final String ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN = "Zuschlag-2 in Waehrungseinheiten";
 
     private Bezeichner() {}
-    
+
 }
 

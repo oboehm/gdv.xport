@@ -125,7 +125,7 @@ public final class Vorsatz extends Satz {
         assert s.length() <= 5 : s + " darf nur max. 5 Zeichen lang sein";
         this.vuNummer.setInhalt(s);
     }
-    
+
     /**
      * @return VU-Nummer
      */

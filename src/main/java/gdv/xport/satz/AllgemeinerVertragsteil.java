@@ -24,7 +24,7 @@ import gdv.xport.feld.*;
 /**
  * Diese Klasse repraesentiert die Satzart 200
  * (Allgemeiner Vertragsteil).
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (27.10.2009)
  */

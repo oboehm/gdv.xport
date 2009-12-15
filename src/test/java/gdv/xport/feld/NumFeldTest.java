@@ -38,7 +38,7 @@ import org.junit.Test;
 public class NumFeldTest {
 
     private static final Log log = LogFactory.getLog(NumFeldTest.class);
-    
+
     @Test
     public void testNumFeld() {
         NumFeld nummer = new NumFeld(4, 1);

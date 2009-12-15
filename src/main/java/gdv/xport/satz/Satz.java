@@ -200,10 +200,10 @@ public abstract class Satz {
         }
         return Feld.NULL_FELD;
     }
-    
+
     /**
      * Liefert den Inhalt des gewuenschten Feldes
-     * 
+     *
      * @since 0.3
      * @param name gewuenschter Bezeichner des Feldes
      * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
@@ -224,10 +224,10 @@ public abstract class Satz {
         assert (0 < nr) &&  (nr <= teildatensatz.length) : nr + " liegt ausserhalb des Bereichs";
         return teildatensatz[nr-1].getFeld(name);
     }
-    
+
     /**
      * Liefert den Inhalt des gewuenschten Feldes
-     * 
+     *
      * @param name gewuenschter Bezeichner des Feldes
      * @param nr Nummer des Teildatensatzes (1, 2, ...)
      * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
@@ -245,7 +245,7 @@ public abstract class Satz {
     public NumFeld getSatzartFeld() {
         return this.satzart;
     }
-    
+
     /**
      * @since 0.3
      * @return die Satzart als int
@@ -266,7 +266,7 @@ public abstract class Satz {
             teildatensatz[i].export(writer);
         }
     }
-    
+
     /**
      * @since 0.3
      * @param ostream z.B. System.out

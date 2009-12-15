@@ -71,7 +71,7 @@ public class XmlFormatter {
         this.xmlStreamWriter = xmlStreamWriter;
         this.writer = null;
     }
-    
+
     /**
      * @param file Ausgabe-Datein
      * @throws IOException falls die uebergebene Date nicht existiert
@@ -79,7 +79,7 @@ public class XmlFormatter {
     public XmlFormatter(final File file) throws IOException {
         this(new FileWriter(file));
     }
-    
+
     /**
      * @since 0.3
      * @param ostream z.B. System.out
@@ -197,11 +197,11 @@ public class XmlFormatter {
         xmlStreamWriter.writeEndDocument();
         xmlStreamWriter.flush();
     }
-    
+
     /**
      * Falls man diese Klasse mit dem File-Konstruktor geoeffnet hat, sollte
      * man den Stream hierueber wieder schliessen.
-     * 
+     *
      * @since 0.3
      * @throws IOException sollte eigentlich nicht vorkommen
      */

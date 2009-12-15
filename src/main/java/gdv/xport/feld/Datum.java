@@ -113,7 +113,7 @@ public final class Datum extends Feld {
         super(length, start, Align.RIGHT);
         dateFormat = getDateFormat(length);
     }
-    
+
     private static DateFormat getDateFormat(int length) {
         switch (length) {
             case 2:

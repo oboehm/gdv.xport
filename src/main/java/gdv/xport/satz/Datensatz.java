@@ -97,7 +97,7 @@ public class Datensatz extends Satz {
     public void setSparte(final int x) {
         this.sparte.setInhalt(x);
     }
-    
+
     /**
      * @return die Sparte als int
      */
@@ -119,7 +119,7 @@ public class Datensatz extends Satz {
     public String getVuNummer() {
         return this.vuNummer.getInhalt();
     }
-    
+
     /**
      * @since 0.3
      * @param nr die Versicherungsschein-Nummer
@@ -127,7 +127,7 @@ public class Datensatz extends Satz {
     public void setVersicherungsscheinNummer(final String nr) {
         this.versicherungsscheinNr.setInhalt(nr);
     }
-    
+
     /**
      * @since 0.3
      * @return die Versicherungsschein-Nummer
@@ -135,17 +135,17 @@ public class Datensatz extends Satz {
     public String getVersicherungsscheinNummer() {
         return this.versicherungsscheinNr.getInhalt();
     }
-    
+
     /**
      * Hiermit kann die Folgenummer gesetzt werden.
-     * 
+     *
      * @since 0.3
      * @param nr man sollte hier bei 1 anfangen mit zaehlen
      */
     public void setFolgenummer(final int nr) {
         this.folgeNr.setInhalt(nr);
     }
-    
+
     /**
      * @since 0.3
      * @return die Folgenummer
@@ -157,7 +157,7 @@ public class Datensatz extends Satz {
     /**
      * Liest 14 Bytes, um die Satzart zu bestimmen und stellt die Bytes
      * anschliessend wieder zurueck in den Reader.
-     * 
+     *
      * @param reader
      *            muss mind. einen Pushback-Puffer von 14 Zeichen bereitstellen
      * @return Satzart

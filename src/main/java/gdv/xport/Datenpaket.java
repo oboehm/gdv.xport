@@ -50,17 +50,17 @@ public final class Datenpaket {
     /**
      * Wenn man den Default-Konstruktor verwendet, sollte man vorher die
      * VU-Nummer konfiguriert haben.
-     * 
+     *
      * @see Config#getVUNummer()
      */
     public Datenpaket() {
         this(Config.getVUNummer().getInhalt());
     }
-    
+
     /**
      * Falls die VU-Nummer noch nicht konfiguriert ist, kann man zu diesem
      * Konstruktor greifen.
-     * 
+     *
      * @since 0.3
      * @param vuNummer die Nummer des Versicherungsunternehmens (VU)
      */
@@ -72,7 +72,7 @@ public final class Datenpaket {
         this.setAbsender(vuNummer);
         log.debug(this + " created.");
     }
-    
+
     /**
      * Um die VU-Nummer setzen zu koennen.
      * @param vuNummer VU-Nummer (max. 5-stellig)
@@ -83,7 +83,7 @@ public final class Datenpaket {
             datensatz.setVuNummer(vuNummer);
         }
     }
-    
+
     /**
      * Dazu verwenden wir den Vorsatz, um die VU-Nummer zu bestimmen.
      * @since 0.3
@@ -92,7 +92,7 @@ public final class Datenpaket {
     public String getVuNummer() {
         return this.vorsatz.getVuNummer();
     }
-    
+
     /**
      * @return the datensaetze
      */
@@ -141,10 +141,10 @@ public final class Datenpaket {
             writer.close();
         }
     }
-    
+
     /**
      * Falls wir einen Stream haben, koennen wir diese Methode benutzen.
-     * 
+     *
      * @since 0.3
      * @param ostream z.B. System.out
      * @throws IOException falls was schiefgelaufen ist
@@ -169,7 +169,7 @@ public final class Datenpaket {
         nachsatz.export(writer);
         log.info(datensaetze.size() + " Datensaetze exported.");
     }
-    
+
     /**
      * @since 0.3
      * @param url z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
@@ -180,7 +180,7 @@ public final class Datenpaket {
         String content = urlReader.read();
         importFrom(content);
     }
-    
+
     /**
      * @since 0.3
      * @param content Inhalt der eingelesen wird
@@ -210,7 +210,7 @@ public final class Datenpaket {
     /**
      * Der hier verwendete PushbackReader wird benoetigt, damit die gelesene
      * Satzart und Sparte wieder zurueckgesetllt werden kann.
-     * 
+     *
      * @param reader PushbackReader mit einem Puffer von mind. 14 Zeichen
      * @throws IOException falls was schiefgelaufen ist
      */
@@ -341,7 +341,7 @@ public final class Datenpaket {
     /**
      * Aus Performance-Gruenden wird nicht auf die validate-Methode
      * zurueckgegriffen (die dauert zu lang).
-     * 
+     *
      * @return true/false
      */
     public boolean isValid() {
@@ -369,7 +369,7 @@ public final class Datenpaket {
         }
         return true;
     }
-    
+
     /**
      * Validiert die einzelnen Saetze (inkl. Vorsatz und Nachsatz).
      *
@@ -398,7 +398,7 @@ public final class Datenpaket {
         }
         return violations;
     }
-    
+
     /**
      * Fuer eine Versicherungsscheinnummer muss die Folgenummer immer mit 1
      * anfangen. Taucht dieser Versicherungsscheinnummer fuer den gleichen Satz

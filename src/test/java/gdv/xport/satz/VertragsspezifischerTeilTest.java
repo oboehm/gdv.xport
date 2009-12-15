@@ -37,9 +37,9 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
     private static final Log log = LogFactory.getLog(VertragsspezifischerTeilTest.class);
 
     /**
-     * Damit die Assert's der Satzlaenge stimmen, muessen wir das 
+     * Damit die Assert's der Satzlaenge stimmen, muessen wir das
      * End-of-Datensatz abschalten.
-     * 
+     *
      * @since 0.3
      */
     @BeforeClass
@@ -58,7 +58,7 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
         assertEquals(70, vertragsteil.getSparte());
         checkExport(vertragsteil, 11, 13, "070", 256);
     }
-    
+
     /**
      * Dieser Test dient nur zum Ueberpruefen, ob die Folgenummer auch
      * tatsaechlich gesetzt ist.

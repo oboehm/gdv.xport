@@ -28,19 +28,19 @@ import org.apache.commons.logging.*;
 /**
  * Da mit den Hausmitteln des JDKs das Lesen einer URL nicht immer so einfach
  * ist, stuetzt sich diese Klasse dazu auf Apaches HTTP-Client ab.
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.3 (21.11.2009)
  */
 public class URLReader {
-    
+
     private static final Log log = LogFactory.getLog(URLReader.class);
     private final URL url;
-    
+
     public URLReader(URL url) {
         this.url = url;
     }
-    
+
     public String read() throws IOException {
         try {
             HttpClient httpClient = new HttpClient();
@@ -55,7 +55,7 @@ public class URLReader {
             return read(connection);
         }
     }
-    
+
     private static String read(URLConnection connection) throws IOException {
         connection.connect();
         InputStream istream = connection.getInputStream();
@@ -71,7 +71,7 @@ public class URLReader {
         return sbuf.toString().trim();
         } finally {
             in.close();
-            istream.close();            
+            istream.close();
         }
     }
 

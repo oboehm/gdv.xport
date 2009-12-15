@@ -31,7 +31,7 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * The Class Feld.
- * 
+ *
  * @author oliver
  * @since 04.10.2009
  */
@@ -51,7 +51,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name the name
      * @param s the s
      * @param alignment the alignment
@@ -62,7 +62,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name the name
      * @param start the start
      * @param s the s
@@ -77,7 +77,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name the name
      * @param length the length
      * @param start the start
@@ -92,7 +92,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name the name
      * @param length the length
      * @param start the start
@@ -106,7 +106,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name the name
      * @param length the length
      * @param start the start
@@ -120,7 +120,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name the name
      * @param start the start
      * @param c the c
@@ -131,7 +131,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param start the start
      * @param s the s
      * @param alignment the alignment
@@ -145,7 +145,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param length the length
      * @param alignment the alignment
      */
@@ -155,7 +155,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param length the length
      * @param start the start
      * @param alignment the alignment
@@ -181,7 +181,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the bezeichnung.
-     * 
+     *
      * @return the bezeichnung
      */
     public String getBezeichnung() {
@@ -190,7 +190,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Sets the inhalt.
-     * 
+     *
      * @param s the new inhalt
      */
     public void setInhalt(String s) {
@@ -213,7 +213,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Sets the inhalt.
-     * 
+     *
      * @param c the new inhalt
      */
     public void setInhalt(char c) {
@@ -223,7 +223,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Sets the inhalt.
-     * 
+     *
      * @param c zu setzendes Zeichen
      * @param i index, beginnend bei 0
      */
@@ -233,7 +233,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the inhalt.
-     * 
+     *
      * @return the inhalt
      */
     public String getInhalt() {
@@ -252,7 +252,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the anzahl bytes.
-     * 
+     *
      * @return the anzahl bytes
      */
     public int getAnzahlBytes() {
@@ -261,7 +261,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the byte adresse.
-     * 
+     *
      * @return Byte-Adresse, beginnend bei 1
      */
     public int getByteAdresse() {
@@ -270,7 +270,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the end adresse.
-     * 
+     *
      * @return absolute End-Adresse
      */
     public int getEndAdresse() {
@@ -279,9 +279,9 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Overlaps with.
-     * 
+     *
      * @param other das andere Feld
-     * 
+     *
      * @return true, falls sich die Felder ueberlappen
      */
     public boolean overlapsWith(Feld other) {
@@ -296,9 +296,9 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Write.
-     * 
+     *
      * @param writer the writer
-     * 
+     *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void write(Writer writer) throws IOException {
@@ -307,7 +307,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Checks if is empty.
-     * 
+     *
      * @return true, if is empty
      */
     public boolean isEmpty() {
@@ -321,9 +321,9 @@ public class Feld implements Comparable<Feld> {
      * Auf Performance-Gruenden wurde diese Methode stuetzt sich diese
      * Methode nicht auf validate(), sondern implementiert die entsprechenden
      * Abfragen selbst.
-     * 
+     *
      * @return false, falls Verletzung erkannt wird
-     * 
+     *
      * @since 0.1.0
      */
     public boolean isValid() {
@@ -342,7 +342,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Checks if is invalid.
-     * 
+     *
      * @return true, if is invalid
      */
     public boolean isInvalid() {
@@ -351,7 +351,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Validate.
-     * 
+     *
      * @return the list< constraint violation>
      */
     public List<ConstraintViolation> validate() {
@@ -391,9 +391,9 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Equals.
-     * 
+     *
      * @param other the other
-     * 
+     *
      * @return true, if successful
      */
     public boolean equals(Feld other) {
@@ -413,9 +413,9 @@ public class Feld implements Comparable<Feld> {
     /**
      * Es gilt fuer Feld a und b: a < b, wenn die Start-Adresse von a
      * vor b liegt.
-     * 
+     *
      * @param other das andere Feld
-     * 
+     *
      * @return 0 wenn beide Felder die gleiche Startadresse haben
      */
     public int compareTo(Feld other) {

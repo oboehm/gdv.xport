@@ -78,7 +78,7 @@ public class XmlFormatterTest extends AbstractTest {
 
     /**
      * Tested den Export eines Datenpakets als XML.
-     * 
+     *
      * @throws XMLStreamException falls was schiefgelaufen ist
      * @throws SAXException falls was schiefgelaufen ist
      * @throws IOException falls was schiefgelaufen ist

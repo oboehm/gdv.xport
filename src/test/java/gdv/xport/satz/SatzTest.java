@@ -44,16 +44,16 @@ public class SatzTest {
     private Satz satz = new Datensatz(123);
 
     /**
-     * Damit die Assert's der Satzlaenge stimmen, muessen wir das 
+     * Damit die Assert's der Satzlaenge stimmen, muessen wir das
      * End-of-Datensatz abschalten.
-     * 
+     *
      * @since 0.3
      */
     @BeforeClass
     public static void setUpBeforeClass() {
         Config.setEOD("");
     }
-    
+
     @Test
     public void testSatz() {
         Satz satz100 = new Datensatz(100, 1);

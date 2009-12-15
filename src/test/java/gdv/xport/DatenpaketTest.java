@@ -44,11 +44,11 @@ public final class DatenpaketTest {
     private static final Log log = LogFactory.getLog(Datenpaket.class);
     /** fuer jeden Test gibt es ein frisches Datenpaket */
     private Datenpaket datenpaket = new Datenpaket();
-    
+
     /**
-     * Damit die Assert's der Satzlaenge stimmen, muessen wir das 
+     * Damit die Assert's der Satzlaenge stimmen, muessen wir das
      * End-of-Datensatz abschalten.
-     * 
+     *
      * @since 0.3
      */
     @BeforeClass
@@ -143,18 +143,18 @@ public final class DatenpaketTest {
             istream.close();
         }
     }
-    
+
     @Test
     public void testImportFromURL() throws IOException {
         URL url = this.getClass().getResource("/musterdatei_041222.txt");
         datenpaket.importFrom(url);
         assertTrue(datenpaket.isValid());
     }
-    
+
     /**
      * Der Test wurde wieder deaktiviert, da dazu eine Online-Verbindung noetig
      * ist (die nicht immer vorausgesetzt werden kann)
-     * 
+     *
      * @since 0.3
      * @throws IOException falls man z.B. offline ist
      */
@@ -165,7 +165,7 @@ public final class DatenpaketTest {
         datenpaket.importFrom(url);
         assertTrue(datenpaket.isValid());
     }
-    
+
     /**
      * Wenn keine VU-Nummer gesetzt wurde, sollte es mind. ein Validierungs-
      * Fehler geben.
@@ -180,7 +180,7 @@ public final class DatenpaketTest {
      * Da die Validierung ziemlich lange dauert, wurde sie einfach durch
      * eine isValid()-Afrage ersetzt. Falls man die Validierung doch noch
      * will, setzt man einfach den Log-Level auf TRACE.
-     * 
+     *
      * @param defect das defekte Datenpaket
      */
     private void checkViolations(final Datenpaket defect) {
@@ -193,12 +193,12 @@ public final class DatenpaketTest {
         }
         assertFalse("at least 1 violation is expected", defect.isValid());
     }
-    
+
     /**
      * Fuer eine Versicherungsscheinnummer muss die Folgenummer immer mit 1
      * anfangen. Taucht dieser Versicherungsscheinnummer fuer den gleichen Satz
      * ein zweites Mal auf, muss die Folgenummer entsprechend erhoeht werden.
-     * 
+     *
      * @since 0.3
      */
     @Test
@@ -209,13 +209,13 @@ public final class DatenpaketTest {
         defect.add(createDatensatzWithFolgenummer(2));
         checkViolations(defect);
     }
-    
+
     private static Datensatz createDatensatzWithFolgenummer(final int nr) {
         Datensatz datensatz = new Adressteil();
         datensatz.setVersicherungsscheinNummer("4711");
         datensatz.setFolgenummer(nr);
         return datensatz;
     }
-    
+
 
 }
