@@ -178,7 +178,7 @@ public class XmlFormatter {
         xmlStreamWriter.writeDefaultNamespace("http://labs.agentes.de");
         xmlStreamWriter.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
         xmlStreamWriter.writeNamespace("schemaLocation",
-                "http://labs.agentes.de /repository/gdv/datenpaket.xsd");
+                "http://labs.agentes.de /xsd/datenpaket.xsd");
         xmlStreamWriter.writeCharacters("\n");
         write(datenpaket.getVorsatz(), 1);
         xmlStreamWriter.writeCharacters("\n");
