@@ -89,7 +89,7 @@ public class XmlFormatterTest extends AbstractTest {
         String xmlString = XmlFormatter.toString(datenpaket);
         log.info(datenpaket + " as XML:\n" + xmlString);
         checkXML(xmlString);
-        XmlHelper.validate(xmlString, "/gdv/datenpaket.xsd");
+        XmlHelper.validate(xmlString, "/xsd/datenpaket.xsd");
     }
 
     /**
