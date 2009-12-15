@@ -31,7 +31,7 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * The Class Feld.
- *
+ * 
  * @author oliver
  * @since 04.10.2009
  */
@@ -51,24 +51,31 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     *
-     * @param name the name
-     * @param s the s
-     * @param alignment the alignment
+     * 
+     * @param name
+     *            the name
+     * @param s
+     *            the s
+     * @param alignment
+     *            the alignment
      */
-    public Feld(String name, String s, Align alignment) {
+    public Feld(final String name, final String s, final Align alignment) {
         this(name, 1, s, alignment);
     }
 
     /**
      * Instantiates a new feld.
-     *
-     * @param name the name
-     * @param start the start
-     * @param s the s
-     * @param alignment the alignment
+     * 
+     * @param name
+     *            the name
+     * @param start
+     *            the start
+     * @param s
+     *            the s
+     * @param alignment
+     *            the alignment
      */
-    public Feld(String name, int start, String s, Align alignment) {
+    public Feld(final String name, final int start, final String s, final Align alignment) {
         this.bezeichnung = name;
         this.inhalt = new StringBuffer(s);
         this.byteAdresse = start;
@@ -77,13 +84,17 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     *
-     * @param name the name
-     * @param length the length
-     * @param start the start
-     * @param alignment the alignment
+     * 
+     * @param name
+     *            the name
+     * @param length
+     *            the length
+     * @param start
+     *            the start
+     * @param alignment
+     *            the alignment
      */
-    public Feld(String name, int length, int start, Align alignment) {
+    public Feld(final String name, final int length, final int start, final Align alignment) {
         this.bezeichnung = name;
         this.inhalt = getEmptyStringBuffer(length);
         this.byteAdresse = start;
@@ -92,51 +103,69 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     *
-     * @param name the name
-     * @param length the length
-     * @param start the start
-     * @param c the c
-     * @param alignment the alignment
+     * 
+     * @param name
+     *            the name
+     * @param length
+     *            the length
+     * @param start
+     *            the start
+     * @param c
+     *            the c
+     * @param alignment
+     *            the alignment
      */
-    public Feld(String name, int length, int start, char c, Align alignment) {
+    public Feld(final String name, final int length, final int start, final char c,
+            final Align alignment) {
         this(name, length, start, alignment);
         this.setInhalt(c);
     }
 
     /**
      * Instantiates a new feld.
-     *
-     * @param name the name
-     * @param length the length
-     * @param start the start
-     * @param s the s
-     * @param alignment the alignment
+     * 
+     * @param name
+     *            the name
+     * @param length
+     *            the length
+     * @param start
+     *            the start
+     * @param s
+     *            the s
+     * @param alignment
+     *            the alignment
      */
-    public Feld(String name, int length, int start, String s, Align alignment) {
+    public Feld(final String name, final int length, final int start, final String s,
+            final Align alignment) {
         this(name, length, start, alignment);
         this.setInhalt(s);
     }
 
     /**
      * Instantiates a new feld.
-     *
-     * @param name the name
-     * @param start the start
-     * @param c the c
+     * 
+     * @param name
+     *            the name
+     * @param start
+     *            the start
+     * @param c
+     *            the c
      */
-    public Feld(String name, int start, char c) {
+    public Feld(final String name, final int start, final char c) {
         this(name, 1, start, c, Align.LEFT);
     }
 
     /**
      * Instantiates a new feld.
-     *
-     * @param start the start
-     * @param s the s
-     * @param alignment the alignment
+     * 
+     * @param start
+     *            the start
+     * @param s
+     *            the s
+     * @param alignment
+     *            the alignment
      */
-    public Feld(int start, String s, Align alignment) {
+    public Feld(final int start, final String s, final Align alignment) {
         this.inhalt = new StringBuffer(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
@@ -145,29 +174,34 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     *
-     * @param length the length
-     * @param alignment the alignment
+     * 
+     * @param length
+     *            the length
+     * @param alignment
+     *            the alignment
      */
-    public Feld(int length, Align alignment) {
+    public Feld(final int length, final Align alignment) {
         this(length, 1, alignment);
     }
 
     /**
      * Instantiates a new feld.
-     *
-     * @param length the length
-     * @param start the start
-     * @param alignment the alignment
+     * 
+     * @param length
+     *            the length
+     * @param start
+     *            the start
+     * @param alignment
+     *            the alignment
      */
-    public Feld(int length, int start, Align alignment) {
+    public Feld(final int length, final int start, final Align alignment) {
         this.inhalt = getEmptyStringBuffer(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichnung = createBezeichnung();
     }
 
-    private static StringBuffer getEmptyStringBuffer(int length) {
+    private static StringBuffer getEmptyStringBuffer(final int length) {
         StringBuffer sbuf = new StringBuffer(length);
         for (int i = 0; i < length; i++) {
             sbuf.append(' ');
@@ -181,7 +215,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the bezeichnung.
-     *
+     * 
      * @return the bezeichnung
      */
     public String getBezeichnung() {
@@ -190,50 +224,57 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Sets the inhalt.
-     *
-     * @param s the new inhalt
+     * 
+     * @param s
+     *            the new inhalt
      */
-    public void setInhalt(String s) {
+    public void setInhalt(final String s) {
         int anzahlBytes = this.getAnzahlBytes();
         if (s.length() > anzahlBytes) {
-            throw new IllegalArgumentException("Parameter (\"" + s
-                    + "\" ist laenger als " + anzahlBytes + " Zeichen!");
+            throw new IllegalArgumentException("Parameter (\"" + s + "\" ist laenger als "
+                    + anzahlBytes + " Zeichen!");
         }
         this.resetInhalt();
         switch (this.ausrichtung) {
-        case LEFT:    this.inhalt.replace(0, s.length(), s);
-                    break;
-        case RIGHT: int l = s.length();
-                    int start = anzahlBytes - l;
-                    this.inhalt.replace(start, start + l, s);
-                    break;
-        default:    throw new IllegalStateException("object was not properly initialized");
+            case LEFT:
+                this.inhalt.replace(0, s.length(), s);
+                break;
+            case RIGHT:
+                int l = s.length();
+                int start = anzahlBytes - l;
+                this.inhalt.replace(start, start + l, s);
+                break;
+            default:
+                throw new IllegalStateException("object was not properly initialized");
         }
     }
 
     /**
      * Sets the inhalt.
-     *
-     * @param c the new inhalt
+     * 
+     * @param c
+     *            the new inhalt
      */
-    public void setInhalt(char c) {
+    public void setInhalt(final char c) {
         this.resetInhalt();
         this.setInhalt(c, 0);
     }
 
     /**
      * Sets the inhalt.
-     *
-     * @param c zu setzendes Zeichen
-     * @param i index, beginnend bei 0
+     * 
+     * @param c
+     *            zu setzendes Zeichen
+     * @param i
+     *            index, beginnend bei 0
      */
-    public void setInhalt(char c, int i) {
+    public void setInhalt(final char c, final int i) {
         this.inhalt.setCharAt(i, c);
     }
 
     /**
      * Gets the inhalt.
-     *
+     * 
      * @return the inhalt
      */
     public String getInhalt() {
@@ -252,7 +293,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the anzahl bytes.
-     *
+     * 
      * @return the anzahl bytes
      */
     public int getAnzahlBytes() {
@@ -261,7 +302,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the byte adresse.
-     *
+     * 
      * @return Byte-Adresse, beginnend bei 1
      */
     public int getByteAdresse() {
@@ -270,7 +311,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the end adresse.
-     *
+     * 
      * @return absolute End-Adresse
      */
     public int getEndAdresse() {
@@ -279,12 +320,13 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Overlaps with.
-     *
-     * @param other das andere Feld
-     *
+     * 
+     * @param other
+     *            das andere Feld
+     * 
      * @return true, falls sich die Felder ueberlappen
      */
-    public boolean overlapsWith(Feld other) {
+    public boolean overlapsWith(final Feld other) {
         if (this.byteAdresse == other.byteAdresse) {
             return false;
         }
@@ -296,10 +338,12 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Write.
-     *
-     * @param writer the writer
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
+     * 
+     * @param writer
+     *            the writer
+     * 
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     public void write(Writer writer) throws IOException {
         writer.write(this.inhalt.toString());
@@ -307,7 +351,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Checks if is empty.
-     *
+     * 
      * @return true, if is empty
      */
     public boolean isEmpty() {
@@ -316,18 +360,17 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Valid bedeutet: Byte-Adresse >= 1, Feld geht nicht ueber
-     * (Teil-)Datensatz-Grenze hinaus, Ausrichtung ist bekannt.
-     * <br/>
-     * Auf Performance-Gruenden wurde diese Methode stuetzt sich diese
-     * Methode nicht auf validate(), sondern implementiert die entsprechenden
-     * Abfragen selbst.
-     *
+     * (Teil-)Datensatz-Grenze hinaus, Ausrichtung ist bekannt. <br/>
+     * Auf Performance-Gruenden wurde diese Methode stuetzt sich diese Methode
+     * nicht auf validate(), sondern implementiert die entsprechenden Abfragen
+     * selbst.
+     * 
      * @return false, falls Verletzung erkannt wird
-     *
+     * 
      * @since 0.1.0
      */
     public boolean isValid() {
-        //return this.validate().isEmpty();
+        // return this.validate().isEmpty();
         if (this.getByteAdresse() < 1) {
             return false;
         }
@@ -342,7 +385,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Checks if is invalid.
-     *
+     * 
      * @return true, if is invalid
      */
     public boolean isInvalid() {
@@ -351,37 +394,39 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Validate.
-     *
+     * 
      * @return the list< constraint violation>
      */
     public List<ConstraintViolation> validate() {
         Validator validator = new Validator();
         List<ConstraintViolation> violations = validator.validate(this);
         if (this.getEndAdresse() > 256) {
-            ConstraintViolation cv = new ConstraintViolation(new SizeCheck(),
-                    this + ": boundary exceeded", this, this.getEndAdresse(),
-                    new ClassContext(this.getClass()));
+            ConstraintViolation cv = new ConstraintViolation(new SizeCheck(), this
+                    + ": boundary exceeded", this, this.getEndAdresse(), new ClassContext(this
+                    .getClass()));
             violations.add(cv);
         }
         return violations;
     }
 
-
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " " + this.bezeichnung
-                + "(" + this.byteAdresse + "-" + this.getEndAdresse()
-                + "): \"" + this.getInhalt().trim() + "\"";
+        return this.getClass().getSimpleName() + " " + this.bezeichnung + "(" + this.byteAdresse
+                + "-" + this.getEndAdresse() + "): \"" + this.getInhalt().trim() + "\"";
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object other) {
+    public boolean equals(final Object other) {
         try {
             return this.equals((Feld) other);
         } catch (ClassCastException cce) {
@@ -391,18 +436,21 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Equals.
-     *
-     * @param other the other
-     *
+     * 
+     * @param other
+     *            the other
+     * 
      * @return true, if successful
      */
-    public boolean equals(Feld other) {
+    public boolean equals(final Feld other) {
         return this.bezeichnung.equals(other.bezeichnung)
                 && this.getInhalt().equals(other.getInhalt())
                 && (this.byteAdresse == other.byteAdresse) && this.ausrichtung == other.ausrichtung;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -411,21 +459,16 @@ public class Feld implements Comparable<Feld> {
     }
 
     /**
-     * Es gilt fuer Feld a und b: a < b, wenn die Start-Adresse von a
-     * vor b liegt.
-     *
-     * @param other das andere Feld
-     *
+     * Es gilt fuer Feld a und b: a < b, wenn die Start-Adresse von a vor b
+     * liegt.
+     * 
+     * @param other
+     *            das andere Feld
+     * 
      * @return 0 wenn beide Felder die gleiche Startadresse haben
      */
-    public int compareTo(Feld other) {
+    public int compareTo(final Feld other) {
         return this.byteAdresse - other.byteAdresse;
     }
 
 }
-
-
-/*
- * $Log$
- * $Source$
- */

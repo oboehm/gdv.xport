@@ -17,11 +17,11 @@
 
   <body>
 
-    <release version="0.3.0" date="Nov-2009"
+    <release version="0.3.0" date="15-Dez-2009"
              description="XML-Support">
       <action dev="oboehm" type="fix">
-        Vereinfachte und verbesserte XML-Generierung
-        (u.a. mit XML-Header und Encoding)
+        Vereinfachte und verbesserte XML-Generierung,
+        XSD unter http://labs.agentes.de/xsd/
       </action>
       <action dev="oboehm" type="update">
         Datenpakete koennen jetzt auch ueber HTTP importiert werden
