@@ -37,7 +37,7 @@ public final class HelloWorld {
      *
      * @since 0.3
      * @param args wird nicht ausgewertet.
-     * @throws IOException
+     * @throws IOException falls auf System.out nicht geschrieben werden kann
      */
     public static void main(String[] args) throws IOException {
         // wir erzeugen ein Datenpaket mit "Hello" als VU-Nummer
