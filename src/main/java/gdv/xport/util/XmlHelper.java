@@ -23,30 +23,30 @@ import org.xml.sax.SAXException;
 
 /**
  * Kleine Helper-Klasse fuer den Umgang mit XML.
- * 
+ *
  * @author oliver.boehm@agentes.de
  * @since 0.3
  */
 public final class XmlHelper {
-	
-	private static final Log log = LogFactory.getLog(XmlHelper.class);
-	
-	/**
-	 * Privater Konstruktor, damit diese Klasse nicht instantiiert werden kann
-	 * (sie hat nur statische Methoden).
-	 */
-	private XmlHelper() {}
 
-	/**
-	 * Wird hauptsaechlich zum Testen verwendet, um einen bestehenden
-	 * XML-String gegen eine XSD validieren zu koennen.
-	 * 
-	 * @since 0.3
-	 * @param xmlString der XML-String
-	 * @param xsdResource z.B. "/gdv/datenpaket.xsd"
-	 * @throws SAXException bei einem XML-Fehler
-	 * @throws IOException bei einem Lese-Fehler
-	 */
+    private static final Log log = LogFactory.getLog(XmlHelper.class);
+
+    /**
+     * Privater Konstruktor, damit diese Klasse nicht instantiiert werden kann
+     * (sie hat nur statische Methoden).
+     */
+    private XmlHelper() {}
+
+    /**
+     * Wird hauptsaechlich zum Testen verwendet, um einen bestehenden
+     * XML-String gegen eine XSD validieren zu koennen.
+     *
+     * @since 0.3
+     * @param xmlString der XML-String
+     * @param xsdResource z.B. "/gdv/datenpaket.xsd"
+     * @throws SAXException bei einem XML-Fehler
+     * @throws IOException bei einem Lese-Fehler
+     */
     public static void validate(final String xmlString, final String xsdResource)
             throws SAXException, IOException {
         Reader reader = new StringReader(xmlString);
@@ -58,7 +58,7 @@ public final class XmlHelper {
     /**
      * Wird hauptsaechlich zum Testen verwendet, um einen bestehende Source
      * gegen eine XSD validieren zu koennen.
-     * 
+     *
      * @since 0.3
      * @param source die Source mit dem XML-String
      * @param xsdResource z.B. "/gdv/datenpaket.xsd"
@@ -74,7 +74,7 @@ public final class XmlHelper {
 
     /**
      * Um das Schema zur uebergebenen Resource zu bekommen.
-     * 
+     *
      * @since 0.3
      * @param resource z.B. "/gdv/datenpaket.xsd"
      * @return das entsprechende Schema
