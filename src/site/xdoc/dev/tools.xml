@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Entwickler-Tools</title>
+    <author email="oliver.boehm@agentes.de">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Tools">
+    
+      <subsection name="IDE">
+        <p>
+          Als Java-IDE wird Eclipse 3.5 mit folgenden Plugins verwendet:
+        </p>
+        <ul>
+          <li>AJDT (sonst lassen sich die JUnit-Tests nicht ausfuehren)</li>
+          <li>EGit (http://www.jgit.org/updates)</li>
+        </ul>
+      </subsection>
+      
+      <subsection name="Maven">
+        <p>
+          Maven wird zum Bauen und zum Aufloesen der Abhaengigkeiten verwendet.
+          Um die abhaengigen Bibliotheken herunterzuladen, starten Sie am besten
+          <tt>mvn test</tt>. Damit werden Bibliotheken, die noch sich noch nicht
+          auf Ihrem Rechner befinden, heruntergeladen.
+        </p>
+        <p>
+          In Eclipse muessen Sie noch die Classpath-Variable M2_REPO definieren,
+          damit Eclipse die abhaengigen Bibliotheken findet. Das Maven-Repository
+          befindet sich ueblicherweise unter
+          <tt>.m2/repository</tt> im Heimatverzeichnis.
+        </p>
+      </subsection>
+    </section>
+
+  </body>
+
+</document>
