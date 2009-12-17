@@ -41,13 +41,13 @@ public class Feld implements Comparable<Feld> {
     public static final Feld NULL_FELD = new Feld("null", 0, 0, Align.UNKNOWN);
     /** optional: Name des Felds. */
     private final String bezeichnung;
-    protected final StringBuffer inhalt;
+    private final StringBuffer inhalt;
     /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256. */
     @Min(1)
-    protected final int byteAdresse;
+    private final int byteAdresse;
     /** Ausrichtung: rechts- oder linksbuendig. */
     @NotEqual("UNKNOWN")
-    protected final Align ausrichtung;
+    private final Align ausrichtung;
 
     /**
      * Instantiates a new feld.
@@ -288,6 +288,19 @@ public class Feld implements Comparable<Feld> {
         int anzahlBytes = this.getAnzahlBytes();
         for (int i = 0; i < anzahlBytes; i++) {
             this.inhalt.setCharAt(i, ' ');
+        }
+    }
+
+    /**
+     * Wenn sich das Feld vergroessert, werden rechts Leerzeichen aufgefuellt
+     * (alphanumerische Zeichen sind standardmaessig linksbuendig).
+     *
+     * @param n neue Groesse
+     */
+    public void setAnzahlBytes(int n) {
+        assert this.inhalt.length() <= n : "drohender Datenverlust";
+        for (int i = this.inhalt.length(); i < n; i++) {
+            this.inhalt.append(' ');
         }
     }
 

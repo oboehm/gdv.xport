@@ -86,7 +86,7 @@ public class BetragMitVorzeichen extends Betrag {
      */
     @Override
     public double toDouble() {
-        String s = this.inhalt.toString();
+        String s = this.getInhalt().toString();
         double x = Integer.parseInt(s.substring(0, s.length() - 1)) / 100.0;
         return (this.getVorzeichen() == '-') ? -x : x;
     }
@@ -96,7 +96,7 @@ public class BetragMitVorzeichen extends Betrag {
      */
     @Override
     public int toInt() {
-        String s = this.inhalt.toString();
+        String s = this.getInhalt().toString();
         int x = Integer.parseInt(s.substring(0, s.length() - 1)) / 100;
         return (this.getVorzeichen() == '-') ? -x : x;
     }

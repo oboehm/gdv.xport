@@ -63,12 +63,12 @@ public class NumFeld extends Feld {
     public void resetInhalt() {
         int anzahlBytes = this.getAnzahlBytes();
         for (int i = 0; i < anzahlBytes; i++) {
-            this.inhalt.setCharAt(i, '0');
+            this.setInhalt('0', i);
         }
     }
 
     public int toInt() {
-        return Integer.parseInt(this.inhalt.toString());
+        return Integer.parseInt(this.getInhalt().toString());
     }
 
     public boolean isValid() {

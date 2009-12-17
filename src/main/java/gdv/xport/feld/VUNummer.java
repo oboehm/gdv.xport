@@ -48,8 +48,8 @@ public class VUNummer extends AlphaNumFeld {
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " " + this.inhalt + " ("
-                + this.byteAdresse + "-" + this.getEndAdresse() + ")";
+        return this.getClass().getSimpleName() + " " + this.getInhalt() + " ("
+                + this.getByteAdresse() + "-" + this.getEndAdresse() + ")";
     }
 
 }
