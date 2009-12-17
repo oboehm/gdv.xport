@@ -41,7 +41,7 @@ public final class HelloWorld {
      * @param args wird nicht ausgewertet.
      * @throws IOException falls auf System.out nicht geschrieben werden kann
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
         // wir erzeugen ein Datenpaket mit "Hello" als VU-Nummer
         Datenpaket datenpaket = new Datenpaket("Hello");
         // jetzt wollen wir den Adressat (der im Vorsatz steht) auf "World" setzen
