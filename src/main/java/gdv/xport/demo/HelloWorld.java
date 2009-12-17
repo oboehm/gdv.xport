@@ -24,6 +24,8 @@ import gdv.xport.Datenpaket;
 import gdv.xport.satz.Vorsatz;
 
 /**
+ * Ein einfaches Hello-World-Projekt fuer gdv.xport.
+ * 
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.3 (19.11.2009)
  */
