@@ -73,6 +73,9 @@ public class VertragsspezifischerTeil extends Datensatz {
 
     private void setUpDatenfelder(int sparte) {
         switch (sparte) {
+            case 30:
+                this.setUpDatenfelder30();
+                break;
             case 70:
                 this.setUpDatenfelder70();
                 break;
@@ -81,6 +84,40 @@ public class VertragsspezifischerTeil extends Datensatz {
                 this.addFiller();
                 break;
         }
+    }
+    
+    private void setUpDatenfelder30() {
+        // Teildatensatz 1
+        add(new Zeichen(VERTRAGSSATUS, 43));
+        add(new Datum(BEGINN, 44));
+        add(new NumFeld(AUSSCHLUSS, 8, 52));
+        add(new Datum(AENDERUNGSDATUM, 60));
+        add(new Datum(ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN, 4, 68));
+        add(new Zeichen(SONDERBEDINGUNGEN, 72));
+        add(new Zeichen(BEITRAGSRUECKGEWAEHR, 73));
+        add(new Zeichen(DYNAMIK, 74));
+        add(new NumFeld(DYNAMIK_IN_PROZENT, 5, 75).mitNachkommastellen(3));
+        add(new Datum(LETZTE_ERHOEHUNG, 6, 80));
+        add(new Datum(NAECHSTE_ERHOEHUNG, 6, 86));
+        add(new Zeichen(BEITRAGSREGULIERUNG, 92));
+        add(new AlphaNumFeld(WAEHRUNGSSCHLUESSEL, 3, 93));
+        add(new Betrag(ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN, 12, 96));
+        add(new Betrag(ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN, 12, 108));
+        add(new Betrag(GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 120));
+        add(new NumFeld(ABSCHLUSSPROVISION, 5, 132).mitNachkommastellen(2));
+        add(new NumFeld(FOLGEPROVISION, 5, 137).mitNachkommastellen(2));
+        add(new Zeichen(KENNZEICHEN_ABWEICHENDE_ABSCHLUSSPROVISION, 142));
+        add(new Zeichen(KENNZEICHEN_ABWEICHENDE_FOLGEPROVISION, 143));
+        add(new NumFeld(RESTLAUFZEIT_VERTRAG, 2, 144));
+        add(new NumFeld(LAUFZEITRABATT_IN_PROZENT, 4, 146).mitNachkommastellen(2));
+        add(new AlphaNumFeld(TARIFBEZEICHNUNG, 30, 150));
+        add(new Zeichen(ERHOEHUNGSART_DYNAMIK, 180));
+        add(new AlphaNumFeld(REFERENZ_VERSICHERUNGSSCHEINNUMMER, 17, 181));
+        add(new Zeichen(WEITERE_REFERENZNUMMERN, 198));        
+        add(new AlphaNumFeld(PRODUKTFORM, 5, 199));
+        add(new Datum(PRODUKTFORM_GUELTIG_AB, 6, 204));
+        add(new AlphaNumFeld(PRODUKTNAME, 20, 210));
+        add(new AlphaNumFeld(REFERENZNUMMER, 7, 230));
     }
 
     private void setUpDatenfelder70() {

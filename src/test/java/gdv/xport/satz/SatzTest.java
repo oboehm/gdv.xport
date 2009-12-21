@@ -93,10 +93,10 @@ public class SatzTest {
 
     /**
      * Test method for {@link gdv.xport.satz.Satz#getFeld(java.lang.String)}.
-     * Fuer ein Feld, das nicht existiert, wird NULL_FELD als Ergebnis
-     * erwartet.
+     * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als Ergebnis
+     * erwartet sondern eine IllegalArgumentException.
      */
-    @Test
+    @Test(expected=IllegalArgumentException.class)
     public void testGetFeld() {
         Feld f = satz.getFeld("hemmernet");
         assertSame(Feld.NULL_FELD, f);

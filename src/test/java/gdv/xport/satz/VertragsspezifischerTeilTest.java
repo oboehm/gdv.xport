@@ -19,11 +19,12 @@
 package gdv.xport.satz;
 
 import static org.junit.Assert.*;
+import static gdv.xport.feld.Bezeichner.*;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
-import java.io.IOException;
+import java.io.*;
 
 import org.apache.commons.logging.*;
 import org.junit.*;
@@ -71,6 +72,35 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
         Feld feld = teildatensatz.getFeld(Bezeichner.FOLGENUMMER);
         assertNotNull(feld);
         assertEquals("42", feld.getInhalt());
+    }
+
+    /**
+     * Da inzwischen auch Sparte 30 (Unfall) unterstuetzt wird, sollte ein Import
+     * dafuer kein Problem mehr sein.
+     * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
+     * 
+     * @since 0.4
+     * @throws IOException
+     *             sollte eigentlich nicht vorkommen, da wir von einem String
+     *             importieren
+     */
+    @Test
+    public void testSparte30() throws IOException {
+        String input = "02109999  030      599999999980199990099991010520040105200901052"
+                + "0040901 0000000000000000000 EUR000000000000000000000000000000002"
+                + "4290000000000 0001000                                           "
+                + "           000000                                               ";
+        assertEquals(256, input.length());
+        VertragsspezifischerTeil vertragsteil = new VertragsspezifischerTeil(30);
+        vertragsteil.importFrom(input);
+        assertEquals("9999", vertragsteil.getVuNummer().trim());
+        Feld rabatt = vertragsteil.getFeld(LAUFZEITRABATT_IN_PROZENT);
+        assertEquals("1000", rabatt.getInhalt());
+        NumFeld prozent = (NumFeld) rabatt;
+        assertEquals(10.00, prozent.toDouble(), 0.001);
+        StringWriter swriter = new StringWriter(256);
+        vertragsteil.export(swriter);
+        assertEquals(input, swriter.toString());
     }
 
 }

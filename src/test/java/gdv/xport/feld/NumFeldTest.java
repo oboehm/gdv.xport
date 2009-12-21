@@ -70,11 +70,29 @@ public class NumFeldTest {
         }
         assertEquals(1, violations.size());
     }
+    
+    /**
+     * Eine Zahl mit Nachkommastellen sollte auch als Double ausgegeben werden
+     * koennen. Hier probieren wir es noch mit 0 Nachkommastellen.
+     * 
+     * @since 0.4
+     */
+    @Test
+    public void testIntAsDouble() {
+        NumFeld x = new NumFeld("x", "1");
+        assertEquals(1.0, x.toDouble(), 0.01);
+    }
+    
+    /**
+     * Und hier testen wir eine Zahl mit 2 Nachkommastellen, ob sie korrekt
+     * umgewandelt wird.
+     * 
+     * @since 0.4
+     */
+    @Test
+    public void testToDouble() {
+        NumFeld pi = new NumFeld("pi", "314", 2);
+        assertEquals(3.14, pi.toDouble(), 0.001);
+    }
 
 }
-
-
-/*
- * $Log$
- * $Source$
- */

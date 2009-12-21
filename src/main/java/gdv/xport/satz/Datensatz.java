@@ -172,5 +172,13 @@ public class Datensatz extends Satz {
         return Integer.parseInt(new String(cbuf).substring(10, 13));
     }
 
+    /* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#toShortString()
+     */
+    @Override
+    public String toShortString() {
+        return super.toShortString() + "." + this.sparte.getInhalt();
+    }
+
 }
 

@@ -26,7 +26,6 @@ import org.junit.Test;
  * @author oliver
  * @since 11.10.2009
  * @version $Revision$
- *
  */
 public class BetragTest {
 

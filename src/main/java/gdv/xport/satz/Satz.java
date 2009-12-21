@@ -189,16 +189,22 @@ public abstract class Satz {
      * Liefert das gewuenschte Feld.
      *
      * @param name gewuenschter Bezeichner des Feldes
-     * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
+     * @return das gesuchte Feld
+     * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
     public Feld getFeld(final String name) {
         for (int i = 0; i < teildatensatz.length; i++) {
-            Feld x = teildatensatz[i].getFeld(name);
-            if (x != Feld.NULL_FELD) {
-                return x;
+            try {
+                Feld x = teildatensatz[i].getFeld(name);
+                if (x != Feld.NULL_FELD) {
+                    return x;
+                }
+            } catch (IllegalArgumentException e) {
+                continue;
             }
         }
-        return Feld.NULL_FELD;
+        throw new IllegalArgumentException("Feld -\"" + name + "\" nicht in "
+                + this.toShortString() + " vorhanden!");
     }
 
     /**
@@ -437,7 +443,8 @@ public abstract class Satz {
     @Override
     public final String toString() {
         try {
-            return this.toShortString();
+            return "Satzart " + this.satzart.getInhalt() + " ("
+                    + this.toLongString().substring(0, 60) + "...)";
         } catch (RuntimeException shouldNeverHappen) {
             log.error("shit happens in toString()", shouldNeverHappen);
             return super.toString();
@@ -450,8 +457,7 @@ public abstract class Satz {
      * @return the string
      */
     public String toShortString() {
-        return "Satzart " + this.satzart.getInhalt() + " ("
-                + this.toLongString().substring(0, 60) + "...)";
+        return "Satzart " + this.satzart.getInhalt();
     }
 
     /**
