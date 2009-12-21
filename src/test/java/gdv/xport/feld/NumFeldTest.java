@@ -41,7 +41,7 @@ public class NumFeldTest {
 
     @Test
     public void testNumFeld() {
-        NumFeld nummer = new NumFeld(4, 1);
+        NumFeld nummer = new NumFeld("Feld X", 4, 1);
         assertEquals("0000", nummer.getInhalt());
     }
 

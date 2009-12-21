@@ -27,17 +27,32 @@ public class NumFeld extends Feld {
     private static final Log log = LogFactory.getLog(NumFeld.class);
     private final int nachkommastellen;
 
+    /**
+     * @param name Feld-Bezeichner (z.B. "Anzahl Saetze")
+     * @param s z.B. "4"
+     */
     public NumFeld(final String name, final String s) {
         super(name, s, Align.RIGHT);
         this.nachkommastellen = 0;
     }
 
+    /**
+     * @param name Feld-Bezeichner (z.B. "Anzahl Saetze")
+     * @param length Anzahl Bytes
+     * @param start Start-Byte (beginnend bei 1)
+     */
     public NumFeld(final String name, final int length, final int start) {
         super(name, length, start, Align.RIGHT);
         this.nachkommastellen = 0;
         this.setInhalt(0);
     }
 
+    /**
+     * @param name Feld-Bezeichner (z.B. "Anzahl Saetze")
+     * @param length Anzahl Bytes
+     * @param start Start-Byte (beginnend bei 1)
+     * @param value z.B. "01"
+     */
     public NumFeld(final String name, final int length, final int start, final int value) {
         super(name, length, start, Align.RIGHT);
         this.nachkommastellen = 0;
@@ -54,12 +69,6 @@ public class NumFeld extends Feld {
         super(name, start, value, Align.RIGHT);
         this.nachkommastellen = 0;
         this.setInhalt(value);
-    }
-
-    public NumFeld(final int length, final int start) {
-        super(length, start, Align.RIGHT);
-        this.nachkommastellen = 0;
-        this.setInhalt(0);
     }
     
     /**
@@ -88,7 +97,6 @@ public class NumFeld extends Feld {
     }
 
     /**
-     * 
      * @since 0.4
      * @param name Feld-Bezeichner (z.B. "pi")
      * @param length Gesamtlaenge
@@ -116,10 +124,16 @@ public class NumFeld extends Feld {
         
     }
 
+    /**
+     * @param n neuer Inhalt
+     */
     public void setInhalt(final int n) {
         this.setInhalt((long) n);
     }
 
+    /**
+     * @param n neuer Inhalt
+     */
     public void setInhalt(final long n) {
         String pattern = StringUtils.repeat("0", this.getAnzahlBytes());
         NumberFormat format = new DecimalFormat(pattern);
