@@ -43,7 +43,7 @@ public class AllgemeinerVertragsteil extends Datensatz {
         add(new AlphaNumFeld(AENDERUNGSGRUND, 10, 80));
         add(new Datum(AENDERUNGSDATUM, 90));
         add(new Zeichen(AFB, 98));
-        add(new NumFeld(ANTEIL_IN_PROZENT, 5, 99));
+        add(new NumFeld(ANTEIL_IN_PROZENT, 5, 99).mitNachkommastellen(3));
         add(new AlphaNumFeld(AUFTRAGSNR_VERMITTLER, 9, 104));
         add(new AlphaNumFeld(WAEHRUNGSSCHLUESSEL, 3, 113));
         add(new Betrag(GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN, 12, 116));
@@ -54,7 +54,7 @@ public class AllgemeinerVertragsteil extends Datensatz {
         add(new Zeichen(AUFSICHTSFREIER_VERTRAG, 193));
         add(new Zeichen(AUFTEILUNG_VERSICHERUNGSSTEUER, 194));
         add(new NumFeld(RESTLAUFZEIT_VERTRAG, 2, 195));
-        add(new NumFeld(LAUFZEITRABATT_IN_PROZENT, 4, 197));
+        add(new NumFeld(LAUFZEITRABATT_IN_PROZENT, 4, 197).mitNachkommastellen(2));
         add(new Datum(ANTRAGSDATUM, 201));
         add(new AlphaNumFeld(REFERENZ_VERSICHERUNGSSCHEINNUMMER, 17, 209));
         add(new Zeichen(SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER, 226));

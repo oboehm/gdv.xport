@@ -130,14 +130,14 @@ public class VertragsspezifischerTeil extends Datensatz {
         add(new Datum(HAUPTFAELLIGKEIT, 69));
         add(new AlphaNumFeld(WAEHRUNGSSCHLUESSEL, 3, 77));
         add(new Betrag(BEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 80));
-        add(new Betrag(ABSCHLUSSPROVISION, 5, 92));
+        add(new Betrag(ABSCHLUSSPROVISION, 5, 92).mitNachkommastellen(2));
         add(new Zeichen(KENNZEICHEN_ABWEICHENDE_ABSCHLUSSPROVISION, 97));
-        add(new Betrag(FOLGEPROVISION, 5, 98));
+        add(new Betrag(FOLGEPROVISION, 5, 98).mitNachkommastellen(2));
         add(new Zeichen(KENNZEICHEN_ABWEICHENDE_FOLGEPROVISION, 103));
         add(new AlphaNumFeld(ABWEICHENDE_VU_NR, 5, 104));
         add(new Zeichen(KENNZEICHEN_ABWEICHENDE_VU_NR, 109));
         add(new Datum(RESTLAUFZEIT_VERTRAG, 2, 110));
-        add(new Betrag(LAUFZEITRABATT_IN_PROZENT, 4, 112));
+        add(new Betrag(LAUFZEITRABATT_IN_PROZENT, 4, 112).mitNachkommastellen(2));
         add(new AlphaNumFeld(PRODUKTFORM, 5, 116));
         add(new Datum(PRODUKTFORM_GUELTIG_AB, 6, 121));
         add(new AlphaNumFeld(PRODUKTNAME, 20, 127));
@@ -148,7 +148,7 @@ public class VertragsspezifischerTeil extends Datensatz {
      * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
      * Teildatensaetze aufsetzen.
      *
-     * @param x
+     * @param x Sparte (z.B. 30)
      * @see gdv.xport.satz.Datensatz#setSparte(int)
      */
     @Override
