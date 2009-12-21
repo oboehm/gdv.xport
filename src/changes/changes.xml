@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="0.4.0" date="2010"
+             description="Support fuer Sparte 030">
+      <action dev="oboehm" type="add" date="21-Dez-2009" >
+        Satz 0210.030 wird jetzt direkt unterstuetzt.
+      </action>
+    </release>
+
     <release version="0.3.0" date="15-Dez-2009"
              description="XML-Support">
       <action dev="oboehm" type="fix">

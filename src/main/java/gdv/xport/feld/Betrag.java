@@ -28,28 +28,24 @@ package gdv.xport.feld;
  */
 public class Betrag extends NumFeld {
 
-    public Betrag(String name) {
+    public Betrag(final String name) {
         super(name, "00000000000000");
     }
 
-    public Betrag(String name, int length, int start) {
-        super(name, length, start);
-    }
-
-    public Betrag(int length, int start) {
-        super(length, start);
+    public Betrag(final String name, final int length, final int start) {
+        super(name, length, start, 0, 2);
     }
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.NumFeld#setInhalt(int)
      */
     @Override
-    public void setInhalt(int n) {
+    public void setInhalt(final int n) {
         assert n >= 0 : "Betrag can't store negative number (" + n + ")";
         super.setInhalt(n * 100);
     }
 
-    public void setInhalt(double x) {
+    public void setInhalt(final double x) {
         assert x >= 0 : "Betrag can't store negative number (" + x + ")";
         long n = Math.round(x * 100);
         super.setInhalt(n);

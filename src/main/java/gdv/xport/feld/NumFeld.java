@@ -86,6 +86,22 @@ public class NumFeld extends Feld {
         this.nachkommastellen = nachkommastellen;
         this.setInhalt(value);
     }
+
+    /**
+     * 
+     * @since 0.4
+     * @param name Feld-Bezeichner (z.B. "pi")
+     * @param length Gesamtlaenge
+     * @param start Start-Byte (beginnend ab 1)
+     * @param value der Inhalt (z.B. 314)
+     * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
+     */
+    public NumFeld(final String name, final int length, final int start, final int value,
+            final int nachkommastellen) {
+        super(name, length, start, Align.RIGHT);
+        this.nachkommastellen = nachkommastellen;
+        this.setInhalt(value);
+    }
     
     /**
      * Liefert ein neues NumFeld mit der gewuenschten Anzahl von Nachkommastellen zurueck.

@@ -30,11 +30,14 @@ import org.apache.commons.logging.*;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
+import patterntesting.annotation.concurrent.RunTestsParallel;
+
 /**
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.2 (14.11.2009)
  *
  */
+@RunTestsParallel
 public class XmlFormatterTest extends AbstractTest {
 
     private static Log log = LogFactory.getLog(XmlFormatterTest.class);
