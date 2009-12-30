@@ -162,22 +162,22 @@
     <dependency>
       <groupId>net.sf.patterntesting</groupId>
       <artifactId>patterntesting-rt</artifactId>
-      <version>0.9.8</version>
+      <version>0.9.9</version>
     </dependency>
     <dependency>
       <groupId>net.sf.patterntesting</groupId>
       <artifactId>patterntesting-check-ct</artifactId>
-      <version>0.9.8</version>
+      <version>0.9.9</version>
     </dependency>
     <dependency>
       <groupId>net.sf.patterntesting</groupId>
       <artifactId>patterntesting-check-rt</artifactId>
-      <version>0.9.8</version>
+      <version>0.9.9</version>
     </dependency>
     <dependency>
       <groupId>net.sf.patterntesting</groupId>
       <artifactId>patterntesting-concurrent</artifactId>
-      <version>0.9.8</version>
+      <version>0.9.9</version>
     </dependency>
     <!-- Object Validation Framework (OVal) -->
     <dependency>

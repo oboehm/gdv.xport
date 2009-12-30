@@ -18,7 +18,12 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
+import static gdv.xport.feld.Bezeichner.*;
+import static org.junit.Assert.*;
+import gdv.xport.config.Config;
+import gdv.xport.feld.*;
+
+import java.io.*;
 
 import org.apache.commons.logging.*;
 import org.junit.Test;
@@ -40,6 +45,40 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
         SpartenspezifischerTeil rechtsschutz = new SpartenspezifischerTeil(70);
         log.info(rechtsschutz + " created.");
         assertEquals(70, rechtsschutz.getSparte());
+    }
+    
+    /**
+     * Da inzwischen auch Sparte 30 (Unfall) unterstuetzt wird, sollte ein Import
+     * dafuer kein Problem mehr sein.
+     * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
+     * 
+     * @since 0.4
+     * @throws IOException
+     *             sollte eigentlich nicht vorkommen, da wir von einem String
+     *             importieren
+     */
+    @Test
+    public void testSparte30() throws IOException {
+        Config.setEOD("\n");
+        String input = "02209999  030      599999999990199990099990000011Kitzelpfütze   "
+            + "               000000Kitzelpfütze                  Martina      "
+            + "                 111119791000Hausfrau                      A 1EU"
+            + "R0000000000000000041141010520040000000001052004          1      "
+            + "\n"
+            + "02209999  030      599999999990199990099990000012000000000011305"
+            + "0000000000000141950000000000000000000000000000000000000000000000"
+            + "0000000000000000000000000010000000000000000 00000000000000000000"
+            + "000000000000000000000000000000000000000000000000000  000000    X"
+            + "\n";
+        assertEquals(514, input.length());
+        SpartenspezifischerTeil wagnisdaten = new SpartenspezifischerTeil(30);
+        wagnisdaten.importFrom(input);
+        Feld x = wagnisdaten.getFeld(ZUSAETZLICHE_SATZKENNUNG, 2);
+        assertEquals("X", x.getInhalt());
+        StringWriter swriter = new StringWriter(256);
+        wagnisdaten.export(swriter);
+        assertEquals(input, swriter.toString().substring(0, 514));
+        assertTrue("Fehler in " + wagnisdaten.toShortString(), wagnisdaten.isValid());
     }
 
 }

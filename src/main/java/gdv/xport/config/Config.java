@@ -93,13 +93,5 @@ public class Config {
         return eod;
     }
 
-//    private static String getStringProperty(String key) {
-//        String value = System.getProperty(key);
-//        if (StringUtils.isBlank(value)) {
-//            throw new ConfigException("Property '" + key + "' ist nicht gesetzt!");
-//        }
-//        return value;
-//    }
-
 }
 

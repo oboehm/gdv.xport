@@ -21,7 +21,7 @@ package gdv.xport;
 import static gdv.xport.feld.Bezeichner.*;
 import static org.junit.Assert.*;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Datum;
 import gdv.xport.satz.*;
 
 import java.io.*;
@@ -33,15 +33,13 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.logging.*;
 import org.junit.*;
 
-import patterntesting.annotation.concurrent.RunTestsParallel;
-
 /**
  * @author oliver
  * @since 23.10.2009
  * @version $Revision$
  *
  */
-@RunTestsParallel
+//@RunTestsParallel
 public final class DatenpaketTest {
 
     private static final Log log = LogFactory.getLog(Datenpaket.class);

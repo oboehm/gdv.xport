@@ -119,6 +119,10 @@ public class NumFeld extends Feld {
      * @return neues NumFeld mit n Nachkommastellen
      */
     public NumFeld mitNachkommastellen(final int n) {
+        if (n > this.getAnzahlBytes()) {
+            throw new IllegalArgumentException(n + " Nachkommastellen sind zuviel (max. "
+                    + this.getAnzahlBytes() + " moeglich)");
+        }
         return new NumFeld(this.getBezeichnung(), this.getByteAdresse(),
                 this.getInhalt(), n);
         
@@ -156,7 +160,7 @@ public class NumFeld extends Feld {
      * @return den Inhalt als int
      */
     public int toInt() {
-        return Integer.parseInt(this.getInhalt().toString());
+        return Integer.parseInt(this.getInhalt().toString().trim());
     }
     
     /**

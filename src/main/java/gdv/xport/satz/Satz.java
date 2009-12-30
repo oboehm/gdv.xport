@@ -310,7 +310,13 @@ public abstract class Satz {
             log.debug("end of string \"" + s + "\" reached", e);
         }
         for (int i = 0; i < teildatensatz.length; i++) {
-            teildatensatz[i].importFrom(s.substring(i * satzlength));
+            String input = s.substring(i * satzlength);
+            if (input.isEmpty()) {
+                log.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur "
+                        + i + " Teildatensaetze vorgefunden");
+                break;
+            }
+            teildatensatz[i].importFrom(input);
         }
     }
 

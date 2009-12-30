@@ -89,6 +89,9 @@ public class SpartenspezifischerTeil extends Datensatz {
 
     private void setUpDatenfelder(int sparte) {
         switch (sparte) {
+            case 30:
+                this.setUpDatenfelder30();
+                break;
             case 70:
                 this.setUpDatenfelder70();
                 break;
@@ -99,11 +102,82 @@ public class SpartenspezifischerTeil extends Datensatz {
         }
     }
 
-    private void setUpDatenfelder70() {
+    private void setUpDatenfelder30() {
+        Feld lfdNummer = new NumFeld(LFD_NUMMER, 6, 43);
         // Teildatensatz 1
+        add(lfdNummer);
+        add(new NumFeld(SATZNUMMER, 1, 49, 1));
+        add(new AlphaNumFeld(BEZEICHNUNG_PERSONENGRUPPE, 30, 50));
+        add(new NumFeld(ANZAHL_VP_PRO_PERSONENGRUPPE, 6, 80));
+        add(new AlphaNumFeld(NAME_VP, 30, 86));
+        add(new AlphaNumFeld(VORNAME_VP, 30, 116));
+        add(new Datum(GEBURTSDATUM_VP, 146));
+        add(new Zeichen(GESCHLECHT_VP, 154));
+        add(new NumFeld(BERUFSSCHLUESSEL, 3, 155));
+        add(new AlphaNumFeld(BERUF_TEXT, 30, 158));
+        add(new Zeichen(GEFAHRENGRUPPE, 188));
+        add(new Zeichen(TARIF, 189));
+        add(new Zeichen(DECKUNGSUMFANG, 190));
+        add(new AlphaNumFeld(WAEHRUNGSSCHLUESSEL, 3, 191));
+        add(new NumFeld(ZUSCHLAG_IN_PROZENT, 5, 194).mitNachkommastellen(2));
+        add(new NumFeld(ABSCHLAG_IN_PROZENT, 5, 199).mitNachkommastellen(2));
+        add(new Betrag(BEITRAG_PRO_VP_IN_WAEHRUNGSEINHEITEN, 12, 204));
+        add(new Datum(EINSCHLUSSDATUM_VP, 216));
+        add(new Datum(AUSSCHLUSSDATUM_VP, 224));
+        add(new Datum(AENDERUNGSDATUM, 232));
+        add(new Zeichen(BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO, 240));
+        add(new Zeichen(PASSIVES_KRIEGSRISIKO, 241));
+        add(new Zeichen(KUENDIGUNGSKLAUSEL_VP, 242));
+        add(new AlphaNumFeld(LEERSTELLEN, 7, 243));
+        add(new Zeichen(SATZNUMMERWIEDERHOLUNG, 250));
+        // Teildatensatz 2
+        add(lfdNummer, 2);
+        add(new Zeichen(SATZNUMMER, 49, '2'), 2);
+        add(new NumFeld(TOD, 9, 50), 2);
+        add(new NumFeld(TOD_BEITRAGSSATZ, 7, 59).mitNachkommastellen(5), 2);
+        add(new NumFeld(INVALIDITAET, 9, 66), 2);
+        add(new Zeichen(KENNUNG_GLIEDERTAXE, 75), 2);
+        add(new Zeichen(KENNUNG_PROGRESSIVE_INVALIDITAET, 76), 2);
+        add(new NumFeld(INVALIDITAET_BEITRAGSSATZ, 7, 77).mitNachkommastellen(5), 2);
+        add(new NumFeld(TAGEGELD1, 7, 84).mitNachkommastellen(1), 2);
+        add(new NumFeld(BEGINN_TAGEGELD1_AB_TAG, 3, 91), 2);
+        add(new NumFeld(TAGEGELD1_BEITRAGSSATZ, 7, 94).mitNachkommastellen(5), 2);
+        add(new NumFeld(TAGEGELD2, 7, 101).mitNachkommastellen(1), 2);
+        add(new NumFeld(BEGINN_TAGEGELD2_AB_TAG, 3, 108), 2);
+        add(new NumFeld(TAGEGELD2_BEITRAGSSATZ, 7, 111).mitNachkommastellen(5), 2);
+        add(new NumFeld(KRANKENHAUSTAGEGELD, 7, 118).mitNachkommastellen(1), 2);
+        add(new NumFeld(KRANKENHAUSTAGEGELD_BEITRAGSSATZ, 7, 125).mitNachkommastellen(5), 2);
+        add(new NumFeld(GENESUNGSGELD, 7, 132).mitNachkommastellen(1), 2);
+        add(new NumFeld(GENESUNGSGELD_BEITRAGSSATZ, 7, 139).mitNachkommastellen(5), 2);
+        add(new NumFeld(UEBERGANGSENTSCHAEDIGUNG, 9, 146), 2);
+        add(new Zeichen(KENNUNG_UEBERGANGSENTSCHAEDIGUNG, 155), 2);
+        add(new NumFeld(UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ, 7, 156).mitNachkommastellen(5), 2);
+        add(new NumFeld(HEILKOSTEN, 9, 163), 2);
+        add(new Zeichen(ART_DER_HEILKOSTEN, 172), 2);
+        add(new NumFeld(HEILKOSTEN_BEITRAGSSATZ, 7, 173).mitNachkommastellen(5), 2);
+        add(new NumFeld(FESTE_RENTE, 9, 180), 2);
+        add(new NumFeld(FESTE_RENTE_BEITRAGSSATZ, 7, 189).mitNachkommastellen(5), 2);
+        add(new NumFeld(KOSMETISCHE_OPERATIONEN, 9, 196), 2);
+        add(new NumFeld(KOSMETISCHE_OPERATIONEN_BEITRAGSSATZ, 7, 205).mitNachkommastellen(5), 2);
+        add(new NumFeld(KURKOSTEN, 9, 212), 2);
+        add(new NumFeld(KURKOSTEN_BEITRAGSSATZ, 7, 221).mitNachkommastellen(5), 2);
+        add(new NumFeld(BERGUNGSKOSTEN, 9, 228), 2);
+        add(new NumFeld(BERGUNGSKOSTEN_BEITRAGSSATZ, 7, 237).mitNachkommastellen(5), 2);
+        add(new Zeichen(UEBERFUEHRUNGSKOSTEN, 244), 2);
+        add(new Zeichen(RUECKFUEHRUNGSKOSTEN, 245), 2);
+        add(new NumFeld(PROZENTSATZ_PROGRESSIVE_INVALIDITAET, 6, 246).mitNachkommastellen(2), 2);
+        add(new Zeichen(MEHRLEISTUNGSKLAUSEL, 252), 2);
+        add(new AlphaNumFeld(LEERSTELLEN, 3, 253));
+        add(new Zeichen(ZUSAETZLICHE_SATZKENNUNG, 256, 'X'), 2);
+        // Teildatensatz 3
+        // Teildatensatz 9
+    }
+
+    private void setUpDatenfelder70() {
         Feld risikoGruppe = new AlphaNumFeld(RISIKOGRUPPE_RISIKOART, 5, 43);
-        add(risikoGruppe);
         Feld lfdNummer = new NumFeld(LFD_NUMMER, 5, 48);
+        // Teildatensatz 1
+        add(risikoGruppe);
         add(lfdNummer);
         add(new NumFeld(SATZNUMMER, 1, 53, 1));
         add(new Zeichen(VERTRAGSSATUS, 54));

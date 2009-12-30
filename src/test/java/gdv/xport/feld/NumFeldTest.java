@@ -55,14 +55,29 @@ public class NumFeldTest {
         assertEquals("0002", nummer.getInhalt());
     }
 
+    /**
+     * Hier pruefen wir mit einem ungueltigen Inhalt.
+     */
     @Test
-    public void testIsValid() {
+    public void testIsInvalid() {
         NumFeld x = new NumFeld("x", "xxxx");
         assertFalse(x + " is invalid", x.isValid());
     }
-
+    
+    /**
+     * Und hier pruefen wir mit einem gueltigen Inhalt.
+     */
     @Test
-    public void testValidate() {
+    public void testIsValid() {
+        NumFeld three = new NumFeld("three", "3     ");
+        assertTrue("should be valid", three.isValid());
+    }
+
+    /**
+     * Hier pruefen wir mit einem ungueltigen Inhalt.
+     */
+    @Test
+    public void testInvalidate() {
         NumFeld x = new NumFeld("x", "xxxx");
         List<ConstraintViolation> violations = x.validate();
         for (ConstraintViolation violation : violations) {
@@ -71,6 +86,15 @@ public class NumFeldTest {
         assertEquals(1, violations.size());
     }
     
+    /**
+     * Und hier pruefen wir mit einem gueltigen Inhalt.
+     */
+    @Test
+    public void testValidate() {
+        NumFeld three = new NumFeld("three", "3     ");
+        assertEquals(0, three.validate().size());
+    }
+
     /**
      * Eine Zahl mit Nachkommastellen sollte auch als Double ausgegeben werden
      * koennen. Hier probieren wir es noch mit 0 Nachkommastellen.

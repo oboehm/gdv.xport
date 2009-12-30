@@ -22,6 +22,8 @@ package gdv.xport.satz;
 
 import static org.junit.Assert.assertEquals;
 
+import gdv.xport.config.Config;
+
 import java.io.IOException;
 
 import org.apache.commons.logging.*;
@@ -64,7 +66,8 @@ public class NachsatzTest extends AbstractSatzTest {
      * @throws IOException
      */
     private void checkExport(int startByte, int endByte, String expected) throws IOException {
-        super.checkExport(this.nachsatz, startByte, endByte, expected, 256);
+        int n = 256 + Config.getEOD().length();
+        super.checkExport(this.nachsatz, startByte, endByte, expected, n);
     }
 
     @Test
