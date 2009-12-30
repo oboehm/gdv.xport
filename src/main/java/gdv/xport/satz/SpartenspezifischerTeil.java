@@ -167,9 +167,29 @@ public class SpartenspezifischerTeil extends Datensatz {
         add(new Zeichen(RUECKFUEHRUNGSKOSTEN, 245), 2);
         add(new NumFeld(PROZENTSATZ_PROGRESSIVE_INVALIDITAET, 6, 246).mitNachkommastellen(2), 2);
         add(new Zeichen(MEHRLEISTUNGSKLAUSEL, 252), 2);
-        add(new AlphaNumFeld(LEERSTELLEN, 3, 253));
+        add(new AlphaNumFeld(LEERSTELLEN, 3, 253), 2);
         add(new Zeichen(ZUSAETZLICHE_SATZKENNUNG, 256, 'X'), 2);
         // Teildatensatz 3
+        add(new Zeichen(SATZNUMMER, 43, '3'), 3);
+        add(new AlphaNumFeld(VP_PERSONENNUMMER_VERSICHERER, 17, 44), 3);
+        add(new AlphaNumFeld(VP_PERSONENNUMMER_VERMITTLER, 17, 61), 3);
+        add(new NumFeld(SERVICELEISTUNGEN, 9, 78), 3);
+        add(new NumFeld(SERVICELEISTUNGEN_BEITRAGSSATZ, 7, 87).mitNachkommastellen(5), 3);
+        add(new Betrag(BEITRAG_SERVICELEISTUNGEN_IN_WAEHRUNGSEINHEITEN, 12, 94), 3);
+        add(new Betrag(BEITRAG_TOD_IN_WAEHRUNGSEINHEITEN, 12, 106), 3);
+        add(new Betrag(BEITRAG_INVALIDITAET_IN_WAEHRUNGSEINHEITEN, 12, 118), 3);
+        add(new Betrag(BEITRAG_TAGEGELD1_IN_WAEHRUNGSEINHEITEN, 12, 130), 3);
+        add(new Betrag(BEITRAG_TAGEGELD2_IN_WAEHRUNGSEINHEITEN, 12, 142), 3);
+        add(new Betrag(BEITRAG_KRANKENHAUSTAGEGELD_IN_WAEHRUNGSEINHEITEN, 12, 154), 3);
+        add(new Betrag(BEITRAG_GENESUNGSGELD_IN_WAEHRUNGSEINHEITEN, 12, 166), 3);
+        add(new Betrag(BEITRAG_UEBERGANGSENTSCHAEDIGUNG_IN_WAEHRUNGSEINHEITEN, 12, 178), 3);
+        add(new Betrag(BEITRAG_HEILKOSTEN_IN_WAEHRUNGSEINHEITEN, 12, 190), 3);
+        add(new Betrag(BEITRAG_FESTE_RENTE_IN_WAEHRUNGSEINHEITEN, 12, 202), 3);
+        add(new Betrag(BEITRAG_KOSMETISCHE_OPERATION_IN_WAEHRUNGSEINHEITEN, 12, 214), 3);
+        add(new Betrag(BEITRAG_KURKOSTEN_IN_WAEHRUNGSEINHEITEN, 12, 226), 3);
+        add(new Betrag(BEITRAG_BERGUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, 12, 238), 3);
+        add(new Zeichen(SATZNUMMERWIEDERHOLUNG, 250), 3);
+        add(new NumFeld(LFD_NUMMER_VP, 6, 251), 3);
         // Teildatensatz 9
     }
 
