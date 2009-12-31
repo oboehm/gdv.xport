@@ -30,19 +30,31 @@ import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
+ * Test-Klasse fuer NumFeld.
+ * 
  * @author oliver
  * @since 05.10.2009
- * @version $Revision$
- *
  */
 public class NumFeldTest {
 
     private static final Log log = LogFactory.getLog(NumFeldTest.class);
 
+    /**
+     * Einfacher Test, ob das Anlegen erfolgreich war.
+     */
     @Test
     public void testNumFeld() {
         NumFeld nummer = new NumFeld("Feld X", 4, 1);
         assertEquals("0000", nummer.getInhalt());
+    }
+    
+    /**
+     * Hier testen wir, ob eine negative Zahl richtig umgewandelt wird.
+     */
+    @Test
+    public void testNumFeldNegativ() {
+        NumFeld einsminus = new NumFeld("einsminus", "-001");
+        assertEquals(-1, einsminus.toInt());
     }
 
     /**
@@ -71,6 +83,18 @@ public class NumFeldTest {
     public void testIsValid() {
         NumFeld three = new NumFeld("three", "3     ");
         assertTrue("should be valid", three.isValid());
+    }
+    
+    /**
+     * Auch wenn es nicht vorgesehen ist, sollten (ungefragte) Vorzeichen
+     * keine Probleme bereiten.
+     * @since 0.4
+     */
+    @Test
+    public void testIsValidMitVorzeichen() {
+        NumFeld einsplus = new NumFeld("einsplus", "+001");
+        assertTrue("auch Vorzeichen koennen vorkommen", einsplus.isValid());
+        assertEquals(1, einsplus.toInt());
     }
 
     /**

@@ -160,7 +160,11 @@ public class NumFeld extends Feld {
      * @return den Inhalt als int
      */
     public int toInt() {
-        return Integer.parseInt(this.getInhalt().toString().trim());
+        String s = this.getInhalt().trim();
+        if (s.startsWith("+")) {
+            return Integer.parseInt(s.substring(1));
+        }
+        return Integer.parseInt(s);
     }
     
     /**
