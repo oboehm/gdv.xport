@@ -69,8 +69,8 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
      */
     @Test
     public void testSparte30() throws IOException {
-        String input = "02209999  030      599999999990199990099990000011Kitzelpfütze   "
-            + "               000000Kitzelpfütze                  Martina      "
+        String input = "02209999  030      599999999990199990099990000011Kitzelpfutze   "
+            + "               000000Kitzelpfutze                  Martina      "
             + "                 111119791000Hausfrau                      A 1EU"
             + "R0000000000000000041141010520040000000001052004          1      "
             + "\n"
@@ -101,12 +101,12 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
     @Test
     public void testSparte30Teildatensatz9() throws IOException {
         String input = "02209999  030      59999999997019999009999000000001        900 M"
-            + "artina Kitzekpfütze          00000                              "
+            + "artina Kitzekpfutze          00000                              "
             + "                                                                "
             + "                                                         9000000"
             + "\n"
-            + "02209999  030      599999999970199990099990000021Kitzelpfütze   "
-            + "               000000Kitzelpfütze                  Martina      "
+            + "02209999  030      599999999970199990099990000021Kitzelpfutze   "
+            + "               000000Kitzelpfutze                  Martina      "
             + "                 121219792000                              A 1EU"
             + "R0000000000000000012632010620040000000001062004          1      "
             + "\n"

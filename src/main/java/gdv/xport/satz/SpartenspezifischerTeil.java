@@ -19,6 +19,9 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
+
+import java.io.IOException;
+
 import gdv.xport.feld.*;
 
 import org.apache.commons.logging.*;
@@ -103,94 +106,120 @@ public class SpartenspezifischerTeil extends Datensatz {
     }
 
     private void setUpDatenfelder30() {
-        Feld lfdNummer = new NumFeld(LFD_NUMMER, 6, 43);
-        // Teildatensatz 1
-        add(lfdNummer);
-        add(new NumFeld(SATZNUMMER, 1, 49, 1));
-        add(new AlphaNumFeld(BEZEICHNUNG_PERSONENGRUPPE, 30, 50));
-        add(new NumFeld(ANZAHL_VP_PRO_PERSONENGRUPPE, 6, 80));
-        add(new AlphaNumFeld(NAME_VP, 30, 86));
-        add(new AlphaNumFeld(VORNAME_VP, 30, 116));
-        add(new Datum(GEBURTSDATUM_VP, 146));
-        add(new Zeichen(GESCHLECHT_VP, 154));
-        add(new NumFeld(BERUFSSCHLUESSEL, 3, 155));
-        add(new AlphaNumFeld(BERUF_TEXT, 30, 158));
-        add(new Zeichen(GEFAHRENGRUPPE, 188));
-        add(new Zeichen(TARIF, 189));
-        add(new Zeichen(DECKUNGSUMFANG, 190));
-        add(new AlphaNumFeld(WAEHRUNGSSCHLUESSEL, 3, 191));
-        add(new NumFeld(ZUSCHLAG_IN_PROZENT, 5, 194).mitNachkommastellen(2));
-        add(new NumFeld(ABSCHLAG_IN_PROZENT, 5, 199).mitNachkommastellen(2));
-        add(new Betrag(BEITRAG_PRO_VP_IN_WAEHRUNGSEINHEITEN, 12, 204));
-        add(new Datum(EINSCHLUSSDATUM_VP, 216));
-        add(new Datum(AUSSCHLUSSDATUM_VP, 224));
-        add(new Datum(AENDERUNGSDATUM, 232));
-        add(new Zeichen(BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO, 240));
-        add(new Zeichen(PASSIVES_KRIEGSRISIKO, 241));
-        add(new Zeichen(KUENDIGUNGSKLAUSEL_VP, 242));
-        add(new AlphaNumFeld(LEERSTELLEN, 7, 243));
-        add(new Zeichen(SATZNUMMERWIEDERHOLUNG, 250));
-        // Teildatensatz 2
-        add(lfdNummer, 2);
-        add(new Zeichen(SATZNUMMER, 49, '2'), 2);
-        add(new NumFeld(TOD, 9, 50), 2);
-        add(new NumFeld(TOD_BEITRAGSSATZ, 7, 59).mitNachkommastellen(5), 2);
-        add(new NumFeld(INVALIDITAET, 9, 66), 2);
-        add(new Zeichen(KENNUNG_GLIEDERTAXE, 75), 2);
-        add(new Zeichen(KENNUNG_PROGRESSIVE_INVALIDITAET, 76), 2);
-        add(new NumFeld(INVALIDITAET_BEITRAGSSATZ, 7, 77).mitNachkommastellen(5), 2);
-        add(new NumFeld(TAGEGELD1, 7, 84).mitNachkommastellen(1), 2);
-        add(new NumFeld(BEGINN_TAGEGELD1_AB_TAG, 3, 91), 2);
-        add(new NumFeld(TAGEGELD1_BEITRAGSSATZ, 7, 94).mitNachkommastellen(5), 2);
-        add(new NumFeld(TAGEGELD2, 7, 101).mitNachkommastellen(1), 2);
-        add(new NumFeld(BEGINN_TAGEGELD2_AB_TAG, 3, 108), 2);
-        add(new NumFeld(TAGEGELD2_BEITRAGSSATZ, 7, 111).mitNachkommastellen(5), 2);
-        add(new NumFeld(KRANKENHAUSTAGEGELD, 7, 118).mitNachkommastellen(1), 2);
-        add(new NumFeld(KRANKENHAUSTAGEGELD_BEITRAGSSATZ, 7, 125).mitNachkommastellen(5), 2);
-        add(new NumFeld(GENESUNGSGELD, 7, 132).mitNachkommastellen(1), 2);
-        add(new NumFeld(GENESUNGSGELD_BEITRAGSSATZ, 7, 139).mitNachkommastellen(5), 2);
-        add(new NumFeld(UEBERGANGSENTSCHAEDIGUNG, 9, 146), 2);
-        add(new Zeichen(KENNUNG_UEBERGANGSENTSCHAEDIGUNG, 155), 2);
-        add(new NumFeld(UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ, 7, 156).mitNachkommastellen(5), 2);
-        add(new NumFeld(HEILKOSTEN, 9, 163), 2);
-        add(new Zeichen(ART_DER_HEILKOSTEN, 172), 2);
-        add(new NumFeld(HEILKOSTEN_BEITRAGSSATZ, 7, 173).mitNachkommastellen(5), 2);
-        add(new NumFeld(FESTE_RENTE, 9, 180), 2);
-        add(new NumFeld(FESTE_RENTE_BEITRAGSSATZ, 7, 189).mitNachkommastellen(5), 2);
-        add(new NumFeld(KOSMETISCHE_OPERATIONEN, 9, 196), 2);
-        add(new NumFeld(KOSMETISCHE_OPERATIONEN_BEITRAGSSATZ, 7, 205).mitNachkommastellen(5), 2);
-        add(new NumFeld(KURKOSTEN, 9, 212), 2);
-        add(new NumFeld(KURKOSTEN_BEITRAGSSATZ, 7, 221).mitNachkommastellen(5), 2);
-        add(new NumFeld(BERGUNGSKOSTEN, 9, 228), 2);
-        add(new NumFeld(BERGUNGSKOSTEN_BEITRAGSSATZ, 7, 237).mitNachkommastellen(5), 2);
-        add(new Zeichen(UEBERFUEHRUNGSKOSTEN, 244), 2);
-        add(new Zeichen(RUECKFUEHRUNGSKOSTEN, 245), 2);
-        add(new NumFeld(PROZENTSATZ_PROGRESSIVE_INVALIDITAET, 6, 246).mitNachkommastellen(2), 2);
-        add(new Zeichen(MEHRLEISTUNGSKLAUSEL, 252), 2);
-        add(new AlphaNumFeld(LEERSTELLEN, 3, 253), 2);
-        add(new Zeichen(ZUSAETZLICHE_SATZKENNUNG, 256, 'X'), 2);
-        // Teildatensatz 3
-        add(new Zeichen(SATZNUMMER, 43, '3'), 3);
-        add(new AlphaNumFeld(VP_PERSONENNUMMER_VERSICHERER, 17, 44), 3);
-        add(new AlphaNumFeld(VP_PERSONENNUMMER_VERMITTLER, 17, 61), 3);
-        add(new NumFeld(SERVICELEISTUNGEN, 9, 78), 3);
-        add(new NumFeld(SERVICELEISTUNGEN_BEITRAGSSATZ, 7, 87).mitNachkommastellen(5), 3);
-        add(new Betrag(BEITRAG_SERVICELEISTUNGEN_IN_WAEHRUNGSEINHEITEN, 12, 94), 3);
-        add(new Betrag(BEITRAG_TOD_IN_WAEHRUNGSEINHEITEN, 12, 106), 3);
-        add(new Betrag(BEITRAG_INVALIDITAET_IN_WAEHRUNGSEINHEITEN, 12, 118), 3);
-        add(new Betrag(BEITRAG_TAGEGELD1_IN_WAEHRUNGSEINHEITEN, 12, 130), 3);
-        add(new Betrag(BEITRAG_TAGEGELD2_IN_WAEHRUNGSEINHEITEN, 12, 142), 3);
-        add(new Betrag(BEITRAG_KRANKENHAUSTAGEGELD_IN_WAEHRUNGSEINHEITEN, 12, 154), 3);
-        add(new Betrag(BEITRAG_GENESUNGSGELD_IN_WAEHRUNGSEINHEITEN, 12, 166), 3);
-        add(new Betrag(BEITRAG_UEBERGANGSENTSCHAEDIGUNG_IN_WAEHRUNGSEINHEITEN, 12, 178), 3);
-        add(new Betrag(BEITRAG_HEILKOSTEN_IN_WAEHRUNGSEINHEITEN, 12, 190), 3);
-        add(new Betrag(BEITRAG_FESTE_RENTE_IN_WAEHRUNGSEINHEITEN, 12, 202), 3);
-        add(new Betrag(BEITRAG_KOSMETISCHE_OPERATION_IN_WAEHRUNGSEINHEITEN, 12, 214), 3);
-        add(new Betrag(BEITRAG_KURKOSTEN_IN_WAEHRUNGSEINHEITEN, 12, 226), 3);
-        add(new Betrag(BEITRAG_BERGUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, 12, 238), 3);
-        add(new Zeichen(SATZNUMMERWIEDERHOLUNG, 250), 3);
-        add(new NumFeld(LFD_NUMMER_VP, 6, 251), 3);
-        // Teildatensatz 9
+        this.setUpTeildatensatz30(1, this.getTeildatensatz(1));
+        this.setUpTeildatensatz30(2, this.getTeildatensatz(2));
+        this.setUpTeildatensatz30(3, this.getTeildatensatz(3));
+        this.setUpTeildatensatz30(9, this.getTeildatensatz(4));
+    }
+
+    private void setUpTeildatensatz30(final int n, final Teildatensatz tds) {
+        this.setUpTeildatensatz(tds);
+        switch(n) {
+            case 1:     // Teildatensatz 1
+                tds.add(new NumFeld(LFD_NUMMER, 6, 43));
+                tds.add(new NumFeld(SATZNUMMER, 1, 49, 1));
+                tds.add(new AlphaNumFeld(BEZEICHNUNG_PERSONENGRUPPE, 30, 50));
+                tds.add(new NumFeld(ANZAHL_VP_PRO_PERSONENGRUPPE, 6, 80));
+                tds.add(new AlphaNumFeld(NAME_VP, 30, 86));
+                tds.add(new AlphaNumFeld(VORNAME_VP, 30, 116));
+                tds.add(new Datum(GEBURTSDATUM_VP, 146));
+                tds.add(new Zeichen(GESCHLECHT_VP, 154));
+                tds.add(new NumFeld(BERUFSSCHLUESSEL, 3, 155));
+                tds.add(new AlphaNumFeld(BERUF_TEXT, 30, 158));
+                tds.add(new Zeichen(GEFAHRENGRUPPE, 188));
+                tds.add(new Zeichen(TARIF, 189));
+                tds.add(new Zeichen(DECKUNGSUMFANG, 190));
+                tds.add(new AlphaNumFeld(WAEHRUNGSSCHLUESSEL, 3, 191));
+                tds.add(new NumFeld(ZUSCHLAG_IN_PROZENT, 5, 194).mitNachkommastellen(2));
+                tds.add(new NumFeld(ABSCHLAG_IN_PROZENT, 5, 199).mitNachkommastellen(2));
+                tds.add(new Betrag(BEITRAG_PRO_VP_IN_WAEHRUNGSEINHEITEN, 12, 204));
+                tds.add(new Datum(EINSCHLUSSDATUM_VP, 216));
+                tds.add(new Datum(AUSSCHLUSSDATUM_VP, 224));
+                tds.add(new Datum(AENDERUNGSDATUM, 232));
+                tds.add(new Zeichen(BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO, 240));
+                tds.add(new Zeichen(PASSIVES_KRIEGSRISIKO, 241));
+                tds.add(new Zeichen(KUENDIGUNGSKLAUSEL_VP, 242));
+                tds.add(new AlphaNumFeld(LEERSTELLEN, 7, 243));
+                tds.add(new Zeichen(SATZNUMMERWIEDERHOLUNG, 250));
+                break;
+            case 2:
+                tds.add(new NumFeld(LFD_NUMMER, 6, 43));
+                tds.add(new Zeichen(SATZNUMMER, 49, '2'));
+                tds.add(new NumFeld(TOD, 9, 50));
+                tds.add(new NumFeld(TOD_BEITRAGSSATZ, 7, 59).mitNachkommastellen(5));
+                tds.add(new NumFeld(INVALIDITAET, 9, 66));
+                tds.add(new Zeichen(KENNUNG_GLIEDERTAXE, 75));
+                tds.add(new Zeichen(KENNUNG_PROGRESSIVE_INVALIDITAET, 76));
+                tds.add(new NumFeld(INVALIDITAET_BEITRAGSSATZ, 7, 77).mitNachkommastellen(5));
+                tds.add(new NumFeld(TAGEGELD1, 7, 84).mitNachkommastellen(1));
+                tds.add(new NumFeld(BEGINN_TAGEGELD1_AB_TAG, 3, 91));
+                tds.add(new NumFeld(TAGEGELD1_BEITRAGSSATZ, 7, 94).mitNachkommastellen(5));
+                tds.add(new NumFeld(TAGEGELD2, 7, 101).mitNachkommastellen(1));
+                tds.add(new NumFeld(BEGINN_TAGEGELD2_AB_TAG, 3, 108));
+                tds.add(new NumFeld(TAGEGELD2_BEITRAGSSATZ, 7, 111).mitNachkommastellen(5));
+                tds.add(new NumFeld(KRANKENHAUSTAGEGELD, 7, 118).mitNachkommastellen(1));
+                tds.add(new NumFeld(KRANKENHAUSTAGEGELD_BEITRAGSSATZ, 7, 125).mitNachkommastellen(5));
+                tds.add(new NumFeld(GENESUNGSGELD, 7, 132).mitNachkommastellen(1));
+                tds.add(new NumFeld(GENESUNGSGELD_BEITRAGSSATZ, 7, 139).mitNachkommastellen(5));
+                tds.add(new NumFeld(UEBERGANGSENTSCHAEDIGUNG, 9, 146));
+                tds.add(new Zeichen(KENNUNG_UEBERGANGSENTSCHAEDIGUNG, 155));
+                tds.add(new NumFeld(UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ, 7, 156).mitNachkommastellen(5));
+                tds.add(new NumFeld(HEILKOSTEN, 9, 163));
+                tds.add(new Zeichen(ART_DER_HEILKOSTEN, 172));
+                tds.add(new NumFeld(HEILKOSTEN_BEITRAGSSATZ, 7, 173).mitNachkommastellen(5));
+                tds.add(new NumFeld(FESTE_RENTE, 9, 180));
+                tds.add(new NumFeld(FESTE_RENTE_BEITRAGSSATZ, 7, 189).mitNachkommastellen(5));
+                tds.add(new NumFeld(KOSMETISCHE_OPERATIONEN, 9, 196));
+                tds.add(new NumFeld(KOSMETISCHE_OPERATIONEN_BEITRAGSSATZ, 7, 205).mitNachkommastellen(5));
+                tds.add(new NumFeld(KURKOSTEN, 9, 212));
+                tds.add(new NumFeld(KURKOSTEN_BEITRAGSSATZ, 7, 221).mitNachkommastellen(5));
+                tds.add(new NumFeld(BERGUNGSKOSTEN, 9, 228));
+                tds.add(new NumFeld(BERGUNGSKOSTEN_BEITRAGSSATZ, 7, 237).mitNachkommastellen(5));
+                tds.add(new Zeichen(UEBERFUEHRUNGSKOSTEN, 244));
+                tds.add(new Zeichen(RUECKFUEHRUNGSKOSTEN, 245));
+                tds.add(new NumFeld(PROZENTSATZ_PROGRESSIVE_INVALIDITAET, 6, 246).mitNachkommastellen(2));
+                tds.add(new Zeichen(MEHRLEISTUNGSKLAUSEL, 252));
+                tds.add(new AlphaNumFeld(LEERSTELLEN, 3, 253));
+                tds.add(new Zeichen(ZUSAETZLICHE_SATZKENNUNG, 256, 'X'));
+                break;
+            case 3:     // Teildatensatz 3
+                tds.add(new Zeichen(SATZNUMMER, 43, '3'));
+                tds.add(new AlphaNumFeld(VP_PERSONENNUMMER_VERSICHERER, 17, 44));
+                tds.add(new AlphaNumFeld(VP_PERSONENNUMMER_VERMITTLER, 17, 61));
+                tds.add(new NumFeld(SERVICELEISTUNGEN, 9, 78));
+                tds.add(new NumFeld(SERVICELEISTUNGEN_BEITRAGSSATZ, 7, 87).mitNachkommastellen(5));
+                tds.add(new Betrag(BEITRAG_SERVICELEISTUNGEN_IN_WAEHRUNGSEINHEITEN, 12, 94));
+                tds.add(new Betrag(BEITRAG_TOD_IN_WAEHRUNGSEINHEITEN, 12, 106));
+                tds.add(new Betrag(BEITRAG_INVALIDITAET_IN_WAEHRUNGSEINHEITEN, 12, 118));
+                tds.add(new Betrag(BEITRAG_TAGEGELD1_IN_WAEHRUNGSEINHEITEN, 12, 130));
+                tds.add(new Betrag(BEITRAG_TAGEGELD2_IN_WAEHRUNGSEINHEITEN, 12, 142));
+                tds.add(new Betrag(BEITRAG_KRANKENHAUSTAGEGELD_IN_WAEHRUNGSEINHEITEN, 12, 154));
+                tds.add(new Betrag(BEITRAG_GENESUNGSGELD_IN_WAEHRUNGSEINHEITEN, 12, 166));
+                tds.add(new Betrag(BEITRAG_UEBERGANGSENTSCHAEDIGUNG_IN_WAEHRUNGSEINHEITEN, 12, 178));
+                tds.add(new Betrag(BEITRAG_HEILKOSTEN_IN_WAEHRUNGSEINHEITEN, 12, 190));
+                tds.add(new Betrag(BEITRAG_FESTE_RENTE_IN_WAEHRUNGSEINHEITEN, 12, 202));
+                tds.add(new Betrag(BEITRAG_KOSMETISCHE_OPERATION_IN_WAEHRUNGSEINHEITEN, 12, 214));
+                tds.add(new Betrag(BEITRAG_KURKOSTEN_IN_WAEHRUNGSEINHEITEN, 12, 226));
+                tds.add(new Betrag(BEITRAG_BERGUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, 12, 238));
+                tds.add(new Zeichen(SATZNUMMERWIEDERHOLUNG, 250));
+                tds.add(new NumFeld(LFD_NUMMER_VP_PERSONENGRUPPE, 6, 251));
+                break;
+            case 9:     // Teildatensatz 9
+                tds.add(new AlphaNumFeld(LFD_NUMMER_VP, 17, 43));
+                tds.add(new Zeichen(SATZNUMMER, 60, '9'));
+                tds.add(new AlphaNumFeld(LFD_NUMMER_SATZART, 2, 61));
+                tds.add(new Zeichen(BEZUGSBERECHTIGT_IM_LEISTUNGSFALL, 63));
+                tds.add(new AlphaNumFeld(SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL, 30, 64));
+                tds.add(new NumFeld(BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL, 5, 94).mitNachkommastellen(2));
+                tds.add(new Zeichen(UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL, 99));
+                tds.add(new AlphaNumFeld(REFERENZNUMMER, 7, 100));
+                tds.add(new AlphaNumFeld(LEERSTELLEN, 143, 107));
+                tds.add(new Zeichen(SATZNUMMERWIEDERHOLUNG, 250));
+                tds.add(new NumFeld(LFD_NUMMER_VP_PERSONENGRUPPE, 6, 251));
+                break;
+            default:
+                throw new IllegalArgumentException("unbekannter Teildatensatz-Nr.: " + n);
+        }
     }
 
     private void setUpDatenfelder70() {
@@ -246,7 +275,7 @@ public class SpartenspezifischerTeil extends Datensatz {
         add(new AlphaNumFeld(MITVERSICHERTE_PERSON_VORNAME, 30, 219), 2);
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 249), 2);
     }
-
+    
     /**
      * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
      * Teildatensaetze aufsetzen.
@@ -263,6 +292,63 @@ public class SpartenspezifischerTeil extends Datensatz {
         this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
         super.setUpTeildatensaetze();
         this.setUpDatenfelder(x);
+    }
+
+    /**
+     * Sparte 30 hat optionale Teildatensaetze (Teildatensatz 9). Den
+     * muessen wir gesondert behandeln.
+     * 
+     * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
+     * @param input Inupt
+     * @throws IOException falls der String zu kurz ist
+     */
+    @Override
+    public void importFrom(String input) throws IOException {
+        switch (this.getSparte()) {
+            case 30:
+                importSparte30(input);
+                break;
+            default:
+                super.importFrom(input);
+                break;
+        }
+    }
+    
+    private void importSparte30(String s) throws IOException {
+        this.removeAllTeildatensaetze();
+        int satzlength = getSatzlength(s);
+        for (int i = 0; i < s.length(); i += satzlength) {
+            String input = s.substring(i);
+            if (input.trim().isEmpty()) {
+                break;
+            }
+            char satznummer = input.charAt(48);
+            switch (satznummer) {
+                case '1':
+                    addTeildatensatz30(1, input);
+                    break;
+                case '2':
+                    addTeildatensatz30(2, input);
+                    break;
+                default:
+                    if (input.charAt(42) == '3') {
+                        addTeildatensatz30(3, input);
+                    } else if (input.charAt(59) == '9') {
+                        addTeildatensatz30(9, input);
+                    } else {
+                        throw new IOException("Satz 0220.030: unbekannter Teildatensatz \""
+                                + input.substring(0, 60) + "...\""); 
+                    }
+                    break;
+            }
+        }
+    }
+    
+    private void addTeildatensatz30(final int n, final String input) throws IOException {
+        Teildatensatz tds = new Teildatensatz(this.getSatzartFeld());
+        this.setUpTeildatensatz30(n, tds);
+        tds.importFrom(input);
+        this.add(tds);
     }
 
 }

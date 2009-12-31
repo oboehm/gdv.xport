@@ -73,15 +73,28 @@ public class Datensatz extends Satz {
         this.setUpTeildatensaetze();
     }
 
+    /**
+     * Kann von Unterklassen verwendet werden, um die Teildatensaetze
+     * aufzusetzen.
+     */
     protected void setUpTeildatensaetze() {
         for (int i = 0; i < teildatensatz.length; i++) {
-            teildatensatz[i].add(this.vuNummer);
-            teildatensatz[i].add(this.buendelungsKennzeichen);
-            teildatensatz[i].add(this.sparte);
-            teildatensatz[i].add(this.versicherungsscheinNr);
-            teildatensatz[i].add(this.folgeNr);
-            teildatensatz[i].add(this.vermittler);
+            setUpTeildatensatz(teildatensatz[i]);
         }
+    }
+    
+    /**
+     * Hiermit kann ein einzelner Teildatensatz aufgesetzt werden.
+     * @since 0.4
+     * @param tds der (leere) Teildatensatz
+     */
+    protected void setUpTeildatensatz(final Teildatensatz tds) {
+        tds.add(this.vuNummer);
+        tds.add(this.buendelungsKennzeichen);
+        tds.add(this.sparte);
+        tds.add(this.versicherungsscheinNr);
+        tds.add(this.folgeNr);
+        tds.add(this.vermittler);        
     }
 
     /* (non-Javadoc)

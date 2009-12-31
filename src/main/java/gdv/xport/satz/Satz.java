@@ -15,6 +15,7 @@ import net.sf.oval.*;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
 
+import org.apache.commons.lang.*;
 import org.apache.commons.logging.*;
 
 /**
@@ -112,6 +113,26 @@ public abstract class Satz {
      */
     public Teildatensatz getTeildatensatz(final int n) {
         return this.teildatensatz[n-1];
+    }
+    
+    /**
+     * Hiermit koennen Unterklassen alle Teildatensaetze wieder entfernen
+     * (wird z.B. vom Satz 0220.030 benoetigt).
+     * 
+     * @since 0.4
+     */
+    protected void removeAllTeildatensaetze() {
+        this.teildatensatz = new Teildatensatz[0];
+    }
+    
+    /**
+     * Und hierueber kann ein Teildatensatz hinzugefuegt werden.
+     * 
+     * @since 0.4
+     * @param tds der neue (gefuellte) Teildatensatz
+     */
+    protected void add(final Teildatensatz tds) {
+        this.teildatensatz = (Teildatensatz[]) ArrayUtils.add(this.teildatensatz, tds);
     }
 
     /**
@@ -296,6 +317,28 @@ public abstract class Satz {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void importFrom(final String s) throws IOException {
+        int satzlength = getSatzlength(s);
+        for (int i = 0; i < teildatensatz.length; i++) {
+            String input = s.substring(i * satzlength);
+            if (input.trim().isEmpty()) {
+                log.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur "
+                        + i + " Teildatensaetze vorgefunden");
+                break;
+            }
+            teildatensatz[i].importFrom(input);
+        }
+    }
+
+    /**
+     * Ermittelt die Satzlaenge.
+     * Je nachdem, ob das Zeilenende aus keinem, einem oder zwei Zeichen
+     * besteht, wird 256, 257 oder 258 zurueckgegeben.
+     * 
+     * @since 0.4
+     * @param s der komplette Satz
+     * @return 256, 257 oder 258
+     */
+    protected int getSatzlength(final String s) {
         int satzlength = 256;
         try {
             char c256 = s.charAt(256);
@@ -309,15 +352,7 @@ public abstract class Satz {
         } catch (StringIndexOutOfBoundsException e) {
             log.debug("end of string \"" + s + "\" reached", e);
         }
-        for (int i = 0; i < teildatensatz.length; i++) {
-            String input = s.substring(i * satzlength);
-            if (input.isEmpty()) {
-                log.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur "
-                        + i + " Teildatensaetze vorgefunden");
-                break;
-            }
-            teildatensatz[i].importFrom(input);
-        }
+        return satzlength;
     }
 
     /**
@@ -350,7 +385,7 @@ public abstract class Satz {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public final void importFrom(final PushbackReader reader) throws IOException {
-        char[] cbuf = new char[256];
+        char[] cbuf = new char[257 * teildatensatz.length];
         for (int i = 0; i < teildatensatz.length; i++) {
             int art = readSatzart(reader);
             if (art != this.getSatzart()) {
@@ -358,17 +393,18 @@ public abstract class Satz {
                         + ", but got data for Satzart " + art);
                 break;
             }
-            importFrom(reader, cbuf);
-            teildatensatz[i].importFrom(new String(cbuf));
+            importFrom(reader, cbuf, i*257);
+            cbuf[i*257+256] = '\n';
             skipNewline(reader);
         }
+        importFrom(new String(cbuf));
     }
 
-    private static void importFrom(final Reader reader, final char[]cbuf) throws IOException {
-        if (reader.read(cbuf) == -1) {
-            String s = new String(cbuf);
-            throw new IOException("can't read " + cbuf.length + " bytes from " + reader + ", only "
-                    + s.length() + " bytes: " + s);
+    private static void importFrom(final Reader reader, final char[]cbuf, int i) throws IOException {
+        if (reader.read(cbuf, i, 256) == -1) {
+            String s = new String(cbuf).substring(i);
+            throw new IOException("can't read 256 bytes from " + reader + ", only " + s.length()
+                    + " bytes: " + s);
         }
     }
 
@@ -387,6 +423,14 @@ public abstract class Satz {
         importFrom(reader, cbuf);
         reader.unread(cbuf);
         return Integer.parseInt(new String(cbuf));
+    }
+
+    private static void importFrom(final Reader reader, final char[]cbuf) throws IOException {
+        if (reader.read(cbuf) == -1) {
+            String s = new String(cbuf);
+            throw new IOException("can't read " + cbuf.length + " bytes from " + reader + ", only "
+                    + s.length() + " bytes: " + s);
+        }
     }
 
     private static void skipNewline(final PushbackReader reader) throws IOException {

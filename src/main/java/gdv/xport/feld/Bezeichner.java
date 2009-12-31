@@ -93,6 +93,8 @@ public final class Bezeichner {
     public static final String BERUFSSCHLUESSEL = "Berufsschluessel";
     public static final String BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO = "Besondere Vereinbarung zum Fluggastrisiko";
     public static final String BEZEICHNUNG_PERSONENGRUPPE = "Bezeichnung Personengruppe";
+    public static final String BEZUGSBERECHTIGT_IM_LEISTUNGSFALL = "Bezugsberechtigt im Leistungsfall";
+    public static final String BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL = "Bezugsrechtanteil im Leistungsfall";
     public static final String BIC1 = "BIC 1";
     public static final String BIC2 = "BIC 2";
     public static final String BLZ1 = "Bankleitzahl 1";
@@ -179,7 +181,9 @@ public final class Bezeichner {
     public static final String LEERSTELLEN = "Leerstellen";
     public static final String LETZTE_ERHOEHUNG = "letzte Erhoehung";
     public static final String LFD_NUMMER = "Lfd. Nummer";
-    public static final String LFD_NUMMER_VP = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
+    public static final String LFD_NUMMER_SATZART = "Lfd. Nummer der Satzart";
+    public static final String LFD_NUMMER_VP = "Lfd. Nummer der versicherten Person (VP)";
+    public static final String LFD_NUMMER_VP_PERSONENGRUPPE = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_PERSONENNR_GEVO = "Lfd. Personennummer im GeVo";
     public static final String MEHRLEISTUNGSKLAUSEL = "Mehrleistungsklausel";
     public static final String MEHRZWECKFELD = "Mehrzweckfeld";
@@ -225,6 +229,7 @@ public final class Bezeichner {
     public static final String SERVICELEISTUNGEN_BEITRAGSSATZ = "Serviceleistungen Beitragssatz";
     public static final String SONDERBEDINGUNGEN = "Sonderbedingungen";
     public static final String SONDERVEREINBARUNGEN = "Sondervereinbarungen";
+    public static final String SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL = "Sonstigter Bezugsberechtigter im Leistungsfall";
     public static final String SPARTE = "Sparte";
     public static final String SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = "Spezifikation der Referenz-Versicherungsscheinnummer";
     public static final String STRASSE = "Strasse";
@@ -247,6 +252,7 @@ public final class Bezeichner {
     public static final String UEBERGANGSENTSCHAEDIGUNG = "Uebergangsentschaedigung";
     public static final String UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ = "Uebergangsentschaedigung Beitragssatz";
     public static final String UMSATZSTEUER_ID = "Umsatzsteuer-Identifikationsnummer";
+    public static final String UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL = "Unwiderrufliches Bezugsrecht im Leistungsfall";
     public static final String VORAUSSICHTLICHES_ENDE = "voraussichtliches Ende";
     public static final String VERMITTLER = "Geschaeftsstelle/Vermittler";
     public static final String VERSION_NACHSATZ = "Version Nachsatz Satzart 9999";
