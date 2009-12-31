@@ -37,7 +37,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
 
     /**
      * Test method for {@link gdv.xport.satz.Teildatensatz#export(java.io.Writer)}.
-     * @throws IOException
+     * @throws IOException sollte eigentlich nicht auftreten
      */
     @Test
     public void testExport() throws IOException {

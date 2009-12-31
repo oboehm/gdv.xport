@@ -126,7 +126,7 @@ public final class SatzTest {
      * Ein einfach Import-Test.
      * 
      * @throws IOException
-     *             sollte eigenlich passieren, da wir von einem String lesen
+     *             sollte eigenlich nicht passieren, da wir von einem String lesen
      */
     @Test
     public void testImport() throws IOException {
@@ -203,6 +203,17 @@ public final class SatzTest {
         assertEquals(n-1, s.getTeildatensaetze().size());
         s.removeTeildatensatz(1);
         assertEquals(n-2, s.getTeildatensaetze().size());
+    }
+    
+    /**
+     * Hier testen wir das Entfernen aller Teildatensaetze.
+     * @since 0.4
+     */
+    @Test
+    public void testRemoveAllTeildatensaetze() {
+        Satz s = new Vorsatz();
+        s.removeAllTeildatensaetze(2);
+        assertEquals(1, s.getTeildatensaetze().size());
     }
 
 }

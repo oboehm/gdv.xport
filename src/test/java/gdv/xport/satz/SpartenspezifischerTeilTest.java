@@ -125,7 +125,7 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
         StringWriter swriter = new StringWriter(expected.length());
         datensatz.export(swriter);
         swriter.close();
-        assertEquals(expected, swriter.toString().substring(0, expected.length()));
+        assertEquals(expected, swriter.toString());
         assertTrue(datensatz.toShortString() + " is not valid", datensatz.isValid());
     }
 

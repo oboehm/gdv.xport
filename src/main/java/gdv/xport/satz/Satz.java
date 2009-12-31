@@ -126,6 +126,20 @@ public abstract class Satz {
     }
     
     /**
+     * Entfernt alle Teildatensaetze >= n.
+     * 
+     * @since 0.4
+     * @param n ab hier wird abgeschnitten (n >= 1)
+     */
+    public void removeAllTeildatensaetze(final int n) {
+        if ((n < 1) || (n > this.teildatensatz.length)) {
+            throw new IllegalArgumentException(n + " liegt nicht zwischen 1 und "
+                    + this.teildatensatz.length);
+        }
+        this.teildatensatz = (Teildatensatz[]) ArrayUtils.subarray(this.teildatensatz, 0, n-1);
+    }
+    
+    /**
      * Entfernt den gewuenschten Teildatensatz.
      * Ein neuer Teildatensatz kann ueber add() hinzugefuegt werden.
      * 
@@ -136,7 +150,7 @@ public abstract class Satz {
     public void removeTeildatensatz(final int n) {
         if ((n < 1) || (n > this.teildatensatz.length)) {
             throw new IllegalArgumentException(n + " liegt nicht zwischen 1 und "
-                    + this.teildatensatz.length + " liegen");
+                    + this.teildatensatz.length);
         }
         this.teildatensatz = (Teildatensatz[]) ArrayUtils.remove(this.teildatensatz, n-1);
     }
@@ -339,6 +353,7 @@ public abstract class Satz {
             if (input.trim().isEmpty()) {
                 log.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur "
                         + i + " Teildatensaetze vorgefunden");
+                this.removeAllTeildatensaetze(i+1);
                 break;
             }
             teildatensatz[i].importFrom(input);
