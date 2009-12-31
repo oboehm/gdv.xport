@@ -31,6 +31,7 @@ import net.sf.oval.*;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
+import gdv.xport.io.ImportException;
 
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
@@ -154,7 +155,7 @@ public class Teildatensatz extends Satz {
             int begin = (feld.getByteAdresse() - 1) % 256;
             int end = begin + feld.getAnzahlBytes();
             if (end > content.length()) {
-                throw new IOException("input string is too short (" + (end - content.length())
+                throw new ImportException("input string is too short (" + (end - content.length())
                         + " bytes missing): " + content);
             }
             String s = content.substring(begin, end);

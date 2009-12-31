@@ -381,7 +381,7 @@ public abstract class Satz {
                 satzlength = 258;
             }
         } catch (StringIndexOutOfBoundsException e) {
-            log.debug("end of string \"" + s + "\" reached", e);
+            log.trace("end of string \"" + s + "\" reached", e);
         }
         return satzlength;
     }

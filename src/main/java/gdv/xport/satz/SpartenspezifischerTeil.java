@@ -23,6 +23,7 @@ import static gdv.xport.feld.Bezeichner.*;
 import java.io.IOException;
 
 import gdv.xport.feld.*;
+import gdv.xport.io.ImportException;
 
 import org.apache.commons.logging.*;
 
@@ -43,7 +44,7 @@ public class SpartenspezifischerTeil extends Datensatz {
         super(220);
     }
 
-    public SpartenspezifischerTeil(int sparte) {
+    public SpartenspezifischerTeil(final int sparte) {
         this(sparte, getNumberOfTeildatensaetzeFor(sparte));
     }
 
@@ -51,7 +52,7 @@ public class SpartenspezifischerTeil extends Datensatz {
      * @param sparte
      * @param n Anzahl Teildatensaetze
      */
-    public SpartenspezifischerTeil(int sparte, int n) {
+    public SpartenspezifischerTeil(final int sparte, final int n) {
         super(220, sparte, n);
         this.setUpDatenfelder(sparte);
     }
@@ -90,7 +91,7 @@ public class SpartenspezifischerTeil extends Datensatz {
         }
     }
 
-    private void setUpDatenfelder(int sparte) {
+    private void setUpDatenfelder(final int sparte) {
         switch (sparte) {
             case 30:
                 this.setUpDatenfelder30();
@@ -284,7 +285,7 @@ public class SpartenspezifischerTeil extends Datensatz {
      * @see gdv.xport.satz.Datensatz#setSparte(int)
      */
     @Override
-    public void setSparte(int x) {
+    public void setSparte(final int x) {
         if (this.getSatzart() == x) {
             log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
         }
@@ -303,7 +304,7 @@ public class SpartenspezifischerTeil extends Datensatz {
      * @throws IOException falls der String zu kurz ist
      */
     @Override
-    public void importFrom(String input) throws IOException {
+    public void importFrom(final String input) throws IOException {
         switch (this.getSparte()) {
             case 30:
                 importSparte30(input);
@@ -314,7 +315,7 @@ public class SpartenspezifischerTeil extends Datensatz {
         }
     }
     
-    private void importSparte30(String s) throws IOException {
+    private void importSparte30(final String s) throws IOException {
         this.removeAllTeildatensaetze();
         int satzlength = getSatzlength(s);
         for (int i = 0; i < s.length(); i += satzlength) {
@@ -336,8 +337,8 @@ public class SpartenspezifischerTeil extends Datensatz {
                     } else if (input.charAt(59) == '9') {
                         addTeildatensatz30(9, input);
                     } else {
-                        throw new IOException("Satz 0220.030: unbekannter Teildatensatz \""
-                                + input.substring(0, 60) + "...\""); 
+                        throw new ImportException("Satz 0220.030: unbekannter Teildatensatz \""
+                                + input.substring(0, 60) + "...\"");
                     }
                     break;
             }

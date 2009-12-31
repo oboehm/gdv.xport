@@ -31,21 +31,26 @@ import org.apache.commons.logging.*;
 public class VertragsspezifischerTeil extends Datensatz {
 
     private static final Log log = LogFactory.getLog(VertragsspezifischerTeil.class);
+    private static final int SATZART = 210;
+    
+    public VertragsspezifischerTeil() {
+        super(SATZART);
+    }
 
-    public VertragsspezifischerTeil(int sparte) {
+    public VertragsspezifischerTeil(final int sparte) {
         this(sparte, getNumberOfTeildatensaetzeFor(sparte));
     }
 
     /**
-     * @param sparte
+     * @param sparte z.B. 70 (Rechtsschutz)
      * @param n Anzahl Teildatensaetze
      */
-    public VertragsspezifischerTeil(int sparte, int n) {
-        super(210, sparte, n);
+    public VertragsspezifischerTeil(final int sparte, final int n) {
+        super(SATZART, sparte, n);
         this.setUpDatenfelder(sparte);
     }
 
-    private static int getNumberOfTeildatensaetzeFor(int sparte) {
+    private static int getNumberOfTeildatensaetzeFor(final int sparte) {
         switch (sparte) {
             case 30:
             case 40:
@@ -71,7 +76,7 @@ public class VertragsspezifischerTeil extends Datensatz {
         }
     }
 
-    private void setUpDatenfelder(int sparte) {
+    private void setUpDatenfelder(final int sparte) {
         switch (sparte) {
             case 30:
                 this.setUpDatenfelder30();
@@ -152,7 +157,7 @@ public class VertragsspezifischerTeil extends Datensatz {
      * @see gdv.xport.satz.Datensatz#setSparte(int)
      */
     @Override
-    public void setSparte(int x) {
+    public void setSparte(final int x) {
         if (this.getSatzart() == x) {
             log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
         }
