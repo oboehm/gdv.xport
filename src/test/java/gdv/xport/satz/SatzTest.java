@@ -33,12 +33,12 @@ import org.apache.commons.logging.*;
 import org.junit.*;
 
 /**
+ * Test-Klasse fuer Satz.
+ * 
  * @author oliver
  * @since 19.10.2009
- * @version $Revision$
- *
  */
-public class SatzTest {
+public final class SatzTest {
 
     private static final Log log = LogFactory.getLog(SatzTest.class);
     private Satz satz = new Datensatz(123);
@@ -54,6 +54,9 @@ public class SatzTest {
         Config.setEOD("");
     }
 
+    /**
+     * Ein einfacher Test, der lediglich die Satzart ueberprueft.
+     */
     @Test
     public void testSatz() {
         Satz satz100 = new Datensatz(100, 1);
@@ -102,6 +105,13 @@ public class SatzTest {
         assertSame(Feld.NULL_FELD, f);
     }
 
+    /**
+     * Ein Export mit einem Teildatensatz sollte aus genau 256 Bytes bestehen,
+     * da in der SetUp-Methode das EOD-Zeichen auf "" gesetzt wurde.
+     * 
+     * @throws IOException
+     *             sollte nicht auftreten, da wir mit StringWriter arbeiten
+     */
     @Test
     public void testExport() throws IOException {
          StringWriter swriter = new StringWriter(256);
@@ -112,6 +122,12 @@ public class SatzTest {
          assertEquals(satz.getSatzartFeld().getInhalt(), content.substring(0, 4));
     }
 
+    /**
+     * Ein einfach Import-Test.
+     * 
+     * @throws IOException
+     *             sollte eigenlich passieren, da wir von einem String lesen
+     */
     @Test
     public void testImport() throws IOException {
         Satz x = new Datensatz(123);
@@ -128,12 +144,18 @@ public class SatzTest {
         assertEquals(sbuf.toString(), x.toLongString());
     }
 
+    /**
+     * Ein unbekannte Datensatz ist nicht valide.
+     */
     @Test
     public void testIsValid() {
         Satz a = new Datensatz("xxxx", 1);
         assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
     }
 
+    /**
+     * Ein (Daten-)Satz mit einem nicht validen Feld ist auch nicht valide.
+     */
     @Test
     public void testIsValidWithInvalidFeld() {
         NumFeld schrott = new NumFeld("schrott", "xxxx");
@@ -141,6 +163,9 @@ public class SatzTest {
         assertFalse(satz + " has invalid fields!", satz.isValid());
     }
 
+    /**
+     * Bei einem unbekannten Datensatz sollte die Validierung fehlschlagen.
+     */
     @Test
     public void testValidate() {
         Satz a = new Datensatz("xxxx", 1);
@@ -152,6 +177,10 @@ public class SatzTest {
         assertEquals(2, violations.size());
     }
 
+    /**
+     * Zwei gleiche Datensaetze muessen natuerlich auch den gleichen
+     * Hashcode besitzen.
+     */
     @Test
     public void testIsEquals() {
         Satz a = new Datensatz(123);
@@ -160,6 +189,20 @@ public class SatzTest {
         assertEquals(a.hashCode(), b.hashCode());
         b.add(new Feld("c", 5, 'c'));
         assertFalse(a + " differs from " + b, a.equals(b));
+    }
+    
+    /**
+     * Hier testen wir das Enfernen von Teildatensaetze.
+     * @since 0.4
+     */
+    @Test
+    public void testRemoveTeildatensatz() {
+        Satz s = new Vorsatz();
+        int n = s.getTeildatensaetze().size();
+        s.removeTeildatensatz(n);
+        assertEquals(n-1, s.getTeildatensaetze().size());
+        s.removeTeildatensatz(1);
+        assertEquals(n-2, s.getTeildatensaetze().size());
     }
 
 }
