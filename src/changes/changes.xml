@@ -19,6 +19,9 @@
 
     <release version="0.4.0" date="2010"
              description="Support fuer Sparte 030">
+      <action dev="oboehm" type="update" date="1-Jan-2010" >
+        Teildatensaetze koennen jetzt entfernt und hinzugefuegt werden.
+      </action>
       <action dev="oboehm" type="add" date="21-Dez-2009" >
         Satz 0210.030 wird jetzt direkt unterstuetzt.
       </action>

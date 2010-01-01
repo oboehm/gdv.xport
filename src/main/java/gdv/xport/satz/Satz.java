@@ -98,7 +98,7 @@ public abstract class Satz {
      *
      * @since 0.2
      */
-    public Collection<Teildatensatz> getTeildatensaetze() {
+    public final Collection<Teildatensatz> getTeildatensaetze() {
         return Arrays.asList(this.teildatensatz);
     }
 
@@ -111,7 +111,7 @@ public abstract class Satz {
      *
      * @since 0.2
      */
-    public Teildatensatz getTeildatensatz(final int n) {
+    public final Teildatensatz getTeildatensatz(final int n) {
         return this.teildatensatz[n-1];
     }
     
@@ -121,7 +121,7 @@ public abstract class Satz {
      * 
      * @since 0.4
      */
-    public void removeAllTeildatensaetze() {
+    public final void removeAllTeildatensaetze() {
         this.teildatensatz = new Teildatensatz[0];
     }
     
@@ -131,7 +131,7 @@ public abstract class Satz {
      * @since 0.4
      * @param n ab hier wird abgeschnitten (n >= 1)
      */
-    public void removeAllTeildatensaetze(final int n) {
+    public final void removeAllTeildatensaetze(final int n) {
         if ((n < 1) || (n > this.teildatensatz.length)) {
             throw new IllegalArgumentException(n + " liegt nicht zwischen 1 und "
                     + this.teildatensatz.length);
@@ -147,7 +147,7 @@ public abstract class Satz {
      * @since 0.4
      * @param n der gewuenschte Teildatensatz (beginnend bei 1)
      */
-    public void removeTeildatensatz(final int n) {
+    public final void removeTeildatensatz(final int n) {
         if ((n < 1) || (n > this.teildatensatz.length)) {
             throw new IllegalArgumentException(n + " liegt nicht zwischen 1 und "
                     + this.teildatensatz.length);
@@ -161,7 +161,7 @@ public abstract class Satz {
      * @since 0.4
      * @param tds der neue (gefuellte) Teildatensatz
      */
-    public void add(final Teildatensatz tds) {
+    public final void add(final Teildatensatz tds) {
         this.teildatensatz = (Teildatensatz[]) ArrayUtils.add(this.teildatensatz, tds);
     }
 
@@ -180,7 +180,7 @@ public abstract class Satz {
      * @param feld the feld
      * @param teildatensatzNr the teildatensatz nr
      */
-    public void add(final Feld feld, final int teildatensatzNr) {
+    public final void add(final Feld feld, final int teildatensatzNr) {
         if (feld.getByteAdresse() > 256) {
             throw new IllegalArgumentException(feld + " ueberschreitet Teildatensatz-Grenze");
         }
@@ -205,7 +205,7 @@ public abstract class Satz {
      * @param name Name des Felds (Bezeichnung)
      * @param value the value
      */
-    public void set(final String name, final String value) {
+    public final void set(final String name, final String value) {
         boolean found = false;
         for (int i = 0; i < teildatensatz.length; i++) {
             Feld x = teildatensatz[i].getFeld(name);
@@ -227,7 +227,7 @@ public abstract class Satz {
      * @return Inhalt des gefundenden Felds
      * (NULL_STRING, falls 'name' nicht gefunden wurde)
      */
-    public String get(final String name) {
+    public final String get(final String name) {
         Feld f = getFeld(name);
         if (f == Feld.NULL_FELD) {
             return NULL_STRING;
@@ -265,7 +265,7 @@ public abstract class Satz {
      * @param name gewuenschter Bezeichner des Feldes
      * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
      */
-    public String getFeldInhalt(final String name) {
+    public final String getFeldInhalt(final String name) {
         return this.getFeld(name).getInhalt().trim();
     }
 
@@ -277,7 +277,7 @@ public abstract class Satz {
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
      * @since 0.2
      */
-    public Feld getFeld(final String name, int nr) {
+    public final Feld getFeld(final String name, int nr) {
         assert (0 < nr) &&  (nr <= teildatensatz.length) : nr + " liegt ausserhalb des Bereichs";
         return teildatensatz[nr-1].getFeld(name);
     }
@@ -290,7 +290,7 @@ public abstract class Satz {
      * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
      * @since 0.3
      */
-    public String getFeldInhalt(final String name, int nr) {
+    public final String getFeldInhalt(final String name, int nr) {
         return this.getFeld(name, nr).getInhalt().trim();
     }
 
@@ -299,7 +299,7 @@ public abstract class Satz {
      *
      * @return the satzart
      */
-    public NumFeld getSatzartFeld() {
+    public final NumFeld getSatzartFeld() {
         return this.satzart;
     }
 
@@ -307,7 +307,7 @@ public abstract class Satz {
      * @since 0.3
      * @return die Satzart als int
      */
-    public int getSatzart() {
+    public final int getSatzart() {
         return this.satzart.toInt();
     }
 
@@ -329,7 +329,7 @@ public abstract class Satz {
      * @param ostream z.B. System.out
      * @throws IOException falls mal was schief geht
      */
-    public void export(final OutputStream ostream) throws IOException {
+    public final void export(final OutputStream ostream) throws IOException {
         Writer writer = new OutputStreamWriter(ostream);
         export(writer);
         writer.flush();
@@ -369,7 +369,7 @@ public abstract class Satz {
      * @param s der komplette Satz
      * @return 256, 257 oder 258
      */
-    protected int getSatzlength(final String s) {
+    protected final int getSatzlength(final String s) {
         int satzlength = 256;
         try {
             char c256 = s.charAt(256);

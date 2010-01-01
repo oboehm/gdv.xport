@@ -33,13 +33,15 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.logging.*;
 import org.junit.*;
 
+import patterntesting.annotation.concurrent.RunTestsParallel;
+
 /**
  * @author oliver
  * @since 23.10.2009
  * @version $Revision$
  *
  */
-//@RunTestsParallel
+@RunTestsParallel
 public final class DatenpaketTest {
 
     private static final Log log = LogFactory.getLog(Datenpaket.class);
