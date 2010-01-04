@@ -31,6 +31,19 @@
   
   	<plugins>
   	
+      <!--
+          Maven Site Plugin
+          call 'mvn site:site' to generate web site
+          see http://maven.apache.org/plugins/maven-site-plugin/examples/creating-content.html
+      -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <locales>de</locales>
+        </configuration>
+      </plugin>
+
   	  <!-- we want Java6 -->
   	  <plugin>
   	  	<groupId>org.apache.maven.plugins</groupId>
