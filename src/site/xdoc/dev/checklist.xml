@@ -36,14 +36,14 @@
           <td>D-Day</td>
           <td></td>
           <td>Finaler Release-Build und Release-Test</td>
-          <td>'mvn clean install' (beinhaltet auch 'mvn test')</td>
+          <td>'mvn clean install source:jar javadoc:jar site' (beinhaltet auch 'mvn test')</td>
         </tr>
         <tr>
           <td>D-Day</td>
           <td></td>
           <td>Auslieferung</td>
           <td>
-            Jar-File (target/gdv-xport-0.x.x.jar) unter http://www.agentes.de/maven2/repository
+            Jar-Files (target/gdv-xport-*.jar) unter http://www.agentes.de/maven2/repository
             kopieren
           </td>
         </tr>
@@ -52,9 +52,9 @@
           <td></td>
           <td>Label setzen</td>
           <td>
-            git tag GIT_XPORT_0_2_0 (lokal)
+            git tag GIT_XPORT_0_4_0 (lokal)
             <br/>
-            git push git@github.com:oboehm/gdv.xport.git tag GIT_XPORT_0_2_0 (remote)
+            git push git@github.com:oboehm/gdv.xport.git tag GIT_XPORT_0_4_0 (remote)
           </td>
         </tr>
         <tr>
