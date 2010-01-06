@@ -15,7 +15,7 @@ public class AlphaNumFeld extends Feld {
      * @param name Bezeichner
      * @param s Inhalt
      */
-    public AlphaNumFeld(String name, String s) {
+    public AlphaNumFeld(final String name, final String s) {
         super(name, s, Align.LEFT);
     }
 
@@ -24,7 +24,7 @@ public class AlphaNumFeld extends Feld {
      * @param start Start-Byte (beginnend bei 1)
      * @param s Inhalt
      */
-    public AlphaNumFeld(String name, int start, String s) {
+    public AlphaNumFeld(final String name, final int start, final String s) {
         super(name, start, s, Align.LEFT);
     }
 
@@ -33,7 +33,7 @@ public class AlphaNumFeld extends Feld {
      * @param length Laenge in Bytes
      * @param start Start-Byte (beginnend bei 1)
      */
-    public AlphaNumFeld(String name, int length, int start) {
+    public AlphaNumFeld(final String name, final int length, final int start) {
         super(name, length, start, Align.LEFT);
     }
 
@@ -43,7 +43,7 @@ public class AlphaNumFeld extends Feld {
      * @param start Start-Byte (beginnend bei 1)
      * @param s Inhalt
      */
-    public AlphaNumFeld(String name, int length, int start, String s) {
+    public AlphaNumFeld(final String name, final int length, final int start, final String s) {
         super(name, length, start, s, Align.LEFT);
     }
 
@@ -53,7 +53,7 @@ public class AlphaNumFeld extends Feld {
      * @param start Start-Byte (beginnend bei 1)
      * @param alignment Ausrichtung
      */
-    public AlphaNumFeld(String name, int length, int start, Align alignment) {
+    public AlphaNumFeld(final String name, final int length, final int start, final Align alignment) {
         super(name, length, start, alignment);
     }
 
@@ -61,7 +61,7 @@ public class AlphaNumFeld extends Feld {
      * @param length Laenge in Bytes
      * @param start Start-Byte (beginnend bei 1)
      */
-    public AlphaNumFeld(int length, int start) {
+    public AlphaNumFeld(final int length, final int start) {
         super(length, start, Align.LEFT);
     }
 
@@ -70,7 +70,7 @@ public class AlphaNumFeld extends Feld {
      * @param start Start-Byte (beginnend bei 1)
      * @param alignment Ausrichtung
      */
-    public AlphaNumFeld(int length, int start, Align alignment) {
+    public AlphaNumFeld(final int length, final int start, final Align alignment) {
         super(length, start, alignment);
     }
 
@@ -80,7 +80,7 @@ public class AlphaNumFeld extends Feld {
      * @param start Start-Byte (beginnend bei 1)
      * @param inhalt einzelnes Zeichen
      */
-    public AlphaNumFeld(String name, int length, int start, char inhalt) {
+    public AlphaNumFeld(final String name, final int length, final int start, final char inhalt) {
         super(name, length, start, inhalt, Align.LEFT);
     }
 

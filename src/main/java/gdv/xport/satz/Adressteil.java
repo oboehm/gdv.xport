@@ -26,7 +26,7 @@ import static gdv.xport.feld.Bezeichner.*;
  * @since 12.10.2009
  * @version $Revision$
  */
-public class Adressteil extends Datensatz {
+public final class Adressteil extends Datensatz {
 
     private void setUpDatenfelder() {
         // Teildatensatz 1

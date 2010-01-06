@@ -25,14 +25,14 @@ package gdv.xport.feld;
  * @since 11.10.2009
  * @version $Revision$
  */
-public class BetragMitVorzeichen extends Betrag {
+public final class BetragMitVorzeichen extends Betrag {
 
     /**
      * @param name Bezeichner
      * @param length das Vorzeichen muss dabei mitgezaehlt werden
      * @param start Start-Byte (beginnend bei 1)
      */
-    public BetragMitVorzeichen(String name, int length, int start) {
+    public BetragMitVorzeichen(final String name, final int length, final int start) {
         super(name, length, start);
         this.setVorzeichen('+');
     }
@@ -41,7 +41,7 @@ public class BetragMitVorzeichen extends Betrag {
      * Vorzeichen setzen.
      * @param c '+' oder '-'
      */
-    public void setVorzeichen(char c) {
+    public void setVorzeichen(final char c) {
         this.setInhalt(c, this.getAnzahlBytes() - 1);
     }
 
@@ -54,11 +54,11 @@ public class BetragMitVorzeichen extends Betrag {
         return s.charAt(s.length() - 1);
     }
 
-    /* (non-Javadoc)
+    /*
      * @see gdv.xport.feld.Betrag#setInhalt(double)
      */
     @Override
-    public void setInhalt(double x) {
+    public void setInhalt(final double x) {
         if (x >= 0) {
             super.setInhalt(x * 10);
             this.setVorzeichen('+');
@@ -72,7 +72,7 @@ public class BetragMitVorzeichen extends Betrag {
      * @see gdv.xport.feld.Betrag#setInhalt(int)
      */
     @Override
-    public void setInhalt(int n) {
+    public void setInhalt(final int n) {
         this.setInhalt((long) n);
     }
 
@@ -80,7 +80,7 @@ public class BetragMitVorzeichen extends Betrag {
      * @see gdv.xport.feld.NumFeld#setInhalt(long)
      */
     @Override
-    public void setInhalt(long n) {
+    public void setInhalt(final long n) {
         if (n >= 0) {
             super.setInhalt(n * 10);
             this.setVorzeichen('+');
@@ -118,8 +118,6 @@ public class BetragMitVorzeichen extends Betrag {
         super.resetInhalt();
         this.setVorzeichen('+');
     }
-
-
 
 }
 
