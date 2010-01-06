@@ -42,20 +42,24 @@ public class AbstractSatzTest {
     /** zum Testen nehmen wir hier die VU-Nr. der Oerag */
     protected static final VUNummer VU_NUMMER = new VUNummer("5183");
 
+    /**
+     * Test aufsetzen.
+     */
     @BeforeClass
     public static void setUpBeforeClass() {
         Config.setVUNummer(VU_NUMMER);
     }
 
     /**
-     * @param satz
+     * @param satz Satz
      * @param startByte beginnend bei 1
      * @param endByte   beginnend bei 1
-     * @param expected
-     * @throws IOException
+     * @param expected erwarteter Export-String
+     * @param expectedLength erwartete Laenge
+     * @throws IOException sollte bei StringWriter eigentlich nicht vorkommen
      */
-    protected void checkExport(Satz satz, int startByte, int endByte,
-            String expected, int expectedLength) throws IOException {
+    protected void checkExport(final Satz satz, final int startByte, final int endByte,
+            final String expected, final int expectedLength) throws IOException {
         StringWriter swriter = new StringWriter(768);
         satz.export(swriter);
         String data = swriter.toString();

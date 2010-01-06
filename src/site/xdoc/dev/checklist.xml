@@ -30,7 +30,7 @@
           <td>D-Day</td>
           <td></td>
           <td>Versions-Nummer aktualisieren</td>
-          <td>in pom.xml ueberall "-SNAPSHOT" entfernen</td>
+          <td>in pom.xml &#252;berall "-SNAPSHOT" entfernen</td>
         </tr>
         <tr>
           <td>D-Day</td>
@@ -61,7 +61,7 @@
           <td>D-Day</td>
           <td>offen</td>
           <td>Doku und Reports generieren</td>
-          <td>'mvn site' und anschliessend target/site nach
+          <td>'mvn site' und anschlie&#223;end target/site nach
             http://repository.agentes.de/gdv/gdv-xport/site/...
             kopieren
           </td>
@@ -69,8 +69,8 @@
         <tr>
           <td>nachher</td>
           <td></td>
-          <td>Beginn mit naechstem Snapshot</td>
-          <td>pom.xml: Version hochzaehlen, "-SNAPSHOT" anhaengen</td>
+          <td>Beginn mit n&#228;chstem Snapshot</td>
+          <td>pom.xml: Version hochz&#228;hlen, "-SNAPSHOT" anh&#228;ngen</td>
         </tr>
         <tr>
           <td>nachher</td>

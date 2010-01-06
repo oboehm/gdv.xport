@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <document>
 
@@ -13,18 +13,18 @@
       <p>
         gdv.xport ist in erster Linie eine Java-Bibliothek,
         auch wenn diese ein kleines 
-        <a href="../xref/gdv/xport/Main.html#30">Main-Programm</a> enthaelt.
+        <a href="../xref/gdv/xport/Main.html#30">Main-Programm</a> enth&#228;lt.
       </p>
-      <subsection name="Abhaengige Bibliotheken">
+      <subsection name="Abh&#228;ngige Bibliotheken">
       	<p>
-      	  gdv.xport haengt von einigen weiteren Bibliotheken ab, die Sie unter
+      	  gdv.xport h&#228;ngt von einigen weiteren Bibliotheken ab, die Sie unter
       	  <a href="../dependencies.html">dependencies.html</a> aufgelistet sehen.
       	  Binden Sie diese Bibliotheken in den Classpath ein.
       	</p>
       </subsection>
       <subsection name="Hello World">
         <p>
-          Fuer ein erstes Beispiel wollen wir ein leeres Datenpaket erzeugen,
+          F&#252;r ein erstes Beispiel wollen wir ein leeres Datenpaket erzeugen,
           die VU-Nummer auf "Hello" und den Adressat (im Vorsatz) auf "World"
           setzen.
         </p>
@@ -41,7 +41,7 @@
 ]]></source>
       </subsection>
         <p>
-          auf der Console ausgegeben - der Vorsatz mit 3 Teildatensaetze und "Hello" als
+          auf der Console ausgegeben - der Vorsatz mit 3 Teildatens&#228;tze und "Hello" als
           VU-Nummer und Absender sowie "World" als Absender, gefolgt vom Nachsatz mit der
           Satznummer "9999".
         </p>

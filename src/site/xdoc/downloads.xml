@@ -11,7 +11,7 @@
 
     <section name="Download">
       <p>
-        gdv.xport kann als normale Jar-Datei ueber
+        gdv.xport kann als normale Jar-Datei &#252;ber
         <a href="http://repository.agentes.de/gdv/gdv-xport/">http://repository.agentes.de/gdv/gdv-xport/</a>
         heruntergeladen werden.
       </p>
@@ -21,12 +21,12 @@
       <p>
         Wer mit Maven arbeitet, findet das entsprechende Maven-Repository unter
         <a href="http://repository.agentes.de/">http://repository.agentes.de/</a>.
-        Folgende Angaben sind dazu im pom.xml faellig:
+        Folgende Angaben sind dazu im pom.xml f&#228;llig:
       </p>
       <subsection name="Dependency">
         <p>
-          Im Abschnitt "dependencies" wird als weitere Abhaengigkeit die
-          gdv.xport-Bibliothek eingetragen (hier fuer die Version 0.1.0):
+          Im Abschnitt "dependencies" wird als weitere Abh&#228;ngigkeit die
+          gdv.xport-Bibliothek eingetragen (hier f&#252;r die Version 0.1.0):
         </p>
 <source><![CDATA[
     <dependency>
@@ -40,7 +40,7 @@
         <p>
           Das entsprechende Repository
           <a href="http://repository.agentes.de/">repository.agentes.de</a>
-          traegt man entweder in sein lokales <tt>settings.xml</tt> (unter
+          tr&#228;gt man entweder in sein lokales <tt>settings.xml</tt> (unter
           $HOME/.m2 zu finden) oder ebenfalls in sein <tt>pom.xml</tt>
           unter &lt;repositories&gt; ... &lt;/repositories&gt; ein:
         </p>

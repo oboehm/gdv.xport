@@ -17,13 +17,13 @@
 
   <body>
 
-    <release version="0.4.0" date="2010"
-             description="Support fuer Sparte 030">
+    <release version="0.4.0" date="06-Jan-2010"
+             description="Support f&#252;r Sparte 030">
       <action dev="oboehm" type="update" date="1-Jan-2010" >
-        Teildatensaetze koennen jetzt entfernt und hinzugefuegt werden.
+        Teildatens&#228;tze k&#246;nnen jetzt entfernt und hinzugef&#252;gt werden.
       </action>
       <action dev="oboehm" type="add" date="21-Dez-2009" >
-        Satz 0210.030 wird jetzt direkt unterstuetzt.
+        Satz 0210.030 wird jetzt direkt unterst&#252;tzt.
       </action>
     </release>
 
@@ -34,7 +34,7 @@
         XSD unter http://labs.agentes.de/xsd/
       </action>
       <action dev="oboehm" type="update">
-        Datenpakete koennen jetzt auch ueber HTTP importiert werden
+        Datenpakete k&#246;nnen jetzt auch &#252;ber HTTP importiert werden
       </action>
     </release>
 
@@ -46,43 +46,43 @@
     </release>
 
     <release version="0.2.0" date="16-Nov-2009"
-             description="Registrierung eigener Datensaetze">
+             description="Registrierung eigener Datens&#228;tze">
       <action dev="oboehm" type="add">
-        Ueber die SatzFactory-Klasse koennen jetzt eigene Datensaetze
-        registriert und/oder bestehende Datensaetze ersetzt werden.
+        &#220;ber die SatzFactory-Klasse k&#246;nnen jetzt eigene Datens&#228;tze
+        registriert und/oder bestehende Datens&#228;tze ersetzt werden.
       </action>
       <action dev="oboehm" type="add">
-        (Teil-)Datensaetze koennen jetzt als XML ausgegeben werden.
+        (Teil-)Datens&#228;tze k&#246;nnen jetzt als XML ausgegeben werden.
       </action>
     </release>
 
     <release version="0.1.2" date="09-Nov-2009"
              description="Satz 0220.070 definiert">
       <action dev="oboehm" type="add">
-        Datensatz 220 hinzugefuegt,
-        Felder fuer Sparte 70 (Rechtsschutz) definiert. 
+        Datensatz 220 hinzugef&#252;gt,
+        Felder f&#252;r Sparte 70 (Rechtsschutz) definiert. 
       </action>
       <action dev="oboehm" type="update">
-        Datum-Felder werden jetzt auch auf gueltiges Datum validiert.
+        Datum-Felder werden jetzt auch auf g&#252;ltiges Datum validiert.
       </action>
     </release>
 
     <release version="0.1.1" date="07-Nov-2009"
              description="Dokumentation aktualisiert">
       <action dev="oboehm" type="update">
-        Dokumentation aktualisiert (u.a. Download-Sektion hinzugefuegt)
+        Dokumentation aktualisiert (u.a. Download-Sektion hinzugef&#252;gt)
       </action>
       <action dev="oboehm" type="update">
         Unterklassen von VertragsspezifischerTeil entsorgt
         (die verschiedenen Sparten werden jetzt direkt von dieser
-        Klasse unterstuetzt).
+        Klasse unterst&#252;tzt).
       </action>
     </release>
   
     <release version="0.1.0" date="06-Nov-2009"
-             description="Import-Unterstuetzung">
+             description="Import-Unterst&#252;tzung">
       <action dev="oboehm" type="add">
-        Import-Unterstuetzung mit ISO-8859-1 als Default-Encoding.
+        Import-Unterst&#252;tzung mit ISO-8859-1 als Default-Encoding.
       </action>
       <action dev="oboehm" type="add">
         Einsatz von Validatoren, basierend auf OVal
@@ -90,19 +90,20 @@
       </action>
       <action dev="oboehm" type="add">
         Allgemeiner und Spartenspezifischer Vertragsteil als Klassen
-        hinzugefuegt.
+        hinzugef&#252;gt.
       </action>
     </release>
 
     <release version="0.0.2" date="26-Okt-2009"
-             description="Datenpaket hinzugefuegt">
+             description="Datenpaket hinzugef&#252;gt">
       <action dev="oboehm" type="add">
-        Klasse "Datenpaket" hinzugefuegt, zu dem verschiedene Satz-Klassen hinzugefuegt werden
-        koennen. Damit ist ein leerer Export (der nur aus Vorsatz und Nachsatz besteht) moeglich.
+        Klasse "Datenpaket" hinzugef&#252;gt, zu dem verschiedene Satz-Klassen hinzugef&#252;gt werden
+        k&#246;nnen. Damit ist ein leerer Export (der nur aus Vorsatz und Nachsatz besteht)
+        m&#246;glich.
       </action>
       <action dev="oboehm" type="update">
-        Export mit anderen Datensaetze sind prinzipiell auch moeglich, erfordern aber etwas mehr
-        Aufwand, da eine Datensatz-spezifische Unterstuetzung noch weitgehend fehlt.
+        Export mit anderen Datens&#228;tze sind prinzipiell auch m&#246;glich, erfordern aber etwas mehr
+        Aufwand, da eine Datensatz-spezifische Unterst&#252;tzung noch weitgehend fehlt.
       </action>
       <action dev="oboehm" type="add">
         Einsatz der PatternTesting-Bibliothek und Umwandlung in ein AspectJ-Projekt.

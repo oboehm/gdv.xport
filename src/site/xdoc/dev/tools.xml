@@ -16,22 +16,37 @@
           Als Java-IDE wird Eclipse 3.5 mit folgenden Plugins verwendet:
         </p>
         <ul>
-          <li>AJDT (sonst lassen sich die JUnit-Tests nicht ausfuehren)</li>
-          <li>EGit (http://www.jgit.org/updates)</li>
+          <li>AJDT (sonst lassen sich die JUnit-Tests nicht ausf&#252;hren)</li>
+          <li>
+            EGit (<a href="http://www.jgit.org/updates">http://www.jgit.org/updates</a>)
+          </li>
+        </ul>
+        <p>
+          Zur Qualit&#228;tssicherung kommen folgende Eclipse-Plugins zum Einsatz:
+        </p>
+        <ul>
+          <li>
+            FindBugs-Plugin von
+            <a href="http://findbugs.cs.umd.edu/eclipse/">http://findbugs.cs.umd.edu/eclipse/</a>
+          </li>
+          <li>
+            Checkstyle-Plugin von
+            <a href="http://eclipse-cs.sourceforge.net/">http://eclipse-cs.sourceforge.net/</a>
+          </li>
         </ul>
       </subsection>
       
       <subsection name="Maven">
         <p>
-          Maven wird zum Bauen und zum Aufloesen der Abhaengigkeiten verwendet.
-          Um die abhaengigen Bibliotheken herunterzuladen, starten Sie am besten
+          Maven wird zum Bauen und zum Aufl&#246;sen der Abh&#228;ngigkeiten verwendet.
+          Um die abh&#228;ngigen Bibliotheken herunterzuladen, starten Sie am besten
           <tt>mvn test</tt>. Damit werden Bibliotheken, die noch sich noch nicht
           auf Ihrem Rechner befinden, heruntergeladen.
         </p>
         <p>
-          In Eclipse muessen Sie noch die Classpath-Variable M2_REPO definieren,
-          damit Eclipse die abhaengigen Bibliotheken findet. Das Maven-Repository
-          befindet sich ueblicherweise unter
+          In Eclipse m&#252;ssen Sie noch die Classpath-Variable M2_REPO definieren,
+          damit Eclipse die abh&#228;ngigen Bibliotheken findet. Das Maven-Repository
+          befindet sich &#252;blicherweise unter
           <tt>.m2/repository</tt> im Heimatverzeichnis.
         </p>
       </subsection>

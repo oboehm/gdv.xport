@@ -46,6 +46,9 @@ public class AdressteilTest extends AbstractSatzTest {
         checkExport(adressteil, 512, 512, "2", 1280);
     }
 
+    /**
+     * Test-Methode fuer setName().
+     */
     @Test
     public void testSetName() {
         adressteil.setName("Donald", "Duck");

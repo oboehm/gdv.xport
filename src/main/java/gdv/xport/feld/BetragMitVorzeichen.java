@@ -28,18 +28,27 @@ package gdv.xport.feld;
 public class BetragMitVorzeichen extends Betrag {
 
     /**
+     * @param name Bezeichner
      * @param length das Vorzeichen muss dabei mitgezaehlt werden
-     * @param start
+     * @param start Start-Byte (beginnend bei 1)
      */
     public BetragMitVorzeichen(String name, int length, int start) {
         super(name, length, start);
         this.setVorzeichen('+');
     }
 
+    /**
+     * Vorzeichen setzen.
+     * @param c '+' oder '-'
+     */
     public void setVorzeichen(char c) {
         this.setInhalt(c, this.getAnzahlBytes() - 1);
     }
 
+    /**
+     * Vorzeichen liefern.
+     * @return '+' oder '-'
+     */
     public char getVorzeichen() {
         String s = this.getInhalt();
         return s.charAt(s.length() - 1);

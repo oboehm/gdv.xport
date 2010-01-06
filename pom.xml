@@ -12,7 +12,7 @@
   <groupId>gdv</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>jar</packaging>
-  <version>0.4.0-SNAPSHOT</version>
+  <version>0.4.0</version>
   <name>GDV-Xport</name>
   <url>http://github.com/oboehm/gdv.xport</url>
   <!-- see http://maven.apache.org/pom.html#Licenses -->

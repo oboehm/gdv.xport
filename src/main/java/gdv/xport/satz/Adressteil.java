@@ -96,12 +96,22 @@ public class Adressteil extends Datensatz {
         add(new AlphaNumFeld(VORZUGSSEUERBERECHTIGUNG_PROZENT, 5, 145), 5);
     }
 
+    /**
+     * Default Constructor.
+     */
     public Adressteil() {
         super("0100", 5);
         this.setUpDatenfelder();
     }
 
-    public void setName(String vorname, String nachname) {
+    /**
+     * Setzt den Vor- und Nachname.
+     * Der mittlere Name bleibt dabei unberuehrt.
+     * 
+     * @param vorname z.B. "Max"
+     * @param nachname z.B. "Mustermann"
+     */
+    public void setName(final String vorname, final String nachname) {
         this.set(NAME1, vorname);
         this.set(NAME3, nachname);
     }

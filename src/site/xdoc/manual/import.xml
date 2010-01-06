@@ -20,12 +20,23 @@
         als XML (Option "-xml") ausgegeben und
         anschliessend validiert (Option "-validate").
       </p>
-      <subsection name="Iterieren ueber die einzelnen Saetze..." >
+      <p>
+        Und hier jetzt der Import:
+      </p>
+<source><![CDATA[
+Datenpaket datenpaket = new Datenpaket();
+datenpaket.importFrom(url);
+]]></source>
+      <p>
+        Neben dem Input einer URL wird auch der Import einer Datei, von einem
+        InputStream oder Reader unterst&#252;tzt.
+      </p>
+      <subsection name="Iterieren &#252;ber die einzelnen S&#228;tze..." >
         <p>
           Wenn Sie wissen wollen, wie Sie nach einem Import durch die einzelnen
-          Saetze iterieren koennen, schauen Sie sich am besten die
+          S&#228;tze iterieren k&#246;nnen, schauen Sie sich am besten die
           <a href="../xref/gdv/xport/Datenpaket.html">Datenpaket</a>-Klasse an,
-          wie die einzelnen Datensaetze in der export-Methode rausgeschrieben werden:
+          wie die einzelnen Datens&#228;tze in der export-Methode rausgeschrieben werden:
         </p>
 <source><![CDATA[
 for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext();) {
@@ -36,7 +47,7 @@ for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext();)
       </subsection>
       <subsection name="Zugriff auf einzelne Felder">
         <p>
-          Ueber einen <a href="../xref/gdv/xport/satz/Satz.html">Satz</a>
+          &#220;ber einen <a href="../xref/gdv/xport/satz/Satz.html">Satz</a>
           oder <a href="../xref/gdv/xport/satz/Datensatz.html">Datensatz</a>
           kommen Sie an die einzelnen
           <a href="../xref/gdv/xport/feld/Feld.html">Feld</a>er ran. Dazu geben

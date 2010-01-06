@@ -18,7 +18,6 @@
 
 package gdv.xport.feld;
 
-// TODO: Auto-generated Javadoc
 /**
  * Ein Zeichen ist ein Feld der Laenge 1.
  *

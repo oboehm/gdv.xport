@@ -29,7 +29,6 @@ import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.logging.*;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Datum.
  *
