@@ -61,7 +61,7 @@ public class Config {
      * Damit kann die VU-Nummer gesetzt werden.
      * @param nr die VU-Nummer als String
      */
-    public static synchronized void setVUNummer(String nr) {
+    public static synchronized void setVUNummer(final String nr) {
         setVUNummer(new VUNummer(nr));
     }
 
@@ -69,7 +69,7 @@ public class Config {
      * Damit kann die VU-Nummer gesetzt werden.
      * @param nr VU-Nummer
      */
-    public static synchronized void setVUNummer(VUNummer nr) {
+    public static synchronized void setVUNummer(final VUNummer nr) {
         vunummer = nr;
         log.info("konfigurierte VU-Nummer: " + vunummer);
     }
@@ -95,7 +95,7 @@ public class Config {
      * @since 0.3
      * @param linefeed z.B. "\n"
      */
-    public static void setEOD(String linefeed) {
+    public static void setEOD(final String linefeed) {
         eod = linefeed;
     }
 

@@ -51,12 +51,18 @@ public final class Vorsatz extends Satz {
     /** die Versionen fuer die verschiedenen Datensaetze */
     private Map<Integer, Version> versions = new HashMap<Integer, Version>();
 
+    /**
+     * Hiermit wird ein Vorsatz mit 3 Teildatensaetzen erstellt.
+     */
     public Vorsatz() {
         super("0001", 3);
         setUpTeildatensaetze();
         setUpVersions();
     }
 
+    /**
+     * @param content Inhalt des Vorsatzes
+     */
     public Vorsatz(String content) {
         this();
         try {
@@ -135,20 +141,29 @@ public final class Vorsatz extends Satz {
 
     /**
      * Absender ist Byte 10 - 39 im Teildatensatz.
-     * @param name
+     * @param name Absender
      */
     public void setAbsender(String name) {
         this.absender.setInhalt(name);
     }
 
+    /**
+     * @return Absender
+     */
     public String getAbsender() {
         return this.absender.getInhalt().trim();
     }
 
+    /**
+     * @param name neuer Adressat
+     */
     public void setAdressat(String name) {
         this.adressat.setInhalt(name);
     }
 
+    /**
+     * @return Adressat
+     */
     public String getAdressat() {
         return this.adressat.getInhalt().trim();
     }
@@ -162,10 +177,16 @@ public final class Vorsatz extends Satz {
         this.bis.setInhalt(endDatum);
     }
 
+    /**
+     * @param s neuer Vermittler
+     */
     public void setVermittler(String s) {
         this.vermittler.setInhalt(s);
     }
 
+    /**
+     * @return Vermittler
+     */
     public String getVermittler() {
         return this.vermittler.getInhalt().trim();
     }
@@ -183,10 +204,19 @@ public final class Vorsatz extends Satz {
         return this.getFeld(bezeichner).getInhalt();
     }
 
+    /**
+     * @param art Satzart
+     * @return z.B. 1.1
+     */
     public String getVersion(int art) {
         return this.getVersion(getVersionBezeichnung(art));
     }
 
+    /**
+     * @param art Satzart
+     * @param sparte z.B. 70 (Rechtsschutz)
+     * @return z.B. 1.1
+     */
     public String getVersion(int art, int sparte) {
         return this.getVersion(getVersionBezeichnung(art, sparte));
     }

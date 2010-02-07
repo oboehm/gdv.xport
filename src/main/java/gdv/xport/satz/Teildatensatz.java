@@ -46,12 +46,19 @@ public class Teildatensatz extends Satz {
     private final Map<String, Feld> datenfelder = new HashMap<String, Feld>();
     private final Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
 
+    /**
+     * @param satzart z.B. 100
+     */
     public Teildatensatz(NumFeld satzart) {
         super(satzart, 0);
         this.satznummer.setInhalt(' ');
         this.initDatenfelder();
     }
 
+    /**
+     * @param satzart z.B. 1 (Vorsatz)
+     * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
+     */
     public Teildatensatz(NumFeld satzart, int nr) {
         super(satzart, 0);
         if ((nr < 1) || (nr > 9)) {
@@ -97,11 +104,18 @@ public class Teildatensatz extends Satz {
         datenfelder.put(name, feld);
     }
 
+    /**
+     * @param feld ein Feld
+     */
     public void set(Feld feld) {
         String name = feld.getBezeichnung();
         this.set(name, feld);
     }
 
+    /**
+     * @param name Name des Felds
+     * @param feld Feld
+     */
     public void set(String name, Feld feld) {
         datenfelder.put(name, feld);
     }
@@ -206,6 +220,12 @@ public class Teildatensatz extends Satz {
         }
     }
 
+    /**
+     * 2 Teildatensaetze sind gleich, wenn all ihre Felder gleich sind.
+     * 
+     * @param other der andere Teildatensatz
+     * @return true, wenn beide Teildatensaetze gleich sind
+     */
     public boolean equals(Teildatensatz other) {
         if (this.datenfelder.size() != other.datenfelder.size()) {
             return false;

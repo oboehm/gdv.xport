@@ -33,10 +33,16 @@ public class VertragsspezifischerTeil extends Datensatz {
     private static final Log log = LogFactory.getLog(VertragsspezifischerTeil.class);
     private static final int SATZART = 210;
     
+    /**
+     * Default-Constructor.
+     */
     public VertragsspezifischerTeil() {
         super(SATZART);
     }
 
+    /**
+     * @param sparte z.B. 70 (Rechtsschutz)
+     */
     public VertragsspezifischerTeil(final int sparte) {
         this(sparte, getNumberOfTeildatensaetzeFor(sparte));
     }
