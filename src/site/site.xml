@@ -49,6 +49,9 @@
       <item name="Das Hauptprogramm"        href="manual/main.html" />
       <item name="Erweiterungen"            href="manual/extend.html" />
     </menu>
+    <menu name="Folien" href="slides/slides.html" >
+      <item name="Kurz-&#220;bersicht"      href="slides/slides.html" />
+    </menu>
 
     <menu ref="modules" />
 

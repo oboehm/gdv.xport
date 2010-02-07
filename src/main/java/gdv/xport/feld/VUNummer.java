@@ -31,7 +31,7 @@ import static gdv.xport.feld.Bezeichner.*;
 public class VUNummer extends AlphaNumFeld {
 
     /**
-     * @param nr
+     * @param nr VU-Nummer (max. 5 Stellen)
      */
     public VUNummer(String nr) {
         super(VU_NUMMER, nr);
@@ -39,6 +39,10 @@ public class VUNummer extends AlphaNumFeld {
         super.setAnzahlBytes(5);
     }
 
+    /**
+     * @param nr VU-Nummer (max. 5 Stellen)
+     * @param start Start-Byte (beginnend bei 1)
+     */
     public VUNummer(VUNummer nr, int start) {
         super(VU_NUMMER, 5, start, nr.getInhalt());
     }

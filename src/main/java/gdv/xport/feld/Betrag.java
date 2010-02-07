@@ -28,10 +28,18 @@ package gdv.xport.feld;
  */
 public class Betrag extends NumFeld {
 
+    /**
+     * @param name Name des Feldes
+     */
     public Betrag(final String name) {
         super(name, "00000000000000");
     }
 
+    /**
+     * @param name Name des Feldes
+     * @param length Laenge
+     * @param start Start-Byte (beginnend bei 1)
+     */
     public Betrag(final String name, final int length, final int start) {
         super(name, length, start, 0, 2);
     }
@@ -45,6 +53,10 @@ public class Betrag extends NumFeld {
         super.setInhalt(n * 100);
     }
 
+    /**
+     * Setzt den Inhalt eines Feldes neu.
+     * @param x der neue Inhalt
+     */
     public void setInhalt(final double x) {
         assert x >= 0 : "Betrag can't store negative number (" + x + ")";
         long n = Math.round(x * 100);

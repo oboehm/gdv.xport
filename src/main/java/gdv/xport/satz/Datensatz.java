@@ -44,11 +44,17 @@ public class Datensatz extends Satz {
     /** 10 Zeichen, Byte 33 - 42 */
     protected AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 33);
 
+    /**
+     * @param satzart z.B. "0100"
+     */
     public Datensatz(String satzart) {
         super(satzart);
         this.setUpTeildatensaetze();
     }
 
+    /**
+     * @param satzart z.B. 100
+     */
     public Datensatz(int satzart) {
         super(satzart, 1);
         this.setUpTeildatensaetze();
@@ -63,10 +69,19 @@ public class Datensatz extends Satz {
         this.setUpTeildatensaetze();
     }
 
+    /**
+     * @param satzart z.B. 100
+     * @param sparte z.B. 70 (Rechtsschutz)
+     */
     public Datensatz(final int satzart, final int sparte) {
         this(satzart, sparte, 1);
     }
 
+    /**
+     * @param satzart z.B. 100
+     * @param sparte z.B. 70 (Rechtsschutz)
+     * @param n Anzahl der Teildatensaetze
+     */
     public Datensatz(final int satzart, final int sparte, final int n) {
         super(satzart, n);
         this.setSparte(sparte);
@@ -107,6 +122,9 @@ public class Datensatz extends Satz {
         }
     }
 
+    /**
+     * @param x z.B. 70 (Rechtsschutz)
+     */
     public void setSparte(final int x) {
         this.sparte.setInhalt(x);
     }
@@ -125,10 +143,16 @@ public class Datensatz extends Satz {
         return this.sparte;
     }
 
+    /**
+     * @param s VU-Nummer (max. 5 Stellen)
+     */
     public void setVuNummer(final String s) {
         this.vuNummer.setInhalt(s);
     }
 
+    /**
+     * @return die VU-Nummer
+     */
     public String getVuNummer() {
         return this.vuNummer.getInhalt();
     }

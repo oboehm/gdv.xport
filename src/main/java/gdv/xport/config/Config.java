@@ -57,15 +57,29 @@ public class Config {
         vunummer = null;
     }
 
+    /**
+     * Damit kann die VU-Nummer gesetzt werden.
+     * @param nr die VU-Nummer als String
+     */
     public static synchronized void setVUNummer(String nr) {
         setVUNummer(new VUNummer(nr));
     }
 
+    /**
+     * Damit kann die VU-Nummer gesetzt werden.
+     * @param nr VU-Nummer
+     */
     public static synchronized void setVUNummer(VUNummer nr) {
         vunummer = nr;
         log.info("konfigurierte VU-Nummer: " + vunummer);
     }
 
+    /**
+     * Hiermit kann die gesetzte VU-Nummer abgefragt werden.
+     * Falls sie noch nicht gesetzt wurde, wird ein "DUMMY" zurueckgegeben.
+     * 
+     * @return VU-Nummer bzw. "DUMMY"
+     */
     public static synchronized VUNummer getVUNummer() {
         if (vunummer == null) {
             vunummer = new VUNummer(System.getProperty(GDV_VU_NUMMER, DUMMY_VU_NUMMER));

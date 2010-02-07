@@ -44,12 +44,15 @@ public class SpartenspezifischerTeil extends Datensatz {
         super(220);
     }
 
+    /**
+     * @param sparte z.B. 70 (Rechtsschutz)
+     */
     public SpartenspezifischerTeil(final int sparte) {
         this(sparte, getNumberOfTeildatensaetzeFor(sparte));
     }
 
     /**
-     * @param sparte
+     * @param sparte z.B. 70 (Rechtsschutz)
      * @param n Anzahl Teildatensaetze
      */
     public SpartenspezifischerTeil(final int sparte, final int n) {

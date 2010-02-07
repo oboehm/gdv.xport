@@ -35,6 +35,9 @@ import org.junit.Test;
  */
 public class SatzFactoryTest extends AbstractTest {
 
+    /**
+     * Testet getSatz().
+     */
     @Test
     public void testGetSatz() {
         Satz vorsatz = new Vorsatz();

@@ -32,7 +32,7 @@ import javax.xml.stream.XMLStreamException;
  * Diese Demo-Klasse zeigt u.a., wie man einen Datensatz beim
  * gdv-xport-Framework registriert. Es repraesentiert den Datensatz
  * 0210.030 (Unfall, Vertragsspezifischer Teil), definiert aber nur
- * einige wenige ausgewaehlte Felder
+ * einige wenige ausgewaehlte Felder.
  *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.3 (21.11.2009)
@@ -68,7 +68,7 @@ public class MyUnfallDatensatz extends Datensatz {
 
     /**
      * Hiermit initialisieren wir die Klasse mit Satzart 210 und Sparte 30
-     * (Unfall)-
+     * (Unfall).
      */
     public MyUnfallDatensatz() {
         super(210, 30);

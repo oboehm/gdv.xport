@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="0.4.1" date="Feb-2010"
+             description="fehlende (Java)-Docs erg&#228;nzt">
+      <action dev="oboehm" type="update" date="7-Feb-2010" >
+        Dokumentation aktualisiert, Checkstyle-Warnings reduziert
+      </action>
+    </release>
+
     <release version="0.4.0" date="06-Jan-2010"
              description="Support f&#252;r Sparte 030">
       <action dev="oboehm" type="update" date="1-Jan-2010" >

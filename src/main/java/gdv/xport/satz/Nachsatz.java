@@ -44,6 +44,9 @@ public final class Nachsatz extends Satz {
     private final BetragMitVorzeichen schadenbearbeitungsKosten = new BetragMitVorzeichen(
             SCHADENBEARBEITUNGSKOSTEN, 15, 85);
 
+    /**
+     * Default-Constructor.
+     */
     public Nachsatz() {
         super("9999", 1);
         this.setUpTeildatensatz();
@@ -60,56 +63,95 @@ public final class Nachsatz extends Satz {
         add(this.schadenbearbeitungsKosten);
     }
 
+    /**
+     * @param n Anzahl der eingeschlossenen Saetze
+     */
     public void setAnzahlSaetze(int n) {
         this.anzahlSaetze.setInhalt(n);
         this.teildatensatz[0].add(anzahlSaetze);
     }
 
+    /**
+     * @return Anzahl der eingeschlossenen Saetze
+     */
     public int getAnzahlSaetze() {
         return this.anzahlSaetze.toInt();
     }
 
+    /**
+     * Anzahl der Saetze um 1 erhoehen.
+     */
     public void increaseAnzahlSaetze() {
         int n = this.getAnzahlSaetze();
         this.setAnzahlSaetze(n + 1);
     }
 
+    /**
+     * @param s Vermittler
+     */
     public void setVermittler(String s) {
         this.vermittler.setInhalt(s);
     }
 
+    /**
+     * @return Vermittler
+     */
     public String getVermittler() {
         return this.vermittler.getInhalt().trim();
     }
 
+    /**
+     * @param beitrag
+     */
     public void setGesamtBeitrag(double beitrag) {
         this.gesamtBeitrag.setInhalt(beitrag);
     }
 
+    /**
+     * @return Gesamtbeitrag
+     */
     public Betrag getGesamtBeitrag() {
         return this.gesamtBeitrag;
     }
 
+    /**
+     * @param beitrag neuer Gesamtbeitrag
+     */
     public void setGesamtBeitragBrutto(double beitrag) {
         this.gesamtBeitrag.setInhalt(beitrag);
     }
 
+    /**
+     * @return Gesamtbeitrag (Brutto)
+     */
     public BetragMitVorzeichen getGesamtBeitragBrutto() {
         return this.gesamtBeitragBrutto;
     }
 
+    /**
+     * @param betrag neuer Betrag
+     */
     public void setVersicherungsLeistungen(Double betrag) {
         this.versicherungsLeistungen.setInhalt(betrag);
     }
 
+    /**
+     * @return Versichuerungsleistungen
+     */
     public BetragMitVorzeichen getVersicherungsLeistungen() {
         return this.versicherungsLeistungen;
     }
 
+    /**
+     * @param kosten Kosten der Schadensbearbeitung
+     */
     public void setSchadenbearbeitungsKosten(double kosten) {
         this.schadenbearbeitungsKosten.setInhalt(kosten);
     }
 
+    /**
+     * @return Kosten der Schadensbearbeitung
+     */
     public BetragMitVorzeichen getSchadenbearbeitungsKosten() {
         return this.schadenbearbeitungsKosten;
     }
