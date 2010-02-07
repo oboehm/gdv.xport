@@ -109,17 +109,18 @@ public final class Vorsatz extends Satz {
         addVersion(art, new Version(s, byteadresse, version));
     }
 
-    private void addVersion(int art, int sparte, int byteadresse, String version) {
+    private void addVersion(final int art, final int sparte, final int byteadresse,
+            final String version) {
         assert sparte < 1000 : "unbekannte Sparte " + sparte;
         String s = getVersionBezeichnung(art, sparte);
         addVersion(art * 1000 + sparte, new Version(s, byteadresse, version));
     }
 
-    private static String getVersionBezeichnung(int art) {
+    private static String getVersionBezeichnung(final int art) {
         return new Formatter().format("Version Satzart %04d", art).toString();
     }
 
-    private static String getVersionBezeichnung(int art, int sparte) {
+    private static String getVersionBezeichnung(final int art, final int sparte) {
         return new Formatter().format("Version Satzart %04d %03d", art, sparte).toString();
     }
 
@@ -127,7 +128,7 @@ public final class Vorsatz extends Satz {
      * Um die VU-Nummer setzen zu koennen.
      * @param s VU-Nummer (max. 5-stellig)
      */
-    public void setVuNummer(String s) {
+    public void setVuNummer(final String s) {
         assert s.length() <= 5 : s + " darf nur max. 5 Zeichen lang sein";
         this.vuNummer.setInhalt(s);
     }
@@ -143,7 +144,7 @@ public final class Vorsatz extends Satz {
      * Absender ist Byte 10 - 39 im Teildatensatz.
      * @param name Absender
      */
-    public void setAbsender(String name) {
+    public void setAbsender(final String name) {
         this.absender.setInhalt(name);
     }
 
@@ -157,7 +158,7 @@ public final class Vorsatz extends Satz {
     /**
      * @param name neuer Adressat
      */
-    public void setAdressat(String name) {
+    public void setAdressat(final String name) {
         this.adressat.setInhalt(name);
     }
 
@@ -172,7 +173,7 @@ public final class Vorsatz extends Satz {
      * @param startDatum im Format "TTMMJJJJ"
      * @param endDatum im Format "TTMMJJJJ"
      */
-    public void setErstellungsZeitraum(String startDatum, String endDatum) {
+    public void setErstellungsZeitraum(final String startDatum, final String endDatum) {
         this.von.setInhalt(startDatum);
         this.bis.setInhalt(endDatum);
     }
@@ -180,7 +181,7 @@ public final class Vorsatz extends Satz {
     /**
      * @param s neuer Vermittler
      */
-    public void setVermittler(String s) {
+    public void setVermittler(final String s) {
         this.vermittler.setInhalt(s);
     }
 
@@ -200,7 +201,7 @@ public final class Vorsatz extends Satz {
      *            anfangen.
      * @return Version des gewuenschten Bezeichners
      */
-    public String getVersion(String bezeichner) {
+    public String getVersion(final String bezeichner) {
         return this.getFeld(bezeichner).getInhalt();
     }
 
@@ -208,7 +209,7 @@ public final class Vorsatz extends Satz {
      * @param art Satzart
      * @return z.B. 1.1
      */
-    public String getVersion(int art) {
+    public String getVersion(final int art) {
         return this.getVersion(getVersionBezeichnung(art));
     }
 
@@ -217,7 +218,7 @@ public final class Vorsatz extends Satz {
      * @param sparte z.B. 70 (Rechtsschutz)
      * @return z.B. 1.1
      */
-    public String getVersion(int art, int sparte) {
+    public String getVersion(final int art, final int sparte) {
         return this.getVersion(getVersionBezeichnung(art, sparte));
     }
 

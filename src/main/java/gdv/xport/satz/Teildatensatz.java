@@ -40,7 +40,7 @@ import gdv.xport.io.ImportException;
  * @author oliver.boehm@agentes.de
  * @since 04.10.2009
  */
-public class Teildatensatz extends Satz {
+public final class Teildatensatz extends Satz {
 
     private static final Log log = LogFactory.getLog(Teildatensatz.class);
     private final Map<String, Feld> datenfelder = new HashMap<String, Feld>();
@@ -49,7 +49,7 @@ public class Teildatensatz extends Satz {
     /**
      * @param satzart z.B. 100
      */
-    public Teildatensatz(NumFeld satzart) {
+    public Teildatensatz(final NumFeld satzart) {
         super(satzart, 0);
         this.satznummer.setInhalt(' ');
         this.initDatenfelder();
@@ -59,7 +59,7 @@ public class Teildatensatz extends Satz {
      * @param satzart z.B. 1 (Vorsatz)
      * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
      */
-    public Teildatensatz(NumFeld satzart, int nr) {
+    public Teildatensatz(final NumFeld satzart, final int nr) {
         super(satzart, 0);
         if ((nr < 1) || (nr > 9)) {
             throw new IllegalArgumentException("Satznummer (" + nr
@@ -69,7 +69,7 @@ public class Teildatensatz extends Satz {
         this.initDatenfelder();
     }
 
-    protected void createTeildatensaetze(int n) {
+    protected void createTeildatensaetze(final int n) {
         assert n == 0 : "ein Teildatensatz hat keine weiteren Teildatensaetze";
         this.teildatensatz = null;
     }
@@ -93,7 +93,7 @@ public class Teildatensatz extends Satz {
      * @param feld Feld mit Name
      */
     @Override
-    public void add(Feld feld) {
+    public void add(final Feld feld) {
         for (Iterator<Feld> iterator = datenfelder.values().iterator(); iterator.hasNext();) {
             Feld f = iterator.next();
             if (feld.overlapsWith(f)) {
@@ -107,7 +107,7 @@ public class Teildatensatz extends Satz {
     /**
      * @param feld ein Feld
      */
-    public void set(Feld feld) {
+    public void set(final Feld feld) {
         String name = feld.getBezeichnung();
         this.set(name, feld);
     }
@@ -116,11 +116,11 @@ public class Teildatensatz extends Satz {
      * @param name Name des Felds
      * @param feld Feld
      */
-    public void set(String name, Feld feld) {
+    public void set(final String name, final Feld feld) {
         datenfelder.put(name, feld);
     }
 
-    public Feld getFeld(String name) {
+    public Feld getFeld(final String name) {
         Feld found = datenfelder.get(name);
         if (found == null) {
             return Feld.NULL_FELD;
@@ -144,7 +144,7 @@ public class Teildatensatz extends Satz {
      * @see gdv.xport.satz.Datensatz#export(java.io.Writer)
      */
     @Override
-    public void export(Writer writer) throws IOException {
+    public void export(final Writer writer) throws IOException {
         StringBuffer data = new StringBuffer(256);
         for (int i = 0; i < 256; i++) {
             data.append(' ');
@@ -165,7 +165,7 @@ public class Teildatensatz extends Satz {
      * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
      */
     @Override
-    public void importFrom(String content) throws IOException {
+    public void importFrom(final String content) throws IOException {
         for (Feld feld : datenfelder.values()) {
             int begin = (feld.getByteAdresse() - 1) % 256;
             int end = begin + feld.getAnzahlBytes();
@@ -212,7 +212,7 @@ public class Teildatensatz extends Satz {
      * @see gdv.xport.satz.Satz#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object other) {
+    public boolean equals(final Object other) {
         try {
             return this.equals((Teildatensatz) other);
         } catch (ClassCastException cce) {
@@ -226,7 +226,7 @@ public class Teildatensatz extends Satz {
      * @param other der andere Teildatensatz
      * @return true, wenn beide Teildatensaetze gleich sind
      */
-    public boolean equals(Teildatensatz other) {
+    public boolean equals(final Teildatensatz other) {
         if (this.datenfelder.size() != other.datenfelder.size()) {
             return false;
         }
