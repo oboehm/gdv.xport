@@ -26,7 +26,7 @@ import java.io.IOException;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.4 (31.12.2009)
  */
-public class ImportException extends IOException {
+public final class ImportException extends IOException {
 
     private static final long serialVersionUID = 20091231L;
 

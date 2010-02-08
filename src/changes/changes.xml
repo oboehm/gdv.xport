@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="0.4.2-SNAPSHOT" date="2010"
+             description="verbesserte Testabdeckung">
+      <action dev="oboehm" type="update" date="8-Feb-2010" >
+        JUnit-Tests f&#252;r io-Package hinzugeff&#252;t.
+      </action>
+    </release>
+
     <release version="0.4.1" date="08-Feb-2010"
              description="fehlende (Java)-Docs erg&#228;nzt">
       <action dev="oboehm" type="update" date="7-Feb-2010" >
