@@ -37,10 +37,19 @@ public class URLReader {
     private static final Log log = LogFactory.getLog(URLReader.class);
     private final URL url;
 
+    /**
+     * @param url URL, von der gelesen werden soll
+     */
     public URLReader(URL url) {
         this.url = url;
     }
 
+    /**
+     * Liest die komplette URL und gibt die gelesen Seite als String zurueck.
+     * 
+     * @return gelesene Seite
+     * @throws IOException falls die URL nicht erreichbar ist
+     */
     public String read() throws IOException {
         try {
             HttpClient httpClient = new HttpClient();

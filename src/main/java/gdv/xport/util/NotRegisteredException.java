@@ -21,12 +21,14 @@ package gdv.xport.util;
 /**
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.2 (13.11.2009)
- *
  */
 public class NotRegisteredException extends RuntimeException {
 
     private static final long serialVersionUID = 20091113L;
 
+    /**
+     * @param satzart Satzart, die nicht registriert wurde
+     */
     public NotRegisteredException(int satzart) {
         super("unregistered Satzart " + satzart);
     }
