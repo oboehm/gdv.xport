@@ -32,16 +32,18 @@ import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.logging.*;
 import org.junit.*;
+import org.junit.runner.RunWith;
 
-import patterntesting.annotation.concurrent.RunTestsParallel;
+import patterntesting.concurrent.junit.ParallelRunner;
+import patterntesting.runtime.annotation.IntegrationTest;
 
 /**
+ * JUnit-Test fuer Datenpaket.
+ * 
  * @author oliver
  * @since 23.10.2009
- * @version $Revision$
- *
  */
-@RunTestsParallel
+@RunWith(ParallelRunner.class)
 public final class DatenpaketTest {
 
     private static final Log log = LogFactory.getLog(Datenpaket.class);
@@ -60,7 +62,7 @@ public final class DatenpaketTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.Datenpaket#export(java.io.Writer)}.
+     * Test-Methode fuer {@link gdv.xport.Datenpaket#export(java.io.Writer)}.
      * @throws IOException falls z.B. die Platte voll ist
      */
     @Test
@@ -81,6 +83,11 @@ public final class DatenpaketTest {
         assertEquals(0.0, nachsatz.getSchadenbearbeitungsKosten().toDouble(), 0.001);
     }
 
+    /**
+     * Tested den Export.
+     * 
+     * @throws IOException falls Temp-Datei nicht angelegt werden kann.
+     */
     @Test
     public void testExportFile() throws IOException {
         datenpaket.setAdressat("Test-Adressat");
@@ -92,6 +99,9 @@ public final class DatenpaketTest {
         assertEquals(1024, file.length());
     }
 
+    /**
+     * Testet das Hinzuefuegen eines Datensatzes.
+     */
     @Test
     public void testAdd() {
         Datensatz datensatz = new Adressteil();
@@ -118,6 +128,9 @@ public final class DatenpaketTest {
         assertEquals(today, bis.toDate());
     }
 
+    /**
+     * Test-Methode fuer {@link gdv.xport.Datenpaket#getAbsender()}.
+     */
     @Test
     public void testGetAbsender() {
         String absender = "Dagobert Duck";
@@ -125,6 +138,9 @@ public final class DatenpaketTest {
         assertEquals(absender, datenpaket.getAbsender());
     }
 
+    /**
+     * Test-Methode fuer {@link gdv.xport.Datenpaket#getVermittler()}.
+     */
     @Test
     public void testSetVermittler() {
         String vermittler = "08/15";
@@ -136,6 +152,12 @@ public final class DatenpaketTest {
         assertEquals(vermittler, nachsatz.getVermittler());
     }
 
+    /**
+     * Tested den Import.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @IntegrationTest
     @Test
     public void testImportFromReader() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
@@ -147,6 +169,12 @@ public final class DatenpaketTest {
         }
     }
 
+    /**
+     * Tested den Import von einer URL.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @IntegrationTest
     @Test
     public void testImportFromURL() throws IOException {
         URL url = this.getClass().getResource("/musterdatei_041222.txt");
@@ -155,13 +183,14 @@ public final class DatenpaketTest {
     }
 
     /**
-     * Der Test wurde wieder deaktiviert, da dazu eine Online-Verbindung noetig
-     * ist (die nicht immer vorausgesetzt werden kann)
+     * Der Test wurde als IntegrationTest markiert, da dazu eine Online-Verbindung
+     * noetig ist (die nicht immer vorausgesetzt werden kann).
      *
-     * @since 0.3
      * @throws IOException falls man z.B. offline ist
+     * @since 0.3
      */
-    //@Test
+    @IntegrationTest
+    @Test
     public void testImportFromHTTP() throws IOException {
         URL url = new URL(
                 "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
