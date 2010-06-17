@@ -72,15 +72,15 @@
           <ajdtBuildDefFile>build.ajproperties</ajdtBuildDefFile>
           <aspectLibraries>
             <aspectLibrary>
-              <groupId>net.sf.patterntesting</groupId>
+              <groupId>org.patterntesting</groupId>
               <artifactId>patterntesting-rt</artifactId>
             </aspectLibrary>
             <aspectLibrary>
-              <groupId>net.sf.patterntesting</groupId>
+              <groupId>org.patterntesting</groupId>
               <artifactId>patterntesting-check-ct</artifactId>
             </aspectLibrary>
             <aspectLibrary>
-              <groupId>net.sf.patterntesting</groupId>
+              <groupId>org.patterntesting</groupId>
               <artifactId>patterntesting-check-rt</artifactId>
             </aspectLibrary>
           </aspectLibraries>
@@ -174,24 +174,24 @@
     </dependency>
 	<!-- PatternTesting -->
     <dependency>
-      <groupId>net.sf.patterntesting</groupId>
+      <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-rt</artifactId>
-      <version>0.9.9</version>
+      <version>1.0.0</version>
     </dependency>
     <dependency>
-      <groupId>net.sf.patterntesting</groupId>
+      <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-check-ct</artifactId>
-      <version>0.9.9</version>
+      <version>1.0.0</version>
     </dependency>
     <dependency>
-      <groupId>net.sf.patterntesting</groupId>
+      <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-check-rt</artifactId>
-      <version>0.9.9</version>
+      <version>1.0.0</version>
     </dependency>
     <dependency>
-      <groupId>net.sf.patterntesting</groupId>
+      <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-concurrent</artifactId>
-      <version>0.9.9</version>
+      <version>1.0.0</version>
     </dependency>
     <!-- Object Validation Framework (OVal) -->
     <dependency>
