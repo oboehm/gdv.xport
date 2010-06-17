@@ -213,6 +213,9 @@ public final class Teildatensatz extends Satz {
      */
     @Override
     public boolean equals(final Object other) {
+        if (other == null) {
+            return false;
+        }
         try {
             return this.equals((Teildatensatz) other);
         } catch (ClassCastException cce) {

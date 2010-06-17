@@ -440,6 +440,9 @@ public class Feld implements Comparable<Feld> {
      */
     @Override
     public boolean equals(final Object other) {
+        if (other == null) {
+            return false;
+        }
         try {
             return this.equals((Feld) other);
         } catch (ClassCastException cce) {

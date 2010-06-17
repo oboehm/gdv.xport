@@ -577,6 +577,9 @@ public abstract class Satz {
      * @return true, if successful
      */
     public final boolean equals(final Satz other) {
+        if (other == null) {
+            return false;
+        }
         if (this.getSatzart() != other.getSatzart()) {
             return false;
         }
