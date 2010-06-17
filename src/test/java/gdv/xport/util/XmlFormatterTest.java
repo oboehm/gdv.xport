@@ -28,16 +28,17 @@ import javax.xml.stream.*;
 
 import org.apache.commons.logging.*;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
 
-import patterntesting.annotation.concurrent.RunTestsParallel;
+import patterntesting.concurrent.junit.ParallelRunner;
 
 /**
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.2 (14.11.2009)
  *
  */
-@RunTestsParallel
+@RunWith(ParallelRunner.class)
 public class XmlFormatterTest extends AbstractTest {
 
     private static Log log = LogFactory.getLog(XmlFormatterTest.class);
