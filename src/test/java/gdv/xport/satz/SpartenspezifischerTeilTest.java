@@ -27,12 +27,17 @@ import java.io.*;
 
 import org.apache.commons.logging.*;
 import org.junit.*;
+import org.junit.runner.RunWith;
+
+import patterntesting.concurrent.junit.ParallelRunner;
 
 /**
+ * JUnit-Test fuer SpartenspezifischerTeil.
+ * 
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (08.11.2009)
- *
  */
+@RunWith(ParallelRunner.class)
 public class SpartenspezifischerTeilTest extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(SpartenspezifischerTeilTest.class);
