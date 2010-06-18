@@ -26,13 +26,18 @@ import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.logging.*;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import patterntesting.concurrent.junit.ParallelRunner;
 
 /**
+ * Testklasse fuer Datum-Klasse.
+ * 
  * @author oliver
  * @since 24.10.2009
  * @version $Revision$
- *
  */
+@RunWith(ParallelRunner.class)
 public class DatumTest {
 
     private static final Log log = LogFactory.getLog(DatumTest.class);

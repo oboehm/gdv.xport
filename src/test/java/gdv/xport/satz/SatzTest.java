@@ -31,6 +31,9 @@ import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.logging.*;
 import org.junit.*;
+import org.junit.runner.RunWith;
+
+import patterntesting.concurrent.junit.ParallelRunner;
 
 /**
  * Test-Klasse fuer Satz.
@@ -38,6 +41,7 @@ import org.junit.*;
  * @author oliver
  * @since 19.10.2009
  */
+@RunWith(ParallelRunner.class)
 public final class SatzTest {
 
     private static final Log log = LogFactory.getLog(SatzTest.class);
