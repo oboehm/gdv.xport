@@ -24,6 +24,7 @@
   </licenses>
     
   <properties>
+    <patterntesting.version>1.0.0</patterntesting.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -176,22 +177,22 @@
     <dependency>
       <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-rt</artifactId>
-      <version>1.0.0</version>
+      <version>${patterntesting.version}</version>
     </dependency>
     <dependency>
       <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-check-ct</artifactId>
-      <version>1.0.0</version>
+      <version>${patterntesting.version}</version>
     </dependency>
     <dependency>
       <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-check-rt</artifactId>
-      <version>1.0.0</version>
+      <version>${patterntesting.version}</version>
     </dependency>
     <dependency>
       <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-concurrent</artifactId>
-      <version>1.0.0</version>
+      <version>${patterntesting.version}</version>
     </dependency>
     <!-- Object Validation Framework (OVal) -->
     <dependency>
@@ -371,7 +372,7 @@
     <repository>
       <id>agentes</id>
       <name>agentes Repository</name>
-      <url>http://repository.agentes.de</url>
+      <url>http://labs.agentes.de/repository</url>
     </repository>
   </repositories>
 
