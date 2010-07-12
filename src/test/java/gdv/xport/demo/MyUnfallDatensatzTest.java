@@ -18,19 +18,21 @@
 
 package gdv.xport.demo;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
-import gdv.xport.util.*;
+import gdv.xport.util.SatzFactory;
 
 import java.io.IOException;
 import java.net.URL;
 
+import javax.xml.stream.XMLStreamException;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import patterntesting.concurrent.junit.ParallelRunner;
 import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * JUnit-Test fuer die MyUnfallDatensatz-Klasse.
@@ -38,7 +40,7 @@ import patterntesting.runtime.junit.SmokeRunner;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.4 (11.07.2010)
  */
-@RunWith(SmokeRunner.class)
+@RunWith(ParallelRunner.class)
 @IntegrationTest
 public final class MyUnfallDatensatzTest {
 
@@ -63,6 +65,17 @@ public final class MyUnfallDatensatzTest {
                 break;
             }
         }
+    }
+    
+    /**
+     * Testet die main-Methode.
+     * 
+     * @throws XMLStreamException bei fehlerhaftem XML
+     * @throws IOException falls die URL nicht erreicht werden kann
+     */
+    @Test
+    public void testMain() throws IOException, XMLStreamException {
+        MyUnfallDatensatz.main(new String[] {});
     }
 
 }
