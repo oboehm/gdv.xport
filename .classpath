@@ -11,13 +11,13 @@
 	<classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.14/log4j-1.2.14.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/c2/fit/fit/1.1/fit-1.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/fitnesse/fitnesse/20081201/fitnesse-20081201.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/patterntesting/patterntesting-rt/1.0.0/patterntesting-rt-1.0.0.jar">
+	<classpathentry kind="var" path="M2_REPO/org/patterntesting/patterntesting-rt/1.0.1/patterntesting-rt-1.0.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.ajdt.aspectpath" value="org.eclipse.ajdt.aspectpath"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
-	<classpathentry kind="var" path="M2_REPO/org/patterntesting/patterntesting-check-rt/1.0.0/patterntesting-check-rt-1.0.0.jar">
+	<classpathentry kind="var" path="M2_REPO/org/patterntesting/patterntesting-check-rt/1.0.1/patterntesting-check-rt-1.0.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.ajdt.aspectpath" value="org.eclipse.ajdt.aspectpath"/>
 		</attributes>
@@ -27,7 +27,7 @@
 	<classpathentry kind="var" path="M2_REPO/commons-cli/commons-cli/1.2/commons-cli-1.2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.3/commons-codec-1.3.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/patterntesting/patterntesting-concurrent/1.0.0/patterntesting-concurrent-1.0.0.jar">
+	<classpathentry kind="var" path="M2_REPO/org/patterntesting/patterntesting-concurrent/1.0.1/patterntesting-concurrent-1.0.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.ajdt.aspectpath" value="org.eclipse.ajdt.aspectpath"/>
 		</attributes>

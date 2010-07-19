@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="0.042" errors="0" skipped="0" tests="3" name="gdv.xport.satz.SpartenspezifischerTeilTest">
+  <properties>
+    <property name="env.VERSIONER_PERL_PREFER_32_BIT" value="yes"/>
+    <property name="java.vendor" value="Apple Inc."/>
+    <property name="localRepository" value="/Users/oliver/.m2/repository"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Server Compiler"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="sun.boot.class.path" value="/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Classes/jsfd.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Classes/classes.jar:/System/Library/Frameworks/JavaVM.framework/Frameworks/JavaRuntimeSupport.framework/Resources/Java/JavaRuntimeSupport.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Classes/ui.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Classes/laf.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Classes/sunrsasign.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Classes/jsse.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Classes/jce.jar:/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Classes/charsets.jar"/>
+    <property name="env.TMPDIR" value="/var/folders/8c/8c6Asv3FHzaceAzL43Gt1+++-Rk/-Tmp-/"/>
+    <property name="env.PWD" value="/Users/oliver/work/gdv.xport"/>
+    <property name="env.LANG" value="de_DE.UTF-8"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.runtime.version" value="1.6.0_20-b02-279-10M3065"/>
+    <property name="env.HISTSIZE" value="40"/>
+    <property name="env.Apple_PubSub_Socket_Render" value="/tmp/launch-cICHO6/Render"/>
+    <property name="env.DISPLAY" value="/tmp/launch-xoDa68/org.x:0"/>
+    <property name="env.AXIS_HOME" value="/usr/java/axis"/>
+    <property name="user.name" value="oliver"/>
+    <property name="env.USER" value="oliver"/>
+    <property name="env.SHELL" value="/bin/bash"/>
+    <property name="env.__CF_USER_TEXT_ENCODING" value="0x5DC:0:3"/>
+    <property name="awt.nativeDoubleBuffering" value="true"/>
+    <property name="env.JAVA_MAIN_CLASS_698" value="org.codehaus.classworlds.Launcher"/>
+    <property name="env.PATH" value="/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/sw/bin:/sw/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/texbin:/usr/X11/bin::/Users/oliver/bin:/usr/X11R6/bin:/Applications/opt/eclipse-3.5-x86_64/plugins/com.google.appengine.eclipse.sdkbundle.1.3.0_1.3.0.v200912141120//appengine-java-sdk-1.3.0/bin:/usr/local/git/bin:/usr/local/maven/bin:/usr/java/spring/roo/bin"/>
+    <property name="user.language" value="de"/>
+    <property name="sun.boot.library.path" value="/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Libraries"/>
+    <property name="env.EXINIT" value="map &amp;#27;[220z &amp;#4; | map! &amp;#27;[220z &amp;#27;&amp;#4; | . /Users/oliver/.exrc"/>
+    <property name="classworlds.conf" value="/usr/local/maven/bin/m2.conf"/>
+    <property name="java.version" value="1.6.0_20"/>
+    <property name="user.timezone" value="Europe/Berlin"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="env.SSH_AGENT_PID" value="630"/>
+    <property name="env.AXISCLASSPATH" value="/usr/java/axis/lib/axis.jar:/usr/java/axis/lib/commons-discovery-0.2.jar:/usr/java/axis/lib/commons-logging-1.0.4.jar:/usr/java/axis/lib/jaxrpc.jar:/usr/java/axis/lib/saaj.jar:/usr/java/axis/lib/log4j-1.2.8.jar:/usr/java/axis/lib/xml-apis.jar:/usr/java/axis/lib/xercesImpl.jar:/usr/java/axis/lib/wsdl4j-1.5.1.jar"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.endorsed.dirs" value="/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home/lib/endorsed"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="MacRoman"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="env.CATALINA_OPTS" value="-Dcom.sun.management.jmxremote -Djava.awt.headless=true"/>
+    <property name="env.SHLVL" value="1"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="50.0"/>
+    <property name="user.country" value="DE"/>
+    <property name="java.home" value="/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="env.LOGNAME" value="oliver"/>
+    <property name="os.version" value="10.6.4"/>
+    <property name="env.GIT_HOME" value="/usr/local/git"/>
+    <property name="env.TERM_PROGRAM_VERSION" value="273"/>
+    <property name="env.CLICOLOR" value="1"/>
+    <property name="path.separator" value=":"/>
+    <property name="java.vm.version" value="16.3-b01-279"/>
+    <property name="env.JAVA_HOME" value="/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home"/>
+    <property name="java.awt.printerjob" value="apple.awt.CPrinterJob"/>
+    <property name="env.TERM" value="xterm-color"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="awt.toolkit" value="apple.awt.CToolkit"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="env.MANPATH" value="/opt/local/share/man:/sw/share/man/de:/sw/share/man:/usr/share/man:/usr/local/share/man/de:/usr/local/share/man:/usr/local/git/share/man:/usr/texbin/man:/usr/X11/man:/sw/lib/perl5/5.10.0/man:/usr/X11R6/man"/>
+    <property name="env.LSCOLORS" value="ehFxCxDxBxegedabagacad"/>
+    <property name="user.home" value="/Users/oliver"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="env.MP_PROLOGUE" value="/Users/oliver/lib/mp"/>
+    <property name="env.CLASSPATH" value=".:/usr/java/xalan/xalan.jar:/usr/java/xalan/serializer.jar:/usr/java/xalan/xml-apis.jar:/usr/java/xalan/xercesImpl.jar"/>
+    <property name="env.TERM_PROGRAM" value="Apple_Terminal"/>
+    <property name="env.M2_HOME" value="/usr/local/maven"/>
+    <property name="java.library.path" value=".:/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="java.vendor.url" value="http://www.apple.com/"/>
+    <property name="java.vm.vendor" value="Apple Inc."/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="maven.home" value="/usr/local/maven"/>
+    <property name="java.class.path" value="/usr/local/maven/boot/classworlds-1.1.jar"/>
+    <property name="env.ROO_OPTS" value="-Droo.bright=true"/>
+    <property name="env.CVS_RSH" value="ssh"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="env.XALAN_HOME" value="/usr/java/xalan"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="env.HOME" value="/Users/oliver"/>
+    <property name="env.ROO_HOME" value="/usr/java/spring/roo"/>
+    <property name="surefire.test.class.path" value="/Users/oliver/work/gdv.xport/target/test-classes:/Users/oliver/work/gdv.xport/target/classes:/Users/oliver/.m2/repository/org/aspectj/aspectjrt/1.6.6/aspectjrt-1.6.6.jar:/Users/oliver/.m2/repository/commons-lang/commons-lang/2.4/commons-lang-2.4.jar:/Users/oliver/.m2/repository/commons-cli/commons-cli/1.2/commons-cli-1.2.jar:/Users/oliver/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar:/Users/oliver/.m2/repository/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:/Users/oliver/.m2/repository/commons-codec/commons-codec/1.2/commons-codec-1.2.jar:/Users/oliver/.m2/repository/commons-io/commons-io/1.4/commons-io-1.4.jar:/Users/oliver/.m2/repository/junit/junit/4.8.1/junit-4.8.1.jar:/Users/oliver/.m2/repository/org/patterntesting/patterntesting-rt/1.0.0/patterntesting-rt-1.0.0.jar:/Users/oliver/.m2/repository/org/patterntesting/patterntesting-check-ct/1.0.0/patterntesting-check-ct-1.0.0.jar:/Users/oliver/.m2/repository/org/patterntesting/patterntesting-check-rt/1.0.0/patterntesting-check-rt-1.0.0.jar:/Users/oliver/.m2/repository/org/patterntesting/patterntesting-concurrent/1.0.0/patterntesting-concurrent-1.0.0.jar:/Users/oliver/.m2/repository/net/sf/oval/oval/1.40/oval-1.40.jar:"/>
+    <property name="java.io.tmpdir" value="/var/folders/8c/8c6Asv3FHzaceAzL43Gt1+++-Rk/-Tmp-/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.apple.com/"/>
+    <property name="env.SSH_AUTH_SOCK" value="/tmp/ssh-YMczI7WCQY/agent.629"/>
+    <property name="env.MAVEN_OPTS" value="-Xmx512m -XX:MaxPermSize=256m"/>
+    <property name="env.ECLIPSE_HOME" value="/Applications/opt/eclipse-3.5-x86_64"/>
+    <property name="env.COMMAND_MODE" value="unix2003"/>
+    <property name="mrj.build" value="10M3065"/>
+    <property name="java.awt.graphicsenv" value="apple.awt.CGraphicsEnvironment"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.ext.dirs" value="/Library/Java/Extensions:/System/Library/Java/Extensions:/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home/lib/ext"/>
+    <property name="env.PERL5LIB" value="/sw/lib/perl5:/sw/lib/perl5/darwin"/>
+    <property name="user.dir" value="/Users/oliver/work/gdv.xport"/>
+    <property name="mrj.version" value="1060.1.6.0_20-279"/>
+    <property name="env.INFOPATH" value="/sw/share/info:/sw/info:/usr/share/info"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="env.AXIS_LIB" value="/usr/java/axis/lib"/>
+    <property name="basedir" value="/Users/oliver/work/gdv.xport"/>
+    <property name="env.UTYPE" value="Darwin"/>
+    <property name="file.encoding" value="MacRoman"/>
+    <property name="gdv.VU-Nummer" value="4711"/>
+    <property name="env.GPG_AGENT_INFO" value="/Users/oliver/.gnupg/S.gpg-agent:110:1"/>
+    <property name="java.specification.version" value="1.6"/>
+  </properties>
+  <testcase time="0" classname="gdv.xport.satz.SpartenspezifischerTeilTest" name="testSpartenspezifischerTeil70"/>
+  <testcase time="0" classname="gdv.xport.satz.SpartenspezifischerTeilTest" name="testSparte30"/>
+  <testcase time="0" classname="gdv.xport.satz.SpartenspezifischerTeilTest" name="testSparte30Teildatensatz9"/>
+</testsuite>

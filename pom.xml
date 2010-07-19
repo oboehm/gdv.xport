@@ -24,7 +24,7 @@
   </licenses>
     
   <properties>
-    <patterntesting.version>1.0.0</patterntesting.version>
+    <patterntesting.version>1.0.1</patterntesting.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
