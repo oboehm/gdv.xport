@@ -17,10 +17,10 @@
 
   <body>
 
-    <release version="0.4.2" date="12-Jul-2010"
+    <release version="0.4.2" date="3-Aug-2010"
              description="verbesserte Testabdeckung">
-      <action dev="oboehm" type="update" date="17-Jun-2010" >
-        Update auf PatternTesting 1.0.0
+      <action dev="oboehm" type="update" date="18-Jul-2010" >
+        Update auf PatternTesting 1.0.1
       </action>
       <action dev="oboehm" type="update" date="8-Feb-2010" >
         JUnit-Tests f&#252;r io-Package hinzugeff&#252;t.
