@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="0.4.3-SNAPSHOT" date="2011"
+             description="nur noch zweistellige Checkstyle-Verletzungen">
+      <action dev="oboehm" type="update" date="4-Aug-2010" >
+        Eigenes Logo erstellt.
+      </action>
+    </release>
+
     <release version="0.4.2" date="3-Aug-2010"
              description="verbesserte Testabdeckung">
       <action dev="oboehm" type="update" date="18-Jul-2010" >
