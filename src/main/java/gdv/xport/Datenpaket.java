@@ -279,7 +279,7 @@ public final class Datenpaket {
     /**
      * @param s neuer Absender
      */
-    public void setAbsender(String s) {
+    public void setAbsender(final String s) {
         Feld absender = this.getAbsenderFeld();
         absender.setInhalt(s);
     }

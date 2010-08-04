@@ -82,7 +82,7 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
      * Da inzwischen auch Sparte 30 (Unfall) unterstuetzt wird, sollte ein Import
      * dafuer kein Problem mehr sein.
      * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
-     * 
+     *
      * @since 0.4
      * @throws IOException
      *             sollte eigentlich nicht vorkommen, da wir von einem String

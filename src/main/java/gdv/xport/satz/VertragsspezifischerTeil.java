@@ -32,7 +32,7 @@ public class VertragsspezifischerTeil extends Datensatz {
 
     private static final Log log = LogFactory.getLog(VertragsspezifischerTeil.class);
     private static final int SATZART = 210;
-    
+
     /**
      * Default-Constructor.
      */
@@ -96,7 +96,7 @@ public class VertragsspezifischerTeil extends Datensatz {
                 break;
         }
     }
-    
+
     private void setUpDatenfelder30() {
         // Teildatensatz 1
         add(new Zeichen(VERTRAGSSATUS, 43));
@@ -124,7 +124,7 @@ public class VertragsspezifischerTeil extends Datensatz {
         add(new AlphaNumFeld(TARIFBEZEICHNUNG, 30, 150));
         add(new Zeichen(ERHOEHUNGSART_DYNAMIK, 180));
         add(new AlphaNumFeld(REFERENZ_VERSICHERUNGSSCHEINNUMMER, 17, 181));
-        add(new Zeichen(WEITERE_REFERENZNUMMERN, 198));        
+        add(new Zeichen(WEITERE_REFERENZNUMMERN, 198));
         add(new AlphaNumFeld(PRODUKTFORM, 5, 199));
         add(new Datum(PRODUKTFORM_GUELTIG_AB, 6, 204));
         add(new AlphaNumFeld(PRODUKTNAME, 20, 210));

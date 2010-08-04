@@ -37,7 +37,7 @@ import patterntesting.concurrent.junit.ParallelRunner;
 
 /**
  * Test-Klasse fuer Satz.
- * 
+ *
  * @author oliver
  * @since 19.10.2009
  */
@@ -45,7 +45,7 @@ import patterntesting.concurrent.junit.ParallelRunner;
 public final class SatzTest {
 
     private static final Log log = LogFactory.getLog(SatzTest.class);
-    private Satz satz = new Datensatz(123);
+    private final Satz satz = new Datensatz(123);
 
     /**
      * Damit die Assert's der Satzlaenge stimmen, muessen wir das
@@ -112,7 +112,7 @@ public final class SatzTest {
     /**
      * Ein Export mit einem Teildatensatz sollte aus genau 256 Bytes bestehen,
      * da in der SetUp-Methode das EOD-Zeichen auf "" gesetzt wurde.
-     * 
+     *
      * @throws IOException
      *             sollte nicht auftreten, da wir mit StringWriter arbeiten
      */
@@ -128,7 +128,7 @@ public final class SatzTest {
 
     /**
      * Ein einfach Import-Test.
-     * 
+     *
      * @throws IOException
      *             sollte eigenlich nicht passieren, da wir von einem String lesen
      */
@@ -194,7 +194,7 @@ public final class SatzTest {
         b.add(new Feld("c", 5, 'c'));
         assertFalse(a + " differs from " + b, a.equals(b));
     }
-    
+
     /**
      * Hier testen wir das Enfernen von Teildatensaetze.
      * @since 0.4
@@ -208,7 +208,7 @@ public final class SatzTest {
         s.removeTeildatensatz(1);
         assertEquals(n-2, s.getTeildatensaetze().size());
     }
-    
+
     /**
      * Hier testen wir das Entfernen aller Teildatensaetze.
      * @since 0.4

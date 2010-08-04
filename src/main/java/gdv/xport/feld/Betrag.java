@@ -71,6 +71,7 @@ public class Betrag extends NumFeld {
         return super.toInt() / 100;
     }
 
+    @Override
     public double toDouble() {
         return super.toInt() / 100.0;
     }

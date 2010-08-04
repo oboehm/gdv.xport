@@ -31,7 +31,7 @@ import org.junit.Test;
 
 /**
  * Test-Klasse fuer NumFeld.
- * 
+ *
  * @author oliver
  * @since 05.10.2009
  */
@@ -47,7 +47,7 @@ public class NumFeldTest {
         NumFeld nummer = new NumFeld("Feld X", 4, 1);
         assertEquals("0000", nummer.getInhalt());
     }
-    
+
     /**
      * Hier testen wir, ob eine negative Zahl richtig umgewandelt wird.
      */
@@ -75,7 +75,7 @@ public class NumFeldTest {
         NumFeld x = new NumFeld("x", "xxxx");
         assertFalse(x + " is invalid", x.isValid());
     }
-    
+
     /**
      * Und hier pruefen wir mit einem gueltigen Inhalt.
      */
@@ -84,7 +84,7 @@ public class NumFeldTest {
         NumFeld three = new NumFeld("three", "3     ");
         assertTrue("should be valid", three.isValid());
     }
-    
+
     /**
      * Auch wenn es nicht vorgesehen ist, sollten (ungefragte) Vorzeichen
      * keine Probleme bereiten.
@@ -109,7 +109,7 @@ public class NumFeldTest {
         }
         assertEquals(1, violations.size());
     }
-    
+
     /**
      * Und hier pruefen wir mit einem gueltigen Inhalt.
      */
@@ -122,7 +122,7 @@ public class NumFeldTest {
     /**
      * Eine Zahl mit Nachkommastellen sollte auch als Double ausgegeben werden
      * koennen. Hier probieren wir es noch mit 0 Nachkommastellen.
-     * 
+     *
      * @since 0.4
      */
     @Test
@@ -130,11 +130,11 @@ public class NumFeldTest {
         NumFeld x = new NumFeld("x", "1");
         assertEquals(1.0, x.toDouble(), 0.01);
     }
-    
+
     /**
      * Und hier testen wir eine Zahl mit 2 Nachkommastellen, ob sie korrekt
      * umgewandelt wird.
-     * 
+     *
      * @since 0.4
      */
     @Test

@@ -32,7 +32,7 @@ import patterntesting.concurrent.junit.ParallelRunner;
 
 /**
  * Testklasse fuer Datum-Klasse.
- * 
+ *
  * @author oliver
  * @since 24.10.2009
  * @version $Revision$
@@ -84,7 +84,7 @@ public class DatumTest {
         checkInvalidDatum("29022009");
     }
 
-    private void checkInvalidDatum(String mmddjjjj) {
+    private void checkInvalidDatum(final String mmddjjjj) {
         Datum datum = new Datum("Test-Datum", mmddjjjj);
         assertTrue(datum + " is not a valid date!", datum.isInvalid());
         List<ConstraintViolation> violations = datum.validate();
@@ -129,7 +129,7 @@ public class DatumTest {
         checkDatum("00002009");
     }
 
-    private static void checkDatum(String inhalt) {
+    private static void checkDatum(final String inhalt) {
         Datum datum = new Datum("Test-Datum", inhalt);
         assertEquals(inhalt, datum.getInhalt());
         assertTrue(datum + " should be a valid date", datum.isValid());

@@ -20,7 +20,7 @@ package gdv.xport.feld;
 
 /**
  * Versions-Feld.
- * 
+ *
  * @author oliver
  * @since 10.10.2009
  * @version $Revision$
@@ -31,7 +31,7 @@ public class Version extends Feld {
      * @param name Name des Feldes
      * @param start Start-Byte (beginnend bei 1)
      */
-    public Version(String name, int start) {
+    public Version(final String name, final int start) {
         super(name, 3, start, Align.LEFT);
     }
 
@@ -40,7 +40,7 @@ public class Version extends Feld {
      * @param start Start-Byte (beginnend bei 1)
      * @param v Versions-String (z.B. "1.1")
      */
-    public Version(String name, int start, String v) {
+    public Version(final String name, final int start, final String v) {
         super(name, 3, start, v, Align.LEFT);
         assert v.length() == 3 : "Version hat nicht das Format x.x";
     }

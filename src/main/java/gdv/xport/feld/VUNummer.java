@@ -33,7 +33,7 @@ public class VUNummer extends AlphaNumFeld {
     /**
      * @param nr VU-Nummer (max. 5 Stellen)
      */
-    public VUNummer(String nr) {
+    public VUNummer(final String nr) {
         super(VU_NUMMER, nr);
         assert nr.length() <= 5 : "nur max. 5 Stellen erlaubt";
         super.setAnzahlBytes(5);
@@ -43,7 +43,7 @@ public class VUNummer extends AlphaNumFeld {
      * @param nr VU-Nummer (max. 5 Stellen)
      * @param start Start-Byte (beginnend bei 1)
      */
-    public VUNummer(VUNummer nr, int start) {
+    public VUNummer(final VUNummer nr, final int start) {
         super(VU_NUMMER, 5, start, nr.getInhalt());
     }
 

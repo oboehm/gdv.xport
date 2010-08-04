@@ -29,7 +29,7 @@ import org.junit.Test;
  */
 public class BetragTest {
 
-    private Betrag betrag = new Betrag("test", 5, 1);
+    private final Betrag betrag = new Betrag("test", 5, 1);
 
     /**
      * Test method for {@link gdv.xport.feld.Betrag#Betrag(String, int, int)}.

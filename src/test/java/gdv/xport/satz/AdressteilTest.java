@@ -33,7 +33,7 @@ import org.junit.Test;
  */
 public class AdressteilTest extends AbstractSatzTest {
 
-    private Adressteil adressteil = new Adressteil();
+    private final Adressteil adressteil = new Adressteil();
 
     /**
      * Test method for {@link gdv.xport.satz.Adressteil#Adressteil()}.

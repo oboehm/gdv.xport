@@ -114,20 +114,20 @@ public abstract class Satz {
     public final Teildatensatz getTeildatensatz(final int n) {
         return this.teildatensatz[n-1];
     }
-    
+
     /**
      * Hiermit koennen Unterklassen alle Teildatensaetze wieder entfernen
      * (wird z.B. vom Satz 0220.030 benoetigt).
-     * 
+     *
      * @since 0.4
      */
     public final void removeAllTeildatensaetze() {
         this.teildatensatz = new Teildatensatz[0];
     }
-    
+
     /**
      * Entfernt alle Teildatensaetze >= n.
-     * 
+     *
      * @since 0.4
      * @param n ab hier wird abgeschnitten (n >= 1)
      */
@@ -138,11 +138,11 @@ public abstract class Satz {
         }
         this.teildatensatz = (Teildatensatz[]) ArrayUtils.subarray(this.teildatensatz, 0, n-1);
     }
-    
+
     /**
      * Entfernt den gewuenschten Teildatensatz.
      * Ein neuer Teildatensatz kann ueber add() hinzugefuegt werden.
-     * 
+     *
      * @see #add(Teildatensatz)
      * @since 0.4
      * @param n der gewuenschte Teildatensatz (beginnend bei 1)
@@ -154,10 +154,10 @@ public abstract class Satz {
         }
         this.teildatensatz = (Teildatensatz[]) ArrayUtils.remove(this.teildatensatz, n-1);
     }
-    
+
     /**
      * Und hierueber kann ein Teildatensatz hinzugefuegt werden.
-     * 
+     *
      * @since 0.4
      * @param tds der neue (gefuellte) Teildatensatz
      */
@@ -277,7 +277,7 @@ public abstract class Satz {
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
      * @since 0.2
      */
-    public final Feld getFeld(final String name, int nr) {
+    public final Feld getFeld(final String name, final int nr) {
         assert (0 < nr) &&  (nr <= teildatensatz.length) : nr + " liegt ausserhalb des Bereichs";
         return teildatensatz[nr-1].getFeld(name);
     }
@@ -290,7 +290,7 @@ public abstract class Satz {
      * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
      * @since 0.3
      */
-    public final String getFeldInhalt(final String name, int nr) {
+    public final String getFeldInhalt(final String name, final int nr) {
         return this.getFeld(name, nr).getInhalt().trim();
     }
 
@@ -364,7 +364,7 @@ public abstract class Satz {
      * Ermittelt die Satzlaenge.
      * Je nachdem, ob das Zeilenende aus keinem, einem oder zwei Zeichen
      * besteht, wird 256, 257 oder 258 zurueckgegeben.
-     * 
+     *
      * @since 0.4
      * @param s der komplette Satz
      * @return 256, 257 oder 258
@@ -431,7 +431,7 @@ public abstract class Satz {
         importFrom(new String(cbuf));
     }
 
-    private static void importFrom(final Reader reader, final char[]cbuf, int i) throws IOException {
+    private static void importFrom(final Reader reader, final char[]cbuf, final int i) throws IOException {
         if (reader.read(cbuf, i, 256) == -1) {
             String s = new String(cbuf).substring(i);
             throw new IOException("can't read 256 bytes from " + reader + ", only " + s.length()

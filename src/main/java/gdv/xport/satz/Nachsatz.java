@@ -66,7 +66,7 @@ public final class Nachsatz extends Satz {
     /**
      * @param n Anzahl der eingeschlossenen Saetze
      */
-    public void setAnzahlSaetze(int n) {
+    public void setAnzahlSaetze(final int n) {
         this.anzahlSaetze.setInhalt(n);
         this.teildatensatz[0].add(anzahlSaetze);
     }
@@ -89,7 +89,7 @@ public final class Nachsatz extends Satz {
     /**
      * @param s Vermittler
      */
-    public void setVermittler(String s) {
+    public void setVermittler(final String s) {
         this.vermittler.setInhalt(s);
     }
 
@@ -103,7 +103,7 @@ public final class Nachsatz extends Satz {
     /**
      * @param beitrag
      */
-    public void setGesamtBeitrag(double beitrag) {
+    public void setGesamtBeitrag(final double beitrag) {
         this.gesamtBeitrag.setInhalt(beitrag);
     }
 
@@ -117,7 +117,7 @@ public final class Nachsatz extends Satz {
     /**
      * @param beitrag neuer Gesamtbeitrag
      */
-    public void setGesamtBeitragBrutto(double beitrag) {
+    public void setGesamtBeitragBrutto(final double beitrag) {
         this.gesamtBeitrag.setInhalt(beitrag);
     }
 
@@ -131,7 +131,7 @@ public final class Nachsatz extends Satz {
     /**
      * @param betrag neuer Betrag
      */
-    public void setVersicherungsLeistungen(Double betrag) {
+    public void setVersicherungsLeistungen(final Double betrag) {
         this.versicherungsLeistungen.setInhalt(betrag);
     }
 
@@ -145,7 +145,7 @@ public final class Nachsatz extends Satz {
     /**
      * @param kosten Kosten der Schadensbearbeitung
      */
-    public void setSchadenbearbeitungsKosten(double kosten) {
+    public void setSchadenbearbeitungsKosten(final double kosten) {
         this.schadenbearbeitungsKosten.setInhalt(kosten);
     }
 

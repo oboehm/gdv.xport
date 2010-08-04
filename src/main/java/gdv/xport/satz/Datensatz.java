@@ -47,7 +47,7 @@ public class Datensatz extends Satz {
     /**
      * @param satzart z.B. "0100"
      */
-    public Datensatz(String satzart) {
+    public Datensatz(final String satzart) {
         super(satzart);
         this.setUpTeildatensaetze();
     }
@@ -55,7 +55,7 @@ public class Datensatz extends Satz {
     /**
      * @param satzart z.B. 100
      */
-    public Datensatz(int satzart) {
+    public Datensatz(final int satzart) {
         super(satzart, 1);
         this.setUpTeildatensaetze();
     }
@@ -97,7 +97,7 @@ public class Datensatz extends Satz {
             setUpTeildatensatz(teildatensatz[i]);
         }
     }
-    
+
     /**
      * Hiermit kann ein einzelner Teildatensatz aufgesetzt werden.
      * @since 0.4
@@ -109,7 +109,7 @@ public class Datensatz extends Satz {
         tds.add(this.sparte);
         tds.add(this.versicherungsscheinNr);
         tds.add(this.folgeNr);
-        tds.add(this.vermittler);        
+        tds.add(this.vermittler);
     }
 
     /* (non-Javadoc)
@@ -200,7 +200,7 @@ public class Datensatz extends Satz {
      * @return Satzart
      * @throws IOException falls was schief gegangen ist
      */
-    public static int readSparte(PushbackReader reader) throws IOException {
+    public static int readSparte(final PushbackReader reader) throws IOException {
         char[] cbuf = new char[14];
         if (reader.read(cbuf) == -1) {
             throw new IOException("can't read 14 bytes (" + new String(cbuf) + ") from " + reader);

@@ -60,7 +60,7 @@ public class SpartenspezifischerTeil extends Datensatz {
         this.setUpDatenfelder(sparte);
     }
 
-    private static int getNumberOfTeildatensaetzeFor(int sparte) {
+    private static int getNumberOfTeildatensaetzeFor(final int sparte) {
         switch (sparte) {
             case 0:
             case 20:
@@ -279,7 +279,7 @@ public class SpartenspezifischerTeil extends Datensatz {
         add(new AlphaNumFeld(MITVERSICHERTE_PERSON_VORNAME, 30, 219), 2);
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 249), 2);
     }
-    
+
     /**
      * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
      * Teildatensaetze aufsetzen.
@@ -301,7 +301,7 @@ public class SpartenspezifischerTeil extends Datensatz {
     /**
      * Sparte 30 hat optionale Teildatensaetze (Teildatensatz 9). Den
      * muessen wir gesondert behandeln.
-     * 
+     *
      * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
      * @param input Inupt
      * @throws IOException falls der String zu kurz ist
@@ -317,7 +317,7 @@ public class SpartenspezifischerTeil extends Datensatz {
                 break;
         }
     }
-    
+
     private void importSparte30(final String s) throws IOException {
         this.removeAllTeildatensaetze();
         int satzlength = getSatzlength(s);
@@ -347,7 +347,7 @@ public class SpartenspezifischerTeil extends Datensatz {
             }
         }
     }
-    
+
     private void addTeildatensatz30(final int n, final String input) throws IOException {
         Teildatensatz tds = new Teildatensatz(this.getSatzartFeld());
         this.setUpTeildatensatz30(n, tds);

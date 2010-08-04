@@ -32,7 +32,7 @@ public class Zeichen extends AlphaNumFeld {
      * @param start the start
      * @param c the c
      */
-    public Zeichen(int start, char c) {
+    public Zeichen(final int start, final char c) {
         super(1, start);
         super.setInhalt(c);
     }
@@ -43,7 +43,7 @@ public class Zeichen extends AlphaNumFeld {
      * @param name the name
      * @param start the start
      */
-    public Zeichen(String name, int start) {
+    public Zeichen(final String name, final int start) {
         super(name, 1, start);
     }
 
@@ -54,7 +54,7 @@ public class Zeichen extends AlphaNumFeld {
      * @param start the start
      * @param c the c
      */
-    public Zeichen(String name, int start, char c) {
+    public Zeichen(final String name, final int start, final char c) {
         super(name, 1, start, c);
     }
 

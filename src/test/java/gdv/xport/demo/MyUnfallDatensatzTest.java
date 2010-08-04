@@ -36,7 +36,7 @@ import patterntesting.runtime.annotation.IntegrationTest;
 
 /**
  * JUnit-Test fuer die MyUnfallDatensatz-Klasse.
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.4 (11.07.2010)
  */
@@ -47,7 +47,7 @@ public final class MyUnfallDatensatzTest {
     /**
      * Registriert MyUnfallDatensatz und importiert dann zu Testzwecken
      * die Musterdatei.
-     * 
+     *
      * @throws IOException wenn die musterdatei nicht gelesen werden kann
      */
     @Test
@@ -66,10 +66,10 @@ public final class MyUnfallDatensatzTest {
             }
         }
     }
-    
+
     /**
      * Testet die main-Methode.
-     * 
+     *
      * @throws XMLStreamException bei fehlerhaftem XML
      * @throws IOException falls die URL nicht erreicht werden kann
      */

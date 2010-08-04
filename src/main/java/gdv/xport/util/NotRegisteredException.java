@@ -29,7 +29,7 @@ public class NotRegisteredException extends RuntimeException {
     /**
      * @param satzart Satzart, die nicht registriert wurde
      */
-    public NotRegisteredException(int satzart) {
+    public NotRegisteredException(final int satzart) {
         super("unregistered Satzart " + satzart);
     }
 

@@ -33,7 +33,7 @@ import patterntesting.concurrent.junit.ParallelRunner;
 
 /**
  * JUnit-Test fuer SpartenspezifischerTeil.
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (08.11.2009)
  */
@@ -51,7 +51,7 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
     public static void setUpBeforeClass() {
         Config.setEOD("\n");
     }
-    
+
     /**
      * Test method for {@link gdv.xport.satz.SpartenspezifischerTeil#SpartenspezifischerTeil(int)}.
      */
@@ -61,12 +61,12 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
         log.info(rechtsschutz + " created.");
         assertEquals(70, rechtsschutz.getSparte());
     }
-    
+
     /**
      * Da inzwischen auch Sparte 30 (Unfall) unterstuetzt wird, sollte ein Import
      * dafuer kein Problem mehr sein.
      * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
-     * 
+     *
      * @since 0.4
      * @throws IOException
      *             sollte eigentlich nicht vorkommen, da wir von einem String
@@ -91,13 +91,13 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
         assertEquals("X", x.getInhalt());
         checkDatensatz(wagnisdaten, input);
     }
-    
+
     /**
      * Der spezielle Teildatensatz 9 der Sparte 30 bereitet Probleme, da er
      * etwas aus der Reihe tanzt - er kann naemlich als erster Teildatensatz
      * auftreten.
      * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
-     * 
+     *
      * @since 0.4
      * @throws IOException
      *             sollte eigentlich nicht vorkommen, da wir von einem String
@@ -125,8 +125,8 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }
-    
-    private static void checkDatensatz(Datensatz datensatz, String expected) throws IOException {
+
+    private static void checkDatensatz(final Datensatz datensatz, final String expected) throws IOException {
         StringWriter swriter = new StringWriter(expected.length());
         datensatz.export(swriter);
         swriter.close();

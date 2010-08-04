@@ -70,7 +70,7 @@ public class NumFeld extends Feld {
         this.nachkommastellen = 0;
         this.setInhalt(value);
     }
-    
+
     /**
      * @since 0.4
      * @param name Feld-Bezeichner (z.B. "pi")
@@ -81,7 +81,7 @@ public class NumFeld extends Feld {
         super(name, s, Align.RIGHT);
         this.nachkommastellen = nachkommastellen;
     }
-    
+
     /**
      * @since 0.4
      * @param name Feld-Bezeichner (z.B. "pi")
@@ -110,10 +110,10 @@ public class NumFeld extends Feld {
         this.nachkommastellen = nachkommastellen;
         this.setInhalt(value);
     }
-    
+
     /**
      * Liefert ein neues NumFeld mit der gewuenschten Anzahl von Nachkommastellen zurueck.
-     * 
+     *
      * @since 0.4
      * @param n Anzahl der Nachkommastellen
      * @return neues NumFeld mit n Nachkommastellen
@@ -125,7 +125,7 @@ public class NumFeld extends Feld {
         }
         return new NumFeld(this.getBezeichnung(), this.getByteAdresse(),
                 this.getInhalt(), n);
-        
+
     }
 
     /**
@@ -166,11 +166,11 @@ public class NumFeld extends Feld {
         }
         return Integer.parseInt(s);
     }
-    
+
     /**
      * Wenn eine Zahl Nachkommastellen hat, sollte sie auch als Double
      * ausgegeben werden koennen.
-     * 
+     *
      * @since 0.4
      * @return die Zahl als Double
      */
@@ -185,6 +185,7 @@ public class NumFeld extends Feld {
     /**
      * @return true, wenn der Inhalt eine Zahl ist
      */
+    @Override
     public boolean isValid() {
         if (!super.isValid()) {
             return false;

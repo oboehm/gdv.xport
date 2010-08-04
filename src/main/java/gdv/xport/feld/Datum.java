@@ -47,7 +47,7 @@ public final class Datum extends Feld {
      * @param name the name
      * @param start the start
      */
-    public Datum(String name, int start) {
+    public Datum(final String name, final int start) {
         this(name, 8, start);
     }
 
@@ -57,7 +57,7 @@ public final class Datum extends Feld {
      * @param name the name
      * @param inhalt Datum der Form "ddmmjjjj" oder "ddjjjj" oder "dd"
      */
-    public Datum(String name, String inhalt) {
+    public Datum(final String name, final String inhalt) {
         this(name, inhalt.length(), 1, inhalt);
     }
 
@@ -68,7 +68,7 @@ public final class Datum extends Feld {
      * @param length the length
      * @param start the start
      */
-    public Datum(String name, int length, int start) {
+    public Datum(final String name, final int length, final int start) {
         super(name, length, start, Align.RIGHT);
         dateFormat = getDateFormat(length);
     }
@@ -81,7 +81,7 @@ public final class Datum extends Feld {
      * @param start the start
      * @param inhalt Datum der Form "ddmmjjjj" oder "ddjjjj" oder "dd"
      */
-    public Datum(String name, int length, int start, String inhalt) {
+    public Datum(final String name, final int length, final int start, final String inhalt) {
         this(name, length, start);
         this.setInhalt(inhalt);
     }
@@ -98,7 +98,7 @@ public final class Datum extends Feld {
      *
      * @param start the start
      */
-    public Datum(int start) {
+    public Datum(final int start) {
         this(8, start);
     }
 
@@ -108,12 +108,12 @@ public final class Datum extends Feld {
      * @param length the length
      * @param start the start
      */
-    public Datum(int length, int start) {
+    public Datum(final int length, final int start) {
         super(length, start, Align.RIGHT);
         dateFormat = getDateFormat(length);
     }
 
-    private static DateFormat getDateFormat(int length) {
+    private static DateFormat getDateFormat(final int length) {
         switch (length) {
             case 2:
                 return new SimpleDateFormat("dd");
@@ -134,7 +134,7 @@ public final class Datum extends Feld {
      *
      * @param d the new inhalt
      */
-    public void setInhalt(Datum d) {
+    public void setInhalt(final Datum d) {
         this.setInhalt(d.getInhalt());
     }
 
@@ -143,7 +143,7 @@ public final class Datum extends Feld {
      *
      * @param d the new inhalt
      */
-    public void setInhalt(Date d) {
+    public void setInhalt(final Date d) {
         this.setInhalt(dateFormat.format(d));
     }
 

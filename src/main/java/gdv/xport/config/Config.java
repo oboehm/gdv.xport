@@ -77,7 +77,7 @@ public class Config {
     /**
      * Hiermit kann die gesetzte VU-Nummer abgefragt werden.
      * Falls sie noch nicht gesetzt wurde, wird ein "DUMMY" zurueckgegeben.
-     * 
+     *
      * @return VU-Nummer bzw. "DUMMY"
      */
     public static synchronized VUNummer getVUNummer() {

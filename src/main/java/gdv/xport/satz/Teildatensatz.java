@@ -69,6 +69,7 @@ public final class Teildatensatz extends Satz {
         this.initDatenfelder();
     }
 
+    @Override
     protected void createTeildatensaetze(final int n) {
         assert n == 0 : "ein Teildatensatz hat keine weiteren Teildatensaetze";
         this.teildatensatz = null;
@@ -120,6 +121,7 @@ public final class Teildatensatz extends Satz {
         datenfelder.put(name, feld);
     }
 
+    @Override
     public Feld getFeld(final String name) {
         Feld found = datenfelder.get(name);
         if (found == null) {
@@ -225,7 +227,7 @@ public final class Teildatensatz extends Satz {
 
     /**
      * 2 Teildatensaetze sind gleich, wenn all ihre Felder gleich sind.
-     * 
+     *
      * @param other der andere Teildatensatz
      * @return true, wenn beide Teildatensaetze gleich sind
      */

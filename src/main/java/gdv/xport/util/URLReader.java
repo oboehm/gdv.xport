@@ -40,13 +40,13 @@ public class URLReader {
     /**
      * @param url URL, von der gelesen werden soll
      */
-    public URLReader(URL url) {
+    public URLReader(final URL url) {
         this.url = url;
     }
 
     /**
      * Liest die komplette URL und gibt die gelesen Seite als String zurueck.
-     * 
+     *
      * @return gelesene Seite
      * @throws IOException falls die URL nicht erreichbar ist
      */
@@ -65,7 +65,7 @@ public class URLReader {
         }
     }
 
-    private static String read(URLConnection connection) throws IOException {
+    private static String read(final URLConnection connection) throws IOException {
         connection.connect();
         InputStream istream = connection.getInputStream();
         BufferedReader in = new BufferedReader(new InputStreamReader(istream));

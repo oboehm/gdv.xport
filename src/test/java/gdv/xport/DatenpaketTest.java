@@ -39,7 +39,7 @@ import patterntesting.runtime.annotation.IntegrationTest;
 
 /**
  * JUnit-Test fuer Datenpaket.
- * 
+ *
  * @author oliver
  * @since 23.10.2009
  */
@@ -48,7 +48,7 @@ public final class DatenpaketTest {
 
     private static final Log log = LogFactory.getLog(Datenpaket.class);
     /** fuer jeden Test gibt es ein frisches Datenpaket */
-    private Datenpaket datenpaket = new Datenpaket();
+    private final Datenpaket datenpaket = new Datenpaket();
 
     /**
      * Damit die Assert's der Satzlaenge stimmen, muessen wir das
@@ -85,7 +85,7 @@ public final class DatenpaketTest {
 
     /**
      * Tested den Export.
-     * 
+     *
      * @throws IOException falls Temp-Datei nicht angelegt werden kann.
      */
     @Test

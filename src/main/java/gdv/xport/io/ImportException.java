@@ -22,7 +22,7 @@ import java.io.IOException;
 
 /**
  * Falls mal beim Import was schiefgeht.
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.4 (31.12.2009)
  */

@@ -36,7 +36,7 @@ import org.junit.*;
  */
 public final class VorsatzTest extends AbstractSatzTest {
 
-    private Vorsatz vorsatz = new Vorsatz();
+    private final Vorsatz vorsatz = new Vorsatz();
 
     /**
      * Damit ein Datensatz auch 256 Bytes lang ist, setzen wir das
@@ -84,7 +84,7 @@ public final class VorsatzTest extends AbstractSatzTest {
      * @param expected
      * @throws IOException
      */
-    private void checkExport(int startByte, int endByte, String expected) throws IOException {
+    private void checkExport(final int startByte, final int endByte, final String expected) throws IOException {
         super.checkExport(this.vorsatz, startByte, endByte, expected, 768);
     }
 

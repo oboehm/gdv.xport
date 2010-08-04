@@ -293,7 +293,7 @@ public class XmlFormatter {
         return swriter.toString();
     }
 
-    private void writeIndent(int level) {
+    private void writeIndent(final int level) {
         try {
             for (int i = 0; i < level; i++) {
                 xmlStreamWriter.writeCharacters("  ");

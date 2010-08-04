@@ -28,7 +28,7 @@ import org.junit.Test;
  */
 public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
 
-    private AllgemeinerVertragsteil vertragsteil = new AllgemeinerVertragsteil();
+    private final AllgemeinerVertragsteil vertragsteil = new AllgemeinerVertragsteil();
 
     /**
      * Test method for {@link gdv.xport.satz.AllgemeinerVertragsteil#AllgemeinerVertragsteil()}.

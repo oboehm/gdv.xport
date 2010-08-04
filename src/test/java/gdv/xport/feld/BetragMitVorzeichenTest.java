@@ -30,7 +30,7 @@ import org.junit.Test;
  */
 public class BetragMitVorzeichenTest {
 
-    private BetragMitVorzeichen betrag = new BetragMitVorzeichen("Test", 5, 1);
+    private final BetragMitVorzeichen betrag = new BetragMitVorzeichen("Test", 5, 1);
 
     /**
      * Tested den Konstruktor

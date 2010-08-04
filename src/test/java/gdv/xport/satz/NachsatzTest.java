@@ -38,7 +38,7 @@ import org.junit.Test;
 public class NachsatzTest extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(NachsatzTest.class);
-    private Nachsatz nachsatz = new Nachsatz();
+    private final Nachsatz nachsatz = new Nachsatz();
 
     /**
      * Test method for {@link gdv.xport.satz.Nachsatz#Nachsatz()}.
@@ -65,7 +65,7 @@ public class NachsatzTest extends AbstractSatzTest {
      * @param expected
      * @throws IOException
      */
-    private void checkExport(int startByte, int endByte, String expected) throws IOException {
+    private void checkExport(final int startByte, final int endByte, final String expected) throws IOException {
         int n = 256 + Config.getEOD().length();
         super.checkExport(this.nachsatz, startByte, endByte, expected, n);
     }

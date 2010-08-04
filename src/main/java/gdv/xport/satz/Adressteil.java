@@ -107,7 +107,7 @@ public final class Adressteil extends Datensatz {
     /**
      * Setzt den Vor- und Nachname.
      * Der mittlere Name bleibt dabei unberuehrt.
-     * 
+     *
      * @param vorname z.B. "Max"
      * @param nachname z.B. "Mustermann"
      */
@@ -120,7 +120,7 @@ public final class Adressteil extends Datensatz {
      * @param n 1, 2 oder 3
      * @return Name1, Name2 oder Name3
      */
-    public String getName(int n) {
+    public String getName(final int n) {
         assert (n >= 1) && (n <= 3) : "1 <= n <= 3 expected";
         switch(n) {
         case 1:

@@ -40,7 +40,7 @@ public class ConfigException extends RuntimeException {
      * @param message Hinweis fuer die Ursache
      * @param cause die schuldige Exception
      */
-    public ConfigException(String message, Throwable cause) {
+    public ConfigException(final String message, final Throwable cause) {
         super(message, cause);
     }
 

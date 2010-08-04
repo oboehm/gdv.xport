@@ -37,19 +37,19 @@ public final class Vorsatz extends Satz {
 
     private static final Log log = LogFactory.getLog(Vorsatz.class);
     /** 5 Zeichen, Byte 5 - 9 */
-    private AlphaNumFeld vuNummer = new VUNummer(Config.getVUNummer(), 5);
+    private final AlphaNumFeld vuNummer = new VUNummer(Config.getVUNummer(), 5);
     /** 30 Zeichen, Byte 10 - 39 */
-    private AlphaNumFeld absender = new AlphaNumFeld(ABSENDER, 30, 10);
+    private final AlphaNumFeld absender = new AlphaNumFeld(ABSENDER, 30, 10);
     /** 30 Zeichen, Byte 40 - 69 */
-    private AlphaNumFeld adressat = new AlphaNumFeld(ADRESSAT, 30, 40);
+    private final AlphaNumFeld adressat = new AlphaNumFeld(ADRESSAT, 30, 40);
     /** 8 Zeichen, Byte 70 - 77 */
-    private Datum von = new Datum(ERSTELLUNGSDATUM_ZEITRAUM_VOM, 70);
+    private final Datum von = new Datum(ERSTELLUNGSDATUM_ZEITRAUM_VOM, 70);
     /** 8 Zeichen, Byte 78 - 85 */
-    private Datum bis = new Datum(ERSTELLUNGSDATUM_ZEITRAUM_BIS, 78);
+    private final Datum bis = new Datum(ERSTELLUNGSDATUM_ZEITRAUM_BIS, 78);
     /** 10 Zeichen, Byte 86 - 95 */
-    private AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 86);
+    private final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 86);
     /** die Versionen fuer die verschiedenen Datensaetze */
-    private Map<Integer, Version> versions = new HashMap<Integer, Version>();
+    private final Map<Integer, Version> versions = new HashMap<Integer, Version>();
 
     /**
      * Hiermit wird ein Vorsatz mit 3 Teildatensaetzen erstellt.
@@ -63,7 +63,7 @@ public final class Vorsatz extends Satz {
     /**
      * @param content Inhalt des Vorsatzes
      */
-    public Vorsatz(String content) {
+    public Vorsatz(final String content) {
         this();
         try {
             this.importFrom(content);
@@ -99,12 +99,12 @@ public final class Vorsatz extends Satz {
         addVersion(9999, new Version(VERSION_NACHSATZ, 225, "1.1"));
     }
 
-    private void addVersion(Integer art, Version version) {
+    private void addVersion(final Integer art, final Version version) {
         versions.put(art, version);
         add(version);
     }
 
-    private void addVersion(int art, int byteadresse, String version) {
+    private void addVersion(final int art, final int byteadresse, final String version) {
         String s = getVersionBezeichnung(art);
         addVersion(art, new Version(s, byteadresse, version));
     }

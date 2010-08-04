@@ -49,7 +49,7 @@ public class MyUnfallDatensatz extends Datensatz {
      * @throws IOException falls z.B. keine Netzverbindung da ist
      * @throws XMLStreamException falls die XML-Generierung nicht geklappt hat
      */
-    public static void main(String[] args) throws IOException, XMLStreamException {
+    public static void main(final String[] args) throws IOException, XMLStreamException {
         // im Framework registrieren
         SatzFactory.register(MyUnfallDatensatz.class, 210, 30);
         // Datenpaket importieren

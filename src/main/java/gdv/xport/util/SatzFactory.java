@@ -60,7 +60,7 @@ public class SatzFactory {
      * @param clazz
      * @param satzart
      */
-    public static void register(final Class<? extends Satz> clazz, int satzart) {
+    public static void register(final Class<? extends Satz> clazz, final int satzart) {
         registeredSatzClasses.put(satzart, clazz);
     }
 
@@ -214,7 +214,7 @@ public class SatzFactory {
     }
 
     private static Datensatz getDatensatz(final int satzart, final int sparte,
-            Class<? extends Datensatz> clazz, Exception exWithTwoParams) {
+            final Class<? extends Datensatz> clazz, final Exception exWithTwoParams) {
         try {
             log.info("default ctor does not work (" + exWithTwoParams
                     + "), trying another ctor...");
