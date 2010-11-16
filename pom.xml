@@ -24,7 +24,7 @@
   </licenses>
     
   <properties>
-    <patterntesting.version>1.0.1</patterntesting.version>
+    <patterntesting.version>1.0.3</patterntesting.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -368,12 +368,12 @@
   	  (possible) additional repositories:
   	  http://source.valtech.com/repo/content/repositories/releases/
    -->
-  <repositories>
-    <repository>
-      <id>agentes</id>
-      <name>agentes Repository</name>
-      <url>http://labs.agentes.de/repository</url>
-    </repository>
-  </repositories>
+<!--  <repositories>-->
+<!--    <repository>-->
+<!--      <id>agentes</id>-->
+<!--      <name>agentes Repository</name>-->
+<!--      <url>http://labs.agentes.de/repository</url>-->
+<!--    </repository>-->
+<!--  </repositories>-->
 
 </project>

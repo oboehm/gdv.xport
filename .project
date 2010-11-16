@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>gdv.xport</name>
-	<comment>LogBrowser is a Google-like search application but limited on log files.
-    Normally each line in a log file starts with a timestamp followed by
-    the log level, some other information and at least the log message.
-    The LogBrowser has an own analyzer which is (more or less) optimized
-    for this task.
-    A typical question for searching inside log files could be
-    &quot;Where is the log file containing the transaction id 4711?&quot; or
-    &quot;What happens on the Friday, 13th between 13:13 and 13:15?&quot;</comment>
+	<comment>gdv.xport is a framework for GDV export and import</comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -17,8 +10,14 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+        <buildCommand>
+            <name>org.maven.ide.eclipse.maven2Builder</name>
+            <arguments>
+            </arguments>
+        </buildCommand>
 	</buildSpec>
 	<natures>
+        <nature>org.maven.ide.eclipse.maven2Nature</nature>
 		<nature>org.eclipse.ajdt.ui.ajnature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
