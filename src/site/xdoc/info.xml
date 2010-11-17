@@ -29,6 +29,46 @@
         </ul>
       </subsection>
     </section>
+
+    <section name="Unterst&#252;tzte Satzarten">
+      <p>
+        Unter gdv.xport.satz sind die S&#228;tze zu finden, die direkt von
+        gdv.xport unterst&#252;tzt werden:
+      </p>
+      <ul>
+        <li>0001 Vorsatz</li>
+        <li>0100 Adressteil</li>
+        <li>0200 AllgemeinerVertragsteil</li>
+        <li>0210 VertragsspezifischerTeil</li>
+        <li>0220 SpartenspezifischerTeil</li>
+        <li>9999 Nachsatz</li>
+      </ul>
+      <p>
+        Die Klassenname hei&#223;en i.d.R. genauso, wie hinter der Nummer angegeben.
+        Unter <a href="manual/extend.html">Erweiterungen</a> wird beschrieben,
+        wie man gdv.xport um nicht unterst&#252;tzte Satzarten erg&#228;nzen
+        kann.
+      </p>
+      <subsection name="0210 Vertragsspezifischer Teil">
+        <p>
+          Die Satzart 0210 unterteilt in mehrere Unterarten, von denen folgende
+          voll unterst&#252;tzt werden:
+        </p>
+        <ul>
+          <li>0210.030 Unfall</li>
+          <li>0210.070 Rechtsschutz</li>
+        </ul>
+        <p>
+          Die anderen Satzarten 0210.xxx werden nur teilweise unterst&#252;tzt.
+        </p>
+      </subsection>
+      <subsection name="0220 Spartenspezifischer Teil">
+        <p>
+          Es werden die gleichen Unterarten wie f&#252;r Satzart 0210
+          unterst&#252;tzt.
+        </p>
+      </subsection>
+    </section>
     
   </body>
 
