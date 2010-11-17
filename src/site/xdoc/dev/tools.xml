@@ -13,7 +13,7 @@
     
       <subsection name="IDE">
         <p>
-          Als Java-IDE wird Eclipse 3.5 mit folgenden Plugins verwendet:
+          Als Java-IDE wird Eclipse Helios mit folgenden Plugins verwendet:
         </p>
         <ul>
           <li>AJDT (sonst lassen sich die JUnit-Tests nicht ausf&#252;hren)</li>
@@ -32,6 +32,10 @@
           <li>
             Checkstyle-Plugin von
             <a href="http://eclipse-cs.sourceforge.net/">http://eclipse-cs.sourceforge.net/</a>
+          </li>
+          <li>
+            Maven-Plugin "m2eclipse" von
+            <a href="http://m2eclipse.sonatype.org/sites/m2e">http://m2eclipse.sonatype.org/sites/m2e</a>
           </li>
         </ul>
       </subsection>
