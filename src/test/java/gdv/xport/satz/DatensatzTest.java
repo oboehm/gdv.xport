@@ -18,8 +18,8 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
 import static gdv.xport.feld.Bezeichner.*;
+import static org.junit.Assert.assertEquals;
 import gdv.xport.feld.AlphaNumFeld;
 
 import java.io.IOException;
@@ -29,10 +29,11 @@ import org.apache.commons.logging.impl.LogFactoryImpl;
 import org.junit.Test;
 
 /**
+ * Gemeinsame Oberklasse fuer SatzTest.
+ * 
  * @author oliver
  * @since 15.10.2009
  * @version $Revision$
- *
  */
 public class DatensatzTest extends AbstractSatzTest {
 
@@ -50,6 +51,9 @@ public class DatensatzTest extends AbstractSatzTest {
         checkExport(adressteil, 43, 43, "6", 1280);
     }
 
+    /**
+     * Test mit dem Datensatz "0200".
+     */
     @Test
     public void testSet() {
         Datensatz ds = new Datensatz("0200", 2);

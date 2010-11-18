@@ -22,6 +22,7 @@ import gdv.xport.feld.VUNummer;
 
 import java.nio.charset.Charset;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.*;
 
 /**
@@ -95,16 +96,27 @@ public class Config {
      * @since 0.3
      * @param linefeed z.B. "\n"
      */
-    public static void setEOD(final String linefeed) {
+    public static synchronized void setEOD(final String linefeed) {
         eod = linefeed;
     }
 
     /**
+     * Hier wird das "End Of Datensatz" (EOD) zurueckgegeben.
+     * 
      * @since 0.3
      * @return End-of-Datensatz
      */
-    public static String getEOD() {
+    public static synchronized String getEOD() {
         return eod;
+    }
+    
+    /**
+     * Ist Zeichen fuer "End Of Datensatz" (EOD) gegeben?
+     *
+     * @return true, falls ja
+     */
+    public static synchronized boolean hasEOD() {
+        return StringUtils.isNotEmpty(eod);
     }
 
 }

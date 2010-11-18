@@ -160,7 +160,9 @@ public final class Teildatensatz extends Satz {
         }
         assert data.length() == 256 : "Teildatensatz ist nicht 256 Bytes lang";
         writer.write(data.toString());
-        writer.write(Config.getEOD());
+        if (Config.hasEOD()) {
+            writer.write(Config.getEOD());
+        }
     }
 
     /* (non-Javadoc)

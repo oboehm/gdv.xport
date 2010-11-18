@@ -47,6 +47,7 @@ public class AbstractSatzTest {
      */
     @BeforeClass
     public static void setUpBeforeClass() {
+        Config.setEOD("");
         Config.setVUNummer(VU_NUMMER);
     }
 
@@ -60,13 +61,18 @@ public class AbstractSatzTest {
      */
     protected void checkExport(final Satz satz, final int startByte, final int endByte,
             final String expected, final int expectedLength) throws IOException {
-        StringWriter swriter = new StringWriter(768);
-        satz.export(swriter);
-        String data = swriter.toString();
+        String data = export(satz);
         assertEquals(expectedLength, data.length());
         String toBeChecked = data.substring(startByte - 1, endByte);
         log.info("data: " + data.substring(0, 9) + "..." + toBeChecked + "...");
         assertEquals(expected, toBeChecked);
+    }
+
+    private String export(final Satz satz) throws IOException {
+        StringWriter swriter = new StringWriter(768);
+        satz.export(swriter);
+        String data = swriter.toString();
+        return data;
     }
 
 }

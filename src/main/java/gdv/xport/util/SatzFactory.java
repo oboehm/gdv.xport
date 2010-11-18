@@ -35,9 +35,14 @@ import org.apache.commons.logging.*;
  */
 public class SatzFactory {
 
+    /** The Constant log. */
     private static final Log log = LogFactory.getLog(SatzFactory.class);
+    
+    /** The registered satz classes. */
     private static Map<Integer, Class<? extends Satz>> registeredSatzClasses =
         new HashMap<Integer, Class<? extends Satz>>();
+    
+    /** The registered datensatz classes. */
     private static Map<Integer, Class<? extends Datensatz>> registeredDatensatzClasses =
         new HashMap<Integer, Class<? extends Datensatz>>();
 
@@ -50,15 +55,18 @@ public class SatzFactory {
         registeredSatzClasses.put(9999, Nachsatz.class);
     }
 
+    /**
+     * Instantiates a new satz factory.
+     */
     private SatzFactory() {}
 
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
      * unterstuetzte Datensaetze) registriert werden.
      *
+     * @param clazz the clazz
+     * @param satzart the satzart
      * @since 0.2
-     * @param clazz
-     * @param satzart
      */
     public static void register(final Class<? extends Satz> clazz, final int satzart) {
         registeredSatzClasses.put(satzart, clazz);
@@ -68,8 +76,8 @@ public class SatzFactory {
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
      * Testen hilfreich sein kann)
      *
+     * @param satzart the satzart
      * @since 0.2
-     * @param satzart
      */
     public static void unregister(final int satzart) {
         registeredSatzClasses.remove(satzart);
@@ -79,10 +87,10 @@ public class SatzFactory {
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
      * unterstuetzte Datensaetze) registriert werden.
      *
+     * @param clazz the clazz
+     * @param satzart the satzart
+     * @param sparte the sparte
      * @since 0.2
-     * @param clazz
-     * @param satzart
-     * @param sparte
      */
     public static void register(final Class<? extends Datensatz> clazz, final int satzart,
             final int sparte) {
@@ -96,20 +104,29 @@ public class SatzFactory {
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
      * Testen hilfreich sein kann)
      *
+     * @param satzart the satzart
+     * @param sparte the sparte
      * @since 0.2
-     * @param satzart
-     * @param sparte
      */
     public static void unregister(final int satzart, final int sparte) {
         registeredDatensatzClasses.remove(getAsKey(satzart, sparte));
     }
 
+    /**
+     * Gets the as key.
+     *
+     * @param satzart the satzart
+     * @param sparte the sparte
+     * @return the as key
+     */
     private static int getAsKey(final int satzart, final int sparte) {
         return satzart * 1000 + sparte;
     }
 
     /**
-     * @param satzart
+     * Gets the satz.
+     *
+     * @param satzart the satzart
      * @return angeforderte Satz
      * @since 0.2
      */
@@ -144,7 +161,7 @@ public class SatzFactory {
      * eine Satzart es sich handelt und liefert dann einen entsprechende
      * (gefuellten) Satz zurueck.
      *
-     * @param content
+     * @param content the content
      * @return einen gefuellten Satz
      * @since 0.2
      */
@@ -167,15 +184,19 @@ public class SatzFactory {
     }
 
     /**
-     * @since 0.2
+     * Gets the datensatz.
+     *
      * @param satzart den registrierten Datensatz fuer
      * @return den registrierten Datensatz fuer 'satzart'
+     * @since 0.2
      */
     public static Datensatz getDatensatz(final int satzart) {
         return (Datensatz) getSatz(satzart);
     }
 
     /**
+     * Gets the datensatz.
+     *
      * @param satzart z.B. 210
      * @param sparte z.B. 70 (Rechtsschutz)
      * @return den registrierten Datensatz fuer 'satzart', 'sparte'
@@ -213,6 +234,15 @@ public class SatzFactory {
         }
     }
 
+    /**
+     * Gets the datensatz.
+     *
+     * @param satzart the satzart
+     * @param sparte the sparte
+     * @param clazz the clazz
+     * @param exWithTwoParams the ex with two params
+     * @return the datensatz
+     */
     private static Datensatz getDatensatz(final int satzart, final int sparte,
             final Class<? extends Datensatz> clazz, final Exception exWithTwoParams) {
         try {
@@ -229,6 +259,13 @@ public class SatzFactory {
         }
     }
 
+    /**
+     * Use fallback.
+     *
+     * @param satzart the satzart
+     * @param sparte the sparte
+     * @return the datensatz
+     */
     private static Datensatz useFallback(final int satzart, final int sparte) {
         try {
             Datensatz fallback = (Datensatz) getSatz(satzart);
