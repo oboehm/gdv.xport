@@ -43,8 +43,9 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
     private static final Log log = LogFactory.getLog(SpartenspezifischerTeilTest.class);
 
     /**
-     * Der Lesbarkeit halber aktivieren wir das Zeilenenden fuer jeden
+     * Der Lesbarkeit halber aktivieren wir das Zeilenende fuer jeden
      * exportierten Satz.
+     * 
      * @since 0.4
      */
     @BeforeClass
@@ -124,14 +125,6 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
         SpartenspezifischerTeil wagnisdaten = new SpartenspezifischerTeil(30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
-    }
-
-    private static void checkDatensatz(final Datensatz datensatz, final String expected) throws IOException {
-        StringWriter swriter = new StringWriter(expected.length());
-        datensatz.export(swriter);
-        swriter.close();
-        assertEquals(expected, swriter.toString());
-        assertTrue(datensatz.toShortString() + " is not valid", datensatz.isValid());
     }
 
 }

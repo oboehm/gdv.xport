@@ -41,6 +41,7 @@
         <li>0200 AllgemeinerVertragsteil</li>
         <li>0210 VertragsspezifischerTeil</li>
         <li>0220 SpartenspezifischerTeil</li>
+        <li>0221 Erweiterungssatz</li>
         <li>9999 Nachsatz</li>
       </ul>
       <p>

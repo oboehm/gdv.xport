@@ -37,7 +37,7 @@ public class AllgemeinerVertragsteil extends Datensatz {
         add(new Datum(VERTRAGSABLAUF, 52));
         add(new Datum(HAUPTFAELLIGKEIT, 60));
         add(new Zeichen(ZAHLUNGSWEISE, 68));
-        add(new Zeichen(VERTRAGSSATUS, 69));
+        add(new Zeichen(VERTRAGSSTATUS, 69));
         add(new AlphaNumFeld(ABGANGSGRUND, 2, 70));
         add(new Datum(ABGANGSDATUM, 72));
         add(new AlphaNumFeld(AENDERUNGSGRUND, 10, 80));

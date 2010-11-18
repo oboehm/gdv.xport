@@ -102,6 +102,7 @@ public final class Bezeichner {
     public static final String BUENDELUNGSKENNZEICHEN = "Buendelungskennzeichen";
     public static final String DATUM_LETZTE_BEITRAGSANGLEICHUNG = "Datum der letzten Beitragsangleichung";
     public static final String DECKUNGSSUMME_IN_TSD_WAEHRUNGSEINHEITEN = "Deckungssumme in Tausend Waehrungseinheiten";
+    public static final String DECKUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Deckungssumme in Waehrungseinheiten";
     public static final String DECKUNGSUMFANG = "Deckungsumfang";
     public static final String DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER = "Druckaufbereitete Versicherungsscheinnummer";
     public static final String DYNAMIK = "Dynamik";
@@ -263,7 +264,7 @@ public final class Bezeichner {
     public static final String VERSICHERUNGSSCHEINNUMMER_VM = "Versicherungsscheinnummer VM";
     public static final String VERTRAGSABLAUF = "Vertragsablauf";
     public static final String VERTRAGSBEGINN = "Vertragsbeginn";
-    public static final String VERTRAGSSATUS = "Vertragsstatus";
+    public static final String VERTRAGSSTATUS = "Vertragsstatus";
     public static final String VORNAME_VP = "Vorname der VP";
     public static final String VORZUGSSTEUERBERECHTIGUNG = "Vorsteuerabszugsberechtigung Ja/Nein";
     public static final String VORZUGSSEUERBERECHTIGUNG_PROZENT = "Vorsteuerabszugsberechtigung in Prozent";

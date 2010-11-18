@@ -99,7 +99,7 @@ public class VertragsspezifischerTeil extends Datensatz {
 
     private void setUpDatenfelder30() {
         // Teildatensatz 1
-        add(new Zeichen(VERTRAGSSATUS, 43));
+        add(new Zeichen(VERTRAGSSTATUS, 43));
         add(new Datum(BEGINN, 44));
         add(new NumFeld(AUSSCHLUSS, 8, 52));
         add(new Datum(AENDERUNGSDATUM, 60));
@@ -133,7 +133,7 @@ public class VertragsspezifischerTeil extends Datensatz {
 
     private void setUpDatenfelder70() {
         // Teildatensatz 1
-        add(new Zeichen(VERTRAGSSATUS, 43));
+        add(new Zeichen(VERTRAGSSTATUS, 43));
         add(new Datum(BEGINN, 44));
         add(new NumFeld(AUSSCHLUSS, 8, 52));
         add(new Datum(AENDERUNGSDATUM, 60));

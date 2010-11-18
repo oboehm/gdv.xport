@@ -45,6 +45,8 @@ public class SpartenspezifischerTeil extends Datensatz {
     }
 
     /**
+     * Konstruktor fuer die gewuenschte Sparte.
+     * 
      * @param sparte z.B. 70 (Rechtsschutz)
      */
     public SpartenspezifischerTeil(final int sparte) {
@@ -52,6 +54,8 @@ public class SpartenspezifischerTeil extends Datensatz {
     }
 
     /**
+     * Konstruktor fuer die gewuenschte Sparte.
+     * 
      * @param sparte z.B. 70 (Rechtsschutz)
      * @param n Anzahl Teildatensaetze
      */
@@ -233,7 +237,7 @@ public class SpartenspezifischerTeil extends Datensatz {
         add(risikoGruppe);
         add(lfdNummer);
         add(new NumFeld(SATZNUMMER, 1, 53, 1));
-        add(new Zeichen(VERTRAGSSATUS, 54));
+        add(new Zeichen(VERTRAGSSTATUS, 54));
         add(new Datum(BEGINN, 55));
         add(new Datum(AUSSCHLUSS, 63));
         add(new Datum(AENDERUNGSDATUM, 71));

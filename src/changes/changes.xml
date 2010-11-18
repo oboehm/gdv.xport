@@ -19,6 +19,9 @@
 
     <release version="0.4.3-SNAPSHOT" date="2011"
              description="nur noch zweistellige Checkstyle-Verletzungen">
+      <action dev="oboehm" type="add" date="18-Nov-2010">
+        Unterst&#252;tzung f&#252;r Satzart 221 (Erweiterungssatz).
+      </action>
       <action dev="oboehm" type="update" date="4-Aug-2010" >
         Eigenes Logo erstellt.
       </action>

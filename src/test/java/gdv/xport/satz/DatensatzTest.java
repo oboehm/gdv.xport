@@ -20,13 +20,14 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
 import static org.junit.Assert.assertEquals;
+import gdv.xport.config.Config;
 import gdv.xport.feld.AlphaNumFeld;
 
 import java.io.IOException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.impl.LogFactoryImpl;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Gemeinsame Oberklasse fuer SatzTest.
@@ -38,6 +39,17 @@ import org.junit.Test;
 public class DatensatzTest extends AbstractSatzTest {
 
     private static final Log log = LogFactoryImpl.getLog(DatensatzTest.class);
+
+    /**
+     * Zum Testen deaktivieren wir das Zeilenende fuer jeden
+     * exportierten Satz.
+     * 
+     * @since 0.4.3
+     */
+    @BeforeClass
+    public static void setUpBeforeClass() {
+        Config.setEOD("");
+    }
 
     /**
      * Test method for {@link gdv.xport.satz.Datensatz#Datensatz(java.lang.String, int)}.

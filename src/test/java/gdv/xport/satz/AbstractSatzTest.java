@@ -18,7 +18,7 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.*;
 
@@ -47,7 +47,6 @@ public class AbstractSatzTest {
      */
     @BeforeClass
     public static void setUpBeforeClass() {
-        Config.setEOD("");
         Config.setVUNummer(VU_NUMMER);
     }
 
@@ -73,6 +72,14 @@ public class AbstractSatzTest {
         satz.export(swriter);
         String data = swriter.toString();
         return data;
+    }
+    
+    protected static void checkDatensatz(final Datensatz datensatz, final String expected) throws IOException {
+        StringWriter swriter = new StringWriter(expected.length());
+        datensatz.export(swriter);
+        swriter.close();
+        assertEquals(expected, swriter.toString());
+        assertTrue(datensatz.toShortString() + " is not valid", datensatz.isValid());
     }
 
 }
