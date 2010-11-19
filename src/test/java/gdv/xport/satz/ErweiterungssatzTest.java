@@ -71,6 +71,28 @@ public class ErweiterungssatzTest extends AbstractSatzTest {
             + "0000000000000000000000000000000000000000000000000000010000000000"
             + "000000000                                                      X"
             + "\n";
+        checkWagnisdaten(input);
+    }
+
+    /**
+     * Hier wird der Teildatensatz 3 der Sparte 30 (Rechtschutz) getestet.
+     * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
+     *
+     * @throws IOException
+     *             sollte eigentlich nicht vorkommen, da wir von einem String
+     *             importieren
+     */
+    @Test
+    public void testSparte30Teildatensatz3() throws IOException {
+        String input = "02219999  030      59999999999019999009999300000000000000       "
+            + "                                                                "
+            + "                                                                " 
+            + "                                                         3000001"
+            + "\n";
+        checkWagnisdaten(input);
+    }
+
+    private void checkWagnisdaten(String input) throws IOException {
         assertEquals(257, input.length());
         Erweiterungssatz wagnisdaten = new Erweiterungssatz(30);
         wagnisdaten.importFrom(input);

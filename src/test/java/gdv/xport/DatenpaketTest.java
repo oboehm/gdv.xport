@@ -30,12 +30,13 @@ import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.*;
 import org.junit.*;
 import org.junit.runner.RunWith;
 
-import patterntesting.concurrent.junit.ParallelRunner;
 import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * JUnit-Test fuer Datenpaket.
@@ -43,7 +44,7 @@ import patterntesting.runtime.annotation.IntegrationTest;
  * @author oliver
  * @since 23.10.2009
  */
-@RunWith(ParallelRunner.class)
+@RunWith(SmokeRunner.class)
 public final class DatenpaketTest {
 
     private static final Log log = LogFactory.getLog(Datenpaket.class);
@@ -51,24 +52,17 @@ public final class DatenpaketTest {
     private final Datenpaket datenpaket = new Datenpaket();
 
     /**
+     * Test-Methode fuer {@link gdv.xport.Datenpaket#export(java.io.Writer)}.
      * Damit die Assert's der Satzlaenge stimmen, muessen wir das
      * End-of-Datensatz abschalten.
-     *
-     * @since 0.3
-     */
-    @BeforeClass
-    public static void setUpBeforeClass() {
-        Config.setEOD("");
-    }
-
-    /**
-     * Test-Methode fuer {@link gdv.xport.Datenpaket#export(java.io.Writer)}.
+     * 
      * @throws IOException falls z.B. die Platte voll ist
      */
     @Test
     public void testEmptyExport() throws IOException {
         Datenpaket empty = new Datenpaket();
         StringWriter swriter = new StringWriter(1024);
+        Config.setEOD("");
         empty.export(swriter);
         String data = swriter.toString();
         assertEquals(1024, data.length());
@@ -84,15 +78,18 @@ public final class DatenpaketTest {
     }
 
     /**
-     * Tested den Export.
-     *
-     * @throws IOException falls Temp-Datei nicht angelegt werden kann.
+     * Tested den Export. Damit die Assert's der Satzlaenge stimmen, muessen wir
+     * das End-of-Datensatz abschalten.
+     * 
+     * @throws IOException
+     *             falls Temp-Datei nicht angelegt werden kann.
      */
     @Test
     public void testExportFile() throws IOException {
         datenpaket.setAdressat("Test-Adressat");
         datenpaket.setVermittler("845/666666");
         File file = File.createTempFile("datenpaket", ".txt");
+        Config.setEOD("");
         datenpaket.export(file);
         log.info(datenpaket + " was exported to " + file);
         assertTrue(file + " was not created", file.exists());
@@ -168,7 +165,7 @@ public final class DatenpaketTest {
             istream.close();
         }
     }
-
+    
     /**
      * Tested den Import von einer URL.
      *
@@ -196,6 +193,30 @@ public final class DatenpaketTest {
                 "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
         datenpaket.importFrom(url);
         assertTrue(datenpaket.isValid());
+    }
+    
+    /**
+     * Der Export eines zuvor importierten Datenpakets sollte identisch mit der
+     * Ausgangsdatei sein. Da aber nicht alle Felder besetzt sind (z.B. fehlen
+     * im Vorsatz Versions-Infos) ist dieser Test (noch) nicht aktiv.
+     * 
+     * @since 0.4.3
+     * @throws IOException falls die Platte kaputt ist
+     */
+    //@Test
+    public void testImportExport() throws IOException {
+        InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
+        try {
+            String muster = IOUtils.toString(istream);
+            datenpaket.importFrom(muster);
+            StringWriter swriter = new StringWriter(muster.length());
+            Config.setEOD("\n");
+            datenpaket.export(swriter);
+            swriter.close();
+            assertEquals(muster, swriter.toString());
+        } finally {
+            istream.close();
+        }
     }
 
     /**
