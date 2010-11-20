@@ -31,7 +31,9 @@ import org.apache.commons.logging.*;
  */
 public class Erweiterungssatz extends Datensatz {
     
-    private static final int SATZART = 221;
+    /** 221 Erweiterungssatz. */
+    public static final int SATZART = 221;
+
     private static final Log log = LogFactory.getLog(Erweiterungssatz.class);
 
     /**

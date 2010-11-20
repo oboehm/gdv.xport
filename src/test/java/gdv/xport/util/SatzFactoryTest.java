@@ -30,10 +30,12 @@ import gdv.xport.util.SatzFactory;
 import org.junit.Test;
 
 /**
+ * JUnit-Test fuer SatzFactory.
+ * 
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (30.10.2009)
  */
-public class SatzFactoryTest extends AbstractTest {
+public final class SatzFactoryTest extends AbstractTest {
 
     /**
      * Testet getSatz().
@@ -47,12 +49,19 @@ public class SatzFactoryTest extends AbstractTest {
         assertEquals(Vorsatz.class, satz.getClass());
     }
 
+    /**
+     * Testet getSatz().
+     */
     @Test
     public void testGetSatzInt() {
         Satz satz = SatzFactory.getSatz(1);
         assertEquals(Vorsatz.class, satz.getClass());
     }
 
+    /**
+     * Testet getSatz() fuer eine Satzart, die (noch) nicht unterstuetzt
+     * wird.
+     */
     @Test
     public void testGetUnsupportedSatz() {
         Datensatz unsupported = new Datensatz("0123");
@@ -65,6 +74,9 @@ public class SatzFactoryTest extends AbstractTest {
         assertTrue(imported + " should be valid", imported.isValid());
     }
 
+    /**
+     * Testet {@link SatzFactory#register(Class, int)}.
+     */
     @Test
     public void testRegisterSatz() {
         SatzFactory.register(Datensatz.class, 47);
@@ -74,6 +86,9 @@ public class SatzFactoryTest extends AbstractTest {
         SatzFactory.unregister(47);
     }
 
+    /**
+     * Testet {@link SatzFactory#register(Class, int, int)}.
+     */
     @Test
     public void testRegisterDatensatz() {
         SatzFactory.register(Adressteil.class, 47, 11);
@@ -82,14 +97,31 @@ public class SatzFactoryTest extends AbstractTest {
         SatzFactory.unregister(47, 11);
     }
 
+    /**
+     * Damit wird ueberprueft, ob Satzart 100 (Adressteil) bei der
+     * SatzFactory registriert ist.
+     */
     @Test
     public void testGetAdressteil() {
         checkGetDatensatz(100, Adressteil.class);
     }
 
+    /**
+     * Damit wird ueberprueft, ob Satzart 200 (AllgemeinerVertragsteil) bei der
+     * SatzFactory registriert ist.
+     */
     @Test
     public void testGetAllgemeinerVertragsteil() {
         checkGetDatensatz(200, AllgemeinerVertragsteil.class);
+    }
+    
+    /**
+     * Damit wird ueberprueft, ob Satzart 221 (Erweiterungssatz) bei der
+     * SatzFactory registriert ist.
+     */
+    @Test
+    public void testGetErweiterungssatz() {
+        checkGetDatensatz(221, Erweiterungssatz.class);
     }
 
     private static void checkGetDatensatz(final int satzart, final Class<? extends Datensatz> clazz) {
@@ -98,14 +130,28 @@ public class SatzFactoryTest extends AbstractTest {
         assertEquals(satzart, datensatz.getSatzart());
     }
 
+    /**
+     * Damit wird ueberprueft, ob Satzart 220 mit Sparte 70 registriert ist.
+     */
     @Test
-    public void testGetSpartenspezifischerTeil() {
+    public void testGetSpartenspezifischerTeil70() {
         checkGetDatensatz(220, 70, SpartenspezifischerTeil.class);
     }
 
+    /**
+     * Damit wird ueberprueft, ob Satzart 210 mit Sparte 70 registriert ist.
+     */
     @Test
-    public void testGetVertragsspezifischerTeil() {
+    public void testGetVertragsspezifischerTeil70() {
         checkGetDatensatz(210, 70, VertragsspezifischerTeil.class);
+    }
+
+    /**
+     * Damit wird ueberprueft, ob Satzart 221 mit Sparte 30 registriert ist.
+     */
+    @Test
+    public void testGetErweiterungssatz30() {
+        checkGetDatensatz(221, 30, Erweiterungssatz.class);
     }
 
     private static void checkGetDatensatz(final int satzart, final int sparte, final Class<? extends Datensatz> clazz) {
@@ -118,7 +164,8 @@ public class SatzFactoryTest extends AbstractTest {
     }
 
     /**
-     * Die Daten zu diesem Test stammen aus der Musterdatei
+     * Die Daten zu diesem Test stammen aus der Musterdatei.
+     * 
      * @throws IOException sollte eigentlich nicht vorkommen
      */
     @Test

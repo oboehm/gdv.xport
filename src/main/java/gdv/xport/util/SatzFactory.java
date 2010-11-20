@@ -52,6 +52,7 @@ public final class SatzFactory {
         registeredSatzClasses.put(200, AllgemeinerVertragsteil.class);
         registeredSatzClasses.put(210, VertragsspezifischerTeil.class);
         registeredSatzClasses.put(220, SpartenspezifischerTeil.class);
+        registeredSatzClasses.put(221, Erweiterungssatz.class);
         registeredSatzClasses.put(9999, Nachsatz.class);
     }
 
