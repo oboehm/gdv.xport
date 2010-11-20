@@ -309,7 +309,7 @@ public class Feld implements Comparable<Feld> {
      *
      * @return the anzahl bytes
      */
-    public int getAnzahlBytes() {
+    public final int getAnzahlBytes() {
         return this.inhalt.length();
     }
 
@@ -318,7 +318,7 @@ public class Feld implements Comparable<Feld> {
      *
      * @return Byte-Adresse, beginnend bei 1
      */
-    public int getByteAdresse() {
+    public final int getByteAdresse() {
         return this.byteAdresse;
     }
 
@@ -327,7 +327,7 @@ public class Feld implements Comparable<Feld> {
      *
      * @return absolute End-Adresse
      */
-    public int getEndAdresse() {
+    public final int getEndAdresse() {
         return this.byteAdresse + this.getAnzahlBytes() - 1;
     }
 
@@ -339,7 +339,7 @@ public class Feld implements Comparable<Feld> {
      *
      * @return true, falls sich die Felder ueberlappen
      */
-    public boolean overlapsWith(final Feld other) {
+    public final boolean overlapsWith(final Feld other) {
         if (this.byteAdresse == other.byteAdresse) {
             return false;
         }
@@ -358,7 +358,7 @@ public class Feld implements Comparable<Feld> {
      * @throws IOException
      *             Signals that an I/O exception has occurred.
      */
-    public void write(final Writer writer) throws IOException {
+    public final void write(final Writer writer) throws IOException {
         writer.write(this.inhalt.toString());
     }
 
@@ -439,7 +439,7 @@ public class Feld implements Comparable<Feld> {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(final Object other) {
+    public final boolean equals(final Object other) {
         if (other == null) {
             return false;
         }
@@ -458,7 +458,7 @@ public class Feld implements Comparable<Feld> {
      *
      * @return true, if successful
      */
-    public boolean equals(final Feld other) {
+    public final boolean equals(final Feld other) {
         return this.bezeichnung.equals(other.bezeichnung)
                 && this.getInhalt().equals(other.getInhalt())
                 && (this.byteAdresse == other.byteAdresse) && this.ausrichtung == other.ausrichtung;
@@ -470,7 +470,7 @@ public class Feld implements Comparable<Feld> {
      * @see java.lang.Object#hashCode()
      */
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return this.byteAdresse + this.getInhalt().hashCode();
     }
 
@@ -483,7 +483,7 @@ public class Feld implements Comparable<Feld> {
      *
      * @return 0 wenn beide Felder die gleiche Startadresse haben
      */
-    public int compareTo(final Feld other) {
+    public final int compareTo(final Feld other) {
         return this.byteAdresse - other.byteAdresse;
     }
 

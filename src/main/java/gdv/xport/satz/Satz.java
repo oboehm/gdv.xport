@@ -180,7 +180,7 @@ public abstract class Satz {
      * @param feld the feld
      * @param teildatensatzNr the teildatensatz nr
      */
-    public final void add(final Feld feld, final int teildatensatzNr) {
+    public void add(final Feld feld, final int teildatensatzNr) {
         if (feld.getByteAdresse() > 256) {
             throw new IllegalArgumentException(feld + " ueberschreitet Teildatensatz-Grenze");
         }
@@ -329,7 +329,7 @@ public abstract class Satz {
      * @param ostream z.B. System.out
      * @throws IOException falls mal was schief geht
      */
-    public final void export(final OutputStream ostream) throws IOException {
+    public void export(final OutputStream ostream) throws IOException {
         Writer writer = new OutputStreamWriter(ostream);
         export(writer);
         writer.flush();

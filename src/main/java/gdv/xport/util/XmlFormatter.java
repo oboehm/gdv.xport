@@ -38,7 +38,7 @@ import org.apache.commons.logging.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.2 (13.11.2009)
  */
-public class XmlFormatter {
+public final class XmlFormatter {
 
     private static final Log log = LogFactory.getLog(XmlFormatter.class);
     private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();

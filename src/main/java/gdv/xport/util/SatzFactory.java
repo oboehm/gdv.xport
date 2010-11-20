@@ -33,7 +33,7 @@ import org.apache.commons.logging.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (30.10.2009)
  */
-public class SatzFactory {
+public final class SatzFactory {
 
     /** The Constant log. */
     private static final Log log = LogFactory.getLog(SatzFactory.class);

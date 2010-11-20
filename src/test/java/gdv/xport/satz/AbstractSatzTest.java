@@ -58,7 +58,7 @@ public class AbstractSatzTest {
      * @param expectedLength erwartete Laenge
      * @throws IOException sollte bei StringWriter eigentlich nicht vorkommen
      */
-    protected void checkExport(final Satz satz, final int startByte, final int endByte,
+    protected final void checkExport(final Satz satz, final int startByte, final int endByte,
             final String expected, final int expectedLength) throws IOException {
         String data = export(satz);
         assertEquals(expectedLength, data.length());

@@ -35,11 +35,11 @@ import org.apache.commons.logging.*;
  * @since 08.10.2009
  * @version $Revision$
  */
-public class Config {
+public final class Config {
 
-    /** Standard-Encoding ist "ISO-8859-1" */
+    /** Standard-Encoding ist "ISO-8859-1". */
     public static final Charset DEFAULT_ENCODING = Charset.forName("ISO-8859-1");
-    /** Fals VUNummer nicht gesetzt ist, wird dies als Dummy eingesetzt */
+    /** Fals VUNummer nicht gesetzt ist, wird dies als Dummy eingesetzt. */
     public static final String DUMMY_VU_NUMMER = "DUMMY";
     private static final Log log = LogFactory.getLog(Config.class);
     protected static final String GDV_VU_NUMMER = "gdv.VU-Nummer";

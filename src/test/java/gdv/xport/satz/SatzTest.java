@@ -37,7 +37,7 @@ import patterntesting.concurrent.junit.ParallelRunner;
 
 /**
  * Test-Klasse fuer Satz.
- *
+ * 
  * @author oliver
  * @since 19.10.2009
  */
@@ -50,7 +50,7 @@ public final class SatzTest {
     /**
      * Damit die Assert's der Satzlaenge stimmen, muessen wir das
      * End-of-Datensatz abschalten.
-     *
+     * 
      * @since 0.3
      */
     @BeforeClass
@@ -72,18 +72,19 @@ public final class SatzTest {
      * Falls ein Feld hinzugefuegt wird, das ein anderes Feld (teilweise)
      * ueberschreiben wuerde, sollte eine Exception geworfen werden.
      */
-    @Test(expected=IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testAdd() {
         satz.add(new AlphaNumFeld(NAME1, 30, 44));
         satz.add(new AlphaNumFeld("Bumm", 4, 50));
     }
 
     /**
-     * Test method for {@link gdv.xport.satz.Satz#set(java.lang.String, java.lang.String)}.
-     * Es kann nur ein Feld gesetzt werden, das vorher ueber "add(..)"
-     * hinzugefuegt wurde.
+     * Test method for
+     * {@link gdv.xport.satz.Satz#set(java.lang.String, java.lang.String)}. Es
+     * kann nur ein Feld gesetzt werden, das vorher ueber "add(..)" hinzugefuegt
+     * wurde.
      */
-    @Test(expected=IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testSet() {
         satz.set("gibtsnet", "plopp");
     }
@@ -100,10 +101,10 @@ public final class SatzTest {
 
     /**
      * Test method for {@link gdv.xport.satz.Satz#getFeld(java.lang.String)}.
-     * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als Ergebnis
-     * erwartet sondern eine IllegalArgumentException.
+     * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als
+     * Ergebnis erwartet sondern eine IllegalArgumentException.
      */
-    @Test(expected=IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testGetFeld() {
         Feld f = satz.getFeld("hemmernet");
         assertSame(Feld.NULL_FELD, f);
@@ -112,25 +113,26 @@ public final class SatzTest {
     /**
      * Ein Export mit einem Teildatensatz sollte aus genau 256 Bytes bestehen,
      * da in der SetUp-Methode das EOD-Zeichen auf "" gesetzt wurde.
-     *
+     * 
      * @throws IOException
      *             sollte nicht auftreten, da wir mit StringWriter arbeiten
      */
     @Test
     public void testExport() throws IOException {
-         StringWriter swriter = new StringWriter(256);
-         satz.export(swriter);
-         swriter.close();
-         String content = swriter.toString();
-         assertEquals(256, content.length());
-         assertEquals(satz.getSatzartFeld().getInhalt(), content.substring(0, 4));
+        StringWriter swriter = new StringWriter(256);
+        satz.export(swriter);
+        swriter.close();
+        String content = swriter.toString();
+        assertEquals(256, content.length());
+        assertEquals(satz.getSatzartFeld().getInhalt(), content.substring(0, 4));
     }
 
     /**
      * Ein einfach Import-Test.
-     *
+     * 
      * @throws IOException
-     *             sollte eigenlich nicht passieren, da wir von einem String lesen
+     *             sollte eigenlich nicht passieren, da wir von einem String
+     *             lesen
      */
     @Test
     public void testImport() throws IOException {
@@ -182,8 +184,8 @@ public final class SatzTest {
     }
 
     /**
-     * Zwei gleiche Datensaetze muessen natuerlich auch den gleichen
-     * Hashcode besitzen.
+     * Zwei gleiche Datensaetze muessen natuerlich auch den gleichen Hashcode
+     * besitzen.
      */
     @Test
     public void testIsEquals() {
@@ -197,6 +199,7 @@ public final class SatzTest {
 
     /**
      * Hier testen wir das Enfernen von Teildatensaetze.
+     * 
      * @since 0.4
      */
     @Test
@@ -204,13 +207,14 @@ public final class SatzTest {
         Satz s = new Vorsatz();
         int n = s.getTeildatensaetze().size();
         s.removeTeildatensatz(n);
-        assertEquals(n-1, s.getTeildatensaetze().size());
+        assertEquals(n - 1, s.getTeildatensaetze().size());
         s.removeTeildatensatz(1);
-        assertEquals(n-2, s.getTeildatensaetze().size());
+        assertEquals(n - 2, s.getTeildatensaetze().size());
     }
 
     /**
      * Hier testen wir das Entfernen aller Teildatensaetze.
+     * 
      * @since 0.4
      */
     @Test
@@ -221,4 +225,3 @@ public final class SatzTest {
     }
 
 }
-

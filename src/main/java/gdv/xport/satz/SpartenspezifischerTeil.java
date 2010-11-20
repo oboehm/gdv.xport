@@ -312,7 +312,7 @@ public class SpartenspezifischerTeil extends Datensatz {
      */
     @Override
     public void importFrom(final String input) throws IOException {
-        switch (this.getSparte()) {
+        switch (this.getSparte()) { // NOPMD by oliver on 20.11.10 18:54
             case 30:
                 importSparte30(input);
                 break;

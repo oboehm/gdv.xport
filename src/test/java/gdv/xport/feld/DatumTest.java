@@ -53,7 +53,7 @@ public class DatumTest {
         assertEquals(today, datum.toDate());
     }
 
-    @Test(expected=IllegalStateException.class)
+    @Test(expected = IllegalStateException.class)
     public void testToDate() {
         Datum silvester = new Datum("Silvester", "31122009");
         log.info("Silvester is at " + silvester.toDate());

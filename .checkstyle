@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<fileset-config file-format-version="1.2.0" simple-config="true">
+<fileset-config file-format-version="1.2.0" simple-config="true" sync-formatter="false">
   <local-check-config name="gdv.xport-config" location="config/checkstyle.xml" type="project" description="">
     <property name="checkstyle.cache.file" value="/tmp/checkstyle.cache"/>
     <additional-data name="protect-config-file" value="false"/>
