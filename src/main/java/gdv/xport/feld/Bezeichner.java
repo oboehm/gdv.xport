@@ -59,6 +59,8 @@ public final class Bezeichner {
     public static final String ANZAHL_VP_PRO_PERSONENGRUPPE = "Anzahl der VP pro Personengruppe";
     public static final String ARB = "ARB (Allgemeine Bedingungen fuer die Rechtschutzvers.)";
     public static final String ART_DER_HEILKOSTEN = "Art der Heilkosten";
+    public static final String ART_DES_ABSENDERS = "Art des Absenders";
+    public static final String ART_DES_ADRESSATEN = "Art des Adressaten";
     public static final String AUFTRAGSNR_VERMITTLER = "Auftrags-Nr. des Vermittlers";
     public static final String AUFSICHTSFREIER_VERTRAG = "Aufsichtsfreier Vertrag";
     public static final String AUFTEILUNG_VERSICHERUNGSSTEUER = "Aufteilung Versicherungsteuer gemaess EU-Richtlinien";
@@ -92,6 +94,7 @@ public final class Bezeichner {
     public static final String BERUFSGRUPPENEINTEILUNG = "Berufsgruppeneinteilung im Industrie-Straf-RS";
     public static final String BERUFSSCHLUESSEL = "Berufsschluessel";
     public static final String BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO = "Besondere Vereinbarung zum Fluggastrisiko";
+    public static final String BESTANDSFUEHRENDE_GESCHAEFTSSTELLE = "Bestandsfuehrende Geschaeftsstelle";
     public static final String BEZEICHNUNG_PERSONENGRUPPE = "Bezeichnung Personengruppe";
     public static final String BEZUGSBERECHTIGT_IM_LEISTUNGSFALL = "Bezugsberechtigt im Leistungsfall";
     public static final String BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL = "Bezugsrechtanteil im Leistungsfall";
@@ -270,6 +273,7 @@ public final class Bezeichner {
     public static final String VORZUGSSEUERBERECHTIGUNG_PROZENT = "Vorsteuerabszugsberechtigung in Prozent";
     public static final String VP_PERSONENNUMMER_VERMITTLER = "VP-Personnenummer des Vermittlers";
     public static final String VP_PERSONENNUMMER_VERSICHERER = "VP-Personnenummer des Versicherers";
+    public static final String VU_ABRECHNUNGSSTELLE = "VU-Abrechnungsstelle";
     public static final String VU_NUMMER = "VU-Nummer";
     public static final String WAEHRUNG_DOKUMENTE_FUER_VN = "Waehrung der Dokumente fuer VN";
     public static final String WAEHRUNGSSCHLUESSEL = "Waehrungsschluessel";

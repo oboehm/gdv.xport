@@ -33,7 +33,7 @@ import org.junit.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.4.3 (18.11.2010)
  */
-public class ErweiterungssatzTest extends AbstractSatzTest {
+public final class ErweiterungssatzTest extends AbstractSatzTest {
     
     private static final Log log = LogFactory.getLog(ErweiterungssatzTest.class);
 

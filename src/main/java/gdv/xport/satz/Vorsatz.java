@@ -75,12 +75,25 @@ public final class Vorsatz extends Satz {
 
     private void setUpTeildatensaetze() {
         for (int i = 0; i < teildatensatz.length; i++) {
-            teildatensatz[i].add(this.vuNummer);
-            teildatensatz[i].add(this.absender);
-            teildatensatz[i].add(this.adressat);
-            teildatensatz[i].add(this.von);
-            teildatensatz[i].add(this.bis);
-            teildatensatz[i].add(this.vermittler);
+            this.setUpTeildatensatz(i+1, teildatensatz[i]);
+        }
+    }
+    
+    private void setUpTeildatensatz(final int n, final Teildatensatz tds) {
+        tds.add(this.vuNummer);
+        tds.add(this.absender);
+        tds.add(this.adressat);
+        tds.add(this.von);
+        tds.add(this.bis);
+        tds.add(this.vermittler);
+        switch (n) {
+            case 1:     // Teildatensatz 1
+                tds.add(new Zeichen(ART_DES_ABSENDERS, 237));
+                tds.add(new Zeichen(ART_DES_ADRESSATEN, 238));
+                tds.add(new AlphaNumFeld(VU_ABRECHNUNGSSTELLE, 2, 239));
+                tds.add(new AlphaNumFeld(BESTANDSFUEHRENDE_GESCHAEFTSSTELLE, 2, 241));
+                tds.add(new AlphaNumFeld(LEERSTELLEN, 10, 246));
+                break;
         }
     }
 
@@ -94,9 +107,45 @@ public final class Vorsatz extends Satz {
         addVersion(220, 53, 114, "   ");
         addVersion(220, 54, 117, "   ");
         addVersion(220, 59, 120, "   ");
+        addVersion(210, 40, 123, "   ");
+        addVersion(220, 40, 126, "   ");
+        addVersion(210, 30, 129, "   ");
+        addVersion(220, 30, 132, "   ");
+        addVersion(210, 10, 135, "   ");
+        addVersion(220, 10, 138, "   ");
+        addVersion(210, 130, 141, "   ");
+        addVersion(220, 130, 144, "   ");
+        addVersion(210, 110, 147, "   ");
+        addVersion(220, 110, 150, "   ");
+        addVersion(210, 140, 153, "   ");
+        addVersion(220, 140, 156, "   ");
+        addVersion(210, 20, 159, "   ");
+        addVersion(220, 20, 162, "   ");
         addVersion(210, 70, 165, "1.4");
         addVersion(220, 70, 168, "1.4");
+        addVersion(210, 171, "   ");
+        addVersion(220, 174, "   ");
+        addVersion(210, 510, 177, "   ");
+        addVersion(220, 510, 180, "   ");
+        addVersion(210, 183, "   ");
+        addVersion(220, 186, "   ");
+        addVersion(210, 189, "   ");
+        addVersion(220, 192, "   ");
+        addVersion(250, 195, "   ");
+        addVersion(260, 198, "   ");
+        addVersion(210, 201, "   ");
+        addVersion(220, 204, "   ");
+        addVersion(220, 55, 207, "   ");
+        addVersion(300, 210, "   ");
+        addVersion(400, 213, "   ");
+        addVersion(410, 216, "   ");
+        addVersion(430, 219, "   ");
+        addVersion(500, 222, "   ");
         addVersion(9999, new Version(VERSION_NACHSATZ, 225, "1.1"));
+        addVersion(420, 228, "   ");
+        addVersion(450, 231, "   ");
+        addVersion(550, 234, "   ");
+        addVersion(350, 243, "   ");
     }
 
     private void addVersion(final Integer art, final Version version) {

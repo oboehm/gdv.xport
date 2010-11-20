@@ -39,17 +39,9 @@ public final class VorsatzTest extends AbstractSatzTest {
     private final Vorsatz vorsatz = new Vorsatz();
 
     /**
-     * Damit ein Datensatz auch 256 Bytes lang ist, setzen wir das
-     * EOD-Zeichen auf nichts ("").
-     */
-    @BeforeClass
-    public static void setUpBeforeClass() {
-        Config.setEOD("");
-    }
-
-    /**
      * Test method for {@link gdv.xport.satz.Vorsatz#Vorsatz()}.
-     * @throws IOException falls ser Export schief geht
+     * 
+     * @throws IOException falls der Export schief geht
      */
     @Test
     public void testVorsatz() throws IOException {
@@ -61,6 +53,11 @@ public final class VorsatzTest extends AbstractSatzTest {
         checkExport(768, 768, "3");
     }
 
+    /**
+     * Wird das Absender-Feld richtig gesetzt? Schau 'mer mal.
+     * 
+     * @throws IOException falls der Export schief geht
+     */
     @Test
     public void testSetAbsender() throws IOException {
         String absender = "agentes AG                    ";
@@ -70,6 +67,11 @@ public final class VorsatzTest extends AbstractSatzTest {
         checkExport(10, 39, absender);
     }
 
+    /**
+     * Hier wird das Start- und End-Datum ueberprueft.
+     * 
+     * @throws IOException falls der Export schief geht
+     */
     @Test
     public void testSetErstellungsZeitraum() throws IOException {
         String startDatum = "01011900";
@@ -79,15 +81,23 @@ public final class VorsatzTest extends AbstractSatzTest {
     }
 
     /**
+     * Hier ueberpruefen wir den Export.
+     * Damit ein Datensatz auch 256 Bytes lang ist, setzen wir das
+     * EOD-Zeichen auf nichts ("").
+     * 
      * @param startByte beginnend bei 1
      * @param endByte   beginnend bei 1
-     * @param expected
-     * @throws IOException
+     * @param expected erwartetes Ergebnis
+     * @throws IOException falls was schief geht
      */
     private void checkExport(final int startByte, final int endByte, final String expected) throws IOException {
+        Config.setEOD("");
         super.checkExport(this.vorsatz, startByte, endByte, expected, 768);
     }
 
+    /**
+     * Hier testen wir den Import.
+     */
     @Test
     public void testImport() {
         String content = vorsatz.toLongString();
@@ -96,6 +106,11 @@ public final class VorsatzTest extends AbstractSatzTest {
         assertEquals(vorsatz, imported);
     }
 
+    /**
+     * Zum Testen verwenden wir hier die Musterdatei.
+     * 
+     * @throws IOException falls die Musterdatei nicht importiert werden kann
+     */
     @Test
     public void testImportReader() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
@@ -109,11 +124,31 @@ public final class VorsatzTest extends AbstractSatzTest {
             istream.close();
         }
     }
+    
+    /**
+     * Zum Testen nehmen wir hier den Vorsatz aus der Musterdatei, allerdings
+     * ohne Umlaute.
+     * 
+     * @throws IOException falls der Im- oder Export schief geht
+     */
+    @Test
+    public void testExport() throws IOException {
+        String input = "00019999 XXX Versicherung AG           BRBRIENNEE,JURGEN        "
+            + "     220720042207200499990099991.91.91.92.12.12.12.12.1   1.51.3"
+            + "1.62.0      1.51.4                                              "
+            + "                                1.1         1 0000     Z0ZAG0011"
+//            + "\n"
+//            + "00019999 XXX Versicherung AG           BRBRIENNEE,JURGEN        "
+//            + "     220720042207200499990099991.01.01.01.01.0      1.01.01.1   "
+//            + "   1.01.0                                                       "
+//            + "                                                       Z0ZAG0022"
+            + "\n";
+        vorsatz.importFrom(input);
+        StringWriter swriter = new StringWriter(input.length());
+        Config.setEOD("\n");
+        vorsatz.export(swriter);
+        swriter.close();
+        assertEquals(input, swriter.toString());
+    }
 
 }
-
-
-/*
- * $Log$
- * $Source$
- */
