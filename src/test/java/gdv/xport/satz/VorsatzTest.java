@@ -137,11 +137,11 @@ public final class VorsatzTest extends AbstractSatzTest {
             + "     220720042207200499990099991.91.91.92.12.12.12.12.1   1.51.3"
             + "1.62.0      1.51.4                                              "
             + "                                1.1         1 0000     Z0ZAG0011"
-//            + "\n"
-//            + "00019999 XXX Versicherung AG           BRBRIENNEE,JURGEN        "
-//            + "     220720042207200499990099991.01.01.01.01.0      1.01.01.1   "
-//            + "   1.01.0                                                       "
-//            + "                                                       Z0ZAG0022"
+            + "\n"
+            + "00019999 XXX Versicherung AG           BRBRIENNEE,JURGEN        "
+            + "     220720042207200499990099991.01.01.01.01.0      1.01.01.1   "
+            + "   1.01.0                                                       "
+            + "                                                       Z0ZAG0022"
             + "\n";
         vorsatz.importFrom(input);
         StringWriter swriter = new StringWriter(input.length());

@@ -210,6 +210,8 @@ public final class Bezeichner {
     public static final String PRODUKTFORM = "Produktform";
     public static final String PRODUKTFORM_GUELTIG_AB = "Produktform gueltig ab";
     public static final String PRODUKTNAME = "Produktname";
+    public static final String PRODUKTSPEZIFISCHE_ANTRAGSDATEN = "Produktspezifische Antragsdaten";
+    public static final String PRODUKTSPEZIFISCHE_STAMMDATEN = "Produktspezifische Stammdaten";
     public static final String PROZENTSATZ_PROGRESSIVE_INVALIDITAET = "Prozentsatz progressive Invaliditaet";
     public static final String RATENZAHLUNGSZUSCHLAG_IN_PROZENT = "Ratenzahlungszuschlag in %";
     public static final String RECHTSFORM = "Rechtsform";
