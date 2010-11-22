@@ -102,6 +102,7 @@ public class NachsatzTest extends AbstractSatzTest {
         assertEquals(257, input.length());
         nachsatz.importFrom(input);
         StringWriter swriter = new StringWriter(input.length());
+        Config.setEOD("\n");
         nachsatz.export(swriter);
         swriter.close();
         assertEquals(input, swriter.toString());
