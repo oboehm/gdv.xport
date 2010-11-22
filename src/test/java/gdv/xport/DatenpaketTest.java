@@ -198,12 +198,12 @@ public final class DatenpaketTest {
     
     /**
      * Der Export eines zuvor importierten Datenpakets sollte identisch mit der
-     * Ausgangsdatei sein. Da aber nicht alle Felder besetzt sind (z.B. fehlen
-     * im Vorsatz Versions-Infos) ist dieser Test (noch) nicht aktiv.
+     * Ausgangsdatei sein.
      * 
      * @since 0.4.3
      * @throws IOException falls die Platte kaputt ist
      */
+    @IntegrationTest
     @Test
     public void testImportExport() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
