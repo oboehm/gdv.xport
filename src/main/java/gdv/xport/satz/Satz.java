@@ -193,6 +193,18 @@ public abstract class Satz {
     public void addFiller() {
         throw new UnsupportedOperationException("not yet implemented");
     }
+    
+    /**
+     * Falls ein Feld zuviel gesetzt wurde, kann es mit 'remove" wieder
+     * entfernt werden.
+     *
+     * @param name Name des Feldes
+     */
+    public void remove(final String name) {
+        for (int i = 0; i < this.teildatensatz.length; i++) {
+            this.teildatensatz[i].remove(name);
+        }
+    }
 
     /**
      * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es

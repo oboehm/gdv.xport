@@ -49,6 +49,7 @@ public final class Nachsatz extends Satz {
      */
     public Nachsatz() {
         super("9999", 1);
+        this.remove(SATZNUMMER);
         this.setUpTeildatensatz();
         this.setAnzahlSaetze(0);
     }
@@ -61,6 +62,7 @@ public final class Nachsatz extends Satz {
         add(this.gesamtProvisionsBetrag);
         add(this.versicherungsLeistungen);
         add(this.schadenbearbeitungsKosten);
+        add(new AlphaNumFeld(LEERSTELLEN, 157, 100));
     }
 
     /**

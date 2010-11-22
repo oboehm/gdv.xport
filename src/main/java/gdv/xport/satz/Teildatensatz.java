@@ -91,6 +91,8 @@ public final class Teildatensatz extends Satz {
     }
 
     /**
+     * Fuegt das angegebene Feld in den Teildatensatz ein.
+     * 
      * @param feld Feld mit Name
      */
     @Override
@@ -106,6 +108,19 @@ public final class Teildatensatz extends Satz {
     }
 
     /**
+     * Falls ein Feld zuviel gesetzt wurde, kann es mit 'remove" wieder
+     * entfernt werden.
+     *
+     * @param name Name des Feldes
+     */
+    @Override
+    public void remove(final String name) {
+        datenfelder.remove(name);
+    }
+
+    /**
+     * Verpasst dem angegebenen Feld einen Namen.
+     * 
      * @param feld ein Feld
      */
     public void set(final Feld feld) {

@@ -31,6 +31,7 @@ import java.util.*;
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.*;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -203,11 +204,11 @@ public final class DatenpaketTest {
      * @since 0.4.3
      * @throws IOException falls die Platte kaputt ist
      */
-    //@Test
+    @Test
     public void testImportExport() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
         try {
-            String muster = IOUtils.toString(istream);
+            String muster = StringUtils.remove(IOUtils.toString(istream), '\r');
             datenpaket.importFrom(muster);
             StringWriter swriter = new StringWriter(muster.length());
             Config.setEOD("\n");

@@ -24,16 +24,16 @@ import static org.junit.Assert.assertEquals;
 
 import gdv.xport.config.Config;
 
-import java.io.IOException;
+import java.io.*;
 
 import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
+ * JUnit-Test fuer Nachsatz.
+ * 
  * @author oliver
  * @since 05.10.2009
- * @version $Revision$
- *
  */
 public class NachsatzTest extends AbstractSatzTest {
 
@@ -50,7 +50,8 @@ public class NachsatzTest extends AbstractSatzTest {
 
     /**
      * Test method for {@link gdv.xport.satz.Satz#export(java.io.Writer)}.
-     * @throws IOException
+     * 
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
     public void testExport() throws IOException {
@@ -60,26 +61,50 @@ public class NachsatzTest extends AbstractSatzTest {
     }
 
     /**
+     * Check export.
+     *
      * @param startByte beginnend bei 1
      * @param endByte   beginnend bei 1
-     * @param expected
-     * @throws IOException
+     * @param expected the expected result
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     private void checkExport(final int startByte, final int endByte, final String expected) throws IOException {
         int n = 256 + Config.getEOD().length();
         super.checkExport(this.nachsatz, startByte, endByte, expected, n);
     }
 
+    /**
+     * Test-Methode fuer {@link Nachsatz#setAnzahlSaetze(int)}.
+     */
     @Test
     public void testSetAnzahl() {
         nachsatz.setAnzahlSaetze(42);
         assertEquals(42, nachsatz.getAnzahlSaetze());
     }
+    
+    /**
+     * Statt den Leerzeichen am Ende des Nachsatzes ist auch eine freie
+     * Belegung moeglich. Diese soll natuerlich beim Import erhalten bleiben.
+     * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
+     * 
+     * @throws IOException 
+     *             sollte eigentlich nicht vorkommen, da wir von einem String
+     *             importieren
+     * @since 0.4.3
+     */
+    @Test
+    public void testImport() throws IOException {
+        String input = "99990000000162999900999900000000048060000000000000000+0000000000"
+            + "0000+00000000000000+00000000000000+                             "
+            + "                                                                "
+            + "                                                       Z0ZAG999 "
+            + "\n";
+        assertEquals(257, input.length());
+        nachsatz.importFrom(input);
+        StringWriter swriter = new StringWriter(input.length());
+        nachsatz.export(swriter);
+        swriter.close();
+        assertEquals(input, swriter.toString());
+    }
 
 }
-
-
-/*
- * $Log$
- * $Source$
- */
