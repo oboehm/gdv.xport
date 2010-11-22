@@ -29,7 +29,7 @@ import org.apache.commons.logging.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.4.3 (18.11.2010)
  */
-public class Erweiterungssatz extends Datensatz {
+public class Erweiterungssatz extends Spartensatz {
     
     /** 221 Erweiterungssatz. */
     public static final int SATZART = 221;
@@ -90,7 +90,22 @@ public class Erweiterungssatz extends Datensatz {
         }
     }
     
-    private void setUpDatenfelder(final int sparte) {
+    /**
+     * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene
+     * Sparte an.
+     *
+     * @param x Sparte (z.B. 30)
+     */
+    protected void createTeildatensaetzeFor(final int x) {
+        this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
+    }
+
+    /**
+     * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
+     *
+     * @param sparte Sparte (z.B. 30)
+     */
+    protected void setUpDatenfelder(final int sparte) {
         switch (sparte) {
             case 30:
                 this.setUpDatenfelder30();
@@ -115,7 +130,7 @@ public class Erweiterungssatz extends Datensatz {
         switch(n) {
             case 2:     // Teildatensatz 2
                 tds.add(new NumFeld(LFD_NUMMER_VP_PERSONENGRUPPE, 6, 43));
-                tds.add(new NumFeld(SATZNUMMER, 1, 49, 1));
+                tds.add(new NumFeld(SATZNUMMER, 1, 49, n));
                 tds.add(new NumFeld(TOD, 14, 50).mitNachkommastellen(2));
                 tds.add(new NumFeld(INVALIDITAET, 14, 64).mitNachkommastellen(2));
                 tds.add(new NumFeld(TAGEGELD1, 10, 78).mitNachkommastellen(2));
@@ -132,7 +147,7 @@ public class Erweiterungssatz extends Datensatz {
                 tds.add(new Zeichen(ZUSAETZLICHE_SATZKENNUNG, 256, 'X'));
                 break;
             case 3:     // Teildatensatz 3
-                tds.add(new NumFeld(SATZNUMMER, 1, 43, 1));
+                tds.add(new NumFeld(SATZNUMMER, 1, 43, n));
                 tds.add(new NumFeld(SERVICELEISTUNGEN, 14, 44).mitNachkommastellen(2));
                 tds.add(new AlphaNumFeld(REFERENZNUMMER, 7, 58));
                 tds.add(new AlphaNumFeld(LEERSTELLEN, 185, 65));

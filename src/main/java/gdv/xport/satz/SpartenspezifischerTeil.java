@@ -31,7 +31,7 @@ import org.apache.commons.logging.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (05.11.2009)
  */
-public class SpartenspezifischerTeil extends Datensatz {
+public class SpartenspezifischerTeil extends Spartensatz {
 
     private static final Log log = LogFactory.getLog(SpartenspezifischerTeil.class);
 
@@ -97,8 +97,23 @@ public class SpartenspezifischerTeil extends Datensatz {
                 return 1;
         }
     }
+    
+    /**
+     * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene
+     * Sparte an.
+     *
+     * @param x Sparte (z.B. 30)
+     */
+    protected void createTeildatensaetzeFor(final int x) {
+        this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
+    }
 
-    private void setUpDatenfelder(final int sparte) {
+    /**
+     * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
+     *
+     * @param sparte Sparte (z.B. 30)
+     */
+    protected void setUpDatenfelder(final int sparte) {
         switch (sparte) {
             case 30:
                 this.setUpDatenfelder30();
@@ -284,23 +299,23 @@ public class SpartenspezifischerTeil extends Datensatz {
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 249), 2);
     }
 
-    /**
-     * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
-     * Teildatensaetze aufsetzen.
-     *
-     * @param x z.B. 30
-     * @see gdv.xport.satz.Datensatz#setSparte(int)
-     */
-    @Override
-    public void setSparte(final int x) {
-        if (this.getSatzart() == x) {
-            log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
-        }
-        super.setSparte(x);
-        this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
-        super.setUpTeildatensaetze();
-        this.setUpDatenfelder(x);
-    }
+//    /**
+//     * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
+//     * Teildatensaetze aufsetzen.
+//     *
+//     * @param x z.B. 30
+//     * @see gdv.xport.satz.Datensatz#setSparte(int)
+//     */
+//    @Override
+//    public void setSparte(final int x) {
+//        if (this.getSatzart() == x) {
+//            log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
+//        }
+//        super.setSparte(x);
+//        this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
+//        super.setUpTeildatensaetze();
+//        this.setUpDatenfelder(x);
+//    }
 
     /**
      * Sparte 30 hat optionale Teildatensaetze (Teildatensatz 9). Den

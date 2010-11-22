@@ -28,7 +28,7 @@ import org.apache.commons.logging.*;
  * @since 0.1.0 (28.10.2009)
  *
  */
-public class VertragsspezifischerTeil extends Datensatz {
+public class VertragsspezifischerTeil extends Spartensatz {
 
     private static final Log log = LogFactory.getLog(VertragsspezifischerTeil.class);
     private static final int SATZART = 210;
@@ -56,7 +56,7 @@ public class VertragsspezifischerTeil extends Datensatz {
         this.setUpDatenfelder(sparte);
     }
 
-    private static int getNumberOfTeildatensaetzeFor(final int sparte) {
+    static int getNumberOfTeildatensaetzeFor(final int sparte) {
         switch (sparte) {
             case 30:
             case 40:
@@ -81,8 +81,23 @@ public class VertragsspezifischerTeil extends Datensatz {
                 return 1;
         }
     }
+    
+    /**
+     * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene
+     * Sparte an.
+     *
+     * @param x Sparte (z.B. 30)
+     */
+    protected void createTeildatensaetzeFor(final int x) {
+        this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
+    }
 
-    private void setUpDatenfelder(final int sparte) {
+    /**
+     * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
+     *
+     * @param sparte Sparte (z.B. 30)
+     */
+    protected void setUpDatenfelder(final int sparte) {
         switch (sparte) {
             case 30:
                 this.setUpDatenfelder30();
@@ -153,24 +168,6 @@ public class VertragsspezifischerTeil extends Datensatz {
         add(new Datum(PRODUKTFORM_GUELTIG_AB, 6, 121));
         add(new AlphaNumFeld(PRODUKTNAME, 20, 127));
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 147));
-    }
-
-    /**
-     * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
-     * Teildatensaetze aufsetzen.
-     *
-     * @param x Sparte (z.B. 30)
-     * @see gdv.xport.satz.Datensatz#setSparte(int)
-     */
-    @Override
-    public void setSparte(final int x) {
-        if (this.getSatzart() == x) {
-            log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
-        }
-        super.setSparte(x);
-        this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
-        super.setUpTeildatensaetze();
-        this.setUpDatenfelder(x);
     }
 
 }

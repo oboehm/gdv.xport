@@ -254,7 +254,7 @@ public abstract class Satz {
                 continue;
             }
         }
-        throw new IllegalArgumentException("Feld -\"" + name + "\" nicht in "
+        throw new IllegalArgumentException("Feld \"" + name + "\" nicht in "
                 + this.toShortString() + " vorhanden!");
     }
 

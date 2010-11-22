@@ -20,9 +20,13 @@ package gdv.xport.satz;
 
 import static org.junit.Assert.*;
 
-import java.io.IOException;
+import static gdv.xport.feld.Bezeichner.*;
 
+import java.io.*;
+
+import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
+import gdv.xport.feld.Feld;
 
 import org.apache.commons.logging.*;
 import org.junit.*;
@@ -97,6 +101,26 @@ public final class ErweiterungssatzTest extends AbstractSatzTest {
         Erweiterungssatz wagnisdaten = new Erweiterungssatz(30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
+    }
+    
+    /**
+     * Der normale Import bereitet noch Probleme. Mit diesem Test wollen wir
+     * dem Problem auf die Spur kommen.
+     * 
+     * @throws IOException falls der Test-Satz nicht gelesen werden kann
+     */
+    @Test
+    public void testImportSparte30() throws IOException {
+        InputStream istream = this.getClass().getResourceAsStream("Satz0221030.txt");
+        try {
+            Datenpaket datenpaket = new Datenpaket();
+            datenpaket.importFrom(istream);
+            Erweiterungssatz erweiterungssatz = (Erweiterungssatz) datenpaket.getDatensaetze().get(0);
+            Feld lfdNummer = erweiterungssatz.getFeld(LFD_NUMMER_VP_PERSONENGRUPPE);
+            assertEquals("000001", lfdNummer.getInhalt());
+        } finally {
+            istream.close();
+        }
     }
 
 }
