@@ -19,7 +19,8 @@
 package gdv.xport.feld;
 
 /**
- * Ausrichtung: rechts- oder linksbuendig (left, right)
+ * Ausrichtung: rechts- oder linksbuendig (left, right).
+ * 
  * @author oliver
  * @since 12.10.2009
  * @version $Revision$
