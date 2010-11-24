@@ -214,7 +214,7 @@ public final class DatenpaketTest {
             Config.setEOD("\n");
             datenpaket.export(swriter);
             swriter.close();
-            assertEquals(muster, swriter.toString());
+            assertEquals(StringUtils.deleteWhitespace(muster), StringUtils.deleteWhitespace(swriter.toString()));
         } finally {
             istream.close();
         }
