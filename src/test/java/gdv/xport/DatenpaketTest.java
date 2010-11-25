@@ -214,10 +214,25 @@ public final class DatenpaketTest {
             Config.setEOD("\n");
             datenpaket.export(swriter);
             swriter.close();
-            assertEquals(StringUtils.deleteWhitespace(muster), StringUtils.deleteWhitespace(swriter.toString()));
+            assertDatenpaket(muster, swriter.toString());
         } finally {
             istream.close();
         }
+    }
+    
+    private static void assertDatenpaket(final String expected, final String paket) throws IOException {
+        BufferedReader expectedReader = new BufferedReader(new StringReader(expected));
+        BufferedReader paketReader = new BufferedReader(new StringReader(paket));
+        for(int line=1; ;line++) {
+            String expectedLine = expectedReader.readLine();
+            String paketLine = paketReader.readLine();
+            if (expectedLine == null) {
+                log.info(line + " lines compared (no difference)");
+                break;
+            }
+            assertEquals("difference in line " + line, expectedLine, paketLine);
+        }
+        expectedReader.close();
     }
 
     /**
