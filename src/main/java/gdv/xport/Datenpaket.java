@@ -187,7 +187,9 @@ public final class Datenpaket {
      * @throws IOException sollte eigentlich nicht vorkommen
      */
     public void importFrom(final String content) throws IOException {
-        importFrom(new StringReader(content));
+        Reader reader = new StringReader(content);
+        importFrom(reader);
+        reader.close();
     }
 
     /**

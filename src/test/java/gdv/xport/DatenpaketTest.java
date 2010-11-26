@@ -21,7 +21,7 @@ package gdv.xport;
 import static gdv.xport.feld.Bezeichner.*;
 import static org.junit.Assert.*;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Datum;
+import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
 import java.io.*;
@@ -31,9 +31,8 @@ import java.util.*;
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.*;
-import org.junit.*;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import patterntesting.runtime.annotation.IntegrationTest;
@@ -66,6 +65,7 @@ public final class DatenpaketTest {
         Config.setEOD("");
         empty.export(swriter);
         String data = swriter.toString();
+        swriter.close();
         assertEquals(1024, data.length());
         Vorsatz vorsatz = datenpaket.getVorsatz();
         assertEquals("2.1", vorsatz.getVersion(VERSION_VORSATZ));
@@ -206,21 +206,25 @@ public final class DatenpaketTest {
     @IntegrationTest
     @Test
     public void testImportExport() throws IOException {
+        Config.setEOD("\n");
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
         try {
-            String muster = StringUtils.remove(IOUtils.toString(istream), '\r');
+//            String muster = StringUtils.remove(IOUtils.toString(istream), '\r');
+            String muster = IOUtils.toString(istream);
             datenpaket.importFrom(muster);
+            VertragsspezifischerTeil vertragsteil = (VertragsspezifischerTeil) datenpaket.getDatensaetze().get(2);
+            Feld vertragsstatus = vertragsteil.getFeld(VERTRAGSSTATUS);
+            assertEquals("1", vertragsstatus.getInhalt());
             StringWriter swriter = new StringWriter(muster.length());
-            Config.setEOD("\n");
             datenpaket.export(swriter);
             swriter.close();
-            assertDatenpaket(muster, swriter.toString());
+            assertLines(muster, swriter.toString());
         } finally {
             istream.close();
         }
     }
     
-    private static void assertDatenpaket(final String expected, final String paket) throws IOException {
+    private static void assertLines(final String expected, final String paket) throws IOException {
         BufferedReader expectedReader = new BufferedReader(new StringReader(expected));
         BufferedReader paketReader = new BufferedReader(new StringReader(paket));
         for(int line=1; ;line++) {

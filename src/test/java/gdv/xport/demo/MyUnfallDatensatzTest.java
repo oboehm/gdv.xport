@@ -28,7 +28,7 @@ import java.net.URL;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 
 import patterntesting.concurrent.junit.ParallelRunner;
@@ -76,6 +76,16 @@ public final class MyUnfallDatensatzTest {
     @Test
     public void testMain() throws IOException, XMLStreamException {
         MyUnfallDatensatz.main(new String[] {});
+    }
+    
+    /**
+     * Hier setzen die SatzFactory auf den Ausgangsstand zurueck.
+     * 
+     * @since 0.4.3
+     */
+    @AfterClass
+    public static void restoreSatzFactory() {
+        SatzFactory.unregister(210, 30);
     }
 
 }

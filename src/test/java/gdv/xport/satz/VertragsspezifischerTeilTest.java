@@ -102,6 +102,8 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
         assertEquals("1000", rabatt.getInhalt());
         NumFeld prozent = (NumFeld) rabatt;
         assertEquals(10.00, prozent.toDouble(), 0.001);
+        Feld vertragsstatus = vertragsteil.getFeld(VERTRAGSSTATUS);
+        assertEquals("1", vertragsstatus.getInhalt());
         StringWriter swriter = new StringWriter(256);
         vertragsteil.export(swriter);
         assertEquals(input, swriter.toString());
