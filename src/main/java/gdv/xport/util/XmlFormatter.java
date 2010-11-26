@@ -38,11 +38,12 @@ import org.apache.commons.logging.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.2 (13.11.2009)
  */
-public final class XmlFormatter {
+public class XmlFormatter {
 
     private static final Log log = LogFactory.getLog(XmlFormatter.class);
     private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
-    private final XMLStreamWriter xmlStreamWriter;
+    /** Writer fuer die XML-Ausgabe */
+    protected final XMLStreamWriter xmlStreamWriter;
     /** den brauchen wir fuer close() */
     private final Writer writer;
 
@@ -277,7 +278,6 @@ public final class XmlFormatter {
      * Wandelt das uebergebene Datenpaket in einen XML-String um.
      *
      * @param datenpaket das Datenpaket
-     *
      * @return Datenpaket als XML-String
      */
     public static String toString(final Datenpaket datenpaket) {
@@ -293,7 +293,12 @@ public final class XmlFormatter {
         return swriter.toString();
     }
 
-    private void writeIndent(final int level) {
+    /**
+     * Diese Methode ist fuer die Einrueckung verantwortlich.
+     * 
+     * @param level Einrueckungstiefe
+     */
+    protected void writeIndent(final int level) {
         try {
             for (int i = 0; i < level; i++) {
                 xmlStreamWriter.writeCharacters("  ");

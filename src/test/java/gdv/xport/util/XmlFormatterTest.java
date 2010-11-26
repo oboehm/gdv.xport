@@ -103,7 +103,7 @@ public class XmlFormatterTest extends AbstractTest {
      * @throws XMLStreamException
      *             the given XML string is not a valid XML
      */
-    private static void checkXML(final String xmlString) throws XMLStreamException {
+    static protected void checkXML(final String xmlString) throws XMLStreamException {
         XMLStreamReader xmlr = xmlInputFactory.createXMLStreamReader(new StringReader(xmlString));
         int n = 0;
         while (xmlr.hasNext()) {
