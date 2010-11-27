@@ -29,6 +29,7 @@ import java.util.*;
 import javax.xml.stream.*;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * Diese Klasse gibt die verschiedenen Saetze und Felder als HTML aus.
@@ -111,19 +112,38 @@ public class HtmlFormatter extends XmlFormatter {
 
     private void writeHead() throws XMLStreamException {
         xmlStreamWriter.writeStartElement("head");
-        xmlStreamWriter.writeCharacters("\n  ");
+        xmlStreamWriter.writeCharacters("\n");
+        writeIndent(1);
         xmlStreamWriter.writeStartElement("title");
         xmlStreamWriter.writeCharacters(title);
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeCharacters("\n");
+        writeStyle();
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
+    }
+    
+    private void writeStyle() throws XMLStreamException {
+        writeIndent(1);
+        xmlStreamWriter.writeStartElement("style");
+        xmlStreamWriter.writeAttribute("type", "test/css");
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeCharacters("\n");
     }
 
     private void writeBody(final Datenpaket datenpaket) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("body");
-        xmlStreamWriter.writeCharacters("\n  ");
-        xmlStreamWriter.writeStartElement("h1");
+        xmlStreamWriter.writeCharacters("\n");
+        writeIndent(1);
+        String absender = datenpaket.getVorsatz().getAbsender();
+        if (StringUtils.isNotBlank(absender)) {
+            xmlStreamWriter.writeStartElement("p");
+            xmlStreamWriter.writeCharacters("Datenpaket von " + absender);
+            xmlStreamWriter.writeEndElement();
+            xmlStreamWriter.writeCharacters("\n");
+            writeIndent(1);
+        }
+        xmlStreamWriter.writeStartElement("h2");
         xmlStreamWriter.writeCharacters(title);
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeCharacters("\n");
@@ -198,8 +218,9 @@ public class HtmlFormatter extends XmlFormatter {
      * @throws XMLStreamException Signals that an I/O exception has occurred.
      */
     public void write(final Feld feld) throws XMLStreamException {
+        String feldType = feld.getClass().getSimpleName();
         xmlStreamWriter.writeStartElement("span");
-        xmlStreamWriter.writeAttribute("class", "feld");
+        xmlStreamWriter.writeAttribute("class", feldType);
         xmlStreamWriter.writeAttribute("title", feld.getBezeichnung());
         xmlStreamWriter.writeCharacters(feld.getInhalt());
         xmlStreamWriter.writeEndElement();
