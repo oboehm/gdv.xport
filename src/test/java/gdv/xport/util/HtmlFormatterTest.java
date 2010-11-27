@@ -18,17 +18,13 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import gdv.xport.Datenpaket;
 
 import java.io.*;
 
 import javax.xml.stream.XMLStreamException;
 
-import gdv.xport.Datenpaket;
-import gdv.xport.config.Config;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.*;
 import org.junit.Test;
 import org.xml.sax.SAXException;
@@ -39,7 +35,7 @@ import org.xml.sax.SAXException;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.4.3 (23.11.2010)
  */
-public class HtmlFormatterTest extends XmlFormatterTest {
+public class HtmlFormatterTest {
     
     private static Log log = LogFactory.getLog(HtmlFormatter.class);
 
@@ -55,7 +51,7 @@ public class HtmlFormatterTest extends XmlFormatterTest {
         Datenpaket datenpaket = new Datenpaket();
         String htmlString = HtmlFormatter.toString(datenpaket);
         log.info(datenpaket + " as HTML:\n" + htmlString);
-        checkXML(htmlString);
+        XmlFormatterTest.checkXML(htmlString);
         assertTrue("no <html> inside", htmlString.contains("<html"));
         assertTrue("no </html> inside", htmlString.contains("</html"));
     }

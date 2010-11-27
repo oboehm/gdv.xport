@@ -24,12 +24,12 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.*;
 
 import java.io.*;
-import java.util.*;
+import java.text.MessageFormat;
+import java.util.Iterator;
 
 import javax.xml.stream.*;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
 
 /**
  * Diese Klasse gibt die verschiedenen Saetze und Felder als HTML aus.
@@ -37,9 +37,29 @@ import org.apache.commons.lang.StringUtils;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.4.3 (23.11.2010)
  */
-public class HtmlFormatter extends XmlFormatter {
+public final class HtmlFormatter {
     
+    private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
+    private static final String template;
+    private final Writer writer;
     private String title = "GDV-Datei";
+    
+    static {
+        try {
+            template = readTemplate();
+        } catch (IOException ioe) {
+            throw new ExceptionInInitializerError(ioe);
+        }
+    }
+    
+    private static String readTemplate() throws IOException {
+        InputStream istream = HtmlFormatter.class.getResourceAsStream("template.html");
+        try {
+            return IOUtils.toString(istream);
+        } finally {
+            istream.close();
+        }
+    }
 
     /**
      * Instantiiert einen neuen HtmlFormatter.
@@ -48,7 +68,7 @@ public class HtmlFormatter extends XmlFormatter {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public HtmlFormatter(final File file) throws IOException {
-        super(file);
+        this(new FileWriter(file));
     }
 
     /**
@@ -57,7 +77,7 @@ public class HtmlFormatter extends XmlFormatter {
      * @param ostream the ostream
      */
     public HtmlFormatter(final OutputStream ostream) {
-        super(ostream);
+        this(new OutputStreamWriter(ostream));
     }
 
     /**
@@ -66,18 +86,9 @@ public class HtmlFormatter extends XmlFormatter {
      * @param writer the writer
      */
     public HtmlFormatter(final Writer writer) {
-        super(writer);
+        this.writer = writer;
     }
 
-    /**
-     * Instantiiert einen neuen HtmlFormatter.
-     *
-     * @param xmlStreamWriter the xml stream writer
-     */
-    public HtmlFormatter(final XMLStreamWriter xmlStreamWriter) {
-        super(xmlStreamWriter);
-    }
-    
     /**
      * Hiermit kann der Titel (Ueberschrift) gesetzt werden.
      * 
@@ -91,98 +102,43 @@ public class HtmlFormatter extends XmlFormatter {
      * Ausgabe eines kompletten Datenpakets als XML.
      *
      * @param datenpaket Datenpaket, das als XML ausgegeben werden soll
-     * @throws XMLStreamException bei Problemen mit der XML-Generierung
+     * @throws XMLStreamException bei Problemen mit der HTML-Generierung
      */
-    @Override
     public void write(final Datenpaket datenpaket) throws XMLStreamException {
         long t0 = System.currentTimeMillis();
-        xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");
-        xmlStreamWriter.writeCharacters("\n");
-        xmlStreamWriter.writeStartElement("html");
-        xmlStreamWriter.writeDefaultNamespace("http://www.w3.org/1999/xhtml");
-        xmlStreamWriter.writeCharacters("\n");
-        writeHead();
-        writeBody(datenpaket);
-        xmlStreamWriter.writeComment(" (c)reated by gdv-xport in "
-                + (System.currentTimeMillis() - t0) + " ms ");
-        xmlStreamWriter.writeCharacters("\n");
-        xmlStreamWriter.writeEndDocument();
-        xmlStreamWriter.flush();
-    }
-
-    private void writeHead() throws XMLStreamException {
-        xmlStreamWriter.writeStartElement("head");
-        xmlStreamWriter.writeCharacters("\n");
-        writeIndent(1);
-        xmlStreamWriter.writeStartElement("title");
-        xmlStreamWriter.writeCharacters(title);
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeCharacters("\n");
-        writeStyle();
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeCharacters("\n");
-    }
-    
-    private void writeStyle() throws XMLStreamException {
-        writeIndent(1);
-        xmlStreamWriter.writeStartElement("style");
-        xmlStreamWriter.writeAttribute("type", "test/css");
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeCharacters("\n");
-    }
-
-    private void writeBody(final Datenpaket datenpaket) throws XMLStreamException {
-        xmlStreamWriter.writeStartElement("body");
-        xmlStreamWriter.writeCharacters("\n");
-        writeIndent(1);
-        String absender = datenpaket.getVorsatz().getAbsender();
-        if (StringUtils.isNotBlank(absender)) {
-            xmlStreamWriter.writeStartElement("p");
-            xmlStreamWriter.writeCharacters("Datenpaket von " + absender);
-            xmlStreamWriter.writeEndElement();
-            xmlStreamWriter.writeCharacters("\n");
-            writeIndent(1);
-        }
-        xmlStreamWriter.writeStartElement("h2");
-        xmlStreamWriter.writeCharacters(title);
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeCharacters("\n");
-        xmlStreamWriter.writeStartElement("pre");
-        write(datenpaket.getVorsatz());
+        StringWriter buffer = new StringWriter();
+        XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(buffer);
+        writeTo(xmlStreamWriter, datenpaket.getVorsatz());
         for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext(); ) {
             Datensatz datensatz = iterator.next();
-            write(datensatz);
+            writeTo(xmlStreamWriter, datensatz);
         }
-        write(datenpaket.getNachsatz());
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeCharacters("\n");
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeCharacters("\n");
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeCharacters("\n");
+        writeTo(xmlStreamWriter, datenpaket.getNachsatz());
+        xmlStreamWriter.close();
+        try {
+            buffer.close();
+            String content = MessageFormat.format(template, Config.DEFAULT_ENCODING.name(), title, buffer.toString());
+            writer.write(content);
+            writer.write("<!-- (c)reated by gdv-xport in " + (System.currentTimeMillis() - t0) + " ms -->\n");
+            writer.flush();
+        } catch (IOException ioe) {
+            throw new XMLStreamException(ioe);
+        }
     }
     
-    /**
-     * Ausgabe eines Datensatzes als HTML.
-     *
-     * @param satz der auszugebende (Daten-)Satz
-     *
-     * @throws XMLStreamException the XML stream exception
-     */
-    public void write(final Satz satz) throws XMLStreamException {
+    private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Satz satz) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("span");
         xmlStreamWriter.writeAttribute("class", "satz");
         if (satz instanceof Datensatz) {
             Datensatz datensatz = (Datensatz) satz;
-            xmlStreamWriter.writeAttribute("title", "Sparte " + datensatz.getSatzartFeld().getInhalt() + "."
-                    + datensatz.getSatzartFeld().getInhalt());
+            xmlStreamWriter.writeAttribute("title", "Satzart " + datensatz.getSatzartFeld().getInhalt() + "."
+                    + datensatz.getSparteFeld().getInhalt());
         } else {
-            xmlStreamWriter.writeAttribute("title", "Satzart=" + satz.getSatzartFeld().getInhalt());
-        }        
-        for (Iterator<Teildatensatz> iterator = satz.getTeildatensaetze().iterator(); iterator
-                .hasNext();) {
+            xmlStreamWriter.writeAttribute("title", "Satzart " + satz.getSatzartFeld().getInhalt());
+        }
+        for (Iterator<Teildatensatz> iterator = satz.getTeildatensaetze().iterator(); iterator.hasNext();) {
             Teildatensatz teildatensatz = iterator.next();
-            write(teildatensatz);
+            writeTo(xmlStreamWriter, teildatensatz);
             if (iterator.hasNext()) {
                 xmlStreamWriter.writeCharacters("\n");
             }
@@ -191,33 +147,20 @@ public class HtmlFormatter extends XmlFormatter {
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.flush();
     }
-    
-    /**
-     * Ausgabe eines Teildatensatzes als HTML.
-     *
-     * @param teildatensatz the teildatensatz
-     *
-     * @throws XMLStreamException the XML stream exception
-     */
-    public void write(final Teildatensatz teildatensatz) throws XMLStreamException {
+
+    private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Teildatensatz teildatensatz)
+            throws XMLStreamException {
         xmlStreamWriter.writeStartElement("span");
         xmlStreamWriter.writeAttribute("class", "teildatensatz");
         xmlStreamWriter.writeAttribute("title", "Nr. " + teildatensatz.getNummer().getInhalt());
         for (Iterator<Feld> iterator = teildatensatz.getFelder().iterator(); iterator.hasNext();) {
             Feld feld = iterator.next();
-            write(feld);
+            writeTo(xmlStreamWriter, feld);
         }
         xmlStreamWriter.writeEndElement();
     }
-    
-    /**
-     * Ausgabe eines Feldes als HTML.
-     *
-     * @param feld the feld
-     *
-     * @throws XMLStreamException Signals that an I/O exception has occurred.
-     */
-    public void write(final Feld feld) throws XMLStreamException {
+
+    private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Feld feld) throws XMLStreamException {
         String feldType = feld.getClass().getSimpleName();
         xmlStreamWriter.writeStartElement("span");
         xmlStreamWriter.writeAttribute("class", feldType);
