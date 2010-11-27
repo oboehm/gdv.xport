@@ -18,7 +18,7 @@
 
 package gdv.xport;
 
-import gdv.xport.util.XmlFormatter;
+import gdv.xport.util.*;
 
 import java.io.*;
 import java.net.*;
@@ -29,6 +29,7 @@ import javax.xml.stream.XMLStreamException;
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.cli.*;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  * @author oliver (oliver.boehm@agentes.de)
@@ -70,21 +71,39 @@ public final class Main {
             } else {
                 datenpaket.importFrom(System.in);
             }
-            // Option "-xml"
-            boolean xml = cmd.hasOption("xml");
-            // Option "-export"
+            // Option "-xml" bzw. "-html"
+            ExportType exportType = ExportType.GDV;
+            if (cmd.hasOption("xml")) {
+                exportType = ExportType.XML;
+            } else if (cmd.hasOption("html")) {
+                exportType = ExportType.HTML;
+            }
             if (cmd.hasOption("export")) {
                 File file = new File(cmd.getOptionValue("export"));
-                if (xml) {
-                    new XmlFormatter(file).write(datenpaket);
-                } else {
-                    datenpaket.export(file);
+                if (exportType == ExportType.GDV) {
+                    String suffix = FilenameUtils.getExtension(file.getName());
+                    if (suffix.equalsIgnoreCase("xml")) {
+                        exportType = ExportType.XML;
+                    } else if (suffix.equalsIgnoreCase("html")) {
+                        exportType = ExportType.HTML;
+                    }
+                }
+                switch(exportType) {
+                    case XML:   new XmlFormatter(file).write(datenpaket);
+                                break;
+                    case HTML:  new HtmlFormatter(file).write(datenpaket);
+                                break;
+                    case GDV:   datenpaket.export(file);
+                                break;
                 }
             } else {
-                if (xml) {
-                    new XmlFormatter(System.out).write(datenpaket);
-                } else {
-                    datenpaket.export(System.out);
+                switch(exportType) {
+                    case XML:   new XmlFormatter(System.out).write(datenpaket);
+                                break;
+                    case HTML:  new HtmlFormatter(System.out).write(datenpaket);
+                                break;
+                    case GDV:   datenpaket.export(System.out);
+                                break;
                 }
             }
             // Option "-validate"
@@ -123,8 +142,9 @@ public final class Main {
         options.addOption("import", true, "Import-Datei");
         options.addOption("validate", false, "Validierung der eingelesenen Datensaetze");
         options.addOption("xml", false, "Ausgabe als XML");
+        options.addOption("html", false, "Ausgabe als HTML");
         options.addOption("export", true,
-                "Export-Datei (bei .xml als Endung ist das Format XML, ansonsten GDV)");
+                "Export-Datei (bei .xml/.html als Endung ist das Format XML/HTML, ansonsten GDV)");
         options.addOption("help", false, "Kurz-Hilfe");
         return options;
     }
@@ -146,5 +166,7 @@ public final class Main {
      */
     private Main() {}
 
+    private enum ExportType { XML, HTML, GDV }
+    
 }
 
