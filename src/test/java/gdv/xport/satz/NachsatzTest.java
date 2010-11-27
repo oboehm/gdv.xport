@@ -69,8 +69,7 @@ public class NachsatzTest extends AbstractSatzTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     private void checkExport(final int startByte, final int endByte, final String expected) throws IOException {
-        int n = 256 + Config.getEOD().length();
-        super.checkExport(this.nachsatz, startByte, endByte, expected, n);
+        super.checkExport(this.nachsatz, startByte, endByte, expected, 256);
     }
 
     /**

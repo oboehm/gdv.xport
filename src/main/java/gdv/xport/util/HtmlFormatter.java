@@ -69,6 +69,7 @@ public final class HtmlFormatter {
      */
     public HtmlFormatter(final File file) throws IOException {
         this(new FileWriter(file));
+        this.title = "GDV-Datei " + file;
     }
 
     /**
@@ -127,8 +128,8 @@ public final class HtmlFormatter {
     }
     
     private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Satz satz) throws XMLStreamException {
-        xmlStreamWriter.writeStartElement("span");
-        xmlStreamWriter.writeAttribute("class", "satz");
+        xmlStreamWriter.writeStartElement("div");
+        xmlStreamWriter.writeAttribute("class", "Satz");
         if (satz instanceof Datensatz) {
             Datensatz datensatz = (Datensatz) satz;
             xmlStreamWriter.writeAttribute("title", "Satzart " + datensatz.getSatzartFeld().getInhalt() + "."
@@ -151,7 +152,7 @@ public final class HtmlFormatter {
     private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Teildatensatz teildatensatz)
             throws XMLStreamException {
         xmlStreamWriter.writeStartElement("span");
-        xmlStreamWriter.writeAttribute("class", "teildatensatz");
+        xmlStreamWriter.writeAttribute("class", "Teildatensatz");
         xmlStreamWriter.writeAttribute("title", "Nr. " + teildatensatz.getNummer().getInhalt());
         for (Iterator<Feld> iterator = teildatensatz.getFelder().iterator(); iterator.hasNext();) {
             Feld feld = iterator.next();

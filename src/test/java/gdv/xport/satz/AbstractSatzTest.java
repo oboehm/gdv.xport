@@ -68,9 +68,12 @@ public class AbstractSatzTest {
     }
 
     private String export(final Satz satz) throws IOException {
+        String eod = Config.getEOD();
+        Config.setEOD("");
         StringWriter swriter = new StringWriter(768);
         satz.export(swriter);
         String data = swriter.toString();
+        Config.setEOD(eod);
         return data;
     }
     
