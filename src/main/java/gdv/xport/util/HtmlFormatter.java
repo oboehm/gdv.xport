@@ -166,7 +166,8 @@ public final class HtmlFormatter {
         xmlStreamWriter.writeStartElement("span");
         xmlStreamWriter.writeAttribute("class", feldType);
         xmlStreamWriter.writeAttribute("title", feld.getBezeichnung());
-        xmlStreamWriter.writeCharacters(feld.getInhalt());
+        String inhalt = feld.getInhalt();
+        xmlStreamWriter.writeCharacters(inhalt);
         xmlStreamWriter.writeEndElement();
     }
 

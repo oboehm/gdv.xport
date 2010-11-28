@@ -24,6 +24,7 @@ import java.io.*;
 import java.net.*;
 import java.util.List;
 
+import javax.jms.IllegalStateException;
 import javax.xml.stream.XMLStreamException;
 
 import net.sf.oval.ConstraintViolation;
@@ -31,10 +32,12 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FilenameUtils;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class Main.
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.2 (17.11.2009)
- *
  */
 public final class Main {
 
@@ -52,8 +55,10 @@ public final class Main {
      *             falls der Import oder Export schief gegangen ist
      * @throws XMLStreamException
      *             falls bei der XML-Generierung was schief gelaufen ist.
+     * @throws IllegalStateException 
+     *             falls die main-Methode auf dem falschen Fuss erwischt wird.
      */
-    public static void main(final String[] args) throws IOException, XMLStreamException {
+    public static void main(final String[] args) throws IOException, XMLStreamException, IllegalStateException {
         Options options = createOptions();
         CommandLineParser parser = new GnuParser();
         try {
@@ -95,6 +100,7 @@ public final class Main {
                                 break;
                     case GDV:   datenpaket.export(file);
                                 break;
+                    default:    throw new IllegalStateException("no export format given");
                 }
             } else {
                 switch(exportType) {
@@ -104,6 +110,7 @@ public final class Main {
                                 break;
                     case GDV:   datenpaket.export(System.out);
                                 break;
+                    default:    throw new IllegalStateException("no export format given");
                 }
             }
             // Option "-validate"
@@ -137,6 +144,11 @@ public final class Main {
 
     }
 
+    /**
+     * Creates the options.
+     *
+     * @return the options
+     */
     private static Options createOptions() {
         Options options = new Options();
         options.addOption("import", true, "Import-Datei");
@@ -149,11 +161,21 @@ public final class Main {
         return options;
     }
 
+    /**
+     * Prints the help.
+     *
+     * @param options the options
+     */
     private static void printHelp(final Options options) {
         HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp(Main.class.getName(), options);
     }
 
+    /**
+     * Prints the violations.
+     *
+     * @param violations the violations
+     */
     private static void printViolations(final List<ConstraintViolation> violations) {
         for (ConstraintViolation violation : violations) {
             System.err.println(violation.getValidatedObject() + ": " + violation.getMessage());
@@ -166,7 +188,17 @@ public final class Main {
      */
     private Main() {}
 
-    private enum ExportType { XML, HTML, GDV }
+    /**
+     * The Enum ExportType.
+     */
+    private enum ExportType {
+        /** GDV-Format (default). */
+        GDV,
+        /** XML-Format. */
+        XML,
+        /** HTML-Format. */
+        HTML
+    }
     
 }
 
