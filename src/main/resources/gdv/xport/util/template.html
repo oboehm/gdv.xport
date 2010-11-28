@@ -9,22 +9,53 @@
   		margin-bottom: 1px;
   		white-space: pre;
   	'}'
-  	.AlphaNumFeld, .Betrag, .BetragMitVorzeichen, .Bezeichner, .Datum, .Version, .VUNummer, .NumFeld '{'
-  		background-color: #f2cca3;
-  		border-color: #f9eeda;
-  		border-right-style: solid;
-  		border-width: 1px;
+  	.AlphaNumFeld '{'
+  		background-color: #f1cca3;
+  	'}'
+  	.Betrag '{'
+  		background-color: #e0f1b5;
+  	'}'
+  	.BetragMitVorzeichen '{'
+  		background-color: #f8f1b5;
+  	'}'
+  	.Bezeichner '{'
+  		background-color: #f2d991;
+  	'}'
+  	.Datum '{'
+  		background-color: #ccedf1;
+  	'}'
+  	.NumFeld '{'
+  		background-color: #f1f1cd;
+  	'}'
+  	.Undefiniert '{'
+  		background-color: #ffa0a0;
+  	'}'
+  	.Version '{'
+  		background-color: #f1ccd8;
+  	'}'
+  	.VUNummer '{'
+  		background-color: #ffffc0;
   	'}'
   	.Zeichen '{'
   		background-color: #f9eeda;
-  		border-color: #f2cca3;
-  		border-right-style: solid;
-  		border-width: 1px;
   	'}'
   </style>
 </head>
 <body>
   <h2>{1}</h2>
 {2}
+  <h3>Legende</h3>
+  <p>
+  	<span class="AlphaNumFeld" style="white-space: pre;"> Alphanumerisches Feld </span>
+  	<span class="Betrag" style="white-space: pre;"> Betrag </span>
+  	<span class="BetragMitVorzeichen" style="white-space: pre;"> Betrag mit Vorzeichen </span>
+  	<span class="NumFeld" style="white-space: pre;"> numerisches Feld </span>
+  	<span class="Datum" style="white-space: pre;"> Datum </span>
+  	<span class="Bezeichner" style="white-space: pre;"> Bezeichner </span>
+  	<span class="Version" style="white-space: pre;"> Version </span>
+  	<span class="VUNummer" style="white-space: pre;"> VU-Nummer </span>
+  	<span class="Zeichen" style="white-space: pre;"> Einzelnes Zeichen </span>
+  	<span class="Undefiniert" style="white-space: pre;"> Undefiniert </span>
+  </p>
 </body>
 </html>

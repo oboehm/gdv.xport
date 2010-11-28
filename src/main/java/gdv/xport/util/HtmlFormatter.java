@@ -20,7 +20,7 @@ package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Feld;
+import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
 import java.io.*;
@@ -154,9 +154,20 @@ public final class HtmlFormatter {
         xmlStreamWriter.writeStartElement("span");
         xmlStreamWriter.writeAttribute("class", "Teildatensatz");
         xmlStreamWriter.writeAttribute("title", "Nr. " + teildatensatz.getNummer().getInhalt());
+        int endAdresse = 1;
         for (Iterator<Feld> iterator = teildatensatz.getFelder().iterator(); iterator.hasNext();) {
             Feld feld = iterator.next();
+            int gap = feld.getByteAdresse() - endAdresse;
+            if (gap > 1) {
+                Feld undefiniert = new Undefiniert(gap-1, endAdresse+1);
+                writeTo(xmlStreamWriter, undefiniert);
+            }
             writeTo(xmlStreamWriter, feld);
+            endAdresse = feld.getEndAdresse();
+        }
+        if (endAdresse < 256) {
+            Feld undefiniert = new Undefiniert(256 - endAdresse, endAdresse + 1);
+            writeTo(xmlStreamWriter, undefiniert);
         }
         xmlStreamWriter.writeEndElement();
     }
@@ -165,7 +176,8 @@ public final class HtmlFormatter {
         String feldType = feld.getClass().getSimpleName();
         xmlStreamWriter.writeStartElement("span");
         xmlStreamWriter.writeAttribute("class", feldType);
-        xmlStreamWriter.writeAttribute("title", feld.getBezeichnung());
+        xmlStreamWriter.writeAttribute("title", "Byte " + feld.getByteAdresse() + "-" + feld.getEndAdresse() + ": "
+                + feld.getBezeichnung());
         String inhalt = feld.getInhalt();
         xmlStreamWriter.writeCharacters(inhalt);
         xmlStreamWriter.writeEndElement();
