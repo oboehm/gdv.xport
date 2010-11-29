@@ -73,42 +73,25 @@ public final class Main {
                 datenpaket.importFrom(System.in);
             }
             // Option "-xml" bzw. "-html"
-            ExportType exportType = ExportType.GDV;
+            AbstractFormatter formatter = new NullFormatter();
             if (cmd.hasOption("xml")) {
-                exportType = ExportType.XML;
+                formatter = new XmlFormatter();
             } else if (cmd.hasOption("html")) {
-                exportType = ExportType.HTML;
+                formatter = new HtmlFormatter();
             }
             if (cmd.hasOption("export")) {
                 File file = new File(cmd.getOptionValue("export"));
-                if (exportType == ExportType.GDV) {
+                if (formatter instanceof NullFormatter) {
                     String suffix = FilenameUtils.getExtension(file.getName());
                     if (suffix.equalsIgnoreCase("xml")) {
-                        exportType = ExportType.XML;
+                        formatter = new XmlFormatter();
                     } else if (suffix.equalsIgnoreCase("html")) {
-                        exportType = ExportType.HTML;
+                        formatter = new HtmlFormatter();
                     }
                 }
-                switch(exportType) {
-                    case XML:   new XmlFormatter(file).write(datenpaket);
-                                break;
-                    case HTML:  new HtmlFormatter(file).write(datenpaket);
-                                break;
-                    case GDV:   datenpaket.export(file);
-                                break;
-                    default:    throw new IllegalStateException("no export format given");
-                }
-            } else {
-                switch(exportType) {
-                    case XML:   new XmlFormatter(System.out).write(datenpaket);
-                                break;
-                    case HTML:  new HtmlFormatter(System.out).write(datenpaket);
-                                break;
-                    case GDV:   datenpaket.export(System.out);
-                                break;
-                    default:    throw new IllegalStateException("no export format given");
-                }
+                formatter.setWriter(file);
             }
+            formatter.write(datenpaket);
             // Option "-validate"
             if (cmd.hasOption("validate")) {
                 printViolations(datenpaket.validate());
@@ -184,17 +167,5 @@ public final class Main {
      */
     private Main() {}
 
-    /**
-     * The Enum ExportType.
-     */
-    private enum ExportType {
-        /** GDV-Format (default). */
-        GDV,
-        /** XML-Format. */
-        XML,
-        /** HTML-Format. */
-        HTML
-    }
-    
 }
 

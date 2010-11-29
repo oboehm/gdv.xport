@@ -38,14 +38,20 @@ import org.apache.commons.logging.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.2 (13.11.2009)
  */
-public class XmlFormatter {
+public final class XmlFormatter extends AbstractFormatter {
 
     private static final Log log = LogFactory.getLog(XmlFormatter.class);
     private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
     /** Writer fuer die XML-Ausgabe */
-    protected final XMLStreamWriter xmlStreamWriter;
-    /** den brauchen wir fuer close() */
-    private final Writer writer;
+    private XMLStreamWriter xmlStreamWriter;
+
+    /**
+     * Default-Konstruktor.
+     * 
+     * @since 0.4.3
+     */
+    public XmlFormatter() {
+    }
 
     /**
      * Der einzige Konstruktor.
@@ -87,6 +93,19 @@ public class XmlFormatter {
      */
     public XmlFormatter(final OutputStream ostream) {
         this(new OutputStreamWriter(ostream));
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.util.AbstractFormatter#setWriter(java.io.Writer)
+     */
+    @Override
+    public void setWriter(Writer writer) {
+        super.setWriter(writer);
+        try {
+            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(writer);
+        } catch (XMLStreamException e) {
+            throw new IllegalArgumentException("can't create XmlStreamWriter with " + writer);
+        }
     }
 
     /**
@@ -169,34 +188,38 @@ public class XmlFormatter {
      * Ausgabe eines kompletten Datenpakets als XML.
      *
      * @param datenpaket Datenpaket, das als XML ausgegeben werden soll
-     * @throws XMLStreamException bei Problemen mit der XML-Generierung
+     * @throws IOException bei Problemen mit der XML-Generierung
      */
-    public void write(final Datenpaket datenpaket) throws XMLStreamException {
+    public void write(final Datenpaket datenpaket) throws IOException {
         long t0 = System.currentTimeMillis();
-        xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");
-        xmlStreamWriter.writeCharacters("\n");
-        xmlStreamWriter.writeStartElement("datenpaket");
-        xmlStreamWriter.writeDefaultNamespace("http://labs.agentes.de");
-        xmlStreamWriter.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
-        xmlStreamWriter.writeNamespace("schemaLocation",
-                "http://labs.agentes.de /xsd/datenpaket.xsd");
-        xmlStreamWriter.writeCharacters("\n");
-        write(datenpaket.getVorsatz(), 1);
-        xmlStreamWriter.writeCharacters("\n");
-        for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext(); ) {
-            Datensatz datensatz = iterator.next();
-            write(datensatz, 1);
+        try {
+            xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");
             xmlStreamWriter.writeCharacters("\n");
+            xmlStreamWriter.writeStartElement("datenpaket");
+            xmlStreamWriter.writeDefaultNamespace("http://labs.agentes.de");
+            xmlStreamWriter.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+            xmlStreamWriter.writeNamespace("schemaLocation",
+                    "http://labs.agentes.de /xsd/datenpaket.xsd");
+            xmlStreamWriter.writeCharacters("\n");
+            write(datenpaket.getVorsatz(), 1);
+            xmlStreamWriter.writeCharacters("\n");
+            for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext(); ) {
+                Datensatz datensatz = iterator.next();
+                write(datensatz, 1);
+                xmlStreamWriter.writeCharacters("\n");
+            }
+            write(datenpaket.getNachsatz(), 1);
+            xmlStreamWriter.writeCharacters("\n");
+            xmlStreamWriter.writeEndElement();
+            xmlStreamWriter.writeCharacters("\n");
+            xmlStreamWriter.writeComment(" (c)reated by gdv-xport in "
+                    + (System.currentTimeMillis() - t0) + " ms ");
+            xmlStreamWriter.writeCharacters("\n");
+            xmlStreamWriter.writeEndDocument();
+            xmlStreamWriter.flush();
+        } catch (XMLStreamException e) {
+            throw new IOException("XML-Fehler", e);
         }
-        write(datenpaket.getNachsatz(), 1);
-        xmlStreamWriter.writeCharacters("\n");
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeCharacters("\n");
-        xmlStreamWriter.writeComment(" (c)reated by gdv-xport in "
-                + (System.currentTimeMillis() - t0) + " ms ");
-        xmlStreamWriter.writeCharacters("\n");
-        xmlStreamWriter.writeEndDocument();
-        xmlStreamWriter.flush();
     }
 
     /**
@@ -285,7 +308,7 @@ public class XmlFormatter {
         XmlFormatter formatter = new XmlFormatter(swriter);
         try {
             formatter.write(datenpaket);
-        } catch (XMLStreamException shouldnothappen) {
+        } catch (IOException shouldnothappen) {
             throw new RuntimeException("can't convert " + datenpaket + " to String",
                     shouldnothappen);
         }

@@ -37,11 +37,10 @@ import org.apache.commons.io.IOUtils;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.4.3 (23.11.2010)
  */
-public final class HtmlFormatter {
+public final class HtmlFormatter extends AbstractFormatter {
     
     private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
     private static final String template;
-    private final Writer writer;
     private String title = "GDV-Datei";
     
     static {
@@ -59,6 +58,12 @@ public final class HtmlFormatter {
         } finally {
             istream.close();
         }
+    }
+    
+    /**
+     * Default-Konstruktor.
+     */
+    public HtmlFormatter() {
     }
 
     /**
@@ -103,27 +108,28 @@ public final class HtmlFormatter {
      * Ausgabe eines kompletten Datenpakets als XML.
      *
      * @param datenpaket Datenpaket, das als XML ausgegeben werden soll
-     * @throws XMLStreamException bei Problemen mit der HTML-Generierung
+     * @throws IOException bei Problemen mit der HTML-Generierung
+     * @see AbstractFormatter#write(gdv.xport.Datenpaket)
      */
-    public void write(final Datenpaket datenpaket) throws XMLStreamException {
+    public void write(final Datenpaket datenpaket) throws IOException {
         long t0 = System.currentTimeMillis();
         StringWriter buffer = new StringWriter();
-        XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(buffer);
-        writeTo(xmlStreamWriter, datenpaket.getVorsatz());
-        for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext(); ) {
-            Datensatz datensatz = iterator.next();
-            writeTo(xmlStreamWriter, datensatz);
-        }
-        writeTo(xmlStreamWriter, datenpaket.getNachsatz());
-        xmlStreamWriter.close();
         try {
+            XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(buffer);
+            writeTo(xmlStreamWriter, datenpaket.getVorsatz());
+            for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext(); ) {
+                Datensatz datensatz = iterator.next();
+                writeTo(xmlStreamWriter, datensatz);
+            }
+            writeTo(xmlStreamWriter, datenpaket.getNachsatz());
+            xmlStreamWriter.close();
             buffer.close();
             String content = MessageFormat.format(template, Config.DEFAULT_ENCODING.name(), title, buffer.toString());
             writer.write(content);
             writer.write("<!-- (c)reated by gdv-xport in " + (System.currentTimeMillis() - t0) + " ms -->\n");
             writer.flush();
-        } catch (IOException ioe) {
-            throw new XMLStreamException(ioe);
+        } catch (XMLStreamException e) {
+            throw new IOException("XML-Fehler", e);
         }
     }
     
@@ -194,7 +200,7 @@ public final class HtmlFormatter {
         HtmlFormatter formatter = new HtmlFormatter(swriter);
         try {
             formatter.write(datenpaket);
-        } catch (XMLStreamException shouldnothappen) {
+        } catch (IOException shouldnothappen) {
             throw new RuntimeException("can't convert " + datenpaket + " to String",
                     shouldnothappen);
         }
