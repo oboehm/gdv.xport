@@ -24,7 +24,6 @@ import java.io.*;
 import java.net.*;
 import java.util.List;
 
-import javax.jms.IllegalStateException;
 import javax.xml.stream.XMLStreamException;
 
 import net.sf.oval.ConstraintViolation;
@@ -32,7 +31,6 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FilenameUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Main.
  *
@@ -55,10 +53,8 @@ public final class Main {
      *             falls der Import oder Export schief gegangen ist
      * @throws XMLStreamException
      *             falls bei der XML-Generierung was schief gelaufen ist.
-     * @throws IllegalStateException 
-     *             falls die main-Methode auf dem falschen Fuss erwischt wird.
      */
-    public static void main(final String[] args) throws IOException, XMLStreamException, IllegalStateException {
+    public static void main(final String[] args) throws IOException, XMLStreamException {
         Options options = createOptions();
         CommandLineParser parser = new GnuParser();
         try {

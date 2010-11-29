@@ -18,7 +18,10 @@
   <body>
 
     <release version="0.4.3-SNAPSHOT" date="2011"
-             description="nur noch zweistellige Checkstyle-Verletzungen">
+             description="HTML-Support">
+      <action dev="oboehm" type="update" date="29-Nov-2010" >
+        Dokumentation erg&#228;nzt.
+      </action>
       <action dev="oboehm" type="add" date="26-Nov-2010">
         HtmlFormatter f&#252;r die HTML-Ausgabe hinzugef&#252;gt.
       </action>
