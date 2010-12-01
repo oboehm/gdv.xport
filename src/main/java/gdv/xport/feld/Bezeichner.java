@@ -49,7 +49,7 @@ public final class Bezeichner {
     public static final String AENDERUNGSGRUND = "Aenderungsgrund";
     public static final String AFB = "A,F,B";
     public static final String AKTENZEICHEN_SICHERUNGSGLAEUBIGER = "Aktenzeichen des Sicherungsglaeubigers";
-    public static final String ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN ="Allgemeine Versicherungsbedingungen";
+    public static final String ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN = "Allgemeine Versicherungsbedingungen";
     public static final String AMTL_KENNZEICHEN = "Amtl. Kennzeichen";
     public static final String ANREDESCHLUESSEL = "Anredeschluessel";
     public static final String ANTEIL_IN_PROZENT = "Anteil in %";
@@ -87,7 +87,7 @@ public final class Bezeichner {
     public static final String BEITRAGSANGLEICHUNGSKLAUSEL = "Beitragsangleichungsklausel";
     public static final String BEITRAGSKLASSE = "Beitragsklasse";
     public static final String BEITRAGSREGULIERUNG = "Beitragsregulierung";
-    public static final String BEITRAGSRUECKGEWAEHR ="Beitragsrueckgewaehr";
+    public static final String BEITRAGSRUECKGEWAEHR = "Beitragsrueckgewaehr";
     public static final String BERGUNGSKOSTEN = "Bergungskosten";
     public static final String BERGUNGSKOSTEN_BEITRAGSSATZ = "Bergungskosten Beitragssatz";
     public static final String BERUF_TEXT = "Beruf-Text";
@@ -133,7 +133,7 @@ public final class Bezeichner {
     public static final String GESAMTBEITRAG_BRUTTO = "Gesamtbeitrag-Brutto(Inkasso)";
     public static final String GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN = "Gesamtbeitrag (Brutto) in Waehrungseinheiten";
     public static final String GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN = "Gesamtbeitrag (Netto) in Waehrungseinheiten";
-    public static final String GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN ="Gesamtbeitrag in Waehrungseinheiten";
+    public static final String GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN = "Gesamtbeitrag in Waehrungseinheiten";
     public static final String GESAMTPROVISIONSBETRAG = "Gesamtprovisions-Betrag";
     public static final String GESCHLECHT = "Geschlecht";
     public static final String GESCHLECHT_VP = "Geschlecht der VP";

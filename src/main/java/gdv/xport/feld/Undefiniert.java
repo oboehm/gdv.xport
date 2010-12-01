@@ -25,7 +25,7 @@ package gdv.xport.feld;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.5.0 (28.11.2010)
  */
-public class Undefiniert extends Feld {
+public final class Undefiniert extends Feld {
 
     /**
      * Dies ist der einzige Konstruktor.
@@ -33,7 +33,7 @@ public class Undefiniert extends Feld {
      * @param length Byte-Laenge
      * @param start Start-Adresse
      */
-    public Undefiniert(int length, int start) {
+    public Undefiniert(final int length, final int start) {
         super("undefiniert", length, start, Align.LEFT);
     }
 

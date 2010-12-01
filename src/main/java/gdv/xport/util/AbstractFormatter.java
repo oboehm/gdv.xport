@@ -40,13 +40,15 @@ public abstract class AbstractFormatter {
     }
 
     /**
-     * Lenkt den Ausgabekanal auf die uebergebene Datei
+     * Lenkt den Ausgabekanal auf die uebergebene Datei.
      *
      * @param file Ausgabedatei
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void setWriter(final File file) throws IOException {
-        setWriter(new FileOutputStream(file));
+        OutputStream ostream = new FileOutputStream(file);
+        setWriter(ostream);
+        // we don't close ostream here because otherwise we get an XmlStreamException elsewhere
     }
     
     /**
