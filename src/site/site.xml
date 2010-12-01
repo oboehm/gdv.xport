@@ -48,6 +48,7 @@
       <item name="Hello World"              href="manual/hello.html" />
       <item name="Der erste Import"         href="manual/import.html" />
       <item name="Das Hauptprogramm"        href="manual/main.html" />
+      <item name="Export"                   href="manual/export.html" />
       <item name="Erweiterungen"            href="manual/extend.html" />
     </menu>
     <menu name="Folien" href="slides/slides.html" >

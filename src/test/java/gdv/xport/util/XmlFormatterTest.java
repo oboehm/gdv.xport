@@ -22,27 +22,24 @@ import gdv.xport.Datenpaket;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
-import java.io.*;
+import java.io.IOException;
 
-import javax.xml.stream.*;
+import javax.xml.stream.XMLStreamException;
 
-import org.apache.commons.logging.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
 
-import patterntesting.concurrent.junit.ParallelRunner;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
+ * JUnit-Test fuer XmlFormatter.
+ * 
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.2 (14.11.2009)
- *
  */
-@RunWith(ParallelRunner.class)
-public class XmlFormatterTest extends AbstractTest {
-
-    private static Log log = LogFactory.getLog(XmlFormatterTest.class);
-    private static XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+@RunWith(SmokeRunner.class)
+public class XmlFormatterTest extends AbstractFormatterTest {
 
     /**
      * Test method for {@link gdv.xport.util.XmlFormatter#write(gdv.xport.feld.Feld)}.
@@ -95,24 +92,16 @@ public class XmlFormatterTest extends AbstractTest {
         checkXML(xmlString);
         XmlHelper.validate(xmlString, "/xsd/datenpaket.xsd");
     }
-
+    
     /**
-     * We use the XMLStreams to validate the XML
+     * Tested die Formattierung der Musterdatei als HTML.
      *
-     * @param xmlString
-     * @throws XMLStreamException
-     *             the given XML string is not a valid XML
+     * @throws XMLStreamException falls was schiefgelaufen ist
+     * @throws IOException falls was schiefgelaufen ist
      */
-    static protected void checkXML(final String xmlString) throws XMLStreamException {
-        XMLStreamReader xmlr = xmlInputFactory.createXMLStreamReader(new StringReader(xmlString));
-        int n = 0;
-        while (xmlr.hasNext()) {
-            int eventType = xmlr.next();
-            if (eventType == XMLStreamConstants.CHARACTERS) {
-                n += xmlr.getText().length();
-            }
-        }
-        log.info(n + " bytes text in " + xmlString.length() + " bytes XML");
+    @Test
+    public void testMusterdatei() throws IOException, XMLStreamException {
+        exportMusterdatei(new XmlFormatter(), "musterdatei_041222.xml");
     }
 
 }

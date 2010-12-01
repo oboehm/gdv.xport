@@ -90,6 +90,8 @@ public final class Main {
                     }
                 }
                 formatter.setWriter(file);
+            } else {
+                formatter.setWriter(System.out);
             }
             formatter.write(datenpaket);
             // Option "-validate"

@@ -84,7 +84,7 @@ public final class XmlFormatter extends AbstractFormatter {
      * @throws IOException falls die uebergebene Date nicht existiert
      */
     public XmlFormatter(final File file) throws IOException {
-        this(new FileWriter(file));
+        this(new FileOutputStream(file));
     }
 
     /**
@@ -92,7 +92,14 @@ public final class XmlFormatter extends AbstractFormatter {
      * @param ostream z.B. System.out
      */
     public XmlFormatter(final OutputStream ostream) {
-        this(new OutputStreamWriter(ostream));
+        try {
+            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
+            this.writer = new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING);
+        } catch (XMLStreamException e) {
+            throw new RuntimeException("you should never see this", e);
+        } catch (FactoryConfigurationError e) {
+            throw new ConfigException("XML problems", e);
+        }
     }
 
     /* (non-Javadoc)
@@ -105,6 +112,19 @@ public final class XmlFormatter extends AbstractFormatter {
             this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(writer);
         } catch (XMLStreamException e) {
             throw new IllegalArgumentException("can't create XmlStreamWriter with " + writer);
+        }
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.util.AbstractFormatter#setWriter(java.io.OutputStream)
+     */
+    @Override
+    public void setWriter(OutputStream ostream) {
+        super.setWriter(ostream);
+        try {
+            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
+        } catch (XMLStreamException e) {
+            throw new IllegalArgumentException("can't create XmlStreamWriter with " + ostream);
         }
     }
 

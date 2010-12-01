@@ -1,6 +1,7 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.config.Config;
 
 import java.io.*;
 
@@ -34,7 +35,8 @@ public abstract class AbstractFormatter {
      * @param ostream OutputStream als Ausgabekanal
      */
     public void setWriter(final OutputStream ostream) {
-        setWriter(new OutputStreamWriter(ostream));
+        OutputStreamWriter ostreamWriter = new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING);
+        setWriter(ostreamWriter);
     }
 
     /**
@@ -44,7 +46,7 @@ public abstract class AbstractFormatter {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void setWriter(final File file) throws IOException {
-        setWriter(new FileWriter(file));
+        setWriter(new FileOutputStream(file));
     }
     
     /**

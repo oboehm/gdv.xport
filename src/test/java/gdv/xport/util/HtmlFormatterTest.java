@@ -25,7 +25,6 @@ import java.io.*;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.apache.commons.logging.*;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
@@ -35,10 +34,8 @@ import org.xml.sax.SAXException;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.4.3 (23.11.2010)
  */
-public class HtmlFormatterTest {
+public class HtmlFormatterTest extends AbstractFormatterTest {
     
-    private static Log log = LogFactory.getLog(HtmlFormatter.class);
-
     /**
      * Tested den Export eines Datenpakets als HTML.
      *
@@ -64,16 +61,7 @@ public class HtmlFormatterTest {
      */
     @Test
     public void testMusterdatei() throws IOException, XMLStreamException {
-        Datenpaket datenpaket = new Datenpaket();
-        InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
-        datenpaket.importFrom(istream);
-        istream.close();
-        File siteDir = new File("target", "site");
-        siteDir.mkdirs();
-        HtmlFormatter formatter = new HtmlFormatter(new File(siteDir, "musterdatei_041222.html"));
-        formatter.setTitle("GDV-Datei musterdatei_041222.txt");
-        formatter.write(datenpaket);
-        log.info(datenpaket + " exported as HTML to dir " + siteDir);
+        exportMusterdatei(new HtmlFormatter(), "musterdatei_041222.html");
     }
 
 }
