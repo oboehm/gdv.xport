@@ -23,7 +23,7 @@ package gdv.xport.feld;
  * (bzw. vergessen wurden).
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.4.3 (28.11.2010)
+ * @since 0.5.0 (28.11.2010)
  */
 public class Undefiniert extends Feld {
 

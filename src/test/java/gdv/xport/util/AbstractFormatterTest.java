@@ -31,7 +31,7 @@ import org.apache.commons.logging.*;
  * Gemeinsame Oberklasse fuer die verschiedenen Formatter-Tests.
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.4.3 (30.11.2010)
+ * @since 0.5.0 (30.11.2010)
  */
 public abstract class AbstractFormatterTest extends AbstractTest {
 

@@ -35,7 +35,7 @@ import org.apache.commons.io.IOUtils;
  * Diese Klasse gibt die verschiedenen Saetze und Felder als HTML aus.
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.4.3 (23.11.2010)
+ * @since 0.5.0 (23.11.2010)
  */
 public final class HtmlFormatter extends AbstractFormatter {
     

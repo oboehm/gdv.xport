@@ -17,8 +17,8 @@
 
   <body>
 
-    <release version="0.4.3-SNAPSHOT" date="2011"
-             description="HTML-Support">
+    <release version="0.5.0-SNAPSHOT" date="2011"
+             description="HTML-Support, Support f&#252;r Satzart 221">
       <action dev="oboehm" type="update" date="29-Nov-2010" >
         Dokumentation erg&#228;nzt.
       </action>

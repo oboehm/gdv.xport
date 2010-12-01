@@ -81,7 +81,7 @@ public final class MyUnfallDatensatzTest {
     /**
      * Hier setzen die SatzFactory auf den Ausgangsstand zurueck.
      * 
-     * @since 0.4.3
+     * @since 0.5.0
      */
     @AfterClass
     public static void restoreSatzFactory() {

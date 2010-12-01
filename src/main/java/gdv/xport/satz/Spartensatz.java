@@ -25,7 +25,7 @@ import org.apache.commons.logging.*;
  * aufnehmen koennen.
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.4.3 (22.11.2010)
+ * @since 0.5.0 (22.11.2010)
  */
 public abstract class Spartensatz extends Datensatz {
     

@@ -27,7 +27,7 @@ import org.apache.commons.logging.*;
  * Klasse fuer die Satzart 0221 (Erweiterungssatz).
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.4.3 (18.11.2010)
+ * @since 0.5.0 (18.11.2010)
  */
 public class Erweiterungssatz extends Spartensatz {
     

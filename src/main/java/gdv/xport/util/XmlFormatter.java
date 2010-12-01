@@ -48,7 +48,7 @@ public final class XmlFormatter extends AbstractFormatter {
     /**
      * Default-Konstruktor.
      * 
-     * @since 0.4.3
+     * @since 0.5.0
      */
     public XmlFormatter() {
     }

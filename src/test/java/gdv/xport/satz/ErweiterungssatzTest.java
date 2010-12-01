@@ -35,7 +35,7 @@ import org.junit.*;
  * JUnit-Test fuer Erweiterungssatz.
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.4.3 (18.11.2010)
+ * @since 0.5.0 (18.11.2010)
  */
 public final class ErweiterungssatzTest extends AbstractSatzTest {
     

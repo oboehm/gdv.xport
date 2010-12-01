@@ -200,7 +200,7 @@ public final class DatenpaketTest {
      * Der Export eines zuvor importierten Datenpakets sollte identisch mit der
      * Ausgangsdatei sein.
      * 
-     * @since 0.4.3
+     * @since 0.5.0
      * @throws IOException falls die Platte kaputt ist
      */
     @IntegrationTest

@@ -44,7 +44,7 @@ public class DatensatzTest extends AbstractSatzTest {
      * Zum Testen deaktivieren wir das Zeilenende fuer jeden
      * exportierten Satz.
      * 
-     * @since 0.4.3
+     * @since 0.5.0
      */
     @BeforeClass
     public static void setUpBeforeClass() {

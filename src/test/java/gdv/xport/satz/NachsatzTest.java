@@ -89,7 +89,7 @@ public class NachsatzTest extends AbstractSatzTest {
      * @throws IOException 
      *             sollte eigentlich nicht vorkommen, da wir von einem String
      *             importieren
-     * @since 0.4.3
+     * @since 0.5.0
      */
     @Test
     public void testImport() throws IOException {

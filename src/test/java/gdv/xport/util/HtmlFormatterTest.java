@@ -32,7 +32,7 @@ import org.xml.sax.SAXException;
  * JUnit-Test fuer HtmlFormatter.
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.4.3 (23.11.2010)
+ * @since 0.5.0 (23.11.2010)
  */
 public class HtmlFormatterTest extends AbstractFormatterTest {
     

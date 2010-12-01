@@ -34,7 +34,7 @@ import patterntesting.runtime.junit.*;
  * und anderen Test-Hilfsmittel von PatternTesting zurueck.
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.4.3 (19.11.2010)
+ * @since 0.5.0 (19.11.2010)
  */
 @RunWith(ParallelRunner.class)
 @IntegrationTest

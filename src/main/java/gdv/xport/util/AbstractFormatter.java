@@ -10,7 +10,7 @@ import java.io.*;
  * z.B. von der Main-Klasse fuer die Ausgabe verwendet.
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.4.3 (29.11.2010)
+ * @since 0.5.0 (29.11.2010)
  */
 public abstract class AbstractFormatter {
 

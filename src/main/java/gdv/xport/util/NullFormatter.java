@@ -27,7 +27,7 @@ import java.io.*;
  * Datensatz einfach durch.
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.4.3 (29.11.2010)
+ * @since 0.5.0 (29.11.2010)
  */
 public final class NullFormatter extends AbstractFormatter {
     
