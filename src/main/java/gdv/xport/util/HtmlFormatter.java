@@ -124,13 +124,28 @@ public final class HtmlFormatter extends AbstractFormatter {
             writeTo(xmlStreamWriter, datenpaket.getNachsatz());
             xmlStreamWriter.close();
             buffer.close();
-            String content = MessageFormat.format(template, Config.DEFAULT_ENCODING.name(), title, buffer.toString());
+            String content = MessageFormat.format(template, Config.DEFAULT_ENCODING.name(), title, buffer.toString(),
+                    getDetails(datenpaket));
             writer.write(content);
             writer.write("<!-- (c)reated by gdv-xport in " + (System.currentTimeMillis() - t0) + " ms -->\n");
             writer.flush();
         } catch (XMLStreamException e) {
             throw new IOException("XML-Fehler", e);
         }
+    }
+    
+    private static String getDetails(final Datenpaket datenpaket) throws XMLStreamException, IOException {
+        StringWriter buffer = new StringWriter();
+        XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(buffer);
+        writeDetailsTo(xmlStreamWriter, datenpaket.getVorsatz());
+        for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext(); ) {
+            Datensatz datensatz = iterator.next();
+            writeDetailsTo(xmlStreamWriter, datensatz);
+        }
+        writeDetailsTo(xmlStreamWriter, datenpaket.getNachsatz());
+        xmlStreamWriter.close();
+        buffer.close();
+        return buffer.toString();
     }
     
     private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Satz satz) throws XMLStreamException {
@@ -152,6 +167,19 @@ public final class HtmlFormatter extends AbstractFormatter {
         }
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.flush();
+    }
+    
+    private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Satz satz)
+            throws XMLStreamException {
+        xmlStreamWriter.writeStartElement("h3");
+        xmlStreamWriter.writeCharacters("Satzart " + satz.getSatzart() + " (" + satz.getClass().getSimpleName() + ")");
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
+        for (Iterator<Teildatensatz> iterator = satz.getTeildatensaetze().iterator(); iterator.hasNext();) {
+            Teildatensatz teildatensatz = iterator.next();
+            writeDetailsTo(xmlStreamWriter, teildatensatz);
+        }
         xmlStreamWriter.flush();
     }
 
@@ -177,6 +205,46 @@ public final class HtmlFormatter extends AbstractFormatter {
         }
         xmlStreamWriter.writeEndElement();
     }
+    
+    private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Teildatensatz teildatensatz)
+            throws XMLStreamException {
+        xmlStreamWriter.writeStartElement("h4");
+        xmlStreamWriter.writeCharacters("Teildatensatz " + teildatensatz.getNummer().getInhalt());
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.writeStartElement("table");
+        xmlStreamWriter.writeStartElement("thead");
+        xmlStreamWriter.writeStartElement("tr");
+        xmlStreamWriter.writeStartElement("th");
+        xmlStreamWriter.writeCharacters("Nr");
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeStartElement("th");
+        xmlStreamWriter.writeCharacters("Byte");
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeStartElement("th");
+        xmlStreamWriter.writeCharacters("Bezeichner");
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeStartElement("th");
+        xmlStreamWriter.writeCharacters("Datentyp");
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeStartElement("th");
+        xmlStreamWriter.writeCharacters("Inhalt");
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.writeStartElement("tbody");
+        int nr = 1;
+        for (Iterator<Feld> iterator = teildatensatz.getFelder().iterator(); iterator.hasNext();) {
+            Feld feld = iterator.next();
+            writeDetailsTo(xmlStreamWriter, feld, nr);
+            nr++;
+        }
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.flush();
+    }
 
     private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Feld feld) throws XMLStreamException {
         String feldType = feld.getClass().getSimpleName();
@@ -187,6 +255,34 @@ public final class HtmlFormatter extends AbstractFormatter {
         String inhalt = feld.getInhalt();
         xmlStreamWriter.writeCharacters(inhalt);
         xmlStreamWriter.writeEndElement();
+    }
+
+    private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Feld feld, final int nr)
+            throws XMLStreamException {
+        String typ = feld.getClass().getSimpleName();
+        xmlStreamWriter.writeStartElement("tr");
+        xmlStreamWriter.writeAttribute("class", typ);
+        xmlStreamWriter.writeStartElement("td");
+        xmlStreamWriter.writeCharacters(Integer.toString(nr));
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeStartElement("td");
+        if (feld.getAnzahlBytes() == 1) {
+            xmlStreamWriter.writeCharacters(Integer.toString(feld.getByteAdresse()));
+        } else {
+            xmlStreamWriter.writeCharacters(feld.getByteAdresse() + " - " + feld.getEndAdresse());
+        }
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeStartElement("td");
+        xmlStreamWriter.writeCharacters(feld.getBezeichnung());
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeStartElement("td");
+        xmlStreamWriter.writeCharacters(typ);
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeStartElement("td");
+        xmlStreamWriter.writeCharacters(feld.getInhalt());
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
     }
 
     /**

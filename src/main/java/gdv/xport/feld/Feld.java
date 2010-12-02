@@ -221,7 +221,7 @@ public class Feld implements Comparable<Feld> {
     public String getBezeichnung() {
         return this.bezeichnung;
     }
-
+    
     /**
      * Sets the inhalt.
      *
