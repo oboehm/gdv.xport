@@ -39,7 +39,7 @@ public final class NullFormatter extends AbstractFormatter {
      * @see gdv.xport.util.AbstractFormatter#write(gdv.xport.Datenpaket)
      */
     @Override
-    public void write(Datenpaket datenpaket) throws IOException {
+    public void write(final Datenpaket datenpaket) throws IOException {
         datenpaket.export(writer);
         writer.flush();
     }

@@ -100,7 +100,7 @@ public final class HtmlFormatter extends AbstractFormatter {
      * 
      * @param title Titel bzw. Ueberschrift
      */
-    public void setTitle(String title) {
+    public void setTitle(final String title) {
         this.title = title;
     }
 
@@ -116,12 +116,15 @@ public final class HtmlFormatter extends AbstractFormatter {
         StringWriter buffer = new StringWriter();
         try {
             XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(buffer);
-            writeTo(xmlStreamWriter, datenpaket.getVorsatz());
+            int zeile = 1;
+            writeTo(xmlStreamWriter, datenpaket.getVorsatz(), zeile);
+            zeile += datenpaket.getVorsatz().getTeildatensaetze().size();
             for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext(); ) {
                 Datensatz datensatz = iterator.next();
-                writeTo(xmlStreamWriter, datensatz);
+                writeTo(xmlStreamWriter, datensatz, zeile);
+                zeile += datensatz.getTeildatensaetze().size();
             }
-            writeTo(xmlStreamWriter, datenpaket.getNachsatz());
+            writeTo(xmlStreamWriter, datenpaket.getNachsatz(), zeile);
             xmlStreamWriter.close();
             buffer.close();
             String content = MessageFormat.format(template, Config.DEFAULT_ENCODING.name(), title, buffer.toString(),
@@ -137,18 +140,22 @@ public final class HtmlFormatter extends AbstractFormatter {
     private static String getDetails(final Datenpaket datenpaket) throws XMLStreamException, IOException {
         StringWriter buffer = new StringWriter();
         XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(buffer);
-        writeDetailsTo(xmlStreamWriter, datenpaket.getVorsatz());
+        int zeile = 1;
+        writeDetailsTo(xmlStreamWriter, datenpaket.getVorsatz(), zeile);
+        zeile += datenpaket.getVorsatz().getTeildatensaetze().size();
         for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext(); ) {
             Datensatz datensatz = iterator.next();
-            writeDetailsTo(xmlStreamWriter, datensatz);
+            writeDetailsTo(xmlStreamWriter, datensatz, zeile);
+            zeile += datensatz.getTeildatensaetze().size();
         }
-        writeDetailsTo(xmlStreamWriter, datenpaket.getNachsatz());
+        writeDetailsTo(xmlStreamWriter, datenpaket.getNachsatz(), zeile);
         xmlStreamWriter.close();
         buffer.close();
         return buffer.toString();
     }
     
-    private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Satz satz) throws XMLStreamException {
+    private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Satz satz, final int zeile)
+            throws XMLStreamException {
         xmlStreamWriter.writeStartElement("div");
         xmlStreamWriter.writeAttribute("class", "Satz");
         if (satz instanceof Datensatz) {
@@ -158,33 +165,37 @@ public final class HtmlFormatter extends AbstractFormatter {
         } else {
             xmlStreamWriter.writeAttribute("title", "Satzart " + satz.getSatzartFeld().getInhalt());
         }
+        int n = zeile;
         for (Iterator<Teildatensatz> iterator = satz.getTeildatensaetze().iterator(); iterator.hasNext();) {
             Teildatensatz teildatensatz = iterator.next();
-            writeTo(xmlStreamWriter, teildatensatz);
+            writeTo(xmlStreamWriter, teildatensatz, n);
             if (iterator.hasNext()) {
                 xmlStreamWriter.writeCharacters("\n");
             }
+            n++;
         }
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.flush();
     }
     
-    private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Satz satz)
+    private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Satz satz, final int zeile)
             throws XMLStreamException {
         xmlStreamWriter.writeStartElement("h3");
         xmlStreamWriter.writeCharacters("Satzart " + satz.getSatzart() + " (" + satz.getClass().getSimpleName() + ")");
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeCharacters("\n");
+        int n = zeile;
         for (Iterator<Teildatensatz> iterator = satz.getTeildatensaetze().iterator(); iterator.hasNext();) {
             Teildatensatz teildatensatz = iterator.next();
-            writeDetailsTo(xmlStreamWriter, teildatensatz);
+            writeDetailsTo(xmlStreamWriter, teildatensatz, n);
+            n++;
         }
         xmlStreamWriter.flush();
     }
 
-    private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Teildatensatz teildatensatz)
-            throws XMLStreamException {
+    private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Teildatensatz teildatensatz,
+            final int zeile) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("span");
         xmlStreamWriter.writeAttribute("class", "Teildatensatz");
         xmlStreamWriter.writeAttribute("title", "Nr. " + teildatensatz.getNummer().getInhalt());
@@ -194,22 +205,22 @@ public final class HtmlFormatter extends AbstractFormatter {
             int gap = feld.getByteAdresse() - endAdresse;
             if (gap > 1) {
                 Feld undefiniert = new Undefiniert(gap-1, endAdresse+1);
-                writeTo(xmlStreamWriter, undefiniert);
+                writeTo(xmlStreamWriter, undefiniert, zeile);
             }
-            writeTo(xmlStreamWriter, feld);
+            writeTo(xmlStreamWriter, feld, zeile);
             endAdresse = feld.getEndAdresse();
         }
         if (endAdresse < 256) {
             Feld undefiniert = new Undefiniert(256 - endAdresse, endAdresse + 1);
-            writeTo(xmlStreamWriter, undefiniert);
+            writeTo(xmlStreamWriter, undefiniert, zeile);
         }
         xmlStreamWriter.writeEndElement();
     }
     
-    private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Teildatensatz teildatensatz)
-            throws XMLStreamException {
+    private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Teildatensatz teildatensatz,
+            final int zeile) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("h4");
-        xmlStreamWriter.writeCharacters("Teildatensatz " + teildatensatz.getNummer().getInhalt());
+        xmlStreamWriter.writeCharacters("Zeile " + zeile + ": Teildatensatz " + teildatensatz.getNummer().getInhalt());
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.writeStartElement("table");
@@ -237,7 +248,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         int nr = 1;
         for (Iterator<Feld> iterator = teildatensatz.getFelder().iterator(); iterator.hasNext();) {
             Feld feld = iterator.next();
-            writeDetailsTo(xmlStreamWriter, feld, nr);
+            writeDetailsTo(xmlStreamWriter, feld, zeile, nr);
             nr++;
         }
         xmlStreamWriter.writeEndElement();
@@ -246,19 +257,21 @@ public final class HtmlFormatter extends AbstractFormatter {
         xmlStreamWriter.flush();
     }
 
-    private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Feld feld) throws XMLStreamException {
+    private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Feld feld, final int zeile)
+            throws XMLStreamException {
         String feldType = feld.getClass().getSimpleName();
-        xmlStreamWriter.writeStartElement("span");
+        xmlStreamWriter.writeStartElement("a");
         xmlStreamWriter.writeAttribute("class", feldType);
         xmlStreamWriter.writeAttribute("title", "Byte " + feld.getByteAdresse() + "-" + feld.getEndAdresse() + ": "
                 + feld.getBezeichnung());
+        xmlStreamWriter.writeAttribute("href", "#" + getAnchorFor(zeile, feld));
         String inhalt = feld.getInhalt();
         xmlStreamWriter.writeCharacters(inhalt);
         xmlStreamWriter.writeEndElement();
     }
 
-    private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Feld feld, final int nr)
-            throws XMLStreamException {
+    private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Feld feld, final int zeile,
+            final int nr) throws XMLStreamException {
         String typ = feld.getClass().getSimpleName();
         xmlStreamWriter.writeStartElement("tr");
         xmlStreamWriter.writeAttribute("class", typ);
@@ -266,6 +279,9 @@ public final class HtmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeCharacters(Integer.toString(nr));
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeStartElement("td");
+        xmlStreamWriter.writeStartElement("a");
+        xmlStreamWriter.writeAttribute("name", getAnchorFor(zeile, feld));
+        xmlStreamWriter.writeEndElement();
         if (feld.getAnzahlBytes() == 1) {
             xmlStreamWriter.writeCharacters(Integer.toString(feld.getByteAdresse()));
         } else {
@@ -283,6 +299,10 @@ public final class HtmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeCharacters("\n");
+    }
+
+    private static String getAnchorFor(final int zeile, final Feld feld) {
+        return "z" + zeile + "b" + feld.getByteAdresse();
     }
 
     /**
