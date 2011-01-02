@@ -79,6 +79,22 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
     }
 
     /**
+     * Ein sehr rudimentaerer Test fuer Sparte 10 (Leben).
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testSparte10() throws IOException {
+        VertragsspezifischerTeil leben = new VertragsspezifischerTeil(10);
+        StringWriter exported = new StringWriter();
+        leben.export(exported);
+        exported.close();
+        VertragsspezifischerTeil imported = new VertragsspezifischerTeil(10);
+        imported.importFrom(exported.toString());
+        assertEquals(leben, imported);
+    }
+
+    /**
      * Da inzwischen auch Sparte 30 (Unfall) unterstuetzt wird, sollte ein Import
      * dafuer kein Problem mehr sein.
      * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
@@ -108,6 +124,6 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
         vertragsteil.export(swriter);
         assertEquals(input, swriter.toString());
     }
-
+    
 }
 
