@@ -99,6 +99,9 @@ public class VertragsspezifischerTeil extends Spartensatz {
      */
     protected void setUpDatenfelder(final int sparte) {
         switch (sparte) {
+            case 10:
+                this.setUpDatenfelder10();
+                break;
             case 30:
                 this.setUpDatenfelder30();
                 break;
@@ -111,6 +114,73 @@ public class VertragsspezifischerTeil extends Spartensatz {
                 break;
         }
     }
+    
+    private void setUpDatenfelder10() {
+        this.setUpTeildatensatz10(1, this.getTeildatensatz(1));
+        this.setUpTeildatensatz10(2, this.getTeildatensatz(2));        
+    }
+    
+    private void setUpTeildatensatz10(final int n, final Teildatensatz tds) {
+        this.setUpTeildatensatz(tds);
+        switch(n) {
+            case 1:                     // Teildatensatz 1
+                tds.add(new Zeichen(KENNZEICHEN_VERTRAGSENTSTEHUNG, 43));
+                tds.add(new AlphaNumFeld(WAEHRUNGSSCHLUESSEL, 3, 44));
+                tds.add(new Zeichen(BEITRAGSDEPOT, 47));
+                tds.add(new Zeichen(RISIKOVERLAUF, 48));
+                tds.add(new Betrag(VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN, 12, 49));
+                tds.add(new NumFeld(VERKUERZTE_BEITRAGSZAHLUNGSDAUER, 2, 61));
+                tds.add(new Zeichen(BESONDERER_VERWENDUNGSZWECK, 63));
+                tds.add(new NumFeld(VERTRAGSFORM, 1, 64));
+                tds.add(new AlphaNumFeld(GRUPPENART, 40, 65));
+                tds.add(new AlphaNumFeld(NAME_MITVERSICHERTES_KIND, 20, 105));
+                tds.add(new NumFeld(ABSCHLUSSPROVISION, 5, 125));
+                tds.add(new Zeichen(KENNZEICHEN_ABWEICHENDE_ABSCHLUSSPROVISION, 130));
+                tds.add(new NumFeld(BESTANDSPFLEGEPROVISION, 5, 131));
+                tds.add(new Zeichen(KENNZEICHEN_ABWEICHENDE_BESTANDSPFLEGEPROVISION, 136));
+                tds.add(new AlphaNumFeld(ART_DES_DRITTRECHTS, 2, 137));
+                tds.add(new Betrag(AKTUELLE_BEITRAGSDEPOTSUMME_IN_WAEHRUNGSEINHEITEN, 12, 139).mitNachkommastellen(2));
+                tds.add(new NumFeld(ZAHLUNGSANFANG, 8, 151));
+                tds.add(new Zeichen(ZUZAHLUNGSRECHT, 159));
+                tds.add(new Betrag(ZUZAHLUNGSBETRAG_IN_WAEHRUNGSEINHEITEN, 12, 160).mitNachkommastellen(2));
+                tds.add(new Datum(ZUZAHLUNGSDATUM, 8, 172));
+                tds.add(new Betrag(ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 160).mitNachkommastellen(2));
+                tds.add(new Betrag(ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG, 12, 180).mitNachkommastellen(2));
+                tds.add(new Datum(BEITRAGSUMSTELLUNGSDATUM, 8, 193));
+                tds.add(new AlphaNumFeld(BEITRAGSUMSTELLUNGSGRUND, 2, 201));
+                tds.add(new AlphaNumFeld(REFERENZ_VERSICHERUNGSSCHEINNUMMER_1, 17, 203));
+                tds.add(new AlphaNumFeld(REFERENZ_VERSICHERUNGSSCHEINNUMMER_2, 17, 220));
+                tds.add(new AlphaNumFeld(REFERENZ_VERSICHERUNGSSCHEINNUMMER_3, 17, 237));
+                tds.add(new Zeichen(WEITERE_REFERENZNUMMERN, 254));
+                tds.add(new AlphaNumFeld(LEERSTELLEN, 1, 255));
+                break;
+            case 2:                     // Teildatensatz 2
+                tds.add(new Zeichen(BETRIEBLICHE_ALTERSVORSORGE, 43));
+                tds.add(new Zeichen(UNVERFALLBARKEIT, 44));
+                tds.add(new Datum(DIENSTEINTRITTSDATUM, 8, 45));
+                tds.add(new NumFeld(BILANZMONAT_ARBEITGEBER, 2, 53));
+                tds.add(new AlphaNumFeld(PRODUKTBESCHREIBUNG, 30, 55));
+                tds.add(new Zeichen(KAPITALERTRAGSTEUERPFLICHT, 85));
+                tds.add(new AlphaNumFeld(PRODUKTFORM, 5, 86));
+                tds.add(new Datum(PRODUKTFORM_GUELTIG_AB, 6, 91));
+                tds.add(new AlphaNumFeld(PRODUKTNAME, 20, 97));
+                // Betriebliche und private Altersversorgung
+                tds.add(new Zeichen(ART_DER_STEUERLICHEN_FOERDERUNG, 117));
+                tds.add(new Zeichen(FINANZIERUNGSART, 118));
+                tds.add(new Zeichen(DURCHFUEHRUNGSART, 119));
+                tds.add(new Zeichen(FINANZIERUNG_ZUSAGE, 120));
+                tds.add(new AlphaNumFeld(UNTERSTUETZUNGSKASSE_SCHLUESSEL, 4, 121));
+                tds.add(new AlphaNumFeld(UNTERSTUETZUNGSKASSE_NAME, 40, 125));
+                tds.add(new AlphaNumFeld(TRAEGERUNTERNEHMEN_SCHLUESSEL, 4, 165));
+                tds.add(new AlphaNumFeld(TRAEGERUNTERNEHMEN_NAME, 40, 169));
+                tds.add(new AlphaNumFeld(KOLLEKTIV_NR, 15, 209));
+                tds.add(new AlphaNumFeld(LEERSTELLEN, 32, 224));
+                break;
+            default:
+                throw new IllegalArgumentException("unbekannter Teildatensatz-Nr.: " + n);
+        }
+    }
+
 
     private void setUpDatenfelder30() {
         // Teildatensatz 1

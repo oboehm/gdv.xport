@@ -56,6 +56,7 @@
           voll unterst&#252;tzt werden:
         </p>
         <ul>
+          <li>0210.010 Leben</li>
           <li>0210.030 Unfall</li>
           <li>0210.070 Rechtsschutz</li>
         </ul>
@@ -66,7 +67,7 @@
       <subsection name="0220 Spartenspezifischer Teil">
         <p>
           Es werden die gleichen Unterarten wie f&#252;r Satzart 0210
-          unterst&#252;tzt.
+          unterst&#252;tzt (Ausnahme: Sparte 10).
         </p>
       </subsection>
     </section>

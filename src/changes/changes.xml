@@ -19,6 +19,9 @@
 
     <release version="0.5.0-SNAPSHOT" date="2011"
              description="HTML-Support, Support f&#252;r Satzart 221">
+      <action dev="oboehm" type="add" date="21-Dez-2009" >
+        Satz 0210.010 (Sparte Leben) wird jetzt direkt unterst&#252;tzt.
+      </action>
       <action dev="oboehm" type="update" date="29-Nov-2010" >
         Dokumentation erg&#228;nzt.
       </action>
