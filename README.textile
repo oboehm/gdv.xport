@@ -1,12 +1,12 @@
 h1. Was ist gdv.xport?
 
-gdv.xport ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert. Sie vereinfacht den Export und Import dieses Datenformats und ermöglicht die Validierung der verschiedenen Datensätze.
+gdv.xport ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert. Sie vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung der verschiedenen Datensaetze.
 
 Das "x" in port steht fur "im"- und "ex"-port. Die Bibliothek ist Open Source und steht unter der Apache License.
 
-h2. Ähnliche Projekte
+h2. Aehnliche Projekte
 
-Für Ruby gibt es "OpenGDV":https://github.com/vendis/opengdv/, einer Open-Source-Bibliothek, die unter der MIT-License steht.
+Fuer Ruby gibt es "OpenGDV":https://github.com/vendis/opengdv/, einer Open-Source-Bibliothek, die unter der MIT-License steht.
 
 h2. Weitere Infos
 
