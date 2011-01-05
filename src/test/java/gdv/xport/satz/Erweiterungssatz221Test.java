@@ -32,14 +32,14 @@ import org.apache.commons.logging.*;
 import org.junit.*;
 
 /**
- * JUnit-Test fuer Erweiterungssatz.
+ * JUnit-Test fuer Erweiterungssatz221.
  * 
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.5.0 (18.11.2010)
  */
-public final class ErweiterungssatzTest extends AbstractSatzTest {
+public final class Erweiterungssatz221Test extends AbstractSatzTest {
     
-    private static final Log log = LogFactory.getLog(ErweiterungssatzTest.class);
+    private static final Log log = LogFactory.getLog(Erweiterungssatz221Test.class);
 
     /**
      * Der Lesbarkeit halber aktivieren wir das Zeilenende fuer jeden
@@ -51,11 +51,11 @@ public final class ErweiterungssatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.satz.Erweiterungssatz#Erweiterungssatz(int)}.
+     * Test method for {@link Erweiterungssatz221#Erweiterungssatz221(int)}.
      */
     @Test
-    public void testSpartenspezifischerTeil70() {
-        Erweiterungssatz rechtschutz = new Erweiterungssatz(70);
+    public void testSparte70() {
+        Erweiterungssatz221 rechtschutz = new Erweiterungssatz221(70);
         log.info(rechtschutz + " created.");
         assertEquals(70, rechtschutz.getSparte());
     }
@@ -98,7 +98,7 @@ public final class ErweiterungssatzTest extends AbstractSatzTest {
 
     private void checkWagnisdaten(String input) throws IOException {
         assertEquals(257, input.length());
-        Erweiterungssatz wagnisdaten = new Erweiterungssatz(30);
+        Erweiterungssatz221 wagnisdaten = new Erweiterungssatz221(30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }
@@ -115,7 +115,7 @@ public final class ErweiterungssatzTest extends AbstractSatzTest {
         try {
             Datenpaket datenpaket = new Datenpaket();
             datenpaket.importFrom(istream);
-            Erweiterungssatz erweiterungssatz = (Erweiterungssatz) datenpaket.getDatensaetze().get(0);
+            Erweiterungssatz221 erweiterungssatz = (Erweiterungssatz221) datenpaket.getDatensaetze().get(0);
             Feld lfdNummer = erweiterungssatz.getFeld(LFD_NUMMER_VP_PERSONENGRUPPE);
             assertEquals("000001", lfdNummer.getInhalt());
         } finally {

@@ -29,7 +29,7 @@
         HtmlFormatter f&#252;r die HTML-Ausgabe hinzugef&#252;gt.
       </action>
       <action dev="oboehm" type="add" date="18-Nov-2010">
-        Unterst&#252;tzung f&#252;r Satzart 221 (Erweiterungssatz).
+        Unterst&#252;tzung f&#252;r Satzart 211 und 221 (Erweiterungssatz).
       </action>
       <action dev="oboehm" type="update" date="4-Aug-2010" >
         Eigenes Logo erstellt.

@@ -29,17 +29,17 @@ import org.apache.commons.logging.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.5.0 (18.11.2010)
  */
-public class Erweiterungssatz extends Spartensatz {
+public class Erweiterungssatz221 extends Spartensatz {
     
     /** 221 Erweiterungssatz. */
     public static final int SATZART = 221;
 
-    private static final Log log = LogFactory.getLog(Erweiterungssatz.class);
+    private static final Log log = LogFactory.getLog(Erweiterungssatz221.class);
 
     /**
      * Dieser Konstruktor wird fuer die SatzFactory benoetigt.
      */
-    public Erweiterungssatz() {
+    public Erweiterungssatz221() {
         super(SATZART);
     }
 
@@ -48,7 +48,7 @@ public class Erweiterungssatz extends Spartensatz {
      * 
      * @param sparte z.B. 70 (Rechtsschutz)
      */
-    public Erweiterungssatz(final int sparte) {
+    public Erweiterungssatz221(final int sparte) {
         this(sparte, getNumberOfTeildatensaetzeFor(sparte));
     }
 
@@ -58,7 +58,7 @@ public class Erweiterungssatz extends Spartensatz {
      * @param sparte z.B. 70 (Rechtsschutz)
      * @param n Anzahl Teildatensaetze
      */
-    public Erweiterungssatz(final int sparte, final int n) {
+    public Erweiterungssatz221(final int sparte, final int n) {
         super(SATZART, sparte, n);
         this.setUpDatenfelder(sparte);
     }

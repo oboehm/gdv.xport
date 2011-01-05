@@ -40,8 +40,9 @@
         <li>0100 Adressteil</li>
         <li>0200 AllgemeinerVertragsteil</li>
         <li>0210 VertragsspezifischerTeil</li>
+        <li>0211 Erweiterungssatz211</li>
         <li>0220 SpartenspezifischerTeil</li>
-        <li>0221 Erweiterungssatz</li>
+        <li>0221 Erweiterungssatz221</li>
         <li>9999 Nachsatz</li>
       </ul>
       <p>
@@ -52,8 +53,8 @@
       </p>
       <subsection name="0210 Vertragsspezifischer Teil">
         <p>
-          Die Satzart 0210 unterteilt in mehrere Unterarten, von denen folgende
-          voll unterst&#252;tzt werden:
+          Die Satzart 0210 ist unterteilt in mehrere Unterarten, von denen folgende
+          direkt unterst&#252;tzt werden:
         </p>
         <ul>
           <li>0210.010 Leben</li>
@@ -64,10 +65,42 @@
           Die anderen Satzarten 0210.xxx werden nur teilweise unterst&#252;tzt.
         </p>
       </subsection>
+      <subsection name="0211 Erweiterungssatz">
+        <p>
+          Die Satzart 0211 ist unterteilt in mehrere Unterarten, von denen folgende
+          direkt unterst&#252;tzt werden:
+        </p>
+        <ul>
+          <li>0211.010 Leben</li>
+        </ul>
+        <p>
+          Die anderen Satzarten 0211.xxx werden nur teilweise unterst&#252;tzt.
+        </p>
+      </subsection>
       <subsection name="0220 Spartenspezifischer Teil">
         <p>
-          Es werden die gleichen Unterarten wie f&#252;r Satzart 0210
-          unterst&#252;tzt (Ausnahme: Sparte 10).
+          Die Satzart 0220 ist unterteilt in mehrere Unterarten, von denen folgende
+          direkt unterst&#252;tzt werden:
+        </p>
+        <ul>
+          <li>0220.030 Unfall</li>
+          <li>0220.070 Rechtsschutz</li>
+        </ul>
+        <p>
+          Die anderen Satzarten 0220.xxx werden nur teilweise unterst&#252;tzt.
+        </p>
+      </subsection>
+      <subsection name="0221 Erweiterungssatz">
+        <p>
+          Die Satzart 0221 ist unterteilt in mehrere Unterarten, von denen folgende
+          direkt unterst&#252;tzt werden:
+        </p>
+        <ul>
+          <li>0221.030 Unfall</li>
+          <li>0221.070 Rechtsschutz</li>
+        </ul>
+        <p>
+          Die anderen Satzarten 0221.xxx werden nur teilweise unterst&#252;tzt.
         </p>
       </subsection>
     </section>
