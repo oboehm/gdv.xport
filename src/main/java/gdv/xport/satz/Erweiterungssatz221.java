@@ -115,6 +115,7 @@ public class Erweiterungssatz221 extends Spartensatz {
                 break;
             default:
                 log.warn("Sparte " + sparte + " not yet fully supported");
+                this.setUpTeildatensaetze();
                 this.addFiller();
                 break;
         }

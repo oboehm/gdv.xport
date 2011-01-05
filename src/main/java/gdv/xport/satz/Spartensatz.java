@@ -19,7 +19,6 @@ package gdv.xport.satz;
 
 import org.apache.commons.logging.*;
 
-// TODO: Auto-generated Javadoc
 /**
  * Dies ist eine gemeinsame Oberklasse aller Datensaetze, die mehrere Sparten
  * aufnehmen koennen.

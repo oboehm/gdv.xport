@@ -103,14 +103,14 @@ public class Erweiterungssatz211 extends Spartensatz {
                 break;
             default:
                 log.warn("Sparte " + sparte + " not yet fully supported");
+                this.setUpTeildatensatz(1);
                 this.addFiller();
                 break;
         }
     }
     
     private void setUpDatenfelder10() {
-        Teildatensatz tds = this.getTeildatensatz(1);
-        this.setUpTeildatensatz(tds);
+        this.setUpTeildatensatz(1);
         this.add(new NumFeld(VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN, 14, 43).mitNachkommastellen(2));
         this.add(new NumFeld(ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 57).mitNachkommastellen(2));
         this.add(new AlphaNumFeld(LEERSTELLEN, 187, 69));

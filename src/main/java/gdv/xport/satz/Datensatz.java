@@ -32,17 +32,17 @@ import gdv.xport.feld.*;
 public class Datensatz extends Satz {
 
     /** 5 Zeichen, Byte 5 - 9 */
-    protected VUNummer vuNummer = new VUNummer(Config.getVUNummer(), 5);
+    protected final VUNummer vuNummer = new VUNummer(Config.getVUNummer(), 5);
     /** 1 Zeichen, Byte 10 */
-    protected AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(BUENDELUNGSKENNZEICHEN, 1, 10);
+    protected final AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(BUENDELUNGSKENNZEICHEN, 1, 10);
     /** 3 Zeichen, Byte 11 - 13 */
-    protected NumFeld sparte = new NumFeld(SPARTE, 3, 11);
+    protected final NumFeld sparte = new NumFeld(SPARTE, 3, 11);
     /** 17 Zeichen, Byte 14 - 30 */
-    protected AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(VERSICHERUNGSSCHEINNUMMER, 17, 14);
+    protected final AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(VERSICHERUNGSSCHEINNUMMER, 17, 14);
     /** 2 Zeichen, Byte 31 + 32 */
-    protected NumFeld folgeNr = new NumFeld(FOLGENUMMER, 2, 31);
+    protected final NumFeld folgeNr = new NumFeld(FOLGENUMMER, 2, 31);
     /** 10 Zeichen, Byte 33 - 42 */
-    protected AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 33);
+    protected final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 33);
 
     /**
      * @param satzart z.B. "0100"
@@ -110,6 +110,15 @@ public class Datensatz extends Satz {
         tds.add(this.versicherungsscheinNr);
         tds.add(this.folgeNr);
         tds.add(this.vermittler);
+    }
+    
+    /**
+     * Hiermit kann ein einzelner Teildatensatz aufgesetzt werden.
+     * @since 0.5
+     * @param n Nummer des Teildatensatzes (beginnend bei 1)
+     */
+    protected void setUpTeildatensatz(final int n) {
+        this.setUpTeildatensatz(this.getTeildatensatz(n));
     }
 
     /* (non-Javadoc)

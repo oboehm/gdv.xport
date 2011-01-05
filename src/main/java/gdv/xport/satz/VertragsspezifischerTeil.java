@@ -24,9 +24,10 @@ import gdv.xport.feld.*;
 import org.apache.commons.logging.*;
 
 /**
+ * Klasse fuer die Satzart 0210.
+ * 
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (28.10.2009)
- *
  */
 public class VertragsspezifischerTeil extends Spartensatz {
 
@@ -110,6 +111,7 @@ public class VertragsspezifischerTeil extends Spartensatz {
                 break;
             default:
                 log.warn("Sparte " + sparte + " not yet fully supported");
+                this.setUpTeildatensaetze();
                 this.addFiller();
                 break;
         }
@@ -183,6 +185,7 @@ public class VertragsspezifischerTeil extends Spartensatz {
 
 
     private void setUpDatenfelder30() {
+        this.setUpTeildatensatz(1);
         // Teildatensatz 1
         add(new Zeichen(VERTRAGSSTATUS, 43));
         add(new Datum(BEGINN, 44));
@@ -217,6 +220,7 @@ public class VertragsspezifischerTeil extends Spartensatz {
     }
 
     private void setUpDatenfelder70() {
+        this.setUpTeildatensatz(1);
         // Teildatensatz 1
         add(new Zeichen(VERTRAGSSTATUS, 43));
         add(new Datum(BEGINN, 44));
