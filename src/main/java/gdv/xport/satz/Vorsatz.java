@@ -99,6 +99,9 @@ public final class Vorsatz extends Satz {
                 tds.add(new AlphaNumFeld(PRODUKTSPEZIFISCHE_STAMMDATEN, 3, 243));
                 tds.add(new AlphaNumFeld(LEERSTELLEN, 10, 246));
                 break;
+            default:
+                log.debug("no special setup for Teildatensatz " + n);
+                break;
         }
     }
 
@@ -211,7 +214,7 @@ public final class Vorsatz extends Satz {
                 addVersion(tds, 220, 580, 237, "   ");
                 break;
             default:
-                throw new IllegalArgumentException("unbekannter Teildatensatz-Nr.: " + n);
+                throw new IllegalArgumentException("unbekannte Teildatensatz-Nr.: " + n);
         }
     }
 

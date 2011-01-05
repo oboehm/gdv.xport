@@ -55,6 +55,7 @@ public final class Main {
      *             falls bei der XML-Generierung was schief gelaufen ist.
      */
     public static void main(final String[] args) throws IOException, XMLStreamException {
+        OutputStream ostream = System.out;
         Options options = createOptions();
         CommandLineParser parser = new GnuParser();
         try {
@@ -89,9 +90,8 @@ public final class Main {
                         formatter = new HtmlFormatter();
                     }
                 }
-                formatter.setWriter(file);
-            } else {
-                formatter.setWriter(System.out);
+                ostream = new FileOutputStream(file);
+                formatter.setWriter(ostream);
             }
             formatter.write(datenpaket);
             // Option "-validate"
@@ -103,6 +103,8 @@ public final class Main {
             System.err.println("Fehler beim Aufruf von " + Main.class);
             printHelp(options);
             System.exit(1);
+        } finally {
+            ostream.close();
         }
     }
 

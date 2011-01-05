@@ -41,10 +41,14 @@ public abstract class AbstractFormatter {
 
     /**
      * Lenkt den Ausgabekanal auf die uebergebene Datei.
+     * <i>Bitte nicht mehr verwenden, da sonst diese Methode auch fuer das
+     * Schliessen des OutputStreams verantwortlich waere. Das kann sie aber
+     * nicht!</i>
      *
      * @param file Ausgabedatei
      * @throws IOException Signals that an I/O exception has occurred.
      */
+    @Deprecated
     public void setWriter(final File file) throws IOException {
         OutputStream ostream = new FileOutputStream(file);
         setWriter(ostream);

@@ -155,7 +155,7 @@ public class Erweiterungssatz extends Spartensatz {
                 tds.add(new NumFeld(LFD_NUMMER_VP_PERSONENGRUPPE, 6, 251));
                 break;
             default:
-                throw new IllegalArgumentException("unbekannter Teildatensatz-Nr.: " + n);
+                throw new IllegalArgumentException("unbekannte Teildatensatz-Nr.: " + n);
         }
     }
 
@@ -184,7 +184,7 @@ public class Erweiterungssatz extends Spartensatz {
                 tds.add(new AlphaNumFeld(LEERSTELLEN, 136, 121));
                 break;
             default:
-                throw new IllegalArgumentException("unbekannter Teildatensatz-Nr.: " + n);
+                throw new IllegalArgumentException("unbekannte Teildatensatz-Nr.: " + n);
         }
     }
 

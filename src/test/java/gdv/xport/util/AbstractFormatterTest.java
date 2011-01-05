@@ -50,14 +50,21 @@ public abstract class AbstractFormatterTest extends AbstractTest {
             throws IOException, XMLStreamException {
         Datenpaket datenpaket = new Datenpaket();
         InputStream istream = AbstractFormatterTest.class.getResourceAsStream("/musterdatei_041222.txt");
-        datenpaket.importFrom(istream);
-        istream.close();
         File siteDir = new File("target", "site");
-        siteDir.mkdirs();
+        if (siteDir.mkdirs()) {
+            log.info("created: " + siteDir);
+        }
         File exportFile = new File(siteDir, filename);
-        formatter.setWriter(exportFile);
-        formatter.write(datenpaket);
-        log.info(datenpaket + " exported to " + exportFile);
+        OutputStream ostream = new FileOutputStream(exportFile);
+        try {
+            datenpaket.importFrom(istream);
+            formatter.setWriter(ostream);
+            formatter.write(datenpaket);
+            log.info(datenpaket + " exported to " + exportFile);
+        } finally {
+            istream.close();
+            ostream.close();
+        }
     }
 
     /**

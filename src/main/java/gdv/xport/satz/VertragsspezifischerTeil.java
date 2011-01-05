@@ -177,7 +177,7 @@ public class VertragsspezifischerTeil extends Spartensatz {
                 tds.add(new AlphaNumFeld(LEERSTELLEN, 32, 224));
                 break;
             default:
-                throw new IllegalArgumentException("unbekannter Teildatensatz-Nr.: " + n);
+                throw new IllegalArgumentException("unbekannte Teildatensatz-Nr.: " + n);
         }
     }
 
