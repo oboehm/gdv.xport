@@ -26,6 +26,7 @@ import java.io.IOException;
 
 import javax.xml.stream.XMLStreamException;
 
+import org.apache.commons.logging.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
@@ -40,6 +41,8 @@ import patterntesting.runtime.junit.SmokeRunner;
  */
 @RunWith(SmokeRunner.class)
 public class XmlFormatterTest extends AbstractFormatterTest {
+    
+    private static final Log log = LogFactory.getLog(XmlFormatterTest.class);
 
     /**
      * Test method for {@link gdv.xport.util.XmlFormatter#write(gdv.xport.feld.Feld)}.

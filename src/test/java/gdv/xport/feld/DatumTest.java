@@ -40,6 +40,7 @@ import patterntesting.concurrent.junit.ParallelRunner;
 @RunWith(ParallelRunner.class)
 public class DatumTest {
 
+    /** The Constant log. */
     private static final Log log = LogFactory.getLog(DatumTest.class);
 
     /**
@@ -53,6 +54,9 @@ public class DatumTest {
         assertEquals(today, datum.toDate());
     }
 
+    /**
+     * Test to date.
+     */
     @Test(expected = IllegalStateException.class)
     public void testToDate() {
         Datum silvester = new Datum("Silvester", "31122009");
@@ -61,6 +65,9 @@ public class DatumTest {
         log.info("invalid date: " + invalid.toDate());
     }
 
+    /**
+     * Test is valid.
+     */
     @Test
     public void testIsValid() {
         Datum xmas = new Datum("Xmas", "24122009");
@@ -68,22 +75,36 @@ public class DatumTest {
         assertEquals(0, xmas.validate().size());
     }
 
+    /**
+     * Test validate empty datum.
+     */
     @Test
     public void testValidateEmptyDatum() {
         Datum empty = new Datum();
         assertTrue(empty + " should be valid", empty.isValid());
     }
 
+    /**
+     * Test is invalid.
+     */
     @Test
     public void testIsInvalid() {
         checkInvalidDatum("xxxxxxxx");
     }
 
+    /**
+     * Test invalid datum.
+     */
     @Test
     public void testInvalidDatum() {
         checkInvalidDatum("29022009");
     }
 
+    /**
+     * Check invalid datum.
+     *
+     * @param mmddjjjj the mmddjjjj
+     */
     private void checkInvalidDatum(final String mmddjjjj) {
         Datum datum = new Datum("Test-Datum", mmddjjjj);
         assertTrue(datum + " is not a valid date!", datum.isInvalid());
@@ -105,11 +126,17 @@ public class DatumTest {
         checkDatum("112009");
     }
 
+    /**
+     * Test datum mmjj.
+     */
     @Test
     public void testDatumMMJJ() {
         checkDatum("1109");
     }
 
+    /**
+     * Test datum tt.
+     */
     @Test
     public void testDatumTT() {
         checkDatum("30");
@@ -129,12 +156,20 @@ public class DatumTest {
         checkDatum("00002009");
     }
 
+    /**
+     * Check datum.
+     *
+     * @param inhalt the inhalt
+     */
     private static void checkDatum(final String inhalt) {
         Datum datum = new Datum("Test-Datum", inhalt);
         assertEquals(inhalt, datum.getInhalt());
         assertTrue(datum + " should be a valid date", datum.isValid());
     }
 
+    /**
+     * Test is empty.
+     */
     @Test
     public void testIsEmpty() {
         Datum empty = new Datum("empty", "00000000");

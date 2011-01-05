@@ -103,7 +103,9 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @param beitrag
+     * Setzt den Gesamtbeitrag.
+     *
+     * @param beitrag der neue Gesamtbeitrag
      */
     public void setGesamtBeitrag(final double beitrag) {
         this.gesamtBeitrag.setInhalt(beitrag);

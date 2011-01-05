@@ -31,20 +31,22 @@ import gdv.xport.feld.*;
  */
 public class Datensatz extends Satz {
 
-    /** 5 Zeichen, Byte 5 - 9 */
+    /** 5 Zeichen, Byte 5 - 9. */
     protected final VUNummer vuNummer = new VUNummer(Config.getVUNummer(), 5);
-    /** 1 Zeichen, Byte 10 */
+    /** 1 Zeichen, Byte 10. */
     protected final AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(BUENDELUNGSKENNZEICHEN, 1, 10);
-    /** 3 Zeichen, Byte 11 - 13 */
+    /** 3 Zeichen, Byte 11 - 13. */
     protected final NumFeld sparte = new NumFeld(SPARTE, 3, 11);
-    /** 17 Zeichen, Byte 14 - 30 */
+    /** 17 Zeichen, Byte 14 - 30. */
     protected final AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(VERSICHERUNGSSCHEINNUMMER, 17, 14);
-    /** 2 Zeichen, Byte 31 + 32 */
+    /** 2 Zeichen, Byte 31 + 32. */
     protected final NumFeld folgeNr = new NumFeld(FOLGENUMMER, 2, 31);
-    /** 10 Zeichen, Byte 33 - 42 */
+    /** 10 Zeichen, Byte 33 - 42. */
     protected final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 33);
 
     /**
+     * Instantiiert einen neuen Datensatz.
+     * 
      * @param satzart z.B. "0100"
      */
     public Datensatz(final String satzart) {
@@ -53,6 +55,8 @@ public class Datensatz extends Satz {
     }
 
     /**
+     * Instantiiert einen neuen Datensatz.
+     * 
      * @param satzart z.B. 100
      */
     public Datensatz(final int satzart) {
@@ -61,6 +65,8 @@ public class Datensatz extends Satz {
     }
 
     /**
+     * Instantiiert einen neuen Datensatz.
+     * 
      * @param satzart z.B. 100
      * @param n Anzahl der Teildatensaetze
      */
@@ -70,6 +76,8 @@ public class Datensatz extends Satz {
     }
 
     /**
+     * Instantiiert einen neuen Datensatz.
+     * 
      * @param satzart z.B. 100
      * @param sparte z.B. 70 (Rechtsschutz)
      */
@@ -78,6 +86,8 @@ public class Datensatz extends Satz {
     }
 
     /**
+     * Instantiiert einen neuen Datensatz.
+     * 
      * @param satzart z.B. 100
      * @param sparte z.B. 70 (Rechtsschutz)
      * @param n Anzahl der Teildatensaetze

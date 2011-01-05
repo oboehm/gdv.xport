@@ -18,14 +18,12 @@
 
 package gdv.xport.util;
 
+import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 import static org.junit.Assert.*;
-import static gdv.xport.feld.Bezeichner.*;
-
-import java.io.IOException;
-
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
-import gdv.xport.util.SatzFactory;
+
+import java.io.IOException;
 
 import org.junit.Test;
 
@@ -154,7 +152,8 @@ public final class SatzFactoryTest extends AbstractTest {
         checkGetDatensatz(221, 30, Erweiterungssatz221.class, "2");
     }
 
-    private static void checkGetDatensatz(final int satzart, final int sparte, final Class<? extends Datensatz> clazz, final String satzNr) {
+    private static void checkGetDatensatz(final int satzart, final int sparte, final Class<? extends Datensatz> clazz,
+            final String satzNr) {
         Datensatz datensatz = SatzFactory.getDatensatz(satzart, sparte);
         assertEquals(clazz, datensatz.getClass());
         assertEquals(satzart, datensatz.getSatzart());

@@ -25,6 +25,7 @@ import java.io.*;
 
 import javax.xml.stream.XMLStreamException;
 
+import org.apache.commons.logging.*;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
@@ -35,6 +36,8 @@ import org.xml.sax.SAXException;
  * @since 0.5.0 (23.11.2010)
  */
 public class HtmlFormatterTest extends AbstractFormatterTest {
+    
+    private static final Log log = LogFactory.getLog(HtmlFormatter.class);
     
     /**
      * Tested den Export eines Datenpakets als HTML.

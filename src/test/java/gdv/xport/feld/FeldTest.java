@@ -30,13 +30,14 @@ import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
+ * JUnit-Test fuer die Feld-Klasse.
+ *
  * @author oliver
  * @since 05.10.2009
- * @version $Revision$
- *
  */
 public class FeldTest {
 
+    /** The Constant log. */
     private static final Log log = LogFactory.getLog(FeldTest.class);
 
     /**
@@ -49,6 +50,9 @@ public class FeldTest {
         assertEquals("   ", feld.getInhalt());
     }
 
+    /**
+     * Test set inhalt.
+     */
     @Test
     public void testSetInhalt() {
         Feld linksbuendig = new Feld("f1", "hello", Align.LEFT);
@@ -59,12 +63,18 @@ public class FeldTest {
         assertEquals("   hi", rechtsbuendig.getInhalt());
     }
 
+    /**
+     * Test feld.
+     */
     @Test
     public void testFeld() {
         Feld zeichen = new Feld("Testfeld", 1, 1, 'x', Align.LEFT);
         assertEquals("x", zeichen.getInhalt());
     }
 
+    /**
+     * Test overlaps with.
+     */
     @Test
     public void testOverlapsWith() {
         Feld a = new Feld("a", 2, 1, Align.LEFT);    // Byte 1-2
@@ -77,6 +87,9 @@ public class FeldTest {
         assertTrue(c + " doesn't overlap with " + b, c.overlapsWith(b));
     }
 
+    /**
+     * Test is valid.
+     */
     @Test
     public void testIsValid() {
         Feld a = new Feld("a", 257, -1, Align.UNKNOWN);
@@ -87,6 +100,9 @@ public class FeldTest {
         assertTrue(c + " should be valid", c.isValid());
     }
 
+    /**
+     * Test validate.
+     */
     @Test
     public void testValidate() {
         Feld a = new Feld("a", 10, -1, Align.UNKNOWN);
@@ -97,6 +113,9 @@ public class FeldTest {
         assertEquals(2, violations.size());
     }
 
+    /**
+     * Test equals.
+     */
     @Test
     public void testEquals() {
         Feld a = new Feld("x", 2, 1, Align.LEFT);
@@ -108,9 +127,3 @@ public class FeldTest {
     }
 
 }
-
-
-/*
- * $Log$
- * $Source$
- */

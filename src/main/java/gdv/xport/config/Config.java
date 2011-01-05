@@ -41,6 +41,7 @@ public final class Config {
     public static final Charset DEFAULT_ENCODING = Charset.forName("ISO-8859-1");
     /** Fals VUNummer nicht gesetzt ist, wird dies als Dummy eingesetzt. */
     public static final String DUMMY_VU_NUMMER = "DUMMY";
+    /** Property-Name fuer die VU-Nummer */
     public static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
     private static final Log log = LogFactory.getLog(Config.class);
     private static VUNummer vunummer;

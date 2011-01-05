@@ -20,71 +20,79 @@ package gdv.xport.satz;
 import org.apache.commons.logging.*;
 
 /**
- * Dies ist eine gemeinsame Oberklasse aller Datensaetze, die mehrere Sparten
- * aufnehmen koennen.
+ * Dies ist eine gemeinsame Oberklasse aller Datensaetze, die mehrere Sparten aufnehmen koennen.
  * 
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.5.0 (22.11.2010)
  */
 public abstract class Spartensatz extends Datensatz {
-    
+
     /** The Constant log. */
     private static final Log log = LogFactory.getLog(Spartensatz.class);
 
     /**
      * Instantiates a new spartensatz.
-     *
-     * @param satzart the satzart
+     * 
+     * @param satzart
+     *            the satzart
      */
-    public Spartensatz(String satzart) {
+    public Spartensatz(final String satzart) {
         super(satzart);
     }
 
     /**
      * Instantiates a new spartensatz.
-     *
-     * @param satzart the satzart
+     * 
+     * @param satzart
+     *            the satzart
      */
-    public Spartensatz(int satzart) {
+    public Spartensatz(final int satzart) {
         super(satzart);
     }
 
     /**
      * Instantiates a new spartensatz.
-     *
-     * @param satzart the satzart
-     * @param n the n
+     * 
+     * @param satzart
+     *            the satzart
+     * @param n
+     *            the n
      */
-    public Spartensatz(String satzart, int n) {
+    public Spartensatz(final String satzart, final int n) {
         super(satzart, n);
     }
 
     /**
      * Instantiates a new spartensatz.
-     *
-     * @param satzart the satzart
-     * @param sparte the sparte
+     * 
+     * @param satzart
+     *            the satzart
+     * @param sparte
+     *            the sparte
      */
-    public Spartensatz(int satzart, int sparte) {
+    public Spartensatz(final int satzart, final int sparte) {
         super(satzart, sparte);
     }
 
     /**
      * Instantiates a new spartensatz.
-     *
-     * @param satzart the satzart
-     * @param sparte the sparte
-     * @param n the n
+     * 
+     * @param satzart
+     *            the satzart
+     * @param sparte
+     *            the sparte
+     * @param n
+     *            the n
      */
-    public Spartensatz(int satzart, int sparte, int n) {
+    public Spartensatz(final int satzart, final int sparte, final int n) {
         super(satzart, sparte, n);
     }
 
     /**
-     * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
-     * Teildatensaetze aufsetzen.
-     *
-     * @param x Sparte (z.B. 30)
+     * Abhaengig von der Sparte muessen wir hier noch die verschiedenen Teildatensaetze aufsetzen.
+     * 
+     * @param x
+     *            Sparte (z.B. 30)
      * @see gdv.xport.satz.Datensatz#setSparte(int)
      */
     @Override
@@ -97,20 +105,21 @@ public abstract class Spartensatz extends Datensatz {
         this.setUpTeildatensaetze();
         this.setUpDatenfelder(x);
     }
-    
+
     /**
-     * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene
-     * Sparte an.
-     *
-     * @param x Sparte (z.B. 30)
+     * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene Sparte an.
+     * 
+     * @param x
+     *            Sparte (z.B. 30)
      */
-    abstract protected void createTeildatensaetzeFor(final int x);
-    
+    protected abstract void createTeildatensaetzeFor(final int x);
+
     /**
      * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
-     *
-     * @param x Sparte (z.B. 30)
+     * 
+     * @param x
+     *            Sparte (z.B. 30)
      */
-    abstract protected void setUpDatenfelder(final int x);
+    protected abstract void setUpDatenfelder(final int x);
 
 }

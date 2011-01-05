@@ -18,15 +18,13 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
-
-import static gdv.xport.feld.Bezeichner.*;
-
-import java.io.*;
-
+import static gdv.xport.feld.Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE;
+import static org.junit.Assert.assertEquals;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
+
+import java.io.*;
 
 import org.apache.commons.logging.*;
 import org.junit.*;
@@ -38,12 +36,11 @@ import org.junit.*;
  * @since 0.5.0 (18.11.2010)
  */
 public final class Erweiterungssatz221Test extends AbstractSatzTest {
-    
+
     private static final Log log = LogFactory.getLog(Erweiterungssatz221Test.class);
 
     /**
-     * Der Lesbarkeit halber aktivieren wir das Zeilenende fuer jeden
-     * exportierten Satz.
+     * Der Lesbarkeit halber aktivieren wir das Zeilenende fuer jeden exportierten Satz.
      */
     @BeforeClass
     public static void setUpBeforeClass() {
@@ -61,53 +58,49 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
     }
 
     /**
-     * Hier wird der Teildatensatz 2 der Sparte 30 (Rechtschutz) getestet.
-     * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
-     *
+     * Hier wird der Teildatensatz 2 der Sparte 30 (Rechtschutz) getestet. Der Test-Input dazu stammt von der
+     * musterdatei_041222.txt von gdv-online.
+     * 
      * @throws IOException
-     *             sollte eigentlich nicht vorkommen, da wir von einem String
-     *             importieren
+     *             sollte eigentlich nicht vorkommen, da wir von einem String importieren
      */
     @Test
     public void testSparte30Teildatensatz2() throws IOException {
         String input = "02219999  030      599999999990199990099990000012000000050000000"
-            + "0000025000000000000000000000000000000000000000000000000000000000"
-            + "0000000000000000000000000000000000000000000000000000010000000000"
-            + "000000000                                                      X"
-            + "\n";
+                + "0000025000000000000000000000000000000000000000000000000000000000"
+                + "0000000000000000000000000000000000000000000000000000010000000000"
+                + "000000000                                                      X" + "\n";
         checkWagnisdaten(input);
     }
 
     /**
-     * Hier wird der Teildatensatz 3 der Sparte 30 (Rechtschutz) getestet.
-     * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
-     *
+     * Hier wird der Teildatensatz 3 der Sparte 30 (Rechtschutz) getestet. Der Test-Input dazu stammt von der
+     * musterdatei_041222.txt von gdv-online.
+     * 
      * @throws IOException
-     *             sollte eigentlich nicht vorkommen, da wir von einem String
-     *             importieren
+     *             sollte eigentlich nicht vorkommen, da wir von einem String importieren
      */
     @Test
     public void testSparte30Teildatensatz3() throws IOException {
         String input = "02219999  030      59999999999019999009999300000000000000       "
-            + "                                                                "
-            + "                                                                " 
-            + "                                                         3000001"
-            + "\n";
+                + "                                                                "
+                + "                                                                "
+                + "                                                         3000001" + "\n";
         checkWagnisdaten(input);
     }
 
-    private void checkWagnisdaten(String input) throws IOException {
+    private void checkWagnisdaten(final String input) throws IOException {
         assertEquals(257, input.length());
         Erweiterungssatz221 wagnisdaten = new Erweiterungssatz221(30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }
-    
+
     /**
-     * Der normale Import bereitet noch Probleme. Mit diesem Test wollen wir
-     * dem Problem auf die Spur kommen.
+     * Der normale Import bereitet noch Probleme. Mit diesem Test wollen wir dem Problem auf die Spur kommen.
      * 
-     * @throws IOException falls der Test-Satz nicht gelesen werden kann
+     * @throws IOException
+     *             falls der Test-Satz nicht gelesen werden kann
      */
     @Test
     public void testImportSparte30() throws IOException {
@@ -124,4 +117,3 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
     }
 
 }
-

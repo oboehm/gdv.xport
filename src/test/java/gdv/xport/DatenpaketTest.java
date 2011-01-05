@@ -48,7 +48,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 public final class DatenpaketTest {
 
     private static final Log log = LogFactory.getLog(Datenpaket.class);
-    /** fuer jeden Test gibt es ein frisches Datenpaket */
+    /** Fuer jeden Test gibt es ein frisches Datenpaket. */
     private final Datenpaket datenpaket = new Datenpaket();
 
     /**
@@ -227,7 +227,7 @@ public final class DatenpaketTest {
     private static void assertLines(final String expected, final String paket) throws IOException {
         BufferedReader expectedReader = new BufferedReader(new StringReader(expected));
         BufferedReader paketReader = new BufferedReader(new StringReader(paket));
-        for(int line=1; ;line++) {
+        for (int line = 1;; line++) {
             String expectedLine = expectedReader.readLine();
             String paketLine = paketReader.readLine();
             if (expectedLine == null) {

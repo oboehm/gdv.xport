@@ -16,6 +16,9 @@ public abstract class AbstractFormatter {
 
     protected Writer writer;
 
+    /**
+     * Default-Konstruktor.
+     */
     public AbstractFormatter() {
         super();
     }

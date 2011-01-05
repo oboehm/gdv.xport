@@ -23,23 +23,27 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
+ * The Class BetragMitVorzeichenTest.
+ *
  * @author oliver
  * @since 11.10.2009
  * @version $Revision$
- *
  */
 public class BetragMitVorzeichenTest {
 
     private final BetragMitVorzeichen betrag = new BetragMitVorzeichen("Test", 5, 1);
 
     /**
-     * Tested den Konstruktor
+     * Tested den Konstruktor.
      */
     @Test
     public void testBetragMitVorzeichen() {
         assertEquals("0000+", betrag.getInhalt());
     }
 
+    /**
+     * Test to double positive.
+     */
     @Test
     public void testToDoublePositive() {
         betrag.setInhalt(1.2);
@@ -47,6 +51,9 @@ public class BetragMitVorzeichenTest {
         assertEquals(1.2, betrag.toDouble(), 0.001);
     }
 
+    /**
+     * Test to double negative.
+     */
     @Test
     public void testToDoubleNegative() {
         betrag.setInhalt(-1.2);
@@ -54,6 +61,9 @@ public class BetragMitVorzeichenTest {
         assertEquals(-1.2, betrag.toDouble(), 0.001);
     }
 
+    /**
+     * Test is valid.
+     */
     @Test
     public void testIsValid() {
         betrag.setInhalt(99.99);

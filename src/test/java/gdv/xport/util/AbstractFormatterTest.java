@@ -35,8 +35,8 @@ import org.apache.commons.logging.*;
  */
 public abstract class AbstractFormatterTest extends AbstractTest {
 
-    static Log log = LogFactory.getLog(AbstractFormatterTest.class);
-    static XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+    private static Log log = LogFactory.getLog(AbstractFormatterTest.class);
+    private static XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
     /**
      * Tested die Formattierung der Musterdatei als HTML.
@@ -68,7 +68,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
     }
 
     /**
-     * We use the XMLStreams to validate the XML
+     * We use the XMLStreams to validate the XML.
      *
      * @param xmlString XML-String
      * @throws XMLStreamException

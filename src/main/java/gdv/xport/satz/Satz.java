@@ -27,9 +27,9 @@ import org.apache.commons.logging.*;
 public abstract class Satz {
 
     private static final Log log = LogFactory.getLog(Satz.class);
-    /** 4 Zeichen */
+    /** 4 Zeichen. */
     protected final NumFeld satzart = new NumFeld(SATZART, 4, 1);
-    /** Teildatensaetze */
+    /** Teildatensaetze. */
     protected Teildatensatz[] teildatensatz;
 
     protected Satz(final int art) {
@@ -255,7 +255,7 @@ public abstract class Satz {
      * @return das gesuchte Feld
      * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
-    public Feld getFeld(final String name) {
+    public Feld getFeld(final String name) throws IllegalArgumentException {
         for (int i = 0; i < teildatensatz.length; i++) {
             try {
                 Feld x = teildatensatz[i].getFeld(name);
@@ -271,7 +271,7 @@ public abstract class Satz {
     }
 
     /**
-     * Liefert den Inhalt des gewuenschten Feldes
+     * Liefert den Inhalt des gewuenschten Feldes.
      *
      * @since 0.3
      * @param name gewuenschter Bezeichner des Feldes
@@ -295,7 +295,7 @@ public abstract class Satz {
     }
 
     /**
-     * Liefert den Inhalt des gewuenschten Feldes
+     * Liefert den Inhalt des gewuenschten Feldes.
      *
      * @param name gewuenschter Bezeichner des Feldes
      * @param nr Nummer des Teildatensatzes (1, 2, ...)
@@ -307,7 +307,7 @@ public abstract class Satz {
     }
 
     /**
-     * Gets the satzart.
+     * Liefert die Satzart.
      *
      * @return the satzart
      */

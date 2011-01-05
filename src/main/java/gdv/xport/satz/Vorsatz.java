@@ -36,19 +36,19 @@ import org.apache.commons.logging.*;
 public final class Vorsatz extends Satz {
 
     private static final Log log = LogFactory.getLog(Vorsatz.class);
-    /** 5 Zeichen, Byte 5 - 9 */
+    /** 5 Zeichen, Byte 5 - 9. */
     private final AlphaNumFeld vuNummer = new VUNummer(Config.getVUNummer(), 5);
-    /** 30 Zeichen, Byte 10 - 39 */
+    /** 30 Zeichen, Byte 10 - 39. */
     private final AlphaNumFeld absender = new AlphaNumFeld(ABSENDER, 30, 10);
-    /** 30 Zeichen, Byte 40 - 69 */
+    /** 30 Zeichen, Byte 40 - 69. */
     private final AlphaNumFeld adressat = new AlphaNumFeld(ADRESSAT, 30, 40);
-    /** 8 Zeichen, Byte 70 - 77 */
+    /** 8 Zeichen, Byte 70 - 77. */
     private final Datum von = new Datum(ERSTELLUNGSDATUM_ZEITRAUM_VOM, 70);
-    /** 8 Zeichen, Byte 78 - 85 */
+    /** 8 Zeichen, Byte 78 - 85. */
     private final Datum bis = new Datum(ERSTELLUNGSDATUM_ZEITRAUM_BIS, 78);
-    /** 10 Zeichen, Byte 86 - 95 */
+    /** 10 Zeichen, Byte 86 - 95. */
     private final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 86);
-    /** die Versionen fuer die verschiedenen Datensaetze */
+    /** Die Versionen fuer die verschiedenen Datensaetze. */
     private final Map<Integer, Version> versions = new HashMap<Integer, Version>();
 
     /**

@@ -2,6 +2,11 @@
 
 <FindBugsFilter>
   <Match>
-    <Bug pattern="EQ_DOESNT_OVERRIDE_EQUALS"/>
- </Match>
+    <Bug pattern="EQ_DOESNT_OVERRIDE_EQUALS" />
+  </Match>
+  <Match>
+    <Class name="gdv.xport.util.AbstractFormatter" />
+    <Method name="setWriter" />
+    <Bug pattern="OBL_UNSATISFIED_OBLIGATION" />
+  </Match>
 </FindBugsFilter>

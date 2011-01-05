@@ -18,10 +18,12 @@
 
 package gdv.xport.util;
 
+import static org.junit.Assert.*;
+
 import gdv.xport.config.Config;
 import gdv.xport.feld.VUNummer;
 
-import org.junit.BeforeClass;
+import org.junit.*;
 
 /**
  * Hier setzen wir eine Standard-Konfiguration auf, die wir in den
@@ -42,6 +44,19 @@ public abstract class AbstractTest {
     @BeforeClass
     public static void setUpBeforeClass() {
         Config.setVUNummer(VU_NUMMER);
+    }
+    
+    /**
+     * Dieser Test ist nur dazu da, um sicherzugehen, dass die VU-Nummer auch
+     * wirklich gesetzt wurde. Und um die daemliche Fehlermeldung von
+     * Checkstyle wegzubekommen, dass diese Klasse eine Utility-Klasse waere
+     * (und daher einen privaten Konstruktor haben sollte).
+     * 
+     * @since 0.5.0
+     */
+    @Test
+    public void testVUNummer() {
+        assertEquals(VU_NUMMER, Config.getVUNummer());
     }
 
 }
