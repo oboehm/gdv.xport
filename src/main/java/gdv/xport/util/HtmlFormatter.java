@@ -92,7 +92,7 @@ public final class HtmlFormatter extends AbstractFormatter {
      * @param writer the writer
      */
     public HtmlFormatter(final Writer writer) {
-        this.writer = writer;
+        super(writer);
     }
 
     /**
@@ -129,9 +129,8 @@ public final class HtmlFormatter extends AbstractFormatter {
             buffer.close();
             String content = MessageFormat.format(template, Config.DEFAULT_ENCODING.name(), title, buffer.toString(),
                     getDetails(datenpaket));
-            writer.write(content);
-            writer.write("<!-- (c)reated by gdv-xport in " + (System.currentTimeMillis() - t0) + " ms -->\n");
-            writer.flush();
+            super.write(content);
+            super.write("<!-- (c)reated by gdv-xport in " + (System.currentTimeMillis() - t0) + " ms -->\n");
         } catch (XMLStreamException e) {
             throw new IOException("XML-Fehler", e);
         }

@@ -28,7 +28,7 @@ public abstract class Satz {
 
     private static final Log log = LogFactory.getLog(Satz.class);
     /** 4 Zeichen. */
-    protected final NumFeld satzart = new NumFeld(SATZART, 4, 1);
+    private final NumFeld satzart = new NumFeld(SATZART, 4, 1);
     /** Teildatensaetze. */
     protected Teildatensatz[] teildatensatz;
 

@@ -14,13 +14,31 @@ import java.io.*;
  */
 public abstract class AbstractFormatter {
 
-    protected Writer writer;
+    private Writer writer;
 
     /**
      * Default-Konstruktor.
      */
     public AbstractFormatter() {
         super();
+    }
+    
+    /**
+     * Instantiiert einen neuen Formatter.
+     *
+     * @param writer the writer
+     */
+    public AbstractFormatter(final Writer writer) {
+        this.writer = writer;
+    }
+
+    /**
+     * Liefert den eingestellten Writer.
+     * 
+     * @return the writer
+     */
+    public final Writer getWriter() {
+        return writer;
     }
 
     /**
@@ -65,5 +83,15 @@ public abstract class AbstractFormatter {
      * @throws IOException bei Problemen mit der Generierung
      */
     public abstract void write(final Datenpaket datenpaket) throws IOException;
+
+    /**
+     * Ausgabe des uebergebenen Strings.
+     *
+     * @param content the content
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public void write(final String content) throws IOException {
+        this.writer.write(content);
+    }
 
 }

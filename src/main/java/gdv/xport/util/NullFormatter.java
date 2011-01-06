@@ -40,8 +40,8 @@ public final class NullFormatter extends AbstractFormatter {
      */
     @Override
     public void write(final Datenpaket datenpaket) throws IOException {
-        datenpaket.export(writer);
-        writer.flush();
+        datenpaket.export(this.getWriter());
+        this.getWriter().flush();
     }
 
 }

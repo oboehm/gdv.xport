@@ -59,9 +59,9 @@ public final class XmlFormatter extends AbstractFormatter {
      *            the writer
      */
     public XmlFormatter(final Writer writer) {
+        super(writer);
         try {
             this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(writer);
-            this.writer = writer;
         } catch (XMLStreamException e) {
             throw new RuntimeException("you should never see this", e);
         } catch (FactoryConfigurationError e) {
@@ -77,7 +77,6 @@ public final class XmlFormatter extends AbstractFormatter {
      */
     public XmlFormatter(final XMLStreamWriter xmlStreamWriter) {
         this.xmlStreamWriter = xmlStreamWriter;
-        this.writer = null;
     }
 
     /**
@@ -96,9 +95,9 @@ public final class XmlFormatter extends AbstractFormatter {
      *            z.B. System.out
      */
     public XmlFormatter(final OutputStream ostream) {
+        super(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
         try {
             this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
-            this.writer = new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING);
         } catch (XMLStreamException e) {
             throw new RuntimeException("you should never see this", e);
         } catch (FactoryConfigurationError e) {
@@ -264,7 +263,7 @@ public final class XmlFormatter extends AbstractFormatter {
     public void close() throws IOException {
         try {
             this.xmlStreamWriter.close();
-            this.writer.close();
+            this.getWriter().close();
         } catch (XMLStreamException e) {
             throw new IOException("can't close " + this.xmlStreamWriter, e);
         }

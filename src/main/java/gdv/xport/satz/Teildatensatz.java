@@ -76,7 +76,7 @@ public final class Teildatensatz extends Satz {
     }
 
     private void initDatenfelder() {
-        datenfelder.put("Satzart", this.satzart);
+        datenfelder.put("Satzart", this.getSatzartFeld());
         datenfelder.put("Satznummer", this.satznummer);
     }
 
