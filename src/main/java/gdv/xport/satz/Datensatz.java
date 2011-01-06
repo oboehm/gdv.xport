@@ -32,17 +32,17 @@ import gdv.xport.feld.*;
 public class Datensatz extends Satz {
 
     /** 5 Zeichen, Byte 5 - 9. */
-    protected final VUNummer vuNummer = new VUNummer(Config.getVUNummer(), 5);
+    private final VUNummer vuNummer = new VUNummer(Config.getVUNummer(), 5);
     /** 1 Zeichen, Byte 10. */
-    protected final AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(BUENDELUNGSKENNZEICHEN, 1, 10);
+    private final AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(BUENDELUNGSKENNZEICHEN, 1, 10);
     /** 3 Zeichen, Byte 11 - 13. */
-    protected final NumFeld sparte = new NumFeld(SPARTE, 3, 11);
+    private final NumFeld sparte = new NumFeld(SPARTE, 3, 11);
     /** 17 Zeichen, Byte 14 - 30. */
-    protected final AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(VERSICHERUNGSSCHEINNUMMER, 17, 14);
+    private final AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(VERSICHERUNGSSCHEINNUMMER, 17, 14);
     /** 2 Zeichen, Byte 31 + 32. */
-    protected final NumFeld folgeNr = new NumFeld(FOLGENUMMER, 2, 31);
+    private final NumFeld folgeNr = new NumFeld(FOLGENUMMER, 2, 31);
     /** 10 Zeichen, Byte 33 - 42. */
-    protected final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 33);
+    private final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 33);
 
     /**
      * Instantiiert einen neuen Datensatz.

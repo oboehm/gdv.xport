@@ -23,6 +23,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
+ * JUnit-Test fuer die Betrag-Klasse.
+ *
  * @author oliver
  * @since 11.10.2009
  * @version $Revision$
@@ -32,7 +34,7 @@ public class BetragTest {
     private final Betrag betrag = new Betrag("test", 5, 1);
 
     /**
-     * Test method for {@link gdv.xport.feld.Betrag#Betrag(String, int, int)}.
+     * Test-Methode fuer {@link Betrag#Betrag(String, int, int)}.
      */
     @Test
     public void testBetrag() {
@@ -40,6 +42,9 @@ public class BetragTest {
         assertEquals(0.0, betrag.toDouble(), 0.001);
     }
 
+    /**
+     * Test-Methode fuer {@link Betrag#setInhalt(int)}.
+     */
     @Test
     public void testSetInhaltInt() {
         betrag.setInhalt(50);
@@ -47,6 +52,9 @@ public class BetragTest {
         assertEquals(50, betrag.toInt());
     }
 
+    /**
+     * Test-Methode fuer {@link Betrag#setInhalt(double)}.
+     */
     @Test
     public void testSetInhaltDouble() {
         betrag.setInhalt(1.23);
