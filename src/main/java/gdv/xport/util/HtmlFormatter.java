@@ -265,8 +265,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeAttribute("title", "Byte " + feld.getByteAdresse() + "-" + feld.getEndAdresse() + ": "
                 + feld.getBezeichnung());
         xmlStreamWriter.writeAttribute("href", "#" + getAnchorFor(zeile, feld));
-        String inhalt = feld.getInhalt();
-        xmlStreamWriter.writeCharacters(inhalt);
+        writeInhaltTo(xmlStreamWriter, feld);
         xmlStreamWriter.writeEndElement();
     }
 
@@ -295,10 +294,25 @@ public final class HtmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeCharacters(typ);
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeStartElement("td");
-        xmlStreamWriter.writeCharacters(feld.getInhalt());
+        writeInhaltTo(xmlStreamWriter, feld);
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeCharacters("\n");
+    }
+
+    /**
+     * Urspruenglich war diese Methode dazu gedacht, um Umlaute zu ersetzen.
+     * Das "Escaping" wird aber bereits vom XMLStreamWriter uebernommen, der
+     * aber leider die Umlaute nicht ersetzt. Der Versuch, die Umlaute zu
+     * ersetzen, endete leider mit "...&amp;Uuml;..." im erzeugten HTML.
+     *
+     * @param xmlStreamWriter the xml stream writer
+     * @param feld the feld
+     * @throws XMLStreamException the xML stream exception
+     */
+    private static void writeInhaltTo(final XMLStreamWriter xmlStreamWriter, final Feld feld) throws XMLStreamException {
+        String inhalt = feld.getInhalt();
+        xmlStreamWriter.writeCharacters(inhalt);
     }
 
     private static String getAnchorFor(final int zeile, final Feld feld) {

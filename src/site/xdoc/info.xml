@@ -18,14 +18,23 @@
       </p>
       <subsection name="Weitere Infos">
         <ul>
-        	<li>
-              GDV-Spezifikation:
-              <a href="http://www.gdv-online.de/vuvm/bestand/best_2007.htm">www.gdv-online.de/vuvm/bestand/best_2007.htm</a>
-            </li>
-        	<li>
-              Beispiel:
-              <a href="http://www.gdv-online.de/vuvm/musterdatei_bestand/muster.html">www.gdv-online.de/vuvm/musterdatei_bestand/muster.html</a>
-            </li>
+      	  <li>
+            GDV-Spezifikation:
+            <a href="http://www.gdv-online.de/vuvm/bestand/best_2007.htm">www.gdv-online.de/vuvm/bestand/best_2007.htm</a>
+          </li>
+          <li>
+            Beispiele:
+            <ul>
+          	  <li>
+                <a href="http://www.gdv-online.de/vuvm/musterdatei_bestand/muster.html">www.gdv-online.de/vuvm/musterdatei_bestand/muster.html</a>
+                (Original)
+              </li>
+              <li>
+                <a href="musterdatei_041222.html">musterdatei_041222.html</a>
+                (mit gdv.xport erzeugt)
+              </li>
+            </ul>
+          </li>
         </ul>
       </subsection>
     </section>

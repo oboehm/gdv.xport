@@ -18,10 +18,10 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
 
-import java.io.*;
+import java.io.IOException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -54,6 +54,24 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
         XmlFormatterTest.checkXML(htmlString);
         assertTrue("no <html> inside", htmlString.contains("<html"));
         assertTrue("no </html> inside", htmlString.contains("</html"));
+    }
+    
+    /**
+     * Fuer Umlaute sollte die HTML-Ersatzdarstellung verwendet werden, um
+     * Encoding-Probleme zu vermeiden. Da dies der verwendete XMLStreamWriter
+     * nicht zulaesst, wurde diese Methode wieder auskommentiert.
+     *
+     * @throws XMLStreamException falls was schiefgelaufen ist
+     * @throws SAXException falls was schiefgelaufen ist
+     * @throws IOException falls was schiefgelaufen ist
+     */
+    //@Test
+    public void testUmlauts() throws XMLStreamException, SAXException, IOException {
+        String absender = "\u00dcb\u00e4rraschung-AG";
+        Datenpaket datenpaket = new Datenpaket();
+        datenpaket.setAbsender(absender);
+        String htmlString = HtmlFormatter.toString(datenpaket);
+        assertFalse("Umlauts in '" + absender + "' not replaced!", htmlString.contains(absender));
     }
     
     /**
