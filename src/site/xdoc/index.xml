@@ -25,8 +25,7 @@
         Als ich mich im Sommer 2009 auf der Suche nach Java-Bibliotheken f&#252;r das
         GDV-Austauschformat machte, war die Ausbeute gleich null.
         Zwar gab und gibt es innerhalb von <a href="http://www.agentes.de">agentes</a>
-        mehrere Projekte im Versicherungsbereicht (u.a. in Zusammenarbeit mit
-        <a href="http://www.indatex.de">indatex</a>), aber wenig zum GDV-Format.
+        mehrere Projekte im Versicherungsbereicht, aber wenig zum GDV-Format.
         Von daher wurde die Idee geboren, das vorhandene Knowhow zu Sammeln und
         in eine gemeinsame Bibliothek flie&#223;en zu lassen - der <b>gdv.xport</b>.
       </p>
