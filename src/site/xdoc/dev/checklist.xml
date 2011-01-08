@@ -62,7 +62,10 @@
           <td>D-Day</td>
           <td>offen</td>
           <td>Doku und Reports generieren</td>
-          <td>'mvn site' und anschlie&#223;end target/site nach
+          <td>'mvn site', danach Umlaute durch Ersatzdarstellung ersetzen
+            ('java -cp ... patterntesting.tool.html.UmlautEncoder target/site'),
+            um Darstellungsprobleme auszuschlie&#223;en.
+            Anschlie&#223;end target/site nach
             http://repository.agentes.de/gdv/gdv-xport/site/...
             kopieren
           </td>

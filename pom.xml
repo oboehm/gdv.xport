@@ -14,7 +14,11 @@
   <packaging>jar</packaging>
   <version>0.5.0-SNAPSHOT</version>
   <name>GDV-Xport</name>
-  <url>http://github.com/oboehm/gdv.xport</url>
+  <url>http://labs.agentes.de/gdv.xport/</url>
+  <organization>
+    <name>agentes Labs</name>
+    <url>http://labs.agentes.de/</url>
+  </organization>
   <!-- see http://maven.apache.org/pom.html#Licenses -->
   <licenses>
     <license>
@@ -387,9 +391,19 @@
   </contributors>
   
   <scm>
-    <connection>scm:git:git://github.com/oboehm/gdv.xport</connection>
+    <connection>scm:git://github.com/oboehm/gdv.xport.git</connection>
     <url>http://github.com/oboehm/gdv.xport</url>
   </scm>
+  
+  <issueManagement>
+    <system>github</system>
+    <url>https://github.com/oboehm/gdv.xport/issues</url>
+  </issueManagement>
+  
+  <ciManagement>
+    <system>hudson</system>
+    <url>http://bbb.i:8280/view/gdv.xport/</url>
+  </ciManagement>
 
   <!-- 
   	  (possible) additional repositories:

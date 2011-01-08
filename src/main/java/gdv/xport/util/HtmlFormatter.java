@@ -309,7 +309,8 @@ public final class HtmlFormatter extends AbstractFormatter {
      * @param feld the feld
      * @throws XMLStreamException the xML stream exception
      */
-    private static void writeInhaltTo(final XMLStreamWriter xmlStreamWriter, final Feld feld) throws XMLStreamException {
+    private static void writeInhaltTo(final XMLStreamWriter xmlStreamWriter, final Feld feld)
+            throws XMLStreamException {
         String inhalt = feld.getInhalt();
         xmlStreamWriter.writeCharacters(inhalt);
     }
