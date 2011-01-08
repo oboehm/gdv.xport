@@ -62,8 +62,8 @@ public abstract class AbstractFormatterTest extends AbstractTest {
             formatter.write(datenpaket);
             log.info(datenpaket + " exported to " + exportFile);
         } finally {
-            istream.close();
             ostream.close();
+            istream.close();
         }
     }
 

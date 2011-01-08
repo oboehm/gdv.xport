@@ -131,6 +131,7 @@ public final class HtmlFormatter extends AbstractFormatter {
                     getDetails(datenpaket));
             super.write(content);
             super.write("<!-- (c)reated by gdv-xport in " + (System.currentTimeMillis() - t0) + " ms -->\n");
+            super.getWriter().flush();
         } catch (XMLStreamException e) {
             throw new IOException("XML-Fehler", e);
         }

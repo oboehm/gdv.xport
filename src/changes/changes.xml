@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="0.5.1-SNAPSHOT" date="2011"
+             description="HTML-Support, Support f&#252;r Sparte 10 (Leben)">
+      <action dev="oboehm" type="update" date="8-Jan-2011" >
+        HtmlFormatter schreibt jetzt das Ende der HTML-Datei korrekt.
+      </action>
+    </release>
+
     <release version="0.5.0" date="08-Jan-2011"
              description="HTML-Support, Support f&#252;r Sparte 10 (Leben)">
       <action dev="oboehm" type="add" date="02-Jan-2011" >
