@@ -391,7 +391,7 @@
   </contributors>
   
   <scm>
-    <connection>scm:git:git@github.com:oboehm/gdv.xport.git</connection>
+    <connection>scm:git:git://github.com/oboehm/gdv.xport.git</connection>
     <url>http://github.com/oboehm/gdv.xport</url>
   </scm>
   
