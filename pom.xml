@@ -365,7 +365,7 @@
   <!-- More Project Information -->
   <description>
     gdv.xport ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
-    Sie erleichtert den Export in dieses Datenformat, aber (noch) nicht den Import.
+    Sie erleichtert den Export und Export dieses Datenformats.
   </description>
   <inceptionYear>2009</inceptionYear>
   <developers>
@@ -373,7 +373,7 @@
       <name>Oliver Boehm</name>
       <id>boehm</id>
       <email>oliver.boehm@agentes.de</email>
-      <organization>agentes AG</organization>
+      <organization>agentes Labs</organization>
       <roles>
         <role>Java Developer</role>
       </roles>
@@ -391,7 +391,7 @@
   </contributors>
   
   <scm>
-    <connection>scm:git://github.com/oboehm/gdv.xport.git</connection>
+    <connection>scm:git:git@github.com:oboehm/gdv.xport.git</connection>
     <url>http://github.com/oboehm/gdv.xport</url>
   </scm>
   
@@ -403,6 +403,18 @@
   <ciManagement>
     <system>hudson</system>
     <url>http://bbb.i:8280/view/gdv.xport/</url>
+    <notifiers>
+      <notifier>
+        <type>mail</type>
+        <sendOnError>true</sendOnError>
+        <sendOnFailure>true</sendOnFailure>
+        <sendOnSuccess>false</sendOnSuccess>
+        <sendOnWarning>false</sendOnWarning>
+        <configuration>
+          <address>oliver.boehm@agentes.de</address>
+        </configuration>
+      </notifier>
+    </notifiers>
   </ciManagement>
 
   <!-- 

@@ -17,8 +17,8 @@
 
   <body>
 
-    <release version="0.5.0-SNAPSHOT" date="2011"
-             description="HTML-Support, Support f&#252;r Satzart 221">
+    <release version="0.5.0" date="08-Jan-2011"
+             description="HTML-Support, Support f&#252;r Sparte 10 (Leben)">
       <action dev="oboehm" type="add" date="02-Jan-2011" >
         Beginn mit Unterst&#252;tzung f&#252;r Sparte 10 (Leben).
       </action>
@@ -36,7 +36,7 @@
       </action>
     </release>
 
-    <release version="0.4.2" date="3-Aug-2010"
+    <release version="0.4.2" date="03-Aug-2010"
              description="verbesserte Testabdeckung">
       <action dev="oboehm" type="update" date="18-Jul-2010" >
         Update auf PatternTesting 1.0.1
