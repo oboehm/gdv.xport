@@ -72,7 +72,6 @@ public final class Teildatensatz extends Satz {
     @Override
     protected void createTeildatensaetze(final int n) {
         assert n == 0 : "ein Teildatensatz hat keine weiteren Teildatensaetze";
-        this.teildatensatz = null;
     }
 
     private void initDatenfelder() {

@@ -74,8 +74,10 @@ public final class Vorsatz extends Satz {
     }
 
     private void setUpTeildatensaetze() {
-        for (int i = 0; i < teildatensatz.length; i++) {
-            this.setUpTeildatensatz(i+1, teildatensatz[i]);
+        int nr = 1;
+        for (Teildatensatz tds : this.getTeildatensaetze()) {
+            this.setUpTeildatensatz(nr, tds);
+            nr++;
         }
     }
     
@@ -111,7 +113,7 @@ public final class Vorsatz extends Satz {
     }
 
     private void setUpVersions(final int n) {
-        Teildatensatz tds = this.teildatensatz[n-1];
+        Teildatensatz tds = this.getTeildatensatz(n);
         switch (n) {
             case 1:
                 addVersion(1, new Version(VERSION_VORSATZ, 96, "2.1"));
@@ -219,7 +221,7 @@ public final class Vorsatz extends Satz {
     }
 
     private void addVersion(final Integer art, final Version version) {
-        addVersion(this.teildatensatz[0], art, version);
+        addVersion(this.getTeildatensatz(1), art, version);
     }
 
     private void addVersion(final Teildatensatz tds, final Integer art, final Version version) {
@@ -228,7 +230,7 @@ public final class Vorsatz extends Satz {
     }
 
     private void addVersion(final int art, final int byteadresse, final String version) {
-        addVersion(this.teildatensatz[0], art, byteadresse, version);
+        addVersion(this.getTeildatensatz(1), art, byteadresse, version);
     }
 
     private void addVersion(final Teildatensatz tds, final int art, final int byteadresse, final String version) {
@@ -238,7 +240,7 @@ public final class Vorsatz extends Satz {
 
     private void addVersion(final int art, final int sparte, final int byteadresse,
             final String version) {
-        addVersion(this.teildatensatz[0], art, sparte, byteadresse, version);
+        addVersion(this.getTeildatensatz(1), art, sparte, byteadresse, version);
     }
 
     private void addVersion(final Teildatensatz tds, final int art, final int sparte, final int byteadresse,

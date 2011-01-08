@@ -103,8 +103,8 @@ public class Datensatz extends Satz {
      * aufzusetzen.
      */
     protected void setUpTeildatensaetze() {
-        for (int i = 0; i < teildatensatz.length; i++) {
-            setUpTeildatensatz(teildatensatz[i]);
+        for (Teildatensatz tds : this.getTeildatensaetze()) {
+            setUpTeildatensatz(tds);
         }
     }
 
@@ -136,8 +136,8 @@ public class Datensatz extends Satz {
      */
     @Override
     public void addFiller() {
-        for (int i = 0; i < teildatensatz.length; i++) {
-            teildatensatz[i].add(new AlphaNumFeld(LEERSTELLEN, 213, 43));
+        for (Teildatensatz tds : this.getTeildatensaetze()) {
+            tds.add(new AlphaNumFeld(LEERSTELLEN, 213, 43));
         }
     }
 

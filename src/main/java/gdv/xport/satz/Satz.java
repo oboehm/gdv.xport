@@ -30,7 +30,7 @@ public abstract class Satz {
     /** 4 Zeichen. */
     private final NumFeld satzart = new NumFeld(SATZART, 4, 1);
     /** Teildatensaetze. */
-    protected Teildatensatz[] teildatensatz;
+    private Teildatensatz[] teildatensatz;
 
     protected Satz(final int art) {
         this(art, 1);

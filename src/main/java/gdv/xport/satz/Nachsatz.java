@@ -70,7 +70,7 @@ public final class Nachsatz extends Satz {
      */
     public void setAnzahlSaetze(final int n) {
         this.anzahlSaetze.setInhalt(n);
-        this.teildatensatz[0].add(anzahlSaetze);
+        this.getTeildatensatz(1).add(anzahlSaetze);
     }
 
     /**
