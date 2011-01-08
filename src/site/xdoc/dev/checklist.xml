@@ -53,9 +53,9 @@
           <td></td>
           <td>Label setzen</td>
           <td>
-            git tag GIT_XPORT_0_4_0 (lokal)
+            git tag gdv-xport-0.5.0 (lokal)
             <br/>
-            git push git@github.com:oboehm/gdv.xport.git tag GIT_XPORT_0_4_0 (remote)
+            git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-0.5.0 (remote)
           </td>
         </tr>
         <tr>
