@@ -19,6 +19,9 @@
 
     <release version="0.5.1-SNAPSHOT" date="2011"
              description="HTML-Support, Support f&#252;r Sparte 10 (Leben)">
+      <action dev="oboehm" type="fix" date="8-Jan-2011" >
+        Coypy&amp;Paste-Fehler von Bezeichner.NAME2 korrigiert.
+      </action>
       <action dev="oboehm" type="update" date="8-Jan-2011" >
         HtmlFormatter schreibt jetzt das Ende der HTML-Datei korrekt.
       </action>

@@ -218,7 +218,7 @@ public final class Bezeichner {
     public static final String NAME_MITVERSICHERTES_KIND = "Name des mitversicherten Kinds";
     public static final String NAME_VP = "Name der VP";
     public static final String NAME1 = "Name 1";
-    public static final String NAME2 = "Name 3";
+    public static final String NAME2 = "Name 2";
     public static final String NAME3 = "Name 3";
     public static final String ORDNUNGSBEGRIFF = "Ordnungsbegriff";
     public static final String ORT = "Ort";

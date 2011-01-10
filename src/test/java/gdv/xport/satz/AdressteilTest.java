@@ -55,6 +55,17 @@ public class AdressteilTest extends AbstractSatzTest {
         assertEquals("Donald", adressteil.getName(1));
         assertEquals("Duck", adressteil.getName(3));
     }
+    
+    /**
+     * Test-Methode fuer setName().
+     */
+    @Test
+    public void testSetAlleNamen() {
+        adressteil.setName("J.", "R.", "Ewing");
+        assertEquals("J.", adressteil.getName(1));
+        assertEquals("R.", adressteil.getName(2));
+        assertEquals("Ewing", adressteil.getName(3));
+    }
 
 }
 

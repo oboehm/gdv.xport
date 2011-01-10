@@ -115,8 +115,24 @@ public final class Adressteil extends Datensatz {
         this.set(NAME1, vorname);
         this.set(NAME3, nachname);
     }
+    
+    /**
+     * Setzt den Vornamen, den mitlleren Namen (zweiter Vorname) und den
+     * Nachnamen.
+     *
+     * @param vorname erster Vorname
+     * @param mittelname zweiter Name
+     * @param nachname Nachnahme
+     */
+    public void setName(final String vorname, final String mittelname, final String nachname) {
+        this.set(NAME1, vorname);
+        this.set(NAME2, mittelname);
+        this.set(NAME3, nachname);
+    }
 
     /**
+     * Liefert den entsprechenden Namen zurueck.
+     * 
      * @param n 1, 2 oder 3
      * @return Name1, Name2 oder Name3
      */
