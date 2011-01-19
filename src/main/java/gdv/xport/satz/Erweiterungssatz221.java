@@ -110,6 +110,15 @@ public class Erweiterungssatz221 extends Spartensatz {
             case 30:
                 this.setUpDatenfelder30();
                 break;
+            case 51:
+                this.setUpDatenfelder51();
+                break;
+            case 52:
+                this.setUpDatenfelder52();
+                break;
+            case 53:
+                this.setUpDatenfelder53();
+                break;
             case 70:
                 this.setUpDatenfelder70();
                 break;
@@ -158,6 +167,65 @@ public class Erweiterungssatz221 extends Spartensatz {
             default:
                 throw new IllegalArgumentException("unbekannte Teildatensatz-Nr.: " + n);
         }
+    }
+    
+    /**
+     * Sparte 51 (KFZ - Fahrzeughaftpflicht) wurde freundlicherweise von
+     * Igor Narodetskyi zur Verfuegung gestellt.
+     * 
+     * @since 0.5.1
+     */
+    private void setUpDatenfelder51() {
+        // Teildatensatz 1
+        add(new NumFeld(KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1, 14, 43).mitNachkommastellen(2));
+        add(new NumFeld(KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2, 14, 57).mitNachkommastellen(2));
+        add(new NumFeld(KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3, 14, 71).mitNachkommastellen(2));
+        add(new NumFeld(KH_BEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 85));
+        add(new NumFeld(KH_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 12, 97));
+        add(new NumFeld(KH_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 12, 109));
+        add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_HAFTPFLICHT_IN_WAEHRUNGSEINHEITEN, 12, 121));
+        add(new NumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH, 12, 133));
+        add(new AlphaNumFeld(REFERENZNUMMER, 7, 145));
+        add(new AlphaNumFeld(LFD_NUMMER, 4, 152));
+        add(new AlphaNumFeld(PERSONENNUMMER_LFD_NUMMER, 17, 156));
+    }
+    
+    /**
+     * Sparte 52 (KFZ - Fahrzeugvoll) wurde freundlicherweise von
+     * Igor Narodetskyi zur Verfuegung gestellt.
+     * 
+     * @since 0.5.1
+     */
+    private void setUpDatenfelder52() {
+        // Teildatensatz 1
+        add(new NumFeld(KFV_BEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 43));
+        add(new NumFeld(KFV_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 12, 55));
+        add(new NumFeld(KFV_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 12, 67));
+        add(new NumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_VOLLKASKO, 12, 79));
+        add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN, 12, 91));
+        add(new NumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO, 12, 103));
+        add(new AlphaNumFeld(REFERENZNUMMER, 7, 115));
+        add(new AlphaNumFeld(LFD_NUMMER, 4, 122));
+        add(new AlphaNumFeld(PERSONENNUMMER_LFD_NUMMER, 17, 126));
+    }
+
+    /**
+     * Sparte 53 (KFZ - Fahrzeugteil) wurde freundlicherweise von
+     * Igor Narodetskyi zur Verfuegung gestellt.
+     * 
+     * @since 0.5.1
+     */
+    private void setUpDatenfelder53() {
+        // Teildatensatz 1
+        add(new NumFeld(KFV_BEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 43));
+        add(new NumFeld(KFV_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 12, 55));
+        add(new NumFeld(KFV_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 12, 67));
+        add(new NumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_VOLLKASKO, 12, 79));
+        add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN, 12, 91));
+        add(new NumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO, 12, 103));
+        add(new AlphaNumFeld(REFERENZNUMMER, 7, 115));
+        add(new AlphaNumFeld(LFD_NUMMER, 4, 122));
+        add(new AlphaNumFeld(PERSONENNUMMER_LFD_NUMMER, 17, 126));
     }
 
     private void setUpDatenfelder70() {

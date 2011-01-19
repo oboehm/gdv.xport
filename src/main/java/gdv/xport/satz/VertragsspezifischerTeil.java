@@ -106,6 +106,9 @@ public class VertragsspezifischerTeil extends Spartensatz {
             case 30:
                 this.setUpDatenfelder30();
                 break;
+            case 50:
+                this.setUpDatenfelder50();
+                break;
             case 70:
                 this.setUpDatenfelder70();
                 break;
@@ -183,7 +186,6 @@ public class VertragsspezifischerTeil extends Spartensatz {
         }
     }
 
-
     private void setUpDatenfelder30() {
         this.setUpTeildatensatz(1);
         // Teildatensatz 1
@@ -217,6 +219,71 @@ public class VertragsspezifischerTeil extends Spartensatz {
         add(new Datum(PRODUKTFORM_GUELTIG_AB, 6, 204));
         add(new AlphaNumFeld(PRODUKTNAME, 20, 210));
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 230));
+    }
+    
+    /**
+     * Sparte 50 (KFZ - Fahrzeugdaten) wurde freundlicherweise von
+     * Igor Narodetskyi zur Verfuegung gestellt.
+     * 
+     * @since 0.5.1
+     */
+    private void setUpDatenfelder50() {
+        // Teildatensatz 1
+        add(new NumFeld(WAGNISKENNZIFFER, 3, 43));
+        add(new NumFeld(STAERKE, 4, 46));
+        add(new AlphaNumFeld(HERSTELLERNAME, 15, 50));
+        add(new AlphaNumFeld(MODELLNAME, 25, 65));
+        add(new AlphaNumFeld(HERSTELLER_SCHLUESSEL_NR, 4, 90));
+        add(new AlphaNumFeld(TYPSCHLUESSEL_NR, 3, 94));
+        add(new AlphaNumFeld(FAHRZEUGIDENTIFIZIERUNGSNUMMER, 17, 97));
+        add(new AlphaNumFeld(AMTL_KENNZEICHEN, 12, 114));
+        add(new NumFeld(ERSTZULASSUNG, 8, 126));
+        add(new NumFeld(NEUPREIS_IN_WAEHRUNGSEINHEITEN, 7, 134));
+        add(new NumFeld(MEHRWERT_IN_WAEHRUNGSEINHEITEN, 6, 141));
+        add(new AlphaNumFeld(KENNUNG_FUER_ABS_RABATT, 1, 147));
+        add(new AlphaNumFeld(FLOTTENKENNZEICHEN, 1, 148));
+        add(new AlphaNumFeld(WAEHRUNGSSCHLUESSEL, 3, 149));
+        add(new NumFeld(GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 152));
+        add(new AlphaNumFeld(SICHERUNGSSCHEIN, 1, 164));
+        add(new AlphaNumFeld(SONDERBEDINGUNGEN_KLAUSELN, 1, 165));
+        add(new AlphaNumFeld(SICHERUNGSEINRICHTUNG, 1, 166));
+        add(new AlphaNumFeld(KLARTEXT_SICHERUNGSEINRICHTUNG, 30, 167));
+        add(new AlphaNumFeld(SCHLUESSEL_SICHERUNGSEINRICHTUNG, 3, 197));
+        add(new NumFeld(BAUSTEIN_GESAMTBEITRAG_1_IN_WAEHRUNGSEINHEITEN, 12, 200));
+        add(new NumFeld(BAUSTEIN_GESAMTBEITRAG_2_IN_WAEHRUNGSEINHEITEN, 12, 212));
+        add(new AlphaNumFeld(REFERENZNUMMER, 7, 224));
+        add(new AlphaNumFeld(LFD_NUMMER, 4, 231));
+        add(new AlphaNumFeld(PERSONEN_KUNDENNUMMER_DES_VERSICHERERS, 17, 235));
+        add(new AlphaNumFeld(SAISONKENNZEICHEN, 4, 252));
+        // Teildatensatz 2
+        add(new AlphaNumFeld(PRODUKTFORM, 5, 43), 2);
+        add(new NumFeld(PRODUKTFORM_GUELTIG_AB, 6, 48), 2);
+        add(new AlphaNumFeld(FAHRZEUGART, 30, 54), 2);
+        add(new AlphaNumFeld(ART_DES_AMTLICHEN_KENNZEICHENS, 2, 84), 2);
+        add(new AlphaNumFeld(LAND_DES_AMTL_KENNZEICHENS, 3, 86), 2);
+        add(new NumFeld(BAUJAHR, 8, 89), 2);
+        add(new NumFeld(ERSTE_ZULASSUNG_AUF_DEN_VN, 8, 97), 2);
+        add(new AlphaNumFeld(ART_DER_ZULASSUNG_BEIM_VORBESITZER, 2, 105), 2);
+        add(new NumFeld(ANZAHL_DER_VORBESITZER, 2, 107), 2);
+        add(new NumFeld(KAUFPREIS, 12, 109), 2);
+        add(new AlphaNumFeld(MEHRWERTGRUND, 30, 121), 2);
+        add(new NumFeld(LFD_PERSONENNUMMER_DES_SICHERUNGSGLAEUBIGERS, 6, 151), 2);
+        add(new NumFeld(JAEHRLICHE_FAHRLEISTUNG, 6, 157), 2);
+        add(new AlphaNumFeld(GARAGE, 2, 163), 2);
+        add(new AlphaNumFeld(NUTZUNGSART, 2, 165), 2);
+        add(new AlphaNumFeld(EIGENTUMSVERHAELTNIS_FAHRZEUG, 1, 167), 2);
+        add(new AlphaNumFeld(WOHNEIGENTUM, 1, 168), 2);
+        add(new AlphaNumFeld(PRODUKTNAME, 20, 169), 2);
+        add(new NumFeld(KREISGEMEINDESCHLUESSEL, 5, 189), 2);
+        add(new NumFeld(KREISGEMEINDESCHLUESSEL_ZUSATZINFORMATION, 1, 194), 2);
+        add(new NumFeld(BEGINN_VERSICHERUNGSSCHUTZ, 8, 195), 2);
+        add(new NumFeld(ENDEDATUM_DES_VERSICHERUNGSSCHUTZES_BEI_ROTEN_KENNZEICHEN, 8, 203), 2);
+        add(new NumFeld(GUELTIGKEITSDAUER_IN_TAGEN_BEI_KURZZEITKENNZEICHEN, 2, 211), 2);
+        add(new AlphaNumFeld(EVB_NUMMER, 7, 213), 2);
+        add(new NumFeld(AUFBAUART, 2, 220), 2);
+        add(new NumFeld(GEFAHRGUT, 1, 222), 2);
+        add(new NumFeld(GESAMTMASSE, 6, 223), 2);
+        add(new NumFeld(STAERKEEINHEIT, 1, 229), 2);
     }
 
     private void setUpDatenfelder70() {

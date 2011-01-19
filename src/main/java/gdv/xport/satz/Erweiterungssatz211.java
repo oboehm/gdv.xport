@@ -101,6 +101,9 @@ public class Erweiterungssatz211 extends Spartensatz {
             case 10:
                 this.setUpDatenfelder10();
                 break;
+            case 50:
+                this.setUpDatenfelder50();
+                break;
             default:
                 log.warn("Sparte " + sparte + " not yet fully supported");
                 this.setUpTeildatensatz(1);
@@ -115,6 +118,23 @@ public class Erweiterungssatz211 extends Spartensatz {
         this.add(new NumFeld(ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 57).mitNachkommastellen(2));
         this.add(new AlphaNumFeld(LEERSTELLEN, 187, 69));
     }
+    
+    /**
+     * Sparte 50 (KFZ - Fahrzeugdaten) wurde freundlicherweise von
+     * Igor Narodetskyi zur Verfuegung gestellt.
+     * 
+     * @since 0.5.1
+     */
+    private void setUpDatenfelder50() {
+        // Teildatensatz 1
+        add(new NumFeld(NEUPREIS_IN_WAEHRUNGSEINHEITEN, 12, 43));
+        add(new NumFeld(MEHRWERT_IN_WAEHRUNGSEINHEITEN, 12, 55));
+        add(new AlphaNumFeld(REFERENZNUMMER, 7, 67));
+        add(new AlphaNumFeld(LFD_NUMMER, 4, 74));
+        add(new AlphaNumFeld(PERSONEN_KUNDENNUMMER_DES_VERSICHERERS, 17, 78));
+        add(new AlphaNumFeld(Bezeichner.LEERSTELLEN, 161, 95));
+    }
+
 
 }
 

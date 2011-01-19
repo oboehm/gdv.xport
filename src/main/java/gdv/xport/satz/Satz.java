@@ -421,13 +421,17 @@ public abstract class Satz {
     }
 
     /**
-     * Import from.
+     * Der hier verwendete PushbackReader wird benoetigt, damit die gelesene
+     * Satzart und Sparte wieder zurueckgesetllt werden kann.
+     * 
+     * Seit 0.5.1 ist diese Methode nicht mehr final, da manche Satzarten wohl
+     * Eigenarten haben koennen (wie z.B. fehlende Sparten-Eintraege).  
      *
      * @param reader the reader
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    public final void importFrom(final PushbackReader reader) throws IOException {
+    public void importFrom(final PushbackReader reader) throws IOException {
         char[] cbuf = new char[257 * teildatensatz.length];
         for (int i = 0; i < teildatensatz.length; i++) {
             int art = readSatzart(reader);

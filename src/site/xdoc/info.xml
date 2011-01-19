@@ -68,6 +68,7 @@
         <ul>
           <li>0210.010 Leben</li>
           <li>0210.030 Unfall</li>
+          <li>0210.050 KFZ - Fahrzeugdaten</li>
           <li>0210.070 Rechtsschutz</li>
         </ul>
         <p>
@@ -81,6 +82,7 @@
         </p>
         <ul>
           <li>0211.010 Leben</li>
+          <li>0211.050 KFZ - Fahrzeugdaten</li>
         </ul>
         <p>
           Die anderen Satzarten 0211.xxx werden nur teilweise unterst&#252;tzt.
@@ -93,6 +95,9 @@
         </p>
         <ul>
           <li>0220.030 Unfall</li>
+          <li>0220.051 KFZ - Fahrzeughaftpflicht</li>
+          <li>0220.052 KFZ - Fahrzeugvollkasko</li>
+          <li>0220.053 KFZ - Fahrzeugteil</li>
           <li>0220.070 Rechtsschutz</li>
         </ul>
         <p>
@@ -106,6 +111,9 @@
         </p>
         <ul>
           <li>0221.030 Unfall</li>
+          <li>0221.051 KFZ - Fahrzeughaftpflicht</li>
+          <li>0221.052 KFZ - Fahrzeugvollkasko</li>
+          <li>0221.053 KFZ - Fahrzeugteil</li>
           <li>0221.070 Rechtsschutz</li>
         </ul>
         <p>

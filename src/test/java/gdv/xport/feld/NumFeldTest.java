@@ -142,5 +142,19 @@ public class NumFeldTest {
         NumFeld pi = new NumFeld("pi", "314", 2);
         assertEquals(3.14, pi.toDouble(), 0.001);
     }
+    
+    /**
+     * Waehrend des Testen gab es 'NumFeld KH-Deckungssummen in
+     * Waehrungseinheiten Teil 1(43-56): "00005000000000" is invalid: 
+     * not a number (java.lang.NumberFormatException: For input string:
+     * "00005000000000")' als Fehlermeldung. Dieser Testfall versucht
+     * dies zu rekonstruieren.
+     */
+    @Test
+    public void testBigNumber() {
+        NumFeld big = new NumFeld("big", 14, 1).mitNachkommastellen(2);
+        big.setInhalt("00005000000000");
+        assertTrue("should be valid", big.isValid());
+    }
 
 }

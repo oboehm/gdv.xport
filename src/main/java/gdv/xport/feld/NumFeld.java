@@ -157,6 +157,9 @@ public class NumFeld extends Feld {
     }
 
     /**
+     * Wandelt den Inhalt in einen Integer (ohne Beruecksichtigung etwaiger
+     * Nachkommastellen).
+     * 
      * @return den Inhalt als int
      */
     public int toInt() {
@@ -165,6 +168,20 @@ public class NumFeld extends Feld {
             return Integer.parseInt(s.substring(1));
         }
         return Integer.parseInt(s);
+    }
+
+    /**
+     * Wandelt den Inhalt in einen Long (ohne Beruecksichtigung etwaiger
+     * Nachkommastellen).
+     * 
+     * @return den Inhalt als long
+     */
+    public long toLong() {
+        String s = this.getInhalt().trim();
+        if (s.startsWith("+")) {
+            return Long.parseLong(s.substring(1));
+        }
+        return Long.parseLong(s);
     }
 
     /**
@@ -194,7 +211,7 @@ public class NumFeld extends Feld {
             return true;
         }
         try {
-            this.toInt();
+            this.toLong();
         } catch (NumberFormatException nfe) {
             log.info(this + " is invalid: not a number (" + nfe + ")");
             return false;

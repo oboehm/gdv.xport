@@ -19,6 +19,13 @@
 
     <release version="0.5.1-SNAPSHOT" date="2011"
              description="HTML-Support, Support f&#252;r Sparte 10 (Leben)">
+      <action dev="oboehm" type="fix" date="19-Jan-2011" >
+        NumberFormatException bei NumFeldern mit gro&#223;en Zahlen behoben.
+      </action>
+      <action dev="oboehm" type="add" date="19-Jan-2011" >
+        Unterst&#252;tzung f&#252;r Sparte 50 bis 53 bei den Satzarten
+        210, 211, 220 und 221 (Dank an Igor Narodetskyi).
+      </action>
       <action dev="oboehm" type="fix" date="8-Jan-2011" >
         Coypy&amp;Paste-Fehler von Bezeichner.NAME2 korrigiert.
       </action>

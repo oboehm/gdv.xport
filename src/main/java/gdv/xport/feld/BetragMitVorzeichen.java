@@ -111,6 +111,16 @@ public final class BetragMitVorzeichen extends Betrag {
     }
 
     /* (non-Javadoc)
+     * @see gdv.xport.feld.NumFeld#toLong()
+     */
+    @Override
+    public long toLong() {
+        String s = this.getInhalt();
+        long x = Long.parseLong(s.substring(0, s.length() - 1)) / 100;
+        return (this.getVorzeichen() == '-') ? -x : x;
+    }
+
+    /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#resetInhalt()
      */
     @Override
