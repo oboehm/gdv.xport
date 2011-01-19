@@ -43,6 +43,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
+        <version>2.2</version>
         <configuration>
           <locales>de</locales>
           <outputEncoding>UTF-8</outputEncoding>
@@ -53,6 +54,7 @@
   	  <plugin>
   	  	<groupId>org.apache.maven.plugins</groupId>
   	  	<artifactId>maven-compiler-plugin</artifactId>
+  	  	<version>2.3.2</version>
   	  	<configuration>
   	  	  <source>1.6</source>
   	  	  <target>1.6</target>
@@ -68,6 +70,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>aspectj-maven-plugin</artifactId>
+        <version>1.2</version>
         <configuration>
           <options>
             <option>-verbose</option>
@@ -145,6 +148,7 @@
           <threshold>Normal</threshold>
           <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
         </configuration>
+        <version>2.3.1</version>
         <executions>
           <execution>
             <goals>
@@ -246,6 +250,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changes-plugin</artifactId>
+        <version>2.3</version>
         <reportSets>
           <reportSet>
             <reports>
@@ -261,6 +266,7 @@
 	  <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-javadoc-plugin</artifactId>
+		<version>2.7</version>
 		<configuration>
           <source>1.6</source>
           <show>protected</show>
@@ -275,6 +281,7 @@
 	  <plugin>
 		<groupId>org.codehaus.mojo</groupId>
 		<artifactId>taglist-maven-plugin</artifactId>
+		<version>2.4</version>
 		<configuration>
 		  <tags>
 			<tag>TODO</tag>
@@ -292,6 +299,7 @@
 	  <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-jxr-plugin</artifactId>
+		<version>2.2</version>
 	  </plugin>
 	  <!-- 
 	      code smells
@@ -301,6 +309,7 @@
 	  <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-pmd-plugin</artifactId>
+		<version>2.5</version>
 		<configuration>
           <linkXref>true</linkXref>
           <sourceEncoding>utf-8</sourceEncoding>
