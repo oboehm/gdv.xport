@@ -328,7 +328,9 @@ public class SpartenspezifischerTeil extends Spartensatz {
         add(new AlphaNumFeld(KENNZEICHEN_FUER_ABWEICHENDE_PROVISION, 1, 138));
         add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN, 8, 139));
         add(new NumFeld(KASKO_BEGINNJAHR, 4, 147));
-        add(new NumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO, 10, 151));
+        add(new NumFeld(
+                FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO, 10,
+                151));
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 161));
         add(new AlphaNumFeld(TARIF, 10, 168));
         add(new AlphaNumFeld(LFD_NUMMER, 4, 178));
