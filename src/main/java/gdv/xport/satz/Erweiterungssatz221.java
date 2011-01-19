@@ -222,14 +222,11 @@ public class Erweiterungssatz221 extends Spartensatz {
         add(new NumFeld(KFV_BEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 43));
         add(new NumFeld(KFV_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 12, 55));
         add(new NumFeld(KFV_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 12, 67));
-        add(new NumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_VOLLKASKO, 12, 79));
+        add(new NumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO, 12, 79));
         add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN, 12, 91));
-        add(new NumFeld(
-                FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO, 12,
-                103));
-        add(new AlphaNumFeld(REFERENZNUMMER, 7, 115));
-        add(new AlphaNumFeld(LFD_NUMMER, 4, 122));
-        add(new AlphaNumFeld(PERSONENNUMMER_LFD_NUMMER, 17, 126));
+        add(new AlphaNumFeld(REFERENZNUMMER, 7, 103));
+        add(new AlphaNumFeld(LFD_NUMMER, 4, 110));
+        add(new AlphaNumFeld(PERSONENNUMMER_LFD_NUMMER, 17, 114));
     }
 
     private void setUpDatenfelder70() {

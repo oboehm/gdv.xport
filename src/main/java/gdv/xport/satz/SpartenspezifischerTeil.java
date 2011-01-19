@@ -288,16 +288,9 @@ public class SpartenspezifischerTeil extends Spartensatz {
         add(new AlphaNumFeld(TARIF, 10, 183));
         add(new AlphaNumFeld(LFD_NUMMER, 4, 193));
         add(new AlphaNumFeld(PERSONENNUMMER_LFD_NUMMER, 17, 197));
-        // Teildatensatz 2
-        add(new AlphaNumFeld(PRODUKTKENNUNG, 20, 43), 2);
-        add(new AlphaNumFeld(VERSICHERTE_GEFAHREN, 30, 63), 2);
-        add(new NumFeld(SELBSTBETEILIGUNG_IN_PROZENT, 5, 93), 2);
-        add(new NumFeld(SELBSTBETEILIGUNG_IN_WE_MIND, 12, 98), 2);
-        add(new NumFeld(SELBSTBETEILIGUNG_IN_WE_MAX, 12, 110), 2);
-        add(new AlphaNumFeld(GELTUNGSBEREICH, 30, 122), 2);
-        add(new AlphaNumFeld(GELTUNGSBEREICHEINSCHRAENKUNG, 30, 152), 2);
+        setUpDatenfelder5xTeildatensatz2();
     }
-    
+
     /**
      * Sparte 52 (KFZ - Fahrzeugvollkasko) wurde freundlicherweise von
      * Igor Narodetskyi zur Verfuegung gestellt.
@@ -335,6 +328,13 @@ public class SpartenspezifischerTeil extends Spartensatz {
         add(new AlphaNumFeld(TARIF, 10, 168));
         add(new AlphaNumFeld(LFD_NUMMER, 4, 178));
         add(new AlphaNumFeld(PERSONENNUMMER_LFD_NUMMER, 17, 182));
+        setUpDatenfelder5xTeildatensatz2();
+    }
+
+    /**
+     * Teildatensatz 2 fuer Sparte 51 und 53 scheinen gleich zu sein.
+     */
+    private void setUpDatenfelder5xTeildatensatz2() {
         // Teildatensatz 2
         add(new AlphaNumFeld(PRODUKTKENNUNG, 20, 43), 2);
         add(new AlphaNumFeld(VERSICHERTE_GEFAHREN, 30, 63), 2);
@@ -376,14 +376,7 @@ public class SpartenspezifischerTeil extends Spartensatz {
         add(new AlphaNumFeld(PERSONENNUMMER_LFD_NUMMER, 17, 156));
         add(new AlphaNumFeld(SCHUTZBRIEF_VERKEHRSSERVICE, 1, 173));
         add(new AlphaNumFeld(GAP_DECKUNG, 1, 174));
-        // Teildatensatz 2
-        add(new AlphaNumFeld(PRODUKTKENNUNG, 20, 43), 2);
-        add(new AlphaNumFeld(VERSICHERTE_GEFAHREN, 30, 63), 2);
-        add(new NumFeld(SELBSTBETEILIGUNG_IN_PROZENT, 5, 93), 2);
-        add(new NumFeld(SELBSTBETEILIGUNG_IN_WE_MIND, 12, 98), 2);
-        add(new NumFeld(SELBSTBETEILIGUNG_IN_WE_MAX, 12, 110), 2);
-        add(new AlphaNumFeld(GELTUNGSBEREICH, 30, 122), 2);
-        add(new AlphaNumFeld(GELTUNGSBEREICHEINSCHRAENKUNG, 30, 152), 2);
+        setUpDatenfelder5xTeildatensatz2();
     }
 
     private void setUpDatenfelder70() {
