@@ -440,11 +440,33 @@ public abstract class Satz {
                         + ", but got data for Satzart " + art);
                 break;
             }
+            if (!hasCorrectSparte(reader)) {
+                log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
+                        + ", but Sparte has changed");
+                break;
+            }
             importFrom(reader, cbuf, i*257);
             cbuf[i*257+256] = '\n';
             skipNewline(reader);
         }
         importFrom(new String(cbuf));
+    }
+    
+    /**
+     * Unterklassen (wie Datensatz) sind dafuer verantwortlich, dass auch noch
+     * die Sparte ueberprueft wird, ob sie noch richtig ist oder ob da schon
+     * der naechste Satz beginnt.
+     *
+     * @param reader the reader
+     * @return true (Default-Implementierung)
+     * @throws IOException kann in den Unterklassen vorkommen
+     * @since 0.5.1
+     */
+    protected boolean hasCorrectSparte(final PushbackReader reader) throws IOException {
+        if (log.isTraceEnabled()) {
+            log.trace(reader + " not needed here");
+        }
+        return true;
     }
 
     private static void importFrom(final Reader reader, final char[]cbuf, final int i) throws IOException {

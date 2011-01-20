@@ -262,25 +262,29 @@ public class SpartenspezifischerTeil extends Spartensatz {
      */
     private void setUpDatenfelder51() {
         // Teildatensatz 1
-        add(new NumFeld(KH_BEGINN, 8, 43));
-        add(new NumFeld(KH_AUSSCHLUSS, 8, 51));
-        add(new NumFeld(KH_AENDERUNGSDATUM, 8, 59));
+        add(new Datum(KH_BEGINN, 8, 43));
+        add(new Datum(KH_AUSSCHLUSS, 8, 51));
+        add(new Datum(KH_AENDERUNGSDATUM, 8, 59));
         add(new AlphaNumFeld(KH_TARIFGRUPPE, 4, 67));
         add(new NumFeld(KH_DECKUNGSART, 2, 71));
-        add(new NumFeld(KH_DECKUNGSSUMMEN, 27, 73));
+//      add(new NumFeld(KH_DECKUNGSSUMMEN, 27, 73));        
+        add(new NumFeld(KH_DECKUNGSSUMMEN_PERSONENSCHAEDEN, 9, 73));
+        add(new NumFeld(KH_DECKUNGSSUMMEN_SACHSCHAEDEN, 9, 82));
+        add(new NumFeld(KH_DECKUNGSSUMMEN_VERMOEGENSCHAEDEN, 9, 91));       
         add(new AlphaNumFeld(KH_RGJ, 2, 100));
         add(new AlphaNumFeld(KH_SF_S_KLASSE, 5, 102));
         add(new NumFeld(KH_BEITRAGSSAETZE, 3, 107));
-        add(new NumFeld(KH_BEITRAG_IN_WAEHRUNGSEINHEITEN, 8, 110));
-        add(new NumFeld(KH_ZUSCHLAEGE_IN_PROZENT, 5, 118));
-        add(new NumFeld(KH_ABSCHLAEGE_IN_PROZENT, 5, 123));
-        add(new NumFeld(KH_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 128));
-        add(new NumFeld(KH_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 134));
-        add(new NumFeld(FLOTTENRABATT_IN_PROZENT, 3, 140));
-        add(new NumFeld(GUELTIGE_AKB, 4, 143));
-        add(new NumFeld(PROVISION, 4, 147));
+        add(new NumFeld(KH_BEITRAG_IN_WAEHRUNGSEINHEITEN, 8, 110).mitNachkommastellen(1));
+        add(new NumFeld(KH_ZUSCHLAEGE_IN_PROZENT, 5, 118).mitNachkommastellen(2));
+        add(new NumFeld(KH_ABSCHLAEGE_IN_PROZENT, 5, 123).mitNachkommastellen(2));
+        add(new NumFeld(KH_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 128).mitNachkommastellen(2));
+        add(new NumFeld(KH_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 134).mitNachkommastellen(2));
+        add(new NumFeld(FLOTTENRABATT_IN_PROZENT, 3, 140).mitNachkommastellen(1));
+        add(new Datum(GUELTIGE_AKB, 4, 143));
+        add(new NumFeld(PROVISION, 4, 147).mitNachkommastellen(2));
         add(new NumFeld(KH_SCHAEDEN_AUS_RUECKSTUFUNG, 2, 151));
-        add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_HAFTPFLICHT_IN_WAEHRUNGSEINHEITEN, 8, 154));
+        add(new Zeichen(KENNZEICHEN_FUER_ABWEICHENDE_PROVISION, 153));
+        add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_HAFTPFLICHT_IN_WAEHRUNGSEINHEITEN, 8, 154).mitNachkommastellen(1));
         add(new AlphaNumFeld(SCHUTZBRIEF_VERKEHRSSERVICE, 1, 162));
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 163));
         add(new NumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH, 10, 170));
@@ -299,27 +303,28 @@ public class SpartenspezifischerTeil extends Spartensatz {
      */
     private void setUpDatenfelder52() {
         // Teildatensatz 1
-        add(new NumFeld(KFV_BEGINN, 8, 43));
-        add(new NumFeld(KFV_AUSSCHLUSS, 8, 51));
-        add(new NumFeld(KFV_AENDERUNGSDATUM, 8, 59));
+        add(new Datum(KFV_BEGINN, 8, 43));
+        add(new Datum(KFV_AUSSCHLUSS, 8, 51));
+        add(new Datum(KFV_AENDERUNGSDATUM, 8, 59));
         add(new AlphaNumFeld(KFV_TARIFGRUPPE, 4, 67));
         add(new NumFeld(KFV_DECKUNGSART, 2, 71));
         add(new AlphaNumFeld(KFV_RGJ, 2, 73));
         add(new AlphaNumFeld(KFV_SFS_KLASSE, 5, 75));
         add(new NumFeld(KFV_BEITRAGSSATZ, 3, 80));
-        add(new NumFeld(KFV_BEITRAG_IN_WAEHRUNGSEINHEITEN, 8, 83));
-        add(new NumFeld(KFV_ZUSCHLAEGE_IN_PROZENT, 5, 91));
-        add(new NumFeld(KFV_ABSCHLAEGE_IN_PROZENT, 5, 96));
-        add(new NumFeld(KFV_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 101));
-        add(new NumFeld(KFV_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 107));
-        add(new NumFeld(FLOTTENRABATT_IN_PROZENT, 3, 113));
-        add(new NumFeld(GUELTIGE_AKB, 4, 116));
-        add(new NumFeld(PROVISION, 4, 120));
+        add(new NumFeld(KFV_BEITRAG_IN_WAEHRUNGSEINHEITEN, 8, 83).mitNachkommastellen(1));
+        add(new NumFeld(KFV_ZUSCHLAEGE_IN_PROZENT, 5, 91).mitNachkommastellen(2));
+        add(new NumFeld(KFV_ABSCHLAEGE_IN_PROZENT, 5, 96).mitNachkommastellen(2));
+        add(new NumFeld(KFV_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 101).mitNachkommastellen(2));
+        add(new NumFeld(KFV_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 107).mitNachkommastellen(2));
+        add(new NumFeld(FLOTTENRABATT_IN_PROZENT, 3, 113).mitNachkommastellen(1));
+        add(new Datum(GUELTIGE_AKB, 4, 116));
+        add(new NumFeld(PROVISION, 4, 120).mitNachkommastellen(2));
         add(new NumFeld(KFV_SCHAEDEN_AUS_RUECKSTUFUNG, 2, 124));
         add(new AlphaNumFeld(TYPKLASSE_FUER_KFV, 2, 126));
         add(new AlphaNumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_VOLLKASKO, 10, 128));
         add(new AlphaNumFeld(KENNZEICHEN_FUER_ABWEICHENDE_PROVISION, 1, 138));
-        add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN, 8, 139));
+        add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN, 8, 139)
+                .mitNachkommastellen(1));
         add(new NumFeld(KASKO_BEGINNJAHR, 4, 147));
         add(new NumFeld(
                 FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO, 10,
@@ -338,9 +343,9 @@ public class SpartenspezifischerTeil extends Spartensatz {
         // Teildatensatz 2
         add(new AlphaNumFeld(PRODUKTKENNUNG, 20, 43), 2);
         add(new AlphaNumFeld(VERSICHERTE_GEFAHREN, 30, 63), 2);
-        add(new NumFeld(SELBSTBETEILIGUNG_IN_PROZENT, 5, 93), 2);
-        add(new NumFeld(SELBSTBETEILIGUNG_IN_WE_MIND, 12, 98), 2);
-        add(new NumFeld(SELBSTBETEILIGUNG_IN_WE_MAX, 12, 110), 2);
+        add(new NumFeld(SELBSTBETEILIGUNG_IN_PROZENT, 5, 93).mitNachkommastellen(2), 2);
+        add(new Betrag(SELBSTBETEILIGUNG_IN_WE_MIND, 12, 98), 2);
+        add(new Betrag(SELBSTBETEILIGUNG_IN_WE_MAX, 12, 110), 2);
         add(new AlphaNumFeld(GELTUNGSBEREICH, 30, 122), 2);
         add(new AlphaNumFeld(GELTUNGSBEREICHEINSCHRAENKUNG, 30, 152), 2);
     }
@@ -353,23 +358,24 @@ public class SpartenspezifischerTeil extends Spartensatz {
      */
     private void setUpDatenfelder53() {
         // Teildatensatz 1
-        add(new NumFeld(KFT_BEGINN, 8, 43));
-        add(new NumFeld(KFT_AUSSCHLUSS, 8, 51));
-        add(new NumFeld(KFT_AENDERUNGSDATUM, 8, 59));
+        add(new Datum(KFT_BEGINN, 8, 43));
+        add(new Datum(KFT_AUSSCHLUSS, 8, 51));
+        add(new Datum(KFT_AENDERUNGSDATUM, 8, 59));
         add(new AlphaNumFeld(KFT_TARIFGRUPPE, 4, 67));
         add(new NumFeld(KFT_DECKUNGSART, 2, 71));
-        add(new NumFeld(KFT_BEITRAG_IN_WAEHRUNGSEINHEITEN, 8, 73));
-        add(new NumFeld(KFT_ZUSCHLAEGE_IN_PROZENT, 5, 81));
-        add(new NumFeld(KFT_ABSCHLAEGE_IN_PROZENT, 5, 86));
-        add(new NumFeld(KFT_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 91));
-        add(new NumFeld(KFT_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 97));
-        add(new NumFeld(FLOTTENRABATT_IN_PROZENT, 3, 103));
-        add(new NumFeld(GUELTIGE_AKB, 4, 106));
-        add(new NumFeld(PROVISION, 4, 110));
+        add(new NumFeld(KFT_BEITRAG_IN_WAEHRUNGSEINHEITEN, 8, 73).mitNachkommastellen(1));
+        add(new NumFeld(KFT_ZUSCHLAEGE_IN_PROZENT, 5, 81).mitNachkommastellen(2));
+        add(new NumFeld(KFT_ABSCHLAEGE_IN_PROZENT, 5, 86).mitNachkommastellen(2));
+        add(new NumFeld(KFT_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 91).mitNachkommastellen(2));
+        add(new NumFeld(KFT_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN, 6, 97).mitNachkommastellen(2));
+        add(new NumFeld(FLOTTENRABATT_IN_PROZENT, 3, 103).mitNachkommastellen(1));
+        add(new Datum(GUELTIGE_AKB, 4, 106));
+        add(new NumFeld(PROVISION, 4, 110).mitNachkommastellen(2));
         add(new AlphaNumFeld(TYPKLASSE_FUER_KFT, 2, 114));
         add(new NumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO, 10, 116));
         add(new AlphaNumFeld(KENNZEICHEN_FUER_ABWEICHENDE_PROVISION, 1, 126));
-        add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGTEIL_IN_WAEHRUNGSEINHEITEN, 8, 127));
+        add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGTEIL_IN_WAEHRUNGSEINHEITEN, 8, 127)
+                .mitNachkommastellen(1));
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 135));
         add(new AlphaNumFeld(TARIF, 10, 142));
         add(new AlphaNumFeld(LFD_NUMMER, 4, 152));

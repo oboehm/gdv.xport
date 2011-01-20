@@ -244,6 +244,9 @@ public final class Bezeichner {
     public static final String KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1 = "KH-Deckungssummen in Waehrungseinheiten Teil 1";
     public static final String KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2 = "KH-Deckungssummen in Waehrungseinheiten Teil 2";
     public static final String KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3 = "KH-Deckungssummen in Waehrungseinheiten Teil 3";
+    public static final String KH_DECKUNGSSUMMEN_PERSONENSCHAEDEN = "KH-Deckungssummen Personenschaeden";
+    public static final String KH_DECKUNGSSUMMEN_SACHSCHAEDEN = "KH-Deckungssummen Sachschaeden";
+    public static final String KH_DECKUNGSSUMMEN_VERMOEGENSCHAEDEN = "KH-Deckungssummen Vermoegensschaeden";
     public static final String KH_RGJ = "KH-RGJ";
     public static final String KH_SCHAEDEN_AUS_RUECKSTUFUNG = "KH-Schaeden aus Rueckstufung";
     public static final String KH_SF_S_KLASSE = "KH-SF/S-Klasse";

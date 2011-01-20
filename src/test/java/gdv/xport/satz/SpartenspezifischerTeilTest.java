@@ -20,10 +20,12 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
 import static org.junit.Assert.*;
+import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
 import java.io.*;
+import java.util.List;
 
 import org.apache.commons.logging.*;
 import org.junit.*;
@@ -125,6 +127,28 @@ public class SpartenspezifischerTeilTest extends AbstractSatzTest {
         SpartenspezifischerTeil wagnisdaten = new SpartenspezifischerTeil(30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
+    }
+    
+    /**
+     * Der Import von Sparte 51 scheint manchmal einfach uebergangen zu werden,
+     * wenn er nur aus einem Teildatensatz besteht und danach gleich ein Satz
+     * mit Sparte 53 kommt.
+     * 
+     * @throws IOException
+     *             falls der Test-Satz nicht gelesen werden kann
+     */
+    @Test
+    public void testImportSparte51() throws IOException {
+        InputStream istream = this.getClass().getResourceAsStream("Satz0220051.txt");
+        try {
+            Datenpaket datenpaket = new Datenpaket();
+            datenpaket.importFrom(istream);
+            List<Datensatz> datensaetze = datenpaket.getDatensaetze();
+            assertEquals(51, datensaetze.get(0).getSparte());
+            assertEquals(53, datensaetze.get(1).getSparte());
+        } finally {
+            istream.close();
+        }
     }
 
 }

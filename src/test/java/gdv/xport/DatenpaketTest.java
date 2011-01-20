@@ -23,6 +23,7 @@ import static org.junit.Assert.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
+import gdv.xport.util.HtmlFormatter;
 
 import java.io.*;
 import java.net.URL;
@@ -30,7 +31,7 @@ import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.*;
 import org.apache.commons.logging.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -207,29 +208,47 @@ public final class DatenpaketTest {
     @Test
     public void testImportExport() throws IOException {
         Config.setEOD("\n");
-        InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
+        String muster = getResourceAsString("/musterdatei_041222.txt");
+        datenpaket.importFrom(muster);
+        VertragsspezifischerTeil vertragsteil = (VertragsspezifischerTeil) datenpaket.getDatensaetze().get(2);
+        Feld vertragsstatus = vertragsteil.getFeld(VERTRAGSSTATUS);
+        assertEquals("1", vertragsstatus.getInhalt());
+        checkExportWith(muster);
+    }
+    
+    @IntegrationTest
+    @Test
+    public void testImportIgor() throws IOException {
+        Config.setEOD("\n");
+        String content = getResourceAsString("/igor_110120.txt");
+        datenpaket.importFrom(content);
+//        FileUtils.writeStringToFile(new File("target/igor.html"), HtmlFormatter.toString(datenpaket));
+        checkExportWith(content);
+    }
+
+    private static String getResourceAsString(final String resource) throws IOException {
+        InputStream istream = DatenpaketTest.class.getResourceAsStream(resource);
         try {
-//            String muster = StringUtils.remove(IOUtils.toString(istream), '\r');
-            String muster = IOUtils.toString(istream);
-            datenpaket.importFrom(muster);
-            VertragsspezifischerTeil vertragsteil = (VertragsspezifischerTeil) datenpaket.getDatensaetze().get(2);
-            Feld vertragsstatus = vertragsteil.getFeld(VERTRAGSSTATUS);
-            assertEquals("1", vertragsstatus.getInhalt());
-            StringWriter swriter = new StringWriter(muster.length());
-            datenpaket.export(swriter);
-            swriter.close();
-            assertLines(muster, swriter.toString());
+            assertNotNull(resource + " not found", istream);
+            return IOUtils.toString(istream);
         } finally {
             istream.close();
         }
     }
-    
+
+    private void checkExportWith(String content) throws IOException {
+        StringWriter swriter = new StringWriter(content.length());
+        datenpaket.export(swriter);
+        swriter.close();
+        assertLines(content, swriter.toString());
+    }
+
     private static void assertLines(final String expected, final String paket) throws IOException {
         BufferedReader expectedReader = new BufferedReader(new StringReader(expected));
         BufferedReader paketReader = new BufferedReader(new StringReader(paket));
         for (int line = 1;; line++) {
-            String expectedLine = expectedReader.readLine();
-            String paketLine = paketReader.readLine();
+            String expectedLine = readNextLine(expectedReader);
+            String paketLine = readNextLine(paketReader);
             if (expectedLine == null) {
                 log.info(line + " lines compared (no difference)");
                 break;
@@ -237,6 +256,19 @@ public final class DatenpaketTest {
             assertEquals("difference in line " + line, expectedLine, paketLine);
         }
         expectedReader.close();
+    }
+
+    private static String readNextLine(BufferedReader reader) throws IOException {
+        String line = reader.readLine();
+        if (line == null) {
+            log.debug("EOF reached");
+            return null;
+        }
+        if (line.isEmpty()) {
+            log.debug("skipping empty line");
+            return readNextLine(reader);
+        }
+        return line;
     }
 
     /**

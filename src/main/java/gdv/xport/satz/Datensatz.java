@@ -229,6 +229,15 @@ public class Datensatz extends Satz {
     }
 
     /* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#hasCorrectSparte(java.io.PushbackReader)
+     */
+    @Override
+    protected boolean hasCorrectSparte(final PushbackReader reader) throws IOException {
+        int sparteRead = readSparte(reader);
+        return sparteRead == this.getSparte();
+    }
+
+    /* (non-Javadoc)
      * @see gdv.xport.satz.Satz#toShortString()
      */
     @Override
