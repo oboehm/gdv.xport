@@ -114,15 +114,19 @@ public final class Datum extends Feld {
     }
 
     private static DateFormat getDateFormat(final int length) {
+        return getDateFormat(length, "");
+    }
+
+    private static DateFormat getDateFormat(final int length, final String separator) {
         switch (length) {
             case 2:
                 return new SimpleDateFormat("dd");
             case 4:
-                return new SimpleDateFormat("MMyy");
+                return new SimpleDateFormat("MM" + separator + "yy");
             case 6:
-                return new SimpleDateFormat("MMyyyy");
+                return new SimpleDateFormat("MM" + separator + "yyyy");
             case 8:
-                return new SimpleDateFormat("ddMMyyyy");
+                return new SimpleDateFormat("dd" + separator + "MM" + separator + "yyyy");
             default:
                 throw new IllegalArgumentException("length=" + length
                         + " not allowed - only 2, 4, 6 or 8");
@@ -250,6 +254,15 @@ public final class Datum extends Feld {
             violations.add(cv);
         }
         return violations;
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#format()
+     */
+    @Override
+    public String format() {
+        DateFormat df = getDateFormat(this.getAnzahlBytes(), ".");
+        return df.format(this.toDate());
     }
 
 }

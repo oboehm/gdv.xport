@@ -20,6 +20,8 @@ package gdv.xport.feld;
 
 import static org.junit.Assert.*;
 
+import java.util.Locale;
+
 import org.junit.Test;
 
 /**
@@ -68,6 +70,17 @@ public class BetragMitVorzeichenTest {
     public void testIsValid() {
         betrag.setInhalt(99.99);
         assertTrue(betrag + " should be a valid number", betrag.isValid());
+    }
+    
+    /**
+     * Test-Methode fuer {@link BetragMitVorzeichen#format()}.
+     */
+    @Test
+    public void testFormat() {
+        betrag.setInhalt(-1.2);
+        if ("DE".equals(Locale.getDefault().getCountry())) {
+            assertEquals("-1,20", betrag.format());
+        }
     }
 
 }

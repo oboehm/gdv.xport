@@ -238,4 +238,18 @@ public class NumFeld extends Feld {
         return violations;
     }
 
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#format()
+     */
+    @Override
+    public String format() {
+        NumberFormat nf = NumberFormat.getInstance();
+        if (this.nachkommastellen == 0) {
+            return nf.format(this.toLong());
+        }
+        nf.setMinimumFractionDigits(this.nachkommastellen);
+        nf.setMaximumFractionDigits(this.nachkommastellen);
+        return nf.format(this.toDouble());
+    }
+
 }

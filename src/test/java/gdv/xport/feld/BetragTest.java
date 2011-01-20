@@ -20,6 +20,8 @@ package gdv.xport.feld;
 
 import static org.junit.Assert.*;
 
+import java.util.Locale;
+
 import org.junit.Test;
 
 /**
@@ -60,6 +62,18 @@ public class BetragTest {
         betrag.setInhalt(1.23);
         assertEquals("00123", betrag.getInhalt());
         assertEquals(1.23, betrag.toDouble(), 0.001);
+    }
+    
+    /**
+     * Ein Betrag sollte als entsprechender Text formattiert werden.
+     * @since 0.5.1
+     */
+    @Test
+    public void testFormat() {
+        betrag.setInhalt(1.23);
+        if ("DE".equals(Locale.getDefault().getCountry())) {
+            assertEquals("1,23", betrag.format());
+        }
     }
 
 }

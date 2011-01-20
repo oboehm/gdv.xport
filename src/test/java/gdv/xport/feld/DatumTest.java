@@ -175,6 +175,43 @@ public class DatumTest {
         Datum empty = new Datum("empty", "00000000");
         assertTrue(empty + " is empty", empty.isEmpty());
     }
+    
+    /**
+     * Test-Methode fuer {@link Datum#format()}.
+     */
+    @Test
+    public void testFormatTTMMJJJJ() {
+        checkDatumFormat("20012011", "20.01.2011");
+    }
+
+    /**
+     * Test-Methode fuer {@link Datum#format()}.
+     */
+    @Test
+    public void testFormatMMJJJJ() {
+        checkDatumFormat("012011", "01.2011");
+    }
+
+    /**
+     * Test-Methode fuer {@link Datum#format()}.
+     */
+    @Test
+    public void testFormatMMJJ() {
+        checkDatumFormat("0111", "01.11");
+    }
+
+    /**
+     * Test-Methode fuer {@link Datum#format()}.
+     */
+    @Test
+    public void testFormatTT() {
+        checkDatumFormat("20", "20");
+    }
+
+    private static void checkDatumFormat(final String inhalt, final String expected) {
+        Datum datum = new Datum("Test-Datum", inhalt);
+        assertEquals(expected, datum.format());
+    }
 
 }
 

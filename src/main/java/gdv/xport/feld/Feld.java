@@ -421,6 +421,19 @@ public class Feld implements Comparable<Feld> {
         }
         return violations;
     }
+    
+    /**
+     * Diese Methode ist dafuer vorgesehen, das Feld als normalen String
+     * ausgeben zu koennen. Zahlen koennen so z.B. in der Form "123,45"
+     * ausgegeben werden, unter Beruecksichtigung der eingestellten
+     * "Locale".
+     * 
+     * @since 0.5.1
+     * @return Inhalt des Feldes
+     */
+    public String format() {
+        return this.getInhalt();
+    }
 
     /*
      * (non-Javadoc)

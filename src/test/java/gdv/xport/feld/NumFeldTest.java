@@ -22,7 +22,7 @@ package gdv.xport.feld;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
+import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 
@@ -155,6 +155,30 @@ public class NumFeldTest {
         NumFeld big = new NumFeld("big", 14, 1).mitNachkommastellen(2);
         big.setInhalt("00005000000000");
         assertTrue("should be valid", big.isValid());
+    }
+    
+    /**
+     * Ein Betrag sollte als entsprechender Text formattiert werden.
+     * @since 0.5.1
+     */
+    @Test
+    public void testFormatInt() {
+        NumFeld betrag = new NumFeld("betrag", 5, 1);
+        betrag.setInhalt("120");
+        assertEquals("120", betrag.format());
+    }
+
+    /**
+     * Ein Betrag sollte als entsprechender Text formattiert werden.
+     * @since 0.5.1
+     */
+    @Test
+    public void testFormatDouble() {
+        NumFeld betrag = new NumFeld("betrag", 5, 1).mitNachkommastellen(2);
+        betrag.setInhalt("120");
+        if ("DE".equals(Locale.getDefault().getCountry())) {
+            assertEquals("1,20", betrag.format());
+        }
     }
 
 }
