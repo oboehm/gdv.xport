@@ -127,14 +127,13 @@ public class Erweiterungssatz211 extends Spartensatz {
      */
     private void setUpDatenfelder50() {
         // Teildatensatz 1
-        add(new NumFeld(NEUPREIS_IN_WAEHRUNGSEINHEITEN, 12, 43));
-        add(new NumFeld(MEHRWERT_IN_WAEHRUNGSEINHEITEN, 12, 55));
+        add(new Betrag(NEUPREIS_IN_WAEHRUNGSEINHEITEN, 12, 43));
+        add(new Betrag(MEHRWERT_IN_WAEHRUNGSEINHEITEN, 12, 55));
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 67));
         add(new AlphaNumFeld(LFD_NUMMER, 4, 74));
         add(new AlphaNumFeld(PERSONEN_KUNDENNUMMER_DES_VERSICHERERS, 17, 78));
         add(new AlphaNumFeld(Bezeichner.LEERSTELLEN, 161, 95));
     }
-
 
 }
 
