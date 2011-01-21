@@ -434,15 +434,9 @@ public abstract class Satz {
     public void importFrom(final PushbackReader reader) throws IOException {
         char[] cbuf = new char[257 * teildatensatz.length];
         for (int i = 0; i < teildatensatz.length; i++) {
-            int art = readSatzart(reader);
-            if (art != this.getSatzart()) {
+            if (!matchesNextTeildatensatz(reader)) {
                 log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
-                        + ", but got data for Satzart " + art);
-                break;
-            }
-            if (!hasCorrectSparte(reader)) {
-                log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
-                        + ", but Sparte has changed");
+                        + ", but Satzart or Sparte has changed");
                 break;
             }
             importFrom(reader, cbuf, i*257);
@@ -456,17 +450,17 @@ public abstract class Satz {
      * Unterklassen (wie Datensatz) sind dafuer verantwortlich, dass auch noch
      * die Sparte ueberprueft wird, ob sie noch richtig ist oder ob da schon
      * der naechste Satz beginnt.
+     * 
+     * Hier (fuer den allgemeinen Fall) wird nur die Satzart ueberprueft.
      *
      * @param reader the reader
      * @return true (Default-Implementierung)
-     * @throws IOException kann in den Unterklassen vorkommen
+     * @throws IOException bei I/O-Fehlern
      * @since 0.5.1
      */
-    protected boolean hasCorrectSparte(final PushbackReader reader) throws IOException {
-        if (log.isTraceEnabled()) {
-            log.trace(reader + " not needed here");
-        }
-        return true;
+    protected boolean matchesNextTeildatensatz(final PushbackReader reader) throws IOException {
+        int art = readSatzart(reader);
+        return art == this.getSatzart();
     }
 
     private static void importFrom(final Reader reader, final char[]cbuf, final int i) throws IOException {

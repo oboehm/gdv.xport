@@ -228,13 +228,24 @@ public class Datensatz extends Satz {
         return Integer.parseInt(new String(cbuf).substring(10, 13));
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Satz#hasCorrectSparte(java.io.PushbackReader)
+    /**
+     * Unterklassen (wie Datensatz) sind dafuer verantwortlich, dass auch noch
+     * die Sparte ueberprueft wird, ob sie noch richtig ist oder ob da schon
+     * der naechste Satz beginnt.
+     *
+     * @param reader the reader
+     * @return true (Default-Implementierung)
+     * @throws IOException bei I/O-Fehlern
+     * @since 0.5.1
+     * @see Satz#matchesNextTeildatensatz(PushbackReader)
      */
     @Override
-    protected boolean hasCorrectSparte(final PushbackReader reader) throws IOException {
-        int sparteRead = readSparte(reader);
-        return sparteRead == this.getSparte();
+    protected boolean matchesNextTeildatensatz(final PushbackReader reader) throws IOException {
+        if (super.matchesNextTeildatensatz(reader)) {
+            int sparteRead = readSparte(reader);
+            return sparteRead == this.getSparte();
+        }
+        return false;
     }
 
     /* (non-Javadoc)
