@@ -50,10 +50,11 @@ public final class XmlFormatter extends AbstractFormatter {
      * @since 0.5.0
      */
     public XmlFormatter() {
+        super();
     }
 
     /**
-     * Der einzige Konstruktor.
+     * Der Konstruktor fuer die normale Arbeit.
      * 
      * @param writer
      *            the writer

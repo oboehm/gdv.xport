@@ -35,7 +35,7 @@ public final class NullFormatter extends AbstractFormatter {
      * Instantiates a new null formatter.
      */
     public NullFormatter() {
-        super.setWriter(System.out);
+        super();
     }
     
     /**

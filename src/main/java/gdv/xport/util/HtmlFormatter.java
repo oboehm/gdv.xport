@@ -64,6 +64,7 @@ public final class HtmlFormatter extends AbstractFormatter {
      * Default-Konstruktor.
      */
     public HtmlFormatter() {
+        super();
     }
 
     /**

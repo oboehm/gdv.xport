@@ -17,10 +17,10 @@ public abstract class AbstractFormatter {
     private Writer writer;
 
     /**
-     * Default-Konstruktor.
+     * Default-Konstruktor, der als Standard-Ausgabekanal stdout einstellt.
      */
     public AbstractFormatter() {
-        super();
+        this(System.out);
     }
     
     /**
@@ -30,6 +30,15 @@ public abstract class AbstractFormatter {
      */
     public AbstractFormatter(final Writer writer) {
         this.writer = writer;
+    }
+    
+    /**
+     * Instantiiert einen neuen Formatter.
+     *
+     * @param ostream the ostream
+     */
+    public AbstractFormatter(final OutputStream ostream) {
+        this(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
     }
 
     /**
