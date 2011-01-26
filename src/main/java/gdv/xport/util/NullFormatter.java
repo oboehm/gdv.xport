@@ -39,6 +39,15 @@ public final class NullFormatter extends AbstractFormatter {
     }
     
     /**
+     * Instantiates a new null formatter.
+     *
+     * @param writer the writer
+     */
+    public NullFormatter(final Writer writer) {
+        super(writer);
+    }
+    
+    /**
      * Ausgabe eines kompletten Datenpakets.
      *
      * @param datenpaket Datenpaket, das formattiert ausgegeben werden soll

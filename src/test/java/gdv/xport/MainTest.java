@@ -23,6 +23,10 @@ import java.io.IOException;
 import javax.xml.stream.XMLStreamException;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * JUnit-Test fuer die Main-Klasse.
@@ -30,6 +34,8 @@ import org.junit.Test;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.5.1 (26.01.2011)
  */
+@RunWith(SmokeRunner.class)
+@IntegrationTest
 public final class MainTest {
 
     /**

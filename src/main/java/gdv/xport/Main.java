@@ -30,6 +30,7 @@ import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.cli.*;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.output.NullWriter;
 
 /**
  * The Class Main.
@@ -74,7 +75,7 @@ public final class Main {
                 datenpaket.importFrom(System.in);
             }
             // Option "-xml" bzw. "-html"
-            AbstractFormatter formatter = new NullFormatter();
+            AbstractFormatter formatter = new NullFormatter(new NullWriter());
             if (cmd.hasOption("xml")) {
                 formatter = new XmlFormatter();
             } else if (cmd.hasOption("html")) {
