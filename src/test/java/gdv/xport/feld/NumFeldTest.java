@@ -155,6 +155,8 @@ public class NumFeldTest {
         NumFeld big = new NumFeld("big", 14, 1).mitNachkommastellen(2);
         big.setInhalt("00005000000000");
         assertTrue("should be valid", big.isValid());
+        List<ConstraintViolation> violations = big.validate();
+        assertTrue(violations + " should be empty", violations.isEmpty());
     }
     
     /**

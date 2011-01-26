@@ -227,7 +227,7 @@ public class NumFeld extends Feld {
         List<ConstraintViolation> violations = super.validate();
         if (!this.isEmpty()) {
             try {
-                this.toInt();
+                this.toLong();
             } catch (NumberFormatException nfe) {
                 ConstraintViolation cv = new ConstraintViolation(new MatchPatternCheck(),
                         "not a number (" + nfe + ")", this, this.getInhalt(), new ClassContext(this
