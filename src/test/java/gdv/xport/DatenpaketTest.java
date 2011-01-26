@@ -23,7 +23,6 @@ import static org.junit.Assert.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
-import gdv.xport.util.HtmlFormatter;
 
 import java.io.*;
 import java.net.URL;
@@ -31,7 +30,7 @@ import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.io.*;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;

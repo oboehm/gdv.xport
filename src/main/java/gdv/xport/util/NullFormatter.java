@@ -32,6 +32,13 @@ import java.io.*;
 public final class NullFormatter extends AbstractFormatter {
     
     /**
+     * Instantiates a new null formatter.
+     */
+    public NullFormatter() {
+        super.setWriter(System.out);
+    }
+    
+    /**
      * Ausgabe eines kompletten Datenpakets.
      *
      * @param datenpaket Datenpaket, das formattiert ausgegeben werden soll
