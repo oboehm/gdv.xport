@@ -43,9 +43,10 @@
           <td></td>
           <td>Auslieferung</td>
           <td>
-            Jar-Files (target/gdv-xport-*.jar) unter
+            Hudson-Build starten starten und
+            Jar-Files unter
             http://repository.agentes.de/gdv/gdv-xport/0.x.x
-            kopieren
+            kontrollieren
           </td>
         </tr>
         <tr>
@@ -53,9 +54,9 @@
           <td></td>
           <td>Label setzen</td>
           <td>
-            git tag gdv-xport-0.5.0 (lokal)
+            git tag gdv-xport-0.5.1 (lokal)
             <br/>
-            git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-0.5.0 (remote)
+            git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-0.5.1 (remote)
           </td>
         </tr>
         <tr>
