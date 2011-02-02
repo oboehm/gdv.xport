@@ -267,7 +267,6 @@ public class SpartenspezifischerTeil extends Spartensatz {
         add(new Datum(KH_AENDERUNGSDATUM, 8, 59));
         add(new AlphaNumFeld(KH_TARIFGRUPPE, 4, 67));
         add(new NumFeld(KH_DECKUNGSART, 2, 71));
-//      add(new NumFeld(KH_DECKUNGSSUMMEN, 27, 73));        
         add(new NumFeld(KH_DECKUNGSSUMMEN_PERSONENSCHAEDEN, 9, 73));
         add(new NumFeld(KH_DECKUNGSSUMMEN_SACHSCHAEDEN, 9, 82));
         add(new NumFeld(KH_DECKUNGSSUMMEN_VERMOEGENSCHAEDEN, 9, 91));       
@@ -284,7 +283,8 @@ public class SpartenspezifischerTeil extends Spartensatz {
         add(new NumFeld(PROVISION, 4, 147).mitNachkommastellen(2));
         add(new NumFeld(KH_SCHAEDEN_AUS_RUECKSTUFUNG, 2, 151));
         add(new Zeichen(KENNZEICHEN_FUER_ABWEICHENDE_PROVISION, 153));
-        add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_HAFTPFLICHT_IN_WAEHRUNGSEINHEITEN, 8, 154).mitNachkommastellen(1));
+        add(new NumFeld(TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_HAFTPFLICHT_IN_WAEHRUNGSEINHEITEN, 8, 154)
+                .mitNachkommastellen(1));
         add(new AlphaNumFeld(SCHUTZBRIEF_VERKEHRSSERVICE, 1, 162));
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 163));
         add(new NumFeld(FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH, 10, 170));
@@ -438,24 +438,6 @@ public class SpartenspezifischerTeil extends Spartensatz {
         add(new AlphaNumFeld(MITVERSICHERTE_PERSON_VORNAME, 30, 219), 2);
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 249), 2);
     }
-
-//    /**
-//     * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
-//     * Teildatensaetze aufsetzen.
-//     *
-//     * @param x z.B. 30
-//     * @see gdv.xport.satz.Datensatz#setSparte(int)
-//     */
-//    @Override
-//    public void setSparte(final int x) {
-//        if (this.getSatzart() == x) {
-//            log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
-//        }
-//        super.setSparte(x);
-//        this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
-//        super.setUpTeildatensaetze();
-//        this.setUpDatenfelder(x);
-//    }
 
     /**
      * Sparte 30 hat optionale Teildatensaetze (Teildatensatz 9). Den
