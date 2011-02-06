@@ -389,9 +389,8 @@
   </developers>
   <contributors>
     <contributor>
-      <name>Oliver Boehm</name>
-      <email>ob@jugs.org</email>
-      <organization>JUGS</organization>
+      <name>Igor Narodetskyi</name>
+      <email>i.narodetskyi@autofleetcontrol.de</email>
       <roles>
         <role>Java Developer</role>
       </roles>
