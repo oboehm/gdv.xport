@@ -184,6 +184,10 @@ public abstract class Satz {
         if (feld.getByteAdresse() > 256) {
             throw new IllegalArgumentException(feld + " ueberschreitet Teildatensatz-Grenze");
         }
+        if ((teildatensatzNr < 1) || (teildatensatzNr > this.teildatensatz.length)) {
+            throw new IllegalArgumentException("Teildatensatz-Nr. " + teildatensatzNr + " fuer " + feld
+                    + " liegt nicht zwischen 1 und " + teildatensatz.length);
+        }
         this.teildatensatz[teildatensatzNr-1].add(feld);
     }
 

@@ -67,7 +67,7 @@ public class AbstractSatzTest {
         assertEquals(expected, toBeChecked);
     }
 
-    private String export(final Satz satz) throws IOException {
+    private static String export(final Satz satz) throws IOException {
         String eod = Config.getEOD();
         Config.setEOD("");
         StringWriter swriter = new StringWriter(768);
@@ -83,6 +83,19 @@ public class AbstractSatzTest {
         swriter.close();
         assertEquals(expected, swriter.toString());
         assertTrue(datensatz.toShortString() + " is not valid", datensatz.isValid());
+    }
+    
+    /**
+     * Import und Export sollten den gleichen Inhalt ergeben.
+     *
+     * @param satz Datensatz fuer den Import
+     * @param input Inhalt des Datensatzes
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    protected static void checkImportExport(final Satz satz, final String input) throws IOException {
+        satz.importFrom(input);
+        String exported = export(satz);
+        assertEquals(input, exported);
     }
 
 }

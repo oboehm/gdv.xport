@@ -20,6 +20,10 @@ package gdv.xport.satz;
 
 import static org.junit.Assert.*;
 
+import gdv.xport.feld.Bezeichner;
+
+import java.io.*;
+
 import org.junit.Test;
 
 /**
@@ -28,6 +32,11 @@ import org.junit.Test;
  */
 public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
 
+    private static final String input = 
+        "02009999  030      599999999990199990099992010520040105200901052" +
+        "00511  0000000001        01052004100000         EUR000000041141 " +
+        "                             0           B4LTTT                 " +
+        "  04100001052004                                   EUR1        1";
     private final AllgemeinerVertragsteil vertragsteil = new AllgemeinerVertragsteil();
 
     /**
@@ -36,6 +45,34 @@ public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
     @Test
     public void testAllgemeinerVertragsteil() {
         assertEquals(200, vertragsteil.getSatzart());
+    }
+    
+    /**
+     * Hier testen wir den Import und Export.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImportExport() throws IOException {
+        checkImportExport(vertragsteil, input);
+    }
+
+    /**
+     * Hier testen wir, ob die Import-Daten richtig interpretiert werden.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImport() throws IOException {
+        vertragsteil.importFrom(input);
+        assertEquals(200, vertragsteil.getSatzart());
+        assertEquals("9999", vertragsteil.getVuNummer());
+        assertEquals(30, vertragsteil.getSparte());
+        assertEquals("59999999999", vertragsteil.getVersicherungsscheinNummer());
+        assertEquals(1, vertragsteil.getFolgenummer());
+        assertEquals("9999009999", vertragsteil.getVermittler());
+        assertEquals("2", vertragsteil.get(Bezeichner.INKASSOART));
+        assertEquals("01052004", vertragsteil.get(Bezeichner.VERTRAGSBEGINN));
     }
 
 }

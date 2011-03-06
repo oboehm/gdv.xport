@@ -50,7 +50,7 @@ public class Erweiterungssatz211Test {
         Erweiterungssatz211 leben = new Erweiterungssatz211(10);
         log.info(leben + " created.");
         assertEquals(10, leben.getSparte());
-        assertEquals(Config.getVUNummer().getInhalt(), leben.getVuNummer());
+        assertEquals(Config.getVUNummer().getInhalt().trim(), leben.getVuNummer());
         Feld sparte = leben.getFeld(Bezeichner.SPARTE);
         assertEquals(new NumFeld(SPARTE, 3, 11, 10), sparte);
         Feld vermittler = leben.getFeld(Bezeichner.VERMITTLER);

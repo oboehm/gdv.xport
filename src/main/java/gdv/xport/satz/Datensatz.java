@@ -25,7 +25,10 @@ import java.io.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class Datensatz.
+ *
  * @author oliver
  * @since 12.10.2009
  */
@@ -110,8 +113,9 @@ public class Datensatz extends Satz {
 
     /**
      * Hiermit kann ein einzelner Teildatensatz aufgesetzt werden.
-     * @since 0.4
+     *
      * @param tds der (leere) Teildatensatz
+     * @since 0.4
      */
     protected void setUpTeildatensatz(final Teildatensatz tds) {
         tds.add(this.vuNummer);
@@ -124,8 +128,9 @@ public class Datensatz extends Satz {
     
     /**
      * Hiermit kann ein einzelner Teildatensatz aufgesetzt werden.
-     * @since 0.5
+     *
      * @param n Nummer des Teildatensatzes (beginnend bei 1)
+     * @since 0.5
      */
     protected void setUpTeildatensatz(final int n) {
         this.setUpTeildatensatz(this.getTeildatensatz(n));
@@ -142,6 +147,8 @@ public class Datensatz extends Satz {
     }
 
     /**
+     * Sets the sparte.
+     *
      * @param x z.B. 70 (Rechtsschutz)
      */
     public void setSparte(final int x) {
@@ -149,6 +156,8 @@ public class Datensatz extends Satz {
     }
 
     /**
+     * Gets the sparte.
+     *
      * @return die Sparte als int
      */
     public int getSparte() {
@@ -156,6 +165,8 @@ public class Datensatz extends Satz {
     }
 
     /**
+     * Gets the sparte feld.
+     *
      * @return die Sparte als Feld
      */
     public NumFeld getSparteFeld() {
@@ -163,6 +174,8 @@ public class Datensatz extends Satz {
     }
 
     /**
+     * Sets the vu nummer.
+     *
      * @param s VU-Nummer (max. 5 Stellen)
      */
     public void setVuNummer(final String s) {
@@ -170,44 +183,62 @@ public class Datensatz extends Satz {
     }
 
     /**
+     * Gets the vu nummer.
+     *
      * @return die VU-Nummer
      */
     public String getVuNummer() {
-        return this.vuNummer.getInhalt();
+        return this.vuNummer.getInhalt().trim();
     }
 
     /**
-     * @since 0.3
+     * Sets the versicherungsschein nummer.
+     *
      * @param nr die Versicherungsschein-Nummer
+     * @since 0.3
      */
     public void setVersicherungsscheinNummer(final String nr) {
         this.versicherungsscheinNr.setInhalt(nr);
     }
 
     /**
-     * @since 0.3
+     * Gets the versicherungsschein nummer.
+     *
      * @return die Versicherungsschein-Nummer
+     * @since 0.3
      */
     public String getVersicherungsscheinNummer() {
-        return this.versicherungsscheinNr.getInhalt();
+        return this.versicherungsscheinNr.getInhalt().trim();
     }
 
     /**
      * Hiermit kann die Folgenummer gesetzt werden.
      *
-     * @since 0.3
      * @param nr man sollte hier bei 1 anfangen mit zaehlen
+     * @since 0.3
      */
     public void setFolgenummer(final int nr) {
         this.folgeNr.setInhalt(nr);
     }
 
     /**
-     * @since 0.3
+     * Gets the folgenummer.
+     *
      * @return die Folgenummer
+     * @since 0.3
      */
     public int getFolgenummer() {
         return this.folgeNr.toInt();
+    }
+    
+    /**
+     * Gets the vermittler.
+     *
+     * @return the vermittler
+     * @since 0.6
+     */
+    public String getVermittler() {
+        return this.getFeldInhalt(VERMITTLER);
     }
 
     /**

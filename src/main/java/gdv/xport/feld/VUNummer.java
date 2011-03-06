@@ -46,6 +46,21 @@ public class VUNummer extends AlphaNumFeld {
     public VUNummer(final VUNummer nr, final int start) {
         super(VU_NUMMER, 5, start, nr.getInhalt());
     }
+    
+    /**
+     * Der eigentliche Default-Konstruktor fuer alle Feld-Derivate.
+     *
+     * @param name muss immer "VU-Nummer" sein
+     * @param length die Laenge (ueblicherweise 5)
+     * @param start die Start-Adresse (ueblicherweise 5)
+     * @since 0.6
+     */
+    public VUNummer(String name, final int length, final int start) {
+        super(name, length, start);
+        if (!VU_NUMMER.equalsIgnoreCase(name)) {
+            throw new IllegalArgumentException(VU_NUMMER + " (not '" + name + "') expected as 1st argument");
+        }
+    }
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#toString()
