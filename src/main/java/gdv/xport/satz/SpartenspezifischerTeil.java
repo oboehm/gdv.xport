@@ -93,7 +93,7 @@ public class SpartenspezifischerTeil extends Spartensatz {
             case 10:
                 return 9;
             default:
-                log.warn("unknown Sparte " + sparte + " -> mapped to 1 Teildatensatz");
+                log.warn("Satz 220: unknown Sparte " + sparte + " -> mapped to 1 Teildatensatz");
                 return 1;
         }
     }

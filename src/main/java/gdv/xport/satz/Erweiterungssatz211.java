@@ -76,7 +76,7 @@ public class Erweiterungssatz211 extends Spartensatz {
             case 190:
                 return 1;
             default:
-                log.warn("unknown Sparte " + sparte + " -> mapped to 1 Teildatensatz");
+                log.warn("Satz 211: unknown Sparte " + sparte + " -> mapped to 1 Teildatensatz");
                 return 1;
         }
     }
