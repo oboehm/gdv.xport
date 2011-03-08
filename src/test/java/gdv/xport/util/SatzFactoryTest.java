@@ -105,14 +105,19 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     /**
-     * Damit wird ueberprueft, ob Satzart 200 (AllgemeinerVertragsteil) bei der
-     * SatzFactory registriert ist.
+     * Damit wird ueberprueft, ob die Satzart 200 (AllgemeinerVertragsteil
+     * oder Satz0200) bei der SatzFactory registriert ist.
      */
     @Test
-    public void testGetAllgemeinerVertragsteil() {
-        checkGetDatensatz(200, AllgemeinerVertragsteil.class);
+    public void testAllgemeinerVertragsteil() {
+        checkGetDatensatz(200);
     }
     
+    private static void checkGetDatensatz(final int satzart) {
+        Datensatz datensatz = SatzFactory.getDatensatz(satzart);
+        assertEquals(satzart, datensatz.getSatzart());
+    }
+
     /**
      * Damit wird ueberprueft, ob Satzart 221 (Erweiterungssatz) bei der
      * SatzFactory registriert ist.

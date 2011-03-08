@@ -19,6 +19,7 @@
 package gdv.xport.util;
 
 import gdv.xport.satz.*;
+import gdv.xport.satz.model.Satz0200;
 
 import java.io.IOException;
 import java.lang.reflect.*;
@@ -49,7 +50,8 @@ public final class SatzFactory {
     static {
         registeredSatzClasses.put(1, Vorsatz.class);
         registeredSatzClasses.put(100, Adressteil.class);
-        registeredSatzClasses.put(200, AllgemeinerVertragsteil.class);
+//        registeredSatzClasses.put(200, AllgemeinerVertragsteil.class);
+        registeredSatzClasses.put(200, Satz0200.class);
         registeredSatzClasses.put(210, VertragsspezifischerTeil.class);
         registeredSatzClasses.put(220, SpartenspezifischerTeil.class);
         registeredSatzClasses.put(221, Erweiterungssatz221.class);

@@ -29,14 +29,14 @@ import org.junit.Test;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.6 (08.03.2011)
  */
-public final class FeldAllgemeinerVertragsteilTest {
+public final class Feld0200Test {
 
     /**
-     * Test method for {@link FeldAllgemeinerVertragsteil#getAsBezeichner()}.
+     * Test method for {@link Feld0200#getAsBezeichner()}.
      */
     @Test
     public void testGetAsBezeichner() {
-        assertEquals(Bezeichner.INKASSOART, FeldAllgemeinerVertragsteil.INKASSOART.getAsBezeichner());
+        assertEquals(Bezeichner.INKASSOART, Feld0200.INKASSOART.getAsBezeichner());
     }
 
 }

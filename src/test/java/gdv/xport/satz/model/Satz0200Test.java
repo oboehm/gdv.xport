@@ -20,10 +20,11 @@ package gdv.xport.satz.model;
 
 import static org.junit.Assert.assertEquals;
 import gdv.xport.satz.AbstractSatzTest;
-import gdv.xport.satz.sop.FeldAllgemeinerVertragsteil;
+import gdv.xport.satz.sop.Feld0200;
 
 import java.io.IOException;
 
+import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
@@ -34,6 +35,7 @@ import org.junit.Test;
  */
 public class Satz0200Test extends AbstractSatzTest {
 
+    private static final Log log = LogFactory.getLog(Satz0200Test.class);
     private static final String input = 
         "02009999  030      599999999990199990099992010520040105200901052" +
         "00511  0000000001        01052004100000         EUR000000041141 " +
@@ -73,8 +75,24 @@ public class Satz0200Test extends AbstractSatzTest {
         assertEquals("59999999999", satz.getVersicherungsscheinNummer());
         assertEquals(1, satz.getFolgenummer());
         assertEquals("9999009999", satz.getVermittler());
-        assertEquals("2", satz.get(FeldAllgemeinerVertragsteil.INKASSOART));
-        assertEquals("01052004", satz.get(FeldAllgemeinerVertragsteil.VERTRAGSBEGINN));
+        assertEquals("2", satz.get(Feld0200.INKASSOART));
+        assertEquals("01052004", satz.get(Feld0200.VERTRAGSBEGINN));
+    }
+    
+    /**
+     * Hier schauen wir nur nach der Performance der setUpDatenfelder()-
+     * Methode, die im Construktor aufgerufen wird. Wegen der Timer-Aufloesung
+     * sollte dieser Test unter Linux/Unix oder MacOS laufen.
+     */
+    @Test
+    public void testCtorPerformance() {
+        int n = 10;
+        long t0 = System.nanoTime();
+        for (int i = 0; i < n; i++) {
+            new Satz0200();
+        }
+        long nanos = System.nanoTime() - t0;
+        log.info("time of new Satz0200(): " +  (nanos/n/1000000.0) + " ms");
     }
 
 }

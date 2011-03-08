@@ -34,50 +34,36 @@ public @interface FeldInfo {
     
     /**
      * Teildatensatz.
-     *
-     * @return the int
      */
     int teildatensatz() default 1;
     
     /**
-     * Nr.
-     *
-     * @return the int
+     * Feld-Nummer im Teildatensatz.
      */
     int nr() default 1;
     
     /**
      * Erwarteter Datentyp, der angegeben werden <b>muss</b>.
-     *
-     * @return the class
      */
     Class<? extends Feld> type();
     
     /**
      * Anzahl bytes.
-     *
-     * @return the int
      */
     int anzahlBytes() default 1;
     
     /**
      * Byte adresse.
-     *
-     * @return the int
      */
     int byteAdresse() default -1;
     
     /**
-     * Nachkomma stellen.
-     *
-     * @return the int
+     * Anzahl Nachkommastellen.
      */
     int nachkommaStellen() default 0;
     
     /**
      * Erlaeuterung.
-     *
-     * @return the string
      */
     String erlaeuterung() default "siehe Handbuch GDV-Datensatz";
 

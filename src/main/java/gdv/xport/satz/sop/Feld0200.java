@@ -33,7 +33,7 @@ import org.apache.commons.logging.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.6 (06.03.2011)
  */
-public enum FeldAllgemeinerVertragsteil {
+public enum Feld0200 {
     
     /////   Allgemeiner Teil   ////////////////////////////////////////////////
 
@@ -659,7 +659,7 @@ public enum FeldAllgemeinerVertragsteil {
     
     /////   Utilities   ///////////////////////////////////////////////////////
 
-    private static final Log log = LogFactory.getLog(FeldAllgemeinerVertragsteil.class);
+    private static final Log log = LogFactory.getLog(Feld0200.class);
 
     /**
      * Rueckt die FeldInfo-Annotation raus.

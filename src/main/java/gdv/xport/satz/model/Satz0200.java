@@ -25,7 +25,7 @@ import org.apache.commons.logging.*;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
-import gdv.xport.satz.sop.FeldAllgemeinerVertragsteil;
+import gdv.xport.satz.sop.Feld0200;
 
 /**
  * Diese Klasse repraesentiert die Satzart 200.
@@ -53,7 +53,7 @@ public class Satz0200 extends Datensatz {
      * Sets the up datenfelder.
      */
     private void setUpDatenfelder() {
-        FeldAllgemeinerVertragsteil[] felder = FeldAllgemeinerVertragsteil.values();
+        Feld0200[] felder = Feld0200.values();
         for (int i = 0; i < felder.length; i++) {
             add(felder[i]);
         }
@@ -67,7 +67,7 @@ public class Satz0200 extends Datensatz {
      *
      * @param feldElement the feld element
      */
-    private void add(final FeldAllgemeinerVertragsteil feldElement) {
+    private void add(final Feld0200 feldElement) {
         FeldInfo info = feldElement.getFeldInfo();
         String name = feldElement.getAsBezeichner();
         Feld feld = createFeld(name, info);
@@ -103,7 +103,7 @@ public class Satz0200 extends Datensatz {
      * @param feld das gewuenschte Feld-Element
      * @return Inhalt des gefundenden Felds
      */
-    public String get(final FeldAllgemeinerVertragsteil feld) {
+    public String get(final Feld0200 feld) {
         String name = feld.getAsBezeichner();
         return super.get(name);
     }

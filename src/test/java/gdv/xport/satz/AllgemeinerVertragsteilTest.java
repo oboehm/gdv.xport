@@ -18,12 +18,12 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
 import gdv.xport.feld.Bezeichner;
 
-import java.io.*;
+import java.io.IOException;
 
+import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
@@ -32,6 +32,7 @@ import org.junit.Test;
  */
 public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
 
+    private static final Log log = LogFactory.getLog(AllgemeinerVertragsteilTest.class);
     private static final String input = 
         "02009999  030      599999999990199990099992010520040105200901052" +
         "00511  0000000001        01052004100000         EUR000000041141 " +
@@ -73,6 +74,22 @@ public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
         assertEquals("9999009999", vertragsteil.getVermittler());
         assertEquals("2", vertragsteil.get(Bezeichner.INKASSOART));
         assertEquals("01052004", vertragsteil.get(Bezeichner.VERTRAGSBEGINN));
+    }
+    
+    /**
+     * Hier schauen wir nur nach der Performance der setUpDatenfelder()-
+     * Methode, die im Construktor aufgerufen wird. Wegen der Timer-Aufloesung
+     * sollte dieser Test unter Linux/Unix oder MacOS laufen.
+     */
+    @Test
+    public void testCtorPerformance() {
+        int n = 10;
+        long t0 = System.nanoTime();
+        for (int i = 0; i < n; i++) {
+            new AllgemeinerVertragsteil();
+        }
+        long nanos = System.nanoTime() - t0;
+        log.info("time of new AllgemeinerVertragsteil(): " + (nanos/n/1000000.0) + " ms");
     }
 
 }
