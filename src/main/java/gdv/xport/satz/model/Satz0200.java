@@ -27,7 +27,6 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 import gdv.xport.satz.sop.FeldAllgemeinerVertragsteil;
 
-// TODO: Auto-generated Javadoc
 /**
  * Diese Klasse repraesentiert die Satzart 200.
  * Es handelt es sich dabei um eine alternative Implementierung der
@@ -40,7 +39,6 @@ import gdv.xport.satz.sop.FeldAllgemeinerVertragsteil;
  */
 public class Satz0200 extends Datensatz {
     
-    /** The Constant log. */
     private static final Log log = LogFactory.getLog(Satz0200.class);
     
     /**
@@ -59,6 +57,9 @@ public class Satz0200 extends Datensatz {
         for (int i = 0; i < felder.length; i++) {
             add(felder[i]);
         }
+        if (log.isTraceEnabled()) {
+            log.trace(felder.length + " Datenfelder set up");
+        }
     }
 
     /**
@@ -68,7 +69,7 @@ public class Satz0200 extends Datensatz {
      */
     private void add(final FeldAllgemeinerVertragsteil feldElement) {
         FeldInfo info = feldElement.getFeldInfo();
-        String name = getNameFor(feldElement);
+        String name = feldElement.getAsBezeichner();
         Feld feld = createFeld(name, info);
         add(feld, info.teildatensatz());
     }
@@ -103,32 +104,8 @@ public class Satz0200 extends Datensatz {
      * @return Inhalt des gefundenden Felds
      */
     public String get(final FeldAllgemeinerVertragsteil feld) {
-        String name = getNameFor(feld);
+        String name = feld.getAsBezeichner();
         return super.get(name);
-    }
-
-    /**
-     * Gets the name for.
-     *
-     * @param feldElement the feld element
-     * @return the name for
-     */
-    private static String getNameFor(final FeldAllgemeinerVertragsteil feldElement) {
-        String name = feldElement.name();
-        if (log.isTraceEnabled()) {
-            log.trace("looking for Bezeichner." + name + "...");
-        }
-        try {
-            Field field = Bezeichner.class.getField(name);
-            return (String) field.get(null);
-        } catch (NoSuchFieldException e) {
-            log.info("Bezeichner." + name + " not found");
-        } catch (IllegalArgumentException e) {
-            log.warn(e);
-        } catch (IllegalAccessException e) {
-            log.warn("can't access Bezeichner." + name);
-        }
-        return name;
     }
 
 }

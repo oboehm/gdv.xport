@@ -21,6 +21,10 @@ package gdv.xport.satz.sop;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.*;
 
+import java.lang.reflect.Field;
+
+import org.apache.commons.logging.*;
+
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 200
@@ -92,6 +96,11 @@ public enum FeldAllgemeinerVertragsteil {
     
     /////   Satzspezifischer Teil (Satz 1)  ///////////////////////////////////
 
+    /**
+     * Inkassoart. 
+     * 1 = Vermittlerinkasso 
+     * 2 = Zentralinkasso, Direktes Inkasso
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 8,
@@ -101,6 +110,11 @@ public enum FeldAllgemeinerVertragsteil {
     )
     INKASSOART,
 
+    /**
+     * Beginn des Vertrages.
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00"
+     * geschluesselt werden.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 9,
@@ -110,6 +124,11 @@ public enum FeldAllgemeinerVertragsteil {
     )
     VERTRAGSBEGINN,
 
+    /**
+     * Der aktuelle Ablauf des Vertrages zum Zeitpunkt der Lieferung. 
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00"
+     * geschluesselt werden.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 10,
@@ -119,6 +138,12 @@ public enum FeldAllgemeinerVertragsteil {
     )
     VERTRAGSABLAUF,
 
+    /**
+     * Die jeweils folgende Hauptfaelligkeit des Vertrages zum Zeitpunkt der
+     * Lieferung.
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00"
+     * geschluesselt werden.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 11,
@@ -128,6 +153,16 @@ public enum FeldAllgemeinerVertragsteil {
     )
     HAUPTFAELLIGKEIT,
 
+    /**
+     * Zahlungsweise.
+     * blank = Rechtschutz / Verkehrsservice / Kredit (In den Sparten
+     * Rechtschutz und Verkehrsservice kann das Datenfeld "Zahlungsweise"
+     * in der Satzart 0200 blank sein, die Zahlungsweise wird dann auf
+     * Risikoebene in der Satzart 0210, spaetestens in Satzart 0220 angegeben.
+     * Bei Einzel- und / oder Umsatzanmeldungen muss das Datenfeld
+     * "Zahlungsweise" in der Satzart 0400 blank sein.)
+     * siehe Anlage 14
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 12,
@@ -136,6 +171,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     ZAHLUNGSWEISE,
 
+    /**
+     * Vertragsstatus.
+     * siehe Anlage 24
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 13,
@@ -144,6 +183,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     VERTRAGSSTATUS,
 
+    /**
+     * Abgang des Vertrages, Stornogrund.
+     * siehe Anlage 5
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 14,
@@ -153,6 +196,11 @@ public enum FeldAllgemeinerVertragsteil {
     )
     ABGANGSGRUND,
 
+    /**
+     * Stornodatum.
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00"
+     * geschluesselt werden.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 15,
@@ -162,6 +210,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     ABGANGSDATUM,
 
+    /**
+     * Aenderungsgrund.
+     * 5 x 2 Stellen, siehe Anlage 6
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 16,
@@ -171,6 +223,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     AENDERUNGSGRUND,
 
+    /**
+     * Termin, zu dem der Vertragszustand wirksam wird/wurde
+     * (Gueltig-ab- / Wirksam-ab-Datum).
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 17,
@@ -180,6 +236,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     AENDERUNGSDATUM,
 
+    /**
+     * Hinweis ob Vertrag 1 = Alleinbesitzend, 2 = Fuehrungsgeschaeft,
+     * 3 = Beteiligung.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 18,
@@ -188,6 +248,9 @@ public enum FeldAllgemeinerVertragsteil {
     )
     AFB,
 
+    /**
+     * Anteil in %, Fuehrungs- und Beteiligungsgeschaeft.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 19,
@@ -198,6 +261,11 @@ public enum FeldAllgemeinerVertragsteil {
     )
     ANTEIL_IN_PROZENT,
 
+    /**
+     * Auftrags-Nummer des Vermittlers, vorlauefige Vertrags-Nummer des
+     * Vermittlers, die er dem VU aufgibt, rechtsbuendig, mit Leerstellen
+     * linksbuendig auffuellen.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 20,
@@ -207,6 +275,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     AUFTRAGSNR_VERMITTLER,
 
+    /**
+     * Waehrung, in der die Betragsfelder in diesem GDV-Satz geliefert werden.
+     * ISO-CODE, siehe Anlage 3
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 21,
@@ -216,6 +288,15 @@ public enum FeldAllgemeinerVertragsteil {
     )
     WAEHRUNGSSCHLUESSEL,
 
+    /**
+     * Gesamtbeitrag unter Beruecksichtigung aller Zu- und Abschlaege ohne
+     * Gebuehren und Versicherungs-Steuer gemaess Zahlungsweise.
+     * Im Fuehrungs-/Beteiligungsgeschaeft 100%. In KV nicht gemaess der
+     * Zahlungsweise, sondern Monats-Soll-Beitrag oder sonstiger
+     * tarifspezifischer Beitrag (z. B. AS). In LV einschl. verrechnete
+     * Ueberschussbeteiligung. Bei Kreditvers. nur: Kautionsversicherung-S,
+     * Warenkreditversicherung-S, Vertrauensschadenversicherung
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 22,
@@ -225,6 +306,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN,
 
+    /**
+     * Mehrzweckfeld. Z. B. Personalnummer, Kostenstelle, Fahrer des
+     * Fahrzeuges, Kundennummer, Kredit = "Versicherungsschein-Unternummer"
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 23,
@@ -234,6 +319,9 @@ public enum FeldAllgemeinerVertragsteil {
     )
     MEHRZWECKFELD,
 
+    /**
+     * 0 = nein, 1 = ja.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 24,
@@ -242,6 +330,11 @@ public enum FeldAllgemeinerVertragsteil {
     )
     KENNZEICHEN_VERS_STEUER_FREI,
 
+    /**
+     * Personen-/Kundennummer des Versicherungsnehmers beim Versicherer,
+     * rechtsbuendig, mit Leerstellen linksbuendig auffuellen, ohne
+     * Sonderzeichen.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 25,
@@ -251,6 +344,11 @@ public enum FeldAllgemeinerVertragsteil {
     )
     KUNDENNR_VERSICHERER,
 
+    /**
+     * Personen-/Kundennummer des Versicherungsnehmers beim Vermittler,
+     * rechtsbuendig, mit Leerstellen linksbuendig auffuellen, ohne
+     * Sonderzeichen.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 26,
@@ -260,6 +358,9 @@ public enum FeldAllgemeinerVertragsteil {
     )
     KUNDENNR_VERMITTLER,
 
+    /**
+     * Nach EG-Richtlinien 01-07-1990 0 = nein, 1 = ja.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 27,
@@ -268,6 +369,9 @@ public enum FeldAllgemeinerVertragsteil {
     )
     AUFSICHTSFREIER_VERTRAG,
 
+    /**
+     * Nach EG-Richtlinien 01-07-1990 0 = nein, 1 = ja.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 28,
@@ -276,6 +380,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     AUFTEILUNG_VERSICHERUNGSSTEUER,
 
+    /**
+     * Gemaess Ablauf des Vertrages Grundlage fuer die Berechnung von
+     * Provision, sofern nicht in Satzart 0210 geschluesselt (JJ).
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 29,
@@ -285,6 +393,9 @@ public enum FeldAllgemeinerVertragsteil {
     )
     RESTLAUFZEIT_VERTRAG,
 
+    /**
+     * Gemaess Laufzeitrabatt VAG-Novelle 01-07-1991.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 30,
@@ -295,6 +406,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     LAUFZEITRABATT_IN_PROZENT,
 
+    /**
+     * Datum der Antragsaufnahme. Sollten Tag und/oder Monat nicht vorhanden
+     * sein, muss "00" geschluesselt werden Tag/Monat/Jahr
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 31,
@@ -304,6 +419,11 @@ public enum FeldAllgemeinerVertragsteil {
     )
     ANTRAGSDATUM,
 
+    /**
+     * Referenz-Versicherungsscheinummer.
+     * Z. B.: bei Wechsel der Vers.scheinnummer;
+     * eigenständige Vers.scheinnr. des Vermittlers
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 32,
@@ -313,6 +433,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     REFERENZ_VERSICHERUNGSSCHEINNUMMER,
 
+    /**
+     * Bei Wechsel der Versicherungsscheinnummer: 
+     * 1 = alte Versicherungsscheinnummer, 2 = neue Versicherungsscheinnummer.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 33,
@@ -321,6 +445,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER,
 
+    /**
+     * Zusaetzlicher Ordnungsbegriff des VU.
+     * Z. B. Rahmenvertragsnummer, Bearbeitende Stelle.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 34,
@@ -330,6 +458,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     ORDNUNGSBEGRIFF,
 
+    /**
+     * Waehrung, in der die Dokumente fuer den Kunden ausgefertigt werden.
+     * ISO-CODE, siehe Anlage 3
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 35,
@@ -339,6 +471,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     WAEHRUNG_DOKUMENTE_FUER_VN,
 
+    /**
+     * Erweiterungssatz fuer Euro-/Waehrungsfaehigkeit (Satzarten 0211 bzw. 0221) vorhanden.
+     * 0 = nein, 1 = ja.
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 36,
@@ -347,6 +483,11 @@ public enum FeldAllgemeinerVertragsteil {
     )
     ERWEITERUNGSSATZ_VORHANDEN,
 
+    /**
+     * Spezifiziert, ob das Feld 22 "Gesamtbetrag" einen Einzahlungs- oder
+     * Ausschuettungsbetrag beinhaltet (nur fuer Investment - Sparte 0550).
+     * A = Auszahlung, E = Einzahlung
+     */
     @FeldInfo(
             teildatensatz = 1,
             nr = 37,
@@ -357,6 +498,11 @@ public enum FeldAllgemeinerVertragsteil {
     
     /////   Satzspezifischer Teil (Satz 1)  ///////////////////////////////////
 
+    /**
+     * Abhaengig von der Sparte bei kurzfristigen Vertraegen sowie bei
+     * Vertraegen, die nicht automatisch verlaengert werden, immer "Nein".
+     * 0 = nein, 1 = ja
+     */
     @FeldInfo(
             teildatensatz = 2,
             nr = 8,
@@ -365,6 +511,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     KUENDIGUNGSKLAUSEL,
 
+    /**
+     * Versicherungsschein-Nr. des Vermittlers, rechtsbuendig, mit Leerstellen
+     * linksbuendig auffuellen ohne Sonderzeichen.
+     */
     @FeldInfo(
             teildatensatz = 2,
             nr = 9,
@@ -374,6 +524,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     VERSICHERUNGSSCHEINNUMMER_VM,
 
+    /**
+     * Unternehmensindividuelle Produktkuerzel/-schluessel.
+     * Abweichend von der Sparte bzw. "Markenbegriff".
+     */
     @FeldInfo(
             teildatensatz = 2,
             nr = 10,
@@ -383,6 +537,11 @@ public enum FeldAllgemeinerVertragsteil {
     )
     PRODUKTFORM,
 
+    /**
+     * Versionsdatum der Produktform, Monat / Jahr (MMJJJJ).
+     * Wenn kein Versionsdatum vorhanden, muss das Datum der ProdukteinFuehrung
+     * geliefert werden. Abweichend von der Sparte bzw. "Markenbegriff".
+     */
     @FeldInfo(
             teildatensatz = 2,
             nr = 11,
@@ -392,6 +551,15 @@ public enum FeldAllgemeinerVertragsteil {
     )
     PRODUKTFORM_GUELTIG_AB,
 
+    /**
+     * Gesamtbeitrag unter Beruecksichtigung aller Zu- und Abschlaege inklusiv
+     * Versicherungs-Steuer gemaess Zahlungsweise.
+     * Im Fuehrungs-/Beteiligungsgeschaeft 100%. In KV nicht gemaess der
+     * Zahlungsweise, sondern Monats-Soll-Beitrag oder sonstiger
+     * tarifspezifischer Beitrag (z. B. AS). In LV einschl. verrechnete 
+     * Ueberschussbeteiligung. Bei Kreditvers. nur: Kautionsversicherung-S,
+     * Warenkreditversicherung-S, Vertrauensschadenversicherung.
+     */
     @FeldInfo(
             teildatensatz = 2,
             nr = 12,
@@ -402,6 +570,18 @@ public enum FeldAllgemeinerVertragsteil {
     )
     GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN,
 
+    /**
+     * Druckaufbereitete Versicherungsscheinnummer wie auf dem Dokument (zum
+     * Beispiel Police) angegeben, inklusive aller Alpha und Sonderzeichen.
+     * Diese Feld dient der Zuordnung der druckaufbereiteten
+     * Versicherungsscheinnummer der Dokumente (z. B. Police) zur
+     * mitgelieferten Versicherungsscheinnummer in Feld 5 beim Datenimport und
+     * fuer den Ausdruck von Dokumenten durch den Vermittler.
+     * Dieses Feld sollte immer gefuellt werden, wenn die systemtechnische VSNR
+     * von der druckaufbereiteten VSNR abweicht.
+     * Beispiel: Versicherungsscheinnummer: RS12345456
+     * Druckaufbereitete Versicherungsscheinnummer: RS12345/456.123
+     */
     @FeldInfo(
             teildatensatz = 2,
             nr = 13,
@@ -411,6 +591,9 @@ public enum FeldAllgemeinerVertragsteil {
     )
     DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER,
 
+    /**
+     * Produktname.
+     */
     @FeldInfo(
             teildatensatz = 2,
             nr = 14,
@@ -420,6 +603,10 @@ public enum FeldAllgemeinerVertragsteil {
     )
     PRODUKTNAME,
 
+    /**
+     * Der fuer diesen Vertragszustand gueltige Ratenzahlungszuschlag gemaess
+     * Zahlungsweise in Prozent (3,2 Stellen).
+     */
     @FeldInfo(
             teildatensatz = 2,
             nr = 15,
@@ -430,6 +617,9 @@ public enum FeldAllgemeinerVertragsteil {
     )
     RATENZAHLUNGSZUSCHLAG_IN_PROZENT,
 
+    /**
+     * Datum des Antragseingangs beim VU Tag/Monat/Jahr (TTMMJJJJ).
+     */
     @FeldInfo(
             teildatensatz = 2,
             nr = 16,
@@ -439,6 +629,9 @@ public enum FeldAllgemeinerVertragsteil {
     )
     ANTRAGSEINGANGSDATUM,
 
+    /**
+     * Datum der Policierung Tag/Monat/Jahr (TTMMJJJJ).
+     */
     @FeldInfo(
             teildatensatz = 2,
             nr = 17,
@@ -448,6 +641,11 @@ public enum FeldAllgemeinerVertragsteil {
     )
     POLICIERUNGSDATUM,
 
+    /**
+     * Der aktuelle Vermittler zu diesem Vertrag.
+     * Die Registierungsnummer gemaess dem Versicherungsvermittlerregister,
+     * 15 Byte incl. 3 Sonderzeichen. Z. B. D-K0CR-GGQV6-53
+     */
     @FeldInfo(
             teildatensatz = 2,
             nr = 18,
@@ -460,6 +658,8 @@ public enum FeldAllgemeinerVertragsteil {
 
     
     /////   Utilities   ///////////////////////////////////////////////////////
+
+    private static final Log log = LogFactory.getLog(FeldAllgemeinerVertragsteil.class);
 
     /**
      * Rueckt die FeldInfo-Annotation raus.
@@ -476,6 +676,27 @@ public enum FeldAllgemeinerVertragsteil {
         } catch (NoSuchFieldException nsfe) {
             throw new InternalError("no field " + this.name() + " (" + nsfe + ")");
         }
+    }
+    
+    /**
+     * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die
+     * {@link Bezeichner}-Klasse, um festzustellen, ob es den Namen schon
+     * als Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.
+     *
+     * @return z.B. "Inkassoart"
+     */
+    public String getAsBezeichner() {
+        try {
+            Field field = Bezeichner.class.getField(this.name());
+            return (String) field.get(null);
+        } catch (NoSuchFieldException e) {
+            log.info("Bezeichner." + this.name() + " not found");
+        } catch (IllegalArgumentException e) {
+            log.warn(e);
+        } catch (IllegalAccessException e) {
+            log.warn("can't access Bezeichner." + this.name());
+        }
+        return this.name();
     }
 
 }

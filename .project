@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>gdv.xport</name>
-	<comment>gdv.xport is a framework for GDV export and import</comment>
+	<comment>gdv.xport is a framework for GDV export and import@key 32303037303533312D31303030206764762E78706F72742F6F6C69766572 </comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -15,10 +15,16 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>com.soyatec.additional.Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.ajdt.ui.ajnature</nature>
 		<nature>org.maven.ide.eclipse.maven2Nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>com.soyatec.additional.Nature</nature>
 	</natures>
 </projectDescription>
