@@ -55,7 +55,7 @@ public class VUNummer extends AlphaNumFeld {
      * @param start die Start-Adresse (ueblicherweise 5)
      * @since 0.6
      */
-    public VUNummer(String name, final int length, final int start) {
+    public VUNummer(final String name, final int length, final int start) {
         super(name, length, start);
         if (!VU_NUMMER.equalsIgnoreCase(name)) {
             throw new IllegalArgumentException(VU_NUMMER + " (not '" + name + "') expected as 1st argument");

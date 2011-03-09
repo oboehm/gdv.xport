@@ -25,7 +25,6 @@ import java.io.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Datensatz.
  *

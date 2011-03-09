@@ -18,13 +18,12 @@
 
 package gdv.xport.satz.model;
 
-import gdv.xport.satz.Adressteil;
 import gdv.xport.satz.sop.Feld0100;
 
 /**
  * Diese Klasse repraesentiert die Satzart 100.
  * Es handelt es sich dabei um eine alternative Implementierung der
- * {@link Adressteil}-Klasse, die nach dem Soplet-Ansazt
+ * {@link gdv.xport.satz.Adressteil}-Klasse, die nach dem Soplet-Ansatz
  * (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
  * wurde.
  * 
