@@ -18,6 +18,8 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.annotation.FeldInfo;
+
 /**
  * Versions-Feld.
  *
@@ -33,6 +35,18 @@ public class Version extends Feld {
      */
     public Version(final String name, final int start) {
         super(name, 3, start, Align.LEFT);
+    }
+    
+    /**
+     * Instantiiert ein neues Versions-Objekt.
+     * 
+     * @param name Bezeichner
+     * @param info mit der Start-Adresse
+     * @since 0.6
+     */
+    public Version(final String name, final FeldInfo info) {
+        this(name, info.byteAdresse());
+        assert info.anzahlBytes() == 3 : "Version hat nicht das Format x.x";
     }
 
     /**

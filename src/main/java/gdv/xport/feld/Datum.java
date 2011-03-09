@@ -20,6 +20,8 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.annotation.FeldInfo;
+
 import java.text.*;
 import java.util.*;
 
@@ -71,6 +73,18 @@ public final class Datum extends Feld {
     public Datum(final String name, final int length, final int start) {
         super(name, length, start, Align.RIGHT);
         dateFormat = getDateFormat(length);
+    }
+    
+    /**
+     * Instantiiert ein neues Datum.
+     * 
+     * @param name Bezeichner
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 0.6
+     */
+    public Datum(final String name, final FeldInfo info) {
+        super(name, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.RIGHT : info.align());
+        dateFormat = getDateFormat(info.anzahlBytes());
     }
 
     /**

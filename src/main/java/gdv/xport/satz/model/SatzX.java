@@ -110,9 +110,20 @@ public abstract class SatzX extends Datensatz {
      * @param feldX das gewuenschte Feld-Element
      * @return Inhalt des gefundenden Felds
      */
-    public String get(final Enum<?> feldX) {
+    public final String get(final Enum<?> feldX) {
         String name = this.getAsBezeichner(feldX);
         return super.get(name);
+    }
+    
+    /**
+     * Setzt den Inhalt des gewuenschten Feldes.
+     *
+     * @param feldX das gewuenschte Feld-Element
+     * @param value neuer Inhalt
+     */
+    public final void set(final Enum<?> feldX, final String value) {
+        String name = this.getAsBezeichner(feldX);
+        super.set(name, value);
     }
 
 }

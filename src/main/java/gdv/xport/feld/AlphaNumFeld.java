@@ -3,6 +3,8 @@
  */
 package gdv.xport.feld;
 
+import gdv.xport.annotation.FeldInfo;
+
 /**
  * Klasse fuer alphanumerische Zeichen. Die Default-Einstellung fuer die
  * Darstellung ist linksbuendig.
@@ -72,6 +74,17 @@ public class AlphaNumFeld extends Feld {
      */
     public AlphaNumFeld(final int length, final int start, final Align alignment) {
         super(length, start, alignment);
+    }
+    
+    /**
+     * Instantiiert ein neues alpha-numerisches Feld.
+     * 
+     * @param name Bezeichner
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 0.6
+     */
+    public AlphaNumFeld(final String name, final FeldInfo info) {
+        super(name, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.LEFT : info.align());
     }
 
     /**

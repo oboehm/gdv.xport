@@ -18,6 +18,8 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.annotation.FeldInfo;
+
 /**
  * Standardmaessig hat das Beitrags-Feld 12,2 Stellen (12 Vorkommastellen +
  * 2 Nachkommastellen.
@@ -42,6 +44,17 @@ public class Betrag extends NumFeld {
      */
     public Betrag(final String name, final int length, final int start) {
         super(name, length, start, 0, 2);
+    }
+    
+    /**
+     * Instantiiert einen neuen Betrag.
+     * 
+     * @param name Bezeichner
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 0.6
+     */
+    public Betrag(final String name, final FeldInfo info) {
+        super(name, info);
     }
 
     /* (non-Javadoc)

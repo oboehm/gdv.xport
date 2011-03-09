@@ -18,10 +18,9 @@
 
 package gdv.xport.satz.model;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
 import gdv.xport.satz.AbstractSatzTest;
-import gdv.xport.satz.sop.*;
+import gdv.xport.satz.sop.Feld0100;
 
 import java.io.IOException;
 
@@ -84,6 +83,17 @@ public class Satz0100Test extends AbstractSatzTest {
         assertEquals("9999009999", satz.getVermittler());
         assertEquals("1", satz.get(Feld0100.ANREDESCHLUESSEL));
         assertEquals("Pollsmann", satz.get(Feld0100.NAME1).trim());
+        assertEquals("           W45WWW", satz.get(Feld0100.KUNDENNR_VERSICHERER));
+    }
+    
+    /**
+     * Hier testen wir, ob das Alignment in den FeldInfos tatsaechlich
+     * ausgewertet wird.
+     */
+    @Test
+    public void testAlignment() {
+        satz.set(Feld0100.KUNDENNR_VERSICHERER, "1234567890abcdef");
+        assertEquals(" 1234567890abcdef", satz.get(Feld0100.KUNDENNR_VERSICHERER));
     }
 
 }

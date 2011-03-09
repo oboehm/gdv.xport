@@ -3,6 +3,8 @@
  */
 package gdv.xport.feld;
 
+import gdv.xport.annotation.FeldInfo;
+
 import java.text.*;
 import java.util.List;
 
@@ -80,6 +82,18 @@ public class NumFeld extends Feld {
     public NumFeld(final String name, final String s, final int nachkommastellen) {
         super(name, s, Align.RIGHT);
         this.nachkommastellen = nachkommastellen;
+    }
+    
+    /**
+     * Instantiiert ein neues numerisches Feld.
+     * 
+     * @param name Bezeichner
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 0.6
+     */
+    public NumFeld(final String name, final FeldInfo info) {
+        super(name, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.RIGHT : info.align());
+        this.nachkommastellen = info.nachkommaStellen();
     }
 
     /**

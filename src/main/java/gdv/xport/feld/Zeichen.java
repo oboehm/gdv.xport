@@ -18,6 +18,8 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.annotation.FeldInfo;
+
 /**
  * Ein Zeichen ist ein Feld der Laenge 1.
  *
@@ -47,19 +49,31 @@ public class Zeichen extends AlphaNumFeld {
         super(name, 1, start);
     }
     
+//    /**
+//     * Der eigentliche Default-Konstruktor fuer alle Feld-Derivate.
+//     *
+//     * @param name Bezeichner
+//     * @param length die Laenge (muss 1 sein)
+//     * @param start die Start-Adresse
+//     * @since 0.6
+//     */
+//    public Zeichen(final String name, final int length, final int start) {
+//        super(name, length, start);
+//        if (length != 1) {
+//            throw new IllegalArgumentException("2nd arg (" + length + ") must be 1");
+//        }
+//    }
+
     /**
-     * Der eigentliche Default-Konstruktor fuer alle Feld-Derivate.
-     *
+     * Instantiiert ein neues Zeichen.
+     * 
      * @param name Bezeichner
-     * @param length die Laenge (muss 1 sein)
-     * @param start die Start-Adresse
+     * @param info mit Angabe der Start-Adresse
      * @since 0.6
      */
-    public Zeichen(final String name, final int length, final int start) {
-        super(name, length, start);
-        if (length != 1) {
-            throw new IllegalArgumentException("2nd arg (" + length + ") must be 1");
-        }
+    public Zeichen(final String name, final FeldInfo info) {
+        this(name, info.byteAdresse());
+        assert info.anzahlBytes() == 1 : "Zeichen kann nur 1 Byte lang sein";
     }
 
     /**
@@ -72,7 +86,7 @@ public class Zeichen extends AlphaNumFeld {
     public Zeichen(final String name, final int start, final char c) {
         super(name, 1, start, c);
     }
-
+    
     /**
      * Falls man keinen String will, sondern ein einzelnes Zeichen braucht.
      *

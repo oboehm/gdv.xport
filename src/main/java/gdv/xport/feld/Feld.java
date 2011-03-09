@@ -226,11 +226,15 @@ public class Feld implements Comparable<Feld> {
      */
     public static Feld createFeld(final String name, final FeldInfo info) {
         try {
-            Constructor<? extends Feld> ctor = info.type().getConstructor(String.class, int.class, int.class);
-            Feld feld = ctor.newInstance(name, info.anzahlBytes(), info.byteAdresse());
+//            Constructor<? extends Feld> ctor = info.type().getConstructor(String.class, int.class, int.class);
+//            Feld feld = ctor.newInstance(name, info.anzahlBytes(), info.byteAdresse());
+//            Feld feld = ctor.newInstance(name, info.anzahlBytes(), info.byteAdresse());
+            Constructor<? extends Feld> ctor = info.type().getConstructor(String.class, FeldInfo.class);
+            Feld feld = ctor.newInstance(name, info);
             return feld;
         } catch (NoSuchMethodException e) {
-            throw new InternalError("no constructor " + info.type().getSimpleName() + "(String, int, int) found");
+//            throw new InternalError("no constructor " + info.type().getSimpleName() + "(String, int, int) found");
+            throw new InternalError("no constructor " + info.type().getSimpleName() + "(String, FeldInfo) found");
         } catch (InstantiationException e) {
             throw new InternalError("can't instantiate " + info.type());
         } catch (IllegalAccessException e) {

@@ -18,6 +18,8 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.annotation.FeldInfo;
+
 /**
  * Im Gegensatz zum Betrag hat diese Klasse ein Vorzeichen ('+' oder '-').
  *
@@ -34,6 +36,18 @@ public final class BetragMitVorzeichen extends Betrag {
      */
     public BetragMitVorzeichen(final String name, final int length, final int start) {
         super(name, length, start);
+        this.setVorzeichen('+');
+    }
+
+    /**
+     * Instantiiert einen neuen BetragMitVorzeichen.
+     * 
+     * @param name Bezeichner
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 0.6
+     */
+    public BetragMitVorzeichen(final String name, final FeldInfo info) {
+        super(name, info);
         this.setVorzeichen('+');
     }
 
