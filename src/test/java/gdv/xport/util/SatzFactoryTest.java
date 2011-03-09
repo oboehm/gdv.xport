@@ -97,11 +97,11 @@ public final class SatzFactoryTest extends AbstractTest {
 
     /**
      * Damit wird ueberprueft, ob Satzart 100 (Adressteil) bei der
-     * SatzFactory registriert ist.
+     * SatzFactory richtig registriert ist.
      */
     @Test
     public void testGetAdressteil() {
-        checkGetDatensatz(100, Adressteil.class);
+        checkGetDatensatz(100);
     }
 
     /**
