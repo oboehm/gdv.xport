@@ -18,13 +18,7 @@
 
 package gdv.xport.satz.model;
 
-import java.lang.reflect.*;
-
-import org.apache.commons.logging.*;
-
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
+import gdv.xport.satz.AllgemeinerVertragsteil;
 import gdv.xport.satz.sop.Feld0200;
 
 /**
@@ -37,76 +31,48 @@ import gdv.xport.satz.sop.Feld0200;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.6 (06.03.2011)
  */
-public class Satz0200 extends Datensatz {
-    
-    private static final Log log = LogFactory.getLog(Satz0200.class);
+public class Satz0200 extends SatzX {
     
     /**
      * Default-Konstruktor.
      */
     public Satz0200() {
-        super("0200", 2);
-        this.setUpDatenfelder();
+        super("0200", 2, Feld0200.values());
+//        this.setUpDatenfelder();
     }
 
-    /**
-     * Sets the up datenfelder.
-     */
-    private void setUpDatenfelder() {
-        Feld0200[] felder = Feld0200.values();
-        for (int i = 0; i < felder.length; i++) {
-            add(felder[i]);
-        }
-        if (log.isTraceEnabled()) {
-            log.trace(felder.length + " Datenfelder set up");
-        }
-    }
-
-    /**
-     * Adds the.
-     *
-     * @param feldElement the feld element
-     */
-    private void add(final Feld0200 feldElement) {
-        FeldInfo info = feldElement.getFeldInfo();
-        String name = feldElement.getAsBezeichner();
-        Feld feld = createFeld(name, info);
-        add(feld, info.teildatensatz());
-    }
-    
-    /**
-     * Creates the feld.
-     *
-     * @param name the name
-     * @param info the info
-     * @return the feld
-     */
-    private static Feld createFeld(final String name, final FeldInfo info) {
-        try {
-            Constructor<? extends Feld> ctor = info.type().getConstructor(String.class, int.class, int.class);
-            Feld feld = ctor.newInstance(name, info.anzahlBytes(), info.byteAdresse());
-            return feld;
-        } catch (NoSuchMethodException e) {
-            throw new InternalError("no constructor " + info.type().getSimpleName() + "(String, int, int) found");
-        } catch (InstantiationException e) {
-            throw new InternalError("can't instantiate " + info.type());
-        } catch (IllegalAccessException e) {
-            throw new InternalError("can't access ctor for " + info.type());
-        } catch (InvocationTargetException e) {
-            throw new InternalError("error invoking ctor for " + info.type() + " (" + e.getTargetException() + ")");
-        }
-    }
-
-    /**
-     * Liefert den Inhalt des gewuenschten Feldes.
-     *
-     * @param feld das gewuenschte Feld-Element
-     * @return Inhalt des gefundenden Felds
-     */
-    public String get(final Feld0200 feld) {
-        String name = feld.getAsBezeichner();
-        return super.get(name);
-    }
+//    /**
+//     * Sets the up datenfelder.
+//     */
+//    private void setUpDatenfelder() {
+//        Feld0200[] felder = Feld0200.values();
+//        for (int i = 0; i < felder.length; i++) {
+//            add(felder[i]);
+//        }
+//    }
+//
+//    /**
+//     * Adds the.
+//     *
+//     * @param feldElement the feld element
+//     */
+//    private void add(final Feld0200 feldElement) {
+//        FeldInfo info = feldElement.getFeldInfo();
+//        String name = feldElement.getAsBezeichner();
+//        Feld feld = Feld.createFeld(name, info);
+//        add(feld, info.teildatensatz());
+//    }
+//    
+//    /**
+//     * Liefert den Inhalt des gewuenschten Feldes.
+//     *
+//     * @param feld das gewuenschte Feld-Element
+//     * @return Inhalt des gefundenden Felds
+//     */
+//    public String get(final Feld0200 feld) {
+//        String name = feld.getAsBezeichner();
+//        return super.get(name);
+//    }
 
 }
 

@@ -20,7 +20,10 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.annotation.FeldInfo;
+
 import java.io.*;
+import java.lang.reflect.*;
 import java.util.List;
 
 import net.sf.oval.*;
@@ -211,6 +214,30 @@ public class Feld implements Comparable<Feld> {
 
     private String createBezeichnung() {
         return this.getClass().getSimpleName() + "@" + Integer.toHexString(this.hashCode());
+    }
+    
+    /**
+     * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation
+     * ergibt (Factory-Methode).
+     *
+     * @param name Bezeichner fuer das erzeugte Feld
+     * @param info die FeldInfo-Annotation mit dem gewuenschten Datentyp
+     * @return das erzeugte Feld
+     */
+    public static Feld createFeld(final String name, final FeldInfo info) {
+        try {
+            Constructor<? extends Feld> ctor = info.type().getConstructor(String.class, int.class, int.class);
+            Feld feld = ctor.newInstance(name, info.anzahlBytes(), info.byteAdresse());
+            return feld;
+        } catch (NoSuchMethodException e) {
+            throw new InternalError("no constructor " + info.type().getSimpleName() + "(String, int, int) found");
+        } catch (InstantiationException e) {
+            throw new InternalError("can't instantiate " + info.type());
+        } catch (IllegalAccessException e) {
+            throw new InternalError("can't access ctor for " + info.type());
+        } catch (InvocationTargetException e) {
+            throw new InternalError("error invoking ctor for " + info.type() + " (" + e.getTargetException() + ")");
+        }
     }
 
     /**

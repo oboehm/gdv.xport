@@ -20,7 +20,7 @@ package gdv.xport.annotation;
 
 import java.lang.annotation.*;
 
-import gdv.xport.feld.Feld;
+import gdv.xport.feld.*;
 
 /**
  * Diese Annotation dient als Behaelter fuer einige Meta-Informationen wie
@@ -46,6 +46,11 @@ public @interface FeldInfo {
      * Erwarteter Datentyp, der angegeben werden <b>muss</b>.
      */
     Class<? extends Feld> type();
+    
+    /**
+     * Ausrichtung: rechts- oder linksbuendig.
+     */
+    Align align() default Align.UNKNOWN;
     
     /**
      * Anzahl bytes.
