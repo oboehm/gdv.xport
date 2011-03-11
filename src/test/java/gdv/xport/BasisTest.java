@@ -52,7 +52,7 @@ public class BasisTest {
     }
     
     /**
-     * Dieser Test sind nur zur Vorbeugung fuer kuenftige Erweiterungen.
+     * Dieser Test dient nur zur Vorbeugung fuer kuenftige Erweiterungen.
      * Momentan sind noch keine Cloneable-Klassen vorhanden.
      */
     @Test
@@ -61,7 +61,7 @@ public class BasisTest {
     }
     
     /**
-     * Dieser Test sind nur zur Vorbeugung fuer kuenftige Erweiterungen.
+     * Dieser Test dient nur zur Vorbeugung fuer kuenftige Erweiterungen.
      * Momentan sind noch keine Serializable-Klassen vorhanden.
      * 
      * @throws NotSerializableException

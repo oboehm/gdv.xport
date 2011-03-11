@@ -21,10 +21,6 @@ package gdv.xport.satz.sop;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.*;
 
-import java.lang.reflect.Field;
-
-import org.apache.commons.logging.*;
-
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 200
@@ -654,49 +650,5 @@ public enum Feld0200 {
             byteAdresse = 155
     )
     REGISTRIERUNGSNUMMER_VERMITTLER;
-    
-
-    
-    /////   Utilities   ///////////////////////////////////////////////////////
-
-    private static final Log log = LogFactory.getLog(Feld0200.class);
-
-    /**
-     * Rueckt die FeldInfo-Annotation raus.
-     *
-     * @return the feld info
-     */
-    public FeldInfo getFeldInfo() {
-        try {
-            FeldInfo info = this.getClass().getField(this.name()).getAnnotation(FeldInfo.class);
-            if (info == null) {
-                throw new UnsupportedOperationException("@FeldInfo missing for " + this.name());
-            }
-            return info;
-        } catch (NoSuchFieldException nsfe) {
-            throw new InternalError("no field " + this.name() + " (" + nsfe + ")");
-        }
-    }
-    
-    /**
-     * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die
-     * {@link Bezeichner}-Klasse, um festzustellen, ob es den Namen schon
-     * als Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.
-     *
-     * @return z.B. "Inkassoart"
-     */
-    public String getAsBezeichner() {
-        try {
-            Field field = Bezeichner.class.getField(this.name());
-            return (String) field.get(null);
-        } catch (NoSuchFieldException e) {
-            log.info("Bezeichner." + this.name() + " not found");
-        } catch (IllegalArgumentException e) {
-            log.warn(e);
-        } catch (IllegalAccessException e) {
-            log.warn("can't access Bezeichner." + this.name());
-        }
-        return this.name();
-    }
 
 }
