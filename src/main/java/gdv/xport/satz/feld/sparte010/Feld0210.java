@@ -557,13 +557,13 @@ public enum Feld0210 {
     /**
      * Art der steuerlichen Foerderung.<br/>
      * 0 = irrelevant<br/>
-     * 1 = pauschal besteuerte Direktversicherung nach ¤40b EStG<br/>
-     * 2 = Beitraege steuerfrei nach ¤3 Ziff.63 EStG<br/>
-     * 3 = zulagengefoerderte Direktversicherung nach ¤10a EStG<br/>
-     * 4 = Beitraege steuerfrei nach ¤3 Ziff.66 EstG<br/>
+     * 1 = pauschal besteuerte Direktversicherung nach Paragraph 40b EStG<br/>
+     * 2 = Beitraege steuerfrei nach Paragraph 3 Ziff.63 EStG<br/>
+     * 3 = zulagengefoerderte Direktversicherung nach Paragraph 10a EStG<br/>
+     * 4 = Beitraege steuerfrei nach Paragraph 3 Ziff.66 EstG<br/>
      * 5 = keine<br/>
-     * 6 = Zulagegefoerderte Privatversicherung nach ¤10 a EStG<br/>
-     * 7 = Basis-/Ruerup-Rente nach ¤ 10 Abs. 1 Nr. 2 Buchstabe b EStG
+     * 6 = Zulagegefoerderte Privatversicherung nach Paragraph 10 a EStG<br/>
+     * 7 = Basis-/Ruerup-Rente nach Paragraph 10 Abs. 1 Nr. 2 Buchstabe b EStG
      */
     @FeldInfo(
             teildatensatz = 2,
