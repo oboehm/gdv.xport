@@ -34,9 +34,19 @@ import org.apache.commons.logging.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.6 (09.03.2011)
  */
-public abstract class SatzX extends Datensatz {
+public class SatzX extends Datensatz {
     
     private static Log log = LogFactory.getLog(SatzX.class);
+
+    /**
+     * Instantiiert einen neuen Datensatz.
+     * 
+     * @param satzart z.B. 100
+     * @param felder mit allen Elementen des Datensatzes
+     */
+    public SatzX(final String satzart, final Enum<?>[] felder) {
+        this(satzart, getNumberOfTeildatensaetze(felder), felder);
+    }
 
     /**
      * Instantiiert einen neuen Datensatz.
@@ -63,13 +73,13 @@ public abstract class SatzX extends Datensatz {
      * @param feldX das Feld-Element
      */
     private void add(final Enum<?> feldX) {
-        FeldInfo info = this.getFeldInfo(feldX);
+        FeldInfo info = getFeldInfo(feldX);
         String name = getAsBezeichner(feldX);
         Feld feld = Feld.createFeld(name, info);
         add(feld, info.teildatensatz());
     }
     
-    private FeldInfo getFeldInfo(final Enum<?> feldX) {
+    private static FeldInfo getFeldInfo(final Enum<?> feldX) {
         String name = feldX.name();
         try {
             FeldInfo info = feldX.getClass().getField(name).getAnnotation(FeldInfo.class);
@@ -124,6 +134,17 @@ public abstract class SatzX extends Datensatz {
     public final void set(final Enum<?> feldX, final String value) {
         String name = this.getAsBezeichner(feldX);
         super.set(name, value);
+    }
+
+    private static int getNumberOfTeildatensaetze(final Enum<?>[] felder) {
+        int n = 1;
+        for (int i = 0; i < felder.length; i++) {
+            FeldInfo info = getFeldInfo(felder[i]);
+            if (info.teildatensatz() > n) {
+                n = info.teildatensatz();
+            }
+        }
+        return n;
     }
 
 }
