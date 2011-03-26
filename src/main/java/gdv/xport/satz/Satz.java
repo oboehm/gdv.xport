@@ -62,7 +62,7 @@ public abstract class Satz {
      * @param n the n
      */
     public Satz(final String content, final int n) {
-        this.satzart.setInhalt(content.substring(0, 4));
+        this.satzart.setInhalt(content);
         this.createTeildatensaetze(n);
         if (content.length() > 4) {
             try {

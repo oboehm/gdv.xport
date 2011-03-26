@@ -39,8 +39,21 @@ public class Satz0210 extends SatzX {
         map.put(10, gdv.xport.satz.feld.sparte010.Feld0210.values());
     }
     
+    private static Enum<?>[] getFelderFor(final int sparte) {
+        Enum<?>[] felder = map.get(sparte);
+        if (felder == null) {
+            throw new IllegalArgumentException("Sparte " + sparte + " not (yet) supported by " + Satz0210.class);
+        }
+        return felder;
+    }
+    
+    /**
+     * Legt ein neues Satz0210-Objekt fuer die uebergebene Sparte an.
+     *
+     * @param sparte Sparte (z.B. 10)
+     */
     public Satz0210(final int sparte) {
-        super(210, sparte, map.get(10));
+        super(210, sparte, getFelderFor(10));
     }
 
 }

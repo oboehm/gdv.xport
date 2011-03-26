@@ -36,7 +36,7 @@ public class Satz0100 extends SatzX {
      * Default-Konstruktor.
      */
     public Satz0100() {
-        super("0100", Feld0100.values(), 5);
+        super(100, Feld0100.values(), 5);
     }
 
 }

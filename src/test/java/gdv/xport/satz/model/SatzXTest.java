@@ -32,11 +32,11 @@ import org.junit.Test;
 public class SatzXTest {
 
     /**
-     * Test method for {@link SatzX#SatzX(java.lang.String, java.lang.Enum[])}.
+     * Test method for {@link SatzX#SatzX(int, java.lang.Enum[])}.
      */
     @Test
     public void testSatzX() {
-        SatzX satz200 = new SatzX("0200", Feld0200.values());
+        SatzX satz200 = new SatzX(200, Feld0200.values());
         assertEquals(2, satz200.getTeildatensaetze().size());
     }
 
