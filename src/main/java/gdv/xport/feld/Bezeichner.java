@@ -127,7 +127,9 @@ public final class Bezeichner {
     public static final String DECKUNGSUMFANG = "Deckungsumfang";
     public static final String DIENSTEINTRITTSDATUM = "Diensteintrittsdatum";
     public static final String DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER = "Druckaufbereitete Versicherungsscheinnummer";
+    /** @deprecated use {@link #DURCHFUEHRUNGSWEG} */
     public static final String DURCHFUEHRUNGSART = "Durchfuehrungsart";
+    public static final String DURCHFUEHRUNGSWEG = "Durchfuehrungsweg";
     public static final String DYNAMIK = "Dynamik";
     public static final String DYNAMIK_IN_PROZENT = "Dynamik in %";
     public static final String EIGENTUMSVERHAELTNIS_FAHRZEUG = "Eigentumsverhaeltnis (Fahrzeug)";

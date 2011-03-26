@@ -37,13 +37,13 @@ public enum Feld0100 {
      * Anredeschluessel.
      * Hinweis fuer das eVB-Verfahren (elektronische Versicherungsbestaetigung):
      * Ist als VN eine Vereinigung gewaehlt, so muss zusaetzlich eine 
-     * natuerliche Person benannt werden. 
-     * 0 = (ohne Anrede)
-     * 1 = Herr
-     * 2 = Frau
-     * 3 = Firma 
-     * 4 = Herr und Frau
-     * 5 = Fraeulein
+     * natuerliche Person benannt werden. <br/>
+     * 0 = (ohne Anrede)<br/>
+     * 1 = Herr<br/>
+     * 2 = Frau<br/>
+     * 3 = Firma <br/>
+     * 4 = Herr und Frau<br/>
+     * 5 = Fraeulein<br/>
      * 6 = Vereinigung
      */
     @FeldInfo(
@@ -175,7 +175,6 @@ public enum Feld0100 {
     /**
      * Postfach.
      * Hinweis fuer das eVB-Verfahren (elektronische Versicherungsbestaetigung):
-     * Hinweis fuer das eVB-Verfahren (elektronische Versicherungsbestaetigung):
      * Die Adresse muss im eVB-Verfahren vollstaendig ergaenzt um das
      * Laenderkennzeichen geliefert werden.
      */
@@ -278,9 +277,9 @@ public enum Feld0100 {
     
     /**
      * Hinweis fuer das eVB-Verfahren (elektronische Versicherungsbestaetigung):
-     * Im eVB-Verfahren ist das Feld "Geschlecht" ein Pflichtfeld.
-     * 0 = juristische Person.
-     * 1 = maennlich,
+     * Im eVB-Verfahren ist das Feld "Geschlecht" ein Pflichtfeld.<br/>
+     * 0 = juristische Person.<br/>
+     * 1 = maennlich,<br/>
      * 2 = weiblich.
      */
     @FeldInfo(
@@ -469,11 +468,11 @@ public enum Feld0100 {
     KOMMUNIKATIONSNR4,
     
     /**
-     * 1 = Lastschrift,
-     * 2 = Rechnung,
-     * 3 = Dauerauftrag,
-     * 4 = Depot,
-     * 5 = Gehaltsabzug,
+     * 1 = Lastschrift,<br/>
+     * 2 = Rechnung,<br/>
+     * 3 = Dauerauftrag,<br/>
+     * 4 = Depot,<br/>
+     * 5 = Gehaltsabzug,<br/>
      * 9 = sonstige.
      */
     @FeldInfo(
@@ -486,11 +485,11 @@ public enum Feld0100 {
     ZAHLUNGSART,
     
     /**
-     * 1 = ledig,
-     * 2 = verheiratet,
-     * 3 = geschieden,
-     * 4 = verwitwet,
-     * 5 = getrennt lebend,
+     * 1 = ledig,<br/>
+     * 2 = verheiratet,<br/>
+     * 3 = geschieden,<br/>
+     * 4 = verwitwet,<br/>
+     * 5 = getrennt lebend,<br/>
      * 9 = sonstiges.
      */
     @FeldInfo(
@@ -590,19 +589,19 @@ public enum Feld0100 {
     KOMMUNIKATIONSNR7,
     
     /**
-     * 01 = natuerliche Person,
-     * 02 = Gesellschaft des Buergerlichen Rechts GdBR,
-     * 03 = OHG,
-     * 04 = KG,
-     * 05 = GmbH,
-     * 06 = gGmbH,
-     * 07 = GmbH & Co KG,
-     * 08 = KGaA,
-     * 09 = AG,
-     * 10 = eV,
-     * 11 = Verein nach BGB,
-     * 12 = eG,
-     * 13 = Gesellschaft des oeffentlichen Rechts,
+     * 01 = natuerliche Person,<br/>
+     * 02 = Gesellschaft des Buergerlichen Rechts GdBR,<br/>
+     * 03 = OHG,<br/>
+     * 04 = KG,<br/>
+     * 05 = GmbH,<br/>
+     * 06 = gGmbH,<br/>
+     * 07 = GmbH & Co KG,<br/>
+     * 08 = KGaA,<br/>
+     * 09 = AG,<br/>
+     * 10 = eV,<br/>
+     * 11 = Verein nach BGB,<br/>
+     * 12 = eG,<br/>
+     * 13 = Gesellschaft des oeffentlichen Rechts,<br/>
      * 99 = Sonstiges.
      */
     @FeldInfo(
@@ -641,9 +640,9 @@ public enum Feld0100 {
     NAME_KREDITINSTITUT1,
 
     /**
-     * 01 = Praemienzahlungskonto,
-     * 02 = Schadenzahlungskonto,
-     * 03 = ohne Spezifikation.
+     * 01 = Praemienzahlungskonto,<br/>
+     * 02 = Schadenzahlungskonto,<br/>
+     * 03 = ohne Spezifikation.<br/>
      */
     @FeldInfo(
             teildatensatz = 4,
@@ -655,9 +654,9 @@ public enum Feld0100 {
     TYP_BANKVERBINDUNG1,
 
     /**
-     * Siehe Feld 10: Typ der Bankverbindung.
-     * 01 = Praemienzahlungskonto,
-     * 02 = Schadenzahlungskonto,
+     * Siehe Feld 10: Typ der Bankverbindung.<br/>
+     * 01 = Praemienzahlungskonto,<br/>
+     * 02 = Schadenzahlungskonto,<br/>
      * 03 = ohne Spezifikation.
      */
     @FeldInfo(

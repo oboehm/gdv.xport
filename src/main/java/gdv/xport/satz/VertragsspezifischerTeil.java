@@ -172,7 +172,7 @@ public class VertragsspezifischerTeil extends Spartensatz {
                 // Betriebliche und private Altersversorgung
                 tds.add(new Zeichen(ART_DER_STEUERLICHEN_FOERDERUNG, 117));
                 tds.add(new Zeichen(FINANZIERUNGSART, 118));
-                tds.add(new Zeichen(DURCHFUEHRUNGSART, 119));
+                tds.add(new Zeichen(DURCHFUEHRUNGSWEG, 119));
                 tds.add(new Zeichen(FINANZIERUNG_ZUSAGE, 120));
                 tds.add(new AlphaNumFeld(UNTERSTUETZUNGSKASSE_SCHLUESSEL, 4, 121));
                 tds.add(new AlphaNumFeld(UNTERSTUETZUNGSKASSE_NAME, 40, 125));
