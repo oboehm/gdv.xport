@@ -428,7 +428,7 @@ public enum Feld0210 {
             anzahlBytes = 1,
             byteAdresse = 255
     )
-    LEERSTELLEN_1,
+    LEERSTELLEN1,
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
@@ -700,7 +700,7 @@ public enum Feld0210 {
             anzahlBytes = 32,
             byteAdresse = 224
     )
-    LEERSTELLEN_2;
+    LEERSTELLEN2;
 
 }
 

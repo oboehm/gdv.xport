@@ -290,6 +290,8 @@ public final class Bezeichner {
     public static final String LAND_DES_AMTL_KENNZEICHENS = "Land des amtl. Kennzeichens";
     public static final String LAUFZEITRABATT_IN_PROZENT = "Laufzeitrabatt in %";
     public static final String LEERSTELLEN = "Leerstellen";
+    public static final String LEERSTELLEN1 = "Leerstellen";
+    public static final String LEERSTELLEN2 = "Leerstellen";
     public static final String LETZTE_ERHOEHUNG = "letzte Erhoehung";
     public static final String LFD_NUMMER = "Lfd. Nummer";
     public static final String LFD_NUMMER_SATZART = "Lfd. Nummer der Satzart";

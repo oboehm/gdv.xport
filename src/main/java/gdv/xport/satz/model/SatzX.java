@@ -45,17 +45,29 @@ public class SatzX extends Datensatz {
      * @param felder mit allen Elementen des Datensatzes
      */
     public SatzX(final String satzart, final Enum<?>[] felder) {
-        this(satzart, getNumberOfTeildatensaetze(felder), felder);
+        this(satzart, felder, getNumberOfTeildatensaetze(felder));
+    }
+    
+    /**
+     * Instantiiert einen neuen Datensatz.
+     *
+     * @param satzart z.B. 100
+     * @param sparte Sparte
+     * @param felder mit allen Elementen des Datensatzes
+     */
+    public SatzX(final int satzart, final int sparte, final Enum<?>[] felder) {
+        super(satzart, sparte, getNumberOfTeildatensaetze(felder));
+        this.setUpDatenfelder(felder);
     }
 
     /**
      * Instantiiert einen neuen Datensatz.
      * 
      * @param satzart z.B. 100
-     * @param n Anzahl der Teildatensaetze
      * @param felder mit allen Elementen des Datensatzes
+     * @param n Anzahl der Teildatensaetze
      */
-    public SatzX(final String satzart, final int n, final Enum<?>[] felder) {
+    public SatzX(final String satzart, final Enum<?>[] felder, final int n) {
         super(satzart, n);
         this.setUpDatenfelder(felder);
     }

@@ -55,6 +55,7 @@ public final class SatzFactory {
         registeredSatzClasses.put(220, SpartenspezifischerTeil.class);
         registeredSatzClasses.put(221, Erweiterungssatz221.class);
         registeredSatzClasses.put(9999, Nachsatz.class);
+        register(Satz0210.class, 210, 10);
     }
 
     /**

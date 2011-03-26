@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2011 by agentes
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 06.03.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 26.03.2011 by Oli B. (oliver.boehm@agentes.de)
  */
 
 package gdv.xport.satz.model;
 
-import gdv.xport.satz.feld.Feld0200;
+import java.util.*;
 
 /**
  * Diese Klasse repraesentiert die Satzart 200.
@@ -26,17 +26,21 @@ import gdv.xport.satz.feld.Feld0200;
  * {@link gdv.xport.satz.AllgemeinerVertragsteil}-Klasse, die nach dem Soplet-
  * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
  * wurde.
- *
+ * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.6 (06.03.2011)
+ * @since 0.6 (26.03.2011)
  */
-public class Satz0200 extends SatzX {
+public class Satz0210 extends SatzX {
     
-    /**
-     * Default-Konstruktor.
-     */
-    public Satz0200() {
-        super("0200", Feld0200.values(), 2);
+    /** Mapping table for sparte to Feldxxx enumeration. */
+    private static Map<Integer, Enum<?>[]> map = new HashMap<Integer, Enum<?>[]>();
+    
+    static {
+        map.put(10, gdv.xport.satz.feld.sparte010.Feld0210.values());
+    }
+    
+    public Satz0210(final int sparte) {
+        super(210, sparte, map.get(10));
     }
 
 }
