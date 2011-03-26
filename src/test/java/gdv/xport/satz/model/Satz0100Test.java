@@ -20,7 +20,7 @@ package gdv.xport.satz.model;
 
 import static org.junit.Assert.assertEquals;
 import gdv.xport.satz.AbstractSatzTest;
-import gdv.xport.satz.sop.Feld0100;
+import gdv.xport.satz.feld.Feld0100;
 
 import java.io.IOException;
 

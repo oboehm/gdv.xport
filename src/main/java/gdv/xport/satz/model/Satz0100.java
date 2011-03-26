@@ -18,7 +18,7 @@
 
 package gdv.xport.satz.model;
 
-import gdv.xport.satz.sop.Feld0100;
+import gdv.xport.satz.feld.Feld0100;
 
 /**
  * Diese Klasse repraesentiert die Satzart 100.

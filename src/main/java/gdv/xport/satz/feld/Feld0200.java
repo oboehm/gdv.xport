@@ -16,7 +16,7 @@
  * (c)reated 06.03.2011 by Oli B. (oliver.boehm@agentes.de)
  */
 
-package gdv.xport.satz.sop;
+package gdv.xport.satz.feld;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.*;
