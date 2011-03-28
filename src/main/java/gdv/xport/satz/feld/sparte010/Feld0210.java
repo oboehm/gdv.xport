@@ -703,4 +703,3 @@ public enum Feld0210 {
     LEERSTELLEN2;
 
 }
-

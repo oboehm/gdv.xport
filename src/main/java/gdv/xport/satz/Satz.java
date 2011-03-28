@@ -101,6 +101,16 @@ public abstract class Satz {
     public final Collection<Teildatensatz> getTeildatensaetze() {
         return Arrays.asList(this.teildatensatz);
     }
+    
+    /**
+     * Liefert die Anzahl der Teildatensaetze.
+     *
+     * @return Anzahl der Teildatensaetze.
+     * @since 0.6
+     */
+    public final int getNumberOfTeildatensaetze() {
+        return teildatensatz.length;
+    }
 
     /**
      * Liefert den n-ten Teildatensatz zurueck.
