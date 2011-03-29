@@ -137,5 +137,15 @@ public class FeldTest {
         assertEquals(Bezeichner.SATZART, x.getBezeichnung());
         assertEquals("SATZART", x.getBezeichner());
     }
+    
+    /**
+     * Bezeichner, die nicht als Bezeichner-Konstante gefunden werden,
+     * sollen nach den Regeln fuer Java-Konstanten zurueckgegeben werden.
+     */
+    @Test
+    public void testGetBezeichnerConstructed() {
+        Feld x = new Feld("Version Satzart 0100", 99, 3, Align.LEFT);
+        assertEquals("VERSION_SATZART_0100", x.getBezeichner());
+    }
 
 }

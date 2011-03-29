@@ -30,7 +30,7 @@ import net.sf.oval.*;
 import net.sf.oval.constraint.*;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.*;
 import org.apache.commons.logging.*;
 
 /**
@@ -279,8 +279,8 @@ public class Feld implements Comparable<Feld> {
                 }
             }
         }
-        log.warn('"' + this.bezeichnung + "\" not found in " + Bezeichner.class);
-        return this.bezeichnung;
+        log.info('"' + this.bezeichnung + "\" not found in " + Bezeichner.class);
+        return this.bezeichnung.replaceAll(" ", "_").toUpperCase();
     }
     
     /**
