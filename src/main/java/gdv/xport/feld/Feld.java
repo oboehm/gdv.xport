@@ -31,6 +31,7 @@ import net.sf.oval.constraint.*;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.*;
 
 /**
  * The Class Feld.
@@ -40,6 +41,7 @@ import org.apache.commons.lang.StringUtils;
  */
 public class Feld implements Comparable<Feld> {
 
+    private static final Log log = LogFactory.getLog(Feld.class);
     /** statt "null". */
     public static final Feld NULL_FELD = new Feld("null", 0, 0, Align.UNKNOWN);
     /** optional: Name des Felds. */
@@ -250,6 +252,34 @@ public class Feld implements Comparable<Feld> {
      * @return the bezeichnung
      */
     public String getBezeichnung() {
+        return this.bezeichnung;
+    }
+    
+    /**
+     * Im Gegensatz zur Bezeichnung, die aus mehreren Woertern in Gross- und
+     * Kleinbuchstaben bestehen kann, steht der Bezeichner nur aus einem Wort
+     * (in Grossbuchstaben).
+     * Er wird aus der Bezeichnung unter Zuhilfenahme der {@link Bezeichner}-
+     * Klasse ermittelt.
+     * 
+     * @since 0.6
+     * @return Bezeichner in Grossbuchstaben
+     */
+    public String getBezeichner() {
+        Field[] fields = Bezeichner.class.getFields();
+        for (int i = 0; i < fields.length; i++) {
+            try {
+                Object value = fields[i].get(null);
+                if ((value != null) && this.bezeichnung.equalsIgnoreCase(value.toString())) {
+                    return fields[i].getName();
+                }
+            } catch (IllegalAccessException e) {
+                if (log.isDebugEnabled()) {
+                    log.debug("ignored: " + e);
+                }
+            }
+        }
+        log.warn('"' + this.bezeichnung + "\" not found in " + Bezeichner.class);
         return this.bezeichnung;
     }
     

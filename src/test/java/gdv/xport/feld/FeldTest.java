@@ -125,5 +125,17 @@ public class FeldTest {
         b.setInhalt('b');
         assertFalse(a + " differs from " + b, a.equals(b));
     }
+    
+    /**
+     * Bezeichnung kann aus mehreren Woertern in Gross- und Kleinschreibung
+     * bestehen, der Bezeichner entpsricht dem, was in der
+     * {@link Bezeichner}-Klasse als Konstante definiert ist.
+     */
+    @Test
+    public void testGetBezeichner() {
+        Feld x = new Feld(Bezeichner.SATZART, "Test", Align.LEFT);
+        assertEquals(Bezeichner.SATZART, x.getBezeichnung());
+        assertEquals("SATZART", x.getBezeichner());
+    }
 
 }
