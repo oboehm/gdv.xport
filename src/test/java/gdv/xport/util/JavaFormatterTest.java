@@ -22,9 +22,11 @@ import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
 
 import java.io.*;
+import java.text.MessageFormat;
+import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.*;
 import org.apache.commons.logging.*;
 import org.junit.Test;
 
@@ -59,7 +61,7 @@ public class JavaFormatterTest extends AbstractFormatterTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    //@Test
+    @Test
     public void testToString() throws IOException {
         String vorsatz = getResource("Feld0001.txt");
         String nachsatz = getResource("Feld9999.txt");
@@ -70,7 +72,8 @@ public class JavaFormatterTest extends AbstractFormatterTest {
     private static String getResource(final String name) throws IOException {
         InputStream istream = JavaFormatterTest.class.getResourceAsStream(name);
         try {
-            return IOUtils.toString(istream);
+            String template = IOUtils.toString(istream);
+            return MessageFormat.format(template, new Date(), SystemUtils.USER_NAME);
         } finally {
             istream.close();
         }

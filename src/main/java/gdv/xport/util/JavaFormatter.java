@@ -104,13 +104,16 @@ public final class JavaFormatter extends AbstractFormatter {
     private void write(final Satz satz) throws IOException {
         this.write(MessageFormat.format(headTemplate, new Date(), SystemUtils.USER_NAME, satz.getSatzart(), "-"));
         for (int i = 1; i <= satz.getNumberOfTeildatensaetze(); i++) {
-            this.write(MessageFormat.format(teildatensatzTemplate, i));
             write(satz.getTeildatensatz(i), i);
         }
         this.write(footTemplate);
     }
     
     private void write(final Teildatensatz tds, final int tdsNr) throws IOException {
+        if (tdsNr > 1) {
+            this.write(",\n\n");
+        }
+        this.write(MessageFormat.format(teildatensatzTemplate, tdsNr));
         int feldNr = 0;
         for (Feld feld : tds.getFelder()) {
             feldNr++;
@@ -119,6 +122,9 @@ public final class JavaFormatter extends AbstractFormatter {
     }
     
     private void write(final Feld feld, final int tdsNr, final int feldNr) throws IOException {
+        if (feldNr > 1) {
+            this.write(",\n\n");
+        }
         this.write(MessageFormat.format(feldTemplate, 
                 feld.getBezeichnung(),
                 tdsNr,
@@ -126,7 +132,7 @@ public final class JavaFormatter extends AbstractFormatter {
                 feld.getClass().getSimpleName(),
                 feld.getAnzahlBytes(),
                 feld.getByteAdresse(),
-                feld.getBezeichnung()
+                feld.getBezeichner()
         ));
     }
 

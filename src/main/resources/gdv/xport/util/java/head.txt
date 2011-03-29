@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart {2}.
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart {2,number,###0}.
  * 
  * @author {1}
  * @since {0,date,short}

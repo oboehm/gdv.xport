@@ -8,5 +8,4 @@
             anzahlBytes = {4},
             byteAdresse = {5}
     )
-    {6},
-
+    {6}
