@@ -18,7 +18,7 @@
 
 package gdv.xport;
 
-import java.io.IOException;
+import java.io.*;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -26,6 +26,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.io.FileHelper;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -47,6 +48,20 @@ public final class MainTest {
     @Test
     public void testMain() throws IOException, XMLStreamException {
         String[] args = { "-import", "src/test/resources/musterdatei_041222.txt", "-validate" };
+        Main.main(args);
+    }
+    
+    /**
+     * Hier testen wir die Generierung der Java-Enum-Klassen fuer alle
+     * unterstuetzten Satzarten und Sparten.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws XMLStreamException the xML stream exception
+     */
+    @Test
+    public void testExportJava() throws IOException, XMLStreamException {
+        File tmpDir = FileHelper.getTmpdir();
+        String[] args = { "-export", tmpDir.getPath(), "-java" };
         Main.main(args);
     }
 

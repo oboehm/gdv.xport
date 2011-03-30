@@ -71,10 +71,12 @@ public final class Main {
             if (cmd.hasOption("import")) {
                 String filename = cmd.getOptionValue("import");
                 importFrom(filename, datenpaket);
+            } else if (cmd.hasOption("java")) {
+                datenpaket = SatzFactory.getAllSupportedSaetze();
             } else {
                 datenpaket.importFrom(System.in);
             }
-            // Option "-xml" bzw. "-html"
+            // Option "-xml" bzw. "-html" bzw. "-java"
             AbstractFormatter formatter = new NullFormatter(new NullWriter());
             if (cmd.hasOption("xml")) {
                 formatter = new XmlFormatter();
@@ -83,6 +85,10 @@ public final class Main {
             }
             if (cmd.hasOption("export")) {
                 File file = new File(cmd.getOptionValue("export"));
+                if (cmd.hasOption("java")) {
+                    exportJava(file, datenpaket);
+                    return;
+                }
                 if (formatter instanceof NullFormatter) {
                     String suffix = FilenameUtils.getExtension(file.getName());
                     if (suffix.equalsIgnoreCase("xml")) {
@@ -125,7 +131,11 @@ public final class Main {
         } catch (MalformedURLException e) {
             datenpaket.importFrom(new File(filename));
         }
-
+    }
+    
+    // TODO Export nach dir realisieren
+    private static void exportJava(final File dir, final Datenpaket datenpaket) {
+        System.out.println(JavaFormatter.toString(datenpaket));
     }
 
     /**
@@ -139,6 +149,7 @@ public final class Main {
         options.addOption("validate", false, "Validierung der eingelesenen Datensaetze");
         options.addOption("xml", false, "Ausgabe als XML");
         options.addOption("html", false, "Ausgabe als HTML");
+        options.addOption("java", false, "Ausgabe als Java (Generierung von Enum-Klassen)");
         options.addOption("export", true,
                 "Export-Datei (bei .xml/.html als Endung ist das Format XML/HTML, ansonsten GDV)");
         options.addOption("help", false, "Kurz-Hilfe");

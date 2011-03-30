@@ -18,6 +18,7 @@
 
 package gdv.xport.util;
 
+import gdv.xport.Datenpaket;
 import gdv.xport.satz.*;
 import gdv.xport.satz.model.*;
 
@@ -280,6 +281,17 @@ public final class SatzFactory {
             satz.addFiller();
             return satz;
         }
+    }
+
+    /**
+     * Liefert ein Datenpaket mit allen unterstuetzten Satzarten und Sparten.
+     * 
+     * @since 0.6
+     * @return Datenpaket mit allen unterstuetzten Satzarten
+     */
+    // TODO: Implementierung fehlt noch
+    public static Datenpaket getAllSupportedSaetze() {
+        return new Datenpaket();
     }
 
 }
