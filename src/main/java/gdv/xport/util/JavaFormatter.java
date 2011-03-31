@@ -101,7 +101,14 @@ public final class JavaFormatter extends AbstractFormatter {
         write(datenpaket.getNachsatz());
     }
 
-    private void write(final Satz satz) throws IOException {
+    /**
+     * Da ein Datensatz nachher einer Java-Enum-Klasse entspricht, ist diese
+     * Klasse "public".
+     *
+     * @param satz Datensatz, der als Java-Enum-Klasse ausgegeben werden soll
+     * @throws IOException bei Problemen mit der Java-Generierung
+     */
+    public void write(final Satz satz) throws IOException {
         this.write(MessageFormat.format(headTemplate, new Date(), SystemUtils.USER_NAME, satz.getSatzart(), "-"));
         for (int i = 1; i <= satz.getNumberOfTeildatensaetze(); i++) {
             write(satz.getTeildatensatz(i), i);

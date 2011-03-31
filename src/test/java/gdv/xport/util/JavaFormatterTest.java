@@ -20,6 +20,7 @@ package gdv.xport.util;
 
 import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
+import gdv.xport.satz.Nachsatz;
 
 import java.io.*;
 import java.text.MessageFormat;
@@ -52,8 +53,23 @@ public class JavaFormatterTest extends AbstractFormatterTest {
         JavaFormatter formatter = new JavaFormatter(swriter);
         formatter.write(datenpaket);
         swriter.close();
-        log.debug(swriter);
+        log.trace(swriter);
         assertTrue("empty result!", StringUtils.isNotEmpty(swriter.toString()));
+    }
+    
+    /**
+     * Test-Methode fuer {@link JavaFormatter#write(gdv.xport.satz.Satz)}.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testWriteSatz() throws IOException {
+        StringWriter swriter = new StringWriter();
+        JavaFormatter formatter = new JavaFormatter(swriter);
+        formatter.write(new Nachsatz());
+        swriter.close();
+        String nachsatz = getResource("Feld9999.txt");
+        assertEquals(nachsatz, swriter.toString());
     }
     
     /**
