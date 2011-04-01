@@ -20,7 +20,7 @@ package gdv.xport.util;
 
 import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
-import gdv.xport.satz.Nachsatz;
+import gdv.xport.satz.model.Satz0210;
 
 import java.io.*;
 import java.text.MessageFormat;
@@ -66,10 +66,11 @@ public class JavaFormatterTest extends AbstractFormatterTest {
     public void testWriteSatz() throws IOException {
         StringWriter swriter = new StringWriter();
         JavaFormatter formatter = new JavaFormatter(swriter);
-        formatter.write(new Nachsatz());
+        formatter.write(new Satz0210(10));
         swriter.close();
-        String nachsatz = getResource("Feld9999.txt");
-        assertEquals(nachsatz, swriter.toString());
+        log.trace(swriter.toString());
+        String satz = getResource("Feld0210.txt");
+        assertEquals(satz, swriter.toString());
     }
     
     /**

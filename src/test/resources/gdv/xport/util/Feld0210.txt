@@ -1,0 +1,805 @@
+/*
+ * Copyright (c) 2011 by agentes
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express orimplied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * (c)reated {0,date,short} by {1}
+ */
+
+package gdv.xport.satz.feld.sparte010;
+
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.feld.*;
+
+
+/**
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 210, Sparte 10.
+ * 
+ * @author {1}
+ * @since {0,date,short}
+ */
+public enum Feld0210 '{'
+
+    /////   Teildatensatz 1   /////////////////////////////////////////////////
+
+    /**
+     * Satzart.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 1,
+            type = NumFeld.class,
+            anzahlBytes = 4,
+            byteAdresse = 1
+    )
+    SATZART,
+
+    /**
+     * VU-Nummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 2,
+            type = VUNummer.class,
+            anzahlBytes = 5,
+            byteAdresse = 5
+    )
+    VU_NUMMER,
+
+    /**
+     * Buendelungskennzeichen.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 3,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 1,
+            byteAdresse = 10
+    )
+    BUENDELUNGSKENNZEICHEN,
+
+    /**
+     * Sparte.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 4,
+            type = NumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 11
+    )
+    SPARTE,
+
+    /**
+     * Versicherungsschein-Nummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 5,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 17,
+            byteAdresse = 14
+    )
+    VERSICHERUNGSSCHEINNUMMER,
+
+    /**
+     * Folgenummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 6,
+            type = NumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 31
+    )
+    FOLGENUMMER,
+
+    /**
+     * Geschaeftsstelle/Vermittler.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 7,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 10,
+            byteAdresse = 33
+    )
+    VERMITTLER,
+
+    /**
+     * Kennzeichen Vertragsentstehung.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 8,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 43
+    )
+    KENNZEICHEN_VERTRAGSENTSTEHUNG,
+
+    /**
+     * Waehrungsschluessel.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 9,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 44
+    )
+    WAEHRUNGSSCHLUESSEL,
+
+    /**
+     * Beitragsdepot.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 10,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 47
+    )
+    BEITRAGSDEPOT,
+
+    /**
+     * Risikoverlauf.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 11,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 48
+    )
+    RISIKOVERLAUF,
+
+    /**
+     * Vorlaufsumme in Waehrungseinheiten.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 12,
+            type = Betrag.class,
+            anzahlBytes = 12,
+            byteAdresse = 49
+    )
+    VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN,
+
+    /**
+     * verkuerzte Beitragszahlungsdauer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 13,
+            type = NumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 61
+    )
+    VERKUERZTE_BEITRAGSZAHLUNGSDAUER,
+
+    /**
+     * besonderer Verwendungszweck.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 14,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 63
+    )
+    BESONDERER_VERWENDUNGSZWECK,
+
+    /**
+     * Vertragsform.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 15,
+            type = NumFeld.class,
+            anzahlBytes = 1,
+            byteAdresse = 64
+    )
+    VERTRAGSFORM,
+
+    /**
+     * Gruppenart.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 16,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 40,
+            byteAdresse = 65
+    )
+    GRUPPENART,
+
+    /**
+     * Name des mitversicherten Kinds.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 17,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 20,
+            byteAdresse = 105
+    )
+    NAME_MITVERSICHERTES_KIND,
+
+    /**
+     * Abschlussprovision.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 18,
+            type = NumFeld.class,
+            anzahlBytes = 5,
+            byteAdresse = 125
+    )
+    ABSCHLUSSPROVISION,
+
+    /**
+     * Kennzeichen fuer abweichende Abschlussprovision.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 19,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 130
+    )
+    KENNZEICHEN_ABWEICHENDE_ABSCHLUSSPROVISION,
+
+    /**
+     * Bestandspflegeprovision.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 20,
+            type = NumFeld.class,
+            anzahlBytes = 5,
+            byteAdresse = 131
+    )
+    BESTANDSPFLEGEPROVISION,
+
+    /**
+     * Kennzeichen fuer abweichende Bestandspflegeprovision.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 21,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 136
+    )
+    KENNZEICHEN_ABWEICHENDE_BESTANDSPFLEGEPROVISION,
+
+    /**
+     * Art des Drittrechts.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 22,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 137
+    )
+    ART_DES_DRITTRECHTS,
+
+    /**
+     * aktuelle Beitragsdepotsumme in Waehrungseinheiten.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 23,
+            type = Betrag.class,
+            anzahlBytes = 12,
+            byteAdresse = 139
+    )
+    AKTUELLE_BEITRAGSDEPOTSUMME_IN_WAEHRUNGSEINHEITEN,
+
+    /**
+     * Zahlungsanfang.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 24,
+            type = NumFeld.class,
+            anzahlBytes = 8,
+            byteAdresse = 151
+    )
+    ZAHLUNGSANFANG,
+
+    /**
+     * Zuzahlungsrecht.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 25,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 159
+    )
+    ZUZAHLUNGSRECHT,
+
+    /**
+     * Zuzahlungsbetrag in Waehrunngseinheiten.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 26,
+            type = Betrag.class,
+            anzahlBytes = 12,
+            byteAdresse = 160
+    )
+    ZUZAHLUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,
+
+    /**
+     * Zuzahlungsdatum.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 27,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 172
+    )
+    ZUZAHLUNGSDATUM,
+
+    /**
+     * Zukuenftiger Gesamtbeitrag in Waehrunngseinheiten.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 28,
+            type = Betrag.class,
+            anzahlBytes = 12,
+            byteAdresse = 180
+    )
+    ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN,
+
+    /**
+     * Zahlungsweise des kuenftigen Gesamtbetrags.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 29,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 192
+    )
+    ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG,
+
+    /**
+     * Beitragsumstellungsdatum.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 30,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 193
+    )
+    BEITRAGSUMSTELLUNGSDATUM,
+
+    /**
+     * Beitragsumstellungsgrund.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 31,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 201
+    )
+    BEITRAGSUMSTELLUNGSGRUND,
+
+    /**
+     * 1. Referenz-Versicherungsscheinnummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 32,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 17,
+            byteAdresse = 203
+    )
+    REFERENZ_VERSICHERUNGSSCHEINNUMMER_1,
+
+    /**
+     * 2. Referenz-Versicherungsscheinnummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 33,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 17,
+            byteAdresse = 220
+    )
+    REFERENZ_VERSICHERUNGSSCHEINNUMMER_2,
+
+    /**
+     * 3. Referenz-Versicherungsscheinnummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 34,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 17,
+            byteAdresse = 237
+    )
+    REFERENZ_VERSICHERUNGSSCHEINNUMMER_3,
+
+    /**
+     * Weitere Referenznummern.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 35,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 254
+    )
+    WEITERE_REFERENZNUMMERN,
+
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 36,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 1,
+            byteAdresse = 255
+    )
+    LEERSTELLEN,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 37,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER,
+
+    /////   Teildatensatz 2   /////////////////////////////////////////////////
+
+    /**
+     * Satzart.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 1,
+            type = NumFeld.class,
+            anzahlBytes = 4,
+            byteAdresse = 1
+    )
+    SATZART,
+
+    /**
+     * VU-Nummer.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 2,
+            type = VUNummer.class,
+            anzahlBytes = 5,
+            byteAdresse = 5
+    )
+    VU_NUMMER,
+
+    /**
+     * Buendelungskennzeichen.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 3,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 1,
+            byteAdresse = 10
+    )
+    BUENDELUNGSKENNZEICHEN,
+
+    /**
+     * Sparte.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 4,
+            type = NumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 11
+    )
+    SPARTE,
+
+    /**
+     * Versicherungsschein-Nummer.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 5,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 17,
+            byteAdresse = 14
+    )
+    VERSICHERUNGSSCHEINNUMMER,
+
+    /**
+     * Folgenummer.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 6,
+            type = NumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 31
+    )
+    FOLGENUMMER,
+
+    /**
+     * Geschaeftsstelle/Vermittler.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 7,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 10,
+            byteAdresse = 33
+    )
+    VERMITTLER,
+
+    /**
+     * Betriebliche Altersvorsorge.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 8,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 43
+    )
+    BETRIEBLICHE_ALTERSVORSORGE,
+
+    /**
+     * Unverfallbarkeit.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 9,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 44
+    )
+    UNVERFALLBARKEIT,
+
+    /**
+     * Diensteintrittsdatum.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 10,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 45
+    )
+    DIENSTEINTRITTSDATUM,
+
+    /**
+     * Bilanzmonat Arbeitgeber.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 11,
+            type = NumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 53
+    )
+    BILANZMONAT_ARBEITGEBER,
+
+    /**
+     * Produktbeschreibung.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 12,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 30,
+            byteAdresse = 55
+    )
+    PRODUKTBESCHREIBUNG,
+
+    /**
+     * Kapitlaertragsteuerpflicht.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 13,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 85
+    )
+    KAPITALERTRAGSTEUERPFLICHT,
+
+    /**
+     * Produktform.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 14,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 5,
+            byteAdresse = 86
+    )
+    PRODUKTFORM,
+
+    /**
+     * Produktform gueltig ab.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 15,
+            type = Datum.class,
+            anzahlBytes = 6,
+            byteAdresse = 91
+    )
+    PRODUKTFORM_GUELTIG_AB,
+
+    /**
+     * Produktname.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 16,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 20,
+            byteAdresse = 97
+    )
+    PRODUKTNAME,
+
+    /**
+     * Art der steuerlichen Foerderung.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 17,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 117
+    )
+    ART_DER_STEUERLICHEN_FOERDERUNG,
+
+    /**
+     * Finanzierungsart.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 18,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 118
+    )
+    FINANZIERUNGSART,
+
+    /**
+     * Durchfuehrungsweg.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 19,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 119
+    )
+    DURCHFUEHRUNGSWEG,
+
+    /**
+     * Finanzierung der Zusage.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 20,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 120
+    )
+    FINANZIERUNG_ZUSAGE,
+
+    /**
+     * Unterstuetzungskasse Schluessel.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 21,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 4,
+            byteAdresse = 121
+    )
+    UNTERSTUETZUNGSKASSE_SCHLUESSEL,
+
+    /**
+     * Unterstuetzungskasse Name.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 22,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 40,
+            byteAdresse = 125
+    )
+    UNTERSTUETZUNGSKASSE_NAME,
+
+    /**
+     * Traegerunternehmen Schluessel.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 23,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 4,
+            byteAdresse = 165
+    )
+    TRAEGERUNTERNEHMEN_SCHLUESSEL,
+
+    /**
+     * Traegerunternehmen Name.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 24,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 40,
+            byteAdresse = 169
+    )
+    TRAEGERUNTERNEHMEN_NAME,
+
+    /**
+     * Kollektiv-Nr..
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 25,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 15,
+            byteAdresse = 209
+    )
+    KOLLEKTIV_NR,
+
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 26,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 32,
+            byteAdresse = 224
+    )
+    LEERSTELLEN,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 27,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER;
+
+}

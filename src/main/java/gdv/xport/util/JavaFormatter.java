@@ -28,6 +28,7 @@ import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.logging.*;
 
 /**
  * Diese Klasse dient dazu, um entsprechende Enumerations wie zum Beispiel
@@ -40,7 +41,9 @@ import org.apache.commons.lang.SystemUtils;
  */
 public final class JavaFormatter extends AbstractFormatter {
     
+    private static final Log log = LogFactory.getLog(JavaFormatter.class);
     private static final String headTemplate = getTemplate("java/head.txt");
+    private static final String headSparteTemplate = getTemplate("java/headSparte.txt");
     private static final String footTemplate = getTemplate("java/foot.txt");
     private static final String teildatensatzTemplate = getTemplate("java/teildatensatz.txt");
     private static final String feldTemplate = getTemplate("java/feld.txt");
@@ -109,13 +112,28 @@ public final class JavaFormatter extends AbstractFormatter {
      * @throws IOException bei Problemen mit der Java-Generierung
      */
     public void write(final Satz satz) throws IOException {
-        this.write(MessageFormat.format(headTemplate, new Date(), SystemUtils.USER_NAME, satz.getSatzart(), "-"));
-        for (int i = 1; i <= satz.getNumberOfTeildatensaetze(); i++) {
-            write(satz.getTeildatensatz(i), i);
+        try {
+            this.write((Datensatz) satz);
+            return;
+        } catch (ClassCastException cce) {
+            log.trace(cce);
+            this.write(MessageFormat.format(headTemplate, new Date(), SystemUtils.USER_NAME, satz.getSatzart()));
+            for (int i = 1; i <= satz.getNumberOfTeildatensaetze(); i++) {
+                write(satz.getTeildatensatz(i), i);
+            }
+            this.write(footTemplate);
+        }
+    }
+    
+    private void write(final Datensatz datensatz) throws IOException {
+        this.write(MessageFormat.format(headSparteTemplate, new Date(), SystemUtils.USER_NAME, datensatz.getSatzart(),
+                datensatz.getSparte()));
+        for (int i = 1; i <= datensatz.getNumberOfTeildatensaetze(); i++) {
+            write(datensatz.getTeildatensatz(i), i);
         }
         this.write(footTemplate);
     }
-    
+
     private void write(final Teildatensatz tds, final int tdsNr) throws IOException {
         if (tdsNr > 1) {
             this.write(",\n\n");
