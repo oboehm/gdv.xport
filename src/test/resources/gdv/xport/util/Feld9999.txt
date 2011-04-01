@@ -69,60 +69,65 @@ public enum Feld9999 '{'
     VERMITTLER,
 
     /**
-     * Gesamtbeitrag.
+     * Gesamtbeitrag (13,2 Stellen).
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 4,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 15,
             byteAdresse = 25
     )
     GESAMTBEITRAG,
 
     /**
-     * Gesamtbeitrag-Brutto(Inkasso).
+     * Gesamtbeitrag-Brutto(Inkasso) (13,2 Stellen).
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 5,
             type = BetragMitVorzeichen.class,
+            nachkommaStellen = 2,
             anzahlBytes = 15,
             byteAdresse = 40
     )
     GESAMTBEITRAG_BRUTTO,
 
     /**
-     * Gesamtprovisions-Betrag.
+     * Gesamtprovisions-Betrag (13,2 Stellen).
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 6,
             type = BetragMitVorzeichen.class,
+            nachkommaStellen = 2,
             anzahlBytes = 15,
             byteAdresse = 55
     )
     GESAMTPROVISIONSBETRAG,
 
     /**
-     * Versicherungsleistungen.
+     * Versicherungsleistungen (13,2 Stellen).
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 7,
             type = BetragMitVorzeichen.class,
+            nachkommaStellen = 2,
             anzahlBytes = 15,
             byteAdresse = 70
     )
     VERSICHERUNGSLEISTUNGEN,
 
     /**
-     * Schadenbearbeitungskosten.
+     * Schadenbearbeitungskosten (13,2 Stellen).
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 8,
             type = BetragMitVorzeichen.class,
+            nachkommaStellen = 2,
             anzahlBytes = 15,
             byteAdresse = 85
     )

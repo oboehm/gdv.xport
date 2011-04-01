@@ -237,12 +237,13 @@ public enum Feld0210 '{'
     NAME_MITVERSICHERTES_KIND,
 
     /**
-     * Abschlussprovision.
+     * Abschlussprovision (3,2 Stellen).
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 18,
             type = NumFeld.class,
+            nachkommaStellen = 2,
             anzahlBytes = 5,
             byteAdresse = 125
     )
@@ -297,12 +298,13 @@ public enum Feld0210 '{'
     ART_DES_DRITTRECHTS,
 
     /**
-     * aktuelle Beitragsdepotsumme in Waehrungseinheiten.
+     * aktuelle Beitragsdepotsumme in Waehrungseinheiten (10,2 Stellen).
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 23,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 139
     )
@@ -333,12 +335,13 @@ public enum Feld0210 '{'
     ZUZAHLUNGSRECHT,
 
     /**
-     * Zuzahlungsbetrag in Waehrunngseinheiten.
+     * Zuzahlungsbetrag in Waehrungseinheiten (10,2 Stellen).
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 26,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 160
     )
@@ -357,12 +360,13 @@ public enum Feld0210 '{'
     ZUZAHLUNGSDATUM,
 
     /**
-     * Zukuenftiger Gesamtbeitrag in Waehrunngseinheiten.
+     * Zukuenftiger Gesamtbeitrag in Waehrungseinheiten (10,2 Stellen).
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 28,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 180
     )
@@ -767,7 +771,7 @@ public enum Feld0210 '{'
     TRAEGERUNTERNEHMEN_NAME,
 
     /**
-     * Kollektiv-Nr..
+     * Kollektiv-Nr.
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -802,4 +806,4 @@ public enum Feld0210 '{'
     )
     SATZNUMMER;
 
-}
+'}'

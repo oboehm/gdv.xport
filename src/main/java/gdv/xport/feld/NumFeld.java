@@ -141,6 +141,15 @@ public class NumFeld extends Feld {
                 this.getInhalt(), n);
 
     }
+    
+    /**
+     * Liefert die Anzahl der Nachkommastellen.
+     *
+     * @return Anzahl der Nachkommastellen
+     */
+    public int getNachkommastellen() {
+        return this.nachkommastellen;
+    }
 
     /**
      * @param n neuer Inhalt

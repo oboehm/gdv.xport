@@ -439,7 +439,7 @@ public final class Bezeichner {
     public static final String ZAHLUNGSWEISE = "Zahlungsweise";
     public static final String ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG = "Zahlungsweise des kuenftigen Gesamtbetrags";
     public static final String ZIELGRUPPENSCHLUESSEL = "Zielgruppenschluessel";
-    public static final String ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN = "Zukuenftiger Gesamtbeitrag in Waehrunngseinheiten";
+    public static final String ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN = "Zukuenftiger Gesamtbeitrag in Waehrungseinheiten";
     public static final String ZUSAETZLICHE_SATZKENNUNG = "zusaetzliche Satzkennung";
     public static final String ZUSCHLAG1_IN_PROZENT = "Zuschlag-1 in %";
     public static final String ZUSCHLAG1_IN_WAEHRUNGSEINHEITEN = "Zuschlag-1 in Waehrungseinheiten";
@@ -447,7 +447,7 @@ public final class Bezeichner {
     public static final String ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN = "Zuschlag-2 in Waehrungseinheiten";
     public static final String ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Zuschlagsbetrag in Waehrungseinheiten";
     public static final String ZUSCHLAG_IN_PROZENT = "Zuschlag in %";
-    public static final String ZUZAHLUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Zuzahlungsbetrag in Waehrunngseinheiten";
+    public static final String ZUZAHLUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Zuzahlungsbetrag in Waehrungseinheiten";
     public static final String ZUZAHLUNGSDATUM = "Zuzahlungsdatum";
     public static final String ZUZAHLUNGSRECHT = "Zuzahlungsrecht";
 

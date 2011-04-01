@@ -19,7 +19,7 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.feld.Feld;
+import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
 import java.io.*;
@@ -150,14 +150,41 @@ public final class JavaFormatter extends AbstractFormatter {
         if (feldNr > 1) {
             this.write(",\n\n");
         }
+        try {
+            NumFeld numFeld = (NumFeld) feld;
+            if (numFeld.getNachkommastellen() > 0) {
+                this.write(numFeld, tdsNr, feldNr);
+                return;
+            }
+        } catch (ClassCastException normal) {
+            log.trace(normal);
+        }
+        String bezeichnung = feld.getBezeichnung();
+        if (!bezeichnung.endsWith(".")) {
+            bezeichnung += ".";
+        }
         this.write(MessageFormat.format(feldTemplate, 
-                feld.getBezeichnung(),
+                bezeichnung,
                 tdsNr,
                 feldNr,
                 feld.getClass().getSimpleName(),
                 feld.getAnzahlBytes(),
                 feld.getByteAdresse(),
                 feld.getBezeichner()
+        ));
+    }
+
+    private void write(final NumFeld feld, final int tdsNr, final int feldNr) throws IOException {
+        this.write(MessageFormat.format(numFeldTemplate, 
+                feld.getBezeichnung(),
+                tdsNr,
+                feldNr,
+                feld.getClass().getSimpleName(),
+                feld.getAnzahlBytes(),
+                feld.getByteAdresse(),
+                feld.getBezeichner(),
+                feld.getNachkommastellen(),
+                (feld.getAnzahlBytes() - feld.getNachkommastellen())
         ));
     }
 
