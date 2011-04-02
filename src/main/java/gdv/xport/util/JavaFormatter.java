@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
 import java.io.*;
-import java.text.MessageFormat;
+import java.text.*;
 import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
@@ -208,6 +208,46 @@ public final class JavaFormatter extends AbstractFormatter {
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
+    }
+    
+    /**
+     * Exportiert das uebergegbene Datenpaket als Java-Enum-Klassen im
+     * angegebenen Verzeichnis. Dabei wird die entsprechende Package-Struktur
+     * erstellt, sodass dieses Verzeichnis als Source-Verzeichnis oder zum
+     * Import dienen kann.
+     * 
+     * @param dir Export-Verzeichnis
+     * @param datenpaket das Datenpaket
+     * @throws IOException wenn z.B. das Package-Verzeichnis nicht erstellt werden kann
+     */
+    public static void toDir(final File dir, final Datenpaket datenpaket) throws IOException {
+        toDir(dir, datenpaket.getVorsatz());
+        // TODO t.b.c.
+    }
+
+    /**
+     * Hiermit kann ein einzelner (Daten-)Satz als Java-Enum-Klasse exportiert
+     * werden.
+     *
+     * @param dir Export-Verzeichnis
+     * @param satz der (Daten-)Satz
+     * @throws IOException wenn z.B. das Package-Verzeichnis nicht erstellt werden kann
+     */
+    public static void toDir(final File dir, final Satz satz) throws IOException {
+        if (!dir.isDirectory()) {
+            throw new IllegalArgumentException(dir + " is not a directory");
+        }
+        File packageDir = new File(dir, "gdv/xport/satz/feld");
+        if (packageDir.mkdirs()) {
+            log.info("created: " + packageDir.getAbsolutePath());
+        }
+        String filename = MessageFormat.format("Feld{0,number,0000}.java", satz.getSatzart());
+        File javaFile = new File(packageDir, filename);
+        Writer writer = new FileWriter(javaFile);
+        JavaFormatter formatter = new JavaFormatter(writer);
+        formatter.write(satz);
+        writer.close();
+        log.info("created: " + javaFile);
     }
 
 }

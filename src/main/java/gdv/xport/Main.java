@@ -133,9 +133,8 @@ public final class Main {
         }
     }
     
-    // TODO Export nach dir realisieren
-    private static void exportJava(final File dir, final Datenpaket datenpaket) {
-        System.out.println(JavaFormatter.toString(datenpaket));
+    private static void exportJava(final File dir, final Datenpaket datenpaket) throws IOException {
+        JavaFormatter.toDir(dir, datenpaket);
     }
 
     /**

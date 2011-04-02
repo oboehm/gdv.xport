@@ -20,6 +20,7 @@ package gdv.xport.util;
 
 import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
+import gdv.xport.satz.*;
 import gdv.xport.satz.model.Satz0210;
 
 import java.io.*;
@@ -30,6 +31,11 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.*;
 import org.apache.commons.logging.*;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import patterntesting.concurrent.junit.ParallelRunner;
+import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.io.FileHelper;
 
 /**
  * JUnit-Test fuer JavaFormatter.
@@ -37,6 +43,7 @@ import org.junit.Test;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 27.03.2011
  */
+@RunWith(ParallelRunner.class)
 public class JavaFormatterTest extends AbstractFormatterTest {
     
     private static final Log log = LogFactory.getLog(JavaFormatterTest.class);
@@ -94,6 +101,20 @@ public class JavaFormatterTest extends AbstractFormatterTest {
         } finally {
             istream.close();
         }
+    }
+    
+    /**
+     * Tested das Exportieren einer Java-Enum-Klasse.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testToDir() throws IOException {
+        Satz satz = new Vorsatz();
+        File tmpDir = FileHelper.getTmpdir();
+        JavaFormatter.toDir(tmpDir, satz);
+        File expected = new File(tmpDir, "gdv/xport/satz/feld/Feld0001.java");
+        assertTrue("not found: " + expected, expected.exists());
     }
 
 }
