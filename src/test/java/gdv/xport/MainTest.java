@@ -26,7 +26,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.io.FileHelper;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -60,8 +59,8 @@ public final class MainTest {
      */
     @Test
     public void testExportJava() throws IOException, XMLStreamException {
-        File tmpDir = FileHelper.getTmpdir();
-        String[] args = { "-export", tmpDir.getPath(), "-java" };
+        File destDir = new File("target/generated-sources");
+        String[] args = { "-export", destDir.getPath(), "-java" };
         Main.main(args);
     }
 

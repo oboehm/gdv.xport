@@ -162,6 +162,19 @@ public class Datensatz extends Satz {
     public int getSparte() {
         return this.sparte.toInt();
     }
+    
+    /**
+     * Ueberprueft, ob der Datensatz ueberhaupt eine Sparte gesetzt hat.
+     *
+     * @return true, if successful
+     * @since 0.6
+     */
+    public boolean hasSparte() {
+        if (this.sparte.isEmpty()) {
+            return false;
+        }
+        return this.getSparte() > 0;
+    }
 
     /**
      * Gets the sparte feld.

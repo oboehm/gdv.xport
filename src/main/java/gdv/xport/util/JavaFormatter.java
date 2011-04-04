@@ -113,16 +113,19 @@ public final class JavaFormatter extends AbstractFormatter {
      */
     public void write(final Satz satz) throws IOException {
         try {
-            this.write((Datensatz) satz);
-            return;
-        } catch (ClassCastException cce) {
-            log.trace(cce);
-            this.write(MessageFormat.format(headTemplate, new Date(), SystemUtils.USER_NAME, satz.getSatzart()));
-            for (int i = 1; i <= satz.getNumberOfTeildatensaetze(); i++) {
-                write(satz.getTeildatensatz(i), i);
+            Datensatz datensatz = (Datensatz) satz;
+            if (datensatz.hasSparte()) {
+                this.write(datensatz);
+                return;
             }
-            this.write(footTemplate);
+        } catch (ClassCastException canhappen) {
+            log.trace(canhappen);
         }
+        this.write(MessageFormat.format(headTemplate, new Date(), SystemUtils.USER_NAME, satz.getSatzart()));
+        for (int i = 1; i <= satz.getNumberOfTeildatensaetze(); i++) {
+            write(satz.getTeildatensatz(i), i);
+        }
+        this.write(footTemplate);
     }
     
     private void write(final Datensatz datensatz) throws IOException {
@@ -222,7 +225,10 @@ public final class JavaFormatter extends AbstractFormatter {
      */
     public static void toDir(final File dir, final Datenpaket datenpaket) throws IOException {
         toDir(dir, datenpaket.getVorsatz());
-        // TODO t.b.c.
+        for (Datensatz datensatz : datenpaket.getDatensaetze()) {
+            toDir(dir, datensatz);
+        }
+        toDir(dir, datenpaket.getNachsatz());
     }
 
     /**
@@ -234,10 +240,35 @@ public final class JavaFormatter extends AbstractFormatter {
      * @throws IOException wenn z.B. das Package-Verzeichnis nicht erstellt werden kann
      */
     public static void toDir(final File dir, final Satz satz) throws IOException {
+        try {
+            toDir(dir, (Datensatz) satz);
+        } catch (ClassCastException canhappen) {
+            toDir(dir, "gdv/xport/satz/feld", satz);
+        }
+    }
+
+    /**
+     * Hiermit kann ein einzelner DatenSatz als Java-Enum-Klasse exportiert
+     * werden.
+     *
+     * @param dir Export-Verzeichnis
+     * @param datensatz der Datensatz
+     * @throws IOException wenn z.B. das Package-Verzeichnis nicht erstellt werden kann
+     */
+    public static void toDir(final File dir, final Datensatz datensatz) throws IOException {
+        if (datensatz.hasSparte()) {
+            String sparte = MessageFormat.format("sparte{0,number,000}", datensatz.getSparte());
+            toDir(dir, "gdv/xport/satz/feld/" + sparte, datensatz);
+        } else {
+            toDir(dir, "gdv/xport/satz/feld", datensatz);
+        }
+    }
+
+    private static void toDir(final File dir, final String packageDirname, final Satz satz) throws IOException {
+        File packageDir = new File(dir, packageDirname);
         if (!dir.isDirectory()) {
             throw new IllegalArgumentException(dir + " is not a directory");
         }
-        File packageDir = new File(dir, "gdv/xport/satz/feld");
         if (packageDir.mkdirs()) {
             log.info("created: " + packageDir.getAbsolutePath());
         }

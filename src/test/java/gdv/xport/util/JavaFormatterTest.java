@@ -30,12 +30,10 @@ import java.util.Date;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.*;
 import org.apache.commons.logging.*;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 
 import patterntesting.concurrent.junit.ParallelRunner;
-import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.io.FileHelper;
 
 /**
  * JUnit-Test fuer JavaFormatter.
@@ -44,11 +42,22 @@ import patterntesting.runtime.io.FileHelper;
  * @since 27.03.2011
  */
 @RunWith(ParallelRunner.class)
-public class JavaFormatterTest extends AbstractFormatterTest {
+public final class JavaFormatterTest extends AbstractFormatterTest {
     
     private static final Log log = LogFactory.getLog(JavaFormatterTest.class);
+    private static final File distDir = new File("target/generated-sources");
     private Datenpaket datenpaket = new Datenpaket();
-
+    
+    /**
+     * Creates the dist dir.
+     */
+    @BeforeClass
+    public static void createDistDir() {
+        if (distDir.mkdirs()) {
+            log.info("created: " + distDir.getAbsolutePath());
+        }
+    }
+    
     /**
      * Test method for {@link JavaFormatter#write(gdv.xport.Datenpaket)}.
      *
@@ -104,16 +113,31 @@ public class JavaFormatterTest extends AbstractFormatterTest {
     }
     
     /**
-     * Tested das Exportieren einer Java-Enum-Klasse.
+     * Tested das Exportieren einer (normalen) Java-Enum-Klasse.
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testToDir() throws IOException {
+    public void testToDirVorsatz() throws IOException {
         Satz satz = new Vorsatz();
-        File tmpDir = FileHelper.getTmpdir();
-        JavaFormatter.toDir(tmpDir, satz);
-        File expected = new File(tmpDir, "gdv/xport/satz/feld/Feld0001.java");
+        generateClass(satz, "gdv/xport/satz/feld/Feld0001.java");
+    }
+
+    /**
+     * Tested das Exportieren einer Java-Enum-Klasse fuer eine Satzart mit
+     * Sparte.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testToDirSatzWithSparte() throws IOException {
+        Satz satz = new Satz0210(10);
+        generateClass(satz, "gdv/xport/satz/feld/sparte010/Feld0210.java");
+    }
+
+    private void generateClass(final Satz satz, final String javaFilename) throws IOException {
+        JavaFormatter.toDir(distDir, satz);
+        File expected = new File(distDir, javaFilename);
         assertTrue("not found: " + expected, expected.exists());
     }
 
