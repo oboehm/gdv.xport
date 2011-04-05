@@ -60,6 +60,15 @@ public final class SatzFactory {
         register(VertragsspezifischerTeil.class, 210, 30);
         register(VertragsspezifischerTeil.class, 210, 50);
         register(VertragsspezifischerTeil.class, 210, 70);
+        register(Erweiterungssatz211.class, 211, 10);
+        register(Erweiterungssatz211.class, 211, 50);
+        register(SpartenspezifischerTeil.class, 220, 30);
+        register(SpartenspezifischerTeil.class, 220, 51);
+        register(SpartenspezifischerTeil.class, 220, 52);
+        register(SpartenspezifischerTeil.class, 220, 53);
+        register(SpartenspezifischerTeil.class, 220, 70);
+        register(Erweiterungssatz211.class, 211, 10);
+        register(Erweiterungssatz211.class, 211, 50);
     }
 
     /**
