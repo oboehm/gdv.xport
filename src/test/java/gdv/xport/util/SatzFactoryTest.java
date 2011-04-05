@@ -20,11 +20,14 @@ package gdv.xport.util;
 
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 import static org.junit.Assert.*;
+import gdv.xport.Datenpaket;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
+import gdv.xport.satz.model.Satz0210;
 
 import java.io.IOException;
 
+import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
@@ -34,6 +37,8 @@ import org.junit.Test;
  * @since 0.1.0 (30.10.2009)
  */
 public final class SatzFactoryTest extends AbstractTest {
+    
+    private static final Log log = LogFactory.getLog(SatzFactoryTest.class);
 
     /**
      * Testet getSatz().
@@ -156,6 +161,11 @@ public final class SatzFactoryTest extends AbstractTest {
     public void testGetErweiterungssatz30() {
         checkGetDatensatz(221, 30, Erweiterungssatz221.class, "2");
     }
+    
+    @Test
+    public void testGetSatzart210() {
+        checkGetDatensatz(210, 10, Satz0210.class, "1");
+    }
 
     private static void checkGetDatensatz(final int satzart, final int sparte, final Class<? extends Datensatz> clazz,
             final String satzNr) {
@@ -181,6 +191,17 @@ public final class SatzFactoryTest extends AbstractTest {
                  + "           000000                                               ";
         datensatz.importFrom(s);
         assertEquals(1, datensatz.getFolgenummer());
+    }
+    
+    /**
+     * Test-Methode fuer {@link SatzFactory#getAllSupportedSaetze()}.
+     */
+    @Test
+    public void testGetAllSupportedSaetze() {
+        Datenpaket all = SatzFactory.getAllSupportedSaetze();
+        int n = all.getDatensaetze().size();
+        log.info(n + " Satzarten supported");
+        assertTrue("only " + n + " Datensaetze supported", n > 5);
     }
 
 }

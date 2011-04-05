@@ -18,6 +18,8 @@
 
 package gdv.xport;
 
+import static org.junit.Assert.*;
+
 import java.io.*;
 
 import javax.xml.stream.XMLStreamException;
@@ -62,6 +64,12 @@ public final class MainTest {
         File destDir = new File("target/generated-sources");
         String[] args = { "-export", destDir.getPath(), "-java" };
         Main.main(args);
+        assertExists(new File(destDir, "gdv/xport/satz/feld/Feld0100.java"));
+        assertExists(new File(destDir, "gdv/xport/satz/feld/sparte010/Feld0210.java"));
+    }
+
+    private void assertExists(final File file) {
+        assertTrue("does not exist: " + file.getAbsolutePath(), file.exists());
     }
 
 }

@@ -253,7 +253,7 @@ public final class SatzFactory {
             log.info("default ctor does not work (" + exWithTwoParams
                     + "), trying another ctor...");
             Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class);
-            return ctor.newInstance(satzart);
+            return ctor.newInstance(sparte);
         } catch (NoSuchMethodException nsme) {
             throw new IllegalArgumentException(clazz + " found for Satzart " + satzart
                     + ", but no default ctor, no " + clazz.getSimpleName() + "(" + sparte
@@ -289,9 +289,23 @@ public final class SatzFactory {
      * @since 0.6
      * @return Datenpaket mit allen unterstuetzten Satzarten
      */
-    // TODO: Implementierung fehlt noch
     public static Datenpaket getAllSupportedSaetze() {
-        return new Datenpaket();
+        Datenpaket all = new Datenpaket();
+        for (Integer satzart : registeredSatzClasses.keySet()) {
+            try {
+                all.add(getDatensatz(satzart));                
+            } catch (ClassCastException canhappen) {
+                if ((satzart != 1) && (satzart != 9999)) {
+                    log.warn("Satzart " + satzart + " not added as supported Satz", canhappen);
+                }
+            }
+        }
+        for (Integer key : registeredDatensatzClasses.keySet()) {
+            int sparte = key % 1000;
+            int satzart = key / 1000;
+            all.add(getDatensatz(satzart, sparte));
+        }
+        return all;
     }
 
 }
