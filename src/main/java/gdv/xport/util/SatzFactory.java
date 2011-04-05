@@ -57,6 +57,9 @@ public final class SatzFactory {
         registeredSatzClasses.put(221, Erweiterungssatz221.class);
         registeredSatzClasses.put(9999, Nachsatz.class);
         register(Satz0210.class, 210, 10);
+        register(VertragsspezifischerTeil.class, 210, 30);
+        register(VertragsspezifischerTeil.class, 210, 50);
+        register(VertragsspezifischerTeil.class, 210, 70);
     }
 
     /**
@@ -212,54 +215,50 @@ public final class SatzFactory {
             return useFallback(satzart, sparte);
         }
         try {
-            return clazz.newInstance();
-        } catch (RuntimeException re) {
-            throw re;
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException("can't access default ctor");
-        } catch (InstantiationException e) {
-            try {
-                log.info("default ctor does not work (" + e + "), trying another ctor...");
-                Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);
-                return ctor.newInstance(satzart, sparte);
-            } catch (NoSuchMethodException exWithTwoParams) {
-                log.info("ctor " + clazz + "(int, int) not found (" + exWithTwoParams + ")");
-                return getDatensatz(satzart, sparte, clazz, exWithTwoParams);
-            } catch (InstantiationException exWithTwoParams) {
-                log.info(clazz + "(int, int) can't be instantiated (" + exWithTwoParams + ")");
-                return getDatensatz(satzart, sparte, clazz, exWithTwoParams);
-            } catch (IllegalAccessException exWithTwoParams) {
-                log.info(clazz + "(int, int) can't be accessed (" + exWithTwoParams + ")");
-                return getDatensatz(satzart, sparte, clazz, exWithTwoParams);
-            } catch (InvocationTargetException exWithTwoParams) {
-                log.info("error in calling " + clazz + "(int, int): " + exWithTwoParams);
-                return getDatensatz(satzart, sparte, clazz, exWithTwoParams);
-            }
+            Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);
+            return ctor.newInstance(satzart, sparte);
+        } catch (NoSuchMethodException exWithTwoParams) {
+            log.info("ctor " + clazz + "(int, int) not found (" + exWithTwoParams + ")");
+            return getDatensatz(sparte, clazz);
+        } catch (InstantiationException exWithTwoParams) {
+            log.info(clazz + "(int, int) can't be instantiated (" + exWithTwoParams + ")");
+            return getDatensatz(sparte, clazz);
+        } catch (IllegalAccessException exWithTwoParams) {
+            log.info(clazz + "(int, int) can't be accessed (" + exWithTwoParams + ")");
+            return getDatensatz(sparte, clazz);
+        } catch (InvocationTargetException exWithTwoParams) {
+            log.info("error in calling " + clazz + "(int, int): " + exWithTwoParams);
+            return getDatensatz(sparte, clazz);
         }
     }
 
     /**
      * Gets the datensatz.
      *
-     * @param satzart the satzart
      * @param sparte the sparte
      * @param clazz the clazz
-     * @param exWithTwoParams the ex with two params
      * @return the datensatz
      */
-    private static Datensatz getDatensatz(final int satzart, final int sparte,
-            final Class<? extends Datensatz> clazz, final Exception exWithTwoParams) {
+    private static Datensatz getDatensatz(final int sparte, final Class<? extends Datensatz> clazz) {
         try {
-            log.info("default ctor does not work (" + exWithTwoParams
-                    + "), trying another ctor...");
             Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class);
             return ctor.newInstance(sparte);
         } catch (NoSuchMethodException nsme) {
-            throw new IllegalArgumentException(clazz + " found for Satzart " + satzart
-                    + ", but no default ctor, no " + clazz.getSimpleName() + "(" + sparte
-                    + ") ctor", nsme);
+            log.info(clazz + " found but no " + clazz.getSimpleName() + "(" + sparte + ") ctor (" + nsme + ")");
+            return getDatensatz(clazz);
         } catch (Exception exWithOneParam) {
-            throw new RuntimeException("constructor problem with " + clazz, exWithOneParam);
+            log.warn("constructor problem with " + clazz, exWithOneParam);
+            return getDatensatz(clazz);
+        }
+    }
+
+    private static Datensatz getDatensatz(final Class<? extends Datensatz> clazz) {
+        try {
+            return clazz.newInstance();
+        } catch (InstantiationException e) {
+            throw new IllegalArgumentException("can't instantiate " + clazz, e);
+        } catch (IllegalAccessException e) {
+            throw new IllegalArgumentException("can't access default ctor of " + clazz, e);
         }
     }
 
