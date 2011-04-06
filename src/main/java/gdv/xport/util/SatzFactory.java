@@ -52,13 +52,13 @@ public final class SatzFactory {
         register(Vorsatz.class, 1);
         register(Satz0100.class, 100);
         register(Satz0200.class, 200);
-        register(SpartenspezifischerTeil.class, 220);
-        register(Erweiterungssatz221.class, 221);
-        register(Nachsatz.class, 9999);
+        register(VertragsspezifischerTeil.class, 210);
         register(Satz0210.class, 210, 10);
         register(Satz0210.class, 210, 30);
         register(Satz0210.class, 210, 50);
         register(Satz0210.class, 210, 70);
+        register(SpartenspezifischerTeil.class, 220);
+        register(Erweiterungssatz221.class, 221);
         register(Erweiterungssatz211.class, 211, 10);
         register(Erweiterungssatz211.class, 211, 50);
         register(SpartenspezifischerTeil.class, 220, 30);
@@ -68,6 +68,7 @@ public final class SatzFactory {
         register(SpartenspezifischerTeil.class, 220, 70);
         register(Erweiterungssatz211.class, 211, 10);
         register(Erweiterungssatz211.class, 211, 50);
+        register(Nachsatz.class, 9999);
     }
 
     /**
