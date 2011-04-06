@@ -18,7 +18,7 @@
 
 package gdv.xport.satz.model;
 
-import gdv.xport.satz.feld.Feld0100;
+import gdv.xport.satz.feld.Feld100;
 
 /**
  * Diese Klasse repraesentiert die Satzart 100.
@@ -36,7 +36,7 @@ public class Satz0100 extends SatzX {
      * Default-Konstruktor.
      */
     public Satz0100() {
-        super(100, Feld0100.values(), 5);
+        super(100, Feld100.values(), 5);
     }
 
 }

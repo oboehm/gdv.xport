@@ -20,7 +20,7 @@ package gdv.xport.satz.model;
 
 import static org.junit.Assert.assertEquals;
 import gdv.xport.satz.AbstractSatzTest;
-import gdv.xport.satz.feld.Feld0100;
+import gdv.xport.satz.feld.Feld100;
 
 import java.io.IOException;
 
@@ -81,9 +81,9 @@ public class Satz0100Test extends AbstractSatzTest {
         assertEquals("59999999998", satz.getVersicherungsscheinNummer());
         assertEquals(1, satz.getFolgenummer());
         assertEquals("9999009999", satz.getVermittler());
-        assertEquals("1", satz.get(Feld0100.ANREDESCHLUESSEL));
-        assertEquals("Pollsmann", satz.get(Feld0100.NAME1).trim());
-        assertEquals("           W45WWW", satz.get(Feld0100.KUNDENNR_VERSICHERER));
+        assertEquals("1", satz.get(Feld100.ANREDESCHLUESSEL));
+        assertEquals("Pollsmann", satz.get(Feld100.NAME1).trim());
+        assertEquals("           W45WWW", satz.get(Feld100.KUNDENNR_VERSICHERER));
     }
     
     /**
@@ -92,8 +92,8 @@ public class Satz0100Test extends AbstractSatzTest {
      */
     @Test
     public void testAlignment() {
-        satz.set(Feld0100.KUNDENNR_VERSICHERER, "1234567890abcdef");
-        assertEquals(" 1234567890abcdef", satz.get(Feld0100.KUNDENNR_VERSICHERER));
+        satz.set(Feld100.KUNDENNR_VERSICHERER, "1234567890abcdef");
+        assertEquals(" 1234567890abcdef", satz.get(Feld100.KUNDENNR_VERSICHERER));
     }
 
 }

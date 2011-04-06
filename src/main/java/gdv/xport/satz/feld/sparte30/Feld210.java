@@ -16,7 +16,7 @@
  * (c)reated 05.04.11 by oliver
  */
 
-package gdv.xport.satz.feld.sparte030;
+package gdv.xport.satz.feld.sparte30;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.*;
@@ -28,7 +28,7 @@ import gdv.xport.feld.*;
  * @author oliver
  * @since 0.6
  */
-public enum Feld0210 {
+public enum Feld210 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
 

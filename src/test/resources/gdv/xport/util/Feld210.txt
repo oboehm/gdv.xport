@@ -16,7 +16,7 @@
  * (c)reated {0,date,short} by {1}
  */
 
-package gdv.xport.satz.feld.sparte010;
+package gdv.xport.satz.feld.sparte10;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.*;
@@ -28,7 +28,7 @@ import gdv.xport.feld.*;
  * @author {1}
  * @since {0,date,short}
  */
-public enum Feld0210 '{'
+public enum Feld210 '{'
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
 

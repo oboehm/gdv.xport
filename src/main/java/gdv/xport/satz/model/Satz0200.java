@@ -18,7 +18,7 @@
 
 package gdv.xport.satz.model;
 
-import gdv.xport.satz.feld.Feld0200;
+import gdv.xport.satz.feld.Feld200;
 
 /**
  * Diese Klasse repraesentiert die Satzart 200.
@@ -36,7 +36,7 @@ public class Satz0200 extends SatzX {
      * Default-Konstruktor.
      */
     public Satz0200() {
-        super(200, Feld0200.values(), 2);
+        super(200, Feld200.values(), 2);
     }
 
 }

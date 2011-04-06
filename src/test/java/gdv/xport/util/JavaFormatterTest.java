@@ -85,7 +85,7 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
         formatter.write(new Satz0210(10));
         swriter.close();
         log.trace(swriter.toString());
-        String satz = getResource("Feld0210.txt");
+        String satz = getResource("Feld210.txt");
         assertEquals(satz, swriter.toString());
     }
     
@@ -96,7 +96,7 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
      */
     @Test
     public void testToString() throws IOException {
-        String vorsatz = getResource("Feld0001.txt");
+        String vorsatz = getResource("Feld1.txt");
         String nachsatz = getResource("Feld9999.txt");
         String expected = vorsatz + nachsatz;
         assertEquals(expected, JavaFormatter.toString(datenpaket));
@@ -120,7 +120,7 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
     @Test
     public void testToDirVorsatz() throws IOException {
         Satz satz = new Vorsatz();
-        generateClass(satz, "gdv/xport/satz/feld/Feld0001.java");
+        generateClass(satz, "gdv/xport/satz/feld/Feld1.java");
     }
 
     /**
@@ -132,7 +132,7 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
     @Test
     public void testToDirSatzWithSparte() throws IOException {
         Satz satz = new Satz0210(10);
-        generateClass(satz, "gdv/xport/satz/feld/sparte010/Feld0210.java");
+        generateClass(satz, "gdv/xport/satz/feld/sparte10/Feld210.java");
     }
 
     private void generateClass(final Satz satz, final String javaFilename) throws IOException {

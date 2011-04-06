@@ -32,7 +32,7 @@ import org.apache.commons.logging.*;
 
 /**
  * Diese Klasse dient dazu, um entsprechende Enumerations wie zum Beispiel
- * in {@link gdv.xport.satz.feld.Feld0100} zu erzeugen. Dies erleichtert
+ * in {@link gdv.xport.satz.feld.Feld100} zu erzeugen. Dies erleichtert
  * die Migration der alten Datensaetze auf das neue Format nach dem
  * SOP-Ansatz, der in 0.6 hinzugekommen ist.
  *
@@ -257,7 +257,7 @@ public final class JavaFormatter extends AbstractFormatter {
      */
     public static void toDir(final File dir, final Datensatz datensatz) throws IOException {
         if (datensatz.hasSparte()) {
-            String sparte = MessageFormat.format("sparte{0,number,000}", datensatz.getSparte());
+            String sparte = MessageFormat.format("sparte{0,number,##0}", datensatz.getSparte());
             toDir(dir, "gdv/xport/satz/feld/" + sparte, datensatz);
         } else {
             toDir(dir, "gdv/xport/satz/feld", datensatz);
@@ -272,7 +272,7 @@ public final class JavaFormatter extends AbstractFormatter {
         if (packageDir.mkdirs()) {
             log.info("created: " + packageDir.getAbsolutePath());
         }
-        String filename = MessageFormat.format("Feld{0,number,0000}.java", satz.getSatzart());
+        String filename = MessageFormat.format("Feld{0,number,###0}.java", satz.getSatzart());
         File javaFile = new File(packageDir, filename);
         Writer writer = new FileWriter(javaFile);
         JavaFormatter formatter = new JavaFormatter(writer);

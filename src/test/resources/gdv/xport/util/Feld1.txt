@@ -28,7 +28,7 @@ import gdv.xport.feld.*;
  * @author {1}
  * @since {0,date,short}
  */
-public enum Feld0001 '{'
+public enum Feld1 '{'
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
 

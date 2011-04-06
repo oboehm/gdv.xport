@@ -20,7 +20,7 @@ package gdv.xport.satz.model;
 
 import static org.junit.Assert.assertEquals;
 import gdv.xport.satz.AbstractSatzTest;
-import gdv.xport.satz.feld.Feld0200;
+import gdv.xport.satz.feld.Feld200;
 
 import java.io.IOException;
 
@@ -75,8 +75,8 @@ public class Satz0200Test extends AbstractSatzTest {
         assertEquals("59999999999", satz.getVersicherungsscheinNummer());
         assertEquals(1, satz.getFolgenummer());
         assertEquals("9999009999", satz.getVermittler());
-        assertEquals("2", satz.get(Feld0200.INKASSOART));
-        assertEquals("01052004", satz.get(Feld0200.VERTRAGSBEGINN));
+        assertEquals("2", satz.get(Feld200.INKASSOART));
+        assertEquals("01052004", satz.get(Feld200.VERTRAGSBEGINN));
     }
     
     /**

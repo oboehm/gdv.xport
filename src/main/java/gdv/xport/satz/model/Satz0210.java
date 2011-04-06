@@ -36,10 +36,10 @@ public class Satz0210 extends SatzX {
     private static Map<Integer, Enum<?>[]> map = new HashMap<Integer, Enum<?>[]>();
     
     static {
-        map.put(10, gdv.xport.satz.feld.sparte010.Feld0210.values());
-        map.put(30, gdv.xport.satz.feld.sparte030.Feld0210.values());
-        map.put(50, gdv.xport.satz.feld.sparte050.Feld0210.values());
-        map.put(70, gdv.xport.satz.feld.sparte070.Feld0210.values());
+        map.put(10, gdv.xport.satz.feld.sparte10.Feld210.values());
+        map.put(30, gdv.xport.satz.feld.sparte30.Feld210.values());
+        map.put(50, gdv.xport.satz.feld.sparte50.Feld210.values());
+        map.put(70, gdv.xport.satz.feld.sparte70.Feld210.values());
     }
     
     private static Enum<?>[] getFelderFor(final int sparte) {

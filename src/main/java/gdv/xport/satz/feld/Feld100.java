@@ -29,7 +29,7 @@ import gdv.xport.feld.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.6 (08.03.2011)
  */
-public enum Feld0100 {
+public enum Feld100 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
 

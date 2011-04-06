@@ -28,5 +28,5 @@ import gdv.xport.feld.*;
  * @author {1}
  * @since {0,date,short}
  */
-public enum Feld{2,number,0000} '{'
+public enum Feld{2,number,###0} '{'
 
