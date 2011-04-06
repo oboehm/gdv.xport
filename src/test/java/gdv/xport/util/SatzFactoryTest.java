@@ -151,7 +151,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetVertragsspezifischerTeil70() {
-        checkGetDatensatz(210, 70, VertragsspezifischerTeil.class, "1");
+        checkGetDatensatz(210, 70, Satz0210.class, "1");
     }
 
     /**

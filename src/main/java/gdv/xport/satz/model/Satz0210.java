@@ -37,6 +37,9 @@ public class Satz0210 extends SatzX {
     
     static {
         map.put(10, gdv.xport.satz.feld.sparte010.Feld0210.values());
+        map.put(30, gdv.xport.satz.feld.sparte030.Feld0210.values());
+        map.put(50, gdv.xport.satz.feld.sparte050.Feld0210.values());
+        map.put(70, gdv.xport.satz.feld.sparte070.Feld0210.values());
     }
     
     private static Enum<?>[] getFelderFor(final int sparte) {
@@ -53,7 +56,7 @@ public class Satz0210 extends SatzX {
      * @param sparte Sparte (z.B. 10)
      */
     public Satz0210(final int sparte) {
-        super(210, sparte, getFelderFor(10));
+        super(210, sparte, getFelderFor(sparte));
     }
 
 }

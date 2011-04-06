@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.model;
 
+import static gdv.xport.feld.Bezeichner.*;
 import static org.junit.Assert.*;
 
 import java.io.*;
@@ -90,6 +91,36 @@ public final class Satz0210Test extends AbstractSatzTest {
         Satz0210 imported = new Satz0210(10);
         imported.importFrom(exported.toString());
         assertEquals(leben, imported);
+    }
+
+    /**
+     * Da inzwischen auch Sparte 30 (Unfall) unterstuetzt wird, sollte ein Import
+     * dafuer kein Problem mehr sein.
+     * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
+     *
+     * @throws IOException
+     *             sollte eigentlich nicht vorkommen, da wir von einem String
+     *             importieren
+     */
+    @Test
+    public void testSparte30() throws IOException {
+        String input = "02109999  030      599999999980199990099991010520040105200901052"
+                + "0040901 0000000000000000000 EUR000000000000000000000000000000002"
+                + "4290000000000 0001000                                           "
+                + "           000000                                               ";
+        assertEquals(256, input.length());
+        Satz0210 unfall = new Satz0210(30);
+        unfall.importFrom(input);
+        assertEquals("9999", unfall.getVuNummer().trim());
+        Feld rabatt = unfall.getFeld(LAUFZEITRABATT_IN_PROZENT);
+        assertEquals("1000", rabatt.getInhalt());
+        NumFeld prozent = (NumFeld) rabatt;
+        assertEquals(10.00, prozent.toDouble(), 0.001);
+        Feld vertragsstatus = unfall.getFeld(VERTRAGSSTATUS);
+        assertEquals("1", vertragsstatus.getInhalt());
+        StringWriter swriter = new StringWriter(256);
+        unfall.export(swriter);
+        assertEquals(input, swriter.toString());
     }
 
 }

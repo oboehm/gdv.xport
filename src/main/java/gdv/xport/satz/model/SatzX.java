@@ -99,7 +99,11 @@ public class SatzX extends Datensatz {
         FeldInfo info = getFeldInfo(feldX);
         String name = getAsBezeichner(feldX);
         Feld feld = Feld.createFeld(name, info);
-        add(feld, info.teildatensatz());
+        if (info.nr() < 8) {
+            log.info("using default settings for " + feld);
+        } else {
+            add(feld, info.teildatensatz());
+        }
     }
     
     private static FeldInfo getFeldInfo(final Enum<?> feldX) {
