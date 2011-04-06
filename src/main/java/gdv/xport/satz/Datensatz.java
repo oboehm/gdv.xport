@@ -24,6 +24,7 @@ import java.io.*;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
+import gdv.xport.util.SatzFactory;
 
 /**
  * The Class Datensatz.
@@ -45,6 +46,16 @@ public class Datensatz extends Satz {
     private final NumFeld folgeNr = new NumFeld(FOLGENUMMER, 2, 31);
     /** 10 Zeichen, Byte 33 - 42. */
     private final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 33);
+
+    /**
+     * Default-Konstruktor (wird zur Registrierung bei der
+     * {@link SatzFactory} benoetigt).
+     * 
+     * @since 0.6
+     */
+    public Datensatz() {
+        super(0);
+    }
 
     /**
      * Instantiiert einen neuen Datensatz.

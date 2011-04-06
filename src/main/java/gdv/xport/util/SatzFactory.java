@@ -49,13 +49,12 @@ public final class SatzFactory {
         new HashMap<Integer, Class<? extends Datensatz>>();
 
     static {
-        registeredSatzClasses.put(1, Vorsatz.class);
-        registeredSatzClasses.put(100, Satz0100.class);
-        registeredSatzClasses.put(200, Satz0200.class);
-        registeredSatzClasses.put(210, VertragsspezifischerTeil.class);
-        registeredSatzClasses.put(220, SpartenspezifischerTeil.class);
-        registeredSatzClasses.put(221, Erweiterungssatz221.class);
-        registeredSatzClasses.put(9999, Nachsatz.class);
+        register(Vorsatz.class, 1);
+        register(Satz0100.class, 100);
+        register(Satz0200.class, 200);
+        register(SpartenspezifischerTeil.class, 220);
+        register(Erweiterungssatz221.class, 221);
+        register(Nachsatz.class, 9999);
         register(Satz0210.class, 210, 10);
         register(Satz0210.class, 210, 30);
         register(Satz0210.class, 210, 50);
@@ -79,12 +78,23 @@ public final class SatzFactory {
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
      * unterstuetzte Datensaetze) registriert werden.
+     * Die Kasse <em>muss</em> einen Default-Konstruktor bereitstellen.
+     * Ansonsten wird hier eine {@link IllegalArgumentException} geworfen
+     * (seit 0.6).
      *
      * @param clazz the clazz
      * @param satzart the satzart
      * @since 0.2
      */
     public static void register(final Class<? extends Satz> clazz, final int satzart) {
+        try {
+            Constructor<? extends Satz> ctor = clazz.getConstructor();
+            if (log.isDebugEnabled()) {
+                log.debug("default ctor " + ctor + " found");
+            }
+        } catch (NoSuchMethodException e) {
+            throw new IllegalArgumentException("no default constructor found in " + clazz);
+        }
         registeredSatzClasses.put(satzart, clazz);
     }
 
@@ -152,7 +162,12 @@ public final class SatzFactory {
             throw new NotRegisteredException(satzart);
         }
         try {
-            return clazz.newInstance();
+            Satz satz = clazz.newInstance();
+            if (satz.getSatzart() != satzart) {
+                Constructor<? extends Satz> ctor = clazz.getConstructor(int.class);
+                satz = ctor.newInstance(satzart);
+            }
+            return satz;
         } catch (Exception e) {
             log.info("default ctor does not work (" + e + "), trying another ctor...");
             Constructor<? extends Satz> ctor = null;
