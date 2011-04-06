@@ -27,12 +27,12 @@ import java.io.IOException;
 import org.junit.Test;
 
 /**
- * JUnit-Test fuer Satz0100.
+ * JUnit-Test fuer Satz100.
  * 
  * @author oliver (oliver.boehm@agentes.de)
  * @since 09.03.2011
  */
-public class Satz0100Test extends AbstractSatzTest {
+public class Satz100Test extends AbstractSatzTest {
     
     private static final String input = 
         "01009999  030      599999999980199990099991Pollsmann            " + 
@@ -47,10 +47,10 @@ public class Satz0100Test extends AbstractSatzTest {
         "                                        50polly(a)example.com   " + 
         "                                                                " + 
         "                                                               3";
-    private final Satz0100 satz = new Satz0100();
+    private final Satz100 satz = new Satz100();
 
     /**
-     * Test method for {@link gdv.xport.satz.model.Satz0100#Satz0100()}.
+     * Test method for {@link gdv.xport.satz.model.Satz100#Satz100()}.
      */
     @Test
     public void testSatz0100() {

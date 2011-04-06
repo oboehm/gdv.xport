@@ -13,30 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 09.03.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 06.03.2011 by Oli B. (oliver.boehm@agentes.de)
  */
 
 package gdv.xport.satz.model;
 
-import gdv.xport.satz.feld.Feld100;
+import gdv.xport.satz.feld.Feld200;
 
 /**
- * Diese Klasse repraesentiert die Satzart 100.
+ * Diese Klasse repraesentiert die Satzart 200.
  * Es handelt es sich dabei um eine alternative Implementierung der
- * {@link gdv.xport.satz.Adressteil}-Klasse, die nach dem Soplet-Ansatz
- * (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
+ * {@link gdv.xport.satz.AllgemeinerVertragsteil}-Klasse, die nach dem Soplet-
+ * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
  * wurde.
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.6 (09.03.2011)
+ * @since 0.6 (06.03.2011)
  */
-public class Satz0100 extends SatzX {
-
+public class Satz200 extends SatzX {
+    
     /**
      * Default-Konstruktor.
      */
-    public Satz0100() {
-        super(100, Feld100.values(), 5);
+    public Satz200() {
+        super(200, Feld200.values(), 2);
     }
 
 }

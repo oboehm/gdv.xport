@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
-import gdv.xport.satz.model.Satz0210;
+import gdv.xport.satz.model.Satz210;
 
 import java.io.IOException;
 
@@ -111,7 +111,7 @@ public final class SatzFactoryTest extends AbstractTest {
 
     /**
      * Damit wird ueberprueft, ob die Satzart 200 (AllgemeinerVertragsteil
-     * oder Satz0200) bei der SatzFactory registriert ist.
+     * oder Satz200) bei der SatzFactory registriert ist.
      */
     @Test
     public void testAllgemeinerVertragsteil() {
@@ -151,7 +151,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetVertragsspezifischerTeil70() {
-        checkGetDatensatz(210, 70, Satz0210.class, "1");
+        checkGetDatensatz(210, 70, Satz210.class, "1");
     }
 
     /**
@@ -164,7 +164,7 @@ public final class SatzFactoryTest extends AbstractTest {
     
     @Test
     public void testGetSatzart210() {
-        checkGetDatensatz(210, 10, Satz0210.class, "1");
+        checkGetDatensatz(210, 10, Satz210.class, "1");
     }
 
     private static void checkGetDatensatz(final int satzart, final int sparte, final Class<? extends Datensatz> clazz,

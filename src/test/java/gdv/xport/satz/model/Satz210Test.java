@@ -31,16 +31,16 @@ import org.apache.commons.logging.*;
 import org.junit.*;
 
 /**
- * JUnit tests for Satz0210.
+ * JUnit tests for Satz210.
  * Some of the tests are transfered from {@link VertragsspezifischerTeilTest}
  * to here.
  * 
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.6 (26.03.2011)
  */
-public final class Satz0210Test extends AbstractSatzTest {
+public final class Satz210Test extends AbstractSatzTest {
     
-    private static final Log log = LogFactory.getLog(Satz0210.class);
+    private static final Log log = LogFactory.getLog(Satz210.class);
 
     /**
      * Damit die Assert's der Satzlaenge stimmen, schalten wir das
@@ -52,12 +52,12 @@ public final class Satz0210Test extends AbstractSatzTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.satz.model.Satz0210#Satz0210(int)}.
+     * Test method for {@link gdv.xport.satz.model.Satz210#Satz210(int)}.
      * @throws IOException falls die Platte voll ist (oder sowas)
      */
     @Test
     public void testSatz0210() throws IOException {
-        Satz0210 vertragsteil = new Satz0210(10);
+        Satz210 vertragsteil = new Satz210(10);
         log.info(vertragsteil + " created.");
         assertEquals(10, vertragsteil.getSparte());
         checkExport(vertragsteil, 11, 13, "010", 512);
@@ -69,7 +69,7 @@ public final class Satz0210Test extends AbstractSatzTest {
      */
     @Test
     public void testGetFolgenummer() {
-        Satz0210 vertragsteil = new Satz0210(10);
+        Satz210 vertragsteil = new Satz210(10);
         vertragsteil.setFolgenummer(42);
         Teildatensatz teildatensatz = vertragsteil.getTeildatensatz(1);
         Feld feld = teildatensatz.getFeld(Bezeichner.FOLGENUMMER);
@@ -84,11 +84,11 @@ public final class Satz0210Test extends AbstractSatzTest {
      */
     @Test
     public void testSparte10() throws IOException {
-        Satz0210 leben = new Satz0210(10);
+        Satz210 leben = new Satz210(10);
         StringWriter exported = new StringWriter();
         leben.export(exported);
         exported.close();
-        Satz0210 imported = new Satz0210(10);
+        Satz210 imported = new Satz210(10);
         imported.importFrom(exported.toString());
         assertEquals(leben, imported);
     }
@@ -109,7 +109,7 @@ public final class Satz0210Test extends AbstractSatzTest {
                 + "4290000000000 0001000                                           "
                 + "           000000                                               ";
         assertEquals(256, input.length());
-        Satz0210 unfall = new Satz0210(30);
+        Satz210 unfall = new Satz210(30);
         unfall.importFrom(input);
         assertEquals("9999", unfall.getVuNummer().trim());
         Feld rabatt = unfall.getFeld(LAUFZEITRABATT_IN_PROZENT);

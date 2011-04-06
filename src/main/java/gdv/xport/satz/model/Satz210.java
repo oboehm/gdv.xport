@@ -30,7 +30,7 @@ import java.util.*;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.6 (26.03.2011)
  */
-public class Satz0210 extends SatzX {
+public class Satz210 extends SatzX {
     
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static Map<Integer, Enum<?>[]> map = new HashMap<Integer, Enum<?>[]>();
@@ -45,17 +45,17 @@ public class Satz0210 extends SatzX {
     private static Enum<?>[] getFelderFor(final int sparte) {
         Enum<?>[] felder = map.get(sparte);
         if (felder == null) {
-            throw new IllegalArgumentException("Sparte " + sparte + " not (yet) supported by " + Satz0210.class);
+            throw new IllegalArgumentException("Sparte " + sparte + " not (yet) supported by " + Satz210.class);
         }
         return felder;
     }
     
     /**
-     * Legt ein neues Satz0210-Objekt fuer die uebergebene Sparte an.
+     * Legt ein neues Satz210-Objekt fuer die uebergebene Sparte an.
      *
      * @param sparte Sparte (z.B. 10)
      */
-    public Satz0210(final int sparte) {
+    public Satz210(final int sparte) {
         super(210, sparte, getFelderFor(sparte));
     }
 

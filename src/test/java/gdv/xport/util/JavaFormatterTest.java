@@ -21,7 +21,7 @@ package gdv.xport.util;
 import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.*;
-import gdv.xport.satz.model.Satz0210;
+import gdv.xport.satz.model.Satz210;
 
 import java.io.*;
 import java.text.MessageFormat;
@@ -82,7 +82,7 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
     public void testWriteSatz() throws IOException {
         StringWriter swriter = new StringWriter();
         JavaFormatter formatter = new JavaFormatter(swriter);
-        formatter.write(new Satz0210(10));
+        formatter.write(new Satz210(10));
         swriter.close();
         log.trace(swriter.toString());
         String satz = getResource("Feld210.txt");
@@ -131,7 +131,7 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
      */
     @Test
     public void testToDirSatzWithSparte() throws IOException {
-        Satz satz = new Satz0210(10);
+        Satz satz = new Satz210(10);
         generateClass(satz, "gdv/xport/satz/feld/sparte10/Feld210.java");
     }
 
