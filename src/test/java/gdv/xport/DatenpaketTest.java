@@ -23,6 +23,7 @@ import static org.junit.Assert.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
+import gdv.xport.satz.model.Satz0210;
 
 import java.io.*;
 import java.net.URL;
@@ -209,7 +210,7 @@ public final class DatenpaketTest {
         Config.setEOD("\n");
         String muster = getResourceAsString("/musterdatei_041222.txt");
         datenpaket.importFrom(muster);
-        VertragsspezifischerTeil vertragsteil = (VertragsspezifischerTeil) datenpaket.getDatensaetze().get(2);
+        Satz0210 vertragsteil = (Satz0210) datenpaket.getDatensaetze().get(2);
         Feld vertragsstatus = vertragsteil.getFeld(VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         checkExportWith(muster);
