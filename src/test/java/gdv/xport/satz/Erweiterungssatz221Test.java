@@ -19,12 +19,15 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 
 import java.io.*;
+import java.util.List;
+
+import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.logging.*;
 import org.junit.*;
@@ -114,6 +117,23 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
         } finally {
             istream.close();
         }
+    }
+    
+    /**
+     * Test import.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImportSparte51() throws IOException {
+        String input = "02219999  051      599999999900199990099990000500000000000000000"
+            + "0000000000000000000000000008668700000000000000000000000000000000"
+            + "0000000000000000                                                "
+            + "                                                               1";
+        Erweiterungssatz221 sparte51 = new Erweiterungssatz221();
+        sparte51.importFrom(input);
+        List<ConstraintViolation> violations = sparte51.validate();
+        assertTrue(violations + " should be empty", violations.isEmpty());
     }
 
 }

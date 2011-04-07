@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 26.03.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 06.04.2011 by Oli B. (oliver.boehm@agentes.de)
  */
 
 package gdv.xport.satz.model;
@@ -22,27 +22,33 @@ import gdv.xport.satz.feld.FeldX;
 
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
 /**
- * Diese Klasse repraesentiert die Satzart 210.
+ * Diese Klasse repraesentiert die Satzart 211.
  * Es handelt es sich dabei um eine alternative Implementierung der
- * {@link gdv.xport.satz.AllgemeinerVertragsteil}-Klasse, die nach dem Soplet-
+ * {@link gdv.xport.satz.Erweiterungssatz211}-Klasse, die nach dem Soplet-
  * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
  * wurde.
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.6 (26.03.2011)
+ * @since 0.6 (06.04.2011)
  */
-public class Satz210 extends SpartensatzX {
-    
+public class Satz211 extends SpartensatzX {
+
     /** Mapping table for sparte to Feldxxx enumeration. */
-    private static Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
+    private static final Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
     
     static {
         mapping.put(UNKNOWN_SPARTE, FeldX.values());
-        mapping.put(10, gdv.xport.satz.feld.sparte10.Feld210.values());
-        mapping.put(30, gdv.xport.satz.feld.sparte30.Feld210.values());
-        mapping.put(50, gdv.xport.satz.feld.sparte50.Feld210.values());
-        mapping.put(70, gdv.xport.satz.feld.sparte70.Feld210.values());
+        mapping.put(10, gdv.xport.satz.feld.sparte10.Feld211.values());
+        mapping.put(50, gdv.xport.satz.feld.sparte50.Feld211.values());
+    }
+    
+    /**
+     * Default-Konstruktor.
+     */
+    public Satz211() {
+        this(UNKNOWN_SPARTE);
     }
     
     /**
@@ -50,8 +56,8 @@ public class Satz210 extends SpartensatzX {
      *
      * @param sparte Sparte (z.B. 10)
      */
-    public Satz210(final int sparte) {
-        super(210, sparte);
+    public Satz211(final int sparte) {
+        super(211, sparte);
     }
     
     /* (non-Javadoc)

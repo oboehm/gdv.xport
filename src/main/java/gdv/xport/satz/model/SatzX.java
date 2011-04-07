@@ -83,7 +83,12 @@ public class SatzX extends Datensatz {
         this.setUpDatenfelder(felder);
     }
     
-    private void setUpDatenfelder(final Enum<?>[] felder) {
+    /**
+     * Setzt die Teildatensaetze anhand der uebergebenen Felder auf.
+     *
+     * @param felder die einzelnen Datenfelder
+     */
+    protected void setUpDatenfelder(final Enum<?>[] felder) {
         for (int i = 0; i < felder.length; i++) {
             add(felder[i]);
         }
@@ -163,7 +168,13 @@ public class SatzX extends Datensatz {
         super.set(name, value);
     }
 
-    private static int getNumberOfTeildatensaetze(final Enum<?>[] felder) {
+    /**
+     * Zaehlt die Teildatensaetze anhand der uebergebenen Felder durch.
+     * 
+     * @param felder Datenfelder
+     * @return Anzahl der Teildatensaetze
+     */
+    protected static int getNumberOfTeildatensaetze(final Enum<?>[] felder) {
         int n = 1;
         for (int i = 0; i < felder.length; i++) {
             FeldInfo info = getFeldInfo(felder[i]);

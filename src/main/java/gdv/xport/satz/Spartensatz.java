@@ -97,8 +97,9 @@ public abstract class Spartensatz extends Datensatz {
      */
     @Override
     public void setSparte(final int x) {
-        if (this.getSatzart() == x) {
+        if (this.getSparte() == x) {
             log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
+            return;
         }
         super.setSparte(x);
         this.createTeildatensaetzeFor(x);

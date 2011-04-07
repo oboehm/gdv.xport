@@ -19,15 +19,9 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.SPARTE;
-import static org.junit.Assert.*;
-
-import java.io.IOException;
-import java.util.List;
-
+import static org.junit.Assert.assertEquals;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
-
-import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.logging.*;
 import org.junit.Test;
@@ -55,23 +49,6 @@ public class Erweiterungssatz211Test {
         assertEquals(new NumFeld(SPARTE, 3, 11, 10), sparte);
         Feld vermittler = leben.getFeld(Bezeichner.VERMITTLER);
         assertEquals(33, vermittler.getByteAdresse());
-    }
-    
-    /**
-     * Test import.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testImport() throws IOException {
-        String input = "02219999  051      599999999900199990099990000500000000000000000"
-            + "0000000000000000000000000008668700000000000000000000000000000000"
-            + "0000000000000000                                                "
-            + "                                                               1";
-        Erweiterungssatz211 sparte51 = new Erweiterungssatz211();
-        sparte51.importFrom(input);
-        List<ConstraintViolation> violations = sparte51.validate();
-        assertTrue(violations + " should be empty", violations.isEmpty());
     }
 
 }

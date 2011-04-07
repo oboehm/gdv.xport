@@ -57,7 +57,7 @@ public final class Satz210Test extends AbstractSatzTest {
      */
     @Test
     public void testSatz0210() throws IOException {
-        Satz210 vertragsteil = new Satz210(10);
+        SpartensatzX vertragsteil = new Satz210(10);
         log.info(vertragsteil + " created.");
         assertEquals(10, vertragsteil.getSparte());
         checkExport(vertragsteil, 11, 13, "010", 512);
@@ -69,7 +69,7 @@ public final class Satz210Test extends AbstractSatzTest {
      */
     @Test
     public void testGetFolgenummer() {
-        Satz210 vertragsteil = new Satz210(10);
+        SpartensatzX vertragsteil = new Satz210(10);
         vertragsteil.setFolgenummer(42);
         Teildatensatz teildatensatz = vertragsteil.getTeildatensatz(1);
         Feld feld = teildatensatz.getFeld(Bezeichner.FOLGENUMMER);
@@ -84,11 +84,11 @@ public final class Satz210Test extends AbstractSatzTest {
      */
     @Test
     public void testSparte10() throws IOException {
-        Satz210 leben = new Satz210(10);
+        SpartensatzX leben = new Satz210(10);
         StringWriter exported = new StringWriter();
         leben.export(exported);
         exported.close();
-        Satz210 imported = new Satz210(10);
+        SpartensatzX imported = new Satz210(10);
         imported.importFrom(exported.toString());
         assertEquals(leben, imported);
     }
@@ -109,7 +109,7 @@ public final class Satz210Test extends AbstractSatzTest {
                 + "4290000000000 0001000                                           "
                 + "           000000                                               ";
         assertEquals(256, input.length());
-        Satz210 unfall = new Satz210(30);
+        SpartensatzX unfall = new Satz210(30);
         unfall.importFrom(input);
         assertEquals("9999", unfall.getVuNummer().trim());
         Feld rabatt = unfall.getFeld(LAUFZEITRABATT_IN_PROZENT);

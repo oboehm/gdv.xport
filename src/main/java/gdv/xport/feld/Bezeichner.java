@@ -402,6 +402,7 @@ public final class Bezeichner {
     public static final String UEBERGANGSENTSCHAEDIGUNG = "Uebergangsentschaedigung";
     public static final String UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ = "Uebergangsentschaedigung Beitragssatz";
     public static final String UMSATZSTEUER_ID = "Umsatzsteuer-Identifikationsnummer";
+    public static final String UNBEKANNT = "unbekannt";
     public static final String UNTERSTUETZUNGSKASSE_NAME = "Unterstuetzungskasse Name";
     public static final String UNTERSTUETZUNGSKASSE_SCHLUESSEL = "Unterstuetzungskasse Schluessel";
     public static final String UNVERFALLBARKEIT = "Unverfallbarkeit";
