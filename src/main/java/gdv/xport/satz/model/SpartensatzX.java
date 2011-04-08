@@ -27,14 +27,14 @@ import org.apache.commons.logging.*;
 /**
  * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die
  * nach dem SOP-Muster aufgebaut sind und eine Sparte besitzen.
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.6 (06.04.2011)
  */
 public abstract class SpartensatzX extends SatzX {
-    
+
     private static final Log log = LogFactory.getLog(SpartensatzX.class);
-    
+
     /** Wird fuer den Default-Ctor gebraucht. */
     protected static final int UNKNOWN_SPARTE = 0;
 
@@ -45,7 +45,7 @@ public abstract class SpartensatzX extends SatzX {
      * @param felder the felder
      * @param n the n
      */
-    public SpartensatzX(int satzart, Enum<?>[] felder, int n) {
+    public SpartensatzX(final int satzart, final Enum<?>[] felder, final int n) {
         super(satzart, felder, n);
     }
 
@@ -55,7 +55,7 @@ public abstract class SpartensatzX extends SatzX {
      * @param satzart the satzart
      * @param felder the felder
      */
-    public SpartensatzX(int satzart, Enum<?>[] felder) {
+    public SpartensatzX(final int satzart, final Enum<?>[] felder) {
         super(satzart, felder);
     }
 
@@ -65,7 +65,7 @@ public abstract class SpartensatzX extends SatzX {
      * @param satzart the satzart
      * @param sparte the sparte
      */
-    public SpartensatzX(int satzart, int sparte) {
+    public SpartensatzX(final int satzart, final int sparte) {
         super(satzart, FeldX.values());
         this.setSparte(sparte);
     }
@@ -77,7 +77,7 @@ public abstract class SpartensatzX extends SatzX {
      * @param sparte the sparte
      * @param felder the felder
      */
-    public SpartensatzX(int satzart, int sparte, Enum<?>[] felder) {
+    public SpartensatzX(final int satzart, final int sparte, final Enum<?>[] felder) {
         super(satzart, sparte, felder);
     }
 
@@ -88,7 +88,7 @@ public abstract class SpartensatzX extends SatzX {
      * @param felder the felder
      * @param n the n
      */
-    public SpartensatzX(String satzart, Enum<?>[] felder, int n) {
+    public SpartensatzX(final String satzart, final Enum<?>[] felder, final int n) {
         super(satzart, felder, n);
     }
 
@@ -103,36 +103,24 @@ public abstract class SpartensatzX extends SatzX {
      * Liefert die entsprechende Enum-Felder zur angeforderten Spalte zurueck.
      *
      * @param sparte Sparte
-     * @param map Mapping-Tabelle
-     * @return the Enum-Felder
-     */
-    protected static Enum<?>[] getFelderFor(final int sparte, final Map<Integer, Enum<?>[]> map) {
-        Enum<?>[] felder = map.get(sparte);
-        if (felder == null) {
-            throw new IllegalArgumentException("Sparte " + sparte + " not (yet) supported by " + Satz210.class);
-        }
-        return felder;
-    }
-    
-    /**
-     * Liefert die entsprechende Enum-Felder zur angeforderten Spalte zurueck.
-     *
-     * @param sparte Sparte
      * @return the Enum-Felder
      */
     protected Enum<?>[] getFelderFor(final int sparte) {
         Map<Integer, Enum<?>[]> map = this.getMapping();
         Enum<?>[] felder = map.get(sparte);
         if (felder == null) {
+            if (sparte == UNKNOWN_SPARTE) {
+                return FeldX.values();
+            }
             throw new IllegalArgumentException("Sparte " + sparte + " not (yet) supported by " + Satz210.class);
         }
         return felder;
     }
-    
+
     /**
      * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
      * Teildatensaetze aufsetzen.
-     * 
+     *
      * @param x Sparte (z.B. 30)
      * @see gdv.xport.satz.Datensatz#setSparte(int)
      */

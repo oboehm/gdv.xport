@@ -31,6 +31,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
 
+import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -103,6 +104,7 @@ public class XmlFormatterTest extends AbstractFormatterTest {
      * @throws IOException falls was schiefgelaufen ist
      */
     @Test
+    @IntegrationTest
     public void testMusterdatei() throws IOException, XMLStreamException {
         exportMusterdatei(new XmlFormatter(), "musterdatei_041222.xml");
     }

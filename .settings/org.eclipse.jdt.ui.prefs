@@ -1,4 +1,4 @@
-#Sat Nov 20 19:17:36 CET 2010
+#Fri Apr 08 18:15:35 CEST 2011
 cleanup.add_default_serial_version_id=true
 cleanup.add_generated_serial_version_id=false
 cleanup.add_missing_annotations=true
@@ -14,7 +14,7 @@ cleanup.always_use_this_for_non_static_field_access=false
 cleanup.always_use_this_for_non_static_method_access=false
 cleanup.convert_to_enhanced_for_loop=false
 cleanup.correct_indentation=false
-cleanup.format_source_code=true
+cleanup.format_source_code=false
 cleanup.format_source_code_changes_only=false
 cleanup.make_local_variable_final=false
 cleanup.make_parameters_final=true
@@ -50,7 +50,7 @@ cleanup.use_this_for_non_static_field_access=false
 cleanup.use_this_for_non_static_field_access_only_if_necessary=true
 cleanup.use_this_for_non_static_method_access=false
 cleanup.use_this_for_non_static_method_access_only_if_necessary=true
-cleanup_profile=_eclipse-cs gdv.xport
+cleanup_profile=_gdv.xport
 cleanup_settings_version=2
 eclipse.preferences.version=1
 formatter_profile=_eclipse-cs gdv.xport
