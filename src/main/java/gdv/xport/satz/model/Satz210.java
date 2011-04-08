@@ -18,8 +18,6 @@
 
 package gdv.xport.satz.model;
 
-import gdv.xport.satz.feld.FeldX;
-
 import java.util.*;
 
 /**
