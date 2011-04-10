@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
-import gdv.xport.satz.model.Satz210;
+import gdv.xport.satz.model.*;
 
 import java.io.IOException;
 
@@ -143,7 +143,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetSpartenspezifischerTeil70() {
-        checkGetDatensatz(220, 70, SpartenspezifischerTeil.class, "1");
+        checkGetDatensatz(220, 70, Satz220.class, "1");
     }
 
     /**

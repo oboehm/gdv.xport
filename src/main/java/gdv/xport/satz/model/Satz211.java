@@ -20,7 +20,6 @@ package gdv.xport.satz.model;
 
 import java.util.*;
 
-// TODO: Auto-generated Javadoc
 /**
  * Diese Klasse repraesentiert die Satzart 211.
  * Es handelt es sich dabei um eine alternative Implementierung der
@@ -57,7 +56,10 @@ public class Satz211 extends SpartensatzX {
         super(211, sparte);
     }
     
-    /* (non-Javadoc)
+    /**
+     * Liefert die Mapping-Tabelle zu Sparte - Feldxxx zurueck.
+     *
+     * @return Mapping-Tabelle
      * @see gdv.xport.satz.model.SpartensatzX#getMapping()
      */
     protected Map<Integer, Enum<?>[]> getMapping() {

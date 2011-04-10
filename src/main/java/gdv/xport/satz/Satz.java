@@ -15,7 +15,7 @@ import net.sf.oval.*;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.lang.*;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.logging.*;
 
 /**
@@ -185,7 +185,7 @@ public abstract class Satz {
     }
 
     /**
-     * Adds the.
+     * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu.
      *
      * @param feld the feld
      * @param teildatensatzNr the teildatensatz nr

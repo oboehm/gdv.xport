@@ -305,6 +305,15 @@ public class Feld implements Comparable<Feld> {
                 throw new IllegalStateException("object was not properly initialized");
         }
     }
+    
+    /**
+     * Sets the inhalt.
+     *
+     * @param n the new inhalt
+     */
+    public void setInhalt(final int n) {
+        this.setInhalt(Integer.toString(n));
+    }
 
     /**
      * Sets the inhalt.

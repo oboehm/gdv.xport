@@ -20,7 +20,7 @@ package gdv.xport.satz.model;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.*;
-import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.*;
 
 import java.lang.reflect.Field;
 
@@ -102,16 +102,44 @@ public class SatzX extends Datensatz {
      */
     private void add(final Enum<?> feldX) {
         FeldInfo info = getFeldInfo(feldX);
+        Teildatensatz tds = this.getTeildatensatz(info.teildatensatz());
+        add(feldX, tds);
+    }
+    
+    /**
+     * Leitet aus dem uebergebenen Feldelement die Parameter ab, um daraus
+     * ein Feld anzulegen und im jeweiligen Teildatensatz einzuhaengen.
+     * Zusaetzlich wird das Feld "Satznummer" vorbelegt, falls es in den
+     * uebergebenen Feldern vorhanden ist.
+     *
+     * @param feldX das Feld-Element
+     * @param tds der entsprechende Teildatensatz
+     */
+    protected void add(final Enum<?> feldX, final Teildatensatz tds) {
+        FeldInfo info = getFeldInfo(feldX);
         String name = getAsBezeichner(feldX);
         Feld feld = Feld.createFeld(name, info);
         if (info.nr() < 8) {
             log.info("using default settings for " + feld);
         } else {
-            add(feld, info.teildatensatz());
+            tds.add(feld);
+            if (isSatznummer(feldX)) {
+                feld.setInhalt(info.teildatensatz());
+            }
         }
     }
     
-    private static FeldInfo getFeldInfo(final Enum<?> feldX) {
+    private static boolean isSatznummer(final Enum<?> feldX) {
+        return (feldX.name().length() <= 11) && feldX.name().startsWith("SATZNUMMER");
+    }
+    
+    /**
+     * Liefert das angehaengte FeldInfo zu einem Feld zurueck.
+     *
+     * @param feldX the feld x
+     * @return the feld info
+     */
+    protected static FeldInfo getFeldInfo(final Enum<?> feldX) {
         String name = feldX.name();
         try {
             FeldInfo info = feldX.getClass().getField(name).getAnnotation(FeldInfo.class);
