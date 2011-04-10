@@ -52,7 +52,7 @@ public final class SatzFactory {
         register(Vorsatz.class, 1);
         register(Satz100.class, 100);
         register(Satz200.class, 200);
-        register(VertragsspezifischerTeil.class, 210);
+        register(Satz210.class, 210);
         register(Satz210.class, 210, 10);
         register(Satz210.class, 210, 30);
         register(Satz210.class, 210, 50);

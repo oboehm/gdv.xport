@@ -23,7 +23,7 @@ import java.util.*;
 /**
  * Diese Klasse repraesentiert die Satzart 210.
  * Es handelt es sich dabei um eine alternative Implementierung der
- * {@link gdv.xport.satz.AllgemeinerVertragsteil}-Klasse, die nach dem Soplet-
+ * {@link gdv.xport.satz.VertragsspezifischerTeil}-Klasse, die nach dem Soplet-
  * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
  * wurde.
  * 
@@ -42,6 +42,13 @@ public class Satz210 extends SpartensatzX {
         mapping.put(70, gdv.xport.satz.feld.sparte70.Feld210.values());
     }
     
+    /**
+     * Default-Konstruktor.
+     */
+    public Satz210() {
+        this(UNKNOWN_SPARTE);
+    }
+
     /**
      * Legt ein neues Satz210-Objekt fuer die uebergebene Sparte an.
      *

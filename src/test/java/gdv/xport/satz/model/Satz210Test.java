@@ -30,6 +30,7 @@ import gdv.xport.satz.*;
 import org.apache.commons.logging.*;
 import org.junit.*;
 
+// TODO: Auto-generated Javadoc
 /**
  * JUnit tests for Satz210.
  * Some of the tests are transfered from {@link VertragsspezifischerTeilTest}
@@ -40,6 +41,7 @@ import org.junit.*;
  */
 public final class Satz210Test extends AbstractSatzTest {
     
+    /** The Constant log. */
     private static final Log log = LogFactory.getLog(Satz210.class);
 
     /**
@@ -56,7 +58,7 @@ public final class Satz210Test extends AbstractSatzTest {
      * @throws IOException falls die Platte voll ist (oder sowas)
      */
     @Test
-    public void testSatz0210() throws IOException {
+    public void testSatz210() throws IOException {
         SpartensatzX vertragsteil = new Satz210(10);
         log.info(vertragsteil + " created.");
         assertEquals(10, vertragsteil.getSparte());
@@ -120,6 +122,25 @@ public final class Satz210Test extends AbstractSatzTest {
         assertEquals("1", vertragsstatus.getInhalt());
         StringWriter swriter = new StringWriter(256);
         unfall.export(swriter);
+        assertEquals(input, swriter.toString());
+    }
+    
+    /**
+     * Testet den Import/Export einer noch nicht unterstuetzten Sparte (130).
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImportExportUnsupportet() throws IOException {
+        String input = "02109999 1130      599999999860199990099991000000000000000000000"
+            + "000FELS                                                         "
+            + "             EUR000000000000000000000000000000000000000000011985"
+            + "VHB920       00001033 01100000 00000 000000KOMP 092001     00000";
+        Satz210 unfall = new Satz210();
+        unfall.importFrom(input);
+        StringWriter swriter = new StringWriter(256);
+        unfall.export(swriter);
+        swriter.close();
         assertEquals(input, swriter.toString());
     }
 

@@ -40,7 +40,7 @@ public enum FeldX {
             teildatensatz = 1,
             nr = 8,
             type = AlphaNumFeld.class,
-            anzahlBytes = 202,
+            anzahlBytes = 213,
             byteAdresse = 43
     )
     UNBEKANNT;

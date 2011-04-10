@@ -400,11 +400,25 @@ public enum Feld210 {
     REFERENZNUMMER,
 
     /**
-     * Satznummer.
+     * Leerstellen. Freie Stellen fuer weitere Belegung.
+     * FIXME: Anzahl Bytes ist eigentlich 20
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 38,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 19,
+            byteAdresse = 237
+    )
+    LEERSTELLEN,
+    
+    /**
+     * Satznummer.
+     * FIXME: Hat keine Satznummer
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 39,
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 256

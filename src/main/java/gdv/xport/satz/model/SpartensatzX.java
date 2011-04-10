@@ -112,7 +112,8 @@ public abstract class SpartensatzX extends SatzX {
             if (sparte == UNKNOWN_SPARTE) {
                 return FeldX.values();
             }
-            throw new IllegalArgumentException("Sparte " + sparte + " not (yet) supported by " + Satz210.class);
+//            throw new IllegalArgumentException("Sparte " + sparte + " not (yet) supported by " + Satz210.class);
+            return FeldX.values();
         }
         return felder;
     }
