@@ -407,22 +407,23 @@ public enum Feld210 {
             teildatensatz = 1,
             nr = 38,
             type = AlphaNumFeld.class,
-            anzahlBytes = 19,
+            anzahlBytes = 20,
             byteAdresse = 237
     )
-    LEERSTELLEN,
-    
-    /**
-     * Satznummer.
-     * FIXME: Hat keine Satznummer
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 39,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 256
-    )
-    SATZNUMMER;
+//    LEERSTELLEN,
+//    
+//    /**
+//     * Die letzte Stelle ist normalerweise fuer die Satznummer reserviert.
+//     * Dieser Satz hier hat an dieser Stelle nur eine Leerstelle.
+//     * FIXME: mit vorigem Feld zusammenfassen
+//     */
+//    @FeldInfo(
+//            teildatensatz = 1,
+//            nr = 39,
+//            type = Zeichen.class,
+//            anzahlBytes = 1,
+//            byteAdresse = 256
+//    )
+    LEERSTELLEN2;
 
 }

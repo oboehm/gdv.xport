@@ -347,6 +347,18 @@ public enum Feld210 {
             byteAdresse = 252
     )
     SAISONKENNZEICHEN,
+    
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+          teildatensatz = 1,
+          nr = 35,
+          type = Zeichen.class,
+          anzahlBytes = 1,
+          byteAdresse = 256
+    )
+    SATZNUMMER1,
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
@@ -656,7 +668,7 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 2,
-            nr = 33,
+            nr = 32,
             type = NumFeld.class,
             anzahlBytes = 1,
             byteAdresse = 222
@@ -668,7 +680,7 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 2,
-            nr = 34,
+            nr = 32,
             type = NumFeld.class,
             anzahlBytes = 6,
             byteAdresse = 223
@@ -680,11 +692,35 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 2,
-            nr = 35,
+            nr = 32,
             type = NumFeld.class,
             anzahlBytes = 1,
             byteAdresse = 229
     )
-    STAERKEEINHEIT;
+    STAERKEEINHEIT,
+
+    /**
+     * Staerkeeinheit.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 32,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 26,
+            byteAdresse = 230
+    )
+    LEERSTELLEN,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+          teildatensatz = 1,
+          nr = 33,
+          type = Zeichen.class,
+          anzahlBytes = 1,
+          byteAdresse = 256
+    )
+    SATZNUMMER2,
 
 }

@@ -68,6 +68,18 @@ public enum Feld211 {
             anzahlBytes = 187,
             byteAdresse = 69
     )
-    LEERSTELLEN;
+    LEERSTELLEN,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+          teildatensatz = 1,
+          nr = 39,
+          type = Zeichen.class,
+          anzahlBytes = 1,
+          byteAdresse = 256
+    )
+    SATZNUMMER1;
 
 }

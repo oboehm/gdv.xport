@@ -274,6 +274,19 @@ public enum Feld210 {
             anzahlBytes = 7,
             byteAdresse = 147
     )
-    REFERENZNUMMER;
+    REFERENZNUMMER,
+    
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 13,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 103,
+            byteAdresse = 154
+    )
+    LEERSTELLEN;
+
 
 }

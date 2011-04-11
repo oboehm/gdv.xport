@@ -91,6 +91,11 @@ public final class Teildatensatz extends Satz {
 
     /**
      * Fuegt das angegebene Feld in den Teildatensatz ein.
+     * Bei Einfuegen wird ueberprueft, ob es zu Ueberschneidungen mit
+     * anderen Feldern kommt. Ausnahme hierbei ist das Satznummern-Feld
+     * auf Byte 256, mit dem der Teildatensatz vorinitialisiert wurde.
+     * Kommt es hier zu einer Ueberlappung, wird das Satznummern-Feld
+     * entfernt, da nicht alle Saetze dieses Feld besitzen.
      * 
      * @param feld Feld mit Name
      */
@@ -99,11 +104,35 @@ public final class Teildatensatz extends Satz {
         for (Iterator<Feld> iterator = datenfelder.values().iterator(); iterator.hasNext();) {
             Feld f = iterator.next();
             if (feld.overlapsWith(f)) {
-                throw new IllegalArgumentException("conflict: " + feld + " overlaps with " + f);
+                if (isSatznummer(f)) {
+                    remove(f);
+                    log.debug(f + " is removed from " + this);
+                    break;
+                } else {
+                    throw new IllegalArgumentException("conflict: " + feld + " overlaps with " + f);
+                }
             }
         }
         String name = feld.getBezeichnung();
         datenfelder.put(name, feld);
+    }
+
+    private static boolean isSatznummer(final Feld feld) {
+        if ((feld.getByteAdresse() == 256) && (feld.getAnzahlBytes() == 1)) {
+            String bezeichnung = feld.getBezeichnung();
+            return bezeichnung.length() <= 11 && bezeichnung.startsWith("Satznummer");
+        }
+        return false;
+    }
+
+    /**
+     * Falls ein Feld zuviel gesetzt wurde, kann es mit 'remove" wieder
+     * entfernt werden.
+     *
+     * @param feld das Feld, das entfernt werden soll
+     */
+    public void remove(final Feld feld) {
+        this.remove(feld.getBezeichnung());
     }
 
     /**
@@ -268,9 +297,3 @@ public final class Teildatensatz extends Satz {
     }
 
 }
-
-
-/*
- * $Log$
- * $Source$
- */

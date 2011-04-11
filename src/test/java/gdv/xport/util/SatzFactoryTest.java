@@ -151,7 +151,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetVertragsspezifischerTeil70() {
-        checkGetDatensatz(210, 70, Satz210.class, "1");
+        checkGetDatensatz(210, 70, Satz210.class);
     }
 
     /**
@@ -169,12 +169,22 @@ public final class SatzFactoryTest extends AbstractTest {
 
     private static void checkGetDatensatz(final int satzart, final int sparte, final Class<? extends Datensatz> clazz,
             final String satzNr) {
-        Datensatz datensatz = SatzFactory.getDatensatz(satzart, sparte);
+        Datensatz datensatz = getDatensatz(satzart, sparte);
         assertEquals(clazz, datensatz.getClass());
-        assertEquals(satzart, datensatz.getSatzart());
-        assertEquals(sparte, datensatz.getSparte());
         Feld satznummer = datensatz.getFeld(SATZNUMMER, 1);
         assertEquals("falsche Satznummer", satzNr, satznummer.getInhalt());
+    }
+
+    private static void checkGetDatensatz(final int satzart, final int sparte, final Class<? extends Datensatz> clazz) {
+        Datensatz datensatz = getDatensatz(satzart, sparte);
+        assertEquals(clazz, datensatz.getClass());
+    }
+
+    private static Datensatz getDatensatz(final int satzart, final int sparte) {
+        Datensatz datensatz = SatzFactory.getDatensatz(satzart, sparte);
+        assertEquals(satzart, datensatz.getSatzart());
+        assertEquals(sparte, datensatz.getSparte());
+        return datensatz;
     }
 
     /**

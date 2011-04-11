@@ -429,6 +429,18 @@ public enum Feld210 {
             byteAdresse = 255
     )
     LEERSTELLEN1,
+    
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+          teildatensatz = 1,
+          nr = 39,
+          type = Zeichen.class,
+          anzahlBytes = 1,
+          byteAdresse = 256
+    )
+    SATZNUMMER1,
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
@@ -700,6 +712,18 @@ public enum Feld210 {
             anzahlBytes = 32,
             byteAdresse = 224
     )
-    LEERSTELLEN2;
+    LEERSTELLEN2,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+          teildatensatz = 1,
+          nr = 39,
+          type = Zeichen.class,
+          anzahlBytes = 1,
+          byteAdresse = 256
+    )
+    SATZNUMMER2;
 
 }

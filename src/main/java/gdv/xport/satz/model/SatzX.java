@@ -89,6 +89,7 @@ public class SatzX extends Datensatz {
      * @param felder die einzelnen Datenfelder
      */
     protected void setUpDatenfelder(final Enum<?>[] felder) {
+        super.getTeildatensaetze();
         for (int i = 0; i < felder.length; i++) {
             add(felder[i]);
         }

@@ -43,7 +43,19 @@ public enum FeldX {
             anzahlBytes = 213,
             byteAdresse = 43
     )
-    UNBEKANNT;
+    UNBEKANNT,
+
+    /**
+      * Satznummer.
+      */
+    @FeldInfo(
+           teildatensatz = 1,
+           nr = 39,
+           type = Zeichen.class,
+           anzahlBytes = 1,
+           byteAdresse = 256
+    )
+    SATZNUMMER;
 
 }
 

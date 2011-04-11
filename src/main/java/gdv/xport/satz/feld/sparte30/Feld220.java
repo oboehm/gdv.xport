@@ -322,7 +322,7 @@ public enum Feld220 {
             anzahlBytes = 7,
             byteAdresse = 243
     )
-    LEERSTELLEN1,
+    LEERSTELLEN,
 
     /**
      * Satznummerwiederholung.
@@ -334,7 +334,20 @@ public enum Feld220 {
             anzahlBytes = 1,
             byteAdresse = 250
     )
+
     SATZNUMMERWIEDERHOLUNG1,
+
+    /**
+     * Leerstellen. Freie Stellen fuer weitere Belegung.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 33,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 6,
+            byteAdresse = 251
+    )
+    LEERSTELLEN1,
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
