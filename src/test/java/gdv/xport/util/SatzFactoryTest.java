@@ -143,7 +143,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetSpartenspezifischerTeil70() {
-        checkGetDatensatz(220, 70, Satz220.class, "1");
+        checkGetDatensatz(220, 70, Satz220.class);
     }
 
     /**

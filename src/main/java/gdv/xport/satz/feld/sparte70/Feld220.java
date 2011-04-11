@@ -395,6 +395,18 @@ public enum Feld220 {
     )
     WARTEZEIT,
 
+    /**
+     * Leerstellen. Freie Stellen fuer weitere Belegung.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 38,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 36,
+            byteAdresse = 221
+    )
+    LEERSTELLEN1,
+
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
     /**
@@ -609,6 +621,18 @@ public enum Feld220 {
             anzahlBytes = 7,
             byteAdresse = 249
     )
-    REFERENZNUMMER;
+    REFERENZNUMMER,
+    
+    /**
+     * Leerstellen. Freie Stellen fuer weitere Belegung.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 25,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    LEERSTELLEN2;
 
 }

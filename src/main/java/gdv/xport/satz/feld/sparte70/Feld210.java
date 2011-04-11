@@ -288,5 +288,4 @@ public enum Feld210 {
     )
     LEERSTELLEN;
 
-
 }
