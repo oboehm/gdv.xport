@@ -290,6 +290,18 @@ public enum Feld100 {
             byteAdresse = 255
     )
     GESCHLECHT,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 26,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER1,
     
     /////   Teildatensatz 2   /////////////////////////////////////////////////
     
@@ -514,6 +526,18 @@ public enum Feld100 {
     )
     LFD_PERSONENNR_GEVO,
 
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 26,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER2,
+
     /////   Teildatensatz 3   /////////////////////////////////////////////////
     
     /**
@@ -612,7 +636,19 @@ public enum Feld100 {
             byteAdresse = 229
     )
     RECHTSFORM,
-    
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 3,
+            nr = 15,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER3,
+
     /////   Teildatensatz 4   /////////////////////////////////////////////////
     
     /**
@@ -775,6 +811,18 @@ public enum Feld100 {
             byteAdresse = 209
     )
     IBAN1,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 19,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER4,
     
     /////   Teildatensatz 5   /////////////////////////////////////////////////
     
@@ -867,7 +915,19 @@ public enum Feld100 {
             anzahlBytes = 5,
             byteAdresse = 145
     )
-    VORZUGSSEUERBERECHTIGUNG_PROZENT;
+    VORZUGSSEUERBERECHTIGUNG_PROZENT,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 5,
+            nr = 15,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER5;
 
 }
 

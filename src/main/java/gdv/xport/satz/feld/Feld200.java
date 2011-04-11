@@ -491,8 +491,20 @@ public enum Feld200 {
             byteAdresse = 248
     )
     EINZAHLUNG_AUSSCHUETTUNG,
-    
-    /////   Satzspezifischer Teil (Satz 1)  ///////////////////////////////////
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 38,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER1,
+
+    /////   Satzspezifischer Teil (Satz 2)  ///////////////////////////////////
 
     /**
      * Abhaengig von der Sparte bei kurzfristigen Vertraegen sowie bei
@@ -649,6 +661,18 @@ public enum Feld200 {
             anzahlBytes = 15,
             byteAdresse = 155
     )
-    REGISTRIERUNGSNUMMER_VERMITTLER;
+    REGISTRIERUNGSNUMMER_VERMITTLER,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 19,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER2;
 
 }

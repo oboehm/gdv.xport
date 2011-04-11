@@ -363,6 +363,8 @@ public final class Bezeichner {
     public static final String SATZNUMMER1 = "Satznummer";
     public static final String SATZNUMMER2 = "Satznummer";
     public static final String SATZNUMMER3 = "Satznummer";
+    public static final String SATZNUMMER4 = "Satznummer";
+    public static final String SATZNUMMER5 = "Satznummer";
     public static final String SATZNUMMER9 = "Satznummer";
     public static final String SATZNUMMERWIEDERHOLUNG = "Satznummerwiederholung";
     public static final String SATZNUMMERWIEDERHOLUNG1 = "Satznummerwiederholung1";
