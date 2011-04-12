@@ -57,17 +57,21 @@ public final class SatzFactory {
         register(Satz210.class, 210, 30);
         register(Satz210.class, 210, 50);
         register(Satz210.class, 210, 70);
-        register(Erweiterungssatz221.class, 221);
-        register(Erweiterungssatz211.class, 211, 10);
-        register(Erweiterungssatz211.class, 211, 50);
+        register(Satz211.class, 211);
+        register(Satz211.class, 211, 10);
+        register(Satz211.class, 211, 50);
         register(Satz220.class, 220);
         register(Satz220.class, 220, 30);
         register(Satz220.class, 220, 51);
         register(Satz220.class, 220, 52);
         register(Satz220.class, 220, 53);
         register(Satz220.class, 220, 70);
-        register(Erweiterungssatz211.class, 211, 10);
-        register(Erweiterungssatz211.class, 211, 50);
+        register(Erweiterungssatz221.class, 221);
+        register(Erweiterungssatz221.class, 221, 30);
+        register(Erweiterungssatz221.class, 221, 51);
+        register(Erweiterungssatz221.class, 221, 52);
+        register(Erweiterungssatz221.class, 221, 53);
+        register(Erweiterungssatz221.class, 221, 70);
         register(Nachsatz.class, 9999);
     }
 
