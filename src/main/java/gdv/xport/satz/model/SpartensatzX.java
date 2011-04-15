@@ -38,17 +38,6 @@ public abstract class SpartensatzX extends SatzX {
     /** Wird fuer den Default-Ctor gebraucht. */
     protected static final int UNKNOWN_SPARTE = 0;
 
-//    /**
-//     * Instantiates a new spartensatz x.
-//     *
-//     * @param satzart the satzart
-//     * @param felder the felder
-//     * @param n the n
-//     */
-//    public SpartensatzX(final int satzart, final Enum<?>[] felder, final int n) {
-//        super(satzart, felder, n);
-//    }
-
     /**
      * Instantiates a new spartensatz x.
      *
@@ -81,17 +70,6 @@ public abstract class SpartensatzX extends SatzX {
         super(satzart, sparte, felder);
     }
 
-//    /**
-//     * Instantiates a new spartensatz x.
-//     *
-//     * @param satzart the satzart
-//     * @param felder the felder
-//     * @param n the n
-//     */
-//    public SpartensatzX(final String satzart, final Enum<?>[] felder, final int n) {
-//        super(satzart, felder, n);
-//    }
-
     /**
      * Liefert die Mapping-Tabelle der abgeleiteten Klasse.
      *
@@ -112,7 +90,6 @@ public abstract class SpartensatzX extends SatzX {
             if (sparte == UNKNOWN_SPARTE) {
                 return FeldX.values();
             }
-//            throw new IllegalArgumentException("Sparte " + sparte + " not (yet) supported by " + Satz210.class);
             return FeldX.values();
         }
         return felder;
@@ -135,13 +112,6 @@ public abstract class SpartensatzX extends SatzX {
         this.setUpTeildatensaetze(felder);
         super.setSparte(x);
     }
-
-//    private void setUpTeildatensaetze(final Enum<?>[] felder) {
-//        int max = getMaxTeildatensatzNumber(felder);
-//        super.createTeildatensaetze(max);
-//        super.setUpTeildatensaetze();
-//        super.setUpDatenfelder(felder);
-//    }
 
 }
 

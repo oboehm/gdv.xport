@@ -137,7 +137,7 @@ public class Satz220 extends SpartensatzX {
         for (int i = 0; i < felder.length; i++) {
             FeldInfo info = getFeldInfo(felder[i]);
             if (info.teildatensatz() == n) {
-                this.add(felder[i], tds);
+                add(felder[i], tds);
             }
         }
     }

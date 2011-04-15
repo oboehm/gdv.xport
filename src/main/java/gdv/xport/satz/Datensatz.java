@@ -162,22 +162,15 @@ public class Datensatz extends Satz {
     }
     
     /**
-     * Kann von Unterklassen verwendet werden, um die Teildatensaetze
-     * aufzusetzen.
+     * Kann von Unterklassen verwendet werden, um fehlende Felder in den
+     * Teildatensaetze zu vervollstaendigen.
+     * 
+     * @since 0.6
      */
     protected void completeTeildatensaetze() {
         for (Teildatensatz tds : this.getTeildatensaetze()) {
-            completeTeildatensaetze(tds);
+            setUpTeildatensatz(tds);
         }
-    }
-
-    protected void completeTeildatensaetze(final Teildatensatz tds) {
-        tds.add(this.vuNummer);
-        tds.add(this.buendelungsKennzeichen);
-        tds.add(this.sparte);
-        tds.add(this.versicherungsscheinNr);
-        tds.add(this.folgeNr);
-        tds.add(this.vermittler);
     }
     
     /**

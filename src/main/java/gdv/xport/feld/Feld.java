@@ -398,11 +398,10 @@ public class Feld implements Comparable<Feld> {
     }
 
     /**
-     * Overlaps with.
+     * Ueberprueft, ob sich zwei Felder mit unterschiedlichen Start-Adressen
+     * ueberlagern.
      *
-     * @param other
-     *            das andere Feld
-     *
+     * @param other das andere Feld
      * @return true, falls sich die Felder ueberlappen
      */
     public final boolean overlapsWith(final Feld other) {

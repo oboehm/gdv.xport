@@ -46,7 +46,6 @@ public class SatzX extends Datensatz {
      * @param felder mit allen Elementen des Datensatzes
      */
     public SatzX(final int satzart, final Enum<?>[] felder) {
-//        this(satzart, felder, getMaxTeildatensatzNumber(felder));
         super(satzart, getTeildatensaetzeFor(satzart, felder));
     }
     
@@ -58,58 +57,9 @@ public class SatzX extends Datensatz {
      * @param felder mit allen Elementen des Datensatzes
      */
     public SatzX(final int satzart, final int sparte, final Enum<?>[] felder) {
-//        super(satzart, sparte, getMaxTeildatensatzNumber(felder));
-//        this.setUpDatenfelder(felder);
         super(satzart, sparte, getTeildatensaetzeFor(satzart, felder));
     }
 
-//    /**
-//     * Instantiiert einen neuen Datensatz.
-//     * 
-//     * @param satzart z.B. 100
-//     * @param felder mit allen Elementen des Datensatzes
-//     * @param n Anzahl der Teildatensaetze
-//     */
-//    public SatzX(final int satzart, final Enum<?>[] felder, final int n) {
-//        this(Integer.toString(satzart), felder, n);
-//    }
-//
-//    /**
-//     * Instantiiert einen neuen Datensatz.
-//     * 
-//     * @param satzart z.B. "0100"
-//     * @param felder mit allen Elementen des Datensatzes
-//     * @param n Anzahl der Teildatensaetze
-//     */
-//    public SatzX(final String satzart, final Enum<?>[] felder, final int n) {
-//        super(satzart, n);
-//        this.setUpDatenfelder(felder);
-//    }
-//    
-//    /**
-//     * Setzt die Teildatensaetze anhand der uebergebenen Felder auf.
-//     *
-//     * @param felder die einzelnen Datenfelder
-//     */
-//    protected void setUpDatenfelder(final Enum<?>[] felder) {
-//        super.getTeildatensaetze();
-//        for (int i = 0; i < felder.length; i++) {
-//            add(felder[i]);
-//        }
-//    }
-//    
-//    /**
-//     * Leitet aus dem uebergebenen Feldelement die Pararmeter ab, um daraus
-//     * ein Feld anzulegen und im jeweiligen Teildatensatz einzuhaengen.
-//     * 
-//     * @param feldX das Feld-Element
-//     */
-//    private void add(final Enum<?> feldX) {
-//        FeldInfo info = getFeldInfo(feldX);
-//        Teildatensatz tds = this.getTeildatensatz(info.teildatensatz());
-//        add(feldX, tds);
-//    }
-    
     /**
      * Leitet aus dem uebergebenen Feldelement die Parameter ab, um daraus
      * ein Feld anzulegen und im jeweiligen Teildatensatz einzuhaengen.
@@ -200,23 +150,6 @@ public class SatzX extends Datensatz {
         super.set(name, value);
     }
 
-//    /**
-//     * Zaehlt die Teildatensaetze anhand der uebergebenen Felder durch.
-//     * 
-//     * @param felder Datenfelder
-//     * @return Anzahl der Teildatensaetze
-//     */
-//    protected static int getMaxTeildatensatzNumber(final Enum<?>[] felder) {
-//        int max = 1;
-//        for (int i = 0; i < felder.length; i++) {
-//            FeldInfo info = getFeldInfo(felder[i]);
-//            if (info.teildatensatz() > max) {
-//                max = info.teildatensatz();
-//            }
-//        }
-//        return max;
-//    }
-    
     private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart, final Enum<?>[] felder) {
         SortedMap<Integer, Teildatensatz> tdsMap = new TreeMap<Integer, Teildatensatz>();
         for (int i = 0; i < felder.length; i++) {
