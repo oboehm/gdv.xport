@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2011 by agentes
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,16 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 18.11.2010 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 14.04.2011 by Oli B. (oliver.boehm@agentes.de)
  */
 
-package gdv.xport.satz;
+package gdv.xport.satz.model;
 
 import static gdv.xport.feld.Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE;
 import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
+import gdv.xport.satz.*;
 
 import java.io.*;
 import java.util.List;
@@ -32,15 +33,16 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.logging.*;
 import org.junit.*;
 
+
 /**
- * JUnit-Test fuer Erweiterungssatz221.
+ * JUnit-Test fuer Satz221.
  * 
  * @author oliver (oliver.boehm@agentes.de)
- * @since 0.5.0 (18.11.2010)
+ * @since 0.6 (14.04.2011)
  */
-public final class Erweiterungssatz221Test extends AbstractSatzTest {
-
-    private static final Log log = LogFactory.getLog(Erweiterungssatz221Test.class);
+public class Satz221Test extends AbstractSatzTest {
+    
+    private static final Log log = LogFactory.getLog(Satz221Test.class);
 
     /**
      * Der Lesbarkeit halber aktivieren wir das Zeilenende fuer jeden exportierten Satz.
@@ -51,11 +53,23 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
     }
 
     /**
-     * Test method for {@link Erweiterungssatz221#Erweiterungssatz221(int)}.
+     * Test-Methode fuer die Sparte 30. Die Sparte 30 besteht aus 2 Teildatensaetze
+     * mit den Nummern 2 und 3.
+     */
+    @Test
+    public void testSparte30() {
+        Satz221 wagnisdaten = new Satz221(30);
+        log.info(wagnisdaten + " created.");
+        assertEquals(30, wagnisdaten.getSparte());
+        assertEquals(2, wagnisdaten.getTeildatensaetze().size());
+    }
+
+    /**
+     * Test-Methode fuer den Constructor.
      */
     @Test
     public void testSparte70() {
-        Erweiterungssatz221 rechtschutz = new Erweiterungssatz221(70);
+        Satz221 rechtschutz = new Satz221(70);
         log.info(rechtschutz + " created.");
         assertEquals(70, rechtschutz.getSparte());
     }
@@ -94,7 +108,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
 
     private void checkWagnisdaten(final String input) throws IOException {
         assertEquals(257, input.length());
-        Erweiterungssatz221 wagnisdaten = new Erweiterungssatz221(30);
+        Satz221 wagnisdaten = new Satz221(30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }
@@ -107,11 +121,11 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
      */
     @Test
     public void testImportSparte30() throws IOException {
-        InputStream istream = this.getClass().getResourceAsStream("Satz0221030.txt");
+        InputStream istream = this.getClass().getResourceAsStream("/gdv/xport/satz/Satz0221030.txt");
         try {
             Datenpaket datenpaket = new Datenpaket();
             datenpaket.importFrom(istream);
-            Datensatz erweiterungssatz = datenpaket.getDatensaetze().get(0);
+            Satz221 erweiterungssatz = (Satz221) datenpaket.getDatensaetze().get(0);
             Feld lfdNummer = erweiterungssatz.getFeld(LFD_NUMMER_VP_PERSONENGRUPPE);
             assertEquals("000001", lfdNummer.getInhalt());
         } finally {
@@ -137,3 +151,4 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
     }
 
 }
+

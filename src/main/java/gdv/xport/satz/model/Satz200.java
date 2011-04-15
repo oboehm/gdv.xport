@@ -36,7 +36,8 @@ public class Satz200 extends SatzX {
      * Default-Konstruktor.
      */
     public Satz200() {
-        super(200, Feld200.values(), 2);
+//        super(200, Feld200.values(), 2);
+        super(200, Feld200.values());
     }
 
 }

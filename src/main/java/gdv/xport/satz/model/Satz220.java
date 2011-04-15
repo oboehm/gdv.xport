@@ -56,7 +56,7 @@ public class Satz220 extends SpartensatzX {
     }
     
     /**
-     * Legt ein neues Satz210-Objekt fuer die uebergebene Sparte an.
+     * Legt ein neues Satz220-Objekt fuer die uebergebene Sparte an.
      *
      * @param sparte Sparte (z.B. 10)
      */

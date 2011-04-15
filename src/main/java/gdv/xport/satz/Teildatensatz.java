@@ -47,6 +47,8 @@ public final class Teildatensatz extends Satz {
     private final Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
 
     /**
+     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
+     * 
      * @param satzart z.B. 100
      */
     public Teildatensatz(final NumFeld satzart) {
@@ -61,6 +63,21 @@ public final class Teildatensatz extends Satz {
      */
     public Teildatensatz(final NumFeld satzart, final int nr) {
         super(satzart, 0);
+        initSatznummer(nr);
+    }
+    
+    /**
+     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
+     * 
+     * @param satzart z.B. 100
+     * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
+     */
+    public Teildatensatz(final int satzart, final int nr) {
+        super(satzart, 0);
+        initSatznummer(nr);
+    }
+
+    private void initSatznummer(final int nr) {
         if ((nr < 1) || (nr > 9)) {
             throw new IllegalArgumentException("Satznummer (" + nr
                     + ") muss zwischen 1 und 9 liegen");

@@ -21,6 +21,7 @@ package gdv.xport.satz;
 import static gdv.xport.feld.Bezeichner.*;
 
 import java.io.*;
+import java.util.*;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
@@ -90,6 +91,17 @@ public class Datensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Datensatz.
+     *
+     * @param satzart z.B. 100
+     * @param tdsList Liste mit den Teildatensaetzen
+     */
+    public Datensatz(final int satzart, final List<Teildatensatz> tdsList) {
+        super(satzart, tdsList);
+        this.completeTeildatensaetze();
+    }
+
+    /**
+     * Instantiiert einen neuen Datensatz.
      * 
      * @param satzart z.B. 100
      * @param sparte z.B. 70 (Rechtsschutz)
@@ -112,6 +124,19 @@ public class Datensatz extends Satz {
     }
 
     /**
+     * Instantiiert einen neuen Datensatz.
+     *
+     * @param satzart z.B. 100
+     * @param sparte z.B. 70 (Rechtsschutz)
+     * @param tdsList Liste mit den Teildatensaetzen
+     */
+    public Datensatz(final int satzart, final int sparte, final List<Teildatensatz> tdsList) {
+        this(satzart, tdsList);
+        this.setSparte(sparte);
+        this.completeTeildatensaetze();
+    }
+
+    /**
      * Kann von Unterklassen verwendet werden, um die Teildatensaetze
      * aufzusetzen.
      */
@@ -128,6 +153,25 @@ public class Datensatz extends Satz {
      * @since 0.4
      */
     protected void setUpTeildatensatz(final Teildatensatz tds) {
+        tds.add(this.vuNummer);
+        tds.add(this.buendelungsKennzeichen);
+        tds.add(this.sparte);
+        tds.add(this.versicherungsscheinNr);
+        tds.add(this.folgeNr);
+        tds.add(this.vermittler);
+    }
+    
+    /**
+     * Kann von Unterklassen verwendet werden, um die Teildatensaetze
+     * aufzusetzen.
+     */
+    protected void completeTeildatensaetze() {
+        for (Teildatensatz tds : this.getTeildatensaetze()) {
+            completeTeildatensaetze(tds);
+        }
+    }
+
+    protected void completeTeildatensaetze(final Teildatensatz tds) {
         tds.add(this.vuNummer);
         tds.add(this.buendelungsKennzeichen);
         tds.add(this.sparte);

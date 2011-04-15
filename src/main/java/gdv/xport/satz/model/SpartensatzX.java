@@ -38,16 +38,16 @@ public abstract class SpartensatzX extends SatzX {
     /** Wird fuer den Default-Ctor gebraucht. */
     protected static final int UNKNOWN_SPARTE = 0;
 
-    /**
-     * Instantiates a new spartensatz x.
-     *
-     * @param satzart the satzart
-     * @param felder the felder
-     * @param n the n
-     */
-    public SpartensatzX(final int satzart, final Enum<?>[] felder, final int n) {
-        super(satzart, felder, n);
-    }
+//    /**
+//     * Instantiates a new spartensatz x.
+//     *
+//     * @param satzart the satzart
+//     * @param felder the felder
+//     * @param n the n
+//     */
+//    public SpartensatzX(final int satzart, final Enum<?>[] felder, final int n) {
+//        super(satzart, felder, n);
+//    }
 
     /**
      * Instantiates a new spartensatz x.
@@ -81,16 +81,16 @@ public abstract class SpartensatzX extends SatzX {
         super(satzart, sparte, felder);
     }
 
-    /**
-     * Instantiates a new spartensatz x.
-     *
-     * @param satzart the satzart
-     * @param felder the felder
-     * @param n the n
-     */
-    public SpartensatzX(final String satzart, final Enum<?>[] felder, final int n) {
-        super(satzart, felder, n);
-    }
+//    /**
+//     * Instantiates a new spartensatz x.
+//     *
+//     * @param satzart the satzart
+//     * @param felder the felder
+//     * @param n the n
+//     */
+//    public SpartensatzX(final String satzart, final Enum<?>[] felder, final int n) {
+//        super(satzart, felder, n);
+//    }
 
     /**
      * Liefert die Mapping-Tabelle der abgeleiteten Klasse.
@@ -136,12 +136,12 @@ public abstract class SpartensatzX extends SatzX {
         super.setSparte(x);
     }
 
-    private void setUpTeildatensaetze(final Enum<?>[] felder) {
-        int n = getNumberOfTeildatensaetze(felder);
-        super.createTeildatensaetze(n);
-        super.setUpTeildatensaetze();
-        super.setUpDatenfelder(felder);
-    }
+//    private void setUpTeildatensaetze(final Enum<?>[] felder) {
+//        int max = getMaxTeildatensatzNumber(felder);
+//        super.createTeildatensaetze(max);
+//        super.setUpTeildatensaetze();
+//        super.setUpDatenfelder(felder);
+//    }
 
 }
 

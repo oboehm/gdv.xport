@@ -129,7 +129,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetErweiterungssatz() {
-        checkGetDatensatz(221, Erweiterungssatz221.class);
+        checkGetDatensatz(221, Satz221.class);
     }
 
     private static void checkGetDatensatz(final int satzart, final Class<? extends Datensatz> clazz) {
@@ -159,7 +159,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetErweiterungssatz30() {
-        checkGetDatensatz(221, 30, Erweiterungssatz221.class, "2");
+        checkGetDatensatz(221, 30, Satz221.class, "2");
     }
     
     @Test

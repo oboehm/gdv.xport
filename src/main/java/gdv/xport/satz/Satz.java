@@ -84,10 +84,28 @@ public abstract class Satz {
         this.createTeildatensaetze(n);
     }
 
+    /**
+     * Instanziiert einen neuen Satz.
+     *
+     * @param art z.B. 100 (f. Adressteil)
+     * @param tdsList Liste mit den Teildatensaetzen
+     */
+    public Satz(final int art, final List<Teildatensatz> tdsList) {
+        this.satzart.setInhalt(art);
+        this.createTeildatensaetze(tdsList);
+    }
+
     protected void createTeildatensaetze(final int n) {
         teildatensatz = new Teildatensatz[n];
         for (int i = 0; i < n; i++) {
             teildatensatz[i] = new Teildatensatz(satzart, i+1);
+        }
+    }
+
+    protected void createTeildatensaetze(final List<Teildatensatz> tdsList) {
+        teildatensatz = new Teildatensatz[tdsList.size()];
+        for (int i = 0; i < tdsList.size(); i++) {
+            teildatensatz[i] = tdsList.get(i);
         }
     }
 
