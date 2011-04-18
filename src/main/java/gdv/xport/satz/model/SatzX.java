@@ -23,7 +23,6 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 import gdv.xport.satz.feld.FeldX;
 
-import java.lang.reflect.Field;
 import java.util.*;
 
 import org.apache.commons.logging.*;
@@ -119,50 +118,6 @@ public class SatzX extends Datensatz {
         }
     }
     
-    /**
-     * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die
-     * {@link Bezeichner}-Klasse, um festzustellen, ob es den Namen schon
-     * als Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.
-     * 
-     * @param feldX das Feld-Element mit dem gesuchten Bezeichner
-     * @return z.B. "Inkassoart"
-     */
-    private static String getAsBezeichner(final Enum<?> feldX) {
-        try {
-            Field field = Bezeichner.class.getField(feldX.name());
-            return (String) field.get(null);
-        } catch (NoSuchFieldException e) {
-            log.info("Bezeichner." + feldX.name() + " not found");
-        } catch (IllegalArgumentException e) {
-            log.warn(e);
-        } catch (IllegalAccessException e) {
-            log.warn("can't access Bezeichner." + feldX.name());
-        }
-        return feldX.name();
-    }
-
-    /**
-     * Liefert den Inhalt des gewuenschten Feldes.
-     *
-     * @param feldX das gewuenschte Feld-Element
-     * @return Inhalt des gefundenden Felds
-     */
-    public final String get(final Enum<?> feldX) {
-        String name = getAsBezeichner(feldX);
-        return super.get(name);
-    }
-    
-    /**
-     * Setzt den Inhalt des gewuenschten Feldes.
-     *
-     * @param feldX das gewuenschte Feld-Element
-     * @param value neuer Inhalt
-     */
-    public final void set(final Enum<?> feldX, final String value) {
-        String name = getAsBezeichner(feldX);
-        super.set(name, value);
-    }
-
     private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart, final Enum<?>[] felder) {
         SortedMap<Integer, Teildatensatz> tdsMap = new TreeMap<Integer, Teildatensatz>();
         for (int i = 0; i < felder.length; i++) {

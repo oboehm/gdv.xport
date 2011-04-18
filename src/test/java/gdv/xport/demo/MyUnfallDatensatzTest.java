@@ -61,7 +61,7 @@ public final class MyUnfallDatensatzTest {
         // jetzt den ersten Datensatz 210, Sparte 30 suchen und testen
         for (Datensatz datensatz : datenpaket.getDatensaetze()) {
             if ((datensatz.getSatzart() == 210) && (datensatz.getSparte() == 30)) {
-                assertEquals("EUR", datensatz.getFeld("meine Waehrung").getInhalt());
+                assertEquals("EUR", datensatz.getFeld(MyFeld210.MEINE_WAEHRUNG).getInhalt());
                 break;
             }
         }

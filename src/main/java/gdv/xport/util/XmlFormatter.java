@@ -237,7 +237,7 @@ public final class XmlFormatter extends AbstractFormatter {
             write(datenpaket.getVorsatz(), 1);
             xmlStreamWriter.writeCharacters("\n");
             for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext();) {
-                Datensatz datensatz = iterator.next();
+                Satz datensatz = iterator.next();
                 write(datensatz, 1);
                 xmlStreamWriter.writeCharacters("\n");
             }

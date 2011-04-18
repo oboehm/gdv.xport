@@ -77,7 +77,7 @@ public class AbstractSatzTest {
         return data;
     }
     
-    protected static void checkDatensatz(final Datensatz datensatz, final String expected) throws IOException {
+    protected static void checkDatensatz(final Satz datensatz, final String expected) throws IOException {
         StringWriter swriter = new StringWriter(expected.length());
         datensatz.export(swriter);
         swriter.close();

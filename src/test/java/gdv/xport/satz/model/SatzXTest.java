@@ -19,6 +19,7 @@
 package gdv.xport.satz.model;
 
 import static org.junit.Assert.*;
+import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld200;
 
 import org.junit.Test;
@@ -36,7 +37,7 @@ public class SatzXTest {
      */
     @Test
     public void testSatzX() {
-        SatzX satz200 = new SatzX(200, Feld200.values());
+        Satz satz200 = new SatzX(200, Feld200.values());
         assertEquals(2, satz200.getTeildatensaetze().size());
     }
 

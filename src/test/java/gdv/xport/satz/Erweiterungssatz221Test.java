@@ -111,7 +111,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
         try {
             Datenpaket datenpaket = new Datenpaket();
             datenpaket.importFrom(istream);
-            Datensatz erweiterungssatz = datenpaket.getDatensaetze().get(0);
+            Satz erweiterungssatz = datenpaket.getDatensaetze().get(0);
             Feld lfdNummer = erweiterungssatz.getFeld(LFD_NUMMER_VP_PERSONENGRUPPE);
             assertEquals("000001", lfdNummer.getInhalt());
         } finally {

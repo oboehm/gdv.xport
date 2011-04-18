@@ -106,7 +106,7 @@ public final class SatzFactoryTest extends AbstractTest {
     @Test
     public void testRegisterDatensatz() {
         SatzFactory.register(SatzX.class, 47, 11);
-        Datensatz satz = SatzFactory.getDatensatz(47, 11);
+        Satz satz = SatzFactory.getDatensatz(47, 11);
         assertEquals(SatzX.class, satz.getClass());
         SatzFactory.unregister(47, 11);
     }
@@ -130,7 +130,7 @@ public final class SatzFactoryTest extends AbstractTest {
     }
     
     private static void checkGetDatensatz(final int satzart) {
-        Datensatz datensatz = SatzFactory.getDatensatz(satzart);
+        Satz datensatz = SatzFactory.getDatensatz(satzart);
         assertEquals(satzart, datensatz.getSatzart());
     }
 
@@ -144,7 +144,7 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     private static void checkGetDatensatz(final int satzart, final Class<? extends Datensatz> clazz) {
-        Datensatz datensatz = SatzFactory.getDatensatz(satzart);
+        Satz datensatz = SatzFactory.getDatensatz(satzart);
         assertEquals(clazz, datensatz.getClass());
         assertEquals(satzart, datensatz.getSatzart());
     }
@@ -180,18 +180,18 @@ public final class SatzFactoryTest extends AbstractTest {
 
     private static void checkGetDatensatz(final int satzart, final int sparte, final Class<? extends Datensatz> clazz,
             final String satzNr) {
-        Datensatz datensatz = getDatensatz(satzart, sparte);
+        Satz datensatz = getDatensatz(satzart, sparte);
         assertEquals(clazz, datensatz.getClass());
         Feld satznummer = datensatz.getFeld(SATZNUMMER, 1);
         assertEquals("falsche Satznummer", satzNr, satznummer.getInhalt());
     }
 
     private static void checkGetDatensatz(final int satzart, final int sparte, final Class<? extends Datensatz> clazz) {
-        Datensatz datensatz = getDatensatz(satzart, sparte);
+        Satz datensatz = getDatensatz(satzart, sparte);
         assertEquals(clazz, datensatz.getClass());
     }
 
-    private static Datensatz getDatensatz(final int satzart, final int sparte) {
+    private static Satz getDatensatz(final int satzart, final int sparte) {
         Datensatz datensatz = SatzFactory.getDatensatz(satzart, sparte);
         assertEquals(satzart, datensatz.getSatzart());
         assertEquals(sparte, datensatz.getSparte());

@@ -121,7 +121,7 @@ public final class HtmlFormatter extends AbstractFormatter {
             writeTo(xmlStreamWriter, datenpaket.getVorsatz(), zeile);
             zeile += datenpaket.getVorsatz().getTeildatensaetze().size();
             for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext();) {
-                Datensatz datensatz = iterator.next();
+                Satz datensatz = iterator.next();
                 writeTo(xmlStreamWriter, datensatz, zeile);
                 zeile += datensatz.getTeildatensaetze().size();
             }
@@ -145,7 +145,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         writeDetailsTo(xmlStreamWriter, datenpaket.getVorsatz(), zeile);
         zeile += datenpaket.getVorsatz().getTeildatensaetze().size();
         for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext();) {
-            Datensatz datensatz = iterator.next();
+            Satz datensatz = iterator.next();
             writeDetailsTo(xmlStreamWriter, datensatz, zeile);
             zeile += datensatz.getTeildatensaetze().size();
         }

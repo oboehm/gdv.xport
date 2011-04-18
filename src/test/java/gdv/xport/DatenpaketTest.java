@@ -209,7 +209,7 @@ public final class DatenpaketTest {
         Config.setEOD("\n");
         String muster = getResourceAsString("/musterdatei_041222.txt");
         datenpaket.importFrom(muster);
-        Datensatz vertragsteil = datenpaket.getDatensaetze().get(2);
+        Satz vertragsteil = datenpaket.getDatensaetze().get(2);
         Feld vertragsstatus = vertragsteil.getFeld(VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         checkExportWith(muster);

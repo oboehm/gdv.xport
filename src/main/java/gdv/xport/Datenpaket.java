@@ -163,7 +163,7 @@ public final class Datenpaket {
     public void export(final Writer writer) throws IOException {
         vorsatz.export(writer);
         for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext();) {
-            Datensatz datensatz = iterator.next();
+            Satz datensatz = iterator.next();
             datensatz.export(writer);
         }
         nachsatz.export(writer);
@@ -355,7 +355,7 @@ public final class Datenpaket {
             log.info(this.nachsatz + " is not valid");
             return false;
         }
-        for (Datensatz satz : this.datensaetze) {
+        for (Satz satz : this.datensaetze) {
             if (!satz.isValid()) {
                 log.info(satz + " is not valid");
                 return false;
@@ -382,7 +382,7 @@ public final class Datenpaket {
         List<ConstraintViolation> violations = validator.validate(this);
         violations.addAll(validateVUNummer());
         violations.addAll(this.vorsatz.validate());
-        for (Datensatz datensatz : this.datensaetze) {
+        for (Satz datensatz : this.datensaetze) {
             violations.addAll(datensatz.validate());
         }
         violations.addAll(this.validateFolgenummern());

@@ -19,8 +19,8 @@
 package gdv.xport.demo;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.feld.*;
 import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.*;
 
 import java.io.IOException;
@@ -37,7 +37,8 @@ import javax.xml.stream.XMLStreamException;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.3 (21.11.2009)
  */
-public class MyUnfallDatensatz extends Datensatz {
+//public class MyUnfallDatensatz extends Datensatz {
+public class MyUnfallDatensatz extends SatzX {
 
     /**
      * Hier wird diese Klasse am Framework registriert und anschliessend das
@@ -71,18 +72,7 @@ public class MyUnfallDatensatz extends Datensatz {
      * (Unfall).
      */
     public MyUnfallDatensatz() {
-        super(210, 30);
-        this.setUpDatenfelder();
-    }
-
-    /**
-     * Hier werden jetzt als Beispiel zwei Felder aufgesetzt:
-     * das Beginn-Datum und der Waehrungsschluessel mit der jeweiligen
-     * Byte-Adresse und Laenge.
-     */
-    private void setUpDatenfelder() {
-        add(new Datum("mein Vertragsbeginn", 8, 44));
-        add(new AlphaNumFeld("meine Waehrung", 3, 93));
+        super(210, 30, MyFeld210.values());
     }
 
 }

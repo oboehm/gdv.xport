@@ -57,7 +57,7 @@ public class DatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testDatensatzStringInt() throws IOException {
-        Datensatz adressteil = new Datensatz("0100", 5);
+        Satz adressteil = new Datensatz("0100", 5);
         adressteil.add(new AlphaNumFeld(ANREDESCHLUESSEL, 1, 43, '6'));
         log.info("adressteil=" + adressteil.toShortString());
         checkExport(adressteil, 43, 43, "6", 1280);
@@ -68,7 +68,7 @@ public class DatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testSet() {
-        Datensatz ds = new Datensatz("0200", 2);
+        Satz ds = new Datensatz("0200", 2);
         ds.add(new AlphaNumFeld(INKASSOART, 1, 43));
         ds.set(INKASSOART, "2");
         assertEquals(ds.get(INKASSOART), "2");
