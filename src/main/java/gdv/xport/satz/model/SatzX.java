@@ -21,6 +21,7 @@ package gdv.xport.satz.model;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
+import gdv.xport.satz.feld.FeldX;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -58,6 +59,18 @@ public class SatzX extends Datensatz {
      */
     public SatzX(final int satzart, final int sparte, final Enum<?>[] felder) {
         super(satzart, sparte, getTeildatensaetzeFor(satzart, felder));
+    }
+
+    /**
+     * Instantiiert einen allgemeinen Datensatz fuer die angegebene Satzart und
+     * Sparte. Dieser Konstruktor ist hauptsaechlich als Fallback fuer
+     * Satzarten/Sparten gedacht, die noch nicht unterstuetzt werden.
+     *
+     * @param satzart z.B. 100
+     * @param sparte Sparte
+     */
+    public SatzX(final int satzart, final int sparte) {
+        this(satzart, sparte, FeldX.values());
     }
 
     /**

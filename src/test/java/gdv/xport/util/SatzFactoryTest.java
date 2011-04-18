@@ -89,14 +89,25 @@ public final class SatzFactoryTest extends AbstractTest {
         SatzFactory.unregister(47);
     }
 
+//    /**
+//     * Testet {@link SatzFactory#register(Class, int, int)}.
+//     */
+//    @Test
+//    public void testRegisterAdressteil() {
+//        SatzFactory.register(Adressteil.class, 47, 11);
+//        Datensatz satz = SatzFactory.getDatensatz(47, 11);
+//        assertEquals(Adressteil.class, satz.getClass());
+//        SatzFactory.unregister(47, 11);
+//    }
+
     /**
      * Testet {@link SatzFactory#register(Class, int, int)}.
      */
     @Test
     public void testRegisterDatensatz() {
-        SatzFactory.register(Adressteil.class, 47, 11);
+        SatzFactory.register(SatzX.class, 47, 11);
         Datensatz satz = SatzFactory.getDatensatz(47, 11);
-        assertEquals(Adressteil.class, satz.getClass());
+        assertEquals(SatzX.class, satz.getClass());
         SatzFactory.unregister(47, 11);
     }
 
