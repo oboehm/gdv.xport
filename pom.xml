@@ -32,6 +32,20 @@
   </properties>
 
   <build>
+    
+    <!-- 
+        Dependency management for plugins which are used in different places
+        in the POM.
+     -->
+    <pluginManagement>
+      <plugins>
+        <plugin>
+	      <groupId>org.codehaus.mojo</groupId>
+	      <artifactId>findbugs-maven-plugin</artifactId>
+	      <version>2.3.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   
   	<plugins>
   	
@@ -148,7 +162,6 @@
           <threshold>Normal</threshold>
           <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
         </configuration>
-        <version>2.3.2</version>
         <executions>
           <execution>
             <goals>
@@ -324,6 +337,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.5</version>
         <configuration>
           <formats>
             <format>html</format>
