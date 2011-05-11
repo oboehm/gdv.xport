@@ -89,7 +89,7 @@ public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
             new AllgemeinerVertragsteil();
         }
         long nanos = System.nanoTime() - t0;
-        log.info("time of new AllgemeinerVertragsteil(): " + (nanos/n/1000000.0) + " ms");
+        log.info("time of new AllgemeinerVertragsteil(): " + (((double)nanos)/n/1000000.0) + " ms");
     }
 
 }

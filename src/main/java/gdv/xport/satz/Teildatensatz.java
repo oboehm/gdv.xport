@@ -43,7 +43,7 @@ import gdv.xport.io.ImportException;
 public final class Teildatensatz extends Satz {
 
     private static final Log log = LogFactory.getLog(Teildatensatz.class);
-    private final Map<String, Feld> datenfelder = new HashMap<String, Feld>();
+    private final Map<Object, Feld> datenfelder = new HashMap<Object, Feld>();
     private final Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
 
     /**
@@ -236,7 +236,7 @@ public final class Teildatensatz extends Satz {
             data.append(' ');
         }
         datenfelder.keySet().iterator();
-        for (String key : datenfelder.keySet()) {
+        for (Object key : datenfelder.keySet()) {
             Feld feld = datenfelder.get(key);
             int start = (feld.getByteAdresse() - 1) % 256;
             int end = start + feld.getAnzahlBytes();

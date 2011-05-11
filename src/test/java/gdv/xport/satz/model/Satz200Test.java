@@ -92,7 +92,7 @@ public class Satz200Test extends AbstractSatzTest {
             new Satz200();
         }
         long nanos = System.nanoTime() - t0;
-        log.info("time of new Satz200(): " +  (nanos/n/1000000.0) + " ms");
+        log.info("time of new Satz200(): " +  (((double)nanos)/n/1000000.0) + " ms");
     }
 
 }
