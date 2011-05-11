@@ -316,13 +316,8 @@ public class Feld implements Comparable<Feld> {
      * @return the bezeichnung
      */
     public String getBezeichnung() {
-//        if (this.bezeichnung.equals(this.getBezeichner())) {
-//            String converted = bezeichnung.replaceAll("_", " ");
-//            return WordUtils.capitalize(converted.toLowerCase());
-//        }
         if ((this.bezeichner != null) && this.bezeichnung.equals(this.bezeichner.name())) {
-            String converted = this.bezeichner.name().replaceAll("_", " ");
-            return WordUtils.capitalize(converted.toLowerCase());
+            return toBezeichnung(this.bezeichner);
         }
         return this.bezeichnung;
     }
