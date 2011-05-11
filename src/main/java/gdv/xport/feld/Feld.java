@@ -21,7 +21,7 @@
 package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.satz.Satz;
+import gdv.xport.satz.feld.FeldX;
 
 import java.io.*;
 import java.lang.reflect.*;
@@ -65,7 +65,7 @@ public class Feld implements Comparable<Feld> {
      */
     public Feld(final Enum<?> feldX, final FeldInfo info) {
         this.bezeichner = feldX;
-        this.bezeichnung = Satz.getAsBezeichner(feldX);
+        this.bezeichnung = Feld.getAsBezeichnung(feldX);
         this.byteAdresse = info.byteAdresse();
         this.ausrichtung = getAlignmentFrom(info);
         this.inhalt = new StringBuffer(info.anzahlBytes());
@@ -105,7 +105,7 @@ public class Feld implements Comparable<Feld> {
         this.inhalt = new StringBuffer(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichner = null;
+        this.bezeichner = FeldX.UNBEKANNT;
     }
 
     /**
@@ -125,7 +125,7 @@ public class Feld implements Comparable<Feld> {
         this.inhalt = getEmptyStringBuffer(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichner = null;
+        this.bezeichner = FeldX.UNBEKANNT;
     }
 
     /**
@@ -197,7 +197,7 @@ public class Feld implements Comparable<Feld> {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichnung = createBezeichnung();
-        this.bezeichner = null;
+        this.bezeichner = FeldX.UNBEKANNT;
     }
 
     /**
@@ -227,7 +227,7 @@ public class Feld implements Comparable<Feld> {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichnung = createBezeichnung();
-        this.bezeichner = null;
+        this.bezeichner = FeldX.UNBEKANNT;
     }
 
     private static StringBuffer getEmptyStringBuffer(final int length) {
@@ -258,31 +258,6 @@ public class Feld implements Comparable<Feld> {
     private String createBezeichnung() {
         return this.getClass().getSimpleName() + "@" + Integer.toHexString(this.hashCode());
     }
-    
-    /**
-     * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation
-     * ergibt (Factory-Methode).
-     *
-     * @param name Bezeichner fuer das erzeugte Feld
-     * @param info die FeldInfo-Annotation mit dem gewuenschten Datentyp
-     * @return das erzeugte Feld
-     * @deprecated use {@link #createFeld(Enum, FeldInfo)}
-     */
-    public static Feld createFeld(final String name, final FeldInfo info) {
-        try {
-            Constructor<? extends Feld> ctor = info.type().getConstructor(String.class, FeldInfo.class);
-            Feld feld = ctor.newInstance(name, info);
-            return feld;
-        } catch (NoSuchMethodException e) {
-            throw new InternalError("no constructor " + info.type().getSimpleName() + "(String, FeldInfo) found");
-        } catch (InstantiationException e) {
-            throw new InternalError("can't instantiate " + info.type());
-        } catch (IllegalAccessException e) {
-            throw new InternalError("can't access ctor for " + info.type());
-        } catch (InvocationTargetException e) {
-            throw new InternalError("error invoking ctor for " + info.type() + " (" + e.getTargetException() + ")");
-        }
-    }
 
     /**
      * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation
@@ -294,7 +269,6 @@ public class Feld implements Comparable<Feld> {
      * @return das erzeugte Feld
      */
     public static Feld createFeld(final Enum<?> feldX, final FeldInfo info) {
-//        String name = Satz.getAsBezeichner(feldX);
         try {
             Constructor<? extends Feld> ctor = info.type().getConstructor(Enum.class, FeldInfo.class);
             Feld feld = ctor.newInstance(feldX, info);
@@ -316,22 +290,7 @@ public class Feld implements Comparable<Feld> {
      * @return the bezeichnung
      */
     public String getBezeichnung() {
-        if ((this.bezeichner != null) && this.bezeichnung.equals(this.bezeichner.name())) {
-            return toBezeichnung(this.bezeichner);
-        }
         return this.bezeichnung;
-    }
-    
-    /**
-     * Konvertiert einen Bezeichner (in GROSSBUCHSTABEN) in die entsprechende
-     * Bezeichnung.
-     *
-     * @param name z.B. HELLO_WORLD (als Aufzaehlungstyp)
-     * @return z.B. "Hello World"
-     */
-    public static String toBezeichnung(final Enum<?> name) {
-        String converted = name.name().replaceAll("_", " ");
-        return WordUtils.capitalize(converted.toLowerCase());
     }
     
     /**
@@ -339,12 +298,16 @@ public class Feld implements Comparable<Feld> {
      * Kleinbuchstaben bestehen kann, steht der Bezeichner nur aus einem Wort
      * (in Grossbuchstaben).
      * Er wird aus der Bezeichnung unter Zuhilfenahme der {@link Bezeichner}-
-     * Klasse ermittelt.
+     * Klasse ermittelt, wenn das bezeichner-Attribute nicht gesetzt (bzw.
+     * UNBEKANNT) ist.
      * 
      * @since 0.6
      * @return Bezeichner in Grossbuchstaben
      */
     public String getBezeichner() {
+        if (this.bezeichner != FeldX.UNBEKANNT) {
+            return this.bezeichner.name();
+        }
         Field[] fields = Bezeichner.class.getFields();
         for (int i = 0; i < fields.length; i++) {
             try {
@@ -648,4 +611,39 @@ public class Feld implements Comparable<Feld> {
         return this.byteAdresse - other.byteAdresse;
     }
 
+    /**
+     * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die
+     * {@link Bezeichner}-Klasse, um festzustellen, ob es den Namen schon
+     * als Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.
+     * 
+     * @param feldX das Feld-Element mit dem gesuchten Bezeichner
+     * @return z.B. "Inkassoart"
+     */
+    public static String getAsBezeichnung(final Enum<?> feldX) {
+        try {
+            Field field = Bezeichner.class.getField(feldX.name());
+            return (String) field.get(null);
+        } catch (NoSuchFieldException e) {
+            log.info("Bezeichner." + feldX.name() + " not found");
+        } catch (IllegalArgumentException e) {
+            log.warn(e);
+        } catch (IllegalAccessException e) {
+            log.warn("can't access Bezeichner." + feldX.name());
+        }
+//        return feldX.name();
+        return toBezeichnung(feldX);
+    }
+    
+    /**
+     * Konvertiert einen Bezeichner (in GROSSBUCHSTABEN) in die entsprechende
+     * Bezeichnung.
+     *
+     * @param name z.B. HELLO_WORLD (als Aufzaehlungstyp)
+     * @return z.B. "Hello World"
+     */
+    public static String toBezeichnung(final Enum<?> name) {
+        String converted = name.name().replaceAll("_", " ");
+        return WordUtils.capitalize(converted.toLowerCase());
+    }
+    
 }

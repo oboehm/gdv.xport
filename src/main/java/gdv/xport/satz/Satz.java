@@ -9,7 +9,6 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 
 import java.io.*;
-import java.lang.reflect.Field;
 import java.util.*;
 
 import net.sf.oval.*;
@@ -271,7 +270,7 @@ public abstract class Satz {
      * @param value neuer Inhalt
      */
     public final void set(final Enum<?> feldX, final String value) {
-        String name = getAsBezeichner(feldX);
+        String name = Feld.getAsBezeichnung(feldX);
         this.set(name, value);
     }
 
@@ -299,7 +298,7 @@ public abstract class Satz {
      * @return Inhalt des gefundenden Felds
      */
     public final String get(final Enum<?> feldX) {
-        String name = getAsBezeichner(feldX);
+        String name = Feld.getAsBezeichnung(feldX);
         return this.get(name);
     }
 
@@ -587,28 +586,6 @@ public abstract class Satz {
             }
         } while ((cbuf[0] == '\n') || (cbuf[0] == '\r'));
         reader.unread(cbuf);
-    }
-
-    /**
-     * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die
-     * {@link Bezeichner}-Klasse, um festzustellen, ob es den Namen schon
-     * als Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.
-     * 
-     * @param feldX das Feld-Element mit dem gesuchten Bezeichner
-     * @return z.B. "Inkassoart"
-     */
-    public static String getAsBezeichner(final Enum<?> feldX) {
-        try {
-            Field field = Bezeichner.class.getField(feldX.name());
-            return (String) field.get(null);
-        } catch (NoSuchFieldException e) {
-            log.info("Bezeichner." + feldX.name() + " not found");
-        } catch (IllegalArgumentException e) {
-            log.warn(e);
-        } catch (IllegalAccessException e) {
-            log.warn("can't access Bezeichner." + feldX.name());
-        }
-        return feldX.name();
     }
 
     /**

@@ -466,7 +466,7 @@ public enum Feld210 '{'
             anzahlBytes = 1,
             byteAdresse = 255
     )
-    LEERSTELLEN,
+    LEERSTELLEN1,
 
     /**
      * Satznummer.
@@ -478,7 +478,7 @@ public enum Feld210 '{'
             anzahlBytes = 1,
             byteAdresse = 256
     )
-    SATZNUMMER,
+    SATZNUMMER2,
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
@@ -792,7 +792,7 @@ public enum Feld210 '{'
             anzahlBytes = 32,
             byteAdresse = 224
     )
-    LEERSTELLEN,
+    LEERSTELLEN2,
 
     /**
      * Satznummer.
