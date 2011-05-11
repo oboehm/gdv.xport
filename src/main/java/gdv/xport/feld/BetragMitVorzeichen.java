@@ -30,6 +30,18 @@ import gdv.xport.annotation.FeldInfo;
 public final class BetragMitVorzeichen extends Betrag {
 
     /**
+     * Instantiiert ein neuen Betrag.
+     * 
+     * @param feldX Feld
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 0.6
+     */
+    public BetragMitVorzeichen(final Enum<?> feldX, final FeldInfo info) {
+        super(feldX, info);
+        this.setVorzeichen('+');
+    }
+
+    /**
      * @param name Bezeichner
      * @param length das Vorzeichen muss dabei mitgezaehlt werden
      * @param start Start-Byte (beginnend bei 1)

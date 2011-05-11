@@ -83,8 +83,7 @@ public class SatzX extends Datensatz {
      */
     protected static void add(final Enum<?> feldX, final Teildatensatz tds) {
         FeldInfo info = getFeldInfo(feldX);
-        String name = getAsBezeichner(feldX);
-        Feld feld = Feld.createFeld(name, info);
+        Feld feld = Feld.createFeld(feldX, info);
         if (info.nr() < 8) {
             log.info("using default settings for " + feld);
         } else {

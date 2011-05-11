@@ -79,6 +79,17 @@ public class AlphaNumFeld extends Feld {
     /**
      * Instantiiert ein neues alpha-numerisches Feld.
      * 
+     * @param feldX Feld
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 0.6
+     */
+    public AlphaNumFeld(final Enum<?> feldX, final FeldInfo info) {
+        super(feldX, info);
+    }
+
+    /**
+     * Instantiiert ein neues alpha-numerisches Feld.
+     * 
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6

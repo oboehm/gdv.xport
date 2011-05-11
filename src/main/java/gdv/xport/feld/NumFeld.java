@@ -28,6 +28,18 @@ public class NumFeld extends Feld {
 
     private static final Log log = LogFactory.getLog(NumFeld.class);
     private final int nachkommastellen;
+    
+    /**
+     * Instantiiert ein neues numerisches Feld.
+     * 
+     * @param feldX Feld
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 0.6
+     */
+    public NumFeld(final Enum<?> feldX, final FeldInfo info) {
+        super(feldX, info);
+        this.nachkommastellen = info.nachkommaStellen();
+    }
 
     /**
      * @param name Feld-Bezeichner (z.B. "Anzahl Saetze")
@@ -123,6 +135,16 @@ public class NumFeld extends Feld {
         super(name, length, start, Align.RIGHT);
         this.nachkommastellen = nachkommastellen;
         this.setInhalt(value);
+    }
+
+    /**
+     * Die Default-Ausrichtung ist rechts-buendig fuer Zahlen.
+     *
+     * @return rechts-buendig
+     */
+    @Override
+    protected Align getDefaultAlignment() {
+        return Align.RIGHT;
     }
 
     /**

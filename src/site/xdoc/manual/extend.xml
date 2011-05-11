@@ -26,8 +26,12 @@
         Im <a href="../apidocs/gdv/xport/demo/package.html">demo</a>-Paket
         befindet sich
         <a href="../xref/gdv/xport/demo/MyUnfallDatensatz.html#40">MyUnfallDatensatz</a>
-        als Beispielklasse. In der main-Methode wird die Klasse im Framework
-        registriert, anschliessend wird das
+        als Beispielklasse.
+        Der Aufbau des Datensatzes wird dabei mit Hilfe der
+        <a href="../xref/gdv/xport/demo/MyFeld210.html">MyFeld210</a>-Enum-Klasse
+        beschrieben.
+        In der main-Methode wird die Klasse im Framework registriert.
+        Anschliessend wird das
         <a href="http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt">Muster-Datenpaket</a>
         von gdv-online importiert und der erste gefundene MyUnfallDatensatz
         im GDV-Format und als XML ausgegeben:
@@ -43,8 +47,8 @@
     <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
     <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
     <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
-    <feld bytes=" 44- 51" bezeichnung="mein Vertragsbeginn           ">01052004</feld>
-    <feld bytes=" 93- 95" bezeichnung="meine Waehrung                ">EUR</feld>
+    <feld bytes=" 44- 51" bezeichnung="Mein Vertragsbeginn           ">01052004</feld>
+    <feld bytes=" 93- 95" bezeichnung="Meine Waehrung                ">EUR</feld>
     <feld bytes="256-256" bezeichnung="Satznummer                    "> </feld>
   </teildatensatz>
 </satz>

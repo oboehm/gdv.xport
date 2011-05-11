@@ -21,7 +21,9 @@
 package gdv.xport.feld;
 
 import static org.junit.Assert.*;
+import gdv.xport.annotation.FeldInfo;
 
+import java.lang.annotation.Annotation;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
@@ -39,6 +41,9 @@ public class FeldTest {
 
     /** The Constant log. */
     private static final Log log = LogFactory.getLog(FeldTest.class);
+    
+    /** For testing. */
+    private enum Greeting { HELLO_WORLD; }
 
     /**
      * Test method for {@link gdv.xport.feld.Feld#resetInhalt()}.
@@ -146,6 +151,66 @@ public class FeldTest {
     public void testGetBezeichnerConstructed() {
         Feld x = new Feld("Version Satzart 0100", 99, 3, Align.LEFT);
         assertEquals("VERSION_SATZART_0100", x.getBezeichner());
+    }
+    
+    /**
+     * Hier wollen wir testen, ob aus dem Bezeichner "HELLO_WORLD" als
+     * Bezeichnung tatsaechlich "Hello World" rauskommt.
+     */
+    @Test
+    public void testCreateFeld() {
+        FeldInfo feldInfo = createFeldInfo();
+        Greeting hello = Greeting.HELLO_WORLD;
+        Feld feld = Feld.createFeld(hello, feldInfo);
+        assertEquals("HELLO_WORLD", feld.getBezeichner());
+        assertEquals("Hello World", feld.getBezeichnung());
+    }
+
+    /**
+     * Hier wird eine vorbelegte FeldInfo-Annotation zum Testen erzeugt.
+     *
+     * @return FeldInfo mit einigen Default-Werten
+     */
+    static FeldInfo createFeldInfo() {
+        FeldInfo feldInfo = new FeldInfo() {
+            @Override
+            public Class<? extends Annotation> annotationType() {
+                return null;
+            }
+            @Override
+            public Class<? extends Feld> type() {
+                return Zeichen.class;
+            }
+            @Override
+            public int teildatensatz() {
+                return 1;
+            }
+            @Override
+            public int nr() {
+                return 11;
+            }
+            @Override
+            public int nachkommaStellen() {
+                return 0;
+            }
+            @Override
+            public String erlaeuterung() {
+                return "only for testing";
+            }
+            @Override
+            public int byteAdresse() {
+                return 100;
+            }
+            @Override
+            public int anzahlBytes() {
+                return 1;
+            }
+            @Override
+            public Align align() {
+                return null;
+            }
+        };
+        return feldInfo;
     }
 
 }

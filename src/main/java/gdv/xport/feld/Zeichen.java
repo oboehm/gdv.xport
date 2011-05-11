@@ -49,20 +49,17 @@ public class Zeichen extends AlphaNumFeld {
         super(name, 1, start);
     }
     
-//    /**
-//     * Der eigentliche Default-Konstruktor fuer alle Feld-Derivate.
-//     *
-//     * @param name Bezeichner
-//     * @param length die Laenge (muss 1 sein)
-//     * @param start die Start-Adresse
-//     * @since 0.6
-//     */
-//    public Zeichen(final String name, final int length, final int start) {
-//        super(name, length, start);
-//        if (length != 1) {
-//            throw new IllegalArgumentException("2nd arg (" + length + ") must be 1");
-//        }
-//    }
+    /**
+     * Instantiiert ein neues Zeichen.
+     * 
+     * @param feldX Feld
+     * @param info mit Angabe der Start-Adresse
+     * @since 0.6
+     */
+    public Zeichen(final Enum<?> feldX, final FeldInfo info) {
+        super(feldX, info);
+        assert info.anzahlBytes() == 1 : "Zeichen kann nur 1 Byte lang sein";
+    }
 
     /**
      * Instantiiert ein neues Zeichen.

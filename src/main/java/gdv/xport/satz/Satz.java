@@ -311,11 +311,23 @@ public abstract class Satz {
      * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
     public Feld getFeld(final Enum<?> feld) {
-        Feld f = getFeld(feld.name());
-        if (f == Feld.NULL_FELD) {
-            return getFeld(getAsBezeichner(feld));
+//        Feld f = getFeld(feld.name());
+//        if (f == Feld.NULL_FELD) {
+//            return getFeld(getAsBezeichner(feld));
+//        }
+//        return f;
+        for (int i = 0; i < teildatensatz.length; i++) {
+            try {
+                Feld x = teildatensatz[i].getFeld(feld);
+                if (x != Feld.NULL_FELD) {
+                    return x;
+                }
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
         }
-        return f;
+        throw new IllegalArgumentException("Feld \"" + feld + "\" nicht in "
+                + this.toShortString() + " vorhanden!");
     }
 
     /**
@@ -585,7 +597,7 @@ public abstract class Satz {
      * @param feldX das Feld-Element mit dem gesuchten Bezeichner
      * @return z.B. "Inkassoart"
      */
-    protected static String getAsBezeichner(final Enum<?> feldX) {
+    public static String getAsBezeichner(final Enum<?> feldX) {
         try {
             Field field = Bezeichner.class.getField(feldX.name());
             return (String) field.get(null);

@@ -36,6 +36,17 @@ public class Betrag extends NumFeld {
     public Betrag(final String name) {
         super(name, "00000000000000");
     }
+    
+    /**
+     * Instantiiert ein neuen Betrag.
+     * 
+     * @param feldX Feld
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 0.6
+     */
+    public Betrag(final Enum<?> feldX, final FeldInfo info) {
+        super(feldX, info);
+    }
 
     /**
      * @param name Name des Feldes

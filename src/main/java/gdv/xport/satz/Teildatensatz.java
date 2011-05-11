@@ -181,6 +181,30 @@ public final class Teildatensatz extends Satz {
         datenfelder.put(name, feld);
     }
 
+    /**
+     * Liefert das gewuenschte Feld.
+     *
+     * @param feldX gewuenschtes Feld-Element
+     * @return das gesuchte Feld
+     * @throws IllegalArgumentException falls es das Feld nicht gibt
+     */
+    public Feld getFeld(final Enum<?> feldX) {
+        Feld found = datenfelder.get(feldX);
+        if (found == null) {
+            found = getFeld(feldX.name());
+        }
+        if (found == Feld.NULL_FELD) {
+            found = getFeld(Feld.toBezeichnung(feldX));
+        }
+        return found;
+    }
+
+    /**
+     * Liefert das gewuenschte Feld.
+     *
+     * @param name gewuenschter Bezeichner des Feldes
+     * @return das gesuchte Feld
+     */
     @Override
     public Feld getFeld(final String name) {
         Feld found = datenfelder.get(name);

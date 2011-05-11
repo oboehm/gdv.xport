@@ -20,6 +20,7 @@ package gdv.xport.demo;
 
 import static org.junit.Assert.assertEquals;
 import gdv.xport.Datenpaket;
+import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.util.SatzFactory;
 
@@ -41,7 +42,6 @@ import patterntesting.runtime.annotation.IntegrationTest;
  * @since 0.4 (11.07.2010)
  */
 @RunWith(ParallelRunner.class)
-@IntegrationTest
 public final class MyUnfallDatensatzTest {
 
     /**
@@ -51,6 +51,7 @@ public final class MyUnfallDatensatzTest {
      * @throws IOException wenn die musterdatei nicht gelesen werden kann
      */
     @Test
+    @IntegrationTest
     public void testMyUnfallDatensatz() throws IOException {
         // im Framework registrieren
         SatzFactory.register(MyUnfallDatensatz.class, 210, 30);
@@ -66,6 +67,20 @@ public final class MyUnfallDatensatzTest {
             }
         }
     }
+    
+    /**
+     * Die Bezeichnung von MyFeld210.MEINE_WAEHRUNG sollte "Meine Waehrung"
+     * im Datensatz lauten.
+     * 
+     * @since 0.6
+     */
+    @Test
+    public void testBezeichner() {
+        Datensatz myDatensatz = new MyUnfallDatensatz();
+        Feld meineWaehrung = myDatensatz.getFeld(MyFeld210.MEINE_WAEHRUNG);
+        assertEquals("MEINE_WAEHRUNG", meineWaehrung.getBezeichner());
+        assertEquals("Meine Waehrung", meineWaehrung.getBezeichnung());
+    }
 
     /**
      * Testet die main-Methode.
@@ -74,6 +89,7 @@ public final class MyUnfallDatensatzTest {
      * @throws IOException falls die URL nicht erreicht werden kann
      */
     @Test
+    @IntegrationTest
     public void testMain() throws IOException, XMLStreamException {
         MyUnfallDatensatz.main(new String[] {});
     }

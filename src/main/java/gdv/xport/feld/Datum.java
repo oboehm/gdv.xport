@@ -44,6 +44,18 @@ public final class Datum extends Feld {
     private final DateFormat dateFormat;
 
     /**
+     * Instantiiert ein neues Datum.
+     * 
+     * @param feldX Feld
+     * @param info mit Angabe der Start-Adresse
+     * @since 0.6
+     */
+    public Datum(final Enum<?> feldX, final FeldInfo info) {
+        super(feldX, info);
+        this.dateFormat = getDateFormat(info.anzahlBytes());
+    }
+
+    /**
      * Instantiates a new datum.
      *
      * @param name the name

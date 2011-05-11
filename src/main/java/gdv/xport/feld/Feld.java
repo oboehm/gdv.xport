@@ -21,6 +21,7 @@
 package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.satz.Satz;
 
 import java.io.*;
 import java.lang.reflect.*;
@@ -46,6 +47,7 @@ public class Feld implements Comparable<Feld> {
     public static final Feld NULL_FELD = new Feld("null", 0, 0, Align.UNKNOWN);
     /** optional: Name des Felds. */
     private final String bezeichnung;
+    private final Enum<?> bezeichner;
     private final StringBuffer inhalt;
     /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256. */
     @Min(1)
@@ -53,6 +55,24 @@ public class Feld implements Comparable<Feld> {
     /** Ausrichtung: rechts- oder linksbuendig. */
     @NotEqual("UNKNOWN")
     private final Align ausrichtung;
+
+    /**
+     * Kreiert ein neues Feld.
+     *
+     * @param feldX der entsrpechende Aufzaehlungstyp
+     * @param info Annotation mit den Feldinformationen
+     * @since 0.6
+     */
+    public Feld(final Enum<?> feldX, final FeldInfo info) {
+        this.bezeichner = feldX;
+        this.bezeichnung = Satz.getAsBezeichner(feldX);
+        this.byteAdresse = info.byteAdresse();
+        this.ausrichtung = getAlignmentFrom(info);
+        this.inhalt = new StringBuffer(info.anzahlBytes());
+        for (int i = 0; i < info.anzahlBytes(); i++) {
+            this.inhalt.append(' ');
+        }
+    }
 
     /**
      * Instantiates a new feld.
@@ -85,6 +105,7 @@ public class Feld implements Comparable<Feld> {
         this.inhalt = new StringBuffer(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
+        this.bezeichner = null;
     }
 
     /**
@@ -104,6 +125,7 @@ public class Feld implements Comparable<Feld> {
         this.inhalt = getEmptyStringBuffer(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
+        this.bezeichner = null;
     }
 
     /**
@@ -175,6 +197,7 @@ public class Feld implements Comparable<Feld> {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichnung = createBezeichnung();
+        this.bezeichner = null;
     }
 
     /**
@@ -204,6 +227,7 @@ public class Feld implements Comparable<Feld> {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichnung = createBezeichnung();
+        this.bezeichner = null;
     }
 
     private static StringBuffer getEmptyStringBuffer(final int length) {
@@ -212,6 +236,23 @@ public class Feld implements Comparable<Feld> {
             sbuf.append(' ');
         }
         return sbuf;
+    }
+
+    /**
+     * Die Default-Ausrichtung ist links-buendig. Diese Vorgabe kann aber
+     * von den Unterklassen ueberschrieben werde.
+     *
+     * @return links-buendig
+     */
+    protected Align getDefaultAlignment() {
+        return Align.LEFT;
+    }
+    
+    private Align getAlignmentFrom(final FeldInfo info) {
+        if (info.align() == Align.UNKNOWN) {
+            return this.getDefaultAlignment();
+        }
+        return info.align();
     }
 
     private String createBezeichnung() {
@@ -225,6 +266,7 @@ public class Feld implements Comparable<Feld> {
      * @param name Bezeichner fuer das erzeugte Feld
      * @param info die FeldInfo-Annotation mit dem gewuenschten Datentyp
      * @return das erzeugte Feld
+     * @deprecated use {@link #createFeld(Enum, FeldInfo)}
      */
     public static Feld createFeld(final String name, final FeldInfo info) {
         try {
@@ -243,12 +285,58 @@ public class Feld implements Comparable<Feld> {
     }
 
     /**
+     * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation
+     * ergibt (Factory-Methode). Der Name wird dabei aus dem uebergebenen
+     * Enum-Feld abgeleitet.
+     *
+     * @param feldX Enum fuer das erzeugte Feld
+     * @param info die FeldInfo-Annotation mit dem gewuenschten Datentyp
+     * @return das erzeugte Feld
+     */
+    public static Feld createFeld(final Enum<?> feldX, final FeldInfo info) {
+//        String name = Satz.getAsBezeichner(feldX);
+        try {
+            Constructor<? extends Feld> ctor = info.type().getConstructor(Enum.class, FeldInfo.class);
+            Feld feld = ctor.newInstance(feldX, info);
+            return feld;
+        } catch (NoSuchMethodException e) {
+            throw new InternalError("no constructor " + info.type().getSimpleName() + "(String, FeldInfo) found");
+        } catch (InstantiationException e) {
+            throw new InternalError("can't instantiate " + info.type());
+        } catch (IllegalAccessException e) {
+            throw new InternalError("can't access ctor for " + info.type());
+        } catch (InvocationTargetException e) {
+            throw new InternalError("error invoking ctor for " + info.type() + " (" + e.getTargetException() + ")");
+        }
+    }
+
+    /**
      * Gets the bezeichnung.
      *
      * @return the bezeichnung
      */
     public String getBezeichnung() {
+//        if (this.bezeichnung.equals(this.getBezeichner())) {
+//            String converted = bezeichnung.replaceAll("_", " ");
+//            return WordUtils.capitalize(converted.toLowerCase());
+//        }
+        if ((this.bezeichner != null) && this.bezeichnung.equals(this.bezeichner.name())) {
+            String converted = this.bezeichner.name().replaceAll("_", " ");
+            return WordUtils.capitalize(converted.toLowerCase());
+        }
         return this.bezeichnung;
+    }
+    
+    /**
+     * Konvertiert einen Bezeichner (in GROSSBUCHSTABEN) in die entsprechende
+     * Bezeichnung.
+     *
+     * @param name z.B. HELLO_WORLD (als Aufzaehlungstyp)
+     * @return z.B. "Hello World"
+     */
+    public static String toBezeichnung(final Enum<?> name) {
+        String converted = name.name().replaceAll("_", " ");
+        return WordUtils.capitalize(converted.toLowerCase());
     }
     
     /**
@@ -288,8 +376,8 @@ public class Feld implements Comparable<Feld> {
     public void setInhalt(final String s) {
         int anzahlBytes = this.getAnzahlBytes();
         if (s.length() > anzahlBytes) {
-            throw new IllegalArgumentException("Parameter (\"" + s + "\" ist laenger als "
-                    + anzahlBytes + " Zeichen!");
+            throw new IllegalArgumentException("Feld " + this.getBezeichner() + ": Parameter \"" + s
+                    + "\" ist laenger als " + anzahlBytes + " Zeichen!");
         }
         this.resetInhalt();
         switch (this.ausrichtung) {
