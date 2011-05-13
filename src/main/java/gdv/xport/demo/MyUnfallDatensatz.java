@@ -65,6 +65,8 @@ public class MyUnfallDatensatz extends SatzX {
                 break;
             }
         }
+        // und hiermit melden wir den Datensatz wieder vom Framework ab
+        SatzFactory.unregister(210, 30);
     }
 
     /**
