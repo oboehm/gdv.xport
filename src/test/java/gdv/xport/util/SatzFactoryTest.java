@@ -21,6 +21,7 @@ package gdv.xport.util;
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
+import gdv.xport.demo.MyFeld210;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 import gdv.xport.satz.model.*;
@@ -89,17 +90,6 @@ public final class SatzFactoryTest extends AbstractTest {
         SatzFactory.unregister(47);
     }
 
-//    /**
-//     * Testet {@link SatzFactory#register(Class, int, int)}.
-//     */
-//    @Test
-//    public void testRegisterAdressteil() {
-//        SatzFactory.register(Adressteil.class, 47, 11);
-//        Datensatz satz = SatzFactory.getDatensatz(47, 11);
-//        assertEquals(Adressteil.class, satz.getClass());
-//        SatzFactory.unregister(47, 11);
-//    }
-
     /**
      * Testet {@link SatzFactory#register(Class, int, int)}.
      */
@@ -109,6 +99,15 @@ public final class SatzFactoryTest extends AbstractTest {
         Satz satz = SatzFactory.getDatensatz(47, 11);
         assertEquals(SatzX.class, satz.getClass());
         SatzFactory.unregister(47, 11);
+    }
+    
+    @Test
+    public void testRegisterEnum() {
+        SatzFactory.registerEnum(MyFeld210.class, 47);
+        Satz satz = SatzFactory.getSatz(47);
+        assertEquals(47, satz.getSatzart());
+        Feld x = satz.getFeld(MyFeld210.MEINE_WAEHRUNG);
+        assertNotNull(x);
     }
 
     /**

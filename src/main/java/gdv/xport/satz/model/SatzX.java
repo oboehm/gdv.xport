@@ -51,6 +51,16 @@ public class SatzX extends Datensatz {
     
     /**
      * Instantiiert einen neuen Datensatz.
+     * 
+     * @param satzart z.B. 100
+     * @param enumClass Enumerationen-Klasse mit den Feldbeschreibungen
+     */
+    public SatzX(final int satzart, final Class<? extends Enum<?>> enumClass) {
+        super(satzart, getTeildatensaetzeFor(satzart, enumClass));
+    }
+    
+    /**
+     * Instantiiert einen neuen Datensatz.
      *
      * @param satzart z.B. 100
      * @param sparte Sparte
@@ -130,6 +140,11 @@ public class SatzX extends Datensatz {
             add(felder[i], tds);
         }
         return new ArrayList<Teildatensatz>(tdsMap.values());
+    }
+
+    private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart, final Class<? extends Enum<?>> enumClass) {
+        Enum<?>[] constants = enumClass.getEnumConstants();
+        return getTeildatensaetzeFor(satzart, constants);
     }
 
     /**

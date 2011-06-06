@@ -47,8 +47,8 @@ public abstract class Satz {
     /**
      * Instantiates a new satz.
      *
-     * @param art the art
-     * @param n the n
+     * @param art Satzart
+     * @param n Anzahl der Teildatensaetze
      */
     public Satz(final NumFeld art, final int n) {
         this.satzart.setInhalt(art.getInhalt());

@@ -41,12 +41,16 @@ public final class SatzFactory {
     private static final Log log = LogFactory.getLog(SatzFactory.class);
     
     /** The registered satz classes. */
-    private static Map<Integer, Class<? extends Satz>> registeredSatzClasses =
+    private static final Map<Integer, Class<? extends Satz>> registeredSatzClasses =
         new HashMap<Integer, Class<? extends Satz>>();
     
     /** The registered datensatz classes. */
-    private static Map<Integer, Class<? extends Datensatz>> registeredDatensatzClasses =
+    private static final Map<Integer, Class<? extends Datensatz>> registeredDatensatzClasses =
         new HashMap<Integer, Class<? extends Datensatz>>();
+    
+    /** The registered Enum classes. */
+    private static final Map<Integer, Class<? extends Enum<?>>> registeredEnumClasses =
+        new HashMap<Integer, Class<? extends Enum<?>>>();
 
     static {
         register(Vorsatz.class, 1);
@@ -102,6 +106,19 @@ public final class SatzFactory {
         }
         registeredSatzClasses.put(satzart, clazz);
     }
+    
+    /**
+     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
+     * Datensatz-Beschreibung uebergeben wird.
+     *
+     * @param enumClass die Aufzaehlungsklasse, z.B. Feld100.class
+     * @param satzart die Satzart
+     * @since 0.6
+     */
+    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart) {
+        assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
+        registeredEnumClasses.put(satzart, enumClass);
+    }
 
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
@@ -112,6 +129,7 @@ public final class SatzFactory {
      */
     public static void unregister(final int satzart) {
         registeredSatzClasses.remove(satzart);
+        registeredEnumClasses.remove(satzart);
     }
 
     /**
@@ -130,6 +148,23 @@ public final class SatzFactory {
         int key = getAsKey(satzart, sparte);
         registeredDatensatzClasses.put(key, clazz);
     }
+    
+    /**
+     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
+     * Datensatz-Beschreibung uebergeben wird.
+     *
+     * @param enumClass die Aufzaehlungsklasse, z.B. Feld100.class
+     * @param satzart die Satzart
+     * @param sparte die Sparte
+     * @since 0.6
+     */
+    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart,
+            final int sparte) {
+        assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
+        assert (0 <= sparte) && (sparte <= 999)    : "Sparte muss zwischen 0 und 999 liegen";
+        int key = getAsKey(satzart, sparte);
+        registeredEnumClasses.put(key, enumClass);
+    }
 
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
@@ -141,6 +176,7 @@ public final class SatzFactory {
      */
     public static void unregister(final int satzart, final int sparte) {
         registeredDatensatzClasses.remove(getAsKey(satzart, sparte));
+        registeredEnumClasses.remove(getAsKey(satzart, sparte));
     }
 
     /**
@@ -164,7 +200,7 @@ public final class SatzFactory {
     public static Satz getSatz(final int satzart) {
         Class<? extends Satz> clazz = registeredSatzClasses.get(satzart);
         if (clazz == null) {
-            throw new NotRegisteredException(satzart);
+            return generateSatz(satzart);
         }
         try {
             Satz satz = clazz.newInstance();
@@ -190,6 +226,14 @@ public final class SatzFactory {
                 throw new IllegalStateException("registered " + clazz + " can't be accessed", iae);
             }
         }
+    }
+    
+    private static Satz generateSatz(final int satzart) {
+        Class<? extends Enum<?>> enumClass = registeredEnumClasses.get(satzart);
+        if (enumClass == null) {
+            throw new NotRegisteredException(satzart);
+        }
+        return new SatzX(satzart, enumClass);
     }
 
     /**
