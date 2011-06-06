@@ -235,6 +235,15 @@ public final class SatzFactory {
         }
         return new SatzX(satzart, enumClass);
     }
+    
+    private static Datensatz generateDatensatz(final int satzart, final int sparte) {
+        int key = getAsKey(satzart, sparte);
+        Class<? extends Enum<?>> enumClass = registeredEnumClasses.get(key);
+        if (enumClass == null) {
+            return useFallback(satzart, sparte);
+        }
+        return new SatzX(satzart, sparte, enumClass);
+    }
 
     /**
      * Versucht anhand des uebergebenen Strings herauszufinden, um was fuer
@@ -285,7 +294,7 @@ public final class SatzFactory {
         int key = getAsKey(satzart, sparte);
         Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(key);
         if (clazz == null) {
-            return useFallback(satzart, sparte);
+            return generateDatensatz(satzart, sparte);
         }
         try {
             Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);

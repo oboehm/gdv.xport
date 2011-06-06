@@ -101,10 +101,29 @@ public final class SatzFactoryTest extends AbstractTest {
         SatzFactory.unregister(47, 11);
     }
     
+    /**
+     * Testet {@link SatzFactory#registerEnum(Class, int)}.
+     */
     @Test
     public void testRegisterEnum() {
         SatzFactory.registerEnum(MyFeld210.class, 47);
         Satz satz = SatzFactory.getSatz(47);
+        assertSatzart47(satz);
+        SatzFactory.unregister(47);
+    }
+
+    /**
+     * Testet {@link SatzFactory#registerEnum(Class, int, int)}.
+     */
+    @Test
+    public void testRegisterEnum4Sparte() {
+        SatzFactory.registerEnum(MyFeld210.class, 47, 11);
+        Satz satz = SatzFactory.getDatensatz(47, 11);
+        assertSatzart47(satz);
+        SatzFactory.unregister(47, 11);
+    }
+
+    private void assertSatzart47(Satz satz) {
         assertEquals(47, satz.getSatzart());
         Feld x = satz.getFeld(MyFeld210.MEINE_WAEHRUNG);
         assertNotNull(x);

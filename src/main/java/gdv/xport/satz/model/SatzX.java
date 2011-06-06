@@ -19,7 +19,7 @@
 package gdv.xport.satz.model;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Feld;
 import gdv.xport.satz.*;
 import gdv.xport.satz.feld.FeldX;
 
@@ -68,6 +68,17 @@ public class SatzX extends Datensatz {
      */
     public SatzX(final int satzart, final int sparte, final Enum<?>[] felder) {
         super(satzart, sparte, getTeildatensaetzeFor(satzart, felder));
+    }
+    
+    /**
+     * Instantiiert einen neuen Datensatz.
+     * 
+     * @param satzart z.B. 100
+     * @param sparte Sparte
+     * @param enumClass Enumerationen-Klasse mit den Feldbeschreibungen
+     */
+    public SatzX(final int satzart, final int sparte, final Class<? extends Enum<?>> enumClass) {
+        super(satzart, sparte, getTeildatensaetzeFor(satzart, enumClass));
     }
 
     /**
