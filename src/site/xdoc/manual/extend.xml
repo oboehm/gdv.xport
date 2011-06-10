@@ -23,6 +23,14 @@
         registriert werden.
       </p>
       <p>
+        Ab 0.6 geht es auch einfacher:
+        hier reicht die Beschreibung eines Datensatzes mithilfe einer Enum-Klasse
+        (wie z.B. <a href="../xref/gdv/xport/demo/MyFeld210.html">MyFeld210</a>).
+        Diese kann ueber
+        <a href="../apidocs/gdv/xport/util/SatzFactory.html#registerEnum(java.lang.Class, int)">SatzFactory.registerEnum(..)</a>
+        registriert werden.
+      </p>
+      <p>
         Im <a href="../apidocs/gdv/xport/demo/package.html">demo</a>-Paket
         befindet sich
         <a href="../xref/gdv/xport/demo/MyUnfallDatensatz.html#40">MyUnfallDatensatz</a>
