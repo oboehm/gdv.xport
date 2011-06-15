@@ -19,11 +19,11 @@
 
     <release version="0.6.0" date="15-Jun-2011"
              description="erster SOP-Ansatz">
-      <action dev="oboehm" type="fix" date="30-M&#228r-2011" >
+      <action dev="oboehm" type="fix" date="30-M&#228;r-2011" >
         Java-Formatter hinzugef&#252;gt, um die Migration des alten Ansatzes
         zum SOP-Ansatz zu erleichtern.
       </action>
-      <action dev="oboehm" type="add" date="08-M&#228r-2011" >
+      <action dev="oboehm" type="add" date="08-M&#228;r-2011" >
         SOP-Ansatz mit Hilfe von Enums und Annotations, um die Typ-Sicherheit
         und Lesbarkeit zu erh&#246;hen.
       </action>
