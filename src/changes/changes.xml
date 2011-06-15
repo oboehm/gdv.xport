@@ -17,7 +17,7 @@
 
   <body>
 
-    <release version="0.6.0-SNAPSHOT" date="2011"
+    <release version="0.6.0" date="15-Jun-2011"
              description="erster SOP-Ansatz">
       <action dev="oboehm" type="fix" date="30-M&#228r-2011" >
         Java-Formatter hinzugef&#252;gt, um die Migration des alten Ansatzes
