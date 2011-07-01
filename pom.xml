@@ -170,7 +170,6 @@
 		          <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
 		          <omitVisitors>FindDeadLocalStores,OverridingEqualsNotSymmetrical</omitVisitors>
 		          <onlyAnalyze>gdv.xport.-</onlyAnalyze>
-		          <debug>true</debug>
 		          <relaxed>false</relaxed>
 		        </configuration>
 		      </plugin>
