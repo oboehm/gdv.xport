@@ -305,7 +305,8 @@ public class Feld implements Comparable<Feld> {
      * @return Bezeichner in Grossbuchstaben
      */
     public String getBezeichner() {
-        if (this.bezeichner != FeldX.UNBEKANNT) {
+        if (!this.bezeichner.equals(FeldX.UNBEKANNT)) {
+//        if (this.bezeichner != FeldX.UNBEKANNT) {
             return this.bezeichner.name();
         }
         Field[] fields = Bezeichner.class.getFields();
