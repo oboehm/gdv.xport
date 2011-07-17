@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="0.6.1-SNAPSHOT" date="15-Jun-2011"
+             description="Helios-Update">
+      <action dev="oboehm" type="fix" date="17-Jul-2011" >
+        Aktualisierung f&#252;r Eclipse Helios.
+      </action>
+    </release>
+
     <release version="0.6.0" date="15-Jun-2011"
              description="erster SOP-Ansatz">
       <action dev="oboehm" type="fix" date="30-M&#228;r-2011" >
