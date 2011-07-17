@@ -372,21 +372,45 @@
       <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-rt</artifactId>
       <version>${patterntesting.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.jamonapi</groupId>
+          <artifactId>jamon</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-check-ct</artifactId>
       <version>${patterntesting.version}</version>
+       <exclusions>
+        <exclusion>
+          <groupId>com.jamonapi</groupId>
+          <artifactId>jamon</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-check-rt</artifactId>
       <version>${patterntesting.version}</version>
+       <exclusions>
+        <exclusion>
+          <groupId>com.jamonapi</groupId>
+          <artifactId>jamon</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-concurrent</artifactId>
       <version>${patterntesting.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.jamonapi</groupId>
+          <artifactId>jamon</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <!-- Object Validation Framework (OVal) -->
     <dependency>
