@@ -48,7 +48,7 @@ public class BasisTest {
      */
     @Test
     public void testClasses() {
-        ObjectTester.checkAll(xportPackage);
+        ObjectTester.assertAll(xportPackage);
     }
     
     /**
@@ -57,7 +57,7 @@ public class BasisTest {
      */
     @Test
     public void testCloneables() {
-        CloneableTester.checkCloning(xportPackage);
+        CloneableTester.assertCloning(xportPackage);
     }
     
     /**
@@ -69,7 +69,7 @@ public class BasisTest {
      */
     @Test
     public void testSerializables() throws NotSerializableException {
-        SerializableTester.checkSerialization(xportPackage);
+        SerializableTester.assertSerialization(xportPackage);
     }
 
 }
