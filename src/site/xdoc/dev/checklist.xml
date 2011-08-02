@@ -45,7 +45,7 @@
           <td>
             Hudson-Build starten starten und
             Jar-Files unter
-            http://repository.agentes.de/gdv/gdv-xport/0.x.x
+            http://labs.agentes.de/repository/gdv/gdv-xport/0.x.x
             kontrollieren
           </td>
         </tr>
@@ -67,7 +67,7 @@
             ('java -cp ... patterntesting.tool.html.UmlautEncoder target/site'),
             um Darstellungsprobleme auszuschlie&#223;en.
             Anschlie&#223;end target/site nach
-            http://repository.agentes.de/gdv/gdv-xport/site/...
+            http://labs.agentes.de/repository/gdv/gdv-xport/site/...
             kopieren
           </td>
         </tr>
