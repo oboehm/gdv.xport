@@ -17,8 +17,11 @@
 
   <body>
 
-    <release version="0.6.1-SNAPSHOT" date="15-Jun-2011"
-             description="Helios-Update">
+    <release version="0.6.1-SNAPSHOT" date="Aug-2011"
+             description="Aktualisierung Dokumentation">
+      <action dev="oboehm" type="fix" date="02-Aug-2011" >
+        Fehlerhafter Link zum Download korrigiert.
+      </action>
       <action dev="oboehm" type="fix" date="17-Jul-2011" >
         Aktualisierung f&#252;r Eclipse Helios.
       </action>
