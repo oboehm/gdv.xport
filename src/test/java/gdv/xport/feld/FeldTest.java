@@ -173,39 +173,30 @@ public class FeldTest {
      */
     static FeldInfo createFeldInfo() {
         FeldInfo feldInfo = new FeldInfo() {
-            @Override
             public Class<? extends Annotation> annotationType() {
                 return null;
             }
-            @Override
             public Class<? extends Feld> type() {
                 return Zeichen.class;
             }
-            @Override
             public int teildatensatz() {
                 return 1;
             }
-            @Override
             public int nr() {
                 return 11;
             }
-            @Override
             public int nachkommaStellen() {
                 return 0;
             }
-            @Override
             public String erlaeuterung() {
                 return "only for testing";
             }
-            @Override
             public int byteAdresse() {
                 return 100;
             }
-            @Override
             public int anzahlBytes() {
                 return 1;
             }
-            @Override
             public Align align() {
                 return null;
             }

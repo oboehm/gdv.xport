@@ -39,7 +39,7 @@
       <subsection name="Repository">
         <p>
           Das entsprechende Repository
-          <a href="http://labs.agentes.de/repository/">repository.agentes.de</a>
+          <a href="http://labs.agentes.de/repository/">labs.agentes.de/repository</a>
           tr&#228;gt man entweder in sein lokales <tt>settings.xml</tt> (unter
           $HOME/.m2 zu finden) oder ebenfalls in sein <tt>pom.xml</tt>
           unter &lt;repositories&gt; ... &lt;/repositories&gt; ein:
@@ -49,7 +49,7 @@
     <repository>
       <id>agentes</id>
       <name>agentes Repository</name>
-      <url>http://repository.agentes.de</url>
+      <url>http://labs.agentes.de/repository</url>
     </repository>
   </repositories>
 ]]></source>
