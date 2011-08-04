@@ -17,7 +17,7 @@
 
   <body>
 
-    <release version="0.6.1-SNAPSHOT" date="Aug-2011"
+    <release version="0.6.1" date="04-Aug-2011"
              description="Aktualisierung Dokumentation">
       <action dev="oboehm" type="fix" date="02-Aug-2011" >
         Fehlerhafter Link zum Download korrigiert.

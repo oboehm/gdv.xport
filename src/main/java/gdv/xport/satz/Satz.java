@@ -309,12 +309,7 @@ public abstract class Satz {
      * @return das gesuchte Feld
      * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
-    public Feld getFeld(final Enum<?> feld) {
-//        Feld f = getFeld(feld.name());
-//        if (f == Feld.NULL_FELD) {
-//            return getFeld(getAsBezeichner(feld));
-//        }
-//        return f;
+    public Feld getFeld(final Enum<?> feld) throws IllegalArgumentException {
         for (int i = 0; i < teildatensatz.length; i++) {
             try {
                 Feld x = teildatensatz[i].getFeld(feld);

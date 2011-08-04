@@ -45,7 +45,7 @@ public enum MyFeld210 {
     MEIN_VERTRAGS_BEGINN,
     
     /**
-     * Beispiel fuer ein alhpanumerisches Feld von Byte 93 - 95
+     * Beispiel fuer ein alhpanumerisches Feld von Byte 93 - 95.
      */
     @FeldInfo(
             teildatensatz = 1,

@@ -19,13 +19,12 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
-
-import java.io.*;
-import java.util.*;
-
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.util.SatzFactory;
+
+import java.io.*;
+import java.util.List;
 
 /**
  * The Class Datensatz.

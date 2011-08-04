@@ -153,7 +153,8 @@ public class SatzX extends Datensatz {
         return new ArrayList<Teildatensatz>(tdsMap.values());
     }
 
-    private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart, final Class<? extends Enum<?>> enumClass) {
+    private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart,
+            final Class<? extends Enum<?>> enumClass) {
         Enum<?>[] constants = enumClass.getEnumConstants();
         return getTeildatensaetzeFor(satzart, constants);
     }

@@ -74,7 +74,7 @@ public final class JavaFormatter extends AbstractFormatter {
      *
      * @param writer the writer
      */
-    public JavaFormatter(Writer writer) {
+    public JavaFormatter(final Writer writer) {
         super(writer);
     }
 
@@ -83,7 +83,7 @@ public final class JavaFormatter extends AbstractFormatter {
      * 
      * @param ostream the ostream
      */
-    public JavaFormatter(OutputStream ostream) {
+    public JavaFormatter(final OutputStream ostream) {
         super(ostream);
     }
 
