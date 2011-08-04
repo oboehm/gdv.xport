@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="0.6.2-SNAPSHOT" date="2012"
+             description="Prophezeiung der Maja">
+      <action dev="oboehm" type="fix" date="04-Aug-2011" >
+        Beginn mit n&#228;chstem Snapshot.
+      </action>
+    </release>
+
     <release version="0.6.1" date="04-Aug-2011"
              description="Aktualisierung Dokumentation">
       <action dev="oboehm" type="fix" date="02-Aug-2011" >

@@ -69,6 +69,7 @@
             Anschlie&#223;end target/site nach
             http://labs.agentes.de/repository/gdv/gdv-xport/site/...
             kopieren
+            ('scp -P 8022 -r site repository.h.a:/var/www/gdv.xport')
           </td>
         </tr>
         <tr>
