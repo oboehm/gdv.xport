@@ -33,7 +33,7 @@
       <item name="agentes" href="http://www.agentes.de"/>
     </links>
     
-    <menu name="gdv.xport" href="index.html">
+    <menu name="gdv.xport">
       <item name="Release Notes"		    href="changes-report.html" />
       <item name="about gdv.xport"			href="index.html" />
       <item name="GDV-Format"				href="info.html" />
@@ -44,14 +44,14 @@
       <item name="Kontakt"					href="contact.html" />
       <item name="Download"                 href="downloads.html" />
     </menu>
-    <menu name="Anleitung" href="manual/index.html">
+    <menu name="Anleitung">
       <item name="Hello World"              href="manual/hello.html" />
       <item name="Der erste Import"         href="manual/import.html" />
       <item name="Das Hauptprogramm"        href="manual/main.html" />
       <item name="Export"                   href="manual/export.html" />
       <item name="Erweiterungen"            href="manual/extend.html" />
     </menu>
-    <menu name="Folien" href="slides/slides.html" >
+    <menu name="Folien">
       <item name="Kurz-&#220;bersicht"      href="slides/slides.html" />
     </menu>
 
