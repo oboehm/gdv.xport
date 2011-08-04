@@ -80,7 +80,7 @@ public class MyUnfallDatensatz extends SatzX {
      * importiert.
      * Seit 0.6 ist es moeglich, eine Enum-Klasse direkt zu registrieren. Daher
      * muss nicht mehr ein eigener Datensatz angelegt werden, so wie es hier
-     * gemacht werden.
+     * noch gemacht wird.
      *
      * @param args werden ignoriert
      * @throws IOException falls z.B. keine Netzverbindung da ist
