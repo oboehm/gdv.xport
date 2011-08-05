@@ -14,6 +14,12 @@
         gdv.xport kann als normale Jar-Datei &#252;ber
         <a href="http://labs.agentes.de/repository/gdv/gdv-xport/">http://labs.agentes.de/repository/gdv/gdv-xport/</a>
         heruntergeladen werden.
+        Die Sourcen und Api-Dokumentation finden sich normalerweise in der dazuge&#0246;rigen
+        <tt>sources.jar</tt>- und <tt>javadoc.jar</tt>-Datei.
+        Sollten diese Dateien fehlen, finden Sie die Sourcen auch unter
+        <a href="http://github.com/oboehm/gdv.xport">github.com/oboehm/gdv.xport</a>
+        und die Api-Dokumentation unter
+        <a href="project-reports.html">Projektberichte</a>.
       </p>
     </section>
     
