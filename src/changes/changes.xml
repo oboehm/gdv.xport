@@ -17,7 +17,14 @@
 
   <body>
 
-    <release version="0.6.2-SNAPSHOT" date="31-Aug-2012"
+    <release version="0.6.3-SNAPSHOT" date="2013"
+             description="Bug-Fixing">
+      <action dev="oboehm" type="fix" date="31-Aug-2011" >
+        Beginn mit n&#228;chstem Snapshot.
+      </action>
+    </release>
+
+    <release version="0.6.2" date="31-Aug-2012"
              description="Maven3-Anpassungen f&#252;r Projekt-Reports">
       <action dev="oboehm" type="fix" date="31-Aug-2011" >
         Fehlende Projekt-Reports werden jetzt wieder generiert.
