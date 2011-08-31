@@ -63,6 +63,12 @@
           <locales>de</locales>
           <outputEncoding>UTF-8</outputEncoding>
           <reportPlugins>
+              <!-- Project Reports (like dependencies) -->
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.4</version>
+              </plugin>
               <!-- Java Cross Reference Listing -->
               <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

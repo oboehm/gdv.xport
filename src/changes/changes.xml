@@ -19,8 +19,8 @@
 
     <release version="0.6.2-SNAPSHOT" date="2012"
              description="Prophezeiung der Maja">
-      <action dev="oboehm" type="fix" date="04-Aug-2011" >
-        Beginn mit n&#228;chstem Snapshot.
+      <action dev="oboehm" type="fix" date="31-Aug-2011" >
+        Fehlende Projekt-Reports werden jetzt wieder generiert.
       </action>
     </release>
 
