@@ -11,7 +11,7 @@
   <groupId>gdv</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>jar</packaging>
-  <version>0.6.2-SNAPSHOT</version>
+  <version>0.6.2</version>
   <name>GDV-Xport</name>
   <url>http://labs.agentes.de/gdv.xport/</url>
   <organization>
@@ -570,8 +570,8 @@
   <developers>
     <developer>
       <name>Oliver Boehm</name>
-      <id>boehm</id>
-      <email>oliver.boehm@agentes.de</email>
+      <id>oboehm</id>
+      <email>oliver.boehm@gmail.com</email>
       <organization>agentes Labs</organization>
       <roles>
         <role>Java Developer</role>
@@ -609,7 +609,7 @@
         <sendOnSuccess>false</sendOnSuccess>
         <sendOnWarning>false</sendOnWarning>
         <configuration>
-          <address>oliver.boehm@agentes.de</address>
+          <address>oliver.boehm@gmail.com</address>
         </configuration>
       </notifier>
     </notifiers>
