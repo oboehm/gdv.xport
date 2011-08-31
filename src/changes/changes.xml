@@ -17,10 +17,13 @@
 
   <body>
 
-    <release version="0.6.2-SNAPSHOT" date="2012"
-             description="Prophezeiung der Maja">
+    <release version="0.6.2-SNAPSHOT" date="31-Aug-2012"
+             description="Maven3-Anpassungen f&#252;r Projekt-Reports">
       <action dev="oboehm" type="fix" date="31-Aug-2011" >
         Fehlende Projekt-Reports werden jetzt wieder generiert.
+      </action>
+      <action dev="oboehm" type="fix" date="31-Aug-2011" >
+        Checkstyle-Warnungen reduziert.
       </action>
     </release>
 

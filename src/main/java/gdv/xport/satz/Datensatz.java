@@ -21,7 +21,6 @@ package gdv.xport.satz;
 import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
-import gdv.xport.util.SatzFactory;
 
 import java.io.*;
 import java.util.List;
@@ -49,7 +48,7 @@ public class Datensatz extends Satz {
 
     /**
      * Default-Konstruktor (wird zur Registrierung bei der
-     * {@link SatzFactory} benoetigt).
+     * {@link gdv.xport.util.SatzFactory} benoetigt).
      * 
      * @since 0.6
      */

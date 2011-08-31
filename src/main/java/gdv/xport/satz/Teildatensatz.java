@@ -188,7 +188,7 @@ public final class Teildatensatz extends Satz {
      * @return das gesuchte Feld
      * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
-    public Feld getFeld(final Enum<?> feldX) {
+    public Feld getFeld(final Enum<?> feldX) throws IllegalArgumentException {
         Feld found = datenfelder.get(feldX);
         if (found == null) {
             found = getFeld(feldX.name());
