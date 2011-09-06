@@ -163,6 +163,7 @@ public final class SatzFactory {
         assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
         assert (0 <= sparte) && (sparte <= 999)    : "Sparte muss zwischen 0 und 999 liegen";
         int key = getAsKey(satzart, sparte);
+        registeredDatensatzClasses.remove(key);
         registeredEnumClasses.put(key, enumClass);
     }
 
@@ -175,8 +176,9 @@ public final class SatzFactory {
      * @since 0.2
      */
     public static void unregister(final int satzart, final int sparte) {
-        registeredDatensatzClasses.remove(getAsKey(satzart, sparte));
-        registeredEnumClasses.remove(getAsKey(satzart, sparte));
+        int key = getAsKey(satzart, sparte);
+        registeredDatensatzClasses.remove(key);
+        registeredEnumClasses.remove(key);
     }
 
     /**

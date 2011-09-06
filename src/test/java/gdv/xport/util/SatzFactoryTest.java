@@ -242,6 +242,26 @@ public final class SatzFactoryTest extends AbstractTest {
         log.info(n + " Satzarten supported");
         assertTrue("only " + n + " Datensaetze supported", n > 5);
     }
+    
+    /**
+     * Das Registrieren/Deregistrieren von Enum-Saetzen scheint nicht richtig
+     * zu funktionieren. Dies wird mit diesem Test nachgestellt
+     * (s. Issue 1).
+     * 
+     * @since 0.6.3
+     */
+    @Test
+    public void testIssue1() {
+        Datensatz satz = SatzFactory.getDatensatz(210, 30);
+        assertEquals(Satz210.class, satz.getClass());
+        try {
+            SatzFactory.registerEnum(MyFeld210.class, 210, 30);
+            satz = SatzFactory.getDatensatz(210, 30);
+            assertNotSame(Satz210.class, satz.getClass());
+        } finally {
+            SatzFactory.register(Satz210.class, 210, 30);
+        }
+    }
 
 }
 
