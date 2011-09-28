@@ -17,7 +17,7 @@
 
   <body>
 
-    <release version="0.6.3-SNAPSHOT" date="2013"
+    <release version="0.6.3" date="01-Okt-2011"
              description="Bug-Fixing">
       <action dev="oboehm" type="fix" issue="1" date="06-Sep-2011" >
         Registrierung eines neuen Datensatzes oder Enums
