@@ -26,6 +26,7 @@ import gdv.xport.satz.*;
 
 import java.io.*;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
@@ -192,8 +193,12 @@ public final class DatenpaketTest {
     public void testImportFromHTTP() throws IOException {
         URL url = new URL(
                 "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
-        datenpaket.importFrom(url);
-        assertTrue(datenpaket.isValid());
+        try {
+            datenpaket.importFrom(url);
+            assertTrue(datenpaket.isValid());
+        } catch (UnknownHostException mayhappen) {
+            log.warn("Offline? Import von " + url + " abgebrochen!", mayhappen);
+        }
     }
     
     /**

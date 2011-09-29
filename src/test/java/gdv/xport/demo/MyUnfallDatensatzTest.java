@@ -26,9 +26,12 @@ import gdv.xport.util.SatzFactory;
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.UnknownHostException;
 
 import javax.xml.stream.XMLStreamException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.*;
 import org.junit.runner.RunWith;
 
@@ -43,6 +46,8 @@ import patterntesting.runtime.annotation.IntegrationTest;
  */
 @RunWith(ParallelRunner.class)
 public final class MyUnfallDatensatzTest {
+    
+    private static final Log log = LogFactory.getLog(MyUnfallDatensatzTest.class);
 
     /**
      * Registriert MyUnfallDatensatz und importiert dann zu Testzwecken
@@ -88,10 +93,15 @@ public final class MyUnfallDatensatzTest {
      * @throws XMLStreamException bei fehlerhaftem XML
      * @throws IOException falls die URL nicht erreicht werden kann
      */
+    @SuppressWarnings("restriction")
     @Test
     @IntegrationTest
     public void testMain() throws IOException, XMLStreamException {
-        MyUnfallDatensatz.main(new String[] {});
+        try {
+            MyUnfallDatensatz.main(new String[] {});
+        } catch (UnknownHostException mayhappen) {
+            log.warn("Offline? testMain() abgebrochen!", mayhappen);
+        }
     }
     
     /**
