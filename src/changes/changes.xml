@@ -19,7 +19,7 @@
 
     <release version="0.6.3" date="01-Okt-2011"
              description="Bug-Fixing">
-      <action dev="oboehm" type="fix" issue="1" date="06-Sep-2011" >
+      <action dev="oboehm" type="fix" issue="issues/1" date="06-Sep-2011" >
         Registrierung eines neuen Datensatzes oder Enums
         &#252;berschreibt jetzt die alte Einstellung
         (https://github.com/oboehm/gdv.xport/issues/1).
