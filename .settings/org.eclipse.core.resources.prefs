@@ -1,4 +1,4 @@
-#Sun Jul 17 13:44:59 CEST 2011
+#Thu Oct 13 08:10:19 CEST 2011
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/java/gdv/xport/satz/feld/Feld200.java=UTF-8
@@ -7,3 +7,4 @@ encoding//src/main/resources/gdv/xport/util/template.html=ISO-8859-1
 encoding//src/test/java=UTF-8
 encoding//src/test/resources=UTF-8
 encoding//src/test/resources/musterdatei_041222.txt=ISO-8859-1
+encoding/<project>=UTF-8

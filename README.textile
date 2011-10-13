@@ -10,4 +10,5 @@ Fuer Ruby gibt es "OpenGDV":https://github.com/vendis/opengdv/, einer Open-Sourc
 
 h2. Weitere Infos
 
-Weitere Infos zu gdv.xport finden sich unter "labs.agentes.de/gdv.xport":http://labs.agentes.de/gdv.xport
+Weitere Infos zu gdv.xport finden sich unter "labs.agentes.de/gdv.xport":http://labs.agentes.de/gdv.xport.
+Unter "oboehm.github.com/gdv.xport/":http://oboehm.github.com/gdv.xport/ befindet sich derzeit eine Projekt-Seite im Aufbau, die weitere Informationen zu gdv.xport enthaelt.

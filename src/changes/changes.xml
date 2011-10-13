@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="0.7.0-SNAPSHOT" date="2012"
+             description="Wiederverwendung von Feld-Definitionen">
+      <action dev="oboehm" type="update" date="04-Okt-2011" >
+        Beginn mit n&#228;chstem Snapshot.
+      </action>
+    </release>
+
     <release version="0.6.3" date="01-Okt-2011"
              description="Bug-Fixing">
       <action dev="oboehm" type="fix" issue="issues/1" date="06-Sep-2011" >
@@ -26,7 +33,7 @@
       </action>
     </release>
 
-    <release version="0.6.2" date="31-Aug-2012"
+    <release version="0.6.2" date="31-Aug-2011"
              description="Maven3-Anpassungen f&#252;r Projekt-Reports">
       <action dev="oboehm" type="fix" date="31-Aug-2011" >
         Fehlende Projekt-Reports werden jetzt wieder generiert.
@@ -100,7 +107,7 @@
         Update auf PatternTesting 1.0.1
       </action>
       <action dev="oboehm" type="update" date="8-Feb-2010" >
-        JUnit-Tests f&#252;r io-Package hinzugeff&#252;t.
+        JUnit-Tests f&#252;r io-Package hinzugef&#252;gt.
       </action>
     </release>
 

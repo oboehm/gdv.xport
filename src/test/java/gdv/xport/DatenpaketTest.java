@@ -18,29 +18,55 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.*;
-import static org.junit.Assert.*;
+import static gdv.xport.feld.Bezeichner.VERSION_NACHSATZ;
+import static gdv.xport.feld.Bezeichner.VERSION_VORSATZ;
+import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.Adressteil;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Nachsatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.net.URL;
 import java.net.UnknownHostException;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.annotation.SkipTestOn;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * JUnit-Test fuer Datenpaket.
+ * Um die Import- oder Export-Tests auszublenden, koennen beim Aufruf die
+ * Optionen
+ * <ul>
+ *  <li>-DSKIP_IMPORT_TEST</li>
+ *  <li>-DSKIP_EXPORT_TEST</li>
+ * </ul>
+ * angegeben werden. Entsprechend beide Properties sind zu setzen, wenn
+ * beides, Import- und Export-Tests, ausgeblendet werden sollen.
  *
  * @author oliver
  * @since 23.10.2009
@@ -60,6 +86,7 @@ public final class DatenpaketTest {
      * @throws IOException falls z.B. die Platte voll ist
      */
     @Test
+    @SkipTestOn(property="SKIP_EXPORT_TEST")
     public void testEmptyExport() throws IOException {
         Datenpaket empty = new Datenpaket();
         StringWriter swriter = new StringWriter(1024);
@@ -87,6 +114,7 @@ public final class DatenpaketTest {
      *             falls Temp-Datei nicht angelegt werden kann.
      */
     @Test
+    @SkipTestOn(property="SKIP_EXPORT_TEST")
     public void testExportFile() throws IOException {
         datenpaket.setAdressat("Test-Adressat");
         datenpaket.setVermittler("845/666666");
@@ -158,6 +186,7 @@ public final class DatenpaketTest {
      */
     @IntegrationTest
     @Test
+    @SkipTestOn(property="SKIP_IMPORT_TEST")
     public void testImportFromReader() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
         try {
@@ -175,6 +204,7 @@ public final class DatenpaketTest {
      */
     @IntegrationTest
     @Test
+    @SkipTestOn(property="SKIP_IMPORT_TEST")
     public void testImportFromURL() throws IOException {
         URL url = this.getClass().getResource("/musterdatei_041222.txt");
         datenpaket.importFrom(url);
@@ -190,6 +220,7 @@ public final class DatenpaketTest {
      */
     @IntegrationTest
     @Test
+    @SkipTestOn(property="SKIP_IMPORT_TEST")
     public void testImportFromHTTP() throws IOException {
         URL url = new URL(
                 "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
@@ -210,6 +241,7 @@ public final class DatenpaketTest {
      */
     @IntegrationTest
     @Test
+    @SkipTestOn(property = { "SKIP_IMPORT_TEST", "SKIP_EXPORT_TEST" })
     public void testImportExport() throws IOException {
         Config.setEOD("\n");
         String muster = getResourceAsString("/musterdatei_041222.txt");
@@ -220,8 +252,14 @@ public final class DatenpaketTest {
         checkExportWith(muster);
     }
     
-    @IntegrationTest
+    /**
+     * Hier wird die Import-Datei getestet, die mir Igor geschickt hat und
+     * mit der es anfangs Probleme gab.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
+    @SkipTestOn(property="SKIP_IMPORT_TEST")
     public void testImportIgor() throws IOException {
         Config.setEOD("\n");
         String content = getResourceAsString("/igor_110120.txt");
