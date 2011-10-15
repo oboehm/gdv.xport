@@ -11,7 +11,7 @@
   <groupId>gdv</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>jar</packaging>
-  <version>0.6.4-SNAPSHOT</version>
+  <version>0.7.0-SNAPSHOT</version>
   <name>GDV-Xport</name>
   <url>http://labs.agentes.de/gdv.xport/</url>
   <organization>
@@ -287,22 +287,22 @@
           Build should fail if FindBugs reports an error
           see http://mojo.codehaus.org/findbugs-maven-plugin/examples/violationChecking.html
        -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <configuration>
-          <effort>Max</effort>
-          <threshold>Normal</threshold>
-          <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+<!--       <plugin> -->
+<!--         <groupId>org.codehaus.mojo</groupId> -->
+<!--         <artifactId>findbugs-maven-plugin</artifactId> -->
+<!--         <configuration> -->
+<!--           <effort>Max</effort> -->
+<!--           <threshold>Normal</threshold> -->
+<!--           <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile> -->
+<!--         </configuration> -->
+<!--         <executions> -->
+<!--           <execution> -->
+<!--             <goals> -->
+<!--               <goal>check</goal> -->
+<!--             </goals> -->
+<!--           </execution> -->
+<!--         </executions> -->
+<!--       </plugin> -->
 
   	</plugins>
   	
