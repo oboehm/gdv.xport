@@ -111,7 +111,9 @@ public final class Main {
             printHelp(options);
             System.exit(1);
         } finally {
-            ostream.close();
+            if (ostream != null) {
+                ostream.close();
+            }
         }
     }
 
