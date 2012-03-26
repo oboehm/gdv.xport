@@ -283,27 +283,6 @@
       </plugin>
   	   -->
       
-      <!-- 
-          Build should fail if FindBugs reports an error
-          see http://mojo.codehaus.org/findbugs-maven-plugin/examples/violationChecking.html
-       -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <configuration>
-          <effort>Max</effort>
-          <threshold>Normal</threshold>
-          <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
   	</plugins>
   	
   </build>
@@ -609,6 +588,40 @@
       </notifier>
     </notifiers>
   </ciManagement>
+  
+  <profiles>
+    <!-- 
+        for releases we have higher quality requirements
+     -->
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <!-- 
+              Build should fail if FindBugs reports an error
+              see http://mojo.codehaus.org/findbugs-maven-plugin/examples/violationChecking.html
+           -->
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>findbugs-maven-plugin</artifactId>
+            <configuration>
+              <effort>Max</effort>
+              <threshold>Normal</threshold>
+              <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    
+  </profiles>
 
   <!-- 
   	  (possible) additional repositories:
