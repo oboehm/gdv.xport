@@ -19,8 +19,12 @@
 
     <release version="0.7.0-SNAPSHOT" date="2012"
              description="Wiederverwendung von Feld-Definitionen">
+      <action dev="oboehm" type="update" date="8-Jul-2012" >
+        groupId changed to com.github.gdv to fullfil requirements
+        for https://issues.sonatype.org/browse/OSSRH-3883
+      </action>
       <action dev="oboehm" type="update" date="11-Jan-2012" >
-        Update auf PatternTesting 1.2.0 zur Test-Parallelisierung
+        Update auf PatternTesting 1.2 zur Test-Parallelisierung
         (ParallelSuite).
       </action>
       <action dev="oboehm" type="update" date="04-Okt-2011" >
