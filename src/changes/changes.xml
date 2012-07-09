@@ -19,8 +19,8 @@
 
     <release version="0.7.0-SNAPSHOT" date="2012"
              description="Wiederverwendung von Feld-Definitionen">
-      <action dev="oboehm" type="update" date="8-Jul-2012" >
-        groupId changed to com.github.gdv to fullfil requirements
+      <action dev="oboehm" type="update" date="9-Jul-2012" >
+        groupId changed to com.github.oboehm to fullfil requirements
         for https://issues.sonatype.org/browse/OSSRH-3883
       </action>
       <action dev="oboehm" type="update" date="11-Jan-2012" >
