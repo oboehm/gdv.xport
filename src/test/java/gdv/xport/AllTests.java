@@ -18,7 +18,10 @@
 
 package gdv.xport;
 
+import gdv.xport.config.ConfigTest;
+import gdv.xport.demo.MyUnfallDatensatzTest;
 import gdv.xport.feld.FeldTests;
+import gdv.xport.io.ImportExceptionTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
@@ -33,9 +36,8 @@ import patterntesting.concurrent.junit.ParallelSuite;
  * @since 0.7 (11.01.2012)
  */
 @RunWith(ParallelSuite.class)
-@SuiteClasses({ FeldTests.class, BasisTest.class, DatenpaketTest.class, MainTest.class })
-//@RunWith(ParallelSuite.class)
-//@SuiteClasses({ FeldTests.class, DatenpaketTest.class })
+@SuiteClasses({ ConfigTest.class, MyUnfallDatensatzTest.class, FeldTests.class, ImportExceptionTest.class,
+        BasisTest.class, DatenpaketTest.class, MainTest.class })
 public class AllTests {
 
 }
