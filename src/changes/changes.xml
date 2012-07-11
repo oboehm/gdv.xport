@@ -19,9 +19,12 @@
 
     <release version="0.7.0-SNAPSHOT" date="2012"
              description="Wiederverwendung von Feld-Definitionen">
+      <action dev="oboehm" type="update" date="11-Jul-2012" >
+        Tests parallelisiert und ConcurrentModificationExceptions behoben.
+      </action>
       <action dev="oboehm" type="update" date="9-Jul-2012" >
-        groupId changed to com.github.oboehm to fullfil requirements
-        for https://issues.sonatype.org/browse/OSSRH-3883
+        groupId ge&#228;ndert zu com.github.oboehm, um Anforderung von
+        https://issues.sonatype.org/browse/OSSRH-3883n zu erf&#252;llen.
       </action>
       <action dev="oboehm" type="update" date="11-Jan-2012" >
         Update auf PatternTesting 1.2 zur Test-Parallelisierung

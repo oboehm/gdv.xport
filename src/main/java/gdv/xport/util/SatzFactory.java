@@ -25,6 +25,7 @@ import gdv.xport.satz.model.*;
 import java.io.IOException;
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.logging.*;
 
@@ -46,7 +47,7 @@ public final class SatzFactory {
     
     /** The registered datensatz classes. */
     private static final Map<Integer, Class<? extends Datensatz>> registeredDatensatzClasses =
-        new HashMap<Integer, Class<? extends Datensatz>>();
+        new ConcurrentHashMap<Integer, Class<? extends Datensatz>>();
     
     /** The registered Enum classes. */
     private static final Map<Integer, Class<? extends Enum<?>>> registeredEnumClasses =
