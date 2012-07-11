@@ -41,17 +41,6 @@ public class DatensatzTest extends AbstractSatzTest {
     private static final Log log = LogFactoryImpl.getLog(DatensatzTest.class);
 
     /**
-     * Zum Testen deaktivieren wir das Zeilenende fuer jeden
-     * exportierten Satz.
-     * 
-     * @since 0.5.0
-     */
-    @BeforeClass
-    public static void setUpBeforeClass() {
-        Config.setEOD("");
-    }
-
-    /**
      * Test method for {@link gdv.xport.satz.Datensatz#Datensatz(java.lang.String, int)}.
      * @throws IOException falls der Export schief gegangen ist
      */

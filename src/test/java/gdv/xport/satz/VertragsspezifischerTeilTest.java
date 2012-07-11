@@ -121,7 +121,7 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
         Feld vertragsstatus = vertragsteil.getFeld(VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         StringWriter swriter = new StringWriter(256);
-        vertragsteil.export(swriter);
+        vertragsteil.export(swriter, "");
         assertEquals(input, swriter.toString());
     }
     

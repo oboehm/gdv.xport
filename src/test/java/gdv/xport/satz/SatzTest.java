@@ -120,7 +120,7 @@ public final class SatzTest {
     @Test
     public void testExport() throws IOException {
         StringWriter swriter = new StringWriter(256);
-        satz.export(swriter);
+        satz.export(swriter, "");
         swriter.close();
         String content = swriter.toString();
         assertEquals(256, content.length());
@@ -147,7 +147,7 @@ public final class SatzTest {
         x.importFrom(sbuf.toString());
         assertEquals(123, x.getSatzart());
         assertEquals("Hello", x.getFeld("F1").getInhalt());
-        assertEquals(sbuf.toString(), x.toLongString());
+        assertEquals(sbuf.toString().trim(), x.toLongString().trim());
     }
 
     /**

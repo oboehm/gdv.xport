@@ -231,6 +231,15 @@ public final class Teildatensatz extends Satz {
      */
     @Override
     public void export(final Writer writer) throws IOException {
+        String eod = Config.hasEOD() ? Config.getEOD() : "";
+        export(writer, eod);
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#export(java.io.Writer, java.lang.String)
+     */
+    @Override
+    public void export(final Writer writer, final String eod) throws IOException {
         StringBuffer data = new StringBuffer(256);
         for (int i = 0; i < 256; i++) {
             data.append(' ');
@@ -244,9 +253,7 @@ public final class Teildatensatz extends Satz {
         }
         assert data.length() == 256 : "Teildatensatz ist nicht 256 Bytes lang";
         writer.write(data.toString());
-        if (Config.hasEOD()) {
-            writer.write(Config.getEOD());
-        }
+        writer.write(eod);
     }
 
     /* (non-Javadoc)

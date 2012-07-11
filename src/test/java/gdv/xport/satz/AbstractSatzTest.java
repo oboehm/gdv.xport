@@ -18,14 +18,16 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
-
-import java.io.*;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
 import gdv.xport.feld.VUNummer;
 
-import org.apache.commons.logging.*;
+import java.io.IOException;
+import java.io.StringWriter;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.BeforeClass;
 
 /**
@@ -68,18 +70,15 @@ public class AbstractSatzTest {
     }
 
     private static String export(final Satz satz) throws IOException {
-        String eod = Config.getEOD();
-        Config.setEOD("");
         StringWriter swriter = new StringWriter(768);
-        satz.export(swriter);
+        satz.export(swriter, "");
         String data = swriter.toString();
-        Config.setEOD(eod);
         return data;
     }
     
     protected static void checkDatensatz(final Satz datensatz, final String expected) throws IOException {
         StringWriter swriter = new StringWriter(expected.length());
-        datensatz.export(swriter);
+        datensatz.export(swriter, "\n");
         swriter.close();
         assertEquals(expected, swriter.toString());
         assertTrue(datensatz.toShortString() + " is not valid", datensatz.isValid());

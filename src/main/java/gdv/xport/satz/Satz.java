@@ -413,6 +413,19 @@ public abstract class Satz {
     }
 
     /**
+     * Export.
+     *
+     * @param writer the writer
+     * @param eod das End-of-Datensatz- oder Trennzeichen (z.B. linefeed)
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public void export(final Writer writer, final String eod) throws IOException {
+        for (int i = 0; i < teildatensatz.length; i++) {
+            teildatensatz[i].export(writer, eod);
+        }
+    }
+
+    /**
      * @since 0.3
      * @param ostream z.B. System.out
      * @throws IOException falls mal was schief geht
