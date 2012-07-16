@@ -17,13 +17,13 @@
 
   <body>
 
-    <release version="0.7.0-SNAPSHOT" date="2012"
-             description="Wiederverwendung von Feld-Definitionen">
+    <release version="0.7.0" date="Jul-2012"
+             description="neue GroupId (com.github.oboehm)">
       <action dev="oboehm" type="update" date="11-Jul-2012" >
         Tests parallelisiert und ConcurrentModificationExceptions behoben.
       </action>
       <action dev="oboehm" type="update" date="9-Jul-2012" >
-        groupId ge&#228;ndert zu com.github.oboehm, um Anforderung von
+        GroupId ge&#228;ndert zu com.github.oboehm, um Anforderung von
         https://issues.sonatype.org/browse/OSSRH-3883n zu erf&#252;llen.
       </action>
       <action dev="oboehm" type="update" date="11-Jan-2012" >

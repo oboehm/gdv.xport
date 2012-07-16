@@ -11,34 +11,59 @@
 
     <section name="Download">
       <p>
-        gdv.xport kann als normale Jar-Datei &#252;ber
-        <a href="http://labs.agentes.de/repository/gdv/gdv-xport/">http://labs.agentes.de/repository/gdv/gdv-xport/</a>
-        heruntergeladen werden.
+      	gdv.xport kann als normal Jar-Datei aus dem Zentralen Maven-Repository unter
+      	<a href="">com/github/oboehm/gev-xport/</a> heruntergeladen werden.
         Die Sourcen und Api-Dokumentation finden sich normalerweise in der dazuge&#0246;rigen
         <tt>sources.jar</tt>- und <tt>javadoc.jar</tt>-Datei.
         Sollten diese Dateien fehlen, finden Sie die Sourcen auch unter
         <a href="http://github.com/oboehm/gdv.xport">github.com/oboehm/gdv.xport</a>
-        und die Api-Dokumentation unter
+        und die API-Dokumentation unter
         <a href="project-reports.html">Projektberichte</a>.
+      </p>
+      <p>
+      	Aeltere Versionen (vor 0.7.0) k&#0246;nnen &#252;ber
+        <a href="http://labs.agentes.de/repository/gdv/gdv-xport/">http://labs.agentes.de/repository/gdv/gdv-xport/</a>
+        heruntergeladen werden.
       </p>
     </section>
     
-    <section name="Einbindung in Maven">
+    <section name="Einbindung in Maven (ab 0.7)">
       <p>
-        Wer mit Maven arbeitet, findet das entsprechende Maven-Repository unter
+      	Ab Version 0.7.0 ist gdv.xport im Zentralen Maven-Repository zu finden.
+      	Hier reicht es, gdv.xport als zus&#228;tzliche Abh&#228;ngigkeit
+      	einzutragen.
+      </p>
+      <subsection name="Dependency">
+        <p>
+          Im Abschnitt "dependencies" wird als weitere Abh&#228;ngigkeit die
+          gdv.xport-Bibliothek eingetragen (hier f&#252;r die Version 0.7.0):
+        </p>
+<source><![CDATA[
+    <dependency>
+      <groupId>com.github.com</groupId>
+      <artifactId>gdv-xport</artifactId>
+      <version>0.7.0</version>
+    </dependency>
+]]></source>
+      </subsection>
+    </section>
+    
+    <section>
+      <p>
+        F&#228;r Versionen vor 0.7.0 findet sich das entsprechende Maven-Repository unter
         <a href="http://labs.agentes.de/repository/">http://labs.agentes.de/repository/</a>.
         Folgende Angaben sind dazu im pom.xml f&#228;llig:
       </p>
       <subsection name="Dependency">
         <p>
           Im Abschnitt "dependencies" wird als weitere Abh&#228;ngigkeit die
-          gdv.xport-Bibliothek eingetragen (hier f&#252;r die Version 0.1.0):
+          gdv.xport-Bibliothek eingetragen (hier f&#252;r die Version 0.6.2):
         </p>
 <source><![CDATA[
     <dependency>
       <groupId>gdv</groupId>
       <artifactId>gdv-xport</artifactId>
-      <version>0.1.0</version>
+      <version>0.6.2</version>
     </dependency>
 ]]></source>
       </subsection>

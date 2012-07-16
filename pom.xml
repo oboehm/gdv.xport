@@ -13,10 +13,10 @@
   <packaging>jar</packaging>
   <version>0.7.0-SNAPSHOT</version>
   <name>GDV-Xport</name>
-  <url>http://labs.agentes.de/gdv.xport/</url>
+  <url>http://www.aosd.de/gdv.xport/</url>
   <organization>
-    <name>agentes Labs</name>
-    <url>http://labs.agentes.de/</url>
+    <name>AOSD Labs</name>
+    <url>http://www.aosd.de/</url>
   </organization>
   <!-- see http://maven.apache.org/pom.html#Licenses -->
   <licenses>
@@ -546,7 +546,7 @@
       <name>Oliver Boehm</name>
       <id>oboehm</id>
       <email>oliver.boehm@gmail.com</email>
-      <organization>agentes Labs</organization>
+      <organization>T-Systems</organization>
       <roles>
         <role>Java Developer</role>
       </roles>
@@ -590,6 +590,7 @@
   </ciManagement>
   
   <profiles>
+
     <!-- 
         for releases we have higher quality requirements
      -->
@@ -617,22 +618,71 @@
               </execution>
             </executions>
           </plugin>
+          <!-- We want to sign the artifacts -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.4</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-install-plugin</artifactId>
+            <configuration>
+              <createChecksum>true</createChecksum>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-release-plugin</artifactId>
+            <configuration>
+              <!-- Pass these arguments to the deploy plugin. -->
+              <arguments>-Prelease</arguments>
+            </configuration>
+          </plugin>
+          <!-- see http://maven.apache.org/plugins/maven-changes-plugin/examples/changes-file-validation.html -->
+		  <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-changes-plugin</artifactId>
+			<executions>
+				<execution>
+					<id>validate-changes</id>
+					<phase>pre-site</phase>
+					<goals>
+						<goal>changes-validate</goal>
+					</goals>
+					<configuration>
+						<!--
+							if set to true the build will fail if the changes file is invalid,
+							if set to false warnings will be logged.
+						-->
+						<failOnError>true</failOnError>
+					</configuration>
+				</execution>
+			</executions>
+		  </plugin>   
         </plugins>
       </build>
     </profile>
     
   </profiles>
-
-  <!-- 
-  	  (possible) additional repositories:
-  	  http://source.valtech.com/repo/content/repositories/releases/
-   -->
-<!--  <repositories>-->
-<!--    <repository>-->
-<!--      <id>agentes</id>-->
-<!--      <name>agentes Repository</name>-->
-<!--      <url>http://labs.agentes.de/repository</url>-->
-<!--    </repository>-->
-<!--  </repositories>-->
 
 </project>

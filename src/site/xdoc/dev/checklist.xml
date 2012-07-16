@@ -16,60 +16,69 @@
       <table>
       	<tr>
           <th>Zeitpunkt</th>
-          <th>Prozess</th>
           <th>Aufgabe</th>
           <th>Anmerkungen</th>
         </tr>
         <tr>
           <td>vorher</td>
-          <td></td>
           <td>Release-Notes erstellen</td>
           <td>src/changes/changes.xml aktualisieren</td>
         </tr>
         <tr>
           <td>D-Day</td>
-          <td></td>
           <td>Versions-Nummer aktualisieren</td>
           <td>in pom.xml &#252;berall "-SNAPSHOT" entfernen</td>
         </tr>
         <tr>
           <td>D-Day</td>
-          <td></td>
-          <td>Finaler Release-Build und Release-Test</td>
-          <td>'mvn clean install source:jar javadoc:jar site' (beinhaltet auch 'mvn test')</td>
-        </tr>
-        <tr>
-          <td>D-Day</td>
-          <td></td>
-          <td>Auslieferung</td>
-          <td>
-            Hudson-Build starten starten und
-            Jar-Files unter
-            http://labs.agentes.de/repository/gdv/gdv-xport/0.x.x
-            kontrollieren
+          <td>Finaler Release-Build und Release-Test (inkl. Signierung)</td>
+          <td>baue alle Artefakte in patterntesting-parent
+            (<tt>mvn -B -Prelease clean install source:jar javadoc:jar gpg:sign -Dgpg.passphrase=xx</tt>);
+            vorher sollte man vielleicht noch die Speichergr&#246;&#223;e erh&#246;hen
+            (<tt>export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=256m"</tt>)
           </td>
         </tr>
         <tr>
           <td>D-Day</td>
-          <td></td>
+          <td>auf <a href="https://oss.sonatype.org/">oss.sonatype.org</a> hochladen</td>
+          <td>verwende das Skript <tt>bin/deploy.sh</tt>, um die Artefakte nach
+            <a href="https://oss.sonatype.org/">oss.sonatype.org</a>
+            hochzuladen (aber nicht vergessen, vorher noch die VERSION-Variable
+            in diesem Skript anzupassen).
+            <br/>
+            Wenn der Upload h&#228;ngenbleibt, kann man nach
+            <a href="https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide#SonatypeOSSMavenRepositoryUsageGuide-7b.StageExistingArtifacts">Stage Existing Artifacts</a>
+            vorgehen oder mal
+            <a href="https://docs.sonatype.org/display/Repository/Uploading+3rd-party+Artifacts+to+The+Central+Repository">Uploading 3rd-party Artifacts</a>
+            durchlesen.
+          </td>
+        </tr>
+        <tr>
+          <td>D-Day</td>
+          <td>Release ins Maven Central</td>
+          <td>nach dem Hochladen ins Staging-Repository
+            <a href="https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide#SonatypeOSSMavenRepositoryUsageGuide-8.ReleaseIt">release it</a>:
+            selektiere "Staging Repositories" auf
+            <a href="https://oss.sonatype.org/">oss.sonatype.org</a>, dr&#252;cke "Refresh"
+            und dann "Close" und "Release".
+          </td>
+        </tr>
+        <tr>
+          <td>D-Day</td>
           <td>Label setzen</td>
           <td>
-            git tag gdv-xport-0.5.1 (lokal)
+            git tag gdv-xport-0.7.0 (lokal)
             <br/>
-            git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-0.5.1 (remote)
+            git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-0.7.0 (remote)
           </td>
         </tr>
         <tr>
           <td>D-Day</td>
-          <td>offen</td>
           <td>Doku und Reports generieren</td>
           <td>'mvn site', danach Umlaute durch Ersatzdarstellung ersetzen
             ('java -cp ... patterntesting.tool.html.UmlautEncoder target/site'),
             um Darstellungsprobleme auszuschlie&#223;en.
-            Anschlie&#223;end target/site nach
-            http://labs.agentes.de/repository/gdv/gdv-xport/site/...
-            kopieren
-            ('scp -P 8022 -r site repository.h.a:/var/www/gdv.xport')
+            Anschlie&#223;end target/site auf Web-Seite kopieren
           </td>
         </tr>
         <tr>
@@ -80,9 +89,18 @@
         </tr>
         <tr>
           <td>nachher</td>
-          <td>offen</td>
           <td>Auslieferung bekanntmachen</td>
-          <td>Nachricht an R.K.</td>
+          <td>Nachricht in entsprechende Xing-Gruppe</td>
+        </tr>
+        <tr>
+          <td>nachher</td>
+          <td>Maven Central pr&#252;fen</td>
+          <td>nach ein paar Tagen:
+            &#252;berpr&#252;fen, ob die neue Version im
+            <a href="http://mirrors.ibiblio.org/pub/mirrors/maven2/com/github/oboehm/gdv-xport/">Patterntesting-Repository
+            auf iblibio.org</a>
+            angekommen ist
+          </td>
         </tr>
       </table>
     </section>
