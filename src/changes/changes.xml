@@ -24,7 +24,7 @@
       </action>
       <action dev="oboehm" type="update" date="9-Jul-2012" >
         GroupId ge&#228;ndert zu com.github.oboehm, um Anforderung von
-        https://issues.sonatype.org/browse/OSSRH-3883n zu erf&#252;llen.
+        https://issues.sonatype.org/browse/OSSRH-3883 zu erf&#252;llen.
       </action>
       <action dev="oboehm" type="update" date="11-Jan-2012" >
         Update auf PatternTesting 1.2 zur Test-Parallelisierung

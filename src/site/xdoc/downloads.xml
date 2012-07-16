@@ -16,12 +16,12 @@
         Die Sourcen und Api-Dokumentation finden sich normalerweise in der dazuge&#0246;rigen
         <tt>sources.jar</tt>- und <tt>javadoc.jar</tt>-Datei.
         Sollten diese Dateien fehlen, finden Sie die Sourcen auch unter
-        <a href="http://github.com/oboehm/gdv.xport">github.com/oboehm/gdv.xport</a>
+        <a href="https://github.com/oboehm/gdv.xport">github.com/oboehm/gdv.xport</a>
         und die API-Dokumentation unter
         <a href="project-reports.html">Projektberichte</a>.
       </p>
       <p>
-      	Aeltere Versionen (vor 0.7.0) k&#0246;nnen &#252;ber
+      	&#196;ltere Versionen (vor 0.7.0) k&#0246;nnen &#252;ber
         <a href="http://labs.agentes.de/repository/gdv/gdv-xport/">http://labs.agentes.de/repository/gdv/gdv-xport/</a>
         heruntergeladen werden.
       </p>
@@ -40,7 +40,7 @@
         </p>
 <source><![CDATA[
     <dependency>
-      <groupId>com.github.com</groupId>
+      <groupId>com.github.oboehm</groupId>
       <artifactId>gdv-xport</artifactId>
       <version>0.7.0</version>
     </dependency>
