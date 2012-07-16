@@ -8,12 +8,6 @@ h2. Aehnliche Projekte
 
 Fuer Ruby gibt es "OpenGDV":https://github.com/vendis/opengdv/, einer Open-Source-Bibliothek, die unter der MIT-License steht.
 
-h2. Wiki
+h2. eitere Infos
 
 Im "Wiki":https://github.com/oboehm/gdv.xport/wiki ist alles Wichtige zu gdv.xport zusammengefasst.
-
-h2. Weitere Infos
-
-Unter "oboehm.github.com/gdv.xport/":http://oboehm.github.com/gdv.xport/ befindet sich noch eine Uebersichts-Seite, die weitere Informationen zu gdv.xport enthaelt.
-
-Infos zu aelteren Versionen (< 0.6.3) finden sich unter "labs.agentes.de/gdv.xport":http://labs.agentes.de/gdv.xport.
