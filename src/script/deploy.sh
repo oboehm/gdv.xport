@@ -23,13 +23,11 @@ options="gpg:sign-and-deploy-file -Durl=$URL -DrepositoryId=sonatype-nexus-stagi
 deploy_jar_for() {
 	module=$1
 	echo deploying $module...
-	pushd ../$module
     mvn $options -DpomFile=target/$module-$VERSION.pom -Dfile=target/$module-$VERSION.jar
     mvn $options -DpomFile=target/$module-$VERSION.pom -Dfile=target/$module-$VERSION-sources.jar -Dclassifier=sources
     mvn $options -DpomFile=target/$module-$VERSION.pom -Dfile=target/$module-$VERSION-javadoc.jar -Dclassifier=javadoc
-    popd
     echo
 }
 
 # start deployment
-deploy_jar_for gdv.xport
+deploy_jar_for gdv-xport

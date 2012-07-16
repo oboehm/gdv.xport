@@ -17,7 +17,7 @@
 
   <body>
 
-    <release version="0.7.0" date="Jul-2012"
+    <release version="0.7.0" date="17-Jul-2012"
              description="neue GroupId (com.github.oboehm)">
       <action dev="oboehm" type="update" date="11-Jul-2012" >
         Tests parallelisiert und ConcurrentModificationExceptions behoben.

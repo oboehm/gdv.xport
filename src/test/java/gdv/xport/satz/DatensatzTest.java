@@ -18,16 +18,16 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.ANREDESCHLUESSEL;
+import static gdv.xport.feld.Bezeichner.INKASSOART;
 import static org.junit.Assert.assertEquals;
-import gdv.xport.config.Config;
 import gdv.xport.feld.AlphaNumFeld;
 
 import java.io.IOException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.impl.LogFactoryImpl;
-import org.junit.*;
+import org.junit.Test;
 
 /**
  * Gemeinsame Oberklasse fuer SatzTest.

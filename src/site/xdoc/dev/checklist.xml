@@ -41,7 +41,7 @@
         <tr>
           <td>D-Day</td>
           <td>auf <a href="https://oss.sonatype.org/">oss.sonatype.org</a> hochladen</td>
-          <td>verwende das Skript <tt>bin/deploy.sh</tt>, um die Artefakte nach
+          <td>verwende das Skript <tt>src/script/deploy.sh</tt>, um die Artefakte nach
             <a href="https://oss.sonatype.org/">oss.sonatype.org</a>
             hochzuladen (aber nicht vergessen, vorher noch die VERSION-Variable
             in diesem Skript anzupassen).
@@ -65,6 +65,15 @@
         </tr>
         <tr>
           <td>D-Day</td>
+          <td>Doku und Reports generieren</td>
+          <td>'mvn -Dpatterntesting.integrationTest clean site', danach Umlaute durch Ersatzdarstellung ersetzen
+            ('java -cp ... patterntesting.tool.html.UmlautEncoder target/site'),
+            um Darstellungsprobleme auszuschlie&#223;en.
+            Anschlie&#223;end target/site auf Web-Seite kopieren
+          </td>
+        </tr>
+        <tr>
+          <td>D-Day</td>
           <td>Label setzen</td>
           <td>
             git tag gdv-xport-0.7.0 (lokal)
@@ -73,17 +82,7 @@
           </td>
         </tr>
         <tr>
-          <td>D-Day</td>
-          <td>Doku und Reports generieren</td>
-          <td>'mvn site', danach Umlaute durch Ersatzdarstellung ersetzen
-            ('java -cp ... patterntesting.tool.html.UmlautEncoder target/site'),
-            um Darstellungsprobleme auszuschlie&#223;en.
-            Anschlie&#223;end target/site auf Web-Seite kopieren
-          </td>
-        </tr>
-        <tr>
           <td>nachher</td>
-          <td></td>
           <td>Beginn mit n&#228;chstem Snapshot</td>
           <td>pom.xml: Version hochz&#228;hlen, "-SNAPSHOT" anh&#228;ngen</td>
         </tr>

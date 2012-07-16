@@ -19,6 +19,10 @@
     <Bug pattern="NP_NULL_PARAM_DEREF_ALL_TARGETS_DANGEROUS" />
   </Match>
   <Match>
+  	<!-- disabled because we want to use default encoding -->
+    <Bug pattern="DM_DEFAULT_ENCODING" />
+  </Match>
+  <Match>
     <Class name="gdv.xport.util.AbstractFormatter" />
     <Method name="setWriter" />
     <Bug pattern="OBL_UNSATISFIED_OBLIGATION" />

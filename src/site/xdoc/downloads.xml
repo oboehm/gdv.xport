@@ -11,8 +11,9 @@
 
     <section name="Download">
       <p>
-      	gdv.xport kann als normal Jar-Datei aus dem Zentralen Maven-Repository unter
-      	<a href="">com/github/oboehm/gev-xport/</a> heruntergeladen werden.
+      	gdv.xport kann als normal Jar-Datei aus dem 
+      	<a href="http://repo1.maven.org/maven2/">Zentralen Maven-Repository</a> unter
+      	<a href="http://repo1.maven.org/maven2/com/github/gdv-xport/">com/github/oboehm/gdv-xport/</a> heruntergeladen werden.
         Die Sourcen und Api-Dokumentation finden sich normalerweise in der dazuge&#0246;rigen
         <tt>sources.jar</tt>- und <tt>javadoc.jar</tt>-Datei.
         Sollten diese Dateien fehlen, finden Sie die Sourcen auch unter
@@ -48,7 +49,7 @@
       </subsection>
     </section>
     
-    <section>
+    <section name="Einbindung in Maven (bis 0.6.3)">
       <p>
         F&#228;r Versionen vor 0.7.0 findet sich das entsprechende Maven-Repository unter
         <a href="http://labs.agentes.de/repository/">http://labs.agentes.de/repository/</a>.
