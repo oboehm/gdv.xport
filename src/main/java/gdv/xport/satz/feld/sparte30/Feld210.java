@@ -40,7 +40,6 @@ public enum Feld210 {
     @FelderInfo(type = VertragsStatus.class)
     VERTRAGSSTATUS,
 
-
     /**
      * Allgemeine Versicherungsbedingungen.
      */
