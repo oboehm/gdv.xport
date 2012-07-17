@@ -19,6 +19,10 @@
 
     <release version="0.7.1" date="17-Jul-2012"
              description="neue GroupId (com.github.oboehm)">
+      <action dev="oboehm" type="add" date="17-Jul-2012" >
+        @FelderInfo hinzugef&#252;gt, um gemeinsame FeldInfos
+        herausziehen zu k&#246;nnen.
+      </action>
       <action dev="oboehm" type="remove" date="17-Jul-2012" >
         SpartenspezifischerTeil-Klasse als deprecated markiert
         und SpartenspezifischerTeilTest entfernt.

@@ -19,7 +19,9 @@
 package gdv.xport.satz.feld.sparte51;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
+import gdv.xport.satz.feld.common.Satz220Teil2;
 
 
 /**
@@ -402,103 +404,7 @@ public enum Feld220 {
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
-    /**
-     * Produktkennung.
-     */
-    @FeldInfo(
-            teildatensatz = 2,
-            nr = 8,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 20,
-            byteAdresse = 43
-    )
-    PRODUKTKENNUNG,
-
-    /**
-     * Versicherte Gefahren.
-     */
-    @FeldInfo(
-            teildatensatz = 2,
-            nr = 9,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 30,
-            byteAdresse = 63
-    )
-    VERSICHERTE_GEFAHREN,
-
-    /**
-     * Selbstbeteiligung in % (3,2 Stellen).
-     */
-    @FeldInfo(
-            teildatensatz = 2,
-            nr = 10,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
-            anzahlBytes = 5,
-            byteAdresse = 93
-    )
-    SELBSTBETEILIGUNG_IN_PROZENT,
-
-    /**
-     * Selbstbeteiligung in WE (mind.) (10,2 Stellen).
-     */
-    @FeldInfo(
-            teildatensatz = 2,
-            nr = 11,
-            type = Betrag.class,
-            nachkommaStellen = 2,
-            anzahlBytes = 12,
-            byteAdresse = 98
-    )
-    SELBSTBETEILIGUNG_IN_WE_MIND,
-
-    /**
-     * Selbstbeteiligung in WE (max.) (10,2 Stellen).
-     */
-    @FeldInfo(
-            teildatensatz = 2,
-            nr = 12,
-            type = Betrag.class,
-            nachkommaStellen = 2,
-            anzahlBytes = 12,
-            byteAdresse = 110
-    )
-    SELBSTBETEILIGUNG_IN_WE_MAX,
-
-    /**
-     * Geltungsbereich.
-     */
-    @FeldInfo(
-            teildatensatz = 2,
-            nr = 13,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 30,
-            byteAdresse = 122
-    )
-    GELTUNGSBEREICH,
-
-    /**
-     * Geltungsbereicheinschraenkung.
-     */
-    @FeldInfo(
-            teildatensatz = 2,
-            nr = 14,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 30,
-            byteAdresse = 152
-    )
-    GELTUNGSBEREICHEINSCHRAENKUNG,
-
-    /**
-     * Satznummer.
-     */
-    @FeldInfo(
-            teildatensatz = 2,
-            nr = 15,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 256
-    )
-    SATZNUMMER2;
+    @FelderInfo(type = Satz220Teil2.class)
+    TEILDATENSATZ2;
 
 }

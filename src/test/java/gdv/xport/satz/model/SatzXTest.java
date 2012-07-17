@@ -18,10 +18,17 @@
 
 package gdv.xport.satz.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld200;
+import gdv.xport.satz.feld.sparte53.Feld220;
 
+import java.util.List;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 /**
@@ -30,7 +37,9 @@ import org.junit.Test;
  * @author oliver (oliver.boehm@agentes.de)
  * @since 26.03.2011
  */
-public class SatzXTest {
+public final class SatzXTest {
+    
+    private static Log log = LogFactory.getLog(SatzXTest.class);
 
     /**
      * Test method for {@link SatzX#SatzX(int, java.lang.Enum[])}.
@@ -39,6 +48,28 @@ public class SatzXTest {
     public void testSatzX() {
         Satz satz200 = new SatzX(200, Feld200.values());
         assertEquals(2, satz200.getTeildatensaetze().size());
+    }
+    
+    /**
+     * Test method for {@link SatzX#getAsList(Enum[])}.
+     */
+    @Test
+    public void testGetAsListSimple() {
+        List<Enum<?>> feldInfos = SatzX.getAsList(Feld200.values());
+        assertFalse("empty list for feldInfos", feldInfos.isEmpty());
+        assertEquals(Feld200.values().length, feldInfos.size());
+        log.info("Feld200 has " + feldInfos.size() + " FeldInfos.");
+    }
+
+    /**
+     * Test method for {@link SatzX#getAsList(Enum[])}.
+     */
+    @Test
+    public void testGetAsListComposite() {
+        List<Enum<?>> feldInfos = SatzX.getAsList(Feld220.values());
+        assertFalse("empty list for feldInfos", feldInfos.isEmpty());
+        log.info(Feld220.class.getName() + " has " + feldInfos.size() + " FeldInfos.");
+        assertTrue("elements are missing", feldInfos.size() > Feld220.values().length);
     }
 
 }

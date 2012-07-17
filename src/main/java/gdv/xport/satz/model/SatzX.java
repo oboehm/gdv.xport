@@ -19,13 +19,22 @@
 package gdv.xport.satz.model;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.*;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.FeldX;
 
-import java.util.*;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die
@@ -120,6 +129,38 @@ public class SatzX extends Datensatz {
     }
     
     /**
+     * Wandelt das uebergebene Array in eine Liste mit Felder. Seit 0.7.1
+     * duerfen Feld-Enums wie {@link Feld100} auch FelderInfo-Annotationen
+     * enthalten, die wiederum auf einen Enum verweisen.
+     *
+     * @param felder the felder
+     * @return the feld info list
+     */
+    protected static List<Enum<?>> getAsList(final Enum<?>[] felder) {
+        ArrayList<Enum<?>> feldList = new ArrayList<Enum<?>>(felder.length);
+        for (int i = 0; i < felder.length; i++) {
+            String name = felder[i].name();
+            try {
+                Field field = felder[i].getClass().getField(name);
+                FelderInfo info = field.getAnnotation(FelderInfo.class);
+                if (info == null) {
+                    feldList.add(felder[i]);
+                } else {
+                    feldList.addAll(getAsList(info));
+                }
+            } catch (NoSuchFieldException nsfe) {
+                throw new InternalError("no field " + name + " (" + nsfe + ")");
+            }
+        }
+        return feldList;
+    }
+
+    private static Collection<? extends Enum<?>> getAsList(FelderInfo info) {
+        Class<? extends Enum<?>> enumClass = info.type();
+        return getAsList(enumClass.getEnumConstants());
+    }
+
+    /**
      * Liefert das angehaengte FeldInfo zu einem Feld zurueck.
      *
      * @param feldX the feld x
@@ -130,7 +171,7 @@ public class SatzX extends Datensatz {
         try {
             FeldInfo info = feldX.getClass().getField(name).getAnnotation(FeldInfo.class);
             if (info == null) {
-                throw new UnsupportedOperationException("@FeldInfo missing for " + name);
+                throw new IllegalArgumentException("@FeldInfo missing for " + name);
             }
             return info;
         } catch (NoSuchFieldException nsfe) {
@@ -140,15 +181,15 @@ public class SatzX extends Datensatz {
     
     private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart, final Enum<?>[] felder) {
         SortedMap<Integer, Teildatensatz> tdsMap = new TreeMap<Integer, Teildatensatz>();
-        for (int i = 0; i < felder.length; i++) {
-            FeldInfo info = getFeldInfo(felder[i]);
+        for (Enum<?> feld : getAsList(felder)) {
+            FeldInfo info = getFeldInfo(feld);
             int n = info.teildatensatz();
             Teildatensatz tds = tdsMap.get(n);
             if (tds == null) {
                 tds = new Teildatensatz(satzart, n);
                 tdsMap.put(n, tds);
             }
-            add(felder[i], tds);
+            add(feld, tds);
         }
         return new ArrayList<Teildatensatz>(tdsMap.values());
     }
