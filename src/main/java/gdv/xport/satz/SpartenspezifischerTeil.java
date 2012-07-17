@@ -28,8 +28,14 @@ import gdv.xport.io.ImportException;
 import org.apache.commons.logging.*;
 
 /**
+ * Ehemals gemeinsame Oberklasse fuer Satzart 220 und andere.
+ * Wird mit 0.8 entfernt werden.
+ * <br/>
+ * TODO: mit 0.8 entsorgen
+ * 
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.1.0 (05.11.2009)
+ * @deprecated abgeloest durch {@link gdv.xport.satz.model.SpartensatzX}
  */
 public class SpartenspezifischerTeil extends Spartensatz {
 

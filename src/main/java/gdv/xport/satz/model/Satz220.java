@@ -26,9 +26,9 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * Diese Klasse repraesentiert die Satzart 211.
+ * Diese Klasse repraesentiert die Satzart 220.
  * Es handelt es sich dabei um eine alternative Implementierung der
- * {@link gdv.xport.satz.SpartenspezifischerTeil}-Klasse, die nach dem Soplet-
+ * SpartenspezifischerTeil-Klasse, die nach dem Soplet-
  * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
  * wurde.
  * 

@@ -35,8 +35,7 @@ import patterntesting.concurrent.junit.ParallelSuite;
 @RunWith(ParallelSuite.class)
 @SuiteClasses({ ModelTests.class, AdressteilTest.class, AllgemeinerVertragsteilTest.class, DatensatzTest.class,
         Erweiterungssatz211Test.class, Erweiterungssatz221Test.class, NachsatzTest.class, SatzTest.class,
-        SpartenspezifischerTeilTest.class, TeildatensatzTest.class, VertragsspezifischerTeilTest.class,
-        VorsatzTest.class })
+        TeildatensatzTest.class, VertragsspezifischerTeilTest.class, VorsatzTest.class })
 public class SatzTests {
 
 }
