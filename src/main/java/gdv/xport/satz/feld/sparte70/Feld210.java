@@ -19,7 +19,9 @@
 package gdv.xport.satz.feld.sparte70;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
+import gdv.xport.satz.feld.common.VertragsStatus;
 
 
 /**
@@ -33,52 +35,10 @@ public enum Feld210 {
     /////   Teildatensatz 1   /////////////////////////////////////////////////
 
     /**
-     * Vertragsstatus.
+     * Vertragsstatus und weitere Felder.
      */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 8,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 43
-    )
+    @FelderInfo(type = VertragsStatus.class)
     VERTRAGSSTATUS,
-
-    /**
-     * Beginn.
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 9,
-            type = Datum.class,
-            anzahlBytes = 8,
-            byteAdresse = 44
-    )
-    BEGINN,
-
-    /**
-     * Ausschluss.
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 10,
-            type = NumFeld.class,
-            anzahlBytes = 8,
-            byteAdresse = 52
-    )
-    AUSSCHLUSS,
-
-    /**
-     * Aenderungsdatum.
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 11,
-            type = Datum.class,
-            anzahlBytes = 8,
-            byteAdresse = 60
-    )
-    AENDERUNGSDATUM,
 
     /**
      * Zahlungsweise.
