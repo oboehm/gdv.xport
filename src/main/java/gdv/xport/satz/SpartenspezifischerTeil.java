@@ -37,6 +37,7 @@ import org.apache.commons.logging.*;
  * @since 0.1.0 (05.11.2009)
  * @deprecated abgeloest durch {@link gdv.xport.satz.model.SpartensatzX}
  */
+@Deprecated
 public class SpartenspezifischerTeil extends Spartensatz {
 
     private static final Log log = LogFactory.getLog(SpartenspezifischerTeil.class);

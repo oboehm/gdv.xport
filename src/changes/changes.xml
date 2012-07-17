@@ -17,6 +17,17 @@
 
   <body>
 
+    <release version="0.7.1" date="17-Jul-2012"
+             description="neue GroupId (com.github.oboehm)">
+      <action dev="oboehm" type="remove" date="17-Jul-2012" >
+        SpartenspezifischerTeil-Klasse als deprecated markiert
+        und SpartenspezifischerTeilTest entfernt.
+      </action>
+      <action dev="oboehm" type="update" date="17-Jul-2012" >
+        Beginn mit n&#228;chstem Snapshot.
+      </action>
+    </release>
+
     <release version="0.7.0" date="17-Jul-2012"
              description="neue GroupId (com.github.oboehm)">
       <action dev="oboehm" type="update" date="11-Jul-2012" >
