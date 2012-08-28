@@ -10,4 +10,4 @@ Fuer Ruby gibt es "OpenGDV":https://github.com/vendis/opengdv/, einer Open-Sourc
 
 h2. Weitere Infos
 
-Im "Wiki":https://github.com/oboehm/gdv.xport/wiki ist alles Wichtige zu gdv.xport zusammengefasst.
+Im "Wiki":https://github.com/oboehm/gdv.xport/wiki ist alles Wichtige zu gdv.xport zusammengefasst. Weitere Infos wie z.B. die "JavaDocs":http://www.aosd.de/gdv.xport/apidocs/index.html finden Sie auch auf der "Maven Projekt-Seite":http://www.aosd.de/gdv.xport/ .
