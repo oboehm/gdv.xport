@@ -58,8 +58,8 @@ public final class SatzXTest {
      */
     @Test
     public void testGetAsListSimple() {
-        List<Enum<?>> feldInfos = SatzX.getAsList(Feld200.values());
-        assertFalse("empty list for feldInfos", feldInfos.isEmpty());
+        List<MetaFeldInfo> feldInfos = SatzX.getMetaFeldInfos(Feld200.values());
+        assertFalse("empty list", feldInfos.isEmpty());
         log.info("Feld200 has " + feldInfos.size() + " FeldInfos.");
         assertTrue("Feld200 should have more than " + Feld200.values().length + " entries",
                 feldInfos.size() >= Feld200.values().length);
@@ -70,8 +70,8 @@ public final class SatzXTest {
      */
     @Test
     public void testGetAsListComposite() {
-        List<Enum<?>> feldInfos = SatzX.getAsList(Feld220.values());
-        assertFalse("empty list for feldInfos", feldInfos.isEmpty());
+        List<MetaFeldInfo> feldInfos = SatzX.getMetaFeldInfos(Feld220.values());
+        assertFalse("empty list", feldInfos.isEmpty());
         log.info(Feld220.class.getName() + " has " + feldInfos.size() + " FeldInfos.");
         assertTrue("elements are missing", feldInfos.size() > Feld220.values().length);
     }

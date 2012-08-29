@@ -137,7 +137,7 @@ public class SatzX extends Datensatz {
      * @param felder the felder
      * @return the feld info list
      */
-    protected static List<Enum<?>> getAsList(final Enum<?>[] felder) {
+    private static List<Enum<?>> getAsList(final Enum<?>[] felder) {
         ArrayList<Enum<?>> feldList = new ArrayList<Enum<?>>(felder.length);
         for (int i = 0; i < felder.length; i++) {
             String name = felder[i].name();

@@ -18,7 +18,6 @@
 
 package gdv.xport.satz.model;
 
-import gdv.xport.annotation.FeldInfo;
 import gdv.xport.io.ImportException;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.MetaFeldInfo;
@@ -136,19 +135,12 @@ public class Satz220 extends SpartensatzX {
 
     private void setUpTeildatensatz30(final int n, final Teildatensatz tds) {
         Enum<?>[] felder = mapping.get(30);
-        List<Enum<?>> enums = getAsList(felder);
-        for (Enum<?> enumX : enums) {
-            FeldInfo info = MetaFeldInfo.getFeldInfo(enumX);
-            if (info.teildatensatz() == n) {
-                add(enumX, tds);
+        List<MetaFeldInfo> metaFeldInfos = getMetaFeldInfos(felder);
+        for (MetaFeldInfo info : metaFeldInfos) {
+            if (info.getTeildatensatzNr() == n) {
+                add(info.getFeldEnum(), tds);
             }
         }
-//        for (int i = 0; i < felder.length; i++) {
-//            FeldInfo info = getFeldInfo(felder[i]);
-//            if (info.teildatensatz() == n) {
-//                add(felder[i], tds);
-//            }
-//        }
     }
 
 }
