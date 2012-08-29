@@ -27,7 +27,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  * Diese Enum-Klasse ist nur ein Platzhalter fuer eine unbekannte oder noch
  * nicht unterstuetzte Satzart.
  *
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.6 (07.04.2011)
  */
 public enum FeldX {

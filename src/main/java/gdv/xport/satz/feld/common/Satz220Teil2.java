@@ -19,6 +19,7 @@
 package gdv.xport.satz.feld.common;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Betrag;
 import gdv.xport.feld.NumFeld;
@@ -27,11 +28,18 @@ import gdv.xport.feld.Zeichen;
 /**
  * Teil 2 des Datensatzes 220 fuer die Sparten 51, 52 und 53 ist identisch
  * aufgebaut. Dieser Teil wurde in diese Klasse herausgezogen.
- * 
+ *
  * @author oliver
  * @since 0.7.1 (17.07.2012)
  */
 public enum Satz220Teil2 {
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 2,
+            type = Feld1bis7.class
+    )
+    INTRO2,
 
     /**
      * Produktkennung.

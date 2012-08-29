@@ -23,7 +23,9 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.MetaFeldInfo;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Diese Klasse repraesentiert die Satzart 220.
@@ -32,7 +34,7 @@ import java.util.*;
  * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
  * wurde.
  *
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.6 (08.04.2011)
  */
 public class Satz220 extends SpartensatzX {

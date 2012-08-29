@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,18 +19,27 @@
 package gdv.xport.satz.feld.sparte70;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 70.
- * 
+ *
  * @author oliver
  * @since 07.04.11
  */
 public enum Feld220 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 1,
+            type = Feld1bis7.class
+    )
+    INTRO1,
 
     /**
      * Risikogruppe / Risikoart.
@@ -409,6 +418,13 @@ public enum Feld220 {
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 2,
+            type = Feld1bis7.class
+    )
+    INTRO2,
+
     /**
      * Risikogruppe / Risikoart.
      */
@@ -622,7 +638,7 @@ public enum Feld220 {
             byteAdresse = 249
     )
     REFERENZNUMMER,
-    
+
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
      */

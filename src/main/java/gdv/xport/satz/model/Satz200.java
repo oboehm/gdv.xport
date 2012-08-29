@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 06.03.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 06.03.2011 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz.model;
@@ -27,7 +27,7 @@ import gdv.xport.satz.feld.Feld200;
  * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
  * wurde.
  *
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.6 (06.03.2011)
  */
 public class Satz200 extends SatzX {

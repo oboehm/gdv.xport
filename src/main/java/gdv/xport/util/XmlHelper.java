@@ -5,7 +5,7 @@
  * Raepplenstr. 17, 70191 Stuttgart, Germany
  * All rights reserved.
  *
- * (c)reated 12.10.2007 by oliver.boehm@agentes.de
+ * (c)reated 12.10.2007 by ob@aosd.de
  */
 
 package gdv.xport.util;
@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
 /**
  * Kleine Helper-Klasse fuer den Umgang mit XML.
  *
- * @author oliver.boehm@agentes.de
+ * @author ob@aosd.de
  * @since 0.3
  */
 public final class XmlHelper {

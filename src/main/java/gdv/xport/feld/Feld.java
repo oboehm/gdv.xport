@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (c) 2009 by agentes
+ * Copyright (c) 2009 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 04.10.2009 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 04.10.2009 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.feld;

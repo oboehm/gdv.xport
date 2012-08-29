@@ -42,7 +42,7 @@ import org.apache.commons.logging.LogFactory;
  * nach dem SOP-Muster aufgebaut sind.
  * Eventuell wird diese Klasse mit der Oberklasse vereinigt.
  *
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.6 (09.03.2011)
  */
 public class SatzX extends Datensatz {

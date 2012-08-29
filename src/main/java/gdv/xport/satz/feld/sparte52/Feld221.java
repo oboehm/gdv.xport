@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,18 +19,27 @@
 package gdv.xport.satz.feld.sparte52;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 52.
- * 
+ *
  * @author oliver
  * @since 14.04.11
  */
 public enum Feld221 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 1,
+            type = Feld1bis7.class
+    )
+    INTRO1,
 
     /**
      * KFV-Beitrag in Waehrungseinheiten (10,2 Stellen).

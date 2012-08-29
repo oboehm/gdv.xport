@@ -37,7 +37,7 @@ import org.junit.Test;
 /**
  * JUnit test for SatzX.
  *
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 26.03.2011
  */
 public final class SatzXTest {

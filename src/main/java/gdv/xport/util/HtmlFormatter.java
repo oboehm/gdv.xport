@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2010 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 23.11.2010 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 23.11.2010 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.util;
@@ -34,7 +34,7 @@ import org.apache.commons.io.IOUtils;
 /**
  * Diese Klasse gibt die verschiedenen Saetze und Felder als HTML aus.
  * 
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.5.0 (23.11.2010)
  */
 public final class HtmlFormatter extends AbstractFormatter {

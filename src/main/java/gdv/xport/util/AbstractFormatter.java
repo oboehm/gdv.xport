@@ -9,7 +9,7 @@ import java.io.*;
  * Dies ist das gemeinsame Oberklasse der verschiedenen Formatter. Es wird
  * z.B. von der Main-Klasse fuer die Ausgabe verwendet.
  * 
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.5.0 (29.11.2010)
  */
 public abstract class AbstractFormatter {

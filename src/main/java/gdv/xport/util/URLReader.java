@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 by agentes
+ * Copyright (c) 2009 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 21.11.2009 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 21.11.2009 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.util;
@@ -29,7 +29,7 @@ import org.apache.commons.logging.*;
  * Da mit den Hausmitteln des JDKs das Lesen einer URL nicht immer so einfach
  * ist, stuetzt sich diese Klasse dazu auf Apaches HTTP-Client ab.
  *
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.3 (21.11.2009)
  */
 public class URLReader {

@@ -28,7 +28,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 210, Sparte 10
  * (Vertragsspezifischer Teil, Leben).
  *
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 23.03.2011
  */
 public enum Feld210 {

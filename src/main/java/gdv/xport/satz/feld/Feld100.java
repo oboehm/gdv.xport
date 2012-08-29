@@ -28,7 +28,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 100
  * (Adressteil).
  *
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.6 (08.03.2011)
  */
 public enum Feld100 {
