@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,25 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 23.03.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 23.03.2011 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz.feld.sparte10;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 210, Sparte 10
  * (Vertragsspezifischer Teil, Leben).
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 23.03.2011
  */
 public enum Feld210 {
-    
+
     /////   Teildatensatz 1   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 1,
+            type = Feld1bis7.class
+    )
+    INTRO1,
 
     /**
      * Kennzeichen Vertragsentstehung.<br/>
@@ -49,7 +58,7 @@ public enum Feld210 {
             byteAdresse = 43
     )
     KENNZEICHEN_VERTRAGSENTSTEHUNG,
-    
+
     /**
      * ISO-Code, siehe Anlage 3.
      */
@@ -61,8 +70,8 @@ public enum Feld210 {
             byteAdresse = 44
     )
     WAEHRUNGSSCHLUESSEL,
-    
-    /** 
+
+    /**
      * Beitragsdepot (0 = nein, 1 = ja).
      */
     @FeldInfo(
@@ -73,7 +82,7 @@ public enum Feld210 {
             byteAdresse = 47
     )
     BEITRAGSDEPOT,
-    
+
     /**
      * Vorgeschaltete Risikoversicherung (nur waehrend der Risikovorlaufphase).
      * 0 = nein, 1 = ja.
@@ -86,7 +95,7 @@ public enum Feld210 {
             byteAdresse = 48
     )
     RISIKOVERLAUF,
-    
+
     /**
      * Vorlaufssumme in Waehrungseinheiten, bezogen auf Risikovorlauf.
      */
@@ -98,7 +107,7 @@ public enum Feld210 {
             byteAdresse = 49
     )
     VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN,
-    
+
     /**
      * Verkuerzte Beitragszahlungsdauer in Anzahl der Jahre.
      */
@@ -110,7 +119,7 @@ public enum Feld210 {
             byteAdresse = 61
     )
     VERKUERZTE_BEITRAGSZAHLUNGSDAUER,
-    
+
     /**
      * Besonderer Verwendungszweck.<br/>
      * 1 = Hypothekentilgung<br/>
@@ -126,7 +135,7 @@ public enum Feld210 {
             byteAdresse = 63
     )
     BESONDERER_VERWENDUNGSZWECK,
-    
+
     /**
      * Vertragsform.<br/>
      * 0 = Einzel<br/>
@@ -142,7 +151,7 @@ public enum Feld210 {
             byteAdresse = 64
     )
     VERTRAGSFORM,
-    
+
     /**
      * Der objektiv umschriebene Personenkreis oder bei Gruppen-Verband:
      * Vertragsnummer des Beitragszahlers/Gruppenvertragsnummer.
@@ -155,7 +164,7 @@ public enum Feld210 {
             byteAdresse = 65
     )
     GRUPPENART,
-    
+
     /**
      * Name des mitversicherten Kinds.
      * Aufgrund spez. Tarifformen bestimmter VU.
@@ -168,7 +177,7 @@ public enum Feld210 {
             byteAdresse = 105
     )
     NAME_MITVERSICHERTES_KIND,
-    
+
     /**
      * Fuer den betreffenden Vertrag vereinbarter Provisionssatz (3,2 Stellen).
      */
@@ -181,7 +190,7 @@ public enum Feld210 {
             nachkommaStellen = 2
     )
     ABSCHLUSSPROVISION,
-    
+
     /**
      * Kennzeichen, dass fuer den betreffenden Vertrag der Provisionssatz von
      * den allgemeinen Provisionsvereinbarungen abweicht (0 = nein, 1 = ja).
@@ -194,7 +203,7 @@ public enum Feld210 {
             byteAdresse = 130
     )
     KENNZEICHEN_ABWEICHENDE_ABSCHLUSSPROVISION,
-    
+
     /**
      * Bestandspflegeprovision (siehe Erlaeuterung fuer Abschlussprovision).
      */
@@ -206,7 +215,7 @@ public enum Feld210 {
             byteAdresse = 131
     )
     BESTANDSPFLEGEPROVISION,
-    
+
     /**
      * Kennzeichen fuer abweichend Bestandspflegeprovision.
      * s. Erlaeuterung fuer abweichende Abschlussprovision (0 = nein, 1 = ja).
@@ -219,7 +228,7 @@ public enum Feld210 {
             byteAdresse = 136
     )
     KENNZEICHEN_ABWEICHENDE_BESTANDSPFLEGEPROVISION,
-    
+
     /**
      * Art des Drittrechts.<br/>
      * 01 = Abtretung<br/>
@@ -249,7 +258,7 @@ public enum Feld210 {
             nachkommaStellen = 2
     )
     AKTUELLE_BEITRAGSDEPOTSUMME_IN_WAEHRUNGSEINHEITEN,
-    
+
     /**
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschluesselt
      * werden. Datum, an dem der VN die Erstpraemie zu zahlen hat, wenn der
@@ -265,7 +274,7 @@ public enum Feld210 {
             byteAdresse = 151
     )
     ZAHLUNGSANFANG,
-    
+
     /**
      * Zuzahlungsrecht (0 = nein, 1 = ja).
      */
@@ -277,7 +286,7 @@ public enum Feld210 {
             byteAdresse = 159
     )
     ZUZAHLUNGSRECHT,
-    
+
     /**
      * Letzter Zuzahlungsbetrag (10,2 Stellen).
      */
@@ -290,7 +299,7 @@ public enum Feld210 {
             nachkommaStellen = 2
     )
     ZUZAHLUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,
-    
+
     /**
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschluesselt
      * werden. Datum der letzten Zuzahlung, Tag/Monat/Jahr (TTMMJJJJ).
@@ -303,7 +312,7 @@ public enum Feld210 {
             byteAdresse = 172
     )
     ZUZAHLUNGSDATUM,
-    
+
     /**
      * Zukuenftiger Gesamtbeitrag in Waehrungseinheiten.
      * gem. Zahlungsweise wenn der Beitrag noch nicht umgestellt wurde
@@ -318,7 +327,7 @@ public enum Feld210 {
             nachkommaStellen = 2
     )
     ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN,
-    
+
     /**
      * Zahlungsweise des zukuenftigen Gesamtbetrags.
      * blank = Rechtschutz / Verkehrsservice / Kredit (In den Sparten
@@ -337,7 +346,7 @@ public enum Feld210 {
             byteAdresse = 192
     )
     ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG,
-    
+
     /**
      * Beitragsumstellungsdatum.
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschluesselt
@@ -352,7 +361,7 @@ public enum Feld210 {
             byteAdresse = 193
     )
     BEITRAGSUMSTELLUNGSDATUM,
-    
+
     /**
      * Beitragsumstellungsgrund, siehe Anlage 6.
      */
@@ -364,7 +373,7 @@ public enum Feld210 {
             byteAdresse = 201
     )
     BEITRAGSUMSTELLUNGSGRUND,
-    
+
     /**
      * Referenz-Versicherungsscheinnummer.
      * Zusaetzliche Versicherungsscheinnummer, wenn Teile des
@@ -379,7 +388,7 @@ public enum Feld210 {
             byteAdresse = 203
     )
     REFERENZ_VERSICHERUNGSSCHEINNUMMER_1,
-    
+
     /**
      * Referenz-Versicherungsscheinnummer.
      * @see #REFERENZ_VERSICHERUNGSSCHEINNUMMER_1
@@ -392,7 +401,7 @@ public enum Feld210 {
             byteAdresse = 220
     )
     REFERENZ_VERSICHERUNGSSCHEINNUMMER_2,
-    
+
     /**
      * Referenz-Versicherungsscheinnummer.
      * @see #REFERENZ_VERSICHERUNGSSCHEINNUMMER_1
@@ -405,7 +414,7 @@ public enum Feld210 {
             byteAdresse = 237
     )
     REFERENZ_VERSICHERUNGSSCHEINNUMMER_3,
-    
+
     /**
      * Weitere, nicht abbildbare Referenznummern vorhanden (0 = nein, 1 = ja).
      */
@@ -417,7 +426,7 @@ public enum Feld210 {
             byteAdresse = 254
     )
     WEITERE_REFERENZNUMMERN,
-    
+
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
      */
@@ -429,7 +438,7 @@ public enum Feld210 {
             byteAdresse = 255
     )
     LEERSTELLEN1,
-    
+
     /**
      * Satznummer.
      */
@@ -443,6 +452,13 @@ public enum Feld210 {
     SATZNUMMER1,
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 2,
+            type = Feld1bis7.class
+    )
+    INTRO2,
 
     /**
      * Betriebliche Altersversorgung.<br/>
@@ -460,7 +476,7 @@ public enum Feld210 {
             byteAdresse = 43
     )
     BETRIEBLICHE_ALTERSVORSORGE,
-    
+
     /**
      * Unverfallbarkeit (0 = nein, 1 = ja).
      */
@@ -472,7 +488,7 @@ public enum Feld210 {
             byteAdresse = 44
     )
     UNVERFALLBARKEIT,
-    
+
     /**
      * Diensteintrittsdatum.
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschluesselt
@@ -499,7 +515,7 @@ public enum Feld210 {
             byteAdresse = 53
     )
     BILANZMONAT_ARBEITGEBER,
-    
+
     /**
      * Produktbeschreibung.
      * Klartext oder freidefinierbare Schluessel (z. B. bei vorhandener
@@ -513,7 +529,7 @@ public enum Feld210 {
             byteAdresse = 55
     )
     PRODUKTBESCHREIBUNG,
-    
+
     /**
      * Kapitalertragsteuerpflicht (0 = nein, 1 = ja).
      */
@@ -525,7 +541,7 @@ public enum Feld210 {
             byteAdresse = 85
     )
     KAPITALERTRAGSTEUERPFLICHT,
-    
+
     /**
      * Unternehmensindividuelle Produktkuerzel/-schluessel.
      */
@@ -537,7 +553,7 @@ public enum Feld210 {
             byteAdresse = 86
     )
     PRODUKTFORM,
-    
+
     /**
      * Versionsdatum der Produktform. Monat / Jahr (MMJJJJ).
      * Wenn kein Versionsdatum vorhanden, muss das Datum der Produkteinfuehrung
@@ -563,7 +579,7 @@ public enum Feld210 {
             byteAdresse = 97
     )
     PRODUKTNAME,
-    
+
     // Betriebliche und private Altersversorgung
 
     /**
@@ -585,7 +601,7 @@ public enum Feld210 {
             byteAdresse = 117
     )
     ART_DER_STEUERLICHEN_FOERDERUNG,
-    
+
     /**
      * Finanzierungsart.<br/>
      * 0 = irrelevant<br/>
@@ -603,7 +619,7 @@ public enum Feld210 {
             byteAdresse = 118
     )
     FINANZIERUNGSART,
-    
+
     /**
      * Durchfuehrungsweg.<br/>
      * 0 = irrelevant<br/>
@@ -624,7 +640,7 @@ public enum Feld210 {
             byteAdresse = 119
     )
     DURCHFUEHRUNGSWEG,
-    
+
     /**
      * Finanzierung der Zusage.<br/>
      * 0 = irrelevant<br/>
@@ -641,7 +657,7 @@ public enum Feld210 {
             byteAdresse = 120
     )
     FINANZIERUNG_ZUSAGE,
-    
+
     /**
      * Individueller Schluessel der Unterstuetzungskasse beim VU.
      */
@@ -653,7 +669,7 @@ public enum Feld210 {
             byteAdresse = 121
     )
     UNTERSTUETZUNGSKASSE_SCHLUESSEL,
-    
+
     /**
      * Unterstuetzungskasse Name.
      */
@@ -665,7 +681,7 @@ public enum Feld210 {
             byteAdresse = 125
     )
     UNTERSTUETZUNGSKASSE_NAME,
-    
+
     /**
      * Individueller Schluessel des Traegerunternehmens beim VU.
      */
@@ -677,7 +693,7 @@ public enum Feld210 {
             byteAdresse = 165
     )
     TRAEGERUNTERNEHMEN_SCHLUESSEL,
-    
+
     /**
      * Traegerunternehmen Name.
      */
@@ -689,7 +705,7 @@ public enum Feld210 {
             byteAdresse = 169
     )
     TRAEGERUNTERNEHMEN_NAME,
-    
+
     /**
      * Nummer des Kollektivvertrages.
      */
@@ -701,7 +717,7 @@ public enum Feld210 {
             byteAdresse = 209
     )
     KOLLEKTIV_NR,
-    
+
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
      */

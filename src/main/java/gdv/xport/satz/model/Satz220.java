@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 by agentes
+ * Copyright (c) 2011, 2012 by aosd.de
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 08.04.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 08.04.2011 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz.model;
@@ -31,7 +31,7 @@ import java.util.*;
  * SpartenspezifischerTeil-Klasse, die nach dem Soplet-
  * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
  * wurde.
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 0.6 (08.04.2011)
  */
@@ -39,7 +39,7 @@ public class Satz220 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static final Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
-    
+
     static {
         mapping.put(30, gdv.xport.satz.feld.sparte30.Feld220.values());
         mapping.put(51, gdv.xport.satz.feld.sparte51.Feld220.values());
@@ -47,14 +47,14 @@ public class Satz220 extends SpartensatzX {
         mapping.put(53, gdv.xport.satz.feld.sparte53.Feld220.values());
         mapping.put(70, gdv.xport.satz.feld.sparte70.Feld220.values());
     }
-    
+
     /**
      * Default-Konstruktor.
      */
     public Satz220() {
         this(UNKNOWN_SPARTE);
     }
-    
+
     /**
      * Legt ein neues Satz220-Objekt fuer die uebergebene Sparte an.
      *
@@ -63,13 +63,14 @@ public class Satz220 extends SpartensatzX {
     public Satz220(final int sparte) {
         super(220, sparte);
     }
-    
+
     /**
      * Liefert die Mapping-Tabelle zu Sparte - Feldxxx zurueck.
      *
      * @return Mapping-Tabelle
      * @see gdv.xport.satz.model.SpartensatzX#getMapping()
      */
+    @Override
     protected Map<Integer, Enum<?>[]> getMapping() {
         return mapping;
     }
@@ -134,12 +135,19 @@ public class Satz220 extends SpartensatzX {
 
     private void setUpTeildatensatz30(final int n, final Teildatensatz tds) {
         Enum<?>[] felder = mapping.get(30);
-        for (int i = 0; i < felder.length; i++) {
-            FeldInfo info = getFeldInfo(felder[i]);
+        List<Enum<?>> enums = getAsList(felder);
+        for (Enum<?> enumX : enums) {
+            FeldInfo info = getFeldInfo(enumX);
             if (info.teildatensatz() == n) {
-                add(felder[i], tds);
+                add(enumX, tds);
             }
         }
+//        for (int i = 0; i < felder.length; i++) {
+//            FeldInfo info = getFeldInfo(felder[i]);
+//            if (info.teildatensatz() == n) {
+//                add(felder[i], tds);
+//            }
+//        }
     }
 
 }

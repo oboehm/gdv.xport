@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2011, 2012 by aosd.de
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 26.03.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 26.03.2011 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz.model;
@@ -33,12 +33,12 @@ import org.junit.Test;
 
 /**
  * JUnit test for SatzX.
- * 
+ *
  * @author oliver (oliver.boehm@agentes.de)
  * @since 26.03.2011
  */
 public final class SatzXTest {
-    
+
     private static Log log = LogFactory.getLog(SatzXTest.class);
 
     /**
@@ -49,7 +49,7 @@ public final class SatzXTest {
         Satz satz200 = new SatzX(200, Feld200.values());
         assertEquals(2, satz200.getTeildatensaetze().size());
     }
-    
+
     /**
      * Test method for {@link SatzX#getAsList(Enum[])}.
      */
@@ -57,8 +57,9 @@ public final class SatzXTest {
     public void testGetAsListSimple() {
         List<Enum<?>> feldInfos = SatzX.getAsList(Feld200.values());
         assertFalse("empty list for feldInfos", feldInfos.isEmpty());
-        assertEquals(Feld200.values().length, feldInfos.size());
         log.info("Feld200 has " + feldInfos.size() + " FeldInfos.");
+        assertTrue("Feld200 should have more than " + Feld200.values().length + " entries",
+                feldInfos.size() >= Feld200.values().length);
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2011, 2012 by aosd.de
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 06.03.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 06.03.2011 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz.feld;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 
 /**
@@ -30,66 +32,16 @@ import gdv.xport.feld.*;
  * @since 0.6 (06.03.2011)
  */
 public enum Feld200 {
-    
+
     /////   Allgemeiner Teil   ////////////////////////////////////////////////
 
-//    @FeldInfo(
-//            nr = 1,
-//            type = NumFeld.class,
-//            anzahlBytes = 4,
-//            byteAdresse = 1,
-//            erlaeuterung = "konstant 200"
-//    )
-//    SATZART,
-//
-//    @FeldInfo(
-//            nr = 2,
-//            type = VUNummer.class,
-//            anzahlBytes = 5,
-//            byteAdresse = 5
-//    )
-//    VU_NUMMER,
-//
-//    @FeldInfo(
-//            nr = 3,
-//            type = AlphaNumFeld.class,
-//            anzahlBytes = 1,
-//            byteAdresse = 10
-//    )
-//    BUENDELUNGSKENNZEICHEN,
-//
-//    @FeldInfo(
-//            nr = 4,
-//            type = NumFeld.class,
-//            anzahlBytes = 3,
-//            byteAdresse = 11
-//    )
-//    SPARTE,
-//
-//    @FeldInfo(
-//            nr = 5,
-//            type = AlphaNumFeld.class,
-//            anzahlBytes = 17,
-//            byteAdresse = 14
-//    )
-//    VERSICHERUNGSSCHEINNUMMER,
-//
-//    @FeldInfo(
-//            nr = 6,
-//            type = NumFeld.class,
-//            anzahlBytes = 2,
-//            byteAdresse = 31
-//    )
-//    FOLGENUMMER,
-//
-//    @FeldInfo(
-//            nr = 7,
-//            type = AlphaNumFeld.class,
-//            anzahlBytes = 10,
-//            byteAdresse = 33
-//    )
-//    VERMITTLER,
-    
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 1,
+            type = Feld1bis7.class
+    )
+    INTRO1,
+
     /////   Satzspezifischer Teil (Satz 1)  ///////////////////////////////////
 
     /**
@@ -121,7 +73,7 @@ public enum Feld200 {
     VERTRAGSBEGINN,
 
     /**
-     * Der aktuelle Ablauf des Vertrages zum Zeitpunkt der Lieferung. 
+     * Der aktuelle Ablauf des Vertrages zum Zeitpunkt der Lieferung.
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00"
      * geschluesselt werden.
      */
@@ -430,7 +382,7 @@ public enum Feld200 {
     REFERENZ_VERSICHERUNGSSCHEINNUMMER,
 
     /**
-     * Bei Wechsel der Versicherungsscheinnummer: 
+     * Bei Wechsel der Versicherungsscheinnummer:
      * 1 = alte Versicherungsscheinnummer, 2 = neue Versicherungsscheinnummer.
      */
     @FeldInfo(
@@ -506,6 +458,13 @@ public enum Feld200 {
 
     /////   Satzspezifischer Teil (Satz 2)  ///////////////////////////////////
 
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 2,
+            type = Feld1bis7.class
+    )
+    INTRO2,
+
     /**
      * Abhaengig von der Sparte bei kurzfristigen Vertraegen sowie bei
      * Vertraegen, die nicht automatisch verlaengert werden, immer "Nein".
@@ -564,7 +523,7 @@ public enum Feld200 {
      * Versicherungs-Steuer gemaess Zahlungsweise.
      * Im Fuehrungs-/Beteiligungsgeschaeft 100%. In KV nicht gemaess der
      * Zahlungsweise, sondern Monats-Soll-Beitrag oder sonstiger
-     * tarifspezifischer Beitrag (z. B. AS). In LV einschl. verrechnete 
+     * tarifspezifischer Beitrag (z. B. AS). In LV einschl. verrechnete
      * Ueberschussbeteiligung. Bei Kreditvers. nur: Kautionsversicherung-S,
      * Warenkreditversicherung-S, Vertrauensschadenversicherung.
      */

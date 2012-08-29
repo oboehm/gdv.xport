@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 08.03.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 08.03.2011 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz.feld;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 
 /**
@@ -33,10 +35,17 @@ public enum Feld100 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
 
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 1,
+            type = Feld1bis7.class
+    )
+    INTRO1,
+
     /**
      * Anredeschluessel.
      * Hinweis fuer das eVB-Verfahren (elektronische Versicherungsbestaetigung):
-     * Ist als VN eine Vereinigung gewaehlt, so muss zusaetzlich eine 
+     * Ist als VN eine Vereinigung gewaehlt, so muss zusaetzlich eine
      * natuerliche Person benannt werden. <br/>
      * 0 = (ohne Anrede)<br/>
      * 1 = Herr<br/>
@@ -68,7 +77,7 @@ public enum Feld100 {
             byteAdresse = 44
     )
     NAME1,
-    
+
     /**
      * Name2.
      */
@@ -80,7 +89,7 @@ public enum Feld100 {
             byteAdresse = 74
     )
     NAME2,
-    
+
     /**
      * Name 3: Bei natuerlichen Personen und wenn im Bestand
      * gespeichert, muss in Name 3 der Vorname angegeben werden.
@@ -108,7 +117,7 @@ public enum Feld100 {
             byteAdresse = 134
     )
     TITEL,
-    
+
     /**
      * KFZ-Laenderkennzeichen, zum Beispiel Laenderkennzeichen fuer
      * D = Deutschland, B = Belgien, DK = Daenemark, F = Frankreich,
@@ -126,7 +135,7 @@ public enum Feld100 {
             byteAdresse = 154
     )
     LAENDERKENNZEICHEN,
-    
+
     /**
      * Postleitzahl linksbuendig.
      * Hinweis fuer das eVB-Verfahren (elektronische Versicherungsbestaetigung):
@@ -141,7 +150,7 @@ public enum Feld100 {
             byteAdresse = 157
     )
     POSTLEITZAHL,
-    
+
     /**
      * Ort.
      * Hinweis fuer das eVB-Verfahren (elektronische Versicherungsbestaetigung):
@@ -156,7 +165,7 @@ public enum Feld100 {
             byteAdresse = 163
     )
     ORT,
-    
+
     /**
      * Strasse.
      * Hinweis fuer das eVB-Verfahren (elektronische Versicherungsbestaetigung):
@@ -200,7 +209,7 @@ public enum Feld100 {
             byteAdresse = 226
     )
     GEBURTSDATUM,
-    
+
     /**
      * Verwendung Schluessel Laenderkennzeichen, siehe Anlage 63.
      */
@@ -249,7 +258,7 @@ public enum Feld100 {
             byteAdresse = 251
     )
     ZIELGRUPPENSCHLUESSEL,
-    
+
     /**
      * Nach EG-Richtlinien 01-07-1990 0 = nein, 1 = ja.
      */
@@ -274,7 +283,7 @@ public enum Feld100 {
             byteAdresse = 254
     )
     POSTALISCHES_KENNZEICHEN,
-    
+
     /**
      * Hinweis fuer das eVB-Verfahren (elektronische Versicherungsbestaetigung):
      * Im eVB-Verfahren ist das Feld "Geschlecht" ein Pflichtfeld.<br/>
@@ -302,9 +311,16 @@ public enum Feld100 {
             byteAdresse = 256
     )
     SATZNUMMER1,
-    
+
     /////   Teildatensatz 2   /////////////////////////////////////////////////
-    
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 2,
+            type = Feld1bis7.class
+    )
+    INTRO2,
+
     /**
      * Personen-/Kundennummer des Versicherers, rechtsbuendig.
      * Mit Leerstellen linksbuendig auffuellen, ohne Sonderzeichen.
@@ -356,7 +372,7 @@ public enum Feld100 {
             byteAdresse = 107
     )
     KONTONR1,
-    
+
     /**
      * Siehe Kontonummer.
      */
@@ -368,7 +384,7 @@ public enum Feld100 {
             byteAdresse = 119
     )
     BLZ1,
-    
+
     /**
      * Gegebenenfalls Name, falls abweichend.
      */
@@ -380,7 +396,7 @@ public enum Feld100 {
             byteAdresse = 127
     )
     ABWEICHENDER_KONTOINHABER1,
-    
+
     /**
      * Kommunikationstyp.
      * Weitere, groessere Felder: "Kommunikationsnummern" (z. B. E-Mail) stehen
@@ -418,7 +434,7 @@ public enum Feld100 {
             byteAdresse = 179
     )
     KOMMUNIKATIONSTYP2,
-    
+
     /**
      * Siehe Kommunikationsnummer 1.
      */
@@ -430,7 +446,7 @@ public enum Feld100 {
             byteAdresse = 181
     )
     KOMMUNIKATIONSNR2,
-    
+
     /**
      * Siehe Anlage 76.
      */
@@ -442,7 +458,7 @@ public enum Feld100 {
             byteAdresse = 201
     )
     KOMMUNIKATIONSTYP3,
-    
+
     /**
      * Siehe Kommunikationsnummer 1.
      */
@@ -454,7 +470,7 @@ public enum Feld100 {
             byteAdresse = 203
     )
     KOMMUNIKATIONSNR3,
-    
+
     /**
      * Siehe Anlage 76.
      */
@@ -466,7 +482,7 @@ public enum Feld100 {
             byteAdresse = 223
     )
     KOMMUNIKATIONSTYP4,
-    
+
     /**
      * Siehe Kommunikationsnummer 1.
      */
@@ -478,7 +494,7 @@ public enum Feld100 {
             byteAdresse = 225
     )
     KOMMUNIKATIONSNR4,
-    
+
     /**
      * 1 = Lastschrift,<br/>
      * 2 = Rechnung,<br/>
@@ -495,7 +511,7 @@ public enum Feld100 {
             byteAdresse = 245
     )
     ZAHLUNGSART,
-    
+
     /**
      * 1 = ledig,<br/>
      * 2 = verheiratet,<br/>
@@ -539,7 +555,14 @@ public enum Feld100 {
     SATZNUMMER2,
 
     /////   Teildatensatz 3   /////////////////////////////////////////////////
-    
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 3,
+            type = Feld1bis7.class
+    )
+    INTRO3,
+
     /**
      * Siehe Anlage 76.
      */
@@ -551,7 +574,7 @@ public enum Feld100 {
             byteAdresse = 43
     )
     KOMMUNIKATIONSTYP5,
-    
+
     /**
      * Siehe Kommunikationsnummer 1.
      */
@@ -563,7 +586,7 @@ public enum Feld100 {
             byteAdresse = 45
     )
     KOMMUNIKATIONSNR5,
-    
+
     /**
      * Siehe Anlage 76.
      */
@@ -575,7 +598,7 @@ public enum Feld100 {
             byteAdresse = 105
     )
     KOMMUNIKATIONSTYP6,
-    
+
     /**
      * Siehe Kommunikationsnummer 1.
      */
@@ -587,7 +610,7 @@ public enum Feld100 {
             byteAdresse = 107
     )
     KOMMUNIKATIONSNR6,
-    
+
     /**
      * Siehe Anlage 76.
      */
@@ -599,7 +622,7 @@ public enum Feld100 {
             byteAdresse = 167
     )
     KOMMUNIKATIONSTYP7,
-    
+
     /**
      * Siehe Kommunikationsnummer 1.
      */
@@ -611,7 +634,7 @@ public enum Feld100 {
             byteAdresse = 169
     )
     KOMMUNIKATIONSNR7,
-    
+
     /**
      * 01 = natuerliche Person,<br/>
      * 02 = Gesellschaft des Buergerlichen Rechts GdBR,<br/>
@@ -650,7 +673,14 @@ public enum Feld100 {
     SATZNUMMER3,
 
     /////   Teildatensatz 4   /////////////////////////////////////////////////
-    
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 4,
+            type = Feld1bis7.class
+    )
+    INTRO4,
+
     /**
      * Geburtsname.
      */
@@ -703,7 +733,7 @@ public enum Feld100 {
             byteAdresse = 105
     )
     TYP_BANKVERBINDUNG2,
-    
+
     /**
      * Kontonummer fuer das jeweilige Adresskennzeichen.
      */
@@ -715,7 +745,7 @@ public enum Feld100 {
             byteAdresse = 107
     )
     KONTONR2,
-    
+
     /**
      * Siehe Kontonummer.
      */
@@ -727,7 +757,7 @@ public enum Feld100 {
             byteAdresse = 119
     )
     BLZ2,
-    
+
     /**
      * Gegebenfalls Name, falls abweichend.
      */
@@ -739,7 +769,7 @@ public enum Feld100 {
             byteAdresse = 127
     )
     ABWEICHENDER_KONTOINHABER2,
-    
+
     /**
      * Name des Kreditinstituts.
      */
@@ -751,7 +781,7 @@ public enum Feld100 {
             byteAdresse = 157
     )
     NAME_KREDITINSTITUT2,
-    
+
     /**
      * Internationaler SWIFT Bankcode.
      * Der BIC oder SWIFT-Code hat folgenden Aufbau:
@@ -771,7 +801,7 @@ public enum Feld100 {
             byteAdresse = 187
     )
     BIC1,
-    
+
     /**
      * Internationaler SWIFT Bankcode.
      * Der BIC oder SWIFT-Code hat folgenden Aufbau:
@@ -791,7 +821,7 @@ public enum Feld100 {
             byteAdresse = 198
     )
     BIC2,
-    
+
     /**
      * Internationale Kontonummer.
      * Die IBAN setzt sich folgendermassen zusammen:
@@ -823,9 +853,16 @@ public enum Feld100 {
             byteAdresse = 256
     )
     SATZNUMMER4,
-    
+
     /////   Teildatensatz 5   /////////////////////////////////////////////////
-    
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 5,
+            type = Feld1bis7.class
+    )
+    INTRO5,
+
     /**
      * Internationale Kontonummer.
      * Die IBAN setzt sich folgendermassen zusammen:
@@ -845,7 +882,7 @@ public enum Feld100 {
             byteAdresse = 43
     )
     IBAN2,
-    
+
     /**
      * Geburtsort.
      */
@@ -857,7 +894,7 @@ public enum Feld100 {
             byteAdresse = 77
     )
     GEBURTSORT,
-    
+
     /**
      * Siehe Anlage 63.
      */
@@ -869,7 +906,7 @@ public enum Feld100 {
             byteAdresse = 107
     )
     GEBURTSLAND,
-    
+
     /**
      * Steuernummer bei juristischen Personen.
      */
@@ -881,7 +918,7 @@ public enum Feld100 {
             byteAdresse = 110
     )
     STEUERNR_JURISTISCHE_PERSON,
-    
+
     /**
      * Umsatzsteuer-Identifikationsnummer.
      */
@@ -893,7 +930,7 @@ public enum Feld100 {
             byteAdresse = 127
     )
     UMSATZSTEUER_ID,
-    
+
     /**
      * Vorsteuerabszugsberechtigung Ja/Nein.
      */
@@ -904,7 +941,7 @@ public enum Feld100 {
             byteAdresse = 144
     )
     VORZUGSSTEUERBERECHTIGUNG,
-    
+
     /**
      * Vorsteuerabszugsberechtigung in Prozent.
      */

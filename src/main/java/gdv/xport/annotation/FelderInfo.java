@@ -27,7 +27,7 @@ import java.lang.annotation.RetentionPolicy;
  * Da Java leider keine Ableitung von Annotations zulaesst, muessen wir
  * zu diesem Trick greifen, um Gemeinsamkeiten in eine gemeinsame Enum
  * auslagern zu koennen.
- * 
+ *
  * @author oliver
  * @since 0.7.1 (17.07.2012)
  */
@@ -38,6 +38,13 @@ public @interface FelderInfo {
      * Enum mit den FeldInfos, der angegeben werden <b>muss</b>.
      */
     Class<? extends Enum<?>> type();
+
+    /**
+     * Teildatensatz, fuer den die referenzierten FeldInfos gelten sollen,
+     * falls er dort nicht angegeben ist. -1 bedeutet dabei, dass kein Wert
+     * vorbelegt wird.
+     */
+    int teildatensatz() default -1;
 
     /**
      * Erlaeuterung.
