@@ -19,7 +19,11 @@
 package gdv.xport.satz.feld.sparte30;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 
 /**
@@ -32,12 +36,12 @@ public enum Feld221 {
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
-//    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-//    @FelderInfo(
-//            teildatensatz = 2,
-//            type = Feld1bis7.class
-//    )
-//    INTRO2,
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 2,
+            type = Feld1bis7.class
+    )
+    INTRO2,
 
     /**
      * Lfd. Nummer der versicherten Person (VP) / Personengruppe.
@@ -245,12 +249,12 @@ public enum Feld221 {
 
     /////   Teildatensatz 3   /////////////////////////////////////////////////
 
-//    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-//    @FelderInfo(
-//            teildatensatz = 3,
-//            type = Feld1bis7.class
-//    )
-//    INTRO3,
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 3,
+            type = Feld1bis7.class
+    )
+    INTRO3,
 
     /**
      * Satznummer.

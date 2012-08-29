@@ -25,6 +25,7 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.FeldX;
+import gdv.xport.satz.feld.MetaFeldInfo;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -112,7 +113,7 @@ public class SatzX extends Datensatz {
      * @param tds der entsprechende Teildatensatz
      */
     protected static void add(final Enum<?> feldX, final Teildatensatz tds) {
-        FeldInfo info = getFeldInfo(feldX);
+        FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
         Feld feld = Feld.createFeld(feldX, info);
         if (info.nr() < 8) {
             log.info("using default settings for " + feld);
@@ -155,41 +156,58 @@ public class SatzX extends Datensatz {
         return feldList;
     }
 
+    /**
+     * Wandelt das uebergebene Array in eine Liste mit MetaFeldInfos. Seit 0.7.1
+     * duerfen Feld-Enums wie {@link Feld100} auch FelderInfo-Annotationen
+     * enthalten, die wiederum auf einen Enum verweisen.
+     *
+     * @param felder the felder
+     * @return the meta feld infos
+     */
+    protected static List<MetaFeldInfo> getMetaFeldInfos(final Enum<?>[] felder) {
+        List<MetaFeldInfo> metaFeldInfos = new ArrayList<MetaFeldInfo>(felder.length);
+        for (int i = 0; i < felder.length; i++) {
+            String name = felder[i].name();
+            try {
+                Field field = felder[i].getClass().getField(name);
+                FelderInfo info = field.getAnnotation(FelderInfo.class);
+                if (info == null) {
+                    metaFeldInfos.add(new MetaFeldInfo(felder[i]));
+                } else {
+                    metaFeldInfos.addAll(getMetaFeldInfos(info));
+                }
+            } catch (NoSuchFieldException nsfe) {
+                throw new InternalError("no field " + name + " (" + nsfe + ")");
+            }
+        }
+        return metaFeldInfos;
+    }
+
+    private static List<MetaFeldInfo> getMetaFeldInfos(final FelderInfo info) {
+        Collection<? extends Enum<?>> enums = getAsList(info);
+        List<MetaFeldInfo> metaFeldInfos = new ArrayList<MetaFeldInfo>(enums.size());
+        for (Enum<?> enumX : enums) {
+            metaFeldInfos.add(new MetaFeldInfo(enumX, info));
+        }
+        return metaFeldInfos;
+    }
+
     private static Collection<? extends Enum<?>> getAsList(final FelderInfo info) {
         Class<? extends Enum<?>> enumClass = info.type();
         return getAsList(enumClass.getEnumConstants());
     }
 
-    /**
-     * Liefert das angehaengte FeldInfo zu einem Feld zurueck.
-     *
-     * @param feldX the feld x
-     * @return the feld info
-     */
-    protected static FeldInfo getFeldInfo(final Enum<?> feldX) {
-        String name = feldX.name();
-        try {
-            FeldInfo info = feldX.getClass().getField(name).getAnnotation(FeldInfo.class);
-            if (info == null) {
-                throw new IllegalArgumentException("@FeldInfo missing for " + name);
-            }
-            return info;
-        } catch (NoSuchFieldException nsfe) {
-            throw new InternalError("no field " + name + " (" + nsfe + ")");
-        }
-    }
-
     private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart, final Enum<?>[] felder) {
         SortedMap<Integer, Teildatensatz> tdsMap = new TreeMap<Integer, Teildatensatz>();
-        for (Enum<?> feld : getAsList(felder)) {
-            FeldInfo info = getFeldInfo(feld);
-            int n = info.teildatensatz();
+        for (MetaFeldInfo metaFeldInfo : getMetaFeldInfos(felder)) {
+            int n = metaFeldInfo.getTeildatensatzNr();
             Teildatensatz tds = tdsMap.get(n);
             if (tds == null) {
                 tds = new Teildatensatz(satzart, n);
                 tdsMap.put(n, tds);
             }
-            add(feld, tds);
+            add(metaFeldInfo.getFeldEnum(), tds);
+
         }
         return new ArrayList<Teildatensatz>(tdsMap.values());
     }

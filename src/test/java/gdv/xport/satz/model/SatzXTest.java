@@ -21,8 +21,11 @@ package gdv.xport.satz.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld200;
+import gdv.xport.satz.feld.MetaFeldInfo;
+import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.sparte53.Feld220;
 
 import java.util.List;
@@ -71,6 +74,30 @@ public final class SatzXTest {
         assertFalse("empty list for feldInfos", feldInfos.isEmpty());
         log.info(Feld220.class.getName() + " has " + feldInfos.size() + " FeldInfos.");
         assertTrue("elements are missing", feldInfos.size() > Feld220.values().length);
+    }
+
+    /**
+     * {@link Feld1bis7} ist ein Beispiel, wo kein Teildatensatz gesetzt ist.
+     * Dieser wird z.B. beim {@link Feld200} ueber die {@link FelderInfo}-
+     * Annotation gesetzt. Ob dieses Wert tatsaechlich gesetzt wird, wird
+     * ueber diesen Test geprueft.
+     */
+    @Test
+    public void testGetAsListTeildatensatz() {
+        List<MetaFeldInfo> metaFeldInfos = SatzX.getMetaFeldInfos(Feld200.values());
+        int found = 0;
+        for (MetaFeldInfo metaFeldInfo : metaFeldInfos) {
+            if (metaFeldInfo.getName().equals("SATZART")) {
+                found++;
+                checkSatzart(metaFeldInfo, found);
+            }
+        }
+    }
+
+    private static void checkSatzart(final MetaFeldInfo satzart, final int found) {
+        log.info(found + ". MetaFeldInfo: " + satzart );
+        assertEquals(1, satzart.getNr());
+        assertEquals(found, satzart.getTeildatensatzNr());
     }
 
 }
