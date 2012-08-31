@@ -28,12 +28,12 @@ import org.junit.Test;
 
 /**
  * JUnit-Test fuer Erweiterungssatz211.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (05.01.2011)
  */
 public class Erweiterungssatz211Test {
-    
+
     private static final Log log = LogFactory.getLog(Erweiterungssatz211Test.class);
 
     /**
@@ -41,13 +41,25 @@ public class Erweiterungssatz211Test {
      */
     @Test
     public void testSparte10() {
-        Erweiterungssatz211 leben = new Erweiterungssatz211(10);
-        log.info(leben + " created.");
-        assertEquals(10, leben.getSparte());
-        assertEquals(Config.getVUNummer().getInhalt().trim(), leben.getVuNummer());
-        Feld sparte = leben.getFeld(Bezeichner.SPARTE);
-        assertEquals(new NumFeld(SPARTE, 3, 11, 10), sparte);
-        Feld vermittler = leben.getFeld(Bezeichner.VERMITTLER);
+        createSparte(10);
+    }
+
+    /**
+     * Hier testen wir die Sparte 50, allerdings nur sehr rudimentaer.
+     */
+    @Test
+    public void testSparte50() {
+        createSparte(50);
+    }
+
+    private void createSparte(final int sparte) {
+        Erweiterungssatz211 erweiterungssatz = new Erweiterungssatz211(sparte);
+        log.info(erweiterungssatz + " created.");
+        assertEquals(sparte, erweiterungssatz.getSparte());
+        assertEquals(Config.getVUNummer().getInhalt().trim(), erweiterungssatz.getVuNummer());
+        Feld spartenFeld = erweiterungssatz.getFeld(Bezeichner.SPARTE);
+        assertEquals(new NumFeld(SPARTE, 3, 11, sparte), spartenFeld);
+        Feld vermittler = erweiterungssatz.getFeld(Bezeichner.VERMITTLER);
         assertEquals(33, vermittler.getByteAdresse());
     }
 
