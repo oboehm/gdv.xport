@@ -18,27 +18,19 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.*;
 import gdv.xport.satz.model.Satz210;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
+import java.io.*;
 import java.text.MessageFormat;
 import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.SystemUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.apache.commons.lang.*;
+import org.apache.commons.logging.*;
+import org.junit.*;
 import org.junit.runner.RunWith;
 
 import patterntesting.concurrent.junit.ParallelRunner;
@@ -90,6 +82,7 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
      *             Signals that an I/O exception has occurred.
      */
     @Test
+    @Ignore // deaktiviert, da JavaFormatter jetzt deprecated
     public void testWriteSatz() throws IOException {
         StringWriter swriter = new StringWriter();
         JavaFormatter formatter = new JavaFormatter(swriter);
@@ -107,6 +100,7 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
      *             Signals that an I/O exception has occurred.
      */
     @Test
+    @Ignore // deaktiviert, da JavaFormatter jetzt deprecated
     public void testToString() throws IOException {
         String vorsatz = getResource("Feld1.txt");
         String nachsatz = getResource("Feld9999.txt");
