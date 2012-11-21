@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2010 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,36 +13,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 23.11.2010 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 23.11.2010 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.Undefiniert;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.text.MessageFormat;
 import java.util.Iterator;
 
-import javax.xml.stream.*;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.commons.io.IOUtils;
 
 /**
  * Diese Klasse gibt die verschiedenen Saetze und Felder als HTML aus.
  * 
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.5.0 (23.11.2010)
  */
 public final class HtmlFormatter extends AbstractFormatter {
-    
+
     private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
     private static final String template;
     private String title = "GDV-Datei";
-    
+
     static {
         try {
             template = readTemplate();
@@ -50,7 +62,7 @@ public final class HtmlFormatter extends AbstractFormatter {
             throw new ExceptionInInitializerError(ioe);
         }
     }
-    
+
     private static String readTemplate() throws IOException {
         InputStream istream = HtmlFormatter.class.getResourceAsStream("template.html");
         try {
@@ -59,7 +71,7 @@ public final class HtmlFormatter extends AbstractFormatter {
             istream.close();
         }
     }
-    
+
     /**
      * Default-Konstruktor.
      */
@@ -69,9 +81,11 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Instantiiert einen neuen HtmlFormatter.
-     *
-     * @param file the file
-     * @throws IOException Signals that an I/O exception has occurred.
+     * 
+     * @param file
+     *            the file
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     public HtmlFormatter(final File file) throws IOException {
         this(new FileWriter(file));
@@ -80,8 +94,9 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Instantiiert einen neuen HtmlFormatter.
-     *
-     * @param ostream the ostream
+     * 
+     * @param ostream
+     *            the ostream
      */
     public HtmlFormatter(final OutputStream ostream) {
         this(new OutputStreamWriter(ostream));
@@ -89,8 +104,9 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Instantiiert einen neuen HtmlFormatter.
-     *
-     * @param writer the writer
+     * 
+     * @param writer
+     *            the writer
      */
     public HtmlFormatter(final Writer writer) {
         super(writer);
@@ -99,7 +115,8 @@ public final class HtmlFormatter extends AbstractFormatter {
     /**
      * Hiermit kann der Titel (Ueberschrift) gesetzt werden.
      * 
-     * @param title Titel bzw. Ueberschrift
+     * @param title
+     *            Titel bzw. Ueberschrift
      */
     public void setTitle(final String title) {
         this.title = title;
@@ -107,9 +124,11 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Ausgabe eines kompletten Datenpakets als XML.
-     *
-     * @param datenpaket Datenpaket, das als XML ausgegeben werden soll
-     * @throws IOException bei Problemen mit der HTML-Generierung
+     * 
+     * @param datenpaket
+     *            Datenpaket, das als XML ausgegeben werden soll
+     * @throws IOException
+     *             bei Problemen mit der HTML-Generierung
      * @see AbstractFormatter#write(gdv.xport.Datenpaket)
      */
     public void write(final Datenpaket datenpaket) throws IOException {
@@ -137,7 +156,7 @@ public final class HtmlFormatter extends AbstractFormatter {
             throw new IOException("XML-Fehler", e);
         }
     }
-    
+
     private static String getDetails(final Datenpaket datenpaket) throws XMLStreamException, IOException {
         StringWriter buffer = new StringWriter();
         XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(buffer);
@@ -154,7 +173,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         buffer.close();
         return buffer.toString();
     }
-    
+
     private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Satz satz, final int zeile)
             throws XMLStreamException {
         xmlStreamWriter.writeStartElement("div");
@@ -179,7 +198,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.flush();
     }
-    
+
     private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Satz satz, final int zeile)
             throws XMLStreamException {
         xmlStreamWriter.writeStartElement("h3");
@@ -205,7 +224,7 @@ public final class HtmlFormatter extends AbstractFormatter {
             Feld feld = iterator.next();
             int gap = feld.getByteAdresse() - endAdresse;
             if (gap > 1) {
-                Feld undefiniert = new Undefiniert(gap-1, endAdresse+1);
+                Feld undefiniert = new Undefiniert(gap - 1, endAdresse + 1);
                 writeTo(xmlStreamWriter, undefiniert, zeile);
             }
             writeTo(xmlStreamWriter, feld, zeile);
@@ -217,7 +236,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         }
         xmlStreamWriter.writeEndElement();
     }
-    
+
     private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Teildatensatz teildatensatz,
             final int zeile) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("h4");
@@ -302,17 +321,18 @@ public final class HtmlFormatter extends AbstractFormatter {
     }
 
     /**
-     * Urspruenglich war diese Methode dazu gedacht, um Umlaute zu ersetzen.
-     * Das "Escaping" wird aber bereits vom XMLStreamWriter uebernommen, der
-     * aber leider die Umlaute nicht ersetzt. Der Versuch, die Umlaute zu
-     * ersetzen, endete leider mit "...&amp;Uuml;..." im erzeugten HTML.
-     *
-     * @param xmlStreamWriter the xml stream writer
-     * @param feld the feld
-     * @throws XMLStreamException the xML stream exception
+     * Urspruenglich war diese Methode dazu gedacht, um Umlaute zu ersetzen. Das "Escaping" wird aber bereits vom
+     * XMLStreamWriter uebernommen, der aber leider die Umlaute nicht ersetzt. Der Versuch, die Umlaute zu ersetzen,
+     * endete leider mit "...&amp;Uuml;..." im erzeugten HTML.
+     * 
+     * @param xmlStreamWriter
+     *            the xml stream writer
+     * @param feld
+     *            the feld
+     * @throws XMLStreamException
+     *             the xML stream exception
      */
-    private static void writeInhaltTo(final XMLStreamWriter xmlStreamWriter, final Feld feld)
-            throws XMLStreamException {
+    private static void writeInhaltTo(final XMLStreamWriter xmlStreamWriter, final Feld feld) throws XMLStreamException {
         String inhalt = feld.getInhalt();
         xmlStreamWriter.writeCharacters(inhalt);
     }
@@ -323,8 +343,9 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Wandelt das uebergebene Datenpaket in einen HTML-String um.
-     *
-     * @param datenpaket das Datenpaket
+     * 
+     * @param datenpaket
+     *            das Datenpaket
      * @return Datenpaket als XML-String
      */
     public static String toString(final Datenpaket datenpaket) {
@@ -333,8 +354,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         try {
             formatter.write(datenpaket);
         } catch (IOException shouldnothappen) {
-            throw new RuntimeException("can't convert " + datenpaket + " to String",
-                    shouldnothappen);
+            throw new RuntimeException("can't convert " + datenpaket + " to String", shouldnothappen);
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();

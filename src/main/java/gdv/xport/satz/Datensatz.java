@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 by agentes
+ * Copyright (c) 2009 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,21 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 12.10.2009 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 12.10.2009 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.BUENDELUNGSKENNZEICHEN;
+import static gdv.xport.feld.Bezeichner.FOLGENUMMER;
+import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
+import static gdv.xport.feld.Bezeichner.SPARTE;
+import static gdv.xport.feld.Bezeichner.VERMITTLER;
+import static gdv.xport.feld.Bezeichner.VERSICHERUNGSSCHEINNUMMER;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.VUNummer;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.PushbackReader;
 import java.util.List;
 
 /**
  * The Class Datensatz.
- *
+ * 
  * @author oliver
  * @since 12.10.2009
  */
@@ -47,8 +55,7 @@ public class Datensatz extends Satz {
     private final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 33);
 
     /**
-     * Default-Konstruktor (wird zur Registrierung bei der
-     * {@link gdv.xport.util.SatzFactory} benoetigt).
+     * Default-Konstruktor (wird zur Registrierung bei der {@link gdv.xport.util.SatzFactory} benoetigt).
      * 
      * @since 0.6
      */
@@ -59,7 +66,8 @@ public class Datensatz extends Satz {
     /**
      * Instantiiert einen neuen Datensatz.
      * 
-     * @param satzart z.B. "0100"
+     * @param satzart
+     *            z.B. "0100"
      */
     public Datensatz(final String satzart) {
         super(satzart);
@@ -69,7 +77,8 @@ public class Datensatz extends Satz {
     /**
      * Instantiiert einen neuen Datensatz.
      * 
-     * @param satzart z.B. 100
+     * @param satzart
+     *            z.B. 100
      */
     public Datensatz(final int satzart) {
         super(satzart, 1);
@@ -79,8 +88,10 @@ public class Datensatz extends Satz {
     /**
      * Instantiiert einen neuen Datensatz.
      * 
-     * @param satzart z.B. 100
-     * @param n Anzahl der Teildatensaetze
+     * @param satzart
+     *            z.B. 100
+     * @param n
+     *            Anzahl der Teildatensaetze
      */
     public Datensatz(final String satzart, final int n) {
         super(satzart, n);
@@ -89,9 +100,11 @@ public class Datensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
-     * @param satzart z.B. 100
-     * @param tdsList Liste mit den Teildatensaetzen
+     * 
+     * @param satzart
+     *            z.B. 100
+     * @param tdsList
+     *            Liste mit den Teildatensaetzen
      */
     public Datensatz(final int satzart, final List<Teildatensatz> tdsList) {
         super(satzart, tdsList);
@@ -101,8 +114,10 @@ public class Datensatz extends Satz {
     /**
      * Instantiiert einen neuen Datensatz.
      * 
-     * @param satzart z.B. 100
-     * @param sparte z.B. 70 (Rechtsschutz)
+     * @param satzart
+     *            z.B. 100
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
      */
     public Datensatz(final int satzart, final int sparte) {
         this(satzart, sparte, 1);
@@ -111,9 +126,12 @@ public class Datensatz extends Satz {
     /**
      * Instantiiert einen neuen Datensatz.
      * 
-     * @param satzart z.B. 100
-     * @param sparte z.B. 70 (Rechtsschutz)
-     * @param n Anzahl der Teildatensaetze
+     * @param satzart
+     *            z.B. 100
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
+     * @param n
+     *            Anzahl der Teildatensaetze
      */
     public Datensatz(final int satzart, final int sparte, final int n) {
         super(satzart, n);
@@ -123,10 +141,13 @@ public class Datensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
-     * @param satzart z.B. 100
-     * @param sparte z.B. 70 (Rechtsschutz)
-     * @param tdsList Liste mit den Teildatensaetzen
+     * 
+     * @param satzart
+     *            z.B. 100
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
+     * @param tdsList
+     *            Liste mit den Teildatensaetzen
      */
     public Datensatz(final int satzart, final int sparte, final List<Teildatensatz> tdsList) {
         this(satzart, tdsList);
@@ -135,8 +156,7 @@ public class Datensatz extends Satz {
     }
 
     /**
-     * Kann von Unterklassen verwendet werden, um die Teildatensaetze
-     * aufzusetzen.
+     * Kann von Unterklassen verwendet werden, um die Teildatensaetze aufzusetzen.
      */
     protected void setUpTeildatensaetze() {
         for (Teildatensatz tds : this.getTeildatensaetze()) {
@@ -146,8 +166,9 @@ public class Datensatz extends Satz {
 
     /**
      * Hiermit kann ein einzelner Teildatensatz aufgesetzt werden.
-     *
-     * @param tds der (leere) Teildatensatz
+     * 
+     * @param tds
+     *            der (leere) Teildatensatz
      * @since 0.4
      */
     protected void setUpTeildatensatz(final Teildatensatz tds) {
@@ -158,10 +179,9 @@ public class Datensatz extends Satz {
         tds.add(this.folgeNr);
         tds.add(this.vermittler);
     }
-    
+
     /**
-     * Kann von Unterklassen verwendet werden, um fehlende Felder in den
-     * Teildatensaetze zu vervollstaendigen.
+     * Kann von Unterklassen verwendet werden, um fehlende Felder in den Teildatensaetze zu vervollstaendigen.
      * 
      * @since 0.6
      */
@@ -170,18 +190,21 @@ public class Datensatz extends Satz {
             setUpTeildatensatz(tds);
         }
     }
-    
+
     /**
      * Hiermit kann ein einzelner Teildatensatz aufgesetzt werden.
-     *
-     * @param n Nummer des Teildatensatzes (beginnend bei 1)
+     * 
+     * @param n
+     *            Nummer des Teildatensatzes (beginnend bei 1)
      * @since 0.5
      */
     protected void setUpTeildatensatz(final int n) {
         this.setUpTeildatensatz(this.getTeildatensatz(n));
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see gdv.xport.satz.Satz#addFiller()
      */
     @Override
@@ -193,8 +216,9 @@ public class Datensatz extends Satz {
 
     /**
      * Sets the sparte.
-     *
-     * @param x z.B. 70 (Rechtsschutz)
+     * 
+     * @param x
+     *            z.B. 70 (Rechtsschutz)
      */
     public void setSparte(final int x) {
         this.sparte.setInhalt(x);
@@ -202,16 +226,16 @@ public class Datensatz extends Satz {
 
     /**
      * Gets the sparte.
-     *
+     * 
      * @return die Sparte als int
      */
     public int getSparte() {
         return this.sparte.toInt();
     }
-    
+
     /**
      * Ueberprueft, ob der Datensatz ueberhaupt eine Sparte gesetzt hat.
-     *
+     * 
      * @return true, if successful
      * @since 0.6
      */
@@ -224,7 +248,7 @@ public class Datensatz extends Satz {
 
     /**
      * Gets the sparte feld.
-     *
+     * 
      * @return die Sparte als Feld
      */
     public NumFeld getSparteFeld() {
@@ -233,8 +257,9 @@ public class Datensatz extends Satz {
 
     /**
      * Sets the vu nummer.
-     *
-     * @param s VU-Nummer (max. 5 Stellen)
+     * 
+     * @param s
+     *            VU-Nummer (max. 5 Stellen)
      */
     public void setVuNummer(final String s) {
         this.vuNummer.setInhalt(s);
@@ -242,7 +267,7 @@ public class Datensatz extends Satz {
 
     /**
      * Gets the vu nummer.
-     *
+     * 
      * @return die VU-Nummer
      */
     public String getVuNummer() {
@@ -251,8 +276,9 @@ public class Datensatz extends Satz {
 
     /**
      * Sets the versicherungsschein nummer.
-     *
-     * @param nr die Versicherungsschein-Nummer
+     * 
+     * @param nr
+     *            die Versicherungsschein-Nummer
      * @since 0.3
      */
     public void setVersicherungsscheinNummer(final String nr) {
@@ -261,7 +287,7 @@ public class Datensatz extends Satz {
 
     /**
      * Gets the versicherungsschein nummer.
-     *
+     * 
      * @return die Versicherungsschein-Nummer
      * @since 0.3
      */
@@ -271,8 +297,9 @@ public class Datensatz extends Satz {
 
     /**
      * Hiermit kann die Folgenummer gesetzt werden.
-     *
-     * @param nr man sollte hier bei 1 anfangen mit zaehlen
+     * 
+     * @param nr
+     *            man sollte hier bei 1 anfangen mit zaehlen
      * @since 0.3
      */
     public void setFolgenummer(final int nr) {
@@ -281,17 +308,17 @@ public class Datensatz extends Satz {
 
     /**
      * Gets the folgenummer.
-     *
+     * 
      * @return die Folgenummer
      * @since 0.3
      */
     public int getFolgenummer() {
         return this.folgeNr.toInt();
     }
-    
+
     /**
      * Gets the vermittler.
-     *
+     * 
      * @return the vermittler
      * @since 0.6
      */
@@ -300,13 +327,13 @@ public class Datensatz extends Satz {
     }
 
     /**
-     * Liest 14 Bytes, um die Satzart zu bestimmen und stellt die Bytes
-     * anschliessend wieder zurueck in den Reader.
-     *
+     * Liest 14 Bytes, um die Satzart zu bestimmen und stellt die Bytes anschliessend wieder zurueck in den Reader.
+     * 
      * @param reader
      *            muss mind. einen Pushback-Puffer von 14 Zeichen bereitstellen
      * @return Satzart
-     * @throws IOException falls was schief gegangen ist
+     * @throws IOException
+     *             falls was schief gegangen ist
      */
     public static int readSparte(final PushbackReader reader) throws IOException {
         char[] cbuf = new char[14];
@@ -318,13 +345,32 @@ public class Datensatz extends Satz {
     }
 
     /**
-     * Unterklassen (wie Datensatz) sind dafuer verantwortlich, dass auch noch
-     * die Sparte ueberprueft wird, ob sie noch richtig ist oder ob da schon
-     * der naechste Satz beginnt.
-     *
-     * @param reader the reader
+     * Liest 1 Byte, um die Wagnisart zu bestimmen und stellt das Byte anschliessend wieder zurueck in den Reader.
+     * 
+     * @param reader
+     *            muss mind. einen Pushback-Puffer von 1 Zeichen bereitstellen
+     * @return Wagnisart
+     * @throws IOException
+     *             falls was schief gegangen ist
+     */
+    public static int readWagnisart(final PushbackReader reader) throws IOException {
+        char[] cbuf = new char[60];
+        if (reader.read(cbuf) == -1) {
+            throw new IOException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
+        }
+        reader.unread(cbuf);
+        return Integer.parseInt(new String(cbuf).substring(59, 60));
+    }
+
+    /**
+     * Unterklassen (wie Datensatz) sind dafuer verantwortlich, dass auch noch die Sparte ueberprueft wird, ob sie noch
+     * richtig ist oder ob da schon der naechste Satz beginnt.
+     * 
+     * @param reader
+     *            the reader
      * @return true (Default-Implementierung)
-     * @throws IOException bei I/O-Fehlern
+     * @throws IOException
+     *             bei I/O-Fehlern
      * @since 0.5.1
      * @see Satz#matchesNextTeildatensatz(PushbackReader)
      */
@@ -337,7 +383,9 @@ public class Datensatz extends Satz {
         return false;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see gdv.xport.satz.Satz#toShortString()
      */
     @Override
@@ -346,4 +394,3 @@ public class Datensatz extends Satz {
     }
 
 }
-

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,35 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 26.03.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 26.03.2011 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz.model;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Diese Klasse repraesentiert die Satzart 210.
- * Es handelt es sich dabei um eine alternative Implementierung der
- * {@link gdv.xport.satz.VertragsspezifischerTeil}-Klasse, die nach dem Soplet-
- * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
- * wurde.
+ * Diese Klasse repraesentiert die Satzart 210. Es handelt es sich dabei um eine alternative Implementierung der
+ * {@link gdv.xport.satz.VertragsspezifischerTeil}-Klasse, die nach dem Soplet- Ansatz (s. <a
+ * href="http://www.soplets.org/">soplets.org</a>) implementiert wurde.
  * 
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.6 (26.03.2011)
  */
+@Deprecated
 public class Satz210 extends SpartensatzX {
-    
+
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
-    
+
     static {
         mapping.put(10, gdv.xport.satz.feld.sparte10.Feld210.values());
         mapping.put(30, gdv.xport.satz.feld.sparte30.Feld210.values());
         mapping.put(50, gdv.xport.satz.feld.sparte50.Feld210.values());
         mapping.put(70, gdv.xport.satz.feld.sparte70.Feld210.values());
     }
-    
+
     /**
      * Default-Konstruktor.
      */
@@ -51,14 +51,17 @@ public class Satz210 extends SpartensatzX {
 
     /**
      * Legt ein neues Satz210-Objekt fuer die uebergebene Sparte an.
-     *
-     * @param sparte Sparte (z.B. 10)
+     * 
+     * @param sparte
+     *            Sparte (z.B. 10)
      */
     public Satz210(final int sparte) {
         super(210, sparte);
     }
-    
-    /* (non-Javadoc)
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see gdv.xport.satz.model.SpartensatzX#getMapping()
      */
     protected Map<Integer, Enum<?>[]> getMapping() {
@@ -66,4 +69,3 @@ public class Satz210 extends SpartensatzX {
     }
 
 }
-

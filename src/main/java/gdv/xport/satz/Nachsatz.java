@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (c) 2009 by agentes
+ * Copyright (c) 2009 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,34 +15,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 05.10.2009 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 05.10.2009 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
-import gdv.xport.feld.*;
-
+import static gdv.xport.feld.Bezeichner.ANZAHL_SAETZE;
+import static gdv.xport.feld.Bezeichner.GESAMTBEITRAG;
+import static gdv.xport.feld.Bezeichner.GESAMTBEITRAG_BRUTTO;
+import static gdv.xport.feld.Bezeichner.GESAMTPROVISIONSBETRAG;
+import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
+import static gdv.xport.feld.Bezeichner.SATZNUMMER;
+import static gdv.xport.feld.Bezeichner.SCHADENBEARBEITUNGSKOSTEN;
+import static gdv.xport.feld.Bezeichner.VERMITTLER;
+import static gdv.xport.feld.Bezeichner.VERSICHERUNGSLEISTUNGEN;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.BetragMitVorzeichen;
+import gdv.xport.feld.NumFeld;
 
 /**
  * @author oliver
  * @since 05.10.2009
  * @version $Revision$
- *
+ * 
  */
+@Deprecated
 public final class Nachsatz extends Satz {
 
     private final NumFeld anzahlSaetze = new NumFeld(ANZAHL_SAETZE, 10, 5);
     private final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 15);
     private final Betrag gesamtBeitrag = new Betrag(GESAMTBEITRAG, 15, 25);
-    private final BetragMitVorzeichen gesamtBeitragBrutto = new BetragMitVorzeichen(
-            GESAMTBEITRAG_BRUTTO, 15, 40);
-    private final BetragMitVorzeichen gesamtProvisionsBetrag = new BetragMitVorzeichen(
-            GESAMTPROVISIONSBETRAG, 15, 55);
-    private final BetragMitVorzeichen versicherungsLeistungen = new BetragMitVorzeichen(
-            VERSICHERUNGSLEISTUNGEN, 15, 70);
-    private final BetragMitVorzeichen schadenbearbeitungsKosten = new BetragMitVorzeichen(
-            SCHADENBEARBEITUNGSKOSTEN, 15, 85);
+    private final BetragMitVorzeichen gesamtBeitragBrutto = new BetragMitVorzeichen(GESAMTBEITRAG_BRUTTO, 15, 40);
+    private final BetragMitVorzeichen gesamtProvisionsBetrag = new BetragMitVorzeichen(GESAMTPROVISIONSBETRAG, 15, 55);
+    private final BetragMitVorzeichen versicherungsLeistungen = new BetragMitVorzeichen(VERSICHERUNGSLEISTUNGEN, 15, 70);
+    private final BetragMitVorzeichen schadenbearbeitungsKosten = new BetragMitVorzeichen(SCHADENBEARBEITUNGSKOSTEN,
+            15, 85);
 
     /**
      * Default-Constructor.
@@ -66,7 +74,8 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @param n Anzahl der eingeschlossenen Saetze
+     * @param n
+     *            Anzahl der eingeschlossenen Saetze
      */
     public void setAnzahlSaetze(final int n) {
         this.anzahlSaetze.setInhalt(n);
@@ -89,7 +98,8 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @param s Vermittler
+     * @param s
+     *            Vermittler
      */
     public void setVermittler(final String s) {
         this.vermittler.setInhalt(s);
@@ -104,8 +114,9 @@ public final class Nachsatz extends Satz {
 
     /**
      * Setzt den Gesamtbeitrag.
-     *
-     * @param beitrag der neue Gesamtbeitrag
+     * 
+     * @param beitrag
+     *            der neue Gesamtbeitrag
      */
     public void setGesamtBeitrag(final double beitrag) {
         this.gesamtBeitrag.setInhalt(beitrag);
@@ -119,7 +130,8 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @param beitrag neuer Gesamtbeitrag
+     * @param beitrag
+     *            neuer Gesamtbeitrag
      */
     public void setGesamtBeitragBrutto(final double beitrag) {
         this.gesamtBeitrag.setInhalt(beitrag);
@@ -133,7 +145,8 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @param betrag neuer Betrag
+     * @param betrag
+     *            neuer Betrag
      */
     public void setVersicherungsLeistungen(final Double betrag) {
         this.versicherungsLeistungen.setInhalt(betrag);
@@ -147,7 +160,8 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @param kosten Kosten der Schadensbearbeitung
+     * @param kosten
+     *            Kosten der Schadensbearbeitung
      */
     public void setSchadenbearbeitungsKosten(final double kosten) {
         this.schadenbearbeitungsKosten.setInhalt(kosten);

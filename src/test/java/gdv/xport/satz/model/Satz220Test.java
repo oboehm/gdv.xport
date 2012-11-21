@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 08.04.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 08.04.2011 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz.model;
@@ -24,6 +24,8 @@ import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.*;
+import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.Satz220Teil2;
 
 import java.io.*;
 import java.util.List;
@@ -34,12 +36,12 @@ import org.junit.*;
 
 /**
  * JUnit-Test fuer Satz220.
- * 
- * @author oliver (oliver.boehm@agentes.de)
+ *
+ * @author oliver (ob@aosd.de)
  * @since 0.6 (08.04.2011)
  */
 public class Satz220Test extends AbstractSatzTest {
-    
+
     private static final Log log = LogFactory.getLog(Satz220Test.class);
 
     /**
@@ -122,12 +124,12 @@ public class Satz220Test extends AbstractSatzTest {
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }
-    
+
     /**
      * Der Import von Sparte 51 scheint manchmal einfach uebergangen zu werden,
      * wenn er nur aus einem Teildatensatz besteht und danach gleich ein Satz
      * mit Sparte 53 kommt.
-     * 
+     *
      * @throws IOException
      *             falls der Test-Satz nicht gelesen werden kann
      */
@@ -143,6 +145,20 @@ public class Satz220Test extends AbstractSatzTest {
         } finally {
             istream.close();
         }
+    }
+
+    /**
+     * Hier testen wir hauptsaechlich Teil 2 des kreierten Datensatzes.
+     */
+    @Test
+    public void testSparte51() {
+        Satz220 sparte51 = new Satz220(51);
+        assertEquals(2, sparte51.getTeildatensaetze().size());
+        Teildatensatz teil2 = sparte51.getTeildatensatz(2);
+        Feld satzart = teil2.getFeld(Feld1bis7.SATZART);
+        assertEquals(1, satzart.getByteAdresse());
+        Feld produktkennung = teil2.getFeld(Satz220Teil2.PRODUKTKENNUNG);
+        assertEquals(43, produktkennung.getByteAdresse());
     }
 
 }

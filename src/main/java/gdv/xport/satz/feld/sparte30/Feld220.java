@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,18 +19,27 @@
 package gdv.xport.satz.feld.sparte30;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 30.
- * 
+ *
  * @author oliver
  * @since 07.04.11
  */
 public enum Feld220 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 1,
+            type = Feld1bis7.class
+    )
+    INTRO1,
 
     /**
      * Laufende Nummer der versicherten Person (VP) / Personengruppe
@@ -178,7 +187,14 @@ public enum Feld220 {
     TARIF,
 
     /**
-     * Deckungsumfang.
+     * Deckungsumfang. 
+     * 1 = 24 Stunden-Deckung
+     * 2 = nur Berufsunfall
+     * 3 = Berufsunfall mit Wegeunfall
+     * 4 = nur Wegeunfall
+     * 5 = Freizeitunfall
+     * 6 = Ehrenamtliche Tätigkeit
+     * 9 = sonstige
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -311,16 +327,44 @@ public enum Feld220 {
             byteAdresse = 242
     )
     KUENDIGUNGSKLAUSEL_VP,
+    
+    /**
+     * Eintrittsalter der VP in Jahren
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 31,
+            type = NumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 243
+            )
+    EINTRITTSALTER_DER_VP,
+    
+    /**
+     * Eintrittsalter der VP in Jahren
+     * 01 = Kinder
+     * 02 = Erwachsene
+     * 03 = Senioren
+     * 99 = Sonstige
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 32,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 245
+            )
+    ALTERSGRUPPE,
 
     /**
      * Leerstellen.
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 31,
+            nr = 33,
             type = AlphaNumFeld.class,
-            anzahlBytes = 7,
-            byteAdresse = 243
+            anzahlBytes = 3,
+            byteAdresse = 247
     )
     LEERSTELLEN,
 
@@ -329,7 +373,7 @@ public enum Feld220 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 32,
+            nr = 34,
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 250
@@ -342,7 +386,7 @@ public enum Feld220 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 33,
+            nr = 35,
             type = AlphaNumFeld.class,
             anzahlBytes = 6,
             byteAdresse = 251
@@ -351,8 +395,16 @@ public enum Feld220 {
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 2,
+            type = Feld1bis7.class
+    )
+    INTRO2,
+
     /**
-     * Lfd. Nummer.
+     * Laufende Nummer der versicherten Person (VP) / Personengruppe
+     * bei Gruppenunfallversicherungen.
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -361,7 +413,7 @@ public enum Feld220 {
             anzahlBytes = 6,
             byteAdresse = 43
     )
-    LFD_NUMMER,
+    LFD_NUMMER_VP_PERSONENGRUPPE2,
 
     /**
      * Satznummer.
@@ -826,6 +878,13 @@ public enum Feld220 {
 
     /////   Teildatensatz 3   /////////////////////////////////////////////////
 
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 3,
+            type = Feld1bis7.class
+    )
+    INTRO3,
+
     /**
      * Satznummer.
      */
@@ -1079,12 +1138,213 @@ public enum Feld220 {
             anzahlBytes = 6,
             byteAdresse = 251
     )
-    LFD_NUMMER_VP_PERSONENGRUPPE2,
+    LFD_NUMMER_VP_PERSONENGRUPPE3,
 
+    /////   Teildatensatz 4   /////////////////////////////////////////////////
+    
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    
+    @FelderInfo(
+            teildatensatz = 4,
+            type = Feld1bis7.class
+    )
+    INTRO4,
+    
+    /**
+     * Laufende Nummer.
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 8,
+            type = NumFeld.class,
+            anzahlBytes = 6,
+            byteAdresse = 43
+    )
+    LFD_NUMMER_VP_PERSONENGRUPPE4,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 9,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 49
+    )
+    SATZNUMMER4,
+    
+    /**
+     * Beitragszahlung bis (Tag/Monat/Jahr (TTMMJJJJ))
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 10,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 50
+            )
+    BEITRAGSZAHLUNG_BIS,
+    
+    /**
+     * Rückgewährdatum (Tag/Monat/Jahr (TTMMJJJJ))
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 11,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 58
+            )
+    RUECKGEWAEHRDATUM,
+    
+    /**
+     * Rückgewährsumme zum Ablauf in Währungseinheiten
+     * Vertraglich vereinbarte Rückgewährsumme zum Ablauf des Vertrages (aufgelaufene Beiträge)
+     * (12,2 Stellen)
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 12,
+            type = Betrag.class,
+            anzahlBytes = 14,
+            byteAdresse = 66
+            )
+    RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN,
+    
+    /**
+     * Ablaufleistung incl. Überschussanteile in Währungseinheiten
+     * nach Überschußanrechnung erreichte Ablaufleistung (12,2 Stellen)
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 13,
+            type = Betrag.class,
+            anzahlBytes = 14,
+            byteAdresse = 80
+            )
+    ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN,
+    
+    /**
+     * Kapitalertragssteuer bei Ablauf (12,2 Stellen)
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 14,
+            type = Betrag.class,
+            anzahlBytes = 14,
+            byteAdresse = 94
+            )
+    KAPITALERTRAGSSTEUER_BEI_ABLAUF,
+    
+    /**
+     * Solidaritätszuschlag bei Ablauf (12,2 Stellen)
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 15,
+            type = Betrag.class,
+            anzahlBytes = 14,
+            byteAdresse = 108
+            )
+    SOLIDARITAETSZUSCHLAG_BEI_ABLAUF,
+    
+    /**
+     * Rückkaufswert zum Berechnungsstichtag in Währungseinheiten (12,2 Stellen)
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 16,
+            type = Betrag.class,
+            anzahlBytes = 14,
+            byteAdresse = 122
+            )
+    RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN,
+    
+    /**
+     * Berechnungsstichtag zum Rückkaufswert (Tag/Monat/Jahr (TTMMJJJJ))
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 17,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 136
+            )
+    BERECHNUNGSSTICHTAG_ZUM_RUECKKAUFSWERT,
+    
+    /**
+     * Kapitalertragssteuer bei Rückkauf zum Berechnungsstichtag (12,2 Stellen)
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 18,
+            type = Betrag.class,
+            anzahlBytes = 14,
+            byteAdresse = 144
+            )
+    KAPITALERTRAGSSTEUER_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG,
+    
+    /**
+     * Solidaritätszuschlag bei Rückkauf zum Berechnungsstichtag (12,2 Stellen)
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 19,
+            type = Betrag.class,
+            anzahlBytes = 14,
+            byteAdresse = 158
+            )
+    SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG,
+    
+    /**
+     * Überschussanteile zum Berechnungsstichtag in Währungseinheiten (12,2 Stellen)
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 20,
+            type = Betrag.class,
+            anzahlBytes = 14,
+            byteAdresse = 172
+            )
+    UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN,
+    
+    /**
+     * Überschussanteile zum Berechnungsstichtag in Währungseinheiten (12,2 Stellen)
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 21,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 64,
+            byteAdresse = 186
+            )
+    LEERSTELLEN4,
+    
+    /**
+     * Satznummerwiederholung
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 22,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 250
+            )
+    SATZNUMMERWIEDERHOLUNG4,
+    
     /////   Teildatensatz 9   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 9,
+            type = Feld1bis7.class
+    )
+    INTRO9,
 
     /**
      * Lfd. Nummer der versicherten Person (VP).
+     * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(
             teildatensatz = 9,
@@ -1093,7 +1353,7 @@ public enum Feld220 {
             anzahlBytes = 17,
             byteAdresse = 43
     )
-    LFD_NUMMER_VP,
+    LFD_NUMMER_VP_PERSONENGRUPPE9,
 
     /**
      * Satznummer.
@@ -1179,16 +1439,28 @@ public enum Feld220 {
             byteAdresse = 100
     )
     REFERENZNUMMER,
+    
+    /**
+     * Geburtsdatum der bezugsberechtigten Person.
+     */
+    @FeldInfo(
+            teildatensatz = 9,
+            nr = 16,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 107
+            )
+    GEBURTSDATUM_DER_BEZUGSBERECHTIGTEN_PERSON,
 
     /**
      * Leerstellen.
      */
     @FeldInfo(
             teildatensatz = 9,
-            nr = 16,
+            nr = 17,
             type = AlphaNumFeld.class,
-            anzahlBytes = 143,
-            byteAdresse = 107
+            anzahlBytes = 135,
+            byteAdresse = 115
     )
     LEERSTELLEN3,
 
@@ -1197,7 +1469,7 @@ public enum Feld220 {
      */
     @FeldInfo(
             teildatensatz = 9,
-            nr = 17,
+            nr = 18,
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 250
@@ -1209,11 +1481,11 @@ public enum Feld220 {
      */
     @FeldInfo(
             teildatensatz = 9,
-            nr = 18,
+            nr = 19,
             type = NumFeld.class,
             anzahlBytes = 6,
             byteAdresse = 251
     )
-    LFD_NUMMER_VP_PERSONENGRUPPE3;
+    LFD_NUMMER_VP;
 
 }

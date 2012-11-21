@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 18.04.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 18.04.2011 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.demo;
@@ -27,7 +27,7 @@ import gdv.xport.feld.*;
  * 0210.030 (Unfall, Vertragsspezifischer Teil), definiert aber nur
  * einige wenige ausgewaehlte Felder.
  * 
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.6 (18.04.2011)
  */
 public enum MyFeld210 {

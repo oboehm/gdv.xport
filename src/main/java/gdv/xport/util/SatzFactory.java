@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 by agentes
+ * Copyright (c) 2009 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,49 +13,60 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 30.10.2009 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 30.10.2009 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.satz.*;
-import gdv.xport.satz.model.*;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Nachsatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.feld.Feld100;
+import gdv.xport.satz.feld.sparte10.Feld220;
+import gdv.xport.satz.feld.sparte10.Feld221;
+import gdv.xport.satz.model.Satz200;
+import gdv.xport.satz.model.Satz210;
+import gdv.xport.satz.model.Satz211;
+import gdv.xport.satz.model.Satz220;
+import gdv.xport.satz.model.Satz221;
+import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
- * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem
- * Import kommt, in den entsprechende Satz wandeln zu koennen.
- *
- * @author oliver (oliver.boehm@agentes.de)
+ * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import kommt, in den entsprechende Satz
+ * wandeln zu koennen.
+ * 
+ * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
 public final class SatzFactory {
 
     /** The Constant log. */
     private static final Log log = LogFactory.getLog(SatzFactory.class);
-    
+
     /** The registered satz classes. */
-    private static final Map<Integer, Class<? extends Satz>> registeredSatzClasses =
-        new HashMap<Integer, Class<? extends Satz>>();
-    
+    private static final Map<Integer, Class<? extends Satz>> registeredSatzClasses = new HashMap<Integer, Class<? extends Satz>>();
+
     /** The registered datensatz classes. */
-    private static final Map<Integer, Class<? extends Datensatz>> registeredDatensatzClasses =
-        new ConcurrentHashMap<Integer, Class<? extends Datensatz>>();
-    
+    private static final Map<Integer, Class<? extends Datensatz>> registeredDatensatzClasses = new ConcurrentHashMap<Integer, Class<? extends Datensatz>>();
+
     /** The registered Enum classes. */
-    private static final Map<Integer, Class<? extends Enum<?>>> registeredEnumClasses =
-        new HashMap<Integer, Class<? extends Enum<?>>>();
+    private static final Map<Integer, Class<? extends Enum<?>>> registeredEnumClasses = new HashMap<Integer, Class<? extends Enum<?>>>();
 
     static {
         register(Vorsatz.class, 1);
-        register(Satz100.class, 100);
+        registerEnum(Feld100.class, 100);
         register(Satz200.class, 200);
         register(Satz210.class, 210);
         register(Satz210.class, 210, 10);
@@ -66,12 +77,14 @@ public final class SatzFactory {
         register(Satz211.class, 211, 10);
         register(Satz211.class, 211, 50);
         register(Satz220.class, 220);
+        registerEnum(Feld220.class, 220, 10, 0);
         register(Satz220.class, 220, 30);
         register(Satz220.class, 220, 51);
         register(Satz220.class, 220, 52);
         register(Satz220.class, 220, 53);
         register(Satz220.class, 220, 70);
         register(Satz221.class, 221);
+        registerEnum(Feld221.class, 221, 10, -1);
         register(Satz221.class, 221, 30);
         register(Satz221.class, 221, 51);
         register(Satz221.class, 221, 52);
@@ -83,17 +96,18 @@ public final class SatzFactory {
     /**
      * Instantiates a new satz factory.
      */
-    private SatzFactory() {}
+    private SatzFactory() {
+    }
 
     /**
-     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
-     * unterstuetzte Datensaetze) registriert werden.
-     * Die Kasse <em>muss</em> einen Default-Konstruktor bereitstellen.
-     * Ansonsten wird hier eine {@link IllegalArgumentException} geworfen
-     * (seit 0.6).
-     *
-     * @param clazz the clazz
-     * @param satzart the satzart
+     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
+     * Die Kasse <em>muss</em> einen Default-Konstruktor bereitstellen. Ansonsten wird hier eine
+     * {@link IllegalArgumentException} geworfen (seit 0.6).
+     * 
+     * @param clazz
+     *            the clazz
+     * @param satzart
+     *            the satzart
      * @since 0.2
      */
     public static void register(final Class<? extends Satz> clazz, final int satzart) {
@@ -107,13 +121,14 @@ public final class SatzFactory {
         }
         registeredSatzClasses.put(satzart, clazz);
     }
-    
+
     /**
-     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
-     * Datensatz-Beschreibung uebergeben wird.
-     *
-     * @param enumClass die Aufzaehlungsklasse, z.B. Feld100.class
-     * @param satzart die Satzart
+     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
+     * 
+     * @param enumClass
+     *            die Aufzaehlungsklasse, z.B. Feld100.class
+     * @param satzart
+     *            die Satzart
      * @since 0.6
      */
     public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart) {
@@ -122,10 +137,10 @@ public final class SatzFactory {
     }
 
     /**
-     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
-     * Testen hilfreich sein kann)
-     *
-     * @param satzart the satzart
+     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
+     * 
+     * @param satzart
+     *            the satzart
      * @since 0.2
      */
     public static void unregister(final int satzart) {
@@ -134,69 +149,140 @@ public final class SatzFactory {
     }
 
     /**
-     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
-     * unterstuetzte Datensaetze) registriert werden.
-     *
-     * @param clazz the clazz
-     * @param satzart the satzart
-     * @param sparte the sparte
+     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
+     * 
+     * @param clazz
+     *            the clazz
+     * @param satzart
+     *            the satzart
+     * @param sparte
+     *            the sparte
      * @since 0.2
      */
-    public static void register(final Class<? extends Datensatz> clazz, final int satzart,
-            final int sparte) {
+    public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte) {
+        register(clazz, satzart, sparte, -1);
+    }
+
+    /**
+     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
+     * 
+     * @param clazz
+     *            the clazz
+     * @param satzart
+     *            the satzart
+     * @param sparte
+     *            the sparte
+     * @param wagnisart
+     *            the wagnisart
+     * @since 0.8
+     */
+    public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte,
+            final int wagnisart) {
         assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
-        assert (0 <= sparte) && (sparte <= 999)    : "Sparte muss zwischen 0 und 999 liegen";
-        int key = getAsKey(satzart, sparte);
+        assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
+        if (wagnisart != -1) {
+            assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
+        }
+        int key = getAsKey(satzart, sparte, wagnisart);
         registeredDatensatzClasses.put(key, clazz);
     }
-    
+
     /**
-     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
-     * Datensatz-Beschreibung uebergeben wird.
-     *
-     * @param enumClass die Aufzaehlungsklasse, z.B. Feld100.class
-     * @param satzart die Satzart
-     * @param sparte die Sparte
+     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
+     * 
+     * @param enumClass
+     *            die Aufzaehlungsklasse, z.B. Feld100.class
+     * @param satzart
+     *            die Satzart
+     * @param sparte
+     *            die Sparte
      * @since 0.6
      */
-    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart,
-            final int sparte) {
+    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte) {
+        registerEnum(enumClass, satzart, sparte);
+    }
+
+    /**
+     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
+     * 
+     * @param enumClass
+     *            die Aufzaehlungsklasse, z.B. Feld100.class
+     * @param satzart
+     *            die Satzart
+     * @param sparte
+     *            die Sparte
+     * @param wagnisart
+     *            die Wagnisart
+     * @since 0.8
+     */
+    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte,
+            final int wagnisart) {
         assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
-        assert (0 <= sparte) && (sparte <= 999)    : "Sparte muss zwischen 0 und 999 liegen";
-        int key = getAsKey(satzart, sparte);
+        assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
+        if (wagnisart != -1) {
+            assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
+        }
+        int key = getAsKey(satzart, sparte, wagnisart);
         registeredDatensatzClasses.remove(key);
         registeredEnumClasses.put(key, enumClass);
     }
 
     /**
-     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
-     * Testen hilfreich sein kann)
-     *
-     * @param satzart the satzart
-     * @param sparte the sparte
+     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
+     * 
+     * @param satzart
+     *            the satzart
+     * @param sparte
+     *            the sparte
      * @since 0.2
      */
     public static void unregister(final int satzart, final int sparte) {
-        int key = getAsKey(satzart, sparte);
+        unregister(satzart, sparte, -1);
+    }
+
+    /**
+     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
+     * 
+     * @param satzart
+     *            the satzart
+     * @param sparte
+     *            the sparte
+     * @param wagnisart
+     *            the wagnisart
+     * @since 0.8
+     */
+    public static void unregister(final int satzart, final int sparte, final int wagnisart) {
+        int key = getAsKey(satzart, sparte, wagnisart);
         registeredDatensatzClasses.remove(key);
         registeredEnumClasses.remove(key);
     }
 
     /**
      * Gets the as key.
-     *
-     * @param satzart the satzart
-     * @param sparte the sparte
+     * 
+     * @param satzart
+     *            the satzart
+     * @param sparte
+     *            the sparte
+     * @param wagnisart
+     *            the wagnisart
      * @return the as key
      */
-    private static int getAsKey(final int satzart, final int sparte) {
-        return satzart * 1000 + sparte;
+    private static int getAsKey(final int satzart, final int sparte, int wagnisart) {
+        int key = satzart * 1000 + sparte;
+
+        if (wagnisart != -1) {
+            key = key * 10 + wagnisart;
+        }
+
+        return key;
     }
 
     /**
      * Gets the satz.
-     *
-     * @param satzart the satzart
+     * 
+     * @param satzart
+     *            the satzart
      * @return angeforderte Satz
      * @since 0.2
      */
@@ -221,8 +307,7 @@ public final class SatzFactory {
             } catch (InvocationTargetException ite) {
                 throw new RuntimeException(ite.getTargetException() + " in " + ctor, ite);
             } catch (NoSuchMethodException nsme) {
-                throw new UnsupportedOperationException("registered " + clazz
-                        + " has not the required ctor", nsme);
+                throw new UnsupportedOperationException("registered " + clazz + " has not the required ctor", nsme);
             } catch (InstantiationException ie) {
                 throw new RuntimeException("registered " + clazz + " can't be instantiated", ie);
             } catch (IllegalAccessException iae) {
@@ -230,7 +315,7 @@ public final class SatzFactory {
             }
         }
     }
-    
+
     private static Satz generateSatz(final int satzart) {
         Class<? extends Enum<?>> enumClass = registeredEnumClasses.get(satzart);
         if (enumClass == null) {
@@ -238,9 +323,9 @@ public final class SatzFactory {
         }
         return new SatzX(satzart, enumClass);
     }
-    
-    private static Datensatz generateDatensatz(final int satzart, final int sparte) {
-        int key = getAsKey(satzart, sparte);
+
+    private static Datensatz generateDatensatz(final int satzart, final int sparte, final int wagnisart) {
+        int key = getAsKey(satzart, sparte, wagnisart);
         Class<? extends Enum<?>> enumClass = registeredEnumClasses.get(key);
         if (enumClass == null) {
             return useFallback(satzart, sparte);
@@ -249,11 +334,11 @@ public final class SatzFactory {
     }
 
     /**
-     * Versucht anhand des uebergebenen Strings herauszufinden, um was fuer
-     * eine Satzart es sich handelt und liefert dann einen entsprechende
-     * (gefuellten) Satz zurueck.
-     *
-     * @param content the content
+     * Versucht anhand des uebergebenen Strings herauszufinden, um was fuer eine Satzart es sich handelt und liefert
+     * dann einen entsprechende (gefuellten) Satz zurueck.
+     * 
+     * @param content
+     *            the content
      * @return einen gefuellten Satz
      * @since 0.2
      */
@@ -277,8 +362,9 @@ public final class SatzFactory {
 
     /**
      * Gets the datensatz.
-     *
-     * @param satzart den registrierten Datensatz fuer
+     * 
+     * @param satzart
+     *            den registrierten Datensatz fuer
      * @return den registrierten Datensatz fuer 'satzart'
      * @since 0.2
      */
@@ -288,16 +374,35 @@ public final class SatzFactory {
 
     /**
      * Gets the datensatz.
-     *
-     * @param satzart z.B. 210
-     * @param sparte z.B. 70 (Rechtsschutz)
+     * 
+     * @param satzart
+     *            z.B. 210
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
      * @return den registrierten Datensatz fuer 'satzart', 'sparte'
      */
     public static Datensatz getDatensatz(final int satzart, final int sparte) {
-        int key = getAsKey(satzart, sparte);
+        return getDatensatz(satzart, sparte, -1);
+    }
+
+    /**
+     * Gets the datensatz.
+     * 
+     * @param satzart
+     *            z.B. 210
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
+     * @param wagnisart
+     *            z.B. 1 (Kapitallebensversicherung)
+     * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart'
+     * 
+     * @since 0.8
+     */
+    public static Datensatz getDatensatz(final int satzart, final int sparte, final int wagnisart) {
+        int key = getAsKey(satzart, sparte, wagnisart);
         Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(key);
         if (clazz == null) {
-            return generateDatensatz(satzart, sparte);
+            return generateDatensatz(satzart, sparte, wagnisart);
         }
         try {
             Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);
@@ -319,9 +424,11 @@ public final class SatzFactory {
 
     /**
      * Gets the datensatz.
-     *
-     * @param sparte the sparte
-     * @param clazz the clazz
+     * 
+     * @param sparte
+     *            the sparte
+     * @param clazz
+     *            the clazz
      * @return the datensatz
      */
     private static Datensatz getDatensatz(final int sparte, final Class<? extends Datensatz> clazz) {
@@ -349,9 +456,11 @@ public final class SatzFactory {
 
     /**
      * Use fallback.
-     *
-     * @param satzart the satzart
-     * @param sparte the sparte
+     * 
+     * @param satzart
+     *            the satzart
+     * @param sparte
+     *            the sparte
      * @return the datensatz
      */
     private static Datensatz useFallback(final int satzart, final int sparte) {
@@ -377,7 +486,7 @@ public final class SatzFactory {
         Datenpaket all = new Datenpaket();
         for (Integer satzart : registeredSatzClasses.keySet()) {
             try {
-                all.add(getDatensatz(satzart));                
+                all.add(getDatensatz(satzart));
             } catch (ClassCastException canhappen) {
                 if ((satzart != 1) && (satzart != 9999)) {
                     log.warn("Satzart " + satzart + " not added as supported Satz", canhappen);
@@ -393,4 +502,3 @@ public final class SatzFactory {
     }
 
 }
-

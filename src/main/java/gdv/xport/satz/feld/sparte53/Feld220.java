@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,18 +24,26 @@ import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
+import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
 
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 53.
- * 
+ *
  * @author oliver
  * @since 07.04.11
  */
 public enum Feld220 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 1,
+            type = Feld1bis7.class
+    )
+    INTRO1,
 
     /**
      * KFT-Beginn.
@@ -334,7 +342,10 @@ public enum Feld220 {
     SATZNUMMER1,
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
-    
+
+    /**
+     * Teildatensatz 2.
+     */
     @FelderInfo(type = Satz220Teil2.class)
     TEILDATENSATZ2;
 

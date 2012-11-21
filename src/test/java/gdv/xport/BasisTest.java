@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2010 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 19.11.2010 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 19.11.2010 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport;
@@ -33,7 +33,7 @@ import patterntesting.runtime.junit.*;
  * Implementierung aller equals-Methoden. Es greift dabei auf den ObjectTester
  * und anderen Test-Hilfsmittel von PatternTesting zurueck.
  * 
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.5.0 (19.11.2010)
  */
 @RunWith(ParallelRunner.class)

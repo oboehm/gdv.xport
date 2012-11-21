@@ -1,7 +1,7 @@
 /*
  * $Id$
  *
- * Copyright (c) 2009 by agentes
+ * Copyright (c) 2009 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,24 +15,52 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 05.10.2009 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 05.10.2009 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.ABSENDER;
+import static gdv.xport.feld.Bezeichner.ADRESSAT;
+import static gdv.xport.feld.Bezeichner.ALLGEMEINE_ANTRAGSDATEN;
+import static gdv.xport.feld.Bezeichner.ART_DES_ABSENDERS;
+import static gdv.xport.feld.Bezeichner.ART_DES_ADRESSATEN;
+import static gdv.xport.feld.Bezeichner.BEGLEITDOKUMENTE_UND_SIGNATUREN;
+import static gdv.xport.feld.Bezeichner.BESTANDSFUEHRENDE_GESCHAEFTSSTELLE;
+import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_BIS;
+import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_VOM;
+import static gdv.xport.feld.Bezeichner.EVB_NUMMER;
+import static gdv.xport.feld.Bezeichner.FONDSDATENSATZ_LEBEN;
+import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
+import static gdv.xport.feld.Bezeichner.MIME_DATEI;
+import static gdv.xport.feld.Bezeichner.PRODUKTSPEZIFISCHE_ANTRAGSDATEN;
+import static gdv.xport.feld.Bezeichner.PRODUKTSPEZIFISCHE_STAMMDATEN;
+import static gdv.xport.feld.Bezeichner.RABATTE_UND_ZUSCHLAEGE;
+import static gdv.xport.feld.Bezeichner.UNFALLSPEZIFISCHE_ANTRAGSDATEN;
+import static gdv.xport.feld.Bezeichner.UNFALL_LEISTUNGSARTEN;
+import static gdv.xport.feld.Bezeichner.VERMITTLER;
+import static gdv.xport.feld.Bezeichner.VERSION_NACHSATZ;
+import static gdv.xport.feld.Bezeichner.VERSION_VORSATZ;
+import static gdv.xport.feld.Bezeichner.VU_ABRECHNUNGSSTELLE;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.VUNummer;
+import gdv.xport.feld.Version;
+import gdv.xport.feld.Zeichen;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Formatter;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.apache.commons.logging.*;
-
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * @author oliver
  */
+@Deprecated
 public final class Vorsatz extends Satz {
 
     private static final Log log = LogFactory.getLog(Vorsatz.class);
@@ -61,7 +89,8 @@ public final class Vorsatz extends Satz {
     }
 
     /**
-     * @param content Inhalt des Vorsatzes
+     * @param content
+     *            Inhalt des Vorsatzes
      */
     public Vorsatz(final String content) {
         this();
@@ -80,7 +109,7 @@ public final class Vorsatz extends Satz {
             nr++;
         }
     }
-    
+
     private void setUpTeildatensatz(final int n, final Teildatensatz tds) {
         tds.add(this.vuNummer);
         tds.add(this.absender);
@@ -89,17 +118,28 @@ public final class Vorsatz extends Satz {
         tds.add(this.bis);
         tds.add(this.vermittler);
         switch (n) {
-            case 1:     // Teildatensatz 1
+            case 1: // Teildatensatz 1
                 tds.add(new Zeichen(ART_DES_ABSENDERS, 237));
                 tds.add(new Zeichen(ART_DES_ADRESSATEN, 238));
                 tds.add(new AlphaNumFeld(VU_ABRECHNUNGSSTELLE, 2, 239));
                 tds.add(new AlphaNumFeld(BESTANDSFUEHRENDE_GESCHAEFTSSTELLE, 2, 241));
                 tds.add(new AlphaNumFeld(LEERSTELLEN, 10, 246));
                 break;
-            case 2:     // Teildatensatz 2
+            case 2: // Teildatensatz 2
                 tds.add(new AlphaNumFeld(PRODUKTSPEZIFISCHE_ANTRAGSDATEN, 3, 240));
                 tds.add(new AlphaNumFeld(PRODUKTSPEZIFISCHE_STAMMDATEN, 3, 243));
                 tds.add(new AlphaNumFeld(LEERSTELLEN, 10, 246));
+                break;
+            case 3: // Teildatensatz 3
+                tds.add(new AlphaNumFeld(EVB_NUMMER, 3, 96));
+                tds.add(new AlphaNumFeld(FONDSDATENSATZ_LEBEN, 3, 99));
+                tds.add(new AlphaNumFeld(ALLGEMEINE_ANTRAGSDATEN, 3, 102));
+                tds.add(new AlphaNumFeld(UNFALLSPEZIFISCHE_ANTRAGSDATEN, 3, 105));
+                tds.add(new AlphaNumFeld(UNFALL_LEISTUNGSARTEN, 3, 108));
+                tds.add(new AlphaNumFeld(RABATTE_UND_ZUSCHLAEGE, 3, 111));
+                tds.add(new AlphaNumFeld(BEGLEITDOKUMENTE_UND_SIGNATUREN, 3, 114));
+                tds.add(new AlphaNumFeld(MIME_DATEI, 3, 117));
+                tds.add(new AlphaNumFeld(LEERSTELLEN, 118, 138));
                 break;
             default:
                 log.debug("no special setup for Teildatensatz " + n);
@@ -238,8 +278,7 @@ public final class Vorsatz extends Satz {
         addVersion(tds, art, new Version(s, byteadresse, version));
     }
 
-    private void addVersion(final int art, final int sparte, final int byteadresse,
-            final String version) {
+    private void addVersion(final int art, final int sparte, final int byteadresse, final String version) {
         addVersion(this.getTeildatensatz(1), art, sparte, byteadresse, version);
     }
 
@@ -260,7 +299,9 @@ public final class Vorsatz extends Satz {
 
     /**
      * Um die VU-Nummer setzen zu koennen.
-     * @param s VU-Nummer (max. 5-stellig)
+     * 
+     * @param s
+     *            VU-Nummer (max. 5-stellig)
      */
     public void setVuNummer(final String s) {
         assert s.length() <= 5 : s + " darf nur max. 5 Zeichen lang sein";
@@ -276,7 +317,9 @@ public final class Vorsatz extends Satz {
 
     /**
      * Absender ist Byte 10 - 39 im Teildatensatz.
-     * @param name Absender
+     * 
+     * @param name
+     *            Absender
      */
     public void setAbsender(final String name) {
         this.absender.setInhalt(name);
@@ -290,7 +333,8 @@ public final class Vorsatz extends Satz {
     }
 
     /**
-     * @param name neuer Adressat
+     * @param name
+     *            neuer Adressat
      */
     public void setAdressat(final String name) {
         this.adressat.setInhalt(name);
@@ -304,8 +348,10 @@ public final class Vorsatz extends Satz {
     }
 
     /**
-     * @param startDatum im Format "TTMMJJJJ"
-     * @param endDatum im Format "TTMMJJJJ"
+     * @param startDatum
+     *            im Format "TTMMJJJJ"
+     * @param endDatum
+     *            im Format "TTMMJJJJ"
      */
     public void setErstellungsZeitraum(final String startDatum, final String endDatum) {
         this.von.setInhalt(startDatum);
@@ -313,7 +359,8 @@ public final class Vorsatz extends Satz {
     }
 
     /**
-     * @param s neuer Vermittler
+     * @param s
+     *            neuer Vermittler
      */
     public void setVermittler(final String s) {
         this.vermittler.setInhalt(s);
@@ -328,10 +375,9 @@ public final class Vorsatz extends Satz {
 
     /**
      * Ermittelt die Version des uebergebenen Bezeichners.
-     *
+     * 
      * @param bezeichner
-     *            z.B. VERSION_VORSATZ; hier koennen alle die
-     *            Bezeichner-Konstanten gewaehlt werden, die mit "VERSION_"
+     *            z.B. VERSION_VORSATZ; hier koennen alle die Bezeichner-Konstanten gewaehlt werden, die mit "VERSION_"
      *            anfangen.
      * @return Version des gewuenschten Bezeichners
      */
@@ -340,7 +386,8 @@ public final class Vorsatz extends Satz {
     }
 
     /**
-     * @param art Satzart
+     * @param art
+     *            Satzart
      * @return z.B. 1.1
      */
     public String getVersion(final int art) {
@@ -348,8 +395,10 @@ public final class Vorsatz extends Satz {
     }
 
     /**
-     * @param art Satzart
-     * @param sparte z.B. 70 (Rechtsschutz)
+     * @param art
+     *            Satzart
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
      * @return z.B. 1.1
      */
     public String getVersion(final int art, final int sparte) {

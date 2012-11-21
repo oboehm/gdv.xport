@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 by agentes
+ * Copyright (c) 2009 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,32 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 30.10.2009 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 30.10.2009 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.util;
 
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
 import gdv.xport.demo.MyFeld210;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
-import gdv.xport.satz.model.*;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.model.Satz210;
+import gdv.xport.satz.model.Satz220;
+import gdv.xport.satz.model.Satz221;
+import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 /**
  * JUnit-Test fuer SatzFactory.
  * 
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
 public final class SatzFactoryTest extends AbstractTest {
-    
+
     private static final Log log = LogFactory.getLog(SatzFactoryTest.class);
 
     /**
@@ -63,8 +73,7 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     /**
-     * Testet getSatz() fuer eine Satzart, die (noch) nicht unterstuetzt
-     * wird.
+     * Testet getSatz() fuer eine Satzart, die (noch) nicht unterstuetzt wird.
      */
     @Test
     public void testGetUnsupportedSatz() {
@@ -100,7 +109,7 @@ public final class SatzFactoryTest extends AbstractTest {
         assertEquals(SatzX.class, satz.getClass());
         SatzFactory.unregister(47, 11);
     }
-    
+
     /**
      * Testet {@link SatzFactory#registerEnum(Class, int)}.
      */
@@ -130,8 +139,7 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     /**
-     * Damit wird ueberprueft, ob Satzart 100 (Adressteil) bei der
-     * SatzFactory richtig registriert ist.
+     * Damit wird ueberprueft, ob Satzart 100 (Adressteil) bei der SatzFactory richtig registriert ist.
      */
     @Test
     public void testGetAdressteil() {
@@ -139,22 +147,21 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     /**
-     * Damit wird ueberprueft, ob die Satzart 200 (AllgemeinerVertragsteil
-     * oder Satz200) bei der SatzFactory registriert ist.
+     * Damit wird ueberprueft, ob die Satzart 200 (AllgemeinerVertragsteil oder Satz200) bei der SatzFactory registriert
+     * ist.
      */
     @Test
     public void testAllgemeinerVertragsteil() {
         checkGetDatensatz(200);
     }
-    
+
     private static void checkGetDatensatz(final int satzart) {
         Satz datensatz = SatzFactory.getDatensatz(satzart);
         assertEquals(satzart, datensatz.getSatzart());
     }
 
     /**
-     * Damit wird ueberprueft, ob Satzart 221 (Erweiterungssatz) bei der
-     * SatzFactory registriert ist.
+     * Damit wird ueberprueft, ob Satzart 221 (Erweiterungssatz) bei der SatzFactory registriert ist.
      */
     @Test
     public void testGetErweiterungssatz() {
@@ -190,7 +197,7 @@ public final class SatzFactoryTest extends AbstractTest {
     public void testGetErweiterungssatz30() {
         checkGetDatensatz(221, 30, Satz221.class, "2");
     }
-    
+
     @Test
     public void testGetSatzart210() {
         checkGetDatensatz(210, 10, Satz210.class, "1");
@@ -219,19 +226,20 @@ public final class SatzFactoryTest extends AbstractTest {
     /**
      * Die Daten zu diesem Test stammen aus der Musterdatei.
      * 
-     * @throws IOException sollte eigentlich nicht vorkommen
+     * @throws IOException
+     *             sollte eigentlich nicht vorkommen
      */
     @Test
     public void testImport() throws IOException {
         Datensatz datensatz = SatzFactory.getDatensatz(210, 30);
         String s = "02109999  030      599999999990199990099991010520040105200901052"
-                 + "0040901 0000000000000000000 EUR000000000000000000000000000000041"
-                 + "1410000000000 0001000                                           "
-                 + "           000000                                               ";
+                + "0040901 0000000000000000000 EUR000000000000000000000000000000041"
+                + "1410000000000 0001000                                           "
+                + "           000000                                               ";
         datensatz.importFrom(s);
         assertEquals(1, datensatz.getFolgenummer());
     }
-    
+
     /**
      * Test-Methode fuer {@link SatzFactory#getAllSupportedSaetze()}.
      */
@@ -242,11 +250,10 @@ public final class SatzFactoryTest extends AbstractTest {
         log.info(n + " Satzarten supported");
         assertTrue("only " + n + " Datensaetze supported", n > 5);
     }
-    
+
     /**
-     * Das Registrieren/Deregistrieren von Enum-Saetzen scheint nicht richtig
-     * zu funktionieren. Dies wird mit diesem Test nachgestellt
-     * (s. Issue 1).
+     * Das Registrieren/Deregistrieren von Enum-Saetzen scheint nicht richtig zu funktionieren. Dies wird mit diesem
+     * Test nachgestellt (s. Issue 1).
      * 
      * @since 0.6.3
      */
@@ -264,5 +271,3 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
 }
-
-

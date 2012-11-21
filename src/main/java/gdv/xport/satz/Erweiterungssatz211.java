@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,21 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 05.01.2011 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 05.01.2011 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
-import gdv.xport.feld.*;
+import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
+import static gdv.xport.feld.Bezeichner.LFD_NUMMER;
+import static gdv.xport.feld.Bezeichner.MEHRWERT_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.NEUPREIS_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.PERSONEN_KUNDENNUMMER_DES_VERSICHERERS;
+import static gdv.xport.feld.Bezeichner.REFERENZNUMMER;
+import static gdv.xport.feld.Bezeichner.VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.NumFeld;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.5.0 (05.01.2011)
- *
+ * 
  */
+@Deprecated
 public class Erweiterungssatz211 extends Spartensatz {
 
     /** 211 Erweiterungssatz. */
@@ -45,7 +57,8 @@ public class Erweiterungssatz211 extends Spartensatz {
     /**
      * Konstruktor fuer die gewuenschte Sparte.
      * 
-     * @param sparte z.B. 70 (Rechtsschutz)
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
      */
     public Erweiterungssatz211(final int sparte) {
         this(sparte, getNumberOfTeildatensaetzeFor(sparte));
@@ -54,14 +67,16 @@ public class Erweiterungssatz211 extends Spartensatz {
     /**
      * Konstruktor fuer die gewuenschte Sparte.
      * 
-     * @param sparte z.B. 70 (Rechtsschutz)
-     * @param n Anzahl Teildatensaetze
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
+     * @param n
+     *            Anzahl Teildatensaetze
      */
     public Erweiterungssatz211(final int sparte, final int n) {
         super(SATZART, sparte, n);
         this.setUpDatenfelder(sparte);
     }
-    
+
     private static int getNumberOfTeildatensaetzeFor(final int sparte) {
         switch (sparte) {
             case 0:
@@ -80,12 +95,12 @@ public class Erweiterungssatz211 extends Spartensatz {
                 return 1;
         }
     }
-    
+
     /**
-     * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene
-     * Sparte an.
-     *
-     * @param x Sparte (z.B. 10)
+     * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene Sparte an.
+     * 
+     * @param x
+     *            Sparte (z.B. 10)
      */
     protected void createTeildatensaetzeFor(final int x) {
         this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
@@ -93,8 +108,9 @@ public class Erweiterungssatz211 extends Spartensatz {
 
     /**
      * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
-     *
-     * @param sparte Sparte (z.B. 10)
+     * 
+     * @param sparte
+     *            Sparte (z.B. 10)
      */
     protected void setUpDatenfelder(final int sparte) {
         switch (sparte) {
@@ -111,17 +127,16 @@ public class Erweiterungssatz211 extends Spartensatz {
                 break;
         }
     }
-    
+
     private void setUpDatenfelder10() {
         this.setUpTeildatensatz(1);
         this.add(new NumFeld(VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN, 14, 43).mitNachkommastellen(2));
         this.add(new NumFeld(ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN, 12, 57).mitNachkommastellen(2));
         this.add(new AlphaNumFeld(LEERSTELLEN, 187, 69));
     }
-    
+
     /**
-     * Sparte 50 (KFZ - Fahrzeugdaten) wurde freundlicherweise von
-     * Igor Narodetskyi zur Verfuegung gestellt.
+     * Sparte 50 (KFZ - Fahrzeugdaten) wurde freundlicherweise von Igor Narodetskyi zur Verfuegung gestellt.
      * 
      * @since 0.5.1
      */
@@ -136,4 +151,3 @@ public class Erweiterungssatz211 extends Spartensatz {
     }
 
 }
-

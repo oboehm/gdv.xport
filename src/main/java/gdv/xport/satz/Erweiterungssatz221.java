@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 by agentes
+ * Copyright (c) 2010 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,24 +13,75 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 18.11.2010 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 18.11.2010 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
-import gdv.xport.feld.*;
+import static gdv.xport.feld.Bezeichner.ABSCHLAG1_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.ABSCHLAG2_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.ABSCHLAG3_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.BERGUNGSKOSTEN;
+import static gdv.xport.feld.Bezeichner.DECKUNGSSUMME_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.FESTE_RENTE;
+import static gdv.xport.feld.Bezeichner.FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH;
+import static gdv.xport.feld.Bezeichner.FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO;
+import static gdv.xport.feld.Bezeichner.FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO;
+import static gdv.xport.feld.Bezeichner.FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_VOLLKASKO;
+import static gdv.xport.feld.Bezeichner.GENESUNGSGELD;
+import static gdv.xport.feld.Bezeichner.HEILKOSTEN;
+import static gdv.xport.feld.Bezeichner.INVALIDITAET;
+import static gdv.xport.feld.Bezeichner.KFT_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.KFT_BEITRAG_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.KFT_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.KFV_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.KFV_BEITRAG_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.KFV_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.KH_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.KH_BEITRAG_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1;
+import static gdv.xport.feld.Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2;
+import static gdv.xport.feld.Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3;
+import static gdv.xport.feld.Bezeichner.KH_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.KOSMETISCHE_OPERATIONEN;
+import static gdv.xport.feld.Bezeichner.KRANKENHAUSTAGEGELD;
+import static gdv.xport.feld.Bezeichner.KURKOSTEN;
+import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
+import static gdv.xport.feld.Bezeichner.LFD_NUMMER;
+import static gdv.xport.feld.Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE;
+import static gdv.xport.feld.Bezeichner.PERSONENNUMMER_LFD_NUMMER;
+import static gdv.xport.feld.Bezeichner.REFERENZNUMMER;
+import static gdv.xport.feld.Bezeichner.RISIKOGRUPPE_RISIKOART;
+import static gdv.xport.feld.Bezeichner.SATZNUMMER;
+import static gdv.xport.feld.Bezeichner.SATZNUMMERWIEDERHOLUNG;
+import static gdv.xport.feld.Bezeichner.SERVICELEISTUNGEN;
+import static gdv.xport.feld.Bezeichner.TAGEGELD1;
+import static gdv.xport.feld.Bezeichner.TAGEGELD2;
+import static gdv.xport.feld.Bezeichner.TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGTEIL_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_HAFTPFLICHT_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.TOD;
+import static gdv.xport.feld.Bezeichner.UEBERGANGSENTSCHAEDIGUNG;
+import static gdv.xport.feld.Bezeichner.ZUSAETZLICHE_SATZKENNUNG;
+import static gdv.xport.feld.Bezeichner.ZUSCHLAG1_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Klasse fuer die Satzart 0221 (Erweiterungssatz).
  * 
- * @author oliver (oliver.boehm@agentes.de)
+ * @author oliver (ob@aosd.de)
  * @since 0.5.0 (18.11.2010)
  */
+@Deprecated
 public class Erweiterungssatz221 extends Spartensatz {
-    
+
     /** 221 Erweiterungssatz. */
     public static final int SATZART = 221;
 
@@ -46,7 +97,8 @@ public class Erweiterungssatz221 extends Spartensatz {
     /**
      * Konstruktor fuer die gewuenschte Sparte.
      * 
-     * @param sparte z.B. 70 (Rechtsschutz)
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
      */
     public Erweiterungssatz221(final int sparte) {
         this(sparte, getNumberOfTeildatensaetzeFor(sparte));
@@ -55,14 +107,16 @@ public class Erweiterungssatz221 extends Spartensatz {
     /**
      * Konstruktor fuer die gewuenschte Sparte.
      * 
-     * @param sparte z.B. 70 (Rechtsschutz)
-     * @param n Anzahl Teildatensaetze
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
+     * @param n
+     *            Anzahl Teildatensaetze
      */
     public Erweiterungssatz221(final int sparte, final int n) {
         super(SATZART, sparte, n);
         this.setUpDatenfelder(sparte);
     }
-    
+
     private static int getNumberOfTeildatensaetzeFor(final int sparte) {
         switch (sparte) {
             case 0:
@@ -89,12 +143,12 @@ public class Erweiterungssatz221 extends Spartensatz {
                 return 1;
         }
     }
-    
+
     /**
-     * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene
-     * Sparte an.
-     *
-     * @param x Sparte (z.B. 30)
+     * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene Sparte an.
+     * 
+     * @param x
+     *            Sparte (z.B. 30)
      */
     protected void createTeildatensaetzeFor(final int x) {
         this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
@@ -102,8 +156,9 @@ public class Erweiterungssatz221 extends Spartensatz {
 
     /**
      * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
-     *
-     * @param sparte Sparte (z.B. 30)
+     * 
+     * @param sparte
+     *            Sparte (z.B. 30)
      */
     protected void setUpDatenfelder(final int sparte) {
         switch (sparte) {
@@ -129,7 +184,7 @@ public class Erweiterungssatz221 extends Spartensatz {
                 break;
         }
     }
-    
+
     private void setUpDatenfelder30() {
         this.setUpTeildatensatz30(2, this.getTeildatensatz(1));
         this.setUpTeildatensatz30(3, this.getTeildatensatz(2));
@@ -137,8 +192,8 @@ public class Erweiterungssatz221 extends Spartensatz {
 
     private void setUpTeildatensatz30(final int n, final Teildatensatz tds) {
         this.setUpTeildatensatz(tds);
-        switch(n) {
-            case 2:     // Teildatensatz 2
+        switch (n) {
+            case 2: // Teildatensatz 2
                 tds.add(new NumFeld(LFD_NUMMER_VP_PERSONENGRUPPE, 6, 43));
                 tds.add(new NumFeld(SATZNUMMER, 1, 49, n));
                 tds.add(new NumFeld(TOD, 14, 50).mitNachkommastellen(2));
@@ -156,7 +211,7 @@ public class Erweiterungssatz221 extends Spartensatz {
                 tds.add(new AlphaNumFeld(LEERSTELLEN, 54, 202));
                 tds.add(new Zeichen(ZUSAETZLICHE_SATZKENNUNG, 256, 'X'));
                 break;
-            case 3:     // Teildatensatz 3
+            case 3: // Teildatensatz 3
                 tds.add(new NumFeld(SATZNUMMER, 1, 43, n));
                 tds.add(new NumFeld(SERVICELEISTUNGEN, 14, 44).mitNachkommastellen(2));
                 tds.add(new AlphaNumFeld(REFERENZNUMMER, 7, 58));
@@ -168,10 +223,9 @@ public class Erweiterungssatz221 extends Spartensatz {
                 throw new IllegalArgumentException("unbekannte Teildatensatz-Nr.: " + n);
         }
     }
-    
+
     /**
-     * Sparte 51 (KFZ - Fahrzeughaftpflicht) wurde freundlicherweise von
-     * Igor Narodetskyi zur Verfuegung gestellt.
+     * Sparte 51 (KFZ - Fahrzeughaftpflicht) wurde freundlicherweise von Igor Narodetskyi zur Verfuegung gestellt.
      * 
      * @since 0.5.1
      */
@@ -189,10 +243,9 @@ public class Erweiterungssatz221 extends Spartensatz {
         add(new AlphaNumFeld(LFD_NUMMER, 4, 152));
         add(new AlphaNumFeld(PERSONENNUMMER_LFD_NUMMER, 17, 156));
     }
-    
+
     /**
-     * Sparte 52 (KFZ - Fahrzeugvoll) wurde freundlicherweise von
-     * Igor Narodetskyi zur Verfuegung gestellt.
+     * Sparte 52 (KFZ - Fahrzeugvoll) wurde freundlicherweise von Igor Narodetskyi zur Verfuegung gestellt.
      * 
      * @since 0.5.1
      */
@@ -211,8 +264,7 @@ public class Erweiterungssatz221 extends Spartensatz {
     }
 
     /**
-     * Sparte 53 (KFZ - Fahrzeugteil) wurde freundlicherweise von
-     * Igor Narodetskyi zur Verfuegung gestellt.
+     * Sparte 53 (KFZ - Fahrzeugteil) wurde freundlicherweise von Igor Narodetskyi zur Verfuegung gestellt.
      * 
      * @since 0.5.1
      */
@@ -238,12 +290,12 @@ public class Erweiterungssatz221 extends Spartensatz {
         tds.add(new AlphaNumFeld(RISIKOGRUPPE_RISIKOART, 5, 43));
         tds.add(new NumFeld(LFD_NUMMER, 5, 48));
         tds.add(new NumFeld(SATZNUMMER, 1, 53, n));
-        switch(n) {
-            case 1:     // Teildatensatz 1
+        switch (n) {
+            case 1: // Teildatensatz 1
                 tds.add(new NumFeld(DECKUNGSSUMME_IN_WAEHRUNGSEINHEITEN, 14, 54).mitNachkommastellen(2));
                 tds.add(new AlphaNumFeld(LEERSTELLEN, 189, 68));
                 break;
-            case 2:     // Teildatensatz 2
+            case 2: // Teildatensatz 2
                 tds.add(new NumFeld(ZUSCHLAG1_IN_WAEHRUNGSEINHEITEN, 12, 54).mitNachkommastellen(2));
                 tds.add(new NumFeld(ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN, 12, 66).mitNachkommastellen(2));
                 tds.add(new NumFeld(ABSCHLAG1_IN_WAEHRUNGSEINHEITEN, 12, 78).mitNachkommastellen(2));
@@ -258,4 +310,3 @@ public class Erweiterungssatz221 extends Spartensatz {
     }
 
 }
-

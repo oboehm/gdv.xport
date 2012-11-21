@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,18 +19,31 @@
 package gdv.xport.satz.feld.sparte50;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 210, Sparte 50.
- * 
+ *
  * @author oliver
  * @since 05.04.11
  */
 public enum Feld210 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 1,
+            type = Feld1bis7.class
+    )
+    INTRO1,
 
     /**
      * Wagniskennziffer.
@@ -347,7 +360,7 @@ public enum Feld210 {
             byteAdresse = 252
     )
     SAISONKENNZEICHEN,
-    
+
     /**
      * Satznummer.
      */
@@ -361,6 +374,13 @@ public enum Feld210 {
     SATZNUMMER1,
 
     /////   Teildatensatz 2   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 2,
+            type = Feld1bis7.class
+    )
+    INTRO2,
 
     /**
      * Produktform.
@@ -715,7 +735,7 @@ public enum Feld210 {
      * Satznummer.
      */
     @FeldInfo(
-          teildatensatz = 1,
+          teildatensatz = 2,
           nr = 33,
           type = Zeichen.class,
           anzahlBytes = 1,

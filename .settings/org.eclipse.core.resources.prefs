@@ -1,6 +1,6 @@
-#Thu Oct 13 08:10:19 CEST 2011
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
+encoding//src/main/java/gdv/xport/feld/Bezeichner.java=ISO-8859-1
 encoding//src/main/java/gdv/xport/satz/feld/Feld200.java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/resources/gdv/xport/util/template.html=ISO-8859-1

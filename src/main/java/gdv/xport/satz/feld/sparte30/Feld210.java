@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 by agentes
+ * Copyright (c) 2011, 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,18 +21,26 @@ package gdv.xport.satz.feld.sparte30;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
+import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.VertragsStatus;
 
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 210, Sparte 30.
- * 
+ *
  * @author oliver
  * @since 0.6
  */
 public enum Feld210 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 1,
+            type = Feld1bis7.class
+    )
+    INTRO1,
 
     /**
      * Vertragsstatus und weitere Felder.
@@ -358,20 +366,43 @@ public enum Feld210 {
             byteAdresse = 230
     )
     REFERENZNUMMER,
-
+    
     /**
-     * Leerstellen. Freie Stellen fuer weitere Belegung.
-     * FIXME: Anzahl Bytes ist eigentlich 20
+     * Besondere Vereinbarungen gemäß Antrag (0 = nein, 1 = ja)
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 38,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 20,
+            type = Zeichen.class,
+            anzahlBytes = 1,
             byteAdresse = 237
+            )
+    BESONDERE_VEREINBARUNGEN,
+    
+    /**
+     * Direkter Leistungsanspruch der versicherten Personen in der Gruppenunfallversicherung  (0 = nein, 1 = ja)
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 39,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 238
+            )
+    DIREKTANSPRUCH,
+
+    /**
+     * Leerstellen. Freie Stellen fuer weitere Belegung.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 40,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 18,
+            byteAdresse = 239
     )
 //    LEERSTELLEN,
-//    
+//
 //    /**
 //     * Die letzte Stelle ist normalerweise fuer die Satznummer reserviert.
 //     * Dieser Satz hier hat an dieser Stelle nur eine Leerstelle.
@@ -379,10 +410,10 @@ public enum Feld210 {
 //     */
 //    @FeldInfo(
 //            teildatensatz = 1,
-//            nr = 39,
-//            type = Zeichen.class,
-//            anzahlBytes = 1,
-//            byteAdresse = 256
+//            nr = 40,
+//            type = AlphaNumFeld.class,
+//            anzahlBytes = 18,
+//            byteAdresse = 239
 //    )
     LEERSTELLEN2;
 

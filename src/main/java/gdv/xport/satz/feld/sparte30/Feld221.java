@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 by agentes
+ * Copyright (c) 2011, 2012 by aosd.de
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,18 +19,29 @@
 package gdv.xport.satz.feld.sparte30;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 30.
- * 
+ *
  * @author oliver
  * @since 14.04.11
  */
 public enum Feld221 {
 
-    /////   Teildatensatz 1   /////////////////////////////////////////////////
+    /////   Teildatensatz 2   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 2,
+            type = Feld1bis7.class
+    )
+    INTRO2,
 
     /**
      * Lfd. Nummer der versicherten Person (VP) / Personengruppe.
@@ -236,7 +247,14 @@ public enum Feld221 {
     )
     ZUSAETZLICHE_SATZKENNUNG,
 
-    /////   Teildatensatz 2   /////////////////////////////////////////////////
+    /////   Teildatensatz 3   /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(
+            teildatensatz = 3,
+            type = Feld1bis7.class
+    )
+    INTRO3,
 
     /**
      * Satznummer.

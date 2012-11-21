@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 by agentes
+ * Copyright (c) 2009 - 2012 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,16 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 15.10.2009 by Oli B. (oliver.boehm@agentes.de)
+ * (c)reated 15.10.2009 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.feld;
 
 /**
- * Diese Klasse enthaelt nur String-Konstanten: die Bezeichner der einzelnen
- * Felder.
- * Die Konstanten sind alphabetisch geordnet.
- *
+ * Diese Klasse enthaelt nur String-Konstanten: die Bezeichner der einzelnen Felder. Die Konstanten sind alphabetisch
+ * geordnet.
+ * 
  * @author oliver
  * @since 15.10.2009
  */
@@ -52,7 +51,7 @@ public final class Bezeichner {
     public static final String AKTUELLE_BEITRAGSDEPOTSUMME_IN_WAEHRUNGSEINHEITEN = "aktuelle Beitragsdepotsumme in Waehrungseinheiten";
     public static final String ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN = "Allgemeine Versicherungsbedingungen";
     public static final String AMTL_KENNZEICHEN = "Amtl. Kennzeichen";
-    public static final String ANREDESCHLUESSEL = "Anredeschluessel";
+    public static final String ANREDESCHLUESSEL = "Anredeschlüssel";
     public static final String ANTEIL_IN_PROZENT = "Anteil in %";
     public static final String ANTRAGSDATUM = "Antragsdatum";
     public static final String ANTRAGSEINGANGSDATUM = "Antragseingangsdatum";
@@ -293,6 +292,7 @@ public final class Bezeichner {
     public static final String LEERSTELLEN1 = "Leerstellen";
     public static final String LEERSTELLEN2 = "Leerstellen";
     public static final String LEERSTELLEN3 = "Leerstellen";
+    public static final String LEERSTELLEN4 = "Leerstellen";
     public static final String LETZTE_ERHOEHUNG = "letzte Erhoehung";
     public static final String LFD_NUMMER = "Lfd. Nummer";
     public static final String LFD_NUMMER1 = "Lfd. Nummer";
@@ -303,6 +303,8 @@ public final class Bezeichner {
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE1 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE2 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE3 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
+    public static final String LFD_NUMMER_VP_PERSONENGRUPPE4 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
+    public static final String LFD_NUMMER_VP_PERSONENGRUPPE9 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_PERSONENNR_GEVO = "Lfd. Personennummer im GeVo";
     public static final String LFD_PERSONENNUMMER_DES_SICHERUNGSGLAEUBIGERS = "Lfd. Personennummer des Sicherungsglaeubigers";
     public static final String MEHRLEISTUNGSKLAUSEL = "Mehrleistungsklausel";
@@ -370,6 +372,7 @@ public final class Bezeichner {
     public static final String SATZNUMMERWIEDERHOLUNG1 = "Satznummerwiederholung1";
     public static final String SATZNUMMERWIEDERHOLUNG2 = "Satznummerwiederholung2";
     public static final String SATZNUMMERWIEDERHOLUNG3 = "Satznummerwiederholung3";
+    public static final String SATZNUMMERWIEDERHOLUNG4 = "Satznummerwiederholung4";
     public static final String SCHADENBEARBEITUNGSKOSTEN = "Schadenbearbeitungskosten";
     public static final String SCHLUESSEL_SICHERUNGSEINRICHTUNG = "Schluessel Sicherungseinrichtung";
     public static final String SCHUTZBRIEF_VERKEHRSSERVICE = "Schutzbrief /Verkehrsservice";
@@ -469,7 +472,49 @@ public final class Bezeichner {
     public static final String ZUZAHLUNGSDATUM = "Zuzahlungsdatum";
     public static final String ZUZAHLUNGSRECHT = "Zuzahlungsrecht";
 
-    private Bezeichner() {}
+    public static final String FONDSDATENSATZ_LEBEN = "Fondsdatensatz - Leben";
+    public static final String ALLGEMEINE_ANTRAGSDATEN = "Allgemeine Antragsdaten";
+    public static final String UNFALLSPEZIFISCHE_ANTRAGSDATEN = "Unfallspezifische Antragsdaten";
+    public static final String UNFALL_LEISTUNGSARTEN = "Unfall Leistungsarten";
+    public static final String RABATTE_UND_ZUSCHLAEGE = "Rabatte und Zuschlaeˆge";
+    public static final String BEGLEITDOKUMENTE_UND_SIGNATUREN = "Begleitdokumente und Signaturen";
+    public static final String MIME_DATEI = "MIME-Datei";
+    public static final String INTERNES_ORDNUNGSMERKMAL_DES_VM = "Internes Ordnungsmerkmal des VM";
+    public static final String FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG = "Faeˆlligkeit der letzten Beitragszahlung";
+    public static final String LEBENSLANGE_BEITRAGSZAHLUNG = "Lebenslange Beitragszahlung";
+    public static final String BESONDERE_VEREINBARUNGEN = "Besondere Vereinbarungen";
+    public static final String DIREKTANSPRUCH = "Direktanspruch";
+    public static final String EINTRITTSALTER_DER_VP = "Eintrittsalter der VP";
+    public static final String ALTERSGRUPPE = "Altersgruppe";
+    public static final String BEITRAGSZAHLUNG_BIS = "Beitragszahlung bis";
+    public static final String RUECKGEWAEHRDATUM = "Rueckgewaehrdatum";
+    public static final String RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = "Rueckgewaeˆhrsumme zum Ablauf in Waehrungseinheiten";
+    public static final String ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = "Ablaufleistung incl. Ueberschussanteile in Waehrungseinheiten";
+    public static final String KAPITALERTRAGSSTEUER_BEI_ABLAUF = "Kapitalertragssteuer bei Ablauf";
+    public static final String SOLIDARITAETSZUSCHLAG_BEI_ABLAUF = "SolidaritaÌˆtszuschlag bei Ablauf";
+    public static final String RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Rueckkaufswert zum Berechnungsstichtag in Waehrungseinheiten";
+    public static final String BERECHNUNGSSTICHTAG_ZUM_RUECKKAUFSWERT = "Berechnungsstichtag zum Rueckkaufswert";
+    public static final String KAPITALERTRAGSSTEUER_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Kapitalertragssteuer bei RuÌˆckkauf zum Berechnungsstichtag";
+    public static final String SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Solidaritaeˆtszuschlag bei Rueckkauf zum Berechnungsstichtag";
+    public static final String UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Ueberschussanteile zum Berechnungsstichtag in Waeˆhrungseinheiten";
+    public static final String GEBURTSDATUM_DER_BEZUGSBERECHTIGTEN_PERSON = "Geburtsdatum der bezugsberechtigten Person";
+
+    public static final String ANZAHL_DER_VERSICHERTEN_PERSONEN = "Anzahl der versicherten Personen";
+    public static final String DATUM_UNVERFALLBARKEIT = "Datum Unverfallbarkeit";
+    public static final String DIENSTEINTRITT = "Diensteintritt";
+    public static final String GEBURTSDATUM_DER_VP = "Geburtsdatum der VP";
+    public static final String GEBURTSDATUM_DER_VP2 = "Geburtsdatum der VP2";
+    public static final String GESCHLECHT_DER_VP = "Geschlecht der VP";
+    public static final String LFD_NUMMER_ZUR_WAGNISART = "Lfd Nummer zur Wagnisart";
+    public static final String MITARBEITER_STATUS = "Mitarbeiter Status";
+    public static final String NAME_DER_VP = "Name der VP";
+    public static final String PERSONEN_KUNDENNUMMER_DES_VERMITTLERS = "Personen Kundennummer des Vermittlers";
+    public static final String SOZIALVERSICHERUNG_NUMMER = "Sozialversicherung Nummer";
+    public static final String STATUS_SEIT = "Status seit";
+    public static final String VORNAME_DER_VP = "Vorname der VP";
+    public static final String WAGNISART = "Wagnisart";
+
+    private Bezeichner() {
+    }
 
 }
-
