@@ -717,6 +717,30 @@ public enum Feld210 {
             byteAdresse = 209
     )
     KOLLEKTIV_NR,
+    
+    /**
+     * Datum der Fälligkeit der letzten Beitragszahlung vor Ablauf des Vertrags Tag/Monat/Jahr (TTMMJJJJ)
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 25,
+            type = NumFeld.class,
+            anzahlBytes = 8,
+            byteAdresse = 224
+            )
+    FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG,
+    
+    /**
+     * Lebenslange Beitragszahlung 0 = nein 1 = ja
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 25,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 232
+            )
+    LEBENSLANGE_BEITRAGSZAHLUNG,
 
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
@@ -725,8 +749,8 @@ public enum Feld210 {
             teildatensatz = 2,
             nr = 26,
             type = AlphaNumFeld.class,
-            anzahlBytes = 32,
-            byteAdresse = 224
+            anzahlBytes = 23,
+            byteAdresse = 233
     )
     LEERSTELLEN2,
 

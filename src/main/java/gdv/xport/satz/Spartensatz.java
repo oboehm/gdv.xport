@@ -17,7 +17,8 @@
  */
 package gdv.xport.satz;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Dies ist eine gemeinsame Oberklasse aller Datensaetze, die mehrere Sparten aufnehmen koennen.
@@ -25,6 +26,7 @@ import org.apache.commons.logging.*;
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (22.11.2010)
  */
+@Deprecated
 public abstract class Spartensatz extends Datensatz {
 
     /** The Constant log. */

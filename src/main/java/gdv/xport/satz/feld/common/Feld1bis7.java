@@ -24,9 +24,8 @@ import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 
 /**
- * Jeder Datensatz beginnt mit denselben 7 Feldern. Dies sind die Felder, die
- * in diesem Enum zusammengefasst sind.
- *
+ * Jeder Datensatz beginnt mit denselben 7 Feldern. Dies sind die Felder, die in diesem Enum zusammengefasst sind.
+ * 
  * @author oliver
  * @since 0.7.1 (28.08.2012)
  */
@@ -35,86 +34,46 @@ public enum Feld1bis7 {
     /**
      * Satzart.
      */
-    @FeldInfo(
-            nr = 1,
-            type = NumFeld.class,
-            anzahlBytes = 4,
-            byteAdresse = 1
-    )
+    @FeldInfo(nr = 1, type = NumFeld.class, anzahlBytes = 4, byteAdresse = 1)
     SATZART,
 
     /**
-     * Gemaess VU-Verzeichnis der BaFin, linksbuendig.
-     * Das VU-Nr.-Verzeichnis kann bei der Bundesanstalt fuer
-     * Finanzdienstleistungsaufsicht in Bonn angefordert werden
-     * (Graurheindorfer Str. 108, 53117 Bonn, www.bafin.de).
+     * Gemaess VU-Verzeichnis der BaFin, linksbuendig. Das VU-Nr.-Verzeichnis kann bei der Bundesanstalt fuer
+     * Finanzdienstleistungsaufsicht in Bonn angefordert werden (Graurheindorfer Str. 108, 53117 Bonn, www.bafin.de).
      * Der neue vierstellige VU.-Nr.-Schluëssel gilt ab 01.01.1993
      */
-    @FeldInfo(
-            nr = 2,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 5,
-            byteAdresse = 5
-    )
+    @FeldInfo(nr = 2, type = AlphaNumFeld.class, anzahlBytes = 5, byteAdresse = 5)
     VU_NUMMER,
 
     /**
-     * Kennzeichen für gebuëndelte Vertraege.
-     * 1 = gebuendelt.
+     * Kennzeichen für gebuëndelte Vertraege. 1 = gebuendelt.
      */
-    @FeldInfo(
-            nr = 3,
-            type = Zeichen.class,
-            byteAdresse = 10
-    )
+    @FeldInfo(nr = 3, type = Zeichen.class, byteAdresse = 10)
     BUENDELUNGSKENNZEICHEN,
 
     /**
-     * Versicherungszweig gemaess Verordnung ueber die Berichterstattung von
-     * Versicherungsunternehmen gegenueber der BaFin (BerVersV) Abschnitt C.
+     * Versicherungszweig gemaess Verordnung ueber die Berichterstattung von Versicherungsunternehmen gegenueber der
+     * BaFin (BerVersV) Abschnitt C.
      */
-    @FeldInfo(
-            nr = 4,
-            type = NumFeld.class,
-            anzahlBytes = 3,
-            byteAdresse = 11
-    )
+    @FeldInfo(nr = 4, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 11)
     SPARTE,
 
     /**
-     * Versicherungsschein-Nummer, rechtsbuendig, mit Leerstellen linksbuendig
-     * auffuellen ohne Sonderzeichen.
+     * Versicherungsschein-Nummer, rechtsbuendig, mit Leerstellen linksbuendig auffuellen ohne Sonderzeichen.
      */
-    @FeldInfo(
-            nr = 5,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 17,
-            byteAdresse = 14
-    )
-    VERSICHERUNGSSCHEIN_NUMMER,
+    @FeldInfo(nr = 5, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 14)
+    VERSICHERUNGSSCHEINNUMMER,
 
     /**
-     * Laufende Nummer innerhalb einer Versicherungsschein-Nummer ueber alle
-     * Satzarten fuer die gleiche Datensendung.
+     * Laufende Nummer innerhalb einer Versicherungsschein-Nummer ueber alle Satzarten fuer die gleiche Datensendung.
      */
-    @FeldInfo(
-            nr = 6,
-            type = NumFeld.class,
-            anzahlBytes = 2,
-            byteAdresse = 31
-    )
+    @FeldInfo(nr = 6, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 31)
     FOLGENUMMER,
 
     /**
-     * Die geschaeftsfuehrende Geschaeftsstelle und der Vermittler ohne
-     * Sonderzeichen.
+     * Die geschaeftsfuehrende Geschaeftsstelle und der Vermittler ohne Sonderzeichen.
      */
-    @FeldInfo(
-            nr = 7,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 10,
-            byteAdresse = 33
-    )
+    @FeldInfo(nr = 7, type = AlphaNumFeld.class, anzahlBytes = 10, byteAdresse = 33)
     VERMITTLER;
 
 }

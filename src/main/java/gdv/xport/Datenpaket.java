@@ -18,27 +18,52 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.ABSENDER;
+import static gdv.xport.feld.Bezeichner.ADRESSAT;
+import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_BIS;
+import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_VOM;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
-import gdv.xport.util.*;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Nachsatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.URLReader;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PushbackReader;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.Writer;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-import net.sf.oval.*;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.Validator;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * @author oliver
  * @since 23.10.2009
  * @version $Revision$
- *
+ * 
  */
 public final class Datenpaket {
 
@@ -48,9 +73,8 @@ public final class Datenpaket {
     private final Nachsatz nachsatz = new Nachsatz();
 
     /**
-     * Wenn man den Default-Konstruktor verwendet, sollte man vorher die
-     * VU-Nummer konfiguriert haben.
-     *
+     * Wenn man den Default-Konstruktor verwendet, sollte man vorher die VU-Nummer konfiguriert haben.
+     * 
      * @see Config#getVUNummer()
      */
     public Datenpaket() {
@@ -58,11 +82,11 @@ public final class Datenpaket {
     }
 
     /**
-     * Falls die VU-Nummer noch nicht konfiguriert ist, kann man zu diesem
-     * Konstruktor greifen.
-     *
+     * Falls die VU-Nummer noch nicht konfiguriert ist, kann man zu diesem Konstruktor greifen.
+     * 
      * @since 0.3
-     * @param vuNummer die Nummer des Versicherungsunternehmens (VU)
+     * @param vuNummer
+     *            die Nummer des Versicherungsunternehmens (VU)
      */
     public Datenpaket(final String vuNummer) {
         Datum heute = Datum.heute();
@@ -75,7 +99,9 @@ public final class Datenpaket {
 
     /**
      * Um die VU-Nummer setzen zu koennen.
-     * @param vuNummer VU-Nummer (max. 5-stellig)
+     * 
+     * @param vuNummer
+     *            VU-Nummer (max. 5-stellig)
      */
     public void setVuNummer(final String vuNummer) {
         this.vorsatz.setVuNummer(vuNummer);
@@ -86,6 +112,7 @@ public final class Datenpaket {
 
     /**
      * Dazu verwenden wir den Vorsatz, um die VU-Nummer zu bestimmen.
+     * 
      * @since 0.3
      * @return VU-Nummer aus dem Vorsatz
      */
@@ -101,7 +128,8 @@ public final class Datenpaket {
     }
 
     /**
-     * @param datensaetze the datensaetze to set
+     * @param datensaetze
+     *            the datensaetze to set
      */
     public void setDatensaetze(final List<Datensatz> datensaetze) {
         this.datensaetze = datensaetze;
@@ -122,7 +150,8 @@ public final class Datenpaket {
     }
 
     /**
-     * @param datensatz Datensatz, der hinzugefuegt werden soll
+     * @param datensatz
+     *            Datensatz, der hinzugefuegt werden soll
      */
     public void add(final Datensatz datensatz) {
         datensaetze.add(datensatz);
@@ -130,8 +159,10 @@ public final class Datenpaket {
     }
 
     /**
-     * @param file Datei, in die exportiert werden soll
-     * @throws IOException falls was schiefgelaufen ist (z.B. Platte voll)
+     * @param file
+     *            Datei, in die exportiert werden soll
+     * @throws IOException
+     *             falls was schiefgelaufen ist (z.B. Platte voll)
      */
     public void export(final File file) throws IOException {
         Writer writer = new FileWriter(file);
@@ -144,21 +175,25 @@ public final class Datenpaket {
 
     /**
      * Falls wir einen Stream haben, koennen wir diese Methode benutzen.
-     *
+     * 
      * @since 0.3
-     * @param ostream z.B. System.out
-     * @throws IOException falls was schiefgelaufen ist
+     * @param ostream
+     *            z.B. System.out
+     * @throws IOException
+     *             falls was schiefgelaufen ist
      */
     public void export(final OutputStream ostream) throws IOException {
-       Writer writer = new OutputStreamWriter(ostream);
-       export(writer);
-       writer.flush();
-       ostream.flush();
+        Writer writer = new OutputStreamWriter(ostream);
+        export(writer);
+        writer.flush();
+        ostream.flush();
     }
 
     /**
-     * @param writer wird zum Export verwendet
-     * @throws IOException falls was schiefgelaufen ist
+     * @param writer
+     *            wird zum Export verwendet
+     * @throws IOException
+     *             falls was schiefgelaufen ist
      */
     public void export(final Writer writer) throws IOException {
         vorsatz.export(writer);
@@ -172,8 +207,10 @@ public final class Datenpaket {
 
     /**
      * @since 0.3
-     * @param url z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
-     * @throws IOException wenn z.B. das Netz weg ist
+     * @param url
+     *            z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @throws IOException
+     *             wenn z.B. das Netz weg ist
      */
     public void importFrom(final URL url) throws IOException {
         URLReader urlReader = new URLReader(url);
@@ -183,8 +220,10 @@ public final class Datenpaket {
 
     /**
      * @since 0.3
-     * @param content Inhalt der eingelesen wird
-     * @throws IOException sollte eigentlich nicht vorkommen
+     * @param content
+     *            Inhalt der eingelesen wird
+     * @throws IOException
+     *             sollte eigentlich nicht vorkommen
      */
     public void importFrom(final String content) throws IOException {
         Reader reader = new StringReader(content);
@@ -193,8 +232,10 @@ public final class Datenpaket {
     }
 
     /**
-     * @param istream z.B. Sytem.in
-     * @throws IOException falls es Fehler beim Lesen gibt
+     * @param istream
+     *            z.B. Sytem.in
+     * @throws IOException
+     *             falls es Fehler beim Lesen gibt
      */
     public void importFrom(final InputStream istream) throws IOException {
         Reader reader = new InputStreamReader(istream, Config.DEFAULT_ENCODING);
@@ -202,30 +243,38 @@ public final class Datenpaket {
     }
 
     /**
-     * @param reader hiervon wird importiert
-     * @throws IOException falls was schiefgelaufen ist
+     * @param reader
+     *            hiervon wird importiert
+     * @throws IOException
+     *             falls was schiefgelaufen ist
      */
     public void importFrom(final Reader reader) throws IOException {
-        importFrom(new PushbackReader(reader, 14));
+        importFrom(new PushbackReader(reader, 60));
     }
 
     /**
-     * Der hier verwendete PushbackReader wird benoetigt, damit die gelesene
-     * Satzart und Sparte wieder zurueckgesetllt werden kann.
-     *
-     * @param reader PushbackReader mit einem Puffer von mind. 14 Zeichen
-     * @throws IOException falls was schiefgelaufen ist
+     * Der hier verwendete PushbackReader wird benoetigt, damit die gelesene Satzart und Sparte wieder zurueckgesetllt
+     * werden kann.
+     * 
+     * @param reader
+     *            PushbackReader mit einem Puffer von mind. 14 Zeichen
+     * @throws IOException
+     *             falls was schiefgelaufen ist
      */
     public void importFrom(final PushbackReader reader) throws IOException {
         this.vorsatz.importFrom(reader);
-        while(true) {
+        while (true) {
             int satzart = Satz.readSatzart(reader);
             log.debug("reading Satzart " + satzart + "...");
             if (satzart == 9999) {
                 break;
             }
             int sparte = Datensatz.readSparte(reader);
-            Datensatz satz = SatzFactory.getDatensatz(satzart, sparte);
+            int wagnisart = -1;
+            if (satzart == 220 && sparte == 10) {
+                wagnisart = Datensatz.readWagnisart(reader);
+            }
+            Datensatz satz = SatzFactory.getDatensatz(satzart, sparte, wagnisart);
             satz.importFrom(reader);
             this.add(satz);
         }
@@ -234,10 +283,12 @@ public final class Datenpaket {
 
     /**
      * Importieren einer Datei.
-     *
+     * 
      * @since 0.2
-     * @param file Import-Datei
-     * @throws IOException falls was schiefgelaufen ist
+     * @param file
+     *            Import-Datei
+     * @throws IOException
+     *             falls was schiefgelaufen ist
      */
     public void importFrom(final File file) throws IOException {
         Reader reader = new FileReader(file);
@@ -249,7 +300,8 @@ public final class Datenpaket {
     }
 
     /**
-     * @param d Erstellungsdatum von
+     * @param d
+     *            Erstellungsdatum von
      */
     public void setErstellungsDatumVon(final Datum d) {
         Datum von = this.getErstellungsDatumVon();
@@ -264,7 +316,8 @@ public final class Datenpaket {
     }
 
     /**
-     * @param d Erstellungsdatum bis
+     * @param d
+     *            Erstellungsdatum bis
      */
     public void setErstellungsDatumBis(final Datum d) {
         Datum bis = this.getErstellungsDatumBis();
@@ -279,7 +332,8 @@ public final class Datenpaket {
     }
 
     /**
-     * @param s neuer Absender
+     * @param s
+     *            neuer Absender
      */
     public void setAbsender(final String s) {
         Feld absender = this.getAbsenderFeld();
@@ -301,7 +355,8 @@ public final class Datenpaket {
     }
 
     /**
-     * @param s Adressat
+     * @param s
+     *            Adressat
      */
     public void setAdressat(final String s) {
         Feld adressat = this.getAdressatFeld();
@@ -323,7 +378,8 @@ public final class Datenpaket {
     }
 
     /**
-     * @param s Vermittler
+     * @param s
+     *            Vermittler
      */
     public void setVermittler(final String s) {
         this.vorsatz.setVermittler(s);
@@ -335,15 +391,13 @@ public final class Datenpaket {
      */
     public String getVermittler() {
         String vermittler = this.vorsatz.getVermittler();
-        assert vermittler.equals(this.nachsatz.getVermittler()) : vorsatz
-                + " or " + nachsatz + " is corrupt";
+        assert vermittler.equals(this.nachsatz.getVermittler()) : vorsatz + " or " + nachsatz + " is corrupt";
         return vermittler;
     }
 
     /**
-     * Aus Performance-Gruenden wird nicht auf die validate-Methode
-     * zurueckgegriffen (die dauert zu lang).
-     *
+     * Aus Performance-Gruenden wird nicht auf die validate-Methode zurueckgegriffen (die dauert zu lang).
+     * 
      * @return true/false
      */
     public boolean isValid() {
@@ -374,7 +428,7 @@ public final class Datenpaket {
 
     /**
      * Validiert die einzelnen Saetze (inkl. Vorsatz und Nachsatz).
-     *
+     * 
      * @return the list< constraint violation>
      */
     public List<ConstraintViolation> validate() {
@@ -393,22 +447,19 @@ public final class Datenpaket {
     private List<ConstraintViolation> validateVUNummer() {
         List<ConstraintViolation> violations = new ArrayList<ConstraintViolation>();
         if (Config.DUMMY_VU_NUMMER.equals(this.getVuNummer())) {
-            ConstraintViolation cv = new ConstraintViolation(new AssertCheck(),
-                    "VU-Nummer is not set", this, Config.DUMMY_VU_NUMMER, new ClassContext(this
-                            .getClass()));
+            ConstraintViolation cv = new ConstraintViolation(new AssertCheck(), "VU-Nummer is not set", this,
+                    Config.DUMMY_VU_NUMMER, new ClassContext(this.getClass()));
             violations.add(cv);
         }
         return violations;
     }
 
     /**
-     * Fuer eine Versicherungsscheinnummer muss die Folgenummer immer mit 1
-     * anfangen. Taucht dieser Versicherungsscheinnummer fuer den gleichen Satz
-     * ein zweites Mal auf, muss die Folgenummer entsprechend erhoeht werden.
-     * Es sei denn, es handelt sich doch noch um den gleichen Vertrag.
-     * Aber die Nummern duerfen keine Spruenge machen - dies wird hier
-     * kontrolliert.
-     *
+     * Fuer eine Versicherungsscheinnummer muss die Folgenummer immer mit 1 anfangen. Taucht dieser
+     * Versicherungsscheinnummer fuer den gleichen Satz ein zweites Mal auf, muss die Folgenummer entsprechend erhoeht
+     * werden. Es sei denn, es handelt sich doch noch um den gleichen Vertrag. Aber die Nummern duerfen keine Spruenge
+     * machen - dies wird hier kontrolliert.
+     * 
      * @since 0.3
      * @return eine Liste, die die verletzten Folgenummern enthaelt
      */
@@ -417,8 +468,7 @@ public final class Datenpaket {
         Map<String, Integer> folgenummern = new HashMap<String, Integer>();
         for (Datensatz datensatz : this.datensaetze) {
             String nr = datensatz.getVersicherungsscheinNummer().trim();
-            String key = nr + datensatz.getSatzartFeld().getInhalt()
-                    + datensatz.getSparteFeld().getInhalt();
+            String key = nr + datensatz.getSatzartFeld().getInhalt() + datensatz.getSparteFeld().getInhalt();
             Integer expected = folgenummern.get(key);
             if (expected == null) {
                 expected = 1;
@@ -431,23 +481,23 @@ public final class Datenpaket {
             expected++;
             folgenummern.put(key, expected);
             if (folgenr != expected) {
-                ConstraintViolation cv = new ConstraintViolation(new AssertCheck(),
-                        "falsche Folgenummer (erwartet: " + expected + ")", datensatz, folgenr,
-                        new ClassContext(this.getClass()));
+                ConstraintViolation cv = new ConstraintViolation(new AssertCheck(), "falsche Folgenummer (erwartet: "
+                        + expected + ")", datensatz, folgenr, new ClassContext(this.getClass()));
                 violations.add(cv);
             }
         }
         return violations;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " for " + this.getVuNummer() + " with "
-                + this.datensaetze.size() + "+2 (Daten-)Saetze";
+        return this.getClass().getSimpleName() + " for " + this.getVuNummer() + " with " + this.datensaetze.size()
+                + "+2 (Daten-)Saetze";
     }
 
 }
-

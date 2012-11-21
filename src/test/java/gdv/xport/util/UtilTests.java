@@ -23,15 +23,14 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * Die Klasse UtilTests ist eine Test-Suite fuer JUnit 4, mit der alle
- * JUnit-Tests in diesem Paket parallel getestet werden.
+ * Die Klasse UtilTests ist eine Test-Suite fuer JUnit 4, mit der alle JUnit-Tests in diesem Paket parallel getestet
+ * werden.
  * 
  * @author oliver (boehm@javatux.de)
  * @since 0.7 (11.07.2012)
  */
 @RunWith(Suite.class)
-@SuiteClasses({ HtmlFormatterTest.class, JavaFormatterTest.class, NullFormatterTest.class, SatzFactoryTest.class,
-        XmlFormatterTest.class })
+@SuiteClasses({ HtmlFormatterTest.class, NullFormatterTest.class, SatzFactoryTest.class, XmlFormatterTest.class })
 public class UtilTests {
 
 }

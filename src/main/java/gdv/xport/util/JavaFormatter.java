@@ -19,28 +19,38 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 
-import java.io.*;
-import java.text.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.text.MessageFormat;
 import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.SystemUtils;
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
- * Diese Klasse dient dazu, um entsprechende Enumerations wie zum Beispiel
- * in {@link gdv.xport.satz.feld.Feld100} zu erzeugen. Dies erleichtert
- * die Migration der alten Datensaetze auf das neue Format nach dem
- * SOP-Ansatz, der in 0.6 hinzugekommen ist.
- *
+ * Diese Klasse dient dazu, um entsprechende Enumerations wie zum Beispiel in {@link gdv.xport.satz.feld.Feld100} zu
+ * erzeugen. Dies erleichtert die Migration der alten Datensaetze auf das neue Format nach dem SOP-Ansatz, der in 0.6
+ * hinzugekommen ist.
+ * 
  * @author oliver (ob@aosd.de)
  * @since 0.6 (27.03.2011)
  */
+@Deprecated
 public final class JavaFormatter extends AbstractFormatter {
-    
+
     private static final Log log = LogFactory.getLog(JavaFormatter.class);
     private static final String headTemplate = getTemplate("java/head.txt");
     private static final String headSparteTemplate = getTemplate("java/headSparte.txt");
@@ -48,7 +58,7 @@ public final class JavaFormatter extends AbstractFormatter {
     private static final String teildatensatzTemplate = getTemplate("java/teildatensatz.txt");
     private static final String feldTemplate = getTemplate("java/feld.txt");
     private static final String numFeldTemplate = getTemplate("java/numFeld.txt");
-    
+
     private static String getTemplate(final String name) {
         InputStream istream = JavaFormatter.class.getResourceAsStream(name);
         try {
@@ -68,11 +78,12 @@ public final class JavaFormatter extends AbstractFormatter {
     public JavaFormatter() {
         super();
     }
-    
+
     /**
      * Instantiiert einen neuen Formatter.
-     *
-     * @param writer the writer
+     * 
+     * @param writer
+     *            the writer
      */
     public JavaFormatter(final Writer writer) {
         super(writer);
@@ -81,7 +92,8 @@ public final class JavaFormatter extends AbstractFormatter {
     /**
      * Instantiiert einen neuen Formatter.
      * 
-     * @param ostream the ostream
+     * @param ostream
+     *            the ostream
      */
     public JavaFormatter(final OutputStream ostream) {
         super(ostream);
@@ -90,9 +102,10 @@ public final class JavaFormatter extends AbstractFormatter {
     /**
      * Ausgabe der einzelnen Datensaetze als Java-Enum-Klasse.
      * 
-     * @param datenpaket mit den Datensaetzen, die als Java ausgegeben werden
-     *        sollen
-     * @throws IOException bei Problemen mit der Java-Generierung
+     * @param datenpaket
+     *            mit den Datensaetzen, die als Java ausgegeben werden sollen
+     * @throws IOException
+     *             bei Problemen mit der Java-Generierung
      * @see AbstractFormatter#write(gdv.xport.Datenpaket)
      */
     @Override
@@ -105,11 +118,12 @@ public final class JavaFormatter extends AbstractFormatter {
     }
 
     /**
-     * Da ein Datensatz nachher einer Java-Enum-Klasse entspricht, ist diese
-     * Klasse "public".
-     *
-     * @param satz Datensatz, der als Java-Enum-Klasse ausgegeben werden soll
-     * @throws IOException bei Problemen mit der Java-Generierung
+     * Da ein Datensatz nachher einer Java-Enum-Klasse entspricht, ist diese Klasse "public".
+     * 
+     * @param satz
+     *            Datensatz, der als Java-Enum-Klasse ausgegeben werden soll
+     * @throws IOException
+     *             bei Problemen mit der Java-Generierung
      */
     public void write(final Satz satz) throws IOException {
         try {
@@ -127,7 +141,7 @@ public final class JavaFormatter extends AbstractFormatter {
         }
         this.write(footTemplate);
     }
-    
+
     private void write(final Datensatz datensatz) throws IOException {
         this.write(MessageFormat.format(headSparteTemplate, new Date(), SystemUtils.USER_NAME, datensatz.getSatzart(),
                 datensatz.getSparte()));
@@ -148,7 +162,7 @@ public final class JavaFormatter extends AbstractFormatter {
             this.write(feld, tdsNr, feldNr);
         }
     }
-    
+
     private void write(final Feld feld, final int tdsNr, final int feldNr) throws IOException {
         if (feldNr > 1) {
             this.write(",\n\n");
@@ -166,38 +180,23 @@ public final class JavaFormatter extends AbstractFormatter {
         if (!bezeichnung.endsWith(".")) {
             bezeichnung += ".";
         }
-        this.write(MessageFormat.format(feldTemplate, 
-                bezeichnung,
-                tdsNr,
-                feldNr,
-                feld.getClass().getSimpleName(),
-                feld.getAnzahlBytes(),
-                feld.getByteAdresse(),
-                feld.getBezeichner()
-        ));
+        this.write(MessageFormat.format(feldTemplate, bezeichnung, tdsNr, feldNr, feld.getClass().getSimpleName(),
+                feld.getAnzahlBytes(), feld.getByteAdresse(), feld.getBezeichner()));
     }
 
     private void write(final NumFeld feld, final int tdsNr, final int feldNr) throws IOException {
-        this.write(MessageFormat.format(numFeldTemplate, 
-                feld.getBezeichnung(),
-                tdsNr,
-                feldNr,
-                feld.getClass().getSimpleName(),
-                feld.getAnzahlBytes(),
-                feld.getByteAdresse(),
-                feld.getBezeichner(),
-                feld.getNachkommastellen(),
-                (feld.getAnzahlBytes() - feld.getNachkommastellen())
-        ));
+        this.write(MessageFormat.format(numFeldTemplate, feld.getBezeichnung(), tdsNr, feldNr, feld.getClass()
+                .getSimpleName(), feld.getAnzahlBytes(), feld.getByteAdresse(), feld.getBezeichner(), feld
+                .getNachkommastellen(), (feld.getAnzahlBytes() - feld.getNachkommastellen())));
     }
 
     /**
-     * Wandelt das uebergebene Datenpaket die entsprechenden Java-Definitionen
-     * um. Aus Gruenden der Symmetrie (die anderen Formatter-Klassen besitzten
-     * ebenfalls diese Methode) und aus Testueberlegen wurde diese Methode auch
-     * in diese Klasse uebernommen.
-     *
-     * @param datenpaket das Datenpaket
+     * Wandelt das uebergebene Datenpaket die entsprechenden Java-Definitionen um. Aus Gruenden der Symmetrie (die
+     * anderen Formatter-Klassen besitzten ebenfalls diese Methode) und aus Testueberlegen wurde diese Methode auch in
+     * diese Klasse uebernommen.
+     * 
+     * @param datenpaket
+     *            das Datenpaket
      * @return Datenpaket als XML-String
      */
     public static String toString(final Datenpaket datenpaket) {
@@ -206,22 +205,23 @@ public final class JavaFormatter extends AbstractFormatter {
         try {
             formatter.write(datenpaket);
         } catch (IOException shouldnothappen) {
-            throw new RuntimeException("can't convert " + datenpaket + " to String",
-                    shouldnothappen);
+            throw new RuntimeException("can't convert " + datenpaket + " to String", shouldnothappen);
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
     }
-    
+
     /**
-     * Exportiert das uebergegbene Datenpaket als Java-Enum-Klassen im
-     * angegebenen Verzeichnis. Dabei wird die entsprechende Package-Struktur
-     * erstellt, sodass dieses Verzeichnis als Source-Verzeichnis oder zum
-     * Import dienen kann.
+     * Exportiert das uebergegbene Datenpaket als Java-Enum-Klassen im angegebenen Verzeichnis. Dabei wird die
+     * entsprechende Package-Struktur erstellt, sodass dieses Verzeichnis als Source-Verzeichnis oder zum Import dienen
+     * kann.
      * 
-     * @param dir Export-Verzeichnis
-     * @param datenpaket das Datenpaket
-     * @throws IOException wenn z.B. das Package-Verzeichnis nicht erstellt werden kann
+     * @param dir
+     *            Export-Verzeichnis
+     * @param datenpaket
+     *            das Datenpaket
+     * @throws IOException
+     *             wenn z.B. das Package-Verzeichnis nicht erstellt werden kann
      */
     public static void toDir(final File dir, final Datenpaket datenpaket) throws IOException {
         toDir(dir, datenpaket.getVorsatz());
@@ -232,12 +232,14 @@ public final class JavaFormatter extends AbstractFormatter {
     }
 
     /**
-     * Hiermit kann ein einzelner (Daten-)Satz als Java-Enum-Klasse exportiert
-     * werden.
-     *
-     * @param dir Export-Verzeichnis
-     * @param satz der (Daten-)Satz
-     * @throws IOException wenn z.B. das Package-Verzeichnis nicht erstellt werden kann
+     * Hiermit kann ein einzelner (Daten-)Satz als Java-Enum-Klasse exportiert werden.
+     * 
+     * @param dir
+     *            Export-Verzeichnis
+     * @param satz
+     *            der (Daten-)Satz
+     * @throws IOException
+     *             wenn z.B. das Package-Verzeichnis nicht erstellt werden kann
      */
     public static void toDir(final File dir, final Satz satz) throws IOException {
         try {
@@ -248,12 +250,14 @@ public final class JavaFormatter extends AbstractFormatter {
     }
 
     /**
-     * Hiermit kann ein einzelner DatenSatz als Java-Enum-Klasse exportiert
-     * werden.
-     *
-     * @param dir Export-Verzeichnis
-     * @param datensatz der Datensatz
-     * @throws IOException wenn z.B. das Package-Verzeichnis nicht erstellt werden kann
+     * Hiermit kann ein einzelner DatenSatz als Java-Enum-Klasse exportiert werden.
+     * 
+     * @param dir
+     *            Export-Verzeichnis
+     * @param datensatz
+     *            der Datensatz
+     * @throws IOException
+     *             wenn z.B. das Package-Verzeichnis nicht erstellt werden kann
      */
     public static void toDir(final File dir, final Datensatz datensatz) throws IOException {
         if (datensatz.hasSparte()) {
@@ -282,4 +286,3 @@ public final class JavaFormatter extends AbstractFormatter {
     }
 
 }
-

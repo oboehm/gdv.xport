@@ -18,19 +18,27 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
-import gdv.xport.satz.*;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz210;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
 import java.text.MessageFormat;
 import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.*;
-import org.apache.commons.logging.*;
-import org.junit.*;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.SystemUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import patterntesting.concurrent.junit.ParallelRunner;
@@ -42,12 +50,13 @@ import patterntesting.concurrent.junit.ParallelRunner;
  * @since 27.03.2011
  */
 @RunWith(ParallelRunner.class)
+@Deprecated
 public final class JavaFormatterTest extends AbstractFormatterTest {
-    
+
     private static final Log log = LogFactory.getLog(JavaFormatterTest.class);
     private static final File distDir = new File("target/generated-sources");
     private Datenpaket datenpaket = new Datenpaket();
-    
+
     /**
      * Creates the dist dir.
      */
@@ -57,11 +66,12 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
             log.info("created: " + distDir.getAbsolutePath());
         }
     }
-    
+
     /**
      * Test method for {@link JavaFormatter#write(gdv.xport.Datenpaket)}.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
+     * 
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     @Test
     public void testWriteDatenpaket() throws IOException {
@@ -72,11 +82,12 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
         log.trace(swriter);
         assertTrue("empty result!", StringUtils.isNotEmpty(swriter.toString()));
     }
-    
+
     /**
      * Test-Methode fuer {@link JavaFormatter#write(gdv.xport.satz.Satz)}.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
+     * 
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     @Test
     public void testWriteSatz() throws IOException {
@@ -88,11 +99,12 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
         String satz = getResource("Feld210.txt");
         assertEquals(satz, swriter.toString());
     }
-    
+
     /**
      * Test to string.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
+     * 
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     @Test
     public void testToString() throws IOException {
@@ -111,11 +123,12 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
             istream.close();
         }
     }
-    
+
     /**
      * Tested das Exportieren einer (normalen) Java-Enum-Klasse.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
+     * 
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     @Test
     public void testToDirVorsatz() throws IOException {
@@ -124,10 +137,10 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
     }
 
     /**
-     * Tested das Exportieren einer Java-Enum-Klasse fuer eine Satzart mit
-     * Sparte.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
+     * Tested das Exportieren einer Java-Enum-Klasse fuer eine Satzart mit Sparte.
+     * 
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     @Test
     public void testToDirSatzWithSparte() throws IOException {
@@ -142,4 +155,3 @@ public final class JavaFormatterTest extends AbstractFormatterTest {
     }
 
 }
-

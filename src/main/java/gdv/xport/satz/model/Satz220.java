@@ -28,15 +28,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Diese Klasse repraesentiert die Satzart 220.
- * Es handelt es sich dabei um eine alternative Implementierung der
- * SpartenspezifischerTeil-Klasse, die nach dem Soplet-
- * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
- * wurde.
- *
+ * Diese Klasse repraesentiert die Satzart 220. Es handelt es sich dabei um eine alternative Implementierung der
+ * SpartenspezifischerTeil-Klasse, die nach dem Soplet- Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>)
+ * implementiert wurde.
+ * 
  * @author oliver (ob@aosd.de)
  * @since 0.6 (08.04.2011)
  */
+@Deprecated
 public class Satz220 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
@@ -59,8 +58,9 @@ public class Satz220 extends SpartensatzX {
 
     /**
      * Legt ein neues Satz220-Objekt fuer die uebergebene Sparte an.
-     *
-     * @param sparte Sparte (z.B. 10)
+     * 
+     * @param sparte
+     *            Sparte (z.B. 10)
      */
     public Satz220(final int sparte) {
         super(220, sparte);
@@ -68,7 +68,7 @@ public class Satz220 extends SpartensatzX {
 
     /**
      * Liefert die Mapping-Tabelle zu Sparte - Feldxxx zurueck.
-     *
+     * 
      * @return Mapping-Tabelle
      * @see gdv.xport.satz.model.SpartensatzX#getMapping()
      */
@@ -78,12 +78,13 @@ public class Satz220 extends SpartensatzX {
     }
 
     /**
-     * Sparte 30 hat optionale Teildatensaetze (Teildatensatz 9). Den
-     * muessen wir gesondert behandeln.
-     *
+     * Sparte 30 hat optionale Teildatensaetze (Teildatensatz 9). Den muessen wir gesondert behandeln.
+     * 
      * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
-     * @param input Inupt
-     * @throws IOException falls der String zu kurz ist
+     * @param input
+     *            Inupt
+     * @throws IOException
+     *             falls der String zu kurz ist
      */
     @Override
     public void importFrom(final String input) throws IOException {
@@ -146,4 +147,3 @@ public class Satz220 extends SpartensatzX {
     }
 
 }
-

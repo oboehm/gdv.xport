@@ -21,15 +21,14 @@ package gdv.xport.satz.model;
 import gdv.xport.satz.feld.Feld100;
 
 /**
- * Diese Klasse repraesentiert die Satzart 100.
- * Es handelt es sich dabei um eine alternative Implementierung der
- * {@link gdv.xport.satz.Adressteil}-Klasse, die nach dem Soplet-Ansatz
- * (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
- * wurde.
+ * Diese Klasse repraesentiert die Satzart 100. Es handelt es sich dabei um eine alternative Implementierung der
+ * {@link gdv.xport.satz.Adressteil}-Klasse, die nach dem Soplet-Ansatz (s. <a
+ * href="http://www.soplets.org/">soplets.org</a>) implementiert wurde.
  * 
  * @author oliver (ob@aosd.de)
  * @since 0.6 (09.03.2011)
  */
+@Deprecated
 public class Satz100 extends SatzX {
 
     /**
@@ -40,4 +39,3 @@ public class Satz100 extends SatzX {
     }
 
 }
-

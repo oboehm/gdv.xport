@@ -366,17 +366,40 @@ public enum Feld210 {
             byteAdresse = 230
     )
     REFERENZNUMMER,
-
+    
     /**
-     * Leerstellen. Freie Stellen fuer weitere Belegung.
-     * FIXME: Anzahl Bytes ist eigentlich 20
+     * Besondere Vereinbarungen gemäß Antrag (0 = nein, 1 = ja)
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 38,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 20,
+            type = Zeichen.class,
+            anzahlBytes = 1,
             byteAdresse = 237
+            )
+    BESONDERE_VEREINBARUNGEN,
+    
+    /**
+     * Direkter Leistungsanspruch der versicherten Personen in der Gruppenunfallversicherung  (0 = nein, 1 = ja)
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 39,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 238
+            )
+    DIREKTANSPRUCH,
+
+    /**
+     * Leerstellen. Freie Stellen fuer weitere Belegung.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 40,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 18,
+            byteAdresse = 239
     )
 //    LEERSTELLEN,
 //
@@ -387,10 +410,10 @@ public enum Feld210 {
 //     */
 //    @FeldInfo(
 //            teildatensatz = 1,
-//            nr = 39,
-//            type = Zeichen.class,
-//            anzahlBytes = 1,
-//            byteAdresse = 256
+//            nr = 40,
+//            type = AlphaNumFeld.class,
+//            anzahlBytes = 18,
+//            byteAdresse = 239
 //    )
     LEERSTELLEN2;
 

@@ -19,9 +19,14 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Klasse fuer die Satzart 0210.
@@ -29,6 +34,7 @@ import org.apache.commons.logging.*;
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (28.10.2009)
  */
+@Deprecated
 public class VertragsspezifischerTeil extends Spartensatz {
 
     private static final Log log = LogFactory.getLog(VertragsspezifischerTeil.class);
@@ -42,15 +48,18 @@ public class VertragsspezifischerTeil extends Spartensatz {
     }
 
     /**
-     * @param sparte z.B. 70 (Rechtsschutz)
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
      */
     public VertragsspezifischerTeil(final int sparte) {
         this(sparte, getNumberOfTeildatensaetzeFor(sparte));
     }
 
     /**
-     * @param sparte z.B. 70 (Rechtsschutz)
-     * @param n Anzahl Teildatensaetze
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
+     * @param n
+     *            Anzahl Teildatensaetze
      */
     public VertragsspezifischerTeil(final int sparte, final int n) {
         super(SATZART, sparte, n);
@@ -82,12 +91,12 @@ public class VertragsspezifischerTeil extends Spartensatz {
                 return 1;
         }
     }
-    
+
     /**
-     * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene
-     * Sparte an.
-     *
-     * @param x Sparte (z.B. 30)
+     * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene Sparte an.
+     * 
+     * @param x
+     *            Sparte (z.B. 30)
      */
     protected void createTeildatensaetzeFor(final int x) {
         this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
@@ -95,8 +104,9 @@ public class VertragsspezifischerTeil extends Spartensatz {
 
     /**
      * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
-     *
-     * @param sparte Sparte (z.B. 30)
+     * 
+     * @param sparte
+     *            Sparte (z.B. 30)
      */
     protected void setUpDatenfelder(final int sparte) {
         switch (sparte) {
@@ -119,16 +129,16 @@ public class VertragsspezifischerTeil extends Spartensatz {
                 break;
         }
     }
-    
+
     private void setUpDatenfelder10() {
         this.setUpTeildatensatz10(1, this.getTeildatensatz(1));
-        this.setUpTeildatensatz10(2, this.getTeildatensatz(2));        
+        this.setUpTeildatensatz10(2, this.getTeildatensatz(2));
     }
-    
+
     private void setUpTeildatensatz10(final int n, final Teildatensatz tds) {
         this.setUpTeildatensatz(tds);
-        switch(n) {
-            case 1:                     // Teildatensatz 1
+        switch (n) {
+            case 1: // Teildatensatz 1
                 tds.add(new Zeichen(KENNZEICHEN_VERTRAGSENTSTEHUNG, 43));
                 tds.add(new AlphaNumFeld(WAEHRUNGSSCHLUESSEL, 3, 44));
                 tds.add(new Zeichen(BEITRAGSDEPOT, 47));
@@ -159,7 +169,7 @@ public class VertragsspezifischerTeil extends Spartensatz {
                 tds.add(new Zeichen(WEITERE_REFERENZNUMMERN, 254));
                 tds.add(new AlphaNumFeld(LEERSTELLEN, 1, 255));
                 break;
-            case 2:                     // Teildatensatz 2
+            case 2: // Teildatensatz 2
                 tds.add(new Zeichen(BETRIEBLICHE_ALTERSVORSORGE, 43));
                 tds.add(new Zeichen(UNVERFALLBARKEIT, 44));
                 tds.add(new Datum(DIENSTEINTRITTSDATUM, 8, 45));
@@ -220,10 +230,9 @@ public class VertragsspezifischerTeil extends Spartensatz {
         add(new AlphaNumFeld(PRODUKTNAME, 20, 210));
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 230));
     }
-    
+
     /**
-     * Sparte 50 (KFZ - Fahrzeugdaten) wurde freundlicherweise von
-     * Igor Narodetskyi zur Verfuegung gestellt.
+     * Sparte 50 (KFZ - Fahrzeugdaten) wurde freundlicherweise von Igor Narodetskyi zur Verfuegung gestellt.
      * 
      * @since 0.5.1
      */
@@ -312,4 +321,3 @@ public class VertragsspezifischerTeil extends Spartensatz {
     }
 
 }
-
