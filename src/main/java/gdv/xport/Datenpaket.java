@@ -183,7 +183,7 @@ public final class Datenpaket {
      *             falls was schiefgelaufen ist
      */
     public void export(final OutputStream ostream) throws IOException {
-        Writer writer = new OutputStreamWriter(ostream);
+        Writer writer = new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING);
         export(writer);
         writer.flush();
         ostream.flush();

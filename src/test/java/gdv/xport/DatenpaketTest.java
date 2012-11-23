@@ -18,8 +18,8 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.VERSION_NACHSATZ;
-import static gdv.xport.feld.Bezeichner.VERSION_VORSATZ;
+import static gdv.xport.feld.Bezeichner.VERSION_SATZART_9999;
+import static gdv.xport.feld.Bezeichner.VERSION_SATZART_0001;
 import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -96,8 +96,8 @@ public final class DatenpaketTest {
         swriter.close();
         assertEquals(1024, data.length());
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.1", vorsatz.getVersion(VERSION_VORSATZ));
-        assertEquals("1.1", vorsatz.getVersion(VERSION_NACHSATZ));
+        assertEquals("2.1", vorsatz.getVersion(VERSION_SATZART_0001));
+        assertEquals("1.1", vorsatz.getVersion(VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(0, nachsatz.getAnzahlSaetze());
         assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
@@ -134,9 +134,9 @@ public final class DatenpaketTest {
         Datensatz datensatz = new Adressteil();
         datenpaket.add(datensatz);
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.1", vorsatz.getVersion(VERSION_VORSATZ));
+        assertEquals("2.1", vorsatz.getVersion(VERSION_SATZART_0001));
         assertEquals("2.1", vorsatz.getVersion(100));
-        assertEquals("1.1", vorsatz.getVersion(VERSION_NACHSATZ));
+        assertEquals("1.1", vorsatz.getVersion(VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(1, nachsatz.getAnzahlSaetze());
     }

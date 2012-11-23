@@ -22,32 +22,16 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.ABSENDER;
 import static gdv.xport.feld.Bezeichner.ADRESSAT;
-import static gdv.xport.feld.Bezeichner.ALLGEMEINE_ANTRAGSDATEN;
-import static gdv.xport.feld.Bezeichner.ART_DES_ABSENDERS;
-import static gdv.xport.feld.Bezeichner.ART_DES_ADRESSATEN;
-import static gdv.xport.feld.Bezeichner.BEGLEITDOKUMENTE_UND_SIGNATUREN;
-import static gdv.xport.feld.Bezeichner.BESTANDSFUEHRENDE_GESCHAEFTSSTELLE;
 import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_BIS;
 import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_VOM;
-import static gdv.xport.feld.Bezeichner.EVB_NUMMER;
-import static gdv.xport.feld.Bezeichner.FONDSDATENSATZ_LEBEN;
-import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
-import static gdv.xport.feld.Bezeichner.MIME_DATEI;
-import static gdv.xport.feld.Bezeichner.PRODUKTSPEZIFISCHE_ANTRAGSDATEN;
-import static gdv.xport.feld.Bezeichner.PRODUKTSPEZIFISCHE_STAMMDATEN;
-import static gdv.xport.feld.Bezeichner.RABATTE_UND_ZUSCHLAEGE;
-import static gdv.xport.feld.Bezeichner.UNFALLSPEZIFISCHE_ANTRAGSDATEN;
-import static gdv.xport.feld.Bezeichner.UNFALL_LEISTUNGSARTEN;
 import static gdv.xport.feld.Bezeichner.VERMITTLER;
-import static gdv.xport.feld.Bezeichner.VERSION_NACHSATZ;
-import static gdv.xport.feld.Bezeichner.VERSION_VORSATZ;
-import static gdv.xport.feld.Bezeichner.VU_ABRECHNUNGSSTELLE;
+import static gdv.xport.feld.Bezeichner.VERSION_SATZART_0001;
+import static gdv.xport.feld.Bezeichner.VERSION_SATZART_9999;
 import gdv.xport.config.Config;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.VUNummer;
 import gdv.xport.feld.Version;
-import gdv.xport.feld.Zeichen;
 
 import java.io.IOException;
 import java.util.Formatter;
@@ -117,34 +101,34 @@ public final class Vorsatz extends Satz {
         tds.add(this.von);
         tds.add(this.bis);
         tds.add(this.vermittler);
-        switch (n) {
-            case 1: // Teildatensatz 1
-                tds.add(new Zeichen(ART_DES_ABSENDERS, 237));
-                tds.add(new Zeichen(ART_DES_ADRESSATEN, 238));
-                tds.add(new AlphaNumFeld(VU_ABRECHNUNGSSTELLE, 2, 239));
-                tds.add(new AlphaNumFeld(BESTANDSFUEHRENDE_GESCHAEFTSSTELLE, 2, 241));
-                tds.add(new AlphaNumFeld(LEERSTELLEN, 10, 246));
-                break;
-            case 2: // Teildatensatz 2
-                tds.add(new AlphaNumFeld(PRODUKTSPEZIFISCHE_ANTRAGSDATEN, 3, 240));
-                tds.add(new AlphaNumFeld(PRODUKTSPEZIFISCHE_STAMMDATEN, 3, 243));
-                tds.add(new AlphaNumFeld(LEERSTELLEN, 10, 246));
-                break;
-            case 3: // Teildatensatz 3
-                tds.add(new AlphaNumFeld(EVB_NUMMER, 3, 96));
-                tds.add(new AlphaNumFeld(FONDSDATENSATZ_LEBEN, 3, 99));
-                tds.add(new AlphaNumFeld(ALLGEMEINE_ANTRAGSDATEN, 3, 102));
-                tds.add(new AlphaNumFeld(UNFALLSPEZIFISCHE_ANTRAGSDATEN, 3, 105));
-                tds.add(new AlphaNumFeld(UNFALL_LEISTUNGSARTEN, 3, 108));
-                tds.add(new AlphaNumFeld(RABATTE_UND_ZUSCHLAEGE, 3, 111));
-                tds.add(new AlphaNumFeld(BEGLEITDOKUMENTE_UND_SIGNATUREN, 3, 114));
-                tds.add(new AlphaNumFeld(MIME_DATEI, 3, 117));
-                tds.add(new AlphaNumFeld(LEERSTELLEN, 118, 138));
-                break;
-            default:
-                log.debug("no special setup for Teildatensatz " + n);
-                break;
-        }
+        // switch (n) {
+        // case 1: // Teildatensatz 1
+        // tds.add(new Zeichen(ART_DES_ABSENDERS, 237));
+        // tds.add(new Zeichen(ART_DES_ADRESSATEN, 238));
+        // tds.add(new AlphaNumFeld(VU_ABRECHNUNGSSTELLE, 2, 239));
+        // tds.add(new AlphaNumFeld(BESTANDSFUEHRENDE_GESCHAEFTSSTELLE, 2, 241));
+        // tds.add(new AlphaNumFeld(LEERSTELLEN, 10, 246));
+        // break;
+        // case 2: // Teildatensatz 2
+        // tds.add(new AlphaNumFeld(PRODUKTSPEZIFISCHE_ANTRAGSDATEN, 3, 240));
+        // tds.add(new AlphaNumFeld(PRODUKTSPEZIFISCHE_STAMMDATEN, 3, 243));
+        // tds.add(new AlphaNumFeld(LEERSTELLEN, 10, 246));
+        // break;
+        // case 3: // Teildatensatz 3
+        // tds.add(new AlphaNumFeld(EVB_NUMMER, 3, 96));
+        // tds.add(new AlphaNumFeld(VERSION_SATZART_0230, 3, 99));
+        // tds.add(new AlphaNumFeld(VERSION_SATZART_0202, 3, 102));
+        // tds.add(new AlphaNumFeld(UNFALLSPEZIFISCHE_ANTRAGSDATEN, 3, 105));
+        // tds.add(new AlphaNumFeld(UNFALL_LEISTUNGSARTEN, 3, 108));
+        // tds.add(new AlphaNumFeld(RABATTE_UND_ZUSCHLAEGE, 3, 111));
+        // tds.add(new AlphaNumFeld(BEGLEITDOKUMENTE_UND_SIGNATUREN, 3, 114));
+        // tds.add(new AlphaNumFeld(MIME_DATEI, 3, 117));
+        // tds.add(new AlphaNumFeld(LEERSTELLEN, 118, 138));
+        // break;
+        // default:
+        // log.debug("no special setup for Teildatensatz " + n);
+        // break;
+        // }
     }
 
     private void setUpVersions() {
@@ -156,7 +140,7 @@ public final class Vorsatz extends Satz {
         Teildatensatz tds = this.getTeildatensatz(n);
         switch (n) {
             case 1:
-                addVersion(1, new Version(VERSION_VORSATZ, 96, "2.1"));
+                addVersion(1, new Version(VERSION_SATZART_0001, 96, "2.1"));
                 addVersion(100, 99, "2.1");
                 addVersion(200, 102, "2.2");
                 addVersion(210, 50, 105, "   ");
@@ -199,7 +183,7 @@ public final class Vorsatz extends Satz {
                 addVersion(410, 216, "   ");
                 addVersion(430, 219, "   ");
                 addVersion(500, 222, "   ");
-                addVersion(9999, new Version(VERSION_NACHSATZ, 225, "1.1"));
+                addVersion(9999, new Version(VERSION_SATZART_9999, 225, "1.1"));
                 addVersion(420, 228, "   ");
                 addVersion(450, 231, "   ");
                 addVersion(550, 234, "   ");

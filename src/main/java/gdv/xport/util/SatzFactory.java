@@ -20,13 +20,13 @@ package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.feld.Feld0001;
 import gdv.xport.satz.feld.Feld100;
+import gdv.xport.satz.feld.Feld200;
+import gdv.xport.satz.feld.Feld9999;
 import gdv.xport.satz.feld.sparte10.Feld220;
 import gdv.xport.satz.feld.sparte10.Feld221;
-import gdv.xport.satz.model.Satz200;
 import gdv.xport.satz.model.Satz210;
 import gdv.xport.satz.model.Satz211;
 import gdv.xport.satz.model.Satz220;
@@ -65,32 +65,32 @@ public final class SatzFactory {
     private static final Map<Integer, Class<? extends Enum<?>>> registeredEnumClasses = new HashMap<Integer, Class<? extends Enum<?>>>();
 
     static {
-        register(Vorsatz.class, 1);
+        registerEnum(Feld0001.class, 1);
         registerEnum(Feld100.class, 100);
-        register(Satz200.class, 200);
+        registerEnum(Feld200.class, 200);
         register(Satz210.class, 210);
-        register(Satz210.class, 210, 10);
-        register(Satz210.class, 210, 30);
-        register(Satz210.class, 210, 50);
-        register(Satz210.class, 210, 70);
+        registerEnum(gdv.xport.satz.feld.sparte10.Feld210.class, 210, 10);
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
+        registerEnum(gdv.xport.satz.feld.sparte50.Feld210.class, 210, 50);
+        registerEnum(gdv.xport.satz.feld.sparte70.Feld210.class, 210, 70);
         register(Satz211.class, 211);
-        register(Satz211.class, 211, 10);
-        register(Satz211.class, 211, 50);
+        registerEnum(gdv.xport.satz.feld.sparte10.Feld211.class, 211, 10);
+        registerEnum(gdv.xport.satz.feld.sparte50.Feld211.class, 211, 50);
         register(Satz220.class, 220);
         registerEnum(Feld220.class, 220, 10, 0);
-        register(Satz220.class, 220, 30);
-        register(Satz220.class, 220, 51);
-        register(Satz220.class, 220, 52);
-        register(Satz220.class, 220, 53);
-        register(Satz220.class, 220, 70);
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld220.class, 220, 30, -1);
+        registerEnum(gdv.xport.satz.feld.sparte51.Feld220.class, 220, 51, -1);
+        registerEnum(gdv.xport.satz.feld.sparte52.Feld220.class, 220, 52, -1);
+        registerEnum(gdv.xport.satz.feld.sparte53.Feld220.class, 220, 53, -1);
+        registerEnum(gdv.xport.satz.feld.sparte70.Feld220.class, 220, 70, -1);
         register(Satz221.class, 221);
         registerEnum(Feld221.class, 221, 10, -1);
-        register(Satz221.class, 221, 30);
-        register(Satz221.class, 221, 51);
-        register(Satz221.class, 221, 52);
-        register(Satz221.class, 221, 53);
-        register(Satz221.class, 221, 70);
-        register(Nachsatz.class, 9999);
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30, -1);
+        registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, 221, 51, -1);
+        registerEnum(gdv.xport.satz.feld.sparte52.Feld221.class, 221, 52, -1);
+        registerEnum(gdv.xport.satz.feld.sparte53.Feld221.class, 221, 53, -1);
+        registerEnum(gdv.xport.satz.feld.sparte70.Feld221.class, 221, 70, -1);
+        registerEnum(Feld9999.class, 9999);
     }
 
     /**
@@ -114,7 +114,7 @@ public final class SatzFactory {
         try {
             Constructor<? extends Satz> ctor = clazz.getConstructor();
             if (log.isDebugEnabled()) {
-                log.debug("default ctor " + ctor + " found");
+                log.debug("default constructor " + ctor + " found");
             }
         } catch (NoSuchMethodException e) {
             throw new IllegalArgumentException("no default constructor found in " + clazz);
@@ -199,7 +199,7 @@ public final class SatzFactory {
      * @since 0.6
      */
     public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte) {
-        registerEnum(enumClass, satzart, sparte);
+        registerEnum(enumClass, satzart, sparte, -1);
     }
 
     /**
@@ -299,7 +299,7 @@ public final class SatzFactory {
             }
             return satz;
         } catch (Exception e) {
-            log.info("default ctor does not work (" + e + "), trying another ctor...");
+            log.info("default constructor does not work (" + e + "), trying another ctor...");
             Constructor<? extends Satz> ctor = null;
             try {
                 ctor = clazz.getConstructor(int.class);
@@ -408,7 +408,7 @@ public final class SatzFactory {
             Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);
             return ctor.newInstance(satzart, sparte);
         } catch (NoSuchMethodException exWithTwoParams) {
-            log.info("ctor " + clazz + "(int, int) not found (" + exWithTwoParams + ")");
+            log.info("constructor " + clazz + "(int, int) not found (" + exWithTwoParams + ")");
             return getDatensatz(sparte, clazz);
         } catch (InstantiationException exWithTwoParams) {
             log.info(clazz + "(int, int) can't be instantiated (" + exWithTwoParams + ")");
@@ -436,7 +436,7 @@ public final class SatzFactory {
             Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class);
             return ctor.newInstance(sparte);
         } catch (NoSuchMethodException nsme) {
-            log.info(clazz + " found but no " + clazz.getSimpleName() + "(" + sparte + ") ctor (" + nsme + ")");
+            log.info(clazz + " found but no " + clazz.getSimpleName() + "(" + sparte + ") constructor (" + nsme + ")");
             return getDatensatz(clazz);
         } catch (Exception exWithOneParam) {
             log.warn("constructor problem with " + clazz, exWithOneParam);
@@ -450,7 +450,7 @@ public final class SatzFactory {
         } catch (InstantiationException e) {
             throw new IllegalArgumentException("can't instantiate " + clazz, e);
         } catch (IllegalAccessException e) {
-            throw new IllegalArgumentException("can't access default ctor of " + clazz, e);
+            throw new IllegalArgumentException("can't access default constructor of " + clazz, e);
         }
     }
 
