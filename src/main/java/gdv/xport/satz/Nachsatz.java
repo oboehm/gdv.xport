@@ -35,12 +35,14 @@ import gdv.xport.feld.BetragMitVorzeichen;
 import gdv.xport.feld.NumFeld;
 
 /**
+ * Dies ist der letzte Satz, der Nachsatz eben.
+ * <p>
+ * Da Vorsatz und Nachsatz von der Datenpaket-Klasse benoetigt werden, habe
+ * ich das "deprecated" wieder entfernt (24-Nov-2012, oboehm).
+ * </p>
  * @author oliver
  * @since 05.10.2009
- * @version $Revision$
- * 
  */
-@Deprecated
 public final class Nachsatz extends Satz {
 
     private final NumFeld anzahlSaetze = new NumFeld(ANZAHL_SAETZE, 10, 5);

@@ -17,8 +17,11 @@
 
   <body>
 
-    <release version="0.7.1" date="17-Jul-2012"
-             description="neue GroupId (com.github.oboehm)">
+    <release version="0.9.0" date="17-Jul-2012"
+             description="Unterst&#252;tzung Version 2009">
+      <action dev="ralfklemmer" type="update" date="22-Nov-2012" >
+        Beginn Umstellung auf Version 2009 des GDV-Handbuches.
+      </action>
       <action dev="oboehm" type="add" date="17-Jul-2012" >
         @FelderInfo hinzugef&#252;gt, um gemeinsame FeldInfos
         herausziehen zu k&#246;nnen.

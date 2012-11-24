@@ -42,9 +42,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
+ * Dies ist der erste Satz, der Vorsatz eben.
+ * <p>
+ * Da Vorsatz und Nachsatz von der Datenpaket-Klasse benoetigt werden, habe
+ * ich das "deprecated" wieder entfernt (24-Nov-2012, oboehm).
+ * </p>
+ * 
  * @author oliver
  */
-@Deprecated
 public final class Vorsatz extends Satz {
 
     private static final Log log = LogFactory.getLog(Vorsatz.class);

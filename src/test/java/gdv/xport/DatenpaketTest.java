@@ -261,6 +261,7 @@ public final class DatenpaketTest {
     @Test
     @SkipTestOn(property="SKIP_IMPORT_TEST")
     public void testImportIgor() throws IOException {
+        Config.checkFileEncoding();
         Config.setEOD("\n");
         String content = getResourceAsString("/igor_110120.txt");
         datenpaket.importFrom(content);
