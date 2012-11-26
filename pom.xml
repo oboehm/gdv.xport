@@ -252,10 +252,6 @@
           </excludes>
           <systemProperties>
             <property>
-              <name>file.encoding</name>
-              <value>ISO-8859-1</value>
-            </property>
-            <property>
               <name>gdv.VU-Nummer</name>
               <value>4711</value>
             </property>
