@@ -21,7 +21,6 @@ package gdv.xport.util;
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
 import gdv.xport.annotation.FeldInfo;
@@ -31,7 +30,6 @@ import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.model.Satz210;
 import gdv.xport.satz.model.Satz221;
 import gdv.xport.satz.model.SatzX;
 
@@ -265,14 +263,12 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testIssue1() {
-        Datensatz satz = SatzFactory.getDatensatz(210, 30);
-        assertEquals(Satz210.class, satz.getClass());
+        checkGetDatensatz(210, 30, gdv.xport.satz.feld.sparte30.Feld210.values());
         try {
             SatzFactory.registerEnum(MyFeld210.class, 210, 30);
-            satz = SatzFactory.getDatensatz(210, 30);
-            assertNotSame(Satz210.class, satz.getClass());
+            checkGetDatensatz(210, 30, MyFeld210.values());
         } finally {
-            SatzFactory.register(Satz210.class, 210, 30);
+            SatzFactory.registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
         }
     }
 
