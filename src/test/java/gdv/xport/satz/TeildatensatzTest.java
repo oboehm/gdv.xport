@@ -18,12 +18,14 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
-
-import gdv.xport.feld.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Iterator;
 
 import org.junit.Test;
 
@@ -49,8 +51,6 @@ public class TeildatensatzTest extends AbstractSatzTest {
     /**
      * Die einzelnen Felder sollten in der Reihenfolge der Byte-Adresse
      * geliefert werden.
-     *
-     * @since 0.2
      */
     @Test
     public void testGetFelder() {
@@ -63,6 +63,17 @@ public class TeildatensatzTest extends AbstractSatzTest {
                     .getByteAdresse());
             prev = next;
         }
+    }
+
+    /**
+     * Test-Methode fuer {@link Teildatensatz#hasFeld(String)}.
+     */
+    @Test
+    public void testHasFeld() {
+        Teildatensatz tds = new Teildatensatz(new NumFeld("Feld42", "0042"), 1);
+        tds.add(new AlphaNumFeld("BOSS", 4, 99));
+        assertFalse("unexpected: HUGO in " + tds, tds.hasFeld("HUGO"));
+        assertTrue("expected: BOSS in " + tds, tds.hasFeld("BOSS"));
     }
 
 }

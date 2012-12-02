@@ -107,6 +107,10 @@ public class SatzX extends Datensatz {
      * ein Feld anzulegen und im jeweiligen Teildatensatz einzuhaengen.
      * Zusaetzlich wird das Feld "Satznummer" vorbelegt, falls es in den
      * uebergebenen Feldern vorhanden ist.
+     * <p>
+     * FIXME: Vorsatz wird noch nicht richtig behandelt, da die ersten 6 Felder
+     * hier etwas anders behandelt wird.
+     * </p>
      *
      * @param feldX das Feld-Element
      * @param tds der entsprechende Teildatensatz

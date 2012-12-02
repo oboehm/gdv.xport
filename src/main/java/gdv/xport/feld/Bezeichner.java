@@ -21,7 +21,7 @@ package gdv.xport.feld;
 /**
  * Diese Klasse enthaelt nur String-Konstanten: die Bezeichner der einzelnen Felder. Die Konstanten sind alphabetisch
  * geordnet.
- * 
+ *
  * @author oliver
  * @since 15.10.2009
  */
@@ -62,6 +62,7 @@ public final class Bezeichner {
     public static final String ART_DER_HEILKOSTEN = "Art der Heilkosten";
     public static final String ART_DER_STEUERLICHEN_FOERDERUNG = "Art der steuerlichen Foerderung";
     public static final String ART_DER_ZULASSUNG_BEIM_VORBESITZER = "Art der Zulassung beim Vorbesitzer";
+    public static final String ART_DES_ABSENDERS = "Art des Absenders";
     public static final String ART_DES_AMTLICHEN_KENNZEICHENS = "Art des amtlichen Kennzeichens";
     public static final String ART_DES_DRITTRECHTS = "Art des Drittrechts";
     public static final String AUFBAUART = "Aufbauart";
@@ -124,6 +125,7 @@ public final class Bezeichner {
     public static final String DIENSTEINTRITTSDATUM = "Diensteintrittsdatum";
     public static final String DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER = "Druckaufbereitete Versicherungsscheinnummer";
     /** @deprecated use {@link #DURCHFUEHRUNGSWEG} */
+    @Deprecated
     public static final String DURCHFUEHRUNGSART = "Durchfuehrungsart";
     public static final String DURCHFUEHRUNGSWEG = "Durchfuehrungsweg";
     public static final String DYNAMIK = "Dynamik";
