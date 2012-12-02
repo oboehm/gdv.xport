@@ -25,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.demo.MyFeld210;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.Datensatz;
@@ -67,7 +68,8 @@ public final class SatzFactoryTest extends AbstractTest {
     @Test
     public void testGetSatzInt() {
         Satz satz = SatzFactory.getSatz(1);
-        assertEquals(Vorsatz.class, satz.getClass());
+        assertEquals(1, satz.getSatzart());
+        assertNotNull(satz.getFeld(Bezeichner.VERSION_SATZART_0100));
     }
 
     /**
