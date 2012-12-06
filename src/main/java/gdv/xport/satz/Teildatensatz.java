@@ -48,7 +48,7 @@ public final class Teildatensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
-     * 
+     *
      * @param satzart z.B. 100
      */
     public Teildatensatz(final NumFeld satzart) {
@@ -65,10 +65,10 @@ public final class Teildatensatz extends Satz {
         super(satzart, 0);
         initSatznummer(nr);
     }
-    
+
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
-     * 
+     *
      * @param satzart z.B. 100
      * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
      */
@@ -113,7 +113,7 @@ public final class Teildatensatz extends Satz {
      * auf Byte 256, mit dem der Teildatensatz vorinitialisiert wurde.
      * Kommt es hier zu einer Ueberlappung, wird das Satznummern-Feld
      * entfernt, da nicht alle Saetze dieses Feld besitzen.
-     * 
+     *
      * @param feld Feld mit Name
      */
     @Override
@@ -165,7 +165,7 @@ public final class Teildatensatz extends Satz {
 
     /**
      * Verpasst dem angegebenen Feld einen Namen.
-     * 
+     *
      * @param feld ein Feld
      */
     public void set(final Feld feld) {
@@ -188,6 +188,7 @@ public final class Teildatensatz extends Satz {
      * @return das gesuchte Feld
      * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
+    @Override
     public Feld getFeld(final Enum<?> feldX) throws IllegalArgumentException {
         Feld found = datenfelder.get(feldX);
         if (found == null) {
@@ -213,6 +214,17 @@ public final class Teildatensatz extends Satz {
         } else {
             return found;
         }
+    }
+
+    /**
+     * Ueberprueft, ob das uebergebene Feld vorhanden ist.
+     *
+     * @param name gesuchter Bezeichner des Feldes
+     * @return true, falls Feld vorhanden ist.
+     * @since 0.9
+     */
+    public boolean hasFeld(final String name) {
+        return this.datenfelder.containsKey(name);
     }
 
     /**

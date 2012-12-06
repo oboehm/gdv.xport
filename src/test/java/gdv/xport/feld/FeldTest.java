@@ -203,5 +203,15 @@ public class FeldTest {
         };
         return feldInfo;
     }
+    
+    /**
+     * Test-Methode fuer {@link Feld#getInhalt()} in Zusammenhang mit dem
+     * Encoding.
+     */
+    @Test
+    public void testEncoding() {
+        Feld feld = new AlphaNumFeld("Gruesse", "Gr\u00fc\u00dfe");
+        assertEquals("Gr\u00fc\u00dfe", feld.getInhalt());
+    }
 
 }

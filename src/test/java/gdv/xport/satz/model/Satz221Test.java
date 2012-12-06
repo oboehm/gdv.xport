@@ -36,12 +36,12 @@ import org.junit.*;
 
 /**
  * JUnit-Test fuer Satz221.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (14.04.2011)
  */
 public class Satz221Test extends AbstractSatzTest {
-    
+
     private static final Log log = LogFactory.getLog(Satz221Test.class);
 
     /**
@@ -58,7 +58,7 @@ public class Satz221Test extends AbstractSatzTest {
      */
     @Test
     public void testSparte30() {
-        Satz221 wagnisdaten = new Satz221(30);
+        Datensatz wagnisdaten = new Satz221(30);
         log.info(wagnisdaten + " created.");
         assertEquals(30, wagnisdaten.getSparte());
         assertEquals(2, wagnisdaten.getTeildatensaetze().size());
@@ -69,7 +69,7 @@ public class Satz221Test extends AbstractSatzTest {
      */
     @Test
     public void testSparte70() {
-        Satz221 rechtschutz = new Satz221(70);
+        Datensatz rechtschutz = new Satz221(70);
         log.info(rechtschutz + " created.");
         assertEquals(70, rechtschutz.getSparte());
     }
@@ -77,7 +77,7 @@ public class Satz221Test extends AbstractSatzTest {
     /**
      * Hier wird der Teildatensatz 2 der Sparte 30 (Rechtschutz) getestet. Der Test-Input dazu stammt von der
      * musterdatei_041222.txt von gdv-online.
-     * 
+     *
      * @throws IOException
      *             sollte eigentlich nicht vorkommen, da wir von einem String importieren
      */
@@ -93,7 +93,7 @@ public class Satz221Test extends AbstractSatzTest {
     /**
      * Hier wird der Teildatensatz 3 der Sparte 30 (Rechtschutz) getestet. Der Test-Input dazu stammt von der
      * musterdatei_041222.txt von gdv-online.
-     * 
+     *
      * @throws IOException
      *             sollte eigentlich nicht vorkommen, da wir von einem String importieren
      */
@@ -108,14 +108,14 @@ public class Satz221Test extends AbstractSatzTest {
 
     private void checkWagnisdaten(final String input) throws IOException {
         assertEquals(257, input.length());
-        Satz221 wagnisdaten = new Satz221(30);
+        Datensatz wagnisdaten = new Satz221(30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }
 
     /**
      * Der normale Import bereitet noch Probleme. Mit diesem Test wollen wir dem Problem auf die Spur kommen.
-     * 
+     *
      * @throws IOException
      *             falls der Test-Satz nicht gelesen werden kann
      */
@@ -125,14 +125,14 @@ public class Satz221Test extends AbstractSatzTest {
         try {
             Datenpaket datenpaket = new Datenpaket();
             datenpaket.importFrom(istream);
-            Satz221 erweiterungssatz = (Satz221) datenpaket.getDatensaetze().get(0);
+            Datensatz erweiterungssatz = datenpaket.getDatensaetze().get(0);
             Feld lfdNummer = erweiterungssatz.getFeld(LFD_NUMMER_VP_PERSONENGRUPPE);
             assertEquals("000001", lfdNummer.getInhalt());
         } finally {
             istream.close();
         }
     }
-    
+
     /**
      * Test import.
      *
@@ -144,7 +144,7 @@ public class Satz221Test extends AbstractSatzTest {
             + "0000000000000000000000000008668700000000000000000000000000000000"
             + "0000000000000000                                                "
             + "                                                               1";
-        Erweiterungssatz221 sparte51 = new Erweiterungssatz221();
+        Datensatz sparte51 = new Erweiterungssatz221();
         sparte51.importFrom(input);
         List<ConstraintViolation> violations = sparte51.validate();
         assertTrue(violations + " should be empty", violations.isEmpty());

@@ -399,8 +399,7 @@ public class Feld implements Comparable<Feld> {
      * @return the inhalt
      */
     public String getInhalt() {
-        ByteBuffer outputBuffer = Config.DEFAULT_ENCODING.encode(this.inhalt.toString());
-        return new String(outputBuffer.array());
+        return this.inhalt.toString();
     }
 
     /**

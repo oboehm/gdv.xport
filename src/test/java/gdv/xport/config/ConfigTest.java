@@ -20,6 +20,9 @@ package gdv.xport.config;
 
 import static org.junit.Assert.*;
 
+import java.io.*;
+
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.*;
 import org.junit.Test;
@@ -50,6 +53,29 @@ public class ConfigTest {
             }
         } else {
             assertEquals(vuNummer, Config.getVUNummer().getInhalt().trim());
+        }
+    }
+    
+    /**
+     * Hier testen wir, ob das File-Encoding auf ISO-8859-1 eingestellt ist.
+     * Falls nicht, wird der Test fehlschlagen. In diesem Fall kann man
+     * versuchen, bei der Run-Konfiguration die VM mit <tt>java 
+     * -Dfile.encoding=ISO-8859-1 ...</tt> aufzurufen. Aber normalerweise
+     * sollte die Config-Klasse das Encoding richtig einstellen.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testEncoding() throws IOException {
+        InputStream istream = ConfigTest.class.getResourceAsStream("umlaute.txt");
+        assertNotNull(istream);
+        try {
+            String umlaute = IOUtils.toString(istream, Config.DEFAULT_ENCODING_NAME).trim();
+            String expected = "\u00e4\u00f6\u00fc\u00df\u00c4\u00d6\u00dc";
+            log.info("expected = \"" + expected + "\"");
+            assertEquals(expected, umlaute);
+        } finally {
+            istream.close();
         }
     }
 

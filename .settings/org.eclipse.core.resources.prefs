@@ -6,6 +6,7 @@ encoding//src/main/resources=UTF-8
 encoding//src/main/resources/gdv/xport/util/template.html=ISO-8859-1
 encoding//src/test/java=UTF-8
 encoding//src/test/resources=UTF-8
+encoding//src/test/resources/gdv/xport/config/umlaute.txt=ISO-8859-1
 encoding//src/test/resources/igor_110120.txt=ISO-8859-1
 encoding//src/test/resources/musterdatei_041222.txt=ISO-8859-1
 encoding/<project>=UTF-8

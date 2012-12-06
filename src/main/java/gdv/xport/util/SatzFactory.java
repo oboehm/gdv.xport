@@ -46,7 +46,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import kommt, in den entsprechende Satz
  * wandeln zu koennen.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
@@ -103,7 +103,7 @@ public final class SatzFactory {
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
      * Die Kasse <em>muss</em> einen Default-Konstruktor bereitstellen. Ansonsten wird hier eine
      * {@link IllegalArgumentException} geworfen (seit 0.6).
-     * 
+     *
      * @param clazz
      *            the clazz
      * @param satzart
@@ -124,7 +124,7 @@ public final class SatzFactory {
 
     /**
      * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
-     * 
+     *
      * @param enumClass
      *            die Aufzaehlungsklasse, z.B. Feld100.class
      * @param satzart
@@ -138,7 +138,7 @@ public final class SatzFactory {
 
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
-     * 
+     *
      * @param satzart
      *            the satzart
      * @since 0.2
@@ -150,7 +150,7 @@ public final class SatzFactory {
 
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
-     * 
+     *
      * @param clazz
      *            the clazz
      * @param satzart
@@ -165,7 +165,7 @@ public final class SatzFactory {
 
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
-     * 
+     *
      * @param clazz
      *            the clazz
      * @param satzart
@@ -189,7 +189,7 @@ public final class SatzFactory {
 
     /**
      * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
-     * 
+     *
      * @param enumClass
      *            die Aufzaehlungsklasse, z.B. Feld100.class
      * @param satzart
@@ -204,7 +204,7 @@ public final class SatzFactory {
 
     /**
      * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
-     * 
+     *
      * @param enumClass
      *            die Aufzaehlungsklasse, z.B. Feld100.class
      * @param satzart
@@ -229,7 +229,7 @@ public final class SatzFactory {
 
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
-     * 
+     *
      * @param satzart
      *            the satzart
      * @param sparte
@@ -242,7 +242,7 @@ public final class SatzFactory {
 
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
-     * 
+     *
      * @param satzart
      *            the satzart
      * @param sparte
@@ -259,7 +259,7 @@ public final class SatzFactory {
 
     /**
      * Gets the as key.
-     * 
+     *
      * @param satzart
      *            the satzart
      * @param sparte
@@ -268,7 +268,7 @@ public final class SatzFactory {
      *            the wagnisart
      * @return the as key
      */
-    private static int getAsKey(final int satzart, final int sparte, int wagnisart) {
+    private static int getAsKey(final int satzart, final int sparte, final int wagnisart) {
         int key = satzart * 1000 + sparte;
 
         if (wagnisart != -1) {
@@ -280,7 +280,7 @@ public final class SatzFactory {
 
     /**
      * Gets the satz.
-     * 
+     *
      * @param satzart
      *            the satzart
      * @return angeforderte Satz
@@ -336,7 +336,7 @@ public final class SatzFactory {
     /**
      * Versucht anhand des uebergebenen Strings herauszufinden, um was fuer eine Satzart es sich handelt und liefert
      * dann einen entsprechende (gefuellten) Satz zurueck.
-     * 
+     *
      * @param content
      *            the content
      * @return einen gefuellten Satz
@@ -362,7 +362,7 @@ public final class SatzFactory {
 
     /**
      * Gets the datensatz.
-     * 
+     *
      * @param satzart
      *            den registrierten Datensatz fuer
      * @return den registrierten Datensatz fuer 'satzart'
@@ -374,7 +374,7 @@ public final class SatzFactory {
 
     /**
      * Gets the datensatz.
-     * 
+     *
      * @param satzart
      *            z.B. 210
      * @param sparte
@@ -387,7 +387,7 @@ public final class SatzFactory {
 
     /**
      * Gets the datensatz.
-     * 
+     *
      * @param satzart
      *            z.B. 210
      * @param sparte
@@ -395,7 +395,7 @@ public final class SatzFactory {
      * @param wagnisart
      *            z.B. 1 (Kapitallebensversicherung)
      * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart'
-     * 
+     *
      * @since 0.8
      */
     public static Datensatz getDatensatz(final int satzart, final int sparte, final int wagnisart) {
@@ -424,7 +424,7 @@ public final class SatzFactory {
 
     /**
      * Gets the datensatz.
-     * 
+     *
      * @param sparte
      *            the sparte
      * @param clazz
@@ -456,7 +456,7 @@ public final class SatzFactory {
 
     /**
      * Use fallback.
-     * 
+     *
      * @param satzart
      *            the satzart
      * @param sparte
@@ -478,7 +478,12 @@ public final class SatzFactory {
 
     /**
      * Liefert ein Datenpaket mit allen unterstuetzten Satzarten und Sparten.
-     * 
+     * <p>
+     * FIXME: beruecksichtigt noch nicht die Wagnisart
+     * (d.h. Saetze mit einer Wagnisart sind noch nicht im zurueckgegebenen
+     * Datenpaket enthalten)
+     * </p>
+     *
      * @since 0.6
      * @return Datenpaket mit allen unterstuetzten Satzarten
      */
@@ -494,11 +499,18 @@ public final class SatzFactory {
             }
         }
         for (Integer key : registeredDatensatzClasses.keySet()) {
-            int sparte = key % 1000;
-            int satzart = key / 1000;
-            all.add(getDatensatz(satzart, sparte));
+            addDatensatzTo(all, key);
+        }
+        for (Integer key : registeredEnumClasses.keySet()) {
+            addDatensatzTo(all, key);
         }
         return all;
+    }
+
+    private static void addDatensatzTo(final Datenpaket all, final Integer key) {
+        int sparte = key % 1000;
+        int satzart = key / 1000;
+        all.add(getDatensatz(satzart, sparte));
     }
 
 }

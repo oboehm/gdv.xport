@@ -21,17 +21,16 @@ package gdv.xport.util;
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
+import gdv.xport.annotation.FeldInfo;
 import gdv.xport.demo.MyFeld210;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.model.Satz210;
-import gdv.xport.satz.model.Satz220;
 import gdv.xport.satz.model.Satz221;
 import gdv.xport.satz.model.SatzX;
 
@@ -43,7 +42,7 @@ import org.junit.Test;
 
 /**
  * JUnit-Test fuer SatzFactory.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
@@ -69,7 +68,8 @@ public final class SatzFactoryTest extends AbstractTest {
     @Test
     public void testGetSatzInt() {
         Satz satz = SatzFactory.getSatz(1);
-        assertEquals(Vorsatz.class, satz.getClass());
+        assertEquals(1, satz.getSatzart());
+        assertNotNull(satz.getFeld(Bezeichner.VERSION_SATZART_0100));
     }
 
     /**
@@ -132,7 +132,7 @@ public final class SatzFactoryTest extends AbstractTest {
         SatzFactory.unregister(47, 11);
     }
 
-    private void assertSatzart47(Satz satz) {
+    private void assertSatzart47(final Satz satz) {
         assertEquals(47, satz.getSatzart());
         Feld x = satz.getFeld(MyFeld210.MEINE_WAEHRUNG);
         assertNotNull(x);
@@ -179,7 +179,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetSpartenspezifischerTeil70() {
-        checkGetDatensatz(220, 70, Satz220.class);
+        checkGetDatensatz(220, 70, gdv.xport.satz.feld.sparte70.Feld220.values());
     }
 
     /**
@@ -187,7 +187,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetVertragsspezifischerTeil70() {
-        checkGetDatensatz(210, 70, Satz210.class);
+        checkGetDatensatz(210, 70, gdv.xport.satz.feld.sparte70.Feld210.values());
     }
 
     /**
@@ -195,28 +195,34 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetErweiterungssatz30() {
-        checkGetDatensatz(221, 30, Satz221.class, "2");
+        checkGetDatensatz(221, 30, gdv.xport.satz.feld.sparte30.Feld221.values(), "2");
     }
 
     @Test
     public void testGetSatzart210() {
-        checkGetDatensatz(210, 10, Satz210.class, "1");
+        checkGetDatensatz(210, 10, gdv.xport.satz.feld.sparte10.Feld210.values(), "1");
     }
 
-    private static void checkGetDatensatz(final int satzart, final int sparte, final Class<? extends Datensatz> clazz,
+    private void checkGetDatensatz(final int satzart, final int sparte, final Enum<?>[] felder,
             final String satzNr) {
+        checkGetDatensatz(satzart, sparte, felder);
         Satz datensatz = getDatensatz(satzart, sparte);
-        assertEquals(clazz, datensatz.getClass());
         Feld satznummer = datensatz.getFeld(SATZNUMMER, 1);
         assertEquals("falsche Satznummer", satzNr, satznummer.getInhalt());
     }
 
-    private static void checkGetDatensatz(final int satzart, final int sparte, final Class<? extends Datensatz> clazz) {
+    private void checkGetDatensatz(final int satzart, final int sparte, final Enum<?>[] felder) {
         Satz datensatz = getDatensatz(satzart, sparte);
-        assertEquals(clazz, datensatz.getClass());
+        for (int i = 0; i < felder.length; i++) {
+            Enum<?> feldInfo = felder[i];
+            if (feldInfo instanceof FeldInfo) {
+                String inhalt = datensatz.get(feldInfo);
+                assertNotNull("not found: " + feldInfo, inhalt);
+            }
+        }
     }
 
-    private static Satz getDatensatz(final int satzart, final int sparte) {
+    private static Datensatz getDatensatz(final int satzart, final int sparte) {
         Datensatz datensatz = SatzFactory.getDatensatz(satzart, sparte);
         assertEquals(satzart, datensatz.getSatzart());
         assertEquals(sparte, datensatz.getSparte());
@@ -225,7 +231,7 @@ public final class SatzFactoryTest extends AbstractTest {
 
     /**
      * Die Daten zu diesem Test stammen aus der Musterdatei.
-     * 
+     *
      * @throws IOException
      *             sollte eigentlich nicht vorkommen
      */
@@ -254,19 +260,17 @@ public final class SatzFactoryTest extends AbstractTest {
     /**
      * Das Registrieren/Deregistrieren von Enum-Saetzen scheint nicht richtig zu funktionieren. Dies wird mit diesem
      * Test nachgestellt (s. Issue 1).
-     * 
+     *
      * @since 0.6.3
      */
     @Test
     public void testIssue1() {
-        Datensatz satz = SatzFactory.getDatensatz(210, 30);
-        assertEquals(Satz210.class, satz.getClass());
+        checkGetDatensatz(210, 30, gdv.xport.satz.feld.sparte30.Feld210.values());
         try {
             SatzFactory.registerEnum(MyFeld210.class, 210, 30);
-            satz = SatzFactory.getDatensatz(210, 30);
-            assertNotSame(Satz210.class, satz.getClass());
+            checkGetDatensatz(210, 30, MyFeld210.values());
         } finally {
-            SatzFactory.register(Satz210.class, 210, 30);
+            SatzFactory.registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
         }
     }
 

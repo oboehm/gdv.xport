@@ -43,7 +43,7 @@ public enum Feld0001 {
             type = VorsatzFeld1bis6.class
     )
     INTRO1,
-    
+
     /**
      * Satzart 0001 Version
      */
@@ -55,7 +55,7 @@ public enum Feld0001 {
             byteAdresse = 96
             )
     VERSION_SATZART_0001,
-    
+
     /**
      * Satzart 0100 Version
      */
@@ -67,7 +67,7 @@ public enum Feld0001 {
             byteAdresse = 99
             )
     VERSION_SATZART_0100,
-    
+
     /**
      * Satzart 0200 Version
      */
@@ -79,7 +79,7 @@ public enum Feld0001 {
             byteAdresse = 102
             )
     VERSION_SATZART_0200,
-    
+
     /**
      * Satzart 0210 050 Version
      */
@@ -91,7 +91,7 @@ public enum Feld0001 {
             byteAdresse = 105
             )
     VERSION_SATZART_0210_050,
-    
+
     /**
      * Satzart 0220 051 Version
      */
@@ -103,7 +103,7 @@ public enum Feld0001 {
             byteAdresse = 108
             )
     VERSION_SATZART_0220_051,
-    
+
     /**
      * Satzart 0220 052 Version
      */
@@ -115,7 +115,7 @@ public enum Feld0001 {
             byteAdresse = 111
             )
     VERSION_SATZART_0220_052,
-    
+
     /**
      * Satzart 0220 053 Version
      */
@@ -127,7 +127,7 @@ public enum Feld0001 {
             byteAdresse = 114
             )
     VERSION_SATZART_0220_053,
-    
+
     /**
      * Satzart 0220 054 Version
      */
@@ -139,7 +139,7 @@ public enum Feld0001 {
             byteAdresse = 117
             )
     VERSION_SATZART_0220_054,
-    
+
     /**
      * Satzart 0220 059 Version
      */
@@ -151,7 +151,7 @@ public enum Feld0001 {
             byteAdresse = 120
             )
     VERSION_SATZART_0220_059,
-    
+
     /**
      * Satzart 0210 040 Version
      */
@@ -163,7 +163,7 @@ public enum Feld0001 {
             byteAdresse = 123
             )
     VERSION_SATZART_0210_040,
-    
+
     /**
      * Satzart 0220 040 Version
      */
@@ -175,7 +175,7 @@ public enum Feld0001 {
             byteAdresse = 126
             )
     VERSION_SATZART_0220_040,
-    
+
     /**
      * Satzart 0210 030 Version
      */
@@ -187,7 +187,7 @@ public enum Feld0001 {
             byteAdresse = 129
             )
     VERSION_SATZART_0210_030,
-    
+
     /**
      * Satzart 0220 030 Version
      */
@@ -199,7 +199,7 @@ public enum Feld0001 {
             byteAdresse = 132
             )
     VERSION_SATZART_0220_030,
-    
+
     /**
      * Satzart 0210 010 Version
      */
@@ -211,7 +211,7 @@ public enum Feld0001 {
             byteAdresse = 135
             )
     VERSION_SATZART_0210_010,
-    
+
     /**
      * Satzart 0220 010 Version
      */
@@ -223,7 +223,7 @@ public enum Feld0001 {
             byteAdresse = 138
             )
     VERSION_SATZART_0220_010,
-    
+
     /**
      * Satzart 0210 130 Version
      */
@@ -235,7 +235,7 @@ public enum Feld0001 {
             byteAdresse = 141
             )
     VERSION_SATZART_0210_130,
-    
+
     /**
      * Satzart 0220 130 Version
      */
@@ -247,7 +247,7 @@ public enum Feld0001 {
             byteAdresse = 144
             )
     VERSION_SATZART_0220_130,
-    
+
     /**
      * Satzart 0210 110 Version
      */
@@ -259,7 +259,7 @@ public enum Feld0001 {
             byteAdresse = 147
             )
     VERSION_SATZART_0210_110,
-    
+
     /**
      * Satzart 0220 110 Version
      */
@@ -271,7 +271,7 @@ public enum Feld0001 {
             byteAdresse = 150
             )
     VERSION_SATZART_0220_110,
-    
+
     /**
      * Satzart 0210 140 Version
      */
@@ -283,7 +283,7 @@ public enum Feld0001 {
             byteAdresse = 153
             )
     VERSION_SATZART_0210_140,
-    
+
     /**
      * Satzart 0220 140 Version
      */
@@ -295,7 +295,7 @@ public enum Feld0001 {
             byteAdresse = 156
             )
     VERSION_SATZART_0220_140,
-    
+
     /**
      * Satzart 0210 020 Version
      */
@@ -307,7 +307,7 @@ public enum Feld0001 {
             byteAdresse = 159
             )
     VERSION_SATZART_0210_020,
-    
+
     /**
      * Satzart 0220 020 Version
      */
@@ -319,7 +319,7 @@ public enum Feld0001 {
             byteAdresse = 162
             )
     VERSION_SATZART_0220_020,
-    
+
     /**
      * Satzart 0210 070 Version
      */
@@ -331,7 +331,7 @@ public enum Feld0001 {
             byteAdresse = 165
             )
     VERSION_SATZART_0210_070,
-    
+
     /**
      * Satzart 0220 070 Version
      */
@@ -343,7 +343,7 @@ public enum Feld0001 {
             byteAdresse = 168
             )
     VERSION_SATZART_0220_070,
-    
+
     /**
      * Satzart 0210 Version Feuer-Industrie/Gewerbliche Sachversicherung
      */
@@ -355,7 +355,7 @@ public enum Feld0001 {
             byteAdresse = 171
             )
     VERSION_SATZART_0210_FEUER,
-    
+
     /**
      * Satzart 0220 Version Feuer-Industrie/Gewerbliche Sachversicherung
      */
@@ -367,8 +367,7 @@ public enum Feld0001 {
             byteAdresse = 174
             )
     VERSION_SATZART_0220_FEUER,
-    
-    
+
     /**
      * Satzart 0210 510 Version
      */
@@ -380,7 +379,7 @@ public enum Feld0001 {
             byteAdresse = 177
             )
     VERSION_SATZART_0210_510,
-    
+
     /**
      * Satzart 0220 510 Version
      */
@@ -392,7 +391,7 @@ public enum Feld0001 {
             byteAdresse = 180
             )
     VERSION_SATZART_0220_510,
-    
+
     /**
      * Satzart 0210 Version Technische Versicherungen
      */
@@ -404,7 +403,7 @@ public enum Feld0001 {
             byteAdresse = 183
             )
     VERSION_SATZART_0210_TECH_VERS,
-    
+
     /**
      * Satzart 0220 Version Technische Versicherungen
      */
@@ -416,7 +415,7 @@ public enum Feld0001 {
             byteAdresse = 186
             )
     VERSION_SATZART_0220_TECH_VERS,
-    
+
     /**
      * Satzart 0210 Version Transport
      */
@@ -428,7 +427,7 @@ public enum Feld0001 {
             byteAdresse = 189
             )
     VERSION_SATZART_0210_TRANSPORT,
-    
+
     /**
      * Satzart 0220 Version Transport
      */
@@ -440,7 +439,7 @@ public enum Feld0001 {
             byteAdresse = 192
             )
     VERSION_SATZART_0220_TRANSPORT,
-    
+
     /**
      * Satzart 0250 Version Transport Einzelanmeldung
      */
@@ -452,7 +451,7 @@ public enum Feld0001 {
             byteAdresse = 195
             )
     VERSION_SATZART_0250_TRANSPORT,
-    
+
     /**
      * Satzart 0260 Version Transport Umsatzanmeldung
      */
@@ -464,7 +463,7 @@ public enum Feld0001 {
             byteAdresse = 198
             )
     VERSION_SATZART_0260_TRANSPORT,
-    
+
     /**
      * Satzart 0210 Version Nicht einzeln definierte Sparten
      */
@@ -476,7 +475,7 @@ public enum Feld0001 {
             byteAdresse = 201
             )
     VERSION_SATZART_0210_NICHT_DEF_SPARTEN,
-    
+
     /**
      * Satzart 0220 Version Nicht einzeln definierte Sparten
      */
@@ -488,7 +487,7 @@ public enum Feld0001 {
             byteAdresse = 204
             )
     VERSION_SATZART_0220_NICHT_DEF_SPARTEN,
-    
+
     /**
      * KFZ-Baustein Version
      */
@@ -500,7 +499,7 @@ public enum Feld0001 {
             byteAdresse = 207
             )
     VERSION_KFZ_BAUSTEIN,
-    
+
     /**
      * Satzart 0300 Version Beteiligungsinformation
      */
@@ -512,7 +511,7 @@ public enum Feld0001 {
             byteAdresse = 210
             )
     VERSION_SATZART_0300_BETEILIGUNGSINFORMATION,
-    
+
     /**
      * Satzart 0400 Version Inkasso
      */
@@ -524,7 +523,7 @@ public enum Feld0001 {
             byteAdresse = 213
             )
     VERSION_SATZART_0400_INKASSO,
-    
+
     /**
      * Satzart 0410 Version Inkasso
      */
@@ -536,7 +535,7 @@ public enum Feld0001 {
             byteAdresse = 216
             )
     VERSION_SATZART_0410_INKASSO,
-    
+
     /**
      * Satzart 0430 Version Inkasso
      */
@@ -548,7 +547,7 @@ public enum Feld0001 {
             byteAdresse = 219
             )
     VERSION_SATZART_0430_INKASSO,
-    
+
     /**
      * Satzart 0500 Version Schadeninformation
      */
@@ -572,7 +571,7 @@ public enum Feld0001 {
             byteAdresse = 225
             )
     VERSION_SATZART_9999,
-    
+
     /**
      * Satzart 0420 Version Versicherungsteuerabrechnung
      */
@@ -584,7 +583,7 @@ public enum Feld0001 {
             byteAdresse = 228
             )
     VERSION_SATZART_0420_VERSICHERUNGSTEUERABRECHNUNG,
-    
+
     /**
      * Satzart 0450 Version Inkassoabrechnung
      */
@@ -596,7 +595,7 @@ public enum Feld0001 {
             byteAdresse = 231
             )
     VERSION_SATZART_0450_INKASSOABRECHNUNG,
-    
+
     /**
      * Satzart 0550 Version Schadenabrechnung
      */
@@ -608,7 +607,7 @@ public enum Feld0001 {
             byteAdresse = 234
             )
     VERSION_SATZART_0550_SCHADENABRECHNUNG,
-    
+
     /**
      * Art des Absenders
      * 1 = VU
@@ -624,7 +623,7 @@ public enum Feld0001 {
             byteAdresse = 237
             )
     ART_DES_ABSENDERS,
-    
+
     /**
      * Art des Adressaten
      */
@@ -636,12 +635,12 @@ public enum Feld0001 {
             byteAdresse = 238
             )
     ART_DES_ADRESSATEN,
-    
+
     /**
      * VU-Abrechnungsstelle
-     * z. B. 05 = München (Bei der Allianz) 
-     * Sollte keine Abrechnungstelle vorhanden sein, 
-     * muss "00" geschlüsselt werden. 
+     * z. B. 05 = München (Bei der Allianz)
+     * Sollte keine Abrechnungstelle vorhanden sein,
+     * muss "00" geschlüsselt werden.
      * Bei Lieferung von Mitversicherungsdaten muss "00" geschlüsselt werden.
      */
     @FeldInfo(
@@ -652,7 +651,7 @@ public enum Feld0001 {
             byteAdresse = 239
             )
     VU_ABRECHNUNGSSTELLE,
-    
+
     /**
      * Bestandsführende Geschäftsstelle
      */
@@ -664,7 +663,7 @@ public enum Feld0001 {
             byteAdresse = 241
             )
     BESTANDSFUEHRENDE_GESCHAEFTSSTELLE,
-    
+
     /**
      * Satzart 0350 Version Klausel-Datensatz
      */
@@ -676,7 +675,7 @@ public enum Feld0001 {
             byteAdresse = 243
             )
     VERSION_SATZART_0350_KLAUSELN,
-    
+
     /**
      * Leerstellen
      */
@@ -688,7 +687,7 @@ public enum Feld0001 {
             byteAdresse = 246
             )
     LEERSTELLEN,
-    
+
     /**
      * Satznummer
      */
@@ -700,15 +699,16 @@ public enum Feld0001 {
             byteAdresse = 256
             )
     SATZNUMMER1,
- 
+
     /////   Teildatensatz 2   /////////////////////////////////////////////////
+
     /** Feld 1 - 6 sind fuer jeden Vorsatz identisch. */
     @FelderInfo(
             teildatensatz = 2,
             type = VorsatzFeld1bis6.class
     )
     INTRO2,
-    
+
     /**
      * Satzart 0211 050 Version
      */
@@ -720,7 +720,7 @@ public enum Feld0001 {
             byteAdresse = 96
             )
     VERSION_SATZART_0211_050,
-    
+
     /**
      * Satzart 0221 051 Version
      */
@@ -732,7 +732,7 @@ public enum Feld0001 {
             byteAdresse = 99
             )
     VERSION_SATZART_0221_051,
-    
+
     /**
      * Satzart 0221 052 Version
      */
@@ -744,7 +744,7 @@ public enum Feld0001 {
             byteAdresse = 102
             )
     VERSION_SATZART_0221_052,
-    
+
     /**
      * Satzart 0221 053 Version
      */
@@ -756,7 +756,7 @@ public enum Feld0001 {
             byteAdresse = 105
             )
     VERSION_SATZART_0221_053,
-    
+
     /**
      * Satzart 0221 054 Version
      */
@@ -768,7 +768,7 @@ public enum Feld0001 {
             byteAdresse = 108
             )
     VERSION_SATZART_0221_054,
-    
+
     /**
      * Satzart 0221 059 Version
      */
@@ -780,7 +780,7 @@ public enum Feld0001 {
             byteAdresse = 111
             )
     VERSION_SATZART_0221_059,
-    
+
     /**
      * Satzart 0221 055 Version
      */
@@ -792,7 +792,7 @@ public enum Feld0001 {
             byteAdresse = 114
             )
     VERSION_SATZART_0221_055,
-    
+
     /**
      * Satzart 0211 040 Version
      */
@@ -804,7 +804,7 @@ public enum Feld0001 {
             byteAdresse = 117
             )
     VERSION_SATZART_0211_040,
-    
+
     /**
      * Satzart 0221 040 Version
      */
@@ -816,7 +816,7 @@ public enum Feld0001 {
             byteAdresse = 120
             )
     VERSION_SATZART_0221_040,
-    
+
     /**
      * Satzart 0221 030 Version
      */
@@ -828,7 +828,7 @@ public enum Feld0001 {
             byteAdresse = 123
             )
     VERSION_SATZART_0221_030,
-    
+
     /**
      * Satzart 0211 010 Version
      */
@@ -840,7 +840,7 @@ public enum Feld0001 {
             byteAdresse = 126
             )
     VERSION_SATZART_0211_010,
-    
+
     /**
      * Satzart 0221 010 Version
      */
@@ -852,7 +852,7 @@ public enum Feld0001 {
             byteAdresse = 129
             )
     VERSION_SATZART_0221_010,
-    
+
     /**
      * Satzart 0211 130 Version
      */
@@ -864,7 +864,7 @@ public enum Feld0001 {
             byteAdresse = 132
             )
     VERSION_SATZART_0211_130,
-    
+
     /**
      * Satzart 0221 130 Version
      */
@@ -876,7 +876,7 @@ public enum Feld0001 {
             byteAdresse = 135
             )
     VERSION_SATZART_0221_130,
-    
+
     /**
      * Satzart 0211 110 Version
      */
@@ -888,7 +888,7 @@ public enum Feld0001 {
             byteAdresse = 138
             )
     VERSION_SATZART_0211_110,
-    
+
     /**
      * Satzart 0221 110 Version
      */
@@ -900,7 +900,7 @@ public enum Feld0001 {
             byteAdresse = 141
             )
     VERSION_SATZART_0221_110,
-    
+
     /**
      * Satzart 0211 140 Version
      */
@@ -912,7 +912,7 @@ public enum Feld0001 {
             byteAdresse = 144
             )
     VERSION_SATZART_0211_140,
-    
+
     /**
      * Satzart 0221 140 Version
      */
@@ -924,7 +924,7 @@ public enum Feld0001 {
             byteAdresse = 147
             )
     VERSION_SATZART_0221_140,
-    
+
     /**
      * Satzart 0221 070 Version
      */
@@ -936,7 +936,7 @@ public enum Feld0001 {
             byteAdresse = 150
             )
     VERSION_SATZART_0221_070,
-    
+
     /**
      * Satzart 0211 Version Feuer-Industrie/Gewerbliche Sachversicherung
      */
@@ -948,7 +948,7 @@ public enum Feld0001 {
             byteAdresse = 153
             )
     VERSION_SATZART_0211_FEUER,
-    
+
     /**
      * Satzart 0221 Version Feuer-Industrie/Gewerbliche Sachversicherung
      */
@@ -960,7 +960,7 @@ public enum Feld0001 {
             byteAdresse = 156
             )
     VERSION_SATZART_0221_FEUER,
-    
+
     /**
      * Satzart 0221 510 Version
      */
@@ -972,7 +972,7 @@ public enum Feld0001 {
             byteAdresse = 159
             )
     VERSION_SATZART_0221_510,
-    
+
     /**
      * Satzart 0211 Version Technische Versicherungen
      */
@@ -984,7 +984,7 @@ public enum Feld0001 {
             byteAdresse = 162
             )
     VERSION_SATZART_0211_TECH_VERS,
-    
+
     /**
      * Satzart 0221 Version Technische Versicherungen
      */
@@ -996,7 +996,7 @@ public enum Feld0001 {
             byteAdresse = 165
             )
     VERSION_SATZART_0221_TECH_VERS,
-    
+
     /**
      * Satzart 0211 Version Transport
      */
@@ -1008,7 +1008,7 @@ public enum Feld0001 {
             byteAdresse = 168
             )
     VERSION_SATZART_0211_TRANSPORT,
-    
+
     /**
      * Satzart 0221 Version Transport
      */
@@ -1020,7 +1020,7 @@ public enum Feld0001 {
             byteAdresse = 171
             )
     VERSION_SATZART_0221_TRANSPORT,
-    
+
     /**
      * Satzart 0251 Version Transport Einzelanmeldung
      */
@@ -1032,8 +1032,8 @@ public enum Feld0001 {
             byteAdresse = 174
             )
     VERSION_SATZART_0251_TRANSPORT,
-    
-    
+
+
     /**
      * Satzart 0211 Version Nicht einzeln definierte Sparten
      */
@@ -1045,7 +1045,7 @@ public enum Feld0001 {
             byteAdresse = 177
             )
     VERSION_SATZART_0211_NICHT_DEF_SPARTEN,
-    
+
     /**
      * Satzart 0221 Version Nicht einzeln definierte Sparten
      */
@@ -1057,7 +1057,7 @@ public enum Feld0001 {
             byteAdresse = 180
             )
     VERSION_SATZART_0221_NICHT_DEF_SPARTEN,
-    
+
     /**
      * Satzart 0210 550 Version
      */
@@ -1069,7 +1069,7 @@ public enum Feld0001 {
             byteAdresse = 183
             )
     VERSION_SATZART_0210_550,
-    
+
     /**
      * Satzart 0220 550 Version
      */
@@ -1081,7 +1081,7 @@ public enum Feld0001 {
             byteAdresse = 186
             )
     VERSION_SATZART_0220_550,
-    
+
     /**
      * Satzart 0270 550 Version
      */
@@ -1093,7 +1093,7 @@ public enum Feld0001 {
             byteAdresse = 189
             )
     VERSION_SATZART_0270_550,
-    
+
     /**
      * Satzart 0280 550 Version
      */
@@ -1105,7 +1105,7 @@ public enum Feld0001 {
             byteAdresse = 192
             )
     VERSION_SATZART_0280_550,
-    
+
     /**
      * Satzart 0291 550 Version
      */
@@ -1117,7 +1117,7 @@ public enum Feld0001 {
             byteAdresse = 195
             )
     VERSION_SATZART_0291_550,
-    
+
     /**
      * Satzart 0292 550 Version
      */
@@ -1129,7 +1129,7 @@ public enum Feld0001 {
             byteAdresse = 198
             )
     VERSION_SATZART_0292_550,
-    
+
     /**
      * Satzart 0293 550 Version
      */
@@ -1141,7 +1141,7 @@ public enum Feld0001 {
             byteAdresse = 201
             )
     VERSION_SATZART_0293_550,
-    
+
     /**
      * Satzart 0294 550 Version
      */
@@ -1153,7 +1153,7 @@ public enum Feld0001 {
             byteAdresse = 204
             )
     VERSION_SATZART_0294_550,
-    
+
     /**
      * Satzart 0295 550 Version
      */
@@ -1165,7 +1165,7 @@ public enum Feld0001 {
             byteAdresse = 207
             )
     VERSION_SATZART_0295_550,
-    
+
     /**
      * Satzart 0052 Version
      */
@@ -1177,7 +1177,7 @@ public enum Feld0001 {
             byteAdresse = 210
             )
     VERSION_SATZART_0052,
-    
+
     /**
      * Satzart 0102 Version
      */
@@ -1189,7 +1189,7 @@ public enum Feld0001 {
             byteAdresse = 213
             )
     VERSION_SATZART_0102,
-    
+
     /**
      * Satzart 0212 Version
      */
@@ -1201,7 +1201,7 @@ public enum Feld0001 {
             byteAdresse = 216
             )
     VERSION_SATZART_0212,
-    
+
     /**
      * Satzart 0352 Version
      */
@@ -1213,7 +1213,7 @@ public enum Feld0001 {
             byteAdresse = 219
             )
     VERSION_SATZART_0352,
-    
+
     /**
      * Satzart 0362 Version
      */
@@ -1225,7 +1225,7 @@ public enum Feld0001 {
             byteAdresse = 222
             )
     VERSION_SATZART_0362,
-    
+
     /**
      * Satzart 0382 Version
      */
@@ -1237,7 +1237,7 @@ public enum Feld0001 {
             byteAdresse = 225
             )
     VERSION_SATZART_0382,
-    
+
     /**
      * Satzart 9950 Version
      */
@@ -1249,7 +1249,7 @@ public enum Feld0001 {
             byteAdresse = 228
             )
     VERSION_SATZART_9950,
-    
+
     /**
      * Satzart 9952 Version
      */
@@ -1261,7 +1261,7 @@ public enum Feld0001 {
             byteAdresse = 231
             )
     VERSION_SATZART_9952,
-    
+
     /**
      * Satzart 0210 580 Version
      */
@@ -1273,7 +1273,7 @@ public enum Feld0001 {
             byteAdresse = 234
             )
     VERSION_SATZART_0210_580,
-    
+
     /**
      * Satzart 0220 580 Version
      */
@@ -1285,7 +1285,7 @@ public enum Feld0001 {
             byteAdresse = 237
             )
     VERSION_SATZART_0220_580,
-    
+
     /**
      * Satzart 0372 Version
      */
@@ -1297,7 +1297,7 @@ public enum Feld0001 {
             byteAdresse = 240
             )
     VERSION_SATZART_0372,
-    
+
     /**
      * Satzart 0600 Version
      */
@@ -1309,7 +1309,7 @@ public enum Feld0001 {
             byteAdresse = 243
             )
     VERSION_SATZART_0600,
-    
+
     /**
      * Leerstellen
      */
@@ -1321,7 +1321,7 @@ public enum Feld0001 {
             byteAdresse = 246
             )
     LEERSTELLEN2,
-    
+
     /**
      * Satznummer
      */
@@ -1333,16 +1333,16 @@ public enum Feld0001 {
             byteAdresse = 256
             )
     SATZNUMMER2,
-    
+
     /////   Teildatensatz 3   /////////////////////////////////////////////////
-    
+
     /** Feld 1 - 6 sind fuer jeden Vorsatz identisch. */
     @FelderInfo(
             teildatensatz = 3,
             type = VorsatzFeld1bis6.class
     )
     INTRO,
-    
+
     /**
      * Satzart 0392 Version eVB-Nummer
      */
@@ -1354,7 +1354,7 @@ public enum Feld0001 {
             byteAdresse = 96
             )
     VERSION_SATZART_0392_EVB,
-    
+
     /**
      * Satzart 0230 Version Fondsdatensatz - Leben
      */
@@ -1366,7 +1366,7 @@ public enum Feld0001 {
             byteAdresse = 99
             )
     VERSION_SATZART_0230_LEBEN,
-    
+
     /**
      * Satzart 0202 Version Allgemeine Antragsdaten
      */
@@ -1378,7 +1378,7 @@ public enum Feld0001 {
             byteAdresse = 102
             )
     VERSION_SATZART_0202_ALLG_ANTRAGSDATEN,
-    
+
     /**
      * Satzart 0222 Version Unfallspezifische Antragsdaten
      */
@@ -1390,7 +1390,7 @@ public enum Feld0001 {
             byteAdresse = 105
             )
     VERSION_SATZART_0222,
-    
+
     /**
      * Satzart 0230 Version Unfall Leistungsarten
      */
@@ -1402,7 +1402,7 @@ public enum Feld0001 {
             byteAdresse = 108
             )
     VERSION_SATZART_0230_UNFALL,
-    
+
     /**
      * Satzart 0390 Version Rabatte und Zuschläge
      */
@@ -1414,7 +1414,7 @@ public enum Feld0001 {
             byteAdresse = 111
             )
     VERSION_SATZART_0390_RABATTE,
-    
+
     /**
      * Satzart 0342 Version Begleitdokumente und Signaturen
      */
@@ -1426,7 +1426,7 @@ public enum Feld0001 {
             byteAdresse = 114
             )
     VERSION_SATZART_0342_BEGLEITDOK,
-    
+
     /**
      * Satzart 9951 Version MIME-Datei
      */
@@ -1438,7 +1438,7 @@ public enum Feld0001 {
             byteAdresse = 117
             )
     VERSION_SATZART_9951_MIME,
-    
+
     /**
      * Satzart 0210 560 Version Kapitalanlage
      */
@@ -1450,7 +1450,7 @@ public enum Feld0001 {
             byteAdresse = 120
             )
     VERSION_SATZART_0210_560,
-    
+
     /**
      * Satzart 0220 560 Version Kapitalanlage
      */
@@ -1462,7 +1462,7 @@ public enum Feld0001 {
             byteAdresse = 123
             )
     VERSION_SATZART_0220_560,
-    
+
     /**
      * Satzart 0210 570 Version Baufinanzierung
      */
@@ -1474,7 +1474,7 @@ public enum Feld0001 {
             byteAdresse = 126
             )
     VERSION_SATZART_0210_570,
-    
+
     /**
      * Satzart 0220 570 Version Baufinanzierung
      */
@@ -1486,7 +1486,7 @@ public enum Feld0001 {
             byteAdresse = 129
             )
     VERSION_SATZART_0220_570,
-    
+
     /**
      * Satzart 0210 684 Version Tierkranken
      */
@@ -1498,7 +1498,7 @@ public enum Feld0001 {
             byteAdresse = 132
             )
     VERSION_SATZART_0210_684,
-    
+
     /**
      * Satzart 0220 684 Version Tierkranken
      */
@@ -1510,7 +1510,7 @@ public enum Feld0001 {
             byteAdresse = 135
             )
     VERSION_SATZART_0220_684,
-    
+
     /**
      * Leerstellen
      */
@@ -1522,7 +1522,7 @@ public enum Feld0001 {
             byteAdresse = 138
             )
     LEERSTELLEN3,
-    
+
     /**
      * Satznummer
      */
@@ -1533,7 +1533,6 @@ public enum Feld0001 {
             anzahlBytes = 1,
             byteAdresse = 256
             )
-    SATZNUMMER3,
-    
-}
+    SATZNUMMER3;
 
+}
