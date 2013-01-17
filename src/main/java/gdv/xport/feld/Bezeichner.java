@@ -699,6 +699,24 @@ public final class Bezeichner {
     public static final String NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Nächste Erlebensfall VS";
     public static final String BEGINNDATUM_DER_NAECHSTEN_ERLEBENSFALL_VS = "Beginndatum der nächsten Erlebensfall VS";
 
+    public static final String PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = "Provisionspflichtige Beitragssumme";
+    public static final String PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Provisionspflichtige Wertungssumme";
+    public static final String WERTUNGSBASIS = "Wertungsbasis";
+    public static final String WERTUNGSMODELL = "Wertungsmodell";
+    public static final String BUCHUNGSKENNZEICHEN = "Buchungskennzeichen";
+    public static final String HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Haftungswertungssumme";
+    public static final String HAFTUNG_AB = "Haftung ab";
+    public static final String HAFTUNG_BIS = "Haftung bis";
+    public static final String URSPRUENGLICHES_HAFTUNGSBEGINNDATUM = "Ursprüngliches Haftungsbeginndatum";
+    public static final String PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Provisionspflichtige Beitragssumme";
+    public static final String PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Provisionspflichtige Wertungssumme";
+    public static final String WERTUNGSBASIS2 = "Wertungsbasis";
+    public static final String WERTUNGSMODELL2 = "Wertungsmodell";
+    public static final String BUCHUNGSKENNZEICHEN2 = "Buchungskennzeichen";
+    public static final String HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Haftungswertungssumme";
+    public static final String HAFTUNG_AB2 = "Haftung ab";
+    public static final String HAFTUNG_BIS2 = "Haftung bis";
+
     private Bezeichner() {
     }
 
