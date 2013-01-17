@@ -33,7 +33,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  * @author ralfklemmer
  * @since 12.11.2012
  */
-public enum Feld220 {
+public enum Feld220Wagnis0 {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 

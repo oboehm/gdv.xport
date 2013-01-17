@@ -21,7 +21,7 @@ package gdv.xport.feld;
 /**
  * Diese Klasse enthaelt nur String-Konstanten: die Bezeichner der einzelnen Felder. Die Konstanten sind alphabetisch
  * geordnet.
- *
+ * 
  * @author oliver
  * @since 15.10.2009
  */
@@ -576,7 +576,7 @@ public final class Bezeichner {
     public static final String VERSION_SATZART_0210_684 = "Version Satzart 0210 684";
     public static final String VERSION_SATZART_0220_684 = "Version Satzart 0220 684";
     public static final String INTERNES_ORDNUNGSMERKMAL_DES_VM = "Internes Ordnungsmerkmal des VM";
-    public static final String FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG = "Faeˆlligkeit der letzten Beitragszahlung";
+    public static final String FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG = "FaeÂˆlligkeit der letzten Beitragszahlung";
     public static final String LEBENSLANGE_BEITRAGSZAHLUNG = "Lebenslange Beitragszahlung";
     public static final String BESONDERE_VEREINBARUNGEN = "Besondere Vereinbarungen";
     public static final String DIREKTANSPRUCH = "Direktanspruch";
@@ -584,15 +584,15 @@ public final class Bezeichner {
     public static final String ALTERSGRUPPE = "Altersgruppe";
     public static final String BEITRAGSZAHLUNG_BIS = "Beitragszahlung bis";
     public static final String RUECKGEWAEHRDATUM = "Rueckgewaehrdatum";
-    public static final String RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = "Rueckgewaeˆhrsumme zum Ablauf in Waehrungseinheiten";
+    public static final String RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = "RueckgewaeÂˆhrsumme zum Ablauf in Waehrungseinheiten";
     public static final String ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = "Ablaufleistung incl. Ueberschussanteile in Waehrungseinheiten";
     public static final String KAPITALERTRAGSSTEUER_BEI_ABLAUF = "Kapitalertragssteuer bei Ablauf";
-    public static final String SOLIDARITAETSZUSCHLAG_BEI_ABLAUF = "SolidaritaÌˆtszuschlag bei Ablauf";
+    public static final String SOLIDARITAETSZUSCHLAG_BEI_ABLAUF = "SolidaritaÄŒÂˆtszuschlag bei Ablauf";
     public static final String RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Rueckkaufswert zum Berechnungsstichtag in Waehrungseinheiten";
     public static final String BERECHNUNGSSTICHTAG_ZUM_RUECKKAUFSWERT = "Berechnungsstichtag zum Rueckkaufswert";
-    public static final String KAPITALERTRAGSSTEUER_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Kapitalertragssteuer bei RuÌˆckkauf zum Berechnungsstichtag";
-    public static final String SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Solidaritaeˆtszuschlag bei Rueckkauf zum Berechnungsstichtag";
-    public static final String UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Ueberschussanteile zum Berechnungsstichtag in Waeˆhrungseinheiten";
+    public static final String KAPITALERTRAGSSTEUER_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Kapitalertragssteuer bei RuÄŒÂˆckkauf zum Berechnungsstichtag";
+    public static final String SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "SolidaritaeÂˆtszuschlag bei Rueckkauf zum Berechnungsstichtag";
+    public static final String UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Ueberschussanteile zum Berechnungsstichtag in WaeÂˆhrungseinheiten";
     public static final String GEBURTSDATUM_DER_BEZUGSBERECHTIGTEN_PERSON = "Geburtsdatum der bezugsberechtigten Person";
 
     public static final String ANZAHL_DER_VERSICHERTEN_PERSONEN = "Anzahl der versicherten Personen";
@@ -615,6 +615,89 @@ public final class Bezeichner {
     public static final String VORZEICHEN3 = "Vorzeichen";
     public static final String VORZEICHEN4 = "Vorzeichen";
     public static final String VORZEICHEN5 = "Vorzeichen";
+
+    public static final String ABLAUF = "Ablauf";
+    public static final String AENDERUNG = "Änderung";
+    public static final String VERTRAGSLAUFZEIT = "Vertragslaufzeit";
+    public static final String VERTRAGSART = "Vertragsart";
+    public static final String BEITRAG = "Beitrag";
+    public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Erlebensfall VS zum Ablauf";
+    public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Todesfall VS in Währungseinheiten zum Ablauf";
+    public static final String FALLENDE_VS = "fallende VS";
+    public static final String NETTOBEITRAG_IN_WAEHRUNGSEINHEIT = "Nettobeitrag";
+    public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Erlebensfall VS II zum Ablauf";
+    public static final String STATUS = "Status";
+    public static final String BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Beitragsfreie Erlebensfall VS";
+    public static final String BEITRAGSFREIE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = "Beitragsfreie Todesfall VS";
+    public static final String LAUFZEITVERKUERZUNG = "Laufzeitverküˆrzung";
+    public static final String GEWINNVERWENDUNGSART = "Gewinnverwendungsart";
+    public static final String UEBERSCHUSS_GUELTIG_AB = "Überschuss güˆltig ab";
+    public static final String RISIKOEINSCHRAENKUNG = "Risikoeinschränkung";
+    public static final String RISIKOZUSCHLäGE = "Risikozuschläge";
+    public static final String DYNAMIK_PROZENT_SATZ = "Dynamik %-Satz";
+    public static final String ERHOEHUNGSBASIS_DYNAMIK = "Erhöˆhungsbasis Dynamik";
+    public static final String DYNAMIKSTOP = "Dynamikstop";
+    public static final String DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK = "Datum der letzten positiven Dynamik";
+    public static final String ENDALTER = "Endalter";
+    public static final String EINTRITTSALTER = "Eintrittsalter";
+    public static final String VERTRAG_MIT_ZUWACHSGARANTIE = "Vertrag mit Zuwachsgarantie";
+    public static final String RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN = "Rüˆckkaufswert";
+    public static final String RUECKKAUFSWERT_GUELTIG_AB = "Rüˆckkaufswert güˆltig ab";
+    public static final String GUTHABEN_DIVID_ANSAMMLUNGEN_IN_WAEHRUNGSEINHEITEN = "Guthaben Divid. Ansammlungen";
+    public static final String UMTAUSCHRECHT = "Umtauschrecht";
+    public static final String SPARVORGANG = "Sparvorgang";
+    public static final String GESTUNDET_AUSGESETZT_BIS = "gestundet / ausgesetzt bis";
+    public static final String ABWEICHENDE_VERTRAGSLAUFZEIT = "Abweichende Vertragslaufzeit";
+    public static final String ABWEICHENDER_ABLAUF = "Abweichender Ablauf";
+    public static final String RISIKOZUSCHLAG_IN_WAEHRUNGSEINHEITEN = "Risikozuschlag";
+    public static final String TARIFBEZEICHNUNG_DES_FOLGETARIFS = "Tarifbezeichnung des Folgetarifs";
+    public static final String UMSTELLUNGSDATUM_DES_FOLGETARIFS = "Umstellungsdatum des Folgetarifs";
+    public static final String ZUKUENFTIGER_BEITRAG_IN_WAEHRUNGSEINHEITEN = "Zuküˆnftiger Beitrag";
+    public static final String VERTRAGSBEDINGUNG = "Vertragsbedingung";
+    public static final String DYNAMIKBEGINN = "Dynamikbeginn";
+    public static final String ABWEICHENDES_DYNAMIKENDALTER = "Abweichendes Dynamikendalter";
+    public static final String ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG = "Absoluter Dynamikerhöˆhungsbetrag";
+    public static final String ANTEILIGER_DYNAMIKPROZENTSATZ = "Anteiliger Dynamikprozentsatz";
+    public static final String VEREINBARTER_DYNAMIKMINDESTANPASSUNGSPROZENTSATZ = "Vereinbarter Dynamikmindestanpassungsprozentsatz";
+    public static final String VEREINBARTER_DYNAMIKMAXIMALANPASSUNGSPROZENTSATZ = "Vereinbarter Dynamikmaximalanpassungsprozentsatz";
+    public static final String ANZAHL_VERBLEIBENDE_DYNAMIKWIDERSPRUECHE = "Anzahl verbleibende Dynamikwidersprüˆche";
+    public static final String LEISTUNG_BEI_SCHWERER_ERKRANKUNG = "Leistung bei schwerer Erkrankung";
+    public static final String VERSICHERTE_ERKRANKUNGEN = "Versicherte Erkrankungen";
+    public static final String LEISTUNGSBEGINN_AB = "Leistungsbeginn ab";
+    public static final String BEGINN_ABRUFPHASE = "Beginn Abrufphase";
+    public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Erlebensfall VS in Währungseinheiten zum Beginn der Abrufphase";
+    public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Todesfall VS in Währungseinheiten zum Beginn der Abrufphase";
+    public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Erlebensfall VS II in Währungseinheiten zum Beginn der Abrufphase";
+
+    public static final String LFD_NUMMER_DER_SATZART = "Lfd. Nummer der Satzart";
+    public static final String BEZUGSBERECHTIGT_IM_ERLEBENSFALL = "Bezugsberechtigt im Erlebensfall";
+    public static final String SONSTIGER_BEZUGSBERECHTIGTER_IM_ERLEBENSFALL = "Sonstiger Bezugsberechtigter im Erlebensfall";
+    public static final String BEZUGSRECHTANTEIL_IM_ERLEBENSFALL = "Bezugsrechtanteil im Erlebensfall";
+    public static final String UNWIDERRUFLICHES_BEZUGSRECHT_IM_ERLEBENSFALL = "Unwiderrufliches Bezugsrecht im Erlebensfall";
+    public static final String BEZUGSBERECHTIGT_IM_TODESFALL = "Bezugsberechtigt im Todesfall";
+    public static final String SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL = "Sonstiger Bezugsberechtigter im Todesfall";
+    public static final String BEZUGSRECHTANTEIL_IM_TODESFALL = "Bezugsrechtanteil im Todesfall";
+    public static final String UNWIDERRUFLICHES_BEZUGSRECHT_IM_TODESFALL = "Unwiderrufliches Bezugsrecht im Todesfall";
+
+    public static final String NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN = "Nächste Auszahlungssumme";
+    public static final String NAECHSTER_AUSZAHLUNGSTERMIN = "Nächster Auszahlungstermin";
+    public static final String AUSZAHLUNGSWEISE = "Auszahlungsweise";
+    public static final String ANZAHL_DER_AUSZAHLUNGEN = "Anzahl der Auszahlungen";
+
+    public static final String ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = "Anfängliche Todesefall VS";
+    public static final String AENDERUNG_DER_TODESFALLLEISTUNG = "Änderung der Todesfallleistung";
+    public static final String ABSTAND_DER_TODESFALLAENDERUNGSTERMINE = "Abstand der Todesfalländerungstermine";
+    public static final String TODESFALLAENDERUNGS_PROZENTSATZ = "Todesfalländerungs-Prozentsatz";
+    public static final String ABSOLUTE_TODESFALLAENDERUNGSSUMME_VS_IN_WAEHRUNGSEINHEITEN = "Absolute Todesfalländerungssummer";
+    public static final String NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = "Nächste Todesfall VS";
+    public static final String BEGINNDATUM_DER_NAECHSTEN_TODESFALL_VS = "Beginndatum der nächsten Todesfall VS";
+    public static final String ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Anfängliche Erlebensfall VS";
+    public static final String AENDERUNG_DER_ERLEBENSFALL_VS = "Änderung der Erlebensfall VS";
+    public static final String ABSTAND_DER_ERLEBENSFAL_VS_AENDERUNGSTERMINE = "Abstand der Erlebensfall VS-Änderungstermine";
+    public static final String ERLEBENSFALL_VS_AENDERUNGS_PROZENTSATZ = "Erlebensfall VS-Änderungs-Prozentsatz";
+    public static final String ABSOLUTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Absolute Erlebensfall VS";
+    public static final String NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Nächste Erlebensfall VS";
+    public static final String BEGINNDATUM_DER_NAECHSTEN_ERLEBENSFALL_VS = "Beginndatum der nächsten Erlebensfall VS";
 
     private Bezeichner() {
     }
