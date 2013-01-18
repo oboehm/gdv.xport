@@ -633,7 +633,7 @@ public final class Bezeichner {
     public static final String GEWINNVERWENDUNGSART = "Gewinnverwendungsart";
     public static final String UEBERSCHUSS_GUELTIG_AB = "Überschuss güˆltig ab";
     public static final String RISIKOEINSCHRAENKUNG = "Risikoeinschränkung";
-    public static final String RISIKOZUSCHLäGE = "Risikozuschläge";
+    public static final String RISIKOZUSCHLAEGE = "Risikozuschläge";
     public static final String DYNAMIK_PROZENT_SATZ = "Dynamik %-Satz";
     public static final String ERHOEHUNGSBASIS_DYNAMIK = "Erhöˆhungsbasis Dynamik";
     public static final String DYNAMIKSTOP = "Dynamikstop";

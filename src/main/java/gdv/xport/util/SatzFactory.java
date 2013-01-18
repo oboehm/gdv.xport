@@ -25,7 +25,9 @@ import gdv.xport.satz.feld.Feld0001;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.Feld9999;
+import gdv.xport.satz.feld.common.LfdNumSatzart;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis1_3;
 import gdv.xport.satz.feld.sparte10.Feld221Wagnis1_3;
 import gdv.xport.satz.model.Satz210;
 import gdv.xport.satz.model.Satz211;
@@ -46,7 +48,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import kommt, in den entsprechende Satz
  * wandeln zu koennen.
- *
+ * 
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
@@ -69,28 +71,57 @@ public final class SatzFactory {
         registerEnum(Feld100.class, 100);
         registerEnum(Feld200.class, 200);
         register(Satz210.class, 210);
-        registerEnum(gdv.xport.satz.feld.sparte10.Feld210.class, 210, 10);
-        registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
-        registerEnum(gdv.xport.satz.feld.sparte50.Feld210.class, 210, 50);
-        registerEnum(gdv.xport.satz.feld.sparte70.Feld210.class, 210, 70);
         register(Satz211.class, 211);
-        registerEnum(gdv.xport.satz.feld.sparte10.Feld211.class, 211, 10);
-        registerEnum(gdv.xport.satz.feld.sparte50.Feld211.class, 211, 50);
         register(Satz220.class, 220);
-        registerEnum(Feld220Wagnis0.class, 220, 10, 0);
-        registerEnum(gdv.xport.satz.feld.sparte30.Feld220.class, 220, 30, -1);
-        registerEnum(gdv.xport.satz.feld.sparte51.Feld220.class, 220, 51, -1);
-        registerEnum(gdv.xport.satz.feld.sparte52.Feld220.class, 220, 52, -1);
-        registerEnum(gdv.xport.satz.feld.sparte53.Feld220.class, 220, 53, -1);
-        registerEnum(gdv.xport.satz.feld.sparte70.Feld220.class, 220, 70, -1);
         register(Satz221.class, 221);
-        registerEnum(Feld221Wagnis1_3.class, 221, 10, -1);
-        registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30, -1);
-        registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, 221, 51, -1);
-        registerEnum(gdv.xport.satz.feld.sparte52.Feld221.class, 221, 52, -1);
-        registerEnum(gdv.xport.satz.feld.sparte53.Feld221.class, 221, 53, -1);
-        registerEnum(gdv.xport.satz.feld.sparte70.Feld221.class, 221, 70, -1);
         registerEnum(Feld9999.class, 9999);
+
+        // Sparte 10 - Leben
+        registerEnum(gdv.xport.satz.feld.sparte10.Feld210.class, 210, 10);
+        registerEnum(gdv.xport.satz.feld.sparte10.Feld211.class, 211, 10);
+        // Sparte 10 - Leben - Wagnisart 0
+        registerEnum(Feld220Wagnis0.class, 220, 10, 0);
+
+        // Sparte 10 - Leben - Wagnisart 1 & 3
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 1);
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 3);
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 1, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 3, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 1, LfdNumSatzart.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 3, LfdNumSatzart.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 1, LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 3, LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 1, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 3, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
+
+        registerEnum(Feld221Wagnis1_3.class, 221, 10, -1);
+        registerEnum(Feld221Wagnis1_3.class, 221, 10, 1);
+        registerEnum(Feld221Wagnis1_3.class, 221, 10, 3);
+        registerEnum(Feld221Wagnis1_3.class, 221, 10, 1, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld221Wagnis1_3.class, 221, 10, 3, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld221Wagnis1_3.class, 221, 10, 1, LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+        registerEnum(Feld221Wagnis1_3.class, 221, 10, 3, LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
+        // Sparte 30 - ?????
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld220.class, 220, 30, -1);
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30, -1);
+        // Sparte 50 - ?????
+        registerEnum(gdv.xport.satz.feld.sparte50.Feld210.class, 210, 50);
+        registerEnum(gdv.xport.satz.feld.sparte50.Feld211.class, 211, 50);
+        // Sparte 51 - ?????
+        registerEnum(gdv.xport.satz.feld.sparte51.Feld220.class, 220, 51, -1);
+        registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, 221, 51, -1);
+        // Sparte 52 - ?????
+        registerEnum(gdv.xport.satz.feld.sparte52.Feld220.class, 220, 52, -1);
+        registerEnum(gdv.xport.satz.feld.sparte52.Feld221.class, 221, 52, -1);
+        // Sparte 53 - ?????
+        registerEnum(gdv.xport.satz.feld.sparte53.Feld220.class, 220, 53, -1);
+        registerEnum(gdv.xport.satz.feld.sparte53.Feld221.class, 221, 53, -1);
+        // Sparte 70 - ?????
+        registerEnum(gdv.xport.satz.feld.sparte70.Feld210.class, 210, 70);
+        registerEnum(gdv.xport.satz.feld.sparte70.Feld220.class, 220, 70, -1);
+        registerEnum(gdv.xport.satz.feld.sparte70.Feld221.class, 221, 70, -1);
     }
 
     /**
@@ -103,7 +134,7 @@ public final class SatzFactory {
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
      * Die Kasse <em>muss</em> einen Default-Konstruktor bereitstellen. Ansonsten wird hier eine
      * {@link IllegalArgumentException} geworfen (seit 0.6).
-     *
+     * 
      * @param clazz
      *            the clazz
      * @param satzart
@@ -124,7 +155,7 @@ public final class SatzFactory {
 
     /**
      * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
-     *
+     * 
      * @param enumClass
      *            die Aufzaehlungsklasse, z.B. Feld100.class
      * @param satzart
@@ -138,7 +169,7 @@ public final class SatzFactory {
 
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
-     *
+     * 
      * @param satzart
      *            the satzart
      * @since 0.2
@@ -150,7 +181,7 @@ public final class SatzFactory {
 
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
-     *
+     * 
      * @param clazz
      *            the clazz
      * @param satzart
@@ -160,12 +191,12 @@ public final class SatzFactory {
      * @since 0.2
      */
     public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte) {
-        register(clazz, satzart, sparte, -1);
+        register(clazz, satzart, sparte, -1, -1);
     }
 
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
-     *
+     * 
      * @param clazz
      *            the clazz
      * @param satzart
@@ -174,22 +205,27 @@ public final class SatzFactory {
      *            the sparte
      * @param wagnisart
      *            the wagnisart
+     * @param lfdNumSatzart
+     *            the lfdNumSatzart
      * @since 0.8
      */
     public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte,
-            final int wagnisart) {
+            final int wagnisart, final int lfdNumSatzart) {
         assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
         assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
         if (wagnisart != -1) {
             assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
+            if (lfdNumSatzart != -1) {
+                assert (0 <= lfdNumSatzart) && (lfdNumSatzart <= 9) : "LfdNumSatzart muss zwischen 0 und 9 liegen";
+            }
         }
-        int key = getAsKey(satzart, sparte, wagnisart);
+        int key = getAsKey(satzart, sparte, wagnisart, lfdNumSatzart);
         registeredDatensatzClasses.put(key, clazz);
     }
 
     /**
      * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
-     *
+     * 
      * @param enumClass
      *            die Aufzaehlungsklasse, z.B. Feld100.class
      * @param satzart
@@ -204,7 +240,7 @@ public final class SatzFactory {
 
     /**
      * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
-     *
+     * 
      * @param enumClass
      *            die Aufzaehlungsklasse, z.B. Feld100.class
      * @param satzart
@@ -222,14 +258,44 @@ public final class SatzFactory {
         if (wagnisart != -1) {
             assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
         }
-        int key = getAsKey(satzart, sparte, wagnisart);
+        int key = getAsKey(satzart, sparte, wagnisart, -1);
+        registeredDatensatzClasses.remove(key);
+        registeredEnumClasses.put(key, enumClass);
+    }
+
+    /**
+     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
+     * 
+     * @param enumClass
+     *            die Aufzaehlungsklasse, z.B. Feld100.class
+     * @param satzart
+     *            die Satzart
+     * @param sparte
+     *            die Sparte
+     * @param wagnisart
+     *            die Wagnisart
+     * @param laufNumSatzart
+     *            die laufende Nummer der Satzart
+     * @since 0.8
+     */
+    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte,
+            final int wagnisart, final int laufNumSatzart) {
+        assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
+        assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
+        if (wagnisart != -1) {
+            assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
+        }
+        if (laufNumSatzart != -1) {
+            assert (0 <= laufNumSatzart) && (laufNumSatzart <= 9) : "Laufende Nummer Satzart muss zwischen 0 und 9 liegen";
+        }
+        int key = getAsKey(satzart, sparte, wagnisart, laufNumSatzart);
         registeredDatensatzClasses.remove(key);
         registeredEnumClasses.put(key, enumClass);
     }
 
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
-     *
+     * 
      * @param satzart
      *            the satzart
      * @param sparte
@@ -242,7 +308,7 @@ public final class SatzFactory {
 
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
-     *
+     * 
      * @param satzart
      *            the satzart
      * @param sparte
@@ -252,14 +318,14 @@ public final class SatzFactory {
      * @since 0.8
      */
     public static void unregister(final int satzart, final int sparte, final int wagnisart) {
-        int key = getAsKey(satzart, sparte, wagnisart);
+        int key = getAsKey(satzart, sparte, wagnisart, -1);
         registeredDatensatzClasses.remove(key);
         registeredEnumClasses.remove(key);
     }
 
     /**
      * Gets the as key.
-     *
+     * 
      * @param satzart
      *            the satzart
      * @param sparte
@@ -268,11 +334,14 @@ public final class SatzFactory {
      *            the wagnisart
      * @return the as key
      */
-    private static int getAsKey(final int satzart, final int sparte, final int wagnisart) {
+    private static int getAsKey(final int satzart, final int sparte, final int wagnisart, final int lfdNumSatzart) {
         int key = satzart * 1000 + sparte;
 
         if (wagnisart != -1) {
             key = key * 10 + wagnisart;
+            if (lfdNumSatzart != -1) {
+                key = key * 10 + lfdNumSatzart;
+            }
         }
 
         return key;
@@ -280,7 +349,7 @@ public final class SatzFactory {
 
     /**
      * Gets the satz.
-     *
+     * 
      * @param satzart
      *            the satzart
      * @return angeforderte Satz
@@ -324,8 +393,9 @@ public final class SatzFactory {
         return new SatzX(satzart, enumClass);
     }
 
-    private static Datensatz generateDatensatz(final int satzart, final int sparte, final int wagnisart) {
-        int key = getAsKey(satzart, sparte, wagnisart);
+    private static Datensatz generateDatensatz(final int satzart, final int sparte, final int wagnisart,
+            final int lfdNumSatzart) {
+        int key = getAsKey(satzart, sparte, wagnisart, lfdNumSatzart);
         Class<? extends Enum<?>> enumClass = registeredEnumClasses.get(key);
         if (enumClass == null) {
             return useFallback(satzart, sparte);
@@ -336,7 +406,7 @@ public final class SatzFactory {
     /**
      * Versucht anhand des uebergebenen Strings herauszufinden, um was fuer eine Satzart es sich handelt und liefert
      * dann einen entsprechende (gefuellten) Satz zurueck.
-     *
+     * 
      * @param content
      *            the content
      * @return einen gefuellten Satz
@@ -362,7 +432,7 @@ public final class SatzFactory {
 
     /**
      * Gets the datensatz.
-     *
+     * 
      * @param satzart
      *            den registrierten Datensatz fuer
      * @return den registrierten Datensatz fuer 'satzart'
@@ -374,7 +444,7 @@ public final class SatzFactory {
 
     /**
      * Gets the datensatz.
-     *
+     * 
      * @param satzart
      *            z.B. 210
      * @param sparte
@@ -382,12 +452,12 @@ public final class SatzFactory {
      * @return den registrierten Datensatz fuer 'satzart', 'sparte'
      */
     public static Datensatz getDatensatz(final int satzart, final int sparte) {
-        return getDatensatz(satzart, sparte, -1);
+        return getDatensatz(satzart, sparte, -1, -1);
     }
 
     /**
      * Gets the datensatz.
-     *
+     * 
      * @param satzart
      *            z.B. 210
      * @param sparte
@@ -395,14 +465,34 @@ public final class SatzFactory {
      * @param wagnisart
      *            z.B. 1 (Kapitallebensversicherung)
      * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart'
-     *
+     * 
      * @since 0.8
      */
     public static Datensatz getDatensatz(final int satzart, final int sparte, final int wagnisart) {
-        int key = getAsKey(satzart, sparte, wagnisart);
+        return getDatensatz(satzart, sparte, -1, -1);
+    }
+
+    /**
+     * Gets the datensatz.
+     * 
+     * @param satzart
+     *            z.B. 210
+     * @param sparte
+     *            z.B. 70 (Rechtsschutz)
+     * @param wagnisart
+     *            z.B. 1 (Kapitallebensversicherung)
+     * @param lfdNumSatzart
+     *            z.B. 3 (Kapitallebens-/Risikovers.)
+     * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart', 'lfdNumSatzart'
+     * 
+     * @since 0.9
+     */
+    public static Datensatz getDatensatz(final int satzart, final int sparte, final int wagnisart,
+            final int lfdNumSatzart) {
+        int key = getAsKey(satzart, sparte, wagnisart, lfdNumSatzart);
         Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(key);
         if (clazz == null) {
-            return generateDatensatz(satzart, sparte, wagnisart);
+            return generateDatensatz(satzart, sparte, wagnisart, lfdNumSatzart);
         }
         try {
             Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);
@@ -424,7 +514,7 @@ public final class SatzFactory {
 
     /**
      * Gets the datensatz.
-     *
+     * 
      * @param sparte
      *            the sparte
      * @param clazz
@@ -456,7 +546,7 @@ public final class SatzFactory {
 
     /**
      * Use fallback.
-     *
+     * 
      * @param satzart
      *            the satzart
      * @param sparte
@@ -479,11 +569,10 @@ public final class SatzFactory {
     /**
      * Liefert ein Datenpaket mit allen unterstuetzten Satzarten und Sparten.
      * <p>
-     * FIXME: beruecksichtigt noch nicht die Wagnisart
-     * (d.h. Saetze mit einer Wagnisart sind noch nicht im zurueckgegebenen
-     * Datenpaket enthalten)
+     * FIXME: beruecksichtigt noch nicht die Wagnisart (d.h. Saetze mit einer Wagnisart sind noch nicht im
+     * zurueckgegebenen Datenpaket enthalten)
      * </p>
-     *
+     * 
      * @since 0.6
      * @return Datenpaket mit allen unterstuetzten Satzarten
      */

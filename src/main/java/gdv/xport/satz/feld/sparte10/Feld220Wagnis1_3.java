@@ -207,7 +207,7 @@ public enum Feld220Wagnis1_3 {
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 30, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 192)
-    RISIKOZUSCHLÄGE,
+    RISIKOZUSCHLAEGE,
 
     /**
      * Dynamik %-Satz<br/>
