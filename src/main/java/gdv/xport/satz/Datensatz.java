@@ -39,7 +39,7 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * The Class Datensatz.
- *
+ * 
  * @author oliver
  * @since 12.10.2009
  */
@@ -61,7 +61,7 @@ public class Datensatz extends Satz {
 
     /**
      * Default-Konstruktor (wird zur Registrierung bei der {@link gdv.xport.util.SatzFactory} benoetigt).
-     *
+     * 
      * @since 0.6
      */
     public Datensatz() {
@@ -70,7 +70,7 @@ public class Datensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
+     * 
      * @param satzart
      *            z.B. "0100"
      */
@@ -81,7 +81,7 @@ public class Datensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
+     * 
      * @param satzart
      *            z.B. 100
      */
@@ -92,7 +92,7 @@ public class Datensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
+     * 
      * @param satzart
      *            z.B. 100
      * @param n
@@ -105,7 +105,7 @@ public class Datensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
+     * 
      * @param satzart
      *            z.B. 100
      * @param tdsList
@@ -118,7 +118,7 @@ public class Datensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
+     * 
      * @param satzart
      *            z.B. 100
      * @param sparte
@@ -130,7 +130,7 @@ public class Datensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
+     * 
      * @param satzart
      *            z.B. 100
      * @param sparte
@@ -146,7 +146,7 @@ public class Datensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
+     * 
      * @param satzart
      *            z.B. 100
      * @param sparte
@@ -172,10 +172,10 @@ public class Datensatz extends Satz {
     /**
      * Hiermit kann ein einzelner Teildatensatz aufgesetzt werden.
      * <p>
-     * Wenn alle Datensaetze nur noch ueber Enums (Soplets) initialisiert
-     * werden, duerfte die Inialisierung hier hinfaellig sein.
+     * Wenn alle Datensaetze nur noch ueber Enums (Soplets) initialisiert werden, duerfte die Inialisierung hier
+     * hinfaellig sein.
      * </p>
-     *
+     * 
      * @param tds
      *            der (leere) Teildatensatz
      * @since 0.4
@@ -194,7 +194,7 @@ public class Datensatz extends Satz {
 
     /**
      * Kann von Unterklassen verwendet werden, um fehlende Felder in den Teildatensaetze zu vervollstaendigen.
-     *
+     * 
      * @since 0.6
      */
     protected void completeTeildatensaetze() {
@@ -205,7 +205,7 @@ public class Datensatz extends Satz {
 
     /**
      * Hiermit kann ein einzelner Teildatensatz aufgesetzt werden.
-     *
+     * 
      * @param n
      *            Nummer des Teildatensatzes (beginnend bei 1)
      * @since 0.5
@@ -216,7 +216,7 @@ public class Datensatz extends Satz {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see gdv.xport.satz.Satz#addFiller()
      */
     @Override
@@ -228,7 +228,7 @@ public class Datensatz extends Satz {
 
     /**
      * Sets the sparte.
-     *
+     * 
      * @param x
      *            z.B. 70 (Rechtsschutz)
      */
@@ -238,7 +238,7 @@ public class Datensatz extends Satz {
 
     /**
      * Gets the sparte.
-     *
+     * 
      * @return die Sparte als int
      */
     public int getSparte() {
@@ -247,7 +247,7 @@ public class Datensatz extends Satz {
 
     /**
      * Ueberprueft, ob der Datensatz ueberhaupt eine Sparte gesetzt hat.
-     *
+     * 
      * @return true, if successful
      * @since 0.6
      */
@@ -260,7 +260,7 @@ public class Datensatz extends Satz {
 
     /**
      * Gets the sparte feld.
-     *
+     * 
      * @return die Sparte als Feld
      */
     public NumFeld getSparteFeld() {
@@ -269,7 +269,7 @@ public class Datensatz extends Satz {
 
     /**
      * Sets the vu nummer.
-     *
+     * 
      * @param s
      *            VU-Nummer (max. 5 Stellen)
      */
@@ -279,7 +279,7 @@ public class Datensatz extends Satz {
 
     /**
      * Gets the vu nummer.
-     *
+     * 
      * @return die VU-Nummer
      */
     public String getVuNummer() {
@@ -288,7 +288,7 @@ public class Datensatz extends Satz {
 
     /**
      * Sets the versicherungsschein nummer.
-     *
+     * 
      * @param nr
      *            die Versicherungsschein-Nummer
      * @since 0.3
@@ -299,7 +299,7 @@ public class Datensatz extends Satz {
 
     /**
      * Gets the versicherungsschein nummer.
-     *
+     * 
      * @return die Versicherungsschein-Nummer
      * @since 0.3
      */
@@ -309,7 +309,7 @@ public class Datensatz extends Satz {
 
     /**
      * Hiermit kann die Folgenummer gesetzt werden.
-     *
+     * 
      * @param nr
      *            man sollte hier bei 1 anfangen mit zaehlen
      * @since 0.3
@@ -320,7 +320,7 @@ public class Datensatz extends Satz {
 
     /**
      * Gets the folgenummer.
-     *
+     * 
      * @return die Folgenummer
      * @since 0.3
      */
@@ -330,7 +330,7 @@ public class Datensatz extends Satz {
 
     /**
      * Gets the vermittler.
-     *
+     * 
      * @return the vermittler
      * @since 0.6
      */
@@ -340,7 +340,7 @@ public class Datensatz extends Satz {
 
     /**
      * Liest 14 Bytes, um die Satzart zu bestimmen und stellt die Bytes anschliessend wieder zurueck in den Reader.
-     *
+     * 
      * @param reader
      *            muss mind. einen Pushback-Puffer von 14 Zeichen bereitstellen
      * @return Satzart
@@ -358,7 +358,7 @@ public class Datensatz extends Satz {
 
     /**
      * Liest 1 Byte, um die Wagnisart zu bestimmen und stellt das Byte anschliessend wieder zurueck in den Reader.
-     *
+     * 
      * @param reader
      *            muss mind. einen Pushback-Puffer von 1 Zeichen bereitstellen
      * @return Wagnisart
@@ -377,7 +377,7 @@ public class Datensatz extends Satz {
     /**
      * Unterklassen (wie Datensatz) sind dafuer verantwortlich, dass auch noch die Sparte ueberprueft wird, ob sie noch
      * richtig ist oder ob da schon der naechste Satz beginnt.
-     *
+     * 
      * @param reader
      *            the reader
      * @return true (Default-Implementierung)
@@ -397,12 +397,21 @@ public class Datensatz extends Satz {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see gdv.xport.satz.Satz#toShortString()
      */
     @Override
     public String toShortString() {
         return super.toShortString() + "." + this.sparte.getInhalt();
+    }
+
+    public static int readLfdNumSatzart(PushbackReader reader) throws IOException {
+        char[] cbuf = new char[63];
+        if (reader.read(cbuf) == -1) {
+            throw new IOException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
+        }
+        reader.unread(cbuf);
+        return Integer.parseInt(new String(cbuf).substring(61, 63));
     }
 
 }
