@@ -36,10 +36,16 @@ import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8Bezugsrechte;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8Wertungssummen;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis6;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis6Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis6Wertungssummen;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis6ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.Feld221Wagnis1_3;
 import gdv.xport.satz.feld.sparte10.Feld221Wagnis1_3Auszahlungen;
 import gdv.xport.satz.feld.sparte10.Feld221Wagnis1_3ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.Feld221Wagnis4_8;
+import gdv.xport.satz.feld.sparte10.Feld221Wagnis6;
+import gdv.xport.satz.feld.sparte10.Feld221Wagnis6ZukSummenaenderungen;
 import gdv.xport.satz.model.Satz210;
 import gdv.xport.satz.model.Satz211;
 import gdv.xport.satz.model.Satz220;
@@ -130,6 +136,17 @@ public final class SatzFactory {
 
         registerEnum(Feld221Wagnis4_8.class, 221, 10, 4, -1);
         registerEnum(Feld221Wagnis4_8.class, 221, 10, 8, -1);
+
+        // Sparte 10 - Leben - Wagnisart 6
+        registerEnum(Feld220Wagnis6.class, 220, 10, 6, -1);
+        registerEnum(Feld220Wagnis6Bezugsrechte.class, 220, 10, 6, LfdNumSatzart.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis6Wertungssummen.class, 220, 10, 6, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis6ZukSummenaenderungen.class, 220, 10, 6,
+                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
+        registerEnum(Feld221Wagnis6.class, 221, 10, 6, -1);
+        registerEnum(Feld221Wagnis6ZukSummenaenderungen.class, 221, 10, 6,
+                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
 
         // Sparte 30 - ?????
         registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30, -1, -1);
