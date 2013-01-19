@@ -28,7 +28,18 @@ import gdv.xport.satz.feld.Feld9999;
 import gdv.xport.satz.feld.common.LfdNumSatzart;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis1_3;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis1_3Auszahlungen;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis1_3Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis1_3Wertungssummen;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis1_3ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8Wertungssummen;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.Feld221Wagnis1_3;
+import gdv.xport.satz.feld.sparte10.Feld221Wagnis1_3Auszahlungen;
+import gdv.xport.satz.feld.sparte10.Feld221Wagnis1_3ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.Feld221Wagnis4_8;
 import gdv.xport.satz.model.Satz210;
 import gdv.xport.satz.model.Satz211;
 import gdv.xport.satz.model.Satz220;
@@ -77,51 +88,69 @@ public final class SatzFactory {
         registerEnum(Feld9999.class, 9999);
 
         // Sparte 10 - Leben
-        registerEnum(gdv.xport.satz.feld.sparte10.Feld210.class, 210, 10);
-        registerEnum(gdv.xport.satz.feld.sparte10.Feld211.class, 211, 10);
+        registerEnum(gdv.xport.satz.feld.sparte10.Feld210.class, 210, 10, -1, -1);
+        registerEnum(gdv.xport.satz.feld.sparte10.Feld211.class, 211, 10, -1, -1);
         // Sparte 10 - Leben - Wagnisart 0
-        registerEnum(Feld220Wagnis0.class, 220, 10, 0);
+        registerEnum(Feld220Wagnis0.class, 220, 10, 0, -1);
 
         // Sparte 10 - Leben - Wagnisart 1 & 3
-        registerEnum(Feld220Wagnis1_3.class, 220, 10, 1);
-        registerEnum(Feld220Wagnis1_3.class, 220, 10, 3);
-        registerEnum(Feld220Wagnis1_3.class, 220, 10, 1, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
-        registerEnum(Feld220Wagnis1_3.class, 220, 10, 3, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
-        registerEnum(Feld220Wagnis1_3.class, 220, 10, 1, LfdNumSatzart.BEZUGSRECHTE.getNummer());
-        registerEnum(Feld220Wagnis1_3.class, 220, 10, 3, LfdNumSatzart.BEZUGSRECHTE.getNummer());
-        registerEnum(Feld220Wagnis1_3.class, 220, 10, 1, LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
-        registerEnum(Feld220Wagnis1_3.class, 220, 10, 3, LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
-        registerEnum(Feld220Wagnis1_3.class, 220, 10, 1, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
-        registerEnum(Feld220Wagnis1_3.class, 220, 10, 3, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 1, -1);
+        registerEnum(Feld220Wagnis1_3.class, 220, 10, 3, -1);
+        registerEnum(Feld220Wagnis1_3Auszahlungen.class, 220, 10, 1, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld220Wagnis1_3Auszahlungen.class, 220, 10, 3, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld220Wagnis1_3Bezugsrechte.class, 220, 10, 1, LfdNumSatzart.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis1_3Bezugsrechte.class, 220, 10, 3, LfdNumSatzart.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis1_3ZukSummenaenderungen.class, 220, 10, 1,
+                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+        registerEnum(Feld220Wagnis1_3ZukSummenaenderungen.class, 220, 10, 3,
+                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+        registerEnum(Feld220Wagnis1_3Wertungssummen.class, 220, 10, 1, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis1_3Wertungssummen.class, 220, 10, 3, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
 
-        registerEnum(Feld221Wagnis1_3.class, 221, 10, -1);
-        registerEnum(Feld221Wagnis1_3.class, 221, 10, 1);
-        registerEnum(Feld221Wagnis1_3.class, 221, 10, 3);
-        registerEnum(Feld221Wagnis1_3.class, 221, 10, 1, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
-        registerEnum(Feld221Wagnis1_3.class, 221, 10, 3, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
-        registerEnum(Feld221Wagnis1_3.class, 221, 10, 1, LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
-        registerEnum(Feld221Wagnis1_3.class, 221, 10, 3, LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+        registerEnum(Feld221Wagnis1_3.class, 221, 10, 1, -1);
+        registerEnum(Feld221Wagnis1_3.class, 221, 10, 3, -1);
+        registerEnum(Feld221Wagnis1_3Auszahlungen.class, 221, 10, 1, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld221Wagnis1_3Auszahlungen.class, 221, 10, 3, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld221Wagnis1_3ZukSummenaenderungen.class, 221, 10, 1,
+                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+        registerEnum(Feld221Wagnis1_3ZukSummenaenderungen.class, 221, 10, 3,
+                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
+        // Sparte 10 - Leben - Wagnisart 4 & 8
+        registerEnum(Feld220Wagnis4_8.class, 220, 10, 4, -1);
+        registerEnum(Feld220Wagnis4_8.class, 220, 10, 8, -1);
+        registerEnum(Feld220Wagnis4_8Bezugsrechte.class, 220, 10, 4, LfdNumSatzart.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis4_8Bezugsrechte.class, 220, 10, 8, LfdNumSatzart.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis4_8Wertungssummen.class, 220, 10, 4, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis4_8Wertungssummen.class, 220, 10, 8, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis4_8ZukSummenaenderungen.class, 220, 10, 4,
+                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+        registerEnum(Feld220Wagnis4_8ZukSummenaenderungen.class, 220, 10, 8,
+                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
+        registerEnum(Feld221Wagnis4_8.class, 221, 10, 4, -1);
+        registerEnum(Feld221Wagnis4_8.class, 221, 10, 8, -1);
 
         // Sparte 30 - ?????
-        registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
-        registerEnum(gdv.xport.satz.feld.sparte30.Feld220.class, 220, 30, -1);
-        registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30, -1);
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30, -1, -1);
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld220.class, 220, 30, -1, -1);
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30, -1, -1);
         // Sparte 50 - ?????
-        registerEnum(gdv.xport.satz.feld.sparte50.Feld210.class, 210, 50);
-        registerEnum(gdv.xport.satz.feld.sparte50.Feld211.class, 211, 50);
+        registerEnum(gdv.xport.satz.feld.sparte50.Feld210.class, 210, 50, -1, -1);
+        registerEnum(gdv.xport.satz.feld.sparte50.Feld211.class, 211, 50, -1, -1);
         // Sparte 51 - ?????
-        registerEnum(gdv.xport.satz.feld.sparte51.Feld220.class, 220, 51, -1);
-        registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, 221, 51, -1);
+        registerEnum(gdv.xport.satz.feld.sparte51.Feld220.class, 220, 51, -1, -1);
+        registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, 221, 51, -1, -1);
         // Sparte 52 - ?????
-        registerEnum(gdv.xport.satz.feld.sparte52.Feld220.class, 220, 52, -1);
-        registerEnum(gdv.xport.satz.feld.sparte52.Feld221.class, 221, 52, -1);
+        registerEnum(gdv.xport.satz.feld.sparte52.Feld220.class, 220, 52, -1, -1);
+        registerEnum(gdv.xport.satz.feld.sparte52.Feld221.class, 221, 52, -1, -1);
         // Sparte 53 - ?????
-        registerEnum(gdv.xport.satz.feld.sparte53.Feld220.class, 220, 53, -1);
-        registerEnum(gdv.xport.satz.feld.sparte53.Feld221.class, 221, 53, -1);
+        registerEnum(gdv.xport.satz.feld.sparte53.Feld220.class, 220, 53, -1, -1);
+        registerEnum(gdv.xport.satz.feld.sparte53.Feld221.class, 221, 53, -1, -1);
         // Sparte 70 - ?????
-        registerEnum(gdv.xport.satz.feld.sparte70.Feld210.class, 210, 70);
-        registerEnum(gdv.xport.satz.feld.sparte70.Feld220.class, 220, 70, -1);
-        registerEnum(gdv.xport.satz.feld.sparte70.Feld221.class, 221, 70, -1);
+        registerEnum(gdv.xport.satz.feld.sparte70.Feld210.class, 210, 70, -1, -1);
+        registerEnum(gdv.xport.satz.feld.sparte70.Feld220.class, 220, 70, -1, -1);
+        registerEnum(gdv.xport.satz.feld.sparte70.Feld221.class, 221, 70, -1, -1);
     }
 
     /**
@@ -165,6 +194,36 @@ public final class SatzFactory {
     public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart) {
         assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
         registeredEnumClasses.put(satzart, enumClass);
+    }
+
+    /**
+     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
+     * 
+     * @param enumClass
+     *            die Aufzaehlungsklasse, z.B. Feld100.class
+     * @param satzart
+     *            die Satzart
+     * @param sparte
+     *            die Sparte
+     * @param wagnisart
+     *            die Wagnisart
+     * @param laufNumSatzart
+     *            die laufende Nummer der Satzart
+     * @since 0.8
+     */
+    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte,
+            final int wagnisart, final int laufNumSatzart) {
+        assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
+        assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
+        if (wagnisart != -1) {
+            assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
+        }
+        if (laufNumSatzart != -1) {
+            assert (0 <= laufNumSatzart) && (laufNumSatzart <= 9) : "Laufende Nummer Satzart muss zwischen 0 und 9 liegen";
+        }
+        int key = getAsKey(satzart, sparte, wagnisart, laufNumSatzart);
+        registeredDatensatzClasses.remove(key);
+        registeredEnumClasses.put(key, enumClass);
     }
 
     /**
@@ -221,76 +280,6 @@ public final class SatzFactory {
         }
         int key = getAsKey(satzart, sparte, wagnisart, lfdNumSatzart);
         registeredDatensatzClasses.put(key, clazz);
-    }
-
-    /**
-     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
-     * 
-     * @param enumClass
-     *            die Aufzaehlungsklasse, z.B. Feld100.class
-     * @param satzart
-     *            die Satzart
-     * @param sparte
-     *            die Sparte
-     * @since 0.6
-     */
-    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte) {
-        registerEnum(enumClass, satzart, sparte, -1);
-    }
-
-    /**
-     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
-     * 
-     * @param enumClass
-     *            die Aufzaehlungsklasse, z.B. Feld100.class
-     * @param satzart
-     *            die Satzart
-     * @param sparte
-     *            die Sparte
-     * @param wagnisart
-     *            die Wagnisart
-     * @since 0.8
-     */
-    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte,
-            final int wagnisart) {
-        assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
-        assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
-        if (wagnisart != -1) {
-            assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
-        }
-        int key = getAsKey(satzart, sparte, wagnisart, -1);
-        registeredDatensatzClasses.remove(key);
-        registeredEnumClasses.put(key, enumClass);
-    }
-
-    /**
-     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
-     * 
-     * @param enumClass
-     *            die Aufzaehlungsklasse, z.B. Feld100.class
-     * @param satzart
-     *            die Satzart
-     * @param sparte
-     *            die Sparte
-     * @param wagnisart
-     *            die Wagnisart
-     * @param laufNumSatzart
-     *            die laufende Nummer der Satzart
-     * @since 0.8
-     */
-    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte,
-            final int wagnisart, final int laufNumSatzart) {
-        assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
-        assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
-        if (wagnisart != -1) {
-            assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
-        }
-        if (laufNumSatzart != -1) {
-            assert (0 <= laufNumSatzart) && (laufNumSatzart <= 9) : "Laufende Nummer Satzart muss zwischen 0 und 9 liegen";
-        }
-        int key = getAsKey(satzart, sparte, wagnisart, laufNumSatzart);
-        registeredDatensatzClasses.remove(key);
-        registeredEnumClasses.put(key, enumClass);
     }
 
     /**

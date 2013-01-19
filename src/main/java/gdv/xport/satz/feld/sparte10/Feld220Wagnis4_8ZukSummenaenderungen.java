@@ -29,12 +29,12 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
- * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Bezugsrechte" (Satzart 0220)).
+ * "Leben - Berufsunfähigkeit = Wagnisart 4 u. 8 - Zukünftige Summenänderung" (Satzart 0220)
  * 
  * @author ralfklemmer
- * @since 17.01.2013
+ * @since 19.01.2013
  */
-public enum Feld220Wagnis1_3Auszahlungen {
+public enum Feld220Wagnis4_8ZukSummenaenderungen {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
@@ -51,7 +51,7 @@ public enum Feld220Wagnis1_3Auszahlungen {
 
     /**
      * Wagnisart.<br/>
-     * 1 = Kapitallebensversicherung 3 = Risikoversicherung
+     * 4 = BUZ, 8 = Selbständige Berufsunfähigkeitsvers.
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
@@ -71,41 +71,67 @@ public enum Feld220Wagnis1_3Auszahlungen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Nächste Auszahlungssumme in Währungseinheiten<br/>
-     * Vereinbarte Auszahlungssumme<br/>
-     * (9,0 Stellen)
+     * Anfängliche Jahresrente in Währungseinheiten<br/>
+     * Anfängliche bzw. erste Jahresrente<br/>
+     * (10,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 9, byteAdresse = 64)
-    NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 12, byteAdresse = 64)
+    ANFAENGLICHE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächster Auszahlungstermin<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
-     * Tag/Monat/Jahr (TTMMJJJJ)
+     * Änderung der Jahresrente<br/>
+     * 0 = keine Änderung bzw. nur eine Jahresrente<br/>
+     * 1 = Erhöhung der Jahresrente<br/>
+     * 2 = Reduzierung der Jahresrente
      */
-    @FeldInfo(teildatensatz = 1, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 73)
-    NAECHSTER_AUSZAHLUNGSTERMIN,
+    @FeldInfo(teildatensatz = 1, nr = 13, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 76)
+    AENDERUNG_DER_JAHRESRENTE,
 
     /**
-     * Auszahlungsweise<br/>
-     * in Monaten bei periodischen Auszahlungen<br/>
+     * Abstand der Jahresrentenänderungstermine<br/>
+     * in Monaten bei periodischen Änderungsterminen<br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * 000 = keine Änderungen/Auszahlungen<br/>
      * 999 = unregelmäßige Änderungen/Auszahlungen
      */
-    @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 81)
-    AUSZAHLUNGSWEISE,
+    @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 77)
+    ABSTAND_DER_JAHRESRENTENAENDERUNGSTERMINE,
 
     /**
-     * Anzahl der Auszahlungen<br/>
-     * Anzahl der insgesamt noch möglichen Auszahlungen (99 = unbestimmt)
+     * Jahresrentenänderungs-Prozentsatz<br/>
+     * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Jahresrente<br/>
+     * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 84)
-    ANZAHL_DER_AUSZAHLUNGEN,
+    @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 80)
+    JAHRESRENTENAENDERUNGS_PROZENTSATZ,
+
+    /**
+     * Absolute Jahresrentenänderungssumme in Währungseinheiten<br/>
+     * Absolute Summe der Steigerung bzw. Reduzierung der Jahresrente<br/>
+     * (10,2 Stellen)
+     */
+    @FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 12, byteAdresse = 85)
+    ABSOLUTE_JAHRESRENTENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
+
+    /**
+     * Nächste Jahresrente in Währungseinheiten<br/>
+     * Jahresrente ab dem nächsten Änderungstermin<br/>
+     * (10,2 Stellen)
+     */
+    @FeldInfo(teildatensatz = 1, nr = 17, type = Betrag.class, anzahlBytes = 12, byteAdresse = 97)
+    NAECHSTE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
+
+    /**
+     * Beginndatum der nächsten Jahresrente<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten Jahresrente<br/>
+     * Tag/Monat/Jahr (TTMMJJJJ)
+     */
+    @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 109)
+    BEGINNDATUM_DER_NAECHSTEN_JAHRESRENTE,
 
     /**
      * Leerstellen.<br/>
      */
-    @FeldInfo(teildatensatz = 1, nr = 16, type = AlphaNumFeld.class, anzahlBytes = 170, byteAdresse = 86)
+    @FeldInfo(teildatensatz = 1, nr = 19, type = AlphaNumFeld.class, anzahlBytes = 139, byteAdresse = 117)
     LEERSTELLEN
 }

@@ -717,6 +717,41 @@ public final class Bezeichner {
     public static final String HAFTUNG_AB2 = "Haftung ab";
     public static final String HAFTUNG_BIS2 = "Haftung bis";
 
+    public static final String BEITRAG_BU_IN_WAEHRUNGSEINHEITEN = "Beitrag BU";
+    public static final String NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN = "Nettobeitrag";
+    public static final String JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = "Jahresrente";
+    public static final String EINSCHLUSS_PROZENT_SATZ = "Einschluss %-Satz";
+    public static final String ZWANG_ZUR_BUZ = "Zwang zur BUZ";
+    public static final String LEISTUNGSDAUER = "Leistungsdauer";
+    public static final String BUZ_VERWENDUNGSART = "BUZ Verwendungsart";
+    public static final String RENTE_INCL_UEBERSCHUSSBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = "Rente inkl. Überschussbeteiligung";
+    public static final String BUZ_LEISTUNG_VON = "BUZ Leistung von";
+    public static final String BUZ_LEISTUNG_BIS = "BUZ Leistung bis";
+    public static final String BUZ_PROZENT_SATZ = "BUZ %-Satz";
+    public static final String KARENZZEIT = "Karenzzeit";
+    public static final String ABWEICHENDE_LEISTUNGSDAUER = "Abweichende Leistungsdauer";
+    public static final String WAGNISART2 = "Wagnisart";
+    public static final String LFD_NUMMER_ZUR_WAGNISART2 = "Lfd Nummer zur Wagnisart";
+    public static final String ZUKUENFTIGER_BEITRAG = "Zukünftiger Beitrag";
+    public static final String ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAERHUNGSEINHEITEN = "Absoluter Dynamikerhöhungsbetrag";
+
+    public static final String ANFAENGLICHE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = "Anfängliche Jahresrente";
+    public static final String AENDERUNG_DER_JAHRESRENTE = "Änderung der Jahresrente";
+    public static final String ABSTAND_DER_JAHRESRENTENAENDERUNGSTERMINE = "Abstand der Jahresrentenänderungstermine";
+    public static final String JAHRESRENTENAENDERUNGS_PROZENTSATZ = "Jahresrenteänderungs-Prozentsazz";
+    public static final String ABSOLUTE_JAHRESRENTENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Absolute Jahresrenteänderungssumme";
+    public static final String NAECHSTE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = "Nächste Jahresrente VS";
+    public static final String BEGINNDATUM_DER_NAECHSTEN_JAHRESRENTE = "Beginndatum der nächsten Jahresrente";
+
+    public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT = "Erlebensfall VS";
+    public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEIT = "Todesfall VS";
+    public static final String ERLEBENSFALL_VS2_IN_WAEHRUNGSEINHEIT = "Erlebensfall VS II";
+    public static final String BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT = "Beitragsfreie Erlebensfall VS";
+    public static final String BEITRAGSFREIE_TODESFALL_VS_IN_WAEHRUNGSEINHEIT = "Beitragsfreie Todesfall VS";
+    public static final String RUECKKAUFSWERT_IN_WAEHRUNGSEINHEIT = "Rückkaufswert";
+    public static final String GUTHABEN_DIVID_ANSAMMLUNG_IN_WAEHRUNGSEINHEIT = "Guthaben Divid. Ansammlung";
+    public static final String ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Absoluter Dynamikerhöhungsbetrag";
+
     private Bezeichner() {
     }
 

@@ -47,7 +47,7 @@ public enum Feld220Wagnis1_3 {
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
-    LFD_NUMMER_VP,
+    LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
      * Wagnisart.<br/>
@@ -241,7 +241,8 @@ public enum Feld220Wagnis1_3 {
 
     /**
      * Datum der letzten positiven Dynamik<br/>
-     * 0 = nein, 1 = ja
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
+     * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 35, type = Datum.class, anzahlBytes = 8, byteAdresse = 208)
     DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK,
@@ -315,7 +316,7 @@ public enum Feld220Wagnis1_3 {
     // /// Teildatensatz 2 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 1, type = Feld1bis7.class)
+    @FelderInfo(teildatensatz = 2, type = Feld1bis7.class)
     INTRO2,
 
     /**
@@ -323,7 +324,7 @@ public enum Feld220Wagnis1_3 {
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 2, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
-    LFD_NUMMER_VP2,
+    LFD_NUMMER_VP_PERSONENGRUPPE2,
 
     /**
      * Wagnisart.<br/>
@@ -496,7 +497,7 @@ public enum Feld220Wagnis1_3 {
     // /// Teildatensatz 3 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 1, type = Feld1bis7.class)
+    @FelderInfo(teildatensatz = 3, type = Feld1bis7.class)
     INTRO3,
 
     /**
@@ -504,7 +505,7 @@ public enum Feld220Wagnis1_3 {
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 3, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
-    LFD_NUMMER_VP3,
+    LFD_NUMMER_VP_PERSONENGRUPPE2,
 
     /**
      * Wagnisart.<br/>

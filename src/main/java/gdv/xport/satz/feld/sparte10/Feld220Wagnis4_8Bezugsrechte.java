@@ -21,18 +21,18 @@ package gdv.xport.satz.feld.sparte10;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
- * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Zukünftige Summenänderungen" (Satzart 0221)).
+ * "Leben - Berufsunfähigkeit = Wagnisart 4 u. 8 - Bezugsrechte" (Satzart 0220)
  * 
  * @author ralfklemmer
- * @since 17.01.2013
+ * @since 19.01.2013
  */
-public enum Feld221Wagnis1_3ZukSummenaenderungen {
+public enum Feld220Wagnis4_8Bezugsrechte {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
@@ -49,7 +49,7 @@ public enum Feld221Wagnis1_3ZukSummenaenderungen {
 
     /**
      * Wagnisart.<br/>
-     * 1 = Kapitallebensversicherung 3 = Risikoversicherung
+     * 4 = BUZ, 8 = Selbständige Berufsunfähigkeitsvers.
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
@@ -69,56 +69,36 @@ public enum Feld221Wagnis1_3ZukSummenaenderungen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Anfängliche Todesfall VS in Währungseinheiten<br/>
-     * Anfängliche bzw. erste Todesfallleistung<br/>
-     * (12,2 Stellen)
+     * Bezugsberechtigt im Leistungsfall<br/>
+     * 1 = Versicherungsnehmer<br/>
+     * 2 = Versicherte Personv 9 = Sonstiger Bezugsberechtigter
      */
-    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 64)
-    ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 12, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 64)
+    BEZUGSBERECHTIGT_IM_LEISTUNGSFALL,
 
     /**
-     * Absolute Todesfalländerungssumme in Währungseinheiten<br/>
-     * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung<br/>
-     * (12,0 Stellen)
+     * Sonstiger Bezugsberechtigter im Leistungsfall<br/>
+     * Klartext (z. B. Name, Vorname)
      */
-    @FeldInfo(teildatensatz = 1, nr = 13, type = Betrag.class, anzahlBytes = 14, byteAdresse = 78)
-    ABSOLUTE_TODESFALLAENDERUNGSSUMME_VS_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 65)
+    SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL,
 
     /**
-     * Nächste Todesfall VS in Währungseinheiten<br/>
-     * Todesfalleistung ab dem nächsten Änderungstermin<br/>
-     * (12,0 Stellen)
+     * Bezugsrechtanteil im Leistungsfall in Prozent (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 14, type = Betrag.class, anzahlBytes = 14, byteAdresse = 92)
-    NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 95)
+    BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL,
 
     /**
-     * Anfängliche Erlebensfall VS in Währungseinheiten<br/>
-     * Anfängliche bzw. erste Erlebensfall VS<br/>
-     * (12,2 Stellen)
+     * Unwiderrufliches Bezugsrecht im Leistungsfall<br/>
+     * 0 = nein, 1 = ja
      */
-    @FeldInfo(teildatensatz = 1, nr = 15, type = Betrag.class, anzahlBytes = 14, byteAdresse = 106)
-    ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
-
-    /**
-     * Absolute Erlebensfall VS in Währungseinheiten<br/>
-     * Absolute Summe der Steigerung bzw. Reduzierung der Erlebensfall VS<br/>
-     * (12,2 Stellen)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 14, byteAdresse = 120)
-    ABSOLUTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
-
-    /**
-     * Nächste Erlebensfall VS in Währungseinheiten<br/>
-     * Erlebensfall VS ab dem nächsten Änderungstermin<br/>
-     * (12,2 Stellen)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 17, type = Betrag.class, anzahlBytes = 14, byteAdresse = 134)
-    NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 15, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 100)
+    UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL,
 
     /**
      * Leerstellen.<br/>
      */
-    @FeldInfo(teildatensatz = 1, nr = 18, type = AlphaNumFeld.class, anzahlBytes = 108, byteAdresse = 148)
+    @FeldInfo(teildatensatz = 1, nr = 16, type = AlphaNumFeld.class, anzahlBytes = 155, byteAdresse = 101)
     LEERSTELLEN
 }

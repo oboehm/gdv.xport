@@ -46,7 +46,7 @@ public enum Feld220Wagnis0 {
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
-    LFD_NUMMER_VP,
+    LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
      * Wagnisart.<br/>

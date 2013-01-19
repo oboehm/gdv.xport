@@ -26,13 +26,13 @@ import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
- * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Auszahlungen" (Satzart 0221)).
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10
+ * "Leben - Berufsunfähigkeit = Wagnisart 4 u. 8 " (Satzart 0221)).
  * 
  * @author ralfklemmer
- * @since 17.01.2013
+ * @since 19.01.2013
  */
-public enum Feld221Wagnis1_3Auszahlungen {
+public enum Feld221Wagnis4_8 {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
@@ -49,7 +49,7 @@ public enum Feld221Wagnis1_3Auszahlungen {
 
     /**
      * Wagnisart.<br/>
-     * 1 = Kapitallebensversicherung 3 = Risikoversicherung
+     * 4 = BUZ, 8 = Selbständige Berufsunfähigkeitsvers.
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
@@ -61,24 +61,15 @@ public enum Feld221Wagnis1_3Auszahlungen {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
-     * Lfd. Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
-     * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6, wenn mehrere Bezugsrechte vorhanden)
+     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten<br/>
      */
-    @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
-    LFD_NUMMER_DER_SATZART,
-
-    /**
-     * Nächste Auszahlungssumme in Währungseinheiten<br/>
-     * Vereinbarte Auszahlungssumme<br/>
-     * (9,0 Stellen)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 9, byteAdresse = 64)
-    NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 11, type = Betrag.class, anzahlBytes = 14, byteAdresse = 62)
+    ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Leerstellen.<br/>
      */
-    @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 180, byteAdresse = 76)
+    @FeldInfo(teildatensatz = 1, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 182, byteAdresse = 74)
     LEERSTELLEN
+
 }
