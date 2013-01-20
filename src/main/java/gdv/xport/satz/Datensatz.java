@@ -405,13 +405,14 @@ public class Datensatz extends Satz {
         return super.toShortString() + "." + this.sparte.getInhalt();
     }
 
-    public static int readLfdNumSatzart(PushbackReader reader) throws IOException {
-        char[] cbuf = new char[63];
+    public static int readTeildatensatzNummer(PushbackReader reader) throws IOException {
+        char[] cbuf = new char[256];
         if (reader.read(cbuf) == -1) {
             throw new IOException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
         }
         reader.unread(cbuf);
-        return Integer.parseInt(new String(cbuf).substring(61, 63));
+        String teildatenSatz = new String(cbuf).substring(cbuf.length - 1, cbuf.length);
+        return Integer.parseInt(teildatenSatz);
     }
 
 }

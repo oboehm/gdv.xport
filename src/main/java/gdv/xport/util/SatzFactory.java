@@ -25,27 +25,53 @@ import gdv.xport.satz.feld.Feld0001;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.Feld9999;
-import gdv.xport.satz.feld.common.LfdNumSatzart;
+import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis1_3;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis1_3Auszahlungen;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis1_3Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis1_3Wertungssummen;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis1_3ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8Wertungssummen;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis4_8ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis6;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis6Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis6Wertungssummen;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis6ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.Feld221Wagnis1_3;
-import gdv.xport.satz.feld.sparte10.Feld221Wagnis1_3Auszahlungen;
-import gdv.xport.satz.feld.sparte10.Feld221Wagnis1_3ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.Feld221Wagnis4_8;
-import gdv.xport.satz.feld.sparte10.Feld221Wagnis6;
-import gdv.xport.satz.feld.sparte10.Feld221Wagnis6ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart1_3.Feld220Wagnis1_3;
+import gdv.xport.satz.feld.sparte10.wagnisart1_3.Feld220Wagnis1_3Auszahlungen;
+import gdv.xport.satz.feld.sparte10.wagnisart1_3.Feld220Wagnis1_3Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart1_3.Feld220Wagnis1_3Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart1_3.Feld220Wagnis1_3ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart1_3.Feld221Wagnis1_3;
+import gdv.xport.satz.feld.sparte10.wagnisart1_3.Feld221Wagnis1_3Auszahlungen;
+import gdv.xport.satz.feld.sparte10.wagnisart1_3.Feld221Wagnis1_3ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Auszahlungen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2Auszahlungen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart4_8.Feld220Wagnis4_8;
+import gdv.xport.satz.feld.sparte10.wagnisart4_8.Feld220Wagnis4_8Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart4_8.Feld220Wagnis4_8Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart4_8.Feld220Wagnis4_8ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart4_8.Feld221Wagnis4_8;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld221Wagnis5;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld221Wagnis5ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Auszahlungen;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld230;
 import gdv.xport.satz.model.Satz210;
 import gdv.xport.satz.model.Satz211;
 import gdv.xport.satz.model.Satz220;
@@ -102,51 +128,98 @@ public final class SatzFactory {
         // Sparte 10 - Leben - Wagnisart 1 & 3
         registerEnum(Feld220Wagnis1_3.class, 220, 10, 1, -1);
         registerEnum(Feld220Wagnis1_3.class, 220, 10, 3, -1);
-        registerEnum(Feld220Wagnis1_3Auszahlungen.class, 220, 10, 1, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
-        registerEnum(Feld220Wagnis1_3Auszahlungen.class, 220, 10, 3, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
-        registerEnum(Feld220Wagnis1_3Bezugsrechte.class, 220, 10, 1, LfdNumSatzart.BEZUGSRECHTE.getNummer());
-        registerEnum(Feld220Wagnis1_3Bezugsrechte.class, 220, 10, 3, LfdNumSatzart.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis1_3Auszahlungen.class, 220, 10, 1, TeildatensatzNummer.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld220Wagnis1_3Auszahlungen.class, 220, 10, 3, TeildatensatzNummer.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld220Wagnis1_3Bezugsrechte.class, 220, 10, 1, TeildatensatzNummer.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis1_3Bezugsrechte.class, 220, 10, 3, TeildatensatzNummer.BEZUGSRECHTE.getNummer());
         registerEnum(Feld220Wagnis1_3ZukSummenaenderungen.class, 220, 10, 1,
-                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
         registerEnum(Feld220Wagnis1_3ZukSummenaenderungen.class, 220, 10, 3,
-                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
-        registerEnum(Feld220Wagnis1_3Wertungssummen.class, 220, 10, 1, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
-        registerEnum(Feld220Wagnis1_3Wertungssummen.class, 220, 10, 3, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+        registerEnum(Feld220Wagnis1_3Wertungssummen.class, 220, 10, 1, TeildatensatzNummer.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis1_3Wertungssummen.class, 220, 10, 3, TeildatensatzNummer.WERTUNGSSUMMEN.getNummer());
 
         registerEnum(Feld221Wagnis1_3.class, 221, 10, 1, -1);
         registerEnum(Feld221Wagnis1_3.class, 221, 10, 3, -1);
-        registerEnum(Feld221Wagnis1_3Auszahlungen.class, 221, 10, 1, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
-        registerEnum(Feld221Wagnis1_3Auszahlungen.class, 221, 10, 3, LfdNumSatzart.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld221Wagnis1_3Auszahlungen.class, 221, 10, 1, TeildatensatzNummer.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld221Wagnis1_3Auszahlungen.class, 221, 10, 3, TeildatensatzNummer.AUSZAHLUNGEN.getNummer());
         registerEnum(Feld221Wagnis1_3ZukSummenaenderungen.class, 221, 10, 1,
-                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
         registerEnum(Feld221Wagnis1_3ZukSummenaenderungen.class, 221, 10, 3,
-                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
+        // Sparte 10 - Leben - Wagnisart 2
+        registerEnum(Feld220Wagnis2.class, 220, 10, 2, -1);
+        registerEnum(Feld220Wagnis2Bezugsrechte.class, 220, 10, 2, TeildatensatzNummer.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis2Auszahlungen.class, 220, 10, 2, TeildatensatzNummer.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld220Wagnis2Wertungssummen.class, 220, 10, 2, TeildatensatzNummer.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis2ZukSummenaenderungen.class, 220, 10, 2,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
+        registerEnum(Feld221Wagnis2.class, 221, 10, 2, -1);
+        registerEnum(Feld221Wagnis2Auszahlungen.class, 221, 10, 2, TeildatensatzNummer.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld221Wagnis2ZukSummenaenderungen.class, 221, 10, 2,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
 
         // Sparte 10 - Leben - Wagnisart 4 & 8
         registerEnum(Feld220Wagnis4_8.class, 220, 10, 4, -1);
         registerEnum(Feld220Wagnis4_8.class, 220, 10, 8, -1);
-        registerEnum(Feld220Wagnis4_8Bezugsrechte.class, 220, 10, 4, LfdNumSatzart.BEZUGSRECHTE.getNummer());
-        registerEnum(Feld220Wagnis4_8Bezugsrechte.class, 220, 10, 8, LfdNumSatzart.BEZUGSRECHTE.getNummer());
-        registerEnum(Feld220Wagnis4_8Wertungssummen.class, 220, 10, 4, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
-        registerEnum(Feld220Wagnis4_8Wertungssummen.class, 220, 10, 8, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis4_8Bezugsrechte.class, 220, 10, 4, TeildatensatzNummer.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis4_8Bezugsrechte.class, 220, 10, 8, TeildatensatzNummer.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis4_8Wertungssummen.class, 220, 10, 4, TeildatensatzNummer.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis4_8Wertungssummen.class, 220, 10, 8, TeildatensatzNummer.WERTUNGSSUMMEN.getNummer());
         registerEnum(Feld220Wagnis4_8ZukSummenaenderungen.class, 220, 10, 4,
-                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
         registerEnum(Feld220Wagnis4_8ZukSummenaenderungen.class, 220, 10, 8,
-                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
 
         registerEnum(Feld221Wagnis4_8.class, 221, 10, 4, -1);
         registerEnum(Feld221Wagnis4_8.class, 221, 10, 8, -1);
 
+        // Sparte 10 - Leben - Wagnisart 5
+        registerEnum(Feld220Wagnis5.class, 220, 10, 5, -1);
+        registerEnum(Feld220Wagnis5Bezugsrechte.class, 220, 10, 5, TeildatensatzNummer.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis5Wertungssummen.class, 220, 10, 5, TeildatensatzNummer.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis5ZukSummenaenderungen.class, 220, 10, 5,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
+        registerEnum(Feld221Wagnis5.class, 221, 10, 5, -1);
+        registerEnum(Feld221Wagnis5ZukSummenaenderungen.class, 221, 10, 5,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
         // Sparte 10 - Leben - Wagnisart 6
         registerEnum(Feld220Wagnis6.class, 220, 10, 6, -1);
-        registerEnum(Feld220Wagnis6Bezugsrechte.class, 220, 10, 6, LfdNumSatzart.BEZUGSRECHTE.getNummer());
-        registerEnum(Feld220Wagnis6Wertungssummen.class, 220, 10, 6, LfdNumSatzart.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis6Bezugsrechte.class, 220, 10, 6, TeildatensatzNummer.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis6Wertungssummen.class, 220, 10, 6, TeildatensatzNummer.WERTUNGSSUMMEN.getNummer());
         registerEnum(Feld220Wagnis6ZukSummenaenderungen.class, 220, 10, 6,
-                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
 
         registerEnum(Feld221Wagnis6.class, 221, 10, 6, -1);
         registerEnum(Feld221Wagnis6ZukSummenaenderungen.class, 221, 10, 6,
-                LfdNumSatzart.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
+        // Sparte 10 - Leben - Wagnisart 7
+        registerEnum(Feld220Wagnis7.class, 220, 10, 7, -1);
+        registerEnum(Feld220Wagnis7Bezugsrechte.class, 220, 10, 7, TeildatensatzNummer.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis7Wertungssummen.class, 220, 10, 7, TeildatensatzNummer.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis7ZukSummenaenderungen.class, 220, 10, 7,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
+        registerEnum(Feld221Wagnis7.class, 221, 10, 7, -1);
+        registerEnum(Feld221Wagnis7ZukSummenaenderungen.class, 221, 10, 7,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
+        registerEnum(Feld230.class, 221, 10, 7, -1);
+
+        // Sparte 10 - Leben - Wagnisart 9
+        registerEnum(Feld220Wagnis9.class, 220, 10, 9, -1);
+        registerEnum(Feld220Wagnis9Bezugsrechte.class, 220, 10, 9, TeildatensatzNummer.BEZUGSRECHTE.getNummer());
+        registerEnum(Feld220Wagnis9Auszahlungen.class, 220, 10, 9, TeildatensatzNummer.AUSZAHLUNGEN.getNummer());
+        registerEnum(Feld220Wagnis9Wertungssummen.class, 220, 10, 9, TeildatensatzNummer.WERTUNGSSUMMEN.getNummer());
+        registerEnum(Feld220Wagnis9ZukSummenaenderungen.class, 220, 10, 9,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
+
+        registerEnum(Feld230.class, 221, 10, 9, -1);
 
         // Sparte 30 - ?????
         registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30, -1, -1);
@@ -281,21 +354,21 @@ public final class SatzFactory {
      *            the sparte
      * @param wagnisart
      *            the wagnisart
-     * @param lfdNumSatzart
-     *            the lfdNumSatzart
+     * @param teildatensatzNummer
+     *            the teildatensatzNummer
      * @since 0.8
      */
     public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte,
-            final int wagnisart, final int lfdNumSatzart) {
+            final int wagnisart, final int teildatensatzNummer) {
         assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
         assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
         if (wagnisart != -1) {
             assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
-            if (lfdNumSatzart != -1) {
-                assert (0 <= lfdNumSatzart) && (lfdNumSatzart <= 9) : "LfdNumSatzart muss zwischen 0 und 9 liegen";
+            if (teildatensatzNummer != -1) {
+                assert (0 <= teildatensatzNummer) && (teildatensatzNummer <= 9) : "teildatensatzNummer muss zwischen 0 und 9 liegen";
             }
         }
-        int key = getAsKey(satzart, sparte, wagnisart, lfdNumSatzart);
+        int key = getAsKey(satzart, sparte, wagnisart, teildatensatzNummer);
         registeredDatensatzClasses.put(key, clazz);
     }
 
@@ -340,13 +413,13 @@ public final class SatzFactory {
      *            the wagnisart
      * @return the as key
      */
-    private static int getAsKey(final int satzart, final int sparte, final int wagnisart, final int lfdNumSatzart) {
+    private static int getAsKey(final int satzart, final int sparte, final int wagnisart, final int teildatensatzNummer) {
         int key = satzart * 1000 + sparte;
 
         if (wagnisart != -1) {
             key = key * 10 + wagnisart;
-            if (lfdNumSatzart != -1) {
-                key = key * 10 + lfdNumSatzart;
+            if (teildatensatzNummer != -1) {
+                key = key * 10 + teildatensatzNummer;
             }
         }
 
@@ -400,8 +473,8 @@ public final class SatzFactory {
     }
 
     private static Datensatz generateDatensatz(final int satzart, final int sparte, final int wagnisart,
-            final int lfdNumSatzart) {
-        int key = getAsKey(satzart, sparte, wagnisart, lfdNumSatzart);
+            final int teildatensatzNummer) {
+        int key = getAsKey(satzart, sparte, wagnisart, teildatensatzNummer);
         Class<? extends Enum<?>> enumClass = registeredEnumClasses.get(key);
         if (enumClass == null) {
             return useFallback(satzart, sparte);
@@ -487,18 +560,18 @@ public final class SatzFactory {
      *            z.B. 70 (Rechtsschutz)
      * @param wagnisart
      *            z.B. 1 (Kapitallebensversicherung)
-     * @param lfdNumSatzart
-     *            z.B. 3 (Kapitallebens-/Risikovers.)
-     * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart', 'lfdNumSatzart'
+     * @param teildatensatzNummer
+     *            6 = Bezugsrechte, 7 = Auszahlungen, 8 = zukünftige Summenänderungen, 9 = Wertungssummen
+     * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart', 'teildatensatzNummer'
      * 
      * @since 0.9
      */
     public static Datensatz getDatensatz(final int satzart, final int sparte, final int wagnisart,
-            final int lfdNumSatzart) {
-        int key = getAsKey(satzart, sparte, wagnisart, lfdNumSatzart);
+            final int teildatensatzNummer) {
+        int key = getAsKey(satzart, sparte, wagnisart, teildatensatzNummer);
         Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(key);
         if (clazz == null) {
-            return generateDatensatz(satzart, sparte, wagnisart, lfdNumSatzart);
+            return generateDatensatz(satzart, sparte, wagnisart, teildatensatzNummer);
         }
         try {
             Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);

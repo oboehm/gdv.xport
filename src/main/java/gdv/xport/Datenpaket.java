@@ -249,7 +249,7 @@ public final class Datenpaket {
      *             falls was schiefgelaufen ist
      */
     public void importFrom(final Reader reader) throws IOException {
-        importFrom(new PushbackReader(reader, 63));
+        importFrom(new PushbackReader(reader, 256));
     }
 
     /**
@@ -271,16 +271,16 @@ public final class Datenpaket {
             }
             int sparte = Datensatz.readSparte(reader);
             int wagnisart = -1;
-            int lfdNumSatzart = -1;
+            int teildatensatzNummer = -1;
             if (satzart == 220 && sparte == 10) {
                 wagnisart = Datensatz.readWagnisart(reader);
                 if (wagnisart > 0) {
                     // wagnisart 0 hat immer ein Leerzeichen als lfdNumSatzart. Nur größer 0 besitzt per Definition
                     // Werte.
-                    lfdNumSatzart = Datensatz.readLfdNumSatzart(reader);
+                    teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
                 }
             }
-            Datensatz satz = SatzFactory.getDatensatz(satzart, sparte, wagnisart, lfdNumSatzart);
+            Datensatz satz = SatzFactory.getDatensatz(satzart, sparte, wagnisart, teildatensatzNummer);
             satz.importFrom(reader);
             this.add(satz);
         }
