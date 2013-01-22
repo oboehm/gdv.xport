@@ -37,10 +37,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die
- * nach dem SOP-Muster aufgebaut sind.
- * Eventuell wird diese Klasse mit der Oberklasse vereinigt.
- *
+ * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die nach dem SOP-Muster aufgebaut sind. Eventuell
+ * wird diese Klasse mit der Oberklasse vereinigt.
+ * 
  * @author oliver (ob@aosd.de)
  * @since 0.6 (09.03.2011)
  */
@@ -50,9 +49,11 @@ public class SatzX extends Datensatz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
-     * @param satzart z.B. 100
-     * @param felder mit allen Elementen des Datensatzes
+     * 
+     * @param satzart
+     *            z.B. 100
+     * @param felder
+     *            mit allen Elementen des Datensatzes
      */
     public SatzX(final int satzart, final Enum<?>[] felder) {
         super(satzart, getTeildatensaetzeFor(satzart, felder));
@@ -60,9 +61,11 @@ public class SatzX extends Datensatz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
-     * @param satzart z.B. 100
-     * @param enumClass Enumerationen-Klasse mit den Feldbeschreibungen
+     * 
+     * @param satzart
+     *            z.B. 100
+     * @param enumClass
+     *            Enumerationen-Klasse mit den Feldbeschreibungen
      */
     public SatzX(final int satzart, final Class<? extends Enum<?>> enumClass) {
         super(satzart, getTeildatensaetzeFor(satzart, enumClass));
@@ -70,10 +73,13 @@ public class SatzX extends Datensatz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
-     * @param satzart z.B. 100
-     * @param sparte Sparte
-     * @param felder mit allen Elementen des Datensatzes
+     * 
+     * @param satzart
+     *            z.B. 100
+     * @param sparte
+     *            Sparte
+     * @param felder
+     *            mit allen Elementen des Datensatzes
      */
     public SatzX(final int satzart, final int sparte, final Enum<?>[] felder) {
         super(satzart, sparte, getTeildatensaetzeFor(satzart, felder));
@@ -81,39 +87,47 @@ public class SatzX extends Datensatz {
 
     /**
      * Instantiiert einen neuen Datensatz.
-     *
-     * @param satzart z.B. 100
-     * @param sparte Sparte
-     * @param enumClass Enumerationen-Klasse mit den Feldbeschreibungen
+     * 
+     * @param satzart
+     *            z.B. 100
+     * @param sparte
+     *            Sparte
+     * @param enumClass
+     *            Enumerationen-Klasse mit den Feldbeschreibungen
      */
     public SatzX(final int satzart, final int sparte, final Class<? extends Enum<?>> enumClass) {
         super(satzart, sparte, getTeildatensaetzeFor(satzart, enumClass));
     }
 
     /**
-     * Instantiiert einen allgemeinen Datensatz fuer die angegebene Satzart und
-     * Sparte. Dieser Konstruktor ist hauptsaechlich als Fallback fuer
-     * Satzarten/Sparten gedacht, die noch nicht unterstuetzt werden.
-     *
-     * @param satzart z.B. 100
-     * @param sparte Sparte
+     * Instantiiert einen allgemeinen Datensatz fuer die angegebene Satzart und Sparte. Dieser Konstruktor ist
+     * hauptsaechlich als Fallback fuer Satzarten/Sparten gedacht, die noch nicht unterstuetzt werden.
+     * 
+     * @param satzart
+     *            z.B. 100
+     * @param sparte
+     *            Sparte
      */
     public SatzX(final int satzart, final int sparte) {
         this(satzart, sparte, FeldX.values());
     }
 
+    public SatzX(int satzart, int sparte, int wagnisart, int teildatensatzNummer, Class<? extends Enum<?>> enumClass) {
+        super(satzart, sparte, wagnisart, teildatensatzNummer, getTeildatensaetzeFor(satzart, enumClass));
+    }
+
     /**
-     * Leitet aus dem uebergebenen Feldelement die Parameter ab, um daraus
-     * ein Feld anzulegen und im jeweiligen Teildatensatz einzuhaengen.
-     * Zusaetzlich wird das Feld "Satznummer" vorbelegt, falls es in den
-     * uebergebenen Feldern vorhanden ist.
+     * Leitet aus dem uebergebenen Feldelement die Parameter ab, um daraus ein Feld anzulegen und im jeweiligen
+     * Teildatensatz einzuhaengen. Zusaetzlich wird das Feld "Satznummer" vorbelegt, falls es in den uebergebenen
+     * Feldern vorhanden ist.
      * <p>
-     * FIXME: Vorsatz wird noch nicht richtig behandelt, da die ersten 6 Felder
-     * hier etwas anders behandelt wird.
+     * FIXME: Vorsatz wird noch nicht richtig behandelt, da die ersten 6 Felder hier etwas anders behandelt wird.
      * </p>
-     *
-     * @param feldX das Feld-Element
-     * @param tds der entsprechende Teildatensatz
+     * 
+     * @param feldX
+     *            das Feld-Element
+     * @param tds
+     *            der entsprechende Teildatensatz
      */
     protected static void add(final Enum<?> feldX, final Teildatensatz tds) {
         FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
@@ -133,11 +147,12 @@ public class SatzX extends Datensatz {
     }
 
     /**
-     * Wandelt das uebergebene Array in eine Liste mit Felder. Seit 0.7.1
-     * duerfen Feld-Enums wie {@link gdv.xport.satz.feld.Feld100} auch
-     * FelderInfo-Annotationen enthalten, die wiederum auf einen Enum verweisen.
-     *
-     * @param felder the felder
+     * Wandelt das uebergebene Array in eine Liste mit Felder. Seit 0.7.1 duerfen Feld-Enums wie
+     * {@link gdv.xport.satz.feld.Feld100} auch FelderInfo-Annotationen enthalten, die wiederum auf einen Enum
+     * verweisen.
+     * 
+     * @param felder
+     *            the felder
      * @return the feld info list
      */
     private static List<Enum<?>> getAsList(final Enum<?>[] felder) {
@@ -160,11 +175,12 @@ public class SatzX extends Datensatz {
     }
 
     /**
-     * Wandelt das uebergebene Array in eine Liste mit MetaFeldInfos. Seit 0.7.1
-     * duerfen Feld-Enums wie {@link gdv.xport.satz.feld.Feld100} auch
-     * FelderInfo-Annotationen enthalten, die wiederum auf einen Enum verweisen.
-     *
-     * @param felder the felder
+     * Wandelt das uebergebene Array in eine Liste mit MetaFeldInfos. Seit 0.7.1 duerfen Feld-Enums wie
+     * {@link gdv.xport.satz.feld.Feld100} auch FelderInfo-Annotationen enthalten, die wiederum auf einen Enum
+     * verweisen.
+     * 
+     * @param felder
+     *            the felder
      * @return the meta feld infos
      */
     protected static List<MetaFeldInfo> getMetaFeldInfos(final Enum<?>[] felder) {
@@ -215,16 +231,16 @@ public class SatzX extends Datensatz {
         return new ArrayList<Teildatensatz>(tdsMap.values());
     }
 
-    private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart,
-            final Class<? extends Enum<?>> enumClass) {
+    private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart, final Class<? extends Enum<?>> enumClass) {
         Enum<?>[] constants = enumClass.getEnumConstants();
         return getTeildatensaetzeFor(satzart, constants);
     }
 
     /**
      * Setzt die Teildatensaetze mit den angegebenen Feldern auf.
-     *
-     * @param felder Felder fuer die Teildatensaetze.
+     * 
+     * @param felder
+     *            Felder fuer die Teildatensaetze.
      */
     protected void setUpTeildatensaetze(final Enum<?>[] felder) {
         super.createTeildatensaetze(getTeildatensaetzeFor(this.getSatzart(), felder));
@@ -232,4 +248,3 @@ public class SatzX extends Datensatz {
     }
 
 }
-

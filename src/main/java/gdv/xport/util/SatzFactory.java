@@ -209,7 +209,7 @@ public final class SatzFactory {
         registerEnum(Feld221Wagnis7ZukSummenaenderungen.class, 221, 10, 7,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
 
-        registerEnum(Feld230.class, 221, 10, 7, -1);
+        registerEnum(Feld230.class, 230, 10, 7, -1);
 
         // Sparte 10 - Leben - Wagnisart 9
         registerEnum(Feld220Wagnis9.class, 220, 10, 9, -1);
@@ -219,7 +219,7 @@ public final class SatzFactory {
         registerEnum(Feld220Wagnis9ZukSummenaenderungen.class, 220, 10, 9,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer());
 
-        registerEnum(Feld230.class, 221, 10, 9, -1);
+        registerEnum(Feld230.class, 230, 10, 9, -1);
 
         // Sparte 30 - ?????
         registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30, -1, -1);
@@ -479,7 +479,7 @@ public final class SatzFactory {
         if (enumClass == null) {
             return useFallback(satzart, sparte);
         }
-        return new SatzX(satzart, sparte, enumClass);
+        return new SatzX(satzart, sparte, wagnisart, teildatensatzNummer, enumClass);
     }
 
     /**

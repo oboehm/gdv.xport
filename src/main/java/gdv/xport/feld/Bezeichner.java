@@ -823,6 +823,7 @@ public final class Bezeichner {
     public static final String TODESFALLLEISTUNG_IN_WAEHRUNGSEINHEITEN = "Todesfallleistung";
     public static final String EINGERECHNETE_ZULAGE = "Eingerechnete Zulage";
     public static final String EINRECHNUNGSJAHR = "Einrechnungsjahr";
+    public static final String TEILDATENSATZNUMMER = "Teildatensatznummer";
 
     private Bezeichner() {
     }

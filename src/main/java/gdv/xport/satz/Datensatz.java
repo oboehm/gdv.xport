@@ -22,8 +22,10 @@ import static gdv.xport.feld.Bezeichner.BUENDELUNGSKENNZEICHEN;
 import static gdv.xport.feld.Bezeichner.FOLGENUMMER;
 import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
 import static gdv.xport.feld.Bezeichner.SPARTE;
+import static gdv.xport.feld.Bezeichner.TEILDATENSATZNUMMER;
 import static gdv.xport.feld.Bezeichner.VERMITTLER;
 import static gdv.xport.feld.Bezeichner.VERSICHERUNGSSCHEINNUMMER;
+import static gdv.xport.feld.Bezeichner.WAGNISART;
 import gdv.xport.config.Config;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
@@ -52,6 +54,10 @@ public class Datensatz extends Satz {
     private final AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(BUENDELUNGSKENNZEICHEN, 1, 10);
     /** 3 Zeichen, Byte 11 - 13. */
     private final NumFeld sparte = new NumFeld(SPARTE, 3, 11);
+    /** 3 Zeichen, Byte 59 - 60. */
+    private final NumFeld wagnisart = new NumFeld(WAGNISART, 1, 59);
+    /** 3 Zeichen, Byte 255 - 256. */
+    private final NumFeld teildatensatzNummer = new NumFeld(TEILDATENSATZNUMMER, 1, 255);
     /** 17 Zeichen, Byte 14 - 30. */
     private final AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(VERSICHERUNGSSCHEINNUMMER, 17, 14);
     /** 2 Zeichen, Byte 31 + 32. */
@@ -157,6 +163,15 @@ public class Datensatz extends Satz {
     public Datensatz(final int satzart, final int sparte, final List<Teildatensatz> tdsList) {
         this(satzart, tdsList);
         this.setSparte(sparte);
+        this.completeTeildatensaetze();
+    }
+
+    public Datensatz(int satzart, int sparte, int wagnisart, int teildatensatzNummer,
+            List<Teildatensatz> teildatensaetzeList) {
+        this(satzart, teildatensaetzeList);
+        this.setSparte(sparte);
+        this.setWagnisart(wagnisart);
+        this.setTeildatensatzNummer(teildatensatzNummer);
         this.completeTeildatensaetze();
     }
 
@@ -305,6 +320,26 @@ public class Datensatz extends Satz {
      */
     public String getVersicherungsscheinNummer() {
         return this.versicherungsscheinNr.getInhalt().trim();
+    }
+
+    public int getWagnisart() {
+        return wagnisart.toInt();
+    }
+
+    public void setWagnisart(final int wagnisart) {
+        if (wagnisart > -1) {
+            this.wagnisart.setInhalt(wagnisart);
+        }
+    }
+
+    public int getTeildatensatzNummer() {
+        return teildatensatzNummer.toInt();
+    }
+
+    public void setTeildatensatzNummer(final int teildatensatzNummer) {
+        if (teildatensatzNummer > -1) {
+            this.teildatensatzNummer.setInhalt(teildatensatzNummer);
+        }
     }
 
     /**

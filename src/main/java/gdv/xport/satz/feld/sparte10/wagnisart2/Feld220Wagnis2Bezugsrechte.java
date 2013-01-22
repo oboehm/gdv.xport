@@ -21,7 +21,6 @@ package gdv.xport.satz.feld.sparte10.wagnisart2;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Datum;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
@@ -119,7 +118,7 @@ public enum Feld220Wagnis2Bezugsrechte {
      * Bezugsrechtanteil im Todesfall<br/>
      * in Prozent (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 5, byteAdresse = 132)
+    @FeldInfo(teildatensatz = 1, nr = 18, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 132)
     BEZUGSRECHTANTEIL_IM_TODESFALL,
 
     /**
