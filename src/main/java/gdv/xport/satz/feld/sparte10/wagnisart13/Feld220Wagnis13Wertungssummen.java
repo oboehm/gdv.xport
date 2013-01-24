@@ -16,7 +16,7 @@
  * (c)reated 23.03.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.sparte10.wagnisart4_8;
+package gdv.xport.satz.feld.sparte10.wagnisart13;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
@@ -28,12 +28,12 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
- * "Leben - Berufsunfähigkeit = Wagnisart 4 u. 8 - Wertungssummen" (Satzart 0220).
+ * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Wertungssummen" (Satzart 0220)).
  * 
  * @author ralfklemmer
- * @since 19.01.2013
+ * @since 17.01.2013
  */
-public enum Feld220Wagnis4_8Wertungssummen {
+public enum Feld220Wagnis13Wertungssummen {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
@@ -50,7 +50,7 @@ public enum Feld220Wagnis4_8Wertungssummen {
 
     /**
      * Wagnisart.<br/>
-     * 4 = BUZ, 8 = Selbständige Berufsunfähigkeitsvers.
+     * 1 = Kapitallebensversicherung 3 = Risikoversicherung
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
@@ -100,9 +100,7 @@ public enum Feld220Wagnis4_8Wertungssummen {
 
     /**
      * Buchungskennzeichen<br/>
-     * 01 = Gutschrift prov.pflichtige Wertungssumme<br/>
-     * 02 = Lastschrift prov.pflichtige Wertungssumme<br/>
-     * 03 = provisionsneutrale Buchung (Änderung des Haftungszeitraums)
+     * Modell der Provisionierung (VU-individuell), z. B. 01 = Wertungssummenscheibenmodell
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 91)
     BUCHUNGSKENNZEICHEN,
@@ -168,9 +166,7 @@ public enum Feld220Wagnis4_8Wertungssummen {
 
     /**
      * Buchungskennzeichen<br/>
-     * 01 = Gutschrift prov.pflichtige Wertungssumme<br/>
-     * 02 = Lastschrift prov.pflichtige Wertungssumme<br/>
-     * 03 = provisionsneutrale Buchung (Änderung des Haftungszeitraums)
+     * Modell der Provisionierung (VU-individuell), z. B. 01 = Wertungssummenscheibenmodell
      */
     @FeldInfo(teildatensatz = 1, nr = 25, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 156)
     BUCHUNGSKENNZEICHEN2,

@@ -16,23 +16,23 @@
  * (c)reated 23.03.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.sparte10.wagnisart4_8;
+package gdv.xport.satz.feld.sparte10.wagnisart48;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
- * "Leben - Berufsunfähigkeit = Wagnisart 4 u. 8 - Bezugsrechte" (Satzart 0220)
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10
+ * "Leben - Berufsunfähigkeit = Wagnisart 4 u. 8 " (Satzart 0221)).
  * 
  * @author ralfklemmer
  * @since 19.01.2013
  */
-public enum Feld220Wagnis4_8Bezugsrechte {
+public enum Feld221Wagnis48 {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
@@ -61,44 +61,15 @@ public enum Feld220Wagnis4_8Bezugsrechte {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
-     * Lfd. Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
-     * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6, wenn mehrere Bezugsrechte vorhanden)
+     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten<br/>
      */
-    @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
-    LFD_NUMMER_DER_SATZART,
-
-    /**
-     * Bezugsberechtigt im Leistungsfall<br/>
-     * 1 = Versicherungsnehmer<br/>
-     * 2 = Versicherte Personv 9 = Sonstiger Bezugsberechtigter
-     */
-    @FeldInfo(teildatensatz = 1, nr = 12, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 64)
-    BEZUGSBERECHTIGT_IM_LEISTUNGSFALL,
-
-    /**
-     * Sonstiger Bezugsberechtigter im Leistungsfall<br/>
-     * Klartext (z. B. Name, Vorname)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 65)
-    SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL,
-
-    /**
-     * Bezugsrechtanteil im Leistungsfall in Prozent (3,2 Stellen)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 95)
-    BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL,
-
-    /**
-     * Unwiderrufliches Bezugsrecht im Leistungsfall<br/>
-     * 0 = nein, 1 = ja
-     */
-    @FeldInfo(teildatensatz = 1, nr = 15, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 100)
-    UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL,
+    @FeldInfo(teildatensatz = 1, nr = 11, type = Betrag.class, anzahlBytes = 14, byteAdresse = 62)
+    ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Leerstellen.<br/>
      */
-    @FeldInfo(teildatensatz = 1, nr = 16, type = AlphaNumFeld.class, anzahlBytes = 155, byteAdresse = 101)
+    @FeldInfo(teildatensatz = 1, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 182, byteAdresse = 74)
     LEERSTELLEN
+
 }

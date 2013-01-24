@@ -16,23 +16,25 @@
  * (c)reated 23.03.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.sparte10.wagnisart1_3;
+package gdv.xport.satz.feld.sparte10.wagnisart13;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Betrag;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
- * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Zukünftige Summenänderungen" (Satzart 0221)).
+ * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Bezugsrechte" (Satzart 0220)).
  * 
  * @author ralfklemmer
  * @since 17.01.2013
  */
-public enum Feld221Wagnis1_3ZukSummenaenderungen {
+public enum Feld220Wagnis13Auszahlungen {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
@@ -69,56 +71,41 @@ public enum Feld221Wagnis1_3ZukSummenaenderungen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Anfängliche Todesfall VS in Währungseinheiten<br/>
-     * Anfängliche bzw. erste Todesfallleistung<br/>
-     * (12,2 Stellen)
+     * Nächste Auszahlungssumme in Währungseinheiten<br/>
+     * Vereinbarte Auszahlungssumme<br/>
+     * (9,0 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 64)
-    ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 9, byteAdresse = 64)
+    NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Absolute Todesfalländerungssumme in Währungseinheiten<br/>
-     * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung<br/>
-     * (12,0 Stellen)
+     * Nächster Auszahlungstermin<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
+     * Tag/Monat/Jahr (TTMMJJJJ)
      */
-    @FeldInfo(teildatensatz = 1, nr = 13, type = Betrag.class, anzahlBytes = 14, byteAdresse = 78)
-    ABSOLUTE_TODESFALLAENDERUNGSSUMME_VS_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 73)
+    NAECHSTER_AUSZAHLUNGSTERMIN,
 
     /**
-     * Nächste Todesfall VS in Währungseinheiten<br/>
-     * Todesfalleistung ab dem nächsten Änderungstermin<br/>
-     * (12,0 Stellen)
+     * Auszahlungsweise<br/>
+     * in Monaten bei periodischen Auszahlungen<br/>
+     * in Monaten bei periodischen Auszahlungen<br/>
+     * 000 = keine Änderungen/Auszahlungen<br/>
+     * 999 = unregelmäßige Änderungen/Auszahlungen
      */
-    @FeldInfo(teildatensatz = 1, nr = 14, type = Betrag.class, anzahlBytes = 14, byteAdresse = 92)
-    NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 81)
+    AUSZAHLUNGSWEISE,
 
     /**
-     * Anfängliche Erlebensfall VS in Währungseinheiten<br/>
-     * Anfängliche bzw. erste Erlebensfall VS<br/>
-     * (12,2 Stellen)
+     * Anzahl der Auszahlungen<br/>
+     * Anzahl der insgesamt noch möglichen Auszahlungen (99 = unbestimmt)
      */
-    @FeldInfo(teildatensatz = 1, nr = 15, type = Betrag.class, anzahlBytes = 14, byteAdresse = 106)
-    ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
-
-    /**
-     * Absolute Erlebensfall VS in Währungseinheiten<br/>
-     * Absolute Summe der Steigerung bzw. Reduzierung der Erlebensfall VS<br/>
-     * (12,2 Stellen)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 14, byteAdresse = 120)
-    ABSOLUTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
-
-    /**
-     * Nächste Erlebensfall VS in Währungseinheiten<br/>
-     * Erlebensfall VS ab dem nächsten Änderungstermin<br/>
-     * (12,2 Stellen)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 17, type = Betrag.class, anzahlBytes = 14, byteAdresse = 134)
-    NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 84)
+    ANZAHL_DER_AUSZAHLUNGEN,
 
     /**
      * Leerstellen.<br/>
      */
-    @FeldInfo(teildatensatz = 1, nr = 18, type = AlphaNumFeld.class, anzahlBytes = 108, byteAdresse = 148)
+    @FeldInfo(teildatensatz = 1, nr = 16, type = AlphaNumFeld.class, anzahlBytes = 170, byteAdresse = 86)
     LEERSTELLEN
 }

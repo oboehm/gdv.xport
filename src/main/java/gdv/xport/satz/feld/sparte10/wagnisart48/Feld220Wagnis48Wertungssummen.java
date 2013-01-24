@@ -16,7 +16,7 @@
  * (c)reated 23.03.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.sparte10.wagnisart1_3;
+package gdv.xport.satz.feld.sparte10.wagnisart48;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
@@ -28,12 +28,12 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
- * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Wertungssummen" (Satzart 0220)).
+ * "Leben - Berufsunfähigkeit = Wagnisart 4 u. 8 - Wertungssummen" (Satzart 0220).
  * 
  * @author ralfklemmer
- * @since 17.01.2013
+ * @since 19.01.2013
  */
-public enum Feld220Wagnis1_3Wertungssummen {
+public enum Feld220Wagnis48Wertungssummen {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
@@ -50,7 +50,7 @@ public enum Feld220Wagnis1_3Wertungssummen {
 
     /**
      * Wagnisart.<br/>
-     * 1 = Kapitallebensversicherung 3 = Risikoversicherung
+     * 4 = BUZ, 8 = Selbständige Berufsunfähigkeitsvers.
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
@@ -100,7 +100,9 @@ public enum Feld220Wagnis1_3Wertungssummen {
 
     /**
      * Buchungskennzeichen<br/>
-     * Modell der Provisionierung (VU-individuell), z. B. 01 = Wertungssummenscheibenmodell
+     * 01 = Gutschrift prov.pflichtige Wertungssumme<br/>
+     * 02 = Lastschrift prov.pflichtige Wertungssumme<br/>
+     * 03 = provisionsneutrale Buchung (Änderung des Haftungszeitraums)
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 91)
     BUCHUNGSKENNZEICHEN,
@@ -166,7 +168,9 @@ public enum Feld220Wagnis1_3Wertungssummen {
 
     /**
      * Buchungskennzeichen<br/>
-     * Modell der Provisionierung (VU-individuell), z. B. 01 = Wertungssummenscheibenmodell
+     * 01 = Gutschrift prov.pflichtige Wertungssumme<br/>
+     * 02 = Lastschrift prov.pflichtige Wertungssumme<br/>
+     * 03 = provisionsneutrale Buchung (Änderung des Haftungszeitraums)
      */
     @FeldInfo(teildatensatz = 1, nr = 25, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 156)
     BUCHUNGSKENNZEICHEN2,

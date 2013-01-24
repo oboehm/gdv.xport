@@ -16,12 +16,11 @@
  * (c)reated 23.03.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.sparte10.wagnisart1_3;
+package gdv.xport.satz.feld.sparte10.wagnisart13;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
@@ -34,7 +33,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  * @author ralfklemmer
  * @since 17.01.2013
  */
-public enum Feld220Wagnis1_3Auszahlungen {
+public enum Feld220Wagnis13Bezugsrechte {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
@@ -71,41 +70,68 @@ public enum Feld220Wagnis1_3Auszahlungen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Nächste Auszahlungssumme in Währungseinheiten<br/>
-     * Vereinbarte Auszahlungssumme<br/>
-     * (9,0 Stellen)
+     * Bezugsberechtigt im Erlebensfall<br/>
+     * 1 = Versicherungsnehmer<br/>
+     * 2 = Versicherte Person<br/>
+     * 9 = Sonstiger Bezugsberechtigter
      */
-    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 9, byteAdresse = 64)
-    NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 12, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 64)
+    BEZUGSBERECHTIGT_IM_ERLEBENSFALL,
 
     /**
-     * Nächster Auszahlungstermin<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
-     * Tag/Monat/Jahr (TTMMJJJJ)
+     * Sonstiger Bezugsberechtigter im Erlebensfall<br/>
+     * Klartext (z. B. Name, Vorname)
      */
-    @FeldInfo(teildatensatz = 1, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 73)
-    NAECHSTER_AUSZAHLUNGSTERMIN,
+    @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 65)
+    SONSTIGER_BEZUGSBERECHTIGTER_IM_ERLEBENSFALL,
 
     /**
-     * Auszahlungsweise<br/>
-     * in Monaten bei periodischen Auszahlungen<br/>
-     * in Monaten bei periodischen Auszahlungen<br/>
-     * 000 = keine Änderungen/Auszahlungen<br/>
-     * 999 = unregelmäßige Änderungen/Auszahlungen
+     * Bezugsrechtanteil im Erlebensfall in Prozent (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 81)
-    AUSZAHLUNGSWEISE,
+    @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 95)
+    BEZUGSRECHTANTEIL_IM_ERLEBENSFALL,
 
     /**
-     * Anzahl der Auszahlungen<br/>
-     * Anzahl der insgesamt noch möglichen Auszahlungen (99 = unbestimmt)
+     * Unwiderrufliches Bezugsrecht im Erlebensfall<br/>
+     * 0 = nein, 1 = ja
      */
-    @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 84)
-    ANZAHL_DER_AUSZAHLUNGEN,
+    @FeldInfo(teildatensatz = 1, nr = 15, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 100)
+    UNWIDERRUFLICHES_BEZUGSRECHT_IM_ERLEBENSFALL,
+
+    /**
+     * Bezugsberechtigt im Todesfall<br/>
+     * 1 = Versicherungsnehmer<br/>
+     * 2 = gesetzliche Erbfolge<br/>
+     * 3 = Reihenfolge: Ehegatte, Kinder, Eltern, Erben<br/>
+     * 9 = Sonstiger Bezugsberechtigter
+     */
+    @FeldInfo(teildatensatz = 1, nr = 16, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 101)
+    BEZUGSBERECHTIGT_IM_TODESFALL,
+
+    /**
+     * Sonstiger Bezugsberechtigter im Todesfall<br/>
+     * Klartext (z. B. Name, Vorname)
+     */
+    @FeldInfo(teildatensatz = 1, nr = 17, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 102)
+    SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL,
+
+    /**
+     * Bezugsrechtanteil im Todesfall<br/>
+     * in Prozent (3,2 Stellen)
+     */
+    @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 5, byteAdresse = 132)
+    BEZUGSRECHTANTEIL_IM_TODESFALL,
+
+    /**
+     * Unwiderrufliches Bezugsrecht im Todesfall<br/>
+     * 0 = nein, 1 = ja
+     */
+    @FeldInfo(teildatensatz = 1, nr = 19, type = AlphaNumFeld.class, anzahlBytes = 1, byteAdresse = 137)
+    UNWIDERRUFLICHES_BEZUGSRECHT_IM_TODESFALL,
 
     /**
      * Leerstellen.<br/>
      */
-    @FeldInfo(teildatensatz = 1, nr = 16, type = AlphaNumFeld.class, anzahlBytes = 170, byteAdresse = 86)
+    @FeldInfo(teildatensatz = 1, nr = 20, type = AlphaNumFeld.class, anzahlBytes = 118, byteAdresse = 138)
     LEERSTELLEN
 }

@@ -16,7 +16,7 @@
  * (c)reated 23.03.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.sparte10.wagnisart1_3;
+package gdv.xport.satz.feld.sparte10.wagnisart13;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
@@ -34,7 +34,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  * @author ralfklemmer
  * @since 17.01.2013
  */
-public enum Feld220Wagnis1_3ZukSummenaenderungen {
+public enum Feld220Wagnis13ZukSummenaenderungen {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
