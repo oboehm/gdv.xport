@@ -42,7 +42,7 @@ import org.junit.Test;
 
 /**
  * JUnit-Test fuer SatzFactory.
- *
+ * 
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
@@ -126,7 +126,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testRegisterEnum4Sparte() {
-        SatzFactory.registerEnum(MyFeld210.class, 47, 11);
+        SatzFactory.registerEnum(MyFeld210.class, 47, 11, -1, -1);
         Satz satz = SatzFactory.getDatensatz(47, 11);
         assertSatzart47(satz);
         SatzFactory.unregister(47, 11);
@@ -203,8 +203,7 @@ public final class SatzFactoryTest extends AbstractTest {
         checkGetDatensatz(210, 10, gdv.xport.satz.feld.sparte10.Feld210.values(), "1");
     }
 
-    private void checkGetDatensatz(final int satzart, final int sparte, final Enum<?>[] felder,
-            final String satzNr) {
+    private void checkGetDatensatz(final int satzart, final int sparte, final Enum<?>[] felder, final String satzNr) {
         checkGetDatensatz(satzart, sparte, felder);
         Satz datensatz = getDatensatz(satzart, sparte);
         Feld satznummer = datensatz.getFeld(SATZNUMMER, 1);
@@ -231,7 +230,7 @@ public final class SatzFactoryTest extends AbstractTest {
 
     /**
      * Die Daten zu diesem Test stammen aus der Musterdatei.
-     *
+     * 
      * @throws IOException
      *             sollte eigentlich nicht vorkommen
      */
@@ -260,17 +259,17 @@ public final class SatzFactoryTest extends AbstractTest {
     /**
      * Das Registrieren/Deregistrieren von Enum-Saetzen scheint nicht richtig zu funktionieren. Dies wird mit diesem
      * Test nachgestellt (s. Issue 1).
-     *
+     * 
      * @since 0.6.3
      */
     @Test
     public void testIssue1() {
         checkGetDatensatz(210, 30, gdv.xport.satz.feld.sparte30.Feld210.values());
         try {
-            SatzFactory.registerEnum(MyFeld210.class, 210, 30);
+            SatzFactory.registerEnum(MyFeld210.class, 210, 30, -1, -1);
             checkGetDatensatz(210, 30, MyFeld210.values());
         } finally {
-            SatzFactory.registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
+            SatzFactory.registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30, -1, -1);
         }
     }
 
