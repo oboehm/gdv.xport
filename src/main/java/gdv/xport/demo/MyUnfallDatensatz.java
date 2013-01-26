@@ -21,38 +21,39 @@ package gdv.xport.demo;
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.model.SatzX;
-import gdv.xport.util.*;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.XmlFormatter;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.xml.stream.XMLStreamException;
 
 /**
- * Diese Demo-Klasse zeigt u.a., wie man eine Enumeration beim
- * gdv-xport-Framework registriert. Sie repraesentiert den Datensatz
- * 0210.030 (Unfall, Vertragsspezifischer Teil), definiert aber nur
- * einige wenige ausgewaehlte Felder.
- *
+ * Diese Demo-Klasse zeigt u.a., wie man eine Enumeration beim gdv-xport-Framework registriert. Sie repraesentiert den
+ * Datensatz 0210.030 (Unfall, Vertragsspezifischer Teil), definiert aber nur einige wenige ausgewaehlte Felder.
+ * 
  * @author oliver (ob@aosd.de)
  * @since 0.3 (21.11.2009)
  */
-//public class MyUnfallDatensatz extends Datensatz {
+// public class MyUnfallDatensatz extends Datensatz {
 public class MyUnfallDatensatz extends SatzX {
 
     /**
-     * Hier wird die Enum-Klasse {@link MyFeld210} mit der Datenbeschreibung
-     * am Framework registriert und anschliessend das Beispiel von
-     * {@link "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt"}
-     * importiert.
-     *
-     * @param args werden ignoriert
-     * @throws IOException falls z.B. keine Netzverbindung da ist
-     * @throws XMLStreamException falls die XML-Generierung nicht geklappt hat
+     * Hier wird die Enum-Klasse {@link MyFeld210} mit der Datenbeschreibung am Framework registriert und anschliessend
+     * das Beispiel von {@link "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt"} importiert.
+     * 
+     * @param args
+     *            werden ignoriert
+     * @throws IOException
+     *             falls z.B. keine Netzverbindung da ist
+     * @throws XMLStreamException
+     *             falls die XML-Generierung nicht geklappt hat
      */
     public static void main(final String[] args) throws IOException, XMLStreamException {
         // im Framework registrieren
-        SatzFactory.registerEnum(MyFeld210.class, 210, 30);
+        SatzFactory.registerEnum(MyFeld210.class, 210, 30, -1, -1);
         importMusterdatei();
         // und hiermit melden wir den Datensatz wieder vom Framework ab
         SatzFactory.unregister(210, 30);
@@ -61,8 +62,7 @@ public class MyUnfallDatensatz extends SatzX {
     private static void importMusterdatei() throws IOException, MalformedURLException, XMLStreamException {
         // Datenpaket importieren
         Datenpaket datenpaket = new Datenpaket();
-        datenpaket.importFrom(new URL(
-                "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt"));
+        datenpaket.importFrom(new URL("http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt"));
         // jetzt den ersten Datensatz 210, Sparte 30 suchen und ausgeben
         for (Datensatz datensatz : datenpaket.getDatensaetze()) {
             if ((datensatz.getSatzart() == 210) && (datensatz.getSparte() == 30)) {
@@ -72,19 +72,19 @@ public class MyUnfallDatensatz extends SatzX {
             }
         }
     }
-    
+
     /**
-     * Hier wird diese Klasse am Framework registriert und anschliessend das
-     * Beispiel von
-     * {@link "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt"}
-     * importiert.
-     * Seit 0.6 ist es moeglich, eine Enum-Klasse direkt zu registrieren. Daher
-     * muss nicht mehr ein eigener Datensatz angelegt werden, so wie es hier
-     * noch gemacht wird.
-     *
-     * @param args werden ignoriert
-     * @throws IOException falls z.B. keine Netzverbindung da ist
-     * @throws XMLStreamException falls die XML-Generierung nicht geklappt hat
+     * Hier wird diese Klasse am Framework registriert und anschliessend das Beispiel von
+     * {@link "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt"} importiert. Seit 0.6 ist es
+     * moeglich, eine Enum-Klasse direkt zu registrieren. Daher muss nicht mehr ein eigener Datensatz angelegt werden,
+     * so wie es hier noch gemacht wird.
+     * 
+     * @param args
+     *            werden ignoriert
+     * @throws IOException
+     *             falls z.B. keine Netzverbindung da ist
+     * @throws XMLStreamException
+     *             falls die XML-Generierung nicht geklappt hat
      */
     public static void oldMain(final String[] args) throws IOException, XMLStreamException {
         // im Framework registrieren
@@ -95,12 +95,10 @@ public class MyUnfallDatensatz extends SatzX {
     }
 
     /**
-     * Hiermit initialisieren wir die Klasse mit Satzart 210 und Sparte 30
-     * (Unfall).
+     * Hiermit initialisieren wir die Klasse mit Satzart 210 und Sparte 30 (Unfall).
      */
     public MyUnfallDatensatz() {
         super(210, 30, MyFeld210.values());
     }
 
 }
-

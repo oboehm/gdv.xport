@@ -28,12 +28,12 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
- * (Leben - Angaben zur versicherten Version: Person = Wagnisart 0).
+ * (Leben - Angaben zur versicherten Person: Person = Wagnisart 0).
  * 
  * @author ralfklemmer
  * @since 12.11.2012
  */
-public enum Feld220 {
+public enum Feld220Wagnis0 {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
@@ -46,7 +46,7 @@ public enum Feld220 {
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
-    LFD_NUMMER_VP,
+    LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
      * Wagnisart.<br/>

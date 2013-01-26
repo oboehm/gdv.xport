@@ -249,17 +249,17 @@ public final class Datenpaket {
      *             falls was schiefgelaufen ist
      */
     public void importFrom(final Reader reader) throws IOException {
-        importFrom(new PushbackReader(reader, 60));
+        importFrom(new PushbackReader(reader, 256));
     }
 
     /**
-     * Der hier verwendete PushbackReader wird benoetigt, damit die gelesene Satzart und Sparte wieder zurueckgesetllt
+     * Der hier verwendete PushbackReader wird benoetigt, damit die gelesene Satzart und Sparte wieder zurueckgestellt
      * werden kann.
      * 
      * @param reader
      *            PushbackReader mit einem Puffer von mind. 14 Zeichen
      * @throws IOException
-     *             falls was schiefgelaufen ist
+     *             falls was schief gelaufen ist
      */
     public void importFrom(final PushbackReader reader) throws IOException {
         this.vorsatz.importFrom(reader);
@@ -271,10 +271,16 @@ public final class Datenpaket {
             }
             int sparte = Datensatz.readSparte(reader);
             int wagnisart = -1;
+            int teildatensatzNummer = -1;
             if (satzart == 220 && sparte == 10) {
                 wagnisart = Datensatz.readWagnisart(reader);
+                if (wagnisart > 0) {
+                    // wagnisart 0 hat immer ein Leerzeichen als lfdNumSatzart. Nur größer 0 besitzt per Definition
+                    // Werte.
+                    teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
+                }
             }
-            Datensatz satz = SatzFactory.getDatensatz(satzart, sparte, wagnisart);
+            Datensatz satz = SatzFactory.getDatensatz(satzart, sparte, wagnisart, teildatensatzNummer);
             satz.importFrom(reader);
             this.add(satz);
         }
