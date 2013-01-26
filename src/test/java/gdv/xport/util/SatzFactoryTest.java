@@ -19,9 +19,7 @@
 package gdv.xport.util;
 
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.demo.MyFeld210;
@@ -31,7 +29,6 @@ import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.model.Satz221;
 import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
@@ -42,7 +39,7 @@ import org.junit.Test;
 
 /**
  * JUnit-Test fuer SatzFactory.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
@@ -97,6 +94,12 @@ public final class SatzFactoryTest extends AbstractTest {
         assertEquals(Datensatz.class, satz.getClass());
         assertEquals(47, satz.getSatzart());
         SatzFactory.unregister(47);
+        try {
+            satz = SatzFactory.getSatz(47);
+            fail("unregister failed for " + satz);
+        } catch (NotRegisteredException expected) {
+            log.info(satz + " successful unregistered (" + expected + ")");
+        }
     }
 
     /**
@@ -122,7 +125,7 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     /**
-     * Testet {@link SatzFactory#registerEnum(Class, int, int)}.
+     * Testet {@link SatzFactory#registerEnum(Class, int, int, int, int)}.
      */
     @Test
     public void testRegisterEnum4Sparte() {
@@ -160,19 +163,19 @@ public final class SatzFactoryTest extends AbstractTest {
         assertEquals(satzart, datensatz.getSatzart());
     }
 
-    /**
-     * Damit wird ueberprueft, ob Satzart 221 (Erweiterungssatz) bei der SatzFactory registriert ist.
-     */
-    @Test
-    public void testGetErweiterungssatz() {
-        checkGetDatensatz(221, Satz221.class);
-    }
-
-    private static void checkGetDatensatz(final int satzart, final Class<? extends Datensatz> clazz) {
-        Satz datensatz = SatzFactory.getDatensatz(satzart);
-        assertEquals(clazz, datensatz.getClass());
-        assertEquals(satzart, datensatz.getSatzart());
-    }
+//    /**
+//     * Damit wird ueberprueft, ob Satzart 221 (Erweiterungssatz) bei der SatzFactory registriert ist.
+//     */
+//    @Test
+//    public void testGetErweiterungssatz() {
+//        checkGetDatensatz(221, Satz221.class);
+//    }
+//
+//    private static void checkGetDatensatz(final int satzart, final Class<? extends Datensatz> clazz) {
+//        Satz datensatz = SatzFactory.getDatensatz(satzart);
+//        assertEquals(clazz, datensatz.getClass());
+//        assertEquals(satzart, datensatz.getSatzart());
+//    }
 
     /**
      * Damit wird ueberprueft, ob Satzart 220 mit Sparte 70 registriert ist.
@@ -230,7 +233,7 @@ public final class SatzFactoryTest extends AbstractTest {
 
     /**
      * Die Daten zu diesem Test stammen aus der Musterdatei.
-     * 
+     *
      * @throws IOException
      *             sollte eigentlich nicht vorkommen
      */
@@ -259,7 +262,7 @@ public final class SatzFactoryTest extends AbstractTest {
     /**
      * Das Registrieren/Deregistrieren von Enum-Saetzen scheint nicht richtig zu funktionieren. Dies wird mit diesem
      * Test nachgestellt (s. Issue 1).
-     * 
+     *
      * @since 0.6.3
      */
     @Test
