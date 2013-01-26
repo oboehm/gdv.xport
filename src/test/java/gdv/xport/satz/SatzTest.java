@@ -24,9 +24,13 @@ import static gdv.xport.feld.Bezeichner.*;
 import java.io.*;
 import java.util.List;
 
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
-
+import gdv.xport.satz.feld.Feld200;
+import gdv.xport.satz.feld.MetaFeldInfo;
+import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.sparte53.Feld220;
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.logging.*;
@@ -37,7 +41,7 @@ import patterntesting.concurrent.junit.ParallelRunner;
 
 /**
  * Test-Klasse fuer Satz.
- * 
+ *
  * @author oliver
  * @since 19.10.2009
  */
@@ -50,7 +54,7 @@ public final class SatzTest {
     /**
      * Damit die Assert's der Satzlaenge stimmen, muessen wir das
      * End-of-Datensatz abschalten.
-     * 
+     *
      * @since 0.3
      */
     @BeforeClass
@@ -113,7 +117,7 @@ public final class SatzTest {
     /**
      * Ein Export mit einem Teildatensatz sollte aus genau 256 Bytes bestehen,
      * da in der SetUp-Methode das EOD-Zeichen auf "" gesetzt wurde.
-     * 
+     *
      * @throws IOException
      *             sollte nicht auftreten, da wir mit StringWriter arbeiten
      */
@@ -129,7 +133,7 @@ public final class SatzTest {
 
     /**
      * Ein einfach Import-Test.
-     * 
+     *
      * @throws IOException
      *             sollte eigenlich nicht passieren, da wir von einem String
      *             lesen
@@ -199,7 +203,7 @@ public final class SatzTest {
 
     /**
      * Hier testen wir das Enfernen von Teildatensaetze.
-     * 
+     *
      * @since 0.4
      */
     @Test
@@ -214,7 +218,7 @@ public final class SatzTest {
 
     /**
      * Hier testen wir das Entfernen aller Teildatensaetze.
-     * 
+     *
      * @since 0.4
      */
     @Test
@@ -222,6 +226,53 @@ public final class SatzTest {
         Satz s = new Vorsatz();
         s.removeAllTeildatensaetze(2);
         assertEquals(1, s.getTeildatensaetze().size());
+    }
+
+    /**
+     * Test method for {@link Satz#getAsList(Enum[])}.
+     */
+    @Test
+    public void testGetAsListSimple() {
+        List<MetaFeldInfo> feldInfos = Satz.getMetaFeldInfos(Feld200.values());
+        assertFalse("empty list", feldInfos.isEmpty());
+        log.info("Feld200 has " + feldInfos.size() + " FeldInfos.");
+        assertTrue("Feld200 should have more than " + Feld200.values().length + " entries",
+                feldInfos.size() >= Feld200.values().length);
+    }
+
+    /**
+     * Test method for {@link Satz#getAsList(Enum[])}.
+     */
+    @Test
+    public void testGetAsListComposite() {
+        List<MetaFeldInfo> feldInfos = Satz.getMetaFeldInfos(Feld220.values());
+        assertFalse("empty list", feldInfos.isEmpty());
+        log.info(Feld220.class.getName() + " has " + feldInfos.size() + " FeldInfos.");
+        assertTrue("elements are missing", feldInfos.size() > Feld220.values().length);
+    }
+
+    /**
+     * {@link Feld1bis7} ist ein Beispiel, wo kein Teildatensatz gesetzt ist.
+     * Dieser wird z.B. beim {@link Feld200} ueber die {@link FelderInfo}-
+     * Annotation gesetzt. Ob dieses Wert tatsaechlich gesetzt wird, wird
+     * ueber diesen Test geprueft.
+     */
+    @Test
+    public void testGetAsListTeildatensatz() {
+        List<MetaFeldInfo> metaFeldInfos = Satz.getMetaFeldInfos(Feld200.values());
+        int found = 0;
+        for (MetaFeldInfo metaFeldInfo : metaFeldInfos) {
+            if (metaFeldInfo.getName().equals("SATZART")) {
+                found++;
+                checkSatzart(metaFeldInfo, found);
+            }
+        }
+    }
+
+    private static void checkSatzart(final MetaFeldInfo satzart, final int found) {
+        log.info(found + ". MetaFeldInfo: " + satzart );
+        assertEquals(1, satzart.getNr());
+        assertEquals(found, satzart.getTeildatensatzNr());
     }
 
 }
