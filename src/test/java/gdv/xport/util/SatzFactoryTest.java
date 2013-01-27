@@ -125,11 +125,11 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     /**
-     * Testet {@link SatzFactory#registerEnum(Class, int, int, int, int)}.
+     * Testet {@link SatzFactory#registerEnum(Class, int, int)}.
      */
     @Test
     public void testRegisterEnum4Sparte() {
-        SatzFactory.registerEnum(MyFeld210.class, 47, 11, -1, -1);
+        SatzFactory.registerEnum(MyFeld210.class, 47, 11);
         Satz satz = SatzFactory.getDatensatz(47, 11);
         assertSatzart47(satz);
         SatzFactory.unregister(47, 11);
@@ -269,10 +269,10 @@ public final class SatzFactoryTest extends AbstractTest {
     public void testIssue1() {
         checkGetDatensatz(210, 30, gdv.xport.satz.feld.sparte30.Feld210.values());
         try {
-            SatzFactory.registerEnum(MyFeld210.class, 210, 30, -1, -1);
+            SatzFactory.registerEnum(MyFeld210.class, 210, 30);
             checkGetDatensatz(210, 30, MyFeld210.values());
         } finally {
-            SatzFactory.registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30, -1, -1);
+            SatzFactory.registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
         }
     }
 

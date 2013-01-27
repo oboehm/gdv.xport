@@ -74,15 +74,22 @@ public class SatzNummer {
     }
 
     /**
-     * Instantiates a new satz nummer.
+     * Legt eine neue SatzNummer an.
      *
-     * @param satzart the satzart
-     * @param sparte the sparte
-     * @param wagnisart the wagnisart
-     * @param lfdNummer the lfd nummer
+     * @param satzart die Satzart (vierstellig)
+     * @param sparte die Sparte (dreistellig)
+     * @param wagnisart die Wagnisart (ein- bis zweisstellig)
+     * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
      */
     public SatzNummer(final int satzart, final int sparte, final int wagnisart, final int lfdNummer) {
-        assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
+		assert (0 <= satzart) && (satzart <= 9999) :
+			"Satzart " + satzart + " muss zwischen 0 und 9999 liegen";
+        assert (sparte == -1) || ((0 <= sparte) && (sparte <= 999)) :
+        	"Sparte " + sparte + " muss zwischen 0 und 999 liegen";
+        assert (wagnisart == -1) || ((0 <= wagnisart) && (wagnisart <= 9)) :
+        	"Wagnisart " + wagnisart + " muss zwischen 0 und 9 liegen";
+        assert (lfdNummer == -1) || ((0 <= lfdNummer) && (lfdNummer <= 9)) :
+        	"teildatensatzNummer " + lfdNummer + " muss zwischen 0 und 9 liegen";
         this.satzart = satzart;
         this.sparte = sparte;
         this.wagnisart = wagnisart;
