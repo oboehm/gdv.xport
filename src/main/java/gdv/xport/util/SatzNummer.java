@@ -21,6 +21,7 @@ package gdv.xport.util;
 import java.text.DecimalFormat;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Die SatzNummer fuehrt Satzart, Sparte, Wagnisart und laufende Nummer eines
  * Teildatensatz zusammen. Sie wird von der {@link SatzFactory} fer die
@@ -29,7 +30,7 @@ import java.text.DecimalFormat;
  * @author oliver
  * @since 0.9 (26.01.2013)
  */
-public class SatzNummer {
+public final class SatzNummer {
 
     /** The satzart. */
     private final int satzart;
@@ -131,6 +132,34 @@ public class SatzNummer {
     public int getLfdNummer() {
         return this.lfdNummer;
     }
+
+	/**
+	 * Liefert true zurueck, wenn die Sparte gesetzt ist.
+	 *
+	 * @return true, if successful
+	 */
+	public boolean hasSparte() {
+	    return this.sparte >= 0;
+    }
+
+	/**
+	 * Liefert true zurueck, wenn die Wagnisart gesetzt ist.
+	 *
+	 * @return true, if successful
+	 */
+	public boolean hasWagnisart() {
+		return this.wagnisart >= 0;
+	}
+
+	/**
+	 * Liefert true zurueck, wenn die laufende Nummer (Teildatensatz-Nummer)
+	 * gesetzt ist.
+	 *
+	 * @return true, if successful
+	 */
+	public boolean hasLfdNummer() {
+		return this.lfdNummer >= 0;
+	}
 
     /* (non-Javadoc)
      * @see java.lang.Object#hashCode()

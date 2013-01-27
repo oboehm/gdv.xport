@@ -21,6 +21,8 @@ package gdv.xport.satz.model;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.FeldX;
+import gdv.xport.util.SatzNummer;
+
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -88,145 +90,28 @@ public class SatzX extends Datensatz {
         super(satzart, sparte, getTeildatensaetzeFor(satzart, enumClass));
     }
 
-    /**
-     * Instantiiert einen allgemeinen Datensatz fuer die angegebene Satzart und Sparte. Dieser Konstruktor ist
-     * hauptsaechlich als Fallback fuer Satzarten/Sparten gedacht, die noch nicht unterstuetzt werden.
-     *
-     * @param satzart
-     *            z.B. 100
-     * @param sparte
-     *            Sparte
-     */
+	/**
+	 * Instantiiert einen allgemeinen Datensatz fuer die angegebene Satzart und
+	 * Sparte. Dieser Konstruktor ist hauptsaechlich als Fallback fuer
+	 * Satzarten/Sparten gedacht, die noch nicht unterstuetzt werden.
+	 *
+	 * @param satzart z.B. 100
+	 * @param sparte Sparte
+	 */
     public SatzX(final int satzart, final int sparte) {
         this(satzart, sparte, FeldX.values());
     }
 
-    public SatzX(final int satzart, final int sparte, final int wagnisart, final int teildatensatzNummer, final Class<? extends Enum<?>> enumClass) {
-        super(satzart, sparte, wagnisart, teildatensatzNummer, getTeildatensaetzeFor(satzart, enumClass));
+	/**
+	 * Instantiiert einen allgemeinen Datensatz fuer die angegebene Satznummer.
+	 *
+	 * @param satzNr Satznummer mit Satzart, Sparte, Wagnisart, lfd. Nummer
+	 * @param enumClass Enum-Klasse, die den Datensatz beschreibt
+	 * @since 0.9
+	 */
+    public SatzX(final SatzNummer satzNr, final Class<? extends Enum<?>> enumClass) {
+        super(satzNr, getTeildatensaetzeFor(satzNr.getSatzart(), enumClass));
     }
-
-//    /**
-//     * Leitet aus dem uebergebenen Feldelement die Parameter ab, um daraus ein Feld anzulegen und im jeweiligen
-//     * Teildatensatz einzuhaengen. Zusaetzlich wird das Feld "Satznummer" vorbelegt, falls es in den uebergebenen
-//     * Feldern vorhanden ist.
-//     * <p>
-//     * FIXME: Vorsatz wird noch nicht richtig behandelt, da die ersten 6 Felder hier etwas anders behandelt wird.
-//     * </p>
-//     *
-//     * @param feldX
-//     *            das Feld-Element
-//     * @param tds
-//     *            der entsprechende Teildatensatz
-//     */
-//    protected static void add(final Enum<?> feldX, final Teildatensatz tds) {
-//        FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
-//        Feld feld = Feld.createFeld(feldX, info);
-//        if (info.nr() < 8) {
-//            log.info("using default settings for " + feld);
-//        } else {
-//            tds.add(feld);
-//            if (isSatznummer(feldX)) {
-//                feld.setInhalt(info.teildatensatz());
-//            }
-//        }
-//    }
-
-//    private static boolean isSatznummer(final Enum<?> feldX) {
-//        return (feldX.name().length() <= 11) && feldX.name().startsWith("SATZNUMMER");
-//    }
-//
-//    /**
-//     * Wandelt das uebergebene Array in eine Liste mit Felder. Seit 0.7.1 duerfen Feld-Enums wie
-//     * {@link gdv.xport.satz.feld.Feld100} auch FelderInfo-Annotationen enthalten, die wiederum auf einen Enum
-//     * verweisen.
-//     *
-//     * @param felder
-//     *            the felder
-//     * @return the feld info list
-//     */
-//    private static List<Enum<?>> getAsList(final Enum<?>[] felder) {
-//        ArrayList<Enum<?>> feldList = new ArrayList<Enum<?>>(felder.length);
-//        for (int i = 0; i < felder.length; i++) {
-//            String name = felder[i].name();
-//            try {
-//                Field field = felder[i].getClass().getField(name);
-//                FelderInfo info = field.getAnnotation(FelderInfo.class);
-//                if (info == null) {
-//                    feldList.add(felder[i]);
-//                } else {
-//                    feldList.addAll(getAsList(info));
-//                }
-//            } catch (NoSuchFieldException nsfe) {
-//                throw new InternalError("no field " + name + " (" + nsfe + ")");
-//            }
-//        }
-//        return feldList;
-//    }
-//
-//    /**
-//     * Wandelt das uebergebene Array in eine Liste mit MetaFeldInfos. Seit 0.7.1 duerfen Feld-Enums wie
-//     * {@link gdv.xport.satz.feld.Feld100} auch FelderInfo-Annotationen enthalten, die wiederum auf einen Enum
-//     * verweisen.
-//     *
-//     * @param felder
-//     *            the felder
-//     * @return the meta feld infos
-//     */
-//    protected static List<MetaFeldInfo> getMetaFeldInfos(final Enum<?>[] felder) {
-//        List<MetaFeldInfo> metaFeldInfos = new ArrayList<MetaFeldInfo>(felder.length);
-//        for (int i = 0; i < felder.length; i++) {
-//            String name = felder[i].name();
-//            try {
-//                Field field = felder[i].getClass().getField(name);
-//                FelderInfo info = field.getAnnotation(FelderInfo.class);
-//                if (info == null) {
-//                    metaFeldInfos.add(new MetaFeldInfo(felder[i]));
-//                } else {
-//                    metaFeldInfos.addAll(getMetaFeldInfos(info));
-//                }
-//            } catch (NoSuchFieldException nsfe) {
-//                throw new InternalError("no field " + name + " (" + nsfe + ")");
-//            }
-//        }
-//        return metaFeldInfos;
-//    }
-//
-//    private static List<MetaFeldInfo> getMetaFeldInfos(final FelderInfo info) {
-//        Collection<? extends Enum<?>> enums = getAsList(info);
-//        List<MetaFeldInfo> metaFeldInfos = new ArrayList<MetaFeldInfo>(enums.size());
-//        for (Enum<?> enumX : enums) {
-//            metaFeldInfos.add(new MetaFeldInfo(enumX, info));
-//        }
-//        return metaFeldInfos;
-//    }
-//
-//    private static Collection<? extends Enum<?>> getAsList(final FelderInfo info) {
-//        Class<? extends Enum<?>> enumClass = info.type();
-//        return getAsList(enumClass.getEnumConstants());
-//    }
-//
-//    /**
-//     * Hier passiert die Magie: die Annotationen der uebergebenen Enum werden
-//     * ausgelesen und in eine Liste mit den Teildatensaetzen zu packen.
-//     *
-//     * @param satzart the satzart
-//     * @param felder the felder
-//     * @return eine Liste mit Teildatensaetzen
-//     */
-//    protected static List<Teildatensatz> getTeildatensaetzeFor(final int satzart, final Enum<?>[] felder) {
-//        SortedMap<Integer, Teildatensatz> tdsMap = new TreeMap<Integer, Teildatensatz>();
-//        for (MetaFeldInfo metaFeldInfo : getMetaFeldInfos(felder)) {
-//            int n = metaFeldInfo.getTeildatensatzNr();
-//            Teildatensatz tds = tdsMap.get(n);
-//            if (tds == null) {
-//                tds = new Teildatensatz(satzart, n);
-//                tdsMap.put(n, tds);
-//            }
-//            add(metaFeldInfo.getFeldEnum(), tds);
-//
-//        }
-//        return new ArrayList<Teildatensatz>(tdsMap.values());
-//    }
 
     private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart, final Class<? extends Enum<?>> enumClass) {
         Enum<?>[] constants = enumClass.getEnumConstants();

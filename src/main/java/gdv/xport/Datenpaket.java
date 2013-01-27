@@ -30,26 +30,12 @@ import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzNummer;
 import gdv.xport.util.URLReader;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PushbackReader;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.Writer;
+import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -63,7 +49,7 @@ import org.apache.commons.logging.LogFactory;
  * @author oliver
  * @since 23.10.2009
  * @version $Revision$
- * 
+ *
  */
 public final class Datenpaket {
 
@@ -74,7 +60,7 @@ public final class Datenpaket {
 
     /**
      * Wenn man den Default-Konstruktor verwendet, sollte man vorher die VU-Nummer konfiguriert haben.
-     * 
+     *
      * @see Config#getVUNummer()
      */
     public Datenpaket() {
@@ -83,7 +69,7 @@ public final class Datenpaket {
 
     /**
      * Falls die VU-Nummer noch nicht konfiguriert ist, kann man zu diesem Konstruktor greifen.
-     * 
+     *
      * @since 0.3
      * @param vuNummer
      *            die Nummer des Versicherungsunternehmens (VU)
@@ -99,7 +85,7 @@ public final class Datenpaket {
 
     /**
      * Um die VU-Nummer setzen zu koennen.
-     * 
+     *
      * @param vuNummer
      *            VU-Nummer (max. 5-stellig)
      */
@@ -112,7 +98,7 @@ public final class Datenpaket {
 
     /**
      * Dazu verwenden wir den Vorsatz, um die VU-Nummer zu bestimmen.
-     * 
+     *
      * @since 0.3
      * @return VU-Nummer aus dem Vorsatz
      */
@@ -175,7 +161,7 @@ public final class Datenpaket {
 
     /**
      * Falls wir einen Stream haben, koennen wir diese Methode benutzen.
-     * 
+     *
      * @since 0.3
      * @param ostream
      *            z.B. System.out
@@ -255,7 +241,7 @@ public final class Datenpaket {
     /**
      * Der hier verwendete PushbackReader wird benoetigt, damit die gelesene Satzart und Sparte wieder zurueckgestellt
      * werden kann.
-     * 
+     *
      * @param reader
      *            PushbackReader mit einem Puffer von mind. 14 Zeichen
      * @throws IOException
@@ -280,7 +266,8 @@ public final class Datenpaket {
                     teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
                 }
             }
-            Datensatz satz = SatzFactory.getDatensatz(satzart, sparte, wagnisart, teildatensatzNummer);
+			Datensatz satz = SatzFactory.getDatensatz(new SatzNummer(satzart, sparte, wagnisart,
+			        teildatensatzNummer));
             satz.importFrom(reader);
             this.add(satz);
         }
@@ -289,7 +276,7 @@ public final class Datenpaket {
 
     /**
      * Importieren einer Datei.
-     * 
+     *
      * @since 0.2
      * @param file
      *            Import-Datei
@@ -403,7 +390,7 @@ public final class Datenpaket {
 
     /**
      * Aus Performance-Gruenden wird nicht auf die validate-Methode zurueckgegriffen (die dauert zu lang).
-     * 
+     *
      * @return true/false
      */
     public boolean isValid() {
@@ -434,7 +421,7 @@ public final class Datenpaket {
 
     /**
      * Validiert die einzelnen Saetze (inkl. Vorsatz und Nachsatz).
-     * 
+     *
      * @return the list< constraint violation>
      */
     public List<ConstraintViolation> validate() {
@@ -465,7 +452,7 @@ public final class Datenpaket {
      * Versicherungsscheinnummer fuer den gleichen Satz ein zweites Mal auf, muss die Folgenummer entsprechend erhoeht
      * werden. Es sei denn, es handelt sich doch noch um den gleichen Vertrag. Aber die Nummern duerfen keine Spruenge
      * machen - dies wird hier kontrolliert.
-     * 
+     *
      * @since 0.3
      * @return eine Liste, die die verletzten Folgenummern enthaelt
      */
@@ -497,7 +484,7 @@ public final class Datenpaket {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override

@@ -470,14 +470,12 @@ public final class SatzFactory {
         return new SatzX(satzart, enumClass);
     }
 
-    private static Datensatz generateDatensatz(final int satzart, final int sparte, final int wagnisart,
-            final int teildatensatzNummer) {
-        SatzNummer key = new SatzNummer(satzart, sparte, wagnisart, teildatensatzNummer);
-        Class<? extends Enum<?>> enumClass = registeredEnumClasses.get(key);
+    private static Datensatz generateDatensatz(final SatzNummer satzNr) {
+        Class<? extends Enum<?>> enumClass = registeredEnumClasses.get(satzNr);
         if (enumClass == null) {
-            return useFallback(satzart, sparte);
+            return useFallback(satzNr);
         }
-        return new SatzX(satzart, sparte, wagnisart, teildatensatzNummer, enumClass);
+		return new SatzX(satzNr, enumClass);
     }
 
     /**
@@ -550,46 +548,6 @@ public final class SatzFactory {
     }
 
     /**
-     * Gets the datensatz.
-     *
-     * @param satzart
-     *            z.B. 210
-     * @param sparte
-     *            z.B. 70 (Rechtsschutz)
-     * @param wagnisart
-     *            z.B. 1 (Kapitallebensversicherung)
-     * @param teildatensatzNummer
-     *            6 = Bezugsrechte, 7 = Auszahlungen, 8 = zukünftige Summenänderungen, 9 = Wertungssummen
-     * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart', 'teildatensatzNummer'
-     *
-     * @since 0.9
-     */
-    public static Datensatz getDatensatz(final int satzart, final int sparte, final int wagnisart,
-            final int teildatensatzNummer) {
-        SatzNummer key = new SatzNummer(satzart, sparte, wagnisart, teildatensatzNummer);
-        Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(key);
-        if (clazz == null) {
-            return generateDatensatz(satzart, sparte, wagnisart, teildatensatzNummer);
-        }
-        try {
-            Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);
-            return ctor.newInstance(satzart, sparte);
-        } catch (NoSuchMethodException exWithTwoParams) {
-            log.info("constructor " + clazz + "(int, int) not found (" + exWithTwoParams + ")");
-            return getDatensatz(sparte, clazz);
-        } catch (InstantiationException exWithTwoParams) {
-            log.info(clazz + "(int, int) can't be instantiated (" + exWithTwoParams + ")");
-            return getDatensatz(sparte, clazz);
-        } catch (IllegalAccessException exWithTwoParams) {
-            log.info(clazz + "(int, int) can't be accessed (" + exWithTwoParams + ")");
-            return getDatensatz(sparte, clazz);
-        } catch (InvocationTargetException exWithTwoParams) {
-            log.info("error in calling " + clazz + "(int, int): " + exWithTwoParams);
-            return getDatensatz(sparte, clazz);
-        }
-    }
-
-    /**
      * Liefert den gewuenschten Datensatz. Mit der uebergebenen Satznummer wird der Datensatz spezifizert, die folgendes
      * enthaelt:
      * <ul>
@@ -604,7 +562,26 @@ public final class SatzFactory {
      * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart', 'teildatensatzNummer'
      */
     public static Datensatz getDatensatz(final SatzNummer satzNr) {
-        return getDatensatz(satzNr.getSatzart(), satzNr.getSparte(), satzNr.getWagnisart(), satzNr.getLfdNummer());
+        Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(satzNr);
+        if (clazz == null) {
+            return generateDatensatz(satzNr);
+        }
+        try {
+            Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);
+            return ctor.newInstance(satzNr.getSatzart(), satzNr.getSparte());
+        } catch (NoSuchMethodException exWithTwoParams) {
+            log.info("constructor " + clazz + "(int, int) not found (" + exWithTwoParams + ")");
+            return getDatensatz(satzNr.getSatzart(), clazz);
+        } catch (InstantiationException exWithTwoParams) {
+            log.info(clazz + "(int, int) can't be instantiated (" + exWithTwoParams + ")");
+            return getDatensatz(satzNr.getSatzart(), clazz);
+        } catch (IllegalAccessException exWithTwoParams) {
+            log.info(clazz + "(int, int) can't be accessed (" + exWithTwoParams + ")");
+            return getDatensatz(satzNr.getSatzart(), clazz);
+        } catch (InvocationTargetException exWithTwoParams) {
+            log.info("error in calling " + clazz + "(int, int): " + exWithTwoParams);
+            return getDatensatz(satzNr.getSatzart(), clazz);
+        }
     }
 
     /**
@@ -640,22 +617,28 @@ public final class SatzFactory {
     }
 
     /**
-     * Use fallback.
-     *
-     * @param satzart
-     *            the satzart
-     * @param sparte
-     *            the sparte
-     * @return the datensatz
-     */
-    private static Datensatz useFallback(final int satzart, final int sparte) {
+	 * Als Fallback wird nur der Datensatz fuer die entsprechende Satzart
+	 * zurueckgeben. Falls dieser nicht exisitert, wird ein (allgemeiner)
+	 * Datensatz mit Satzart und Sparte als Parameter erzeugt.
+	 * <p>
+	 * TODO: Besser waere es, zuerst den Datensatz zu suchen, der am besten
+	 * passt. D.h. auch die anderen Werte der uebergebenen SatzNummer wie
+	 * Sparte oder Wagnisart sollten dabei beruecksichtigt werden.
+	 * </p>
+	 *
+	 * @param satzNr die SatzNummer
+	 * @return der erzeugte Datensatz
+	 */
+    private static Datensatz useFallback(final SatzNummer satzNr) {
         try {
-            Datensatz fallback = (Datensatz) getSatz(satzart);
-            fallback.setSparte(sparte);
+            Datensatz fallback = (Datensatz) getSatz(satzNr.getSatzart());
+            if (satzNr.hasSparte()) {
+            	fallback.setSparte(satzNr.getSparte());
+            }
             return fallback;
         } catch (NotRegisteredException re) {
-            log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzart);
-            Datensatz satz = new Datensatz(satzart, sparte);
+            log.warn("reduced functionality for (unknown or unsupported) Satzart " + satzNr);
+            Datensatz satz = new Datensatz(satzNr.getSatzart(), satzNr.getSparte());
             satz.addFiller();
             return satz;
         }
