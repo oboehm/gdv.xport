@@ -50,6 +50,7 @@
       <item name="Das Hauptprogramm"        href="manual/main.html" />
       <item name="Export"                   href="manual/export.html" />
       <item name="Erweiterungen"            href="manual/extend.html" />
+      <item name="JavaDoc API"              href="apidocs/index.html" />
     </menu>
     <menu name="Folien">
       <item name="Kurz-&#220;bersicht"      href="slides/slides.html" />

@@ -21,7 +21,10 @@ package gdv.xport.feld;
 /**
  * Diese Klasse enthaelt nur String-Konstanten: die Bezeichner der einzelnen Felder. Die Konstanten sind alphabetisch
  * geordnet.
- * 
+ * <p>
+ * TODO: bitte Felder alphabetisch ordnen bzw. eintragen! (oboehm, 26-Jan-2013)
+ * </p>
+ *
  * @author oliver
  * @since 15.10.2009
  */
@@ -63,6 +66,7 @@ public final class Bezeichner {
     public static final String ART_DER_STEUERLICHEN_FOERDERUNG = "Art der steuerlichen Foerderung";
     public static final String ART_DER_ZULASSUNG_BEIM_VORBESITZER = "Art der Zulassung beim Vorbesitzer";
     public static final String ART_DES_ABSENDERS = "Art des Absenders";
+    public static final String ART_DES_ADRESSATEN = "Art des Adressaten";
     public static final String ART_DES_AMTLICHEN_KENNZEICHENS = "Art des amtlichen Kennzeichens";
     public static final String ART_DES_DRITTRECHTS = "Art des Drittrechts";
     public static final String AUFBAUART = "Aufbauart";
@@ -107,6 +111,7 @@ public final class Bezeichner {
     public static final String BERUF_TEXT = "Beruf-Text";
     public static final String BESONDERER_VERWENDUNGSZWECK = "besonderer Verwendungszweck";
     public static final String BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO = "Besondere Vereinbarung zum Fluggastrisiko";
+    public static final String BESTANDSFUEHRENDE_GESCHAEFTSSTELLE = "Bestandsfuehrende Geschaeftsstelle";
     public static final String BESTANDSPFLEGEPROVISION = "Bestandspflegeprovision";
     public static final String BETRIEBLICHE_ALTERSVORSORGE = "Betriebliche Altersvorsorge";
     public static final String BEZEICHNUNG_PERSONENGRUPPE = "Bezeichnung Personengruppe";
@@ -337,6 +342,8 @@ public final class Bezeichner {
     public static final String PRODUKTFORM_GUELTIG_AB = "Produktform gueltig ab";
     public static final String PRODUKTKENNUNG = "Produktkennung";
     public static final String PRODUKTNAME = "Produktname";
+    public static final String PRODUKTSPEZIFISCHE_ANTRAGSDATEN = "Produktspezifische Antragsdaten";
+    public static final String PRODUKTSPEZIFISCHE_STAMMDATEN = "Produktspezifische Stammdaten";
     public static final String PROVISION = "Provision";
     public static final String PROZENTSATZ_PROGRESSIVE_INVALIDITAET = "Prozentsatz progressive Invaliditaet";
     public static final String RATENZAHLUNGSZUSCHLAG_IN_PROZENT = "Ratenzahlungszuschlag in %";
@@ -538,6 +545,7 @@ public final class Bezeichner {
     public static final String VORZUGSSTEUERBERECHTIGUNG = "Vorsteuerabszugsberechtigung Ja/Nein";
     public static final String VP_PERSONENNUMMER_VERMITTLER = "VP-Personnenummer des Vermittlers";
     public static final String VP_PERSONENNUMMER_VERSICHERER = "VP-Personnenummer des Versicherers";
+    public static final String VU_ABRECHNUNGSSTELLE = "VU-Abrechnungsstelle";
     public static final String VU_NUMMER = "VU-Nummer";
     public static final String WAEHRUNGSSCHLUESSEL = "Waehrungsschluessel";
     public static final String WAEHRUNG_DOKUMENTE_FUER_VN = "Waehrung der Dokumente fuer VN";

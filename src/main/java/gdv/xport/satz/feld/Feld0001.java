@@ -27,8 +27,8 @@ import gdv.xport.satz.feld.common.VorsatzFeld1bis6;
 
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 100
- * (Adressteil).
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 1
+ * (Vorsatz).
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (08.03.2011)
