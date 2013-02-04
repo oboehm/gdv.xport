@@ -510,9 +510,11 @@ public abstract class Satz {
 			if ((c256 == '\n') || (c256 == '\r')) {
 				satzlength = 257;
 			}
-			char c257 = s.charAt(257);
-			if ((c257 == '\n') || (c257 == '\r')) {
-				satzlength = 258;
+			if (s.length() > satzlength) {
+				char c257 = s.charAt(257);
+				if ((c257 == '\n') || (c257 == '\r')) {
+					satzlength = 258;
+				}
 			}
 		} catch (StringIndexOutOfBoundsException e) {
 			log.trace("end of string \"" + s + "\" reached", e);
