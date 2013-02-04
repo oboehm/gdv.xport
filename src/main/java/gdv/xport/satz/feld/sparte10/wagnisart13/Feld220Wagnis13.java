@@ -120,7 +120,7 @@ public enum Feld220Wagnis13 {
      * zum Ablauf (inkl. Abrufphase)<br/>
      * (9,0 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 9, byteAdresse = 111)
+    @FeldInfo(teildatensatz = 1, nr = 18, type = Betrag.class, anzahlBytes = 9, byteAdresse = 111)
     TODESFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF,
 
     /**

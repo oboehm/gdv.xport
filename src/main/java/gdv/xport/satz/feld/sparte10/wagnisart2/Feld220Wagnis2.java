@@ -296,7 +296,7 @@ public enum Feld220Wagnis2 {
      * Zahlung der Witwen-/Witwerrente bis<br/>
      * 1 = lebenslänglich, 2 = Wiederheirat
      */
-    @FeldInfo(teildatensatz = 1, nr = 42, type = Zeichen.class, anzahlBytes = 2, byteAdresse = 236)
+    @FeldInfo(teildatensatz = 1, nr = 42, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 236)
     ZAHLUNG_DER_WITWEN_WITWERRENTE_BIS,
 
     /**
@@ -408,7 +408,7 @@ public enum Feld220Wagnis2 {
      * Einzel- und / oder Umsatzanmeldungen muss das Datenfeld "Zahlungsweise" in der Satzart 0400 blank sein.) siehe
      * Anlage 14
      */
-    @FeldInfo(teildatensatz = 2, nr = 15, type = Zeichen.class, anzahlBytes = 12, byteAdresse = 97)
+    @FeldInfo(teildatensatz = 2, nr = 15, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 97)
     RENTENZAHLWEISE,
 
     /**
