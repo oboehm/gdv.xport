@@ -251,7 +251,7 @@ public final class Datenpaket {
 			int sparte = Datensatz.readSparte(reader);
 			WagnisartLeben wagnisart = WagnisartLeben.NULL;
 			TeildatensatzNummer teildatensatzNummer = TeildatensatzNummer.NULL;
-			if (satzart == 220 && sparte == 10) {
+			if (sparte == 10) {
 				wagnisart = Datensatz.readWagnisart(reader);
 				if (wagnisart != WagnisartLeben.NULL) {
 					// wagnisart 0 hat immer ein Leerzeichen als

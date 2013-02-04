@@ -407,7 +407,11 @@ public class Datensatz extends Satz {
 		reader.unread(cbuf);
 		String wagnisart = new String(cbuf).substring(59, 60);
 
-		return WagnisartLeben.isIn(Integer.parseInt(wagnisart));
+		if (wagnisart.trim().length() == 0) {
+			return WagnisartLeben.NULL;
+		} else {
+			return WagnisartLeben.isIn(Integer.parseInt(wagnisart));
+		}
 	}
 
 	/**
