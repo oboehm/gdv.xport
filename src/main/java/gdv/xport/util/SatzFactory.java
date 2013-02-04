@@ -89,64 +89,64 @@ public final class SatzFactory {
 		registerEnum(Feld220Wagnis13.class, new SatzNummer(220, 10, 1));
 		registerEnum(Feld220Wagnis13.class, new SatzNummer(220, 10, 3));
 		registerEnum(Feld220Wagnis13Auszahlungen.class, new SatzNummer(220, 10, 1,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getNummer()));
+		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
 		registerEnum(Feld220Wagnis13Auszahlungen.class, new SatzNummer(220, 10, 3,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getNummer()));
+		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
 		registerEnum(Feld220Wagnis13Bezugsrechte.class, new SatzNummer(220, 10, 1,
-		        TeildatensatzNummer.BEZUGSRECHTE.getNummer()));
+		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
 		registerEnum(Feld220Wagnis13Bezugsrechte.class, new SatzNummer(220, 10, 3,
-		        TeildatensatzNummer.BEZUGSRECHTE.getNummer()));
+		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
 		registerEnum(Feld220Wagnis13ZukSummenaenderungen.class, new SatzNummer(220, 10, 1,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 		registerEnum(Feld220Wagnis13ZukSummenaenderungen.class, new SatzNummer(220, 10, 3,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 		registerEnum(Feld220Wagnis13Wertungssummen.class, new SatzNummer(220, 10, 1,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getNummer()));
+		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
 		registerEnum(Feld220Wagnis13Wertungssummen.class, new SatzNummer(220, 10, 3,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getNummer()));
+		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
 
 		registerEnum(Feld221Wagnis13.class, new SatzNummer(221, 10, 1));
 		registerEnum(Feld221Wagnis13.class, new SatzNummer(221, 10, 3));
 		registerEnum(Feld221Wagnis13Auszahlungen.class, new SatzNummer(221, 10, 1,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getNummer()));
+		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
 		registerEnum(Feld221Wagnis13Auszahlungen.class, new SatzNummer(221, 10, 3,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getNummer()));
+		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
 		registerEnum(Feld221Wagnis13ZukSummenaenderungen.class, new SatzNummer(221, 10, 1,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 		registerEnum(Feld221Wagnis13ZukSummenaenderungen.class, new SatzNummer(221, 10, 3,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         // Sparte 10 - Leben - Wagnisart 2
 		registerEnum(Feld220Wagnis2.class, new SatzNummer(220, 10, 2));
 		registerEnum(Feld220Wagnis2Bezugsrechte.class, new SatzNummer(220, 10, 2,
-		        TeildatensatzNummer.BEZUGSRECHTE.getNummer()));
+		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
 		registerEnum(Feld220Wagnis2Auszahlungen.class, new SatzNummer(220, 10, 2,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getNummer()));
+		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
 		registerEnum(Feld220Wagnis2Wertungssummen.class, new SatzNummer(220, 10, 2,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getNummer()));
+		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
 		registerEnum(Feld220Wagnis2ZukSummenaenderungen.class, new SatzNummer(220, 10, 2,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         registerEnum(Feld221Wagnis2.class, new SatzNummer(221, 10, 2));
-        registerEnum(Feld221Wagnis2Auszahlungen.class, new SatzNummer(221, 10, 2, TeildatensatzNummer.AUSZAHLUNGEN.getNummer()));
+        registerEnum(Feld221Wagnis2Auszahlungen.class, new SatzNummer(221, 10, 2, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
         registerEnum(Feld221Wagnis2ZukSummenaenderungen.class, new SatzNummer(221, 10, 2,
-                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         // Sparte 10 - Leben - Wagnisart 4 & 8
 		registerEnum(Feld220Wagnis48.class, new SatzNummer(220, 10, 4));
 		registerEnum(Feld220Wagnis48.class, new SatzNummer(220, 10, 8));
 		registerEnum(Feld220Wagnis48Bezugsrechte.class, new SatzNummer(220, 10, 4,
-		        TeildatensatzNummer.BEZUGSRECHTE.getNummer()));
+		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
 		registerEnum(Feld220Wagnis48Bezugsrechte.class, new SatzNummer(220, 10, 8,
-		        TeildatensatzNummer.BEZUGSRECHTE.getNummer()));
+		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
 		registerEnum(Feld220Wagnis48Wertungssummen.class, new SatzNummer(220, 10, 4,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getNummer()));
+		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
 		registerEnum(Feld220Wagnis48Wertungssummen.class, new SatzNummer(220, 10, 8,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getNummer()));
+		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
 		registerEnum(Feld220Wagnis48ZukSummenaenderungen.class, new SatzNummer(220, 10, 4,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 		registerEnum(Feld220Wagnis48ZukSummenaenderungen.class, new SatzNummer(220, 10, 8,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         registerEnum(Feld221Wagnis48.class, new SatzNummer(221, 10, 4));
         registerEnum(Feld221Wagnis48.class, new SatzNummer(221, 10, 8));
@@ -154,54 +154,54 @@ public final class SatzFactory {
         // Sparte 10 - Leben - Wagnisart 5
 		registerEnum(Feld220Wagnis5.class, new SatzNummer(220, 10, 5));
 		registerEnum(Feld220Wagnis5Bezugsrechte.class, new SatzNummer(220, 10, 5,
-		        TeildatensatzNummer.BEZUGSRECHTE.getNummer()));
+		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
 		registerEnum(Feld220Wagnis5Wertungssummen.class, new SatzNummer(220, 10, 5,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getNummer()));
+		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
 		registerEnum(Feld220Wagnis5ZukSummenaenderungen.class, new SatzNummer(220, 10, 5,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
 		registerEnum(Feld221Wagnis5.class, new SatzNummer(221, 10, 5));
 		registerEnum(Feld221Wagnis5ZukSummenaenderungen.class, new SatzNummer(221, 10, 5,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
 		// Sparte 10 - Leben - Wagnisart 6
 		registerEnum(Feld220Wagnis6.class, new SatzNummer(220, 10, 6));
 		registerEnum(Feld220Wagnis6Bezugsrechte.class, new SatzNummer(220, 10, 6,
-		        TeildatensatzNummer.BEZUGSRECHTE.getNummer()));
+		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
 		registerEnum(Feld220Wagnis6Wertungssummen.class, new SatzNummer(220, 10, 6,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getNummer()));
+		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
 		registerEnum(Feld220Wagnis6ZukSummenaenderungen.class, new SatzNummer(220, 10, 6,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
 		registerEnum(Feld221Wagnis6.class, new SatzNummer(221, 10, 6));
 		registerEnum(Feld221Wagnis6ZukSummenaenderungen.class, new SatzNummer(221, 10, 6,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         // Sparte 10 - Leben - Wagnisart 7
 		registerEnum(Feld220Wagnis7.class, new SatzNummer(220, 10, 7));
 		registerEnum(Feld220Wagnis7Bezugsrechte.class, new SatzNummer(220, 10, 7,
-		        TeildatensatzNummer.BEZUGSRECHTE.getNummer()));
+		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
 		registerEnum(Feld220Wagnis7Wertungssummen.class, new SatzNummer(220, 10, 7,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getNummer()));
+		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
 		registerEnum(Feld220Wagnis7ZukSummenaenderungen.class, new SatzNummer(220, 10, 7,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         registerEnum(Feld221Wagnis7.class, new SatzNummer(221, 10, 7));
         registerEnum(Feld221Wagnis7ZukSummenaenderungen.class, new SatzNummer(221, 10, 7,
-                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         registerEnum(Feld230.class, new SatzNummer(230, 10, 7));
 
         // Sparte 10 - Leben - Wagnisart 9
 		registerEnum(Feld220Wagnis9.class, new SatzNummer(220, 10, 9));
 		registerEnum(Feld220Wagnis9Bezugsrechte.class, new SatzNummer(220, 10, 9,
-		        TeildatensatzNummer.BEZUGSRECHTE.getNummer()));
+		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
 		registerEnum(Feld220Wagnis9Auszahlungen.class, new SatzNummer(220, 10, 9,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getNummer()));
+		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
 		registerEnum(Feld220Wagnis9Wertungssummen.class, new SatzNummer(220, 10, 9,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getNummer()));
+		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
 		registerEnum(Feld220Wagnis9ZukSummenaenderungen.class, new SatzNummer(220, 10, 9,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getNummer()));
+		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         registerEnum(Feld230.class, new SatzNummer(230, 10, 9));
 
