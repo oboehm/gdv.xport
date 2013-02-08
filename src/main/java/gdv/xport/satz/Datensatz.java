@@ -410,7 +410,14 @@ public class Datensatz extends Satz {
 		if (wagnisart.trim().length() == 0) {
 			return WagnisartLeben.NULL;
 		} else {
-			return WagnisartLeben.isIn(Integer.parseInt(wagnisart));
+			try {
+				return WagnisartLeben.isIn(Integer.parseInt(wagnisart));
+			} catch (NumberFormatException e) {
+				log.warn(
+				        "Not allowed value for wagnisart found. Type Number is required but was \""
+				                + wagnisart + "\".", e);
+				return WagnisartLeben.NULL;
+			}
 		}
 	}
 
@@ -451,8 +458,18 @@ public class Datensatz extends Satz {
 		}
 		reader.unread(cbuf);
 		String teildatenSatz = new String(cbuf).substring(cbuf.length - 1, cbuf.length);
-
-		return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
+		if (teildatenSatz.trim().length() == 0) {
+			return TeildatensatzNummer.NULL;
+		} else {
+			try {
+				return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
+			} catch (NumberFormatException e) {
+				log.warn(
+				        "Not allowed value for teildatensatzNummer found. Type Number is required but was \""
+				                + teildatenSatz + "\".", e);
+				return TeildatensatzNummer.NULL;
+			}
+		}
 	}
 
 }

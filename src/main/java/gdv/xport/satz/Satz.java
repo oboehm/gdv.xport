@@ -556,7 +556,7 @@ public abstract class Satz {
 		for (int i = 0; i < teildatensatz.length; i++) {
 			if (!matchesNextTeildatensatz(reader)) {
 				log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
-				        + ", but Satzart or Sparte has changed");
+				        + ", but Satzart or Sparte or Wagnisart or TeildatensatzNummer has changed");
 				break;
 			}
 			importFrom(reader, cbuf, i * 257);
