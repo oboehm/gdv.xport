@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012 by Oli B.
+ * Copyright (c) 2012, 2013 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,13 +19,13 @@
 package gdv.xport.satz.model;
 
 import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+import org.junit.runners.*;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * Die Klasse SatzTests ist eine Test-Suite fuer JUnit 4, mit der alle
+ * Die Klasse ModelTests ist eine Test-Suite fuer JUnit 4, mit der alle
  * JUnit-Tests in diesem Paket parallel getestet werden.
- * 
+ *
  * @author oliver (boehm@javatux.de)
  * @since 0.7 (11.07.2012)
  */

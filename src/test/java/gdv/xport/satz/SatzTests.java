@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012 by Oli B.
+ * Copyright (c) 2012, 2013 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 
 package gdv.xport.satz;
 
+import gdv.xport.satz.feld.sparte30.Sparte30Tests;
 import gdv.xport.satz.model.ModelTests;
 
 import org.junit.runner.RunWith;
@@ -28,14 +29,15 @@ import patterntesting.concurrent.junit.ParallelSuite;
 /**
  * Die Klasse SatzTests ist eine Test-Suite fuer JUnit 4, mit der alle
  * JUnit-Tests in diesem Paket parallel getestet werden.
- * 
+ *
  * @author oliver (boehm@javatux.de)
  * @since 0.7 (10.07.2012)
  */
 @RunWith(ParallelSuite.class)
-@SuiteClasses({ ModelTests.class, AdressteilTest.class, AllgemeinerVertragsteilTest.class, DatensatzTest.class,
-        Erweiterungssatz211Test.class, Erweiterungssatz221Test.class, NachsatzTest.class, SatzTest.class,
-        TeildatensatzTest.class, VertragsspezifischerTeilTest.class, VorsatzTest.class })
+@SuiteClasses({ Sparte30Tests.class, ModelTests.class, AdressteilTest.class,
+        AllgemeinerVertragsteilTest.class, DatensatzTest.class, Erweiterungssatz211Test.class,
+        Erweiterungssatz221Test.class, NachsatzTest.class, SatzTest.class, TeildatensatzTest.class,
+        VertragsspezifischerTeilTest.class, VorsatzTest.class })
 public class SatzTests {
 
 }

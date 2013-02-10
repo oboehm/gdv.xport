@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012 by Oli B.
+ * Copyright (c) 2011-2013 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,17 +22,15 @@ import gdv.xport.satz.feld.FeldX;
 
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 /**
- * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die nach dem SOP-Muster aufgebaut sind und eine
- * Sparte besitzen.
- * 
+ * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die nach
+ * dem SOP-Muster aufgebaut sind und eine Sparte besitzen.
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (06.04.2011)
  */
-@Deprecated
 public abstract class SpartensatzX extends SatzX {
 
     private static final Log log = LogFactory.getLog(SpartensatzX.class);
@@ -42,7 +40,7 @@ public abstract class SpartensatzX extends SatzX {
 
     /**
      * Instantiates a new spartensatz x.
-     * 
+     *
      * @param satzart
      *            the satzart
      * @param felder
@@ -54,7 +52,7 @@ public abstract class SpartensatzX extends SatzX {
 
     /**
      * Instantiates a new spartensatz x.
-     * 
+     *
      * @param satzart
      *            the satzart
      * @param sparte
@@ -67,7 +65,7 @@ public abstract class SpartensatzX extends SatzX {
 
     /**
      * Instantiates a new spartensatz x.
-     * 
+     *
      * @param satzart
      *            the satzart
      * @param sparte
@@ -81,14 +79,14 @@ public abstract class SpartensatzX extends SatzX {
 
     /**
      * Liefert die Mapping-Tabelle der abgeleiteten Klasse.
-     * 
+     *
      * @return the mapping
      */
     protected abstract Map<Integer, Enum<?>[]> getMapping();
 
     /**
      * Liefert die entsprechende Enum-Felder zur angeforderten Spalte zurueck.
-     * 
+     *
      * @param sparte
      *            Sparte
      * @return the Enum-Felder
@@ -107,7 +105,7 @@ public abstract class SpartensatzX extends SatzX {
 
     /**
      * Abhaengig von der Sparte muessen wir hier noch die verschiedenen Teildatensaetze aufsetzen.
-     * 
+     *
      * @param x
      *            Sparte (z.B. 30)
      * @see gdv.xport.satz.Datensatz#setSparte(int)

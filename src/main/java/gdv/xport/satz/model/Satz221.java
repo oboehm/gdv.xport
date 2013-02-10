@@ -18,16 +18,17 @@
 
 package gdv.xport.satz.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
- * Diese Klasse repraesentiert die Satzart 221. Es handelt es sich dabei um eine alternative Implementierung der
- * {@link gdv.xport.satz.Erweiterungssatz221}-Klasse, die nach dem Soplet- Ansatz (s. <a
+ * Diese Klasse repraesentiert die Satzart 221. Es handelt es sich dabei um eine
+ * alternative Implementierung der {@link gdv.xport.satz.Erweiterungssatz221}
+ * -Klasse, die nach dem Soplet- Ansatz (s. <a
  * href="http://www.soplets.org/">soplets.org</a>) implementiert wurde.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (14.04.2011)
+ * @deprecated wird nicht mehr benoetigt und mit v1.0 entsorgt
  */
 @Deprecated
 public class Satz221 extends SpartensatzX {
@@ -52,7 +53,7 @@ public class Satz221 extends SpartensatzX {
 
     /**
      * Legt ein neues Satz221-Objekt fuer die uebergebene Sparte an.
-     * 
+     *
      * @param sparte
      *            Sparte (z.B. 10)
      */
@@ -62,10 +63,11 @@ public class Satz221 extends SpartensatzX {
 
     /**
      * Liefert die Mapping-Tabelle zu Sparte - Feldxxx zurueck.
-     * 
+     *
      * @return Mapping-Tabelle
      * @see gdv.xport.satz.model.SpartensatzX#getMapping()
      */
+    @Override
     protected Map<Integer, Enum<?>[]> getMapping() {
         return mapping;
     }

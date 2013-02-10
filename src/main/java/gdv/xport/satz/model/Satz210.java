@@ -18,16 +18,18 @@
 
 package gdv.xport.satz.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
- * Diese Klasse repraesentiert die Satzart 210. Es handelt es sich dabei um eine alternative Implementierung der
- * {@link gdv.xport.satz.VertragsspezifischerTeil}-Klasse, die nach dem Soplet- Ansatz (s. <a
- * href="http://www.soplets.org/">soplets.org</a>) implementiert wurde.
- * 
+ * Diese Klasse repraesentiert die Satzart 210. Es handelt es sich dabei um eine
+ * alternative Implementierung der
+ * {@link gdv.xport.satz.VertragsspezifischerTeil}-Klasse, die nach dem Soplet-
+ * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
+ * wurde.
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (26.03.2011)
+ * @deprecated wird nicht mehr benoetigt und mit v1.0 entsorgt
  */
 @Deprecated
 public class Satz210 extends SpartensatzX {
@@ -51,7 +53,7 @@ public class Satz210 extends SpartensatzX {
 
     /**
      * Legt ein neues Satz210-Objekt fuer die uebergebene Sparte an.
-     * 
+     *
      * @param sparte
      *            Sparte (z.B. 10)
      */
@@ -61,9 +63,10 @@ public class Satz210 extends SpartensatzX {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see gdv.xport.satz.model.SpartensatzX#getMapping()
      */
+    @Override
     protected Map<Integer, Enum<?>[]> getMapping() {
         return mapping;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2012 by Oli B.
+ * Copyright (c) 2009 - 2013 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,8 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.feld.Feld100;
-import gdv.xport.satz.feld.Feld200;
-import gdv.xport.satz.feld.Feld9999;
+import gdv.xport.satz.*;
+import gdv.xport.satz.feld.*;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte10.wagnisart13.*;
@@ -37,16 +33,12 @@ import gdv.xport.satz.feld.sparte10.wagnisart9.*;
 import gdv.xport.satz.model.*;
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.*;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
-// TODO: Auto-generated Javadoc
 /**
  * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import kommt, in den entsprechende Satz
  * wandeln zu koennen.
@@ -73,10 +65,8 @@ public final class SatzFactory {
         register(Vorsatz.class, 1);
         registerEnum(Feld100.class, 100);
         registerEnum(Feld200.class, 200);
-        register(Satz210.class, 210);
-        register(Satz211.class, 211);
+        // Satz220 wird wg. Sonderbehandlung von Sparte 30, Teildatensatz 9 gebraucht
         register(Satz220.class, 220);
-        register(Satz221.class, 221);
         registerEnum(Feld9999.class, 9999);
 
         // Sparte 10 - Leben
@@ -206,9 +196,9 @@ public final class SatzFactory {
         registerEnum(Feld230.class, new SatzNummer(230, 10, 9));
 
         // Sparte 30 - ?????
+        // ACHTUNG: statt sparte30.Feld220.class Feld220.class registrieren
+        // (wegen Sonderbehandlung von Teildatensatz 9)
         registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
-        // temporaer auskommentiert, da sonst DatenpaketTest fehlschlaegt (ob, 10-Feb-2013)
-//        registerEnum(gdv.xport.satz.feld.sparte30.Feld220.class, 220, 30);
         registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30);
         // Sparte 50 - ?????
         registerEnum(gdv.xport.satz.feld.sparte50.Feld210.class, 210, 50);

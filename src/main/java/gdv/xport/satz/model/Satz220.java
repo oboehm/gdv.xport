@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012 by aosd.de
+ * Copyright (c) 2011-2013 by aosd.de
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,19 +23,24 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.MetaFeldInfo;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
- * Diese Klasse repraesentiert die Satzart 220. Es handelt es sich dabei um eine alternative Implementierung der
- * SpartenspezifischerTeil-Klasse, die nach dem Soplet- Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>)
+ * Diese Klasse repraesentiert die Satzart 220. Es handelt es sich dabei um eine
+ * alternative Implementierung der SpartenspezifischerTeil-Klasse, die nach dem
+ * Soplet- Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>)
  * implementiert wurde.
- * 
+ * <p>
+ * <b>HINWEIS</b>: Bitte nicht {@link gdv.xport.satz.feld.sparte30.Feld220}
+ * ueber {@link gdv.xport.util.SatzFactory#registerEnum(Class, int, int)} fuer
+ * Satz 220, Sparte 30 registrieren, sondern diese Klasse hier. Sie behandelt
+ * den Import fuer Teildatensatz 9 richtig, der vom allgemeinen Schema etwas
+ * abweicht.
+ * </p>
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (08.04.2011)
  */
-@Deprecated
 public class Satz220 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
@@ -58,7 +63,7 @@ public class Satz220 extends SpartensatzX {
 
     /**
      * Legt ein neues Satz220-Objekt fuer die uebergebene Sparte an.
-     * 
+     *
      * @param sparte
      *            Sparte (z.B. 10)
      */
@@ -68,7 +73,7 @@ public class Satz220 extends SpartensatzX {
 
     /**
      * Liefert die Mapping-Tabelle zu Sparte - Feldxxx zurueck.
-     * 
+     *
      * @return Mapping-Tabelle
      * @see gdv.xport.satz.model.SpartensatzX#getMapping()
      */
@@ -78,14 +83,13 @@ public class Satz220 extends SpartensatzX {
     }
 
     /**
-     * Sparte 30 hat optionale Teildatensaetze (Teildatensatz 9). Den muessen wir gesondert behandeln.
-     * 
-     * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
-     * @param input
-     *            Inupt
-     * @throws IOException
-     *             falls der String zu kurz ist
-     */
+	 * Sparte 30 hat optionale Teildatensaetze (Teildatensatz 9). Den muessen
+	 * wir gesondert behandeln.
+	 *
+	 * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
+	 * @param input Inupt
+	 * @throws IOException falls der String zu kurz ist
+	 */
     @Override
     public void importFrom(final String input) throws IOException {
         switch (this.getSparte()) { // NOPMD by oliver on 20.11.10 18:54

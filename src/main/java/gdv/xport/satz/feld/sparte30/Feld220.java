@@ -1,29 +1,41 @@
 /*
- * Copyright (c) 2011, 2012 by Oli B. Licensed under the Apache License, Version
- * 2.0 (the "License"); you may not use this file except in compliance with the
- * License. You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law
- * or agreed to in writing, software distributed under the License is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express orimplied. See the License for the specific language
- * governing permissions and limitations under the License. (c)reated 07.04.11
- * by oliver
+ * Copyright (c) 2011-2013 by Oli B.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express orimplied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * (c)reated 07.04.11 by oliver
  */
 
 package gdv.xport.satz.feld.sparte30;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 30.
- * 
+ * <p>
+ * <b>HINWEIS</b>: Bitte nicht diese Enum-Klasse ueber
+ * {@link gdv.xport.util.SatzFactory#registerEnum(Class, int, int)}
+ * registrieren, sondern dafuer die Klasse {@link gdv.xport.satz.model.Satz220}
+ * verwenden. Diese Klasse behandelt den Import fuer Teildatensatz 9 richtig,
+ * der vom allgemeinen Schema etwas abweicht.
+ * </p>
+ * <p>
+ * Intern verwendet {@link gdv.xport.satz.model.Satz220} diese Enum-Klasse
+ * hier.
+ * </p>
+ *
  * @author oliver
  * @since 07.04.11
  */
