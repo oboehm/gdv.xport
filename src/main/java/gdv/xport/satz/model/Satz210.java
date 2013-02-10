@@ -26,12 +26,13 @@ import java.util.*;
  * {@link gdv.xport.satz.VertragsspezifischerTeil}-Klasse, die nach dem Soplet-
  * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
  * wurde.
+ * <p>
+ * Dieser Datensatz wird noch als Fallback benoetigt.
+ * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (26.03.2011)
- * @deprecated wird nicht mehr benoetigt und mit v1.0 entsorgt
  */
-@Deprecated
 public class Satz210 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
@@ -52,11 +53,10 @@ public class Satz210 extends SpartensatzX {
     }
 
     /**
-     * Legt ein neues Satz210-Objekt fuer die uebergebene Sparte an.
-     *
-     * @param sparte
-     *            Sparte (z.B. 10)
-     */
+	 * Legt ein neues Satz210-Objekt fuer die uebergebene Sparte an.
+	 *
+	 * @param sparte Sparte (z.B. 10)
+	 */
     public Satz210(final int sparte) {
         super(210, sparte);
     }

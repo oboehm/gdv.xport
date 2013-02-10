@@ -65,6 +65,8 @@ public final class SatzFactory {
         register(Vorsatz.class, 1);
         registerEnum(Feld100.class, 100);
         registerEnum(Feld200.class, 200);
+        // Satz210 wird noch als Fallback benoetigt
+        register(Satz210.class, 210);
         // Satz220 wird wg. Sonderbehandlung von Sparte 30, Teildatensatz 9 gebraucht
         register(Satz220.class, 220);
         registerEnum(Feld9999.class, 9999);

@@ -23,18 +23,13 @@ import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.demo.MyFeld210;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
+import gdv.xport.feld.*;
+import gdv.xport.satz.*;
 import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**

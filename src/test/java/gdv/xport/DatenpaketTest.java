@@ -18,43 +18,25 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.VERSION_SATZART_9999;
-import static gdv.xport.feld.Bezeichner.VERSION_SATZART_0001;
-import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static gdv.xport.feld.Bezeichner.*;
+import static org.junit.Assert.*;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.Feld;
-import gdv.xport.satz.Adressteil;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Nachsatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
+import gdv.xport.feld.*;
+import gdv.xport.satz.*;
+import gdv.xport.satz.model.Satz220;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.net.URL;
-import java.net.UnknownHostException;
-import java.util.Date;
-import java.util.List;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.annotation.SkipTestOn;
+import patterntesting.runtime.annotation.*;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -82,7 +64,7 @@ public final class DatenpaketTest {
      * Test-Methode fuer {@link gdv.xport.Datenpaket#export(java.io.Writer)}.
      * Damit die Assert's der Satzlaenge stimmen, muessen wir das
      * End-of-Datensatz abschalten.
-     * 
+     *
      * @throws IOException falls z.B. die Platte voll ist
      */
     @Test
@@ -109,7 +91,7 @@ public final class DatenpaketTest {
     /**
      * Tested den Export. Damit die Assert's der Satzlaenge stimmen, muessen wir
      * das End-of-Datensatz abschalten.
-     * 
+     *
      * @throws IOException
      *             falls Temp-Datei nicht angelegt werden kann.
      */
@@ -131,8 +113,7 @@ public final class DatenpaketTest {
      */
     @Test
     public void testAdd() {
-        Datensatz datensatz = new Adressteil();
-        datenpaket.add(datensatz);
+        datenpaket.add(new Satz220());
         Vorsatz vorsatz = datenpaket.getVorsatz();
         assertEquals("2.1", vorsatz.getVersion(VERSION_SATZART_0001));
         assertEquals("2.1", vorsatz.getVersion(100));
@@ -196,7 +177,7 @@ public final class DatenpaketTest {
             istream.close();
         }
     }
-    
+
     /**
      * Tested den Import von einer URL.
      *
@@ -231,11 +212,11 @@ public final class DatenpaketTest {
             log.warn("Offline? Import von " + url + " abgebrochen!", mayhappen);
         }
     }
-    
+
     /**
      * Der Export eines zuvor importierten Datenpakets sollte identisch mit der
      * Ausgangsdatei sein.
-     * 
+     *
      * @since 0.5.0
      * @throws IOException falls die Platte kaputt ist
      */
@@ -251,7 +232,7 @@ public final class DatenpaketTest {
         assertEquals("1", vertragsstatus.getInhalt());
         checkExportWith(muster);
     }
-    
+
     /**
      * Hier wird die Import-Datei getestet, die mir Igor geschickt hat und
      * mit der es anfangs Probleme gab.
@@ -277,7 +258,7 @@ public final class DatenpaketTest {
         }
     }
 
-    private void checkExportWith(String content) throws IOException {
+    private void checkExportWith(final String content) throws IOException {
         StringWriter swriter = new StringWriter(content.length());
         datenpaket.export(swriter);
         swriter.close();
@@ -299,7 +280,7 @@ public final class DatenpaketTest {
         expectedReader.close();
     }
 
-    private static String readNextLine(BufferedReader reader) throws IOException {
+    private static String readNextLine(final BufferedReader reader) throws IOException {
         String line = reader.readLine();
         if (line == null) {
             log.debug("EOF reached");
