@@ -285,7 +285,7 @@ public enum Feld220Wagnis9 {
      * Zahlung der Witwen-/Witwerrente bis<br/>
      * 1 = lebenslänglich, 2 = Wiederheirat
      */
-    @FeldInfo(teildatensatz = 1, nr = 42, type = Zeichen.class, anzahlBytes = 2, byteAdresse = 245)
+    @FeldInfo(teildatensatz = 1, nr = 42, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 245)
     ZAHLUNG_DER_WITWEN_WITWERRENTE_BIS,
 
     /**

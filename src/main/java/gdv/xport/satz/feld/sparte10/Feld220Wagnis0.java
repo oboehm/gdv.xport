@@ -71,20 +71,20 @@ public enum Feld220Wagnis0 {
      * Vorname der VP.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 92)
-    VORNAME_DER_VP,
+    VORNAME_VP,
 
     /**
      * Geburtsdatum der VP.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 122)
-    GEBURTSDATUM_DER_VP,
+    GEBURTSDATUM_VP,
 
     /**
      * Geschlecht der VP.<br/>
      * 0 = juristische Person, 1 = männlich, 2 = weiblich
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 130)
-    GESCHLECHT_DER_VP,
+    GESCHLECHT_VP,
 
     /**
      * Berufsschlüssel.<br/>
@@ -108,7 +108,7 @@ public enum Feld220Wagnis0 {
      * Geburtsdatum der 2. VP.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 165)
-    GEBURTSDATUM_DER_VP2,
+    GEBURTSDATUM_VP2,
 
     /**
      * Personen-/Kundennummer des Versicherers.<br/>
