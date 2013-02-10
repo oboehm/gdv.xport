@@ -47,6 +47,7 @@ import org.apache.commons.logging.LogFactory;
  * 
  * @author oliver (ob@aosd.de)
  * @since 0.6 (27.03.2011)
+ * @deprecated wird nicht mehr benoetigt und wird ab v1.0 entsorgt
  */
 @Deprecated
 public final class JavaFormatter extends AbstractFormatter {

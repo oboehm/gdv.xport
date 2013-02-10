@@ -18,9 +18,7 @@
 
 package gdv.xport;
 
-import static org.junit.Assert.*;
-
-import java.io.*;
+import java.io.IOException;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -36,12 +34,15 @@ import patterntesting.runtime.junit.SmokeRunner;
  * @author oliver (ob@aosd.de)
  * @since 0.5.1 (26.01.2011)
  */
+@SuppressWarnings("restriction")
 @RunWith(SmokeRunner.class)
 @IntegrationTest
 public final class MainTest {
 
     /**
-     * Test method for {@link gdv.xport.Main#main(java.lang.String[])}.
+     * Test-Methode fuer {@link gdv.xport.Main#main(java.lang.String[])}.
+     * Diese Methode testet eigentlich nur, ob keine Exception beim Aufruf
+     * der Main-Klasse auftaucht.
      *
      * @throws IOException Signals that an I/O exception has occurred.
      * @throws XMLStreamException the xML stream exception
@@ -52,25 +53,25 @@ public final class MainTest {
         Main.main(args);
     }
     
-    /**
-     * Hier testen wir die Generierung der Java-Enum-Klassen fuer alle
-     * unterstuetzten Satzarten und Sparten.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @throws XMLStreamException the xML stream exception
-     */
-    @Test
-    public void testExportJava() throws IOException, XMLStreamException {
-        File destDir = new File("target/generated-sources");
-        String[] args = { "-export", destDir.getPath(), "-java" };
-        Main.main(args);
-        assertExists(new File(destDir, "gdv/xport/satz/feld/Feld100.java"));
-        assertExists(new File(destDir, "gdv/xport/satz/feld/sparte10/Feld210.java"));
-    }
-
-    private void assertExists(final File file) {
-        assertTrue("does not exist: " + file.getAbsolutePath(), file.exists());
-    }
+//    /**
+//     * Hier testen wir die Generierung der Java-Enum-Klassen fuer alle
+//     * unterstuetzten Satzarten und Sparten.
+//     *
+//     * @throws IOException Signals that an I/O exception has occurred.
+//     * @throws XMLStreamException the xML stream exception
+//     */
+//    @Test
+//    public void testExportJava() throws IOException, XMLStreamException {
+//        File destDir = new File("target/generated-sources");
+//        String[] args = { "-export", destDir.getPath(), "-java" };
+//        Main.main(args);
+//        assertExists(new File(destDir, "gdv/xport/satz/feld/Feld100.java"));
+//        assertExists(new File(destDir, "gdv/xport/satz/feld/sparte10/Feld210.java"));
+//    }
+//
+//    private void assertExists(final File file) {
+//        assertTrue("does not exist: " + file.getAbsolutePath(), file.exists());
+//    }
 
 }
 
