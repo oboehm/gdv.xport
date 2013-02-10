@@ -53,11 +53,11 @@ public class Feld0001Test {
     }
 
     /**
-     * Hier testen wir nur, ober der Vorsatz richtig mit der "Version Satzart
+     * Hier testen wir nur, ob der Vorsatz richtig mit der "Version Satzart
      * 1" aufgesetzt ist.
      */
     @Test
-    @Broken(why="siehe gdv.xport.satz.model.SatzX.add(Enum<?>, Teildatensatz)", till="15-Jan-2013")
+    @Broken(why="siehe gdv.xport.satz.model.SatzX.add(Enum<?>, Teildatensatz)", till="20-Mar-2013")
     public void testVersionSatzart0001() {
         Feld x = vorsatz.getTeildatensatz(1).getFeld(Bezeichner.VERSION_SATZART_0001);
         assertNotNull(x);
