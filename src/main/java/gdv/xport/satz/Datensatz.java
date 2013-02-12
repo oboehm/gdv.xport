@@ -413,9 +413,8 @@ public class Datensatz extends Satz {
 			try {
 				return WagnisartLeben.isIn(Integer.parseInt(wagnisart));
 			} catch (NumberFormatException e) {
-				log.warn(
-				        "Not allowed value for wagnisart found. Type Number is required but was \""
-				                + wagnisart + "\".", e);
+				log.warn("Not allowed value for wagnisart found. Type Number is required but was \""
+				        + wagnisart + "\".");
 				return WagnisartLeben.NULL;
 			}
 		}
