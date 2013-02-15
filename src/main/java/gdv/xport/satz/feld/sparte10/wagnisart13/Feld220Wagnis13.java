@@ -30,7 +30,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
  * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3).
- * 
+ *
  * @author ralfklemmer
  * @since 17.01.2013
  */
@@ -103,7 +103,7 @@ public enum Feld220Wagnis13 {
      * Beitrag gem. Zahlungsweise (10,2 Stelle)
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 12, byteAdresse = 90)
-    BEITRAG,
+    BEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Erlebensfall VS in Währungseinheiten zum Ablauf<br/>
@@ -136,7 +136,7 @@ public enum Feld220Wagnis13 {
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 20, type = Betrag.class, anzahlBytes = 12, byteAdresse = 121)
-    NETTOBEITRAG_IN_WAEHRUNGSEINHEIT,
+    NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Erlebensfall VS II in Währungseinheiten zum Ablauf<br/>

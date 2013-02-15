@@ -22,7 +22,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10<br/>
  * "Leben - Kapital-/Fondsgebundene LV = Wagnisart 7" (Satzart 0221)
- * 
+ *
  * @author ralfklemmer
  * @since 19.01.2013
  */
@@ -100,7 +100,7 @@ public enum Feld221Wagnis7 {
 	 * (12,2 Stellen)
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 14, byteAdresse = 132)
-	RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN,
+	RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN_MIT_NACHKOMMA,
 
 	/**
 	 * Leerstellen.<br/>

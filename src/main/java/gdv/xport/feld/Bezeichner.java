@@ -18,7 +18,7 @@ package gdv.xport.feld;
  * <p>
  * TODO: bitte Felder alphabetisch ordnen bzw. eintragen! (oboehm, 26-Jan-2013)
  * </p>
- * 
+ *
  * @author oliver
  * @since 15.10.2009
  */
@@ -617,7 +617,6 @@ public final class Bezeichner {
 
 	public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Erlebensfall VS zum Ablauf";
 	public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Todesfall VS zum Ablauf";
-	public static final String NETTOBEITRAG_IN_WAEHRUNGSEINHEIT = "Nettobeitrag";
 	public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Erlebensfall VS II zum Ablauf";
 	public static final String BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Beitragsfreie Erlebensfall VS";
 	public static final String ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG = "Absoluter Dynamikerhoeˆhungsbetrag";
@@ -759,7 +758,6 @@ public final class Bezeichner {
 	public static final String AENDERUNG = "Aenderung";
 	public static final String VERTRAGSLAUFZEIT = "Vertragslaufzeit";
 	public static final String VERTRAGSART = "Vertragsart";
-	public static final String BEITRAG = "Beitrag";
 	public static final String STATUS = "Status";
 	public static final String GEWINNVERWENDUNGSART = "Gewinnverwendungsart";
 	public static final String UEBERSCHUSS_GUELTIG_AB = "Ueberschuss gueltig ab";
@@ -770,6 +768,7 @@ public final class Bezeichner {
 	public static final String DYNAMIKSTOP = "Dynamikstop";
 	public static final String DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK = "Datum der letzten positiven Dynamik";
 	public static final String RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN = "Rueckkaufswert";
+	public static final String RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN_MIT_NACHKOMMA = "Rueckkaufswert";
 	public static final String RUECKKAUFSWERT_GUELTIG_AB = "Rueckkaufswert gueltig ab";
 	public static final String GUTHABEN_DIVID_ANSAMMLUNGEN_IN_WAEHRUNGSEINHEITEN = "Guthaben Divid. Ansammlungen";
 	public static final String BEGINN_DER_RENTENZAHLUNG = "Beginn der Rentenzahlung";

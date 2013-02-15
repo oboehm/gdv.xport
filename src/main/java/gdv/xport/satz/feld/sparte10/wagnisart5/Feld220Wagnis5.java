@@ -30,7 +30,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
  * "Leben - Risikozusatz = Wagnisart 5" (Satzart 0220).
- * 
+ *
  * @author ralfklemmer
  * @since 19.01.2013
  */
@@ -105,7 +105,7 @@ public enum Feld220Wagnis5 {
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 12, byteAdresse = 90)
-    BEITRAG,
+    BEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Versicherungssumme in Währungseinheiten<br/>

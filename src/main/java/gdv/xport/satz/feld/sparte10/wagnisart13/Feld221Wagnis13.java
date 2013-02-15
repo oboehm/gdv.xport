@@ -22,7 +22,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10
  * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 und 3, Leben).
- * 
+ *
  * @author ralfklemmer
  * @since 12.11.2012
  */
@@ -89,7 +89,7 @@ public enum Feld221Wagnis13 {
 	 * Rückkaufswert in Währungseinheiten.<br/>
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 14, byteAdresse = 132)
-	RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN,
+	RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN_MIT_NACHKOMMA,
 
 	/**
 	 * Guthaben Divid. Ansammlungen in Währungseinheiten.<br/>
