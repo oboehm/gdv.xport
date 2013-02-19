@@ -190,7 +190,7 @@ public final class Bezeichner {
 	public static final String INVALIDITAET = "Invaliditaet";
 	public static final String INVALIDITAET_BEITRAGSSATZ = "Invaliditaet Beitragssatz";
 	public static final String JAEHRLICHE_FAHRLEISTUNG = "Jaehrliche Fahrleistung";
-	public static final String KAPITALERTRAGSTEUERPFLICHT = "Kapitlaertragsteuerpflicht";
+	public static final String KAPITALERTRAGSTEUERPFLICHT = "Kapitalertragsteuerpflicht";
 	public static final String KASKO_BEGINNJAHR = "Kasko-Beginnjahr";
 	public static final String KAUFPREIS = "Kaufpreis";
 	public static final String KENNUNG_FUER_ABS_RABATT = "Kennung fuer ABS-Rabatt";
