@@ -91,7 +91,7 @@ public class Satz220Test extends AbstractSatzTest {
             + "000000000000000000000000000000000000000000000000000  000000    X"
             + "\n";
         assertEquals(514, input.length());
-        Satz220 wagnisdaten = new Satz220(30);
+        Datensatz wagnisdaten = SatzFactory.getDatensatz(220, 30);
         wagnisdaten.importFrom(input);
         Feld x = wagnisdaten.getFeld(ZUSAETZLICHE_SATZKENNUNG, 2);
         assertEquals("X", x.getInhalt());
@@ -126,10 +126,7 @@ public class Satz220Test extends AbstractSatzTest {
             + "000000000000000000000000000000000000000000000000000  000000    X"
             + "\n";
         assertEquals(771, input.length());
-        Datensatz w = SatzFactory.getDatensatz(220, 30);
-        w.importFrom(input);
-        checkDatensatz(w, input);
-        Satz220 wagnisdaten = new Satz220(30);
+        Datensatz wagnisdaten = SatzFactory.getDatensatz(220, 30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }
