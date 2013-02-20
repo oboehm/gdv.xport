@@ -299,7 +299,6 @@ public final class Bezeichner {
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE2 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE3 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE4 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
-    public static final String LFD_NUMMER_VP_PERSONENGRUPPE5 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE9 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_PERSONENNR_GEVO = "Lfd. Personennummer im GeVo";
     public static final String LFD_PERSONENNUMMER_DES_SICHERUNGSGLAEUBIGERS = "Lfd. Personennummer des Sicherungsglaeubigers";
@@ -603,7 +602,6 @@ public final class Bezeichner {
     public static final String GESCHLECHT_VP = "Geschlecht der VP";
     public static final String LFD_NUMMER_ZUR_WAGNISART = "Lfd Nummer zur Wagnisart";
     public static final String MITARBEITER_STATUS = "Mitarbeiter Status";
-    public static final String NAME_DER_VP = "Name der VP";
     public static final String PERSONEN_KUNDENNUMMER_DES_VERMITTLERS = "Personen Kundennummer des Vermittlers";
     public static final String SOZIALVERSICHERUNG_NUMMER = "Sozialversicherung Nummer";
     public static final String STATUS_SEIT = "Status seit";
@@ -623,8 +621,6 @@ public final class Bezeichner {
     public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Erlebensfall VS zum Beginn der Abrufphase";
     public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Todesfall VS zum Beginn der Abrufphase";
     public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Erlebensfall VS II zum Beginn der Abrufphase";
-
-    public static final String LFD_NUMMER_DER_SATZART = "Lfd. Nummer der Satzart";
 
     public static final String ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Anfaengliche Erlebensfall VS";
     public static final String AENDERUNG_DER_ERLEBENSFALL_VS = "Aenderung der Erlebensfall VS";
@@ -862,23 +858,6 @@ public final class Bezeichner {
 
     // Unfall
     public static final String REFERENZ_VERSICHERUNGSSCHEINNUMME = "Referenz-Versicherungsscheinnumme";
-    public static final String BEGINN_TAGEGELD_1_AB_TAG = "Beginn Tagegeld 1 ab Tag";
-    public static final String BEGINN_TAGEGELD_2_AB_TAG = "Beginn Tagegeld 2 ab Tag";
-    public static final String BEITRAG_TAGEGELD_1_IN_WAEHRUNGSEINHEITEN = "Beitrag Tagegeld 1";
-    public static final String BEITRAG_TAGEGELD_2_IN_WAEHRUNGSEINHEITEN = "Beitrag Tagegeld 2";
-    public static final String BESONDERE_VEREINBARUNGEN_ZUM_FLUGGASTRISIKO = "Besondere Vereinbarungen zum Fluggastrisiko";
-    public static final String KUENDIGUNGSKLAUSEL_VP_GESTRICHEN = "Kuendigungsklausel VP/ Personengruppe gestrichen";
-    public static final String SATZNUMMERNWIEDERHOLUNG = "Satznummernwiederholung";
-    public static final String SATZNUMMERNWIEDERHOLUNG2 = "Satznummernwiederholung";
-    public static final String SATZNUMMERNWIEDERHOLUNG3 = "Satznummernwiederholung";
-    public static final String SATZNUMMERNWIEDERHOLUNG4 = "Satznummernwiederholung";
-    public static final String SATZNUMMERNWIEDERHOLUNG9 = "Satznummernwiederholung";
-    public static final String TAGEGELD_1 = "Tagegeld 1";
-    public static final String TAGEGELD_1_BEITRAGSSATZ = "Tagegeld 1 Beitragssatz";
-    public static final String TAGEGELD_2 = "Tagegeld 2";
-    public static final String TAGEGELD_2_BEITRAGSSATZ = "Tagegeld 2 Beitragssatz";
-    public static final String VP_PERSONENNUMMER_DES_VERMITTLERS = "VP-Personennummer des Vermittlers";
-    public static final String VP_PERSONENNUMMER_DES_VERSICHERERS = "VP-Personennummer des Versicherers";
     public static final String DAUERSCHAEDEN_KOERPERLICHE_BEEINTRAECHTIGUNGEN = "Dauerschaeden / koerperliche Beeintraechtigungen";
     public static final String ERKRANKUNGEN = "Erkrankungen";
     public static final String UNFAELLE = "Unfaelle";

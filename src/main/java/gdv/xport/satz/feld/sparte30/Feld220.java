@@ -35,7 +35,7 @@ public enum Feld220 {
             type = NumFeld.class,
             anzahlBytes = 6,
             byteAdresse = 43)
-    LFD_NUMMER_VP_PERSONENGRUPPE,
+    LFD_NUMMER_VP_PERSONENGRUPPE1,
 
     /**
      * Satznummer<br/>
@@ -47,7 +47,7 @@ public enum Feld220 {
             type = NumFeld.class,
             anzahlBytes = 1,
             byteAdresse = 49)
-    SATZNUMMER,
+    SATZNUMMER1,
 
     /**
      * Bezeichnung Personengruppe<br/>
@@ -81,7 +81,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 30,
             byteAdresse = 86)
-    NAME_DER_VP,
+    NAME_VP,
 
     /**
      * Vorname der VP.<br/>
@@ -295,7 +295,7 @@ public enum Feld220 {
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 240)
-    BESONDERE_VEREINBARUNGEN_ZUM_FLUGGASTRISIKO,
+    BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO,
 
     /**
      * passives Kriegsrisiko<br/>
@@ -322,7 +322,7 @@ public enum Feld220 {
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 242)
-    KUENDIGUNGSKLAUSEL_VP_GESTRICHEN,
+    KUENDIGUNGSKLAUSEL_VP,
 
     /**
      * Eintrittsalter der VP<br/>
@@ -372,7 +372,7 @@ public enum Feld220 {
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 250)
-    SATZNUMMERNWIEDERHOLUNG,
+    SATZNUMMERWIEDERHOLUNG1,
 
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
@@ -383,7 +383,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 6,
             byteAdresse = 251)
-    LEERSTELLEN2,
+    LEERSTELLEN1,
 
     // /// Teildatensatz 2 /////////////////////////////////////////////////
 
@@ -423,7 +423,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 10,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 50)
     TOD,
@@ -449,7 +449,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 12,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 66)
     INVALIDITAET,
@@ -502,10 +502,11 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 16,
-            type = Betrag.class,
+            type = NumFeld.class,
+            nachkommaStellen = 1,
             anzahlBytes = 7,
             byteAdresse = 84)
-    TAGEGELD_1,
+    TAGEGELD1,
 
     /**
      * Beginn Tagegeld 1 ab Tag<br/>
@@ -518,7 +519,7 @@ public enum Feld220 {
             type = NumFeld.class,
             anzahlBytes = 3,
             byteAdresse = 91)
-    BEGINN_TAGEGELD_1_AB_TAG,
+    BEGINN_TAGEGELD1_AB_TAG,
 
     /**
      * Tagegeld 1 Beitragssatz<br/>
@@ -541,10 +542,11 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 19,
-            type = Betrag.class,
+            type = NumFeld.class,
+            nachkommaStellen = 1,
             anzahlBytes = 7,
             byteAdresse = 101)
-    TAGEGELD_2,
+    TAGEGELD2,
 
     /**
      * Beginn Tagegeld 2 ab Tag<br/>
@@ -557,7 +559,7 @@ public enum Feld220 {
             type = NumFeld.class,
             anzahlBytes = 3,
             byteAdresse = 108)
-    BEGINN_TAGEGELD_2_AB_TAG,
+    BEGINN_TAGEGELD2_AB_TAG,
 
     /**
      * Tagegeld 2 Beitragssatz<br/>
@@ -570,7 +572,7 @@ public enum Feld220 {
             nachkommaStellen = 5,
             anzahlBytes = 7,
             byteAdresse = 111)
-    TAGEGELD_2_BEITRAGSSATZ,
+    TAGEGELD2_BEITRAGSSATZ,
 
     /**
      * Krankenhaustagegeld<br/>
@@ -580,7 +582,8 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 22,
-            type = Betrag.class,
+            type = NumFeld.class,
+            nachkommaStellen = 1,
             anzahlBytes = 7,
             byteAdresse = 118)
     KRANKENHAUSTAGEGELD,
@@ -606,7 +609,8 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 24,
-            type = Betrag.class,
+            type = NumFeld.class,
+            nachkommaStellen = 1,
             anzahlBytes = 7,
             byteAdresse = 132)
     GENESUNGSGELD,
@@ -631,7 +635,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 26,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 146)
     UEBERGANGSENTSCHAEDIGUNG,
@@ -669,7 +673,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 29,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 163)
     HEILKOSTEN,
@@ -707,7 +711,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 32,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 180)
     FESTE_RENTE,
@@ -732,7 +736,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 34,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 196)
     KOSMETISCHE_OPERATIONEN,
@@ -757,7 +761,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 36,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 212)
     KURKOSTEN,
@@ -782,7 +786,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 38,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 228)
     BERGUNGSKOSTEN,
@@ -863,7 +867,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 3,
             byteAdresse = 253)
-    LEERSTELLEN3,
+    LEERSTELLEN2,
 
     /**
      * Zusätzliche Satzkennung<br/>
@@ -881,7 +885,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 45,
-            type = AlphaNumFeld.class,
+            type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 256)
     ZUSAETZLICHE_SATZKENNUNG,
@@ -901,7 +905,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 3,
             nr = 8,
-            type = NumFeld.class,
+            type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 43)
     SATZNUMMER3,
@@ -917,7 +921,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 17,
             byteAdresse = 44)
-    VP_PERSONENNUMMER_DES_VERSICHERERS,
+    VP_PERSONENNUMMER_VERSICHERER,
 
     /**
      * VP-Personennummer des Vermittlers<br/>
@@ -930,7 +934,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 17,
             byteAdresse = 61)
-    VP_PERSONENNUMMER_DES_VERMITTLERS,
+    VP_PERSONENNUMMER_VERMITTLER,
 
     /**
      * Serviceleistungen<br/>
@@ -939,7 +943,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 3,
             nr = 11,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 78)
     SERVICELEISTUNGEN,
@@ -993,6 +997,7 @@ public enum Feld220 {
             teildatensatz = 3,
             nr = 15,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 118)
     BEITRAG_INVALIDITAET_IN_WAEHRUNGSEINHEITEN,
@@ -1006,9 +1011,10 @@ public enum Feld220 {
             teildatensatz = 3,
             nr = 16,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 130)
-    BEITRAG_TAGEGELD_1_IN_WAEHRUNGSEINHEITEN,
+    BEITRAG_TAGEGELD1_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Beitrag Tagegeld 2 in Währungseinheiten<br/>
@@ -1019,9 +1025,10 @@ public enum Feld220 {
             teildatensatz = 3,
             nr = 17,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 142)
-    BEITRAG_TAGEGELD_2_IN_WAEHRUNGSEINHEITEN,
+    BEITRAG_TAGEGELD2_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Beitrag Krankenhaustagegeld in Währungseinheiten<br/>
@@ -1032,6 +1039,7 @@ public enum Feld220 {
             teildatensatz = 3,
             nr = 18,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 154)
     BEITRAG_KRANKENHAUSTAGEGELD_IN_WAEHRUNGSEINHEITEN,
@@ -1045,6 +1053,7 @@ public enum Feld220 {
             teildatensatz = 3,
             nr = 19,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 166)
     BEITRAG_GENESUNGSGELD_IN_WAEHRUNGSEINHEITEN,
@@ -1058,6 +1067,7 @@ public enum Feld220 {
             teildatensatz = 3,
             nr = 20,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 178)
     BEITRAG_UEBERGANGSENTSCHAEDIGUNG_IN_WAEHRUNGSEINHEITEN,
@@ -1071,6 +1081,7 @@ public enum Feld220 {
             teildatensatz = 3,
             nr = 21,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 190)
     BEITRAG_HEILKOSTEN_IN_WAEHRUNGSEINHEITEN,
@@ -1084,6 +1095,7 @@ public enum Feld220 {
             teildatensatz = 3,
             nr = 22,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 202)
     BEITRAG_FESTE_RENTE_IN_WAEHRUNGSEINHEITEN,
@@ -1097,6 +1109,7 @@ public enum Feld220 {
             teildatensatz = 3,
             nr = 23,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 214)
     BEITRAG_KOSMETISCHE_OPERATION_IN_WAEHRUNGSEINHEITEN,
@@ -1110,6 +1123,7 @@ public enum Feld220 {
             teildatensatz = 3,
             nr = 24,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 226)
     BEITRAG_KURKOSTEN_IN_WAEHRUNGSEINHEITEN,
@@ -1123,6 +1137,7 @@ public enum Feld220 {
             teildatensatz = 3,
             nr = 25,
             type = Betrag.class,
+            nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 238)
     BEITRAG_BERGUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN,
@@ -1137,7 +1152,7 @@ public enum Feld220 {
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 250)
-    SATZNUMMERNWIEDERHOLUNG2,
+    SATZNUMMERWIEDERHOLUNG2,
 
     /**
      * Lfd. Nummer der versicherten Person (VP) / Personengruppe
@@ -1176,7 +1191,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 4,
             nr = 9,
-            type = NumFeld.class,
+            type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 49)
     SATZNUMMER4,
@@ -1338,7 +1353,7 @@ public enum Feld220 {
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 250)
-    SATZNUMMERNWIEDERHOLUNG3,
+    SATZNUMMERWIEDERHOLUNG4,
 
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
@@ -1373,7 +1388,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 17,
             byteAdresse = 43)
-    LFD_NUMMER_VP_PERSONENGRUPPE5,
+    LFD_NUMMER_VP_PERSONENGRUPPE9,
 
     /**
      * Satznummer<br/>
@@ -1399,7 +1414,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 2,
             byteAdresse = 61)
-    LFD_NUMMER_DER_SATZART,
+    LFD_NUMMER_SATZART,
 
     /**
      * Bezugsberechtigt im Leistungsfall<br/>
@@ -1490,7 +1505,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 135,
             byteAdresse = 115)
-    LEERSTELLEN6,
+    LEERSTELLEN3,
 
     /**
      * Satznummernwiederholung<br/>
@@ -1502,7 +1517,7 @@ public enum Feld220 {
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 250)
-    SATZNUMMERNWIEDERHOLUNG9,
+    SATZNUMMERWIEDERHOLUNG9,
 
     /**
      * Lfd. Nummer der versicherten Person (VP) / Personengruppe
@@ -1513,6 +1528,6 @@ public enum Feld220 {
             type = NumFeld.class,
             anzahlBytes = 6,
             byteAdresse = 251)
-    LFD_NUMMER_VP_PERSONENGRUPPE9,
+    LFD_NUMMER_VP,
 
 }

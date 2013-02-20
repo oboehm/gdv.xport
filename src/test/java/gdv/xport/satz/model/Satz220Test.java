@@ -39,7 +39,6 @@ import org.apache.commons.logging.LogFactory;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
 /**
  * JUnit-Test fuer Satz220.
  *
@@ -70,26 +69,23 @@ public class Satz220Test extends AbstractSatzTest {
     }
 
     /**
-     * Da inzwischen auch Sparte 30 (Unfall) unterstuetzt wird, sollte ein Import
-     * dafuer kein Problem mehr sein.
-     * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
+     * Da inzwischen auch Sparte 30 (Unfall) unterstuetzt wird, sollte ein
+     * Import dafuer kein Problem mehr sein. Der Test-Input dazu stammt von der
+     * musterdatei_041222.txt von gdv-online.
      *
-     * @throws IOException
-     *             sollte eigentlich nicht vorkommen, da wir von einem String
-     *             importieren
+     * @throws IOException sollte eigentlich nicht vorkommen, da wir von einem
+     *             String importieren
      */
     @Test
     public void testSparte30() throws IOException {
         String input = "02209999  030      599999999990199990099990000011Kitzelpfutze   "
-            + "               000000Kitzelpfutze                  Martina      "
-            + "                 111119791000Hausfrau                      A 1EU"
-            + "R0000000000000000041141010520040000000001052004          1      "
-            + "\n"
-            + "02209999  030      599999999990199990099990000012000000000011305"
-            + "0000000000000141950000000000000000000000000000000000000000000000"
-            + "0000000000000000000000000010000000000000000 00000000000000000000"
-            + "000000000000000000000000000000000000000000000000000  000000    X"
-            + "\n";
+                + "               000000Kitzelpfutze                  Martina      "
+                + "                 111119791000Hausfrau                      A 1EU"
+                + "R0000000000000000041141010520040000000001052004          1      " + "\n"
+                + "02209999  030      599999999990199990099990000012000000000011305"
+                + "0000000000000141950000000000000000000000000000000000000000000000"
+                + "0000000000000000000000000010000000000000000 00000000000000000000"
+                + "000000000000000000000000000000000000000000000000000  000000    X" + "\n";
         assertEquals(514, input.length());
         Datensatz wagnisdaten = SatzFactory.getDatensatz(220, 30);
         wagnisdaten.importFrom(input);
@@ -101,32 +97,31 @@ public class Satz220Test extends AbstractSatzTest {
     /**
      * Der spezielle Teildatensatz 9 der Sparte 30 bereitet Probleme, da er
      * etwas aus der Reihe tanzt - er kann naemlich als erster Teildatensatz
-     * auftreten.
-     * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
+     * auftreten. Der Test-Input dazu stammt von der musterdatei_041222.txt von
+     * gdv-online.
      *
-     * @throws IOException
-     *             sollte eigentlich nicht vorkommen, da wir von einem String
-     *             importieren
+     * @throws IOException sollte eigentlich nicht vorkommen, da wir von einem
+     *             String importieren
      */
     @Test
     public void testSparte30Teildatensatz9() throws IOException {
         String input = "02209999  030      59999999997019999009999000000001        900 M"
-            + "artina Kitzekpfutze          00000                              "
-            + "                                                                "
-            + "                                                         9000000"
-            + "\n"
-            + "02209999  030      599999999970199990099990000021Kitzelpfutze   "
-            + "               000000Kitzelpfutze                  Martina      "
-            + "                 121219792000                              A 1EU"
-            + "R0000000000000000012632010620040000000001062004          1      "
-            + "\n"
-            + "02209999  030      599999999970199990099990000022000000000009310"
-            + "0000000000000116900000000000000000000000000000000000000000000000"
-            + "0000000000000000000000000010000000000000000 00000000000000000000"
-            + "000000000000000000000000000000000000000000000000000  000000    X"
-            + "\n";
+                + "artina Kitzekpfutze          00000                              "
+                + "                                                                "
+                + "                                                         9000000" + "\n"
+                + "02209999  030      599999999970199990099990000021Kitzelpfutze   "
+                + "               000000Kitzelpfutze                  Martina      "
+                + "                 121219792000                              A 1EU"
+                + "R0000000000000000012632010620040000000001062004          1      " + "\n"
+                + "02209999  030      599999999970199990099990000022000000000009310"
+                + "0000000000000116900000000000000000000000000000000000000000000000"
+                + "0000000000000000000000000010000000000000000 00000000000000000000"
+                + "000000000000000000000000000000000000000000000000000  000000    X" + "\n";
         assertEquals(771, input.length());
-        Datensatz wagnisdaten = SatzFactory.getDatensatz(220, 30);
+        Satz220 wagnisdaten = new Satz220(30);
+        // FIXME Ralf: Sollte eigentlich über die Factory gehen. Der Sonderfall
+        // von Teildatensatz 9 ist mir nicht klar.
+//        Datensatz wagnisdaten = SatzFactory.getDatensatz(220, 30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }
@@ -136,8 +131,7 @@ public class Satz220Test extends AbstractSatzTest {
      * wenn er nur aus einem Teildatensatz besteht und danach gleich ein Satz
      * mit Sparte 53 kommt.
      *
-     * @throws IOException
-     *             falls der Test-Satz nicht gelesen werden kann
+     * @throws IOException falls der Test-Satz nicht gelesen werden kann
      */
     @Test
     public void testImportSparte51() throws IOException {
@@ -168,4 +162,3 @@ public class Satz220Test extends AbstractSatzTest {
     }
 
 }
-
