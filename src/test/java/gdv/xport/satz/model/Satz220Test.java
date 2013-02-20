@@ -23,15 +23,21 @@ import static org.junit.Assert.assertEquals;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.*;
+import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
+import gdv.xport.util.SatzFactory;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
-import org.apache.commons.logging.*;
-import org.junit.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 
 /**
@@ -120,6 +126,9 @@ public class Satz220Test extends AbstractSatzTest {
             + "000000000000000000000000000000000000000000000000000  000000    X"
             + "\n";
         assertEquals(771, input.length());
+        Datensatz w = SatzFactory.getDatensatz(220, 30);
+        w.importFrom(input);
+        checkDatensatz(w, input);
         Satz220 wagnisdaten = new Satz220(30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);

@@ -19,25 +19,72 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.satz.*;
-import gdv.xport.satz.feld.*;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.feld.Feld100;
+import gdv.xport.satz.feld.Feld200;
+import gdv.xport.satz.feld.Feld9999;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
-import gdv.xport.satz.feld.sparte10.wagnisart13.*;
-import gdv.xport.satz.feld.sparte10.wagnisart2.*;
-import gdv.xport.satz.feld.sparte10.wagnisart48.*;
-import gdv.xport.satz.feld.sparte10.wagnisart5.*;
-import gdv.xport.satz.feld.sparte10.wagnisart6.*;
-import gdv.xport.satz.feld.sparte10.wagnisart7.*;
-import gdv.xport.satz.feld.sparte10.wagnisart9.*;
-import gdv.xport.satz.model.*;
+import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13;
+import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Auszahlungen;
+import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13;
+import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13Auszahlungen;
+import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Auszahlungen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2Auszahlungen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48;
+import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart48.Feld221Wagnis48;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld221Wagnis5;
+import gdv.xport.satz.feld.sparte10.wagnisart5.Feld221Wagnis5ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Auszahlungen;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Bezugsrechte;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Wertungssummen;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld230;
+import gdv.xport.satz.model.Satz210;
+import gdv.xport.satz.model.Satz220;
+import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import kommt, in den entsprechende Satz
@@ -197,11 +244,26 @@ public final class SatzFactory {
 
         registerEnum(Feld230.class, new SatzNummer(230, 10, 9));
 
-        // Sparte 30 - ?????
+        // Sparte 30 - Unfall
+        // Kommentar Oli:
         // ACHTUNG: statt sparte30.Feld220.class Feld220.class registrieren
         // (wegen Sonderbehandlung von Teildatensatz 9)
+        // --> Kommentar Ralf:
+        // kein Sonderbehandlung notwendig, wenn geprüft Kommentare entfernen
         registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld220.class, 220, 30);
         registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30);
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld222.class, 222, 30);
+        registerEnum(gdv.xport.satz.feld.sparte30.Feld230.class, 230, 30);
+
+
+        // Sparte 40 - Haftpflicht
+        registerEnum(gdv.xport.satz.feld.sparte40.Feld210.class, 210, 40);
+        registerEnum(gdv.xport.satz.feld.sparte40.Feld211.class, 211, 40);
+        registerEnum(gdv.xport.satz.feld.sparte40.Feld220.class, new SatzNummer(220, 40));
+        registerEnum(gdv.xport.satz.feld.sparte40.Feld221.class, new SatzNummer(221, 40));
+
+
         // Sparte 50 - ?????
         registerEnum(gdv.xport.satz.feld.sparte50.Feld210.class, 210, 50);
         registerEnum(gdv.xport.satz.feld.sparte50.Feld211.class, 211, 50);

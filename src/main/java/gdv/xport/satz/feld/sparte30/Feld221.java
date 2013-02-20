@@ -28,9 +28,10 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 30.
+ * "Unfall - Wagnisdaten" (Satzart 0221)
  *
- * @author oliver
- * @since 14.04.11
+ * @author Ralf
+ * @since 20.02.2013
  */
 public enum Feld221 {
 

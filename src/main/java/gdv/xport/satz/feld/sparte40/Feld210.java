@@ -1,22 +1,4 @@
-/*
- * Copyright (c) 2011, 2012 by Oli B.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express orimplied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * (c)reated 05.04.11 by oliver
- */
-
-package gdv.xport.satz.feld.sparte30;
+package gdv.xport.satz.feld.sparte40;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
@@ -28,10 +10,10 @@ import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 210, Sparte 30.
- * "Unfall" (Satzart 0210)
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 210, Sparte 40
+ * (Vertragsspezifischer Teil, Haftpflicht).
  *
- * @author Ralf
+ * @author rklemmer
  * @since 20.02.2013
  */
 public enum Feld210 {
@@ -107,15 +89,219 @@ public enum Feld210 {
     AENDERUNGSDATUM,
 
     /**
+     * Summenart 1<br/>
+     * 1 = Personenschäden<br/>
+     * 2 = Sachschäden<br/>
+     * 3 = Personen- und Sachschäden<br/>
+     * 4 = Vermögensschäden<br/>
+     * 5 = Personen- und Vermögensschäden<br/>
+     * 6 = Sach- und Vermögensschäden<br/>
+     * 7 = Personen-,Vermögens- und Sachschäden<br/>
+     * 8 = Mietsachschäden<br/>
+     * 9 = EP (Einheitspauschale)<br/>
+     * A = Personen- und Sachschäden (pauschal)<br/>
+     * B = sonstige Sach- und Vermögensschäden (pauschal)<br/>
+     * C = Personenschäden und sonstige Schäden (pauschal)<br/>
+     * D = unbegrenzt (nur für Gabelstapler nach AKB)<br/>
+     * Z = Sonstiges
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 12,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 68)
+    SUMMENART_1,
+
+    /**
+     * Währungsschlüssel 1<br/>
+     * ISO-Code, siehe Anlage 3
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 13,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 69)
+    WAEHRUNGSSCHLUESSEL_1,
+
+    /**
+     * Deckungssumme 1 in Tausend Währungseinheiten<br/>
+     * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
+     * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
+     * den Wagnisteilen (Satzart 0220) zu schlüsseln
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 14,
+            type = Betrag.class,
+            anzahlBytes = 9,
+            byteAdresse = 72)
+    DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN,
+
+    /**
+     * Summenart 2<br/>
+     * Details siehe Deckungsart 1
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 15,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 81)
+    SUMMENART_2,
+
+    /**
+     * Währungsschlüssel 2<br/>
+     * ISO-Code, siehe Anlage 3
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 16,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 82)
+    WAEHRUNGSSCHLUESSEL_2,
+
+    /**
+     * Deckungssumme 2 in Tausend Währungseinheiten<br/>
+     * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
+     * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
+     * den Wagnisteilen (Satzart 0220) zu schlüsseln
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 17,
+            type = Betrag.class,
+            anzahlBytes = 9,
+            byteAdresse = 85)
+    DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN,
+
+    /**
+     * Summenart 3<br/>
+     * Details siehe Deckungsart 1
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 18,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 94)
+    SUMMENART_3,
+
+    /**
+     * Währungsschlüssel 3<br/>
+     * ISO-Code, siehe Anlage 3
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 19,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 95)
+    WAEHRUNGSSCHLUESSEL_3,
+
+    /**
+     * Deckungssumme 3 in Tausend Währungseinheiten<br/>
+     * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
+     * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
+     * den Wagnisteilen (Satzart 0220) zu schlüsseln
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 20,
+            type = Betrag.class,
+            anzahlBytes = 9,
+            byteAdresse = 98)
+    DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN,
+
+    /**
+     * Summenart 4<br/>
+     * Details siehe Deckungsart 1
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 21,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 107)
+    SUMMENART_4,
+
+    /**
+     * Währungsschlüssel 4<br/>
+     * ISO-Code, siehe Anlage 3
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 22,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 108)
+    WAEHRUNGSSCHLUESSEL_4,
+
+    /**
+     * Deckungssumme 4 in Tausend Währungseinheiten<br/>
+     * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
+     * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
+     * den Wagnisteilen (Satzart 0220) zu schlüsseln
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 23,
+            type = Betrag.class,
+            anzahlBytes = 9,
+            byteAdresse = 111)
+    DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN,
+
+    /**
+     * Kennzeichen für Jahres-Maximierung<br/>
+     * 0 = keine<br/>
+     * 1 = 1-fach<br/>
+     * 2 = 2-fach<br/>
+     * 3 = 3-fach<br/>
+     * 4 = 4-fach<br/>
+     * 5 = 5-fach<br/>
+     * 6 = 6-fach<br/>
+     * 7 = 7-fach<br/>
+     * 8 = 8-fach<br/>
+     * 9 = sonstige Vereinbarung<br/>
+     * A = 1,25-fach<br/>
+     * B = 1,5-fach<br/>
+     * C = 1,75-fach<br/>
+     * D = 2,25-fach<br/>
+     * E = 2,5-fach<br/>
+     * F = 2,75-fach
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 24,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 120)
+    KENNZEICHEN_FUER_JAHRES_MAXIMIERUNG,
+
+    /**
+     * Selbstbehalt<br/>
+     * 0 = nein, 1 = ja
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 25,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 121)
+    SELBSTBEHALT,
+
+    /**
      * Allgemeine Versicherungsbedingungen<br/>
      * Inkraftsetzung bei VU. Monat / Jahr (MMJJ)
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 12,
+            nr = 26,
             type = Datum.class,
             anzahlBytes = 4,
-            byteAdresse = 68)
+            byteAdresse = 122)
     ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN,
 
     /**
@@ -125,84 +311,11 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 13,
+            nr = 27,
             type = Zeichen.class,
             anzahlBytes = 1,
-            byteAdresse = 72)
+            byteAdresse = 126)
     SONDERBEDINGUNGEN,
-
-    /**
-     * Beitragsrückgewähr<br/>
-     * Einmalige Beitragsrückgewähr bei Ablauf des Vertrages<br/>
-     * 0 = nein, 1 = ja
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 14,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 73)
-    BEITRAGSRUECKGEWAEHR,
-
-    /**
-     * Dynamik<br/>
-     * 0 = nein, 1 = ja
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 15,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 74)
-    DYNAMIK,
-
-    /**
-     * Dynamik in %<br/>
-     * (2,3 Stellen)
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 16,
-            type = NumFeld.class,
-            anzahlBytes = 5,
-            byteAdresse = 75)
-    DYNAMIK_IN_PROZENT,
-
-    /**
-     * Letzte Erhöhung<br/>
-     * Monat / Jahr (MMJJJJ)
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 17,
-            type = Datum.class,
-            anzahlBytes = 6,
-            byteAdresse = 80)
-    LETZTE_ERHOEHUNG,
-
-    /**
-     * Nächste Erhöhung<br/>
-     * Monat / Jahr (MMJJJJ)
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 18,
-            type = Datum.class,
-            anzahlBytes = 6,
-            byteAdresse = 86)
-    NAECHSTE_ERHOEHUNG,
-
-    /**
-     * Beitragsregulierung<br/>
-     * 0 = nein, 1 = ja
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 19,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 92)
-    BEITRAGSREGULIERUNG,
 
     /**
      * Währungsschlüssel<br/>
@@ -210,10 +323,10 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 20,
+            nr = 28,
             type = AlphaNumFeld.class,
             anzahlBytes = 3,
-            byteAdresse = 93)
+            byteAdresse = 127)
     WAEHRUNGSSCHLUESSEL,
 
     /**
@@ -223,10 +336,10 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 21,
+            nr = 29,
             type = Betrag.class,
             anzahlBytes = 12,
-            byteAdresse = 96)
+            byteAdresse = 130)
     ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
@@ -236,24 +349,25 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 22,
+            nr = 30,
             type = Betrag.class,
             anzahlBytes = 12,
-            byteAdresse = 108)
+            byteAdresse = 142)
     ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Gesamtbeitrag in Währungseinheiten<br/>
-     * Gesamtbeitrag unter Berücksichtigung aller Zu- und Abschläge gem.
-     * Zahlungsweise ohne Gebühr und Steuer.<br/>
+     * Summe aus den Satzarten 0220.<br/>
+     * Gesamt-Jahresnetto-Beitrag unter Berücksichtigung aller Zu- und
+     * Abschläge gemäß Zahlungsweise ohne Vers.-Steuer und Gebühr<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 23,
+            nr = 31,
             type = Betrag.class,
             anzahlBytes = 12,
-            byteAdresse = 120)
+            byteAdresse = 154)
     GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
@@ -263,10 +377,10 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 24,
+            nr = 32,
             type = NumFeld.class,
             anzahlBytes = 5,
-            byteAdresse = 132)
+            byteAdresse = 166)
     ABSCHLUSSPROVISION,
 
     /**
@@ -276,10 +390,10 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 25,
+            nr = 33,
             type = NumFeld.class,
             anzahlBytes = 5,
-            byteAdresse = 137)
+            byteAdresse = 171)
     FOLGEPROVISION,
 
     /**
@@ -290,10 +404,10 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 26,
+            nr = 34,
             type = Zeichen.class,
             anzahlBytes = 1,
-            byteAdresse = 142)
+            byteAdresse = 176)
     KENNZEICHEN_FUER_ABWEICHENDE_ABSCHLUSSPROVISION,
 
     /**
@@ -303,10 +417,10 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 27,
+            nr = 35,
             type = Zeichen.class,
             anzahlBytes = 1,
-            byteAdresse = 143)
+            byteAdresse = 177)
     KENNZEICHEN_FUER_ABWEICHENDE_FOLGEPROVISION,
 
     /**
@@ -316,10 +430,10 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 28,
+            nr = 36,
             type = NumFeld.class,
             anzahlBytes = 2,
-            byteAdresse = 144)
+            byteAdresse = 178)
     RESTLAUFZEIT_DES_VERTRAGES,
 
     /**
@@ -329,63 +443,11 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 29,
+            nr = 37,
             type = NumFeld.class,
-            nachkommaStellen = 2,
             anzahlBytes = 4,
-            byteAdresse = 146)
-    LAUFZEITRABATT_IN_PROZENT,
-
-    /**
-     * Tarifbezeichnung<br/>
-     * Kurzbezeichnung des Tarifes
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 30,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 30,
-            byteAdresse = 150)
-    TARIFBEZEICHNUNG,
-
-    /**
-     * Erhöhungsart Dynamik<br/>
-     * siehe Anlage 72
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 31,
-            type = Zeichen.class,
-            anzahlBytes = 1,
             byteAdresse = 180)
-    ERHOEHUNGSART_DYNAMIK,
-
-    /**
-     * Referenz-Versicherungsscheinnumme<br/>
-     * Zusätzliche Versicherungsscheinnummer, wenn Teile des
-     * Versicherungsproduktes / -vertrages sich in anderen
-     * Versicherungsscheinnummern wiederfinden.
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 32,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 17,
-            byteAdresse = 181)
-    REFERENZ_VERSICHERUNGSSCHEINNUMME,
-
-    /**
-     * Weitere Referenznummern<br/>
-     * Weitere, nicht abbildbare Referenznummern vorhanden<br/>
-     * 0 = nein, 1 = ja
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 33,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 198)
-    WEITERE_REFERENZNUMMERN,
+    LAUFZEITRABATT_IN_PROZENT,
 
     /**
      * Produktform<br/>
@@ -393,10 +455,10 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 34,
+            nr = 38,
             type = AlphaNumFeld.class,
             anzahlBytes = 5,
-            byteAdresse = 199)
+            byteAdresse = 184)
     PRODUKTFORM,
 
     /**
@@ -407,10 +469,10 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 35,
+            nr = 39,
             type = Datum.class,
             anzahlBytes = 6,
-            byteAdresse = 204)
+            byteAdresse = 184)
     PRODUKTFORM_GUELTIG_AB,
 
     /**
@@ -419,10 +481,10 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 36,
+            nr = 40,
             type = AlphaNumFeld.class,
             anzahlBytes = 20,
-            byteAdresse = 210)
+            byteAdresse = 195)
     PRODUKTNAME,
 
     /**
@@ -434,50 +496,20 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 37,
+            nr = 41,
             type = AlphaNumFeld.class,
             anzahlBytes = 7,
-            byteAdresse = 230)
+            byteAdresse = 215)
     REFERENZNUMMER,
-
-    /**
-     * Besondere Vereinbarungen<br/>
-     *
-     * Besondere Vereinbarungen gemäß Antrag<br/>
-     * 0 = nein, 1 = ja
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 38,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 237)
-    BESONDERE_VEREINBARUNGEN,
-
-    /**
-     * Direktanspruch<br/>
-     *
-     * Direkter Leistungsanspruch der versicherten Personen in der Gruppenunfallversicherung<br/>
-     * 0 = nein, 1 = ja
-     */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 39,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 238)
-    DIREKTANSPRUCH,
-
 
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 40,
+            nr = 41,
             type = AlphaNumFeld.class,
-            anzahlBytes = 18,
-            byteAdresse = 239)
+            anzahlBytes = 35,
+            byteAdresse = 222)
     LEERSTELLEN
-
 }

@@ -19,7 +19,7 @@ import java.text.DecimalFormat;
  * Die SatzNummer fuehrt Satzart, Sparte, Wagnisart und laufende Nummer eines
  * Teildatensatz zusammen. Sie wird von der {@link SatzFactory} fer die
  * Registrierung verwendet.
- * 
+ *
  * @author oliver
  * @since 0.9 (26.01.2013)
  */
@@ -39,7 +39,7 @@ public final class SatzNummer {
 
 	/**
 	 * Instantiates a new satz nummer.
-	 * 
+	 *
 	 * @param satzart the satzart
 	 */
 	public SatzNummer(final int satzart) {
@@ -48,7 +48,7 @@ public final class SatzNummer {
 
 	/**
 	 * Instantiates a new satz nummer.
-	 * 
+	 *
 	 * @param satzart the satzart
 	 * @param sparte the sparte
 	 */
@@ -58,7 +58,7 @@ public final class SatzNummer {
 
 	/**
 	 * Instantiates a new satz nummer.
-	 * 
+	 *
 	 * @param satzart the satzart
 	 * @param sparte the sparte
 	 * @param wagnisart the wagnisart
@@ -69,7 +69,7 @@ public final class SatzNummer {
 
 	/**
 	 * Legt eine neue SatzNummer an.
-	 * 
+	 *
 	 * @param satzart die Satzart (vierstellig)
 	 * @param sparte die Sparte (dreistellig)
 	 * @param wagnisart die Wagnisart (ein- bis zweisstellig)
@@ -92,7 +92,7 @@ public final class SatzNummer {
 
 	/**
 	 * Gets the satzart.
-	 * 
+	 *
 	 * @return the satzart
 	 */
 	public int getSatzart() {
@@ -101,7 +101,7 @@ public final class SatzNummer {
 
 	/**
 	 * Gets the sparte.
-	 * 
+	 *
 	 * @return the sparte
 	 */
 	public int getSparte() {
@@ -110,7 +110,7 @@ public final class SatzNummer {
 
 	/**
 	 * Gets the wagnisart.
-	 * 
+	 *
 	 * @return the wagnisart
 	 */
 	public int getWagnisart() {
@@ -119,7 +119,7 @@ public final class SatzNummer {
 
 	/**
 	 * Gets the lfd nummer.
-	 * 
+	 *
 	 * @return the lfd nummer
 	 */
 	public int getTeildatensatzNummer() {
@@ -128,7 +128,7 @@ public final class SatzNummer {
 
 	/**
 	 * Liefert true zurueck, wenn die Sparte gesetzt ist.
-	 * 
+	 *
 	 * @return true, if successful
 	 */
 	public boolean hasSparte() {
@@ -137,7 +137,7 @@ public final class SatzNummer {
 
 	/**
 	 * Liefert true zurueck, wenn die Wagnisart gesetzt ist.
-	 * 
+	 *
 	 * @return true, if successful
 	 */
 	public boolean hasWagnisart() {
@@ -147,7 +147,7 @@ public final class SatzNummer {
 	/**
 	 * Liefert true zurueck, wenn die laufende Nummer (Teildatensatz-Nummer)
 	 * gesetzt ist.
-	 * 
+	 *
 	 * @return true, if successful
 	 */
 	public boolean hasTeildatensatzNummer() {
