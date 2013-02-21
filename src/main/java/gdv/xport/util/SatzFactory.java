@@ -72,6 +72,7 @@ import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Bezugsrechte;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Wertungssummen;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld230;
+import gdv.xport.satz.feld.sparte30.Feld220LeseLogik;
 import gdv.xport.satz.model.Satz210;
 import gdv.xport.satz.model.Satz220;
 import gdv.xport.satz.model.SatzX;
@@ -87,8 +88,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import kommt, in den entsprechende Satz
- * wandeln zu koennen.
+ * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import
+ * kommt, in den entsprechende Satz wandeln zu koennen.
  *
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
@@ -114,7 +115,8 @@ public final class SatzFactory {
         registerEnum(Feld200.class, 200);
         // Satz210 wird noch als Fallback benoetigt
         register(Satz210.class, 210);
-        // Satz220 wird wg. Sonderbehandlung von Sparte 30, Teildatensatz 9 gebraucht
+        // Satz220 wird wg. Sonderbehandlung von Sparte 30, Teildatensatz 9
+        // gebraucht
         register(Satz220.class, 220);
         registerEnum(Feld9999.class, 9999);
 
@@ -125,105 +127,106 @@ public final class SatzFactory {
         registerEnum(Feld220Wagnis0.class, new SatzNummer(220, 10, 0));
 
         // Sparte 10 - Leben - Wagnisart 1 & 3
-		registerEnum(Feld220Wagnis13.class, new SatzNummer(220, 10, 1));
-		registerEnum(Feld220Wagnis13.class, new SatzNummer(220, 10, 3));
-		registerEnum(Feld220Wagnis13Auszahlungen.class, new SatzNummer(220, 10, 1,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
-		registerEnum(Feld220Wagnis13Auszahlungen.class, new SatzNummer(220, 10, 3,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
-		registerEnum(Feld220Wagnis13Bezugsrechte.class, new SatzNummer(220, 10, 1,
-		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
-		registerEnum(Feld220Wagnis13Bezugsrechte.class, new SatzNummer(220, 10, 3,
-		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
-		registerEnum(Feld220Wagnis13ZukSummenaenderungen.class, new SatzNummer(220, 10, 1,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
-		registerEnum(Feld220Wagnis13ZukSummenaenderungen.class, new SatzNummer(220, 10, 3,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
-		registerEnum(Feld220Wagnis13Wertungssummen.class, new SatzNummer(220, 10, 1,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-		registerEnum(Feld220Wagnis13Wertungssummen.class, new SatzNummer(220, 10, 3,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis13.class, new SatzNummer(220, 10, 1));
+        registerEnum(Feld220Wagnis13.class, new SatzNummer(220, 10, 3));
+        registerEnum(Feld220Wagnis13Auszahlungen.class,
+                new SatzNummer(220, 10, 1, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+        registerEnum(Feld220Wagnis13Auszahlungen.class,
+                new SatzNummer(220, 10, 3, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+        registerEnum(Feld220Wagnis13Bezugsrechte.class,
+                new SatzNummer(220, 10, 1, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+        registerEnum(Feld220Wagnis13Bezugsrechte.class,
+                new SatzNummer(220, 10, 3, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+        registerEnum(Feld220Wagnis13ZukSummenaenderungen.class, new SatzNummer(220, 10, 1,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld220Wagnis13ZukSummenaenderungen.class, new SatzNummer(220, 10, 3,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld220Wagnis13Wertungssummen.class,
+                new SatzNummer(220, 10, 1, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis13Wertungssummen.class,
+                new SatzNummer(220, 10, 3, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
 
-		registerEnum(Feld221Wagnis13.class, new SatzNummer(221, 10, 1));
-		registerEnum(Feld221Wagnis13.class, new SatzNummer(221, 10, 3));
-		registerEnum(Feld221Wagnis13Auszahlungen.class, new SatzNummer(221, 10, 1,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
-		registerEnum(Feld221Wagnis13Auszahlungen.class, new SatzNummer(221, 10, 3,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
-		registerEnum(Feld221Wagnis13ZukSummenaenderungen.class, new SatzNummer(221, 10, 1,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
-		registerEnum(Feld221Wagnis13ZukSummenaenderungen.class, new SatzNummer(221, 10, 3,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld221Wagnis13.class, new SatzNummer(221, 10, 1));
+        registerEnum(Feld221Wagnis13.class, new SatzNummer(221, 10, 3));
+        registerEnum(Feld221Wagnis13Auszahlungen.class,
+                new SatzNummer(221, 10, 1, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+        registerEnum(Feld221Wagnis13Auszahlungen.class,
+                new SatzNummer(221, 10, 3, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+        registerEnum(Feld221Wagnis13ZukSummenaenderungen.class, new SatzNummer(221, 10, 1,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld221Wagnis13ZukSummenaenderungen.class, new SatzNummer(221, 10, 3,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         // Sparte 10 - Leben - Wagnisart 2
-		registerEnum(Feld220Wagnis2.class, new SatzNummer(220, 10, 2));
-		registerEnum(Feld220Wagnis2Bezugsrechte.class, new SatzNummer(220, 10, 2,
-		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
-		registerEnum(Feld220Wagnis2Auszahlungen.class, new SatzNummer(220, 10, 2,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
-		registerEnum(Feld220Wagnis2Wertungssummen.class, new SatzNummer(220, 10, 2,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-		registerEnum(Feld220Wagnis2ZukSummenaenderungen.class, new SatzNummer(220, 10, 2,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld220Wagnis2.class, new SatzNummer(220, 10, 2));
+        registerEnum(Feld220Wagnis2Bezugsrechte.class,
+                new SatzNummer(220, 10, 2, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+        registerEnum(Feld220Wagnis2Auszahlungen.class,
+                new SatzNummer(220, 10, 2, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+        registerEnum(Feld220Wagnis2Wertungssummen.class,
+                new SatzNummer(220, 10, 2, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis2ZukSummenaenderungen.class, new SatzNummer(220, 10, 2,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         registerEnum(Feld221Wagnis2.class, new SatzNummer(221, 10, 2));
-        registerEnum(Feld221Wagnis2Auszahlungen.class, new SatzNummer(221, 10, 2, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+        registerEnum(Feld221Wagnis2Auszahlungen.class,
+                new SatzNummer(221, 10, 2, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
         registerEnum(Feld221Wagnis2ZukSummenaenderungen.class, new SatzNummer(221, 10, 2,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         // Sparte 10 - Leben - Wagnisart 4 & 8
-		registerEnum(Feld220Wagnis48.class, new SatzNummer(220, 10, 4));
-		registerEnum(Feld220Wagnis48.class, new SatzNummer(220, 10, 8));
-		registerEnum(Feld220Wagnis48Bezugsrechte.class, new SatzNummer(220, 10, 4,
-		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
-		registerEnum(Feld220Wagnis48Bezugsrechte.class, new SatzNummer(220, 10, 8,
-		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
-		registerEnum(Feld220Wagnis48Wertungssummen.class, new SatzNummer(220, 10, 4,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-		registerEnum(Feld220Wagnis48Wertungssummen.class, new SatzNummer(220, 10, 8,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-		registerEnum(Feld220Wagnis48ZukSummenaenderungen.class, new SatzNummer(220, 10, 4,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
-		registerEnum(Feld220Wagnis48ZukSummenaenderungen.class, new SatzNummer(220, 10, 8,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld220Wagnis48.class, new SatzNummer(220, 10, 4));
+        registerEnum(Feld220Wagnis48.class, new SatzNummer(220, 10, 8));
+        registerEnum(Feld220Wagnis48Bezugsrechte.class,
+                new SatzNummer(220, 10, 4, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+        registerEnum(Feld220Wagnis48Bezugsrechte.class,
+                new SatzNummer(220, 10, 8, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+        registerEnum(Feld220Wagnis48Wertungssummen.class,
+                new SatzNummer(220, 10, 4, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis48Wertungssummen.class,
+                new SatzNummer(220, 10, 8, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis48ZukSummenaenderungen.class, new SatzNummer(220, 10, 4,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld220Wagnis48ZukSummenaenderungen.class, new SatzNummer(220, 10, 8,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         registerEnum(Feld221Wagnis48.class, new SatzNummer(221, 10, 4));
         registerEnum(Feld221Wagnis48.class, new SatzNummer(221, 10, 8));
 
         // Sparte 10 - Leben - Wagnisart 5
-		registerEnum(Feld220Wagnis5.class, new SatzNummer(220, 10, 5));
-		registerEnum(Feld220Wagnis5Bezugsrechte.class, new SatzNummer(220, 10, 5,
-		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
-		registerEnum(Feld220Wagnis5Wertungssummen.class, new SatzNummer(220, 10, 5,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-		registerEnum(Feld220Wagnis5ZukSummenaenderungen.class, new SatzNummer(220, 10, 5,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld220Wagnis5.class, new SatzNummer(220, 10, 5));
+        registerEnum(Feld220Wagnis5Bezugsrechte.class,
+                new SatzNummer(220, 10, 5, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+        registerEnum(Feld220Wagnis5Wertungssummen.class,
+                new SatzNummer(220, 10, 5, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis5ZukSummenaenderungen.class, new SatzNummer(220, 10, 5,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
-		registerEnum(Feld221Wagnis5.class, new SatzNummer(221, 10, 5));
-		registerEnum(Feld221Wagnis5ZukSummenaenderungen.class, new SatzNummer(221, 10, 5,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld221Wagnis5.class, new SatzNummer(221, 10, 5));
+        registerEnum(Feld221Wagnis5ZukSummenaenderungen.class, new SatzNummer(221, 10, 5,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
-		// Sparte 10 - Leben - Wagnisart 6
-		registerEnum(Feld220Wagnis6.class, new SatzNummer(220, 10, 6));
-		registerEnum(Feld220Wagnis6Bezugsrechte.class, new SatzNummer(220, 10, 6,
-		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
-		registerEnum(Feld220Wagnis6Wertungssummen.class, new SatzNummer(220, 10, 6,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-		registerEnum(Feld220Wagnis6ZukSummenaenderungen.class, new SatzNummer(220, 10, 6,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        // Sparte 10 - Leben - Wagnisart 6
+        registerEnum(Feld220Wagnis6.class, new SatzNummer(220, 10, 6));
+        registerEnum(Feld220Wagnis6Bezugsrechte.class,
+                new SatzNummer(220, 10, 6, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+        registerEnum(Feld220Wagnis6Wertungssummen.class,
+                new SatzNummer(220, 10, 6, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis6ZukSummenaenderungen.class, new SatzNummer(220, 10, 6,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
-		registerEnum(Feld221Wagnis6.class, new SatzNummer(221, 10, 6));
-		registerEnum(Feld221Wagnis6ZukSummenaenderungen.class, new SatzNummer(221, 10, 6,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld221Wagnis6.class, new SatzNummer(221, 10, 6));
+        registerEnum(Feld221Wagnis6ZukSummenaenderungen.class, new SatzNummer(221, 10, 6,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         // Sparte 10 - Leben - Wagnisart 7
-		registerEnum(Feld220Wagnis7.class, new SatzNummer(220, 10, 7));
-		registerEnum(Feld220Wagnis7Bezugsrechte.class, new SatzNummer(220, 10, 7,
-		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
-		registerEnum(Feld220Wagnis7Wertungssummen.class, new SatzNummer(220, 10, 7,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-		registerEnum(Feld220Wagnis7ZukSummenaenderungen.class, new SatzNummer(220, 10, 7,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld220Wagnis7.class, new SatzNummer(220, 10, 7));
+        registerEnum(Feld220Wagnis7Bezugsrechte.class,
+                new SatzNummer(220, 10, 7, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+        registerEnum(Feld220Wagnis7Wertungssummen.class,
+                new SatzNummer(220, 10, 7, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis7ZukSummenaenderungen.class, new SatzNummer(220, 10, 7,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         registerEnum(Feld221Wagnis7.class, new SatzNummer(221, 10, 7));
         registerEnum(Feld221Wagnis7ZukSummenaenderungen.class, new SatzNummer(221, 10, 7,
@@ -232,37 +235,31 @@ public final class SatzFactory {
         registerEnum(Feld230.class, new SatzNummer(230, 10, 7));
 
         // Sparte 10 - Leben - Wagnisart 9
-		registerEnum(Feld220Wagnis9.class, new SatzNummer(220, 10, 9));
-		registerEnum(Feld220Wagnis9Bezugsrechte.class, new SatzNummer(220, 10, 9,
-		        TeildatensatzNummer.BEZUGSRECHTE.getCode()));
-		registerEnum(Feld220Wagnis9Auszahlungen.class, new SatzNummer(220, 10, 9,
-		        TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
-		registerEnum(Feld220Wagnis9Wertungssummen.class, new SatzNummer(220, 10, 9,
-		        TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-		registerEnum(Feld220Wagnis9ZukSummenaenderungen.class, new SatzNummer(220, 10, 9,
-		        TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
+        registerEnum(Feld220Wagnis9.class, new SatzNummer(220, 10, 9));
+        registerEnum(Feld220Wagnis9Bezugsrechte.class,
+                new SatzNummer(220, 10, 9, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+        registerEnum(Feld220Wagnis9Auszahlungen.class,
+                new SatzNummer(220, 10, 9, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+        registerEnum(Feld220Wagnis9Wertungssummen.class,
+                new SatzNummer(220, 10, 9, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis9ZukSummenaenderungen.class, new SatzNummer(220, 10, 9,
+                TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         registerEnum(Feld230.class, new SatzNummer(230, 10, 9));
-
-        // Sparte 30 - Unfall
-        // Kommentar Oli:
-        // ACHTUNG: statt sparte30.Feld220.class Feld220.class registrieren
-        // (wegen Sonderbehandlung von Teildatensatz 9)
-        // --> Kommentar Ralf:
-        // kein Sonderbehandlung notwendig, wenn geprüft Kommentare entfernen
         registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
-        registerEnum(gdv.xport.satz.feld.sparte30.Feld220.class, 220, 30);
+        // Diese Satzart ist in Sparte 30 speziell. Mit der "normalen" Leselogik
+        // wird nicht erkannt, dass Satznummer 3 und Satznummer 9 zum gleichen
+        // Objekt gehören. Daher muss das Leseverhalten hier abgeändert werden.
+        register(Feld220LeseLogik.class, 220, 30);
         registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30);
         registerEnum(gdv.xport.satz.feld.sparte30.Feld222.class, 222, 30);
         registerEnum(gdv.xport.satz.feld.sparte30.Feld230.class, 230, 30);
-
 
         // Sparte 40 - Haftpflicht
         registerEnum(gdv.xport.satz.feld.sparte40.Feld210.class, 210, 40);
         registerEnum(gdv.xport.satz.feld.sparte40.Feld211.class, 211, 40);
         registerEnum(gdv.xport.satz.feld.sparte40.Feld220.class, new SatzNummer(220, 40));
         registerEnum(gdv.xport.satz.feld.sparte40.Feld221.class, new SatzNummer(221, 40));
-
 
         // Sparte 50 - ?????
         registerEnum(gdv.xport.satz.feld.sparte50.Feld210.class, 210, 50);
@@ -289,8 +286,9 @@ public final class SatzFactory {
     }
 
     /**
-     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
-     * Die Kasse <em>muss</em> einen Default-Konstruktor bereitstellen. Ansonsten wird hier eine
+     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
+     * unterstuetzte Datensaetze) registriert werden. Die Kasse <em>muss</em>
+     * einen Default-Konstruktor bereitstellen. Ansonsten wird hier eine
      * {@link IllegalArgumentException} geworfen (seit 0.6).
      *
      * @param clazz the clazz
@@ -309,48 +307,47 @@ public final class SatzFactory {
         registeredSatzClasses.put(new SatzNummer(satzart), clazz);
     }
 
-	/**
-	 * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
-	 * Datensatz-Beschreibung uebergeben wird.
-	 *
-	 * @param enumClass die Aufzaehlungsklasse, z.B. Feld100.class
-	 * @param satzart die Satzart (1-9999)
-	 * @since 0.6
-	 */
-	public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart) {
-		registerEnum(enumClass, new SatzNummer(satzart));
-	}
+    /**
+     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
+     * Datensatz-Beschreibung uebergeben wird.
+     *
+     * @param enumClass die Aufzaehlungsklasse, z.B. Feld100.class
+     * @param satzart die Satzart (1-9999)
+     * @since 0.6
+     */
+    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart) {
+        registerEnum(enumClass, new SatzNummer(satzart));
+    }
 
+    /**
+     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
+     * Datensatz-Beschreibung uebergeben wird.
+     *
+     * @param enumClass die Aufzaehlungsklasse, z.B. Feld100.class
+     * @param satzart die Satzart (1-9999)
+     * @param sparte die Sparte (0-999)
+     * @since 0.6
+     */
+    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte) {
+        registerEnum(enumClass, new SatzNummer(satzart, sparte));
+    }
 
-	/**
-	 * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
-	 * Datensatz-Beschreibung uebergeben wird.
-	 *
-	 * @param enumClass die Aufzaehlungsklasse, z.B. Feld100.class
-	 * @param satzart die Satzart (1-9999)
-	 * @param sparte die Sparte (0-999)
-	 * @since 0.6
-	 */
-	public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte) {
-		registerEnum(enumClass, new SatzNummer(satzart, sparte));
-	}
-
-	/**
-	 * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
-	 * Datensatz-Beschreibung uebergeben wird.
-	 *
-	 * @param enumClass ie Aufzaehlungsklasse, z.B. Feld100.class
-	 * @param satzNr die SatzNummer (z.B. new SatzNummer(100))
-	 * @since 0.9
-	 */
-	public static void registerEnum(final Class<? extends Enum<?>> enumClass, final SatzNummer satzNr) {
-		if (registeredDatensatzClasses.containsKey(satzNr)) {
-			log.info("Registered " + registeredDatensatzClasses.get(satzNr) + " for " + satzNr
-			        + " will be replaced by " + enumClass);
-			registeredDatensatzClasses.remove(satzNr);
-		}
-		registeredEnumClasses.put(satzNr, enumClass);
-	}
+    /**
+     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
+     * Datensatz-Beschreibung uebergeben wird.
+     *
+     * @param enumClass ie Aufzaehlungsklasse, z.B. Feld100.class
+     * @param satzNr die SatzNummer (z.B. new SatzNummer(100))
+     * @since 0.9
+     */
+    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final SatzNummer satzNr) {
+        if (registeredDatensatzClasses.containsKey(satzNr)) {
+            log.info("Registered " + registeredDatensatzClasses.get(satzNr) + " for " + satzNr
+                    + " will be replaced by " + enumClass);
+            registeredDatensatzClasses.remove(satzNr);
+        }
+        registeredEnumClasses.put(satzNr, enumClass);
+    }
 
 //    /**
 //     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
@@ -383,10 +380,10 @@ public final class SatzFactory {
 //    }
 
     /**
-     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
+     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
+     * Testen hilfreich sein kann)
      *
-     * @param satzart
-     *            the satzart
+     * @param satzart the satzart
      * @since 0.2
      */
     public static void unregister(final int satzart) {
@@ -396,14 +393,12 @@ public final class SatzFactory {
     }
 
     /**
-     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
+     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
+     * unterstuetzte Datensaetze) registriert werden.
      *
-     * @param clazz
-     *            the clazz
-     * @param satzart
-     *            the satzart
-     * @param sparte
-     *            the sparte
+     * @param clazz the clazz
+     * @param satzart the satzart
+     * @param sparte the sparte
      * @since 0.2
      */
     public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte) {
@@ -438,24 +433,23 @@ public final class SatzFactory {
 //        register(clazz, new SatzNummer(satzart, sparte, wagnisart, teildatensatzNummer));
 //    }
 
-	/**
-	 * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
-	 * unterstuetzte Datensaetze) registriert werden.
-	 *
-	 * @param clazz the clazz
-	 * @param satzNr the satz nr
-	 */
+    /**
+     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
+     * unterstuetzte Datensaetze) registriert werden.
+     *
+     * @param clazz the clazz
+     * @param satzNr the satz nr
+     */
     public static void register(final Class<? extends Datensatz> clazz, final SatzNummer satzNr) {
         registeredDatensatzClasses.put(satzNr, clazz);
     }
 
     /**
-     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
+     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
+     * Testen hilfreich sein kann)
      *
-     * @param satzart
-     *            the satzart
-     * @param sparte
-     *            the sparte
+     * @param satzart the satzart
+     * @param sparte the sparte
      * @since 0.2
      */
     public static void unregister(final int satzart, final int sparte) {
@@ -463,14 +457,12 @@ public final class SatzFactory {
     }
 
     /**
-     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's Testen hilfreich sein kann)
+     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
+     * Testen hilfreich sein kann)
      *
-     * @param satzart
-     *            the satzart
-     * @param sparte
-     *            the sparte
-     * @param wagnisart
-     *            the wagnisart
+     * @param satzart the satzart
+     * @param sparte the sparte
+     * @param wagnisart the wagnisart
      * @since 0.8
      */
     public static void unregister(final int satzart, final int sparte, final int wagnisart) {
@@ -482,8 +474,7 @@ public final class SatzFactory {
     /**
      * Gets the satz.
      *
-     * @param satzart
-     *            the satzart
+     * @param satzart the satzart
      * @return angeforderte Satz
      * @since 0.2
      */
@@ -530,15 +521,15 @@ public final class SatzFactory {
         if (enumClass == null) {
             return useFallback(satzNr);
         }
-		return new SatzX(satzNr, enumClass);
+        return new SatzX(satzNr, enumClass);
     }
 
     /**
-     * Versucht anhand des uebergebenen Strings herauszufinden, um was fuer eine Satzart es sich handelt und liefert
-     * dann einen entsprechende (gefuellten) Satz zurueck.
+     * Versucht anhand des uebergebenen Strings herauszufinden, um was fuer eine
+     * Satzart es sich handelt und liefert dann einen entsprechende (gefuellten)
+     * Satz zurueck.
      *
-     * @param content
-     *            the content
+     * @param content the content
      * @return einen gefuellten Satz
      * @since 0.2
      */
@@ -563,8 +554,7 @@ public final class SatzFactory {
     /**
      * Gets the datensatz.
      *
-     * @param satzart
-     *            den registrierten Datensatz fuer
+     * @param satzart den registrierten Datensatz fuer
      * @return den registrierten Datensatz fuer 'satzart'
      * @since 0.2
      */
@@ -575,10 +565,8 @@ public final class SatzFactory {
     /**
      * Gets the datensatz.
      *
-     * @param satzart
-     *            z.B. 210
-     * @param sparte
-     *            z.B. 70 (Rechtsschutz)
+     * @param satzart z.B. 210
+     * @param sparte z.B. 70 (Rechtsschutz)
      * @return den registrierten Datensatz fuer 'satzart', 'sparte'
      */
     public static Datensatz getDatensatz(final int satzart, final int sparte) {
@@ -588,12 +576,9 @@ public final class SatzFactory {
     /**
      * Gets the datensatz.
      *
-     * @param satzart
-     *            z.B. 210
-     * @param sparte
-     *            z.B. 70 (Rechtsschutz)
-     * @param wagnisart
-     *            z.B. 1 (Kapitallebensversicherung)
+     * @param satzart z.B. 210
+     * @param sparte z.B. 70 (Rechtsschutz)
+     * @param wagnisart z.B. 1 (Kapitallebensversicherung)
      * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart'
      *
      * @since 0.8
@@ -603,18 +588,19 @@ public final class SatzFactory {
     }
 
     /**
-     * Liefert den gewuenschten Datensatz. Mit der uebergebenen Satznummer wird der Datensatz spezifizert, die folgendes
-     * enthaelt:
+     * Liefert den gewuenschten Datensatz. Mit der uebergebenen Satznummer wird
+     * der Datensatz spezifizert, die folgendes enthaelt:
      * <ul>
      * <li>Satzart (z.B. 210)</li>
      * <li>Sparte (z.B. 70 fuer Rechtsschutz)</li>
      * <li>Wagnisart (z.B. 1 fuer Kapitallebensversicherung</li>
-     * <li>Teildatensatz-Nummer (6 = Bezugsrechte, 7 = Auszahlungen, 8 = zukünftige Summenänderungen, 9 = Wertungssummen
-     * </li>
+     * <li>Teildatensatz-Nummer (6 = Bezugsrechte, 7 = Auszahlungen, 8 =
+     * zukünftige Summenänderungen, 9 = Wertungssummen</li>
      * </ul>
      *
      * @param satzNr z.B. new Satznummer(210, 70, 1, 6)
-     * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart', 'teildatensatzNummer'
+     * @return den registrierten Datensatz fuer 'satzart', 'sparte',
+     *         'wagnisart', 'teildatensatzNummer'
      */
     public static Datensatz getDatensatz(final SatzNummer satzNr) {
         Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(satzNr);
@@ -626,26 +612,24 @@ public final class SatzFactory {
             return ctor.newInstance(satzNr.getSatzart(), satzNr.getSparte());
         } catch (NoSuchMethodException exWithTwoParams) {
             log.info("constructor " + clazz + "(int, int) not found (" + exWithTwoParams + ")");
-            return getDatensatz(satzNr.getSatzart(), clazz);
+            return getDatensatz(satzNr.getSparte(), clazz);
         } catch (InstantiationException exWithTwoParams) {
             log.info(clazz + "(int, int) can't be instantiated (" + exWithTwoParams + ")");
-            return getDatensatz(satzNr.getSatzart(), clazz);
+            return getDatensatz(satzNr.getSparte(), clazz);
         } catch (IllegalAccessException exWithTwoParams) {
             log.info(clazz + "(int, int) can't be accessed (" + exWithTwoParams + ")");
-            return getDatensatz(satzNr.getSatzart(), clazz);
+            return getDatensatz(satzNr.getSparte(), clazz);
         } catch (InvocationTargetException exWithTwoParams) {
             log.info("error in calling " + clazz + "(int, int): " + exWithTwoParams);
-            return getDatensatz(satzNr.getSatzart(), clazz);
+            return getDatensatz(satzNr.getSparte(), clazz);
         }
     }
 
     /**
      * Gets the datensatz.
      *
-     * @param sparte
-     *            the sparte
-     * @param clazz
-     *            the clazz
+     * @param sparte the sparte
+     * @param clazz the clazz
      * @return the datensatz
      */
     private static Datensatz getDatensatz(final int sparte, final Class<? extends Datensatz> clazz) {
@@ -672,23 +656,23 @@ public final class SatzFactory {
     }
 
     /**
-	 * Als Fallback wird nur der Datensatz fuer die entsprechende Satzart
-	 * zurueckgeben. Falls dieser nicht exisitert, wird ein (allgemeiner)
-	 * Datensatz mit Satzart und Sparte als Parameter erzeugt.
-	 * <p>
-	 * TODO: Besser waere es, zuerst den Datensatz zu suchen, der am besten
-	 * passt. D.h. auch die anderen Werte der uebergebenen SatzNummer wie
-	 * Sparte oder Wagnisart sollten dabei beruecksichtigt werden.
-	 * </p>
-	 *
-	 * @param satzNr die SatzNummer
-	 * @return der erzeugte Datensatz
-	 */
+     * Als Fallback wird nur der Datensatz fuer die entsprechende Satzart
+     * zurueckgeben. Falls dieser nicht exisitert, wird ein (allgemeiner)
+     * Datensatz mit Satzart und Sparte als Parameter erzeugt.
+     * <p>
+     * TODO: Besser waere es, zuerst den Datensatz zu suchen, der am besten
+     * passt. D.h. auch die anderen Werte der uebergebenen SatzNummer wie Sparte
+     * oder Wagnisart sollten dabei beruecksichtigt werden.
+     * </p>
+     *
+     * @param satzNr die SatzNummer
+     * @return der erzeugte Datensatz
+     */
     private static Datensatz useFallback(final SatzNummer satzNr) {
         try {
             Datensatz fallback = (Datensatz) getSatz(satzNr.getSatzart());
             if (satzNr.hasSparte()) {
-            	fallback.setSparte(satzNr.getSparte());
+                fallback.setSparte(satzNr.getSparte());
             }
             return fallback;
         } catch (NotRegisteredException re) {
@@ -702,8 +686,8 @@ public final class SatzFactory {
     /**
      * Liefert ein Datenpaket mit allen unterstuetzten Satzarten und Sparten.
      * <p>
-     * FIXME: beruecksichtigt noch nicht die Wagnisart (d.h. Saetze mit einer Wagnisart sind noch nicht im
-     * zurueckgegebenen Datenpaket enthalten)
+     * FIXME: beruecksichtigt noch nicht die Wagnisart (d.h. Saetze mit einer
+     * Wagnisart sind noch nicht im zurueckgegebenen Datenpaket enthalten)
      * </p>
      *
      * @return Datenpaket mit allen unterstuetzten Satzarten

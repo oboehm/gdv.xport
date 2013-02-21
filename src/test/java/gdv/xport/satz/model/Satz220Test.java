@@ -28,6 +28,7 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
+import gdv.xport.satz.feld.sparte30.Feld220LeseLogik;
 import gdv.xport.util.SatzFactory;
 
 import java.io.IOException;
@@ -118,10 +119,9 @@ public class Satz220Test extends AbstractSatzTest {
                 + "0000000000000000000000000010000000000000000 00000000000000000000"
                 + "000000000000000000000000000000000000000000000000000  000000    X" + "\n";
         assertEquals(771, input.length());
-        Satz220 wagnisdaten = new Satz220(30);
-        // FIXME Ralf: Sollte eigentlich über die Factory gehen. Der Sonderfall
-        // von Teildatensatz 9 ist mir nicht klar.
-//        Datensatz wagnisdaten = SatzFactory.getDatensatz(220, 30);
+        // Objekt wird nicht über die SatzFactory geholt, da eine spezielle
+        // Leselogik für Satznummer 9 notwendig ist
+        Feld220LeseLogik wagnisdaten = new Feld220LeseLogik(30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }

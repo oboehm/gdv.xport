@@ -16,11 +16,12 @@
  * (c)reated 08.04.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.model;
+package gdv.xport.satz.feld.sparte30;
 
 import gdv.xport.io.ImportException;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.MetaFeldInfo;
+import gdv.xport.satz.model.SpartensatzX;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -36,29 +37,26 @@ import java.util.Map;
  * <b>HINWEIS</b>: Bitte nicht {@link gdv.xport.satz.feld.sparte30.Feld220}
  * ueber {@link gdv.xport.util.SatzFactory#registerEnum(Class, int, int)} fuer
  * Satz 220, Sparte 30 registrieren, sondern diese Klasse hier. Sie behandelt
- * den Import fuer Teildatensatz 9 richtig, der vom allgemeinen Schema etwas
+ * den Import fuer Satznummer 3 und 9 richtig, der vom allgemeinen Schema etwas
  * abweicht.
  * </p>
  *
- * @author oliver (ob@aosd.de)
- * @since 0.6 (08.04.2011)
+ * @author Ralf
+ * @since 0.9 (21.02.2013)
  */
-public class Satz220 extends SpartensatzX {
+public class Feld220LeseLogik extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static final Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
 
     static {
-        mapping.put(51, gdv.xport.satz.feld.sparte51.Feld220.values());
-        mapping.put(52, gdv.xport.satz.feld.sparte52.Feld220.values());
-        mapping.put(53, gdv.xport.satz.feld.sparte53.Feld220.values());
-        mapping.put(70, gdv.xport.satz.feld.sparte70.Feld220.values());
+        mapping.put(30, gdv.xport.satz.feld.sparte30.Feld220.values());
     }
 
     /**
      * Default-Konstruktor.
      */
-    public Satz220() {
+    public Feld220LeseLogik() {
         this(UNKNOWN_SPARTE);
     }
 
@@ -68,7 +66,7 @@ public class Satz220 extends SpartensatzX {
      * @param sparte
      *            Sparte (z.B. 10)
      */
-    public Satz220(final int sparte) {
+    public Feld220LeseLogik(final int sparte) {
         super(220, sparte);
     }
 
