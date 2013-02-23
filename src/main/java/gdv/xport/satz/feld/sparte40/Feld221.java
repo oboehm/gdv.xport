@@ -134,5 +134,6 @@ public enum Feld221 {
             type = AlphaNumFeld.class,
             anzahlBytes = 142,
             byteAdresse = 115)
-    LEERSTELLEN,
+    LEERSTELLEN
+
 }
