@@ -70,7 +70,7 @@ public enum Feld220 {
             teildatensatz = 1,
             nr = 11,
             type = NumFeld.class,
-            anzahlBytes = 2,
+            anzahlBytes = 3,
             byteAdresse = 52)
     BERECHNUNGSEINHEIT,
 

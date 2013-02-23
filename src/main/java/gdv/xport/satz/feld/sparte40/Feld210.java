@@ -472,7 +472,7 @@ public enum Feld210 {
             nr = 39,
             type = Datum.class,
             anzahlBytes = 6,
-            byteAdresse = 184)
+            byteAdresse = 189)
     PRODUKTFORM_GUELTIG_AB,
 
     /**

@@ -25,6 +25,7 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.Feld9999;
+import gdv.xport.satz.feld.common.SatzReaderMitSpeziellerLogik;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13;
@@ -72,9 +73,7 @@ import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Bezugsrechte;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Wertungssummen;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld230;
-import gdv.xport.satz.feld.sparte30.Feld220LeseLogik;
 import gdv.xport.satz.model.Satz210;
-import gdv.xport.satz.model.Satz220;
 import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
@@ -117,7 +116,7 @@ public final class SatzFactory {
         register(Satz210.class, 210);
         // Satz220 wird wg. Sonderbehandlung von Sparte 30, Teildatensatz 9
         // gebraucht
-        register(Satz220.class, 220);
+        register(SatzReaderMitSpeziellerLogik.class, 220);
         registerEnum(Feld9999.class, 9999);
 
         // Sparte 10 - Leben
@@ -250,7 +249,7 @@ public final class SatzFactory {
         // Diese Satzart ist in Sparte 30 speziell. Mit der "normalen" Leselogik
         // wird nicht erkannt, dass Satznummer 3 und Satznummer 9 zum gleichen
         // Objekt gehören. Daher muss das Leseverhalten hier abgeändert werden.
-        register(Feld220LeseLogik.class, 220, 30);
+        register(gdv.xport.satz.feld.sparte30.Feld220LeseLogik.class, 220, 30);
         registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30);
         registerEnum(gdv.xport.satz.feld.sparte30.Feld222.class, 222, 30);
         registerEnum(gdv.xport.satz.feld.sparte30.Feld230.class, 230, 30);
@@ -258,7 +257,10 @@ public final class SatzFactory {
         // Sparte 40 - Haftpflicht
         registerEnum(gdv.xport.satz.feld.sparte40.Feld210.class, 210, 40);
         registerEnum(gdv.xport.satz.feld.sparte40.Feld211.class, 211, 40);
-        registerEnum(gdv.xport.satz.feld.sparte40.Feld220.class, new SatzNummer(220, 40));
+        // Diese Satzart ist in Sparte 40 speziell. Mit der "normalen" Leselogik
+        // wird nicht erkannt, dass Satznummer 1 und Satznummer 2 zum gleichen
+        // Objekt gehören. Daher muss das Leseverhalten hier abgeändert werden.
+        register(gdv.xport.satz.feld.sparte40.Feld220LeseLogik.class, 220, 40);
         registerEnum(gdv.xport.satz.feld.sparte40.Feld221.class, new SatzNummer(221, 40));
 
         // Sparte 50 - ?????

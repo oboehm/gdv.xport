@@ -16,11 +16,12 @@
  * (c)reated 08.04.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.model;
+package gdv.xport.satz.feld.sparte40;
 
 import gdv.xport.io.ImportException;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.MetaFeldInfo;
+import gdv.xport.satz.model.SpartensatzX;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -35,30 +36,27 @@ import java.util.Map;
  * <p>
  * <b>HINWEIS</b>: Bitte nicht {@link gdv.xport.satz.feld.sparte30.Feld220}
  * ueber {@link gdv.xport.util.SatzFactory#registerEnum(Class, int, int)} fuer
- * Satz 220, Sparte 30 registrieren, sondern diese Klasse hier. Sie behandelt
- * den Import fuer Teildatensatz 9 richtig, der vom allgemeinen Schema etwas
+ * Satz 220, Sparte 40 registrieren, sondern diese Klasse hier. Sie behandelt
+ * den Import fuer Satznummer 3 und 9 richtig, der vom allgemeinen Schema etwas
  * abweicht.
  * </p>
  *
- * @author oliver (ob@aosd.de)
- * @since 0.6 (08.04.2011)
+ * @author Ralf
+ * @since 0.9 (21.02.2013)
  */
-public class Satz220 extends SpartensatzX {
+public class Feld220LeseLogik extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static final Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
 
     static {
-        mapping.put(51, gdv.xport.satz.feld.sparte51.Feld220.values());
-        mapping.put(52, gdv.xport.satz.feld.sparte52.Feld220.values());
-        mapping.put(53, gdv.xport.satz.feld.sparte53.Feld220.values());
-        mapping.put(70, gdv.xport.satz.feld.sparte70.Feld220.values());
+        mapping.put(40, gdv.xport.satz.feld.sparte40.Feld220.values());
     }
 
     /**
      * Default-Konstruktor.
      */
-    public Satz220() {
+    public Feld220LeseLogik() {
         this(UNKNOWN_SPARTE);
     }
 
@@ -68,7 +66,7 @@ public class Satz220 extends SpartensatzX {
      * @param sparte
      *            Sparte (z.B. 10)
      */
-    public Satz220(final int sparte) {
+    public Feld220LeseLogik(final int sparte) {
         super(220, sparte);
     }
 
@@ -84,7 +82,7 @@ public class Satz220 extends SpartensatzX {
     }
 
     /**
-	 * Sparte 30 hat optionale Teildatensaetze (Teildatensatz 9). Den muessen
+	 * Sparte 40 hat optionale Teildatensaetze (Teildatensatz 9). Den muessen
 	 * wir gesondert behandeln.
 	 *
 	 * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
@@ -94,8 +92,8 @@ public class Satz220 extends SpartensatzX {
     @Override
     public void importFrom(final String input) throws IOException {
         switch (this.getSparte()) { // NOPMD by oliver on 20.11.10 18:54
-            case 30:
-                importSparte30(input);
+            case 40:
+                importSparte40(input);
                 break;
             default:
                 super.importFrom(input);
@@ -103,7 +101,7 @@ public class Satz220 extends SpartensatzX {
         }
     }
 
-    private void importSparte30(final String s) throws IOException {
+    private void importSparte40(final String s) throws IOException {
         this.removeAllTeildatensaetze();
         int satzlength = getSatzlength(s);
         for (int i = 0; i < s.length(); i += satzlength) {
@@ -111,21 +109,16 @@ public class Satz220 extends SpartensatzX {
             if (input.trim().isEmpty()) {
                 break;
             }
-            char satznummer = input.charAt(48);
+            char satznummer = input.charAt(50);
             switch (satznummer) {
                 case '1':
-                    addTeildatensatz30(1, input);
-                    break;
-                case '2':
-                    addTeildatensatz30(2, input);
+                    addTeildatensatz40(1, input);
                     break;
                 default:
-                    if (input.charAt(42) == '3') {
-                        addTeildatensatz30(3, input);
-                    } else if (input.charAt(59) == '9') {
-                        addTeildatensatz30(9, input);
+                    if (input.charAt(50) == '2') {
+                        addTeildatensatz40(2, input);
                     } else {
-                        throw new ImportException("Satz 0220.030: unbekannter Teildatensatz \""
+                        throw new ImportException("Satz 0220.040: unbekannter Teildatensatz \""
                                 + input.substring(0, 60) + "...\"");
                     }
                     break;
@@ -133,16 +126,16 @@ public class Satz220 extends SpartensatzX {
         }
     }
 
-    private void addTeildatensatz30(final int n, final String input) throws IOException {
+    private void addTeildatensatz40(final int n, final String input) throws IOException {
         Teildatensatz tds = new Teildatensatz(this.getSatzartFeld());
         this.setUpTeildatensatz(tds);
-        this.setUpTeildatensatz30(n, tds);
+        this.setUpTeildatensatz40(n, tds);
         tds.importFrom(input);
         this.add(tds);
     }
 
-    private void setUpTeildatensatz30(final int n, final Teildatensatz tds) {
-        Enum<?>[] felder = mapping.get(30);
+    private void setUpTeildatensatz40(final int n, final Teildatensatz tds) {
+        Enum<?>[] felder = mapping.get(40);
         List<MetaFeldInfo> metaFeldInfos = getMetaFeldInfos(felder);
         for (MetaFeldInfo info : metaFeldInfos) {
             if (info.getTeildatensatzNr() == n) {

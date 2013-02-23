@@ -303,7 +303,7 @@ public final class Teildatensatz extends Satz {
             return false;
         }
         for (Feld feld : datenfelder.values()) {
-            if (!feld.isValid() && !feld.getInhalt().trim().equals("ütze")) {
+            if (!feld.isValid()) {
                 log.info(feld + " is not valid");
                 return false;
             }
