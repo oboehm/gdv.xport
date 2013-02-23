@@ -1,23 +1,28 @@
 /*
- * Copyright (c) 2012 by Oli B. Licensed under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with the
- * License. You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law
- * or agreed to in writing, software distributed under the License is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express orimplied. See the License for the specific language
- * governing permissions and limitations under the License. (c)reated 26.01.2013
- * by Oli B. (ob@aosd.de)
+ * Copyright (c) 2013 by Oli B.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express orimplied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * (c)reated 26.01.2013 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.util;
 
 import java.text.DecimalFormat;
 
-// TODO: Auto-generated Javadoc
 /**
  * Die SatzNummer fuehrt Satzart, Sparte, Wagnisart und laufende Nummer eines
- * Teildatensatz zusammen. Sie wird von der {@link SatzFactory} fer die
+ * Teildatensatz zusammen. Sie wird von der {@link SatzFactory} fuer die
  * Registrierung verwendet.
  *
  * @author oliver
@@ -49,8 +54,8 @@ public final class SatzNummer {
 	/**
 	 * Instantiates a new satz nummer.
 	 *
-	 * @param satzart the satzart
-	 * @param sparte the sparte
+	 * @param satzart Satzart
+	 * @param sparte Sparte
 	 */
 	public SatzNummer(final int satzart, final int sparte) {
 		this(satzart, sparte, -1);

@@ -27,51 +27,13 @@ import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.Feld9999;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld221Wagnis48;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld221Wagnis5;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld221Wagnis5ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld230;
+import gdv.xport.satz.feld.sparte10.wagnisart13.*;
+import gdv.xport.satz.feld.sparte10.wagnisart2.*;
+import gdv.xport.satz.feld.sparte10.wagnisart48.*;
+import gdv.xport.satz.feld.sparte10.wagnisart5.*;
+import gdv.xport.satz.feld.sparte10.wagnisart6.*;
+import gdv.xport.satz.feld.sparte10.wagnisart7.*;
+import gdv.xport.satz.feld.sparte10.wagnisart9.*;
 import gdv.xport.satz.model.Satz210;
 import gdv.xport.satz.model.Satz220;
 import gdv.xport.satz.model.SatzX;
@@ -99,13 +61,16 @@ public final class SatzFactory {
     private static final Log log = LogFactory.getLog(SatzFactory.class);
 
     /** The registered satz classes. */
-    private static final Map<SatzNummer, Class<? extends Satz>> registeredSatzClasses = new HashMap<SatzNummer, Class<? extends Satz>>();
+    private static final Map<SatzNummer, Class<? extends Satz>> registeredSatzClasses =
+            new HashMap<SatzNummer, Class<? extends Satz>>();
 
     /** The registered datensatz classes. */
-    private static final Map<SatzNummer, Class<? extends Datensatz>> registeredDatensatzClasses = new ConcurrentHashMap<SatzNummer, Class<? extends Datensatz>>();
+    private static final Map<SatzNummer, Class<? extends Datensatz>> registeredDatensatzClasses =
+            new ConcurrentHashMap<SatzNummer, Class<? extends Datensatz>>();
 
     /** The registered Enum classes. */
-    private static final Map<SatzNummer, Class<? extends Enum<?>>> registeredEnumClasses = new HashMap<SatzNummer, Class<? extends Enum<?>>>();
+    private static final Map<SatzNummer, Class<? extends Enum<?>>> registeredEnumClasses =
+            new HashMap<SatzNummer, Class<? extends Enum<?>>>();
 
     static {
 //        registerEnum(Feld0001.class, 1);

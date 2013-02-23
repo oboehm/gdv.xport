@@ -17,7 +17,7 @@
 
   <body>
 
-    <release version="0.9.0" date="17-Jul-2012"
+    <release version="0.9.0" date="2013"
              description="Unterst&#252;tzung Version 2009">
       <action dev="ralfklemmer" type="update" date="22-Nov-2012" >
         Beginn Umstellung auf Version 2009 des GDV-Handbuches.
