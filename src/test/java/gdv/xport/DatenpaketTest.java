@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
-import gdv.xport.satz.feld.common.SatzReaderMitSpeziellerLogik;
+import gdv.xport.satz.model.Satz220;
 
 import java.io.*;
 import java.net.*;
@@ -113,7 +113,7 @@ public final class DatenpaketTest {
      */
     @Test
     public void testAdd() {
-        datenpaket.add(new SatzReaderMitSpeziellerLogik());
+        datenpaket.add(new Satz220());
         Vorsatz vorsatz = datenpaket.getVorsatz();
         assertEquals("2.1", vorsatz.getVersion(VERSION_SATZART_0001));
         assertEquals("2.1", vorsatz.getVersion(100));

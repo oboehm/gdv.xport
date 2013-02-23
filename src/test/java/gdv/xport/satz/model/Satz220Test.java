@@ -27,7 +27,6 @@ import gdv.xport.satz.AbstractSatzTest;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
-import gdv.xport.satz.feld.common.SatzReaderMitSpeziellerLogik;
 import gdv.xport.satz.feld.common.Satz220Teil2;
 import gdv.xport.satz.feld.sparte30.Feld220LeseLogik;
 import gdv.xport.util.SatzFactory;
@@ -61,11 +60,11 @@ public class Satz220Test extends AbstractSatzTest {
     }
 
     /**
-     * Test method for {@link SatzReaderMitSpeziellerLogik#Satz220(int)}.
+     * Test method for {@link Satz220#Satz220(int)}.
      */
     @Test
     public void testSparte() {
-        SatzReaderMitSpeziellerLogik rechtsschutz = new SatzReaderMitSpeziellerLogik(70);
+        Satz220 rechtsschutz = new Satz220(70);
         log.info(rechtsschutz + " created.");
         assertEquals(70, rechtsschutz.getSparte());
     }
@@ -153,7 +152,7 @@ public class Satz220Test extends AbstractSatzTest {
      */
     @Test
     public void testSparte51() {
-        SatzReaderMitSpeziellerLogik sparte51 = new SatzReaderMitSpeziellerLogik(51);
+        Satz220 sparte51 = new Satz220(51);
         assertEquals(2, sparte51.getTeildatensaetze().size());
         Teildatensatz teil2 = sparte51.getTeildatensatz(2);
         Feld satzart = teil2.getFeld(Feld1bis7.SATZART);

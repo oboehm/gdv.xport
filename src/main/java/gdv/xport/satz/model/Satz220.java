@@ -16,12 +16,11 @@
  * (c)reated 08.04.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.common;
+package gdv.xport.satz.model;
 
 import gdv.xport.io.ImportException;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.MetaFeldInfo;
-import gdv.xport.satz.model.SpartensatzX;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -44,7 +43,7 @@ import java.util.Map;
  * @author oliver (ob@aosd.de)
  * @since 0.6 (08.04.2011)
  */
-public class SatzReaderMitSpeziellerLogik extends SpartensatzX {
+public class Satz220 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static final Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
@@ -59,7 +58,7 @@ public class SatzReaderMitSpeziellerLogik extends SpartensatzX {
     /**
      * Default-Konstruktor.
      */
-    public SatzReaderMitSpeziellerLogik() {
+    public Satz220() {
         this(UNKNOWN_SPARTE);
     }
 
@@ -69,7 +68,7 @@ public class SatzReaderMitSpeziellerLogik extends SpartensatzX {
      * @param sparte
      *            Sparte (z.B. 10)
      */
-    public SatzReaderMitSpeziellerLogik(final int sparte) {
+    public Satz220(final int sparte) {
         super(220, sparte);
     }
 

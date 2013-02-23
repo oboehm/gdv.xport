@@ -25,7 +25,6 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.Feld9999;
-import gdv.xport.satz.feld.common.SatzReaderMitSpeziellerLogik;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13;
@@ -74,6 +73,7 @@ import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Wertungssummen;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld230;
 import gdv.xport.satz.model.Satz210;
+import gdv.xport.satz.model.Satz220;
 import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
@@ -116,7 +116,7 @@ public final class SatzFactory {
         register(Satz210.class, 210);
         // Satz220 wird wg. Sonderbehandlung von Sparte 30, Teildatensatz 9
         // gebraucht
-        register(SatzReaderMitSpeziellerLogik.class, 220);
+        register(Satz220.class, 220);
         registerEnum(Feld9999.class, 9999);
 
         // Sparte 10 - Leben
