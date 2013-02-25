@@ -18,19 +18,14 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart13;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
  * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3).
- * 
+ *
  * @author ralfklemmer
  * @since 17.01.2013
  */
@@ -63,7 +58,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
+     * Lfd. Nummer der Satzart.<br/>
      * Lfd. Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6, wenn mehrere Bezugsrechte vorhanden)
      */
@@ -71,7 +66,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Anfängliche Todesfall VS in Währungseinheiten<br/>
+     * Anfängliche Todesfall VS in Währungseinheiten.<br/>
      * Anfängliche bzw. erste Todesfalleistung<br/>
      * (9,0 Stellen)
      */
@@ -79,7 +74,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Änderung der Todesfallleistung<br/>
+     * Änderung der Todesfallleistung.<br/>
      * 0 = keine Änderung bzw. nur eine Todesfallleistung<br/>
      * 1 = Erhöhung der Todesfallleistung<br/>
      * 2 = Reduzierung der Todesfallleistung
@@ -88,7 +83,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     AENDERUNG_DER_TODESFALLLEISTUNG,
 
     /**
-     * Abstand der Todesfalländerungstermine<br/>
+     * Abstand der Todesfalländerungstermine.<br/>
      * in Monaten bei periodischen Änderungsterminen <br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * 000 = keine Änderungen/Auszahlungen<br/>
@@ -98,7 +93,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     ABSTAND_DER_TODESFALLAENDERUNGSTERMINE,
 
     /**
-     * Todesfalländerungs-Prozentsatz<br/>
+     * Todesfalländerungs-Prozentsatz.<br/>
      * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Todesfalleistung<br/>
      * (3,2 Stellen)
      */
@@ -106,7 +101,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     TODESFALLAENDERUNGS_PROZENTSATZ,
 
     /**
-     * Absolute Todesfalländerungssumme in Währungseinheiten<br/>
+     * Absolute Todesfalländerungssumme in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung<br/>
      * (9,0 Stellen)
      */
@@ -114,7 +109,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     ABSOLUTE_TODESFALLAENDERUNGSSUMME_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Todesfall VS in Währungseinheiten<br/>
+     * Nächste Todesfall VS in Währungseinheiten.<br/>
      * Todesfalleistung ab dem nächsten Änderungstermin<br/>
      * (9,0 Stellen)
      */
@@ -122,7 +117,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Todesfall VS<br/>
+     * Beginndatum der nächsten Todesfall VS.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten
      * Todesfalländerung<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -131,14 +126,14 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     BEGINNDATUM_DER_NAECHSTEN_TODESFALL_VS,
 
     /**
-     * Anfängliche Erlebensfall VS in Währungseinheiten<br/>
+     * Anfängliche Erlebensfall VS in Währungseinheiten.<br/>
      * Anfängliche bzw. erste Erlebensfall VS
      */
     @FeldInfo(teildatensatz = 1, nr = 19, type = Betrag.class, anzahlBytes = 9, byteAdresse = 108)
     ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Änderung der Erlebensfall VS<br/>
+     * Änderung der Erlebensfall VS.<br/>
      * 0 = keine Änderung bzw. nur eine Erlebensfall VS<br/>
      * 1 = Erhöhung der Erlebensfall VS<br/>
      * 2 = Reduzierung der Erlebensfall VS
@@ -147,7 +142,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     AENDERUNG_DER_ERLEBENSFALL_VS,
 
     /**
-     * Abstand der Erlebensfall VS-änderungstermine<br/>
+     * Abstand der Erlebensfall VS-änderungstermine.<br/>
      * in Monaten bei periodischen Änderungsterminen <br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * 000 = keine Änderungen/Auszahlungen<br/>
@@ -157,7 +152,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     ABSTAND_DER_ERLEBENSFAL_VS_AENDERUNGSTERMINE,
 
     /**
-     * Erlebensfall VS-Änderungs-Prozentsatz<br/>
+     * Erlebensfall VS-Änderungs-Prozentsatz.<br/>
      * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Erlebensfall VS<br/>
      * (3,2 Stellen)
      */
@@ -165,21 +160,21 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     ERLEBENSFALL_VS_AENDERUNGS_PROZENTSATZ,
 
     /**
-     * Absolute Erlebensfall VS in Währungseinheiten<br/>
+     * Absolute Erlebensfall VS in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Erlebensfall VS
      */
     @FeldInfo(teildatensatz = 1, nr = 23, type = Betrag.class, anzahlBytes = 9, byteAdresse = 126)
     ABSOLUTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Erlebensfall VS in Währungseinheiten<br/>
+     * Nächste Erlebensfall VS in Währungseinheiten.<br/>
      * Erlebensfall VS ab dem nächsten Änderungstermin
      */
     @FeldInfo(teildatensatz = 1, nr = 24, type = Betrag.class, anzahlBytes = 9, byteAdresse = 135)
     NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Erlebensfall VS<br/>
+     * Beginndatum der nächsten Erlebensfall VS.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten Erlebensfall
      * VS<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)

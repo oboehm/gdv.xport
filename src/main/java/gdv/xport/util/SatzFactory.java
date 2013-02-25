@@ -19,12 +19,8 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.feld.Feld100;
-import gdv.xport.satz.feld.Feld200;
-import gdv.xport.satz.feld.Feld9999;
+import gdv.xport.satz.*;
+import gdv.xport.satz.feld.*;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte10.wagnisart13.*;
@@ -34,19 +30,14 @@ import gdv.xport.satz.feld.sparte10.wagnisart5.*;
 import gdv.xport.satz.feld.sparte10.wagnisart6.*;
 import gdv.xport.satz.feld.sparte10.wagnisart7.*;
 import gdv.xport.satz.feld.sparte10.wagnisart9.*;
-import gdv.xport.satz.model.Satz210;
-import gdv.xport.satz.model.Satz220;
-import gdv.xport.satz.model.SatzX;
+import gdv.xport.satz.model.*;
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
+import java.lang.reflect.*;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 /**
  * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import
@@ -62,7 +53,7 @@ public final class SatzFactory {
 
     /** The registered satz classes. */
     private static final Map<SatzNummer, Class<? extends Satz>> registeredSatzClasses =
-            new HashMap<SatzNummer, Class<? extends Satz>>();
+            new ConcurrentHashMap<SatzNummer, Class<? extends Satz>>();
 
     /** The registered datensatz classes. */
     private static final Map<SatzNummer, Class<? extends Datensatz>> registeredDatensatzClasses =
@@ -70,7 +61,7 @@ public final class SatzFactory {
 
     /** The registered Enum classes. */
     private static final Map<SatzNummer, Class<? extends Enum<?>>> registeredEnumClasses =
-            new HashMap<SatzNummer, Class<? extends Enum<?>>>();
+            new ConcurrentHashMap<SatzNummer, Class<? extends Enum<?>>>();
 
     static {
 //        registerEnum(Feld0001.class, 1);

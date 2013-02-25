@@ -24,29 +24,21 @@ import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 import gdv.xport.satz.feld.FeldX;
 
-import java.io.IOException;
-import java.io.Writer;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+import java.io.*;
+import java.lang.reflect.*;
 import java.nio.ByteBuffer;
 import java.util.List;
 
-import net.sf.oval.ConstraintViolation;
-import net.sf.oval.Validator;
-import net.sf.oval.constraint.Min;
-import net.sf.oval.constraint.NotEqual;
-import net.sf.oval.constraint.SizeCheck;
+import net.sf.oval.*;
+import net.sf.oval.constraint.*;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.WordUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.lang.*;
+import org.apache.commons.logging.*;
 
 /**
  * The Class Feld.
- * 
+ *
  * @author oliver
  * @since 04.10.2009
  */
@@ -68,7 +60,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Kreiert ein neues Feld.
-     * 
+     *
      * @param feldX
      *            der entsrpechende Aufzaehlungstyp
      * @param info
@@ -88,7 +80,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name
      *            the name
      * @param s
@@ -102,7 +94,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name
      *            the name
      * @param start
@@ -122,7 +114,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name
      *            the name
      * @param length
@@ -142,7 +134,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name
      *            the name
      * @param length
@@ -161,7 +153,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name
      *            the name
      * @param length
@@ -180,7 +172,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param name
      *            the name
      * @param start
@@ -194,7 +186,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param start
      *            the start
      * @param s
@@ -212,7 +204,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param length
      *            the length
      * @param alignment
@@ -224,7 +216,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Instantiates a new feld.
-     * 
+     *
      * @param length
      *            the length
      * @param start
@@ -250,7 +242,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Die Default-Ausrichtung ist links-buendig. Diese Vorgabe kann aber von den Unterklassen ueberschrieben werde.
-     * 
+     *
      * @return links-buendig
      */
     protected Align getDefaultAlignment() {
@@ -271,7 +263,7 @@ public class Feld implements Comparable<Feld> {
     /**
      * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation ergibt (Factory-Methode). Der Name wird
      * dabei aus dem uebergebenen Enum-Feld abgeleitet.
-     * 
+     *
      * @param feldX
      *            Enum fuer das erzeugte Feld
      * @param info
@@ -296,7 +288,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the bezeichnung.
-     * 
+     *
      * @return the bezeichnung
      */
     public String getBezeichnung() {
@@ -307,7 +299,7 @@ public class Feld implements Comparable<Feld> {
      * Im Gegensatz zur Bezeichnung, die aus mehreren Woertern in Gross- und Kleinbuchstaben bestehen kann, steht der
      * Bezeichner nur aus einem Wort (in Grossbuchstaben). Er wird aus der Bezeichnung unter Zuhilfenahme der
      * {@link Bezeichner}- Klasse ermittelt, wenn das bezeichner-Attribute nicht gesetzt (bzw. UNBEKANNT) ist.
-     * 
+     *
      * @since 0.6
      * @return Bezeichner in Grossbuchstaben
      */
@@ -335,7 +327,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Sets the inhalt.
-     * 
+     *
      * @param s
      *            the new inhalt
      */
@@ -362,7 +354,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Sets the inhalt.
-     * 
+     *
      * @param n
      *            the new inhalt
      */
@@ -372,7 +364,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Sets the inhalt.
-     * 
+     *
      * @param c
      *            the new inhalt
      */
@@ -383,7 +375,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Sets the inhalt.
-     * 
+     *
      * @param c
      *            zu setzendes Zeichen
      * @param i
@@ -395,7 +387,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the inhalt.
-     * 
+     *
      * @return the inhalt
      */
     public String getInhalt() {
@@ -415,7 +407,7 @@ public class Feld implements Comparable<Feld> {
     /**
      * Wenn sich das Feld vergroessert, werden rechts Leerzeichen aufgefuellt (alphanumerische Zeichen sind
      * standardmaessig linksbuendig).
-     * 
+     *
      * @param n
      *            neue Groesse
      */
@@ -428,7 +420,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the anzahl bytes.
-     * 
+     *
      * @return the anzahl bytes
      */
     public final int getAnzahlBytes() {
@@ -437,7 +429,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the byte adresse.
-     * 
+     *
      * @return Byte-Adresse, beginnend bei 1
      */
     public final int getByteAdresse() {
@@ -446,7 +438,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Gets the end adresse.
-     * 
+     *
      * @return absolute End-Adresse
      */
     public final int getEndAdresse() {
@@ -455,7 +447,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Ueberprueft, ob sich zwei Felder mit unterschiedlichen Start-Adressen ueberlagern.
-     * 
+     *
      * @param other
      *            das andere Feld
      * @return true, falls sich die Felder ueberlappen
@@ -472,10 +464,10 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Write.
-     * 
+     *
      * @param writer
      *            the writer
-     * 
+     *
      * @throws IOException
      *             Signals that an I/O exception has occurred.
      */
@@ -485,7 +477,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Checks if is empty.
-     * 
+     *
      * @return true, if is empty
      */
     public boolean isEmpty() {
@@ -493,12 +485,15 @@ public class Feld implements Comparable<Feld> {
     }
 
     /**
-     * Valid bedeutet: Byte-Adresse >= 1, Feld geht nicht ueber (Teil-)Datensatz-Grenze hinaus, Ausrichtung ist bekannt. <br/>
-     * Auf Performance-Gruenden wurde diese Methode stuetzt sich diese Methode nicht auf validate(), sondern
-     * implementiert die entsprechenden Abfragen selbst.
-     * 
+     * Valid bedeutet: Byte-Adresse >= 1, Feld geht nicht ueber
+     * (Teil-)Datensatz-Grenze hinaus, Ausrichtung ist bekannt.
+     * <p>
+     * Aus Performance-Gruenden stuetzt sich diese Methode nicht auf validate(),
+     * sondern implementiert die entsprechenden Abfragen selbst.
+     * </p>
+     *
      * @return false, falls Verletzung erkannt wird
-     * 
+     *
      * @since 0.1.0
      */
     public boolean isValid() {
@@ -517,7 +512,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Checks if is invalid.
-     * 
+     *
      * @return true, if is invalid
      */
     public boolean isInvalid() {
@@ -526,7 +521,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Validate.
-     * 
+     *
      * @return the list< constraint violation>
      */
     public List<ConstraintViolation> validate() {
@@ -543,7 +538,7 @@ public class Feld implements Comparable<Feld> {
     /**
      * Diese Methode ist dafuer vorgesehen, das Feld als normalen String ausgeben zu koennen. Zahlen koennen so z.B. in
      * der Form "123,45" ausgegeben werden, unter Beruecksichtigung der eingestellten "Locale".
-     * 
+     *
      * @since 0.5.1
      * @return Inhalt des Feldes
      */
@@ -553,7 +548,7 @@ public class Feld implements Comparable<Feld> {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
@@ -564,7 +559,7 @@ public class Feld implements Comparable<Feld> {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -581,10 +576,10 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Equals.
-     * 
+     *
      * @param other
      *            the other
-     * 
+     *
      * @return true, if successful
      */
     public final boolean equals(final Feld other) {
@@ -594,7 +589,7 @@ public class Feld implements Comparable<Feld> {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -604,10 +599,10 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Es gilt fuer Feld a und b: a < b, wenn die Start-Adresse von a vor b liegt.
-     * 
+     *
      * @param other
      *            das andere Feld
-     * 
+     *
      * @return 0 wenn beide Felder die gleiche Startadresse haben
      */
     public final int compareTo(final Feld other) {
@@ -617,7 +612,7 @@ public class Feld implements Comparable<Feld> {
     /**
      * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die {@link Bezeichner}-Klasse, um festzustellen, ob
      * es den Namen schon als Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.
-     * 
+     *
      * @param feldX
      *            das Feld-Element mit dem gesuchten Bezeichner
      * @return z.B. "Inkassoart"
@@ -639,7 +634,7 @@ public class Feld implements Comparable<Feld> {
 
     /**
      * Konvertiert einen Bezeichner (in GROSSBUCHSTABEN) in die entsprechende Bezeichnung.
-     * 
+     *
      * @param name
      *            z.B. HELLO_WORLD (als Aufzaehlungstyp)
      * @return z.B. "Hello World"

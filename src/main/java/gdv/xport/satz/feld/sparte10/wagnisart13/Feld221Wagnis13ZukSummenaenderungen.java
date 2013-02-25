@@ -18,17 +18,14 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart13;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
  * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Zukünftige Summenänderungen" (Satzart 0221)).
- * 
+ *
  * @author ralfklemmer
  * @since 17.01.2013
  */
@@ -61,7 +58,7 @@ public enum Feld221Wagnis13ZukSummenaenderungen {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
+     * Lfd. Nummer der Satzart.<br/>
      * Lfd. Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6, wenn mehrere Bezugsrechte vorhanden)
      */
@@ -69,7 +66,7 @@ public enum Feld221Wagnis13ZukSummenaenderungen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Anfängliche Todesfall VS in Währungseinheiten<br/>
+     * Anfängliche Todesfall VS in Währungseinheiten.<br/>
      * Anfängliche bzw. erste Todesfallleistung<br/>
      * (12,2 Stellen)
      */
@@ -77,7 +74,7 @@ public enum Feld221Wagnis13ZukSummenaenderungen {
     ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Absolute Todesfalländerungssumme in Währungseinheiten<br/>
+     * Absolute Todesfalländerungssumme in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung<br/>
      * (12,0 Stellen)
      */
@@ -85,7 +82,7 @@ public enum Feld221Wagnis13ZukSummenaenderungen {
     ABSOLUTE_TODESFALLAENDERUNGSSUMME_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Todesfall VS in Währungseinheiten<br/>
+     * Nächste Todesfall VS in Währungseinheiten.<br/>
      * Todesfalleistung ab dem nächsten Änderungstermin<br/>
      * (12,0 Stellen)
      */
@@ -93,7 +90,7 @@ public enum Feld221Wagnis13ZukSummenaenderungen {
     NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Anfängliche Erlebensfall VS in Währungseinheiten<br/>
+     * Anfängliche Erlebensfall VS in Währungseinheiten.<br/>
      * Anfängliche bzw. erste Erlebensfall VS<br/>
      * (12,2 Stellen)
      */
@@ -101,7 +98,7 @@ public enum Feld221Wagnis13ZukSummenaenderungen {
     ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Absolute Erlebensfall VS in Währungseinheiten<br/>
+     * Absolute Erlebensfall VS in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Erlebensfall VS<br/>
      * (12,2 Stellen)
      */
@@ -109,7 +106,7 @@ public enum Feld221Wagnis13ZukSummenaenderungen {
     ABSOLUTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Erlebensfall VS in Währungseinheiten<br/>
+     * Nächste Erlebensfall VS in Währungseinheiten.<br/>
      * Erlebensfall VS ab dem nächsten Änderungstermin<br/>
      * (12,2 Stellen)
      */

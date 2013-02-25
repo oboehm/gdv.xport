@@ -18,17 +18,14 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart13;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
  * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Bezugsrechte" (Satzart 0220)).
- * 
+ *
  * @author ralfklemmer
  * @since 17.01.2013
  */
@@ -69,7 +66,7 @@ public enum Feld220Wagnis13Bezugsrechte {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Bezugsberechtigt im Erlebensfall<br/>
+     * Bezugsberechtigt im Erlebensfall.<br/>
      * 1 = Versicherungsnehmer<br/>
      * 2 = Versicherte Person<br/>
      * 9 = Sonstiger Bezugsberechtigter
@@ -78,27 +75,27 @@ public enum Feld220Wagnis13Bezugsrechte {
     BEZUGSBERECHTIGT_IM_ERLEBENSFALL,
 
     /**
-     * Sonstiger Bezugsberechtigter im Erlebensfall<br/>
+     * Sonstiger Bezugsberechtigter im Erlebensfall.<br/>
      * Klartext (z. B. Name, Vorname)
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 65)
     SONSTIGER_BEZUGSBERECHTIGTER_IM_ERLEBENSFALL,
 
     /**
-     * Bezugsrechtanteil im Erlebensfall in Prozent (3,2 Stellen)
+     * Bezugsrechtanteil im Erlebensfall in Prozent (3,2 Stellen).
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 95)
     BEZUGSRECHTANTEIL_IM_ERLEBENSFALL,
 
     /**
-     * Unwiderrufliches Bezugsrecht im Erlebensfall<br/>
+     * Unwiderrufliches Bezugsrecht im Erlebensfall.<br/>
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 100)
     UNWIDERRUFLICHES_BEZUGSRECHT_IM_ERLEBENSFALL,
 
     /**
-     * Bezugsberechtigt im Todesfall<br/>
+     * Bezugsberechtigt im Todesfall.<br/>
      * 1 = Versicherungsnehmer<br/>
      * 2 = gesetzliche Erbfolge<br/>
      * 3 = Reihenfolge: Ehegatte, Kinder, Eltern, Erben<br/>
@@ -108,21 +105,21 @@ public enum Feld220Wagnis13Bezugsrechte {
     BEZUGSBERECHTIGT_IM_TODESFALL,
 
     /**
-     * Sonstiger Bezugsberechtigter im Todesfall<br/>
+     * Sonstiger Bezugsberechtigter im Todesfall.<br/>
      * Klartext (z. B. Name, Vorname)
      */
     @FeldInfo(teildatensatz = 1, nr = 17, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 102)
     SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL,
 
     /**
-     * Bezugsrechtanteil im Todesfall<br/>
+     * Bezugsrechtanteil im Todesfall.<br/>
      * in Prozent (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 132)
     BEZUGSRECHTANTEIL_IM_TODESFALL,
 
     /**
-     * Unwiderrufliches Bezugsrecht im Todesfall<br/>
+     * Unwiderrufliches Bezugsrecht im Todesfall.<br/>
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 19, type = AlphaNumFeld.class, anzahlBytes = 1, byteAdresse = 137)

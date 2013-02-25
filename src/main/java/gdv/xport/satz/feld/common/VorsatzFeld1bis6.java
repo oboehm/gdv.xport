@@ -19,20 +19,18 @@
 package gdv.xport.satz.feld.common;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 
 /**
  * Jeder Vorsatz beginnt mit denselben 6 Feldern. Dies sind die Felder, die in diesem Enum zusammengefasst sind.
- * 
+ *
  * @author oliver
  * @since 0.9.0 (22.11.2012)
  */
 public enum VorsatzFeld1bis6 {
 
     /**
-     * Satzart
+     * Satzart.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -42,12 +40,12 @@ public enum VorsatzFeld1bis6 {
             byteAdresse = 1
             )
     SATZART,
-    
+
     /**
      * VU-Nummer
-     * 
+     *
      * Gemäß VU-Verzeichnis der BaFin,, linksbündig,
-     * Das VU-Nr.-Verzeichnis kann bei der Bundesanstalt für Finanzdienstleistungsaufsicht 
+     * Das VU-Nr.-Verzeichnis kann bei der Bundesanstalt für Finanzdienstleistungsaufsicht
      * in Bonn angefordert werden (Graurheindorfer Str. 108, 53117 Bonn, www.bafin.de).
      */
     @FeldInfo(
@@ -61,9 +59,9 @@ public enum VorsatzFeld1bis6 {
 
     /**
      * Absender
-     * 
-     * Bei Übertragung via DFÜ kann hier statt 
-     * Klartext eine Empfänger- oder 
+     *
+     * Bei Übertragung via DFÜ kann hier statt
+     * Klartext eine Empfänger- oder
      * Absender-Codierung eingestellt werden.
      */
     @FeldInfo(
@@ -74,9 +72,9 @@ public enum VorsatzFeld1bis6 {
             byteAdresse = 10
     )
     ABSENDER,
-    
+
     /**
-     * Adressat
+     * Adressat.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -86,9 +84,9 @@ public enum VorsatzFeld1bis6 {
             byteAdresse = 40
             )
     ADRESSAT,
-    
+
     /**
-     * Erstellungs-Datum- Zeitraum vom- Zeitraum bis
+     * Erstellungs-Datum- Zeitraum vom- Zeitraum bis.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -98,9 +96,9 @@ public enum VorsatzFeld1bis6 {
             byteAdresse = 70
             )
     ERSTELLUNGSDATUM_ZEITRAUM_VOM,
-    
+
     /**
-     * Erstellungs-Datum- Zeitraum vom- Zeitraum bis
+     * Erstellungs-Datum- Zeitraum vom- Zeitraum bis.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -110,10 +108,10 @@ public enum VorsatzFeld1bis6 {
             byteAdresse = 78
             )
     ERSTELLUNGSDATUM_ZEITRAUM_BIS,
-    
+
     /**
-     * Geschäftsstelle und Vermittler
-     * Die geschäftsführende Geschäftsstelle und der Vermittler 
+     * Geschäftsstelle und Vermittler.
+     * Die geschäftsführende Geschäftsstelle und der Vermittler
      * ohne Sonderzeichen
      */
     @FeldInfo(
@@ -123,6 +121,6 @@ public enum VorsatzFeld1bis6 {
             anzahlBytes = 10,
             byteAdresse = 86
             )
-    VERMITTLER
+    VERMITTLER;
 
 }

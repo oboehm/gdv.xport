@@ -18,13 +18,8 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart13;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -63,7 +58,7 @@ public enum Feld220Wagnis13 {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden <br>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.<br>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = Datum.class, anzahlBytes = 8, byteAdresse = 62)
@@ -78,20 +73,20 @@ public enum Feld220Wagnis13 {
     ABLAUF,
 
     /**
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 78)
     AENDERUNG,
 
     /**
-     * JJJ Jahre (lebenslänglich ist mit Wert 999 zu schlüsseln)
+     * JJJ Jahre (lebenslänglich ist mit Wert 999 zu schlüsseln).
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 86)
     VERTRAGSLAUFZEIT,
 
     /**
-     * 1 = Grundvertrag<br/>
+     * 1 = Grundvertrag.<br/>
      * 2 = Dynamik<br/>
      * 3 = Grundvertrag incl. vorletzter Dynamik<br/>
      * 4 = Grundvertrag incl. letzter Dynamik.
@@ -106,7 +101,7 @@ public enum Feld220Wagnis13 {
     BEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Erlebensfall VS in Währungseinheiten zum Ablauf<br/>
+     * Erlebensfall VS in Währungseinheiten zum Ablauf.<br/>
      * Vertraglich vereinbarte Versicherungssumme im Erlebensfall (aktuelle VS)<br/>
      * zum Ablauf (inkl. Abrufphase)<br/>
      * (9,0 Stellen)
@@ -115,7 +110,7 @@ public enum Feld220Wagnis13 {
     ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_ABLAUF,
 
     /**
-     * Todesfall VS in Währungseinheiten zum Ablauf<br/>
+     * Todesfall VS in Währungseinheiten zum Ablauf.<br/>
      * Vertraglich vereinbarte Versicherungssumme im Todesfall (aktuelle VS)<br/>
      * zum Ablauf (inkl. Abrufphase)<br/>
      * (9,0 Stellen)
@@ -124,14 +119,14 @@ public enum Feld220Wagnis13 {
     TODESFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF,
 
     /**
-     * fallende VS<br/>
+     * fallende VS.<br/>
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 19, type = AlphaNumFeld.class, anzahlBytes = 1, byteAdresse = 120)
     FALLENDE_VS,
 
     /**
-     * Nettobeitrag in Währungseinheiten<br/>
+     * Nettobeitrag in Währungseinheiten.<br/>
      * Beitrag gem. Zahlungsweise nach Überschussanrehnung<br/>
      * (10,2 Stellen)
      */
@@ -140,7 +135,7 @@ public enum Feld220Wagnis13 {
 
     /**
      * Erlebensfall VS II in Währungseinheiten zum Ablauf<br/>
-     * nach Überschussanrechnung erreichte Summe zum Ablauf (inkl. Abrufphase)<br/>
+     * nach Überschussanrechnung erreichte Summe zum Ablauf (inkl. Abrufphase).<br/>
      * (9,0 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 21, type = NumFeld.class, anzahlBytes = 9, byteAdresse = 133)
@@ -196,42 +191,42 @@ public enum Feld220Wagnis13 {
     UEBERSCHUSS_GUELTIG_AB,
 
     /**
-     * Risikoeinschränkung<br/>
+     * Risikoeinschränkung.<br/>
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 29, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 191)
     RISIKOEINSCHRAENKUNG,
 
     /**
-     * Risikozuschläge<br/>
+     * Risikozuschläge.<br/>
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 30, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 192)
     RISIKOZUSCHLAEGE,
 
     /**
-     * Dynamik %-Satz<br/>
+     * Dynamik %-Satz.<br/>
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 31, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 193)
     DYNAMIK_PROZENT_SATZ,
 
     /**
-     * Erhöhungsbasis Dynamik<br/>
+     * Erhöhungsbasis Dynamik.<br/>
      * 1 = Beitrag, 2 = Versicherungssumme
      */
     @FeldInfo(teildatensatz = 1, nr = 32, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 198)
     ERHOEHUNGSBASIS_DYNAMIK,
 
     /**
-     * Erhöhungsart Dynamik<br/>
+     * Erhöhungsart Dynamik.<br/>
      * siehe Anlage 72
      */
     @FeldInfo(teildatensatz = 1, nr = 33, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 199)
     ERHOEHUNGSART_DYNAMIK,
 
     /**
-     * Dynamikstop<br/>
+     * Dynamikstop.<br/>
      * Datum, ab dem keine Dynamikerhöhung mehr möglich ist.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -240,7 +235,7 @@ public enum Feld220Wagnis13 {
     DYNAMIKSTOP,
 
     /**
-     * Datum der letzten positiven Dynamik<br/>
+     * Datum der letzten positiven Dynamik.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -248,21 +243,21 @@ public enum Feld220Wagnis13 {
     DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK,
 
     /**
-     * Endalter<br/>
+     * Endalter.<br/>
      * JJJ Alter Lebenslänglich ist mit 999 zu schlüsseln
      */
     @FeldInfo(teildatensatz = 1, nr = 36, type = Zeichen.class, anzahlBytes = 3, byteAdresse = 216)
     ENDALTER,
 
     /**
-     * Eintrittsalter<br/>
+     * Eintrittsalter.<br/>
      * JJ Alter
      */
     @FeldInfo(teildatensatz = 1, nr = 37, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 219)
     EINTRITTSALTER,
 
     /**
-     * Vertrag mit Zuwachsgarantie<br/>
+     * Vertrag mit Zuwachsgarantie.<br/>
      * Recht auf Dynamikerhöhungen<br/>
      * 0 = nein, 1 = ja
      */
@@ -270,7 +265,7 @@ public enum Feld220Wagnis13 {
     VERTRAG_MIT_ZUWACHSGARANTIE,
 
     /**
-     * Rückkaufswert in Währungseinheiten<br/>
+     * Rückkaufswert in Währungseinheiten.<br/>
      * kumuliert, incl. aller Dynamiken<br/>
      * (9,0 Stellen)
      */
@@ -285,14 +280,14 @@ public enum Feld220Wagnis13 {
     RUECKKAUFSWERT_GUELTIG_AB,
 
     /**
-     * Guthaben Divid. Ansammlungen in Währungseinheiten<br/>
+     * Guthaben Divid. Ansammlungen in Währungseinheiten.<br/>
      * Aktuelle Ansammlung
      */
     @FeldInfo(teildatensatz = 1, nr = 41, type = Betrag.class, anzahlBytes = 9, byteAdresse = 237)
     GUTHABEN_DIVID_ANSAMMLUNGEN_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Umtauschrecht<br/>
+     * Umtauschrecht.<br/>
      * Recht auf Wagniswechsel<br/>
      * 0 = nein, 1 = ja
      */
@@ -300,14 +295,14 @@ public enum Feld220Wagnis13 {
     UMTAUSCHRECHT,
 
     /**
-     * Sparvorgang<br/>
+     * Sparvorgang.<br/>
      * 1 = gestundet, 2 = ausgesetzt
      */
     @FeldInfo(teildatensatz = 1, nr = 43, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 247)
     SPARVORGANG,
 
     /**
-     * gestundet / ausgesetzt bis<br/>
+     * gestundet / ausgesetzt bis.<br/>
      * Sparvorgang bis. Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden
      */
     @FeldInfo(teildatensatz = 1, nr = 44, type = Datum.class, anzahlBytes = 8, byteAdresse = 248)
@@ -340,14 +335,14 @@ public enum Feld220Wagnis13 {
     LFD_NUMMER_ZUR_WAGNISART2,
 
     /**
-     * Abweichende Vertragslaufzeit<br/>
+     * Abweichende Vertragslaufzeit.<br/>
      * Abgekürzte oder verlängerte Vertragslaufzeit Anzahl Jahre (JJJ) Lebenslänglich ist mit "999" zu schlüsseln<br/>
      */
     @FeldInfo(teildatensatz = 2, nr = 11, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 62)
     ABWEICHENDE_VERTRAGSLAUFZEIT,
 
     /**
-     * Abweichender Ablauf<br/>
+     * Abweichender Ablauf.<br/>
      * Ablauf abgekürzt oder verlängert Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt <br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -355,7 +350,7 @@ public enum Feld220Wagnis13 {
     ABWEICHENDER_ABLAUF,
 
     /**
-     * Risikozuschlag in Währungseinheiten<br/>
+     * Risikozuschlag in Währungseinheiten.<br/>
      * Risikozuschlag gem. Zahlungsweise<br/>
      * (10,2 Stellen)
      */
@@ -363,14 +358,14 @@ public enum Feld220Wagnis13 {
     RISIKOZUSCHLAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Tarifbezeichnung des Folgetarifs<br/>
+     * Tarifbezeichnung des Folgetarifs.<br/>
      * Klartextbezeichnung des Folgetarifs (wenn der Tarif noch nicht umgestellt wurde)
      */
     @FeldInfo(teildatensatz = 2, nr = 14, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 85)
     TARIFBEZEICHNUNG_DES_FOLGETARIFS,
 
     /**
-     * Umstellungsdatum des Folgetarifs<br/>
+     * Umstellungsdatum des Folgetarifs.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -378,7 +373,7 @@ public enum Feld220Wagnis13 {
     UMSTELLUNGSDATUM_DES_FOLGETARIFS,
 
     /**
-     * Zukünftiger Beitrag in Währungseinheiten<br/>
+     * Zukünftiger Beitrag in Währungseinheiten.<br/>
      * gem. Zahlungsweise wenn der Beitrag noch nicht umgestellt wurde<br/>
      * (10,2 Stellen)
      */
@@ -386,14 +381,14 @@ public enum Feld220Wagnis13 {
     ZUKUENFTIGER_BEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Vertragsbedingung<br/>
+     * Vertragsbedingung.<br/>
      * Individuelle Vertragsbedingung (frei definierbar)
      */
     @FeldInfo(teildatensatz = 2, nr = 17, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 135)
     VERTRAGSBEDINGUNG,
 
     /**
-     * Dynamikbeginn<br/>
+     * Dynamikbeginn.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.<br/>
      * Datum der ersten Dynamikerhöhung<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -402,7 +397,7 @@ public enum Feld220Wagnis13 {
     DYNAMIKBEGINN,
 
     /**
-     * Abweichendes Dynamikendalter<br/>
+     * Abweichendes Dynamikendalter.<br/>
      * Wenn abweichend von normalem Endalter<br/>
      * (JJJ)
      */
@@ -410,14 +405,14 @@ public enum Feld220Wagnis13 {
     ABWEICHENDES_DYNAMIKENDALTER,
 
     /**
-     * Absoluter Dynamikerhöhungsbetrag<br/>
+     * Absoluter Dynamikerhöhungsbetrag.<br/>
      * (9,0 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 20, type = Betrag.class, anzahlBytes = 9, byteAdresse = 176)
     ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG,
 
     /**
-     * Anteiliger Dynamikprozentsatz<br/>
+     * Anteiliger Dynamikprozentsatz.<br/>
      * Prozentualer Anteil am Dynamikerhöhungsbetrag Sozialversicherung prozentual oder absolut<br/>
      * bzw. Gehaltsanpassung (3,2 Stellen)<br/>
      * z. B.: 100,00 = volle absolute BfA-Dynamik<br/>
@@ -427,28 +422,28 @@ public enum Feld220Wagnis13 {
     ANTEILIGER_DYNAMIKPROZENTSATZ,
 
     /**
-     * Vereinbarter Dynamikmindestanpassungsprozentsatz<br/>
+     * Vereinbarter Dynamikmindestanpassungsprozentsatz.<br/>
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 22, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 190)
     VEREINBARTER_DYNAMIKMINDESTANPASSUNGSPROZENTSATZ,
 
     /**
-     * Vereinbarter Dynamikmaximalanpassungsprozentsatz<br/>
+     * Vereinbarter Dynamikmaximalanpassungsprozentsatz.<br/>
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 23, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 195)
     VEREINBARTER_DYNAMIKMAXIMALANPASSUNGSPROZENTSATZ,
 
     /**
-     * Anzahl verbleibende Dynamikwidersprüche<br/>
+     * Anzahl verbleibende Dynamikwidersprüche.<br/>
      * Anzahl der verbleibenden Dynamikwidersprüche, ohne das Recht auf Dynamikerhöhung zu verlieren
      */
     @FeldInfo(teildatensatz = 2, nr = 24, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 200)
     ANZAHL_VERBLEIBENDE_DYNAMIKWIDERSPRUECHE,
 
     /**
-     * Leistung bei schwerer Erkrankung<br/>
+     * Leistung bei schwerer Erkrankung.<br/>
      * "Dread Disease"<br/>
      * 0 = nein, 1 = ja
      */
@@ -456,7 +451,7 @@ public enum Feld220Wagnis13 {
     LEISTUNG_BEI_SCHWERER_ERKRANKUNG,
 
     /**
-     * Versicherte Erkrankungen<br/>
+     * Versicherte Erkrankungen.<br/>
      * Versicherte Erkrankungen bei "Dread Disease" (15 x 2 Stellen)<br/>
      * 01 = Herzinfarkt<br/>
      * 02 = Schlaganfall<br/>
@@ -470,7 +465,7 @@ public enum Feld220Wagnis13 {
     VERSICHERTE_ERKRANKUNGEN,
 
     /**
-     * Leistungsbeginn ab<br/>
+     * Leistungsbeginn ab.<br/>
      * Leistungsbeginn / Karenzzeit bei Dread Disease"<br/>
      * (xxxT) oder (xxxW).<br/>
      * Die letzte Stelle muss mit "T" oder "W" belegt werden wenn Eintrag vorhanden,<br/>
@@ -480,7 +475,7 @@ public enum Feld220Wagnis13 {
     LEISTUNGSBEGINN_AB,
 
     /**
-     * Beginn Abrufphase<br/>
+     * Beginn Abrufphase.<br/>
      * Termin an dem die Abrufphase beginnt.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -521,7 +516,7 @@ public enum Feld220Wagnis13 {
     LFD_NUMMER_ZUR_WAGNISART3,
 
     /**
-     * Erlebensfall VS in Währungseinheiten zum Beginn der Abrufphase<br/>
+     * Erlebensfall VS in Währungseinheiten zum Beginn der Abrufphase.<br/>
      * Vertraglich vereinbarte Versicherungssumme im Erlebensfall (aktuelle VS) zum Beginn der Abrufphase<br/>
      * (12,2 Stellen)
      */
@@ -529,14 +524,14 @@ public enum Feld220Wagnis13 {
     ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE,
 
     /**
-     * Todesfall VS in Währungseinheiten zum Beginn der Abrufphase<br/>
+     * Todesfall VS in Währungseinheiten zum Beginn der Abrufphase.<br/>
      * Vertraglich vereinbarte Versicherungssumme im Todesfall (aktuelle VS) zum Beginn der Abrufphase<br/>
      * (12,2 Stellen)
      */
     @FeldInfo(teildatensatz = 3, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 90)
     TODESFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE,
     /**
-     * Todesfall VS II in Währungseinheiten zum Beginn der Abrufphase<br/>
+     * Todesfall VS II in Währungseinheiten zum Beginn der Abrufphase.<br/>
      * nach Überschussanrechnung erreichte Summe zum Beginn der Abrufphase<br/>
      * (12,2 Stellen)
      */
