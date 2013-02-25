@@ -50,6 +50,23 @@
   
   	<plugins>
   	
+      <!-- 
+          Make The Jar Executable
+          see http://maven.apache.org/shared/maven-archiver/examples/classpath.html
+       -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>gdv.xport.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
       <!--
           Maven Site Plugin
           call 'mvn site:site' to generate web site
