@@ -2,11 +2,7 @@ package gdv.xport.satz.feld.sparte40;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -27,7 +23,7 @@ public enum Feld210 {
     INTRO1,
 
     /**
-     * Vertragsstatus<br/>
+     * Vertragsstatus.<br/>
      * 1 = lebend<br/>
      * 2 = lebend / kurzfristig / unterjährig<br/>
      * 3 = ruhend / Anwartschaft<br/>
@@ -47,7 +43,7 @@ public enum Feld210 {
     VERTRAGSSTATUS,
 
     /**
-     * Beginn<br/>
+     * Beginn.<br/>
      * Beginn der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein, muss
      * "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -61,7 +57,7 @@ public enum Feld210 {
     BEGINN,
 
     /**
-     * Ausschluss<br/>
+     * Ausschluss.<br/>
      * Ausschluss der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
      * muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -75,7 +71,7 @@ public enum Feld210 {
     AUSSCHLUSS,
 
     /**
-     * Änderungsdatum<br/>
+     * Änderungsdatum.<br/>
      * Termin, zu dem der Vertragszustand wirksam wird/wurde (Gültig-ab- /
      * Wirksam-ab-Datum).<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -89,7 +85,7 @@ public enum Feld210 {
     AENDERUNGSDATUM,
 
     /**
-     * Summenart 1<br/>
+     * Summenart 1.<br/>
      * 1 = Personenschäden<br/>
      * 2 = Sachschäden<br/>
      * 3 = Personen- und Sachschäden<br/>
@@ -114,7 +110,7 @@ public enum Feld210 {
     SUMMENART_1,
 
     /**
-     * Währungsschlüssel 1<br/>
+     * Währungsschlüssel 1.<br/>
      * ISO-Code, siehe Anlage 3
      */
     @FeldInfo(
@@ -126,7 +122,7 @@ public enum Feld210 {
     WAEHRUNGSSCHLUESSEL_1,
 
     /**
-     * Deckungssumme 1 in Tausend Währungseinheiten<br/>
+     * Deckungssumme 1 in Tausend Währungseinheiten.<br/>
      * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
      * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
      * den Wagnisteilen (Satzart 0220) zu schlüsseln
@@ -140,7 +136,7 @@ public enum Feld210 {
     DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 2<br/>
+     * Summenart 2.<br/>
      * Details siehe Deckungsart 1
      */
     @FeldInfo(
@@ -152,7 +148,7 @@ public enum Feld210 {
     SUMMENART_2,
 
     /**
-     * Währungsschlüssel 2<br/>
+     * Währungsschlüssel 2.<br/>
      * ISO-Code, siehe Anlage 3
      */
     @FeldInfo(
@@ -164,7 +160,7 @@ public enum Feld210 {
     WAEHRUNGSSCHLUESSEL_2,
 
     /**
-     * Deckungssumme 2 in Tausend Währungseinheiten<br/>
+     * Deckungssumme 2 in Tausend Währungseinheiten.<br/>
      * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
      * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
      * den Wagnisteilen (Satzart 0220) zu schlüsseln
@@ -178,7 +174,7 @@ public enum Feld210 {
     DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 3<br/>
+     * Summenart 3.<br/>
      * Details siehe Deckungsart 1
      */
     @FeldInfo(
@@ -190,7 +186,7 @@ public enum Feld210 {
     SUMMENART_3,
 
     /**
-     * Währungsschlüssel 3<br/>
+     * Währungsschlüssel 3.<br/>
      * ISO-Code, siehe Anlage 3
      */
     @FeldInfo(
@@ -202,7 +198,7 @@ public enum Feld210 {
     WAEHRUNGSSCHLUESSEL_3,
 
     /**
-     * Deckungssumme 3 in Tausend Währungseinheiten<br/>
+     * Deckungssumme 3 in Tausend Währungseinheiten.<br/>
      * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
      * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
      * den Wagnisteilen (Satzart 0220) zu schlüsseln
@@ -216,7 +212,7 @@ public enum Feld210 {
     DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 4<br/>
+     * Summenart 4.<br/>
      * Details siehe Deckungsart 1
      */
     @FeldInfo(
@@ -228,7 +224,7 @@ public enum Feld210 {
     SUMMENART_4,
 
     /**
-     * Währungsschlüssel 4<br/>
+     * Währungsschlüssel 4.<br/>
      * ISO-Code, siehe Anlage 3
      */
     @FeldInfo(
@@ -240,7 +236,7 @@ public enum Feld210 {
     WAEHRUNGSSCHLUESSEL_4,
 
     /**
-     * Deckungssumme 4 in Tausend Währungseinheiten<br/>
+     * Deckungssumme 4 in Tausend Währungseinheiten.<br/>
      * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
      * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
      * den Wagnisteilen (Satzart 0220) zu schlüsseln
@@ -254,7 +250,7 @@ public enum Feld210 {
     DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Kennzeichen für Jahres-Maximierung<br/>
+     * Kennzeichen für Jahres-Maximierung.<br/>
      * 0 = keine<br/>
      * 1 = 1-fach<br/>
      * 2 = 2-fach<br/>
@@ -281,7 +277,7 @@ public enum Feld210 {
     KENNZEICHEN_FUER_JAHRES_MAXIMIERUNG,
 
     /**
-     * Selbstbehalt<br/>
+     * Selbstbehalt.<br/>
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -293,7 +289,7 @@ public enum Feld210 {
     SELBSTBEHALT,
 
     /**
-     * Allgemeine Versicherungsbedingungen<br/>
+     * Allgemeine Versicherungsbedingungen.<br/>
      * Inkraftsetzung bei VU. Monat / Jahr (MMJJ)
      */
     @FeldInfo(
@@ -305,7 +301,7 @@ public enum Feld210 {
     ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN,
 
     /**
-     * Sonderbedingungen<br/>
+     * Sonderbedingungen.<br/>
      * Vertragsbezogene oder unternehmensindividuelle Bedingungen<br/>
      * 0 = nein, 1 = ja
      */
@@ -318,7 +314,7 @@ public enum Feld210 {
     SONDERBEDINGUNGEN,
 
     /**
-     * Währungsschlüssel<br/>
+     * Währungsschlüssel.<br/>
      * ISO-Code, siehe Anlage 3
      */
     @FeldInfo(
@@ -330,7 +326,7 @@ public enum Feld210 {
     WAEHRUNGSSCHLUESSEL,
 
     /**
-     * Zuschlagsbetrag in Währungseinheiten<br/>
+     * Zuschlagsbetrag in Währungseinheiten.<br/>
      * kumulierter Zuschlagsbetrag auf Vertragsebene<br/>
      * (10,2 Stellen)
      */
@@ -343,7 +339,7 @@ public enum Feld210 {
     ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Abschlagsbetrag in Währungseinheiten<br/>
+     * Abschlagsbetrag in Währungseinheiten.<br/>
      * kumulierter Abschlagsbetrag auf Vertragsebene<br/>
      * (10,2 Stellen)
      */
@@ -356,7 +352,7 @@ public enum Feld210 {
     ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Gesamtbeitrag in Währungseinheiten<br/>
+     * Gesamtbeitrag in Währungseinheiten.<br/>
      * Summe aus den Satzarten 0220.<br/>
      * Gesamt-Jahresnetto-Beitrag unter Berücksichtigung aller Zu- und
      * Abschläge gemäß Zahlungsweise ohne Vers.-Steuer und Gebühr<br/>
@@ -371,7 +367,7 @@ public enum Feld210 {
     GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Abschlussprovision<br/>
+     * Abschlussprovision.<br/>
      * Für den betreffenden Vertrag vereinbarter Provisionssatz<br/>
      * (3,2 Stellen)
      */
@@ -384,7 +380,7 @@ public enum Feld210 {
     ABSCHLUSSPROVISION,
 
     /**
-     * Folgeprovision<br/>
+     * Folgeprovision.<br/>
      * s. Erläuterung für Abschlussprovision<br/>
      * (3,2 Stellen)
      */
@@ -397,7 +393,7 @@ public enum Feld210 {
     FOLGEPROVISION,
 
     /**
-     * Kennzeichen für abweichende Abschlussprovision<br/>
+     * Kennzeichen für abweichende Abschlussprovision.<br/>
      * Kennzeichen, dass für den betreffenden Vertrag der Provisionssatz von
      * den allgemeinen Provisionsvereinbarungen abweicht<br/>
      * 0 = nein, 1 = ja
@@ -411,7 +407,7 @@ public enum Feld210 {
     KENNZEICHEN_FUER_ABWEICHENDE_ABSCHLUSSPROVISION,
 
     /**
-     * Kennzeichen für abweichende Folgeprovision<br/>
+     * Kennzeichen für abweichende Folgeprovision.<br/>
      * s. Erläuterung: Kennzeichen für abweichende Abschlussprovision<br/>
      * 0 = nein, 1 = ja
      */
@@ -424,7 +420,7 @@ public enum Feld210 {
     KENNZEICHEN_FUER_ABWEICHENDE_FOLGEPROVISION,
 
     /**
-     * Restlaufzeit des Vertrages<br/>
+     * Restlaufzeit des Vertrages.<br/>
      * gemäß Ablauf des Vertrages Grundlage für die Berechnung von Provision
      * (JJ)
      */
@@ -437,7 +433,7 @@ public enum Feld210 {
     RESTLAUFZEIT_DES_VERTRAGES,
 
     /**
-     * Laufzeitrabatt in %<br/>
+     * Laufzeitrabatt in %.<br/>
      * gemäß Laufzeitrabatt VAG-Novelle 01.07.1991<br/>
      * (2,2 Stellen)
      */
@@ -450,7 +446,7 @@ public enum Feld210 {
     LAUFZEITRABATT_IN_PROZENT,
 
     /**
-     * Produktform<br/>
+     * Produktform.<br/>
      * Unternehmensindividuelle Produktkürzel/-schlüssel
      */
     @FeldInfo(
@@ -462,7 +458,7 @@ public enum Feld210 {
     PRODUKTFORM,
 
     /**
-     * Produktform gültig ab<br/>
+     * Produktform gültig ab.<br/>
      * Versionsdatum der Produktform. Monat / Jahr (MMJJJJ).<br/>
      * Wenn kein Versionsdatum vorhanden, muss das Datum der Produkteinführung
      * geliefert werden.
@@ -472,11 +468,11 @@ public enum Feld210 {
             nr = 39,
             type = Datum.class,
             anzahlBytes = 6,
-            byteAdresse = 184)
+            byteAdresse = 189)
     PRODUKTFORM_GUELTIG_AB,
 
     /**
-     * Produktname<br/>
+     * Produktname.<br/>
      * Produktname
      */
     @FeldInfo(
@@ -488,7 +484,7 @@ public enum Feld210 {
     PRODUKTNAME,
 
     /**
-     * Referenznummer<br/>
+     * Referenznummer.<br/>
      *
      * Wenn in einem gebündelten Vertrag (Bündelungskennzeichen = 1) mehrere
      * gleiche Sparten unter der selben Versicherungsscheinnummer gebündelt
@@ -512,4 +508,5 @@ public enum Feld210 {
             anzahlBytes = 35,
             byteAdresse = 222)
     LEERSTELLEN
+
 }
