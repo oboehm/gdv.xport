@@ -3,45 +3,29 @@
  */
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.SATZART;
+import static gdv.xport.feld.Bezeichner.*;
 import static patterntesting.runtime.NullConstants.NULL_STRING;
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
+import gdv.xport.annotation.*;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.MetaFeldInfo;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PushbackReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
-import net.sf.oval.ConstraintViolation;
-import net.sf.oval.Validator;
+import net.sf.oval.*;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 /**
  * Die Satz-Klasse ist die oberste Klasse, von der alle weiteren Saetze
  * abgeleitet sind.
- * 
+ *
  * @author oliver
  */
 public abstract class Satz {
@@ -66,7 +50,7 @@ public abstract class Satz {
 
 	/**
 	 * Instantiates a new satz.
-	 * 
+	 *
 	 * @param art Satzart
 	 * @param n Anzahl der Teildatensaetze
 	 */
@@ -77,7 +61,7 @@ public abstract class Satz {
 
 	/**
 	 * Instantiates a new satz.
-	 * 
+	 *
 	 * @param content the content
 	 * @param n the n
 	 */
@@ -95,7 +79,7 @@ public abstract class Satz {
 
 	/**
 	 * The Constructor.
-	 * 
+	 *
 	 * @param art z.B. 100 (f. Adressteil)
 	 * @param n Anzahl der Teildatensaetze
 	 */
@@ -106,7 +90,7 @@ public abstract class Satz {
 
 	/**
 	 * Instanziiert einen neuen Satz.
-	 * 
+	 *
 	 * @param art z.B. 100 (f. Adressteil)
 	 * @param tdsList Liste mit den Teildatensaetzen
 	 */
@@ -131,7 +115,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert alle Teildatensaetze zurueck.
-	 * 
+	 *
 	 * @return Teildatensaetze
 	 * @since 0.2
 	 */
@@ -141,7 +125,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert die Anzahl der Teildatensaetze.
-	 * 
+	 *
 	 * @return Anzahl der Teildatensaetze.
 	 * @since 0.6
 	 */
@@ -151,7 +135,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert den n-ten Teildatensatz zurueck.
-	 * 
+	 *
 	 * @param n Nummer des Teildatensatzes (beginnend mit 1)
 	 * @return the teildatensatz
 	 * @since 0.2
@@ -163,7 +147,7 @@ public abstract class Satz {
 	/**
 	 * Hiermit koennen Unterklassen alle Teildatensaetze wieder entfernen (wird
 	 * z.B. vom Satz 0220.030 benoetigt).
-	 * 
+	 *
 	 * @since 0.4
 	 */
 	public final void removeAllTeildatensaetze() {
@@ -172,7 +156,7 @@ public abstract class Satz {
 
 	/**
 	 * Entfernt alle Teildatensaetze >= n.
-	 * 
+	 *
 	 * @since 0.4
 	 * @param n ab hier wird abgeschnitten (n >= 1)
 	 */
@@ -187,7 +171,7 @@ public abstract class Satz {
 	/**
 	 * Entfernt den gewuenschten Teildatensatz. Ein neuer Teildatensatz kann
 	 * ueber add() hinzugefuegt werden.
-	 * 
+	 *
 	 * @see #add(Teildatensatz)
 	 * @since 0.4
 	 * @param n der gewuenschte Teildatensatz (beginnend bei 1)
@@ -202,7 +186,7 @@ public abstract class Satz {
 
 	/**
 	 * Und hierueber kann ein Teildatensatz hinzugefuegt werden.
-	 * 
+	 *
 	 * @since 0.4
 	 * @param tds der neue (gefuellte) Teildatensatz
 	 */
@@ -212,7 +196,7 @@ public abstract class Satz {
 
 	/**
 	 * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu.
-	 * 
+	 *
 	 * @param feld the feld
 	 */
 	public void add(final Feld feld) {
@@ -221,7 +205,7 @@ public abstract class Satz {
 
 	/**
 	 * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu.
-	 * 
+	 *
 	 * @param feld the feld
 	 * @param teildatensatzNr the teildatensatz nr
 	 */
@@ -246,7 +230,7 @@ public abstract class Satz {
 	/**
 	 * Falls ein Feld zuviel gesetzt wurde, kann es mit 'remove" wieder entfernt
 	 * werden.
-	 * 
+	 *
 	 * @param name Name des Feldes
 	 */
 	public void remove(final String name) {
@@ -261,7 +245,7 @@ public abstract class Satz {
 	 * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
 	 * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
 	 * gefunden wird, wird eine IllegalArgumentException geworfen.
-	 * 
+	 *
 	 * @param name Name des Felds (Bezeichnung)
 	 * @param value the value
 	 */
@@ -281,7 +265,7 @@ public abstract class Satz {
 
 	/**
 	 * Setzt den Inhalt des gewuenschten Feldes.
-	 * 
+	 *
 	 * @param feldX das gewuenschte Feld-Element
 	 * @param value neuer Inhalt
 	 */
@@ -292,7 +276,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert den Inhalt des gewuenschten Feldes.
-	 * 
+	 *
 	 * @param name gesuchtes Feld
 	 * @return Inhalt des gefundenden Felds (NULL_STRING, falls 'name' nicht
 	 * gefunden wurde)
@@ -308,7 +292,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert den Inhalt des gewuenschten Feldes.
-	 * 
+	 *
 	 * @param feldX das gewuenschte Feld-Element
 	 * @return Inhalt des gefundenden Felds
 	 */
@@ -319,7 +303,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert das gewuenschte Feld.
-	 * 
+	 *
 	 * @param feld gewuenschtes Feld-Element
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
@@ -341,7 +325,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert das gewuenschte Feld falls vorhanden oder null.
-	 * 
+	 *
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
@@ -362,7 +346,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert das gewuenschte Feld.
-	 * 
+	 *
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
@@ -384,7 +368,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert den Inhalt des gewuenschten Feldes.
-	 * 
+	 *
 	 * @since 0.3
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
@@ -395,7 +379,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert das gewuenschte Feld.
-	 * 
+	 *
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @param nr Nummer des Teildatensatzes (1, 2, ...)
 	 * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
@@ -408,7 +392,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert den Inhalt des gewuenschten Feldes.
-	 * 
+	 *
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @param nr Nummer des Teildatensatzes (1, 2, ...)
 	 * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
@@ -420,7 +404,7 @@ public abstract class Satz {
 
 	/**
 	 * Liefert die Satzart.
-	 * 
+	 *
 	 * @return the satzart
 	 */
 	public final NumFeld getSatzartFeld() {
@@ -428,6 +412,8 @@ public abstract class Satz {
 	}
 
 	/**
+	 * Liefert die Satzart zurueck.
+	 *
 	 * @since 0.3
 	 * @return die Satzart als int
 	 */
@@ -436,8 +422,33 @@ public abstract class Satz {
 	}
 
 	/**
+	 * Schaut nach einem Feld "SPARTE" und liefert true zurueck, falls es
+	 * existiert.
+	 *
+	 * @since 0.9
+	 * @return true, falls Sparten-Feld vorhanden ist
+	 */
+	public boolean hasSparte() {
+	    Feld sparte = this.getFeld(Feld1bis7.SPARTE);
+	    return sparte != Feld.NULL_FELD;
+	}
+
+	/**
+	 * Liefert den Inhalt des Sparten-Felds. Vorher sollte allerdings mittels
+	 * {@link #hasSparte()} geprueft werden, ob der Satz ein Sparten-Feld
+	 * besitzt.
+	 *
+     * @since 0.9
+	 * @return die Sparte
+	 */
+	public int getSparte() {
+	    NumFeld sparte = (NumFeld) this.getFeld(Feld1bis7.SPARTE);
+	    return sparte.toInt();
+	}
+
+	/**
 	 * Export.
-	 * 
+	 *
 	 * @param writer the writer
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -449,7 +460,7 @@ public abstract class Satz {
 
 	/**
 	 * Export.
-	 * 
+	 *
 	 * @param writer the writer
 	 * @param eod das End-of-Datensatz- oder Trennzeichen (z.B. linefeed)
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -477,7 +488,7 @@ public abstract class Satz {
 	 * kollidiert leider mit dem Schluesselwort "import" in Java. Inzwischen
 	 * beruecksichtigt diese Import-Methode auch zusaetzlich eingestreute
 	 * Newlines ("\n") oder/und Wagenruecklaeufe ("\r").
-	 * 
+	 *
 	 * @param s the s
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -498,7 +509,7 @@ public abstract class Satz {
 	/**
 	 * Ermittelt die Satzlaenge. Je nachdem, ob das Zeilenende aus keinem, einem
 	 * oder zwei Zeichen besteht, wird 256, 257 oder 258 zurueckgegeben.
-	 * 
+	 *
 	 * @since 0.4
 	 * @param s der komplette Satz
 	 * @return 256, 257 oder 258
@@ -524,7 +535,7 @@ public abstract class Satz {
 
 	/**
 	 * Import from.
-	 * 
+	 *
 	 * @param istream the istream
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -534,7 +545,7 @@ public abstract class Satz {
 
 	/**
 	 * Import from.
-	 * 
+	 *
 	 * @param reader the reader
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -547,7 +558,7 @@ public abstract class Satz {
 	 * Satzart und Sparte wieder zurueckgesetllt werden kann. Seit 0.5.1 ist
 	 * diese Methode nicht mehr final, da manche Satzarten wohl Eigenarten haben
 	 * koennen (wie z.B. fehlende Sparten-Eintraege).
-	 * 
+	 *
 	 * @param reader the reader
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
@@ -571,7 +582,7 @@ public abstract class Satz {
 	 * die Sparte ueberprueft wird, ob sie noch richtig ist oder ob da schon der
 	 * naechste Satz beginnt. Hier (fuer den allgemeinen Fall) wird nur die
 	 * Satzart ueberprueft.
-	 * 
+	 *
 	 * @param reader the reader
 	 * @return true (Default-Implementierung)
 	 * @throws IOException bei I/O-Fehlern
@@ -594,7 +605,7 @@ public abstract class Satz {
 	/**
 	 * Liest 4 Bytes, um die Satzart zu bestimmen und stellt die Bytes
 	 * anschliessend wieder zurueck in den Reader.
-	 * 
+	 *
 	 * @param reader the reader
 	 * @return Satzart
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -628,7 +639,7 @@ public abstract class Satz {
 	/**
 	 * Aus Performance-Gruenden stuetzt sich diese Methode nicht auf die
 	 * validate()-Methode ab.
-	 * 
+	 *
 	 * @return true/false
 	 */
 	public boolean isValid() {
@@ -648,7 +659,7 @@ public abstract class Satz {
 
 	/**
 	 * Validiert die einzelnen Teildatensaetze.
-	 * 
+	 *
 	 * @return the list< constraint violation>
 	 */
 	public List<ConstraintViolation> validate() {
@@ -685,7 +696,7 @@ public abstract class Satz {
 
 	/**
 	 * To short string.
-	 * 
+	 *
 	 * @return the string
 	 */
 	public String toShortString() {
@@ -694,7 +705,7 @@ public abstract class Satz {
 
 	/**
 	 * To long string.
-	 * 
+	 *
 	 * @return the string
 	 */
 	public String toLongString() {
@@ -723,7 +734,7 @@ public abstract class Satz {
 
 	/**
 	 * Equals.
-	 * 
+	 *
 	 * @param other the other
 	 * @return true, if successful
 	 */
@@ -756,7 +767,7 @@ public abstract class Satz {
 	/**
 	 * Hier passiert die Magie: die Annotationen der uebergebenen Enum werden
 	 * ausgelesen und in eine Liste mit den Teildatensaetzen zu packen.
-	 * 
+	 *
 	 * @param satzart the satzart
 	 * @param felder the felder
 	 * @return eine Liste mit Teildatensaetzen
@@ -764,7 +775,8 @@ public abstract class Satz {
 	protected static List<Teildatensatz> getTeildatensaetzeFor(final int satzart,
 	        final Enum<?>[] felder) {
 		SortedMap<Integer, Teildatensatz> tdsMap = new TreeMap<Integer, Teildatensatz>();
-		for (MetaFeldInfo metaFeldInfo : getMetaFeldInfos(felder)) {
+		List<MetaFeldInfo> metaFeldInfos = getMetaFeldInfos(felder);
+        for (MetaFeldInfo metaFeldInfo : metaFeldInfos) {
 			int n = metaFeldInfo.getTeildatensatzNr();
 			Teildatensatz tds = tdsMap.get(n);
 			if (tds == null) {
@@ -774,14 +786,48 @@ public abstract class Satz {
 			add(metaFeldInfo.getFeldEnum(), tds);
 
 		}
-		return new ArrayList<Teildatensatz>(tdsMap.values());
+        List<Teildatensatz> teildatensaetze = new ArrayList<Teildatensatz>(tdsMap.values());
+		setSparteFor(teildatensaetze, metaFeldInfos);
+		return teildatensaetze;
 	}
 
-	/**
+    private static void setSparteFor(final List<Teildatensatz> teildatensaetze,
+            final List<MetaFeldInfo> metaFeldInfos) {
+        int sparte = getSparte(metaFeldInfos);
+        if (sparte > 0) {
+            setSparteFor(teildatensaetze, sparte);
+        }
+    }
+
+    private static int getSparte(final List<MetaFeldInfo> metaFeldInfos) {
+        for (MetaFeldInfo info : metaFeldInfos) {
+            if (info.hasSparte()) {
+                return info.getSparte();
+            }
+        }
+        return -1;
+    }
+
+    private static void setSparteFor(final List<Teildatensatz> teildatensaetze, final int sparte) {
+        for (Teildatensatz teildatensatz : teildatensaetze) {
+            setSparteFor(teildatensatz, sparte);
+        }
+    }
+
+    private static void setSparteFor(final Teildatensatz tds, final int sparte) {
+        Feld spartenFeld = tds.getFeld(Feld1bis7.SPARTE);
+        if (spartenFeld == Feld.NULL_FELD) {
+            spartenFeld = new NumFeld(SPARTE, 3, 11);
+            tds.add(spartenFeld);
+        }
+        spartenFeld.setInhalt(sparte);
+    }
+
+    /**
 	 * Wandelt das uebergebene Array in eine Liste mit MetaFeldInfos. Seit 0.7.1
 	 * duerfen Feld-Enums wie {@link gdv.xport.satz.feld.Feld100} auch
 	 * FelderInfo-Annotationen enthalten, die wiederum auf einen Enum verweisen.
-	 * 
+	 *
 	 * @param felder the felder
 	 * @return the meta feld infos
 	 */
@@ -822,7 +868,7 @@ public abstract class Satz {
 	 * Wandelt das uebergebene Array in eine Liste mit Felder. Seit 0.7.1
 	 * duerfen Feld-Enums wie {@link gdv.xport.satz.feld.Feld100} auch
 	 * FelderInfo-Annotationen enthalten, die wiederum auf einen Enum verweisen.
-	 * 
+	 *
 	 * @param felder the felder
 	 * @return the feld info list
 	 */
@@ -854,7 +900,7 @@ public abstract class Satz {
 	 * FIXME: Vorsatz wird noch nicht richtig behandelt, da die ersten 6 Felder
 	 * hier etwas anders behandelt wird.
 	 * </p>
-	 * 
+	 *
 	 * @param feldX das Feld-Element
 	 * @param tds der entsprechende Teildatensatz
 	 */
