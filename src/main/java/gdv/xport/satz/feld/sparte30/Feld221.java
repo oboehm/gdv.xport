@@ -18,11 +18,8 @@
 
 package gdv.xport.satz.feld.sparte30;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 
@@ -39,6 +36,7 @@ public enum Feld221 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
+            sparte = 30,
             teildatensatz = 2,
             type = Feld1bis7.class
     )
@@ -252,6 +250,7 @@ public enum Feld221 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
+            sparte = 30,
             teildatensatz = 3,
             type = Feld1bis7.class
     )

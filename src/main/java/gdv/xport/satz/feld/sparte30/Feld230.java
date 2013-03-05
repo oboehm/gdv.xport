@@ -18,12 +18,8 @@
 
 package gdv.xport.satz.feld.sparte30;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -39,12 +35,13 @@ public enum Feld230 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
+            sparte = 30,
             teildatensatz = 1,
             type = Feld1bis7.class)
     INTRO2,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP) / Personengruppe.
+     * Laufende Nummer der versicherten Person (VP) / Personengruppe.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -55,7 +52,7 @@ public enum Feld230 {
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Art der Leistung<br/>
+     * Art der Leistung.<br/>
      * siehe Anlage 80
      */
     @FeldInfo(
@@ -67,7 +64,7 @@ public enum Feld230 {
     ART_DER_LEISTUNG,
 
     /**
-     * Bezeichnung der Leistung<br/>
+     * Bezeichnung der Leistung.<br/>
      * Text zur Art der Leistung
      */
     @FeldInfo(
@@ -79,7 +76,7 @@ public enum Feld230 {
     BEZEICHNUNG_DER_LEISTUNG,
 
     /**
-     * Laufende Nummer zur Art der Leistung<br/>
+     * Laufende Nummer zur Art der Leistung.<br/>
      * Laufende Nummer zur Art der Leistung,<br/>
      * beginnend mit 001 innerhalb der lfd. Nummer der Person / Personengruppen
      */
@@ -92,7 +89,7 @@ public enum Feld230 {
     LFD_NUMMER_ZUR_ART_DER_LEISTUNG,
 
     /**
-     * Art der Auszahlung<br/>
+     * Art der Auszahlung.<br/>
      * 01 = Kapital<br/>
      * 02 = Rente<br/>
      * 03 = Sachleistung<br/>
@@ -107,7 +104,7 @@ public enum Feld230 {
     ART_DER_AUSZAHLUNG,
 
     /**
-     * Leistungszahlungsweise<br/>
+     * Leistungszahlungsweise.<br/>
      * Es handelt sich hier um die Zahlweise bei Eintritt einer Leistung! 1 =
      * jährlich<br/>
      * 2 = halbjährlich<br/>
@@ -138,7 +135,7 @@ public enum Feld230 {
     BEGINN_DER_ZAHLUNG_AB_TAG,
 
     /**
-     * Leistung in WE<br/>
+     * Leistung in WE.<br/>
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -150,7 +147,7 @@ public enum Feld230 {
     LEISTUNG,
 
     /**
-     * Beitragssatz<br/>
+     * Beitragssatz.<br/>
      * (3,4 Stellen)
      */
     @FeldInfo(
@@ -163,7 +160,7 @@ public enum Feld230 {
     BEITRAGSSATZ,
 
     /**
-     * Art des Beitragssatzes<br/>
+     * Art des Beitragssatzes.<br/>
      * 01 = von Tausend (Promille)<br/>
      * 02 = von Hundert (Prozent)<br/>
      * 03 = Faktor<br/>
@@ -179,7 +176,7 @@ public enum Feld230 {
 
 
     /**
-     * Beitrag in WE<br/>
+     * Beitrag in WE.<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -191,7 +188,7 @@ public enum Feld230 {
     BEITRAG,
 
     /**
-     * Prozentsatz progressive Invalidität / Mehrleistung bei Invalidität<br/>
+     * Prozentsatz progressive Invalidität / Mehrleistung bei Invalidität.<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -204,7 +201,7 @@ public enum Feld230 {
     PROZENTSATZ_PROGRESSIVE_INVALIDITAET_MEHRLEISTUNG_BEI_INVALIDITAET,
 
     /**
-     * Leistung ab Invaliditätsgrad in Prozent<br/>
+     * Leistung ab Invaliditätsgrad in Prozent.<br/>
      * (3,4 Stellen)
      */
     @FeldInfo(
@@ -236,6 +233,6 @@ public enum Feld230 {
             type = NumFeld.class,
             anzahlBytes = 1,
             byteAdresse = 256)
-    SATZNUMMER1,
+    SATZNUMMER1;
 
 }
