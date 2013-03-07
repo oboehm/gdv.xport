@@ -28,9 +28,7 @@ import java.util.*;
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (14.04.2011)
- * @deprecated wird nicht mehr benoetigt und mit v1.0 entsorgt
  */
-@Deprecated
 public class Satz221 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
@@ -38,6 +36,7 @@ public class Satz221 extends SpartensatzX {
 
     static {
         mapping.put(30, gdv.xport.satz.feld.sparte30.Feld221.values());
+        mapping.put(40, gdv.xport.satz.feld.sparte40.Feld221.values());
         mapping.put(51, gdv.xport.satz.feld.sparte51.Feld221.values());
         mapping.put(52, gdv.xport.satz.feld.sparte52.Feld221.values());
         mapping.put(53, gdv.xport.satz.feld.sparte53.Feld221.values());

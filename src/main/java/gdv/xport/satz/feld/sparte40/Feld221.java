@@ -1,11 +1,7 @@
 package gdv.xport.satz.feld.sparte40;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -21,6 +17,7 @@ public enum Feld221 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
+            sparte = 40,
             teildatensatz = 1,
             type = Feld1bis7.class)
     INTRO1,
@@ -50,7 +47,7 @@ public enum Feld221 {
     ORDNUNGS_NUMMER_FUER_WAGNISZUATZ,
 
     /**
-     * Satznummer<br/>
+     * Satznummer.<br/>
      * konstant 1
      */
     @FeldInfo(

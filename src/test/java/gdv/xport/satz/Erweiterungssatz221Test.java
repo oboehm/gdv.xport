@@ -50,7 +50,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
     private static final Log log = LogFactory.getLog(Erweiterungssatz221Test.class);
 
     /**
-     * Test method for {@link Erweiterungssatz221#Erweiterungssatz221(int)}.
+     * Test-Methode fuer Satz 221, Sparte 70.
      */
     @Test
     public void testSparte70() {

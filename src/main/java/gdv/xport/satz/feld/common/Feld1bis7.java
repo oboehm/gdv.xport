@@ -19,13 +19,11 @@
 package gdv.xport.satz.feld.common;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 
 /**
  * Jeder Datensatz beginnt mit denselben 7 Feldern. Dies sind die Felder, die in diesem Enum zusammengefasst sind.
- * 
+ *
  * @author oliver
  * @since 0.7.1 (28.08.2012)
  */
@@ -46,7 +44,7 @@ public enum Feld1bis7 {
     VU_NUMMER,
 
     /**
-     * Kennzeichen für gebuëndelte Vertraege. 1 = gebuendelt.
+     * Kennzeichen für gebuendelte Vertraege. 1 = gebuendelt.
      */
     @FeldInfo(nr = 3, type = Zeichen.class, byteAdresse = 10)
     BUENDELUNGSKENNZEICHEN,

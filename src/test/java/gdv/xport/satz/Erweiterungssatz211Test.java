@@ -38,7 +38,7 @@ public class Erweiterungssatz211Test {
     private static final Log log = LogFactory.getLog(Erweiterungssatz211Test.class);
 
     /**
-     * Test method for {@link Erweiterungssatz211#Erweiterungssatz211(int)}.
+     * Test-Methode fuer Satz 211, Spart 10.
      */
     @Test
     public void testSparte10() {

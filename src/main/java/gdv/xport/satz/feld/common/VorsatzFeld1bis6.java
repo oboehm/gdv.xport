@@ -44,7 +44,7 @@ public enum VorsatzFeld1bis6 {
     /**
      * VU-Nummer
      *
-     * Gemäß VU-Verzeichnis der BaFin,, linksbündig,
+     * Gemäß VU-Verzeichnis der BaFin, linksbündig,
      * Das VU-Nr.-Verzeichnis kann bei der Bundesanstalt für Finanzdienstleistungsaufsicht
      * in Bonn angefordert werden (Graurheindorfer Str. 108, 53117 Bonn, www.bafin.de).
      */
