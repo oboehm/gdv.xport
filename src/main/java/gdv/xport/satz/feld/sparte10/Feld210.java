@@ -18,8 +18,7 @@
 
 package gdv.xport.satz.feld.sparte10;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
+import gdv.xport.annotation.*;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -37,6 +36,7 @@ public enum Feld210 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
+            sparte = 10,
             teildatensatz = 1,
             type = Feld1bis7.class
     )
@@ -455,6 +455,7 @@ public enum Feld210 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
+            sparte = 10,
             teildatensatz = 2,
             type = Feld1bis7.class
     )
@@ -717,7 +718,7 @@ public enum Feld210 {
             byteAdresse = 209
     )
     KOLLEKTIV_NR,
-    
+
     /**
      * Datum der Fälligkeit der letzten Beitragszahlung vor Ablauf des Vertrags Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -729,7 +730,7 @@ public enum Feld210 {
             byteAdresse = 224
             )
     FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG,
-    
+
     /**
      * Lebenslange Beitragszahlung 0 = nein 1 = ja
      */

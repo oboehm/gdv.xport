@@ -34,7 +34,10 @@ public enum Feld220Wagnis13 {
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 1, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 1,
+            type = Feld1bis7.class)
     INTRO1,
 
     /**
@@ -311,7 +314,10 @@ public enum Feld220Wagnis13 {
     // /// Teildatensatz 2 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 2, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 2,
+            type = Feld1bis7.class)
     INTRO2,
 
     /**
@@ -492,7 +498,10 @@ public enum Feld220Wagnis13 {
     // /// Teildatensatz 3 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 3, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 3,
+            type = Feld1bis7.class)
     INTRO3,
 
     /**

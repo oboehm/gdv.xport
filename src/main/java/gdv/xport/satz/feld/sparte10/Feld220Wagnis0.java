@@ -18,18 +18,14 @@
 
 package gdv.xport.satz.feld.sparte10;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
  * (Leben - Angaben zur versicherten Person: Person = Wagnisart 0).
- * 
+ *
  * @author ralfklemmer
  * @since 12.11.2012
  */
@@ -38,7 +34,10 @@ public enum Feld220Wagnis0 {
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 1, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 1,
+            type = Feld1bis7.class)
     INTRO1,
 
     /**
@@ -171,6 +170,6 @@ public enum Feld220Wagnis0 {
      * Leerstellen.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 28, type = AlphaNumFeld.class, anzahlBytes = 7, byteAdresse = 249)
-    LEERSTELLEN
+    LEERSTELLEN;
 
 }
