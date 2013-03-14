@@ -18,37 +18,23 @@
 
 package gdv.xport;
 
-import gdv.xport.util.AbstractFormatter;
-import gdv.xport.util.HtmlFormatter;
-import gdv.xport.util.JavaFormatter;
-import gdv.xport.util.NullFormatter;
-import gdv.xport.util.SatzFactory;
-import gdv.xport.util.XmlFormatter;
+import gdv.xport.util.*;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.*;
+import java.net.*;
 import java.util.List;
 
 import javax.xml.stream.XMLStreamException;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.GnuParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.output.NullWriter;
 
 /**
  * The Class Main.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.2 (17.11.2009)
  */
@@ -58,7 +44,7 @@ public final class Main {
      * Diese Main-Klasse dient hautpsaechlich zu Demo-Zwecken. Werden keine Optionen angegeben, wird von der
      * Standard-Eingabe (System.in) gelesen und das Ergebnis nach System.out geschrieben. <br/>
      * Mit "-help" bekommt man eine kleine Uebersicht der Optionen.
-     * 
+     *
      * @param args
      *            die verschiendene Argumente (z.B. -import
      *            http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt -validate -xml)
@@ -98,7 +84,7 @@ public final class Main {
             if (cmd.hasOption("export")) {
                 File file = new File(cmd.getOptionValue("export"));
                 if (cmd.hasOption("java")) {
-                    exportJava(file, datenpaket);
+                    System.err.println("Option -java wird seit 0.9 nicht mehr unterstuetzt.");
                     return;
                 }
                 if (formatter instanceof NullFormatter) {
@@ -131,7 +117,7 @@ public final class Main {
 
     /**
      * Je nachdem, was als 'filename' uebergeben wird, wird von einer URL oder einer Datei importiert.
-     * 
+     *
      * @param filename
      *            kann sowohl ein Dateiname als auch eine URL sein
      * @param datenpaket
@@ -148,13 +134,9 @@ public final class Main {
         }
     }
 
-    private static void exportJava(final File dir, final Datenpaket datenpaket) throws IOException {
-        JavaFormatter.toDir(dir, datenpaket);
-    }
-
     /**
      * Creates the options.
-     * 
+     *
      * @return the options
      */
     private static Options createOptions() {
@@ -163,7 +145,6 @@ public final class Main {
         options.addOption("validate", false, "Validierung der eingelesenen Datensaetze");
         options.addOption("xml", false, "Ausgabe als XML");
         options.addOption("html", false, "Ausgabe als HTML");
-        options.addOption("java", false, "Ausgabe als Java (Generierung von Enum-Klassen)");
         options.addOption("export", true,
                 "Export-Datei (bei .xml/.html als Endung ist das Format XML/HTML, ansonsten GDV)");
         options.addOption("help", false, "Kurz-Hilfe");
@@ -172,7 +153,7 @@ public final class Main {
 
     /**
      * Prints the help.
-     * 
+     *
      * @param options
      *            the options
      */
@@ -183,7 +164,7 @@ public final class Main {
 
     /**
      * Prints the violations.
-     * 
+     *
      * @param violations
      *            the violations
      */
