@@ -720,7 +720,8 @@ public enum Feld210 {
     KOLLEKTIV_NR,
 
     /**
-     * Datum der Fälligkeit der letzten Beitragszahlung vor Ablauf des Vertrags Tag/Monat/Jahr (TTMMJJJJ)
+     * Datum der Fälligkeit der letzten Beitragszahlung vor Ablauf des Vertrags
+     * Tag/Monat/Jahr (TTMMJJJJ).
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -732,7 +733,7 @@ public enum Feld210 {
     FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG,
 
     /**
-     * Lebenslange Beitragszahlung 0 = nein 1 = ja
+     * Lebenslange Beitragszahlung, 0 = nein 1 = ja.
      */
     @FeldInfo(
             teildatensatz = 2,

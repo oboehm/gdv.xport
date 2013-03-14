@@ -486,7 +486,7 @@ public enum Feld0001 {
     VERSION_SATZART_0220_NICHT_DEF_SPARTEN,
 
     /**
-     * KFZ-Baustein Version
+     * KFZ-Baustein Version.
      */
     @FeldInfo(
             teildatensatz = 1,

@@ -217,7 +217,7 @@ public enum Feld220 {
     DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 2<br/>
+     * Summenart 2.<br/>
      * siehe Erläuterung Summenart 1
      */
     @FeldInfo(
@@ -243,7 +243,7 @@ public enum Feld220 {
     DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 3<br/>
+     * Summenart 3.<br/>
      * Details siehe Summenart 1
      */
     @FeldInfo(
@@ -423,7 +423,7 @@ public enum Feld220 {
     INTRO2,
 
     /**
-     * Wagnisart<br/>
+     * Wagnisart.<br/>
      * siehe Anlage 16
      */
     @FeldInfo(
@@ -447,7 +447,7 @@ public enum Feld220 {
     ORDNUNGS_NUMMER_FUER_WAGNISZUSATZ2,
 
     /**
-     * Satznummer<br/>
+     * Satznummer.<br/>
      * konstant 2
      */
     @FeldInfo(

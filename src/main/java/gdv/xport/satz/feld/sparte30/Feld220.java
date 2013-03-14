@@ -6,7 +6,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 30
- * "Unfall - Wagnisdaten /-zusatz" (Satzart 0220)
+ * "Unfall - Wagnisdaten /-zusatz" (Satzart 0220)-
  *
  * @author rklemmer
  * @since 20.02.2013
@@ -23,7 +23,7 @@ public enum Feld220 {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP) / Personengruppe
+     * Laufende Nummer der versicherten Person (VP) / Personengruppe
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -34,7 +34,7 @@ public enum Feld220 {
     LFD_NUMMER_VP_PERSONENGRUPPE1,
 
     /**
-     * Satznummer<br/>
+     * Satznummer.<br/>
      * konstant 1
      */
     @FeldInfo(
@@ -46,8 +46,8 @@ public enum Feld220 {
     SATZNUMMER1,
 
     /**
-     * Bezeichnung Personengruppe<br/>
-     * bei namentlich nicht genannten Personen
+     * Bezeichnung Personengruppe.<br/>
+     * Bei namentlich nicht genannten Personen.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -58,7 +58,7 @@ public enum Feld220 {
     BEZEICHNUNG_PERSONENGRUPPE,
 
     /**
-     * Anzahl der VP pro Personengruppe<br/>
+     * Anzahl der VP pro Personengruppe.<br/>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -214,7 +214,7 @@ public enum Feld220 {
     ZUSCHLAG_IN_PROZENT,
 
     /**
-     * Abschlag in %<br/>
+     * Abschlag in %.<br/>
      * (3,2 Stellen)
      */
     @FeldInfo(
@@ -897,7 +897,7 @@ public enum Feld220 {
     INTRO3,
 
     /**
-     * Satznummer<br/>
+     * Satznummer.<br/>
      * konstant 3
      */
     @FeldInfo(
@@ -1141,8 +1141,8 @@ public enum Feld220 {
     BEITRAG_BERGUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Satznummernwiederholung-<br/>
-     * Hier konstant
+     * Satznummernwiederholung.<br/>
+     * Hier konstant.
      */
     @FeldInfo(
             teildatensatz = 3,

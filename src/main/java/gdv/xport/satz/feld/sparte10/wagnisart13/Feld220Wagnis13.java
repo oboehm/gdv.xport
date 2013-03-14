@@ -276,7 +276,7 @@ public enum Feld220Wagnis13 {
     RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Rückkaufswert gültig ab<br/>
+     * Rückkaufswert gültig ab.<br/>
      * Monat / Jahr (MMJJJJ) Sollte Monat nicht vorhanden sein, muss "00" geschlüsselt werden
      */
     @FeldInfo(teildatensatz = 1, nr = 40, type = Datum.class, anzahlBytes = 6, byteAdresse = 231)
