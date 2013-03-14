@@ -52,9 +52,9 @@ public class Datensatz extends Satz {
 	private final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 33);
 
 	/**
-	 * Default-Konstruktor (wird zur Registrierung bei der
-	 * {@link gdv.xport.util.SatzFactory} benoetigt).
+	 * Default-Konstruktor (wird zur Registrierung bei der.
 	 *
+	 * {@link gdv.xport.util.SatzFactory} benoetigt).
 	 * @since 0.6
 	 */
 	public Datensatz() {
@@ -252,7 +252,8 @@ public class Datensatz extends Satz {
 	 *
 	 * @return die Sparte als int
 	 */
-	public int getSparte() {
+	@Override
+    public int getSparte() {
 		return this.sparte.toInt();
 	}
 
@@ -262,7 +263,8 @@ public class Datensatz extends Satz {
 	 * @return true, if successful
 	 * @since 0.6
 	 */
-	public boolean hasSparte() {
+	@Override
+    public boolean hasSparte() {
 		if (this.sparte.isEmpty()) {
 			return false;
 		}
@@ -316,18 +318,38 @@ public class Datensatz extends Satz {
 		return this.versicherungsscheinNr.getInhalt().trim();
 	}
 
+	/**
+	 * Gets the wagnisart.
+	 *
+	 * @return the wagnisart
+	 */
 	public String getWagnisart() {
 		return wagnisart.getInhalt().trim();
 	}
 
+	/**
+	 * Sets the wagnisart.
+	 *
+	 * @param wagnisart the new wagnisart
+	 */
 	public void setWagnisart(final String wagnisart) {
 		this.wagnisart.setInhalt(wagnisart);
 	}
 
+	/**
+	 * Gets the teildatensatz nummer.
+	 *
+	 * @return the teildatensatz nummer
+	 */
 	public String getTeildatensatzNummer() {
 		return teildatensatzNummer.getInhalt().trim();
 	}
 
+	/**
+	 * Sets the teildatensatz nummer.
+	 *
+	 * @param teildatensatzNummer the new teildatensatz nummer
+	 */
 	public void setTeildatensatzNummer(final String teildatensatzNummer) {
 		this.teildatensatzNummer.setInhalt(teildatensatzNummer);
 	}
@@ -439,6 +461,13 @@ public class Datensatz extends Satz {
 		return super.toShortString() + "." + this.sparte.getInhalt();
 	}
 
+	/**
+	 * Read teildatensatz nummer.
+	 *
+	 * @param reader the reader
+	 * @return the teildatensatz nummer
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static TeildatensatzNummer readTeildatensatzNummer(PushbackReader reader)
 	        throws IOException {
 		char[] cbuf = new char[256];

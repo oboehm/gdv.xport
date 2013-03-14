@@ -135,34 +135,36 @@ public class SatzX extends Datensatz {
 			TeildatensatzNummer nextLineTeildatensatzNummerEnum = readTeildatensatzNummer(reader);
 
 			boolean nextLineWagnisartIsSet = nextLineWagnisEnum != WagnisartLeben.NULL;
-			boolean nextLineTeildatensatzNummerIsSet = nextLineTeildatensatzNummerEnum != TeildatensatzNummer.NULL;
+            boolean nextLineTeildatensatzNummerIsSet =
+                    (nextLineTeildatensatzNummerEnum != TeildatensatzNummer.NULL);
 			boolean currentLineWagnisartIsSet = this.getWagnisart().trim().length() > 0;
 			boolean currentLineTeildatensatzNummerIsSet = this.getTeildatensatzNummer().trim()
 			        .length() > 0;
 
 			WagnisartLeben currentLineWagnisEnum = WagnisartLeben.NULL;
-			if (currentLineWagnisartIsSet == true) {
+			if (currentLineWagnisartIsSet) {
 				currentLineWagnisEnum = WagnisartLeben.isIn(Integer.parseInt(this.getWagnisart()));
 			}
 
 			TeildatensatzNummer currentLineTeildatensatzEnum = TeildatensatzNummer.NULL;
-			if (currentLineTeildatensatzNummerIsSet == true) {
+			if (currentLineTeildatensatzNummerIsSet) {
 				currentLineTeildatensatzEnum = TeildatensatzNummer.isIn(Integer.parseInt(this
 				        .getTeildatensatzNummer()));
 			}
 
-			if (currentLineWagnisartIsSet == false && nextLineWagnisartIsSet == false) {
+			if (!currentLineWagnisartIsSet && !nextLineWagnisartIsSet) {
 				return true;
 			}
 
-			if (currentLineWagnisartIsSet == false && nextLineWagnisartIsSet == true) {
+			if (!currentLineWagnisartIsSet && nextLineWagnisartIsSet) {
 				return true;
 			}
 
 			if (currentLineWagnisartIsSet) {
 				if (nextLineWagnisartIsSet) {
 					if (nextLineWagnisEnum == currentLineWagnisEnum) {
-						if (currentLineTeildatensatzNummerIsSet || nextLineTeildatensatzNummerIsSet) {
+                        if (currentLineTeildatensatzNummerIsSet
+                                || nextLineTeildatensatzNummerIsSet) {
 							if (nextLineTeildatensatzNummerEnum == currentLineTeildatensatzEnum) {
 								return true;
 							}

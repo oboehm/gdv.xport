@@ -593,11 +593,11 @@ public final class Bezeichner {
     public static final String RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = "Rueckgewaehrsumme zum Ablauf";
     public static final String ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = "Ablaufleistung incl. Ueberschussanteile";
     public static final String KAPITALERTRAGSSTEUER_BEI_ABLAUF = "Kapitalertragssteuer bei Ablauf";
-    public static final String SOLIDARITAETSZUSCHLAG_BEI_ABLAUF = "SolidaritaAeŒÂˆtszuschlag bei Ablauf";
+    public static final String SOLIDARITAETSZUSCHLAG_BEI_ABLAUF = "Solidarit\u00e4tszuschlag bei Ablauf";
     public static final String RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Rueckkaufswert zum Berechnungsstichtag";
     public static final String BERECHNUNGSSTICHTAG_ZUM_RUECKKAUFSWERT = "Berechnungsstichtag zum Rueckkaufswert";
     public static final String KAPITALERTRAGSSTEUER_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Kapitalertragssteuer bei Rueckkauf zum Berechnungsstichtag";
-    public static final String SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "SolidaritaeÂˆtszuschlag bei Rueckkauf zum Berechnungsstichtag";
+    public static final String SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Solidarit\u00e4tszuschlag bei Rueckkauf zum Berechnungsstichtag";
     public static final String UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Ueberschussanteile zum Berechnungsstichtag";
     public static final String GEBURTSDATUM_DER_BEZUGSBERECHTIGTEN_PERSON = "Geburtsdatum der bezugsberechtigten Person";
 
@@ -840,10 +840,10 @@ public final class Bezeichner {
     public static final String DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 2 in Tausend";
     public static final String DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 3 in Tausend";
     public static final String DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 4 in Tausend";
-    public static final String ERHOEHUNGSSATZ_8_III_AHB = "Erhoehungssatz §8, III AHB";
+    public static final String ERHOEHUNGSSATZ_8_III_AHB = "Erhoehungssatz \u00a78, III AHB";
     public static final String KENNUNG_ERHOEHUNGSSATZ = "Kennung Erhoehungssatz";
     public static final String KENNZEICHEN_FUER_JAHRES_MAXIMIERUNG = "Kennzeichen fuer Jahres-Maximierung";
-    public static final String LETZTE_ERHOEHUNG_8_III_AHB = "Letzte Erhoehung §8, III AHB";
+    public static final String LETZTE_ERHOEHUNG_8_III_AHB = "Letzte Erhoehung \u00a78, III AHB";
     public static final String MENGENSCHLUESSEL = "Mengenschluessel";
     public static final String MINDESTBEITRAG_JE_WAGNIS_IN_WAEHRUNGSEINHEITEN = "Mindestbeitrag je Wagnis";
     public static final String ORDNUNGS_NUMMER_FUER_WAGNISZUSATZ2 = "Ordungs-Nummer fuer Wagniszusatz";
