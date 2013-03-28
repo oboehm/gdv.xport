@@ -48,7 +48,7 @@ public final class MainTest {
      */
     @Test
     public void testMain() throws IOException, XMLStreamException {
-        String[] args = { "-import", "src/test/resources/musterdatei_041222.txt", "-validate" };
+        String[] args = {"-import", "src/test/resources/musterdatei_041222.txt", "-validate" };
         Main.main(args);
     }
 

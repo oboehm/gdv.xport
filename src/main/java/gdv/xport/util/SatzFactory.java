@@ -307,36 +307,6 @@ public final class SatzFactory {
         registeredEnumClasses.put(satzNr, enumClass);
     }
 
-//    /**
-//     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
-//     *
-//     * @param enumClass
-//     *            die Aufzaehlungsklasse, z.B. Feld100.class
-//     * @param satzart
-//     *            die Satzart
-//     * @param sparte
-//     *            die Sparte
-//     * @param wagnisart
-//     *            die Wagnisart
-//     * @param laufNumSatzart
-//     *            die laufende Nummer der Satzart
-//     * @since 0.8
-//     */
-//    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte,
-//            final int wagnisart, final int laufNumSatzart) {
-//        assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
-//        assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
-//        if (wagnisart != -1) {
-//            assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
-//        }
-//        if (laufNumSatzart != -1) {
-//            assert (0 <= laufNumSatzart) && (laufNumSatzart <= 9) : "Laufende Nummer Satzart muss zwischen 0 und 9 liegen";
-//        }
-//        SatzNummer key = new SatzNummer(satzart, sparte, wagnisart, laufNumSatzart);
-//        registeredDatensatzClasses.remove(key);
-//        registeredEnumClasses.put(key, enumClass);
-//    }
-
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
      * Testen hilfreich sein kann)
@@ -362,34 +332,6 @@ public final class SatzFactory {
     public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte) {
         register(clazz, new SatzNummer(satzart, sparte));
     }
-
-//    /**
-//     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
-//     *
-//     * @param clazz
-//     *            the clazz
-//     * @param satzart
-//     *            the satzart
-//     * @param sparte
-//     *            the sparte
-//     * @param wagnisart
-//     *            the wagnisart
-//     * @param teildatensatzNummer
-//     *            the teildatensatzNummer
-//     * @since 0.8
-//     */
-//    public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte,
-//            final int wagnisart, final int teildatensatzNummer) {
-//        assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
-//        assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
-//        if (wagnisart != -1) {
-//            assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
-//            if (teildatensatzNummer != -1) {
-//                assert (0 <= teildatensatzNummer) && (teildatensatzNummer <= 9) : "teildatensatzNummer muss zwischen 0 und 9 liegen";
-//            }
-//        }
-//        register(clazz, new SatzNummer(satzart, sparte, wagnisart, teildatensatzNummer));
-//    }
 
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht

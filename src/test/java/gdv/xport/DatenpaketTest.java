@@ -68,7 +68,7 @@ public final class DatenpaketTest {
      * @throws IOException falls z.B. die Platte voll ist
      */
     @Test
-    @SkipTestOn(property="SKIP_EXPORT_TEST")
+    @SkipTestOn(property = "SKIP_EXPORT_TEST")
     public void testEmptyExport() throws IOException {
         Datenpaket empty = new Datenpaket();
         StringWriter swriter = new StringWriter(1024);
@@ -96,7 +96,7 @@ public final class DatenpaketTest {
      *             falls Temp-Datei nicht angelegt werden kann.
      */
     @Test
-    @SkipTestOn(property="SKIP_EXPORT_TEST")
+    @SkipTestOn(property = "SKIP_EXPORT_TEST")
     public void testExportFile() throws IOException {
         datenpaket.setAdressat("Test-Adressat");
         datenpaket.setVermittler("845/666666");
@@ -167,7 +167,7 @@ public final class DatenpaketTest {
      */
     @IntegrationTest
     @Test
-    @SkipTestOn(property="SKIP_IMPORT_TEST")
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportFromReader() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
         try {
@@ -185,7 +185,7 @@ public final class DatenpaketTest {
      */
     @IntegrationTest
     @Test
-    @SkipTestOn(property="SKIP_IMPORT_TEST")
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportFromURL() throws IOException {
         URL url = this.getClass().getResource("/musterdatei_041222.txt");
         datenpaket.importFrom(url);
@@ -201,7 +201,7 @@ public final class DatenpaketTest {
      */
     @IntegrationTest
     @Test
-    @SkipTestOn(property="SKIP_IMPORT_TEST")
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportFromHTTP() throws IOException {
         URL url = new URL(
                 "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
@@ -240,7 +240,7 @@ public final class DatenpaketTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    @SkipTestOn(property="SKIP_IMPORT_TEST")
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportIgor() throws IOException {
         Config.setEOD("\n");
         String content = getResourceAsString("/igor_110120.txt");

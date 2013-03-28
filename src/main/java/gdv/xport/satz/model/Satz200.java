@@ -24,11 +24,10 @@ import gdv.xport.satz.feld.Feld200;
  * Diese Klasse repraesentiert die Satzart 200. Es handelt es sich dabei um eine alternative Implementierung der
  * {@link gdv.xport.satz.AllgemeinerVertragsteil}-Klasse, die nach dem Soplet- Ansatz (s. <a
  * href="http://www.soplets.org/">soplets.org</a>) implementiert wurde.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (06.03.2011)
  */
-@Deprecated
 public class Satz200 extends SatzX {
 
     /**

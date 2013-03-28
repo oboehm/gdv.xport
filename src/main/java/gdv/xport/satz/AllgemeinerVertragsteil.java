@@ -18,59 +18,17 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.ABGANGSDATUM;
-import static gdv.xport.feld.Bezeichner.ABGANGSGRUND;
-import static gdv.xport.feld.Bezeichner.AENDERUNGSDATUM;
-import static gdv.xport.feld.Bezeichner.AENDERUNGSGRUND;
-import static gdv.xport.feld.Bezeichner.AFB;
-import static gdv.xport.feld.Bezeichner.ANTEIL_IN_PROZENT;
-import static gdv.xport.feld.Bezeichner.ANTRAGSDATUM;
-import static gdv.xport.feld.Bezeichner.ANTRAGSEINGANGSDATUM;
-import static gdv.xport.feld.Bezeichner.AUFSICHTSFREIER_VERTRAG;
-import static gdv.xport.feld.Bezeichner.AUFTEILUNG_VERSICHERUNGSSTEUER;
-import static gdv.xport.feld.Bezeichner.AUFTRAGSNR_VERMITTLER;
-import static gdv.xport.feld.Bezeichner.DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER;
-import static gdv.xport.feld.Bezeichner.EINZAHLUNG_AUSSCHUETTUNG;
-import static gdv.xport.feld.Bezeichner.ERWEITERUNGSSATZ_VORHANDEN;
-import static gdv.xport.feld.Bezeichner.GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.HAUPTFAELLIGKEIT;
-import static gdv.xport.feld.Bezeichner.INKASSOART;
-import static gdv.xport.feld.Bezeichner.INTERNES_ORDNUNGSMERKMAL_DES_VM;
-import static gdv.xport.feld.Bezeichner.KENNZEICHEN_VERS_STEUER_FREI;
-import static gdv.xport.feld.Bezeichner.KUENDIGUNGSKLAUSEL;
-import static gdv.xport.feld.Bezeichner.KUNDENNR_VERMITTLER;
-import static gdv.xport.feld.Bezeichner.KUNDENNR_VERSICHERER;
-import static gdv.xport.feld.Bezeichner.LAUFZEITRABATT_IN_PROZENT;
-import static gdv.xport.feld.Bezeichner.MEHRZWECKFELD;
-import static gdv.xport.feld.Bezeichner.ORDNUNGSBEGRIFF;
-import static gdv.xport.feld.Bezeichner.POLICIERUNGSDATUM;
-import static gdv.xport.feld.Bezeichner.PRODUKTFORM;
-import static gdv.xport.feld.Bezeichner.PRODUKTFORM_GUELTIG_AB;
-import static gdv.xport.feld.Bezeichner.PRODUKTNAME;
-import static gdv.xport.feld.Bezeichner.RATENZAHLUNGSZUSCHLAG_IN_PROZENT;
-import static gdv.xport.feld.Bezeichner.REFERENZ_VERSICHERUNGSSCHEINNUMMER;
-import static gdv.xport.feld.Bezeichner.REGISTRIERUNGSNUMMER_VERMITTLER;
-import static gdv.xport.feld.Bezeichner.RESTLAUFZEIT_VERTRAG;
-import static gdv.xport.feld.Bezeichner.SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER;
-import static gdv.xport.feld.Bezeichner.VERSICHERUNGSSCHEINNUMMER_VM;
-import static gdv.xport.feld.Bezeichner.VERTRAGSABLAUF;
-import static gdv.xport.feld.Bezeichner.VERTRAGSBEGINN;
-import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
-import static gdv.xport.feld.Bezeichner.WAEHRUNGSSCHLUESSEL;
-import static gdv.xport.feld.Bezeichner.WAEHRUNG_DOKUMENTE_FUER_VN;
-import static gdv.xport.feld.Bezeichner.ZAHLUNGSWEISE;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import static gdv.xport.feld.Bezeichner.*;
+import gdv.xport.feld.*;
 
 /**
  * Diese Klasse repraesentiert die Satzart 200 (Allgemeiner Vertragsteil).
- * 
+ * Er ist inzwischen durch {@link gdv.xport.satz.model.Satz200} abgeloest
+ * und wird mit 1.0 entsorgt.
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (27.10.2009)
+ * @deprecated durch {@link gdv.xport.satz.model.Satz200} abgeloest
  */
 @Deprecated
 public class AllgemeinerVertragsteil extends Datensatz {
