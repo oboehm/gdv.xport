@@ -19,25 +19,25 @@
 package gdv.xport.satz.model;
 
 import static org.junit.Assert.*;
-import gdv.xport.satz.*;
+import gdv.xport.satz.Datensatz;
 
 import org.junit.Test;
 
 /**
- * JUnit-Tests fuer {@link Satz222}.
+ * JUnit-Tests fuer {@link Satz230}.
  *
  * @author oliver (ob@aosd.de)
  * @since 0.9 (29.03.2013)
  */
-public class Satz222Test extends AbstractSatzTest {
+public class Satz230Test {
 
     /**
      * Dies ist nur ein Test, ob die Klasse instanziiert werden kann.
      */
     @Test
-    public void testSatz222() {
-        Datensatz antragsdaten = new Satz222(30);
-        assertEquals(222, antragsdaten.getSatzart());
+    public void testSatz230() {
+        Datensatz antragsdaten = new Satz230(30);
+        assertEquals(230, antragsdaten.getSatzart());
         assertEquals(30, antragsdaten.getSparte());
         assertTrue("invalid: " + antragsdaten, antragsdaten.isValid());
     }
