@@ -342,7 +342,8 @@ public enum Feld220Wagnis13 {
 
     /**
      * Abweichende Vertragslaufzeit.<br/>
-     * Abgekürzte oder verlängerte Vertragslaufzeit Anzahl Jahre (JJJ) Lebenslänglich ist mit "999" zu schlüsseln<br/>
+     * Abgekürzte oder verlängerte Vertragslaufzeit Anzahl Jahre (JJJ)
+     * Lebenslänglich ist mit "999" zu schlüsseln<br/>
      */
     @FeldInfo(teildatensatz = 2, nr = 11, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 62)
     ABWEICHENDE_VERTRAGSLAUFZEIT,

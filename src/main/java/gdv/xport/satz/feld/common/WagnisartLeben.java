@@ -56,7 +56,7 @@ public enum WagnisartLeben {
 
 	private int code = -1;
 
-	private WagnisartLeben(int code) {
+	private WagnisartLeben(final int code) {
 		this.code = code;
 	}
 
@@ -74,7 +74,7 @@ public enum WagnisartLeben {
 	 *
 	 * @param code the new code
 	 */
-	public void setCode(int code) {
+	public void setCode(final int code) {
 		this.code = code;
 	}
 
@@ -84,7 +84,7 @@ public enum WagnisartLeben {
 	 * @param wagnis the wagnis
 	 * @return true, if is in
 	 */
-	public static boolean isIn(WagnisartLeben wagnis) {
+	public static boolean isIn(final WagnisartLeben wagnis) {
 		for (WagnisartLeben existing : WagnisartLeben.values()) {
 			if (existing == wagnis) {
 				return true;
@@ -99,7 +99,7 @@ public enum WagnisartLeben {
 	 * @param code the code
 	 * @return the wagnisart leben
 	 */
-	public static WagnisartLeben isIn(int code) {
+	public static WagnisartLeben isIn(final int code) {
 		for (WagnisartLeben existing : WagnisartLeben.values()) {
 			if (existing.getCode() == code) {
 				return existing;

@@ -17,7 +17,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10<br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10.<br/>
  * "Leben - Rentenversicherung = Wagnisart 2 " (Satzart 0221)
  *
  * @author ralfklemmer
@@ -35,7 +35,7 @@ public enum Feld221Wagnis2 {
 	INTRO1,
 
 	/**
-	 * Lfd. Nummer der versicherten Person (VP).<br/>
+	 * Laufende Nummer der versicherten Person (VP).<br/>
 	 * lfd. Nr., die im VU geführt wird
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17,
@@ -97,7 +97,7 @@ public enum Feld221Wagnis2 {
 	INTRO2,
 
 	/**
-	 * Lfd. Nummer der versicherten Person (VP).<br/>
+	 * Laufende Nummer der versicherten Person (VP).<br/>
 	 * lfd. Nr., die im VU geführt wird
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17,
@@ -119,7 +119,7 @@ public enum Feld221Wagnis2 {
 	LFD_NUMMER_ZUR_WAGNISART2,
 
 	/**
-	 * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten<br/>
+	 * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten.<br/>
 	 * (10,2 Stellen)
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 11, type = Betrag.class, anzahlBytes = 12, byteAdresse = 62)

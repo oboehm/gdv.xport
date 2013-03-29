@@ -24,7 +24,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10
- * "Leben - Berufsunfähigkeit = Wagnisart 4 u. 8 " (Satzart 0221)).
+ * "Leben - Berufsunfähigkeit = Wagnisart 4 und 8 " (Satzart 0221)).
  *
  * @author ralfklemmer
  * @since 19.01.2013
@@ -41,7 +41,7 @@ public enum Feld221Wagnis48 {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -61,7 +61,7 @@ public enum Feld221Wagnis48 {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten<br/>
+     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = Betrag.class, anzahlBytes = 14, byteAdresse = 62)
     ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,

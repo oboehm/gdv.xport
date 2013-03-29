@@ -195,7 +195,7 @@ public enum Feld220Wagnis2 {
     RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Rückkaufswert gültig ab<br/>
+     * Rückkaufswert gültig ab.<br/>
      * Monat / Jahr (MMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 29, type = Datum.class, anzahlBytes = 6, byteAdresse = 166)
@@ -373,7 +373,8 @@ public enum Feld220Wagnis2 {
 
     /**
      * Abweichende Vertragslaufzeit.<br/>
-     * Abgekürzte oder verlängerte Vertragslaufzeit Anzahl Jahre (JJJ) Lebenslänglich ist mit "999" zu schlüsseln<br/>
+     * Abgekürzte oder verlängerte Vertragslaufzeit Anzahl Jahre (JJJ)
+     * Lebenslänglich ist mit "999" zu schlüsseln<br/>
      */
     @FeldInfo(teildatensatz = 2, nr = 11, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 62)
     ABWEICHENDE_VERTRAGSLAUFZEIT,
@@ -470,7 +471,7 @@ public enum Feld220Wagnis2 {
     ZUKUENFTIGER_BEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Vertragsbedingung<br/>
+     * Vertragsbedingung.<br/>
      * Individuelle Vertragsbedingung (frei definierbar)
      */
     @FeldInfo(teildatensatz = 2, nr = 23, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 188)

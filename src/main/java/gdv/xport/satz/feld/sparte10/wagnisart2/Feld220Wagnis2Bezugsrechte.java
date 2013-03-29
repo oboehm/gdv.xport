@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Rentenversicherung = Wagnisart 2 - Bezugsrecht" (Satzart 0220)
  *
  * @author ralfklemmer
@@ -41,7 +41,7 @@ public enum Feld220Wagnis2Bezugsrechte {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -55,21 +55,21 @@ public enum Feld220Wagnis2Bezugsrechte {
     WAGNISART,
 
     /**
-     * Lfd Nummer zur Wagnisart.<br/>
+     * Laufende Nummer zur Wagnisart.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
-     * Lfd. Nummer der Satzart 0220.010.6/6 innerhalb der gleichen Folgenummer<br/>
+     * Laufende Nummer der Satzart.<br/>
+     * Laufende Nummer der Satzart 0220.010.6/6 innerhalb der gleichen Folgenummer<br/>
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.6/6, wenn mehrere Bezugsrechte vorhanden)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Bezugsberechtigt im Erlebensfall<br/>
+     * Bezugsberechtigt im Erlebensfall.<br/>
      * 1 = Versicherungsnehmer<br/>
      * 2 = Versicherte Person<br/>
      * 9 = Sonstiger Bezugsberechtigter
@@ -85,20 +85,20 @@ public enum Feld220Wagnis2Bezugsrechte {
     SONSTIGER_BEZUGSBERECHTIGTER_IM_ERLEBENSFALL,
 
     /**
-     * Bezugsrechtanteil im Erlebensfall in Prozent (3,2 Stellen)
+     * Bezugsrechtanteil im Erlebensfall in Prozent (3,2 Stellen).
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 95)
     BEZUGSRECHTANTEIL_IM_ERLEBENSFALL,
 
     /**
-     * Unwiderrufliches Bezugsrecht im Erlebensfall<br/>
+     * Unwiderrufliches Bezugsrecht im Erlebensfall.<br/>
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 100)
     UNWIDERRUFLICHES_BEZUGSRECHT_IM_ERLEBENSFALL,
 
     /**
-     * Bezugsberechtigt im Todesfall<br/>
+     * Bezugsberechtigt im Todesfall.<br/>
      * 1 = Versicherungsnehmer<br/>
      * 2 = gesetzliche Erbfolge<br/>
      * 3 = Reihenfolge: Ehegatte, Kinder, Eltern, Erben<br/>
@@ -115,14 +115,14 @@ public enum Feld220Wagnis2Bezugsrechte {
     SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL,
 
     /**
-     * Bezugsrechtanteil im Todesfall<br/>
+     * Bezugsrechtanteil im Todesfall.<br/>
      * in Prozent (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 132)
     BEZUGSRECHTANTEIL_IM_TODESFALL,
 
     /**
-     * Unwiderrufliches Bezugsrecht im Todesfall<br/>
+     * Unwiderrufliches Bezugsrecht im Todesfall.<br/>
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 19, type = AlphaNumFeld.class, anzahlBytes = 1, byteAdresse = 137)

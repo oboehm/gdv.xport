@@ -38,7 +38,7 @@ public enum TeildatensatzNummer {
 
 	private int code = -1;
 
-	private TeildatensatzNummer(int code) {
+	private TeildatensatzNummer(final int code) {
 		this.code = code;
 	}
 
@@ -56,7 +56,7 @@ public enum TeildatensatzNummer {
 	 *
 	 * @param code the new code
 	 */
-	public void setCode(int code) {
+	public void setCode(final int code) {
 		this.code = code;
 	}
 
@@ -66,7 +66,7 @@ public enum TeildatensatzNummer {
 	 * @param code the code
 	 * @return the teildatensatz nummer
 	 */
-	public static TeildatensatzNummer isIn(int code) {
+	public static TeildatensatzNummer isIn(final int code) {
 		for (TeildatensatzNummer existing : TeildatensatzNummer.values()) {
 			if (existing.getCode() == code) {
 				return existing;
