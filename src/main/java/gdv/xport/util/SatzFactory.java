@@ -493,9 +493,9 @@ public final class SatzFactory {
      * <ul>
      * <li>Satzart (z.B. 210)</li>
      * <li>Sparte (z.B. 70 fuer Rechtsschutz)</li>
-     * <li>Wagnisart (z.B. 1 fuer Kapitallebensversicherung</li>
+     * <li>Wagnisart (z.B. 1 fuer Kapitallebensversicherung)</li>
      * <li>Teildatensatz-Nummer (6 = Bezugsrechte, 7 = Auszahlungen, 8 =
-     * zukünftige Summenänderungen, 9 = Wertungssummen</li>
+     * zukünftige Summenänderungen, 9 = Wertungssummen)</li>
      * </ul>
      *
      * @param satzNr z.B. new Satznummer(210, 70, 1, 6)

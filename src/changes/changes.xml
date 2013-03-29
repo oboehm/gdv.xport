@@ -25,6 +25,10 @@
       <action dev="oboehm" type="update" date="25-Feb-2013" >
         Manifest enth&#228;lt jetzt Main-Klasse.
       </action>
+      <action dev="ralfklemmer" type="add" date="Jan-2013">
+        Unterst&#252;tzung von Satzart 222 und 230,
+        Unterst&#252;tzung der Wagnisart f&#252;r diverse Sparten.
+      </action>
       <action dev="ralfklemmer" type="update" date="22-Nov-2012" >
         Beginn Umstellung auf Version 2009 des GDV-Handbuches.
       </action>

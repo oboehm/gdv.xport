@@ -52,6 +52,8 @@
         <li>0211 Erweiterungssatz211</li>
         <li>0220 SpartenspezifischerTeil</li>
         <li>0221 Erweiterungssatz221</li>
+        <li>0222 Unfallspezifische Antragsdaten</li>
+        <li>0230 Unfall Leistungsarten</li>
         <li>9999 Nachsatz</li>
       </ul>
       <p>

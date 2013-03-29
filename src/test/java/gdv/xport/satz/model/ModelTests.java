@@ -31,7 +31,7 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ Satz100Test.class, Satz200Test.class, Satz210Test.class, Satz211Test.class, Satz220Test.class,
-        Satz221Test.class, SatzXTest.class })
+        Satz221Test.class, Satz222Test.class, SatzXTest.class })
 public class ModelTests {
 
 }
