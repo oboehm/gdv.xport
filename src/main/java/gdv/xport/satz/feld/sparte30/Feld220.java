@@ -450,6 +450,7 @@ public enum Feld220 {
             teildatensatz = 2,
             nr = 12,
             type = NumFeld.class,
+            nachkommaStellen = 0,
             anzahlBytes = 9,
             byteAdresse = 66)
     INVALIDITAET,
