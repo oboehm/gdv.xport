@@ -19,24 +19,29 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Feld;
+import gdv.xport.satz.model.SatzX;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
- * JUnit-Test fuer Erweiterungssatz221.
- * 
+ * Urspruenglich war dies der JUnit-Test fuer den Erweiterungssatz221.
+ * Inzwischen ist diese Klasse aber als "deprecated" markiert. Als Alternative
+ * dazu gibt es inzwischen die {@link SatzX}-Klasse, fuer die entsrprechende
+ * Enums "Feld221" in den verschiedenen Sparten-Packages gibt. Diese werden
+ * jetzt auch hier zum Testen herangezogen.
+ * <p>
+ * Aus historischen Gruenden heisst diese Klasse noch Erweiterungssatz221Test.
+ * </p>
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (18.11.2010)
  */
@@ -45,11 +50,11 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
     private static final Log log = LogFactory.getLog(Erweiterungssatz221Test.class);
 
     /**
-     * Test method for {@link Erweiterungssatz221#Erweiterungssatz221(int)}.
+     * Test-Methode fuer Satz 221, Sparte 70.
      */
     @Test
     public void testSparte70() {
-        Erweiterungssatz221 rechtschutz = new Erweiterungssatz221(70);
+        Datensatz rechtschutz = new SatzX(221, gdv.xport.satz.feld.sparte70.Feld221.class);
         log.info(rechtschutz + " created.");
         assertEquals(70, rechtschutz.getSparte());
     }
@@ -57,7 +62,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
     /**
      * Hier wird der Teildatensatz 2 der Sparte 30 (Rechtschutz) getestet. Der Test-Input dazu stammt von der
      * musterdatei_041222.txt von gdv-online.
-     * 
+     *
      * @throws IOException
      *             sollte eigentlich nicht vorkommen, da wir von einem String importieren
      */
@@ -73,7 +78,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
     /**
      * Hier wird der Teildatensatz 3 der Sparte 30 (Rechtschutz) getestet. Der Test-Input dazu stammt von der
      * musterdatei_041222.txt von gdv-online.
-     * 
+     *
      * @throws IOException
      *             sollte eigentlich nicht vorkommen, da wir von einem String importieren
      */
@@ -88,14 +93,14 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
 
     private void checkWagnisdaten(final String input) throws IOException {
         assertEquals(257, input.length());
-        Erweiterungssatz221 wagnisdaten = new Erweiterungssatz221(30);
+        Datensatz wagnisdaten = new SatzX(221, gdv.xport.satz.feld.sparte30.Feld221.class);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }
 
     /**
      * Der normale Import bereitet noch Probleme. Mit diesem Test wollen wir dem Problem auf die Spur kommen.
-     * 
+     *
      * @throws IOException
      *             falls der Test-Satz nicht gelesen werden kann
      */
@@ -112,7 +117,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
             istream.close();
         }
     }
-    
+
     /**
      * Test import.
      *
@@ -124,7 +129,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
             + "0000000000000000000000000008668700000000000000000000000000000000"
             + "0000000000000000                                                "
             + "                                                               1";
-        Erweiterungssatz221 sparte51 = new Erweiterungssatz221();
+        Datensatz sparte51 = new SatzX(221, gdv.xport.satz.feld.sparte51.Feld221.class);
         sparte51.importFrom(input);
         List<ConstraintViolation> violations = sparte51.validate();
         assertTrue(violations + " should be empty", violations.isEmpty());

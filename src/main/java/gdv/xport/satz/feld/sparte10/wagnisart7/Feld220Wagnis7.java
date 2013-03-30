@@ -18,19 +18,14 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart7;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
  * "Leben - Kapital-/Fondsgebundene LV = Wagnisart 7" (Satzart 0220)
- * 
+ *
  * @author ralfklemmer
  * @since 19.01.2013
  */
@@ -39,7 +34,10 @@ public enum Feld220Wagnis7 {
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 1, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 1,
+            type = Feld1bis7.class)
     INTRO1,
 
     /**
@@ -324,7 +322,10 @@ public enum Feld220Wagnis7 {
     // /// Teildatensatz 2 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 2, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 2,
+            type = Feld1bis7.class)
     INTRO2,
 
     /**
@@ -506,7 +507,10 @@ public enum Feld220Wagnis7 {
     // /// Teildatensatz 3 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 3, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 3,
+            type = Feld1bis7.class)
     INTRO3,
 
     /**

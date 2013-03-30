@@ -18,11 +18,8 @@
 
 package gdv.xport.satz.feld.sparte30;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -38,12 +35,13 @@ public enum Feld222 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
+            sparte = 30,
             teildatensatz = 1,
             type = Feld1bis7.class)
     INTRO2,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP) / Personengruppe.
+     * Laufende Nummer der versicherten Person (VP) / Personengruppe.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -54,7 +52,7 @@ public enum Feld222 {
     LFD_NUMMER_VP_PERSONENGRUPPE1,
 
     /**
-     * Erkrankungen<br/>
+     * Erkrankungen.<br/>
      * Liegen oder lagen Erkrankungen im Zeitraum und Umfang gemäß Antrag vor?<br/>
      * 0 = nein, 1 = ja
      */
@@ -67,7 +65,7 @@ public enum Feld222 {
     ERKRANKUNGEN,
 
     /**
-     * Unfälle<br/>
+     * Unfälle.<br/>
      * Lagen Unfälle im Zeitraum und Umfang gemäß Antrag vor?<br/>
      * 0 = nein, 1 = ja
      */
@@ -80,7 +78,7 @@ public enum Feld222 {
     UNFAELLE,
 
     /**
-     * Dauerschäden / Körperliche Beeinträchtigungen<br/>
+     * Dauerschäden / Körperliche Beeinträchtigungen.<br/>
      * Bestehen Dauerschäden oder körperliche Beeinträchtigungen ?<br/>
      * 0 = nein, 1 = ja
      */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012 by Oli B.
+ * Copyright (c) 2013 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 14.04.2011 by Oli B. (ob@aosd.de)
+ * (c)reated 29.03.2013 by Oli B. (oliver.boehm@gmail.com)
  */
 
 package gdv.xport.satz.model;
@@ -21,43 +21,42 @@ package gdv.xport.satz.model;
 import java.util.*;
 
 /**
- * Diese Klasse repraesentiert die Satzart 221. Es handelt es sich dabei um eine
- * alternative Implementierung der {@link gdv.xport.satz.Erweiterungssatz221}
- * -Klasse, die nach dem Soplet- Ansatz (s. <a
- * href="http://www.soplets.org/">soplets.org</a>) implementiert wurde.
+ * Diese Klasse repraesentiert die Satzart 230 fuer Spartenspezifischer Teil.
+ * Diese Satzart kennt nur die Sparte 30 (Unfall Leistungsarten).
+ * <p>
+ * Alternativ kann man auch direkt
+ * <code>new SatzX(230, Feld230.values())</code>
+ * verwenden.
+ * </p>
  *
  * @author oliver (ob@aosd.de)
- * @since 0.6 (14.04.2011)
+ * @since 0.9 (29.03.2013)
  */
-public class Satz221 extends SpartensatzX {
+public class Satz230 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static final Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
 
     static {
-        mapping.put(30, gdv.xport.satz.feld.sparte30.Feld221.values());
-        mapping.put(40, gdv.xport.satz.feld.sparte40.Feld221.values());
-        mapping.put(51, gdv.xport.satz.feld.sparte51.Feld221.values());
-        mapping.put(52, gdv.xport.satz.feld.sparte52.Feld221.values());
-        mapping.put(53, gdv.xport.satz.feld.sparte53.Feld221.values());
-        mapping.put(70, gdv.xport.satz.feld.sparte70.Feld221.values());
+        mapping.put(30, gdv.xport.satz.feld.sparte30.Feld230.values());
     }
 
     /**
-     * Default-Konstruktor.
+     * Default-Konstruktor. Da die Satzart 220 nur die Sparte 3 kennt, wird
+     * diese Sparte als Standard gesetzt.
      */
-    public Satz221() {
-        this(UNKNOWN_SPARTE);
+    public Satz230() {
+        this(30);
     }
 
     /**
-     * Legt ein neues Satz221-Objekt fuer die uebergebene Sparte an.
+     * Legt ein neues Satz230-Objekt fuer die uebergebene Sparte an.
      *
-     * @param sparte
-     *            Sparte (z.B. 10)
+     * @param sparte 30 (andere Sparten sind im GDV-Handbuch (noch) nicht
+     *        aufgelistet)
      */
-    public Satz221(final int sparte) {
-        super(221, sparte);
+    public Satz230(final int sparte) {
+        super(230, sparte);
     }
 
     /**
@@ -72,3 +71,4 @@ public class Satz221 extends SpartensatzX {
     }
 
 }
+

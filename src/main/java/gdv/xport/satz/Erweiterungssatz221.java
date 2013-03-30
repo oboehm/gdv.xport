@@ -18,64 +18,14 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.ABSCHLAG1_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.ABSCHLAG2_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.ABSCHLAG3_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.BERGUNGSKOSTEN;
-import static gdv.xport.feld.Bezeichner.DECKUNGSSUMME_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.FESTE_RENTE;
-import static gdv.xport.feld.Bezeichner.FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH;
-import static gdv.xport.feld.Bezeichner.FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO;
-import static gdv.xport.feld.Bezeichner.FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO;
-import static gdv.xport.feld.Bezeichner.FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_VOLLKASKO;
-import static gdv.xport.feld.Bezeichner.GENESUNGSGELD;
-import static gdv.xport.feld.Bezeichner.HEILKOSTEN;
-import static gdv.xport.feld.Bezeichner.INVALIDITAET;
-import static gdv.xport.feld.Bezeichner.KFT_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.KFT_BEITRAG_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.KFT_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.KFV_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.KFV_BEITRAG_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.KFV_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.KH_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.KH_BEITRAG_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1;
-import static gdv.xport.feld.Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2;
-import static gdv.xport.feld.Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3;
-import static gdv.xport.feld.Bezeichner.KH_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.KOSMETISCHE_OPERATIONEN;
-import static gdv.xport.feld.Bezeichner.KRANKENHAUSTAGEGELD;
-import static gdv.xport.feld.Bezeichner.KURKOSTEN;
-import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
-import static gdv.xport.feld.Bezeichner.LFD_NUMMER;
-import static gdv.xport.feld.Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE;
-import static gdv.xport.feld.Bezeichner.PERSONENNUMMER_LFD_NUMMER;
-import static gdv.xport.feld.Bezeichner.REFERENZNUMMER;
-import static gdv.xport.feld.Bezeichner.RISIKOGRUPPE_RISIKOART;
-import static gdv.xport.feld.Bezeichner.SATZNUMMER;
-import static gdv.xport.feld.Bezeichner.SATZNUMMERWIEDERHOLUNG;
-import static gdv.xport.feld.Bezeichner.SERVICELEISTUNGEN;
-import static gdv.xport.feld.Bezeichner.TAGEGELD1;
-import static gdv.xport.feld.Bezeichner.TAGEGELD2;
-import static gdv.xport.feld.Bezeichner.TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGTEIL_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_HAFTPFLICHT_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.TOD;
-import static gdv.xport.feld.Bezeichner.UEBERGANGSENTSCHAEDIGUNG;
-import static gdv.xport.feld.Bezeichner.ZUSAETZLICHE_SATZKENNUNG;
-import static gdv.xport.feld.Bezeichner.ZUSCHLAG1_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import static gdv.xport.feld.Bezeichner.*;
+import gdv.xport.feld.*;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 /**
  * Klasse fuer die Satzart 0221 (Erweiterungssatz).
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (18.11.2010)
  */
@@ -96,7 +46,7 @@ public class Erweiterungssatz221 extends Spartensatz {
 
     /**
      * Konstruktor fuer die gewuenschte Sparte.
-     * 
+     *
      * @param sparte
      *            z.B. 70 (Rechtsschutz)
      */
@@ -106,7 +56,7 @@ public class Erweiterungssatz221 extends Spartensatz {
 
     /**
      * Konstruktor fuer die gewuenschte Sparte.
-     * 
+     *
      * @param sparte
      *            z.B. 70 (Rechtsschutz)
      * @param n
@@ -146,20 +96,22 @@ public class Erweiterungssatz221 extends Spartensatz {
 
     /**
      * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene Sparte an.
-     * 
+     *
      * @param x
      *            Sparte (z.B. 30)
      */
+    @Override
     protected void createTeildatensaetzeFor(final int x) {
         this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
     }
 
     /**
      * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
-     * 
+     *
      * @param sparte
      *            Sparte (z.B. 30)
      */
+    @Override
     protected void setUpDatenfelder(final int sparte) {
         switch (sparte) {
             case 30:
@@ -226,7 +178,7 @@ public class Erweiterungssatz221 extends Spartensatz {
 
     /**
      * Sparte 51 (KFZ - Fahrzeughaftpflicht) wurde freundlicherweise von Igor Narodetskyi zur Verfuegung gestellt.
-     * 
+     *
      * @since 0.5.1
      */
     private void setUpDatenfelder51() {
@@ -246,7 +198,7 @@ public class Erweiterungssatz221 extends Spartensatz {
 
     /**
      * Sparte 52 (KFZ - Fahrzeugvoll) wurde freundlicherweise von Igor Narodetskyi zur Verfuegung gestellt.
-     * 
+     *
      * @since 0.5.1
      */
     private void setUpDatenfelder52() {
@@ -265,7 +217,7 @@ public class Erweiterungssatz221 extends Spartensatz {
 
     /**
      * Sparte 53 (KFZ - Fahrzeugteil) wurde freundlicherweise von Igor Narodetskyi zur Verfuegung gestellt.
-     * 
+     *
      * @since 0.5.1
      */
     private void setUpDatenfelder53() {

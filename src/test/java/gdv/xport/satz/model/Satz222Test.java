@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012 by Oli B.
+ * Copyright (c) 2013 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,28 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 09.03.2011 by Oli B. (ob@aosd.de)
+ * (c)reated 29.03.2013 by Oli B. (oliver.boehm@gmail.com)
  */
 
 package gdv.xport.satz.model;
 
-import gdv.xport.satz.feld.Feld100;
+import static org.junit.Assert.*;
+import gdv.xport.satz.*;
+
+import org.junit.Test;
 
 /**
- * Diese Klasse repraesentiert die Satzart 100. Es handelt es sich dabei um eine alternative Implementierung der
- * {@link gdv.xport.satz.Adressteil}-Klasse, die nach dem Soplet-Ansatz (s. <a
- * href="http://www.soplets.org/">soplets.org</a>) implementiert wurde.
+ * JUnit-Tests fuer {@link Satz222}.
  *
  * @author oliver (ob@aosd.de)
- * @since 0.6 (09.03.2011)
+ * @since 0.9 (29.03.2013)
  */
-public class Satz100 extends SatzX {
+public class Satz222Test extends AbstractSatzTest {
 
     /**
-     * Default-Konstruktor.
+     * Dies ist nur ein Test, ob die Klasse instanziiert werden kann.
      */
-    public Satz100() {
-        super(100, Feld100.values());
+    @Test
+    public void testSatz222() {
+        Datensatz antragsdaten = new Satz222(30);
+        assertEquals(222, antragsdaten.getSatzart());
+        assertEquals(30, antragsdaten.getSparte());
+        assertTrue("invalid: " + antragsdaten, antragsdaten.isValid());
     }
 
 }
+

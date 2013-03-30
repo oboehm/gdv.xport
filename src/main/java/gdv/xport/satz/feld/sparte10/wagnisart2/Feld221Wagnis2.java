@@ -12,15 +12,12 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart2;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10<br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10.<br/>
  * "Leben - Rentenversicherung = Wagnisart 2 " (Satzart 0221)
  *
  * @author ralfklemmer
@@ -31,11 +28,14 @@ public enum Feld221Wagnis2 {
 	// /// Teildatensatz 1 /////////////////////////////////////////////////
 
 	/** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-	@FelderInfo(teildatensatz = 1, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 1,
+            type = Feld1bis7.class)
 	INTRO1,
 
 	/**
-	 * Lfd. Nummer der versicherten Person (VP).<br/>
+	 * Laufende Nummer der versicherten Person (VP).<br/>
 	 * lfd. Nr., die im VU geführt wird
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17,
@@ -90,11 +90,14 @@ public enum Feld221Wagnis2 {
 	// /// Teildatensatz 2 /////////////////////////////////////////////////
 
 	/** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-	@FelderInfo(teildatensatz = 2, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 2,
+            type = Feld1bis7.class)
 	INTRO2,
 
 	/**
-	 * Lfd. Nummer der versicherten Person (VP).<br/>
+	 * Laufende Nummer der versicherten Person (VP).<br/>
 	 * lfd. Nr., die im VU geführt wird
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17,
@@ -116,7 +119,7 @@ public enum Feld221Wagnis2 {
 	LFD_NUMMER_ZUR_WAGNISART2,
 
 	/**
-	 * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten<br/>
+	 * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten.<br/>
 	 * (10,2 Stellen)
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 11, type = Betrag.class, anzahlBytes = 12, byteAdresse = 62)

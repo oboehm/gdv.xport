@@ -1,11 +1,7 @@
 package gdv.xport.satz.feld.sparte40;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -21,12 +17,13 @@ public enum Feld221 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
+            sparte = 40,
             teildatensatz = 1,
             type = Feld1bis7.class)
     INTRO1,
 
     /**
-     * Wagnisart<br/>
+     * Wagnisart.<br/>
      * siehe Anlage 16
      */
     @FeldInfo(
@@ -38,7 +35,7 @@ public enum Feld221 {
     WAGNISART,
 
     /**
-     * Ordnungs-Nummer für Wagniszuatz<br/>
+     * Ordnungs-Nummer für Wagniszuatz.<br/>
      * Lfd. Nr. bei mehreren Wagnissen gleicher Wagnisart
      */
     @FeldInfo(
@@ -50,7 +47,7 @@ public enum Feld221 {
     ORDNUNGS_NUMMER_FUER_WAGNISZUATZ,
 
     /**
-     * Satznummer<br/>
+     * Satznummer.<br/>
      * konstant 1
      */
     @FeldInfo(
@@ -62,7 +59,7 @@ public enum Feld221 {
     SATZNUMMER,
 
     /**
-     * Deckungssumme 1 in Währungseinheiten<br/>
+     * Deckungssumme 1 in Währungseinheiten.<br/>
      * abweichende Deckungssumme zum Vertrag<br/>
      * (12,2 Stellen)
      */
@@ -75,7 +72,7 @@ public enum Feld221 {
     DECKUNGSSUMME_1_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Deckungssumme 2 in Währungseinheiten<br/>
+     * Deckungssumme 2 in Währungseinheiten.<br/>
      * siehe Erläuterung Deckungssumme 1
      */
     @FeldInfo(
@@ -87,7 +84,7 @@ public enum Feld221 {
     DECKUNGSSUMME_2_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Deckungssumme 3 in Währungseinheiten<br/>
+     * Deckungssumme 3 in Währungseinheiten.<br/>
      * siehe Erläuterung Deckungssumme 1
      */
     @FeldInfo(
@@ -99,7 +96,7 @@ public enum Feld221 {
     DECKUNGSSUMME_3_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Deckungssumme 4 in Währungseinheiten<br/>
+     * Deckungssumme 4 in Währungseinheiten.<br/>
      * siehe Erläuterung Deckungssumme 1
      */
     @FeldInfo(
@@ -111,7 +108,7 @@ public enum Feld221 {
     DECKUNGSSUMME_4_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Referenznummer<br/>
+     * Referenznummer.<br/>
      *
      * Wenn in einem gebündelten Vertrag (Bündelungskennzeichen = 1) mehrere
      * gleiche Sparten unter der selben Versicherungsscheinnummer gebündelt
@@ -134,5 +131,6 @@ public enum Feld221 {
             type = AlphaNumFeld.class,
             anzahlBytes = 142,
             byteAdresse = 115)
-    LEERSTELLEN,
+    LEERSTELLEN
+
 }

@@ -18,8 +18,7 @@
 
 package gdv.xport.satz.feld.sparte70;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
+import gdv.xport.annotation.*;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -36,6 +35,7 @@ public enum Feld221 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
+            sparte = 70,
             teildatensatz = 1,
             type = Feld1bis7.class
     )
@@ -54,7 +54,7 @@ public enum Feld221 {
     RISIKOGRUPPE_RISIKOART1,
 
     /**
-     * Lfd. Nummer.
+     * Laufende Nummer.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -106,6 +106,7 @@ public enum Feld221 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
+            sparte = 70,
             teildatensatz = 2,
             type = Feld1bis7.class
     )

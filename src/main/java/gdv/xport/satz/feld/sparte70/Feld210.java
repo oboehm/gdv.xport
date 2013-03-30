@@ -18,11 +18,9 @@
 
 package gdv.xport.satz.feld.sparte70;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
+import gdv.xport.annotation.*;
 import gdv.xport.feld.*;
-import gdv.xport.satz.feld.common.Feld1bis7;
-import gdv.xport.satz.feld.common.VertragsStatus;
+import gdv.xport.satz.feld.common.*;
 
 
 /**
@@ -37,6 +35,7 @@ public enum Feld210 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
+            sparte = 70,
             teildatensatz = 1,
             type = Feld1bis7.class
     )

@@ -18,17 +18,14 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart48;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10
- * "Leben - Berufsunfähigkeit = Wagnisart 4 u. 8 " (Satzart 0221)).
- * 
+ * "Leben - Berufsunfähigkeit = Wagnisart 4 und 8 " (Satzart 0221)).
+ *
  * @author ralfklemmer
  * @since 19.01.2013
  */
@@ -37,11 +34,14 @@ public enum Feld221Wagnis48 {
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 1, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 1,
+            type = Feld1bis7.class)
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -61,7 +61,7 @@ public enum Feld221Wagnis48 {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten<br/>
+     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = Betrag.class, anzahlBytes = 14, byteAdresse = 62)
     ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,

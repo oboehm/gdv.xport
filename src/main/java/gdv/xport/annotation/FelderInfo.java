@@ -18,8 +18,7 @@
 
 package gdv.xport.annotation;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.*;
 
 
 /**
@@ -38,6 +37,14 @@ public @interface FelderInfo {
      * Enum mit den FeldInfos, der angegeben werden <b>muss</b>.
      */
     Class<? extends Enum<?>> type();
+
+    /**
+     * Sparte, fuer den die referenzierten FeldInfos gelten. Mit diesem Wert
+     * wird die Spalte vorbelegt.
+     *
+     * @since 0.9
+     */
+    int sparte() default 0;
 
     /**
      * Teildatensatz, fuer den die referenzierten FeldInfos gelten sollen,

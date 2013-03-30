@@ -144,7 +144,7 @@ public class Satz221Test extends AbstractSatzTest {
             + "0000000000000000000000000008668700000000000000000000000000000000"
             + "0000000000000000                                                "
             + "                                                               1";
-        Datensatz sparte51 = new Erweiterungssatz221();
+        Datensatz sparte51 = new SatzX(221, gdv.xport.satz.feld.sparte51.Feld221.values());
         sparte51.importFrom(input);
         List<ConstraintViolation> violations = sparte51.validate();
         assertTrue(violations + " should be empty", violations.isEmpty());

@@ -13,24 +13,17 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 /**
- * Ehemals gemeinsame Oberklasse fuer Satzart 220 und andere. Wird mit 0.8
- * entfernt werden. <br/>
- * TODO: mit 0.8 entsorgen
- * 
+ * Ehemals gemeinsame Oberklasse fuer Satzart 220 und andere. Wird mit 1.0
+ * entfernt werden.
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (05.11.2009)
  * @deprecated abgeloest durch {@link gdv.xport.satz.model.SpartensatzX}
@@ -42,7 +35,7 @@ public class SpartenspezifischerTeil extends Spartensatz {
 
 	/**
 	 * Dieser Konstruktor wird fuer die SatzFactory benoetigt.
-	 * 
+	 *
 	 * @since 0.2
 	 */
 	public SpartenspezifischerTeil() {
@@ -51,7 +44,7 @@ public class SpartenspezifischerTeil extends Spartensatz {
 
 	/**
 	 * Konstruktor fuer die gewuenschte Sparte.
-	 * 
+	 *
 	 * @param sparte z.B. 70 (Rechtsschutz)
 	 */
 	public SpartenspezifischerTeil(final int sparte) {
@@ -60,7 +53,7 @@ public class SpartenspezifischerTeil extends Spartensatz {
 
 	/**
 	 * Konstruktor fuer die gewuenschte Sparte.
-	 * 
+	 *
 	 * @param sparte z.B. 70 (Rechtsschutz)
 	 * @param n Anzahl Teildatensaetze
 	 */
@@ -106,19 +99,21 @@ public class SpartenspezifischerTeil extends Spartensatz {
 	/**
 	 * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene
 	 * Sparte an.
-	 * 
+	 *
 	 * @param x Sparte (z.B. 30)
 	 */
-	protected void createTeildatensaetzeFor(final int x) {
+	@Override
+    protected void createTeildatensaetzeFor(final int x) {
 		this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
 	}
 
 	/**
 	 * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
-	 * 
+	 *
 	 * @param sparte Sparte (z.B. 30)
 	 */
-	protected void setUpDatenfelder(final int sparte) {
+	@Override
+    protected void setUpDatenfelder(final int sparte) {
 		switch (sparte) {
 			case 30:
 				this.setUpDatenfelder30();
@@ -267,7 +262,7 @@ public class SpartenspezifischerTeil extends Spartensatz {
 	/**
 	 * Sparte 51 (KFZ - Fahrzeughaftpflicht) wurde freundlicherweise von Igor
 	 * Narodetskyi zur Verfuegung gestellt.
-	 * 
+	 *
 	 * @since 0.5.1
 	 */
 	private void setUpDatenfelder51() {
@@ -308,7 +303,7 @@ public class SpartenspezifischerTeil extends Spartensatz {
 	/**
 	 * Sparte 52 (KFZ - Fahrzeugvollkasko) wurde freundlicherweise von Igor
 	 * Narodetskyi zur Verfuegung gestellt.
-	 * 
+	 *
 	 * @since 0.5.1
 	 */
 	private void setUpDatenfelder52() {
@@ -365,7 +360,7 @@ public class SpartenspezifischerTeil extends Spartensatz {
 	/**
 	 * Sparte 53 (KFZ - Fahrzeugteil) wurde freundlicherweise von Igor
 	 * Narodetskyi zur Verfuegung gestellt.
-	 * 
+	 *
 	 * @since 0.5.1
 	 */
 	private void setUpDatenfelder53() {
@@ -456,7 +451,7 @@ public class SpartenspezifischerTeil extends Spartensatz {
 	/**
 	 * Sparte 30 hat optionale Teildatensaetze (Teildatensatz 9). Den muessen
 	 * wir gesondert behandeln.
-	 * 
+	 *
 	 * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
 	 * @param input Inupt
 	 * @throws IOException falls der String zu kurz ist

@@ -18,8 +18,7 @@
 
 package gdv.xport.satz.feld;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
+import gdv.xport.annotation.*;
 
 /**
  * In dieser Klasse sind einige Meta-Informationen zu Feldern wie die
@@ -119,6 +118,28 @@ public final class MetaFeldInfo {
             return felderInfo.teildatensatz();
         }
         return this.getFeldInfo().teildatensatz();
+    }
+
+    /**
+     * Ermittelt, ob die Sparte vorhanden ist.
+     *
+     * @since 0.9
+     * @return true, falls Sparte vorhanden ist
+     */
+    public boolean hasSparte() {
+        return (this.felderInfo != null) && (this.felderInfo.sparte() > 0);
+    }
+
+    /**
+     * Liefert den Wert der Sparten-Annotation zurueck. Vorher sollte man
+     * aber mit {@link #hasSparte()} abfragen, ob der Wert ueberhaupt bekannt
+     * ist.
+     *
+     * @since 0.9
+     * @return den Wert der Sparte
+     */
+    public int getSparte() {
+        return this.felderInfo.sparte();
     }
 
     /**

@@ -18,19 +18,14 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart48;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Berufsunfähigkeit = Wagnisart 4 u. 8 - Zukünftige Summenänderung" (Satzart 0220)
- * 
+ *
  * @author ralfklemmer
  * @since 19.01.2013
  */
@@ -39,11 +34,14 @@ public enum Feld220Wagnis48ZukSummenaenderungen {
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 1, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 1,
+            type = Feld1bis7.class)
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -63,15 +61,15 @@ public enum Feld220Wagnis48ZukSummenaenderungen {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
-     * Lfd. Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
+     * Laufende Nummer der Satzart.<br/>
+     * Laufende Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6, wenn mehrere Bezugsrechte vorhanden)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Anfängliche Jahresrente in Währungseinheiten<br/>
+     * Anfängliche Jahresrente in Währungseinheiten.<br/>
      * Anfängliche bzw. erste Jahresrente<br/>
      * (10,2 Stellen)
      */
@@ -79,7 +77,7 @@ public enum Feld220Wagnis48ZukSummenaenderungen {
     ANFAENGLICHE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Änderung der Jahresrente<br/>
+     * Änderung der Jahresrente.<br/>
      * 0 = keine Änderung bzw. nur eine Jahresrente<br/>
      * 1 = Erhöhung der Jahresrente<br/>
      * 2 = Reduzierung der Jahresrente
@@ -88,7 +86,7 @@ public enum Feld220Wagnis48ZukSummenaenderungen {
     AENDERUNG_DER_JAHRESRENTE,
 
     /**
-     * Abstand der Jahresrentenänderungstermine<br/>
+     * Abstand der Jahresrentenänderungstermine.<br/>
      * in Monaten bei periodischen Änderungsterminen<br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * 000 = keine Änderungen/Auszahlungen<br/>
@@ -98,7 +96,7 @@ public enum Feld220Wagnis48ZukSummenaenderungen {
     ABSTAND_DER_JAHRESRENTENAENDERUNGSTERMINE,
 
     /**
-     * Jahresrentenänderungs-Prozentsatz<br/>
+     * Jahresrentenänderungs-Prozentsatz.<br/>
      * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Jahresrente<br/>
      * (3,2 Stellen)
      */
@@ -106,7 +104,7 @@ public enum Feld220Wagnis48ZukSummenaenderungen {
     JAHRESRENTENAENDERUNGS_PROZENTSATZ,
 
     /**
-     * Absolute Jahresrentenänderungssumme in Währungseinheiten<br/>
+     * Absolute Jahresrentenänderungssumme in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Jahresrente<br/>
      * (10,2 Stellen)
      */
@@ -114,7 +112,7 @@ public enum Feld220Wagnis48ZukSummenaenderungen {
     ABSOLUTE_JAHRESRENTENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Jahresrente in Währungseinheiten<br/>
+     * Nächste Jahresrente in Währungseinheiten.<br/>
      * Jahresrente ab dem nächsten Änderungstermin<br/>
      * (10,2 Stellen)
      */
@@ -122,8 +120,9 @@ public enum Feld220Wagnis48ZukSummenaenderungen {
     NAECHSTE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Jahresrente<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten Jahresrente<br/>
+     * Beginndatum der nächsten Jahresrente.<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
+     * werden Datum der nächsten Jahresrente<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 109)

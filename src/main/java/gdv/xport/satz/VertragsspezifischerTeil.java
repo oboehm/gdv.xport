@@ -19,20 +19,20 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 /**
  * Klasse fuer die Satzart 0210.
- * 
+ * <p>
+ * Bitte diese Klasse nicht mehr benutzen. Sie wird mit Version 1.0
+ * entsorgt werden.
+ * </p>
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (28.10.2009)
+ * @deprecated seit 0.6 durch {@link gdv.xport.satz.model.Satz210} ersetzt
  */
 @Deprecated
 public class VertragsspezifischerTeil extends Spartensatz {
@@ -94,20 +94,22 @@ public class VertragsspezifischerTeil extends Spartensatz {
 
     /**
      * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene Sparte an.
-     * 
+     *
      * @param x
      *            Sparte (z.B. 30)
      */
+    @Override
     protected void createTeildatensaetzeFor(final int x) {
         this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
     }
 
     /**
      * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
-     * 
+     *
      * @param sparte
      *            Sparte (z.B. 30)
      */
+    @Override
     protected void setUpDatenfelder(final int sparte) {
         switch (sparte) {
             case 10:
@@ -233,7 +235,7 @@ public class VertragsspezifischerTeil extends Spartensatz {
 
     /**
      * Sparte 50 (KFZ - Fahrzeugdaten) wurde freundlicherweise von Igor Narodetskyi zur Verfuegung gestellt.
-     * 
+     *
      * @since 0.5.1
      */
     private void setUpDatenfelder50() {

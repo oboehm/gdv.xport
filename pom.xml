@@ -29,7 +29,7 @@
   <properties>
     <patterntesting.version>1.3.0</patterntesting.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.5</java.version>
+    <java.version>1.6</java.version>
   </properties>
 
   <build>
@@ -50,6 +50,23 @@
   
   	<plugins>
   	
+      <!-- 
+          Make The Jar Executable
+          see http://maven.apache.org/shared/maven-archiver/examples/classpath.html
+       -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>gdv.xport.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
       <!--
           Maven Site Plugin
           call 'mvn site:site' to generate web site
@@ -140,7 +157,7 @@
 		          <linkXref>true</linkXref>
 		          <sourceEncoding>utf-8</sourceEncoding>
 		          <minimumTokens>100</minimumTokens>
-		          <targetJdk>1.5</targetJdk>
+		          <targetJdk>1.6</targetJdk>
 		        </configuration>
 		      </plugin>
 		      <!-- 
@@ -453,7 +470,7 @@
           <linkXref>true</linkXref>
           <sourceEncoding>utf-8</sourceEncoding>
           <minimumTokens>100</minimumTokens>
-          <targetJdk>1.5</targetJdk>
+          <targetJdk>1.6</targetJdk>
         </configuration>
 	  </plugin>
       <!-- 

@@ -47,11 +47,13 @@
       <ul>
         <li>0001 Vorsatz</li>
         <li>0100 Adressteil</li>
-        <li>0200 AllgemeinerVertragsteil</li>
-        <li>0210 VertragsspezifischerTeil</li>
-        <li>0211 Erweiterungssatz211</li>
-        <li>0220 SpartenspezifischerTeil</li>
-        <li>0221 Erweiterungssatz221</li>
+        <li>0200 Allgemeiner Vertragsteil</li>
+        <li>0210 Vertragsspezifischer Teil</li>
+        <li>0211 Erweiterungssatz 211</li>
+        <li>0220 Spartenspezifischer Teil</li>
+        <li>0221 Erweiterungssatz 221</li>
+        <li>0222 Antragsdaten</li>
+        <li>0230 Spartenspezifischer Teil / Unfall Leistungsarten</li>
         <li>9999 Nachsatz</li>
       </ul>
       <p>

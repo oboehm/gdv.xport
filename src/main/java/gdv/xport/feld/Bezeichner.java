@@ -1,13 +1,20 @@
 /*
- * Copyright (c) 2009 - 2012 by Oli B. Licensed under the Apache License,
- * Version 2.0 (the "License"); you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law
- * or agreed to in writing, software distributed under the License is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express orimplied. See the License for the specific language
- * governing permissions and limitations under the License. (c)reated 15.10.2009
- * by Oli B. (ob@aosd.de)
+/*
+ * Copyright (c) 2009 - 2013 by Oli B.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express orimplied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * (c)reated 15.10.2009 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.feld;
@@ -16,7 +23,7 @@ package gdv.xport.feld;
  * Diese Klasse enthaelt nur String-Konstanten: die Bezeichner der einzelnen
  * Felder. Die Konstanten sind alphabetisch geordnet.
  * <p>
- * TODO: bitte Felder alphabetisch ordnen bzw. eintragen! (oboehm, 26-Jan-2013)
+ * Bitte Felder alphabetisch ordnen bzw. eintragen! (oboehm, 26-Jan-2013)
  * </p>
  *
  * @author oliver
@@ -586,11 +593,11 @@ public final class Bezeichner {
     public static final String RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = "Rueckgewaehrsumme zum Ablauf";
     public static final String ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = "Ablaufleistung incl. Ueberschussanteile";
     public static final String KAPITALERTRAGSSTEUER_BEI_ABLAUF = "Kapitalertragssteuer bei Ablauf";
-    public static final String SOLIDARITAETSZUSCHLAG_BEI_ABLAUF = "SolidaritaAeŒÂˆtszuschlag bei Ablauf";
+    public static final String SOLIDARITAETSZUSCHLAG_BEI_ABLAUF = "Solidarit\u00e4tszuschlag bei Ablauf";
     public static final String RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Rueckkaufswert zum Berechnungsstichtag";
     public static final String BERECHNUNGSSTICHTAG_ZUM_RUECKKAUFSWERT = "Berechnungsstichtag zum Rueckkaufswert";
     public static final String KAPITALERTRAGSSTEUER_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Kapitalertragssteuer bei Rueckkauf zum Berechnungsstichtag";
-    public static final String SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "SolidaritaeÂˆtszuschlag bei Rueckkauf zum Berechnungsstichtag";
+    public static final String SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Solidarit\u00e4tszuschlag bei Rueckkauf zum Berechnungsstichtag";
     public static final String UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Ueberschussanteile zum Berechnungsstichtag";
     public static final String GEBURTSDATUM_DER_BEZUGSBERECHTIGTEN_PERSON = "Geburtsdatum der bezugsberechtigten Person";
 
@@ -617,7 +624,7 @@ public final class Bezeichner {
     public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Todesfall VS zum Ablauf";
     public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Erlebensfall VS II zum Ablauf";
     public static final String BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Beitragsfreie Erlebensfall VS";
-    public static final String ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG = "Absoluter Dynamikerhoeˆhungsbetrag";
+    public static final String ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG = "Absoluter Dynamikerhoehungsbetrag";
     public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Erlebensfall VS zum Beginn der Abrufphase";
     public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Todesfall VS zum Beginn der Abrufphase";
     public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Erlebensfall VS II zum Beginn der Abrufphase";
@@ -833,10 +840,10 @@ public final class Bezeichner {
     public static final String DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 2 in Tausend";
     public static final String DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 3 in Tausend";
     public static final String DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 4 in Tausend";
-    public static final String ERHOEHUNGSSATZ_8_III_AHB = "Erhoehungssatz §8, III AHB";
+    public static final String ERHOEHUNGSSATZ_8_III_AHB = "Erhoehungssatz \u00a78, III AHB";
     public static final String KENNUNG_ERHOEHUNGSSATZ = "Kennung Erhoehungssatz";
     public static final String KENNZEICHEN_FUER_JAHRES_MAXIMIERUNG = "Kennzeichen fuer Jahres-Maximierung";
-    public static final String LETZTE_ERHOEHUNG_8_III_AHB = "Letzte Erhoehung §8, III AHB";
+    public static final String LETZTE_ERHOEHUNG_8_III_AHB = "Letzte Erhoehung \u00a78, III AHB";
     public static final String MENGENSCHLUESSEL = "Mengenschluessel";
     public static final String MINDESTBEITRAG_JE_WAGNIS_IN_WAEHRUNGSEINHEITEN = "Mindestbeitrag je Wagnis";
     public static final String ORDNUNGS_NUMMER_FUER_WAGNISZUSATZ2 = "Ordungs-Nummer fuer Wagniszusatz";

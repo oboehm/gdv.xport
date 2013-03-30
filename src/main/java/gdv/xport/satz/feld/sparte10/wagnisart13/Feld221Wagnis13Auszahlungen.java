@@ -18,17 +18,14 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart13;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
  * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Auszahlungen" (Satzart 0221)).
- * 
+ *
  * @author ralfklemmer
  * @since 17.01.2013
  */
@@ -37,7 +34,10 @@ public enum Feld221Wagnis13Auszahlungen {
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 1, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 1,
+            type = Feld1bis7.class)
     INTRO1,
 
     /**
@@ -69,7 +69,7 @@ public enum Feld221Wagnis13Auszahlungen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Nächste Auszahlungssumme in Währungseinheiten<br/>
+     * Nächste Auszahlungssumme in Währungseinheiten.<br/>
      * Vereinbarte Auszahlungssumme<br/>
      * (9,0 Stellen)
      */

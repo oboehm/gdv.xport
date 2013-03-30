@@ -21,43 +21,41 @@ package gdv.xport.satz.model;
 import java.util.*;
 
 /**
- * Diese Klasse repraesentiert die Satzart 221. Es handelt es sich dabei um eine
- * alternative Implementierung der {@link gdv.xport.satz.Erweiterungssatz221}
- * -Klasse, die nach dem Soplet- Ansatz (s. <a
- * href="http://www.soplets.org/">soplets.org</a>) implementiert wurde.
+ * Diese Klasse repraesentiert die Satzart 222 fuer Antragsdaten. Diese Satzart
+ * kennt nur die Sparte 30 (Unfallspezifische Antragsdaten).
+ * <p>
+ * Alternativ kann man auch direkt <code>new SatzX(222, Feld222.values())</code>
+ * verwenden.
+ * </p>
  *
  * @author oliver (ob@aosd.de)
- * @since 0.6 (14.04.2011)
+ * @since 0.9 (29.03.2013)
  */
-public class Satz221 extends SpartensatzX {
+public class Satz222 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static final Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
 
     static {
-        mapping.put(30, gdv.xport.satz.feld.sparte30.Feld221.values());
-        mapping.put(40, gdv.xport.satz.feld.sparte40.Feld221.values());
-        mapping.put(51, gdv.xport.satz.feld.sparte51.Feld221.values());
-        mapping.put(52, gdv.xport.satz.feld.sparte52.Feld221.values());
-        mapping.put(53, gdv.xport.satz.feld.sparte53.Feld221.values());
-        mapping.put(70, gdv.xport.satz.feld.sparte70.Feld221.values());
+        mapping.put(30, gdv.xport.satz.feld.sparte30.Feld222.values());
     }
 
     /**
-     * Default-Konstruktor.
+     * Default-Konstruktor. Da die Satzart 220 nur die Sparte 3 kennt, wird
+     * diese Sparte als Standard gesetzt.
      */
-    public Satz221() {
-        this(UNKNOWN_SPARTE);
+    public Satz222() {
+        this(30);
     }
 
     /**
-     * Legt ein neues Satz221-Objekt fuer die uebergebene Sparte an.
+     * Legt ein neues Satz222-Objekt fuer die uebergebene Sparte an.
      *
-     * @param sparte
-     *            Sparte (z.B. 10)
+     * @param sparte 30 (andere Sparten sind im GDV-Handbuch (noch) nicht
+     *        aufgelistet)
      */
-    public Satz221(final int sparte) {
-        super(221, sparte);
+    public Satz222(final int sparte) {
+        super(222, sparte);
     }
 
     /**

@@ -20,32 +20,20 @@ package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.Undefiniert;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Teildatensatz;
+import gdv.xport.feld.*;
+import gdv.xport.satz.*;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.text.MessageFormat;
 import java.util.Iterator;
 
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
+import javax.xml.stream.*;
 
 import org.apache.commons.io.IOUtils;
 
 /**
  * Diese Klasse gibt die verschiedenen Saetze und Felder als HTML aus.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (23.11.2010)
  */
@@ -81,7 +69,7 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Instantiiert einen neuen HtmlFormatter.
-     * 
+     *
      * @param file
      *            the file
      * @throws IOException
@@ -94,7 +82,7 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Instantiiert einen neuen HtmlFormatter.
-     * 
+     *
      * @param ostream
      *            the ostream
      */
@@ -104,7 +92,7 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Instantiiert einen neuen HtmlFormatter.
-     * 
+     *
      * @param writer
      *            the writer
      */
@@ -114,7 +102,7 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Hiermit kann der Titel (Ueberschrift) gesetzt werden.
-     * 
+     *
      * @param title
      *            Titel bzw. Ueberschrift
      */
@@ -124,13 +112,14 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Ausgabe eines kompletten Datenpakets als XML.
-     * 
+     *
      * @param datenpaket
      *            Datenpaket, das als XML ausgegeben werden soll
      * @throws IOException
      *             bei Problemen mit der HTML-Generierung
      * @see AbstractFormatter#write(gdv.xport.Datenpaket)
      */
+    @Override
     public void write(final Datenpaket datenpaket) throws IOException {
         long t0 = System.currentTimeMillis();
         StringWriter buffer = new StringWriter();
@@ -324,7 +313,7 @@ public final class HtmlFormatter extends AbstractFormatter {
      * Urspruenglich war diese Methode dazu gedacht, um Umlaute zu ersetzen. Das "Escaping" wird aber bereits vom
      * XMLStreamWriter uebernommen, der aber leider die Umlaute nicht ersetzt. Der Versuch, die Umlaute zu ersetzen,
      * endete leider mit "...&amp;Uuml;..." im erzeugten HTML.
-     * 
+     *
      * @param xmlStreamWriter
      *            the xml stream writer
      * @param feld
@@ -332,7 +321,8 @@ public final class HtmlFormatter extends AbstractFormatter {
      * @throws XMLStreamException
      *             the xML stream exception
      */
-    private static void writeInhaltTo(final XMLStreamWriter xmlStreamWriter, final Feld feld) throws XMLStreamException {
+    private static void writeInhaltTo(final XMLStreamWriter xmlStreamWriter, final Feld feld)
+            throws XMLStreamException {
         String inhalt = feld.getInhalt();
         xmlStreamWriter.writeCharacters(inhalt);
     }
@@ -343,7 +333,7 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Wandelt das uebergebene Datenpaket in einen HTML-String um.
-     * 
+     *
      * @param datenpaket
      *            das Datenpaket
      * @return Datenpaket als XML-String

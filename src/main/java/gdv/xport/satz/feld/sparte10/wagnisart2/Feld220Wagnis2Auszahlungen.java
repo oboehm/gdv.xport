@@ -18,19 +18,14 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart2;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Rentenversicherung = Wagnisart 2 - Auszahlung" (Satzart 0220)
- * 
+ *
  * @author ralfklemmer
  * @since 19.01.2013
  */
@@ -39,7 +34,10 @@ public enum Feld220Wagnis2Auszahlungen {
     // /// Teildatensatz 1 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(teildatensatz = 1, type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 1,
+            type = Feld1bis7.class)
     INTRO1,
 
     /**
@@ -63,15 +61,17 @@ public enum Feld220Wagnis2Auszahlungen {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
-     * Lfd. Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
-     * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6, wenn mehrere Bezugsrechte vorhanden)
+     * Laufende Nummer der Satzart.<br/>
+     * Laufende Nummer der Satzart 0220.010.2/6 innerhalb der gleichen
+     * Folgenummer<br/>
+     * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6,
+     * wenn mehrere Bezugsrechte vorhanden)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Nächste Auszahlungssumme in Währungseinheiten<br/>
+     * Nächste Auszahlungssumme in Währungseinheiten.<br/>
      * Vereinbarte Auszahlungssumme<br/>
      * (9,0 Stellen)
      */
@@ -79,7 +79,7 @@ public enum Feld220Wagnis2Auszahlungen {
     NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächster Auszahlungstermin<br/>
+     * Nächster Auszahlungstermin.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -87,7 +87,7 @@ public enum Feld220Wagnis2Auszahlungen {
     NAECHSTER_AUSZAHLUNGSTERMIN,
 
     /**
-     * Auszahlungsweise<br/>
+     * Auszahlungsweise.<br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * 000 = keine Änderungen/Auszahlungen<br/>
@@ -97,7 +97,7 @@ public enum Feld220Wagnis2Auszahlungen {
     AUSZAHLUNGSWEISE,
 
     /**
-     * Anzahl der Auszahlungen<br/>
+     * Anzahl der Auszahlungen.<br/>
      * Anzahl der insgesamt noch möglichen Auszahlungen (99 = unbestimmt)
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 84)

@@ -25,13 +25,11 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.util.SatzFactory;
 
 import java.io.IOException;
-import java.net.URL;
-import java.net.UnknownHostException;
+import java.net.*;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 import org.junit.*;
 import org.junit.runner.RunWith;
 
@@ -46,7 +44,7 @@ import patterntesting.runtime.annotation.IntegrationTest;
  */
 @RunWith(ParallelRunner.class)
 public final class MyUnfallDatensatzTest {
-    
+
     private static final Log log = LogFactory.getLog(MyUnfallDatensatzTest.class);
 
     /**
@@ -72,11 +70,11 @@ public final class MyUnfallDatensatzTest {
             }
         }
     }
-    
+
     /**
      * Die Bezeichnung von MyFeld210.MEINE_WAEHRUNG sollte "Meine Waehrung"
      * im Datensatz lauten.
-     * 
+     *
      * @since 0.6
      */
     @Test
@@ -93,7 +91,6 @@ public final class MyUnfallDatensatzTest {
      * @throws XMLStreamException bei fehlerhaftem XML
      * @throws IOException falls die URL nicht erreicht werden kann
      */
-    @SuppressWarnings("restriction")
     @Test
     @IntegrationTest
     public void testMain() throws IOException, XMLStreamException {
@@ -103,10 +100,10 @@ public final class MyUnfallDatensatzTest {
             log.warn("Offline? testMain() abgebrochen!", mayhappen);
         }
     }
-    
+
     /**
      * Hier setzen die SatzFactory auf den Ausgangsstand zurueck.
-     * 
+     *
      * @since 0.5.0
      */
     @AfterClass

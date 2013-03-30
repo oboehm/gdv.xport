@@ -19,72 +19,25 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.feld.Feld100;
-import gdv.xport.satz.feld.Feld200;
-import gdv.xport.satz.feld.Feld9999;
+import gdv.xport.satz.*;
+import gdv.xport.satz.feld.*;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld221Wagnis48;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld221Wagnis5;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld221Wagnis5ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld230;
-import gdv.xport.satz.model.Satz210;
-import gdv.xport.satz.model.Satz220;
-import gdv.xport.satz.model.SatzX;
+import gdv.xport.satz.feld.sparte10.wagnisart13.*;
+import gdv.xport.satz.feld.sparte10.wagnisart2.*;
+import gdv.xport.satz.feld.sparte10.wagnisart48.*;
+import gdv.xport.satz.feld.sparte10.wagnisart5.*;
+import gdv.xport.satz.feld.sparte10.wagnisart6.*;
+import gdv.xport.satz.feld.sparte10.wagnisart7.*;
+import gdv.xport.satz.feld.sparte10.wagnisart9.*;
+import gdv.xport.satz.model.*;
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
+import java.lang.reflect.*;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 /**
  * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import
@@ -99,13 +52,16 @@ public final class SatzFactory {
     private static final Log log = LogFactory.getLog(SatzFactory.class);
 
     /** The registered satz classes. */
-    private static final Map<SatzNummer, Class<? extends Satz>> registeredSatzClasses = new HashMap<SatzNummer, Class<? extends Satz>>();
+    private static final Map<SatzNummer, Class<? extends Satz>> registeredSatzClasses =
+            new ConcurrentHashMap<SatzNummer, Class<? extends Satz>>();
 
     /** The registered datensatz classes. */
-    private static final Map<SatzNummer, Class<? extends Datensatz>> registeredDatensatzClasses = new ConcurrentHashMap<SatzNummer, Class<? extends Datensatz>>();
+    private static final Map<SatzNummer, Class<? extends Datensatz>> registeredDatensatzClasses =
+            new ConcurrentHashMap<SatzNummer, Class<? extends Datensatz>>();
 
     /** The registered Enum classes. */
-    private static final Map<SatzNummer, Class<? extends Enum<?>>> registeredEnumClasses = new HashMap<SatzNummer, Class<? extends Enum<?>>>();
+    private static final Map<SatzNummer, Class<? extends Enum<?>>> registeredEnumClasses =
+            new ConcurrentHashMap<SatzNummer, Class<? extends Enum<?>>>();
 
     static {
 //        registerEnum(Feld0001.class, 1);
@@ -351,36 +307,6 @@ public final class SatzFactory {
         registeredEnumClasses.put(satzNr, enumClass);
     }
 
-//    /**
-//     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der Datensatz-Beschreibung uebergeben wird.
-//     *
-//     * @param enumClass
-//     *            die Aufzaehlungsklasse, z.B. Feld100.class
-//     * @param satzart
-//     *            die Satzart
-//     * @param sparte
-//     *            die Sparte
-//     * @param wagnisart
-//     *            die Wagnisart
-//     * @param laufNumSatzart
-//     *            die laufende Nummer der Satzart
-//     * @since 0.8
-//     */
-//    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte,
-//            final int wagnisart, final int laufNumSatzart) {
-//        assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
-//        assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
-//        if (wagnisart != -1) {
-//            assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
-//        }
-//        if (laufNumSatzart != -1) {
-//            assert (0 <= laufNumSatzart) && (laufNumSatzart <= 9) : "Laufende Nummer Satzart muss zwischen 0 und 9 liegen";
-//        }
-//        SatzNummer key = new SatzNummer(satzart, sparte, wagnisart, laufNumSatzart);
-//        registeredDatensatzClasses.remove(key);
-//        registeredEnumClasses.put(key, enumClass);
-//    }
-
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
      * Testen hilfreich sein kann)
@@ -406,34 +332,6 @@ public final class SatzFactory {
     public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte) {
         register(clazz, new SatzNummer(satzart, sparte));
     }
-
-//    /**
-//     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht unterstuetzte Datensaetze) registriert werden.
-//     *
-//     * @param clazz
-//     *            the clazz
-//     * @param satzart
-//     *            the satzart
-//     * @param sparte
-//     *            the sparte
-//     * @param wagnisart
-//     *            the wagnisart
-//     * @param teildatensatzNummer
-//     *            the teildatensatzNummer
-//     * @since 0.8
-//     */
-//    public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte,
-//            final int wagnisart, final int teildatensatzNummer) {
-//        assert (0 <= satzart) && (satzart <= 9999) : "Satzart muss zwischen 0 und 9999 liegen";
-//        assert (0 <= sparte) && (sparte <= 999) : "Sparte muss zwischen 0 und 999 liegen";
-//        if (wagnisart != -1) {
-//            assert (0 <= wagnisart) && (wagnisart <= 9) : "Wagnisart muss zwischen 0 und 9 liegen";
-//            if (teildatensatzNummer != -1) {
-//                assert (0 <= teildatensatzNummer) && (teildatensatzNummer <= 9) : "teildatensatzNummer muss zwischen 0 und 9 liegen";
-//            }
-//        }
-//        register(clazz, new SatzNummer(satzart, sparte, wagnisart, teildatensatzNummer));
-//    }
 
     /**
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
@@ -595,9 +493,9 @@ public final class SatzFactory {
      * <ul>
      * <li>Satzart (z.B. 210)</li>
      * <li>Sparte (z.B. 70 fuer Rechtsschutz)</li>
-     * <li>Wagnisart (z.B. 1 fuer Kapitallebensversicherung</li>
+     * <li>Wagnisart (z.B. 1 fuer Kapitallebensversicherung)</li>
      * <li>Teildatensatz-Nummer (6 = Bezugsrechte, 7 = Auszahlungen, 8 =
-     * zukünftige Summenänderungen, 9 = Wertungssummen</li>
+     * zukünftige Summenänderungen, 9 = Wertungssummen)</li>
      * </ul>
      *
      * @param satzNr z.B. new Satznummer(210, 70, 1, 6)

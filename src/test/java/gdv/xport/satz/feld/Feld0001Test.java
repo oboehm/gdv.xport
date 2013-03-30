@@ -19,14 +19,11 @@
 package gdv.xport.satz.feld;
 
 import static org.junit.Assert.*;
-
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
+import gdv.xport.feld.*;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.model.SatzX;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 
 import patterntesting.runtime.annotation.Broken;
@@ -57,7 +54,7 @@ public class Feld0001Test {
      * 1" aufgesetzt ist.
      */
     @Test
-    @Broken(why="siehe gdv.xport.satz.model.SatzX.add(Enum<?>, Teildatensatz)", till="20-Mar-2013")
+    @Broken(why="siehe gdv.xport.satz.model.SatzX.add(Enum<?>, Teildatensatz)", till="20-Jul-2013")
     public void testVersionSatzart0001() {
         Feld x = vorsatz.getTeildatensatz(1).getFeld(Bezeichner.VERSION_SATZART_0001);
         assertNotNull(x);
