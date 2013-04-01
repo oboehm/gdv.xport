@@ -51,6 +51,8 @@ public class ImportExportTest {
             Datensatz satz100 = ImportExport.importSatz100(tmpFile);
             assertEquals(100, satz100.getSatzart());
             assertEquals("1", satz100.getFeld(Feld100.ANREDESCHLUESSEL).getInhalt());
+            assertEquals("Duck", satz100.getFeld(Feld100.NAME1).getInhalt().trim());
+            assertEquals("1", satz100.getFeld(Feld100.GESCHLECHT).getInhalt());
         } finally {
             tmpFile.delete();
             log.info("file \"" + tmpFile + "\" deleted.");

@@ -22,25 +22,15 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 
-import java.io.IOException;
-import java.io.Writer;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
+import java.io.*;
+import java.util.*;
 
-import net.sf.oval.ConstraintViolation;
-import net.sf.oval.Validator;
+import net.sf.oval.*;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
@@ -191,7 +181,13 @@ public final class Teildatensatz extends Satz {
     }
 
     /**
-     * Liefert das gewuenschte Feld.
+     * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
+     * benutzt, um das Feld zu bestimmen.
+     * <p>
+     * TODO: Eigentlich waere es sinnvoller, hier die restlichen Annotationen
+     * auszuwerten, da der Name nur auf Konvention beruht und etwas wackelig
+     * ist (oboehm, 1-Apr-2013).
+     * </p>
      *
      * @param feldX gewuenschtes Feld-Element
      * @return das gesuchte Feld

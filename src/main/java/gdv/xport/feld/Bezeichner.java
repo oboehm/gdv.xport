@@ -317,9 +317,9 @@ public final class Bezeichner {
     public static final String MITVERSICHERTE_PERSON_VORNAME = "Mitversicherte Person Vorname";
     public static final String MODELLNAME = "Modellname";
     public static final String NAECHSTE_ERHOEHUNG = "naechste Erhoehung";
-    public static final String NAME1 = "Name 1";
-    public static final String NAME2 = "Name 2";
-    public static final String NAME3 = "Name 3";
+    public static final String NAME1 = "Name1";
+    public static final String NAME2 = "Name2";
+    public static final String NAME3 = "Name3";
     public static final String NAME_KREDITINSTITUT1 = "Name des Kreditinstituts 1";
     public static final String NAME_KREDITINSTITUT2 = "Name des Kreditinstituts 2";
     public static final String NAME_MITVERSICHERTES_KIND = "Name des mitversicherten Kinds";

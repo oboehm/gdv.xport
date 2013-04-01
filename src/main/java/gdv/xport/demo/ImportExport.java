@@ -24,6 +24,8 @@ import gdv.xport.util.SatzFactory;
 
 import java.io.*;
 
+import org.apache.commons.logging.*;
+
 /**
  * Diese Klasse enthaelt einige Beispiele fuer den Import und Export von
  * Datensaetzen.
@@ -32,6 +34,8 @@ import java.io.*;
  * @since 0.9 (31.03.2013)
  */
 public final class ImportExport {
+
+    private static final Log log = LogFactory.getLog(ImportExport.class);
 
     /**
      * Dies ist ein Beispiel, wie man einen bestimmten Datensatz exportieren
@@ -51,7 +55,10 @@ public final class ImportExport {
      */
     public static void exportSatz100(final File file) throws IOException {
         Datensatz satz100 = SatzFactory.getDatensatz(100);
-        satz100.set(Feld100.ANREDESCHLUESSEL, "1");
+        satz100.set(Feld100.ANREDESCHLUESSEL, 1);
+        satz100.set(Feld100.NAME1, "Duck");
+        satz100.set(Feld100.NAME3, "Dagobert");
+        satz100.set(Feld100.GESCHLECHT, '1');
         satz100.export(file);
     }
 
@@ -66,6 +73,8 @@ public final class ImportExport {
     public static Datensatz importSatz100(final File file) throws IOException {
         Datensatz satz100 = SatzFactory.getDatensatz(100);
         satz100.importFrom(file);
+        log.info("Datensatz " + satz100.getSatzart() + " von " + satz100.getFeld(Feld100.NAME3) + " "
+                + satz100.getFeld(Feld100.NAME1) + " importiert.");
         return satz100;
     }
 

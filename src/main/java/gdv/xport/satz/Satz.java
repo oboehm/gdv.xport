@@ -274,6 +274,28 @@ public abstract class Satz {
 		this.set(name, value);
 	}
 
+    /**
+     * Setzt den Inhalt des gewuenschten Feldes.
+     *
+     * @param feldX das gewuenschte Feld-Element
+     * @param value neuer Inhalt
+     * @since 0.9 (oboehm, 1-Apr-2013)
+     */
+    public final void set(final Enum<?> feldX, final Integer value) {
+        this.set(feldX, Integer.toString(value));
+    }
+
+    /**
+     * Setzt den Inhalt des gewuenschten Feldes.
+     *
+     * @param feldX das gewuenschte Feld-Element
+     * @param value neuer Inhalt
+     * @since 0.9 (oboehm, 1-Apr-2013)
+     */
+    public final void set(final Enum<?> feldX, final Character value) {
+        this.set(feldX, Character.toString(value));
+    }
+
 	/**
 	 * Liefert den Inhalt des gewuenschten Feldes.
 	 *
@@ -302,7 +324,13 @@ public abstract class Satz {
 	}
 
 	/**
-	 * Liefert das gewuenschte Feld.
+	 * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
+	 * benutzt, um das Feld zu bestimmen.
+	 * <p>
+	 * TODO: Eigentlich waere es sinnvoller, hier die restlichen Annotationen
+	 * auszuwerten, da der Name nur auf Konvention beruht und etwas wackelig
+	 * ist (oboehm, 1-Apr-2013).
+	 * </p>
 	 *
 	 * @param feld gewuenschtes Feld-Element
 	 * @return das gesuchte Feld

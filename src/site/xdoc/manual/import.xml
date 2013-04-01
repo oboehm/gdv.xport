@@ -70,6 +70,21 @@ Feld absenderFeld = vorsatz.getFeld(Bezeichner.ABSENDER);
         </p>
       </subsection>
     </section>
+    
+    <section name="Weitere Importe">
+      <p>
+        Soll nur ein einzelner Datensatz importiert werden, kann dies auch
+        direkt ueber die Datensatz-Klasse erfolgen:
+      </p>
+<source><![CDATA[
+Datensatz satz100 = SatzFactory.getDatensatz(100);
+satz100.importFrom(file);
+]]></source>
+      <p>
+        Dieses und weitere Beispiele befinden sich in
+        <a href="../xref/gdv/xport/demo/ImportExport.html">ImportExport</a>.
+      </p>
+    </section>
 
   </body>
 
