@@ -18,21 +18,21 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
 import static gdv.xport.feld.Bezeichner.*;
+import static org.junit.Assert.*;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.config.Config;
+import gdv.xport.feld.*;
+import gdv.xport.satz.feld.*;
+import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.sparte53.Feld220;
 
 import java.io.*;
 import java.util.List;
 
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.satz.feld.Feld200;
-import gdv.xport.satz.feld.MetaFeldInfo;
-import gdv.xport.satz.feld.common.Feld1bis7;
-import gdv.xport.satz.feld.sparte53.Feld220;
 import net.sf.oval.ConstraintViolation;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.*;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -132,11 +132,29 @@ public final class SatzTest {
     }
 
     /**
+     * Test-Methode fuer {@link Satz#export(File)}.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testExportFile() throws IOException {
+        File tmpFile = File.createTempFile("gdv", ".xport");
+        log.info("File \"" + tmpFile + "\" created.");
+        try {
+            satz.export(tmpFile);
+            String exported = FileUtils.readFileToString(tmpFile);
+            assertEquals(satz.toLongString(), exported);
+        } finally {
+            tmpFile.delete();
+            log.info("File \"" + tmpFile + "\" deleted.");
+        }
+    }
+
+    /**
      * Ein einfach Import-Test.
      *
-     * @throws IOException
-     *             sollte eigenlich nicht passieren, da wir von einem String
-     *             lesen
+     * @throws IOException sollte eigenlich nicht passieren, da wir von einem
+     *             String lesen
      */
     @Test
     public void testImport() throws IOException {
@@ -152,6 +170,26 @@ public final class SatzTest {
         assertEquals(123, x.getSatzart());
         assertEquals("Hello", x.getFeld("F1").getInhalt());
         assertEquals(sbuf.toString().trim(), x.toLongString().trim());
+    }
+
+    /**
+     * Test-Methode fuer {@link Satz#importFrom(File)}.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImportFile() throws IOException {
+        File tmpFile = File.createTempFile("gdv", ".xport");
+        log.info("File \"" + tmpFile + "\" created.");
+        try {
+            String fileContent = satz.toLongString();
+            FileUtils.writeStringToFile(tmpFile, fileContent);
+            satz.importFrom(tmpFile);
+            assertEquals(fileContent, satz.toLongString());
+        } finally {
+            tmpFile.delete();
+            log.info("File \"" + tmpFile + "\" deleted.");
+        }
     }
 
     /**

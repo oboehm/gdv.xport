@@ -447,7 +447,7 @@ public abstract class Satz {
 	}
 
 	/**
-	 * Export.
+     * Exportiert den Satz.
 	 *
 	 * @param writer the writer
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -456,6 +456,21 @@ public abstract class Satz {
 		for (int i = 0; i < teildatensatz.length; i++) {
 			teildatensatz[i].export(writer);
 		}
+	}
+
+	/**
+	 * Exportiert den Satz.
+	 *
+	 * @param file Datei
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public void export(final File file) throws IOException {
+	    Writer writer = new FileWriter(file);
+	    try {
+	        this.export(writer);
+	    } finally {
+	        writer.close();
+	    }
 	}
 
 	/**
@@ -507,6 +522,21 @@ public abstract class Satz {
 	}
 
 	/**
+	 * Importiert einen Satz von der angegebenen Datei.
+	 *
+	 * @param file die Import-Datei
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public void importFrom(final File file) throws IOException {
+	    Reader reader = new FileReader(file);
+	    try {
+	        this.importFrom(reader);
+	    } finally {
+	        reader.close();
+	    }
+	}
+
+	/**
 	 * Ermittelt die Satzlaenge. Je nachdem, ob das Zeilenende aus keinem, einem
 	 * oder zwei Zeichen besteht, wird 256, 257 oder 258 zurueckgegeben.
 	 *
@@ -550,7 +580,7 @@ public abstract class Satz {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public final void importFrom(final Reader reader) throws IOException {
-		importFrom(new PushbackReader(reader, 4));
+		importFrom(new PushbackReader(reader, 14));
 	}
 
 	/**

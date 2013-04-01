@@ -21,12 +21,10 @@ package gdv.xport.demo;
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.model.SatzX;
-import gdv.xport.util.SatzFactory;
-import gdv.xport.util.XmlFormatter;
+import gdv.xport.util.*;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.*;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -37,7 +35,6 @@ import javax.xml.stream.XMLStreamException;
  * @author oliver (ob@aosd.de)
  * @since 0.3 (21.11.2009)
  */
-// public class MyUnfallDatensatz extends Datensatz {
 public class MyUnfallDatensatz extends SatzX {
 
     /**
