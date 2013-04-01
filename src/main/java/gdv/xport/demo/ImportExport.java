@@ -34,9 +34,9 @@ import java.io.*;
 public final class ImportExport {
 
     /**
-     * Dies ist ein Beispiel, wie man einen bestimmten Datensatz exportieren kann. Als Beispiel
-     * wollen wir den Satz 100 (Adressteil) exportieren. Dazu muessen wir ihn erst einmal
-     * generieren.
+     * Dies ist ein Beispiel, wie man einen bestimmten Datensatz exportieren
+     * kann. Als Beispiel wollen wir den Satz 100 (Adressteil) exportieren. Dazu
+     * muessen wir ihn erst einmal generieren.
      * <p>
      * Der Satz 100 kann auf drei verschiedene Arten angelegt werden:
      * </p>
@@ -53,6 +53,20 @@ public final class ImportExport {
         Datensatz satz100 = SatzFactory.getDatensatz(100);
         satz100.set(Feld100.ANREDESCHLUESSEL, "1");
         satz100.export(file);
+    }
+
+    /**
+     * Dies ist ein Beispiel, wie man einen bestimmten Datensatz importieren
+     * kann. Als Beispiel nehmen wir dazu den Satz 100 (Adressteil).
+     *
+     * @param file the file
+     * @return importierter Satz 100
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public static Datensatz importSatz100(final File file) throws IOException {
+        Datensatz satz100 = SatzFactory.getDatensatz(100);
+        satz100.importFrom(file);
+        return satz100;
     }
 
     /**

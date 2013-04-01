@@ -580,7 +580,7 @@ public abstract class Satz {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public final void importFrom(final Reader reader) throws IOException {
-		importFrom(new PushbackReader(reader, 14));
+		importFrom(new PushbackReader(reader, 256));
 	}
 
 	/**
