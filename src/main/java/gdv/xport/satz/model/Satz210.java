@@ -41,6 +41,7 @@ public class Satz210 extends SpartensatzX {
     static {
         mapping.put(10, gdv.xport.satz.feld.sparte10.Feld210.values());
         mapping.put(30, gdv.xport.satz.feld.sparte30.Feld210.values());
+        mapping.put(40, gdv.xport.satz.feld.sparte40.Feld210.values());
         mapping.put(50, gdv.xport.satz.feld.sparte50.Feld210.values());
         mapping.put(70, gdv.xport.satz.feld.sparte70.Feld210.values());
     }

@@ -22,7 +22,7 @@ import java.util.*;
 
 /**
  * Diese Klasse repraesentiert die Satzart 230 fuer Spartenspezifischer Teil.
- * Diese Satzart kennt nur die Sparte 30 (Unfall Leistungsarten).
+ * Diese Satzart kennt Sparte 10 (Leben) und Sparte 30 (Unfall Leistungsarten).
  * <p>
  * Alternativ kann man auch direkt
  * <code>new SatzX(230, Feld230.values())</code>
@@ -38,22 +38,21 @@ public class Satz230 extends SpartensatzX {
     private static final Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
 
     static {
+        mapping.put(10, gdv.xport.satz.feld.sparte10.wagnisart9.Feld230.values());
         mapping.put(30, gdv.xport.satz.feld.sparte30.Feld230.values());
     }
 
     /**
-     * Default-Konstruktor. Da die Satzart 220 nur die Sparte 3 kennt, wird
-     * diese Sparte als Standard gesetzt.
+     * Default-Konstruktor.
      */
     public Satz230() {
-        this(30);
+        this(UNKNOWN_SPARTE);
     }
 
     /**
      * Legt ein neues Satz230-Objekt fuer die uebergebene Sparte an.
      *
-     * @param sparte 30 (andere Sparten sind im GDV-Handbuch (noch) nicht
-     *        aufgelistet)
+     * @param sparte 30
      */
     public Satz230(final int sparte) {
         super(230, sparte);

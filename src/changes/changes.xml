@@ -26,8 +26,11 @@
         Manifest enth&#228;lt jetzt Main-Klasse.
       </action>
       <action dev="ralfklemmer" type="add" date="Jan-2013">
+        Sparte 40 (Haftpflicht) ist hinzugekommen.
+      </action>
+      <action dev="ralfklemmer" type="add" date="Jan-2013">
         Unterst&#252;tzung von Satzart 222 und 230,
-        Unterst&#252;tzung der Wagnisart f&#252;r diverse Sparten.
+        Unterst&#252;tzung der Wagnisart f&#252;r diverse Sparten,
       </action>
       <action dev="ralfklemmer" type="update" date="22-Nov-2012" >
         Beginn Umstellung auf Version 2009 des GDV-Handbuches.
@@ -151,7 +154,7 @@
     </release>
 
     <release version="0.4.1" date="08-Feb-2010"
-             description="fehlende (Java)-Docs erg&#228;nzt">
+             description="fehlende (Java-) Docs erg&#228;nzt">
       <action dev="oboehm" type="update" date="7-Feb-2010" >
         Dokumentation aktualisiert, Checkstyle-Warnings reduziert
       </action>
