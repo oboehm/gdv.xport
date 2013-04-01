@@ -18,19 +18,14 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart9;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
  * "Leben - Fondsdatensatz" (Satzart 0230)
- * 
+ *
  * @author ralfklemmer
  * @since 19.01.2013
  */
@@ -70,33 +65,33 @@ public enum Feld230 {
     LFD_NUMMER_DES_FONDS,
 
     /**
-     * Wertpapierkennnummer<br/>
+     * Wertpapierkennnummer.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 6, byteAdresse = 66)
     WERTPAPIERKENNNUMMER,
 
     /**
-     * Fondskennung<br/>
+     * Fondskennung.<br/>
      * Fonds-Schlüssel zur eindeutigen Darstellung im System
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 10, byteAdresse = 72)
     FONDSKENNUNG,
 
     /**
-     * ISIN-Nummer<br/>
+     * ISIN-Numme.r<br/>
      * internationale Wertpapierkennnummer gemäß ISO-Norm 6166
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = AlphaNumFeld.class, anzahlBytes = 12, byteAdresse = 82)
     ISIN_NUMMER,
 
     /**
-     * Fondsname<br/>
+     * Fondsname.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = AlphaNumFeld.class, anzahlBytes = 50, byteAdresse = 94)
     FONDSNAME,
 
     /**
-     * Thesaur<br/>
+     * Thesaur.<br/>
      * Kennzeichen, ob Fond thesaurierend<br/>
      * 0 = nein, 1 = ja
      */
@@ -104,7 +99,7 @@ public enum Feld230 {
     THESAUR,
 
     /**
-     * Anteile<br/>
+     * Anteile.<br/>
      * Anteile in Stück<br/>
      * (8,6 Stellen)
      */
@@ -112,7 +107,7 @@ public enum Feld230 {
     ANTEILE,
 
     /**
-     * Bezugsdatum<br/>
+     * Bezugsdatum.<br/>
      * Gültigkeitstermin des Anteilsstandes<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -120,7 +115,7 @@ public enum Feld230 {
     BEZUGSDATUM,
 
     /**
-     * Prozentsatz<br/>
+     * Prozentsatz.<br/>
      * Prozentualer Anteil des Beitrags mit dem dieser Fonds aktuell bespart wird<br/>
      * (3,4 Stellen)
      */

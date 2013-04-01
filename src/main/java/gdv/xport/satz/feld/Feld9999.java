@@ -1,10 +1,7 @@
 package gdv.xport.satz.feld;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 
 
 /**
@@ -14,7 +11,7 @@ import gdv.xport.feld.Zeichen;
 public enum Feld9999 {
 
     /**
-     * Satzart
+     * Satzart.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -24,9 +21,9 @@ public enum Feld9999 {
             byteAdresse = 1
     )
     SATZART,
-    
+
     /**
-     * Anzahl der Sätze
+     * Anzahl der Sätze.
      * ohne Vor-/Nachsatz
      */
     @FeldInfo(
@@ -37,9 +34,9 @@ public enum Feld9999 {
             byteAdresse = 5
             )
     ANZAHL_SAETZE,
-    
+
     /**
-     * Geschäftsstelle/Vermittler
+     * Geschäftsstelle/Vermittler.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -49,9 +46,9 @@ public enum Feld9999 {
             byteAdresse = 15
             )
     VERMITTLER,
-    
+
     /**
-     * Gesamtbeitrag
+     * Gesamtbeitrag.
      * Addition aller Beiträge ohne Berücksichtigung der Währung aus der Satzart 0200 (13, 2 Stellen)
      */
     @FeldInfo(
@@ -62,9 +59,9 @@ public enum Feld9999 {
             byteAdresse = 25
             )
     GESAMTBEITRAG,
-    
+
     /**
-     * Gesamtbeitrag-Brutto(Inkasso)
+     * Gesamtbeitrag-Brutto(Inkasso).
      * Addition aller Beiträge ohne Berücksichtigung der Währung aus der Satzart 0400(12, 2 Stellen)
      * Prüfsumme zur Validierung
      */
@@ -76,10 +73,10 @@ public enum Feld9999 {
             byteAdresse = 40
             )
     GESAMTBEITRAG_BRUTTO,
-    
+
     /**
-     * Vorzeichen
-     * - = Negativ 
+     * Vorzeichen.
+     * - = Negativ
      * + = Positiv
      */
     @FeldInfo(
@@ -90,9 +87,9 @@ public enum Feld9999 {
             byteAdresse = 54
             )
     VORZEICHEN,
-    
+
     /**
-     * Gesamtprovisions-Betrag
+     * Gesamtprovisions-Betrag.
      * Addition aller Provisionen ohne Berücksichtigung der Währung aus der Satzart 0400
      * (12, 2 Stellen) (12,2 Stellen)
      */
@@ -104,11 +101,11 @@ public enum Feld9999 {
             byteAdresse = 55
             )
     GESAMTPROVISIONSBETRAG,
-    
-    
+
+
     /**
-     * Vorzeichen
-     * - = Negativ 
+     * Vorzeichen.
+     * - = Negativ
      * + = Positiv
      */
     @FeldInfo(
@@ -119,9 +116,9 @@ public enum Feld9999 {
             byteAdresse = 69
             )
     VORZEICHEN2,
-    
+
     /**
-     * Versicherungsleistungen
+     * Versicherungsleistungen.
      * Addition aller Versicherungsleistungen ohne Berücksichtigung der Währung aus der Satzart 0500
      * (12, 2 Stellen) Prüfsumme zur Validierung
      */
@@ -133,11 +130,11 @@ public enum Feld9999 {
             byteAdresse = 70
             )
     VERSICHERUNGSLEISTUNGEN,
-    
-    
+
+
     /**
-     * Vorzeichen
-     * - = Negativ 
+     * Vorzeichen.
+     * - = Negativ
      * + = Positiv
      */
     @FeldInfo(
@@ -148,11 +145,11 @@ public enum Feld9999 {
             byteAdresse = 84
             )
     VORZEICHEN3,
-    
+
     /**
-     * Schadenbearbeitungskosten
+     * Schadenbearbeitungskosten.
      * Addition aller Schadenbearbeitungskosten ohne Berücksichtigung der Währung aus der Satzart 0500
-     * (12, 2 Stellen) 
+     * (12, 2 Stellen)
      * Prüfsumme zur Validierung
      */
     @FeldInfo(
@@ -163,10 +160,10 @@ public enum Feld9999 {
             byteAdresse = 85
             )
     SCHADENBEARBEITUNGSKOSTEN,
-    
+
     /**
-     * Vorzeichen
-     * - = Negativ 
+     * Vorzeichen.
+     * - = Negativ
      * + = Positiv
      */
     @FeldInfo(
@@ -177,9 +174,9 @@ public enum Feld9999 {
             byteAdresse = 99
             )
     VORZEICHEN4,
-    
+
     /**
-     * Leerstellen
+     * Leerstellen.
      */
     @FeldInfo(
             teildatensatz = 1,
