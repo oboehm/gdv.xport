@@ -18,8 +18,11 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart48;
 
-import gdv.xport.annotation.*;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -71,7 +74,8 @@ public enum Feld220Wagnis48Bezugsrechte {
     /**
      * Bezugsberechtigt im Leistungsfall.<br/>
      * 1 = Versicherungsnehmer<br/>
-     * 2 = Versicherte Personv 9 = Sonstiger Bezugsberechtigter
+     * 2 = Versicherte Person<br>
+     * 9 = Sonstiger Bezugsberechtigter
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 64)
     BEZUGSBERECHTIGT_IM_LEISTUNGSFALL,
