@@ -28,8 +28,22 @@ datenpaket.export(file);
         abgestellt oder auch ein anderes Zeichen (oder Zeichenkette)
         eingestellt werden.
       </p>
+      <subsection name="Einzel-Export">
+      <p>
+        Ein einzelner Datensatz kann ebenso direkt exportiert werden:
+      </p>
+<source><![CDATA[
+Datensatz satz100 = SatzFactory.getDatensatz(100);
+...
+satz100.export(file);
+]]></source>
+        <p>
+          Dieses Beispiel befindet sich in
+          <a href="../xref/gdv/xport/demo/ImportExport.html">ImportExport</a>.
+        </p>
+      </subsection>
     </section>
-    
+
     <section name="Formatter">
       <p>
         Zur Untersuchung des GDV-Formats und zur leichteren Fehlersuche gibt
