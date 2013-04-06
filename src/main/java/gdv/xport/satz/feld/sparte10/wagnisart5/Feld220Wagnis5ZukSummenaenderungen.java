@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Risikozusatz = Wagnisart 5 - Zukünftige Summenänderung" (Satzart 0220)
  *
  * @author ralfklemmer
@@ -61,7 +61,7 @@ public enum Feld220Wagnis5ZukSummenaenderungen {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
+     * Laufende Nummer der Satzart.<br/>
      * Lfd. Nummer der Satzart 0220.010 (Wagnisart 6) innerhalb der gleichen Folgenummer<br/>
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010 (Wagnisart 6), wenn mehrere zukünftige
      * Summenänderungen feststehen)
@@ -70,7 +70,7 @@ public enum Feld220Wagnis5ZukSummenaenderungen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Anfängliche Todesfall VS in Währungseinheiten<br/>
+     * Anfängliche Todesfall VS in Währungseinheiten.<br/>
      * Anfängliche bzw. erste Todesfallleistung<br/>
      * (9,0 Stellen)
      */
@@ -78,7 +78,7 @@ public enum Feld220Wagnis5ZukSummenaenderungen {
     ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Änderung der Todesfallleistung<br/>
+     * Änderung der Todesfallleistung.<br/>
      * 0 = keine Änderung bzw. nur eine Todesfallleistung<br/>
      * 1 = Erhöhung der Todesfallleistung<br/>
      * 2 = Reduzierung der Todesfallleistung
@@ -87,7 +87,7 @@ public enum Feld220Wagnis5ZukSummenaenderungen {
     AENDERUNG_DER_TODESFALLLEISTUNG,
 
     /**
-     * Abstand der Todesfalländerungstermine<br/>
+     * Abstand der Todesfalländerungstermine.<br/>
      * in Monaten bei periodischen Änderungsterminen<br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * 000 = keine Änderungen/Auszahlungen<br/>
@@ -97,7 +97,7 @@ public enum Feld220Wagnis5ZukSummenaenderungen {
     ABSTAND_DER_TODESFALLAENDERUNGSTERMINE,
 
     /**
-     * Todesfalländerungs-Prozentsatz<br/>
+     * Todesfalländerungs-Prozentsatz.<br/>
      * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Todesfallleistung<br/>
      * (3,2 Stellen)
      */
@@ -105,7 +105,7 @@ public enum Feld220Wagnis5ZukSummenaenderungen {
     TODESFALLAENDERUNGS_PROZENTSATZ,
 
     /**
-     * Absolute Todesfalländerungssumme in Währungseinheiten<br/>
+     * Absolute Todesfalländerungssumme in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Todesfallleistung<br/>
      * (9,0 Stellen)
      */
@@ -113,7 +113,7 @@ public enum Feld220Wagnis5ZukSummenaenderungen {
     ABSOLUTE_TODESFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Todesfall VS in Währungseinheiten<br/>
+     * Nächste Todesfall VS in Währungseinheiten.<br/>
      * Todesfallleistung ab dem nächsten Änderungstermin<br/>
      * (9,0 Stellen)
      */
@@ -121,8 +121,9 @@ public enum Feld220Wagnis5ZukSummenaenderungen {
     NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Todesfall VS<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten Jahresrente<br/>
+     * Beginndatum der nächsten Todesfall VS.<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
+     * werden Datum der nächsten Jahresrente<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 100)

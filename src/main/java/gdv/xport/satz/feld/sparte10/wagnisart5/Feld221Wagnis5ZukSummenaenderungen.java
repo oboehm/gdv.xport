@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Risikozusatz = Wagnisart 5 - Zukünftige Summenänderung" (Satzart 0221)
  *
  * @author ralfklemmer
@@ -41,7 +41,7 @@ public enum Feld221Wagnis5ZukSummenaenderungen {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -61,7 +61,7 @@ public enum Feld221Wagnis5ZukSummenaenderungen {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
+     * Lfd. Nummer der Satzart.<br/>
      * Lfd. Nummer der Satzart 0221.010.5/8 innerhalb der gleichen Folgenummer<br/>
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0221.010.5/8, wenn mehrere zukünftige
      * Summenänderungen feststehen)
@@ -70,7 +70,7 @@ public enum Feld221Wagnis5ZukSummenaenderungen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Anfängliche Todesfall VS in Währungseinheiten<br/>
+     * Anfängliche Todesfall VS in Währungseinheiten.<br/>
      * Anfängliche bzw. erste Todesfallleistung<br/>
      * (12,2 Stellen)
      */
@@ -78,7 +78,7 @@ public enum Feld221Wagnis5ZukSummenaenderungen {
     ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Absolute Todesfalländerungssumme in Währungseinheiten<br/>
+     * Absolute Todesfalländerungssumme in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung<br/>
      * (12,0 Stellen)
      */
@@ -86,7 +86,7 @@ public enum Feld221Wagnis5ZukSummenaenderungen {
     ABSOLUTE_TODESFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Todesfall VS in Währungseinheiten<br/>
+     * Nächste Todesfall VS in Währungseinheiten.<br/>
      * Todesfalleistung ab dem nächsten Änderungstermin<br/>
      * (12,2 Stellen)
      */
@@ -98,4 +98,5 @@ public enum Feld221Wagnis5ZukSummenaenderungen {
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = AlphaNumFeld.class, anzahlBytes = 150, byteAdresse = 106)
     LEERSTELLEN
+
 }

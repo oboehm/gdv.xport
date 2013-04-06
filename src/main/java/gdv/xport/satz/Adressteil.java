@@ -18,76 +18,17 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.ABWEICHENDER_KONTOINHABER1;
-import static gdv.xport.feld.Bezeichner.ABWEICHENDER_KONTOINHABER2;
-import static gdv.xport.feld.Bezeichner.ADRESSKENNZEICHEN;
-import static gdv.xport.feld.Bezeichner.AKTENZEICHEN_SICHERUNGSGLAEUBIGER;
-import static gdv.xport.feld.Bezeichner.ANREDESCHLUESSEL;
-import static gdv.xport.feld.Bezeichner.BIC1;
-import static gdv.xport.feld.Bezeichner.BIC2;
-import static gdv.xport.feld.Bezeichner.BLZ1;
-import static gdv.xport.feld.Bezeichner.BLZ2;
-import static gdv.xport.feld.Bezeichner.FAMILIENSTAND;
-import static gdv.xport.feld.Bezeichner.GEBURTSDATUM;
-import static gdv.xport.feld.Bezeichner.GEBURTSLAND;
-import static gdv.xport.feld.Bezeichner.GEBURTSNAME;
-import static gdv.xport.feld.Bezeichner.GEBURTSORT;
-import static gdv.xport.feld.Bezeichner.GESCHLECHT;
-import static gdv.xport.feld.Bezeichner.GROSSRISIKEN;
-import static gdv.xport.feld.Bezeichner.IBAN1;
-import static gdv.xport.feld.Bezeichner.IBAN2;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSNR1;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSNR2;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSNR3;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSNR4;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSNR5;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSNR6;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSNR7;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSTYP1;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSTYP2;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSTYP3;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSTYP4;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSTYP5;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSTYP6;
-import static gdv.xport.feld.Bezeichner.KOMMUNIKATIONSTYP7;
-import static gdv.xport.feld.Bezeichner.KONTONR1;
-import static gdv.xport.feld.Bezeichner.KONTONR2;
-import static gdv.xport.feld.Bezeichner.KUNDENGRUPPE;
-import static gdv.xport.feld.Bezeichner.KUNDENNR_VERMITTLER;
-import static gdv.xport.feld.Bezeichner.KUNDENNR_VERSICHERER;
-import static gdv.xport.feld.Bezeichner.LAENDERKENNZEICHEN;
-import static gdv.xport.feld.Bezeichner.LFD_PERSONENNR_GEVO;
-import static gdv.xport.feld.Bezeichner.NAME1;
-import static gdv.xport.feld.Bezeichner.NAME2;
-import static gdv.xport.feld.Bezeichner.NAME3;
-import static gdv.xport.feld.Bezeichner.NAME_KREDITINSTITUT1;
-import static gdv.xport.feld.Bezeichner.NAME_KREDITINSTITUT2;
-import static gdv.xport.feld.Bezeichner.ORT;
-import static gdv.xport.feld.Bezeichner.POSTALISCHES_KENNZEICHEN;
-import static gdv.xport.feld.Bezeichner.POSTFACH;
-import static gdv.xport.feld.Bezeichner.POSTLEITZAHL;
-import static gdv.xport.feld.Bezeichner.RECHTSFORM;
-import static gdv.xport.feld.Bezeichner.STAATSANGEHOERIGKEIT;
-import static gdv.xport.feld.Bezeichner.STEUERNR_JURISTISCHE_PERSON;
-import static gdv.xport.feld.Bezeichner.STRASSE;
-import static gdv.xport.feld.Bezeichner.TITEL;
-import static gdv.xport.feld.Bezeichner.TYP_BANKVERBINDUNG1;
-import static gdv.xport.feld.Bezeichner.TYP_BANKVERBINDUNG2;
-import static gdv.xport.feld.Bezeichner.UMSATZSTEUER_ID;
-import static gdv.xport.feld.Bezeichner.VORZUGSSEUERBERECHTIGUNG_PROZENT;
-import static gdv.xport.feld.Bezeichner.VORZUGSSTEUERBERECHTIGUNG;
-import static gdv.xport.feld.Bezeichner.ZAHLUNGSART;
-import static gdv.xport.feld.Bezeichner.ZIELGRUPPENSCHLUESSEL;
-import gdv.xport.feld.Align;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import static gdv.xport.feld.Bezeichner.*;
+import gdv.xport.feld.*;
+import gdv.xport.satz.model.Satz100;
 
 /**
+ * Adressteil.
+ *
  * @author oliver
  * @since 12.10.2009
  * @version $Revision$
+ * @deprecated durch {@link Satz100} abgeloest
  */
 @Deprecated
 public final class Adressteil extends Datensatz {
@@ -170,7 +111,7 @@ public final class Adressteil extends Datensatz {
 
     /**
      * Setzt den Vor- und Nachname. Der mittlere Name bleibt dabei unberuehrt.
-     * 
+     *
      * @param vorname
      *            z.B. "Max"
      * @param nachname
@@ -183,7 +124,7 @@ public final class Adressteil extends Datensatz {
 
     /**
      * Setzt den Vornamen, den mitlleren Namen (zweiter Vorname) und den Nachnamen.
-     * 
+     *
      * @param vorname
      *            erster Vorname
      * @param mittelname
@@ -199,7 +140,7 @@ public final class Adressteil extends Datensatz {
 
     /**
      * Liefert den entsprechenden Namen zurueck.
-     * 
+     *
      * @param n
      *            1, 2 oder 3
      * @return Name1, Name2 oder Name3

@@ -41,7 +41,7 @@ public enum Feld221Wagnis5 {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -62,7 +62,7 @@ public enum Feld221Wagnis5 {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Versicherungssumme in Währungseinheiten<br/>
+     * Versicherungssumme in Währungseinheiten.<br/>
      * erreichte Summe / tarifliche Versicherungssumme<br/>
      * (12,2 Stellen)
      */
@@ -106,7 +106,7 @@ public enum Feld221Wagnis5 {
     LFD_NUMMER_ZUR_WAGNISART2,
 
     /**
-     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten in Währungseinheiten<br/>
+     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten in Währungseinheiten.<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 12, byteAdresse = 62)

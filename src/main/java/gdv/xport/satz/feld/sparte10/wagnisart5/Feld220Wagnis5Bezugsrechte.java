@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Risikozusatz = Wagnisart 5 - Bezugsrechte" (Satzart 0220)
  *
  * @author ralfklemmer
@@ -55,13 +55,13 @@ public enum Feld220Wagnis5Bezugsrechte {
     WAGNISART,
 
     /**
-     * Lfd Nummer zur Wagnisart.<br/>
+     * Laufende Nummer zur Wagnisart.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
+     * Laufende Nummer der Satzart.<br/>
      * Lfd. Nummer der Satzart 0220.010.5/6 innerhalb der gleichen Folgenummer<br/>
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.5/6, wenn mehrere Bezugsrechte vorhanden)
      */
@@ -69,7 +69,7 @@ public enum Feld220Wagnis5Bezugsrechte {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Bezugsberechtigt im Leistungsfall<br/>
+     * Bezugsberechtigt im Leistungsfall.<br/>
      * 1 = Versicherungsnehmer = gesetzliche Erbfolge<br/>
      * 3 = Reihenfolge: Ehegatte, Kinder, Eltern, Erben<br/>
      * 9 = Sonstiger Bezugsberechtigter
@@ -78,21 +78,21 @@ public enum Feld220Wagnis5Bezugsrechte {
     BEZUGSBERECHTIGT_IM_TODESFALL,
 
     /**
-     * Sonstiger Bezugsberechtigter im Todessfall<br/>
+     * Sonstiger Bezugsberechtigter im Todessfall.<br/>
      * Klartext (z. B. Name, Vorname)
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 65)
     SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL,
 
     /**
-     * Bezugsrechtanteil im Todesfall<br/>
+     * Bezugsrechtanteil im Todesfall.<br/>
      * in Prozent (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 95)
     BEZUGSRECHTANTEIL_IM_TODESFALL,
 
     /**
-     * Unwiderrufliches Bezugsrecht im Todesfall<br/>
+     * Unwiderrufliches Bezugsrecht im Todesfall.<br/>
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 100)

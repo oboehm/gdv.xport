@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Risikozusatz = Wagnisart 5" (Satzart 0220).
  *
  * @author ralfklemmer
@@ -349,7 +349,7 @@ public enum Feld220Wagnis5 {
     ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAERHUNGSEINHEITEN,
 
     /**
-     * Anteiliger Dynamikprozentsatz<br/>
+     * Anteiliger Dynamikprozentsatz.<br/>
      * Prozentualer Anteil am Dynamikerhöhungsbetrag Sozialversicherung prozentual oder absolut bzw. Gehaltsanpassung;<br/>
      * z. B.: 100,00 = volle absolute BfA-Dynamik, 50,00 = halbe absolute BfA-Dynamik<br/>
      * (3,2 Stellen)
@@ -358,21 +358,21 @@ public enum Feld220Wagnis5 {
     ANTEILIGER_DYNAMIKPROZENTSATZ,
 
     /**
-     * Vereinbarter Dynamikmindestanpassungsprozentsatz<br/>
+     * Vereinbarter Dynamikmindestanpassungsprozentsatz.<br/>
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 20, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 197)
     VEREINBARTER_DYNAMIKMINDESTANPASSUNGSPROZENTSATZ,
 
     /**
-     * Vereinbarter Dynamikmaximalanpassungsprozentsatz<br/>
+     * Vereinbarter Dynamikmaximalanpassungsprozentsatz.<br/>
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 21, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 202)
     VEREINBARTER_DYNAMIKMAXIMALANPASSUNGSPROZENTSATZ,
 
     /**
-     * Anzahl verbleibende Dynamikwidersprüche<br/>
+     * Anzahl verbleibende Dynamikwidersprüche.<br/>
      * Anzahl der verbleibenden Dynamikwidersprüche, ohne das Recht auf Dynamikerhöhung zu verlieren
      */
     @FeldInfo(teildatensatz = 2, nr = 22, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 207)

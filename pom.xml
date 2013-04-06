@@ -560,6 +560,14 @@
         <role>Java Developer</role>
       </roles>
     </developer>
+    <developer>
+      <name>Dawid Stoewe</name>
+      <id>DaStoDev</id>
+      <email>david_stoewe@yahoo.de</email>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </developer>
   </developers>
   <contributors>
     <contributor>
@@ -583,7 +591,7 @@
   
   <ciManagement>
     <system>jenkins</system>
-    <url>http://miniserver:8280/view/gdv.xport/</url>
+    <url>http://miniserver07:8280/view/gdv.xport/</url>
     <notifiers>
       <notifier>
         <type>mail</type>
