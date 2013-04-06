@@ -18,10 +18,10 @@
 
 package gdv.xport.demo;
 
-import java.io.IOException;
-
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Vorsatz;
+
+import java.io.IOException;
 
 /**
  * Ein einfaches Hello-World-Projekt fuer gdv.xport.
@@ -35,7 +35,7 @@ public final class HelloWorld {
      * In diesem Beispiel erzeugen wir ein leeres Datenpaket, setzen die
      * VU-Nummer auf "Hello" und den Adressat (der im Vorsatz zu finden ist)
      * auf "World".
-     * Am Ende "exportieren" wir dann das Datenpaket auf Systm.out.
+     * Am Ende "exportieren" wir dann das Datenpaket auf System.out.
      *
      * @since 0.3
      * @param args wird nicht ausgewertet.
