@@ -18,14 +18,7 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
-import static gdv.xport.feld.Bezeichner.LFD_NUMMER;
-import static gdv.xport.feld.Bezeichner.MEHRWERT_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.NEUPREIS_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.PERSONEN_KUNDENNUMMER_DES_VERSICHERERS;
-import static gdv.xport.feld.Bezeichner.REFERENZNUMMER;
-import static gdv.xport.feld.Bezeichner.VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN;
-import static gdv.xport.feld.Bezeichner.ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN;
+import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Bezeichner;
@@ -35,9 +28,16 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
+ * Diese Klasse beschreibt den Erweiterungssatz 211.
+ * <p>
+ * <em>Hinweis:</em>
+ * Diese Klasse wird mit v1.0 entfernt werden, da sie durch
+ * {@link gdv.xport.satz.model.Satz211} ersetzt wurde.
+ * </p>
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (05.01.2011)
- * 
+ * @deprecated durch {@link gdv.xport.satz.model.Satz211} ersetzt.
  */
 @Deprecated
 public class Erweiterungssatz211 extends Spartensatz {
@@ -56,7 +56,7 @@ public class Erweiterungssatz211 extends Spartensatz {
 
     /**
      * Konstruktor fuer die gewuenschte Sparte.
-     * 
+     *
      * @param sparte
      *            z.B. 70 (Rechtsschutz)
      */
@@ -66,7 +66,7 @@ public class Erweiterungssatz211 extends Spartensatz {
 
     /**
      * Konstruktor fuer die gewuenschte Sparte.
-     * 
+     *
      * @param sparte
      *            z.B. 70 (Rechtsschutz)
      * @param n
@@ -98,20 +98,22 @@ public class Erweiterungssatz211 extends Spartensatz {
 
     /**
      * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene Sparte an.
-     * 
+     *
      * @param x
      *            Sparte (z.B. 10)
      */
+    @Override
     protected void createTeildatensaetzeFor(final int x) {
         this.createTeildatensaetze(getNumberOfTeildatensaetzeFor(x));
     }
 
     /**
      * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
-     * 
+     *
      * @param sparte
      *            Sparte (z.B. 10)
      */
+    @Override
     protected void setUpDatenfelder(final int sparte) {
         switch (sparte) {
             case 10:
@@ -137,7 +139,7 @@ public class Erweiterungssatz211 extends Spartensatz {
 
     /**
      * Sparte 50 (KFZ - Fahrzeugdaten) wurde freundlicherweise von Igor Narodetskyi zur Verfuegung gestellt.
-     * 
+     *
      * @since 0.5.1
      */
     private void setUpDatenfelder50() {

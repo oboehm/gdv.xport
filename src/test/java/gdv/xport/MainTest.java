@@ -30,11 +30,10 @@ import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * JUnit-Test fuer die Main-Klasse.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.1 (26.01.2011)
  */
-@SuppressWarnings("restriction")
 @RunWith(SmokeRunner.class)
 @IntegrationTest
 public final class MainTest {
@@ -52,26 +51,6 @@ public final class MainTest {
         String[] args = { "-import", "src/test/resources/musterdatei_041222.txt", "-validate" };
         Main.main(args);
     }
-    
-//    /**
-//     * Hier testen wir die Generierung der Java-Enum-Klassen fuer alle
-//     * unterstuetzten Satzarten und Sparten.
-//     *
-//     * @throws IOException Signals that an I/O exception has occurred.
-//     * @throws XMLStreamException the xML stream exception
-//     */
-//    @Test
-//    public void testExportJava() throws IOException, XMLStreamException {
-//        File destDir = new File("target/generated-sources");
-//        String[] args = { "-export", destDir.getPath(), "-java" };
-//        Main.main(args);
-//        assertExists(new File(destDir, "gdv/xport/satz/feld/Feld100.java"));
-//        assertExists(new File(destDir, "gdv/xport/satz/feld/sparte10/Feld210.java"));
-//    }
-//
-//    private void assertExists(final File file) {
-//        assertTrue("does not exist: " + file.getAbsolutePath(), file.exists());
-//    }
 
 }
 

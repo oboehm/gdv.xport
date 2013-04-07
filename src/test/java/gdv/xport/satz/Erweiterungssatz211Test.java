@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012 by Oli B.
+ * Copyright (c) 2011 - 2013 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,13 +21,20 @@ package gdv.xport.satz;
 import static gdv.xport.feld.Bezeichner.SPARTE;
 import static org.junit.Assert.assertEquals;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.model.Satz211;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 /**
- * JUnit-Test fuer Erweiterungssatz211.
+ * Urspruenglich war dies der JUnit-Test fuer Erweiterungssatz211. Da diese
+ * Klasse aber inzwischen deprecated und durch {@link Satz211} abgeloest ist,
+ * wird fuer den Test auch die neue Klasse verwendet. Daher ist es jetzt ein
+ * zusaetzlicher Test fuer die {@link Satz211}-Klasse.
  *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (05.01.2011)
@@ -37,7 +44,7 @@ public class Erweiterungssatz211Test {
     private static final Log log = LogFactory.getLog(Erweiterungssatz211Test.class);
 
     /**
-     * Test method for {@link Erweiterungssatz211#Erweiterungssatz211(int)}.
+     * Test-Methode fuer {@link Satz211#Satz211(int)}.
      */
     @Test
     public void testSparte10() {
@@ -53,7 +60,7 @@ public class Erweiterungssatz211Test {
     }
 
     private void createSparte(final int sparte) {
-        Erweiterungssatz211 erweiterungssatz = new Erweiterungssatz211(sparte);
+        Datensatz erweiterungssatz = new Satz211(sparte);
         log.info(erweiterungssatz + " created.");
         assertEquals(sparte, erweiterungssatz.getSparte());
         assertEquals(Config.getVUNummer().getInhalt().trim(), erweiterungssatz.getVuNummer());
