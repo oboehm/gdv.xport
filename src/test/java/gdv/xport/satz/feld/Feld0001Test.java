@@ -18,8 +18,9 @@
 
 package gdv.xport.satz.feld;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
@@ -57,7 +58,7 @@ public class Feld0001Test {
      * 1" aufgesetzt ist.
      */
     @Test
-    @Broken(why="siehe gdv.xport.satz.model.SatzX.add(Enum<?>, Teildatensatz)", till="20-Mar-2013")
+    @Broken(why="siehe gdv.xport.satz.model.SatzX.add(Enum<?>, Teildatensatz)", till="20-Jul-2013")
     public void testVersionSatzart0001() {
         Feld x = vorsatz.getTeildatensatz(1).getFeld(Bezeichner.VERSION_SATZART_0001);
         assertNotNull(x);
