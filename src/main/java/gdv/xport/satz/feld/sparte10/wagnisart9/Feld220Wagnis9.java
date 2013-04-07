@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Fondsgebundene Rentenversicherung = Wagnisart 9" (Satzart 0220)
  *
  * @author ralfklemmer
@@ -38,7 +38,7 @@ public enum Feld220Wagnis9 {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -58,7 +58,7 @@ public enum Feld220Wagnis9 {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden <br>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.<br>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = Datum.class, anzahlBytes = 8, byteAdresse = 62)
@@ -73,7 +73,7 @@ public enum Feld220Wagnis9 {
     ABLAUF,
 
     /**
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 78)
@@ -86,7 +86,7 @@ public enum Feld220Wagnis9 {
     VERTRAGSLAUFZEIT,
 
     /**
-     * 1 = Grundvertrag<br/>
+     * 1 = Grundvertrag.<br/>
      * 2 = Dynamik<br/>
      * 3 = Grundvertrag incl. vorletzter Dynamik<br/>
      * 4 = Grundvertrag incl. letzter Dynamik.
@@ -95,7 +95,7 @@ public enum Feld220Wagnis9 {
     VERTRAGSART,
 
     /**
-     * Beitrag<br/>
+     * Beitrag.<br/>
      * gem. Zahlungsweise<br/>
      * (10,2 Stelle)
      */
@@ -133,14 +133,14 @@ public enum Feld220Wagnis9 {
     UEBERSCHUSS_GUELTIG_AB,
 
     /**
-     * Risikoeinschränkung<br/>
+     * Risikoeinschränkung.<br/>
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 21, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 132)
     RISIKOEINSCHRAENKUNG,
 
     /**
-     * Risikozuschläge<br/>
+     * Risikozuschläge.<br/>
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 22, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 133)
@@ -168,7 +168,7 @@ public enum Feld220Wagnis9 {
     ERHOEHUNGSART_DYNAMIK,
 
     /**
-     * Dynamikstop<br/>
+     * Dynamikstop.<br/>
      * Datum, ab dem keine Dynamikerhöhung mehr möglich ist.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -185,7 +185,7 @@ public enum Feld220Wagnis9 {
     DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK,
 
     /**
-     * Rückkaufswert in Währungseinheiten<br/>
+     * Rückkaufswert in Währungseinheiten.<br/>
      * incl. aller Dynamiken<br/>
      * (10,2 Stellen)
      */
@@ -200,7 +200,7 @@ public enum Feld220Wagnis9 {
     RUECKKAUFSWERT_GUELTIG_AB,
 
     /**
-     * Guthaben Divid. Ansammlung in Währungseinheiten<br/>
+     * Guthaben Divid. Ansammlung in Währungseinheiten.<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 30, type = Betrag.class, anzahlBytes = 12, byteAdresse = 175)
@@ -704,6 +704,6 @@ public enum Feld220Wagnis9 {
      * Leerstellen.<br/>
      */
     @FeldInfo(teildatensatz = 4, nr = 15, type = AlphaNumFeld.class, anzahlBytes = 161, byteAdresse = 95)
-    LEERSTELLEN4,
+    LEERSTELLEN4
 
 }

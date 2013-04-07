@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Fondsgebundene Rentenversicherung = Wagnisart 9 - Bezugsrechte" (Satzart 0220)
  *
  * @author ralfklemmer
@@ -38,7 +38,7 @@ public enum Feld220Wagnis9Bezugsrechte {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -130,4 +130,5 @@ public enum Feld220Wagnis9Bezugsrechte {
      */
     @FeldInfo(teildatensatz = 1, nr = 20, type = AlphaNumFeld.class, anzahlBytes = 118, byteAdresse = 138)
     LEERSTELLEN
+
 }

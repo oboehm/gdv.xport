@@ -23,8 +23,9 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
- * "Leben - Kapital-/Fondsgebundene LV = Wagnisart 7 - Zukünftige Summenänderung" (Satzart 0221)
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
+ * "Leben - Kapital-/Fondsgebundene LV = Wagnisart 7 - Zukünftige Summenänderung"
+ * (Satzart 0221)
  *
  * @author ralfklemmer
  * @since 19.01.2013
@@ -69,7 +70,7 @@ public enum Feld221Wagnis7ZukSummenaenderungen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Anfängliche Todesfall VS in Währungseinheiten<br/>
+     * Anfängliche Todesfall VS in Währungseinheiten.<br/>
      * Anfängliche bzw. erste Todesfallleistung<br/>
      * (12,2 Stellen)
      */
@@ -77,7 +78,7 @@ public enum Feld221Wagnis7ZukSummenaenderungen {
     ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Absolute Todesfalländerungssumme in Währungseinheiten<br/>
+     * Absolute Todesfalländerungssumme in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung<br/>
      * (12,0 Stellen)
      */
@@ -85,7 +86,7 @@ public enum Feld221Wagnis7ZukSummenaenderungen {
     ABSOLUTE_TODESFALLAENDERUNGSSUMME_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Todesfall VS in Währungseinheiten<br/>
+     * Nächste Todesfall VS in Währungseinheiten.<br/>
      * Todesfalleistung ab dem nächsten Änderungstermin<br/>
      * (12,2 Stellen)
      */
@@ -93,21 +94,21 @@ public enum Feld221Wagnis7ZukSummenaenderungen {
     NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Anfängliche Beitragssumme in Währungseinheiten<br/>
+     * Anfängliche Beitragssumme in Währungseinheiten.<br/>
      * Anfängliche bzw. erste Beitragssumme
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = Betrag.class, anzahlBytes = 14, byteAdresse = 106)
     ANFAENGLICHE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Absolute Beitragssummenänderungssumme in Währungseinheiten<br/>
+     * Absolute Beitragssummenänderungssumme in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Beitragssumme
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 14, byteAdresse = 120)
     ABSOLUTE_BEITRAGSSUMMENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Beitragssumme in Währungseinheiten<br/>
+     * Nächste Beitragssumme in Währungseinheiten.<br/>
      * Beitragssumme ab dem nächsten Änderungstermin
      */
     @FeldInfo(teildatensatz = 1, nr = 17, type = Betrag.class, anzahlBytes = 14, byteAdresse = 120)
@@ -118,4 +119,5 @@ public enum Feld221Wagnis7ZukSummenaenderungen {
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = AlphaNumFeld.class, anzahlBytes = 108, byteAdresse = 148)
     LEERSTELLEN
+
 }

@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Fondsdatensatz" (Satzart 0230)
  *
  * @author ralfklemmer
@@ -38,7 +38,7 @@ public enum Feld230 {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -78,7 +78,7 @@ public enum Feld230 {
     FONDSKENNUNG,
 
     /**
-     * ISIN-Numme.r<br/>
+     * ISIN-Nummer.<br/>
      * internationale Wertpapierkennnummer gemäß ISO-Norm 6166
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = AlphaNumFeld.class, anzahlBytes = 12, byteAdresse = 82)
@@ -126,6 +126,6 @@ public enum Feld230 {
      * Leerstellen.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 20, type = AlphaNumFeld.class, anzahlBytes = 82, byteAdresse = 174)
-    LEERSTELLEN,
+    LEERSTELLEN
 
 }

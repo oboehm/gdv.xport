@@ -83,7 +83,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     AENDERUNG_DER_TODESFALLLEISTUNG,
 
     /**
-     * Abstand der Todesfalländerungstermine<br/>
+     * Abstand der Todesfalländerungstermine.<br/>
      * in Monaten bei periodischen Änderungsterminen <br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * 000 = keine Änderungen/Auszahlungen<br/>
@@ -93,7 +93,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     ABSTAND_DER_TODESFALLAENDERUNGSTERMINE,
 
     /**
-     * Todesfalländerungs-Prozentsatz<br/>
+     * Todesfalländerungs-Prozentsatz.<br/>
      * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Todesfalleistung<br/>
      * (3,2 Stellen)
      */
@@ -101,7 +101,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     TODESFALLAENDERUNGS_PROZENTSATZ,
 
     /**
-     * Absolute Todesfalländerungssumme in Währungseinheiten<br/>
+     * Absolute Todesfalländerungssumme in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung<br/>
      * (10,2 Stellen)
      */
@@ -109,7 +109,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     ABSOLUTE_TODESFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Todesfall VS in Währungseinheiten<br/>
+     * Nächste Todesfall VS in Währungseinheiten.<br/>
      * Todesfalleistung ab dem nächsten Änderungstermin<br/>
      * (10,2 Stellen)
      */
@@ -117,7 +117,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Todesfall VS<br/>
+     * Beginndatum der nächsten Todesfall VS.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten
      * Todesfalländerung<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -126,7 +126,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     BEGINNDATUM_DER_NAECHSTEN_TODESFALL_VS,
 
     /**
-     * Anfängliche Jahresrente in Währungseinheiten<br/>
+     * Anfängliche Jahresrente in Währungseinheiten.<br/>
      * Anfängliche bzw. erste Jahresrente<br/>
      * (10,2 Stellen)
      */
@@ -134,7 +134,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     ANFAENGLICHE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Änderung der Jahresrente<br/>
+     * Änderung der Jahresrente.<br/>
      * 0 = keine Änderung bzw. nur eine Jahresrente VS<br/>
      * 1 = Erhöhung der Jahresrente<br/>
      * 2 = Reduzierung der Jahresrente
@@ -143,7 +143,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     AENDERUNG_DER_JAHRESRENTE,
 
     /**
-     * Abstand der Jahresrentennänderungstermine<br/>
+     * Abstand der Jahresrentennänderungstermine.<br/>
      * in Monaten bei periodischen Änderungsterminen <br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * 000 = keine Änderungen/Auszahlungen<br/>
@@ -153,7 +153,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     ABSTAND_DER_JAHRESRENTENAENDERUNGSTERMINE,
 
     /**
-     * Jahresrentenänderungs-Prozentsatz<br/>
+     * Jahresrentenänderungs-Prozentsatz.<br/>
      * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Jahresrente<br/>
      * (3,2 Stellen)
      */
@@ -161,7 +161,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     JAHRESRENTENAENDERUNGS_PROZENTSATZ,
 
     /**
-     * Absolute Jahresrentenänderungssumme in Währungseinheiten<br/>
+     * Absolute Jahresrentenänderungssumme in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Jahresrente<br/>
      * (10,2 Stellen)
      */
@@ -169,7 +169,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     ABSOLUTE_JAHRESRENTENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Jahresrente in Währungseinheiten<br/>
+     * Nächste Jahresrente in Währungseinheiten.<br/>
      * Jahresrente ab dem nächsten Änderungstermin<br/>
      * (10,2 Stellen)
      */
@@ -177,8 +177,9 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     NAECHSTE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Jahresrentesumme<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten Jahresrente<br/>
+     * Beginndatum der nächsten Jahresrentesumme.<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
+     * werden Datum der nächsten Jahresrente<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 25, type = Datum.class, anzahlBytes = 8, byteAdresse = 162)
@@ -189,4 +190,5 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
      */
     @FeldInfo(teildatensatz = 1, nr = 26, type = AlphaNumFeld.class, anzahlBytes = 86, byteAdresse = 170)
     LEERSTELLEN
+
 }
