@@ -47,8 +47,8 @@ public class Satz220 extends SpartensatzX {
     private static final Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
 
     static {
-        mapping.put(30, gdv.xport.satz.feld.sparte30.Feld220.values());
-        mapping.put(40, gdv.xport.satz.feld.sparte40.Feld220.values());
+//        mapping.put(30, gdv.xport.satz.feld.sparte30.Feld220.values());
+//        mapping.put(40, gdv.xport.satz.feld.sparte40.Feld220.values());
         mapping.put(51, gdv.xport.satz.feld.sparte51.Feld220.values());
         mapping.put(52, gdv.xport.satz.feld.sparte52.Feld220.values());
         mapping.put(53, gdv.xport.satz.feld.sparte53.Feld220.values());

@@ -47,8 +47,8 @@ public class SatzNummerTest {
      */
     @Test
     public void testNotEquals() {
-        SatzNummer one = new SatzNummer(1,1);
-        SatzNummer other = new SatzNummer(1,1,0);
+        SatzNummer one = new SatzNummer(1, 1);
+        SatzNummer other = new SatzNummer(1, 1, 0);
         assertFalse("expected: " + one + " != " + other, one.equals(other));
     }
 

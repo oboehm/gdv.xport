@@ -23,8 +23,8 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10 "Leben - Risikozusatz = Wagnisart 5 (Satzart
- * 0221)
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10
+ * "Leben - Risikozusatz = Wagnisart 5 (Satzart 0221)".
  *
  * @author ralfklemmer
  * @since 19.01.2013

@@ -41,7 +41,7 @@ public enum Feld220Wagnis5 {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -61,7 +61,7 @@ public enum Feld220Wagnis5 {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden <br>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.<br>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = Datum.class, anzahlBytes = 8, byteAdresse = 62)
@@ -76,14 +76,14 @@ public enum Feld220Wagnis5 {
     ABLAUF,
 
     /**
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 78)
     AENDERUNG,
 
     /**
-     * JJJ Jahre (lebenslänglich ist mit Wert 999 zu schlüsseln)
+     * JJJ Jahre (lebenslänglich ist mit Wert 999 zu schlüsseln).
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 86)
     VERTRAGSLAUFZEIT,
@@ -106,7 +106,7 @@ public enum Feld220Wagnis5 {
     BEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Versicherungssumme in Währungseinheiten<br/>
+     * Versicherungssumme in Währungseinheiten.<br/>
      * erreichte Summe / tarifliche Vers.summe (9,0 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 17, type = NumFeld.class, anzahlBytes = 9, byteAdresse = 102)
@@ -155,28 +155,28 @@ public enum Feld220Wagnis5 {
     RISIKOZUSCHLAEGE,
 
     /**
-     * Dynamik %-Satz<br/>
+     * Dynamik %-Satz.<br/>
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 24, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 128)
     DYNAMIK_PROZENT_SATZ,
 
     /**
-     * Erhöhungsbasis Dynamik<br/>
+     * Erhöhungsbasis Dynamik.<br/>
      * 1 = Beitrag, 2 = Versicherungssumme
      */
     @FeldInfo(teildatensatz = 1, nr = 25, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 133)
     ERHOEHUNGSBASIS_DYNAMIK,
 
     /**
-     * Erhöhungsart Dynamik<br/>
+     * Erhöhungsart Dynamik.<br/>
      * siehe Anlage 72
      */
     @FeldInfo(teildatensatz = 1, nr = 26, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 134)
     ERHOEHUNGSART_DYNAMIK,
 
     /**
-     * Dynamikstop<br/>
+     * Dynamikstop.<br/>
      * Datum, ab dem keine Dynamikerhöhung mehr möglich ist.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -185,7 +185,7 @@ public enum Feld220Wagnis5 {
     DYNAMIKSTOP,
 
     /**
-     * Datum der letzten positiven Dynamik<br/>
+     * Datum der letzten positiven Dynamik.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -193,42 +193,42 @@ public enum Feld220Wagnis5 {
     DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK,
 
     /**
-     * Jahresrente in Wöhrungseinheiten<br/>
+     * Jahresrente in Wöhrungseinheiten.<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 29, type = Betrag.class, anzahlBytes = 12, byteAdresse = 151)
     JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Endalter<br/>
+     * Endalter.<br/>
      * JJJ Alter Lebenslänglich ist mit 999 zu schlüsseln
      */
     @FeldInfo(teildatensatz = 1, nr = 30, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 163)
     ENDALTER,
 
     /**
-     * Eintrittsalter<br/>
+     * Eintrittsalter.<br/>
      * JJ Alter
      */
     @FeldInfo(teildatensatz = 1, nr = 31, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 166)
     EINTRITTSALTER,
 
     /**
-     * Rente inkl. Überschussanrechnung in Währungseinheiten<br/>
+     * Rente inklusiv Überschussanrechnung in Währungseinheiten.<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 32, type = Betrag.class, anzahlBytes = 12, byteAdresse = 168)
     RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Umtauschrecht<br/>
+     * Umtauschrecht.<br/>
      * 0 = ja, 1 = nein
      */
     @FeldInfo(teildatensatz = 1, nr = 33, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 180)
     UMTAUSCHRECHT,
 
     /**
-     * Abweichende Vertragslaufzeit<br/>
+     * Abweichende Vertragslaufzeit.<br/>
      * Abgekürzte oder verlängerte Vertragslaufzeit Anzahl Jahre (JJJ).<br/>
      * Lebenslänglich ist mit "999" zu schlüsseln
      */
@@ -236,7 +236,7 @@ public enum Feld220Wagnis5 {
     ABWEICHENDE_VERTRAGSLAUFZEIT,
 
     /**
-     * Abweichender Ablauf<br/>
+     * Abweichender Ablauf.<br/>
      * Ablauf abgekürzt oder verlängert Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
      * werden Tag/Monat/Jahr<br/>
      * (TTMMJJJJ)
@@ -289,20 +289,21 @@ public enum Feld220Wagnis5 {
     LFD_NUMMER_ZUR_WAGNISART2,
 
     /**
-     * Tarifbezeichnung<br/>
+     * Tarifbezeichnung.<br/>
      * Klartextbezeichnung des Tarifs
      */
     @FeldInfo(teildatensatz = 2, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 62)
     TARIFBEZEICHNUNG,
+
     /**
-     * Tarifbezeichnung des Folgetarifs<br/>
+     * Tarifbezeichnung des Folgetarifs.<br/>
      * Klartextbezeichnung des Folgetarifs (wenn der Tarif noch nicht umgestellt wurde)
      */
     @FeldInfo(teildatensatz = 2, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 92)
     TARIFBEZEICHNUNG_DES_FOLGETARIFS,
 
     /**
-     * Umstellungsdatum des Folgetarifs<br/>
+     * Umstellungsdatum des Folgetarifs.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -310,7 +311,7 @@ public enum Feld220Wagnis5 {
     UMSTELLUNGSDATUM_DES_FOLGETARIFS,
 
     /**
-     * Zukünftiger Beitrag in Währungseinheiten<br/>
+     * Zukünftiger Beitrag in Währungseinheiten.<br/>
      * gem. Zahlungsweise wenn der Beitrag noch nicht umgestellt wurde<br/>
      * (10,2 Stellen)
      */
@@ -318,7 +319,7 @@ public enum Feld220Wagnis5 {
     ZUKUENFTIGER_BEITRAG,
 
     /**
-     * Vertragsbedingung<br/>
+     * Vertragsbedingung.<br/>
      * Individuelle Vertragsbedingung (frei definierbar)
      */
     @FeldInfo(teildatensatz = 2, nr = 15, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 142)
@@ -334,7 +335,7 @@ public enum Feld220Wagnis5 {
     DYNAMIKBEGINN,
 
     /**
-     * Abweichendes Dynamikendalter<br/>
+     * Abweichendes Dynamikendalter.<br/>
      * Wenn abweichend von normalem Endalter<br/>
      * (JJJ)
      */
@@ -342,7 +343,7 @@ public enum Feld220Wagnis5 {
     ABWEICHENDES_DYNAMIKENDALTER,
 
     /**
-     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten<br/>
+     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten.<br/>
      * (9,0 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 18, type = Betrag.class, anzahlBytes = 9, byteAdresse = 183)
@@ -350,8 +351,10 @@ public enum Feld220Wagnis5 {
 
     /**
      * Anteiliger Dynamikprozentsatz.<br/>
-     * Prozentualer Anteil am Dynamikerhöhungsbetrag Sozialversicherung prozentual oder absolut bzw. Gehaltsanpassung;<br/>
-     * z. B.: 100,00 = volle absolute BfA-Dynamik, 50,00 = halbe absolute BfA-Dynamik<br/>
+     * Prozentualer Anteil am Dynamikerhöhungsbetrag Sozialversicherung
+     * prozentual oder absolut bzw. Gehaltsanpassung;<br/>
+     * z. B.: 100,00 = volle absolute BfA-Dynamik, 50,00 = halbe absolute
+     * BfA-Dynamik<br/>
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 19, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 192)
@@ -383,4 +386,5 @@ public enum Feld220Wagnis5 {
      */
     @FeldInfo(teildatensatz = 2, nr = 23, type = AlphaNumFeld.class, anzahlBytes = 48, byteAdresse = 208)
     LEERSTELLEN2
+
 }

@@ -20,15 +20,16 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.feld.*;
-import gdv.xport.satz.model.Satz100;
 
 /**
  * Adressteil.
+ * <p>
+ * Achtung: Diese Klasse wird es in 1.0 nicht mehr geben.
+ * </p>
  *
  * @author oliver
- * @since 12.10.2009
- * @version $Revision$
- * @deprecated durch {@link Satz100} abgeloest
+ * @since 0.0.2 (12.10.2009)
+ * @deprecated durch {@link gdv.xport.satz.model.Satz100} abgeloest
  */
 @Deprecated
 public final class Adressteil extends Datensatz {
