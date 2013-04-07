@@ -204,7 +204,7 @@ public final class SatzFactory {
         // Diese Satzart ist in Sparte 30 speziell. Mit der "normalen" Leselogik
         // wird nicht erkannt, dass Satznummer 3 und Satznummer 9 zum gleichen
         // Objekt gehören. Daher muss das Leseverhalten hier abgeändert werden.
-        register(gdv.xport.satz.feld.sparte30.Feld220LeseLogik.class, 220, 30);
+//        register(gdv.xport.satz.feld.sparte30.Feld220LeseLogik.class, 220, 30);
 //        registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30);
 //        registerEnum(gdv.xport.satz.feld.sparte30.Feld222.class, 222, 30);
 //        registerEnum(gdv.xport.satz.feld.sparte30.Feld230.class, 230, 30);
@@ -215,7 +215,7 @@ public final class SatzFactory {
         // Diese Satzart ist in Sparte 40 speziell. Mit der "normalen" Leselogik
         // wird nicht erkannt, dass Satznummer 1 und Satznummer 2 zum gleichen
         // Objekt gehören. Daher muss das Leseverhalten hier abgeändert werden.
-        register(gdv.xport.satz.feld.sparte40.Feld220LeseLogik.class, 220, 40);
+//        register(gdv.xport.satz.feld.sparte40.Feld220LeseLogik.class, 220, 40);
 //        registerEnum(gdv.xport.satz.feld.sparte40.Feld221.class, new SatzNummer(221, 40));
 
 //        // Sparte 50 - ?????

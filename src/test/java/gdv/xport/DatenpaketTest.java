@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
-import gdv.xport.satz.model.Satz220;
+import gdv.xport.satz.model.*;
 
 import java.io.*;
 import java.net.*;
@@ -338,11 +338,10 @@ public final class DatenpaketTest {
     }
 
     private static Datensatz createDatensatzWithFolgenummer(final int nr) {
-        Datensatz datensatz = new Adressteil();
+        Datensatz datensatz = new Satz100();
         datensatz.setVersicherungsscheinNummer("4711");
         datensatz.setFolgenummer(nr);
         return datensatz;
     }
-
 
 }

@@ -39,8 +39,8 @@ import java.util.*;
  * abweicht.
  * </p>
  * <p>
- * TODO: kann mit {@link gdv.xport.satz.model.Satz220} zusammengefasst werden
- * (07-Apr-2013, oboehm).
+ * TODO: ist Bestandteil von {@link gdv.xport.satz.model.Satz220} und kann
+ * vermutlich entsorgt werden (07-Apr-2013, oboehm).
  *
  * </p>
  *
