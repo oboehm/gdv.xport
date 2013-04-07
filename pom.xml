@@ -543,6 +543,9 @@
       <roles>
         <role>Java Developer</role>
       </roles>
+      <properties>
+        <picUrl>http://www.gravatar.com/avatar/10982fe9f768dee9f53b1e48db9dad38.png</picUrl>
+      </properties>
     </developer>
     <developer>
       <name>Ralf Klemmer</name>
