@@ -80,7 +80,7 @@ public enum Feld220Wagnis9 {
     AENDERUNG,
 
     /**
-     * JJJ Jahre (lebenslänglich ist mit Wert 999 zu schlüsseln)
+     * JJJ Jahre (lebenslänglich ist mit Wert 999 zu schlüsseln).
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 86)
     VERTRAGSLAUFZEIT,

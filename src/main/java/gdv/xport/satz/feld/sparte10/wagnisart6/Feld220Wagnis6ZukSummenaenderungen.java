@@ -122,7 +122,8 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
 
     /**
      * Beginndatum der nächsten Unfallsumme.<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten Jahresrente<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
+     * werden Datum der nächsten Jahresrente<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 103)

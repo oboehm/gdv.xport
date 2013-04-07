@@ -83,7 +83,7 @@ public enum Feld220Wagnis6 {
     AENDERUNG,
 
     /**
-     * JJJ Jahre (lebenslänglich ist mit Wert 999 zu schlüsseln)
+     * JJJ Jahre (lebenslänglich ist mit Wert 999 zu schlüsseln).
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 86)
     VERTRAGSLAUFZEIT,
@@ -269,7 +269,7 @@ public enum Feld220Wagnis6 {
     TARIFBEZEICHNUNG_DES_FOLGETARIFS,
 
     /**
-     * Umstellungsdatum des Folgetarifs<br/>
+     * Umstellungsdatum des Folgetarifs.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
