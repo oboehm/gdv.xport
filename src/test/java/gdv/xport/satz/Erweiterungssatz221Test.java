@@ -22,6 +22,7 @@ import static gdv.xport.feld.Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE;
 import static org.junit.Assert.*;
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Feld;
+import gdv.xport.satz.model.Satz221;
 import gdv.xport.satz.model.SatzX;
 
 import java.io.*;
@@ -54,7 +55,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
      */
     @Test
     public void testSparte70() {
-        Datensatz rechtschutz = new SatzX(221, gdv.xport.satz.feld.sparte70.Feld221.class);
+        Datensatz rechtschutz = new Satz221(70);
         log.info(rechtschutz + " created.");
         assertEquals(70, rechtschutz.getSparte());
     }
@@ -93,7 +94,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
 
     private void checkWagnisdaten(final String input) throws IOException {
         assertEquals(257, input.length());
-        Datensatz wagnisdaten = new SatzX(221, gdv.xport.satz.feld.sparte30.Feld221.class);
+        Datensatz wagnisdaten = new Satz221(30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }
@@ -129,7 +130,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
             + "0000000000000000000000000008668700000000000000000000000000000000"
             + "0000000000000000                                                "
             + "                                                               1";
-        Datensatz sparte51 = new SatzX(221, gdv.xport.satz.feld.sparte51.Feld221.class);
+        Datensatz sparte51 = new Satz221();
         sparte51.importFrom(input);
         List<ConstraintViolation> violations = sparte51.validate();
         assertTrue(violations + " should be empty", violations.isEmpty());
