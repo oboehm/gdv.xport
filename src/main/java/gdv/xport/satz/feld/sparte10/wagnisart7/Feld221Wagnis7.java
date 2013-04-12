@@ -17,7 +17,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10<br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10.<br/>
  * "Leben - Kapital-/Fondsgebundene LV = Wagnisart 7" (Satzart 0221)
  *
  * @author ralfklemmer
@@ -35,7 +35,7 @@ public enum Feld221Wagnis7 {
 	INTRO1,
 
 	/**
-	 * Lfd. Nummer der versicherten Person (VP).<br/>
+	 * Laufende Nummer der versicherten Person (VP).<br/>
 	 * lfd. Nr., die im VU geführt wird
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17,
@@ -57,7 +57,7 @@ public enum Feld221Wagnis7 {
 	LFD_NUMMER_ZUR_WAGNISART,
 
 	/**
-	 * Beitragssumme in Währungseinheiten<br/>
+	 * Beitragssumme in Währungseinheiten.<br/>
 	 * tarifl. Beitragssumme<br/>
 	 * (12,2 Stelle)
 	 */
@@ -65,7 +65,7 @@ public enum Feld221Wagnis7 {
 	BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
 	/**
-	 * Todesfall VS in Währungseinheiten<br/>
+	 * Todesfall VS in Währungseinheiten.<br/>
 	 * tarifl. VS<br/>
 	 * (12,2 Stelle)
 	 */
@@ -73,7 +73,7 @@ public enum Feld221Wagnis7 {
 	TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
 	/**
-	 * Erlebensfall VS II in Währungseinheiten<br/>
+	 * Erlebensfall VS II in Währungseinheiten.<br/>
 	 * nach Überschussanrechnung erreichte Summe<br/>
 	 * (12,2 Stellen)
 	 */
@@ -81,14 +81,14 @@ public enum Feld221Wagnis7 {
 	ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN,
 
 	/**
-	 * Beitragsfreie Beitragssumme in Währungseinheiten<br/>
+	 * Beitragsfreie Beitragssumme in Währungseinheiten.<br/>
 	 * (12,2 Stellen)
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 14, type = Betrag.class, anzahlBytes = 14, byteAdresse = 104)
 	BEITRAGSFREIE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
 	/**
-	 * Beitragsfreie Todesfall VS in Währungseinheiten<br/>
+	 * Beitragsfreie Todesfall VS in Währungseinheiten.<br/>
 	 * (12,2 Stellen)
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 15, type = Betrag.class, anzahlBytes = 14, byteAdresse = 118)
@@ -119,7 +119,7 @@ public enum Feld221Wagnis7 {
 	INTRO2,
 
 	/**
-	 * Lfd. Nummer der versicherten Person (VP).<br/>
+	 * Laufende Nummer der versicherten Person (VP).<br/>
 	 * lfd. Nr., die im VU geführt wird
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17,
@@ -134,14 +134,14 @@ public enum Feld221Wagnis7 {
 	WAGNISART2,
 
 	/**
-	 * Lfd Nummer zur Wagnisart.<br/>
+	 * Laufende Nummer zur Wagnisart.<br/>
 	 * siehe Anlage 15
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
 	LFD_NUMMER_ZUR_WAGNISART2,
 
 	/**
-	 * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten<br/>
+	 * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten.<br/>
 	 * (10,2 Stellen)
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 11, type = Betrag.class, anzahlBytes = 12, byteAdresse = 62)
@@ -153,4 +153,5 @@ public enum Feld221Wagnis7 {
 	@FeldInfo(teildatensatz = 2, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 182,
 	        byteAdresse = 74)
 	LEERSTELLEN2
+
 }

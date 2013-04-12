@@ -64,20 +64,19 @@ public final class SatzFactory {
             new ConcurrentHashMap<SatzNummer, Class<? extends Enum<?>>>();
 
     static {
-//        registerEnum(Feld0001.class, 1);
         register(Vorsatz.class, 1);
         registerEnum(Feld100.class, 100);
         registerEnum(Feld200.class, 200);
-        // Satz210 wird noch als Fallback benoetigt
         register(Satz210.class, 210);
-        // Satz220 wird wg. Sonderbehandlung von Sparte 30, Teildatensatz 9
-        // gebraucht
+        register(Satz211.class, 211);
         register(Satz220.class, 220);
+        register(Satz221.class, 221);
+        register(Satz230.class, 230);
         registerEnum(Feld9999.class, 9999);
 
-        // Sparte 10 - Leben
-        registerEnum(gdv.xport.satz.feld.sparte10.Feld210.class, 210, 10);
-        registerEnum(gdv.xport.satz.feld.sparte10.Feld211.class, 211, 10);
+//        // Sparte 10 - Leben
+//        registerEnum(gdv.xport.satz.feld.sparte10.Feld210.class, 210, 10);
+//        registerEnum(gdv.xport.satz.feld.sparte10.Feld211.class, 211, 10);
         // Sparte 10 - Leben - Wagnisart 0
         registerEnum(Feld220Wagnis0.class, new SatzNummer(220, 10, 0));
 
@@ -200,41 +199,41 @@ public final class SatzFactory {
         registerEnum(Feld220Wagnis9ZukSummenaenderungen.class, new SatzNummer(220, 10, 9,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
-        registerEnum(Feld230.class, new SatzNummer(230, 10, 9));
-        registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
+//        registerEnum(Feld230.class, new SatzNummer(230, 10, 9));
+//        registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
         // Diese Satzart ist in Sparte 30 speziell. Mit der "normalen" Leselogik
         // wird nicht erkannt, dass Satznummer 3 und Satznummer 9 zum gleichen
         // Objekt gehören. Daher muss das Leseverhalten hier abgeändert werden.
-        register(gdv.xport.satz.feld.sparte30.Feld220LeseLogik.class, 220, 30);
-        registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30);
-        registerEnum(gdv.xport.satz.feld.sparte30.Feld222.class, 222, 30);
-        registerEnum(gdv.xport.satz.feld.sparte30.Feld230.class, 230, 30);
+//        register(gdv.xport.satz.feld.sparte30.Feld220LeseLogik.class, 220, 30);
+//        registerEnum(gdv.xport.satz.feld.sparte30.Feld221.class, 221, 30);
+//        registerEnum(gdv.xport.satz.feld.sparte30.Feld222.class, 222, 30);
+//        registerEnum(gdv.xport.satz.feld.sparte30.Feld230.class, 230, 30);
 
         // Sparte 40 - Haftpflicht
-        registerEnum(gdv.xport.satz.feld.sparte40.Feld210.class, 210, 40);
-        registerEnum(gdv.xport.satz.feld.sparte40.Feld211.class, 211, 40);
+//        registerEnum(gdv.xport.satz.feld.sparte40.Feld210.class, 210, 40);
+//        registerEnum(gdv.xport.satz.feld.sparte40.Feld211.class, 211, 40);
         // Diese Satzart ist in Sparte 40 speziell. Mit der "normalen" Leselogik
         // wird nicht erkannt, dass Satznummer 1 und Satznummer 2 zum gleichen
         // Objekt gehören. Daher muss das Leseverhalten hier abgeändert werden.
-        register(gdv.xport.satz.feld.sparte40.Feld220LeseLogik.class, 220, 40);
-        registerEnum(gdv.xport.satz.feld.sparte40.Feld221.class, new SatzNummer(221, 40));
+//        register(gdv.xport.satz.feld.sparte40.Feld220LeseLogik.class, 220, 40);
+//        registerEnum(gdv.xport.satz.feld.sparte40.Feld221.class, new SatzNummer(221, 40));
 
-        // Sparte 50 - ?????
-        registerEnum(gdv.xport.satz.feld.sparte50.Feld210.class, 210, 50);
-        registerEnum(gdv.xport.satz.feld.sparte50.Feld211.class, 211, 50);
-        // Sparte 51 - ?????
-        registerEnum(gdv.xport.satz.feld.sparte51.Feld220.class, 220, 51);
-        registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, 221, 51);
-        // Sparte 52 - ?????
-        registerEnum(gdv.xport.satz.feld.sparte52.Feld220.class, 220, 52);
-        registerEnum(gdv.xport.satz.feld.sparte52.Feld221.class, 221, 52);
-        // Sparte 53 - ?????
-        registerEnum(gdv.xport.satz.feld.sparte53.Feld220.class, 220, 53);
-        registerEnum(gdv.xport.satz.feld.sparte53.Feld221.class, 221, 53);
-        // Sparte 70 - ?????
-        registerEnum(gdv.xport.satz.feld.sparte70.Feld210.class, 210, 70);
-        registerEnum(gdv.xport.satz.feld.sparte70.Feld220.class, 220, 70);
-        registerEnum(gdv.xport.satz.feld.sparte70.Feld221.class, 221, 70);
+//        // Sparte 50 - ?????
+//        registerEnum(gdv.xport.satz.feld.sparte50.Feld210.class, 210, 50);
+//        registerEnum(gdv.xport.satz.feld.sparte50.Feld211.class, 211, 50);
+//        // Sparte 51 - ?????
+//        registerEnum(gdv.xport.satz.feld.sparte51.Feld220.class, 220, 51);
+//        registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, 221, 51);
+//        // Sparte 52 - ?????
+//        registerEnum(gdv.xport.satz.feld.sparte52.Feld220.class, 220, 52);
+//        registerEnum(gdv.xport.satz.feld.sparte52.Feld221.class, 221, 52);
+//        // Sparte 53 - ?????
+//        registerEnum(gdv.xport.satz.feld.sparte53.Feld220.class, 220, 53);
+//        registerEnum(gdv.xport.satz.feld.sparte53.Feld221.class, 221, 53);
+//        // Sparte 70 - ?????
+//        registerEnum(gdv.xport.satz.feld.sparte70.Feld210.class, 210, 70);
+//        registerEnum(gdv.xport.satz.feld.sparte70.Feld220.class, 220, 70);
+//        registerEnum(gdv.xport.satz.feld.sparte70.Feld221.class, 221, 70);
     }
 
     /**
@@ -563,6 +562,7 @@ public final class SatzFactory {
      * TODO: Besser waere es, zuerst den Datensatz zu suchen, der am besten
      * passt. D.h. auch die anderen Werte der uebergebenen SatzNummer wie Sparte
      * oder Wagnisart sollten dabei beruecksichtigt werden.
+     *
      * </p>
      *
      * @param satzNr die SatzNummer

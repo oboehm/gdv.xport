@@ -23,13 +23,11 @@ package gdv.xport.satz;
 import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
-import java.io.IOException;
-import java.util.Formatter;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.io.IOException;
+import java.util.*;
+
+import org.apache.commons.logging.*;
 
 /**
  * Dies ist der erste Satz, der Vorsatz eben.
@@ -39,6 +37,7 @@ import org.apache.commons.logging.LogFactory;
  * </p>
  *
  * @author oliver
+ * @since 0.0.1 (09-Okt-2009)
  */
 public final class Vorsatz extends Satz {
 
@@ -69,8 +68,9 @@ public final class Vorsatz extends Satz {
     }
 
     /**
-     * @param content
-     *            Inhalt des Vorsatzes
+     * Legt einen Vorsatz mit dem angegebenen Inhalt an.
+     *
+     * @param content Inhalt des Vorsatzes
      */
     public Vorsatz(final String content) {
         this();
@@ -94,10 +94,11 @@ public final class Vorsatz extends Satz {
      * Hier wird ein Teildatensatz aufgesetzt.
      * <p>
      * TODO: Infos zum Aufbau Teildatensatz aus Feld0001 beziehen!
+     *
      * </p>
      *
-     * @param n the n
-     * @param tds the tds
+     * @param n Nummer des Teildatensatzes
+     * @param tds Teildatensatz
      */
     private void setUpTeildatensatz(final int n, final Teildatensatz tds) {
         tds.add(this.vuNummer);

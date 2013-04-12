@@ -62,7 +62,7 @@ public final class MetaFeldInfo {
     }
 
    /**
-     * Liefert den Feld-Namen
+     * Liefert den Feld-Namen.
      *
      * @return z.B. "SATZART"
      */
@@ -146,6 +146,7 @@ public final class MetaFeldInfo {
      * Fuer Logging und Debugging wurde die Default-Implementierung
      * ueberschrieben.
      *
+     * @return the string
      * @see java.lang.Object#toString()
      */
     @Override

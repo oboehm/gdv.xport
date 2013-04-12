@@ -24,9 +24,7 @@ import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.model.SpartensatzX;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Diese Klasse repraesentiert die Satzart 220. Es handelt es sich dabei um eine
@@ -39,6 +37,11 @@ import java.util.Map;
  * Satz 220, Sparte 30 registrieren, sondern diese Klasse hier. Sie behandelt
  * den Import fuer Satznummer 3 und 9 richtig, der vom allgemeinen Schema etwas
  * abweicht.
+ * </p>
+ * <p>
+ * TODO: ist Bestandteil von {@link gdv.xport.satz.model.Satz220} und kann
+ * vermutlich entsorgt werden (07-Apr-2013, oboehm).
+ *
  * </p>
  *
  * @author Ralf

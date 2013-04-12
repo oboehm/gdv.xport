@@ -468,7 +468,7 @@ public class Datensatz extends Satz {
 	 * @return the teildatensatz nummer
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static TeildatensatzNummer readTeildatensatzNummer(PushbackReader reader)
+	public static TeildatensatzNummer readTeildatensatzNummer(final PushbackReader reader)
 	        throws IOException {
 		char[] cbuf = new char[256];
 		if (reader.read(cbuf) == -1) {
@@ -482,9 +482,8 @@ public class Datensatz extends Satz {
 			try {
 				return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
 			} catch (NumberFormatException e) {
-				log.warn(
-				        "Not allowed value for teildatensatzNummer found. Type Number is required but was \""
-				                + teildatenSatz + "\".", e);
+                log.warn("Not allowed value for teildatensatzNummer found. Type Number is required but was \""
+                        + teildatenSatz + "\".", e);
 				return TeildatensatzNummer.NULL;
 			}
 		}

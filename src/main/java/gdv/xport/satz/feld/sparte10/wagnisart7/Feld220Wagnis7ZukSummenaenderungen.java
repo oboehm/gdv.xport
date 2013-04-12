@@ -23,8 +23,9 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
- * "Leben - Kapital-/Fondsgebundene LV = Wagnisart 7 - Zukünftige Summenänderung" (Satzart 0220)
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
+ * "Leben - Kapital-/Fondsgebundene LV = Wagnisart 7 - Zukünftige Summenänderung"
+ * (Satzart 0220)
  *
  * @author ralfklemmer
  * @since 19.01.2013
@@ -86,7 +87,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
     AENDERUNG_DER_TODESFALLLEISTUNG,
 
     /**
-     * Abstand der Todesfalländerungstermine<br/>
+     * Abstand der Todesfalländerungstermine.<br/>
      * in Monaten bei periodischen Änderungsterminen <br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * 000 = keine Änderungen/Auszahlungen<br/>
@@ -112,7 +113,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
     ABSOLUTE_TODESFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Todesfall VS in Währungseinheiten<br/>
+     * Nächste Todesfall VS in Währungseinheiten.<br/>
      * Todesfalleistung ab dem nächsten Änderungstermin<br/>
      * (9,0 Stellen)
      */
@@ -120,7 +121,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
     NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Todesfall VS<br/>
+     * Beginndatum der nächsten Todesfall VS.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten
      * Todesfalländerung<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -129,14 +130,14 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
     BEGINNDATUM_DER_NAECHSTEN_TODESFALL_VS,
 
     /**
-     * Anfängliche Jahresrente in Währungseinheiten<br/>
+     * Anfängliche Jahresrente in Währungseinheiten.<br/>
      * Anfängliche bzw. erste Erlebensfall VS
      */
     @FeldInfo(teildatensatz = 1, nr = 19, type = Betrag.class, anzahlBytes = 12, byteAdresse = 108)
     ANFAENGLICHE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Änderung der Beitragssumme<br/>
+     * Änderung der Beitragssumme.<br/>
      * 0 = keine Änderung bzw. nur eine Beitragssumme VS<br/>
      * 1 = Erhöhung der Beitragssumme VS<br/>
      * 2 = Reduzierung der Beitragssumme VS
@@ -145,7 +146,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
     AENDERUNG_DER_BEITRAGSSUMME,
 
     /**
-     * Abstand der Beitragssummenänderungstermine<br/>
+     * Abstand der Beitragssummenänderungstermine.<br/>
      * in Monaten bei periodischen Änderungsterminen <br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * 000 = keine Änderungen/Auszahlungen<br/>
@@ -155,7 +156,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
     ABSTAND_DER_BEITRAGSSUMMENAENDERUNGSTERMINE,
 
     /**
-     * Beitragssummenänderungs-Prozentsatz<br/>
+     * Beitragssummenänderungs-Prozentsatz.<br/>
      * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Jahresrente<br/>
      * (3,2 Stellen)
      */
@@ -170,14 +171,14 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
     ABSOLUTE_BEITRAGSSUMMENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Beitragssumme in Währungseinheiten<br/>
+     * Nächste Beitragssumme in Währungseinheiten.<br/>
      * Jahresrente ab dem nächsten Änderungstermin
      */
     @FeldInfo(teildatensatz = 1, nr = 24, type = Betrag.class, anzahlBytes = 9, byteAdresse = 135)
     NAECHSTE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Beitragssumme<br/>
+     * Beginndatum der nächsten Beitragssumme.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten Erlebensfall
      * VS<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
@@ -190,4 +191,5 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
      */
     @FeldInfo(teildatensatz = 1, nr = 26, type = AlphaNumFeld.class, anzahlBytes = 104, byteAdresse = 152)
     LEERSTELLEN
+
 }

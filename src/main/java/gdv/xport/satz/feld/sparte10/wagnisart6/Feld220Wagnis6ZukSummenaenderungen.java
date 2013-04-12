@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Unfall = Wagnisart 6 - Zukünftige Summenänderung" (Satzart 0220)
  *
  * @author ralfklemmer
@@ -41,7 +41,7 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -61,7 +61,7 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
+     * Laufende Nummer der Satzart.<br/>
      * Lfd. Nummer der Satzart 0220.010 (Wagnisart 6) innerhalb der gleichen Folgenummer<br/>
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010 (Wagnisart 6), wenn mehrere zukünftige
      * Summenänderungen feststehen)
@@ -70,7 +70,7 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Anfängliche Unfallsumme<br/>
+     * Anfängliche Unfallsumme.<br/>
      * Anfängliche bzw. erste Unfallsumme<br/>
      * (10,2 Stellen)
      */
@@ -78,7 +78,7 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
     ANFAENGLICHE_UNFALLSUMME,
 
     /**
-     * Änderung der Unfallleistung<br/>
+     * Änderung der Unfallleistung.<br/>
      * 0 = keine Änderung bzw. nur eine Unfallleistung<br/>
      * 1 = Erhöhung der Unfallleistung<br/>
      * 2 = Reduzierung der Unfallleistung
@@ -87,7 +87,7 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
     AENDERUNG_DER_UNFALLLEISTUNG,
 
     /**
-     * Abstand der Jahresrentenänderungstermine<br/>
+     * Abstand der Jahresrentenänderungstermine.<br/>
      * in Monaten bei periodischen Änderungsterminen<br/>
      * in Monaten bei periodischen Auszahlungen<br/>
      * 000 = keine Änderungen/Auszahlungen<br/>
@@ -97,7 +97,7 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
     ABSTAND_DER_UNFALLAENDERUNGSTERMINE,
 
     /**
-     * Unfalländerungs-Prozentsatz<br/>
+     * Unfalländerungs-Prozentsatz.<br/>
      * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Unfallleistung<br/>
      * (3,2 Stellen)
      */
@@ -105,7 +105,7 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
     UNFALLAENDERUNGS_PROZENTSATZ,
 
     /**
-     * Absolute Unfalländerungssumme in Währungseinheiten<br/>
+     * Absolute Unfalländerungssumme in Währungseinheiten.<br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Unfallleistung<br/>
      * (10,2 Stellen)
      */
@@ -113,7 +113,7 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
     ABSOLUTE_UNFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Unfallsumme in Währungseinheiten<br/>
+     * Nächste Unfallsumme in Währungseinheiten.<br/>
      * Unfallleistung ab dem nächsten Änderungstermin<br/>
      * (10,2 Stellen)
      */
@@ -121,8 +121,9 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
     NAECHSTE_UNFALLSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Unfallsumme<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten Jahresrente<br/>
+     * Beginndatum der nächsten Unfallsumme.<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
+     * werden Datum der nächsten Jahresrente<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 103)

@@ -5,7 +5,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 30
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 30.
  * "Unfall - Wagnisdaten /-zusatz" (Satzart 0220)-
  *
  * @author rklemmer
@@ -23,7 +23,7 @@ public enum Feld220 {
     INTRO1,
 
     /**
-     * Laufende Nummer der versicherten Person (VP) / Personengruppe
+     * Laufende Nummer der versicherten Person (VP) / Personengruppe.
      */
     @FeldInfo(
             teildatensatz = 1,

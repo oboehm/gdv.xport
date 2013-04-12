@@ -84,18 +84,21 @@ public class Satz220 extends SpartensatzX {
     }
 
     /**
-	 * Sparte 30 hat optionale Teildatensaetze (Teildatensatz 9). Den muessen
-	 * wir gesondert behandeln.
-	 *
-	 * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
-	 * @param input Inupt
-	 * @throws IOException falls der String zu kurz ist
-	 */
+     * Sparte 30 und 49 hat optionale Teildatensaetze (Teildatensatz 9). Den
+     * muessen wir gesondert behandeln.
+     *
+     * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
+     * @param input Inupt
+     * @throws IOException falls der String zu kurz ist
+     */
     @Override
     public void importFrom(final String input) throws IOException {
         switch (this.getSparte()) { // NOPMD by oliver on 20.11.10 18:54
             case 30:
                 importSparte30(input);
+                break;
+            case 40:
+                importSparte40(input);
                 break;
             default:
                 super.importFrom(input);
@@ -126,6 +129,31 @@ public class Satz220 extends SpartensatzX {
                         addTeildatensatz(9, input);
                     } else {
                         throw new ImportException("Satz 0220.030: unbekannter Teildatensatz \""
+                                + input.substring(0, 60) + "...\"");
+                    }
+                    break;
+            }
+        }
+    }
+
+    private void importSparte40(final String s) throws IOException {
+        this.removeAllTeildatensaetze();
+        int satzlength = getSatzlength(s);
+        for (int i = 0; i < s.length(); i += satzlength) {
+            String input = s.substring(i);
+            if (input.trim().isEmpty()) {
+                break;
+            }
+            char satznummer = input.charAt(50);
+            switch (satznummer) {
+                case '1':
+                    addTeildatensatz(1, input);
+                    break;
+                default:
+                    if (input.charAt(50) == '2') {
+                        addTeildatensatz(2, input);
+                    } else {
+                        throw new ImportException("Satz 0220.040: unbekannter Teildatensatz \""
                                 + input.substring(0, 60) + "...\"");
                     }
                     break;

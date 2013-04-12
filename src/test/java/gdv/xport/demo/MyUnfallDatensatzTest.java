@@ -25,12 +25,15 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.util.SatzFactory;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.URL;
+import java.net.UnknownHostException;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.apache.commons.logging.*;
-import org.junit.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.AfterClass;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import patterntesting.concurrent.junit.ParallelRunner;

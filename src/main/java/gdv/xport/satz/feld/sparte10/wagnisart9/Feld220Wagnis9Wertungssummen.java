@@ -18,18 +18,14 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart9;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.annotation.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
  * "Leben - Fondsgebundene Rentenversicherung = Wagnisart 9 - Wertungssummen" (Satzart 0220)
- * 
+ *
  * @author ralfklemmer
  * @since 19.01.2013
  */
@@ -42,7 +38,7 @@ public enum Feld220Wagnis9Wertungssummen {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -70,14 +66,14 @@ public enum Feld220Wagnis9Wertungssummen {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Provisionspflichtige Beitragssumme in Währungseinheiten<br/>
+     * Provisionspflichtige Beitragssumme in Währungseinheiten.<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 12, byteAdresse = 64)
     PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Provisionspflichtige Wertungssumme in Währungseinheiten<br/>
+     * Provisionspflichtige Wertungssumme in Währungseinheiten.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -85,21 +81,21 @@ public enum Feld220Wagnis9Wertungssummen {
     PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Wertungsbasis<br/>
+     * Wertungsbasis.<br/>
      * 1 = VS, 2 = Beitrag
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 88)
     WERTUNGSBASIS,
 
     /**
-     * Wertungsmodell<br/>
+     * Wertungsmodell.<br/>
      * Modell der Provisionierung (VU-individuell), z. B. 01 = Wertungssummenscheibenmodell
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 89)
     WERTUNGSMODELL,
 
     /**
-     * Buchungskennzeichen<br/>
+     * Buchungskennzeichen.<br/>
      * 01 = Gutschrift prov.pflichtige Wertungssumme<br/>
      * 02 = Lastschrift prov.pflichtige Wertungssumme<br/>
      * 03 = provisionsneutrale Buchung (Änderung des Haftungszeitraums)
@@ -108,14 +104,14 @@ public enum Feld220Wagnis9Wertungssummen {
     BUCHUNGSKENNZEICHEN,
 
     /**
-     * Haftungswertungssumme in Währungseinheiten<br/>
+     * Haftungswertungssumme in Währungseinheiten.<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 17, type = Betrag.class, anzahlBytes = 12, byteAdresse = 93)
     HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Haftung ab<br/>
+     * Haftung ab.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -123,7 +119,7 @@ public enum Feld220Wagnis9Wertungssummen {
     HAFTUNG_AB,
 
     /**
-     * Haftung bis<br/>
+     * Haftung bis.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -131,7 +127,7 @@ public enum Feld220Wagnis9Wertungssummen {
     HAFTUNG_BIS,
 
     /**
-     * Ursprüngliches Haftungsbeginndatum<br/>
+     * Ursprüngliches Haftungsbeginndatum.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -139,35 +135,35 @@ public enum Feld220Wagnis9Wertungssummen {
     URSPRUENGLICHES_HAFTUNGSBEGINNDATUM,
 
     /**
-     * Provisionspflichtige Beitragssumme in Währungseinheiten<br/>
+     * Provisionspflichtige Beitragssumme in Währungseinheiten.<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 21, type = Betrag.class, anzahlBytes = 12, byteAdresse = 129)
     PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2,
 
     /**
-     * Provisionspflichtige Wertungssumme in Währungseinheiten<br/>
+     * Provisionspflichtige Wertungssumme in Währungseinheiten.<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 22, type = Betrag.class, anzahlBytes = 12, byteAdresse = 141)
     PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2,
 
     /**
-     * Wertungsbasis<br/>
+     * Wertungsbasis.<br/>
      * 1 = VS, 2 = Beitrag
      */
     @FeldInfo(teildatensatz = 1, nr = 23, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 153)
     WERTUNGSBASIS2,
 
     /**
-     * Wertungsmodell<br/>
+     * Wertungsmodell.<br/>
      * Modell der Provisionierung (VU-individuell), z. B. 01 = Wertungssummenscheibenmodell
      */
     @FeldInfo(teildatensatz = 1, nr = 24, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 154)
     WERTUNGSMODELL2,
 
     /**
-     * Buchungskennzeichen<br/>
+     * Buchungskennzeichen.<br/>
      * 01 = Gutschrift prov.pflichtige Wertungssumme<br/>
      * 02 = Lastschrift prov.pflichtige Wertungssumme<br/>
      * 03 = provisionsneutrale Buchung (Änderung des Haftungszeitraums)
@@ -176,14 +172,14 @@ public enum Feld220Wagnis9Wertungssummen {
     BUCHUNGSKENNZEICHEN2,
 
     /**
-     * Haftungswertungssumme in Währungseinheiten<br/>
+     * Haftungswertungssumme in Währungseinheiten.<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 26, type = Betrag.class, anzahlBytes = 12, byteAdresse = 158)
     HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2,
 
     /**
-     * Haftung ab<br/>
+     * Haftung ab.<br/>
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
@@ -191,8 +187,8 @@ public enum Feld220Wagnis9Wertungssummen {
     HAFTUNG_AB2,
 
     /**
-     * Haftung bis<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
+     * Haftung bis.<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 28, type = Datum.class, anzahlBytes = 8, byteAdresse = 178)
@@ -203,4 +199,5 @@ public enum Feld220Wagnis9Wertungssummen {
      */
     @FeldInfo(teildatensatz = 1, nr = 29, type = AlphaNumFeld.class, anzahlBytes = 70, byteAdresse = 186)
     LEERSTELLEN
+
 }

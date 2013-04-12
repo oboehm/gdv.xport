@@ -182,11 +182,13 @@ public final class Teildatensatz extends Satz {
 
     /**
      * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
-     * benutzt, um das Feld zu bestimmen.
+     * benutzt, um das Feld zu bestimmen. Dazu werden auch die Konstanten in
+     * {@link Bezeichner} verwendet.
      * <p>
      * TODO: Eigentlich waere es sinnvoller, hier die restlichen Annotationen
      * auszuwerten, da der Name nur auf Konvention beruht und etwas wackelig
      * ist (oboehm, 1-Apr-2013).
+     *
      * </p>
      *
      * @param feldX gewuenschtes Feld-Element

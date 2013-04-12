@@ -24,7 +24,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10
- * "Leben - Unfall = Wagnisart 6 - Zukünftige Summenänderung" (Satzart 0221)
+ * "Leben - Unfall = Wagnisart 6 - Zukünftige Summenänderung" (Satzart 0221).
  *
  * @author ralfklemmer
  * @since 19.01.2013
@@ -41,7 +41,7 @@ public enum Feld221Wagnis6 {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).<br/>
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
@@ -61,7 +61,7 @@ public enum Feld221Wagnis6 {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart<br/>
+     * Laufende Nummer der Satzart.<br/>
      * Lfd. Nummer der Satzart 0221.010 (Wagnisart 6) innerhalb der gleichen Folgenummer<br/>
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0221.010 (Wagnisart 6), wenn mehrere zukünftige
      * Summenänderungen feststehen)
@@ -70,7 +70,7 @@ public enum Feld221Wagnis6 {
     LFD_NUMMER_DER_SATZART,
 
     /**
-     * Absolute Unfalländerungssumme in Währungseinheiten<br/>
+     * Absolute Unfalländerungssumme in Währungseinheiten<.br/>
      * Absolute Summe der Steigerung bzw. Reduzierung der Unfallleistung<br/>
      * (12,2 Stellen)
      */
@@ -78,7 +78,7 @@ public enum Feld221Wagnis6 {
     ABSOLUTE_UNFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Unfallsumme in Währungseinheiten<br/>
+     * Nächste Unfallsumme in Währungseinheiten.<br/>
      * Unfallleistung ab dem nächsten Änderungstermin<br/>
      * (12,2 Stellen)
      */

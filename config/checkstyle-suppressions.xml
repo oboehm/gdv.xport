@@ -14,7 +14,7 @@
              lines="1-1000"/>
   <suppress checks="JavadocVariable"
              files="Bezeichner.java"
-             lines="30-1000"/>
+             lines="26-1000"/>
   <suppress checks="MagicNumberCheck"
              files="Datenpaket.java"
              lines="100-120"/>

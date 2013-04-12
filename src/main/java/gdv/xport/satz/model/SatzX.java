@@ -165,7 +165,7 @@ public class SatzX extends Datensatz {
 					if (nextLineWagnisEnum == currentLineWagnisEnum) {
                         if (currentLineTeildatensatzNummerIsSet
                                 || nextLineTeildatensatzNummerIsSet) {
-							if (nextLineTeildatensatzNummerEnum == currentLineTeildatensatzEnum) {
+                            if (nextLineTeildatensatzNummerEnum == currentLineTeildatensatzEnum) {
 								return true;
 							}
 						} else {
