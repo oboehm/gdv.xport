@@ -881,6 +881,31 @@ public final class Bezeichner {
     public static final String LFD_NUMMER_ZUR_ART_DER_LEISTUNG = "Laufende Nummer zur Art der Leistung";
     public static final String PROZENTSATZ_PROGRESSIVE_INVALIDITAET_MEHRLEISTUNG_BEI_INVALIDITAET = "Prozentsatz progressive Invaliditaet / Mehrleistung bei Invaliditaet";
 
+    // Verbundene Hausrat
+    public final static String INTRO1 = "Intro";
+    public final static String LAENDERKENNZEICHEN_DER_RISIKOANSCHRIFT = "Laenderkennzeichen der Risikoanschrift";
+    public final static String WAEHRUNGSSCHUESSEL = "Waehrungsschluessel";
+    public final static String ABSCHLAGSBEITRAG_IN_WAEHRUNGSEINHEITEN = "Abschlagsbeitrag";
+    public final static String GESAMTVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Gesamtversicherungssummer";
+    public final static String BEDINGUNGEN = "Bedingungen";
+    public final static String ERWEITERTE_NEUWERTVERSICHERUNG = "erweiterte Neuwertversicherung";
+    public final static String SICHERUNGSRICHTLINIEN = "Sicherungsrichtlinien";
+    public final static String EINBRUCH_MELDEANLAGE = "Einbruch Meldeanlage";
+    public final static String RISIKOKENNZIFFER = "Risikokennziffer";
+    public final static String ANZAHL_MONATE_UNBEWOHNT = "Anzahl Monate unbewohnt";
+    public final static String WOHNFLAECHE_QM = "Wohnflaeche qm";
+    public final static String TARIFZONE = "Tarifzone";
+    public final static String BAUARTKLASSE = "Bauartklasse";
+    public final static String GEFAHRENERHOEHUNG = "Gefahrenerhoehung";
+    public final static String EINSCHLUSS_VANDALISMUS = "Einschluss Vandalismus";
+    public final static String UNTERVERS_VERZICHT = "Untervers.-Verzicht";
+    public final static String OBJEKTNUMMER2 = "Objektnummer";
+    public final static String BUENDELUNSKENNZEICHEN = "Buendelungskennzeichen";
+    public final static String VERSICHERUNGSSCHEIN_NUMMER = "Versicherungsschein-Nummer";
+    public final static String GESCHAEFTSSTELLE_VERMITTLER = "Geschaeftsstelle / Vermittler";
+    public final static String STAENDIG_BEWOHNT = "Staendig bewohnt";
+    public final static String OBJEKTNUMMER = "Objektnummer";
+
     private Bezeichner() {
     }
 
