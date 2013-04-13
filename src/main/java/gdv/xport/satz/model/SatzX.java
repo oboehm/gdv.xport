@@ -18,12 +18,16 @@
 
 package gdv.xport.satz.model;
 
-import gdv.xport.satz.*;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.FeldX;
-import gdv.xport.satz.feld.common.*;
+import gdv.xport.satz.feld.common.TeildatensatzNummer;
+import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzNummer;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.PushbackReader;
 import java.util.List;
 
 /**
@@ -160,22 +164,18 @@ public class SatzX extends Datensatz {
 				return true;
 			}
 
-			if (currentLineWagnisartIsSet) {
-				if (nextLineWagnisartIsSet) {
-					if (nextLineWagnisEnum == currentLineWagnisEnum) {
-                        if (currentLineTeildatensatzNummerIsSet
-                                || nextLineTeildatensatzNummerIsSet) {
-                            if (nextLineTeildatensatzNummerEnum == currentLineTeildatensatzEnum) {
-								return true;
-							}
-						} else {
-							// wagnisarten sind gleich und die
-							// Teildatensatznummer sind beide nicht gesetzt
-							return true;
-						}
-					}
-				}
-			}
+            if ((currentLineWagnisartIsSet) && (nextLineWagnisartIsSet)
+                    && (nextLineWagnisEnum == currentLineWagnisEnum)) {
+                if (currentLineTeildatensatzNummerIsSet || nextLineTeildatensatzNummerIsSet) {
+                    if (nextLineTeildatensatzNummerEnum == currentLineTeildatensatzEnum) {
+                        return true;
+                    }
+                } else {
+                    // wagnisarten sind gleich und die
+                    // Teildatensatznummer sind beide nicht gesetzt
+                    return true;
+                }
+            }
 		}
 		return false;
 	}

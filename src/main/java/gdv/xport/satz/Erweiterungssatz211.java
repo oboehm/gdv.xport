@@ -19,13 +19,9 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 /**
  * Diese Klasse beschreibt den Erweiterungssatz 211.
@@ -149,7 +145,7 @@ public class Erweiterungssatz211 extends Spartensatz {
         add(new AlphaNumFeld(REFERENZNUMMER, 7, 67));
         add(new AlphaNumFeld(LFD_NUMMER, 4, 74));
         add(new AlphaNumFeld(PERSONEN_KUNDENNUMMER_DES_VERSICHERERS, 17, 78));
-        add(new AlphaNumFeld(Bezeichner.LEERSTELLEN, 161, 95));
+        add(new AlphaNumFeld(LEERSTELLEN, 161, 95));
     }
 
 }
