@@ -112,7 +112,8 @@ public enum Feld210 {
 
     /**
      * Länderkennzeichen der Risikoanschrift.<br/>
-     * KFZ-Länderkennzeichen z. B. Länderkennzeichen für D = Deutschland, B = Belgien, DK = Dänemark, F = Frankreich, CDN = Kanada<br/>
+     * KFZ-Länderkennzeichen z. B. Länderkennzeichen für D = Deutschland, B =
+     * Belgien, DK = Dänemark, F = Frankreich, CDN = Kanada<br/>
      * siehe Anlage 63
      */
     @FeldInfo(
@@ -161,7 +162,7 @@ public enum Feld210 {
 
     /**
      * Währungsschlüssel.<br/>
-     * ISO-Code,</br>
+     * ISO-Code,<br/>
      * siehe Anlage 3
      */
     @FeldInfo(
@@ -215,7 +216,8 @@ public enum Feld210 {
 
     /**
      * Gesamtbeitrag in Währungseinheiten.<br/>
-     * Gesamtbeitrag unter Berücksichtigung aller Zu- und Abschläge ohne Gebühr und Vers.Steuer gemäß Zahlungsweise in Währungseinheiten<br/>
+     * Gesamtbeitrag unter Berücksichtigung aller Zu- und Abschläge ohne Gebühr
+     * und Vers.Steuer gemäß Zahlungsweise in Währungseinheiten<br/>
      * (10,2 Stellen)
      */
     @FeldInfo(
