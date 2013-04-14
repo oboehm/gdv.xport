@@ -19,21 +19,25 @@
 package gdv.xport.satz;
 
 import static org.junit.Assert.assertEquals;
-
 import gdv.xport.config.Config;
+import gdv.xport.satz.model.Satz100;
 
 import java.io.IOException;
 
 import org.junit.Test;
 
 /**
+ * Urspruenglich war diese Klasse fuer den Test der Adressteil-Klasse
+ * vorgesehen. Da diese Klasse aber inzwischen durch die Satz100-Klasse
+ * abgeloest wurde, ist es jetzt ein zusaetzlicher Test fuer diese Klasse.
+ *
  * @author oliver
  * @since 13.10.2009
  * @version $Revision$
  */
 public class AdressteilTest extends AbstractSatzTest {
 
-    private final Adressteil adressteil = new Adressteil();
+    private final Satz100 adressteil = new Satz100();
 
     /**
      * Test method for {@link gdv.xport.satz.Adressteil#Adressteil()}.
@@ -55,7 +59,7 @@ public class AdressteilTest extends AbstractSatzTest {
         assertEquals("Donald", adressteil.getName(1));
         assertEquals("Duck", adressteil.getName(3));
     }
-    
+
     /**
      * Test-Methode fuer setName().
      */

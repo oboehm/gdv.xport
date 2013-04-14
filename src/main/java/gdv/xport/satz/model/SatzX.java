@@ -19,7 +19,6 @@
 package gdv.xport.satz.model;
 
 import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.FeldX;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
@@ -130,7 +129,7 @@ public class SatzX extends Datensatz {
 	 * @return true (Default-Implementierung)
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.9
-	 * @see Satz#matchesNextTeildatensatz(PushbackReader)
+	 * @see gdv.xport.satz.Satz#matchesNextTeildatensatz(PushbackReader)
 	 */
 	@Override
 	protected boolean matchesNextTeildatensatz(final PushbackReader reader) throws IOException {

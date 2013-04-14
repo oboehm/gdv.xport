@@ -84,7 +84,7 @@ public class Satz220 extends SpartensatzX {
     }
 
     /**
-     * Sparte 30 und 49 hat optionale Teildatensaetze (Teildatensatz 9). Den
+     * Sparte 30 und 40 hat optionale Teildatensaetze (Teildatensatz 9). Den
      * muessen wir gesondert behandeln.
      *
      * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
