@@ -54,7 +54,7 @@ public class Satz100 extends SatzX {
     }
 
     /**
-     * Setzt den Vornamen, den mitlleren Namen (zweiter Vorname) und den
+     * Setzt den Vornamen, den mittleren Namen (zweiter Vorname) und den
      * Nachnamen.
      *
      * @param vorname erster Vorname

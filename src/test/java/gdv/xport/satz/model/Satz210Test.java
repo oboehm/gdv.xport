@@ -20,27 +20,24 @@ package gdv.xport.satz.model;
 
 import static gdv.xport.feld.Bezeichner.*;
 import static org.junit.Assert.*;
-
-import java.io.*;
-
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 
+import java.io.*;
+
 import org.apache.commons.logging.*;
 import org.junit.*;
 
-// TODO: Auto-generated Javadoc
 /**
- * JUnit tests for Satz210.
- * Some of the tests are transfered from {@link VertragsspezifischerTeilTest}
- * to here.
- * 
+ * JUnit-Tests fuer Satz210.
+ * Einige Tests stammen vom {@link VertragsspezifischerTeilTest}.
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (26.03.2011)
  */
 public final class Satz210Test extends AbstractSatzTest {
-    
+
     /** The Constant log. */
     private static final Log log = LogFactory.getLog(Satz210.class);
 
@@ -78,7 +75,7 @@ public final class Satz210Test extends AbstractSatzTest {
         assertNotNull(feld);
         assertEquals("42", feld.getInhalt());
     }
-    
+
     /**
      * Ein sehr rudimentaerer Test fuer Sparte 10 (Leben).
      *
@@ -124,7 +121,7 @@ public final class Satz210Test extends AbstractSatzTest {
         unfall.export(swriter);
         assertEquals(input, swriter.toString());
     }
-    
+
     /**
      * Testet den Import/Export einer noch nicht unterstuetzten Sparte (130).
      *

@@ -1,5 +1,7 @@
 /*
- * Copyright (c) 2012, 2013 by Oli B.
+ * $Id$
+ *
+ * Copyright (c) 2012 by Oliver Boehm
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,25 +15,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 11.07.2012 by Oli B. (boehm@javatux.de)
+ * (c)reated 16.04.2013 by oliver (ob@oasd.de)
  */
 
-package gdv.xport.satz.model;
+package gdv.xport.satz.feld;
+
+import gdv.xport.satz.feld.sparte30.Sparte30Tests;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.*;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**
- * Die Klasse ModelTests ist eine Test-Suite fuer JUnit 4, mit der alle
+ * Die Klasse FeldTests ist eine Test-Suite fuer JUnit 4, mit der alle
  * JUnit-Tests in diesem Paket getestet werden.
  *
- * @author oliver (boehm@javatux.de)
- * @since 0.7 (11.07.2012)
+ * @author oliver
+ * @since 0.9 (16.04.2013)
  */
 @RunWith(Suite.class)
-@SuiteClasses({ Satz100Test.class, Satz200Test.class, Satz210Test.class, Satz211Test.class, Satz220Test.class,
-        Satz221Test.class, Satz222Test.class, Satz230Test.class, SatzXTest.class })
-public class ModelTests {
+@SuiteClasses({ Sparte30Tests.class, Feld0001Test.class })
+public class FeldTests {
 
 }
+

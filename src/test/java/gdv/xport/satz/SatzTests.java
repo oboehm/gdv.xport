@@ -18,7 +18,7 @@
 
 package gdv.xport.satz;
 
-import gdv.xport.satz.feld.sparte30.Sparte30Tests;
+import gdv.xport.satz.feld.FeldTests;
 import gdv.xport.satz.model.ModelTests;
 
 import org.junit.runner.RunWith;
@@ -34,7 +34,7 @@ import patterntesting.concurrent.junit.ParallelSuite;
  * @since 0.7 (10.07.2012)
  */
 @RunWith(ParallelSuite.class)
-@SuiteClasses({ Sparte30Tests.class, ModelTests.class, AdressteilTest.class,
+@SuiteClasses({ FeldTests.class, ModelTests.class, AdressteilTest.class,
         AllgemeinerVertragsteilTest.class, DatensatzTest.class, Erweiterungssatz211Test.class,
         Erweiterungssatz221Test.class, NachsatzTest.class, SatzTest.class, TeildatensatzTest.class,
         VertragsspezifischerTeilTest.class, VorsatzTest.class })

@@ -461,7 +461,7 @@ public abstract class Satz {
 	 */
 	public boolean hasSparte() {
 	    Feld sparte = this.getFeld(Feld1bis7.SPARTE);
-	    return sparte != Feld.NULL_FELD;
+	    return ((sparte != Feld.NULL_FELD) && !sparte.isEmpty());
 	}
 
 	/**

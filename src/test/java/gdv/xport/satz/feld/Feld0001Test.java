@@ -18,16 +18,12 @@
 
 package gdv.xport.satz.feld;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
+import static org.junit.Assert.*;
+import gdv.xport.feld.*;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.model.SatzX;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 
 import patterntesting.runtime.annotation.Broken;

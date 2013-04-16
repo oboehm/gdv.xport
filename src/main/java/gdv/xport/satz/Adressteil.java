@@ -124,7 +124,7 @@ public final class Adressteil extends Datensatz {
     }
 
     /**
-     * Setzt den Vornamen, den mitlleren Namen (zweiter Vorname) und den Nachnamen.
+     * Setzt den Vornamen, den mittleren Namen (zweiter Vorname) und den Nachnamen.
      *
      * @param vorname
      *            erster Vorname
