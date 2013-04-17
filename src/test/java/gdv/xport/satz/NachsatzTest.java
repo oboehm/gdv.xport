@@ -21,17 +21,18 @@
 package gdv.xport.satz;
 
 import static org.junit.Assert.assertEquals;
-
 import gdv.xport.config.Config;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.StringWriter;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 /**
  * JUnit-Test fuer Nachsatz.
- * 
+ *
  * @author oliver
  * @since 05.10.2009
  */
@@ -39,6 +40,17 @@ public class NachsatzTest extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(NachsatzTest.class);
     private final Nachsatz nachsatz = new Nachsatz();
+
+    /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Nachsatz();
+    }
 
     /**
      * Test method for {@link gdv.xport.satz.Nachsatz#Nachsatz()}.
@@ -50,7 +62,7 @@ public class NachsatzTest extends AbstractSatzTest {
 
     /**
      * Test method for {@link gdv.xport.satz.Satz#export(java.io.Writer)}.
-     * 
+     *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
@@ -80,13 +92,13 @@ public class NachsatzTest extends AbstractSatzTest {
         nachsatz.setAnzahlSaetze(42);
         assertEquals(42, nachsatz.getAnzahlSaetze());
     }
-    
+
     /**
      * Statt den Leerzeichen am Ende des Nachsatzes ist auch eine freie
      * Belegung moeglich. Diese soll natuerlich beim Import erhalten bleiben.
      * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
-     * 
-     * @throws IOException 
+     *
+     * @throws IOException
      *             sollte eigentlich nicht vorkommen, da wir von einem String
      *             importieren
      * @since 0.5.0

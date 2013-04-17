@@ -3,11 +3,15 @@
  */
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.SATZART;
+import static gdv.xport.feld.Bezeichner.SPARTE;
 import static patterntesting.runtime.NullConstants.NULL_STRING;
-import gdv.xport.annotation.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -15,12 +19,14 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.util.*;
 
-import net.sf.oval.*;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.Validator;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Die Satz-Klasse ist die oberste Klasse, von der alle weiteren Saetze

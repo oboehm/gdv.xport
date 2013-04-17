@@ -36,10 +36,21 @@ public class Betrag extends NumFeld {
     public Betrag(final String name) {
         super(name, "00000000000000");
     }
-    
+
+    /**
+     * Legt ein neues Betrags-Feld an. Die Informationen dazu werden
+     * aus der uebergebenen Enum bezogen.
+     *
+     * @param feldX Enum mit den Feldinformationen
+     * @since 0.9
+     */
+    public Betrag(final Enum<?> feldX) {
+        super(feldX);
+    }
+
     /**
      * Instantiiert ein neuen Betrag.
-     * 
+     *
      * @param feldX Feld
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
@@ -56,10 +67,10 @@ public class Betrag extends NumFeld {
     public Betrag(final String name, final int length, final int start) {
         super(name, length, start, 0, 2);
     }
-    
+
     /**
      * Instantiiert einen neuen Betrag.
-     * 
+     *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6

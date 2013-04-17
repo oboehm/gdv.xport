@@ -19,19 +19,25 @@
 package gdv.xport.satz.model;
 
 import static gdv.xport.feld.Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.*;
+import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.*;
-import org.junit.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 
 /**
@@ -43,6 +49,17 @@ import org.junit.*;
 public class Satz221Test extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(Satz221Test.class);
+
+    /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Satz221();
+    }
 
     /**
      * Der Lesbarkeit halber aktivieren wir das Zeilenende fuer jeden exportierten Satz.

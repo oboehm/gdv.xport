@@ -22,6 +22,8 @@ import static gdv.xport.feld.Bezeichner.ZUSAETZLICHE_SATZKENNUNG;
 import static org.junit.Assert.assertEquals;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.model.Satz220;
 import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
@@ -29,12 +31,25 @@ import java.io.IOException;
 import org.junit.Test;
 
 /**
+ * Unit-Tests fuer {@link Feld220}.
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.9 (10.02.2013)
  */
 public class Feld220Test extends AbstractSatzTest {
 
     private final SatzX wagnisdaten = new SatzX(220, Feld220.values());
+
+    /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Satz220(30);
+    }
 
 	/**
 	 * Hier importieren wir einen Satz 220, Sparte 30 aus dem Musterdatensatz,

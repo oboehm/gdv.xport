@@ -19,7 +19,9 @@
 package gdv.xport.satz.feld.common;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 
 /**
  * Jeder Datensatz beginnt mit denselben 7 Feldern. Dies sind die Felder, die in diesem Enum zusammengefasst sind.
@@ -38,7 +40,7 @@ public enum Feld1bis7 {
     /**
      * Gemaess VU-Verzeichnis der BaFin, linksbuendig. Das VU-Nr.-Verzeichnis kann bei der Bundesanstalt fuer
      * Finanzdienstleistungsaufsicht in Bonn angefordert werden (Graurheindorfer Str. 108, 53117 Bonn, www.bafin.de).
-     * Der neue vierstellige VU.-Nr.-Schluëssel gilt ab 01.01.1993
+     * Der neue vierstellige VU.-Nr.-Schluessel gilt ab 01.01.1993
      */
     @FeldInfo(nr = 2, type = AlphaNumFeld.class, anzahlBytes = 5, byteAdresse = 5)
     VU_NUMMER,

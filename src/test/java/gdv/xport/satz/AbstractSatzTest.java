@@ -19,9 +19,12 @@
 package gdv.xport.satz;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
+import gdv.xport.feld.Feld;
 import gdv.xport.feld.VUNummer;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -29,6 +32,7 @@ import java.io.StringWriter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Hier setzen wir eine Standard-Konfiguration auf, die wir in den
@@ -38,11 +42,18 @@ import org.junit.BeforeClass;
  * @since 09.10.2009
  * @version $Revision$
  */
-public class AbstractSatzTest {
+abstract public class AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(AbstractSatzTest.class);
     /** zum Testen nehmen wir hier die VU-Nr. der Oerag */
     protected static final VUNummer VU_NUMMER = new VUNummer("5183");
+
+    /**
+     * Hier sollte in Satz der zu testenden Satzart zurueckgeliefert werden.
+     *
+     * @return zu testender Satz
+     */
+    abstract protected Satz getSatz();
 
     /**
      * Test aufsetzen.
@@ -50,6 +61,20 @@ public class AbstractSatzTest {
     @BeforeClass
     public static void setUpBeforeClass() {
         Config.setVUNummer(VU_NUMMER);
+    }
+
+
+    /**
+     * Die Satzart ist im ersten Feld (Byte 1 - 4) enthalten und ist in jedem
+     * Satz vorhanden (auch Vorsatz und Nachsatz).
+     */
+    @Test
+    public void testSatzart() {
+        Satz satz = this.getSatz();
+        Feld satzart = satz.getFeld(Feld1bis7.SATZART);
+        assertTrue("expected: is valid", satzart.isValid());
+        assertFalse("expected: not empty", satzart.isEmpty());
+        assertEquals(satz.getSatzart(), Integer.parseInt(satzart.getInhalt()));
     }
 
     /**
@@ -75,7 +100,7 @@ public class AbstractSatzTest {
         String data = swriter.toString();
         return data;
     }
-    
+
     protected static void checkDatensatz(final Satz datensatz, final String expected) throws IOException {
         StringWriter swriter = new StringWriter(expected.length());
         datensatz.export(swriter, "\n");
@@ -83,7 +108,7 @@ public class AbstractSatzTest {
         assertEquals(expected, swriter.toString());
         assertTrue(datensatz.toShortString() + " is not valid", datensatz.isValid());
     }
-    
+
     /**
      * Import und Export sollten den gleichen Inhalt ergeben.
      *

@@ -19,18 +19,21 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.model.Satz221;
 import gdv.xport.satz.model.SatzX;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 /**
@@ -49,6 +52,17 @@ import org.junit.Test;
 public final class Erweiterungssatz221Test extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(Erweiterungssatz221Test.class);
+
+    /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Satz221();
+    }
 
     /**
      * Test-Methode fuer Satz 221, Sparte 70.

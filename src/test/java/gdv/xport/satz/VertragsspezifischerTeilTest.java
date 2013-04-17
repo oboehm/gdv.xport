@@ -18,16 +18,23 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
-import static org.junit.Assert.*;
+import static gdv.xport.feld.Bezeichner.LAUFZEITRABATT_IN_PROZENT;
+import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.model.Satz210;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.StringWriter;
 
-import org.apache.commons.logging.*;
-import org.junit.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import patterntesting.concurrent.junit.ParallelRunner;
@@ -46,6 +53,17 @@ import patterntesting.concurrent.junit.ParallelRunner;
 public class VertragsspezifischerTeilTest extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(VertragsspezifischerTeilTest.class);
+
+    /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Satz210();
+    }
 
     /**
      * Damit die Assert's der Satzlaenge stimmen, muessen wir das

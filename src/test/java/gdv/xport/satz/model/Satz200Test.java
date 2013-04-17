@@ -20,28 +20,41 @@ package gdv.xport.satz.model;
 
 import static org.junit.Assert.assertEquals;
 import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld200;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 /**
  * JUnit-Test fuer Satz200.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 06.03.2011
  */
 public class Satz200Test extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(Satz200Test.class);
-    private static final String input = 
+    private static final String input =
         "02009999  030      599999999990199990099992010520040105200901052" +
         "00511  0000000001        01052004100000         EUR000000041141 " +
         "                             0           B4LTTT                 " +
         "  04100001052004                                   EUR1        1";
     private final Satz200 satz = new Satz200();
+
+    /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Satz200();
+    }
 
     /**
      * Test method for {@link gdv.xport.satz.model.Satz200#Satz200()}.
@@ -50,7 +63,7 @@ public class Satz200Test extends AbstractSatzTest {
     public void testSatz0200() {
         assertEquals(200, satz.getSatzart());
     }
-    
+
     /**
      * Hier testen wir den Import und Export.
      *
@@ -60,7 +73,7 @@ public class Satz200Test extends AbstractSatzTest {
     public void testImportExport() throws IOException {
         checkImportExport(satz, input);
     }
-    
+
     /**
      * Hier testen wir, ob die Import-Daten richtig interpretiert werden.
      *
@@ -78,7 +91,7 @@ public class Satz200Test extends AbstractSatzTest {
         assertEquals("2", satz.get(Feld200.INKASSOART));
         assertEquals("01052004", satz.get(Feld200.VERTRAGSBEGINN));
     }
-    
+
     /**
      * Hier schauen wir nur nach der Performance der setUpDatenfelder()-
      * Methode, die im Construktor aufgerufen wird. Wegen der Timer-Aufloesung

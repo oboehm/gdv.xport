@@ -18,23 +18,34 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
-import static org.junit.Assert.*;
+import static gdv.xport.feld.Bezeichner.NAME1;
+import static gdv.xport.feld.Bezeichner.ORT;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.satz.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.feld.Feld200;
+import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.sparte53.Feld220;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.logging.*;
-import org.junit.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import patterntesting.concurrent.junit.ParallelRunner;
@@ -46,12 +57,23 @@ import patterntesting.concurrent.junit.ParallelRunner;
  * @since 19.10.2009
  */
 @RunWith(ParallelRunner.class)
-public final class SatzTest {
+public final class SatzTest extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(SatzTest.class);
     private final Satz satz = new Datensatz(123);
 
     /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Datensatz(123);
+    }
+
+   /**
      * Damit die Assert's der Satzlaenge stimmen, muessen wir das
      * End-of-Datensatz abschalten.
      *
@@ -311,6 +333,16 @@ public final class SatzTest {
         log.info(found + ". MetaFeldInfo: " + satzart );
         assertEquals(1, satzart.getNr());
         assertEquals(found, satzart.getTeildatensatzNr());
+    }
+
+    /**
+     * Die Satzart ist im ersten Feld (Byte 1 - 4) enthalten und ist in jedem
+     * Satz vorhanden (auch Vorsatz und Nachsatz).
+     */
+    @Test
+    public void testSatzartInhalt() {
+        Feld satzart = satz.getFeld(Feld1bis7.SATZART);
+        assertEquals("0123", satzart.getInhalt());
     }
 
 }

@@ -24,17 +24,25 @@ import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 import gdv.xport.satz.feld.FeldX;
 
-import java.io.*;
-import java.lang.reflect.*;
+import java.io.IOException;
+import java.io.Writer;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.ByteBuffer;
 import java.util.List;
 
-import net.sf.oval.*;
-import net.sf.oval.constraint.*;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.Validator;
+import net.sf.oval.constraint.Min;
+import net.sf.oval.constraint.NotEqual;
+import net.sf.oval.constraint.SizeCheck;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.lang.*;
-import org.apache.commons.logging.*;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * The Class Feld.
@@ -59,12 +67,21 @@ public class Feld implements Comparable<Feld> {
     private final Align ausrichtung;
 
     /**
+     * Legt ein neues Feld an. Die Informationen dazu werden aus der
+     * uebergebenen Enum bezogen.
+     *
+     * @param feldX Enum mit den Feldinformationen
+     * @since 0.9
+     */
+    public Feld(final Enum<?> feldX) {
+        this(feldX, getFeldInfo(feldX));
+    }
+
+    /**
      * Kreiert ein neues Feld.
      *
-     * @param feldX
-     *            der entsrpechende Aufzaehlungstyp
-     * @param info
-     *            Annotation mit den Feldinformationen
+     * @param feldX der entsprechende Aufzaehlungstyp
+     * @param info Annotation mit den Feldinformationen
      * @since 0.6
      */
     public Feld(final Enum<?> feldX, final FeldInfo info) {
@@ -497,7 +514,6 @@ public class Feld implements Comparable<Feld> {
      * @since 0.1.0
      */
     public boolean isValid() {
-        // return this.validate().isEmpty();
         if (this.getByteAdresse() < 1) {
             return false;
         }
@@ -605,6 +621,7 @@ public class Feld implements Comparable<Feld> {
      *
      * @return 0 wenn beide Felder die gleiche Startadresse haben
      */
+    @Override
     public final int compareTo(final Feld other) {
         return this.byteAdresse - other.byteAdresse;
     }
@@ -644,6 +661,21 @@ public class Feld implements Comparable<Feld> {
         ByteBuffer outputBuffer = Config.DEFAULT_ENCODING.encode(converted);
         String convertedISO = new String(outputBuffer.array());
         return WordUtils.capitalize(convertedISO.toLowerCase());
+    }
+
+    /**
+     * Ermittelt die FeldInfo aus dem uebergebenen Enum.
+     *
+     * @param feldX the feld x
+     * @return the feld info
+     */
+    protected static FeldInfo getFeldInfo(final Enum<?> feldX) {
+        try {
+            Field field = feldX.getClass().getField(feldX.name());
+            return field.getAnnotation(FeldInfo.class);
+        } catch (NoSuchFieldException nsfe) {
+            throw new InternalError("no field " + feldX + " (" + nsfe + ")");
+        }
     }
 
 }

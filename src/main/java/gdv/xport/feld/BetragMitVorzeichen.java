@@ -30,8 +30,19 @@ import gdv.xport.annotation.FeldInfo;
 public final class BetragMitVorzeichen extends Betrag {
 
     /**
+     * Legt ein neues Betrags-Feld an. Die Informationen dazu werden
+     * aus der uebergebenen Enum bezogen.
+     *
+     * @param feldX Enum mit den Feldinformationen
+     * @since 0.9
+     */
+    public BetragMitVorzeichen(final Enum<?> feldX) {
+        this(feldX, Feld.getFeldInfo(feldX));
+    }
+
+    /**
      * Instantiiert ein neuen Betrag.
-     * 
+     *
      * @param feldX Feld
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
@@ -53,7 +64,7 @@ public final class BetragMitVorzeichen extends Betrag {
 
     /**
      * Instantiiert einen neuen BetragMitVorzeichen.
-     * 
+     *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6

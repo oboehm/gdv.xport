@@ -18,8 +18,11 @@
 
 package gdv.xport.satz.model;
 
-import static org.junit.Assert.*;
-import gdv.xport.satz.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
 
 import org.junit.Test;
 
@@ -30,6 +33,17 @@ import org.junit.Test;
  * @since 0.9 (29.03.2013)
  */
 public class Satz222Test extends AbstractSatzTest {
+
+    /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Satz222();
+    }
 
     /**
      * Dies ist nur ein Test, ob die Klasse instanziiert werden kann.

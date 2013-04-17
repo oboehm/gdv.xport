@@ -20,13 +20,17 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
 
-import org.junit.*;
+import org.junit.Test;
 
 /**
  * @author oliver
@@ -39,8 +43,19 @@ public final class VorsatzTest extends AbstractSatzTest {
     private final Vorsatz vorsatz = new Vorsatz();
 
     /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Vorsatz();
+    }
+
+    /**
      * Test method for {@link gdv.xport.satz.Vorsatz#Vorsatz()}.
-     * 
+     *
      * @throws IOException falls der Export schief geht
      */
     @Test
@@ -55,7 +70,7 @@ public final class VorsatzTest extends AbstractSatzTest {
 
     /**
      * Wird das Absender-Feld richtig gesetzt? Schau 'mer mal.
-     * 
+     *
      * @throws IOException falls der Export schief geht
      */
     @Test
@@ -69,7 +84,7 @@ public final class VorsatzTest extends AbstractSatzTest {
 
     /**
      * Hier wird das Start- und End-Datum ueberprueft.
-     * 
+     *
      * @throws IOException falls der Export schief geht
      */
     @Test
@@ -84,7 +99,7 @@ public final class VorsatzTest extends AbstractSatzTest {
      * Hier ueberpruefen wir den Export.
      * Damit ein Datensatz auch 256 Bytes lang ist, setzen wir das
      * EOD-Zeichen auf nichts ("").
-     * 
+     *
      * @param startByte beginnend bei 1
      * @param endByte   beginnend bei 1
      * @param expected erwartetes Ergebnis
@@ -108,7 +123,7 @@ public final class VorsatzTest extends AbstractSatzTest {
 
     /**
      * Zum Testen verwenden wir hier die Musterdatei.
-     * 
+     *
      * @throws IOException falls die Musterdatei nicht importiert werden kann
      */
     @Test
@@ -124,11 +139,11 @@ public final class VorsatzTest extends AbstractSatzTest {
             istream.close();
         }
     }
-    
+
     /**
      * Zum Testen nehmen wir hier den Vorsatz aus der Musterdatei, allerdings
      * ohne Umlaute.
-     * 
+     *
      * @throws IOException falls der Im- oder Export schief geht
      */
     @Test

@@ -20,15 +20,19 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 /**
@@ -41,7 +45,7 @@ public class FeldTest {
 
     /** The Constant log. */
     private static final Log log = LogFactory.getLog(FeldTest.class);
-    
+
     /** For testing. */
     private enum Greeting { HELLO_WORLD; }
 
@@ -75,6 +79,18 @@ public class FeldTest {
     public void testFeld() {
         Feld zeichen = new Feld("Testfeld", 1, 1, 'x', Align.LEFT);
         assertEquals("x", zeichen.getInhalt());
+    }
+
+    /**
+     * Testet, ob ein Feld nur mit einem Enum angelegt werden kann. Als
+     * Enum wird dabei die Satzart aus {@link Feld1bis7} verwendet.
+     */
+    @Test
+    public void testFeldWithEnum() {
+        Feld satzart = new Feld(Feld1bis7.SATZART);
+        assertTrue("expected: " + satzart + " is valid", satzart.isValid());
+        assertEquals(1, satzart.getByteAdresse());
+        assertEquals(4, satzart.getAnzahlBytes());
     }
 
     /**
@@ -130,7 +146,7 @@ public class FeldTest {
         b.setInhalt('b');
         assertFalse(a + " differs from " + b, a.equals(b));
     }
-    
+
     /**
      * Bezeichnung kann aus mehreren Woertern in Gross- und Kleinschreibung
      * bestehen, der Bezeichner entpsricht dem, was in der
@@ -142,7 +158,7 @@ public class FeldTest {
         assertEquals(Bezeichner.SATZART, x.getBezeichnung());
         assertEquals("SATZART", x.getBezeichner());
     }
-    
+
     /**
      * Bezeichner, die nicht als Bezeichner-Konstante gefunden werden,
      * sollen nach den Regeln fuer Java-Konstanten zurueckgegeben werden.
@@ -152,7 +168,7 @@ public class FeldTest {
         Feld x = new Feld("Version Satzart 0100", 99, 3, Align.LEFT);
         assertEquals("VERSION_SATZART_0100", x.getBezeichner());
     }
-    
+
     /**
      * Hier wollen wir testen, ob aus dem Bezeichner "HELLO_WORLD" als
      * Bezeichnung tatsaechlich "Hello World" rauskommt.
@@ -173,37 +189,46 @@ public class FeldTest {
      */
     static FeldInfo createFeldInfo() {
         FeldInfo feldInfo = new FeldInfo() {
+            @Override
             public Class<? extends Annotation> annotationType() {
                 return null;
             }
+            @Override
             public Class<? extends Feld> type() {
                 return Zeichen.class;
             }
+            @Override
             public int teildatensatz() {
                 return 1;
             }
+            @Override
             public int nr() {
                 return 11;
             }
+            @Override
             public int nachkommaStellen() {
                 return 0;
             }
+            @Override
             public String erlaeuterung() {
                 return "only for testing";
             }
+            @Override
             public int byteAdresse() {
                 return 100;
             }
+            @Override
             public int anzahlBytes() {
                 return 1;
             }
+            @Override
             public Align align() {
                 return null;
             }
         };
         return feldInfo;
     }
-    
+
     /**
      * Test-Methode fuer {@link Feld#getInhalt()} in Zusammenhang mit dem
      * Encoding.

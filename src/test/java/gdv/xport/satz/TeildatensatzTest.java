@@ -38,6 +38,17 @@ import org.junit.Test;
 public class TeildatensatzTest extends AbstractSatzTest {
 
     /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Teildatensatz(123, 1);
+    }
+
+    /**
      * Test method for {@link gdv.xport.satz.Teildatensatz#export(java.io.Writer)}.
      * @throws IOException sollte eigentlich nicht auftreten
      */

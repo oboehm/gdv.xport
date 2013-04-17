@@ -14,6 +14,17 @@ import gdv.xport.annotation.FeldInfo;
 public class AlphaNumFeld extends Feld {
 
     /**
+     * Legt ein neues alphanumerisches Feld an. Die Informationen dazu werden
+     * aus der uebergebenen Enum bezogen.
+     *
+     * @param feldX Enum mit den Feldinformationen
+     * @since 0.9
+     */
+    public AlphaNumFeld(final Enum<?> feldX) {
+        super(feldX);
+    }
+
+    /**
      * @param name Bezeichner
      * @param s Inhalt
      */
@@ -75,10 +86,10 @@ public class AlphaNumFeld extends Feld {
     public AlphaNumFeld(final int length, final int start, final Align alignment) {
         super(length, start, alignment);
     }
-    
+
     /**
      * Instantiiert ein neues alpha-numerisches Feld.
-     * 
+     *
      * @param feldX Feld
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
@@ -89,7 +100,7 @@ public class AlphaNumFeld extends Feld {
 
     /**
      * Instantiiert ein neues alpha-numerisches Feld.
-     * 
+     *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6

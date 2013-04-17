@@ -5,7 +5,8 @@ package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
 
-import java.text.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
@@ -13,7 +14,8 @@ import net.sf.oval.constraint.MatchPatternCheck;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
@@ -28,10 +30,21 @@ public class NumFeld extends Feld {
 
     private static final Log log = LogFactory.getLog(NumFeld.class);
     private final int nachkommastellen;
-    
+
+    /**
+     * Legt ein neues Betrags-Feld an. Die Informationen dazu werden
+     * aus der uebergebenen Enum bezogen.
+     *
+     * @param feldX Enum mit den Feldinformationen
+     * @since 0.9
+     */
+    public NumFeld(final Enum<?> feldX) {
+        this(feldX, Feld.getFeldInfo(feldX));
+    }
+
     /**
      * Instantiiert ein neues numerisches Feld.
-     * 
+     *
      * @param feldX Feld
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
@@ -95,10 +108,10 @@ public class NumFeld extends Feld {
         super(name, s, Align.RIGHT);
         this.nachkommastellen = nachkommastellen;
     }
-    
+
     /**
      * Instantiiert ein neues numerisches Feld.
-     * 
+     *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
@@ -163,7 +176,7 @@ public class NumFeld extends Feld {
                 this.getInhalt(), n);
 
     }
-    
+
     /**
      * Liefert die Anzahl der Nachkommastellen.
      *
@@ -176,6 +189,7 @@ public class NumFeld extends Feld {
     /**
      * @param n neuer Inhalt
      */
+    @Override
     public void setInhalt(final int n) {
         this.setInhalt((long) n);
     }
@@ -204,7 +218,7 @@ public class NumFeld extends Feld {
     /**
      * Wandelt den Inhalt in einen Integer (ohne Beruecksichtigung etwaiger
      * Nachkommastellen).
-     * 
+     *
      * @return den Inhalt als int
      */
     public int toInt() {
@@ -218,7 +232,7 @@ public class NumFeld extends Feld {
     /**
      * Wandelt den Inhalt in einen Long (ohne Beruecksichtigung etwaiger
      * Nachkommastellen).
-     * 
+     *
      * @return den Inhalt als long
      */
     public long toLong() {

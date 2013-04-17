@@ -48,10 +48,21 @@ public class Zeichen extends AlphaNumFeld {
     public Zeichen(final String name, final int start) {
         super(name, 1, start);
     }
-    
+
+    /**
+     * Legt ein neues Zeichen-Feld an. Die Informationen dazu werden
+     * aus der uebergebenen Enum bezogen.
+     *
+     * @param feldX Enum mit den Feldinformationen
+     * @since 0.9
+     */
+    public Zeichen(final Enum<?> feldX) {
+        this(feldX, Feld.getFeldInfo(feldX));
+    }
+
     /**
      * Instantiiert ein neues Zeichen.
-     * 
+     *
      * @param feldX Feld
      * @param info mit Angabe der Start-Adresse
      * @since 0.6
@@ -63,7 +74,7 @@ public class Zeichen extends AlphaNumFeld {
 
     /**
      * Instantiiert ein neues Zeichen.
-     * 
+     *
      * @param name Bezeichner
      * @param info mit Angabe der Start-Adresse
      * @since 0.6
@@ -83,7 +94,7 @@ public class Zeichen extends AlphaNumFeld {
     public Zeichen(final String name, final int start, final char c) {
         super(name, 1, start, c);
     }
-    
+
     /**
      * Falls man keinen String will, sondern ein einzelnes Zeichen braucht.
      *
