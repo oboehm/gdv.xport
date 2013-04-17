@@ -14,14 +14,20 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.satz.feld.common.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.VUNummer;
+import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.TeildatensatzNummer;
+import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzNummer;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.PushbackReader;
 import java.util.List;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * The Class Datensatz.
@@ -33,7 +39,7 @@ public class Datensatz extends Satz {
 
 	private static Log log = LogFactory.getLog(Datensatz.class);
 	/** 5 Zeichen, Byte 5 - 9. */
-	private final VUNummer vuNummer = new VUNummer(Config.getVUNummer(), 5);
+	private final VUNummer vuNummer = Config.getVUNummer();
 	/** 1 Zeichen, Byte 10. */
 	private final AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(BUENDELUNGSKENNZEICHEN, 1,
 	        10);
@@ -53,12 +59,12 @@ public class Datensatz extends Satz {
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der.
-	 *
 	 * {@link gdv.xport.util.SatzFactory} benoetigt).
+	 *
 	 * @since 0.6
 	 */
 	public Datensatz() {
-		super(0);
+		this(0, getTeildatensaetzeFor(0, Feld1bis7.values()));
 	}
 
 	/**
@@ -194,7 +200,8 @@ public class Datensatz extends Satz {
 	 * @since 0.4
 	 */
 	protected void setUpTeildatensatz(final Teildatensatz tds) {
-		if (!tds.hasFeld(Bezeichner.VU_NUMMER)) {
+//		if (!tds.hasFeld(Bezeichner.VU_NUMMER)) {
+	    if (!tds.hasFeld(Feld1bis7.VU_NUMMER)) {
 			log.debug("initializing " + tds + "...");
 			tds.add(this.vuNummer);
 			tds.add(this.buendelungsKennzeichen);

@@ -22,14 +22,18 @@ package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
 
-import java.text.*;
-import java.util.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.constraint.MatchPatternCheck;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * The Class Datum.
@@ -44,8 +48,19 @@ public final class Datum extends Feld {
     private final DateFormat dateFormat;
 
     /**
+     * Legt ein neues Datums-Feld an. Die Informationen dazu werden
+     * aus der uebergebenen Enum bezogen.
+     *
+     * @param feldX Enum mit den Feldinformationen
+     * @since 0.9
+     */
+    public Datum(final Enum<?> feldX) {
+        this(feldX, Feld.getFeldInfo(feldX));
+    }
+
+    /**
      * Instantiiert ein neues Datum.
-     * 
+     *
      * @param feldX Feld
      * @param info mit Angabe der Start-Adresse
      * @since 0.6
@@ -86,10 +101,10 @@ public final class Datum extends Feld {
         super(name, length, start, Align.RIGHT);
         dateFormat = getDateFormat(length);
     }
-    
+
     /**
      * Instantiiert ein neues Datum.
-     * 
+     *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6

@@ -67,12 +67,21 @@ public class Feld implements Comparable<Feld> {
     private final Align ausrichtung;
 
     /**
+     * Legt ein neues Feld an. Die Informationen dazu werden aus der
+     * uebergebenen Enum bezogen.
+     *
+     * @param feldX Enum mit den Feldinformationen
+     * @since 0.9
+     */
+    public Feld(final Enum<?> feldX) {
+        this(feldX, getFeldInfo(feldX));
+    }
+
+    /**
      * Kreiert ein neues Feld.
      *
-     * @param feldX
-     *            der entsrpechende Aufzaehlungstyp
-     * @param info
-     *            Annotation mit den Feldinformationen
+     * @param feldX der entsprechende Aufzaehlungstyp
+     * @param info Annotation mit den Feldinformationen
      * @since 0.6
      */
     public Feld(final Enum<?> feldX, final FeldInfo info) {
@@ -652,6 +661,21 @@ public class Feld implements Comparable<Feld> {
         ByteBuffer outputBuffer = Config.DEFAULT_ENCODING.encode(converted);
         String convertedISO = new String(outputBuffer.array());
         return WordUtils.capitalize(convertedISO.toLowerCase());
+    }
+
+    /**
+     * Ermittelt die FeldInfo aus dem uebergebenen Enum.
+     *
+     * @param feldX the feld x
+     * @return the feld info
+     */
+    protected static FeldInfo getFeldInfo(final Enum<?> feldX) {
+        try {
+            Field field = feldX.getClass().getField(feldX.name());
+            return field.getAnnotation(FeldInfo.class);
+        } catch (NoSuchFieldException nsfe) {
+            throw new InternalError("no field " + feldX + " (" + nsfe + ")");
+        }
     }
 
 }

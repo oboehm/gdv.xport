@@ -36,10 +36,21 @@ public class Version extends Feld {
     public Version(final String name, final int start) {
         super(name, 3, start, Align.LEFT);
     }
-    
+
+    /**
+     * Legt ein neues Versions-Feld an. Die Informationen dazu werden
+     * aus der uebergebenen Enum bezogen.
+     *
+     * @param feldX Enum mit den Feldinformationen
+     * @since 0.9
+     */
+    public Version(final Enum<?> feldX) {
+        super(feldX);
+    }
+
     /**
      * Instantiiert ein neues Versions-Objekt.
-     * 
+     *
      * @param name Bezeichner
      * @param info mit der Start-Adresse
      * @since 0.6

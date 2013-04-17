@@ -36,7 +36,7 @@ import org.junit.Test;
  * @since 15.10.2009
  * @version $Revision$
  */
-public class DatensatzTest extends AbstractSatzTest {
+public class DatensatzTest extends AbstractDatensatzTest {
 
     private static final Log log = LogFactoryImpl.getLog(DatensatzTest.class);
 

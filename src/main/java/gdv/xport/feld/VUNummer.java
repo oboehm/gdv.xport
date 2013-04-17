@@ -18,8 +18,9 @@
 
 package gdv.xport.feld;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.VU_NUMMER;
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Die VUNummer (Versicherungs-Unternehmen-Nummer) ist ein fuenfstelliges
@@ -33,28 +34,38 @@ public class VUNummer extends AlphaNumFeld {
 
     /**
      * Erzeugt ein neues VUNummer-Objekt.
-     * 
+     *
+     * @since 0.9
+     */
+    public VUNummer() {
+        super(Feld1bis7.VU_NUMMER);
+    }
+
+    /**
+     * Erzeugt ein neues VUNummer-Objekt.
+     *
      * @param nr VU-Nummer (max. 5 Stellen)
      */
     public VUNummer(final String nr) {
-        super(VU_NUMMER, nr);
+        this();
         assert nr.length() <= 5 : "nur max. 5 Stellen erlaubt";
+        this.setInhalt(nr);
         super.setAnzahlBytes(5);
     }
 
     /**
      * Erzeugt ein neues VUNummer-Objekt.
-     * 
+     *
      * @param nr VU-Nummer (max. 5 Stellen)
      * @param start Start-Byte (beginnend bei 1)
      */
     public VUNummer(final VUNummer nr, final int start) {
         super(VU_NUMMER, 5, start, nr.getInhalt());
     }
-    
+
     /**
      * Instantiiert ein neues VUNummer-Objekt.
-     * 
+     *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6

@@ -22,15 +22,21 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.io.ImportException;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.*;
 
-import net.sf.oval.*;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.Validator;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
@@ -232,6 +238,10 @@ public final class Teildatensatz extends Satz {
      */
     public boolean hasFeld(final String name) {
         return this.datenfelder.containsKey(name);
+    }
+
+    public boolean hasFeld(final Enum<?> feldX) {
+        return this.datenfelder.containsKey(feldX);
     }
 
     /**
