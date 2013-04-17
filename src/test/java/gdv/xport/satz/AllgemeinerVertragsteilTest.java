@@ -24,7 +24,8 @@ import gdv.xport.satz.model.Satz200;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 /**
@@ -43,6 +44,17 @@ public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
             + "                             0           B4LTTT                 "
             + "  04100001052004                                   EUR1        1";
     private final Datensatz vertragsteil = new Satz200();
+
+    /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Satz200();
+    }
 
     /**
      * Test method for {@link gdv.xport.satz.AllgemeinerVertragsteil#AllgemeinerVertragsteil()}.

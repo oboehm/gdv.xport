@@ -31,7 +31,7 @@ import org.junit.Test;
 
 /**
  * Gemeinsame Oberklasse fuer SatzTest.
- * 
+ *
  * @author oliver
  * @since 15.10.2009
  * @version $Revision$
@@ -41,6 +41,17 @@ public class DatensatzTest extends AbstractSatzTest {
     private static final Log log = LogFactoryImpl.getLog(DatensatzTest.class);
 
     /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Datensatz();
+    }
+
+   /**
      * Test method for {@link gdv.xport.satz.Datensatz#Datensatz(java.lang.String, int)}.
      * @throws IOException falls der Export schief gegangen ist
      */

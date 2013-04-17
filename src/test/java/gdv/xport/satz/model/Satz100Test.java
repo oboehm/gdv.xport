@@ -20,6 +20,7 @@ package gdv.xport.satz.model;
 
 import static org.junit.Assert.assertEquals;
 import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld100;
 
 import java.io.IOException;
@@ -28,26 +29,37 @@ import org.junit.Test;
 
 /**
  * JUnit-Test fuer Satz100.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 09.03.2011
  */
 public class Satz100Test extends AbstractSatzTest {
-    
-    private static final String input = 
-        "01009999  030      599999999980199990099991Pollsmann            " + 
-        "                                       Rudolf                   " + 
-        "                         D  50825 Cologne                  Elsho" + 
+
+    private static final String input =
+        "01009999  030      599999999980199990099991Pollsmann            " +
+        "                                       Rudolf                   " +
+        "                         D  50825 Cologne                  Elsho" +
         "lunderstr. 10                    11111979D  01            99  11" +
-        "01009999  030      59999999998019999009999           W45WWW     " + 
-        "                                          0123456789  10000000  " + 
-        "                            100221 12345899       200211 123456 " + 
+        "01009999  030      59999999998019999009999           W45WWW     " +
+        "                                          0123456789  10000000  " +
+        "                            100221 12345899       200211 123456 " +
         "        300211 345678         410221 445566         1          2" +
-        "01009999  030      59999999998019999009999420221 777772         " + 
-        "                                        50polly(a)example.com   " + 
-        "                                                                " + 
+        "01009999  030      59999999998019999009999420221 777772         " +
+        "                                        50polly(a)example.com   " +
+        "                                                                " +
         "                                                               3";
     private final Satz100 satz = new Satz100();
+
+    /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Satz100();
+    }
 
     /**
      * Test method for {@link gdv.xport.satz.model.Satz100#Satz100()}.
@@ -85,7 +97,7 @@ public class Satz100Test extends AbstractSatzTest {
         assertEquals("Pollsmann", satz.get(Feld100.NAME1).trim());
         assertEquals("           W45WWW", satz.get(Feld100.KUNDENNR_VERSICHERER));
     }
-    
+
     /**
      * Hier testen wir, ob das Alignment in den FeldInfos tatsaechlich
      * ausgewertet wird.

@@ -40,6 +40,17 @@ public class AdressteilTest extends AbstractSatzTest {
     private final Satz100 adressteil = new Satz100();
 
     /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    public Satz getSatz() {
+        return new Satz100();
+    }
+
+    /**
      * Test method for {@link gdv.xport.satz.Adressteil#Adressteil()}.
      * @throws IOException falls der Export schief geht
      */

@@ -25,6 +25,7 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractSatzTest;
 import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
@@ -49,6 +50,17 @@ import org.junit.Test;
 public class Satz220Test extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(Satz220Test.class);
+
+    /**
+     * Hier erzeugen wir einen Satz zum Testen.
+     *
+     * @return Satz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return new Satz220();
+    }
 
     /**
      * Der Lesbarkeit halber aktivieren wir das Zeilenende fuer jeden
