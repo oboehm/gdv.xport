@@ -58,7 +58,10 @@ public class VUNummer extends AlphaNumFeld {
      *
      * @param nr VU-Nummer (max. 5 Stellen)
      * @param start Start-Byte (beginnend bei 1)
+     * @deprecated dieser Konstruktor macht keinen Sinn mehr und wird mit 1.0
+     *             entfernt
      */
+    @Deprecated
     public VUNummer(final VUNummer nr, final int start) {
         super(VU_NUMMER, 5, start, nr.getInhalt());
     }
@@ -69,7 +72,10 @@ public class VUNummer extends AlphaNumFeld {
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
+     * @deprecated dieser Konstruktor macht keinen Sinn mehr und wird mit 1.0
+     *             entfernt
      */
+    @Deprecated
     public VUNummer(final String name, final FeldInfo info) {
         this(name, info.anzahlBytes(), info.byteAdresse());
     }
@@ -81,7 +87,10 @@ public class VUNummer extends AlphaNumFeld {
      * @param length die Laenge (ueblicherweise 5)
      * @param start die Start-Adresse (ueblicherweise 5)
      * @since 0.6
+     * @deprecated dieser Konstruktor macht keinen Sinn mehr und wird mit 1.0
+     *             entfernt
      */
+    @Deprecated
     public VUNummer(final String name, final int length, final int start) {
         super(name, length, start);
         if (!VU_NUMMER.equalsIgnoreCase(name)) {

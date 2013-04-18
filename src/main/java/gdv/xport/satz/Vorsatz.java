@@ -22,12 +22,18 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.Version;
+import gdv.xport.feld.Zeichen;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Formatter;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Dies ist der erste Satz, der Vorsatz eben.
@@ -43,7 +49,7 @@ public final class Vorsatz extends Satz {
 
     private static final Log log = LogFactory.getLog(Vorsatz.class);
     /** 5 Zeichen, Byte 5 - 9. */
-    private final AlphaNumFeld vuNummer = new VUNummer(Config.getVUNummer(), 5);
+    private final AlphaNumFeld vuNummer = Config.getVUNummer();
     /** 30 Zeichen, Byte 10 - 39. */
     private final AlphaNumFeld absender = new AlphaNumFeld(ABSENDER, 30, 10);
     /** 30 Zeichen, Byte 40 - 69. */
