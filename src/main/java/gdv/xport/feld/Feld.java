@@ -24,17 +24,25 @@ import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 import gdv.xport.satz.feld.FeldX;
 
-import java.io.*;
-import java.lang.reflect.*;
+import java.io.IOException;
+import java.io.Writer;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.ByteBuffer;
 import java.util.List;
 
-import net.sf.oval.*;
-import net.sf.oval.constraint.*;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.Validator;
+import net.sf.oval.constraint.Min;
+import net.sf.oval.constraint.NotEqual;
+import net.sf.oval.constraint.SizeCheck;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.lang.*;
-import org.apache.commons.logging.*;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * The Class Feld.

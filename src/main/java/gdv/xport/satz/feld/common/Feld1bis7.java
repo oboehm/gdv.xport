@@ -19,9 +19,7 @@
 package gdv.xport.satz.feld.common;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 
 /**
  * Jeder Datensatz beginnt mit denselben 7 Feldern. Dies sind die Felder, die in diesem Enum zusammengefasst sind.

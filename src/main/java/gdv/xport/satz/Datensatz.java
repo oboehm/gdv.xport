@@ -14,20 +14,14 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.config.Config;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.VUNummer;
-import gdv.xport.satz.feld.common.Feld1bis7;
-import gdv.xport.satz.feld.common.TeildatensatzNummer;
-import gdv.xport.satz.feld.common.WagnisartLeben;
+import gdv.xport.feld.*;
+import gdv.xport.satz.feld.common.*;
 import gdv.xport.util.SatzNummer;
 
-import java.io.IOException;
-import java.io.PushbackReader;
+import java.io.*;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 /**
  * The Class Datensatz.
