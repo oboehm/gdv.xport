@@ -38,11 +38,17 @@ public enum Feld1bis7 {
     SATZART,
 
     /**
-     * Gemaess VU-Verzeichnis der BaFin, linksbuendig. Das VU-Nr.-Verzeichnis kann bei der Bundesanstalt fuer
-     * Finanzdienstleistungsaufsicht in Bonn angefordert werden (Graurheindorfer Str. 108, 53117 Bonn, www.bafin.de).
+     * Gemaess VU-Verzeichnis der BaFin, linksbuendig. Das VU-Nr.-Verzeichnis
+     * kann bei der Bundesanstalt fuer Finanzdienstleistungsaufsicht in Bonn
+     * angefordert werden (Graurheindorfer Str. 108, 53117 Bonn, www.bafin.de).
      * Der neue vierstellige VU.-Nr.-Schluessel gilt ab 01.01.1993
      */
-    @FeldInfo(nr = 2, type = AlphaNumFeld.class, anzahlBytes = 5, byteAdresse = 5)
+    @FeldInfo(
+            nr = 2,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 5,
+            byteAdresse = 5,
+            bezeichnung = "VU-Nummer")
     VU_NUMMER,
 
     /**

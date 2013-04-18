@@ -24,25 +24,17 @@ import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 import gdv.xport.satz.feld.FeldX;
 
-import java.io.IOException;
-import java.io.Writer;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+import java.io.*;
+import java.lang.reflect.*;
 import java.nio.ByteBuffer;
 import java.util.List;
 
-import net.sf.oval.ConstraintViolation;
-import net.sf.oval.Validator;
-import net.sf.oval.constraint.Min;
-import net.sf.oval.constraint.NotEqual;
-import net.sf.oval.constraint.SizeCheck;
+import net.sf.oval.*;
+import net.sf.oval.constraint.*;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.WordUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.lang.*;
+import org.apache.commons.logging.*;
 
 /**
  * The Class Feld.
@@ -322,7 +314,6 @@ public class Feld implements Comparable<Feld> {
      */
     public String getBezeichner() {
         if (!this.bezeichner.equals(FeldX.UNBEKANNT)) {
-            // if (this.bezeichner != FeldX.UNBEKANNT) {
             return this.bezeichner.name();
         }
         Field[] fields = Bezeichner.class.getFields();
@@ -657,7 +648,16 @@ public class Feld implements Comparable<Feld> {
      * @return z.B. "Hello World"
      */
     public static String toBezeichnung(final Enum<?> name) {
-        String converted = name.name().replaceAll("_", " ");
+        FeldInfo feldInfo = getFeldInfo(name);
+        if ((feldInfo == null) || StringUtils.isEmpty(feldInfo.bezeichnung())) {
+            return toBezeichnung(name.name());
+        } else {
+            return feldInfo.bezeichnung();
+        }
+    }
+
+    private static String toBezeichnung(final String name) {
+        String converted = name.replaceAll("_", " ");
         ByteBuffer outputBuffer = Config.DEFAULT_ENCODING.encode(converted);
         String convertedISO = new String(outputBuffer.array());
         return WordUtils.capitalize(convertedISO.toLowerCase());

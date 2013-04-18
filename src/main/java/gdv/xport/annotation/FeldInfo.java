@@ -18,59 +18,69 @@
 
 package gdv.xport.annotation;
 
-import java.lang.annotation.*;
+import gdv.xport.feld.Align;
+import gdv.xport.feld.Feld;
 
-import gdv.xport.feld.*;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * Diese Annotation dient als Behaelter fuer einige Meta-Informationen wie
  * Byte-Adresse oder Datentyp.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (06.03.2011)
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FeldInfo {
-    
+
     /**
      * Teildatensatz.
      */
     int teildatensatz() default 1;
-    
+
     /**
      * Feld-Nummer im Teildatensatz.
      */
     int nr() default 1;
-    
+
     /**
      * Erwarteter Datentyp, der angegeben werden <b>muss</b>.
      */
     Class<? extends Feld> type();
-    
+
     /**
      * Ausrichtung: rechts- oder linksbuendig.
      */
     Align align() default Align.UNKNOWN;
-    
+
     /**
      * Anzahl bytes.
      */
     int anzahlBytes() default 1;
-    
+
     /**
      * Byte adresse.
      */
     int byteAdresse() default -1;
-    
+
     /**
      * Anzahl Nachkommastellen.
      */
     int nachkommaStellen() default 0;
-    
+
     /**
      * Erlaeuterung.
      */
     String erlaeuterung() default "siehe Handbuch GDV-Datensatz";
+
+    /**
+     * Normalerweise wird der Bezeichnung aus dem Namen abgeleitet. In manchen
+     * Faellen muss man (wie z.B. der VU-Nummer) koennen wir etwas nachhelfen.
+     *
+     * @since 0.9
+     */
+    String bezeichnung() default "";
 
 }
 

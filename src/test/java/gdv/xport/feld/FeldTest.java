@@ -20,9 +20,7 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -31,8 +29,7 @@ import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 import org.junit.Test;
 
 /**
@@ -224,6 +221,10 @@ public class FeldTest {
             @Override
             public Align align() {
                 return null;
+            }
+            @Override
+            public String bezeichnung() {
+                return "";
             }
         };
         return feldInfo;

@@ -200,7 +200,6 @@ public class Datensatz extends Satz {
 	 * @since 0.4
 	 */
 	protected void setUpTeildatensatz(final Teildatensatz tds) {
-//		if (!tds.hasFeld(Bezeichner.VU_NUMMER)) {
 	    if (!tds.hasFeld(Feld1bis7.VU_NUMMER)) {
 			log.debug("initializing " + tds + "...");
 			tds.add(this.vuNummer);

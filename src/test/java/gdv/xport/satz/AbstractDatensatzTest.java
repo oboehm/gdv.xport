@@ -24,7 +24,6 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -60,7 +59,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
      * Dieses Feld wird hier ueberprueft.
      */
     @Test
-    @Ignore // TODO: finish implementation
+    //@Ignore // TODO: finish implementation
     public void testVuNummer() {
         this.datensatz.setVuNummer("12345");
         Feld vuNummer = datensatz.getFeld(Feld1bis7.VU_NUMMER);
