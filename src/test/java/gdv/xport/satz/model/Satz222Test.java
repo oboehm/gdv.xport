@@ -20,7 +20,7 @@ package gdv.xport.satz.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 
@@ -32,7 +32,7 @@ import org.junit.Test;
  * @author oliver (ob@aosd.de)
  * @since 0.9 (29.03.2013)
  */
-public class Satz222Test extends AbstractSatzTest {
+public class Satz222Test extends AbstractDatensatzTest {
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.

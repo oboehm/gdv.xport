@@ -21,7 +21,7 @@ package gdv.xport.satz.feld.sparte30;
 import static gdv.xport.feld.Bezeichner.ZUSAETZLICHE_SATZKENNUNG;
 import static org.junit.Assert.assertEquals;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.model.Satz220;
 import gdv.xport.satz.model.SatzX;
@@ -36,7 +36,7 @@ import org.junit.Test;
  * @author oliver (ob@aosd.de)
  * @since 0.9 (10.02.2013)
  */
-public class Feld220Test extends AbstractSatzTest {
+public class Feld220Test extends AbstractDatensatzTest {
 
     private final SatzX wagnisdaten = new SatzX(220, Feld220.values());
 

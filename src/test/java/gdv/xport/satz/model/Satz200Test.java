@@ -19,7 +19,7 @@
 package gdv.xport.satz.model;
 
 import static org.junit.Assert.assertEquals;
-import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld200;
 
@@ -35,7 +35,7 @@ import org.junit.Test;
  * @author oliver (ob@aosd.de)
  * @since 06.03.2011
  */
-public class Satz200Test extends AbstractSatzTest {
+public class Satz200Test extends AbstractDatensatzTest {
 
     private static final Log log = LogFactory.getLog(Satz200Test.class);
     private static final String input =

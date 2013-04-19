@@ -19,7 +19,7 @@
 package gdv.xport.satz.model;
 
 import static org.junit.Assert.assertEquals;
-import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld100;
 
@@ -33,7 +33,7 @@ import org.junit.Test;
  * @author oliver (ob@aosd.de)
  * @since 09.03.2011
  */
-public class Satz100Test extends AbstractSatzTest {
+public class Satz100Test extends AbstractDatensatzTest {
 
     private static final String input =
         "01009999  030      599999999980199990099991Pollsmann            " +

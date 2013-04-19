@@ -29,7 +29,7 @@ import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 /**
- * Urspruenglich war dieser JUnit-Tests fuer die AllgeminerVertragsteil-Klasse
+ * Urspruenglich war dieser JUnit-Tests fuer die AllgemeinerVertragsteil-Klasse
  * vorgesehen. Nachdem diese Klasse aber inzwischen durch {@link Satz200}
  * abgeloest wurde, ist es ein weiterer Test fuer diese neue Klasse.
  *

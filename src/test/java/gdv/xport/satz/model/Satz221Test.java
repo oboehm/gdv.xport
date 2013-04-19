@@ -24,7 +24,7 @@ import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 
@@ -46,7 +46,7 @@ import org.junit.Test;
  * @author oliver (ob@aosd.de)
  * @since 0.6 (14.04.2011)
  */
-public class Satz221Test extends AbstractSatzTest {
+public class Satz221Test extends AbstractDatensatzTest {
 
     private static final Log log = LogFactory.getLog(Satz221Test.class);
 

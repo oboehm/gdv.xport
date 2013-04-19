@@ -26,7 +26,7 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
-import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.VertragsspezifischerTeilTest;
@@ -46,7 +46,7 @@ import org.junit.Test;
  * @author oliver (ob@aosd.de)
  * @since 0.6 (26.03.2011)
  */
-public final class Satz210Test extends AbstractSatzTest {
+public final class Satz210Test extends AbstractDatensatzTest {
 
     /** The Constant log. */
     private static final Log log = LogFactory.getLog(Satz210.class);
