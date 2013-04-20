@@ -30,6 +30,12 @@ import org.junit.Test;
  * Dies ist die gemeinsame Oberklasse fuer alle Tests, die abgeleitete
  * {@link Datensatz}-Klasse testen. Es werden hier vor allem die ersten
  * sieben Felder getestet, die fuer jeden Datensatz gleich sind.
+ * <p>
+ * Im Prinzip wuerde es reichen, wenn man diese Tests nur einmal im
+ * {@link DatensatzTest} schreiben und ausfuehren wuerde. Aber es hat sich
+ * gezeigt, dass es kein Fehler ist, dies auch fuer alle anderen Tests
+ * der verschiedenen Datensaetze zu tun.
+ * </p>
  *
  * @author oliver
  * @since 0.9 (17.04.2013)
@@ -92,7 +98,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Byte 14 bis 30 beinhaltet den Versichungsscheinnummer, der hier
+     * Byte 14 bis 30 beinhalten den Versichungsscheinnummer, der hier
      * getestet wird.
      */
     @Test
@@ -100,6 +106,27 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
         String nr = "Scheinnummer34567";
         this.datensatz.setVersicherungsscheinNummer(nr);
         assertEquals(nr, this.datensatz.getFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER).getInhalt());
+    }
+
+    /**
+     * Byte 31 + 32 enthalten die laufende Nummer einer Versicherungsschein-
+     * Nummer. Hier wird nur geprueft, ob diese Nummer wie gewuenscht gelesen
+     * und gesetzt werden kann.
+     */
+    @Test
+    public void testFolgenummer() {
+        this.datensatz.set(Feld1bis7.FOLGENUMMER, 42);
+        assertEquals(42, this.datensatz.getFolgenummer());
+    }
+
+    /**
+     * Byte 33 - 42 enthalten den Vermittler.
+     */
+    @Test
+    public void testVermittler() {
+        String vermittler = "Fritz";
+        this.datensatz.set(Feld1bis7.VERMITTLER, vermittler);
+        assertEquals(vermittler, this.datensatz.getVermittler());
     }
 
 }

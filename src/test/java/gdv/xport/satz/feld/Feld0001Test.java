@@ -72,7 +72,7 @@ public class Feld0001Test {
     @Test
     public void testArtDesAbsenders() {
         Teildatensatz tds = vorsatz.getTeildatensatz(1);
-        assertTrue("expeced: ART_DES_ABSENDERS in " + tds, tds.hasFeld(Bezeichner.ART_DES_ABSENDERS));
+        assertTrue("expeced: ART_DES_ABSENDERS in " + tds, tds.hasFeld(Feld0001.ART_DES_ABSENDERS));
     }
 
 }

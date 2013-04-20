@@ -20,9 +20,9 @@ package gdv.xport.satz;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.feld.common.VertragsStatus;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -77,14 +77,14 @@ public class TeildatensatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Test-Methode fuer {@link Teildatensatz#hasFeld(String)}.
+     * Test-Methode fuer {@link Teildatensatz#hasFeld(Enum)}.
      */
     @Test
     public void testHasFeld() {
         Teildatensatz tds = new Teildatensatz(new NumFeld("Feld42", "0042"), 1);
-        tds.add(new AlphaNumFeld("BOSS", 4, 99));
-        assertFalse("unexpected: HUGO in " + tds, tds.hasFeld("HUGO"));
-        assertTrue("expected: BOSS in " + tds, tds.hasFeld("BOSS"));
+        tds.add(new NumFeld(VertragsStatus.AUSSCHLUSS));
+        assertFalse("unexpected: VERTRAGSSTATUS in " + tds, tds.hasFeld(VertragsStatus.VERTRAGSSTATUS));
+        assertTrue("expected: AUSSCHLUSS in " + tds, tds.hasFeld(VertragsStatus.AUSSCHLUSS));
     }
 
 }

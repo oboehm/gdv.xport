@@ -18,8 +18,11 @@
 
 package gdv.xport.satz.feld;
 
-import gdv.xport.annotation.*;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.VorsatzFeld1bis6;
 
 
@@ -617,7 +620,8 @@ public enum Feld0001 {
             nr = 54,
             type = Zeichen.class,
             anzahlBytes = 1,
-            byteAdresse = 237
+            byteAdresse = 237,
+            bezeichnung = "Art des Absenders"
             )
     ART_DES_ABSENDERS,
 

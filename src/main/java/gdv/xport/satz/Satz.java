@@ -9,7 +9,6 @@ import static patterntesting.runtime.NullConstants.NULL_STRING;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.feld.MetaFeldInfo;
@@ -332,7 +331,7 @@ public abstract class Satz {
 	/**
 	 * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
 	 * benutzt, um das Feld zu bestimmen. Dazu werden auch die Konstanten in
-     * {@link Bezeichner} verwendet.
+     * {@link gdv.xport.feld.Bezeichner} verwendet.
 	 * <p>
 	 * TODO: Eigentlich waere es sinnvoller, hier die restlichen Annotationen
 	 * auszuwerten, da der Name nur auf Konvention beruht und etwas wackelig

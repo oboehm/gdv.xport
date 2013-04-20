@@ -22,7 +22,6 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
@@ -189,7 +188,7 @@ public final class Teildatensatz extends Satz {
     /**
      * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
      * benutzt, um das Feld zu bestimmen. Dazu werden auch die Konstanten in
-     * {@link Bezeichner} verwendet.
+     * {@link gdv.xport.feld.Bezeichner} verwendet.
      * <p>
      * TODO: Eigentlich waere es sinnvoller, hier die restlichen Annotationen
      * auszuwerten, da der Name nur auf Konvention beruht und etwas wackelig
@@ -232,16 +231,15 @@ public final class Teildatensatz extends Satz {
     /**
      * Ueberprueft, ob das uebergebene Feld vorhanden ist.
      *
-     * @param name gesuchter Bezeichner des Feldes
+     * @param feldX the feld x
      * @return true, falls Feld vorhanden ist.
      * @since 0.9
      */
-    public boolean hasFeld(final String name) {
-        return this.datenfelder.containsKey(name);
-    }
-
     public boolean hasFeld(final Enum<?> feldX) {
-        return this.datenfelder.containsKey(feldX);
+        if (this.datenfelder.containsKey(feldX)) {
+            return true;
+        }
+        return this.datenfelder.containsKey(Feld.toBezeichnung(feldX));
     }
 
     /**
