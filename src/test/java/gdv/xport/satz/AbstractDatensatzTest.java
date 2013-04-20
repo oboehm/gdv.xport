@@ -18,15 +18,18 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Dies ist die gemeinsame Oberklasse fuer alle Tests, die abgeleitete
- * {@link Datensatz}-Klasse testen.
+ * {@link Datensatz}-Klasse testen. Es werden hier vor allem die ersten
+ * sieben Felder getestet, die fuer jeden Datensatz gleich sind.
  *
  * @author oliver
  * @since 0.9 (17.04.2013)
@@ -62,6 +65,41 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
         Feld vuNummer = datensatz.getFeld(Feld1bis7.VU_NUMMER);
         assertTrue("expected: is valid", vuNummer.isValid());
         assertEquals("12345", vuNummer.getInhalt());
+    }
+
+    /**
+     * Byte 10 enthaelt das Buendelungskennzeichen, das wir hier zum Testen
+     * auf '1' setzen.
+     */
+    @Test
+    public void testBuendelungskennzeichen() {
+        this.datensatz.set(Feld1bis7.BUENDELUNGSKENNZEICHEN, '1');
+        Feld kennzeichen = this.datensatz.getFeld(Feld1bis7.BUENDELUNGSKENNZEICHEN);
+        assertEquals("1", kennzeichen.getInhalt());
+    }
+
+    /**
+     * Die Sparte sollte mit einem gueltigen Wert zwischen 0 und 999 belegt
+     * sein.
+     */
+    @Test
+    public void testSparte() {
+        int sparte = this.datensatz.getSparte();
+        assertTrue(sparte + " >= 0", sparte >= 0);
+        assertTrue(sparte + " <= 999", sparte <= 999);
+        Feld feld = this.datensatz.getFeld(Feld1bis7.SPARTE);
+        assertEquals(sparte, Integer.parseInt(feld.getInhalt()));
+    }
+
+    /**
+     * Byte 14 bis 30 beinhaltet den Versichungsscheinnummer, der hier
+     * getestet wird.
+     */
+    @Test
+    public void testVersicherungsscheinNummer() {
+        String nr = "Scheinnummer34567";
+        this.datensatz.setVersicherungsscheinNummer(nr);
+        assertEquals(nr, this.datensatz.getFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER).getInhalt());
     }
 
 }

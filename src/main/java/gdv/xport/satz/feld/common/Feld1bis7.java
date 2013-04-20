@@ -19,7 +19,9 @@
 package gdv.xport.satz.feld.common;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 
 /**
  * Jeder Datensatz beginnt mit denselben 7 Feldern. Dies sind die Felder, die in diesem Enum zusammengefasst sind.
@@ -63,9 +65,15 @@ public enum Feld1bis7 {
     SPARTE,
 
     /**
-     * Versicherungsschein-Nummer, rechtsbuendig, mit Leerstellen linksbuendig auffuellen ohne Sonderzeichen.
+     * Versicherungsschein-Nummer, rechtsbuendig, mit Leerstellen linksbuendig
+     * auffuellen ohne Sonderzeichen.
      */
-    @FeldInfo(nr = 5, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 14)
+    @FeldInfo(
+            nr = 5,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 17,
+            byteAdresse = 14,
+            bezeichnung = "Versicherungsschein-Nummer")
     VERSICHERUNGSSCHEINNUMMER,
 
     /**

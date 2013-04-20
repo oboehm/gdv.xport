@@ -901,7 +901,6 @@ public final class Bezeichner {
     public static final String UNTERVERS_VERZICHT = "Untervers.-Verzicht";
     public static final String OBJEKTNUMMER2 = "Objektnummer";
     public static final String BUENDELUNSKENNZEICHEN = "Buendelungskennzeichen";
-    public static final String VERSICHERUNGSSCHEIN_NUMMER = "Versicherungsschein-Nummer";
     public static final String GESCHAEFTSSTELLE_VERMITTLER = "Geschaeftsstelle / Vermittler";
     public static final String STAENDIG_BEWOHNT = "Staendig bewohnt";
     public static final String OBJEKTNUMMER = "Objektnummer";

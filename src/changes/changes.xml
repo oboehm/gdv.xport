@@ -19,6 +19,9 @@
 
     <release version="0.9.0" date="2013"
              description="Unterst&#252;tzung Version 2009">
+      <action dev="oboehm" type="update" date="20-Apr-2013" >
+      	Feld-Klasse akzeptiert jetzt auch Enums im Konstruktor.
+      </action>
       <action dev="oboehm" type="remove" date="14-M&#228;r-2013" >
         Option "-java" wird nicht mehr unterst&#252;tzt (Main-Klasse).
       </action>
