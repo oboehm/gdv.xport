@@ -35,21 +35,19 @@ public class Datensatz extends Satz {
 	/** 5 Zeichen, Byte 5 - 9. */
 	private final VUNummer vuNummer = Config.getVUNummer();
 	/** 1 Zeichen, Byte 10. */
-	private final AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(BUENDELUNGSKENNZEICHEN, 1,
-	        10);
+	private final AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(Feld1bis7.BUENDELUNGSKENNZEICHEN);
 	/** 3 Zeichen, Byte 11 - 13. */
-	private final NumFeld sparte = new NumFeld(SPARTE, 3, 11);
+    private final NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
 	/** 3 Zeichen, Byte 59 - 60. */
 	private final AlphaNumFeld wagnisart = new AlphaNumFeld(WAGNISART, 1, 59);
 	/** 3 Zeichen, Byte 255 - 256. */
 	private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld(TEILDATENSATZNUMMER, 1, 255);
 	/** 17 Zeichen, Byte 14 - 30. */
-	private final AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(VERSICHERUNGSSCHEINNUMMER,
-	        17, 14);
+	private final AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER);
 	/** 2 Zeichen, Byte 31 + 32. */
-	private final NumFeld folgeNr = new NumFeld(FOLGENUMMER, 2, 31);
+	private final NumFeld folgeNr = new NumFeld(Feld1bis7.FOLGENUMMER);
 	/** 10 Zeichen, Byte 33 - 42. */
-	private final AlphaNumFeld vermittler = new AlphaNumFeld(VERMITTLER, 10, 33);
+	private final AlphaNumFeld vermittler = new AlphaNumFeld(Feld1bis7.VERMITTLER);
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der.

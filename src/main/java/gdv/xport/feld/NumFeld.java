@@ -5,8 +5,7 @@ package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
+import java.text.*;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
@@ -14,8 +13,7 @@ import net.sf.oval.constraint.MatchPatternCheck;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.logging.*;
 
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
@@ -52,6 +50,7 @@ public class NumFeld extends Feld {
     public NumFeld(final Enum<?> feldX, final FeldInfo info) {
         super(feldX, info);
         this.nachkommastellen = info.nachkommaStellen();
+        this.setInhalt(0);
     }
 
     /**

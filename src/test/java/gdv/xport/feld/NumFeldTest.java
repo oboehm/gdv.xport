@@ -20,13 +20,18 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
-import java.util.*;
+import java.util.List;
+import java.util.Locale;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 /**
@@ -55,6 +60,16 @@ public class NumFeldTest {
     public void testNumFeldNegativ() {
         NumFeld einsminus = new NumFeld("einsminus", "-001");
         assertEquals(-1, einsminus.toInt());
+    }
+
+    /**
+     * Wir sollten keine {@link NumberFormatException} bekommen, wenn wir
+     * den Konstruktor mit Enum verwenden.
+     */
+    @Test
+    public void testNumFeldWithEnum() {
+        NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
+        assertEquals(0, sparte.toInt());
     }
 
     /**
@@ -142,10 +157,10 @@ public class NumFeldTest {
         NumFeld pi = new NumFeld("pi", "314", 2);
         assertEquals(3.14, pi.toDouble(), 0.001);
     }
-    
+
     /**
      * Waehrend des Testen gab es 'NumFeld KH-Deckungssummen in
-     * Waehrungseinheiten Teil 1(43-56): "00005000000000" is invalid: 
+     * Waehrungseinheiten Teil 1(43-56): "00005000000000" is invalid:
      * not a number (java.lang.NumberFormatException: For input string:
      * "00005000000000")' als Fehlermeldung. Dieser Testfall versucht
      * dies zu rekonstruieren.
@@ -158,7 +173,7 @@ public class NumFeldTest {
         List<ConstraintViolation> violations = big.validate();
         assertTrue(violations + " should be empty", violations.isEmpty());
     }
-    
+
     /**
      * Ein Betrag sollte als entsprechender Text formattiert werden.
      * @since 0.5.1
