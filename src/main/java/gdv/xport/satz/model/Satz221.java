@@ -18,13 +18,14 @@
 
 package gdv.xport.satz.model;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Diese Klasse repraesentiert die Satzart 221. Es handelt es sich dabei um eine
- * alternative Implementierung der {@link gdv.xport.satz.Erweiterungssatz221}
- * -Klasse, die nach dem Soplet- Ansatz (s. <a
- * href="http://www.soplets.org/">soplets.org</a>) implementiert wurde.
+ * alternative Implementierung der ehemaligen Erweiterungssatz221-Klasse, die
+ * nach dem Soplet-Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>)
+ * implementiert wurde.
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (14.04.2011)

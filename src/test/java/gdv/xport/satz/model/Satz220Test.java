@@ -29,7 +29,6 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
-import gdv.xport.satz.feld.sparte30.Feld220LeseLogik;
 import gdv.xport.util.SatzFactory;
 
 import java.io.IOException;
@@ -74,6 +73,7 @@ public class Satz220Test extends AbstractDatensatzTest {
     /**
      * Test method for {@link Satz220#Satz220(int)}.
      */
+    @Override
     @Test
     public void testSparte() {
         Satz220 rechtsschutz = new Satz220(70);
@@ -131,9 +131,7 @@ public class Satz220Test extends AbstractDatensatzTest {
                 + "0000000000000000000000000010000000000000000 00000000000000000000"
                 + "000000000000000000000000000000000000000000000000000  000000    X" + "\n";
         assertEquals(771, input.length());
-        // Objekt wird nicht über die SatzFactory geholt, da eine spezielle
-        // Leselogik für Satznummer 9 notwendig ist
-        Feld220LeseLogik wagnisdaten = new Feld220LeseLogik(30);
+        Datensatz wagnisdaten = SatzFactory.getDatensatz(220, 30);
         wagnisdaten.importFrom(input);
         checkDatensatz(wagnisdaten, input);
     }

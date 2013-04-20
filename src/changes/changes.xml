@@ -17,7 +17,7 @@
 
   <body>
 
-    <release version="0.9.0" date="Apr-2013"
+    <release version="0.9.0" date="21-Apr-2013"
              description="Unterst&#252;tzung Version 2009">
       <action dev="oboehm" type="update" date="20-Apr-2013" >
       	Feld-Klasse akzeptiert jetzt auch Enums im Konstruktor.
