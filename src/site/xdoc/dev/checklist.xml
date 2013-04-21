@@ -25,6 +25,13 @@
           <td>src/changes/changes.xml aktualisieren</td>
         </tr>
         <tr>
+          <td>vorher</td>
+          <td>Release-Branch erstellen</td>
+          <td>release-branch erstellen, developer-branch dorthin auschecken
+          	(s.a. <a href="http://www.mageblog.de/2012/06/13/erfolgreiches-git-branching-modell/">Git Branching-Modell</a>)
+          </td>
+        </tr>
+        <tr>
           <td>D-Day</td>
           <td>Versions-Nummer aktualisieren</td>
           <td>in pom.xml &#252;berall "-SNAPSHOT" entfernen</td>
@@ -32,7 +39,7 @@
         <tr>
           <td>D-Day</td>
           <td>Finaler Release-Build und Release-Test (inkl. Signierung)</td>
-          <td>baue alle Artefakte in patterntesting-parent
+          <td>baue alle Artefakte auf dem Release-Branch
             (<tt>mvn -B -Prelease clean install source:jar javadoc:jar gpg:sign -Dgpg.passphrase=xx</tt>);
             vorher sollte man vielleicht noch die Speichergr&#246;&#223;e erh&#246;hen
             (<tt>export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=256m"</tt>)
@@ -74,11 +81,19 @@
         </tr>
         <tr>
           <td>D-Day</td>
+          <td>release-Branch mit master mergen</td>
+          <td>
+            dazu lokal auf master-Branch gehen, mit release-Branch mergen
+            und anschlie&#223;end comitten
+          </td>
+        </tr>
+        <tr>
+          <td>D-Day</td>
           <td>Label setzen</td>
           <td>
-            git tag gdv-xport-0.7.0 (lokal)
+            git tag gdv-xport-0.9.0 (lokal)
             <br/>
-            git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-0.7.0 (remote)
+            git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-0.9.0 (remote)
           </td>
         </tr>
         <tr>
