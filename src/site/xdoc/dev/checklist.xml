@@ -111,8 +111,7 @@
           <td>Maven Central pr&#252;fen</td>
           <td>nach ein paar Tagen:
             &#252;berpr&#252;fen, ob die neue Version im
-            <a href="http://mirrors.ibiblio.org/pub/mirrors/maven2/com/github/oboehm/gdv-xport/">Patterntesting-Repository
-            auf iblibio.org</a>
+            <a href="http://search.maven.org/#search%7Cga%7C1%7Cgdv.xport">Central Repository</a>
             angekommen ist
           </td>
         </tr>

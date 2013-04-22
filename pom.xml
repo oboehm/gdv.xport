@@ -400,11 +400,14 @@
 
   
   <!-- More Project Information -->
+
   <description>
     gdv.xport ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
     Sie erleichtert den Export und Export dieses Datenformats.
   </description>
+
   <inceptionYear>2009</inceptionYear>
+
   <developers>
     <developer>
       <name>Oliver Boehm</name>
@@ -476,6 +479,15 @@
       </notifier>
     </notifiers>
   </ciManagement>
+  
+  <mailingLists>
+    <mailingList>
+      <name>gdv-xport</name>
+      <archive>https://groups.google.com/forum/#!forum/gdv-xport</archive>
+    </mailingList>
+  </mailingLists>
+  
+  
   
   <profiles>
 
