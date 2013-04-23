@@ -18,7 +18,8 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart7;
 
-import gdv.xport.annotation.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -250,9 +251,15 @@ public enum Feld220Wagnis7 {
 
     /**
      * Endalter.<br/>
-     * Eintrittsalter + Vertragslaufzeit (Aufschubzeit) (JJJ), Alter Lebenslänglich ist mit Wert 999 zu schlüsseln
+     * Eintrittsalter + Vertragslaufzeit (Aufschubzeit) (JJJ), Alter
+     * Lebenslänglich ist mit Wert 999 zu schlüsseln
      */
-    @FeldInfo(teildatensatz = 1, nr = 36, type = Zeichen.class, anzahlBytes = 3, byteAdresse = 216)
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 36,
+            type = NumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 216)
     ENDALTER,
 
     /**

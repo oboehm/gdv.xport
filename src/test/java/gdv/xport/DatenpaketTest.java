@@ -18,25 +18,39 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.*;
-import static org.junit.Assert.*;
+import static gdv.xport.feld.Bezeichner.VERSION_SATZART_0001;
+import static gdv.xport.feld.Bezeichner.VERSION_SATZART_9999;
+import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
-import gdv.xport.satz.model.*;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Nachsatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.model.Satz100;
+import gdv.xport.satz.model.Satz220;
 
 import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.net.URL;
+import java.net.UnknownHostException;
+import java.util.Date;
+import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import patterntesting.runtime.annotation.*;
+import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.annotation.SkipTestOn;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -237,13 +251,28 @@ public final class DatenpaketTest {
      * Hier wird die Import-Datei getestet, die mir Igor geschickt hat und
      * mit der es anfangs Probleme gab.
      *
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws IOException bei I/O-Problemen
      */
     @Test
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportIgor() throws IOException {
+        importResource("/igor_110120.txt");
+    }
+
+    /**
+     * Test-Import von "Bender_Leben.GDV".
+     *
+     * @throws IOException bei I/O-Problemen
+     */
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    public void testBenderLeben() throws IOException {
+        importResource("/Bender_Leben.GDV");
+    }
+
+    private void importResource(final String name) throws IOException {
         Config.setEOD("\n");
-        String content = getResourceAsString("/igor_110120.txt");
+        String content = getResourceAsString(name);
         datenpaket.importFrom(content);
         checkExportWith(content);
     }

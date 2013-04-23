@@ -15,13 +15,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 16.04.2013 by oliver (ob@oasd.de)
+ * (c)reated 23.04.2013 by oliver (ob@oasd.de)
  */
 
-package gdv.xport.satz.feld;
-
-import gdv.xport.satz.feld.sparte10.wagnisart9.Wagnisart9Tests;
-import gdv.xport.satz.feld.sparte30.Sparte30Tests;
+package gdv.xport.satz.feld.sparte10.wagnisart9;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.*;
@@ -32,11 +29,11 @@ import org.junit.runners.Suite.SuiteClasses;
  * JUnit-Tests in diesem Paket getestet werden.
  *
  * @author oliver
- * @since 0.9 (16.04.2013)
+ * @since 0.9.1 (23.04.2013)
  */
 @RunWith(Suite.class)
-@SuiteClasses({ Wagnisart9Tests.class, Sparte30Tests.class, Feld0001Test.class })
-public class FeldTests {
+@SuiteClasses({ Feld220Wagnis9Test.class })
+public class Wagnisart9Tests {
 
 }
 

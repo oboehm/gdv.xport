@@ -256,8 +256,30 @@ public enum Feld220Wagnis9 {
      * technische Witwe/Witwer %. (im Rahmen einer Gesellschafter/Gesschäftsführer-Vers.)<br/>
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 37, type = Betrag.class, anzahlBytes = 5, byteAdresse = 237)
+    @FeldInfo(teildatensatz = 1, nr = 37, type = Betrag.class, anzahlBytes = 5, byteAdresse = 227)
     TECHNISCHE_WITWEN_WITTWERRENTE_IN_PROZENT,
+
+    /**
+     * Waisenrente in Prozent (3,2 Stellen).
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 38,
+            type = Betrag.class,
+            anzahlBytes = 5,
+            byteAdresse = 232)
+    WAISENRENTE_IN_PROZENT,
+
+    /**
+     * Technische Waise in Prozent (3,2 Stellen).
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 39,
+            type = Betrag.class,
+            anzahlBytes = 5,
+            byteAdresse = 237)
+    TECHNISCHE_WAISE_IN_PROZENT,
 
     /**
      * Schlussalter des Waisen.<br/>
@@ -285,9 +307,15 @@ public enum Feld220Wagnis9 {
 
     /**
      * Endalter.<br/>
-     * Eintrittsalter + Vertragslaufzeit (Aufschubzeit) (JJJ), Alter Lebenslänglich ist mit Wert 999 zu schlüsseln
+     * Eintrittsalter + Vertragslaufzeit (Aufschubzeit) (JJJ), Alter
+     * Lebenslänglich ist mit Wert 999 zu schlüsseln.
      */
-    @FeldInfo(teildatensatz = 1, nr = 43, type = Zeichen.class, anzahlBytes = 3, byteAdresse = 246)
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 43,
+            type = NumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 246)
     ENDALTER,
 
     /**

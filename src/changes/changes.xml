@@ -19,6 +19,10 @@
 
     <release version="0.9.1-SNAPSHOT" date="2013"
              description="Unterst&#252;tzung Version 2009">
+      <action dev="oboehm" type="fix" date="23-Apr-2013" >
+        Fehlerhafte Definitionen (ENDALTER) in diversen Feld220WagnisXx-Enums korrigiert.
+        Fehlende Felder in Feld220Wagnis9 erg&#228;nzt.
+      </action>
       <action dev="oboehm" type="update" date="22-Apr-2013" >
         Beginn mit n&#228;chstem Snapshot.
       </action>
