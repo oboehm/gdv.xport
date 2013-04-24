@@ -270,6 +270,39 @@ public final class DatenpaketTest {
         importResource("/Bender_Leben.GDV");
     }
 
+    /**
+     * Test-Import von "Leben_Wagnis2_Riester.GDV".
+     *
+     * @throws IOException bei I/O-Problemen
+     */
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    public void testLebenWagnis2Riester() throws IOException {
+        importResource("/Leben_Wagnis2_Riester.GDV");
+    }
+
+    /**
+     * Test-Import von "Leben_Wagnis3_Risikoversicherung.GDV".
+     *
+     * @throws IOException bei I/O-Problemen
+     */
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    public void testLebenWagnis3Riskikoversicherung() throws IOException {
+        importResource("/Leben_Wagnis3_Risikoversicherung.GDV");
+    }
+
+    /**
+     * Test-Import von "Leben_Wagnis4_BU.GDV".
+     *
+     * @throws IOException bei I/O-Problemen
+     */
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    public void testLebenWagnis4BU() throws IOException {
+        importResource("/Leben_Wagnis4_BU.GDV");
+    }
+
     private void importResource(final String name) throws IOException {
         Config.setEOD("\n");
         String content = getResourceAsString(name);
