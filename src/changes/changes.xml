@@ -17,14 +17,11 @@
 
   <body>
 
-    <release version="0.9.1-SNAPSHOT" date="2013"
-             description="Unterst&#252;tzung Version 2009">
+    <release version="0.9.1" date="02-Mai-2013"
+             description="Bugfix-Release">
       <action dev="oboehm" type="fix" date="23-Apr-2013" >
         Fehlerhafte Definitionen (ENDALTER) in diversen Feld220WagnisXx-Enums korrigiert.
         Fehlende Felder in Feld220Wagnis9 erg&#228;nzt.
-      </action>
-      <action dev="oboehm" type="update" date="22-Apr-2013" >
-        Beginn mit n&#228;chstem Snapshot.
       </action>
     </release>
   
@@ -57,9 +54,6 @@
         SpartenspezifischerTeil-Klasse als deprecated markiert
         und SpartenspezifischerTeilTest entfernt.
       </action>
-      <action dev="oboehm" type="update" date="17-Jul-2012" >
-        Beginn mit n&#228;chstem Snapshot.
-      </action>
     </release>
 
     <release version="0.7.0" date="17-Jul-2012"
@@ -74,9 +68,6 @@
       <action dev="oboehm" type="update" date="11-Jan-2012" >
         Update auf PatternTesting 1.2 zur Test-Parallelisierung
         (ParallelSuite).
-      </action>
-      <action dev="oboehm" type="update" date="04-Okt-2011" >
-        Beginn mit n&#228;chstem Snapshot.
       </action>
     </release>
 
