@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="0.9.2-SNAPSHOT" date="2013"
+             description="Bugfix-Release">
+      <action dev="oboehm" type="update" date="Mai-2013" >
+        Beginn mit n&#228;chstem Snapshot.
+      </action>
+    </release>
+
     <release version="0.9.1" date="02-Mai-2013"
              description="Bugfix-Release">
       <action dev="oboehm" type="fix" date="23-Apr-2013" >

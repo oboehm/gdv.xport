@@ -84,22 +84,26 @@
           <td>release-Branch mit master mergen</td>
           <td>
             dazu lokal auf master-Branch gehen, mit release-Branch mergen
-            und anschlie&#223;end comitten
+            und anschlie&#223;end comitten;
           </td>
         </tr>
         <tr>
           <td>D-Day</td>
           <td>Label setzen</td>
           <td>
-            git tag gdv-xport-0.9.0 (lokal)
+            git tag gdv-xport-0.9.2 (lokal)
             <br/>
-            git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-0.9.0 (remote)
+            git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-0.9.2 (remote)
           </td>
         </tr>
         <tr>
           <td>nachher</td>
           <td>Beginn mit n&#228;chstem Snapshot</td>
-          <td>pom.xml: Version hochz&#228;hlen, "-SNAPSHOT" anh&#228;ngen</td>
+          <td>
+            auf developer-Branch gehen, mit master mergen;
+            <br/>
+          	in pom.xml Version hochz&#228;hlen, "-SNAPSHOT" anh&#228;ngen
+          </td>
         </tr>
         <tr>
           <td>nachher</td>
