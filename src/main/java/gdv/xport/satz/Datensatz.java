@@ -12,16 +12,26 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
+import static gdv.xport.feld.Bezeichner.TEILDATENSATZNUMMER;
+import static gdv.xport.feld.Bezeichner.VERMITTLER;
+import static gdv.xport.feld.Bezeichner.WAGNISART;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.satz.feld.common.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.VUNummer;
+import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.TeildatensatzNummer;
+import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzNummer;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.PushbackReader;
 import java.util.List;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * The Class Datensatz.
@@ -192,16 +202,20 @@ public class Datensatz extends Satz {
 	 * @since 0.4
 	 */
 	protected void setUpTeildatensatz(final Teildatensatz tds) {
-	    if (!tds.hasFeld(Feld1bis7.VU_NUMMER)) {
-			log.debug("initializing " + tds + "...");
-			tds.add(this.vuNummer);
-			tds.add(this.buendelungsKennzeichen);
-			tds.add(this.sparte);
-			tds.add(this.versicherungsscheinNr);
-			tds.add(this.folgeNr);
-			tds.add(this.vermittler);
-		}
+	    this.setUp(tds, Feld1bis7.VU_NUMMER, this.vuNummer);
+        this.setUp(tds, Feld1bis7.BUENDELUNGSKENNZEICHEN, this.buendelungsKennzeichen);
+        this.setUp(tds, Feld1bis7.SPARTE, this.sparte);
+        this.setUp(tds, Feld1bis7.VERSICHERUNGSSCHEINNUMMER, this.versicherungsscheinNr);
+        this.setUp(tds, Feld1bis7.FOLGENUMMER, this.folgeNr);
+        this.setUp(tds, Feld1bis7.VERMITTLER, this.vermittler);
 	}
+
+    private void setUp(final Teildatensatz tds, final Enum<?> feldX, final Feld value) {
+        if (!tds.hasFeld(feldX)) {
+            log.debug("Init " + tds + " with " + value + ".");
+            tds.add(value);
+        }
+    }
 
 	/**
 	 * Kann von Unterklassen verwendet werden, um fehlende Felder in den

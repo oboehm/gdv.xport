@@ -115,6 +115,7 @@ public abstract class Satz {
 		teildatensatz = new Teildatensatz[tdsList.size()];
 		for (int i = 0; i < tdsList.size(); i++) {
 			teildatensatz[i] = tdsList.get(i);
+			teildatensatz[i].add(this.satzart);
 		}
 	}
 
@@ -336,7 +337,6 @@ public abstract class Satz {
 	 * TODO: Eigentlich waere es sinnvoller, hier die restlichen Annotationen
 	 * auszuwerten, da der Name nur auf Konvention beruht und etwas wackelig
 	 * ist (oboehm, 1-Apr-2013).
-	 *
 	 * </p>
 	 *
 	 * @param feld gewuenschtes Feld-Element
@@ -832,7 +832,7 @@ public abstract class Satz {
 
 	/**
 	 * Hier passiert die Magie: die Annotationen der uebergebenen Enum werden
-	 * ausgelesen und in eine Liste mit den Teildatensaetzen zu packen.
+	 * ausgelesen und in eine Liste mit den Teildatensaetzen gepackt.
 	 *
 	 * @param satzart the satzart
 	 * @param felder the felder
@@ -973,7 +973,7 @@ public abstract class Satz {
 	protected static void add(final Enum<?> feldX, final Teildatensatz tds) {
 		FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
 		Feld feld = Feld.createFeld(feldX, info);
-		if (info.nr() < 8) {
+		if (info.nr() < 8) {      // FIXME: diese Abfrage ist eigentlich unnoetig
 			log.info("using default settings for " + feld);
 		} else {
 			tds.add(feld);

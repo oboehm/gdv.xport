@@ -58,7 +58,7 @@ public class Feld0001Test {
      * 1" aufgesetzt ist.
      */
     @Test
-    @Broken(why="siehe gdv.xport.satz.model.SatzX.add(Enum<?>, Teildatensatz)", till="20-Jul-2013")
+    @Broken(why="siehe gdv.xport.satz.model.SatzX.add(Enum<?>, Teildatensatz)", till="30-Jan-2014")
     public void testVersionSatzart0001() {
         Feld x = vorsatz.getTeildatensatz(1).getFeld(Bezeichner.VERSION_SATZART_0001);
         assertNotNull(x);
