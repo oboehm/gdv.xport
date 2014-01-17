@@ -20,23 +20,16 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.NAME1;
 import static gdv.xport.feld.Bezeichner.ORT;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.sparte53.Feld220;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
@@ -46,9 +39,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import patterntesting.concurrent.junit.ParallelRunner;
 
 /**
  * Test-Klasse fuer Satz.
@@ -56,7 +46,6 @@ import patterntesting.concurrent.junit.ParallelRunner;
  * @author oliver
  * @since 19.10.2009
  */
-@RunWith(ParallelRunner.class)
 public final class SatzTest extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(SatzTest.class);
