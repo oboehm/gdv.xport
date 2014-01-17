@@ -18,20 +18,12 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.VERSION_SATZART_0001;
-import static gdv.xport.feld.Bezeichner.VERSION_SATZART_9999;
-import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static gdv.xport.feld.Bezeichner.*;
+import static org.junit.Assert.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Nachsatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.*;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz220;
 
@@ -46,6 +38,7 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -185,11 +178,64 @@ public final class DatenpaketTest {
     public void testImportFromReader() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
         try {
-            datenpaket.importFrom(istream);
-            assertTrue(datenpaket.isValid());
+            checkImport(datenpaket, istream);
         } finally {
             istream.close();
         }
+    }
+    /**
+     * Tested einen Import von 2 Datenpaketen.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @IntegrationTest
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    @Ignore // nur ein erster Test - aber noch keine Loesung
+    public void testImport2Datenpakete() throws IOException {
+        InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt");
+        try {
+            checkImport(datenpaket, istream);
+            Datenpaket zwei = new Datenpaket();
+            checkImport(zwei, istream);
+            log.info(datenpaket + " / " + zwei + " imported.");
+            assertFalse(datenpaket.equals(zwei));
+        } finally {
+            istream.close();
+        }
+    }
+
+    private static void checkImport(final Datenpaket paket, final InputStream istream) throws IOException {
+        paket.importFrom(istream);
+        assertTrue(paket.isValid());
+    }
+
+    /**
+     * Tested einen Import von 2 Datenpaketen.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @IntegrationTest
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    @Ignore // nur ein erster Test - aber noch keine Loesung
+    public void testImport2DatenpaketeWithReader() throws IOException {
+        Reader fileReader = new FileReader(new File("src/test/resources/zwei_datenpakete.txt"));
+        PushbackReader reader = new PushbackReader(fileReader, 256);
+        try {
+            checkImport(datenpaket, reader);
+            Datenpaket zwei = new Datenpaket();
+            checkImport(zwei, reader);
+            log.info(datenpaket + " / " + zwei + " imported.");
+            assertFalse(datenpaket.equals(zwei));
+        } finally {
+            reader.close();
+        }
+    }
+
+    private static void checkImport(final Datenpaket paket, final PushbackReader reader) throws IOException {
+        paket.importFrom(reader);
+        assertTrue(paket.isValid());
     }
 
     /**
