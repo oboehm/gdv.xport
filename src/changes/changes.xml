@@ -19,8 +19,9 @@
 
     <release version="0.9.2-SNAPSHOT" date="2013"
              description="Bugfix-Release">
-      <action dev="oboehm" type="update" date="Mai-2013" >
-        Beginn mit n&#228;chstem Snapshot.
+      <action dev="oboehm" type="add" date="17-Jan-2014" >
+        Unterst&#252;tzung f&#252;r Sparte 140 bei der Satzart 220
+        (Dank an Frank Berger).
       </action>
     </release>
 
