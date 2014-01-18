@@ -23,9 +23,7 @@ import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 import gdv.xport.satz.model.Satz210;
 
 import java.io.IOException;
@@ -35,9 +33,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import patterntesting.concurrent.junit.ParallelRunner;
 
 /**
  * Urspruenglich war dies die Testklasse fuer die Klasse
@@ -49,7 +44,6 @@ import patterntesting.concurrent.junit.ParallelRunner;
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (28.10.2009)
  */
-@RunWith(ParallelRunner.class)
 public class VertragsspezifischerTeilTest extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(VertragsspezifischerTeilTest.class);

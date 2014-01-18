@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012 by Oli B.
+ * Copyright (c) 2014 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 11.01.2012 by Oli B. (boehm@javatux.de)
+ * (c)reated 18.01.2014 by Oli B. (oliver.boehm@gmail.com)
  */
 
-package gdv.xport;
-
-import gdv.xport.config.ConfigTests;
-import gdv.xport.demo.MyUnfallDatensatzTest;
-import gdv.xport.feld.FeldTests;
-import gdv.xport.io.IoTests;
-import gdv.xport.satz.SatzTests;
-import gdv.xport.util.UtilTests;
+package gdv.xport.io;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
@@ -31,15 +24,14 @@ import org.junit.runners.Suite.SuiteClasses;
 import patterntesting.concurrent.junit.ParallelSuite;
 
 /**
- * Die Klasse AllTests ist eine Test-Suite fuer JUnit 4, mit der alle
- * JUnit-Tests parallel getestet werden.
+ * Hiermit werden die Tests in diesem Paket parallel gestartet.
  *
- * @author oliver (boehm@javatux.de)
- * @since 0.7 (11.01.2012)
+ * @author oliver (ob@aosd.de)
+ * @since 0.9.2 (18.01.2014)
  */
 @RunWith(ParallelSuite.class)
-@SuiteClasses({ ConfigTests.class, MyUnfallDatensatzTest.class, FeldTests.class, IoTests.class,
-        SatzTests.class, UtilTests.class, BasisTest.class, DatenpaketTest.class, MainTest.class })
-public class AllTests {
+@SuiteClasses({ GDVFileSlurperTest.class, ImportExceptionTest.class })
+public class IoTests {
 
 }
+
