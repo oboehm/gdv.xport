@@ -11,6 +11,7 @@ import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
+import gdv.xport.io.ImportException;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -24,6 +25,7 @@ import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -616,7 +618,15 @@ public abstract class Satz {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public final void importFrom(final Reader reader) throws IOException {
-		importFrom(new PushbackReader(reader, 256));
+	    LineNumberReader lnr = new LineNumberReader(reader);
+		try {
+//            importFrom(new PushbackReader(lnr, 256));
+            importFrom(new PushbackReader(reader, 256));
+		} catch (IOException ioe) {
+		    throw new ImportException(lnr, "read error", ioe);
+		} catch (NumberFormatException nfe) {
+            throw new ImportException(lnr, "number expected", nfe);
+		}
 	}
 
 	/**
@@ -631,6 +641,7 @@ public abstract class Satz {
 	public void importFrom(final PushbackReader reader) throws IOException {
 		char[] cbuf = new char[257 * teildatensatz.length];
 		for (int i = 0; i < teildatensatz.length; i++) {
+//            skipNewline(reader);
 			if (!matchesNextTeildatensatz(reader)) {
 				log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
 				        + ", but Satzart or Sparte or Wagnisart or TeildatensatzNummer has changed");
@@ -638,7 +649,7 @@ public abstract class Satz {
 			}
 			importFrom(reader, cbuf, i * 257);
 			cbuf[i * 257 + 256] = '\n';
-			skipNewline(reader);
+            skipNewline(reader);
 		}
 		importFrom(new String(cbuf));
 	}
@@ -655,8 +666,13 @@ public abstract class Satz {
 	 * @since 0.5.1
 	 */
 	protected boolean matchesNextTeildatensatz(final PushbackReader reader) throws IOException {
-		int art = readSatzart(reader);
-		return art == this.getSatzart();
+		try {
+            int art = readSatzart(reader);
+            return art == this.getSatzart();
+        } catch (EOFException ex) {
+            log.info("No next teildatensatz available because of " + ex.getMessage());
+            return false;
+        }
 	}
 
 	private static void importFrom(final Reader reader, final char[] cbuf, final int i)
@@ -686,7 +702,7 @@ public abstract class Satz {
 	private static void importFrom(final Reader reader, final char[] cbuf) throws IOException {
 		if (reader.read(cbuf) == -1) {
 			String s = new String(cbuf);
-			throw new IOException("can't read " + cbuf.length + " bytes from " + reader + ", only "
+			throw new EOFException("can't read " + cbuf.length + " bytes from " + reader + ", only "
 			        + s.length() + " bytes: " + s);
 		}
 	}
@@ -702,7 +718,7 @@ public abstract class Satz {
 		reader.unread(cbuf);
 	}
 
-	/**
+    /**
 	 * Aus Performance-Gruenden stuetzt sich diese Methode nicht auf die
 	 * validate()-Methode ab.
 	 *
@@ -753,7 +769,7 @@ public abstract class Satz {
 	public final String toString() {
 		try {
 			return "Satzart " + this.satzart.getInhalt() + " ("
-			        + this.toLongString().substring(0, 60) + "...)";
+			        + StringUtils.abbreviate(this.toLongString(), 63) + ")";
 		} catch (RuntimeException shouldNeverHappen) {
 			log.error("shit happens in toString()", shouldNeverHappen);
 			return super.toString();

@@ -37,4 +37,13 @@ public class Satz200 extends SatzX {
         super(200, Feld200.values());
     }
 
+    /**
+     * Legt ein neues Satz200-Objekt fuer die uebergebene Sparte an.
+     *
+     * @param sparte Sparte (z.B. 10)
+     */
+    public Satz200(final int sparte) {
+        super(200, sparte, Feld200.values());
+    }
+
 }

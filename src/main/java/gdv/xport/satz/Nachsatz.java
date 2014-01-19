@@ -66,8 +66,9 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @param n
-     *            Anzahl der eingeschlossenen Saetze
+     * Setzt die Anzahl der Saetze.
+     *
+     * @param n Anzahl der eingeschlossenen Saetze
      */
     public void setAnzahlSaetze(final int n) {
         this.anzahlSaetze.setInhalt(n);

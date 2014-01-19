@@ -18,9 +18,7 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.VUNummer;
@@ -119,7 +117,7 @@ abstract public class AbstractSatzTest {
     protected static void checkImportExport(final Satz satz, final String input) throws IOException {
         satz.importFrom(input);
         String exported = export(satz);
-        assertEquals(input, exported);
+        assertEquals(input.trim(), exported.trim());
     }
 
 }

@@ -22,7 +22,6 @@ import static gdv.xport.feld.Bezeichner.NAME1;
 import static gdv.xport.feld.Bezeichner.ORT;
 import static org.junit.Assert.*;
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.MetaFeldInfo;
@@ -37,7 +36,7 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -49,6 +48,12 @@ import org.junit.Test;
 public final class SatzTest extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(SatzTest.class);
+    private static final String INPUT_SATZ_123
+            = "0123Hello 007                                                   "
+            + "                                                                "
+            + "                                                                "
+            + "                                                               1"
+            + "\n";
     private final Satz satz = new Datensatz(123);
 
     /**
@@ -60,17 +65,6 @@ public final class SatzTest extends AbstractSatzTest {
     @Override
     protected Satz getSatz() {
         return new Datensatz(123);
-    }
-
-   /**
-     * Damit die Assert's der Satzlaenge stimmen, muessen wir das
-     * End-of-Datensatz abschalten.
-     *
-     * @since 0.3
-     */
-    @BeforeClass
-    public static void setUpBeforeClass() {
-        Config.setEOD("");
     }
 
     /**
@@ -171,16 +165,51 @@ public final class SatzTest extends AbstractSatzTest {
     public void testImport() throws IOException {
         Satz x = new Datensatz(123);
         x.add(new AlphaNumFeld("F1", 5, 5));
-        StringBuffer sbuf = new StringBuffer(256);
-        sbuf.append("0123Hello                                                       ");
-        sbuf.append("                                                                ");
-        sbuf.append("                                                                ");
-        sbuf.append("                                                               1");
-        assertEquals(256, sbuf.length());
-        x.importFrom(sbuf.toString());
+        x.importFrom(INPUT_SATZ_123);
         assertEquals(123, x.getSatzart());
         assertEquals("Hello", x.getFeld("F1").getInhalt());
-        assertEquals(sbuf.toString().trim(), x.toLongString().trim());
+        assertEquals(INPUT_SATZ_123.trim(), x.toLongString().trim());
+    }
+
+    /**
+     * Hier probieren wir jetzt den Import ueber einen Reader.
+     *
+     * @throws IOException sollte eigenlich nicht passieren, da wir von einem
+     *             String lesen
+     */
+    @Test
+    public void testImportFromReader() throws IOException {
+        Satz x = new Datensatz(123, 7);
+        Reader reader = new StringReader(INPUT_SATZ_123);
+        try {
+            checkImport(x, reader);
+        } finally {
+            reader.close();
+        }
+    }
+
+    /**
+     * Hier probieren wir jetzt 2 Saetze ueber einen Reader einzulesen.
+     *
+     * @throws IOException sollte eigenlich nicht passieren, da wir von einem
+     *             String lesen
+     */
+    @Test
+    @Ignore // Fehler ist noch nicht behoben
+    public void testImportFromReaderTwice() throws IOException {
+        Satz x = new Datensatz(123, 7);
+        Reader reader = new StringReader(INPUT_SATZ_123 + INPUT_SATZ_123);
+        try {
+            checkImport(x, reader);
+            checkImport(x, reader);
+        } finally {
+            reader.close();
+        }
+    }
+
+    private void checkImport(final Satz x, final Reader reader) throws IOException {
+        x.importFrom(reader);
+        assertEquals(INPUT_SATZ_123.trim(), x.toLongString().trim());
     }
 
     /**

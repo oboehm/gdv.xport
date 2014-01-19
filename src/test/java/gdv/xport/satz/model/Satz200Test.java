@@ -23,10 +23,11 @@ import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld200;
 
-import java.io.IOException;
+import java.io.*;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -38,11 +39,12 @@ import org.junit.Test;
 public class Satz200Test extends AbstractDatensatzTest {
 
     private static final Log log = LogFactory.getLog(Satz200Test.class);
-    private static final String input =
-        "02009999  030      599999999990199990099992010520040105200901052" +
-        "00511  0000000001        01052004100000         EUR000000041141 " +
-        "                             0           B4LTTT                 " +
-        "  04100001052004                                   EUR1        1";
+    private static final String INPUT_SPARTE30
+            = "02009999  030      599999999990199990099992010520040105200901052"
+            + "00511  0000000001        01052004100000         EUR000000041141 "
+            + "                             0           B4LTTT                 "
+            + "  04100001052004                                   EUR1        1"
+            + "\n";
     private final Satz200 satz = new Satz200();
 
     /**
@@ -71,7 +73,7 @@ public class Satz200Test extends AbstractDatensatzTest {
      */
     @Test
     public void testImportExport() throws IOException {
-        checkImportExport(satz, input);
+        checkImportExport(satz, INPUT_SPARTE30);
     }
 
     /**
@@ -81,7 +83,7 @@ public class Satz200Test extends AbstractDatensatzTest {
      */
     @Test
     public void testImport() throws IOException {
-        satz.importFrom(input);
+        satz.importFrom(INPUT_SPARTE30);
         assertEquals(200, satz.getSatzart());
         assertEquals("9999", satz.getVuNummer());
         assertEquals(30, satz.getSparte());
@@ -90,6 +92,46 @@ public class Satz200Test extends AbstractDatensatzTest {
         assertEquals("9999009999", satz.getVermittler());
         assertEquals("2", satz.get(Feld200.INKASSOART));
         assertEquals("01052004", satz.get(Feld200.VERTRAGSBEGINN));
+    }
+
+    /**
+     * Import-Test fuer einen Reader.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImportFromReader() throws IOException {
+        Reader reader = new StringReader(INPUT_SPARTE30);
+        try {
+            checkImportFrom(reader);
+        } finally {
+            reader.close();
+        }
+    }
+
+    /**
+     * Import-Test fuer einen Reader. Dieses Mal lesen wir aber zweimal den
+     * gleichen Satz. Hintergrund ist, dass es bis 0.9.1 Probleme mit dem
+     * Reader gab, wenn mehrere Datenpakete gelesen werden sollten.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    @Ignore // Fehler ist noch nicht behoben
+    public void testImportFromReaderTwice() throws IOException {
+        Reader reader = new StringReader(INPUT_SPARTE30 + INPUT_SPARTE30 + INPUT_SPARTE30);
+        try {
+            checkImportFrom(reader);
+            checkImportFrom(reader);
+        } finally {
+            reader.close();
+        }
+    }
+
+    private void checkImportFrom(Reader reader) throws IOException {
+        Satz200 unfall = new Satz200(30);
+        unfall.importFrom(reader);
+        assertEquals(INPUT_SPARTE30.trim(), unfall.getTeildatensatz(1).toLongString().trim());
     }
 
     /**

@@ -12,18 +12,11 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
-import static gdv.xport.feld.Bezeichner.TEILDATENSATZNUMMER;
-import static gdv.xport.feld.Bezeichner.VERMITTLER;
-import static gdv.xport.feld.Bezeichner.WAGNISART;
+import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.config.Config;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.VUNummer;
-import gdv.xport.satz.feld.common.Feld1bis7;
-import gdv.xport.satz.feld.common.TeildatensatzNummer;
-import gdv.xport.satz.feld.common.WagnisartLeben;
+import gdv.xport.feld.*;
+import gdv.xport.io.ImportException;
+import gdv.xport.satz.feld.common.*;
 import gdv.xport.util.SatzNummer;
 
 import java.io.IOException;
@@ -212,7 +205,9 @@ public class Datensatz extends Satz {
 
     private void setUp(final Teildatensatz tds, final Enum<?> feldX, final Feld value) {
         if (!tds.hasFeld(feldX)) {
-            log.debug("Init " + tds + " with " + value + ".");
+            if (log.isTraceEnabled()) {
+                log.trace("Init " + tds + " with " + value + ".");
+            }
             tds.add(value);
         }
     }
@@ -411,7 +406,12 @@ public class Datensatz extends Satz {
 			throw new IOException("can't read 14 bytes (" + new String(cbuf) + ") from " + reader);
 		}
 		reader.unread(cbuf);
-		return Integer.parseInt(new String(cbuf).substring(10, 13));
+		String intro = new String(cbuf);
+		try {
+            return Integer.parseInt(intro.substring(10, 13));
+        } catch (NumberFormatException ex) {
+            throw new ImportException("cannot read sparte from first 14 bytes (\"" + intro + "\")");
+        }
 	}
 
 	/**

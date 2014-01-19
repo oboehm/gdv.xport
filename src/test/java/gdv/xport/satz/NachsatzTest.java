@@ -23,12 +23,11 @@ package gdv.xport.satz;
 import static org.junit.Assert.assertEquals;
 import gdv.xport.config.Config;
 
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * JUnit-Test fuer Nachsatz.
@@ -40,6 +39,21 @@ public class NachsatzTest extends AbstractSatzTest {
 
     private static final Log log = LogFactory.getLog(NachsatzTest.class);
     private final Nachsatz nachsatz = new Nachsatz();
+    /** aus musterdatei_041222.txt */
+    private static String INPUT
+            = "99990000000162999900999900000000048060000000000000000+0000000000"
+            + "0000+00000000000000+00000000000000+                             "
+            + "                                                                "
+            + "                                                       Z0ZAG999 "
+            + "\n";
+
+    /**
+     * Einige Tests erwarten das "\n" am Ende des Nachsatzes.
+     */
+    @Before
+    public void setUpEOD() {
+        Config.setEOD("\n");
+    }
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -94,29 +108,57 @@ public class NachsatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Statt den Leerzeichen am Ende des Nachsatzes ist auch eine freie
-     * Belegung moeglich. Diese soll natuerlich beim Import erhalten bleiben.
-     * Der Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
+     * Statt den Leerzeichen am Ende des Nachsatzes ist auch eine freie Belegung
+     * moeglich. Diese soll natuerlich beim Import erhalten bleiben. Der
+     * Test-Input dazu stammt von der musterdatei_041222.txt von gdv-online.
      *
-     * @throws IOException
-     *             sollte eigentlich nicht vorkommen, da wir von einem String
-     *             importieren
+     * @throws IOException sollte eigentlich nicht vorkommen, da wir von einem
+     *             String importieren
      * @since 0.5.0
      */
     @Test
     public void testImport() throws IOException {
-        String input = "99990000000162999900999900000000048060000000000000000+0000000000"
-            + "0000+00000000000000+00000000000000+                             "
-            + "                                                                "
-            + "                                                       Z0ZAG999 "
-            + "\n";
-        assertEquals(257, input.length());
-        nachsatz.importFrom(input);
-        StringWriter swriter = new StringWriter(input.length());
-        Config.setEOD("\n");
+        assertEquals(257, INPUT.length());
+        nachsatz.importFrom(INPUT);
+        checkImport();
+    }
+
+    /**
+     * Hier testen wir den Import von einem Reader.
+     *
+     * @throws IOException sollte eigentlich nicht vorkommen, da wir von einem
+     *             String importieren
+     * @since 0.9.2
+     */
+    @Test
+    public void testImportFromReader() throws IOException {
+        Reader reader = new StringReader(INPUT);
+        nachsatz.importFrom(reader);
+        checkImport();
+    }
+
+    /**
+     * Der Import des Nachsatzes sollte auch mehrfach moeglich sein.
+     *
+     * @throws IOException sollte eigentlich nicht vorkommen, da wir von einem
+     *             String importieren
+     * @since 0.9.2
+     */
+    @Test
+    @Ignore // Fehler ist noch nicht behoben
+    public void testImportFromReaderTwice() throws IOException {
+        Reader reader = new StringReader(INPUT + INPUT);
+        nachsatz.importFrom(reader);
+        checkImport();
+        nachsatz.importFrom(reader);
+        checkImport();
+    }
+
+    private void checkImport() throws IOException {
+        StringWriter swriter = new StringWriter(INPUT.length());
         nachsatz.export(swriter);
         swriter.close();
-        assertEquals(input, swriter.toString());
+        assertEquals(INPUT, swriter.toString());
     }
 
 }
