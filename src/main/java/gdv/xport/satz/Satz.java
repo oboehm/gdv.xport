@@ -12,6 +12,7 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.io.ImportException;
+import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -618,10 +619,12 @@ public abstract class Satz {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public final void importFrom(final Reader reader) throws IOException {
-	    LineNumberReader lnr = new LineNumberReader(reader);
+//	    LineNumberReader lnr = new LineNumberReader(reader);
+	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(reader, 256);
 		try {
 //            importFrom(new PushbackReader(lnr, 256));
-            importFrom(new PushbackReader(reader, 256));
+//            importFrom(new PushbackReader(reader, 256));
+            importFrom(lnr);
 		} catch (IOException ioe) {
 		    throw new ImportException(lnr, "read error", ioe);
 		} catch (NumberFormatException nfe) {
@@ -638,7 +641,7 @@ public abstract class Satz {
 	 * @param reader the reader
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public void importFrom(final PushbackReader reader) throws IOException {
+	public void importFrom(final PushbackLineNumberReader reader) throws IOException {
 		char[] cbuf = new char[257 * teildatensatz.length];
 		for (int i = 0; i < teildatensatz.length; i++) {
 //            skipNewline(reader);
@@ -649,7 +652,8 @@ public abstract class Satz {
 			}
 			importFrom(reader, cbuf, i * 257);
 			cbuf[i * 257 + 256] = '\n';
-            skipNewline(reader);
+//            skipNewline(reader);
+			reader.skipNewline();
 		}
 		importFrom(new String(cbuf));
 	}
@@ -707,16 +711,16 @@ public abstract class Satz {
 		}
 	}
 
-	private static void skipNewline(final PushbackReader reader) throws IOException {
-		char[] cbuf = new char[1];
-		do {
-			if (reader.read(cbuf) == -1) {
-				log.info("end of file detected");
-				return;
-			}
-		} while ((cbuf[0] == '\n') || (cbuf[0] == '\r'));
-		reader.unread(cbuf);
-	}
+//	private static void skipNewline(final PushbackReader reader) throws IOException {
+//		char[] cbuf = new char[1];
+//		do {
+//			if (reader.read(cbuf) == -1) {
+//				log.info("end of file detected");
+//				return;
+//			}
+//		} while ((cbuf[0] == '\n') || (cbuf[0] == '\r'));
+//		reader.unread(cbuf);
+//	}
 
     /**
 	 * Aus Performance-Gruenden stuetzt sich diese Methode nicht auf die

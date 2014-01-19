@@ -19,7 +19,6 @@
 package gdv.xport.io;
 
 import java.io.IOException;
-import java.io.LineNumberReader;
 
 /**
  * Falls mal beim Import was schiefgeht.
@@ -48,7 +47,7 @@ public final class ImportException extends IOException {
      * @param message die Meldung, die mit der Exception ausgegeben wird
      * @param cause die urspruengliche Exception
      */
-    public ImportException(final LineNumberReader lnr, final String message, final Throwable cause) {
+    public ImportException(final PushbackLineNumberReader lnr, final String message, final Throwable cause) {
         super("line " + lnr.getLineNumber() + ": " + message, cause);
     }
 

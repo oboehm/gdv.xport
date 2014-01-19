@@ -17,6 +17,7 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.io.ImportException;
+import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.*;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
@@ -208,10 +209,12 @@ public final class Datenpaket {
 	 * @throws IOException falls was schiefgelaufen ist
 	 */
 	public void importFrom(final Reader reader) throws IOException {
-	    LineNumberReader lnr = new LineNumberReader(reader);
+//	    LineNumberReader lnr = new LineNumberReader(reader);
+	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(reader, 256);
 		try {
-            importFrom(new PushbackReader(reader, 256));
+//            importFrom(new PushbackReader(reader, 256));
 //            importFrom(new PushbackReader(lnr, 256));
+		    importFrom(lnr);
         } catch (IOException ioe) {
             throw new ImportException(lnr, "read error", ioe);
         } catch (NumberFormatException nfe) {
@@ -226,7 +229,7 @@ public final class Datenpaket {
 	 * @param reader PushbackReader mit einem Puffer von mind. 14 Zeichen
 	 * @throws IOException falls was schief gelaufen ist
 	 */
-	public void importFrom(final PushbackReader reader) throws IOException {
+	public void importFrom(final PushbackLineNumberReader reader) throws IOException {
 		this.vorsatz.importFrom(reader);
 		while (true) {
 			int satzart = Satz.readSatzart(reader);
