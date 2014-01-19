@@ -19,14 +19,21 @@
 package gdv.xport.io;
 
 import java.io.*;
+import java.nio.CharBuffer;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
  * Dies ist ein {@link PushbackReader}, der um Eigenschaften des.
- *
  * {@link LineNumberReader}s angereichert wurde.
+ * <p>
+ * Der Einfachhalt wegen wird zum Zaehlen nur das Newline-Zeichen (\n)
+ * herangezogen.
+ * </p>
+ *
+ * @see PushbackReader
+ * @see LineNumberReader
  * @author oliver (ob@aosd.de)
  * @since 0.9.2 (19.01.2014)
  */
@@ -66,6 +73,87 @@ public class PushbackLineNumberReader extends PushbackReader {
         return ch;
     }
 
+    /* (non-Javadoc)
+     * @see java.io.Reader#read(char[])
+     */
+    @Override
+    public int read(char[] cbuf) throws IOException {
+        return this.read(cbuf, 0, cbuf.length);
+    }
+
+    /* (non-Javadoc)
+     * @see java.io.Reader#read(java.nio.CharBuffer)
+     */
+    @Override
+    public int read(CharBuffer target) throws IOException {
+        int ret = super.read(target);
+        countLineNumber(target.array());
+        return ret;
+    }
+
+    private void countLineNumber(char[] cbuf) {
+        for (int i = 0; i < cbuf.length; i++) {
+            if (cbuf[i] == '\n') {
+                this.lineNumber++;
+            }
+        }
+    }
+
+    /* (non-Javadoc)
+     * @see java.io.PushbackReader#read(char[], int, int)
+     */
+    @Override
+    public int read(char[] cbuf, int off, int len) throws IOException {
+        int ret = super.read(cbuf, off, len);
+        for (int i = off; i < off + len; i++) {
+            if (cbuf[i] == '\n') {
+                this.lineNumber++;
+            }
+        }
+        return ret;
+    }
+
+    /* (non-Javadoc)
+     * @see java.io.PushbackReader#reset()
+     */
+    @Override
+    public void reset() throws IOException {
+        super.reset();
+        this.lineNumber = 0;
+    }
+
+    /* (non-Javadoc)
+     * @see java.io.PushbackReader#unread(char[], int, int)
+     */
+    @Override
+    public void unread(char[] cbuf, int off, int len) throws IOException {
+        for (int i = off; i < off + len; i++) {
+            if (cbuf[i] == '\n') {
+                this.lineNumber--;
+            }
+        }
+        super.unread(cbuf, off, len);
+    }
+
+    /* (non-Javadoc)
+     * @see java.io.PushbackReader#unread(char[])
+     */
+    @Override
+    public void unread(char[] cbuf) throws IOException {
+        this.unread(cbuf, 0, cbuf.length);
+    }
+
+    /* (non-Javadoc)
+     * @see java.io.PushbackReader#unread(int)
+     */
+    @Override
+    public void unread(int c) throws IOException {
+        if (c == '\n') {
+            this.lineNumber--;
+        }
+        super.unread(c);
+    }
+
     /**
      * Gets the line number.
      *
@@ -90,6 +178,14 @@ public class PushbackLineNumberReader extends PushbackReader {
             }
         } while ((cbuf[0] == '\n') || (cbuf[0] == '\r'));
         this.unread(cbuf);
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "line " + this.lineNumber;
     }
 
 }

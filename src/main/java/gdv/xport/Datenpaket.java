@@ -209,11 +209,8 @@ public final class Datenpaket {
 	 * @throws IOException falls was schiefgelaufen ist
 	 */
 	public void importFrom(final Reader reader) throws IOException {
-//	    LineNumberReader lnr = new LineNumberReader(reader);
 	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(reader, 256);
 		try {
-//            importFrom(new PushbackReader(reader, 256));
-//            importFrom(new PushbackReader(lnr, 256));
 		    importFrom(lnr);
         } catch (IOException ioe) {
             throw new ImportException(lnr, "read error", ioe);
