@@ -36,7 +36,6 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -195,7 +194,7 @@ public final class SatzTest extends AbstractSatzTest {
      *             String lesen
      */
     @Test
-    @Ignore // Fehler ist noch nicht behoben
+    //@Ignore // Fehler ist noch nicht behoben
     public void testImportFromReaderTwice() throws IOException {
         Satz x = new Datensatz(123, 7);
         Reader reader = new StringReader(INPUT_SATZ_123 + INPUT_SATZ_123);

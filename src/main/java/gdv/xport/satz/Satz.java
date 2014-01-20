@@ -641,7 +641,7 @@ public abstract class Satz {
 	public void importFrom(final PushbackLineNumberReader reader) throws IOException {
 		char[] cbuf = new char[257 * teildatensatz.length];
 		for (int i = 0; i < teildatensatz.length; i++) {
-//            reader.skipNewline();
+            reader.skipNewline();
 			if (!matchesNextTeildatensatz(reader)) {
 				log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
 				        + ", but Satzart or Sparte or Wagnisart or TeildatensatzNummer has changed");
@@ -649,7 +649,7 @@ public abstract class Satz {
 			}
 			importFrom(reader, cbuf, i * 257);
 			cbuf[i * 257 + 256] = '\n';
-			reader.skipNewline();
+//			reader.skipNewline();
 		}
 		importFrom(new String(cbuf));
 	}
@@ -665,7 +665,7 @@ public abstract class Satz {
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.5.1
 	 */
-	protected boolean matchesNextTeildatensatz(final PushbackReader reader) throws IOException {
+	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader) throws IOException {
 		try {
             int art = readSatzart(reader);
             return art == this.getSatzart();
@@ -692,7 +692,8 @@ public abstract class Satz {
 	 * @return Satzart
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static int readSatzart(final PushbackReader reader) throws IOException {
+	public static int readSatzart(final PushbackLineNumberReader reader) throws IOException {
+	    reader.skipNewline();
 		char[] cbuf = new char[4];
 		importFrom(reader, cbuf);
 		reader.unread(cbuf);

@@ -16,6 +16,7 @@ import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
+import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.*;
 import gdv.xport.util.SatzNummer;
 
@@ -453,10 +454,10 @@ public class Datensatz extends Satz {
 	 * @return true (Default-Implementierung)
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.5.1
-	 * @see Satz#matchesNextTeildatensatz(PushbackReader)
+	 * @see Satz#matchesNextTeildatensatz(PushbackLineNumberReader)
 	 */
 	@Override
-	protected boolean matchesNextTeildatensatz(final PushbackReader reader) throws IOException {
+	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader) throws IOException {
 		if (super.matchesNextTeildatensatz(reader)) {
 			int sparteRead = readSparte(reader);
 			return sparteRead == this.getSparte();

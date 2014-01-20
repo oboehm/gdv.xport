@@ -27,7 +27,6 @@ import java.io.*;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -117,7 +116,6 @@ public class Satz200Test extends AbstractDatensatzTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    @Ignore // Fehler ist noch nicht behoben
     public void testImportFromReaderTwice() throws IOException {
         Reader reader = new StringReader(INPUT_SPARTE30 + INPUT_SPARTE30 + INPUT_SPARTE30);
         try {
