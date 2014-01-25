@@ -12,12 +12,20 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
+import static gdv.xport.feld.Bezeichner.TEILDATENSATZNUMMER;
+import static gdv.xport.feld.Bezeichner.VERMITTLER;
+import static gdv.xport.feld.Bezeichner.WAGNISART;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.VUNummer;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.satz.feld.common.*;
+import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.TeildatensatzNummer;
+import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzNummer;
 
 import java.io.IOException;
@@ -459,8 +467,12 @@ public class Datensatz extends Satz {
 	@Override
 	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader) throws IOException {
 		if (super.matchesNextTeildatensatz(reader)) {
-			int sparteRead = readSparte(reader);
-			return sparteRead == this.getSparte();
+		    if (this.hasSparte()) {
+    			int sparteRead = readSparte(reader);
+    			return sparteRead == this.getSparte();
+		    } else {
+		        return true;
+		    }
 		}
 		return false;
 	}
