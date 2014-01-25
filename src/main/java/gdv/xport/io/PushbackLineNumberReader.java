@@ -18,11 +18,11 @@
 
 package gdv.xport.io;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.io.PushbackReader;
+import java.io.Reader;
 import java.nio.CharBuffer;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * Dies ist ein {@link PushbackReader}, der um Eigenschaften des.
@@ -39,7 +39,6 @@ import org.apache.commons.logging.LogFactory;
  */
 public class PushbackLineNumberReader extends PushbackReader {
 
-    private static final Log log = LogFactory.getLog(PushbackLineNumberReader.class);
     private int lineNumber = 0;
 
     /**
@@ -113,6 +112,24 @@ public class PushbackLineNumberReader extends PushbackReader {
         return ret;
     }
 
+    /**
+     * Read line.
+     *
+     * @return the string
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public String readLine() throws IOException {
+        char[] buf = new char[257];
+        for (int i = 0; i < 257; i++) {
+            int ch = this.read();
+            if ((ch == -1) || (ch == '\n') || (ch == '\r')) {
+                break;
+            }
+            buf[i] = (char) ch;
+        }
+        return new String(buf);
+    }
+
     /* (non-Javadoc)
      * @see java.io.PushbackReader#reset()
      */
@@ -170,14 +187,44 @@ public class PushbackLineNumberReader extends PushbackReader {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void skipNewline() throws IOException {
+        skip('\n', '\r');
+    }
+
+    /**
+     * Wenn das naechste Zeichen in Leerzeichen oder Zeilenende ist, wird es
+     * uebersprungen. Ansonsten wird es wieder in den Eingabepuffer
+     * zurueckgestellt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public void skipWhitespace() throws IOException {
+        skip(' ', '\n', '\r', '\t');
+    }
+
+    /**
+     * If the next characters in the input stream is one of the given
+     * characters these characters will be skipped.
+     *
+     * @param chars the chars
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public void skip(final char... chars) throws IOException {
         char[] cbuf = new char[1];
-        do {
-            if (this.read(cbuf) == -1) {
-                log.info("end of file detected");
-                return;
+        while (this.read(cbuf) != -1) {
+            if (!isInArray(cbuf[0], chars)) {
+                this.unread(cbuf);
+                break;
             }
-        } while ((cbuf[0] == '\n') || (cbuf[0] == '\r'));
-        this.unread(cbuf);
+        }
+    }
+
+    private boolean isInArray(char ch, final char[] chars) {
+        for (int i = 0; i < chars.length; i++) {
+            if (ch == chars[i]) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /* (non-Javadoc)

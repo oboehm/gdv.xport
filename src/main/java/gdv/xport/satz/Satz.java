@@ -697,7 +697,7 @@ public abstract class Satz {
 		char[] cbuf = new char[4];
 		importFrom(reader, cbuf);
 		reader.unread(cbuf);
-		return Integer.parseInt(new String(cbuf));
+        return Integer.parseInt(new String(cbuf));
 	}
 
 	private static void importFrom(final Reader reader, final char[] cbuf) throws IOException {
