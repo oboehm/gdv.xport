@@ -20,6 +20,7 @@ package gdv.xport.satz.model;
 
 import static gdv.xport.feld.Bezeichner.ZUSAETZLICHE_SATZKENNUNG;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
@@ -169,6 +170,24 @@ public class Satz220Test extends AbstractDatensatzTest {
         assertEquals(1, satzart.getByteAdresse());
         Feld produktkennung = teil2.getFeld(Satz220Teil2.PRODUKTKENNUNG);
         assertEquals(43, produktkennung.getByteAdresse());
+    }
+
+    /**
+     * Bei Tests in DatenpaketTest hat dieser Satz hier aus "igor_110120.txt"
+     * Probleme bereitet, da er "invalid" war. Letzendlich war es aber nur ein
+     * Copy&Paste-Fehler des Datensatzes.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testIsValid() throws IOException {
+        String input = "02201111  0531068000901829702001109-60013 0908200600000000000000"
+                + "00x   7200000469000000000000000000000000001050000000000000150000"
+                + "000469                                                          "
+                + "                                                                ";
+        Satz220 sparte53 = new Satz220(53);
+        sparte53.importFrom(input);
+        assertTrue(sparte53.isValid());
     }
 
 }

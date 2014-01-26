@@ -223,7 +223,7 @@ public final class Datenpaket {
         } catch (IOException ioe) {
             throw new ImportException(lnr, "read error", ioe);
         } catch (NumberFormatException nfe) {
-            throw new ImportException(lnr, "number expected, but found: " + lnr.readLine(), nfe);
+            throw new ImportException(lnr, "number expected, but found: \"" + lnr.readLine() + '"', nfe);
         }
 	}
 

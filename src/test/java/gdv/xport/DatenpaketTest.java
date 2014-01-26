@@ -226,7 +226,6 @@ public final class DatenpaketTest {
     @IntegrationTest
     @Test
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
-    @Ignore // nur ein erster Test - aber noch keine Loesung
     public void testImport2DatenpaketeWithReader() throws IOException {
         Reader reader = new FileReader(new File("src/test/resources/zwei_datenpakete.txt"));
         try {
