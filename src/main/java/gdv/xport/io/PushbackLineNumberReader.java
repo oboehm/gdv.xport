@@ -120,14 +120,16 @@ public class PushbackLineNumberReader extends PushbackReader {
      */
     public String readLine() throws IOException {
         char[] buf = new char[257];
-        for (int i = 0; i < 257; i++) {
+        int len = 257;
+        for (int i = 0; i < len; i++) {
             int ch = this.read();
-            if ((ch == -1) || (ch == '\n') || (ch == '\r')) {
+            if ((ch == -1) || (ch == '\n') || (ch == '\r') || (ch == 0)) {
+                len = i;
                 break;
             }
             buf[i] = (char) ch;
         }
-        return new String(buf);
+        return new String(buf).substring(0, len);
     }
 
     /* (non-Javadoc)

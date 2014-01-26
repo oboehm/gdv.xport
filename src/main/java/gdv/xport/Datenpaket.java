@@ -21,6 +21,7 @@ import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
+import gdv.xport.io.RecyclingInputStreamReader;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
@@ -208,7 +209,7 @@ public final class Datenpaket {
 	 * @throws IOException falls es Fehler beim Lesen gibt
 	 */
 	public void importFrom(final InputStream istream) throws IOException {
-		Reader reader = new InputStreamReader(istream, Config.DEFAULT_ENCODING);
+        Reader reader = new RecyclingInputStreamReader(istream, Config.DEFAULT_ENCODING);
 		importFrom(reader);
 	}
 

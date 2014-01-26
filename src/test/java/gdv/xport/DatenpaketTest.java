@@ -46,7 +46,6 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -199,7 +198,7 @@ public final class DatenpaketTest {
     @IntegrationTest
     @Test
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
-    @Ignore // nur ein erster Test - aber noch keine Loesung
+    //@Ignore // nur ein erster Test - aber noch keine Loesung
     public void testImport2Datenpakete() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt");
         try {
@@ -301,7 +300,7 @@ public final class DatenpaketTest {
 
     /**
      * Hier wird die Import-Datei getestet, die mir Igor geschickt hat und
-     * mit der es anfangs Probleme gab.
+     * mit dem es anfangs Probleme gab.
      *
      * @throws IOException bei I/O-Problemen
      */
@@ -309,6 +308,25 @@ public final class DatenpaketTest {
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportIgor() throws IOException {
         importResource("/igor_110120.txt");
+    }
+
+    /**
+     * Hier wird die Import-Datei getestet, die mir Igor geschickt hat und
+     * mit dem es anfangs Probleme gab. Dieses Mal wird aber die Datei als
+     * Stream eingelesen.
+     *
+     * @throws IOException bei I/O-Problemen
+     */
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    public void testImportIgorAsStream() throws IOException {
+        InputStream istream = DatenpaketTest.class.getResourceAsStream("/igor_110120.txt");
+        try {
+            datenpaket.importFrom(istream);
+            assertTrue(datenpaket.validate().toString(), datenpaket.isValid());
+        } finally {
+            istream.close();
+        }
     }
 
     /**

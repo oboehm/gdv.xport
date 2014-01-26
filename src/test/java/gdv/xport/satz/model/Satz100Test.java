@@ -113,7 +113,26 @@ public class Satz100Test extends AbstractDatensatzTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testImport50() throws IOException {
+    public void testImportReader() throws IOException {
+        Reader reader = new StringReader(INPUT_050);
+        try {
+            satz.importFrom(reader);
+            assertEquals(50, satz.getSparte());
+            int ch = reader.read();
+            assertEquals(-1, ch);
+        } finally {
+            reader.close();
+        }
+    }
+
+    /**
+     * Hier nehmen wir zum Testen einen 100er-Satz aus "igor_110120.txt", der
+     * beim Testen mehrerer Datenpakete Probleme bereitet hat.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImportStream() throws IOException {
         Reader reader = new StringReader(INPUT_050);
         try {
             satz.importFrom(reader);

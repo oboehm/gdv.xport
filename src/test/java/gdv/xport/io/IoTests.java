@@ -30,7 +30,7 @@ import patterntesting.concurrent.junit.ParallelSuite;
  * @since 0.9.2 (18.01.2014)
  */
 @RunWith(ParallelSuite.class)
-@SuiteClasses({ GDVFileSlurperTest.class, ImportExceptionTest.class })
+@SuiteClasses({ ImportExceptionTest.class })
 public class IoTests {
 
 }
