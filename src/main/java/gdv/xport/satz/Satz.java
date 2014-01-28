@@ -693,11 +693,12 @@ public abstract class Satz {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static int readSatzart(final PushbackLineNumberReader reader) throws IOException {
-	    reader.skipNewline();
+//	    reader.skipNewline();
+        reader.skipWhitespace();
 		char[] cbuf = new char[4];
 		importFrom(reader, cbuf);
 		reader.unread(cbuf);
-		return Integer.parseInt(new String(cbuf));
+        return Integer.parseInt(new String(cbuf));
 	}
 
 	private static void importFrom(final Reader reader, final char[] cbuf) throws IOException {

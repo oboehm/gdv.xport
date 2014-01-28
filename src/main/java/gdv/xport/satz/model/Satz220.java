@@ -23,7 +23,9 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.MetaFeldInfo;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Diese Klasse repraesentiert die Satzart 220. Es handelt es sich dabei um eine
@@ -93,6 +95,7 @@ public class Satz220 extends SpartensatzX {
      * @throws IOException falls der String zu kurz ist
      */
     @Override
+    // TODO: IOException cannot happen here - replace it by IllegalArgumentException (26-Jan-2014, oboehm)
     public void importFrom(final String input) throws IOException {
         switch (this.getSparte()) { // NOPMD by oliver on 20.11.10 18:54
             case 30:

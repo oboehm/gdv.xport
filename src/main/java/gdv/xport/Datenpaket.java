@@ -12,16 +12,25 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.ABSENDER;
+import static gdv.xport.feld.Bezeichner.ADRESSAT;
+import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_BIS;
+import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_VOM;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.satz.*;
+import gdv.xport.io.RecyclingInputStreamReader;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Nachsatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
-import gdv.xport.util.*;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzNummer;
+import gdv.xport.util.URLReader;
 
 import java.io.*;
 import java.net.URL;
@@ -200,7 +209,7 @@ public final class Datenpaket {
 	 * @throws IOException falls es Fehler beim Lesen gibt
 	 */
 	public void importFrom(final InputStream istream) throws IOException {
-		Reader reader = new InputStreamReader(istream, Config.DEFAULT_ENCODING);
+        Reader reader = new RecyclingInputStreamReader(istream, Config.DEFAULT_ENCODING);
 		importFrom(reader);
 	}
 
@@ -215,7 +224,7 @@ public final class Datenpaket {
         } catch (IOException ioe) {
             throw new ImportException(lnr, "read error", ioe);
         } catch (NumberFormatException nfe) {
-            throw new ImportException(lnr, "number expected", nfe);
+            throw new ImportException(lnr, "number expected, but found: \"" + lnr.readLine() + '"', nfe);
         }
 	}
 

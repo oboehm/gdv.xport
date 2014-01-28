@@ -23,11 +23,15 @@ package gdv.xport.satz;
 import static org.junit.Assert.assertEquals;
 import gdv.xport.config.Config;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * JUnit-Test fuer Nachsatz.
@@ -145,7 +149,6 @@ public class NachsatzTest extends AbstractSatzTest {
      * @since 0.9.2
      */
     @Test
-    @Ignore // Fehler ist noch nicht behoben
     public void testImportFromReaderTwice() throws IOException {
         Reader reader = new StringReader(INPUT + INPUT);
         nachsatz.importFrom(reader);
