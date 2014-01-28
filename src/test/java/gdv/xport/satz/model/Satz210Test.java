@@ -132,7 +132,7 @@ public final class Satz210Test extends AbstractDatensatzTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testImportExportUnsupportet() throws IOException {
+    public void testImportExportUnsupported() throws IOException {
         String input = "02109999 1130      599999999860199990099991000000000000000000000"
             + "000FELS                                                         "
             + "             EUR000000000000000000000000000000000000000000011985"
