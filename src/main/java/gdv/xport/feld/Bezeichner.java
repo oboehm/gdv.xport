@@ -295,6 +295,7 @@ public final class Bezeichner {
     public static final String LEERSTELLEN2 = "Leerstellen";
     public static final String LEERSTELLEN3 = "Leerstellen";
     public static final String LEERSTELLEN4 = "Leerstellen";
+    public static final String LEERSTELLEN5 = "Leerstellen";
     public static final String LETZTE_ERHOEHUNG = "letzte Erhoehung";
     public static final String LFD_NUMMER = "Lfd. Nummer";
     public static final String LFD_NUMMER1 = "Lfd. Nummer";
@@ -375,6 +376,7 @@ public final class Bezeichner {
     public static final String SATZNUMMERWIEDERHOLUNG2 = "Satznummerwiederholung2";
     public static final String SATZNUMMERWIEDERHOLUNG3 = "Satznummerwiederholung3";
     public static final String SATZNUMMERWIEDERHOLUNG4 = "Satznummerwiederholung4";
+    public static final String SATZNUMMERWIEDERHOLUNG9 = "Satznummerwiederholung9";
     public static final String SCHADENBEARBEITUNGSKOSTEN = "Schadenbearbeitungskosten";
     public static final String SCHLUESSEL_SICHERUNGSEINRICHTUNG = "Schluessel Sicherungseinrichtung";
     public static final String SCHUTZBRIEF_VERKEHRSSERVICE = "Schutzbrief /Verkehrsservice";

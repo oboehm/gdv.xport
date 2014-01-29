@@ -589,8 +589,8 @@ public enum Feld210 {
 
     /**
      * Versicherungsschein-Nummer.<br/>
-     * Versicherungsschein-Nummer, rechtsbündig, mit Leerstellen linksbündig
-     * auffüllen ohne Sonderzeichen
+     * Versicherungsschein-Nummer, rechtsbuendig, mit Leerstellen linksbuendig
+     * auffuellen ohne Sonderzeichen
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -598,7 +598,7 @@ public enum Feld210 {
             type = AlphaNumFeld.class,
             anzahlBytes = 17,
             byteAdresse = 14)
-    VERSICHERUNGSSCHEIN_NUMMER,
+    VERSICHERUNGSSCHEINNUMMER,
 
     /**
      * Folgenummer.<br/>

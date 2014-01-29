@@ -18,19 +18,33 @@
 
 package gdv.xport;
 
-import gdv.xport.util.*;
+import gdv.xport.util.AbstractFormatter;
+import gdv.xport.util.HtmlFormatter;
+import gdv.xport.util.NullFormatter;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.XmlFormatter;
 
-import java.io.*;
-import java.net.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import javax.xml.stream.XMLStreamException;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.cli.*;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.GnuParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.output.NullWriter;
+import org.apache.log4j.PropertyConfigurator;
 
 /**
  * The Class Main.
@@ -54,6 +68,7 @@ public final class Main {
      *             falls bei der XML-Generierung was schief gelaufen ist.
      */
     public static void main(final String[] args) throws IOException, XMLStreamException {
+        initLogging();
         OutputStream ostream = System.out;
         Options options = createOptions();
         CommandLineParser parser = new GnuParser();
@@ -169,9 +184,22 @@ public final class Main {
      *            the violations
      */
     private static void printViolations(final List<ConstraintViolation> violations) {
-        for (ConstraintViolation violation : violations) {
-            System.err.println(violation.getValidatedObject() + ": " + violation.getMessage());
+        if (violations.isEmpty()) {
+            System.out.println("keine Datensatz-Verletzung gefunden");
+        } else {
+            for (ConstraintViolation violation : violations) {
+                System.err.println(violation.getValidatedObject() + ": " + violation.getMessage());
+            }
         }
+    }
+
+    /**
+     * Hier sorgen wir dafuer, dass nicht mehr auf der Console, sondern in eine
+     * Datei geloggt wird.
+     */
+    private static void initLogging() {
+        URL logURL = Main.class.getResource("main-log4j.properties");
+        PropertyConfigurator.configure(logURL);
     }
 
     /**

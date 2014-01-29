@@ -66,7 +66,7 @@ public enum Feld220Wagnis7Bezugsrechte {
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.6/6, wenn mehrere Bezugsrechte vorhanden)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
-    LFD_NUMMER_DER_SATZART,
+    LFD_NUMMER_SATZART,
 
     /**
      * Bezugsberechtigt im Erlebensfall.<br/>

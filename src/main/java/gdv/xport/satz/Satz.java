@@ -16,9 +16,25 @@ import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
-import java.io.*;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -981,7 +997,7 @@ public abstract class Satz {
 		FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
 		Feld feld = Feld.createFeld(feldX, info);
 		if (info.nr() < 8) {      // FIXME: diese Abfrage ist eigentlich unnoetig
-			log.info("using default settings for " + feld);
+			log.debug("using default settings for " + feld);
 		} else {
 			tds.add(feld);
 			if (isSatznummer(feldX)) {

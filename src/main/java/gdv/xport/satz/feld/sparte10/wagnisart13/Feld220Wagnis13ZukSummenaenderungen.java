@@ -18,8 +18,13 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart13;
 
-import gdv.xport.annotation.*;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -55,18 +60,24 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
     WAGNISART,
 
     /**
-     * Lfd Nummer zur Wagnisart.<br/>
+     * Laufende Nummer zur Wagnisart.<br/>
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd. Nummer der Satzart.<br/>
+     * Laufende Nummer der Satzart.<br/>
      * Lfd. Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
-     * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6, wenn mehrere Bezugsrechte vorhanden)
+     * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6,
+     * wenn mehrere Bezugsrechte vorhanden)
      */
-    @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
-    LFD_NUMMER_DER_SATZART,
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 11,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 62)
+    LFD_NUMMER_SATZART,
 
     /**
      * Anfängliche Todesfall VS in Währungseinheiten.<br/>
