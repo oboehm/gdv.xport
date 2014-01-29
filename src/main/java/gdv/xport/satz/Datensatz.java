@@ -507,8 +507,7 @@ public class Datensatz extends Satz {
 			try {
 				return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
 			} catch (NumberFormatException e) {
-                log.warn("Not allowed value for teildatensatzNummer found. Type Number is required but was \""
-                        + teildatenSatz + "\".", e);
+			    log.warn("Value \"" + teildatenSatz + "\" for TeildatensatzNummer found, but Number expected.");
 				return TeildatensatzNummer.NULL;
 			}
 		}
