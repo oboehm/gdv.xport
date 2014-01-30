@@ -18,10 +18,7 @@
 
 package gdv.xport.io;
 
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.io.PushbackReader;
-import java.io.Reader;
+import java.io.*;
 import java.nio.CharBuffer;
 
 /**
@@ -76,7 +73,7 @@ public class PushbackLineNumberReader extends PushbackReader {
      * @see java.io.Reader#read(char[])
      */
     @Override
-    public int read(char[] cbuf) throws IOException {
+    public int read(final char[] cbuf) throws IOException {
         return this.read(cbuf, 0, cbuf.length);
     }
 
@@ -84,13 +81,13 @@ public class PushbackLineNumberReader extends PushbackReader {
      * @see java.io.Reader#read(java.nio.CharBuffer)
      */
     @Override
-    public int read(CharBuffer target) throws IOException {
+    public int read(final CharBuffer target) throws IOException {
         int ret = super.read(target);
         countLineNumber(target.array());
         return ret;
     }
 
-    private void countLineNumber(char[] cbuf) {
+    private void countLineNumber(final char[] cbuf) {
         for (int i = 0; i < cbuf.length; i++) {
             if (cbuf[i] == '\n') {
                 this.lineNumber++;
@@ -102,7 +99,7 @@ public class PushbackLineNumberReader extends PushbackReader {
      * @see java.io.PushbackReader#read(char[], int, int)
      */
     @Override
-    public int read(char[] cbuf, int off, int len) throws IOException {
+    public int read(final char[] cbuf, final int off, final int len) throws IOException {
         int ret = super.read(cbuf, off, len);
         for (int i = off; i < off + len; i++) {
             if (cbuf[i] == '\n') {
@@ -145,7 +142,7 @@ public class PushbackLineNumberReader extends PushbackReader {
      * @see java.io.PushbackReader#unread(char[], int, int)
      */
     @Override
-    public void unread(char[] cbuf, int off, int len) throws IOException {
+    public void unread(final char[] cbuf, final int off, final int len) throws IOException {
         for (int i = off; i < off + len; i++) {
             if (cbuf[i] == '\n') {
                 this.lineNumber--;
@@ -158,7 +155,7 @@ public class PushbackLineNumberReader extends PushbackReader {
      * @see java.io.PushbackReader#unread(char[])
      */
     @Override
-    public void unread(char[] cbuf) throws IOException {
+    public void unread(final char[] cbuf) throws IOException {
         this.unread(cbuf, 0, cbuf.length);
     }
 
@@ -166,7 +163,7 @@ public class PushbackLineNumberReader extends PushbackReader {
      * @see java.io.PushbackReader#unread(int)
      */
     @Override
-    public void unread(int c) throws IOException {
+    public void unread(final int c) throws IOException {
         if (c == '\n') {
             this.lineNumber--;
         }
@@ -220,7 +217,7 @@ public class PushbackLineNumberReader extends PushbackReader {
         }
     }
 
-    private boolean isInArray(char ch, final char[] chars) {
+    private boolean isInArray(final char ch, final char[] chars) {
         for (int i = 0; i < chars.length; i++) {
             if (ch == chars[i]) {
                 return true;
