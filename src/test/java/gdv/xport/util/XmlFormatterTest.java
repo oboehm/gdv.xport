@@ -19,14 +19,19 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
+import gdv.xport.feld.Align;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.Nachsatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.Vorsatz;
 
 import java.io.IOException;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
@@ -36,13 +41,13 @@ import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * JUnit-Test fuer XmlFormatter.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.2 (14.11.2009)
  */
 @RunWith(SmokeRunner.class)
 public class XmlFormatterTest extends AbstractFormatterTest {
-    
+
     private static final Log log = LogFactory.getLog(XmlFormatterTest.class);
 
     /**
@@ -96,7 +101,7 @@ public class XmlFormatterTest extends AbstractFormatterTest {
         checkXML(xmlString);
         XmlHelper.validate(xmlString, "/xsd/datenpaket.xsd");
     }
-    
+
     /**
      * Tested die Formattierung der Musterdatei als HTML.
      *
@@ -107,6 +112,19 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     @IntegrationTest
     public void testMusterdatei() throws IOException, XMLStreamException {
         exportMusterdatei(new XmlFormatter(), "musterdatei_041222.xml");
+    }
+
+    /**
+     * Beim Testen ist aufgefallen, dass der Default-Konstruktor mit einer
+     * {@link NullPointerException} aussteigt. Dies sollte natuerlich nicht
+     * passieren.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testXmlFormatter() throws IOException {
+        XmlFormatter formatter = new XmlFormatter();
+        formatter.write(new Datenpaket("4711"));
     }
 
 }

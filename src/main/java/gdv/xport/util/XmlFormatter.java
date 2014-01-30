@@ -19,21 +19,35 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.config.*;
+import gdv.xport.config.Config;
+import gdv.xport.config.ConfigException;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.*;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.Formatter;
+import java.util.Iterator;
 
-import javax.xml.stream.*;
+import javax.xml.stream.FactoryConfigurationError;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer XML-Struktur ausgeben zu koennen.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.2 (13.11.2009)
  */
@@ -46,16 +60,16 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Default-Konstruktor.
-     * 
+     *
      * @since 0.5.0
      */
     public XmlFormatter() {
-        super();
+        this(System.out);
     }
 
     /**
      * Der Konstruktor fuer die normale Arbeit.
-     * 
+     *
      * @param writer
      *            the writer
      */
@@ -72,7 +86,7 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Instantiates a new xml formatter.
-     * 
+     *
      * @param xmlStreamWriter
      *            the xml stream writer
      */
@@ -108,7 +122,7 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see gdv.xport.util.AbstractFormatter#setWriter(java.io.Writer)
      */
     @Override
@@ -123,7 +137,7 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see gdv.xport.util.AbstractFormatter#setWriter(java.io.OutputStream)
      */
     @Override
@@ -138,10 +152,10 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Ausgabe eines Feldes als XML.
-     * 
+     *
      * @param feld
      *            the feld
-     * 
+     *
      * @throws XMLStreamException
      *             Signals that an I/O exception has occurred.
      */
@@ -157,10 +171,10 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Ausgabe eines Teildatensatzes als XML.
-     * 
+     *
      * @param teildatensatz
      *            the teildatensatz
-     * 
+     *
      * @throws XMLStreamException
      *             the XML stream exception
      */
@@ -185,10 +199,10 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Ausgabe eines Datensatzes als XML.
-     * 
+     *
      * @param satz
      *            der auszugebende (Daten-)Satz
-     * 
+     *
      * @throws XMLStreamException
      *             the XML stream exception
      */
@@ -217,7 +231,7 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Ausgabe eines kompletten Datenpakets als XML.
-     * 
+     *
      * @param datenpaket
      *            Datenpaket, das als XML ausgegeben werden soll
      * @throws IOException
@@ -256,7 +270,7 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Falls man diese Klasse mit dem File-Konstruktor geoeffnet hat, sollte man den Stream hierueber wieder schliessen.
-     * 
+     *
      * @since 0.3
      * @throws IOException
      *             sollte eigentlich nicht vorkommen
@@ -272,10 +286,10 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Wandelt das uebergebenen Feld in einen XML-String um.
-     * 
+     *
      * @param feld
      *            ein Feld
-     * 
+     *
      * @return das Feld als XML-String
      */
     public static String toString(final Feld feld) {
@@ -292,7 +306,7 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Wandelt dens uebergebenen Teildatensatz in einen XML-String um.
-     * 
+     *
      * @param teildatensatz
      *            ein Teildatensatz
      * @return Teildatensatz als XML-String
@@ -311,10 +325,10 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Wandelt den uebergebenen Satz in einen XML-String um.
-     * 
+     *
      * @param satz
      *            ein Satz
-     * 
+     *
      * @return Satz als XML-String
      */
     public static String toString(final Satz satz) {
@@ -331,7 +345,7 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Wandelt das uebergebene Datenpaket in einen XML-String um.
-     * 
+     *
      * @param datenpaket
      *            das Datenpaket
      * @return Datenpaket als XML-String
@@ -350,7 +364,7 @@ public final class XmlFormatter extends AbstractFormatter {
 
     /**
      * Diese Methode ist fuer die Einrueckung verantwortlich.
-     * 
+     *
      * @param level
      *            Einrueckungstiefe
      */
