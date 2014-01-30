@@ -22,6 +22,10 @@
       <action dev="oboehm" type="add" date="30-Jan-2014" >
         Bereitstellung als ausf&#252;hrbare Jar-Datei.
       </action>
+      <action dev="oboehm" type="fix" date="28-Jan-2014" >
+        Ein Input-Stream oder Reader kann jetzt f&#252;r den Import mehrerer
+        Datenpakete verwendet werden.
+      </action>
       <action dev="oboehm" type="add" date="17-Jan-2014" >
         Unterst&#252;tzung f&#252;r Sparte 140 bei der Satzart 220
         (Dank an Frank Berger).
