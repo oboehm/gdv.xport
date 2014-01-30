@@ -44,7 +44,6 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.output.NullWriter;
-import org.apache.log4j.PropertyConfigurator;
 
 /**
  * The Class Main.
@@ -68,7 +67,7 @@ public final class Main {
      *             falls bei der XML-Generierung was schief gelaufen ist.
      */
     public static void main(final String[] args) throws IOException, XMLStreamException {
-        initLogging();
+//        initLogging();
         OutputStream ostream = System.out;
         Options options = createOptions();
         CommandLineParser parser = new GnuParser();
@@ -193,14 +192,14 @@ public final class Main {
         }
     }
 
-    /**
-     * Hier sorgen wir dafuer, dass nicht mehr auf der Console, sondern in eine
-     * Datei geloggt wird.
-     */
-    private static void initLogging() {
-        URL logURL = Main.class.getResource("main-log4j.properties");
-        PropertyConfigurator.configure(logURL);
-    }
+//    /**
+//     * Hier sorgen wir dafuer, dass nicht mehr auf der Console, sondern in eine
+//     * Datei geloggt wird.
+//     */
+//    private static void initLogging() {
+//        URL logURL = Main.class.getResource("main-log4j.properties");
+//        PropertyConfigurator.configure(logURL);
+//    }
 
     /**
      * Damit niemand die Klasse aus Versehen instantiiert, ist der Default-Konstruktor private.
