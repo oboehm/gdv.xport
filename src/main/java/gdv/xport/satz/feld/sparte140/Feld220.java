@@ -2,7 +2,9 @@ package gdv.xport.satz.feld.sparte140;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -24,7 +26,7 @@ public enum Feld220 {
     INTRO1,
 
     /**
-     * Wagnis siehe Anlage 21<br/>
+     * Wagnis, siehe Anlage 21.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -35,7 +37,7 @@ public enum Feld220 {
     Wagnis,
 
     /**
-     * Objekt-Nr. siehe Anlage 21<br/>
+     * Objekt-Nummer, siehe Anlage 21.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -74,9 +76,8 @@ public enum Feld220 {
     BEGINN,
 
     /**
-     * AUSSCHLUSS.<br/>
-     * AUSSCHLUSS der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschluesselt werden<br/>
+     * Ausschluss der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
+     * muss "00" geschluesselt werden.<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -90,7 +91,7 @@ public enum Feld220 {
     /**
      * Aenderungsdatum.<br/>
      * Aenderungsdatum der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschluesselt werden<br/>
+     * muss "00" geschluesselt werden.<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -153,8 +154,8 @@ public enum Feld220 {
     RISIKOSTRASSE,
 
     /**
-     * Sturmzone<br/>
-     * Verbandsschluessel   siehe Anlage 22
+     * Sturmzone.<br/>
+     * Verbandsschluessel siehe Anlage 22.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -191,7 +192,7 @@ public enum Feld220 {
 
 
    /**
-     * umbauter Raum<br/>
+     * Umbauter Raum.<br/>
      * in CBM, bei VGB 88 in qm^2
      */
     @FeldInfo(
@@ -205,7 +206,7 @@ public enum Feld220 {
 
 
    /**
-     * Stockwerke
+     * Stockwerke.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -218,7 +219,7 @@ public enum Feld220 {
 
 
    /**
-     * Anzahl Wohneinheiten
+     * Anzahl Wohneinheiten.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -230,7 +231,7 @@ public enum Feld220 {
     ANZAHL_WOHNEINHEITEN,
 
    /**
-     * Fremdnutzung<br/>
+     * Fremdnutzung.<br/>
      * 0 = nein
      * 1 = ja
      */
@@ -245,7 +246,7 @@ public enum Feld220 {
 
 
    /**
-     * Fremder Grund und Boden<br/>
+     * Fremder Grund und Boden.<br/>
      * 0 = nein
      * 1 = ja
      */
@@ -288,7 +289,7 @@ public enum Feld220 {
     ROHBAU_EINMALBETRAG,
 
   /**
-     * Sicherungsglaeubiger<br/>
+     * Sicherungsglaeubiger.<br/>
      * 0 = nein
      * 1 = ja
      */
@@ -302,7 +303,7 @@ public enum Feld220 {
     SICHERUNGSGLAEUBIGER,
 
   /**
-     * Vorsteuerabzugsberechtigt<br/>
+     * Vorsteuerabzugsberechtigt.<br/>
      * 0 = nein
      * 1 = ja
      */

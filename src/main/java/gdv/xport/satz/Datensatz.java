@@ -28,6 +28,7 @@ import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzNummer;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.PushbackReader;
 import java.util.List;
@@ -493,24 +494,23 @@ public class Datensatz extends Satz {
 	 * @return the teildatensatz nummer
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static TeildatensatzNummer readTeildatensatzNummer(final PushbackReader reader)
-	        throws IOException {
-		char[] cbuf = new char[256];
-		if (reader.read(cbuf) == -1) {
-			throw new IOException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
-		}
-		reader.unread(cbuf);
-		String teildatenSatz = new String(cbuf).substring(cbuf.length - 1, cbuf.length);
-		if (teildatenSatz.trim().length() == 0) {
-			return TeildatensatzNummer.NULL;
-		} else {
-			try {
-				return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
-			} catch (NumberFormatException e) {
-			    log.warn("Value \"" + teildatenSatz + "\" for TeildatensatzNummer found, but Number expected.");
-				return TeildatensatzNummer.NULL;
-			}
-		}
-	}
+    public static TeildatensatzNummer readTeildatensatzNummer(final PushbackReader reader) throws IOException {
+        char[] cbuf = new char[256];
+        if (reader.read(cbuf) == -1) {
+            throw new EOFException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
+        }
+        reader.unread(cbuf);
+        String teildatenSatz = new String(cbuf).substring(cbuf.length - 1, cbuf.length);
+        if (teildatenSatz.trim().length() == 0) {
+            return TeildatensatzNummer.NULL;
+        } else {
+            try {
+                return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
+            } catch (NumberFormatException e) {
+                log.warn("Value \"" + teildatenSatz + "\" for TeildatensatzNummer found, but Number expected.");
+                return TeildatensatzNummer.NULL;
+            }
+        }
+    }
 
 }

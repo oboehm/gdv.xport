@@ -38,50 +38,40 @@ import java.util.WeakHashMap;
  */
 public class RecyclingInputStreamReader extends Reader {
 
-    /** The Constant cachedReaders. */
     private static final Map<InputStream, Reader> cachedReaders = new WeakHashMap<InputStream, Reader>();
-
-    /** The reader. */
     private final Reader reader;
 
     /**
-     * Instantiates a new recycling input stream reader.
+     * Erzeugt ein neues {@link RecyclingInputStreamReader}-Objekt.
      *
      * @param in the in
      */
-    public RecyclingInputStreamReader(InputStream in) {
+    public RecyclingInputStreamReader(final InputStream in) {
         this(in, Charset.defaultCharset());
     }
 
     /**
-     * Instantiates a new recycling input stream reader.
+     * Erzeugt ein neues {@link RecyclingInputStreamReader}-Objekt.
      *
-     * @param in the in
-     * @param charsetName the charset name
+     * @param in der InputStream
+     * @param charsetName Zeichenkodierung, z.B. "ISO-8859-1"
      * @throws UnsupportedEncodingException the unsupported encoding exception
      */
-    public RecyclingInputStreamReader(InputStream in, String charsetName) throws UnsupportedEncodingException {
+    public RecyclingInputStreamReader(final InputStream in, final String charsetName) throws UnsupportedEncodingException {
         this.reader = getReaderFor(in, Charset.forName(charsetName));
     }
 
     /**
-     * Instantiates a new recycling input stream reader.
+     * Erzeugt ein neues {@link RecyclingInputStreamReader}-Objekt.
      *
-     * @param in the in
-     * @param cs the cs
+     * @param in der InputStream
+     * @param cs Zeichensatz-Kodierung
      */
-    public RecyclingInputStreamReader(InputStream in, Charset cs) {
+    public RecyclingInputStreamReader(final InputStream in, final Charset cs) {
         this.reader = getReaderFor(in, cs);
     }
 
-    /**
-     * Gets the reader for.
-     *
-     * @param in the in
-     * @param cs the cs
-     * @return the reader for
-     */
-    private static Reader getReaderFor(InputStream in, Charset cs) {
+    private static Reader getReaderFor(final InputStream in, final Charset cs) {
         Reader r = cachedReaders.get(in);
         if (r == null) {
             r = new InputStreamReader(in, cs);
@@ -90,12 +80,7 @@ public class RecyclingInputStreamReader extends Reader {
         return r;
     }
 
-    /**
-     * Removes the reader.
-     *
-     * @param r the r
-     */
-    private synchronized void removeReader(Reader r) {
+    private synchronized void removeReader(final Reader r) {
         for (Entry<InputStream, Reader> entry : cachedReaders.entrySet()) {
             if (r.equals(entry.getValue())) {
                 cachedReaders.remove(entry.getKey());
@@ -117,7 +102,7 @@ public class RecyclingInputStreamReader extends Reader {
      * @see java.io.Reader#read(char[], int, int)
      */
     @Override
-    public int read(char[] cbuf, int off, int len) throws IOException {
+    public int read(final char[] cbuf, final int off, final int len) throws IOException {
         return reader.read(cbuf, off, len);
     }
 
@@ -125,7 +110,7 @@ public class RecyclingInputStreamReader extends Reader {
      * @see java.io.Reader#mark(int)
      */
     @Override
-    public void mark(int readAheadLimit) throws IOException {
+    public void mark(final int readAheadLimit) throws IOException {
         this.reader.mark(readAheadLimit);
     }
 
@@ -149,7 +134,7 @@ public class RecyclingInputStreamReader extends Reader {
      * @see java.io.Reader#read(char[])
      */
     @Override
-    public int read(char[] cbuf) throws IOException {
+    public int read(final char[] cbuf) throws IOException {
         return this.reader.read(cbuf);
     }
 
@@ -157,7 +142,7 @@ public class RecyclingInputStreamReader extends Reader {
      * @see java.io.Reader#read(java.nio.CharBuffer)
      */
     @Override
-    public int read(CharBuffer target) throws IOException {
+    public int read(final CharBuffer target) throws IOException {
         return this.reader.read(target);
     }
 
@@ -181,7 +166,7 @@ public class RecyclingInputStreamReader extends Reader {
      * @see java.io.Reader#skip(long)
      */
     @Override
-    public long skip(long n) throws IOException {
+    public long skip(final long n) throws IOException {
         return this.reader.skip(n);
     }
 
