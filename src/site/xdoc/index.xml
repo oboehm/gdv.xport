@@ -47,6 +47,18 @@
         den kompletten Funktionsumfang des GDV-Formates unterst&#252;tzen k&#246;nnen.
       </p>
       <p>
+        Inzwischen sind auch einige Datens&#228;tze durch die Community
+        zur&#252;geflossen. So wird inzwischen dank Igor Narodetskyi die
+        Sparte 51 (Fahrzeughaftpflicht) oder dank Frank Berger die Sparte 140
+        (Verbundene Geb&#228;ude) unterst&#252;tzt.
+      </p>
+      <p>
+        Wohl der schwierigste Brocken bei der Unterst&#252;tzung war die Sparte 10
+        (Lebensversicherung) mit ihrer Wagnisart, die von Ralf Klemmer und
+        Andre Janus geleistet wurde. Ihnen haben wir auch die Unterst&#252;tzung
+        der 2009er-Version des GDV-Datensatzes zu verdanken.
+      </p>
+      <p>
         Auf der anderen Seite erhoffen wir dadurch, dass wir als Ansprechpartner
         f&#252;r Fragen um den GDV-Export bzw. -Import gefunden werden. Wenn Sie also
         Hilfe zum GDV-Format (oder zum Versichungsbereich) brauchen,
