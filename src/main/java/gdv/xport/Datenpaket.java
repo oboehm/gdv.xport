@@ -19,6 +19,7 @@ import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_VOM;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
+import gdv.xport.io.ExtendedEOFException;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.io.RecyclingInputStreamReader;
@@ -221,6 +222,8 @@ public final class Datenpaket {
 	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(reader, 256);
 		try {
 		    importFrom(lnr);
+		} catch (EOFException eofe) {
+		    throw new ExtendedEOFException("line " + lnr.getLineNumber() + ": " + eofe.getMessage(), eofe);
         } catch (IOException ioe) {
             throw new ImportException(lnr, "read error", ioe);
         } catch (NumberFormatException nfe) {

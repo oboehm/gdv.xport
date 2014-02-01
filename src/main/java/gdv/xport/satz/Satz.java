@@ -16,25 +16,9 @@ import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -719,9 +703,9 @@ public abstract class Satz {
 
 	private static void importFrom(final Reader reader, final char[] cbuf) throws IOException {
 		if (reader.read(cbuf) == -1) {
-			String s = new String(cbuf);
-			throw new EOFException("can't read " + cbuf.length + " bytes from " + reader + ", only "
-			        + s.length() + " bytes: " + s);
+			String s = new String(cbuf).trim();
+			throw new EOFException("can't read " + cbuf.length + " bytes from " + reader + ", only \""
+			        + s + "\" ("+ s.length() + " bytes)");
 		}
 	}
 

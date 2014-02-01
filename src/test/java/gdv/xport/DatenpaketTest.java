@@ -198,7 +198,6 @@ public final class DatenpaketTest {
     @IntegrationTest
     @Test
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
-    //@Ignore // nur ein erster Test - aber noch keine Loesung
     public void testImport2Datenpakete() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt");
         try {

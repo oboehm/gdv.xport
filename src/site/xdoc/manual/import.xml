@@ -73,7 +73,24 @@ Feld absenderFeld = vorsatz.getFeld(Bezeichner.ABSENDER);
     
     <section name="Weitere Importe">
       <p>
-        Soll nur ein einzelner Datensatz importiert werden, kann dies auch
+        Seit 0.9.2 k&#246;nnen auch mehrere Datenpakete &#252;ber einen
+        InputStream oder Reader importiert werden:
+      </p>
+<source><![CDATA[
+List<Datenpaket> datenpakete = new ArrayList<Datenpaket>();
+while (true) {
+    Datenpaket paket = new Datenpaket();
+    try {
+        paket.importFrom(inputStream);
+        datenpakete.add(paket);
+    } catch (EOFException ex) {
+        log.info("EOF nach " + datenpakete.size() + " Datenpaketen erreicht.");
+        break;
+    }
+}
+]]></source>
+      <p>
+        Soll nur ein einzelner Datensatz importiert werden, kann dies
         direkt ueber die Datensatz-Klasse erfolgen:
       </p>
 <source><![CDATA[

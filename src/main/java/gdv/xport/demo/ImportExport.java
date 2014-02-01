@@ -18,13 +18,20 @@
 
 package gdv.xport.demo;
 
+import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.util.SatzFactory;
 
-import java.io.*;
+import java.io.EOFException;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Diese Klasse enthaelt einige Beispiele fuer den Import und Export von
@@ -76,6 +83,28 @@ public final class ImportExport {
         log.info("Datensatz " + satz100.getSatzart() + " von " + satz100.getFeld(Feld100.NAME3) + " "
                 + satz100.getFeld(Feld100.NAME1) + " importiert.");
         return satz100;
+    }
+
+    /**
+     * Dies ist ein Beispiel, wie sich mehrere Datenpakete importieren lassen.
+     *
+     * @param inputStream the istream
+     * @return the list
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public static List<Datenpaket> importDatenpakete(final InputStream inputStream) throws IOException {
+        List<Datenpaket> datenpakete = new ArrayList<Datenpaket>();
+        while (true) {
+            Datenpaket paket = new Datenpaket();
+            try {
+                paket.importFrom(inputStream);
+                datenpakete.add(paket);
+            } catch (EOFException ex) {
+                log.info("EOF nach " + datenpakete.size() + " Datenpaketen erreicht.");
+                break;
+            }
+        }
+        return datenpakete;
     }
 
     /**
