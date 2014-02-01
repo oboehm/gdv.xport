@@ -21,8 +21,13 @@ package gdv.xport.io;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.CharBuffer;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 /**
@@ -33,6 +38,7 @@ import org.junit.Test;
  */
 public class RecyclingInputStreamReaderTest {
 
+    private static Log log = LogFactory.getLog(RecyclingInputStreamReaderTest.class);
     private static String HELLO = "hello world";
     private final InputStream istream = new ByteArrayInputStream(HELLO.getBytes());
 
@@ -52,6 +58,7 @@ public class RecyclingInputStreamReaderTest {
             assertEquals(HELLO, new String(cbuf));
         } finally {
             reader.close();
+            log.info(reader + " was closed.");
         }
     }
 
@@ -70,6 +77,25 @@ public class RecyclingInputStreamReaderTest {
             assertEquals(input[i], ch);
         }
         istream.close();
+    }
+
+    /**
+     * Test-Methode fuer {@link RecyclingInputStreamReader#skip(long)} und
+     * {@link RecyclingInputStreamReader#read(CharBuffer)}.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testSkip() throws IOException {
+        RecyclingInputStreamReader reader = new RecyclingInputStreamReader(istream, "ASCII");
+        try {
+            reader.skip(1L);
+            CharBuffer cbuf = CharBuffer.allocate(HELLO.length());
+            reader.read(cbuf);
+            assertEquals(HELLO.substring(1), new String(cbuf.array()).trim());
+        } finally {
+            reader.close();
+        }
     }
 
 }

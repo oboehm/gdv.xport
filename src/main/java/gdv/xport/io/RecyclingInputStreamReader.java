@@ -122,22 +122,6 @@ public class RecyclingInputStreamReader extends Reader {
     }
 
     /* (non-Javadoc)
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(Object obj) {
-        return this.reader.equals(obj);
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode() {
-        return this.reader.hashCode();
-    }
-
-    /* (non-Javadoc)
      * @see java.io.Reader#mark(int)
      */
     @Override
