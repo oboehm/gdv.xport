@@ -24,7 +24,7 @@ deploy_jar_for() {
 	module=$1
 	echo deploying $module...
     mvn $options -DpomFile=target/$module-$VERSION.pom -Dfile=target/$module-$VERSION.jar
-    mvn $options -DpomFile=target/$module-$VERSION.pom -Dfile=target/$module-$VERSION-uberjar.jar
+    mvn $options -DpomFile=target/$module-$VERSION.pom -Dfile=target/$module-$VERSION-uberjar.jar -Dclassifier=uberjar
     mvn $options -DpomFile=target/$module-$VERSION.pom -Dfile=target/$module-$VERSION-sources.jar -Dclassifier=sources
     mvn $options -DpomFile=target/$module-$VERSION.pom -Dfile=target/$module-$VERSION-javadoc.jar -Dclassifier=javadoc
     echo
