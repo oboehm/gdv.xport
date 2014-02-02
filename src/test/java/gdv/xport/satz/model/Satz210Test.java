@@ -131,7 +131,7 @@ public final class Satz210Test extends AbstractDatensatzTest {
         assertEquals("1", vertragsstatus.getInhalt());
         StringWriter swriter = new StringWriter(256);
         unfall.export(swriter);
-        assertEquals(INPUT_SPARTE30, swriter.toString());
+        assertEquals(INPUT_SPARTE30.trim(), swriter.toString().trim());
     }
 
     /**
@@ -151,7 +151,7 @@ public final class Satz210Test extends AbstractDatensatzTest {
         StringWriter swriter = new StringWriter(256);
         unfall.export(swriter);
         swriter.close();
-        assertEquals(input, swriter.toString());
+        assertEquals(input.trim(), swriter.toString().trim());
     }
 
     /**
