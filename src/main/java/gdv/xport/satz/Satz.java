@@ -11,6 +11,8 @@ import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
+import gdv.xport.io.ImportException;
+import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -24,6 +26,7 @@ import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -115,6 +118,7 @@ public abstract class Satz {
 		teildatensatz = new Teildatensatz[tdsList.size()];
 		for (int i = 0; i < tdsList.size(); i++) {
 			teildatensatz[i] = tdsList.get(i);
+			teildatensatz[i].add(this.satzart);
 		}
 	}
 
@@ -336,7 +340,6 @@ public abstract class Satz {
 	 * TODO: Eigentlich waere es sinnvoller, hier die restlichen Annotationen
 	 * auszuwerten, da der Name nur auf Konvention beruht und etwas wackelig
 	 * ist (oboehm, 1-Apr-2013).
-	 *
 	 * </p>
 	 *
 	 * @param feld gewuenschtes Feld-Element
@@ -616,7 +619,14 @@ public abstract class Satz {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public final void importFrom(final Reader reader) throws IOException {
-		importFrom(new PushbackReader(reader, 256));
+	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(reader, 256);
+		try {
+            importFrom(lnr);
+		} catch (IOException ioe) {
+		    throw new ImportException(lnr, "read error", ioe);
+		} catch (NumberFormatException nfe) {
+            throw new ImportException(lnr, "number expected", nfe);
+		}
 	}
 
 	/**
@@ -628,9 +638,10 @@ public abstract class Satz {
 	 * @param reader the reader
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public void importFrom(final PushbackReader reader) throws IOException {
+	public void importFrom(final PushbackLineNumberReader reader) throws IOException {
 		char[] cbuf = new char[257 * teildatensatz.length];
 		for (int i = 0; i < teildatensatz.length; i++) {
+            reader.skipNewline();
 			if (!matchesNextTeildatensatz(reader)) {
 				log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
 				        + ", but Satzart or Sparte or Wagnisart or TeildatensatzNummer has changed");
@@ -638,7 +649,7 @@ public abstract class Satz {
 			}
 			importFrom(reader, cbuf, i * 257);
 			cbuf[i * 257 + 256] = '\n';
-			skipNewline(reader);
+//			reader.skipNewline();
 		}
 		importFrom(new String(cbuf));
 	}
@@ -654,9 +665,14 @@ public abstract class Satz {
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.5.1
 	 */
-	protected boolean matchesNextTeildatensatz(final PushbackReader reader) throws IOException {
-		int art = readSatzart(reader);
-		return art == this.getSatzart();
+	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader) throws IOException {
+		try {
+            int art = readSatzart(reader);
+            return art == this.getSatzart();
+        } catch (EOFException ex) {
+            log.info("No next teildatensatz available because of " + ex.getMessage());
+            return false;
+        }
 	}
 
 	private static void importFrom(final Reader reader, final char[] cbuf, final int i)
@@ -676,33 +692,24 @@ public abstract class Satz {
 	 * @return Satzart
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static int readSatzart(final PushbackReader reader) throws IOException {
+	public static int readSatzart(final PushbackLineNumberReader reader) throws IOException {
+//	    reader.skipNewline();
+        reader.skipWhitespace();
 		char[] cbuf = new char[4];
 		importFrom(reader, cbuf);
 		reader.unread(cbuf);
-		return Integer.parseInt(new String(cbuf));
+        return Integer.parseInt(new String(cbuf));
 	}
 
 	private static void importFrom(final Reader reader, final char[] cbuf) throws IOException {
 		if (reader.read(cbuf) == -1) {
-			String s = new String(cbuf);
-			throw new IOException("can't read " + cbuf.length + " bytes from " + reader + ", only "
-			        + s.length() + " bytes: " + s);
+			String s = new String(cbuf).trim();
+			throw new EOFException("can't read " + cbuf.length + " bytes from " + reader + ", only \""
+			        + s + "\" ("+ s.length() + " bytes)");
 		}
 	}
 
-	private static void skipNewline(final PushbackReader reader) throws IOException {
-		char[] cbuf = new char[1];
-		do {
-			if (reader.read(cbuf) == -1) {
-				log.info("end of file detected");
-				return;
-			}
-		} while ((cbuf[0] == '\n') || (cbuf[0] == '\r'));
-		reader.unread(cbuf);
-	}
-
-	/**
+    /**
 	 * Aus Performance-Gruenden stuetzt sich diese Methode nicht auf die
 	 * validate()-Methode ab.
 	 *
@@ -753,7 +760,7 @@ public abstract class Satz {
 	public final String toString() {
 		try {
 			return "Satzart " + this.satzart.getInhalt() + " ("
-			        + this.toLongString().substring(0, 60) + "...)";
+			        + StringUtils.abbreviate(this.toLongString(), 63) + ")";
 		} catch (RuntimeException shouldNeverHappen) {
 			log.error("shit happens in toString()", shouldNeverHappen);
 			return super.toString();
@@ -832,7 +839,7 @@ public abstract class Satz {
 
 	/**
 	 * Hier passiert die Magie: die Annotationen der uebergebenen Enum werden
-	 * ausgelesen und in eine Liste mit den Teildatensaetzen zu packen.
+	 * ausgelesen und in eine Liste mit den Teildatensaetzen gepackt.
 	 *
 	 * @param satzart the satzart
 	 * @param felder the felder
@@ -973,8 +980,8 @@ public abstract class Satz {
 	protected static void add(final Enum<?> feldX, final Teildatensatz tds) {
 		FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
 		Feld feld = Feld.createFeld(feldX, info);
-		if (info.nr() < 8) {
-			log.info("using default settings for " + feld);
+		if (info.nr() < 8) {      // FIXME: diese Abfrage ist eigentlich unnoetig
+			log.debug("using default settings for " + feld);
 		} else {
 			tds.add(feld);
 			if (isSatznummer(feldX)) {

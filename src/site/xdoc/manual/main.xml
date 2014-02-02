@@ -13,8 +13,16 @@
       <p>
         Mit <tt>gdv.xport.Main</tt> gibt es kleines Haupt-Programm, sodass die
         Bibliothek auch "standalone" verwendet werden kann.
-        Eine Auflistung und Kurzerkl&#228;rung erh&#228;lt man mit der Option
-        <tt>-help</tt>:
+        Um den Aufruf der Main-Klasse zu erleichtern, gibt es ein Uberjar, dass
+        alle notwendigen Bibliotheken bereits beinhaltet und sich direkt starten
+        l&#228;sst:
+      </p>
+<source><![CDATA[
+java -jar gdv-xport-0.9.2-uberjar.jar -help
+]]></source>
+      <p>
+        Die Option <tt>-help</tt> liefert eine Kurzhilfe mit
+        Auflistung und Kurzerkl&#228;rung erh&#228;lt der verschiedenen Optionen:
       </p>
 <source><![CDATA[
 usage: gdv.xport.Main

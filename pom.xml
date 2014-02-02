@@ -11,7 +11,7 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>jar</packaging>
-  <version>0.9.1</version>
+  <version>0.9.2-SNAPSHOT</version>
   <name>GDV-Xport</name>
   <url>http://www.aosd.de/gdv.xport/</url>
   <organization>
@@ -27,9 +27,12 @@
   </licenses>
 
   <properties>
-    <patterntesting.version>1.3.0</patterntesting.version>
+    <patterntesting.version>1.4.0</patterntesting.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.6</java.version>
+    <!-- workaround for PMD, see http://jira.codehaus.org/browse/MPMD-86 -->
+    <targetJdk>1.6</targetJdk>
+    <main.class>gdv.xport.Main</main.class>
   </properties>
 
   <build>
@@ -57,14 +60,40 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
         <configuration>
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>gdv.xport.Main</mainClass>
+              <mainClass>${main.class}</mainClass>
             </manifest>
           </archive>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.2</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+<!--               <finalName>${project.artifactId}-${project.version}-uberjar</finalName> -->
+              <shadedArtifactAttached>true</shadedArtifactAttached>
+              <shadedClassifierName>uberjar</shadedClassifierName>
+              <transformers>
+                <transformer
+                  implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>${main.class}</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
 
       <!--
@@ -157,11 +186,9 @@
 		          <linkXref>true</linkXref>
 		          <sourceEncoding>utf-8</sourceEncoding>
 		          <minimumTokens>100</minimumTokens>
-		          <targetJdk>1.6</targetJdk>
+		          <targetJdk>${java.version}</targetJdk>
                   <rulesets>
-                    <ruleset>/rulesets/java/basic.xml</ruleset>
-                    <ruleset>/rulesets/java/unusedcode.xml</ruleset>
-                    <ruleset>/rulesets/java/imports.xml</ruleset>
+                    <ruleset>${basedir}/config/pmd.xml</ruleset>
                   </rulesets>
 		        </configuration>
 		      </plugin>
@@ -447,6 +474,13 @@
     <contributor>
       <name>Igor Narodetskyi</name>
       <email>i.narodetskyi@autofleetcontrol.de</email>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </contributor>
+    <contributor>
+      <name>Frank Berger</name>
+      <email>Frank.Berger@talanx.com</email>
       <roles>
         <role>Java Developer</role>
       </roles>

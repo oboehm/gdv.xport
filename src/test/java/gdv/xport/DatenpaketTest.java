@@ -185,11 +185,61 @@ public final class DatenpaketTest {
     public void testImportFromReader() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
         try {
-            datenpaket.importFrom(istream);
-            assertTrue(datenpaket.isValid());
+            checkImport(datenpaket, istream);
         } finally {
             istream.close();
         }
+    }
+    /**
+     * Tested einen Import von 2 Datenpaketen.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @IntegrationTest
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    public void testImport2Datenpakete() throws IOException {
+        InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt");
+        try {
+            checkImport(datenpaket, istream);
+            Datenpaket zwei = new Datenpaket();
+            checkImport(zwei, istream);
+            log.info(datenpaket + " / " + zwei + " imported.");
+            assertFalse(datenpaket.equals(zwei));
+        } finally {
+            istream.close();
+        }
+    }
+
+    private static void checkImport(final Datenpaket paket, final InputStream istream) throws IOException {
+        paket.importFrom(istream);
+        assertTrue(paket.isValid());
+    }
+
+    /**
+     * Tested einen Import von 2 Datenpaketen.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @IntegrationTest
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    public void testImport2DatenpaketeWithReader() throws IOException {
+        Reader reader = new FileReader(new File("src/test/resources/zwei_datenpakete.txt"));
+        try {
+            checkImport(datenpaket, reader);
+            Datenpaket zwei = new Datenpaket();
+            checkImport(zwei, reader);
+            log.info(datenpaket + " / " + zwei + " imported.");
+            assertFalse(datenpaket.equals(zwei));
+        } finally {
+            reader.close();
+        }
+    }
+
+    private static void checkImport(final Datenpaket paket, final Reader reader) throws IOException {
+        paket.importFrom(reader);
+        assertTrue(paket.isValid());
     }
 
     /**
@@ -249,7 +299,7 @@ public final class DatenpaketTest {
 
     /**
      * Hier wird die Import-Datei getestet, die mir Igor geschickt hat und
-     * mit der es anfangs Probleme gab.
+     * mit dem es anfangs Probleme gab.
      *
      * @throws IOException bei I/O-Problemen
      */
@@ -257,6 +307,25 @@ public final class DatenpaketTest {
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportIgor() throws IOException {
         importResource("/igor_110120.txt");
+    }
+
+    /**
+     * Hier wird die Import-Datei getestet, die mir Igor geschickt hat und
+     * mit dem es anfangs Probleme gab. Dieses Mal wird aber die Datei als
+     * Stream eingelesen.
+     *
+     * @throws IOException bei I/O-Problemen
+     */
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    public void testImportIgorAsStream() throws IOException {
+        InputStream istream = DatenpaketTest.class.getResourceAsStream("/igor_110120.txt");
+        try {
+            datenpaket.importFrom(istream);
+            assertTrue(datenpaket.validate().toString(), datenpaket.isValid());
+        } finally {
+            istream.close();
+        }
     }
 
     /**

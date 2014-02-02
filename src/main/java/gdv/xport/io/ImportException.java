@@ -31,10 +31,24 @@ public final class ImportException extends IOException {
     private static final long serialVersionUID = 20091231L;
 
     /**
+     * Erzeugt eine neue {@link ImportException}.
+     *
      * @param message die Meldung, die mit der Exception ausgegeben wird
      */
     public ImportException(final String message) {
         super(message);
+    }
+
+    /**
+     * Diese {@link ImportException} fuegt noch die Zeilennummer zur
+     * Fehlermeldung hinzu.
+     *
+     * @param lnr fuer die Zeilennummer
+     * @param message die Meldung, die mit der Exception ausgegeben wird
+     * @param cause die urspruengliche Exception
+     */
+    public ImportException(final PushbackLineNumberReader lnr, final String message, final Throwable cause) {
+        super("line " + lnr.getLineNumber() + ": " + message, cause);
     }
 
 }

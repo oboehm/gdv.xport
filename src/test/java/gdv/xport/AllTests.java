@@ -21,7 +21,7 @@ package gdv.xport;
 import gdv.xport.config.ConfigTests;
 import gdv.xport.demo.MyUnfallDatensatzTest;
 import gdv.xport.feld.FeldTests;
-import gdv.xport.io.ImportExceptionTest;
+import gdv.xport.io.IoTests;
 import gdv.xport.satz.SatzTests;
 import gdv.xport.util.UtilTests;
 
@@ -33,12 +33,12 @@ import patterntesting.concurrent.junit.ParallelSuite;
 /**
  * Die Klasse AllTests ist eine Test-Suite fuer JUnit 4, mit der alle
  * JUnit-Tests parallel getestet werden.
- * 
+ *
  * @author oliver (boehm@javatux.de)
  * @since 0.7 (11.01.2012)
  */
 @RunWith(ParallelSuite.class)
-@SuiteClasses({ ConfigTests.class, MyUnfallDatensatzTest.class, FeldTests.class, ImportExceptionTest.class,
+@SuiteClasses({ ConfigTests.class, MyUnfallDatensatzTest.class, FeldTests.class, IoTests.class,
         SatzTests.class, UtilTests.class, BasisTest.class, DatenpaketTest.class, MainTest.class })
 public class AllTests {
 

@@ -1,7 +1,12 @@
 package gdv.xport.satz.feld.sparte30;
 
-import gdv.xport.annotation.*;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -530,7 +535,7 @@ public enum Feld220 {
             nachkommaStellen = 5,
             anzahlBytes = 7,
             byteAdresse = 94)
-    TAGEGELD_1_BEITRAGSSATZ,
+    TAGEGELD1_BEITRAGSSATZ,
 
     /**
      * Tagegeld 2.<br/>

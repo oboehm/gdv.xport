@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.model;
 
+import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.FeldX;
@@ -26,7 +27,6 @@ import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzNummer;
 
 import java.io.IOException;
-import java.io.PushbackReader;
 import java.util.List;
 
 /**
@@ -129,10 +129,10 @@ public class SatzX extends Datensatz {
 	 * @return true (Default-Implementierung)
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.9
-	 * @see gdv.xport.satz.Satz#matchesNextTeildatensatz(PushbackReader)
+	 * @see gdv.xport.satz.Satz#matchesNextTeildatensatz(PushbackLineNumberReader)
 	 */
 	@Override
-	protected boolean matchesNextTeildatensatz(final PushbackReader reader) throws IOException {
+	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader) throws IOException {
 		if (super.matchesNextTeildatensatz(reader)) {
 			WagnisartLeben nextLineWagnisEnum = readWagnisart(reader);
 			TeildatensatzNummer nextLineTeildatensatzNummerEnum = readTeildatensatzNummer(reader);

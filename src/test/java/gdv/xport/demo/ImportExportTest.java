@@ -19,13 +19,24 @@
 package gdv.xport.demo;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.feld.Feld100;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.annotation.SkipTestOn;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * JUnit-Test fuer {@link ImportExport}.
@@ -33,6 +44,7 @@ import org.junit.Test;
  * @author oliver (ob@aosd.de)
  * @since 0.9 (01.04.2013)
  */
+@RunWith(SmokeRunner.class)
 public class ImportExportTest {
 
     private static Log log = LogFactory.getLog(ImportExportTest.class);
@@ -56,6 +68,25 @@ public class ImportExportTest {
         } finally {
             tmpFile.delete();
             log.info("file \"" + tmpFile + "\" deleted.");
+        }
+    }
+
+    /**
+     * Test-Metude fuer {@link ImportExport#importDatenpakete(InputStream)}.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @IntegrationTest
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    public void testImportDatenpakete() throws IOException {
+        InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt");
+        assertNotNull(istream);
+        try {
+            List<Datenpaket> datenpakete = ImportExport.importDatenpakete(istream);
+            assertEquals(2, datenpakete.size());
+        } finally {
+            istream.close();
         }
     }
 

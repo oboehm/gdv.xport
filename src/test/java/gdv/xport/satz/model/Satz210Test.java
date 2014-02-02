@@ -22,21 +22,13 @@ import static gdv.xport.feld.Bezeichner.LAUFZEITRABATT_IN_PROZENT;
 import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.satz.AbstractDatensatzTest;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.VertragsspezifischerTeilTest;
+import gdv.xport.feld.*;
+import gdv.xport.satz.*;
 
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -48,8 +40,13 @@ import org.junit.Test;
  */
 public final class Satz210Test extends AbstractDatensatzTest {
 
-    /** The Constant log. */
     private static final Log log = LogFactory.getLog(Satz210.class);
+    private static final String INPUT_SPARTE30
+            = "02109999  030      599999999980199990099991010520040105200901052"
+            + "0040901 0000000000000000000 EUR000000000000000000000000000000002"
+            + "4290000000000 0001000                                           "
+            + "           000000                                               "
+            + "\n";
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -60,15 +57,6 @@ public final class Satz210Test extends AbstractDatensatzTest {
     @Override
     protected Satz getSatz() {
         return new Satz210();
-    }
-
-    /**
-     * Damit die Assert's der Satzlaenge stimmen, schalten wir das
-     * End-of-Datensatz ab.
-     */
-    @BeforeClass
-    public static void setUpBeforeClass() {
-        Config.setEOD("");
     }
 
     /**
@@ -124,13 +112,8 @@ public final class Satz210Test extends AbstractDatensatzTest {
      */
     @Test
     public void testSparte30() throws IOException {
-        String input = "02109999  030      599999999980199990099991010520040105200901052"
-                + "0040901 0000000000000000000 EUR000000000000000000000000000000002"
-                + "4290000000000 0001000                                           "
-                + "           000000                                               ";
-        assertEquals(256, input.length());
         SpartensatzX unfall = new Satz210(30);
-        unfall.importFrom(input);
+        unfall.importFrom(INPUT_SPARTE30);
         assertEquals("9999", unfall.getVuNummer().trim());
         Feld rabatt = unfall.getFeld(LAUFZEITRABATT_IN_PROZENT);
         assertEquals("1000", rabatt.getInhalt());
@@ -140,7 +123,7 @@ public final class Satz210Test extends AbstractDatensatzTest {
         assertEquals("1", vertragsstatus.getInhalt());
         StringWriter swriter = new StringWriter(256);
         unfall.export(swriter);
-        assertEquals(input, swriter.toString());
+        assertEquals(INPUT_SPARTE30, swriter.toString());
     }
 
     /**
@@ -149,17 +132,57 @@ public final class Satz210Test extends AbstractDatensatzTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testImportExportUnsupportet() throws IOException {
+    public void testImportExportUnsupported() throws IOException {
         String input = "02109999 1130      599999999860199990099991000000000000000000000"
             + "000FELS                                                         "
             + "             EUR000000000000000000000000000000000000000000011985"
-            + "VHB920       00001033 01100000 00000 000000KOMP 092001     00000";
+            + "VHB920       00001033 01100000 00000 000000KOMP 092001     00000"
+            + "\n";
         Satz210 unfall = new Satz210();
         unfall.importFrom(input);
         StringWriter swriter = new StringWriter(256);
         unfall.export(swriter);
         swriter.close();
         assertEquals(input, swriter.toString());
+    }
+
+    /**
+     * Import-Test fuer einen Reader.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImportFromReader() throws IOException {
+        Reader reader = new StringReader(INPUT_SPARTE30);
+        try {
+            checkImportFrom(reader);
+        } finally {
+            reader.close();
+        }
+    }
+
+    /**
+     * Import-Test fuer einen Reader. Dieses Mal lesen wir aber zweimal den
+     * gleichen Satz. Hintergrund ist, dass es bis 0.9.1 Probleme mit dem
+     * Reader gab, wenn mehrere Datenpakete gelesen werden sollten.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImportFromReaderTwice() throws IOException {
+        Reader reader = new StringReader(INPUT_SPARTE30 + INPUT_SPARTE30);
+        try {
+            checkImportFrom(reader);
+            checkImportFrom(reader);
+        } finally {
+            reader.close();
+        }
+    }
+
+    private void checkImportFrom(Reader reader) throws IOException {
+        Satz210 unfall = new Satz210(30);
+        unfall.importFrom(reader);
+        assertEquals(INPUT_SPARTE30, unfall.toLongString());
     }
 
 }

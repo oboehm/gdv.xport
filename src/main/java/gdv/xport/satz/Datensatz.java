@@ -12,16 +12,29 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
+import static gdv.xport.feld.Bezeichner.TEILDATENSATZNUMMER;
+import static gdv.xport.feld.Bezeichner.VERMITTLER;
+import static gdv.xport.feld.Bezeichner.WAGNISART;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.satz.feld.common.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.VUNummer;
+import gdv.xport.io.ImportException;
+import gdv.xport.io.PushbackLineNumberReader;
+import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.TeildatensatzNummer;
+import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzNummer;
 
-import java.io.*;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.PushbackReader;
 import java.util.List;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * The Class Datensatz.
@@ -192,16 +205,22 @@ public class Datensatz extends Satz {
 	 * @since 0.4
 	 */
 	protected void setUpTeildatensatz(final Teildatensatz tds) {
-	    if (!tds.hasFeld(Feld1bis7.VU_NUMMER)) {
-			log.debug("initializing " + tds + "...");
-			tds.add(this.vuNummer);
-			tds.add(this.buendelungsKennzeichen);
-			tds.add(this.sparte);
-			tds.add(this.versicherungsscheinNr);
-			tds.add(this.folgeNr);
-			tds.add(this.vermittler);
-		}
+	    this.setUp(tds, Feld1bis7.VU_NUMMER, this.vuNummer);
+        this.setUp(tds, Feld1bis7.BUENDELUNGSKENNZEICHEN, this.buendelungsKennzeichen);
+        this.setUp(tds, Feld1bis7.SPARTE, this.sparte);
+        this.setUp(tds, Feld1bis7.VERSICHERUNGSSCHEINNUMMER, this.versicherungsscheinNr);
+        this.setUp(tds, Feld1bis7.FOLGENUMMER, this.folgeNr);
+        this.setUp(tds, Feld1bis7.VERMITTLER, this.vermittler);
 	}
+
+    private void setUp(final Teildatensatz tds, final Enum<?> feldX, final Feld value) {
+        if (!tds.hasFeld(feldX)) {
+            if (log.isTraceEnabled()) {
+                log.trace("Init " + tds + " with " + value + ".");
+            }
+            tds.add(value);
+        }
+    }
 
 	/**
 	 * Kann von Unterklassen verwendet werden, um fehlende Felder in den
@@ -397,7 +416,12 @@ public class Datensatz extends Satz {
 			throw new IOException("can't read 14 bytes (" + new String(cbuf) + ") from " + reader);
 		}
 		reader.unread(cbuf);
-		return Integer.parseInt(new String(cbuf).substring(10, 13));
+		String intro = new String(cbuf);
+		try {
+            return Integer.parseInt(intro.substring(10, 13));
+        } catch (NumberFormatException ex) {
+            throw new ImportException("cannot read sparte from first 14 bytes (\"" + intro + "\")");
+        }
 	}
 
 	/**
@@ -439,13 +463,17 @@ public class Datensatz extends Satz {
 	 * @return true (Default-Implementierung)
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.5.1
-	 * @see Satz#matchesNextTeildatensatz(PushbackReader)
+	 * @see Satz#matchesNextTeildatensatz(PushbackLineNumberReader)
 	 */
 	@Override
-	protected boolean matchesNextTeildatensatz(final PushbackReader reader) throws IOException {
+	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader) throws IOException {
 		if (super.matchesNextTeildatensatz(reader)) {
-			int sparteRead = readSparte(reader);
-			return sparteRead == this.getSparte();
+		    if (this.hasSparte()) {
+    			int sparteRead = readSparte(reader);
+    			return sparteRead == this.getSparte();
+		    } else {
+		        return true;
+		    }
 		}
 		return false;
 	}
@@ -466,25 +494,23 @@ public class Datensatz extends Satz {
 	 * @return the teildatensatz nummer
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static TeildatensatzNummer readTeildatensatzNummer(final PushbackReader reader)
-	        throws IOException {
-		char[] cbuf = new char[256];
-		if (reader.read(cbuf) == -1) {
-			throw new IOException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
-		}
-		reader.unread(cbuf);
-		String teildatenSatz = new String(cbuf).substring(cbuf.length - 1, cbuf.length);
-		if (teildatenSatz.trim().length() == 0) {
-			return TeildatensatzNummer.NULL;
-		} else {
-			try {
-				return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
-			} catch (NumberFormatException e) {
-                log.warn("Not allowed value for teildatensatzNummer found. Type Number is required but was \""
-                        + teildatenSatz + "\".", e);
-				return TeildatensatzNummer.NULL;
-			}
-		}
-	}
+    public static TeildatensatzNummer readTeildatensatzNummer(final PushbackReader reader) throws IOException {
+        char[] cbuf = new char[256];
+        if (reader.read(cbuf) == -1) {
+            throw new EOFException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
+        }
+        reader.unread(cbuf);
+        String teildatenSatz = new String(cbuf).substring(cbuf.length - 1, cbuf.length);
+        if (teildatenSatz.trim().length() == 0) {
+            return TeildatensatzNummer.NULL;
+        } else {
+            try {
+                return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
+            } catch (NumberFormatException e) {
+                log.warn("Value \"" + teildatenSatz + "\" for TeildatensatzNummer found, but Number expected.");
+                return TeildatensatzNummer.NULL;
+            }
+        }
+    }
 
 }

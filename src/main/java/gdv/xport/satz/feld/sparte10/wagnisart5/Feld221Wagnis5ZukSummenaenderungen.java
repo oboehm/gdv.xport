@@ -67,7 +67,7 @@ public enum Feld221Wagnis5ZukSummenaenderungen {
      * Summenänderungen feststehen)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
-    LFD_NUMMER_DER_SATZART,
+    LFD_NUMMER_SATZART,
 
     /**
      * Anfängliche Todesfall VS in Währungseinheiten.<br/>

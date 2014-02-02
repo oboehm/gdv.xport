@@ -18,7 +18,8 @@
 
 package gdv.xport.satz.model;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Diese Klasse repraesentiert die Satzart 210. Es handelt es sich dabei um eine
@@ -44,6 +45,7 @@ public class Satz210 extends SpartensatzX {
         mapping.put(40, gdv.xport.satz.feld.sparte40.Feld210.values());
         mapping.put(50, gdv.xport.satz.feld.sparte50.Feld210.values());
         mapping.put(70, gdv.xport.satz.feld.sparte70.Feld210.values());
+        mapping.put(130, gdv.xport.satz.feld.sparte130.Feld210.values());
     }
 
     /**

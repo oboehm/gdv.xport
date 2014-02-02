@@ -24,6 +24,8 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld100;
 
 import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 
 import org.junit.Test;
 
@@ -35,7 +37,7 @@ import org.junit.Test;
  */
 public class Satz100Test extends AbstractDatensatzTest {
 
-    private static final String input =
+    private static final String INPUT =
         "01009999  030      599999999980199990099991Pollsmann            " +
         "                                       Rudolf                   " +
         "                         D  50825 Cologne                  Elsho" +
@@ -48,6 +50,12 @@ public class Satz100Test extends AbstractDatensatzTest {
         "                                        50polly(a)example.com   " +
         "                                                                " +
         "                                                               3";
+    private static final String INPUT_050 =
+        "01001111  0501068000980357452001109-60013 1xxxxx                " +
+        "                                       xxxx                     " +
+        "                         x  21465 xxxxxxx                  xxxxx" +
+        "xxx 16 x                         29071966x  01                  ";
+
     private final Satz100 satz = new Satz100();
 
     /**
@@ -76,7 +84,7 @@ public class Satz100Test extends AbstractDatensatzTest {
      */
     @Test
     public void testImportExport() throws IOException {
-        checkImportExport(satz, input);
+        checkImportExport(satz, INPUT);
     }
 
     /**
@@ -86,7 +94,7 @@ public class Satz100Test extends AbstractDatensatzTest {
      */
     @Test
     public void testImport() throws IOException {
-        satz.importFrom(input);
+        satz.importFrom(INPUT);
         assertEquals(100, satz.getSatzart());
         assertEquals("9999", satz.getVuNummer());
         assertEquals(30, satz.getSparte());
@@ -96,6 +104,44 @@ public class Satz100Test extends AbstractDatensatzTest {
         assertEquals("1", satz.get(Feld100.ANREDESCHLUESSEL));
         assertEquals("Pollsmann", satz.get(Feld100.NAME1).trim());
         assertEquals("           W45WWW", satz.get(Feld100.KUNDENNR_VERSICHERER));
+    }
+
+    /**
+     * Hier nehmen wir zum Testen einen 100er-Satz aus "igor_110120.txt", der
+     * beim Testen mehrerer Datenpakete Probleme bereitet hat.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImportReader() throws IOException {
+        Reader reader = new StringReader(INPUT_050);
+        try {
+            satz.importFrom(reader);
+            assertEquals(50, satz.getSparte());
+            int ch = reader.read();
+            assertEquals(-1, ch);
+        } finally {
+            reader.close();
+        }
+    }
+
+    /**
+     * Hier nehmen wir zum Testen einen 100er-Satz aus "igor_110120.txt", der
+     * beim Testen mehrerer Datenpakete Probleme bereitet hat.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImportStream() throws IOException {
+        Reader reader = new StringReader(INPUT_050);
+        try {
+            satz.importFrom(reader);
+            assertEquals(50, satz.getSparte());
+            int ch = reader.read();
+            assertEquals(-1, ch);
+        } finally {
+            reader.close();
+        }
     }
 
     /**

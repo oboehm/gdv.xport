@@ -63,7 +63,7 @@ public enum Feld220Wagnis9Auszahlungen {
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6, wenn mehrere Bezugsrechte vorhanden)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
-    LFD_NUMMER_DER_SATZART,
+    LFD_NUMMER_SATZART,
 
     /**
      * Nächste Auszahlungssumme in Währungseinheiten.<br/>
