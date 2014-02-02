@@ -46,9 +46,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
+ * Ein Datenpaket besteht aus {@link Vorsatz}, mehrere {@link Datensatz}-Elementen
+ * und einem {@link Nachsatz}.
+ *
  * @author oliver
  * @since 23.10.2009
- * @version $Revision$
  */
 public final class Datenpaket {
 

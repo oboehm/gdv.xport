@@ -37,7 +37,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * The Class Datensatz.
+ * Datensatz ist von {@link Satz} abgeleitet, enthaelt aber zusaetzlich noch
+ * die Sparte.
  *
  * @author oliver
  * @since 12.10.2009

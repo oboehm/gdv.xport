@@ -18,11 +18,7 @@
 
 package gdv.xport;
 
-import gdv.xport.util.AbstractFormatter;
-import gdv.xport.util.HtmlFormatter;
-import gdv.xport.util.NullFormatter;
-import gdv.xport.util.SatzFactory;
-import gdv.xport.util.XmlFormatter;
+import gdv.xport.util.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -36,17 +32,13 @@ import javax.xml.stream.XMLStreamException;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.GnuParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.output.NullWriter;
 
 /**
- * The Class Main.
+ * Ein kleines Hauptprogramm, falls "gdv.xport" nicht als Bibliothek eingesetzt
+ * werden soll.
  *
  * @author oliver (ob@aosd.de)
  * @since 0.2 (17.11.2009)
