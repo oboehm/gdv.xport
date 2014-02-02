@@ -22,10 +22,18 @@ import static gdv.xport.feld.Bezeichner.LAUFZEITRABATT_IN_PROZENT;
 import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.AbstractDatensatzTest;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.VertragsspezifischerTeilTest;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -182,7 +190,7 @@ public final class Satz210Test extends AbstractDatensatzTest {
     private void checkImportFrom(Reader reader) throws IOException {
         Satz210 unfall = new Satz210(30);
         unfall.importFrom(reader);
-        assertEquals(INPUT_SPARTE30, unfall.toLongString());
+        assertEquals(INPUT_SPARTE30.trim(), unfall.toLongString().trim());
     }
 
 }
