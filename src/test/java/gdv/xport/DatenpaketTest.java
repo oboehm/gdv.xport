@@ -44,8 +44,10 @@ import java.util.List;
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -274,6 +276,32 @@ public final class DatenpaketTest {
             assertTrue(datenpaket.isValid());
         } catch (UnknownHostException mayhappen) {
             log.warn("Offline? Import von " + url + " abgebrochen!", mayhappen);
+        }
+    }
+
+    /**
+     * Falls Leerzeichen am Zeilenende weggelassen wurden, sollen die einzelnen
+     * Saetze trotzdem importiert werden koennen.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @since 0.9.3
+     */
+    @IntegrationTest
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    @Ignore // noch nicht implementiert
+    public void testImportTrimmed() throws IOException {
+        StringBuilder buffer = new StringBuilder();
+        InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(istream));
+            for (String line = reader.readLine(); StringUtils.isNotEmpty(line); line = reader.readLine()) {
+                buffer.append(line.trim() + '\n');
+            }
+            datenpaket.importFrom(buffer.toString());
+            assertTrue(datenpaket.isValid());
+        } finally {
+            istream.close();
         }
     }
 
