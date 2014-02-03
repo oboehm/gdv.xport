@@ -17,10 +17,10 @@
 
   <body>
 
-    <release version="0.9.3-SNAPSHOT" date="2014"
-             description="ausf&#252;hrbare Jar-Datei">
-      <action dev="oboehm" type="add" date="02-Feb-2014" >
-        Beginn mit n&#228;chstem Snapshot.
+    <release version="0.9.3" date="03-Feb-2014"
+             description="ausf&#252;hrbare Jar-Datei (2. Versuch)">
+      <action dev="oboehm" type="add" date="03-Feb-2014" >
+        Bereitstellung als ausf&#252;hrbare Jar-Datei *und* als Bibliothek.
       </action>
     </release>
 
