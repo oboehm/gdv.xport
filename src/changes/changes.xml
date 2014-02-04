@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="0.9.4-SNAPSHOT" date="2014"
+             description="Bugfix-Release">
+      <action dev="oboehm" type="update" date="05-Feb-2014" >
+        Beginn mit n&#228;chstem Snapshot.
+      </action>
+    </release>
+
     <release version="0.9.3" date="05-Feb-2014"
              description="ausf&#252;hrbare Jar-Datei (2. Versuch)">
       <action dev="oboehm" type="add" date="05-Feb-2014" >
