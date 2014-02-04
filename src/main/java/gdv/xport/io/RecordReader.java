@@ -57,7 +57,7 @@ public class RecordReader extends Reader {
      */
     @Override
     public int read() throws IOException {
-        if (pos > 256) {
+        if (this.isBufferEmpty()) {
             this.fillBuffer();
         }
         return this.buffer[pos++];
@@ -71,12 +71,9 @@ public class RecordReader extends Reader {
         throw new UnsupportedOperationException("not yet implemented");
     }
 
-    /**
-     * Fill buffer.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
     private void fillBuffer() throws IOException {
+        buffer[256] = 0;
+        pos = 0;
         for (int i = 0; i < 256; i++) {
             int ch = this.reader.read();
             if ((ch == '\n') || (ch == '\r') || (ch == -1)) {
@@ -92,8 +89,11 @@ public class RecordReader extends Reader {
                 } while (i < 256);
             }
             buffer[i] = ch;
-            pos = 0;
         }
+    }
+
+    private boolean isBufferEmpty() {
+        return (pos >= buffer.length) || (buffer[pos] == 0);
     }
 
     /* (non-Javadoc)
