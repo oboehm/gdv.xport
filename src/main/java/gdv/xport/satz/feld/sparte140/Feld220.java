@@ -34,7 +34,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 4,
             byteAdresse = 43)
-    Wagnis,
+    WAGNIS,
 
     /**
      * Objekt-Nummer, siehe Anlage 21.
@@ -48,9 +48,8 @@ public enum Feld220 {
     OBJEKTNUMMER,
 
     /**
-     * Beginn.<br/>
-     * Beginn der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein, muss
-     * "00" geschluesselt werden<br/>
+     * Satznummer.<br/>
+     * Satznummer. Hier konstant "1"<br/>
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
