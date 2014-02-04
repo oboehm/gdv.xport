@@ -30,7 +30,7 @@ import patterntesting.concurrent.junit.ParallelSuite;
  * @since 0.9.2 (18.01.2014)
  */
 @RunWith(ParallelSuite.class)
-@SuiteClasses({ ImportExceptionTest.class, RecordReader.class, RecyclingInputStreamReaderTest.class })
+@SuiteClasses({ ImportExceptionTest.class, RecordReaderTest.class, RecyclingInputStreamReaderTest.class })
 public class IoTests {
 
 }
