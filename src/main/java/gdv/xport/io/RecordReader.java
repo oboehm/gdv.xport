@@ -68,7 +68,12 @@ public class RecordReader extends Reader {
      */
     @Override
     public int read(char[] cbuf, int off, int len) throws IOException {
-        throw new UnsupportedOperationException("not yet implemented");
+        int lastChar = 0;
+        for (int i = off; i < len; i++) {
+            lastChar = this.read();
+            cbuf[i] = (char) lastChar;
+        }
+        return lastChar;
     }
 
     private void fillBuffer() throws IOException {

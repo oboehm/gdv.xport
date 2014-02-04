@@ -80,9 +80,13 @@ public class RecordReaderTest {
         char[] line1 = createRecord('c');
         char[] line2 = createRecord('d');
         RecordReader reader = new RecordReader(new StringReader(new String(line1) + '\n' + new String(line2)));
-        assertRecord(line1, reader);
-        assertEquals("newline expected", '\n', reader.read());
-        assertRecord(line2, reader);
+        try {
+            assertRecord(line1, reader);
+            assertEquals("newline expected", '\n', reader.read());
+            assertRecord(line2, reader);
+        } finally {
+            reader.close();
+        }
     }
 
     private char[] createRecord(final char filler) {
@@ -96,6 +100,24 @@ public class RecordReaderTest {
     private void assertRecord(final char[] expected, final RecordReader reader) throws IOException {
         for (int i = 0; i < 256; i++) {
             assertEquals("character " + i, expected[i], (char) reader.read());
+        }
+    }
+
+    /**
+     * Test-Methode fuer {@link RecordReader#read(char[])}.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testReadCharArray() throws IOException {
+        char[] line = new char[256];
+        String input = "Hello world!\n";
+        RecordReader reader = new RecordReader(new StringReader(input));
+        try {
+            reader.read(line);
+            assertEquals(input.trim(), new String(line).trim());
+        } finally {
+            reader.close();
         }
     }
 
