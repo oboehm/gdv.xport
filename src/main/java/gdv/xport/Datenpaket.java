@@ -22,6 +22,7 @@ import gdv.xport.feld.Feld;
 import gdv.xport.io.ExtendedEOFException;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
+import gdv.xport.io.RecordReader;
 import gdv.xport.io.RecyclingInputStreamReader;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
@@ -33,9 +34,23 @@ import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzNummer;
 import gdv.xport.util.URLReader;
 
-import java.io.*;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.Writer;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -221,7 +236,8 @@ public final class Datenpaket {
 	 * @throws IOException falls was schiefgelaufen ist
 	 */
 	public void importFrom(final Reader reader) throws IOException {
-	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(reader, 256);
+//	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(reader, 256);
+      PushbackLineNumberReader lnr = new PushbackLineNumberReader(new RecordReader(reader), 256);
 		try {
 		    importFrom(lnr);
 		} catch (EOFException eofe) {

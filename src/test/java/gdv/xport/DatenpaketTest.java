@@ -35,7 +35,15 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz220;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Date;
@@ -47,7 +55,6 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -289,7 +296,6 @@ public final class DatenpaketTest {
     @IntegrationTest
     @Test
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
-    @Ignore // noch nicht implementiert
     public void testImportTrimmed() throws IOException {
         StringBuilder buffer = new StringBuilder();
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");

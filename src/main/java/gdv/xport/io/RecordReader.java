@@ -41,6 +41,7 @@ public class RecordReader extends Reader {
     private final Reader reader;
     private int pos = 257;
     private final int[] buffer = new int[257];
+    private int recordNo = 0;
 
     /**
      * Instantiates a new record reader.
@@ -69,7 +70,7 @@ public class RecordReader extends Reader {
     @Override
     public int read(char[] cbuf, int off, int len) throws IOException {
         int lastChar = 0;
-        for (int i = off; i < len; i++) {
+        for (int i = off; i < (off + len); i++) {
             lastChar = this.read();
             cbuf[i] = (char) lastChar;
         }
@@ -79,6 +80,7 @@ public class RecordReader extends Reader {
     private void fillBuffer() throws IOException {
         buffer[256] = 0;
         pos = 0;
+        recordNo++;
         for (int i = 0; i < 256; i++) {
             int ch = this.reader.read();
             if ((ch == '\n') || (ch == '\r') || (ch == -1)) {
@@ -87,7 +89,8 @@ public class RecordReader extends Reader {
                     pos = 256;
                     break;
                 }
-                log.info("Record has only " + i + " characters and is filled with " + (256 - i) + " spaces.");
+                log.info("Record " + recordNo + " has only " + i + " characters and is filled with " + (256 - i)
+                        + " spaces.");
                 do {
                     buffer[i] = ' ';
                     i++;
