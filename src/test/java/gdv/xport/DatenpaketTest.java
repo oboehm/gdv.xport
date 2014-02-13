@@ -35,15 +35,7 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz220;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.StringWriter;
+import java.io.*;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Date;
@@ -60,6 +52,7 @@ import org.junit.runner.RunWith;
 
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
+import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -95,11 +88,11 @@ public final class DatenpaketTest {
     public void testEmptyExport() throws IOException {
         Datenpaket empty = new Datenpaket();
         StringWriter swriter = new StringWriter(1024);
-        Config.setEOD("");
         empty.export(swriter);
         String data = swriter.toString();
         swriter.close();
-        assertEquals(1024, data.length());
+        int expectedLength = 1024 + 4 * Config.getEOD().length();
+        assertEquals(expectedLength, data.length());
         Vorsatz vorsatz = datenpaket.getVorsatz();
         assertEquals("2.1", vorsatz.getVersion(VERSION_SATZART_0001));
         assertEquals("1.1", vorsatz.getVersion(VERSION_SATZART_9999));
@@ -121,14 +114,20 @@ public final class DatenpaketTest {
     @Test
     @SkipTestOn(property = "SKIP_EXPORT_TEST")
     public void testExportFile() throws IOException {
+        datenpaket.setVuNummer("Hello");
+        datenpaket.setAbsender("World");
         datenpaket.setAdressat("Test-Adressat");
         datenpaket.setVermittler("845/666666");
+        Datum datum = new Datum();
+        datum.setInhalt("13022014");
+        datenpaket.setErstellungsDatumVon(datum);
+        datenpaket.setErstellungsDatumBis(datum);
         File file = File.createTempFile("datenpaket", ".txt");
-        Config.setEOD("");
+        Config.setEOD("\n");
         datenpaket.export(file);
         log.info(datenpaket + " was exported to " + file);
         assertTrue(file + " was not created", file.exists());
-        assertEquals(1024, file.length());
+        FileTester.assertContentEquals(new File("src/test/resources/gdv/xport/test-export.txt"), file);
     }
 
     /**
@@ -199,6 +198,7 @@ public final class DatenpaketTest {
             istream.close();
         }
     }
+
     /**
      * Tested einen Import von 2 Datenpaketen.
      *

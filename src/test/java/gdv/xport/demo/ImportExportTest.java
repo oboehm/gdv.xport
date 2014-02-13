@@ -35,6 +35,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.annotation.RunTestOn;
 import patterntesting.runtime.annotation.SkipTestOn;
 import patterntesting.runtime.junit.SmokeRunner;
 
@@ -50,6 +51,32 @@ public class ImportExportTest {
     private static Log log = LogFactory.getLog(ImportExportTest.class);
 
     /**
+     * Dies ist ein Beispiel, wie man einen Test nicht schreiben sollte,
+     * da er nur unter Windows funktionieren wird.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    @RunTestOn(osName = "Windows")
+    public void testImportSatz100Windows() throws IOException {
+        File tmpFile = new File("C:\\temp", "datensatz.gdv");
+        checkImportSatz100(tmpFile);
+    }
+
+    /**
+     * Dies ist ein Beispiel, wie man einen Test nicht schreiben sollte,
+     * da er nur unter unixoiden Betriebssystemen funktionieren wird.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    @RunTestOn(osName = {"Mac", "Linux"})
+    public void testImportSatz100WUnix() throws IOException {
+        File tmpFile = new File("/tmp", "datensatz.gdv");
+        checkImportSatz100(tmpFile);
+    }
+
+    /**
      * Test-Methode fuer {@link ImportExport#importSatz100(File)}.
      *
      * @throws IOException Signals that an I/O exception has occurred.
@@ -58,6 +85,10 @@ public class ImportExportTest {
     public void testImportSatz100() throws IOException {
         File tmpFile = File.createTempFile("datensatz", ".gdv");
         log.info("file \"" + tmpFile + "\" created.");
+        checkImportSatz100(tmpFile);
+    }
+
+    private void checkImportSatz100(File tmpFile) throws IOException {
         try {
             ImportExport.exportSatz100(tmpFile);
             Datensatz satz100 = ImportExport.importSatz100(tmpFile);

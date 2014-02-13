@@ -25,23 +25,25 @@ import org.junit.runner.RunWith;
 
 import patterntesting.concurrent.junit.ParallelRunner;
 import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.junit.*;
+import patterntesting.runtime.junit.CloneableTester;
+import patterntesting.runtime.junit.ObjectTester;
+import patterntesting.runtime.junit.SerializableTester;
 
 
 /**
  * Dieser JUnit-Test ueberprueft einige grundlegende Dinge wie die korrekte
  * Implementierung aller equals-Methoden. Es greift dabei auf den ObjectTester
  * und anderen Test-Hilfsmittel von PatternTesting zurueck.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (19.11.2010)
  */
 @RunWith(ParallelRunner.class)
 @IntegrationTest
 public class BasisTest {
-    
+
     private static final Package xportPackage = BasisTest.class.getPackage();
-    
+
     /**
      * Hiermit werden alle ueberschriebenen equals()-Methoden und
      * toString()-Methoden ueberprueft.
@@ -50,7 +52,7 @@ public class BasisTest {
     public void testClasses() {
         ObjectTester.assertAll(xportPackage);
     }
-    
+
     /**
      * Dieser Test dient nur zur Vorbeugung fuer kuenftige Erweiterungen.
      * Momentan sind noch keine Cloneable-Klassen vorhanden.
@@ -59,11 +61,11 @@ public class BasisTest {
     public void testCloneables() {
         CloneableTester.assertCloning(xportPackage);
     }
-    
+
     /**
      * Dieser Test dient nur zur Vorbeugung fuer kuenftige Erweiterungen.
      * Momentan sind noch keine Serializable-Klassen vorhanden.
-     * 
+     *
      * @throws NotSerializableException
      *             falls die Serialisierung schief gegangen ist.
      */
