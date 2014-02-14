@@ -18,9 +18,9 @@
   <body>
 
     <release version="0.9.4-SNAPSHOT" date="2014"
-             description="Bugfix-Release">
-      <action dev="oboehm" type="update" date="05-Feb-2014" >
-        Beginn mit n&#228;chstem Snapshot.
+             description="Streaming-API">
+      <action dev="oboehm" type="update" date="14-Feb-2014" >
+        Beginn mit derEinf&#252;hrung einer Streaming-API.
       </action>
     </release>
 

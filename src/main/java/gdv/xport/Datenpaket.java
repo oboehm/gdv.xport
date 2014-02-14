@@ -236,8 +236,7 @@ public final class Datenpaket {
 	 * @throws IOException falls was schiefgelaufen ist
 	 */
 	public void importFrom(final Reader reader) throws IOException {
-//	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(reader, 256);
-      PushbackLineNumberReader lnr = new PushbackLineNumberReader(new RecordReader(reader), 256);
+	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(new RecordReader(reader), 256);
 		try {
 		    importFrom(lnr);
 		} catch (EOFException eofe) {
