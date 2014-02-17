@@ -200,14 +200,15 @@ public final class XmlFormatter extends AbstractFormatter {
     /**
      * Ausgabe eines Datensatzes als XML.
      *
-     * @param satz
-     *            der auszugebende (Daten-)Satz
-     *
-     * @throws XMLStreamException
-     *             the XML stream exception
+     * @param satz der auszugebende (Daten-)Satz
      */
-    public void write(final Satz satz) throws XMLStreamException {
-        write(satz, 0);
+    @Override
+    public void write(final Satz satz) {
+        try {
+            write(satz, 0);
+        } catch (XMLStreamException ex) {
+            throw new FormatterException("cannot write " + satz, ex);
+        }
     }
 
     private void write(final Satz satz, final int level) throws XMLStreamException {
@@ -334,11 +335,7 @@ public final class XmlFormatter extends AbstractFormatter {
     public static String toString(final Satz satz) {
         StringWriter swriter = new StringWriter();
         XmlFormatter formatter = new XmlFormatter(swriter);
-        try {
-            formatter.write(satz);
-        } catch (XMLStreamException shouldnothappen) {
-            throw new RuntimeException("can't convert " + satz + " to String", shouldnothappen);
-        }
+        formatter.write(satz);
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
     }
