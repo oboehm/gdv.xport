@@ -3,12 +3,15 @@ package gdv.xport.util;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 /**
  * Dies ist das gemeinsame Oberklasse der verschiedenen Formatter. Es wird
  * z.B. von der Main-Klasse fuer die Ausgabe verwendet.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (29.11.2010)
  */
@@ -22,7 +25,7 @@ public abstract class AbstractFormatter {
     public AbstractFormatter() {
         this(System.out);
     }
-    
+
     /**
      * Instantiiert einen neuen Formatter.
      *
@@ -31,7 +34,7 @@ public abstract class AbstractFormatter {
     public AbstractFormatter(final Writer writer) {
         this.writer = writer;
     }
-    
+
     /**
      * Instantiiert einen neuen Formatter.
      *
@@ -43,7 +46,7 @@ public abstract class AbstractFormatter {
 
     /**
      * Liefert den eingestellten Writer.
-     * 
+     *
      * @return the writer
      */
     public final Writer getWriter() {
@@ -69,22 +72,25 @@ public abstract class AbstractFormatter {
         setWriter(ostreamWriter);
     }
 
-    /**
-     * Lenkt den Ausgabekanal auf die uebergebene Datei.
-     * <i>Bitte nicht mehr verwenden, da sonst diese Methode auch fuer das
-     * Schliessen des OutputStreams verantwortlich waere. Das kann sie aber
-     * nicht!</i>
-     *
-     * @param file Ausgabedatei
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Deprecated
-    public void setWriter(final File file) throws IOException {
-        OutputStream ostream = new FileOutputStream(file);
-        setWriter(ostream);
-        // we don't close ostream here because otherwise we get an XmlStreamException elsewhere
-    }
-    
+//    /**
+//     * Lenkt den Ausgabekanal auf die uebergebene Datei.
+//     * <p>
+//     * <i>Bitte nicht mehr verwenden, da sonst diese Methode auch fuer das
+//     * Schliessen des OutputStreams verantwortlich waere. Das kann sie aber
+//     * nicht!</i>
+//     * </p>
+//     *
+//     * @param file Ausgabedatei
+//     * @throws IOException Signals that an I/O exception has occurred.
+//     * @deprecated bitte nicht mehr verwenden
+//     */
+//    @Deprecated
+//    public void setWriter(final File file) throws IOException {
+//        OutputStream ostream = new FileOutputStream(file);
+//        setWriter(ostream);
+//        // we don't close ostream here because otherwise we get an XmlStreamException elsewhere
+//    }
+
     /**
      * Ausgabe eines kompletten Datenpakets.
      *

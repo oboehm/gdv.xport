@@ -19,7 +19,7 @@ import gdv.xport.satz.Satz;
  * kleine Statistik ueber die importierten Saetze ermittelt.
  *
  * @author oliver (oliver.boehm@gmail.com)
- * @since 0.9.4 (14.02.2014)
+ * @since 1.0 (14.02.2014)
  */
 public final class ImportStatistic implements ImportListener {
 

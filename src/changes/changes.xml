@@ -17,7 +17,7 @@
 
   <body>
 
-    <release version="0.9.4-SNAPSHOT" date="2014"
+    <release version="1.0.0-SNAPSHOT" date="2014"
              description="Streaming-API">
       <action dev="oboehm" type="update" date="17-Feb-2014" >
         DatenpaketStreamer mit Streaming-API eingef&#252;hrt, um den

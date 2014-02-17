@@ -33,7 +33,7 @@ import java.util.List;
  * diese die Daten verarbeiten (z.B. exportieren) koennen.
  *
  * @author oliver
- * @since 0.9.4
+ * @since 1.0
  */
 public class DatenpaketStreamer {
 

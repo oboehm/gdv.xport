@@ -10,7 +10,7 @@ import patterntesting.concurrent.junit.ParallelSuite;
  * JUnit-Tests parallel getestet werden.
  *
  * @author oliver (boehm@javatux.de)
- * @since 0.9.4 (14-Feb-2014)
+ * @since 1.0 (14-Feb-2014)
  */
 @RunWith(ParallelSuite.class)
 @SuiteClasses({ ImportExportTest.class, MyUnfallDatensatzTest.class })
