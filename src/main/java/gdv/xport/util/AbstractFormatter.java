@@ -72,25 +72,6 @@ public abstract class AbstractFormatter {
         setWriter(ostreamWriter);
     }
 
-//    /**
-//     * Lenkt den Ausgabekanal auf die uebergebene Datei.
-//     * <p>
-//     * <i>Bitte nicht mehr verwenden, da sonst diese Methode auch fuer das
-//     * Schliessen des OutputStreams verantwortlich waere. Das kann sie aber
-//     * nicht!</i>
-//     * </p>
-//     *
-//     * @param file Ausgabedatei
-//     * @throws IOException Signals that an I/O exception has occurred.
-//     * @deprecated bitte nicht mehr verwenden
-//     */
-//    @Deprecated
-//    public void setWriter(final File file) throws IOException {
-//        OutputStream ostream = new FileOutputStream(file);
-//        setWriter(ostream);
-//        // we don't close ostream here because otherwise we get an XmlStreamException elsewhere
-//    }
-
     /**
      * Ausgabe eines kompletten Datenpakets.
      *
