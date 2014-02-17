@@ -33,7 +33,7 @@ import patterntesting.runtime.junit.SmokeRunner;
  * @since 0.9.4 (14.02.2014)
  */
 @RunWith(SmokeRunner.class)
-public class DatenpaketStreamerTest {
+public final class DatenpaketStreamerTest {
 
     private static final Log log = LogFactory.getLog(DatenpaketStreamerTest.class);
 
@@ -45,17 +45,40 @@ public class DatenpaketStreamerTest {
     @IntegrationTest
     @Test
     public void testReadDatenpaket() throws IOException {
-        ImportStatistic statistic = new ImportStatistic();
         InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
         try {
-            DatenpaketStreamer streamer = new DatenpaketStreamer(istream);
-            streamer.register(statistic);
-            streamer.readDatenpaket();
-            log.info("Statistik: " + statistic);
-            assertTrue("expected: number of imported saetze > 2", statistic.getImportedSaetze() > 2);
+            readDatenpaket(istream);
         } finally {
             istream.close();
         }
+    }
+
+    /**
+     * Test-Methode fuer {@link DatenpaketStreamer#readDatenpaket()}. Dies ist
+     * (fast) der gleiche Test wie vorher, nur dass wir hier jetzt 2 Datenpkete
+     * lesen.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @IntegrationTest
+    @Test
+    public void testRead2Datenpakete() throws IOException {
+        InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt");
+        try {
+            readDatenpaket(istream);
+            readDatenpaket(istream);
+        } finally {
+            istream.close();
+        }
+    }
+
+    private static void readDatenpaket(InputStream istream) throws IOException {
+        ImportStatistic statistic = new ImportStatistic();
+        DatenpaketStreamer streamer = new DatenpaketStreamer(istream);
+        streamer.register(statistic);
+        streamer.readDatenpaket();
+        log.info("Statistik: " + statistic);
+        assertTrue("expected: number of imported saetze > 2", statistic.getImportedSaetze() > 2);
     }
 
 }
