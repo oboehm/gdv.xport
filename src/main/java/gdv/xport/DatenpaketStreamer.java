@@ -74,9 +74,15 @@ public class DatenpaketStreamer {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    // TODO: restlichen Saetze noch importieren!
     public void readDatenpaket() throws IOException {
         readVorsatz();
+        while (true) {
+            Satz satz = Datenpaket.importSatz(reader);
+            notice(satz);
+            if (satz.getSatzart() == 9999) {
+                break;
+            }
+        }
     }
 
     private void readVorsatz() throws IOException {

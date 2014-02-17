@@ -12,8 +12,7 @@
 
 package gdv.xport;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertTrue;
 import gdv.xport.event.ImportStatistic;
 
 import java.io.IOException;
@@ -53,7 +52,7 @@ public class DatenpaketStreamerTest {
             streamer.register(statistic);
             streamer.readDatenpaket();
             log.info("Statistik: " + statistic);
-            assertTrue("expected: number of imported saetze > 0", statistic.getImportedSaetze() > 0);
+            assertTrue("expected: number of imported saetze > 2", statistic.getImportedSaetze() > 2);
         } finally {
             istream.close();
         }

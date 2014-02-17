@@ -72,7 +72,7 @@ public final class Datenpaket {
 	private static final Log log = LogFactory.getLog(Datenpaket.class);
 	private final Vorsatz vorsatz = new Vorsatz();
 	private List<Datensatz> datensaetze = new ArrayList<Datensatz>();
-	private final Nachsatz nachsatz = new Nachsatz();
+	private Nachsatz nachsatz = new Nachsatz();
 
 	/**
 	 * Wenn man den Default-Konstruktor verwendet, sollte man vorher die
@@ -258,29 +258,52 @@ public final class Datenpaket {
 	public void importFrom(final PushbackLineNumberReader reader) throws IOException {
 		this.vorsatz.importFrom(reader);
 		while (true) {
-			int satzart = Satz.readSatzart(reader);
-			log.debug("reading Satzart " + satzart + "...");
-			if (satzart == 9999) {
-				break;
-			}
-			int sparte = Datensatz.readSparte(reader);
-			WagnisartLeben wagnisart = WagnisartLeben.NULL;
-			TeildatensatzNummer teildatensatzNummer = TeildatensatzNummer.NULL;
-			if (sparte == 10 && satzart > 210) {
-				wagnisart = Datensatz.readWagnisart(reader);
-				if (wagnisart != WagnisartLeben.NULL) {
-					// wagnisart 0 hat immer ein Leerzeichen als
-					// teildatenSatzmummer. Nur größer 0
-					// besitzt per Definition Werte.
-					teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
-				}
-			}
-			Datensatz satz = SatzFactory.getDatensatz(new SatzNummer(satzart, sparte, wagnisart
-			        .getCode(), teildatensatzNummer.getCode()));
-			satz.importFrom(reader);
-			this.add(satz);
+		    Satz satz = importSatz(reader);
+		    if (satz.getSatzart() == 9999) {
+		        this.nachsatz = (Nachsatz) satz;
+		        break;
+		    }
+		    this.add((Datensatz) satz);
 		}
-		this.nachsatz.importFrom(reader);
+	}
+
+	/**
+	 * Importiert einen einzelnen Satz. Dies kann entweder ein Datensatz, oder
+	 * aber der Nachsatz sein.
+	 *
+	 * @param reader the reader
+	 * @return the satz
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public static Satz importSatz(final PushbackLineNumberReader reader) throws IOException {
+        int satzart = Satz.readSatzart(reader);
+        log.debug("reading Satzart " + satzart + "...");
+        if (satzart == 9999) {
+            Nachsatz nachsatz = new Nachsatz();
+            nachsatz.importFrom(reader);
+            return nachsatz;
+        } else {
+            return importDatensatz(reader, satzart);
+        }
+	}
+
+	private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart) throws IOException {
+        int sparte = Datensatz.readSparte(reader);
+        WagnisartLeben wagnisart = WagnisartLeben.NULL;
+        TeildatensatzNummer teildatensatzNummer = TeildatensatzNummer.NULL;
+        if (sparte == 10 && satzart > 210) {
+            wagnisart = Datensatz.readWagnisart(reader);
+            if (wagnisart != WagnisartLeben.NULL) {
+                // wagnisart 0 hat immer ein Leerzeichen als
+                // teildatenSatzmummer. Nur größer 0
+                // besitzt per Definition Werte.
+                teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
+            }
+        }
+        Datensatz satz = SatzFactory.getDatensatz(new SatzNummer(satzart, sparte, wagnisart
+                .getCode(), teildatensatzNummer.getCode()));
+        satz.importFrom(reader);
+        return satz;
 	}
 
 	/**

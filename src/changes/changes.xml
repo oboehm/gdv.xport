@@ -19,8 +19,9 @@
 
     <release version="0.9.4-SNAPSHOT" date="2014"
              description="Streaming-API">
-      <action dev="oboehm" type="update" date="14-Feb-2014" >
-        Beginn mit derEinf&#252;hrung einer Streaming-API.
+      <action dev="oboehm" type="update" date="17-Feb-2014" >
+        DatenpaketStreamer mit Streaming-API eingef&#252;hrt, um den
+        Speicherverbrauch zu begrenzen.
       </action>
     </release>
 
