@@ -200,9 +200,12 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Damit kann direkt ueber das Netz importiert werden. Gibt man eine
+	 * File-URL (oder File) an, kann man damit auch direkt aus einer Datei importieren.
+	 *
 	 * @since 0.3
 	 * @param url z.B.
-	 * http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+	 *        http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
 	 * @throws IOException wenn z.B. das Netz weg ist
 	 */
 	public void importFrom(final URL url) throws IOException {
@@ -212,6 +215,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Importiert direkt aus einem String.
+	 *
 	 * @since 0.3
 	 * @param content Inhalt der eingelesen wird
 	 * @throws IOException sollte eigentlich nicht vorkommen
