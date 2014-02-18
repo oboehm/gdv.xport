@@ -3,6 +3,7 @@ package gdv.xport.util;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.event.ImportListener;
+import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 
 import java.io.IOException;
@@ -112,7 +113,12 @@ public abstract class AbstractFormatter implements ImportListener {
      * @see #write(Satz)
      */
     public void write(final Datenpaket datenpaket) throws IOException {
-        throw new UnsupportedOperationException("write of " + datenpaket + " not supported by " + this.getClass());
+        this.write(datenpaket.getVorsatz());
+        for (Datensatz satz : datenpaket.getDatensaetze()) {
+            this.write(satz);
+        }
+
+        this.write(datenpaket.getNachsatz());
     }
 
     /**
