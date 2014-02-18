@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 - 2012 by Oli B.
+ * Copyright (c) 2010 - 2014 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,14 +19,11 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.DatenpaketStreamer;
 import gdv.xport.event.ImportListener;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
 import java.io.Writer;
 
 import org.apache.commons.logging.Log;
@@ -45,10 +42,9 @@ import patterntesting.runtime.junit.SmokeRunner;
  * @since 0.5.1 (26.01.2011)
  */
 @RunWith(SmokeRunner.class)
-public class NullFormatterTest {
+public class NullFormatterTest extends AbstractFormatterTest {
 
     private static Log log = LogFactory.getLog(NullFormatterTest.class);
-    private static File MUSTERDATEI = new File("src/test/resources/musterdatei_041222.txt");
 
     /**
      * Test-Methode fuer {@link NullFormatter#write(Datenpaket)}.
@@ -102,13 +98,8 @@ public class NullFormatterTest {
     public void testNotice() throws IOException {
         File output = File.createTempFile("testNotice", ".txt");
         Writer writer = new FileWriter(output);
-        Reader reader = new FileReader(MUSTERDATEI);
-        NullFormatter formatter = new NullFormatter(writer);
-        DatenpaketStreamer datenpaketStreamer = new DatenpaketStreamer(reader);
-        datenpaketStreamer.register(formatter);
         try {
-            datenpaketStreamer.readDatenpaket();
-            reader.close();
+            exportMusterdatei(new NullFormatter(writer));
             writer.close();
             FileTester.assertContentEquals(MUSTERDATEI, output);
         } finally {

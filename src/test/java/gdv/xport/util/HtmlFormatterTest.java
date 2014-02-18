@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 - 2012 by Oli B.
+ * Copyright (c) 2010 - 2014 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,27 +18,29 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
 
 import java.io.IOException;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
 /**
  * JUnit-Test fuer HtmlFormatter.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (23.11.2010)
  */
 public class HtmlFormatterTest extends AbstractFormatterTest {
-    
+
     private static final Log log = LogFactory.getLog(HtmlFormatter.class);
-    
+
     /**
      * Tested den Export eines Datenpakets als HTML.
      *
@@ -55,7 +57,7 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
         assertTrue("no <html> inside", htmlString.contains("<html"));
         assertTrue("no </html> inside", htmlString.contains("</html"));
     }
-    
+
     /**
      * Fuer Umlaute sollte die HTML-Ersatzdarstellung verwendet werden, um
      * Encoding-Probleme zu vermeiden. Da dies der verwendete XMLStreamWriter
@@ -73,7 +75,7 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
         String htmlString = HtmlFormatter.toString(datenpaket);
         assertFalse("Umlauts in '" + absender + "' not replaced!", htmlString.contains(absender));
     }
-    
+
     /**
      * Tested die Formattierung der Musterdatei als HTML.
      *
@@ -84,6 +86,15 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
     public void testMusterdatei() throws IOException, XMLStreamException {
         exportMusterdatei(new HtmlFormatter(), "musterdatei_041222.html");
     }
+
+//    /**
+//     * Hier testen wir die Eignung des {@link HtmlFormatter} als
+//     * {@link gdv.xport.event.ImportListener}.
+//     */
+//    @Test
+//    public void testNotice() {
+//        fail("not yet implemented");
+//    }
 
 }
 

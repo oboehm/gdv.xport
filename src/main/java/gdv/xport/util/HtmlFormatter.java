@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 - 2012 by Oli B.
+ * Copyright (c) 2010 - 2014 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,26 @@ package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.Undefiniert;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.text.MessageFormat;
 import java.util.Iterator;
 
-import javax.xml.stream.*;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.commons.io.IOUtils;
 
@@ -70,11 +82,12 @@ public final class HtmlFormatter extends AbstractFormatter {
     /**
      * Instantiiert einen neuen HtmlFormatter.
      *
-     * @param file
-     *            the file
-     * @throws IOException
-     *             Signals that an I/O exception has occurred.
+     * @param file the file
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @deprecated bitte {@link #HtmlFormatter(Writer)} verwenden, da sonst
+     *             niemand da ist, der den internen Writer schliesst.
      */
+    @Deprecated
     public HtmlFormatter(final File file) throws IOException {
         this(new FileWriter(file));
         this.title = "GDV-Datei " + file;

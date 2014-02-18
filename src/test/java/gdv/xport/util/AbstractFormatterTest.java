@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 - 2012 by Oli B.
+ * Copyright (c) 2010 - 2014 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,17 +19,30 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.DatenpaketStreamer;
+import gdv.xport.event.ImportListener;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.StringReader;
 
-import javax.xml.stream.*;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 
 /**
  * Gemeinsame Oberklasse fuer die verschiedenen Formatter-Tests.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (30.11.2010)
  */
@@ -37,6 +50,9 @@ public abstract class AbstractFormatterTest extends AbstractTest {
 
     private static Log log = LogFactory.getLog(AbstractFormatterTest.class);
     private static XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+
+    /** Die Musterdatei, die wir fuer einige Tests verwenden. */
+    protected static File MUSTERDATEI = new File("src/test/resources/musterdatei_041222.txt");
 
     /**
      * Tested die Formattierung der Musterdatei als HTML.
@@ -64,6 +80,27 @@ public abstract class AbstractFormatterTest extends AbstractTest {
         } finally {
             ostream.close();
             istream.close();
+        }
+    }
+
+    /**
+     * Hier exportieren wir die Musterdatei mit dem uebergebenen
+     * {@link AbstractFormatter}. Im Gegensatz zu
+     * {@link #exportMusterdatei(AbstractFormatter, String)} verwenden wir
+     * hier den {@link DatenpaketStreamer} und das {@link ImportListener}
+     * interface, um den Export durchzufuehren.
+     *
+     * @param formatter the formatter
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    protected static void exportMusterdatei(final AbstractFormatter formatter) throws IOException {
+        Reader reader = new FileReader(MUSTERDATEI);
+        DatenpaketStreamer datenpaketStreamer = new DatenpaketStreamer(reader);
+        datenpaketStreamer.register(formatter);
+        try {
+            datenpaketStreamer.readDatenpaket();
+        } finally {
+            reader.close();
         }
     }
 
