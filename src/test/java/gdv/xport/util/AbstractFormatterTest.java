@@ -18,6 +18,7 @@
 
 package gdv.xport.util;
 
+import static org.junit.Assert.assertEquals;
 import gdv.xport.Datenpaket;
 import gdv.xport.DatenpaketStreamer;
 import gdv.xport.event.ImportListener;
@@ -30,6 +31,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
+import java.nio.charset.Charset;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -38,6 +40,7 @@ import javax.xml.stream.XMLStreamReader;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.Test;
 
 
 /**
@@ -53,6 +56,22 @@ public abstract class AbstractFormatterTest extends AbstractTest {
 
     /** Die Musterdatei, die wir fuer einige Tests verwenden. */
     protected static File MUSTERDATEI = new File("src/test/resources/musterdatei_041222.txt");
+
+    /**
+     * Einige Tests passieren auf das korrekte Encoding. Da die Beispieldaten
+     * vom GDV alle ISO-8859-1-kodiert sind, sollte das File-Encoding beim
+     * Start der VM ebenfalls darauf eingestellt sein, d.h. die VM sollte mit
+     * <pre>
+     * -Dfile.encoding=ISO-8859-1
+     * </pre>
+     * gestartet werden. Falsl nicht, wird dieser Test fehlschlagen.
+     */
+    @Test
+    public void testFileEncoding() {
+        String defaultEncoding = Charset.defaultCharset().name();
+        String fileEncoding = System.getProperty("file.encoding", defaultEncoding);
+        assertEquals("wrong launch config", "ISO-8859-1", fileEncoding);
+    }
 
     /**
      * Tested die Formattierung der Musterdatei als HTML.

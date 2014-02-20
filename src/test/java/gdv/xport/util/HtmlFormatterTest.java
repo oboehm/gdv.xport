@@ -22,14 +22,24 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
+import java.nio.charset.Charset;
+import java.util.regex.Pattern;
 
 import javax.xml.stream.XMLStreamException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
+
+import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.junit.FileTester;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * JUnit-Test fuer HtmlFormatter.
@@ -37,6 +47,7 @@ import org.xml.sax.SAXException;
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (23.11.2010)
  */
+@RunWith(SmokeRunner.class)
 public class HtmlFormatterTest extends AbstractFormatterTest {
 
     private static final Log log = LogFactory.getLog(HtmlFormatter.class);
@@ -83,18 +94,36 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
      * @throws IOException falls was schiefgelaufen ist
      */
     @Test
+    @IntegrationTest
     public void testMusterdatei() throws IOException, XMLStreamException {
         exportMusterdatei(new HtmlFormatter(), "musterdatei_041222.html");
     }
 
-//    /**
-//     * Hier testen wir die Eignung des {@link HtmlFormatter} als
-//     * {@link gdv.xport.event.ImportListener}.
-//     */
-//    @Test
-//    public void testNotice() {
-//        fail("not yet implemented");
-//    }
+    /**
+     * Hier testen wir die Eignung des {@link HtmlFormatter} als
+     * {@link gdv.xport.event.ImportListener}.
+     *
+     * @throws IOException falls was schiefgelaufen ist
+     */
+    @Test
+    @IntegrationTest
+    public void testNotice() throws IOException {
+        File output = File.createTempFile("test-notice", ".html");
+        Writer writer = new FileWriter(output);
+        try {
+            exportMusterdatei(new HtmlFormatter(writer));
+            log.info("Musterdatei was exported to " + output);
+        } finally {
+            writer.close();
+            output.deleteOnExit();
+        }
+        File exported = new File("target/site/musterdatei_041222.html");
+        if (exported.exists()) {
+            log.info(output + " will be compared with already generated " + exported);
+            FileTester.assertContentEquals(exported, output, Charset.forName("ISO-8859-1"),
+                    Pattern.compile("<!--.*-->"));
+        }
+    }
 
 }
 
