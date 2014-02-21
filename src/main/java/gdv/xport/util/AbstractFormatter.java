@@ -117,7 +117,6 @@ public abstract class AbstractFormatter implements ImportListener {
         for (Datensatz satz : datenpaket.getDatensaetze()) {
             this.write(satz);
         }
-
         this.write(datenpaket.getNachsatz());
     }
 

@@ -23,10 +23,8 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.Undefiniert;
 import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.Vorsatz;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -185,12 +183,14 @@ public final class HtmlFormatter extends AbstractFormatter {
     @Override
     public void write(final Satz satz) {
         try {
-            if (satz instanceof Vorsatz) {
-                this.write((Vorsatz) satz);
-            } else if (satz instanceof Nachsatz) {
-                this.write((Nachsatz) satz);
-            } else {
-                this.writeSatz(satz);
+            if (satz.getSatzart() == 1) {
+                this.writeHead();
+            }
+            writeTo(this.xmlWriter, satz, zeile);
+            writeDetailsTo(this.detailsWriter, satz, zeile);
+            zeile += satz.getTeildatensaetze().size();
+            if (satz.getSatzart() == 9999) {
+                this.writeTail();
             }
         } catch (XMLStreamException ex) {
             throw new FormatterException("cannot format " + satz, ex);
@@ -199,24 +199,16 @@ public final class HtmlFormatter extends AbstractFormatter {
         }
     }
 
-    private void write(final Vorsatz vorsatz) throws XMLStreamException, IOException {
+    private void writeHead() throws IOException {
         String head = MessageFormat.format(HEAD, Config.DEFAULT_ENCODING.name(), title);
         this.write(head);
-        this.writeSatz(vorsatz);
     }
 
-    private void write(final Nachsatz nachsatz) throws XMLStreamException, IOException {
-        this.writeSatz(nachsatz);
+    private void writeTail() throws IOException {
         this.detailsWriter.close();
         String tail = MessageFormat.format(TAIL, this.detailsWriter.toString());
         this.write(tail);
         super.write("<!-- (c)reated by gdv-xport at " + new Date() + " -->\n");
-    }
-
-    private void writeSatz(final Satz satz) throws XMLStreamException {
-        writeTo(this.xmlWriter, satz, zeile);
-        writeDetailsTo(this.detailsWriter, satz, zeile);
-        zeile += satz.getTeildatensaetze().size();
     }
 
     private static String getDetails(final Datenpaket datenpaket) throws XMLStreamException, IOException {
