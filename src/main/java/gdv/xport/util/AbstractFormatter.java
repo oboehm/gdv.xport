@@ -118,6 +118,7 @@ public abstract class AbstractFormatter implements ImportListener {
             this.write(satz);
         }
         this.write(datenpaket.getNachsatz());
+        this.writer.flush();
     }
 
     /**

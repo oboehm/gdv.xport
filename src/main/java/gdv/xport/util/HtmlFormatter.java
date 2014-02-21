@@ -53,11 +53,9 @@ import org.apache.commons.io.IOUtils;
 public final class HtmlFormatter extends AbstractFormatter {
 
     private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
-    private static final String TEMPLATE;
     private static final String HEAD;
     private static final String TAIL;
 
-    private final XMLStreamWriter xmlWriter;
     private final StringWriter detailsWriter = new StringWriter();
 
     private String title = "GDV-Datei";
@@ -65,7 +63,6 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     static {
         try {
-            TEMPLATE = readTemplate("template.html");
             HEAD = readTemplate("head.html");
             TAIL = readTemplate("tail.html");
         } catch (IOException ioe) {
@@ -91,6 +88,9 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     /**
      * Instantiiert einen neuen HtmlFormatter.
+     * <p>
+     * TODO: wird in 1.2 entsorgt
+     * </p>
      *
      * @param file the file
      * @throws IOException Signals that an I/O exception has occurred.
@@ -121,11 +121,6 @@ public final class HtmlFormatter extends AbstractFormatter {
      */
     public HtmlFormatter(final Writer writer) {
         super(writer);
-        try {
-            xmlWriter = xmlOutputFactory.createXMLStreamWriter(writer);
-        } catch (XMLStreamException ex) {
-            throw new IllegalArgumentException("cannot create XMLStreamWriter with " + writer, ex);
-        }
     }
 
     /**
@@ -139,93 +134,51 @@ public final class HtmlFormatter extends AbstractFormatter {
     }
 
     /**
-     * Ausgabe eines kompletten Datenpakets als XML.
-     *
-     * @param datenpaket
-     *            Datenpaket, das als XML ausgegeben werden soll
-     * @throws IOException
-     *             bei Problemen mit der HTML-Generierung
-     * @see AbstractFormatter#write(gdv.xport.Datenpaket)
-     */
-    @Override
-    public void write(final Datenpaket datenpaket) throws IOException {
-        long t0 = System.currentTimeMillis();
-        StringWriter buffer = new StringWriter();
-        try {
-            XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(buffer);
-            //int zeile = 1;
-            writeTo(xmlStreamWriter, datenpaket.getVorsatz(), zeile);
-            zeile += datenpaket.getVorsatz().getTeildatensaetze().size();
-            for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext();) {
-                Satz datensatz = iterator.next();
-                writeTo(xmlStreamWriter, datensatz, zeile);
-                zeile += datensatz.getTeildatensaetze().size();
-            }
-            writeTo(xmlStreamWriter, datenpaket.getNachsatz(), zeile);
-            xmlStreamWriter.close();
-            buffer.close();
-            String content = MessageFormat.format(TEMPLATE, Config.DEFAULT_ENCODING.name(), title, buffer.toString(),
-                    getDetails(datenpaket));
-            super.write(content);
-            super.write("<!-- (c)reated by gdv-xport in " + (System.currentTimeMillis() - t0) + " ms -->\n");
-            super.getWriter().flush();
-        } catch (XMLStreamException e) {
-            throw new IOException("XML-Fehler", e);
-        }
-    }
-
-    /**
      * HTML-Ausgabe eines einzelnen Satzes.
      *
      * @param satz der Satz, der als HTML ausgegeben werden soll
+     * @throws IOException Signals that an I/O exception has occurred.
      * @see gdv.xport.util.AbstractFormatter#write(gdv.xport.satz.Satz)
      */
     @Override
-    public void write(final Satz satz) {
+    public void write(final Satz satz) throws IOException {
         try {
             if (satz.getSatzart() == 1) {
                 this.writeHead();
             }
-            writeTo(this.xmlWriter, satz, zeile);
+            this.writeSatz(satz);
             writeDetailsTo(this.detailsWriter, satz, zeile);
             zeile += satz.getTeildatensaetze().size();
             if (satz.getSatzart() == 9999) {
                 this.writeTail();
             }
         } catch (XMLStreamException ex) {
-            throw new FormatterException("cannot format " + satz, ex);
-        } catch (IOException ioe) {
-            throw new FormatterException("cannot write " + satz, ioe);
+            throw new IOException("cannot format " + satz, ex);
         }
     }
 
     private void writeHead() throws IOException {
         String head = MessageFormat.format(HEAD, Config.DEFAULT_ENCODING.name(), title);
         this.write(head);
+        this.getWriter().flush();
     }
 
-    private void writeTail() throws IOException {
+    private void writeSatz(final Satz satz) throws XMLStreamException, IOException {
+        StringWriter buffer = new StringWriter();
+        XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(buffer);
+        writeTo(xmlStreamWriter, satz, zeile);
+        xmlStreamWriter.close();
+        buffer.close();
+        this.write(buffer.toString());
+    }
+
+    private void writeTail() throws IOException, XMLStreamException {
+        this.getWriter().flush();
         this.detailsWriter.close();
         String tail = MessageFormat.format(TAIL, this.detailsWriter.toString());
         this.write(tail);
-        super.write("<!-- (c)reated by gdv-xport at " + new Date() + " -->\n");
-    }
-
-    private static String getDetails(final Datenpaket datenpaket) throws XMLStreamException, IOException {
-        StringWriter buffer = new StringWriter();
-        XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(buffer);
-        int zeile = 1;
-        writeDetailsTo(xmlStreamWriter, datenpaket.getVorsatz(), zeile);
-        zeile += datenpaket.getVorsatz().getTeildatensaetze().size();
-        for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext();) {
-            Satz datensatz = iterator.next();
-            writeDetailsTo(xmlStreamWriter, datensatz, zeile);
-            zeile += datensatz.getTeildatensaetze().size();
-        }
-        writeDetailsTo(xmlStreamWriter, datenpaket.getNachsatz(), zeile);
-        xmlStreamWriter.close();
-        buffer.close();
-        return buffer.toString();
+        this.write("<!-- (c)reated by gdv-xport at " + new Date() + " -->\n");
+        this.getWriter().flush();
     }
 
     private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Satz satz, final int zeile)
