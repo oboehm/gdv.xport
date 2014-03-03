@@ -33,6 +33,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Date;
 import java.util.Formatter;
 import java.util.Iterator;
 
@@ -203,11 +204,17 @@ public final class XmlFormatter extends AbstractFormatter {
      * @param satz der auszugebende (Daten-)Satz
      */
     @Override
-    public void write(final Satz satz) {
+    public void write(final Satz satz) throws IOException {
         try {
-            write(satz, 0);
+            if (satz.getSatzart() == 1) {
+                this.writeHead();
+            }
+            write(satz, 1);
+            if (satz.getSatzart() == 9999) {
+                this.writeTail();
+            }
         } catch (XMLStreamException ex) {
-            throw new FormatterException("cannot write " + satz, ex);
+            throw new IOException("cannot format " + satz, ex);
         }
     }
 
@@ -227,6 +234,7 @@ public final class XmlFormatter extends AbstractFormatter {
         }
         writeIndent(level);
         xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.flush();
     }
 
@@ -240,33 +248,37 @@ public final class XmlFormatter extends AbstractFormatter {
      */
     @Override
     public void write(final Datenpaket datenpaket) throws IOException {
-        long t0 = System.currentTimeMillis();
         try {
-            xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");
-            xmlStreamWriter.writeCharacters("\n");
-            xmlStreamWriter.writeStartElement("datenpaket");
-            xmlStreamWriter.writeDefaultNamespace("http://labs.agentes.de");
-            xmlStreamWriter.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
-            xmlStreamWriter.writeNamespace("schemaLocation", "http://labs.agentes.de /xsd/datenpaket.xsd");
-            xmlStreamWriter.writeCharacters("\n");
-            write(datenpaket.getVorsatz(), 1);
-            xmlStreamWriter.writeCharacters("\n");
+            this.writeHead();
+            this.write(datenpaket.getVorsatz(), 1);
             for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext();) {
                 Satz datensatz = iterator.next();
-                write(datensatz, 1);
-                xmlStreamWriter.writeCharacters("\n");
+                this.write(datensatz, 1);
             }
-            write(datenpaket.getNachsatz(), 1);
-            xmlStreamWriter.writeCharacters("\n");
-            xmlStreamWriter.writeEndElement();
-            xmlStreamWriter.writeCharacters("\n");
-            xmlStreamWriter.writeComment(" (c)reated by gdv-xport in " + (System.currentTimeMillis() - t0) + " ms ");
-            xmlStreamWriter.writeCharacters("\n");
-            xmlStreamWriter.writeEndDocument();
-            xmlStreamWriter.flush();
+            this.write(datenpaket.getNachsatz(), 1);
+            this.writeTail();
         } catch (XMLStreamException e) {
             throw new IOException("XML-Fehler", e);
         }
+    }
+
+    private void writeHead() throws XMLStreamException {
+        xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.writeStartElement("datenpaket");
+        xmlStreamWriter.writeDefaultNamespace("http://labs.agentes.de");
+        xmlStreamWriter.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+        xmlStreamWriter.writeNamespace("schemaLocation", "http://labs.agentes.de /xsd/datenpaket.xsd");
+        xmlStreamWriter.writeCharacters("\n");
+    }
+
+    private void writeTail() throws XMLStreamException {
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.writeComment(" (c)reated by gdv-xport at " + new Date() + " ");
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.writeEndDocument();
+        xmlStreamWriter.flush();
     }
 
     /**
@@ -335,7 +347,12 @@ public final class XmlFormatter extends AbstractFormatter {
     public static String toString(final Satz satz) {
         StringWriter swriter = new StringWriter();
         XmlFormatter formatter = new XmlFormatter(swriter);
-        formatter.write(satz);
+        try {
+            formatter.write(satz, 0);
+        } catch (XMLStreamException ex) {
+            log.warn("cannot format " + satz, ex);
+            swriter.write("<!-- " + satz + " -->");
+        }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
     }

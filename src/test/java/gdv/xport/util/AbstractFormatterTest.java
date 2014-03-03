@@ -26,12 +26,15 @@ import gdv.xport.event.ImportListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
+import java.io.Writer;
 import java.nio.charset.Charset;
+import java.util.regex.Pattern;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -41,6 +44,8 @@ import javax.xml.stream.XMLStreamReader;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+
+import patterntesting.runtime.junit.FileTester;
 
 
 /**
@@ -99,6 +104,34 @@ public abstract class AbstractFormatterTest extends AbstractTest {
         } finally {
             ostream.close();
             istream.close();
+        }
+    }
+
+    /**
+     * Verwendet {@link AbstractFormatter#notice(gdv.xport.satz.Satz)} fuer
+     * den Export und ueberprueft das Ergebnis mit einer bereits exportierten
+     * Datei.
+     *
+     * @param formatter the formatter
+     * @param filename the filename
+     * @throws IOException falls was schiefgelaufen ist
+     */
+    protected static void checkNotice(final AbstractFormatter formatter, final String filename) throws IOException {
+        File output = File.createTempFile("test-notice", ".export");
+        Writer writer = new FileWriter(output);
+        formatter.setWriter(writer);
+        try {
+            exportMusterdatei(formatter);
+            log.info("Musterdatei was exported to " + output);
+        } finally {
+            writer.close();
+            output.deleteOnExit();
+        }
+        File exported = new File("target/site", filename);
+        if (exported.exists()) {
+            log.info(output + " will be compared with already generated " + exported);
+            FileTester.assertContentEquals(exported, output, Charset.forName("ISO-8859-1"),
+                    Pattern.compile("<!--.*-->"));
         }
     }
 
