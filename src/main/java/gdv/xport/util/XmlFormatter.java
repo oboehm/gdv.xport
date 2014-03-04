@@ -43,6 +43,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.output.WriterOutputStream;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -133,7 +134,8 @@ public final class XmlFormatter extends AbstractFormatter {
     public void setWriter(final Writer writer) {
         super.setWriter(writer);
         try {
-            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(writer);
+            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(new WriterOutputStream(writer),
+                    Config.DEFAULT_ENCODING.name());
         } catch (XMLStreamException e) {
             throw new IllegalArgumentException("can't create XmlStreamWriter with " + writer);
         }
@@ -245,30 +247,6 @@ public final class XmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.flush();
     }
-
-//    /**
-//     * Ausgabe eines kompletten Datenpakets als XML.
-//     *
-//     * @param datenpaket
-//     *            Datenpaket, das als XML ausgegeben werden soll
-//     * @throws IOException
-//     *             bei Problemen mit der XML-Generierung
-//     */
-//    @Override
-//    public void write(final Datenpaket datenpaket) throws IOException {
-//        try {
-//            this.writeHead();
-//            this.write(datenpaket.getVorsatz(), 1);
-//            for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext();) {
-//                Satz datensatz = iterator.next();
-//                this.write(datensatz, 1);
-//            }
-//            this.write(datenpaket.getNachsatz(), 1);
-//            this.writeTail();
-//        } catch (XMLStreamException e) {
-//            throw new IOException("XML-Fehler", e);
-//        }
-//    }
 
     private void writeHead() throws XMLStreamException {
         xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");

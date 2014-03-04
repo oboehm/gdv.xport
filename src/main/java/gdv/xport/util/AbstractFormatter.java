@@ -72,7 +72,7 @@ public abstract class AbstractFormatter implements ImportListener {
      */
     public void setWriter(final OutputStream ostream) {
         OutputStreamWriter ostreamWriter = new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING);
-        setWriter(ostreamWriter);
+        this.setWriter(ostreamWriter);
     }
 
     /**
