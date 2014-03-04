@@ -96,11 +96,14 @@ public final class XmlFormatter extends AbstractFormatter {
     }
 
     /**
-     * @param file
-     *            Ausgabe-Datein
-     * @throws IOException
-     *             falls die uebergebene Date nicht existiert
+     * Instantiates a new xml formatter.
+     *
+     * @param file            Ausgabe-Datein
+     * @throws IOException    falls die uebergebene Date nicht existiert
+     * @deprecated bitte {@link #XmlFormatter(Writer)} verwenden und den Writer
+     *             im Aufrufer schliessen
      */
+    @Deprecated
     public XmlFormatter(final File file) throws IOException {
         this(new FileOutputStream(file));
     }
@@ -162,12 +165,17 @@ public final class XmlFormatter extends AbstractFormatter {
      */
     public void write(final Feld feld) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("feld");
-        String s = new Formatter().format("%3d-%3d", feld.getByteAdresse(), feld.getEndAdresse()).toString();
-        xmlStreamWriter.writeAttribute("bytes", s);
-        s = new Formatter().format("%-30.30s", feld.getBezeichnung()).toString();
-        xmlStreamWriter.writeAttribute("bezeichnung", s);
+        write("bytes", "%3d-%3d", feld.getByteAdresse(), feld.getEndAdresse());
+        write("bezeichnung", "%-30.30s", feld.getBezeichnung());
         xmlStreamWriter.writeCharacters(feld.getInhalt());
         xmlStreamWriter.writeEndElement();
+    }
+
+    private void write(final String attribute, final String format, final Object... args) throws XMLStreamException {
+        Formatter formatter = new Formatter();
+        String s = formatter.format(format, args).toString();
+        xmlStreamWriter.writeAttribute(attribute, s);
+        formatter.close();
     }
 
     /**
@@ -238,29 +246,29 @@ public final class XmlFormatter extends AbstractFormatter {
         xmlStreamWriter.flush();
     }
 
-    /**
-     * Ausgabe eines kompletten Datenpakets als XML.
-     *
-     * @param datenpaket
-     *            Datenpaket, das als XML ausgegeben werden soll
-     * @throws IOException
-     *             bei Problemen mit der XML-Generierung
-     */
-    @Override
-    public void write(final Datenpaket datenpaket) throws IOException {
-        try {
-            this.writeHead();
-            this.write(datenpaket.getVorsatz(), 1);
-            for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext();) {
-                Satz datensatz = iterator.next();
-                this.write(datensatz, 1);
-            }
-            this.write(datenpaket.getNachsatz(), 1);
-            this.writeTail();
-        } catch (XMLStreamException e) {
-            throw new IOException("XML-Fehler", e);
-        }
-    }
+//    /**
+//     * Ausgabe eines kompletten Datenpakets als XML.
+//     *
+//     * @param datenpaket
+//     *            Datenpaket, das als XML ausgegeben werden soll
+//     * @throws IOException
+//     *             bei Problemen mit der XML-Generierung
+//     */
+//    @Override
+//    public void write(final Datenpaket datenpaket) throws IOException {
+//        try {
+//            this.writeHead();
+//            this.write(datenpaket.getVorsatz(), 1);
+//            for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext();) {
+//                Satz datensatz = iterator.next();
+//                this.write(datensatz, 1);
+//            }
+//            this.write(datenpaket.getNachsatz(), 1);
+//            this.writeTail();
+//        } catch (XMLStreamException e) {
+//            throw new IOException("XML-Fehler", e);
+//        }
+//    }
 
     private void writeHead() throws XMLStreamException {
         xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");
@@ -285,9 +293,10 @@ public final class XmlFormatter extends AbstractFormatter {
      * Falls man diese Klasse mit dem File-Konstruktor geoeffnet hat, sollte man den Stream hierueber wieder schliessen.
      *
      * @since 0.3
-     * @throws IOException
-     *             sollte eigentlich nicht vorkommen
+     * @throws IOException sollte eigentlich nicht vorkommen
+     * @deprecated siehe {@link #XmlFormatter(File)}
      */
+    @Deprecated
     public void close() throws IOException {
         try {
             this.xmlStreamWriter.close();
