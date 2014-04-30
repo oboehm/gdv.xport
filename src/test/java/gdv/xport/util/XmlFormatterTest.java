@@ -115,6 +115,18 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     }
 
     /**
+     * Hier testen wir die Eignung des {@link XmlFormatter} als
+     * {@link gdv.xport.event.ImportListener}.
+     *
+     * @throws IOException falls was schiefgelaufen ist
+     */
+    @Test
+    @IntegrationTest
+    public void testNotice() throws IOException {
+        checkNotice(new XmlFormatter(), "musterdatei_041222.xml");
+    }
+
+    /**
      * Beim Testen ist aufgefallen, dass der Default-Konstruktor mit einer
      * {@link NullPointerException} aussteigt. Dies sollte natuerlich nicht
      * passieren.
