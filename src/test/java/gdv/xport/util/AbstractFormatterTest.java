@@ -134,7 +134,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     protected static void exportMusterdatei(final AbstractFormatter formatter) throws IOException {
-        Reader reader = new FileReader(MUSTERDATEI);
+        Reader reader = new InputStreamReader(new FileInputStream(MUSTERDATEI), "ISO-8859-1");
         DatenpaketStreamer datenpaketStreamer = new DatenpaketStreamer(reader);
         datenpaketStreamer.register(formatter);
         try {
