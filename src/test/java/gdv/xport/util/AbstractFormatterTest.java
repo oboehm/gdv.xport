@@ -83,14 +83,14 @@ public abstract class AbstractFormatterTest extends AbstractTest {
             log.info("created: " + siteDir);
         }
         File exportFile = new File(siteDir, filename);
-        OutputStream ostream = new FileOutputStream(exportFile);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(exportFile), "ISO-8859-1");
         try {
             datenpaket.importFrom(istream);
-            formatter.setWriter(ostream);
+            formatter.setWriter(writer);
             formatter.write(datenpaket);
             log.info(datenpaket + " exported to " + exportFile);
         } finally {
-            ostream.close();
+            writer.close();
             istream.close();
         }
     }
