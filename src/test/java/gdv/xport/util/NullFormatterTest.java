@@ -21,10 +21,7 @@ package gdv.xport.util;
 import gdv.xport.Datenpaket;
 import gdv.xport.event.ImportListener;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -101,7 +98,7 @@ public class NullFormatterTest extends AbstractFormatterTest {
         try {
             exportMusterdatei(new NullFormatter(writer));
             writer.close();
-            FileTester.assertContentEquals(MUSTERDATEI, output);
+            FileTester.assertContentEquals(MUSTERDATEI, output, "ISO-8859-1");
         } finally {
             log.info(output + " was " + (output.delete() ? "successful" : "not") + " deleted");
         }
