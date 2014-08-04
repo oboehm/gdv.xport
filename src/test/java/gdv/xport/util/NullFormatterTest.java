@@ -70,7 +70,7 @@ public class NullFormatterTest extends AbstractFormatterTest {
     @Test
     public void testWriteDatenpaketToFile() throws IOException {
         File output = File.createTempFile("output", ".txt");
-        Writer writer = new FileWriter(output);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1");
         NullFormatter formatter = new NullFormatter(writer);
         Datenpaket datenpaket = new Datenpaket();
         try {
