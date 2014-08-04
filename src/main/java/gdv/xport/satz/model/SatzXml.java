@@ -23,12 +23,8 @@ import gdv.xport.satz.Datensatz;
 import java.util.Properties;
 
 import javax.xml.namespace.QName;
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.Characters;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
+import javax.xml.stream.*;
+import javax.xml.stream.events.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,7 +62,7 @@ public final class SatzXml extends Datensatz {
                 try {
                     return parseElement(event.asStartElement(), reader);
                 } catch (NotFoundException nfe) {
-                    log.debug(nfe.getMessage());
+                    log.trace("No satzart found with " + event + ".", nfe);
                 }
             }
             log.trace("Event {} is ignored.", event);

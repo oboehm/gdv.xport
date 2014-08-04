@@ -20,15 +20,19 @@ package gdv.xport.satz.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import gdv.xport.feld.NumFeld;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.*;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import patterntesting.runtime.annotation.Broken;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * Unit tests for {@link SatzXml} class.
@@ -36,27 +40,48 @@ import org.junit.Test;
  * @author oliver (oliver.boehm@gmail.com)
  * @since 1.0 (31.07.2014)
  */
+@RunWith(SmokeRunner.class)
 public class SatzXmlTest {
 
     private static final XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+    private static SatzXml satz100;
 
     /**
-     * Test method for {@link SatzXml} constructor.
+     * Setzt ein SatzXml-Objekt fuer den Satz 100 auf.
      *
      * @throws IOException Signals that an I/O exception has occurred.
      * @throws XMLStreamException the XML stream exception
      */
-    @Test
-    public void testSatzXml() throws IOException, XMLStreamException {
-        InputStream istream = this.getClass().getResourceAsStream("Satz100.xml");
+    @BeforeClass
+    public static void setUpSatz100() throws IOException, XMLStreamException {
+        InputStream istream = SatzXmlTest.class.getResourceAsStream("Satz100.xml");
         assertNotNull("resource 'Satz100.xml' not found", istream);
         XMLEventReader parser = xmlInputFactory.createXMLEventReader(istream);
         try {
-            SatzXml satz = new SatzXml(parser);
-            assertEquals(100, satz.getSatzart());
+            satz100 = new SatzXml(parser);
         } finally {
             istream.close();
         }
+    }
+
+    /**
+     * Test method for {@link SatzXml#getSatzart()}.
+     */
+    @Test
+    public void testGetSatzart() {
+        assertEquals(100, satz100.getSatzart());
+    }
+
+    /**
+     * Auch der Satz 100 kann eine Sparte beinhalten.
+     */
+    @Test
+    @Broken(till = "05-Aug-2014", why="not yet implemented")
+    public void testGetSparte() {
+        NumFeld sparte = satz100.getSatzartFeld();
+        assertEquals(11, sparte.getByteAdresse());
+        assertEquals(3, sparte.getAnzahlBytes());
+        assertEquals("Sparte", sparte.getBezeichnung());
     }
 
 }
