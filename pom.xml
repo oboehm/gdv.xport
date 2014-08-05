@@ -40,7 +40,7 @@
 
     <!-- Sonar -->
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-    <sonar.jacoco.reportPath>${env.WORKSPACE}/target/jacoco.exec</sonar.jacoco.reportPath>
+    <sonar.jacoco.reportPath>target/jacoco.exec</sonar.jacoco.reportPath>
 
   </properties>
 
