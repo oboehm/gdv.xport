@@ -21,11 +21,15 @@ package gdv.xport.satz.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.Teildatensatz;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 
-import javax.xml.stream.*;
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -76,12 +80,26 @@ public class SatzXmlTest {
      * Auch der Satz 100 kann eine Sparte beinhalten.
      */
     @Test
-    @Broken(till = "05-Aug-2014", why="not yet implemented")
+    @Broken(till = "06-Aug-2014", why="not yet implemented")
     public void testGetSparte() {
         NumFeld sparte = satz100.getSatzartFeld();
         assertEquals(11, sparte.getByteAdresse());
         assertEquals(3, sparte.getAnzahlBytes());
         assertEquals("Sparte", sparte.getBezeichnung());
+    }
+
+    /**
+     * 5 Teildatensaetze sind in "Satz100.xml" definiert.
+     */
+    @Test
+    public void testGetTeildatensaetze() {
+        Collection<Teildatensatz> teildatensaetze = satz100.getTeildatensaetze();
+        assertEquals(5, teildatensaetze.size());
+        char expectedNr = '1';
+        for (Teildatensatz tds : teildatensaetze) {
+            assertEquals(expectedNr, tds.getNummer().toChar());
+            expectedNr++;
+        }
     }
 
 }

@@ -19,13 +19,20 @@
 package gdv.xport.satz.model;
 
 import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Teildatensatz;
 
 import java.util.Properties;
 
 import javax.xml.namespace.QName;
-import javax.xml.stream.*;
-import javax.xml.stream.events.*;
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.Characters;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,35 +59,48 @@ public final class SatzXml extends Datensatz {
      * @throws XMLStreamException the XML stream exception
      */
     public SatzXml(final XMLEventReader parser) throws XMLStreamException {
-        super(parse(parser));
+        super();
+        this.removeAllTeildatensaetze();
+        parse(parser);
     }
 
-    private static int parse(final XMLEventReader reader) throws XMLStreamException {
+    private void parse(final XMLEventReader reader) throws XMLStreamException {
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
             if (event.isStartElement()) {
                 try {
-                    return parseElement(event.asStartElement(), reader);
+                    parseElement(event.asStartElement(), reader);
                 } catch (NotFoundException nfe) {
                     log.trace("No satzart found with " + event + ".", nfe);
                 }
             }
             log.trace("Event {} is ignored.", event);
         }
-        throw new XMLStreamException("satzart not find with " + reader);
     }
 
-    private static int parseElement(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
+    private void parseElement(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         log.trace("Parsing element {}.", element);
         QName name = element.getName();
-        if (name.getLocalPart().equals("feldreferenz")) {
+        if (name.getLocalPart().equals("satzanfang")) {
+            parseSatzanfang(element, reader);
+        } else if (name.getLocalPart().equals("feldreferenz")) {
             Properties props = parseFeldreferenz(name, reader);
             log.debug("Element <feldreferenz> consists of {}.", props);
             if (props.getProperty("name", "").equals("Satzart")) {
-                return Integer.parseInt(props.getProperty("auspraegung", "-1"));
+                String auspraegung = props.getProperty("auspraegung");
+                if (StringUtils.isNotBlank(auspraegung)) {
+                    this.getSatzartFeld().setInhalt(auspraegung);
+                }
             }
         }
-        throw new NotFoundException("<name>Satzart</name> not found in " + element);
+    }
+
+    private void parseSatzanfang(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
+        Attribute teilsatz = element.getAttributeByName(new QName("teilsatz"));
+        int nr = Integer.parseInt(teilsatz.getValue());
+        Teildatensatz tds = new Teildatensatz(this.getSatzart(), nr);
+        this.add(tds);
+        ignore(element.getName(), reader);
     }
 
     private static Properties parseFeldreferenz(final QName name, final XMLEventReader reader)
@@ -117,6 +137,18 @@ public final class SatzXml extends Datensatz {
             }
         }
         throw new XMLStreamException("end element of <" + name + "> not read");
+    }
+
+
+    private static void ignore(final QName name, final XMLEventReader reader) throws XMLStreamException {
+        while (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (isEndElement(name, event)) {
+                log.trace("End of <{}> is reached.", name);
+                return;
+            }
+        }
+        throw new XMLStreamException("end of <" + name + "> not found");
     }
 
     private static boolean isEndElement(final QName name, final XMLEvent event) {
