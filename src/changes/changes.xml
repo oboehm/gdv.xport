@@ -17,8 +17,12 @@
 
   <body>
 
-    <release version="1.0.0-SNAPSHOT" date="2014"
+    <release version="1.0.0-SNAPSHOT" date="2015"
              description="Streaming-API">
+      <action dev="oboehm" type="update" date="05-Aug-2014" >
+        Import- und Export-Methoden der Datenpaket-Klasse unterst&#252;tzen jetzt
+        Encoding.
+      </action>
       <action dev="oboehm" type="update" date="17-Feb-2014" >
         DatenpaketStreamer mit Streaming-API eingef&#252;hrt, um den
         Speicherverbrauch zu begrenzen.

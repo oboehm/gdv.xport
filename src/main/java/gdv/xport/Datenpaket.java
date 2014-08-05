@@ -12,45 +12,20 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.ABSENDER;
-import static gdv.xport.feld.Bezeichner.ADRESSAT;
-import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_BIS;
-import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_VOM;
+import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
-import gdv.xport.io.ExtendedEOFException;
-import gdv.xport.io.ImportException;
-import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.io.RecordReader;
-import gdv.xport.io.RecyclingInputStreamReader;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Nachsatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
+import gdv.xport.io.*;
+import gdv.xport.satz.*;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
-import gdv.xport.util.SatzFactory;
-import gdv.xport.util.SatzNummer;
-import gdv.xport.util.URLReader;
+import gdv.xport.util.*;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.Writer;
+import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.nio.charset.Charset;
+import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -88,8 +63,8 @@ public final class Datenpaket {
 	 * Falls die VU-Nummer noch nicht konfiguriert ist, kann man zu diesem
 	 * Konstruktor greifen.
 	 *
-	 * @since 0.3
 	 * @param vuNummer die Nummer des Versicherungsunternehmens (VU)
+	 * @since 0.3
 	 */
 	public Datenpaket(final String vuNummer) {
 		Datum heute = Datum.heute();
@@ -115,14 +90,16 @@ public final class Datenpaket {
 	/**
 	 * Dazu verwenden wir den Vorsatz, um die VU-Nummer zu bestimmen.
 	 *
-	 * @since 0.3
 	 * @return VU-Nummer aus dem Vorsatz
+	 * @since 0.3
 	 */
 	public String getVuNummer() {
 		return this.vorsatz.getVuNummer();
 	}
 
 	/**
+	 * Gets the datensaetze.
+	 *
 	 * @return the datensaetze
 	 */
 	public List<Datensatz> getDatensaetze() {
@@ -130,6 +107,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Sets the datensaetze.
+	 *
 	 * @param datensaetze the datensaetze to set
 	 */
 	public void setDatensaetze(final List<Datensatz> datensaetze) {
@@ -137,6 +116,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the vorsatz.
+	 *
 	 * @return the vorsatz
 	 */
 	public Vorsatz getVorsatz() {
@@ -144,6 +125,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the nachsatz.
+	 *
 	 * @return the nachsatz
 	 */
 	public Nachsatz getNachsatz() {
@@ -151,6 +134,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Fuegt den uebergebenen Datensatz hinzu.
+	 *
 	 * @param datensatz Datensatz, der hinzugefuegt werden soll
 	 */
 	public void add(final Datensatz datensatz) {
@@ -159,24 +144,50 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Export.
+	 *
 	 * @param file Datei, in die exportiert werden soll
 	 * @throws IOException falls was schiefgelaufen ist (z.B. Platte voll)
 	 */
 	public void export(final File file) throws IOException {
-		Writer writer = new FileWriter(file);
-		try {
-			export(writer);
-		} finally {
-			writer.close();
-		}
+	    export(file, Charset.defaultCharset());
 	}
+
+    /**
+     * Export.
+     *
+     * @param file Datei, in die exportiert werden soll
+     * @param encoding z.B. "ISO-8859-1"
+     * @throws IOException falls was schiefgelaufen ist (z.B. Platte voll)
+     * @since 1.0
+     */
+    public void export(final File file, final String encoding) throws IOException {
+        export(file, Charset.forName(encoding));
+    }
+
+    /**
+     * Export.
+     *
+     * @param file Datei, in die exportiert werden soll
+     * @param encoding z.B. "ISO-8859-1"
+     * @throws IOException falls was schiefgelaufen ist (z.B. Platte voll)
+     * @since 1.0
+     */
+    public void export(final File file, final Charset encoding) throws IOException {
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file), encoding);
+        try {
+            export(writer);
+        } finally {
+            writer.close();
+        }
+    }
 
 	/**
 	 * Falls wir einen Stream haben, koennen wir diese Methode benutzen.
 	 *
-	 * @since 0.3
 	 * @param ostream z.B. System.out
 	 * @throws IOException falls was schiefgelaufen ist
+	 * @since 0.3
 	 */
 	public void export(final OutputStream ostream) throws IOException {
 		Writer writer = new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING);
@@ -186,6 +197,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Export.
+	 *
 	 * @param writer wird zum Export verwendet
 	 * @throws IOException falls was schiefgelaufen ist
 	 */
@@ -203,10 +216,10 @@ public final class Datenpaket {
 	 * Damit kann direkt ueber das Netz importiert werden. Gibt man eine
 	 * File-URL (oder File) an, kann man damit auch direkt aus einer Datei importieren.
 	 *
-	 * @since 0.3
 	 * @param url z.B.
 	 *        http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
 	 * @throws IOException wenn z.B. das Netz weg ist
+	 * @since 0.3
 	 */
 	public void importFrom(final URL url) throws IOException {
 		URLReader urlReader = new URLReader(url);
@@ -217,9 +230,9 @@ public final class Datenpaket {
 	/**
 	 * Importiert direkt aus einem String.
 	 *
-	 * @since 0.3
 	 * @param content Inhalt der eingelesen wird
 	 * @throws IOException sollte eigentlich nicht vorkommen
+	 * @since 0.3
 	 */
 	public void importFrom(final String content) throws IOException {
 		Reader reader = new StringReader(content);
@@ -228,6 +241,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Import from.
+	 *
 	 * @param istream z.B. Sytem.in
 	 * @throws IOException falls es Fehler beim Lesen gibt
 	 */
@@ -237,6 +252,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Import from.
+	 *
 	 * @param reader hiervon wird importiert
 	 * @throws IOException falls was schiefgelaufen ist
 	 */
@@ -314,11 +331,12 @@ public final class Datenpaket {
 	/**
 	 * Importieren einer Datei.
 	 *
-	 * @since 0.2
 	 * @param file Import-Datei
 	 * @throws IOException falls was schiefgelaufen ist
+     * @since 0.2
 	 */
 	public void importFrom(final File file) throws IOException {
+	    importFrom(file, Charset.defaultCharset());
 		Reader reader = new FileReader(file);
 		try {
 			this.importFrom(reader);
@@ -327,7 +345,38 @@ public final class Datenpaket {
 		}
 	}
 
+    /**
+     * Importieren einer Datei.
+     *
+     * @param file Import-Datei
+     * @param encoding z.B. "ISO-8859-1"
+     * @throws IOException falls was schiefgelaufen ist
+     * @since 1.0
+     */
+    public void importFrom(final File file, final String encoding) throws IOException {
+        importFrom(file, Charset.forName(encoding));
+    }
+
+    /**
+     * Importieren einer Datei.
+     *
+     * @param file Import-Datei
+     * @param encoding z.B. "ISO-8859-1"
+     * @throws IOException falls was schiefgelaufen ist
+     * @since 1.0
+     */
+    public void importFrom(final File file, final Charset encoding) throws IOException {
+        Reader reader = new InputStreamReader(new FileInputStream(file), encoding);
+        try {
+            this.importFrom(reader);
+        } finally {
+            reader.close();
+        }
+    }
+
 	/**
+	 * Sets the erstellungs datum von.
+	 *
 	 * @param d Erstellungsdatum von
 	 */
 	public void setErstellungsDatumVon(final Datum d) {
@@ -336,6 +385,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the erstellungs datum von.
+	 *
 	 * @return Erstellungsdatum bis
 	 */
 	public Datum getErstellungsDatumVon() {
@@ -343,6 +394,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Sets the erstellungs datum bis.
+	 *
 	 * @param d Erstellungsdatum bis
 	 */
 	public void setErstellungsDatumBis(final Datum d) {
@@ -351,6 +404,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the erstellungs datum bis.
+	 *
 	 * @return Erstellungdatum bis
 	 */
 	public Datum getErstellungsDatumBis() {
@@ -358,6 +413,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Sets the absender.
+	 *
 	 * @param s neuer Absender
 	 */
 	public void setAbsender(final String s) {
@@ -366,6 +423,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the absender.
+	 *
 	 * @return Absender
 	 */
 	public String getAbsender() {
@@ -380,6 +439,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Sets the adressat.
+	 *
 	 * @param s Adressat
 	 */
 	public void setAdressat(final String s) {
@@ -388,6 +449,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the adressat.
+	 *
 	 * @return Adressat
 	 */
 	public String getAdressat() {
@@ -402,6 +465,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Sets the vermittler.
+	 *
 	 * @param s Vermittler
 	 */
 	public void setVermittler(final String s) {
@@ -410,6 +475,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the vermittler.
+	 *
 	 * @return Vermittler
 	 */
 	public String getVermittler() {

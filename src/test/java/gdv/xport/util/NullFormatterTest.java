@@ -74,7 +74,7 @@ public class NullFormatterTest extends AbstractFormatterTest {
         NullFormatter formatter = new NullFormatter(writer);
         Datenpaket datenpaket = new Datenpaket();
         try {
-            datenpaket.importFrom(MUSTERDATEI);
+            datenpaket.importFrom(MUSTERDATEI, "ISO-8859-1");
             formatter.write(datenpaket);
             writer.close();
             FileTester.assertContentEquals(MUSTERDATEI, output, "ISO-8859-1");
