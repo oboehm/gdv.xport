@@ -77,7 +77,7 @@ public class NullFormatterTest extends AbstractFormatterTest {
             datenpaket.importFrom(MUSTERDATEI);
             formatter.write(datenpaket);
             writer.close();
-            FileTester.assertContentEquals(MUSTERDATEI, output);
+            FileTester.assertContentEquals(MUSTERDATEI, output, "ISO-8859-1");
         } finally {
             log.info(output + " was " + (output.delete() ? "successful" : "not") + " deleted");
         }
@@ -94,7 +94,7 @@ public class NullFormatterTest extends AbstractFormatterTest {
     @Test
     public void testNotice() throws IOException {
         File output = File.createTempFile("testNotice", ".txt");
-        Writer writer = new FileWriter(output);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1");
         try {
             exportMusterdatei(new NullFormatter(writer));
             writer.close();
