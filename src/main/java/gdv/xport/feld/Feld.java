@@ -26,17 +26,13 @@ import gdv.xport.satz.feld.FeldX;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.*;
 import java.nio.ByteBuffer;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
-import net.sf.oval.constraint.Min;
-import net.sf.oval.constraint.NotEqual;
-import net.sf.oval.constraint.SizeCheck;
+import net.sf.oval.constraint.*;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
@@ -278,13 +274,12 @@ public class Feld implements Comparable<Feld> {
     }
 
     /**
-     * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation ergibt (Factory-Methode). Der Name wird
-     * dabei aus dem uebergebenen Enum-Feld abgeleitet.
+     * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation
+     * ergibt (Factory-Methode). Der Name wird dabei aus dem uebergebenen
+     * Enum-Feld abgeleitet.
      *
-     * @param feldX
-     *            Enum fuer das erzeugte Feld
-     * @param info
-     *            die FeldInfo-Annotation mit dem gewuenschten Datentyp
+     * @param feldX Enum fuer das erzeugte Feld
+     * @param info die FeldInfo-Annotation mit dem gewuenschten Datentyp
      * @return das erzeugte Feld
      */
     public static Feld createFeld(final Enum<?> feldX, final FeldInfo info) {
@@ -292,14 +287,16 @@ public class Feld implements Comparable<Feld> {
             Constructor<? extends Feld> ctor = info.type().getConstructor(Enum.class, FeldInfo.class);
             Feld feld = ctor.newInstance(feldX, info);
             return feld;
-        } catch (NoSuchMethodException e) {
-            throw new InternalError("no constructor " + info.type().getSimpleName() + "(String, FeldInfo) found");
-        } catch (InstantiationException e) {
-            throw new InternalError("can't instantiate " + info.type());
-        } catch (IllegalAccessException e) {
-            throw new InternalError("can't access ctor for " + info.type());
-        } catch (InvocationTargetException e) {
-            throw new InternalError("error invoking ctor for " + info.type() + " (" + e.getTargetException() + ")");
+        } catch (NoSuchMethodException ex) {
+            throw new IllegalArgumentException("no constructor " + info.type().getSimpleName()
+                    + "(String, FeldInfo) found", ex);
+        } catch (InstantiationException ex) {
+            throw new IllegalArgumentException("can't instantiate " + info.type(), ex);
+        } catch (IllegalAccessException ex) {
+            throw new IllegalArgumentException("can't access ctor for " + info.type(), ex);
+        } catch (InvocationTargetException ex) {
+            throw new IllegalArgumentException("error invoking ctor for " + info.type() + " ("
+                    + ex.getTargetException() + ")", ex);
         }
     }
 
@@ -317,8 +314,8 @@ public class Feld implements Comparable<Feld> {
      * Bezeichner nur aus einem Wort (in Grossbuchstaben). Er wird aus der Bezeichnung unter Zuhilfenahme der
      * {@link Bezeichner}- Klasse ermittelt, wenn das bezeichner-Attribute nicht gesetzt (bzw. UNBEKANNT) ist.
      *
-     * @since 0.6
      * @return Bezeichner in Grossbuchstaben
+     * @since 0.6
      */
     public String getBezeichner() {
         if (!this.bezeichner.equals(FeldX.UNBEKANNT)) {
@@ -554,8 +551,8 @@ public class Feld implements Comparable<Feld> {
      * Diese Methode ist dafuer vorgesehen, das Feld als normalen String ausgeben zu koennen. Zahlen koennen so z.B. in
      * der Form "123,45" ausgegeben werden, unter Beruecksichtigung der eingestellten "Locale".
      *
-     * @since 0.5.1
      * @return Inhalt des Feldes
+     * @since 0.5.1
      */
     public String format() {
         return this.getInhalt();
@@ -582,11 +579,10 @@ public class Feld implements Comparable<Feld> {
         if (other == null) {
             return false;
         }
-        try {
-            return this.equals((Feld) other);
-        } catch (ClassCastException cce) {
+        if (!(other instanceof Feld)) {
             return false;
         }
+        return this.equals((Feld) other);
     }
 
     /**
@@ -637,12 +633,12 @@ public class Feld implements Comparable<Feld> {
         try {
             Field field = Bezeichner.class.getField(feldX.name());
             return (String) field.get(null);
-        } catch (NoSuchFieldException e) {
-            log.info("Bezeichner." + feldX.name() + " not found");
-        } catch (IllegalArgumentException e) {
-            log.warn(e);
-        } catch (IllegalAccessException e) {
-            log.warn("can't access Bezeichner." + feldX.name());
+        } catch (NoSuchFieldException ex) {
+            log.info("Bezeichner." + feldX.name() + " not found:", ex);
+        } catch (IllegalArgumentException ex) {
+            log.warn(ex);
+        } catch (IllegalAccessException ex) {
+            log.warn("can't access Bezeichner." + feldX.name(), ex);
         }
         // return feldX.name();
         return toBezeichnung(feldX);
