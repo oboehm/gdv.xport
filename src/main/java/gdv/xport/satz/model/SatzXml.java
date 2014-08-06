@@ -84,14 +84,7 @@ public final class SatzXml extends Datensatz {
         if (name.getLocalPart().equals("satzanfang")) {
             parseSatzanfang(element, reader);
         } else if (name.getLocalPart().equals("feldreferenz")) {
-            Properties props = parseFeldreferenz(name, reader);
-            log.debug("Element <feldreferenz> consists of {}.", props);
-            if (props.getProperty("name", "").equals("Satzart")) {
-                String auspraegung = props.getProperty("auspraegung");
-                if (StringUtils.isNotBlank(auspraegung)) {
-                    this.getSatzartFeld().setInhalt(auspraegung);
-                }
-            }
+            parseFeldreferenz(element, reader);
         }
     }
 
@@ -100,10 +93,32 @@ public final class SatzXml extends Datensatz {
         int nr = Integer.parseInt(teilsatz.getValue());
         Teildatensatz tds = new Teildatensatz(this.getSatzart(), nr);
         this.add(tds);
-        ignore(element.getName(), reader);
+        while (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (isStartElement(event, "feldreferenz")) {
+                parseFeldreferenz(event.asStartElement(), reader);
+            } else if (isEndElement(element.getName(), event)) {
+                log.trace("End of <{}> is reached.", element);
+                return;
+            }
+        }
+        throw new XMLStreamException("end of " + element + " not found");
     }
 
-    private static Properties parseFeldreferenz(final QName name, final XMLEventReader reader)
+    private QName parseFeldreferenz(StartElement element, final XMLEventReader reader) throws XMLStreamException {
+        QName name = element.getName();
+        Properties props = parseSimpleElements(name, reader);
+        log.debug("Element <feldreferenz> consists of {}.", props);
+        if (props.getProperty("technischerName", "").equals("Satzart")) {
+            String auspraegung = props.getProperty("auspraegung");
+            if (StringUtils.isNotBlank(auspraegung)) {
+                this.getSatzartFeld().setInhalt(auspraegung);
+            }
+        }
+        return element.getAttributeByName(new QName("referenz")).getName();
+    }
+
+    private static Properties parseSimpleElements(final QName name, final XMLEventReader reader)
             throws XMLStreamException {
         log.trace("Parsing element <{}>...<{}/>.", name, name);
         Properties props = new Properties();
@@ -139,16 +154,23 @@ public final class SatzXml extends Datensatz {
         throw new XMLStreamException("end element of <" + name + "> not read");
     }
 
+//    private static void ignore(final QName name, final XMLEventReader reader) throws XMLStreamException {
+//        while (reader.hasNext()) {
+//            XMLEvent event = reader.nextEvent();
+//            if (isEndElement(name, event)) {
+//                log.trace("End of <{}> is reached.", name);
+//                return;
+//            }
+//        }
+//        throw new XMLStreamException("end of <" + name + "> not found");
+//    }
 
-    private static void ignore(final QName name, final XMLEventReader reader) throws XMLStreamException {
-        while (reader.hasNext()) {
-            XMLEvent event = reader.nextEvent();
-            if (isEndElement(name, event)) {
-                log.trace("End of <{}> is reached.", name);
-                return;
-            }
+    private static boolean isStartElement(final XMLEvent event, final String name) {
+        if (event.isStartElement()) {
+            return event.asStartElement().getName().getLocalPart().equals(name);
+        } else {
+            return false;
         }
-        throw new XMLStreamException("end of <" + name + "> not found");
     }
 
     private static boolean isEndElement(final QName name, final XMLEvent event) {

@@ -21,6 +21,7 @@ package gdv.xport.satz.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 
 import java.io.IOException;
@@ -35,7 +36,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import patterntesting.runtime.annotation.Broken;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -73,18 +73,17 @@ public class SatzXmlTest {
      */
     @Test
     public void testGetSatzart() {
-        assertEquals(100, satz100.getSatzart());
+        checkSatzart(satz100);
     }
 
     /**
      * Auch der Satz 100 kann eine Sparte beinhalten.
      */
     @Test
-    @Broken(till = "06-Aug-2014", why="not yet implemented")
     public void testGetSparte() {
-        NumFeld sparte = satz100.getSatzartFeld();
-        assertEquals(11, sparte.getByteAdresse());
+        NumFeld sparte = satz100.getSparteFeld();
         assertEquals(3, sparte.getAnzahlBytes());
+        assertEquals(11, sparte.getByteAdresse());
         assertEquals("Sparte", sparte.getBezeichnung());
     }
 
@@ -99,7 +98,20 @@ public class SatzXmlTest {
         for (Teildatensatz tds : teildatensaetze) {
             assertEquals(expectedNr, tds.getNummer().toChar());
             expectedNr++;
+            checkTeildatensatz(tds);
         }
+    }
+
+    private static void checkTeildatensatz(final Teildatensatz tds) {
+        checkSatzart(tds);
+//        Feld feld = tds.getFeld("VU-Nummer");
+//        assertEquals(5, feld.getAnzahlBytes());
+    }
+
+    private static void checkSatzart(final Satz satz) {
+        assertEquals(100, satz.getSatzart());
+        NumFeld satzart = satz.getSatzartFeld();
+        assertEquals(4, satzart.getAnzahlBytes());
     }
 
 }
