@@ -57,7 +57,7 @@ public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.satz.AllgemeinerVertragsteil#AllgemeinerVertragsteil()}.
+     * Testet den allgemeinen Vertragsteil (Satz 200).
      */
     @Test
     public void testAllgemeinerVertragsteil() {
