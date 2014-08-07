@@ -42,6 +42,11 @@
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
     <sonar.jacoco.reportPath>target/jacoco.exec</sonar.jacoco.reportPath>
 
+    <!-- Sonar 4.x Violations Filter -->
+    <sonar.issue.ignore.multicriteria.1.ruleKey>squid:S1147</sonar.issue.ignore.multicriteria.1.ruleKey>
+    <sonar.issue.ignore.multicriteria.1.resourceKey>**/Main.java</sonar.issue.ignore.multicriteria.1.resourceKey>
+    <sonar.issue.ignore.multicriteria>1</sonar.issue.ignore.multicriteria>
+
   </properties>
 
 

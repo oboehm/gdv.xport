@@ -26,7 +26,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -45,6 +48,8 @@ import org.apache.commons.io.output.NullWriter;
  */
 public final class Main {
 
+    private static final Logger log = Logger.getLogger(Main.class.getName());
+
     /**
      * Diese Main-Klasse dient hautpsaechlich zu Demo-Zwecken. Werden keine Optionen angegeben, wird von der
      * Standard-Eingabe (System.in) gelesen und das Ergebnis nach System.out geschrieben. <br/>
@@ -59,7 +64,6 @@ public final class Main {
      *             falls bei der XML-Generierung was schief gelaufen ist.
      */
     public static void main(final String[] args) throws IOException, XMLStreamException {
-//        initLogging();
         OutputStream ostream = System.out;
         Options options = createOptions();
         CommandLineParser parser = new GnuParser();
@@ -109,8 +113,8 @@ public final class Main {
             if (cmd.hasOption("validate")) {
                 printViolations(datenpaket.validate());
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } catch (ParseException ex) {
+            log.log(Level.SEVERE, "Cannot parse " + Arrays.toString(args), ex);
             System.err.println("Fehler beim Aufruf von " + Main.class);
             printHelp(options);
             System.exit(1);
@@ -183,15 +187,6 @@ public final class Main {
             }
         }
     }
-
-//    /**
-//     * Hier sorgen wir dafuer, dass nicht mehr auf der Console, sondern in eine
-//     * Datei geloggt wird.
-//     */
-//    private static void initLogging() {
-//        URL logURL = Main.class.getResource("main-log4j.properties");
-//        PropertyConfigurator.configure(logURL);
-//    }
 
     /**
      * Damit niemand die Klasse aus Versehen instantiiert, ist der Default-Konstruktor private.
