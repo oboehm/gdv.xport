@@ -57,7 +57,7 @@ public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
     }
 
     /**
-     * Test-Methode, die den allgemeinen Vertragsteil testet.
+     * Testet den allgemeinen Vertragsteil (Satz 200).
      */
     @Test
     public void testAllgemeinerVertragsteil() {
