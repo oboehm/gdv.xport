@@ -28,6 +28,7 @@ import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -39,24 +40,56 @@ import org.junit.Test;
 public class FeldReferenzTest {
 
     private static final XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+    private static FeldReferenz feldReferenz;
 
     /**
-     * Test-Methode fuer {@link FeldReferenz#FeldReferenz(XMLEventReader)}.
+     * Setzt ein FeldReferenz-Objekt zum Testen auf.
      *
      * @throws XMLStreamException the XML stream exception
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @Test
-    public void testSatzReferenz() throws XMLStreamException, IOException {
-        InputStream istream = this.getClass().getResourceAsStream("feldreferenz.xml");
+    @BeforeClass
+    public static void setUpFeldReferenz() throws XMLStreamException, IOException {
+        InputStream istream = FeldReferenzTest.class.getResourceAsStream("feldreferenz.xml");
         assertNotNull("resource 'feldreferenz.xml' not found", istream);
         XMLEventReader parser = xmlInputFactory.createXMLEventReader(istream);
         try {
-            FeldReferenz referenz = new FeldReferenz(parser);
-            assertEquals("BN-2003.02.11.22.49.47.214", referenz.getId());
+            feldReferenz = new FeldReferenz(parser);
         } finally {
             istream.close();
         }
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldReferenz#getId()}.
+     */
+    @Test
+    public void testSatzReferenz() {
+        assertEquals("BN-2003.02.11.22.49.47.214", feldReferenz.getId());
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldReferenz#getName()}.
+     */
+    @Test
+    public void testGetName() {
+        assertEquals("Satzart", feldReferenz.getName());
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldReferenz#getTechnischerName()}.
+     */
+    @Test
+    public void testGetTechnischerName() {
+        assertEquals("Satzart", feldReferenz.getTechnischerName());
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldReferenz#getAuspraegung()}.
+     */
+    @Test
+    public void testGetAuspraegung() {
+        assertEquals(100, feldReferenz.getAuspraegung());
     }
 
 }

@@ -20,9 +20,12 @@ package gdv.xport.satz.xml;
 
 import gdv.xport.util.XmlHelper;
 
+import java.util.Properties;
+
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
 import org.slf4j.Logger;
@@ -40,6 +43,9 @@ public final class FeldReferenz {
     private static final Logger log = LoggerFactory.getLogger(FeldReferenz.class);
 
     private final String id;
+    private final String name;
+    private final String technischerName;
+    private final int auspraegung;
 
     /**
      * Instantiiert eine Objekt mit den Werten, die ueber den uebergebenen
@@ -49,7 +55,23 @@ public final class FeldReferenz {
      * @throws XMLStreamException the XML stream exception
      */
     public FeldReferenz(final XMLEventReader parser) throws XMLStreamException {
-        id = parse(parser);
+        this(parser, getNextStartElement(parser));
+    }
+
+    /**
+     * Instantiiert eine Objekt mit den Werten, die ueber den uebergebenen
+     * Parser gelesen werden.
+     *
+     * @param parser the parser
+     * @param element das Start-Element <feldreferenz referenz=... >
+     * @throws XMLStreamException the XML stream exception
+     */
+    public FeldReferenz(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
+        id = element.getAttributeByName(new QName("referenz")).getValue();
+        Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
+        this.name = props.getProperty("name");
+        this.technischerName = props.getProperty("technischerName");
+        this.auspraegung = Integer.parseInt(props.getProperty("auspraegung", "-1"));
     }
 
     /**
@@ -61,19 +83,46 @@ public final class FeldReferenz {
         return this.id;
     }
 
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * Gets the technischer name.
+     *
+     * @return the technischer name
+     */
+    public String getTechnischerName() {
+        return this.technischerName;
+    }
+
+    /**
+     * Gets the auspraegung.
+     *
+     * @return the auspraegung
+     */
+    public int getAuspraegung() {
+        return this.auspraegung;
+    }
+
 
 
     /////   XML-Verarbeitung   ////////////////////////////////////////////////
 
-    private String parse(final XMLEventReader reader) throws XMLStreamException {
+    private static StartElement getNextStartElement(final XMLEventReader reader) throws XMLStreamException {
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
-            if (XmlHelper.isStartElement(event, "feldreferenz")) {
-                return event.asStartElement().getAttributeByName(new QName("referenz")).getValue();
+            if (event.isStartElement()) {
+                return event.asStartElement();
             }
             log.trace("Event {} is ignored.", event);
         }
-        throw new XMLStreamException("element <feldreferenz> not found");
+        throw new XMLStreamException("no start element found");
     }
 
 }
