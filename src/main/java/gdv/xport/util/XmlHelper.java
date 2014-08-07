@@ -10,15 +10,21 @@
 
 package gdv.xport.util;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 import java.net.URL;
 
 import javax.xml.XMLConstants;
+import javax.xml.stream.events.XMLEvent;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.*;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.xml.sax.SAXException;
 
 /**
@@ -84,6 +90,26 @@ public final class XmlHelper {
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         URL xsdURL = XmlHelper.class.getResource(resource);
         return factory.newSchema(xsdURL);
+    }
+
+
+
+    /////   XML-Streams Utilities   ///////////////////////////////////////////
+
+    /**
+     * Ueberprueft, ob es ein Start-Event mit dem uebergebenen Namen ist.
+     *
+     * @param event der XML-Event
+     * @param name Name des Start-Elements
+     * @return true, falls es ein Start-Element ist
+     * @since 1.0
+     */
+    public static boolean isStartElement(final XMLEvent event, final String name) {
+        if (event.isStartElement()) {
+            return event.asStartElement().getName().getLocalPart().equals(name);
+        } else {
+            return false;
+        }
     }
 
 }

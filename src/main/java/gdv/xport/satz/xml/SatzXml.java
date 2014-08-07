@@ -20,6 +20,7 @@ package gdv.xport.satz.xml;
 
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
+import gdv.xport.util.XmlHelper;
 
 import java.util.Properties;
 
@@ -95,7 +96,7 @@ public final class SatzXml extends Datensatz {
         this.add(tds);
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
-            if (isStartElement(event, "feldreferenz")) {
+            if (XmlHelper.isStartElement(event, "feldreferenz")) {
                 parseFeldreferenz(event.asStartElement(), reader);
             } else if (isEndElement(element.getName(), event)) {
                 log.trace("End of <{}> is reached.", element);
@@ -164,14 +165,6 @@ public final class SatzXml extends Datensatz {
 //        }
 //        throw new XMLStreamException("end of <" + name + "> not found");
 //    }
-
-    private static boolean isStartElement(final XMLEvent event, final String name) {
-        if (event.isStartElement()) {
-            return event.asStartElement().getName().getLocalPart().equals(name);
-        } else {
-            return false;
-        }
-    }
 
     private static boolean isEndElement(final QName name, final XMLEvent event) {
         return event.isEndElement() && event.asEndElement().getName().equals(name);

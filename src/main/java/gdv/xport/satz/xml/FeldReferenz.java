@@ -18,6 +18,8 @@
 
 package gdv.xport.satz.xml;
 
+import gdv.xport.util.XmlHelper;
+
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
@@ -66,20 +68,12 @@ public final class FeldReferenz {
     private String parse(final XMLEventReader reader) throws XMLStreamException {
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
-            if (isStartElement(event, "feldreferenz")) {
+            if (XmlHelper.isStartElement(event, "feldreferenz")) {
                 return event.asStartElement().getAttributeByName(new QName("referenz")).getValue();
             }
             log.trace("Event {} is ignored.", event);
         }
         throw new XMLStreamException("element <feldreferenz> not found");
-    }
-
-    private static boolean isStartElement(final XMLEvent event, final String name) {
-        if (event.isStartElement()) {
-            return event.asStartElement().getName().getLocalPart().equals(name);
-        } else {
-            return false;
-        }
     }
 
 }
