@@ -16,7 +16,7 @@
  * (c)reated 30-Jul-2014 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.model;
+package gdv.xport.satz.xml;
 
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;

@@ -16,13 +16,14 @@
  * (c)reated 31-Jul-2014 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.model;
+package gdv.xport.satz.xml;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.xml.SatzXml;
 
 import java.io.IOException;
 import java.io.InputStream;
