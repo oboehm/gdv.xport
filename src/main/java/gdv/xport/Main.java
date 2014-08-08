@@ -20,10 +20,7 @@ package gdv.xport;
 
 import gdv.xport.util.*;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -48,7 +45,7 @@ import org.apache.commons.io.output.NullWriter;
  */
 public final class Main {
 
-    private static final Logger log = Logger.getLogger(Main.class.getName());
+    private static final Logger LOG = Logger.getLogger(Main.class.getName());
 
     /**
      * Diese Main-Klasse dient hautpsaechlich zu Demo-Zwecken. Werden keine Optionen angegeben, wird von der
@@ -64,7 +61,6 @@ public final class Main {
      *             falls bei der XML-Generierung was schief gelaufen ist.
      */
     public static void main(final String[] args) throws IOException, XMLStreamException {
-        OutputStream ostream = System.out;
         Options options = createOptions();
         CommandLineParser parser = new GnuParser();
         try {
@@ -74,66 +70,89 @@ public final class Main {
                 printHelp(options);
                 System.exit(0);
             }
-            // Option "-import"
-            Datenpaket datenpaket = new Datenpaket();
-            if (cmd.hasOption("import")) {
-                String filename = cmd.getOptionValue("import");
-                importFrom(filename, datenpaket);
-            } else if (cmd.hasOption("java")) {
-                datenpaket = SatzFactory.getAllSupportedSaetze();
-            } else {
-                datenpaket.importFrom(System.in);
-            }
-            // Option "-xml" bzw. "-html" bzw. "-java"
-            AbstractFormatter formatter = new NullFormatter(new NullWriter());
-            if (cmd.hasOption("xml")) {
-                formatter = new XmlFormatter();
-            } else if (cmd.hasOption("html")) {
-                formatter = new HtmlFormatter();
-            }
-            if (cmd.hasOption("export")) {
-                File file = new File(cmd.getOptionValue("export"));
-                if (cmd.hasOption("java")) {
-                    System.err.println("Option -java wird seit 0.9 nicht mehr unterstuetzt.");
-                    return;
-                }
-                if (formatter instanceof NullFormatter) {
-                    String suffix = FilenameUtils.getExtension(file.getName());
-                    if (suffix.equalsIgnoreCase("xml")) {
-                        formatter = new XmlFormatter();
-                    } else if (suffix.equalsIgnoreCase("html")) {
-                        formatter = new HtmlFormatter();
-                    }
-                }
-                ostream = new FileOutputStream(file);
-                formatter.setWriter(ostream);
-            }
-            formatter.write(datenpaket);
+            Datenpaket datenpaket = importDatenpaket(cmd);
+            formatDatenpaket(cmd, datenpaket);
             // Option "-validate"
             if (cmd.hasOption("validate")) {
                 printViolations(datenpaket.validate());
             }
         } catch (ParseException ex) {
-            log.log(Level.SEVERE, "Cannot parse " + Arrays.toString(args), ex);
+            LOG.log(Level.SEVERE, "Cannot parse " + Arrays.toString(args), ex);
             System.err.println("Fehler beim Aufruf von " + Main.class);
             printHelp(options);
             System.exit(1);
-        } finally {
-            if (ostream != null) {
-                ostream.close();
-            }
         }
     }
 
     /**
-     * Je nachdem, was als 'filename' uebergeben wird, wird von einer URL oder einer Datei importiert.
+     * Hier wird die Option "-import" abgehandelt. Falls dabei kein Dateiname
+     * mit angegeben ist, wird von 'stdin' gelesen.
      *
-     * @param filename
-     *            kann sowohl ein Dateiname als auch eine URL sein
-     * @param datenpaket
-     *            hierein wird importiert
-     * @throws IOException
-     *             falls was schiefgelaufen ist
+     * @param cmd the cmd
+     * @return the datenpaket
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    private static Datenpaket importDatenpaket(final CommandLine cmd) throws IOException {
+        Datenpaket datenpaket = new Datenpaket();
+        if (cmd.hasOption("import")) {
+            String filename = cmd.getOptionValue("import");
+            importFrom(filename, datenpaket);
+        } else if (cmd.hasOption("java")) {
+            datenpaket = SatzFactory.getAllSupportedSaetze();
+        } else {
+            datenpaket.importFrom(System.in);
+        }
+        return datenpaket;
+    }
+
+    /**
+     * Hier werden die Optionen "-xml" und "-html" abgehandelt.
+     * Die Option "-java" wird seit 0.9 nicht mehr unterstuetzt.
+     *
+     * @param cmd the cmd
+     * @param datenpaket the datenpaket
+     * @throws FileNotFoundException the file not found exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    private static void formatDatenpaket(final CommandLine cmd, final Datenpaket datenpaket) throws FileNotFoundException,
+            IOException {
+        AbstractFormatter formatter = new NullFormatter(new NullWriter());
+        if (cmd.hasOption("xml")) {
+            formatter = new XmlFormatter();
+        } else if (cmd.hasOption("html")) {
+            formatter = new HtmlFormatter();
+        }
+        if (cmd.hasOption("export")) {
+            File file = new File(cmd.getOptionValue("export"));
+            if (cmd.hasOption("java")) {
+                System.err.println("Option -java wird seit 0.9 nicht mehr unterstuetzt.");
+                return;
+            }
+            if (formatter instanceof NullFormatter) {
+                String suffix = FilenameUtils.getExtension(file.getName());
+                if (suffix.equalsIgnoreCase("xml")) {
+                    formatter = new XmlFormatter();
+                } else if (suffix.equalsIgnoreCase("html")) {
+                    formatter = new HtmlFormatter();
+                }
+            }
+            OutputStream ostream = new FileOutputStream(file);
+            try {
+                formatter.setWriter(ostream);
+            } finally {
+                ostream.close();
+            }
+        }
+        formatter.write(datenpaket);
+    }
+
+    /**
+     * Je nachdem, was als 'filename' uebergeben wird, wird von einer URL oder
+     * einer Datei importiert.
+     *
+     * @param filename kann sowohl ein Dateiname als auch eine URL sein
+     * @param datenpaket hierein wird importiert
+     * @throws IOException falls was schiefgelaufen ist
      */
     private static void importFrom(final String filename, final Datenpaket datenpaket) throws IOException {
         try {
