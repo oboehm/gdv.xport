@@ -27,7 +27,12 @@ import gdv.xport.io.ImportException;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -42,7 +47,7 @@ import org.apache.commons.logging.LogFactory;
  * @author ob@aosd.de
  * @since 04.10.2009
  */
-public final class Teildatensatz extends Satz {
+public class Teildatensatz extends Satz {
 
     private static final Log log = LogFactory.getLog(Teildatensatz.class);
     private final Map<Object, Feld> datenfelder = new HashMap<Object, Feld>();
@@ -60,6 +65,9 @@ public final class Teildatensatz extends Satz {
     }
 
     /**
+     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart und
+     * Nummer.
+     *
      * @param satzart z.B. 1 (Vorsatz)
      * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
      */
@@ -69,7 +77,8 @@ public final class Teildatensatz extends Satz {
     }
 
     /**
-     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
+     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart
+     * und Nummer.
      *
      * @param satzart z.B. 100
      * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)

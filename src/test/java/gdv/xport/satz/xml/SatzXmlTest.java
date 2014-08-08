@@ -23,7 +23,6 @@ import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.xml.SatzXml;
 
 import java.io.IOException;
 import java.io.InputStream;

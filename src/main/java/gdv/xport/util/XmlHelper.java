@@ -128,7 +128,7 @@ public final class XmlHelper {
             XMLEvent event = reader.nextEvent();
             if (event.isStartElement()) {
                 addAsProperty(event.asStartElement(), reader, props);
-            } else if (isEndElement(name, event)) {
+            } else if (isEndElement(event, name)) {
                 log.trace("End of {} recognized.", event);
                 return props;
             }
@@ -172,7 +172,14 @@ public final class XmlHelper {
         }
     }
 
-    private static boolean isEndElement(final QName name, final XMLEvent event) {
+    /**
+     * Ueberprueft, ob es ein End-Event mit dem uebergebenen Namen ist.
+     *
+     * @param event der XML-Event
+     * @param name Name des Start-Elements
+     * @return true, falls es ein End-Element ist
+     */
+    public static boolean isEndElement(final XMLEvent event, final QName name) {
         return event.isEndElement() && event.asEndElement().getName().equals(name);
     }
 
