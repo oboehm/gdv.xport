@@ -71,7 +71,7 @@ public final class FeldReferenz {
         Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
         this.name = props.getProperty("name");
         this.technischerName = props.getProperty("technischerName");
-        this.auspraegung = Integer.parseInt(props.getProperty("auspraegung", "-1"));
+        this.auspraegung = Integer.parseInt(props.getProperty("auspraegung", "0"));
     }
 
     /**
@@ -108,6 +108,15 @@ public final class FeldReferenz {
      */
     public int getAuspraegung() {
         return this.auspraegung;
+    }
+
+    /**
+     * Dient zum Ermitteln, ob uerhaupt das auspraegung-Feld belegt ist.
+     *
+     * @return true falls auspraeung > 0
+     */
+    public boolean hasAuspraegung() {
+        return this.auspraegung > 0;
     }
 
 
