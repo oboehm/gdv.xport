@@ -569,31 +569,20 @@ public class Feld implements Comparable<Feld> {
                 + this.getEndAdresse() + "): \"" + this.getInhalt().trim() + "\"";
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Zwei Felder sind gleich, wenn sie die gleiche Adresse und den gleichen
+     * Inhalt haben.
      *
+     * @param obj das andere Feld
+     * @return true, wenn beide Felder gleich sind
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public final boolean equals(final Object other) {
-        if (other == null) {
+    public final boolean equals(final Object obj) {
+        if (!(obj instanceof Feld)) {
             return false;
         }
-        if (!(other instanceof Feld)) {
-            return false;
-        }
-        return this.equals((Feld) other);
-    }
-
-    /**
-     * Equals.
-     *
-     * @param other
-     *            the other
-     *
-     * @return true, if successful
-     */
-    public final boolean equals(final Feld other) {
+        Feld other = (Feld) obj;
         return this.bezeichnung.equals(other.bezeichnung) && this.getInhalt().equals(other.getInhalt())
                 && (this.byteAdresse == other.byteAdresse) && this.ausrichtung == other.ausrichtung;
     }

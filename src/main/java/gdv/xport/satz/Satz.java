@@ -792,29 +792,19 @@ public abstract class Satz {
 		return swriter.toString();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Zwei Saetze sind gleich, wenn ihre Teildatensaetze gleich sind.
+	 *
+	 * @param obj der andere Satz
+	 * @return true, wenn beide Saetze gleich sind
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(final Object other) {
-		try {
-			return this.equals((Satz) other);
-		} catch (ClassCastException cce) {
-			return false;
-		}
-	}
-
-	/**
-	 * Equals.
-	 *
-	 * @param other the other
-	 * @return true, if successful
-	 */
-	public final boolean equals(final Satz other) {
-		if (other == null) {
-			return false;
-		}
+	public boolean equals(final Object obj) {
+	    if (!(obj instanceof Satz)) {
+	        return false;
+	    }
+	    Satz other = (Satz) obj;
 		if (this.getSatzart() != other.getSatzart()) {
 			return false;
 		}
@@ -832,7 +822,7 @@ public abstract class Satz {
 	 */
 	@Override
 	public int hashCode() {
-		return this.toLongString().hashCode();
+		return this.getSatzart();
 	}
 
 	// /// Enum-Behandlung und Auswertung der Meta-Infos ///////////////////

@@ -22,9 +22,7 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 
 import java.io.IOException;
@@ -330,28 +328,19 @@ public final class Teildatensatz extends Satz {
         return violations;
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Satz#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object other) {
-        if (other == null) {
-            return false;
-        }
-        try {
-            return this.equals((Teildatensatz) other);
-        } catch (ClassCastException cce) {
-            return false;
-        }
-    }
-
     /**
      * 2 Teildatensaetze sind gleich, wenn all ihre Felder gleich sind.
      *
-     * @param other der andere Teildatensatz
+     * @param obj der andere Teildatensatz
      * @return true, wenn beide Teildatensaetze gleich sind
+     * @see gdv.xport.satz.Satz#equals(java.lang.Object)
      */
-    public boolean equals(final Teildatensatz other) {
+    @Override
+    public boolean equals(final Object obj) {
+        if (!(obj instanceof Teildatensatz)) {
+            return false;
+        }
+        Teildatensatz other = (Teildatensatz) obj;
         if (this.datenfelder.size() != other.datenfelder.size()) {
             return false;
         }
