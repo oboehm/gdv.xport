@@ -18,6 +18,8 @@
 
 package gdv.xport.satz.xml;
 
+import gdv.xport.feld.Align;
+import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
 
 import java.util.ArrayList;
@@ -52,6 +54,20 @@ public final class TeildatensatzXml extends Teildatensatz {
      */
     public void add(final FeldReferenz referenz) {
         feldReferenzen.add(referenz);
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.satz.Teildatensatz#getFeld(java.lang.String)
+     */
+    @Override
+    public Feld getFeld(final String name) {
+        for (FeldReferenz referenz : this.feldReferenzen) {
+            if (name.equals(referenz.getName())) {
+                Feld feld = new Feld(name, referenz.getAuspraegung(), Align.UNKNOWN);
+                return feld;
+            }
+        }
+        throw new IllegalArgumentException("no feld '" + name + "' found");
     }
 
 }

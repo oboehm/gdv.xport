@@ -28,9 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.*;
 
 import org.junit.BeforeClass;
 import org.junit.Test;

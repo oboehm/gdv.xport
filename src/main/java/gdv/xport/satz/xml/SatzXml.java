@@ -24,9 +24,7 @@ import gdv.xport.util.XmlHelper;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.Attribute;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
+import javax.xml.stream.events.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,6 +76,8 @@ public final class SatzXml extends Datensatz {
         QName name = element.getName();
         if (name.getLocalPart().equals("satzanfang")) {
             parseSatzanfang(element, reader);
+        } else if (name.getLocalPart().equals("felder")) {
+            parseFelder(element, reader);
         } else if (name.getLocalPart().equals("feldreferenz")) {
             parseFeldreferenz(element, reader);
         }
@@ -101,6 +101,11 @@ public final class SatzXml extends Datensatz {
         throw new XMLStreamException("end of " + element + " not found");
     }
 
+    private void parseFelder(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
+        LOG.info("Parsing of {} not yet implemented.", element);
+        ignore(element.getName(), reader);
+    }
+
     private void parseFeldreferenz(StartElement element, final XMLEventReader reader) throws XMLStreamException {
         FeldReferenz referenz = new FeldReferenz(reader, element);
         if (referenz.hasAuspraegung()) {
@@ -108,15 +113,15 @@ public final class SatzXml extends Datensatz {
         }
     }
 
-//    private static void ignore(final QName name, final XMLEventReader reader) throws XMLStreamException {
-//        while (reader.hasNext()) {
-//            XMLEvent event = reader.nextEvent();
-//            if (isEndElement(name, event)) {
-//                log.trace("End of <{}> is reached.", name);
-//                return;
-//            }
-//        }
-//        throw new XMLStreamException("end of <" + name + "> not found");
-//    }
+    private static void ignore(final QName name, final XMLEventReader reader) throws XMLStreamException {
+        while (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (XmlHelper.isEndElement(event, name)) {
+                LOG.debug("End of <{}> is reached.", name);
+                return;
+            }
+        }
+        throw new XMLStreamException("end of <" + name + "> not found");
+    }
 
 }

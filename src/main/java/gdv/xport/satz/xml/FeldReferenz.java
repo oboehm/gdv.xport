@@ -28,6 +28,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,7 +46,7 @@ public final class FeldReferenz {
     private final String id;
     private final String name;
     private final String technischerName;
-    private final int auspraegung;
+    private final String auspraegung;
 
     /**
      * Instantiiert eine Objekt mit den Werten, die ueber den uebergebenen
@@ -69,9 +70,9 @@ public final class FeldReferenz {
     public FeldReferenz(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
         id = element.getAttributeByName(new QName("referenz")).getValue();
         Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
-        this.name = props.getProperty("name");
-        this.technischerName = props.getProperty("technischerName");
-        this.auspraegung = Integer.parseInt(props.getProperty("auspraegung", "0"));
+        this.name = props.getProperty("name", "");
+        this.technischerName = props.getProperty("technischerName", "");
+        this.auspraegung = props.getProperty("auspraegung", "");
     }
 
     /**
@@ -106,7 +107,7 @@ public final class FeldReferenz {
      *
      * @return the auspraegung
      */
-    public int getAuspraegung() {
+    public String getAuspraegung() {
         return this.auspraegung;
     }
 
@@ -116,7 +117,7 @@ public final class FeldReferenz {
      * @return true falls auspraeung > 0
      */
     public boolean hasAuspraegung() {
-        return this.auspraegung > 0;
+        return StringUtils.isNotEmpty(this.auspraegung);
     }
 
 
