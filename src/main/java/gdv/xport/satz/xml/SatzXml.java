@@ -74,11 +74,11 @@ public final class SatzXml extends Datensatz {
     private void parseElement(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         LOG.trace("Parsing element {}.", element);
         QName name = element.getName();
-        if (name.getLocalPart().equals("satzanfang")) {
+        if ("satzanfang".equals(name.getLocalPart())) {
             parseSatzanfang(element, reader);
-        } else if (name.getLocalPart().equals("felder")) {
+        } else if ("felder".equals(name.getLocalPart())) {
             parseFelder(element, reader);
-        } else if (name.getLocalPart().equals("feldreferenz")) {
+        } else if ("feldreferenz".equals(name.getLocalPart())) {
             parseFeldreferenz(element, reader);
         }
     }

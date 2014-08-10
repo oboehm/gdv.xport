@@ -63,8 +63,7 @@ public final class TeildatensatzXml extends Teildatensatz {
     public Feld getFeld(final String name) {
         for (FeldReferenz referenz : this.feldReferenzen) {
             if (name.equals(referenz.getName())) {
-                Feld feld = new Feld(name, referenz.getAuspraegung(), Align.UNKNOWN);
-                return feld;
+                return new Feld(name, referenz.getAuspraegung(), Align.UNKNOWN);
             }
         }
         throw new IllegalArgumentException("no feld '" + name + "' found");
