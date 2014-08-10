@@ -24,9 +24,7 @@ import static org.junit.Assert.assertNotNull;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.*;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -89,7 +87,7 @@ public class FeldReferenzTest {
      */
     @Test
     public void testGetAuspraegung() {
-        assertEquals(100, feldReferenz.getAuspraegung());
+        assertEquals("0100", feldReferenz.getAuspraegung());
     }
 
 }
