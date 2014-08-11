@@ -19,16 +19,15 @@
 package gdv.xport.satz.xml;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collection;
 
-import javax.xml.stream.*;
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLStreamException;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -43,9 +42,8 @@ import patterntesting.runtime.junit.SmokeRunner;
  * @since 1.0 (31.07.2014)
  */
 @RunWith(SmokeRunner.class)
-public class SatzXmlTest {
+public class SatzXmlTest extends AbstractXmlTest {
 
-    private static final XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
     private static SatzXml satz100;
 
     /**
@@ -56,13 +54,11 @@ public class SatzXmlTest {
      */
     @BeforeClass
     public static void setUpSatz100() throws IOException, XMLStreamException {
-        InputStream istream = SatzXmlTest.class.getResourceAsStream("Satz100.xml");
-        assertNotNull("resource 'Satz100.xml' not found", istream);
-        XMLEventReader parser = xmlInputFactory.createXMLEventReader(istream);
+        XMLEventReader parser = createXMLEventReader("Satz100.xml");
         try {
             satz100 = new SatzXml(parser);
         } finally {
-            istream.close();
+            parser.close();
         }
     }
 

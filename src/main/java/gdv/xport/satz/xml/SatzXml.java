@@ -24,7 +24,9 @@ import gdv.xport.util.XmlHelper;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.*;
+import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -103,7 +105,7 @@ public final class SatzXml extends Datensatz {
 
     private void parseFelder(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         LOG.info("Parsing of {} not yet implemented.", element);
-        ignore(element.getName(), reader);
+        XmlHelper.ignore(element.getName(), reader);
     }
 
     private void parseFeldreferenz(StartElement element, final XMLEventReader reader) throws XMLStreamException {
@@ -111,17 +113,6 @@ public final class SatzXml extends Datensatz {
         if (referenz.hasAuspraegung()) {
             this.getSatzartFeld().setInhalt(referenz.getAuspraegung());
         }
-    }
-
-    private static void ignore(final QName name, final XMLEventReader reader) throws XMLStreamException {
-        while (reader.hasNext()) {
-            XMLEvent event = reader.nextEvent();
-            if (XmlHelper.isEndElement(event, name)) {
-                LOG.debug("End of <{}> is reached.", name);
-                return;
-            }
-        }
-        throw new XMLStreamException("end of <" + name + "> not found");
     }
 
 }

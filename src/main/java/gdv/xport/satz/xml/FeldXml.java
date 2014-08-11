@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 07.08.2014 by Oli B. (ob@aosd.de)
+ * (c)reated 11.08.2014 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz.xml;
 
+import gdv.xport.feld.Feld;
 import gdv.xport.util.XmlHelper;
 
 import java.util.Properties;
@@ -27,25 +28,17 @@ import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 
-import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
- * Diese Klasse repraesentiert die Wert, die als "<feldreferenz>" ueber XML
- * reinkommen.
+ * Im Gegensatz zur {@link Feld}-Klasse kommen hier die einzelnen Werte als
+ * XML-Strem rein.
  *
  * @author oliver (oliver.boehm@gmail.com)
- * @since 1.0 (07.08.2014)
+ * @since 1.0 (11.08.2014)
  */
-public final class FeldReferenz {
-
-    private static final Logger LOG = LoggerFactory.getLogger(FeldReferenz.class);
+public final class FeldXml extends Feld {
 
     private final String id;
     private final String name;
-    private final String technischerName;
-    private final String auspraegung;
 
     /**
      * Instantiiert eine Objekt mit den Werten, die ueber den uebergebenen
@@ -54,7 +47,7 @@ public final class FeldReferenz {
      * @param parser the parser
      * @throws XMLStreamException the XML stream exception
      */
-    public FeldReferenz(final XMLEventReader parser) throws XMLStreamException {
+    public FeldXml(final XMLEventReader parser) throws XMLStreamException {
         this(parser, XmlHelper.getNextStartElement(parser));
     }
 
@@ -66,13 +59,10 @@ public final class FeldReferenz {
      * @param element das Start-Element <feldreferenz referenz=... >
      * @throws XMLStreamException the XML stream exception
      */
-    public FeldReferenz(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
+    public FeldXml(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
         id = element.getAttributeByName(new QName("referenz")).getValue();
         Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
         this.name = props.getProperty("name", "");
-        this.technischerName = props.getProperty("technischerName", "");
-        this.auspraegung = props.getProperty("auspraegung", "");
-        LOG.debug("{} created.");
     }
 
     /**
@@ -85,43 +75,19 @@ public final class FeldReferenz {
     }
 
     /**
-     * Gets the name.
+     * Im Gegensatz zur Oberflaeche kann hier der "Bezeichner" in Gross- und
+     * Kleinbuchstaben erscheinen.
      *
-     * @return the name
+     * @return der technische Name
+     * @see gdv.xport.feld.Feld#getBezeichner()
      */
-    public String getName() {
+    @Override
+    public String getBezeichner() {
         return this.name;
     }
 
-    /**
-     * Gets the technischer name.
-     *
-     * @return the technischer name
-     */
-    public String getTechnischerName() {
-        return this.technischerName;
-    }
-
-    /**
-     * Gets the auspraegung.
-     *
-     * @return the auspraegung
-     */
-    public String getAuspraegung() {
-        return this.auspraegung;
-    }
-
-    /**
-     * Dient zum Ermitteln, ob uerhaupt das auspraegung-Feld belegt ist.
-     *
-     * @return true falls auspraeung > 0
-     */
-    public boolean hasAuspraegung() {
-        return StringUtils.isNotEmpty(this.auspraegung);
-    }
-
     /* (non-Javadoc)
-     * @see java.lang.Object#toString()
+     * @see gdv.xport.feld.Feld#toString()
      */
     @Override
     public String toString() {

@@ -42,7 +42,7 @@ import org.xml.sax.SAXException;
  */
 public final class XmlHelper {
 
-    private static final Logger log = LoggerFactory.getLogger(XmlHelper.class);
+    private static final Logger LOG = LoggerFactory.getLogger(XmlHelper.class);
 
     /**
      * Privater Konstruktor, damit diese Klasse nicht instantiiert werden kann
@@ -64,7 +64,7 @@ public final class XmlHelper {
             throws SAXException, IOException {
         Reader reader = new StringReader(xmlString);
         Source source = new StreamSource(reader);
-        log.debug("validating " + xmlString + "...");
+        LOG.debug("validating " + xmlString + "...");
         validate(source, xsdResource);
     }
 
@@ -122,14 +122,14 @@ public final class XmlHelper {
      */
     public static Properties parseSimpleElements(final QName name, final XMLEventReader reader)
             throws XMLStreamException {
-        log.trace("Parsing element <{}>...<{}/>.", name, name);
+        LOG.trace("Parsing element <{}>...<{}/>.", name, name);
         Properties props = new Properties();
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
             if (event.isStartElement()) {
                 addAsProperty(event.asStartElement(), reader, props);
             } else if (isEndElement(event, name)) {
-                log.trace("End of {} recognized.", event);
+                LOG.trace("End of {} recognized.", event);
                 return props;
             }
         }
@@ -148,8 +148,11 @@ public final class XmlHelper {
                     break;
                 case XMLStreamConstants.END_ELEMENT:
                     return;
+                case XMLStreamConstants.START_ELEMENT:
+                    ignore(event.asStartElement().getName(), reader);
+                    break;
                 default:
-                    log.trace("Event {} is ignored.", event);
+                    LOG.trace("Event {} is ignored.", event);
                     break;
             }
         }
@@ -181,6 +184,43 @@ public final class XmlHelper {
      */
     public static boolean isEndElement(final XMLEvent event, final QName name) {
         return event.isEndElement() && event.asEndElement().getName().equals(name);
+    }
+
+    /**
+     * Holt sich das naechste Start-Element aus dem uebergebenen XML-Stream.
+     *
+     * @param reader the reader
+     * @return the next start element
+     * @throws XMLStreamException the XML stream exception
+     */
+    public static StartElement getNextStartElement(final XMLEventReader reader) throws XMLStreamException {
+        while (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (event.isStartElement()) {
+                return event.asStartElement();
+            }
+            LOG.trace("Event {} is ignored.", event);
+        }
+        throw new XMLStreamException("no start element found");
+    }
+
+    /**
+     * Ignoriert die komplette Hierarchie unterhalb von "&lt;name&gt;".
+     *
+     * @param name der Tag-Name (z.B. "feld")
+     * @param reader der XML-Stream
+     * @throws XMLStreamException the XML stream exception
+     */
+    public static void ignore(final QName name, final XMLEventReader reader) throws XMLStreamException {
+        LOG.debug("Subtree of <{}> will be ignored.", name);
+        while (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (isEndElement(event, name)) {
+                LOG.trace("End of <{}> is reached.", name);
+                return;
+            }
+        }
+        throw new XMLStreamException("end of <" + name + "> not found");
     }
 
 }

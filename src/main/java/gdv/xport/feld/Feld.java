@@ -26,13 +26,17 @@ import gdv.xport.satz.feld.FeldX;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.ByteBuffer;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
-import net.sf.oval.constraint.*;
+import net.sf.oval.constraint.Min;
+import net.sf.oval.constraint.NotEqual;
+import net.sf.oval.constraint.SizeCheck;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
@@ -41,7 +45,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * The Class Feld.
+ * Die Feld-Klasse bezieht ihre Information hauptsaechlich aus Enum-Klassen wie
+ * Feld100 oder Feld1bis7, die mit Annotationen versehen sind.
  *
  * @author oliver
  * @since 04.10.2009
@@ -50,7 +55,7 @@ public class Feld implements Comparable<Feld> {
 
     private static final Log log = LogFactory.getLog(Feld.class);
     /** statt "null". */
-    public static final Feld NULL_FELD = new Feld("null", 0, 0, Align.UNKNOWN);
+    public static final Feld NULL_FELD = new Feld();
     /** optional: Name des Felds. */
     private final String bezeichnung;
     private final Enum<?> bezeichner;
@@ -61,6 +66,16 @@ public class Feld implements Comparable<Feld> {
     /** Ausrichtung: rechts- oder linksbuendig. */
     @NotEqual("UNKNOWN")
     private final Align ausrichtung;
+
+    /**
+     * Legt ein neues Feld an. Dieser Konstruktor ist fuer Unterklassen
+     * vorgesehen.
+     *
+     * @since 1.0
+     */
+    protected Feld() {
+        this("null", 0, 0, Align.UNKNOWN);
+    }
 
     /**
      * Legt ein neues Feld an. Die Informationen dazu werden aus der

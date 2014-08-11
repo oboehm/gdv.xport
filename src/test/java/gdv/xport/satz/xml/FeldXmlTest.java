@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 07.08.2014 by Oli B. (ob@aosd.de)
+ * (c)reated 11.08.2014 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz.xml;
@@ -29,61 +29,44 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Unit-Tests fuer {@link FeldReferenz}-Klasse.
- *
  * @author oliver (oliver.boehm@gmail.com)
- * @since 1.0 (07.08.2014)
+ * @since 1.0 (11.08.2014)
+ *
  */
-public class FeldReferenzTest extends AbstractXmlTest {
+public class FeldXmlTest extends AbstractXmlTest {
 
-    private static FeldReferenz feldReferenz;
+    private static FeldXml feld;
 
     /**
-     * Setzt ein FeldReferenz-Objekt zum Testen auf.
+     * Setzt ein FeldXml-Objekt zum Testen auf.
      *
      * @throws XMLStreamException the XML stream exception
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @BeforeClass
     public static void setUpFeldReferenz() throws XMLStreamException, IOException {
-        XMLEventReader parser = createXMLEventReader("feldreferenz.xml");
+        XMLEventReader parser = createXMLEventReader("feld.xml");
         try {
-            feldReferenz = new FeldReferenz(parser);
+            feld = new FeldXml(parser);
         } finally {
             parser.close();
         }
     }
 
     /**
-     * Test-Methode fuer {@link FeldReferenz#getId()}.
+     * Test-Methode fuer {@link FeldXml#getId()}.
      */
     @Test
-    public void testSatzReferenz() {
-        assertEquals("BN-2003.02.11.22.49.47.214", feldReferenz.getId());
+    public void testFeldXmlXMLEventReader() {
+        assertEquals("BN-2003.02.11.22.49.47.344", feld.getId());
     }
 
     /**
-     * Test-Methode fuer {@link FeldReferenz#getName()}.
+     * Test-Methode fuer {@link FeldXml#getBezeichner()}.
      */
     @Test
-    public void testGetName() {
-        assertEquals("Satzart", feldReferenz.getName());
-    }
-
-    /**
-     * Test-Methode fuer {@link FeldReferenz#getTechnischerName()}.
-     */
-    @Test
-    public void testGetTechnischerName() {
-        assertEquals("Satzart", feldReferenz.getTechnischerName());
-    }
-
-    /**
-     * Test-Methode fuer {@link FeldReferenz#getAuspraegung()}.
-     */
-    @Test
-    public void testGetAuspraegung() {
-        assertEquals("0100", feldReferenz.getAuspraegung());
+    public void testGetBezeichner() {
+        assertEquals("Sparte", feld.getBezeichner());
     }
 
 }
