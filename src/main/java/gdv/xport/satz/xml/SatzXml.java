@@ -26,14 +26,10 @@ import gdv.xport.util.XmlHelper;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.Attribute;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
+import javax.xml.stream.events.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import patterntesting.runtime.exception.NotFoundException;
 
 /**
  * Im Gegensatz zum SOP-Ansatz und zur SatzX-Klasse wird hier eine XML-
@@ -47,7 +43,6 @@ import patterntesting.runtime.exception.NotFoundException;
  */
 public final class SatzXml extends Datensatz {
 
-    /** The Constant LOG. */
     private static final Logger LOG = LoggerFactory.getLogger(SatzXml.class);
 
     /**
@@ -57,8 +52,19 @@ public final class SatzXml extends Datensatz {
      * @throws XMLStreamException the XML stream exception
      */
     public SatzXml(final XMLEventReader parser) throws XMLStreamException {
+        this(parser, XmlHelper.getNextStartElement(parser));
+    }
+
+    /**
+     * Instantiiert einen neuen Satz.
+     *
+     * @param parser XML-Event-Parser
+     * @param element the element
+     * @throws XMLStreamException the XML stream exception
+     */
+    public SatzXml(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
         super(0);
-        parse(parser);
+        parse(element, parser);
     }
 
     /* (non-Javadoc)
@@ -69,24 +75,18 @@ public final class SatzXml extends Datensatz {
         this.removeAllTeildatensaetze();
     }
 
-    /**
-     * Parses the.
-     *
-     * @param reader the reader
-     * @throws XMLStreamException the XML stream exception
-     */
-    private void parse(final XMLEventReader reader) throws XMLStreamException {
+    private void parse(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
             if (event.isStartElement()) {
-                try {
-                    parseElement(event.asStartElement(), reader);
-                } catch (NotFoundException nfe) {
-                    LOG.trace("No satzart found with " + event + ".", nfe);
-                }
+                parseElement(event.asStartElement(), reader);
+            } else if (XmlHelper.isEndElement(event, element.getName())) {
+                LOG.debug("{}...{} successful parsed.", element, event);
+                return;
             }
             LOG.trace("Event {} is ignored.", event);
         }
+        throw new XMLStreamException("end of " + element + " not found");
     }
 
     /**
@@ -147,7 +147,7 @@ public final class SatzXml extends Datensatz {
             if (event.isStartElement()) {
                 this.add(new FeldXml(reader, event.asStartElement()));
             } else if (XmlHelper.isEndElement(event, element.getName())) {
-                LOG.debug("{}...{} was parsed.", element, event);
+                LOG.debug("Felder between {}...{} successful parsed.", element, event);
                 return;
             }
         }
