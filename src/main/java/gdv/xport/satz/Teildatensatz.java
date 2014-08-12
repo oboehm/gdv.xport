@@ -22,7 +22,9 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.io.ImportException;
 
 import java.io.IOException;
@@ -108,6 +110,16 @@ public class Teildatensatz extends Satz {
     }
 
     /**
+     * Stellt die Datenfelder fuer die Unterklasse(n) zur Verfuegung.
+     *
+     * @return the datenfelder
+     * @since 1.0
+     */
+    protected Map<Object, Feld> getDatenfelder() {
+        return this.datenfelder;
+    }
+
+    /**
      * Liefert die Satznummer zurueck.
      *
      * @since 0.2
@@ -131,7 +143,7 @@ public class Teildatensatz extends Satz {
     public void add(final Feld feld) {
         for (Iterator<Feld> iterator = datenfelder.values().iterator(); iterator.hasNext();) {
             Feld f = iterator.next();
-            if (feld.overlapsWith(f)) {
+            if (!feld.equals(f) && feld.overlapsWith(f)) {
                 if (isSatznummer(f)) {
                     remove(f);
                     log.debug(f + " is removed from " + this);

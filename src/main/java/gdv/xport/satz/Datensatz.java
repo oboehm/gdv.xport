@@ -110,7 +110,7 @@ public class Datensatz extends Satz {
 	 * @param satzart z.B. 100
 	 * @param tdsList Liste mit den Teildatensaetzen
 	 */
-	public Datensatz(final int satzart, final List<Teildatensatz> tdsList) {
+	public Datensatz(final int satzart, final List<? extends Teildatensatz> tdsList) {
 		super(satzart, tdsList);
 		if (tdsList.get(0).hasSparte()) {
 		    this.sparte.setInhalt(tdsList.get(0).getSparte());
@@ -153,16 +153,6 @@ public class Datensatz extends Satz {
 		this.setSparte(sparte);
 		this.completeTeildatensaetze();
 	}
-
-// public Datensatz(int satzart, int sparte, int wagnisart, int
-// teildatensatzNummer,
-// List<Teildatensatz> teildatensaetzeList) {
-// this(satzart, teildatensaetzeList);
-// this.setSparte(sparte);
-// this.setWagnisart(wagnisart);
-// this.setTeildatensatzNummer(teildatensatzNummer);
-// this.completeTeildatensaetze();
-// }
 
 	/**
 	 * Instantiiert einen neuen Datensatz.

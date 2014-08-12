@@ -28,6 +28,9 @@ import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Im Gegensatz zur {@link Feld}-Klasse kommen hier die einzelnen Werte als
  * XML-Strem rein.
@@ -37,8 +40,11 @@ import javax.xml.stream.events.StartElement;
  */
 public final class FeldXml extends Feld {
 
+    private static final Logger LOG = LoggerFactory.getLogger(FeldXml.class);
+
     private final String id;
     private final String name;
+    private String technischerName;
 
     /**
      * Instantiiert eine Objekt mit den Werten, die ueber den uebergebenen
@@ -61,8 +67,11 @@ public final class FeldXml extends Feld {
      */
     public FeldXml(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
         id = element.getAttributeByName(new QName("referenz")).getValue();
+        LOG.trace("Parsing <feld referenz=\"{}\"...", id);
         Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
         this.name = props.getProperty("name", "");
+        this.setAnzahlBytes(Integer.parseInt(props.getProperty("bytes", "1")));
+        LOG.debug("{} created.", this);
     }
 
     /**
@@ -75,7 +84,7 @@ public final class FeldXml extends Feld {
     }
 
     /**
-     * Im Gegensatz zur Oberflaeche kann hier der "Bezeichner" in Gross- und
+     * Im Gegensatz zur Oberklasse kann hier der "Bezeichner" in Gross- und
      * Kleinbuchstaben erscheinen.
      *
      * @return der technische Name
@@ -84,6 +93,27 @@ public final class FeldXml extends Feld {
     @Override
     public String getBezeichner() {
         return this.name;
+    }
+
+    /**
+     * Im Gegensatz zur Oberklasse wird hier der technische Name aus der
+     * XML-Beschreibung herangezogen.
+     *
+     * @see gdv.xport.feld.Feld#getBezeichnung()
+     */
+    @Override
+    public String getBezeichnung() {
+        return this.technischerName;
+    }
+
+    /**
+     * Setzt einige interne Werte, die ueber die {@link FeldReferenz}
+     * reinkommen.
+     *
+     * @param referenz the new referenz
+     */
+    public void setReferenz(final FeldReferenz referenz) {
+        this.technischerName = referenz.getTechnischerName();
     }
 
     /* (non-Javadoc)

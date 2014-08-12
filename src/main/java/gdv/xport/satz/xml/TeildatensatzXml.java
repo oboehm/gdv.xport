@@ -18,7 +18,6 @@
 
 package gdv.xport.satz.xml;
 
-import gdv.xport.feld.Align;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
 
@@ -34,6 +33,7 @@ import java.util.Collection;
  */
 public final class TeildatensatzXml extends Teildatensatz {
 
+    /** The feld referenzen. */
     private final Collection<FeldReferenz> feldReferenzen = new ArrayList<FeldReferenz>();
 
     /**
@@ -57,16 +57,31 @@ public final class TeildatensatzXml extends Teildatensatz {
     }
 
     /* (non-Javadoc)
-     * @see gdv.xport.satz.Teildatensatz#getFeld(java.lang.String)
+     * @see gdv.xport.satz.Teildatensatz#add(gdv.xport.feld.Feld)
      */
     @Override
-    public Feld getFeld(final String name) {
+    public void add(final Feld feld) {
+        if (feld instanceof FeldXml) {
+            this.add((FeldXml) feld);
+        } else {
+            super.add(feld);
+        }
+    }
+
+    /**
+     * Fuegt das angegebene Feld in den Teildatensatz ein, falls eine
+     * {@link FeldReferenz} dafuer vorhanden ist. Ein Teil der Werte kommt dabei
+     * aus den abgespeicherten Feldreferenzen.
+     *
+     * @param feldXml Feld mit Name
+     */
+    public void add(final FeldXml feldXml) {
         for (FeldReferenz referenz : this.feldReferenzen) {
-            if (name.equals(referenz.getName())) {
-                return new Feld(name, referenz.getAuspraegung(), Align.UNKNOWN);
+            if (feldXml.getId().equals(referenz.getId())) {
+                feldXml.setReferenz(referenz);
+                this.getDatenfelder().put(feldXml.getBezeichner(), feldXml);
             }
         }
-        throw new IllegalArgumentException("no feld '" + name + "' found");
     }
 
 }

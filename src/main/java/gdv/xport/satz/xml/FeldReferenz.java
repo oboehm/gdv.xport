@@ -72,7 +72,7 @@ public final class FeldReferenz {
         this.name = props.getProperty("name", "");
         this.technischerName = props.getProperty("technischerName", "");
         this.auspraegung = props.getProperty("auspraegung", "");
-        LOG.debug("{} created.");
+        LOG.debug("{} created.", this);
     }
 
     /**

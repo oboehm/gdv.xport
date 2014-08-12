@@ -122,14 +122,14 @@ public final class XmlHelper {
      */
     public static Properties parseSimpleElements(final QName name, final XMLEventReader reader)
             throws XMLStreamException {
-        LOG.trace("Parsing element <{}>...<{}/>.", name, name);
+        LOG.trace("Parsing simple elements of <{}>...<{}/>.", name, name);
         Properties props = new Properties();
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
             if (event.isStartElement()) {
                 addAsProperty(event.asStartElement(), reader, props);
             } else if (isEndElement(event, name)) {
-                LOG.trace("End of {} recognized.", event);
+                LOG.debug("{} elements of <{}>...{} were returned as properties.", props.size(), name, event);
                 return props;
             }
         }
@@ -149,7 +149,7 @@ public final class XmlHelper {
                 case XMLStreamConstants.END_ELEMENT:
                     return;
                 case XMLStreamConstants.START_ELEMENT:
-                    ignore(event.asStartElement().getName(), reader);
+                    ignore(event, reader);
                     break;
                 default:
                     LOG.trace("Event {} is ignored.", event);
@@ -207,16 +207,30 @@ public final class XmlHelper {
     /**
      * Ignoriert die komplette Hierarchie unterhalb von "&lt;name&gt;".
      *
+     * @param startEvent the start event
+     * @param reader der XML-Stream
+     * @throws XMLStreamException the XML stream exception
+     */
+    public static void ignore(final XMLEvent startEvent, final XMLEventReader reader) throws XMLStreamException {
+        if (startEvent.isEndElement()) {
+            LOG.debug("Element <{}/> is ignored.", startEvent);
+            return;
+        }
+        ignore(startEvent.asStartElement().getName(), reader);
+    }
+
+    /**
+     * Ignoriert die komplette Hierarchie unterhalb von "&lt;name&gt;".
+     *
      * @param name der Tag-Name (z.B. "feld")
      * @param reader der XML-Stream
      * @throws XMLStreamException the XML stream exception
      */
     public static void ignore(final QName name, final XMLEventReader reader) throws XMLStreamException {
-        LOG.debug("Subtree of <{}> will be ignored.", name);
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
             if (isEndElement(event, name)) {
-                LOG.trace("End of <{}> is reached.", name);
+                LOG.debug("<{}>...{} was ignored.", name, event);
                 return;
             }
         }

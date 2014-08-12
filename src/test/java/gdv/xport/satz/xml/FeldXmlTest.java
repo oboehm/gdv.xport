@@ -69,4 +69,21 @@ public class FeldXmlTest extends AbstractXmlTest {
         assertEquals("Sparte", feld.getBezeichner());
     }
 
+    /**
+     * Testet, ob der XML-Teil mit der VU-Nummer korrekt geparst wird.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testVuNummer() throws XMLStreamException {
+        XMLEventReader parser = createXMLEventReader("feldVuNr.xml");
+        try {
+            FeldXml vuNr = new FeldXml(parser);
+            assertEquals("VU-Nummer", vuNr.getBezeichner());
+            assertEquals(5, vuNr.getAnzahlBytes());
+        } finally {
+            parser.close();
+        }
+    }
+
 }

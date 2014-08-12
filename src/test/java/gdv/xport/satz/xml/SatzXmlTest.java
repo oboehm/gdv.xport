@@ -19,6 +19,8 @@
 package gdv.xport.satz.xml;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
@@ -98,8 +100,9 @@ public class SatzXmlTest extends AbstractXmlTest {
 
     private static void checkTeildatensatz(final Teildatensatz tds) {
         checkSatzart(tds);
-//        Feld feld = tds.getFeld("VU-Nummer");
-//        assertEquals(5, feld.getAnzahlBytes());
+        Feld feld = tds.getFeld("VU-Nummer");
+        assertNotNull("VU-Nummer missing", feld);
+        assertEquals(5, feld.getAnzahlBytes());
     }
 
     private static void checkSatzart(final Satz satz) {

@@ -16,9 +16,25 @@ import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
-import java.io.*;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -102,7 +118,7 @@ public abstract class Satz {
 	 * @param art z.B. 100 (f. Adressteil)
 	 * @param tdsList Liste mit den Teildatensaetzen
 	 */
-	public Satz(final int art, final List<Teildatensatz> tdsList) {
+	public Satz(final int art, final List<? extends Teildatensatz> tdsList) {
 		this.satzart.setInhalt(art);
 		this.createTeildatensaetze(tdsList);
 	}
@@ -114,7 +130,7 @@ public abstract class Satz {
 		}
 	}
 
-	protected void createTeildatensaetze(final List<Teildatensatz> tdsList) {
+	protected void createTeildatensaetze(final List<? extends Teildatensatz> tdsList) {
 		teildatensatz = new Teildatensatz[tdsList.size()];
 		for (int i = 0; i < tdsList.size(); i++) {
 			teildatensatz[i] = tdsList.get(i);
@@ -206,7 +222,7 @@ public abstract class Satz {
 	/**
 	 * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu.
 	 *
-	 * @param feld the feld
+	 * @param feld das Feld
 	 */
 	public void add(final Feld feld) {
 		this.add(feld, 1);
