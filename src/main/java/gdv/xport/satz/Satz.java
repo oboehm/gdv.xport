@@ -16,25 +16,9 @@ import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -43,8 +27,8 @@ import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Die Satz-Klasse ist die oberste Klasse, von der alle weiteren Saetze
@@ -54,10 +38,8 @@ import org.apache.commons.logging.LogFactory;
  */
 public abstract class Satz {
 
-	private static final Log log = LogFactory.getLog(Satz.class);
-	/** 4 Zeichen. */
+	private static final Logger LOG = LoggerFactory.getLogger(Satz.class);
 	private final NumFeld satzart = new NumFeld(SATZART, 4, 1);
-	/** Teildatensaetze. */
 	private Teildatensatz[] teildatensatz;
 
 	protected Satz(final int art) {
@@ -370,7 +352,7 @@ public abstract class Satz {
 					return x;
 				}
 			} catch (IllegalArgumentException e) {
-                log.debug("Feld \"" + feld + "\" not found in teildatensatz " + i + " (" + e + ").");
+                LOG.debug("Feld \"" + feld + "\" not found in teildatensatz " + i + " (" + e + ").");
 				continue;
 			}
 		}
@@ -383,19 +365,15 @@ public abstract class Satz {
 	 *
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @return das gesuchte Feld
-	 * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 */
-	public Feld containsFeld(final String name) throws IllegalArgumentException {
+	public Feld containsFeld(final String name) {
 		for (int i = 0; i < teildatensatz.length; i++) {
-			try {
-				Feld x = teildatensatz[i].getFeld(name);
-				if (x != Feld.NULL_FELD) {
-					return x;
-				}
-			} catch (IllegalArgumentException e) {
-				continue;
+			Feld x = teildatensatz[i].getFeld(name);
+			if (x != Feld.NULL_FELD) {
+				return x;
 			}
 		}
+		LOG.debug("Feld \"{}\" not found in {}.", name, this);
 		return null;
 	}
 
@@ -408,13 +386,9 @@ public abstract class Satz {
 	 */
 	public Feld getFeld(final String name) throws IllegalArgumentException {
 		for (int i = 0; i < teildatensatz.length; i++) {
-			try {
-				Feld x = teildatensatz[i].getFeld(name);
-				if (x != Feld.NULL_FELD) {
-					return x;
-				}
-			} catch (IllegalArgumentException e) {
-				continue;
+			Feld x = teildatensatz[i].getFeld(name);
+			if (x != Feld.NULL_FELD) {
+				return x;
 			}
 		}
 		throw new IllegalArgumentException("Feld \"" + name + "\" nicht in " + this.toShortString()
@@ -567,7 +541,7 @@ public abstract class Satz {
 		for (int i = 0; i < teildatensatz.length; i++) {
 			String input = s.substring(i * satzlength);
 			if (input.trim().isEmpty()) {
-				log.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur " + i
+				LOG.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur " + i
 				        + " Teildatensaetze vorgefunden");
 				this.removeAllTeildatensaetze(i + 1);
 				break;
@@ -613,7 +587,7 @@ public abstract class Satz {
 				}
 			}
 		} catch (StringIndexOutOfBoundsException e) {
-			log.trace("end of string \"" + s + "\" reached", e);
+			LOG.trace("end of string \"" + s + "\" reached", e);
 		}
 		return satzlength;
 	}
@@ -659,7 +633,7 @@ public abstract class Satz {
 		for (int i = 0; i < teildatensatz.length; i++) {
             reader.skipNewline();
 			if (!matchesNextTeildatensatz(reader)) {
-				log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
+				LOG.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
 				        + ", but Satzart or Sparte or Wagnisart or TeildatensatzNummer has changed");
 				break;
 			}
@@ -686,7 +660,7 @@ public abstract class Satz {
             int art = readSatzart(reader);
             return art == this.getSatzart();
         } catch (EOFException ex) {
-            log.info("No next teildatensatz available because of " + ex.getMessage());
+            LOG.info("No next teildatensatz:", ex);
             return false;
         }
 	}
@@ -709,7 +683,6 @@ public abstract class Satz {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static int readSatzart(final PushbackLineNumberReader reader) throws IOException {
-//	    reader.skipNewline();
         reader.skipWhitespace();
 		char[] cbuf = new char[4];
 		importFrom(reader, cbuf);
@@ -738,7 +711,7 @@ public abstract class Satz {
 		if (this.teildatensatz != null) {
 			for (int i = 0; i < teildatensatz.length; i++) {
 				if (!teildatensatz[i].isValid()) {
-					log.info("Teildatensatz " + (i + 1) + " is invalid");
+					LOG.info("Teildatensatz " + (i + 1) + " is invalid");
 					return false;
 				}
 			}
@@ -778,7 +751,7 @@ public abstract class Satz {
 			return "Satzart " + this.satzart.getInhalt() + " ("
 			        + StringUtils.abbreviate(this.toLongString(), 63) + ")";
 		} catch (RuntimeException shouldNeverHappen) {
-			log.error("shit happens in toString()", shouldNeverHappen);
+			LOG.error("shit happens in toString()", shouldNeverHappen);
 			return super.toString();
 		}
 	}
@@ -802,7 +775,7 @@ public abstract class Satz {
 		try {
 			this.export(swriter);
 		} catch (IOException canthappen) {
-			log.warn(canthappen + " ignored", canthappen);
+			LOG.warn(canthappen + " ignored", canthappen);
 			swriter.write(canthappen.getLocalizedMessage());
 		}
 		return swriter.toString();
@@ -987,7 +960,7 @@ public abstract class Satz {
 		FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
 		Feld feld = Feld.createFeld(feldX, info);
 		if (info.nr() < 8) {      // FIXME: diese Abfrage ist eigentlich unnoetig
-			log.debug("using default settings for " + feld);
+			LOG.debug("using default settings for " + feld);
 		} else {
 			tds.add(feld);
 			if (isSatznummer(feldX)) {

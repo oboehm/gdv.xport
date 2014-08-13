@@ -49,8 +49,11 @@
     <!-- System.exit(...) and Runtime.getRuntime().exit(...) should not be called -->
     <sonar.issue.ignore.multicriteria.2.ruleKey>squid:S1147</sonar.issue.ignore.multicriteria.2.ruleKey>
     <sonar.issue.ignore.multicriteria.2.resourceKey>**/Main.java</sonar.issue.ignore.multicriteria.2.resourceKey>
+    <!-- String literals should not be duplicated -->
+    <sonar.issue.ignore.multicriteria.3.ruleKey>squid:S1192</sonar.issue.ignore.multicriteria.3.ruleKey>
+    <sonar.issue.ignore.multicriteria.3.resourceKey>**</sonar.issue.ignore.multicriteria.3.resourceKey>
     <!-- ignore violations -->
-    <sonar.issue.ignore.multicriteria>1,2</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>1,2,3</sonar.issue.ignore.multicriteria>
 
   </properties>
 
