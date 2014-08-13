@@ -181,7 +181,8 @@ public final class SatzXml extends Datensatz {
     }
 
     /**
-     * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu.
+     * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu, falls
+     * eine Referenz dazu exisitiert.
      *
      * @param feld das Feld
      */

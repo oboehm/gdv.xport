@@ -19,6 +19,8 @@
 package gdv.xport.satz.xml;
 
 import static org.junit.Assert.assertEquals;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 
 import java.io.IOException;
 
@@ -100,6 +102,17 @@ public class FeldXmlTest extends AbstractXmlTest {
         } finally {
             parser.close();
         }
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldXml#toFeld()}.
+     */
+    @Test
+    public void testToFeld() {
+        Feld converted = feld.toFeld();
+        assertEquals("Sparte", converted.getBezeichnung());
+        assertEquals(feld.getAnzahlBytes(), converted.getAnzahlBytes());
+        assertEquals(NumFeld.class, converted.getClass());
     }
 
 }

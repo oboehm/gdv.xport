@@ -79,7 +79,8 @@ public final class TeildatensatzXml extends Teildatensatz {
         for (FeldReferenz referenz : this.feldReferenzen) {
             if (feldXml.getId().equals(referenz.getId())) {
                 feldXml.setReferenz(referenz);
-                this.getDatenfelder().put(feldXml.getBezeichner(), feldXml);
+                Feld feld = feldXml.toFeld();
+                this.getDatenfelder().put(feldXml.getBezeichner(), feld);
             }
         }
     }
