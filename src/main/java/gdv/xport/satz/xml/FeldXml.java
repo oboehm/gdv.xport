@@ -44,6 +44,8 @@ public final class FeldXml extends Feld {
 
     private final String id;
     private final String name;
+    private final String datentyp;
+    private final int nachkommastellen;
     private String technischerName;
 
     /**
@@ -71,6 +73,8 @@ public final class FeldXml extends Feld {
         Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
         this.name = props.getProperty("name", "");
         this.setAnzahlBytes(Integer.parseInt(props.getProperty("bytes", "1")));
+        this.datentyp = props.getProperty("datentyp");
+        this.nachkommastellen = Integer.parseInt(props.getProperty("nachkommastellen", "0"));
         LOG.debug("{} created.", this);
     }
 
@@ -104,6 +108,25 @@ public final class FeldXml extends Feld {
     @Override
     public String getBezeichnung() {
         return this.technischerName;
+    }
+
+    /**
+     * Liefert den Datentyp.
+     *
+     * @return the datentyp
+     */
+    public final String getDatentyp() {
+        return this.datentyp;
+    }
+
+    /**
+     * Liefert die Anzahl der Nachkommastellen oder 0, falls es sich um kein
+     * numerisches Feld handelt.
+     *
+     * @return the nachkommastellen
+     */
+    public final int getNachkommastellen() {
+        return this.nachkommastellen;
     }
 
     /**

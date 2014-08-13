@@ -70,6 +70,22 @@ public class FeldXmlTest extends AbstractXmlTest {
     }
 
     /**
+     * Test-Methode fuer {@link FeldXml#getDatentyp()}.
+     */
+    @Test
+    public void testGetDatentyp() {
+        assertEquals("Numerisch", feld.getDatentyp());
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldXml#getNachkommastellen()}.
+     */
+    @Test
+    public void testGetNachkommastellen() {
+        assertEquals(0, feld.getNachkommastellen());
+    }
+
+    /**
      * Testet, ob der XML-Teil mit der VU-Nummer korrekt geparst wird.
      *
      * @throws XMLStreamException the XML stream exception
