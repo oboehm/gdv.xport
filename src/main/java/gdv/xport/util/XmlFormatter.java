@@ -26,13 +26,7 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.Iterator;
@@ -44,8 +38,8 @@ import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer XML-Struktur ausgeben zu koennen.
@@ -55,7 +49,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public final class XmlFormatter extends AbstractFormatter {
 
-    private static final Log log = LogFactory.getLog(XmlFormatter.class);
+    private static final Logger LOG = LoggerFactory.getLogger(XmlFormatter.class);
     private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
     /** Writer fuer die XML-Ausgabe. */
     private XMLStreamWriter xmlStreamWriter;
@@ -87,7 +81,7 @@ public final class XmlFormatter extends AbstractFormatter {
     }
 
     /**
-     * Instantiates a new xml formatter.
+     * Instantiiert einen neuen XML-Formatter.
      *
      * @param xmlStreamWriter
      *            the xml stream writer
@@ -97,10 +91,13 @@ public final class XmlFormatter extends AbstractFormatter {
     }
 
     /**
-     * Instantiates a new xml formatter.
+     * Instantiiert einen neuen XML-Formatter.
+     * <p>
+     * TODO: Wird mit 1.1 entfernt werden - bitte nicht mehr benuetzen.
+     * </p>
      *
-     * @param file            Ausgabe-Datein
-     * @throws IOException    falls die uebergebene Date nicht existiert
+     * @param file Ausgabe-Datein
+     * @throws IOException falls die uebergebene Date nicht existiert
      * @deprecated bitte {@link #XmlFormatter(Writer)} verwenden und den Writer
      *             im Aufrufer schliessen
      */
@@ -136,8 +133,8 @@ public final class XmlFormatter extends AbstractFormatter {
         try {
             this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(new WriterOutputStream(writer),
                     Config.DEFAULT_ENCODING.name());
-        } catch (XMLStreamException e) {
-            throw new IllegalArgumentException("can't create XmlStreamWriter with " + writer);
+        } catch (XMLStreamException ex) {
+            throw new IllegalArgumentException("can't create XmlStreamWriter with " + writer, ex);
         }
     }
 
@@ -151,8 +148,8 @@ public final class XmlFormatter extends AbstractFormatter {
         super.setWriter(ostream);
         try {
             this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
-        } catch (XMLStreamException e) {
-            throw new IllegalArgumentException("can't create XmlStreamWriter with " + ostream);
+        } catch (XMLStreamException ex) {
+            throw new IllegalArgumentException("can't create XmlStreamWriter with " + ostream, ex);
         }
     }
 
@@ -337,7 +334,7 @@ public final class XmlFormatter extends AbstractFormatter {
         try {
             formatter.write(satz, 0);
         } catch (XMLStreamException ex) {
-            log.warn("cannot format " + satz, ex);
+            LOG.warn("cannot format " + satz, ex);
             swriter.write("<!-- " + satz + " -->");
         }
         IOUtils.closeQuietly(swriter);
@@ -375,7 +372,7 @@ public final class XmlFormatter extends AbstractFormatter {
                 xmlStreamWriter.writeCharacters("  ");
             }
         } catch (XMLStreamException e) {
-            log.warn("can't indent " + this, e);
+            LOG.warn("can't indent " + this, e);
         }
     }
 
