@@ -105,11 +105,11 @@ public class FeldXmlTest extends AbstractXmlTest {
     }
 
     /**
-     * Test-Methode fuer {@link FeldXml#toFeld()}.
+     * Test-Methode fuer {@link FeldXml#toFeld(int)}.
      */
     @Test
     public void testToFeld() {
-        Feld converted = feld.toFeld();
+        Feld converted = feld.toFeld(1);
         assertEquals("Sparte", converted.getBezeichnung());
         assertEquals(feld.getAnzahlBytes(), converted.getAnzahlBytes());
         assertEquals(NumFeld.class, converted.getClass());

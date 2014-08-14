@@ -18,15 +18,19 @@
 
 package gdv.xport.satz.xml;
 
-import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.util.XmlHelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.*;
+import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -142,17 +146,21 @@ public final class SatzXml extends Datensatz {
      */
     private void parseFelder(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         LOG.trace("Element {} will be parsed.", element);
+        Map<String, FeldXml> felder = new HashMap<String, FeldXml>();
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
             if (event.isStartElement()) {
-                this.add(new FeldXml(reader, event.asStartElement()));
+                FeldXml feld = new FeldXml(reader, event.asStartElement());
+                felder.put(feld.getId(), feld);
             } else if (XmlHelper.isEndElement(event, element.getName())) {
-                LOG.debug("Felder between {}...{} successful parsed.", element, event);
+                LOG.debug("{} felder between {}...{} successful parsed.", felder.size(), element, event);
+                setFelder(felder);
                 return;
             }
         }
         throw new XMLStreamException("end of " + element + " not found");
     }
+
 
     /**
      * Parses the feldreferenz.
@@ -168,29 +176,36 @@ public final class SatzXml extends Datensatz {
         }
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Satz#add(gdv.xport.feld.Feld)
-     */
-    @Override
-    public void add(final Feld feld) {
-        if (feld instanceof FeldXml) {
-            this.add((FeldXml) feld);
-        } else {
-            super.add(feld);
-        }
-    }
+//    /* (non-Javadoc)
+//     * @see gdv.xport.satz.Satz#add(gdv.xport.feld.Feld)
+//     */
+//    @Override
+//    public void add(final Feld feld) {
+//        if (feld instanceof FeldXml) {
+//            this.add((FeldXml) feld);
+//        } else {
+//            super.add(feld);
+//        }
+//    }
+//
+//    /**
+//     * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu, falls
+//     * eine Referenz dazu exisitiert.
+//     *
+//     * @param feld das Feld
+//     */
+//    public void add(final FeldXml feld) {
+//        this.getTeildatensaetze();
+//        for (Teildatensatz tds : this.getTeildatensaetze()) {
+//            TeildatensatzXml tdsXml = (TeildatensatzXml) tds;
+//            tdsXml.add(feld);
+//        }
+//    }
 
-    /**
-     * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu, falls
-     * eine Referenz dazu exisitiert.
-     *
-     * @param feld das Feld
-     */
-    public void add(final FeldXml feld) {
-        this.getTeildatensaetze();
+    private void setFelder(Map<String, FeldXml> felder) {
         for (Teildatensatz tds : this.getTeildatensaetze()) {
             TeildatensatzXml tdsXml = (TeildatensatzXml) tds;
-            tdsXml.add(feld);
+            tdsXml.setFelder(felder);
         }
     }
 

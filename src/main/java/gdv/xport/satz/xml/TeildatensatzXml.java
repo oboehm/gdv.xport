@@ -22,7 +22,11 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Dieser {@link Teildatensatz} wurde um Belange fuer die XML-Verarbeitung
@@ -33,8 +37,8 @@ import java.util.Collection;
  */
 public final class TeildatensatzXml extends Teildatensatz {
 
-    /** The feld referenzen. */
-    private final Collection<FeldReferenz> feldReferenzen = new ArrayList<FeldReferenz>();
+    private static final Logger LOG = LoggerFactory.getLogger(TeildatensatzXml.class);
+    private final List<FeldReferenz> feldReferenzen = new ArrayList<FeldReferenz>();
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart
@@ -56,33 +60,53 @@ public final class TeildatensatzXml extends Teildatensatz {
         feldReferenzen.add(referenz);
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Teildatensatz#add(gdv.xport.feld.Feld)
-     */
-    @Override
-    public void add(final Feld feld) {
-        if (feld instanceof FeldXml) {
-            this.add((FeldXml) feld);
-        } else {
-            super.add(feld);
-        }
-    }
+//    /* (non-Javadoc)
+//     * @see gdv.xport.satz.Teildatensatz#add(gdv.xport.feld.Feld)
+//     */
+//    @Override
+//    public void add(final Feld feld) {
+//        if (feld instanceof FeldXml) {
+//            this.add((FeldXml) feld);
+//        } else {
+//            super.add(feld);
+//        }
+//    }
+//
+//    /**
+//     * Fuegt das angegebene Feld in den Teildatensatz ein, falls eine
+//     * {@link FeldReferenz} dafuer vorhanden ist. Ein Teil der Werte kommt dabei
+//     * aus den abgespeicherten Feldreferenzen.
+//     *
+//     * @param feldXml Feld mit Name
+//     */
+//    public void add(final FeldXml feldXml) {
+//        for (FeldReferenz referenz : this.feldReferenzen) {
+//            if (feldXml.getId().equals(referenz.getId())) {
+//                feldXml.setReferenz(referenz);
+//                Feld feld = feldXml.toFeld();
+//                this.getDatenfelder().put(feldXml.getBezeichner(), feld);
+//            }
+//        }
+//    }
 
     /**
-     * Fuegt das angegebene Feld in den Teildatensatz ein, falls eine
-     * {@link FeldReferenz} dafuer vorhanden ist. Ein Teil der Werte kommt dabei
-     * aus den abgespeicherten Feldreferenzen.
+     * Legt mithilfe der uebergebenen Felder die entsprechenden {@link Feld}-
+     * Objekte an.
      *
-     * @param feldXml Feld mit Name
+     * @param felder Felder aus der XML-Beschreibung
      */
-    public void add(final FeldXml feldXml) {
+    public void setFelder(Map<String, FeldXml> felder) {
+        int byteAddress = 1;
         for (FeldReferenz referenz : this.feldReferenzen) {
-            if (feldXml.getId().equals(referenz.getId())) {
-                feldXml.setReferenz(referenz);
-                Feld feld = feldXml.toFeld();
-                this.getDatenfelder().put(feldXml.getBezeichner(), feld);
+            FeldXml feldXml = felder.get(referenz.getId());
+            if (feldXml == null) {
+                throw new IllegalArgumentException("referenz for " + referenz + " not found in " + felder);
             }
+            Feld feld = feldXml.toFeld(byteAddress);
+            this.getDatenfelder().put(feldXml.getBezeichner(), feld);
+            byteAddress += feldXml.getAnzahlBytes();
         }
+        LOG.trace("{} felder set.", this.feldReferenzen.size());
     }
 
 }
