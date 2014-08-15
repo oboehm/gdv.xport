@@ -18,10 +18,7 @@
 
 package gdv.xport.satz.xml;
 
-import gdv.xport.feld.Align;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 import gdv.xport.util.XmlHelper;
 
 import java.util.Properties;
@@ -145,6 +142,8 @@ public final class FeldXml extends Feld {
                     .mitNachkommastellen(this.nachkommastellen);
         } else if ("Alphanumerisch".equals(this.datentyp)) {
             return new AlphaNumFeld(this.technischerName, this.getAnzahlBytes(), byteAddress);
+        } else if ("Datum".equals(this.datentyp)) {
+            return new Datum(this.technischerName, this.getAnzahlBytes(), byteAddress);
         } else {
             LOG.warn("Feld constructor will be used for unknown datentyp '{}'.", this.datentyp);
             return new Feld(this.technischerName, this.getAnzahlBytes(), byteAddress, Align.UNKNOWN);

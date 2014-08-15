@@ -21,6 +21,7 @@ package gdv.xport.satz.xml;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 
@@ -122,6 +123,16 @@ public class FeldXmlTest extends AbstractXmlTest {
     @Test
     public void testToAlphaNumFeld() throws XMLStreamException {
         checkToFeld(createFeldXmlFrom("feldVuNr.xml"), AlphaNumFeld.class);
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldXml#toFeld(int)}.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testToDatumFeld() throws XMLStreamException {
+        checkToFeld(createFeldXmlFrom("feldDatum.xml"), Datum.class);
     }
 
     private static void checkToFeld(final FeldXml input, final Class<? extends Feld> expected) {
