@@ -138,13 +138,6 @@ public final class SatzXml extends Datensatz {
         throw new XMLStreamException("end of " + element + " not found");
     }
 
-    /**
-     * Parses the felder.
-     *
-     * @param element the element
-     * @param reader the reader
-     * @throws XMLStreamException the XML stream exception
-     */
     private void parseFelder(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         LOG.trace("Element {} will be parsed.", element);
         Map<String, FeldXml> felder = new HashMap<String, FeldXml>();
@@ -161,7 +154,6 @@ public final class SatzXml extends Datensatz {
         }
         throw new XMLStreamException("end of " + element + " not found");
     }
-
 
     /**
      * Parses the feldreferenz.
