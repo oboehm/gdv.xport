@@ -93,18 +93,11 @@ public final class SatzXml extends Datensatz {
         throw new XMLStreamException("end of " + element + " not found");
     }
 
-    /**
-     * Parses the element.
-     *
-     * @param element the element
-     * @param reader the reader
-     * @throws XMLStreamException the XML stream exception
-     */
     private void parseElement(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         LOG.trace("Parsing element {}.", element);
         QName name = element.getName();
         if ("satzanfang".equals(name.getLocalPart())) {
-            parseSatzanfang(element, reader);
+            parseTeildatensatz(element, reader);
         } else if ("felder".equals(name.getLocalPart())) {
             parseFelder(element, reader);
         } else if ("feldreferenz".equals(name.getLocalPart())) {
@@ -112,18 +105,26 @@ public final class SatzXml extends Datensatz {
         }
     }
 
-    /**
-     * Parses the satzanfang.
-     *
-     * @param element the element
-     * @param reader the reader
-     * @throws XMLStreamException the XML stream exception
-     */
-    private void parseSatzanfang(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
+    private void parseTeildatensatz(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
+        TeildatensatzXml tds = parseSatzanfang(element, reader);
+        this.add(tds);
+        while (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (XmlHelper.isStartElement(event, "feldreferenz")) {
+                tds.add(new FeldReferenz(reader, event.asStartElement()));
+            } else if (XmlHelper.isStartElement(event, "satzende")) {
+                LOG.trace("<{}> is reached.", element);
+                XmlHelper.ignore(event, reader);
+                return;
+            }
+        }
+        throw new XMLStreamException("<satzende> for " + element + " not found");
+    }
+
+    private TeildatensatzXml parseSatzanfang(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         Attribute teilsatz = element.getAttributeByName(new QName("teilsatz"));
         int nr = Integer.parseInt(teilsatz.getValue());
         TeildatensatzXml tds = new TeildatensatzXml(this.getSatzart(), nr);
-        this.add(tds);
         LOG.debug("Teildatensatz {} added to {}.", nr, this);
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
@@ -131,7 +132,7 @@ public final class SatzXml extends Datensatz {
                 tds.add(new FeldReferenz(reader, event.asStartElement()));
             } else if (XmlHelper.isEndElement(event, element.getName())) {
                 LOG.trace("End of <{}> is reached.", element);
-                return;
+                return tds;
             }
         }
         throw new XMLStreamException("end of " + element + " not found");
@@ -175,32 +176,6 @@ public final class SatzXml extends Datensatz {
             this.getSatzartFeld().setInhalt(referenz.getAuspraegung());
         }
     }
-
-//    /* (non-Javadoc)
-//     * @see gdv.xport.satz.Satz#add(gdv.xport.feld.Feld)
-//     */
-//    @Override
-//    public void add(final Feld feld) {
-//        if (feld instanceof FeldXml) {
-//            this.add((FeldXml) feld);
-//        } else {
-//            super.add(feld);
-//        }
-//    }
-//
-//    /**
-//     * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu, falls
-//     * eine Referenz dazu exisitiert.
-//     *
-//     * @param feld das Feld
-//     */
-//    public void add(final FeldXml feld) {
-//        this.getTeildatensaetze();
-//        for (Teildatensatz tds : this.getTeildatensaetze()) {
-//            TeildatensatzXml tdsXml = (TeildatensatzXml) tds;
-//            tdsXml.add(feld);
-//        }
-//    }
 
     private void setFelder(Map<String, FeldXml> felder) {
         for (Teildatensatz tds : this.getTeildatensaetze()) {

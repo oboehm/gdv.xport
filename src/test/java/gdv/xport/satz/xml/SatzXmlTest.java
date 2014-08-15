@@ -32,7 +32,6 @@ import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
 
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -85,12 +84,14 @@ public class SatzXmlTest extends AbstractXmlTest {
     }
 
     /**
-     * 5 Teildatensaetze sind in "Satz100.xml" definiert.
+     * 1 Teildatensatz ist momentan in "Satz100.xml" defniert. Normalerweise
+     * sollten es 5 sein, aber aus Uebersichtsgruenden ist nur 1 Teildatensatz
+     * in der Test-Resource vorhanden.
      */
     @Test
     public void testGetTeildatensaetze() {
         Collection<Teildatensatz> teildatensaetze = satz100.getTeildatensaetze();
-        assertEquals(5, teildatensaetze.size());
+        assertEquals(1, teildatensaetze.size());
         char expectedNr = '1';
         for (Teildatensatz tds : teildatensaetze) {
             assertEquals(expectedNr, tds.getNummer().toChar());
@@ -120,7 +121,6 @@ public class SatzXmlTest extends AbstractXmlTest {
      * Hier ueberpruefen wir exemplarisch einige Felder aus Teildatensatz 1.
      */
     @Test
-    @Ignore("not yet implemented")
     public void testTeildatensatz1() {
         Teildatensatz tds = satz100.getTeildatensatz(1);
         Feld anrede = tds.getFeld(8);

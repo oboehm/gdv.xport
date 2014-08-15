@@ -146,7 +146,7 @@ public final class FeldXml extends Feld {
         } else if ("Alphanumerisch".equals(this.datentyp)) {
             return new AlphaNumFeld(this.technischerName, this.getAnzahlBytes(), byteAddress);
         } else {
-            LOG.debug("Feld constructor will be used for unknown datentyp '{}'.", this.datentyp);
+            LOG.warn("Feld constructor will be used for unknown datentyp '{}'.", this.datentyp);
             return new Feld(this.technischerName, this.getAnzahlBytes(), byteAddress, Align.UNKNOWN);
         }
     }
