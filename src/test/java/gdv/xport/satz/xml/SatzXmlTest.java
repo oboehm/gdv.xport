@@ -103,6 +103,7 @@ public class SatzXmlTest extends AbstractXmlTest {
         Feld feld = tds.getFeld("VU-Nummer");
         assertNotNull("VU-Nummer missing", feld);
         assertEquals(5, feld.getAnzahlBytes());
+        assertEquals(5, feld.getByteAdresse());
     }
 
     private static void checkSatzart(final Satz satz) {

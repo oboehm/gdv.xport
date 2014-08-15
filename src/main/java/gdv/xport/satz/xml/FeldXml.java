@@ -19,6 +19,7 @@
 package gdv.xport.satz.xml;
 
 import gdv.xport.feld.Align;
+import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.util.XmlHelper;
@@ -131,16 +132,6 @@ public final class FeldXml extends Feld {
         return this.nachkommastellen;
     }
 
-//    /**
-//     * Setzt einige interne Werte, die ueber die {@link FeldReferenz}
-//     * reinkommen.
-//     *
-//     * @param referenz the new referenz
-//     */
-//    public void setReferenz(final FeldReferenz referenz) {
-//        this.technischerName = referenz.getTechnischerName();
-//    }
-
     /**
      * Wandelt das FeldXml-Objekt in ein {@link Feld}-Objekt um.
      *
@@ -149,10 +140,13 @@ public final class FeldXml extends Feld {
      */
     public Feld toFeld(final int byteAddress) {
         if ("Numerisch".equals(this.datentyp)) {
-            return new NumFeld(this.name, this.getAnzahlBytes(), byteAddress).mitNachkommastellen(this.nachkommastellen);
+            return new NumFeld(this.technischerName, this.getAnzahlBytes(), byteAddress)
+                    .mitNachkommastellen(this.nachkommastellen);
+        } else if ("Alphanumerisch".equals(this.datentyp)) {
+            return new AlphaNumFeld(this.technischerName, this.getAnzahlBytes(), byteAddress);
         } else {
             LOG.debug("Feld constructor will be used for unknown datentyp '{}'.", this.datentyp);
-            return new Feld(this.name, this.getAnzahlBytes(), 0, Align.UNKNOWN);
+            return new Feld(this.technischerName, this.getAnzahlBytes(), byteAddress, Align.UNKNOWN);
         }
     }
 

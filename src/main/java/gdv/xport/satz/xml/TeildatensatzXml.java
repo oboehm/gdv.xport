@@ -60,35 +60,6 @@ public final class TeildatensatzXml extends Teildatensatz {
         feldReferenzen.add(referenz);
     }
 
-//    /* (non-Javadoc)
-//     * @see gdv.xport.satz.Teildatensatz#add(gdv.xport.feld.Feld)
-//     */
-//    @Override
-//    public void add(final Feld feld) {
-//        if (feld instanceof FeldXml) {
-//            this.add((FeldXml) feld);
-//        } else {
-//            super.add(feld);
-//        }
-//    }
-//
-//    /**
-//     * Fuegt das angegebene Feld in den Teildatensatz ein, falls eine
-//     * {@link FeldReferenz} dafuer vorhanden ist. Ein Teil der Werte kommt dabei
-//     * aus den abgespeicherten Feldreferenzen.
-//     *
-//     * @param feldXml Feld mit Name
-//     */
-//    public void add(final FeldXml feldXml) {
-//        for (FeldReferenz referenz : this.feldReferenzen) {
-//            if (feldXml.getId().equals(referenz.getId())) {
-//                feldXml.setReferenz(referenz);
-//                Feld feld = feldXml.toFeld();
-//                this.getDatenfelder().put(feldXml.getBezeichner(), feld);
-//            }
-//        }
-//    }
-
     /**
      * Legt mithilfe der uebergebenen Felder die entsprechenden {@link Feld}-
      * Objekte an.

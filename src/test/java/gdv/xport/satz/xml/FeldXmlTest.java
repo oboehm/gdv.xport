@@ -19,6 +19,7 @@
 package gdv.xport.satz.xml;
 
 import static org.junit.Assert.assertEquals;
+import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 
@@ -37,7 +38,7 @@ import org.junit.Test;
  */
 public class FeldXmlTest extends AbstractXmlTest {
 
-    private static FeldXml feld;
+    private static FeldXml feldXml;
 
     /**
      * Setzt ein FeldXml-Objekt zum Testen auf.
@@ -47,9 +48,13 @@ public class FeldXmlTest extends AbstractXmlTest {
      */
     @BeforeClass
     public static void setUpFeldReferenz() throws XMLStreamException, IOException {
-        XMLEventReader parser = createXMLEventReader("feld.xml");
+        feldXml = createFeldXmlFrom("feld.xml");
+    }
+
+    private static FeldXml createFeldXmlFrom(final String resource) throws XMLStreamException {
+        XMLEventReader parser = createXMLEventReader(resource);
         try {
-            feld = new FeldXml(parser);
+            return new FeldXml(parser);
         } finally {
             parser.close();
         }
@@ -60,7 +65,7 @@ public class FeldXmlTest extends AbstractXmlTest {
      */
     @Test
     public void testFeldXmlXMLEventReader() {
-        assertEquals("BN-2003.02.11.22.49.47.344", feld.getId());
+        assertEquals("BN-2003.02.11.22.49.47.344", feldXml.getId());
     }
 
     /**
@@ -68,7 +73,7 @@ public class FeldXmlTest extends AbstractXmlTest {
      */
     @Test
     public void testGetBezeichner() {
-        assertEquals("Sparte", feld.getBezeichner());
+        assertEquals("Sparte", feldXml.getBezeichner());
     }
 
     /**
@@ -76,7 +81,7 @@ public class FeldXmlTest extends AbstractXmlTest {
      */
     @Test
     public void testGetDatentyp() {
-        assertEquals("Numerisch", feld.getDatentyp());
+        assertEquals("Numerisch", feldXml.getDatentyp());
     }
 
     /**
@@ -84,7 +89,7 @@ public class FeldXmlTest extends AbstractXmlTest {
      */
     @Test
     public void testGetNachkommastellen() {
-        assertEquals(0, feld.getNachkommastellen());
+        assertEquals(0, feldXml.getNachkommastellen());
     }
 
     /**
@@ -94,25 +99,35 @@ public class FeldXmlTest extends AbstractXmlTest {
      */
     @Test
     public void testVuNummer() throws XMLStreamException {
-        XMLEventReader parser = createXMLEventReader("feldVuNr.xml");
-        try {
-            FeldXml vuNr = new FeldXml(parser);
-            assertEquals("VU-Nummer", vuNr.getBezeichner());
-            assertEquals(5, vuNr.getAnzahlBytes());
-        } finally {
-            parser.close();
-        }
+        FeldXml vuNr = createFeldXmlFrom("feldVuNr.xml");
+        assertEquals("VU-Nummer", vuNr.getBezeichner());
+        assertEquals(5, vuNr.getAnzahlBytes());
     }
 
     /**
      * Test-Methode fuer {@link FeldXml#toFeld(int)}.
      */
     @Test
-    public void testToFeld() {
-        Feld converted = feld.toFeld(1);
-        assertEquals("Sparte", converted.getBezeichnung());
-        assertEquals(feld.getAnzahlBytes(), converted.getAnzahlBytes());
-        assertEquals(NumFeld.class, converted.getClass());
+    public void testToNumFeld() {
+        checkToFeld(feldXml, NumFeld.class);
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldXml#toFeld(int)}.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testToAlphaNumFeld() throws XMLStreamException {
+        checkToFeld(createFeldXmlFrom("feldVuNr.xml"), AlphaNumFeld.class);
+    }
+
+    private static void checkToFeld(final FeldXml input, final Class<? extends Feld> expected) {
+        Feld converted = input.toFeld(42);
+        assertEquals(42, converted.getByteAdresse());
+        assertEquals(input.getBezeichnung(), converted.getBezeichnung());
+        assertEquals(input.getAnzahlBytes(), converted.getAnzahlBytes());
+        assertEquals(expected, converted.getClass());
     }
 
 }
