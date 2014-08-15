@@ -29,12 +29,7 @@ import gdv.xport.io.ImportException;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -52,7 +47,14 @@ import org.apache.commons.logging.LogFactory;
 public class Teildatensatz extends Satz {
 
     private static final Log log = LogFactory.getLog(Teildatensatz.class);
-    private final Map<Object, Feld> datenfelder = new HashMap<Object, Feld>();
+
+    /** Diese Map dient fuer den Zugriff ueber den Namen. */
+    private final Map<String, Feld> datenfelder = new HashMap<String, Feld>();
+
+    /** Dieses Set dient zum Zugriff ueber die Nummer. */
+    private final SortedSet<Feld> sortedFelder = new TreeSet<Feld>();
+
+    /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
     private final Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
 
     /**
@@ -105,8 +107,10 @@ public class Teildatensatz extends Satz {
     }
 
     private void initDatenfelder() {
-        datenfelder.put("Satzart", this.getSatzartFeld());
-        datenfelder.put("Satznummer", this.satznummer);
+//        datenfelder.put("Satzart", this.getSatzartFeld());
+//        datenfelder.put("Satznummer", this.satznummer);
+        this.add(this.getSatzartFeld());
+        this.add(this.satznummer);
     }
 
     /**
@@ -115,7 +119,7 @@ public class Teildatensatz extends Satz {
      * @return the datenfelder
      * @since 1.0
      */
-    protected Map<Object, Feld> getDatenfelder() {
+    protected Map<String, Feld> getDatenfelder() {
         return this.datenfelder;
     }
 
@@ -155,6 +159,7 @@ public class Teildatensatz extends Satz {
         }
         String name = feld.getBezeichnung();
         datenfelder.put(name, feld);
+        sortedFelder.add(feld);
     }
 
     private static boolean isSatznummer(final Feld feld) {
@@ -190,16 +195,22 @@ public class Teildatensatz extends Satz {
      * Verpasst dem angegebenen Feld einen Namen.
      *
      * @param feld ein Feld
+     * @deprecated wird ab 1.2 nicht mehr unterstuetzt
      */
+    @Deprecated
     public void set(final Feld feld) {
         String name = feld.getBezeichnung();
         this.set(name, feld);
     }
 
     /**
+     * Verpasst dem angegebenen Feld einen Namen.
+     *
      * @param name Name des Felds
      * @param feld Feld
+     * @deprecated wird ab 1.2 nicht mehr unterstuetzt
      */
+    @Deprecated
     public void set(final String name, final Feld feld) {
         datenfelder.put(name, feld);
     }
@@ -245,6 +256,16 @@ public class Teildatensatz extends Satz {
         } else {
             return found;
         }
+    }
+
+    /**
+     * Liefert das Feld mit der gewuenschten Nummer zurueck.
+     *
+     * @param nr z.B. 1
+     * @return das Feld (z.B. mit der Satzart)
+     */
+    public Feld getFeld(final int nr) {
+        return (Feld) sortedFelder.toArray()[nr -1];
     }
 
     /**

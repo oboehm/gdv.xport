@@ -26,13 +26,17 @@ import gdv.xport.satz.feld.FeldX;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.ByteBuffer;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
-import net.sf.oval.constraint.*;
+import net.sf.oval.constraint.Min;
+import net.sf.oval.constraint.NotEqual;
+import net.sf.oval.constraint.SizeCheck;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
@@ -119,14 +123,10 @@ public class Feld implements Comparable<Feld> {
     /**
      * Instantiates a new feld.
      *
-     * @param name
-     *            the name
-     * @param start
-     *            the start
-     * @param s
-     *            the s
-     * @param alignment
-     *            the alignment
+     * @param name the name
+     * @param start Start-Adresse
+     * @param s der Inhalt
+     * @param alignment the alignment
      */
     public Feld(final String name, final int start, final String s, final Align alignment) {
         this.bezeichnung = name;
@@ -578,7 +578,7 @@ public class Feld implements Comparable<Feld> {
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " " + this.bezeichnung + "(" + this.byteAdresse + "-"
+        return this.getClass().getSimpleName() + " " + this.getBezeichnung() + "(" + this.byteAdresse + "-"
                 + this.getEndAdresse() + "): \"" + this.getInhalt().trim() + "\"";
     }
 
@@ -596,7 +596,7 @@ public class Feld implements Comparable<Feld> {
             return false;
         }
         Feld other = (Feld) obj;
-        return this.bezeichnung.equals(other.bezeichnung) && this.getInhalt().equals(other.getInhalt())
+        return this.getBezeichnung().equals(other.getBezeichnung()) && this.getInhalt().equals(other.getInhalt())
                 && (this.byteAdresse == other.byteAdresse) && this.ausrichtung == other.ausrichtung;
     }
 

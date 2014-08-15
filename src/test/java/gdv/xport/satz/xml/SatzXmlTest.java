@@ -32,6 +32,7 @@ import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -104,12 +105,27 @@ public class SatzXmlTest extends AbstractXmlTest {
         assertNotNull("VU-Nummer missing", feld);
         assertEquals(5, feld.getAnzahlBytes());
         assertEquals(5, feld.getByteAdresse());
+        assertEquals(feld, tds.getFeld(2));
+        assertEquals(tds.getFeld("Folgenummer"), tds.getFeld(6));
     }
 
     private static void checkSatzart(final Satz satz) {
         assertEquals(100, satz.getSatzart());
         NumFeld satzart = satz.getSatzartFeld();
         assertEquals(4, satzart.getAnzahlBytes());
+        assertEquals(1, satzart.getByteAdresse());
+    }
+
+    /**
+     * Hier ueberpruefen wir exemplarisch einige Felder aus Teildatensatz 1.
+     */
+    @Test
+    @Ignore("not yet implemented")
+    public void testTeildatensatz1() {
+        Teildatensatz tds = satz100.getTeildatensatz(1);
+        Feld anrede = tds.getFeld(8);
+        assertEquals("wrong: " + anrede, 1, anrede.getAnzahlBytes());
+        assertEquals("wrong: " + anrede, 43, anrede.getByteAdresse());
     }
 
 }

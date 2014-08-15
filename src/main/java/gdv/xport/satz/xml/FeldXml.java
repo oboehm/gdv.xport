@@ -49,7 +49,7 @@ public final class FeldXml extends Feld {
     private final String name;
     private final String datentyp;
     private final int nachkommastellen;
-    private String technischerName;
+    private final String technischerName;
 
     /**
      * Instantiiert eine Objekt mit den Werten, die ueber den uebergebenen
@@ -75,6 +75,7 @@ public final class FeldXml extends Feld {
         LOG.trace("Parsing <feld referenz=\"{}\"...", id);
         Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
         this.name = props.getProperty("name", "");
+        this.technischerName = props.getProperty("technischerName", name);
         this.setAnzahlBytes(Integer.parseInt(props.getProperty("bytes", "1")));
         this.datentyp = props.getProperty("datentyp");
         this.nachkommastellen = Integer.parseInt(props.getProperty("nachkommastellen", "0"));

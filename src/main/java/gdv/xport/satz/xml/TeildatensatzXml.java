@@ -74,7 +74,7 @@ public final class TeildatensatzXml extends Teildatensatz {
                 throw new IllegalArgumentException("referenz for " + referenz + " not found in " + felder);
             }
             Feld feld = feldXml.toFeld(byteAddress);
-            this.getDatenfelder().put(feldXml.getBezeichner(), feld);
+            super.add(feld);
             byteAddress += feldXml.getAnzahlBytes();
         }
         LOG.trace("{} felder set.", this.feldReferenzen.size());

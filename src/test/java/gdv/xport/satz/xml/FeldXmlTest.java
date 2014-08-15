@@ -19,6 +19,7 @@
 package gdv.xport.satz.xml;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
@@ -28,6 +29,7 @@ import java.io.IOException;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
 
+import org.apache.commons.lang.StringUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -125,6 +127,7 @@ public class FeldXmlTest extends AbstractXmlTest {
     private static void checkToFeld(final FeldXml input, final Class<? extends Feld> expected) {
         Feld converted = input.toFeld(42);
         assertEquals(42, converted.getByteAdresse());
+        assertTrue(converted + ": bezeichnung expected", StringUtils.isNotEmpty(converted.getBezeichnung()));
         assertEquals(input.getBezeichnung(), converted.getBezeichnung());
         assertEquals(input.getAnzahlBytes(), converted.getAnzahlBytes());
         assertEquals(expected, converted.getClass());
