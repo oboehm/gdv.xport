@@ -22,7 +22,6 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.util.XmlHelper;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.xml.namespace.QName;
@@ -56,7 +55,7 @@ public final class SatzXml extends Datensatz {
      * @throws XMLStreamException the XML stream exception
      */
     public SatzXml(final XMLEventReader parser) throws XMLStreamException {
-        this(parser, XmlHelper.getNextStartElement(parser));
+        this(parser, XmlHelper.getNextStartElement("satzart", parser));
     }
 
     /**
@@ -98,8 +97,8 @@ public final class SatzXml extends Datensatz {
         QName name = element.getName();
         if ("satzanfang".equals(name.getLocalPart())) {
             parseTeildatensatz(element, reader);
-        } else if ("felder".equals(name.getLocalPart())) {
-            parseFelder(element, reader);
+//        } else if ("felder".equals(name.getLocalPart())) {
+//            parseFelder(element, reader);
         } else if ("feldreferenz".equals(name.getLocalPart())) {
             parseFeldreferenz(element, reader);
         }
@@ -138,22 +137,22 @@ public final class SatzXml extends Datensatz {
         throw new XMLStreamException("end of " + element + " not found");
     }
 
-    private void parseFelder(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
-        LOG.trace("Element {} will be parsed.", element);
-        Map<String, FeldXml> felder = new HashMap<String, FeldXml>();
-        while (reader.hasNext()) {
-            XMLEvent event = reader.nextEvent();
-            if (event.isStartElement()) {
-                FeldXml feld = new FeldXml(reader, event.asStartElement());
-                felder.put(feld.getId(), feld);
-            } else if (XmlHelper.isEndElement(event, element.getName())) {
-                LOG.debug("{} felder between {}...{} successful parsed.", felder.size(), element, event);
-                setFelder(felder);
-                return;
-            }
-        }
-        throw new XMLStreamException("end of " + element + " not found");
-    }
+//    private void parseFelder(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
+//        LOG.trace("Element {} will be parsed.", element);
+//        Map<String, FeldXml> felder = new HashMap<String, FeldXml>();
+//        while (reader.hasNext()) {
+//            XMLEvent event = reader.nextEvent();
+//            if (event.isStartElement()) {
+//                FeldXml feld = new FeldXml(reader, event.asStartElement());
+//                felder.put(feld.getId(), feld);
+//            } else if (XmlHelper.isEndElement(event, element.getName())) {
+//                LOG.debug("{} felder between {}...{} successful parsed.", felder.size(), element, event);
+//                setFelder(felder);
+//                return;
+//            }
+//        }
+//        throw new XMLStreamException("end of " + element + " not found");
+//    }
 
     /**
      * Parses the feldreferenz.
@@ -169,7 +168,13 @@ public final class SatzXml extends Datensatz {
         }
     }
 
-    private void setFelder(Map<String, FeldXml> felder) {
+    /**
+     * Verwendet die uebergebene Map, um die Teildatensaetze um fehlende
+     * Informationen zu ergaenzen.
+     *
+     * @param felder the felder
+     */
+    public void setFelder(Map<String, FeldXml> felder) {
         for (Teildatensatz tds : this.getTeildatensaetze()) {
             TeildatensatzXml tdsXml = (TeildatensatzXml) tds;
             tdsXml.setFelder(felder);

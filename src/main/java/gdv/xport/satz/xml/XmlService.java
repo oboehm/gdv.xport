@@ -108,7 +108,25 @@ public class XmlService {
         throw new XMLStreamException("end of " + element + " not found");
     }
 
-    private Map<String, FeldXml> parseFelder(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
+    /**
+     * Liest die &lt;felder&gt;-Elemente ein und liefert sie als Map zurueck.
+     *
+     * @param reader the reader
+     * @return Map mit den Feldern
+     * @throws XMLStreamException the XML stream exception
+     */
+    public static Map<String, FeldXml> parseFelder(final XMLEventReader reader) throws XMLStreamException {
+        while (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (XmlHelper.isStartElement(event, "felder")) {
+                return parseFelder(event.asStartElement(), reader);
+            }
+            LOG.trace("Event {} is ignored.", event);
+        }
+        throw new XMLStreamException("<felder>...</felder> not found");
+    }
+
+    private static Map<String, FeldXml> parseFelder(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         LOG.trace("Element {} will be parsed.", element);
         Map<String, FeldXml> felder = new HashMap<String, FeldXml>();
         while (reader.hasNext()) {

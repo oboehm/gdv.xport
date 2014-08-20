@@ -27,6 +27,7 @@ import gdv.xport.satz.Teildatensatz;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Map;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
@@ -59,6 +60,8 @@ public class SatzXmlTest extends AbstractXmlTest {
         XMLEventReader parser = createXMLEventReader("Satz100.xml");
         try {
             satz100 = new SatzXml(parser);
+            Map<String, FeldXml> felder = XmlService.parseFelder(parser);
+            satz100.setFelder(felder);
         } finally {
             parser.close();
         }
