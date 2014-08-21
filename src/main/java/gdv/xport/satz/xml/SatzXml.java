@@ -97,8 +97,6 @@ public final class SatzXml extends Datensatz {
         QName name = element.getName();
         if ("satzanfang".equals(name.getLocalPart())) {
             parseTeildatensatz(element, reader);
-//        } else if ("felder".equals(name.getLocalPart())) {
-//            parseFelder(element, reader);
         } else if ("feldreferenz".equals(name.getLocalPart())) {
             parseFeldreferenz(element, reader);
         }
@@ -137,23 +135,6 @@ public final class SatzXml extends Datensatz {
         throw new XMLStreamException("end of " + element + " not found");
     }
 
-//    private void parseFelder(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
-//        LOG.trace("Element {} will be parsed.", element);
-//        Map<String, FeldXml> felder = new HashMap<String, FeldXml>();
-//        while (reader.hasNext()) {
-//            XMLEvent event = reader.nextEvent();
-//            if (event.isStartElement()) {
-//                FeldXml feld = new FeldXml(reader, event.asStartElement());
-//                felder.put(feld.getId(), feld);
-//            } else if (XmlHelper.isEndElement(event, element.getName())) {
-//                LOG.debug("{} felder between {}...{} successful parsed.", felder.size(), element, event);
-//                setFelder(felder);
-//                return;
-//            }
-//        }
-//        throw new XMLStreamException("end of " + element + " not found");
-//    }
-
     /**
      * Parses the feldreferenz.
      *
@@ -164,7 +145,11 @@ public final class SatzXml extends Datensatz {
     private void parseFeldreferenz(StartElement element, final XMLEventReader reader) throws XMLStreamException {
         FeldReferenz referenz = new FeldReferenz(reader, element);
         if (referenz.hasAuspraegung()) {
-            this.getSatzartFeld().setInhalt(referenz.getAuspraegung());
+            if ("Satzart".equals(referenz.getName())) {
+                this.getSatzartFeld().setInhalt(referenz.getAuspraegung());
+            } else if ("Sparte".equals(referenz.getName())) {
+                this.setSparte(referenz.getAuspraegung());
+            }
         }
     }
 

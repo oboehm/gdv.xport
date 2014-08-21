@@ -131,4 +131,22 @@ public class SatzXmlTest extends AbstractXmlTest {
         assertEquals("wrong: " + anrede, 43, anrede.getByteAdresse());
     }
 
+    /**
+     * Hier versuchen wir die Satzart 0220.580.01 (Kapitel: Produktspezifischer
+     * Teil, Abschnitt:Bausparen - Sparen / Antrag) einzulesen.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testSatz0220BausparenAntrag() throws XMLStreamException {
+        XMLEventReader parser = createXMLEventReader("Satz220.580.01.xml");
+        try {
+            SatzXml satz220 = new SatzXml(parser);
+            assertEquals(220, satz220.getSatzart());
+            assertEquals(580, satz220.getSparte());
+        } finally {
+            parser.close();
+        }
+    }
+
 }

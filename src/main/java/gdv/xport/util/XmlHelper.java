@@ -194,7 +194,8 @@ public final class XmlHelper {
      * @return the next start element
      * @throws XMLStreamException the XML stream exception
      */
-    public static StartElement getNextStartElement(final String name, final XMLEventReader reader) throws XMLStreamException {
+    public static StartElement getNextStartElement(final String name, final XMLEventReader reader)
+            throws XMLStreamException {
         while (true) {
             StartElement startElement = getNextStartElement(reader);
             if (name.equals(startElement.getName().getLocalPart())) {

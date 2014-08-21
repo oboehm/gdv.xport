@@ -62,6 +62,8 @@ public class Datensatz extends Satz {
 	private final NumFeld folgeNr = new NumFeld(Feld1bis7.FOLGENUMMER);
 	/** 10 Zeichen, Byte 33 - 42. */
 	private final AlphaNumFeld vermittler = new AlphaNumFeld(Feld1bis7.VERMITTLER);
+	/** Zum Abspeichern der Wagnisart oder Art (Unter-Sparte). */
+	private int art;
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der.
@@ -256,6 +258,20 @@ public class Datensatz extends Satz {
 	}
 
 	/**
+	 * Setzt die Sparte. Der uebergebene String kann dabei auch die Art der
+	 * Sparte enthalten.
+	 *
+	 * @param x z.B. "580.01" fuer Sparte 580, Art 01
+	 */
+	public void setSparte(final String x) {
+	    String[] parts = x.split("\\.");
+	    this.setSparte(Integer.parseInt(parts[0]));
+	    if (parts.length > 1) {
+	        this.art = Integer.parseInt(parts[1]);
+	    }
+	}
+
+	/**
 	 * Gets the sparte.
 	 *
 	 * @return die Sparte als int
@@ -263,6 +279,16 @@ public class Datensatz extends Satz {
 	@Override
     public int getSparte() {
 		return this.sparte.toInt();
+	}
+
+	/**
+	 * Manche Satzarten wie Bausparen haben eine Element fuer die Untersparte,
+	 * im Feld Wagnisart oder Art abgespeichert.
+	 *
+	 * @return 0 oder Untersparte / Art
+	 */
+	public int getArt() {
+	    return this.art;
 	}
 
 	/**

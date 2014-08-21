@@ -74,5 +74,26 @@ public class DatensatzTest extends AbstractDatensatzTest {
         assertEquals(ds.get(INKASSOART), "2");
     }
 
+    /**
+     * Test-Methode fuer {@link Datensatz#setSparte(String)}.
+     */
+    @Test
+    public void testSetSparteString() {
+        Datensatz ds = new Datensatz("0220");
+        ds.setSparte("580");
+        assertEquals(580, ds.getSparte());
+    }
+
+    /**
+     * Test-Methode fuer {@link Datensatz#setSparte(String)}.
+     */
+    @Test
+    public void testSetSparteWithArt() {
+        Datensatz ds = new Datensatz("0220");
+        ds.setSparte("580.01");
+        assertEquals(580, ds.getSparte());
+        assertEquals(1, ds.getArt());
+    }
+
 }
 
