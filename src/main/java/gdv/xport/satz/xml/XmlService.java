@@ -32,6 +32,8 @@ import javax.xml.stream.events.XMLEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import patterntesting.runtime.log.LogWatch;
+
 /**
  * Hier wird jetzt eine XML-Beschreibung verwendet, um die Saetze fuer die
  * einzelnen Satzarten aufzusetzen. Als Basis fuer die XML-Beschreibung wurde
@@ -69,12 +71,14 @@ public class XmlService {
     }
 
     private void parse(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
+        LogWatch watch = new LogWatch();
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
             if (event.isStartElement()) {
                 parseElement(event.asStartElement(), reader);
             } else if (XmlHelper.isEndElement(event, element.getName())) {
-                LOG.debug("{}...{} successful parsed.", element, event);
+                LOG.info("{} Satzarten successful parsed from {}...{} in {}.", this.satzarten.size(), element, event,
+                        watch);
                 return;
             }
             LOG.trace("Event {} is ignored.", event);
@@ -100,6 +104,7 @@ public class XmlService {
             if (XmlHelper.isStartElement(event, "satzart")) {
                 SatzXml satz = new SatzXml(reader, event.asStartElement());
                 this.satzarten.put(satz.getSatzart(), satz);
+                LOG.debug("{} added.", satz);
             } else if (XmlHelper.isEndElement(event, element.getName())) {
                 LOG.debug("{} satzarten successful parsed.", this.satzarten.size());
                 return;

@@ -47,7 +47,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @BeforeClass
     public static void setUpXmlService() throws IOException, XMLStreamException {
-        XMLEventReader parser = createXMLEventReader("Satz100.xml");
+        XMLEventReader parser = createXMLEventReader("VUVM2013.xml");
         try {
             xmlService = new XmlService(parser);
         } finally {
