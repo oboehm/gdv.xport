@@ -12,20 +12,48 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.ABSENDER;
+import static gdv.xport.feld.Bezeichner.ADRESSAT;
+import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_BIS;
+import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_VOM;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
-import gdv.xport.io.*;
-import gdv.xport.satz.*;
+import gdv.xport.io.ExtendedEOFException;
+import gdv.xport.io.ImportException;
+import gdv.xport.io.PushbackLineNumberReader;
+import gdv.xport.io.RecordReader;
+import gdv.xport.io.RecyclingInputStreamReader;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Nachsatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
-import gdv.xport.util.*;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzNummer;
+import gdv.xport.util.URLReader;
 
-import java.io.*;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.Writer;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -317,7 +345,7 @@ public final class Datenpaket {
             wagnisart = Datensatz.readWagnisart(reader);
             if (wagnisart != WagnisartLeben.NULL) {
                 // wagnisart 0 hat immer ein Leerzeichen als
-                // teildatenSatzmummer. Nur größer 0
+                // teildatenSatzmummer. Nur groesser 0
                 // besitzt per Definition Werte.
                 teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
             }

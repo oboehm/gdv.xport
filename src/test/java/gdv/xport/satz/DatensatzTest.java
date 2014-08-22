@@ -21,13 +21,14 @@ package gdv.xport.satz;
 import static gdv.xport.feld.Bezeichner.ANREDESCHLUESSEL;
 import static gdv.xport.feld.Bezeichner.INKASSOART;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.feld.AlphaNumFeld;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.impl.LogFactoryImpl;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Gemeinsame Oberklasse fuer SatzTest.
@@ -38,7 +39,7 @@ import org.junit.Test;
  */
 public class DatensatzTest extends AbstractDatensatzTest {
 
-    private static final Log log = LogFactoryImpl.getLog(DatensatzTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DatensatzTest.class);
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -59,7 +60,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
     public void testDatensatzStringInt() throws IOException {
         Satz adressteil = new Datensatz("0100", 5);
         adressteil.add(new AlphaNumFeld(ANREDESCHLUESSEL, 1, 43, '6'));
-        log.info("adressteil=" + adressteil.toShortString());
+        LOG.info("adressteil=" + adressteil.toShortString());
         checkExport(adressteil, 43, 43, "6", 1280);
     }
 
@@ -90,9 +91,12 @@ public class DatensatzTest extends AbstractDatensatzTest {
     @Test
     public void testSetSparteWithArt() {
         Datensatz ds = new Datensatz("0220");
-        ds.setSparte("580.01");
+        ds.setSparte("580.2");
         assertEquals(580, ds.getSparte());
-        assertEquals(1, ds.getArt());
+        assertEquals(2, ds.getArt());
+        String s = ds.toString();
+        LOG.info("s = \"{}\"", s);
+        assertTrue(s, s.contains("220.580.2"));
     }
 
 }

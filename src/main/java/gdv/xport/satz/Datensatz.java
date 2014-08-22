@@ -282,13 +282,24 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Manche Satzarten wie Bausparen haben eine Element fuer die Untersparte,
-	 * im Feld Wagnisart oder Art abgespeichert.
-	 *
-	 * @return 0 oder Untersparte / Art
-	 */
+     * Manche Satzarten wie Bausparen haben eine Element fuer die Untersparte,
+     * im Feld Wagnisart oder Art abgespeichert. Dies ist z.B. fuer Satz
+     * 220.580.1 (Bausparen) der Fall.
+     *
+     * @return 0 oder Untersparte / Art
+     */
 	public int getArt() {
 	    return this.art;
+	}
+
+	/**
+	 * Wenn der Datensatz ein Element fuer eine Untersparte hat, wird 'true'
+	 * zurueckgegeben. Dies ist z.B. fuer Satz 220.580.1 (Bausparen) der Fall.
+	 *
+	 * @return true, falls der Datensatz eine Untersparte hat.
+	 */
+	public boolean hasArt() {
+	    return this.art > 0;
 	}
 
 	/**
@@ -501,7 +512,14 @@ public class Datensatz extends Satz {
 	 */
 	@Override
 	public String toShortString() {
-		return super.toShortString() + "." + this.sparte.getInhalt();
+	    StringBuilder buf = new StringBuilder(super.toShortString());
+	    if (this.hasSparte()) {
+	        buf.append("." + this.sparte.getInhalt());
+	        if (this.hasArt()) {
+	            buf.append("." + this.getArt());
+	        }
+        }
+		return buf.toString();
 	}
 
 	/**

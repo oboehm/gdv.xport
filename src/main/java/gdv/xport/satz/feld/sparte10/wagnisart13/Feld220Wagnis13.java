@@ -111,7 +111,7 @@ public enum Feld220Wagnis13 {
      * (9,0 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 17, type = NumFeld.class, anzahlBytes = 9, byteAdresse = 102)
-    ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_ABLAUF,
+    ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF,
 
     /**
      * Todesfall VS in Währungseinheiten zum Ablauf.<br/>

@@ -144,6 +144,7 @@ public class SatzXmlTest extends AbstractXmlTest {
             SatzXml satz220 = new SatzXml(parser);
             assertEquals(220, satz220.getSatzart());
             assertEquals(580, satz220.getSparte());
+            assertEquals(1, satz220.getArt());
         } finally {
             parser.close();
         }
