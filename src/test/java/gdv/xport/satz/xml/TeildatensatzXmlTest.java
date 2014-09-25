@@ -56,9 +56,32 @@ public class TeildatensatzXmlTest {
      */
     @Test
     public void testGetFeldString() {
-        Feld feld = tds100.getFeld(Bezeichner.ANREDESCHLUESSEL);
-        assertEquals(43, feld.getByteAdresse());
-        assertEquals(1, feld.getAnzahlBytes());
+        checkFeld(Bezeichner.ANREDESCHLUESSEL, 1, 43);
+    }
+
+    /**
+     * Hier testen wir, ob wir das Feld "VU-Nummer" erwischen. Dieser Test
+     * wurde ausgesucht, weil der Name ("VU-Nummer") einen Bindestrich ("-")
+     * enthaelt.
+     */
+    @Test
+    public void testGetFeldVuNr() {
+        checkFeld(Bezeichner.VU_NUMMER, 5, 5);
+    }
+
+    /**
+     * Das Feld "Geschaeftsstelle / Vermittler" koennte Probleme bereiten, da
+     * Leerzeichen enthaelt.
+     */
+    @Test
+    public void testGetFeldVermittler() {
+        checkFeld(Bezeichner.VERMITTLER, 10, 33);
+    }
+
+    private static void checkFeld(final String name, final int length, final int address) {
+        Feld feld = tds100.getFeld(name);
+        assertEquals("Anzahl Bytes", length, feld.getAnzahlBytes());
+        assertEquals("Byte-Adresse", address, feld.getByteAdresse());
     }
 
 }

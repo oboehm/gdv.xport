@@ -20,10 +20,17 @@
 package gdv.xport.feld;
 
 /**
- * Diese Klasse enthaelt nur String-Konstanten: die Bezeichner der einzelnen
- * Felder. Die Konstanten sind alphabetisch geordnet.
+ * Diese Klasse enthaelt hauptsaechlich String-Konstanten: die Bezeichner der
+ * einzelnen Felder. Die Konstanten sind alphabetisch geordnet.
  * <p>
- * Bitte Felder alphabetisch ordnen bzw. eintragen! (oboehm, 26-Jan-2013)
+ * Daneben dient diese Klasse auch als String-Erweiterung, um verschiedene
+ * Bezeichner besser vergleichen zu koennen. So enthalten manche
+ * Bezeichner-Konstanten Leerzeichen, die bei einem Vergleich nicht
+ * beruecksichtigt werden sollen.
+ * </p>
+ * <p>
+ * Bitte String-Konstanten alphabetisch ordnen bzw. eintragen! (oboehm,
+ * 26-Jan-2013)
  * </p>
  *
  * @author oliver
@@ -907,7 +914,54 @@ public final class Bezeichner {
     public static final String STAENDIG_BEWOHNT = "Staendig bewohnt";
     public static final String OBJEKTNUMMER = "Objektnummer";
 
-    private Bezeichner() {
+    private final String name;
+
+    /**
+     * Legt einen neuen Bezeichner mit dem gewuenschten Name an.
+     *
+     * @param name der gewuenschte Name
+     * @since 1.0
+     */
+    public Bezeichner(final String name) {
+        this.name = name;
+    }
+
+    /**
+     * Solange der gespeicherte Namen mit dem anderen Namen in etwa
+     * uebereinstimmt (bis auf Leerzeichen und anderen Fuellungen), ist
+     * das Ergebnis 'true'.
+     *
+     * @param obj der andere Bezeichner
+     * @return true, wenn er als gleich angesehen wird
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (!(obj instanceof Bezeichner)) {
+            return false;
+        }
+        Bezeichner other = (Bezeichner) obj;
+        return this.name.equals(other.name);
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
+
+    /**
+     * Da der Bezeichner als Ersatz fuer die String-Klasse eingesetzt werden soll,
+     * liefern wir den Namen hier zurueck.
+     *
+     * @return den Namen
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return this.name;
     }
 
 }
