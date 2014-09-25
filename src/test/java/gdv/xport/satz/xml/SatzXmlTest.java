@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.xml;
 
+import static gdv.xport.satz.xml.AbstractXmlTest.createXMLEventReader;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.Feld;
@@ -45,7 +46,7 @@ import patterntesting.runtime.junit.SmokeRunner;
  * @since 1.0 (31.07.2014)
  */
 @RunWith(SmokeRunner.class)
-public class SatzXmlTest extends AbstractXmlTest {
+public class SatzXmlTest { // extends AbstractDatensatzTest {
 
     private static SatzXml satz100;
 
@@ -57,15 +58,37 @@ public class SatzXmlTest extends AbstractXmlTest {
      */
     @BeforeClass
     public static void setUpSatz100() throws IOException, XMLStreamException {
-        XMLEventReader parser = createXMLEventReader("Satz100.xml");
+        satz100 = getSatz("Satz100.xml");
+    }
+
+    /**
+     * Setzt ein SatzXml-Objekt mit Hilfe der uebergebenen Resource auf.
+     * Diese Methode ist 'protected' damit sie auch von anderen Unit-Tests
+     * (wie z.B. TeildatensatzXmlTest) zum Testen verwendet werden kann.
+     *
+     * @param resource Name der Resource
+     * @return the satz
+     * @throws XMLStreamException the XML stream exception
+     */
+    protected static SatzXml getSatz(final String resource) throws XMLStreamException {
+        XMLEventReader parser = createXMLEventReader(resource);
         try {
-            satz100 = new SatzXml(parser);
+            SatzXml satz = new SatzXml(parser);
             Map<String, FeldXml> felder = XmlService.parseFelder(parser);
-            satz100.setFelder(felder);
+            satz.setFelder(felder);
+            return satz;
         } finally {
             parser.close();
         }
     }
+
+//    /* (non-Javadoc)
+//     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+//     */
+//    @Override
+//    protected Satz getSatz() {
+//        return satz100;
+//    }
 
     /**
      * Test method for {@link SatzXml#getSatzart()}.

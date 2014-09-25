@@ -56,7 +56,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     /**
-     * Test method for {@link XmlService#getSatzart(int)}.
+     * Test-Methode fuer {@link XmlService#getSatzart(int)}.
      */
     @Test
     public void testGetSatzart() {
