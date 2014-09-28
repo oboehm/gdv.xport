@@ -18,6 +18,7 @@
 
 package gdv.xport.feld;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -43,6 +44,16 @@ public class BezeichnerTest {
     }
 
     /**
+     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Die Daten
+     * dazu stammen aus der XML-Datei ("VUVM2013").
+     */
+    @Test
+    public void testGetTechnischerName() {
+        Bezeichner vermittler = new Bezeichner("Gesch\u00e4ftsstelle / Vermittler");
+        assertEquals("GeschaeftsstelleVermittler", vermittler.getTechnischerName());
+    }
+
+    /**
      * Zwei Bezeichner mit dem identischen Namen sollten natuerlich gleich
      * sein.
      */
@@ -50,6 +61,17 @@ public class BezeichnerTest {
     public void testEqualsExact() {
         String name = "Hello";
         ObjectTester.assertEquals(new Bezeichner(name), new Bezeichner(name));
+    }
+
+    /**
+     * Mit {@link Bezeichner#VERMITTLER} gab es Probleme, da er sowohl
+     * Leerzeichen, Sonderzeichen ("/") und einen Umlaut enthielt, die eine
+     * besondere Herausforderung fuer den Vergleich darstellten.
+     */
+    @Test
+    public void testEqualsVermittler() {
+        ObjectTester.assertEquals(new Bezeichner(Bezeichner.VERMITTLER),
+                new Bezeichner("Gesch\u00e4ftsstelle / Vermittler"));
     }
 
 }

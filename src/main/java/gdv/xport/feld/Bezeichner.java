@@ -915,6 +915,7 @@ public final class Bezeichner {
     public static final String OBJEKTNUMMER = "Objektnummer";
 
     private final String name;
+    private final String technischerName;
 
     /**
      * Legt einen neuen Bezeichner mit dem gewuenschten Name an.
@@ -924,12 +925,72 @@ public final class Bezeichner {
      */
     public Bezeichner(final String name) {
         this.name = name;
+        this.technischerName = toTechnischerName(name);
+    }
+
+    private static String toTechnischerName(final String input) {
+        StringBuilder converted = new StringBuilder();
+        char[] chars = input.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            switch (chars[i]) {
+                case '\u00c4':
+                    converted.append("Ae");
+                    break;
+                case '\u00d6':
+                    converted.append("Oe");
+                    break;
+                case '\u00dc':
+                    converted.append("Ue");
+                    break;
+                case '\u00e4':
+                    converted.append("ae");
+                    break;
+                case '\u00f6':
+                    converted.append("oe");
+                    break;
+                case '\u00fc':
+                    converted.append("ue");
+                    break;
+                case '\u00df':
+                    converted.append("ss");
+                    break;
+                default:
+                    if (Character.isLetterOrDigit(chars[i])) {
+                        converted.append(chars[i]);
+                    }
+                    break;
+            }
+        }
+        return converted.toString();
     }
 
     /**
-     * Solange der gespeicherte Namen mit dem anderen Namen in etwa
-     * uebereinstimmt (bis auf Leerzeichen und anderen Fuellungen), ist
-     * das Ergebnis 'true'.
+     * Liefert den Namen des Bezeichners.
+     *
+     * @return der Name
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * Der technische Name leitet sich aus dem normalen Namen ab. Im
+     * Gegensatz zum normalen Namen enthaelt er aber keine Leerzeichen,
+     * Sonderzeichen oder Umlaute.
+     * <p>
+     * Der technische Name wird auch dazu verwendet, um zwei {@link Bezeichner}
+     * auf Gleichheit zu testen.
+     * </p>
+     *
+     * @return der technische Name
+     */
+    public String getTechnischerName() {
+        return this.technischerName;
+    }
+
+    /**
+     * Zum Vergleich zweier {@link Bezeichner} wird der technische Name
+     * herangezogen.
      *
      * @param obj der andere Bezeichner
      * @return true, wenn er als gleich angesehen wird
@@ -941,7 +1002,7 @@ public final class Bezeichner {
             return false;
         }
         Bezeichner other = (Bezeichner) obj;
-        return this.name.equals(other.name);
+        return this.getTechnischerName().equals(other.getTechnischerName());
     }
 
     /* (non-Javadoc)
@@ -949,7 +1010,7 @@ public final class Bezeichner {
      */
     @Override
     public int hashCode() {
-        return this.name.hashCode();
+        return this.getTechnischerName().hashCode();
     }
 
     /**
