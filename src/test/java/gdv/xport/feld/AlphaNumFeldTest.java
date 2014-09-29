@@ -42,7 +42,7 @@ public class AlphaNumFeldTest {
         Alphabet alpha = Alphabet.ALPHA;
         FeldInfo info = FeldTest.createFeldInfo();
         AlphaNumFeld feld = new AlphaNumFeld(alpha, info);
-        assertEquals("ALPHA", feld.getBezeichner());
+        assertEquals("ALPHA", feld.getBezeichnerAsString());
         assertEquals("Alpha", feld.getBezeichnung());
     }
 

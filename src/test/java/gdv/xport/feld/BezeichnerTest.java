@@ -64,6 +64,14 @@ public class BezeichnerTest {
     }
 
     /**
+     * Gross-/Kleinschreibung sollte egal fuer den Vergleich sein.
+     */
+    @Test
+    public void testEqualsUpperCase() {
+        ObjectTester.assertEquals(new Bezeichner("Gross"), new Bezeichner("GROSS"));
+    }
+
+    /**
      * Mit {@link Bezeichner#VERMITTLER} gab es Probleme, da er sowohl
      * Leerzeichen, Sonderzeichen ("/") und einen Umlaut enthielt, die eine
      * besondere Herausforderung fuer den Vergleich darstellten.

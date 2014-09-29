@@ -58,7 +58,7 @@ public class Feld implements Comparable<Feld> {
     public static final Feld NULL_FELD = new Feld();
     /** optional: Name des Felds. */
     private final String bezeichnung;
-    private final Enum<?> bezeichner;
+    private final Enum<?> bezeichnerEnum;
     private final StringBuffer inhalt;
     /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256. */
     @Min(1)
@@ -96,7 +96,7 @@ public class Feld implements Comparable<Feld> {
      * @since 0.6
      */
     public Feld(final Enum<?> feldX, final FeldInfo info) {
-        this.bezeichner = feldX;
+        this.bezeichnerEnum = feldX;
         this.bezeichnung = Feld.getAsBezeichnung(feldX);
         this.byteAdresse = info.byteAdresse();
         this.ausrichtung = getAlignmentFrom(info);
@@ -133,7 +133,7 @@ public class Feld implements Comparable<Feld> {
         this.inhalt = new StringBuffer(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichner = FeldX.UNBEKANNT;
+        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
     /**
@@ -153,7 +153,7 @@ public class Feld implements Comparable<Feld> {
         this.inhalt = getEmptyStringBuffer(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichner = FeldX.UNBEKANNT;
+        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
     /**
@@ -223,7 +223,7 @@ public class Feld implements Comparable<Feld> {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichnung = createBezeichnung();
-        this.bezeichner = FeldX.UNBEKANNT;
+        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
     /**
@@ -253,7 +253,7 @@ public class Feld implements Comparable<Feld> {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichnung = createBezeichnung();
-        this.bezeichner = FeldX.UNBEKANNT;
+        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
     private static StringBuffer getEmptyStringBuffer(final int length) {
@@ -326,13 +326,21 @@ public class Feld implements Comparable<Feld> {
      * (in Grossbuchstaben). Er wird aus der Bezeichnung unter Zuhilfenahme der
      * {@link Bezeichner}-Klasse ermittelt, wenn das bezeichner-Attribute nicht
      * gesetzt (bzw. UNBEKANNT) ist.
+     * <p>
+     * In 1.0 wurde die Methode in "getBezeichnerAsString" umbenannt, um die
+     * Verwirrung mit der Bezeichner-Klasse nicht zu gross werden zu lassen.
+     * Vorher hiess diese Klasse "getBezeichner", lieferte aber einen String
+     * zurueck.
+     * </p>
      *
      * @return Bezeichner in Grossbuchstaben
-     * @since 0.6
+     * @since 0.6 (vor 1.0 hiess diese Methode "getBezeichner")
+     * @deprecated durch {@link #getBezeichner()} ersetzt
      */
-    public String getBezeichner() {
-        if (!this.bezeichner.equals(FeldX.UNBEKANNT)) {
-            return this.bezeichner.name();
+    @Deprecated
+    public String getBezeichnerAsString() {
+        if (!this.bezeichnerEnum.equals(FeldX.UNBEKANNT)) {
+            return this.bezeichnerEnum.name();
         }
         Field[] fields = Bezeichner.class.getFields();
         for (int i = 0; i < fields.length; i++) {
@@ -349,6 +357,18 @@ public class Feld implements Comparable<Feld> {
         }
         log.info('"' + this.bezeichnung + "\" not found in " + Bezeichner.class);
         return this.bezeichnung.replaceAll(" ", "_").toUpperCase();
+    }
+
+    /**
+     * Liefert den Bezeichner eines Feldes zurueck. Die Bestimmung des
+     * korrekten Bezeichners wurde dabei zum grossen Teil in die
+     * {@link Bezeichner}-Klasse verlagert.
+     *
+     * @return den Bezeichner des Feldes
+     * @since 1.0
+     */
+    public Bezeichner getBezeichner() {
+        return new Bezeichner(this.getBezeichnerAsString());
     }
 
     /**

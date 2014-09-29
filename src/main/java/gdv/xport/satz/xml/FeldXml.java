@@ -93,10 +93,10 @@ public final class FeldXml extends Feld {
      * Kleinbuchstaben erscheinen.
      *
      * @return der technische Name
-     * @see gdv.xport.feld.Feld#getBezeichner()
+     * @see gdv.xport.feld.Feld#getBezeichnerAsString()
      */
     @Override
-    public String getBezeichner() {
+    public String getBezeichnerAsString() {
         return this.name;
     }
 

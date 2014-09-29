@@ -84,7 +84,7 @@ public final class MyUnfallDatensatzTest {
     public void testBezeichner() {
         Datensatz myDatensatz = new MyUnfallDatensatz();
         Feld meineWaehrung = myDatensatz.getFeld(MyFeld210.MEINE_WAEHRUNG);
-        assertEquals("MEINE_WAEHRUNG", meineWaehrung.getBezeichner());
+        assertEquals("MEINE_WAEHRUNG", meineWaehrung.getBezeichnerAsString());
         assertEquals("Meine Waehrung", meineWaehrung.getBezeichnung());
     }
 

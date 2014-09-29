@@ -1002,7 +1002,7 @@ public final class Bezeichner {
             return false;
         }
         Bezeichner other = (Bezeichner) obj;
-        return this.getTechnischerName().equals(other.getTechnischerName());
+        return this.getTechnischerName().equalsIgnoreCase(other.getTechnischerName());
     }
 
     /* (non-Javadoc)
@@ -1010,7 +1010,7 @@ public final class Bezeichner {
      */
     @Override
     public int hashCode() {
-        return this.getTechnischerName().hashCode();
+        return this.getTechnischerName().toUpperCase().hashCode();
     }
 
     /**

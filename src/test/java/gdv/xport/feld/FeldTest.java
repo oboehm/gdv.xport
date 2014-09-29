@@ -149,14 +149,14 @@ public class FeldTest {
 
     /**
      * Bezeichnung kann aus mehreren Woertern in Gross- und Kleinschreibung
-     * bestehen, der Bezeichner entpsricht dem, was in der
-     * {@link Bezeichner}-Klasse als Konstante definiert ist.
+     * bestehen, der Bezeichner enthaelt neben der Bezeichnung auch den
+     * "technischen Namen", der aus einem Wort besteht.
      */
     @Test
     public void testGetBezeichner() {
         Feld x = new Feld(Bezeichner.SATZART, "Test", Align.LEFT);
         assertEquals(Bezeichner.SATZART, x.getBezeichnung());
-        assertEquals("SATZART", x.getBezeichner());
+        assertEquals(new Bezeichner(Bezeichner.SATZART), x.getBezeichner());
     }
 
     /**
@@ -166,7 +166,7 @@ public class FeldTest {
     @Test
     public void testGetBezeichnerConstructed() {
         Feld x = new Feld("Version Satzart 0100", 99, 3, Align.LEFT);
-        assertEquals("VERSION_SATZART_0100", x.getBezeichner());
+        assertEquals("VERSION_SATZART_0100", x.getBezeichnerAsString());
     }
 
     /**
@@ -178,7 +178,7 @@ public class FeldTest {
         FeldInfo feldInfo = createFeldInfo();
         Greeting hello = Greeting.HELLO_WORLD;
         Feld feld = Feld.createFeld(hello, feldInfo);
-        assertEquals("HELLO_WORLD", feld.getBezeichner());
+        assertEquals("HELLO_WORLD", feld.getBezeichnerAsString());
         assertEquals("Hello World", feld.getBezeichnung());
     }
 

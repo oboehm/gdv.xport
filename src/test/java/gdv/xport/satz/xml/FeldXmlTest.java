@@ -72,11 +72,11 @@ public class FeldXmlTest extends AbstractXmlTest {
     }
 
     /**
-     * Test-Methode fuer {@link FeldXml#getBezeichner()}.
+     * Test-Methode fuer {@link FeldXml#getBezeichnerAsString()}.
      */
     @Test
     public void testGetBezeichner() {
-        assertEquals("Sparte", feldXml.getBezeichner());
+        assertEquals("Sparte", feldXml.getBezeichnerAsString());
     }
 
     /**
@@ -103,7 +103,7 @@ public class FeldXmlTest extends AbstractXmlTest {
     @Test
     public void testVuNummer() throws XMLStreamException {
         FeldXml vuNr = createFeldXmlFrom("feldVuNr.xml");
-        assertEquals("VU-Nummer", vuNr.getBezeichner());
+        assertEquals("VU-Nummer", vuNr.getBezeichnerAsString());
         assertEquals(5, vuNr.getAnzahlBytes());
     }
 
