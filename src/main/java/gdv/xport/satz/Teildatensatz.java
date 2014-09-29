@@ -119,15 +119,15 @@ public class Teildatensatz extends Satz {
         this.add(this.satznummer);
     }
 
-    /**
-     * Stellt die Datenfelder fuer die Unterklasse(n) zur Verfuegung.
-     *
-     * @return the datenfelder
-     * @since 1.0
-     */
-    protected Map<String, Feld> getDatenfelder() {
-        return this.datenfelder;
-    }
+//    /**
+//     * Stellt die Datenfelder fuer die Unterklasse(n) zur Verfuegung.
+//     *
+//     * @return the datenfelder
+//     * @since 1.0
+//     */
+//    protected Map<String, Feld> getDatenfelder() {
+//        return this.datenfelder;
+//    }
 
     /**
      * Liefert die Satznummer zurueck.
@@ -238,10 +238,7 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public Feld getFeld(final Enum<?> feldX) throws IllegalArgumentException {
-        Feld found = datenfelder.get(feldX);
-        if (found == null) {
-            found = getFeld(feldX.name());
-        }
+        Feld found = getFeld(feldX.name());
         if (found == Feld.NULL_FELD) {
             found = getFeld(Feld.toBezeichnung(feldX));
         }

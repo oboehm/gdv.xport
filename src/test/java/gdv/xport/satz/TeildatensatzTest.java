@@ -89,7 +89,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Test-Methode for {@link Teildatensatz#getFeld(int)}.
+     * Test-Methode fuer {@link Teildatensatz#getFeld(int)}.
      */
     @Test
     public void testGetFeld() {
@@ -100,6 +100,17 @@ public class TeildatensatzTest extends AbstractSatzTest {
         tds.add(two);
         Feld feld = tds.getFeld(2);
         assertEquals(two, feld);
+    }
+
+    /**
+     * Test-Methode fuer {@link Teildatensatz#getFeld(String)}.
+     */
+    @Test
+    public void testGetFeldString() {
+        Teildatensatz tds = new Teildatensatz(100, 1);
+        Feld feld = new NumFeld("Hello", 55, "World");
+        tds.add(feld);
+        assertEquals(feld, tds.getFeld("Hello"));
     }
 
 }
