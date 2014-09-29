@@ -250,12 +250,12 @@ public class Teildatensatz extends Satz {
     /**
      * Liefert das gewuenschte Feld.
      *
-     * @param name gewuenschter Bezeichner des Feldes
+     * @param bezeichner gewuenschter Bezeichner des Feldes
      * @return das gesuchte Feld
      */
     @Override
-    public Feld getFeld(final String name) {
-        Feld found = datenfelder.get(new Bezeichner(name));
+    public Feld getFeld(final Bezeichner bezeichner) {
+        Feld found = datenfelder.get(bezeichner);
         if (found == null) {
             return Feld.NULL_FELD;
         } else {

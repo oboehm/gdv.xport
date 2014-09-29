@@ -412,16 +412,27 @@ public abstract class Satz {
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 */
-	public Feld getFeld(final String name) throws IllegalArgumentException {
-		for (int i = 0; i < teildatensatz.length; i++) {
-			Feld x = teildatensatz[i].getFeld(name);
-			if (x != Feld.NULL_FELD) {
-				return x;
-			}
-		}
-		throw new IllegalArgumentException("Feld \"" + name + "\" nicht in " + this.toShortString()
-		        + " vorhanden!");
+	public Feld getFeld(final String name) {
+		return this.getFeld(new Bezeichner(name));
 	}
+
+    /**
+     * Liefert das gewuenschte Feld.
+     *
+     * @param bezeichner gewuenschter Bezeichner des Feldes
+     * @return das gesuchte Feld
+     * @throws IllegalArgumentException falls es das Feld nicht gibt
+     */
+    public Feld getFeld(final Bezeichner bezeichner) {
+        for (int i = 0; i < teildatensatz.length; i++) {
+            Feld x = teildatensatz[i].getFeld(bezeichner);
+            if (x != Feld.NULL_FELD) {
+                return x;
+            }
+        }
+        throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
+                + " vorhanden!");
+    }
 
 	/**
 	 * Liefert den Inhalt des gewuenschten Feldes.
