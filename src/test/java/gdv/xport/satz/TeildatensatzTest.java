@@ -21,8 +21,10 @@ package gdv.xport.satz;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.VertragsStatus;
 
 import java.io.IOException;
@@ -111,6 +113,21 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Feld feld = new NumFeld("Hello", 55, "World");
         tds.add(feld);
         assertEquals(feld, tds.getFeld("Hello"));
+    }
+
+    /**
+     * Bei der internen Umstellung des {@link Teildatensatz}es auf die
+     * erweiterte {@link Bezeichner}-Klasse gab es Probleme mit dem Loeschen
+     * von Feldern.
+     */
+    @Test
+    public void testRemove() {
+        Teildatensatz tds = new Teildatensatz(100, 1);
+        Zeichen satznummer = new Zeichen("Satznummer", 256, '1');
+        tds.add(satznummer);
+        assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
+        tds.remove(satznummer.getBezeichnung());
+        assertEquals("remove failed", Feld.NULL_FELD, tds.getFeld(satznummer.getBezeichnung()));
     }
 
 }

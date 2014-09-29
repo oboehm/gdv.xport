@@ -22,6 +22,7 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 import gdv.xport.config.Config;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
@@ -55,7 +56,7 @@ public class Teildatensatz extends Satz {
     private static final Log log = LogFactory.getLog(Teildatensatz.class);
 
     /** Diese Map dient fuer den Zugriff ueber den Namen. */
-    private final Map<String, Feld> datenfelder = new HashMap<String, Feld>();
+    private final Map<Bezeichner, Feld> datenfelder = new HashMap<Bezeichner, Feld>();
 
     /** Dieses Set dient zum Zugriff ueber die Nummer. */
     private final SortedSet<Feld> sortedFelder = new TreeSet<Feld>();
@@ -164,7 +165,7 @@ public class Teildatensatz extends Satz {
             }
         }
         String name = feld.getBezeichnung();
-        datenfelder.put(name, feld);
+        datenfelder.put(new Bezeichner(name), feld);
         sortedFelder.add(feld);
     }
 
@@ -187,14 +188,15 @@ public class Teildatensatz extends Satz {
     }
 
     /**
-     * Falls ein Feld zuviel gesetzt wurde, kann es mit 'remove" wieder
-     * entfernt werden.
+     * Falls ein Feld zuviel gesetzt wurde, kann es mit 'remove" wieder entfernt
+     * werden.
      *
-     * @param name Name des Feldes
+     * @param bezeichner der Feld-Beezeichner
+     * @since 1.0
      */
     @Override
-    public void remove(final String name) {
-        datenfelder.remove(name);
+    public void remove(final Bezeichner bezeichner) {
+        this.datenfelder.remove(bezeichner);
     }
 
     /**
@@ -218,7 +220,7 @@ public class Teildatensatz extends Satz {
      */
     @Deprecated
     public void set(final String name, final Feld feld) {
-        datenfelder.put(name, feld);
+        datenfelder.put(new Bezeichner(name), feld);
     }
 
     /**
@@ -253,7 +255,7 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public Feld getFeld(final String name) {
-        Feld found = datenfelder.get(name);
+        Feld found = datenfelder.get(new Bezeichner(name));
         if (found == null) {
             return Feld.NULL_FELD;
         } else {
@@ -282,7 +284,7 @@ public class Teildatensatz extends Satz {
         if (this.datenfelder.containsKey(feldX)) {
             return true;
         }
-        return this.datenfelder.containsKey(Feld.toBezeichnung(feldX));
+        return this.datenfelder.containsKey(new Bezeichner(Feld.toBezeichnung(feldX)));
     }
 
     /**

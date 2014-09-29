@@ -9,6 +9,7 @@ import static patterntesting.runtime.NullConstants.NULL_STRING;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.io.ImportException;
@@ -257,10 +258,21 @@ public abstract class Satz {
 	 * @param name Name des Feldes
 	 */
 	public void remove(final String name) {
-		for (int i = 0; i < this.teildatensatz.length; i++) {
-			this.teildatensatz[i].remove(name);
-		}
+		this.remove(new Bezeichner(name));
 	}
+
+    /**
+     * Falls ein Feld zuviel gesetzt wurde, kann es mit 'remove" wieder entfernt
+     * werden.
+     *
+     * @param bezeichner der Feld-Beezeichner
+     * @since 1.0
+     */
+    public void remove(final Bezeichner bezeichner) {
+        for (int i = 0; i < this.teildatensatz.length; i++) {
+            this.teildatensatz[i].remove(bezeichner);
+        }
+    }
 
 	/**
 	 * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden

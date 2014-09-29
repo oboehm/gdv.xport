@@ -624,11 +624,11 @@ public class Feld implements Comparable<Feld> {
     }
 
     /**
-     * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die {@link Bezeichner}-Klasse, um festzustellen, ob
-     * es den Namen schon als Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.
+     * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die
+     * {@link Bezeichner}-Klasse, um festzustellen, ob es den Namen schon als
+     * Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.
      *
-     * @param feldX
-     *            das Feld-Element mit dem gesuchten Bezeichner
+     * @param feldX das Feld-Element mit dem gesuchten Bezeichner
      * @return z.B. "Inkassoart"
      */
     public static String getAsBezeichnung(final Enum<?> feldX) {
@@ -642,7 +642,6 @@ public class Feld implements Comparable<Feld> {
         } catch (IllegalAccessException ex) {
             log.warn("can't access Bezeichner." + feldX.name(), ex);
         }
-        // return feldX.name();
         return toBezeichnung(feldX);
     }
 
