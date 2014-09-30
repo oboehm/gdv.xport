@@ -57,7 +57,7 @@ public class Feld implements Comparable<Feld> {
     /** statt "null". */
     public static final Feld NULL_FELD = new Feld();
     /** optional: Name des Felds. */
-    private final String bezeichnung;
+    private final Bezeichner bezeichner;
     private final Enum<?> bezeichnerEnum;
     private final StringBuffer inhalt;
     /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256. */
@@ -97,7 +97,7 @@ public class Feld implements Comparable<Feld> {
      */
     public Feld(final Enum<?> feldX, final FeldInfo info) {
         this.bezeichnerEnum = feldX;
-        this.bezeichnung = Feld.getAsBezeichnung(feldX);
+        this.bezeichner = Feld.getAsBezeichner(feldX);
         this.byteAdresse = info.byteAdresse();
         this.ausrichtung = getAlignmentFrom(info);
         this.inhalt = new StringBuffer(info.anzahlBytes());
@@ -129,7 +129,7 @@ public class Feld implements Comparable<Feld> {
      * @param alignment the alignment
      */
     public Feld(final String name, final int start, final String s, final Align alignment) {
-        this.bezeichnung = name;
+        this.bezeichner = new Bezeichner(name);
         this.inhalt = new StringBuffer(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
@@ -149,7 +149,7 @@ public class Feld implements Comparable<Feld> {
      *            the alignment
      */
     public Feld(final String name, final int length, final int start, final Align alignment) {
-        this.bezeichnung = name;
+        this.bezeichner = new Bezeichner(name);
         this.inhalt = getEmptyStringBuffer(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
@@ -222,7 +222,7 @@ public class Feld implements Comparable<Feld> {
         this.inhalt = new StringBuffer(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichnung = createBezeichnung();
+        this.bezeichner = createBezeichner();
         this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
@@ -252,7 +252,7 @@ public class Feld implements Comparable<Feld> {
         this.inhalt = getEmptyStringBuffer(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichnung = createBezeichnung();
+        this.bezeichner = createBezeichner();
         this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
@@ -280,8 +280,8 @@ public class Feld implements Comparable<Feld> {
         return info.align();
     }
 
-    private String createBezeichnung() {
-        return this.getClass().getSimpleName() + "@" + Integer.toHexString(this.hashCode());
+    private Bezeichner createBezeichner() {
+        return new Bezeichner(this.getClass().getSimpleName() + "@" + Integer.toHexString(this.hashCode()));
     }
 
     /**
@@ -317,7 +317,7 @@ public class Feld implements Comparable<Feld> {
      * @return the bezeichnung
      */
     public String getBezeichnung() {
-        return this.bezeichnung;
+        return this.bezeichner.getName();
     }
 
     /**
@@ -346,7 +346,7 @@ public class Feld implements Comparable<Feld> {
         for (int i = 0; i < fields.length; i++) {
             try {
                 Object value = fields[i].get(null);
-                if ((value != null) && this.bezeichnung.equalsIgnoreCase(value.toString())) {
+                if ((value != null) && this.bezeichner.getName().equalsIgnoreCase(value.toString())) {
                     return fields[i].getName();
                 }
             } catch (IllegalAccessException e) {
@@ -355,8 +355,8 @@ public class Feld implements Comparable<Feld> {
                 }
             }
         }
-        log.info('"' + this.bezeichnung + "\" not found in " + Bezeichner.class);
-        return this.bezeichnung.replaceAll(" ", "_").toUpperCase();
+        log.info("\"" + this.bezeichner + "\" not found in " + Bezeichner.class);
+        return this.bezeichner.getName().replaceAll(" ", "_").toUpperCase();
     }
 
     /**
