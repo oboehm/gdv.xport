@@ -974,6 +974,17 @@ public final class Bezeichner {
     }
 
     /**
+     * Uueberprueft, ob die uebergebene Bezeichnung mit dem Namen
+     * uebereinstimmt. Gross-/Kleinschreibung spielt dabei keine Rolle.
+     *
+     * @param bezeichnung the bezeichnung
+     * @return true, falls Bezeichnung mit Namen uebereinstimmt.
+     */
+    public boolean hasName(final String bezeichnung) {
+        return this.name.equalsIgnoreCase(bezeichnung);
+    }
+
+    /**
      * Der technische Name leitet sich aus dem normalen Namen ab. Im
      * Gegensatz zum normalen Namen enthaelt er aber keine Leerzeichen,
      * Sonderzeichen oder Umlaute.

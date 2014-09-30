@@ -346,7 +346,7 @@ public class Feld implements Comparable<Feld> {
         for (int i = 0; i < fields.length; i++) {
             try {
                 Object value = fields[i].get(null);
-                if ((value != null) && this.bezeichner.getName().equalsIgnoreCase(value.toString())) {
+                if ((value != null) && this.bezeichner.hasName(value.toString())) {
                     return fields[i].getName();
                 }
             } catch (IllegalAccessException e) {
