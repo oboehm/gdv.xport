@@ -47,7 +47,7 @@ public class FeldTest {
     private static final Log log = LogFactory.getLog(FeldTest.class);
 
     /** For testing. */
-    private enum Greeting { HELLO_WORLD; }
+    private enum Greeting { HELLO_WORLD, ADRESSAT; }
 
     /**
      * Test method for {@link gdv.xport.feld.Feld#resetInhalt()}.
@@ -166,7 +166,17 @@ public class FeldTest {
     @Test
     public void testGetBezeichnerConstructed() {
         Feld x = new Feld("Version Satzart 0100", 99, 3, Align.LEFT);
-        assertEquals("VERSION_SATZART_0100", x.getBezeichnerAsString());
+        assertEquals(new Bezeichner("VERSION_SATZART_0100"), x.getBezeichner());
+    }
+
+    /**
+     * Test-Methode fuer {@link Feld#getAsBezeichner(Enum)}.
+     */
+    @Test
+    public void testGetAsBezeichner() {
+        Bezeichner adressat = Feld.getAsBezeichner(Greeting.ADRESSAT);
+        assertEquals(new Bezeichner(Bezeichner.ADRESSAT), adressat);
+        assertEquals(Bezeichner.ADRESSAT, adressat.getName());
     }
 
     /**
@@ -178,7 +188,7 @@ public class FeldTest {
         FeldInfo feldInfo = createFeldInfo();
         Greeting hello = Greeting.HELLO_WORLD;
         Feld feld = Feld.createFeld(hello, feldInfo);
-        assertEquals("HELLO_WORLD", feld.getBezeichnerAsString());
+        assertEquals(new Bezeichner("HELLO_WORLD"), feld.getBezeichner());
         assertEquals("Hello World", feld.getBezeichnung());
     }
 

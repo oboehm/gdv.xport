@@ -644,6 +644,20 @@ public class Feld implements Comparable<Feld> {
     }
 
     /**
+     * Liefert die uebergebene Enum-Konstante als Bezeichner zurueck. Dazu
+     * verwendet es die {@link Bezeichner}-Klasse, um festzustellen, ob es den
+     * Namen schon als Konstante dort gibt.
+     *
+     * @param feldX die Enum-Konstante
+     * @return den Bezeichner
+     * @since 1.0
+     */
+    public static Bezeichner getAsBezeichner(final Enum<?> feldX) {
+        String bezeichnung = getAsBezeichnung(feldX);
+        return new Bezeichner(bezeichnung);
+    }
+
+    /**
      * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die
      * {@link Bezeichner}-Klasse, um festzustellen, ob es den Namen schon als
      * Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.

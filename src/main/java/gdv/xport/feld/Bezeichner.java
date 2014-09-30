@@ -1005,7 +1005,13 @@ public final class Bezeichner {
         return this.getTechnischerName().equalsIgnoreCase(other.getTechnischerName());
     }
 
-    /* (non-Javadoc)
+    /**
+     * Der Hash-Code wird aus dem technischen Namen abgeleitet und berechnet.
+     * Aus Performance-Gruenden koennte man ihn auch einmal berechnen und
+     * abspeichern, dies wird aber (noch) nicht gemacht, um unnoetige Redundanz
+     * in dieser Klasse zu vermeiden.
+     *
+     * @return den berechneten Hash-Code
      * @see java.lang.Object#hashCode()
      */
     @Override
