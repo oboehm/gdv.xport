@@ -342,33 +342,28 @@ public class Feld implements Comparable<Feld> {
         if (!this.bezeichnerEnum.equals(FeldX.UNBEKANNT)) {
             return this.bezeichnerEnum.name();
         }
-        Field[] fields = Bezeichner.class.getFields();
-        for (int i = 0; i < fields.length; i++) {
-            try {
-                Object value = fields[i].get(null);
-                if ((value != null) && this.bezeichner.hasName(value.toString())) {
-                    return fields[i].getName();
-                }
-            } catch (IllegalAccessException e) {
-                if (log.isDebugEnabled()) {
-                    log.debug("ignored: " + e);
-                }
-            }
+        try {
+            Field field = Bezeichner.getField(this.bezeichner.getName());
+            return field.getName();
+        } catch (IllegalArgumentException iae) {
+            log.info("\"" + this.bezeichner + "\" not found in " + Bezeichner.class + ":", iae);
+            return this.bezeichner.getName().replaceAll(" ", "_").toUpperCase();
         }
-        log.info("\"" + this.bezeichner + "\" not found in " + Bezeichner.class);
-        return this.bezeichner.getName().replaceAll(" ", "_").toUpperCase();
     }
 
     /**
-     * Liefert den Bezeichner eines Feldes zurueck. Die Bestimmung des
-     * korrekten Bezeichners wurde dabei zum grossen Teil in die
-     * {@link Bezeichner}-Klasse verlagert.
+     * Liefert den Bezeichner eines Feldes zurueck.
+     * <p>
+     * Vor 1.0 lieferte diese Methode einen "String" zurueck. Aus
+     * Konsistenz-Gruenden wurde die alte Implementierung in
+     * "GetBzeichnerAsString" umbenannt.
+     * </p>
      *
      * @return den Bezeichner des Feldes
      * @since 1.0
      */
     public Bezeichner getBezeichner() {
-        return new Bezeichner(this.getBezeichnerAsString());
+        return this.bezeichner;
     }
 
     /**

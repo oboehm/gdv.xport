@@ -21,6 +21,8 @@ package gdv.xport.feld;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.lang.reflect.Field;
+
 import org.junit.Test;
 
 import patterntesting.runtime.junit.ObjectTester;
@@ -80,6 +82,18 @@ public class BezeichnerTest {
     public void testEqualsVermittler() {
         ObjectTester.assertEquals(new Bezeichner(Bezeichner.VERMITTLER),
                 new Bezeichner("Gesch\u00e4ftsstelle / Vermittler"));
+    }
+
+    /**
+     * Test-Methode fuer {@link Bezeichner#getField(String)}.
+     *
+     * @throws IllegalAccessException the illegal access exception
+     */
+    @Test
+    public void testGetField() throws IllegalAccessException {
+        String bezeichnung = "Abgangsdatum";
+        Field field = Bezeichner.getField(bezeichnung);
+        assertEquals(bezeichnung, field.get(null).toString());
     }
 
 }

@@ -19,6 +19,11 @@
 
 package gdv.xport.feld;
 
+import java.lang.reflect.Field;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * Diese Klasse enthaelt hauptsaechlich String-Konstanten: die Bezeichner der
  * einzelnen Felder. Die Konstanten sind alphabetisch geordnet.
@@ -914,6 +919,8 @@ public final class Bezeichner {
     public static final String STAENDIG_BEWOHNT = "Staendig bewohnt";
     public static final String OBJEKTNUMMER = "Objektnummer";
 
+    private static final Log log = LogFactory.getLog(Bezeichner.class);
+
     private final String name;
     private final String technischerName;
 
@@ -973,16 +980,16 @@ public final class Bezeichner {
         return this.name;
     }
 
-    /**
-     * Uueberprueft, ob die uebergebene Bezeichnung mit dem Namen
-     * uebereinstimmt. Gross-/Kleinschreibung spielt dabei keine Rolle.
-     *
-     * @param bezeichnung the bezeichnung
-     * @return true, falls Bezeichnung mit Namen uebereinstimmt.
-     */
-    public boolean hasName(final String bezeichnung) {
-        return this.name.equalsIgnoreCase(bezeichnung);
-    }
+//    /**
+//     * Ueberprueft, ob die uebergebene Bezeichnung mit dem Namen
+//     * uebereinstimmt. Gross-/Kleinschreibung spielt dabei keine Rolle.
+//     *
+//     * @param bezeichnung the bezeichnung
+//     * @return true, falls Bezeichnung mit Namen uebereinstimmt.
+//     */
+//    public boolean hasName(final String bezeichnung) {
+//        return this.name.equalsIgnoreCase(bezeichnung);
+//    }
 
     /**
      * Der technische Name leitet sich aus dem normalen Namen ab. Im
@@ -1040,6 +1047,31 @@ public final class Bezeichner {
     @Override
     public String toString() {
         return this.name;
+    }
+
+    /**
+     * Hierueber liefern wird die Konstante mit dem uebergebenen Text als
+     * Feld zurueck.
+     *
+     * @param bezeichnung Text der gesuchten Konstanten
+     * @return die entsprechende Konstante
+     * @since 1.0
+     */
+    public static Field getField(final String bezeichnung) {
+        Field[] fields = Bezeichner.class.getFields();
+        for (int i = 0; i < fields.length; i++) {
+            try {
+                Object value = fields[i].get(null);
+                if ((value != null) && bezeichnung.equalsIgnoreCase(value.toString())) {
+                    return fields[i];
+                }
+            } catch (IllegalAccessException e) {
+                if (log.isDebugEnabled()) {
+                    log.debug("Will ignore field " + fields[i] + ": ", e);
+                }
+            }
+        }
+        throw new IllegalArgumentException("no constant with text \"" + bezeichnung + "\" defined");
     }
 
 }
