@@ -141,9 +141,6 @@ public final class Bezeichner {
     public static final String DECKUNGSUMFANG = "Deckungsumfang";
     public static final String DIENSTEINTRITTSDATUM = "Diensteintrittsdatum";
     public static final String DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER = "Druckaufbereitete Versicherungsscheinnummer";
-    /** @deprecated use {@link #DURCHFUEHRUNGSWEG} */
-    @Deprecated
-    public static final String DURCHFUEHRUNGSART = "Durchfuehrungsart";
     public static final String DURCHFUEHRUNGSWEG = "Durchfuehrungsweg";
     public static final String DYNAMIK = "Dynamik";
     public static final String DYNAMIK_IN_PROZENT = "Dynamik in %";
@@ -919,7 +916,7 @@ public final class Bezeichner {
     public static final String STAENDIG_BEWOHNT = "Staendig bewohnt";
     public static final String OBJEKTNUMMER = "Objektnummer";
 
-    private static final Log log = LogFactory.getLog(Bezeichner.class);
+    private static final Log LOG = LogFactory.getLog(Bezeichner.class);
 
     private final String name;
     private final String technischerName;
@@ -979,17 +976,6 @@ public final class Bezeichner {
     public String getName() {
         return this.name;
     }
-
-//    /**
-//     * Ueberprueft, ob die uebergebene Bezeichnung mit dem Namen
-//     * uebereinstimmt. Gross-/Kleinschreibung spielt dabei keine Rolle.
-//     *
-//     * @param bezeichnung the bezeichnung
-//     * @return true, falls Bezeichnung mit Namen uebereinstimmt.
-//     */
-//    public boolean hasName(final String bezeichnung) {
-//        return this.name.equalsIgnoreCase(bezeichnung);
-//    }
 
     /**
      * Der technische Name leitet sich aus dem normalen Namen ab. Im
@@ -1066,8 +1052,8 @@ public final class Bezeichner {
                     return fields[i];
                 }
             } catch (IllegalAccessException e) {
-                if (log.isDebugEnabled()) {
-                    log.debug("Will ignore field " + fields[i] + ": ", e);
+                if (LOG.isDebugEnabled()) {
+                    LOG.debug("Will ignore field " + fields[i] + ": ", e);
                 }
             }
         }
