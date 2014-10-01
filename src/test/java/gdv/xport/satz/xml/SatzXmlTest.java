@@ -25,6 +25,7 @@ import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.feld.common.Feld1bis7;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -168,6 +169,27 @@ public class SatzXmlTest { // extends AbstractDatensatzTest {
             assertEquals(220, satz220.getSatzart());
             assertEquals(580, satz220.getSparte());
             assertEquals(1, satz220.getArt());
+        } finally {
+            parser.close();
+        }
+    }
+
+    /**
+     * Test-Methode fuer {@link SatzXml#setFelder(Map)}. Diese Methode sollte
+     * nur Informationen ergaenzen. Tatsaechlich scheint sie auch den Wert
+     * zu ueberschreiben.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testSetFelder() throws XMLStreamException {
+        XMLEventReader parser = createXMLEventReader("Satz100.xml");
+        try {
+            SatzXml satz = new SatzXml(parser);
+            String expected = satz.getFeld(Feld1bis7.SATZART).getInhalt();
+            Map<String, FeldXml> felder = XmlService.parseFelder(parser);
+            satz.setFelder(felder);
+            assertEquals(expected, satz.getFeld(Feld1bis7.SATZART).getInhalt());
         } finally {
             parser.close();
         }

@@ -57,7 +57,7 @@ public abstract class Satz {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Satz.class);
 	private final NumFeld satzart = new NumFeld(SATZART, 4, 1);
-	private Teildatensatz[] teildatensatz;
+	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
 
 	protected Satz(final int art) {
 		this(art, 1);
@@ -284,7 +284,7 @@ public abstract class Satz {
 	 * @param name Name des Felds (Bezeichnung)
 	 * @param value the value
 	 */
-	public final void set(final String name, final String value) {
+	public void set(final String name, final String value) {
 		boolean found = false;
 		for (int i = 0; i < teildatensatz.length; i++) {
 			Feld x = teildatensatz[i].getFeld(name);

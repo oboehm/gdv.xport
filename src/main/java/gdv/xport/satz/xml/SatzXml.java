@@ -162,7 +162,7 @@ public final class SatzXml extends Datensatz {
     public void setFelder(Map<String, FeldXml> felder) {
         for (Teildatensatz tds : this.getTeildatensaetze()) {
             TeildatensatzXml tdsXml = (TeildatensatzXml) tds;
-            tdsXml.setFelder(felder);
+            tdsXml.updateWith(felder);
         }
     }
 

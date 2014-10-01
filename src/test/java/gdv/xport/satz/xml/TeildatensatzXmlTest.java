@@ -21,7 +21,9 @@ package gdv.xport.satz.xml;
 import static org.junit.Assert.assertEquals;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
+import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.TeildatensatzTest;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -34,7 +36,7 @@ import org.junit.Test;
  * @author oliver (oliver.boehm@gmail.com)
  * @since 1.0 (24.09.2014)
  */
-public class TeildatensatzXmlTest {
+public class TeildatensatzXmlTest extends TeildatensatzTest {
 
     private static TeildatensatzXml tds100;
 
@@ -49,11 +51,24 @@ public class TeildatensatzXmlTest {
         tds100 = (TeildatensatzXml) satz100.getTeildatensatz(1);
     }
 
+
+    /**
+     * Hier erzeugen wir einen Teildatensatz zum Testen.
+     *
+     * @return Teildatensatz zum Testen
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return tds100;
+    }
+
     /**
      * Test-Methode fuer {@link Teildatensatz#getFeld(String)}. Bei dem
      * verwendeten Feld "Anredeschluessel" handelt es sich laut Handbuch um ein
      * alphanumerisches Feld von Byte 43 bis 43 (Laenge = 1).
      */
+    @Override
     @Test
     public void testGetFeldString() {
         checkFeld(Bezeichner.ANREDESCHLUESSEL, 1, 43);
@@ -82,6 +97,17 @@ public class TeildatensatzXmlTest {
         Feld feld = tds100.getFeld(name);
         assertEquals("Anzahl Bytes", length, feld.getAnzahlBytes());
         assertEquals("Byte-Adresse", address, feld.getByteAdresse());
+    }
+
+    /**
+     * Hier pruefen wir, ob die Satzart richtig gesetzt wird.
+     */
+    @Test
+    public void testGetSatzart() {
+        TeildatensatzXml tds = new TeildatensatzXml(200, 1);
+        assertEquals(200, tds.getSatzart());
+        tds.set(Bezeichner.SATZART, "0222");
+        assertEquals(222, tds.getSatzart());
     }
 
 }

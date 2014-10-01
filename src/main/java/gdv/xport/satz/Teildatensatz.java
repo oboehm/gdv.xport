@@ -53,6 +53,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class Teildatensatz extends Satz {
 
+    /** The Constant log. */
     private static final Log log = LogFactory.getLog(Teildatensatz.class);
 
     /** Diese Map dient fuer den Zugriff ueber den Namen. */
@@ -99,6 +100,11 @@ public class Teildatensatz extends Satz {
         initSatznummer(nr);
     }
 
+    /**
+     * Inits the satznummer.
+     *
+     * @param nr the nr
+     */
     private void initSatznummer(final int nr) {
         if ((nr < 1) || (nr > 9)) {
             throw new IllegalArgumentException("Satznummer (" + nr
@@ -108,11 +114,17 @@ public class Teildatensatz extends Satz {
         this.initDatenfelder();
     }
 
+    /* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#createTeildatensaetze(int)
+     */
     @Override
     protected void createTeildatensaetze(final int n) {
         assert n == 0 : "ein Teildatensatz hat keine weiteren Teildatensaetze";
     }
 
+    /**
+     * Inits the datenfelder.
+     */
     private void initDatenfelder() {
 //        datenfelder.put("Satzart", this.getSatzartFeld());
 //        datenfelder.put("Satznummer", this.satznummer);
@@ -120,21 +132,11 @@ public class Teildatensatz extends Satz {
         this.add(this.satznummer);
     }
 
-//    /**
-//     * Stellt die Datenfelder fuer die Unterklasse(n) zur Verfuegung.
-//     *
-//     * @return the datenfelder
-//     * @since 1.0
-//     */
-//    protected Map<String, Feld> getDatenfelder() {
-//        return this.datenfelder;
-//    }
-
     /**
      * Liefert die Satznummer zurueck.
      *
-     * @since 0.2
      * @return Satznummer als einzelnes Zeichen ('1' ... '9')
+     * @since 0.2
      */
     public Zeichen getNummer() {
         return this.satznummer;
@@ -169,6 +171,12 @@ public class Teildatensatz extends Satz {
         sortedFelder.add(feld);
     }
 
+    /**
+     * Checks if is satznummer.
+     *
+     * @param feld the feld
+     * @return true, if is satznummer
+     */
     private static boolean isSatznummer(final Feld feld) {
         if ((feld.getByteAdresse() == 256) && (feld.getAnzahlBytes() == 1)) {
             String bezeichnung = feld.getBezeichnung();
@@ -197,6 +205,23 @@ public class Teildatensatz extends Satz {
     @Override
     public void remove(final Bezeichner bezeichner) {
         this.datenfelder.remove(bezeichner);
+    }
+
+    /**
+     * Setzt das gewuenschte Feld. Falls es nicht vorhanden ist, wird analog
+     * zur Oberklasse eine {@link IllegalArgumentException} geworfen.
+     *
+     * @param name der Name des Feldes
+     * @param value der gewuenschte Werte als String
+     * @see Satz#set(String, String)
+     */
+    @Override
+    public void set(final String name, final String value) {
+        Feld x = this.getFeld(name);
+        if (x == Feld.NULL_FELD) {
+            throw new IllegalArgumentException("Feld \"" + name + "\" not found");
+        }
+        x.setInhalt(value);
     }
 
     /**
@@ -281,18 +306,31 @@ public class Teildatensatz extends Satz {
      * @since 0.9
      */
     public boolean hasFeld(final Enum<?> feldX) {
-        if (this.datenfelder.containsKey(feldX)) {
-            return true;
-        }
         return this.datenfelder.containsKey(new Bezeichner(Feld.toBezeichnung(feldX)));
+    }
+
+    /**
+     * Ueberprueft, ob das uebergebene Feld vorhanden ist.
+     * <p>
+     * Anmerkung: Es wird nur der Name ueberprueft. D.h. es wird nicht
+     * ueberprueft, ob es evtl. einen Konflikt mit der Start- und End-Adresse
+     * gibt.
+     * </p>
+     *
+     * @param feld the feld
+     * @return true, if successful
+     * @since 1.0
+     */
+    public boolean hasFeld(final Feld feld) {
+        return this.datenfelder.containsKey(feld.getBezeichner());
     }
 
     /**
      * Liefert alle Felder in der Reihenfolge innerhalb des Teildatensatzes
      * zurueck.
      *
-     * @since 0.2
      * @return List der Felder (sortiert)
+     * @since 0.2
      */
     public Collection<Feld> getFelder() {
         return new TreeSet<Feld>(datenfelder.values());

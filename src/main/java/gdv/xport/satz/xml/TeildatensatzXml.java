@@ -62,11 +62,11 @@ public final class TeildatensatzXml extends Teildatensatz {
 
     /**
      * Legt mithilfe der uebergebenen Felder die entsprechenden {@link Feld}-
-     * Objekte an.
+     * Objekte an. Aber nur, wenn ein Feld noch nicht existiert.
      *
      * @param felder Felder aus der XML-Beschreibung
      */
-    public void setFelder(Map<String, FeldXml> felder) {
+    public void updateWith(Map<String, FeldXml> felder) {
         int byteAddress = 1;
         for (FeldReferenz referenz : this.feldReferenzen) {
             FeldXml feldXml = felder.get(referenz.getId());
@@ -74,7 +74,9 @@ public final class TeildatensatzXml extends Teildatensatz {
                 throw new IllegalArgumentException("referenz for " + referenz + " not found in " + felder);
             }
             Feld feld = feldXml.toFeld(byteAddress);
-            super.add(feld);
+            if (!this.hasFeld(feld)) {
+                super.add(feld);
+            }
             byteAddress += feldXml.getAnzahlBytes();
         }
         LOG.trace("{} felder set.", this.feldReferenzen.size());

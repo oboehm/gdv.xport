@@ -23,7 +23,8 @@ import gdv.xport.feld.VUNummer;
 import java.nio.charset.Charset;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Ueber diese Klasse koennen globale Werte (wie z.B. die VU-Nummer) konfiguriert
@@ -49,17 +50,17 @@ public final class Config {
     private static VUNummer vunummer;
     /* end of datensatz */
     private static String eod = "\n";
-    
+
     static {
         try {
             checkFileEncoding();
         } catch (ConfigException ce) {
-            log.warn(ce.getMessage());
+            log.warn("File encoding is not correct.", ce);
         }
     }
 
     private Config() {}
-    
+
     /**
      * Das File-Encoding fuer den GDV-Export/Import ist auf ISO-8859-1
      * festgelegt. Sollte das Encoding anders gesetzt, wird eine Warnung
@@ -78,7 +79,7 @@ public final class Config {
             encoding = Charset.defaultCharset().displayName();
         }
         if (!DEFAULT_ENCODING_NAME.equalsIgnoreCase(encoding)) {
-            throw new ConfigException("file.encoding sollte " + DEFAULT_ENCODING + " statt " + encoding + " sein.");
+            throw new ConfigException("file.encoding should be " + DEFAULT_ENCODING + " but was " + encoding + " sein.");
         }
     }
 
