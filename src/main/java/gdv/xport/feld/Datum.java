@@ -281,17 +281,9 @@ public final class Datum extends Feld {
     @Override
     public List<ConstraintViolation> validate() {
         List<ConstraintViolation> violations = super.validate();
-        if (this.isEmpty()) {
-            return violations;
-        }
-        try {
-            if (!this.hasValidDate()) {
-                throw new RuntimeException(this.getInhalt() + " is not a valid date");
-            }
-        } catch (RuntimeException e) {
-            ConstraintViolation cv = new ConstraintViolation(new MatchPatternCheck(), e
-                    .getLocalizedMessage(), this, this.getInhalt(), new ClassContext(this
-                    .getClass()));
+        if (!this.isEmpty() && !this.hasValidDate()) {
+            ConstraintViolation cv = new ConstraintViolation(new MatchPatternCheck(), "'" + this.getInhalt()
+                    + "' is not a valid date", this, this.getInhalt(), new ClassContext(this.getClass()));
             violations.add(cv);
         }
         return violations;
