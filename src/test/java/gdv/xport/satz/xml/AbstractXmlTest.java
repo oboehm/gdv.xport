@@ -43,11 +43,11 @@ public abstract class AbstractXmlTest {
      *
      * @param resourceName the resource name
      * @return the XML event reader
-     * @throws XMLStreamException the XML stream exception
+     * @throws XMLStreamException the XMcreateXMLEventReaderL stream exception
      */
     protected static XMLEventReader createXMLEventReader(final String resourceName) throws XMLStreamException {
         InputStream istream = FeldReferenzTest.class.getResourceAsStream(resourceName);
-        assertNotNull("resource 'feldreferenz.xml' not found", istream);
+        assertNotNull("resource '" + resourceName + "' not found", istream);
         XMLEventReader parser = xmlInputFactory.createXMLEventReader(istream);
         return parser;
     }

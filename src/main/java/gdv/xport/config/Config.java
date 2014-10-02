@@ -79,7 +79,7 @@ public final class Config {
             encoding = Charset.defaultCharset().displayName();
         }
         if (!DEFAULT_ENCODING_NAME.equalsIgnoreCase(encoding)) {
-            throw new ConfigException("file.encoding should be " + DEFAULT_ENCODING + " but was " + encoding + " sein.");
+            throw new ConfigException("file.encoding should be " + DEFAULT_ENCODING + " but was " + encoding);
         }
     }
 

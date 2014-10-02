@@ -20,11 +20,14 @@ package gdv.xport.satz.xml;
 
 import gdv.xport.util.XmlHelper;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
@@ -48,6 +51,50 @@ public class XmlService {
 
     private static final Logger LOG = LoggerFactory.getLogger(XmlService.class);
     private final Map<Integer, SatzXml> satzarten = new HashMap<Integer, SatzXml>();
+
+    /**
+     * Kreiert einen neuen Service anhand des Standard-XML-Handbuchs von 2013.
+     *
+     * @return der frisch instantiierte XmlService
+     */
+    public static XmlService newInstance() {
+        try {
+            return newInstance("VUVM2013.xml");
+        } catch (FileNotFoundException ex) {
+            LOG.error("Resource 'VUVM2013.xml' not found in classpath:", ex);
+        } catch (XMLStreamException ex) {
+            LOG.error("Cannot parse XML from resource 'VUVM2013.xml':", ex);
+        }
+        return new XmlService();
+    }
+
+    /**
+     * Kreiert eine neue Service-Instanz anhand der uebergebenen Resource.
+     *
+     * @param resource Resource-Name (z.B. "VUVM2013.xml")
+     * @return der frisch instantiierte XmlService
+     * @throws XMLStreamException the XML stream exception
+     * @throws FileNotFoundException falls die angegebene Resource nicht existiert
+     */
+    public static XmlService newInstance(final String resource) throws XMLStreamException, FileNotFoundException {
+        XMLEventReader parser = createXMLEventReader(resource);
+        try {
+            return new XmlService(parser);
+        } finally {
+            parser.close();
+        }
+    }
+
+    private  static XMLEventReader createXMLEventReader(final String resourceName) throws XMLStreamException, FileNotFoundException {
+        InputStream istream = XmlService.class.getResourceAsStream(resourceName);
+        if (istream == null) {
+            throw new FileNotFoundException("resource '" + resourceName + "' not found");
+        }
+        return XMLInputFactory.newInstance().createXMLEventReader(istream);
+    }
+
+    /** Only for internal fallback. */
+    private XmlService() {}
 
     /**
      * Instantiiert einen XML-Service.

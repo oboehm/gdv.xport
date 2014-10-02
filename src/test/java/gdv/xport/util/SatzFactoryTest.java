@@ -19,12 +19,19 @@
 package gdv.xport.util;
 
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import gdv.xport.Datenpaket;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.demo.MyFeld210;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
@@ -32,6 +39,10 @@ import java.io.IOException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import patterntesting.runtime.annotation.Broken;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * JUnit-Test fuer SatzFactory.
@@ -39,6 +50,7 @@ import org.junit.Test;
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
+@RunWith(SmokeRunner.class)
 public final class SatzFactoryTest extends AbstractTest {
 
     private static final Log log = LogFactory.getLog(SatzFactoryTest.class);
@@ -60,9 +72,27 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetSatzInt() {
-        Satz satz = SatzFactory.getSatz(1);
-        assertEquals(1, satz.getSatzart());
+        Satz satz = getSatz(1);
         assertNotNull(satz.getFeld(Bezeichner.VERSION_SATZART_0100));
+    }
+
+    /**
+     * Satz 0342 ("Begleitdokumente und Signaturen") ist nur als
+     * XML-Beschreibung vorhanden. Daher wird dieser Satz zum Testen verwendet.
+     */
+    @Test
+    @Broken(till = "03-Oct-2014")
+    public void testGetSatz342() {
+        Satz satz342 = getSatz(342);
+        Feld dokumenttyp = satz342.getFeld("Dokumenttyp");
+        assertEquals(2, dokumenttyp.getAnzahlBytes());
+        assertEquals(46, dokumenttyp.getByteAdresse());
+    }
+
+    private static Satz getSatz(final int satzart) {
+        Satz satz = SatzFactory.getSatz(satzart);
+        assertEquals(satzart, satz.getSatzart());
+        return satz;
     }
 
     /**

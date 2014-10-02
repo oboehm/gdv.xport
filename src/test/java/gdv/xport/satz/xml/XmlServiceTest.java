@@ -21,12 +21,6 @@ package gdv.xport.satz.xml;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.io.IOException;
-
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLStreamException;
-
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -37,23 +31,7 @@ import org.junit.Test;
  */
 public class XmlServiceTest extends AbstractXmlTest {
 
-    private static XmlService xmlService;
-
-    /**
-     * Setzt das {@link XmlService}-Objekt auf
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @throws XMLStreamException the XML stream exception
-     */
-    @BeforeClass
-    public static void setUpXmlService() throws IOException, XMLStreamException {
-        XMLEventReader parser = createXMLEventReader("VUVM2013.xml");
-        try {
-            xmlService = new XmlService(parser);
-        } finally {
-            parser.close();
-        }
-    }
+    private static XmlService xmlService = XmlService.newInstance();
 
     /**
      * Test-Methode fuer {@link XmlService#getSatzart(int)}.
