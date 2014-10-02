@@ -42,7 +42,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public final class ImportExport {
 
-    private static final Log log = LogFactory.getLog(ImportExport.class);
+    private static final Log LOG = LogFactory.getLog(ImportExport.class);
 
     /**
      * Dies ist ein Beispiel, wie man einen bestimmten Datensatz exportieren
@@ -80,7 +80,7 @@ public final class ImportExport {
     public static Datensatz importSatz100(final File file) throws IOException {
         Datensatz satz100 = SatzFactory.getDatensatz(100);
         satz100.importFrom(file);
-        log.info("Datensatz " + satz100.getSatzart() + " von " + satz100.getFeld(Feld100.NAME3) + " "
+        LOG.info("Datensatz " + satz100.getSatzart() + " von " + satz100.getFeld(Feld100.NAME3) + " "
                 + satz100.getFeld(Feld100.NAME1) + " importiert.");
         return satz100;
     }
@@ -100,7 +100,7 @@ public final class ImportExport {
                 paket.importFrom(inputStream);
                 datenpakete.add(paket);
             } catch (EOFException ex) {
-                log.info("EOF nach " + datenpakete.size() + " Datenpaketen erreicht.");
+                LOG.info("EOF nach " + datenpakete.size() + " Datenpaketen erreicht.", ex);
                 break;
             }
         }
