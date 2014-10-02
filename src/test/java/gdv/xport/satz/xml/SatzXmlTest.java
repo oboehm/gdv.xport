@@ -23,6 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
@@ -47,7 +48,7 @@ import patterntesting.runtime.junit.SmokeRunner;
  * @since 1.0 (31.07.2014)
  */
 @RunWith(SmokeRunner.class)
-public class SatzXmlTest { // extends AbstractDatensatzTest {
+public class SatzXmlTest extends AbstractDatensatzTest {
 
     private static SatzXml satz100;
 
@@ -83,13 +84,13 @@ public class SatzXmlTest { // extends AbstractDatensatzTest {
         }
     }
 
-//    /* (non-Javadoc)
-//     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
-//     */
-//    @Override
-//    protected Satz getSatz() {
-//        return satz100;
-//    }
+    /* (non-Javadoc)
+     * @see gdv.xport.satz.AbstractSatzTest#getSatz()
+     */
+    @Override
+    protected Satz getSatz() {
+        return satz100;
+    }
 
     /**
      * Test method for {@link SatzXml#getSatzart()}.

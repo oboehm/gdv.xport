@@ -20,7 +20,6 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.VUNummer;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Feld1bis7;
@@ -45,23 +44,13 @@ import org.apache.commons.logging.LogFactory;
  */
 public class Datensatz extends Satz {
 
-	private static Log log = LogFactory.getLog(Datensatz.class);
-	/** 5 Zeichen, Byte 5 - 9. */
-	private final VUNummer vuNummer = Config.getVUNummer();
-	/** 1 Zeichen, Byte 10. */
-	private final AlphaNumFeld buendelungsKennzeichen = new AlphaNumFeld(Feld1bis7.BUENDELUNGSKENNZEICHEN);
+	private static Log LOG = LogFactory.getLog(Datensatz.class);
 	/** 3 Zeichen, Byte 11 - 13. */
     private final NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
 	/** 3 Zeichen, Byte 59 - 60. */
 	private final AlphaNumFeld wagnisart = new AlphaNumFeld(WAGNISART, 1, 59);
 	/** 3 Zeichen, Byte 255 - 256. */
 	private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld(TEILDATENSATZNUMMER, 1, 255);
-	/** 17 Zeichen, Byte 14 - 30. */
-	private final AlphaNumFeld versicherungsscheinNr = new AlphaNumFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER);
-	/** 2 Zeichen, Byte 31 + 32. */
-	private final NumFeld folgeNr = new NumFeld(Feld1bis7.FOLGENUMMER);
-	/** 10 Zeichen, Byte 33 - 42. */
-	private final AlphaNumFeld vermittler = new AlphaNumFeld(Feld1bis7.VERMITTLER);
 	/** Zum Abspeichern der Wagnisart oder Art (Unter-Sparte). */
 	private int art;
 
@@ -198,18 +187,18 @@ public class Datensatz extends Satz {
 	 * @since 0.4
 	 */
 	protected void setUpTeildatensatz(final Teildatensatz tds) {
-	    this.setUp(tds, Feld1bis7.VU_NUMMER, this.vuNummer);
-        this.setUp(tds, Feld1bis7.BUENDELUNGSKENNZEICHEN, this.buendelungsKennzeichen);
+	    this.setUp(tds, Feld1bis7.VU_NUMMER, Config.getVUNummer());
+        this.setUp(tds, Feld1bis7.BUENDELUNGSKENNZEICHEN, new AlphaNumFeld(Feld1bis7.BUENDELUNGSKENNZEICHEN));
         this.setUp(tds, Feld1bis7.SPARTE, this.sparte);
-        this.setUp(tds, Feld1bis7.VERSICHERUNGSSCHEINNUMMER, this.versicherungsscheinNr);
-        this.setUp(tds, Feld1bis7.FOLGENUMMER, this.folgeNr);
-        this.setUp(tds, Feld1bis7.VERMITTLER, this.vermittler);
+        this.setUp(tds, Feld1bis7.VERSICHERUNGSSCHEINNUMMER, new AlphaNumFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER));
+        this.setUp(tds, Feld1bis7.FOLGENUMMER, new NumFeld(Feld1bis7.FOLGENUMMER));
+        this.setUp(tds, Feld1bis7.VERMITTLER, new AlphaNumFeld(Feld1bis7.VERMITTLER));
 	}
 
     private void setUp(final Teildatensatz tds, final Enum<?> feldX, final Feld value) {
         if (!tds.hasFeld(feldX)) {
-            if (log.isTraceEnabled()) {
-                log.trace("Init " + tds + " with " + value + ".");
+            if (LOG.isTraceEnabled()) {
+                LOG.trace("Init " + tds + " with " + value + ".");
             }
             tds.add(value);
         }
@@ -331,7 +320,7 @@ public class Datensatz extends Satz {
 	 * @param s VU-Nummer (max. 5 Stellen)
 	 */
 	public void setVuNummer(final String s) {
-		this.vuNummer.setInhalt(s);
+	    this.getFeld(Feld1bis7.VU_NUMMER).setInhalt(s);
 	}
 
 	/**
@@ -340,7 +329,7 @@ public class Datensatz extends Satz {
 	 * @return die VU-Nummer
 	 */
 	public String getVuNummer() {
-		return this.vuNummer.getInhalt().trim();
+		return this.getFeld(Feld1bis7.VU_NUMMER).getInhalt().trim();
 	}
 
 	/**
@@ -350,7 +339,7 @@ public class Datensatz extends Satz {
 	 * @since 0.3
 	 */
 	public void setVersicherungsscheinNummer(final String nr) {
-		this.versicherungsscheinNr.setInhalt(nr);
+	    this.getFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER).setInhalt(nr);
 	}
 
 	/**
@@ -360,7 +349,7 @@ public class Datensatz extends Satz {
 	 * @since 0.3
 	 */
 	public String getVersicherungsscheinNummer() {
-		return this.versicherungsscheinNr.getInhalt().trim();
+		return this.getFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER).getInhalt().trim();
 	}
 
 	/**
@@ -406,7 +395,7 @@ public class Datensatz extends Satz {
 	 * @since 0.3
 	 */
 	public void setFolgenummer(final int nr) {
-		this.folgeNr.setInhalt(nr);
+	    this.getFeld(Feld1bis7.FOLGENUMMER).setInhalt(nr);
 	}
 
 	/**
@@ -416,7 +405,8 @@ public class Datensatz extends Satz {
 	 * @since 0.3
 	 */
 	public int getFolgenummer() {
-		return this.folgeNr.toInt();
+	    NumFeld folgenummer = (NumFeld) this.getFeld(Feld1bis7.FOLGENUMMER);
+		return folgenummer.toInt();
 	}
 
 	/**
@@ -475,7 +465,7 @@ public class Datensatz extends Satz {
 			try {
 				return WagnisartLeben.isIn(Integer.parseInt(wagnisart));
 			} catch (NumberFormatException e) {
-				log.warn("Not allowed value for wagnisart found. Type Number is required but was \""
+				LOG.warn("Not allowed value for wagnisart found. Type Number is required but was \""
 				        + wagnisart + "\".");
 				return WagnisartLeben.NULL;
 			}
@@ -542,7 +532,7 @@ public class Datensatz extends Satz {
             try {
                 return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
             } catch (NumberFormatException e) {
-                log.warn("Value \"" + teildatenSatz + "\" for TeildatensatzNummer found, but Number expected.");
+                LOG.warn("Value \"" + teildatenSatz + "\" for TeildatensatzNummer found, but Number expected.");
                 return TeildatensatzNummer.NULL;
             }
         }
