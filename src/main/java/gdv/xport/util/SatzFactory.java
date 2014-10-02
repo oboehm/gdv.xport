@@ -105,7 +105,7 @@ public final class SatzFactory {
             new ConcurrentHashMap<SatzNummer, Class<? extends Datensatz>>();
     private static final Map<SatzNummer, Class<? extends Enum<?>>> registeredEnumClasses =
             new ConcurrentHashMap<SatzNummer, Class<? extends Enum<?>>>();
-    private static final XmlService xmlService = XmlService.newInstance();
+    private static final XmlService xmlService = XmlService.getInstance();
 
     static {
         register(Vorsatz.class, 1);

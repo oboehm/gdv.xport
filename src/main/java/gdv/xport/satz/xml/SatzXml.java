@@ -160,6 +160,7 @@ public final class SatzXml extends Datensatz {
      * @param felder the felder
      */
     public void setFelder(Map<String, FeldXml> felder) {
+        LOG.trace("Setting missing felder infos to {}.", this);
         for (Teildatensatz tds : this.getTeildatensaetze()) {
             TeildatensatzXml tdsXml = (TeildatensatzXml) tds;
             tdsXml.updateWith(felder);

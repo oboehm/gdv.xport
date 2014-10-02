@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -50,16 +51,17 @@ import patterntesting.runtime.log.LogWatch;
 public class XmlService {
 
     private static final Logger LOG = LoggerFactory.getLogger(XmlService.class);
+    private static final Map<String, XmlService> instances = new WeakHashMap<String, XmlService>();
     private final Map<Integer, SatzXml> satzarten = new HashMap<Integer, SatzXml>();
 
     /**
-     * Kreiert einen neuen Service anhand des Standard-XML-Handbuchs von 2013.
+     * Liefert einen Service anhand des Standard-XML-Handbuchs von 2013.
      *
      * @return der frisch instantiierte XmlService
      */
-    public static XmlService newInstance() {
+    public static XmlService getInstance() {
         try {
-            return newInstance("VUVM2013.xml");
+            return getInstance("VUVM2013.xml");
         } catch (FileNotFoundException ex) {
             LOG.error("Resource 'VUVM2013.xml' not found in classpath:", ex);
         } catch (XMLStreamException ex) {
@@ -69,20 +71,29 @@ public class XmlService {
     }
 
     /**
-     * Kreiert eine neue Service-Instanz anhand der uebergebenen Resource.
+     * Liefert Service-Instanz anhand der uebergebenen Resource. Da der
+     * Aufruf des {@link XmlService}-Konstruktors teuer ist und einige
+     * Sekunden braucht (2-3 Sekunden auf einem MacBook-Air von 2011),
+     * wird ein interner Cache verwendet, um nicht jedesmal die Resource
+     * parsen zu muessen.
      *
      * @param resource Resource-Name (z.B. "VUVM2013.xml")
      * @return der frisch instantiierte XmlService
      * @throws XMLStreamException the XML stream exception
      * @throws FileNotFoundException falls die angegebene Resource nicht existiert
      */
-    public static XmlService newInstance(final String resource) throws XMLStreamException, FileNotFoundException {
-        XMLEventReader parser = createXMLEventReader(resource);
-        try {
-            return new XmlService(parser);
-        } finally {
-            parser.close();
+    public static XmlService getInstance(final String resource) throws XMLStreamException, FileNotFoundException {
+        XmlService service = instances.get(resource);
+        if (service == null) {
+            XMLEventReader parser = createXMLEventReader(resource);
+            try {
+                service = new XmlService(parser);
+                instances.put(resource, service);
+            } finally {
+                parser.close();
+            }
         }
+        return service;
     }
 
     private  static XMLEventReader createXMLEventReader(final String resourceName) throws XMLStreamException, FileNotFoundException {
@@ -139,7 +150,8 @@ public class XmlService {
         if ("satzarten".equals(name.getLocalPart())) {
             parseSatzarten(element, reader);
         } else if ("felder".equals(name.getLocalPart())) {
-            parseFelder(element, reader);
+            Map<String, FeldXml> felder = parseFelder(element, reader);
+            this.setFelder(felder);
         } else {
             XmlHelper.ignore(name, reader);
         }
@@ -192,6 +204,13 @@ public class XmlService {
             }
         }
         throw new XMLStreamException("end of " + element + " not found");
+    }
+
+    private void setFelder(Map<String, FeldXml> felder) {
+        LOG.debug("Missing felder for {} saetze will be set.", this.satzarten.size());
+        for (SatzXml satz : this.satzarten.values()) {
+            satz.setFelder(felder);
+        }
     }
 
     /**

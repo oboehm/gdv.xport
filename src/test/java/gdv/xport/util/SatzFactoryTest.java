@@ -41,7 +41,6 @@ import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import patterntesting.runtime.annotation.Broken;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -81,7 +80,6 @@ public final class SatzFactoryTest extends AbstractTest {
      * XML-Beschreibung vorhanden. Daher wird dieser Satz zum Testen verwendet.
      */
     @Test
-    @Broken(till = "03-Oct-2014")
     public void testGetSatz342() {
         Satz satz342 = getSatz(342);
         Feld dokumenttyp = satz342.getFeld("Dokumenttyp");
@@ -188,20 +186,6 @@ public final class SatzFactoryTest extends AbstractTest {
         Satz datensatz = SatzFactory.getDatensatz(satzart);
         assertEquals(satzart, datensatz.getSatzart());
     }
-
-//    /**
-//     * Damit wird ueberprueft, ob Satzart 221 (Erweiterungssatz) bei der SatzFactory registriert ist.
-//     */
-//    @Test
-//    public void testGetErweiterungssatz() {
-//        checkGetDatensatz(221, Satz221.class);
-//    }
-//
-//    private static void checkGetDatensatz(final int satzart, final Class<? extends Datensatz> clazz) {
-//        Satz datensatz = SatzFactory.getDatensatz(satzart);
-//        assertEquals(clazz, datensatz.getClass());
-//        assertEquals(satzart, datensatz.getSatzart());
-//    }
 
     /**
      * Damit wird ueberprueft, ob Satzart 220 mit Sparte 70 registriert ist.

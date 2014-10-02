@@ -20,6 +20,8 @@ package gdv.xport.satz.xml;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
 
 import org.junit.Test;
 
@@ -31,16 +33,34 @@ import org.junit.Test;
  */
 public class XmlServiceTest extends AbstractXmlTest {
 
-    private static XmlService xmlService = XmlService.newInstance();
+    private static XmlService xmlService = XmlService.getInstance();
 
     /**
-     * Test-Methode fuer {@link XmlService#getSatzart(int)}.
+     * Einfache Test-Methode fuer {@link XmlService#getSatzart(int)}.
      */
     @Test
     public void testGetSatzart() {
-        SatzXml satz100 = xmlService.getSatzart(100);
-        assertNotNull(satz100);
-        assertEquals(100, satz100.getSatzart());
+        getSatzart(100);
+    }
+
+    /**
+     * Hier begutachten wir etwas genauer den von
+     * {@link XmlService#getSatzart(int)} zurueckgelieferten Satz.
+     */
+    @Test
+    public void testGetSatzart200() {
+        SatzXml satz200 = getSatzart(200);
+        assertEquals(2, satz200.getTeildatensaetze().size());
+        Feld inkasso = satz200.getFeld(Bezeichner.INKASSOART);
+        assertEquals(1, inkasso.getAnzahlBytes());
+        assertEquals(43, inkasso.getByteAdresse());
+    }
+
+    private static SatzXml getSatzart(final int satzart) {
+        SatzXml satz = xmlService.getSatzart(satzart);
+        assertNotNull(satz);
+        assertEquals(satzart, satz.getSatzart());
+        return satz;
     }
 
 }
