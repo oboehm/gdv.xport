@@ -20,7 +20,6 @@ package gdv.xport.satz.xml;
 
 import gdv.xport.util.XmlHelper;
 
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +50,7 @@ import patterntesting.runtime.log.LogWatch;
 public class XmlService {
 
     private static final Logger LOG = LoggerFactory.getLogger(XmlService.class);
-    private static final Map<String, XmlService> instances = new WeakHashMap<String, XmlService>();
+    private static final Map<String, XmlService> INSTANCES = new WeakHashMap<String, XmlService>();
     private final Map<Integer, SatzXml> satzarten = new HashMap<Integer, SatzXml>();
 
     /**
@@ -62,33 +61,30 @@ public class XmlService {
     public static XmlService getInstance() {
         try {
             return getInstance("VUVM2013.xml");
-        } catch (FileNotFoundException ex) {
-            LOG.error("Resource 'VUVM2013.xml' not found in classpath:", ex);
         } catch (XMLStreamException ex) {
             LOG.error("Cannot parse XML from resource 'VUVM2013.xml':", ex);
+            return new XmlService();
         }
-        return new XmlService();
     }
 
     /**
-     * Liefert Service-Instanz anhand der uebergebenen Resource. Da der
-     * Aufruf des {@link XmlService}-Konstruktors teuer ist und einige
-     * Sekunden braucht (2-3 Sekunden auf einem MacBook-Air von 2011),
-     * wird ein interner Cache verwendet, um nicht jedesmal die Resource
-     * parsen zu muessen.
+     * Liefert Service-Instanz anhand der uebergebenen Resource. Da der Aufruf
+     * des {@link XmlService}-Konstruktors teuer ist und einige Sekunden braucht
+     * (2-3 Sekunden auf einem MacBook-Air von 2011), wird ein interner Cache
+     * verwendet, um nicht jedesmal die Resource parsen zu muessen.
      *
      * @param resource Resource-Name (z.B. "VUVM2013.xml")
      * @return der frisch instantiierte XmlService
-     * @throws XMLStreamException the XML stream exception
-     * @throws FileNotFoundException falls die angegebene Resource nicht existiert
+     * @throws XMLStreamException falls die angegebene Resource nicht existiert
+     *             oder nicht interpretiert werden kann
      */
-    public static XmlService getInstance(final String resource) throws XMLStreamException, FileNotFoundException {
-        XmlService service = instances.get(resource);
+    public static XmlService getInstance(final String resource) throws XMLStreamException {
+        XmlService service = INSTANCES.get(resource);
         if (service == null) {
             XMLEventReader parser = createXMLEventReader(resource);
             try {
                 service = new XmlService(parser);
-                instances.put(resource, service);
+                INSTANCES.put(resource, service);
             } finally {
                 parser.close();
             }
@@ -96,16 +92,18 @@ public class XmlService {
         return service;
     }
 
-    private  static XMLEventReader createXMLEventReader(final String resourceName) throws XMLStreamException, FileNotFoundException {
+    private  static XMLEventReader createXMLEventReader(final String resourceName) throws XMLStreamException {
         InputStream istream = XmlService.class.getResourceAsStream(resourceName);
         if (istream == null) {
-            throw new FileNotFoundException("resource '" + resourceName + "' not found");
+            throw new XMLStreamException("resource '" + resourceName + "' not found");
         }
         return XMLInputFactory.newInstance().createXMLEventReader(istream);
     }
 
     /** Only for internal fallback. */
-    private XmlService() {}
+    private XmlService() {
+        LOG.debug("Default XmlService created.");
+    }
 
     /**
      * Instantiiert einen XML-Service.
