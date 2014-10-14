@@ -44,7 +44,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class Datensatz extends Satz {
 
-	private static Log LOG = LogFactory.getLog(Datensatz.class);
+	private static final Log LOG = LogFactory.getLog(Datensatz.class);
 	/** 3 Zeichen, Byte 11 - 13. */
     private final NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
 	/** 3 Zeichen, Byte 59 - 60. */
@@ -206,11 +206,13 @@ public class Datensatz extends Satz {
 
 	/**
 	 * Kann von Unterklassen verwendet werden, um fehlende Felder in den
-	 * Teildatensaetze zu vervollstaendigen.
+	 * Teildatensaetze zu vervollstaendigen. Kann aber seit 1.0 nicht mehr
+	 * ueberschrieben werden, da diese Methode vom Konstruktor waehrend der
+	 * Objekt-Kreierung benoetigt wird.
 	 *
 	 * @since 0.6
 	 */
-	protected void completeTeildatensaetze() {
+	protected final void completeTeildatensaetze() {
 		for (Teildatensatz tds : this.getTeildatensaetze()) {
 			setUpTeildatensatz(tds);
 		}
@@ -222,7 +224,7 @@ public class Datensatz extends Satz {
 	 * @param n Nummer des Teildatensatzes (beginnend bei 1)
 	 * @since 0.5
 	 */
-	protected void setUpTeildatensatz(final int n) {
+	protected final void setUpTeildatensatz(final int n) {
 		this.setUpTeildatensatz(this.getTeildatensatz(n));
 	}
 
@@ -504,9 +506,11 @@ public class Datensatz extends Satz {
 	public String toShortString() {
 	    StringBuilder buf = new StringBuilder(super.toShortString());
 	    if (this.hasSparte()) {
-	        buf.append("." + this.sparte.getInhalt());
+	        buf.append(".");
+	        buf.append(this.sparte.getInhalt());
 	        if (this.hasArt()) {
-	            buf.append("." + this.getArt());
+	            buf.append(".");
+	            buf.append(this.getArt());
 	        }
         }
 		return buf.toString();
