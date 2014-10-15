@@ -99,13 +99,13 @@ import org.slf4j.LoggerFactory;
 public final class SatzFactory {
 
     private static final Logger LOG = LoggerFactory.getLogger(SatzFactory.class);
-    private static final Map<SatzNummer, Class<? extends Satz>> registeredSatzClasses =
+    private static final Map<SatzNummer, Class<? extends Satz>> REGISTERED_SATZ_CLASSES =
             new ConcurrentHashMap<SatzNummer, Class<? extends Satz>>();
-    private static final Map<SatzNummer, Class<? extends Datensatz>> registeredDatensatzClasses =
+    private static final Map<SatzNummer, Class<? extends Datensatz>> REGISTERED_DATENSATZ_CLASSES =
             new ConcurrentHashMap<SatzNummer, Class<? extends Datensatz>>();
-    private static final Map<SatzNummer, Class<? extends Enum<?>>> registeredEnumClasses =
+    private static final Map<SatzNummer, Class<? extends Enum<?>>> REGISTERED_ENUM_CLASSES =
             new ConcurrentHashMap<SatzNummer, Class<? extends Enum<?>>>();
-    private static final XmlService xmlService = XmlService.getInstance();
+    private static final XmlService XML_SERVICE = XmlService.getInstance();
 
     static {
         register(Vorsatz.class, 1);
@@ -267,7 +267,7 @@ public final class SatzFactory {
         } catch (NoSuchMethodException ex) {
             throw new IllegalArgumentException("no default constructor found in " + clazz, ex);
         }
-        registeredSatzClasses.put(new SatzNummer(satzart), clazz);
+        REGISTERED_SATZ_CLASSES.put(new SatzNummer(satzart), clazz);
     }
 
     /**
@@ -304,12 +304,12 @@ public final class SatzFactory {
      * @since 0.9
      */
     public static void registerEnum(final Class<? extends Enum<?>> enumClass, final SatzNummer satzNr) {
-        if (registeredDatensatzClasses.containsKey(satzNr)) {
-            LOG.info("Registered " + registeredDatensatzClasses.get(satzNr) + " for " + satzNr
+        if (REGISTERED_DATENSATZ_CLASSES.containsKey(satzNr)) {
+            LOG.info("Registered " + REGISTERED_DATENSATZ_CLASSES.get(satzNr) + " for " + satzNr
                     + " will be replaced by " + enumClass);
-            registeredDatensatzClasses.remove(satzNr);
+            REGISTERED_DATENSATZ_CLASSES.remove(satzNr);
         }
-        registeredEnumClasses.put(satzNr, enumClass);
+        REGISTERED_ENUM_CLASSES.put(satzNr, enumClass);
     }
 
     /**
@@ -321,8 +321,8 @@ public final class SatzFactory {
      */
     public static void unregister(final int satzart) {
         SatzNummer key = new SatzNummer(satzart);
-        registeredSatzClasses.remove(key);
-        registeredEnumClasses.remove(key);
+        REGISTERED_SATZ_CLASSES.remove(key);
+        REGISTERED_ENUM_CLASSES.remove(key);
     }
 
     /**
@@ -346,7 +346,7 @@ public final class SatzFactory {
      * @param satzNr the satz nr
      */
     public static void register(final Class<? extends Datensatz> clazz, final SatzNummer satzNr) {
-        registeredDatensatzClasses.put(satzNr, clazz);
+        REGISTERED_DATENSATZ_CLASSES.put(satzNr, clazz);
     }
 
     /**
@@ -372,8 +372,8 @@ public final class SatzFactory {
      */
     public static void unregister(final int satzart, final int sparte, final int wagnisart) {
         SatzNummer key = new SatzNummer(satzart, sparte, wagnisart, -1);
-        registeredDatensatzClasses.remove(key);
-        registeredEnumClasses.remove(key);
+        REGISTERED_DATENSATZ_CLASSES.remove(key);
+        REGISTERED_ENUM_CLASSES.remove(key);
     }
 
     /**
@@ -384,7 +384,7 @@ public final class SatzFactory {
      * @since 0.2
      */
     public static Satz getSatz(final int satzart) {
-        Class<? extends Satz> clazz = registeredSatzClasses.get(new SatzNummer(satzart));
+        Class<? extends Satz> clazz = REGISTERED_SATZ_CLASSES.get(new SatzNummer(satzart));
         if (clazz == null) {
             return generateSatz(satzart);
         }
@@ -402,11 +402,11 @@ public final class SatzFactory {
                 ctor = clazz.getConstructor(int.class);
                 return ctor.newInstance(satzart);
             } catch (InvocationTargetException ite) {
-                throw new RuntimeException(ite.getTargetException() + " in " + ctor, ite);
+                throw new ShitHappenedException(ite.getTargetException() + " in " + ctor, ite);
             } catch (NoSuchMethodException nsme) {
                 throw new UnsupportedOperationException("registered " + clazz + " has not the required ctor", nsme);
             } catch (InstantiationException ie) {
-                throw new RuntimeException("registered " + clazz + " can't be instantiated", ie);
+                throw new ShitHappenedException("registered " + clazz + " can't be instantiated", ie);
             } catch (IllegalAccessException iae) {
                 throw new IllegalStateException("registered " + clazz + " can't be accessed", iae);
             }
@@ -414,9 +414,9 @@ public final class SatzFactory {
     }
 
     private static Satz generateSatz(final int satzart) {
-        Class<? extends Enum<?>> enumClass = registeredEnumClasses.get(new SatzNummer(satzart));
+        Class<? extends Enum<?>> enumClass = REGISTERED_ENUM_CLASSES.get(new SatzNummer(satzart));
         if (enumClass == null) {
-            Satz satz = xmlService.getSatzart(satzart);
+            Satz satz = XML_SERVICE.getSatzart(satzart);
             if (satz == null) {
                 throw new NotRegisteredException(satzart);
             }
@@ -426,7 +426,7 @@ public final class SatzFactory {
     }
 
     private static Datensatz generateDatensatz(final SatzNummer satzNr) {
-        Class<? extends Enum<?>> enumClass = registeredEnumClasses.get(satzNr);
+        Class<? extends Enum<?>> enumClass = REGISTERED_ENUM_CLASSES.get(satzNr);
         if (enumClass == null) {
             return useFallback(satzNr);
         }
@@ -512,7 +512,7 @@ public final class SatzFactory {
      *         'wagnisart', 'teildatensatzNummer'
      */
     public static Datensatz getDatensatz(final SatzNummer satzNr) {
-        Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(satzNr);
+        Class<? extends Datensatz> clazz = REGISTERED_DATENSATZ_CLASSES.get(satzNr);
         if (clazz == null) {
             return generateDatensatz(satzNr);
         }
@@ -604,7 +604,7 @@ public final class SatzFactory {
      */
     public static Datenpaket getAllSupportedSaetze() {
         Datenpaket all = new Datenpaket();
-        for (SatzNummer satzNr : registeredSatzClasses.keySet()) {
+        for (SatzNummer satzNr : REGISTERED_SATZ_CLASSES.keySet()) {
             try {
                 all.add(getDatensatz(satzNr));
             } catch (ClassCastException canhappen) {
@@ -613,10 +613,10 @@ public final class SatzFactory {
                 }
             }
         }
-        for (SatzNummer key : registeredDatensatzClasses.keySet()) {
+        for (SatzNummer key : REGISTERED_DATENSATZ_CLASSES.keySet()) {
             addDatensatzTo(all, key);
         }
-        for (SatzNummer key : registeredEnumClasses.keySet()) {
+        for (SatzNummer key : REGISTERED_ENUM_CLASSES.keySet()) {
             addDatensatzTo(all, key);
         }
         return all;
