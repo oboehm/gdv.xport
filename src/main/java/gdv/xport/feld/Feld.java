@@ -296,8 +296,7 @@ public class Feld implements Comparable<Feld> {
     public static Feld createFeld(final Enum<?> feldX, final FeldInfo info) {
         try {
             Constructor<? extends Feld> ctor = info.type().getConstructor(Enum.class, FeldInfo.class);
-            Feld feld = ctor.newInstance(feldX, info);
-            return feld;
+            return ctor.newInstance(feldX, info);
         } catch (NoSuchMethodException ex) {
             throw new IllegalArgumentException("no constructor " + info.type().getSimpleName()
                     + "(String, FeldInfo) found", ex);
@@ -498,9 +497,9 @@ public class Feld implements Comparable<Feld> {
             return false;
         }
         if (this.byteAdresse < other.byteAdresse) {
-            return (this.getEndAdresse() >= other.byteAdresse);
+            return this.getEndAdresse() >= other.byteAdresse;
         }
-        return (other.getEndAdresse() >= this.byteAdresse);
+        return other.getEndAdresse() >= this.byteAdresse;
     }
 
     /**
