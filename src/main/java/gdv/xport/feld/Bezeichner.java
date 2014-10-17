@@ -949,9 +949,9 @@ public final class Bezeichner {
      * Die Werte muessen in der uebergebenen Property unter dem Key "name"
      * und "technischerName" vorliegen.
      *
-     * @param Property mit "name" und "technischerName"
+     * @param props Properties mit Name und technischer Name
      */
-    public Bezeichner(Properties props) {
+    public Bezeichner(final Properties props) {
         this(props.getProperty("name", ""), props.getProperty("technischerName", ""));
     }
 

@@ -68,7 +68,7 @@ public final class MyUnfallDatensatzTest {
         // jetzt den ersten Datensatz 210, Sparte 30 suchen und testen
         for (Datensatz datensatz : datenpaket.getDatensaetze()) {
             if ((datensatz.getSatzart() == 210) && (datensatz.getSparte() == 30)) {
-                assertEquals("EUR", datensatz.getFeld(MyFeld210.MEINE_WAEHRUNG).getInhalt());
+                assertEquals("EUR", datensatz.getFeld(MyFeld210.BAUJAHR).getInhalt());
                 break;
             }
         }
@@ -83,7 +83,7 @@ public final class MyUnfallDatensatzTest {
     @Test
     public void testBezeichner() {
         Datensatz myDatensatz = new MyUnfallDatensatz();
-        Feld meineWaehrung = myDatensatz.getFeld(MyFeld210.MEINE_WAEHRUNG);
+        Feld meineWaehrung = myDatensatz.getFeld(MyFeld210.BAUJAHR);
         assertEquals("MEINE_WAEHRUNG", meineWaehrung.getBezeichnerAsString());
         assertEquals("Meine Waehrung", meineWaehrung.getBezeichnung());
     }

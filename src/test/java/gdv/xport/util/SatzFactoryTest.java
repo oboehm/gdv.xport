@@ -161,8 +161,7 @@ public final class SatzFactoryTest extends AbstractTest {
 
     private void assertSatzart47(final Satz satz) {
         assertEquals(47, satz.getSatzart());
-        Feld x = satz.getFeld(MyFeld210.MEINE_WAEHRUNG);
-        assertNotNull(x);
+        Feld x = satz.getFeld(MyFeld210.BAUJAHR);
     }
 
     /**

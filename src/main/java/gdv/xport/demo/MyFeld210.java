@@ -19,19 +19,20 @@
 package gdv.xport.demo;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Datum;
 
 /**
  * Dies ist ein Beispiel, wie die Daten fuer einen Datensatz beschrieben
  * werden. Diese Enum-Klasse hier repraesentiert den Datensatz
  * 0210.030 (Unfall, Vertragsspezifischer Teil), definiert aber nur
  * einige wenige ausgewaehlte Felder.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (18.04.2011)
  */
 public enum MyFeld210 {
-    
+
     /**
      * Beispiel fuer ein Datumsfeld von Byte 44 - 51.
      */
@@ -42,8 +43,8 @@ public enum MyFeld210 {
             anzahlBytes = 8,
             byteAdresse = 44
     )
-    MEIN_VERTRAGS_BEGINN,
-    
+    VERTRAGSBEGINN,
+
     /**
      * Beispiel fuer ein alhpanumerisches Feld von Byte 93 - 95.
      */
@@ -54,7 +55,7 @@ public enum MyFeld210 {
             anzahlBytes = 3,
             byteAdresse = 93
     )
-    MEINE_WAEHRUNG;
+    BAUJAHR;
 
 }
 
