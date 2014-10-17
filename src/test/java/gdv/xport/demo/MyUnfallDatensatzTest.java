@@ -83,9 +83,8 @@ public final class MyUnfallDatensatzTest {
     @Test
     public void testBezeichner() {
         Datensatz myDatensatz = new MyUnfallDatensatz();
-        Feld meineWaehrung = myDatensatz.getFeld(MyFeld210.BAUJAHR);
-        assertEquals("MEINE_WAEHRUNG", meineWaehrung.getBezeichnerAsString());
-        assertEquals("Meine Waehrung", meineWaehrung.getBezeichnung());
+        Feld baujahr = myDatensatz.getFeld(MyFeld210.BAUJAHR);
+        assertEquals("Baujahr", baujahr.getBezeichnung());
     }
 
     /**
