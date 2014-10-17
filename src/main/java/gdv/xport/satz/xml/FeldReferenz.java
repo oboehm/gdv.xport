@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.xml;
 
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.util.XmlHelper;
 
 import java.util.Properties;
@@ -43,8 +44,7 @@ public final class FeldReferenz {
     private static final Logger LOG = LoggerFactory.getLogger(FeldReferenz.class);
 
     private final String id;
-    private final String name;
-    private final String technischerName;
+    private final Bezeichner bezeichner;
     private final String auspraegung;
 
     /**
@@ -69,8 +69,7 @@ public final class FeldReferenz {
     public FeldReferenz(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
         id = element.getAttributeByName(new QName("referenz")).getValue();
         Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
-        this.name = props.getProperty("name", "");
-        this.technischerName = props.getProperty("technischerName", "");
+        this.bezeichner = new Bezeichner(props);
         this.auspraegung = props.getProperty("auspraegung", "");
         LOG.debug("{} created.", this);
     }
@@ -85,12 +84,21 @@ public final class FeldReferenz {
     }
 
     /**
+     * Liefert den Bezeichner mit Name und technischen Namen.
+     *
+     * @return den Bezeichner
+     */
+    public Bezeichner getBezeichner() {
+        return this.bezeichner;
+    }
+
+    /**
      * Gets the name.
      *
      * @return the name
      */
     public String getName() {
-        return this.name;
+        return this.bezeichner.getName();
     }
 
     /**
@@ -99,7 +107,7 @@ public final class FeldReferenz {
      * @return the technischer name
      */
     public String getTechnischerName() {
-        return this.technischerName;
+        return this.bezeichner.getTechnischerName();
     }
 
     /**
@@ -125,7 +133,7 @@ public final class FeldReferenz {
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " \"" + this.id + "\" (" + this.name + ")";
+        return this.getClass().getSimpleName() + " \"" + this.id + "\" (" + this.bezeichner + ")";
     }
 
 }

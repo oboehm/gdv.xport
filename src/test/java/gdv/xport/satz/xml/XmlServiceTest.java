@@ -44,6 +44,17 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     /**
+     * Der Satz 1 (Vorsatz) weicht etwas von den uebrigen Saetzen ab.
+     * Deswegen testen wir ihn hier gesondert.
+     */
+    @Test
+    public void testGetVorsatz() {
+        SatzXml vorsatz = getSatzart(1);
+        Feld version = vorsatz.getFeld("Satzart 0100");
+        assertNotNull(version);
+    }
+
+    /**
      * Hier begutachten wir etwas genauer den von
      * {@link XmlService#getSatzart(int)} zurueckgelieferten Satz.
      */

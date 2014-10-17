@@ -42,12 +42,31 @@ public class AlphaNumFeld extends Feld {
     }
 
     /**
+     * Legt ein neues alphanumerisches Feld an.
+     * <p>
+     * TODO: Bitte nicht mehr benutzen - wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Bezeichner
      * @param length Laenge in Bytes
      * @param start Start-Byte (beginnend bei 1)
+     * @deprecated durch {@link #AlphaNumFeld(Bezeichner, int, int)} abgeloest
      */
+    @Deprecated
     public AlphaNumFeld(final String name, final int length, final int start) {
-        super(name, length, start, Align.LEFT);
+        this(new Bezeichner(name), length, start);
+    }
+
+    /**
+     * Legt ein neues alphanumerisches Feld an.
+     *
+     * @param bezeichner Bezeichner
+     * @param length Laenge in Bytes
+     * @param start Start-Byte (beginnend bei 1)
+     * @since 1.0
+     */
+    public AlphaNumFeld(final Bezeichner bezeichner, final int length, final int start) {
+        super(bezeichner, length, start, Align.LEFT);
     }
 
     /**

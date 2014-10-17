@@ -93,6 +93,14 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
         checkFeld(Bezeichner.VERMITTLER, 10, 33);
     }
 
+    /**
+     * Wird Feld "Name 1" gefunden?
+     */
+    @Test
+    public void testGetFeldName1() {
+        checkFeld(Bezeichner.NAME1, 30, 44);
+    }
+
     private static void checkFeld(final String name, final int length, final int address) {
         Feld feld = tds100.getFeld(name);
         assertEquals("Anzahl Bytes", length, feld.getAnzahlBytes());

@@ -18,7 +18,12 @@
 
 package gdv.xport.satz.xml;
 
-import gdv.xport.feld.*;
+import gdv.xport.feld.Align;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.util.XmlHelper;
 
 import java.util.Properties;
@@ -43,10 +48,9 @@ public final class FeldXml extends Feld {
     private static final Logger LOG = LoggerFactory.getLogger(FeldXml.class);
 
     private final String id;
-    private final String name;
+    private final Bezeichner bezeichner;
     private final String datentyp;
     private final int nachkommastellen;
-    private final String technischerName;
 
     /**
      * Instantiiert eine Objekt mit den Werten, die ueber den uebergebenen
@@ -71,8 +75,7 @@ public final class FeldXml extends Feld {
         id = element.getAttributeByName(new QName("referenz")).getValue();
         LOG.trace("Parsing <feld referenz=\"{}\"...", id);
         Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
-        this.name = props.getProperty("name", "");
-        this.technischerName = props.getProperty("technischerName", name);
+        this.bezeichner = new Bezeichner(props);
         this.setAnzahlBytes(Integer.parseInt(props.getProperty("bytes", "1")));
         this.datentyp = props.getProperty("datentyp");
         this.nachkommastellen = Integer.parseInt(props.getProperty("nachkommastellen", "0"));
@@ -97,7 +100,7 @@ public final class FeldXml extends Feld {
      */
     @Override
     public String getBezeichnerAsString() {
-        return this.name;
+        return this.bezeichner.getName();
     }
 
     /**
@@ -108,7 +111,7 @@ public final class FeldXml extends Feld {
      */
     @Override
     public String getBezeichnung() {
-        return this.technischerName;
+        return this.bezeichner.getTechnischerName();
     }
 
     /**
@@ -133,20 +136,31 @@ public final class FeldXml extends Feld {
     /**
      * Wandelt das FeldXml-Objekt in ein {@link Feld}-Objekt um.
      *
-     * @param byteAddress the byte address
-     * @return the feld
+     * @param byteAddress die Byte-Adresse
+     * @return das entsprechende Feld
      */
     public Feld toFeld(final int byteAddress) {
+        return this.toFeld(byteAddress, this.bezeichner);
+    }
+
+    /**
+     * Wandelt das FeldXml-Objekt in ein {@link Feld}-Objekt um.
+     *
+     * @param byteAddress die Byte-Adresse
+     * @param neuerBezeichner the neuer bezeichner
+     * @return das entsprechende Feld
+     */
+    public Feld toFeld(final int byteAddress, final Bezeichner neuerBezeichner) {
         if ("Numerisch".equals(this.datentyp)) {
-            return new NumFeld(this.technischerName, this.getAnzahlBytes(), byteAddress)
+            return new NumFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress)
                     .mitNachkommastellen(this.nachkommastellen);
         } else if ("Alphanumerisch".equals(this.datentyp)) {
-            return new AlphaNumFeld(this.technischerName, this.getAnzahlBytes(), byteAddress);
+            return new AlphaNumFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress);
         } else if ("Datum".equals(this.datentyp)) {
-            return new Datum(this.technischerName, this.getAnzahlBytes(), byteAddress);
+            return new Datum(neuerBezeichner, this.getAnzahlBytes(), byteAddress);
         } else {
             LOG.warn("Feld constructor will be used for unknown datentyp '{}'.", this.datentyp);
-            return new Feld(this.technischerName, this.getAnzahlBytes(), byteAddress, Align.UNKNOWN);
+            return new Feld(neuerBezeichner, this.getAnzahlBytes(), byteAddress, Align.UNKNOWN);
         }
     }
 
@@ -155,7 +169,7 @@ public final class FeldXml extends Feld {
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " \"" + this.id + "\" (" + this.name + ")";
+        return this.getClass().getSimpleName() + " \"" + this.id + "\" (" + this.bezeichner + ")";
     }
 
 }

@@ -137,19 +137,33 @@ public class Feld implements Comparable<Feld> {
     }
 
     /**
-     * Instantiates a new feld.
+     * Erzeugt ein neues Feld.
+     * <p>
+     * TODO: Bitte nicht mehr benutzen - wird in 1.2 entfernt!
+     * </p>
      *
-     * @param name
-     *            the name
-     * @param length
-     *            the length
-     * @param start
-     *            the start
-     * @param alignment
-     *            the alignment
+     * @param name der Name
+     * @param length die Anzahl der Bytes
+     * @param start die Start-Adresse
+     * @param alignment die Ausrichtung
+     * @deprecated durch {@link #Feld(Bezeichner, int, int, Align)} abgeloest
      */
+    @Deprecated
     public Feld(final String name, final int length, final int start, final Align alignment) {
-        this.bezeichner = new Bezeichner(name);
+        this(new Bezeichner(name), length, start, alignment);
+    }
+
+    /**
+     * Erzeugt ein neues Feld.
+     *
+     * @param bezeichner der Name des Felds
+     * @param length die Anzahl der Bytes
+     * @param start die Start-Adresse
+     * @param alignment die Ausrichtung
+     * @since 1.0
+     */
+    public Feld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
+        this.bezeichner = bezeichner;
         this.inhalt = getEmptyStringBuffer(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;

@@ -91,14 +91,30 @@ public final class Datum extends Feld {
     }
 
     /**
-     * Instantiates a new datum.
+     * Legt ein neues Datum an.
+     * <p>
+     * TODO: Bitte nicht mehr benutzen - wird in 1.2 entfernt!
+     * </p>
      *
-     * @param name the name
-     * @param length the length
-     * @param start the start
+     * @param name Name
+     * @param length Anzahl Bytes
+     * @param start Byte-Adresse
+     * @deprecated durch {@link #Datum(Bezeichner, int, int)} abgeloest
      */
+    @Deprecated
     public Datum(final String name, final int length, final int start) {
-        super(name, length, start, Align.RIGHT);
+        this(new Bezeichner(name), length, start);
+    }
+
+    /**
+     * Legt ein neues Datum an.
+     *
+     * @param bezeichner Bezeichner
+     * @param length Anzahl Bytes
+     * @param start Byte-Adresse
+     */
+    public Datum(Bezeichner bezeichner, int length, int start) {
+        super(bezeichner, length, start, Align.RIGHT);
         dateFormat = getDateFormat(length);
     }
 

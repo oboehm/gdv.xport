@@ -85,6 +85,26 @@ public class BezeichnerTest {
     }
 
     /**
+     * Auch die VU-Nummer hat so ihre Besonderheiten. So ist der technische
+     * Name dafuer "VuNr", was sich nicht direkt aus dem Name ("VU-Nummer")
+     * ableiten laesst.
+     */
+    @Test
+    public void testEqualsVuNummer() {
+        ObjectTester.assertEquals(new Bezeichner(Bezeichner.VU_NUMMER, "VuNr"), new Bezeichner(Bezeichner.VU_NUMMER));
+    }
+
+    /**
+     * Das gleiche wie fuer den vorigen Test gilt auch fuer die
+     * "Versicherungsschein-Nummer": diese wird als "VsNr" abgekuerzt.
+     */
+    @Test
+    public void testEqualsVsNr() {
+        ObjectTester.assertEquals(new Bezeichner(Bezeichner.VERSICHERUNGSSCHEINNUMMER, "VsNr"), new Bezeichner(
+                Bezeichner.VERSICHERUNGSSCHEINNUMMER));
+    }
+
+    /**
      * Test-Methode fuer {@link Bezeichner#getField(String)}.
      *
      * @throws IllegalAccessException the illegal access exception

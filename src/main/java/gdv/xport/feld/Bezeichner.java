@@ -20,7 +20,11 @@
 package gdv.xport.feld;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -918,8 +922,17 @@ public final class Bezeichner {
 
     private static final Log LOG = LogFactory.getLog(Bezeichner.class);
 
+    private static final Map<String, String> MAPPING = new HashMap<String, String>();
+
     private final String name;
     private final String technischerName;
+    private final int hash;
+
+    // Mapping fuer manche Bezeichner (Name <--> technischer Name)
+    static {
+        MAPPING.put(VERSICHERUNGSSCHEINNUMMER, "VsNr");
+        MAPPING.put(VU_NUMMER, "VuNr");
+    }
 
     /**
      * Legt einen neuen Bezeichner mit dem gewuenschten Name an.
@@ -928,11 +941,38 @@ public final class Bezeichner {
      * @since 1.0
      */
     public Bezeichner(final String name) {
+        this(name, toTechnischerName(name));
+    }
+
+    /**
+     * Legt einen neuen Bezeichner mit dem gewuenschten Werten an.
+     * Die Werte muessen in der uebergebenen Property unter dem Key "name"
+     * und "technischerName" vorliegen.
+     *
+     * @param Property mit "name" und "technischerName"
+     */
+    public Bezeichner(Properties props) {
+        this(props.getProperty("name", ""), props.getProperty("technischerName", ""));
+    }
+
+    /**
+     * Legt einen neuen Bezeichner mit dem gewuenschten Name an.
+     *
+     * @param name der gewuenschte Name
+     * @param technischerName der entsprechende technische Name
+     * @since 1.0
+     */
+    public Bezeichner(final String name, final String technischerName) {
         this.name = name;
-        this.technischerName = toTechnischerName(name);
+        this.technischerName = StringUtils.isEmpty(technischerName) ? name : technischerName;
+        this.hash = this.technischerName.toUpperCase().hashCode();
     }
 
     private static String toTechnischerName(final String input) {
+        String techName = MAPPING.get(input);
+        if (techName != null) {
+            return techName;
+        }
         StringBuilder converted = new StringBuilder();
         char[] chars = input.toCharArray();
         for (int i = 0; i < chars.length; i++) {
@@ -993,8 +1033,8 @@ public final class Bezeichner {
     }
 
     /**
-     * Zum Vergleich zweier {@link Bezeichner} wird der technische Name
-     * herangezogen.
+     * Zum Vergleich zweier {@link Bezeichner} wird zuerst der Name und dann der
+     * technische Name herangezogen.
      *
      * @param obj der andere Bezeichner
      * @return true, wenn er als gleich angesehen wird
@@ -1010,17 +1050,18 @@ public final class Bezeichner {
     }
 
     /**
-     * Der Hash-Code wird aus dem technischen Namen abgeleitet und berechnet.
-     * Aus Performance-Gruenden koennte man ihn auch einmal berechnen und
-     * abspeichern, dies wird aber (noch) nicht gemacht, um unnoetige Redundanz
-     * in dieser Klasse zu vermeiden.
+     * Der Hash-Code wird aus dem technischen Namen abgeleitet.
+     * <p>
+     * Aus Performance-Gruenden wird der hash einmal beim Anlegen ermittelt,
+     * da der Bezeichner intern fuer diverse HashMaps verwendet wird.
+     * </p>
      *
      * @return den berechneten Hash-Code
      * @see java.lang.Object#hashCode()
      */
     @Override
     public int hashCode() {
-        return this.getTechnischerName().toUpperCase().hashCode();
+        return this.hash;
     }
 
     /**
@@ -1032,7 +1073,11 @@ public final class Bezeichner {
      */
     @Override
     public String toString() {
-        return this.name;
+        if (this.technischerName.equalsIgnoreCase(toTechnischerName(this.name))) {
+            return this.name;
+        } else  {
+            return this.technischerName + " (" + this.name + ")";
+        }
     }
 
     /**

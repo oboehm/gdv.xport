@@ -166,8 +166,7 @@ public class Teildatensatz extends Satz {
                 }
             }
         }
-        String name = feld.getBezeichnung();
-        datenfelder.put(new Bezeichner(name), feld);
+        datenfelder.put(feld.getBezeichner(), feld);
         sortedFelder.add(feld);
     }
 

@@ -5,7 +5,8 @@ package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
 
-import java.text.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
@@ -13,7 +14,8 @@ import net.sf.oval.constraint.MatchPatternCheck;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
@@ -63,12 +65,31 @@ public class NumFeld extends Feld {
     }
 
     /**
+     * Legt ein neues numerisches Feld an.
+     * <p>
+     * TODO: Bitte nicht mehr benutzen - wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Feld-Bezeichner (z.B. "Anzahl Saetze")
      * @param length Anzahl Bytes
      * @param start Start-Byte (beginnend bei 1)
+     * @deprecated durch {@link #NumFeld(Bezeichner, int, int)} abgeloest
      */
+    @Deprecated
     public NumFeld(final String name, final int length, final int start) {
-        super(name, length, start, Align.RIGHT);
+        this(new Bezeichner(name), length, start);
+    }
+
+    /**
+     * Legt ein neues numerisches Feld an.
+     *
+     * @param bezeichner Feld-Bezeichner (z.B. "Anzahl Saetze")
+     * @param length Anzahl Bytes
+     * @param start Start-Byte (beginnend bei 1)
+     * @since 1.0
+     */
+    public NumFeld(Bezeichner bezeichner, int length, int start) {
+        super(bezeichner, length, start, Align.RIGHT);
         this.nachkommastellen = 0;
         this.setInhalt(0);
     }
