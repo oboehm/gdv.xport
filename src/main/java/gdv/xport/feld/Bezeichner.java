@@ -1073,8 +1073,8 @@ public final class Bezeichner {
      */
     @Override
     public String toString() {
-        if (this.technischerName.equalsIgnoreCase(toTechnischerName(this.name))) {
-            return this.name;
+        if (this.technischerName.length() > 5) {
+            return this.technischerName;
         } else  {
             return this.technischerName + " (" + this.name + ")";
         }
