@@ -98,7 +98,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Teildatensatz tds = new Teildatensatz(100, 1);
         assertEquals(tds.getSatzartFeld(), tds.getFeld(1));
         assertEquals(tds.getNummer(), tds.getFeld(2));
-        NumFeld two = new NumFeld("two", 2, 5);
+        NumFeld two = new NumFeld(new Bezeichner("two"), 2, 5);
         tds.add(two);
         Feld feld = tds.getFeld(2);
         assertEquals(two, feld);

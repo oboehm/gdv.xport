@@ -98,9 +98,9 @@ public class FeldTest {
      */
     @Test
     public void testOverlapsWith() {
-        Feld a = new Feld("a", 2, 1, Align.LEFT);    // Byte 1-2
-        Feld b = new Feld("b", 2, 3, Align.LEFT);    // Byte 3-4
-        Feld c = new Feld("c", 2, 2, Align.LEFT);    // Byte 2-3
+        Feld a = new Feld(new Bezeichner("a"), 2, 1, Align.LEFT);    // Byte 1-2
+        Feld b = new Feld(new Bezeichner("b"), 2, 3, Align.LEFT);    // Byte 3-4
+        Feld c = new Feld(new Bezeichner("c"), 2, 2, Align.LEFT);    // Byte 2-3
         assertFalse(a + " overlaps with " + b, a.overlapsWith(b));
         assertFalse(b + " overlaps with " + a, b.overlapsWith(a));
         assertTrue(b + " doesn't overlap with " + c, b.overlapsWith(c));
@@ -113,9 +113,9 @@ public class FeldTest {
      */
     @Test
     public void testIsValid() {
-        Feld a = new Feld("a", 257, -1, Align.UNKNOWN);
+        Feld a = new Feld(new Bezeichner("a"), 257, -1, Align.UNKNOWN);
         assertFalse(a + " is not valid - to long, wrong start byte, unknow alignment", a.isValid());
-        Feld b = new Feld("b", 2, 256, Align.LEFT);
+        Feld b = new Feld(new Bezeichner("b"), 2, 256, Align.LEFT);
         assertFalse(b + " geht ueber Satz-Grenze hinweg", b.isValid());
         Feld c = new Feld("c", 1, 'c');
         assertTrue(c + " should be valid", c.isValid());
@@ -126,7 +126,7 @@ public class FeldTest {
      */
     @Test
     public void testValidate() {
-        Feld a = new Feld("a", 10, -1, Align.UNKNOWN);
+        Feld a = new Feld(new Bezeichner("a"), 10, -1, Align.UNKNOWN);
         List<ConstraintViolation> violations = a.validate();
         for (ConstraintViolation violation : violations) {
             log.info("ConstraintViolation: " + violation);
@@ -139,8 +139,8 @@ public class FeldTest {
      */
     @Test
     public void testEquals() {
-        Feld a = new Feld("x", 2, 1, Align.LEFT);
-        Feld b = new Feld("x", 2, 1, Align.LEFT);
+        Feld a = new Feld(new Bezeichner("x"), 2, 1, Align.LEFT);
+        Feld b = new Feld(new Bezeichner("x"), 2, 1, Align.LEFT);
         assertEquals(a, b);
         assertEquals(a.hashCode(), b.hashCode());
         b.setInhalt('b');
@@ -165,7 +165,7 @@ public class FeldTest {
      */
     @Test
     public void testGetBezeichnerConstructed() {
-        Feld x = new Feld("Version Satzart 0100", 99, 3, Align.LEFT);
+        Feld x = new Feld(new Bezeichner("Version Satzart 0100"), 99, 3, Align.LEFT);
         assertEquals(new Bezeichner("VERSION_SATZART_0100"), x.getBezeichner());
     }
 

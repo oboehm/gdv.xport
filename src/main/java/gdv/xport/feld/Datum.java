@@ -120,13 +120,29 @@ public final class Datum extends Feld {
 
     /**
      * Instantiiert ein neues Datum.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
      *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
+     * @deprecated bitte {@link #Datum(Bezeichner, FeldInfo)} verwenden
      */
+    @Deprecated
     public Datum(final String name, final FeldInfo info) {
-        super(name, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.RIGHT : info.align());
+        this(new Bezeichner(name), info);
+    }
+
+    /**
+     * Instantiiert ein neues Datum.
+     *
+     * @param bezeichner Bezeichner
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 1.0
+     */
+    public Datum(final Bezeichner bezeichner, final FeldInfo info) {
+        super(bezeichner, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.RIGHT : info.align());
         dateFormat = getDateFormat(info.anzahlBytes());
     }
 

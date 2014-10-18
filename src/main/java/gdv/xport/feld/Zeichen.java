@@ -40,13 +40,29 @@ public class Zeichen extends AlphaNumFeld {
     }
 
     /**
-     * Instantiates a new zeichen.
+     * Instanziiert ein neues Zeichen.
+     * <p>
+     * TODO: Bitte nicht mehr verwenden, wird mit 1.2 entsorgt!
+     * </p>
      *
-     * @param name the name
-     * @param start the start
+     * @param name der Name
+     * @param start die Byte-Adresse
+     * @deprecated bitte {@link #Zeichen(Bezeichner, int)} verwenden
      */
+    @Deprecated
     public Zeichen(final String name, final int start) {
-        super(name, 1, start);
+        this(new Bezeichner(name), start);
+    }
+
+    /**
+     * Instanziiert ein neues Zeichen.
+     *
+     * @param bezeichner der Bezeichner
+     * @param start die Byte-Adresse
+     * @since 1.0
+     */
+    public Zeichen(final Bezeichner bezeichner, final int start) {
+        super(bezeichner, 1, start);
     }
 
     /**

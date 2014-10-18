@@ -101,7 +101,7 @@ public final class SatzFactoryTest extends AbstractTest {
         Datensatz unsupported = new Datensatz("0123");
         unsupported.setVuNummer("56789");
         unsupported.setSparte(88);
-        unsupported.add(new NumFeld("zweiundvierzig", 4, 200, 42));
+        unsupported.add(new NumFeld(new Bezeichner("zweiundvierzig"), 4, 200, 42));
         String content = unsupported.toLongString();
         Satz imported = SatzFactory.getSatz(content);
         assertEquals(content, imported.toLongString());
@@ -162,6 +162,7 @@ public final class SatzFactoryTest extends AbstractTest {
     private void assertSatzart47(final Satz satz) {
         assertEquals(47, satz.getSatzart());
         Feld x = satz.getFeld(MyFeld210.BAUJAHR);
+        assertNotNull(x);
     }
 
     /**

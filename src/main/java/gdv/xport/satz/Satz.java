@@ -17,25 +17,9 @@ import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -56,7 +40,7 @@ import org.slf4j.LoggerFactory;
 public abstract class Satz {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Satz.class);
-	private final NumFeld satzart = new NumFeld(SATZART, 4, 1);
+	private final NumFeld satzart = new NumFeld(new Bezeichner(SATZART), 4, 1);
 	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
 
 	protected Satz(final int art) {
@@ -907,7 +891,7 @@ public abstract class Satz {
     private static void setSparteFor(final Teildatensatz tds, final int sparte) {
         Feld spartenFeld = tds.getFeld(Feld1bis7.SPARTE);
         if (spartenFeld == Feld.NULL_FELD) {
-            spartenFeld = new NumFeld(SPARTE, 3, 11);
+            spartenFeld = new NumFeld(new Bezeichner(SPARTE), 3, 11);
             tds.add(spartenFeld);
         }
         spartenFeld.setInhalt(sparte);

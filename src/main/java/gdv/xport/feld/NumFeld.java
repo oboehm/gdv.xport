@@ -95,13 +95,33 @@ public class NumFeld extends Feld {
     }
 
     /**
+     * Legt ein neues numerisches Feld an.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Feld-Bezeichner (z.B. "Anzahl Saetze")
      * @param length Anzahl Bytes
      * @param start Start-Byte (beginnend bei 1)
      * @param value z.B. "01"
+     * @deprecated bitte {@link #NumFeld(Bezeichner, int, int, int)} benutzen
      */
+    @Deprecated
     public NumFeld(final String name, final int length, final int start, final int value) {
-        super(name, length, start, Align.RIGHT);
+        this(new Bezeichner(name), length, start, value);
+    }
+
+    /**
+     * Legt ein neues numerisches Feld an.
+     *
+     * @param bezeichner Feld-Bezeichner (z.B. "Anzahl Saetze")
+     * @param length Anzahl Bytes
+     * @param start Start-Byte (beginnend bei 1)
+     * @param value z.B. "01"
+     * @since 1.0
+     */
+    public NumFeld(final Bezeichner bezeichner, final int length, final int start, final int value) {
+        super(bezeichner, length, start, Align.RIGHT);
         this.nachkommastellen = 0;
         this.setInhalt(value);
     }
@@ -131,22 +151,40 @@ public class NumFeld extends Feld {
 
     /**
      * Instantiiert ein neues numerisches Feld.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
      *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
+     * @deprecated bitte {@link #NumFeld(Bezeichner, FeldInfo)} benutzen
      */
+    @Deprecated
     public NumFeld(final String name, final FeldInfo info) {
+        this(new Bezeichner(name), info);
+    }
+
+    /**
+     * Instantiiert ein neues numerisches Feld.
+     *
+     * @param name Bezeichner
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 1.0
+     */
+    public NumFeld(final Bezeichner name, final FeldInfo info) {
         super(name, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.RIGHT : info.align());
         this.nachkommastellen = info.nachkommaStellen();
     }
 
     /**
-     * @since 0.4
+     * Instantiiert ein neues numerisches Feld.
+     *
      * @param name Feld-Bezeichner (z.B. "pi")
      * @param start Start-Byte (beginnend ab 1)
      * @param value der Inhalt (z.B. "314")
      * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
+     * @since 0.4
      */
     public NumFeld(final String name, final int start, final String value,
             final int nachkommastellen) {
@@ -156,14 +194,36 @@ public class NumFeld extends Feld {
     }
 
     /**
-     * @since 0.4
+     * Legt ein neues numerisches Feld an.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Feld-Bezeichner (z.B. "pi")
      * @param length Gesamtlaenge
      * @param start Start-Byte (beginnend ab 1)
      * @param value der Inhalt (z.B. 314)
      * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
+     * @since 0.4
+     * @deprecated bitte {@link #NumFeld(Bezeichner,int,int,int,int)} verwenden
      */
+    @Deprecated
     public NumFeld(final String name, final int length, final int start, final int value,
+            final int nachkommastellen) {
+        this(new Bezeichner(name), length, start, value, nachkommastellen);
+    }
+
+    /**
+     * Legt ein neues numerisches Feld an.
+     *
+     * @param name Feld-Bezeichner (z.B. "pi")
+     * @param length Gesamtlaenge
+     * @param start Start-Byte (beginnend ab 1)
+     * @param value der Inhalt (z.B. 314)
+     * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
+     * @since 1.0
+     */
+    public NumFeld(final Bezeichner name, final int length, final int start, final int value,
             final int nachkommastellen) {
         super(name, length, start, Align.RIGHT);
         this.nachkommastellen = nachkommastellen;

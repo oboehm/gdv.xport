@@ -18,32 +18,31 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import gdv.xport.annotation.FeldInfo;
 
 import org.junit.Test;
 
 /**
  * JUnit-Test fuer AlphaNum-Klasse.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (10.05.2011)
  */
 public class AlphaNumFeldTest {
-    
+
     /** For testing. */
-    private enum Alphabet { ALPHA, BETA, GAMMA; }
+    private enum Alphabet { ALPHA, BETA, GAMMA, DYNAMIK; }
 
     /**
      * Test method for {@link AlphaNumFeld#AlphaNumFeld(java.lang.Enum, gdv.xport.annotation.FeldInfo)}.
      */
     @Test
     public void testAlphaNumFeldEnumFeldInfo() {
-        Alphabet alpha = Alphabet.ALPHA;
+        Alphabet alpha = Alphabet.DYNAMIK;
         FeldInfo info = FeldTest.createFeldInfo();
         AlphaNumFeld feld = new AlphaNumFeld(alpha, info);
-        assertEquals("ALPHA", feld.getBezeichnerAsString());
-        assertEquals("Alpha", feld.getBezeichnung());
+        assertEquals("Dynamik", feld.getBezeichnung());
     }
 
 }

@@ -30,13 +30,7 @@ import gdv.xport.io.ImportException;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -63,7 +57,7 @@ public class Teildatensatz extends Satz {
     private final SortedSet<Feld> sortedFelder = new TreeSet<Feld>();
 
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
-    private final Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
+    private final Zeichen satznummer = new Zeichen(new Bezeichner(SATZNUMMER), 256);
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.

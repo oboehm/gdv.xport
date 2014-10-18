@@ -49,7 +49,7 @@ public class NumFeldTest {
      */
     @Test
     public void testNumFeld() {
-        NumFeld nummer = new NumFeld("Feld X", 4, 1);
+        NumFeld nummer = new NumFeld(new Bezeichner("Feld X"), 4, 1);
         assertEquals("0000", nummer.getInhalt());
     }
 
@@ -167,7 +167,7 @@ public class NumFeldTest {
      */
     @Test
     public void testBigNumber() {
-        NumFeld big = new NumFeld("big", 14, 1).mitNachkommastellen(2);
+        NumFeld big = new NumFeld(new Bezeichner("big"), 14, 1).mitNachkommastellen(2);
         big.setInhalt("00005000000000");
         assertTrue("should be valid", big.isValid());
         List<ConstraintViolation> violations = big.validate();
@@ -180,7 +180,7 @@ public class NumFeldTest {
      */
     @Test
     public void testFormatInt() {
-        NumFeld betrag = new NumFeld("betrag", 5, 1);
+        NumFeld betrag = new NumFeld(new Bezeichner("betrag"), 5, 1);
         betrag.setInhalt("120");
         assertEquals("120", betrag.format());
     }
@@ -191,7 +191,7 @@ public class NumFeldTest {
      */
     @Test
     public void testFormatDouble() {
-        NumFeld betrag = new NumFeld("betrag", 5, 1).mitNachkommastellen(2);
+        NumFeld betrag = new NumFeld(new Bezeichner("betrag"), 5, 1).mitNachkommastellen(2);
         betrag.setInhalt("120");
         if ("DE".equals(Locale.getDefault().getCountry())) {
             assertEquals("1,20", betrag.format());

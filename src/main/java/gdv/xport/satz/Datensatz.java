@@ -18,6 +18,7 @@ import static gdv.xport.feld.Bezeichner.VERMITTLER;
 import static gdv.xport.feld.Bezeichner.WAGNISART;
 import gdv.xport.config.Config;
 import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.io.ImportException;
@@ -48,9 +49,9 @@ public class Datensatz extends Satz {
 	/** 3 Zeichen, Byte 11 - 13. */
     private final NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
 	/** 3 Zeichen, Byte 59 - 60. */
-	private final AlphaNumFeld wagnisart = new AlphaNumFeld(WAGNISART, 1, 59);
+	private final AlphaNumFeld wagnisart = new AlphaNumFeld(new Bezeichner(WAGNISART), 1, 59);
 	/** 3 Zeichen, Byte 255 - 256. */
-	private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld(TEILDATENSATZNUMMER, 1, 255);
+    private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld(new Bezeichner(TEILDATENSATZNUMMER), 1, 255);
 	/** Zum Abspeichern der Wagnisart oder Art (Unter-Sparte). */
 	private int art;
 
@@ -235,7 +236,7 @@ public class Datensatz extends Satz {
 	@Override
 	public void addFiller() {
 		for (Teildatensatz tds : this.getTeildatensaetze()) {
-			tds.add(new AlphaNumFeld(LEERSTELLEN, 213, 43));
+			tds.add(new AlphaNumFeld(new Bezeichner(LEERSTELLEN), 213, 43));
 		}
 	}
 

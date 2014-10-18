@@ -23,6 +23,7 @@ import static gdv.xport.feld.Bezeichner.INKASSOART;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Bezeichner;
 
 import java.io.IOException;
 
@@ -70,7 +71,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
     @Test
     public void testSet() {
         Satz ds = new Datensatz("0200", 2);
-        ds.add(new AlphaNumFeld(INKASSOART, 1, 43));
+        ds.add(new AlphaNumFeld(new Bezeichner(INKASSOART), 1, 43));
         ds.set(INKASSOART, "2");
         assertEquals(ds.get(INKASSOART), "2");
     }

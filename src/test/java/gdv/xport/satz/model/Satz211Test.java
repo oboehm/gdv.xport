@@ -19,22 +19,26 @@
 package gdv.xport.satz.model;
 
 import static gdv.xport.feld.Bezeichner.SPARTE;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 
 import java.io.IOException;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
 
 /**
  * JUnit-Test fuer Satz211.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (06.04.2011)
  */
@@ -52,11 +56,11 @@ public class Satz211Test {
         assertEquals(10, leben.getSparte());
         assertEquals(Config.getVUNummer().getInhalt().trim(), leben.getVuNummer());
         Feld sparte = leben.getFeld(Bezeichner.SPARTE);
-        assertEquals(new NumFeld(SPARTE, 3, 11, 10), sparte);
+        assertEquals(new NumFeld(new Bezeichner(SPARTE), 3, 11, 10), sparte);
         Feld vermittler = leben.getFeld(Bezeichner.VERMITTLER);
         assertEquals(33, vermittler.getByteAdresse());
     }
-    
+
     /**
      * Test import.
      *

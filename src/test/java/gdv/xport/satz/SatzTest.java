@@ -20,9 +20,15 @@ package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.NAME1;
 import static gdv.xport.feld.Bezeichner.ORT;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
@@ -82,8 +88,8 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testAdd() {
-        satz.add(new AlphaNumFeld(NAME1, 30, 44));
-        satz.add(new AlphaNumFeld("Bumm", 4, 50));
+        satz.add(new AlphaNumFeld(new Bezeichner(NAME1), 30, 44));
+        satz.add(new AlphaNumFeld(new Bezeichner("Bumm"), 4, 50));
     }
 
     /**
@@ -102,7 +108,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGet() {
-        satz.add(new AlphaNumFeld(ORT, 30, 50));
+        satz.add(new AlphaNumFeld(new Bezeichner(ORT), 30, 50));
         satz.set(ORT, "Stuttgart");
         assertEquals("Stuttgart", satz.get(ORT).trim());
     }
@@ -163,7 +169,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testImport() throws IOException {
         Satz x = new Datensatz(123);
-        x.add(new AlphaNumFeld("F1", 5, 5));
+        x.add(new AlphaNumFeld(new Bezeichner("F1"), 5, 5));
         x.importFrom(INPUT_SATZ_123);
         assertEquals(123, x.getSatzart());
         assertEquals("Hello", x.getFeld("F1").getInhalt());
