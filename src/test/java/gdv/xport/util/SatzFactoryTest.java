@@ -35,6 +35,9 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -52,7 +55,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 @RunWith(SmokeRunner.class)
 public final class SatzFactoryTest extends AbstractTest {
 
-    private static final Log log = LogFactory.getLog(SatzFactoryTest.class);
+    private static final Log LOG = LogFactory.getLog(SatzFactoryTest.class);
 
     /**
      * Testet getSatz().
@@ -122,7 +125,7 @@ public final class SatzFactoryTest extends AbstractTest {
             satz = SatzFactory.getSatz(47);
             fail("unregister failed for " + satz);
         } catch (NotRegisteredException expected) {
-            log.info(satz + " successful unregistered (" + expected + ")");
+            LOG.info(satz + " successful unregistered (" + expected + ")");
         }
     }
 
@@ -281,9 +284,15 @@ public final class SatzFactoryTest extends AbstractTest {
     @Test
     public void testGetAllSupportedSaetze() {
         Datenpaket all = SatzFactory.getAllSupportedSaetze();
-        int n = all.getDatensaetze().size();
-        log.info(n + " Satzarten supported");
+        List<Datensatz> datensaetze = all.getDatensaetze();
+        Set<Integer> supportedSatzarten = new HashSet<Integer>();
+        for (Datensatz datensatz : datensaetze) {
+            supportedSatzarten.add(datensatz.getSatzart());
+        }
+        int n = datensaetze.size();
+        LOG.info(n + " Satzarten supported: " + supportedSatzarten);
         assertTrue("only " + n + " Datensaetze supported", n > 5);
+        assertTrue("Satzart 342 expected to be supported", supportedSatzarten.contains(342));
     }
 
     /**

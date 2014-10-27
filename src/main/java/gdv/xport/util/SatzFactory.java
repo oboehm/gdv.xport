@@ -25,59 +25,14 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart48.Feld221Wagnis48;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld221Wagnis5;
-import gdv.xport.satz.feld.sparte10.wagnisart5.Feld221Wagnis5ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7;
-import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Auszahlungen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Bezugsrechte;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Wertungssummen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld230;
-import gdv.xport.satz.model.Satz100;
-import gdv.xport.satz.model.Satz200;
-import gdv.xport.satz.model.Satz210;
-import gdv.xport.satz.model.Satz211;
-import gdv.xport.satz.model.Satz220;
-import gdv.xport.satz.model.Satz221;
-import gdv.xport.satz.model.Satz230;
-import gdv.xport.satz.model.SatzX;
+import gdv.xport.satz.feld.sparte10.wagnisart13.*;
+import gdv.xport.satz.feld.sparte10.wagnisart2.*;
+import gdv.xport.satz.feld.sparte10.wagnisart48.*;
+import gdv.xport.satz.feld.sparte10.wagnisart5.*;
+import gdv.xport.satz.feld.sparte10.wagnisart6.*;
+import gdv.xport.satz.feld.sparte10.wagnisart7.*;
+import gdv.xport.satz.feld.sparte10.wagnisart9.*;
+import gdv.xport.satz.model.*;
 import gdv.xport.satz.xml.XmlService;
 
 import java.io.IOException;
@@ -593,39 +548,21 @@ public final class SatzFactory {
     }
 
     /**
-     * Liefert ein Datenpaket mit allen unterstuetzten Satzarten und Sparten.
-     * <p>
-     * FIXME: beruecksichtigt noch nicht die Wagnisart (d.h. Saetze mit einer
-     * Wagnisart sind noch nicht im zurueckgegebenen Datenpaket enthalten)
-     * </p>
+     * Liefert ein Datenpaket mit allen unterstuetzten Satzarten.
      *
      * @return Datenpaket mit allen unterstuetzten Satzarten
      * @since 0.6
      */
     public static Datenpaket getAllSupportedSaetze() {
         Datenpaket all = new Datenpaket();
-        for (SatzNummer satzNr : REGISTERED_SATZ_CLASSES.keySet()) {
+        for (int i = 2; i < 9999; i++) {
             try {
-                all.add(getDatensatz(satzNr));
-            } catch (ClassCastException canhappen) {
-                if ((satzNr.getSatzart() != 1) && (satzNr.getSatzart() != 9999)) {
-                    LOG.warn("Satzart " + satzNr + " not added as supported Satz", canhappen);
-                }
+                all.add((Datensatz) getSatz(i));
+            } catch (NotRegisteredException ex) {
+                LOG.trace("Datensatz " + i + " is not a supported: ", ex);
             }
         }
-        for (SatzNummer key : REGISTERED_DATENSATZ_CLASSES.keySet()) {
-            addDatensatzTo(all, key);
-        }
-        for (SatzNummer key : REGISTERED_ENUM_CLASSES.keySet()) {
-            addDatensatzTo(all, key);
-        }
         return all;
-    }
-
-    private static void addDatensatzTo(final Datenpaket all, final SatzNummer key) {
-        int sparte = key.getSparte();
-        int satzart = key.getSatzart();
-        all.add(getDatensatz(satzart, sparte));
     }
 
 }
