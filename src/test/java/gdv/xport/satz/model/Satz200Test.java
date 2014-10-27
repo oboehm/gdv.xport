@@ -23,10 +23,12 @@ import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld200;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -37,7 +39,7 @@ import org.junit.Test;
  */
 public class Satz200Test extends AbstractDatensatzTest {
 
-    private static final Log log = LogFactory.getLog(Satz200Test.class);
+    private static final Logger LOG = LogManager.getLogger(Satz200Test.class);
     private static final String INPUT_SPARTE30
             = "02009999  030      599999999990199990099992010520040105200901052"
             + "00511  0000000001        01052004100000         EUR000000041141 "
@@ -145,7 +147,7 @@ public class Satz200Test extends AbstractDatensatzTest {
             new Satz200();
         }
         long nanos = System.nanoTime() - t0;
-        log.info("time of new Satz200(): " +  (((double)nanos)/n/1000000.0) + " ms");
+        LOG.info("time of new Satz200(): " +  (((double)nanos)/n/1000000.0) + " ms");
     }
 
 }

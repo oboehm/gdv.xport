@@ -39,8 +39,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -55,7 +55,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 @RunWith(SmokeRunner.class)
 public final class SatzFactoryTest extends AbstractTest {
 
-    private static final Log LOG = LogFactory.getLog(SatzFactoryTest.class);
+    private static final Logger LOG = LogManager.getLogger(SatzFactoryTest.class);
 
     /**
      * Testet getSatz().

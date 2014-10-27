@@ -23,8 +23,8 @@ import gdv.xport.feld.VUNummer;
 import java.nio.charset.Charset;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Ueber diese Klasse koennen globale Werte (wie z.B. die VU-Nummer) konfiguriert
@@ -46,7 +46,7 @@ public final class Config {
     public static final String DUMMY_VU_NUMMER = "DUMMY";
     /** Property-Name fuer die VU-Nummer. */
     public static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
-    private static final Log log = LogFactory.getLog(Config.class);
+    private static final Logger LOG = LogManager.getLogger(Config.class);
     private static VUNummer vunummer;
     /* end of datensatz */
     private static String eod = "\n";
@@ -55,7 +55,7 @@ public final class Config {
         try {
             checkFileEncoding();
         } catch (ConfigException ce) {
-            log.warn("File encoding is not correct.", ce);
+            LOG.warn("File encoding is not correct.", ce);
         }
     }
 
@@ -106,7 +106,7 @@ public final class Config {
      */
     public static synchronized void setVUNummer(final VUNummer nr) {
         vunummer = nr;
-        log.info("konfigurierte VU-Nummer: " + vunummer);
+        LOG.info("konfigurierte VU-Nummer: " + vunummer);
     }
 
     /**

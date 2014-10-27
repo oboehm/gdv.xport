@@ -18,7 +18,9 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.VUNummer;
@@ -27,8 +29,8 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 import java.io.IOException;
 import java.io.StringWriter;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -42,7 +44,7 @@ import org.junit.Test;
  */
 abstract public class AbstractSatzTest {
 
-    private static final Log log = LogFactory.getLog(AbstractSatzTest.class);
+    private static final Logger LOG = LogManager.getLogger(AbstractSatzTest.class);
     /** zum Testen nehmen wir hier die VU-Nr. der Oerag */
     protected static final VUNummer VU_NUMMER = new VUNummer("5183");
 
@@ -88,7 +90,7 @@ abstract public class AbstractSatzTest {
         String data = export(satz);
         assertEquals(expectedLength, data.length());
         String toBeChecked = data.substring(startByte - 1, endByte);
-        log.info("data: " + data.substring(0, 9) + "..." + toBeChecked + "...");
+        LOG.info("data: " + data.substring(0, 9) + "..." + toBeChecked + "...");
         assertEquals(expected, toBeChecked);
     }
 

@@ -45,8 +45,8 @@ import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -72,7 +72,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 @RunWith(SmokeRunner.class)
 public final class DatenpaketTest {
 
-    private static final Log log = LogFactory.getLog(Datenpaket.class);
+    private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
     /** Fuer jeden Test gibt es ein frisches Datenpaket. */
     private final Datenpaket datenpaket = new Datenpaket();
 
@@ -125,7 +125,7 @@ public final class DatenpaketTest {
         File file = File.createTempFile("datenpaket", ".txt");
         Config.setEOD("\n");
         datenpaket.export(file);
-        log.info(datenpaket + " was exported to " + file);
+        LOG.info(datenpaket + " was exported to " + file);
         assertTrue(file + " was not created", file.exists());
         FileTester.assertContentEquals(new File("src/test/resources/gdv/xport/test-export.txt"), file);
     }
@@ -213,7 +213,7 @@ public final class DatenpaketTest {
             checkImport(datenpaket, istream);
             Datenpaket zwei = new Datenpaket();
             checkImport(zwei, istream);
-            log.info(datenpaket + " / " + zwei + " imported.");
+            LOG.info(datenpaket + " / " + zwei + " imported.");
             assertFalse(datenpaket.equals(zwei));
         } finally {
             istream.close();
@@ -239,7 +239,7 @@ public final class DatenpaketTest {
             checkImport(datenpaket, reader);
             Datenpaket zwei = new Datenpaket();
             checkImport(zwei, reader);
-            log.info(datenpaket + " / " + zwei + " imported.");
+            LOG.info(datenpaket + " / " + zwei + " imported.");
             assertFalse(datenpaket.equals(zwei));
         } finally {
             reader.close();
@@ -282,7 +282,7 @@ public final class DatenpaketTest {
             datenpaket.importFrom(url);
             assertTrue(datenpaket.isValid());
         } catch (UnknownHostException mayhappen) {
-            log.warn("Offline? Import von " + url + " abgebrochen!", mayhappen);
+            LOG.warn("Offline? Import von " + url + " abgebrochen!", mayhappen);
         }
     }
 
@@ -437,7 +437,7 @@ public final class DatenpaketTest {
             String expectedLine = readNextLine(expectedReader);
             String paketLine = readNextLine(paketReader);
             if (expectedLine == null) {
-                log.info(line + " lines compared (no difference)");
+                LOG.info(line + " lines compared (no difference)");
                 break;
             }
             assertEquals("difference in line " + line, expectedLine, paketLine);
@@ -448,11 +448,11 @@ public final class DatenpaketTest {
     private static String readNextLine(final BufferedReader reader) throws IOException {
         String line = reader.readLine();
         if (line == null) {
-            log.debug("EOF reached");
+            LOG.debug("EOF reached");
             return null;
         }
         if (line.isEmpty()) {
-            log.debug("skipping empty line");
+            LOG.debug("skipping empty line");
             return readNextLine(reader);
         }
         return line;
@@ -476,11 +476,11 @@ public final class DatenpaketTest {
      * @param defect das defekte Datenpaket
      */
     private void checkViolations(final Datenpaket defect) {
-        if (log.isTraceEnabled()) {
+        if (LOG.isTraceEnabled()) {
             List<ConstraintViolation> violations = defect.validate();
             assertTrue("at least 1 violation is expected", (violations.size() > 0));
             for (ConstraintViolation cv : violations) {
-                log.trace("Violation: " + cv);
+                LOG.trace("Violation: " + cv);
             }
         }
         assertFalse("at least 1 violation is expected", defect.isValid());

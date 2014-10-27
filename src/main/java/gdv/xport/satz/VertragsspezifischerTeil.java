@@ -21,7 +21,8 @@ package gdv.xport.satz;
 import static gdv.xport.feld.Bezeichner.*;
 import gdv.xport.feld.*;
 
-import org.apache.commons.logging.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Klasse fuer die Satzart 0210.
@@ -37,7 +38,7 @@ import org.apache.commons.logging.*;
 @Deprecated
 public class VertragsspezifischerTeil extends Spartensatz {
 
-    private static final Log log = LogFactory.getLog(VertragsspezifischerTeil.class);
+    private static final Logger LOG = LogManager.getLogger(VertragsspezifischerTeil.class);
     private static final int SATZART = 210;
 
     /**
@@ -87,7 +88,7 @@ public class VertragsspezifischerTeil extends Spartensatz {
             case 580:
                 return 2;
             default:
-                log.warn("unknown Sparte " + sparte + " -> mapped to 1 Teildatensatz");
+                LOG.warn("unknown Sparte " + sparte + " -> mapped to 1 Teildatensatz");
                 return 1;
         }
     }
@@ -125,7 +126,7 @@ public class VertragsspezifischerTeil extends Spartensatz {
                 this.setUpDatenfelder70();
                 break;
             default:
-                log.warn("Sparte " + sparte + " not yet fully supported");
+                LOG.warn("Sparte " + sparte + " not yet fully supported");
                 this.setUpTeildatensaetze();
                 this.addFiller();
                 break;

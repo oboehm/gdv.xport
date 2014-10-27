@@ -36,8 +36,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -49,7 +49,7 @@ import org.junit.Test;
  */
 public class Satz220Test extends AbstractDatensatzTest {
 
-    private static final Log log = LogFactory.getLog(Satz220Test.class);
+    private static final Logger LOG = LogManager.getLogger(Satz220Test.class);
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -78,7 +78,7 @@ public class Satz220Test extends AbstractDatensatzTest {
     @Test
     public void testSparte() {
         Satz220 rechtsschutz = new Satz220(70);
-        log.info(rechtsschutz + " created.");
+        LOG.info(rechtsschutz + " created.");
         assertEquals(70, rechtsschutz.getSparte());
     }
 

@@ -41,8 +41,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import
@@ -53,7 +53,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class SatzFactory {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SatzFactory.class);
+    private static final Logger LOG = LogManager.getLogger(SatzFactory.class);
     private static final Map<SatzNummer, Class<? extends Satz>> REGISTERED_SATZ_CLASSES =
             new ConcurrentHashMap<SatzNummer, Class<? extends Satz>>();
     private static final Map<SatzNummer, Class<? extends Datensatz>> REGISTERED_DATENSATZ_CLASSES =

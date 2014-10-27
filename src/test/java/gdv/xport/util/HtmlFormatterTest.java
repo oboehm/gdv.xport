@@ -26,8 +26,8 @@ import java.io.IOException;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
@@ -44,7 +44,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 @RunWith(SmokeRunner.class)
 public class HtmlFormatterTest extends AbstractFormatterTest {
 
-    private static final Log log = LogFactory.getLog(HtmlFormatter.class);
+    private static final Logger LOG = LogManager.getLogger(HtmlFormatter.class);
 
     /**
      * Tested den Export eines Datenpakets als HTML.
@@ -57,7 +57,7 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
     public void testWriteDatenpaket() throws XMLStreamException, SAXException, IOException {
         Datenpaket datenpaket = new Datenpaket();
         String htmlString = HtmlFormatter.toString(datenpaket);
-        log.info(datenpaket + " as HTML:\n" + htmlString);
+        LOG.info(datenpaket + " as HTML:\n" + htmlString);
         XmlFormatterTest.checkXML(htmlString);
         assertTrue("no <html> inside", htmlString.contains("<html"));
         assertTrue("no </html> inside", htmlString.contains("</html"));

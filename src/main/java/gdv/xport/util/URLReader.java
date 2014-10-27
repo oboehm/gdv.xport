@@ -18,12 +18,17 @@
 
 package gdv.xport.util;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.logging.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Da mit den Hausmitteln des JDKs das Lesen einer URL nicht immer so einfach
@@ -34,7 +39,7 @@ import org.apache.commons.logging.*;
  */
 public class URLReader {
 
-    private static final Log log = LogFactory.getLog(URLReader.class);
+    private static final Logger LOG = LogManager.getLogger(URLReader.class);
     private final URL url;
 
     /**
@@ -59,7 +64,7 @@ public class URLReader {
             get.releaseConnection();
             return content;
         } catch(IllegalStateException ise) {
-            log.info(ise + " - fallback to URLConnection");
+            LOG.info(ise + " - fallback to URLConnection");
             URLConnection connection = url.openConnection();
             return read(connection);
         }
@@ -73,7 +78,7 @@ public class URLReader {
             StringBuffer sbuf = new StringBuffer();
             while (in.ready()) {
                 String line = in.readLine();
-                log.debug(line);
+                LOG.debug(line);
                 sbuf.append(line);
                 sbuf.append("\n");
             }

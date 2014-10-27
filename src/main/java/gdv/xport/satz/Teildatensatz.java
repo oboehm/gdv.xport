@@ -35,8 +35,8 @@ import java.util.*;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
@@ -48,7 +48,7 @@ import org.apache.commons.logging.LogFactory;
 public class Teildatensatz extends Satz {
 
     /** The Constant log. */
-    private static final Log log = LogFactory.getLog(Teildatensatz.class);
+    private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
 
     /** Diese Map dient fuer den Zugriff ueber den Namen. */
     private final Map<Bezeichner, Feld> datenfelder = new HashMap<Bezeichner, Feld>();
@@ -153,7 +153,7 @@ public class Teildatensatz extends Satz {
             if (!feld.equals(f) && feld.overlapsWith(f)) {
                 if (isSatznummer(f)) {
                     remove(f);
-                    log.debug(f + " is removed from " + this);
+                    LOG.debug(f + " is removed from " + this);
                     break;
                 } else {
                     throw new IllegalArgumentException("conflict: " + feld + " overlaps with " + f);
@@ -385,7 +385,7 @@ public class Teildatensatz extends Satz {
         }
         for (Feld feld : datenfelder.values()) {
             if (!feld.isValid()) {
-                log.info(feld + " is not valid");
+                LOG.info(feld + " is not valid");
                 return false;
             }
         }

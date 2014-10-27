@@ -18,13 +18,16 @@
 
 package gdv.xport.config;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -34,7 +37,7 @@ import org.junit.Test;
  */
 public class ConfigTest {
 
-    private static final Log log = LogFactory.getLog(ConfigTest.class);
+    private static final Logger LOG = LogManager.getLogger(ConfigTest.class);
 
     /**
      * Test method for {@link gdv.xport.config.Config#getVUNummer()}:
@@ -49,17 +52,17 @@ public class ConfigTest {
             try {
                 Config.getVUNummer();
             } catch (ConfigException expected) {
-                log.info("expected: " + expected);
+                LOG.info("expected: " + expected);
             }
         } else {
             assertEquals(vuNummer, Config.getVUNummer().getInhalt().trim());
         }
     }
-    
+
     /**
      * Hier testen wir, ob das File-Encoding auf ISO-8859-1 eingestellt ist.
      * Falls nicht, wird der Test fehlschlagen. In diesem Fall kann man
-     * versuchen, bei der Run-Konfiguration die VM mit <tt>java 
+     * versuchen, bei der Run-Konfiguration die VM mit <tt>java
      * -Dfile.encoding=ISO-8859-1 ...</tt> aufzurufen. Aber normalerweise
      * sollte die Config-Klasse das Encoding richtig einstellen.
      *
@@ -72,7 +75,7 @@ public class ConfigTest {
         try {
             String umlaute = IOUtils.toString(istream, Config.DEFAULT_ENCODING_NAME).trim();
             String expected = "\u00e4\u00f6\u00fc\u00df\u00c4\u00d6\u00dc";
-            log.info("expected = \"" + expected + "\"");
+            LOG.info("expected = \"" + expected + "\"");
             assertEquals(expected, umlaute);
         } finally {
             istream.close();

@@ -26,8 +26,8 @@ import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.model.Satz211;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -41,7 +41,7 @@ import org.junit.Test;
  */
 public class Erweiterungssatz211Test {
 
-    private static final Log log = LogFactory.getLog(Erweiterungssatz211Test.class);
+    private static final Logger LOG = LogManager.getLogger(Erweiterungssatz211Test.class);
 
     /**
      * Test-Methode fuer {@link Satz211#Satz211(int)}.
@@ -61,7 +61,7 @@ public class Erweiterungssatz211Test {
 
     private void createSparte(final int sparte) {
         Datensatz erweiterungssatz = new Satz211(sparte);
-        log.info(erweiterungssatz + " created.");
+        LOG.info(erweiterungssatz + " created.");
         assertEquals(sparte, erweiterungssatz.getSparte());
         assertEquals(Config.getVUNummer().getInhalt().trim(), erweiterungssatz.getVuNummer());
         Feld spartenFeld = erweiterungssatz.getFeld(Bezeichner.SPARTE);

@@ -22,7 +22,8 @@ import gdv.xport.satz.feld.FeldX;
 
 import java.util.Map;
 
-import org.apache.commons.logging.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die nach
@@ -33,7 +34,7 @@ import org.apache.commons.logging.*;
  */
 public abstract class SpartensatzX extends SatzX {
 
-    private static final Log log = LogFactory.getLog(SpartensatzX.class);
+    private static final Logger LOG = LogManager.getLogger(SpartensatzX.class);
 
     /** Wird fuer den Default-Ctor gebraucht. */
     protected static final int UNKNOWN_SPARTE = 0;
@@ -113,7 +114,7 @@ public abstract class SpartensatzX extends SatzX {
     @Override
     public void setSparte(final int x) {
         if (this.getSparte() == x) {
-            log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
+            LOG.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
             return;
         }
         Enum<?>[] felder = this.getFelderFor(x);

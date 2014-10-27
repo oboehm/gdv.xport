@@ -29,8 +29,8 @@ import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Dies ist der erste Satz, der Vorsatz eben.
@@ -44,7 +44,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public final class Vorsatz extends Satz {
 
-    private static final Log log = LogFactory.getLog(Vorsatz.class);
+    private static final Logger LOG = LogManager.getLogger(Vorsatz.class);
     /** 5 Zeichen, Byte 5 - 9. */
     private final AlphaNumFeld vuNummer = Config.getVUNummer();
     /** 30 Zeichen, Byte 10 - 39. */
@@ -79,7 +79,7 @@ public final class Vorsatz extends Satz {
         this();
         try {
             this.importFrom(content);
-            log.debug(this + " created from \"" + content + '"');
+            LOG.debug(this + " created from \"" + content + '"');
         } catch (IOException ioe) {
             throw new IllegalArgumentException("argument too short", ioe);
         }
@@ -134,7 +134,7 @@ public final class Vorsatz extends Satz {
                 tds.add(new AlphaNumFeld(new Bezeichner(LEERSTELLEN), 118, 138));
                 break;
             default:
-                log.debug("no special setup for Teildatensatz " + n);
+                LOG.debug("no special setup for Teildatensatz " + n);
                 break;
         }
     }

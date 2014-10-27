@@ -18,8 +18,8 @@ import gdv.xport.event.ImportStatistic;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -35,7 +35,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 @RunWith(SmokeRunner.class)
 public final class DatenpaketStreamerTest {
 
-    private static final Log log = LogFactory.getLog(DatenpaketStreamerTest.class);
+    private static final Logger LOG = LogManager.getLogger(DatenpaketStreamerTest.class);
 
     /**
      * Test-Methode fuer {@link DatenpaketStreamer#readDatenpaket()}.
@@ -77,7 +77,7 @@ public final class DatenpaketStreamerTest {
         DatenpaketStreamer streamer = new DatenpaketStreamer(istream);
         streamer.register(statistic);
         streamer.readDatenpaket();
-        log.info("Statistik: " + statistic);
+        LOG.info("Statistik: " + statistic);
         assertTrue("expected: number of imported saetze > 2", statistic.getImportedSaetze() > 2);
     }
 

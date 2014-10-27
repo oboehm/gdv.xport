@@ -35,8 +35,8 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -48,7 +48,7 @@ import org.junit.Test;
  */
 public final class Satz210Test extends AbstractDatensatzTest {
 
-    private static final Log log = LogFactory.getLog(Satz210.class);
+    private static final Logger LOG = LogManager.getLogger(Satz210.class);
     private static final String INPUT_SPARTE30
             = "02109999  030      599999999980199990099991010520040105200901052"
             + "0040901 0000000000000000000 EUR000000000000000000000000000000002"
@@ -74,7 +74,7 @@ public final class Satz210Test extends AbstractDatensatzTest {
     @Test
     public void testSatz210() throws IOException {
         SpartensatzX vertragsteil = new Satz210(10);
-        log.info(vertragsteil + " created.");
+        LOG.info(vertragsteil + " created.");
         assertEquals(10, vertragsteil.getSparte());
         checkExport(vertragsteil, 11, 13, "010", 512);
     }

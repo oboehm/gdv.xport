@@ -14,8 +14,8 @@ import net.sf.oval.constraint.MatchPatternCheck;
 import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
@@ -28,7 +28,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class NumFeld extends Feld {
 
-    private static final Log log = LogFactory.getLog(NumFeld.class);
+    private static final Logger LOG = LogManager.getLogger(NumFeld.class);
     private final int nachkommastellen;
 
     /**
@@ -352,7 +352,7 @@ public class NumFeld extends Feld {
         try {
             this.toLong();
         } catch (NumberFormatException nfe) {
-            log.info(this + " is invalid: not a number (" + nfe + ")");
+            LOG.info(this + " is invalid: not a number (" + nfe + ")");
             return false;
         }
         return true;

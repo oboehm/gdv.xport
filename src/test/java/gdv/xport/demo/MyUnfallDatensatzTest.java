@@ -30,8 +30,8 @@ import java.net.UnknownHostException;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,7 +48,7 @@ import patterntesting.runtime.annotation.IntegrationTest;
 @RunWith(ParallelRunner.class)
 public final class MyUnfallDatensatzTest {
 
-    private static final Log log = LogFactory.getLog(MyUnfallDatensatzTest.class);
+    private static final Logger LOG = LogManager.getLogger(MyUnfallDatensatzTest.class);
 
     /**
      * Registriert MyUnfallDatensatz und importiert dann zu Testzwecken
@@ -99,7 +99,7 @@ public final class MyUnfallDatensatzTest {
         try {
             MyUnfallDatensatz.main(new String[] {});
         } catch (UnknownHostException mayhappen) {
-            log.warn("Offline? testMain() abgebrochen!", mayhappen);
+            LOG.warn("Offline? testMain() abgebrochen!", mayhappen);
         }
     }
 

@@ -34,8 +34,8 @@ import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -48,7 +48,7 @@ import org.junit.Test;
  */
 public class Satz221Test extends AbstractDatensatzTest {
 
-    private static final Log log = LogFactory.getLog(Satz221Test.class);
+    private static final Logger LOG = LogManager.getLogger(Satz221Test.class);
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -76,7 +76,7 @@ public class Satz221Test extends AbstractDatensatzTest {
     @Test
     public void testSparte30() {
         Datensatz wagnisdaten = new Satz221(30);
-        log.info(wagnisdaten + " created.");
+        LOG.info(wagnisdaten + " created.");
         assertEquals(30, wagnisdaten.getSparte());
         assertEquals(2, wagnisdaten.getTeildatensaetze().size());
     }
@@ -87,7 +87,7 @@ public class Satz221Test extends AbstractDatensatzTest {
     @Test
     public void testSparte70() {
         Datensatz rechtschutz = new Satz221(70);
-        log.info(rechtschutz + " created.");
+        LOG.info(rechtschutz + " created.");
         assertEquals(70, rechtschutz.getSparte());
     }
 

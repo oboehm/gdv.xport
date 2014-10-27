@@ -40,8 +40,8 @@ import java.util.List;
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -52,7 +52,7 @@ import org.junit.Test;
  */
 public final class SatzTest extends AbstractSatzTest {
 
-    private static final Log log = LogFactory.getLog(SatzTest.class);
+    private static final Logger LOG = LogManager.getLogger(SatzTest.class);
     private static final String INPUT_SATZ_123
             = "0123Hello 007                                                   "
             + "                                                                "
@@ -149,14 +149,14 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testExportFile() throws IOException {
         File tmpFile = File.createTempFile("gdv", ".xport");
-        log.info("File \"" + tmpFile + "\" created.");
+        LOG.info("File \"" + tmpFile + "\" created.");
         try {
             satz.export(tmpFile);
             String exported = FileUtils.readFileToString(tmpFile);
             assertEquals(satz.toLongString(), exported);
         } finally {
             tmpFile.delete();
-            log.info("File \"" + tmpFile + "\" deleted.");
+            LOG.info("File \"" + tmpFile + "\" deleted.");
         }
     }
 
@@ -225,7 +225,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testImportFile() throws IOException {
         File tmpFile = File.createTempFile("gdv", ".xport");
-        log.info("File \"" + tmpFile + "\" created.");
+        LOG.info("File \"" + tmpFile + "\" created.");
         try {
             String fileContent = satz.toLongString();
             FileUtils.writeStringToFile(tmpFile, fileContent);
@@ -233,7 +233,7 @@ public final class SatzTest extends AbstractSatzTest {
             assertEquals(fileContent, satz.toLongString());
         } finally {
             tmpFile.delete();
-            log.info("File \"" + tmpFile + "\" deleted.");
+            LOG.info("File \"" + tmpFile + "\" deleted.");
         }
     }
 
@@ -265,7 +265,7 @@ public final class SatzTest extends AbstractSatzTest {
         assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
         List<ConstraintViolation> violations = a.validate();
         for (ConstraintViolation violation : violations) {
-            log.info("ConstraintViolation: " + violation);
+            LOG.info("ConstraintViolation: " + violation);
         }
         assertEquals(2, violations.size());
     }
@@ -318,7 +318,7 @@ public final class SatzTest extends AbstractSatzTest {
     public void testGetAsListSimple() {
         List<MetaFeldInfo> feldInfos = Satz.getMetaFeldInfos(Feld200.values());
         assertFalse("empty list", feldInfos.isEmpty());
-        log.info("Feld200 has " + feldInfos.size() + " FeldInfos.");
+        LOG.info("Feld200 has " + feldInfos.size() + " FeldInfos.");
         assertTrue("Feld200 should have more than " + Feld200.values().length + " entries",
                 feldInfos.size() >= Feld200.values().length);
     }
@@ -330,7 +330,7 @@ public final class SatzTest extends AbstractSatzTest {
     public void testGetAsListComposite() {
         List<MetaFeldInfo> feldInfos = Satz.getMetaFeldInfos(Feld220.values());
         assertFalse("empty list", feldInfos.isEmpty());
-        log.info(Feld220.class.getName() + " has " + feldInfos.size() + " FeldInfos.");
+        LOG.info(Feld220.class.getName() + " has " + feldInfos.size() + " FeldInfos.");
         assertTrue("elements are missing", feldInfos.size() > Feld220.values().length);
     }
 
@@ -353,7 +353,7 @@ public final class SatzTest extends AbstractSatzTest {
     }
 
     private static void checkSatzart(final MetaFeldInfo satzart, final int found) {
-        log.info(found + ". MetaFeldInfo: " + satzart );
+        LOG.info(found + ". MetaFeldInfo: " + satzart );
         assertEquals(1, satzart.getNr());
         assertEquals(found, satzart.getTeildatensatzNr());
     }

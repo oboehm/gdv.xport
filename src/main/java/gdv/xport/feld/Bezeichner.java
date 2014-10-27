@@ -25,8 +25,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Diese Klasse enthaelt hauptsaechlich String-Konstanten: die Bezeichner der
@@ -931,7 +931,7 @@ public final class Bezeichner {
     public static final String STAENDIG_BEWOHNT = "Staendig bewohnt";
     public static final String OBJEKTNUMMER = "Objektnummer";
 
-    private static final Log LOG = LogFactory.getLog(Bezeichner.class);
+    private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
 
     private static final Map<String, String> MAPPING = new HashMap<String, String>();
 

@@ -41,8 +41,8 @@ import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Die Feld-Klasse bezieht ihre Information hauptsaechlich aus Enum-Klassen wie
@@ -53,7 +53,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class Feld implements Comparable<Feld> {
 
-    private static final Log log = LogFactory.getLog(Feld.class);
+    private static final Logger LOG = LogManager.getLogger(Feld.class);
     /** statt "null". */
     public static final Feld NULL_FELD = new Feld();
     /** optional: Name des Felds. */
@@ -359,7 +359,7 @@ public class Feld implements Comparable<Feld> {
             Field field = Bezeichner.getField(this.bezeichner.getName());
             return field.getName();
         } catch (IllegalArgumentException iae) {
-            log.info("\"" + this.bezeichner + "\" not found in " + Bezeichner.class + ":", iae);
+            LOG.info("\"" + this.bezeichner + "\" not found in " + Bezeichner.class + ":", iae);
             return this.bezeichner.getName().replaceAll(" ", "_").toUpperCase();
         }
     }
@@ -678,11 +678,11 @@ public class Feld implements Comparable<Feld> {
             Field field = Bezeichner.class.getField(feldX.name());
             return (String) field.get(null);
         } catch (NoSuchFieldException ex) {
-            log.info("Bezeichner." + feldX.name() + " not found:", ex);
+            LOG.info("Bezeichner." + feldX.name() + " not found:", ex);
         } catch (IllegalArgumentException ex) {
-            log.warn(ex);
+            LOG.warn(ex);
         } catch (IllegalAccessException ex) {
-            log.warn("can't access Bezeichner." + feldX.name(), ex);
+            LOG.warn("can't access Bezeichner." + feldX.name(), ex);
         }
         return toBezeichnung(feldX);
     }

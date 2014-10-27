@@ -31,8 +31,8 @@ import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -44,7 +44,7 @@ import org.junit.Test;
 public class FeldTest {
 
     /** The Constant log. */
-    private static final Log log = LogFactory.getLog(FeldTest.class);
+    private static final Logger LOG = LogManager.getLogger(FeldTest.class);
 
     /** For testing. */
     private enum Greeting { HELLO_WORLD, ADRESSAT; }
@@ -129,7 +129,7 @@ public class FeldTest {
         Feld a = new Feld(new Bezeichner("a"), 10, -1, Align.UNKNOWN);
         List<ConstraintViolation> violations = a.validate();
         for (ConstraintViolation violation : violations) {
-            log.info("ConstraintViolation: " + violation);
+            LOG.info("ConstraintViolation: " + violation);
         }
         assertEquals(2, violations.size());
     }

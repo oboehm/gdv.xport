@@ -30,8 +30,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Diese Klasse enthaelt einige Beispiele fuer den Import und Export von
@@ -42,7 +42,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public final class ImportExport {
 
-    private static final Log LOG = LogFactory.getLog(ImportExport.class);
+    private static final Logger LOG = LogManager.getLogger(ImportExport.class);
 
     /**
      * Dies ist ein Beispiel, wie man einen bestimmten Datensatz exportieren

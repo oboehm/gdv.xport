@@ -17,12 +17,12 @@
  */
 package gdv.xport.satz;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Dies ist eine gemeinsame Oberklasse aller Datensaetze, die mehrere Sparten aufnehmen koennen.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (22.11.2010)
  */
@@ -30,11 +30,11 @@ import org.apache.commons.logging.LogFactory;
 public abstract class Spartensatz extends Datensatz {
 
     /** The Constant log. */
-    private static final Log log = LogFactory.getLog(Spartensatz.class);
+    private static final Logger LOG = LogManager.getLogger(Spartensatz.class);
 
     /**
      * Instantiates a new spartensatz.
-     * 
+     *
      * @param satzart
      *            the satzart
      */
@@ -44,7 +44,7 @@ public abstract class Spartensatz extends Datensatz {
 
     /**
      * Instantiates a new spartensatz.
-     * 
+     *
      * @param satzart
      *            the satzart
      */
@@ -54,7 +54,7 @@ public abstract class Spartensatz extends Datensatz {
 
     /**
      * Instantiates a new spartensatz.
-     * 
+     *
      * @param satzart
      *            the satzart
      * @param n
@@ -66,7 +66,7 @@ public abstract class Spartensatz extends Datensatz {
 
     /**
      * Instantiates a new spartensatz.
-     * 
+     *
      * @param satzart
      *            the satzart
      * @param sparte
@@ -78,7 +78,7 @@ public abstract class Spartensatz extends Datensatz {
 
     /**
      * Instantiates a new spartensatz.
-     * 
+     *
      * @param satzart
      *            the satzart
      * @param sparte
@@ -92,7 +92,7 @@ public abstract class Spartensatz extends Datensatz {
 
     /**
      * Abhaengig von der Sparte muessen wir hier noch die verschiedenen Teildatensaetze aufsetzen.
-     * 
+     *
      * @param x
      *            Sparte (z.B. 30)
      * @see gdv.xport.satz.Datensatz#setSparte(int)
@@ -100,7 +100,7 @@ public abstract class Spartensatz extends Datensatz {
     @Override
     public void setSparte(final int x) {
         if (this.getSparte() == x) {
-            log.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
+            LOG.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
             return;
         }
         super.setSparte(x);
@@ -111,7 +111,7 @@ public abstract class Spartensatz extends Datensatz {
 
     /**
      * Legt die entsprechende Anzahl von Teildatensaetze fuer die angegebene Sparte an.
-     * 
+     *
      * @param x
      *            Sparte (z.B. 30)
      */
@@ -119,7 +119,7 @@ public abstract class Spartensatz extends Datensatz {
 
     /**
      * Initialisiert die Teildatensaetze fuer die angegebene Sparte.
-     * 
+     *
      * @param x
      *            Sparte (z.B. 30)
      */

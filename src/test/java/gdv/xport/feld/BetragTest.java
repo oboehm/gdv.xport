@@ -18,7 +18,7 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
@@ -33,7 +33,7 @@ import org.junit.Test;
  */
 public class BetragTest {
 
-    private final Betrag betrag = new Betrag("test", 5, 1);
+    private final Betrag betrag = new Betrag(new Bezeichner("test"), 5, 1);
 
     /**
      * Test-Methode fuer {@link Betrag#Betrag(String, int, int)}.
@@ -63,7 +63,7 @@ public class BetragTest {
         assertEquals("00123", betrag.getInhalt());
         assertEquals(1.23, betrag.toDouble(), 0.001);
     }
-    
+
     /**
      * Ein Betrag sollte als entsprechender Text formattiert werden.
      * @since 0.5.1

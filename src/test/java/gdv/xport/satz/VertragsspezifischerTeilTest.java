@@ -23,14 +23,16 @@ import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.model.Satz210;
 
 import java.io.IOException;
 import java.io.StringWriter;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -46,7 +48,7 @@ import org.junit.Test;
  */
 public class VertragsspezifischerTeilTest extends AbstractSatzTest {
 
-    private static final Log log = LogFactory.getLog(VertragsspezifischerTeilTest.class);
+    private static final Logger LOG = LogManager.getLogger(VertragsspezifischerTeilTest.class);
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -78,7 +80,7 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
     public void testSpartenspezifischerVertragsteil() throws IOException {
 //        VertragsspezifischerTeil vertragsteil = new VertragsspezifischerTeil(70);
         Satz vertragsteil = new Satz210(70);
-        log.info(vertragsteil + " created.");
+        LOG.info(vertragsteil + " created.");
         assertEquals(70, vertragsteil.getSparte());
         checkExport(vertragsteil, 11, 13, "070", 256);
     }

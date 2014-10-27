@@ -19,11 +19,7 @@ import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_VOM;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
-import gdv.xport.io.ExtendedEOFException;
-import gdv.xport.io.ImportException;
-import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.io.RecordReader;
-import gdv.xport.io.RecyclingInputStreamReader;
+import gdv.xport.io.*;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
@@ -34,34 +30,18 @@ import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzNummer;
 import gdv.xport.util.URLReader;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.Writer;
+import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Ein Datenpaket besteht aus {@link Vorsatz}, mehrere {@link Datensatz}-Elementen
@@ -72,7 +52,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public final class Datenpaket {
 
-	private static final Log log = LogFactory.getLog(Datenpaket.class);
+	private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
 	private final Vorsatz vorsatz = new Vorsatz();
 	private List<Datensatz> datensaetze = new ArrayList<Datensatz>();
 	private Nachsatz nachsatz = new Nachsatz();
@@ -100,7 +80,7 @@ public final class Datenpaket {
 		this.setErstellungsDatumBis(heute);
 		this.setVuNummer(vuNummer);
 		this.setAbsender(vuNummer);
-		log.debug(this + " created.");
+		LOG.debug(this + " created.");
 	}
 
 	/**
@@ -237,7 +217,7 @@ public final class Datenpaket {
 			datensatz.export(writer);
 		}
 		nachsatz.export(writer);
-		log.info(datensaetze.size() + " Datensaetze exported.");
+		LOG.info(datensaetze.size() + " Datensaetze exported.");
 	}
 
 	/**
@@ -327,7 +307,7 @@ public final class Datenpaket {
 	 */
 	public static Satz importSatz(final PushbackLineNumberReader reader) throws IOException {
         int satzart = Satz.readSatzart(reader);
-        log.debug("reading Satzart " + satzart + "...");
+        LOG.debug("reading Satzart " + satzart + "...");
         if (satzart == 9999) {
             Nachsatz nachsatz = new Nachsatz();
             nachsatz.importFrom(reader);
@@ -522,25 +502,25 @@ public final class Datenpaket {
 	 */
 	public boolean isValid() {
 		if (!this.vorsatz.isValid()) {
-			log.info(this.vorsatz + " is not valid");
+			LOG.info(this.vorsatz + " is not valid");
 			return false;
 		}
 		if (!this.nachsatz.isValid()) {
-			log.info(this.nachsatz + " is not valid");
+			LOG.info(this.nachsatz + " is not valid");
 			return false;
 		}
 		for (Satz satz : this.datensaetze) {
 			if (!satz.isValid()) {
-				log.info(satz + " is not valid");
+				LOG.info(satz + " is not valid");
 				return false;
 			}
 		}
 		if (this.validateFolgenummern().size() > 0) {
-			log.info("Folgenummern stimmen nicht");
+			LOG.info("Folgenummern stimmen nicht");
 			return false;
 		}
 		if (this.validateVUNummer().size() > 0) {
-			log.info("VU-Nummer is not set / not valid");
+			LOG.info("VU-Nummer is not set / not valid");
 			return false;
 		}
 		return true;

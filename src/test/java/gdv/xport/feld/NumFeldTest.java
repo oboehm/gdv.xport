@@ -30,8 +30,8 @@ import java.util.Locale;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -42,7 +42,7 @@ import org.junit.Test;
  */
 public class NumFeldTest {
 
-    private static final Log log = LogFactory.getLog(NumFeldTest.class);
+    private static final Logger LOG = LogManager.getLogger(NumFeldTest.class);
 
     /**
      * Einfacher Test, ob das Anlegen erfolgreich war.
@@ -120,7 +120,7 @@ public class NumFeldTest {
         NumFeld x = new NumFeld("x", "xxxx");
         List<ConstraintViolation> violations = x.validate();
         for (ConstraintViolation violation : violations) {
-            log.info(violation.getValidatedObject() + ": " + violation.getMessage());
+            LOG.info(violation.getValidatedObject() + ": " + violation.getMessage());
         }
         assertEquals(1, violations.size());
     }

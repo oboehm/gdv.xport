@@ -33,8 +33,8 @@ import java.io.IOException;
 import java.io.PushbackReader;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Datensatz ist von {@link Satz} abgeleitet, enthaelt aber zusaetzlich noch
@@ -45,7 +45,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class Datensatz extends Satz {
 
-	private static final Log LOG = LogFactory.getLog(Datensatz.class);
+	private static final Logger LOG = LogManager.getLogger(Datensatz.class);
 	/** 3 Zeichen, Byte 11 - 13. */
     private final NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
 	/** 3 Zeichen, Byte 59 - 60. */

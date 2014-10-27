@@ -18,7 +18,8 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Locale;
 
@@ -33,7 +34,7 @@ import org.junit.Test;
  */
 public class BetragMitVorzeichenTest {
 
-    private final BetragMitVorzeichen betrag = new BetragMitVorzeichen("Test", 5, 1);
+    private final BetragMitVorzeichen betrag = new BetragMitVorzeichen(new Bezeichner("Test"), 5, 1);
 
     /**
      * Tested den Konstruktor.
@@ -71,7 +72,7 @@ public class BetragMitVorzeichenTest {
         betrag.setInhalt(99.99);
         assertTrue(betrag + " should be a valid number", betrag.isValid());
     }
-    
+
     /**
      * Test-Methode fuer {@link BetragMitVorzeichen#format()}.
      */

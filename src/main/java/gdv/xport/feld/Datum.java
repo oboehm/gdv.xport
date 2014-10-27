@@ -32,8 +32,8 @@ import net.sf.oval.ConstraintViolation;
 import net.sf.oval.constraint.MatchPatternCheck;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The Class Datum.
@@ -44,7 +44,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public final class Datum extends Feld {
 
-    private static final Log log = LogFactory.getLog(Feld.class);
+    private static final Logger LOG = LogManager.getLogger(Feld.class);
     private final DateFormat dateFormat;
 
     /**
@@ -302,7 +302,7 @@ public final class Datum extends Feld {
             String conv = this.dateFormat.format(date);
             return conv.equals(orig);
         } catch (RuntimeException e) {
-            log.info(e + " -> mapped to false");
+            LOG.info(e + " -> mapped to false");
             return false;
         }
     }

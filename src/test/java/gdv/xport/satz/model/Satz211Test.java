@@ -31,8 +31,8 @@ import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 
@@ -44,7 +44,7 @@ import org.junit.Test;
  */
 public class Satz211Test {
 
-    private static final Log log = LogFactory.getLog(Satz211Test.class);
+    private static final Logger LOG = LogManager.getLogger(Satz211Test.class);
 
     /**
      * Test method for {@link Satz211#Satz211(int)}.
@@ -52,7 +52,7 @@ public class Satz211Test {
     @Test
     public void testSparte10() {
         Satz211 leben = new Satz211(10);
-        log.info(leben + " created.");
+        LOG.info(leben + " created.");
         assertEquals(10, leben.getSparte());
         assertEquals(Config.getVUNummer().getInhalt().trim(), leben.getVuNummer());
         Feld sparte = leben.getFeld(Bezeichner.SPARTE);
