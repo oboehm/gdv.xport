@@ -39,6 +39,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import patterntesting.runtime.junit.ObjectTester;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -194,6 +195,18 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         } finally {
             parser.close();
         }
+    }
+
+    /**
+     * Hier testen wir die Gleichheit zweier gleicher Saetze.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testEqualsSatz100() throws XMLStreamException {
+        SatzXml satz = getSatz("Satz100.xml");
+        assertEquals(satz100.toLongString(), satz.toLongString());
+        ObjectTester.assertEquals(satz100, satz);
     }
 
 }

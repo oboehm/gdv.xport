@@ -34,6 +34,8 @@ import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import patterntesting.runtime.junit.ObjectTester;
+
 /**
  * Hier setzen wir eine Standard-Konfiguration auf, die wir in den
  * verschiedenen JUnit-Tests verwenden.
@@ -75,6 +77,16 @@ abstract public class AbstractSatzTest {
         assertTrue("expected: is valid", satzart.isValid());
         assertFalse("expected: not empty", satzart.isEmpty());
         assertEquals(satz.getSatzart(), Integer.parseInt(satzart.getInhalt()));
+    }
+
+    /**
+     * Test-Methode fuer {@link Satz#equals(Object)}.
+     */
+    @Test
+    public void testEquals() {
+        Satz satz = this.getSatz();
+        Satz sameSatz = this.getSatz();
+        ObjectTester.assertEquals(satz, sameSatz);
     }
 
     /**

@@ -44,6 +44,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
+import patterntesting.runtime.junit.ObjectTester;
+
 /**
  * Test-Klasse fuer Satz.
  *
@@ -278,9 +280,8 @@ public final class SatzTest extends AbstractSatzTest {
     public void testIsEquals() {
         Satz a = new Datensatz(123);
         Satz b = new Datensatz(123);
-        assertEquals(a, b);
-        assertEquals(a.hashCode(), b.hashCode());
-        b.add(new Feld("c", 5, 'c'));
+        ObjectTester.assertEquals(a, b);
+        b.add(new Feld("c", 55, 'c'));
         assertFalse(a + " differs from " + b, a.equals(b));
     }
 

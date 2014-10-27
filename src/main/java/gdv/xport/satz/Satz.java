@@ -816,15 +816,7 @@ public abstract class Satz {
 	        return false;
 	    }
 	    Satz other = (Satz) obj;
-		if (this.getSatzart() != other.getSatzart()) {
-			return false;
-		}
-		for (int i = 0; i < teildatensatz.length; i++) {
-			if (!this.teildatensatz[i].equals(other.teildatensatz[i])) {
-				return false;
-			}
-		}
-		return true;
+        return this.toLongString().equals(other.toLongString());
 	}
 
 	/*

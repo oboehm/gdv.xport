@@ -624,7 +624,7 @@ public class Feld implements Comparable<Feld> {
             return false;
         }
         Feld other = (Feld) obj;
-        return this.getBezeichnung().equals(other.getBezeichnung()) && this.getInhalt().equals(other.getInhalt())
+        return this.bezeichner.equals(other.bezeichner) && this.getInhalt().equals(other.getInhalt())
                 && (this.byteAdresse == other.byteAdresse) && this.ausrichtung == other.ausrichtung;
     }
 
