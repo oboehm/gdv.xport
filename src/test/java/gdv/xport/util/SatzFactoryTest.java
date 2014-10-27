@@ -35,9 +35,9 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -285,7 +285,7 @@ public final class SatzFactoryTest extends AbstractTest {
     public void testGetAllSupportedSaetze() {
         Datenpaket all = SatzFactory.getAllSupportedSaetze();
         List<Datensatz> datensaetze = all.getDatensaetze();
-        Set<Integer> supportedSatzarten = new HashSet<Integer>();
+        Set<Integer> supportedSatzarten = new TreeSet<Integer>();
         for (Datensatz datensatz : datensaetze) {
             supportedSatzarten.add(datensatz.getSatzart());
         }

@@ -77,6 +77,7 @@ public final class Bezeichner {
     public static final String ANZAHL_DER_VORBESITZER = "Anzahl der Vorbesitzer";
     public static final String ANZAHL_SAETZE = "Anzahl der Saetze";
     public static final String ANZAHL_VP_PRO_PERSONENGRUPPE = "Anzahl der VP pro Personengruppe";
+    public static final String ANZAHL_WOHNEINHEITEN = "Anzahl Wohnheiten";
     public static final String ARB = "ARB (Allgemeine Bedingungen fuer die Rechtschutzvers.)";
     public static final String ART_DER_HEILKOSTEN = "Art der Heilkosten";
     public static final String ART_DER_STEUERLICHEN_FOERDERUNG = "Art der steuerlichen Foerderung";
@@ -139,6 +140,7 @@ public final class Bezeichner {
     public static final String BLZ1 = "Bankleitzahl 1";
     public static final String BLZ2 = "Bankleitzahl 2";
     public static final String BUENDELUNGSKENNZEICHEN = "Buendelungskennzeichen";
+    public static final String DATUM_DER_BEZUGSFERTIGKEIT = "Datum der Bezugsfertigkeit";
     public static final String DATUM_LETZTE_BEITRAGSANGLEICHUNG = "Datum der letzten Beitragsangleichung";
     public static final String DECKUNGSSUMME_IN_TSD_WAEHRUNGSEINHEITEN = "Deckungssumme in Tausend Waehrungseinheiten";
     public static final String DECKUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Deckungssumme";
@@ -170,6 +172,8 @@ public final class Bezeichner {
     public static final String FLOTTENRABATT_IN_PROZENT = "Flottenrabatt in %";
     public static final String FOLGENUMMER = "Folgenummer";
     public static final String FOLGEPROVISION = "Folgeprovision";
+    public static final String FREMDER_GRUND_UND_BODEN = "fremder Grund und Boden";
+    public static final String FREMDNUTZUNG = "Fremdnutzung";
     public static final String FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH = "Frei vereinbarte Selbstbeteiligung fuer KH";
     public static final String FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO = "Frei vereinbarte Selbstbeteiligung fuer Teilkasko";
     public static final String FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO = "Frei vereinbarte Selbstbeteiligung fuer Teilkasko im Rahmen der Vollkasko";
@@ -374,6 +378,7 @@ public final class Bezeichner {
     public static final String RISIKOVERLAUF = "Risikoverlauf";
     public static final String RISKIOEINHEIT1 = "Risikoeinheit-1";
     public static final String RISKIOEINHEIT2 = "Risikoeinheit-2";
+    public static final String ROHBAU_EINMALBETRAG = "Rohbau-Einmalbetrag";
     public static final String RUECKFUEHRUNGSKOSTEN = "Rueckfuehrungskosten";
     public static final String SAISONKENNZEICHEN = "Saisonkennzeichen";
     public static final String SATZART = "Satzart";
@@ -401,6 +406,7 @@ public final class Bezeichner {
     public static final String SERVICELEISTUNGEN = "Serviceleistungen";
     public static final String SERVICELEISTUNGEN_BEITRAGSSATZ = "Serviceleistungen Beitragssatz";
     public static final String SICHERUNGSEINRICHTUNG = "Sicherungseinrichtung";
+    public static final String SICHERUNGSGLAEUBIGER = "Sicherungsglaeubiger";
     public static final String SICHERUNGSSCHEIN = "Sicherungsschein";
     public static final String SONDERBEDINGUNGEN = "Sonderbedingungen";
     public static final String SONDERBEDINGUNGEN_KLAUSELN = "Sonderbedingungen / Klauseln";
@@ -412,7 +418,9 @@ public final class Bezeichner {
     public static final String STAERKE = "Staerke";
     public static final String STAERKEEINHEIT = "Staerkeeinheit";
     public static final String STEUERNR_JURISTISCHE_PERSON = "Steuernummer bei juristischen Personen";
+    public static final String STOCKWERKE = "Stockwerke";
     public static final String STRASSE = "Strasse";
+    public static final String STURMZONE = "Sturmzone";
     public static final String TAGEGELD1 = "Tagegeld 1";
     public static final String TAGEGELD1_BEITRAGSSATZ = "Tagegeld 1 Beitragssatz";
     public static final String TAGEGELD2 = "Tagegeld 2";
@@ -438,6 +446,7 @@ public final class Bezeichner {
     public static final String UEBERFUEHRUNGSKOSTEN = "Ueberfuehrungskosten";
     public static final String UEBERGANGSENTSCHAEDIGUNG = "Uebergangsentschaedigung";
     public static final String UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ = "Uebergangsentschaedigung Beitragssatz";
+    public static final String UMBAUTER_RAUM = "umbauter Raum";
     public static final String UMSATZSTEUER_ID = "Umsatzsteuer-Identifikationsnummer";
     public static final String UNBEKANNT = "unbekannt";
     public static final String UNTERSTUETZUNGSKASSE_NAME = "Unterstuetzungskasse Name";
@@ -554,6 +563,7 @@ public final class Bezeichner {
     public static final String VORAUSSICHTLICHES_ENDE = "voraussichtliches Ende";
     public static final String VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN = "Vorlaufsumme";
     public static final String VORNAME_VP = "Vorname der VP";
+    public static final String VORSTEUERABZUGSBERECHTIGT = "Vorsteuerabzugsberechtigt";
     public static final String VORZUGSSEUERBERECHTIGUNG_PROZENT = "Vorsteuerabszugsberechtigung in Prozent";
     public static final String VORZUGSSTEUERBERECHTIGUNG = "Vorsteuerabszugsberechtigung Ja/Nein";
     public static final String VP_PERSONENNUMMER_VERMITTLER = "VP-Personnenummer des Vermittlers";
@@ -562,6 +572,7 @@ public final class Bezeichner {
     public static final String VU_NUMMER = "VU-Nummer";
     public static final String WAEHRUNGSSCHLUESSEL = "Waehrungsschluessel";
     public static final String WAEHRUNG_DOKUMENTE_FUER_VN = "Waehrung der Dokumente fuer VN";
+    public static final String WAGNIS = "Wagnis";
     public static final String WAGNISKENNZIFFER = "Wagniskennziffer";
     public static final String WARTEZEIT = "Wartezeit";
     public static final String WEITERE_REFERENZNUMMERN = "Weitere Referenznummern";
