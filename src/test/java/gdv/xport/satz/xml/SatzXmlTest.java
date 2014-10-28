@@ -27,6 +27,7 @@ import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.model.Satz100;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -203,10 +204,23 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      * @throws XMLStreamException the XML stream exception
      */
     @Test
-    public void testEqualsSatz100() throws XMLStreamException {
+    public void testEqualsWithSatzXml() throws XMLStreamException {
         SatzXml satz = getSatz("Satz100.xml");
         assertEquals(satz100.toLongString(), satz.toLongString());
         ObjectTester.assertEquals(satz100, satz);
+    }
+
+    /**
+     * Hier vergleichen wir {@link SatzXml} mit {@link Satz100}. Bei gleichen
+     * Daten sollte die equals-Methode 'true' zurueckliefern.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testEqualsWithSatz100() throws IOException {
+        Satz100 satz = new Satz100();
+        satz.importFrom(satz100.toLongString());
+        ObjectTester.assertEquals(satz, satz100);
     }
 
 }

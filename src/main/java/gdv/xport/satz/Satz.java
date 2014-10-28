@@ -804,7 +804,9 @@ public abstract class Satz {
 	}
 
 	/**
-	 * Zwei Saetze sind gleich, wenn ihre Teildatensaetze gleich sind.
+	 * Zwei Saetze sind gleich, wenn sie die gleichen Daten besitzen. Die
+	 * Idee dabei ist, dass wir die beiden Saetze exportieren und dann das
+	 * Resultat vergleichen.
 	 *
 	 * @param obj der andere Satz
 	 * @return true, wenn beide Saetze gleich sind
