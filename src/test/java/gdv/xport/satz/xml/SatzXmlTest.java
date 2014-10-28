@@ -55,7 +55,9 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     private static SatzXml satz100;
 
     /**
-     * Setzt ein SatzXml-Objekt fuer den Satz 100 auf.
+     * Setzt ein SatzXml-Objekt fuer den Satz 100 auf. Dabei belegen wir die
+     * einzelnen Felder in den Teildatensaetzen mit einem Wert, damit wir nicht
+     * nur einen leeren Satz zum Testen haben.
      *
      * @throws IOException Signals that an I/O exception has occurred.
      * @throws XMLStreamException the XML stream exception
@@ -66,9 +68,13 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     }
 
     /**
-     * Setzt ein SatzXml-Objekt mit Hilfe der uebergebenen Resource auf.
-     * Diese Methode ist 'protected' damit sie auch von anderen Unit-Tests
-     * (wie z.B. TeildatensatzXmlTest) zum Testen verwendet werden kann.
+     * Setzt ein SatzXml-Objekt mit Hilfe der uebergebenen Resource auf. Diese
+     * Methode ist 'protected' damit sie auch von anderen Unit-Tests (wie z.B.
+     * TeildatensatzXmlTest) zum Testen verwendet werden kann.
+     * <p>
+     * Wir belegen die einzelnen Felder in den Teildatensaetzen mit einem Wert,
+     * damit wir nicht nur einen leeren Satz zum Testen haben.
+     * </p>
      *
      * @param resource Name der Resource
      * @return the satz
@@ -80,9 +86,20 @@ public class SatzXmlTest extends AbstractDatensatzTest {
             SatzXml satz = new SatzXml(parser);
             Map<String, FeldXml> felder = XmlService.parseFelder(parser);
             satz.setFelder(felder);
+            for (Teildatensatz tds : satz.getTeildatensaetze()) {
+                setUp(tds);
+            }
             return satz;
         } finally {
             parser.close();
+        }
+    }
+
+    private static void setUp(final Teildatensatz tds) {
+        for (Feld feld : tds.getFelder()) {
+            if (feld.getByteAdresse() > 42) {
+                feld.setInhalt('1');
+            }
         }
     }
 
