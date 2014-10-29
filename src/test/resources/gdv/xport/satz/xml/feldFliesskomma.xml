@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feld referenz="BN-2003.02.11.22.49.55.646">
+	<name>BetragInWE (10,2 Byte)</name>
+	<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+	<letzteAenderung>20.07.2007 12:57:19</letzteAenderung>
+	<minimaleLaenge>12</minimaleLaenge>
+	<bytes>12</bytes>
+	<datentyp combobox="datentypbox">Fließkomma</datentyp>
+	<nachkommastellen>2</nachkommastellen>
+	<bemerkung>(10,2 Stellen)</bemerkung>
+	<wertetabelle>
+		<name />
+		<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+		<letzteAenderung>20.07.2007 12:57:19</letzteAenderung>
+		<technischerName />
+		<bemerkung />
+		<anlagennummer />
+		<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+		<alleWerteDerTabelle />
+	</wertetabelle>
+</feld>
