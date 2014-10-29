@@ -22,8 +22,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
+import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.model.Satz200;
+
+import java.io.IOException;
 
 import org.junit.Test;
+
+import patterntesting.runtime.junit.ObjectTester;
 
 /**
  * Unit-Test fuer {@link XmlService}-Klasse
@@ -65,6 +72,18 @@ public class XmlServiceTest extends AbstractXmlTest {
         Feld inkasso = satz200.getFeld(Bezeichner.INKASSOART);
         assertEquals(1, inkasso.getAnzahlBytes());
         assertEquals(43, inkasso.getByteAdresse());
+    }
+
+    @Test
+    public void testSatzart200() throws IOException {
+        checkSatzart(200, new Satz200());
+    }
+
+    private static void checkSatzart(final int nr, final Satz reference) throws IOException {
+        AbstractSatzTest.setUp(reference);
+        SatzXml satzXml = getSatzart(nr);
+        satzXml.importFrom(reference.toLongString());
+        ObjectTester.assertEquals(reference, satzXml);
     }
 
     private static SatzXml getSatzart(final int satzart) {

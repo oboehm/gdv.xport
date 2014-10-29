@@ -86,20 +86,10 @@ public class SatzXmlTest extends AbstractDatensatzTest {
             SatzXml satz = new SatzXml(parser);
             Map<String, FeldXml> felder = XmlService.parseFelder(parser);
             satz.setFelder(felder);
-            for (Teildatensatz tds : satz.getTeildatensaetze()) {
-                setUp(tds);
-            }
+            setUp(satz);
             return satz;
         } finally {
             parser.close();
-        }
-    }
-
-    private static void setUp(final Teildatensatz tds) {
-        for (Feld feld : tds.getFelder()) {
-            if (feld.getByteAdresse() > 42) {
-                feld.setInhalt('1');
-            }
         }
     }
 

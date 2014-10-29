@@ -18,10 +18,8 @@
 
 package gdv.xport.satz.xml;
 
-import gdv.xport.feld.Align;
-import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Datum;
+import gdv.xport.feld.Datentyp;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.util.XmlHelper;
@@ -49,7 +47,7 @@ public final class FeldXml extends Feld {
 
     private final String id;
     private final Bezeichner bezeichner;
-    private final String datentyp;
+    private final Datentyp datentyp;
     private final int nachkommastellen;
 
     /**
@@ -77,7 +75,7 @@ public final class FeldXml extends Feld {
         Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
         this.bezeichner = new Bezeichner(props);
         this.setAnzahlBytes(Integer.parseInt(props.getProperty("bytes", "1")));
-        this.datentyp = props.getProperty("datentyp");
+        this.datentyp = Datentyp.asValue(props.getProperty("datentyp"));
         this.nachkommastellen = Integer.parseInt(props.getProperty("nachkommastellen", "0"));
         LOG.debug("{} created.", this);
     }
@@ -119,7 +117,7 @@ public final class FeldXml extends Feld {
      *
      * @return the datentyp
      */
-    public final String getDatentyp() {
+    public final Datentyp getDatentyp() {
         return this.datentyp;
     }
 
@@ -151,16 +149,13 @@ public final class FeldXml extends Feld {
      * @return das entsprechende Feld
      */
     public Feld toFeld(final int byteAddress, final Bezeichner neuerBezeichner) {
-        if ("Numerisch".equals(this.datentyp)) {
-            return new NumFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress)
-                    .mitNachkommastellen(this.nachkommastellen);
-        } else if ("Alphanumerisch".equals(this.datentyp)) {
-            return new AlphaNumFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress);
-        } else if ("Datum".equals(this.datentyp)) {
-            return new Datum(neuerBezeichner, this.getAnzahlBytes(), byteAddress);
-        } else {
-            LOG.warn("Feld constructor will be used for unknown datentyp '{}'.", this.datentyp);
-            return new Feld(neuerBezeichner, this.getAnzahlBytes(), byteAddress, Align.UNKNOWN);
+        switch (this.datentyp) {
+            case NUMERISCH:
+            case FLIESSKOMMA:
+                return new NumFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress)
+                        .mitNachkommastellen(this.nachkommastellen);
+            default:
+                return this.datentyp.asFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress);
         }
     }
 

@@ -134,5 +134,25 @@ abstract public class AbstractSatzTest {
         assertEquals(input.trim(), exported.trim());
     }
 
+    /**
+     * Setzt fuer den uebergebenen Satz die normalen Felder mit einem Wert,
+     * damit einfache Test-Daten fuer die einzelnen Tests vorhanden sind.
+     *
+     * @param satz the new up
+     */
+    public static void setUp(final Satz satz) {
+        for (Teildatensatz tds : satz.getTeildatensaetze()) {
+            setUp(tds);
+        }
+    }
+
+    private static void setUp(final Teildatensatz tds) {
+        for (Feld feld : tds.getFelder()) {
+            if (feld.getByteAdresse() > 42) {
+                feld.setInhalt('1');
+            }
+        }
+    }
+
 }
 

@@ -20,10 +20,7 @@ package gdv.xport.satz.xml;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 
 import java.io.IOException;
 
@@ -84,7 +81,7 @@ public class FeldXmlTest extends AbstractXmlTest {
      */
     @Test
     public void testGetDatentyp() {
-        assertEquals("Numerisch", feldXml.getDatentyp());
+        assertEquals(Datentyp.NUMERISCH, feldXml.getDatentyp());
     }
 
     /**
@@ -133,6 +130,28 @@ public class FeldXmlTest extends AbstractXmlTest {
     @Test
     public void testToDatumFeld() throws XMLStreamException {
         checkToFeld(createFeldXmlFrom("feldDatum.xml"), Datum.class);
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldXml#toFeld(int)} mit einer
+     * Gleitkommazahl.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testToGleitkomma() throws XMLStreamException {
+        checkToFeld(createFeldXmlFrom("feldFliesskomma.xml"), NumFeld.class);
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldXml#toFeld(int)} mit einer
+     * Gleitkommazahl.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testToUhrzeit() throws XMLStreamException {
+        checkToFeld(createFeldXmlFrom("feldUhrzeit.xml"), NumFeld.class);
     }
 
     private static void checkToFeld(final FeldXml input, final Class<? extends Feld> expected) {
