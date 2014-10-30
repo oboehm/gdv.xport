@@ -110,7 +110,8 @@ public final class SatzXml extends Datensatz {
                 tds.add(new FeldReferenz(reader, event.asStartElement()));
             } else if (XmlHelper.isStartElement(event, "satzende")) {
                 LOG.trace("<{}> is reached.", element);
-                XmlHelper.ignore(event, reader);
+                tds.setSatzende(new Satzende(reader, event.asStartElement()));
+//                XmlHelper.ignore(event, reader);
                 this.add(tds);
                 return;
             }

@@ -63,18 +63,6 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     /**
-     * Bei Satzart 100 scheint im XML-Handbuch das Feld fuer die
-     * Personnenummer zu fehlen.
-     */
-    @Test
-    public void testGetSatzart100() {
-        SatzXml satz100 = getSatzart(100);
-        Feld personennummer = satz100.getFeld(new Bezeichner(Bezeichner.LFD_PERSONENNR_GEVO));
-        assertEquals(6, personennummer.getAnzahlBytes());
-        assertEquals(250, personennummer.getByteAdresse());
-    }
-
-    /**
      * Hier begutachten wir etwas genauer den von
      * {@link XmlService#getSatzart(int)} zurueckgelieferten Satz.
      */

@@ -39,6 +39,7 @@ public final class TeildatensatzXml extends Teildatensatz {
 
     private static final Logger LOG = LoggerFactory.getLogger(TeildatensatzXml.class);
     private final List<FeldReferenz> feldReferenzen = new ArrayList<FeldReferenz>();
+    private Satzende satzende;
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart
@@ -58,6 +59,15 @@ public final class TeildatensatzXml extends Teildatensatz {
      */
     public void add(final FeldReferenz referenz) {
         feldReferenzen.add(referenz);
+    }
+
+    /**
+     * Setzt das Satzende
+     *
+     * @param satzende das Satzende
+     */
+    public void setSatzende(final Satzende satzende) {
+        this.satzende = satzende;
     }
 
     /**

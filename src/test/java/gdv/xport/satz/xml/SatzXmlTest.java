@@ -21,6 +21,7 @@ package gdv.xport.satz.xml;
 import static gdv.xport.satz.xml.AbstractXmlTest.createXMLEventReader;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.AbstractDatensatzTest;
@@ -121,6 +122,17 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     }
 
     /**
+     * Bei Satzart 100 scheint im erzeugten Datensatz das Feld fuer die
+     * Personennummer (im Teildatensatz 2 von Byte 250-255) zu fehlen.
+     */
+    @Test
+    public void testGetPersonennummer() {
+        Feld personennummer = satz100.getFeld(new Bezeichner(Bezeichner.LFD_PERSONENNR_GEVO));
+        assertEquals(6, personennummer.getAnzahlBytes());
+        assertEquals(250, personennummer.getByteAdresse());
+    }
+
+   /**
      * 1 Teildatensatz ist momentan in "Satz100.xml" defniert. Normalerweise
      * sollten es 5 sein, aber aus Uebersichtsgruenden ist nur 1 Teildatensatz
      * in der Test-Resource vorhanden.

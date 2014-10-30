@@ -33,8 +33,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Diese Klasse repraesentiert die Wert, die als "<feldreferenz>" ueber XML
- * reinkommen.
+ * Diese Klasse repraesentiert den Wert, der als "<feldreferenz>" ueber XML
+ * reinkommt.
  *
  * @author oliver (oliver.boehm@gmail.com)
  * @since 1.0 (07.08.2014)
