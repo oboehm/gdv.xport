@@ -199,7 +199,6 @@ public abstract class Satz {
 	 * @param tds der neue (gefuellte) Teildatensatz
 	 */
 	public final void add(final Teildatensatz tds) {
-//	    tds.setNummer(this.teildatensatz.length + 1);
 		this.teildatensatz = (Teildatensatz[]) ArrayUtils.add(this.teildatensatz, tds);
 	}
 

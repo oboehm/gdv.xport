@@ -95,6 +95,15 @@ public class BezeichnerTest {
     }
 
     /**
+     * Und auch mit {@link Bezeichner#LFD_PERSONENNR_GEVO} gab es Probleme...
+     */
+    @Test
+    public void testEqualsPersonenNr() {
+        ObjectTester.assertEquals(new Bezeichner("Lfd. Personennummer", "LfdPersonenNrImGevo"), new Bezeichner(
+                Bezeichner.LFD_PERSONENNR_GEVO));
+    }
+
+    /**
      * Das gleiche wie fuer den vorigen Test gilt auch fuer die
      * "Versicherungsschein-Nummer": diese wird als "VsNr" abgekuerzt.
      */

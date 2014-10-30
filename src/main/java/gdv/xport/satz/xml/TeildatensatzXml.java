@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.xml;
 
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
 
@@ -83,13 +84,29 @@ public final class TeildatensatzXml extends Teildatensatz {
             if (feldXml == null) {
                 throw new IllegalArgumentException("referenz for " + referenz + " not found in " + felder);
             }
-            Feld feld = feldXml.toFeld(byteAddress, referenz.getBezeichner());
-            if (!this.hasFeld(feld)) {
-                super.add(feld);
-            }
+            this.addFeld(feldXml, byteAddress, referenz.getBezeichner());
             byteAddress += feldXml.getAnzahlBytes();
         }
+        updateSatzendeWith(byteAddress, felder);
         LOG.trace("{} felder set.", this.feldReferenzen.size());
+    }
+
+    private void updateSatzendeWith(final int startAddress, final Map<String, FeldXml> felder) {
+        List<FeldReferenz> referenzen = this.satzende.getFeldReferenzen();
+        int endAddress = 256;
+        for (int i = referenzen.size() - 1; i >= 0; i--) {
+            FeldReferenz referenz = referenzen.get(i);
+            FeldXml feldXml = felder.get(referenz.getId());
+            endAddress -= feldXml.getAnzahlBytes();
+            this.addFeld(feldXml, endAddress+1, referenz.getBezeichner());
+        }
+    }
+
+    private void addFeld(final FeldXml feldXml, final int byteAddress, final Bezeichner bezeichner) {
+        Feld feld = feldXml.toFeld(byteAddress, bezeichner);
+        if (!this.hasFeld(feld)) {
+            super.add(feld);
+        }
     }
 
 }

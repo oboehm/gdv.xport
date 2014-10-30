@@ -325,7 +325,7 @@ public final class Bezeichner {
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE3 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE4 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE9 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
-    public static final String LFD_PERSONENNR_GEVO = "Lfd. Personennummer im GeVo";
+    public static final String LFD_PERSONENNR_GEVO = "Lfd. PersonenNr im GeVo";
     public static final String LFD_PERSONENNUMMER_DES_SICHERUNGSGLAEUBIGERS = "Lfd. Personennummer des Sicherungsglaeubigers";
     public static final String MEHRLEISTUNGSKLAUSEL = "Mehrleistungsklausel";
     public static final String MEHRWERTGRUND = "Mehrwertgrund";

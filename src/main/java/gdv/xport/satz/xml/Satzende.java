@@ -20,6 +20,9 @@ package gdv.xport.satz.xml;
 
 import gdv.xport.util.XmlHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
@@ -39,7 +42,7 @@ import org.slf4j.LoggerFactory;
 public class Satzende {
 
     private static final Logger LOG = LoggerFactory.getLogger(Satzende.class);
-//    private final Bezeichner bezeichner;
+    private final List<FeldReferenz> feldReferenzen = new ArrayList<FeldReferenz>();
 
     /**
      * Instantiiert eine Objekt mit den Werten, die ueber den uebergebenen
@@ -61,8 +64,6 @@ public class Satzende {
      * @throws XMLStreamException the XML stream exception
      */
     public Satzende(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
-//        Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
-//        this.bezeichner = new Bezeichner(props);
         parse(element.getName(), parser);
         LOG.debug("{} created.", this);
     }
@@ -71,13 +72,32 @@ public class Satzende {
         while (parser.hasNext()) {
             XMLEvent event = parser.nextEvent();
             if (event.isStartElement()) {
-                LOG.debug("Start event {} read.", event);
+                parseElement(event.asStartElement(), parser);
             } else if (XmlHelper.isEndElement(event, name)) {
                 LOG.debug("<{}>...{} read.", name, event);
                 return;
             }
         }
         throw new XMLStreamException("end element of <" + name + "> not read");
+    }
+
+    private void parseElement(final StartElement element, XMLEventReader reader) throws XMLStreamException {
+        LOG.trace("Parsing element {}.", element);
+        QName name = element.getName();
+        if ("feldreferenz".equals(name.getLocalPart())) {
+            feldReferenzen.add(new FeldReferenz(reader, element));
+        } else {
+            XmlHelper.ignore(name, reader);
+        }
+    }
+
+    /**
+     * Liefert die FeldReferenzen des Satzendes.
+     *
+     * @return the feld referenzen
+     */
+    public List<FeldReferenz> getFeldReferenzen() {
+        return this.feldReferenzen;
     }
 
 }

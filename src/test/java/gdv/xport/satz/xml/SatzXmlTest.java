@@ -239,6 +239,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     public void testEqualsWithSatz100() throws IOException {
         Satz100 satz = new Satz100();
         satz.importFrom(satz100.toLongString());
+        assertEquals(satz.toLongString(), satz100.toLongString());
         ObjectTester.assertEquals(satz, satz100);
     }
 
