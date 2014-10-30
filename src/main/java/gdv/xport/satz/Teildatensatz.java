@@ -120,8 +120,6 @@ public class Teildatensatz extends Satz {
      * Inits the datenfelder.
      */
     private void initDatenfelder() {
-//        datenfelder.put("Satzart", this.getSatzartFeld());
-//        datenfelder.put("Satznummer", this.satznummer);
         this.add(this.getSatzartFeld());
         this.add(this.satznummer);
     }
@@ -135,6 +133,16 @@ public class Teildatensatz extends Satz {
     public Zeichen getNummer() {
         return this.satznummer;
     }
+
+//    /**
+//     * Setzt die Satznummer.
+//     *
+//     * @param nr die neue Satznummer
+//     */
+//    public void setNummer(final int nr) {
+//        this.satznummer.setInhalt(nr);
+//        this.getFeld(new Bezeichner(SATZNUMMER)).setInhalt(nr);
+//    }
 
     /**
      * Fuegt das angegebene Feld in den Teildatensatz ein.

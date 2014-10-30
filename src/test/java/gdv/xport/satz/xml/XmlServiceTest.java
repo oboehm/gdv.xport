@@ -24,6 +24,7 @@ import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractSatzTest;
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz200;
 
 import java.io.IOException;
@@ -62,6 +63,18 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     /**
+     * Bei Satzart 100 scheint im XML-Handbuch das Feld fuer die
+     * Personnenummer zu fehlen.
+     */
+    @Test
+    public void testGetSatzart100() {
+        SatzXml satz100 = getSatzart(100);
+        Feld personennummer = satz100.getFeld(new Bezeichner(Bezeichner.LFD_PERSONENNR_GEVO));
+        assertEquals(6, personennummer.getAnzahlBytes());
+        assertEquals(250, personennummer.getByteAdresse());
+    }
+
+    /**
      * Hier begutachten wir etwas genauer den von
      * {@link XmlService#getSatzart(int)} zurueckgelieferten Satz.
      */
@@ -74,6 +87,21 @@ public class XmlServiceTest extends AbstractXmlTest {
         assertEquals(43, inkasso.getByteAdresse());
     }
 
+    /**
+     * Hier testen wir, ob die XML-Variante mit {@link Satz100} uebereinstimmt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testSatzart100() throws IOException {
+        checkSatzart(100, new Satz100());
+    }
+
+    /**
+     * Hier testen wir, ob die XML-Variante mit {@link Satz200} uebereinstimmt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @Test
     public void testSatzart200() throws IOException {
         checkSatzart(200, new Satz200());
@@ -83,6 +111,7 @@ public class XmlServiceTest extends AbstractXmlTest {
         AbstractSatzTest.setUp(reference);
         SatzXml satzXml = getSatzart(nr);
         satzXml.importFrom(reference.toLongString());
+        assertEquals(reference.toLongString(), satzXml.toLongString());
         ObjectTester.assertEquals(reference, satzXml);
     }
 

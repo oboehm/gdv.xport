@@ -104,7 +104,6 @@ public final class SatzXml extends Datensatz {
 
     private void parseTeildatensatz(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         TeildatensatzXml tds = parseSatzanfang(element, reader);
-        this.add(tds);
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
             if (XmlHelper.isStartElement(event, "feldreferenz")) {
@@ -112,6 +111,7 @@ public final class SatzXml extends Datensatz {
             } else if (XmlHelper.isStartElement(event, "satzende")) {
                 LOG.trace("<{}> is reached.", element);
                 XmlHelper.ignore(event, reader);
+                this.add(tds);
                 return;
             }
         }

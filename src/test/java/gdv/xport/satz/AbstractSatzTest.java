@@ -148,7 +148,7 @@ abstract public class AbstractSatzTest {
 
     private static void setUp(final Teildatensatz tds) {
         for (Feld feld : tds.getFelder()) {
-            if (feld.getByteAdresse() > 42) {
+            if ((feld.getByteAdresse() > 42) && (feld.getByteAdresse() < 256)) {
                 feld.setInhalt('1');
             }
         }

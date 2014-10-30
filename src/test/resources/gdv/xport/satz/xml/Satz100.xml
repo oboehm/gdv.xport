@@ -516,6 +516,320 @@
 					<ntabhaengig>0</ntabhaengig>
 				</feldreferenz>
 			</satzende>
+						<satzanfang teilsatz="2">
+				<name>Satzanfang</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Satzanfang</technischerName>
+				<bemerkung />
+				<minimaleAnzahl>1</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<verknuepfungsart combobox="verknuepfungsartbox">Sequenz</verknuepfungsart>
+				<feldreferenz referenz="BN-2003.02.11.22.49.47.214">
+					<name>Satzart</name>
+					<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+					<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+					<technischerName>Satzart</technischerName>
+					<bemerkung>Satzart für Adreßdaten Stelle 1-4 = 0100</bemerkung>
+					<minimaleAnzahl>0</minimaleAnzahl>
+					<maximaleAnzahl>1</maximaleAnzahl>
+					<auspraegung />
+					<ntabhaengig>0</ntabhaengig>
+				</feldreferenz>
+				<feldreferenz referenz="BN-2003.02.11.22.49.54.264">
+					<name>VU-Nummer</name>
+					<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+					<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+					<technischerName>VuNr</technischerName>
+					<bemerkung>Gemäß VU-Verzeichnis der BaFin, linksbündig</bemerkung>
+					<minimaleAnzahl>0</minimaleAnzahl>
+					<maximaleAnzahl>1</maximaleAnzahl>
+					<auspraegung />
+					<ntabhaengig>0</ntabhaengig>
+				</feldreferenz>
+				<feldreferenz referenz="BN-2003.02.11.22.49.55.346">
+					<name>Bündelungskennzeichen</name>
+					<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+					<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+					<technischerName>Buendelungskennzeichen</technischerName>
+					<bemerkung>
+						Kennzeichen für gebündelte Verträge
+						<br />
+						1 = gebündelt
+					</bemerkung>
+					<minimaleAnzahl>0</minimaleAnzahl>
+					<maximaleAnzahl>1</maximaleAnzahl>
+					<auspraegung />
+					<ntabhaengig>0</ntabhaengig>
+				</feldreferenz>
+				<feldreferenz referenz="BN-2003.02.11.22.49.47.344">
+					<name>Sparte</name>
+					<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+					<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+					<technischerName>Sparte</technischerName>
+					<bemerkung>Versicherungszweig gemäß Verordnung über die Berichterstattung von Versicherungsunternehmen gegenüber der BaFin (BerVersV) Abschnitt C</bemerkung>
+					<minimaleAnzahl>0</minimaleAnzahl>
+					<maximaleAnzahl>1</maximaleAnzahl>
+					<auspraegung />
+					<ntabhaengig>0</ntabhaengig>
+				</feldreferenz>
+				<feldreferenz referenz="BN-2003.02.11.22.49.55.366">
+					<name>Versicherungsschein-Nummer</name>
+					<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+					<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+					<technischerName>VsNr</technischerName>
+					<bemerkung>Versicherungsschein-Nummer, rechtsbündig, mit Leerstellen linksbündig auffüllen ohne Sonderzeichen</bemerkung>
+					<minimaleAnzahl>0</minimaleAnzahl>
+					<maximaleAnzahl>1</maximaleAnzahl>
+					<auspraegung />
+					<ntabhaengig>0</ntabhaengig>
+				</feldreferenz>
+				<feldreferenz referenz="BN-2003.02.11.22.49.55.396">
+					<name>Folgenummer</name>
+					<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+					<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+					<technischerName>FolgeNr</technischerName>
+					<bemerkung>Lfd. Nummer innerhalb einer Versicherungsschein-Nr. über alle Satzarten für die gleiche Datensendung</bemerkung>
+					<minimaleAnzahl>0</minimaleAnzahl>
+					<maximaleAnzahl>1</maximaleAnzahl>
+					<auspraegung />
+					<ntabhaengig>0</ntabhaengig>
+				</feldreferenz>
+				<feldreferenz referenz="BN-2003.02.11.22.49.55.426">
+					<name>Geschäftsstelle / Vermittler</name>
+					<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+					<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+					<technischerName>GeschaeftsstelleVermittler</technischerName>
+					<bemerkung>Die geschäftsführende Geschäftsstelle und der Vermittler ohne Sonderzeichen</bemerkung>
+					<minimaleAnzahl>0</minimaleAnzahl>
+					<maximaleAnzahl>1</maximaleAnzahl>
+					<auspraegung />
+					<ntabhaengig>0</ntabhaengig>
+				</feldreferenz>
+			</satzanfang>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.277">
+				<name>Personen-/Kundennummer des Versicherers</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>PersonenKundenNrVersicherers</technischerName>
+				<bemerkung>Personen-/Kundennummer des Versicherers, rechtsbündig, mit Leerstellen linksbündig auffüllen, ohne Sonderzeichen</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.297">
+				<name>Personen-/Kundennummer des Vermittlers</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>PersonenKundenNrVermittlers</technischerName>
+				<bemerkung>Personen-/Kundennummer des Vermittlers, rechtsbündig, mit Leerstellen linksbündig auffüllen, ohne Sonderzeichen</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.327">
+				<name>Kundengruppe</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Kundengruppe</technischerName>
+				<bemerkung>Klartext</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.357">
+				<name>Kontonummer 1</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>31.07.2006 11:06:43</letzteAenderung>
+				<technischerName>KontoNr</technischerName>
+				<bemerkung>für das jeweilige Adresskennzeichen</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.377">
+				<name>Bankleitzahl 1</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>26.07.2006 11:24:51</letzteAenderung>
+				<technischerName>Bankleitzahl</technischerName>
+				<bemerkung>siehe Kontonummer</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.407">
+				<name>Abweichender Kontoinhaber 1</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>26.07.2006 11:25:08</letzteAenderung>
+				<technischerName>AbweichenderKontoinhaber</technischerName>
+				<bemerkung>ggf. Name, falls abweichend</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.427">
+				<name>Kommunikationstyp 1</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>28.08.2003 09:45:21</letzteAenderung>
+				<technischerName>Kommunikationstyp1</technischerName>
+				<bemerkung>Weitere, größere Felder: "Kommunikationsnummern" (z. B. E-Mail) stehen in 0100.1/3 zur Verfügung.</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.457">
+				<name>Kommunikationsnummer 1</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>KommunikationsNr1</technischerName>
+				<bemerkung>Wenn möglich, Vorwahl(en) und Rufnummer durch Leerzeichen (blank) getrennt</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.427">
+				<name>Kommunikationstyp 2</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>28.08.2003 09:45:35</letzteAenderung>
+				<technischerName>Kommunikationstyp2</technischerName>
+				<bemerkung />
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.457">
+				<name>Kommunikationsnummer 2</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>KommunikationsNr2</technischerName>
+				<bemerkung>siehe Kommunikationsnummer 1</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.427">
+				<name>Kommunikationstyp 3</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>28.08.2003 09:45:42</letzteAenderung>
+				<technischerName>Kommunikationstyp3</technischerName>
+				<bemerkung />
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.457">
+				<name>Kommunikationsnummer 3</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>KommunikationsNr3</technischerName>
+				<bemerkung>siehe Kommunikationsnummer 1</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.427">
+				<name>Kommunikationstyp 4</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>28.08.2003 09:45:51</letzteAenderung>
+				<technischerName>Kommunikationstyp4</technischerName>
+				<bemerkung />
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.457">
+				<name>Kommunikationsnummer 4</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>KommunikationsNr4</technischerName>
+				<bemerkung>siehe Kommunikationsnummer 1</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.497">
+				<name>Zahlungsart /-weg</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>24.08.2012 11:02:14</letzteAenderung>
+				<technischerName>ZahlungsartWeg</technischerName>
+				<bemerkung />
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.56.507">
+				<name>Familienstand</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>24.08.2012 11:04:52</letzteAenderung>
+				<technischerName>Familienstand</technischerName>
+				<bemerkung />
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<satzende>
+				<name>Satzende</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>30.06.2008 15:00:41</letzteAenderung>
+				<technischerName>Satzende</technischerName>
+				<bemerkung />
+				<minimaleAnzahl>1</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<verknuepfungsart combobox="verknuepfungsartbox">Sequenz</verknuepfungsart>
+				<leerstellenreferenz referenz="leerstellen">
+					<name>Leerstellen</name>
+					<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+					<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+					<technischerName>Leerstellen</technischerName>
+					<bemerkung>
+						Leerstellen
+						<br />
+						Freie Stellen für weitere Belegung
+					</bemerkung>
+					<minimaleAnzahl>0</minimaleAnzahl>
+					<maximaleAnzahl>1</maximaleAnzahl>
+					<auspraegung />
+					<ntabhaengig>0</ntabhaengig>
+				</leerstellenreferenz>
+				<feldreferenz referenz="BN-2003.02.11.22.49.56.527">
+					<name>Lfd. Personennummer</name>
+					<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+					<letzteAenderung>30.06.2008 15:00:41</letzteAenderung>
+					<technischerName>LfdPersonenNrImGevo</technischerName>
+					<bemerkung>Fortlaufende Nummer der Person beginnend mit "1".</bemerkung>
+					<minimaleAnzahl>0</minimaleAnzahl>
+					<maximaleAnzahl>1</maximaleAnzahl>
+					<auspraegung />
+					<ntabhaengig>0</ntabhaengig>
+				</feldreferenz>
+				<feldreferenz referenz="BN-2003.02.11.22.49.47.364">
+					<name>Satznummer</name>
+					<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+					<letzteAenderung>29.04.2003 13:30:02</letzteAenderung>
+					<technischerName>SatzNr</technischerName>
+					<bemerkung>Hier konstant</bemerkung>
+					<minimaleAnzahl>0</minimaleAnzahl>
+					<maximaleAnzahl>1</maximaleAnzahl>
+					<auspraegung />
+					<ntabhaengig>0</ntabhaengig>
+				</feldreferenz>
+			</satzende>
 		</satzart>
 	</satzarten>
 
@@ -3480,6 +3794,415 @@
 						<gruppe />
 					</eintrag>
 				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<!-- Felder fuer Teildatensatz 2 -->
+		<feld referenz="BN-2003.02.11.22.49.56.277">
+			<name>Personen-/Kundennummer des Versicherers</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>17</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.297">
+			<name>Personen-/Kundennummer des Vermittlers</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>17</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.327">
+			<name>Kundengruppe</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.357">
+			<name>Kontonummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:21:53</letzteAenderung>
+			<minimaleLaenge>12</minimaleLaenge>
+			<bytes>12</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:21:53</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.377">
+			<name>Bankleitzahl</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>8</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.407">
+			<name>AbweichenderKontoinhaber</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 16:51:10</letzteAenderung>
+			<minimaleLaenge>30</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 16:51:10</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.427">
+			<name>Kommunikationstyp</name>
+			<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+			<letzteAenderung>21.05.2012 12:59:27</letzteAenderung>
+			<minimaleLaenge>2</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Kommunikationstyp</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>21.05.2012 12:59:27</letzteAenderung>
+				<technischerName>Kommunikationstyp</technischerName>
+				<bemerkung />
+				<anlagennummer>76</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>10</wert>
+						<beschreibung>Telefonnummer Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>20</wert>
+						<beschreibung>Telefonnummer Geschäftlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>21</wert>
+						<beschreibung>Telefonnnumer</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>30</wert>
+						<beschreibung>Telefonnummer Mobil</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>31</wert>
+						<beschreibung>Telefonnummer Mobil Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>32</wert>
+						<beschreibung>Telefonnummer Mobil Geschäftlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>40</wert>
+						<beschreibung>Telefax</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>41</wert>
+						<beschreibung>Telefax Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>42</wert>
+						<beschreibung>Telefax Geschäftlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>50</wert>
+						<beschreibung>E-Mail</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>51</wert>
+						<beschreibung>E-Mail Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>52</wert>
+						<beschreibung>E-Mail Geschäftlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>53</wert>
+						<beschreibung>Gesicherte E-Mail (z. B. DE-Mail)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>54</wert>
+						<beschreibung>Gesicherte E-Mail Privat (z. B. DE-Mail)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>55</wert>
+						<beschreibung>Gesicherte E-Mail Geschäftlich (z. B. DE-Mail)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>60</wert>
+						<beschreibung>Website</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>61</wert>
+						<beschreibung>Website Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>62</wert>
+						<beschreibung>Website Geschäftlich</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.457">
+			<name>Kommunikationsnummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:21:34</letzteAenderung>
+			<minimaleLaenge>20</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:21:34</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.497">
+			<name>Zahlungsart /-weg</name>
+			<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+			<letzteAenderung>26.01.2012 14:59:38</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Zahlungsart /-weg</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>26.01.2012 14:59:38</letzteAenderung>
+				<technischerName>ZahlungsartWeg</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Lastschrift</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Rechnung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Dauerauftrag</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Depot</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Gehaltsabzug</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>6</wert>
+						<beschreibung>Kreditkarte</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>9</wert>
+						<beschreibung>sonstige</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.507">
+			<name>Familienstand</name>
+			<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+			<letzteAenderung>16.09.2010 15:34:37</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Familienstand</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>16.09.2010 15:34:37</letzteAenderung>
+				<technischerName>Familienstand</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>ledig</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>verheiratet</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>geschieden</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>verwitwet</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>getrennt lebend</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>6</wert>
+						<beschreibung>eheähnliche Gemeinschaft</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>7</wert>
+						<beschreibung>eingetragene Lebenspartnerschaft</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>9</wert>
+						<beschreibung>sonstiges</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.527">
+			<name>Lfd. Personennummer im GeVo</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>6</minimaleLaenge>
+			<bytes>6</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.47.364">
+			<name>Satznummer (N)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:32:52</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:32:52</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
 			</wertetabelle>
 		</feld>
 	</felder>

@@ -128,7 +128,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     @Test
     public void testGetTeildatensaetze() {
         Collection<Teildatensatz> teildatensaetze = satz100.getTeildatensaetze();
-        assertEquals(1, teildatensaetze.size());
+        assertEquals(2, teildatensaetze.size());
         char expectedNr = '1';
         for (Teildatensatz tds : teildatensaetze) {
             assertEquals(expectedNr, tds.getNummer().toChar());
