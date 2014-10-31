@@ -1120,7 +1120,7 @@ public final class Bezeichner {
 
     /**
      * Verwendet den uebergebenen Bezeichner, um den technischen Namen zu
-     * aktualisierten.
+     * aktualisieren.
      *
      * @param bezeichner the bezeichner
      * @return the bezeichner

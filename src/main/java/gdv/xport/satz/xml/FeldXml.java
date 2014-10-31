@@ -98,29 +98,6 @@ public final class FeldXml extends Feld {
         return this.id;
     }
 
-//    /**
-//     * Im Gegensatz zur Oberklasse kann hier der "Bezeichner" in Gross- und
-//     * Kleinbuchstaben erscheinen.
-//     *
-//     * @return der technische Name
-//     * @see gdv.xport.feld.Feld#getBezeichnerAsString()
-//     */
-//    @Override
-//    public String getBezeichnerAsString() {
-//        return this.bezeichner.getName();
-//    }
-//
-//    /**
-//     * Im Gegensatz zur Oberklasse wird hier der technische Name aus der
-//     * XML-Beschreibung herangezogen.
-//     *
-//     * @see gdv.xport.feld.Feld#getBezeichnung()
-//     */
-//    @Override
-//    public String getBezeichnung() {
-//        return this.bezeichner.getTechnischerName();
-//    }
-
     /**
      * Liefert den Datentyp.
      *
