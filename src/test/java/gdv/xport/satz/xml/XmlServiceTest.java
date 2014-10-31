@@ -26,6 +26,7 @@ import gdv.xport.satz.AbstractSatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz200;
+import gdv.xport.satz.model.Satz210;
 
 import java.io.IOException;
 
@@ -93,6 +94,16 @@ public class XmlServiceTest extends AbstractXmlTest {
     @Test
     public void testSatzart200() throws IOException {
         checkSatzart(200, new Satz200());
+    }
+
+    /**
+     * Hier testen wir, ob die XML-Variante mit {@link Satz210} uebereinstimmt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testSatzart210() throws IOException {
+        checkSatzart(210, new Satz210());
     }
 
     private static void checkSatzart(final int nr, final Satz reference) throws IOException {
