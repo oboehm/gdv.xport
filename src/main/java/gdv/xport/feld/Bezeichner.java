@@ -46,6 +46,7 @@ import org.apache.logging.log4j.Logger;
  * @since 15.10.2009
  */
 public final class Bezeichner {
+
     public static final String ABGANGSDATUM = "Abgangsdatum";
     public static final String ABGANGSGRUND = "Abgangsgrund";
     public static final String ABSCHLAG1_IN_PROZENT = "Abschlag-1 in %";
@@ -325,7 +326,7 @@ public final class Bezeichner {
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE3 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE4 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE9 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
-    public static final String LFD_PERSONENNR_GEVO = "Lfd. PersonenNr im GeVo";
+    public static final String LFD_PERSONENNR_GEVO = "Lfd. Personennummer im GeVo";
     public static final String LFD_PERSONENNUMMER_DES_SICHERUNGSGLAEUBIGERS = "Lfd. Personennummer des Sicherungsglaeubigers";
     public static final String MEHRLEISTUNGSKLAUSEL = "Mehrleistungsklausel";
     public static final String MEHRWERTGRUND = "Mehrwertgrund";
@@ -941,6 +942,7 @@ public final class Bezeichner {
 
     // Mapping fuer manche Bezeichner (Name <--> technischer Name)
     static {
+        MAPPING.put(LFD_PERSONENNR_GEVO, "LfdPersonenNrImGevo");
         MAPPING.put(VERSICHERUNGSSCHEINNUMMER, "VsNr");
         MAPPING.put(VU_NUMMER, "VuNr");
     }
@@ -975,7 +977,7 @@ public final class Bezeichner {
      */
     public Bezeichner(final String name, final String technischerName) {
         this.name = name;
-        this.technischerName = StringUtils.isEmpty(technischerName) ? name : technischerName;
+        this.technischerName = StringUtils.isEmpty(technischerName) ? toTechnischerName(name) : technischerName;
         this.hash = this.technischerName.toUpperCase().hashCode();
     }
 
@@ -1114,6 +1116,22 @@ public final class Bezeichner {
             }
         }
         throw new IllegalArgumentException("no constant with text \"" + bezeichnung + "\" defined");
+    }
+
+    /**
+     * Verwendet den uebergebenen Bezeichner, um den technischen Namen zu
+     * aktualisierten.
+     *
+     * @param bezeichner the bezeichner
+     * @return the bezeichner
+     */
+    public Bezeichner mergeWith(final Bezeichner bezeichner) {
+        if (this.technischerName.equals(toTechnischerName(this.name))) {
+            return new Bezeichner(this.name, bezeichner.getTechnischerName());
+        } else {
+            LOG.info("Merge of {} and {} is ignored.", this, bezeichner);
+            return this;
+        }
     }
 
 }

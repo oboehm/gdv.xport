@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.xml;
 
+import gdv.xport.feld.Align;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datentyp;
 import gdv.xport.feld.Feld;
@@ -46,7 +47,6 @@ public final class FeldXml extends Feld {
     private static final Logger LOG = LoggerFactory.getLogger(FeldXml.class);
 
     private final String id;
-    private final Bezeichner bezeichner;
     private final Datentyp datentyp;
     private final int nachkommastellen;
 
@@ -70,14 +70,23 @@ public final class FeldXml extends Feld {
      * @throws XMLStreamException the XML stream exception
      */
     public FeldXml(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
-        id = element.getAttributeByName(new QName("referenz")).getValue();
-        LOG.trace("Parsing <feld referenz=\"{}\"...", id);
-        Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
-        this.bezeichner = new Bezeichner(props);
-        this.setAnzahlBytes(Integer.parseInt(props.getProperty("bytes", "1")));
+        this(parse(parser, element));
+    }
+
+    private FeldXml(final Properties props) {
+        super(new Bezeichner(props), Integer.parseInt(props.getProperty("bytes", "1")), 0, Align.UNKNOWN);
+        this.id = props.getProperty("ID");
         this.datentyp = Datentyp.asValue(props.getProperty("datentyp"));
         this.nachkommastellen = Integer.parseInt(props.getProperty("nachkommastellen", "0"));
         LOG.debug("{} created.", this);
+    }
+
+    private static Properties parse(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
+        String xid = element.getAttributeByName(new QName("referenz")).getValue();
+        LOG.trace("Parsing <feld referenz=\"{}\"...", xid);
+        Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
+        props.put("ID", xid);
+        return props;
     }
 
     /**
@@ -89,28 +98,28 @@ public final class FeldXml extends Feld {
         return this.id;
     }
 
-    /**
-     * Im Gegensatz zur Oberklasse kann hier der "Bezeichner" in Gross- und
-     * Kleinbuchstaben erscheinen.
-     *
-     * @return der technische Name
-     * @see gdv.xport.feld.Feld#getBezeichnerAsString()
-     */
-    @Override
-    public String getBezeichnerAsString() {
-        return this.bezeichner.getName();
-    }
-
-    /**
-     * Im Gegensatz zur Oberklasse wird hier der technische Name aus der
-     * XML-Beschreibung herangezogen.
-     *
-     * @see gdv.xport.feld.Feld#getBezeichnung()
-     */
-    @Override
-    public String getBezeichnung() {
-        return this.bezeichner.getTechnischerName();
-    }
+//    /**
+//     * Im Gegensatz zur Oberklasse kann hier der "Bezeichner" in Gross- und
+//     * Kleinbuchstaben erscheinen.
+//     *
+//     * @return der technische Name
+//     * @see gdv.xport.feld.Feld#getBezeichnerAsString()
+//     */
+//    @Override
+//    public String getBezeichnerAsString() {
+//        return this.bezeichner.getName();
+//    }
+//
+//    /**
+//     * Im Gegensatz zur Oberklasse wird hier der technische Name aus der
+//     * XML-Beschreibung herangezogen.
+//     *
+//     * @see gdv.xport.feld.Feld#getBezeichnung()
+//     */
+//    @Override
+//    public String getBezeichnung() {
+//        return this.bezeichner.getTechnischerName();
+//    }
 
     /**
      * Liefert den Datentyp.
@@ -138,7 +147,7 @@ public final class FeldXml extends Feld {
      * @return das entsprechende Feld
      */
     public Feld toFeld(final int byteAddress) {
-        return this.toFeld(byteAddress, this.bezeichner);
+        return this.toFeld(byteAddress, this.getBezeichner());
     }
 
     /**
@@ -149,13 +158,14 @@ public final class FeldXml extends Feld {
      * @return das entsprechende Feld
      */
     public Feld toFeld(final int byteAddress, final Bezeichner neuerBezeichner) {
+        Bezeichner merged = this.getBezeichner().mergeWith(neuerBezeichner);
         switch (this.datentyp) {
             case NUMERISCH:
             case FLIESSKOMMA:
-                return new NumFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress)
+                return new NumFeld(merged, this.getAnzahlBytes(), byteAddress)
                         .mitNachkommastellen(this.nachkommastellen);
             default:
-                return this.datentyp.asFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress);
+                return this.datentyp.asFeld(merged, this.getAnzahlBytes(), byteAddress);
         }
     }
 
@@ -164,7 +174,7 @@ public final class FeldXml extends Feld {
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " \"" + this.id + "\" (" + this.bezeichner + ")";
+        return this.getClass().getSimpleName() + " \"" + this.id + "\" (" + this.getBezeichner() + ")";
     }
 
 }

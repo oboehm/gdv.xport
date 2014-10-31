@@ -125,4 +125,15 @@ public class BezeichnerTest {
         assertEquals(bezeichnung, field.get(null).toString());
     }
 
+    /**
+     * Test-Method fuer {@link Bezeichner#mergeWith(Bezeichner)}.
+     */
+    @Test
+    public void testMergeWith() {
+        Bezeichner nrImGevo = new Bezeichner("Lfd. Personennummer im GeVo");
+        Bezeichner nr = new Bezeichner("Lfd. Personennummer", "LfdPersonenNrImGevo");
+        Bezeichner merged = nrImGevo.mergeWith(nr);
+        assertEquals("LfdPersonenNrImGevo", merged.getTechnischerName());
+    }
+
 }

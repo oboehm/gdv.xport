@@ -20,7 +20,12 @@ package gdv.xport.satz.xml;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Datentyp;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 
 import java.io.IOException;
 
@@ -69,11 +74,11 @@ public class FeldXmlTest extends AbstractXmlTest {
     }
 
     /**
-     * Test-Methode fuer {@link FeldXml#getBezeichnerAsString()}.
+     * Test-Methode fuer {@link FeldXml#getBezeichner()}.
      */
     @Test
     public void testGetBezeichner() {
-        assertEquals("Sparte", feldXml.getBezeichnerAsString());
+        assertEquals(new Bezeichner("Sparte"), feldXml.getBezeichner());
     }
 
     /**
@@ -100,7 +105,7 @@ public class FeldXmlTest extends AbstractXmlTest {
     @Test
     public void testVuNummer() throws XMLStreamException {
         FeldXml vuNr = createFeldXmlFrom("feldVuNr.xml");
-        assertEquals("VU-Nummer", vuNr.getBezeichnerAsString());
+        assertEquals(new Bezeichner(Bezeichner.VU_NUMMER), vuNr.getBezeichner());
         assertEquals(5, vuNr.getAnzahlBytes());
     }
 

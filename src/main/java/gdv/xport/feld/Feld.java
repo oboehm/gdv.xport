@@ -606,7 +606,7 @@ public class Feld implements Comparable<Feld> {
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " " + this.getBezeichnung() + "(" + this.byteAdresse + "-"
+        return this.getClass().getSimpleName() + " " + this.getBezeichner() + "(" + this.byteAdresse + "-"
                 + this.getEndAdresse() + "): \"" + this.getInhalt().trim() + "\"";
     }
 
