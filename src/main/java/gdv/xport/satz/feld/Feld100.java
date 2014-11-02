@@ -530,6 +530,18 @@ public enum Feld100 {
     FAMILIENSTAND,
 
     /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 24,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 247
+    )
+    LEERSTELLEN,
+
+    /**
      * Fortlaufende Nummer der Person im GeVo beginnend mit 1
      * (wird nur Verfahren "Antragsdaten" verwendet und bleibt ansonsten leer).
      */

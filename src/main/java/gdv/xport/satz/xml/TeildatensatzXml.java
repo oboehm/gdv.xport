@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.xml;
 
+import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
@@ -99,6 +100,11 @@ public final class TeildatensatzXml extends Teildatensatz {
             FeldXml feldXml = felder.get(referenz.getId());
             endAddress -= feldXml.getAnzahlBytes();
             this.addFeld(feldXml, endAddress+1, referenz.getBezeichner());
+        }
+        int length = endAddress + 1 - startAddress;
+        if (length > 0) {
+            Feld leerstelle = new AlphaNumFeld(new Bezeichner(Bezeichner.LEERSTELLEN), endAddress + 1 - startAddress, startAddress);
+            this.add(leerstelle);
         }
     }
 

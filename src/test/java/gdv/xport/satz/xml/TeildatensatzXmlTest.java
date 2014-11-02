@@ -38,6 +38,7 @@ import org.junit.Test;
  */
 public class TeildatensatzXmlTest extends TeildatensatzTest {
 
+    private static SatzXml satz100;
     private static TeildatensatzXml tds100;
 
     /**
@@ -47,10 +48,9 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
      */
     @BeforeClass
     public static void setUpTeildatensatz() throws XMLStreamException {
-        SatzXml satz100 = SatzXmlTest.getSatz("Satz100.xml");
+        satz100 = SatzXmlTest.getSatz("Satz100.xml");
         tds100 = (TeildatensatzXml) satz100.getTeildatensatz(1);
     }
-
 
     /**
      * Hier erzeugen wir einen Teildatensatz zum Testen.
@@ -116,6 +116,21 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
         assertEquals(200, tds.getSatzart());
         tds.set(Bezeichner.SATZART, "0222");
         assertEquals(222, tds.getSatzart());
+    }
+
+    /**
+     * Im ersten Teildatensatz von Satz 100 gibt es keine Leerstellen.
+     * Deshalb sollte hier '0' zurueckgegeben werden.
+     */
+    @Test
+    public void testGetLeerstellen() {
+        checkLeerstellen(1, 0);
+        checkLeerstellen(2, 3);
+    }
+
+    private void checkLeerstellen(final int satznummer, final int expectedLength) {
+        Feld leerstellen = satz100.getTeildatensatz(satznummer).getFeld(new Bezeichner("Leerstellen"));
+        assertEquals(expectedLength, leerstellen.getAnzahlBytes());
     }
 
 }
