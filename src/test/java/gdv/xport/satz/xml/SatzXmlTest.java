@@ -132,10 +132,10 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         assertEquals(250, personennummer.getByteAdresse());
     }
 
-   /**
-     * 1 Teildatensatz ist momentan in "Satz100.xml" defniert. Normalerweise
-     * sollten es 5 sein, aber aus Uebersichtsgruenden ist nur 1 Teildatensatz
-     * in der Test-Resource vorhanden.
+    /**
+     * 2 Teildatensaetze sind momentan in "Satz100.xml" defniert. Normalerweise
+     * sollten es 5 sein, aber aus Uebersichtsgruenden sind nur 2
+     * Teildatensaetze in der Test-Resource vorhanden.
      */
     @Test
     public void testGetTeildatensaetze() {
