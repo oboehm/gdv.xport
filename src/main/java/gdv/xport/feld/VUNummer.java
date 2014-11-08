@@ -18,7 +18,6 @@
 
 package gdv.xport.feld;
 
-import static gdv.xport.feld.Bezeichner.VU_NUMMER;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -63,7 +62,7 @@ public class VUNummer extends AlphaNumFeld {
      */
     @Deprecated
     public VUNummer(final VUNummer nr, final int start) {
-        super(VU_NUMMER, 5, start, nr.getInhalt());
+        super(Bezeichner.NAME_VU_NUMMER, 5, start, nr.getInhalt());
     }
 
     /**
@@ -93,8 +92,8 @@ public class VUNummer extends AlphaNumFeld {
     @Deprecated
     public VUNummer(final String name, final int length, final int start) {
         super(name, length, start);
-        if (!VU_NUMMER.equalsIgnoreCase(name)) {
-            throw new IllegalArgumentException(VU_NUMMER + " (not '" + name + "') expected as 1st argument");
+        if (!Bezeichner.NAME_VU_NUMMER.equalsIgnoreCase(name)) {
+            throw new IllegalArgumentException(Bezeichner.NAME_VU_NUMMER + " (not '" + name + "') expected as 1st argument");
         }
     }
 
