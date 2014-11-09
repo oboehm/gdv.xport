@@ -18,7 +18,6 @@
 
 package gdv.xport.satz.model;
 
-import static gdv.xport.feld.Bezeichner.SPARTE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
@@ -55,9 +54,9 @@ public class Satz211Test {
         LOG.info(leben + " created.");
         assertEquals(10, leben.getSparte());
         assertEquals(Config.getVUNummer().getInhalt().trim(), leben.getVuNummer());
-        Feld sparte = leben.getFeld(Bezeichner.SPARTE);
-        assertEquals(new NumFeld(new Bezeichner(SPARTE), 3, 11, 10), sparte);
-        Feld vermittler = leben.getFeld(Bezeichner.VERMITTLER);
+        Feld sparte = leben.getFeld(Bezeichner.NAME_SPARTE);
+        assertEquals(new NumFeld(new Bezeichner(Bezeichner.NAME_SPARTE), 3, 11, 10), sparte);
+        Feld vermittler = leben.getFeld(Bezeichner.NAME_VERMITTLER);
         assertEquals(33, vermittler.getByteAdresse());
     }
 
@@ -76,7 +75,7 @@ public class Satz211Test {
         sparte50.setSparte(50);
         sparte50.importFrom(input);
         assertEquals(50, sparte50.getSparte());
-        assertEquals("000000000000", sparte50.getFeld(Bezeichner.NEUPREIS_IN_WAEHRUNGSEINHEITEN).getInhalt());
+        assertEquals("000000000000", sparte50.getFeld(Bezeichner.NAME_NEUPREIS_IN_WAEHRUNGSEINHEITEN).getInhalt());
         List<ConstraintViolation> violations = sparte50.validate();
         assertTrue(violations + " should be empty", violations.isEmpty());
     }

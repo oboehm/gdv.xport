@@ -18,7 +18,6 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.SPARTE;
 import static org.junit.Assert.assertEquals;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
@@ -64,9 +63,9 @@ public class Erweiterungssatz211Test {
         LOG.info(erweiterungssatz + " created.");
         assertEquals(sparte, erweiterungssatz.getSparte());
         assertEquals(Config.getVUNummer().getInhalt().trim(), erweiterungssatz.getVuNummer());
-        Feld spartenFeld = erweiterungssatz.getFeld(Bezeichner.SPARTE);
-        assertEquals(new NumFeld(new Bezeichner(SPARTE), 3, 11, sparte), spartenFeld);
-        Feld vermittler = erweiterungssatz.getFeld(Bezeichner.VERMITTLER);
+        Feld spartenFeld = erweiterungssatz.getFeld(Bezeichner.NAME_SPARTE);
+        assertEquals(new NumFeld(new Bezeichner(Bezeichner.NAME_SPARTE), 3, 11, sparte), spartenFeld);
+        Feld vermittler = erweiterungssatz.getFeld(Bezeichner.NAME_VERMITTLER);
         assertEquals(33, vermittler.getByteAdresse());
     }
 

@@ -12,10 +12,10 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.LEERSTELLEN;
-import static gdv.xport.feld.Bezeichner.TEILDATENSATZNUMMER;
-import static gdv.xport.feld.Bezeichner.VERMITTLER;
-import static gdv.xport.feld.Bezeichner.WAGNISART;
+import static gdv.xport.feld.Bezeichner.NAME_LEERSTELLEN;
+import static gdv.xport.feld.Bezeichner.NAME_TEILDATENSATZNUMMER;
+import static gdv.xport.feld.Bezeichner.NAME_VERMITTLER;
+import static gdv.xport.feld.Bezeichner.NAME_WAGNISART;
 import gdv.xport.config.Config;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
@@ -49,9 +49,9 @@ public class Datensatz extends Satz {
 	/** 3 Zeichen, Byte 11 - 13. */
     private final NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
 	/** 3 Zeichen, Byte 59 - 60. */
-	private final AlphaNumFeld wagnisart = new AlphaNumFeld(new Bezeichner(WAGNISART), 1, 59);
+	private final AlphaNumFeld wagnisart = new AlphaNumFeld(new Bezeichner(NAME_WAGNISART), 1, 59);
 	/** 3 Zeichen, Byte 255 - 256. */
-    private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld(new Bezeichner(TEILDATENSATZNUMMER), 1, 255);
+    private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld(new Bezeichner(NAME_TEILDATENSATZNUMMER), 1, 255);
 	/** Zum Abspeichern der Wagnisart oder Art (Unter-Sparte). */
 	private int art;
 
@@ -236,7 +236,7 @@ public class Datensatz extends Satz {
 	@Override
 	public void addFiller() {
 		for (Teildatensatz tds : this.getTeildatensaetze()) {
-			tds.add(new AlphaNumFeld(new Bezeichner(LEERSTELLEN), 213, 43));
+			tds.add(new AlphaNumFeld(new Bezeichner(NAME_LEERSTELLEN), 213, 43));
 		}
 	}
 
@@ -419,7 +419,7 @@ public class Datensatz extends Satz {
 	 * @since 0.6
 	 */
 	public String getVermittler() {
-		return this.getFeldInhalt(VERMITTLER);
+		return this.getFeldInhalt(NAME_VERMITTLER);
 	}
 
 	/**

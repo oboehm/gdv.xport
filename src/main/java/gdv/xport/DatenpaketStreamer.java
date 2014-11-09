@@ -25,7 +25,6 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * Im Gegensatz zur {@link Datenpaket}-Klasse wird hier ein Datenpaket nicht
  * komplett in den Speicher geladen, sondern satzweise gelesen und anschliessend

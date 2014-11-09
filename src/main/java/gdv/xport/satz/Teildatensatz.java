@@ -20,7 +20,7 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.SATZNUMMER;
+import static gdv.xport.feld.Bezeichner.NAME_SATZNUMMER;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
@@ -30,7 +30,13 @@ import gdv.xport.io.ImportException;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -57,7 +63,7 @@ public class Teildatensatz extends Satz {
     private final SortedSet<Feld> sortedFelder = new TreeSet<Feld>();
 
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
-    private final Zeichen satznummer = new Zeichen(new Bezeichner(SATZNUMMER), 256);
+    private final Zeichen satznummer = new Zeichen(new Bezeichner(NAME_SATZNUMMER), 256);
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
@@ -253,12 +259,6 @@ public class Teildatensatz extends Satz {
      * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
      * benutzt, um das Feld zu bestimmen. Dazu werden auch die Konstanten in
      * {@link gdv.xport.feld.Bezeichner} verwendet.
-     * <p>
-     * TODO: Eigentlich waere es sinnvoller, hier die restlichen Annotationen
-     * auszuwerten, da der Name nur auf Konvention beruht und etwas wackelig
-     * ist (oboehm, 1-Apr-2013).
-     *
-     * </p>
      *
      * @param feldX gewuenschtes Feld-Element
      * @return das gesuchte Feld

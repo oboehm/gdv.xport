@@ -20,9 +20,34 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
+import static gdv.xport.feld.Bezeichner.NAME_ABSENDER;
+import static gdv.xport.feld.Bezeichner.NAME_ADRESSAT;
+import static gdv.xport.feld.Bezeichner.NAME_ART_DES_ABSENDERS;
+import static gdv.xport.feld.Bezeichner.NAME_ART_DES_ADRESSATEN;
+import static gdv.xport.feld.Bezeichner.NAME_BESTANDSFUEHRENDE_GESCHAEFTSSTELLE;
+import static gdv.xport.feld.Bezeichner.NAME_ERSTELLUNGSDATUM_ZEITRAUM_BIS;
+import static gdv.xport.feld.Bezeichner.NAME_ERSTELLUNGSDATUM_ZEITRAUM_VOM;
+import static gdv.xport.feld.Bezeichner.NAME_LEERSTELLEN;
+import static gdv.xport.feld.Bezeichner.NAME_PRODUKTSPEZIFISCHE_ANTRAGSDATEN;
+import static gdv.xport.feld.Bezeichner.NAME_PRODUKTSPEZIFISCHE_STAMMDATEN;
+import static gdv.xport.feld.Bezeichner.NAME_VERMITTLER;
+import static gdv.xport.feld.Bezeichner.NAME_VERSION_SATZART_0001;
+import static gdv.xport.feld.Bezeichner.NAME_VERSION_SATZART_0211_040;
+import static gdv.xport.feld.Bezeichner.NAME_VERSION_SATZART_0211_050;
+import static gdv.xport.feld.Bezeichner.NAME_VERSION_SATZART_0221_051;
+import static gdv.xport.feld.Bezeichner.NAME_VERSION_SATZART_0221_052;
+import static gdv.xport.feld.Bezeichner.NAME_VERSION_SATZART_0221_053;
+import static gdv.xport.feld.Bezeichner.NAME_VERSION_SATZART_0221_054;
+import static gdv.xport.feld.Bezeichner.NAME_VERSION_SATZART_0221_055;
+import static gdv.xport.feld.Bezeichner.NAME_VERSION_SATZART_0221_059;
+import static gdv.xport.feld.Bezeichner.NAME_VERSION_SATZART_9999;
+import static gdv.xport.feld.Bezeichner.NAME_VU_ABRECHNUNGSSTELLE;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.Version;
+import gdv.xport.feld.Zeichen;
 
 import java.io.IOException;
 import java.util.Formatter;
@@ -48,15 +73,15 @@ public final class Vorsatz extends Satz {
     /** 5 Zeichen, Byte 5 - 9. */
     private final AlphaNumFeld vuNummer = Config.getVUNummer();
     /** 30 Zeichen, Byte 10 - 39. */
-    private final AlphaNumFeld absender = new AlphaNumFeld(new Bezeichner(ABSENDER), 30, 10);
+    private final AlphaNumFeld absender = new AlphaNumFeld(new Bezeichner(NAME_ABSENDER), 30, 10);
     /** 30 Zeichen, Byte 40 - 69. */
-    private final AlphaNumFeld adressat = new AlphaNumFeld(new Bezeichner(ADRESSAT), 30, 40);
+    private final AlphaNumFeld adressat = new AlphaNumFeld(new Bezeichner(NAME_ADRESSAT), 30, 40);
     /** 8 Zeichen, Byte 70 - 77. */
-    private final Datum von = new Datum(ERSTELLUNGSDATUM_ZEITRAUM_VOM, 70);
+    private final Datum von = new Datum(NAME_ERSTELLUNGSDATUM_ZEITRAUM_VOM, 70);
     /** 8 Zeichen, Byte 78 - 85. */
-    private final Datum bis = new Datum(ERSTELLUNGSDATUM_ZEITRAUM_BIS, 78);
+    private final Datum bis = new Datum(NAME_ERSTELLUNGSDATUM_ZEITRAUM_BIS, 78);
     /** 10 Zeichen, Byte 86 - 95. */
-    private final AlphaNumFeld vermittler = new AlphaNumFeld(new Bezeichner(VERMITTLER), 10, 86);
+    private final AlphaNumFeld vermittler = new AlphaNumFeld(new Bezeichner(NAME_VERMITTLER), 10, 86);
     /** Die Versionen fuer die verschiedenen Datensaetze. */
     private final Map<Integer, Version> versions = new HashMap<Integer, Version>();
 
@@ -111,27 +136,27 @@ public final class Vorsatz extends Satz {
         tds.add(this.vermittler);
         switch (n) {
             case 1: // Teildatensatz 1
-                tds.add(new Zeichen(new Bezeichner(ART_DES_ABSENDERS), 237));
-                tds.add(new Zeichen(new Bezeichner(ART_DES_ADRESSATEN), 238));
-                tds.add(new AlphaNumFeld(new Bezeichner(VU_ABRECHNUNGSSTELLE), 2, 239));
-                tds.add(new AlphaNumFeld(new Bezeichner(BESTANDSFUEHRENDE_GESCHAEFTSSTELLE), 2, 241));
-                tds.add(new AlphaNumFeld(new Bezeichner(LEERSTELLEN), 10, 246));
+                tds.add(new Zeichen(new Bezeichner(NAME_ART_DES_ABSENDERS), 237));
+                tds.add(new Zeichen(new Bezeichner(NAME_ART_DES_ADRESSATEN), 238));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_VU_ABRECHNUNGSSTELLE), 2, 239));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_BESTANDSFUEHRENDE_GESCHAEFTSSTELLE), 2, 241));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_LEERSTELLEN), 10, 246));
                 break;
             case 2: // Teildatensatz 2
-                tds.add(new AlphaNumFeld(new Bezeichner(PRODUKTSPEZIFISCHE_ANTRAGSDATEN), 3, 240));
-                tds.add(new AlphaNumFeld(new Bezeichner(PRODUKTSPEZIFISCHE_STAMMDATEN), 3, 243));
-                tds.add(new AlphaNumFeld(new Bezeichner(LEERSTELLEN), 10, 246));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_PRODUKTSPEZIFISCHE_ANTRAGSDATEN), 3, 240));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_PRODUKTSPEZIFISCHE_STAMMDATEN), 3, 243));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_LEERSTELLEN), 10, 246));
                 break;
             case 3: // Teildatensatz 3
-                tds.add(new AlphaNumFeld(new Bezeichner(VERSION_SATZART_0211_050), 3, 96));
-                tds.add(new AlphaNumFeld(new Bezeichner(VERSION_SATZART_0221_051), 3, 99));
-                tds.add(new AlphaNumFeld(new Bezeichner(VERSION_SATZART_0221_052), 3, 102));
-                tds.add(new AlphaNumFeld(new Bezeichner(VERSION_SATZART_0221_053), 3, 105));
-                tds.add(new AlphaNumFeld(new Bezeichner(VERSION_SATZART_0221_054), 3, 108));
-                tds.add(new AlphaNumFeld(new Bezeichner(VERSION_SATZART_0221_059), 3, 111));
-                tds.add(new AlphaNumFeld(new Bezeichner(VERSION_SATZART_0221_055), 3, 114));
-                tds.add(new AlphaNumFeld(new Bezeichner(VERSION_SATZART_0211_040), 3, 117));
-                tds.add(new AlphaNumFeld(new Bezeichner(LEERSTELLEN), 118, 138));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_VERSION_SATZART_0211_050), 3, 96));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_VERSION_SATZART_0221_051), 3, 99));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_VERSION_SATZART_0221_052), 3, 102));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_VERSION_SATZART_0221_053), 3, 105));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_VERSION_SATZART_0221_054), 3, 108));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_VERSION_SATZART_0221_059), 3, 111));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_VERSION_SATZART_0221_055), 3, 114));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_VERSION_SATZART_0211_040), 3, 117));
+                tds.add(new AlphaNumFeld(new Bezeichner(NAME_LEERSTELLEN), 118, 138));
                 break;
             default:
                 LOG.debug("no special setup for Teildatensatz " + n);
@@ -148,7 +173,7 @@ public final class Vorsatz extends Satz {
         Teildatensatz tds = this.getTeildatensatz(n);
         switch (n) {
             case 1:
-                addVersion(1, new Version(VERSION_SATZART_0001, 96, "2.1"));
+                addVersion(1, new Version(NAME_VERSION_SATZART_0001, 96, "2.1"));
                 addVersion(100, 99, "2.1");
                 addVersion(200, 102, "2.2");
                 addVersion(210, 50, 105, "   ");
@@ -191,7 +216,7 @@ public final class Vorsatz extends Satz {
                 addVersion(410, 216, "   ");
                 addVersion(430, 219, "   ");
                 addVersion(500, 222, "   ");
-                addVersion(9999, new Version(VERSION_SATZART_9999, 225, "1.1"));
+                addVersion(9999, new Version(NAME_VERSION_SATZART_9999, 225, "1.1"));
                 addVersion(420, 228, "   ");
                 addVersion(450, 231, "   ");
                 addVersion(550, 234, "   ");

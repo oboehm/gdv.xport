@@ -18,8 +18,8 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.LAUFZEITRABATT_IN_PROZENT;
-import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
+import static gdv.xport.feld.Bezeichner.NAME_LAUFZEITRABATT_IN_PROZENT;
+import static gdv.xport.feld.Bezeichner.NAME_VERTRAGSSTATUS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.config.Config;
@@ -78,7 +78,6 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
      */
     @Test
     public void testSpartenspezifischerVertragsteil() throws IOException {
-//        VertragsspezifischerTeil vertragsteil = new VertragsspezifischerTeil(70);
         Satz vertragsteil = new Satz210(70);
         LOG.info(vertragsteil + " created.");
         assertEquals(70, vertragsteil.getSparte());
@@ -91,11 +90,10 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
      */
     @Test
     public void testFolgenummer() {
-//        VertragsspezifischerTeil vertragsteil = new VertragsspezifischerTeil(30);
         Datensatz vertragsteil = new Satz210(30);
         vertragsteil.setFolgenummer(42);
         Teildatensatz teildatensatz = vertragsteil.getTeildatensatz(1);
-        Feld feld = teildatensatz.getFeld(Bezeichner.FOLGENUMMER);
+        Feld feld = teildatensatz.getFeld(Bezeichner.NAME_FOLGENUMMER);
         assertNotNull(feld);
         assertEquals("42", feld.getInhalt());
     }
@@ -107,12 +105,10 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
      */
     @Test
     public void testSparte10() throws IOException {
-//        VertragsspezifischerTeil leben = new VertragsspezifischerTeil(10);
         Satz leben = new Satz210(10);
         StringWriter exported = new StringWriter();
         leben.export(exported);
         exported.close();
-//        VertragsspezifischerTeil imported = new VertragsspezifischerTeil(10);
         Satz imported = new Satz210(10);
         imported.importFrom(exported.toString());
         assertEquals(leben, imported);
@@ -135,15 +131,14 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
                 + "4290000000000 0001000                                           "
                 + "           000000                                               ";
         assertEquals(256, input.length());
-//        VertragsspezifischerTeil vertragsteil = new VertragsspezifischerTeil(30);
         Datensatz vertragsteil = new Satz210(30);
         vertragsteil.importFrom(input);
         assertEquals("9999", vertragsteil.getVuNummer().trim());
-        Feld rabatt = vertragsteil.getFeld(LAUFZEITRABATT_IN_PROZENT);
+        Feld rabatt = vertragsteil.getFeld(NAME_LAUFZEITRABATT_IN_PROZENT);
         assertEquals("1000", rabatt.getInhalt());
         NumFeld prozent = (NumFeld) rabatt;
         assertEquals(10.00, prozent.toDouble(), 0.001);
-        Feld vertragsstatus = vertragsteil.getFeld(VERTRAGSSTATUS);
+        Feld vertragsstatus = vertragsteil.getFeld(NAME_VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         StringWriter swriter = new StringWriter(256);
         vertragsteil.export(swriter, "");

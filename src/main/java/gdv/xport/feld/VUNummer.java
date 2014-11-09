@@ -18,7 +18,6 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.annotation.FeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -50,51 +49,6 @@ public class VUNummer extends AlphaNumFeld {
         assert nr.length() <= 5 : "nur max. 5 Stellen erlaubt";
         this.setInhalt(nr);
         super.setAnzahlBytes(5);
-    }
-
-    /**
-     * Erzeugt ein neues VUNummer-Objekt.
-     *
-     * @param nr VU-Nummer (max. 5 Stellen)
-     * @param start Start-Byte (beginnend bei 1)
-     * @deprecated dieser Konstruktor macht keinen Sinn mehr und wird mit 1.0
-     *             entfernt
-     */
-    @Deprecated
-    public VUNummer(final VUNummer nr, final int start) {
-        super(Bezeichner.NAME_VU_NUMMER, 5, start, nr.getInhalt());
-    }
-
-    /**
-     * Instantiiert ein neues VUNummer-Objekt.
-     *
-     * @param name Bezeichner
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 0.6
-     * @deprecated dieser Konstruktor macht keinen Sinn mehr und wird mit 1.0
-     *             entfernt
-     */
-    @Deprecated
-    public VUNummer(final String name, final FeldInfo info) {
-        this(name, info.anzahlBytes(), info.byteAdresse());
-    }
-
-    /**
-     * Der eigentliche Default-Konstruktor fuer alle Feld-Derivate.
-     *
-     * @param name muss immer "VU-Nummer" sein
-     * @param length die Laenge (ueblicherweise 5)
-     * @param start die Start-Adresse (ueblicherweise 5)
-     * @since 0.6
-     * @deprecated dieser Konstruktor macht keinen Sinn mehr und wird mit 1.0
-     *             entfernt
-     */
-    @Deprecated
-    public VUNummer(final String name, final int length, final int start) {
-        super(name, length, start);
-        if (!Bezeichner.NAME_VU_NUMMER.equalsIgnoreCase(name)) {
-            throw new IllegalArgumentException(Bezeichner.NAME_VU_NUMMER + " (not '" + name + "') expected as 1st argument");
-        }
     }
 
     /* (non-Javadoc)

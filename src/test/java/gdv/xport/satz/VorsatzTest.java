@@ -77,7 +77,7 @@ public final class VorsatzTest extends AbstractSatzTest {
     public void testSetAbsender() throws IOException {
         String absender = "agentes AG                    ";
         vorsatz.setAbsender(absender.trim());
-        Feld absenderFeld = vorsatz.getFeld(Bezeichner.ABSENDER);
+        Feld absenderFeld = vorsatz.getFeld(Bezeichner.NAME_ABSENDER);
         assertEquals(absenderFeld.getInhalt().trim(), vorsatz.getAbsender());
         checkExport(10, 39, absender);
     }

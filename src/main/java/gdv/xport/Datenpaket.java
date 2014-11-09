@@ -12,14 +12,18 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.ABSENDER;
-import static gdv.xport.feld.Bezeichner.ADRESSAT;
-import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_BIS;
-import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_VOM;
+import static gdv.xport.feld.Bezeichner.NAME_ABSENDER;
+import static gdv.xport.feld.Bezeichner.NAME_ADRESSAT;
+import static gdv.xport.feld.Bezeichner.NAME_ERSTELLUNGSDATUM_ZEITRAUM_BIS;
+import static gdv.xport.feld.Bezeichner.NAME_ERSTELLUNGSDATUM_ZEITRAUM_VOM;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
-import gdv.xport.io.*;
+import gdv.xport.io.ExtendedEOFException;
+import gdv.xport.io.ImportException;
+import gdv.xport.io.PushbackLineNumberReader;
+import gdv.xport.io.RecordReader;
+import gdv.xport.io.RecyclingInputStreamReader;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
@@ -30,10 +34,26 @@ import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzNummer;
 import gdv.xport.util.URLReader;
 
-import java.io.*;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.Writer;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -398,7 +418,7 @@ public final class Datenpaket {
 	 * @return Erstellungsdatum bis
 	 */
 	public Datum getErstellungsDatumVon() {
-		return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDATUM_ZEITRAUM_VOM);
+		return (Datum) this.vorsatz.getFeld(NAME_ERSTELLUNGSDATUM_ZEITRAUM_VOM);
 	}
 
 	/**
@@ -417,7 +437,7 @@ public final class Datenpaket {
 	 * @return Erstellungdatum bis
 	 */
 	public Datum getErstellungsDatumBis() {
-		return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDATUM_ZEITRAUM_BIS);
+		return (Datum) this.vorsatz.getFeld(NAME_ERSTELLUNGSDATUM_ZEITRAUM_BIS);
 	}
 
 	/**
@@ -443,7 +463,7 @@ public final class Datenpaket {
 	 * @return das komplette Absender-Feld
 	 */
 	private Feld getAbsenderFeld() {
-		return this.vorsatz.getFeld(ABSENDER);
+		return this.vorsatz.getFeld(NAME_ABSENDER);
 	}
 
 	/**
@@ -469,7 +489,7 @@ public final class Datenpaket {
 	 * @return das komplette Adressat-Feld
 	 */
 	private Feld getAdressatFeld() {
-		return this.vorsatz.getFeld(ADRESSAT);
+		return this.vorsatz.getFeld(NAME_ADRESSAT);
 	}
 
 	/**

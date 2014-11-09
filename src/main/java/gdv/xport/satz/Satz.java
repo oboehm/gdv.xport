@@ -980,7 +980,7 @@ public abstract class Satz {
 	 * wird das Feld "Satznummer" vorbelegt, falls es in den uebergebenen
 	 * Feldern vorhanden ist.
 	 * <p>
-	 * FIXME: Vorsatz wird noch nicht richtig behandelt, da die ersten 6 Felder
+	 * TODO: Vorsatz wird noch nicht richtig behandelt, da die ersten 6 Felder
 	 * hier etwas anders behandelt wird.
 	 * </p>
 	 *
@@ -990,7 +990,7 @@ public abstract class Satz {
 	protected static void add(final Enum<?> feldX, final Teildatensatz tds) {
 		FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
 		Feld feld = Feld.createFeld(feldX, info);
-		if (info.nr() < 8) {      // FIXME: diese Abfrage ist eigentlich unnoetig
+		if (info.nr() < 8) {      // TODO: diese Abfrage ist eigentlich unnoetig
 			LOG.debug("using default settings for " + feld);
 		} else {
 			tds.add(feld);
