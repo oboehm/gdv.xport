@@ -27,6 +27,10 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz200;
 import gdv.xport.satz.model.Satz210;
+import gdv.xport.satz.model.Satz211;
+import gdv.xport.satz.model.Satz220;
+import gdv.xport.satz.model.Satz221;
+import gdv.xport.satz.model.Satz230;
 
 import java.io.IOException;
 
@@ -104,6 +108,46 @@ public class XmlServiceTest extends AbstractXmlTest {
     @Test
     public void testSatzart210() throws IOException {
         checkSatzart(210, new Satz210());
+    }
+
+    /**
+     * Hier testen wir, ob die XML-Variante mit {@link Satz211} uebereinstimmt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testSatzart211() throws IOException {
+        checkSatzart(211, new Satz211());
+    }
+
+    /**
+     * Hier testen wir, ob die XML-Variante mit {@link Satz220} uebereinstimmt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testSatzart220() throws IOException {
+        checkSatzart(220, new Satz220());
+    }
+
+    /**
+     * Hier testen wir, ob die XML-Variante mit {@link Satz221} uebereinstimmt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testSatzart221() throws IOException {
+        checkSatzart(221, new Satz221());
+    }
+
+    /**
+     * Hier testen wir, ob die XML-Variante mit {@link Satz230} uebereinstimmt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testSatzart230() throws IOException {
+        checkSatzart(230, new Satz230());
     }
 
     private static void checkSatzart(final int nr, final Satz reference) throws IOException {
