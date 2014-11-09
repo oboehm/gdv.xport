@@ -55,1755 +55,2621 @@ import org.apache.logging.log4j.Logger;
  */
 public final class Bezeichner {
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABGANGSDATUM = "Abgangsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABGANGSGRUND = "Abgangsgrund";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSCHLAG1_IN_PROZENT = "Abschlag-1 in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSCHLAG1_IN_WAEHRUNGSEINHEITEN = "Abschlag-1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSCHLAG2_IN_PROZENT = "Abschlag-2 in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSCHLAG2_IN_WAEHRUNGSEINHEITEN = "Abschlag-2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSCHLAG3_IN_PROZENT = "Abschlag-3 in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSCHLAG3_IN_WAEHRUNGSEINHEITEN = "Abschlag-3";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Abschlagsbetrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSCHLAG_IN_PROZENT = "Abschlag in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSCHLUSSPROVISION = "Abschlussprovision";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSENDER = "Absender";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABWEICHENDER_KONTOINHABER1 = "Abweichender Kontoinhaber 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABWEICHENDER_KONTOINHABER2 = "Abweichender Kontoinhaber 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABWEICHENDE_VU_NR = "Abweichende VU-Nr.";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ADRESSAT = "Adressat";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ADRESSKENNZEICHEN = "Adresskennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AENDERUNGSDATUM = "Aenderungsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AENDERUNGSGRUND = "Aenderungsgrund";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AFB = "A,F,B";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AKTENZEICHEN_SICHERUNGSGLAEUBIGER = "Aktenzeichen des Sicherungsglaeubigers";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AKTUELLE_BEITRAGSDEPOTSUMME_IN_WAEHRUNGSEINHEITEN = "aktuelle Beitragsdepotsumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN = "Allgemeine Versicherungsbedingungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AMTL_KENNZEICHEN = "Amtl. Kennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANREDESCHLUESSEL = "Anredeschluessel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANTEIL_IN_PROZENT = "Anteil in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANTRAGSDATUM = "Antragsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANTRAGSEINGANGSDATUM = "Antragseingangsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANZAHL_DER_VORBESITZER = "Anzahl der Vorbesitzer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANZAHL_SAETZE = "Anzahl der Saetze";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANZAHL_VP_PRO_PERSONENGRUPPE = "Anzahl der VP pro Personengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANZAHL_WOHNEINHEITEN = "Anzahl Wohnheiten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ARB = "ARB (Allgemeine Bedingungen fuer die Rechtschutzvers.)";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ART_DER_HEILKOSTEN = "Art der Heilkosten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ART_DER_STEUERLICHEN_FOERDERUNG = "Art der steuerlichen Foerderung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ART_DER_ZULASSUNG_BEIM_VORBESITZER = "Art der Zulassung beim Vorbesitzer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ART_DES_ABSENDERS = "Art des Absenders";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ART_DES_ADRESSATEN = "Art des Adressaten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ART_DES_AMTLICHEN_KENNZEICHENS = "Art des amtlichen Kennzeichens";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ART_DES_DRITTRECHTS = "Art des Drittrechts";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AUFBAUART = "Aufbauart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AUFSICHTSFREIER_VERTRAG = "Aufsichtsfreier Vertrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AUFTEILUNG_VERSICHERUNGSSTEUER = "Aufteilung Versicherungsteuer gemaess EU-Richtlinien";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AUFTRAGSNR_VERMITTLER = "Auftrags-Nr. des Vermittlers";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AUSSCHLUSS = "Ausschluss";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AUSSCHLUSSDATUM_VP = "Ausschlussdatum VP / Personengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BAUJAHR = "Baujahr";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BAUSTEIN_GESAMTBEITRAG_1_IN_WAEHRUNGSEINHEITEN = "Baustein-Gesamtbeitrag 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BAUSTEIN_GESAMTBEITRAG_2_IN_WAEHRUNGSEINHEITEN = "Baustein-Gesamtbeitrag 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINN = "Beginn";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINN_TAGEGELD1_AB_TAG = "Beginn Tagegeld 1 ab Tag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINN_TAGEGELD2_AB_TAG = "Beginn Tagegeld 2 ab Tag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINN_VERSICHERUNGSSCHUTZ = "Beginn Versicherungsschutz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSANGLEICHUNGSKLAUSEL = "Beitragsangleichungsklausel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSDEPOT = "Beitragsdepot";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSKLASSE = "Beitragsklasse";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSREGULIERUNG = "Beitragsregulierung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSRUECKGEWAEHR = "Beitragsrueckgewaehr";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSUMSTELLUNGSDATUM = "Beitragsumstellungsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSUMSTELLUNGSGRUND = "Beitragsumstellungsgrund";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_BERGUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN = "Beitrag Bergungskosten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_FESTE_RENTE_IN_WAEHRUNGSEINHEITEN = "Beitrag Feste Rente";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_GENESUNGSGELD_IN_WAEHRUNGSEINHEITEN = "Beitrag Genesungsgeld";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_HEILKOSTEN_IN_WAEHRUNGSEINHEITEN = "Beitrag Heilkosten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_INVALIDITAET_IN_WAEHRUNGSEINHEITEN = "Beitrag Invaliditaet";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_IN_WAEHRUNGSEINHEITEN = "Beitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_KOSMETISCHE_OPERATION_IN_WAEHRUNGSEINHEITEN = "Beitrag Kosmetische Operation";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_KRANKENHAUSTAGEGELD_IN_WAEHRUNGSEINHEITEN = "Beitrag Krankenhaustagegeld";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_KURKOSTEN_IN_WAEHRUNGSEINHEITEN = "Beitrag Kurkosten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_PRO_VP_IN_WAEHRUNGSEINHEITEN = "Beitrag pro VP oder pro Personengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_SERVICELEISTUNGEN_IN_WAEHRUNGSEINHEITEN = "Beitrag Serviceleistungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_TAGEGELD1_IN_WAEHRUNGSEINHEITEN = "Beitrag Tagegeld 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_TAGEGELD2_IN_WAEHRUNGSEINHEITEN = "Beitrag Tagegeld 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_TOD_IN_WAEHRUNGSEINHEITEN = "Beitrag Tod";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_UEBERGANGSENTSCHAEDIGUNG_IN_WAEHRUNGSEINHEITEN = "Beitrag Uebergangsentschaedigung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BERGUNGSKOSTEN = "Bergungskosten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BERGUNGSKOSTEN_BEITRAGSSATZ = "Bergungskosten Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BERUFSGRUPPENEINTEILUNG = "Berufsgruppeneinteilung im Industrie-Straf-RS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BERUFSSCHLUESSEL = "Berufsschluessel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BERUF_TEXT = "Beruf-Text";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BESONDERER_VERWENDUNGSZWECK = "besonderer Verwendungszweck";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO = "Besondere Vereinbarung zum Fluggastrisiko";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BESTANDSFUEHRENDE_GESCHAEFTSSTELLE = "Bestandsfuehrende Geschaeftsstelle";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BESTANDSPFLEGEPROVISION = "Bestandspflegeprovision";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BETRIEBLICHE_ALTERSVORSORGE = "Betriebliche Altersvorsorge";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEZEICHNUNG_PERSONENGRUPPE = "Bezeichnung Personengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEZUGSBERECHTIGT_IM_LEISTUNGSFALL = "Bezugsberechtigt im Leistungsfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL = "Bezugsrechtanteil im Leistungsfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BIC1 = "BIC 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BIC2 = "BIC 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BILANZMONAT_ARBEITGEBER = "Bilanzmonat Arbeitgeber";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BLZ1 = "Bankleitzahl 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BLZ2 = "Bankleitzahl 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BUENDELUNGSKENNZEICHEN = "Buendelungskennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DATUM_DER_BEZUGSFERTIGKEIT = "Datum der Bezugsfertigkeit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DATUM_LETZTE_BEITRAGSANGLEICHUNG = "Datum der letzten Beitragsangleichung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DECKUNGSSUMME_IN_TSD_WAEHRUNGSEINHEITEN = "Deckungssumme in Tausend Waehrungseinheiten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DECKUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Deckungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DECKUNGSUMFANG = "Deckungsumfang";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DIENSTEINTRITTSDATUM = "Diensteintrittsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER = "Druckaufbereitete Versicherungsscheinnummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DURCHFUEHRUNGSWEG = "Durchfuehrungsweg";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DYNAMIK = "Dynamik";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DYNAMIK_IN_PROZENT = "Dynamik in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String EIGENTUMSVERHAELTNIS_FAHRZEUG = "Eigentumsverhaeltnis (Fahrzeug)";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String EINSCHLUSSDATUM_VP = "Einschlussdatum VP / Personengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String EINZAHLUNG_AUSSCHUETTUNG = "Einzahlung / Ausschuettung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ENDEDATUM_DES_VERSICHERUNGSSCHUTZES_BEI_ROTEN_KENNZEICHEN = "Endedatum des Versicherungsschutzes bei roten Kennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERHOEHUNGSART_DYNAMIK = "Erhoehungsart Dynamik";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERSTELLUNGSDATUM_ZEITRAUM_BIS = "Erstellungs-Datum-Zeitraum bis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERSTELLUNGSDATUM_ZEITRAUM_VOM = "Erstellungs-Datum-Zeitraum vom";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERSTE_ZULASSUNG_AUF_DEN_VN = "Erste Zulassung auf den VN";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERSTZULASSUNG = "Erstzulassung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERWEITERUNGSSATZ_VORHANDEN = "Erweiterungssatz vorhanden";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String EVB_NUMMER = "eVB-Nummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FAHRZEUGART = "Fahrzeugart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FAHRZEUGIDENTIFIZIERUNGSNUMMER = "Fahrzeugidentifizierungsnummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FAMILIENSTAND = "Familienstand";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FESTE_RENTE = "Feste Rente";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FESTE_RENTE_BEITRAGSSATZ = "Feste Rente Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FINANZIERUNGSART = "Finanzierungsart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FINANZIERUNG_ZUSAGE = "Finanzierung der Zusage";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FLOTTENKENNZEICHEN = "Flottenkennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FLOTTENRABATT_IN_PROZENT = "Flottenrabatt in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FOLGENUMMER = "Folgenummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FOLGEPROVISION = "Folgeprovision";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FREMDER_GRUND_UND_BODEN = "fremder Grund und Boden";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FREMDNUTZUNG = "Fremdnutzung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH = "Frei vereinbarte Selbstbeteiligung fuer KH";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO = "Frei vereinbarte Selbstbeteiligung fuer Teilkasko";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO = "Frei vereinbarte Selbstbeteiligung fuer Teilkasko im Rahmen der Vollkasko";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_VOLLKASKO = "Frei vereinbarte Selbstbeteiligung fuer Vollkasko";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GAP_DECKUNG = "GAP-Deckung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GARAGE = "Garage";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEBURTSDATUM = "Geburtsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEBURTSLAND = "Geburtsland";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEBURTSNAME = "Geburtsname";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEBURTSORT = "Geburtsort";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEFAHRENGRUPPE = "Gefahrengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEFAHRGUT = "Gefahrgut";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GELTUNGSBEREICH = "Geltungsbereich";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GELTUNGSBEREICHEINSCHRAENKUNG = "Geltungsbereicheinschraenkung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GENESUNGSGELD = "Genesungsgeld";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GENESUNGSGELD_BEITRAGSSATZ = "Genesungsgeld Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESAMTBEITRAG = "Gesamtbeitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESAMTBEITRAG_BRUTTO = "Gesamtbeitrag-Brutto(Inkasso)";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN = "Gesamtbeitrag (Brutto)";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN = "Gesamtbeitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN = "Gesamtbeitrag (Netto)";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESAMTMASSE = "Gesamtmasse";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESAMTPROVISIONSBETRAG = "Gesamtprovisions-Betrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESCHLECHT = "Geschlecht";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GROSSRISIKEN = "Aufsichtsfreier Versicherungsnehmer (Grossrisiken)";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GRUPPENART = "Gruppenart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GUELTIGE_AKB = "Gueltige AKB";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GUELTIGKEITSDAUER_IN_TAGEN_BEI_KURZZEITKENNZEICHEN = "Gueltigkeitsdauer in Tagen bei Kurzzeitkennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String HAUPTFAELLIGKEIT = "Hauptfaelligkeit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String HEILKOSTEN = "Heilkosten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String HEILKOSTEN_BEITRAGSSATZ = "Heilkosten Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String HERSTELLERNAME = "Herstellername";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String HERSTELLER_SCHLUESSEL_NR = "Hersteller-Schluessel-Nr.";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String IBAN1 = "IBAN 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String IBAN2 = "IBAN 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String INKASSOART = "Inkassoart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String INVALIDITAET = "Invaliditaet";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String INVALIDITAET_BEITRAGSSATZ = "Invaliditaet Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String JAEHRLICHE_FAHRLEISTUNG = "Jaehrliche Fahrleistung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KAPITALERTRAGSTEUERPFLICHT = "Kapitalertragsteuerpflicht";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KASKO_BEGINNJAHR = "Kasko-Beginnjahr";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KAUFPREIS = "Kaufpreis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNUNG_FUER_ABS_RABATT = "Kennung fuer ABS-Rabatt";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNUNG_GLIEDERTAXE = "Kennung Gliedertaxe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNUNG_PROGRESSIVE_INVALIDITAET = "Kennung progressive Invaliditaet";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNUNG_UEBERGANGSENTSCHAEDIGUNG = "Kennung Uebergangsentschaedigung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNZEICHEN_ABWEICHENDE_ABSCHLUSSPROVISION = "Kennzeichen fuer abweichende Abschlussprovision";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNZEICHEN_ABWEICHENDE_BESTANDSPFLEGEPROVISION = "Kennzeichen fuer abweichende Bestandspflegeprovision";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNZEICHEN_ABWEICHENDE_FOLGEPROVISION = "Kennzeichen fuer abweichende Folgeprovision";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNZEICHEN_ABWEICHENDE_VU_NR = "Kennzeichen zur Erlaeuterung der abweichenden VU-Nr.";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNZEICHEN_FUER_ABWEICHENDE_PROVISION = "Kennzeichen fuer abweichende Provision";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNZEICHEN_VERS_STEUER_FREI = "Kennzeichen Vers.-Steuer frei";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNZEICHEN_VERTRAGSENTSTEHUNG = "Kennzeichen Vertragsentstehung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFT_ABSCHLAEGE_IN_PROZENT = "KFT-Abschlaege in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFT_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = "KFT-Abschlaege";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFT_AENDERUNGSDATUM = "KFT-aenderungsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFT_AUSSCHLUSS = "KFT-Ausschluss";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFT_BEGINN = "KFT-Beginn";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFT_BEITRAG_IN_WAEHRUNGSEINHEITEN = "KFT-Beitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFT_DECKUNGSART = "KFT-Deckungsart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFT_TARIFGRUPPE = "KFT-Tarifgruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFT_ZUSCHLAEGE_IN_PROZENT = "KFT-Zuschlaege in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFT_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN = "KFT-Zuschlaege";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_ABSCHLAEGE_IN_PROZENT = "KFV-Abschlaege in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = "KFV-Abschlaege";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_AENDERUNGSDATUM = "KFV-aenderungsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_AUSSCHLUSS = "KFV-Ausschluss";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_BEGINN = "KFV-Beginn";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_BEITRAGSSATZ = "KFV-Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_BEITRAG_IN_WAEHRUNGSEINHEITEN = "KFV-Beitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_DECKUNGSART = "KFV-Deckungsart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_RGJ = "KFV-RGJ";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_SCHAEDEN_AUS_RUECKSTUFUNG = "KFV-Schaeden aus Rueckstufung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_SFS_KLASSE = "KFV-SF/S-Klasse";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_TARIFGRUPPE = "KFV-Tarifgruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_ZUSCHLAEGE_IN_PROZENT = "KFV-Zuschlaege in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KFV_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN = "KFV-Zuschlaege";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_ABSCHLAEGE_IN_PROZENT = "KH-Abschlaege in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = "KH-Abschlaege";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_AENDERUNGSDATUM = "KH-aenderungsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_AUSSCHLUSS = "KH-Ausschluss";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_BEGINN = "KH-Beginn";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_BEITRAGSSAETZE = "KH-Beitragssaetze";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_BEITRAG_IN_WAEHRUNGSEINHEITEN = "KH-Beitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_DECKUNGSART = "KH Deckungsart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_DECKUNGSSUMMEN = "KH-Deckungssummen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN = "KH-Deckungssummen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1 = "KH-Deckungssummen Teil 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2 = "KH-Deckungssummen Teil 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3 = "KH-Deckungssummen Teil 3";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_DECKUNGSSUMMEN_PERSONENSCHAEDEN = "KH-Deckungssummen Personenschaeden";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_DECKUNGSSUMMEN_SACHSCHAEDEN = "KH-Deckungssummen Sachschaeden";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_DECKUNGSSUMMEN_VERMOEGENSCHAEDEN = "KH-Deckungssummen Vermoegensschaeden";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_RGJ = "KH-RGJ";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_SCHAEDEN_AUS_RUECKSTUFUNG = "KH-Schaeden aus Rueckstufung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_SF_S_KLASSE = "KH-SF/S-Klasse";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_TARIFGRUPPE = "KH-Tarifgruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_ZUSCHLAEGE_IN_PROZENT = "KH-Zuschlaege in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KH_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN = "KH-Zuschlaege";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KLARTEXT_SICHERUNGSEINRICHTUNG = "Klartext Sicherungseinrichtung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOLLEKTIV_NR = "Kollektiv-Nr.";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSNR1 = "Kommunikationsnummer 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSNR2 = "Kommunikationsnummer 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSNR3 = "Kommunikationsnummer 3";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSNR4 = "Kommunikationsnummer 4";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSNR5 = "Kommunikationsnummer 5";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSNR6 = "Kommunikationsnummer 6";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSNR7 = "Kommunikationsnummer 7";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSTYP1 = "Kommunikationstyp 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSTYP2 = "Kommunikationstyp 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSTYP3 = "Kommunikationstyp 3";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSTYP4 = "Kommunikationstyp 4";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSTYP5 = "Kommunikationstyp 5";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSTYP6 = "Kommunikationstyp 6";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOMMUNIKATIONSTYP7 = "Kommunikationstyp 7";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KONTONR1 = "Kontonummer 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KONTONR2 = "Kontonummer 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOSMETISCHE_OPERATIONEN = "Kosmetische Operationen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KOSMETISCHE_OPERATIONEN_BEITRAGSSATZ = "Kosmetische Operationen Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KRANKENHAUSTAGEGELD = "Krankenhaustagegeld";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KRANKENHAUSTAGEGELD_BEITRAGSSATZ = "Krankenhaustagegeld Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KREISGEMEINDESCHLUESSEL = "Kreisgemeindeschluessel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KREISGEMEINDESCHLUESSEL_ZUSATZINFORMATION = "Kreisgemeindeschluessel Zusatzinformation";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KUENDIGUNGSKLAUSEL = "Kuendigungsklausel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KUENDIGUNGSKLAUSEL_VP = "Kuendigungsklausel VP / Personengruppe gestrichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KUNDENGRUPPE = "Kundengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KUNDENNR_VERMITTLER = "Personen-/Kundennummer des Vermittlers";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KUNDENNR_VERSICHERER = "Personen-/Kundennummer des Versicherers";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KURKOSTEN = "Kurkosten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KURKOSTEN_BEITRAGSSATZ = "Kurkosten Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LAENDERKENNZEICHEN = "Laenderkennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LAND_DES_AMTL_KENNZEICHENS = "Land des amtl. Kennzeichens";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LAUFZEITRABATT_IN_PROZENT = "Laufzeitrabatt in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEERSTELLEN = "Leerstellen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEERSTELLEN1 = "Leerstellen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEERSTELLEN2 = "Leerstellen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEERSTELLEN3 = "Leerstellen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEERSTELLEN4 = "Leerstellen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEERSTELLEN5 = "Leerstellen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LETZTE_ERHOEHUNG = "letzte Erhoehung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER = "Lfd. Nummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER1 = "Lfd. Nummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER2 = "Lfd. Nummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_SATZART = "Lfd. Nummer der Satzart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_VP = "Lfd. Nummer der versicherten Person (VP)";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE1 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE2 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE3 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE4 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE9 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_PERSONENNR_GEVO = "Lfd. Personennummer im GeVo";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_PERSONENNUMMER_DES_SICHERUNGSGLAEUBIGERS = "Lfd. Personennummer des Sicherungsglaeubigers";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MEHRLEISTUNGSKLAUSEL = "Mehrleistungsklausel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MEHRWERTGRUND = "Mehrwertgrund";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MEHRWERT_IN_WAEHRUNGSEINHEITEN = "Mehrwert";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MEHRZWECKFELD = "Mehrzweckfeld";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MITVERSICHERTE_PERSON_FAMILIENNAME = "Mitversicherte Person Familienname";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MITVERSICHERTE_PERSON_VORNAME = "Mitversicherte Person Vorname";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MODELLNAME = "Modellname";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAECHSTE_ERHOEHUNG = "naechste Erhoehung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAME1 = "Name1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAME2 = "Name2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAME3 = "Name3";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAME_KREDITINSTITUT1 = "Name des Kreditinstituts 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAME_KREDITINSTITUT2 = "Name des Kreditinstituts 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAME_MITVERSICHERTES_KIND = "Name des mitversicherten Kinds";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAME_VP = "Name der VP";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NEUPREIS_IN_WAEHRUNGSEINHEITEN = "Neupreis in Waehrungseinheiten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NUTZUNGSART = "Nutzungsart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ORDNUNGSBEGRIFF = "Ordnungsbegriff";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ORT = "Ort";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PASSIVES_KRIEGSRISIKO = "passives Kriegsrisiko";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PERSONENNUMMER_LFD_NUMMER = "Personennummer / lfd. Nummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PERSONEN_KUNDENNUMMER_DES_VERSICHERERS = "Personen-/Kundennummer des Versicherers";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String POLICIERUNGSDATUM = "Policierungsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String POSTALISCHES_KENNZEICHEN = "postalisches Kennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String POSTFACH = "postfach";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String POSTLEITZAHL = "Postleitzahl";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PRODUKTBESCHREIBUNG = "Produktbeschreibung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PRODUKTFORM = "Produktform";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PRODUKTFORM_GUELTIG_AB = "Produktform gueltig ab";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PRODUKTKENNUNG = "Produktkennung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PRODUKTNAME = "Produktname";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PRODUKTSPEZIFISCHE_ANTRAGSDATEN = "Produktspezifische Antragsdaten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PRODUKTSPEZIFISCHE_STAMMDATEN = "Produktspezifische Stammdaten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PROVISION = "Provision";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PROZENTSATZ_PROGRESSIVE_INVALIDITAET = "Prozentsatz progressive Invaliditaet";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RATENZAHLUNGSZUSCHLAG_IN_PROZENT = "Ratenzahlungszuschlag in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RECHTSFORM = "Rechtsform";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String REFERENZNUMMER = "Referenznummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String REFERENZ_VERSICHERUNGSSCHEINNUMMER = "Referenz-Versicherungsscheinnummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String REFERENZ_VERSICHERUNGSSCHEINNUMMER_1 = "1. Referenz-Versicherungsscheinnummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String REFERENZ_VERSICHERUNGSSCHEINNUMMER_2 = "2. Referenz-Versicherungsscheinnummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String REFERENZ_VERSICHERUNGSSCHEINNUMMER_3 = "3. Referenz-Versicherungsscheinnummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String REGISTRIERUNGSNUMMER_VERMITTLER = "Registrierungsnummer Vermittler";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RESTLAUFZEIT_VERTRAG = "Restlaufzeit des Vertrages";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOGRUPPE_RISIKOART = "Risikogruppe / Risikoart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOGRUPPE_RISIKOART1 = "Risikogruppe / Risikoart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOGRUPPE_RISIKOART2 = "Risikogruppe / Risikoart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOTEXT = "Risikotext";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOVERLAUF = "Risikoverlauf";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISKIOEINHEIT1 = "Risikoeinheit-1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISKIOEINHEIT2 = "Risikoeinheit-2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ROHBAU_EINMALBETRAG = "Rohbau-Einmalbetrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RUECKFUEHRUNGSKOSTEN = "Rueckfuehrungskosten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SAISONKENNZEICHEN = "Saisonkennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZART = "Satzart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMER = "Satznummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMER1 = "Satznummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMER2 = "Satznummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMER3 = "Satznummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMER4 = "Satznummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMER5 = "Satznummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMER9 = "Satznummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMERWIEDERHOLUNG = "Satznummerwiederholung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMERWIEDERHOLUNG1 = "Satznummerwiederholung1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMERWIEDERHOLUNG2 = "Satznummerwiederholung2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMERWIEDERHOLUNG3 = "Satznummerwiederholung3";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMERWIEDERHOLUNG4 = "Satznummerwiederholung4";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SATZNUMMERWIEDERHOLUNG9 = "Satznummerwiederholung9";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SCHADENBEARBEITUNGSKOSTEN = "Schadenbearbeitungskosten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SCHLUESSEL_SICHERUNGSEINRICHTUNG = "Schluessel Sicherungseinrichtung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SCHUTZBRIEF_VERKEHRSSERVICE = "Schutzbrief /Verkehrsservice";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SELBSTBETEILIGUNG = "Selbstbeteiligung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SELBSTBETEILIGUNG_IN_PROZENT = "Selbstbeteiligung in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = "Selbstbeteiligung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SELBSTBETEILIGUNG_IN_WE_MAX = "Selbstbeteiligung in WE (max.)";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SELBSTBETEILIGUNG_IN_WE_MIND = "Selbstbeteiligung in WE (mind.)";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SERVICELEISTUNGEN = "Serviceleistungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SERVICELEISTUNGEN_BEITRAGSSATZ = "Serviceleistungen Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SICHERUNGSEINRICHTUNG = "Sicherungseinrichtung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SICHERUNGSGLAEUBIGER = "Sicherungsglaeubiger";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SICHERUNGSSCHEIN = "Sicherungsschein";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SONDERBEDINGUNGEN = "Sonderbedingungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SONDERBEDINGUNGEN_KLAUSELN = "Sonderbedingungen / Klauseln";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SONDERVEREINBARUNGEN = "Sondervereinbarungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL = "Sonstigter Bezugsberechtigter im Leistungsfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SPARTE = "Sparte";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = "Spezifikation der Referenz-Versicherungsscheinnummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String STAATSANGEHOERIGKEIT = "Staatsangehoerigkeit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String STAERKE = "Staerke";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String STAERKEEINHEIT = "Staerkeeinheit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String STEUERNR_JURISTISCHE_PERSON = "Steuernummer bei juristischen Personen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String STOCKWERKE = "Stockwerke";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String STRASSE = "Strasse";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String STURMZONE = "Sturmzone";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TAGEGELD1 = "Tagegeld 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TAGEGELD1_BEITRAGSSATZ = "Tagegeld 1 Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TAGEGELD2 = "Tagegeld 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TAGEGELD2_BEITRAGSSATZ = "Tagegeld 2 Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TARIF = "Tarif";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGTEIL_IN_WAEHRUNGSEINHEITEN = "Tarifbeitrag 100 % fuer Kraftfahrt-Fahrzeugteil";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN = "Tarifbeitrag 100 % fuer Kraftfahrt-Fahrzeugvoll";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_HAFTPFLICHT_IN_WAEHRUNGSEINHEITEN = "Tarifbeitrag 100 % fuer Kraftfahrt-Haftpflicht";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TARIFBEZEICHNUNG = "Tarifbezeichnung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TARIFIERUNGSMERKMAL_LAUFZEIT = "Tarifierungsmerkmal Laufzeit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TARIFJAHR = "Tarifjahr";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TITEL = "Titel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TOD = "Tod";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TOD_BEITRAGSSATZ = "Tod-Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TRAEGERUNTERNEHMEN_NAME = "Traegerunternehmen Name";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TRAEGERUNTERNEHMEN_SCHLUESSEL = "Traegerunternehmen Schluessel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TYKLASSE_KH = "Tyklasse KH";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TYPKLASSE_FUER_KFT = "Typklasse fuer KFT";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TYPKLASSE_FUER_KFV = "Typklasse fuer KFV";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TYPSCHLUESSEL_NR = "Typschluessel-Nr.";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TYP_BANKVERBINDUNG1 = "Typ der Bankverbindung 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TYP_BANKVERBINDUNG2 = "Typ der Bankverbindung 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UEBERFUEHRUNGSKOSTEN = "Ueberfuehrungskosten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UEBERGANGSENTSCHAEDIGUNG = "Uebergangsentschaedigung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ = "Uebergangsentschaedigung Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UMBAUTER_RAUM = "umbauter Raum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UMSATZSTEUER_ID = "Umsatzsteuer-Identifikationsnummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UNBEKANNT = "unbekannt";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UNTERSTUETZUNGSKASSE_NAME = "Unterstuetzungskasse Name";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UNTERSTUETZUNGSKASSE_SCHLUESSEL = "Unterstuetzungskasse Schluessel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UNVERFALLBARKEIT = "Unverfallbarkeit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL = "Unwiderrufliches Bezugsrecht im Leistungsfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERKUERZTE_BEITRAGSZAHLUNGSDAUER = "verkuerzte Beitragszahlungsdauer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERMITTLER = "Geschaeftsstelle/Vermittler";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSICHERTES_OBJEKT = "Versichertes Objekt";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSICHERTE_GEFAHREN = "Versicherte Gefahren";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSICHERUNGSLEISTUNGEN = "Versicherungsleistungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSICHERUNGSSCHEINNUMMER = "Versicherungsschein-Nummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSICHERUNGSSCHEINNUMMER_VM = "Versicherungsscheinnummer VM";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_9999 = "Version Satzart 9999 Nachsatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0001 = "Version Satzart 0001";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0100 = "Version Satzart 0100";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0200 = "Version Satzart 0200";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_050 = "Version Satzart 0210 050";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_051 = "Version Satzart 0220 051";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_052 = "Version Satzart 0220 052";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_053 = "Version Satzart 0220 053";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_054 = "Version Satzart 0220 054";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_059 = "Version Satzart 0220 059";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_040 = "Version Satzart 0210 040";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_040 = "Version Satzart 0220 040";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_030 = "Version Satzart 0210 030";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_030 = "Version Satzart 0220 030";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_010 = "Version Satzart 0210 010";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_010 = "Version Satzart 0220 010";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_130 = "Version Satzart 0210 130";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_130 = "Version Satzart 0220 130";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_110 = "Version Satzart 0210 110";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_110 = "Version Satzart 0220 110";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_140 = "Version Satzart 0210 140";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_140 = "Version Satzart 0220 140";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_020 = "Version Satzart 0210 020";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_020 = "Version Satzart 0220 020";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_070 = "Version Satzart 0210 070";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_070 = "Version Satzart 0220 070";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_FEUER = "Version Satzart 0210 Feuer-Industrie/Gewerbliche Sachversicherung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_FEUER = "Version Satzart 0220 Feuer-Industrie/Gewerbliche Sachversicherung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_510 = "Version Satzart 0210 510";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_510 = "Version Satzart 0220 510";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_TECH_VERS = "Version Satzart 0210 Technische Versicherungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_TECH_VERS = "Version Satzart 0220 Technische Versicherungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_TRANSPORT = "Version Satzart 0210 Transport";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_TRANSPORT = "Version Satzart 0220 Transport";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0250_TRANSPORT = "Version Satzart 0250 Transport Einzelanmeldung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0260_TRANSPORT = "Version Satzart 0260 Transport Umsatzanmeldung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_NICHT_DEF_SPARTEN = "Version Satzart 0210 Nicht einzeln definierte Sparten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_NICHT_DEF_SPARTEN = "Version Satzart 0220 Nicht einzeln definierte Sparten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_KFZ_BAUSTEIN = "Version KFZ-Baustein";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0300_BETEILIGUNGSINFORMATION = "Version Satzart 0300 Beteiligungsinformation";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0400_INKASSO = "Version Satzart 0400 Inkasso";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0410_INKASSO = "Version Satzart 0410 Inkasso";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0430_INKASSO = "Version Satzart 0430 Inkasso";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0500_SCHADENINFORMATION = "Version Satzart 0500 Schadeninformation";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0420_VERSICHERUNGSTEUERABRECHNUNG = "Version Satzart 0420 Versicherungsteuerabrechnung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0450_INKASSOABRECHNUNG = "Version Satzart 0450 Inkassoabrechnung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0550_SCHADENABRECHNUNG = "Version Satzart 0550 Schadenabrechnung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0350_KLAUSELN = "Version Satzart 0350 Klausel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0211_050 = "Version Satzart 0211 050";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_051 = "Version Satzart 0221 051";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_052 = "Version Satzart 0221 052";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_053 = "Version Satzart 0221 053";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_054 = "Version Satzart 0221 054";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_055 = "Version Satzart 0221 055";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_059 = "Version Satzart 0221 059";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0211_040 = "Version Satzart 0211 040";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_040 = "Version Satzart 0221 040";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_030 = "Version Satzart 0221 030";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0211_010 = "Version Satzart 0211 010";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_010 = "Version Satzart 0221 010";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0211_130 = "Version Satzart 0211 130";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_130 = "Version Satzart 0221 130";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0211_110 = "Version Satzart 0211 110";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_110 = "Version Satzart 0221 110";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0211_140 = "Version Satzart 0211 140";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_140 = "Version Satzart 0221 140";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_070 = "Version Satzart 0221 070";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0211_FEUER = "Version Satzart 0211 Feuer-Industrie/Gewerbliche Sachversicherung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_FEUER = "Version Satzart 0221 Feuer-Industrie/Gewerbliche Sachversicherung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_510 = "Version Satzart 0221 510";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0211_TRANSPORT = "Version Satzart 0211 Transport";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_TRANSPORT = "Version Satzart 0221 Transport";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0251_TRANSPORT = "Version Satzart 0251 Transport Einzelanmeldung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0211_NICHT_DEF_SPARTEN = "Version Satzart 0211 Nicht einzeln definierte Sparten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0221_NICHT_DEF_SPARTEN = "Version Satzart 0221 Nicht einzeln definierte Sparten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_550 = "Version Satzart 0210 550";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_550 = "Version Satzart 0220 550";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0270_550 = "Version Satzart 0270 550";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0280_550 = "Version Satzart 0280 550";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0291_550 = "Version Satzart 0291 550";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0292_550 = "Version Satzart 0292 550";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0293_550 = "Version Satzart 0293 550";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0294_550 = "Version Satzart 0294 550";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0295_550 = "Version Satzart 0295 550";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0052 = "Version Satzart 0051";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0102 = "Version Satzart 0102";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0212 = "Version Satzart 0212";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0352 = "Version Satzart 0352";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0362 = "Version Satzart 0362";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0382 = "Version Satzart 0382";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_9950 = "Version Satzart 9950";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_9952 = "Version Satzart 9952";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_580 = "Version Satzart 0210 580";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_580 = "Version Satzart 0220 580";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0372 = "Version Satzart 0372";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0600 = "Version Satzart 0600";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERTRAGSABLAUF = "Vertragsablauf";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERTRAGSBEGINN = "Vertragsbeginn";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERTRAGSFORM = "Vertragsform";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERTRAGSSTATUS = "Vertragsstatus";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VORAUSSICHTLICHES_ENDE = "voraussichtliches Ende";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN = "Vorlaufsumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VORNAME_VP = "Vorname der VP";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VORSTEUERABZUGSBERECHTIGT = "Vorsteuerabzugsberechtigt";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VORZUGSSEUERBERECHTIGUNG_PROZENT = "Vorsteuerabszugsberechtigung in Prozent";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VORZUGSSTEUERBERECHTIGUNG = "Vorsteuerabszugsberechtigung Ja/Nein";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VP_PERSONENNUMMER_VERMITTLER = "VP-Personnenummer des Vermittlers";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VP_PERSONENNUMMER_VERSICHERER = "VP-Personnenummer des Versicherers";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VU_ABRECHNUNGSSTELLE = "VU-Abrechnungsstelle";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VU_NUMMER = "VU-Nummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAEHRUNGSSCHLUESSEL = "Waehrungsschluessel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAEHRUNG_DOKUMENTE_FUER_VN = "Waehrung der Dokumente fuer VN";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAGNIS = "Wagnis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAGNISKENNZIFFER = "Wagniskennziffer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WARTEZEIT = "Wartezeit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WEITERE_REFERENZNUMMERN = "Weitere Referenznummern";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WOHNEIGENTUM = "Wohneigentum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZAHLUNGSANFANG = "Zahlungsanfang";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZAHLUNGSART = "Zahlungsart /-weg";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZAHLUNGSWEISE = "Zahlungsweise";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG = "Zahlungsweise des kuenftigen Gesamtbetrags";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZIELGRUPPENSCHLUESSEL = "Zielgruppenschluessel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN = "Zukuenftiger Gesamtbeitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUSAETZLICHE_SATZKENNUNG = "zusaetzliche Satzkennung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUSCHLAG1_IN_PROZENT = "Zuschlag-1 in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUSCHLAG1_IN_WAEHRUNGSEINHEITEN = "Zuschlag-1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUSCHLAG2_IN_PROZENT = "Zuschlag-2 in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN = "Zuschlag-2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Zuschlagsbetrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUSCHLAG_IN_PROZENT = "Zuschlag in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUZAHLUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Zuzahlungsbetrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUZAHLUNGSDATUM = "Zuzahlungsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUZAHLUNGSRECHT = "Zuzahlungsrecht";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0392_EVB = "Version Satzart 0392 eVB-Nummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0230_LEBEN = "Version Satzart 0230 Fondsdatensatz - Leben";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0202_ALLG_ANTRAGSDATEN = "Version Satzart 0202 Allgemeine Antragsdaten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0230_UNFALL = "Version Satzart 0230 Unfall Leistungsarten";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0390_RABATTE = "Version Satzart 0390 Rabatte und Zuschlaege";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0342_BEGLEITDOK = "Version Satzart 0342 Begleitdokumente und Signaturen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_9951_MIME = "Version Satzart 9951 MIME-Datei";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_560 = "Version Satzart 0210 560";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_560 = "Version Satzart 0220 560";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_570 = "Version Satzart 0210 570";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_570 = "Version Satzart 0220 570";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0210_684 = "Version Satzart 0210 684";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSION_SATZART_0220_684 = "Version Satzart 0220 684";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String INTERNES_ORDNUNGSMERKMAL_DES_VM = "Internes Ordnungsmerkmal des VM";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG = "Faelligkeit der letzten Beitragszahlung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEBENSLANGE_BEITRAGSZAHLUNG = "Lebenslange Beitragszahlung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BESONDERE_VEREINBARUNGEN = "Besondere Vereinbarungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DIREKTANSPRUCH = "Direktanspruch";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String EINTRITTSALTER_DER_VP = "Eintrittsalter der VP";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ALTERSGRUPPE = "Altersgruppe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSZAHLUNG_BIS = "Beitragszahlung bis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RUECKGEWAEHRDATUM = "Rueckgewaehrdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = "Rueckgewaehrsumme zum Ablauf";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = "Ablaufleistung incl. Ueberschussanteile";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KAPITALERTRAGSSTEUER_BEI_ABLAUF = "Kapitalertragssteuer bei Ablauf";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SOLIDARITAETSZUSCHLAG_BEI_ABLAUF = "Solidarit\u00e4tszuschlag bei Ablauf";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Rueckkaufswert zum Berechnungsstichtag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BERECHNUNGSSTICHTAG_ZUM_RUECKKAUFSWERT = "Berechnungsstichtag zum Rueckkaufswert";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KAPITALERTRAGSSTEUER_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Kapitalertragssteuer bei Rueckkauf zum Berechnungsstichtag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Solidarit\u00e4tszuschlag bei Rueckkauf zum Berechnungsstichtag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Ueberschussanteile zum Berechnungsstichtag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEBURTSDATUM_DER_BEZUGSBERECHTIGTEN_PERSON = "Geburtsdatum der bezugsberechtigten Person";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANZAHL_DER_VERSICHERTEN_PERSONEN = "Anzahl der versicherten Personen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DATUM_UNVERFALLBARKEIT = "Datum Unverfallbarkeit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DIENSTEINTRITT = "Diensteintritt";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEBURTSDATUM_VP = "Geburtsdatum der VP";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEBURTSDATUM_VP2 = "Geburtsdatum der VP2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESCHLECHT_VP = "Geschlecht der VP";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_ZUR_WAGNISART = "Lfd Nummer zur Wagnisart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MITARBEITER_STATUS = "Mitarbeiter Status";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PERSONEN_KUNDENNUMMER_DES_VERMITTLERS = "Personen Kundennummer des Vermittlers";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SOZIALVERSICHERUNG_NUMMER = "Sozialversicherung Nummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String STATUS_SEIT = "Status seit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAGNISART = "Wagnisart";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VORZEICHEN = "Vorzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VORZEICHEN2 = "Vorzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VORZEICHEN3 = "Vorzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VORZEICHEN4 = "Vorzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VORZEICHEN5 = "Vorzeichen";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Erlebensfall VS zum Ablauf";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Todesfall VS zum Ablauf";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Erlebensfall VS II zum Ablauf";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Beitragsfreie Erlebensfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG = "Absoluter Dynamikerhoehungsbetrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Erlebensfall VS zum Beginn der Abrufphase";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Todesfall VS zum Beginn der Abrufphase";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Erlebensfall VS II zum Beginn der Abrufphase";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Anfaengliche Erlebensfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AENDERUNG_DER_ERLEBENSFALL_VS = "Aenderung der Erlebensfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSTAND_DER_ERLEBENSFAL_VS_AENDERUNGSTERMINE = "Abstand der Erlebensfall VS-Aenderungstermine";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERLEBENSFALL_VS_AENDERUNGS_PROZENTSATZ = "Erlebensfall VS-Aenderungs-Prozentsatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSOLUTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Absolute Erlebensfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Naechste Erlebensfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINNDATUM_DER_NAECHSTEN_ERLEBENSFALL_VS = "Beginndatum der naechsten Erlebensfall VS";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_BU_IN_WAEHRUNGSEINHEITEN = "Beitrag BU";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String EINSCHLUSS_PROZENT_SATZ = "Einschluss %-Satz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZWANG_ZUR_BUZ = "Zwang zur BUZ";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEISTUNGSDAUER = "Leistungsdauer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BUZ_VERWENDUNGSART = "BUZ Verwendungsart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RENTE_INCL_UEBERSCHUSSBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = "Rente inkl. Ueberschussbeteiligung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BUZ_LEISTUNG_VON = "BUZ Leistung von";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BUZ_LEISTUNG_BIS = "BUZ Leistung bis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BUZ_PROZENT_SATZ = "BUZ %-Satz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KARENZZEIT = "Karenzzeit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABWEICHENDE_LEISTUNGSDAUER = "Abweichende Leistungsdauer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUKUENFTIGER_BEITRAG = "Zukuenftiger Beitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAERHUNGSEINHEITEN = "Absoluter Dynamikerhoehungsbetrag";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT = "Erlebensfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEIT = "Todesfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERLEBENSFALL_VS2_IN_WAEHRUNGSEINHEIT = "Erlebensfall VS II";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT = "Beitragsfreie Erlebensfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSFREIE_TODESFALL_VS_IN_WAEHRUNGSEINHEIT = "Beitragsfreie Todesfall VS";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Versicherungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FALLENDE_SUMME = "fallende Summe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN = "Rente inkl. Ueberschussanrechnung";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSOLUTE_UNFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Absolute Unfallaenderungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAECHSTE_UNFALLSUMME_IN_WAEHRUNGSEINHEITEN = "Naechste Unfallsumme";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANFAENGLICHE_UNFALLSUMME = "Anfaengliche Unfallsumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AENDERUNG_DER_UNFALLLEISTUNG = "Aenderung der Unfallleistung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSTAND_DER_UNFALLAENDERUNGSTERMINE = "Abstand der Unfallaenderungstermine";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UNFALLAENDERUNGS_PROZENTSATZ = "Unfallaenderungs-Prozentsatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINNDATUM_DER_NAECHSTEN_UNFALLSUMME = "Beginndatum der naechsten Unfallsumme";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_PROMILLE = "Beitrag Promille";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UNFALLSUMME_IN_WAEHRUNGSEINHEITEN = "Unfallsumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOZUSCHLAG = "Risikozuschlag";
 
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_DES_FONDS = "Lfd. Nummer des Fonds";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WERTPAPIERKENNNUMMER = "Wertpapierkennnummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FONDSKENNUNG = "Fondskennung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ISIN_NUMMER = "ISIN-Nummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FONDSNAME = "Fondname";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String THESAUR = "Thesaur";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANTEILE = "Anteile";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEZUGSDATUM = "Bezugsdatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PROZENTSATZ = "Prozentsatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINNDATUM_DER_NAECHSTEN_JAHRESRENTESUMME = "Beginndatum der naechsten Jahresrentensumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GUTHABEN_DIVID_ANSAMMLUNG_IN_WAEHRUNGSEINHEITEN = "Guthaben Divid. Ansammlung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN2 = "Nettobeitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GARANTIERTE_FONDSJAHRESRENTE_ZUM_ABLAUF_INKL_ABRUFPHASE = "Garantierte Fondsjahresrente zum Ablauf (inkl. Abrufphase)";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GARANTIERTE_FONDSJAHRESRENTE_ZUM_BEGINN_DER_ABRUFPHASE = "Garantierte Fondsjahresrente zum Beginn der Abrufphase";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AKTUELLE_FONDSJAHRESRENTE_ZUM_ABLAUF_INKL_ABRUFPHASE = "Aktuelle Fondsjahresrente zum Ablauf (inkl. Abrufphase)";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AKTUELLE_FONDSJAHRESRENTE_ZUM_BEGINN_DER_ABRUFPHASE = "Aktuelle Fondsjahresrente zum Beginn der Abrufphase";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAGNISART4 = "Wagnisart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_ZUR_WAGNISART4 = "Lfd. Nummer zur Wagnisart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSOLUTE_TODESFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Absolute Todesfallaenderungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AENDERUNG_DER_BEITRAGSSUMME = "Aenderung der Beitragssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSTAND_DER_BEITRAGSSUMMENAENDERUNGSTERMINE = "Abstand der Beitragssummenaenderungstermine";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSSUMMENAENDERUNGS_PROZENTSATZ = "Beitragssummenaenderungs-Prozentsatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSOLUTE_BEITRAGSSUMMENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Absolute Beitragssummenaenderungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAECHSTE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = "Naechste Beitragssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINNDATUM_DER_NAECHSTEN_BEITRAGSSUMME = "Beginndatum der naechsten Beitragssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = "Beitragssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = "Todesfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String FALLENDE_VS = "fallende VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN = "Erlebensfall VS II";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSFREIE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = "Beitragsfreie Beitragssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSFREIE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = "Beitragsfreie Todesfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LAUFZEITVERKUERZUNG = "Laufzeitverkuerzung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERTRAG_MIT_ZUWACHSGARANTIE = "Vertrag mit Zuwachsgarantie";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TODESFALLLEISTUNG_IN_PROZENT = "Todesfallleistung in %";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SPARVORGANG = "Sparvorgang";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESTUNDET_AUSGESETZT_BIS = "Gestundet ausgesetzt bis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANLAGESTRATEGIE = "Anlagestrategie";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Erlebensfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GUTHABEN_DIVID_ANSAMMLUNG_IN_WAEHRUNGSEINHEIT = "Guthaben Divid. Ansammlung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KAPITALZAHLUNGS_SUMME_IN_WAEHRUNGSEINHEIT = "Kapitalzahlungs-Summe";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = "Anfaengliche Todesfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AENDERUNG_DER_TODESFALLLEISTUNG = "Aenderung der Todesfallleistung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSTAND_DER_TODESFALLAENDERUNGSTERMINE = "Abstand der Todesfallaenderungstermine";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TODESFALLAENDERUNGS_PROZENTSATZ = "Todesfallaenderungs-Prozentsatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSOLUTE_TODESFALLAENDERUNGSSUMME_VS_IN_WAEHRUNGSEINHEITEN = "Absolute Todesfallaenderungssumme VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = "Naechste Todesfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINNDATUM_DER_NAECHSTEN_TODESFALL_VS = "Beginndatum der naechsten Todesfall VS";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANFAENGLICHE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = "Anfaengliche Jahresrente";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AENDERUNG_DER_JAHRESRENTE = "Aenderung der Jahresrente";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSTAND_DER_JAHRESRENTENAENDERUNGSTERMINE = "Abstand der Jahresrentenaenderungstermine";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String JAHRESRENTENAENDERUNGS_PROZENTSATZ = "Jahresrentenaenderungs-Prozentsatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSOLUTE_JAHRESRENTENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Absolute Jahresrentenaenderungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAECHSTE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = "Naechste Jahresrente";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINNDATUM_DER_NAECHSTEN_JAHRESRENTE = "Beginndatum der naechsten Jahresrente";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = "Provisionspflichtige Beitragssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Provisionspflichtige Wertungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WERTUNGSBASIS = "Wertungsbasis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WERTUNGSMODELL = "Wertungsmodell";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BUCHUNGSKENNZEICHEN = "Buchungskennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Haftungswertungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String HAFTUNG_AB = "Haftung ab";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String HAFTUNG_BIS = "Haftung bis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String URSPRUENGLICHES_HAFTUNGSBEGINNDATUM = "Urspruengliches Haftungsbeginndatum";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Provisionspflichtige Beitragssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Provisionspflichtige Wertungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WERTUNGSBASIS2 = "Wertungsbasis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WERTUNGSMODELL2 = "Wertungsmodell";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BUCHUNGSKENNZEICHEN2 = "Buchungskennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Haftungswertungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String HAFTUNG_AB2 = "Haftung ab";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String HAFTUNG_BIS2 = "Haftung bis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEZUGSBERECHTIGT_IM_ERLEBENSFALL = "Bezugsberechtigt im Erlebensfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SONSTIGER_BEZUGSBERECHTIGTER_IM_ERLEBENSFALL = "Sonstiger Bezeugsberechtigter im Erlebensfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEZUGSRECHTANTEIL_IM_ERLEBENSFALL = "Bezugsrechtanteil im Erlebensfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UNWIDERRUFLICHES_BEZUGSRECHT_IM_ERLEBENSFALL = "Unwiderrufliches Bezugsrecht im Erlebensfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEZUGSBERECHTIGT_IM_TODESFALL = "Bezugsberechtigt im Todesfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL = "Sonstiger Bezugsberechtigter im Todesfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEZUGSRECHTANTEIL_IM_TODESFALL = "Bezugsrechtanteil im Todesfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UNWIDERRUFLICHES_BEZUGSRECHT_IM_TODESFALL = "Unwiderrufliches Bezugsrecht im Todesfall";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN = "Naechste Auszahlungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NAECHSTER_AUSZAHLUNGSTERMIN = "Naechster Auszahlungstermin";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AUSZAHLUNGSWEISE = "Auszahlungsweise";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANZAHL_DER_AUSZAHLUNGEN = "Anzahl der Auszahlungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABLAUF = "Ablauf";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AENDERUNG = "Aenderung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERTRAGSLAUFZEIT = "Vertragslaufzeit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERTRAGSART = "Vertragsart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String STATUS = "Status";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEWINNVERWENDUNGSART = "Gewinnverwendungsart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UEBERSCHUSS_GUELTIG_AB = "Ueberschuss gueltig ab";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOEINSCHRAENKUNG = "Risikoeinschraenkung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOZUSCHLAEGE = "Risikozuschlaege";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DYNAMIK_PROZENT_SATZ = "Dynamik %-Satz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERHOEHUNGSBASIS_DYNAMIK = "Erhoehungsbasis Dynamik";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DYNAMIKSTOP = "Dynamikstop";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK = "Datum der letzten positiven Dynamik";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN = "Rueckkaufswert";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN_MIT_NACHKOMMA = "Rueckkaufswert";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RUECKKAUFSWERT_GUELTIG_AB = "Rueckkaufswert gueltig ab";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GUTHABEN_DIVID_ANSAMMLUNGEN_IN_WAEHRUNGSEINHEITEN = "Guthaben Divid. Ansammlungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINN_DER_RENTENZAHLUNG = "Beginn der Rentenzahlung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MINDESTLAUFZEIT = "Mindestlaufzeit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RUECKGEWAEHR_BEI_TOD = "Rueckgewaehr bei Tod";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = "Jahresrente";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KAPITALZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Kapitalzahlungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WITWEN_WITWERRENTE_IN_PROZENT = "Witwen- / Witwerrente in Prozent";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TECHNISCHE_WITWEN_WITTWERRENTE_IN_PROZENT = "Technische Witwen- / Witwerrente in Prozent";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAISENRENTE_IN_PROZENT = "Waisenrente in Prozent";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TECHNISCHE_WAISE_IN_PROZENT = "Technische Waisenrente in Prozent";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SCHLUSSALTER_DES_WAISEN = "Schlussalter des Waisen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String AUSLOESUNG_DER_LEISTUNG = "Ausloesung der Leistung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZAHLUNG_DER_WITWEN_WITWERRENTE_BIS = "Zahlung der Witwen- / Witwerrente bis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ENDALTER = "Endalter";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String EINTRITTSALTER = "Eintrittsalter";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UMTAUSCHRECHT = "Umtauschrecht";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String STUNDUNG = "Stundung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINN_ABRUFPHASE = "Beginn Abrufphase";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAGNISART2 = "Wagnisart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_ZUR_WAGNISART2 = "Lfd. Nummer Wagnisart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABWEICHENDE_VERTRAGSLAUFZEIT = "Abweichende Vertragslaufzeit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABWEICHENDER_ABLAUF = "Abweichender Ablauf";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN = "Nettobeitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOZUSCHLAG_IN_WAEHRUNGSEINHEITEN = "Risikozuschlag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RENTENZAHLWEISE = "Rentenzahlweise";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MITZUVERSICHERNDE_PERSON = "Mitzuversichernde Person";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEBURTSDATUM_DER_MITZUVERSICHERNDEN_PERSON = "Geburtsdatum der mitzuversichernden Person";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESCHLECHT_DER_MITZUVERSICHERNDEN_PERSON = "Geschlecht der mitzuverschernden Person";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TARIFBEZEICHNUNG_DES_FOLGETARIFS = "Tarifbezeichnung des Folgetarifs";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UMSTELLUNGSDATUM_DES_FOLGETARIFS = "Umstellungsdatum des Folgetarifs";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ZUKUENFTIGER_BEITRAG_IN_WAEHRUNGSEINHEITEN = "Zukuenftiger Beitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERTRAGSBEDINGUNG = "Vertragsbedingung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DYNAMIKBEGINN = "Dynamikbeginn";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABWEICHENDES_DYNAMIKENDALTER = "Abweichendes Dynamikalter";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Absoluter Dynamikerhoehungsbetrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANTEILIGER_DYNAMIKPROZENTSATZ = "Anteiliger Dynamikprozentsatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VEREINBARTER_DYNAMIKMINDESTANPASSUNGSPROZENTSATZ = "Vereinbarter Dynamikmindestanpassungsprozentsatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VEREINBARTER_DYNAMIKMAXIMALANPASSUNGSPROZENTSATZ = "Vereinbarter Dynamikmaximalanpassungsprozentsatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANZAHL_VERBLEIBENDE_DYNAMIKWIDERSPRUECHE = "Anzahl verbleibende Dynamikwidersprueche";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAGNISART3 = "Wagnisart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_ZUR_WAGNISART3 = "Lfd. Numemr Wagnisart";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEISTUNG_BEI_SCHWERER_ERKRANKUNG = "Leistung bei schwerer Erkrankung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String VERSICHERTE_ERKRANKUNGEN = "Versicherte Erkrankungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEISTUNGSBEGINN_AB = "Leistungsbeginn ab";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String JAHRESRENTE_IN_WAEHRUNGSEINHEITEN2 = "Jahresrente";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KAPITALZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Kapitalzahlungssumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TEILKAPITALISIERUNG = "Teilkapitalisierung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TODESFALLLEISTUNG_IN_WAEHRUNGSEINHEITEN = "Todesfallleistung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String EINGERECHNETE_ZULAGE = "Eingerechnete Zulage";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String EINRECHNUNGSJAHR = "Einrechnungsjahr";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TEILDATENSATZNUMMER = "Teildatensatznummer";
 
     // Haftpflicht
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNZEICHEN_FUER_ABWEICHENDE_ABSCHLUSSPROVISION = "Kennzeichen fuer abweichende Abschlussprovision";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNZEICHEN_FUER_ABWEICHENDE_FOLGEPROVISION = "Kennzeichen fuer abweichende Folgeprovision";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RESTLAUFZEIT_DES_VERTRAGES = "Restlaufzeit des Vertrages";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SELBSTBEHALT = "Selbstbehalt";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAEHRUNGSSCHLUESSEL_1 = "Waehrungsschluessel 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAEHRUNGSSCHLUESSEL_2 = "Waehrungsschluessel 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAEHRUNGSSCHLUESSEL_3 = "Waehrungsschluessel 3";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAEHRUNGSSCHLUESSEL_4 = "Waehrungsschluessel 4";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG_JE_BERECHNUNGSEINHEIT_UND_MENGENSCHLUESSEL = "Beitrag je Berechnungseinheit und Mengenschluessel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BERECHNUNGSEINHEIT = "Berechnungseinheit";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 1 in Tausend";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 2 in Tausend";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 3 in Tausend";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 4 in Tausend";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERHOEHUNGSSATZ_8_III_AHB = "Erhoehungssatz \u00a78, III AHB";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNUNG_ERHOEHUNGSSATZ = "Kennung Erhoehungssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String KENNZEICHEN_FUER_JAHRES_MAXIMIERUNG = "Kennzeichen fuer Jahres-Maximierung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LETZTE_ERHOEHUNG_8_III_AHB = "Letzte Erhoehung \u00a78, III AHB";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MENGENSCHLUESSEL = "Mengenschluessel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String MINDESTBEITRAG_JE_WAGNIS_IN_WAEHRUNGSEINHEITEN = "Mindestbeitrag je Wagnis";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ORDNUNGS_NUMMER_FUER_WAGNISZUSATZ2 = "Ordungs-Nummer fuer Wagniszusatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String POSTLEITZAHL_DER_RISIKOANSCHRIFT = "Postleitzahl der Risikoanschrift";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOORT = "Risikoort";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOSTRASSE = "Risikostrasse";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SUMMENART_1 = "Summenart 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SUMMENART_2 = "Summenart 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SUMMENART_3 = "Summenart 3";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SUMMENART_4 = "Summenart 4";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAGNISBESCHREIBUNG = "Wagnisbeschreibung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAGNISMENGE = "Wagnismenge";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAGNISTEXT = "Wagnistext";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DECKUNGSSUMME_1_IN_WAEHRUNGSEINHEITEN = "Deckungssumme 1";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DECKUNGSSUMME_2_IN_WAEHRUNGSEINHEITEN = "Deckungssumme 2";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DECKUNGSSUMME_3_IN_WAEHRUNGSEINHEITEN = "Deckungssumme 3";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DECKUNGSSUMME_4_IN_WAEHRUNGSEINHEITEN = "Deckungssumme 4";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ORDNUNGS_NUMMER_FUER_WAGNISZUATZ = "Ordungs-Nummer fuer Wagniszusatz";
 
     // Unfall
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String REFERENZ_VERSICHERUNGSSCHEINNUMME = "Referenz-Versicherungsscheinnumme";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String DAUERSCHAEDEN_KOERPERLICHE_BEEINTRAECHTIGUNGEN = "Dauerschaeden / koerperliche Beeintraechtigungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERKRANKUNGEN = "Erkrankungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UNFAELLE = "Unfaelle";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ART_DER_AUSZAHLUNG = "Art der Auszahlung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ART_DER_LEISTUNG = "Art der Leistung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ART_DES_BEITRAGSSATZES = "Art des Beitragssatzes";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEGINN_DER_ZAHLUNG_AB_TAG = "Beginn der Zahlung ab Tag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAG = "Beitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEITRAGSSATZ = "Beitragssatz";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEZEICHNUNG_DER_LEISTUNG = "Bezeichnung der Leistung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEISTUNG = "Leistung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEISTUNG_AB_INVALIDITAETSGRAD_IN_PROZENT = "Leistung ab Invaliditaetsgrad in Prozent";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LEISTUNGSZAHLUNGSWEISE = "Leistungszahlungsweise";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LFD_NUMMER_ZUR_ART_DER_LEISTUNG = "Laufende Nummer zur Art der Leistung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PROZENTSATZ_PROGRESSIVE_INVALIDITAET_MEHRLEISTUNG_BEI_INVALIDITAET = "Prozentsatz progressive Invaliditaet / Mehrleistung bei Invaliditaet";
 
     // Verbundene Hausrat
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String INTRO1 = "Intro";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String LAENDERKENNZEICHEN_DER_RISIKOANSCHRIFT = "Laenderkennzeichen der Risikoanschrift";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WAEHRUNGSSCHUESSEL = "Waehrungsschluessel";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ABSCHLAGSBEITRAG_IN_WAEHRUNGSEINHEITEN = "Abschlagsbeitrag";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESAMTVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Gesamtversicherungssummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BEDINGUNGEN = "Bedingungen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ERWEITERTE_NEUWERTVERSICHERUNG = "erweiterte Neuwertversicherung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String SICHERUNGSRICHTLINIEN = "Sicherungsrichtlinien";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String EINBRUCH_MELDEANLAGE = "Einbruch Meldeanlage";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String RISIKOKENNZIFFER = "Risikokennziffer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ANZAHL_MONATE_UNBEWOHNT = "Anzahl Monate unbewohnt";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String WOHNFLAECHE_QM = "Wohnflaeche qm";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String TARIFZONE = "Tarifzone";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BAUARTKLASSE = "Bauartklasse";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GEFAHRENERHOEHUNG = "Gefahrenerhoehung";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String EINSCHLUSS_VANDALISMUS = "Einschluss Vandalismus";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String UNTERVERS_VERZICHT = "Untervers.-Verzicht";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String OBJEKTNUMMER2 = "Objektnummer";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String BUENDELUNSKENNZEICHEN = "Buendelungskennzeichen";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String GESCHAEFTSSTELLE_VERMITTLER = "Geschaeftsstelle / Vermittler";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String STAENDIG_BEWOHNT = "Staendig bewohnt";
-    /** @Deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String OBJEKTNUMMER = "Objektnummer";
 
     /////////// Konstanten mit NAME_-Prefix ///////////////////////////////////
