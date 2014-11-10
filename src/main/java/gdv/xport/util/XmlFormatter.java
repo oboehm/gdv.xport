@@ -26,7 +26,13 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.Iterator;
@@ -42,7 +48,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer XML-Struktur ausgeben zu koennen.
+ * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
+ * XML-Struktur ausgeben zu koennen.
  *
  * @author oliver (ob@aosd.de)
  * @since 0.2 (13.11.2009)
@@ -50,8 +57,7 @@ import org.slf4j.LoggerFactory;
 public final class XmlFormatter extends AbstractFormatter {
 
     private static final Logger LOG = LoggerFactory.getLogger(XmlFormatter.class);
-    private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
-    /** Writer fuer die XML-Ausgabe. */
+    private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
     private XMLStreamWriter xmlStreamWriter;
 
     /**
@@ -66,17 +72,16 @@ public final class XmlFormatter extends AbstractFormatter {
     /**
      * Der Konstruktor fuer die normale Arbeit.
      *
-     * @param writer
-     *            the writer
+     * @param writer the writer
      */
     public XmlFormatter(final Writer writer) {
         super(writer);
         try {
-            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(writer);
-        } catch (XMLStreamException e) {
-            throw new RuntimeException("you should never see this", e);
-        } catch (FactoryConfigurationError e) {
-            throw new ConfigException("XML problems", e);
+            this.xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(writer);
+        } catch (XMLStreamException ex) {
+            throw new ShitHappenedException("you should never see this", ex);
+        } catch (FactoryConfigurationError ex) {
+            throw new ConfigException("XML problems", ex);
         }
     }
 
@@ -114,11 +119,11 @@ public final class XmlFormatter extends AbstractFormatter {
     public XmlFormatter(final OutputStream ostream) {
         super(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
         try {
-            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
-        } catch (XMLStreamException e) {
-            throw new RuntimeException("you should never see this", e);
-        } catch (FactoryConfigurationError e) {
-            throw new ConfigException("XML problems", e);
+            this.xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
+        } catch (XMLStreamException ex) {
+            throw new ShitHappenedException("you should never see this", ex);
+        } catch (FactoryConfigurationError ex) {
+            throw new ConfigException("XML problems", ex);
         }
     }
 
@@ -131,7 +136,7 @@ public final class XmlFormatter extends AbstractFormatter {
     public void setWriter(final Writer writer) {
         super.setWriter(writer);
         try {
-            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(new WriterOutputStream(writer),
+            this.xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(new WriterOutputStream(writer),
                     Config.DEFAULT_ENCODING.name());
         } catch (XMLStreamException ex) {
             throw new IllegalArgumentException("can't create XmlStreamWriter with " + writer, ex);
@@ -147,7 +152,7 @@ public final class XmlFormatter extends AbstractFormatter {
     public void setWriter(final OutputStream ostream) {
         super.setWriter(ostream);
         try {
-            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
+            this.xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
         } catch (XMLStreamException ex) {
             throw new IllegalArgumentException("can't create XmlStreamWriter with " + ostream, ex);
         }
@@ -265,7 +270,11 @@ public final class XmlFormatter extends AbstractFormatter {
     }
 
     /**
-     * Falls man diese Klasse mit dem File-Konstruktor geoeffnet hat, sollte man den Stream hierueber wieder schliessen.
+     * Falls man diese Klasse mit dem File-Konstruktor geoeffnet hat, sollte man
+     * den Stream hierueber wieder schliessen.
+     * <p>
+     * TODO: Wird mit 1.1 entfernt werden - bitte nicht mehr benuetzen.
+     * </p>
      *
      * @since 0.3
      * @throws IOException sollte eigentlich nicht vorkommen
@@ -295,7 +304,7 @@ public final class XmlFormatter extends AbstractFormatter {
         try {
             formatter.write(feld);
         } catch (XMLStreamException shouldnothappen) {
-            throw new RuntimeException("can't convert " + feld + " to String", shouldnothappen);
+            throw new ShitHappenedException("can't convert " + feld + " to String", shouldnothappen);
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
@@ -314,7 +323,7 @@ public final class XmlFormatter extends AbstractFormatter {
         try {
             formatter.write(teildatensatz);
         } catch (XMLStreamException shouldnothappen) {
-            throw new RuntimeException("can't convert " + teildatensatz + " to String", shouldnothappen);
+            throw new ShitHappenedException("can't convert " + teildatensatz + " to String", shouldnothappen);
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
@@ -354,7 +363,7 @@ public final class XmlFormatter extends AbstractFormatter {
         try {
             formatter.write(datenpaket);
         } catch (IOException shouldnothappen) {
-            throw new RuntimeException("can't convert " + datenpaket + " to String", shouldnothappen);
+            throw new ShitHappenedException("can't convert " + datenpaket + " to String", shouldnothappen);
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
