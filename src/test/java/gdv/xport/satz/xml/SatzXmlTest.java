@@ -252,4 +252,17 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         ObjectTester.assertEquals(satz, satz100);
     }
 
+    /**
+     * Der Satz in "Satz0212.050.xml" handelt es sich um einen Satz mit
+     * Sparte 50 (und Satzart 212).
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testSparte50() throws XMLStreamException {
+        SatzXml sparte50 = getSatz("Satz0212.050.xml");
+        assertEquals(212, sparte50.getSatzart());
+        assertEquals(50, sparte50.getSparte());
+    }
+
 }
