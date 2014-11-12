@@ -85,10 +85,19 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         XMLEventReader parser = createXMLEventReader(resource);
         try {
             SatzXml satz = new SatzXml(parser);
-            Map<String, FeldXml> felder = XmlService.parseFelder(parser);
+            Map<String, FeldXml> felder = getFelder();
             satz.setFelder(felder);
             setUp(satz);
             return satz;
+        } finally {
+            parser.close();
+        }
+    }
+
+    private static Map<String, FeldXml> getFelder() throws XMLStreamException {
+        XMLEventReader parser = createXMLEventReader("felder.xml");
+        try {
+            return XmlService.parseFelder(parser);
         } finally {
             parser.close();
         }
@@ -127,7 +136,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      */
     @Test
     public void testGetPersonennummer() {
-        Feld personennummer = satz100.getFeld(new Bezeichner(Bezeichner.LFD_PERSONENNR_GEVO));
+        Feld personennummer = satz100.getFeld(new Bezeichner(Bezeichner.NAME_LFD_PERSONENNR_GEVO));
         assertEquals(6, personennummer.getAnzahlBytes());
         assertEquals(250, personennummer.getByteAdresse());
     }
@@ -209,7 +218,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         try {
             SatzXml satz = new SatzXml(parser);
             String expected = satz.getFeld(Feld1bis7.SATZART).getInhalt();
-            Map<String, FeldXml> felder = XmlService.parseFelder(parser);
+            Map<String, FeldXml> felder = getFelder();
             satz.setFelder(felder);
             assertEquals(expected, satz.getFeld(Feld1bis7.SATZART).getInhalt());
         } finally {
