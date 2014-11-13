@@ -1688,7 +1688,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ZUSCHLAG_IN_PROZENT = "Zuschlag in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#ZUZAHLUNGSBETRAG_IN_WE} verwenden */
     @Deprecated
     public static final String ZUZAHLUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Zuzahlungsbetrag";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -3225,7 +3225,6 @@ public final class Bezeichner {
     public static final String NAME_ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN = "Zuschlag-2";
     public static final String NAME_ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Zuschlagsbetrag";
     public static final String NAME_ZUSCHLAG_IN_PROZENT = "Zuschlag in %";
-    public static final String NAME_ZUZAHLUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Zuzahlungsbetrag";
     public static final String NAME_ZUZAHLUNGSDATUM = "Zuzahlungsdatum";
     public static final String NAME_ZUZAHLUNGSRECHT = "Zuzahlungsrecht";
 
