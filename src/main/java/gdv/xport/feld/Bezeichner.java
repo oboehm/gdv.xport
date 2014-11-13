@@ -20,9 +20,7 @@
 package gdv.xport.feld;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
@@ -65,7 +63,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ABSCHLAG1_IN_PROZENT = "Abschlag-1 in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#ABSCHLAG1_IN_WE} verwenden */
     @Deprecated
     public static final String ABSCHLAG1_IN_WAEHRUNGSEINHEITEN = "Abschlag-1";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -893,7 +891,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String LFD_NUMMER_VP_PERSONENGRUPPE9 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#LFD_PERSONEN_NR_IM_GEVO} verwenden */
     @Deprecated
     public static final String LFD_PERSONENNR_GEVO = "Lfd. Personennummer im GeVo";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -1292,7 +1290,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String VERSICHERUNGSLEISTUNGEN = "Versicherungsleistungen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#VS_NR} verwenden */
     @Deprecated
     public static final String VERSICHERUNGSSCHEINNUMMER = "Versicherungsschein-Nummer";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -1625,7 +1623,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String VU_ABRECHNUNGSSTELLE = "VU-Abrechnungsstelle";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#VU_NR} verwenden */
     @Deprecated
     public static final String VU_NUMMER = "VU-Nummer";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -2675,6 +2673,18 @@ public final class Bezeichner {
 
     /////////// Bezeichner-Konstanten /////////////////////////////////////////
 
+    /** Die Konstante ABSCHLAG1_IN_WE. */
+    public static final Bezeichner ABSCHLAG1_IN_WE = new Bezeichner("Abschlag-1 in Waehrungseinheiten", "Abschlag1InWE");
+
+    /** Die Konstante LFD_PERSONEN_NR_IM_GEVO. */
+    public static final Bezeichner LFD_PERSONEN_NR_IM_GEVO = new Bezeichner ("Lfd. Personennummer im GeVo", "LfdPersonenNrImGevo");
+
+    /** Die Konstante VS_NR. */
+    public static final Bezeichner VS_NR = new Bezeichner("Versicherungsschein-Nummer", "VsNr");
+
+    /** Die Konstante VU_NR. */
+    public static final Bezeichner VU_NR = new Bezeichner("VU-Nummer", "VuNr");
+
     /** Die Konstante ZUZAHLUNGSBETRAG_IN_WE. */
     public static final Bezeichner ZUZAHLUNGSBETRAG_IN_WE = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten",
             "ZuzahlungsbetragInWE");
@@ -2684,7 +2694,6 @@ public final class Bezeichner {
     public static final String NAME_ABGANGSDATUM = "Abgangsdatum";
     public static final String NAME_ABGANGSGRUND = "Abgangsgrund";
     public static final String NAME_ABSCHLAG1_IN_PROZENT = "Abschlag-1 in %";
-    public static final String NAME_ABSCHLAG1_IN_WAEHRUNGSEINHEITEN = "Abschlag-1";
     public static final String NAME_ABSCHLAG2_IN_PROZENT = "Abschlag-2 in %";
     public static final String NAME_ABSCHLAG2_IN_WAEHRUNGSEINHEITEN = "Abschlag-2";
     public static final String NAME_ABSCHLAG3_IN_PROZENT = "Abschlag-3 in %";
@@ -2960,7 +2969,6 @@ public final class Bezeichner {
     public static final String NAME_LFD_NUMMER_VP_PERSONENGRUPPE3 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String NAME_LFD_NUMMER_VP_PERSONENGRUPPE4 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
     public static final String NAME_LFD_NUMMER_VP_PERSONENGRUPPE9 = "Lfd. Nummer der versicherten Person (VP) / Personengruppe";
-    public static final String NAME_LFD_PERSONENNR_GEVO = "Lfd. Personennummer im GeVo";
     public static final String NAME_LFD_PERSONENNUMMER_DES_SICHERUNGSGLAEUBIGERS = "Lfd. Personennummer des Sicherungsglaeubigers";
     public static final String NAME_MEHRLEISTUNGSKLAUSEL = "Mehrleistungsklausel";
     public static final String NAME_MEHRWERTGRUND = "Mehrwertgrund";
@@ -3093,7 +3101,6 @@ public final class Bezeichner {
     public static final String NAME_VERSICHERTES_OBJEKT = "Versichertes Objekt";
     public static final String NAME_VERSICHERTE_GEFAHREN = "Versicherte Gefahren";
     public static final String NAME_VERSICHERUNGSLEISTUNGEN = "Versicherungsleistungen";
-    public static final String NAME_VERSICHERUNGSSCHEINNUMMER = "Versicherungsschein-Nummer";
     public static final String NAME_VERSICHERUNGSSCHEINNUMMER_VM = "Versicherungsscheinnummer VM";
     public static final String NAME_VERSION_SATZART_9999 = "Version Satzart 9999 Nachsatz";
     public static final String NAME_VERSION_SATZART_0001 = "Version Satzart 0001";
@@ -3204,7 +3211,6 @@ public final class Bezeichner {
     public static final String NAME_VP_PERSONENNUMMER_VERMITTLER = "VP-Personnenummer des Vermittlers";
     public static final String NAME_VP_PERSONENNUMMER_VERSICHERER = "VP-Personnenummer des Versicherers";
     public static final String NAME_VU_ABRECHNUNGSSTELLE = "VU-Abrechnungsstelle";
-    public static final String NAME_VU_NUMMER = "VU-Nummer";
     public static final String NAME_WAEHRUNGSSCHLUESSEL = "Waehrungsschluessel";
     public static final String NAME_WAEHRUNG_DOKUMENTE_FUER_VN = "Waehrung der Dokumente fuer VN";
     public static final String NAME_WAGNIS = "Wagnis";
@@ -3575,9 +3581,9 @@ public final class Bezeichner {
 
     // Mapping fuer manche Bezeichner (Name <--> technischer Name)
     static {
-        MAPPING.put(NAME_LFD_PERSONENNR_GEVO, "LfdPersonenNrImGevo");
-        MAPPING.put(NAME_VERSICHERUNGSSCHEINNUMMER, "VsNr");
-        MAPPING.put(NAME_VU_NUMMER, "VuNr");
+        MAPPING.put(LFD_PERSONEN_NR_IM_GEVO.name, LFD_PERSONEN_NR_IM_GEVO.technischerName);
+        MAPPING.put(VS_NR.name, VS_NR.technischerName);
+        MAPPING.put(VU_NR.name, VU_NR.technischerName);
     }
 
     /**

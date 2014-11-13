@@ -21,12 +21,8 @@ package gdv.xport.satz.xml;
 import static gdv.xport.satz.xml.AbstractXmlTest.createXMLEventReader;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.satz.AbstractDatensatzTest;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Teildatensatz;
+import gdv.xport.feld.*;
+import gdv.xport.satz.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.model.Satz100;
 
@@ -136,7 +132,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      */
     @Test
     public void testGetPersonennummer() {
-        Feld personennummer = satz100.getFeld(new Bezeichner(Bezeichner.NAME_LFD_PERSONENNR_GEVO));
+        Feld personennummer = satz100.getFeld(Bezeichner.LFD_PERSONEN_NR_IM_GEVO);
         assertEquals(6, personennummer.getAnzahlBytes());
         assertEquals(250, personennummer.getByteAdresse());
     }
