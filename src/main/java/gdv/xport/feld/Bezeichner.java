@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -2672,6 +2673,12 @@ public final class Bezeichner {
     @Deprecated
     public static final String OBJEKTNUMMER = "Objektnummer";
 
+    /////////// Bezeichner-Konstanten /////////////////////////////////////////
+
+    /** Die Konstante ZUZAHLUNGSBETRAG_IN_WE. */
+    public static final Bezeichner ZUZAHLUNGSBETRAG_IN_WE = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten",
+            "ZuzahlungsbetragInWE");
+
     /////////// Konstanten mit NAME_-Prefix ///////////////////////////////////
 
     public static final String NAME_ABGANGSDATUM = "Abgangsdatum";
@@ -3569,9 +3576,9 @@ public final class Bezeichner {
 
     // Mapping fuer manche Bezeichner (Name <--> technischer Name)
     static {
-        MAPPING.put(LFD_PERSONENNR_GEVO, "LfdPersonenNrImGevo");
-        MAPPING.put(VERSICHERUNGSSCHEINNUMMER, "VsNr");
-        MAPPING.put(VU_NUMMER, "VuNr");
+        MAPPING.put(NAME_LFD_PERSONENNR_GEVO, "LfdPersonenNrImGevo");
+        MAPPING.put(NAME_VERSICHERUNGSSCHEINNUMMER, "VsNr");
+        MAPPING.put(NAME_VU_NUMMER, "VuNr");
     }
 
     /**
@@ -3614,7 +3621,7 @@ public final class Bezeichner {
             return techName;
         }
         StringBuilder converted = new StringBuilder();
-        char[] chars = input.toCharArray();
+        char[] chars = WordUtils.capitalize(input).toCharArray();
         for (int i = 0; i < chars.length; i++) {
             switch (chars[i]) {
                 case '\u00c4':
@@ -3645,7 +3652,14 @@ public final class Bezeichner {
                     break;
             }
         }
-        return converted.toString();
+        techName = converted.toString();
+        if (techName.endsWith("datum")) {
+            return techName.substring(0, techName.length() - 2);
+        }
+        if (techName.endsWith("Waehrungseinheiten")) {
+            return techName.substring(0, techName.length() - 18) + "WE";
+        }
+        return techName;
     }
 
     /**

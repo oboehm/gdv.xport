@@ -56,6 +56,28 @@ public class BezeichnerTest {
     }
 
     /**
+     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Namen, die
+     * auf "Datum" aufhoeren, haben meist "Dat" als Endung fuer den technischen
+     * Namen.
+     */
+    @Test
+    public void testGetTechnischerNameForDatum() {
+        Bezeichner zuzahlungsdatum = new Bezeichner("Zuzahlungsdatum");
+        assertEquals("Zuzahlungsdat", zuzahlungsdatum.getTechnischerName());
+    }
+
+    /**
+     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Namen, die auf
+     * "Waehrungseinheit" aufhoeren, haben meist "WE" als Endung fuer den
+     * technischen Namen.
+     */
+    @Test
+    public void testGetTechnischerNameForWaehrungseinheit() {
+        Bezeichner zuzahlungsdatum = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten");
+        assertEquals("ZuzahlungsbetragInWE", zuzahlungsdatum.getTechnischerName());
+    }
+
+    /**
      * Zwei Bezeichner mit dem identischen Namen sollten natuerlich gleich
      * sein.
      */
