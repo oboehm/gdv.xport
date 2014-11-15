@@ -20,7 +20,9 @@
 package gdv.xport.feld;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
@@ -190,7 +192,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String AUSSCHLUSS = "Ausschluss";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#AUSSCHLUSSDAT_VP_PERSONENGRUPPE} verwenden */
     @Deprecated
     public static final String AUSSCHLUSSDATUM_VP = "Ausschlussdatum VP / Personengruppe";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -337,10 +339,10 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String BUENDELUNGSKENNZEICHEN = "Buendelungskennzeichen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#DAT_BEZUGSFERTIGKEIT} verwenden */
     @Deprecated
     public static final String DATUM_DER_BEZUGSFERTIGKEIT = "Datum der Bezugsfertigkeit";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#DAT_LETZTEN_BEITRAGSANGLEICHUNG} verwenden */
     @Deprecated
     public static final String DATUM_LETZTE_BEITRAGSANGLEICHUNG = "Datum der letzten Beitragsangleichung";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -2674,8 +2676,18 @@ public final class Bezeichner {
 
     /////////// Bezeichner-Konstanten /////////////////////////////////////////
 
+    /** Die Konstante AUSSCHLUSSDAT_VP_PERSONENGRUPPE. */
+    public static final Bezeichner AUSSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner(
+            "Ausschlussdatum VP / Personengruppe", "AusschlussdatVpPersonengruppe");
+
     /** Die Konstante ABSCHLAG1_IN_WE. */
     public static final Bezeichner ABSCHLAG1_IN_WE = new Bezeichner("Abschlag-1 in Waehrungseinheiten", "Abschlag1InWE");
+
+    /** Die Konstante DAT_BEZUGSFERTIGKEIT. */
+    public static final Bezeichner DAT_BEZUGSFERTIGKEIT = new Bezeichner("Datum der Bezugsfertigkeit", "DatBezugsfertigkeit");
+
+    /** Die Konstante DAT_BEZUGSFERTIGKEIT. */
+    public static final Bezeichner DAT_LETZTEN_BEITRAGSANGLEICHUNG = new Bezeichner("Datum der letzten Beitragsangleichung", "DatLetztenBeitragsangleichung");
 
     /** Die Konstante LFD_PERSONEN_NR_IM_GEVO. */
     public static final Bezeichner LFD_PERSONEN_NR_IM_GEVO = new Bezeichner ("Lfd. Personennummer im GeVo", "LfdPersonenNrImGevo");
@@ -2692,7 +2704,6 @@ public final class Bezeichner {
 
     /////////// Konstanten mit NAME_-Prefix ///////////////////////////////////
 
-    public static final String NAME_ABGANGSDATUM = "Abgangsdatum";
     public static final String NAME_ABGANGSGRUND = "Abgangsgrund";
     public static final String NAME_ABSCHLAG1_IN_PROZENT = "Abschlag-1 in %";
     public static final String NAME_ABSCHLAG2_IN_PROZENT = "Abschlag-2 in %";
@@ -2708,7 +2719,6 @@ public final class Bezeichner {
     public static final String NAME_ABWEICHENDE_VU_NR = "Abweichende VU-Nr.";
     public static final String NAME_ADRESSAT = "Adressat";
     public static final String NAME_ADRESSKENNZEICHEN = "Adresskennzeichen";
-    public static final String NAME_AENDERUNGSDATUM = "Aenderungsdatum";
     public static final String NAME_AENDERUNGSGRUND = "Aenderungsgrund";
     public static final String NAME_AFB = "A,F,B";
     public static final String NAME_AKTENZEICHEN_SICHERUNGSGLAEUBIGER = "Aktenzeichen des Sicherungsglaeubigers";
@@ -2717,8 +2727,6 @@ public final class Bezeichner {
     public static final String NAME_AMTL_KENNZEICHEN = "Amtl. Kennzeichen";
     public static final String NAME_ANREDESCHLUESSEL = "Anredeschluessel";
     public static final String NAME_ANTEIL_IN_PROZENT = "Anteil in %";
-    public static final String NAME_ANTRAGSDATUM = "Antragsdatum";
-    public static final String NAME_ANTRAGSEINGANGSDATUM = "Antragseingangsdatum";
     public static final String NAME_ANZAHL_DER_VORBESITZER = "Anzahl der Vorbesitzer";
     public static final String NAME_ANZAHL_SAETZE = "Anzahl der Saetze";
     public static final String NAME_ANZAHL_VP_PRO_PERSONENGRUPPE = "Anzahl der VP pro Personengruppe";
@@ -2736,7 +2744,6 @@ public final class Bezeichner {
     public static final String NAME_AUFTEILUNG_VERSICHERUNGSSTEUER = "Aufteilung Versicherungsteuer gemaess EU-Richtlinien";
     public static final String NAME_AUFTRAGSNR_VERMITTLER = "Auftrags-Nr. des Vermittlers";
     public static final String NAME_AUSSCHLUSS = "Ausschluss";
-    public static final String NAME_AUSSCHLUSSDATUM_VP = "Ausschlussdatum VP / Personengruppe";
     public static final String NAME_BAUJAHR = "Baujahr";
     public static final String NAME_BAUSTEIN_GESAMTBEITRAG_1_IN_WAEHRUNGSEINHEITEN = "Baustein-Gesamtbeitrag 1";
     public static final String NAME_BAUSTEIN_GESAMTBEITRAG_2_IN_WAEHRUNGSEINHEITEN = "Baustein-Gesamtbeitrag 2";
@@ -2749,7 +2756,6 @@ public final class Bezeichner {
     public static final String NAME_BEITRAGSKLASSE = "Beitragsklasse";
     public static final String NAME_BEITRAGSREGULIERUNG = "Beitragsregulierung";
     public static final String NAME_BEITRAGSRUECKGEWAEHR = "Beitragsrueckgewaehr";
-    public static final String NAME_BEITRAGSUMSTELLUNGSDATUM = "Beitragsumstellungsdatum";
     public static final String NAME_BEITRAGSUMSTELLUNGSGRUND = "Beitragsumstellungsgrund";
     public static final String NAME_BEITRAG_BERGUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN = "Beitrag Bergungskosten";
     public static final String NAME_BEITRAG_FESTE_RENTE_IN_WAEHRUNGSEINHEITEN = "Beitrag Feste Rente";
@@ -2785,8 +2791,6 @@ public final class Bezeichner {
     public static final String NAME_BLZ1 = "Bankleitzahl 1";
     public static final String NAME_BLZ2 = "Bankleitzahl 2";
     public static final String NAME_BUENDELUNGSKENNZEICHEN = "Buendelungskennzeichen";
-    public static final String NAME_DATUM_DER_BEZUGSFERTIGKEIT = "Datum der Bezugsfertigkeit";
-    public static final String NAME_DATUM_LETZTE_BEITRAGSANGLEICHUNG = "Datum der letzten Beitragsangleichung";
     public static final String NAME_DECKUNGSSUMME_IN_TSD_WAEHRUNGSEINHEITEN = "Deckungssumme in Tausend Waehrungseinheiten";
     public static final String NAME_DECKUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Deckungssumme";
     public static final String NAME_DECKUNGSUMFANG = "Deckungsumfang";
@@ -3582,6 +3586,9 @@ public final class Bezeichner {
 
     // Mapping fuer manche Bezeichner (Name <--> technischer Name)
     static {
+        MAPPING.put(AUSSCHLUSSDAT_VP_PERSONENGRUPPE.name, AUSSCHLUSSDAT_VP_PERSONENGRUPPE.technischerName);
+        MAPPING.put(DAT_BEZUGSFERTIGKEIT.name, DAT_BEZUGSFERTIGKEIT.technischerName);
+        MAPPING.put(DAT_LETZTEN_BEITRAGSANGLEICHUNG.name, DAT_LETZTEN_BEITRAGSANGLEICHUNG.technischerName);
         MAPPING.put(LFD_PERSONEN_NR_IM_GEVO.name, LFD_PERSONEN_NR_IM_GEVO.technischerName);
         MAPPING.put(VS_NR.name, VS_NR.technischerName);
         MAPPING.put(VU_NR.name, VU_NR.technischerName);

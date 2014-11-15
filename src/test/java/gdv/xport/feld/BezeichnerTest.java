@@ -24,8 +24,11 @@ import static org.junit.Assert.assertTrue;
 import java.lang.reflect.Field;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import patterntesting.runtime.annotation.Broken;
 import patterntesting.runtime.junit.ObjectTester;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * JUnit-Tests fuer die {@link Bezeichner}-Klasse.
@@ -33,6 +36,7 @@ import patterntesting.runtime.junit.ObjectTester;
  * @author oliver (oliver.boehm@gmail.com)
  * @since 1.0 (25.09.2014)
  */
+@RunWith(SmokeRunner.class)
 public class BezeichnerTest {
 
     /**
@@ -64,6 +68,18 @@ public class BezeichnerTest {
     public void testGetTechnischerNameForDatum() {
         Bezeichner zuzahlungsdatum = new Bezeichner("Zuzahlungsdatum");
         assertEquals("Zuzahlungsdat", zuzahlungsdatum.getTechnischerName());
+    }
+
+    /**
+     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Namen, die
+     * "Datum" als Bestandteil haben, haben "Dat" als Teil des technischen
+     * Namens.
+     */
+    @Test
+    @Broken(till = "17-Nov-2014")
+    public void testGetTechnischerNameForDatumInside() {
+        Bezeichner dat = new Bezeichner("Aufgabedatum dieses Geschaeftsvorfalls");
+        assertEquals("AufgabedatDiesesGeschaeftsvorfalls", dat.getTechnischerName());
     }
 
     /**
