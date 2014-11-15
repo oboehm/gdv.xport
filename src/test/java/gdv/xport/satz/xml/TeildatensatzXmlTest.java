@@ -71,7 +71,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
     @Override
     @Test
     public void testGetFeldString() {
-        checkFeld(Bezeichner.ANREDESCHLUESSEL, 1, 43);
+        checkFeld(Bezeichner.NAME_ANREDESCHLUESSEL, 1, 43);
     }
 
     /**
@@ -81,7 +81,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
      */
     @Test
     public void testGetFeldVuNr() {
-        checkFeld(Bezeichner.VU_NUMMER, 5, 5);
+        checkFeld(Bezeichner.VU_NR.getName(), 5, 5);
     }
 
     /**
@@ -90,7 +90,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
      */
     @Test
     public void testGetFeldVermittler() {
-        checkFeld(Bezeichner.VERMITTLER, 10, 33);
+        checkFeld(Bezeichner.NAME_VERMITTLER, 10, 33);
     }
 
     /**
@@ -98,7 +98,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
      */
     @Test
     public void testGetFeldName1() {
-        checkFeld(Bezeichner.NAME1, 30, 44);
+        checkFeld(Bezeichner.NAME_NAME1, 30, 44);
     }
 
     private static void checkFeld(final String name, final int length, final int address) {
@@ -114,7 +114,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
     public void testGetSatzart() {
         TeildatensatzXml tds = new TeildatensatzXml(200, 1);
         assertEquals(200, tds.getSatzart());
-        tds.set(Bezeichner.SATZART, "0222");
+        tds.set(Bezeichner.NAME_SATZART, "0222");
         assertEquals(222, tds.getSatzart());
     }
 

@@ -52,6 +52,7 @@ import org.apache.logging.log4j.Logger;
  * @author oliver
  * @since 15.10.2009
  */
+//FIXME: XXX_DATUM durch XXX_DAT ersetzen, NAME_XXX_DATUM entfernen (14-Nov-2014, Oli B.)
 public final class Bezeichner {
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -3772,11 +3773,11 @@ public final class Bezeichner {
      * @return the bezeichner
      */
     public Bezeichner mergeWith(final Bezeichner bezeichner) {
-        if (this.technischerName.equals(toTechnischerName(this.name))) {
-            return new Bezeichner(this.name, bezeichner.getTechnischerName());
-        } else {
+        if (this.technischerName.equals(bezeichner.getTechnischerName())) {
             LOG.info("Merge of {} and {} is ignored.", this, bezeichner);
             return this;
+        } else {
+            return bezeichner;
         }
     }
 

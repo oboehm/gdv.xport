@@ -3381,6 +3381,1911 @@
 				<alleWerteDerTabelle />
 			</wertetabelle>
 		</feld>
+		
+		<!-- (zusatzliche) Felder fuer Satz 210.10 -->
+		<feld referenz="BN-2003.02.11.22.49.57.959">
+			<name>Kennzeichen Vertragsentstehung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Kennzeichen Vertragsentstehung</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>KennzeichenVertragsentstehung</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Neuantrag</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Zuwachsgarantie</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Abtrennung Gruppenversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Umtausch Risiko</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Übernahme von anderer Gesellschaft</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.509">
+			<name>Waehrungsschluessel</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>22.06.2005 17:09:36</letzteAenderung>
+			<minimaleLaenge>3</minimaleLaenge>
+			<bytes>3</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Waehrungsschluessel</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>22.06.2005 17:09:36</letzteAenderung>
+				<technischerName>Waehrungsschluessel</technischerName>
+				<bemerkung>
+					Der ISO-Code kann auch beim Beuth-Verlag des DIN kostenpflichtig angefordert werden. Wegen des Urheberrechts darf der ISO-Code nicht kopiert werden.
+					<br />
+				</bemerkung>
+				<anlagennummer>3</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert />
+						<beschreibung>(unbekannt)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ADF</wert>
+						<beschreibung>Andorran Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ADP</wert>
+						<beschreibung>Andorran Peseta</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AED</wert>
+						<beschreibung>Utd. Arab Emir. Dirham</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AFA</wert>
+						<beschreibung>Afghanistan Afghani</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ALL</wert>
+						<beschreibung>Albanischer Lek</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ANG</wert>
+						<beschreibung>NL Antillian Guilder</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AON</wert>
+						<beschreibung>Angolanischer New Kwanza</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ARS</wert>
+						<beschreibung>Argentinischer Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ATS</wert>
+						<beschreibung>Österreichischer Schilling</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AUD</wert>
+						<beschreibung>Australischer Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AWG</wert>
+						<beschreibung>Aruban Florin</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BBD</wert>
+						<beschreibung>Barbados Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BDT</wert>
+						<beschreibung>Bangladeshi Taka</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BEF</wert>
+						<beschreibung>Belgischer Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BGL</wert>
+						<beschreibung>Bulgarischer Lev</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BHD</wert>
+						<beschreibung>Bahraini Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BIF</wert>
+						<beschreibung>Burundi Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BMD</wert>
+						<beschreibung>Bermudian Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BND</wert>
+						<beschreibung>Brunei Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BOB</wert>
+						<beschreibung>Bolivianischer Boliviano</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BRL</wert>
+						<beschreibung>Brasilianischer Real</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BSD</wert>
+						<beschreibung>Bahamian Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BTN</wert>
+						<beschreibung>Bhutan Ngultrum</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BWP</wert>
+						<beschreibung>Botswana Pula</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BZD</wert>
+						<beschreibung>Belize Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CAD</wert>
+						<beschreibung>Kanadischer Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CHF</wert>
+						<beschreibung>Schweizer Franken</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CLP</wert>
+						<beschreibung>Chilean Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CNY</wert>
+						<beschreibung>Chinese Yuan Renminbi</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>COP</wert>
+						<beschreibung>Colombian Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CRC</wert>
+						<beschreibung>Costa Rican Colon</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CSK</wert>
+						<beschreibung>Tchchischer Koruna</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CUP</wert>
+						<beschreibung>Kubanischer Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CVE</wert>
+						<beschreibung>Cape Verde Escudo</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CYP</wert>
+						<beschreibung>Zyprisches Pfund</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DEM</wert>
+						<beschreibung>Deutsche Mark</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DJF</wert>
+						<beschreibung>Djibouti Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DKK</wert>
+						<beschreibung>Dänische Krone</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DOP</wert>
+						<beschreibung>Dominican Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DZD</wert>
+						<beschreibung>Algerian Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ECS</wert>
+						<beschreibung>Ecuador Sucre</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EEK</wert>
+						<beschreibung>Estonian Kroon</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EGP</wert>
+						<beschreibung>Egyptian Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ESP</wert>
+						<beschreibung>Spanische Peseta</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ETB</wert>
+						<beschreibung>Ethiopian Birr</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EUR</wert>
+						<beschreibung>Euro</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FIM</wert>
+						<beschreibung>Finnish Markka</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FJD</wert>
+						<beschreibung>Fiji Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FKP</wert>
+						<beschreibung>Falkland Islands Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FRF</wert>
+						<beschreibung>Französische Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GBP</wert>
+						<beschreibung>Britisches Pfund</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GHC</wert>
+						<beschreibung>Ghanaian Cedi</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GIP</wert>
+						<beschreibung>Gibraltar Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GMD</wert>
+						<beschreibung>Gambian Dalasi</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GNF</wert>
+						<beschreibung>Guinea Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GRD</wert>
+						<beschreibung>Griechische Drachmen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GTQ</wert>
+						<beschreibung>Guatemalan Quetzal</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GYD</wert>
+						<beschreibung>Guyanan Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HKD</wert>
+						<beschreibung>Hong Kong Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HNL</wert>
+						<beschreibung>Honduran Lempira</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HRK</wert>
+						<beschreibung>Kroatische Kuna</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HTG</wert>
+						<beschreibung>Haitian Gourde</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HUF</wert>
+						<beschreibung>Ungarischer Forint</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IDR</wert>
+						<beschreibung>Indonesian Rupiah</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IEP</wert>
+						<beschreibung>Irisches Punt</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ILS</wert>
+						<beschreibung>Israelisches Neuer Shekel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>INR</wert>
+						<beschreibung>Indian Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IQD</wert>
+						<beschreibung>Irakischer Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IRR</wert>
+						<beschreibung>Iranischer Rial</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ISK</wert>
+						<beschreibung>Iceland Krona</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ITL</wert>
+						<beschreibung>Italienische Lira</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>JMD</wert>
+						<beschreibung>Jamaican Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>JOD</wert>
+						<beschreibung>Jordanian Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>JPY</wert>
+						<beschreibung>Japanischer Yen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KES</wert>
+						<beschreibung>Kenyan Shilling</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KHR</wert>
+						<beschreibung>Cambodian Riel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KMF</wert>
+						<beschreibung>Comoros Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KPW</wert>
+						<beschreibung>Nord- Koreanischer Won</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KRW</wert>
+						<beschreibung>Koreanischer Won</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KWD</wert>
+						<beschreibung>Kuwaiischeri Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KYD</wert>
+						<beschreibung>Cayman Islands Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KZT</wert>
+						<beschreibung>Kazakhstan Tenge</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LAK</wert>
+						<beschreibung>Lao Kip</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LBP</wert>
+						<beschreibung>Lebanese Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LKR</wert>
+						<beschreibung>Sri Lanka Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LRD</wert>
+						<beschreibung>Liberian Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LSL</wert>
+						<beschreibung>Lesotho Loti</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LTL</wert>
+						<beschreibung>Lithuanian Litas</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LUF</wert>
+						<beschreibung>Luxemburger Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LVL</wert>
+						<beschreibung>Latvian Lats</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LYD</wert>
+						<beschreibung>Libyscher Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MAD</wert>
+						<beschreibung>Moroccan Dirham</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MGF</wert>
+						<beschreibung>Malagasy Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MMK</wert>
+						<beschreibung>Myanmar Kyat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MNT</wert>
+						<beschreibung>Mongolian Tugrik</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MOP</wert>
+						<beschreibung>Macau Pataca</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MRO</wert>
+						<beschreibung>Mauritanian Ouguiya</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MTL</wert>
+						<beschreibung>Maltese Lira</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MUR</wert>
+						<beschreibung>Mauritius Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MVR</wert>
+						<beschreibung>Maldive Rufiyaa</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MWK</wert>
+						<beschreibung>Malawi Kwacha</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MXP</wert>
+						<beschreibung>Mexikanischer Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MYR</wert>
+						<beschreibung>Malaysian Ringgit</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MZM</wert>
+						<beschreibung>Mozambique Metical</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NAD</wert>
+						<beschreibung>Namibia Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NGN</wert>
+						<beschreibung>Nigerian Naira</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NIO</wert>
+						<beschreibung>Nicaraguan Cordoba Oro</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NLG</wert>
+						<beschreibung>Niederländischer Guilder</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NOK</wert>
+						<beschreibung>Norwegische Krone</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NPR</wert>
+						<beschreibung>Nepalese Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NZD</wert>
+						<beschreibung>Neu Sealändischer Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>OMR</wert>
+						<beschreibung>Omani Rial</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PAB</wert>
+						<beschreibung>Panamanian Balboa</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PEN</wert>
+						<beschreibung>Peruvian Nuevo Sol</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PGK</wert>
+						<beschreibung>Papua New Guinea Kina</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PHP</wert>
+						<beschreibung>Philippinischer Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PKR</wert>
+						<beschreibung>Pakistan Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PLN</wert>
+						<beschreibung>Polnischer Zloty</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PTE</wert>
+						<beschreibung>Portugisiescher Escudo</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PYG</wert>
+						<beschreibung>Paraguay Guarani</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>QAR</wert>
+						<beschreibung>Qatari Rial</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ROL</wert>
+						<beschreibung>Rumänischer Leu</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RUB</wert>
+						<beschreibung>Russischer Rubel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SAR</wert>
+						<beschreibung>Saudi Riyal</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SBD</wert>
+						<beschreibung>Solomon Islands Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SCR</wert>
+						<beschreibung>Seychelles Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SDD</wert>
+						<beschreibung>Sudanese Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SDP</wert>
+						<beschreibung>Sudanese Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SEK</wert>
+						<beschreibung>Schwedische Krone</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SGD</wert>
+						<beschreibung>Singapore Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SHP</wert>
+						<beschreibung>St. Helena Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SIT</wert>
+						<beschreibung>Sloveniischer Tolar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SKK</wert>
+						<beschreibung>Slovak Koruna</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SLL</wert>
+						<beschreibung>Sierra Leone Leone</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SOS</wert>
+						<beschreibung>Somali Shilling</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SRG</wert>
+						<beschreibung>Suriname Guilder</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>STD</wert>
+						<beschreibung>Sao Tome/Principe Dobra</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SVC</wert>
+						<beschreibung>El Salvador Colon</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SYP</wert>
+						<beschreibung>Syrian Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SZL</wert>
+						<beschreibung>Swaziland Lilangeni</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>THB</wert>
+						<beschreibung>Thai Baht</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TND</wert>
+						<beschreibung>Tunisian Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TOP</wert>
+						<beschreibung>Tongan Pa"anga</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TRL</wert>
+						<beschreibung>Türkische Lira</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TTD</wert>
+						<beschreibung>Trinidad/Tobago Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TWD</wert>
+						<beschreibung>Taiwan Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TZS</wert>
+						<beschreibung>Tanzanian Shilling</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>UAH</wert>
+						<beschreibung>Ukraine Hryvnia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>UGS</wert>
+						<beschreibung>Uganda Shilling</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>USD</wert>
+						<beschreibung>US Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>UYP</wert>
+						<beschreibung>Uruguayan Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>VEB</wert>
+						<beschreibung>Venezuelan Bolivar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>VND</wert>
+						<beschreibung>Vietnamese Dong</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>VUV</wert>
+						<beschreibung>Vanuatu Vatu</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>WST</wert>
+						<beschreibung>Samoan Tala</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XAF</wert>
+						<beschreibung>CFA Franc BEAC</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XAG</wert>
+						<beschreibung>Silver (oz.)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XAU</wert>
+						<beschreibung>Gold (oz.)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XEU</wert>
+						<beschreibung>ECU</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XOF</wert>
+						<beschreibung>CFA Franc BCEAO</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XPD</wert>
+						<beschreibung>Palladium (oz.)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XPT</wert>
+						<beschreibung>Platinum (oz.)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>YUN</wert>
+						<beschreibung>Yugoslav Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ZAR</wert>
+						<beschreibung>South African Rand</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ZMK</wert>
+						<beschreibung>Zambian Kwacha</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ZWD</wert>
+						<beschreibung>Zimbabwe Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2006.01.09.16.36.47.556">
+			<name>BetragInWE (12 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>19.07.2007 16:00:27</letzteAenderung>
+			<minimaleLaenge>12</minimaleLaenge>
+			<bytes>12</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung>(12,0 Stellen)</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>24.01.2006 16:23:12</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.999">
+			<name>Verkürzte Beitragszahlungsdauer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>2</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.29">
+			<name>besonderer Verwendungszweck</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>24.01.2006 16:24:45</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>besonderer Verwendungszweck Leben</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>24.01.2006 16:24:45</letzteAenderung>
+				<technischerName>BesondererVerwendungszweckLeben</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Hypothekentilgung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>VL</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Restschuldversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>9</wert>
+						<beschreibung>sonstiges</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.01.214">
+			<name>Vertragsform</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.11.2003 11:02:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Vertragsform</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.11.2003 11:02:42</letzteAenderung>
+				<technischerName>Vertragsform</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>Einzel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Firmengruppen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Vereins-/Verbandsgruppen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Sammelversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.49">
+			<name>Gruppenart</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>40</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.79">
+			<name>Name (20 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>26.02.2007 11:56:29</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>26.02.2007 11:56:29</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.140">
+			<name>Abschlussprovision (5 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>17.09.2009 11:46:03</letzteAenderung>
+			<minimaleLaenge>5</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Fließkomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+			<bemerkung>(3,2 Stellen)</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 16:49:22</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.170">
+			<name>Bestandspflegeprovision (5 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>31.07.2006 15:09:19</letzteAenderung>
+			<minimaleLaenge>5</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:03:07</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.200">
+			<name>Art des Drittrechts</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>2</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Art des Drittrechts</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>ArtDrittrechts</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>01</wert>
+						<beschreibung>Abtretung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>02</wert>
+						<beschreibung>Verpfändung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>03</wert>
+						<beschreibung>Pfändung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>04</wert>
+						<beschreibung>Konkurs</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>05</wert>
+						<beschreibung>Vergleich</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.646">
+			<name>BetragInWE (10,2 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>20.07.2007 12:57:19</letzteAenderung>
+			<minimaleLaenge>12</minimaleLaenge>
+			<bytes>12</bytes>
+			<datentyp combobox="datentypbox">Fließkomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+			<bemerkung>(10,2 Stellen)</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>20.07.2007 12:57:19</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.328">
+			<name>Zahlungsweise</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>28.04.2008 11:26:05</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>
+				blank = Rechtschutz / Verkehrsservice / Kredit (In den Sparten Rechtschutz und Verkehrsservice kann das Datenfeld "Zahlungsweise" in der Satzart 0200 blank sein, die Zahlungsweise wird dann auf Risikoebene in der Satzart 0210, spätestens in Satzart 0220 angegeben. Bei Einzel- und / oder Umsatzanmeldungen muss das Datenfeld "Zahlungsweise" in der Satzart 0400 blank sein.)
+				<br />
+			</bemerkung>
+			<wertetabelle>
+				<name>Zahlungsweise</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>28.04.2008 11:26:01</letzteAenderung>
+				<technischerName>Zahlungsweise</technischerName>
+				<bemerkung />
+				<anlagennummer>14</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>jährlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>halbjährlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>vierteljährlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Sonstiges</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>6</wert>
+						<beschreibung>Einmalbetrag</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>8</wert>
+						<beschreibung>monatlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>9</wert>
+						<beschreibung>beitragsfrei</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.11.529">
+			<name>Änderungsgrund</name>
+			<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+			<letzteAenderung>09.08.2012 08:55:40</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Änderungsgrund</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>09.08.2012 08:55:40</letzteAenderung>
+				<technischerName>Aenderungsgrund</technischerName>
+				<bemerkung>Bei Kreditversicherung immer "99" schlüsseln</bemerkung>
+				<anlagennummer>6</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>00</wert>
+						<beschreibung>Bei Erstausstattung (Stichtagsbestand, Bestandsübernahme)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>01</wert>
+						<beschreibung>Erstlieferung eines Vertrages neue Vertragsnummer nach Vertragstrennung / Nachversicherung z. B.: Umstellung Einzelversicherung in Gruppenversicherung / Umstellung Gruppenversicherung in Einzelversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>02</wert>
+						<beschreibung>VN-Wechsel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>03</wert>
+						<beschreibung>Fahrzeugwechsel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>04</wert>
+						<beschreibung>Änderung Regionalklasse / Tarifgruppe / Typklasse (KFZ)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>05</wert>
+						<beschreibung>Änderung Deckungsumfang / Versicherungsschutz / Übergang von Vollversicherung auf Anwartschaft bzw. von Anwartschaft auf Vollversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>06</wert>
+						<beschreibung>Änderung der SFR-Einstufung (KFZ) / Beitragsrückerstattung (KV)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>07</wert>
+						<beschreibung>Kurzfristiger Einschluß oder Änderung der Deckung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>08</wert>
+						<beschreibung>Wiederinkraftsetzung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>09</wert>
+						<beschreibung>Änderung der Versicherungsdauer / des Versicherungsbeginnes</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>10</wert>
+						<beschreibung>Änderung zum Risiko / Risikozuschlag / Leistungsausschluß</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>11</wert>
+						<beschreibung>Änderung der Bedingungen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>12</wert>
+						<beschreibung>Bedingungsgemäße Zuwachserhöhung / dynamische Leistungsanpassung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>13</wert>
+						<beschreibung>Änderung der Zahlungsweise / Fälligkeit</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>14</wert>
+						<beschreibung>Änderung der Versicherungssumme</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>15</wert>
+						<beschreibung>Erhöhung Zusatzversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>16</wert>
+						<beschreibung>Einschluß Zusatz</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>17</wert>
+						<beschreibung>Ausschluß Zusatz</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>18</wert>
+						<beschreibung>Änderung der Beiträge (z. B. Beitragsanpassung, bedingungsgemäße Beitragserhöhung)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>19</wert>
+						<beschreibung>Änderung Personendaten</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>20</wert>
+						<beschreibung>Vertragszusammenlegung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>21</wert>
+						<beschreibung>Ersatzvertrag</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>22</wert>
+						<beschreibung>Bestandsübertragung (Übertragung von anderem Vermittler)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>23</wert>
+						<beschreibung>Agenturnummernwechsel (Änderung der Organisationseinheit intern beim Vermittler)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>24</wert>
+						<beschreibung>Neuzugang nach Vertragsneuordnung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>25</wert>
+						<beschreibung>Neuzugang nach Tarifwechsel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>26</wert>
+						<beschreibung>Ablehnung der Dynamikerhöhung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>27</wert>
+						<beschreibung>Bedingungsgemäße Zuwachserhöhung / nichtdynamische Leistungsanpassung (z. B. bei Aufbaumodellen)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>28</wert>
+						<beschreibung>Umstellung der Todesfalleistung in Prozent</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>29</wert>
+						<beschreibung>Wegfall des Risikovorlaufs</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>30</wert>
+						<beschreibung>Tarifliche Beitragsumstellung (z. B. Tarif mit ermäßigtem Anfangsbeitrag)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>31</wert>
+						<beschreibung>Tarifwechsel (Versicherungsscheinnummer bleibt bestehen)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>32</wert>
+						<beschreibung>Zuzahlung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>33</wert>
+						<beschreibung>Änderung des Bezugsrechts</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>34</wert>
+						<beschreibung>Folgerechnung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>35</wert>
+						<beschreibung>Hauptfälligkeitsrechnung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>36</wert>
+						<beschreibung>Neuzugang wegen Übernahme von anderem VU</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>37</wert>
+						<beschreibung>Übergang auf anderes VU</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>38</wert>
+						<beschreibung>SFR-Änderung abhängige Fahrzeuge Wechselkennzeichen (W-AKZ)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>99</wert>
+						<beschreibung>sonstige Änderung</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.280">
+			<name>RefVSNr</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:31:43</letzteAenderung>
+			<minimaleLaenge>17</minimaleLaenge>
+			<bytes>17</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:31:43</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.350">
+			<name>Betriebliche Altersversorgung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Betriebliche Altersversorgung</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>BetrieblicheAltersversorgung</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Direktversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Direktversicherung mit Gehaltsumwandlung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Direktversicherung mit anteiliger Gehaltsumwandlung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Rückdeckungsversicherung für Pensionszusage</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Rückdeckungsversicherung für Unterstützungskassenzusage</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.360">
+			<name>Bilanzmonat Arbeitgeber</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>2</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.380">
+			<name>Produktbeschreibung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.849">
+			<name>Produktform</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.869">
+			<name>Produktform gültig ab</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>6</minimaleLaenge>
+			<bytes>6</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2004.09.23.11.43.12.683">
+			<name>Produktname</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:29:58</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung>Produktname</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:29:58</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.23.43.863">
+			<name>Art der steuerlichen Förderung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>04.04.2007 10:11:34</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Steuerart</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>04.04.2007 10:11:34</letzteAenderung>
+				<technischerName>Steuerart</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>irrelevant</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>pauschal besteuerte Direktversicherung nach §40b EStG</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Beiträge steuerfrei nach §3 Ziff.63 EStG</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>zulagengeförderte Direktversicherung nach §10a EStG</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Beiträge steuerfrei nach §3 Ziff.66 EstG</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>keine</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>6</wert>
+						<beschreibung>Zulagegeförderte Privatversicherung nach §10 a EStG</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>7</wert>
+						<beschreibung>Basis-/Rürup-Rente nach § 10 Abs. 1 Nr. 2 Buchstabe b EStG</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.28.36.917">
+			<name>Finanzierungsart</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>01.02.2005 11:30:04</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Finanzierungsart</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>01.02.2005 11:30:04</letzteAenderung>
+				<technischerName>Finanzierungsart</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>irrelevant</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Arbeitgeber finanziert</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Arbeitnehmer finanziert Entgeltumwandlung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Arbeitnehmer finanziert aus versteuertem Einkommen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>aus Vertrag nicht erkennbar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Arbeitgeber / Arbeitnehmer</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.30.20.745">
+			<name>Durchführungsweg</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>04.04.2007 10:12:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Durchführungsweg</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>04.04.2007 10:12:42</letzteAenderung>
+				<technischerName>Durchfuehrungsweg</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>irrelevant</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Direktversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Unterstützungskasse</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Pensionskasse</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Pensionsfonds</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>6</wert>
+						<beschreibung>Direktzusage</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>7</wert>
+						<beschreibung>Private Riesterversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>8</wert>
+						<beschreibung>Riesterdirektversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.32.13.618">
+			<name>Finanzierung der Zusage</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>01.02.2005 11:33:11</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Finanzierung der Zusage</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>01.02.2005 11:33:11</letzteAenderung>
+				<technischerName>FinanzierungDerZusage</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>irrelevant</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Rückdeckungsversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Rückdeckungsversicherung partiell</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Rückdeckungsversicherung kongruent</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Pensionsfonds</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.33.37.537">
+			<name>Unternehmensschlüssel</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:40:16</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>4</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:40:16</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.37.14.519">
+			<name>Name (40 Bytes)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>24.01.2006 16:27:09</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>40</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>24.01.2006 16:27:09</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.41.32.702">
+			<name>Kollektiv-Nr.</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:21:09</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>15</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung>Nummer des Kollektivvertrages</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:21:09</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
 
 		<!-- (zusaetzliche) Felder fuer Satz 212.50 -->
 		<feld referenz="BN-2003.02.11.22.50.04.308">

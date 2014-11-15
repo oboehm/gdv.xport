@@ -60,9 +60,9 @@ public class Feld0001Test {
     @Test
     @Broken(why="siehe gdv.xport.satz.model.SatzX.add(Enum<?>, Teildatensatz)", till="30-Nov-2014")
     public void testVersionSatzart0001() {
-        Feld x = vorsatz.getTeildatensatz(1).getFeld(Bezeichner.VERSION_SATZART_0001);
+        Feld x = vorsatz.getTeildatensatz(1).getFeld(Bezeichner.NAME_VERSION_SATZART_0001);
         assertNotNull(x);
-        assertEquals(Bezeichner.VERSION_SATZART_0001, x.getBezeichnung());
+        assertEquals(Bezeichner.NAME_VERSION_SATZART_0001, x.getBezeichnung());
         assertEquals(96, x.getByteAdresse());
     }
 

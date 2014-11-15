@@ -18,8 +18,6 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.ANREDESCHLUESSEL;
-import static gdv.xport.feld.Bezeichner.INKASSOART;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.feld.AlphaNumFeld;
@@ -60,7 +58,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
     @Test
     public void testDatensatzStringInt() throws IOException {
         Satz adressteil = new Datensatz("0100", 5);
-        adressteil.add(new AlphaNumFeld(ANREDESCHLUESSEL, 1, 43, '6'));
+        adressteil.add(new AlphaNumFeld(Bezeichner.NAME_ANREDESCHLUESSEL, 1, 43, '6'));
         LOG.info("adressteil=" + adressteil.toShortString());
         checkExport(adressteil, 43, 43, "6", 1280);
     }
@@ -71,9 +69,9 @@ public class DatensatzTest extends AbstractDatensatzTest {
     @Test
     public void testSet() {
         Satz ds = new Datensatz("0200", 2);
-        ds.add(new AlphaNumFeld(new Bezeichner(INKASSOART), 1, 43));
-        ds.set(INKASSOART, "2");
-        assertEquals(ds.get(INKASSOART), "2");
+        ds.add(new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_INKASSOART), 1, 43));
+        ds.set(Bezeichner.NAME_INKASSOART, "2");
+        assertEquals(ds.get(Bezeichner.NAME_INKASSOART), "2");
     }
 
     /**

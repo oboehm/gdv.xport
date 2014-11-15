@@ -154,9 +154,9 @@ public class FeldTest {
      */
     @Test
     public void testGetBezeichner() {
-        Feld x = new Feld(Bezeichner.SATZART, "Test", Align.LEFT);
-        assertEquals(Bezeichner.SATZART, x.getBezeichnung());
-        assertEquals(new Bezeichner(Bezeichner.SATZART), x.getBezeichner());
+        Feld x = new Feld(Bezeichner.NAME_SATZART, "Test", Align.LEFT);
+        assertEquals(Bezeichner.NAME_SATZART, x.getBezeichnung());
+        assertEquals(new Bezeichner(Bezeichner.NAME_SATZART), x.getBezeichner());
     }
 
     /**
@@ -175,8 +175,8 @@ public class FeldTest {
     @Test
     public void testGetAsBezeichner() {
         Bezeichner adressat = Feld.getAsBezeichner(Greeting.ADRESSAT);
-        assertEquals(new Bezeichner(Bezeichner.ADRESSAT), adressat);
-        assertEquals(Bezeichner.ADRESSAT, adressat.getName());
+        assertEquals(new Bezeichner(Bezeichner.NAME_ADRESSAT), adressat);
+        assertEquals(Bezeichner.NAME_ADRESSAT, adressat.getName());
     }
 
     /**

@@ -103,7 +103,7 @@ public final class TeildatensatzXml extends Teildatensatz {
         }
         int length = endAddress + 1 - startAddress;
         if (length > 0) {
-            Feld leerstelle = new AlphaNumFeld(new Bezeichner(Bezeichner.LEERSTELLEN), endAddress + 1 - startAddress, startAddress);
+            Feld leerstelle = new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_LEERSTELLEN), endAddress + 1 - startAddress, startAddress);
             this.add(leerstelle);
         }
     }
@@ -112,6 +112,8 @@ public final class TeildatensatzXml extends Teildatensatz {
         Feld feld = feldXml.toFeld(byteAddress, bezeichner);
         if (!this.hasFeld(feld)) {
             super.add(feld);
+        } else {
+            LOG.trace("{} not added again.", feld);
         }
     }
 

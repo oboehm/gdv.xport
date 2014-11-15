@@ -18,11 +18,11 @@
 
 package gdv.xport.satz.model;
 
-import static gdv.xport.feld.Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Datensatz;
@@ -143,7 +143,7 @@ public class Satz221Test extends AbstractDatensatzTest {
             Datenpaket datenpaket = new Datenpaket();
             datenpaket.importFrom(istream);
             Datensatz erweiterungssatz = datenpaket.getDatensaetze().get(0);
-            Feld lfdNummer = erweiterungssatz.getFeld(LFD_NUMMER_VP_PERSONENGRUPPE);
+            Feld lfdNummer = erweiterungssatz.getFeld(Bezeichner.NAME_LFD_NUMMER_VP_PERSONENGRUPPE);
             assertEquals("000001", lfdNummer.getInhalt());
         } finally {
             istream.close();

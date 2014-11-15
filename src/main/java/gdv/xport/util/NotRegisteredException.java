@@ -38,5 +38,14 @@ public class NotRegisteredException extends RuntimeException {
         super("unregistered Satzart " + satzart);
     }
 
+    /**
+     * Instanziiert eine {@link NotRegisteredException}.
+     *
+     * @param satzNr Satzart, die nicht registriert wurde
+     */
+    public NotRegisteredException(final SatzNummer satzNr) {
+        super("unregistered Satzart " + satzNr);
+    }
+
 }
 

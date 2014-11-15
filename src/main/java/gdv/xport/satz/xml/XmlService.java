@@ -18,10 +18,15 @@
 
 package gdv.xport.satz.xml;
 
+import gdv.xport.util.NotRegisteredException;
+import gdv.xport.util.NotUniqueException;
+import gdv.xport.util.SatzNummer;
 import gdv.xport.util.XmlHelper;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -51,7 +56,7 @@ public class XmlService {
 
     private static final Logger LOG = LoggerFactory.getLogger(XmlService.class);
     private static final Map<String, XmlService> INSTANCES = new WeakHashMap<String, XmlService>();
-    private final Map<Integer, SatzXml> satzarten = new HashMap<Integer, SatzXml>();
+    private final Map<SatzNummer, SatzXml> satzarten = new HashMap<SatzNummer, SatzXml>();
 
     /**
      * Liefert einen Service anhand des Standard-XML-Handbuchs von 2013.
@@ -160,7 +165,7 @@ public class XmlService {
             XMLEvent event = reader.nextEvent();
             if (XmlHelper.isStartElement(event, "satzart")) {
                 SatzXml satz = new SatzXml(reader, event.asStartElement());
-                this.satzarten.put(satz.getSatzart(), satz);
+                this.satzarten.put(satz.getSatzTyp(), satz);
                 LOG.debug("{} added.", satz);
             } else if (XmlHelper.isEndElement(event, element.getName())) {
                 LOG.debug("{} satzarten successful parsed.", this.satzarten.size());
@@ -212,13 +217,45 @@ public class XmlService {
     }
 
     /**
-     * Liefert den Satz zur gewuenschten Satzart
+     * Liefert den Satz zur gewuenschten Satzart. Falls es mehr wie einen Satz
+     * zur gesuchten Satzart gibt (d.h. wenn es mehrere Sparten gibt), wird
+     * eine {@link NotUniqueException} geworfen.
      *
      * @param satzart z.B. 100 fuer Satz100 (Adressteil)
      * @return die entsprechende Satzart
      */
     public SatzXml getSatzart(final int satzart) {
-        return this.satzarten.get(satzart);
+        SatzXml satz = this.satzarten.get(new SatzNummer(satzart));
+        if (satz != null) {
+            return satz;
+        }
+        List<SatzNummer> satzTypen = new ArrayList<SatzNummer>();
+        for (SatzNummer satzNr : this.satzarten.keySet()) {
+            if (satzNr.getSatzart() == satzart) {
+                satzTypen.add(satzNr);
+            }
+        }
+        if (satzTypen.isEmpty()) {
+            throw new NotRegisteredException(satzart);
+        }
+        if (satzTypen.size() > 1) {
+            throw new NotUniqueException("Sparte for Satzart " + satzart + " is missing: " + satzTypen);
+        }
+        return this.satzarten.get(satzTypen.get(0));
+    }
+
+    /**
+     * Liefert den Satz zur gewuenschten Satzart.
+     *
+     * @param satzNr z.B. 'new Satznummer(100)' fuer Satz100 (Adressteil)
+     * @return die entsprechende Satzart
+     */
+    public SatzXml getSatzart(final SatzNummer satzNr) {
+        SatzXml satz = this.satzarten.get(satzNr);
+        if (satz == null) {
+            throw new NotRegisteredException(satzNr);
+        }
+        return satz;
     }
 
 }

@@ -18,8 +18,6 @@
 
 package gdv.xport.satz.model;
 
-import static gdv.xport.feld.Bezeichner.LAUFZEITRABATT_IN_PROZENT;
-import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.Bezeichner;
@@ -88,7 +86,7 @@ public final class Satz210Test extends AbstractDatensatzTest {
         SpartensatzX vertragsteil = new Satz210(10);
         vertragsteil.setFolgenummer(42);
         Teildatensatz teildatensatz = vertragsteil.getTeildatensatz(1);
-        Feld feld = teildatensatz.getFeld(Bezeichner.FOLGENUMMER);
+        Feld feld = teildatensatz.getFeld(Bezeichner.NAME_FOLGENUMMER);
         assertNotNull(feld);
         assertEquals("42", feld.getInhalt());
     }
@@ -123,11 +121,11 @@ public final class Satz210Test extends AbstractDatensatzTest {
         SpartensatzX unfall = new Satz210(30);
         unfall.importFrom(INPUT_SPARTE30);
         assertEquals("9999", unfall.getVuNummer().trim());
-        Feld rabatt = unfall.getFeld(LAUFZEITRABATT_IN_PROZENT);
+        Feld rabatt = unfall.getFeld(Bezeichner.NAME_LAUFZEITRABATT_IN_PROZENT);
         assertEquals("1000", rabatt.getInhalt());
         NumFeld prozent = (NumFeld) rabatt;
         assertEquals(10.00, prozent.toDouble(), 0.001);
-        Feld vertragsstatus = unfall.getFeld(VERTRAGSSTATUS);
+        Feld vertragsstatus = unfall.getFeld(Bezeichner.NAME_VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         StringWriter swriter = new StringWriter(256);
         unfall.export(swriter);

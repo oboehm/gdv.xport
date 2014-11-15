@@ -18,8 +18,8 @@
 
 package gdv.xport.satz.feld.sparte30;
 
-import static gdv.xport.feld.Bezeichner.ZUSAETZLICHE_SATZKENNUNG;
 import static org.junit.Assert.assertEquals;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
@@ -75,7 +75,7 @@ public class Feld220Test extends AbstractDatensatzTest {
                 + "000000000000000000000000000000000000000000000000000  000000    X"
                 + "\n";
         wagnisdaten.importFrom(input);
-        Feld x = wagnisdaten.getFeld(ZUSAETZLICHE_SATZKENNUNG, 2);
+        Feld x = wagnisdaten.getFeld(Bezeichner.NAME_ZUSAETZLICHE_SATZKENNUNG, 2);
         assertEquals("X", x.getInhalt());
         checkDatensatz(wagnisdaten, input);
 	}

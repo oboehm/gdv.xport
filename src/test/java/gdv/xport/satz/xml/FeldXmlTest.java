@@ -105,7 +105,7 @@ public class FeldXmlTest extends AbstractXmlTest {
     @Test
     public void testVuNummer() throws XMLStreamException {
         FeldXml vuNr = createFeldXmlFrom("feldVuNr.xml");
-        assertEquals(new Bezeichner(Bezeichner.VU_NUMMER), vuNr.getBezeichner());
+        assertEquals(Bezeichner.VU_NR, vuNr.getBezeichner());
         assertEquals(5, vuNr.getAnzahlBytes());
     }
 
@@ -145,7 +145,22 @@ public class FeldXmlTest extends AbstractXmlTest {
      */
     @Test
     public void testToGleitkomma() throws XMLStreamException {
-        checkToFeld(createFeldXmlFrom("feldFliesskomma.xml"), NumFeld.class);
+        FeldXml gleitkomma = createFeldXmlFrom("feldFliesskomma.xml");
+        checkToFeld(gleitkomma, NumFeld.class);
+        assertEquals(12, gleitkomma.getAnzahlBytes());
+    }
+
+    /**
+     * Der Bezeichner wurde nicht richtig uebernommen in der Vergangenheit.
+     * Deswegen dieser Test hier.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testToFeldBezeichner() throws XMLStreamException {
+        FeldXml gleitkomma = createFeldXmlFrom("feldFliesskomma.xml");
+        Feld feld = gleitkomma.toFeld(160, Bezeichner.ZUZAHLUNGSBETRAG_IN_WE);
+        assertEquals(Bezeichner.ZUZAHLUNGSBETRAG_IN_WE, feld.getBezeichner());
     }
 
     /**

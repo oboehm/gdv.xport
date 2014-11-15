@@ -16,6 +16,7 @@ import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.util.SatzNummer;
 
 import java.io.EOFException;
 import java.io.File;
@@ -482,11 +483,26 @@ public abstract class Satz {
 	/**
 	 * Liefert die Satzart zurueck.
 	 *
-	 * @since 0.3
 	 * @return die Satzart als int
+     * @since 0.3
 	 */
 	public final int getSatzart() {
 		return this.satzart.toInt();
+	}
+
+	/**
+	 * Liefert den Satz-Typ zurueck. Der Satz-Typ ist eine Zusammenfassung aus
+	 * Satzart und Sparte.
+	 *
+	 * @return den Satz-Typ
+	 * @since 1.0
+	 */
+	public final SatzNummer getSatzTyp() {
+	    if (this.hasSparte()) {
+	        return new SatzNummer(this.getSatzart(), this.getSparte());
+	    } else {
+	        return new SatzNummer(this.getSatzart());
+	    }
 	}
 
 	/**

@@ -18,8 +18,6 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.NAME1;
-import static gdv.xport.feld.Bezeichner.ORT;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
@@ -34,7 +32,11 @@ import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.sparte53.Feld220;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
@@ -90,7 +92,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testAdd() {
-        satz.add(new AlphaNumFeld(new Bezeichner(NAME1), 30, 44));
+        satz.add(new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_NAME1), 30, 44));
         satz.add(new AlphaNumFeld(new Bezeichner("Bumm"), 4, 50));
     }
 
@@ -110,9 +112,9 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGet() {
-        satz.add(new AlphaNumFeld(new Bezeichner(ORT), 30, 50));
-        satz.set(ORT, "Stuttgart");
-        assertEquals("Stuttgart", satz.get(ORT).trim());
+        satz.add(new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_ORT), 30, 50));
+        satz.set(Bezeichner.NAME_ORT, "Stuttgart");
+        assertEquals("Stuttgart", satz.get(Bezeichner.NAME_ORT).trim());
     }
 
     /**

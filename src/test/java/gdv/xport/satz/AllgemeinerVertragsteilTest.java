@@ -88,8 +88,8 @@ public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
         assertEquals("59999999999", vertragsteil.getVersicherungsscheinNummer());
         assertEquals(1, vertragsteil.getFolgenummer());
         assertEquals("9999009999", vertragsteil.getVermittler());
-        assertEquals("2", vertragsteil.get(Bezeichner.INKASSOART));
-        assertEquals("01052004", vertragsteil.get(Bezeichner.VERTRAGSBEGINN));
+        assertEquals("2", vertragsteil.get(Bezeichner.NAME_INKASSOART));
+        assertEquals("01052004", vertragsteil.get(Bezeichner.NAME_VERTRAGSBEGINN));
     }
 
     /**

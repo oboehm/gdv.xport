@@ -261,4 +261,16 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         assertEquals(50, sparte50.getSparte());
     }
 
+    /**
+     * Mit Satz 210 Sparte 10 gab es kleiner Probleme mit einigen Feldern.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testSatz210Sparte10() throws XMLStreamException {
+        SatzXml satz210 = getSatz("Satz0210.010.xml");
+        Feld zuzahlungsbetrag = satz210.getFeld(Bezeichner.ZUZAHLUNGSBETRAG_IN_WE);
+        assertEquals(160, zuzahlungsbetrag.getByteAdresse());
+    }
+
 }

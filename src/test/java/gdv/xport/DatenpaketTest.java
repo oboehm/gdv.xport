@@ -18,14 +18,12 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.VERSION_SATZART_0001;
-import static gdv.xport.feld.Bezeichner.VERSION_SATZART_9999;
-import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
@@ -35,7 +33,15 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz220;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Date;
@@ -94,8 +100,8 @@ public final class DatenpaketTest {
         int expectedLength = 1024 + 4 * Config.getEOD().length();
         assertEquals(expectedLength, data.length());
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.1", vorsatz.getVersion(VERSION_SATZART_0001));
-        assertEquals("1.1", vorsatz.getVersion(VERSION_SATZART_9999));
+        assertEquals("2.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_0001));
+        assertEquals("1.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(0, nachsatz.getAnzahlSaetze());
         assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
@@ -137,9 +143,9 @@ public final class DatenpaketTest {
     public void testAdd() {
         datenpaket.add(new Satz220());
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.1", vorsatz.getVersion(VERSION_SATZART_0001));
+        assertEquals("2.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_0001));
         assertEquals("2.1", vorsatz.getVersion(100));
-        assertEquals("1.1", vorsatz.getVersion(VERSION_SATZART_9999));
+        assertEquals("1.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(1, nachsatz.getAnzahlSaetze());
     }
@@ -326,7 +332,7 @@ public final class DatenpaketTest {
         String muster = getResourceAsString("/musterdatei_041222.txt");
         datenpaket.importFrom(muster);
         Satz vertragsteil = datenpaket.getDatensaetze().get(2);
-        Feld vertragsstatus = vertragsteil.getFeld(VERTRAGSSTATUS);
+        Feld vertragsstatus = vertragsteil.getFeld(Bezeichner.NAME_VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         checkExportWith(muster);
     }

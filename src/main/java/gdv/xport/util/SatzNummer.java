@@ -24,10 +24,16 @@ import java.text.DecimalFormat;
  * Die SatzNummer fuehrt Satzart, Sparte, Wagnisart und laufende Nummer eines
  * Teildatensatz zusammen. Sie wird von der {@link SatzFactory} fuer die
  * Registrierung verwendet.
+ * <p>
+ * Vielleicht sollten wir diese Klasse in "SatzTyp" umbenennen, da "Satznummer"
+ * als Klassenname etwas irritierend ist, da es ein Feld "Satznummer"
+ * innerhalb eines Satzes bereits gibt.
+ * </p>
  *
  * @author oliver
  * @since 0.9 (26.01.2013)
  */
+// TODO: in SatzTyp umbenennen (13-Nov-2014, oliver)
 public final class SatzNummer {
 
 	/** The satzart. */
