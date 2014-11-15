@@ -258,21 +258,11 @@ public final class HtmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeStartElement("table");
         xmlStreamWriter.writeStartElement("thead");
         xmlStreamWriter.writeStartElement("tr");
-        xmlStreamWriter.writeStartElement("th");
-        xmlStreamWriter.writeCharacters("Nr");
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeStartElement("th");
-        xmlStreamWriter.writeCharacters("Byte");
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeStartElement("th");
-        xmlStreamWriter.writeCharacters("Bezeichner");
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeStartElement("th");
-        xmlStreamWriter.writeCharacters("Datentyp");
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeStartElement("th");
-        xmlStreamWriter.writeCharacters("Inhalt");
-        xmlStreamWriter.writeEndElement();
+        writeTagTo(xmlStreamWriter, "th", "Nr");
+        writeTagTo(xmlStreamWriter, "th", "Byte");
+        writeTagTo(xmlStreamWriter, "th", "Bezeichner");
+        writeTagTo(xmlStreamWriter, "th", "Datentyp");
+        writeTagTo(xmlStreamWriter, "th", "Inhalt");
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeCharacters("\n");
@@ -287,6 +277,13 @@ public final class HtmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeEndElement();
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.flush();
+    }
+
+    private static void writeTagTo(final XMLStreamWriter xmlStreamWriter, final String tag, final String content)
+            throws XMLStreamException {
+        xmlStreamWriter.writeStartElement(tag);
+        xmlStreamWriter.writeCharacters(content);
+        xmlStreamWriter.writeEndElement();
     }
 
     private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Feld feld, final int zeile)
@@ -306,9 +303,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         String typ = feld.getClass().getSimpleName();
         xmlStreamWriter.writeStartElement("tr");
         xmlStreamWriter.writeAttribute("class", typ);
-        xmlStreamWriter.writeStartElement("td");
-        xmlStreamWriter.writeCharacters(Integer.toString(nr));
-        xmlStreamWriter.writeEndElement();
+        writeTagTo(xmlStreamWriter, "td", Integer.toString(nr));
         xmlStreamWriter.writeStartElement("td");
         xmlStreamWriter.writeStartElement("a");
         xmlStreamWriter.writeAttribute("name", getAnchorFor(zeile, feld));
@@ -319,12 +314,8 @@ public final class HtmlFormatter extends AbstractFormatter {
             xmlStreamWriter.writeCharacters(feld.getByteAdresse() + " - " + feld.getEndAdresse());
         }
         xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeStartElement("td");
-        xmlStreamWriter.writeCharacters(feld.getBezeichnung());
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeStartElement("td");
-        xmlStreamWriter.writeCharacters(typ);
-        xmlStreamWriter.writeEndElement();
+        writeTagTo(xmlStreamWriter, "td", feld.getBezeichnung());
+        writeTagTo(xmlStreamWriter, "td", typ);
         xmlStreamWriter.writeStartElement("td");
         writeInhaltTo(xmlStreamWriter, feld);
         xmlStreamWriter.writeEndElement();
