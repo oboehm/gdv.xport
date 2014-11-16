@@ -57,7 +57,7 @@ import org.apache.logging.log4j.Logger;
 //FIXME: XXX_DATUM durch XXX_DAT ersetzen, NAME_XXX_DATUM entfernen (14-Nov-2014, Oli B.)
 public final class Bezeichner {
 
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#ABGANGSDAT} verwenden */
     @Deprecated
     public static final String ABGANGSDATUM = "Abgangsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -135,10 +135,10 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ANTEIL_IN_PROZENT = "Anteil in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#ANTRAGSDAT} verwenden */
     @Deprecated
     public static final String ANTRAGSDATUM = "Antragsdatum";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#ANTRAGSEINGANGSDAT} verwenden */
     @Deprecated
     public static final String ANTRAGSEINGANGSDATUM = "Antragseingangsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -2676,12 +2676,21 @@ public final class Bezeichner {
 
     /////////// Bezeichner-Konstanten /////////////////////////////////////////
 
+    /** Die Konstante ABGANGSDAT. */
+    public static final Bezeichner ABGANGSDAT = new Bezeichner("Abgangsdatum", "Abgangsdat");
+
     /** Die Konstante AUSSCHLUSSDAT_VP_PERSONENGRUPPE. */
     public static final Bezeichner AUSSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner(
             "Ausschlussdatum VP / Personengruppe", "AusschlussdatVpPersonengruppe");
 
     /** Die Konstante ABSCHLAG1_IN_WE. */
     public static final Bezeichner ABSCHLAG1_IN_WE = new Bezeichner("Abschlag-1 in Waehrungseinheiten", "Abschlag1InWE");
+
+    /** Die Konstante ANTRAGSDAT. */
+    public static final Bezeichner ANTRAGSDAT = new Bezeichner("Antragsdatum", "Antragsdat");
+
+    /** Die Konstante ANTRAGSDAT. */
+    public static final Bezeichner ANTRAGSEINGANGSDAT = new Bezeichner("Antragseingangsdatum", "Antragseingangsdat");
 
     /** Die Konstante DAT_BEZUGSFERTIGKEIT. */
     public static final Bezeichner DAT_BEZUGSFERTIGKEIT = new Bezeichner("Datum der Bezugsfertigkeit", "DatBezugsfertigkeit");
