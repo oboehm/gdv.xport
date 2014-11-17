@@ -231,7 +231,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String BEITRAGSRUECKGEWAEHR = "Beitragsrueckgewaehr";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#BEITRAGSUMSTELLUNGSDAT} verwenden */
     @Deprecated
     public static final String BEITRAGSUMSTELLUNGSDATUM = "Beitragsumstellungsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -354,7 +354,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String DECKUNGSUMFANG = "Deckungsumfang";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#DIENSTEINTRITTSDAT} verwenden */
     @Deprecated
     public static final String DIENSTEINTRITTSDATUM = "Diensteintrittsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -372,22 +372,22 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String EIGENTUMSVERHAELTNIS_FAHRZEUG = "Eigentumsverhaeltnis (Fahrzeug)";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#EINSCHLUSSDAT_VP_PERSONENGRUPPE} verwenden */
     @Deprecated
     public static final String EINSCHLUSSDATUM_VP = "Einschlussdatum VP / Personengruppe";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String EINZAHLUNG_AUSSCHUETTUNG = "Einzahlung / Ausschuettung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#ENDEDATUM_BEI_ROTEN_KENNZEICHEN} verwenden */
     @Deprecated
     public static final String ENDEDATUM_DES_VERSICHERUNGSSCHUTZES_BEI_ROTEN_KENNZEICHEN = "Endedatum des Versicherungsschutzes bei roten Kennzeichen";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ERHOEHUNGSART_DYNAMIK = "Erhoehungsart Dynamik";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS} verwenden */
     @Deprecated
     public static final String ERSTELLUNGSDATUM_ZEITRAUM_BIS = "Erstellungs-Datum-Zeitraum bis";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS} verwenden */
     @Deprecated
     public static final String ERSTELLUNGSDATUM_ZEITRAUM_VOM = "Erstellungs-Datum-Zeitraum vom";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -1805,10 +1805,10 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String DIENSTEINTRITT = "Diensteintritt";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#GEBURTSDAT_VP} verwenden */
     @Deprecated
     public static final String GEBURTSDATUM_VP = "Geburtsdatum der VP";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#GEBURTSDAT_VP} verwenden */
     @Deprecated
     public static final String GEBURTSDATUM_VP2 = "Geburtsdatum der VP2";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -1892,7 +1892,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Naechste Erlebensfall VS";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS} verwenden */
     @Deprecated
     public static final String BEGINNDATUM_DER_NAECHSTEN_ERLEBENSFALL_VS = "Beginndatum der naechsten Erlebensfall VS";
 
@@ -1981,7 +1981,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String UNFALLAENDERUNGS_PROZENTSATZ = "Unfallaenderungs-Prozentsatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#BEGINNDAT_NAECHSTEN_UNFALLSUMME} verwenden */
     @Deprecated
     public static final String BEGINNDATUM_DER_NAECHSTEN_UNFALLSUMME = "Beginndatum der naechsten Unfallsumme";
 
@@ -2154,7 +2154,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String NAECHSTE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = "Naechste Jahresrente";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#BEGINNDAT_NAECHSTEN_JAHRESRENTE} verwenden */
     @Deprecated
     public static final String BEGINNDATUM_DER_NAECHSTEN_JAHRESRENTE = "Beginndatum der naechsten Jahresrente";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -2181,7 +2181,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String HAFTUNG_BIS = "Haftung bis";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#URSPRUENGLICHES_HAFTUNGSBEGINNDAT} verwenden */
     @Deprecated
     public static final String URSPRUENGLICHES_HAFTUNGSBEGINNDATUM = "Urspruengliches Haftungsbeginndatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -2280,7 +2280,7 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String DYNAMIKSTOP = "Dynamikstop";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    /** @deprecated bitte {@link Bezeichner#DAT_LETZTEN_POSITIVEN_DYNAMIK} verwenden */
     @Deprecated
     public static final String DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK = "Datum der letzten positiven Dynamik";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -2692,14 +2692,56 @@ public final class Bezeichner {
     /** Die Konstante ANTRAGSDAT. */
     public static final Bezeichner ANTRAGSEINGANGSDAT = new Bezeichner("Antragseingangsdatum", "Antragseingangsdat");
 
+    /** Die Konstante BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS. */
+    public static final Bezeichner BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS = new Bezeichner(
+            "Beginndatum der naechsten Erlebensfall VS", "BeginndatNaechstenErlebensfallVs");
+
+    /** Die Konstante BEGINNDAT_NAECHSTEN_JAHRESRENTE. */
+    public static final Bezeichner BEGINNDAT_NAECHSTEN_JAHRESRENTE = new Bezeichner(
+            "Beginndatum der naechsten Jahresrente", "BeginndatNaechstenJahresrente");
+
+    /** Die Konstante BEGINNDAT_NAECHSTEN_UNFALLSUMME. */
+    public static final Bezeichner BEGINNDAT_NAECHSTEN_UNFALLSUMME = new Bezeichner(
+            "Beginndatum der naechsten Unfallsumme", "BeginndatNaechstenUnfallsumme");
+
+    /** Die Konstante BEITRAGSUMSTELLUNGSDAT. */
+    public static final Bezeichner BEITRAGSUMSTELLUNGSDAT = new Bezeichner("Beitragsumstellungsdatum",
+            "Beitragsumstellungsdat");
+
     /** Die Konstante DAT_BEZUGSFERTIGKEIT. */
     public static final Bezeichner DAT_BEZUGSFERTIGKEIT = new Bezeichner("Datum der Bezugsfertigkeit", "DatBezugsfertigkeit");
 
     /** Die Konstante DAT_BEZUGSFERTIGKEIT. */
     public static final Bezeichner DAT_LETZTEN_BEITRAGSANGLEICHUNG = new Bezeichner("Datum der letzten Beitragsangleichung", "DatLetztenBeitragsangleichung");
 
+    /** Die Konstante DAT_LETZTEN_POSITIVEN_DYNAMIK. */
+    public static final Bezeichner DAT_LETZTEN_POSITIVEN_DYNAMIK = new Bezeichner(
+            "Datum der letzten positiven Dynamik", "DatLetztenPositivenDynamik");
+
+    /** Die Konstante ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS. */
+    public static final Bezeichner ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS = new Bezeichner(
+            "Erstellungs-Datum, Zeitraum von, Zeitraum bis", "ErstellungsDatZeitraumVomZeitraumBis");
+
+    /** Die Konstante DIENSTEINTRITTSDAT. */
+    public static final Bezeichner DIENSTEINTRITTSDAT = new Bezeichner("Diensteintrittsdatum", "Diensteintrittsdat");
+
+    /** Die Konstante EINSCHLUSSDAT_VP_PERSONENGRUPPE. */
+    public static final Bezeichner EINSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner(
+            "Einschlussdatum VP / Personengruppe", "EinschlussdatVpPersonengruppe");
+
+    /** Die Konstante ENDEDATUM_BEI_ROTEN_KENNZEICHEN. */
+    public static final Bezeichner ENDEDATUM_BEI_ROTEN_KENNZEICHEN = new Bezeichner(
+            "Endedatum des Versicherungsschutzes bei roten Kennzeichen", "EndedatumBeiRotenKennzeichen");
+
+    /** Die Konstante GEBURTSDAT_VP. */
+    public static final Bezeichner GEBURTSDAT_VP = new Bezeichner("Geburtsdatum der VP", "GeburtsdatVp");
+
     /** Die Konstante LFD_PERSONEN_NR_IM_GEVO. */
     public static final Bezeichner LFD_PERSONEN_NR_IM_GEVO = new Bezeichner ("Lfd. Personennummer im GeVo", "LfdPersonenNrImGevo");
+
+    /** Die Konstante URSPRUENGLICHES_HAFTUNGSBEGINNDAT. */
+    public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner(
+            "Urspruengliches Haftungsbeginndatum", "UerspruenglichesHaftungsbeginndat");
 
     /** Die Konstante VS_NR. */
     public static final Bezeichner VS_NR = new Bezeichner("Versicherungsschein-Nummer", "VsNr");
@@ -3596,9 +3638,17 @@ public final class Bezeichner {
     // Mapping fuer manche Bezeichner (Name <--> technischer Name)
     static {
         MAPPING.put(AUSSCHLUSSDAT_VP_PERSONENGRUPPE.name, AUSSCHLUSSDAT_VP_PERSONENGRUPPE.technischerName);
+        MAPPING.put(BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS.name, BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS.technischerName);
+        MAPPING.put(BEGINNDAT_NAECHSTEN_JAHRESRENTE.name, BEGINNDAT_NAECHSTEN_JAHRESRENTE.technischerName);
+        MAPPING.put(BEGINNDAT_NAECHSTEN_UNFALLSUMME.name, BEGINNDAT_NAECHSTEN_UNFALLSUMME.technischerName);
         MAPPING.put(DAT_BEZUGSFERTIGKEIT.name, DAT_BEZUGSFERTIGKEIT.technischerName);
         MAPPING.put(DAT_LETZTEN_BEITRAGSANGLEICHUNG.name, DAT_LETZTEN_BEITRAGSANGLEICHUNG.technischerName);
+        MAPPING.put(DAT_LETZTEN_POSITIVEN_DYNAMIK.name, DAT_LETZTEN_POSITIVEN_DYNAMIK.technischerName);
+        MAPPING.put(ENDEDATUM_BEI_ROTEN_KENNZEICHEN.name, ENDEDATUM_BEI_ROTEN_KENNZEICHEN.technischerName);
+        MAPPING.put(ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS.name,
+                ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS.technischerName);
         MAPPING.put(LFD_PERSONEN_NR_IM_GEVO.name, LFD_PERSONEN_NR_IM_GEVO.technischerName);
+        MAPPING.put(URSPRUENGLICHES_HAFTUNGSBEGINNDAT.name, URSPRUENGLICHES_HAFTUNGSBEGINNDAT.technischerName);
         MAPPING.put(VS_NR.name, VS_NR.technischerName);
         MAPPING.put(VU_NR.name, VU_NR.technischerName);
     }
@@ -3642,8 +3692,17 @@ public final class Bezeichner {
         if (techName != null) {
             return techName;
         }
+        StringBuilder buf = new StringBuilder();
+        String[] words = input.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            buf.append(toShortcut(words[i]));
+        }
+        return buf.toString();
+    }
+
+    private static String toShortcut(final String input) {
         StringBuilder converted = new StringBuilder();
-        char[] chars = WordUtils.capitalize(input).toCharArray();
+        char[] chars = input.toCharArray();
         for (int i = 0; i < chars.length; i++) {
             switch (chars[i]) {
                 case '\u00c4':
@@ -3674,14 +3733,14 @@ public final class Bezeichner {
                     break;
             }
         }
-        techName = converted.toString();
-        if (techName.endsWith("datum")) {
-            return techName.substring(0, techName.length() - 2);
+        String word = converted.toString();
+        if (word.endsWith("datum")) {
+            return word.substring(0, word.length() - 2);
         }
-        if (techName.endsWith("Waehrungseinheiten")) {
-            return techName.substring(0, techName.length() - 18) + "WE";
+        if (word.equals("Waehrungseinheiten")) {
+            return "WE";
         }
-        return techName;
+        return WordUtils.capitalize(word);
     }
 
     /**

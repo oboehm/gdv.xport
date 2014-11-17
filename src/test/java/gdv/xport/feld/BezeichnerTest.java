@@ -26,7 +26,6 @@ import java.lang.reflect.Field;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import patterntesting.runtime.annotation.Broken;
 import patterntesting.runtime.junit.ObjectTester;
 import patterntesting.runtime.junit.SmokeRunner;
 
@@ -76,7 +75,6 @@ public class BezeichnerTest {
      * Namens.
      */
     @Test
-    @Broken(till = "17-Nov-2014")
     public void testGetTechnischerNameForDatumInside() {
         Bezeichner dat = new Bezeichner("Aufgabedatum dieses Geschaeftsvorfalls");
         assertEquals("AufgabedatDiesesGeschaeftsvorfalls", dat.getTechnischerName());
