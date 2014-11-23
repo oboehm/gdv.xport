@@ -3326,8 +3326,6 @@ public final class Bezeichner {
     public static final String NAME_ANZAHL_DER_VERSICHERTEN_PERSONEN = "Anzahl der versicherten Personen";
     public static final String NAME_DATUM_UNVERFALLBARKEIT = "Datum Unverfallbarkeit";
     public static final String NAME_DIENSTEINTRITT = "Diensteintritt";
-    public static final String NAME_GEBURTSDATUM_VP = "Geburtsdatum der VP";
-    public static final String NAME_GEBURTSDATUM_VP2 = "Geburtsdatum der VP2";
     public static final String NAME_GESCHLECHT_VP = "Geschlecht der VP";
     public static final String NAME_LFD_NUMMER_ZUR_WAGNISART = "Lfd Nummer zur Wagnisart";
     public static final String NAME_MITARBEITER_STATUS = "Mitarbeiter Status";
@@ -3737,7 +3735,7 @@ public final class Bezeichner {
         if (word.endsWith("datum")) {
             return word.substring(0, word.length() - 2);
         }
-        if (word.equals("Waehrungseinheiten")) {
+        if ("Waehrungseinheiten".equals(word)) {
             return "WE";
         }
         return WordUtils.capitalize(word);
