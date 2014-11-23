@@ -27,8 +27,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
-
 /**
  * Diese Klasse repraesentiert die Satzart 220. Es handelt es sich dabei um eine
  * alternative Implementierung der SpartenspezifischerTeil-Klasse, die nach dem
@@ -117,7 +115,7 @@ public class Satz220 extends SpartensatzX {
         int satzlength = getSatzlength(s);
         for (int i = 0; i < s.length(); i += satzlength) {
             String input = s.substring(i);
-            if (StringUtils.isEmpty(input)) {
+            if (input.trim().isEmpty()) {
                 break;
             }
             char satznummer = input.charAt(48);
@@ -147,7 +145,7 @@ public class Satz220 extends SpartensatzX {
         int satzlength = getSatzlength(s);
         for (int i = 0; i < s.length(); i += satzlength) {
             String input = s.substring(i);
-            if (StringUtils.isEmpty(input)) {
+            if (input.trim().isEmpty()) {
                 break;
             }
             char satznummer = input.charAt(50);

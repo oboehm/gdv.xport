@@ -3849,7 +3849,7 @@ public final class Bezeichner {
      */
     public Bezeichner mergeWith(final Bezeichner bezeichner) {
         if (this.technischerName.equals(bezeichner.getTechnischerName())) {
-            LOG.info("Merge of {} and {} is ignored.", this, bezeichner);
+            LOG.debug("Merge of {} and {} is ignored.", this, bezeichner);
             return this;
         } else {
             return bezeichner;
