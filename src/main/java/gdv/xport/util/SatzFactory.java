@@ -69,7 +69,7 @@ public final class SatzFactory {
         register(Satz210.class, 210);
         register(Satz211.class, 211);
         register(Satz220.class, 220);
-        //register(Satz221.class, 221);
+        register(Satz221.class, 221);
         register(Satz230.class, 230);
         register(Nachsatz.class, 9999);
 
