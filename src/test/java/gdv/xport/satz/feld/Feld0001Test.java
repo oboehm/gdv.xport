@@ -30,7 +30,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import patterntesting.runtime.annotation.Broken;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -58,7 +57,6 @@ public class Feld0001Test {
      * 1" aufgesetzt ist.
      */
     @Test
-    @Broken(why="siehe gdv.xport.satz.model.SatzX.add(Enum<?>, Teildatensatz)", till="30-Nov-2014")
     public void testVersionSatzart0001() {
         Feld x = vorsatz.getTeildatensatz(1).getFeld(Bezeichner.NAME_VERSION_SATZART_0001);
         assertNotNull(x);
