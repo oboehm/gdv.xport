@@ -1006,7 +1006,7 @@ public abstract class Satz {
 	protected static void add(final Enum<?> feldX, final Teildatensatz tds) {
 		FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
 		Feld feld = Feld.createFeld(feldX, info);
-		if (info.nr() < 8) {      // TODO: diese Abfrage ist eigentlich unnoetig
+		if (info.nr() < 7) {      // TODO: diese Abfrage ist eigentlich unnoetig
 			LOG.debug("using default settings for " + feld);
 		} else {
 			tds.add(feld);
