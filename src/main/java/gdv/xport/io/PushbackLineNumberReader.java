@@ -18,7 +18,10 @@
 
 package gdv.xport.io;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.io.PushbackReader;
+import java.io.Reader;
 import java.nio.CharBuffer;
 
 /**

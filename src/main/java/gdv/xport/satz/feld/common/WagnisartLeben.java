@@ -54,7 +54,7 @@ public enum WagnisartLeben {
 	/** The fondsgebundene rentenversicherung. */
 	FONDSGEBUNDENE_RENTENVERSICHERUNG(9);
 
-	private int code = -1;
+	private final int code;
 
 	private WagnisartLeben(final int code) {
 		this.code = code;
@@ -67,15 +67,6 @@ public enum WagnisartLeben {
 	 */
 	public int getCode() {
 		return code;
-	}
-
-	/**
-	 * Sets the code.
-	 *
-	 * @param code the new code
-	 */
-	public void setCode(final int code) {
-		this.code = code;
 	}
 
 	/**

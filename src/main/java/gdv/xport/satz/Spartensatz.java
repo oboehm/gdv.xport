@@ -21,10 +21,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Dies ist eine gemeinsame Oberklasse aller Datensaetze, die mehrere Sparten aufnehmen koennen.
+ * Dies ist eine gemeinsame Oberklasse aller Datensaetze, die mehrere Sparten
+ * aufnehmen koennen.
+ * <p>
+ * TODO: Diese Klasse wird in 1.2 entsorgt.
+ * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (22.11.2010)
+ * @deprecated abgeloest durch {@link gdv.xport.satz.model.SpartensatzX}
  */
 @Deprecated
 public abstract class Spartensatz extends Datensatz {

@@ -96,7 +96,7 @@ public class Zeichen extends AlphaNumFeld {
      * @since 0.6
      */
     public Zeichen(final String name, final FeldInfo info) {
-        this(name, info.byteAdresse());
+        this(new Bezeichner(name), info.byteAdresse());
         assert info.anzahlBytes() == 1 : "Zeichen kann nur 1 Byte lang sein";
     }
 
