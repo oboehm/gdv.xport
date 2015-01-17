@@ -109,7 +109,7 @@ public class ImportExportTest {
      */
     @IntegrationTest
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    @SkipTestOn(property = "SKIP_IMPORT_TEST", hide = true)
     public void testImportDatenpakete() throws IOException {
         InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt");
         assertNotNull(istream);
