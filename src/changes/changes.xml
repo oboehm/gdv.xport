@@ -17,8 +17,13 @@
 
   <body>
 
-    <release version="1.0.0-SNAPSHOT" date="2015"
+    <release version="1.0.0" date="Feb-2015"
              description="Streaming-API">
+      <action dev="oboehm" type="add" date="18-Jan-2015">
+      	XmlService unterst&#252;tzt die restlichen S&#228;tze auf Basis der
+      	XML-Beschreibung von
+      	<a href="http://www.gdv-online.de/vuvm/bestand/best_2009.htm">www.gdv-online.de</a>.
+      </action>
       <action dev="oboehm" type="update" date="05-Aug-2014" >
         Import- und Export-Methoden der Datenpaket-Klasse unterst&#252;tzen jetzt
         Encoding.

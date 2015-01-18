@@ -31,6 +31,15 @@
         registriert werden.
       </p>
       <p>
+        Ab 1.0 werden &#252;ber den
+        <a href="../apidocs/gdv/xport/satz/xml/XmlService.html">XmlService</a>
+        die restlichen Satzarten durch eine XML-Beschreibung von
+        <a href="http://www.gdv-online.de/vuvm/bestand/best_2009.htm">gdv-online.de</a>.
+        unterst&#252;tzt. Hier k&#246;nnen noch keine eigenen Satzarten
+        eingebracht werden. Dies ist erst f&#252;r eine der n&#228;chsten
+        Versionen gelplant.
+      </p>
+      <p>
         Im <a href="../apidocs/gdv/xport/demo/package.html">demo</a>-Paket
         befindet sich
         <a href="../xref/gdv/xport/demo/MyUnfallDatensatz.html#40">MyUnfallDatensatz</a>
@@ -61,6 +70,27 @@
   </teildatensatz>
 </satz>
 ]]></source>
+    </section>
+
+    <section name="Warum eigene Erweiterungen?">
+      <p>
+        Auch wenn mit 1.0 s&#228;mtliche Satzarten unter&#252;tzt werden,
+        werden auch weiterhin eigene Satzarten registriert und bestehende
+        &#252;berschrieben werden k&#246;nnen. Die Gr&#252;nde daf&#252;
+        sind:
+      </p>
+      <ul>
+        <li>
+          Sollte sich der GDV-Standard weiterentwickeln, k&#246;nnen fehlende
+          Satzarten leicht erg&#228;nzt und fehlerhafte Satzarten leicht
+          korrigiert werden.
+        </li>
+        <li>
+          Manche Firmen haben ihre eigenene Interpretation des Standards.
+          Diese k&#246;nnen &#252;ber die Registrierung eigener S&#228;tze
+          dem Framework beigebracht werden.
+        </li>
+      </ul>
     </section>
 
   </body>
