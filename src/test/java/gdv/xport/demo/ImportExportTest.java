@@ -57,7 +57,7 @@ public class ImportExportTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    @RunTestOn(osName = "Windows")
+    @RunTestOn(osName = "Windows", hide = true)
     public void testImportSatz100Windows() throws IOException {
         File tmpFile = new File("C:\\temp", "datensatz.gdv");
         checkImportSatz100(tmpFile);
@@ -70,7 +70,7 @@ public class ImportExportTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    @RunTestOn(osName = {"Mac", "Linux"})
+    @RunTestOn(osName = {"Mac", "Linux"}, hide = true)
     public void testImportSatz100WUnix() throws IOException {
         File tmpFile = new File("/tmp", "datensatz.gdv");
         checkImportSatz100(tmpFile);
