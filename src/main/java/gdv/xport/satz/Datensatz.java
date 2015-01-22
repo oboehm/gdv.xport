@@ -45,6 +45,7 @@ import org.apache.logging.log4j.Logger;
  */
 public class Datensatz extends Satz {
 
+	/** The Constant LOG. */
 	private static final Logger LOG = LogManager.getLogger(Datensatz.class);
 	/** 3 Zeichen, Byte 11 - 13. */
     private final NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
@@ -167,7 +168,20 @@ public class Datensatz extends Satz {
 		this.completeTeildatensaetze();
 	}
 
-	/**
+    /**
+     * Dies ist der Copy-Constructor, mit dem man einen bestehenden Datensatz
+     * kopieren kann.
+     *
+     * @param other der originale Datensatz
+     */
+	public Datensatz(final Datensatz other) {
+	    this(other.getSatzart(), other.getSparte(), other.cloneTeildatensaetze());
+        this.art = other.art;
+        this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
+        this.wagnisart.setInhalt(other.wagnisart.getInhalt());
+    }
+
+    /**
 	 * Kann von Unterklassen verwendet werden, um die Teildatensaetze
 	 * aufzusetzen.
 	 */
@@ -188,14 +202,24 @@ public class Datensatz extends Satz {
 	 * @since 0.4
 	 */
 	protected void setUpTeildatensatz(final Teildatensatz tds) {
-	    this.setUp(tds, Feld1bis7.VU_NUMMER, Config.getVUNummer());
-        this.setUp(tds, Feld1bis7.BUENDELUNGSKENNZEICHEN, new AlphaNumFeld(Feld1bis7.BUENDELUNGSKENNZEICHEN));
-        this.setUp(tds, Feld1bis7.SPARTE, this.sparte);
-        this.setUp(tds, Feld1bis7.VERSICHERUNGSSCHEINNUMMER, new AlphaNumFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER));
-        this.setUp(tds, Feld1bis7.FOLGENUMMER, new NumFeld(Feld1bis7.FOLGENUMMER));
-        this.setUp(tds, Feld1bis7.VERMITTLER, new AlphaNumFeld(Feld1bis7.VERMITTLER));
+	    if (!tds.hasFeld(Feld1bis7.VU_NUMMER)) {
+    	    this.setUp(tds, Feld1bis7.VU_NUMMER, Config.getVUNummer());
+            this.setUp(tds, Feld1bis7.BUENDELUNGSKENNZEICHEN, new AlphaNumFeld(Feld1bis7.BUENDELUNGSKENNZEICHEN));
+            this.setUp(tds, Feld1bis7.SPARTE, this.sparte);
+            this.setUp(tds, Feld1bis7.VERSICHERUNGSSCHEINNUMMER, new AlphaNumFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER));
+            this.setUp(tds, Feld1bis7.FOLGENUMMER, new NumFeld(Feld1bis7.FOLGENUMMER));
+            this.setUp(tds, Feld1bis7.VERMITTLER, new AlphaNumFeld(Feld1bis7.VERMITTLER));
+            LOG.trace(tds + " is set up.");
+	    }
 	}
 
+    /**
+     * Sets the up.
+     *
+     * @param tds the tds
+     * @param feldX the feld x
+     * @param value the value
+     */
     private void setUp(final Teildatensatz tds, final Enum<?> feldX, final Feld value) {
         if (!tds.hasFeld(feldX)) {
             if (LOG.isTraceEnabled()) {
@@ -205,7 +229,7 @@ public class Datensatz extends Satz {
         }
     }
 
-	/**
+    /**
 	 * Kann von Unterklassen verwendet werden, um fehlende Felder in den
 	 * Teildatensaetze zu vervollstaendigen. Kann aber seit 1.0 nicht mehr
 	 * ueberschrieben werden, da diese Methode vom Konstruktor waehrend der
@@ -483,8 +507,8 @@ public class Datensatz extends Satz {
 	 * @param reader the reader
 	 * @return true (Default-Implementierung)
 	 * @throws IOException bei I/O-Fehlern
-	 * @since 0.5.1
 	 * @see Satz#matchesNextTeildatensatz(PushbackLineNumberReader)
+	 * @since 0.5.1
 	 */
 	@Override
 	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader) throws IOException {

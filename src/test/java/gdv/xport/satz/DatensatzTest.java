@@ -22,8 +22,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.feld.Feld100;
+import gdv.xport.util.SatzNummer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -96,6 +101,26 @@ public class DatensatzTest extends AbstractDatensatzTest {
         String s = ds.toString();
         LOG.info("s = \"{}\"", s);
         assertTrue(s, s.contains("220.580.2"));
+    }
+
+    /**
+     * Test-Methude fuer {@link Datensatz#Datensatz(Datensatz)}.
+     */
+    @Test
+    public void testCopyConstructor() {
+        List<Teildatensatz> teildatensaetze = new ArrayList<Teildatensatz>();
+        Teildatensatz tds = new Teildatensatz(100, 1);
+        tds.add(new Feld(Feld100.NAME1));
+        tds.set(Feld100.NAME1, "Asterix");
+        teildatensaetze.add(tds);
+        teildatensaetze.add(new Teildatensatz(100, 2));
+        Datensatz orig = new Datensatz(new SatzNummer(100), teildatensaetze);
+        Datensatz copy = new Datensatz(orig);
+        assertEquals(orig.get(Feld100.NAME1), copy.get(Feld100.NAME1));
+        assertEquals(orig.toLongString(), copy.toLongString());
+        copy.set(Feld100.NAME1, "Obelix");
+        assertEquals("Obelix", copy.getFeld(Feld100.NAME1).getInhalt().trim());
+        assertEquals("Asterix", orig.getFeld(Feld100.NAME1).getInhalt().trim());
     }
 
 }

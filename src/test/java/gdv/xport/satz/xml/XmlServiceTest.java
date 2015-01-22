@@ -25,14 +25,7 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractSatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
-import gdv.xport.satz.model.Satz100;
-import gdv.xport.satz.model.Satz200;
-import gdv.xport.satz.model.Satz210;
-import gdv.xport.satz.model.Satz211;
-import gdv.xport.satz.model.Satz220;
-import gdv.xport.satz.model.Satz221;
-import gdv.xport.satz.model.Satz230;
-import gdv.xport.satz.model.SatzX;
+import gdv.xport.satz.model.*;
 import gdv.xport.util.NotUniqueException;
 import gdv.xport.util.SatzNummer;
 
@@ -60,6 +53,21 @@ public class XmlServiceTest extends AbstractXmlTest {
         SatzXml satz = xmlService.getSatzart(100);
         assertNotNull(satz);
         assertEquals(100, satz.getSatzart());
+    }
+
+    /**
+     * Einfache Test-Methode fuer {@link XmlService#getSatzart(int)}. Wir
+     * moechten jedesmal ein "frisches" {@link SatzXml}-Objekt bekommen. Daher
+     * holen wir ihn uns zweimal...
+     */
+    @Test
+    public void testGetSatzartTwice() {
+        SatzXml one = xmlService.getSatzart(100);
+        one.set(Bezeichner.NAME_VERSICHERUNGSSCHEINNUMMER, "4711");
+        SatzXml two = xmlService.getSatzart(100);
+        two.set(Bezeichner.NAME_VERSICHERUNGSSCHEINNUMMER, "4722");
+        assertEquals("4722", two.get(Bezeichner.NAME_VERSICHERUNGSSCHEINNUMMER).trim());
+        assertEquals("4711", one.get(Bezeichner.NAME_VERSICHERUNGSSCHEINNUMMER).trim());
     }
 
     /**

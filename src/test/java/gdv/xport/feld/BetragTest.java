@@ -31,9 +31,17 @@ import org.junit.Test;
  * @since 11.10.2009
  * @version $Revision$
  */
-public class BetragTest {
+public final class BetragTest extends AbstractFeldTest {
 
     private final Betrag betrag = new Betrag(new Bezeichner("test"), 5, 1);
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
+     */
+    @Override
+    protected Feld getTestFeld() {
+        return this.betrag;
+    }
 
     /**
      * Test-Methode fuer {@link Betrag#Betrag(String, int, int)}.

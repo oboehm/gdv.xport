@@ -51,6 +51,16 @@ public class VUNummer extends AlphaNumFeld {
         super.setAnzahlBytes(5);
     }
 
+    /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public VUNummer(final VUNummer other) {
+        super(other);
+    }
+
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#toString()
      */
@@ -58,6 +68,14 @@ public class VUNummer extends AlphaNumFeld {
     public String toString() {
         return this.getClass().getSimpleName() + " " + this.getInhalt() + " ("
                 + this.getByteAdresse() + "-" + this.getEndAdresse() + ")";
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AlphaNumFeld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new VUNummer(this);
     }
 
 }

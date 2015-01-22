@@ -20,6 +20,7 @@ package gdv.xport.feld;
 
 import static org.junit.Assert.assertEquals;
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.satz.feld.Feld100;
 
 import org.junit.Test;
 
@@ -29,10 +30,17 @@ import org.junit.Test;
  * @author oliver (ob@aosd.de)
  * @since 0.6 (10.05.2011)
  */
-public class AlphaNumFeldTest {
+public final class AlphaNumFeldTest extends AbstractFeldTest {
 
-    /** For testing. */
     private enum Alphabet { ALPHA, BETA, GAMMA, DYNAMIK; }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
+     */
+    @Override
+    protected Feld getTestFeld() {
+        return new AlphaNumFeld(Feld100.NAME1);
+    }
 
     /**
      * Test method for {@link AlphaNumFeld#AlphaNumFeld(java.lang.Enum, gdv.xport.annotation.FeldInfo)}.

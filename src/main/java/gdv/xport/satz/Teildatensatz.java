@@ -30,13 +30,8 @@ import gdv.xport.io.ImportException;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
+import java.util.Map.Entry;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -98,6 +93,21 @@ public class Teildatensatz extends Satz {
     public Teildatensatz(final int satzart, final int nr) {
         super(satzart, 0);
         initSatznummer(nr);
+    }
+
+    /**
+     * Dies ist der Copy-Constructor, falls man eine Kopie eines
+     * Teildatensatzes braucht.
+     *
+     * @param other der andere Teildatensatz
+     */
+    public Teildatensatz(final Teildatensatz other) {
+        this(other.getSatzart(), other.getNummer().toInt());
+        for (Entry<Bezeichner, Feld> entry : other.datenfelder.entrySet()) {
+            Feld copy = (Feld) entry.getValue().clone();
+            this.datenfelder.put(entry.getKey(), copy);
+            this.sortedFelder.add(copy);
+        }
     }
 
     /**

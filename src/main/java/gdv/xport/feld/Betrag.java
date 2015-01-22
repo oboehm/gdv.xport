@@ -117,6 +117,16 @@ public class Betrag extends NumFeld {
         super(name, info);
     }
 
+    /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public Betrag(final Betrag other) {
+        super(other);
+    }
+
     /* (non-Javadoc)
      * @see gdv.xport.feld.NumFeld#setInhalt(int)
      */
@@ -147,6 +157,14 @@ public class Betrag extends NumFeld {
     @Override
     public double toDouble() {
         return super.toInt() / 100.0;
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new Betrag(this);
     }
 
 }

@@ -110,6 +110,16 @@ public final class BetragMitVorzeichen extends Betrag {
     }
 
     /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public BetragMitVorzeichen(final BetragMitVorzeichen other) {
+        super(other);
+    }
+
+    /**
      * Vorzeichen setzen.
      * @param c '+' oder '-'
      */
@@ -199,6 +209,14 @@ public final class BetragMitVorzeichen extends Betrag {
     public void resetInhalt() {
         super.resetInhalt();
         this.setVorzeichen('+');
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new BetragMitVorzeichen(this);
     }
 
 }

@@ -174,4 +174,22 @@ public class AlphaNumFeld extends Feld {
         super(name, length, start, inhalt, Align.LEFT);
     }
 
+    /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public AlphaNumFeld(final Feld other) {
+        super(other);
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new AlphaNumFeld(this);
+    }
+
 }

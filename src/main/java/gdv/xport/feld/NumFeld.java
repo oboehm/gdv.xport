@@ -231,6 +231,17 @@ public class NumFeld extends Feld {
     }
 
     /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public NumFeld(final NumFeld other) {
+        super(other);
+        this.nachkommastellen = other.nachkommastellen;
+    }
+
+    /**
      * Die Default-Ausrichtung ist rechts-buendig fuer Zahlen.
      *
      * @return rechts-buendig
@@ -389,6 +400,14 @@ public class NumFeld extends Feld {
         nf.setMinimumFractionDigits(this.nachkommastellen);
         nf.setMaximumFractionDigits(this.nachkommastellen);
         return nf.format(this.toDouble());
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new NumFeld(this);
     }
 
 }

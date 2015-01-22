@@ -35,19 +35,26 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
+import patterntesting.runtime.junit.CloneableTester;
+
 /**
  * JUnit-Test fuer die Feld-Klasse.
  *
  * @author oliver
  * @since 05.10.2009
  */
-public class FeldTest {
+public final class FeldTest extends AbstractFeldTest {
 
-    /** The Constant log. */
     private static final Logger LOG = LogManager.getLogger(FeldTest.class);
-
-    /** For testing. */
     private enum Greeting { HELLO_WORLD, ADRESSAT; }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
+     */
+    @Override
+    protected Feld getTestFeld() {
+        return new Feld();
+    }
 
     /**
      * Test method for {@link gdv.xport.feld.Feld#resetInhalt()}.
@@ -251,6 +258,15 @@ public class FeldTest {
     public void testEncoding() {
         Feld feld = new AlphaNumFeld("Gruesse", "Gr\u00fc\u00dfe");
         assertEquals("Gr\u00fc\u00dfe", feld.getInhalt());
+    }
+
+    /**
+     * Test-Methode fuer {@link Feld#clone()}:
+     */
+    @Override
+    @Test
+    public void testCloneable() {
+        CloneableTester.assertCloning(Feld.class);
     }
 
 }

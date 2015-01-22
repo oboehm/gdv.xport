@@ -21,10 +21,8 @@ package gdv.xport.satz;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
+import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.common.VertragsStatus;
 
 import java.io.IOException;
@@ -128,6 +126,33 @@ public class TeildatensatzTest extends AbstractSatzTest {
         assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
         tds.remove(satznummer.getBezeichnung());
         assertEquals("remove failed", Feld.NULL_FELD, tds.getFeld(satznummer.getBezeichnung()));
+    }
+
+    /**
+     * Hier testen wir, ob mit dem CopyConstructor
+     * {@link Teildatensatz#Teildatensatz(Teildatensatz)} tatsaechlich eine
+     * Kopie angelegt wird.
+     */
+    @Test
+    public void testCopyConstructor() {
+        Teildatensatz orig = new Teildatensatz(100, 1);
+//        AlphaNumFeld vermittler = new AlphaNumFeld(Feld1bis7.VERMITTLER);
+//        vermittler.setInhalt("4711");
+//        orig.add(vermittler);
+        Feld name1 = new AlphaNumFeld(Feld100.NAME1);
+        name1.setInhalt("Mickey");
+        orig.add(name1);
+        Teildatensatz copy = new Teildatensatz(orig);
+        assertEqualsFeld(orig.getFeld(Feld100.NAME1), copy.getFeld(Feld100.NAME1));
+        assertEquals(orig, copy);
+        copy.set(Feld100.NAME1, "Goofy");
+        assertEquals("Goofy", copy.get(Feld100.NAME1).trim());
+        assertEquals("Mickey", orig.get(Feld100.NAME1).trim());
+    }
+
+    private static void assertEqualsFeld(final Feld one, final Feld two) {
+        assertEquals(one, two);
+        assertEquals(one.getClass(), two.getClass());
     }
 
 }

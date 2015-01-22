@@ -24,11 +24,7 @@ import gdv.xport.util.SatzNummer;
 import gdv.xport.util.XmlHelper;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.*;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -220,6 +216,10 @@ public class XmlService {
      * Liefert den Satz zur gewuenschten Satzart. Falls es mehr wie einen Satz
      * zur gesuchten Satzart gibt (d.h. wenn es mehrere Sparten gibt), wird
      * eine {@link NotUniqueException} geworfen.
+     * <p>
+     * Um Nebeneffekte zu vermeiden wird jedesmal ein neuer Satz erzeugt und
+     * zurueckgeliefert.
+     * </p>
      *
      * @param satzart z.B. 100 fuer Satz100 (Adressteil)
      * @return die entsprechende Satzart
@@ -227,7 +227,7 @@ public class XmlService {
     public SatzXml getSatzart(final int satzart) {
         SatzXml satz = this.satzarten.get(new SatzNummer(satzart));
         if (satz != null) {
-            return satz;
+            return new SatzXml(satz);
         }
         List<SatzNummer> satzTypen = new ArrayList<SatzNummer>();
         for (SatzNummer satzNr : this.satzarten.keySet()) {
@@ -241,7 +241,7 @@ public class XmlService {
         if (satzTypen.size() > 1) {
             throw new NotUniqueException("Sparte for Satzart " + satzart + " is missing: " + satzTypen);
         }
-        return this.satzarten.get(satzTypen.get(0));
+        return new SatzXml(this.satzarten.get(satzTypen.get(0)));
     }
 
     /**

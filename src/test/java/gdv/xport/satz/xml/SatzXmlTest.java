@@ -21,8 +21,12 @@ package gdv.xport.satz.xml;
 import static gdv.xport.satz.xml.AbstractXmlTest.createXMLEventReader;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.AbstractDatensatzTest;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.model.Satz100;
 
@@ -249,7 +253,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     }
 
     /**
-     * Der Satz in "Satz0212.050.xml" handelt es sich um einen Satz mit
+     * Beim Satz in "Satz0212.050.xml" handelt es sich um einen Satz mit
      * Sparte 50 (und Satzart 212).
      *
      * @throws XMLStreamException the XML stream exception
@@ -262,7 +266,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     }
 
     /**
-     * Mit Satz 210 Sparte 10 gab es kleiner Probleme mit einigen Feldern.
+     * Mit Satz 210 Sparte 10 gab es kleinere Probleme mit einigen Feldern.
      *
      * @throws XMLStreamException the XML stream exception
      */

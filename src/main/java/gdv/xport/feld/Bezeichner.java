@@ -3157,6 +3157,7 @@ public final class Bezeichner {
     public static final String NAME_VERSICHERTES_OBJEKT = "Versichertes Objekt";
     public static final String NAME_VERSICHERTE_GEFAHREN = "Versicherte Gefahren";
     public static final String NAME_VERSICHERUNGSLEISTUNGEN = "Versicherungsleistungen";
+    public static final String NAME_VERSICHERUNGSSCHEINNUMMER = "Versicherungsschein-Nummer";
     public static final String NAME_VERSICHERUNGSSCHEINNUMMER_VM = "Versicherungsscheinnummer VM";
     public static final String NAME_VERSION_SATZART_9999 = "Version Satzart 9999 Nachsatz";
     public static final String NAME_VERSION_SATZART_0001 = "Version Satzart 0001";

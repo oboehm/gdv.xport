@@ -29,7 +29,15 @@ import org.junit.Test;
  * @author oliver (ob@aosd.de)
  * @since 0.6 (10.05.2011)
  */
-public class ZeichenTest {
+public final class ZeichenTest extends AbstractFeldTest {
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
+     */
+    @Override
+    protected Feld getTestFeld() {
+        return new Zeichen(Feld100.ANREDESCHLUESSEL);
+    }
 
     /**
      * Test method for {@link gdv.xport.feld.Zeichen#Zeichen(java.lang.Enum)}.

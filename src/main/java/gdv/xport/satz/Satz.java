@@ -18,25 +18,9 @@ import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.util.SatzNummer;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -139,13 +123,29 @@ public abstract class Satz {
 	}
 
 	/**
-	 * Liefert alle Teildatensaetze zurueck.
+	 * Liefert alle Teildatensaetze zurueck. Aus Performance-Gruenden wird
+	 * keine Kopie zurueckgegeben. Sollte eine Kopie gewuenscht sein, kann
+	 * man auf {@link #cloneTeildatensaetze()} zurueckgreifen.
 	 *
 	 * @return Teildatensaetze
 	 * @since 0.2
 	 */
-	public final Collection<Teildatensatz> getTeildatensaetze() {
+	public final List<Teildatensatz> getTeildatensaetze() {
 		return Arrays.asList(this.teildatensatz);
+	}
+
+	/**
+	 * Hier wirde eine Kopie aller Teildatensaetze zurueckgegeben.
+	 *
+	 * @return Liste mit Teildatensaetzen
+	 * @since 1.0
+	 */
+	protected final List<Teildatensatz> cloneTeildatensaetze() {
+        List<Teildatensatz> cloned = new ArrayList<Teildatensatz>(this.teildatensatz.length);
+	    for (int i = 0; i < this.teildatensatz.length; i++) {
+            cloned.add(new Teildatensatz(this.teildatensatz[i]));
+        }
+	    return cloned;
 	}
 
 	/**

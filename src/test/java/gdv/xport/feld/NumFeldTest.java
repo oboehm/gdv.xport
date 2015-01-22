@@ -40,9 +40,17 @@ import org.junit.Test;
  * @author oliver
  * @since 05.10.2009
  */
-public class NumFeldTest {
+public final class NumFeldTest extends AbstractFeldTest {
 
     private static final Logger LOG = LogManager.getLogger(NumFeldTest.class);
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
+     */
+    @Override
+    protected Feld getTestFeld() {
+        return new NumFeld(Feld1bis7.SPARTE);
+    }
 
     /**
      * Einfacher Test, ob das Anlegen erfolgreich war.

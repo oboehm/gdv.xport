@@ -31,7 +31,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import patterntesting.concurrent.junit.ParallelRunner;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * Testklasse fuer Datum-Klasse.
@@ -40,11 +40,18 @@ import patterntesting.concurrent.junit.ParallelRunner;
  * @since 24.10.2009
  * @version $Revision$
  */
-@RunWith(ParallelRunner.class)
-public class DatumTest {
+@RunWith(SmokeRunner.class)
+public final class DatumTest extends AbstractFeldTest {
 
-    /** The Constant log. */
     private static final Logger LOG = LogManager.getLogger(DatumTest.class);
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
+     */
+    @Override
+    protected Feld getTestFeld() {
+        return Datum.heute();
+    }
 
     /**
      * Test method for {@link gdv.xport.feld.Datum#setInhalt(java.util.Date)}.

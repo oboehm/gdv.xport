@@ -112,12 +112,40 @@ public class Zeichen extends AlphaNumFeld {
     }
 
     /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Zeichen
+     * kopieren kann.
+     *
+     * @param other das originale Zeichen
+     */
+    public Zeichen(final Zeichen other) {
+        super(other);
+    }
+
+    /**
      * Falls man keinen String will, sondern ein einzelnes Zeichen braucht.
      *
      * @return das einzige Zeichen
      */
     public char toChar() {
         return this.getInhalt().charAt(0);
+    }
+
+    /**
+     * Liefert das Zeichen als Integer zurueck oder als -1, falls es keine
+     * Zahl ist.
+     *
+     * @return 0 bis 9 oder -1, falls es keine Zahl ist
+     */
+    public int toInt() {
+        return Character.getNumericValue(toChar());
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new Zeichen(this);
     }
 
 }

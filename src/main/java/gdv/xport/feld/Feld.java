@@ -51,7 +51,7 @@ import org.apache.logging.log4j.Logger;
  * @author oliver
  * @since 04.10.2009
  */
-public class Feld implements Comparable<Feld> {
+public class Feld implements Comparable<Feld>, Cloneable {
 
     private static final Logger LOG = LogManager.getLogger(Feld.class);
     /** statt "null". */
@@ -68,13 +68,14 @@ public class Feld implements Comparable<Feld> {
     private final Align ausrichtung;
 
     /**
-     * Legt ein neues Feld an. Dieser Konstruktor ist fuer Unterklassen
-     * vorgesehen.
+     * Legt ein neues Feld an. Dieser Default-Konstruktor ist fuer Unterklassen
+     * vorgesehen. Da er aber auch fuer die {@link Cloneable}-Implementierung
+     * benoetigt wird, ist er 'public'.
      *
      * @since 1.0
      */
-    protected Feld() {
-        this("null", 0, 0, Align.UNKNOWN);
+    public Feld() {
+        this(FeldX.UNBEKANNT);
     }
 
     /**
@@ -268,6 +269,17 @@ public class Feld implements Comparable<Feld> {
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
         this.bezeichnerEnum = FeldX.UNBEKANNT;
+    }
+
+    /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public Feld(final Feld other) {
+        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.ausrichtung);
+        this.setInhalt(other.getInhalt());
     }
 
     private static StringBuffer getEmptyStringBuffer(final int length) {
@@ -723,6 +735,18 @@ public class Feld implements Comparable<Feld> {
         } catch (NoSuchFieldException nsfe) {
             throw new InternalError("no field " + feldX + " (" + nsfe + ")");
         }
+    }
+
+    /**
+     * Die clone-Methode hat gegenueber dem CopyConstructor
+     * {@link Feld#Feld(Feld)} den Vorteil, dass es den richtigen Typ fuer die
+     * abgeleiteten Klassen zurueckliefert.
+     *
+     * @return eine Kopie
+     */
+    @Override
+    public Object clone() {
+        return new Feld(this);
     }
 
 }

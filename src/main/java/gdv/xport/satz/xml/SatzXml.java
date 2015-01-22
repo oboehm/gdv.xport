@@ -70,6 +70,16 @@ public final class SatzXml extends Datensatz {
         parse(element, parser);
     }
 
+    /**
+     * Dies ist der Copy-Constructor, mit dem man einen bestehenden Satz
+     * kopieren kann.
+     *
+     * @param orig der originale Satz
+     */
+    public SatzXml(final Datensatz orig) {
+        super(orig);
+    }
+
     /* (non-Javadoc)
      * @see gdv.xport.satz.Datensatz#setUpTeildatensaetze()
      */

@@ -186,6 +186,17 @@ public final class Datum extends Feld {
         dateFormat = getDateFormat(length);
     }
 
+    /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Datum
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public Datum(final Datum other) {
+        super(other);
+        this.dateFormat = other.dateFormat;
+    }
+
     private static DateFormat getDateFormat(final int length) {
         return getDateFormat(length, "");
     }
@@ -328,6 +339,14 @@ public final class Datum extends Feld {
     public String format() {
         DateFormat df = getDateFormat(this.getAnzahlBytes(), ".");
         return df.format(this.toDate());
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new Datum(this);
     }
 
 }

@@ -64,7 +64,7 @@ public final class SatzFactory {
 
     static {
         register(Vorsatz.class, 1);
-        register(Satz100.class, 100);
+//        register(Satz100.class, 100);
         register(Satz200.class, 200);
         register(Satz210.class, 210);
         register(Satz211.class, 211);
