@@ -222,9 +222,7 @@ public class Datensatz extends Satz {
      */
     private void setUp(final Teildatensatz tds, final Enum<?> feldX, final Feld value) {
         if (!tds.hasFeld(feldX)) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Init " + tds + " with " + value + ".");
-            }
+            LOG.trace("{} initialized with value {}.", tds, value);
             tds.add(value);
         }
     }

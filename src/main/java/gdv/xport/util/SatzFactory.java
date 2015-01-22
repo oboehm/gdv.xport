@@ -216,9 +216,7 @@ public final class SatzFactory {
     public static void register(final Class<? extends Satz> clazz, final int satzart) {
         try {
             Constructor<? extends Satz> ctor = clazz.getConstructor();
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("default constructor " + ctor + " found");
-            }
+            LOG.debug("Default constructor {} found.", ctor);
         } catch (NoSuchMethodException ex) {
             throw new IllegalArgumentException("no default constructor found in " + clazz, ex);
         }

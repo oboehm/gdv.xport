@@ -3831,9 +3831,7 @@ public final class Bezeichner {
                     return fields[i];
                 }
             } catch (IllegalAccessException e) {
-                if (LOG.isDebugEnabled()) {
-                    LOG.debug("Will ignore field " + fields[i] + ": ", e);
-                }
+                LOG.debug("Will ignore field {}:", fields[i], e);
             }
         }
         throw new IllegalArgumentException("no constant with text \"" + bezeichnung + "\" defined");
