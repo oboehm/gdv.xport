@@ -30,13 +30,12 @@ import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte53.Feld220;
+import gdv.xport.satz.model.SatzX;
+import gdv.xport.util.SatzNummer;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.StringWriter;
+import java.io.*;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
@@ -369,6 +368,15 @@ public final class SatzTest extends AbstractSatzTest {
     public void testSatzartInhalt() {
         Feld satzart = satz.getFeld(Feld1bis7.SATZART);
         assertEquals("0123", satzart.getInhalt());
+    }
+
+    /**
+     * Test-Methode fuer {@link Satz#getSatzTyp()}.
+     */
+    @Test
+    public void testGetSatzTyp() {
+        Satz satz220 = new SatzX(220, Feld220Wagnis0.class);
+        assertEquals(new SatzNummer(220, 10, 0), satz220.getSatzTyp());
     }
 
 }

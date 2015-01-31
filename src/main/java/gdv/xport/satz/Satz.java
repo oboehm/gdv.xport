@@ -418,6 +418,21 @@ public abstract class Satz {
 	}
 
     /**
+     * Fraegt ab, ob das entsprechende Feld vorhanden ist.
+     *
+     * @param bezeichner gewuenschter Bezeichner des Feldes
+     * @return true / false
+     */
+    public boolean hasFeld(final Bezeichner bezeichner) {
+        for (int i = 0; i < teildatensatz.length; i++) {
+            if (teildatensatz[i].hasFeld(bezeichner)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Liefert das gewuenschte Feld.
      *
      * @param bezeichner gewuenschter Bezeichner des Feldes
@@ -498,7 +513,13 @@ public abstract class Satz {
 	 * @since 1.0
 	 */
 	public final SatzNummer getSatzTyp() {
-	    if (this.hasSparte()) {
+	    if (this.hasWagnisart()) {
+	        String wagnisart = this.getWagnisart();
+	        if (StringUtils.isBlank(wagnisart)) {
+	            return new SatzNummer(this.getSatzart(), this.getSparte());
+	        }
+            return new SatzNummer(this.getSatzart(), this.getSparte(), Integer.parseInt(wagnisart));
+	    } else if (this.hasSparte()) {
 	        return new SatzNummer(this.getSatzart(), this.getSparte());
 	    } else {
 	        return new SatzNummer(this.getSatzart());
@@ -518,6 +539,17 @@ public abstract class Satz {
 	}
 
 	/**
+     * Schaut nach einem Feld "WAGNISART" und liefert true zurueck, falls es
+     * existiert.
+     *
+     * @since 1.0
+     * @return true, falls Wagnisart-Feld vorhanden ist
+	 */
+	public boolean hasWagnisart() {
+	    return this.hasFeld(new Bezeichner(Bezeichner.NAME_WAGNISART));
+	}
+
+	/**
 	 * Liefert den Inhalt des Sparten-Felds. Vorher sollte allerdings mittels
 	 * {@link #hasSparte()} geprueft werden, ob der Satz ein Sparten-Feld
 	 * besitzt.
@@ -529,6 +561,22 @@ public abstract class Satz {
 	    NumFeld sparte = (NumFeld) this.getFeld(Feld1bis7.SPARTE);
 	    return sparte.toInt();
 	}
+
+    /**
+     * Liefert den Inhalt des Wagnisart-Felds. Vorher sollte allerdings mittels
+     * {@link #hasWagnisart()} geprueft werden, ob der Satz ein Wagnisart-Feld
+     * besitzt.
+     * <p>
+     * Anmerkung: Vor 1.0 war diese Methode noch in der Datensatz-Klasse
+     * beheimatet.
+     * </p>
+     *
+     * @return die Wagnisart
+     */
+    public final String getWagnisart() {
+        Feld wagnisart = this.getFeld(Bezeichner.NAME_WAGNISART);
+        return wagnisart.getInhalt();
+    }
 
 	/**
      * Exportiert den Satz.
