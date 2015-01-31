@@ -26,14 +26,7 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.text.MessageFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -52,7 +45,7 @@ import org.apache.commons.io.IOUtils;
  */
 public final class HtmlFormatter extends AbstractFormatter {
 
-    private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
+    private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
     private static final String HEAD;
     private static final String TAIL;
 
@@ -110,7 +103,7 @@ public final class HtmlFormatter extends AbstractFormatter {
      *            the ostream
      */
     public HtmlFormatter(final OutputStream ostream) {
-        this(new OutputStreamWriter(ostream));
+        this(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
     }
 
     /**
@@ -165,7 +158,7 @@ public final class HtmlFormatter extends AbstractFormatter {
 
     private void writeSatz(final Satz satz) throws XMLStreamException, IOException {
         StringWriter buffer = new StringWriter();
-        XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(buffer);
+        XMLStreamWriter xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(buffer);
         writeTo(xmlStreamWriter, satz, zeile);
         xmlStreamWriter.close();
         buffer.close();
@@ -207,7 +200,7 @@ public final class HtmlFormatter extends AbstractFormatter {
     }
 
     private static void writeDetailsTo(final Writer writer, final Satz satz, final int zeile) throws XMLStreamException {
-        XMLStreamWriter xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(writer);
+        XMLStreamWriter xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(writer);
         writeDetailsTo(xmlStreamWriter, satz, zeile);
     }
 
@@ -358,7 +351,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         try {
             formatter.write(datenpaket);
         } catch (IOException shouldnothappen) {
-            throw new RuntimeException("can't convert " + datenpaket + " to String", shouldnothappen);
+            throw new ShitHappenedException("can't convert " + datenpaket + " to String", shouldnothappen);
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
