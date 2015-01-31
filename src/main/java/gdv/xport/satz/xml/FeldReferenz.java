@@ -21,6 +21,8 @@ package gdv.xport.satz.xml;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.util.XmlHelper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.xml.namespace.QName;
@@ -45,6 +47,7 @@ public final class FeldReferenz {
 
     private final String id;
     private final Bezeichner bezeichner;
+    private final String bemerkung;
     private final String auspraegung;
 
     /**
@@ -70,6 +73,7 @@ public final class FeldReferenz {
         id = element.getAttributeByName(new QName("referenz")).getValue();
         Properties props = XmlHelper.parseSimpleElements(element.getName(), parser);
         this.bezeichner = new Bezeichner(props);
+        this.bemerkung = props.getProperty("bemerkung", "");
         this.auspraegung = props.getProperty("auspraegung", "");
         LOG.debug("{} created.", this);
     }
@@ -117,6 +121,33 @@ public final class FeldReferenz {
      */
     public String getAuspraegung() {
         return this.auspraegung;
+    }
+
+    /**
+     * Gets the bemerkung.
+     *
+     * @return the bemerkung
+     */
+    public String getBemerkung() {
+        return this.bemerkung;
+    }
+
+    /**
+     * Die Default-Werte werde aus dem Bemerkungsfeld abgeleitet. Dies wird
+     * vor allem fuer die moeglichen Wagnisarten verwendet.
+     *
+     * @return Liste mit moeglichen Werten (kann leer sein)
+     */
+    public List<String> getDefaultWerte() {
+        List<String> defaultWerte = new ArrayList<String>();
+        String[] lines = this.bemerkung.trim().split("\n");
+        for (int i = 0; i < lines.length; i++) {
+            String[] values = lines[i].split("=");
+            if (values.length == 2) {
+                defaultWerte.add(values[0].trim());
+            }
+        }
+        return defaultWerte;
     }
 
     /**

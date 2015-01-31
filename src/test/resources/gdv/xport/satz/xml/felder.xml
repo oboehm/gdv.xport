@@ -5368,6 +5368,362 @@
 				<alleWerteDerTabelle />
 			</wertetabelle>
 		</feld>
+		
+		<!-- (zusaetzliche) Felder fuer Satz 220.10.0 -->
+		<feld referenz="BN-2003.02.11.22.50.04.489">
+			<name>Lfd. Nummer der versicherten Person (VP)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>17</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.04.519">
+			<name>Wagnisart Leben</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:41:40</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:41:40</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.04.529">
+			<name>lfd. Nummer zur Wagnisart</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>12.12.2005 14:58:53</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>lfd. Nummer zur Wagnisart</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>12.12.2005 14:58:53</letzteAenderung>
+				<technischerName>lfdNummerWagnisart</technischerName>
+				<bemerkung>
+					Erläuterung zu Datenfeld lfd. Nr. der versicherten Person (VP), Wagnisart, lfd. Nr. der Wagnisart in Satzart 0220 (Leben); VS-Nr. 4711:
+					<br />
+					lfd. Nr. der VP = 01, Wagnisart = 0, Lfd. Nr. zur Wagnisart = _;
+					<br />
+					lfd. Nr. der VP = 01, Wagnisart = 1, Lfd. Nr. zur Wagnisart = 1;
+					<br />
+					lfd. Nr. der VP = 01, Wagnisart = 1, Lfd. Nr. zur Wagnisart = 2;
+					<br />
+					lfd. Nr. der VP = 01, Wagnisart = 3, Lfd. Nr. zur Wagnisart = 1;
+					<br />
+					lfd. Nr. der VP = 01, Wagnisart = 3, Lfd. Nr. zur Wagnisart = 2;
+					<br />
+					lfd. Nr. der VP = 02, Wagnisart = 0, Lfd. Nr. zur Wagnisart = _;
+					<br />
+					lfd. Nr. der VP = 02, Wagnisart = 1, Lfd. Nr. zur Wagnisart = 1 ...
+					<br />
+					<br />
+				</bemerkung>
+				<anlagennummer>15</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.786">
+			<name>Name (30 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>26.02.2007 11:58:38</letzteAenderung>
+			<minimaleLaenge>30</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>26.02.2007 11:58:38</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.04.559">
+			<name>Vorname der VP</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.168">
+			<name>Berufsschlüssel</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>09.02.2009 09:33:11</letzteAenderung>
+			<minimaleLaenge>3</minimaleLaenge>
+			<bytes>3</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>
+				Berufsschlüssel der Bundesanstalt für Arbeit
+				<br />
+				Kann bei der zuständigen Bundesagentur für Arbeit angefordert werden
+			</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>02.10.2003 14:48:56</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.480">
+			<name>Beruf - Text</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.188">
+			<name>Beruf - Text (Berufliche Stellung)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.04.609">
+			<name>Anzahl der versicherten Personen</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.12.06.00.874">
+			<name>Mitarbeiter-Status</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>01.02.2005 12:09:17</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Mitarbeiter-Status</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>01.02.2005 12:09:17</letzteAenderung>
+				<technischerName>MitarbeiterStatus</technischerName>
+				<bemerkung />
+				<anlagennummer>79</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>01</wert>
+						<beschreibung>Sozialversicherungspflichtig Beschäftigte ohne besondere Merkmale</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>02</wert>
+						<beschreibung>Auszubildende</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>03</wert>
+						<beschreibung>Beschäftigte in Altersteilzeit</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>04</wert>
+						<beschreibung>Praktikanten</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>05</wert>
+						<beschreibung>Werksstudenten</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>06</wert>
+						<beschreibung>Geringfügig entlohnte Beschäftigte nach § 8 Abs. 1 Nr. 1 SGB IV</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>07</wert>
+						<beschreibung>Kurzfristig Beschäftigte nach § 8 Abs. 1 Nr. 2 SGB IV</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>08</wert>
+						<beschreibung>Unständig Beschäftigte</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>09</wert>
+						<beschreibung>Altersvollrentner und Versorgungsbezieher wegen Alters</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>10</wert>
+						<beschreibung>Unterbrechung wegen Elternzeit</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>11</wert>
+						<beschreibung>Unterbrechung wegen gesetzlicher Dienstpflicht</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>12</wert>
+						<beschreibung>Beschäftigte in Mutterschutz</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>13</wert>
+						<beschreibung>Ausgeschieden</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>14</wert>
+						<beschreibung>Freigestellt</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>99</wert>
+						<beschreibung>Sonstige</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.12.10.08.134">
+			<name>Sozialversicherung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:34:12</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>12</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung>Nummer der Sozialversicherung</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:34:12</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2013.02.01.10.41.07.443">
+			<name>Art des Berufsschlüsselverzeichnisses</name>
+			<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+			<letzteAenderung>04.02.2013 13:34:57</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Art des Berufsschlüsselverzeichnisses</name>
+				<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+				<letzteAenderung>04.02.2013 13:34:57</letzteAenderung>
+				<technischerName>ArtDesBerufsschluesselverzeichnisses</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Berufsschlüssel der Bundesagentur für Arbeit</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Berufsschlüssel des Statistischen Bundesamtes</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>9</wert>
+						<beschreibung>Anderes</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
 
 	</felder>
 

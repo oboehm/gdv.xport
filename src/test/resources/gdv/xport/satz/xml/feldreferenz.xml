@@ -4,7 +4,11 @@
 	<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
 	<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
 	<technischerName>Satzart</technischerName>
-	<bemerkung>Konstante für Satzart</bemerkung>
+	<bemerkung>
+		1 = Kapitallebensversicherung
+		<br />
+		3 = Risikoversicherung
+	</bemerkung>
 	<minimaleAnzahl>1</minimaleAnzahl>
 	<maximaleAnzahl>1</maximaleAnzahl>
 	<auspraegung>0100</auspraegung>

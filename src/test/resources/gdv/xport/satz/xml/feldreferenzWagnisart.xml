@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feldreferenz referenz="BN-2003.02.11.22.50.04.519">
+	<name>Wagnisart</name>
+	<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+	<letzteAenderung>31.10.2003 13:32:47</letzteAenderung>
+	<technischerName>Wagnisart</technischerName>
+	<bemerkung>z. B. Lebensvers.</bemerkung>
+	<minimaleAnzahl>0</minimaleAnzahl>
+	<maximaleAnzahl>1</maximaleAnzahl>
+	<auspraegung />
+	<ntabhaengig>0</ntabhaengig>
+</feldreferenz>

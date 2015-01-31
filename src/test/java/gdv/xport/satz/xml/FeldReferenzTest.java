@@ -21,6 +21,7 @@ package gdv.xport.satz.xml;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
@@ -46,9 +47,13 @@ public class FeldReferenzTest extends AbstractXmlTest {
      */
     @BeforeClass
     public static void setUpFeldReferenz() throws XMLStreamException, IOException {
-        XMLEventReader parser = createXMLEventReader("feldreferenz.xml");
+        feldReferenz = getFeldReferenzFrom("feldreferenz.xml");
+    }
+
+    private static FeldReferenz getFeldReferenzFrom(final String resource) throws XMLStreamException {
+        XMLEventReader parser = createXMLEventReader(resource);
         try {
-            feldReferenz = new FeldReferenz(parser);
+            return new FeldReferenz(parser);
         } finally {
             parser.close();
         }
@@ -84,6 +89,54 @@ public class FeldReferenzTest extends AbstractXmlTest {
     @Test
     public void testGetAuspraegung() {
         assertEquals("0100", feldReferenz.getAuspraegung());
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldReferenz#getBemerkung()}.
+     */
+    @Test
+    public void testGetBemerkung() {
+        String expected = "1 = Kapitallebensversicherung";
+        assertEquals(expected, feldReferenz.getBemerkung().trim().substring(0, expected.length()));
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldReferenz#getDefaultWerte()}.
+     */
+    @Test
+    public void testGetDefaultWerte() {
+        List<String> defaultWerte = feldReferenz.getDefaultWerte();
+        assertEquals(2, defaultWerte.size());
+        assertEquals("1", defaultWerte.get(0));
+        assertEquals("3", defaultWerte.get(1));
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldReferenz#getDefaultWerte()}.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testGetEmptyDefaultWerte() throws XMLStreamException {
+        checkEmptyDefaultWerte("feldreferenzTrennzeichen.xml");
+    }
+
+    /**
+     * Test-Methode fuer {@link FeldReferenz#getDefaultWerte()}. Wenn in der
+     * Bemerkung keine Werte-Paare wie "0 = VP" drinsteht, soll eine leere
+     * Liste zurueckgegeben werden.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testGetDefaultWerteWithBemerkung() throws XMLStreamException {
+        checkEmptyDefaultWerte("feldreferenzWagnisart.xml");
+    }
+
+    private void checkEmptyDefaultWerte(final String resource) throws XMLStreamException {
+        FeldReferenz ref = getFeldReferenzFrom(resource);
+        List<String> defaultWerte = ref.getDefaultWerte();
+        assertEquals(0, defaultWerte.size());
     }
 
 }
