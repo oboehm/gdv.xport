@@ -672,12 +672,25 @@ public enum Feld100 {
     )
     RECHTSFORM,
 
+
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 3,
+            nr = 15,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 25,
+            byteAdresse = 231
+    )
+    LEERSTELLEN3,
+
     /**
      * Satznummer.
      */
     @FeldInfo(
             teildatensatz = 3,
-            nr = 15,
+            nr = 16,
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 256
@@ -855,11 +868,23 @@ public enum Feld100 {
     IBAN1,
 
     /**
-     * Satznummer.
+     * Leerstellen.
      */
     @FeldInfo(
             teildatensatz = 4,
             nr = 19,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 13,
+            byteAdresse = 243
+    )
+    LEERSTELLEN4,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 4,
+            nr = 20,
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 256
@@ -966,12 +991,99 @@ public enum Feld100 {
     )
     VORZUGSSEUERBERECHTIGUNG_PROZENT,
 
+    // die folgenden Felder sind mit v2013 hinzugekommen
+
+    /**
+     * Sparte
+     */
+    @FeldInfo(
+            teildatensatz = 5,
+            nr = 15,
+            type = NumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 150
+    )
+    SPARTE2,
+
+    /**
+     * Referenznummer
+     */
+    @FeldInfo(
+            teildatensatz = 5,
+            nr = 16,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 7,
+            byteAdresse = 153
+    )
+    REFERENZNUMMER,
+
+    /**
+     * SEPA-Glaeubigeridentifikationsnummer
+     */
+    @FeldInfo(
+            teildatensatz = 5,
+            nr = 17,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 35,
+            byteAdresse = 160
+    )
+    SEPA_GLAEUBIGERIDENTIFIKATIONSNUMMER,
+
+    /**
+     * SEPA-Mandat Referenznummer
+     */
+    @FeldInfo(
+            teildatensatz = 5,
+            nr = 18,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 35,
+            byteAdresse = 195
+    )
+    NAME_SEPA_MANDAT_REFERENZNUMMER,
+
+    /**
+     * SEPA-Mandat Ausstellungsdatum
+     */
+    @FeldInfo(
+            teildatensatz = 5,
+            nr = 19,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 230
+    )
+    SEPA_MANDAT_AUSSTELLUNGSDATUM,
+
+    /**
+     * SEPA-Mandat Kontoreferenz
+     *
+     */
+    @FeldInfo(
+            teildatensatz = 5,
+            nr = 20,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 1,
+            byteAdresse = 238
+    )
+    SEPA_MANDAT_KONTOREFERENZ,
+
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 5,
+            nr = 21,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 17,
+            byteAdresse = 239
+    )
+    LEERSTELLEN5,
+
     /**
      * Satznummer.
      */
     @FeldInfo(
             teildatensatz = 5,
-            nr = 15,
+            nr = 22,
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 256
@@ -979,4 +1091,3 @@ public enum Feld100 {
     SATZNUMMER5;
 
 }
-

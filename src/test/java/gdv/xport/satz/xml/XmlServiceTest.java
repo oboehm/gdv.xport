@@ -24,15 +24,21 @@ import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractSatzTest;
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.model.*;
 import gdv.xport.util.NotUniqueException;
 import gdv.xport.util.SatzNummer;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
 /**
@@ -43,6 +49,7 @@ import patterntesting.runtime.junit.ObjectTester;
  */
 public class XmlServiceTest extends AbstractXmlTest {
 
+    private static Logger LOG = LoggerFactory.getLogger(XmlServiceTest.class);
     private static XmlService xmlService = XmlService.getInstance();
 
     /**
@@ -207,7 +214,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart211() throws IOException {
-        checkSatzart(211, new Satz211());
+        setUpAndCheckSatz(xmlService.getSatzart(211), new Satz211());
     }
 
     /**
@@ -219,7 +226,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart220() throws IOException {
-        checkSatzart(220, new Satz220());
+        setUpAndCheckSatz(xmlService.getSatzart(220), new Satz220());
     }
 
     /**
@@ -257,10 +264,26 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     private static void checkSatz(SatzXml satzXml, final Satz reference) throws IOException, AssertionError {
+        checkTeildatensaetze(satzXml, reference.getTeildatensaetze());
+        setUpAndCheckSatz(satzXml, reference);
+    }
+
+    private static void setUpAndCheckSatz(SatzXml satzXml, final Satz reference) throws IOException, AssertionError {
         AbstractSatzTest.setUp(reference);
         satzXml.importFrom(reference.toLongString());
         assertEquals(reference.toLongString(), satzXml.toLongString());
         ObjectTester.assertEquals(reference, satzXml);
+    }
+
+    private static void checkTeildatensaetze(final SatzXml satzXml, final List<Teildatensatz> reference) {
+        for (int i = 0; i < reference.size(); i++) {
+            LOG.debug("Checking Teildatensatz {}...", i+1);
+            checkFelder(satzXml.getTeildatensatz(i+1), reference.get(i).getFelder());
+        }
+    }
+
+    private static void checkFelder(final Teildatensatz tds, Collection<Feld> felder) {
+        CollectionTester.assertEquals(tds.getFelder(), felder);
     }
 
     /**
@@ -276,7 +299,7 @@ public class XmlServiceTest extends AbstractXmlTest {
 
     private static void checkSatzart(final SatzNummer satzNr, final Class<? extends Enum<?>> enumClass)
             throws IOException {
-        checkSatzart(satzNr.getSatzart(), new SatzX(satzNr, enumClass));
+        checkSatz(xmlService.getSatzart(satzNr), new SatzX(satzNr, enumClass));
     }
 
 }

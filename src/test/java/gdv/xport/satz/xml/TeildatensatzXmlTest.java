@@ -136,4 +136,13 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
         assertEquals(expected.getByteAdresse(), leerstellen.getByteAdresse());
     }
 
+    /**
+     * Test-Methode fuer {@link TeildatensatzXml#getFeldRefenz(Bezeichner)}.
+     */
+    @Test
+    public void testGetFeldReferenz() {
+        FeldReferenz ref = tds100.getFeldRefenz(new Bezeichner(Bezeichner.NAME_TITEL));
+        assertEquals("Titel", ref.getBemerkung());
+    }
+
 }

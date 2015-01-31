@@ -117,4 +117,40 @@ public final class TeildatensatzXml extends Teildatensatz {
         }
     }
 
+    /**
+     * Liefert die entsprechende {@link FeldReferenz}.
+     *
+     * @param bezeichner der gesuchte Bezeichner
+     * @return die gefundene {@link FeldReferenz}
+     */
+    public FeldReferenz getFeldRefenz(final Bezeichner bezeichner) {
+        for (FeldReferenz ref : this.feldReferenzen) {
+            if (bezeichner.equals(ref.getBezeichner())) {
+                return ref;
+            }
+        }
+        throw new IllegalArgumentException(bezeichner + " not part of " + this);
+    }
+
+//    /**
+//     * Problem beim Parsen ist, dass die Felder erst am Ende des Parsens gesetzt
+//     * werden, diese Methode aber schon vorher benoetigt wird, um die
+//     * unterstuetzten Satzarten ermitteln zu koennen. Diese Infos befinden sich
+//     * aber zu diesem Zeitpunkt schon in den zwischengespeicherten
+//     * FeldReferenzen.
+//     *
+//     * @param bezeichner the bezeichner
+//     * @return true, if successful
+//     * @see gdv.xport.satz.Teildatensatz#hasFeld(gdv.xport.feld.Bezeichner)
+//     */
+//    @Override
+//    public boolean hasFeld(final Bezeichner bezeichner) {
+//        for (FeldReferenz ref : this.feldReferenzen) {
+//            if (bezeichner.equals(ref.getBezeichner())) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
 }

@@ -29,9 +29,11 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.model.Satz100;
+import gdv.xport.util.SatzNummer;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.stream.XMLEventReader;
@@ -275,6 +277,30 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         SatzXml satz210 = getSatz("Satz0210.010.xml");
         Feld zuzahlungsbetrag = satz210.getFeld(Bezeichner.ZUZAHLUNGSBETRAG_IN_WE);
         assertEquals(160, zuzahlungsbetrag.getByteAdresse());
+    }
+
+    /**
+     * Test-Methode fuer {@link SatzXml#getSupportedSatzTypen()}.
+     */
+    @Test
+    public void testGetSupportedSatzTypen() {
+        List<SatzNummer> supported = satz100.getSupportedSatzTypen();
+        assertEquals(1, supported.size());
+        assertEquals(new SatzNummer(100), supported.get(0));
+    }
+
+    /**
+     * Die Satzart "Spartenspezifischer Teil Leben" (0220.010.0) enthaelt die
+     * Wagnisart 0. Hier wird geprueft, ob
+     * {@link SatzXml#getSupportedSatzTypen()} dies korrekt zurueckgibt.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testSatz220Wagnis0() throws XMLStreamException {
+        SatzXml satz220 = getSatz("Satz0220.010.0.xml");
+        List<SatzNummer> supported = satz220.getSupportedSatzTypen();
+        assertEquals(new SatzNummer(220, 10, 0), supported.get(0));
     }
 
 }

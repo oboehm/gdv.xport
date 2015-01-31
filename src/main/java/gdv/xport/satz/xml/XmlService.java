@@ -42,7 +42,7 @@ import patterntesting.runtime.log.LogWatch;
  * Hier wird jetzt eine XML-Beschreibung verwendet, um die Saetze fuer die
  * einzelnen Satzarten aufzusetzen. Als Basis fuer die XML-Beschreibung wurde
  * die Datei "VUVM2013_010713.xml" genommen, die ueber <a
- * href="http://www.gdv-online.de/vuvm/bestand/best_2009.htm"
+ * href="http://www.gdv-online.de/vuvm/bestand/best_2013.htm"
  * >www.gdv-online.de</a> heruntergeladen werden kann.
  *
  * @author oliver
@@ -52,6 +52,7 @@ public class XmlService {
 
     private static final Logger LOG = LoggerFactory.getLogger(XmlService.class);
     private static final Map<String, XmlService> INSTANCES = new WeakHashMap<String, XmlService>();
+    private final List<SatzXml> saetze = new ArrayList<SatzXml>();
     private final Map<SatzNummer, SatzXml> satzarten = new HashMap<SatzNummer, SatzXml>();
 
     /**
@@ -134,7 +135,7 @@ public class XmlService {
             if (event.isStartElement()) {
                 parseElement(event.asStartElement(), reader);
             } else if (XmlHelper.isEndElement(event, element.getName())) {
-                LOG.info("{} Satzarten successful parsed from {}...{} in {}.", this.satzarten.size(), element, event,
+                LOG.info("{} Satzarten successful parsed from {}...{} in {}.", this.saetze.size(), element, event,
                         watch);
                 return;
             }
@@ -161,8 +162,8 @@ public class XmlService {
             XMLEvent event = reader.nextEvent();
             if (XmlHelper.isStartElement(event, "satzart")) {
                 SatzXml satz = new SatzXml(reader, event.asStartElement());
-                this.satzarten.put(satz.getSatzTyp(), satz);
-                LOG.debug("{} added.", satz);
+                this.saetze.add(satz);
+                LOG.debug("Satz {} added .", satz);
             } else if (XmlHelper.isEndElement(event, element.getName())) {
                 LOG.debug("{} satzarten successful parsed.", this.satzarten.size());
                 return;
@@ -207,8 +208,12 @@ public class XmlService {
 
     private void setFelder(Map<String, FeldXml> felder) {
         LOG.debug("Missing felder for {} saetze will be set.", this.satzarten.size());
-        for (SatzXml satz : this.satzarten.values()) {
+        for (SatzXml satz : this.saetze) {
             satz.setFelder(felder);
+            for (SatzNummer type : satz.getSupportedSatzTypen()) {
+                this.satzarten.put(type, satz);
+                LOG.trace("Satz {} registered as {}.", satz, type);
+            }
         }
     }
 
