@@ -27,4 +27,9 @@
     <Method name="setWriter" />
     <Bug pattern="OBL_UNSATISFIED_OBLIGATION" />
   </Match>
+  <Match>
+  	<!-- disabled because copy constructor works better than super.clone -->
+    <Class name="gdv.xport.feld.*" />
+    <Bug pattern="CN_IDIOM_NO_SUPER_CALL" />
+  </Match>
 </FindBugsFilter>
