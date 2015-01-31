@@ -317,7 +317,20 @@ public class Teildatensatz extends Satz {
      * @since 0.9
      */
     public boolean hasFeld(final Enum<?> feldX) {
-        return this.datenfelder.containsKey(new Bezeichner(Feld.toBezeichnung(feldX)));
+        return this.hasFeld(new Bezeichner(Feld.toBezeichnung(feldX)));
+    }
+
+    /**
+     * Fraegt ab, ob das entsprechende Feld vorhanden ist.
+     *
+     * @param bezeichner gewuenschter Bezeichner des Feldes
+     * @return true / false
+     * @see gdv.xport.satz.Satz#hasFeld(Bezeichner)
+     * @since 1.0
+     */
+    @Override
+    public boolean hasFeld(final Bezeichner bezeichner) {
+        return this.datenfelder.containsKey(bezeichner);
     }
 
     /**
