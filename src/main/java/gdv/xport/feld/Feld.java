@@ -59,7 +59,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     /** optional: Name des Felds. */
     private final Bezeichner bezeichner;
     private final Enum<?> bezeichnerEnum;
-    private final StringBuffer inhalt;
+    private final StringBuilder inhalt;
     /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256. */
     @Min(1)
     private final int byteAdresse;
@@ -101,7 +101,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.bezeichner = Feld.getAsBezeichner(feldX);
         this.byteAdresse = info.byteAdresse();
         this.ausrichtung = getAlignmentFrom(info);
-        this.inhalt = new StringBuffer(info.anzahlBytes());
+        this.inhalt = new StringBuilder(info.anzahlBytes());
         for (int i = 0; i < info.anzahlBytes(); i++) {
             this.inhalt.append(' ');
         }
@@ -132,7 +132,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     public Feld(final String name, final int start, final String s, final Align alignment) {
         this.bezeichner = new Bezeichner(name);
-        this.inhalt = new StringBuffer(s);
+        this.inhalt = new StringBuilder(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichnerEnum = FeldX.UNBEKANNT;
@@ -166,7 +166,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     public Feld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
         this.bezeichner = bezeichner;
-        this.inhalt = getEmptyStringBuffer(length);
+        this.inhalt = getEmptyStringBuilder(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichnerEnum = FeldX.UNBEKANNT;
@@ -235,7 +235,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            the alignment
      */
     public Feld(final int start, final String s, final Align alignment) {
-        this.inhalt = new StringBuffer(s);
+        this.inhalt = new StringBuilder(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
@@ -265,7 +265,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            the alignment
      */
     public Feld(final int length, final int start, final Align alignment) {
-        this.inhalt = getEmptyStringBuffer(length);
+        this.inhalt = getEmptyStringBuilder(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
@@ -283,8 +283,8 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.setInhalt(other.getInhalt());
     }
 
-    private static StringBuffer getEmptyStringBuffer(final int length) {
-        StringBuffer sbuf = new StringBuffer(length);
+    private static StringBuilder getEmptyStringBuilder(final int length) {
+        StringBuilder sbuf = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
             sbuf.append(' ');
         }
@@ -727,7 +727,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     private static String toBezeichnung(final String name) {
         String converted = name.replaceAll("_", " ");
         ByteBuffer outputBuffer = Config.DEFAULT_ENCODING.encode(converted);
-        String convertedISO = new String(outputBuffer.array());
+        String convertedISO = new String(outputBuffer.array(), Config.DEFAULT_ENCODING);
         return WordUtils.capitalize(convertedISO.toLowerCase());
     }
 

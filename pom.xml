@@ -52,8 +52,11 @@
     <!-- String literals should not be duplicated -->
     <sonar.issue.ignore.multicriteria.3.ruleKey>squid:S1192</sonar.issue.ignore.multicriteria.3.ruleKey>
     <sonar.issue.ignore.multicriteria.3.resourceKey>**</sonar.issue.ignore.multicriteria.3.resourceKey>
+    <!-- super.clone() should be called when overriding Object.clone() -->
+    <sonar.issue.ignore.multicriteria.4.ruleKey>squid:S1182</sonar.issue.ignore.multicriteria.4.ruleKey>
+    <sonar.issue.ignore.multicriteria.4.resourceKey>**/feld/*.java</sonar.issue.ignore.multicriteria.4.resourceKey>
     <!-- ignore violations -->
-    <sonar.issue.ignore.multicriteria>1,2,3</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>1,2,3,4</sonar.issue.ignore.multicriteria>
 
   </properties>
 
