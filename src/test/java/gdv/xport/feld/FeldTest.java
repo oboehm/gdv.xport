@@ -25,6 +25,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.sparte50.Feld210;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
@@ -184,6 +185,16 @@ public final class FeldTest extends AbstractFeldTest {
         Bezeichner adressat = Feld.getAsBezeichner(Greeting.ADRESSAT);
         assertEquals(new Bezeichner(Bezeichner.NAME_ADRESSAT), adressat);
         assertEquals(Bezeichner.NAME_ADRESSAT, adressat.getName());
+    }
+
+    /**
+     * Wenn eine Enum-Konstante bereits als Bezeichner zur Verfuegung steht,
+     * soll dieses zurueckgegeben.
+     */
+    @Test
+    public void testGetAsBezeichnerWechselkennzeichen() {
+        Bezeichner b = Feld.getAsBezeichner(Feld210.WECHSELKENNZEICHEN_W_AKZ);
+        assertEquals(Bezeichner.WECHSELKENNZEICHEN_W_AKZ, b);
     }
 
     /**

@@ -2739,6 +2739,9 @@ public final class Bezeichner {
     /** Die Konstante LFD_PERSONEN_NR_IM_GEVO. */
     public static final Bezeichner LFD_PERSONEN_NR_IM_GEVO = new Bezeichner ("Lfd. Personennummer im GeVo", "LfdPersonenNrImGevo");
 
+    /** The Konstante ROLLE_W_AKZ. */
+    public static final Bezeichner ROLLE_W_AKZ = new Bezeichner("Rolle W-AKZ", "RolleWAKZ");
+
     /** Die Konstante URSPRUENGLICHES_HAFTUNGSBEGINNDAT. */
     public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner(
             "Urspruengliches Haftungsbeginndatum", "UerspruenglichesHaftungsbeginndat");
@@ -2748,6 +2751,10 @@ public final class Bezeichner {
 
     /** Die Konstante VU_NR. */
     public static final Bezeichner VU_NR = new Bezeichner("VU-Nummer", "VuNr");
+
+    /** The Constant WECHSELKENNZEICHEN_W_AKZ. */
+    public static final Bezeichner WECHSELKENNZEICHEN_W_AKZ = new Bezeichner("KFZ - Wechselkennzeichen W-AKZ",
+            "KFZWechselkennzeichenWAKZ");
 
     /** Die Konstante ZUZAHLUNGSBETRAG_IN_WE. */
     public static final Bezeichner ZUZAHLUNGSBETRAG_IN_WE = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten",

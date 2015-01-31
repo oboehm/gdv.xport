@@ -675,8 +675,11 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @since 1.0
      */
     public static Bezeichner getAsBezeichner(final Enum<?> feldX) {
-        String bezeichnung = getAsBezeichnung(feldX);
-        return new Bezeichner(bezeichnung);
+        Object object = getAsObject(feldX);
+        if (object instanceof Bezeichner) {
+            return (Bezeichner) object;
+        }
+        return new Bezeichner((String) object);
     }
 
     /**
@@ -688,9 +691,13 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @return z.B. "Inkassoart"
      */
     public static String getAsBezeichnung(final Enum<?> feldX) {
+        return (String) getAsObject(feldX);
+    }
+
+    private static Object getAsObject(final Enum<?> feldX) {
         try {
             Field field = Bezeichner.class.getField(feldX.name());
-            return (String) field.get(null);
+            return field.get(null);
         } catch (NoSuchFieldException ex) {
             LOG.info("Bezeichner." + feldX.name() + " not found:", ex);
         } catch (IllegalArgumentException ex) {
