@@ -21,7 +21,6 @@ import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 import javax.xml.transform.Source;
@@ -143,8 +142,9 @@ public final class XmlHelper {
             XMLEvent event = reader.nextEvent();
             switch (event.getEventType()) {
                 case XMLStreamConstants.CHARACTERS:
-                    Characters value = event.asCharacters();
-                    props.setProperty(name.getLocalPart(), value.toString());
+                    String key = name.getLocalPart();
+                    String value = props.getProperty(key, "") + "\n" + event.asCharacters().toString().trim();
+                    props.setProperty(key, value.trim());
                     break;
                 case XMLStreamConstants.END_ELEMENT:
                     return;
