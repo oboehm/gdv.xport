@@ -377,20 +377,22 @@ public class Datensatz extends Satz {
 		return this.getFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER).getInhalt().trim();
 	}
 
-	/**
-	 * Gets the wagnisart.
-	 *
-	 * @return the wagnisart
-	 */
-	public String getWagnisart() {
-		return wagnisart.getInhalt().trim();
-	}
+//	/**
+//	 * Gets the wagnisart.
+//	 *
+//	 * @return the wagnisart
+//	 */
+//	public String getWagnisart() {
+//		return wagnisart.getInhalt().trim();
+//	}
 
 	/**
 	 * Sets the wagnisart.
 	 *
 	 * @param wagnisart the new wagnisart
+	 * @deprecated bitte Feld "WAGNISART" holen und Inhalt setzen
 	 */
+	@Deprecated
 	public void setWagnisart(final String wagnisart) {
 		this.wagnisart.setInhalt(wagnisart);
 	}
