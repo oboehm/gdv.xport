@@ -82,5 +82,12 @@ public @interface FeldInfo {
      */
     String bezeichnung() default "";
 
+    /**
+     * Hierueber kann ein Default-Wert fuer ein Element mitgegeben werden.
+     *
+     * @sincd 1.0
+     */
+    String value() default "";
+
 }
 

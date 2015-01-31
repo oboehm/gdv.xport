@@ -2789,6 +2789,7 @@ public final class Bezeichner {
     public static final String NAME_ART_DES_ABSENDERS = "Art des Absenders";
     public static final String NAME_ART_DES_ADRESSATEN = "Art des Adressaten";
     public static final String NAME_ART_DES_AMTLICHEN_KENNZEICHENS = "Art des amtlichen Kennzeichens";
+    public static final String NAME_ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = "Art des Berufsschluuesselverzeichnisses";
     public static final String NAME_ART_DES_DRITTRECHTS = "Art des Drittrechts";
     public static final String NAME_AUFBAUART = "Aufbauart";
     public static final String NAME_AUFSICHTSFREIER_VERTRAG = "Aufsichtsfreier Vertrag";
@@ -2912,6 +2913,7 @@ public final class Bezeichner {
     public static final String NAME_INKASSOART = "Inkassoart";
     public static final String NAME_INVALIDITAET = "Invaliditaet";
     public static final String NAME_INVALIDITAET_BEITRAGSSATZ = "Invaliditaet Beitragssatz";
+    public static final String NAME_INTERNES_ORDNUNGSMERKMAL_DES_VM = "Internes Ordnungsmerkmal des VM";
     public static final String NAME_JAEHRLICHE_FAHRLEISTUNG = "Jaehrliche Fahrleistung";
     public static final String NAME_KAPITALERTRAGSTEUERPFLICHT = "Kapitalertragsteuerpflicht";
     public static final String NAME_KASKO_BEGINNJAHR = "Kasko-Beginnjahr";
@@ -3078,6 +3080,7 @@ public final class Bezeichner {
     public static final String NAME_RISKIOEINHEIT1 = "Risikoeinheit-1";
     public static final String NAME_RISKIOEINHEIT2 = "Risikoeinheit-2";
     public static final String NAME_ROHBAU_EINMALBETRAG = "Rohbau-Einmalbetrag";
+    public static final String NAME_ROLLE_W_AKZ = "Rolle W-AKZ";
     public static final String NAME_RUECKFUEHRUNGSKOSTEN = "Rueckfuehrungskosten";
     public static final String NAME_SAISONKENNZEICHEN = "Saisonkennzeichen";
     public static final String NAME_SATZART = "Satzart";
@@ -3102,6 +3105,10 @@ public final class Bezeichner {
     public static final String NAME_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = "Selbstbeteiligung";
     public static final String NAME_SELBSTBETEILIGUNG_IN_WE_MAX = "Selbstbeteiligung in WE (max.)";
     public static final String NAME_SELBSTBETEILIGUNG_IN_WE_MIND = "Selbstbeteiligung in WE (mind.)";
+    public static final String NAME_SEPA_GLAEUBIGERIDENTIFIKATIONSNUMMER = "SEPA-Glaeubigeridentifikationsnummer";
+    public static final String NAME_SEPA_MANDAT_AUSSTELLUNGSDATUM = "SEPA-Mandat Ausstellungsdatum";
+    public static final String NAME_SEPA_MANDAT_KONTOREFERENZ = "SEPA-Mandat Kontoreferenz";
+    public static final String NAME_SEPA_MANDAT_REFERENZNUMMER = "SEPA-Mandat Referenznummer";
     public static final String NAME_SERVICELEISTUNGEN = "Serviceleistungen";
     public static final String NAME_SERVICELEISTUNGEN_BEITRAGSSATZ = "Serviceleistungen Beitragssatz";
     public static final String NAME_SICHERUNGSEINRICHTUNG = "Sicherungseinrichtung";
@@ -3112,6 +3119,7 @@ public final class Bezeichner {
     public static final String NAME_SONDERVEREINBARUNGEN = "Sondervereinbarungen";
     public static final String NAME_SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL = "Sonstigter Bezugsberechtigter im Leistungsfall";
     public static final String NAME_SPARTE = "Sparte";
+    public static final String NAME_SPARTE2 = "Sparte";
     public static final String NAME_SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = "Spezifikation der Referenz-Versicherungsscheinnummer";
     public static final String NAME_STAATSANGEHOERIGKEIT = "Staatsangehoerigkeit";
     public static final String NAME_STAERKE = "Staerke";
@@ -3152,6 +3160,7 @@ public final class Bezeichner {
     public static final String NAME_UNTERSTUETZUNGSKASSE_SCHLUESSEL = "Unterstuetzungskasse Schluessel";
     public static final String NAME_UNVERFALLBARKEIT = "Unverfallbarkeit";
     public static final String NAME_UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL = "Unwiderrufliches Bezugsrecht im Leistungsfall";
+    public static final String NAME_VERTRAGSVERBINDUNGSNUMMER = "Vertragsverbindungsnummer";
     public static final String NAME_VERKUERZTE_BEITRAGSZAHLUNGSDAUER = "verkuerzte Beitragszahlungsdauer";
     public static final String NAME_VERMITTLER = "Geschaeftsstelle/Vermittler";
     public static final String NAME_VERSICHERTES_OBJEKT = "Versichertes Objekt";
@@ -3273,6 +3282,7 @@ public final class Bezeichner {
     public static final String NAME_WAGNIS = "Wagnis";
     public static final String NAME_WAGNISKENNZIFFER = "Wagniskennziffer";
     public static final String NAME_WARTEZEIT = "Wartezeit";
+    public static final String NAME_WECHSELKENNZEICHEN_W_AKZ = "Wechselkennzeichen W-AKZ";
     public static final String NAME_WEITERE_REFERENZNUMMERN = "Weitere Referenznummern";
     public static final String NAME_WOHNEIGENTUM = "Wohneigentum";
     public static final String NAME_ZAHLUNGSANFANG = "Zahlungsanfang";
@@ -3304,7 +3314,6 @@ public final class Bezeichner {
     public static final String NAME_VERSION_SATZART_0220_570 = "Version Satzart 0220 570";
     public static final String NAME_VERSION_SATZART_0210_684 = "Version Satzart 0210 684";
     public static final String NAME_VERSION_SATZART_0220_684 = "Version Satzart 0220 684";
-    public static final String NAME_INTERNES_ORDNUNGSMERKMAL_DES_VM = "Internes Ordnungsmerkmal des VM";
     public static final String NAME_FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG = "Faelligkeit der letzten Beitragszahlung";
     public static final String NAME_LEBENSLANGE_BEITRAGSZAHLUNG = "Lebenslange Beitragszahlung";
     public static final String NAME_BESONDERE_VEREINBARUNGEN = "Besondere Vereinbarungen";
@@ -3846,7 +3855,7 @@ public final class Bezeichner {
      */
     public Bezeichner mergeWith(final Bezeichner bezeichner) {
         if (this.technischerName.equals(bezeichner.getTechnischerName())) {
-            LOG.debug("Merge of {} and {} is ignored.", this, bezeichner);
+            LOG.trace("Merge of {} and {} is ignored.", this, bezeichner);
             return this;
         } else {
             return bezeichner;

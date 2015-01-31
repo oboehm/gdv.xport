@@ -105,6 +105,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         for (int i = 0; i < info.anzahlBytes(); i++) {
             this.inhalt.append(' ');
         }
+        this.setInhalt(info.value());
     }
 
     /**
@@ -300,6 +301,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     private Align getAlignmentFrom(final FeldInfo info) {
+        assert info.align() != null;
         if (info.align() == Align.UNKNOWN) {
             return this.getDefaultAlignment();
         }
@@ -397,7 +399,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @param s
      *            the new inhalt
      */
-    public void setInhalt(final String s) {
+    public final void setInhalt(final String s) {
         int anzahlBytes = this.getAnzahlBytes();
         if (s.length() > anzahlBytes) {
             throw new IllegalArgumentException("Feld " + this.getBezeichner() + ": Parameter \"" + s

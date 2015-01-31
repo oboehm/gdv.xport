@@ -240,10 +240,14 @@ public final class FeldTest extends AbstractFeldTest {
             }
             @Override
             public Align align() {
-                return null;
+                return Align.UNKNOWN;
             }
             @Override
             public String bezeichnung() {
+                return "";
+            }
+            @Override
+            public String value() {
                 return "";
             }
         };
