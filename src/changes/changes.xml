@@ -24,8 +24,8 @@
       </action>
       <action dev="oboehm" type="add" date="18-Jan-2015">
       	XmlService unterst&#252;tzt die restlichen S&#228;tze auf Basis der
-      	XML-Beschreibung von
-      	<a href="http://www.gdv-online.de/vuvm/bestand/best_2013.htm">www.gdv-online.de</a>.
+      	XML-Beschreibung von gdv-online
+      	(http://www.gdv-online.de/vuvm/bestand/best_2013.htm").
       </action>
       <action dev="oboehm" type="update" date="05-Aug-2014" >
         Import- und Export-Methoden der Datenpaket-Klasse unterst&#252;tzen jetzt
