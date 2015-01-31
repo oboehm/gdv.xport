@@ -49,6 +49,7 @@
       <item name="Der erste Import"         href="manual/import.html" />
       <item name="Das Hauptprogramm"        href="manual/main.html" />
       <item name="Export"                   href="manual/export.html" />
+      <item name="Streaming API"			href="manual/streaming.html" />
       <item name="Erweiterungen"            href="manual/extend.html" />
       <item name="JavaDoc API"              href="apidocs/index.html" />
     </menu>

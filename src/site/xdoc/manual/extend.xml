@@ -12,7 +12,8 @@
     <section name="Eigene Erweiterungen">
       <p>
         Da das GDV-Format aus einer Vielzahl von Satzarten besteht und
-        l&#228;ngst nicht alle Satzarten direkt unterst&#252;tzt werden, k&#246;nnen
+        nicht alle Satzarten innerhalb der Versicherungs-Branche immer
+        standard-konform eingesetzt werden,  k&#246;nnen
         eigene Datens&#228;tze (die von
         <a href="../apidocs/gdv/xport/satz/Datensatz.html">Datensatz</a>
         oder
@@ -23,7 +24,7 @@
         registriert werden.
       </p>
       <p>
-        Ab 0.6 geht es auch einfacher:
+        Ab 0.6 wurde die Unterst&#252;tzung eigener S&#228;tze vereinfacht:
         hier reicht die Beschreibung eines Datensatzes mithilfe einer Enum-Klasse
         (wie z.B. <a href="../xref/gdv/xport/demo/MyFeld210.html">MyFeld210</a>).
         Diese kann ueber
@@ -76,13 +77,13 @@
       <p>
         Auch wenn mit 1.0 s&#228;mtliche Satzarten unter&#252;tzt werden,
         werden auch weiterhin eigene Satzarten registriert und bestehende
-        &#252;berschrieben werden k&#246;nnen. Die Gr&#252;nde daf&#252;
+        &#252;berschrieben werden. Gr&#252;nde daf&#252;r
         sind:
       </p>
       <ul>
         <li>
           Sollte sich der GDV-Standard weiterentwickeln, k&#246;nnen fehlende
-          Satzarten leicht erg&#228;nzt und fehlerhafte Satzarten leicht
+          Satzarten leicht erg&#228;nzt und fehlerhafte Satzarten
           korrigiert werden.
         </li>
         <li>
