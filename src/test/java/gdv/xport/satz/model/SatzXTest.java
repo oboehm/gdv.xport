@@ -21,6 +21,8 @@ package gdv.xport.satz.model;
 import static org.junit.Assert.assertEquals;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld200;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
@@ -45,51 +47,14 @@ public final class SatzXTest {
         log.info("satz200 = \"" + satz200 + "\"");
     }
 
-//    /**
-//     * Test method for {@link SatzX#getAsList(Enum[])}.
-//     */
-//    @Test
-//    public void testGetAsListSimple() {
-//        List<MetaFeldInfo> feldInfos = SatzX.getMetaFeldInfos(Feld200.values());
-//        assertFalse("empty list", feldInfos.isEmpty());
-//        log.info("Feld200 has " + feldInfos.size() + " FeldInfos.");
-//        assertTrue("Feld200 should have more than " + Feld200.values().length + " entries",
-//                feldInfos.size() >= Feld200.values().length);
-//    }
-//
-//    /**
-//     * Test method for {@link SatzX#getAsList(Enum[])}.
-//     */
-//    @Test
-//    public void testGetAsListComposite() {
-//        List<MetaFeldInfo> feldInfos = SatzX.getMetaFeldInfos(Feld220.values());
-//        assertFalse("empty list", feldInfos.isEmpty());
-//        log.info(Feld220.class.getName() + " has " + feldInfos.size() + " FeldInfos.");
-//        assertTrue("elements are missing", feldInfos.size() > Feld220.values().length);
-//    }
-//
-//    /**
-//     * {@link Feld1bis7} ist ein Beispiel, wo kein Teildatensatz gesetzt ist.
-//     * Dieser wird z.B. beim {@link Feld200} ueber die {@link FelderInfo}-
-//     * Annotation gesetzt. Ob dieses Wert tatsaechlich gesetzt wird, wird
-//     * ueber diesen Test geprueft.
-//     */
-//    @Test
-//    public void testGetAsListTeildatensatz() {
-//        List<MetaFeldInfo> metaFeldInfos = SatzX.getMetaFeldInfos(Feld200.values());
-//        int found = 0;
-//        for (MetaFeldInfo metaFeldInfo : metaFeldInfos) {
-//            if (metaFeldInfo.getName().equals("SATZART")) {
-//                found++;
-//                checkSatzart(metaFeldInfo, found);
-//            }
-//        }
-//    }
-//
-//    private static void checkSatzart(final MetaFeldInfo satzart, final int found) {
-//        log.info(found + ". MetaFeldInfo: " + satzart );
-//        assertEquals(1, satzart.getNr());
-//        assertEquals(found, satzart.getTeildatensatzNr());
-//    }
+    /**
+     * {@link SatzX} mit der {@link Feld220Wagnis0} sollte mit Wagnisart "0"
+     * vorbelegt sein.
+     */
+    @Test
+    public void testWagnisart() {
+        SatzX satz220 = new SatzX(220, Feld220Wagnis0.class);
+        assertEquals("0", satz220.getWagnisart());
+    }
 
 }

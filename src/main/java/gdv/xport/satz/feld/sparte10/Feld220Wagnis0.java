@@ -18,8 +18,12 @@
 
 package gdv.xport.satz.feld.sparte10;
 
-import gdv.xport.annotation.*;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -51,7 +55,14 @@ public enum Feld220Wagnis0 {
      * Wagnisart.<br/>
      * 0 = VP
      */
-    @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 9,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 60,
+            value = "0"
+    )
     WAGNISART,
 
     /**
@@ -157,19 +168,56 @@ public enum Feld220Wagnis0 {
      * Unverfallbarkeit.<br/>
      * 0 = nein, 1 = ja
      */
-    @FeldInfo(teildatensatz = 1, nr = 26, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 240)
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 26,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 240)
     UNVERFALLBARKEIT,
 
     /**
      * Datum Unverfallbarkeit.<br/>
      */
-    @FeldInfo(teildatensatz = 1, nr = 27, type = Datum.class, anzahlBytes = 8, byteAdresse = 241)
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 27,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 241)
     DATUM_UNVERFALLBARKEIT,
 
     /**
-     * Leerstellen.<br/>
+     * Art des Berufschluesselverzeichnisses.
      */
-    @FeldInfo(teildatensatz = 1, nr = 28, type = AlphaNumFeld.class, anzahlBytes = 7, byteAdresse = 249)
-    LEERSTELLEN;
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 28,
+            type = Zeichen.class,
+            byteAdresse = 249)
+    ART_DES_BERUFSSCHLUESSELVERZEICHNISSES,
+
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 29,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 6,
+            byteAdresse = 250)
+    LEERSTELLEN,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+          teildatensatz = 1,
+          nr = 30,
+          type = Zeichen.class,
+          anzahlBytes = 1,
+          byteAdresse = 256
+    )
+    SATZNUMMER;
 
 }
