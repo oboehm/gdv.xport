@@ -17,7 +17,7 @@
 
   <body>
 
-    <release version="1.0.0" date="Feb-2015"
+    <release version="1.0.0" date="03-Feb-2015"
              description="Streaming-API">
       <action dev="oboehm" type="update" date="24-Jan-2015" >
         Anpassungen an die 2013er-Version des GDV-Handbuchs.

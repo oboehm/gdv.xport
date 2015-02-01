@@ -28,7 +28,7 @@
           <td>vorher</td>
           <td>Release-Branch erstellen</td>
           <td>release-branch erstellen, developer-branch dorthin auschecken
-          	(s.a. <a href="http://www.mageblog.de/2012/06/13/erfolgreiches-git-branching-modell/">Git Branching-Modell</a>)
+          	(s.a. <a href="http://nvie.com/posts/a-successful-git-branching-model/">Git Branching-Modell</a>)
           </td>
         </tr>
         <tr>
