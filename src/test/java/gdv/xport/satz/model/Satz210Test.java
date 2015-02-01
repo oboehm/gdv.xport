@@ -18,8 +18,6 @@
 
 package gdv.xport.satz.model;
 
-import static gdv.xport.feld.Bezeichner.LAUFZEITRABATT_IN_PROZENT;
-import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.Bezeichner;
@@ -35,8 +33,8 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -48,7 +46,7 @@ import org.junit.Test;
  */
 public final class Satz210Test extends AbstractDatensatzTest {
 
-    private static final Log log = LogFactory.getLog(Satz210.class);
+    private static final Logger LOG = LogManager.getLogger(Satz210.class);
     private static final String INPUT_SPARTE30
             = "02109999  030      599999999980199990099991010520040105200901052"
             + "0040901 0000000000000000000 EUR000000000000000000000000000000002"
@@ -74,7 +72,7 @@ public final class Satz210Test extends AbstractDatensatzTest {
     @Test
     public void testSatz210() throws IOException {
         SpartensatzX vertragsteil = new Satz210(10);
-        log.info(vertragsteil + " created.");
+        LOG.info(vertragsteil + " created.");
         assertEquals(10, vertragsteil.getSparte());
         checkExport(vertragsteil, 11, 13, "010", 512);
     }
@@ -88,7 +86,7 @@ public final class Satz210Test extends AbstractDatensatzTest {
         SpartensatzX vertragsteil = new Satz210(10);
         vertragsteil.setFolgenummer(42);
         Teildatensatz teildatensatz = vertragsteil.getTeildatensatz(1);
-        Feld feld = teildatensatz.getFeld(Bezeichner.FOLGENUMMER);
+        Feld feld = teildatensatz.getFeld(Bezeichner.NAME_FOLGENUMMER);
         assertNotNull(feld);
         assertEquals("42", feld.getInhalt());
     }
@@ -123,11 +121,11 @@ public final class Satz210Test extends AbstractDatensatzTest {
         SpartensatzX unfall = new Satz210(30);
         unfall.importFrom(INPUT_SPARTE30);
         assertEquals("9999", unfall.getVuNummer().trim());
-        Feld rabatt = unfall.getFeld(LAUFZEITRABATT_IN_PROZENT);
+        Feld rabatt = unfall.getFeld(Bezeichner.NAME_LAUFZEITRABATT_IN_PROZENT);
         assertEquals("1000", rabatt.getInhalt());
         NumFeld prozent = (NumFeld) rabatt;
         assertEquals(10.00, prozent.toDouble(), 0.001);
-        Feld vertragsstatus = unfall.getFeld(VERTRAGSSTATUS);
+        Feld vertragsstatus = unfall.getFeld(Bezeichner.NAME_VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         StringWriter swriter = new StringWriter(256);
         unfall.export(swriter);

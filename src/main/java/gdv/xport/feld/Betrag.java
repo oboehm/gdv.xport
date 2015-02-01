@@ -60,12 +60,50 @@ public class Betrag extends NumFeld {
     }
 
     /**
+     * Instantiiert einen neuen Betrag.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Name des Feldes
      * @param length Laenge
      * @param start Start-Byte (beginnend bei 1)
+     * @deprecated bitte {@link #Betrag(Bezeichner, int, int)} benutzen
      */
+    @Deprecated
     public Betrag(final String name, final int length, final int start) {
+        this(new Bezeichner(name), length, start);
+    }
+
+    /**
+     * Instantiiert einen neuen Betrag.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
+     *
+     * @param name Name des Feldes
+     * @param length Laenge
+     * @param start Start-Byte (beginnend bei 1)
+     * @since 1.0
+     */
+    public Betrag(final Bezeichner name, final int length, final int start) {
         super(name, length, start, 0, 2);
+    }
+
+    /**
+     * Instantiiert einen neuen Betrag.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
+     *
+     * @param name Bezeichner
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 0.6
+     * @deprecated bitte {@link #Betrag(Bezeichner, FeldInfo)} benutzen
+     */
+    @Deprecated
+    public Betrag(final String name, final FeldInfo info) {
+        this(new Bezeichner(name), info);
     }
 
     /**
@@ -73,10 +111,20 @@ public class Betrag extends NumFeld {
      *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 0.6
+     * @since 1.0
      */
-    public Betrag(final String name, final FeldInfo info) {
+    public Betrag(final Bezeichner name, final FeldInfo info) {
         super(name, info);
+    }
+
+    /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public Betrag(final Betrag other) {
+        super(other);
     }
 
     /* (non-Javadoc)
@@ -109,6 +157,14 @@ public class Betrag extends NumFeld {
     @Override
     public double toDouble() {
         return super.toInt() / 100.0;
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new Betrag(this);
     }
 
 }

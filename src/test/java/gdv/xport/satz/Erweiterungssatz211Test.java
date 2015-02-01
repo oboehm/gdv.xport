@@ -18,7 +18,6 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.SPARTE;
 import static org.junit.Assert.assertEquals;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
@@ -26,8 +25,8 @@ import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.model.Satz211;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -41,7 +40,7 @@ import org.junit.Test;
  */
 public class Erweiterungssatz211Test {
 
-    private static final Log log = LogFactory.getLog(Erweiterungssatz211Test.class);
+    private static final Logger LOG = LogManager.getLogger(Erweiterungssatz211Test.class);
 
     /**
      * Test-Methode fuer {@link Satz211#Satz211(int)}.
@@ -61,12 +60,12 @@ public class Erweiterungssatz211Test {
 
     private void createSparte(final int sparte) {
         Datensatz erweiterungssatz = new Satz211(sparte);
-        log.info(erweiterungssatz + " created.");
+        LOG.info(erweiterungssatz + " created.");
         assertEquals(sparte, erweiterungssatz.getSparte());
         assertEquals(Config.getVUNummer().getInhalt().trim(), erweiterungssatz.getVuNummer());
-        Feld spartenFeld = erweiterungssatz.getFeld(Bezeichner.SPARTE);
-        assertEquals(new NumFeld(SPARTE, 3, 11, sparte), spartenFeld);
-        Feld vermittler = erweiterungssatz.getFeld(Bezeichner.VERMITTLER);
+        Feld spartenFeld = erweiterungssatz.getFeld(Bezeichner.NAME_SPARTE);
+        assertEquals(new NumFeld(new Bezeichner(Bezeichner.NAME_SPARTE), 3, 11, sparte), spartenFeld);
+        Feld vermittler = erweiterungssatz.getFeld(Bezeichner.NAME_VERMITTLER);
         assertEquals(33, vermittler.getByteAdresse());
     }
 

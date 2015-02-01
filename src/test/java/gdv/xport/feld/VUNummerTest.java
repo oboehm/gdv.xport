@@ -18,7 +18,7 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -30,7 +30,15 @@ import org.junit.Test;
  * @since 09.10.2009
  * @version $Revision$
  */
-public class VUNummerTest {
+public class VUNummerTest extends AbstractFeldTest {
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
+     */
+    @Override
+    protected Feld getTestFeld() {
+        return new VUNummer("4711");
+    }
 
     /**
      * Test method for {@link gdv.xport.feld.VUNummer#VUNummer(java.lang.String)}.

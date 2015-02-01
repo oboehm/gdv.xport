@@ -33,6 +33,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Date;
 import java.util.Formatter;
 import java.util.Iterator;
 
@@ -42,20 +43,21 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.commons.io.output.WriterOutputStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer XML-Struktur ausgeben zu koennen.
+ * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
+ * XML-Struktur ausgeben zu koennen.
  *
  * @author oliver (ob@aosd.de)
  * @since 0.2 (13.11.2009)
  */
 public final class XmlFormatter extends AbstractFormatter {
 
-    private static final Log log = LogFactory.getLog(XmlFormatter.class);
-    private static final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
-    /** Writer fuer die XML-Ausgabe. */
+    private static final Logger LOG = LoggerFactory.getLogger(XmlFormatter.class);
+    private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
     private XMLStreamWriter xmlStreamWriter;
 
     /**
@@ -70,22 +72,21 @@ public final class XmlFormatter extends AbstractFormatter {
     /**
      * Der Konstruktor fuer die normale Arbeit.
      *
-     * @param writer
-     *            the writer
+     * @param writer the writer
      */
     public XmlFormatter(final Writer writer) {
         super(writer);
         try {
-            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(writer);
-        } catch (XMLStreamException e) {
-            throw new RuntimeException("you should never see this", e);
-        } catch (FactoryConfigurationError e) {
-            throw new ConfigException("XML problems", e);
+            this.xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(writer);
+        } catch (XMLStreamException ex) {
+            throw new ShitHappenedException("you should never see this", ex);
+        } catch (FactoryConfigurationError ex) {
+            throw new ConfigException("XML problems", ex);
         }
     }
 
     /**
-     * Instantiates a new xml formatter.
+     * Instantiiert einen neuen XML-Formatter.
      *
      * @param xmlStreamWriter
      *            the xml stream writer
@@ -95,11 +96,17 @@ public final class XmlFormatter extends AbstractFormatter {
     }
 
     /**
-     * @param file
-     *            Ausgabe-Datein
-     * @throws IOException
-     *             falls die uebergebene Date nicht existiert
+     * Instantiiert einen neuen XML-Formatter.
+     * <p>
+     * TODO: Wird mit 1.1 entfernt werden - bitte nicht mehr benuetzen.
+     * </p>
+     *
+     * @param file Ausgabe-Datein
+     * @throws IOException falls die uebergebene Date nicht existiert
+     * @deprecated bitte {@link #XmlFormatter(Writer)} verwenden und den Writer
+     *             im Aufrufer schliessen
      */
+    @Deprecated
     public XmlFormatter(final File file) throws IOException {
         this(new FileOutputStream(file));
     }
@@ -112,11 +119,11 @@ public final class XmlFormatter extends AbstractFormatter {
     public XmlFormatter(final OutputStream ostream) {
         super(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
         try {
-            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
-        } catch (XMLStreamException e) {
-            throw new RuntimeException("you should never see this", e);
-        } catch (FactoryConfigurationError e) {
-            throw new ConfigException("XML problems", e);
+            this.xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
+        } catch (XMLStreamException ex) {
+            throw new ShitHappenedException("you should never see this", ex);
+        } catch (FactoryConfigurationError ex) {
+            throw new ConfigException("XML problems", ex);
         }
     }
 
@@ -129,9 +136,10 @@ public final class XmlFormatter extends AbstractFormatter {
     public void setWriter(final Writer writer) {
         super.setWriter(writer);
         try {
-            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(writer);
-        } catch (XMLStreamException e) {
-            throw new IllegalArgumentException("can't create XmlStreamWriter with " + writer);
+            this.xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(new WriterOutputStream(writer),
+                    Config.DEFAULT_ENCODING.name());
+        } catch (XMLStreamException ex) {
+            throw new IllegalArgumentException("can't create XmlStreamWriter with " + writer, ex);
         }
     }
 
@@ -144,9 +152,9 @@ public final class XmlFormatter extends AbstractFormatter {
     public void setWriter(final OutputStream ostream) {
         super.setWriter(ostream);
         try {
-            this.xmlStreamWriter = xmlOutputFactory.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
-        } catch (XMLStreamException e) {
-            throw new IllegalArgumentException("can't create XmlStreamWriter with " + ostream);
+            this.xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
+        } catch (XMLStreamException ex) {
+            throw new IllegalArgumentException("can't create XmlStreamWriter with " + ostream, ex);
         }
     }
 
@@ -161,12 +169,17 @@ public final class XmlFormatter extends AbstractFormatter {
      */
     public void write(final Feld feld) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("feld");
-        String s = new Formatter().format("%3d-%3d", feld.getByteAdresse(), feld.getEndAdresse()).toString();
-        xmlStreamWriter.writeAttribute("bytes", s);
-        s = new Formatter().format("%-30.30s", feld.getBezeichnung()).toString();
-        xmlStreamWriter.writeAttribute("bezeichnung", s);
+        write("bytes", "%3d-%3d", feld.getByteAdresse(), feld.getEndAdresse());
+        write("bezeichnung", "%-30.30s", feld.getBezeichnung());
         xmlStreamWriter.writeCharacters(feld.getInhalt());
         xmlStreamWriter.writeEndElement();
+    }
+
+    private void write(final String attribute, final String format, final Object... args) throws XMLStreamException {
+        Formatter formatter = new Formatter();
+        String s = formatter.format(format, args).toString();
+        xmlStreamWriter.writeAttribute(attribute, s);
+        formatter.close();
     }
 
     /**
@@ -200,14 +213,21 @@ public final class XmlFormatter extends AbstractFormatter {
     /**
      * Ausgabe eines Datensatzes als XML.
      *
-     * @param satz
-     *            der auszugebende (Daten-)Satz
-     *
-     * @throws XMLStreamException
-     *             the XML stream exception
+     * @param satz der auszugebende (Daten-)Satz
      */
-    public void write(final Satz satz) throws XMLStreamException {
-        write(satz, 0);
+    @Override
+    public void write(final Satz satz) throws IOException {
+        try {
+            if (satz.getSatzart() == 1) {
+                this.writeHead();
+            }
+            write(satz, 1);
+            if (satz.getSatzart() == 9999) {
+                this.writeTail();
+            }
+        } catch (XMLStreamException ex) {
+            throw new IOException("cannot format " + satz, ex);
+        }
     }
 
     private void write(final Satz satz, final int level) throws XMLStreamException {
@@ -226,55 +246,41 @@ public final class XmlFormatter extends AbstractFormatter {
         }
         writeIndent(level);
         xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.flush();
+    }
+
+    private void writeHead() throws XMLStreamException {
+        xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.writeStartElement("datenpaket");
+        xmlStreamWriter.writeDefaultNamespace("http://labs.agentes.de");
+        xmlStreamWriter.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+        xmlStreamWriter.writeNamespace("schemaLocation", "http://labs.agentes.de /xsd/datenpaket.xsd");
+        xmlStreamWriter.writeCharacters("\n");
+    }
+
+    private void writeTail() throws XMLStreamException {
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.writeComment(" (c)reated by gdv-xport at " + new Date() + " ");
+        xmlStreamWriter.writeCharacters("\n");
+        xmlStreamWriter.writeEndDocument();
         xmlStreamWriter.flush();
     }
 
     /**
-     * Ausgabe eines kompletten Datenpakets als XML.
-     *
-     * @param datenpaket
-     *            Datenpaket, das als XML ausgegeben werden soll
-     * @throws IOException
-     *             bei Problemen mit der XML-Generierung
-     */
-    @Override
-    public void write(final Datenpaket datenpaket) throws IOException {
-        long t0 = System.currentTimeMillis();
-        try {
-            xmlStreamWriter.writeStartDocument(Config.DEFAULT_ENCODING.name(), "1.0");
-            xmlStreamWriter.writeCharacters("\n");
-            xmlStreamWriter.writeStartElement("datenpaket");
-            xmlStreamWriter.writeDefaultNamespace("http://labs.agentes.de");
-            xmlStreamWriter.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
-            xmlStreamWriter.writeNamespace("schemaLocation", "http://labs.agentes.de /xsd/datenpaket.xsd");
-            xmlStreamWriter.writeCharacters("\n");
-            write(datenpaket.getVorsatz(), 1);
-            xmlStreamWriter.writeCharacters("\n");
-            for (Iterator<Datensatz> iterator = datenpaket.getDatensaetze().iterator(); iterator.hasNext();) {
-                Satz datensatz = iterator.next();
-                write(datensatz, 1);
-                xmlStreamWriter.writeCharacters("\n");
-            }
-            write(datenpaket.getNachsatz(), 1);
-            xmlStreamWriter.writeCharacters("\n");
-            xmlStreamWriter.writeEndElement();
-            xmlStreamWriter.writeCharacters("\n");
-            xmlStreamWriter.writeComment(" (c)reated by gdv-xport in " + (System.currentTimeMillis() - t0) + " ms ");
-            xmlStreamWriter.writeCharacters("\n");
-            xmlStreamWriter.writeEndDocument();
-            xmlStreamWriter.flush();
-        } catch (XMLStreamException e) {
-            throw new IOException("XML-Fehler", e);
-        }
-    }
-
-    /**
-     * Falls man diese Klasse mit dem File-Konstruktor geoeffnet hat, sollte man den Stream hierueber wieder schliessen.
+     * Falls man diese Klasse mit dem File-Konstruktor geoeffnet hat, sollte man
+     * den Stream hierueber wieder schliessen.
+     * <p>
+     * TODO: Wird mit 1.1 entfernt werden - bitte nicht mehr benuetzen.
+     * </p>
      *
      * @since 0.3
-     * @throws IOException
-     *             sollte eigentlich nicht vorkommen
+     * @throws IOException sollte eigentlich nicht vorkommen
+     * @deprecated siehe {@link #XmlFormatter(File)}
      */
+    @Deprecated
     public void close() throws IOException {
         try {
             this.xmlStreamWriter.close();
@@ -298,7 +304,7 @@ public final class XmlFormatter extends AbstractFormatter {
         try {
             formatter.write(feld);
         } catch (XMLStreamException shouldnothappen) {
-            throw new RuntimeException("can't convert " + feld + " to String", shouldnothappen);
+            throw new ShitHappenedException("can't convert " + feld + " to String", shouldnothappen);
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
@@ -317,7 +323,7 @@ public final class XmlFormatter extends AbstractFormatter {
         try {
             formatter.write(teildatensatz);
         } catch (XMLStreamException shouldnothappen) {
-            throw new RuntimeException("can't convert " + teildatensatz + " to String", shouldnothappen);
+            throw new ShitHappenedException("can't convert " + teildatensatz + " to String", shouldnothappen);
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
@@ -335,9 +341,10 @@ public final class XmlFormatter extends AbstractFormatter {
         StringWriter swriter = new StringWriter();
         XmlFormatter formatter = new XmlFormatter(swriter);
         try {
-            formatter.write(satz);
-        } catch (XMLStreamException shouldnothappen) {
-            throw new RuntimeException("can't convert " + satz + " to String", shouldnothappen);
+            formatter.write(satz, 0);
+        } catch (XMLStreamException ex) {
+            LOG.warn("cannot format " + satz, ex);
+            swriter.write("<!-- " + satz + " -->");
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
@@ -356,7 +363,7 @@ public final class XmlFormatter extends AbstractFormatter {
         try {
             formatter.write(datenpaket);
         } catch (IOException shouldnothappen) {
-            throw new RuntimeException("can't convert " + datenpaket + " to String", shouldnothappen);
+            throw new ShitHappenedException("can't convert " + datenpaket + " to String", shouldnothappen);
         }
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
@@ -374,7 +381,7 @@ public final class XmlFormatter extends AbstractFormatter {
                 xmlStreamWriter.writeCharacters("  ");
             }
         } catch (XMLStreamException e) {
-            log.warn("can't indent " + this, e);
+            LOG.warn("can't indent " + this, e);
         }
     }
 

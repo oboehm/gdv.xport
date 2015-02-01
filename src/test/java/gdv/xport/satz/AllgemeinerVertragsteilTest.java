@@ -24,8 +24,8 @@ import gdv.xport.satz.model.Satz200;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -38,7 +38,7 @@ import org.junit.Test;
  */
 public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
 
-    private static final Log log = LogFactory.getLog(AllgemeinerVertragsteilTest.class);
+    private static final Logger LOG = LogManager.getLogger(AllgemeinerVertragsteilTest.class);
     private static final String input = "02009999  030      599999999990199990099992010520040105200901052"
             + "00511  0000000001        01052004100000         EUR000000041141 "
             + "                             0           B4LTTT                 "
@@ -57,7 +57,7 @@ public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.satz.AllgemeinerVertragsteil#AllgemeinerVertragsteil()}.
+     * Testet den allgemeinen Vertragsteil (Satz 200).
      */
     @Test
     public void testAllgemeinerVertragsteil() {
@@ -88,8 +88,8 @@ public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
         assertEquals("59999999999", vertragsteil.getVersicherungsscheinNummer());
         assertEquals(1, vertragsteil.getFolgenummer());
         assertEquals("9999009999", vertragsteil.getVermittler());
-        assertEquals("2", vertragsteil.get(Bezeichner.INKASSOART));
-        assertEquals("01052004", vertragsteil.get(Bezeichner.VERTRAGSBEGINN));
+        assertEquals("2", vertragsteil.get(Bezeichner.NAME_INKASSOART));
+        assertEquals("01052004", vertragsteil.get(Bezeichner.NAME_VERTRAGSBEGINN));
     }
 
     /**
@@ -109,7 +109,7 @@ public class AllgemeinerVertragsteilTest extends AbstractSatzTest {
             new Satz200();
         }
         long nanos = System.nanoTime() - t0;
-        log.info("time of new Satz(): " + (((double) nanos)/n/1000000.0) + " ms");
+        LOG.info("time of new Satz(): " + (((double) nanos)/n/1000000.0) + " ms");
     }
 
 }

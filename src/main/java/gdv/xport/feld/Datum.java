@@ -32,8 +32,8 @@ import net.sf.oval.ConstraintViolation;
 import net.sf.oval.constraint.MatchPatternCheck;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The Class Datum.
@@ -44,7 +44,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public final class Datum extends Feld {
 
-    private static final Log log = LogFactory.getLog(Feld.class);
+    private static final Logger LOG = LogManager.getLogger(Feld.class);
     private final DateFormat dateFormat;
 
     /**
@@ -91,26 +91,58 @@ public final class Datum extends Feld {
     }
 
     /**
-     * Instantiates a new datum.
+     * Legt ein neues Datum an.
+     * <p>
+     * TODO: Bitte nicht mehr benutzen - wird in 1.2 entfernt!
+     * </p>
      *
-     * @param name the name
-     * @param length the length
-     * @param start the start
+     * @param name Name
+     * @param length Anzahl Bytes
+     * @param start Byte-Adresse
+     * @deprecated durch {@link #Datum(Bezeichner, int, int)} abgeloest
      */
+    @Deprecated
     public Datum(final String name, final int length, final int start) {
-        super(name, length, start, Align.RIGHT);
+        this(new Bezeichner(name), length, start);
+    }
+
+    /**
+     * Legt ein neues Datum an.
+     *
+     * @param bezeichner Bezeichner
+     * @param length Anzahl Bytes
+     * @param start Byte-Adresse
+     */
+    public Datum(Bezeichner bezeichner, int length, int start) {
+        super(bezeichner, length, start, Align.RIGHT);
         dateFormat = getDateFormat(length);
     }
 
     /**
      * Instantiiert ein neues Datum.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
      *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
+     * @deprecated bitte {@link #Datum(Bezeichner, FeldInfo)} verwenden
      */
+    @Deprecated
     public Datum(final String name, final FeldInfo info) {
-        super(name, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.RIGHT : info.align());
+        this(new Bezeichner(name), info);
+    }
+
+    /**
+     * Instantiiert ein neues Datum.
+     *
+     * @param bezeichner Bezeichner
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 1.0
+     */
+    public Datum(final Bezeichner bezeichner, final FeldInfo info) {
+        super(bezeichner, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.RIGHT : info.align());
         dateFormat = getDateFormat(info.anzahlBytes());
     }
 
@@ -152,6 +184,17 @@ public final class Datum extends Feld {
     public Datum(final int length, final int start) {
         super(length, start, Align.RIGHT);
         dateFormat = getDateFormat(length);
+    }
+
+    /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Datum
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public Datum(final Datum other) {
+        super(other);
+        this.dateFormat = other.dateFormat;
     }
 
     private static DateFormat getDateFormat(final int length) {
@@ -270,7 +313,7 @@ public final class Datum extends Feld {
             String conv = this.dateFormat.format(date);
             return conv.equals(orig);
         } catch (RuntimeException e) {
-            log.info(e + " -> mapped to false");
+            LOG.info(e + " -> mapped to false");
             return false;
         }
     }
@@ -281,17 +324,9 @@ public final class Datum extends Feld {
     @Override
     public List<ConstraintViolation> validate() {
         List<ConstraintViolation> violations = super.validate();
-        if (this.isEmpty()) {
-            return violations;
-        }
-        try {
-            if (!this.hasValidDate()) {
-                throw new RuntimeException(this.getInhalt() + " is not a valid date");
-            }
-        } catch (RuntimeException e) {
-            ConstraintViolation cv = new ConstraintViolation(new MatchPatternCheck(), e
-                    .getLocalizedMessage(), this, this.getInhalt(), new ClassContext(this
-                    .getClass()));
+        if (!this.isEmpty() && !this.hasValidDate()) {
+            ConstraintViolation cv = new ConstraintViolation(new MatchPatternCheck(), "'" + this.getInhalt()
+                    + "' is not a valid date", this, this.getInhalt(), new ClassContext(this.getClass()));
             violations.add(cv);
         }
         return violations;
@@ -304,6 +339,14 @@ public final class Datum extends Feld {
     public String format() {
         DateFormat df = getDateFormat(this.getAnzahlBytes(), ".");
         return df.format(this.toDate());
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new Datum(this);
     }
 
 }

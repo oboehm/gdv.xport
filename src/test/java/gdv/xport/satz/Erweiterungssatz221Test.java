@@ -18,10 +18,10 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.model.Satz221;
 import gdv.xport.satz.model.SatzX;
@@ -32,8 +32,8 @@ import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -51,7 +51,7 @@ import org.junit.Test;
  */
 public final class Erweiterungssatz221Test extends AbstractSatzTest {
 
-    private static final Log log = LogFactory.getLog(Erweiterungssatz221Test.class);
+    private static final Logger LOG = LogManager.getLogger(Erweiterungssatz221Test.class);
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -70,7 +70,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
     @Test
     public void testSparte70() {
         Datensatz rechtschutz = new Satz221(70);
-        log.info(rechtschutz + " created.");
+        LOG.info(rechtschutz + " created.");
         assertEquals(70, rechtschutz.getSparte());
     }
 
@@ -126,7 +126,7 @@ public final class Erweiterungssatz221Test extends AbstractSatzTest {
             Datenpaket datenpaket = new Datenpaket();
             datenpaket.importFrom(istream);
             Satz erweiterungssatz = datenpaket.getDatensaetze().get(0);
-            Feld lfdNummer = erweiterungssatz.getFeld(LFD_NUMMER_VP_PERSONENGRUPPE);
+            Feld lfdNummer = erweiterungssatz.getFeld(Bezeichner.NAME_LFD_NUMMER_VP_PERSONENGRUPPE);
             assertEquals("000001", lfdNummer.getInhalt());
         } finally {
             istream.close();

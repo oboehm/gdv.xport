@@ -30,10 +30,28 @@ import gdv.xport.annotation.FeldInfo;
 public class Version extends Feld {
 
     /**
+     * Legt ein neues Versions-Feld an.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Name des Feldes
      * @param start Start-Byte (beginnend bei 1)
+     * @deprecated bitte {@link #Version(Bezeichner, int)} benutzen
      */
+    @Deprecated
     public Version(final String name, final int start) {
+        this(new Bezeichner(name), start);
+    }
+
+    /**
+     * Legt ein neues Versions-Feld an.
+     *
+     * @param name Name des Feldes
+     * @param start Start-Byte (beginnend bei 1)
+     * @since 1.0
+     */
+    public Version(final Bezeichner name, final int start) {
         super(name, 3, start, Align.LEFT);
     }
 

@@ -18,10 +18,11 @@
 
 package gdv.xport.satz;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
+import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.common.VertragsStatus;
 
 import java.io.IOException;
@@ -85,6 +86,73 @@ public class TeildatensatzTest extends AbstractSatzTest {
         tds.add(new NumFeld(VertragsStatus.AUSSCHLUSS));
         assertFalse("unexpected: VERTRAGSSTATUS in " + tds, tds.hasFeld(VertragsStatus.VERTRAGSSTATUS));
         assertTrue("expected: AUSSCHLUSS in " + tds, tds.hasFeld(VertragsStatus.AUSSCHLUSS));
+    }
+
+    /**
+     * Test-Methode fuer {@link Teildatensatz#getFeld(int)}.
+     */
+    @Test
+    public void testGetFeld() {
+        Teildatensatz tds = new Teildatensatz(100, 1);
+        assertEquals(tds.getSatzartFeld(), tds.getFeld(1));
+        assertEquals(tds.getNummer(), tds.getFeld(2));
+        NumFeld two = new NumFeld(new Bezeichner("two"), 2, 5);
+        tds.add(two);
+        Feld feld = tds.getFeld(2);
+        assertEquals(two, feld);
+    }
+
+    /**
+     * Test-Methode fuer {@link Teildatensatz#getFeld(String)}.
+     */
+    @Test
+    public void testGetFeldString() {
+        Teildatensatz tds = new Teildatensatz(100, 1);
+        Feld feld = new NumFeld("Hello", 55, "World");
+        tds.add(feld);
+        assertEquals(feld, tds.getFeld("Hello"));
+    }
+
+    /**
+     * Bei der internen Umstellung des {@link Teildatensatz}es auf die
+     * erweiterte {@link Bezeichner}-Klasse gab es Probleme mit dem Loeschen
+     * von Feldern.
+     */
+    @Test
+    public void testRemove() {
+        Teildatensatz tds = new Teildatensatz(100, 1);
+        Zeichen satznummer = new Zeichen("Satznummer", 256, '1');
+        tds.add(satznummer);
+        assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
+        tds.remove(satznummer.getBezeichnung());
+        assertEquals("remove failed", Feld.NULL_FELD, tds.getFeld(satznummer.getBezeichnung()));
+    }
+
+    /**
+     * Hier testen wir, ob mit dem CopyConstructor
+     * {@link Teildatensatz#Teildatensatz(Teildatensatz)} tatsaechlich eine
+     * Kopie angelegt wird.
+     */
+    @Test
+    public void testCopyConstructor() {
+        Teildatensatz orig = new Teildatensatz(100, 1);
+//        AlphaNumFeld vermittler = new AlphaNumFeld(Feld1bis7.VERMITTLER);
+//        vermittler.setInhalt("4711");
+//        orig.add(vermittler);
+        Feld name1 = new AlphaNumFeld(Feld100.NAME1);
+        name1.setInhalt("Mickey");
+        orig.add(name1);
+        Teildatensatz copy = new Teildatensatz(orig);
+        assertEqualsFeld(orig.getFeld(Feld100.NAME1), copy.getFeld(Feld100.NAME1));
+        assertEquals(orig, copy);
+        copy.set(Feld100.NAME1, "Goofy");
+        assertEquals("Goofy", copy.get(Feld100.NAME1).trim());
+        assertEquals("Mickey", orig.get(Feld100.NAME1).trim());
+    }
+
+    private static void assertEqualsFeld(final Feld one, final Feld two) {
+        assertEquals(one, two);
+        assertEquals(one.getClass(), two.getClass());
     }
 
 }

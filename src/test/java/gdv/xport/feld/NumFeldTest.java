@@ -30,8 +30,8 @@ import java.util.Locale;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -40,16 +40,24 @@ import org.junit.Test;
  * @author oliver
  * @since 05.10.2009
  */
-public class NumFeldTest {
+public final class NumFeldTest extends AbstractFeldTest {
 
-    private static final Log log = LogFactory.getLog(NumFeldTest.class);
+    private static final Logger LOG = LogManager.getLogger(NumFeldTest.class);
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
+     */
+    @Override
+    protected Feld getTestFeld() {
+        return new NumFeld(Feld1bis7.SPARTE);
+    }
 
     /**
      * Einfacher Test, ob das Anlegen erfolgreich war.
      */
     @Test
     public void testNumFeld() {
-        NumFeld nummer = new NumFeld("Feld X", 4, 1);
+        NumFeld nummer = new NumFeld(new Bezeichner("Feld X"), 4, 1);
         assertEquals("0000", nummer.getInhalt());
     }
 
@@ -120,7 +128,7 @@ public class NumFeldTest {
         NumFeld x = new NumFeld("x", "xxxx");
         List<ConstraintViolation> violations = x.validate();
         for (ConstraintViolation violation : violations) {
-            log.info(violation.getValidatedObject() + ": " + violation.getMessage());
+            LOG.info(violation.getValidatedObject() + ": " + violation.getMessage());
         }
         assertEquals(1, violations.size());
     }
@@ -167,7 +175,7 @@ public class NumFeldTest {
      */
     @Test
     public void testBigNumber() {
-        NumFeld big = new NumFeld("big", 14, 1).mitNachkommastellen(2);
+        NumFeld big = new NumFeld(new Bezeichner("big"), 14, 1).mitNachkommastellen(2);
         big.setInhalt("00005000000000");
         assertTrue("should be valid", big.isValid());
         List<ConstraintViolation> violations = big.validate();
@@ -180,7 +188,7 @@ public class NumFeldTest {
      */
     @Test
     public void testFormatInt() {
-        NumFeld betrag = new NumFeld("betrag", 5, 1);
+        NumFeld betrag = new NumFeld(new Bezeichner("betrag"), 5, 1);
         betrag.setInhalt("120");
         assertEquals("120", betrag.format());
     }
@@ -191,7 +199,7 @@ public class NumFeldTest {
      */
     @Test
     public void testFormatDouble() {
-        NumFeld betrag = new NumFeld("betrag", 5, 1).mitNachkommastellen(2);
+        NumFeld betrag = new NumFeld(new Bezeichner("betrag"), 5, 1).mitNachkommastellen(2);
         betrag.setInhalt("120");
         if ("DE".equals(Locale.getDefault().getCountry())) {
             assertEquals("1,20", betrag.format());

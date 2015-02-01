@@ -140,7 +140,7 @@ public class SatzX extends Datensatz {
 			boolean nextLineWagnisartIsSet = nextLineWagnisEnum != WagnisartLeben.NULL;
             boolean nextLineTeildatensatzNummerIsSet =
                     (nextLineTeildatensatzNummerEnum != TeildatensatzNummer.NULL);
-			boolean currentLineWagnisartIsSet = this.getWagnisart().trim().length() > 0;
+            boolean currentLineWagnisartIsSet = this.hasWagnisart() && this.getWagnisart().trim().length() > 0;
 			boolean currentLineTeildatensatzNummerIsSet = this.getTeildatensatzNummer().trim()
 			        .length() > 0;
 

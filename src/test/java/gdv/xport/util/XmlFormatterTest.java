@@ -30,8 +30,8 @@ import java.io.IOException;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
@@ -48,7 +48,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 @RunWith(SmokeRunner.class)
 public class XmlFormatterTest extends AbstractFormatterTest {
 
-    private static final Log log = LogFactory.getLog(XmlFormatterTest.class);
+    private static final Logger LOG = LogManager.getLogger(XmlFormatterTest.class);
 
     /**
      * Test method for {@link gdv.xport.util.XmlFormatter#write(gdv.xport.feld.Feld)}.
@@ -58,7 +58,7 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     public void testWriteFeld() throws XMLStreamException {
         Feld x = new Feld("Hello", "World", Align.LEFT);
         String xmlString = XmlFormatter.toString(x);
-        log.info(x + " as XML: " + xmlString);
+        LOG.info(x + " as XML: " + xmlString);
         checkXML(xmlString);
     }
 
@@ -70,7 +70,7 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     public void testWriteTeildatensatz() throws XMLStreamException {
         Teildatensatz teildatensatz = new Vorsatz().getTeildatensatz(1);
         String xmlString = XmlFormatter.toString(teildatensatz);
-        log.info(teildatensatz + " as XML:\n" + xmlString);
+        LOG.info(teildatensatz + " as XML:\n" + xmlString);
         checkXML(xmlString);
     }
 
@@ -82,7 +82,7 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     public void testWriteSatz() throws XMLStreamException {
         Satz satz = new Nachsatz();
         String xmlString = XmlFormatter.toString(satz);
-        log.info(satz + " as XML:\n" + xmlString);
+        LOG.info(satz + " as XML:\n" + xmlString);
         checkXML(xmlString);
     }
 
@@ -97,7 +97,7 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     public void testWriteDatenpaket() throws XMLStreamException, SAXException, IOException {
         Datenpaket datenpaket = new Datenpaket();
         String xmlString = XmlFormatter.toString(datenpaket);
-        log.info(datenpaket + " as XML:\n" + xmlString);
+        LOG.info(datenpaket + " as XML:\n" + xmlString);
         checkXML(xmlString);
         XmlHelper.validate(xmlString, "/xsd/datenpaket.xsd");
     }
@@ -112,6 +112,18 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     @IntegrationTest
     public void testMusterdatei() throws IOException, XMLStreamException {
         exportMusterdatei(new XmlFormatter(), "musterdatei_041222.xml");
+    }
+
+    /**
+     * Hier testen wir die Eignung des {@link XmlFormatter} als
+     * {@link gdv.xport.event.ImportListener}.
+     *
+     * @throws IOException falls was schiefgelaufen ist
+     */
+    @Test
+    @IntegrationTest
+    public void testNotice() throws IOException {
+        checkNotice(new XmlFormatter(), "musterdatei_041222.xml");
     }
 
     /**

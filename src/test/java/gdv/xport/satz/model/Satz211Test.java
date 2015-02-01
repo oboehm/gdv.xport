@@ -18,29 +18,32 @@
 
 package gdv.xport.satz.model;
 
-import static gdv.xport.feld.Bezeichner.SPARTE;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 
 import java.io.IOException;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 
 /**
  * JUnit-Test fuer Satz211.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (06.04.2011)
  */
 public class Satz211Test {
 
-    private static final Log log = LogFactory.getLog(Satz211Test.class);
+    private static final Logger LOG = LogManager.getLogger(Satz211Test.class);
 
     /**
      * Test method for {@link Satz211#Satz211(int)}.
@@ -48,15 +51,15 @@ public class Satz211Test {
     @Test
     public void testSparte10() {
         Satz211 leben = new Satz211(10);
-        log.info(leben + " created.");
+        LOG.info(leben + " created.");
         assertEquals(10, leben.getSparte());
         assertEquals(Config.getVUNummer().getInhalt().trim(), leben.getVuNummer());
-        Feld sparte = leben.getFeld(Bezeichner.SPARTE);
-        assertEquals(new NumFeld(SPARTE, 3, 11, 10), sparte);
-        Feld vermittler = leben.getFeld(Bezeichner.VERMITTLER);
+        Feld sparte = leben.getFeld(Bezeichner.NAME_SPARTE);
+        assertEquals(new NumFeld(new Bezeichner(Bezeichner.NAME_SPARTE), 3, 11, 10), sparte);
+        Feld vermittler = leben.getFeld(Bezeichner.NAME_VERMITTLER);
         assertEquals(33, vermittler.getByteAdresse());
     }
-    
+
     /**
      * Test import.
      *
@@ -72,7 +75,7 @@ public class Satz211Test {
         sparte50.setSparte(50);
         sparte50.importFrom(input);
         assertEquals(50, sparte50.getSparte());
-        assertEquals("000000000000", sparte50.getFeld(Bezeichner.NEUPREIS_IN_WAEHRUNGSEINHEITEN).getInhalt());
+        assertEquals("000000000000", sparte50.getFeld(Bezeichner.NAME_NEUPREIS_IN_WAEHRUNGSEINHEITEN).getInhalt());
         List<ConstraintViolation> violations = sparte50.validate();
         assertTrue(violations + " should be empty", violations.isEmpty());
     }

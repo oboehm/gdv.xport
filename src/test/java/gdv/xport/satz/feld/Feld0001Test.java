@@ -18,7 +18,9 @@
 
 package gdv.xport.satz.feld;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
@@ -28,7 +30,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import patterntesting.runtime.annotation.Broken;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -56,11 +57,10 @@ public class Feld0001Test {
      * 1" aufgesetzt ist.
      */
     @Test
-    @Broken(why="siehe gdv.xport.satz.model.SatzX.add(Enum<?>, Teildatensatz)", till="30-Jun-2014")
     public void testVersionSatzart0001() {
-        Feld x = vorsatz.getTeildatensatz(1).getFeld(Bezeichner.VERSION_SATZART_0001);
+        Feld x = vorsatz.getTeildatensatz(1).getFeld(Bezeichner.NAME_VERSION_SATZART_0001);
         assertNotNull(x);
-        assertEquals(Bezeichner.VERSION_SATZART_0001, x.getBezeichnung());
+        assertEquals(Bezeichner.NAME_VERSION_SATZART_0001, x.getBezeichnung());
         assertEquals(96, x.getByteAdresse());
     }
 

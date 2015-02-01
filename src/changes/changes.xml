@@ -17,6 +17,26 @@
 
   <body>
 
+    <release version="1.0.0" date="Feb-2015"
+             description="Streaming-API">
+      <action dev="oboehm" type="update" date="24-Jan-2015" >
+        Anpassungen an die 2013er-Version des GDV-Handbuchs.
+      </action>
+      <action dev="oboehm" type="add" date="18-Jan-2015">
+      	XmlService unterst&#252;tzt die restlichen S&#228;tze auf Basis der
+      	XML-Beschreibung von gdv-online
+      	(http://www.gdv-online.de/vuvm/bestand/best_2013.htm").
+      </action>
+      <action dev="oboehm" type="update" date="05-Aug-2014" >
+        Import- und Export-Methoden der Datenpaket-Klasse unterst&#252;tzen jetzt
+        Encoding.
+      </action>
+      <action dev="oboehm" type="update" date="17-Feb-2014" >
+        DatenpaketStreamer mit Streaming-API eingef&#252;hrt, um den
+        Speicherverbrauch zu begrenzen.
+      </action>
+    </release>
+
     <release version="0.9.3" date="05-Feb-2014"
              description="ausf&#252;hrbare Jar-Datei (2. Versuch)">
       <action dev="oboehm" type="add" date="05-Feb-2014" >

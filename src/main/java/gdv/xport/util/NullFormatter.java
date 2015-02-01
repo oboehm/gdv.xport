@@ -18,26 +18,27 @@
 
 package gdv.xport.util;
 
-import gdv.xport.Datenpaket;
+import gdv.xport.satz.Satz;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Writer;
 
 /**
  * Dieser Formatter macht keine eigentliche Formattierung, sondern reicht den
  * Datensatz einfach durch.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (29.11.2010)
  */
 public final class NullFormatter extends AbstractFormatter {
-    
+
     /**
      * Instantiates a new null formatter.
      */
     public NullFormatter() {
         super();
     }
-    
+
     /**
      * Instantiates a new null formatter.
      *
@@ -46,17 +47,17 @@ public final class NullFormatter extends AbstractFormatter {
     public NullFormatter(final Writer writer) {
         super(writer);
     }
-    
+
     /**
-     * Ausgabe eines kompletten Datenpakets.
+     * Hier geben wir nur einen einzelnen Satz ueber den internen Writer aus.
      *
-     * @param datenpaket Datenpaket, das formattiert ausgegeben werden soll
+     * @param satz Satz, der unformattiert ausgegeben wird
      * @throws IOException bei Problemen mit der Generierung
-     * @see gdv.xport.util.AbstractFormatter#write(gdv.xport.Datenpaket)
+     * @see AbstractFormatter#write(Satz)
      */
     @Override
-    public void write(final Datenpaket datenpaket) throws IOException {
-        datenpaket.export(this.getWriter());
+    public void write(Satz satz) throws IOException {
+        satz.export(this.getWriter());
         this.getWriter().flush();
     }
 

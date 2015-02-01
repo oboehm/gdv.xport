@@ -30,8 +30,8 @@ import java.net.UnknownHostException;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,7 +48,7 @@ import patterntesting.runtime.annotation.IntegrationTest;
 @RunWith(ParallelRunner.class)
 public final class MyUnfallDatensatzTest {
 
-    private static final Log log = LogFactory.getLog(MyUnfallDatensatzTest.class);
+    private static final Logger LOG = LogManager.getLogger(MyUnfallDatensatzTest.class);
 
     /**
      * Registriert MyUnfallDatensatz und importiert dann zu Testzwecken
@@ -68,7 +68,7 @@ public final class MyUnfallDatensatzTest {
         // jetzt den ersten Datensatz 210, Sparte 30 suchen und testen
         for (Datensatz datensatz : datenpaket.getDatensaetze()) {
             if ((datensatz.getSatzart() == 210) && (datensatz.getSparte() == 30)) {
-                assertEquals("EUR", datensatz.getFeld(MyFeld210.MEINE_WAEHRUNG).getInhalt());
+                assertEquals("EUR", datensatz.getFeld(MyFeld210.BAUJAHR).getInhalt());
                 break;
             }
         }
@@ -83,9 +83,8 @@ public final class MyUnfallDatensatzTest {
     @Test
     public void testBezeichner() {
         Datensatz myDatensatz = new MyUnfallDatensatz();
-        Feld meineWaehrung = myDatensatz.getFeld(MyFeld210.MEINE_WAEHRUNG);
-        assertEquals("MEINE_WAEHRUNG", meineWaehrung.getBezeichner());
-        assertEquals("Meine Waehrung", meineWaehrung.getBezeichnung());
+        Feld baujahr = myDatensatz.getFeld(MyFeld210.BAUJAHR);
+        assertEquals("Baujahr", baujahr.getBezeichnung());
     }
 
     /**
@@ -100,7 +99,7 @@ public final class MyUnfallDatensatzTest {
         try {
             MyUnfallDatensatz.main(new String[] {});
         } catch (UnknownHostException mayhappen) {
-            log.warn("Offline? testMain() abgebrochen!", mayhappen);
+            LOG.warn("Offline? testMain() abgebrochen!", mayhappen);
         }
     }
 

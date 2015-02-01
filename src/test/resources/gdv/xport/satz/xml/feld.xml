@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feld referenz="BN-2003.02.11.22.49.47.344">
+	<name>Sparte</name>
+	<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung
+	</aenderungsart>
+	<letzteAenderung>31.07.2013 11:42:31</letzteAenderung>
+	<minimaleLaenge>3</minimaleLaenge>
+	<bytes>3</bytes>
+	<datentyp combobox="datentypbox">Numerisch</datentyp>
+	<nachkommastellen />
+	<bemerkung>
+		<br />
+	</bemerkung>
+	<wertetabelle>
+		<name>Spartenverzeichnis</name>
+		<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung
+		</aenderungsart>
+		<letzteAenderung>31.07.2013 11:42:31</letzteAenderung>
+		<technischerName>Spartenverzeichnis</technischerName>
+		<bemerkung>
+			Der Schlüssel orientiert sich nach dem BerVersVerzeichnis des BaFin.
+			Zusätzlich gelten für das BerVersV-Verzeichnis weitere Schlüssel (Im Bereich
+			Investment wird 550 = Investmentfonds und als VU-Nummer die Nummer der
+			Kapitalanlagegesellschaft geschlüsselt).
+			<br />
+			<br />
+			Anmerkung 1:
+			<br />
+			Die Regeln des GDV-Datensatzes sehen vor, dass in vordefinierten
+			Spartensätzen (z.B. 0210.040 und 0220.040 = Haftpflicht) nur die jeweilige
+			Hauptspartennummer mit einer "0" an der dritten Stelle durchgängig geliefert
+			werden kann. Das bedeutet, dass dann auch die zugehörige 0200er-Satzart mit
+			der jeweiligen Hauptsparte zu liefern ist.
+			<br />
+			<br />
+			Nur in Kraftfahrt müssen in den vordefinierten 0220er-Teilspartensätzen auch
+			die entsprechenden Unterspartenschlüssel genutzt werden. Im zugehörigen
+			0210-Satz ist in Kraftfahrt dagegen die Hauptsparte "050" zu liefern (z.B.
+			0210.050 aber 0220.051 und 0220.054).
+			<br />
+			<br />
+			Gibt es keine vorgegebenen Datensätze für eine spezifische Sparte, können
+			die "Allgemeinen Sätze" 0210.000 und 0220.000 dann mit dem jeweiligen
+			Unterspartenschlüssel verwendet werden.
+			<br />
+			<br />
+			Anmerkung 2: Bei gebündelten Sachversicherungen, die Glasversicherungen
+			beinhalten, müssen die unter Sparte 110 beschriebenen Sätze geliefert
+			werden.
+			<br />
+			<br />
+			(1. Diese Sparten werden in den Satzarten von Transport geliefert.)
+			<br />
+			(2. Moped sowie Handel und Handwerk wird in der Regel im Rahmen der
+			Kraftfahrt-Satzarten geliefert)
+			<br />
+		</bemerkung>
+		<anlagennummer>1</anlagennummer>
+		<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+		<alleWerteDerTabelle>
+			<eintrag>
+				<wert>010</wert>
+				<beschreibung>Lebensversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Leben</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>020</wert>
+				<beschreibung>Krankenversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kranken</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>030</wert>
+				<beschreibung>Allgemeine Unfallversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Unfall</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>040</wert>
+				<beschreibung>Haftpflichtversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Haftpflicht
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>050</wert>
+				<beschreibung>Kraftfahrtversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz -
+					Fahrzeugdaten</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>051</wert>
+				<beschreibung>Kraftfahrzeug-Haftpflichtversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz -
+					Fahrzeughaftpflicht</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>052</wert>
+				<beschreibung>Fahrzeugvollversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz -
+					Fahrzeugvollkasko</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>053</wert>
+				<beschreibung>Fahrzeugteilversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz -
+					Fahrzeugteil</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>054</wert>
+				<beschreibung>Kraftfahrtunfallversicherung (einschließlich der namentlichen
+					Kraftfahrtunfallversicherung)</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz - Unfall
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>055</wert>
+				<beschreibung>Kfz-Baustein</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz - Baustein
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>059</wert>
+				<beschreibung>Kfz-Gepäck</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz - Gepäck
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>060</wert>
+				<beschreibung>Luftfahrtversicherung (einschließlich der
+					Raumfahrtversicherung)</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>063</wert>
+				<beschreibung>Luftfahrzeug-Kaskoversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>065</wert>
+				<beschreibung>Raumfahrzeug-Kaskoversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>069</wert>
+				<beschreibung>übrige und nicht aufgegliederte Luftfahrtversicherung
+					(einschließlich der Raumfahrtversicherung)</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>070</wert>
+				<beschreibung>Rechtsschutzversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Rechtsschutz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>080</wert>
+				<beschreibung>Feuerversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>081</wert>
+				<beschreibung>Feuer-Industrie-Versicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>082</wert>
+				<beschreibung>landwirtschaftliche Feuerversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>083</wert>
+				<beschreibung>sonstige Feuerversicherung (einschließlich der
+					Waldbrandversicherung)</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>089</wert>
+				<beschreibung>übrige und nicht aufgegliederte Feuer-Versicherung
+				</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>090</wert>
+				<beschreibung>Einbruchdiebstahl und Raub (ED)-Versicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>099</wert>
+				<beschreibung>übrige und nicht aufgegliederte ED-Versicherung
+				</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>100</wert>
+				<beschreibung>Leitungswasser (Lw)-Versicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>109</wert>
+				<beschreibung>übrige und nicht aufgegliederte LW-Versicherung
+				</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>110</wert>
+				<beschreibung>Glasversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Glas</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>120</wert>
+				<beschreibung>Sturmversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>123</wert>
+				<beschreibung>Gärtnerei-Sturmversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>124</wert>
+				<beschreibung>Versicherung weiterer Elementarschõden bei gewerblichen
+					Risiken</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>130</wert>
+				<beschreibung>Verbundene Hausratversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von verbundene
+					Hausrat</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>140</wert>
+				<beschreibung>Verbundene Wohngebäudeversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von verbundene
+					Gebäude</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>150</wert>
+				<beschreibung>Hagelversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>160</wert>
+				<beschreibung>Tierversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>161</wert>
+				<beschreibung>langfristige Tierlebensversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>162</wert>
+				<beschreibung>kurzfristige Tierversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>169</wert>
+				<beschreibung>übrige und nicht aufgegliederte Tierversicherung
+				</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>170</wert>
+				<beschreibung>Technische Versicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+					Versicherung</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>171</wert>
+				<beschreibung>Maschinenversicherung (einschließlich der
+					Baugeräteversicherung)</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+					Versicherung</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>172</wert>
+				<beschreibung>Elektronikversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+					Versicherung</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>174</wert>
+				<beschreibung>Montageversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+					Versicherung</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>175</wert>
+				<beschreibung>Haushaltsgeräteversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+					Versicherung</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>176</wert>
+				<beschreibung>Bauleistungsversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+					Versicherung</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>179</wert>
+				<beschreibung>übrige und nicht aufgegliederte technische Versicherung
+				</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+					Versicherung</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>180</wert>
+				<beschreibung>Einheitsversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>181</wert>
+				<beschreibung>Allgemeine Einheitsversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>182</wert>
+				<beschreibung>Juwelierwaren-Einheitsversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>183</wert>
+				<beschreibung>Rauchwaren-Einheitsversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>184</wert>
+				<beschreibung>Textilveredlungs-Einheitsversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>185</wert>
+				<beschreibung>Wäscheschutz-Einheitsversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>189</wert>
+				<beschreibung>übrige und nicht aufgegliederte Einheitsversicherung
+				</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>190</wert>
+				<beschreibung>Transportversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>191</wert>
+				<beschreibung>Kaskoversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>192</wert>
+				<beschreibung>Transportgüterversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>193</wert>
+				<beschreibung>Valorenversicherung (gewerblich)</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>194</wert>
+				<beschreibung>Filmversicherung (ohne Kennzahl 29.2.01)</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>197</wert>
+				<beschreibung>Kriegsrisikoversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>199</wert>
+				<beschreibung>übrige und nicht aufgegliederte Transportversicherung
+					(einschließlich Versicherung von Offshore-Risiken)</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>200</wert>
+				<beschreibung>Kredit- und Kautionsversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte ohne Satzarten 021X und 022X</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>201</wert>
+				<beschreibung>Kautionsversicherung (einschließlich Baugarantieversicherung)
+				</beschreibung>
+				<gruppe>Nutzung dieser Sparte ohne Satzarten 021X und 022X</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>202</wert>
+				<beschreibung>Delkredereversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte ohne Satzarten 021X und 022X</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>209</wert>
+				<beschreibung>übrige und nicht aufgegliederte Kredit- und
+					Kautionsversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte ohne Satzarten 021X und 022X</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>210</wert>
+				<beschreibung>Versicherung zusõtzlicher Gefahren zur Feuer- bzw.
+					Feuer-BetriebsunterbrechungsVersicherung Extended Coverage
+					(EC)-Versicherung)</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>230</wert>
+				<beschreibung>Betriebsunterbrechungs-Versicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>231</wert>
+				<beschreibung>Feuer-(Groß)Betriebsunterbrechungs-Versicherung
+				</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+					Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>232</wert>
+				<beschreibung>Technische-Betriebsunterbrechungs-Versicherung/ MBU
+					Elektronik</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+					Versicherung</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>233</wert>
+				<beschreibung>sonstige Betriebsunterbrechungsversicherungen</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>240</wert>
+				<beschreibung>Beistandsleistungsversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>241</wert>
+				<beschreibung>Schutzbriefversicherung</beschreibung>
+				<gruppe>müsste als Sparte 510 geliefert werden</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>242</wert>
+				<beschreibung>Sportboot-Serviceversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>243</wert>
+				<beschreibung>Flugrückholkostenversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>244</wert>
+				<beschreibung>Schutzbriefversicherung unter Einschluss der sog.
+					Mallorca-Police</beschreibung>
+				<gruppe>müsste als Sparte 510 geliefert werden</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>249</wert>
+				<beschreibung>übrige und nicht aufgegliederte
+					Beistandsleistungsversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>250</wert>
+				<beschreibung>Luft- und Raumfahrzeug-Haftpflichtversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>251</wert>
+				<beschreibung>Luftfahrt- Haftpflichtversicherung (einschließlich der
+					Luftfrachtf³hrer-Haftpflichtversicherung)</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>252</wert>
+				<beschreibung>Raumfahrzeug-Haftpflichtversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>290</wert>
+				<beschreibung>sonstige Schadenversicherung, z. B.
+					Maschinen-Garantie-Versicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>291</wert>
+				<beschreibung>sonstige Sachschadenversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>293</wert>
+				<beschreibung>sonstige Vermögensschadenversicherungen</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>294</wert>
+				<beschreibung>sonstige gemischte Versicherungen</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>296</wert>
+				<beschreibung>Vertrauensschadenversicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>299</wert>
+				<beschreibung>übrige und nicht aufgegliederte sonstige
+					Schadenversicherungen</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>510</wert>
+				<beschreibung>Verkehrsservice</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Verkehrsservice
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>550</wert>
+				<beschreibung>Investmentfonds</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Investmentfonds
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>560</wert>
+				<beschreibung>Kapitalanlagen</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kapitalanlage
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>570</wert>
+				<beschreibung>Baufinanzierungen</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Baufinanzierung
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>580</wert>
+				<beschreibung>Bausparkassen</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Bausparen
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>600</wert>
+				<beschreibung>Moped</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>630</wert>
+				<beschreibung>Rahmen- und Sammelverträge</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>650</wert>
+				<beschreibung>Handel und Handwerk</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+				</gruppe>
+			</eintrag>
+			<eintrag>
+				<wert>684</wert>
+				<beschreibung>Tierkranken-Versicherung</beschreibung>
+				<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Tierkranken
+				</gruppe>
+			</eintrag>
+		</alleWerteDerTabelle>
+	</wertetabelle>
+</feld>

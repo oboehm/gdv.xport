@@ -23,13 +23,8 @@ import java.util.Map;
 
 /**
  * Diese Klasse repraesentiert die Satzart 210. Es handelt es sich dabei um eine
- * alternative Implementierung der
- * {@link gdv.xport.satz.VertragsspezifischerTeil}-Klasse, die nach dem Soplet-
- * Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>) implementiert
- * wurde.
- * <p>
- * Dieser Datensatz wird noch als Fallback benoetigt.
- * </p>
+ * alternative Implementierung der urspruenglichen
+ * gdv.xport.satz.VertragsspezifischerTeil-Klasse, die mit 1.0 entsorgt wurde.
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (26.03.2011)

@@ -25,15 +25,18 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.sparte50.Feld210;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
+
+import patterntesting.runtime.junit.CloneableTester;
 
 /**
  * JUnit-Test fuer die Feld-Klasse.
@@ -41,13 +44,18 @@ import org.junit.Test;
  * @author oliver
  * @since 05.10.2009
  */
-public class FeldTest {
+public final class FeldTest extends AbstractFeldTest {
 
-    /** The Constant log. */
-    private static final Log log = LogFactory.getLog(FeldTest.class);
+    private static final Logger LOG = LogManager.getLogger(FeldTest.class);
+    private enum Greeting { HELLO_WORLD, ADRESSAT; }
 
-    /** For testing. */
-    private enum Greeting { HELLO_WORLD; }
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
+     */
+    @Override
+    protected Feld getTestFeld() {
+        return new Feld();
+    }
 
     /**
      * Test method for {@link gdv.xport.feld.Feld#resetInhalt()}.
@@ -98,9 +106,9 @@ public class FeldTest {
      */
     @Test
     public void testOverlapsWith() {
-        Feld a = new Feld("a", 2, 1, Align.LEFT);    // Byte 1-2
-        Feld b = new Feld("b", 2, 3, Align.LEFT);    // Byte 3-4
-        Feld c = new Feld("c", 2, 2, Align.LEFT);    // Byte 2-3
+        Feld a = new Feld(new Bezeichner("a"), 2, 1, Align.LEFT);    // Byte 1-2
+        Feld b = new Feld(new Bezeichner("b"), 2, 3, Align.LEFT);    // Byte 3-4
+        Feld c = new Feld(new Bezeichner("c"), 2, 2, Align.LEFT);    // Byte 2-3
         assertFalse(a + " overlaps with " + b, a.overlapsWith(b));
         assertFalse(b + " overlaps with " + a, b.overlapsWith(a));
         assertTrue(b + " doesn't overlap with " + c, b.overlapsWith(c));
@@ -113,9 +121,9 @@ public class FeldTest {
      */
     @Test
     public void testIsValid() {
-        Feld a = new Feld("a", 257, -1, Align.UNKNOWN);
+        Feld a = new Feld(new Bezeichner("a"), 257, -1, Align.UNKNOWN);
         assertFalse(a + " is not valid - to long, wrong start byte, unknow alignment", a.isValid());
-        Feld b = new Feld("b", 2, 256, Align.LEFT);
+        Feld b = new Feld(new Bezeichner("b"), 2, 256, Align.LEFT);
         assertFalse(b + " geht ueber Satz-Grenze hinweg", b.isValid());
         Feld c = new Feld("c", 1, 'c');
         assertTrue(c + " should be valid", c.isValid());
@@ -126,10 +134,10 @@ public class FeldTest {
      */
     @Test
     public void testValidate() {
-        Feld a = new Feld("a", 10, -1, Align.UNKNOWN);
+        Feld a = new Feld(new Bezeichner("a"), 10, -1, Align.UNKNOWN);
         List<ConstraintViolation> violations = a.validate();
         for (ConstraintViolation violation : violations) {
-            log.info("ConstraintViolation: " + violation);
+            LOG.info("ConstraintViolation: " + violation);
         }
         assertEquals(2, violations.size());
     }
@@ -139,8 +147,8 @@ public class FeldTest {
      */
     @Test
     public void testEquals() {
-        Feld a = new Feld("x", 2, 1, Align.LEFT);
-        Feld b = new Feld("x", 2, 1, Align.LEFT);
+        Feld a = new Feld(new Bezeichner("x"), 2, 1, Align.LEFT);
+        Feld b = new Feld(new Bezeichner("x"), 2, 1, Align.LEFT);
         assertEquals(a, b);
         assertEquals(a.hashCode(), b.hashCode());
         b.setInhalt('b');
@@ -149,14 +157,14 @@ public class FeldTest {
 
     /**
      * Bezeichnung kann aus mehreren Woertern in Gross- und Kleinschreibung
-     * bestehen, der Bezeichner entpsricht dem, was in der
-     * {@link Bezeichner}-Klasse als Konstante definiert ist.
+     * bestehen, der Bezeichner enthaelt neben der Bezeichnung auch den
+     * "technischen Namen", der aus einem Wort besteht.
      */
     @Test
     public void testGetBezeichner() {
-        Feld x = new Feld(Bezeichner.SATZART, "Test", Align.LEFT);
-        assertEquals(Bezeichner.SATZART, x.getBezeichnung());
-        assertEquals("SATZART", x.getBezeichner());
+        Feld x = new Feld(Bezeichner.NAME_SATZART, "Test", Align.LEFT);
+        assertEquals(Bezeichner.NAME_SATZART, x.getBezeichnung());
+        assertEquals(new Bezeichner(Bezeichner.NAME_SATZART), x.getBezeichner());
     }
 
     /**
@@ -165,8 +173,28 @@ public class FeldTest {
      */
     @Test
     public void testGetBezeichnerConstructed() {
-        Feld x = new Feld("Version Satzart 0100", 99, 3, Align.LEFT);
-        assertEquals("VERSION_SATZART_0100", x.getBezeichner());
+        Feld x = new Feld(new Bezeichner("Version Satzart 0100"), 99, 3, Align.LEFT);
+        assertEquals(new Bezeichner("VERSION_SATZART_0100"), x.getBezeichner());
+    }
+
+    /**
+     * Test-Methode fuer {@link Feld#getAsBezeichner(Enum)}.
+     */
+    @Test
+    public void testGetAsBezeichner() {
+        Bezeichner adressat = Feld.getAsBezeichner(Greeting.ADRESSAT);
+        assertEquals(new Bezeichner(Bezeichner.NAME_ADRESSAT), adressat);
+        assertEquals(Bezeichner.NAME_ADRESSAT, adressat.getName());
+    }
+
+    /**
+     * Wenn eine Enum-Konstante bereits als Bezeichner zur Verfuegung steht,
+     * soll dieses zurueckgegeben.
+     */
+    @Test
+    public void testGetAsBezeichnerWechselkennzeichen() {
+        Bezeichner b = Feld.getAsBezeichner(Feld210.WECHSELKENNZEICHEN_W_AKZ);
+        assertEquals(Bezeichner.WECHSELKENNZEICHEN_W_AKZ, b);
     }
 
     /**
@@ -178,7 +206,7 @@ public class FeldTest {
         FeldInfo feldInfo = createFeldInfo();
         Greeting hello = Greeting.HELLO_WORLD;
         Feld feld = Feld.createFeld(hello, feldInfo);
-        assertEquals("HELLO_WORLD", feld.getBezeichner());
+        assertEquals(new Bezeichner("HELLO_WORLD"), feld.getBezeichner());
         assertEquals("Hello World", feld.getBezeichnung());
     }
 
@@ -223,10 +251,14 @@ public class FeldTest {
             }
             @Override
             public Align align() {
-                return null;
+                return Align.UNKNOWN;
             }
             @Override
             public String bezeichnung() {
+                return "";
+            }
+            @Override
+            public String value() {
                 return "";
             }
         };
@@ -241,6 +273,15 @@ public class FeldTest {
     public void testEncoding() {
         Feld feld = new AlphaNumFeld("Gruesse", "Gr\u00fc\u00dfe");
         assertEquals("Gr\u00fc\u00dfe", feld.getInhalt());
+    }
+
+    /**
+     * Test-Methode fuer {@link Feld#clone()}:
+     */
+    @Override
+    @Test
+    public void testCloneable() {
+        CloneableTester.assertCloning(Feld.class);
     }
 
 }

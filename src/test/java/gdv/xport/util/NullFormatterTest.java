@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 - 2012 by Oli B.
+ * Copyright (c) 2010 - 2014 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,22 +19,32 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.event.ImportListener;
 
-import java.io.IOException;
+import java.io.*;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.junit.FileTester;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
+ * JUnit-Tests fuer die {@link NullFormatter}-Klasse.
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.1 (26.01.2011)
- *
  */
-public class NullFormatterTest {
-    
-    private NullFormatter formatter = new NullFormatter();
+@RunWith(SmokeRunner.class)
+public class NullFormatterTest extends AbstractFormatterTest {
+
+    private static Log log = LogFactory.getLog(NullFormatterTest.class);
 
     /**
-     * Test-Methode fuer {@link NullFormatter#write(gdv.xport.Datenpaket)}.
+     * Test-Methode fuer {@link NullFormatter#write(Datenpaket)}.
      * Die Ausgabe sollte dabei auf System.out geschrieben werden. Vor allem
      * sollte es nicht zu einer NPE kommen, wenn kein Writer/OutputStream
      * gesetzt ist.
@@ -42,9 +52,56 @@ public class NullFormatterTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testWriteDatenpaket() throws IOException {
+    public void testWriteDatenpaketToStdout() throws IOException {
         Datenpaket datenpaket = new Datenpaket();
+        NullFormatter formatter = new NullFormatter();
         formatter.write(datenpaket);
+    }
+
+    /**
+     * Test-Methode fuer {@link NullFormatter#write(Datenpaket)}.
+     * Hier testen wir, ob der Formatter tatsaechlich keine Formattierung
+     * vornimmt und als Result die gleiche Datei wie die Eingabe-Datei
+     * rausschreibt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @IntegrationTest
+    @Test
+    public void testWriteDatenpaketToFile() throws IOException {
+        File output = File.createTempFile("output", ".txt");
+        Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1");
+        NullFormatter formatter = new NullFormatter(writer);
+        Datenpaket datenpaket = new Datenpaket();
+        try {
+            datenpaket.importFrom(MUSTERDATEI, "ISO-8859-1");
+            formatter.write(datenpaket);
+            writer.close();
+            FileTester.assertContentEquals(MUSTERDATEI, output, "ISO-8859-1");
+        } finally {
+            log.info(output + " was " + (output.delete() ? "successful" : "not") + " deleted");
+        }
+    }
+
+    /**
+     * Test-Methode fuer {@link NullFormatter#notice(gdv.xport.satz.Satz)}.
+     * Hier testen wir im Wesentlichen die Eigenschaften als
+     * {@link ImportListener}.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @IntegrationTest
+    @Test
+    public void testNotice() throws IOException {
+        File output = File.createTempFile("testNotice", ".txt");
+        Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1");
+        try {
+            exportMusterdatei(new NullFormatter(writer));
+            writer.close();
+            FileTester.assertContentEquals(MUSTERDATEI, output, "ISO-8859-1");
+        } finally {
+            log.info(output + " was " + (output.delete() ? "successful" : "not") + " deleted");
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 - 2012 by Oli B.
+ * Copyright (c) 2010 - 2014 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,18 +18,27 @@
 
 package gdv.xport.util;
 
+import static org.junit.Assert.assertEquals;
 import gdv.xport.Datenpaket;
+import gdv.xport.DatenpaketStreamer;
+import gdv.xport.event.ImportListener;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.util.regex.Pattern;
 
 import javax.xml.stream.*;
 
-import org.apache.commons.logging.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.Test;
+
+import patterntesting.runtime.junit.FileTester;
 
 
 /**
  * Gemeinsame Oberklasse fuer die verschiedenen Formatter-Tests.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (30.11.2010)
  */
@@ -37,6 +46,25 @@ public abstract class AbstractFormatterTest extends AbstractTest {
 
     private static Log log = LogFactory.getLog(AbstractFormatterTest.class);
     private static XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+
+    /** Die Musterdatei, die wir fuer einige Tests verwenden. */
+    protected static File MUSTERDATEI = new File("src/test/resources/musterdatei_041222.txt");
+
+    /**
+     * Einige Tests passieren auf das korrekte Encoding. Da die Beispieldaten
+     * vom GDV alle ISO-8859-1-kodiert sind, sollte das File-Encoding beim
+     * Start der VM ebenfalls darauf eingestellt sein, d.h. die VM sollte mit
+     * <pre>
+     * -Dfile.encoding=ISO-8859-1
+     * </pre>
+     * gestartet werden. Falsl nicht, wird dieser Test fehlschlagen.
+     */
+    @Test
+    public void testFileEncoding() {
+        String defaultEncoding = Charset.defaultCharset().name();
+        String fileEncoding = System.getProperty("file.encoding", defaultEncoding);
+        assertEquals("wrong launch config", "ISO-8859-1", fileEncoding);
+    }
 
     /**
      * Tested die Formattierung der Musterdatei als HTML.
@@ -55,15 +83,64 @@ public abstract class AbstractFormatterTest extends AbstractTest {
             log.info("created: " + siteDir);
         }
         File exportFile = new File(siteDir, filename);
-        OutputStream ostream = new FileOutputStream(exportFile);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(exportFile), "ISO-8859-1");
         try {
             datenpaket.importFrom(istream);
-            formatter.setWriter(ostream);
+            formatter.setWriter(writer);
             formatter.write(datenpaket);
             log.info(datenpaket + " exported to " + exportFile);
         } finally {
-            ostream.close();
+            writer.close();
             istream.close();
+        }
+    }
+
+    /**
+     * Verwendet {@link AbstractFormatter#notice(gdv.xport.satz.Satz)} fuer
+     * den Export und ueberprueft das Ergebnis mit einer bereits exportierten
+     * Datei.
+     *
+     * @param formatter the formatter
+     * @param filename the filename
+     * @throws IOException falls was schiefgelaufen ist
+     */
+    protected static void checkNotice(final AbstractFormatter formatter, final String filename) throws IOException {
+        File output = File.createTempFile("test-notice", ".export");
+        Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1");
+        formatter.setWriter(writer);
+        try {
+            exportMusterdatei(formatter);
+            log.info("Musterdatei was exported to " + output);
+        } finally {
+            writer.close();
+            output.deleteOnExit();
+        }
+        File exported = new File("target/site", filename);
+        if (exported.exists()) {
+            log.info(output + " will be compared with already generated " + exported);
+            FileTester.assertContentEquals(exported, output, Charset.forName("ISO-8859-1"),
+                    Pattern.compile("<!--.*-->"));
+        }
+    }
+
+    /**
+     * Hier exportieren wir die Musterdatei mit dem uebergebenen
+     * {@link AbstractFormatter}. Im Gegensatz zu
+     * {@link #exportMusterdatei(AbstractFormatter, String)} verwenden wir
+     * hier den {@link DatenpaketStreamer} und das {@link ImportListener}
+     * interface, um den Export durchzufuehren.
+     *
+     * @param formatter the formatter
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    protected static void exportMusterdatei(final AbstractFormatter formatter) throws IOException {
+        Reader reader = new InputStreamReader(new FileInputStream(MUSTERDATEI), "ISO-8859-1");
+        DatenpaketStreamer datenpaketStreamer = new DatenpaketStreamer(reader);
+        datenpaketStreamer.register(formatter);
+        try {
+            datenpaketStreamer.readDatenpaket();
+        } finally {
+            reader.close();
         }
     }
 

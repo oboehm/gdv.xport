@@ -37,13 +37,13 @@
       <subsection name="Dependency">
         <p>
           Im Abschnitt "dependencies" wird als weitere Abh&#228;ngigkeit die
-          gdv.xport-Bibliothek eingetragen (hier f&#252;r die Version 0.7.0):
+          gdv.xport-Bibliothek eingetragen (hier f&#252;r die Version 1.0.0):
         </p>
 <source><![CDATA[
     <dependency>
       <groupId>com.github.oboehm</groupId>
       <artifactId>gdv-xport</artifactId>
-      <version>0.7.0</version>
+      <version>1.0.0</version>
     </dependency>
 ]]></source>
       </subsection>
@@ -51,7 +51,7 @@
     
     <section name="Einbindung in Maven (bis 0.6.3)">
       <p>
-        F&#228;r Versionen vor 0.7.0 findet sich das entsprechende Maven-Repository unter
+        F&#252;r Versionen vor 0.7.0 findet sich das entsprechende Maven-Repository unter
         <a href="http://labs.agentes.de/repository/">http://labs.agentes.de/repository/</a>.
         Folgende Angaben sind dazu im pom.xml f&#228;llig:
       </p>

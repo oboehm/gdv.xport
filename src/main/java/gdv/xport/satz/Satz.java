@@ -3,18 +3,20 @@
  */
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.SATZART;
-import static gdv.xport.feld.Bezeichner.SPARTE;
+import static gdv.xport.feld.Bezeichner.NAME_SATZART;
+import static gdv.xport.feld.Bezeichner.NAME_SPARTE;
 import static patterntesting.runtime.NullConstants.NULL_STRING;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.util.SatzNummer;
 
 import java.io.*;
 import java.lang.reflect.Field;
@@ -27,8 +29,8 @@ import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Die Satz-Klasse ist die oberste Klasse, von der alle weiteren Saetze
@@ -38,11 +40,9 @@ import org.apache.commons.logging.LogFactory;
  */
 public abstract class Satz {
 
-	private static final Log log = LogFactory.getLog(Satz.class);
-	/** 4 Zeichen. */
-	private final NumFeld satzart = new NumFeld(SATZART, 4, 1);
-	/** Teildatensaetze. */
-	private Teildatensatz[] teildatensatz;
+	private static final Logger LOG = LoggerFactory.getLogger(Satz.class);
+	private final NumFeld satzart = new NumFeld(new Bezeichner(NAME_SATZART), 4, 1);
+	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
 
 	protected Satz(final int art) {
 		this(art, 1);
@@ -102,7 +102,7 @@ public abstract class Satz {
 	 * @param art z.B. 100 (f. Adressteil)
 	 * @param tdsList Liste mit den Teildatensaetzen
 	 */
-	public Satz(final int art, final List<Teildatensatz> tdsList) {
+	public Satz(final int art, final List<? extends Teildatensatz> tdsList) {
 		this.satzart.setInhalt(art);
 		this.createTeildatensaetze(tdsList);
 	}
@@ -114,7 +114,7 @@ public abstract class Satz {
 		}
 	}
 
-	protected void createTeildatensaetze(final List<Teildatensatz> tdsList) {
+	protected void createTeildatensaetze(final List<? extends Teildatensatz> tdsList) {
 		teildatensatz = new Teildatensatz[tdsList.size()];
 		for (int i = 0; i < tdsList.size(); i++) {
 			teildatensatz[i] = tdsList.get(i);
@@ -123,13 +123,29 @@ public abstract class Satz {
 	}
 
 	/**
-	 * Liefert alle Teildatensaetze zurueck.
+	 * Liefert alle Teildatensaetze zurueck. Aus Performance-Gruenden wird
+	 * keine Kopie zurueckgegeben. Sollte eine Kopie gewuenscht sein, kann
+	 * man auf {@link #cloneTeildatensaetze()} zurueckgreifen.
 	 *
 	 * @return Teildatensaetze
 	 * @since 0.2
 	 */
-	public final Collection<Teildatensatz> getTeildatensaetze() {
+	public final List<Teildatensatz> getTeildatensaetze() {
 		return Arrays.asList(this.teildatensatz);
+	}
+
+	/**
+	 * Hier wirde eine Kopie aller Teildatensaetze zurueckgegeben.
+	 *
+	 * @return Liste mit Teildatensaetzen
+	 * @since 1.0
+	 */
+	protected final List<Teildatensatz> cloneTeildatensaetze() {
+        List<Teildatensatz> cloned = new ArrayList<Teildatensatz>(this.teildatensatz.length);
+	    for (int i = 0; i < this.teildatensatz.length; i++) {
+            cloned.add(new Teildatensatz(this.teildatensatz[i]));
+        }
+	    return cloned;
 	}
 
 	/**
@@ -206,7 +222,7 @@ public abstract class Satz {
 	/**
 	 * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu.
 	 *
-	 * @param feld the feld
+	 * @param feld das Feld
 	 */
 	public void add(final Feld feld) {
 		this.add(feld, 1);
@@ -243,10 +259,21 @@ public abstract class Satz {
 	 * @param name Name des Feldes
 	 */
 	public void remove(final String name) {
-		for (int i = 0; i < this.teildatensatz.length; i++) {
-			this.teildatensatz[i].remove(name);
-		}
+		this.remove(new Bezeichner(name));
 	}
+
+    /**
+     * Falls ein Feld zuviel gesetzt wurde, kann es mit 'remove" wieder entfernt
+     * werden.
+     *
+     * @param bezeichner der Feld-Beezeichner
+     * @since 1.0
+     */
+    public void remove(final Bezeichner bezeichner) {
+        for (int i = 0; i < this.teildatensatz.length; i++) {
+            this.teildatensatz[i].remove(bezeichner);
+        }
+    }
 
 	/**
 	 * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden
@@ -258,7 +285,7 @@ public abstract class Satz {
 	 * @param name Name des Felds (Bezeichnung)
 	 * @param value the value
 	 */
-	public final void set(final String name, final String value) {
+	public void set(final String name, final String value) {
 		boolean found = false;
 		for (int i = 0; i < teildatensatz.length; i++) {
 			Feld x = teildatensatz[i].getFeld(name);
@@ -354,7 +381,7 @@ public abstract class Satz {
 					return x;
 				}
 			} catch (IllegalArgumentException e) {
-                log.debug("Feld \"" + feld + "\" not found in teildatensatz " + i + " (" + e + ").");
+                LOG.debug("Feld \"" + feld + "\" not found in teildatensatz " + i + " (" + e + ").");
 				continue;
 			}
 		}
@@ -367,19 +394,15 @@ public abstract class Satz {
 	 *
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @return das gesuchte Feld
-	 * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 */
-	public Feld containsFeld(final String name) throws IllegalArgumentException {
+	public Feld containsFeld(final String name) {
 		for (int i = 0; i < teildatensatz.length; i++) {
-			try {
-				Feld x = teildatensatz[i].getFeld(name);
-				if (x != Feld.NULL_FELD) {
-					return x;
-				}
-			} catch (IllegalArgumentException e) {
-				continue;
+			Feld x = teildatensatz[i].getFeld(name);
+			if (x != Feld.NULL_FELD) {
+				return x;
 			}
 		}
+		LOG.debug("Feld \"{}\" not found in {}.", name, this);
 		return null;
 	}
 
@@ -390,20 +413,42 @@ public abstract class Satz {
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 */
-	public Feld getFeld(final String name) throws IllegalArgumentException {
-		for (int i = 0; i < teildatensatz.length; i++) {
-			try {
-				Feld x = teildatensatz[i].getFeld(name);
-				if (x != Feld.NULL_FELD) {
-					return x;
-				}
-			} catch (IllegalArgumentException e) {
-				continue;
-			}
-		}
-		throw new IllegalArgumentException("Feld \"" + name + "\" nicht in " + this.toShortString()
-		        + " vorhanden!");
+	public Feld getFeld(final String name) {
+		return this.getFeld(new Bezeichner(name));
 	}
+
+    /**
+     * Fraegt ab, ob das entsprechende Feld vorhanden ist.
+     *
+     * @param bezeichner gewuenschter Bezeichner des Feldes
+     * @return true / false
+     */
+    public boolean hasFeld(final Bezeichner bezeichner) {
+        for (int i = 0; i < teildatensatz.length; i++) {
+            if (teildatensatz[i].hasFeld(bezeichner)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Liefert das gewuenschte Feld.
+     *
+     * @param bezeichner gewuenschter Bezeichner des Feldes
+     * @return das gesuchte Feld
+     * @throws IllegalArgumentException falls es das Feld nicht gibt
+     */
+    public Feld getFeld(final Bezeichner bezeichner) {
+        for (int i = 0; i < teildatensatz.length; i++) {
+            Feld x = teildatensatz[i].getFeld(bezeichner);
+            if (x != Feld.NULL_FELD) {
+                return x;
+            }
+        }
+        throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
+                + " vorhanden!");
+    }
 
 	/**
 	 * Liefert den Inhalt des gewuenschten Feldes.
@@ -453,11 +498,32 @@ public abstract class Satz {
 	/**
 	 * Liefert die Satzart zurueck.
 	 *
-	 * @since 0.3
 	 * @return die Satzart als int
+     * @since 0.3
 	 */
 	public final int getSatzart() {
 		return this.satzart.toInt();
+	}
+
+	/**
+	 * Liefert den Satz-Typ zurueck. Der Satz-Typ ist eine Zusammenfassung aus
+	 * Satzart und Sparte.
+	 *
+	 * @return den Satz-Typ
+	 * @since 1.0
+	 */
+	public final SatzNummer getSatzTyp() {
+	    if (this.hasWagnisart()) {
+	        String wagnisart = this.getWagnisart();
+	        if (StringUtils.isBlank(wagnisart)) {
+	            return new SatzNummer(this.getSatzart(), this.getSparte());
+	        }
+            return new SatzNummer(this.getSatzart(), this.getSparte(), Integer.parseInt(wagnisart));
+	    } else if (this.hasSparte()) {
+	        return new SatzNummer(this.getSatzart(), this.getSparte());
+	    } else {
+	        return new SatzNummer(this.getSatzart());
+	    }
 	}
 
 	/**
@@ -469,7 +535,18 @@ public abstract class Satz {
 	 */
 	public boolean hasSparte() {
 	    Feld sparte = this.getFeld(Feld1bis7.SPARTE);
-	    return ((sparte != Feld.NULL_FELD) && !sparte.isEmpty());
+	    return (sparte != Feld.NULL_FELD) && !sparte.isEmpty();
+	}
+
+	/**
+     * Schaut nach einem Feld "WAGNISART" und liefert true zurueck, falls es
+     * existiert.
+     *
+     * @since 1.0
+     * @return true, falls Wagnisart-Feld vorhanden ist
+	 */
+	public boolean hasWagnisart() {
+	    return this.hasFeld(new Bezeichner(Bezeichner.NAME_WAGNISART));
 	}
 
 	/**
@@ -484,6 +561,22 @@ public abstract class Satz {
 	    NumFeld sparte = (NumFeld) this.getFeld(Feld1bis7.SPARTE);
 	    return sparte.toInt();
 	}
+
+    /**
+     * Liefert den Inhalt des Wagnisart-Felds. Vorher sollte allerdings mittels
+     * {@link #hasWagnisart()} geprueft werden, ob der Satz ein Wagnisart-Feld
+     * besitzt.
+     * <p>
+     * Anmerkung: Vor 1.0 war diese Methode noch in der Datensatz-Klasse
+     * beheimatet.
+     * </p>
+     *
+     * @return die Wagnisart
+     */
+    public final String getWagnisart() {
+        Feld wagnisart = this.getFeld(Bezeichner.NAME_WAGNISART);
+        return wagnisart.getInhalt();
+    }
 
 	/**
      * Exportiert den Satz.
@@ -551,7 +644,7 @@ public abstract class Satz {
 		for (int i = 0; i < teildatensatz.length; i++) {
 			String input = s.substring(i * satzlength);
 			if (input.trim().isEmpty()) {
-				log.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur " + i
+				LOG.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur " + i
 				        + " Teildatensaetze vorgefunden");
 				this.removeAllTeildatensaetze(i + 1);
 				break;
@@ -597,7 +690,7 @@ public abstract class Satz {
 				}
 			}
 		} catch (StringIndexOutOfBoundsException e) {
-			log.trace("end of string \"" + s + "\" reached", e);
+			LOG.trace("end of string \"" + s + "\" reached", e);
 		}
 		return satzlength;
 	}
@@ -643,13 +736,12 @@ public abstract class Satz {
 		for (int i = 0; i < teildatensatz.length; i++) {
             reader.skipNewline();
 			if (!matchesNextTeildatensatz(reader)) {
-				log.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
+				LOG.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
 				        + ", but Satzart or Sparte or Wagnisart or TeildatensatzNummer has changed");
 				break;
 			}
 			importFrom(reader, cbuf, i * 257);
 			cbuf[i * 257 + 256] = '\n';
-//			reader.skipNewline();
 		}
 		importFrom(new String(cbuf));
 	}
@@ -670,7 +762,7 @@ public abstract class Satz {
             int art = readSatzart(reader);
             return art == this.getSatzart();
         } catch (EOFException ex) {
-            log.info("No next teildatensatz available because of " + ex.getMessage());
+            LOG.info("No next teildatensatz:", ex);
             return false;
         }
 	}
@@ -693,7 +785,6 @@ public abstract class Satz {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static int readSatzart(final PushbackLineNumberReader reader) throws IOException {
-//	    reader.skipNewline();
         reader.skipWhitespace();
 		char[] cbuf = new char[4];
 		importFrom(reader, cbuf);
@@ -722,7 +813,7 @@ public abstract class Satz {
 		if (this.teildatensatz != null) {
 			for (int i = 0; i < teildatensatz.length; i++) {
 				if (!teildatensatz[i].isValid()) {
-					log.info("Teildatensatz " + (i + 1) + " is invalid");
+					LOG.info("Teildatensatz " + (i + 1) + " is invalid");
 					return false;
 				}
 			}
@@ -759,10 +850,9 @@ public abstract class Satz {
 	@Override
 	public final String toString() {
 		try {
-			return "Satzart " + this.satzart.getInhalt() + " ("
-			        + StringUtils.abbreviate(this.toLongString(), 63) + ")";
+            return this.toShortString() + " (" + StringUtils.abbreviate(this.toLongString(), 47) + ")";
 		} catch (RuntimeException shouldNeverHappen) {
-			log.error("shit happens in toString()", shouldNeverHappen);
+			LOG.error("shit happens in toString()", shouldNeverHappen);
 			return super.toString();
 		}
 	}
@@ -786,44 +876,28 @@ public abstract class Satz {
 		try {
 			this.export(swriter);
 		} catch (IOException canthappen) {
-			log.warn(canthappen + " ignored", canthappen);
+			LOG.warn(canthappen + " ignored", canthappen);
 			swriter.write(canthappen.getLocalizedMessage());
 		}
 		return swriter.toString();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Zwei Saetze sind gleich, wenn sie die gleichen Daten besitzen. Die
+	 * Idee dabei ist, dass wir die beiden Saetze exportieren und dann das
+	 * Resultat vergleichen.
+	 *
+	 * @param obj der andere Satz
+	 * @return true, wenn beide Saetze gleich sind
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(final Object other) {
-		try {
-			return this.equals((Satz) other);
-		} catch (ClassCastException cce) {
-			return false;
-		}
-	}
-
-	/**
-	 * Equals.
-	 *
-	 * @param other the other
-	 * @return true, if successful
-	 */
-	public final boolean equals(final Satz other) {
-		if (other == null) {
-			return false;
-		}
-		if (this.getSatzart() != other.getSatzart()) {
-			return false;
-		}
-		for (int i = 0; i < teildatensatz.length; i++) {
-			if (!this.teildatensatz[i].equals(other.teildatensatz[i])) {
-				return false;
-			}
-		}
-		return true;
+	public boolean equals(final Object obj) {
+	    if (!(obj instanceof Satz)) {
+	        return false;
+	    }
+	    Satz other = (Satz) obj;
+        return this.toLongString().equals(other.toLongString());
 	}
 
 	/*
@@ -832,7 +906,7 @@ public abstract class Satz {
 	 */
 	@Override
 	public int hashCode() {
-		return this.toLongString().hashCode();
+		return this.getSatzart();
 	}
 
 	// /// Enum-Behandlung und Auswertung der Meta-Infos ///////////////////
@@ -890,7 +964,7 @@ public abstract class Satz {
     private static void setSparteFor(final Teildatensatz tds, final int sparte) {
         Feld spartenFeld = tds.getFeld(Feld1bis7.SPARTE);
         if (spartenFeld == Feld.NULL_FELD) {
-            spartenFeld = new NumFeld(SPARTE, 3, 11);
+            spartenFeld = new NumFeld(new Bezeichner(NAME_SPARTE), 3, 11);
             tds.add(spartenFeld);
         }
         spartenFeld.setInhalt(sparte);
@@ -946,7 +1020,7 @@ public abstract class Satz {
 	 * @return the feld info list
 	 */
 	private static List<Enum<?>> getAsList(final Enum<?>[] felder) {
-		ArrayList<Enum<?>> feldList = new ArrayList<Enum<?>>(felder.length);
+		List<Enum<?>> feldList = new ArrayList<Enum<?>>(felder.length);
 		for (int i = 0; i < felder.length; i++) {
 			String name = felder[i].name();
 			try {
@@ -970,7 +1044,7 @@ public abstract class Satz {
 	 * wird das Feld "Satznummer" vorbelegt, falls es in den uebergebenen
 	 * Feldern vorhanden ist.
 	 * <p>
-	 * FIXME: Vorsatz wird noch nicht richtig behandelt, da die ersten 6 Felder
+	 * TODO: Vorsatz wird noch nicht richtig behandelt, da die ersten 6 Felder
 	 * hier etwas anders behandelt wird.
 	 * </p>
 	 *
@@ -980,8 +1054,8 @@ public abstract class Satz {
 	protected static void add(final Enum<?> feldX, final Teildatensatz tds) {
 		FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
 		Feld feld = Feld.createFeld(feldX, info);
-		if (info.nr() < 8) {      // FIXME: diese Abfrage ist eigentlich unnoetig
-			log.debug("using default settings for " + feld);
+		if (info.nr() < 7) {      // TODO: diese Abfrage ist eigentlich unnoetig
+			LOG.debug("using default settings for " + feld);
 		} else {
 			tds.add(feld);
 			if (isSatznummer(feldX)) {

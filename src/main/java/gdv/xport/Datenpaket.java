@@ -12,10 +12,10 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.ABSENDER;
-import static gdv.xport.feld.Bezeichner.ADRESSAT;
-import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_BIS;
-import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDATUM_ZEITRAUM_VOM;
+import static gdv.xport.feld.Bezeichner.NAME_ABSENDER;
+import static gdv.xport.feld.Bezeichner.NAME_ADRESSAT;
+import static gdv.xport.feld.Bezeichner.NAME_ERSTELLUNGSDATUM_ZEITRAUM_BIS;
+import static gdv.xport.feld.Bezeichner.NAME_ERSTELLUNGSDATUM_ZEITRAUM_VOM;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
@@ -36,16 +36,19 @@ import gdv.xport.util.URLReader;
 
 import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.Writer;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -57,8 +60,8 @@ import net.sf.oval.Validator;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Ein Datenpaket besteht aus {@link Vorsatz}, mehrere {@link Datensatz}-Elementen
@@ -69,10 +72,10 @@ import org.apache.commons.logging.LogFactory;
  */
 public final class Datenpaket {
 
-	private static final Log log = LogFactory.getLog(Datenpaket.class);
+	private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
 	private final Vorsatz vorsatz = new Vorsatz();
 	private List<Datensatz> datensaetze = new ArrayList<Datensatz>();
-	private final Nachsatz nachsatz = new Nachsatz();
+	private Nachsatz nachsatz = new Nachsatz();
 
 	/**
 	 * Wenn man den Default-Konstruktor verwendet, sollte man vorher die
@@ -88,8 +91,8 @@ public final class Datenpaket {
 	 * Falls die VU-Nummer noch nicht konfiguriert ist, kann man zu diesem
 	 * Konstruktor greifen.
 	 *
-	 * @since 0.3
 	 * @param vuNummer die Nummer des Versicherungsunternehmens (VU)
+	 * @since 0.3
 	 */
 	public Datenpaket(final String vuNummer) {
 		Datum heute = Datum.heute();
@@ -97,7 +100,7 @@ public final class Datenpaket {
 		this.setErstellungsDatumBis(heute);
 		this.setVuNummer(vuNummer);
 		this.setAbsender(vuNummer);
-		log.debug(this + " created.");
+		LOG.debug(this + " created.");
 	}
 
 	/**
@@ -115,14 +118,16 @@ public final class Datenpaket {
 	/**
 	 * Dazu verwenden wir den Vorsatz, um die VU-Nummer zu bestimmen.
 	 *
-	 * @since 0.3
 	 * @return VU-Nummer aus dem Vorsatz
+	 * @since 0.3
 	 */
 	public String getVuNummer() {
 		return this.vorsatz.getVuNummer();
 	}
 
 	/**
+	 * Gets the datensaetze.
+	 *
 	 * @return the datensaetze
 	 */
 	public List<Datensatz> getDatensaetze() {
@@ -130,6 +135,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Sets the datensaetze.
+	 *
 	 * @param datensaetze the datensaetze to set
 	 */
 	public void setDatensaetze(final List<Datensatz> datensaetze) {
@@ -137,6 +144,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the vorsatz.
+	 *
 	 * @return the vorsatz
 	 */
 	public Vorsatz getVorsatz() {
@@ -144,6 +153,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the nachsatz.
+	 *
 	 * @return the nachsatz
 	 */
 	public Nachsatz getNachsatz() {
@@ -151,6 +162,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Fuegt den uebergebenen Datensatz hinzu.
+	 *
 	 * @param datensatz Datensatz, der hinzugefuegt werden soll
 	 */
 	public void add(final Datensatz datensatz) {
@@ -159,24 +172,50 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Export.
+	 *
 	 * @param file Datei, in die exportiert werden soll
 	 * @throws IOException falls was schiefgelaufen ist (z.B. Platte voll)
 	 */
 	public void export(final File file) throws IOException {
-		Writer writer = new FileWriter(file);
-		try {
-			export(writer);
-		} finally {
-			writer.close();
-		}
+	    export(file, Charset.defaultCharset());
 	}
+
+    /**
+     * Export.
+     *
+     * @param file Datei, in die exportiert werden soll
+     * @param encoding z.B. "ISO-8859-1"
+     * @throws IOException falls was schiefgelaufen ist (z.B. Platte voll)
+     * @since 1.0
+     */
+    public void export(final File file, final String encoding) throws IOException {
+        export(file, Charset.forName(encoding));
+    }
+
+    /**
+     * Export.
+     *
+     * @param file Datei, in die exportiert werden soll
+     * @param encoding z.B. "ISO-8859-1"
+     * @throws IOException falls was schiefgelaufen ist (z.B. Platte voll)
+     * @since 1.0
+     */
+    public void export(final File file, final Charset encoding) throws IOException {
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file), encoding);
+        try {
+            export(writer);
+        } finally {
+            writer.close();
+        }
+    }
 
 	/**
 	 * Falls wir einen Stream haben, koennen wir diese Methode benutzen.
 	 *
-	 * @since 0.3
 	 * @param ostream z.B. System.out
 	 * @throws IOException falls was schiefgelaufen ist
+	 * @since 0.3
 	 */
 	public void export(final OutputStream ostream) throws IOException {
 		Writer writer = new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING);
@@ -186,6 +225,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Export.
+	 *
 	 * @param writer wird zum Export verwendet
 	 * @throws IOException falls was schiefgelaufen ist
 	 */
@@ -196,14 +237,17 @@ public final class Datenpaket {
 			datensatz.export(writer);
 		}
 		nachsatz.export(writer);
-		log.info(datensaetze.size() + " Datensaetze exported.");
+		LOG.info(datensaetze.size() + " Datensaetze exported.");
 	}
 
 	/**
-	 * @since 0.3
+	 * Damit kann direkt ueber das Netz importiert werden. Gibt man eine
+	 * File-URL (oder File) an, kann man damit auch direkt aus einer Datei importieren.
+	 *
 	 * @param url z.B.
-	 * http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+	 *        http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
 	 * @throws IOException wenn z.B. das Netz weg ist
+	 * @since 0.3
 	 */
 	public void importFrom(final URL url) throws IOException {
 		URLReader urlReader = new URLReader(url);
@@ -212,9 +256,11 @@ public final class Datenpaket {
 	}
 
 	/**
-	 * @since 0.3
+	 * Importiert direkt aus einem String.
+	 *
 	 * @param content Inhalt der eingelesen wird
 	 * @throws IOException sollte eigentlich nicht vorkommen
+	 * @since 0.3
 	 */
 	public void importFrom(final String content) throws IOException {
 		Reader reader = new StringReader(content);
@@ -223,6 +269,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Import from.
+	 *
 	 * @param istream z.B. Sytem.in
 	 * @throws IOException falls es Fehler beim Lesen gibt
 	 */
@@ -232,12 +280,13 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Import from.
+	 *
 	 * @param reader hiervon wird importiert
 	 * @throws IOException falls was schiefgelaufen ist
 	 */
 	public void importFrom(final Reader reader) throws IOException {
-//	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(reader, 256);
-      PushbackLineNumberReader lnr = new PushbackLineNumberReader(new RecordReader(reader), 256);
+	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(new RecordReader(reader), 256);
 		try {
 		    importFrom(lnr);
 		} catch (EOFException eofe) {
@@ -259,39 +308,63 @@ public final class Datenpaket {
 	public void importFrom(final PushbackLineNumberReader reader) throws IOException {
 		this.vorsatz.importFrom(reader);
 		while (true) {
-			int satzart = Satz.readSatzart(reader);
-			log.debug("reading Satzart " + satzart + "...");
-			if (satzart == 9999) {
-				break;
-			}
-			int sparte = Datensatz.readSparte(reader);
-			WagnisartLeben wagnisart = WagnisartLeben.NULL;
-			TeildatensatzNummer teildatensatzNummer = TeildatensatzNummer.NULL;
-			if (sparte == 10 && satzart > 210) {
-				wagnisart = Datensatz.readWagnisart(reader);
-				if (wagnisart != WagnisartLeben.NULL) {
-					// wagnisart 0 hat immer ein Leerzeichen als
-					// teildatenSatzmummer. Nur größer 0
-					// besitzt per Definition Werte.
-					teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
-				}
-			}
-			Datensatz satz = SatzFactory.getDatensatz(new SatzNummer(satzart, sparte, wagnisart
-			        .getCode(), teildatensatzNummer.getCode()));
-			satz.importFrom(reader);
-			this.add(satz);
+		    Satz satz = importSatz(reader);
+		    if (satz.getSatzart() == 9999) {
+		        this.nachsatz = (Nachsatz) satz;
+		        break;
+		    }
+		    this.add((Datensatz) satz);
 		}
-		this.nachsatz.importFrom(reader);
+	}
+
+	/**
+	 * Importiert einen einzelnen Satz. Dies kann entweder ein Datensatz, oder
+	 * aber der Nachsatz sein.
+	 *
+	 * @param reader the reader
+	 * @return the satz
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public static Satz importSatz(final PushbackLineNumberReader reader) throws IOException {
+        int satzart = Satz.readSatzart(reader);
+        LOG.debug("reading Satzart " + satzart + "...");
+        if (satzart == 9999) {
+            Nachsatz nachsatz = new Nachsatz();
+            nachsatz.importFrom(reader);
+            return nachsatz;
+        } else {
+            return importDatensatz(reader, satzart);
+        }
+	}
+
+	private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart) throws IOException {
+        int sparte = Datensatz.readSparte(reader);
+        WagnisartLeben wagnisart = WagnisartLeben.NULL;
+        TeildatensatzNummer teildatensatzNummer = TeildatensatzNummer.NULL;
+        if (sparte == 10 && satzart > 210) {
+            wagnisart = Datensatz.readWagnisart(reader);
+            if (wagnisart != WagnisartLeben.NULL) {
+                // wagnisart 0 hat immer ein Leerzeichen als
+                // teildatenSatzmummer. Nur groesser 0
+                // besitzt per Definition Werte.
+                teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
+            }
+        }
+        Datensatz satz = SatzFactory.getDatensatz(new SatzNummer(satzart, sparte, wagnisart
+                .getCode(), teildatensatzNummer.getCode()));
+        satz.importFrom(reader);
+        return satz;
 	}
 
 	/**
 	 * Importieren einer Datei.
 	 *
-	 * @since 0.2
 	 * @param file Import-Datei
 	 * @throws IOException falls was schiefgelaufen ist
+     * @since 0.2
 	 */
 	public void importFrom(final File file) throws IOException {
+	    importFrom(file, Charset.defaultCharset());
 		Reader reader = new FileReader(file);
 		try {
 			this.importFrom(reader);
@@ -300,7 +373,38 @@ public final class Datenpaket {
 		}
 	}
 
+    /**
+     * Importieren einer Datei.
+     *
+     * @param file Import-Datei
+     * @param encoding z.B. "ISO-8859-1"
+     * @throws IOException falls was schiefgelaufen ist
+     * @since 1.0
+     */
+    public void importFrom(final File file, final String encoding) throws IOException {
+        importFrom(file, Charset.forName(encoding));
+    }
+
+    /**
+     * Importieren einer Datei.
+     *
+     * @param file Import-Datei
+     * @param encoding z.B. "ISO-8859-1"
+     * @throws IOException falls was schiefgelaufen ist
+     * @since 1.0
+     */
+    public void importFrom(final File file, final Charset encoding) throws IOException {
+        Reader reader = new InputStreamReader(new FileInputStream(file), encoding);
+        try {
+            this.importFrom(reader);
+        } finally {
+            reader.close();
+        }
+    }
+
 	/**
+	 * Sets the erstellungs datum von.
+	 *
 	 * @param d Erstellungsdatum von
 	 */
 	public void setErstellungsDatumVon(final Datum d) {
@@ -309,13 +413,17 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the erstellungs datum von.
+	 *
 	 * @return Erstellungsdatum bis
 	 */
 	public Datum getErstellungsDatumVon() {
-		return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDATUM_ZEITRAUM_VOM);
+		return (Datum) this.vorsatz.getFeld(NAME_ERSTELLUNGSDATUM_ZEITRAUM_VOM);
 	}
 
 	/**
+	 * Sets the erstellungs datum bis.
+	 *
 	 * @param d Erstellungsdatum bis
 	 */
 	public void setErstellungsDatumBis(final Datum d) {
@@ -324,13 +432,17 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the erstellungs datum bis.
+	 *
 	 * @return Erstellungdatum bis
 	 */
 	public Datum getErstellungsDatumBis() {
-		return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDATUM_ZEITRAUM_BIS);
+		return (Datum) this.vorsatz.getFeld(NAME_ERSTELLUNGSDATUM_ZEITRAUM_BIS);
 	}
 
 	/**
+	 * Sets the absender.
+	 *
 	 * @param s neuer Absender
 	 */
 	public void setAbsender(final String s) {
@@ -339,6 +451,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the absender.
+	 *
 	 * @return Absender
 	 */
 	public String getAbsender() {
@@ -349,10 +463,12 @@ public final class Datenpaket {
 	 * @return das komplette Absender-Feld
 	 */
 	private Feld getAbsenderFeld() {
-		return this.vorsatz.getFeld(ABSENDER);
+		return this.vorsatz.getFeld(NAME_ABSENDER);
 	}
 
 	/**
+	 * Sets the adressat.
+	 *
 	 * @param s Adressat
 	 */
 	public void setAdressat(final String s) {
@@ -361,6 +477,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the adressat.
+	 *
 	 * @return Adressat
 	 */
 	public String getAdressat() {
@@ -371,10 +489,12 @@ public final class Datenpaket {
 	 * @return das komplette Adressat-Feld
 	 */
 	private Feld getAdressatFeld() {
-		return this.vorsatz.getFeld(ADRESSAT);
+		return this.vorsatz.getFeld(NAME_ADRESSAT);
 	}
 
 	/**
+	 * Sets the vermittler.
+	 *
 	 * @param s Vermittler
 	 */
 	public void setVermittler(final String s) {
@@ -383,6 +503,8 @@ public final class Datenpaket {
 	}
 
 	/**
+	 * Gets the vermittler.
+	 *
 	 * @return Vermittler
 	 */
 	public String getVermittler() {
@@ -400,25 +522,25 @@ public final class Datenpaket {
 	 */
 	public boolean isValid() {
 		if (!this.vorsatz.isValid()) {
-			log.info(this.vorsatz + " is not valid");
+			LOG.info(this.vorsatz + " is not valid");
 			return false;
 		}
 		if (!this.nachsatz.isValid()) {
-			log.info(this.nachsatz + " is not valid");
+			LOG.info(this.nachsatz + " is not valid");
 			return false;
 		}
 		for (Satz satz : this.datensaetze) {
 			if (!satz.isValid()) {
-				log.info(satz + " is not valid");
+				LOG.info(satz + " is not valid");
 				return false;
 			}
 		}
 		if (this.validateFolgenummern().size() > 0) {
-			log.info("Folgenummern stimmen nicht");
+			LOG.info("Folgenummern stimmen nicht");
 			return false;
 		}
 		if (this.validateVUNummer().size() > 0) {
-			log.info("VU-Nummer is not set / not valid");
+			LOG.info("VU-Nummer is not set / not valid");
 			return false;
 		}
 		return true;

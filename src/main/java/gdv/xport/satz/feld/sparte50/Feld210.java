@@ -20,11 +20,7 @@ package gdv.xport.satz.feld.sparte50;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 
@@ -688,7 +684,7 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 2,
-            nr = 32,
+            nr = 33,
             type = NumFeld.class,
             anzahlBytes = 1,
             byteAdresse = 222
@@ -700,7 +696,7 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 2,
-            nr = 32,
+            nr = 34,
             type = NumFeld.class,
             anzahlBytes = 6,
             byteAdresse = 223
@@ -712,7 +708,7 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 2,
-            nr = 32,
+            nr = 35,
             type = NumFeld.class,
             anzahlBytes = 1,
             byteAdresse = 229
@@ -720,14 +716,37 @@ public enum Feld210 {
     STAERKEEINHEIT,
 
     /**
+     * Wechselkennzeichen W-AKZ.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 36,
+            type = Zeichen.class,
+            byteAdresse = 230
+    )
+    WECHSELKENNZEICHEN_W_AKZ,
+
+    /**
+     * Rolle W-AKZ.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 37,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 231
+    )
+    ROLLE_W_AKZ,
+
+    /**
      * Staerkeeinheit.
      */
     @FeldInfo(
             teildatensatz = 2,
-            nr = 32,
+            nr = 38,
             type = AlphaNumFeld.class,
-            anzahlBytes = 26,
-            byteAdresse = 230
+            anzahlBytes = 23,
+            byteAdresse = 233
     )
     LEERSTELLEN,
 
@@ -736,11 +755,11 @@ public enum Feld210 {
      */
     @FeldInfo(
           teildatensatz = 2,
-          nr = 33,
+          nr = 39,
           type = Zeichen.class,
           anzahlBytes = 1,
           byteAdresse = 256
     )
-    SATZNUMMER2,
+    SATZNUMMER2
 
 }

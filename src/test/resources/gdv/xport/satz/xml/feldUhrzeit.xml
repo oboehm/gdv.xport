@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feld referenz="BN-2003.02.11.22.49.55.506">
+	<name>Uhrzeit</name>
+	<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+	<letzteAenderung>25.01.2006 17:39:30</letzteAenderung>
+	<minimaleLaenge>6</minimaleLaenge>
+	<bytes>6</bytes>
+	<datentyp combobox="datentypbox">Uhrzeit</datentyp>
+	<nachkommastellen />
+	<bemerkung />
+	<wertetabelle>
+		<name />
+		<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+		<letzteAenderung>25.01.2006 17:39:30</letzteAenderung>
+		<technischerName />
+		<bemerkung />
+		<anlagennummer />
+		<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+		<alleWerteDerTabelle />
+	</wertetabelle>
+</feld>

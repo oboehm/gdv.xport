@@ -20,8 +20,9 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.SATZNUMMER;
+import static gdv.xport.feld.Bezeichner.NAME_SATZNUMMER;
 import gdv.xport.config.Config;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
@@ -30,12 +31,13 @@ import gdv.xport.io.ImportException;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.*;
+import java.util.Map.Entry;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
@@ -44,11 +46,19 @@ import org.apache.commons.logging.LogFactory;
  * @author ob@aosd.de
  * @since 04.10.2009
  */
-public final class Teildatensatz extends Satz {
+public class Teildatensatz extends Satz {
 
-    private static final Log log = LogFactory.getLog(Teildatensatz.class);
-    private final Map<Object, Feld> datenfelder = new HashMap<Object, Feld>();
-    private final Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
+    /** The Constant log. */
+    private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
+
+    /** Diese Map dient fuer den Zugriff ueber den Namen. */
+    private final Map<Bezeichner, Feld> datenfelder = new HashMap<Bezeichner, Feld>();
+
+    /** Dieses Set dient zum Zugriff ueber die Nummer. */
+    private final SortedSet<Feld> sortedFelder = new TreeSet<Feld>();
+
+    /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
+    private final Zeichen satznummer = new Zeichen(new Bezeichner(NAME_SATZNUMMER), 256);
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
@@ -62,6 +72,9 @@ public final class Teildatensatz extends Satz {
     }
 
     /**
+     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart und
+     * Nummer.
+     *
      * @param satzart z.B. 1 (Vorsatz)
      * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
      */
@@ -71,7 +84,8 @@ public final class Teildatensatz extends Satz {
     }
 
     /**
-     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
+     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart
+     * und Nummer.
      *
      * @param satzart z.B. 100
      * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
@@ -81,6 +95,26 @@ public final class Teildatensatz extends Satz {
         initSatznummer(nr);
     }
 
+    /**
+     * Dies ist der Copy-Constructor, falls man eine Kopie eines
+     * Teildatensatzes braucht.
+     *
+     * @param other der andere Teildatensatz
+     */
+    public Teildatensatz(final Teildatensatz other) {
+        this(other.getSatzart(), other.getNummer().toInt());
+        for (Entry<Bezeichner, Feld> entry : other.datenfelder.entrySet()) {
+            Feld copy = (Feld) entry.getValue().clone();
+            this.datenfelder.put(entry.getKey(), copy);
+            this.sortedFelder.add(copy);
+        }
+    }
+
+    /**
+     * Inits the satznummer.
+     *
+     * @param nr the nr
+     */
     private void initSatznummer(final int nr) {
         if ((nr < 1) || (nr > 9)) {
             throw new IllegalArgumentException("Satznummer (" + nr
@@ -90,25 +124,41 @@ public final class Teildatensatz extends Satz {
         this.initDatenfelder();
     }
 
+    /* (non-Javadoc)
+     * @see gdv.xport.satz.Satz#createTeildatensaetze(int)
+     */
     @Override
     protected void createTeildatensaetze(final int n) {
         assert n == 0 : "ein Teildatensatz hat keine weiteren Teildatensaetze";
     }
 
+    /**
+     * Inits the datenfelder.
+     */
     private void initDatenfelder() {
-        datenfelder.put("Satzart", this.getSatzartFeld());
-        datenfelder.put("Satznummer", this.satznummer);
+        this.add(this.getSatzartFeld());
+        this.add(this.satznummer);
     }
 
     /**
      * Liefert die Satznummer zurueck.
      *
-     * @since 0.2
      * @return Satznummer als einzelnes Zeichen ('1' ... '9')
+     * @since 0.2
      */
     public Zeichen getNummer() {
         return this.satznummer;
     }
+
+//    /**
+//     * Setzt die Satznummer.
+//     *
+//     * @param nr die neue Satznummer
+//     */
+//    public void setNummer(final int nr) {
+//        this.satznummer.setInhalt(nr);
+//        this.getFeld(new Bezeichner(SATZNUMMER)).setInhalt(nr);
+//    }
 
     /**
      * Fuegt das angegebene Feld in den Teildatensatz ein.
@@ -124,20 +174,26 @@ public final class Teildatensatz extends Satz {
     public void add(final Feld feld) {
         for (Iterator<Feld> iterator = datenfelder.values().iterator(); iterator.hasNext();) {
             Feld f = iterator.next();
-            if (feld.overlapsWith(f)) {
+            if (!feld.equals(f) && feld.overlapsWith(f)) {
                 if (isSatznummer(f)) {
                     remove(f);
-                    log.debug(f + " is removed from " + this);
+                    LOG.debug(f + " is removed from " + this);
                     break;
                 } else {
                     throw new IllegalArgumentException("conflict: " + feld + " overlaps with " + f);
                 }
             }
         }
-        String name = feld.getBezeichnung();
-        datenfelder.put(name, feld);
+        datenfelder.put(feld.getBezeichner(), feld);
+        sortedFelder.add(feld);
     }
 
+    /**
+     * Checks if is satznummer.
+     *
+     * @param feld the feld
+     * @return true, if is satznummer
+     */
     private static boolean isSatznummer(final Feld feld) {
         if ((feld.getByteAdresse() == 256) && (feld.getAnzahlBytes() == 1)) {
             String bezeichnung = feld.getBezeichnung();
@@ -157,44 +213,62 @@ public final class Teildatensatz extends Satz {
     }
 
     /**
-     * Falls ein Feld zuviel gesetzt wurde, kann es mit 'remove" wieder
-     * entfernt werden.
+     * Falls ein Feld zuviel gesetzt wurde, kann es mit 'remove" wieder entfernt
+     * werden.
      *
-     * @param name Name des Feldes
+     * @param bezeichner der Feld-Beezeichner
+     * @since 1.0
      */
     @Override
-    public void remove(final String name) {
-        datenfelder.remove(name);
+    public void remove(final Bezeichner bezeichner) {
+        this.datenfelder.remove(bezeichner);
+    }
+
+    /**
+     * Setzt das gewuenschte Feld. Falls es nicht vorhanden ist, wird analog
+     * zur Oberklasse eine {@link IllegalArgumentException} geworfen.
+     *
+     * @param name der Name des Feldes
+     * @param value der gewuenschte Werte als String
+     * @see Satz#set(String, String)
+     */
+    @Override
+    public void set(final String name, final String value) {
+        Feld x = this.getFeld(name);
+        if (x == Feld.NULL_FELD) {
+            throw new IllegalArgumentException("Feld \"" + name + "\" not found");
+        }
+        x.setInhalt(value);
     }
 
     /**
      * Verpasst dem angegebenen Feld einen Namen.
      *
      * @param feld ein Feld
+     * @deprecated wird ab 1.2 nicht mehr unterstuetzt
      */
+    @Deprecated
     public void set(final Feld feld) {
         String name = feld.getBezeichnung();
         this.set(name, feld);
     }
 
     /**
+     * Verpasst dem angegebenen Feld einen Namen.
+     *
      * @param name Name des Felds
      * @param feld Feld
+     * @deprecated wird ab 1.2 nicht mehr unterstuetzt
      */
+    @Deprecated
     public void set(final String name, final Feld feld) {
-        datenfelder.put(name, feld);
+        datenfelder.put(new Bezeichner(name), feld);
     }
 
     /**
      * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
      * benutzt, um das Feld zu bestimmen. Dazu werden auch die Konstanten in
      * {@link gdv.xport.feld.Bezeichner} verwendet.
-     * <p>
-     * TODO: Eigentlich waere es sinnvoller, hier die restlichen Annotationen
-     * auszuwerten, da der Name nur auf Konvention beruht und etwas wackelig
-     * ist (oboehm, 1-Apr-2013).
-     *
-     * </p>
      *
      * @param feldX gewuenschtes Feld-Element
      * @return das gesuchte Feld
@@ -202,10 +276,7 @@ public final class Teildatensatz extends Satz {
      */
     @Override
     public Feld getFeld(final Enum<?> feldX) throws IllegalArgumentException {
-        Feld found = datenfelder.get(feldX);
-        if (found == null) {
-            found = getFeld(feldX.name());
-        }
+        Feld found = getFeld(feldX.name());
         if (found == Feld.NULL_FELD) {
             found = getFeld(Feld.toBezeichnung(feldX));
         }
@@ -215,17 +286,27 @@ public final class Teildatensatz extends Satz {
     /**
      * Liefert das gewuenschte Feld.
      *
-     * @param name gewuenschter Bezeichner des Feldes
+     * @param bezeichner gewuenschter Bezeichner des Feldes
      * @return das gesuchte Feld
      */
     @Override
-    public Feld getFeld(final String name) {
-        Feld found = datenfelder.get(name);
+    public Feld getFeld(final Bezeichner bezeichner) {
+        Feld found = datenfelder.get(bezeichner);
         if (found == null) {
             return Feld.NULL_FELD;
         } else {
             return found;
         }
+    }
+
+    /**
+     * Liefert das Feld mit der gewuenschten Nummer zurueck.
+     *
+     * @param nr z.B. 1
+     * @return das Feld (z.B. mit der Satzart)
+     */
+    public Feld getFeld(final int nr) {
+        return (Feld) sortedFelder.toArray()[nr -1];
     }
 
     /**
@@ -236,18 +317,44 @@ public final class Teildatensatz extends Satz {
      * @since 0.9
      */
     public boolean hasFeld(final Enum<?> feldX) {
-        if (this.datenfelder.containsKey(feldX)) {
-            return true;
-        }
-        return this.datenfelder.containsKey(Feld.toBezeichnung(feldX));
+        return this.hasFeld(new Bezeichner(Feld.toBezeichnung(feldX)));
+    }
+
+    /**
+     * Fraegt ab, ob das entsprechende Feld vorhanden ist.
+     *
+     * @param bezeichner gewuenschter Bezeichner des Feldes
+     * @return true / false
+     * @see gdv.xport.satz.Satz#hasFeld(Bezeichner)
+     * @since 1.0
+     */
+    @Override
+    public boolean hasFeld(final Bezeichner bezeichner) {
+        return this.datenfelder.containsKey(bezeichner);
+    }
+
+    /**
+     * Ueberprueft, ob das uebergebene Feld vorhanden ist.
+     * <p>
+     * Anmerkung: Es wird nur der Name ueberprueft. D.h. es wird nicht
+     * ueberprueft, ob es evtl. einen Konflikt mit der Start- und End-Adresse
+     * gibt.
+     * </p>
+     *
+     * @param feld the feld
+     * @return true, if successful
+     * @since 1.0
+     */
+    public boolean hasFeld(final Feld feld) {
+        return this.datenfelder.containsKey(feld.getBezeichner());
     }
 
     /**
      * Liefert alle Felder in der Reihenfolge innerhalb des Teildatensatzes
      * zurueck.
      *
-     * @since 0.2
      * @return List der Felder (sortiert)
+     * @since 0.2
      */
     public Collection<Feld> getFelder() {
         return new TreeSet<Feld>(datenfelder.values());
@@ -271,7 +378,6 @@ public final class Teildatensatz extends Satz {
         for (int i = 0; i < 256; i++) {
             data.append(' ');
         }
-        datenfelder.keySet().iterator();
         for (Object key : datenfelder.keySet()) {
             Feld feld = datenfelder.get(key);
             int start = (feld.getByteAdresse() - 1) % 256;
@@ -310,7 +416,7 @@ public final class Teildatensatz extends Satz {
         }
         for (Feld feld : datenfelder.values()) {
             if (!feld.isValid()) {
-                log.info(feld + " is not valid");
+                LOG.info(feld + " is not valid");
                 return false;
             }
         }
@@ -328,47 +434,6 @@ public final class Teildatensatz extends Satz {
             violations.addAll(feld.validate());
         }
         return violations;
-    }
-
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Satz#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object other) {
-        if (other == null) {
-            return false;
-        }
-        try {
-            return this.equals((Teildatensatz) other);
-        } catch (ClassCastException cce) {
-            return false;
-        }
-    }
-
-    /**
-     * 2 Teildatensaetze sind gleich, wenn all ihre Felder gleich sind.
-     *
-     * @param other der andere Teildatensatz
-     * @return true, wenn beide Teildatensaetze gleich sind
-     */
-    public boolean equals(final Teildatensatz other) {
-        if (this.datenfelder.size() != other.datenfelder.size()) {
-            return false;
-        }
-        for (Feld feld : datenfelder.values()) {
-            if (!feld.equals(other.getFeld(feld.getBezeichnung()))) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Satz#hashCode()
-     */
-    @Override
-    public int hashCode() {
-        return this.getSatzart() + this.satznummer.getInhalt().hashCode();
     }
 
 }

@@ -18,17 +18,20 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 import net.sf.oval.ConstraintViolation;
 
-import org.apache.commons.logging.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import patterntesting.concurrent.junit.ParallelRunner;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * Testklasse fuer Datum-Klasse.
@@ -37,11 +40,18 @@ import patterntesting.concurrent.junit.ParallelRunner;
  * @since 24.10.2009
  * @version $Revision$
  */
-@RunWith(ParallelRunner.class)
-public class DatumTest {
+@RunWith(SmokeRunner.class)
+public final class DatumTest extends AbstractFeldTest {
 
-    /** The Constant log. */
-    private static final Log log = LogFactory.getLog(DatumTest.class);
+    private static final Logger LOG = LogManager.getLogger(DatumTest.class);
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
+     */
+    @Override
+    protected Feld getTestFeld() {
+        return Datum.heute();
+    }
 
     /**
      * Test method for {@link gdv.xport.feld.Datum#setInhalt(java.util.Date)}.
@@ -60,9 +70,9 @@ public class DatumTest {
     @Test(expected = IllegalStateException.class)
     public void testToDate() {
         Datum silvester = new Datum("Silvester", "31122009");
-        log.info("Silvester is at " + silvester.toDate());
+        LOG.info("Silvester is at " + silvester.toDate());
         Datum invalid = new Datum("invalid", "xxxxxxxx");
-        log.info("invalid date: " + invalid.toDate());
+        LOG.info("invalid date: " + invalid.toDate());
     }
 
     /**
@@ -110,7 +120,7 @@ public class DatumTest {
         assertTrue(datum + " is not a valid date!", datum.isInvalid());
         List<ConstraintViolation> violations = datum.validate();
         for (ConstraintViolation violation : violations) {
-            log.info(violation);
+            LOG.info(violation);
         }
         assertEquals(1, violations.size());
     }
@@ -175,7 +185,7 @@ public class DatumTest {
         Datum empty = new Datum("empty", "00000000");
         assertTrue(empty + " is empty", empty.isEmpty());
     }
-    
+
     /**
      * Test-Methode fuer {@link Datum#format()}.
      */

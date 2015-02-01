@@ -19,6 +19,9 @@
 package gdv.xport.util;
 
 /**
+ * Falls eine Satzart noch nicht registriert wurde, wird dies Exception hier
+ * geworfen.
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.2 (13.11.2009)
  */
@@ -27,10 +30,21 @@ public class NotRegisteredException extends RuntimeException {
     private static final long serialVersionUID = 20091113L;
 
     /**
+     * Instanziiert eine {@link NotRegisteredException}.
+     *
      * @param satzart Satzart, die nicht registriert wurde
      */
     public NotRegisteredException(final int satzart) {
         super("unregistered Satzart " + satzart);
+    }
+
+    /**
+     * Instanziiert eine {@link NotRegisteredException}.
+     *
+     * @param satzNr Satzart, die nicht registriert wurde
+     */
+    public NotRegisteredException(final SatzNummer satzNr) {
+        super("unregistered Satzart " + satzNr);
     }
 
 }

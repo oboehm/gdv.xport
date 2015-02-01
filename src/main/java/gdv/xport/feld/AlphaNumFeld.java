@@ -42,12 +42,31 @@ public class AlphaNumFeld extends Feld {
     }
 
     /**
+     * Legt ein neues alphanumerisches Feld an.
+     * <p>
+     * TODO: Bitte nicht mehr benutzen - wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Bezeichner
      * @param length Laenge in Bytes
      * @param start Start-Byte (beginnend bei 1)
+     * @deprecated durch {@link #AlphaNumFeld(Bezeichner, int, int)} abgeloest
      */
+    @Deprecated
     public AlphaNumFeld(final String name, final int length, final int start) {
-        super(name, length, start, Align.LEFT);
+        this(new Bezeichner(name), length, start);
+    }
+
+    /**
+     * Legt ein neues alphanumerisches Feld an.
+     *
+     * @param bezeichner Bezeichner
+     * @param length Laenge in Bytes
+     * @param start Start-Byte (beginnend bei 1)
+     * @since 1.0
+     */
+    public AlphaNumFeld(final Bezeichner bezeichner, final int length, final int start) {
+        super(bezeichner, length, start, Align.LEFT);
     }
 
     /**
@@ -61,13 +80,33 @@ public class AlphaNumFeld extends Feld {
     }
 
     /**
+     * Legt ein neues alphanumerisches Feld an.
+     * <p>
+     * TODO: bitte nicht verwenden, wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Bezeichner
      * @param length Laenge in Bytes
      * @param start Start-Byte (beginnend bei 1)
      * @param alignment Ausrichtung
+     * @deprecated bitte {@link #AlphaNumFeld(Bezeichner, int, int, Align)} verwendent
      */
+    @Deprecated
     public AlphaNumFeld(final String name, final int length, final int start, final Align alignment) {
-        super(name, length, start, alignment);
+        this(new Bezeichner(name), length, start, alignment);
+    }
+
+    /**
+     * Legt ein neues alpha-numerisches Feld an.
+     *
+     * @param bezeichner Bezeichner
+     * @param length Laenge in Bytes
+     * @param start Start-Byte (beginnend bei 1)
+     * @param alignment Ausrichtung
+     * @since 1.0
+     */
+    public AlphaNumFeld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
+        super(bezeichner, length, start, alignment);
     }
 
     /**
@@ -100,13 +139,29 @@ public class AlphaNumFeld extends Feld {
 
     /**
      * Instantiiert ein neues alpha-numerisches Feld.
+     * <p>
+     * TODO: Bitte nicht mehr benutzen - wird in 1.2 entfernt!
+     * </p>
      *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
+     * @deprecated bitte {@link #AlphaNumFeld(Bezeichner, FeldInfo)} verwenden
      */
+    @Deprecated
     public AlphaNumFeld(final String name, final FeldInfo info) {
-        super(name, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.LEFT : info.align());
+        this(new Bezeichner(name), info);
+    }
+
+    /**
+     * Instantiiert ein neues alpha-numerisches Feld.
+     *
+     * @param bezeichner Bezeichner
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 1.0
+     */
+    public AlphaNumFeld(final Bezeichner bezeichner, final FeldInfo info) {
+        super(bezeichner, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.LEFT : info.align());
     }
 
     /**
@@ -117,6 +172,24 @@ public class AlphaNumFeld extends Feld {
      */
     public AlphaNumFeld(final String name, final int length, final int start, final char inhalt) {
         super(name, length, start, inhalt, Align.LEFT);
+    }
+
+    /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public AlphaNumFeld(final Feld other) {
+        super(other);
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new AlphaNumFeld(this);
     }
 
 }

@@ -18,20 +18,32 @@
 
 package gdv.xport.util;
 
-import static gdv.xport.feld.Bezeichner.SATZNUMMER;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import gdv.xport.Datenpaket;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.demo.MyFeld210;
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.SatzX;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * JUnit-Test fuer SatzFactory.
@@ -39,9 +51,10 @@ import org.junit.Test;
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
+@RunWith(SmokeRunner.class)
 public final class SatzFactoryTest extends AbstractTest {
 
-    private static final Log log = LogFactory.getLog(SatzFactoryTest.class);
+    private static final Logger LOG = LogManager.getLogger(SatzFactoryTest.class);
 
     /**
      * Testet getSatz().
@@ -60,9 +73,26 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetSatzInt() {
-        Satz satz = SatzFactory.getSatz(1);
-        assertEquals(1, satz.getSatzart());
-        assertNotNull(satz.getFeld(Bezeichner.VERSION_SATZART_0100));
+        Satz satz = getSatz(1);
+        assertNotNull(satz.getFeld(Bezeichner.NAME_VERSION_SATZART_0100));
+    }
+
+    /**
+     * Satz 0342 ("Begleitdokumente und Signaturen") ist nur als
+     * XML-Beschreibung vorhanden. Daher wird dieser Satz zum Testen verwendet.
+     */
+    @Test
+    public void testGetSatz342() {
+        Satz satz342 = getSatz(342);
+        Feld dokumenttyp = satz342.getFeld("Dokumenttyp");
+        assertEquals(2, dokumenttyp.getAnzahlBytes());
+        assertEquals(46, dokumenttyp.getByteAdresse());
+    }
+
+    private static Satz getSatz(final int satzart) {
+        Satz satz = SatzFactory.getSatz(satzart);
+        assertEquals(satzart, satz.getSatzart());
+        return satz;
     }
 
     /**
@@ -73,7 +103,7 @@ public final class SatzFactoryTest extends AbstractTest {
         Datensatz unsupported = new Datensatz("0123");
         unsupported.setVuNummer("56789");
         unsupported.setSparte(88);
-        unsupported.add(new NumFeld("zweiundvierzig", 4, 200, 42));
+        unsupported.add(new NumFeld(new Bezeichner("zweiundvierzig"), 4, 200, 42));
         String content = unsupported.toLongString();
         Satz imported = SatzFactory.getSatz(content);
         assertEquals(content, imported.toLongString());
@@ -94,7 +124,7 @@ public final class SatzFactoryTest extends AbstractTest {
             satz = SatzFactory.getSatz(47);
             fail("unregister failed for " + satz);
         } catch (NotRegisteredException expected) {
-            log.info(satz + " successful unregistered (" + expected + ")");
+            LOG.info(satz + " successful unregistered (" + expected + ")");
         }
     }
 
@@ -133,7 +163,7 @@ public final class SatzFactoryTest extends AbstractTest {
 
     private void assertSatzart47(final Satz satz) {
         assertEquals(47, satz.getSatzart());
-        Feld x = satz.getFeld(MyFeld210.MEINE_WAEHRUNG);
+        Feld x = satz.getFeld(MyFeld210.BAUJAHR);
         assertNotNull(x);
     }
 
@@ -158,20 +188,6 @@ public final class SatzFactoryTest extends AbstractTest {
         Satz datensatz = SatzFactory.getDatensatz(satzart);
         assertEquals(satzart, datensatz.getSatzart());
     }
-
-//    /**
-//     * Damit wird ueberprueft, ob Satzart 221 (Erweiterungssatz) bei der SatzFactory registriert ist.
-//     */
-//    @Test
-//    public void testGetErweiterungssatz() {
-//        checkGetDatensatz(221, Satz221.class);
-//    }
-//
-//    private static void checkGetDatensatz(final int satzart, final Class<? extends Datensatz> clazz) {
-//        Satz datensatz = SatzFactory.getDatensatz(satzart);
-//        assertEquals(clazz, datensatz.getClass());
-//        assertEquals(satzart, datensatz.getSatzart());
-//    }
 
     /**
      * Damit wird ueberprueft, ob Satzart 220 mit Sparte 70 registriert ist.
@@ -222,7 +238,7 @@ public final class SatzFactoryTest extends AbstractTest {
     private void checkGetDatensatz(final int satzart, final int sparte, final Enum<?>[] felder, final String satzNr) {
         checkGetDatensatz(satzart, sparte, felder);
         Satz datensatz = getDatensatz(satzart, sparte);
-        Feld satznummer = datensatz.getFeld(SATZNUMMER, 1);
+        Feld satznummer = datensatz.getFeld(Bezeichner.NAME_SATZNUMMER, 1);
         assertEquals("falsche Satznummer", satzNr, satznummer.getInhalt());
     }
 
@@ -267,9 +283,15 @@ public final class SatzFactoryTest extends AbstractTest {
     @Test
     public void testGetAllSupportedSaetze() {
         Datenpaket all = SatzFactory.getAllSupportedSaetze();
-        int n = all.getDatensaetze().size();
-        log.info(n + " Satzarten supported");
+        List<Datensatz> datensaetze = all.getDatensaetze();
+        Set<Integer> supportedSatzarten = new TreeSet<Integer>();
+        for (Datensatz datensatz : datensaetze) {
+            supportedSatzarten.add(datensatz.getSatzart());
+        }
+        int n = datensaetze.size();
+        LOG.info(n + " Satzarten supported: " + supportedSatzarten);
         assertTrue("only " + n + " Datensaetze supported", n > 5);
+        assertTrue("Satzart 342 expected to be supported", supportedSatzarten.contains(342));
     }
 
     /**

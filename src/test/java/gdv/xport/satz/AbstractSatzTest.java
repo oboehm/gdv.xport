@@ -18,7 +18,9 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.VUNummer;
@@ -27,10 +29,12 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 import java.io.IOException;
 import java.io.StringWriter;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import patterntesting.runtime.junit.ObjectTester;
 
 /**
  * Hier setzen wir eine Standard-Konfiguration auf, die wir in den
@@ -42,7 +46,7 @@ import org.junit.Test;
  */
 abstract public class AbstractSatzTest {
 
-    private static final Log log = LogFactory.getLog(AbstractSatzTest.class);
+    private static final Logger LOG = LogManager.getLogger(AbstractSatzTest.class);
     /** zum Testen nehmen wir hier die VU-Nr. der Oerag */
     protected static final VUNummer VU_NUMMER = new VUNummer("5183");
 
@@ -76,6 +80,16 @@ abstract public class AbstractSatzTest {
     }
 
     /**
+     * Test-Methode fuer {@link Satz#equals(Object)}.
+     */
+    @Test
+    public void testEquals() {
+        Satz satz = this.getSatz();
+        Satz sameSatz = this.getSatz();
+        ObjectTester.assertEquals(satz, sameSatz);
+    }
+
+    /**
      * @param satz Satz
      * @param startByte beginnend bei 1
      * @param endByte   beginnend bei 1
@@ -88,7 +102,7 @@ abstract public class AbstractSatzTest {
         String data = export(satz);
         assertEquals(expectedLength, data.length());
         String toBeChecked = data.substring(startByte - 1, endByte);
-        log.info("data: " + data.substring(0, 9) + "..." + toBeChecked + "...");
+        LOG.info("data: " + data.substring(0, 9) + "..." + toBeChecked + "...");
         assertEquals(expected, toBeChecked);
     }
 
@@ -118,6 +132,26 @@ abstract public class AbstractSatzTest {
         satz.importFrom(input);
         String exported = export(satz);
         assertEquals(input.trim(), exported.trim());
+    }
+
+    /**
+     * Setzt fuer den uebergebenen Satz die normalen Felder mit einem Wert,
+     * damit einfache Test-Daten fuer die einzelnen Tests vorhanden sind.
+     *
+     * @param satz the new up
+     */
+    public static void setUp(final Satz satz) {
+        for (Teildatensatz tds : satz.getTeildatensaetze()) {
+            setUp(tds);
+        }
+    }
+
+    private static void setUp(final Teildatensatz tds) {
+        for (Feld feld : tds.getFelder()) {
+            if ((feld.getByteAdresse() > 42) && (feld.getByteAdresse() < 256)) {
+                feld.setInhalt('1');
+            }
+        }
     }
 
 }

@@ -18,27 +18,43 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import gdv.xport.satz.feld.Feld100;
 
 import org.junit.Test;
 
 /**
  * JUnit-Test fuer Zeichen-Klasse.
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (10.05.2011)
  */
-public class ZeichenTest {
+public final class ZeichenTest extends AbstractFeldTest {
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
+     */
+    @Override
+    protected Feld getTestFeld() {
+        return new Zeichen(Feld100.ANREDESCHLUESSEL);
+    }
 
     /**
-     * Test method for {@link gdv.xport.feld.Zeichen#Zeichen(java.lang.Enum, gdv.xport.annotation.FeldInfo)}.
+     * Test method for {@link gdv.xport.feld.Zeichen#Zeichen(java.lang.Enum)}.
      */
     @Test
-    public void testZeichenEnumFeldInfo() {
-        Zeichen zeichen = new Zeichen(Feld100.ANREDESCHLUESSEL, FeldTest.createFeldInfo());
+    public void testZeichenEnum() {
+        Zeichen zeichen = new Zeichen(Feld100.ANREDESCHLUESSEL);
+        assertEquals(43, zeichen.getByteAdresse());
+    }
+
+    /**
+     * Test method for {@link gdv.xport.feld.Zeichen#Zeichen(java.lang.Enum)}.
+     */
+    @Test
+    public void testZeichenName() {
+        Zeichen zeichen = new Zeichen(Bezeichner.NAME_ANREDESCHLUESSEL, FeldTest.createFeldInfo());
         assertEquals(1, zeichen.getAnzahlBytes());
     }
 
 }
-

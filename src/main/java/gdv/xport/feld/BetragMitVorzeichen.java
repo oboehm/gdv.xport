@@ -53,13 +53,48 @@ public final class BetragMitVorzeichen extends Betrag {
     }
 
     /**
+     * Instantiiert einen neuen BetragMitVorzeichen.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Bezeichner
      * @param length das Vorzeichen muss dabei mitgezaehlt werden
      * @param start Start-Byte (beginnend bei 1)
+     * @deprecated bitte {@link #BetragMitVorzeichen(Bezeichner, int, int)} benutzen
      */
+    @Deprecated
     public BetragMitVorzeichen(final String name, final int length, final int start) {
+        this(new Bezeichner(name), length, start);
+    }
+
+    /**
+     * Instantiiert einen neuen BetragMitVorzeichen.
+     *
+     * @param name Bezeichner
+     * @param length das Vorzeichen muss dabei mitgezaehlt werden
+     * @param start Start-Byte (beginnend bei 1)
+     * @since 1.0
+     */
+    public BetragMitVorzeichen(final Bezeichner name, final int length, final int start) {
         super(name, length, start);
         this.setVorzeichen('+');
+    }
+
+    /**
+     * Instantiiert einen neuen BetragMitVorzeichen.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
+     *
+     * @param name Bezeichner
+     * @param info mit der Start-Adresse und weiteren Angaben
+     * @since 0.6
+     * @deprecated bitte {@link #BetragMitVorzeichen(Bezeichner, FeldInfo)} benutzen
+     */
+    @Deprecated
+    public BetragMitVorzeichen(final String name, final FeldInfo info) {
+        this(new Bezeichner(name), info);
     }
 
     /**
@@ -67,11 +102,21 @@ public final class BetragMitVorzeichen extends Betrag {
      *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 0.6
+     * @since 1.0
      */
-    public BetragMitVorzeichen(final String name, final FeldInfo info) {
+    public BetragMitVorzeichen(final Bezeichner name, final FeldInfo info) {
         super(name, info);
         this.setVorzeichen('+');
+    }
+
+    /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public BetragMitVorzeichen(final BetragMitVorzeichen other) {
+        super(other);
     }
 
     /**
@@ -164,6 +209,14 @@ public final class BetragMitVorzeichen extends Betrag {
     public void resetInhalt() {
         super.resetInhalt();
         this.setVorzeichen('+');
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new BetragMitVorzeichen(this);
     }
 
 }

@@ -18,14 +18,12 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.VERSION_SATZART_0001;
-import static gdv.xport.feld.Bezeichner.VERSION_SATZART_9999;
-import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
@@ -53,13 +51,14 @@ import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
+import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -79,7 +78,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 @RunWith(SmokeRunner.class)
 public final class DatenpaketTest {
 
-    private static final Log log = LogFactory.getLog(Datenpaket.class);
+    private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
     /** Fuer jeden Test gibt es ein frisches Datenpaket. */
     private final Datenpaket datenpaket = new Datenpaket();
 
@@ -95,14 +94,14 @@ public final class DatenpaketTest {
     public void testEmptyExport() throws IOException {
         Datenpaket empty = new Datenpaket();
         StringWriter swriter = new StringWriter(1024);
-        Config.setEOD("");
         empty.export(swriter);
         String data = swriter.toString();
         swriter.close();
-        assertEquals(1024, data.length());
+        int expectedLength = 1024 + 4 * Config.getEOD().length();
+        assertEquals(expectedLength, data.length());
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.1", vorsatz.getVersion(VERSION_SATZART_0001));
-        assertEquals("1.1", vorsatz.getVersion(VERSION_SATZART_9999));
+        assertEquals("2.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_0001));
+        assertEquals("1.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(0, nachsatz.getAnzahlSaetze());
         assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
@@ -121,14 +120,20 @@ public final class DatenpaketTest {
     @Test
     @SkipTestOn(property = "SKIP_EXPORT_TEST")
     public void testExportFile() throws IOException {
+        datenpaket.setVuNummer("Hello");
+        datenpaket.setAbsender("World");
         datenpaket.setAdressat("Test-Adressat");
         datenpaket.setVermittler("845/666666");
+        Datum datum = new Datum();
+        datum.setInhalt("13022014");
+        datenpaket.setErstellungsDatumVon(datum);
+        datenpaket.setErstellungsDatumBis(datum);
         File file = File.createTempFile("datenpaket", ".txt");
-        Config.setEOD("");
+        Config.setEOD("\n");
         datenpaket.export(file);
-        log.info(datenpaket + " was exported to " + file);
+        LOG.info(datenpaket + " was exported to " + file);
         assertTrue(file + " was not created", file.exists());
-        assertEquals(1024, file.length());
+        FileTester.assertContentEquals(new File("src/test/resources/gdv/xport/test-export.txt"), file);
     }
 
     /**
@@ -138,9 +143,9 @@ public final class DatenpaketTest {
     public void testAdd() {
         datenpaket.add(new Satz220());
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.1", vorsatz.getVersion(VERSION_SATZART_0001));
+        assertEquals("2.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_0001));
         assertEquals("2.1", vorsatz.getVersion(100));
-        assertEquals("1.1", vorsatz.getVersion(VERSION_SATZART_9999));
+        assertEquals("1.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(1, nachsatz.getAnzahlSaetze());
     }
@@ -199,6 +204,7 @@ public final class DatenpaketTest {
             istream.close();
         }
     }
+
     /**
      * Tested einen Import von 2 Datenpaketen.
      *
@@ -213,7 +219,7 @@ public final class DatenpaketTest {
             checkImport(datenpaket, istream);
             Datenpaket zwei = new Datenpaket();
             checkImport(zwei, istream);
-            log.info(datenpaket + " / " + zwei + " imported.");
+            LOG.info(datenpaket + " / " + zwei + " imported.");
             assertFalse(datenpaket.equals(zwei));
         } finally {
             istream.close();
@@ -239,7 +245,7 @@ public final class DatenpaketTest {
             checkImport(datenpaket, reader);
             Datenpaket zwei = new Datenpaket();
             checkImport(zwei, reader);
-            log.info(datenpaket + " / " + zwei + " imported.");
+            LOG.info(datenpaket + " / " + zwei + " imported.");
             assertFalse(datenpaket.equals(zwei));
         } finally {
             reader.close();
@@ -282,7 +288,7 @@ public final class DatenpaketTest {
             datenpaket.importFrom(url);
             assertTrue(datenpaket.isValid());
         } catch (UnknownHostException mayhappen) {
-            log.warn("Offline? Import von " + url + " abgebrochen!", mayhappen);
+            LOG.warn("Offline? Import von " + url + " abgebrochen!", mayhappen);
         }
     }
 
@@ -326,7 +332,7 @@ public final class DatenpaketTest {
         String muster = getResourceAsString("/musterdatei_041222.txt");
         datenpaket.importFrom(muster);
         Satz vertragsteil = datenpaket.getDatensaetze().get(2);
-        Feld vertragsstatus = vertragsteil.getFeld(VERTRAGSSTATUS);
+        Feld vertragsstatus = vertragsteil.getFeld(Bezeichner.NAME_VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         checkExportWith(muster);
     }
@@ -437,7 +443,7 @@ public final class DatenpaketTest {
             String expectedLine = readNextLine(expectedReader);
             String paketLine = readNextLine(paketReader);
             if (expectedLine == null) {
-                log.info(line + " lines compared (no difference)");
+                LOG.info(line + " lines compared (no difference)");
                 break;
             }
             assertEquals("difference in line " + line, expectedLine, paketLine);
@@ -448,11 +454,11 @@ public final class DatenpaketTest {
     private static String readNextLine(final BufferedReader reader) throws IOException {
         String line = reader.readLine();
         if (line == null) {
-            log.debug("EOF reached");
+            LOG.debug("EOF reached");
             return null;
         }
         if (line.isEmpty()) {
-            log.debug("skipping empty line");
+            LOG.debug("skipping empty line");
             return readNextLine(reader);
         }
         return line;
@@ -476,11 +482,11 @@ public final class DatenpaketTest {
      * @param defect das defekte Datenpaket
      */
     private void checkViolations(final Datenpaket defect) {
-        if (log.isTraceEnabled()) {
+        if (LOG.isTraceEnabled()) {
             List<ConstraintViolation> violations = defect.validate();
             assertTrue("at least 1 violation is expected", (violations.size() > 0));
             for (ConstraintViolation cv : violations) {
-                log.trace("Violation: " + cv);
+                LOG.trace("Violation: " + cv);
             }
         }
         assertFalse("at least 1 violation is expected", defect.isValid());

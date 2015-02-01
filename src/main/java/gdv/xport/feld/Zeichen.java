@@ -40,13 +40,29 @@ public class Zeichen extends AlphaNumFeld {
     }
 
     /**
-     * Instantiates a new zeichen.
+     * Instanziiert ein neues Zeichen.
+     * <p>
+     * TODO: Bitte nicht mehr verwenden, wird mit 1.2 entsorgt!
+     * </p>
      *
-     * @param name the name
-     * @param start the start
+     * @param name der Name
+     * @param start die Byte-Adresse
+     * @deprecated bitte {@link #Zeichen(Bezeichner, int)} verwenden
      */
+    @Deprecated
     public Zeichen(final String name, final int start) {
-        super(name, 1, start);
+        this(new Bezeichner(name), start);
+    }
+
+    /**
+     * Instanziiert ein neues Zeichen.
+     *
+     * @param bezeichner der Bezeichner
+     * @param start die Byte-Adresse
+     * @since 1.0
+     */
+    public Zeichen(final Bezeichner bezeichner, final int start) {
+        super(bezeichner, 1, start);
     }
 
     /**
@@ -80,7 +96,7 @@ public class Zeichen extends AlphaNumFeld {
      * @since 0.6
      */
     public Zeichen(final String name, final FeldInfo info) {
-        this(name, info.byteAdresse());
+        this(new Bezeichner(name), info.byteAdresse());
         assert info.anzahlBytes() == 1 : "Zeichen kann nur 1 Byte lang sein";
     }
 
@@ -96,12 +112,40 @@ public class Zeichen extends AlphaNumFeld {
     }
 
     /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Zeichen
+     * kopieren kann.
+     *
+     * @param other das originale Zeichen
+     */
+    public Zeichen(final Zeichen other) {
+        super(other);
+    }
+
+    /**
      * Falls man keinen String will, sondern ein einzelnes Zeichen braucht.
      *
      * @return das einzige Zeichen
      */
     public char toChar() {
         return this.getInhalt().charAt(0);
+    }
+
+    /**
+     * Liefert das Zeichen als Integer zurueck oder als -1, falls es keine
+     * Zahl ist.
+     *
+     * @return 0 bis 9 oder -1, falls es keine Zahl ist
+     */
+    public int toInt() {
+        return Character.getNumericValue(toChar());
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new Zeichen(this);
     }
 
 }

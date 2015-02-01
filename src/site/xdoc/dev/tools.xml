@@ -13,7 +13,7 @@
     
       <subsection name="IDE">
         <p>
-          Als Java-IDE wird Eclipse Helios mit folgenden Plugins verwendet:
+          Als Java-IDE wird ein aktuelles Eclipse mit folgenden Plugins verwendet:
         </p>
         <ul>
           <li>AJDT (sonst lassen sich die JUnit-Tests nicht ausf&#252;hren)</li>
@@ -33,11 +33,12 @@
             Checkstyle-Plugin von
             <a href="http://eclipse-cs.sourceforge.net/">http://eclipse-cs.sourceforge.net/</a>
           </li>
-          <li>
-            Maven-Plugin "m2eclipse" von
-            <a href="http://m2eclipse.sonatype.org/sites/m2e">http://m2eclipse.sonatype.org/sites/m2e</a>
-          </li>
         </ul>
+        <p>
+          Ab 1.0 wird die Qualit&#228;tssicherung &#252;ber
+          <a href="http://www.sonarqube.org/">SonarQube</a> sichergestellt,
+          allerdings auf einem nicht-&#246;ffentlichem (internen) Server.
+        </p>
       </subsection>
       
       <subsection name="Maven">
@@ -46,12 +47,6 @@
           Um die abh&#228;ngigen Bibliotheken herunterzuladen, starten Sie am besten
           <tt>mvn test</tt>. Damit werden Bibliotheken, die noch sich noch nicht
           auf Ihrem Rechner befinden, heruntergeladen.
-        </p>
-        <p>
-          In Eclipse m&#252;ssen Sie noch die Classpath-Variable M2_REPO definieren,
-          damit Eclipse die abh&#228;ngigen Bibliotheken findet. Das Maven-Repository
-          befindet sich &#252;blicherweise unter
-          <tt>.m2/repository</tt> im Heimatverzeichnis.
         </p>
       </subsection>
     </section>

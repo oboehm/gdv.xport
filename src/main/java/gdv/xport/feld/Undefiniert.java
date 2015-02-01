@@ -21,7 +21,7 @@ package gdv.xport.feld;
 /**
  * Dieses Unterklasse ist fuer Felder vorgesehen, die nicht definiert sind
  * (bzw. vergessen wurden).
- * 
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (28.11.2010)
  */
@@ -29,12 +29,12 @@ public final class Undefiniert extends Feld {
 
     /**
      * Dies ist der einzige Konstruktor.
-     * 
+     *
      * @param length Byte-Laenge
      * @param start Start-Adresse
      */
     public Undefiniert(final int length, final int start) {
-        super("undefiniert", length, start, Align.LEFT);
+        super(new Bezeichner("undefiniert"), length, start, Align.LEFT);
     }
 
 }

@@ -18,8 +18,6 @@
 
 package gdv.xport.feld;
 
-import static gdv.xport.feld.Bezeichner.VU_NUMMER;
-import gdv.xport.annotation.FeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -54,48 +52,13 @@ public class VUNummer extends AlphaNumFeld {
     }
 
     /**
-     * Erzeugt ein neues VUNummer-Objekt.
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
      *
-     * @param nr VU-Nummer (max. 5 Stellen)
-     * @param start Start-Byte (beginnend bei 1)
-     * @deprecated dieser Konstruktor macht keinen Sinn mehr und wird mit 1.0
-     *             entfernt
+     * @param other das originale Feld
      */
-    @Deprecated
-    public VUNummer(final VUNummer nr, final int start) {
-        super(VU_NUMMER, 5, start, nr.getInhalt());
-    }
-
-    /**
-     * Instantiiert ein neues VUNummer-Objekt.
-     *
-     * @param name Bezeichner
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 0.6
-     * @deprecated dieser Konstruktor macht keinen Sinn mehr und wird mit 1.0
-     *             entfernt
-     */
-    @Deprecated
-    public VUNummer(final String name, final FeldInfo info) {
-        this(name, info.anzahlBytes(), info.byteAdresse());
-    }
-
-    /**
-     * Der eigentliche Default-Konstruktor fuer alle Feld-Derivate.
-     *
-     * @param name muss immer "VU-Nummer" sein
-     * @param length die Laenge (ueblicherweise 5)
-     * @param start die Start-Adresse (ueblicherweise 5)
-     * @since 0.6
-     * @deprecated dieser Konstruktor macht keinen Sinn mehr und wird mit 1.0
-     *             entfernt
-     */
-    @Deprecated
-    public VUNummer(final String name, final int length, final int start) {
-        super(name, length, start);
-        if (!VU_NUMMER.equalsIgnoreCase(name)) {
-            throw new IllegalArgumentException(VU_NUMMER + " (not '" + name + "') expected as 1st argument");
-        }
+    public VUNummer(final VUNummer other) {
+        super(other);
     }
 
     /* (non-Javadoc)
@@ -105,6 +68,14 @@ public class VUNummer extends AlphaNumFeld {
     public String toString() {
         return this.getClass().getSimpleName() + " " + this.getInhalt() + " ("
                 + this.getByteAdresse() + "-" + this.getEndAdresse() + ")";
+    }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.AlphaNumFeld#clone()
+     */
+    @Override
+    public Object clone() {
+        return new VUNummer(this);
     }
 
 }

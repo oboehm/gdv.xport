@@ -73,7 +73,6 @@ public class Satz100 extends SatzX {
      * @return Name1, Name2 oder Name3
      */
     public String getName(final int n) {
-        assert (n >= 1) && (n <= 3) : "1 <= n <= 3 expected";
         switch (n) {
             case 1:
                 return this.get(Feld100.NAME1).trim();
@@ -82,7 +81,7 @@ public class Satz100 extends SatzX {
             case 3:
                 return this.get(Feld100.NAME3).trim();
             default:
-                throw new IllegalArgumentException("1 <= n <= 3 expected");
+                throw new IllegalArgumentException("1 <= n <= 3 expected, not n=" + n);
         }
     }
 

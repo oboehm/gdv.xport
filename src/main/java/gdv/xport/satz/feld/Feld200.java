@@ -20,7 +20,10 @@ package gdv.xport.satz.feld;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 
@@ -445,11 +448,23 @@ public enum Feld200 {
     EINZAHLUNG_AUSSCHUETTUNG,
 
     /**
-     * Satznummer.
+     * Leerstellen.
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 38,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 7,
+            byteAdresse = 249
+    )
+    LEERSTELLEN1,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 39,
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 256
@@ -623,11 +638,47 @@ public enum Feld200 {
     REGISTRIERUNGSNUMMER_VERMITTLER,
 
     /**
-     * Satznummer.
+     * Internes Ordnungsmerkmal des VM.
      */
     @FeldInfo(
             teildatensatz = 2,
             nr = 19,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 50,
+            byteAdresse = 170
+    )
+    INTERNES_ORDNUNGSMERKMAL_DES_VM,
+
+    /**
+     * Vertragsverbindungsnummer.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 20,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 17,
+            byteAdresse = 220
+    )
+    VERTRAGSVERBINDUNGSNUMMER,
+
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 21,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 19,
+            byteAdresse = 237
+    )
+    LEERSTELLEN2,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 22,
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 256

@@ -21,10 +21,12 @@ package gdv.xport.demo;
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.model.SatzX;
-import gdv.xport.util.*;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.XmlFormatter;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.xml.stream.XMLStreamException;
 

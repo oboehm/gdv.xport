@@ -10,15 +10,27 @@
 
 package gdv.xport.util;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 import java.net.URL;
+import java.util.Properties;
 
 import javax.xml.XMLConstants;
+import javax.xml.namespace.QName;
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.*;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
-import org.apache.commons.logging.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
 /**
@@ -29,7 +41,7 @@ import org.xml.sax.SAXException;
  */
 public final class XmlHelper {
 
-    private static final Log log = LogFactory.getLog(XmlHelper.class);
+    private static final Logger LOG = LoggerFactory.getLogger(XmlHelper.class);
 
     /**
      * Privater Konstruktor, damit diese Klasse nicht instantiiert werden kann
@@ -51,7 +63,7 @@ public final class XmlHelper {
             throws SAXException, IOException {
         Reader reader = new StringReader(xmlString);
         Source source = new StreamSource(reader);
-        log.debug("validating " + xmlString + "...");
+        LOG.debug("validating " + xmlString + "...");
         validate(source, xsdResource);
     }
 
@@ -84,6 +96,163 @@ public final class XmlHelper {
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         URL xsdURL = XmlHelper.class.getResource(resource);
         return factory.newSchema(xsdURL);
+    }
+
+
+
+    /////   XML-Streams Utilities   ///////////////////////////////////////////
+
+    /**
+     * Wandelt einfache XML-Elemente in Properties um. Einfache Elemente sind
+     * z.B.:
+     *
+     * <pre>
+     * &lt;feldreferenz referenz="BN-2003.02.11.22.49.47.214"&gt;
+     *     &lt;name&gt;Satzart&lt;/name&gt;
+     *     &lt;technischerName&gt;Satzart&lt;/technischerName&gt;
+     *     &lt;auspraegung&gt;0100&lt;/auspraegung&gt;
+     * &lt;/feldreferenz&gt;
+     * </pre>
+     *
+     * @param name the name
+     * @param reader the reader
+     * @return the properties
+     * @throws XMLStreamException the XML stream exception
+     */
+    public static Properties parseSimpleElements(final QName name, final XMLEventReader reader)
+            throws XMLStreamException {
+        LOG.trace("Parsing simple elements of <{}>...<{}/>.", name, name);
+        Properties props = new Properties();
+        while (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (event.isStartElement()) {
+                addAsProperty(event.asStartElement(), reader, props);
+            } else if (isEndElement(event, name)) {
+                LOG.debug("{} elements of <{}>...{} were returned as properties.", props.size(), name, event);
+                return props;
+            }
+        }
+        throw new XMLStreamException("end element of <" + name + "> not read");
+    }
+
+    private static void addAsProperty(final StartElement element, final XMLEventReader reader, final Properties props)
+            throws XMLStreamException {
+        QName name = element.getName();
+        while (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            switch (event.getEventType()) {
+                case XMLStreamConstants.CHARACTERS:
+                    String key = name.getLocalPart();
+                    String value = props.getProperty(key, "") + "\n" + event.asCharacters().toString().trim();
+                    props.setProperty(key, value.trim());
+                    break;
+                case XMLStreamConstants.END_ELEMENT:
+                    return;
+                case XMLStreamConstants.START_ELEMENT:
+                    ignore(event, reader);
+                    break;
+                default:
+                    LOG.trace("Event {} is ignored.", event);
+                    break;
+            }
+        }
+        throw new XMLStreamException("end element of <" + name + "> not read");
+    }
+
+    /**
+     * Ueberprueft, ob es ein Start-Event mit dem uebergebenen Namen ist.
+     *
+     * @param event der XML-Event
+     * @param name Name des Start-Elements
+     * @return true, falls es ein Start-Element ist
+     * @since 1.0
+     */
+    public static boolean isStartElement(final XMLEvent event, final String name) {
+        if (event.isStartElement()) {
+            return event.asStartElement().getName().getLocalPart().equals(name);
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Ueberprueft, ob es ein End-Event mit dem uebergebenen Namen ist.
+     *
+     * @param event der XML-Event
+     * @param name Name des Start-Elements
+     * @return true, falls es ein End-Element ist
+     */
+    public static boolean isEndElement(final XMLEvent event, final QName name) {
+        return event.isEndElement() && event.asEndElement().getName().equals(name);
+    }
+
+    /**
+     * Holt sich das naechste Start-Element aus dem uebergebenen XML-Stream.
+     *
+     * @param name gesuchtes Start-Element
+     * @param reader the reader
+     * @return the next start element
+     * @throws XMLStreamException the XML stream exception
+     */
+    public static StartElement getNextStartElement(final String name, final XMLEventReader reader)
+            throws XMLStreamException {
+        while (true) {
+            StartElement startElement = getNextStartElement(reader);
+            if (name.equals(startElement.getName().getLocalPart())) {
+                return startElement;
+            }
+        }
+    }
+
+    /**
+     * Holt sich das naechste Start-Element aus dem uebergebenen XML-Stream.
+     *
+     * @param reader the reader
+     * @return the next start element
+     * @throws XMLStreamException the XML stream exception
+     */
+    public static StartElement getNextStartElement(final XMLEventReader reader) throws XMLStreamException {
+        while (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (event.isStartElement()) {
+                return event.asStartElement();
+            }
+            LOG.trace("Event {} is ignored.", event);
+        }
+        throw new XMLStreamException("no start element found");
+    }
+
+    /**
+     * Ignoriert die komplette Hierarchie unterhalb von "&lt;name&gt;".
+     *
+     * @param startEvent the start event
+     * @param reader der XML-Stream
+     * @throws XMLStreamException the XML stream exception
+     */
+    public static void ignore(final XMLEvent startEvent, final XMLEventReader reader) throws XMLStreamException {
+        if (startEvent.isEndElement()) {
+            LOG.debug("Element <{}/> is ignored.", startEvent);
+            return;
+        }
+        ignore(startEvent.asStartElement().getName(), reader);
+    }
+
+    /**
+     * Ignoriert die komplette Hierarchie unterhalb von "&lt;name&gt;".
+     *
+     * @param name der Tag-Name (z.B. "feld")
+     * @param reader der XML-Stream
+     * @throws XMLStreamException the XML stream exception
+     */
+    public static void ignore(final QName name, final XMLEventReader reader) throws XMLStreamException {
+        while (reader.hasNext()) {
+            XMLEvent event = reader.nextEvent();
+            if (isEndElement(event, name)) {
+                LOG.debug("<{}>...{} was ignored.", name, event);
+                return;
+            }
+        }
+        throw new XMLStreamException("end of <" + name + "> not found");
     }
 
 }

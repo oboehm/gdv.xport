@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Manual</title>
+    <author email="oliver.boehm@gmail.com">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Streaming API">
+
+      <p>
+      	Der Nachteil des normal <a href="import.html">Imports</a> ist,
+      	dass erst das kompletten Datenpaket eingelesen werden muss, ehe
+      	es weiterverarbeitet werden kann. Das kann gerade bei gro&#223;en
+      	Imports mit mehreren tausend Datens&#228;tzen zum Problem werden.
+      	Deswegen gibt es ab 1.0 den
+      	<a href="../apidocs/gdv/xport/DatenpaketStreamer.html">DatenpaketStreamer</a>
+      	mit dem die Datens&#228;tze direkt weiterverarbeitet werden
+      	k&#246;nnen, sobald sie eingelesen wurden.
+      </p>
+      <p>
+      	Dazu muss man das
+      	<a href="../apidocs/gdv/xport/event/ImportListener.html">ImportListener</a>-Interface
+      	implementieren und sich am
+      	<a href="../apidocs/gdv/xport/DatenpaketStreamer.html">DatenpaketStreamer</a>
+		registrieren:
+      </p>
+<source><![CDATA[
+ImportStatistic statistic = new ImportStatistic();
+DatenpaketStreamer streamer = new DatenpaketStreamer(istream);
+streamer.register(statistic);
+streamer.readDatenpaket();
+LOG.info("Statistik: " + statistic);
+]]></source>
+	  <p>
+	  	Als Beispiel dient hier die
+	  	<a href="../xref/gdv/xport/event/ImportStatistic.html">ImportStatistic</a>,
+	  	die das
+      	<a href="../apidocs/gdv/xport/event/ImportListener.html">ImportListener</a>-Interface
+      	implementiert und nach der Registrierung eine Benachrichtigung 
+      	&#252;ber jeden importierten Satz erh&#228;lt.
+	  </p>
+<source><![CDATA[
+Statistik: 128 Saetze, 165 Teildatensaetze
+]]></source>
+	  <p>
+	    Dies ist die Ausgabe, die die
+	  	<a href="../xref/gdv/xport/event/ImportStatistic.html">ImportStatistic</a>-Klasse
+	  	ausgibt. Das Beispiel selbst findet sich als Unit-Test im
+	  	<a href="../xref-test/gdv/xport/DatenpaketStreamerTest.html#75">DatenpaketStreamerTest</a>
+	  	(Methode "readDatenpaket").
+	  </p>
+
+    </section>
+
+  </body>
+
+</document>

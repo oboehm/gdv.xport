@@ -21,10 +21,9 @@ package gdv.xport.io;
 import java.io.IOException;
 import java.io.Reader;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-// TODO: Auto-generated Javadoc
 /**
  * Ein Record enthaelt hier immer genau 256 Bytes. Danach kommt i.d.R. ein
  * Zeilenvorschub. Es gibt aber auch Kandidaten, die es mit den 256 Bytes
@@ -37,7 +36,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class RecordReader extends Reader {
 
-    private static final Log log = LogFactory.getLog(RecordReader.class);
+    private static final Logger LOG = LogManager.getLogger(RecordReader.class);
     private final Reader reader;
     private int pos = 257;
     private final int[] buffer = new int[257];
@@ -89,7 +88,7 @@ public class RecordReader extends Reader {
                     pos = 256;
                     break;
                 }
-                log.info("Record " + recordNo + " has only " + i + " characters and is filled with " + (256 - i)
+                LOG.info("Record " + recordNo + " has only " + i + " characters and is filled with " + (256 - i)
                         + " spaces.");
                 do {
                     buffer[i] = ' ';

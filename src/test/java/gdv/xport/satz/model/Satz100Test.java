@@ -154,5 +154,26 @@ public class Satz100Test extends AbstractDatensatzTest {
         assertEquals(" 1234567890abcdef", satz.get(Feld100.KUNDENNR_VERSICHERER));
     }
 
+    /**
+     * Test-Methode fuer {@link Satz100#getName(int)}.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testGetName() throws IOException {
+        satz.importFrom(INPUT);
+        assertEquals("Pollsmann", satz.getName(1));
+        assertEquals("Rudolf", satz.getName(3));
+    }
+
+    /**
+     * Test-Methode fuer {@link Satz100#getName(int)} mit einem illegalen
+     * Argument.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetNameIllegalArgument() {
+        satz.getName(4);
+    }
+
 }
 

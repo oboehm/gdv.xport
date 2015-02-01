@@ -41,30 +41,42 @@ import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
- * The Class Feld.
+ * Die Feld-Klasse bezieht ihre Information hauptsaechlich aus Enum-Klassen wie
+ * Feld100 oder Feld1bis7, die mit Annotationen versehen sind.
  *
  * @author oliver
  * @since 04.10.2009
  */
-public class Feld implements Comparable<Feld> {
+public class Feld implements Comparable<Feld>, Cloneable {
 
-    private static final Log log = LogFactory.getLog(Feld.class);
+    private static final Logger LOG = LogManager.getLogger(Feld.class);
     /** statt "null". */
-    public static final Feld NULL_FELD = new Feld("null", 0, 0, Align.UNKNOWN);
+    public static final Feld NULL_FELD = new Feld();
     /** optional: Name des Felds. */
-    private final String bezeichnung;
-    private final Enum<?> bezeichner;
-    private final StringBuffer inhalt;
+    private final Bezeichner bezeichner;
+    private final Enum<?> bezeichnerEnum;
+    private final StringBuilder inhalt;
     /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256. */
     @Min(1)
     private final int byteAdresse;
     /** Ausrichtung: rechts- oder linksbuendig. */
     @NotEqual("UNKNOWN")
     private final Align ausrichtung;
+
+    /**
+     * Legt ein neues Feld an. Dieser Default-Konstruktor ist fuer Unterklassen
+     * vorgesehen. Da er aber auch fuer die {@link Cloneable}-Implementierung
+     * benoetigt wird, ist er 'public'.
+     *
+     * @since 1.0
+     */
+    public Feld() {
+        this(FeldX.UNBEKANNT);
+    }
 
     /**
      * Legt ein neues Feld an. Die Informationen dazu werden aus der
@@ -85,14 +97,15 @@ public class Feld implements Comparable<Feld> {
      * @since 0.6
      */
     public Feld(final Enum<?> feldX, final FeldInfo info) {
-        this.bezeichner = feldX;
-        this.bezeichnung = Feld.getAsBezeichnung(feldX);
+        this.bezeichnerEnum = feldX;
+        this.bezeichner = Feld.getAsBezeichner(feldX);
         this.byteAdresse = info.byteAdresse();
         this.ausrichtung = getAlignmentFrom(info);
-        this.inhalt = new StringBuffer(info.anzahlBytes());
+        this.inhalt = new StringBuilder(info.anzahlBytes());
         for (int i = 0; i < info.anzahlBytes(); i++) {
             this.inhalt.append(' ');
         }
+        this.setInhalt(info.value());
     }
 
     /**
@@ -112,41 +125,51 @@ public class Feld implements Comparable<Feld> {
     /**
      * Instantiates a new feld.
      *
-     * @param name
-     *            the name
-     * @param start
-     *            the start
-     * @param s
-     *            the s
-     * @param alignment
-     *            the alignment
+     * @param name the name
+     * @param start Start-Adresse
+     * @param s der Inhalt
+     * @param alignment the alignment
      */
     public Feld(final String name, final int start, final String s, final Align alignment) {
-        this.bezeichnung = name;
-        this.inhalt = new StringBuffer(s);
+        this.bezeichner = new Bezeichner(name);
+        this.inhalt = new StringBuilder(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichner = FeldX.UNBEKANNT;
+        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
     /**
-     * Instantiates a new feld.
+     * Erzeugt ein neues Feld.
+     * <p>
+     * TODO: Bitte nicht mehr benutzen - wird in 1.2 entfernt!
+     * </p>
      *
-     * @param name
-     *            the name
-     * @param length
-     *            the length
-     * @param start
-     *            the start
-     * @param alignment
-     *            the alignment
+     * @param name der Name
+     * @param length die Anzahl der Bytes
+     * @param start die Start-Adresse
+     * @param alignment die Ausrichtung
+     * @deprecated durch {@link #Feld(Bezeichner, int, int, Align)} abgeloest
      */
+    @Deprecated
     public Feld(final String name, final int length, final int start, final Align alignment) {
-        this.bezeichnung = name;
-        this.inhalt = getEmptyStringBuffer(length);
+        this(new Bezeichner(name), length, start, alignment);
+    }
+
+    /**
+     * Erzeugt ein neues Feld.
+     *
+     * @param bezeichner der Name des Felds
+     * @param length die Anzahl der Bytes
+     * @param start die Start-Adresse
+     * @param alignment die Ausrichtung
+     * @since 1.0
+     */
+    public Feld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
+        this.bezeichner = bezeichner;
+        this.inhalt = getEmptyStringBuilder(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichner = FeldX.UNBEKANNT;
+        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
     /**
@@ -212,11 +235,11 @@ public class Feld implements Comparable<Feld> {
      *            the alignment
      */
     public Feld(final int start, final String s, final Align alignment) {
-        this.inhalt = new StringBuffer(s);
+        this.inhalt = new StringBuilder(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichnung = createBezeichnung();
-        this.bezeichner = FeldX.UNBEKANNT;
+        this.bezeichner = createBezeichner();
+        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
     /**
@@ -242,15 +265,26 @@ public class Feld implements Comparable<Feld> {
      *            the alignment
      */
     public Feld(final int length, final int start, final Align alignment) {
-        this.inhalt = getEmptyStringBuffer(length);
+        this.inhalt = getEmptyStringBuilder(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichnung = createBezeichnung();
-        this.bezeichner = FeldX.UNBEKANNT;
+        this.bezeichner = createBezeichner();
+        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
-    private static StringBuffer getEmptyStringBuffer(final int length) {
-        StringBuffer sbuf = new StringBuffer(length);
+    /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public Feld(final Feld other) {
+        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.ausrichtung);
+        this.setInhalt(other.getInhalt());
+    }
+
+    private static StringBuilder getEmptyStringBuilder(final int length) {
+        StringBuilder sbuf = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
             sbuf.append(' ');
         }
@@ -267,39 +301,40 @@ public class Feld implements Comparable<Feld> {
     }
 
     private Align getAlignmentFrom(final FeldInfo info) {
+        assert info.align() != null;
         if (info.align() == Align.UNKNOWN) {
             return this.getDefaultAlignment();
         }
         return info.align();
     }
 
-    private String createBezeichnung() {
-        return this.getClass().getSimpleName() + "@" + Integer.toHexString(this.hashCode());
+    private Bezeichner createBezeichner() {
+        return new Bezeichner(this.getClass().getSimpleName() + "@" + Integer.toHexString(this.hashCode()));
     }
 
     /**
-     * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation ergibt (Factory-Methode). Der Name wird
-     * dabei aus dem uebergebenen Enum-Feld abgeleitet.
+     * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation
+     * ergibt (Factory-Methode). Der Name wird dabei aus dem uebergebenen
+     * Enum-Feld abgeleitet.
      *
-     * @param feldX
-     *            Enum fuer das erzeugte Feld
-     * @param info
-     *            die FeldInfo-Annotation mit dem gewuenschten Datentyp
+     * @param feldX Enum fuer das erzeugte Feld
+     * @param info die FeldInfo-Annotation mit dem gewuenschten Datentyp
      * @return das erzeugte Feld
      */
     public static Feld createFeld(final Enum<?> feldX, final FeldInfo info) {
         try {
             Constructor<? extends Feld> ctor = info.type().getConstructor(Enum.class, FeldInfo.class);
-            Feld feld = ctor.newInstance(feldX, info);
-            return feld;
-        } catch (NoSuchMethodException e) {
-            throw new InternalError("no constructor " + info.type().getSimpleName() + "(String, FeldInfo) found");
-        } catch (InstantiationException e) {
-            throw new InternalError("can't instantiate " + info.type());
-        } catch (IllegalAccessException e) {
-            throw new InternalError("can't access ctor for " + info.type());
-        } catch (InvocationTargetException e) {
-            throw new InternalError("error invoking ctor for " + info.type() + " (" + e.getTargetException() + ")");
+            return ctor.newInstance(feldX, info);
+        } catch (NoSuchMethodException ex) {
+            throw new IllegalArgumentException("no constructor " + info.type().getSimpleName()
+                    + "(String, FeldInfo) found", ex);
+        } catch (InstantiationException ex) {
+            throw new IllegalArgumentException("can't instantiate " + info.type(), ex);
+        } catch (IllegalAccessException ex) {
+            throw new IllegalArgumentException("can't access ctor for " + info.type(), ex);
+        } catch (InvocationTargetException ex) {
+            throw new IllegalArgumentException("error invoking ctor for " + info.type() + " ("
+                    + ex.getTargetException() + ")", ex);
         }
     }
 
@@ -309,36 +344,53 @@ public class Feld implements Comparable<Feld> {
      * @return the bezeichnung
      */
     public String getBezeichnung() {
-        return this.bezeichnung;
+        return this.bezeichner.getName();
     }
 
     /**
-     * Im Gegensatz zur Bezeichnung, die aus mehreren Woertern in Gross- und Kleinbuchstaben bestehen kann, steht der
-     * Bezeichner nur aus einem Wort (in Grossbuchstaben). Er wird aus der Bezeichnung unter Zuhilfenahme der
-     * {@link Bezeichner}- Klasse ermittelt, wenn das bezeichner-Attribute nicht gesetzt (bzw. UNBEKANNT) ist.
+     * Im Gegensatz zur Bezeichnung, die aus mehreren Woertern in Gross- und
+     * Kleinbuchstaben bestehen kann, steht der Bezeichner nur aus einem Wort
+     * (in Grossbuchstaben). Er wird aus der Bezeichnung unter Zuhilfenahme der
+     * {@link Bezeichner}-Klasse ermittelt, wenn das bezeichner-Attribute nicht
+     * gesetzt (bzw. UNBEKANNT) ist.
+     * <p>
+     * In 1.0 wurde die Methode in "getBezeichnerAsString" umbenannt, um die
+     * Verwirrung mit der Bezeichner-Klasse nicht zu gross werden zu lassen.
+     * Vorher hiess diese Klasse "getBezeichner", lieferte aber einen String
+     * zurueck.
+     * </p>
      *
-     * @since 0.6
      * @return Bezeichner in Grossbuchstaben
+     * @since 0.6 (vor 1.0 hiess diese Methode "getBezeichner")
+     * @deprecated durch {@link #getBezeichner()} ersetzt
      */
-    public String getBezeichner() {
-        if (!this.bezeichner.equals(FeldX.UNBEKANNT)) {
-            return this.bezeichner.name();
+    @Deprecated
+    public String getBezeichnerAsString() {
+        if (!this.bezeichnerEnum.equals(FeldX.UNBEKANNT)) {
+            return this.bezeichnerEnum.name();
         }
-        Field[] fields = Bezeichner.class.getFields();
-        for (int i = 0; i < fields.length; i++) {
-            try {
-                Object value = fields[i].get(null);
-                if ((value != null) && this.bezeichnung.equalsIgnoreCase(value.toString())) {
-                    return fields[i].getName();
-                }
-            } catch (IllegalAccessException e) {
-                if (log.isDebugEnabled()) {
-                    log.debug("ignored: " + e);
-                }
-            }
+        try {
+            Field field = Bezeichner.getField(this.bezeichner.getName());
+            return field.getName();
+        } catch (IllegalArgumentException iae) {
+            LOG.info("\"" + this.bezeichner + "\" not found in " + Bezeichner.class + ":", iae);
+            return this.bezeichner.getName().replaceAll(" ", "_").toUpperCase();
         }
-        log.info('"' + this.bezeichnung + "\" not found in " + Bezeichner.class);
-        return this.bezeichnung.replaceAll(" ", "_").toUpperCase();
+    }
+
+    /**
+     * Liefert den Bezeichner eines Feldes zurueck.
+     * <p>
+     * Vor 1.0 lieferte diese Methode einen "String" zurueck. Aus
+     * Konsistenz-Gruenden wurde die alte Implementierung in
+     * "GetBzeichnerAsString" umbenannt.
+     * </p>
+     *
+     * @return den Bezeichner des Feldes
+     * @since 1.0
+     */
+    public Bezeichner getBezeichner() {
+        return this.bezeichner;
     }
 
     /**
@@ -347,7 +399,7 @@ public class Feld implements Comparable<Feld> {
      * @param s
      *            the new inhalt
      */
-    public void setInhalt(final String s) {
+    public final void setInhalt(final String s) {
         int anzahlBytes = this.getAnzahlBytes();
         if (s.length() > anzahlBytes) {
             throw new IllegalArgumentException("Feld " + this.getBezeichner() + ": Parameter \"" + s
@@ -473,9 +525,9 @@ public class Feld implements Comparable<Feld> {
             return false;
         }
         if (this.byteAdresse < other.byteAdresse) {
-            return (this.getEndAdresse() >= other.byteAdresse);
+            return this.getEndAdresse() >= other.byteAdresse;
         }
-        return (other.getEndAdresse() >= this.byteAdresse);
+        return other.getEndAdresse() >= this.byteAdresse;
     }
 
     /**
@@ -554,8 +606,8 @@ public class Feld implements Comparable<Feld> {
      * Diese Methode ist dafuer vorgesehen, das Feld als normalen String ausgeben zu koennen. Zahlen koennen so z.B. in
      * der Form "123,45" ausgegeben werden, unter Beruecksichtigung der eingestellten "Locale".
      *
-     * @since 0.5.1
      * @return Inhalt des Feldes
+     * @since 0.5.1
      */
     public String format() {
         return this.getInhalt();
@@ -568,37 +620,25 @@ public class Feld implements Comparable<Feld> {
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " " + this.bezeichnung + "(" + this.byteAdresse + "-"
+        return this.getClass().getSimpleName() + " " + this.getBezeichner() + "(" + this.byteAdresse + "-"
                 + this.getEndAdresse() + "): \"" + this.getInhalt().trim() + "\"";
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Zwei Felder sind gleich, wenn sie die gleiche Adresse und den gleichen
+     * Inhalt haben.
      *
+     * @param obj das andere Feld
+     * @return true, wenn beide Felder gleich sind
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public final boolean equals(final Object other) {
-        if (other == null) {
+    public final boolean equals(final Object obj) {
+        if (!(obj instanceof Feld)) {
             return false;
         }
-        try {
-            return this.equals((Feld) other);
-        } catch (ClassCastException cce) {
-            return false;
-        }
-    }
-
-    /**
-     * Equals.
-     *
-     * @param other
-     *            the other
-     *
-     * @return true, if successful
-     */
-    public final boolean equals(final Feld other) {
-        return this.bezeichnung.equals(other.bezeichnung) && this.getInhalt().equals(other.getInhalt())
+        Feld other = (Feld) obj;
+        return this.bezeichner.equals(other.bezeichner) && this.getInhalt().equals(other.getInhalt())
                 && (this.byteAdresse == other.byteAdresse) && this.ausrichtung == other.ausrichtung;
     }
 
@@ -626,25 +666,45 @@ public class Feld implements Comparable<Feld> {
     }
 
     /**
-     * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die {@link Bezeichner}-Klasse, um festzustellen, ob
-     * es den Namen schon als Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.
+     * Liefert die uebergebene Enum-Konstante als Bezeichner zurueck. Dazu
+     * verwendet es die {@link Bezeichner}-Klasse, um festzustellen, ob es den
+     * Namen schon als Konstante dort gibt.
      *
-     * @param feldX
-     *            das Feld-Element mit dem gesuchten Bezeichner
+     * @param feldX die Enum-Konstante
+     * @return den Bezeichner
+     * @since 1.0
+     */
+    public static Bezeichner getAsBezeichner(final Enum<?> feldX) {
+        Object object = getAsObject(feldX);
+        if (object instanceof Bezeichner) {
+            return (Bezeichner) object;
+        }
+        return new Bezeichner((String) object);
+    }
+
+    /**
+     * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die
+     * {@link Bezeichner}-Klasse, um festzustellen, ob es den Namen schon als
+     * Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.
+     *
+     * @param feldX das Feld-Element mit dem gesuchten Bezeichner
      * @return z.B. "Inkassoart"
      */
     public static String getAsBezeichnung(final Enum<?> feldX) {
+        return (String) getAsObject(feldX);
+    }
+
+    private static Object getAsObject(final Enum<?> feldX) {
         try {
             Field field = Bezeichner.class.getField(feldX.name());
-            return (String) field.get(null);
-        } catch (NoSuchFieldException e) {
-            log.info("Bezeichner." + feldX.name() + " not found");
-        } catch (IllegalArgumentException e) {
-            log.warn(e);
-        } catch (IllegalAccessException e) {
-            log.warn("can't access Bezeichner." + feldX.name());
+            return field.get(null);
+        } catch (NoSuchFieldException ex) {
+            LOG.info("Bezeichner." + feldX.name() + " not found:", ex);
+        } catch (IllegalArgumentException ex) {
+            LOG.warn(ex);
+        } catch (IllegalAccessException ex) {
+            LOG.warn("can't access Bezeichner." + feldX.name(), ex);
         }
-        // return feldX.name();
         return toBezeichnung(feldX);
     }
 
@@ -667,7 +727,7 @@ public class Feld implements Comparable<Feld> {
     private static String toBezeichnung(final String name) {
         String converted = name.replaceAll("_", " ");
         ByteBuffer outputBuffer = Config.DEFAULT_ENCODING.encode(converted);
-        String convertedISO = new String(outputBuffer.array());
+        String convertedISO = new String(outputBuffer.array(), Config.DEFAULT_ENCODING);
         return WordUtils.capitalize(convertedISO.toLowerCase());
     }
 
@@ -684,6 +744,18 @@ public class Feld implements Comparable<Feld> {
         } catch (NoSuchFieldException nsfe) {
             throw new InternalError("no field " + feldX + " (" + nsfe + ")");
         }
+    }
+
+    /**
+     * Die clone-Methode hat gegenueber dem CopyConstructor
+     * {@link Feld#Feld(Feld)} den Vorteil, dass es den richtigen Typ fuer die
+     * abgeleiteten Klassen zurueckliefert.
+     *
+     * @return eine Kopie
+     */
+    @Override
+    public Object clone() {
+        return new Feld(this);
     }
 
 }

@@ -18,15 +18,22 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.NAME1;
-import static gdv.xport.feld.Bezeichner.ORT;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte53.Feld220;
+import gdv.xport.satz.model.SatzX;
+import gdv.xport.util.SatzNummer;
 
 import java.io.*;
 import java.util.List;
@@ -34,9 +41,11 @@ import java.util.List;
 import net.sf.oval.ConstraintViolation;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
+
+import patterntesting.runtime.junit.ObjectTester;
 
 /**
  * Test-Klasse fuer Satz.
@@ -46,7 +55,7 @@ import org.junit.Test;
  */
 public final class SatzTest extends AbstractSatzTest {
 
-    private static final Log log = LogFactory.getLog(SatzTest.class);
+    private static final Logger LOG = LogManager.getLogger(SatzTest.class);
     private static final String INPUT_SATZ_123
             = "0123Hello 007                                                   "
             + "                                                                "
@@ -82,8 +91,8 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testAdd() {
-        satz.add(new AlphaNumFeld(NAME1, 30, 44));
-        satz.add(new AlphaNumFeld("Bumm", 4, 50));
+        satz.add(new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_NAME1), 30, 44));
+        satz.add(new AlphaNumFeld(new Bezeichner("Bumm"), 4, 50));
     }
 
     /**
@@ -102,9 +111,9 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGet() {
-        satz.add(new AlphaNumFeld(ORT, 30, 50));
-        satz.set(ORT, "Stuttgart");
-        assertEquals("Stuttgart", satz.get(ORT).trim());
+        satz.add(new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_ORT), 30, 50));
+        satz.set(Bezeichner.NAME_ORT, "Stuttgart");
+        assertEquals("Stuttgart", satz.get(Bezeichner.NAME_ORT).trim());
     }
 
     /**
@@ -143,14 +152,14 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testExportFile() throws IOException {
         File tmpFile = File.createTempFile("gdv", ".xport");
-        log.info("File \"" + tmpFile + "\" created.");
+        LOG.info("File \"" + tmpFile + "\" created.");
         try {
             satz.export(tmpFile);
             String exported = FileUtils.readFileToString(tmpFile);
             assertEquals(satz.toLongString(), exported);
         } finally {
             tmpFile.delete();
-            log.info("File \"" + tmpFile + "\" deleted.");
+            LOG.info("File \"" + tmpFile + "\" deleted.");
         }
     }
 
@@ -163,7 +172,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testImport() throws IOException {
         Satz x = new Datensatz(123);
-        x.add(new AlphaNumFeld("F1", 5, 5));
+        x.add(new AlphaNumFeld(new Bezeichner("F1"), 5, 5));
         x.importFrom(INPUT_SATZ_123);
         assertEquals(123, x.getSatzart());
         assertEquals("Hello", x.getFeld("F1").getInhalt());
@@ -219,7 +228,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testImportFile() throws IOException {
         File tmpFile = File.createTempFile("gdv", ".xport");
-        log.info("File \"" + tmpFile + "\" created.");
+        LOG.info("File \"" + tmpFile + "\" created.");
         try {
             String fileContent = satz.toLongString();
             FileUtils.writeStringToFile(tmpFile, fileContent);
@@ -227,7 +236,7 @@ public final class SatzTest extends AbstractSatzTest {
             assertEquals(fileContent, satz.toLongString());
         } finally {
             tmpFile.delete();
-            log.info("File \"" + tmpFile + "\" deleted.");
+            LOG.info("File \"" + tmpFile + "\" deleted.");
         }
     }
 
@@ -259,7 +268,7 @@ public final class SatzTest extends AbstractSatzTest {
         assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
         List<ConstraintViolation> violations = a.validate();
         for (ConstraintViolation violation : violations) {
-            log.info("ConstraintViolation: " + violation);
+            LOG.info("ConstraintViolation: " + violation);
         }
         assertEquals(2, violations.size());
     }
@@ -272,9 +281,8 @@ public final class SatzTest extends AbstractSatzTest {
     public void testIsEquals() {
         Satz a = new Datensatz(123);
         Satz b = new Datensatz(123);
-        assertEquals(a, b);
-        assertEquals(a.hashCode(), b.hashCode());
-        b.add(new Feld("c", 5, 'c'));
+        ObjectTester.assertEquals(a, b);
+        b.add(new Feld("c", 55, 'c'));
         assertFalse(a + " differs from " + b, a.equals(b));
     }
 
@@ -312,7 +320,7 @@ public final class SatzTest extends AbstractSatzTest {
     public void testGetAsListSimple() {
         List<MetaFeldInfo> feldInfos = Satz.getMetaFeldInfos(Feld200.values());
         assertFalse("empty list", feldInfos.isEmpty());
-        log.info("Feld200 has " + feldInfos.size() + " FeldInfos.");
+        LOG.info("Feld200 has " + feldInfos.size() + " FeldInfos.");
         assertTrue("Feld200 should have more than " + Feld200.values().length + " entries",
                 feldInfos.size() >= Feld200.values().length);
     }
@@ -324,7 +332,7 @@ public final class SatzTest extends AbstractSatzTest {
     public void testGetAsListComposite() {
         List<MetaFeldInfo> feldInfos = Satz.getMetaFeldInfos(Feld220.values());
         assertFalse("empty list", feldInfos.isEmpty());
-        log.info(Feld220.class.getName() + " has " + feldInfos.size() + " FeldInfos.");
+        LOG.info(Feld220.class.getName() + " has " + feldInfos.size() + " FeldInfos.");
         assertTrue("elements are missing", feldInfos.size() > Feld220.values().length);
     }
 
@@ -347,7 +355,7 @@ public final class SatzTest extends AbstractSatzTest {
     }
 
     private static void checkSatzart(final MetaFeldInfo satzart, final int found) {
-        log.info(found + ". MetaFeldInfo: " + satzart );
+        LOG.info(found + ". MetaFeldInfo: " + satzart );
         assertEquals(1, satzart.getNr());
         assertEquals(found, satzart.getTeildatensatzNr());
     }
@@ -360,6 +368,15 @@ public final class SatzTest extends AbstractSatzTest {
     public void testSatzartInhalt() {
         Feld satzart = satz.getFeld(Feld1bis7.SATZART);
         assertEquals("0123", satzart.getInhalt());
+    }
+
+    /**
+     * Test-Methode fuer {@link Satz#getSatzTyp()}.
+     */
+    @Test
+    public void testGetSatzTyp() {
+        Satz satz220 = new SatzX(220, Feld220Wagnis0.class);
+        assertEquals(new SatzNummer(220, 10, 0), satz220.getSatzTyp());
     }
 
 }

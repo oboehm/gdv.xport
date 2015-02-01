@@ -11,7 +11,7 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>jar</packaging>
-  <version>0.9.3</version>
+  <version>1.0.0-</version>
   <name>GDV-Xport</name>
   <url>http://www.aosd.de/gdv.xport/</url>
   <organization>
@@ -26,14 +26,41 @@
     </license>
   </licenses>
 
+
+
   <properties>
-    <patterntesting.version>1.4.0</patterntesting.version>
+
+    <patterntesting.version>1.5.0</patterntesting.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.6</java.version>
+
     <!-- workaround for PMD, see http://jira.codehaus.org/browse/MPMD-86 -->
     <targetJdk>1.6</targetJdk>
     <main.class>gdv.xport.Main</main.class>
+
+    <!-- Sonar -->
+    <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+    <sonar.jacoco.reportPath>target/jacoco.exec</sonar.jacoco.reportPath>
+
+    <!-- Sonar 4.x Violations Filter -->
+    <!-- System.out and System.err should not be used as loggers -->
+    <sonar.issue.ignore.multicriteria.1.ruleKey>squid:S106</sonar.issue.ignore.multicriteria.1.ruleKey>
+    <sonar.issue.ignore.multicriteria.1.resourceKey>**/Main.java,**/*Formatter.java</sonar.issue.ignore.multicriteria.1.resourceKey>
+    <!-- System.exit(...) and Runtime.getRuntime().exit(...) should not be called -->
+    <sonar.issue.ignore.multicriteria.2.ruleKey>squid:S1147</sonar.issue.ignore.multicriteria.2.ruleKey>
+    <sonar.issue.ignore.multicriteria.2.resourceKey>**/Main.java</sonar.issue.ignore.multicriteria.2.resourceKey>
+    <!-- String literals should not be duplicated -->
+    <sonar.issue.ignore.multicriteria.3.ruleKey>squid:S1192</sonar.issue.ignore.multicriteria.3.ruleKey>
+    <sonar.issue.ignore.multicriteria.3.resourceKey>**</sonar.issue.ignore.multicriteria.3.resourceKey>
+    <!-- super.clone() should be called when overriding Object.clone() -->
+    <sonar.issue.ignore.multicriteria.4.ruleKey>squid:S1182</sonar.issue.ignore.multicriteria.4.ruleKey>
+    <sonar.issue.ignore.multicriteria.4.resourceKey>**/feld/*.java</sonar.issue.ignore.multicriteria.4.resourceKey>
+    <!-- ignore violations -->
+    <sonar.issue.ignore.multicriteria>1,2,3,4</sonar.issue.ignore.multicriteria>
+
   </properties>
+
+
 
   <build>
     
@@ -46,7 +73,42 @@
         <plugin>
 	      <groupId>org.codehaus.mojo</groupId>
 	      <artifactId>findbugs-maven-plugin</artifactId>
-	      <version>2.5.2</version>
+	      <version>2.5.3</version>
+        </plugin>
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <versionRange>[0.7.0.201403182114,)</versionRange>
+                    <goals>
+                      <goal>prepare-agent</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.17</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>2.17</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -105,7 +167,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.2</version>
+        <version>3.3</version>
         <configuration>
           <locales>de</locales>
           <outputEncoding>UTF-8</outputEncoding>
@@ -114,7 +176,7 @@
               <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.6</version>
+                <version>2.7</version>
               </plugin>
               <!-- Java Cross Reference Listing -->
               <plugin>
@@ -129,7 +191,7 @@
 		      <plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-changes-plugin</artifactId>
-		        <version>2.9</version>
+		        <version>2.10</version>
 		        <reportSets>
 		          <reportSet>
 		            <reports>
@@ -145,7 +207,7 @@
 		      <plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-javadoc-plugin</artifactId>
-		        <version>2.9</version>
+		        <version>2.10.1</version>
 		        <configuration>
 		          <source>${java.version}</source>
 		          <show>protected</show>
@@ -156,23 +218,11 @@
 		          </links>
 		        </configuration>
 		      </plugin>
-		      <!-- TODO list -->
-		      <plugin>
-		        <groupId>org.codehaus.mojo</groupId>
-		        <artifactId>taglist-maven-plugin</artifactId>
-		        <version>2.4</version>
-		        <configuration>
-		          <tags>
-		            <tag>TODO</tag>
-		            <tag>FIXME</tag>
-		          </tags>
-		        </configuration>
-		      </plugin>
 		      <!-- Unit Tests -->
 		      <plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-surefire-report-plugin</artifactId>
-		        <version>2.14</version>
+		        <version>2.17</version>
 		      </plugin>
 		      <!-- 
 		          code smells
@@ -182,7 +232,7 @@
 		      <plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-pmd-plugin</artifactId>
-		        <version>3.0.1</version>
+		        <version>3.1</version>
 		        <configuration>
 		          <linkXref>true</linkXref>
 		          <sourceEncoding>utf-8</sourceEncoding>
@@ -191,21 +241,6 @@
                   <rulesets>
                     <ruleset>${basedir}/config/pmd.xml</ruleset>
                   </rulesets>
-		        </configuration>
-		      </plugin>
-		      <!-- 
-		        Cobertura
-		        see http://mojo.codehaus.org/cobertura-maven-plugin/usage.html
-		       -->
-		      <plugin>
-		        <groupId>org.codehaus.mojo</groupId>
-		        <artifactId>cobertura-maven-plugin</artifactId>
-		        <version>2.5.2</version>
-		        <configuration>
-		          <formats>
-		            <format>html</format>
-		            <format>xml</format>
-		          </formats>
 		        </configuration>
 		      </plugin>
 		      <!-- 
@@ -229,20 +264,6 @@
 		          <relaxed>false</relaxed>
 		        </configuration>
 		      </plugin>
-		      <!-- 
-		          Checkstyle
-		          see http://maven.apache.org/plugins/maven-checkstyle-plugin
-		       -->
-		      <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-checkstyle-plugin</artifactId>
-		        <version>2.10</version>
-		        <configuration>
-		          <configLocation>${basedir}/config/checkstyle.xml</configLocation>
-		          <suppressionsLocation>${basedir}/config/checkstyle-suppressions.xml</suppressionsLocation>
-		          <suppressionsFileExpression>${basedir}/checkstyle.suppressions.file</suppressionsFileExpression>
-		        </configuration>
-		      </plugin>
           </reportPlugins>
         </configuration>
       </plugin>
@@ -250,7 +271,7 @@
   	  <plugin>
   	  	<groupId>org.apache.maven.plugins</groupId>
   	  	<artifactId>maven-compiler-plugin</artifactId>
-  	  	<version>3.0</version>
+  	  	<version>3.1</version>
   	  	<configuration>
   	  	  <source>${java.version}</source>
   	  	  <target>${java.version}</target>
@@ -266,7 +287,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>aspectj-maven-plugin</artifactId>
-        <version>1.4</version>
+        <version>1.5</version>
         <configuration>
           <options>
             <option>-verbose</option>
@@ -294,7 +315,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.14</version>
         <configuration>
           <excludes>
             <exclude>**/Abstract*.java</exclude>
@@ -306,6 +326,38 @@
             </property>
           </systemProperties>
         </configuration>
+      </plugin>
+      
+      <!-- Sonar -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>2.4</version>
+      </plugin>
+
+      <!-- Code Coverage  -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.2.201409121644</version>
+        <configuration>
+          <destFile>${sonar.jacoco.reportPath}</destFile>
+          <append>true</append>
+        </configuration>
+        <executions>
+          <execution>
+            <id>default-prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>default-report</id>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
   	</plugins>
@@ -325,11 +377,6 @@
       <version>1.2</version>
     </dependency>
     <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging</artifactId>
-      <version>1.1.1</version>
-    </dependency>
-    <dependency>
     <groupId>commons-httpclient</groupId>
     <artifactId>commons-httpclient</artifactId>
       <version>3.1</version>
@@ -337,7 +384,7 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>1.4</version>
+      <version>2.4</version>
     </dependency>
     <!-- @see http://mirrors.ibiblio.org/pub/mirrors/maven2/junit/junit/ -->
     <dependency>
@@ -347,29 +394,14 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.15</version>
-      <scope>test</scope>
-      <!-- see http://fluca1978.blogspot.com/2011/06/maven-log4j-dependency-error.html -->
-      <exclusions>
-        <exclusion>
-          <groupId>javax.mail</groupId>
-          <artifactId>mail</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>javax.jms</groupId>
-          <artifactId>jms</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.sun.jdmk</groupId>
-          <artifactId>jmxtools</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.sun.jmx</groupId>
-          <artifactId>jmxri</artifactId>
-        </exclusion>
-      </exclusions>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.1</version>
     </dependency>
 	<!-- PatternTesting -->
     <dependency>
