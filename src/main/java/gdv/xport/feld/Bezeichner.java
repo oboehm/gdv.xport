@@ -1,5 +1,4 @@
 /*
-/*
  * Copyright (c) 2009 - 2013 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

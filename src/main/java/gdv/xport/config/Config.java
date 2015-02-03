@@ -59,7 +59,8 @@ public final class Config {
         }
     }
 
-    private Config() {}
+    private Config() {
+    }
 
     /**
      * Das File-Encoding fuer den GDV-Export/Import ist auf ISO-8859-1

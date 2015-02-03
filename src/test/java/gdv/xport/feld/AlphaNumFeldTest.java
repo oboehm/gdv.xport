@@ -43,7 +43,7 @@ public final class AlphaNumFeldTest extends AbstractFeldTest {
     }
 
     /**
-     * Test method for {@link AlphaNumFeld#AlphaNumFeld(java.lang.Enum, gdv.xport.annotation.FeldInfo)}.
+     * Test-Methode fuer {@link AlphaNumFeld#AlphaNumFeld(Enum, FeldInfo)}.
      */
     @Test
     public void testAlphaNumFeldEnumFeldInfo() {
@@ -51,6 +51,16 @@ public final class AlphaNumFeldTest extends AbstractFeldTest {
         FeldInfo info = FeldTest.createFeldInfo();
         AlphaNumFeld feld = new AlphaNumFeld(alpha, info);
         assertEquals("Dynamik", feld.getBezeichnung());
+    }
+
+    /**
+     * Test-Methode fuer
+     * {@link AlphaNumFeld#AlphaNumFeld(Bezeichner, int, int, Align)}.
+     */
+    @Test
+    public void testAlphaNumFeldBezeichner() {
+        AlphaNumFeld a = new AlphaNumFeld(Bezeichner.VS_NR, 2, 4, Align.LEFT);
+        assertEquals(Bezeichner.VS_NR, a.getBezeichner());
     }
 
 }

@@ -111,7 +111,8 @@ public final class ImportExport {
      * Damit diese Klasse nicht instantiiert werden kann, ist der Konstruktor
      * "private".
      */
-    private ImportExport() {}
+    private ImportExport() {
+    }
 
 }
 

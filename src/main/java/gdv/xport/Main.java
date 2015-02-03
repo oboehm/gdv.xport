@@ -159,6 +159,7 @@ public final class Main {
             URL url = new URL(filename);
             datenpaket.importFrom(url);
         } catch (MalformedURLException e) {
+            LOG.fine("Will use '" + filename + "' as filename:" + e);
             datenpaket.importFrom(new File(filename));
         }
     }

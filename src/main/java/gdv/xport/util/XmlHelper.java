@@ -47,7 +47,8 @@ public final class XmlHelper {
      * Privater Konstruktor, damit diese Klasse nicht instantiiert werden kann
      * (sie hat nur statische Methoden).
      */
-    private XmlHelper() {}
+    private XmlHelper() {
+    }
 
     /**
      * Wird hauptsaechlich zum Testen verwendet, um einen bestehenden

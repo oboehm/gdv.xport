@@ -72,21 +72,6 @@ public enum WagnisartLeben {
 	/**
 	 * Checks if is in.
 	 *
-	 * @param wagnis the wagnis
-	 * @return true, if is in
-	 */
-	public static boolean isIn(final WagnisartLeben wagnis) {
-		for (WagnisartLeben existing : WagnisartLeben.values()) {
-			if (existing == wagnis) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Checks if is in.
-	 *
 	 * @param code the code
 	 * @return the wagnisart leben
 	 */

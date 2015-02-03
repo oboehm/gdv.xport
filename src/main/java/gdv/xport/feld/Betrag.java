@@ -31,8 +31,15 @@ import gdv.xport.annotation.FeldInfo;
 public class Betrag extends NumFeld {
 
     /**
+     * Legt ein neues Betrags-Feld an.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Name des Feldes
+     * @deprecated bitte {@link #Betrag(Bezeichner, int, int)} verwenden
      */
+    @Deprecated
     public Betrag(final String name) {
         super(name, "00000000000000");
     }
@@ -77,9 +84,6 @@ public class Betrag extends NumFeld {
 
     /**
      * Instantiiert einen neuen Betrag.
-     * <p>
-     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
-     * </p>
      *
      * @param name Name des Feldes
      * @param length Laenge

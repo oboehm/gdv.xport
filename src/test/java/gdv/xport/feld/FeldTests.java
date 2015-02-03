@@ -26,13 +26,13 @@ import patterntesting.concurrent.junit.ParallelSuite;
 /**
  * Die Klasse FeldTests ist eine Test-Suite fuer JUnit 4, mit der die einzelnen
  * JUnit-Tests parallel getestet werden.
- * 
+ *
  * @author oliver (boehm@javatux.de)
  * @since 0.7 (11.01.2012)
  */
 @RunWith(ParallelSuite.class)
 @SuiteClasses({ AlphaNumFeldTest.class, BetragMitVorzeichenTest.class, BetragTest.class, DatumTest.class,
-        FeldTest.class, NumFeldTest.class, VUNummerTest.class, ZeichenTest.class })
+        FeldTest.class, NumFeldTest.class, VersionTest.class, VUNummerTest.class, ZeichenTest.class })
 public class FeldTests {
 
 }

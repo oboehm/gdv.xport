@@ -68,17 +68,24 @@ public class Version extends Feld {
 
     /**
      * Instantiiert ein neues Versions-Objekt.
+     * <p>
+     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
+     * </p>
      *
      * @param name Bezeichner
      * @param info mit der Start-Adresse
      * @since 0.6
+     * @deprecated bitte {@link #Version(Enum)} benutzen
      */
+    @Deprecated
     public Version(final String name, final FeldInfo info) {
         this(name, info.byteAdresse());
         assert info.anzahlBytes() == 3 : "Version hat nicht das Format x.x";
     }
 
     /**
+     * Instantiiert ein neues Versions-Objekt.
+     *
      * @param name Name des Feldes
      * @param start Start-Byte (beginnend bei 1)
      * @param v Versions-String (z.B. "1.1")

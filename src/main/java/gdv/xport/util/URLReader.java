@@ -75,7 +75,7 @@ public class URLReader {
         InputStream istream = connection.getInputStream();
         BufferedReader in = new BufferedReader(new InputStreamReader(istream));
         try {
-            StringBuffer sbuf = new StringBuffer();
+            StringBuilder sbuf = new StringBuilder();
             while (in.ready()) {
                 String line = in.readLine();
                 LOG.debug(line);
