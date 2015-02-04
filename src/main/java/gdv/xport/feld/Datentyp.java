@@ -66,6 +66,14 @@ public enum Datentyp {
         return this.feldClass;
     }
 
+    /**
+     * Liefert den Datentyp als Feld zurueck.
+     *
+     * @param bezeichner der Bezeichner
+     * @param anzahlBytes die Anzahl an Bytes
+     * @param byteAddress die Byte-Adresse
+     * @return z.B. ein {@link NumFeld}-Objekt
+     */
     public Feld asFeld(final Bezeichner bezeichner, final int anzahlBytes, final int byteAddress) {
         Class<? extends Feld> clazz = this.asClass();
         try {
