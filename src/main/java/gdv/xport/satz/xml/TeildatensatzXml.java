@@ -28,6 +28,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.stream.XMLStreamException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,8 +48,11 @@ public final class TeildatensatzXml extends Teildatensatz {
     private Satzende satzende;
 
     static {
-//        Feld vertragsstatus = new Zeichen(new Bezeichner(Bezeichner.NAME_VERTRAGSSTATUS), 43);
-//        missingFelder.put("BN-2003.02.11.22.49.57.348", vertragsstatus);
+        try {
+            missingFelder.putAll(XmlService.getInstance("fehlendeFelder.xml").getFelder());
+        } catch (XMLStreamException ex) {
+            throw new IllegalArgumentException("cannot get missing felder from resource 'fehlendeFelder.xml'", ex);
+        }
     }
 
     /**

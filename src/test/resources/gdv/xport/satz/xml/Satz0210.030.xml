@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Dieser Ausschnitt wurde aus <satzarten>...</satzarten> aus der Datei "VUVM2013_010713.xml" 
+	entnommen, da diese Datei fuer erste Experimente etwas zu unhandlich (ca. 7 MB) ist.
+	Der Ausschnitt beinhalt die Daten fuer Satzart 0210.030 (Vertragsspezifischer Teil,
+	Unfall)
+	(16-Mar-2015, Oli B.)
+-->
+
+<satzarten>
+
+	<satzart referenz="BN-2003.02.11.22.49.58.630">
+		<name>Unfall</name>
+		<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+		<letzteAenderung>19.10.2009 14:23:40</letzteAenderung>
+		<technischerName>Unfall</technischerName>
+		<bemerkung />
+		<gruppeKapitel>Vertragsspezifischer Teil</gruppeKapitel>
+		<deckblattText />
+		<kennzeichnung>
+			<feldreferenz referenz="BN-2003.02.11.22.49.47.214">
+				<name>Satzart</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Satzart</technischerName>
+				<bemerkung>Konstante für Satzart</bemerkung>
+				<minimaleAnzahl>1</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung>0210</auspraegung>
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.47.314">
+				<name>Trennzeichen</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Trennzeichen</technischerName>
+				<bemerkung />
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung>.</auspraegung>
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.47.344">
+				<name>Sparte</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Sparte</technischerName>
+				<bemerkung>
+					Versicherungszweig gemäß Verordnung über die Berichterstattung von Versicherungsunternehmen gegenüber der BaFin (BerVersV) Abschnitt C
+					<br />
+					L = 010
+				</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung>030</auspraegung>
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.47.314">
+				<name>Trennzeichen</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>15.04.2003 10:06:08</letzteAenderung>
+				<technischerName>Trennzeichen</technischerName>
+				<bemerkung />
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.47.364">
+				<name>Satznummer</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>SatzNr</technischerName>
+				<bemerkung>Konstante für Teilsatznummer</bemerkung>
+				<minimaleAnzahl>1</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+		</kennzeichnung>
+		<version>1.8</version>
+		<entwurf>0</entwurf>
+		<satzanfang teilsatz="1">
+			<name>Satzanfang</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>Satzanfang</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>1</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<verknuepfungsart combobox="verknuepfungsartbox">Sequenz</verknuepfungsart>
+			<feldreferenz referenz="BN-2003.02.11.22.49.47.214">
+				<name>Satzart</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Satzart</technischerName>
+				<bemerkung>Satzart für vertragsspezifische Daten  Stelle 1-4 = 0210</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.54.264">
+				<name>VU-Nummer</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>VuNr</technischerName>
+				<bemerkung>Gemäß VU-Verzeichnis der BaFin,   linksbündig</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.55.346">
+				<name>Bündelungskennzeichen</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Buendelungskennzeichen</technischerName>
+				<bemerkung>
+					Kennzeichen für gebündelte Verträge
+					<br />
+					1 = gebündelt
+				</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.47.344">
+				<name>Sparte</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Sparte</technischerName>
+				<bemerkung>
+					Versicherungszweig gemäß Verordnung über die Berichterstattung von Versicherungsunternehmen gegenüber der BaFin (BerVersV) Abschnitt C
+					<br />
+					U = 030
+				</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.55.366">
+				<name>Versicherungsschein-Nummer</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>VsNr</technischerName>
+				<bemerkung>Versicherungsschein-Nummer, rechtsbündig, mit Leerstellen linksbündig auffüllen ohne Sonderzeichen</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.55.396">
+				<name>Folgenummer</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>FolgeNr</technischerName>
+				<bemerkung>Lfd. Nummer innerhalb einer Versicherungsschein-Nr. über alle Satzarten für die gleiche Datensendung</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+			<feldreferenz referenz="BN-2003.02.11.22.49.55.426">
+				<name>Geschäftsstelle / Vermittler</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>GeschaeftsstelleVermittler</technischerName>
+				<bemerkung>Die geschäftsführende Geschäftsstelle und der Vermittler ohne Sonderzeichen</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</feldreferenz>
+		</satzanfang>
+		<feldreferenz referenz="BN-2003.02.11.22.49.57.348">
+			<name>Vertragsstatus</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.12.2003 18:46:39</letzteAenderung>
+			<technischerName>Vertragsstatus</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.476">
+			<name>Beginn</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>22.10.2003 14:50:40</letzteAenderung>
+			<technischerName>Beginn</technischerName>
+			<bemerkung>Beginn der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.476">
+			<name>Ausschluss</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>22.10.2003 14:50:57</letzteAenderung>
+			<technischerName>Ausschluss</technischerName>
+			<bemerkung>Ausschluß der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.476">
+			<name>Änderungsdatum</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>01.08.2006 12:18:27</letzteAenderung>
+			<technischerName>Aenderungsdat</technischerName>
+			<bemerkung>Termin, zu dem der Vertragszustand wirksam wird/wurde (Gültig-ab- / Wirksam-ab-Datum).</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.58.670">
+			<name>Allgemeine Versicherungsbedingungen</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>22.10.2003 14:51:28</letzteAenderung>
+			<technischerName>AllgemeineVerssbedingungen</technischerName>
+			<bemerkung>Inkraftsetzung bei VU. Monat / Jahr (MMJJ)</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.686">
+			<name>Sonderbedingungen</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>Sonderbedingungen</technischerName>
+			<bemerkung>Vertragsbezogene oder unternehmensindividuelle Bedingungen</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.686">
+			<name>Beitragsrückgewähr</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>Beitragsrueckgewaehr</technischerName>
+			<bemerkung>Einmalige Beitragsrückgewähr bei Ablauf des Vertrages</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.686">
+			<name>Dynamik</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>Dynamik</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.58.700">
+			<name>Dynamik in %</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>17.09.2009 12:56:20</letzteAenderung>
+			<technischerName>DynamikInProz</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.58.730">
+			<name>Letzte Erhöhung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>LetzteErhoehung</technischerName>
+			<bemerkung>Monat / Jahr (MMJJJJ)</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.58.750">
+			<name>Nächste Erhöhung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>NaechsteErhoehung</technischerName>
+			<bemerkung>Monat / Jahr (MMJJJJ</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.686">
+			<name>Beitragsregulierung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>Beitragsregulierung</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.57.509">
+			<name>Währungsschlüssel</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>Waehrungsschluessel</technischerName>
+			<bemerkung>ISO-Code,</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.646">
+			<name>Zuschlagsbetrag in Währungseinheiten</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>ZuschlagsbetragInWE</technischerName>
+			<bemerkung>kumulierter Zuschlagsbetrag auf Vertragsebene</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.646">
+			<name>Abschlagsbetrag in Währungseinheiten</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>AbschlagsbetragInWE</technischerName>
+			<bemerkung>kumulierter Abschlagsbetrag auf Vertragsebene</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.646">
+			<name>Gesamtbeitrag in Währungseinheiten</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>27.07.2006 14:56:03</letzteAenderung>
+			<technischerName>GesbeitragInWE</technischerName>
+			<bemerkung>Gesamtbeitrag unter Berücksichtigung aller Zu- und Abschläge gem. Zahlungsweise ohne Gebühr und Steuer.</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.58.140">
+			<name>Abschlussprovision</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>22.10.2003 14:52:02</letzteAenderung>
+			<technischerName>Abschlussprovision</technischerName>
+			<bemerkung>Für den betreffenden Vertrag vereinbarter Provisionssatz (3,2 Stellen)</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.58.590">
+			<name>Folgeprovision</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>22.10.2003 14:52:10</letzteAenderung>
+			<technischerName>Folgeprovision</technischerName>
+			<bemerkung>s. Erläuterung für Abschlussprovision</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.686">
+			<name>Kennzeichen für abweichende Abschlussprovision</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>22.10.2003 14:52:26</letzteAenderung>
+			<technischerName>KennzeichenAbweichendeAbschlussprovision</technischerName>
+			<bemerkung>Kennzeichen, dass für den betreffenden Vertrag der Provisionssatz von den allgemeinen Provisionsvereinbarungen abweicht</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.686">
+			<name>Kennzeichen für abweichende Folgeprovision</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>22.10.2003 14:52:36</letzteAenderung>
+			<technischerName>KennzeichenAbweichendeFolgeprovision</technischerName>
+			<bemerkung>s. Erläuterung: Kennzeichen für abweichende Abschlussprovision</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.57.649">
+			<name>Restlaufzeit des Vertrages</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>RestlaufzeitVertrages</technischerName>
+			<bemerkung>gemäß Ablauf des Vertrages Grundlage für die Berechnung von Provision (JJ)</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.57.679">
+			<name>Laufzeitrabatt in %</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>22.10.2003 14:52:43</letzteAenderung>
+			<technischerName>LaufzeitrabattInProz</technischerName>
+			<bemerkung>gemäß Laufzeitrabatt VAG-Novelle 01.07.1991. (2,2 Stellen)</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.58.811">
+			<name>Tarifbezeichnung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>Tarifbezeichnung</technischerName>
+			<bemerkung>Kurzbezeichnung des Tarifes</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.58.831">
+			<name>Erhöhungsart Dynamik</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.12.2003 18:47:15</letzteAenderung>
+			<technischerName>ErhoehungsartDynamik</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.50.24.538">
+			<name>Referenz-Versicherungsscheinnummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>30.08.2006 08:52:10</letzteAenderung>
+			<technischerName>ReferenzVsNr</technischerName>
+			<bemerkung>Zusätzliche Versicherungsscheinnummer, wenn Teile des Versicherungsproduktes / -vertrages sich in anderen Versicherungsscheinnummern wiederfinden.</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.686">
+			<name>Weitere Referenznummern</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>WeitereReferenzNrn</technischerName>
+			<bemerkung>Weitere, nicht abbildbare Referenznummern vorhanden</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.57.849">
+			<name>Produktform</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>Produktform</technischerName>
+			<bemerkung>Unternehmensindividuelle Produktkürzel/-schlüssel</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.57.869">
+			<name>Produktform gültig ab</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>ProduktformGueltigAb</technischerName>
+			<bemerkung>Versionsdatum der Produktform Monat / Jahr (MMJJJJ) Wenn kein Versionsdatum vorhanden, muss das Datum der Produkteinführung geliefert werden.</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
+		<feldreferenz referenz="BN-2004.09.23.11.43.12.683">
+			<name>Produktname</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>23.09.2004 11:56:54</letzteAenderung>
+			<technischerName>Produktname</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig />
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.59.572">
+			<name>Referenznummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>23.09.2004 13:20:16</letzteAenderung>
+			<technischerName>Referenznummer</technischerName>
+			<bemerkung>Wenn in einem gebündelten Vertrag (Bündelungskennzeichen = 1) mehrere gleiche Sparten unter der selben Versicherungsscheinnummer gebündelt werden, müssen diese im Feld Referenznummer unterschieden werden.</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig />
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.686">
+			<name>Besondere Vereinbarungen</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>13.02.2008 14:16:59</letzteAenderung>
+			<technischerName>BesondereVereinbarungen</technischerName>
+			<bemerkung>Besondere Vereinbarungen gemäß Antrag</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig />
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.49.55.686">
+			<name>Direktanspruch</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>13.02.2008 14:17:28</letzteAenderung>
+			<technischerName>Direktanspruch</technischerName>
+			<bemerkung>Direkter Leistungsanspruch der versicherten Personen in der Gruppenunfallversicherung</bemerkung>
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig />
+		</feldreferenz>
+		<satzende>
+			<name>Satzende</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<technischerName>Satzende</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>1</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<verknuepfungsart combobox="verknuepfungsartbox">Sequenz</verknuepfungsart>
+			<leerstellenreferenz referenz="leerstellen">
+				<name>Leerstellen</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Leerstellen</technischerName>
+				<bemerkung>
+					Leerstellen
+					<br />
+					Freie Stellen für weitere Belegung
+				</bemerkung>
+				<minimaleAnzahl>0</minimaleAnzahl>
+				<maximaleAnzahl>1</maximaleAnzahl>
+				<auspraegung />
+				<ntabhaengig>0</ntabhaengig>
+			</leerstellenreferenz>
+		</satzende>
+	</satzart>
+
+</satzarten>
