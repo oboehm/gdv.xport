@@ -24,6 +24,7 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,8 +41,14 @@ import org.slf4j.LoggerFactory;
 public final class TeildatensatzXml extends Teildatensatz {
 
     private static final Logger LOG = LoggerFactory.getLogger(TeildatensatzXml.class);
+    private static final Map<String, FeldXml> missingFelder = new HashMap<String, FeldXml>();
     private final List<FeldReferenz> feldReferenzen = new ArrayList<FeldReferenz>();
     private Satzende satzende;
+
+    static {
+//        Feld vertragsstatus = new Zeichen(new Bezeichner(Bezeichner.NAME_VERTRAGSSTATUS), 43);
+//        missingFelder.put("BN-2003.02.11.22.49.57.348", vertragsstatus);
+    }
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart
@@ -81,15 +88,24 @@ public final class TeildatensatzXml extends Teildatensatz {
     public void updateWith(Map<String, FeldXml> felder) {
         int byteAddress = 1;
         for (FeldReferenz referenz : this.feldReferenzen) {
-            FeldXml feldXml = felder.get(referenz.getId());
-            if (feldXml == null) {
-                throw new IllegalArgumentException("referenz for " + referenz + " not found in " + felder);
-            }
+            FeldXml feldXml = getFeld(felder, referenz.getId());
             this.addFeld(feldXml, byteAddress, referenz.getBezeichner());
             byteAddress += feldXml.getAnzahlBytes();
         }
         updateSatzendeWith(byteAddress, felder);
         LOG.trace("{} felder set.", this.feldReferenzen.size());
+    }
+
+    private FeldXml getFeld(Map<String, FeldXml> felder, String id) {
+        FeldXml feldXml = felder.get(id);
+        if (feldXml == null) {
+            LOG.info("Will try fallback for reference '{}'.", id);
+            feldXml = missingFelder.get(id);
+        }
+        if (feldXml == null) {
+            throw new IllegalArgumentException("reference '" + id + "' not found in " + felder);
+        }
+        return feldXml;
     }
 
     private void updateSatzendeWith(final int startAddress, final Map<String, FeldXml> felder) {

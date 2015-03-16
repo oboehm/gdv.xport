@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Dieser Ausschnitt mit <felder>...</felder> enthaelt fehlende Felder,
+	die leider nicht in VUVM2013.xml zu finden sind.
+	(16-Mar-2015, oboehm)
+-->
+
+<service>
+
+	<felder>
+		<!-- s. Satzart 0210.030, Nr. 8 -->
+		<feld referenz="BN-2003.02.11.22.49.57.348">
+			<name>Vertragsstatus</name>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+		</feld>
+
+	</felder>
+
+</service>
