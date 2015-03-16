@@ -223,6 +223,7 @@ public final class SatzFactoryTest extends AbstractTest {
     @Test
     public void testGetSatzart210() {
         checkGetDatensatz(210, 10, gdv.xport.satz.feld.sparte10.Feld210.values(), "1");
+        checkGetDatensatz(210, 30, gdv.xport.satz.feld.sparte30.Feld210.values());
         checkGetDatensatz(210, 130, gdv.xport.satz.feld.sparte130.Feld210.values(), "1");
     }
 
