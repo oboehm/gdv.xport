@@ -19,8 +19,9 @@
 
     <release version="1.1.0-SNAPSHOT" date="2016"
              description="Registrierung XML-Beschreibung">
-      <action dev="oboehm" type="update" date="04-Feb-2015" >
-        Beginn mit n&#228;chstem Snapshot.
+      <action dev="oboehm" type="update" date="18-Mar-2015" >
+        Fehlende Felder f&#252;r Satzart 0210.030 und 0210.040
+        erg&#228;nzt.
       </action>
     </release>
 
