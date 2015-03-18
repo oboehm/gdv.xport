@@ -288,6 +288,22 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     @Test
     public void testSatz210Sparte30() throws XMLStreamException {
         SatzXml satz210 = getSatz("Satz0210.030.xml");
+        checkVertragsstatus(satz210);
+    }
+
+    /**
+     * Und auch mit Satz 210 Sparte 40 gab es kleinere Probleme - mit dem Feld
+     * 'Vertragsstatus'.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testSatz210Sparte40() throws XMLStreamException {
+        SatzXml satz210 = getSatz("Satz0210.040.xml");
+        checkVertragsstatus(satz210);
+    }
+
+    private void checkVertragsstatus(SatzXml satz210) {
         Feld vertragsstatus = satz210.getFeld(Bezeichner.NAME_VERTRAGSSTATUS);
         assertEquals(43, vertragsstatus.getByteAdresse());
     }
