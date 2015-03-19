@@ -43,13 +43,13 @@ import org.slf4j.LoggerFactory;
 public final class TeildatensatzXml extends Teildatensatz {
 
     private static final Logger LOG = LoggerFactory.getLogger(TeildatensatzXml.class);
-    private static final Map<String, FeldXml> missingFelder = new HashMap<String, FeldXml>();
+    private static final Map<String, FeldXml> MISSING_FELDER = new HashMap<String, FeldXml>();
     private final List<FeldReferenz> feldReferenzen = new ArrayList<FeldReferenz>();
     private Satzende satzende;
 
     static {
         try {
-            missingFelder.putAll(XmlService.getInstance("fehlendeFelder.xml").getFelder());
+            MISSING_FELDER.putAll(XmlService.getInstance("fehlendeFelder.xml").getFelder());
         } catch (XMLStreamException ex) {
             throw new IllegalArgumentException("cannot get missing felder from resource 'fehlendeFelder.xml'", ex);
         }
@@ -105,7 +105,7 @@ public final class TeildatensatzXml extends Teildatensatz {
         FeldXml feldXml = felder.get(id);
         if (feldXml == null) {
             LOG.info("Will try fallback for reference '{}'.", id);
-            feldXml = missingFelder.get(id);
+            feldXml = MISSING_FELDER.get(id);
         }
         if (feldXml == null) {
             throw new IllegalArgumentException("reference '" + id + "' not found in " + felder);
