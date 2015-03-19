@@ -23,6 +23,11 @@
         Fehlende Felder f&#252;r Satzart 0210.030 und 0210.040
         erg&#228;nzt.
       </action>
+      <action dev="oboehm" type="update" date="18-Mar-2015" >
+        Fehlende Feld-Referenzen k&#246;nnen jetzt in
+        'gdv/xport/satz/xml/fehlendeFelder.xml'
+        erg&#228;nzt werden.
+      </action>
     </release>
 
     <release version="1.0.0" date="03-Feb-2015"
