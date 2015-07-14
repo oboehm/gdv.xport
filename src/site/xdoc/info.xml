@@ -55,7 +55,7 @@
     <section name="Unterst&#252;tzte Satzarten">
       <p>
         Ab 1.0 werden &#252;ber den
-        <a href="../apidocs/gdv/xport/satz/xml/XmlService.html">XmlService</a>
+        <a href="apidocs/gdv/xport/satz/xml/XmlService.html">XmlService</a>
         die verschiedenen Satzarten mithilfe der XML-Beschreibung aus
         <a href="http://www.gdv-online.de/vuvm/bestand/best_2013.htm">gdv-online.de</a>
         unterst&#252;tzt. Die Basis f&#252;r den Zugriff auf ein Element
