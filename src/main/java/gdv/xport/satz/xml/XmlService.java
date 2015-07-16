@@ -54,6 +54,7 @@ public class XmlService {
     private static final Map<String, XmlService> INSTANCES = new WeakHashMap<String, XmlService>();
     private final List<SatzXml> saetze = new ArrayList<SatzXml>();
     private final Map<SatzNummer, SatzXml> satzarten = new HashMap<SatzNummer, SatzXml>();
+    private final Map<String, FeldXml> felder = new HashMap<String, FeldXml>();
 
     /**
      * Liefert einen Service anhand des Standard-XML-Handbuchs von 2013.
@@ -150,7 +151,7 @@ public class XmlService {
         if ("satzarten".equals(name.getLocalPart())) {
             parseSatzarten(element, reader);
         } else if ("felder".equals(name.getLocalPart())) {
-            Map<String, FeldXml> felder = parseFelder(element, reader);
+            this.felder.putAll(parseFelder(element, reader));
             this.setFelder(felder);
         } else {
             XmlHelper.ignore(name, reader);
@@ -204,6 +205,16 @@ public class XmlService {
             }
         }
         throw new XMLStreamException("end of " + element + " not found");
+    }
+
+    /**
+     * Liefert die Felder mit den Referenzen.
+     *
+     * @return the felder
+     * @since 1.1
+     */
+    public Map<String, FeldXml> getFelder() {
+        return this.felder;
     }
 
     private void setFelder(Map<String, FeldXml> felder) {

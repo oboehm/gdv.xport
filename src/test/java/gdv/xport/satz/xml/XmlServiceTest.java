@@ -19,6 +19,7 @@
 package gdv.xport.satz.xml;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
@@ -33,6 +34,9 @@ import gdv.xport.util.SatzNummer;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+
+import javax.xml.stream.XMLStreamException;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -300,6 +304,21 @@ public class XmlServiceTest extends AbstractXmlTest {
     private static void checkSatzart(final SatzNummer satzNr, final Class<? extends Enum<?>> enumClass)
             throws IOException {
         checkSatz(xmlService.getSatzart(satzNr), new SatzX(satzNr, enumClass));
+    }
+
+    /**
+     * In "fehlendeFelder.xml" finden sich die Felder mit fehlenden
+     * Referenzen. Dies ist der Test, ob sich diese Resource einlesen
+     * laesst.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testGetFehlendeFelder() throws XMLStreamException {
+        XmlService felderService = XmlService.getInstance("fehlendeFelder.xml");
+        Map<String, FeldXml> fehlendeFelder = felderService.getFelder();
+        assertFalse("should be not empty: " + fehlendeFelder, fehlendeFelder.isEmpty());
+        LOG.info("fehlendeFelder = {}", fehlendeFelder);
     }
 
 }

@@ -32,6 +32,7 @@ import gdv.xport.satz.model.Satz100;
 import gdv.xport.util.SatzNummer;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -277,6 +278,50 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         SatzXml satz210 = getSatz("Satz0210.010.xml");
         Feld zuzahlungsbetrag = satz210.getFeld(Bezeichner.ZUZAHLUNGSBETRAG_IN_WE);
         assertEquals(160, zuzahlungsbetrag.getByteAdresse());
+    }
+
+    /**
+     * Und auch mit Satz 210 Sparte 30 gab es kleinere Probleme - mit dem Feld
+     * 'Vertragsstatus'.
+     *
+     * @throws XMLStreamException the XML stream exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testSatz210Sparte30() throws XMLStreamException, IOException {
+        SatzXml satz210 = getSatz("Satz0210.030.xml");
+        checkVertragsstatus(satz210);
+        checkImportExport(satz210, "02109999  030      599999999990199990099991010520040105200901052"
+                + "0040901 0000000000000000000 EUR000000000000000000000000000000041"
+                + "1410000000000 0001000                                           "
+                + "           000000                                               ");
+        assertEquals("1", satz210.getFeld(Bezeichner.NAME_VERTRAGSSTATUS).getInhalt());
+    }
+
+    private static void checkImportExport(final SatzXml satz, final String content) throws IOException {
+        satz.importFrom(content);
+        StringWriter writer = new StringWriter(256);
+        satz.export(writer);
+        writer.flush();
+        writer.close();
+        assertEquals(content.trim(), writer.toString().trim());
+    }
+
+    /**
+     * Und auch mit Satz 210 Sparte 40 gab es kleinere Probleme - mit dem Feld
+     * 'Vertragsstatus'.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testSatz210Sparte40() throws XMLStreamException {
+        SatzXml satz210 = getSatz("Satz0210.040.xml");
+        checkVertragsstatus(satz210);
+    }
+
+    private void checkVertragsstatus(SatzXml satz210) {
+        Feld vertragsstatus = satz210.getFeld(Bezeichner.NAME_VERTRAGSSTATUS);
+        assertEquals(43, vertragsstatus.getByteAdresse());
     }
 
     /**

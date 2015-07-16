@@ -18,9 +18,15 @@
 
 package gdv.xport;
 
-import gdv.xport.util.*;
+import gdv.xport.util.AbstractFormatter;
+import gdv.xport.util.HtmlFormatter;
+import gdv.xport.util.NullFormatter;
+import gdv.xport.util.XmlFormatter;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -97,8 +103,6 @@ public final class Main {
         if (cmd.hasOption("import")) {
             String filename = cmd.getOptionValue("import");
             importFrom(filename, datenpaket);
-        } else if (cmd.hasOption("java")) {
-            datenpaket = SatzFactory.getAllSupportedSaetze();
         } else {
             datenpaket.importFrom(System.in);
         }
@@ -111,11 +115,9 @@ public final class Main {
      *
      * @param cmd the cmd
      * @param datenpaket the datenpaket
-     * @throws FileNotFoundException the file not found exception
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    private static void formatDatenpaket(final CommandLine cmd, final Datenpaket datenpaket) throws FileNotFoundException,
-            IOException {
+    private static void formatDatenpaket(final CommandLine cmd, final Datenpaket datenpaket) throws IOException {
         AbstractFormatter formatter = new NullFormatter(new NullWriter());
         if (cmd.hasOption("xml")) {
             formatter = new XmlFormatter();
@@ -124,26 +126,24 @@ public final class Main {
         }
         if (cmd.hasOption("export")) {
             File file = new File(cmd.getOptionValue("export"));
-            if (cmd.hasOption("java")) {
-                System.err.println("Option -java wird seit 0.9 nicht mehr unterstuetzt.");
-                return;
-            }
             if (formatter instanceof NullFormatter) {
                 String suffix = FilenameUtils.getExtension(file.getName());
-                if (suffix.equalsIgnoreCase("xml")) {
+                if ("xml".equalsIgnoreCase(suffix)) {
                     formatter = new XmlFormatter();
-                } else if (suffix.equalsIgnoreCase("html")) {
+                } else if ("html".equalsIgnoreCase(suffix)) {
                     formatter = new HtmlFormatter();
                 }
             }
             OutputStream ostream = new FileOutputStream(file);
             try {
                 formatter.setWriter(ostream);
+                formatter.write(datenpaket);
             } finally {
                 ostream.close();
             }
+        } else {
+            formatter.write(datenpaket);
         }
-        formatter.write(datenpaket);
     }
 
     /**
@@ -159,6 +159,7 @@ public final class Main {
             URL url = new URL(filename);
             datenpaket.importFrom(url);
         } catch (MalformedURLException e) {
+            LOG.fine("Will use '" + filename + "' as filename:" + e);
             datenpaket.importFrom(new File(filename));
         }
     }

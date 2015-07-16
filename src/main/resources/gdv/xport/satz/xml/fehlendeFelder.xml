@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Dieser Ausschnitt mit <felder>...</felder> enthaelt fehlende Felder,
+	die leider nicht in VUVM2013.xml zu finden sind.
+	(16-Mar-2015, oboehm)
+-->
+
+<service>
+
+	<felder>
+
+		<!-- s. Satzart 0210.030, Nr. 8 -->
+		<feld referenz="BN-2003.02.11.22.49.57.348">
+			<name>Vertragsstatus</name>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.030, Nr. 12 -->
+		<feld referenz="BN-2003.02.11.22.49.58.670">
+			<name>Allgemeine Versicherungsbedingungen</name>
+			<bytes>4</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.030, Nr. 16 -->
+		<feld referenz="BN-2003.02.11.22.49.58.700">
+			<name>Allgemeine Versicherungsbedingungen</name>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen>3</nachkommastellen>
+		</feld>
+		<!-- s. Satzart 0210.030, Nr. 17 -->
+		<feld referenz="BN-2003.02.11.22.49.58.730">
+			<name>Letzte Erhöhung</name>
+			<bytes>6</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.030, Nr. 18 -->
+		<feld referenz="BN-2003.02.11.22.49.58.750">
+			<name>Nächste Erhöhung</name>
+			<bytes>6</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.030, Nr. 25 -->
+		<feld referenz="BN-2003.02.11.22.49.58.590">
+			<name>Folgeprovision</name>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.030, Nr. 28 -->
+		<feld referenz="BN-2003.02.11.22.49.57.649">
+			<name>Restlaufzeit des Vertrages</name>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.030, Nr. 29 -->
+		<feld referenz="BN-2003.02.11.22.49.57.679">
+			<name>Laufzeitrabatt in %</name>
+			<bytes>4</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.030, Nr. 30 -->
+		<feld referenz="BN-2003.02.11.22.49.58.811">
+			<name>Tarifbezeichnung</name>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.030, Nr. 31 -->
+		<feld referenz="BN-2003.02.11.22.49.58.831">
+			<name>Erhöhungsart Dynamik</name>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.030, Nr. 32 -->
+		<feld referenz="BN-2003.02.11.22.50.24.538">
+			<name>Referenz-Versicherungsscheinnummer</name>
+			<bytes>17</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+		</feld>
+
+		<!-- s. Satzart 0210.040, Nr. 12 -->
+		<feld referenz="BN-2003.02.11.22.49.58.911">
+			<name>Summenart 1</name>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.040, Nr. 14 -->
+		<feld referenz="BN-2003.02.11.22.49.58.921">
+			<name>Deckungssumme 1 in Tausend Währungseinheiten</name>
+			<bytes>9</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.040, Nr. 15 -->
+		<feld referenz="BN-2003.02.11.22.49.58.951">
+			<name>Summenart 2</name>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.040, Nr. 18 -->
+		<feld referenz="BN-2003.02.11.22.49.58.981">
+			<name>Summenart 3</name>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.040, Nr. 21 -->
+		<feld referenz="BN-2003.02.11.22.49.59.11">
+			<name>Summenart 4</name>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+		</feld>
+		<!-- s. Satzart 0210.040, Nr. 24 -->
+		<feld referenz="BN-2003.02.11.22.49.59.41">
+			<name>Kennzeichen für Jahres-Maximierung</name>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+		</feld>
+
+	</felder>
+
+</service>

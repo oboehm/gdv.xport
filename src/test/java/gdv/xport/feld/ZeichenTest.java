@@ -40,7 +40,7 @@ public final class ZeichenTest extends AbstractFeldTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.feld.Zeichen#Zeichen(java.lang.Enum)}.
+     * Test method for {@link Zeichen#Zeichen(Enum)}.
      */
     @Test
     public void testZeichenEnum() {
@@ -49,12 +49,22 @@ public final class ZeichenTest extends AbstractFeldTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.feld.Zeichen#Zeichen(java.lang.Enum)}.
+     * Test method for {@link Zeichen#Zeichen(Enum)}.
      */
     @Test
     public void testZeichenName() {
         Zeichen zeichen = new Zeichen(Bezeichner.NAME_ANREDESCHLUESSEL, FeldTest.createFeldInfo());
         assertEquals(1, zeichen.getAnzahlBytes());
+    }
+
+    /**
+     * Test-Methode fuer {@link Zeichen#Zeichen(int, char)}.
+     */
+    @Test
+    public void testZeichen() {
+        Zeichen zeichen = new Zeichen(42, 'c');
+        assertEquals(42, zeichen.getByteAdresse());
+        assertEquals(42, zeichen.getEndAdresse());
     }
 
 }

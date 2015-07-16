@@ -25,6 +25,8 @@ public class AlphaNumFeld extends Feld {
     }
 
     /**
+     * Legt ein neues alphanumerisches Feld an.
+     *
      * @param name Bezeichner
      * @param s Inhalt
      */
@@ -33,10 +35,17 @@ public class AlphaNumFeld extends Feld {
     }
 
     /**
+     * Legt ein neues alphanumerisches Feld an.
+     * <p>
+     * TODO: Bitte nicht mehr benutzen - wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Bezeichner
      * @param start Start-Byte (beginnend bei 1)
      * @param s Inhalt
+     * @deprecated bitte {@link #AlphaNumFeld(Bezeichner, int, int)} verwenden
      */
+    @Deprecated
     public AlphaNumFeld(final String name, final int start, final String s) {
         super(name, start, s, Align.LEFT);
     }
@@ -70,11 +79,18 @@ public class AlphaNumFeld extends Feld {
     }
 
     /**
+     * Legt ein neues alphanumerisches Feld an.
+     * <p>
+     * TODO: bitte nicht verwenden, wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Bezeichner
      * @param length Laenge in Bytes
      * @param start Start-Byte (beginnend bei 1)
      * @param s Inhalt
+     * @deprecated bitte {@link #AlphaNumFeld(Bezeichner, int, int, Align)} verwendent
      */
+    @Deprecated
     public AlphaNumFeld(final String name, final int length, final int start, final String s) {
         super(name, length, start, s, Align.LEFT);
     }
@@ -165,11 +181,18 @@ public class AlphaNumFeld extends Feld {
     }
 
     /**
+     * Legt ein neues alphanumerisches Feld an.
+     * <p>
+     * TODO: bitte nicht verwenden, wird in 1.2 entfernt!
+     * </p>
+     *
      * @param name Bezeichner
      * @param length Laenge in Bytes
      * @param start Start-Byte (beginnend bei 1)
      * @param inhalt einzelnes Zeichen
+     * @deprecated bitte {@link #AlphaNumFeld(Bezeichner, int, int, Align)} verwendent
      */
+    @Deprecated
     public AlphaNumFeld(final String name, final int length, final int start, final char inhalt) {
         super(name, length, start, inhalt, Align.LEFT);
     }

@@ -223,7 +223,23 @@ public final class SatzFactoryTest extends AbstractTest {
     @Test
     public void testGetSatzart210() {
         checkGetDatensatz(210, 10, gdv.xport.satz.feld.sparte10.Feld210.values(), "1");
+        checkGetDatensatz(210, 30, gdv.xport.satz.feld.sparte30.Feld210.values());
+        checkGetDatensatz(210, 40, gdv.xport.satz.feld.sparte40.Feld210.values());
+        checkGetDatensatz(210, 50, gdv.xport.satz.feld.sparte50.Feld210.values(), "1");
+        checkGetDatensatz(210, 70, gdv.xport.satz.feld.sparte70.Feld210.values());
         checkGetDatensatz(210, 130, gdv.xport.satz.feld.sparte130.Feld210.values(), "1");
+    }
+
+    /**
+     * Falls der Satz vom XmlService kommt, gab es Probleme, dass die
+     * allgemeine Satz fuer z.B. Satzart 210 zurueckkam, und nicht der
+     * spezielle Satz fuer die entsprechende Sparte.
+     */
+    @Test
+    public void testGetSatzart210Sparte30() {
+        Datensatz satz210 = getDatensatz(210, 30);
+        Feld vertragsstatus = satz210.getFeld(Bezeichner.NAME_VERTRAGSSTATUS);
+        assertEquals(43, vertragsstatus.getByteAdresse());
     }
 
     /**

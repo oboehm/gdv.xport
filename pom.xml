@@ -11,7 +11,7 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.1.0-SNAPSHOT</version>
   <name>GDV-Xport</name>
   <url>http://www.aosd.de/gdv.xport/</url>
   <organization>
@@ -45,7 +45,7 @@
     <!-- Sonar 4.x Violations Filter -->
     <!-- System.out and System.err should not be used as loggers -->
     <sonar.issue.ignore.multicriteria.1.ruleKey>squid:S106</sonar.issue.ignore.multicriteria.1.ruleKey>
-    <sonar.issue.ignore.multicriteria.1.resourceKey>**/Main.java,**/*Formatter.java</sonar.issue.ignore.multicriteria.1.resourceKey>
+    <sonar.issue.ignore.multicriteria.1.resourceKey>**</sonar.issue.ignore.multicriteria.1.resourceKey>
     <!-- System.exit(...) and Runtime.getRuntime().exit(...) should not be called -->
     <sonar.issue.ignore.multicriteria.2.ruleKey>squid:S1147</sonar.issue.ignore.multicriteria.2.ruleKey>
     <sonar.issue.ignore.multicriteria.2.resourceKey>**/Main.java</sonar.issue.ignore.multicriteria.2.resourceKey>

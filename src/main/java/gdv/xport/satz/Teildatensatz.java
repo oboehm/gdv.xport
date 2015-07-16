@@ -150,16 +150,6 @@ public class Teildatensatz extends Satz {
         return this.satznummer;
     }
 
-//    /**
-//     * Setzt die Satznummer.
-//     *
-//     * @param nr die neue Satznummer
-//     */
-//    public void setNummer(final int nr) {
-//        this.satznummer.setInhalt(nr);
-//        this.getFeld(new Bezeichner(SATZNUMMER)).setInhalt(nr);
-//    }
-
     /**
      * Fuegt das angegebene Feld in den Teildatensatz ein.
      * Bei Einfuegen wird ueberprueft, ob es zu Ueberschneidungen mit
@@ -374,7 +364,7 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public void export(final Writer writer, final String eod) throws IOException {
-        StringBuffer data = new StringBuffer(256);
+        StringBuilder data = new StringBuilder(256);
         for (int i = 0; i < 256; i++) {
             data.append(' ');
         }

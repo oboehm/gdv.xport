@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <FindBugsFilter>
-  <Match>
-    <Bug pattern="EQ_DOESNT_OVERRIDE_EQUALS" />
-  </Match>
-  <Match>
-  	<!-- disabled because on false alarm on build server -->
-    <Class name="gdv.xport.Main" />
-    <Bug pattern="NP_ALWAYS_NULL" />
-  </Match>
-  <Match>
-  	<!-- disabled because on false alarm on build server -->
-    <Class name="gdv.xport.Main" />
-    <Bug pattern="NP_NULL_ON_SOME_PATH" />
-  </Match>
-  <Match>
-  	<!-- disabled because on false alarm on build server -->
-    <Bug pattern="NP_NULL_PARAM_DEREF_ALL_TARGETS_DANGEROUS" />
-  </Match>
-  <Match>
-  	<!-- disabled because we want to use default encoding -->
-    <Bug pattern="DM_DEFAULT_ENCODING" />
-  </Match>
-  <Match>
-    <Class name="gdv.xport.util.AbstractFormatter" />
-    <Method name="setWriter" />
-    <Bug pattern="OBL_UNSATISFIED_OBLIGATION" />
-  </Match>
-  <Match>
+	<Match>
+		<Bug pattern="EQ_DOESNT_OVERRIDE_EQUALS" />
+	</Match>
+	<Match>
+		<!-- disabled because on false alarm on build server -->
+		<Class name="gdv.xport.Main" />
+		<Bug pattern="NP_ALWAYS_NULL" />
+	</Match>
+	<Match>
+		<!-- disabled because on false alarm on build server -->
+		<Class name="gdv.xport.Main" />
+		<Bug pattern="NP_NULL_ON_SOME_PATH" />
+	</Match>
+	<Match>
+		<!-- disabled because on false alarm on build server -->
+		<Bug pattern="NP_NULL_PARAM_DEREF_ALL_TARGETS_DANGEROUS" />
+	</Match>
+	<Match>
+		<!-- disabled because we want to use default encoding -->
+		<Bug pattern="DM_DEFAULT_ENCODING" />
+	</Match>
+	<Match>
+		<Class name="gdv.xport.util.AbstractFormatter" />
+		<Method name="setWriter" />
+		<Bug pattern="OBL_UNSATISFIED_OBLIGATION" />
+	</Match>
+	<Match>
+		<Class name="gdv.xport.satz.xml.XmlService" />
+		<Method name="createXMLEventReader" />
+		<Bug pattern="OBL_UNSATISFIED_OBLIGATION" />
+	</Match>
+	<Match>
   	<!-- disabled because copy constructor works better than super.clone -->
-    <Class name="gdv.xport.feld.*" />
-    <Bug pattern="CN_IDIOM_NO_SUPER_CALL" />
-  </Match>
+    	<Class name="gdv.xport.feld.*" />
+		<Bug pattern="CN_IDIOM_NO_SUPER_CALL" />
+	</Match>
 </FindBugsFilter>

@@ -55,7 +55,8 @@ public final class HelloWorld {
      * Damit diese Klasse nicht instantiiert werden kann, ist der Konstruktor
      * "private".
      */
-    private HelloWorld() {}
+    private HelloWorld() {
+    }
 
 }
 

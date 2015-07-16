@@ -24,8 +24,11 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.stream.XMLStreamException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +43,17 @@ import org.slf4j.LoggerFactory;
 public final class TeildatensatzXml extends Teildatensatz {
 
     private static final Logger LOG = LoggerFactory.getLogger(TeildatensatzXml.class);
+    private static final Map<String, FeldXml> MISSING_FELDER = new HashMap<String, FeldXml>();
     private final List<FeldReferenz> feldReferenzen = new ArrayList<FeldReferenz>();
     private Satzende satzende;
+
+    static {
+        try {
+            MISSING_FELDER.putAll(XmlService.getInstance("fehlendeFelder.xml").getFelder());
+        } catch (XMLStreamException ex) {
+            throw new IllegalArgumentException("cannot get missing felder from resource 'fehlendeFelder.xml'", ex);
+        }
+    }
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart
@@ -81,15 +93,24 @@ public final class TeildatensatzXml extends Teildatensatz {
     public void updateWith(Map<String, FeldXml> felder) {
         int byteAddress = 1;
         for (FeldReferenz referenz : this.feldReferenzen) {
-            FeldXml feldXml = felder.get(referenz.getId());
-            if (feldXml == null) {
-                throw new IllegalArgumentException("referenz for " + referenz + " not found in " + felder);
-            }
+            FeldXml feldXml = getFeld(felder, referenz.getId());
             this.addFeld(feldXml, byteAddress, referenz.getBezeichner());
             byteAddress += feldXml.getAnzahlBytes();
         }
         updateSatzendeWith(byteAddress, felder);
         LOG.trace("{} felder set.", this.feldReferenzen.size());
+    }
+
+    private FeldXml getFeld(Map<String, FeldXml> felder, String id) {
+        FeldXml feldXml = felder.get(id);
+        if (feldXml == null) {
+            LOG.info("Will try fallback for reference '{}'.", id);
+            feldXml = MISSING_FELDER.get(id);
+        }
+        if (feldXml == null) {
+            throw new IllegalArgumentException("reference '" + id + "' not found in " + felder);
+        }
+        return feldXml;
     }
 
     private void updateSatzendeWith(final int startAddress, final Map<String, FeldXml> felder) {
@@ -131,26 +152,5 @@ public final class TeildatensatzXml extends Teildatensatz {
         }
         throw new IllegalArgumentException(bezeichner + " not part of " + this);
     }
-
-//    /**
-//     * Problem beim Parsen ist, dass die Felder erst am Ende des Parsens gesetzt
-//     * werden, diese Methode aber schon vorher benoetigt wird, um die
-//     * unterstuetzten Satzarten ermitteln zu koennen. Diese Infos befinden sich
-//     * aber zu diesem Zeitpunkt schon in den zwischengespeicherten
-//     * FeldReferenzen.
-//     *
-//     * @param bezeichner the bezeichner
-//     * @return true, if successful
-//     * @see gdv.xport.satz.Teildatensatz#hasFeld(gdv.xport.feld.Bezeichner)
-//     */
-//    @Override
-//    public boolean hasFeld(final Bezeichner bezeichner) {
-//        for (FeldReferenz ref : this.feldReferenzen) {
-//            if (bezeichner.equals(ref.getBezeichner())) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
 
 }

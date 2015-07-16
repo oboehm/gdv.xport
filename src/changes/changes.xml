@@ -17,7 +17,20 @@
 
   <body>
 
-    <release version="1.0.0" date="Feb-2015"
+    <release version="1.1.0-SNAPSHOT" date="2016"
+             description="Registrierung XML-Beschreibung">
+      <action dev="oboehm" type="update" date="18-Mar-2015" >
+        Fehlende Felder f&#252;r Satzart 0210.030 und 0210.040
+        erg&#228;nzt.
+      </action>
+      <action dev="oboehm" type="update" date="18-Mar-2015" >
+        Fehlende Feld-Referenzen k&#246;nnen jetzt in
+        'gdv/xport/satz/xml/fehlendeFelder.xml'
+        erg&#228;nzt werden.
+      </action>
+    </release>
+
+    <release version="1.0.0" date="03-Feb-2015"
              description="Streaming-API">
       <action dev="oboehm" type="update" date="24-Jan-2015" >
         Anpassungen an die 2013er-Version des GDV-Handbuchs.

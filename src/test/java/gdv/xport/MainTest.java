@@ -18,6 +18,7 @@
 
 package gdv.xport;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.xml.stream.XMLStreamException;
@@ -48,7 +49,22 @@ public final class MainTest {
      */
     @Test
     public void testMain() throws IOException, XMLStreamException {
-        String[] args = {"-import", "src/test/resources/musterdatei_041222.txt", "-validate" };
+        String[] args = { "-import", "src/test/resources/musterdatei_041222.txt",
+                "-export", "target/musterdatei_041222.html", "-validate" };
+        Main.main(args);
+    }
+
+    /**
+     * Test-Methode fuer {@link gdv.xport.Main#main(java.lang.String[])}.
+     * Diese Methode probiert jetzt die XML-Variante aus
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws XMLStreamException the xML stream exception
+     */
+    @Test
+    public void testMainXml() throws IOException, XMLStreamException {
+        String[] args = { "-import", new File("src/test/resources/musterdatei_041222.txt").toURI().toString(), "-xml",
+                "-export", "target/musterdatei_041222.xml" };
         Main.main(args);
     }
 

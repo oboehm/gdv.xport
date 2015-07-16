@@ -203,9 +203,11 @@ public final class SatzNummer {
 		if (this.sparte >= 0) {
 			buf.append("." + new DecimalFormat("000").format(this.sparte));
 			if (this.wagnisart >= 0) {
-				buf.append("." + this.wagnisart);
+				buf.append(".");
+				buf.append(this.wagnisart);
 				if (this.teildatensatzNummer >= 0) {
-					buf.append("." + this.teildatensatzNummer);
+					buf.append(".");
+	                buf.append(this.teildatensatzNummer);
 				}
 			}
 		}

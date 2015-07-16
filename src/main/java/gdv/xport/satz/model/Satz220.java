@@ -46,16 +46,16 @@ import java.util.Map;
 public class Satz220 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
-    private static final Map<Integer, Enum<?>[]> mapping = new HashMap<Integer, Enum<?>[]>();
+    private static final Map<Integer, Enum<?>[]> MAPPING = new HashMap<Integer, Enum<?>[]>();
 
     static {
-        mapping.put(30, gdv.xport.satz.feld.sparte30.Feld220.values());
-        mapping.put(40, gdv.xport.satz.feld.sparte40.Feld220.values());
-        mapping.put(51, gdv.xport.satz.feld.sparte51.Feld220.values());
-        mapping.put(52, gdv.xport.satz.feld.sparte52.Feld220.values());
-        mapping.put(53, gdv.xport.satz.feld.sparte53.Feld220.values());
-        mapping.put(70, gdv.xport.satz.feld.sparte70.Feld220.values());
-        mapping.put(140, gdv.xport.satz.feld.sparte140.Feld220.values());
+        MAPPING.put(30, gdv.xport.satz.feld.sparte30.Feld220.values());
+        MAPPING.put(40, gdv.xport.satz.feld.sparte40.Feld220.values());
+        MAPPING.put(51, gdv.xport.satz.feld.sparte51.Feld220.values());
+        MAPPING.put(52, gdv.xport.satz.feld.sparte52.Feld220.values());
+        MAPPING.put(53, gdv.xport.satz.feld.sparte53.Feld220.values());
+        MAPPING.put(70, gdv.xport.satz.feld.sparte70.Feld220.values());
+        MAPPING.put(140, gdv.xport.satz.feld.sparte140.Feld220.values());
     }
 
     /**
@@ -83,7 +83,7 @@ public class Satz220 extends SpartensatzX {
      */
     @Override
     protected Map<Integer, Enum<?>[]> getMapping() {
-        return mapping;
+        return MAPPING;
     }
 
     /**
@@ -174,7 +174,7 @@ public class Satz220 extends SpartensatzX {
     }
 
     private void setUpTeildatensatz(final int n, final Teildatensatz tds) {
-        Enum<?>[] felder = mapping.get(this.getSparte());
+        Enum<?>[] felder = MAPPING.get(this.getSparte());
         List<MetaFeldInfo> metaFeldInfos = getMetaFeldInfos(felder);
         for (MetaFeldInfo info : metaFeldInfos) {
             if (info.getTeildatensatzNr() == n) {

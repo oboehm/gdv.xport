@@ -166,4 +166,14 @@ public final class VorsatzTest extends AbstractSatzTest {
         assertEquals(input, swriter.toString());
     }
 
+    /**
+     * Test-Methode fuer {@link Vorsatz#setAdressat(String)}.
+     */
+    @Test
+    public void testSetAdressat() {
+        String adressat = "Obelix";
+        vorsatz.setAdressat(adressat);
+        assertEquals(adressat, vorsatz.getAdressat());
+    }
+
 }
