@@ -18,9 +18,7 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.common.VertragsStatus;
@@ -29,14 +27,18 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
+ * Test-Klasse fuer {@link Teildatensatz}.
+ *
  * @author oliver
  * @since 14.10.2009
- * @version $Revision$
- *
  */
 public class TeildatensatzTest extends AbstractSatzTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(TeildatensatzTest.class);
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -71,6 +73,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Feld prev = iterator.next();
         while(iterator.hasNext()) {
             Feld next = iterator.next();
+            LOG.info("Feld: {}", next);
             assertTrue("wrong sorted: " + prev + " > " + next, prev.getByteAdresse() < next
                     .getByteAdresse());
             prev = next;

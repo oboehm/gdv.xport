@@ -18,7 +18,9 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import gdv.xport.satz.feld.common.WagnisartLeben;
 
 import org.junit.Test;
 
@@ -48,8 +50,19 @@ public class SatzNummerTest {
     @Test
     public void testNotEquals() {
         SatzNummer one = new SatzNummer(1, 1);
-        SatzNummer other = new SatzNummer(1, 1, 0);
+        SatzNummer other = new SatzNummer(1, 1, 1);
         assertFalse("expected: " + one + " != " + other, one.equals(other));
+    }
+
+    /**
+     * Zwei Satznummern ohne Wagnisart sind gleich, egal wie die Satznummer
+     * instantiiert wird.
+     */
+    @Test
+    public void testEqualsSparte() {
+        SatzNummer satz210 = new SatzNummer(210, 30);
+        SatzNummer sparte30 = new SatzNummer(210, 30, WagnisartLeben.NULL.getCode(), -1);
+        ObjectTester.assertEquals(satz210, sparte30);
     }
 
     /**

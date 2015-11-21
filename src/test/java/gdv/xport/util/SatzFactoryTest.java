@@ -231,6 +231,18 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     /**
+     * Falls der Satz vom XmlService kommt, gab es Probleme, dass die
+     * allgemeine Satz fuer z.B. Satzart 210 zurueckkam, und nicht der
+     * spezielle Satz fuer die entsprechende Sparte.
+     */
+    @Test
+    public void testGetSatzart210Sparte30() {
+        Datensatz satz210 = getDatensatz(210, 30);
+        Feld vertragsstatus = satz210.getFeld(Bezeichner.NAME_VERTRAGSSTATUS);
+        assertEquals(43, vertragsstatus.getByteAdresse());
+    }
+
+    /**
      * Test von Satzart 220.
      */
     @Test
