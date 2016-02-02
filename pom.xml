@@ -30,7 +30,7 @@
 
   <properties>
 
-    <patterntesting.version>1.5.0</patterntesting.version>
+    <patterntesting.version>1.6.0</patterntesting.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.6</java.version>
 
