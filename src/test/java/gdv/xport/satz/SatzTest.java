@@ -33,7 +33,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte53.Feld220;
 import gdv.xport.satz.model.SatzX;
-import gdv.xport.util.SatzNummer;
+import gdv.xport.util.SatzTyp;
 
 import java.io.*;
 import java.util.List;
@@ -376,7 +376,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testGetSatzTyp() {
         Satz satz220 = new SatzX(220, Feld220Wagnis0.class);
-        assertEquals(new SatzNummer(220, 10, 0), satz220.getSatzTyp());
+        assertEquals(new SatzTyp(220, 10, 0), satz220.getSatzTyp());
     }
 
 }

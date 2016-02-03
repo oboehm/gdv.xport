@@ -16,7 +16,7 @@ import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
-import gdv.xport.util.SatzNummer;
+import gdv.xport.util.SatzTyp;
 
 import java.io.*;
 import java.lang.reflect.Field;
@@ -512,17 +512,17 @@ public abstract class Satz {
 	 * @return den Satz-Typ
 	 * @since 1.0
 	 */
-	public final SatzNummer getSatzTyp() {
+	public final SatzTyp getSatzTyp() {
 	    if (this.hasWagnisart()) {
 	        String wagnisart = this.getWagnisart();
 	        if (StringUtils.isBlank(wagnisart)) {
-	            return new SatzNummer(this.getSatzart(), this.getSparte());
+	            return new SatzTyp(this.getSatzart(), this.getSparte());
 	        }
-            return new SatzNummer(this.getSatzart(), this.getSparte(), Integer.parseInt(wagnisart));
+            return new SatzTyp(this.getSatzart(), this.getSparte(), Integer.parseInt(wagnisart));
 	    } else if (this.hasSparte()) {
-	        return new SatzNummer(this.getSatzart(), this.getSparte());
+	        return new SatzTyp(this.getSatzart(), this.getSparte());
 	    } else {
-	        return new SatzNummer(this.getSatzart());
+	        return new SatzTyp(this.getSatzart());
 	    }
 	}
 

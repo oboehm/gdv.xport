@@ -29,7 +29,7 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.model.Satz100;
-import gdv.xport.util.SatzNummer;
+import gdv.xport.util.SatzTyp;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -329,9 +329,9 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      */
     @Test
     public void testGetSupportedSatzTypen() {
-        List<SatzNummer> supported = satz100.getSupportedSatzTypen();
+        List<SatzTyp> supported = satz100.getSupportedSatzTypen();
         assertEquals(1, supported.size());
-        assertEquals(new SatzNummer(100), supported.get(0));
+        assertEquals(new SatzTyp(100), supported.get(0));
     }
 
     /**
@@ -344,8 +344,8 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     @Test
     public void testSatz220Wagnis0() throws XMLStreamException {
         SatzXml satz220 = getSatz("Satz0220.010.0.xml");
-        List<SatzNummer> supported = satz220.getSupportedSatzTypen();
-        assertEquals(new SatzNummer(220, 10, 0), supported.get(0));
+        List<SatzTyp> supported = satz220.getSupportedSatzTypen();
+        assertEquals(new SatzTyp(220, 10, 0), supported.get(0));
     }
 
 }

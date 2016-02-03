@@ -43,7 +43,7 @@ public class NotRegisteredException extends RuntimeException {
      *
      * @param satzNr Satzart, die nicht registriert wurde
      */
-    public NotRegisteredException(final SatzNummer satzNr) {
+    public NotRegisteredException(final SatzTyp satzNr) {
         super("unregistered Satzart " + satzNr);
     }
 

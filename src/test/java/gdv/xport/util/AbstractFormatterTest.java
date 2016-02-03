@@ -19,20 +19,23 @@
 package gdv.xport.util;
 
 import static org.junit.Assert.assertEquals;
-import gdv.xport.Datenpaket;
-import gdv.xport.DatenpaketStreamer;
-import gdv.xport.event.ImportListener;
 
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.regex.Pattern;
 
-import javax.xml.stream.*;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 
+import gdv.xport.Datenpaket;
+import gdv.xport.DatenpaketStreamer;
+import gdv.xport.event.ImportListener;
 import patterntesting.runtime.junit.FileTester;
 
 
@@ -57,7 +60,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
      * <pre>
      * -Dfile.encoding=ISO-8859-1
      * </pre>
-     * gestartet werden. Falsl nicht, wird dieser Test fehlschlagen.
+     * gestartet werden. falls nicht, wird dieser Test fehlschlagen.
      */
     @Test
     public void testFileEncoding() {

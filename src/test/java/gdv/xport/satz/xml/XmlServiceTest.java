@@ -29,7 +29,7 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.model.*;
 import gdv.xport.util.NotUniqueException;
-import gdv.xport.util.SatzNummer;
+import gdv.xport.util.SatzTyp;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -151,7 +151,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart210Sparte10() throws IOException {
-        checkSatzart(new SatzNummer(210, 10), new Satz210(10));
+        checkSatzart(new SatzTyp(210, 10), new Satz210(10));
     }
 
     /**
@@ -162,7 +162,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart210Sparte30() throws IOException {
-        checkSatzart(new SatzNummer(210, 30), new Satz210(30));
+        checkSatzart(new SatzTyp(210, 30), new Satz210(30));
     }
 
     /**
@@ -173,7 +173,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart210Sparte40() throws IOException {
-        checkSatzart(new SatzNummer(210, 40), new Satz210(40));
+        checkSatzart(new SatzTyp(210, 40), new Satz210(40));
     }
 
     /**
@@ -184,7 +184,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart210Sparte50() throws IOException {
-        checkSatzart(new SatzNummer(210, 50), new Satz210(50));
+        checkSatzart(new SatzTyp(210, 50), new Satz210(50));
     }
 
     /**
@@ -195,7 +195,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart210Sparte70() throws IOException {
-        checkSatzart(new SatzNummer(210, 70), new Satz210(70));
+        checkSatzart(new SatzTyp(210, 70), new Satz210(70));
     }
 
     /**
@@ -206,7 +206,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart210Sparte130() throws IOException {
-        checkSatzart(new SatzNummer(210, 130), new Satz210(130));
+        checkSatzart(new SatzTyp(210, 130), new Satz210(130));
     }
 
     /**
@@ -261,7 +261,7 @@ public class XmlServiceTest extends AbstractXmlTest {
         checkSatz(satzXml, reference);
     }
 
-    private static void checkSatzart(final SatzNummer satzNr, final Satz reference) throws IOException {
+    private static void checkSatzart(final SatzTyp satzNr, final Satz reference) throws IOException {
         SatzXml satzXml = xmlService.getSatzart(satzNr);
         assertEquals(satzNr.getSparte(), satzXml.getSparte());
         checkSatz(satzXml, reference);
@@ -298,10 +298,10 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart220Wagnis0() throws IOException {
-        checkSatzart(new SatzNummer(220, 10, 0), Feld220Wagnis0.class);
+        checkSatzart(new SatzTyp(220, 10, 0), Feld220Wagnis0.class);
     }
 
-    private static void checkSatzart(final SatzNummer satzNr, final Class<? extends Enum<?>> enumClass)
+    private static void checkSatzart(final SatzTyp satzNr, final Class<? extends Enum<?>> enumClass)
             throws IOException {
         checkSatz(xmlService.getSatzart(satzNr), new SatzX(satzNr, enumClass));
     }

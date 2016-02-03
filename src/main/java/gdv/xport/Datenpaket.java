@@ -27,7 +27,7 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzFactory;
-import gdv.xport.util.SatzNummer;
+import gdv.xport.util.SatzTyp;
 import gdv.xport.util.URLReader;
 
 import java.io.*;
@@ -330,7 +330,7 @@ public final class Datenpaket {
                 teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
             }
         }
-        Datensatz satz = SatzFactory.getDatensatz(new SatzNummer(satzart, sparte, wagnisart
+        Datensatz satz = SatzFactory.getDatensatz(new SatzTyp(satzart, sparte, wagnisart
                 .getCode(), teildatensatzNummer.getCode()));
         satz.importFrom(reader);
         return satz;

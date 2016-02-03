@@ -21,7 +21,7 @@ package gdv.xport.satz.xml;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
-import gdv.xport.util.SatzNummer;
+import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlHelper;
 
 import java.util.ArrayList;
@@ -188,13 +188,13 @@ public final class SatzXml extends Datensatz {
      *
      * @return the supported satz typen
      */
-    public List<SatzNummer> getSupportedSatzTypen() {
-        List<SatzNummer> satzTypen = new ArrayList<SatzNummer>();
+    public List<SatzTyp> getSupportedSatzTypen() {
+        List<SatzTyp> satzTypen = new ArrayList<SatzTyp>();
         if (this.hasWagnisart()) {
             TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(1);
             FeldReferenz feldReferenz = tdsXml.getFeldRefenz(new Bezeichner(Bezeichner.NAME_WAGNISART));
             for (String value : feldReferenz.getDefaultWerte()) {
-                satzTypen.add(new SatzNummer(this.getSatzart(), this.getSparte(), Integer.parseInt(value)));
+                satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), Integer.parseInt(value)));
             }
         } else {
             satzTypen.add(this.getSatzTyp());

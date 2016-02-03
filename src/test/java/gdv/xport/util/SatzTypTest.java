@@ -27,30 +27,30 @@ import org.junit.Test;
 import patterntesting.runtime.junit.ObjectTester;
 
 /**
- * JUnit-Tests fuer {@link SatzNummer}.
+ * JUnit-Tests fuer {@link SatzTyp}.
  *
  * @author oliver
  * @since 0.9 (26.01.2013)
  */
-public class SatzNummerTest {
+public class SatzTypTest {
 
     /**
-     * Test method for {@link SatzNummer#equals(Object)}.
+     * Test method for {@link SatzTyp#equals(Object)}.
      */
     @Test
     public void testEqualsObject() {
-        SatzNummer one = new SatzNummer(1);
-        SatzNummer anotherOne = new SatzNummer(1);
+        SatzTyp one = new SatzTyp(1);
+        SatzTyp anotherOne = new SatzTyp(1);
         ObjectTester.assertEquals(one, anotherOne);
     }
 
     /**
-     * Test method for {@link SatzNummer#equals(Object)}.
+     * Test method for {@link SatzTyp#equals(Object)}.
      */
     @Test
     public void testNotEquals() {
-        SatzNummer one = new SatzNummer(1, 1);
-        SatzNummer other = new SatzNummer(1, 1, 1);
+        SatzTyp one = new SatzTyp(1, 1);
+        SatzTyp other = new SatzTyp(1, 1, 1);
         assertFalse("expected: " + one + " != " + other, one.equals(other));
     }
 
@@ -60,8 +60,8 @@ public class SatzNummerTest {
      */
     @Test
     public void testEqualsSparte() {
-        SatzNummer satz210 = new SatzNummer(210, 30);
-        SatzNummer sparte30 = new SatzNummer(210, 30, WagnisartLeben.NULL.getCode(), -1);
+        SatzTyp satz210 = new SatzTyp(210, 30);
+        SatzTyp sparte30 = new SatzTyp(210, 30, WagnisartLeben.NULL.getCode(), -1);
         ObjectTester.assertEquals(satz210, sparte30);
     }
 
@@ -70,10 +70,10 @@ public class SatzNummerTest {
      */
     @Test
     public void testToString() {
-        assertEquals("0001", new SatzNummer(1).toString());
-        assertEquals("0210.050", new SatzNummer(210, 50).toString());
-        assertEquals("0220.010.0", new SatzNummer(220, 10, 0).toString());
-        assertEquals("0220.010.6.1", new SatzNummer(220, 10, 6, 1).toString());
+        assertEquals("0001", new SatzTyp(1).toString());
+        assertEquals("0210.050", new SatzTyp(210, 50).toString());
+        assertEquals("0220.010.0", new SatzTyp(220, 10, 0).toString());
+        assertEquals("0220.010.6.1", new SatzTyp(220, 10, 6, 1).toString());
     }
 
 }

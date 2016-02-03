@@ -97,12 +97,12 @@ import org.apache.logging.log4j.Logger;
 public final class SatzFactory {
 
     private static final Logger LOG = LogManager.getLogger(SatzFactory.class);
-    private static final Map<SatzNummer, Class<? extends Satz>> REGISTERED_SATZ_CLASSES =
-            new ConcurrentHashMap<SatzNummer, Class<? extends Satz>>();
-    private static final Map<SatzNummer, Class<? extends Datensatz>> REGISTERED_DATENSATZ_CLASSES =
-            new ConcurrentHashMap<SatzNummer, Class<? extends Datensatz>>();
-    private static final Map<SatzNummer, Class<? extends Enum<?>>> REGISTERED_ENUM_CLASSES =
-            new ConcurrentHashMap<SatzNummer, Class<? extends Enum<?>>>();
+    private static final Map<SatzTyp, Class<? extends Satz>> REGISTERED_SATZ_CLASSES =
+            new ConcurrentHashMap<SatzTyp, Class<? extends Satz>>();
+    private static final Map<SatzTyp, Class<? extends Datensatz>> REGISTERED_DATENSATZ_CLASSES =
+            new ConcurrentHashMap<SatzTyp, Class<? extends Datensatz>>();
+    private static final Map<SatzTyp, Class<? extends Enum<?>>> REGISTERED_ENUM_CLASSES =
+            new ConcurrentHashMap<SatzTyp, Class<? extends Enum<?>>>();
     private static final XmlService XML_SERVICE = XmlService.getInstance();
 
     static {
@@ -116,125 +116,125 @@ public final class SatzFactory {
         register(Nachsatz.class, 9999);
 
         // Sparte 10 - Leben - Wagnisart 0
-        registerEnum(Feld220Wagnis0.class, new SatzNummer(220, 10, 0));
+        registerEnum(Feld220Wagnis0.class, new SatzTyp(220, 10, 0));
 
         // Sparte 10 - Leben - Wagnisart 1 & 3
-        registerEnum(Feld220Wagnis13.class, new SatzNummer(220, 10, 1));
-        registerEnum(Feld220Wagnis13.class, new SatzNummer(220, 10, 3));
+        registerEnum(Feld220Wagnis13.class, new SatzTyp(220, 10, 1));
+        registerEnum(Feld220Wagnis13.class, new SatzTyp(220, 10, 3));
         registerEnum(Feld220Wagnis13Auszahlungen.class,
-                new SatzNummer(220, 10, 1, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+                new SatzTyp(220, 10, 1, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
         registerEnum(Feld220Wagnis13Auszahlungen.class,
-                new SatzNummer(220, 10, 3, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+                new SatzTyp(220, 10, 3, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
         registerEnum(Feld220Wagnis13Bezugsrechte.class,
-                new SatzNummer(220, 10, 1, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+                new SatzTyp(220, 10, 1, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
         registerEnum(Feld220Wagnis13Bezugsrechte.class,
-                new SatzNummer(220, 10, 3, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
-        registerEnum(Feld220Wagnis13ZukSummenaenderungen.class, new SatzNummer(220, 10, 1,
+                new SatzTyp(220, 10, 3, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+        registerEnum(Feld220Wagnis13ZukSummenaenderungen.class, new SatzTyp(220, 10, 1,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
-        registerEnum(Feld220Wagnis13ZukSummenaenderungen.class, new SatzNummer(220, 10, 3,
+        registerEnum(Feld220Wagnis13ZukSummenaenderungen.class, new SatzTyp(220, 10, 3,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
         registerEnum(Feld220Wagnis13Wertungssummen.class,
-                new SatzNummer(220, 10, 1, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+                new SatzTyp(220, 10, 1, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
         registerEnum(Feld220Wagnis13Wertungssummen.class,
-                new SatzNummer(220, 10, 3, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+                new SatzTyp(220, 10, 3, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
 
-        registerEnum(Feld221Wagnis13.class, new SatzNummer(221, 10, 1));
-        registerEnum(Feld221Wagnis13.class, new SatzNummer(221, 10, 3));
+        registerEnum(Feld221Wagnis13.class, new SatzTyp(221, 10, 1));
+        registerEnum(Feld221Wagnis13.class, new SatzTyp(221, 10, 3));
         registerEnum(Feld221Wagnis13Auszahlungen.class,
-                new SatzNummer(221, 10, 1, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+                new SatzTyp(221, 10, 1, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
         registerEnum(Feld221Wagnis13Auszahlungen.class,
-                new SatzNummer(221, 10, 3, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
-        registerEnum(Feld221Wagnis13ZukSummenaenderungen.class, new SatzNummer(221, 10, 1,
+                new SatzTyp(221, 10, 3, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+        registerEnum(Feld221Wagnis13ZukSummenaenderungen.class, new SatzTyp(221, 10, 1,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
-        registerEnum(Feld221Wagnis13ZukSummenaenderungen.class, new SatzNummer(221, 10, 3,
+        registerEnum(Feld221Wagnis13ZukSummenaenderungen.class, new SatzTyp(221, 10, 3,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         // Sparte 10 - Leben - Wagnisart 2
-        registerEnum(Feld220Wagnis2.class, new SatzNummer(220, 10, 2));
+        registerEnum(Feld220Wagnis2.class, new SatzTyp(220, 10, 2));
         registerEnum(Feld220Wagnis2Bezugsrechte.class,
-                new SatzNummer(220, 10, 2, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+                new SatzTyp(220, 10, 2, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
         registerEnum(Feld220Wagnis2Auszahlungen.class,
-                new SatzNummer(220, 10, 2, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+                new SatzTyp(220, 10, 2, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
         registerEnum(Feld220Wagnis2Wertungssummen.class,
-                new SatzNummer(220, 10, 2, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-        registerEnum(Feld220Wagnis2ZukSummenaenderungen.class, new SatzNummer(220, 10, 2,
+                new SatzTyp(220, 10, 2, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis2ZukSummenaenderungen.class, new SatzTyp(220, 10, 2,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
-        registerEnum(Feld221Wagnis2.class, new SatzNummer(221, 10, 2));
+        registerEnum(Feld221Wagnis2.class, new SatzTyp(221, 10, 2));
         registerEnum(Feld221Wagnis2Auszahlungen.class,
-                new SatzNummer(221, 10, 2, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
-        registerEnum(Feld221Wagnis2ZukSummenaenderungen.class, new SatzNummer(221, 10, 2,
+                new SatzTyp(221, 10, 2, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+        registerEnum(Feld221Wagnis2ZukSummenaenderungen.class, new SatzTyp(221, 10, 2,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         // Sparte 10 - Leben - Wagnisart 4 & 8
-        registerEnum(Feld220Wagnis48.class, new SatzNummer(220, 10, 4));
-        registerEnum(Feld220Wagnis48.class, new SatzNummer(220, 10, 8));
+        registerEnum(Feld220Wagnis48.class, new SatzTyp(220, 10, 4));
+        registerEnum(Feld220Wagnis48.class, new SatzTyp(220, 10, 8));
         registerEnum(Feld220Wagnis48Bezugsrechte.class,
-                new SatzNummer(220, 10, 4, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+                new SatzTyp(220, 10, 4, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
         registerEnum(Feld220Wagnis48Bezugsrechte.class,
-                new SatzNummer(220, 10, 8, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+                new SatzTyp(220, 10, 8, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
         registerEnum(Feld220Wagnis48Wertungssummen.class,
-                new SatzNummer(220, 10, 4, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+                new SatzTyp(220, 10, 4, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
         registerEnum(Feld220Wagnis48Wertungssummen.class,
-                new SatzNummer(220, 10, 8, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-        registerEnum(Feld220Wagnis48ZukSummenaenderungen.class, new SatzNummer(220, 10, 4,
+                new SatzTyp(220, 10, 8, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis48ZukSummenaenderungen.class, new SatzTyp(220, 10, 4,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
-        registerEnum(Feld220Wagnis48ZukSummenaenderungen.class, new SatzNummer(220, 10, 8,
+        registerEnum(Feld220Wagnis48ZukSummenaenderungen.class, new SatzTyp(220, 10, 8,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
-        registerEnum(Feld221Wagnis48.class, new SatzNummer(221, 10, 4));
-        registerEnum(Feld221Wagnis48.class, new SatzNummer(221, 10, 8));
+        registerEnum(Feld221Wagnis48.class, new SatzTyp(221, 10, 4));
+        registerEnum(Feld221Wagnis48.class, new SatzTyp(221, 10, 8));
 
         // Sparte 10 - Leben - Wagnisart 5
-        registerEnum(Feld220Wagnis5.class, new SatzNummer(220, 10, 5));
+        registerEnum(Feld220Wagnis5.class, new SatzTyp(220, 10, 5));
         registerEnum(Feld220Wagnis5Bezugsrechte.class,
-                new SatzNummer(220, 10, 5, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+                new SatzTyp(220, 10, 5, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
         registerEnum(Feld220Wagnis5Wertungssummen.class,
-                new SatzNummer(220, 10, 5, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-        registerEnum(Feld220Wagnis5ZukSummenaenderungen.class, new SatzNummer(220, 10, 5,
+                new SatzTyp(220, 10, 5, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis5ZukSummenaenderungen.class, new SatzTyp(220, 10, 5,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
-        registerEnum(Feld221Wagnis5.class, new SatzNummer(221, 10, 5));
-        registerEnum(Feld221Wagnis5ZukSummenaenderungen.class, new SatzNummer(221, 10, 5,
+        registerEnum(Feld221Wagnis5.class, new SatzTyp(221, 10, 5));
+        registerEnum(Feld221Wagnis5ZukSummenaenderungen.class, new SatzTyp(221, 10, 5,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         // Sparte 10 - Leben - Wagnisart 6
-        registerEnum(Feld220Wagnis6.class, new SatzNummer(220, 10, 6));
+        registerEnum(Feld220Wagnis6.class, new SatzTyp(220, 10, 6));
         registerEnum(Feld220Wagnis6Bezugsrechte.class,
-                new SatzNummer(220, 10, 6, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+                new SatzTyp(220, 10, 6, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
         registerEnum(Feld220Wagnis6Wertungssummen.class,
-                new SatzNummer(220, 10, 6, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-        registerEnum(Feld220Wagnis6ZukSummenaenderungen.class, new SatzNummer(220, 10, 6,
+                new SatzTyp(220, 10, 6, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis6ZukSummenaenderungen.class, new SatzTyp(220, 10, 6,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
-        registerEnum(Feld221Wagnis6.class, new SatzNummer(221, 10, 6));
-        registerEnum(Feld221Wagnis6ZukSummenaenderungen.class, new SatzNummer(221, 10, 6,
+        registerEnum(Feld221Wagnis6.class, new SatzTyp(221, 10, 6));
+        registerEnum(Feld221Wagnis6ZukSummenaenderungen.class, new SatzTyp(221, 10, 6,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
         // Sparte 10 - Leben - Wagnisart 7
-        registerEnum(Feld220Wagnis7.class, new SatzNummer(220, 10, 7));
+        registerEnum(Feld220Wagnis7.class, new SatzTyp(220, 10, 7));
         registerEnum(Feld220Wagnis7Bezugsrechte.class,
-                new SatzNummer(220, 10, 7, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+                new SatzTyp(220, 10, 7, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
         registerEnum(Feld220Wagnis7Wertungssummen.class,
-                new SatzNummer(220, 10, 7, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-        registerEnum(Feld220Wagnis7ZukSummenaenderungen.class, new SatzNummer(220, 10, 7,
+                new SatzTyp(220, 10, 7, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis7ZukSummenaenderungen.class, new SatzTyp(220, 10, 7,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
-        registerEnum(Feld221Wagnis7.class, new SatzNummer(221, 10, 7));
-        registerEnum(Feld221Wagnis7ZukSummenaenderungen.class, new SatzNummer(221, 10, 7,
+        registerEnum(Feld221Wagnis7.class, new SatzTyp(221, 10, 7));
+        registerEnum(Feld221Wagnis7ZukSummenaenderungen.class, new SatzTyp(221, 10, 7,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
-        registerEnum(Feld230.class, new SatzNummer(230, 10, 7));
+        registerEnum(Feld230.class, new SatzTyp(230, 10, 7));
 
         // Sparte 10 - Leben - Wagnisart 9
-        registerEnum(Feld220Wagnis9.class, new SatzNummer(220, 10, 9));
+        registerEnum(Feld220Wagnis9.class, new SatzTyp(220, 10, 9));
         registerEnum(Feld220Wagnis9Bezugsrechte.class,
-                new SatzNummer(220, 10, 9, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
+                new SatzTyp(220, 10, 9, TeildatensatzNummer.BEZUGSRECHTE.getCode()));
         registerEnum(Feld220Wagnis9Auszahlungen.class,
-                new SatzNummer(220, 10, 9, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
+                new SatzTyp(220, 10, 9, TeildatensatzNummer.AUSZAHLUNGEN.getCode()));
         registerEnum(Feld220Wagnis9Wertungssummen.class,
-                new SatzNummer(220, 10, 9, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
-        registerEnum(Feld220Wagnis9ZukSummenaenderungen.class, new SatzNummer(220, 10, 9,
+                new SatzTyp(220, 10, 9, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
+        registerEnum(Feld220Wagnis9ZukSummenaenderungen.class, new SatzTyp(220, 10, 9,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
 
     }
@@ -262,7 +262,7 @@ public final class SatzFactory {
         } catch (NoSuchMethodException ex) {
             throw new IllegalArgumentException("no default constructor found in " + clazz, ex);
         }
-        REGISTERED_SATZ_CLASSES.put(new SatzNummer(satzart), clazz);
+        REGISTERED_SATZ_CLASSES.put(new SatzTyp(satzart), clazz);
     }
 
     /**
@@ -274,7 +274,7 @@ public final class SatzFactory {
      * @since 0.6
      */
     public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart) {
-        registerEnum(enumClass, new SatzNummer(satzart));
+        registerEnum(enumClass, new SatzTyp(satzart));
     }
 
     /**
@@ -287,7 +287,7 @@ public final class SatzFactory {
      * @since 0.6
      */
     public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte) {
-        registerEnum(enumClass, new SatzNummer(satzart, sparte));
+        registerEnum(enumClass, new SatzTyp(satzart, sparte));
     }
 
     /**
@@ -298,7 +298,7 @@ public final class SatzFactory {
      * @param satzNr die SatzNummer (z.B. new SatzNummer(100))
      * @since 0.9
      */
-    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final SatzNummer satzNr) {
+    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final SatzTyp satzNr) {
         if (REGISTERED_DATENSATZ_CLASSES.containsKey(satzNr)) {
             LOG.info("Registered " + REGISTERED_DATENSATZ_CLASSES.get(satzNr) + " for " + satzNr
                     + " will be replaced by " + enumClass);
@@ -315,7 +315,7 @@ public final class SatzFactory {
      * @since 0.2
      */
     public static void unregister(final int satzart) {
-        SatzNummer key = new SatzNummer(satzart);
+        SatzTyp key = new SatzTyp(satzart);
         REGISTERED_SATZ_CLASSES.remove(key);
         REGISTERED_ENUM_CLASSES.remove(key);
     }
@@ -330,7 +330,7 @@ public final class SatzFactory {
      * @since 0.2
      */
     public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte) {
-        register(clazz, new SatzNummer(satzart, sparte));
+        register(clazz, new SatzTyp(satzart, sparte));
     }
 
     /**
@@ -340,7 +340,7 @@ public final class SatzFactory {
      * @param clazz the clazz
      * @param satzNr the satz nr
      */
-    public static void register(final Class<? extends Datensatz> clazz, final SatzNummer satzNr) {
+    public static void register(final Class<? extends Datensatz> clazz, final SatzTyp satzNr) {
         REGISTERED_DATENSATZ_CLASSES.put(satzNr, clazz);
     }
 
@@ -366,7 +366,7 @@ public final class SatzFactory {
      * @since 0.8
      */
     public static void unregister(final int satzart, final int sparte, final int wagnisart) {
-        SatzNummer key = new SatzNummer(satzart, sparte, wagnisart, -1);
+        SatzTyp key = new SatzTyp(satzart, sparte, wagnisart, -1);
         REGISTERED_DATENSATZ_CLASSES.remove(key);
         REGISTERED_ENUM_CLASSES.remove(key);
     }
@@ -379,7 +379,7 @@ public final class SatzFactory {
      * @since 0.2
      */
     public static Satz getSatz(final int satzart) {
-        Class<? extends Satz> clazz = REGISTERED_SATZ_CLASSES.get(new SatzNummer(satzart));
+        Class<? extends Satz> clazz = REGISTERED_SATZ_CLASSES.get(new SatzTyp(satzart));
         if (clazz == null) {
             return generateSatz(satzart);
         }
@@ -409,7 +409,7 @@ public final class SatzFactory {
     }
 
     private static Satz generateSatz(final int satzart) {
-        Class<? extends Enum<?>> enumClass = REGISTERED_ENUM_CLASSES.get(new SatzNummer(satzart));
+        Class<? extends Enum<?>> enumClass = REGISTERED_ENUM_CLASSES.get(new SatzTyp(satzart));
         if (enumClass == null) {
             Satz satz = XML_SERVICE.getSatzart(satzart);
             if (satz == null) {
@@ -420,7 +420,7 @@ public final class SatzFactory {
         return new SatzX(satzart, enumClass);
     }
 
-    private static Datensatz generateDatensatz(final SatzNummer satzNr) {
+    private static Datensatz generateDatensatz(final SatzTyp satzNr) {
         Class<? extends Enum<?>> enumClass = REGISTERED_ENUM_CLASSES.get(satzNr);
         if (enumClass != null) {
             return new SatzX(satzNr, enumClass);
@@ -475,7 +475,7 @@ public final class SatzFactory {
      * @return den registrierten Datensatz fuer 'satzart', 'sparte'
      */
     public static Datensatz getDatensatz(final int satzart, final int sparte) {
-        return getDatensatz(new SatzNummer(satzart, sparte));
+        return getDatensatz(new SatzTyp(satzart, sparte));
     }
 
     /**
@@ -489,7 +489,7 @@ public final class SatzFactory {
      * @since 0.8
      */
     public static Datensatz getDatensatz(final int satzart, final int sparte, final int wagnisart) {
-        return getDatensatz(new SatzNummer(satzart, sparte, wagnisart));
+        return getDatensatz(new SatzTyp(satzart, sparte, wagnisart));
     }
 
     /**
@@ -507,7 +507,7 @@ public final class SatzFactory {
      * @return den registrierten Datensatz fuer 'satzart', 'sparte',
      *         'wagnisart', 'teildatensatzNummer'
      */
-    public static Datensatz getDatensatz(final SatzNummer satzNr) {
+    public static Datensatz getDatensatz(final SatzTyp satzNr) {
         Class<? extends Datensatz> clazz = REGISTERED_DATENSATZ_CLASSES.get(satzNr);
         if (clazz == null) {
             return generateDatensatz(satzNr);
@@ -573,7 +573,7 @@ public final class SatzFactory {
      * @param satzNr die SatzNummer
      * @return der erzeugte Datensatz
      */
-    private static Datensatz useFallback(final SatzNummer satzNr) {
+    private static Datensatz useFallback(final SatzTyp satzNr) {
         try {
             Datensatz fallback = (Datensatz) getSatz(satzNr.getSatzart());
             if (satzNr.hasSparte()) {

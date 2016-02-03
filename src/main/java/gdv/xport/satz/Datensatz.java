@@ -26,7 +26,7 @@ import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
-import gdv.xport.util.SatzNummer;
+import gdv.xport.util.SatzTyp;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -154,7 +154,7 @@ public class Datensatz extends Satz {
 	 * @param tdsList Liste mit den Teildatensaetzen
 	 * @since 0.9
 	 */
-	public Datensatz(final SatzNummer satzNr, final List<Teildatensatz> tdsList) {
+	public Datensatz(final SatzTyp satzNr, final List<Teildatensatz> tdsList) {
 		this(satzNr.getSatzart(), tdsList);
 		if (satzNr.hasSparte()) {
 			this.setSparte(satzNr.getSparte());

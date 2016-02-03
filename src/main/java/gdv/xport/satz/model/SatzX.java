@@ -24,7 +24,7 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.FeldX;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
-import gdv.xport.util.SatzNummer;
+import gdv.xport.util.SatzTyp;
 
 import java.io.IOException;
 import java.util.List;
@@ -100,7 +100,7 @@ public class SatzX extends Datensatz {
 	 * @param enumClass Enum-Klasse, die den Datensatz beschreibt
 	 * @since 0.9
 	 */
-	public SatzX(final SatzNummer satzNr, final Class<? extends Enum<?>> enumClass) {
+	public SatzX(final SatzTyp satzNr, final Class<? extends Enum<?>> enumClass) {
 		super(satzNr, getTeildatensaetzeFor(satzNr.getSatzart(), enumClass));
 	}
 

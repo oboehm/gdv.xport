@@ -144,7 +144,6 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-<!--               <finalName>${project.artifactId}-${project.version}-uberjar</finalName> -->
               <shadedArtifactAttached>true</shadedArtifactAttached>
               <shadedClassifierName>uberjar</shadedClassifierName>
               <minimizeJar>true</minimizeJar>

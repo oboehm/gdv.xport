@@ -20,7 +20,7 @@ package gdv.xport.satz.xml;
 
 import gdv.xport.util.NotRegisteredException;
 import gdv.xport.util.NotUniqueException;
-import gdv.xport.util.SatzNummer;
+import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlHelper;
 
 import java.io.InputStream;
@@ -53,7 +53,7 @@ public class XmlService {
     private static final Logger LOG = LoggerFactory.getLogger(XmlService.class);
     private static final Map<String, XmlService> INSTANCES = new WeakHashMap<String, XmlService>();
     private final List<SatzXml> saetze = new ArrayList<SatzXml>();
-    private final Map<SatzNummer, SatzXml> satzarten = new HashMap<SatzNummer, SatzXml>();
+    private final Map<SatzTyp, SatzXml> satzarten = new HashMap<SatzTyp, SatzXml>();
     private final Map<String, FeldXml> felder = new HashMap<String, FeldXml>();
 
     /**
@@ -221,7 +221,7 @@ public class XmlService {
         LOG.debug("Missing felder for {} saetze will be set.", this.satzarten.size());
         for (SatzXml satz : this.saetze) {
             satz.setFelder(felder);
-            for (SatzNummer type : satz.getSupportedSatzTypen()) {
+            for (SatzTyp type : satz.getSupportedSatzTypen()) {
                 this.satzarten.put(type, satz);
                 LOG.trace("Satz {} registered as {}.", satz, type);
             }
@@ -241,12 +241,12 @@ public class XmlService {
      * @return die entsprechende Satzart
      */
     public SatzXml getSatzart(final int satzart) {
-        SatzXml satz = this.satzarten.get(new SatzNummer(satzart));
+        SatzXml satz = this.satzarten.get(new SatzTyp(satzart));
         if (satz != null) {
             return new SatzXml(satz);
         }
-        List<SatzNummer> satzTypen = new ArrayList<SatzNummer>();
-        for (SatzNummer satzNr : this.satzarten.keySet()) {
+        List<SatzTyp> satzTypen = new ArrayList<SatzTyp>();
+        for (SatzTyp satzNr : this.satzarten.keySet()) {
             if (satzNr.getSatzart() == satzart) {
                 satzTypen.add(satzNr);
             }
@@ -266,7 +266,7 @@ public class XmlService {
      * @param satzNr z.B. 'new Satznummer(100)' fuer Satz100 (Adressteil)
      * @return die entsprechende Satzart
      */
-    public SatzXml getSatzart(final SatzNummer satzNr) {
+    public SatzXml getSatzart(final SatzTyp satzNr) {
         SatzXml satz = this.satzarten.get(satzNr);
         if (satz == null) {
             throw new NotRegisteredException(satzNr);

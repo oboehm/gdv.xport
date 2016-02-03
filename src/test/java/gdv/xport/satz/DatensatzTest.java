@@ -24,7 +24,7 @@ import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.feld.Feld100;
-import gdv.xport.util.SatzNummer;
+import gdv.xport.util.SatzTyp;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -114,7 +114,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
         tds.set(Feld100.NAME1, "Asterix");
         teildatensaetze.add(tds);
         teildatensaetze.add(new Teildatensatz(100, 2));
-        Datensatz orig = new Datensatz(new SatzNummer(100), teildatensaetze);
+        Datensatz orig = new Datensatz(new SatzTyp(100), teildatensaetze);
         Datensatz copy = new Datensatz(orig);
         assertEquals(orig.get(Feld100.NAME1), copy.get(Feld100.NAME1));
         assertEquals(orig.toLongString(), copy.toLongString());
