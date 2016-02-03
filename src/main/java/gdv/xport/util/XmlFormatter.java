@@ -18,21 +18,7 @@
 
 package gdv.xport.util;
 
-import gdv.xport.Datenpaket;
-import gdv.xport.config.Config;
-import gdv.xport.config.ConfigException;
-import gdv.xport.feld.Feld;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Teildatensatz;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.Iterator;
@@ -46,6 +32,14 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import gdv.xport.Datenpaket;
+import gdv.xport.config.Config;
+import gdv.xport.config.ConfigException;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
@@ -93,22 +87,6 @@ public final class XmlFormatter extends AbstractFormatter {
      */
     public XmlFormatter(final XMLStreamWriter xmlStreamWriter) {
         this.xmlStreamWriter = xmlStreamWriter;
-    }
-
-    /**
-     * Instantiiert einen neuen XML-Formatter.
-     * <p>
-     * TODO: Wird mit 1.1 entfernt werden - bitte nicht mehr benuetzen.
-     * </p>
-     *
-     * @param file Ausgabe-Datein
-     * @throws IOException falls die uebergebene Date nicht existiert
-     * @deprecated bitte {@link #XmlFormatter(Writer)} verwenden und den Writer
-     *             im Aufrufer schliessen
-     */
-    @Deprecated
-    public XmlFormatter(final File file) throws IOException {
-        this(new FileOutputStream(file));
     }
 
     /**
@@ -267,27 +245,6 @@ public final class XmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.writeEndDocument();
         xmlStreamWriter.flush();
-    }
-
-    /**
-     * Falls man diese Klasse mit dem File-Konstruktor geoeffnet hat, sollte man
-     * den Stream hierueber wieder schliessen.
-     * <p>
-     * TODO: Wird mit 1.1 entfernt werden - bitte nicht mehr benuetzen.
-     * </p>
-     *
-     * @since 0.3
-     * @throws IOException sollte eigentlich nicht vorkommen
-     * @deprecated siehe {@link #XmlFormatter(File)}
-     */
-    @Deprecated
-    public void close() throws IOException {
-        try {
-            this.xmlStreamWriter.close();
-            this.getWriter().close();
-        } catch (XMLStreamException e) {
-            throw new IOException("can't close " + this.xmlStreamWriter, e);
-        }
     }
 
     /**
