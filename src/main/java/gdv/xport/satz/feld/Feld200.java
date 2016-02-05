@@ -48,9 +48,11 @@ public enum Feld200 {
     /////   Satzspezifischer Teil (Satz 1)  ///////////////////////////////////
 
     /**
-     * Inkassoart. <br/>
-     * 1 = Vermittlerinkasso <br/>
+     * Inkassoart.
+     * <pre>
+     * 1 = Vermittlerinkasso
      * 2 = Zentralinkasso, Direktes Inkasso
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 1,

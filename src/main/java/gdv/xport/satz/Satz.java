@@ -6,6 +6,16 @@ package gdv.xport.satz;
 import static gdv.xport.feld.Bezeichner.NAME_SATZART;
 import static gdv.xport.feld.Bezeichner.NAME_SPARTE;
 import static patterntesting.runtime.NullConstants.NULL_STRING;
+
+import java.io.*;
+import java.lang.reflect.Field;
+import java.util.*;
+
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
@@ -17,20 +27,10 @@ import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.util.SatzTyp;
-
-import java.io.*;
-import java.lang.reflect.Field;
-import java.util.*;
-
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
-
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Die Satz-Klasse ist die oberste Klasse, von der alle weiteren Saetze
@@ -180,10 +180,10 @@ public abstract class Satz {
 	}
 
 	/**
-	 * Entfernt alle Teildatensaetze >= n.
+	 * Entfernt alle Teildatensaetze &gt;= n.
 	 *
 	 * @since 0.4
-	 * @param n ab hier wird abgeschnitten (n >= 1)
+	 * @param n ab hier wird abgeschnitten (n &gt;= 1)
 	 */
 	public final void removeAllTeildatensaetze(final int n) {
 		if ((n < 1) || (n > this.teildatensatz.length)) {
@@ -824,7 +824,7 @@ public abstract class Satz {
 	/**
 	 * Validiert die einzelnen Teildatensaetze.
 	 *
-	 * @return the list< constraint violation>
+	 * @return Liste mit Constraint-Verletzungen
 	 */
 	public List<ConstraintViolation> validate() {
 		Validator validator = new Validator();

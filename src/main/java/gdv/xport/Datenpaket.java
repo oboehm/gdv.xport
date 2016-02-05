@@ -16,6 +16,15 @@ import static gdv.xport.feld.Bezeichner.NAME_ABSENDER;
 import static gdv.xport.feld.Bezeichner.NAME_ADRESSAT;
 import static gdv.xport.feld.Bezeichner.NAME_ERSTELLUNGSDATUM_ZEITRAUM_BIS;
 import static gdv.xport.feld.Bezeichner.NAME_ERSTELLUNGSDATUM_ZEITRAUM_VOM;
+
+import java.io.*;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.util.*;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import gdv.xport.config.Config;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
@@ -29,19 +38,10 @@ import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.URLReader;
-
-import java.io.*;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.*;
-
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * Ein Datenpaket besteht aus {@link Vorsatz}, mehrere {@link Datensatz}-Elementen
@@ -529,7 +529,7 @@ public final class Datenpaket {
 	/**
 	 * Validiert die einzelnen Saetze (inkl. Vorsatz und Nachsatz).
 	 *
-	 * @return the list< constraint violation>
+	 * @return Liste der ConstraintViolations
 	 */
 	public List<ConstraintViolation> validate() {
 		Validator validator = new Validator();

@@ -18,7 +18,8 @@
 
 package gdv.xport.satz.feld;
 
-import gdv.xport.annotation.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 
 /**
  * In dieser Klasse sind einige Meta-Informationen zu Feldern wie die
@@ -101,7 +102,7 @@ public final class MetaFeldInfo {
     /**
      * Liefert die Nummer im Teildatensatz zurueck.
      *
-     * @return eine Nummer >= 1
+     * @return eine Nummer &gt;= 1
      */
     public int getNr() {
         return this.getFeldInfo().nr();

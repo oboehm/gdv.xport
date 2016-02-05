@@ -18,7 +18,8 @@
 
 package gdv.xport.satz.feld.sparte10;
 
-import gdv.xport.annotation.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -43,12 +44,14 @@ public enum Feld210 {
     INTRO1,
 
     /**
-     * Kennzeichen Vertragsentstehung.<br/>
-     * 1 = Neuantrag<br/>
-     * 2 = Zuwachsgarantie<br/>
-     * 3 = Abtrennung Gruppenversicherung<br/>
-     * 4 = Umtausch Risiko<br/>
+     * Kennzeichen Vertragsentstehung.
+     * <pre>
+     * 1 = Neuantrag
+     * 2 = Zuwachsgarantie
+     * 3 = Abtrennung Gruppenversicherung
+     * 4 = Umtausch Risiko
      * 5 = uebernahme von anderer Gesellschaft
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -121,11 +124,13 @@ public enum Feld210 {
     VERKUERZTE_BEITRAGSZAHLUNGSDAUER,
 
     /**
-     * Besonderer Verwendungszweck.<br/>
-     * 1 = Hypothekentilgung<br/>
-     * 2 = VL<br/>
-     * 3 = Restschuldversicherung<br/>
+     * Besonderer Verwendungszweck.
+     * <pre>
+     * 1 = Hypothekentilgung
+     * 2 = VL
+     * 3 = Restschuldversicherung
      * 9 = sonstiges
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -137,11 +142,13 @@ public enum Feld210 {
     BESONDERER_VERWENDUNGSZWECK,
 
     /**
-     * Vertragsform.<br/>
-     * 0 = Einzel<br/>
-     * 1 = Firmengruppen<br/>
-     * 2 = Vereins-/Verbandsgruppen<br/>
+     * Vertragsform.
+     * <pre>
+     * 0 = Einzel
+     * 1 = Firmengruppen
+     * 2 = Vereins-/Verbandsgruppen
      * 3 = Sammelversicherung
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -230,12 +237,14 @@ public enum Feld210 {
     KENNZEICHEN_ABWEICHENDE_BESTANDSPFLEGEPROVISION,
 
     /**
-     * Art des Drittrechts.<br/>
-     * 01 = Abtretung<br/>
-     * 02 = Verpfaendung<br/>
-     * 03 = Pfaendung<br/>
-     * 04 = Konkurs<br/>
+     * Art des Drittrechts.
+     * <pre>
+     * 01 = Abtretung
+     * 02 = Verpfaendung
+     * 03 = Pfaendung
+     * 04 = Konkurs
      * 05 = Vergleich
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -263,8 +272,10 @@ public enum Feld210 {
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschluesselt
      * werden. Datum, an dem der VN die Erstpraemie zu zahlen hat, wenn der
      * Zahlungsanfang spaeter als der Versicherungsbeginn liegt, z. B. bei
-     * Sammelinkasso.<br/>
+     * Sammelinkasso.
+     * <pre>
      * Tag/Monat/Jahr (TTMMJJJJ)
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -335,8 +346,10 @@ public enum Feld210 {
      * der Satzart 0200 blank sein, die Zahlungsweise wird dann auf Risikoebene
      * in der Satzart 0210, spaetestens in Satzart 0220 angegeben.
      * Bei Einzel- und / oder Umsatzanmeldungen muss das Datenfeld
-     * "Zahlungsweise" in der Satzart 0400 blank sein.)<br/>
+     * "Zahlungsweise" in der Satzart 0400 blank sein.)
+     * <p>
      * siehe Anlage 14
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -351,7 +364,9 @@ public enum Feld210 {
      * Beitragsumstellungsdatum.
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschluesselt
      * werden.
+     * <pre>
      * Tag/Monat/Jahr (TTMMJJJJ)
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -462,12 +477,14 @@ public enum Feld210 {
     INTRO2,
 
     /**
-     * Betriebliche Altersversorgung.<br/>
-     * 1 = Direktversicherung<br/>
-     * 2 = Direktversicherung mit Gehaltsumwandlung<br/>
-     * 3 = Direktversicherung mit anteiliger Gehaltsumwandlung<br/>
-     * 4 = Rueckdeckungsversicherung fuer Pensionszusage<br/>
+     * Betriebliche Altersversorgung.
+     * <pre>
+     * 1 = Direktversicherung
+     * 2 = Direktversicherung mit Gehaltsumwandlung
+     * 3 = Direktversicherung mit anteiliger Gehaltsumwandlung
+     * 4 = Rueckdeckungsversicherung fuer Pensionszusage
      * 5 = Ruekdeckungsversicherung fuer Unterstuetzungskassenzusage
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -584,15 +601,17 @@ public enum Feld210 {
     // Betriebliche und private Altersversorgung
 
     /**
-     * Art der steuerlichen Foerderung.<br/>
-     * 0 = irrelevant<br/>
-     * 1 = pauschal besteuerte Direktversicherung nach Paragraph 40b EStG<br/>
-     * 2 = Beitraege steuerfrei nach Paragraph 3 Ziff.63 EStG<br/>
-     * 3 = zulagengefoerderte Direktversicherung nach Paragraph 10a EStG<br/>
-     * 4 = Beitraege steuerfrei nach Paragraph 3 Ziff.66 EstG<br/>
-     * 5 = keine<br/>
-     * 6 = Zulagegefoerderte Privatversicherung nach Paragraph 10 a EStG<br/>
+     * Art der steuerlichen Foerderung.
+     * <pre>
+     * 0 = irrelevant
+     * 1 = pauschal besteuerte Direktversicherung nach Paragraph 40b EStG
+     * 2 = Beitraege steuerfrei nach Paragraph 3 Ziff.63 EStG
+     * 3 = zulagengefoerderte Direktversicherung nach Paragraph 10a EStG
+     * 4 = Beitraege steuerfrei nach Paragraph 3 Ziff.66 EstG
+     * 5 = keine
+     * 6 = Zulagegefoerderte Privatversicherung nach Paragraph 10 a EStG
      * 7 = Basis-/Ruerup-Rente nach Paragraph 10 Abs. 1 Nr. 2 Buchstabe b EStG
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -604,13 +623,15 @@ public enum Feld210 {
     ART_DER_STEUERLICHEN_FOERDERUNG,
 
     /**
-     * Finanzierungsart.<br/>
-     * 0 = irrelevant<br/>
-     * 1 = Arbeitgeber finanziert<br/>
-     * 2 = Arbeitnehmer finanziert Entgeltumwandlung<br/>
-     * 3 = Arbeitnehmer finanziert aus versteuertem Einkommen<br/>
-     * 4 = aus Vertrag nicht erkennbar<br/>
+     * Finanzierungsart.
+     * <pre>
+     * 0 = irrelevant
+     * 1 = Arbeitgeber finanziert
+     * 2 = Arbeitnehmer finanziert Entgeltumwandlung
+     * 3 = Arbeitnehmer finanziert aus versteuertem Einkommen
+     * 4 = aus Vertrag nicht erkennbar
      * 5 = Arbeitgeber / Arbeitnehmer
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -622,16 +643,18 @@ public enum Feld210 {
     FINANZIERUNGSART,
 
     /**
-     * Durchfuehrungsweg.<br/>
-     * 0 = irrelevant<br/>
-     * 1 = Direktversicherung<br/>
-     * 2 = Unterstuetzungskasse<br/>
-     * 3 = Pensionskasse<br/>
-     * 4 = Pensionsfonds<br/>
-     * 5 = Privat<br/>
-     * 6 = Direktzusage<br/>
-     * 7 = Private Riesterversicherung<br/>
+     * Durchfuehrungsweg.
+     * <pre>
+     * 0 = irrelevant
+     * 1 = Direktversicherung
+     * 2 = Unterstuetzungskasse
+     * 3 = Pensionskasse
+     * 4 = Pensionsfonds
+     * 5 = Privat
+     * 6 = Direktzusage
+     * 7 = Private Riesterversicherung
      * 8 = Riesterdirektversicherung
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -643,12 +666,14 @@ public enum Feld210 {
     DURCHFUEHRUNGSWEG,
 
     /**
-     * Finanzierung der Zusage.<br/>
-     * 0 = irrelevant<br/>
-     * 1 = Rueckdeckungsversicherung<br/>
-     * 2 = Rueckdeckungsversicherung partiell<br/>
-     * 3 = Rueckdeckungsversicherung kongruent<br/>
+     * Finanzierung der Zusage.
+     * </pre>
+     * 0 = irrelevant
+     * 1 = Rueckdeckungsversicherung
+     * 2 = Rueckdeckungsversicherung partiell
+     * 3 = Rueckdeckungsversicherung kongruent
      * 4 = Pensionsfonds
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 2,
