@@ -18,8 +18,6 @@
 
 package gdv.xport.satz.xml;
 
-import gdv.xport.util.XmlHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +30,10 @@ import javax.xml.stream.events.XMLEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import gdv.xport.util.XmlHelper;
+
 /**
- * Diese Klasse repraesentiert den Wert, der als "<satzende>" ueber XML
+ * Diese Klasse repraesentiert den Wert, der als "&lt;satzende&gt;" ueber XML
  * reinkommt.
  *
  * @author oliver (oliver.boehm@gmail.com)
@@ -60,7 +60,7 @@ public class Satzende {
      * Parser gelesen werden.
      *
      * @param parser the parser
-     * @param element das Start-Element <feldreferenz referenz=... >
+     * @param element das Start-Element &lt;feldreferenz referenz=... &gt;
      * @throws XMLStreamException the XML stream exception
      */
     public Satzende(final XMLEventReader parser, final StartElement element) throws XMLStreamException {

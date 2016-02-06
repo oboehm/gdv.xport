@@ -18,8 +18,11 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart6;
 
-import gdv.xport.annotation.*;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -70,9 +73,9 @@ public enum Feld221Wagnis6 {
     LFD_NUMMER_SATZART,
 
     /**
-     * Absolute Unfalländerungssumme in Währungseinheiten<.br/>
+     * Absolute Unfalländerungssumme in Währungseinheiten.
      * Absolute Summe der Steigerung bzw. Reduzierung der Unfallleistung
-     * (12,2 Stellen)
+     * (12,2 Stellen).
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 64)
     ABSOLUTE_UNFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,

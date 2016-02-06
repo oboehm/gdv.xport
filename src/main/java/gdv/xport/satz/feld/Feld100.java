@@ -666,7 +666,7 @@ public enum Feld100 {
      * 04 = KG,
      * 05 = GmbH,
      * 06 = gGmbH,
-     * 07 = GmbH & Co KG,
+     * 07 = GmbH &amp; Co KG,
      * 08 = KGaA,
      * 09 = AG,
      * 10 = eV,

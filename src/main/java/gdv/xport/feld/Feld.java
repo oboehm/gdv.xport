@@ -20,10 +20,6 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.config.Config;
-import gdv.xport.satz.feld.FeldX;
-
 import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.Constructor;
@@ -32,17 +28,20 @@ import java.lang.reflect.InvocationTargetException;
 import java.nio.ByteBuffer;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.config.Config;
+import gdv.xport.satz.feld.FeldX;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import net.sf.oval.constraint.Min;
 import net.sf.oval.constraint.NotEqual;
 import net.sf.oval.constraint.SizeCheck;
 import net.sf.oval.context.ClassContext;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.WordUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * Die Feld-Klasse bezieht ihre Information hauptsaechlich aus Enum-Klassen wie
@@ -553,7 +552,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     /**
-     * Valid bedeutet: Byte-Adresse >= 1, Feld geht nicht ueber
+     * Valid bedeutet: Byte-Adresse &gt;= 1, Feld geht nicht ueber
      * (Teil-)Datensatz-Grenze hinaus, Ausrichtung ist bekannt.
      * <p>
      * Aus Performance-Gruenden stuetzt sich diese Methode nicht auf validate(),
@@ -589,7 +588,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     /**
      * Validate.
      *
-     * @return the list< constraint violation>
+     * @return eine Liste mit Constraint-Verletzungen
      */
     public List<ConstraintViolation> validate() {
         Validator validator = new Validator();
@@ -653,11 +652,10 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     /**
-     * Es gilt fuer Feld a und b: a < b, wenn die Start-Adresse von a vor b liegt.
+     * Es gilt fuer Feld a und b: a &lt; b, wenn die Start-Adresse von a vor b
+     * liegt.
      *
-     * @param other
-     *            das andere Feld
-     *
+     * @param other das andere Feld
      * @return 0 wenn beide Felder die gleiche Startadresse haben
      */
     @Override

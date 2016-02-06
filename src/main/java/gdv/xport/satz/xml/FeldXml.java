@@ -18,13 +18,6 @@
 
 package gdv.xport.satz.xml;
 
-import gdv.xport.feld.Align;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Datentyp;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.util.XmlHelper;
-
 import java.util.Properties;
 
 import javax.xml.namespace.QName;
@@ -34,6 +27,9 @@ import javax.xml.stream.events.StartElement;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import gdv.xport.feld.*;
+import gdv.xport.util.XmlHelper;
 
 /**
  * Im Gegensatz zur {@link Feld}-Klasse kommen hier die einzelnen Werte als
@@ -66,7 +62,7 @@ public final class FeldXml extends Feld {
      * Parser gelesen werden.
      *
      * @param parser the parser
-     * @param element das Start-Element <feldreferenz referenz=... >
+     * @param element das Start-Element &lt;feldreferenz referenz=... &gt;
      * @throws XMLStreamException the XML stream exception
      */
     public FeldXml(final XMLEventReader parser, final StartElement element) throws XMLStreamException {

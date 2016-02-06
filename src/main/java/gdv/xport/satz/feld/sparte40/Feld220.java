@@ -1,6 +1,7 @@
 package gdv.xport.satz.feld.sparte40;
 
-import gdv.xport.annotation.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -72,16 +73,24 @@ public enum Feld220 {
 
     /**
      * Mengenschlüssel.
+     * <p>
      * Beispiel 1: 1 Öltank, Wagnis Nr. = 0505, Berechnungseinheit = 016,
      * Mengenschlüssel = 1, Wagnismenge = 10
-     * => (10.000 Liter), (Öltank), (CBM Inhalt), (Originalmenge), (10 CBM);
+     * =&gt; (10.000 Liter), (Öltank), (CBM Inhalt), (Originalmenge), (10 CBM);
+     * </p>
+     * <p>
      * Beispiel 2: 3 Pferde, Wagnis Nr. = 9007, Berechnungseinheit = 027,
      * Mengenschlüssel = 1, Wagnismenge = 3
-     * => (Pferde), (Pferde), (Originalmenge), (3 Pferde);
+     * =&gt; (Pferde), (Pferde), (Originalmenge), (3 Pferde);
+     * </p>
+     * <p>
      * Beispiel 3: Anschlußgleise Bahnanlage 2.000 mtr Länge, Wagnis Nr. =
      * 0101, Berechnungseinheit = 088, Mengenschlüssel = 4, Wagnismenge = 2 =>
      * (Gleise), (mtr. Bahnlänge), (in 1000), (2000)
+     * </p>
+     * <p>
      * siehe Anlage 10
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -166,7 +175,7 @@ public enum Feld220 {
     /**
      * Gesamtbeitrag in Währungseinheiten.
      * Gültiger Beitrag unter Berücksichtigung aller Zu- und Abschläge ohne
-     * Gebühren und Steuer gemäß Zahlungsweise 
+     * Gebühren und Steuer gemäß Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -349,7 +358,7 @@ public enum Feld220 {
     /**
      * Erhöhungssatz § 8, III AHB.
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
-     * werden 
+     * werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(

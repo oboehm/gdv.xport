@@ -25,7 +25,7 @@ public enum Feld210 {
 
     /**
      * Vertragsstatus.
-     * </pre>
+     * <pre>
      * 1 = lebend
      * 2 = lebend / kurzfristig / unterjährig
      * 3 = ruhend / Anwartschaft
@@ -35,7 +35,7 @@ public enum Feld210 {
      * 7 = beitragsfrei durch Leistung
      * 8 = Beitragsstundung
      * 9 = Sonstiges
-     * <pre>
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 1,

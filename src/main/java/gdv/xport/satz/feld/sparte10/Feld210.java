@@ -667,7 +667,7 @@ public enum Feld210 {
 
     /**
      * Finanzierung der Zusage.
-     * </pre>
+     * <pre>
      * 0 = irrelevant
      * 1 = Rueckdeckungsversicherung
      * 2 = Rueckdeckungsversicherung partiell
