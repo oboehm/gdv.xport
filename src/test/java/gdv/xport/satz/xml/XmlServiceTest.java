@@ -21,15 +21,6 @@ package gdv.xport.satz.xml;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.satz.AbstractSatzTest;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
-import gdv.xport.satz.model.*;
-import gdv.xport.util.NotUniqueException;
-import gdv.xport.util.SatzTyp;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -42,6 +33,16 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
+import gdv.xport.satz.model.*;
+import gdv.xport.util.NotRegisteredException;
+import gdv.xport.util.NotUniqueException;
+import gdv.xport.util.SatzTyp;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
@@ -64,6 +65,15 @@ public class XmlServiceTest extends AbstractXmlTest {
         SatzXml satz = xmlService.getSatzart(100);
         assertNotNull(satz);
         assertEquals(100, satz.getSatzart());
+    }
+
+    /**
+     * Fuer eine nicht registrierte Satzart sollte eine entsprechende
+     * Excption kommen.
+     */
+    @Test(expected = NotRegisteredException.class)
+    public void testGetSatzartNonExisting() {
+        xmlService.getSatzart(451);
     }
 
     /**

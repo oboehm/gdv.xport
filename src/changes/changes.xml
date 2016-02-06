@@ -17,8 +17,11 @@
 
   <body>
 
-    <release version="1.1.0-SNAPSHOT" date="2016"
+    <release version="1.1.0" date="08-Feb-2016"
              description="Registrierung XML-Beschreibung">
+      <action dev="oboehm" type="add" date="06-Feb-2016">
+        Test-Abdeckung von XmlService erh&#246;ht.
+      </action>
       <action dev="oboehm" type="update" date="03-Feb-2016" >
         Konstruktoren und Methoden, die als Deprecated gekennzeichnet waren
         und laut JavaDoc mit 1.1 entfernt werden sollten, wurden entfernt:
