@@ -71,11 +71,13 @@ public class RecyclingInputStreamReaderTest {
     @Test
     public void testRecycling() throws IOException {
         byte [] input = HELLO.getBytes();
+        RecyclingInputStreamReader reader = new RecyclingInputStreamReader(istream);
         for (int i = 0; i < input.length; i++) {
-            RecyclingInputStreamReader reader = new RecyclingInputStreamReader(istream);
+            reader = new RecyclingInputStreamReader(istream);
             int ch = reader.read();
             assertEquals(input[i], ch);
         }
+        reader.close();
         istream.close();
     }
 

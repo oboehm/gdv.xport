@@ -89,13 +89,19 @@ public class RecyclingInputStreamReader extends Reader {
         }
     }
 
-    /* (non-Javadoc)
+    /**
+     * Wir schliessen hier nur den letzten Reader, damit die anderen Reader
+     * nicht ploetzlich vor einem geschlossen Stream stehen.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
      * @see java.io.Reader#close()
      */
     @Override
     public void close() throws IOException {
-        reader.close();
         removeReader(reader);
+        if (cachedReaders.isEmpty()) {
+            reader.close();
+        }
     }
 
     /* (non-Javadoc)
