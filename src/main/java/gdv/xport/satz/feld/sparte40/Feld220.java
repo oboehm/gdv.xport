@@ -85,7 +85,7 @@ public enum Feld220 {
      * </p>
      * <p>
      * Beispiel 3: Anschlußgleise Bahnanlage 2.000 mtr Länge, Wagnis Nr. =
-     * 0101, Berechnungseinheit = 088, Mengenschlüssel = 4, Wagnismenge = 2 =>
+     * 0101, Berechnungseinheit = 088, Mengenschlüssel = 4, Wagnismenge = 2 =&gt;
      * (Gleise), (mtr. Bahnlänge), (in 1000), (2000)
      * </p>
      * <p>

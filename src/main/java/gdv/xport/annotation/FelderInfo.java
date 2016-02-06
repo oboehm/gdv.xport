@@ -37,7 +37,7 @@ public @interface FelderInfo {
     /**
      * Enum mit den FeldInfos, der angegeben werden <b>muss</b>.
      *
-     * @return the class<? extends enum<?>>
+     * @return den Typ der Enum
      */
     Class<? extends Enum<?>> type();
 
@@ -45,7 +45,7 @@ public @interface FelderInfo {
      * Sparte, fuer den die referenzierten FeldInfos gelten. Mit diesem Wert
      * wird die Spalte vorbelegt.
      *
-     * @return the int
+     * @return die Sparte
      * @since 0.9
      */
     int sparte() default 0;
@@ -55,14 +55,14 @@ public @interface FelderInfo {
      * falls er dort nicht angegeben ist. -1 bedeutet dabei, dass kein Wert
      * vorbelegt wird.
      *
-     * @return the int
+     * @return Nummer des Teildatensatzes
      */
     int teildatensatz() default -1;
 
     /**
      * Erlaeuterung.
      *
-     * @return the string
+     * @return einen Text
      */
     String erlaeuterung() default "Enum mit weiteren FeldInfos";
 

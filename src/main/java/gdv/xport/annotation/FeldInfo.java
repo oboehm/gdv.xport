@@ -18,11 +18,11 @@
 
 package gdv.xport.annotation;
 
-import gdv.xport.feld.Align;
-import gdv.xport.feld.Feld;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+
+import gdv.xport.feld.Align;
+import gdv.xport.feld.Feld;
 
 /**
  * Diese Annotation dient als Behaelter fuer einige Meta-Informationen wie
@@ -36,41 +36,57 @@ public @interface FeldInfo {
 
     /**
      * Teildatensatz.
+     *
+     * @return the int
      */
     int teildatensatz() default 1;
 
     /**
      * Feld-Nummer im Teildatensatz.
+     *
+     * @return the int
      */
     int nr() default 1;
 
     /**
      * Erwarteter Datentyp, der angegeben werden <b>muss</b>.
+     *
+     * @return the class<? extends feld>
      */
     Class<? extends Feld> type();
 
     /**
      * Ausrichtung: rechts- oder linksbuendig.
+     *
+     * @return the align
      */
     Align align() default Align.UNKNOWN;
 
     /**
      * Anzahl bytes.
+     *
+     * @return the int
      */
     int anzahlBytes() default 1;
 
     /**
      * Byte adresse.
+     *
+     * @return the int
      */
     int byteAdresse() default -1;
 
     /**
      * Anzahl Nachkommastellen.
+     *
+     * @return the int
      */
     int nachkommaStellen() default 0;
 
     /**
      * Erlaeuterung.
+     *
+     * @return the string
      */
     String erlaeuterung() default "siehe Handbuch GDV-Datensatz";
 
@@ -78,6 +94,7 @@ public @interface FeldInfo {
      * Normalerweise wird der Bezeichnung aus dem Namen abgeleitet. In manchen
      * Faellen muss man (wie z.B. der VU-Nummer) koennen wir etwas nachhelfen.
      *
+     * @return the string
      * @since 0.9
      */
     String bezeichnung() default "";
@@ -85,7 +102,8 @@ public @interface FeldInfo {
     /**
      * Hierueber kann ein Default-Wert fuer ein Element mitgegeben werden.
      *
-     * @sincd 1.0
+     * @return the string
+     * @since 1.0
      */
     String value() default "";
 
