@@ -18,14 +18,14 @@
 
 package gdv.xport.satz.model;
 
-import gdv.xport.io.ImportException;
-import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.feld.MetaFeldInfo;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import gdv.xport.io.ImportException;
+import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.feld.MetaFeldInfo;
 
 /**
  * Diese Klasse repraesentiert die Satzart 220. Es handelt es sich dabei um eine
@@ -95,14 +95,13 @@ public class Satz220 extends SpartensatzX {
      * @throws IOException falls der String zu kurz ist
      */
     @Override
-    // TODO: IOException cannot happen here - replace it by IllegalArgumentException (26-Jan-2014, oboehm)
     public void importFrom(final String input) throws IOException {
-        switch (this.getSparte()) { // NOPMD by oliver on 20.11.10 18:54
+        switch (this.getSparte()) {
             case 30:
-                importSparte30(input);
+                importSparte(30, input, 48);
                 break;
             case 40:
-                importSparte40(input);
+                importSparte(40, input, 50);
                 break;
             default:
                 super.importFrom(input);
@@ -110,7 +109,7 @@ public class Satz220 extends SpartensatzX {
         }
     }
 
-    private void importSparte30(final String s) throws IOException {
+    private void importSparte(int sparte, final String s, int indexSatznummer) throws IOException {
         this.removeAllTeildatensaetze();
         int satzlength = getSatzlength(s);
         for (int i = 0; i < s.length(); i += satzlength) {
@@ -118,7 +117,7 @@ public class Satz220 extends SpartensatzX {
             if (input.trim().isEmpty()) {
                 break;
             }
-            char satznummer = input.charAt(48);
+            char satznummer = input.charAt(indexSatznummer);
             switch (satznummer) {
                 case '1':
                     addTeildatensatz(1, input);
@@ -127,37 +126,12 @@ public class Satz220 extends SpartensatzX {
                     addTeildatensatz(2, input);
                     break;
                 default:
-                    if (input.charAt(42) == '3') {
+                    if ((sparte == 30) && (input.charAt(42) == '3')) {
                         addTeildatensatz(3, input);
-                    } else if (input.charAt(59) == '9') {
+                    } else if ((sparte == 30) && (input.charAt(59) == '9')) {
                         addTeildatensatz(9, input);
                     } else {
-                        throw new ImportException("Satz 0220.030: unbekannter Teildatensatz \""
-                                + input.substring(0, 60) + "...\"");
-                    }
-                    break;
-            }
-        }
-    }
-
-    private void importSparte40(final String s) throws IOException {
-        this.removeAllTeildatensaetze();
-        int satzlength = getSatzlength(s);
-        for (int i = 0; i < s.length(); i += satzlength) {
-            String input = s.substring(i);
-            if (input.trim().isEmpty()) {
-                break;
-            }
-            char satznummer = input.charAt(50);
-            switch (satznummer) {
-                case '1':
-                    addTeildatensatz(1, input);
-                    break;
-                default:
-                    if (input.charAt(50) == '2') {
-                        addTeildatensatz(2, input);
-                    } else {
-                        throw new ImportException("Satz 0220.040: unbekannter Teildatensatz \""
+                        throw new ImportException("Satz 0220.0" + sparte + ": unbekannter Teildatensatz \""
                                 + input.substring(0, 60) + "...\"");
                     }
                     break;
