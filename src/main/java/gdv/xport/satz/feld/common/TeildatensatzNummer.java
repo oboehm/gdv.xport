@@ -52,15 +52,6 @@ public enum TeildatensatzNummer {
 	}
 
 	/**
-	 * Sets the code.
-	 *
-	 * @param code the new code
-	 */
-	public void setCode(final int code) {
-		this.code = code;
-	}
-
-	/**
 	 * Checks if is in.
 	 *
 	 * @param code the code
