@@ -21,23 +21,23 @@
 package gdv.xport.satz;
 
 import static gdv.xport.feld.Bezeichner.NAME_SATZNUMMER;
-import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
-import gdv.xport.io.ImportException;
 
 import java.io.IOException;
 import java.io.Writer;
 import java.util.*;
 import java.util.Map.Entry;
 
-import net.sf.oval.ConstraintViolation;
-import net.sf.oval.Validator;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import gdv.xport.config.Config;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
+import gdv.xport.io.ImportException;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.Validator;
 
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
@@ -368,8 +368,8 @@ public class Teildatensatz extends Satz {
         for (int i = 0; i < 256; i++) {
             data.append(' ');
         }
-        for (Object key : datenfelder.keySet()) {
-            Feld feld = datenfelder.get(key);
+        for (Entry<Bezeichner, Feld> entry : datenfelder.entrySet()) {
+            Feld feld = datenfelder.get(entry.getKey());
             int start = (feld.getByteAdresse() - 1) % 256;
             int end = start + feld.getAnzahlBytes();
             data.replace(start, end, feld.getInhalt());
