@@ -20,6 +20,16 @@ package gdv.xport.satz.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
@@ -31,15 +41,6 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
 import gdv.xport.util.SatzFactory;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * JUnit-Test fuer Satz220.
@@ -175,7 +176,7 @@ public class Satz220Test extends AbstractDatensatzTest {
     /**
      * Bei Tests in DatenpaketTest hat dieser Satz hier aus "igor_110120.txt"
      * Probleme bereitet, da er "invalid" war. Letzendlich war es aber nur ein
-     * Copy&Paste-Fehler des Datensatzes.
+     * Copy&amp;Paste-Fehler des Datensatzes.
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
