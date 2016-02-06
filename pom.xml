@@ -73,7 +73,7 @@
         <plugin>
 	      <groupId>org.codehaus.mojo</groupId>
 	      <artifactId>findbugs-maven-plugin</artifactId>
-	      <version>2.5.3</version>
+	      <version>3.0.3</version>
         </plugin>
         <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
         <plugin>
@@ -103,12 +103,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.17</version>
+          <version>2.19.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>2.17</version>
+          <version>2.19.1</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -166,7 +166,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.4</version>
         <configuration>
           <locales>de</locales>
           <outputEncoding>UTF-8</outputEncoding>
@@ -231,7 +231,7 @@
 		      <plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-pmd-plugin</artifactId>
-		        <version>3.3</version>
+		        <version>3.6</version>
 		        <configuration>
 		          <linkXref>true</linkXref>
 		          <sourceEncoding>utf-8</sourceEncoding>
