@@ -51,7 +51,7 @@ public @interface FeldInfo {
     /**
      * Erwarteter Datentyp, der angegeben werden <b>muss</b>.
      *
-     * @return the class<? extends feld>
+     * @return Datentyp
      */
     Class<? extends Feld> type();
 
