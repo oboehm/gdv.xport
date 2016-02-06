@@ -52,8 +52,8 @@ public enum Feld222 {
     LFD_NUMMER_VP_PERSONENGRUPPE1,
 
     /**
-     * Erkrankungen.<br/>
-     * Liegen oder lagen Erkrankungen im Zeitraum und Umfang gemäß Antrag vor?<br/>
+     * Erkrankungen.
+     * Liegen oder lagen Erkrankungen im Zeitraum und Umfang gemäß Antrag vor?
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -65,8 +65,8 @@ public enum Feld222 {
     ERKRANKUNGEN,
 
     /**
-     * Unfälle.<br/>
-     * Lagen Unfälle im Zeitraum und Umfang gemäß Antrag vor?<br/>
+     * Unfälle.
+     * Lagen Unfälle im Zeitraum und Umfang gemäß Antrag vor?
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -78,8 +78,8 @@ public enum Feld222 {
     UNFAELLE,
 
     /**
-     * Dauerschäden / Körperliche Beeinträchtigungen.<br/>
-     * Bestehen Dauerschäden oder körperliche Beeinträchtigungen ?<br/>
+     * Dauerschäden / Körperliche Beeinträchtigungen.
+     * Bestehen Dauerschäden oder körperliche Beeinträchtigungen ?
      * 0 = nein, 1 = ja
      */
     @FeldInfo(

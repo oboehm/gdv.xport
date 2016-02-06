@@ -41,36 +41,36 @@ public enum Feld221Wagnis5 {
     INTRO1,
 
     /**
-     * Laufende Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * 5 = Risikozusatzversicherung
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
 
     /**
-     * Lfd Nummer zur Wagnisart.<br/>
+     * Lfd Nummer zur Wagnisart.
      * siehe Anlage 15
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Versicherungssumme in Währungseinheiten.<br/>
-     * erreichte Summe / tarifliche Versicherungssumme<br/>
+     * Versicherungssumme in Währungseinheiten.
+     * erreichte Summe / tarifliche Versicherungssumme
      * (12,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 62)
     VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 180, byteAdresse = 76)
     LEERSTELLEN,
@@ -85,35 +85,35 @@ public enum Feld221Wagnis5 {
     INTRO2,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Lfd. Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 2, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE2,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * 5 = Risikozusatzversicherung
      */
     @FeldInfo(teildatensatz = 2, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART2,
 
     /**
-     * Lfd Nummer zur Wagnisart.<br/>
+     * Lfd Nummer zur Wagnisart.
      * siehe Anlage 15
      */
     @FeldInfo(teildatensatz = 2, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART2,
 
     /**
-     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten in Währungseinheiten.<br/>
+     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten in Währungseinheiten.
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 12, byteAdresse = 62)
     ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(teildatensatz = 2, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 182, byteAdresse = 74)
     LEERSTELLEN2

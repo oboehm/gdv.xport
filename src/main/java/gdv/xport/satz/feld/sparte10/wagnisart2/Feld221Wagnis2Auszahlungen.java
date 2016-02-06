@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.
  * "Leben - Rentenversicherung = Wagnisart 2 - Auszahlung" (Satzart 0221)
  *
  * @author ralfklemmer
@@ -41,43 +41,43 @@ public enum Feld221Wagnis2Auszahlungen {
     INTRO1,
 
     /**
-     * Laufende Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * 1 = Kapitallebensversicherung 3 = Risikoversicherung
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
 
     /**
-     * Laufende Nummer zur Wagnisart.<br/>
+     * Laufende Nummer zur Wagnisart.
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Laufende Nummer der Satzart.<br/>
-     * Laufende Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
+     * Laufende Nummer der Satzart.
+     * Laufende Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6, wenn mehrere Bezugsrechte vorhanden)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
     LFD_NUMMER_SATZART,
 
     /**
-     * Nächste Auszahlungssumme in Währungseinheiten.<br/>
-     * Vereinbarte Auszahlungssumme<br/>
+     * Nächste Auszahlungssumme in Währungseinheiten.
+     * Vereinbarte Auszahlungssumme
      * (12,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 64)
     NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 178, byteAdresse = 78)
     LEERSTELLEN

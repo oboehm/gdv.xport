@@ -39,7 +39,7 @@ public enum Feld220 {
     LFD_NUMMER_VP_PERSONENGRUPPE1,
 
     /**
-     * Satznummer.<br/>
+     * Satznummer.
      * konstant 1
      */
     @FeldInfo(
@@ -51,7 +51,7 @@ public enum Feld220 {
     SATZNUMMER1,
 
     /**
-     * Bezeichnung Personengruppe.<br/>
+     * Bezeichnung Personengruppe.
      * Bei namentlich nicht genannten Personen.
      */
     @FeldInfo(
@@ -63,7 +63,7 @@ public enum Feld220 {
     BEZEICHNUNG_PERSONENGRUPPE,
 
     /**
-     * Anzahl der VP pro Personengruppe.<br/>
+     * Anzahl der VP pro Personengruppe.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -74,7 +74,7 @@ public enum Feld220 {
     ANZAHL_VP_PRO_PERSONENGRUPPE,
 
     /**
-     * Name der VP.<br/>
+     * Name der VP.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -85,7 +85,7 @@ public enum Feld220 {
     NAME_VP,
 
     /**
-     * Vorname der VP.<br/>
+     * Vorname der VP.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -96,7 +96,7 @@ public enum Feld220 {
     VORNAME_VP,
 
     /**
-     * Geburtsdatum der VP.<br/>
+     * Geburtsdatum der VP.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -107,7 +107,7 @@ public enum Feld220 {
     GEBURTSDATUM_VP,
 
     /**
-     * Geschlecht der VP.<br/>
+     * Geschlecht der VP.
      * 0 = juristische Person, 1 = männlich, 2 = weiblich
      */
     @FeldInfo(
@@ -119,9 +119,9 @@ public enum Feld220 {
     GESCHLECHT_VP,
 
     /**
-     * Berufsschlüssel.<br/>
-     * Berufsschlüssel der Bundesagentur für Arbeit (Stelle 1-3)<br/>
-     * Berufsschlüssel der Bundesanstalt für Arbeit<br/>
+     * Berufsschlüssel.
+     * Berufsschlüssel der Bundesagentur für Arbeit (Stelle 1-3)
+     * Berufsschlüssel der Bundesanstalt für Arbeit
      * Kann bei der zuständigen Bundesagentur für Arbeit angefordert werden
      */
     @FeldInfo(
@@ -133,7 +133,7 @@ public enum Feld220 {
     BERUFSSCHLUESSEL,
 
     /**
-     * Beruf - Text.<br/>
+     * Beruf - Text.
      * Klartext
      */
     @FeldInfo(
@@ -145,7 +145,7 @@ public enum Feld220 {
     BERUF_TEXT,
 
     /**
-     * Gefahrengruppe.<br/>
+     * Gefahrengruppe.
      * A = Gefahrengruppe A, B = Gefahrengruppe B, E = Einheitsgefahren
      */
     @FeldInfo(
@@ -157,14 +157,14 @@ public enum Feld220 {
     GEFAHRENGRUPPE,
 
     /**
-     * Tarif.<br/>
-     * 1 = Einzelunfall<br/>
-     * 2 = Gruppenunfall mit Namensnennung<br/>
-     * 3 = Gruppenunfall ohne Namensnennung<br/>
-     * 4 = Familienunfall<br/>
-     * 5 = Kinderunfall<br/>
-     * 6 = Stand. Familienunfall<br/>
-     * 7 = Stand. Einzel-Unfall<br/>
+     * Tarif.
+     * 1 = Einzelunfall
+     * 2 = Gruppenunfall mit Namensnennung
+     * 3 = Gruppenunfall ohne Namensnennung
+     * 4 = Familienunfall
+     * 5 = Kinderunfall
+     * 6 = Stand. Familienunfall
+     * 7 = Stand. Einzel-Unfall
      * 9 = sonstige
      */
     @FeldInfo(
@@ -176,13 +176,13 @@ public enum Feld220 {
     TARIF,
 
     /**
-     * Deckungsumfang.<br/>
-     * 1 = 24 Stunden-Deckung<br/>
-     * 2 = nur Berufsunfall<br/>
-     * 3 = Berufsunfall mit Wegeunfall<br/>
-     * 4 = nur Wegeunfall<br/>
-     * 5 = Freizeitunfall<br/>
-     * 6 = Ehrenamtliche Tätigkeit<br/>
+     * Deckungsumfang.
+     * 1 = 24 Stunden-Deckung
+     * 2 = nur Berufsunfall
+     * 3 = Berufsunfall mit Wegeunfall
+     * 4 = nur Wegeunfall
+     * 5 = Freizeitunfall
+     * 6 = Ehrenamtliche Tätigkeit
      * 9 = sonstige
      */
     @FeldInfo(
@@ -194,7 +194,7 @@ public enum Feld220 {
     DECKUNGSUMFANG,
 
     /**
-     * Währungsschlüssel.<br/>
+     * Währungsschlüssel.
      * ISO-Code, siehe Anlage 3
      */
     @FeldInfo(
@@ -206,7 +206,7 @@ public enum Feld220 {
     WAEHRUNGSSCHLUESSEL,
 
     /**
-     * Zuschlag in %.<br/>
+     * Zuschlag in %.
      * (3,2 Stellen)
      */
     @FeldInfo(
@@ -219,7 +219,7 @@ public enum Feld220 {
     ZUSCHLAG_IN_PROZENT,
 
     /**
-     * Abschlag in %.<br/>
+     * Abschlag in %.
      * (3,2 Stellen)
      */
     @FeldInfo(
@@ -232,8 +232,8 @@ public enum Feld220 {
     ABSCHLAG_IN_PROZENT,
 
     /**
-     * Beitrag pro VP oder pro Personengruppe in Währungseinheiten.<br/>
-     * gemäß Zahlungsweise<br/>
+     * Beitrag pro VP oder pro Personengruppe in Währungseinheiten.
+     * gemäß Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -245,9 +245,9 @@ public enum Feld220 {
     BEITRAG_PRO_VP_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Einschlussdatum VP / Personengruppe.<br/>
+     * Einschlussdatum VP / Personengruppe.
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
-     * werden<br/>
+     * werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -259,9 +259,9 @@ public enum Feld220 {
     EINSCHLUSSDATUM_VP,
 
     /**
-     * Ausschlussdatum VP / Personengruppe.<br/>
+     * Ausschlussdatum VP / Personengruppe.
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
-     * werden<br/>
+     * werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -273,9 +273,9 @@ public enum Feld220 {
     AUSSCHLUSSDATUM_VP,
 
     /**
-     * Änderungsdatum.<br/>
+     * Änderungsdatum.
      * Termin, zu dem der Vertragszustand wirksam wird/wurde (Gültig-ab- /
-     * Wirksam-ab-Datum).<br/>
+     * Wirksam-ab-Datum).
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -287,7 +287,7 @@ public enum Feld220 {
     AENDERUNGSDATUM,
 
     /**
-     * Besondere Vereinbarungen zum Fluggastrisiko.<br/>
+     * Besondere Vereinbarungen zum Fluggastrisiko.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -299,10 +299,10 @@ public enum Feld220 {
     BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO,
 
     /**
-     * passives Kriegsrisiko.<br/>
-     * 0 = nein<br/>
-     * 1 = Boden<br/>
-     * 2 = Luft<br/>
+     * passives Kriegsrisiko.
+     * 0 = nein
+     * 1 = Boden
+     * 2 = Luft
      * 3 = Luft und Boden
      */
     @FeldInfo(
@@ -314,7 +314,7 @@ public enum Feld220 {
     PASSIVES_KRIEGSRISIKO,
 
     /**
-     * Kündigungsklausel VP/ Personengruppe gestrichen.<br/>
+     * Kündigungsklausel VP/ Personengruppe gestrichen.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -326,7 +326,7 @@ public enum Feld220 {
     KUENDIGUNGSKLAUSEL_VP,
 
     /**
-     * Eintrittsalter der VP.<br/>
+     * Eintrittsalter der VP.
      * in Jahren
      */
     @FeldInfo(
@@ -338,10 +338,10 @@ public enum Feld220 {
     EINTRITTSALTER_DER_VP,
 
     /**
-     * Altersgruppe.<br/>
-     * 01 = Kinder<br/>
-     * 02 = Erwachsene<br/>
-     * 03 = Senioren<br/>
+     * Altersgruppe.
+     * 01 = Kinder
+     * 02 = Erwachsene
+     * 03 = Senioren
      * 99 = Sonstige
      */
     @FeldInfo(
@@ -364,7 +364,7 @@ public enum Feld220 {
     LEERSTELLEN,
 
     /**
-     * Satznummernwiederholung.<br/>
+     * Satznummernwiederholung.
      * Hier konstant
      */
     @FeldInfo(
@@ -407,7 +407,7 @@ public enum Feld220 {
     LFD_NUMMER_VP_PERSONENGRUPPE2,
 
     /**
-     * Satznummer.<br/>
+     * Satznummer.
      * konstant 2
      */
     @FeldInfo(
@@ -419,7 +419,7 @@ public enum Feld220 {
     SATZNUMMER2,
 
     /**
-     * Tod.<br/>
+     * Tod.
      * Vers.-Summe in Währungseinheiten
      */
     @FeldInfo(
@@ -431,8 +431,8 @@ public enum Feld220 {
     TOD,
 
     /**
-     * Tod-Beitragssatz.<br/>
-     * pro Tausend Währungseinheiten<br/>
+     * Tod-Beitragssatz.
+     * pro Tausend Währungseinheiten
      * (2,5 Stellen)
      */
     @FeldInfo(
@@ -445,7 +445,7 @@ public enum Feld220 {
     TOD_BEITRAGSSATZ,
 
     /**
-     * Invalidität.<br/>
+     * Invalidität.
      * Vers.-Summe in Währungseinheiten
      */
     @FeldInfo(
@@ -458,9 +458,9 @@ public enum Feld220 {
     INVALIDITAET,
 
     /**
-     * Kennung Gliedertaxe.<br/>
-     * 0 = normal<br/>
-     * 1 = erhöht<br/>
+     * Kennung Gliedertaxe.
+     * 0 = normal
+     * 1 = erhöht
      * 2 = geändert
      */
     @FeldInfo(
@@ -472,7 +472,7 @@ public enum Feld220 {
     KENNUNG_GLIEDERTAXE,
 
     /**
-     * Kennung progressive Invalidität.<br/>
+     * Kennung progressive Invalidität.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -484,8 +484,8 @@ public enum Feld220 {
     KENNUNG_PROGRESSIVE_INVALIDITAET,
 
     /**
-     * Invalidität-Beitragssatz.<br/>
-     * pro Tausend Währungseinheiten<br/>
+     * Invalidität-Beitragssatz.
+     * pro Tausend Währungseinheiten
      * (2,5 Stellen)
      */
     @FeldInfo(
@@ -498,8 +498,8 @@ public enum Feld220 {
     INVALIDITAET_BEITRAGSSATZ,
 
     /**
-     * Tagegeld 1.<br/>
-     * Tagegeldsatz in Währungseinheiten<br/>
+     * Tagegeld 1.
+     * Tagegeldsatz in Währungseinheiten
      * (6,1 Stellen)
      */
     @FeldInfo(
@@ -512,8 +512,8 @@ public enum Feld220 {
     TAGEGELD1,
 
     /**
-     * Beginn Tagegeld 1 ab Tag.<br/>
-     * Beginn der Tagegeldzahlung (TTT)<br/>
+     * Beginn Tagegeld 1 ab Tag.
+     * Beginn der Tagegeldzahlung (TTT)
      * (6,1 Stellen)
      */
     @FeldInfo(
@@ -525,7 +525,7 @@ public enum Feld220 {
     BEGINN_TAGEGELD1_AB_TAG,
 
     /**
-     * Tagegeld 1 Beitragssatz.<br/>
+     * Tagegeld 1 Beitragssatz.
      * pro Währungseinheit (2,5 Stellen)
      */
     @FeldInfo(
@@ -538,8 +538,8 @@ public enum Feld220 {
     TAGEGELD1_BEITRAGSSATZ,
 
     /**
-     * Tagegeld 2.<br/>
-     * Tagegeldsatz in Währungseinheiten<br/>
+     * Tagegeld 2.
+     * Tagegeldsatz in Währungseinheiten
      * (6,1 Stellen)
      */
     @FeldInfo(
@@ -552,8 +552,8 @@ public enum Feld220 {
     TAGEGELD2,
 
     /**
-     * Beginn Tagegeld 2 ab Tag.<br/>
-     * Beginn der Tagegeldzahlung (TTT)<br/>
+     * Beginn Tagegeld 2 ab Tag.
+     * Beginn der Tagegeldzahlung (TTT)
      * (6,1 Stellen)
      */
     @FeldInfo(
@@ -565,7 +565,7 @@ public enum Feld220 {
     BEGINN_TAGEGELD2_AB_TAG,
 
     /**
-     * Tagegeld 2 Beitragssatz.<br/>
+     * Tagegeld 2 Beitragssatz.
      * pro Währungseinheit (2,5 Stellen)
      */
     @FeldInfo(
@@ -578,8 +578,8 @@ public enum Feld220 {
     TAGEGELD2_BEITRAGSSATZ,
 
     /**
-     * Krankenhaustagegeld.<br/>
-     * Krankenhaustagegeldsatz in Währungseinheiten<br/>
+     * Krankenhaustagegeld.
+     * Krankenhaustagegeldsatz in Währungseinheiten
      * (6,1 Stellen)
      */
     @FeldInfo(
@@ -592,7 +592,7 @@ public enum Feld220 {
     KRANKENHAUSTAGEGELD,
 
     /**
-     * Krankenhaustagegeld Beitragssatz.<br/>
+     * Krankenhaustagegeld Beitragssatz.
      * pro Währungseinheit (2,5 Stellen)
      */
     @FeldInfo(
@@ -605,8 +605,8 @@ public enum Feld220 {
     KRANKENHAUSTAGEGELD_BEITRAGSSATZ,
 
     /**
-     * Genesungsgeld.<br/>
-     * Genesungsgeld in Währungseinheiten<br/>
+     * Genesungsgeld.
+     * Genesungsgeld in Währungseinheiten
      * (6,1 Stellen)
      */
     @FeldInfo(
@@ -619,7 +619,7 @@ public enum Feld220 {
     GENESUNGSGELD,
 
     /**
-     * Genesungsgeld Beitragssatz.<br/>
+     * Genesungsgeld Beitragssatz.
      * pro Währungseinheit (2,5 Stellen)
      */
     @FeldInfo(
@@ -632,7 +632,7 @@ public enum Feld220 {
     GENESUNGSGELD_BEITRAGSSATZ,
 
     /**
-     * Übergangsentschädigung.<br/>
+     * Übergangsentschädigung.
      * Vers.-Summe in Währungseinheiten
      */
     @FeldInfo(
@@ -644,8 +644,8 @@ public enum Feld220 {
     UEBERGANGSENTSCHAEDIGUNG,
 
     /**
-     * Kennung Übergangsentschädigung.<br/>
-     * 1 = nach 6 Monaten<br/>
+     * Kennung Übergangsentschädigung.
+     * 1 = nach 6 Monaten
      * 2 = andere
      */
     @FeldInfo(
@@ -657,7 +657,7 @@ public enum Feld220 {
     KENNUNG_UEBERGANGSENTSCHAEDIGUNG,
 
     /**
-     * Übergangsentschädigung Beitragssatz.<br/>
+     * Übergangsentschädigung Beitragssatz.
      * pro Hundert Währungseinheit (2,5 Stellen)
      */
     @FeldInfo(
@@ -670,7 +670,7 @@ public enum Feld220 {
     UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ,
 
     /**
-     * Heilkosten.<br/>
+     * Heilkosten.
      * Vers.-Summe in Währungseinheiten
      */
     @FeldInfo(
@@ -682,8 +682,8 @@ public enum Feld220 {
     HEILKOSTEN,
 
     /**
-     * Art der Heilkosten.<br/>
-     * 1 = Voll<br/>
+     * Art der Heilkosten.
+     * 1 = Voll
      * 2 = Zusatz
      */
     @FeldInfo(
@@ -695,7 +695,7 @@ public enum Feld220 {
     ART_DER_HEILKOSTEN,
 
     /**
-     * Heilkosten Beitragssatz.<br/>
+     * Heilkosten Beitragssatz.
      * pro Hundert Währungseinheit (2,5 Stellen)
      */
     @FeldInfo(
@@ -708,7 +708,7 @@ public enum Feld220 {
     HEILKOSTEN_BEITRAGSSATZ,
 
     /**
-     * Feste Rente.<br/>
+     * Feste Rente.
      * Vers.-Summe in Währungseinheiten
      */
     @FeldInfo(
@@ -720,7 +720,7 @@ public enum Feld220 {
     FESTE_RENTE,
 
     /**
-     * Feste Rente Beitragssatz.<br/>
+     * Feste Rente Beitragssatz.
      * pro Hundert Währungseinheit (2,5 Stellen)
      */
     @FeldInfo(
@@ -733,7 +733,7 @@ public enum Feld220 {
     FESTE_RENTE_BEITRAGSSATZ,
 
     /**
-     * Kosmetische Operationen.<br/>
+     * Kosmetische Operationen.
      * Vers.-Summe in Währungseinheiten
      */
     @FeldInfo(
@@ -745,7 +745,7 @@ public enum Feld220 {
     KOSMETISCHE_OPERATIONEN,
 
     /**
-     * Kosmetische Operationen Beitragssatz.<br/>
+     * Kosmetische Operationen Beitragssatz.
      * pro Hundert Währungseinheit (2,5 Stellen)
      */
     @FeldInfo(
@@ -758,7 +758,7 @@ public enum Feld220 {
     KOSMETISCHE_OPERATIONEN_BEITRAGSSATZ,
 
     /**
-     * Kurkosten.<br/>
+     * Kurkosten.
      * Vers.-Summe in Währungseinheiten
      */
     @FeldInfo(
@@ -770,7 +770,7 @@ public enum Feld220 {
     KURKOSTEN,
 
     /**
-     * Kurkosten Beitragssatz.<br/>
+     * Kurkosten Beitragssatz.
      * pro Hundert Währungseinheit (2,5 Stellen)
      */
     @FeldInfo(
@@ -783,7 +783,7 @@ public enum Feld220 {
     KURKOSTEN_BEITRAGSSATZ,
 
     /**
-     * Bergungskosten.<br/>
+     * Bergungskosten.
      * Vers.-Summe in Währungseinheiten
      */
     @FeldInfo(
@@ -795,7 +795,7 @@ public enum Feld220 {
     BERGUNGSKOSTEN,
 
     /**
-     * Bergungskosten Beitragssatz.<br/>
+     * Bergungskosten Beitragssatz.
      * pro Hundert Währungseinheit (2,5 Stellen)
      */
     @FeldInfo(
@@ -808,9 +808,9 @@ public enum Feld220 {
     BERGUNGSKOSTEN_BEITRAGSSATZ,
 
     /**
-     * Überführungskosten.<br/>
-     * im Todesfall<br/>
-     * 0 = nein<br/>
+     * Überführungskosten.
+     * im Todesfall
+     * 0 = nein
      * 1 = ja
      */
     @FeldInfo(
@@ -822,9 +822,9 @@ public enum Feld220 {
     UEBERFUEHRUNGSKOSTEN,
 
     /**
-     * Rückführungskosten.<br/>
-     * im Verletzungsfall<br/>
-     * 0 = nein<br/>
+     * Rückführungskosten.
+     * im Verletzungsfall
+     * 0 = nein
      * 1 = ja
      */
     @FeldInfo(
@@ -836,7 +836,7 @@ public enum Feld220 {
     RUECKFUEHRUNGSKOSTEN,
 
     /**
-     * Prozentsatz progressive Invalidität.<br/>
+     * Prozentsatz progressive Invalidität.
      * (4,2 Stellen)
      */
     @FeldInfo(
@@ -849,8 +849,8 @@ public enum Feld220 {
     PROZENTSATZ_PROGRESSIVE_INVALIDITAET,
 
     /**
-     * Mehrleistungsklausel.<br/>
-     * 0 = nein<br/>
+     * Mehrleistungsklausel.
+     * 0 = nein
      * 1 = ja
      */
     @FeldInfo(
@@ -873,11 +873,11 @@ public enum Feld220 {
     LEERSTELLEN2,
 
     /**
-     * Zusätzliche Satzkennung.<br/>
+     * Zusätzliche Satzkennung.
      *
      * Konstant "X"; dieses Feld dient der eindeutigen Unterscheidung des
-     * Teilsatzes 220.030/2 von den anderen Teilsätzen der Satzart 220.030.<br/>
-     * <br/>
+     * Teilsatzes 220.030/2 von den anderen Teilsätzen der Satzart 220.030.
+     * 
      * Da bei Gruppen-Unfallversicherungen mit lfd. Nummer der vers. Person die
      * Satznummer 3 (Satzart 220.030/3, Feld 8) mit der ersten Stelle der lfd.
      * Nummer der VP (Satzarten 220.1/1, 220.1/2 und 220.1/9, Feld 8)
@@ -903,7 +903,7 @@ public enum Feld220 {
     INTRO3,
 
     /**
-     * Satznummer.<br/>
+     * Satznummer.
      * konstant 3
      */
     @FeldInfo(
@@ -915,7 +915,7 @@ public enum Feld220 {
     SATZNUMMER3,
 
     /**
-     * VP-Personennummer des Versicherers.<br/>
+     * VP-Personennummer des Versicherers.
      * Personennummer des Versicherers, rechtsbündig, mit Leerstellen
      * linksbündig auffüllen, ohne Sonderzeichen
      */
@@ -928,7 +928,7 @@ public enum Feld220 {
     VP_PERSONENNUMMER_VERSICHERER,
 
     /**
-     * VP-Personennummer des Vermittlers.<br/>
+     * VP-Personennummer des Vermittlers.
      * Personennummer des Vermittlers, rechtsbündig, mit Leerstellen
      * linksbündig auffüllen, ohne Sonderzeichen
      */
@@ -941,7 +941,7 @@ public enum Feld220 {
     VP_PERSONENNUMMER_VERMITTLER,
 
     /**
-     * Serviceleistungen.<br/>
+     * Serviceleistungen.
      * Vers.-summe in Währungseinheiten
      */
     @FeldInfo(
@@ -953,8 +953,8 @@ public enum Feld220 {
     SERVICELEISTUNGEN,
 
     /**
-     * Serviceleistungen Beitragssatz.<br/>
-     * pro Hundert Währungseinheiten<br/>
+     * Serviceleistungen Beitragssatz.
+     * pro Hundert Währungseinheiten
      * (2,5 Stellen)
      */
     @FeldInfo(
@@ -967,8 +967,8 @@ public enum Feld220 {
     SERVICELEISTUNGEN_BEITRAGSSATZ,
 
     /**
-     * Beitrag Serviceleistungen in Währungseinheiten.<br/>
-     * Beitrag Serviceleistungen gem. Zahlungsweise<br/>
+     * Beitrag Serviceleistungen in Währungseinheiten.
+     * Beitrag Serviceleistungen gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -980,8 +980,8 @@ public enum Feld220 {
     BEITRAG_SERVICELEISTUNGEN_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Tod in Währungseinheiten.<br/>
-     * Beitrag Tod gem. Zahlungsweise<br/>
+     * Beitrag Tod in Währungseinheiten.
+     * Beitrag Tod gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -993,8 +993,8 @@ public enum Feld220 {
     BEITRAG_TOD_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Invalidität in Währungseinheiten.<br/>
-     * Beitrag Invalidität gem. Zahlungsweise<br/>
+     * Beitrag Invalidität in Währungseinheiten.
+     * Beitrag Invalidität gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -1007,8 +1007,8 @@ public enum Feld220 {
     BEITRAG_INVALIDITAET_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Tagegeld 1 in Währungseinheiten.<br/>
-     * Beitrag Tagegeld 1 gem. Zahlungsweise<br/>
+     * Beitrag Tagegeld 1 in Währungseinheiten.
+     * Beitrag Tagegeld 1 gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -1021,8 +1021,8 @@ public enum Feld220 {
     BEITRAG_TAGEGELD1_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Tagegeld 2 in Währungseinheiten.<br/>
-     * Beitrag Tagegeld 2 gem. Zahlungsweise<br/>
+     * Beitrag Tagegeld 2 in Währungseinheiten.
+     * Beitrag Tagegeld 2 gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -1035,8 +1035,8 @@ public enum Feld220 {
     BEITRAG_TAGEGELD2_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Krankenhaustagegeld in Währungseinheiten.<br/>
-     * Beitrag Krankenhaustagegeld gem. Zahlungsweise<br/>
+     * Beitrag Krankenhaustagegeld in Währungseinheiten.
+     * Beitrag Krankenhaustagegeld gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -1049,8 +1049,8 @@ public enum Feld220 {
     BEITRAG_KRANKENHAUSTAGEGELD_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Genesungsgeld in Währungseinheiten.<br/>
-     * Beitrag Genesungsgeld gem. Zahlungsweise<br/>
+     * Beitrag Genesungsgeld in Währungseinheiten.
+     * Beitrag Genesungsgeld gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -1063,8 +1063,8 @@ public enum Feld220 {
     BEITRAG_GENESUNGSGELD_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Übergangsentschädigung in Währungseinheiten.<br/>
-     * Beitrag Übergangsentschädigung gem. Zahlungsweise<br/>
+     * Beitrag Übergangsentschädigung in Währungseinheiten.
+     * Beitrag Übergangsentschädigung gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -1077,8 +1077,8 @@ public enum Feld220 {
     BEITRAG_UEBERGANGSENTSCHAEDIGUNG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Heilkosten in Währungseinheiten.<br/>
-     * Beitrag Heilkosten gem. Zahlungsweise<br/>
+     * Beitrag Heilkosten in Währungseinheiten.
+     * Beitrag Heilkosten gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -1091,8 +1091,8 @@ public enum Feld220 {
     BEITRAG_HEILKOSTEN_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Feste Rente in Währungseinheiten.<br/>
-     * Beitrag Feste Rente gem. Zahlungsweise<br/>
+     * Beitrag Feste Rente in Währungseinheiten.
+     * Beitrag Feste Rente gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -1105,8 +1105,8 @@ public enum Feld220 {
     BEITRAG_FESTE_RENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Kosmetische Operation in Währungseinheiten.<br/>
-     * Beitrag Kosmetische Operation gem. Zahlungsweise<br/>
+     * Beitrag Kosmetische Operation in Währungseinheiten.
+     * Beitrag Kosmetische Operation gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -1119,8 +1119,8 @@ public enum Feld220 {
     BEITRAG_KOSMETISCHE_OPERATION_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Kurkosten in Währungseinheiten-<br/>
-     * Beitrag Kurkosten gem. Zahlungsweise<br/>
+     * Beitrag Kurkosten in Währungseinheiten-
+     * Beitrag Kurkosten gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -1133,8 +1133,8 @@ public enum Feld220 {
     BEITRAG_KURKOSTEN_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beitrag Bergungskosten in Währungseinheiten-<br/>
-     * Beitrag Bergungskosten gem. Zahlungsweise<br/>
+     * Beitrag Bergungskosten in Währungseinheiten-
+     * Beitrag Bergungskosten gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -1147,7 +1147,7 @@ public enum Feld220 {
     BEITRAG_BERGUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Satznummernwiederholung.<br/>
+     * Satznummernwiederholung.
      * Hier konstant.
      */
     @FeldInfo(
@@ -1190,7 +1190,7 @@ public enum Feld220 {
     LFD_NUMMER_VP_PERSONENGRUPPE4,
 
     /**
-     * Satznummer.<br/>
+     * Satznummer.
      * konstant 4
      */
     @FeldInfo(
@@ -1202,7 +1202,7 @@ public enum Feld220 {
     SATZNUMMER4,
 
     /**
-     * Beitragszahlung bis.<br/>
+     * Beitragszahlung bis.
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -1214,7 +1214,7 @@ public enum Feld220 {
     BEITRAGSZAHLUNG_BIS,
 
     /**
-     * Rückgewährdatum.<br/>
+     * Rückgewährdatum.
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -1226,9 +1226,9 @@ public enum Feld220 {
     RUECKGEWAEHRDATUM,
 
     /**
-     * Rückgewährsumme zum Ablauf in Währungseinheiten.<br/>
+     * Rückgewährsumme zum Ablauf in Währungseinheiten.
      * Vertraglich vereinbarte Rückgewährsumme zum Ablauf des Vertrages
-     * (aufgelaufene Beiträge)<br/>
+     * (aufgelaufene Beiträge)
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -1240,8 +1240,8 @@ public enum Feld220 {
     RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Ablaufleistung inklusiv Überschussanteile in Währungseinheiten.<br/>
-     * nach Überschußanrechnung erreichte Ablaufleistung<br/>
+     * Ablaufleistung inklusiv Überschussanteile in Währungseinheiten.
+     * nach Überschußanrechnung erreichte Ablaufleistung
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -1253,7 +1253,7 @@ public enum Feld220 {
     ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Kapitalertragssteuer bei Ablauf.<br/>
+     * Kapitalertragssteuer bei Ablauf.
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -1265,7 +1265,7 @@ public enum Feld220 {
     KAPITALERTRAGSSTEUER_BEI_ABLAUF,
 
     /**
-     * Solidaritätszuschlag bei Ablauf.<br/>
+     * Solidaritätszuschlag bei Ablauf.
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -1277,8 +1277,8 @@ public enum Feld220 {
     SOLIDARITAETSZUSCHLAG_BEI_ABLAUF,
 
     /**
-     * Rückkaufswert zum Berechnugsstichtag in Währungseinheiten.<br/>
-     * kumuliert, incl. aller Dynamiken<br/>
+     * Rückkaufswert zum Berechnugsstichtag in Währungseinheiten.
+     * kumuliert, incl. aller Dynamiken
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -1290,7 +1290,7 @@ public enum Feld220 {
     RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Berechnungsstichtag zum Rückkaufswert.<br/>
+     * Berechnungsstichtag zum Rückkaufswert.
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -1302,7 +1302,7 @@ public enum Feld220 {
     BERECHNUNGSSTICHTAG_ZUM_RUECKKAUFSWERT,
 
     /**
-     * Kapitalertragssteuer bei Rückkauf zum Berechnungsstichtag.<br/>
+     * Kapitalertragssteuer bei Rückkauf zum Berechnungsstichtag.
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -1314,7 +1314,7 @@ public enum Feld220 {
     KAPITALERTRAGSSTEUER_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG,
 
     /**
-     * Solidaritätszuschlag bei Rückkauf zum Berechnungsstichtag.<br/>
+     * Solidaritätszuschlag bei Rückkauf zum Berechnungsstichtag.
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -1326,7 +1326,7 @@ public enum Feld220 {
     SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG,
 
     /**
-     * Überschussanteile zum Berechnungsstichtag in Währungseinheiten.<br/>
+     * Überschussanteile zum Berechnungsstichtag in Währungseinheiten.
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -1349,7 +1349,7 @@ public enum Feld220 {
     LEERSTELLEN4,
 
     /**
-     * Satznummernwiederholung.<br/>
+     * Satznummernwiederholung.
      * Hier konstant
      */
     @FeldInfo(
@@ -1382,7 +1382,7 @@ public enum Feld220 {
 
     /**
      * Laufende Nummer der versicherten Person (VP) / Personengruppe laufende
-     * Nummer, die im VU geführt wird.<br/>
+     * Nummer, die im VU geführt wird.
      * (Das Feld ist durch einen Kopierfehler entstanden. Wenn hier die lfd.
      * Nummer befüllt wird, ist diese im Feld
      * "Lfd. Nummer der versicherten Person (VP) / Personengruppe" auf der
@@ -1397,7 +1397,7 @@ public enum Feld220 {
     LFD_NUMMER_VP_PERSONENGRUPPE9,
 
     /**
-     * Satznummer.<br/>
+     * Satznummer.
      * konstant 9
      */
     @FeldInfo(
@@ -1409,7 +1409,7 @@ public enum Feld220 {
     SATZNUMMER9,
 
     /**
-     * Satznummer.<br/>
+     * Satznummer.
      * Lfd. Nummer der Satzart 0220.030/9 innerhalb der gleichen Folgenummer (z.
      * B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.030/9, wenn
      * mehrere Bezugsrechte vorhanden)
@@ -1423,10 +1423,10 @@ public enum Feld220 {
     LFD_NUMMER_SATZART,
 
     /**
-     * Bezugsberechtigt im Leistungsfall.<br/>
-     * 1 = Versicherungsnehmer<br/>
-     * 2 = Versicherte Person<br/>
-     * 9 = Sonstiger Bezugsberechtigter<br/>
+     * Bezugsberechtigt im Leistungsfall.
+     * 1 = Versicherungsnehmer
+     * 2 = Versicherte Person
+     * 9 = Sonstiger Bezugsberechtigter
      */
     @FeldInfo(
             teildatensatz = 9,
@@ -1437,7 +1437,7 @@ public enum Feld220 {
     BEZUGSBERECHTIGT_IM_LEISTUNGSFALL,
 
     /**
-     * Sonstiger Bezugsberechtigter im Leistungsfall.<br/>
+     * Sonstiger Bezugsberechtigter im Leistungsfall.
      * Klartext (z. B. Name, Vorname)
      */
     @FeldInfo(
@@ -1449,8 +1449,8 @@ public enum Feld220 {
     SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL,
 
     /**
-     * Bezugsrechtanteil im Leistungsfall.<br/>
-     * in Prozent<br/>
+     * Bezugsrechtanteil im Leistungsfall.
+     * in Prozent
      * (3,2 Stellen)
      */
     @FeldInfo(
@@ -1463,7 +1463,7 @@ public enum Feld220 {
     BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL,
 
     /**
-     * Unwiderrufliches Bezugsrecht im Leistungsfall.<br/>
+     * Unwiderrufliches Bezugsrecht im Leistungsfall.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -1475,7 +1475,7 @@ public enum Feld220 {
     UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL,
 
     /**
-     * Referenznummer.<br/>
+     * Referenznummer.
      *
      * Wenn in einem gebündelten Vertrag (Bündelungskennzeichen = 1) mehrere
      * gleiche Sparten unter der selben Versicherungsscheinnummer gebündelt
@@ -1490,7 +1490,7 @@ public enum Feld220 {
     REFERENZNUMMER,
 
     /**
-     * Geburtsdatum der bezugsberechtigten Person.<br/>
+     * Geburtsdatum der bezugsberechtigten Person.
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -1514,7 +1514,7 @@ public enum Feld220 {
     LEERSTELLEN3,
 
     /**
-     * Satznummernwiederholung.<br/>
+     * Satznummernwiederholung.
      * Hier konstant
      */
     @FeldInfo(

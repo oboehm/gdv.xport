@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.
  * "Leben - Unfall = Wagnisart 6 - Zukünftige Summenänderung" (Satzart 0220)
  *
  * @author ralfklemmer
@@ -41,28 +41,28 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
     INTRO1,
 
     /**
-     * Laufende Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * 6 = Unfallzusatzversicherung
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
 
     /**
-     * Lfd Nummer zur Wagnisart.<br/>
+     * Lfd Nummer zur Wagnisart.
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Laufende Nummer der Satzart.<br/>
-     * Lfd. Nummer der Satzart 0220.010 (Wagnisart 6) innerhalb der gleichen Folgenummer<br/>
+     * Laufende Nummer der Satzart.
+     * Lfd. Nummer der Satzart 0220.010 (Wagnisart 6) innerhalb der gleichen Folgenummer
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010 (Wagnisart 6), wenn mehrere zukünftige
      * Summenänderungen feststehen)
      */
@@ -70,67 +70,67 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
     LFD_NUMMER_SATZART,
 
     /**
-     * Anfängliche Unfallsumme.<br/>
-     * Anfängliche bzw. erste Unfallsumme<br/>
+     * Anfängliche Unfallsumme.
+     * Anfängliche bzw. erste Unfallsumme
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 12, byteAdresse = 64)
     ANFAENGLICHE_UNFALLSUMME,
 
     /**
-     * Änderung der Unfallleistung.<br/>
-     * 0 = keine Änderung bzw. nur eine Unfallleistung<br/>
-     * 1 = Erhöhung der Unfallleistung<br/>
+     * Änderung der Unfallleistung.
+     * 0 = keine Änderung bzw. nur eine Unfallleistung
+     * 1 = Erhöhung der Unfallleistung
      * 2 = Reduzierung der Unfallleistung
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 76)
     AENDERUNG_DER_UNFALLLEISTUNG,
 
     /**
-     * Abstand der Jahresrentenänderungstermine.<br/>
-     * in Monaten bei periodischen Änderungsterminen<br/>
-     * in Monaten bei periodischen Auszahlungen<br/>
-     * 000 = keine Änderungen/Auszahlungen<br/>
+     * Abstand der Jahresrentenänderungstermine.
+     * in Monaten bei periodischen Änderungsterminen
+     * in Monaten bei periodischen Auszahlungen
+     * 000 = keine Änderungen/Auszahlungen
      * 999 = unregelmäßige Änderungen/Auszahlungen
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 77)
     ABSTAND_DER_UNFALLAENDERUNGSTERMINE,
 
     /**
-     * Unfalländerungs-Prozentsatz.<br/>
-     * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Unfallleistung<br/>
+     * Unfalländerungs-Prozentsatz.
+     * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Unfallleistung
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 80)
     UNFALLAENDERUNGS_PROZENTSATZ,
 
     /**
-     * Absolute Unfalländerungssumme in Währungseinheiten.<br/>
-     * Absolute Summe der Steigerung bzw. Reduzierung der Unfallleistung<br/>
+     * Absolute Unfalländerungssumme in Währungseinheiten.
+     * Absolute Summe der Steigerung bzw. Reduzierung der Unfallleistung
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 9, byteAdresse = 85)
     ABSOLUTE_UNFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Unfallsumme in Währungseinheiten.<br/>
-     * Unfallleistung ab dem nächsten Änderungstermin<br/>
+     * Nächste Unfallsumme in Währungseinheiten.
+     * Unfallleistung ab dem nächsten Änderungstermin
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 17, type = Betrag.class, anzahlBytes = 9, byteAdresse = 94)
     NAECHSTE_UNFALLSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Unfallsumme.<br/>
+     * Beginndatum der nächsten Unfallsumme.
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
-     * werden Datum der nächsten Jahresrente<br/>
+     * werden Datum der nächsten Jahresrente
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 103)
     BEGINNDATUM_DER_NAECHSTEN_UNFALLSUMME,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(teildatensatz = 1, nr = 19, type = AlphaNumFeld.class, anzahlBytes = 145, byteAdresse = 111)
     LEERSTELLEN

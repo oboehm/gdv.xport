@@ -26,7 +26,7 @@ import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 
  * "Leben - Berufsunfähigkeit = Wagnisart 4 u. 8 - Bezugsrechte" (Satzart 0220)
  *
  * @author ralfklemmer
@@ -44,36 +44,36 @@ public enum Feld220Wagnis48Bezugsrechte {
     INTRO1,
 
     /**
-     * Laufende Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * 4 = BUZ, 8 = Selbständige Berufsunfähigkeitsvers.
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
 
     /**
-     * Laufende Nummer zur Wagnisart.<br/>
+     * Laufende Nummer zur Wagnisart.
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Laufende Nummer der Satzart.<br/>
-     * Laufende Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
+     * Laufende Nummer der Satzart.
+     * Laufende Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6, wenn mehrere Bezugsrechte vorhanden)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
     LFD_NUMMER_SATZART,
 
     /**
-     * Bezugsberechtigt im Leistungsfall.<br/>
-     * 1 = Versicherungsnehmer<br/>
+     * Bezugsberechtigt im Leistungsfall.
+     * 1 = Versicherungsnehmer
      * 2 = Versicherte Person<br>
      * 9 = Sonstiger Bezugsberechtigter
      */
@@ -81,7 +81,7 @@ public enum Feld220Wagnis48Bezugsrechte {
     BEZUGSBERECHTIGT_IM_LEISTUNGSFALL,
 
     /**
-     * Sonstiger Bezugsberechtigter im Leistungsfall.<br/>
+     * Sonstiger Bezugsberechtigter im Leistungsfall.
      * Klartext (z. B. Name, Vorname)
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 65)
@@ -94,14 +94,14 @@ public enum Feld220Wagnis48Bezugsrechte {
     BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL,
 
     /**
-     * Unwiderrufliches Bezugsrecht im Leistungsfall.<br/>
+     * Unwiderrufliches Bezugsrecht im Leistungsfall.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 100)
     UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = AlphaNumFeld.class, anzahlBytes = 155, byteAdresse = 101)
     LEERSTELLEN

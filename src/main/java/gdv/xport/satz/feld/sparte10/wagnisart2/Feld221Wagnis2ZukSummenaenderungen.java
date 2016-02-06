@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.
  * "Leben - Rentenversicherung = Wagnisart 2 - Zukünftige Summenänderungen" (Satzart 0221)
  *
  * @author ralfklemmer
@@ -41,59 +41,59 @@ public enum Feld221Wagnis2ZukSummenaenderungen {
     INTRO1,
 
     /**
-     * Laufende Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * 2 = Rentenversicherung
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
 
     /**
-     * Lfd Nummer zur Wagnisart.<br/>
+     * Lfd Nummer zur Wagnisart.
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Laufende Nummer der Satzart<br/>
-     * Laufende Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
+     * Laufende Nummer der Satzart
+     * Laufende Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6, wenn mehrere Bezugsrechte vorhanden)
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
     LFD_NUMMER_SATZART,
 
     /**
-     * Anfängliche Todesfall VS in Währungseinheiten<br/>
-     * Anfängliche bzw. erste Todesfallleistung<br/>
+     * Anfängliche Todesfall VS in Währungseinheiten
+     * Anfängliche bzw. erste Todesfallleistung
      * (12,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 64)
     ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Absolute Todesfalländerungssumme in Währungseinheiten<br/>
-     * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung<br/>
+     * Absolute Todesfalländerungssumme in Währungseinheiten
+     * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung
      * (12,0 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = Betrag.class, anzahlBytes = 14, byteAdresse = 78)
     ABSOLUTE_TODESFALLAENDERUNGSSUMME_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächste Todesfall VS in Währungseinheiten.<br/>
-     * Todesfalleistung ab dem nächsten Änderungstermin<br/>
+     * Nächste Todesfall VS in Währungseinheiten.
+     * Todesfalleistung ab dem nächsten Änderungstermin
      * (12,0 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = Betrag.class, anzahlBytes = 14, byteAdresse = 92)
     NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = AlphaNumFeld.class, anzahlBytes = 150, byteAdresse = 106)
     LEERSTELLEN

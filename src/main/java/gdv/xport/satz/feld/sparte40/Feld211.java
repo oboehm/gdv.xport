@@ -24,10 +24,10 @@ public enum Feld211 {
     INTRO1,
 
     /**
-     * Deckungssumme 1 in Währungseinheiten.<br/>
-     * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
+     * Deckungssumme 1 in Währungseinheiten.
+     * Deckungssummen die dem Vertrag zugrunde liegen.
      * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
-     * den Wagnisteilen (Satzart 0220) zu schlüsseln<br/>
+     * den Wagnisteilen (Satzart 0220) zu schlüsseln
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -39,7 +39,7 @@ public enum Feld211 {
     DECKUNGSSUMME_1_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Deckungssumme 2 in Währungseinheiten.<br/>
+     * Deckungssumme 2 in Währungseinheiten.
      * s. Erläuterung Deckungssumme 1
      */
     @FeldInfo(
@@ -51,7 +51,7 @@ public enum Feld211 {
     DECKUNGSSUMME_2_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Deckungssumme 3 in Währungseinheiten.<br/>
+     * Deckungssumme 3 in Währungseinheiten.
      * s. Erläuterung Deckungssumme 1
      */
     @FeldInfo(
@@ -63,7 +63,7 @@ public enum Feld211 {
     DECKUNGSSUMME_3_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Deckungssumme 4 in Währungseinheiten.<br/>
+     * Deckungssumme 4 in Währungseinheiten.
      * s. Erläuterung Deckungssumme 1
      */
     @FeldInfo(
@@ -76,7 +76,7 @@ public enum Feld211 {
 
 
     /**
-     * Referenznummer.<br/>
+     * Referenznummer.
      *
      * Wenn in einem gebündelten Vertrag (Bündelungskennzeichen = 1) mehrere
      * gleiche Sparten unter der selben Versicherungsscheinnummer gebündelt

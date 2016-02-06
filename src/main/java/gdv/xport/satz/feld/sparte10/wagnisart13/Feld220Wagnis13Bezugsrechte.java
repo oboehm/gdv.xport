@@ -26,7 +26,7 @@ import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 
  * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Bezugsrechte" (Satzart 0220)).
  *
  * @author ralfklemmer
@@ -44,28 +44,28 @@ public enum Feld220Wagnis13Bezugsrechte {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Lfd. Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * 1 = Kapitallebensversicherung 3 = Risikoversicherung
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
 
     /**
-     * Laufende Nummer zur Wagnisart.<br/>
+     * Laufende Nummer zur Wagnisart.
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Laufende Nummer der Satzart<br/>
-     * Lfd. Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer<br/>
+     * Laufende Nummer der Satzart
+     * Lfd. Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6,
      * wenn mehrere Bezugsrechte vorhanden)
      */
@@ -78,16 +78,16 @@ public enum Feld220Wagnis13Bezugsrechte {
     LFD_NUMMER_SATZART,
 
     /**
-     * Bezugsberechtigt im Erlebensfall.<br/>
-     * 1 = Versicherungsnehmer<br/>
-     * 2 = Versicherte Person<br/>
+     * Bezugsberechtigt im Erlebensfall.
+     * 1 = Versicherungsnehmer
+     * 2 = Versicherte Person
      * 9 = Sonstiger Bezugsberechtigter
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 64)
     BEZUGSBERECHTIGT_IM_ERLEBENSFALL,
 
     /**
-     * Sonstiger Bezugsberechtigter im Erlebensfall.<br/>
+     * Sonstiger Bezugsberechtigter im Erlebensfall.
      * Klartext (z. B. Name, Vorname)
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 65)
@@ -100,45 +100,45 @@ public enum Feld220Wagnis13Bezugsrechte {
     BEZUGSRECHTANTEIL_IM_ERLEBENSFALL,
 
     /**
-     * Unwiderrufliches Bezugsrecht im Erlebensfall.<br/>
+     * Unwiderrufliches Bezugsrecht im Erlebensfall.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 100)
     UNWIDERRUFLICHES_BEZUGSRECHT_IM_ERLEBENSFALL,
 
     /**
-     * Bezugsberechtigt im Todesfall.<br/>
-     * 1 = Versicherungsnehmer<br/>
-     * 2 = gesetzliche Erbfolge<br/>
-     * 3 = Reihenfolge: Ehegatte, Kinder, Eltern, Erben<br/>
+     * Bezugsberechtigt im Todesfall.
+     * 1 = Versicherungsnehmer
+     * 2 = gesetzliche Erbfolge
+     * 3 = Reihenfolge: Ehegatte, Kinder, Eltern, Erben
      * 9 = Sonstiger Bezugsberechtigter
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 101)
     BEZUGSBERECHTIGT_IM_TODESFALL,
 
     /**
-     * Sonstiger Bezugsberechtigter im Todesfall.<br/>
+     * Sonstiger Bezugsberechtigter im Todesfall.
      * Klartext (z. B. Name, Vorname)
      */
     @FeldInfo(teildatensatz = 1, nr = 17, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 102)
     SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL,
 
     /**
-     * Bezugsrechtanteil im Todesfall.<br/>
+     * Bezugsrechtanteil im Todesfall.
      * in Prozent (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 132)
     BEZUGSRECHTANTEIL_IM_TODESFALL,
 
     /**
-     * Unwiderrufliches Bezugsrecht im Todesfall.<br/>
+     * Unwiderrufliches Bezugsrecht im Todesfall.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 19, type = AlphaNumFeld.class, anzahlBytes = 1, byteAdresse = 137)
     UNWIDERRUFLICHES_BEZUGSRECHT_IM_TODESFALL,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(teildatensatz = 1, nr = 20, type = AlphaNumFeld.class, anzahlBytes = 118, byteAdresse = 138)
     LEERSTELLEN

@@ -1,6 +1,7 @@
 package gdv.xport.satz.feld.sparte40;
 
-import gdv.xport.annotation.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -23,16 +24,18 @@ public enum Feld210 {
     INTRO1,
 
     /**
-     * Vertragsstatus.<br/>
-     * 1 = lebend<br/>
-     * 2 = lebend / kurzfristig / unterjährig<br/>
-     * 3 = ruhend / Anwartschaft<br/>
-     * 4 = storniert<br/>
-     * 5 = ruhend / beitragsfrei<br/>
-     * 6 = beitragsfrei<br/>
-     * 7 = beitragsfrei durch Leistung<br/>
-     * 8 = Beitragsstundung<br/>
+     * Vertragsstatus.
+     * </pre>
+     * 1 = lebend
+     * 2 = lebend / kurzfristig / unterjährig
+     * 3 = ruhend / Anwartschaft
+     * 4 = storniert
+     * 5 = ruhend / beitragsfrei
+     * 6 = beitragsfrei
+     * 7 = beitragsfrei durch Leistung
+     * 8 = Beitragsstundung
      * 9 = Sonstiges
+     * <pre>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -43,10 +46,8 @@ public enum Feld210 {
     VERTRAGSSTATUS,
 
     /**
-     * Beginn.<br/>
      * Beginn der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein, muss
-     * "00" geschlüsselt werden<br/>
-     * Tag/Monat/Jahr (TTMMJJJJ)
+     * "00" geschlüsselt werden, ansonsten Tag/Monat/Jahr (TTMMJJJJ).
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -57,10 +58,8 @@ public enum Feld210 {
     BEGINN,
 
     /**
-     * Ausschluss.<br/>
      * Ausschluss der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschlüsselt werden<br/>
-     * Tag/Monat/Jahr (TTMMJJJJ)
+     * muss "00" geschlüsselt werden, ansonsten Tag/Monat/Jahr (TTMMJJJJ).
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -71,10 +70,11 @@ public enum Feld210 {
     AUSSCHLUSS,
 
     /**
-     * Änderungsdatum.<br/>
      * Termin, zu dem der Vertragszustand wirksam wird/wurde (Gültig-ab- /
-     * Wirksam-ab-Datum).<br/>
-     * Tag/Monat/Jahr (TTMMJJJJ)
+     * Wirksam-ab-Datum).
+     * <p>
+     * Format: Tag/Monat/Jahr (TTMMJJJJ)
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -85,21 +85,23 @@ public enum Feld210 {
     AENDERUNGSDATUM,
 
     /**
-     * Summenart 1.<br/>
-     * 1 = Personenschäden<br/>
-     * 2 = Sachschäden<br/>
-     * 3 = Personen- und Sachschäden<br/>
-     * 4 = Vermögensschäden<br/>
-     * 5 = Personen- und Vermögensschäden<br/>
-     * 6 = Sach- und Vermögensschäden<br/>
-     * 7 = Personen-,Vermögens- und Sachschäden<br/>
-     * 8 = Mietsachschäden<br/>
-     * 9 = EP (Einheitspauschale)<br/>
-     * A = Personen- und Sachschäden (pauschal)<br/>
-     * B = sonstige Sach- und Vermögensschäden (pauschal)<br/>
-     * C = Personenschäden und sonstige Schäden (pauschal)<br/>
-     * D = unbegrenzt (nur für Gabelstapler nach AKB)<br/>
+     * Summenart 1.
+     * <pre>
+     * 1 = Personenschäden
+     * 2 = Sachschäden
+     * 3 = Personen- und Sachschäden
+     * 4 = Vermögensschäden
+     * 5 = Personen- und Vermögensschäden
+     * 6 = Sach- und Vermögensschäden
+     * 7 = Personen-,Vermögens- und Sachschäden
+     * 8 = Mietsachschäden
+     * 9 = EP (Einheitspauschale)
+     * A = Personen- und Sachschäden (pauschal)
+     * B = sonstige Sach- und Vermögensschäden (pauschal)
+     * C = Personenschäden und sonstige Schäden (pauschal)
+     * D = unbegrenzt (nur für Gabelstapler nach AKB)
      * Z = Sonstiges
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -110,8 +112,8 @@ public enum Feld210 {
     SUMMENART_1,
 
     /**
-     * Währungsschlüssel 1.<br/>
-     * ISO-Code, siehe Anlage 3
+     * Währungsschlüssel 1.
+     * ISO-Code, siehe Anlage 3.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -122,10 +124,12 @@ public enum Feld210 {
     WAEHRUNGSSCHLUESSEL_1,
 
     /**
-     * Deckungssumme 1 in Tausend Währungseinheiten.<br/>
-     * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
+     * Deckungssumme 1 in Tausend Währungseinheiten.
+     * <p>
+     * Deckungssummen die dem Vertrag zugrunde liegen.
      * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
      * den Wagnisteilen (Satzart 0220) zu schlüsseln
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -136,8 +140,8 @@ public enum Feld210 {
     DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 2.<br/>
-     * Details siehe Deckungsart 1
+     * Summenart 2.
+     * Details siehe Deckungsart 1.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -148,8 +152,8 @@ public enum Feld210 {
     SUMMENART_2,
 
     /**
-     * Währungsschlüssel 2.<br/>
-     * ISO-Code, siehe Anlage 3
+     * Währungsschlüssel 2.
+     * ISO-Code, siehe Anlage 3.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -160,10 +164,12 @@ public enum Feld210 {
     WAEHRUNGSSCHLUESSEL_2,
 
     /**
-     * Deckungssumme 2 in Tausend Währungseinheiten.<br/>
-     * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
+     * Deckungssumme 2 in Tausend Währungseinheiten.
+     * <p>
+     * Deckungssummen die dem Vertrag zugrunde liegen.
      * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
      * den Wagnisteilen (Satzart 0220) zu schlüsseln
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -174,8 +180,8 @@ public enum Feld210 {
     DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 3.<br/>
-     * Details siehe Deckungsart 1
+     * Summenart 3.
+     * Details siehe Deckungsart 1.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -186,8 +192,8 @@ public enum Feld210 {
     SUMMENART_3,
 
     /**
-     * Währungsschlüssel 3.<br/>
-     * ISO-Code, siehe Anlage 3
+     * Währungsschlüssel 3 nach
+     * ISO-Code, siehe Anlage 3.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -198,10 +204,12 @@ public enum Feld210 {
     WAEHRUNGSSCHLUESSEL_3,
 
     /**
-     * Deckungssumme 3 in Tausend Währungseinheiten.<br/>
-     * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
-     * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
-     * den Wagnisteilen (Satzart 0220) zu schlüsseln
+     * Deckungssumme 3 in Tausend Währungseinheiten.
+     * <p>
+     * Deckungssummen die dem Vertrag zugrunde liegen. Sollten unterschiedliche
+     * Deckungssummen vereinbart sein, so sind diese in den Wagnisteilen
+     * (Satzart 0220) zu schlüsseln.
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -212,8 +220,8 @@ public enum Feld210 {
     DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 4.<br/>
-     * Details siehe Deckungsart 1
+     * Summenart 4.
+     * Details siehe Deckungsart 1.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -224,8 +232,8 @@ public enum Feld210 {
     SUMMENART_4,
 
     /**
-     * Währungsschlüssel 4.<br/>
-     * ISO-Code, siehe Anlage 3
+     * Währungsschlüssel 4.
+     * ISO-Code, siehe Anlage 3.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -236,10 +244,12 @@ public enum Feld210 {
     WAEHRUNGSSCHLUESSEL_4,
 
     /**
-     * Deckungssumme 4 in Tausend Währungseinheiten.<br/>
-     * Deckungssummen die dem Vertrag zugrunde liegen.<br/>
-     * Sollten unterschiedliche Deckungssummen vereinbart sein, so sind diese in
-     * den Wagnisteilen (Satzart 0220) zu schlüsseln
+     * Deckungssumme 4 in Tausend Währungseinheiten.
+     * <p>
+     * Deckungssummen die dem Vertrag zugrunde liegen. Sollten unterschiedliche
+     * Deckungssummen vereinbart sein, so sind diese in den Wagnisteilen
+     * (Satzart 0220) zu schlüsseln.
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -250,23 +260,25 @@ public enum Feld210 {
     DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Kennzeichen für Jahres-Maximierung.<br/>
-     * 0 = keine<br/>
-     * 1 = 1-fach<br/>
-     * 2 = 2-fach<br/>
-     * 3 = 3-fach<br/>
-     * 4 = 4-fach<br/>
-     * 5 = 5-fach<br/>
-     * 6 = 6-fach<br/>
-     * 7 = 7-fach<br/>
-     * 8 = 8-fach<br/>
-     * 9 = sonstige Vereinbarung<br/>
-     * A = 1,25-fach<br/>
-     * B = 1,5-fach<br/>
-     * C = 1,75-fach<br/>
-     * D = 2,25-fach<br/>
-     * E = 2,5-fach<br/>
+     * Kennzeichen für Jahres-Maximierung.
+     * <pre>
+     * 0 = keine
+     * 1 = 1-fach
+     * 2 = 2-fach
+     * 3 = 3-fach
+     * 4 = 4-fach
+     * 5 = 5-fach
+     * 6 = 6-fach
+     * 7 = 7-fach
+     * 8 = 8-fach
+     * 9 = sonstige Vereinbarung
+     * A = 1,25-fach
+     * B = 1,5-fach
+     * C = 1,75-fach
+     * D = 2,25-fach
+     * E = 2,5-fach
      * F = 2,75-fach
+     * </pre>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -277,8 +289,8 @@ public enum Feld210 {
     KENNZEICHEN_FUER_JAHRES_MAXIMIERUNG,
 
     /**
-     * Selbstbehalt.<br/>
-     * 0 = nein, 1 = ja
+     * Selbstbehalt.
+     * 0 = nein, 1 = ja.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -289,8 +301,11 @@ public enum Feld210 {
     SELBSTBEHALT,
 
     /**
-     * Allgemeine Versicherungsbedingungen.<br/>
-     * Inkraftsetzung bei VU. Monat / Jahr (MMJJ)
+     * Allgemeine Versicherungsbedingungen.
+     * Inkraftsetzung bei VU.
+     * <p>
+     * Format: Monat / Jahr (MMJJ)
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -301,9 +316,11 @@ public enum Feld210 {
     ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN,
 
     /**
-     * Sonderbedingungen.<br/>
-     * Vertragsbezogene oder unternehmensindividuelle Bedingungen<br/>
-     * 0 = nein, 1 = ja
+     * Sonderbedingungen.
+     * <p>
+     * Vertragsbezogene oder unternehmensindividuelle Bedingungen:
+     * 0 = nein, 1 = ja.
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -314,7 +331,7 @@ public enum Feld210 {
     SONDERBEDINGUNGEN,
 
     /**
-     * Währungsschlüssel.<br/>
+     * Währungsschlüssel.
      * ISO-Code, siehe Anlage 3
      */
     @FeldInfo(
@@ -326,9 +343,11 @@ public enum Feld210 {
     WAEHRUNGSSCHLUESSEL,
 
     /**
-     * Zuschlagsbetrag in Währungseinheiten.<br/>
-     * kumulierter Zuschlagsbetrag auf Vertragsebene<br/>
-     * (10,2 Stellen)
+     * Zuschlagsbetrag in Währungseinheiten.
+     * <p>
+     * Kumulierter Zuschlagsbetrag auf Vertragsebene
+     * (10,2 Stellen).
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -339,9 +358,11 @@ public enum Feld210 {
     ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Abschlagsbetrag in Währungseinheiten.<br/>
-     * kumulierter Abschlagsbetrag auf Vertragsebene<br/>
-     * (10,2 Stellen)
+     * Abschlagsbetrag in Währungseinheiten.
+     * <p>
+     * kumulierter Abschlagsbetrag auf Vertragsebene
+     * (10,2 Stellen).
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -352,11 +373,13 @@ public enum Feld210 {
     ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Gesamtbeitrag in Währungseinheiten.<br/>
-     * Summe aus den Satzarten 0220.<br/>
+     * Gesamtbeitrag in Währungseinheiten.
+     * <p>
+     * Summe aus den Satzarten 0220.
      * Gesamt-Jahresnetto-Beitrag unter Berücksichtigung aller Zu- und
-     * Abschläge gemäß Zahlungsweise ohne Vers.-Steuer und Gebühr<br/>
-     * (10,2 Stellen)
+     * Abschläge gemäß Zahlungsweise ohne Vers.-Steuer und Gebühr
+     * (10,2 Stellen).
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -367,9 +390,11 @@ public enum Feld210 {
     GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Abschlussprovision.<br/>
-     * Für den betreffenden Vertrag vereinbarter Provisionssatz<br/>
-     * (3,2 Stellen)
+     * Abschlussprovision.
+     * <p>
+     * Für den betreffenden Vertrag vereinbarter Provisionssatz
+     * (3,2 Stellen).
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -380,9 +405,11 @@ public enum Feld210 {
     ABSCHLUSSPROVISION,
 
     /**
-     * Folgeprovision.<br/>
-     * s. Erläuterung für Abschlussprovision<br/>
-     * (3,2 Stellen)
+     * Folgeprovision.
+     * <p>
+     * s. Erläuterung für Abschlussprovision
+     * (3,2 Stellen).
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -393,10 +420,12 @@ public enum Feld210 {
     FOLGEPROVISION,
 
     /**
-     * Kennzeichen für abweichende Abschlussprovision.<br/>
+     * Kennzeichen für abweichende Abschlussprovision.
+     * <p>
      * Kennzeichen, dass für den betreffenden Vertrag der Provisionssatz von
-     * den allgemeinen Provisionsvereinbarungen abweicht<br/>
-     * 0 = nein, 1 = ja
+     * den allgemeinen Provisionsvereinbarungen abweicht:
+     * 0 = nein, 1 = ja.
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -407,9 +436,11 @@ public enum Feld210 {
     KENNZEICHEN_FUER_ABWEICHENDE_ABSCHLUSSPROVISION,
 
     /**
-     * Kennzeichen für abweichende Folgeprovision.<br/>
-     * s. Erläuterung: Kennzeichen für abweichende Abschlussprovision<br/>
-     * 0 = nein, 1 = ja
+     * Kennzeichen für abweichende Folgeprovision.
+     * <p>
+     * s. Erläuterung: Kennzeichen für abweichende Abschlussprovision:
+     * 0 = nein, 1 = ja.
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -420,7 +451,7 @@ public enum Feld210 {
     KENNZEICHEN_FUER_ABWEICHENDE_FOLGEPROVISION,
 
     /**
-     * Restlaufzeit des Vertrages.<br/>
+     * Restlaufzeit des Vertrages.
      * gemäß Ablauf des Vertrages Grundlage für die Berechnung von Provision
      * (JJ)
      */
@@ -433,9 +464,9 @@ public enum Feld210 {
     RESTLAUFZEIT_DES_VERTRAGES,
 
     /**
-     * Laufzeitrabatt in %.<br/>
-     * gemäß Laufzeitrabatt VAG-Novelle 01.07.1991<br/>
-     * (2,2 Stellen)
+     * Laufzeitrabatt in %.
+     * gemäß Laufzeitrabatt VAG-Novelle 01.07.1991
+     * (2,2 Stellen).
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -446,8 +477,8 @@ public enum Feld210 {
     LAUFZEITRABATT_IN_PROZENT,
 
     /**
-     * Produktform.<br/>
-     * Unternehmensindividuelle Produktkürzel/-schlüssel
+     * Produktform.
+     * Unternehmensindividuelle Produktkürzel/-schlüssel.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -458,10 +489,12 @@ public enum Feld210 {
     PRODUKTFORM,
 
     /**
-     * Produktform gültig ab.<br/>
-     * Versionsdatum der Produktform. Monat / Jahr (MMJJJJ).<br/>
+     * Produktform gültig ab.
+     * <p>
+     * Versionsdatum der Produktform. Monat / Jahr (MMJJJJ).
      * Wenn kein Versionsdatum vorhanden, muss das Datum der Produkteinführung
      * geliefert werden.
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -472,8 +505,7 @@ public enum Feld210 {
     PRODUKTFORM_GUELTIG_AB,
 
     /**
-     * Produktname.<br/>
-     * Produktname
+     * Produktname.
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -484,11 +516,12 @@ public enum Feld210 {
     PRODUKTNAME,
 
     /**
-     * Referenznummer.<br/>
-     *
+     * Referenznummer.
+     * <p>
      * Wenn in einem gebündelten Vertrag (Bündelungskennzeichen = 1) mehrere
      * gleiche Sparten unter der selben Versicherungsscheinnummer gebündelt
      * werden, müssen diese im Feld Referenznummer unterschieden werden.
+     * </p>
      */
     @FeldInfo(
             teildatensatz = 1,

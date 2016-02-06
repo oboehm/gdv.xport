@@ -52,7 +52,7 @@ public enum Feld230 {
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Art der Leistung.<br/>
+     * Art der Leistung.
      * siehe Anlage 80
      */
     @FeldInfo(
@@ -64,7 +64,7 @@ public enum Feld230 {
     ART_DER_LEISTUNG,
 
     /**
-     * Bezeichnung der Leistung.<br/>
+     * Bezeichnung der Leistung.
      * Text zur Art der Leistung
      */
     @FeldInfo(
@@ -76,8 +76,8 @@ public enum Feld230 {
     BEZEICHNUNG_DER_LEISTUNG,
 
     /**
-     * Laufende Nummer zur Art der Leistung.<br/>
-     * Laufende Nummer zur Art der Leistung,<br/>
+     * Laufende Nummer zur Art der Leistung.
+     * Laufende Nummer zur Art der Leistung,
      * beginnend mit 001 innerhalb der lfd. Nummer der Person / Personengruppen
      */
     @FeldInfo(
@@ -89,11 +89,11 @@ public enum Feld230 {
     LFD_NUMMER_ZUR_ART_DER_LEISTUNG,
 
     /**
-     * Art der Auszahlung.<br/>
-     * 01 = Kapital<br/>
-     * 02 = Rente<br/>
-     * 03 = Sachleistung<br/>
-     * 04 = Prämienfreistellung<br/>
+     * Art der Auszahlung.
+     * 01 = Kapital
+     * 02 = Rente
+     * 03 = Sachleistung
+     * 04 = Prämienfreistellung
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -104,15 +104,15 @@ public enum Feld230 {
     ART_DER_AUSZAHLUNG,
 
     /**
-     * Leistungszahlungsweise.<br/>
+     * Leistungszahlungsweise.
      * Es handelt sich hier um die Zahlweise bei Eintritt einer Leistung! 1 =
-     * jährlich<br/>
-     * 2 = halbjährlich<br/>
-     * 3 = täglich<br/>
-     * 4 = vierteljährlich<br/>
-     * 5 = Sonstiges<br/>
-     * 6 = Einmalzahlung<br/>
-     * 7 = noch zu bestimmen<br/>
+     * jährlich
+     * 2 = halbjährlich
+     * 3 = täglich
+     * 4 = vierteljährlich
+     * 5 = Sonstiges
+     * 6 = Einmalzahlung
+     * 7 = noch zu bestimmen
      * 8 = monatlich
      */
     @FeldInfo(
@@ -135,7 +135,7 @@ public enum Feld230 {
     BEGINN_DER_ZAHLUNG_AB_TAG,
 
     /**
-     * Leistung in WE.<br/>
+     * Leistung in WE.
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -147,7 +147,7 @@ public enum Feld230 {
     LEISTUNG,
 
     /**
-     * Beitragssatz.<br/>
+     * Beitragssatz.
      * (3,4 Stellen)
      */
     @FeldInfo(
@@ -160,10 +160,10 @@ public enum Feld230 {
     BEITRAGSSATZ,
 
     /**
-     * Art des Beitragssatzes.<br/>
-     * 01 = von Tausend (Promille)<br/>
-     * 02 = von Hundert (Prozent)<br/>
-     * 03 = Faktor<br/>
+     * Art des Beitragssatzes.
+     * 01 = von Tausend (Promille)
+     * 02 = von Hundert (Prozent)
+     * 03 = Faktor
      * 04 = Fester Beitrag
      */
     @FeldInfo(
@@ -176,7 +176,7 @@ public enum Feld230 {
 
 
     /**
-     * Beitrag in WE.<br/>
+     * Beitrag in WE.
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -188,7 +188,7 @@ public enum Feld230 {
     BEITRAG,
 
     /**
-     * Prozentsatz progressive Invalidität / Mehrleistung bei Invalidität.<br/>
+     * Prozentsatz progressive Invalidität / Mehrleistung bei Invalidität.
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -201,7 +201,7 @@ public enum Feld230 {
     PROZENTSATZ_PROGRESSIVE_INVALIDITAET_MEHRLEISTUNG_BEI_INVALIDITAET,
 
     /**
-     * Leistung ab Invaliditätsgrad in Prozent.<br/>
+     * Leistung ab Invaliditätsgrad in Prozent.
      * (3,4 Stellen)
      */
     @FeldInfo(

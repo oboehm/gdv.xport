@@ -28,7 +28,7 @@ import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 
  * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Bezugsrechte" (Satzart 0220)).
  *
  * @author ralfklemmer
@@ -46,28 +46,28 @@ public enum Feld220Wagnis13Auszahlungen {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Lfd. Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * 1 = Kapitallebensversicherung 3 = Risikoversicherung
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
 
     /**
-     * Laufende Nummer zur Wagnisart.<br/>
+     * Laufende Nummer zur Wagnisart.
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Laufende Nummer der Satzart.<br/>
-     * Lfd. Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer.<br/>
+     * Laufende Nummer der Satzart.
+     * Lfd. Nummer der Satzart 0220.010.2/6 innerhalb der gleichen Folgenummer.
      * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0220.010.2/6,
      * wenn mehrere Bezugsrechte vorhanden)
      */
@@ -80,40 +80,40 @@ public enum Feld220Wagnis13Auszahlungen {
     LFD_NUMMER_SATZART,
 
     /**
-     * Nächste Auszahlungssumme in Währungseinheiten.<br/>
-     * Vereinbarte Auszahlungssumme<br/>
+     * Nächste Auszahlungssumme in Währungseinheiten.
+     * Vereinbarte Auszahlungssumme
      * (9,0 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 9, byteAdresse = 64)
     NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Nächster Auszahlungstermin.<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
+     * Nächster Auszahlungstermin.
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 73)
     NAECHSTER_AUSZAHLUNGSTERMIN,
 
     /**
-     * Auszahlungsweise.<br/>
-     * in Monaten bei periodischen Auszahlungen<br/>
-     * in Monaten bei periodischen Auszahlungen<br/>
-     * 000 = keine Änderungen/Auszahlungen<br/>
+     * Auszahlungsweise.
+     * in Monaten bei periodischen Auszahlungen
+     * in Monaten bei periodischen Auszahlungen
+     * 000 = keine Änderungen/Auszahlungen
      * 999 = unregelmäßige Änderungen/Auszahlungen
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 81)
     AUSZAHLUNGSWEISE,
 
     /**
-     * Anzahl der Auszahlungen.<br/>
+     * Anzahl der Auszahlungen.
      * Anzahl der insgesamt noch möglichen Auszahlungen (99 = unbestimmt)
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 84)
     ANZAHL_DER_AUSZAHLUNGEN,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = AlphaNumFeld.class, anzahlBytes = 170, byteAdresse = 86)
     LEERSTELLEN

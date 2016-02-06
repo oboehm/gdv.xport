@@ -3,26 +3,26 @@
  */
 package gdv.xport.feld;
 
-import gdv.xport.annotation.FeldInfo;
-
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
-
-import net.sf.oval.ConstraintViolation;
-import net.sf.oval.constraint.MatchPatternCheck;
-import net.sf.oval.context.ClassContext;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import gdv.xport.annotation.FeldInfo;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.constraint.MatchPatternCheck;
+import net.sf.oval.context.ClassContext;
+
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
  * Darstellung ist rechtsbuendig.
- * <br/>
+ * <p>
  * Siehe Broschuere_gdv-datensatz_vu-vermittler.pdf, Seite 16
  * ("Datenfelder/Feldformate").
+ * </p>
  *
  * @author oliver
  */

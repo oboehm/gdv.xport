@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.
  * "Leben - Risikozusatz = Wagnisart 5" (Satzart 0220).
  *
  * @author ralfklemmer
@@ -41,21 +41,21 @@ public enum Feld220Wagnis5 {
     INTRO1,
 
     /**
-     * Laufende Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * 5 = Risikozusatzversicherung
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
 
     /**
-     * Lfd Nummer zur Wagnisart.<br/>
+     * Lfd Nummer zur Wagnisart.
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
@@ -69,14 +69,14 @@ public enum Feld220Wagnis5 {
 
     /**
      * Vertragsablaufdatum (inkl. Abrufphase) Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
-     * werden.<br/>
+     * werden.
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Datum.class, anzahlBytes = 8, byteAdresse = 70)
     ABLAUF,
 
     /**
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.<br/>
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 78)
@@ -89,171 +89,171 @@ public enum Feld220Wagnis5 {
     VERTRAGSLAUFZEIT,
 
     /**
-     * 1 = Grundvertrag<br/>
-     * 2 = Dynamik<br/>
-     * 3 = Grundvertrag incl. vorletzter Dynamik<br/>
+     * 1 = Grundvertrag
+     * 2 = Dynamik
+     * 3 = Grundvertrag incl. vorletzter Dynamik
      * 4 = Grundvertrag incl. letzter Dynamik.
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 89)
     VERTRAGSART,
 
     /**
-     * Beitrag<br/>
-     * Beitrag gem. Zahlungsweise<br/>
+     * Beitrag
+     * Beitrag gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 12, byteAdresse = 90)
     BEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Versicherungssumme in Währungseinheiten.<br/>
+     * Versicherungssumme in Währungseinheiten.
      * erreichte Summe / tarifliche Vers.summe (9,0 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 17, type = NumFeld.class, anzahlBytes = 9, byteAdresse = 102)
     VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * fallende Summe.<br/>
+     * fallende Summe.
      * 0 = linear, 1 = progressiv
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 111)
     FALLENDE_SUMME,
 
     /**
-     * Nettobeitrag in Währungseinheiten<br/>
+     * Nettobeitrag in Währungseinheiten
      * Beitrag gem. Zahlungsweise nach Überschussanrechnung (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 19, type = Betrag.class, anzahlBytes = 12, byteAdresse = 112)
     NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Status.<br/>
+     * Status.
      * siehe Anlage 24
      */
     @FeldInfo(teildatensatz = 1, nr = 20, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 124)
     STATUS,
 
     /**
-     * Gewinnverwendungsart.<br/>
+     * Gewinnverwendungsart.
      * siehe Anlage 71
      */
     @FeldInfo(teildatensatz = 1, nr = 21, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 125)
     GEWINNVERWENDUNGSART,
 
     /**
-     * Risikoeinschränkung.<br/>
+     * Risikoeinschränkung.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 22, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 126)
     RISIKOEINSCHRAENKUNG,
 
     /**
-     * Risikozuschlaege.<br/>
+     * Risikozuschlaege.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 23, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 127)
     RISIKOZUSCHLAEGE,
 
     /**
-     * Dynamik %-Satz.<br/>
+     * Dynamik %-Satz.
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 24, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 128)
     DYNAMIK_PROZENT_SATZ,
 
     /**
-     * Erhöhungsbasis Dynamik.<br/>
+     * Erhöhungsbasis Dynamik.
      * 1 = Beitrag, 2 = Versicherungssumme
      */
     @FeldInfo(teildatensatz = 1, nr = 25, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 133)
     ERHOEHUNGSBASIS_DYNAMIK,
 
     /**
-     * Erhöhungsart Dynamik.<br/>
+     * Erhöhungsart Dynamik.
      * siehe Anlage 72
      */
     @FeldInfo(teildatensatz = 1, nr = 26, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 134)
     ERHOEHUNGSART_DYNAMIK,
 
     /**
-     * Dynamikstop.<br/>
-     * Datum, ab dem keine Dynamikerhöhung mehr möglich ist.<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
+     * Dynamikstop.
+     * Datum, ab dem keine Dynamikerhöhung mehr möglich ist.
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 27, type = Datum.class, anzahlBytes = 8, byteAdresse = 135)
     DYNAMIKSTOP,
 
     /**
-     * Datum der letzten positiven Dynamik.<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
+     * Datum der letzten positiven Dynamik.
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 28, type = Datum.class, anzahlBytes = 8, byteAdresse = 143)
     DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK,
 
     /**
-     * Jahresrente in Wöhrungseinheiten.<br/>
+     * Jahresrente in Wöhrungseinheiten.
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 29, type = Betrag.class, anzahlBytes = 12, byteAdresse = 151)
     JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Endalter.<br/>
+     * Endalter.
      * JJJ Alter Lebenslänglich ist mit 999 zu schlüsseln
      */
     @FeldInfo(teildatensatz = 1, nr = 30, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 163)
     ENDALTER,
 
     /**
-     * Eintrittsalter.<br/>
+     * Eintrittsalter.
      * JJ Alter
      */
     @FeldInfo(teildatensatz = 1, nr = 31, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 166)
     EINTRITTSALTER,
 
     /**
-     * Rente inklusiv Überschussanrechnung in Währungseinheiten.<br/>
+     * Rente inklusiv Überschussanrechnung in Währungseinheiten.
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 32, type = Betrag.class, anzahlBytes = 12, byteAdresse = 168)
     RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Umtauschrecht.<br/>
+     * Umtauschrecht.
      * 0 = ja, 1 = nein
      */
     @FeldInfo(teildatensatz = 1, nr = 33, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 180)
     UMTAUSCHRECHT,
 
     /**
-     * Abweichende Vertragslaufzeit.<br/>
-     * Abgekürzte oder verlängerte Vertragslaufzeit Anzahl Jahre (JJJ).<br/>
+     * Abweichende Vertragslaufzeit.
+     * Abgekürzte oder verlängerte Vertragslaufzeit Anzahl Jahre (JJJ).
      * Lebenslänglich ist mit "999" zu schlüsseln
      */
     @FeldInfo(teildatensatz = 1, nr = 34, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 181)
     ABWEICHENDE_VERTRAGSLAUFZEIT,
 
     /**
-     * Abweichender Ablauf.<br/>
+     * Abweichender Ablauf.
      * Ablauf abgekürzt oder verlängert Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
-     * werden Tag/Monat/Jahr<br/>
+     * werden Tag/Monat/Jahr
      * (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 35, type = Datum.class, anzahlBytes = 8, byteAdresse = 184)
     ABWEICHENDER_ABLAUF,
 
     /**
-     * Risikozuschlag in Währungseinheiten<br/>
-     * Risikozuschlag gem. Zahlungsweise<br/>
+     * Risikozuschlag in Währungseinheiten
+     * Risikozuschlag gem. Zahlungsweise
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 36, type = Betrag.class, anzahlBytes = 12, byteAdresse = 192)
     RISIKOZUSCHLAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(teildatensatz = 1, nr = 37, type = AlphaNumFeld.class, anzahlBytes = 52, byteAdresse = 204)
     LEERSTELLEN,
@@ -268,121 +268,121 @@ public enum Feld220Wagnis5 {
     INTRO2,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Lfd. Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 2, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE2,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * 5 = Risikozusatzversicherung
      */
     @FeldInfo(teildatensatz = 2, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART2,
 
     /**
-     * Lfd Nummer zur Wagnisart.<br/>
+     * Lfd Nummer zur Wagnisart.
      * siehe Anlage 15
      */
     @FeldInfo(teildatensatz = 2, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART2,
 
     /**
-     * Tarifbezeichnung.<br/>
+     * Tarifbezeichnung.
      * Klartextbezeichnung des Tarifs
      */
     @FeldInfo(teildatensatz = 2, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 62)
     TARIFBEZEICHNUNG,
 
     /**
-     * Tarifbezeichnung des Folgetarifs.<br/>
+     * Tarifbezeichnung des Folgetarifs.
      * Klartextbezeichnung des Folgetarifs (wenn der Tarif noch nicht umgestellt wurde)
      */
     @FeldInfo(teildatensatz = 2, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 92)
     TARIFBEZEICHNUNG_DES_FOLGETARIFS,
 
     /**
-     * Umstellungsdatum des Folgetarifs.<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden<br/>
+     * Umstellungsdatum des Folgetarifs.
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 2, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 122)
     UMSTELLUNGSDATUM_DES_FOLGETARIFS,
 
     /**
-     * Zukünftiger Beitrag in Währungseinheiten.<br/>
-     * gem. Zahlungsweise wenn der Beitrag noch nicht umgestellt wurde<br/>
+     * Zukünftiger Beitrag in Währungseinheiten.
+     * gem. Zahlungsweise wenn der Beitrag noch nicht umgestellt wurde
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 14, type = Betrag.class, anzahlBytes = 12, byteAdresse = 130)
     ZUKUENFTIGER_BEITRAG,
 
     /**
-     * Vertragsbedingung.<br/>
+     * Vertragsbedingung.
      * Individuelle Vertragsbedingung (frei definierbar)
      */
     @FeldInfo(teildatensatz = 2, nr = 15, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 142)
     VERTRAGSBEDINGUNG,
 
     /**
-     * Dynamikbeginn<br/>
-     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.<br/>
-     * Datum der ersten Dynamikerhöhung<br/>
+     * Dynamikbeginn
+     * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden.
+     * Datum der ersten Dynamikerhöhung
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 2, nr = 16, type = Datum.class, anzahlBytes = 8, byteAdresse = 172)
     DYNAMIKBEGINN,
 
     /**
-     * Abweichendes Dynamikendalter.<br/>
-     * Wenn abweichend von normalem Endalter<br/>
+     * Abweichendes Dynamikendalter.
+     * Wenn abweichend von normalem Endalter
      * (JJJ)
      */
     @FeldInfo(teildatensatz = 2, nr = 17, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 180)
     ABWEICHENDES_DYNAMIKENDALTER,
 
     /**
-     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten.<br/>
+     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten.
      * (9,0 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 18, type = Betrag.class, anzahlBytes = 9, byteAdresse = 183)
     ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAERHUNGSEINHEITEN,
 
     /**
-     * Anteiliger Dynamikprozentsatz.<br/>
+     * Anteiliger Dynamikprozentsatz.
      * Prozentualer Anteil am Dynamikerhöhungsbetrag Sozialversicherung
-     * prozentual oder absolut bzw. Gehaltsanpassung;<br/>
+     * prozentual oder absolut bzw. Gehaltsanpassung;
      * z. B.: 100,00 = volle absolute BfA-Dynamik, 50,00 = halbe absolute
-     * BfA-Dynamik<br/>
+     * BfA-Dynamik
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 19, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 192)
     ANTEILIGER_DYNAMIKPROZENTSATZ,
 
     /**
-     * Vereinbarter Dynamikmindestanpassungsprozentsatz.<br/>
+     * Vereinbarter Dynamikmindestanpassungsprozentsatz.
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 20, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 197)
     VEREINBARTER_DYNAMIKMINDESTANPASSUNGSPROZENTSATZ,
 
     /**
-     * Vereinbarter Dynamikmaximalanpassungsprozentsatz.<br/>
+     * Vereinbarter Dynamikmaximalanpassungsprozentsatz.
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 21, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 202)
     VEREINBARTER_DYNAMIKMAXIMALANPASSUNGSPROZENTSATZ,
 
     /**
-     * Anzahl verbleibende Dynamikwidersprüche.<br/>
+     * Anzahl verbleibende Dynamikwidersprüche.
      * Anzahl der verbleibenden Dynamikwidersprüche, ohne das Recht auf Dynamikerhöhung zu verlieren
      */
     @FeldInfo(teildatensatz = 2, nr = 22, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 207)
     ANZAHL_VERBLEIBENDE_DYNAMIKWIDERSPRUECHE,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(teildatensatz = 2, nr = 23, type = AlphaNumFeld.class, anzahlBytes = 48, byteAdresse = 208)
     LEERSTELLEN2

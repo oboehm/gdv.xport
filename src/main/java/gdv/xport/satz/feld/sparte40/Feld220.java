@@ -23,7 +23,7 @@ public enum Feld220 {
     INTRO1,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * siehe Anlage 16
      */
     @FeldInfo(
@@ -35,7 +35,7 @@ public enum Feld220 {
     WAGNISART,
 
     /**
-     * Ordnungs-Nummer für Wagniszuatz.<br/>
+     * Ordnungs-Nummer für Wagniszuatz.
      * Lfd. Nr. bei mehreren Wagnissen gleicher Wagnisart
      */
     @FeldInfo(
@@ -47,7 +47,7 @@ public enum Feld220 {
     ORDNUNGS_NUMMER_FUER_WAGNISZUATZ,
 
     /**
-     * Satznummer.<br/>
+     * Satznummer.
      * konstant 1
      */
     @FeldInfo(
@@ -59,7 +59,7 @@ public enum Feld220 {
     SATZNUMMER,
 
     /**
-     * Berechnungseinheit.<br/>
+     * Berechnungseinheit.
      * siehe Anlage 9
      */
     @FeldInfo(
@@ -71,16 +71,16 @@ public enum Feld220 {
     BERECHNUNGSEINHEIT,
 
     /**
-     * Mengenschlüssel.<br/>
+     * Mengenschlüssel.
      * Beispiel 1: 1 Öltank, Wagnis Nr. = 0505, Berechnungseinheit = 016,
-     * Mengenschlüssel = 1, Wagnismenge = 10<br/>
-     * => (10.000 Liter), (Öltank), (CBM Inhalt), (Originalmenge), (10 CBM);<br/>
+     * Mengenschlüssel = 1, Wagnismenge = 10
+     * => (10.000 Liter), (Öltank), (CBM Inhalt), (Originalmenge), (10 CBM);
      * Beispiel 2: 3 Pferde, Wagnis Nr. = 9007, Berechnungseinheit = 027,
-     * Mengenschlüssel = 1, Wagnismenge = 3<br/>
-     * => (Pferde), (Pferde), (Originalmenge), (3 Pferde);<br/>
+     * Mengenschlüssel = 1, Wagnismenge = 3
+     * => (Pferde), (Pferde), (Originalmenge), (3 Pferde);
      * Beispiel 3: Anschlußgleise Bahnanlage 2.000 mtr Länge, Wagnis Nr. =
      * 0101, Berechnungseinheit = 088, Mengenschlüssel = 4, Wagnismenge = 2 =>
-     * (Gleise), (mtr. Bahnlänge), (in 1000), (2000)<br/>
+     * (Gleise), (mtr. Bahnlänge), (in 1000), (2000)
      * siehe Anlage 10
      */
     @FeldInfo(
@@ -92,7 +92,7 @@ public enum Feld220 {
     MENGENSCHLUESSEL,
 
     /**
-     * Wagnismenge.<br/>
+     * Wagnismenge.
      * (12,0 Stellen)
      */
     @FeldInfo(
@@ -104,7 +104,7 @@ public enum Feld220 {
     WAGNISMENGE,
 
     /**
-     * Währungsschlüssel.<br/>
+     * Währungsschlüssel.
      * ISO-Code, siehe Anlage 3
      */
     @FeldInfo(
@@ -116,7 +116,7 @@ public enum Feld220 {
     WAEHRUNGSSCHLUESSEL,
 
     /**
-     * Beitrag je Berechnungseinheit und Mengenschlüssel.<br/>
+     * Beitrag je Berechnungseinheit und Mengenschlüssel.
      * (10,3 Stellen)
      */
     @FeldInfo(
@@ -128,7 +128,7 @@ public enum Feld220 {
     BEITRAG_JE_BERECHNUNGSEINHEIT_UND_MENGENSCHLUESSEL,
 
     /**
-     * Mindestbeitrag je Wagnis in Währungseinheiten.<br/>
+     * Mindestbeitrag je Wagnis in Währungseinheiten.
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -140,7 +140,7 @@ public enum Feld220 {
     MINDESTBEITRAG_JE_WAGNIS_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Zuschlagsbetrag in Währungseinheiten.<br/>
+     * Zuschlagsbetrag in Währungseinheiten.
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -152,7 +152,7 @@ public enum Feld220 {
     ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Abschlagbetrag in Währungseinheiten.<br/>
+     * Abschlagbetrag in Währungseinheiten.
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -164,9 +164,9 @@ public enum Feld220 {
     ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Gesamtbeitrag in Währungseinheiten.<br/>
+     * Gesamtbeitrag in Währungseinheiten.
      * Gültiger Beitrag unter Berücksichtigung aller Zu- und Abschläge ohne
-     * Gebühren und Steuer gemäß Zahlungsweise <br/>
+     * Gebühren und Steuer gemäß Zahlungsweise 
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -178,20 +178,20 @@ public enum Feld220 {
     GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 1.<br/>
-     * 1 = Personenschäden<br/>
-     * 2 = Sachschäden<br/>
-     * 3 = Personen- und Sachschäden<br/>
-     * 4 = Vermögensschäden<br/>
-     * 5 = Personen- und Vermögensschäden<br/>
-     * 6 = Sach- und Vermögensschäden<br/>
-     * 7 = Personen-,Vermögens- und Sachschäden<br/>
-     * 8 = Mietsachschäden<br/>
-     * 9 = EP (Einheitspauschale)<br/>
-     * A = Personen- und Sachschäden (pauschal)<br/>
-     * B = sonstige Sach- und Vermögensschäden (pauschal)<br/>
-     * C = Personenschäden und sonstige Schäden (pauschal)<br/>
-     * D = unbegrenzt (nur für Gabelstapler nach AKB)<br/>
+     * Summenart 1.
+     * 1 = Personenschäden
+     * 2 = Sachschäden
+     * 3 = Personen- und Sachschäden
+     * 4 = Vermögensschäden
+     * 5 = Personen- und Vermögensschäden
+     * 6 = Sach- und Vermögensschäden
+     * 7 = Personen-,Vermögens- und Sachschäden
+     * 8 = Mietsachschäden
+     * 9 = EP (Einheitspauschale)
+     * A = Personen- und Sachschäden (pauschal)
+     * B = sonstige Sach- und Vermögensschäden (pauschal)
+     * C = Personenschäden und sonstige Schäden (pauschal)
+     * D = unbegrenzt (nur für Gabelstapler nach AKB)
      * Z = Sonstiges
      */
     @FeldInfo(
@@ -203,8 +203,8 @@ public enum Feld220 {
     SUMMENART_1,
 
     /**
-     * Deckungssumme 1 in Tausend Währungseinheiten.<br/>
-     * abweichende Deckungssumme zum Vertrag<br/>
+     * Deckungssumme 1 in Tausend Währungseinheiten.
+     * abweichende Deckungssumme zum Vertrag
      * es gilt der Währungsschlüssel aus dem zugehörigen 0210er Satz (Feld
      * 13)
      */
@@ -217,7 +217,7 @@ public enum Feld220 {
     DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 2.<br/>
+     * Summenart 2.
      * siehe Erläuterung Summenart 1
      */
     @FeldInfo(
@@ -229,8 +229,8 @@ public enum Feld220 {
     SUMMENART_2,
 
     /**
-     * Deckungssumme 2 in Tausend Währungseinheiten.<br/>
-     * siehe Erläuterung Deckungssumme 1<br/>
+     * Deckungssumme 2 in Tausend Währungseinheiten.
+     * siehe Erläuterung Deckungssumme 1
      * es gilt der Währungsschlüssel aus dem zugehörigen 0210er Satz (Feld
      * 16)
      */
@@ -243,7 +243,7 @@ public enum Feld220 {
     DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 3.<br/>
+     * Summenart 3.
      * Details siehe Summenart 1
      */
     @FeldInfo(
@@ -255,8 +255,8 @@ public enum Feld220 {
     SUMMENART_3,
 
     /**
-     * Deckungssumme 3 in Tausend Währungseinheiten.<br/>
-     * siehe Erläuterung Deckungssumme 1<br/>
+     * Deckungssumme 3 in Tausend Währungseinheiten.
+     * siehe Erläuterung Deckungssumme 1
      * es gilt der Währungsschlüssel aus dem zugehörigen 0210er Satz (Feld
      * 19)
      */
@@ -269,7 +269,7 @@ public enum Feld220 {
     DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Summenart 4.<br/>
+     * Summenart 4.
      * Details siehe Summenart 1
      */
     @FeldInfo(
@@ -281,8 +281,8 @@ public enum Feld220 {
     SUMMENART_4,
 
     /**
-     * Deckungssumme 4 in Tausend Währungseinheiten.<br/>
-     * siehe Erläuterung Deckungssumme 1<br/>
+     * Deckungssumme 4 in Tausend Währungseinheiten.
+     * siehe Erläuterung Deckungssumme 1
      * es gilt der Währungsschlüssel aus dem zugehörigen 0210er Satz (Feld
      * 22)
      */
@@ -295,22 +295,22 @@ public enum Feld220 {
     DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN,
 
     /**
-     * Kennzeichen für Jahres-Maximierung.<br/>
-     * 0 = keine<br/>
-     * 1 = 1-fach<br/>
-     * 2 = 2-fach<br/>
-     * 3 = 3-fach<br/>
-     * 4 = 4-fach<br/>
-     * 5 = 5-fach<br/>
-     * 6 = 6-fach<br/>
-     * 7 = 7-fach<br/>
-     * 8 = 8-fach<br/>
-     * 9 = sonstige Vereinbarung<br/>
-     * A = 1,25-fach<br/>
-     * B = 1,5-fach<br/>
-     * C = 1,75-fach<br/>
-     * D = 2,25-fach<br/>
-     * E = 2,5-fach<br/>
+     * Kennzeichen für Jahres-Maximierung.
+     * 0 = keine
+     * 1 = 1-fach
+     * 2 = 2-fach
+     * 3 = 3-fach
+     * 4 = 4-fach
+     * 5 = 5-fach
+     * 6 = 6-fach
+     * 7 = 7-fach
+     * 8 = 8-fach
+     * 9 = sonstige Vereinbarung
+     * A = 1,25-fach
+     * B = 1,5-fach
+     * C = 1,75-fach
+     * D = 2,25-fach
+     * E = 2,5-fach
      * F = 2,75-fach
      */
     @FeldInfo(
@@ -322,7 +322,7 @@ public enum Feld220 {
     KENNZEICHEN_FUER_JAHRES_MAXIMIERUNG,
 
     /**
-     * Kennung Erhöhungssatz.<br/>
+     * Kennung Erhöhungssatz.
      * 1 = aufgelaufen, 2 = real
      */
     @FeldInfo(
@@ -334,8 +334,8 @@ public enum Feld220 {
     KENNUNG_ERHOEHUNGSSATZ,
 
     /**
-     * Erhöhungssatz § 8, III AHB.<br/>
-     * %-Satz der Erhöhung.<br/>
+     * Erhöhungssatz § 8, III AHB.
+     * %-Satz der Erhöhung.
      * (3,2 Stellen)
      */
     @FeldInfo(
@@ -347,9 +347,9 @@ public enum Feld220 {
     ERHOEHUNGSSATZ_8_III_AHB,
 
     /**
-     * Erhöhungssatz § 8, III AHB.<br/>
+     * Erhöhungssatz § 8, III AHB.
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
-     * werden <br/>
+     * werden 
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -361,9 +361,9 @@ public enum Feld220 {
     LETZTE_ERHOEHUNG_8_III_AHB,
 
     /**
-     * Beginn.<br/>
+     * Beginn.
      * Beginn der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein, muss
-     * "00" geschlüsselt werden<br/>
+     * "00" geschlüsselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -375,9 +375,9 @@ public enum Feld220 {
     BEGINN,
 
     /**
-     * Ausschluss.<br/>
+     * Ausschluss.
      * Ausschluss der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschlüsselt werden<br/>
+     * muss "00" geschlüsselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -389,9 +389,9 @@ public enum Feld220 {
     AUSSCHLUSS,
 
     /**
-     * Änderungsdatum.<br/>
+     * Änderungsdatum.
      * Termin, zu dem der Vertragszustand wirksam wird/wurde (Gültig-ab- /
-     * Wirksam-ab-Datum).<br/>
+     * Wirksam-ab-Datum).
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -423,7 +423,7 @@ public enum Feld220 {
     INTRO2,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * siehe Anlage 16
      */
     @FeldInfo(
@@ -435,7 +435,7 @@ public enum Feld220 {
     WAGNISART2,
 
     /**
-     * Ordnungs-Nummer für Wagniszuatz.<br/>
+     * Ordnungs-Nummer für Wagniszuatz.
      * Lfd. Nr. bei mehreren Wagnissen gleicher Wagnisart
      */
     @FeldInfo(
@@ -447,7 +447,7 @@ public enum Feld220 {
     ORDNUNGS_NUMMER_FUER_WAGNISZUSATZ2,
 
     /**
-     * Satznummer.<br/>
+     * Satznummer.
      * konstant 2
      */
     @FeldInfo(
@@ -459,7 +459,7 @@ public enum Feld220 {
     SATZNUMMER2,
 
     /**
-     * Wagnistext.<br/>
+     * Wagnistext.
      * z. B.: Privathaftpflicht
      */
     @FeldInfo(
@@ -471,7 +471,7 @@ public enum Feld220 {
     WAGNISTEXT,
 
     /**
-     * Wagnisbeschreibung.<br/>
+     * Wagnisbeschreibung.
      * (2 x 40 Stellen) z. B. Risikoanschrift
      */
     @FeldInfo(
@@ -483,7 +483,7 @@ public enum Feld220 {
     WAGNISBESCHREIBUNG,
 
     /**
-     * Postleitzahl der Risikoanschrift.<br/>
+     * Postleitzahl der Risikoanschrift.
      * Sollte die Risikoanschrift nicht differenziert geliefert werden können,
      * so kann diese in Datenfeld Wagnisbeschreibung eingestellt werden
      * (linksbündig)
@@ -497,7 +497,7 @@ public enum Feld220 {
     POSTLEITZAHL_DER_RISIKOANSCHRIFT,
 
     /**
-     * Risikoort.<br/>
+     * Risikoort.
      * siehe Postleitzahl der Risikoanschrift
      */
     @FeldInfo(
@@ -509,7 +509,7 @@ public enum Feld220 {
     RISIKOORT,
 
     /**
-     * Risikostraße.<br/>
+     * Risikostraße.
      * siehe Postleitzahl der Risikoanschrift
      */
     @FeldInfo(
@@ -521,7 +521,7 @@ public enum Feld220 {
     RISIKOSTRASSE,
 
     /**
-     * Referenznummer.<br/>
+     * Referenznummer.
      *
      * Wenn in einem gebündelten Vertrag (Bündelungskennzeichen = 1) mehrere
      * gleiche Sparten unter der selben Versicherungsscheinnummer gebündelt

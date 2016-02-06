@@ -23,7 +23,7 @@ public enum Feld221 {
     INTRO1,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * siehe Anlage 16
      */
     @FeldInfo(
@@ -35,7 +35,7 @@ public enum Feld221 {
     WAGNISART,
 
     /**
-     * Ordnungs-Nummer für Wagniszuatz.<br/>
+     * Ordnungs-Nummer für Wagniszuatz.
      * Lfd. Nr. bei mehreren Wagnissen gleicher Wagnisart
      */
     @FeldInfo(
@@ -47,7 +47,7 @@ public enum Feld221 {
     ORDNUNGS_NUMMER_FUER_WAGNISZUATZ,
 
     /**
-     * Satznummer.<br/>
+     * Satznummer.
      * konstant 1
      */
     @FeldInfo(
@@ -59,8 +59,8 @@ public enum Feld221 {
     SATZNUMMER,
 
     /**
-     * Deckungssumme 1 in Währungseinheiten.<br/>
-     * abweichende Deckungssumme zum Vertrag<br/>
+     * Deckungssumme 1 in Währungseinheiten.
+     * abweichende Deckungssumme zum Vertrag
      * (12,2 Stellen)
      */
     @FeldInfo(
@@ -72,7 +72,7 @@ public enum Feld221 {
     DECKUNGSSUMME_1_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Deckungssumme 2 in Währungseinheiten.<br/>
+     * Deckungssumme 2 in Währungseinheiten.
      * siehe Erläuterung Deckungssumme 1
      */
     @FeldInfo(
@@ -84,7 +84,7 @@ public enum Feld221 {
     DECKUNGSSUMME_2_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Deckungssumme 3 in Währungseinheiten.<br/>
+     * Deckungssumme 3 in Währungseinheiten.
      * siehe Erläuterung Deckungssumme 1
      */
     @FeldInfo(
@@ -96,7 +96,7 @@ public enum Feld221 {
     DECKUNGSSUMME_3_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Deckungssumme 4 in Währungseinheiten.<br/>
+     * Deckungssumme 4 in Währungseinheiten.
      * siehe Erläuterung Deckungssumme 1
      */
     @FeldInfo(
@@ -108,7 +108,7 @@ public enum Feld221 {
     DECKUNGSSUMME_4_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Referenznummer.<br/>
+     * Referenznummer.
      *
      * Wenn in einem gebündelten Vertrag (Bündelungskennzeichen = 1) mehrere
      * gleiche Sparten unter der selben Versicherungsscheinnummer gebündelt

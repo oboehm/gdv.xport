@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.<br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.
  * "Leben - Fondsdatensatz" (Satzart 0230)
  *
  * @author ralfklemmer
@@ -38,92 +38,92 @@ public enum Feld230 {
     INTRO1,
 
     /**
-     * Laufende Nummer der versicherten Person (VP).<br/>
+     * Laufende Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Wagnisart.<br/>
-     * 7 = Fonsgebundene LV<br/>
+     * Wagnisart.
+     * 7 = Fonsgebundene LV
      * 9 = Fondsgebundene Rentenversicherung
      */
     @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     WAGNISART,
 
     /**
-     * Lfd Nummer zur Wagnisart.<br/>
+     * Lfd Nummer zur Wagnisart.
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Lfd Nummer des Fonds.<br/>
+     * Lfd Nummer des Fonds.
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = NumFeld.class, anzahlBytes = 4, byteAdresse = 62)
     LFD_NUMMER_DES_FONDS,
 
     /**
-     * Wertpapierkennnummer.<br/>
+     * Wertpapierkennnummer.
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 6, byteAdresse = 66)
     WERTPAPIERKENNNUMMER,
 
     /**
-     * Fondskennung.<br/>
+     * Fondskennung.
      * Fonds-Schlüssel zur eindeutigen Darstellung im System
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 10, byteAdresse = 72)
     FONDSKENNUNG,
 
     /**
-     * ISIN-Nummer.<br/>
+     * ISIN-Nummer.
      * internationale Wertpapierkennnummer gemäß ISO-Norm 6166
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = AlphaNumFeld.class, anzahlBytes = 12, byteAdresse = 82)
     ISIN_NUMMER,
 
     /**
-     * Fondsname.<br/>
+     * Fondsname.
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = AlphaNumFeld.class, anzahlBytes = 50, byteAdresse = 94)
     FONDSNAME,
 
     /**
-     * Thesaur.<br/>
-     * Kennzeichen, ob Fond thesaurierend<br/>
+     * Thesaur.
+     * Kennzeichen, ob Fond thesaurierend
      * 0 = nein, 1 = ja
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 144)
     THESAUR,
 
     /**
-     * Anteile.<br/>
-     * Anteile in Stück<br/>
+     * Anteile.
+     * Anteile in Stück
      * (8,6 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 17, type = Betrag.class, anzahlBytes = 14, byteAdresse = 145)
     ANTEILE,
 
     /**
-     * Bezugsdatum.<br/>
-     * Gültigkeitstermin des Anteilsstandes<br/>
+     * Bezugsdatum.
+     * Gültigkeitstermin des Anteilsstandes
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 159)
     BEZUGSDATUM,
 
     /**
-     * Prozentsatz.<br/>
-     * Prozentualer Anteil des Beitrags mit dem dieser Fonds aktuell bespart wird<br/>
+     * Prozentsatz.
+     * Prozentualer Anteil des Beitrags mit dem dieser Fonds aktuell bespart wird
      * (3,4 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 19, type = NumFeld.class, anzahlBytes = 7, byteAdresse = 167)
     PROZENTSATZ,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(teildatensatz = 1, nr = 20, type = AlphaNumFeld.class, anzahlBytes = 82, byteAdresse = 174)
     LEERSTELLEN

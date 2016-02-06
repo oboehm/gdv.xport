@@ -48,8 +48,8 @@ public enum Feld220 {
     OBJEKTNUMMER,
 
     /**
-     * Satznummer.<br/>
-     * Satznummer. Hier konstant "1"<br/>
+     * Satznummer.
+     * Satznummer. Hier konstant "1"
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -61,9 +61,9 @@ public enum Feld220 {
     SATZNUMMER,
 
     /**
-     * Beginn.<br/>
+     * Beginn.
      * Beginn der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschluesselt werden<br/>
+     * muss "00" geschluesselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -76,7 +76,7 @@ public enum Feld220 {
 
     /**
      * Ausschluss der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschluesselt werden.<br/>
+     * muss "00" geschluesselt werden.
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -88,9 +88,9 @@ public enum Feld220 {
     AUSSCHLUSS,
 
     /**
-     * Aenderungsdatum.<br/>
+     * Aenderungsdatum.
      * Aenderungsdatum der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschluesselt werden.<br/>
+     * muss "00" geschluesselt werden.
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -117,7 +117,7 @@ public enum Feld220 {
 
 
     /**
-     * Postleitzahl der Risikoanschrift.<br/>
+     * Postleitzahl der Risikoanschrift.
      * linksbuendig
      */
     @FeldInfo(
@@ -129,7 +129,7 @@ public enum Feld220 {
     POSTLEITZAHL_DER_RISIKOANSCHRIFT,
 
     /**
-     * Risikoort.<br/>
+     * Risikoort.
      * Wenn Risikoanschrift abweichend vom Wohnort
      */
     @FeldInfo(
@@ -141,7 +141,7 @@ public enum Feld220 {
     RISIKOORT,
 
     /**
-     * Risikostrasse.<br/>
+     * Risikostrasse.
      * siehe Erlaeuterung Risikoort
      */
     @FeldInfo(
@@ -153,7 +153,7 @@ public enum Feld220 {
     RISIKOSTRASSE,
 
     /**
-     * Sturmzone.<br/>
+     * Sturmzone.
      * Verbandsschluessel siehe Anlage 22.
      */
     @FeldInfo(
@@ -165,7 +165,7 @@ public enum Feld220 {
     STURMZONE,
 
   /**
-     * Bauartklasse.<br/>
+     * Bauartklasse.
      * siehe Anlage 12
      */
     @FeldInfo(
@@ -177,7 +177,7 @@ public enum Feld220 {
     BAUARTKLASSE,
 
    /**
-     * Baujahr.<br/>
+     * Baujahr.
      * JJJJ (Jahr)
      */
     @FeldInfo(
@@ -191,7 +191,7 @@ public enum Feld220 {
 
 
    /**
-     * Umbauter Raum.<br/>
+     * Umbauter Raum.
      * in CBM, bei VGB 88 in qm^2
      */
     @FeldInfo(
@@ -230,7 +230,7 @@ public enum Feld220 {
     ANZAHL_WOHNEINHEITEN,
 
    /**
-     * Fremdnutzung.<br/>
+     * Fremdnutzung.
      * 0 = nein
      * 1 = ja
      */
@@ -245,7 +245,7 @@ public enum Feld220 {
 
 
    /**
-     * Fremder Grund und Boden.<br/>
+     * Fremder Grund und Boden.
      * 0 = nein
      * 1 = ja
      */
@@ -260,9 +260,9 @@ public enum Feld220 {
 
 
     /**
-     * Datum der Bezugsfertigkeit.<br/>
+     * Datum der Bezugsfertigkeit.
      * Datum der Bezugsfertigkeit. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschluesselt werden<br/>
+     * muss "00" geschluesselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -275,7 +275,7 @@ public enum Feld220 {
 
 
   /**
-     * Rohbau-Einmalbetrag.<br/>
+     * Rohbau-Einmalbetrag.
      * Rohbau-Einmalbetrag in Waehrungseinheiten (10,2 Stellen)
      */
     @FeldInfo(
@@ -288,7 +288,7 @@ public enum Feld220 {
     ROHBAU_EINMALBETRAG,
 
   /**
-     * Sicherungsglaeubiger.<br/>
+     * Sicherungsglaeubiger.
      * 0 = nein
      * 1 = ja
      */
@@ -302,7 +302,7 @@ public enum Feld220 {
     SICHERUNGSGLAEUBIGER,
 
   /**
-     * Vorsteuerabzugsberechtigt.<br/>
+     * Vorsteuerabzugsberechtigt.
      * 0 = nein
      * 1 = ja
      */
@@ -316,7 +316,7 @@ public enum Feld220 {
     VORSTEUERABZUGSBERECHTIGT,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(
             teildatensatz = 1,

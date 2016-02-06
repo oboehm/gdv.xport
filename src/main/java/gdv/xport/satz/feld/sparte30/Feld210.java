@@ -41,15 +41,15 @@ public enum Feld210 {
     INTRO1,
 
     /**
-     * Vertragsstatus.<br/>
-     * 1 = lebend<br/>
-     * 2 = lebend / kurzfristig / unterjährig<br/>
-     * 3 = ruhend / Anwartschaft<br/>
-     * 4 = storniert<br/>
-     * 5 = ruhend / beitragsfrei<br/>
-     * 6 = beitragsfrei<br/>
-     * 7 = beitragsfrei durch Leistung<br/>
-     * 8 = Beitragsstundung<br/>
+     * Vertragsstatus.
+     * 1 = lebend
+     * 2 = lebend / kurzfristig / unterjährig
+     * 3 = ruhend / Anwartschaft
+     * 4 = storniert
+     * 5 = ruhend / beitragsfrei
+     * 6 = beitragsfrei
+     * 7 = beitragsfrei durch Leistung
+     * 8 = Beitragsstundung
      * 9 = Sonstiges
      */
     @FeldInfo(
@@ -61,9 +61,9 @@ public enum Feld210 {
     VERTRAGSSTATUS,
 
     /**
-     * Beginn.<br/>
+     * Beginn.
      * Beginn der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein, muss
-     * "00" geschlüsselt werden<br/>
+     * "00" geschlüsselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -75,9 +75,9 @@ public enum Feld210 {
     BEGINN,
 
     /**
-     * Ausschluss.<br/>
+     * Ausschluss.
      * Ausschluss der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschlüsselt werden<br/>
+     * muss "00" geschlüsselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -89,9 +89,9 @@ public enum Feld210 {
     AUSSCHLUSS,
 
     /**
-     * Änderungsdatum.<br/>
+     * Änderungsdatum.
      * Termin, zu dem der Vertragszustand wirksam wird/wurde (Gültig-ab- /
-     * Wirksam-ab-Datum).<br/>
+     * Wirksam-ab-Datum).
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -103,7 +103,7 @@ public enum Feld210 {
     AENDERUNGSDATUM,
 
     /**
-     * Allgemeine Versicherungsbedingungen.<br/>
+     * Allgemeine Versicherungsbedingungen.
      * Inkraftsetzung bei VU. Monat / Jahr (MMJJ)
      */
     @FeldInfo(
@@ -115,8 +115,8 @@ public enum Feld210 {
     ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN,
 
     /**
-     * Sonderbedingungen.<br/>
-     * Vertragsbezogene oder unternehmensindividuelle Bedingungen<br/>
+     * Sonderbedingungen.
+     * Vertragsbezogene oder unternehmensindividuelle Bedingungen
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -128,8 +128,8 @@ public enum Feld210 {
     SONDERBEDINGUNGEN,
 
     /**
-     * Beitragsrückgewähr.<br/>
-     * Einmalige Beitragsrückgewähr bei Ablauf des Vertrages<br/>
+     * Beitragsrückgewähr.
+     * Einmalige Beitragsrückgewähr bei Ablauf des Vertrages
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -141,7 +141,7 @@ public enum Feld210 {
     BEITRAGSRUECKGEWAEHR,
 
     /**
-     * Dynamik.<br/>
+     * Dynamik.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -153,7 +153,7 @@ public enum Feld210 {
     DYNAMIK,
 
     /**
-     * Dynamik in %.<br/>
+     * Dynamik in %.
      * (2,3 Stellen)
      */
     @FeldInfo(
@@ -165,7 +165,7 @@ public enum Feld210 {
     DYNAMIK_IN_PROZENT,
 
     /**
-     * Letzte Erhöhung.<br/>
+     * Letzte Erhöhung.
      * Monat / Jahr (MMJJJJ)
      */
     @FeldInfo(
@@ -177,7 +177,7 @@ public enum Feld210 {
     LETZTE_ERHOEHUNG,
 
     /**
-     * Nächste Erhöhung.<br/>
+     * Nächste Erhöhung.
      * Monat / Jahr (MMJJJJ)
      */
     @FeldInfo(
@@ -189,7 +189,7 @@ public enum Feld210 {
     NAECHSTE_ERHOEHUNG,
 
     /**
-     * Beitragsregulierung.<br/>
+     * Beitragsregulierung.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -201,7 +201,7 @@ public enum Feld210 {
     BEITRAGSREGULIERUNG,
 
     /**
-     * Währungsschlüssel.<br/>
+     * Währungsschlüssel.
      * ISO-Code, siehe Anlage 3
      */
     @FeldInfo(
@@ -213,8 +213,8 @@ public enum Feld210 {
     WAEHRUNGSSCHLUESSEL,
 
     /**
-     * Zuschlagsbetrag in Währungseinheiten.<br/>
-     * kumulierter Zuschlagsbetrag auf Vertragsebene<br/>
+     * Zuschlagsbetrag in Währungseinheiten.
+     * kumulierter Zuschlagsbetrag auf Vertragsebene
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -226,8 +226,8 @@ public enum Feld210 {
     ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Abschlagsbetrag in Währungseinheiten.<br/>
-     * kumulierter Abschlagsbetrag auf Vertragsebene<br/>
+     * Abschlagsbetrag in Währungseinheiten.
+     * kumulierter Abschlagsbetrag auf Vertragsebene
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -239,9 +239,9 @@ public enum Feld210 {
     ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Gesamtbeitrag in Währungseinheiten.<br/>
+     * Gesamtbeitrag in Währungseinheiten.
      * Gesamtbeitrag unter Berücksichtigung aller Zu- und Abschläge gem.
-     * Zahlungsweise ohne Gebühr und Steuer.<br/>
+     * Zahlungsweise ohne Gebühr und Steuer.
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -253,8 +253,8 @@ public enum Feld210 {
     GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Abschlussprovision.<br/>
-     * Für den betreffenden Vertrag vereinbarter Provisionssatz<br/>
+     * Abschlussprovision.
+     * Für den betreffenden Vertrag vereinbarter Provisionssatz
      * (3,2 Stellen)
      */
     @FeldInfo(
@@ -266,8 +266,8 @@ public enum Feld210 {
     ABSCHLUSSPROVISION,
 
     /**
-     * Folgeprovision<br/>
-     * s. Erläuterung für Abschlussprovision.<br/>
+     * Folgeprovision
+     * s. Erläuterung für Abschlussprovision.
      * (3,2 Stellen)
      */
     @FeldInfo(
@@ -279,9 +279,9 @@ public enum Feld210 {
     FOLGEPROVISION,
 
     /**
-     * Kennzeichen für abweichende Abschlussprovision.<br/>
+     * Kennzeichen für abweichende Abschlussprovision.
      * Kennzeichen, dass für den betreffenden Vertrag der Provisionssatz von
-     * den allgemeinen Provisionsvereinbarungen abweicht<br/>
+     * den allgemeinen Provisionsvereinbarungen abweicht
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -293,8 +293,8 @@ public enum Feld210 {
     KENNZEICHEN_FUER_ABWEICHENDE_ABSCHLUSSPROVISION,
 
     /**
-     * Kennzeichen für abweichende Folgeprovision.<br/>
-     * s. Erläuterung: Kennzeichen für abweichende Abschlussprovision<br/>
+     * Kennzeichen für abweichende Folgeprovision.
+     * s. Erläuterung: Kennzeichen für abweichende Abschlussprovision
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -306,7 +306,7 @@ public enum Feld210 {
     KENNZEICHEN_FUER_ABWEICHENDE_FOLGEPROVISION,
 
     /**
-     * Restlaufzeit des Vertrages.<br/>
+     * Restlaufzeit des Vertrages.
      * gemäß Ablauf des Vertrages Grundlage für die Berechnung von Provision
      * (JJ)
      */
@@ -319,8 +319,8 @@ public enum Feld210 {
     RESTLAUFZEIT_DES_VERTRAGES,
 
     /**
-     * Laufzeitrabatt in %.<br/>
-     * gemäß Laufzeitrabatt VAG-Novelle 01.07.1991<br/>
+     * Laufzeitrabatt in %.
+     * gemäß Laufzeitrabatt VAG-Novelle 01.07.1991
      * (2,2 Stellen)
      */
     @FeldInfo(
@@ -333,7 +333,7 @@ public enum Feld210 {
     LAUFZEITRABATT_IN_PROZENT,
 
     /**
-     * Tarifbezeichnung.<br/>
+     * Tarifbezeichnung.
      * Kurzbezeichnung des Tarifes
      */
     @FeldInfo(
@@ -345,7 +345,7 @@ public enum Feld210 {
     TARIFBEZEICHNUNG,
 
     /**
-     * Erhöhungsart Dynamik.<br/>
+     * Erhöhungsart Dynamik.
      * siehe Anlage 72
      */
     @FeldInfo(
@@ -357,7 +357,7 @@ public enum Feld210 {
     ERHOEHUNGSART_DYNAMIK,
 
     /**
-     * Referenz-Versicherungsscheinnumme.<br/>
+     * Referenz-Versicherungsscheinnumme.
      * Zusätzliche Versicherungsscheinnummer, wenn Teile des
      * Versicherungsproduktes / -vertrages sich in anderen
      * Versicherungsscheinnummern wiederfinden.
@@ -371,8 +371,8 @@ public enum Feld210 {
     REFERENZ_VERSICHERUNGSSCHEINNUMME,
 
     /**
-     * Weitere Referenznummern.<br/>
-     * Weitere, nicht abbildbare Referenznummern vorhanden<br/>
+     * Weitere Referenznummern.
+     * Weitere, nicht abbildbare Referenznummern vorhanden
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -384,7 +384,7 @@ public enum Feld210 {
     WEITERE_REFERENZNUMMERN,
 
     /**
-     * Produktform.<br/>
+     * Produktform.
      * Unternehmensindividuelle Produktkürzel/-schlüssel
      */
     @FeldInfo(
@@ -396,8 +396,8 @@ public enum Feld210 {
     PRODUKTFORM,
 
     /**
-     * Produktform gültig ab.<br/>
-     * Versionsdatum der Produktform. Monat / Jahr (MMJJJJ).<br/>
+     * Produktform gültig ab.
+     * Versionsdatum der Produktform. Monat / Jahr (MMJJJJ).
      * Wenn kein Versionsdatum vorhanden, muss das Datum der Produkteinführung
      * geliefert werden.
      */
@@ -410,7 +410,7 @@ public enum Feld210 {
     PRODUKTFORM_GUELTIG_AB,
 
     /**
-     * Produktname.<br/>
+     * Produktname.
      * Produktname
      */
     @FeldInfo(
@@ -422,7 +422,7 @@ public enum Feld210 {
     PRODUKTNAME,
 
     /**
-     * Referenznummer.<br/>
+     * Referenznummer.
      *
      * Wenn in einem gebündelten Vertrag (Bündelungskennzeichen = 1) mehrere
      * gleiche Sparten unter der selben Versicherungsscheinnummer gebündelt
@@ -437,9 +437,9 @@ public enum Feld210 {
     REFERENZNUMMER,
 
     /**
-     * Besondere Vereinbarungen.<br/>
+     * Besondere Vereinbarungen.
      *
-     * Besondere Vereinbarungen gemäß Antrag<br/>
+     * Besondere Vereinbarungen gemäß Antrag
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -451,9 +451,9 @@ public enum Feld210 {
     BESONDERE_VEREINBARUNGEN,
 
     /**
-     * Direktanspruch.<br/>
+     * Direktanspruch.
      *
-     * Direkter Leistungsanspruch der versicherten Personen in der Gruppenunfallversicherung<br/>
+     * Direkter Leistungsanspruch der versicherten Personen in der Gruppenunfallversicherung
      * 0 = nein, 1 = ja
      */
     @FeldInfo(

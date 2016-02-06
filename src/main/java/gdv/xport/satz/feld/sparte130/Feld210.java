@@ -27,15 +27,15 @@ public enum Feld210 {
     INTRO1,
 
     /**
-     * Vertragsstatus.<br/>
-     * 1 = lebend<br/>
-     * 2 = lebend / kurzfristig / unterjährig<br/>
-     * 3 = ruhend / Anwartschaft<br/>
-     * 4 = storniert<br/>
-     * 5 = ruhend / beitragsfrei<br/>
-     * 6 = beitragsfrei<br/>
-     * 7 = beitragsfrei durch Leistung<br/>
-     * 8 = Beitragsstundung<br/>
+     * Vertragsstatus.
+     * 1 = lebend
+     * 2 = lebend / kurzfristig / unterjährig
+     * 3 = ruhend / Anwartschaft
+     * 4 = storniert
+     * 5 = ruhend / beitragsfrei
+     * 6 = beitragsfrei
+     * 7 = beitragsfrei durch Leistung
+     * 8 = Beitragsstundung
      * 9 = Sonstiges
      */
     @FeldInfo(
@@ -47,9 +47,9 @@ public enum Feld210 {
     VERTRAGSSTATUS,
 
     /**
-     * Beginn.<br/>
+     * Beginn.
      * Beginn der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein, muss
-     * "00" geschlüsselt werden<br/>
+     * "00" geschlüsselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -61,9 +61,9 @@ public enum Feld210 {
     BEGINN,
 
     /**
-     * Ausschluss.<br/>
+     * Ausschluss.
      * Ausschluss der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschlüsselt werden<br/>
+     * muss "00" geschlüsselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -75,9 +75,9 @@ public enum Feld210 {
     AUSSCHLUSS,
 
     /**
-     * Änderungsdatum.<br/>
+     * Änderungsdatum.
      * Termin, zu dem der Vertragszustand wirksam wird/wurde (Gültig-ab- /
-     * Wirksam-ab-Datum).<br/>
+     * Wirksam-ab-Datum).
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -89,18 +89,18 @@ public enum Feld210 {
     AENDERUNGSDATUM,
 
     /**
-     * versicherte Gefahren.<br/>
-     * 10 x 1 Stelle<br/>
-     * B = Beraubung<br/>
-     * E = ED<br/>
-     * F = Feuer<br/>
-     * G = Glas<br/>
-     * H = Hagel<br/>
-     * L = Leitungswasser<br/>
-     * M = Elementarschäden<br/>
-     * N = Nutzfeuer<br/>
-     * S = Sturm<br/>
-     * U = Überspannungschäde<br/>
+     * versicherte Gefahren.
+     * 10 x 1 Stelle
+     * B = Beraubung
+     * E = ED
+     * F = Feuer
+     * G = Glas
+     * H = Hagel
+     * L = Leitungswasser
+     * M = Elementarschäden
+     * N = Nutzfeuer
+     * S = Sturm
+     * U = Überspannungschäde
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -111,9 +111,9 @@ public enum Feld210 {
     VERSICHERTE_GEFAHREN,
 
     /**
-     * Länderkennzeichen der Risikoanschrift.<br/>
+     * Länderkennzeichen der Risikoanschrift.
      * KFZ-Länderkennzeichen z. B. Länderkennzeichen für D = Deutschland, B =
-     * Belgien, DK = Dänemark, F = Frankreich, CDN = Kanada<br/>
+     * Belgien, DK = Dänemark, F = Frankreich, CDN = Kanada
      * siehe Anlage 63
      */
     @FeldInfo(
@@ -125,7 +125,7 @@ public enum Feld210 {
     LAENDERKENNZEICHEN_DER_RISIKOANSCHRIFT,
 
     /**
-     * Postleitzahl der Risikoanschrift.<br/>
+     * Postleitzahl der Risikoanschrift.
      * linksbündig
      */
     @FeldInfo(
@@ -137,7 +137,7 @@ public enum Feld210 {
     POSTLEITZAHL_DER_RISIKOANSCHRIFT,
 
     /**
-     * Risikoort.<br/>
+     * Risikoort.
      * Wenn Risikoanschrift abweichend vom Wohnort
      */
     @FeldInfo(
@@ -149,7 +149,7 @@ public enum Feld210 {
     RISIKOORT,
 
     /**
-     * Risikostraße.<br/>
+     * Risikostraße.
      * siehe Erläuterung Risikoort
      */
     @FeldInfo(
@@ -161,8 +161,8 @@ public enum Feld210 {
     RISIKOSTRASSE,
 
     /**
-     * Währungsschlüssel.<br/>
-     * ISO-Code,<br/>
+     * Währungsschlüssel.
+     * ISO-Code,
      * siehe Anlage 3
      */
     @FeldInfo(
@@ -174,8 +174,8 @@ public enum Feld210 {
     WAEHRUNGSSCHUESSEL,
 
     /**
-     * Zuschlagsbetrag in Währungseinheiten.<br/>
-     * Kumulierter Zuschlagsbetrag auf Vertragsebene<br/>
+     * Zuschlagsbetrag in Währungseinheiten.
+     * Kumulierter Zuschlagsbetrag auf Vertragsebene
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -188,8 +188,8 @@ public enum Feld210 {
     ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Abschlagsbetrag in Währungseinheiten.<br/>
-     * Kumulierter Abschlagsbetrag auf Vertragsebene<br/>
+     * Abschlagsbetrag in Währungseinheiten.
+     * Kumulierter Abschlagsbetrag auf Vertragsebene
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -202,8 +202,8 @@ public enum Feld210 {
     ABSCHLAGSBEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Gesamtversicherungssummer in Währungseinheiten.<br/>
-     * Gesamtversicherungssumme in Währungseinheiten<br/>
+     * Gesamtversicherungssummer in Währungseinheiten.
+     * Gesamtversicherungssumme in Währungseinheiten
      * (12,0 Stellen)
      */
     @FeldInfo(
@@ -215,9 +215,9 @@ public enum Feld210 {
     GESAMTVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Gesamtbeitrag in Währungseinheiten.<br/>
+     * Gesamtbeitrag in Währungseinheiten.
      * Gesamtbeitrag unter Berücksichtigung aller Zu- und Abschläge ohne Gebühr
-     * und Vers.Steuer gemäß Zahlungsweise in Währungseinheiten<br/>
+     * und Vers.Steuer gemäß Zahlungsweise in Währungseinheiten
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -230,8 +230,8 @@ public enum Feld210 {
     GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Bedingungen.<br/>
-     * z.B.: VHB 74, VHB 84, VHB 92<br/>
+     * Bedingungen.
+     * z.B.: VHB 74, VHB 84, VHB 92
      */
     @FeldInfo(
             teildatensatz = 1,
@@ -242,8 +242,8 @@ public enum Feld210 {
     BEDINGUNGEN,
 
     /**
-     * erweiterte Neuwertversicherung.<br/>
-     * 0 = nein<br/>
+     * erweiterte Neuwertversicherung.
+     * 0 = nein
      * 1 = ja
      */
     @FeldInfo(
@@ -255,8 +255,8 @@ public enum Feld210 {
     ERWEITERTE_NEUWERTVERSICHERUNG,
 
     /**
-     * Sicherungsrichtlinien.<br/>
-     * 1 = normal<br/>
+     * Sicherungsrichtlinien.
+     * 1 = normal
      * 2 = überdurchschnittlich gem. Sicherungsrichtlinien GDV
      */
     @FeldInfo(
@@ -268,8 +268,8 @@ public enum Feld210 {
     SICHERUNGSRICHTLINIEN,
 
     /**
-     * Einbruch Meldeanlage.<br/>
-     * 0 = nein<br/>
+     * Einbruch Meldeanlage.
+     * 0 = nein
      * 1 = ja
      */
     @FeldInfo(
@@ -281,7 +281,7 @@ public enum Feld210 {
     EINBRUCH_MELDEANLAGE,
 
     /**
-     * Risikokennziffer.<br/>
+     * Risikokennziffer.
      * siehe Anlage 11
      */
     @FeldInfo(
@@ -293,7 +293,7 @@ public enum Feld210 {
     RISIKOKENNZIFFER,
 
     /**
-     * Anzahl Monate unbewohnt.<br/>
+     * Anzahl Monate unbewohnt.
      * Ganzahlige Angabe
      */
     @FeldInfo(
@@ -305,7 +305,7 @@ public enum Feld210 {
     ANZAHL_MONATE_UNBEWOHNT,
 
     /**
-     * Wohnfläche qm.<br/>
+     * Wohnfläche qm.
      * Ganzzahlige Angabe
      */
     @FeldInfo(
@@ -317,7 +317,7 @@ public enum Feld210 {
     WOHNFLAECHE_QM,
 
     /**
-     * Tarifzone.<br/>
+     * Tarifzone.
      * 1, 2 oder 3. Zuordnung gemäß PLZ
      */
     @FeldInfo(
@@ -329,7 +329,7 @@ public enum Feld210 {
     TARIFZONE,
 
     /**
-     * Bauartklasse.<br/>
+     * Bauartklasse.
      * siehe Anlage 12
      */
     @FeldInfo(
@@ -341,9 +341,9 @@ public enum Feld210 {
     BAUARTKLASSE,
 
     /**
-     * Gefahrenerhöhung.<br/>
-     * 0 = nein <br/>
-     * 1 = ja <br/>
+     * Gefahrenerhöhung.
+     * 0 = nein 
+     * 1 = ja 
      * 2 = ja (temporär)
      */
     @FeldInfo(
@@ -355,8 +355,8 @@ public enum Feld210 {
     GEFAHRENERHOEHUNG,
 
     /**
-     * Einschluss Vandalismus.<br/>
-     * 0 = nein <br/>
+     * Einschluss Vandalismus.
+     * 0 = nein 
      * 1 = ja
      */
     @FeldInfo(
@@ -368,8 +368,8 @@ public enum Feld210 {
     EINSCHLUSS_VANDALISMUS,
 
     /**
-     * Untervers.-Verzicht.<br/>
-     * 0 = nein <br/>
+     * Untervers.-Verzicht.
+     * 0 = nein 
      * 1 = ja
      */
     @FeldInfo(
@@ -381,8 +381,8 @@ public enum Feld210 {
     UNTERVERS_VERZICHT,
 
     /**
-     * Abschlussprovision.<br/>
-     * Für den betreffenden Vertrag vereinbarter Provisionssatz (3,2 Stellen) <br/>
+     * Abschlussprovision.
+     * Für den betreffenden Vertrag vereinbarter Provisionssatz (3,2 Stellen) 
      * (3,2 Stellen)
      */
     @FeldInfo(
@@ -395,11 +395,11 @@ public enum Feld210 {
     ABSCHLUSSPROVISION,
 
     /**
-     * Kennzeichen für abweichende Abschlussprovision.<br/>
+     * Kennzeichen für abweichende Abschlussprovision.
      * Kennzeichen, dass für den betreffenden Vertrag der
      * Provisionssatz von den allgemeinen Provisionsvereinbarungen
-     * abweicht <br/>
-     * 0 = nein <br/>
+     * abweicht 
+     * 0 = nein 
      * 1 = ja
      */
     @FeldInfo(
@@ -411,8 +411,8 @@ public enum Feld210 {
     KENNZEICHEN_FUER_ABWEICHENDE_ABSCHLUSSPROVISION,
 
     /**
-     * Folgeprovision.<br/>
-     * s. Erläuterung für Abschlussprovision <br/>
+     * Folgeprovision.
+     * s. Erläuterung für Abschlussprovision 
      * (3,2 Stellen)
      */
     @FeldInfo(
@@ -425,9 +425,9 @@ public enum Feld210 {
     FOLGEPROVISION,
 
     /**
-     * Kennzeichen für abweichende Folgeprovision.<br/>
-     * s. Erläuterung: Kennzeichen für abweichende Abschlussprovision <br/>
-     * 0 = nein <br/>
+     * Kennzeichen für abweichende Folgeprovision.
+     * s. Erläuterung: Kennzeichen für abweichende Abschlussprovision 
+     * 0 = nein 
      * 1 = ja
      */
     @FeldInfo(
@@ -439,7 +439,7 @@ public enum Feld210 {
     KENNZEICHEN_FUER_ABWEICHENDE_FOLGEPROVISION,
 
     /**
-     * Restlaufzeit des Vertrages.<br/>
+     * Restlaufzeit des Vertrages.
      * gemäß Ablauf des Vertrages. Grundlage für die
      * Berechnung von Provision, sofern nicht in
      * Satzart 210 geschlüsselt (JJ)
@@ -453,8 +453,8 @@ public enum Feld210 {
     RESTLAUFZEIT_DES_VERTRAGES,
 
     /**
-     * Laufzeitrabatt in %.<br/>
-     * gemäß Laufzeitrabatt VAG-Novelle 01.07.1991 <br/>
+     * Laufzeitrabatt in %.
+     * gemäß Laufzeitrabatt VAG-Novelle 01.07.1991 
      * (2,2 Stellen)
      */
     @FeldInfo(
@@ -466,7 +466,7 @@ public enum Feld210 {
     LAUFZEITRABATT_IN_PROZENT,
 
     /**
-     * Produktform.<br/>
+     * Produktform.
      * Unternehmensindividuelle Produktkürzel/-schlüssel
      */
     @FeldInfo(
@@ -478,7 +478,7 @@ public enum Feld210 {
     PRODUKTFORM,
 
     /**
-     * Produktform gültig ab.<br/>
+     * Produktform gültig ab.
      * Versionsdatum der Produktform. Monat / Jahr (MMJJJJ)
      * Wenn kein Versionsdatum vorhanden, muss das Datum der
      * Produkteinführung geliefert werden.
@@ -492,8 +492,8 @@ public enum Feld210 {
     PRODUKTFORM_GUELTIG_AB,
 
     /**
-     * Leerstellen.<br/>
-     * Leerstellen <br/>
+     * Leerstellen.
+     * Leerstellen 
      * Freie Stellen für weitere Belegung
      */
     @FeldInfo(
@@ -505,7 +505,7 @@ public enum Feld210 {
     LEERSTELLEN2,
 
     /**
-     * Satznummer.<br/>
+     * Satznummer.
      * konstant 1
      */
     @FeldInfo(
@@ -517,7 +517,7 @@ public enum Feld210 {
     SATZNUMMER2,
 
     /**
-     * Objektnummer.<br/>
+     * Objektnummer.
      * siehe Anlage 67
      */
     @FeldInfo(
@@ -532,7 +532,7 @@ public enum Feld210 {
     // /// Teildatensatz 2 /////////////////////////////////////////////////
 
     /**
-     * Satzart.<br/>
+     * Satzart.
      * konstant 0210
      */
     @FeldInfo(
@@ -544,8 +544,8 @@ public enum Feld210 {
     SATZART,
 
     /**
-     * VU-Nummer.<br/>
-     * Gemäß VU-Verzeichnis der BaFin, linksbündig<br/>
+     * VU-Nummer.
+     * Gemäß VU-Verzeichnis der BaFin, linksbündig
      * Das VU-Nr.-Verzeichnis kann bei der Bundesanstalt für
      * Finanzdienstleistungsaufsicht in Bonn angefordert werden
      * (Graurheindorfer Str. 108, 53117 Bonn, www.bafin.de).
@@ -559,9 +559,9 @@ public enum Feld210 {
     VU_NUMMER,
 
     /**
-     * Bündelungskennzeichen.<br/>
-     * Kennzeichen für gebündelte Verträge<br/>
-     * <br/>
+     * Bündelungskennzeichen.
+     * Kennzeichen für gebündelte Verträge
+     * 
      * 1 = gebündelt
      */
     @FeldInfo(
@@ -573,10 +573,10 @@ public enum Feld210 {
     BUENDELUNSKENNZEICHEN,
 
     /**
-     * Sparte.<br/>
+     * Sparte.
      * Versicherungszweig gemäß Verordnung über die Berichterstattung
      * von Versicherungsunternehmen gegenüber der BaFin (BerVersV)
-     * Abschnitt C<br/>
+     * Abschnitt C
      * siehe Anlage 1
      */
     @FeldInfo(
@@ -588,7 +588,7 @@ public enum Feld210 {
     SPARTE,
 
     /**
-     * Versicherungsschein-Nummer.<br/>
+     * Versicherungsschein-Nummer.
      * Versicherungsschein-Nummer, rechtsbuendig, mit Leerstellen linksbuendig
      * auffuellen ohne Sonderzeichen
      */
@@ -601,9 +601,9 @@ public enum Feld210 {
     VERSICHERUNGSSCHEINNUMMER,
 
     /**
-     * Folgenummer.<br/>
+     * Folgenummer.
      * Lfd. Nummer innerhalb einer Versicherungsschein-Nr. über alle
-     * Satzarten für die gleiche Datensendung<br/>
+     * Satzarten für die gleiche Datensendung
      * siehe Anlage 2
      */
     @FeldInfo(
@@ -615,7 +615,7 @@ public enum Feld210 {
     FOLGENUMMER,
 
     /**
-     * Geschäftsstelle / Vermittler.<br/>
+     * Geschäftsstelle / Vermittler.
      * Die geschäftsführende Geschäftsstelleund der Vermittler ohne
      * Sonderzeichen
      */
@@ -628,7 +628,7 @@ public enum Feld210 {
     GESCHAEFTSSTELLE_VERMITTLER,
 
     /**
-     * Produktname.<br/>
+     * Produktname.
      * Produktname
      */
     @FeldInfo(
@@ -640,7 +640,7 @@ public enum Feld210 {
     PRODUKTNAME,
 
     /**
-     * Referenznummer.<br/>
+     * Referenznummer.
      *
      */
     @FeldInfo(
@@ -652,8 +652,8 @@ public enum Feld210 {
     REFERENZNUMMER,
 
     /**
-     * Ständig bewohnt.<br/>
-     * 0 = nein<br/>
+     * Ständig bewohnt.
+     * 0 = nein
      * 1 = ja
      */
     @FeldInfo(
@@ -665,8 +665,8 @@ public enum Feld210 {
     STAENDIG_BEWOHNT,
 
     /**
-     * Leerstellen.<br/>
-     * Leerstellen<br/>
+     * Leerstellen.
+     * Leerstellen
      * Freie Stellen für weitere Belegung
      */
     @FeldInfo(
@@ -678,7 +678,7 @@ public enum Feld210 {
     LEERSTELLEN,
 
     /**
-     * Satznummer.<br/>
+     * Satznummer.
      * konstant 2
      */
     @FeldInfo(
@@ -690,7 +690,7 @@ public enum Feld210 {
     SATZNUMMER,
 
     /**
-     * Objektnummer.<br/>
+     * Objektnummer.
      * siehe Anlage 67
      */
     @FeldInfo(

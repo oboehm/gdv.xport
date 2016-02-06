@@ -27,7 +27,7 @@ import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 <br/>
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 
  * (Leben - Angaben zur versicherten Person: Person = Wagnisart 0).
  *
  * @author ralfklemmer
@@ -45,14 +45,14 @@ public enum Feld220Wagnis0 {
     INTRO1,
 
     /**
-     * Lfd. Nummer der versicherten Person (VP).<br/>
+     * Lfd. Nummer der versicherten Person (VP).
      * lfd. Nr., die im VU geführt wird
      */
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
     /**
-     * Wagnisart.<br/>
+     * Wagnisart.
      * 0 = VP
      */
     @FeldInfo(
@@ -66,98 +66,98 @@ public enum Feld220Wagnis0 {
     WAGNISART,
 
     /**
-     * Lfd Nummer zur Wagnisart.<br/>
+     * Lfd Nummer zur Wagnisart.
      */
     @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Name der VP.<br/>
+     * Name der VP.
      */
     @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 62)
     NAME_VP,
 
     /**
-     * Vorname der VP.<br/>
+     * Vorname der VP.
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 92)
     VORNAME_VP,
 
     /**
-     * Geburtsdatum der VP.<br/>
+     * Geburtsdatum der VP.
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 122)
     GEBURTSDATUM_VP,
 
     /**
-     * Geschlecht der VP.<br/>
+     * Geschlecht der VP.
      * 0 = juristische Person, 1 = männlich, 2 = weiblich
      */
     @FeldInfo(teildatensatz = 1, nr = 14, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 130)
     GESCHLECHT_VP,
 
     /**
-     * Berufsschlüssel.<br/>
+     * Berufsschlüssel.
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 131)
     BERUFSSCHLUESSEL,
 
     /**
-     * Beruf - Text.<br/>
+     * Beruf - Text.
      */
     @FeldInfo(teildatensatz = 1, nr = 16, type = AlphaNumFeld.class, anzahlBytes = 30, byteAdresse = 134)
     BERUF_TEXT,
 
     /**
-     * Anzahl der versicherten Personen.<br/>
+     * Anzahl der versicherten Personen.
      */
     @FeldInfo(teildatensatz = 1, nr = 17, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 164)
     ANZAHL_DER_VERSICHERTEN_PERSONEN,
 
     /**
-     * Geburtsdatum der 2. VP.<br/>
+     * Geburtsdatum der 2. VP.
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 165)
     GEBURTSDATUM_VP2,
 
     /**
-     * Personen-/Kundennummer des Versicherers.<br/>
+     * Personen-/Kundennummer des Versicherers.
      */
     @FeldInfo(teildatensatz = 1, nr = 19, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 173)
     PERSONEN_KUNDENNUMMER_DES_VERSICHERERS,
 
     /**
-     * Personen-/Kundennummer des Vermittlers.<br/>
+     * Personen-/Kundennummer des Vermittlers.
      */
     @FeldInfo(teildatensatz = 1, nr = 20, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 190)
     PERSONEN_KUNDENNUMMER_DES_VERMITTLERS,
 
     /**
-     * Diensteintritt.<br/>
+     * Diensteintritt.
      */
     @FeldInfo(teildatensatz = 1, nr = 21, type = Datum.class, anzahlBytes = 8, byteAdresse = 207)
     DIENSTEINTRITT,
 
     /**
-     * Mitarbeiter-Status.<br/>
+     * Mitarbeiter-Status.
      */
     @FeldInfo(teildatensatz = 1, nr = 22, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 215)
     MITARBEITER_STATUS,
 
     /**
-     * Status seit.<br/>
+     * Status seit.
      */
     @FeldInfo(teildatensatz = 1, nr = 23, type = Datum.class, anzahlBytes = 8, byteAdresse = 217)
     STATUS_SEIT,
 
     /**
-     * Sozialversicherung Nummer.<br/>
+     * Sozialversicherung Nummer.
      */
     @FeldInfo(teildatensatz = 1, nr = 24, type = AlphaNumFeld.class, anzahlBytes = 12, byteAdresse = 225)
     SOZIALVERSICHERUNG_NUMMER,
 
     /**
-     * Staatsangehörigkeit.<br/>
+     * Staatsangehörigkeit.
      * KFZ-Länderkennzeichen, z. B. Länderkennzeichen für D = Deutschland, B = Belgien, DK = Dänemark, F =
      * Frankreich, CDN = Kanada siehe Anlage 63
      */
@@ -165,7 +165,7 @@ public enum Feld220Wagnis0 {
     STAATSANGEHOERIGKEIT,
 
     /**
-     * Unverfallbarkeit.<br/>
+     * Unverfallbarkeit.
      * 0 = nein, 1 = ja
      */
     @FeldInfo(
@@ -177,7 +177,7 @@ public enum Feld220Wagnis0 {
     UNVERFALLBARKEIT,
 
     /**
-     * Datum Unverfallbarkeit.<br/>
+     * Datum Unverfallbarkeit.
      */
     @FeldInfo(
             teildatensatz = 1,

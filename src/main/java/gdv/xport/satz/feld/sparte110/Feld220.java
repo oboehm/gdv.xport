@@ -26,9 +26,9 @@ public enum Feld220 {
     INTRO1,
 
     /**
-     * Beginn.<br/>
+     * Beginn.
      * Beginn der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschluesselt werden<br/>
+     * muss "00" geschluesselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -40,9 +40,9 @@ public enum Feld220 {
     BEGINN,
 
     /**
-     * AUSSCHLUSS.<br/>
+     * AUSSCHLUSS.
      * AUSSCHLUSS der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschluesselt werden<br/>
+     * muss "00" geschluesselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -54,9 +54,9 @@ public enum Feld220 {
     AUSSCHLUSS,
 
     /**
-     * Aenderungsdatum.<br/>
+     * Aenderungsdatum.
      * Aenderungsdatum der Sparte. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschluesselt werden<br/>
+     * muss "00" geschluesselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -83,7 +83,7 @@ public enum Feld220 {
 
 
     /**
-     * Postleitzahl der Risikoanschrift.<br/>
+     * Postleitzahl der Risikoanschrift.
      * linksbuendig
      */
     @FeldInfo(
@@ -95,7 +95,7 @@ public enum Feld220 {
     POSTLEITZAHL_DER_RISIKOANSCHRIFT,
 
     /**
-     * Risikoort.<br/>
+     * Risikoort.
      * Wenn Risikoanschrift abweichend vom Wohnort
      */
     @FeldInfo(
@@ -107,7 +107,7 @@ public enum Feld220 {
     RISIKOORT,
 
     /**
-     * Risikostrasse.<br/>
+     * Risikostrasse.
      * siehe Erlaeuterung Risikoort
      */
     @FeldInfo(
@@ -119,7 +119,7 @@ public enum Feld220 {
     RISIKOSTRASSE,
 
     /**
-     * Form.<br/>
+     * Form.
      * 1 = gewerblich
      * 2 = privat
      * 3 = Werbeanlagen
@@ -135,7 +135,7 @@ public enum Feld220 {
 
 
     /**
-     * Formart.<br/>
+     * Formart.
      * 1 = Gebauudeverglasung
      * 2 = Mobiliarverglasung
      * 3 = Gebauude- und Mobiliarverglasung
@@ -151,7 +151,7 @@ public enum Feld220 {
 
 
     /**
-     * AUSSCHLUSS2.<br/>
+     * AUSSCHLUSS2.
      * 01 = Mehrscheibenisolierverglasung
      * 02 = kuenstlerisch bearbeitete Glaeser
      * 03 = Scheiben ueber 4 qm
@@ -167,7 +167,7 @@ public enum Feld220 {
 
 
     /**
-     * Risiko.<br/>
+     * Risiko.
      * siehe Anlage 19
      */
     @FeldInfo(
@@ -180,7 +180,7 @@ public enum Feld220 {
 
 
     /**
-     * Risikokennziffer.<br/>
+     * Risikokennziffer.
      * siehe Anlage 11
      */
     @FeldInfo(
@@ -193,7 +193,7 @@ public enum Feld220 {
 
 
     /**
-     * Berechnungsart<br/>
+     * Berechnungsart
      * siehe Anlage 20
      */
     @FeldInfo(
@@ -206,8 +206,8 @@ public enum Feld220 {
 
 
     /**
-     * Versicherungssummer in Waehrungseinheiten.<br/>
-     * Versicherungssumme in Waehrungseinheiten<br/>
+     * Versicherungssummer in Waehrungseinheiten.
+     * Versicherungssumme in Waehrungseinheiten
      * (12,0 Stellen)
      */
     @FeldInfo(
@@ -220,7 +220,7 @@ public enum Feld220 {
 
 
    /**
-     * qm.<br/>
+     * qm.
      * gemaess Berechnungsart
      */
     @FeldInfo(
@@ -233,7 +233,7 @@ public enum Feld220 {
 
 
    /**
-     * Beitragssatz fuer Berechnungsart.<br/>
+     * Beitragssatz fuer Berechnungsart.
      * Promille-Satz fuer Versicherungssumme
      * (3,3 Stellen)
      */
@@ -248,7 +248,7 @@ public enum Feld220 {
 
 
    /**
-     * Beitrag in Waehrungseinheiten.<br/>
+     * Beitrag in Waehrungseinheiten.
      * Beitrag unter Beruecksichtigung aller Zu- und Abschlaege ohne Gebuehr und
      * Vers.-Steuer gemaess Zahlungsweise in Waehrungseinheiten
      * (10,2 Stellen)
@@ -265,7 +265,7 @@ public enum Feld220 {
 
 
    /**
-     * Selbstbeteiligung %-Satz<br/>
+     * Selbstbeteiligung %-Satz
      * (2,2 Stellen)
      */
     @FeldInfo(
@@ -279,7 +279,7 @@ public enum Feld220 {
 
 
    /**
-     * Selbstbeteiligung in Waehrungseinheiten.<br/>
+     * Selbstbeteiligung in Waehrungseinheiten.
      * (10,2 Stellen)
      */
     @FeldInfo(
@@ -293,7 +293,7 @@ public enum Feld220 {
 
 
     /**
-     * Glaspreisangleichung.<br/>
+     * Glaspreisangleichung.
      * 0 = nein
      * 1 = ja
      */
@@ -308,7 +308,7 @@ public enum Feld220 {
 
 
    /**
-     * %-Satz Erhoehung der letzten Glaspreisangleichung.<br/>
+     * %-Satz Erhoehung der letzten Glaspreisangleichung.
      * (2,3 Stellen)
      */
     @FeldInfo(
@@ -322,9 +322,9 @@ public enum Feld220 {
 
 
    /**
-     * Datum der letzten Glaspreisangleichung.<br/>
+     * Datum der letzten Glaspreisangleichung.
      * Datum der letzten Glaspreisangleichung. Sollten Tag und/oder Monat nicht vorhanden sein,
-     * muss "00" geschluesselt werden<br/>
+     * muss "00" geschluesselt werden
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
@@ -337,7 +337,7 @@ public enum Feld220 {
 
 
    /**
-     * Pauschale Glasversicherung ohne Angabe der Versicherungssumme.<br/>
+     * Pauschale Glasversicherung ohne Angabe der Versicherungssumme.
      * 0 = nein
      * 1 = ja
      */
@@ -351,7 +351,7 @@ public enum Feld220 {
     PAUSCHALE_GLASVERSICHERUNG_OHNE_VERSICHERUNGSSUMME,
 
     /**
-     * Risiko laufende Nummer.<br/>
+     * Risiko laufende Nummer.
      * Risiko lfd. Nummer. Zur eindeutigen Identifizierung der versicherten Risiken innerhalb der Satzart 220
      */
     @FeldInfo(
@@ -363,7 +363,7 @@ public enum Feld220 {
     LFD_NUMMER_RISIKO,
 
     /**
-     * Leerstellen.<br/>
+     * Leerstellen.
      */
     @FeldInfo(
             teildatensatz = 1,

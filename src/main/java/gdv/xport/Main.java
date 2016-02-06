@@ -55,7 +55,7 @@ public final class Main {
 
     /**
      * Diese Main-Klasse dient hautpsaechlich zu Demo-Zwecken. Werden keine Optionen angegeben, wird von der
-     * Standard-Eingabe (System.in) gelesen und das Ergebnis nach System.out geschrieben. <br/>
+     * Standard-Eingabe (System.in) gelesen und das Ergebnis nach System.out geschrieben. 
      * Mit "-help" bekommt man eine kleine Uebersicht der Optionen.
      *
      * @param args
