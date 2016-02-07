@@ -53,12 +53,9 @@ import org.apache.logging.log4j.Logger;
  * @author oliver
  * @since 15.10.2009
  */
-//FIXME: XXX_DATUM durch XXX_DAT ersetzen, NAME_XXX_DATUM entfernen (14-Nov-2014, Oli B.)
+//FIXME: NAME_XXX_DATUM entfernen (14-Nov-2014, Oli B.)
 public final class Bezeichner {
 
-    /** @deprecated bitte {@link Bezeichner#ABGANGSDAT} verwenden */
-    @Deprecated
-    public static final String ABGANGSDATUM = "Abgangsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ABGANGSGRUND = "Abgangsgrund";
@@ -109,9 +106,6 @@ public final class Bezeichner {
     public static final String ADRESSKENNZEICHEN = "Adresskennzeichen";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String AENDERUNGSDATUM = "Aenderungsdatum";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String AENDERUNGSGRUND = "Aenderungsgrund";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -134,12 +128,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ANTEIL_IN_PROZENT = "Anteil in %";
-    /** @deprecated bitte {@link Bezeichner#ANTRAGSDAT} verwenden */
-    @Deprecated
-    public static final String ANTRAGSDATUM = "Antragsdatum";
-    /** @deprecated bitte {@link Bezeichner#ANTRAGSEINGANGSDAT} verwenden */
-    @Deprecated
-    public static final String ANTRAGSEINGANGSDATUM = "Antragseingangsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ANZAHL_DER_VORBESITZER = "Anzahl der Vorbesitzer";
@@ -230,9 +218,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String BEITRAGSRUECKGEWAEHR = "Beitragsrueckgewaehr";
-    /** @deprecated bitte {@link Bezeichner#BEITRAGSUMSTELLUNGSDAT} verwenden */
-    @Deprecated
-    public static final String BEITRAGSUMSTELLUNGSDATUM = "Beitragsumstellungsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String BEITRAGSUMSTELLUNGSGRUND = "Beitragsumstellungsgrund";
@@ -353,9 +338,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String DECKUNGSUMFANG = "Deckungsumfang";
-    /** @deprecated bitte {@link Bezeichner#DIENSTEINTRITTSDAT} verwenden */
-    @Deprecated
-    public static final String DIENSTEINTRITTSDATUM = "Diensteintrittsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER = "Druckaufbereitete Versicherungsscheinnummer";
@@ -458,9 +440,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String GARAGE = "Garage";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String GEBURTSDATUM = "Geburtsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String GEBURTSLAND = "Geburtsland";
@@ -607,9 +586,6 @@ public final class Bezeichner {
     public static final String KFT_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = "KFT-Abschlaege";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String KFT_AENDERUNGSDATUM = "KFT-aenderungsdatum";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String KFT_AUSSCHLUSS = "KFT-Ausschluss";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -635,9 +611,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String KFV_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = "KFV-Abschlaege";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String KFV_AENDERUNGSDATUM = "KFV-aenderungsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String KFV_AUSSCHLUSS = "KFV-Ausschluss";
@@ -677,9 +650,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String KH_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = "KH-Abschlaege";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String KH_AENDERUNGSDATUM = "KH-aenderungsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String KH_AUSSCHLUSS = "KH-Ausschluss";
@@ -965,9 +935,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String PERSONEN_KUNDENNUMMER_DES_VERSICHERERS = "Personen-/Kundennummer des Versicherers";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String POLICIERUNGSDATUM = "Policierungsdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String POSTALISCHES_KENNZEICHEN = "postalisches Kennzeichen";
@@ -1693,9 +1660,6 @@ public final class Bezeichner {
     public static final String ZUZAHLUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Zuzahlungsbetrag";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String ZUZAHLUNGSDATUM = "Zuzahlungsdatum";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String ZUZAHLUNGSRECHT = "Zuzahlungsrecht";
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -1761,9 +1725,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String BEITRAGSZAHLUNG_BIS = "Beitragszahlung bis";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RUECKGEWAEHRDATUM = "Rueckgewaehrdatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = "Rueckgewaehrsumme zum Ablauf";
@@ -2017,9 +1978,6 @@ public final class Bezeichner {
     public static final String ANTEILE = "Anteile";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String BEZUGSDATUM = "Bezugsdatum";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String PROZENTSATZ = "Prozentsatz";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -2180,9 +2138,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String HAFTUNG_BIS = "Haftung bis";
-    /** @deprecated bitte {@link Bezeichner#URSPRUENGLICHES_HAFTUNGSBEGINNDAT} verwenden */
-    @Deprecated
-    public static final String URSPRUENGLICHES_HAFTUNGSBEGINNDATUM = "Urspruengliches Haftungsbeginndatum";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Provisionspflichtige Beitragssumme";
@@ -2678,6 +2633,9 @@ public final class Bezeichner {
     /** Die Konstante ABGANGSDAT. */
     public static final Bezeichner ABGANGSDAT = new Bezeichner("Abgangsdatum", "Abgangsdat");
 
+    /** Die Konstante AENDERUNGSDAT. */
+    public static final Bezeichner AENDERUNGSDAT = new Bezeichner("Aenderungsdatum", "Aenderungsdat");
+
     /** Die Konstante AUSSCHLUSSDAT_VP_PERSONENGRUPPE. */
     public static final Bezeichner AUSSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner(
             "Ausschlussdatum VP / Personengruppe", "AusschlussdatVpPersonengruppe");
@@ -2707,6 +2665,9 @@ public final class Bezeichner {
     public static final Bezeichner BEITRAGSUMSTELLUNGSDAT = new Bezeichner("Beitragsumstellungsdatum",
             "Beitragsumstellungsdat");
 
+    /** Die Konstante BEZUGSDAT. */
+    public static final Bezeichner BEZUGSDAT = new Bezeichner("Bezugsdatum", "Bezugsdat");
+
     /** Die Konstante DAT_BEZUGSFERTIGKEIT. */
     public static final Bezeichner DAT_BEZUGSFERTIGKEIT = new Bezeichner("Datum der Bezugsfertigkeit", "DatBezugsfertigkeit");
 
@@ -2732,14 +2693,32 @@ public final class Bezeichner {
     public static final Bezeichner ENDEDATUM_BEI_ROTEN_KENNZEICHEN = new Bezeichner(
             "Endedatum des Versicherungsschutzes bei roten Kennzeichen", "EndedatumBeiRotenKennzeichen");
 
+    /** Die Konstante GEBURTSDAT. */
+    public static final Bezeichner GEBURTSDAT = new Bezeichner("Geburtsdatum", "Geburtsdat");
+
     /** Die Konstante GEBURTSDAT_VP. */
     public static final Bezeichner GEBURTSDAT_VP = new Bezeichner("Geburtsdatum der VP", "GeburtsdatVp");
+
+    /** Die Konstante KFT_AENDERUNGSDAT. */
+    public static final Bezeichner KFT_AENDERUNGSDAT = new Bezeichner("KFT-aenderungsdatum", "KftAenderungsdat");
+
+    /** Die Konstante KFV_AENDERUNGSDAT. */
+    public static final Bezeichner KFV_AENDERUNGSDAT = new Bezeichner("KFV-aenderungsdatum", "KfvAenderungsdat");
+
+    /** Die Konstante KH_AENDERUNGSDAT. */
+    public static final Bezeichner KH_AENDERUNGSDAT = new Bezeichner("KH-aenderungsdatum", "KhAenderungsdat");
 
     /** Die Konstante LFD_PERSONEN_NR_IM_GEVO. */
     public static final Bezeichner LFD_PERSONEN_NR_IM_GEVO = new Bezeichner ("Lfd. Personennummer im GeVo", "LfdPersonenNrImGevo");
 
+    /** Die Konstante POLICIERUNGSDAT. */
+    public static final Bezeichner POLICIERUNGSDAT = new Bezeichner("Policierungsdatum", "Policierungsdat");
+
     /** The Konstante ROLLE_W_AKZ. */
     public static final Bezeichner ROLLE_W_AKZ = new Bezeichner("Rolle W-AKZ", "RolleWAKZ");
+
+    /** The Konstante RUECKGEWAEHRDAT. */
+    public static final Bezeichner RUECKGEWAEHRDAT = new Bezeichner("Rueckgewaehrdatum", "Rueckgewaehrdat");
 
     /** Die Konstante URSPRUENGLICHES_HAFTUNGSBEGINNDAT. */
     public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner(
@@ -2758,6 +2737,9 @@ public final class Bezeichner {
     /** Die Konstante ZUZAHLUNGSBETRAG_IN_WE. */
     public static final Bezeichner ZUZAHLUNGSBETRAG_IN_WE = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten",
             "ZuzahlungsbetragInWE");
+
+    /** Die Konstante ZUZAHLUNGSDAT. */
+    public static final Bezeichner ZUZAHLUNGSDAT = new Bezeichner("Zuzahlungsdatum", "Zuzahlungsdat");
 
     /////////// Konstanten mit NAME_-Prefix ///////////////////////////////////
 
