@@ -93,7 +93,7 @@
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore></ignore>
+                    <ignore/>
                   </action>
                 </pluginExecution>
               </pluginExecutions>
@@ -170,100 +170,6 @@
         <configuration>
           <locales>de</locales>
           <outputEncoding>UTF-8</outputEncoding>
-          <reportPlugins>
-              <!-- Project Reports (like dependencies) -->
-              <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.7</version>
-              </plugin>
-              <!-- Java Cross Reference Listing -->
-              <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.3</version>
-              </plugin>
-		      <!-- 
-		          Changes
-		          see http://maven.apache.org/plugins/maven-changes-plugin/usage.html
-		       -->
-		      <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-changes-plugin</artifactId>
-		        <version>2.10</version>
-		        <reportSets>
-		          <reportSet>
-		            <reports>
-		              <report>changes-report</report>
-		            </reports>
-		          </reportSet>
-		        </reportSets>
-		      </plugin>
-		      <!-- 
-		          Javadoc 
-		          see http://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html
-		      -->
-		      <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-javadoc-plugin</artifactId>
-		        <version>2.10.3</version>
-		        <configuration>
-		          <source>${java.version}</source>
-		          <show>protected</show>
-		          <links>
-		            <link>http://java.sun.com/javase/6/docs/api/</link>
-		            <link>http://www.eclipse.org/aspectj/doc/released/runtime-api</link>
-		            <link>http://junit.sourceforge.net/javadoc/</link>
-		          </links>
-		        </configuration>
-		      </plugin>
-		      <!-- Unit Tests -->
-		      <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-surefire-report-plugin</artifactId>
-		        <version>2.17</version>
-		      </plugin>
-		      <!-- 
-		          code smells
-		          start 'mvn pmd:pmd'
-		          http://maven.apache.org/plugins/maven-pmd-plugin/
-		      -->
-		      <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-pmd-plugin</artifactId>
-		        <version>3.6</version>
-		        <configuration>
-		          <linkXref>true</linkXref>
-		          <sourceEncoding>utf-8</sourceEncoding>
-		          <minimumTokens>100</minimumTokens>
-		          <targetJdk>${java.version}</targetJdk>
-                  <rulesets>
-                    <ruleset>${basedir}/config/pmd.xml</ruleset>
-                  </rulesets>
-		        </configuration>
-		      </plugin>
-		      <!-- 
-		          findbugs
-		          start 'mvn findbugs:findbugs'
-		          http://mojo.codehaus.org/findbugs-maven-plugin/
-		          http://docs.codehaus.org/display/MAVENUSER/FindBugs+Plugin
-		       -->    
-		      <plugin>
-		        <groupId>org.codehaus.mojo</groupId>
-		        <artifactId>findbugs-maven-plugin</artifactId>
-		        <configuration>
-		          <findbugsXmlOutput>true</findbugsXmlOutput>
-		          <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
-		          <xmlOutput>true</xmlOutput>
-		          <threshold>Normal</threshold>
-		          <effort>Max</effort>
-		          <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
-		          <omitVisitors>FindDeadLocalStores,OverridingEqualsNotSymmetrical</omitVisitors>
-		          <onlyAnalyze>gdv.xport.-</onlyAnalyze>
-		          <relaxed>false</relaxed>
-		        </configuration>
-		      </plugin>
-          </reportPlugins>
         </configuration>
       </plugin>
 
@@ -288,10 +194,6 @@
         <artifactId>aspectj-maven-plugin</artifactId>
         <version>1.5</version>
         <configuration>
-          <options>
-            <option>-verbose</option>
-            <option>-showWeaveInfo</option>
-          </options>
           <ajdtBuildDefFile>build.ajproperties</ajdtBuildDefFile>
           <aspectLibraries>
             <aspectLibrary>
@@ -362,6 +264,116 @@
   	</plugins>
   	
   </build>
+
+
+
+
+  <reporting>
+
+    <plugins>
+
+      <!-- Project Reports (like dependencies) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.7</version>
+      </plugin>
+
+      <!-- Java Cross Reference Listing -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.3</version>
+      </plugin>
+
+      <!--
+          Changes
+          see http://maven.apache.org/plugins/maven-changes-plugin/usage.html
+       -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changes-plugin</artifactId>
+        <version>2.10</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>changes-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <!--
+          Javadoc
+          see http://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html
+      -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.3</version>
+        <configuration>
+          <source>${java.version}</source>
+          <show>protected</show>
+          <links>
+            <link>http://java.sun.com/javase/6/docs/api/</link>
+            <link>http://www.eclipse.org/aspectj/doc/released/runtime-api</link>
+            <link>http://junit.sourceforge.net/javadoc/</link>
+          </links>
+        </configuration>
+      </plugin>
+
+      <!-- Unit Tests -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.19.1</version>
+      </plugin>
+
+      <!--
+          code smells
+          start 'mvn pmd:pmd'
+          http://maven.apache.org/plugins/maven-pmd-plugin/
+      -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.6</version>
+        <configuration>
+          <sourceEncoding>utf-8</sourceEncoding>
+          <minimumTokens>100</minimumTokens>
+          <targetJdk>${java.version}</targetJdk>
+          <rulesets>
+            <ruleset>${basedir}/config/pmd.xml</ruleset>
+          </rulesets>
+        </configuration>
+      </plugin>
+
+      <!--
+          findbugs
+          start 'mvn findbugs:findbugs'
+          http://mojo.codehaus.org/findbugs-maven-plugin/
+          http://docs.codehaus.org/display/MAVENUSER/FindBugs+Plugin
+       -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <configuration>
+          <findbugsXmlOutput>true</findbugsXmlOutput>
+          <xmlOutput>true</xmlOutput>
+          <threshold>Normal</threshold>
+          <effort>Max</effort>
+          <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
+          <omitVisitors>FindDeadLocalStores,OverridingEqualsNotSymmetrical</omitVisitors>
+          <onlyAnalyze>gdv.xport.-</onlyAnalyze>
+          <relaxed>false</relaxed>
+        </configuration>
+      </plugin>
+
+    </plugins>
+
+  </reporting>
+
+
 
   <dependencies>
   
