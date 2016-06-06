@@ -18,9 +18,6 @@
 
 package gdv.xport.util;
 
-import gdv.xport.Datenpaket;
-import gdv.xport.event.ImportListener;
-
 import java.io.*;
 
 import org.apache.commons.logging.Log;
@@ -28,6 +25,8 @@ import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import gdv.xport.Datenpaket;
+import gdv.xport.event.ImportListener;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.SmokeRunner;
@@ -41,7 +40,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 @RunWith(SmokeRunner.class)
 public class NullFormatterTest extends AbstractFormatterTest {
 
-    private static Log log = LogFactory.getLog(NullFormatterTest.class);
+    private static final Log LOG = LogFactory.getLog(NullFormatterTest.class);
 
     /**
      * Test-Methode fuer {@link NullFormatter#write(Datenpaket)}.
@@ -79,7 +78,7 @@ public class NullFormatterTest extends AbstractFormatterTest {
             writer.close();
             FileTester.assertContentEquals(MUSTERDATEI, output, "ISO-8859-1");
         } finally {
-            log.info(output + " was " + (output.delete() ? "successful" : "not") + " deleted");
+            LOG.info(output + " was " + (output.delete() ? "successful" : "not") + " deleted");
         }
     }
 
@@ -100,7 +99,7 @@ public class NullFormatterTest extends AbstractFormatterTest {
             writer.close();
             FileTester.assertContentEquals(MUSTERDATEI, output, "ISO-8859-1");
         } finally {
-            log.info(output + " was " + (output.delete() ? "successful" : "not") + " deleted");
+            LOG.info(output + " was " + (output.delete() ? "successful" : "not") + " deleted");
         }
     }
 
