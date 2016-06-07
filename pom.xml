@@ -30,12 +30,12 @@
 
   <properties>
 
-    <patterntesting.version>1.6.0</patterntesting.version>
+    <patterntesting.version>1.6.2</patterntesting.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.6</java.version>
+    <java.version>1.7</java.version>
 
     <!-- workaround for PMD, see http://jira.codehaus.org/browse/MPMD-86 -->
-    <targetJdk>1.6</targetJdk>
+    <targetJdk>1.7</targetJdk>
     <main.class>gdv.xport.Main</main.class>
 
     <!-- Sonar -->

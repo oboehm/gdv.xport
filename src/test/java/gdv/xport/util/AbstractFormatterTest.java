@@ -31,6 +31,7 @@ import javax.xml.stream.XMLStreamReader;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import gdv.xport.Datenpaket;
@@ -51,7 +52,20 @@ public abstract class AbstractFormatterTest extends AbstractTest {
     private static XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
     /** Die Musterdatei, die wir fuer einige Tests verwenden. */
-    protected static File MUSTERDATEI = new File("src/test/resources/musterdatei_041222.txt");
+    protected static final File MUSTERDATEI = new File("src/test/resources/musterdatei_041222.txt");
+
+    /** Ein Muster-Datenpaket, das fuer einige Tests benoetigt wird. */
+    protected static final Datenpaket MUSTER_DATENPAKET = new Datenpaket();
+
+    /**
+     * Hier laden wir die Muster-Datei, um ein Datenpaket zum Testen zu haben.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @BeforeClass
+    public static void loadMusterDatenpaket() throws IOException {
+        MUSTER_DATENPAKET.importFrom(MUSTERDATEI, "ISO-8859-1");
+    }
 
     /**
      * Einige Tests passieren auf das korrekte Encoding. Da die Beispieldaten
