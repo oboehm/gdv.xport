@@ -1075,11 +1075,13 @@ public abstract class Satz {
      * @since 1.2
      */
     public Collection<Feld> getFelder() {
-        Collection<Feld> felder = new ArrayList<>();
+        Map<Bezeichner, Feld> felder = new HashMap<>();
         for (Teildatensatz tds : this.getTeildatensaetze()) {
-            felder.addAll(tds.getFelder());
+            for (Feld feld : tds.getFelder()) {
+                felder.put(feld.getBezeichner(), feld);
+            }
         }
-        return felder;
+        return felder.values();
     }
 
 }

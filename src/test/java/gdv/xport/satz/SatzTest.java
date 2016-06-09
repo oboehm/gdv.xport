@@ -25,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.*;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -388,6 +389,23 @@ public final class SatzTest extends AbstractSatzTest {
         Collection<Feld> felder = satz.getFelder();
         Teildatensatz lonelyTeildatensatz = satz.getTeildatensatz(1);
         CollectionTester.assertEquals(lonelyTeildatensatz.getFelder(), felder);
+    }
+
+    /**
+     * Test-Methode fuer {@link Satz#getFelder()}. Im Gegensatz zur vorigen
+     * Test-Methode wird hier der Vorsatz herangenommen, da er aus mehreren
+     * (2) Teildatensaetzen besteht.
+     */
+    @Test
+    public void testGetFelderWithVorsatz() {
+        Satz vorsatz = new Vorsatz();
+        Collection<Feld> felder = vorsatz.getFelder();
+        Collection<Bezeichner> bezeichners = new HashSet<>();
+        for (Feld feld : felder) {
+            Bezeichner b = feld.getBezeichner();
+            assertFalse(feld + " found more than once", bezeichners.contains(b));
+            bezeichners.add(b);
+        }
     }
 
 }
