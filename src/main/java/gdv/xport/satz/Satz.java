@@ -1068,4 +1068,18 @@ public abstract class Satz {
 		return (feldX.name().length() <= 11) && feldX.name().startsWith("SATZNUMMER");
 	}
 
+    /**
+     * Liefert die Felder aller Teildatensaetze zurueck.
+     *
+     * @return the felder
+     * @since 1.2
+     */
+    public Collection<Feld> getFelder() {
+        Collection<Feld> felder = new ArrayList<>();
+        for (Teildatensatz tds : this.getTeildatensaetze()) {
+            felder.addAll(tds.getFelder());
+        }
+        return felder;
+    }
+
 }

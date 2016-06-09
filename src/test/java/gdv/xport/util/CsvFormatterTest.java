@@ -20,13 +20,17 @@ package gdv.xport.util;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import gdv.xport.Datenpaket;
 import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
+import patterntesting.runtime.annotation.Broken;
+import patterntesting.runtime.junit.FileTester;
+import patterntesting.runtime.junit.SmokeRunner;
 
 /**
  * Unit-Test for {@link CsvFormatter}.
@@ -34,6 +38,7 @@ import gdv.xport.satz.Vorsatz;
  * @author oliver
  * @since 1.2 (06.06.2016)
  */
+@RunWith(SmokeRunner.class)
 public final class CsvFormatterTest extends AbstractFormatterTest {
 
     /**
@@ -42,15 +47,40 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testWrite() throws IOException {
-        StringWriter writer = new StringWriter();
-        CsvFormatter formatter = new CsvFormatter(writer);
-        Satz satz = new Vorsatz();
-        formatter.write(satz);
-        writer.flush();
-        writer.close();
-        String content = writer.toString();
-        assertEquals("Satzart;", content.substring(0,  8));
+    public void testWriteSatz() throws IOException {
+        File output = new File("target", "vorsatz.csv");
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1")) {
+            CsvFormatter formatter = new CsvFormatter(writer);
+            Satz satz = MUSTER_DATENPAKET.getVorsatz();
+            formatter.write(satz);
+        }
+        int n = getNumberOfLines(output);
+        assertEquals(2, n);
+        File vorsatz = new File("src/test/resources/gdv/xport/util/vorsatz.csv");
+        if (vorsatz.exists()) {
+            FileTester.assertContentEquals(vorsatz, output);
+        }
+    }
+
+    /**
+     * Test-Methode fuer {@link CsvFormatter#write(Datenpaket)}.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    @Broken(why = "implementation not finished", till = "01-Jul-2016")
+    public void testWriteDatenpaket() throws IOException {
+        File output = new File("target", "musterdatei.csv");
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1")) {
+            CsvFormatter formatter = new CsvFormatter(writer);
+            formatter.write(MUSTER_DATENPAKET);
+        }
+        int n = getNumberOfLines(output);
+        assertEquals(116, n);
+    }
+
+    private int getNumberOfLines(File file) throws IOException {
+        return FileUtils.readLines(file).size();
     }
 
 }

@@ -13,5 +13,7 @@ encoding//src/test/resources/gdv/xport/config/umlaute.txt=ISO-8859-1
 encoding//src/test/resources/igor_110120.txt=ISO-8859-1
 encoding//src/test/resources/musterdatei_041222.txt=ISO-8859-1
 encoding//src/test/resources/zwei_datenpakete.txt=ISO-8859-1
+encoding//target/musterdatei.csv=ISO-8859-1
+encoding//target/vorsatz.csv=ISO-8859-1
 encoding//target/xml/satzarten.xml=UTF-8
 encoding/<project>=UTF-8

@@ -24,7 +24,6 @@ import java.io.Writer;
 
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Satz;
-import gdv.xport.satz.Teildatensatz;
 
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
@@ -69,18 +68,20 @@ public final class CsvFormatter extends AbstractFormatter {
      */
     @Override
     public void write(Satz satz) throws IOException {
-        for (Teildatensatz tds : satz.getTeildatensaetze()) {
-            write(tds);
-        }
+        writeHead(satz);
+        writeContent(satz);
     }
 
-    private void write(Teildatensatz tds) throws IOException {
-        for(Feld feld : tds.getFelder()) {
+    private void writeHead(Satz satz) throws IOException {
+        for(Feld feld : satz.getFelder()) {
             this.write(feld.getBezeichner().getName());
             this.write(";");
         }
         this.write("\n");
-        for(Feld feld : tds.getFelder()) {
+    }
+
+    private void writeContent(Satz satz) throws IOException {
+        for(Feld feld : satz.getFelder()) {
             this.write(feld.getInhalt());
             this.write(";");
         }
