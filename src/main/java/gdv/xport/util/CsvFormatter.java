@@ -21,8 +21,13 @@ package gdv.xport.util;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 
+import gdv.xport.Datenpaket;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
+import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 
 /**
@@ -33,6 +38,8 @@ import gdv.xport.satz.Satz;
  * @since 1.2 (06.06.2016)
  */
 public final class CsvFormatter extends AbstractFormatter {
+
+    private final List<Bezeichner> head = new ArrayList<>();
 
     /**
      * Instantiates a new csv formatter.
@@ -60,6 +67,24 @@ public final class CsvFormatter extends AbstractFormatter {
     }
 
     /**
+     * Ausgabe eines kompletten Datenpakets im CSV-Format. Dabei tauchen
+     * unterschiedliche Saetze nebeneinander in der generierten Tabelle auf.
+     *
+     * @param datenpaket Datenpaket, das als CSV exportiert werden soll
+     * @throws IOException bei Problemen mit der Generierung
+     */
+    @Override
+    public void write(final Datenpaket datenpaket) throws IOException {
+        this.writeHead(datenpaket);
+        this.writeBody(datenpaket);
+        this.write(datenpaket.getVorsatz());
+        for (Datensatz satz : datenpaket.getDatensaetze()) {
+            this.write(satz);
+        }
+        this.write(datenpaket.getNachsatz());
+    }
+
+    /**
      * Formatiert den uebergebenen Satz als CSV.
      *
      * @param satz the satz
@@ -68,19 +93,40 @@ public final class CsvFormatter extends AbstractFormatter {
      */
     @Override
     public void write(Satz satz) throws IOException {
-        writeHead(satz);
-        writeContent(satz);
+        this.buildHead(satz);
+        this.writeHead();
+        this.writeBody(satz);
     }
 
-    private void writeHead(Satz satz) throws IOException {
-        for(Feld feld : satz.getFelder()) {
-            this.write(feld.getBezeichner().getName());
+    private void writeHead(Datenpaket datenpaket) {
+        // TODO Auto-generated method stub
+        //
+        throw new UnsupportedOperationException("not yet implemented");
+    }
+
+    private void buildHead(Satz satz) throws IOException {
+        for (Feld feld : satz.getFelder()) {
+            if (!head.contains(feld.getBezeichner())) {
+                head.add(feld.getBezeichner());
+            }
+        }
+    }
+
+    private void writeHead() throws IOException {
+        for (Bezeichner bezeichner : this.head) {
+            this.write(bezeichner.getName());
             this.write(";");
         }
         this.write("\n");
     }
 
-    private void writeContent(Satz satz) throws IOException {
+    private void writeBody(Datenpaket datenpaket) {
+        // TODO Auto-generated method stub
+        //
+        throw new UnsupportedOperationException("not yet implemented");
+    }
+
+    private void writeBody(Satz satz) throws IOException {
         for(Feld feld : satz.getFelder()) {
             this.write(feld.getInhalt());
             this.write(";");
