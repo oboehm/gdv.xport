@@ -133,7 +133,7 @@ public final class CsvFormatter extends AbstractFormatter {
             this.felder.put(feld.getBezeichner(), feld);
         }
         for (Feld feld : this.felder.values()) {
-            this.write(feld.getInhalt());
+            this.write(feld.getInhalt().trim());
             this.write(";");
         }
         this.write("\n");
