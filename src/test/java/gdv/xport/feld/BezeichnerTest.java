@@ -157,7 +157,8 @@ public class BezeichnerTest {
     public void testGetField() throws IllegalAccessException {
         String bezeichnung = "Abgangsdatum";
         Field field = Bezeichner.getField(bezeichnung);
-        assertEquals(bezeichnung, field.get(null).toString());
+        Bezeichner abgangsdat = (Bezeichner) field.get(null);
+        assertEquals(bezeichnung, abgangsdat.getName());
     }
 
     /**

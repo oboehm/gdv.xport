@@ -3824,8 +3824,17 @@ public final class Bezeichner {
         for (int i = 0; i < fields.length; i++) {
             try {
                 Object value = fields[i].get(null);
-                if ((value != null) && bezeichnung.equalsIgnoreCase(value.toString())) {
+                if (value == null) {
+                    continue;
+                }
+                if (bezeichnung.equalsIgnoreCase(value.toString())) {
                     return fields[i];
+                }
+                if (value instanceof Bezeichner) {
+                    Bezeichner bez = (Bezeichner) value;
+                    if (bezeichnung.equalsIgnoreCase(bez.getName())) {
+                        return fields[i];
+                    }
                 }
             } catch (IllegalAccessException e) {
                 LOG.debug("Will ignore field {}:", fields[i], e);
