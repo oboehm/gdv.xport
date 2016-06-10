@@ -21,8 +21,9 @@ package gdv.xport.util;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Bezeichner;
@@ -39,7 +40,7 @@ import gdv.xport.satz.Satz;
  */
 public final class CsvFormatter extends AbstractFormatter {
 
-    private final List<Bezeichner> head = new ArrayList<>();
+    private final Map<Bezeichner, Feld> felder = new LinkedHashMap<>();
 
     /**
      * Instantiates a new csv formatter.
@@ -75,13 +76,9 @@ public final class CsvFormatter extends AbstractFormatter {
      */
     @Override
     public void write(final Datenpaket datenpaket) throws IOException {
-        this.writeHead(datenpaket);
+        buildHead(datenpaket);
+        this.writeHead();
         this.writeBody(datenpaket);
-        this.write(datenpaket.getVorsatz());
-        for (Datensatz satz : datenpaket.getDatensaetze()) {
-            this.write(satz);
-        }
-        this.write(datenpaket.getNachsatz());
     }
 
     /**
@@ -98,40 +95,54 @@ public final class CsvFormatter extends AbstractFormatter {
         this.writeBody(satz);
     }
 
-    private void writeHead(Datenpaket datenpaket) {
-        // TODO Auto-generated method stub
-        //
-        throw new UnsupportedOperationException("not yet implemented");
+    private void buildHead(final Datenpaket datenpaket) throws IOException {
+        this.buildHead(datenpaket.getVorsatz());
+        for (Datensatz satz : datenpaket.getDatensaetze()) {
+            this.buildHead(satz);
+        }
+        this.buildHead(datenpaket.getNachsatz());
     }
 
     private void buildHead(Satz satz) throws IOException {
         for (Feld feld : satz.getFelder()) {
-            if (!head.contains(feld.getBezeichner())) {
-                head.add(feld.getBezeichner());
+            if (!felder.containsKey(feld.getBezeichner())) {
+                felder.put(feld.getBezeichner(), feld);
             }
         }
     }
 
     private void writeHead() throws IOException {
-        for (Bezeichner bezeichner : this.head) {
+        for (Bezeichner bezeichner : this.felder.keySet()) {
             this.write(bezeichner.getName());
             this.write(";");
         }
         this.write("\n");
     }
 
-    private void writeBody(Datenpaket datenpaket) {
-        // TODO Auto-generated method stub
-        //
-        throw new UnsupportedOperationException("not yet implemented");
+    private void writeBody(Datenpaket datenpaket) throws IOException {
+        this.writeBody(datenpaket.getVorsatz());
+        for (Datensatz satz : datenpaket.getDatensaetze()) {
+            this.writeBody(satz);
+        }
+        this.writeBody(datenpaket.getNachsatz());
     }
 
     private void writeBody(Satz satz) throws IOException {
-        for(Feld feld : satz.getFelder()) {
+        this.resetFelder();
+        for (Feld feld : satz.getFelder()) {
+            this.felder.put(feld.getBezeichner(), feld);
+        }
+        for (Feld feld : this.felder.values()) {
             this.write(feld.getInhalt());
             this.write(";");
         }
         this.write("\n");
+    }
+
+    private void resetFelder() {
+        for (Entry<Bezeichner, Feld> entry : this.felder.entrySet()) {
+            entry.setValue(Feld.NULL_FELD);
+        }
     }
 
 }

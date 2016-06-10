@@ -29,7 +29,6 @@ import org.junit.runner.RunWith;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Satz;
-import patterntesting.runtime.annotation.Broken;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.SmokeRunner;
 
@@ -68,7 +67,7 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    @Broken(why = "implementation not finished", till = "01-Jul-2016")
+    //@Broken(why = "implementation not finished", till = "01-Jul-2016")
     public void testWriteDatenpaket() throws IOException {
         File output = new File("target", "musterdatei.csv");
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1")) {
@@ -76,7 +75,7 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
             formatter.write(MUSTER_DATENPAKET);
         }
         int n = getNumberOfLines(output);
-        assertEquals(116, n);
+        assertEquals(129, n);
     }
 
     private int getNumberOfLines(File file) throws IOException {
