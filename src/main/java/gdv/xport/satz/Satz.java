@@ -1075,13 +1075,24 @@ public abstract class Satz {
      * @since 1.2
      */
     public Collection<Feld> getFelder() {
-        Map<Bezeichner, Feld> felder = new HashMap<>();
+        List<Feld> felder = new ArrayList<Feld>();
         for (Teildatensatz tds : this.getTeildatensaetze()) {
             for (Feld feld : tds.getFelder()) {
-                felder.put(feld.getBezeichner(), feld);
+                if (!contains(feld.getBezeichner(), felder)) {
+                    felder.add(feld);
+                }
             }
         }
-        return felder.values();
+        return felder;
+    }
+
+    private static boolean contains(Bezeichner bezeichner, List<Feld> felder) {
+        for (Feld feld : felder) {
+            if (bezeichner.equals(feld.getBezeichner())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

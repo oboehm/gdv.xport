@@ -24,6 +24,7 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -382,13 +383,19 @@ public final class SatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Test-Methode fuer {@link Satz#getFelder()}.
+     * Test-Methode fuer {@link Satz#getFelder()}. Als Reihenfolge werden dabei
+     * die Felder von links nach rechts innerhalb eines Satzes erwartet.
      */
     @Test
     public void testGetFelder() {
-        Collection<Feld> felder = satz.getFelder();
+        List<Feld> felder = new ArrayList<Feld>(satz.getFelder());
         Teildatensatz lonelyTeildatensatz = satz.getTeildatensatz(1);
         CollectionTester.assertEquals(lonelyTeildatensatz.getFelder(), felder);
+        for (int i = 1; i < felder.size(); i++) {
+            Feld previous = felder.get(i-1);
+            Feld next = felder.get(i);
+            assertTrue("wrong range: " + previous + " > " + next, previous.compareTo(next) < 0);
+        }
     }
 
     /**
