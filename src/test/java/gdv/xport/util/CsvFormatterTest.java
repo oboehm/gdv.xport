@@ -59,9 +59,7 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
         assertEquals(2, lines.size());
         assertEquals("Satzart;", lines.get(0).substring(0, 8));
         File vorsatz = new File("src/test/resources/gdv/xport/util/vorsatz.csv");
-        if (vorsatz.exists()) {
-            FileTester.assertContentEquals(vorsatz, output);
-        }
+        FileTester.assertContentEquals(vorsatz, output);
     }
 
     /**
