@@ -161,7 +161,7 @@ public enum Feld200 {
             anzahlBytes = 8,
             byteAdresse = 72
     )
-    ABGANGSDATUM,
+    ABGANGSDAT,
 
     /**
      * Aenderungsgrund.
@@ -370,7 +370,7 @@ public enum Feld200 {
             anzahlBytes = 8,
             byteAdresse = 201
     )
-    ANTRAGSDATUM,
+    ANTRAGSDAT,
 
     /**
      * Referenz-Versicherungsscheinummer.
@@ -611,7 +611,7 @@ public enum Feld200 {
             anzahlBytes = 8,
             byteAdresse = 139
     )
-    ANTRAGSEINGANGSDATUM,
+    ANTRAGSEINGANGSDAT,
 
     /**
      * Datum der Policierung Tag/Monat/Jahr (TTMMJJJJ).
@@ -623,7 +623,7 @@ public enum Feld200 {
             anzahlBytes = 8,
             byteAdresse = 147
     )
-    POLICIERUNGSDATUM,
+    POLICIERUNGSDAT,
 
     /**
      * Der aktuelle Vermittler zu diesem Vertrag.

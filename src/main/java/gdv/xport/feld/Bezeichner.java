@@ -53,7 +53,6 @@ import org.apache.logging.log4j.Logger;
  * @author oliver
  * @since 15.10.2009
  */
-//FIXME: NAME_XXX_DATUM entfernen (14-Nov-2014, Oli B.)
 public final class Bezeichner {
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -2649,6 +2648,9 @@ public final class Bezeichner {
     /** Die Konstante ANTRAGSDAT. */
     public static final Bezeichner ANTRAGSEINGANGSDAT = new Bezeichner("Antragseingangsdatum", "Antragseingangsdat");
 
+    /** Die Konstante ART_DES_BERUFSSCHLUESSELVERZEICHNISSES. */
+    public static final Bezeichner ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = new Bezeichner("Art des Berufsschluesselverzeichnisses", "ArtDesBerufsschluesselverzeichnisses");
+
     /** Die Konstante BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS. */
     public static final Bezeichner BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS = new Bezeichner(
             "Beginndatum der naechsten Erlebensfall VS", "BeginndatNaechstenErlebensfallVs");
@@ -2777,7 +2779,7 @@ public final class Bezeichner {
     public static final String NAME_ART_DES_ABSENDERS = "Art des Absenders";
     public static final String NAME_ART_DES_ADRESSATEN = "Art des Adressaten";
     public static final String NAME_ART_DES_AMTLICHEN_KENNZEICHENS = "Art des amtlichen Kennzeichens";
-    public static final String NAME_ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = "Art des Berufsschluuesselverzeichnisses";
+    public static final String NAME_ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = "Art des Berufsschluesselverzeichnisses";
     public static final String NAME_ART_DES_DRITTRECHTS = "Art des Drittrechts";
     public static final String NAME_AUFBAUART = "Aufbauart";
     public static final String NAME_AUFSICHTSFREIER_VERTRAG = "Aufsichtsfreier Vertrag";

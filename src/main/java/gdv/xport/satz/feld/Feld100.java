@@ -210,7 +210,7 @@ public enum Feld100 {
             anzahlBytes = 8,
             byteAdresse = 226
     )
-    GEBURTSDATUM,
+    GEBURTSDAT,
 
     /**
      * Verwendung Schluessel Laenderkennzeichen, siehe Anlage 63.
@@ -1070,7 +1070,7 @@ public enum Feld100 {
             anzahlBytes = 8,
             byteAdresse = 230
     )
-    SEPA_MANDAT_AUSSTELLUNGSDATUM,
+    SEPA_MANDAT_AUSSTELLUNGSDAT,
 
     /**
      * SEPA-Mandat Kontoreferenz

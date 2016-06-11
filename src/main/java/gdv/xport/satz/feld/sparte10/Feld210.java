@@ -322,7 +322,7 @@ public enum Feld210 {
             anzahlBytes = 8,
             byteAdresse = 172
     )
-    ZUZAHLUNGSDATUM,
+    ZUZAHLUNGSDAT,
 
     /**
      * Zukuenftiger Gesamtbeitrag in Waehrungseinheiten.
@@ -375,7 +375,7 @@ public enum Feld210 {
             anzahlBytes = 8,
             byteAdresse = 193
     )
-    BEITRAGSUMSTELLUNGSDATUM,
+    BEITRAGSUMSTELLUNGSDAT,
 
     /**
      * Beitragsumstellungsgrund, siehe Anlage 6.
@@ -519,7 +519,7 @@ public enum Feld210 {
             anzahlBytes = 8,
             byteAdresse = 45
     )
-    DIENSTEINTRITTSDATUM,
+    DIENSTEINTRITTSDAT,
 
     /**
      * Bilanzmonat des Arbeitgebers bei Rueckdeckungsversicherung fuer
