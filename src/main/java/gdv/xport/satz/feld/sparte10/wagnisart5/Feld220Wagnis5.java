@@ -190,7 +190,7 @@ public enum Feld220Wagnis5 {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 28, type = Datum.class, anzahlBytes = 8, byteAdresse = 143)
-    DAT_DER_LETZTEN_POSITIVEN_DYNAMIK,
+    DAT_LETZTEN_POSITIVEN_DYNAMIK,
 
     /**
      * Jahresrente in Wöhrungseinheiten.

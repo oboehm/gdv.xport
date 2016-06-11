@@ -270,7 +270,7 @@ public enum Feld220 {
             anzahlBytes = 8,
             byteAdresse = 162
     )
-    DAT_LETZTE_BEITRAGSANGLEICHUNG,
+    DAT_LETZTEN_BEITRAGSANGLEICHUNG,
 
     /**
      * Beitragsklasse.

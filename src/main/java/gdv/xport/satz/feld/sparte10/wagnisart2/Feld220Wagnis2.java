@@ -185,7 +185,7 @@ public enum Feld220Wagnis2 {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 27, type = Datum.class, anzahlBytes = 8, byteAdresse = 149)
-    DAT_DER_LETZTEN_POSITIVEN_DYNAMIK,
+    DAT_LETZTEN_POSITIVEN_DYNAMIK,
 
     /**
      * Rückkaufswert in Währungseinheiten

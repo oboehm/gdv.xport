@@ -257,7 +257,7 @@ public enum Feld220Wagnis13 {
      * </p>
      */
     @FeldInfo(teildatensatz = 1, nr = 35, type = Datum.class, anzahlBytes = 8, byteAdresse = 208)
-    DAT_DER_LETZTEN_POSITIVEN_DYNAMIK,
+    DAT_LETZTEN_POSITIVEN_DYNAMIK,
 
     /**
      * Endalter.
