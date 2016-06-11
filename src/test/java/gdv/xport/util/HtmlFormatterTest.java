@@ -20,7 +20,6 @@ package gdv.xport.util;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import gdv.xport.Datenpaket;
 
 import java.io.IOException;
 
@@ -32,6 +31,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
 
+import gdv.xport.Datenpaket;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.junit.SmokeRunner;
 
@@ -57,7 +57,7 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
     public void testWriteDatenpaket() throws XMLStreamException, SAXException, IOException {
         Datenpaket datenpaket = new Datenpaket();
         String htmlString = HtmlFormatter.toString(datenpaket);
-        LOG.info(datenpaket + " as HTML:\n" + htmlString);
+        LOG.debug(datenpaket + " as HTML:\n" + htmlString);
         XmlFormatterTest.checkXML(htmlString);
         assertTrue("no <html> inside", htmlString.contains("<html"));
         assertTrue("no </html> inside", htmlString.contains("</html"));
