@@ -79,7 +79,7 @@ public enum Feld220 {
             anzahlBytes = 8,
             byteAdresse = 59
     )
-    KFT_AENDERUNGSDATUM,
+    KFT_AENDERUNGSDAT,
 
     /**
      * KFT-Tarifgruppe.

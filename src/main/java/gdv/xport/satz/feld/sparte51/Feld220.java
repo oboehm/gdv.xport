@@ -75,7 +75,7 @@ public enum Feld220 {
             anzahlBytes = 8,
             byteAdresse = 59
     )
-    KH_AENDERUNGSDATUM,
+    KH_AENDERUNGSDAT,
 
     /**
      * KH-Tarifgruppe.
