@@ -54,7 +54,7 @@ public final class Datenpaket {
 
 	private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
 	private final Vorsatz vorsatz = new Vorsatz();
-	private List<Datensatz> datensaetze = new ArrayList<Datensatz>();
+	private final List<Datensatz> datensaetze = new ArrayList<Datensatz>();
 	private Nachsatz nachsatz = new Nachsatz();
 
 	/**
@@ -111,7 +111,7 @@ public final class Datenpaket {
 	 * @return the datensaetze
 	 */
 	public List<Datensatz> getDatensaetze() {
-		return datensaetze;
+	    return Collections.unmodifiableList(datensaetze);
 	}
 
 	/**
@@ -120,7 +120,8 @@ public final class Datenpaket {
 	 * @param datensaetze the datensaetze to set
 	 */
 	public void setDatensaetze(final List<Datensatz> datensaetze) {
-		this.datensaetze = datensaetze;
+	    this.datensaetze.clear();
+		this.datensaetze.addAll(datensaetze);
 	}
 
 	/**
