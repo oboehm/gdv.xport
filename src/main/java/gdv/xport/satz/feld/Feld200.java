@@ -187,7 +187,7 @@ public enum Feld200 {
             anzahlBytes = 8,
             byteAdresse = 90
     )
-    AENDERUNGSDATUM,
+    AENDERUNGSDAT,
 
     /**
      * Hinweis ob Vertrag 1 = Alleinbesitzend, 2 = Fuehrungsgeschaeft,

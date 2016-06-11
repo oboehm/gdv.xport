@@ -65,7 +65,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 59)
-    AENDERUNGSDATUM,
+    AENDERUNGSDAT,
 
     /**
      * KFZ-Laenderkennzeichen, zum Beispiel Laenderkennzeichen fuer

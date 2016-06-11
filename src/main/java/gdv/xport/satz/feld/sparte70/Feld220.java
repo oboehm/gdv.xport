@@ -123,7 +123,7 @@ public enum Feld220 {
             anzahlBytes = 8,
             byteAdresse = 71
     )
-    AENDERUNGSDATUM,
+    AENDERUNGSDAT,
 
     /**
      * Zahlungsweise.

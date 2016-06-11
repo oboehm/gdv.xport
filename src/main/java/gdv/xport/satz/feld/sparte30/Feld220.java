@@ -284,7 +284,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 232)
-    AENDERUNGSDATUM,
+    AENDERUNGSDAT,
 
     /**
      * Besondere Vereinbarungen zum Fluggastrisiko.
