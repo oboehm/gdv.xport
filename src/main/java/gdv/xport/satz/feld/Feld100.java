@@ -1070,7 +1070,7 @@ public enum Feld100 {
             anzahlBytes = 8,
             byteAdresse = 230
     )
-    SEPA_MANDAT_AUSSTELLUNGSDAT,
+    SEPA_MANDAT_AUSSTELLUNGSDATUM,
 
     /**
      * SEPA-Mandat Kontoreferenz

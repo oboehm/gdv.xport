@@ -2701,6 +2701,9 @@ public final class Bezeichner {
     /** Die Konstante GEBURTSDAT_VP. */
     public static final Bezeichner GEBURTSDAT_VP = new Bezeichner("Geburtsdatum der VP", "GeburtsdatVp");
 
+    /** Die Konstante GEBURTSDAT_VP. */
+    public static final Bezeichner GEBURTSDAT_VP2 = new Bezeichner("Geburtsdatum der 2. VP", "GeburtsdatVp2");
+
     /** Die Konstante KFT_AENDERUNGSDAT. */
     public static final Bezeichner KFT_AENDERUNGSDAT = new Bezeichner("KFT-aenderungsdatum", "KftAenderungsdat");
 
@@ -2721,6 +2724,18 @@ public final class Bezeichner {
 
     /** The Konstante RUECKGEWAEHRDAT. */
     public static final Bezeichner RUECKGEWAEHRDAT = new Bezeichner("Rueckgewaehrdatum", "Rueckgewaehrdat");
+
+    /** The Constant SEPA_GLAEUBIGERIDENTIFIKATIONSNUMMER. */
+    public static final Bezeichner SEPA_GLAEUBIGERIDENTIFIKATIONSNUMMER = new Bezeichner("SEPA-Glaeubigeridentifikationsnummer", "SEPAGlaeubigeridentifikationsnummer");
+
+    /** The Constant SEPA_MANDAT_AUSSTELLUNGSDAT. */
+    public static final Bezeichner SEPA_MANDAT_AUSSTELLUNGSDATUM = new Bezeichner("SEPA-Mandat Ausstellungsdatum", "SEPAMandatAusstellungsdatum");
+
+    /** The Constant SEPA_MANDAT_KONTOREFERENZ. */
+    public static final Bezeichner SEPA_MANDAT_KONTOREFERENZ = new Bezeichner("SEPA-Mandat Kontoreferenz", "SEPAMandatKontoreferenz");
+
+    /** The Constant SPARTE2. */
+    public static final Bezeichner SPARTE2 = new Bezeichner("Sparte2", "Sparte2");
 
     /** The Constant UMSTELLUNGSDAT_FOLGETARIFS. */
     public static final Bezeichner UMSTELLUNGSDAT_FOLGETARIFS = new Bezeichner("Umstellungsdatum des Folgetarifs", "UmstellungsdatFolgetarifs");
