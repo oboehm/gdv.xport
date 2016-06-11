@@ -1223,7 +1223,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 58)
-    RUECKGEWAEHRDATUM,
+    RUECKGEWAEHRDAT,
 
     /**
      * Rückgewährsumme zum Ablauf in Währungseinheiten.
