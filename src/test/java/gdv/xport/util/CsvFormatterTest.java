@@ -28,6 +28,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.SmokeRunner;
@@ -67,19 +68,18 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    //@Broken(why = "implementation not finished", till = "01-Jul-2016")
     public void testWriteDatenpaket() throws IOException {
         File output = new File("target", "musterdatei.csv");
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1")) {
             CsvFormatter formatter = new CsvFormatter(writer);
             formatter.write(MUSTER_DATENPAKET);
         }
-        int n = getNumberOfLines(output);
-        assertEquals(129, n);
-    }
-
-    private int getNumberOfLines(File file) throws IOException {
-        return FileUtils.readLines(file).size();
+        List<String> lines = FileUtils.readLines(output);
+        for (int i = 0; i < MUSTER_DATENPAKET.getDatensaetze().size(); i++) {
+            Datensatz datensatz = MUSTER_DATENPAKET.getDatensaetze().get(i);
+            String[] columns = lines.get(i+2).split(";");
+            assertEquals("line " + (i+2), datensatz.getSatzart(), Integer.parseInt(columns[0]));
+        }
     }
 
 }
