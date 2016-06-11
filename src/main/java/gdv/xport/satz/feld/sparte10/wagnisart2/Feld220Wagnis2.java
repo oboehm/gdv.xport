@@ -467,7 +467,7 @@ public enum Feld220Wagnis2 {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 2, nr = 21, type = Datum.class, anzahlBytes = 8, byteAdresse = 168)
-    UMSTELLUNGSDAT_DES_FOLGETARIFS,
+    UMSTELLUNGSDAT_FOLGETARIFS,
 
     /**
      * Zukünftiger Beitrag in Währungseinheiten.

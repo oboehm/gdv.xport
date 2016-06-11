@@ -10,6 +10,7 @@
       <AppenderRef ref="Console" />
     </Root>
     <logger name="gdv.xport" level="DEBUG" />
+    <logger name="gdv.xport.Datenpaket" level="INFO" />
     <Root level="ERROR">
       <AppenderRef ref="CONSOLE" />
     </Root>

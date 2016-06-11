@@ -398,7 +398,7 @@ public enum Feld220Wagnis13 {
      * </p>
      */
     @FeldInfo(teildatensatz = 2, nr = 15, type = Datum.class, anzahlBytes = 8, byteAdresse = 115)
-    UMSTELLUNGSDAT_DES_FOLGETARIFS,
+    UMSTELLUNGSDAT_FOLGETARIFS,
 
     /**
      * Zukünftiger Beitrag in Währungseinheiten.

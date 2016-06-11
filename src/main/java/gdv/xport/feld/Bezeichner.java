@@ -2722,6 +2722,9 @@ public final class Bezeichner {
     /** The Konstante RUECKGEWAEHRDAT. */
     public static final Bezeichner RUECKGEWAEHRDAT = new Bezeichner("Rueckgewaehrdatum", "Rueckgewaehrdat");
 
+    /** The Constant UMSTELLUNGSDAT_FOLGETARIFS. */
+    public static final Bezeichner UMSTELLUNGSDAT_FOLGETARIFS = new Bezeichner("Umstellungsdatum des Folgetarifs", "UmstellungsdatFolgetarifs");
+
     /** Die Konstante URSPRUENGLICHES_HAFTUNGSBEGINNDAT. */
     public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner(
             "Urspruengliches Haftungsbeginndatum", "UerspruenglichesHaftungsbeginndat");

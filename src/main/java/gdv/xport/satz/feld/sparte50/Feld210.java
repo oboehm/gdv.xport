@@ -641,7 +641,7 @@ public enum Feld210 {
             anzahlBytes = 8,
             byteAdresse = 203
     )
-    ENDEDAT_DES_VERSICHERUNGSSCHUTZES_BEI_ROTEN_KENNZEICHEN,
+    ENDEDATUM_BEI_ROTEN_KENNZEICHEN,
 
     /**
      * Gueltigkeitsdauer in Tagen bei Kurzzeitkennzeichen.
