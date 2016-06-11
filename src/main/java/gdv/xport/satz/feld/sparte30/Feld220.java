@@ -1499,7 +1499,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 107)
-    GEBURTSDAT_DER_BEZUGSBERECHTIGTEN_PERSON,
+    GEBURTSDATUM_DER_BEZUGSBERECHTIGTEN_PERSON,
 
 
     /**

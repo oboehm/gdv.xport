@@ -443,7 +443,7 @@ public enum Feld220Wagnis2 {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 2, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 129)
-    GEBURTSDAT_DER_MITZUVERSICHERNDEN_PERSON,
+    GEBURTSDATUM_DER_MITZUVERSICHERNDEN_PERSON,
 
     /**
      * Geschlecht der mitzuversichernden Person.
