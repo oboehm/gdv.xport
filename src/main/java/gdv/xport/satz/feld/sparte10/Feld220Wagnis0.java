@@ -87,7 +87,7 @@ public enum Feld220Wagnis0 {
      * Geburtsdatum der VP.
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = Datum.class, anzahlBytes = 8, byteAdresse = 122)
-    GEBURTSDATUM_VP,
+    GEBURTSDAT_VP,
 
     /**
      * Geschlecht der VP.
@@ -118,7 +118,7 @@ public enum Feld220Wagnis0 {
      * Geburtsdatum der 2. VP.
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 165)
-    GEBURTSDATUM_VP2,
+    GEBURTSDAT_VP2,
 
     /**
      * Personen-/Kundennummer des Versicherers.
@@ -185,7 +185,7 @@ public enum Feld220Wagnis0 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 241)
-    DATUM_UNVERFALLBARKEIT,
+    DAT_UNVERFALLBARKEIT,
 
     /**
      * Art des Berufschluesselverzeichnisses.

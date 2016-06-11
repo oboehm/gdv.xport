@@ -95,7 +95,7 @@ public enum VorsatzFeld1bis6 {
             anzahlBytes = 8,
             byteAdresse = 70
             )
-    ERSTELLUNGSDATUM_ZEITRAUM_VOM,
+    ERSTELLUNGSDAT_ZEITRAUM_VOM,
 
     /**
      * Erstellungs-Datum- Zeitraum vom- Zeitraum bis.
@@ -107,7 +107,7 @@ public enum VorsatzFeld1bis6 {
             anzahlBytes = 8,
             byteAdresse = 78
             )
-    ERSTELLUNGSDATUM_ZEITRAUM_BIS,
+    ERSTELLUNGSDAT_ZEITRAUM_BIS,
 
     /**
      * Geschäftsstelle und Vermittler.

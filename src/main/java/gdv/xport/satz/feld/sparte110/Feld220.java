@@ -333,7 +333,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 201)
-    DATUM_LETZTER_GLASPREISANGLEICHUNG,
+    DAT_LETZTER_GLASPREISANGLEICHUNG,
 
 
    /**

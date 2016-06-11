@@ -185,7 +185,7 @@ public enum Feld220Wagnis2 {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 27, type = Datum.class, anzahlBytes = 8, byteAdresse = 149)
-    DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK,
+    DAT_DER_LETZTEN_POSITIVEN_DYNAMIK,
 
     /**
      * Rückkaufswert in Währungseinheiten
@@ -443,7 +443,7 @@ public enum Feld220Wagnis2 {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 2, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 129)
-    GEBURTSDATUM_DER_MITZUVERSICHERNDEN_PERSON,
+    GEBURTSDAT_DER_MITZUVERSICHERNDEN_PERSON,
 
     /**
      * Geschlecht der mitzuversichernden Person.
@@ -467,7 +467,7 @@ public enum Feld220Wagnis2 {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 2, nr = 21, type = Datum.class, anzahlBytes = 8, byteAdresse = 168)
-    UMSTELLUNGSDATUM_DES_FOLGETARIFS,
+    UMSTELLUNGSDAT_DES_FOLGETARIFS,
 
     /**
      * Zukünftiger Beitrag in Währungseinheiten.

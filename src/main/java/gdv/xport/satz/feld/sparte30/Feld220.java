@@ -104,7 +104,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 146)
-    GEBURTSDATUM_VP,
+    GEBURTSDAT_VP,
 
     /**
      * Geschlecht der VP.
@@ -256,7 +256,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 216)
-    EINSCHLUSSDATUM_VP,
+    EINSCHLUSSDAT_VP,
 
     /**
      * Ausschlussdatum VP / Personengruppe.
@@ -270,7 +270,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 224)
-    AUSSCHLUSSDATUM_VP,
+    AUSSCHLUSSDAT_VP,
 
     /**
      * Änderungsdatum.
@@ -1499,7 +1499,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 107)
-    GEBURTSDATUM_DER_BEZUGSBERECHTIGTEN_PERSON,
+    GEBURTSDAT_DER_BEZUGSBERECHTIGTEN_PERSON,
 
 
     /**

@@ -127,7 +127,7 @@ public enum Feld220Wagnis6ZukSummenaenderungen {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 103)
-    BEGINNDATUM_DER_NAECHSTEN_UNFALLSUMME,
+    BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME,
 
     /**
      * Leerstellen.

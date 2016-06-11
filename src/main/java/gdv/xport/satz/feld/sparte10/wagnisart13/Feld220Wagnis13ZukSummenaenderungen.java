@@ -137,7 +137,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 100)
-    BEGINNDATUM_DER_NAECHSTEN_TODESFALL_VS,
+    BEGINNDAT_DER_NAECHSTEN_TODESFALL_VS,
 
     /**
      * Anfängliche Erlebensfall VS in Währungseinheiten.
@@ -194,7 +194,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 25, type = Datum.class, anzahlBytes = 8, byteAdresse = 144)
-    BEGINNDATUM_DER_NAECHSTEN_ERLEBENSFALL_VS,
+    BEGINNDAT_DER_NAECHSTEN_ERLEBENSFALL_VS,
 
     /**
      * Leerstellen.
