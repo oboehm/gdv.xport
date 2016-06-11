@@ -256,7 +256,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 216)
-    EINSCHLUSSDAT_VP,
+    EINSCHLUSSDATUM_VP,
 
     /**
      * Ausschlussdatum VP / Personengruppe.
@@ -270,7 +270,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 224)
-    AUSSCHLUSSDAT_VP,
+    AUSSCHLUSSDATUM_VP,
 
     /**
      * Änderungsdatum.
