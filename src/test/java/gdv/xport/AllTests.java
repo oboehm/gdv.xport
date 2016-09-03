@@ -18,26 +18,27 @@
 
 package gdv.xport;
 
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite.SuiteClasses;
+
 import gdv.xport.config.ConfigTests;
 import gdv.xport.demo.DemoTests;
 import gdv.xport.feld.FeldTests;
 import gdv.xport.io.IoTests;
 import gdv.xport.satz.SatzTests;
 import gdv.xport.util.UtilTests;
-
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite.SuiteClasses;
-
-import patterntesting.concurrent.junit.ParallelSuite;
+import patterntesting.runtime.junit.SmokeSuite;
 
 /**
  * Die Klasse AllTests ist eine Test-Suite fuer JUnit 4, mit der alle
- * JUnit-Tests parallel getestet werden.
+ * JUnit-Tests parallel getestet werden koennten, wenn die ParallelSuite-
+ * Klasse verwendet wird. Da aber die Tests nicht komplette parallelisierbar
+ * sind, wurde stattdessen die SmokeSuite-Klasse verwendet.
  *
  * @author oliver (boehm@javatux.de)
  * @since 0.7 (11.01.2012)
  */
-@RunWith(ParallelSuite.class)
+@RunWith(SmokeSuite.class)
 @SuiteClasses({ ConfigTests.class, DemoTests.class, FeldTests.class, IoTests.class, SatzTests.class, UtilTests.class,
         BasisTest.class, DatenpaketStreamerTest.class, DatenpaketTest.class, MainTest.class })
 public class AllTests {

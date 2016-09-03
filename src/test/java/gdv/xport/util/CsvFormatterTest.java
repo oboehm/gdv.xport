@@ -21,6 +21,7 @@ package gdv.xport.util;
 import static org.junit.Assert.assertEquals;
 
 import java.io.*;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
@@ -54,8 +55,9 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
             Satz satz = MUSTER_DATENPAKET.getVorsatz();
             formatter.write(satz);
         }
-        int n = getNumberOfLines(output);
-        assertEquals(2, n);
+        List<String> lines = FileUtils.readLines(output);
+        assertEquals(2, lines.size());
+        assertEquals("Satzart;", lines.get(0).substring(0, 8));
         File vorsatz = new File("src/test/resources/gdv/xport/util/vorsatz.csv");
         FileTester.assertContentEquals(vorsatz, output);
     }
