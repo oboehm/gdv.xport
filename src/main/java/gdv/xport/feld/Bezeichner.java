@@ -162,6 +162,9 @@ public final class Bezeichner {
     public static final String ART_DES_AMTLICHEN_KENNZEICHENS = "Art des amtlichen Kennzeichens";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
+    public static final String ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = "Art des Berufsschluesselverzeichnisses";
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String ART_DES_DRITTRECHTS = "Art des Drittrechts";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
