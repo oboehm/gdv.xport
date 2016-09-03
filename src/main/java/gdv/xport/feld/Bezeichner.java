@@ -175,7 +175,7 @@ public final class Bezeichner {
     public static final String ART_DES_AMTLICHEN_KENNZEICHENS = "Art des amtlichen Kennzeichens";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = "Art des Berufsschluuesselverzeichnisses";
+    public static final String ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = "Art des Berufsschluesselverzeichnisses";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ART_DES_DRITTRECHTS = "Art des Drittrechts";
@@ -2798,7 +2798,7 @@ public final class Bezeichner {
     public static final String NAME_ART_DES_ABSENDERS = "Art des Absenders";
     public static final String NAME_ART_DES_ADRESSATEN = "Art des Adressaten";
     public static final String NAME_ART_DES_AMTLICHEN_KENNZEICHENS = "Art des amtlichen Kennzeichens";
-    public static final String NAME_ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = "Art des Berufsschluuesselverzeichnisses";
+    public static final String NAME_ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = "Art des Berufsschluesselverzeichnisses";
     public static final String NAME_ART_DES_DRITTRECHTS = "Art des Drittrechts";
     public static final String NAME_AUFBAUART = "Aufbauart";
     public static final String NAME_AUFSICHTSFREIER_VERTRAG = "Aufsichtsfreier Vertrag";
