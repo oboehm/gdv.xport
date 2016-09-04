@@ -49,7 +49,7 @@ public class MyUnfallDatensatz extends SatzX {
      * @throws IOException falls z.B. keine Netzverbindung da ist
      * @throws XMLStreamException falls die XML-Generierung nicht geklappt hat
      */
-    public static void main(final String[] args) throws IOException, XMLStreamException {
+    public static void main(final String[] args) throws IOException {
         // im Framework registrieren
         SatzFactory.registerEnum(MyFeld210.class, 210, 30);
         importMusterdatei();
@@ -57,7 +57,7 @@ public class MyUnfallDatensatz extends SatzX {
         SatzFactory.unregister(210, 30);
     }
 
-    private static void importMusterdatei() throws IOException, MalformedURLException, XMLStreamException {
+    private static void importMusterdatei() throws IOException {
         // Datenpaket importieren
         Datenpaket datenpaket = new Datenpaket();
         datenpaket.importFrom(new URL("http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt"));
@@ -69,26 +69,6 @@ public class MyUnfallDatensatz extends SatzX {
                 break;
             }
         }
-    }
-
-    /**
-     * Hier wird diese Klasse am Framework registriert und anschliessend das
-     * Beispiel von <a href=
-     * "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt">
-     * musterdatei_041222.txt</a> importiert. Seit 0.6 ist es moeglich, eine
-     * Enum-Klasse direkt zu registrieren. Daher muss nicht mehr ein eigener
-     * Datensatz angelegt werden, so wie es hier noch gemacht wird.
-     *
-     * @param args werden ignoriert
-     * @throws IOException falls z.B. keine Netzverbindung da ist
-     * @throws XMLStreamException falls die XML-Generierung nicht geklappt hat
-     */
-    public static void oldMain(final String[] args) throws IOException, XMLStreamException {
-        // im Framework registrieren
-        SatzFactory.register(MyUnfallDatensatz.class, 210, 30);
-        importMusterdatei();
-        // und hiermit melden wir den Datensatz wieder vom Framework ab
-        SatzFactory.unregister(210, 30);
     }
 
     /**
