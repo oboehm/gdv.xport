@@ -3720,34 +3720,7 @@ public final class Bezeichner {
         StringBuilder converted = new StringBuilder();
         char[] chars = input.toCharArray();
         for (int i = 0; i < chars.length; i++) {
-            switch (chars[i]) {
-                case '\u00c4':
-                    converted.append("Ae");
-                    break;
-                case '\u00d6':
-                    converted.append("Oe");
-                    break;
-                case '\u00dc':
-                    converted.append("Ue");
-                    break;
-                case '\u00e4':
-                    converted.append("ae");
-                    break;
-                case '\u00f6':
-                    converted.append("oe");
-                    break;
-                case '\u00fc':
-                    converted.append("ue");
-                    break;
-                case '\u00df':
-                    converted.append("ss");
-                    break;
-                default:
-                    if (Character.isLetterOrDigit(chars[i])) {
-                        converted.append(chars[i]);
-                    }
-                    break;
-            }
+            appendLetterOrDigit(converted, chars[i]);
         }
         String word = converted.toString();
         if (word.endsWith("datum")) {
@@ -3757,6 +3730,37 @@ public final class Bezeichner {
             return "WE";
         }
         return WordUtils.capitalize(word);
+    }
+
+    private static void appendLetterOrDigit(StringBuilder converted, char aChar) {
+        switch (aChar) {
+            case '\u00c4':
+                converted.append("Ae");
+                break;
+            case '\u00d6':
+                converted.append("Oe");
+                break;
+            case '\u00dc':
+                converted.append("Ue");
+                break;
+            case '\u00e4':
+                converted.append("ae");
+                break;
+            case '\u00f6':
+                converted.append("oe");
+                break;
+            case '\u00fc':
+                converted.append("ue");
+                break;
+            case '\u00df':
+                converted.append("ss");
+                break;
+            default:
+                if (Character.isLetterOrDigit(aChar)) {
+                    converted.append(aChar);
+                }
+                break;
+        }
     }
 
     /**
