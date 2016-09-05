@@ -63,7 +63,9 @@ public class DatensatzTest extends AbstractDatensatzTest {
     @Test
     public void testDatensatzStringInt() throws IOException {
         Satz adressteil = new Datensatz("0100", 5);
-        adressteil.add(new AlphaNumFeld(Bezeichner.NAME_ANREDESCHLUESSEL, 1, 43, '6'));
+        AlphaNumFeld schluessel = new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_ANREDESCHLUESSEL), 1, 43);
+        schluessel.setInhalt('6');
+        adressteil.add(schluessel);
         LOG.info("adressteil=" + adressteil.toShortString());
         checkExport(adressteil, 43, 43, "6", 1280);
     }

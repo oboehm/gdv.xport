@@ -124,7 +124,8 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testRemove() {
         Teildatensatz tds = new Teildatensatz(100, 1);
-        Zeichen satznummer = new Zeichen("Satznummer", 256, '1');
+        Zeichen satznummer = new Zeichen(new Bezeichner("Satznummer"), 256);
+        satznummer.setInhalt('1');
         tds.add(satznummer);
         assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
         tds.remove(satznummer.getBezeichnung());
