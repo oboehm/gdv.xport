@@ -47,7 +47,6 @@ public class MyUnfallDatensatz extends SatzX {
      *
      * @param args werden ignoriert
      * @throws IOException falls z.B. keine Netzverbindung da ist
-     * @throws XMLStreamException falls die XML-Generierung nicht geklappt hat
      */
     public static void main(final String[] args) throws IOException {
         // im Framework registrieren
