@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2012 by Oli B.
+ * Copyright (c) 2009 - 2016 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,7 @@
 package gdv.xport.demo;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-
-import javax.xml.stream.XMLStreamException;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
