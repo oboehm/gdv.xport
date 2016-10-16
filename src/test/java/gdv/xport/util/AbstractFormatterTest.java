@@ -43,6 +43,14 @@ import patterntesting.runtime.junit.FileTester;
 /**
  * Gemeinsame Oberklasse fuer die verschiedenen Formatter-Tests.
  *
+ * Einige Tests passieren auf korrektem Encoding. Da die Beispieldaten
+ * vom GDV alle ISO-8859-1-kodiert sind, kann das File-Encoding beim
+ * Start der VM ebenfalls darauf eingestellt sein, d.h. die VM kann mit
+ * <pre>
+ * -Dfile.encoding=ISO-8859-1
+ * </pre>
+ * gestartet werden, falls einige Tests fehlschlagen sollten.
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (30.11.2010)
  */
@@ -65,22 +73,6 @@ public abstract class AbstractFormatterTest extends AbstractTest {
     @BeforeClass
     public static void loadMusterDatenpaket() throws IOException {
         MUSTER_DATENPAKET.importFrom(MUSTERDATEI, "ISO-8859-1");
-    }
-
-    /**
-     * Einige Tests passieren auf das korrekte Encoding. Da die Beispieldaten
-     * vom GDV alle ISO-8859-1-kodiert sind, sollte das File-Encoding beim
-     * Start der VM ebenfalls darauf eingestellt sein, d.h. die VM sollte mit
-     * <pre>
-     * -Dfile.encoding=ISO-8859-1
-     * </pre>
-     * gestartet werden. falls nicht, wird dieser Test fehlschlagen.
-     */
-    @Test
-    public void testFileEncoding() {
-        String defaultEncoding = Charset.defaultCharset().name();
-        String fileEncoding = System.getProperty("file.encoding", defaultEncoding);
-        assertEquals("wrong launch config", "ISO-8859-1", fileEncoding);
     }
 
     /**
