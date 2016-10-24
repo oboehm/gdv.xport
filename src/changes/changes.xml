@@ -19,6 +19,9 @@
 
     <release version="1.2.0" date="2017"
              description="Bereinigungen">
+      <action dev="oboehm" type="update" date="24-Okt-2016">
+        Encoding-Probleme sind jetzt beseitigt.
+      </action>
       <action dev="oboehm" type="delete" date="24-Okt-2016">
         Deprecated String-Konstanten in Bezeichner gel&#246;scht.
         Als Ersatz gibt es String-Konstanten mit "NAME_"-Prefix.

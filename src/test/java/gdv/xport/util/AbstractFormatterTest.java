@@ -31,8 +31,9 @@ import javax.xml.stream.XMLStreamReader;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.DatenpaketStreamer;
@@ -56,7 +57,7 @@ import patterntesting.runtime.junit.FileTester;
  */
 public abstract class AbstractFormatterTest extends AbstractTest {
 
-    private static Log log = LogFactory.getLog(AbstractFormatterTest.class);
+    private static final Logger LOG = LogManager.getLogger(AbstractFormatterTest.class);
     private static XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
     /** Die Musterdatei, die wir fuer einige Tests verwenden. */
@@ -89,7 +90,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
         InputStream istream = AbstractFormatterTest.class.getResourceAsStream("/musterdatei_041222.txt");
         File siteDir = new File("target", "site");
         if (siteDir.mkdirs()) {
-            log.info("created: " + siteDir);
+            LOG.info("created: " + siteDir);
         }
         File exportFile = new File(siteDir, filename);
         Writer writer = new OutputStreamWriter(new FileOutputStream(exportFile), "ISO-8859-1");
@@ -97,7 +98,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
             datenpaket.importFrom(istream);
             formatter.setWriter(writer);
             formatter.write(datenpaket);
-            log.info(datenpaket + " exported to " + exportFile);
+            LOG.debug("{} exported to {} .", datenpaket, exportFile);
         } finally {
             writer.close();
             istream.close();
@@ -119,14 +120,14 @@ public abstract class AbstractFormatterTest extends AbstractTest {
         formatter.setWriter(writer);
         try {
             exportMusterdatei(formatter);
-            log.info("Musterdatei was exported to " + output);
+            LOG.info("Musterdatei was exported to '{}'.", output);
         } finally {
             writer.close();
             output.deleteOnExit();
         }
         File exported = new File("target/site", filename);
         if (exported.exists()) {
-            log.info(output + " will be compared with already generated " + exported);
+            LOG.info(output + " will be compared with already generated " + exported);
             FileTester.assertContentEquals(exported, output, Charset.forName("ISO-8859-1"),
                     Pattern.compile("<!--.*-->"));
         }
@@ -169,7 +170,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
                 n += xmlr.getText().length();
             }
         }
-        log.info(n + " bytes text in " + xmlString.length() + " bytes XML");
+        LOG.info(n + " bytes text in " + xmlString.length() + " bytes XML");
     }
 
 }

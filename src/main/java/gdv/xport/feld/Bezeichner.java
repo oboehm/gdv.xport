@@ -2601,20 +2601,20 @@ public final class Bezeichner {
     /** Die Konstante ABSCHLAG1_IN_PROZENT. */
     public static final Bezeichner ABSCHLAG1_IN_PROZENT = new Bezeichner("Abschlag-1 in %");
 
-    /** Die Konstante ABSCHLAG1_IN_WE. */
-    public static final Bezeichner ABSCHLAG1_IN_WE = new Bezeichner("Abschlag-1 in Waehrungseinheiten", "Abschlag1InWE");
+    /** Die ehemalige Konstante ABSCHLAG1_IN_WE. */
+    public static final Bezeichner ABSCHLAG1_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-1 in Waehrungseinheiten", "Abschlag1InWE");
 
     /** Die Konstante ABSCHLAG2_IN_PROZENT. */
     public static final Bezeichner ABSCHLAG2_IN_PROZENT = new Bezeichner("Abschlag-2 in %");
 
     /** Die Konstante ABSCHLAG2_IN_WE. */
-    public static final Bezeichner ABSCHLAG2_IN_WE = new Bezeichner("Abschlag-2 in Waehrungseinheiten", "Abschlag1InWE");
+    public static final Bezeichner ABSCHLAG2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-2 in Waehrungseinheiten", "Abschlag1InWE");
 
     /** Die Konstante ABSCHLAG3_IN_PROZENT. */
     public static final Bezeichner ABSCHLAG3_IN_PROZENT = new Bezeichner("Abschlag-3 in %");
 
     /** Die Konstante ABSCHLAG3_IN_WE. */
-    public static final Bezeichner ABSCHLAG3_IN_WE = new Bezeichner("Abschlag-3 in Waehrungseinheiten", "Abschlag1InWE");
+    public static final Bezeichner ABSCHLAG3_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-3 in Waehrungseinheiten", "Abschlag1InWE");
 
     /** Die Konstante ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN. */
     public static final Bezeichner ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlagsbetrag");
@@ -2745,6 +2745,9 @@ public final class Bezeichner {
     /** Die Konstante URSPRUENGLICHES_HAFTUNGSBEGINNDAT. */
     public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner(
             "Urspruengliches Haftungsbeginndatum", "UerspruenglichesHaftungsbeginndat");
+
+    /** Die Konstante VERTRAGSVERBINDUNGSNUMMER. */
+    public static final Bezeichner VERTRAGSVERBINDUNGSNUMMER = new Bezeichner("Vertragsverbindungs-Nummer");
 
     /** Die Konstante VS_NR. */
     public static final Bezeichner VS_NR = new Bezeichner("Versicherungsschein-Nummer", "VsNr");
