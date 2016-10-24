@@ -55,48 +55,11 @@ import org.apache.logging.log4j.Logger;
  */
 public final class Bezeichner {
 
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABGANGSGRUND = "Abgangsgrund";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABSCHLAG1_IN_PROZENT = "Abschlag-1 in %";
-    /** @deprecated bitte {@link Bezeichner#ABSCHLAG1_IN_WE} verwenden */
-    @Deprecated
-    public static final String ABSCHLAG1_IN_WAEHRUNGSEINHEITEN = "Abschlag-1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABSCHLAG2_IN_PROZENT = "Abschlag-2 in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABSCHLAG2_IN_WAEHRUNGSEINHEITEN = "Abschlag-2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABSCHLAG3_IN_PROZENT = "Abschlag-3 in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABSCHLAG3_IN_WAEHRUNGSEINHEITEN = "Abschlag-3";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Abschlagsbetrag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABSCHLAG_IN_PROZENT = "Abschlag in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABSCHLUSSPROVISION = "Abschlussprovision";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABSENDER = "Absender";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABWEICHENDER_KONTOINHABER1 = "Abweichender Kontoinhaber 1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABWEICHENDER_KONTOINHABER2 = "Abweichender Kontoinhaber 2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABWEICHENDE_VU_NR = "Abweichende VU-Nr.";
+    private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
+    private static final Map<String, String> MAPPING = new HashMap<String, String>();
+
+    // Konstanten AB... gibt es nur noch als Bezeichner-Konstanten
+
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ADRESSAT = "Adressat";
@@ -2629,18 +2592,53 @@ public final class Bezeichner {
 
     /////////// Bezeichner-Konstanten /////////////////////////////////////////
 
+    /** Die Konstante ABGANGSGRUND. */
+    public static final Bezeichner ABGANGSGRUND = new Bezeichner("Abgangsgrund");
+
     /** Die Konstante ABGANGSDAT. */
     public static final Bezeichner ABGANGSDAT = new Bezeichner("Abgangsdatum", "Abgangsdat");
 
-    /** Die Konstante AENDERUNGSDAT. */
-    public static final Bezeichner AENDERUNGSDAT = new Bezeichner("Aenderungsdatum", "Aenderungsdat");
-
-    /** Die Konstante AUSSCHLUSSDAT_VP_PERSONENGRUPPE. */
-    public static final Bezeichner AUSSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner(
-            "Ausschlussdatum VP / Personengruppe", "AusschlussdatVpPersonengruppe");
+    /** Die Konstante ABSCHLAG1_IN_PROZENT. */
+    public static final Bezeichner ABSCHLAG1_IN_PROZENT = new Bezeichner("Abschlag-1 in %");
 
     /** Die Konstante ABSCHLAG1_IN_WE. */
     public static final Bezeichner ABSCHLAG1_IN_WE = new Bezeichner("Abschlag-1 in Waehrungseinheiten", "Abschlag1InWE");
+
+    /** Die Konstante ABSCHLAG2_IN_PROZENT. */
+    public static final Bezeichner ABSCHLAG2_IN_PROZENT = new Bezeichner("Abschlag-2 in %");
+
+    /** Die Konstante ABSCHLAG2_IN_WE. */
+    public static final Bezeichner ABSCHLAG2_IN_WE = new Bezeichner("Abschlag-2 in Waehrungseinheiten", "Abschlag1InWE");
+
+    /** Die Konstante ABSCHLAG3_IN_PROZENT. */
+    public static final Bezeichner ABSCHLAG3_IN_PROZENT = new Bezeichner("Abschlag-3 in %");
+
+    /** Die Konstante ABSCHLAG3_IN_WE. */
+    public static final Bezeichner ABSCHLAG3_IN_WE = new Bezeichner("Abschlag-3 in Waehrungseinheiten", "Abschlag1InWE");
+
+    /** Die Konstante ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN. */
+    public static final Bezeichner ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlagsbetrag");
+
+    /** Die Konstante ABSCHLAG_IN_PROZENT. */
+    public static final Bezeichner ABSCHLAG_IN_PROZENT = new Bezeichner("Abschlag in %");
+
+    /** Die Konstante ABSCHLUSSPROVISION. */
+    public static final Bezeichner ABSCHLUSSPROVISION = new Bezeichner("Abschlussprovision");
+
+    /** Die Konstante ABSENDER. */
+    public static final Bezeichner ABSENDER = new Bezeichner("Absender");
+
+    /** Die Konstante ABWEICHENDER_KONTOINHABER1. */
+    public static final Bezeichner ABWEICHENDER_KONTOINHABER1 = new Bezeichner("Abweichender Kontoinhaber 1");
+
+    /** Die Konstante ABWEICHENDER_KONTOINHABER2. */
+    public static final Bezeichner ABWEICHENDER_KONTOINHABER2 = new Bezeichner("Abweichender Kontoinhaber 2");
+
+    /** Die Konstante ABWEICHENDE_VU_NR. */
+    public static final Bezeichner ABWEICHENDE_VU_NR = new Bezeichner("Abweichende VU-Nr.");
+
+    /** Die Konstante AENDERUNGSDAT. */
+    public static final Bezeichner AENDERUNGSDAT = new Bezeichner("Aenderungsdatum", "Aenderungsdat");
 
     /** Die Konstante ANTRAGSDAT. */
     public static final Bezeichner ANTRAGSDAT = new Bezeichner("Antragsdatum", "Antragsdat");
@@ -2650,6 +2648,10 @@ public final class Bezeichner {
 
     /** Die Konstante ART_DES_BERUFSSCHLUESSELVERZEICHNISSES. */
     public static final Bezeichner ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = new Bezeichner("Art des Berufsschluesselverzeichnisses", "ArtDesBerufsschluesselverzeichnisses");
+
+    /** Die Konstante AUSSCHLUSSDAT_VP_PERSONENGRUPPE. */
+    public static final Bezeichner AUSSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner(
+            "Ausschlussdatum VP / Personengruppe", "AusschlussdatVpPersonengruppe");
 
     /** Die Konstante BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS. */
     public static final Bezeichner BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS = new Bezeichner(
@@ -3642,10 +3644,6 @@ public final class Bezeichner {
     public static final String NAME_GESCHAEFTSSTELLE_VERMITTLER = "Geschaeftsstelle / Vermittler";
     public static final String NAME_STAENDIG_BEWOHNT = "Staendig bewohnt";
     public static final String NAME_OBJEKTNUMMER = "Objektnummer";
-
-    private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
-
-    private static final Map<String, String> MAPPING = new HashMap<String, String>();
 
     private final String name;
     private final String technischerName;
