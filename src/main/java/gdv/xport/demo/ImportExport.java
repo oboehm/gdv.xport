@@ -94,7 +94,7 @@ public final class ImportExport {
      */
     public static List<Datenpaket> importDatenpakete(final InputStream inputStream) throws IOException {
         List<Datenpaket> datenpakete = new ArrayList<Datenpaket>();
-        while (true) {
+        while (inputStream.available() >= 0) {
             Datenpaket paket = new Datenpaket();
             try {
                 paket.importFrom(inputStream);
