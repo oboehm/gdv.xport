@@ -2697,6 +2697,9 @@ public final class Bezeichner {
     public static final Bezeichner ENDEDATUM_BEI_ROTEN_KENNZEICHEN = new Bezeichner(
             "Endedatum des Versicherungsschutzes bei roten Kennzeichen", "EndedatumBeiRotenKennzeichen");
 
+    /** Die Konstante ERSTELLUNGSDAT_ZEITRAUM_VOM. */
+    public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_VOM = new Bezeichner("Erstellungsdatm Zeitraum vom");
+
     /** Die Konstante GEBURTSDAT. */
     public static final Bezeichner GEBURTSDAT = new Bezeichner("Geburtsdatum", "Geburtsdat");
 
@@ -2745,6 +2748,12 @@ public final class Bezeichner {
     /** Die Konstante URSPRUENGLICHES_HAFTUNGSBEGINNDAT. */
     public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner(
             "Urspruengliches Haftungsbeginndatum", "UerspruenglichesHaftungsbeginndat");
+
+    /** Die Konstante VERSION_SATZART_0221_TECH_VERS. */
+    public static final Bezeichner VERSION_SATZART_0221_TECH_VERS = new Bezeichner("Version Satzart 0221 tech. Vers.");
+
+    /** Die Konstante VERSION_SATZART_0222. */
+    public static final Bezeichner VERSION_SATZART_0222 = new Bezeichner("Version Satzart 0222");
 
     /** Die Konstante VERTRAGSVERBINDUNGSNUMMER. */
     public static final Bezeichner VERTRAGSVERBINDUNGSNUMMER = new Bezeichner("Vertragsverbindungs-Nummer");
