@@ -1314,12 +1314,6 @@ public final class Bezeichner {
     public static final String VERSION_SATZART_0220_510 = "Version Satzart 0220 510";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String VERSION_SATZART_0210_TECH_VERS = "Version Satzart 0210 Technische Versicherungen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_TECH_VERS = "Version Satzart 0220 Technische Versicherungen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String VERSION_SATZART_0210_TRANSPORT = "Version Satzart 0210 Transport";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -1685,9 +1679,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = "Rueckgewaehrsumme zum Ablauf";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = "Ablaufleistung incl. Ueberschussanteile";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String KAPITALERTRAGSSTEUER_BEI_ABLAUF = "Kapitalertragssteuer bei Ablauf";
@@ -2157,9 +2148,6 @@ public final class Bezeichner {
     public static final String ANZAHL_DER_AUSZAHLUNGEN = "Anzahl der Auszahlungen";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String ABLAUF = "Ablauf";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String AENDERUNG = "Aenderung";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -2529,9 +2517,6 @@ public final class Bezeichner {
     public static final String WAEHRUNGSSCHUESSEL = "Waehrungsschluessel";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String ABSCHLAGSBEITRAG_IN_WAEHRUNGSEINHEITEN = "Abschlagsbeitrag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String GESAMTVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Gesamtversicherungssummer";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -2587,11 +2572,17 @@ public final class Bezeichner {
 
     /////////// Bezeichner-Konstanten /////////////////////////////////////////
 
+    /** Die Konstante ABGANGSDAT. */
+    public static final Bezeichner ABGANGSDAT = new Bezeichner("Abgangsdatum", "Abgangsdat");
+
     /** Die Konstante ABGANGSGRUND. */
     public static final Bezeichner ABGANGSGRUND = new Bezeichner("Abgangsgrund");
 
-    /** Die Konstante ABGANGSDAT. */
-    public static final Bezeichner ABGANGSDAT = new Bezeichner("Abgangsdatum", "Abgangsdat");
+    /** Die Konstante ABLAUF. */
+    public static final Bezeichner ABLAUF = new Bezeichner("Ablauf");
+
+    /** Die Konstante ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN. */
+    public static final Bezeichner ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Ablaufleistung incl. Ueberschussanteile");
 
     /** Die Konstante ABSCHLAG1_IN_PROZENT. */
     public static final Bezeichner ABSCHLAG1_IN_PROZENT = new Bezeichner("Abschlag-1 in %");
@@ -2747,8 +2738,17 @@ public final class Bezeichner {
     public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner(
             "Urspruengliches Haftungsbeginndatum", "UerspruenglichesHaftungsbeginndat");
 
+    /** Die Konstante VERSION_SATZART_0210_TECH_VERS. */
+    public static final Bezeichner VERSION_SATZART_0210_TECH_VERS = new Bezeichner("Version Satzart 0210 Technische Versicherungen");
+
+    /** Die Konstante VERSION_SATZART_0211_TECH_VERS. */
+    public static final Bezeichner VERSION_SATZART_0211_TECH_VERS = new Bezeichner("Version Satzart 0211 Technische Versicherungen");
+
+    /** Die Konstante VERSION_SATZART_0220_TECH_VERS. */
+    public static final Bezeichner VERSION_SATZART_0220_TECH_VERS = new Bezeichner("Version Satzart 0220 Technische Versicherungen");
+
     /** Die Konstante VERSION_SATZART_0221_TECH_VERS. */
-    public static final Bezeichner VERSION_SATZART_0221_TECH_VERS = new Bezeichner("Version Satzart 0221 tech. Vers.");
+    public static final Bezeichner VERSION_SATZART_0221_TECH_VERS = new Bezeichner("Version Satzart 0221 Technische Versicherungen");
 
     /** Die Konstante VERSION_SATZART_0222. */
     public static final Bezeichner VERSION_SATZART_0222 = new Bezeichner("Version Satzart 0222");
