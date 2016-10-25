@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import gdv.xport.feld.internal.UmlautMapper;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.logging.log4j.LogManager;
@@ -328,12 +329,6 @@ public final class Bezeichner {
     @Deprecated
     public static final String ERHOEHUNGSART_DYNAMIK = "Erhoehungsart Dynamik";
     /** @deprecated bitte {@link Bezeichner#ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS} verwenden */
-    @Deprecated
-    public static final String ERSTELLUNGSDATUM_ZEITRAUM_BIS = "Erstellungs-Datum-Zeitraum bis";
-    /** @deprecated bitte {@link Bezeichner#ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS} verwenden */
-    @Deprecated
-    public static final String ERSTELLUNGSDATUM_ZEITRAUM_VOM = "Erstellungs-Datum-Zeitraum vom";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ERSTE_ZULASSUNG_AUF_DEN_VN = "Erste Zulassung auf den VN";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -2700,6 +2695,9 @@ public final class Bezeichner {
     /** Die Konstante ERSTELLUNGSDAT_ZEITRAUM_VOM. */
     public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_VOM = new Bezeichner("Erstellungsdatm Zeitraum vom");
 
+    /** Die Konstante ERSTELLUNGSDAT_ZEITRAUM_BIS. */
+    public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_BIS = new Bezeichner("Erstellungs-Datum-Zeitraum bis");
+
     /** Die Konstante GEBURTSDAT. */
     public static final Bezeichner GEBURTSDAT = new Bezeichner("Geburtsdatum", "Geburtsdat");
 
@@ -3743,33 +3741,9 @@ public final class Bezeichner {
     }
 
     private static void appendLetterOrDigit(StringBuilder converted, char aChar) {
-        switch (aChar) {
-            case '\u00c4':
-                converted.append("Ae");
-                break;
-            case '\u00d6':
-                converted.append("Oe");
-                break;
-            case '\u00dc':
-                converted.append("Ue");
-                break;
-            case '\u00e4':
-                converted.append("ae");
-                break;
-            case '\u00f6':
-                converted.append("oe");
-                break;
-            case '\u00fc':
-                converted.append("ue");
-                break;
-            case '\u00df':
-                converted.append("ss");
-                break;
-            default:
-                if (Character.isLetterOrDigit(aChar)) {
-                    converted.append(aChar);
-                }
-                break;
+        if (Character.isLetterOrDigit(aChar)) {
+            String s = UmlautMapper.replaceUmlaut(aChar);
+            converted.append(s);
         }
     }
 
