@@ -561,4 +561,18 @@ public class Datensatz extends Satz {
         }
     }
 
+	@Override
+	public boolean equals(Object obj) {
+		if (! super.equals(obj)) {
+			return false;
+		}
+		Datensatz other = (Datensatz) obj;
+        return this.art == other.art;
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode() + this.art;
+	}
+
 }
