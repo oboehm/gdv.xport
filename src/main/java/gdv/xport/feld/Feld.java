@@ -689,7 +689,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @return z.B. "Inkassoart"
      */
     public static String getAsBezeichnung(final Enum<?> feldX) {
-        return (String) getAsObject(feldX);
+        return getAsObject(feldX).toString();
     }
 
     private static Object getAsObject(final Enum<?> feldX) {

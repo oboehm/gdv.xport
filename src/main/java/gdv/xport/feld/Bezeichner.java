@@ -59,93 +59,7 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<String, String>();
 
-    // Konstanten AB... gibt es nur noch als Bezeichner-Konstanten
-
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ADRESSAT = "Adressat";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ADRESSKENNZEICHEN = "Adresskennzeichen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String AENDERUNGSGRUND = "Aenderungsgrund";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String AFB = "A,F,B";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String AKTENZEICHEN_SICHERUNGSGLAEUBIGER = "Aktenzeichen des Sicherungsglaeubigers";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String AKTUELLE_BEITRAGSDEPOTSUMME_IN_WAEHRUNGSEINHEITEN = "aktuelle Beitragsdepotsumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN = "Allgemeine Versicherungsbedingungen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String AMTL_KENNZEICHEN = "Amtl. Kennzeichen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ANREDESCHLUESSEL = "Anredeschluessel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ANTEIL_IN_PROZENT = "Anteil in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ANZAHL_DER_VORBESITZER = "Anzahl der Vorbesitzer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ANZAHL_SAETZE = "Anzahl der Saetze";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ANZAHL_VP_PRO_PERSONENGRUPPE = "Anzahl der VP pro Personengruppe";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ANZAHL_WOHNEINHEITEN = "Anzahl Wohnheiten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ARB = "ARB (Allgemeine Bedingungen fuer die Rechtschutzvers.)";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ART_DER_HEILKOSTEN = "Art der Heilkosten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ART_DER_STEUERLICHEN_FOERDERUNG = "Art der steuerlichen Foerderung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ART_DER_ZULASSUNG_BEIM_VORBESITZER = "Art der Zulassung beim Vorbesitzer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ART_DES_ABSENDERS = "Art des Absenders";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ART_DES_ADRESSATEN = "Art des Adressaten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ART_DES_AMTLICHEN_KENNZEICHENS = "Art des amtlichen Kennzeichens";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ART_DES_DRITTRECHTS = "Art des Drittrechts";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String AUFBAUART = "Aufbauart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String AUFSICHTSFREIER_VERTRAG = "Aufsichtsfreier Vertrag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String AUFTEILUNG_VERSICHERUNGSSTEUER = "Aufteilung Versicherungsteuer gemaess EU-Richtlinien";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String AUFTRAGSNR_VERMITTLER = "Auftrags-Nr. des Vermittlers";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String AUSSCHLUSS = "Ausschluss";
-    /** @deprecated bitte {@link Bezeichner#AUSSCHLUSSDAT_VP_PERSONENGRUPPE} verwenden */
-    @Deprecated
-    public static final String AUSSCHLUSSDATUM_VP = "Ausschlussdatum VP / Personengruppe";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    // Konstanten A... gibt es nur noch als Bezeichner-Konstanten
     @Deprecated
     public static final String BAUJAHR = "Baujahr";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -2572,77 +2486,60 @@ public final class Bezeichner {
 
     /////////// Bezeichner-Konstanten /////////////////////////////////////////
 
-    /** Die Konstante ABGANGSDAT. */
     public static final Bezeichner ABGANGSDAT = new Bezeichner("Abgangsdatum", "Abgangsdat");
-
-    /** Die Konstante ABGANGSGRUND. */
     public static final Bezeichner ABGANGSGRUND = new Bezeichner("Abgangsgrund");
-
-    /** Die Konstante ABLAUF. */
     public static final Bezeichner ABLAUF = new Bezeichner("Ablauf");
-
-    /** Die Konstante ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN. */
     public static final Bezeichner ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Ablaufleistung incl. Ueberschussanteile");
-
-    /** Die Konstante ABSCHLAG1_IN_PROZENT. */
     public static final Bezeichner ABSCHLAG1_IN_PROZENT = new Bezeichner("Abschlag-1 in %");
-
-    /** Die ehemalige Konstante ABSCHLAG1_IN_WE. */
     public static final Bezeichner ABSCHLAG1_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-1 in Waehrungseinheiten", "Abschlag1InWE");
-
-    /** Die Konstante ABSCHLAG2_IN_PROZENT. */
     public static final Bezeichner ABSCHLAG2_IN_PROZENT = new Bezeichner("Abschlag-2 in %");
-
-    /** Die Konstante ABSCHLAG2_IN_WE. */
     public static final Bezeichner ABSCHLAG2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-2 in Waehrungseinheiten", "Abschlag1InWE");
-
-    /** Die Konstante ABSCHLAG3_IN_PROZENT. */
     public static final Bezeichner ABSCHLAG3_IN_PROZENT = new Bezeichner("Abschlag-3 in %");
-
-    /** Die Konstante ABSCHLAG3_IN_WE. */
     public static final Bezeichner ABSCHLAG3_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-3 in Waehrungseinheiten", "Abschlag1InWE");
-
-    /** Die Konstante ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN. */
     public static final Bezeichner ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlagsbetrag");
-
-    /** Die Konstante ABSCHLAG_IN_PROZENT. */
     public static final Bezeichner ABSCHLAG_IN_PROZENT = new Bezeichner("Abschlag in %");
-
-    /** Die Konstante ABSCHLUSSPROVISION. */
     public static final Bezeichner ABSCHLUSSPROVISION = new Bezeichner("Abschlussprovision");
-
-    /** Die Konstante ABSENDER. */
     public static final Bezeichner ABSENDER = new Bezeichner("Absender");
-
-    /** Die Konstante ABWEICHENDER_KONTOINHABER1. */
     public static final Bezeichner ABWEICHENDER_KONTOINHABER1 = new Bezeichner("Abweichender Kontoinhaber 1");
-
-    /** Die Konstante ABWEICHENDER_KONTOINHABER2. */
     public static final Bezeichner ABWEICHENDER_KONTOINHABER2 = new Bezeichner("Abweichender Kontoinhaber 2");
-
-    /** Die Konstante ABWEICHENDE_VU_NR. */
     public static final Bezeichner ABWEICHENDE_VU_NR = new Bezeichner("Abweichende VU-Nr.");
-
-    /** Die Konstante AENDERUNGSDAT. */
     public static final Bezeichner AENDERUNGSDAT = new Bezeichner("Aenderungsdatum", "Aenderungsdat");
-
-    /** Die Konstante ANTRAGSDAT. */
     public static final Bezeichner ANTRAGSDAT = new Bezeichner("Antragsdatum", "Antragsdat");
-
-    /** Die Konstante ANTRAGSDAT. */
     public static final Bezeichner ANTRAGSEINGANGSDAT = new Bezeichner("Antragseingangsdatum", "Antragseingangsdat");
-
-    /** Die Konstante ART_DES_BERUFSSCHLUESSELVERZEICHNISSES. */
     public static final Bezeichner ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = new Bezeichner("Art des Berufsschluesselverzeichnisses", "ArtDesBerufsschluesselverzeichnisses");
-
-    /** Die Konstante AUSSCHLUSSDAT_VP_PERSONENGRUPPE. */
     public static final Bezeichner AUSSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner(
             "Ausschlussdatum VP / Personengruppe", "AusschlussdatVpPersonengruppe");
+    public static final Bezeichner ADRESSAT = new Bezeichner("Adressat");
+    public static final Bezeichner ADRESSKENNZEICHEN = new Bezeichner("Adresskennzeichen");
+    public static final Bezeichner AENDERUNGSGRUND = new Bezeichner("Aenderungsgrund");
+    public static final Bezeichner AFB = new Bezeichner("A,F,B");
+    public static final Bezeichner AKTENZEICHEN_SICHERUNGSGLAEUBIGER = new Bezeichner("Aktenzeichen des Sicherungsglaeubigers");
+    public static final Bezeichner AKTUELLE_BEITRAGSDEPOTSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("aktuelle Beitragsdepotsumme");
+    public static final Bezeichner ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN = new Bezeichner("Allgemeine Versicherungsbedingungen");
+    public static final Bezeichner AMTL_KENNZEICHEN = new Bezeichner("Amtl. Kennzeichen");
+    public static final Bezeichner ANREDESCHLUESSEL = new Bezeichner("Anredeschluessel");
+    public static final Bezeichner ANTEIL_IN_PROZENT = new Bezeichner("Anteil in %");
+    public static final Bezeichner ANZAHL_DER_VORBESITZER = new Bezeichner("Anzahl der Vorbesitzer");
+    public static final Bezeichner ANZAHL_SAETZE = new Bezeichner("Anzahl der Saetze");
+    public static final Bezeichner ANZAHL_VP_PRO_PERSONENGRUPPE = new Bezeichner("Anzahl der VP pro Personengruppe");
+    public static final Bezeichner ANZAHL_WOHNEINHEITEN = new Bezeichner("Anzahl Wohnheiten");
+    public static final Bezeichner ARB = new Bezeichner("ARB (Allgemeine Bedingungen fuer die Rechtschutzvers.)");
+    public static final Bezeichner ART_DER_HEILKOSTEN = new Bezeichner("Art der Heilkosten");
+    public static final Bezeichner ART_DER_STEUERLICHEN_FOERDERUNG = new Bezeichner("Art der steuerlichen Foerderung");
+    public static final Bezeichner ART_DER_ZULASSUNG_BEIM_VORBESITZER = new Bezeichner("Art der Zulassung beim Vorbesitzer");
+    public static final Bezeichner ART_DES_ABSENDERS = new Bezeichner("Art des Absenders");
+    public static final Bezeichner ART_DES_ADRESSATEN = new Bezeichner("Art des Adressaten");
+    public static final Bezeichner ART_DES_AMTLICHEN_KENNZEICHENS = new Bezeichner("Art des amtlichen Kennzeichens");
+    public static final Bezeichner ART_DES_DRITTRECHTS = new Bezeichner("Art des Drittrechts");
+    public static final Bezeichner AUFBAUART = new Bezeichner("Aufbauart");
+    public static final Bezeichner AUFSICHTSFREIER_VERTRAG = new Bezeichner("Aufsichtsfreier Vertrag");
+    public static final Bezeichner AUFTEILUNG_VERSICHERUNGSSTEUER = new Bezeichner("Aufteilung Versicherungsteuer gemaess EU-Richtlinien");
+    public static final Bezeichner AUFTRAGSNR_VERMITTLER = new Bezeichner("Auftrags-Nr. des Vermittlers");
+    public static final Bezeichner AUSSCHLUSS = new Bezeichner("Ausschluss");
+    public static final Bezeichner AUSSCHLUSSDATUM_VP = new Bezeichner("Ausschlussdatum VP / Personengruppe");
 
-    /** Die Konstante BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS. */
     public static final Bezeichner BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS = new Bezeichner(
             "Beginndatum der naechsten Erlebensfall VS", "BeginndatNaechstenErlebensfallVs");
-
     /** Die Konstante BEGINNDAT_NAECHSTEN_JAHRESRENTE. */
     public static final Bezeichner BEGINNDAT_NAECHSTEN_JAHRESRENTE = new Bezeichner(
             "Beginndatum der naechsten Jahresrente", "BeginndatNaechstenJahresrente");
