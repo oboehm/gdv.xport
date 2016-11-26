@@ -59,147 +59,7 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<String, String>();
 
-    // Konstanten A... gibt es nur noch als Bezeichner-Konstanten
-    @Deprecated
-    public static final String BAUJAHR = "Baujahr";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BAUSTEIN_GESAMTBEITRAG_1_IN_WAEHRUNGSEINHEITEN = "Baustein-Gesamtbeitrag 1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BAUSTEIN_GESAMTBEITRAG_2_IN_WAEHRUNGSEINHEITEN = "Baustein-Gesamtbeitrag 2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEGINN = "Beginn";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEGINN_TAGEGELD1_AB_TAG = "Beginn Tagegeld 1 ab Tag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEGINN_TAGEGELD2_AB_TAG = "Beginn Tagegeld 2 ab Tag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEGINN_VERSICHERUNGSSCHUTZ = "Beginn Versicherungsschutz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAGSANGLEICHUNGSKLAUSEL = "Beitragsangleichungsklausel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAGSDEPOT = "Beitragsdepot";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAGSKLASSE = "Beitragsklasse";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAGSREGULIERUNG = "Beitragsregulierung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAGSRUECKGEWAEHR = "Beitragsrueckgewaehr";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAGSUMSTELLUNGSGRUND = "Beitragsumstellungsgrund";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_BERGUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN = "Beitrag Bergungskosten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_FESTE_RENTE_IN_WAEHRUNGSEINHEITEN = "Beitrag Feste Rente";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_GENESUNGSGELD_IN_WAEHRUNGSEINHEITEN = "Beitrag Genesungsgeld";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_HEILKOSTEN_IN_WAEHRUNGSEINHEITEN = "Beitrag Heilkosten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_INVALIDITAET_IN_WAEHRUNGSEINHEITEN = "Beitrag Invaliditaet";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_IN_WAEHRUNGSEINHEITEN = "Beitrag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_KOSMETISCHE_OPERATION_IN_WAEHRUNGSEINHEITEN = "Beitrag Kosmetische Operation";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_KRANKENHAUSTAGEGELD_IN_WAEHRUNGSEINHEITEN = "Beitrag Krankenhaustagegeld";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_KURKOSTEN_IN_WAEHRUNGSEINHEITEN = "Beitrag Kurkosten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_PRO_VP_IN_WAEHRUNGSEINHEITEN = "Beitrag pro VP oder pro Personengruppe";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_SERVICELEISTUNGEN_IN_WAEHRUNGSEINHEITEN = "Beitrag Serviceleistungen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_TAGEGELD1_IN_WAEHRUNGSEINHEITEN = "Beitrag Tagegeld 1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_TAGEGELD2_IN_WAEHRUNGSEINHEITEN = "Beitrag Tagegeld 2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_TOD_IN_WAEHRUNGSEINHEITEN = "Beitrag Tod";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEITRAG_UEBERGANGSENTSCHAEDIGUNG_IN_WAEHRUNGSEINHEITEN = "Beitrag Uebergangsentschaedigung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BERGUNGSKOSTEN = "Bergungskosten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BERGUNGSKOSTEN_BEITRAGSSATZ = "Bergungskosten Beitragssatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BERUFSGRUPPENEINTEILUNG = "Berufsgruppeneinteilung im Industrie-Straf-RS";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BERUFSSCHLUESSEL = "Berufsschluessel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BERUF_TEXT = "Beruf-Text";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BESONDERER_VERWENDUNGSZWECK = "besonderer Verwendungszweck";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO = "Besondere Vereinbarung zum Fluggastrisiko";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BESTANDSFUEHRENDE_GESCHAEFTSSTELLE = "Bestandsfuehrende Geschaeftsstelle";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BESTANDSPFLEGEPROVISION = "Bestandspflegeprovision";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BETRIEBLICHE_ALTERSVORSORGE = "Betriebliche Altersvorsorge";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEZEICHNUNG_PERSONENGRUPPE = "Bezeichnung Personengruppe";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEZUGSBERECHTIGT_IM_LEISTUNGSFALL = "Bezugsberechtigt im Leistungsfall";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL = "Bezugsrechtanteil im Leistungsfall";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BIC1 = "BIC 1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BIC2 = "BIC 2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BILANZMONAT_ARBEITGEBER = "Bilanzmonat Arbeitgeber";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BLZ1 = "Bankleitzahl 1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BLZ2 = "Bankleitzahl 2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String BUENDELUNGSKENNZEICHEN = "Buendelungskennzeichen";
+    // Konstanten A-B... gibt es nur noch als Bezeichner-Konstanten
     /** @deprecated bitte {@link Bezeichner#DAT_BEZUGSFERTIGKEIT} verwenden */
     @Deprecated
     public static final String DATUM_DER_BEZUGSFERTIGKEIT = "Datum der Bezugsfertigkeit";
@@ -2538,22 +2398,58 @@ public final class Bezeichner {
     public static final Bezeichner AUSSCHLUSS = new Bezeichner("Ausschluss");
     public static final Bezeichner AUSSCHLUSSDATUM_VP = new Bezeichner("Ausschlussdatum VP / Personengruppe");
 
-    public static final Bezeichner BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS = new Bezeichner(
-            "Beginndatum der naechsten Erlebensfall VS", "BeginndatNaechstenErlebensfallVs");
-    /** Die Konstante BEGINNDAT_NAECHSTEN_JAHRESRENTE. */
-    public static final Bezeichner BEGINNDAT_NAECHSTEN_JAHRESRENTE = new Bezeichner(
-            "Beginndatum der naechsten Jahresrente", "BeginndatNaechstenJahresrente");
-
-    /** Die Konstante BEGINNDAT_NAECHSTEN_UNFALLSUMME. */
-    public static final Bezeichner BEGINNDAT_NAECHSTEN_UNFALLSUMME = new Bezeichner(
-            "Beginndatum der naechsten Unfallsumme", "BeginndatNaechstenUnfallsumme");
-
-    /** Die Konstante BEITRAGSUMSTELLUNGSDAT. */
-    public static final Bezeichner BEITRAGSUMSTELLUNGSDAT = new Bezeichner("Beitragsumstellungsdatum",
-            "Beitragsumstellungsdat");
-
-    /** Die Konstante BEZUGSDAT. */
+    public static final Bezeichner BAUJAHR = new Bezeichner("Baujahr");
+    public static final Bezeichner BAUSTEIN_GESAMTBEITRAG_1_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Baustein-Gesamtbeitrag 1");
+    public static final Bezeichner BAUSTEIN_GESAMTBEITRAG_2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Baustein-Gesamtbeitrag 2");
+    public static final Bezeichner BEGINN = new Bezeichner("Beginn");
+    public static final Bezeichner BEGINN_TAGEGELD1_AB_TAG = new Bezeichner("Beginn Tagegeld 1 ab Tag");
+    public static final Bezeichner BEGINN_TAGEGELD2_AB_TAG = new Bezeichner("Beginn Tagegeld 2 ab Tag");
+    public static final Bezeichner BEGINN_VERSICHERUNGSSCHUTZ = new Bezeichner("Beginn Versicherungsschutz");
+    public static final Bezeichner BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS = new Bezeichner("Beginndatum der naechsten Erlebensfall VS", "BeginndatNaechstenErlebensfallVs");
+    public static final Bezeichner BEGINNDAT_NAECHSTEN_JAHRESRENTE = new Bezeichner("Beginndatum der naechsten Jahresrente", "BeginndatNaechstenJahresrente");
+    public static final Bezeichner BEGINNDAT_NAECHSTEN_UNFALLSUMME = new Bezeichner("Beginndatum der naechsten Unfallsumme", "BeginndatNaechstenUnfallsumme");
+    public static final Bezeichner BEITRAGSANGLEICHUNGSKLAUSEL = new Bezeichner("Beitragsangleichungsklausel");
+    public static final Bezeichner BEITRAGSDEPOT = new Bezeichner("Beitragsdepot");
+    public static final Bezeichner BEITRAGSKLASSE = new Bezeichner("Beitragsklasse");
+    public static final Bezeichner BEITRAGSREGULIERUNG = new Bezeichner("Beitragsregulierung");
+    public static final Bezeichner BEITRAGSRUECKGEWAEHR = new Bezeichner("Beitragsrueckgewaehr");
+    public static final Bezeichner BEITRAGSUMSTELLUNGSGRUND = new Bezeichner("Beitragsumstellungsgrund");
+    public static final Bezeichner BEITRAG_BERGUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Bergungskosten");
+    public static final Bezeichner BEITRAG_FESTE_RENTE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Feste Rente");
+    public static final Bezeichner BEITRAG_GENESUNGSGELD_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Genesungsgeld");
+    public static final Bezeichner BEITRAG_HEILKOSTEN_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Heilkosten");
+    public static final Bezeichner BEITRAG_INVALIDITAET_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Invaliditaet");
+    public static final Bezeichner BEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag");
+    public static final Bezeichner BEITRAG_KOSMETISCHE_OPERATION_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Kosmetische Operation");
+    public static final Bezeichner BEITRAG_KRANKENHAUSTAGEGELD_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Krankenhaustagegeld");
+    public static final Bezeichner BEITRAG_KURKOSTEN_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Kurkosten");
+    public static final Bezeichner BEITRAG_PRO_VP_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag pro VP oder pro Personengruppe");
+    public static final Bezeichner BEITRAG_SERVICELEISTUNGEN_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Serviceleistungen");
+    public static final Bezeichner BEITRAG_TAGEGELD1_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Tagegeld 1");
+    public static final Bezeichner BEITRAG_TAGEGELD2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Tagegeld 2");
+    public static final Bezeichner BEITRAG_TOD_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Tod");
+    public static final Bezeichner BEITRAG_UEBERGANGSENTSCHAEDIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitrag Uebergangsentschaedigung");
+    public static final Bezeichner BEITRAGSUMSTELLUNGSDAT = new Bezeichner("Beitragsumstellungsdatum", "Beitragsumstellungsdat");
+    public static final Bezeichner BERGUNGSKOSTEN = new Bezeichner("Bergungskosten");
+    public static final Bezeichner BERGUNGSKOSTEN_BEITRAGSSATZ = new Bezeichner("Bergungskosten Beitragssatz");
+    public static final Bezeichner BERUFSGRUPPENEINTEILUNG = new Bezeichner("Berufsgruppeneinteilung im Industrie-Straf-RS");
+    public static final Bezeichner BERUFSSCHLUESSEL = new Bezeichner("Berufsschluessel");
+    public static final Bezeichner BERUF_TEXT = new Bezeichner("Beruf-Text");
+    public static final Bezeichner BESONDERER_VERWENDUNGSZWECK = new Bezeichner("besonderer Verwendungszweck");
+    public static final Bezeichner BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO = new Bezeichner("Besondere Vereinbarung zum Fluggastrisiko");
+    public static final Bezeichner BESTANDSFUEHRENDE_GESCHAEFTSSTELLE = new Bezeichner("Bestandsfuehrende Geschaeftsstelle");
+    public static final Bezeichner BESTANDSPFLEGEPROVISION = new Bezeichner("Bestandspflegeprovision");
+    public static final Bezeichner BETRIEBLICHE_ALTERSVORSORGE = new Bezeichner("Betriebliche Altersvorsorge");
+    public static final Bezeichner BEZEICHNUNG_PERSONENGRUPPE = new Bezeichner("Bezeichnung Personengruppe");
+    public static final Bezeichner BEZUGSBERECHTIGT_IM_LEISTUNGSFALL = new Bezeichner("Bezugsberechtigt im Leistungsfall");
     public static final Bezeichner BEZUGSDAT = new Bezeichner("Bezugsdatum", "Bezugsdat");
+    public static final Bezeichner BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL = new Bezeichner("Bezugsrechtanteil im Leistungsfall");
+    public static final Bezeichner BIC1 = new Bezeichner("BIC 1");
+    public static final Bezeichner BIC2 = new Bezeichner("BIC 2");
+    public static final Bezeichner BILANZMONAT_ARBEITGEBER = new Bezeichner("Bilanzmonat Arbeitgeber");
+    public static final Bezeichner BLZ1 = new Bezeichner("Bankleitzahl 1");
+    public static final Bezeichner BLZ2 = new Bezeichner("Bankleitzahl 2");
+    public static final Bezeichner BUENDELUNGSKENNZEICHEN = new Bezeichner("Buendelungskennzeichen");
 
     /** Die Konstante DAT_BEZUGSFERTIGKEIT. */
     public static final Bezeichner DAT_BEZUGSFERTIGKEIT = new Bezeichner("Datum der Bezugsfertigkeit", "DatBezugsfertigkeit");
