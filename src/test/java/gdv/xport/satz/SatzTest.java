@@ -23,7 +23,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -154,14 +158,14 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testExportFile() throws IOException {
         File tmpFile = File.createTempFile("gdv", ".xport");
-        LOG.info("File \"" + tmpFile + "\" created.");
+        LOG.info("File \"{}\" created.", tmpFile);
         try {
             satz.export(tmpFile);
             String exported = FileUtils.readFileToString(tmpFile);
             assertEquals(satz.toLongString(), exported);
         } finally {
             tmpFile.delete();
-            LOG.info("File \"" + tmpFile + "\" deleted.");
+            LOG.info("File \"{}\" deleted.", tmpFile);
         }
     }
 

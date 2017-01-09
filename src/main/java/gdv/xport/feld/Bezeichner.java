@@ -23,11 +23,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import gdv.xport.feld.internal.UmlautMapper;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import gdv.xport.feld.internal.UmlautMapper;
 
 /**
  * Diese Klasse enthaelt die Namen der einzelnen Felder. Die Konstanten sind
@@ -59,34 +60,7 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<String, String>();
 
-    // Konstanten A-B... gibt es nur noch als Bezeichner-Konstanten
-    /** @deprecated bitte {@link Bezeichner#DAT_BEZUGSFERTIGKEIT} verwenden */
-    @Deprecated
-    public static final String DATUM_DER_BEZUGSFERTIGKEIT = "Datum der Bezugsfertigkeit";
-    /** @deprecated bitte {@link Bezeichner#DAT_LETZTEN_BEITRAGSANGLEICHUNG} verwenden */
-    @Deprecated
-    public static final String DATUM_LETZTE_BEITRAGSANGLEICHUNG = "Datum der letzten Beitragsangleichung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DECKUNGSSUMME_IN_TSD_WAEHRUNGSEINHEITEN = "Deckungssumme in Tausend Waehrungseinheiten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DECKUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Deckungssumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DECKUNGSUMFANG = "Deckungsumfang";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER = "Druckaufbereitete Versicherungsscheinnummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DURCHFUEHRUNGSWEG = "Durchfuehrungsweg";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DYNAMIK = "Dynamik";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DYNAMIK_IN_PROZENT = "Dynamik in %";
+    // Konstanten A-D... gibt es nur noch als Bezeichner-Konstanten
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String EIGENTUMSVERHAELTNIS_FAHRZEUG = "Eigentumsverhaeltnis (Fahrzeug)";
@@ -1437,9 +1411,6 @@ public final class Bezeichner {
     public static final String LEBENSLANGE_BEITRAGSZAHLUNG = "Lebenslange Beitragszahlung";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String DIREKTANSPRUCH = "Direktanspruch";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String EINTRITTSALTER_DER_VP = "Eintrittsalter der VP";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -1466,12 +1437,6 @@ public final class Bezeichner {
     @Deprecated
     public static final String GEBURTSDATUM_DER_BEZUGSBERECHTIGTEN_PERSON = "Geburtsdatum der bezugsberechtigten Person";
 
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DATUM_UNVERFALLBARKEIT = "Datum Unverfallbarkeit";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DIENSTEINTRITT = "Diensteintritt";
     /** @deprecated bitte {@link Bezeichner#GEBURTSDAT_VP} verwenden */
     @Deprecated
     public static final String GEBURTSDATUM_VP = "Geburtsdatum der VP";
@@ -1765,16 +1730,7 @@ public final class Bezeichner {
     public static final String RISIKOZUSCHLAEGE = "Risikozuschlaege";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String DYNAMIK_PROZENT_SATZ = "Dynamik %-Satz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String ERHOEHUNGSBASIS_DYNAMIK = "Erhoehungsbasis Dynamik";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DYNAMIKSTOP = "Dynamikstop";
-    /** @deprecated bitte {@link Bezeichner#DAT_LETZTEN_POSITIVEN_DYNAMIK} verwenden */
-    @Deprecated
-    public static final String DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK = "Datum der letzten positiven Dynamik";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN = "Rueckkaufswert";
@@ -1867,9 +1823,6 @@ public final class Bezeichner {
     public static final String VERTRAGSBEDINGUNG = "Vertragsbedingung";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String DYNAMIKBEGINN = "Dynamikbeginn";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String VEREINBARTER_DYNAMIKMINDESTANPASSUNGSPROZENTSATZ = "Vereinbarter Dynamikmindestanpassungsprozentsatz";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -1938,18 +1891,6 @@ public final class Bezeichner {
     public static final String WAEHRUNGSSCHLUESSEL_4 = "Waehrungsschluessel 4";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 1 in Tausend";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 2 in Tausend";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 3 in Tausend";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN = "Deckungssumme 4 in Tausend";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String ERHOEHUNGSSATZ_8_III_AHB = "Erhoehungssatz \u00a78, III AHB";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -2000,17 +1941,6 @@ public final class Bezeichner {
     @Deprecated
     public static final String WAGNISTEXT = "Wagnistext";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DECKUNGSSUMME_1_IN_WAEHRUNGSEINHEITEN = "Deckungssumme 1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DECKUNGSSUMME_2_IN_WAEHRUNGSEINHEITEN = "Deckungssumme 2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DECKUNGSSUMME_3_IN_WAEHRUNGSEINHEITEN = "Deckungssumme 3";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DECKUNGSSUMME_4_IN_WAEHRUNGSEINHEITEN = "Deckungssumme 4";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ORDNUNGS_NUMMER_FUER_WAGNISZUATZ = "Ordungs-Nummer fuer Wagniszusatz";
@@ -2019,9 +1949,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String REFERENZ_VERSICHERUNGSSCHEINNUMME = "Referenz-Versicherungsscheinnumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String DAUERSCHAEDEN_KOERPERLICHE_BEEINTRAECHTIGUNGEN = "Dauerschaeden / koerperliche Beeintraechtigungen";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ERKRANKUNGEN = "Erkrankungen";
@@ -2277,22 +2204,36 @@ public final class Bezeichner {
     public static final Bezeichner BUZ_PROZENT_SATZ = new Bezeichner("BUZ %-Satz");
     public static final Bezeichner BUZ_VERWENDUNGSART = new Bezeichner("BUZ Verwendungsart");
 
-    /** Die Konstante DAT_BEZUGSFERTIGKEIT. */
     public static final Bezeichner DAT_BEZUGSFERTIGKEIT = new Bezeichner("Datum der Bezugsfertigkeit", "DatBezugsfertigkeit");
-
-    /** Die Konstante DAT_BEZUGSFERTIGKEIT. */
     public static final Bezeichner DAT_LETZTEN_BEITRAGSANGLEICHUNG = new Bezeichner("Datum der letzten Beitragsangleichung", "DatLetztenBeitragsangleichung");
-
-    /** Die Konstante DAT_LETZTEN_POSITIVEN_DYNAMIK. */
-    public static final Bezeichner DAT_LETZTEN_POSITIVEN_DYNAMIK = new Bezeichner(
-            "Datum der letzten positiven Dynamik", "DatLetztenPositivenDynamik");
+    public static final Bezeichner DAT_LETZTEN_POSITIVEN_DYNAMIK = new Bezeichner("Datum der letzten positiven Dynamik", "DatLetztenPositivenDynamik");
+    public static final Bezeichner DAT_UNVERFALLBARKEIT = new Bezeichner("Datum Unverfallbarkeit");
+    public static final Bezeichner DAUERSCHAEDEN_KOERPERLICHE_BEEINTRAECHTIGUNGEN = new Bezeichner("Dauerschaeden / koerperliche Beeintraechtigungen");
+    public static final Bezeichner DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 1 in Tausend");
+    public static final Bezeichner DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 2 in Tausend");
+    public static final Bezeichner DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 3 in Tausend");
+    public static final Bezeichner DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 4 in Tausend");
+    public static final Bezeichner DECKUNGSSUMME_1_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 1");
+    public static final Bezeichner DECKUNGSSUMME_2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 2");
+    public static final Bezeichner DECKUNGSSUMME_3_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 3");
+    public static final Bezeichner DECKUNGSSUMME_4_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 4");
+    public static final Bezeichner DECKUNGSSUMME_IN_TSD_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme in Tausend Waehrungseinheiten");
+    public static final Bezeichner DECKUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme");
+    public static final Bezeichner DECKUNGSUMFANG = new Bezeichner("Deckungsumfang");
+    public static final Bezeichner DIENSTEINTRITT = new Bezeichner("Diensteintritt");
+    public static final Bezeichner DIENSTEINTRITTSDAT = new Bezeichner("Diensteintrittsdatum", "Diensteintrittsdat");
+    public static final Bezeichner DIREKTANSPRUCH = new Bezeichner("Direktanspruch");
+    public static final Bezeichner DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Druckaufbereitete Versicherungsscheinnummer");
+    public static final Bezeichner DURCHFUEHRUNGSWEG = new Bezeichner("Durchfuehrungsweg");
+    public static final Bezeichner DYNAMIK = new Bezeichner("Dynamik");
+    public static final Bezeichner DYNAMIK_IN_PROZENT = new Bezeichner("Dynamik in %");
+    public static final Bezeichner DYNAMIK_PROZENT_SATZ = new Bezeichner("Dynamik %-Satz");
+    public static final Bezeichner DYNAMIKBEGINN = new Bezeichner("Dynamikbeginn");
+    public static final Bezeichner DYNAMIKSTOP = new Bezeichner("Dynamikstop");
 
     /** Die Konstante ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS. */
     public static final Bezeichner ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS = new Bezeichner(
             "Erstellungs-Datum, Zeitraum von, Zeitraum bis", "ErstellungsDatZeitraumVomZeitraumBis");
-
-    /** Die Konstante DIENSTEINTRITTSDAT. */
-    public static final Bezeichner DIENSTEINTRITTSDAT = new Bezeichner("Diensteintrittsdatum", "Diensteintrittsdat");
 
     /** Die Konstante EINSCHLUSSDAT_VP_PERSONENGRUPPE. */
     public static final Bezeichner EINSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner(

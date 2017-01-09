@@ -18,14 +18,13 @@
 
 package gdv.xport.satz;
 
-import gdv.xport.satz.feld.FeldTests;
-import gdv.xport.satz.model.ModelTests;
-import gdv.xport.satz.xml.XmlTests;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
 
-import patterntesting.concurrent.junit.ParallelSuite;
+import gdv.xport.satz.feld.FeldTests;
+import gdv.xport.satz.model.ModelTests;
+import gdv.xport.satz.xml.XmlTests;
+import patterntesting.runtime.junit.SmokeSuite;
 
 /**
  * Die Klasse SatzTests ist eine Test-Suite fuer JUnit 4, mit der alle
@@ -34,7 +33,7 @@ import patterntesting.concurrent.junit.ParallelSuite;
  * @author oliver (boehm@javatux.de)
  * @since 0.7 (10.07.2012)
  */
-@RunWith(ParallelSuite.class)
+@RunWith(SmokeSuite.class)
 @SuiteClasses({ FeldTests.class, ModelTests.class, XmlTests.class, AdressteilTest.class,
         AllgemeinerVertragsteilTest.class, DatensatzTest.class, Erweiterungssatz211Test.class,
         Erweiterungssatz221Test.class, NachsatzTest.class, SatzTest.class, TeildatensatzTest.class,
