@@ -123,7 +123,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 109)
-    BEGINNDATUM_DER_NAECHSTEN_TODESFALL_VS,
+    BEGINNDAT_DER_NAECHSTEN_TODESFALL_VS,
 
     /**
      * Anfängliche Jahresrente in Währungseinheiten.
@@ -183,7 +183,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 25, type = Datum.class, anzahlBytes = 8, byteAdresse = 162)
-    BEGINNDATUM_DER_NAECHSTEN_JAHRESRENTESUMME,
+    BEGINNDAT_DER_NAECHSTEN_JAHRESRENTESUMME,
 
     /**
      * Leerstellen.

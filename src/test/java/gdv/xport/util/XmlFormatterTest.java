@@ -18,14 +18,6 @@
 
 package gdv.xport.util;
 
-import gdv.xport.Datenpaket;
-import gdv.xport.feld.Align;
-import gdv.xport.feld.Feld;
-import gdv.xport.satz.Nachsatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.Vorsatz;
-
 import java.io.IOException;
 
 import javax.xml.stream.XMLStreamException;
@@ -36,6 +28,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
 
+import gdv.xport.Datenpaket;
+import gdv.xport.feld.Align;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.Nachsatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.Vorsatz;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.junit.SmokeRunner;
 
@@ -97,7 +96,7 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     public void testWriteDatenpaket() throws XMLStreamException, SAXException, IOException {
         Datenpaket datenpaket = new Datenpaket();
         String xmlString = XmlFormatter.toString(datenpaket);
-        LOG.info(datenpaket + " as XML:\n" + xmlString);
+        LOG.debug(datenpaket + " as XML:\n" + xmlString);
         checkXML(xmlString);
         XmlHelper.validate(xmlString, "/xsd/datenpaket.xsd");
     }

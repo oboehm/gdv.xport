@@ -17,6 +17,17 @@
 
   <body>
 
+    <release version="1.2.0" date="2017"
+             description="Bereinigungen">
+      <action dev="oboehm" type="add" date="10-Jun-2016">
+      	&#220;ber CsvFormatter k&#246;nnen Datenpakete jetzt ins CVS-Format
+      	exportiert werden.
+      </action>
+      <action dev="oboehm" type="delete" date="08-Feb-2016">
+        Deprecated String-Konstanten in Bezeichner gel&#246;scht.
+      </action>
+    </release>
+
     <release version="1.1.0" date="08-Feb-2016"
              description="Registrierung XML-Beschreibung">
       <action dev="oboehm" type="add" date="06-Feb-2016">

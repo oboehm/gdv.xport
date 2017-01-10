@@ -18,6 +18,9 @@
 
 package gdv.xport.satz.model;
 
+import java.io.IOException;
+import java.util.List;
+
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
@@ -25,9 +28,6 @@ import gdv.xport.satz.feld.FeldX;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzTyp;
-
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die nach
@@ -155,15 +155,11 @@ public class SatzX extends Datensatz {
 				        .getTeildatensatzNummer()));
 			}
 
-			if (!currentLineWagnisartIsSet && !nextLineWagnisartIsSet) {
+			if (!currentLineWagnisartIsSet) {
 				return true;
 			}
 
-			if (!currentLineWagnisartIsSet && nextLineWagnisartIsSet) {
-				return true;
-			}
-
-            if ((currentLineWagnisartIsSet) && (nextLineWagnisartIsSet)
+            if ((nextLineWagnisartIsSet)
                     && (nextLineWagnisEnum == currentLineWagnisEnum)) {
                 if (currentLineTeildatensatzNummerIsSet || nextLineTeildatensatzNummerIsSet) {
                     if (nextLineTeildatensatzNummerEnum == currentLineTeildatensatzEnum) {

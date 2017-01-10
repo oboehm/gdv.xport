@@ -104,7 +104,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 146)
-    GEBURTSDATUM_VP,
+    GEBURTSDAT_VP,
 
     /**
      * Geschlecht der VP.
@@ -256,7 +256,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 216)
-    EINSCHLUSSDATUM_VP,
+    EINSCHLUSSDAT_VP_PERSONENGRUPPE,
 
     /**
      * Ausschlussdatum VP / Personengruppe.
@@ -270,7 +270,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 224)
-    AUSSCHLUSSDATUM_VP,
+    AUSSCHLUSSDAT_VP_PERSONENGRUPPE,
 
     /**
      * Änderungsdatum.
@@ -284,7 +284,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 232)
-    AENDERUNGSDATUM,
+    AENDERUNGSDAT,
 
     /**
      * Besondere Vereinbarungen zum Fluggastrisiko.
@@ -1223,7 +1223,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 58)
-    RUECKGEWAEHRDATUM,
+    RUECKGEWAEHRDAT,
 
     /**
      * Rückgewährsumme zum Ablauf in Währungseinheiten.

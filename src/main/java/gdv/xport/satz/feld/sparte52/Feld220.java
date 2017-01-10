@@ -76,7 +76,7 @@ public enum Feld220 {
             anzahlBytes = 8,
             byteAdresse = 59
     )
-    KFV_AENDERUNGSDATUM,
+    KFV_AENDERUNGSDAT,
 
     /**
      * KFV-Tarifgruppe.

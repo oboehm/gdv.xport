@@ -409,7 +409,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 203)
-    AENDERUNGSDATUM,
+    AENDERUNGSDAT,
 
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.

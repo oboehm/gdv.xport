@@ -22,6 +22,17 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+
+import java.io.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
+
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
@@ -34,17 +45,8 @@ import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte53.Feld220;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.SatzTyp;
-
-import java.io.*;
-import java.util.List;
-
 import net.sf.oval.ConstraintViolation;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-
+import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
 /**
@@ -377,6 +379,33 @@ public final class SatzTest extends AbstractSatzTest {
     public void testGetSatzTyp() {
         Satz satz220 = new SatzX(220, Feld220Wagnis0.class);
         assertEquals(new SatzTyp(220, 10, 0), satz220.getSatzTyp());
+    }
+
+    /**
+     * Test-Methode fuer {@link Satz#getFelder()}.
+     */
+    @Test
+    public void testGetFelder() {
+        Collection<Feld> felder = satz.getFelder();
+        Teildatensatz lonelyTeildatensatz = satz.getTeildatensatz(1);
+        CollectionTester.assertEquals(lonelyTeildatensatz.getFelder(), felder);
+    }
+
+    /**
+     * Test-Methode fuer {@link Satz#getFelder()}. Im Gegensatz zur vorigen
+     * Test-Methode wird hier der Vorsatz herangenommen, da er aus mehreren
+     * (2) Teildatensaetzen besteht.
+     */
+    @Test
+    public void testGetFelderWithVorsatz() {
+        Satz vorsatz = new Vorsatz();
+        Collection<Feld> felder = vorsatz.getFelder();
+        Collection<Bezeichner> bezeichners = new HashSet<>();
+        for (Feld feld : felder) {
+            Bezeichner b = feld.getBezeichner();
+            assertFalse(feld + " found more than once", bezeichners.contains(b));
+            bezeichners.add(b);
+        }
     }
 
 }

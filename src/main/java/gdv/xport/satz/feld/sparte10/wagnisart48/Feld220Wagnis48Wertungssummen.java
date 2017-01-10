@@ -135,7 +135,7 @@ public enum Feld220Wagnis48Wertungssummen {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 20, type = Datum.class, anzahlBytes = 8, byteAdresse = 121)
-    URSPRUENGLICHES_HAFTUNGSBEGINNDATUM,
+    URSPRUENGLICHES_HAFTUNGSBEGINNDAT,
 
     /**
      * Provisionspflichtige Beitragssumme in Währungseinheiten.

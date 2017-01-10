@@ -18,13 +18,13 @@
 
 package gdv.xport.config;
 
-import gdv.xport.feld.VUNummer;
-
 import java.nio.charset.Charset;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import gdv.xport.feld.VUNummer;
 
 /**
  * Ueber diese Klasse koennen globale Werte (wie z.B. die VU-Nummer) konfiguriert
@@ -89,7 +89,7 @@ public final class Config {
      * aufgerufen werden, wenn man nicht mehr sicher ist, was denn alles
      * konfiguriert ist.
      */
-    public static void reset() {
+    public static synchronized void reset() {
         vunummer = null;
     }
 

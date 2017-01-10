@@ -697,11 +697,12 @@ public class Feld implements Comparable<Feld>, Cloneable {
             Field field = Bezeichner.class.getField(feldX.name());
             return field.get(null);
         } catch (NoSuchFieldException ex) {
-            LOG.info("Bezeichner." + feldX.name() + " not found:", ex);
+            LOG.info("Bezeichner.{} not found:", feldX.name());
+            LOG.debug("Details:", ex);
         } catch (IllegalArgumentException ex) {
-            LOG.warn(ex);
+            LOG.warn("Can't get {} as object.", feldX, ex);
         } catch (IllegalAccessException ex) {
-            LOG.warn("can't access Bezeichner." + feldX.name(), ex);
+            LOG.warn("Can't access Bezeichner.{}:", feldX.name(), ex);
         }
         return toBezeichnung(feldX);
     }

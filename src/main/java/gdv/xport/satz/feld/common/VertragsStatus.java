@@ -78,6 +78,6 @@ public enum VertragsStatus {
             anzahlBytes = 8,
             byteAdresse = 60
     )
-    AENDERUNGSDATUM,
+    AENDERUNGSDAT,
 
 }

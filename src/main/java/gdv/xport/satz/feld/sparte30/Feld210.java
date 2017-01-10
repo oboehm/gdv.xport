@@ -100,7 +100,7 @@ public enum Feld210 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 60)
-    AENDERUNGSDATUM,
+    AENDERUNGSDAT,
 
     /**
      * Allgemeine Versicherungsbedingungen.

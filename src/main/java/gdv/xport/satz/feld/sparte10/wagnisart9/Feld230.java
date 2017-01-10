@@ -112,7 +112,7 @@ public enum Feld230 {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 18, type = Datum.class, anzahlBytes = 8, byteAdresse = 159)
-    BEZUGSDATUM,
+    BEZUGSDAT,
 
     /**
      * Prozentsatz.

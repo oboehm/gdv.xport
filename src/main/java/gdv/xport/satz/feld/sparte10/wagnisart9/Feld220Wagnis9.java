@@ -182,7 +182,7 @@ public enum Feld220Wagnis9 {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 27, type = Datum.class, anzahlBytes = 8, byteAdresse = 149)
-    DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK,
+    DAT_LETZTEN_POSITIVEN_DYNAMIK,
 
     /**
      * Rückkaufswert in Währungseinheiten.
@@ -461,7 +461,7 @@ public enum Feld220Wagnis9 {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 2, nr = 21, type = Datum.class, anzahlBytes = 8, byteAdresse = 168)
-    UMSTELLUNGSDATUM_DES_FOLGETARIFS,
+    UMSTELLUNGSDAT_FOLGETARIFS,
 
     /**
      * Zukünftiger Beitrag in Währungseinheiten.

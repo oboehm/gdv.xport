@@ -257,7 +257,7 @@ public enum Feld220Wagnis13 {
      * </p>
      */
     @FeldInfo(teildatensatz = 1, nr = 35, type = Datum.class, anzahlBytes = 8, byteAdresse = 208)
-    DATUM_DER_LETZTEN_POSITIVEN_DYNAMIK,
+    DAT_LETZTEN_POSITIVEN_DYNAMIK,
 
     /**
      * Endalter.
@@ -398,7 +398,7 @@ public enum Feld220Wagnis13 {
      * </p>
      */
     @FeldInfo(teildatensatz = 2, nr = 15, type = Datum.class, anzahlBytes = 8, byteAdresse = 115)
-    UMSTELLUNGSDATUM_DES_FOLGETARIFS,
+    UMSTELLUNGSDAT_FOLGETARIFS,
 
     /**
      * Zukünftiger Beitrag in Währungseinheiten.

@@ -123,7 +123,7 @@ public enum Feld220 {
             anzahlBytes = 8,
             byteAdresse = 71
     )
-    AENDERUNGSDATUM,
+    AENDERUNGSDAT,
 
     /**
      * Zahlungsweise.
@@ -270,7 +270,7 @@ public enum Feld220 {
             anzahlBytes = 8,
             byteAdresse = 162
     )
-    DATUM_LETZTE_BEITRAGSANGLEICHUNG,
+    DAT_LETZTEN_BEITRAGSANGLEICHUNG,
 
     /**
      * Beitragsklasse.

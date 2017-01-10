@@ -210,7 +210,7 @@ public enum Feld100 {
             anzahlBytes = 8,
             byteAdresse = 226
     )
-    GEBURTSDATUM,
+    GEBURTSDAT,
 
     /**
      * Verwendung Schluessel Laenderkennzeichen, siehe Anlage 63.
