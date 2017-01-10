@@ -62,32 +62,6 @@ public final class Bezeichner {
 
     // Konstanten A-D... gibt es nur noch als Bezeichner-Konstanten
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String EIGENTUMSVERHAELTNIS_FAHRZEUG = "Eigentumsverhaeltnis (Fahrzeug)";
-    /** @deprecated bitte {@link Bezeichner#EINSCHLUSSDAT_VP_PERSONENGRUPPE} verwenden */
-    @Deprecated
-    public static final String EINSCHLUSSDATUM_VP = "Einschlussdatum VP / Personengruppe";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String EINZAHLUNG_AUSSCHUETTUNG = "Einzahlung / Ausschuettung";
-    /** @deprecated bitte {@link Bezeichner#ENDEDATUM_BEI_ROTEN_KENNZEICHEN} verwenden */
-    @Deprecated
-    public static final String ENDEDATUM_DES_VERSICHERUNGSSCHUTZES_BEI_ROTEN_KENNZEICHEN = "Endedatum des Versicherungsschutzes bei roten Kennzeichen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERHOEHUNGSART_DYNAMIK = "Erhoehungsart Dynamik";
-    /** @deprecated bitte {@link Bezeichner#ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS} verwenden */
-    @Deprecated
-    public static final String ERSTE_ZULASSUNG_AUF_DEN_VN = "Erste Zulassung auf den VN";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERSTZULASSUNG = "Erstzulassung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERWEITERUNGSSATZ_VORHANDEN = "Erweiterungssatz vorhanden";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String EVB_NUMMER = "eVB-Nummer";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String FAHRZEUGART = "Fahrzeugart";
@@ -1411,9 +1385,6 @@ public final class Bezeichner {
     public static final String LEBENSLANGE_BEITRAGSZAHLUNG = "Lebenslange Beitragszahlung";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String EINTRITTSALTER_DER_VP = "Eintrittsalter der VP";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = "Rueckgewaehrsumme zum Ablauf";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -1483,35 +1454,6 @@ public final class Bezeichner {
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Erlebensfall VS zum Ablauf";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Todesfall VS zum Ablauf";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = "Erlebensfall VS II zum Ablauf";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Erlebensfall VS zum Beginn der Abrufphase";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Todesfall VS zum Beginn der Abrufphase";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = "Erlebensfall VS II zum Beginn der Abrufphase";
-
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERLEBENSFALL_VS_AENDERUNGS_PROZENTSATZ = "Erlebensfall VS-Aenderungs-Prozentsatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Naechste Erlebensfall VS";
-
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String EINSCHLUSS_PROZENT_SATZ = "Einschluss %-Satz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String ZWANG_ZUR_BUZ = "Zwang zur BUZ";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -1524,16 +1466,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ZUKUENFTIGER_BEITRAG = "Zukuenftiger Beitrag";
-
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT = "Erlebensfall VS";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEIT = "Todesfall VS";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERLEBENSFALL_VS2_IN_WAEHRUNGSEINHEIT = "Erlebensfall VS II";
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -1608,27 +1540,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String FALLENDE_VS = "fallende VS";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN = "Erlebensfall VS II";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String LAUFZEITVERKUERZUNG = "Laufzeitverkuerzung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERTRAG_MIT_ZUWACHSGARANTIE = "Vertrag mit Zuwachsgarantie";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TODESFALLLEISTUNG_IN_PROZENT = "Todesfallleistung in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SPARVORGANG = "Sparvorgang";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String GESTUNDET_AUSGESETZT_BIS = "Gestundet ausgesetzt bis";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = "Erlebensfall VS";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String GUTHABEN_DIVID_ANSAMMLUNG_IN_WAEHRUNGSEINHEIT = "Guthaben Divid. Ansammlung";
@@ -1730,9 +1641,6 @@ public final class Bezeichner {
     public static final String RISIKOZUSCHLAEGE = "Risikozuschlaege";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String ERHOEHUNGSBASIS_DYNAMIK = "Erhoehungsbasis Dynamik";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN = "Rueckkaufswert";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -1773,12 +1681,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ZAHLUNG_DER_WITWEN_WITWERRENTE_BIS = "Zahlung der Witwen- / Witwerrente bis";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ENDALTER = "Endalter";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String EINTRITTSALTER = "Eintrittsalter";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String UMTAUSCHRECHT = "Umtauschrecht";
@@ -1856,12 +1758,6 @@ public final class Bezeichner {
     public static final String TODESFALLLEISTUNG_IN_WAEHRUNGSEINHEITEN = "Todesfallleistung";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String EINGERECHNETE_ZULAGE = "Eingerechnete Zulage";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String EINRECHNUNGSJAHR = "Einrechnungsjahr";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String TEILDATENSATZNUMMER = "Teildatensatznummer";
 
     // Haftpflicht
@@ -1889,9 +1785,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WAEHRUNGSSCHLUESSEL_4 = "Waehrungsschluessel 4";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERHOEHUNGSSATZ_8_III_AHB = "Erhoehungssatz \u00a78, III AHB";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String KENNUNG_ERHOEHUNGSSATZ = "Kennung Erhoehungssatz";
@@ -1941,7 +1834,6 @@ public final class Bezeichner {
     @Deprecated
     public static final String WAGNISTEXT = "Wagnistext";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ORDNUNGS_NUMMER_FUER_WAGNISZUATZ = "Ordungs-Nummer fuer Wagniszusatz";
 
@@ -1949,9 +1841,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String REFERENZ_VERSICHERUNGSSCHEINNUMME = "Referenz-Versicherungsscheinnumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ERKRANKUNGEN = "Erkrankungen";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String UNFAELLE = "Unfaelle";
@@ -1986,13 +1875,7 @@ public final class Bezeichner {
     public static final String GESAMTVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Gesamtversicherungssummer";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String ERWEITERTE_NEUWERTVERSICHERUNG = "erweiterte Neuwertversicherung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String SICHERUNGSRICHTLINIEN = "Sicherungsrichtlinien";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String EINBRUCH_MELDEANLAGE = "Einbruch Meldeanlage";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String RISIKOKENNZIFFER = "Risikokennziffer";
@@ -2005,9 +1888,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String GEFAHRENERHOEHUNG = "Gefahrenerhoehung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String EINSCHLUSS_VANDALISMUS = "Einschluss Vandalismus";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String UNTERVERS_VERZICHT = "Untervers.-Verzicht";
@@ -2231,32 +2111,46 @@ public final class Bezeichner {
     public static final Bezeichner DYNAMIKBEGINN = new Bezeichner("Dynamikbeginn");
     public static final Bezeichner DYNAMIKSTOP = new Bezeichner("Dynamikstop");
 
-    /** Die Konstante ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS. */
-    public static final Bezeichner ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS = new Bezeichner(
-            "Erstellungs-Datum, Zeitraum von, Zeitraum bis", "ErstellungsDatZeitraumVomZeitraumBis");
-
-    /** Die Konstante EINSCHLUSSDAT_VP_PERSONENGRUPPE. */
-    public static final Bezeichner EINSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner(
-            "Einschlussdatum VP / Personengruppe", "EinschlussdatVpPersonengruppe");
-
-    /** Die Konstante ENDEDATUM_BEI_ROTEN_KENNZEICHEN. */
-    public static final Bezeichner ENDEDATUM_BEI_ROTEN_KENNZEICHEN = new Bezeichner(
-            "Endedatum des Versicherungsschutzes bei roten Kennzeichen", "EndedatumBeiRotenKennzeichen");
-
-    /** Die Konstante ERSTELLUNGSDAT_ZEITRAUM_VOM. */
+    public static final Bezeichner EIGENTUMSVERHAELTNIS_FAHRZEUG = new Bezeichner("Eigentumsverhaeltnis (Fahrzeug)");
+    public static final Bezeichner EINBRUCH_MELDEANLAGE = new Bezeichner("Einbruch Meldeanlage");
+    public static final Bezeichner EINGERECHNETE_ZULAGE = new Bezeichner("Eingerechnete Zulage");
+    public static final Bezeichner EINRECHNUNGSJAHR = new Bezeichner("Einrechnungsjahr");
+    public static final Bezeichner EINSCHLUSS_PROZENT_SATZ = new Bezeichner("Einschluss %-Satz");
+    public static final Bezeichner ERWEITERTE_NEUWERTVERSICHERUNG = new Bezeichner("erweiterte Neuwertversicherung");
+    public static final Bezeichner EINSCHLUSSDATUM_VP = new Bezeichner("Einschlussdatum VP / Personengruppe");
+    public static final Bezeichner EINZAHLUNG_AUSSCHUETTUNG = new Bezeichner("Einzahlung / Ausschuettung");
+    public static final Bezeichner ENDEDATUM_DES_VERSICHERUNGSSCHUTZES_BEI_ROTEN_KENNZEICHEN = new Bezeichner("Endedatum des Versicherungsschutzes bei roten Kennzeichen");
+    public static final Bezeichner ERHOEHUNGSART_DYNAMIK = new Bezeichner("Erhoehungsart Dynamik");
+    public static final Bezeichner ERHOEHUNGSBASIS_DYNAMIK = new Bezeichner("Erhoehungsbasis Dynamik");
+    public static final Bezeichner ERSTE_ZULASSUNG_AUF_DEN_VN = new Bezeichner("Erste Zulassung auf den VN");
+    public static final Bezeichner ERSTZULASSUNG = new Bezeichner("Erstzulassung");
+    public static final Bezeichner ERWEITERUNGSSATZ_VORHANDEN = new Bezeichner("Erweiterungssatz vorhanden");
+    public static final Bezeichner EVB_NUMMER = new Bezeichner("eVB-Nummer");
+    public static final Bezeichner ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS = new Bezeichner("Erstellungs-Datum, Zeitraum von, Zeitraum bis", "ErstellungsDatZeitraumVomZeitraumBis");
+    public static final Bezeichner EINSCHLUSS_VANDALISMUS = new Bezeichner("Einschluss Vandalismus");
+    public static final Bezeichner EINSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner("Einschlussdatum VP / Personengruppe", "EinschlussdatVpPersonengruppe");
+    public static final Bezeichner ENDALTER = new Bezeichner("Endalter");
+    public static final Bezeichner EINTRITTSALTER = new Bezeichner("Eintrittsalter");
+    public static final Bezeichner EINTRITTSALTER_DER_VP = new Bezeichner("Eintrittsalter der VP");
+    public static final Bezeichner ENDEDATUM_BEI_ROTEN_KENNZEICHEN = new Bezeichner("Endedatum des Versicherungsschutzes bei roten Kennzeichen", "EndedatumBeiRotenKennzeichen");
+    public static final Bezeichner ERHOEHUNGSSATZ_8_III_AHB = new Bezeichner("Erhoehungssatz \u00a78, III AHB");
+    public static final Bezeichner ERKRANKUNGEN = new Bezeichner("Erkrankungen");
+    public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT = new Bezeichner("Erlebensfall VS");
+    public static final Bezeichner ERLEBENSFALL_VS2_IN_WAEHRUNGSEINHEIT = new Bezeichner("Erlebensfall VS II");
+    public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Erlebensfall VS zum Ablauf");
+    public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Erlebensfall VS II zum Ablauf");
+    public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Erlebensfall VS II");
+    public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Erlebensfall VS");
+    public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Erlebensfall VS zum Beginn der Abrufphase");
+    public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Erlebensfall VS II zum Beginn der Abrufphase");
+    public static final Bezeichner ERLEBENSFALL_VS_AENDERUNGS_PROZENTSATZ = new Bezeichner("Erlebensfall VS-Aenderungs-Prozentsatz");
     public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_VOM = new Bezeichner("Erstellungsdatm Zeitraum vom");
-
-    /** Die Konstante ERSTELLUNGSDAT_ZEITRAUM_BIS. */
     public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_BIS = new Bezeichner("Erstellungs-Datum-Zeitraum bis");
 
-    /** Die Konstante GEBURTSDAT. */
     public static final Bezeichner GEBURTSDAT = new Bezeichner("Geburtsdatum", "Geburtsdat");
-
-    /** Die Konstante GEBURTSDAT_VP. */
     public static final Bezeichner GEBURTSDAT_VP = new Bezeichner("Geburtsdatum der VP", "GeburtsdatVp");
-
-    /** Die Konstante GEBURTSDAT_VP. */
     public static final Bezeichner GEBURTSDAT_VP2 = new Bezeichner("Geburtsdatum der 2. VP", "GeburtsdatVp2");
+    public static final Bezeichner GESTUNDET_AUSGESETZT_BIS = new Bezeichner("Gestundet ausgesetzt bis");
 
     /** Die Konstante KFT_AENDERUNGSDAT. */
     public static final Bezeichner KFT_AENDERUNGSDAT = new Bezeichner("KFT-aenderungsdatum", "KftAenderungsdat");
@@ -2267,8 +2161,10 @@ public final class Bezeichner {
     /** Die Konstante KH_AENDERUNGSDAT. */
     public static final Bezeichner KH_AENDERUNGSDAT = new Bezeichner("KH-aenderungsdatum", "KhAenderungsdat");
 
-    /** Die Konstante LFD_PERSONEN_NR_IM_GEVO. */
+    public static final Bezeichner LAUFZEITVERKUERZUNG = new Bezeichner("Laufzeitverkuerzung");
     public static final Bezeichner LFD_PERSONEN_NR_IM_GEVO = new Bezeichner ("Lfd. Personennummer im GeVo", "LfdPersonenNrImGevo");
+
+    public static final Bezeichner NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Naechste Erlebensfall VS");
 
     /** Die Konstante POLICIERUNGSDAT. */
     public static final Bezeichner POLICIERUNGSDAT = new Bezeichner("Policierungsdatum", "Policierungsdat");
@@ -2279,17 +2175,16 @@ public final class Bezeichner {
     /** The Konstante RUECKGEWAEHRDAT. */
     public static final Bezeichner RUECKGEWAEHRDAT = new Bezeichner("Rueckgewaehrdatum", "Rueckgewaehrdat");
 
-    /** The Constant SEPA_GLAEUBIGERIDENTIFIKATIONSNUMMER. */
     public static final Bezeichner SEPA_GLAEUBIGERIDENTIFIKATIONSNUMMER = new Bezeichner("SEPA-Glaeubigeridentifikationsnummer", "SEPAGlaeubigeridentifikationsnummer");
-
-    /** The Constant SEPA_MANDAT_AUSSTELLUNGSDAT. */
     public static final Bezeichner SEPA_MANDAT_AUSSTELLUNGSDATUM = new Bezeichner("SEPA-Mandat Ausstellungsdatum", "SEPAMandatAusstellungsdatum");
-
-    /** The Constant SEPA_MANDAT_KONTOREFERENZ. */
     public static final Bezeichner SEPA_MANDAT_KONTOREFERENZ = new Bezeichner("SEPA-Mandat Kontoreferenz", "SEPAMandatKontoreferenz");
-
-    /** The Constant SPARTE2. */
     public static final Bezeichner SPARTE2 = new Bezeichner("Sparte2", "Sparte2");
+    public static final Bezeichner SPARVORGANG = new Bezeichner("Sparvorgang");
+
+    public static final Bezeichner TODESFALL_VS_IN_WAEHRUNGSEINHEIT = new Bezeichner("Todesfall VS");
+    public static final Bezeichner TODESFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Todesfall VS zum Ablauf");
+    public static final Bezeichner TODESFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Todesfall VS zum Beginn der Abrufphase");
+    public static final Bezeichner TODESFALLLEISTUNG_IN_PROZENT = new Bezeichner("Todesfallleistung in %");
 
     /** The Constant UMSTELLUNGSDAT_FOLGETARIFS. */
     public static final Bezeichner UMSTELLUNGSDAT_FOLGETARIFS = new Bezeichner("Umstellungsdatum des Folgetarifs", "UmstellungsdatFolgetarifs");
@@ -2298,22 +2193,12 @@ public final class Bezeichner {
     public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner(
             "Urspruengliches Haftungsbeginndatum", "UerspruenglichesHaftungsbeginndat");
 
-    /** Die Konstante VERSION_SATZART_0210_TECH_VERS. */
     public static final Bezeichner VERSION_SATZART_0210_TECH_VERS = new Bezeichner("Version Satzart 0210 Technische Versicherungen");
-
-    /** Die Konstante VERSION_SATZART_0211_TECH_VERS. */
     public static final Bezeichner VERSION_SATZART_0211_TECH_VERS = new Bezeichner("Version Satzart 0211 Technische Versicherungen");
-
-    /** Die Konstante VERSION_SATZART_0220_TECH_VERS. */
     public static final Bezeichner VERSION_SATZART_0220_TECH_VERS = new Bezeichner("Version Satzart 0220 Technische Versicherungen");
-
-    /** Die Konstante VERSION_SATZART_0221_TECH_VERS. */
     public static final Bezeichner VERSION_SATZART_0221_TECH_VERS = new Bezeichner("Version Satzart 0221 Technische Versicherungen");
-
-    /** Die Konstante VERSION_SATZART_0222. */
     public static final Bezeichner VERSION_SATZART_0222 = new Bezeichner("Version Satzart 0222");
-
-    /** Die Konstante VERTRAGSVERBINDUNGSNUMMER. */
+    public static final Bezeichner VERTRAG_MIT_ZUWACHSGARANTIE = new Bezeichner("Vertrag mit Zuwachsgarantie");
     public static final Bezeichner VERTRAGSVERBINDUNGSNUMMER = new Bezeichner("Vertragsverbindungs-Nummer");
 
     /** Die Konstante VS_NR. */
