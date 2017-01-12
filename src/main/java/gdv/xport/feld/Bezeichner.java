@@ -2760,11 +2760,7 @@ public final class Bezeichner {
      */
     @Override
     public String toString() {
-        if ((this.technischerName.length() > 5) || this.technischerName.equals(this.name)) {
-            return this.technischerName;
-        } else  {
-            return this.technischerName + " (" + this.name + ")";
-        }
+        return this.technischerName;
     }
 
     /**
