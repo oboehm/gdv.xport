@@ -961,9 +961,6 @@ public final class Bezeichner {
     public static final String VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Versicherungssumme";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String FALLENDE_SUMME = "fallende Summe";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN = "Rente inkl. Ueberschussanrechnung";
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -989,12 +986,6 @@ public final class Bezeichner {
     public static final String WERTPAPIERKENNNUMMER = "Wertpapierkennnummer";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String FONDSKENNUNG = "Fondskennung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String FONDSNAME = "Fondname";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String THESAUR = "Thesaur";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -1014,9 +1005,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = "Todesfall VS";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String FALLENDE_VS = "fallende VS";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String KAPITALZAHLUNGS_SUMME_IN_WAEHRUNGSEINHEIT = "Kapitalzahlungs-Summe";
@@ -1573,6 +1561,8 @@ public final class Bezeichner {
     public static final Bezeichner FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG = new Bezeichner("Faelligkeit der letzten Beitragszahlung");
     public static final Bezeichner FAHRZEUGART = new Bezeichner("Fahrzeugart");
     public static final Bezeichner FAHRZEUGIDENTIFIZIERUNGSNUMMER = new Bezeichner("Fahrzeugidentifizierungsnummer");
+    public static final Bezeichner FALLENDE_SUMME = new Bezeichner("fallende Summe");
+    public static final Bezeichner FALLENDE_VS = new Bezeichner("fallende VS");
     public static final Bezeichner FAMILIENSTAND = new Bezeichner("Familienstand");
     public static final Bezeichner FESTE_RENTE = new Bezeichner("Feste Rente");
     public static final Bezeichner FESTE_RENTE_BEITRAGSSATZ = new Bezeichner("Feste Rente Beitragssatz");
@@ -1582,6 +1572,8 @@ public final class Bezeichner {
     public static final Bezeichner FLOTTENRABATT_IN_PROZENT = new Bezeichner("Flottenrabatt in %");
     public static final Bezeichner FOLGENUMMER = new Bezeichner("Folgenummer");
     public static final Bezeichner FOLGEPROVISION = new Bezeichner("Folgeprovision");
+    public static final Bezeichner FONDSKENNUNG = new Bezeichner("Fondskennung");
+    public static final Bezeichner FONDSNAME = new Bezeichner("Fondname");
     public static final Bezeichner FREMDER_GRUND_UND_BODEN = new Bezeichner("fremder Grund und Boden");
     public static final Bezeichner FREMDNUTZUNG = new Bezeichner("Fremdnutzung");
     public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH = new Bezeichner("Frei vereinbarte Selbstbeteiligung fuer KH");
