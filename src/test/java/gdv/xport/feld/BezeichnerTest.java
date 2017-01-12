@@ -49,6 +49,16 @@ public class BezeichnerTest {
     }
 
     /**
+     * Die Konstante NAME1 sollte als toSring() "Name1" zuruckliefern, sonst
+     * klappt das Mapping der Bezeichner aus den annotierten Feld-Enums nicht.
+     */
+    @Test
+    public void testNAME1toString() {
+        Bezeichner createdName1 = new Bezeichner(Bezeichner.NAME1.toString());
+        assertEquals(Bezeichner.NAME1, createdName1);
+    }
+
+    /**
      * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Die Daten
      * dazu stammen aus der XML-Datei ("VUVM2013").
      */

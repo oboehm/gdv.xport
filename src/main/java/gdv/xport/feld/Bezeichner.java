@@ -60,37 +60,7 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<>();
 
-    // Konstanten A-M... gibt es nur noch als Bezeichner-Konstanten
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAECHSTE_ERHOEHUNG = "naechste Erhoehung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAME1 = "Name1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAME2 = "Name2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAME3 = "Name3";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAME_KREDITINSTITUT1 = "Name des Kreditinstituts 1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAME_KREDITINSTITUT2 = "Name des Kreditinstituts 2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAME_MITVERSICHERTES_KIND = "Name des mitversicherten Kinds";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAME_VP = "Name der VP";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NEUPREIS_IN_WAEHRUNGSEINHEITEN = "Neupreis in Waehrungseinheiten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NUTZUNGSART = "Nutzungsart";
+    // Konstanten A-N... gibt es nur noch als Bezeichner-Konstanten
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ORDNUNGSBEGRIFF = "Ordnungsbegriff";
@@ -930,10 +900,6 @@ public final class Bezeichner {
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String NAECHSTE_UNFALLSUMME_IN_WAEHRUNGSEINHEITEN = "Naechste Unfallsumme";
-
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String UNFALLAENDERUNGS_PROZENTSATZ = "Unfallaenderungs-Prozentsatz";
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -954,9 +920,6 @@ public final class Bezeichner {
     public static final String PROZENTSATZ = "Prozentsatz";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN2 = "Nettobeitrag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String WAGNISART4 = "Wagnisart";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -964,12 +927,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String TODESFALLAENDERUNGS_PROZENTSATZ = "Todesfallaenderungs-Prozentsatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = "Naechste Todesfall VS";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAECHSTE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = "Naechste Jahresrente";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = "Provisionspflichtige Beitragssumme";
@@ -1063,9 +1020,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WAGNISART2 = "Wagnisart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN = "Nettobeitrag";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String RISIKOZUSCHLAG_IN_WAEHRUNGSEINHEITEN = "Risikozuschlag";
@@ -1694,11 +1648,26 @@ public final class Bezeichner {
     public static final Bezeichner MITVERSICHERTE_PERSON_VORNAME = new Bezeichner("Mitversicherte Person Vorname");
     public static final Bezeichner MITZUVERSICHERNDE_PERSON = new Bezeichner("Mitzuversichernde Person");
     public static final Bezeichner MODELLNAME = new Bezeichner("Modellname");
+
     public static final Bezeichner NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Naechste Auszahlungssumme");
     public static final Bezeichner NAECHSTER_AUSZAHLUNGSTERMIN = new Bezeichner("Naechster Auszahlungstermin");
-
+    public static final Bezeichner NAECHSTE_UNFALLSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Naechste Unfallsumme");
     public static final Bezeichner NAECHSTE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Naechste Beitragssumme");
     public static final Bezeichner NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Naechste Erlebensfall VS");
+    public static final Bezeichner NAECHSTE_ERHOEHUNG = new Bezeichner("naechste Erhoehung");
+    public static final Bezeichner NAECHSTE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Naechste Jahresrente");
+    public static final Bezeichner NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Naechste Todesfall VS");
+    public static final Bezeichner NAME1 = new Bezeichner("Name1");
+    public static final Bezeichner NAME2 = new Bezeichner("Name2");
+    public static final Bezeichner NAME3 = new Bezeichner("Name3");
+    public static final Bezeichner NAME_KREDITINSTITUT1 = new Bezeichner("Name des Kreditinstituts 1");
+    public static final Bezeichner NAME_KREDITINSTITUT2 = new Bezeichner("Name des Kreditinstituts 2");
+    public static final Bezeichner NAME_MITVERSICHERTES_KIND = new Bezeichner("Name des mitversicherten Kinds");
+    public static final Bezeichner NAME_VP = new Bezeichner("Name der VP");
+    public static final Bezeichner NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Nettobeitrag");
+    public static final Bezeichner NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Nettobeitrag");
+    public static final Bezeichner NEUPREIS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Neupreis in Waehrungseinheiten");
+    public static final Bezeichner NUTZUNGSART = new Bezeichner("Nutzungsart");
 
     /** Die Konstante POLICIERUNGSDAT. */
     public static final Bezeichner POLICIERUNGSDAT = new Bezeichner("Policierungsdatum", "Policierungsdat");
@@ -2791,7 +2760,7 @@ public final class Bezeichner {
      */
     @Override
     public String toString() {
-        if (this.technischerName.length() > 5) {
+        if ((this.technischerName.length() > 5) || this.technischerName.equals(this.name)) {
             return this.technischerName;
         } else  {
             return this.technischerName + " (" + this.name + ")";
