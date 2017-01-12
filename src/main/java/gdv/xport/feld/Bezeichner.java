@@ -60,28 +60,7 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<>();
 
-    // Konstanten A-K... gibt es nur noch als Bezeichner-Konstanten
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String MEHRLEISTUNGSKLAUSEL = "Mehrleistungsklausel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String MEHRWERTGRUND = "Mehrwertgrund";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String MEHRWERT_IN_WAEHRUNGSEINHEITEN = "Mehrwert";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String MEHRZWECKFELD = "Mehrzweckfeld";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String MITVERSICHERTE_PERSON_FAMILIENNAME = "Mitversicherte Person Familienname";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String MITVERSICHERTE_PERSON_VORNAME = "Mitversicherte Person Vorname";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String MODELLNAME = "Modellname";
+    // Konstanten A-M... gibt es nur noch als Bezeichner-Konstanten
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String NAECHSTE_ERHOEHUNG = "naechste Erhoehung";
@@ -904,9 +883,6 @@ public final class Bezeichner {
     public static final String UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Ueberschussanteile zum Berechnungsstichtag";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String MITARBEITER_STATUS = "Mitarbeiter Status";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String PERSONEN_KUNDENNUMMER_DES_VERMITTLERS = "Personen Kundennummer des Vermittlers";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -984,9 +960,6 @@ public final class Bezeichner {
     public static final String WAGNISART4 = "Wagnisart";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String NAECHSTE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = "Naechste Beitragssumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = "Todesfall VS";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -1035,12 +1008,6 @@ public final class Bezeichner {
     public static final String UNWIDERRUFLICHES_BEZUGSRECHT_IM_TODESFALL = "Unwiderrufliches Bezugsrecht im Todesfall";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN = "Naechste Auszahlungssumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String NAECHSTER_AUSZAHLUNGSTERMIN = "Naechster Auszahlungstermin";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String VERTRAGSLAUFZEIT = "Vertragslaufzeit";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -1066,9 +1033,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String RUECKKAUFSWERT_GUELTIG_AB = "Rueckkaufswert gueltig ab";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String MINDESTLAUFZEIT = "Mindestlaufzeit";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String RUECKGEWAEHR_BEI_TOD = "Rueckgewaehr bei Tod";
@@ -1108,9 +1072,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String RENTENZAHLWEISE = "Rentenzahlweise";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String MITZUVERSICHERNDE_PERSON = "Mitzuversichernde Person";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String TARIFBEZEICHNUNG_DES_FOLGETARIFS = "Tarifbezeichnung des Folgetarifs";
@@ -1168,11 +1129,6 @@ public final class Bezeichner {
     @Deprecated
     public static final String WAEHRUNGSSCHLUESSEL_4 = "Waehrungsschluessel 4";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String MENGENSCHLUESSEL = "Mengenschluessel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String MINDESTBEITRAG_JE_WAGNIS_IN_WAEHRUNGSEINHEITEN = "Mindestbeitrag je Wagnis";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ORDNUNGS_NUMMER_FUER_WAGNISZUSATZ2 = "Ordungs-Nummer fuer Wagniszusatz";
@@ -1726,6 +1682,22 @@ public final class Bezeichner {
     public static final Bezeichner LFD_PERSONENNR_GEVO = new Bezeichner("Lfd. Personennummer im GeVo");
     public static final Bezeichner LFD_PERSONENNUMMER_DES_SICHERUNGSGLAEUBIGERS = new Bezeichner("Lfd. Personennummer des Sicherungsglaeubigers");
 
+    public static final Bezeichner MEHRLEISTUNGSKLAUSEL = new Bezeichner("Mehrleistungsklausel");
+    public static final Bezeichner MEHRWERTGRUND = new Bezeichner("Mehrwertgrund");
+    public static final Bezeichner MEHRWERT_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Mehrwert");
+    public static final Bezeichner MEHRZWECKFELD = new Bezeichner("Mehrzweckfeld");
+    public static final Bezeichner MENGENSCHLUESSEL = new Bezeichner("Mengenschluessel");
+    public static final Bezeichner MINDESTBEITRAG_JE_WAGNIS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Mindestbeitrag je Wagnis");
+    public static final Bezeichner MINDESTLAUFZEIT = new Bezeichner("Mindestlaufzeit");
+    public static final Bezeichner MITARBEITER_STATUS = new Bezeichner("Mitarbeiter Status");
+    public static final Bezeichner MITVERSICHERTE_PERSON_FAMILIENNAME = new Bezeichner("Mitversicherte Person Familienname");
+    public static final Bezeichner MITVERSICHERTE_PERSON_VORNAME = new Bezeichner("Mitversicherte Person Vorname");
+    public static final Bezeichner MITZUVERSICHERNDE_PERSON = new Bezeichner("Mitzuversichernde Person");
+    public static final Bezeichner MODELLNAME = new Bezeichner("Modellname");
+    public static final Bezeichner NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Naechste Auszahlungssumme");
+    public static final Bezeichner NAECHSTER_AUSZAHLUNGSTERMIN = new Bezeichner("Naechster Auszahlungstermin");
+
+    public static final Bezeichner NAECHSTE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Naechste Beitragssumme");
     public static final Bezeichner NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Naechste Erlebensfall VS");
 
     /** Die Konstante POLICIERUNGSDAT. */
