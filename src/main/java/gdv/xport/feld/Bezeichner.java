@@ -60,61 +60,7 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<>();
 
-    // Konstanten A-O... gibt es nur noch als Bezeichner-Konstanten
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RATENZAHLUNGSZUSCHLAG_IN_PROZENT = "Ratenzahlungszuschlag in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RECHTSFORM = "Rechtsform";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String REFERENZNUMMER = "Referenznummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String REFERENZ_VERSICHERUNGSSCHEINNUMMER = "Referenz-Versicherungsscheinnummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String REFERENZ_VERSICHERUNGSSCHEINNUMMER_1 = "1. Referenz-Versicherungsscheinnummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String REFERENZ_VERSICHERUNGSSCHEINNUMMER_2 = "2. Referenz-Versicherungsscheinnummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String REFERENZ_VERSICHERUNGSSCHEINNUMMER_3 = "3. Referenz-Versicherungsscheinnummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String REGISTRIERUNGSNUMMER_VERMITTLER = "Registrierungsnummer Vermittler";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RESTLAUFZEIT_VERTRAG = "Restlaufzeit des Vertrages";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISIKOGRUPPE_RISIKOART = "Risikogruppe / Risikoart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISIKOGRUPPE_RISIKOART1 = "Risikogruppe / Risikoart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISIKOGRUPPE_RISIKOART2 = "Risikogruppe / Risikoart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISIKOTEXT = "Risikotext";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISIKOVERLAUF = "Risikoverlauf";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISKIOEINHEIT1 = "Risikoeinheit-1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISKIOEINHEIT2 = "Risikoeinheit-2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ROHBAU_EINMALBETRAG = "Rohbau-Einmalbetrag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RUECKFUEHRUNGSKOSTEN = "Rueckfuehrungskosten";
+    // Konstanten A-R... gibt es nur noch als Bezeichner-Konstanten
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String SAISONKENNZEICHEN = "Saisonkennzeichen";
@@ -787,18 +733,6 @@ public final class Bezeichner {
     public static final String VERSION_SATZART_0220_684 = "Version Satzart 0220 684";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = "Rueckgewaehrsumme zum Ablauf";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SOLIDARITAETSZUSCHLAG_BEI_ABLAUF = "Solidarit\u00e4tszuschlag bei Ablauf";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Rueckkaufswert zum Berechnungsstichtag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = "Solidarit\u00e4tszuschlag bei Rueckkauf zum Berechnungsstichtag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Ueberschussanteile zum Berechnungsstichtag";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -876,21 +810,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WERTUNGSMODELL = "Wertungsmodell";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Provisionspflichtige Beitragssumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = "Provisionspflichtige Beitragssumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Provisionspflichtige Wertungssumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Provisionspflichtige Wertungssumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PROZENTSATZ = "Prozentsatz";
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -922,24 +841,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String UEBERSCHUSS_GUELTIG_AB = "Ueberschuss gueltig ab";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISIKOEINSCHRAENKUNG = "Risikoeinschraenkung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISIKOZUSCHLAEGE = "Risikozuschlaege";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN = "Rueckkaufswert";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN_MIT_NACHKOMMA = "Rueckkaufswert";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RUECKKAUFSWERT_GUELTIG_AB = "Rueckkaufswert gueltig ab";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RUECKGEWAEHR_BEI_TOD = "Rueckgewaehr bei Tod";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WITWEN_WITWERRENTE_IN_PROZENT = "Witwen- / Witwerrente in Prozent";
@@ -1621,18 +1522,48 @@ public final class Bezeichner {
     public static final Bezeichner PRODUKTSPEZIFISCHE_ANTRAGSDATEN = new Bezeichner("Produktspezifische Antragsdaten");
     public static final Bezeichner PRODUKTSPEZIFISCHE_STAMMDATEN = new Bezeichner("Produktspezifische Stammdaten");
     public static final Bezeichner PROVISION = new Bezeichner("Provision");
+    public static final Bezeichner PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Provisionspflichtige Beitragssumme");
+    public static final Bezeichner PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2 = PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN;
+    public static final Bezeichner PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Provisionspflichtige Wertungssumme");
+    public static final Bezeichner PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN;
+    public static final Bezeichner PROZENTSATZ = new Bezeichner("Prozentsatz");
     public static final Bezeichner PROZENTSATZ_PROGRESSIVE_INVALIDITAET = new Bezeichner("Prozentsatz progressive Invaliditaet");
     public static final Bezeichner PROZENTSATZ_PROGRESSIVE_INVALIDITAET_MEHRLEISTUNG_BEI_INVALIDITAET = new Bezeichner("Prozentsatz progressive Invaliditaet / Mehrleistung bei Invaliditaet");
 
-    /** The Konstante ROLLE_W_AKZ. */
+    public static final Bezeichner RATENZAHLUNGSZUSCHLAG_IN_PROZENT = new Bezeichner("Ratenzahlungszuschlag in %");
+    public static final Bezeichner RECHTSFORM = new Bezeichner("Rechtsform");
+    public static final Bezeichner REFERENZNUMMER = new Bezeichner("Referenznummer");
+    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Referenz-Versicherungsscheinnummer");
+    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_1 = new Bezeichner("1. Referenz-Versicherungsscheinnummer");
+    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_2 = new Bezeichner("2. Referenz-Versicherungsscheinnummer");
+    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_3 = new Bezeichner("3. Referenz-Versicherungsscheinnummer");
+    public static final Bezeichner REGISTRIERUNGSNUMMER_VERMITTLER = new Bezeichner("Registrierungsnummer Vermittler");
+    public static final Bezeichner RESTLAUFZEIT_VERTRAG = new Bezeichner("Restlaufzeit des Vertrages");
+    public static final Bezeichner RISIKOGRUPPE_RISIKOART = new Bezeichner("Risikogruppe / Risikoart");
+    public static final Bezeichner RISIKOGRUPPE_RISIKOART1 = RISIKOGRUPPE_RISIKOART;
+    public static final Bezeichner RISIKOGRUPPE_RISIKOART2 = RISIKOGRUPPE_RISIKOART;
+    public static final Bezeichner RISIKOTEXT = new Bezeichner("Risikotext");
+    public static final Bezeichner RISIKOVERLAUF = new Bezeichner("Risikoverlauf");
+    public static final Bezeichner RISKIOEINHEIT1 = new Bezeichner("Risikoeinheit-1");
+    public static final Bezeichner RISKIOEINHEIT2 = new Bezeichner("Risikoeinheit-2");
+    public static final Bezeichner RISIKOEINSCHRAENKUNG = new Bezeichner("Risikoeinschraenkung");
+    public static final Bezeichner RISIKOZUSCHLAEGE = new Bezeichner("Risikozuschlaege");
     public static final Bezeichner ROLLE_W_AKZ = new Bezeichner("Rolle W-AKZ", "RolleWAKZ");
-
-    /** The Konstante RUECKGEWAEHRDAT. */
+    public static final Bezeichner ROHBAU_EINMALBETRAG = new Bezeichner("Rohbau-Einmalbetrag");
+    public static final Bezeichner RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rueckkaufswert");
+    public static final Bezeichner RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rueckgewaehrsumme zum Ablauf");
+    public static final Bezeichner RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rueckkaufswert zum Berechnungsstichtag");
+    public static final Bezeichner RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN_MIT_NACHKOMMA = new Bezeichner("Rueckkaufswert");
+    public static final Bezeichner RUECKKAUFSWERT_GUELTIG_AB = new Bezeichner("Rueckkaufswert gueltig ab");
+    public static final Bezeichner RUECKGEWAEHR_BEI_TOD = new Bezeichner("Rueckgewaehr bei Tod");
+    public static final Bezeichner RUECKFUEHRUNGSKOSTEN = new Bezeichner("Rueckfuehrungskosten");
     public static final Bezeichner RUECKGEWAEHRDAT = new Bezeichner("Rueckgewaehrdatum", "Rueckgewaehrdat");
 
     public static final Bezeichner SEPA_GLAEUBIGERIDENTIFIKATIONSNUMMER = new Bezeichner("SEPA-Glaeubigeridentifikationsnummer", "SEPAGlaeubigeridentifikationsnummer");
     public static final Bezeichner SEPA_MANDAT_AUSSTELLUNGSDATUM = new Bezeichner("SEPA-Mandat Ausstellungsdatum", "SEPAMandatAusstellungsdatum");
     public static final Bezeichner SEPA_MANDAT_KONTOREFERENZ = new Bezeichner("SEPA-Mandat Kontoreferenz", "SEPAMandatKontoreferenz");
+    public static final Bezeichner SOLIDARITAETSZUSCHLAG_BEI_ABLAUF = new Bezeichner("Solidarit\u00e4tszuschlag bei Ablauf");
+    public static final Bezeichner SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = new Bezeichner("Solidarit\u00e4tszuschlag bei Rueckkauf zum Berechnungsstichtag");
     public static final Bezeichner SPARTE2 = new Bezeichner("Sparte2", "Sparte2");
     public static final Bezeichner SPARVORGANG = new Bezeichner("Sparvorgang");
 
