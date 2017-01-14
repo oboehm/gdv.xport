@@ -60,58 +60,7 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<>();
 
-    // Konstanten A-N... gibt es nur noch als Bezeichner-Konstanten
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ORDNUNGSBEGRIFF = "Ordnungsbegriff";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ORT = "Ort";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PASSIVES_KRIEGSRISIKO = "passives Kriegsrisiko";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PERSONENNUMMER_LFD_NUMMER = "Personennummer / lfd. Nummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PERSONEN_KUNDENNUMMER_DES_VERSICHERERS = "Personen-/Kundennummer des Versicherers";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String POSTALISCHES_KENNZEICHEN = "postalisches Kennzeichen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String POSTFACH = "postfach";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String POSTLEITZAHL = "Postleitzahl";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PRODUKTBESCHREIBUNG = "Produktbeschreibung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PRODUKTFORM = "Produktform";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PRODUKTFORM_GUELTIG_AB = "Produktform gueltig ab";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PRODUKTKENNUNG = "Produktkennung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PRODUKTNAME = "Produktname";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PRODUKTSPEZIFISCHE_ANTRAGSDATEN = "Produktspezifische Antragsdaten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PRODUKTSPEZIFISCHE_STAMMDATEN = "Produktspezifische Stammdaten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PROVISION = "Provision";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PROZENTSATZ_PROGRESSIVE_INVALIDITAET = "Prozentsatz progressive Invaliditaet";
+    // Konstanten A-O... gibt es nur noch als Bezeichner-Konstanten
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String RATENZAHLUNGSZUSCHLAG_IN_PROZENT = "Ratenzahlungszuschlag in %";
@@ -853,9 +802,6 @@ public final class Bezeichner {
     public static final String UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Ueberschussanteile zum Berechnungsstichtag";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String PERSONEN_KUNDENNUMMER_DES_VERMITTLERS = "Personen Kundennummer des Vermittlers";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String SOZIALVERSICHERUNG_NUMMER = "Sozialversicherung Nummer";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -917,9 +863,6 @@ public final class Bezeichner {
     public static final String THESAUR = "Thesaur";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String PROZENTSATZ = "Prozentsatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String WAGNISART4 = "Wagnisart";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -927,12 +870,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String TODESFALLAENDERUNGS_PROZENTSATZ = "Todesfallaenderungs-Prozentsatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = "Provisionspflichtige Beitragssumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Provisionspflichtige Wertungssumme";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WERTUNGSBASIS = "Wertungsbasis";
@@ -944,7 +881,17 @@ public final class Bezeichner {
     public static final String PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Provisionspflichtige Beitragssumme";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
+    public static final String PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = "Provisionspflichtige Beitragssumme";
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
+    public static final String PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Provisionspflichtige Wertungssumme";
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
     public static final String PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = "Provisionspflichtige Wertungssumme";
+    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
+    @Deprecated
+    public static final String PROZENTSATZ = "Prozentsatz";
+
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WERTUNGSBASIS2 = "Wertungsbasis";
@@ -1083,13 +1030,6 @@ public final class Bezeichner {
     @Deprecated
     public static final String WAEHRUNGSSCHLUESSEL_4 = "Waehrungsschluessel 4";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ORDNUNGS_NUMMER_FUER_WAGNISZUSATZ2 = "Ordungs-Nummer fuer Wagniszusatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String POSTLEITZAHL_DER_RISIKOANSCHRIFT = "Postleitzahl der Risikoanschrift";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String RISIKOORT = "Risikoort";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -1116,9 +1056,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WAGNISTEXT = "Wagnistext";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ORDNUNGS_NUMMER_FUER_WAGNISZUATZ = "Ordungs-Nummer fuer Wagniszusatz";
 
     // Unfall
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -1127,9 +1064,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String UNFAELLE = "Unfaelle";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String PROZENTSATZ_PROGRESSIVE_INVALIDITAET_MEHRLEISTUNG_BEI_INVALIDITAET = "Prozentsatz progressive Invaliditaet / Mehrleistung bei Invaliditaet";
 
     // Verbundene Hausrat
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -1152,13 +1086,7 @@ public final class Bezeichner {
     public static final String UNTERVERS_VERZICHT = "Untervers.-Verzicht";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String OBJEKTNUMMER2 = "Objektnummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String STAENDIG_BEWOHNT = "Staendig bewohnt";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String OBJEKTNUMMER = "Objektnummer";
 
     /////////// Bezeichner-Konstanten /////////////////////////////////////////
 
@@ -1665,12 +1593,36 @@ public final class Bezeichner {
     public static final Bezeichner NAME_MITVERSICHERTES_KIND = new Bezeichner("Name des mitversicherten Kinds");
     public static final Bezeichner NAME_VP = new Bezeichner("Name der VP");
     public static final Bezeichner NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Nettobeitrag");
-    public static final Bezeichner NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Nettobeitrag");
+    public static final Bezeichner NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN2 = NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN;
     public static final Bezeichner NEUPREIS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Neupreis in Waehrungseinheiten");
     public static final Bezeichner NUTZUNGSART = new Bezeichner("Nutzungsart");
 
-    /** Die Konstante POLICIERUNGSDAT. */
+    public static final Bezeichner OBJEKTNUMMER = new Bezeichner("Objektnummer");
+    public static final Bezeichner OBJEKTNUMMER2 = OBJEKTNUMMER;
+    public static final Bezeichner ORDNUNGS_NUMMER_FUER_WAGNISZUATZ = new Bezeichner("Ordungs-Nummer fuer Wagniszusatz");
+    public static final Bezeichner ORDNUNGS_NUMMER_FUER_WAGNISZUSATZ2 = ORDNUNGS_NUMMER_FUER_WAGNISZUATZ;
+    public static final Bezeichner ORDNUNGSBEGRIFF = new Bezeichner("Ordnungsbegriff");
+    public static final Bezeichner ORT = new Bezeichner("Ort");
+
+    public static final Bezeichner PASSIVES_KRIEGSRISIKO = new Bezeichner("passives Kriegsrisiko");
+    public static final Bezeichner PERSONEN_KUNDENNUMMER_DES_VERMITTLERS = new Bezeichner("Personen Kundennummer des Vermittlers");
+    public static final Bezeichner PERSONEN_KUNDENNUMMER_DES_VERSICHERERS = new Bezeichner("Personen-/Kundennummer des Versicherers");
+    public static final Bezeichner PERSONENNUMMER_LFD_NUMMER = new Bezeichner("Personennummer / lfd. Nummer");
     public static final Bezeichner POLICIERUNGSDAT = new Bezeichner("Policierungsdatum", "Policierungsdat");
+    public static final Bezeichner POSTALISCHES_KENNZEICHEN = new Bezeichner("postalisches Kennzeichen");
+    public static final Bezeichner POSTFACH = new Bezeichner("postfach");
+    public static final Bezeichner POSTLEITZAHL = new Bezeichner("Postleitzahl");
+    public static final Bezeichner POSTLEITZAHL_DER_RISIKOANSCHRIFT = new Bezeichner("Postleitzahl der Risikoanschrift");
+    public static final Bezeichner PRODUKTBESCHREIBUNG = new Bezeichner("Produktbeschreibung");
+    public static final Bezeichner PRODUKTFORM = new Bezeichner("Produktform");
+    public static final Bezeichner PRODUKTFORM_GUELTIG_AB = new Bezeichner("Produktform gueltig ab");
+    public static final Bezeichner PRODUKTKENNUNG = new Bezeichner("Produktkennung");
+    public static final Bezeichner PRODUKTNAME = new Bezeichner("Produktname");
+    public static final Bezeichner PRODUKTSPEZIFISCHE_ANTRAGSDATEN = new Bezeichner("Produktspezifische Antragsdaten");
+    public static final Bezeichner PRODUKTSPEZIFISCHE_STAMMDATEN = new Bezeichner("Produktspezifische Stammdaten");
+    public static final Bezeichner PROVISION = new Bezeichner("Provision");
+    public static final Bezeichner PROZENTSATZ_PROGRESSIVE_INVALIDITAET = new Bezeichner("Prozentsatz progressive Invaliditaet");
+    public static final Bezeichner PROZENTSATZ_PROGRESSIVE_INVALIDITAET_MEHRLEISTUNG_BEI_INVALIDITAET = new Bezeichner("Prozentsatz progressive Invaliditaet / Mehrleistung bei Invaliditaet");
 
     /** The Konstante ROLLE_W_AKZ. */
     public static final Bezeichner ROLLE_W_AKZ = new Bezeichner("Rolle W-AKZ", "RolleWAKZ");
