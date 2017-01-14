@@ -60,226 +60,7 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<>();
 
-    // Konstanten A-R... gibt es nur noch als Bezeichner-Konstanten
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SAISONKENNZEICHEN = "Saisonkennzeichen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZART = "Satzart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMER = "Satznummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMER1 = "Satznummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMER2 = "Satznummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMER3 = "Satznummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMER4 = "Satznummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMER5 = "Satznummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMER9 = "Satznummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMERWIEDERHOLUNG = "Satznummerwiederholung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMERWIEDERHOLUNG1 = "Satznummerwiederholung1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMERWIEDERHOLUNG2 = "Satznummerwiederholung2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMERWIEDERHOLUNG3 = "Satznummerwiederholung3";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMERWIEDERHOLUNG4 = "Satznummerwiederholung4";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SATZNUMMERWIEDERHOLUNG9 = "Satznummerwiederholung9";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SCHADENBEARBEITUNGSKOSTEN = "Schadenbearbeitungskosten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SCHLUESSEL_SICHERUNGSEINRICHTUNG = "Schluessel Sicherungseinrichtung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SCHUTZBRIEF_VERKEHRSSERVICE = "Schutzbrief /Verkehrsservice";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SELBSTBETEILIGUNG = "Selbstbeteiligung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SELBSTBETEILIGUNG_IN_PROZENT = "Selbstbeteiligung in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = "Selbstbeteiligung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SELBSTBETEILIGUNG_IN_WE_MAX = "Selbstbeteiligung in WE (max.)";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SELBSTBETEILIGUNG_IN_WE_MIND = "Selbstbeteiligung in WE (mind.)";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SERVICELEISTUNGEN = "Serviceleistungen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SERVICELEISTUNGEN_BEITRAGSSATZ = "Serviceleistungen Beitragssatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SICHERUNGSEINRICHTUNG = "Sicherungseinrichtung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SICHERUNGSGLAEUBIGER = "Sicherungsglaeubiger";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SICHERUNGSSCHEIN = "Sicherungsschein";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SONDERBEDINGUNGEN = "Sonderbedingungen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SONDERBEDINGUNGEN_KLAUSELN = "Sonderbedingungen / Klauseln";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SONDERVEREINBARUNGEN = "Sondervereinbarungen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL = "Sonstigter Bezugsberechtigter im Leistungsfall";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SPARTE = "Sparte";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = "Spezifikation der Referenz-Versicherungsscheinnummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String STAATSANGEHOERIGKEIT = "Staatsangehoerigkeit";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String STAERKE = "Staerke";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String STAERKEEINHEIT = "Staerkeeinheit";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String STEUERNR_JURISTISCHE_PERSON = "Steuernummer bei juristischen Personen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String STOCKWERKE = "Stockwerke";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String STRASSE = "Strasse";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String STURMZONE = "Sturmzone";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TAGEGELD1 = "Tagegeld 1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TAGEGELD1_BEITRAGSSATZ = "Tagegeld 1 Beitragssatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TAGEGELD2 = "Tagegeld 2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TAGEGELD2_BEITRAGSSATZ = "Tagegeld 2 Beitragssatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TARIF = "Tarif";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGTEIL_IN_WAEHRUNGSEINHEITEN = "Tarifbeitrag 100 % fuer Kraftfahrt-Fahrzeugteil";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN = "Tarifbeitrag 100 % fuer Kraftfahrt-Fahrzeugvoll";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_HAFTPFLICHT_IN_WAEHRUNGSEINHEITEN = "Tarifbeitrag 100 % fuer Kraftfahrt-Haftpflicht";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TARIFBEZEICHNUNG = "Tarifbezeichnung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TARIFIERUNGSMERKMAL_LAUFZEIT = "Tarifierungsmerkmal Laufzeit";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TARIFJAHR = "Tarifjahr";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TITEL = "Titel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TOD = "Tod";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TOD_BEITRAGSSATZ = "Tod-Beitragssatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TRAEGERUNTERNEHMEN_NAME = "Traegerunternehmen Name";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TRAEGERUNTERNEHMEN_SCHLUESSEL = "Traegerunternehmen Schluessel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TYKLASSE_KH = "Tyklasse KH";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TYPKLASSE_FUER_KFT = "Typklasse fuer KFT";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TYPKLASSE_FUER_KFV = "Typklasse fuer KFV";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TYPSCHLUESSEL_NR = "Typschluessel-Nr.";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TYP_BANKVERBINDUNG1 = "Typ der Bankverbindung 1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TYP_BANKVERBINDUNG2 = "Typ der Bankverbindung 2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UEBERFUEHRUNGSKOSTEN = "Ueberfuehrungskosten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UEBERGANGSENTSCHAEDIGUNG = "Uebergangsentschaedigung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ = "Uebergangsentschaedigung Beitragssatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UMBAUTER_RAUM = "umbauter Raum";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UMSATZSTEUER_ID = "Umsatzsteuer-Identifikationsnummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UNBEKANNT = "unbekannt";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UNTERSTUETZUNGSKASSE_NAME = "Unterstuetzungskasse Name";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UNTERSTUETZUNGSKASSE_SCHLUESSEL = "Unterstuetzungskasse Schluessel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UNVERFALLBARKEIT = "Unverfallbarkeit";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL = "Unwiderrufliches Bezugsrecht im Leistungsfall";
+    // Konstanten A-S... gibt es nur noch als Bezeichner-Konstanten
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String VERKUERZTE_BEITRAGSZAHLUNGSDAUER = "verkuerzte Beitragszahlungsdauer";
@@ -733,15 +514,6 @@ public final class Bezeichner {
     public static final String VERSION_SATZART_0220_684 = "Version Satzart 0220 684";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = "Ueberschussanteile zum Berechnungsstichtag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SOZIALVERSICHERUNG_NUMMER = "Sozialversicherung Nummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String STATUS_SEIT = "Status seit";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String WAGNISART = "Wagnisart";
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -766,28 +538,12 @@ public final class Bezeichner {
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String RENTE_INCL_UEBERSCHUSSBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = "Rente inkl. Ueberschussbeteiligung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String ZUKUENFTIGER_BEITRAG = "Zukuenftiger Beitrag";
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Versicherungssumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN = "Rente inkl. Ueberschussanrechnung";
 
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UNFALLAENDERUNGS_PROZENTSATZ = "Unfallaenderungs-Prozentsatz";
-
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UNFALLSUMME_IN_WAEHRUNGSEINHEITEN = "Unfallsumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISIKOZUSCHLAG = "Risikozuschlag";
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -798,12 +554,6 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WAGNISART4 = "Wagnisart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = "Todesfall VS";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TODESFALLAENDERUNGS_PROZENTSATZ = "Todesfallaenderungs-Prozentsatz";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WERTUNGSBASIS = "Wertungsbasis";
@@ -819,67 +569,22 @@ public final class Bezeichner {
     public static final String WERTUNGSMODELL2 = "Wertungsmodell";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String SONSTIGER_BEZUGSBERECHTIGTER_IM_ERLEBENSFALL = "Sonstiger Bezeugsberechtigter im Erlebensfall";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UNWIDERRUFLICHES_BEZUGSRECHT_IM_ERLEBENSFALL = "Unwiderrufliches Bezugsrecht im Erlebensfall";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL = "Sonstiger Bezugsberechtigter im Todesfall";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UNWIDERRUFLICHES_BEZUGSRECHT_IM_TODESFALL = "Unwiderrufliches Bezugsrecht im Todesfall";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String VERTRAGSLAUFZEIT = "Vertragslaufzeit";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String VERTRAGSART = "Vertragsart";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String STATUS = "Status";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UEBERSCHUSS_GUELTIG_AB = "Ueberschuss gueltig ab";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String WITWEN_WITWERRENTE_IN_PROZENT = "Witwen- / Witwerrente in Prozent";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TECHNISCHE_WITWEN_WITTWERRENTE_IN_PROZENT = "Technische Witwen- / Witwerrente in Prozent";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WAISENRENTE_IN_PROZENT = "Waisenrente in Prozent";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String TECHNISCHE_WAISE_IN_PROZENT = "Technische Waisenrente in Prozent";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SCHLUSSALTER_DES_WAISEN = "Schlussalter des Waisen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String ZAHLUNG_DER_WITWEN_WITWERRENTE_BIS = "Zahlung der Witwen- / Witwerrente bis";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String UMTAUSCHRECHT = "Umtauschrecht";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String STUNDUNG = "Stundung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String WAGNISART2 = "Wagnisart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISIKOZUSCHLAG_IN_WAEHRUNGSEINHEITEN = "Risikozuschlag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RENTENZAHLWEISE = "Rentenzahlweise";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TARIFBEZEICHNUNG_DES_FOLGETARIFS = "Tarifbezeichnung des Folgetarifs";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UMSTELLUNGSDATUM_DES_FOLGETARIFS = "Umstellungsdatum des Folgetarifs";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String ZUKUENFTIGER_BEITRAG_IN_WAEHRUNGSEINHEITEN = "Zukuenftiger Beitrag";
@@ -901,23 +606,8 @@ public final class Bezeichner {
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String VERSICHERTE_ERKRANKUNGEN = "Versicherte Erkrankungen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TEILKAPITALISIERUNG = "Teilkapitalisierung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TODESFALLLEISTUNG_IN_WAEHRUNGSEINHEITEN = "Todesfallleistung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TEILDATENSATZNUMMER = "Teildatensatznummer";
 
     // Haftpflicht
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RESTLAUFZEIT_DES_VERTRAGES = "Restlaufzeit des Vertrages";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SELBSTBEHALT = "Selbstbehalt";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WAEHRUNGSSCHLUESSEL_1 = "Waehrungsschluessel 1";
@@ -932,24 +622,6 @@ public final class Bezeichner {
     public static final String WAEHRUNGSSCHLUESSEL_4 = "Waehrungsschluessel 4";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String RISIKOORT = "Risikoort";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISIKOSTRASSE = "Risikostrasse";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SUMMENART_1 = "Summenart 1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SUMMENART_2 = "Summenart 2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SUMMENART_3 = "Summenart 3";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String SUMMENART_4 = "Summenart 4";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String WAGNISBESCHREIBUNG = "Wagnisbeschreibung";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -958,36 +630,13 @@ public final class Bezeichner {
     @Deprecated
     public static final String WAGNISTEXT = "Wagnistext";
 
-    // Unfall
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String REFERENZ_VERSICHERUNGSSCHEINNUMME = "Referenz-Versicherungsscheinnumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UNFAELLE = "Unfaelle";
-
     // Verbundene Hausrat
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WAEHRUNGSSCHUESSEL = "Waehrungsschluessel";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String SICHERUNGSRICHTLINIEN = "Sicherungsrichtlinien";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String RISIKOKENNZIFFER = "Risikokennziffer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String WOHNFLAECHE_QM = "Wohnflaeche qm";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String TARIFZONE = "Tarifzone";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String UNTERVERS_VERZICHT = "Untervers.-Verzicht";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String STAENDIG_BEWOHNT = "Staendig bewohnt";
 
     /////////// Bezeichner-Konstanten /////////////////////////////////////////
 
@@ -1532,22 +1181,31 @@ public final class Bezeichner {
 
     public static final Bezeichner RATENZAHLUNGSZUSCHLAG_IN_PROZENT = new Bezeichner("Ratenzahlungszuschlag in %");
     public static final Bezeichner RECHTSFORM = new Bezeichner("Rechtsform");
+    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMME = new Bezeichner("Referenz-Versicherungsscheinnumme");
     public static final Bezeichner REFERENZNUMMER = new Bezeichner("Referenznummer");
     public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Referenz-Versicherungsscheinnummer");
     public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_1 = new Bezeichner("1. Referenz-Versicherungsscheinnummer");
     public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_2 = new Bezeichner("2. Referenz-Versicherungsscheinnummer");
     public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_3 = new Bezeichner("3. Referenz-Versicherungsscheinnummer");
     public static final Bezeichner REGISTRIERUNGSNUMMER_VERMITTLER = new Bezeichner("Registrierungsnummer Vermittler");
-    public static final Bezeichner RESTLAUFZEIT_VERTRAG = new Bezeichner("Restlaufzeit des Vertrages");
+    public static final Bezeichner RENTE_INCL_UEBERSCHUSSBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rente inkl. Ueberschussbeteiligung");
+    public static final Bezeichner RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rente inkl. Ueberschussanrechnung");
+    public static final Bezeichner RENTENZAHLWEISE = new Bezeichner("Rentenzahlweise");
+    public static final Bezeichner RESTLAUFZEIT_VERTRAGES = new Bezeichner("Restlaufzeit des Vertrages");
     public static final Bezeichner RISIKOGRUPPE_RISIKOART = new Bezeichner("Risikogruppe / Risikoart");
     public static final Bezeichner RISIKOGRUPPE_RISIKOART1 = RISIKOGRUPPE_RISIKOART;
     public static final Bezeichner RISIKOGRUPPE_RISIKOART2 = RISIKOGRUPPE_RISIKOART;
+    public static final Bezeichner RISIKOKENNZIFFER = new Bezeichner("Risikokennziffer");
+    public static final Bezeichner RISIKOORT = new Bezeichner("Risikoort");
+    public static final Bezeichner RISIKOSTRASSE = new Bezeichner("Risikostrasse");
     public static final Bezeichner RISIKOTEXT = new Bezeichner("Risikotext");
     public static final Bezeichner RISIKOVERLAUF = new Bezeichner("Risikoverlauf");
     public static final Bezeichner RISKIOEINHEIT1 = new Bezeichner("Risikoeinheit-1");
     public static final Bezeichner RISKIOEINHEIT2 = new Bezeichner("Risikoeinheit-2");
     public static final Bezeichner RISIKOEINSCHRAENKUNG = new Bezeichner("Risikoeinschraenkung");
     public static final Bezeichner RISIKOZUSCHLAEGE = new Bezeichner("Risikozuschlaege");
+    public static final Bezeichner RISIKOZUSCHLAG = new Bezeichner("Risikozuschlag");
+    public static final Bezeichner RISIKOZUSCHLAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Risikozuschlag");
     public static final Bezeichner ROLLE_W_AKZ = new Bezeichner("Rolle W-AKZ", "RolleWAKZ");
     public static final Bezeichner ROHBAU_EINMALBETRAG = new Bezeichner("Rohbau-Einmalbetrag");
     public static final Bezeichner RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rueckkaufswert");
@@ -1559,25 +1217,127 @@ public final class Bezeichner {
     public static final Bezeichner RUECKFUEHRUNGSKOSTEN = new Bezeichner("Rueckfuehrungskosten");
     public static final Bezeichner RUECKGEWAEHRDAT = new Bezeichner("Rueckgewaehrdatum", "Rueckgewaehrdat");
 
+    public static final Bezeichner SAISONKENNZEICHEN = new Bezeichner("Saisonkennzeichen");
+    public static final Bezeichner SATZART = new Bezeichner("Satzart");
+    public static final Bezeichner SATZNUMMER = new Bezeichner("Satznummer");
+    public static final Bezeichner SATZNUMMER1 = SATZNUMMER;
+    public static final Bezeichner SATZNUMMER2 = SATZNUMMER;
+    public static final Bezeichner SATZNUMMER3 = SATZNUMMER;
+    public static final Bezeichner SATZNUMMER4 = SATZNUMMER;
+    public static final Bezeichner SATZNUMMER5 = SATZNUMMER;
+    public static final Bezeichner SATZNUMMER9 = SATZNUMMER;
+    public static final Bezeichner SATZNUMMERWIEDERHOLUNG = new Bezeichner("Satznummerwiederholung");
+    public static final Bezeichner SATZNUMMERWIEDERHOLUNG1 = new Bezeichner("Satznummerwiederholung1");
+    public static final Bezeichner SATZNUMMERWIEDERHOLUNG2 = new Bezeichner("Satznummerwiederholung2");
+    public static final Bezeichner SATZNUMMERWIEDERHOLUNG3 = new Bezeichner("Satznummerwiederholung3");
+    public static final Bezeichner SATZNUMMERWIEDERHOLUNG4 = new Bezeichner("Satznummerwiederholung4");
+    public static final Bezeichner SATZNUMMERWIEDERHOLUNG9 = new Bezeichner("Satznummerwiederholung9");
+    public static final Bezeichner SCHADENBEARBEITUNGSKOSTEN = new Bezeichner("Schadenbearbeitungskosten");
+    public static final Bezeichner SCHLUESSEL_SICHERUNGSEINRICHTUNG = new Bezeichner("Schluessel Sicherungseinrichtung");
+    public static final Bezeichner SCHLUSSALTER_DES_WAISEN = new Bezeichner("Schlussalter des Waisen");
+    public static final Bezeichner SCHUTZBRIEF_VERKEHRSSERVICE = new Bezeichner("Schutzbrief /Verkehrsservice");
+    public static final Bezeichner SELBSTBEHALT = new Bezeichner("Selbstbehalt");
+    public static final Bezeichner SELBSTBETEILIGUNG = new Bezeichner("Selbstbeteiligung");
+    public static final Bezeichner SELBSTBETEILIGUNG_IN_PROZENT = new Bezeichner("Selbstbeteiligung in %");
+    public static final Bezeichner SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Selbstbeteiligung");
+    public static final Bezeichner SELBSTBETEILIGUNG_IN_WE_MAX = new Bezeichner("Selbstbeteiligung in WE (max.)");
+    public static final Bezeichner SELBSTBETEILIGUNG_IN_WE_MIND = new Bezeichner("Selbstbeteiligung in WE (mind.)");
     public static final Bezeichner SEPA_GLAEUBIGERIDENTIFIKATIONSNUMMER = new Bezeichner("SEPA-Glaeubigeridentifikationsnummer", "SEPAGlaeubigeridentifikationsnummer");
     public static final Bezeichner SEPA_MANDAT_AUSSTELLUNGSDATUM = new Bezeichner("SEPA-Mandat Ausstellungsdatum", "SEPAMandatAusstellungsdatum");
     public static final Bezeichner SEPA_MANDAT_KONTOREFERENZ = new Bezeichner("SEPA-Mandat Kontoreferenz", "SEPAMandatKontoreferenz");
+    public static final Bezeichner SERVICELEISTUNGEN = new Bezeichner("Serviceleistungen");
+    public static final Bezeichner SERVICELEISTUNGEN_BEITRAGSSATZ = new Bezeichner("Serviceleistungen Beitragssatz");
+    public static final Bezeichner SICHERUNGSEINRICHTUNG = new Bezeichner("Sicherungseinrichtung");
+    public static final Bezeichner SICHERUNGSGLAEUBIGER = new Bezeichner("Sicherungsglaeubiger");
+    public static final Bezeichner SICHERUNGSRICHTLINIEN = new Bezeichner("Sicherungsrichtlinien");
+    public static final Bezeichner SICHERUNGSSCHEIN = new Bezeichner("Sicherungsschein");
     public static final Bezeichner SOLIDARITAETSZUSCHLAG_BEI_ABLAUF = new Bezeichner("Solidarit\u00e4tszuschlag bei Ablauf");
     public static final Bezeichner SOLIDARITAETSZUSCHLAG_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = new Bezeichner("Solidarit\u00e4tszuschlag bei Rueckkauf zum Berechnungsstichtag");
+    public static final Bezeichner SONDERBEDINGUNGEN = new Bezeichner("Sonderbedingungen");
+    public static final Bezeichner SONDERBEDINGUNGEN_KLAUSELN = new Bezeichner("Sonderbedingungen / Klauseln");
+    public static final Bezeichner SONDERVEREINBARUNGEN = new Bezeichner("Sondervereinbarungen");
+    public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_ERLEBENSFALL = new Bezeichner("Sonstiger Bezeugsberechtigter im Erlebensfall");
+    public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL = new Bezeichner("Sonstigter Bezugsberechtigter im Leistungsfall");
+    public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL = new Bezeichner("Sonstiger Bezugsberechtigter im Todesfall");
+    public static final Bezeichner SOZIALVERSICHERUNG_NUMMER = new Bezeichner("Sozialversicherung Nummer");
+    public static final Bezeichner SPARTE = new Bezeichner("Sparte");
     public static final Bezeichner SPARTE2 = new Bezeichner("Sparte2", "Sparte2");
     public static final Bezeichner SPARVORGANG = new Bezeichner("Sparvorgang");
+    public static final Bezeichner SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Spezifikation der Referenz-Versicherungsscheinnummer");
+    public static final Bezeichner STAATSANGEHOERIGKEIT = new Bezeichner("Staatsangehoerigkeit");
+    public static final Bezeichner STAENDIG_BEWOHNT = new Bezeichner("Staendig bewohnt");
+    public static final Bezeichner STAERKE = new Bezeichner("Staerke");
+    public static final Bezeichner STAERKEEINHEIT = new Bezeichner("Staerkeeinheit");
+    public static final Bezeichner STATUS = new Bezeichner("Status");
+    public static final Bezeichner STATUS_SEIT = new Bezeichner("Status seit");
+    public static final Bezeichner STEUERNR_JURISTISCHE_PERSON = new Bezeichner("Steuernummer bei juristischen Personen");
+    public static final Bezeichner STOCKWERKE = new Bezeichner("Stockwerke");
+    public static final Bezeichner STRASSE = new Bezeichner("Strasse");
+    public static final Bezeichner STUNDUNG = new Bezeichner("Stundung");
+    public static final Bezeichner STURMZONE = new Bezeichner("Sturmzone");
+    public static final Bezeichner SUMMENART_1 = new Bezeichner("Summenart 1");
+    public static final Bezeichner SUMMENART_2 = new Bezeichner("Summenart 2");
+    public static final Bezeichner SUMMENART_3 = new Bezeichner("Summenart 3");
+    public static final Bezeichner SUMMENART_4 = new Bezeichner("Summenart 4");
 
+    public static final Bezeichner TAGEGELD1 = new Bezeichner("Tagegeld 1");
+    public static final Bezeichner TAGEGELD1_BEITRAGSSATZ = new Bezeichner("Tagegeld 1 Beitragssatz");
+    public static final Bezeichner TAGEGELD2 = new Bezeichner("Tagegeld 2");
+    public static final Bezeichner TAGEGELD2_BEITRAGSSATZ = new Bezeichner("Tagegeld 2 Beitragssatz");
+    public static final Bezeichner TARIF = new Bezeichner("Tarif");
+    public static final Bezeichner TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGTEIL_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Tarifbeitrag 100 % fuer Kraftfahrt-Fahrzeugteil");
+    public static final Bezeichner TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Tarifbeitrag 100 % fuer Kraftfahrt-Fahrzeugvoll");
+    public static final Bezeichner TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_HAFTPFLICHT_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Tarifbeitrag 100 % fuer Kraftfahrt-Haftpflicht");
+    public static final Bezeichner TARIFBEZEICHNUNG = new Bezeichner("Tarifbezeichnung");
+    public static final Bezeichner TARIFBEZEICHNUNG_DES_FOLGETARIFS = new Bezeichner("Tarifbezeichnung des Folgetarifs");
+    public static final Bezeichner TARIFIERUNGSMERKMAL_LAUFZEIT = new Bezeichner("Tarifierungsmerkmal Laufzeit");
+    public static final Bezeichner TARIFJAHR = new Bezeichner("Tarifjahr");
+    public static final Bezeichner TARIFZONE = new Bezeichner("Tarifzone");
+    public static final Bezeichner TECHNISCHE_WAISE_IN_PROZENT = new Bezeichner("Technische Waisenrente in Prozent");
+    public static final Bezeichner TECHNISCHE_WITWEN_WITTWERRENTE_IN_PROZENT = new Bezeichner("Technische Witwen- / Witwerrente in Prozent");
+    public static final Bezeichner TEILDATENSATZNUMMER = new Bezeichner("Teildatensatznummer");
+    public static final Bezeichner TEILKAPITALISIERUNG = new Bezeichner("Teilkapitalisierung");
+    public static final Bezeichner TITEL = new Bezeichner("Titel");
+    public static final Bezeichner TOD = new Bezeichner("Tod");
+    public static final Bezeichner TOD_BEITRAGSSATZ = new Bezeichner("Tod-Beitragssatz");
     public static final Bezeichner TODESFALL_VS_IN_WAEHRUNGSEINHEIT = new Bezeichner("Todesfall VS");
     public static final Bezeichner TODESFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Todesfall VS zum Ablauf");
     public static final Bezeichner TODESFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Todesfall VS zum Beginn der Abrufphase");
     public static final Bezeichner TODESFALLLEISTUNG_IN_PROZENT = new Bezeichner("Todesfallleistung in %");
+    public static final Bezeichner TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Todesfall VS");
+    public static final Bezeichner TODESFALLAENDERUNGS_PROZENTSATZ = new Bezeichner("Todesfallaenderungs-Prozentsatz");
+    public static final Bezeichner TODESFALLLEISTUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Todesfallleistung");
+    public static final Bezeichner TRAEGERUNTERNEHMEN_NAME = new Bezeichner("Traegerunternehmen Name");
+    public static final Bezeichner TRAEGERUNTERNEHMEN_SCHLUESSEL = new Bezeichner("Traegerunternehmen Schluessel");
+    public static final Bezeichner TYKLASSE_KH = new Bezeichner("Tyklasse KH");
+    public static final Bezeichner TYPKLASSE_FUER_KFT = new Bezeichner("Typklasse fuer KFT");
+    public static final Bezeichner TYPKLASSE_FUER_KFV = new Bezeichner("Typklasse fuer KFV");
+    public static final Bezeichner TYPSCHLUESSEL_NR = new Bezeichner("Typschluessel-Nr.");
+    public static final Bezeichner TYP_BANKVERBINDUNG1 = new Bezeichner("Typ der Bankverbindung 1");
+    public static final Bezeichner TYP_BANKVERBINDUNG2 = new Bezeichner("Typ der Bankverbindung 2");
 
-    /** The Constant UMSTELLUNGSDAT_FOLGETARIFS. */
+    public static final Bezeichner UEBERFUEHRUNGSKOSTEN = new Bezeichner("Ueberfuehrungskosten");
+    public static final Bezeichner UEBERGANGSENTSCHAEDIGUNG = new Bezeichner("Uebergangsentschaedigung");
+    public static final Bezeichner UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ = new Bezeichner("Uebergangsentschaedigung Beitragssatz");
+    public static final Bezeichner UEBERSCHUSS_GUELTIG_AB = new Bezeichner("Ueberschuss gueltig ab");
+    public static final Bezeichner UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Ueberschussanteile zum Berechnungsstichtag");
+    public static final Bezeichner UMBAUTER_RAUM = new Bezeichner("umbauter Raum");
+    public static final Bezeichner UMSATZSTEUER_ID = new Bezeichner("Umsatzsteuer-Identifikationsnummer");
     public static final Bezeichner UMSTELLUNGSDAT_FOLGETARIFS = new Bezeichner("Umstellungsdatum des Folgetarifs", "UmstellungsdatFolgetarifs");
-
-    /** Die Konstante URSPRUENGLICHES_HAFTUNGSBEGINNDAT. */
-    public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner(
-            "Urspruengliches Haftungsbeginndatum", "UerspruenglichesHaftungsbeginndat");
+    public static final Bezeichner UMSTELLUNGSDATUM_DES_FOLGETARIFS = UMSTELLUNGSDAT_FOLGETARIFS;
+    public static final Bezeichner UMTAUSCHRECHT = new Bezeichner("Umtauschrecht");
+    public static final Bezeichner UNBEKANNT = new Bezeichner("unbekannt");
+    public static final Bezeichner UNFAELLE = new Bezeichner("Unfaelle");
+    public static final Bezeichner UNFALLAENDERUNGS_PROZENTSATZ = new Bezeichner("Unfallaenderungs-Prozentsatz");
+    public static final Bezeichner UNFALLSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Unfallsumme");
+    public static final Bezeichner UNTERSTUETZUNGSKASSE_NAME = new Bezeichner("Unterstuetzungskasse Name");
+    public static final Bezeichner UNTERSTUETZUNGSKASSE_SCHLUESSEL = new Bezeichner("Unterstuetzungskasse Schluessel");
+    public static final Bezeichner UNTERVERS_VERZICHT = new Bezeichner("Untervers.-Verzicht");
+    public static final Bezeichner UNVERFALLBARKEIT = new Bezeichner("Unverfallbarkeit");
+    public static final Bezeichner UNWIDERRUFLICHES_BEZUGSRECHT_IM_ERLEBENSFALL = new Bezeichner("Unwiderrufliches Bezugsrecht im Erlebensfall");
+    public static final Bezeichner UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL = new Bezeichner("Unwiderrufliches Bezugsrecht im Leistungsfall");
+    public static final Bezeichner UNWIDERRUFLICHES_BEZUGSRECHT_IM_TODESFALL = new Bezeichner("Unwiderrufliches Bezugsrecht im Todesfall");
+    public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner("Urspruengliches Haftungsbeginndatum", "UerspruenglichesHaftungsbeginndat");
 
     public static final Bezeichner VERSION_SATZART_0210_TECH_VERS = new Bezeichner("Version Satzart 0210 Technische Versicherungen");
     public static final Bezeichner VERSION_SATZART_0211_TECH_VERS = new Bezeichner("Version Satzart 0211 Technische Versicherungen");
