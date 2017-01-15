@@ -60,352 +60,7 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<>();
 
-    // Konstanten A-S... gibt es nur noch als Bezeichner-Konstanten
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERKUERZTE_BEITRAGSZAHLUNGSDAUER = "verkuerzte Beitragszahlungsdauer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERMITTLER = "Geschaeftsstelle/Vermittler";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSICHERTES_OBJEKT = "Versichertes Objekt";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSICHERTE_GEFAHREN = "Versicherte Gefahren";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSICHERUNGSLEISTUNGEN = "Versicherungsleistungen";
-    /** @deprecated bitte {@link Bezeichner#VS_NR} verwenden */
-    @Deprecated
-    public static final String VERSICHERUNGSSCHEINNUMMER = "Versicherungsschein-Nummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSICHERUNGSSCHEINNUMMER_VM = "Versicherungsscheinnummer VM";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_9999 = "Version Satzart 9999 Nachsatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0001 = "Version Satzart 0001";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0100 = "Version Satzart 0100";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0200 = "Version Satzart 0200";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_050 = "Version Satzart 0210 050";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_051 = "Version Satzart 0220 051";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_052 = "Version Satzart 0220 052";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_053 = "Version Satzart 0220 053";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_054 = "Version Satzart 0220 054";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_059 = "Version Satzart 0220 059";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_040 = "Version Satzart 0210 040";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_040 = "Version Satzart 0220 040";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_030 = "Version Satzart 0210 030";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_030 = "Version Satzart 0220 030";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_010 = "Version Satzart 0210 010";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_010 = "Version Satzart 0220 010";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_130 = "Version Satzart 0210 130";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_130 = "Version Satzart 0220 130";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_110 = "Version Satzart 0210 110";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_110 = "Version Satzart 0220 110";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_140 = "Version Satzart 0210 140";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_140 = "Version Satzart 0220 140";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_020 = "Version Satzart 0210 020";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_020 = "Version Satzart 0220 020";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_070 = "Version Satzart 0210 070";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_070 = "Version Satzart 0220 070";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_FEUER = "Version Satzart 0210 Feuer-Industrie/Gewerbliche Sachversicherung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_FEUER = "Version Satzart 0220 Feuer-Industrie/Gewerbliche Sachversicherung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_510 = "Version Satzart 0210 510";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_510 = "Version Satzart 0220 510";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_TRANSPORT = "Version Satzart 0210 Transport";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_TRANSPORT = "Version Satzart 0220 Transport";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0250_TRANSPORT = "Version Satzart 0250 Transport Einzelanmeldung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0260_TRANSPORT = "Version Satzart 0260 Transport Umsatzanmeldung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_NICHT_DEF_SPARTEN = "Version Satzart 0210 Nicht einzeln definierte Sparten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_NICHT_DEF_SPARTEN = "Version Satzart 0220 Nicht einzeln definierte Sparten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_KFZ_BAUSTEIN = "Version KFZ-Baustein";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0300_BETEILIGUNGSINFORMATION = "Version Satzart 0300 Beteiligungsinformation";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0400_INKASSO = "Version Satzart 0400 Inkasso";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0410_INKASSO = "Version Satzart 0410 Inkasso";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0430_INKASSO = "Version Satzart 0430 Inkasso";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0500_SCHADENINFORMATION = "Version Satzart 0500 Schadeninformation";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0420_VERSICHERUNGSTEUERABRECHNUNG = "Version Satzart 0420 Versicherungsteuerabrechnung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0450_INKASSOABRECHNUNG = "Version Satzart 0450 Inkassoabrechnung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0550_SCHADENABRECHNUNG = "Version Satzart 0550 Schadenabrechnung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0350_KLAUSELN = "Version Satzart 0350 Klausel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0211_050 = "Version Satzart 0211 050";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_051 = "Version Satzart 0221 051";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_052 = "Version Satzart 0221 052";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_053 = "Version Satzart 0221 053";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_054 = "Version Satzart 0221 054";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_055 = "Version Satzart 0221 055";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_059 = "Version Satzart 0221 059";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0211_040 = "Version Satzart 0211 040";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_040 = "Version Satzart 0221 040";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_030 = "Version Satzart 0221 030";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0211_010 = "Version Satzart 0211 010";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_010 = "Version Satzart 0221 010";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0211_130 = "Version Satzart 0211 130";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_130 = "Version Satzart 0221 130";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0211_110 = "Version Satzart 0211 110";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_110 = "Version Satzart 0221 110";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0211_140 = "Version Satzart 0211 140";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_140 = "Version Satzart 0221 140";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_070 = "Version Satzart 0221 070";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0211_FEUER = "Version Satzart 0211 Feuer-Industrie/Gewerbliche Sachversicherung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_FEUER = "Version Satzart 0221 Feuer-Industrie/Gewerbliche Sachversicherung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_510 = "Version Satzart 0221 510";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0211_TRANSPORT = "Version Satzart 0211 Transport";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_TRANSPORT = "Version Satzart 0221 Transport";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0251_TRANSPORT = "Version Satzart 0251 Transport Einzelanmeldung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0211_NICHT_DEF_SPARTEN = "Version Satzart 0211 Nicht einzeln definierte Sparten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0221_NICHT_DEF_SPARTEN = "Version Satzart 0221 Nicht einzeln definierte Sparten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_550 = "Version Satzart 0210 550";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_550 = "Version Satzart 0220 550";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0270_550 = "Version Satzart 0270 550";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0280_550 = "Version Satzart 0280 550";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0291_550 = "Version Satzart 0291 550";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0292_550 = "Version Satzart 0292 550";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0293_550 = "Version Satzart 0293 550";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0294_550 = "Version Satzart 0294 550";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0295_550 = "Version Satzart 0295 550";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0052 = "Version Satzart 0051";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0102 = "Version Satzart 0102";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0212 = "Version Satzart 0212";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0352 = "Version Satzart 0352";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0362 = "Version Satzart 0362";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0382 = "Version Satzart 0382";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_9950 = "Version Satzart 9950";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_9952 = "Version Satzart 9952";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_580 = "Version Satzart 0210 580";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_580 = "Version Satzart 0220 580";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0372 = "Version Satzart 0372";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0600 = "Version Satzart 0600";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERTRAGSABLAUF = "Vertragsablauf";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERTRAGSBEGINN = "Vertragsbeginn";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERTRAGSFORM = "Vertragsform";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERTRAGSSTATUS = "Vertragsstatus";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VORAUSSICHTLICHES_ENDE = "voraussichtliches Ende";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN = "Vorlaufsumme";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VORNAME_VP = "Vorname der VP";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VORSTEUERABZUGSBERECHTIGT = "Vorsteuerabzugsberechtigt";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VORZUGSSEUERBERECHTIGUNG_PROZENT = "Vorsteuerabszugsberechtigung in Prozent";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VORZUGSSTEUERBERECHTIGUNG = "Vorsteuerabszugsberechtigung Ja/Nein";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VP_PERSONENNUMMER_VERMITTLER = "VP-Personnenummer des Vermittlers";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VP_PERSONENNUMMER_VERSICHERER = "VP-Personnenummer des Versicherers";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VU_ABRECHNUNGSSTELLE = "VU-Abrechnungsstelle";
-    /** @deprecated bitte {@link Bezeichner#VU_NR} verwenden */
-    @Deprecated
-    public static final String VU_NUMMER = "VU-Nummer";
+    // Konstanten A-V... gibt es nur noch als Bezeichner-Konstanten
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String WAEHRUNGSSCHLUESSEL = "Waehrungsschluessel";
@@ -475,62 +130,8 @@ public final class Bezeichner {
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String VERSION_SATZART_0392_EVB = "Version Satzart 0392 eVB-Nummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0230_LEBEN = "Version Satzart 0230 Fondsdatensatz - Leben";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0202_ALLG_ANTRAGSDATEN = "Version Satzart 0202 Allgemeine Antragsdaten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0230_UNFALL = "Version Satzart 0230 Unfall Leistungsarten";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0390_RABATTE = "Version Satzart 0390 Rabatte und Zuschlaege";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0342_BEGLEITDOK = "Version Satzart 0342 Begleitdokumente und Signaturen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_9951_MIME = "Version Satzart 9951 MIME-Datei";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_560 = "Version Satzart 0210 560";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_560 = "Version Satzart 0220 560";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_570 = "Version Satzart 0210 570";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_570 = "Version Satzart 0220 570";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0210_684 = "Version Satzart 0210 684";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSION_SATZART_0220_684 = "Version Satzart 0220 684";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String WAGNISART = "Wagnisart";
 
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VORZEICHEN = "Vorzeichen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VORZEICHEN2 = "Vorzeichen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VORZEICHEN3 = "Vorzeichen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VORZEICHEN4 = "Vorzeichen";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VORZEICHEN5 = "Vorzeichen";
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -540,9 +141,6 @@ public final class Bezeichner {
     @Deprecated
     public static final String ZUKUENFTIGER_BEITRAG = "Zukuenftiger Beitrag";
 
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Versicherungssumme";
 
 
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -569,12 +167,6 @@ public final class Bezeichner {
     public static final String WERTUNGSMODELL2 = "Wertungsmodell";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String VERTRAGSLAUFZEIT = "Vertragslaufzeit";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERTRAGSART = "Vertragsart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String WITWEN_WITWERRENTE_IN_PROZENT = "Witwen- / Witwerrente in Prozent";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
@@ -590,22 +182,10 @@ public final class Bezeichner {
     public static final String ZUKUENFTIGER_BEITRAG_IN_WAEHRUNGSEINHEITEN = "Zukuenftiger Beitrag";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
-    public static final String VERTRAGSBEDINGUNG = "Vertragsbedingung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VEREINBARTER_DYNAMIKMINDESTANPASSUNGSPROZENTSATZ = "Vereinbarter Dynamikmindestanpassungsprozentsatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VEREINBARTER_DYNAMIKMAXIMALANPASSUNGSPROZENTSATZ = "Vereinbarter Dynamikmaximalanpassungsprozentsatz";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
     public static final String WAGNISART3 = "Wagnisart";
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
     @Deprecated
     public static final String LEISTUNG_BEI_SCHWERER_ERKRANKUNG = "Leistung bei schwerer Erkrankung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String VERSICHERTE_ERKRANKUNGEN = "Versicherte Erkrankungen";
 
     // Haftpflicht
     /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
@@ -1339,19 +919,155 @@ public final class Bezeichner {
     public static final Bezeichner UNWIDERRUFLICHES_BEZUGSRECHT_IM_TODESFALL = new Bezeichner("Unwiderrufliches Bezugsrecht im Todesfall");
     public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner("Urspruengliches Haftungsbeginndatum", "UerspruenglichesHaftungsbeginndat");
 
-    public static final Bezeichner VERSION_SATZART_0210_TECH_VERS = new Bezeichner("Version Satzart 0210 Technische Versicherungen");
-    public static final Bezeichner VERSION_SATZART_0211_TECH_VERS = new Bezeichner("Version Satzart 0211 Technische Versicherungen");
-    public static final Bezeichner VERSION_SATZART_0220_TECH_VERS = new Bezeichner("Version Satzart 0220 Technische Versicherungen");
-    public static final Bezeichner VERSION_SATZART_0221_TECH_VERS = new Bezeichner("Version Satzart 0221 Technische Versicherungen");
-    public static final Bezeichner VERSION_SATZART_0222 = new Bezeichner("Version Satzart 0222");
+    public static final Bezeichner VEREINBARTER_DYNAMIKMAXIMALANPASSUNGSPROZENTSATZ = new Bezeichner("Vereinbarter Dynamikmaximalanpassungsprozentsatz");
+    public static final Bezeichner VEREINBARTER_DYNAMIKMINDESTANPASSUNGSPROZENTSATZ = new Bezeichner("Vereinbarter Dynamikmindestanpassungsprozentsatz");
+    public static final Bezeichner VERKUERZTE_BEITRAGSZAHLUNGSDAUER = new Bezeichner("verkuerzte Beitragszahlungsdauer");
+    public static final Bezeichner VERMITTLER = new Bezeichner("Geschaeftsstelle/Vermittler");
+    public static final Bezeichner VERSICHERTE_ERKRANKUNGEN = new Bezeichner("Versicherte Erkrankungen");
+    public static final Bezeichner VERSICHERTES_OBJEKT = new Bezeichner("Versichertes Objekt");
+    public static final Bezeichner VERSICHERTE_GEFAHREN = new Bezeichner("Versicherte Gefahren");
+    public static final Bezeichner VERSICHERUNGSLEISTUNGEN = new Bezeichner("Versicherungsleistungen");
+    public static final Bezeichner VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Versicherungsschein-Nummer", "VsNr");
+    public static final Bezeichner VERSICHERUNGSSCHEINNUMMER_VM = new Bezeichner("Versicherungsscheinnummer VM");
+    public static final Bezeichner VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme");
+    public static final Bezeichner VERSION_SATZART_9999 = new Bezeichner("Version Satzart 9999 Nachsatz");
     public static final Bezeichner VERTRAG_MIT_ZUWACHSGARANTIE = new Bezeichner("Vertrag mit Zuwachsgarantie");
+    public static final Bezeichner VERSION_SATZART_0001 = new Bezeichner("Version Satzart 0001");
+    public static final Bezeichner VERSION_SATZART_0100 = new Bezeichner("Version Satzart 0100");
+    public static final Bezeichner VERSION_SATZART_0200 = new Bezeichner("Version Satzart 0200");
+    public static final Bezeichner VERSION_SATZART_0202_ALLG_ANTRAGSDATEN = new Bezeichner("Version Satzart 0202 Allgemeine Antragsdaten");
+    public static final Bezeichner VERSION_SATZART_0210_050 = new Bezeichner("Version Satzart 0210 050");
+    public static final Bezeichner VERSION_SATZART_0220_051 = new Bezeichner("Version Satzart 0220 051");
+    public static final Bezeichner VERSION_SATZART_0220_052 = new Bezeichner("Version Satzart 0220 052");
+    public static final Bezeichner VERSION_SATZART_0220_053 = new Bezeichner("Version Satzart 0220 053");
+    public static final Bezeichner VERSION_SATZART_0220_054 = new Bezeichner("Version Satzart 0220 054");
+    public static final Bezeichner VERSION_SATZART_0220_059 = new Bezeichner("Version Satzart 0220 059");
+    public static final Bezeichner VERSION_SATZART_0210_040 = new Bezeichner("Version Satzart 0210 040");
+    public static final Bezeichner VERSION_SATZART_0220_040 = new Bezeichner("Version Satzart 0220 040");
+    public static final Bezeichner VERSION_SATZART_0210_030 = new Bezeichner("Version Satzart 0210 030");
+    public static final Bezeichner VERSION_SATZART_0220_030 = new Bezeichner("Version Satzart 0220 030");
+    public static final Bezeichner VERSION_SATZART_0210_010 = new Bezeichner("Version Satzart 0210 010");
+    public static final Bezeichner VERSION_SATZART_0220_010 = new Bezeichner("Version Satzart 0220 010");
+    public static final Bezeichner VERSION_SATZART_0210_130 = new Bezeichner("Version Satzart 0210 130");
+    public static final Bezeichner VERSION_SATZART_0220_130 = new Bezeichner("Version Satzart 0220 130");
+    public static final Bezeichner VERSION_SATZART_0210_110 = new Bezeichner("Version Satzart 0210 110");
+    public static final Bezeichner VERSION_SATZART_0220_110 = new Bezeichner("Version Satzart 0220 110");
+    public static final Bezeichner VERSION_SATZART_0210_140 = new Bezeichner("Version Satzart 0210 140");
+    public static final Bezeichner VERSION_SATZART_0220_140 = new Bezeichner("Version Satzart 0220 140");
+    public static final Bezeichner VERSION_SATZART_0210_020 = new Bezeichner("Version Satzart 0210 020");
+    public static final Bezeichner VERSION_SATZART_0220_020 = new Bezeichner("Version Satzart 0220 020");
+    public static final Bezeichner VERSION_SATZART_0210_070 = new Bezeichner("Version Satzart 0210 070");
+    public static final Bezeichner VERSION_SATZART_0220_070 = new Bezeichner("Version Satzart 0220 070");
+    public static final Bezeichner VERSION_SATZART_0210_FEUER = new Bezeichner("Version Satzart 0210 Feuer-Industrie/Gewerbliche Sachversicherung");
+    public static final Bezeichner VERSION_SATZART_0220_FEUER = new Bezeichner("Version Satzart 0220 Feuer-Industrie/Gewerbliche Sachversicherung");
+    public static final Bezeichner VERSION_SATZART_0210_510 = new Bezeichner("Version Satzart 0210 510");
+    public static final Bezeichner VERSION_SATZART_0220_510 = new Bezeichner("Version Satzart 0220 510");
+    public static final Bezeichner VERSION_SATZART_0210_TRANSPORT = new Bezeichner("Version Satzart 0210 Transport");
+    public static final Bezeichner VERSION_SATZART_0220_TRANSPORT = new Bezeichner("Version Satzart 0220 Transport");
+    public static final Bezeichner VERSION_SATZART_0250_TRANSPORT = new Bezeichner("Version Satzart 0250 Transport Einzelanmeldung");
+    public static final Bezeichner VERSION_SATZART_0260_TRANSPORT = new Bezeichner("Version Satzart 0260 Transport Umsatzanmeldung");
+    public static final Bezeichner VERSION_SATZART_0210_NICHT_DEF_SPARTEN = new Bezeichner("Version Satzart 0210 Nicht einzeln definierte Sparten");
+    public static final Bezeichner VERSION_SATZART_0210_TECH_VERS = new Bezeichner("Version Satzart 0210 Technische Versicherungen");
+    public static final Bezeichner VERSION_SATZART_0220_NICHT_DEF_SPARTEN = new Bezeichner("Version Satzart 0220 Nicht einzeln definierte Sparten");
+    public static final Bezeichner VERSION_SATZART_0220_TECH_VERS = new Bezeichner("Version Satzart 0220 Technische Versicherungen");
+    public static final Bezeichner VERSION_KFZ_BAUSTEIN = new Bezeichner("Version KFZ-Baustein");
+    public static final Bezeichner VERSION_SATZART_0300_BETEILIGUNGSINFORMATION = new Bezeichner("Version Satzart 0300 Beteiligungsinformation");
+    public static final Bezeichner VERSION_SATZART_0342_BEGLEITDOK = new Bezeichner("Version Satzart 0342 Begleitdokumente und Signaturen");
+    public static final Bezeichner VERSION_SATZART_0400_INKASSO = new Bezeichner("Version Satzart 0400 Inkasso");
+    public static final Bezeichner VERSION_SATZART_0410_INKASSO = new Bezeichner("Version Satzart 0410 Inkasso");
+    public static final Bezeichner VERSION_SATZART_0430_INKASSO = new Bezeichner("Version Satzart 0430 Inkasso");
+    public static final Bezeichner VERSION_SATZART_0500_SCHADENINFORMATION = new Bezeichner("Version Satzart 0500 Schadeninformation");
+    public static final Bezeichner VERSION_SATZART_0420_VERSICHERUNGSTEUERABRECHNUNG = new Bezeichner("Version Satzart 0420 Versicherungsteuerabrechnung");
+    public static final Bezeichner VERSION_SATZART_0450_INKASSOABRECHNUNG = new Bezeichner("Version Satzart 0450 Inkassoabrechnung");
+    public static final Bezeichner VERSION_SATZART_0550_SCHADENABRECHNUNG = new Bezeichner("Version Satzart 0550 Schadenabrechnung");
+    public static final Bezeichner VERSION_SATZART_0350_KLAUSELN = new Bezeichner("Version Satzart 0350 Klausel");
+    public static final Bezeichner VERSION_SATZART_0211_050 = new Bezeichner("Version Satzart 0211 050");
+    public static final Bezeichner VERSION_SATZART_0221_051 = new Bezeichner("Version Satzart 0221 051");
+    public static final Bezeichner VERSION_SATZART_0221_052 = new Bezeichner("Version Satzart 0221 052");
+    public static final Bezeichner VERSION_SATZART_0221_053 = new Bezeichner("Version Satzart 0221 053");
+    public static final Bezeichner VERSION_SATZART_0221_054 = new Bezeichner("Version Satzart 0221 054");
+    public static final Bezeichner VERSION_SATZART_0221_055 = new Bezeichner("Version Satzart 0221 055");
+    public static final Bezeichner VERSION_SATZART_0221_059 = new Bezeichner("Version Satzart 0221 059");
+    public static final Bezeichner VERSION_SATZART_0211_040 = new Bezeichner("Version Satzart 0211 040");
+    public static final Bezeichner VERSION_SATZART_0221_040 = new Bezeichner("Version Satzart 0221 040");
+    public static final Bezeichner VERSION_SATZART_0221_030 = new Bezeichner("Version Satzart 0221 030");
+    public static final Bezeichner VERSION_SATZART_0211_010 = new Bezeichner("Version Satzart 0211 010");
+    public static final Bezeichner VERSION_SATZART_0221_010 = new Bezeichner("Version Satzart 0221 010");
+    public static final Bezeichner VERSION_SATZART_0211_130 = new Bezeichner("Version Satzart 0211 130");
+    public static final Bezeichner VERSION_SATZART_0221_130 = new Bezeichner("Version Satzart 0221 130");
+    public static final Bezeichner VERSION_SATZART_0211_110 = new Bezeichner("Version Satzart 0211 110");
+    public static final Bezeichner VERSION_SATZART_0221_110 = new Bezeichner("Version Satzart 0221 110");
+    public static final Bezeichner VERSION_SATZART_0211_140 = new Bezeichner("Version Satzart 0211 140");
+    public static final Bezeichner VERSION_SATZART_0221_140 = new Bezeichner("Version Satzart 0221 140");
+    public static final Bezeichner VERSION_SATZART_0221_070 = new Bezeichner("Version Satzart 0221 070");
+    public static final Bezeichner VERSION_SATZART_0211_FEUER = new Bezeichner("Version Satzart 0211 Feuer-Industrie/Gewerbliche Sachversicherung");
+    public static final Bezeichner VERSION_SATZART_0221_FEUER = new Bezeichner("Version Satzart 0221 Feuer-Industrie/Gewerbliche Sachversicherung");
+    public static final Bezeichner VERSION_SATZART_0221_510 = new Bezeichner("Version Satzart 0221 510");
+    public static final Bezeichner VERSION_SATZART_0211_TRANSPORT = new Bezeichner("Version Satzart 0211 Transport");
+    public static final Bezeichner VERSION_SATZART_0221_TRANSPORT = new Bezeichner("Version Satzart 0221 Transport");
+    public static final Bezeichner VERSION_SATZART_0222 = new Bezeichner("Version Satzart 0222");
+    public static final Bezeichner VERSION_SATZART_0230_LEBEN = new Bezeichner("Version Satzart 0230 Fondsdatensatz - Leben");
+    public static final Bezeichner VERSION_SATZART_0230_UNFALL = new Bezeichner("Version Satzart 0230 Unfall Leistungsarten");
+    public static final Bezeichner VERSION_SATZART_0251_TRANSPORT = new Bezeichner("Version Satzart 0251 Transport Einzelanmeldung");
+    public static final Bezeichner VERSION_SATZART_0211_NICHT_DEF_SPARTEN = new Bezeichner("Version Satzart 0211 Nicht einzeln definierte Sparten");
+    public static final Bezeichner VERSION_SATZART_0211_TECH_VERS = new Bezeichner("Version Satzart 0211 Technische Versicherungen");
+    public static final Bezeichner VERSION_SATZART_0221_NICHT_DEF_SPARTEN = new Bezeichner("Version Satzart 0221 Nicht einzeln definierte Sparten");
+    public static final Bezeichner VERSION_SATZART_0221_TECH_VERS = new Bezeichner("Version Satzart 0221 Technische Versicherungen");
+    public static final Bezeichner VERSION_SATZART_0210_550 = new Bezeichner("Version Satzart 0210 550");
+    public static final Bezeichner VERSION_SATZART_0210_560 = new Bezeichner("Version Satzart 0210 560");
+    public static final Bezeichner VERSION_SATZART_0210_570 = new Bezeichner("Version Satzart 0210 570");
+    public static final Bezeichner VERSION_SATZART_0220_550 = new Bezeichner("Version Satzart 0220 550");
+    public static final Bezeichner VERSION_SATZART_0220_560 = new Bezeichner("Version Satzart 0220 560");
+    public static final Bezeichner VERSION_SATZART_0220_570 = new Bezeichner("Version Satzart 0220 570");
+    public static final Bezeichner VERSION_SATZART_0270_550 = new Bezeichner("Version Satzart 0270 550");
+    public static final Bezeichner VERSION_SATZART_0280_550 = new Bezeichner("Version Satzart 0280 550");
+    public static final Bezeichner VERSION_SATZART_0291_550 = new Bezeichner("Version Satzart 0291 550");
+    public static final Bezeichner VERSION_SATZART_0292_550 = new Bezeichner("Version Satzart 0292 550");
+    public static final Bezeichner VERSION_SATZART_0293_550 = new Bezeichner("Version Satzart 0293 550");
+    public static final Bezeichner VERSION_SATZART_0294_550 = new Bezeichner("Version Satzart 0294 550");
+    public static final Bezeichner VERSION_SATZART_0295_550 = new Bezeichner("Version Satzart 0295 550");
+    public static final Bezeichner VERSION_SATZART_0052 = new Bezeichner("Version Satzart 0051");
+    public static final Bezeichner VERSION_SATZART_0102 = new Bezeichner("Version Satzart 0102");
+    public static final Bezeichner VERSION_SATZART_0212 = new Bezeichner("Version Satzart 0212");
+    public static final Bezeichner VERSION_SATZART_0352 = new Bezeichner("Version Satzart 0352");
+    public static final Bezeichner VERSION_SATZART_0362 = new Bezeichner("Version Satzart 0362");
+    public static final Bezeichner VERSION_SATZART_0382 = new Bezeichner("Version Satzart 0382");
+    public static final Bezeichner VERSION_SATZART_0390_RABATTE = new Bezeichner("Version Satzart 0390 Rabatte und Zuschlaege");
+    public static final Bezeichner VERSION_SATZART_0392_EVB = new Bezeichner("Version Satzart 0392 eVB-Nummer");
+    public static final Bezeichner VERSION_SATZART_9950 = new Bezeichner("Version Satzart 9950");
+    public static final Bezeichner VERSION_SATZART_9951_MIME = new Bezeichner("Version Satzart 9951 MIME-Datei");
+    public static final Bezeichner VERSION_SATZART_9952 = new Bezeichner("Version Satzart 9952");
+    public static final Bezeichner VERSION_SATZART_0210_580 = new Bezeichner("Version Satzart 0210 580");
+    public static final Bezeichner VERSION_SATZART_0210_684 = new Bezeichner("Version Satzart 0210 684");
+    public static final Bezeichner VERSION_SATZART_0220_580 = new Bezeichner("Version Satzart 0220 580");
+    public static final Bezeichner VERSION_SATZART_0220_684 = new Bezeichner("Version Satzart 0220 684");
+    public static final Bezeichner VERSION_SATZART_0372 = new Bezeichner("Version Satzart 0372");
+    public static final Bezeichner VERSION_SATZART_0600 = new Bezeichner("Version Satzart 0600");
+    public static final Bezeichner VERTRAGSABLAUF = new Bezeichner("Vertragsablauf");
+    public static final Bezeichner VERTRAGSART = new Bezeichner("Vertragsart");
+    public static final Bezeichner VERTRAGSBEGINN = new Bezeichner("Vertragsbeginn");
+    public static final Bezeichner VERTRAGSFORM = new Bezeichner("Vertragsform");
+    public static final Bezeichner VERTRAGSLAUFZEIT = new Bezeichner("Vertragslaufzeit");
+    public static final Bezeichner VERTRAGSSTATUS = new Bezeichner("Vertragsstatus");
     public static final Bezeichner VERTRAGSVERBINDUNGSNUMMER = new Bezeichner("Vertragsverbindungs-Nummer");
-
-    /** Die Konstante VS_NR. */
-    public static final Bezeichner VS_NR = new Bezeichner("Versicherungsschein-Nummer", "VsNr");
-
-    /** Die Konstante VU_NR. */
+    public static final Bezeichner VORAUSSICHTLICHES_ENDE = new Bezeichner("voraussichtliches Ende");
+    public static final Bezeichner VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Vorlaufsumme");
+    public static final Bezeichner VORNAME_VP = new Bezeichner("Vorname der VP");
+    public static final Bezeichner VORSTEUERABZUGSBERECHTIGT = new Bezeichner("Vorsteuerabzugsberechtigt");
+    public static final Bezeichner VORZEICHEN = new Bezeichner("Vorzeichen");
+    public static final Bezeichner VORZEICHEN2 = VORZEICHEN;
+    public static final Bezeichner VORZEICHEN3 = VORZEICHEN;
+    public static final Bezeichner VORZEICHEN4 = VORZEICHEN;
+    public static final Bezeichner VORZEICHEN5 = VORZEICHEN;
+    public static final Bezeichner VORZUGSSEUERBERECHTIGUNG_PROZENT = new Bezeichner("Vorsteuerabszugsberechtigung in Prozent");
+    public static final Bezeichner VORZUGSSTEUERBERECHTIGUNG = new Bezeichner("Vorsteuerabszugsberechtigung Ja/Nein");
+    public static final Bezeichner VP_PERSONENNUMMER_VERMITTLER = new Bezeichner("VP-Personnenummer des Vermittlers");
+    public static final Bezeichner VP_PERSONENNUMMER_VERSICHERER = new Bezeichner("VP-Personnenummer des Versicherers");
+    public static final Bezeichner VS_NR = VERSICHERUNGSSCHEINNUMMER;
+    public static final Bezeichner VU_ABRECHNUNGSSTELLE = new Bezeichner("VU-Abrechnungsstelle");
     public static final Bezeichner VU_NR = new Bezeichner("VU-Nummer", "VuNr");
+    public static final Bezeichner VU_NUMMER = VU_NR;
+    public static final Bezeichner VERTRAGSBEDINGUNG = new Bezeichner("Vertragsbedingung");
 
     /** The Constant WECHSELKENNZEICHEN_W_AKZ. */
     public static final Bezeichner WECHSELKENNZEICHEN_W_AKZ = new Bezeichner("KFZ - Wechselkennzeichen W-AKZ",
