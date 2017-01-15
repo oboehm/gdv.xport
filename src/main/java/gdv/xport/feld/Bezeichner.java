@@ -60,164 +60,6 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<>();
 
-    // Konstanten A-V... gibt es nur noch als Bezeichner-Konstanten
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAEHRUNGSSCHLUESSEL = "Waehrungsschluessel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAEHRUNG_DOKUMENTE_FUER_VN = "Waehrung der Dokumente fuer VN";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAGNIS = "Wagnis";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAGNISKENNZIFFER = "Wagniskennziffer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WARTEZEIT = "Wartezeit";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WEITERE_REFERENZNUMMERN = "Weitere Referenznummern";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WOHNEIGENTUM = "Wohneigentum";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZAHLUNGSANFANG = "Zahlungsanfang";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZAHLUNGSART = "Zahlungsart /-weg";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZAHLUNGSWEISE = "Zahlungsweise";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG = "Zahlungsweise des kuenftigen Gesamtbetrags";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZIELGRUPPENSCHLUESSEL = "Zielgruppenschluessel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN = "Zukuenftiger Gesamtbeitrag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZUSAETZLICHE_SATZKENNUNG = "zusaetzliche Satzkennung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZUSCHLAG1_IN_PROZENT = "Zuschlag-1 in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZUSCHLAG1_IN_WAEHRUNGSEINHEITEN = "Zuschlag-1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZUSCHLAG2_IN_PROZENT = "Zuschlag-2 in %";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN = "Zuschlag-2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Zuschlagsbetrag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZUSCHLAG_IN_PROZENT = "Zuschlag in %";
-    /** @deprecated bitte {@link Bezeichner#ZUZAHLUNGSBETRAG_IN_WE} verwenden */
-    @Deprecated
-    public static final String ZUZAHLUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = "Zuzahlungsbetrag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZUZAHLUNGSRECHT = "Zuzahlungsrecht";
-
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAGNISART = "Wagnisart";
-
-
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZWANG_ZUR_BUZ = "Zwang zur BUZ";
-
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZUKUENFTIGER_BEITRAG = "Zukuenftiger Beitrag";
-
-
-
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WERTPAPIERKENNNUMMER = "Wertpapierkennnummer";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String THESAUR = "Thesaur";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAGNISART4 = "Wagnisart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WERTUNGSBASIS = "Wertungsbasis";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WERTUNGSMODELL = "Wertungsmodell";
-
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WERTUNGSBASIS2 = "Wertungsbasis";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WERTUNGSMODELL2 = "Wertungsmodell";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WITWEN_WITWERRENTE_IN_PROZENT = "Witwen- / Witwerrente in Prozent";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAISENRENTE_IN_PROZENT = "Waisenrente in Prozent";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZAHLUNG_DER_WITWEN_WITWERRENTE_BIS = "Zahlung der Witwen- / Witwerrente bis";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAGNISART2 = "Wagnisart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String ZUKUENFTIGER_BEITRAG_IN_WAEHRUNGSEINHEITEN = "Zukuenftiger Beitrag";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAGNISART3 = "Wagnisart";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String LEISTUNG_BEI_SCHWERER_ERKRANKUNG = "Leistung bei schwerer Erkrankung";
-
-    // Haftpflicht
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAEHRUNGSSCHLUESSEL_1 = "Waehrungsschluessel 1";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAEHRUNGSSCHLUESSEL_2 = "Waehrungsschluessel 2";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAEHRUNGSSCHLUESSEL_3 = "Waehrungsschluessel 3";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAEHRUNGSSCHLUESSEL_4 = "Waehrungsschluessel 4";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAGNISBESCHREIBUNG = "Wagnisbeschreibung";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAGNISMENGE = "Wagnismenge";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAGNISTEXT = "Wagnistext";
-
-    // Verbundene Hausrat
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WAEHRUNGSSCHUESSEL = "Waehrungsschluessel";
-    /** @deprecated bitte Konstante mit NAME_-Prefix verwenden */
-    @Deprecated
-    public static final String WOHNFLAECHE_QM = "Wohnflaeche qm";
-
     /////////// Bezeichner-Konstanten /////////////////////////////////////////
 
     public static final Bezeichner ABGANGSDAT = new Bezeichner("Abgangsdatum", "Abgangsdat");
@@ -668,6 +510,7 @@ public final class Bezeichner {
     public static final Bezeichner LEERSTELLEN5 = new Bezeichner("Leerstellen");
     public static final Bezeichner LEISTUNG = new Bezeichner("Leistung");
     public static final Bezeichner LEISTUNG_AB_INVALIDITAETSGRAD_IN_PROZENT = new Bezeichner("Leistung ab Invaliditaetsgrad in Prozent");
+    public static final Bezeichner LEISTUNG_BEI_SCHWERER_ERKRANKUNG = new Bezeichner("Leistung bei schwerer Erkrankung");
     public static final Bezeichner LEISTUNGSBEGINN_AB = new Bezeichner("Leistungsbeginn ab");
     public static final Bezeichner LEISTUNGSDAUER = new Bezeichner("Leistungsdauer");
     public static final Bezeichner LEISTUNGSZAHLUNGSWEISE = new Bezeichner("Leistungszahlungsweise");
@@ -877,6 +720,7 @@ public final class Bezeichner {
     public static final Bezeichner TECHNISCHE_WITWEN_WITTWERRENTE_IN_PROZENT = new Bezeichner("Technische Witwen- / Witwerrente in Prozent");
     public static final Bezeichner TEILDATENSATZNUMMER = new Bezeichner("Teildatensatznummer");
     public static final Bezeichner TEILKAPITALISIERUNG = new Bezeichner("Teilkapitalisierung");
+    public static final Bezeichner THESAUR = new Bezeichner("Thesaur");
     public static final Bezeichner TITEL = new Bezeichner("Titel");
     public static final Bezeichner TOD = new Bezeichner("Tod");
     public static final Bezeichner TOD_BEITRAGSSATZ = new Bezeichner("Tod-Beitragssatz");
@@ -1046,6 +890,7 @@ public final class Bezeichner {
     public static final Bezeichner VERTRAGSABLAUF = new Bezeichner("Vertragsablauf");
     public static final Bezeichner VERTRAGSART = new Bezeichner("Vertragsart");
     public static final Bezeichner VERTRAGSBEGINN = new Bezeichner("Vertragsbeginn");
+    public static final Bezeichner VERTRAGSBEDINGUNG = new Bezeichner("Vertragsbedingung");
     public static final Bezeichner VERTRAGSFORM = new Bezeichner("Vertragsform");
     public static final Bezeichner VERTRAGSLAUFZEIT = new Bezeichner("Vertragslaufzeit");
     public static final Bezeichner VERTRAGSSTATUS = new Bezeichner("Vertragsstatus");
@@ -1067,19 +912,56 @@ public final class Bezeichner {
     public static final Bezeichner VU_ABRECHNUNGSSTELLE = new Bezeichner("VU-Abrechnungsstelle");
     public static final Bezeichner VU_NR = new Bezeichner("VU-Nummer", "VuNr");
     public static final Bezeichner VU_NUMMER = VU_NR;
-    public static final Bezeichner VERTRAGSBEDINGUNG = new Bezeichner("Vertragsbedingung");
 
-    /** The Constant WECHSELKENNZEICHEN_W_AKZ. */
-    public static final Bezeichner WECHSELKENNZEICHEN_W_AKZ = new Bezeichner("KFZ - Wechselkennzeichen W-AKZ",
-            "KFZWechselkennzeichenWAKZ");
+    public static final Bezeichner WAEHRUNG_DOKUMENTE_FUER_VN = new Bezeichner("Waehrung der Dokumente fuer VN");
+    public static final Bezeichner WAEHRUNGSSCHLUESSEL = new Bezeichner("Waehrungsschluessel");
+    public static final Bezeichner WAEHRUNGSSCHLUESSEL_1 = new Bezeichner("Waehrungsschluessel 1");
+    public static final Bezeichner WAEHRUNGSSCHLUESSEL_2 = new Bezeichner("Waehrungsschluessel 2");
+    public static final Bezeichner WAEHRUNGSSCHLUESSEL_3 = new Bezeichner("Waehrungsschluessel 3");
+    public static final Bezeichner WAEHRUNGSSCHLUESSEL_4 = new Bezeichner("Waehrungsschluessel 4");
+    public static final Bezeichner WAGNIS = new Bezeichner("Wagnis");
+    public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart");
+    public static final Bezeichner WAGNISART2 = WAGNISART;
+    public static final Bezeichner WAGNISART3 = WAGNISART;
+    public static final Bezeichner WAGNISART4 = WAGNISART;
+    public static final Bezeichner WAGNISBESCHREIBUNG = new Bezeichner("Wagnisbeschreibung");
+    public static final Bezeichner WAGNISKENNZIFFER = new Bezeichner("Wagniskennziffer");
+    public static final Bezeichner WAGNISMENGE = new Bezeichner("Wagnismenge");
+    public static final Bezeichner WAGNISTEXT = new Bezeichner("Wagnistext");
+    public static final Bezeichner WAISENRENTE_IN_PROZENT = new Bezeichner("Waisenrente in Prozent");
+    public static final Bezeichner WARTEZEIT = new Bezeichner("Wartezeit");
+    public static final Bezeichner WECHSELKENNZEICHEN_W_AKZ = new Bezeichner("KFZ - Wechselkennzeichen W-AKZ", "KFZWechselkennzeichenWAKZ");
+    public static final Bezeichner WEITERE_REFERENZNUMMERN = new Bezeichner("Weitere Referenznummern");
+    public static final Bezeichner WERTPAPIERKENNNUMMER = new Bezeichner("Wertpapierkennnummer");
+    public static final Bezeichner WERTUNGSBASIS = new Bezeichner("Wertungsbasis");
+    public static final Bezeichner WERTUNGSBASIS2 = WERTUNGSBASIS;
+    public static final Bezeichner WERTUNGSMODELL = new Bezeichner("Wertungsmodell");
+    public static final Bezeichner WERTUNGSMODELL2 = WERTUNGSMODELL;
+    public static final Bezeichner WITWEN_WITWERRENTE_IN_PROZENT = new Bezeichner("Witwen- / Witwerrente in Prozent");
+    public static final Bezeichner WOHNEIGENTUM = new Bezeichner("Wohneigentum");
+    public static final Bezeichner WOHNFLAECHE_QM = new Bezeichner("Wohnflaeche qm");
 
-    /** Die Konstante ZUZAHLUNGSBETRAG_IN_WE. */
-    public static final Bezeichner ZUZAHLUNGSBETRAG_IN_WE = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten",
-            "ZuzahlungsbetragInWE");
-
-    /** Die Konstante ZUZAHLUNGSDAT. */
+    public static final Bezeichner ZAHLUNG_DER_WITWEN_WITWERRENTE_BIS = new Bezeichner("Zahlung der Witwen- / Witwerrente bis");
+    public static final Bezeichner ZAHLUNGSANFANG = new Bezeichner("Zahlungsanfang");
+    public static final Bezeichner ZAHLUNGSART = new Bezeichner("Zahlungsart /-weg");
+    public static final Bezeichner ZAHLUNGSWEISE = new Bezeichner("Zahlungsweise");
+    public static final Bezeichner ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG = new Bezeichner("Zahlungsweise des kuenftigen Gesamtbetrags");
+    public static final Bezeichner ZIELGRUPPENSCHLUESSEL = new Bezeichner("Zielgruppenschluessel");
+    public static final Bezeichner ZUKUENFTIGER_BEITRAG = new Bezeichner("Zukuenftiger Beitrag");
+    public static final Bezeichner ZUKUENFTIGER_BEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zukuenftiger Beitrag");
+    public static final Bezeichner ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zukuenftiger Gesamtbeitrag");
+    public static final Bezeichner ZUSAETZLICHE_SATZKENNUNG = new Bezeichner("zusaetzliche Satzkennung");
+    public static final Bezeichner ZUSCHLAG1_IN_PROZENT = new Bezeichner("Zuschlag-1 in %");
+    public static final Bezeichner ZUSCHLAG1_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zuschlag-1");
+    public static final Bezeichner ZUSCHLAG2_IN_PROZENT = new Bezeichner("Zuschlag-2 in %");
+    public static final Bezeichner ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zuschlag-2");
+    public static final Bezeichner ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zuschlagsbetrag");
+    public static final Bezeichner ZUSCHLAG_IN_PROZENT = new Bezeichner("Zuschlag in %");
+    public static final Bezeichner ZUZAHLUNGSBETRAG_IN_WE = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten", "ZuzahlungsbetragInWE");
     public static final Bezeichner ZUZAHLUNGSDAT = new Bezeichner("Zuzahlungsdatum", "Zuzahlungsdat");
-
+    public static final Bezeichner ZUZAHLUNGSRECHT = new Bezeichner("Zuzahlungsrecht");
+    public static final Bezeichner ZWANG_ZUR_BUZ = new Bezeichner("Zwang zur BUZ");
+    
     /////////// Konstanten mit NAME_-Prefix ///////////////////////////////////
 
     public static final String NAME_ABGANGSGRUND = "Abgangsgrund";
