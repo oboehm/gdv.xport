@@ -28,8 +28,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.*;
 
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.util.XmlHelper;
@@ -43,7 +42,7 @@ import gdv.xport.util.XmlHelper;
  */
 public final class FeldReferenz {
 
-    private static final Logger LOG = LoggerFactory.getLogger(FeldReferenz.class);
+    private static final Logger LOG = LogManager.getLogger(FeldReferenz.class);
 
     private final String id;
     private final Bezeichner bezeichner;

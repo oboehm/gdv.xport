@@ -18,31 +18,23 @@
 
 package gdv.xport.satz.xml;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.xml.stream.XMLStreamException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.AbstractSatzTest;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.*;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.model.*;
-import gdv.xport.util.NotRegisteredException;
-import gdv.xport.util.NotUniqueException;
-import gdv.xport.util.SatzTyp;
+import gdv.xport.util.*;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
@@ -54,7 +46,7 @@ import patterntesting.runtime.junit.ObjectTester;
  */
 public class XmlServiceTest extends AbstractXmlTest {
 
-    private static Logger LOG = LoggerFactory.getLogger(XmlServiceTest.class);
+    private static Logger LOG = LogManager.getLogger(XmlServiceTest.class);
     private static XmlService xmlService = XmlService.getInstance();
 
     /**
@@ -84,11 +76,11 @@ public class XmlServiceTest extends AbstractXmlTest {
     @Test
     public void testGetSatzartTwice() {
         SatzXml one = xmlService.getSatzart(100);
-        one.set(Bezeichner.NAME_VERSICHERUNGSSCHEINNUMMER, "4711");
+        one.set(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName(), "4711");
         SatzXml two = xmlService.getSatzart(100);
-        two.set(Bezeichner.NAME_VERSICHERUNGSSCHEINNUMMER, "4722");
-        assertEquals("4722", two.get(Bezeichner.NAME_VERSICHERUNGSSCHEINNUMMER).trim());
-        assertEquals("4711", one.get(Bezeichner.NAME_VERSICHERUNGSSCHEINNUMMER).trim());
+        two.set(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName(), "4722");
+        assertEquals("4722", two.get(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName()).trim());
+        assertEquals("4711", one.get(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName()).trim());
     }
 
     /**
@@ -110,7 +102,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     public void testGetSatzart200() {
         SatzXml satz200 = xmlService.getSatzart(200);
         assertEquals(2, satz200.getTeildatensaetze().size());
-        Feld inkasso = satz200.getFeld(Bezeichner.NAME_INKASSOART);
+        Feld inkasso = satz200.getFeld(Bezeichner.INKASSOART);
         assertEquals(1, inkasso.getAnzahlBytes());
         assertEquals(43, inkasso.getByteAdresse());
     }

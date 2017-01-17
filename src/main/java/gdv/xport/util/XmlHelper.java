@@ -29,8 +29,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.*;
 import org.xml.sax.SAXException;
 
 /**
@@ -41,7 +40,7 @@ import org.xml.sax.SAXException;
  */
 public final class XmlHelper {
 
-    private static final Logger LOG = LoggerFactory.getLogger(XmlHelper.class);
+    private static final Logger LOG = LogManager.getLogger(XmlHelper.class);
 
     /**
      * Privater Konstruktor, damit diese Klasse nicht instantiiert werden kann

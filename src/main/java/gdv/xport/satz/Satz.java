@@ -3,8 +3,8 @@
  */
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.NAME_SATZART;
-import static gdv.xport.feld.Bezeichner.NAME_SPARTE;
+import static gdv.xport.feld.Bezeichner.SATZART;
+import static gdv.xport.feld.Bezeichner.SPARTE;
 import static patterntesting.runtime.NullConstants.NULL_STRING;
 
 import java.io.*;
@@ -13,15 +13,13 @@ import java.util.*;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
@@ -40,8 +38,8 @@ import net.sf.oval.context.ClassContext;
  */
 public abstract class Satz {
 
-	private static final Logger LOG = LoggerFactory.getLogger(Satz.class);
-	private final NumFeld satzart = new NumFeld(new Bezeichner(NAME_SATZART), 4, 1);
+	private static final Logger LOG = LogManager.getLogger(Satz.class);
+	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
 	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
 
 	protected Satz(final int art) {
@@ -275,29 +273,44 @@ public abstract class Satz {
         }
     }
 
-	/**
-	 * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden
-	 * wird. Normalerweise braeuchten wir eigentlich nur die erste Fundstelle
-	 * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
-	 * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
-	 * gefunden wird, wird eine IllegalArgumentException geworfen.
-	 *
-	 * @param name Name des Felds (Bezeichnung)
-	 * @param value the value
-	 */
-	public void set(final String name, final String value) {
-		boolean found = false;
-		for (int i = 0; i < teildatensatz.length; i++) {
-			Feld x = teildatensatz[i].getFeld(name);
-			if (x != Feld.NULL_FELD) {
-				x.setInhalt(value);
-				found = true;
-			}
-		}
-		if (!found) {
-			throw new IllegalArgumentException("Feld \"" + name + "\" not found");
-		}
-	}
+    /**
+     * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden
+     * wird. Normalerweise braeuchten wir eigentlich nur die erste Fundstelle
+     * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
+     * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
+     * gefunden wird, wird eine IllegalArgumentException geworfen.
+     *
+     * @param name Name des Felds (Bezeichnung)
+     * @param value the value
+     */
+    public void set(final String name, final String value) {
+        this.set(new Bezeichner(name), value);
+    }
+
+    /**
+     * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden
+     * wird. Normalerweise braeuchten wir eigentlich nur die erste Fundstelle
+     * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
+     * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
+     * gefunden wird, wird eine IllegalArgumentException geworfen.
+     *
+     * @param name Name des Felds (Bezeichnung)
+     * @param value the value
+     * @since 2.0
+     */
+    public void set(final Bezeichner name, final String value) {
+        boolean found = false;
+        for (int i = 0; i < teildatensatz.length; i++) {
+            Feld x = teildatensatz[i].getFeld(name);
+            if (x != Feld.NULL_FELD) {
+                x.setInhalt(value);
+                found = true;
+            }
+        }
+        if (!found) {
+            throw new IllegalArgumentException("Feld \"" + name + "\" not found");
+        }
+    }
 
 	/**
 	 * Setzt den Inhalt des gewuenschten Feldes.
@@ -332,7 +345,7 @@ public abstract class Satz {
         this.set(feldX, Character.toString(value));
     }
 
-	/**
+    /**
 	 * Liefert den Inhalt des gewuenschten Feldes.
 	 *
 	 * @param name gesuchtes Feld
@@ -340,13 +353,25 @@ public abstract class Satz {
 	 * gefunden wurde)
 	 */
 	public final String get(final String name) {
-		Feld f = getFeld(name);
-		if (f == Feld.NULL_FELD) {
-			return NULL_STRING;
-		} else {
-			return f.getInhalt();
-		}
+		return get(new Bezeichner(name));
 	}
+
+    /**
+     * Liefert den Inhalt des gewuenschten Feldes.
+     *
+     * @param bezeichner gesuchtes Field
+     * @return Inhalt des gefundenden Felds (NULL_STRING, falls 'name' nicht
+     * gefunden wurde)
+     * @since 2.0
+     */
+    public final String get(final Bezeichner bezeichner) {
+        Feld f = getFeld(bezeichner);
+        if (f == Feld.NULL_FELD) {
+            return NULL_STRING;
+        } else {
+            return f.getInhalt();
+        }
+    }
 
 	/**
 	 * Liefert den Inhalt des gewuenschten Feldes.
@@ -461,6 +486,18 @@ public abstract class Satz {
 		return this.getFeld(name).getInhalt().trim();
 	}
 
+    /**
+     * Liefert das gewuenschte Feld.
+     *
+     * @param bezeichner gewuenschter Bezeichner des Feldes
+     * @param nr Nummer des Teildatensatzes (1, 2, ...)
+     * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
+     * @since 2.0
+     */
+	public final Feld getFeld(final Bezeichner bezeichner, final int nr) {
+	    return getFeld(bezeichner.getName(), nr);
+	}
+
 	/**
 	 * Liefert das gewuenschte Feld.
 	 *
@@ -546,7 +583,7 @@ public abstract class Satz {
      * @return true, falls Wagnisart-Feld vorhanden ist
 	 */
 	public boolean hasWagnisart() {
-	    return this.hasFeld(new Bezeichner(Bezeichner.NAME_WAGNISART));
+	    return this.hasFeld((Bezeichner.WAGNISART));
 	}
 
 	/**
@@ -574,7 +611,7 @@ public abstract class Satz {
      * @return die Wagnisart
      */
     public final String getWagnisart() {
-        Feld wagnisart = this.getFeld(Bezeichner.NAME_WAGNISART);
+        Feld wagnisart = this.getFeld(Bezeichner.WAGNISART);
         return wagnisart.getInhalt();
     }
 
@@ -964,7 +1001,7 @@ public abstract class Satz {
     private static void setSparteFor(final Teildatensatz tds, final int sparte) {
         Feld spartenFeld = tds.getFeld(Feld1bis7.SPARTE);
         if (spartenFeld == Feld.NULL_FELD) {
-            spartenFeld = new NumFeld(new Bezeichner(NAME_SPARTE), 3, 11);
+            spartenFeld = new NumFeld((SPARTE), 3, 11);
             tds.add(spartenFeld);
         }
         spartenFeld.setInhalt(sparte);

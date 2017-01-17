@@ -19,9 +19,10 @@
 package gdv.xport.feld;
 
 import static org.junit.Assert.assertEquals;
-import gdv.xport.satz.feld.Feld100;
 
 import org.junit.Test;
+
+import gdv.xport.satz.feld.Feld100;
 
 /**
  * JUnit-Test fuer Zeichen-Klasse.
@@ -53,7 +54,7 @@ public final class ZeichenTest extends AbstractFeldTest {
      */
     @Test
     public void testZeichenName() {
-        Zeichen zeichen = new Zeichen(Bezeichner.NAME_ANREDESCHLUESSEL, FeldTest.createFeldInfo());
+        Zeichen zeichen = new Zeichen(Bezeichner.ANREDESCHLUESSEL.getName(), FeldTest.createFeldInfo());
         assertEquals(1, zeichen.getAnzahlBytes());
     }
 

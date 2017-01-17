@@ -75,7 +75,7 @@ public class Feld220Test extends AbstractDatensatzTest {
                 + "000000000000000000000000000000000000000000000000000  000000    X"
                 + "\n";
         wagnisdaten.importFrom(input);
-        Feld x = wagnisdaten.getFeld(Bezeichner.NAME_ZUSAETZLICHE_SATZKENNUNG, 2);
+        Feld x = wagnisdaten.getFeld(Bezeichner.ZUSAETZLICHE_SATZKENNUNG, 2);
         assertEquals("X", x.getInhalt());
         checkDatensatz(wagnisdaten, input);
 	}

@@ -19,18 +19,15 @@
 package gdv.xport.satz.xml;
 
 import static org.junit.Assert.assertEquals;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.TeildatensatzTest;
-import gdv.xport.satz.feld.Feld100;
 
 import javax.xml.stream.XMLStreamException;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import gdv.xport.feld.*;
+import gdv.xport.satz.*;
+import gdv.xport.satz.feld.Feld100;
 
 /**
  * JUnit-Tests fuer die {@link TeildatensatzXml}-Klasse.
@@ -73,7 +70,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
     @Override
     @Test
     public void testGetFeldString() {
-        checkFeld(Bezeichner.NAME_ANREDESCHLUESSEL, 1, 43);
+        checkFeld(Bezeichner.ANREDESCHLUESSEL, 1, 43);
     }
 
     /**
@@ -83,7 +80,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
      */
     @Test
     public void testGetFeldVuNr() {
-        checkFeld(Bezeichner.VU_NR.getName(), 5, 5);
+        checkFeld(Bezeichner.VU_NR, 5, 5);
     }
 
     /**
@@ -92,7 +89,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
      */
     @Test
     public void testGetFeldVermittler() {
-        checkFeld(Bezeichner.NAME_VERMITTLER, 10, 33);
+        checkFeld(Bezeichner.VERMITTLER, 10, 33);
     }
 
     /**
@@ -100,10 +97,10 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
      */
     @Test
     public void testGetFeldName1() {
-        checkFeld(Bezeichner.NAME_NAME1, 30, 44);
+        checkFeld(Bezeichner.NAME1, 30, 44);
     }
 
-    private static void checkFeld(final String name, final int length, final int address) {
+    private static void checkFeld(final Bezeichner name, final int length, final int address) {
         Feld feld = tds100.getFeld(name);
         assertEquals("Anzahl Bytes", length, feld.getAnzahlBytes());
         assertEquals("Byte-Adresse", address, feld.getByteAdresse());
@@ -116,7 +113,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
     public void testGetSatzart() {
         TeildatensatzXml tds = new TeildatensatzXml(200, 1);
         assertEquals(200, tds.getSatzart());
-        tds.set(Bezeichner.NAME_SATZART, "0222");
+        tds.set(Bezeichner.SATZART.getName(), "0222");
         assertEquals(222, tds.getSatzart());
     }
 
@@ -141,7 +138,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
      */
     @Test
     public void testGetFeldReferenz() {
-        FeldReferenz ref = tds100.getFeldRefenz(new Bezeichner(Bezeichner.NAME_TITEL));
+        FeldReferenz ref = tds100.getFeldRefenz((Bezeichner.TITEL));
         assertEquals("Titel", ref.getBemerkung());
     }
 

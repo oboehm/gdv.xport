@@ -30,8 +30,7 @@ import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.output.WriterOutputStream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.*;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
@@ -50,7 +49,7 @@ import gdv.xport.satz.Teildatensatz;
  */
 public final class XmlFormatter extends AbstractFormatter {
 
-    private static final Logger LOG = LoggerFactory.getLogger(XmlFormatter.class);
+    private static final Logger LOG = LogManager.getLogger(XmlFormatter.class);
     private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
     private XMLStreamWriter xmlStreamWriter;
 

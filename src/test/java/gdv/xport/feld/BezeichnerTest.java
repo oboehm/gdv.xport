@@ -126,7 +126,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testEqualsVermittler() {
-        ObjectTester.assertEquals(new Bezeichner(Bezeichner.NAME_VERMITTLER),
+        ObjectTester.assertEquals((Bezeichner.VERMITTLER),
                 new Bezeichner("Gesch\u00e4ftsstelle / Vermittler"));
     }
 
@@ -137,7 +137,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testEqualsVuNummer() {
-        ObjectTester.assertEquals(Bezeichner.VU_NR, new Bezeichner(Bezeichner.VU_NR.getName()));
+        ObjectTester.assertEquals(Bezeichner.VU_NR, (Bezeichner.VU_NR.getName()));
     }
 
     /**
@@ -146,7 +146,7 @@ public class BezeichnerTest {
     @Test
     public void testEqualsPersonenNr() {
         ObjectTester.assertEquals(Bezeichner.LFD_PERSONEN_NR_IM_GEVO,
-                new Bezeichner(Bezeichner.LFD_PERSONEN_NR_IM_GEVO.getName()));
+                (Bezeichner.LFD_PERSONEN_NR_IM_GEVO.getName()));
     }
 
     /**
@@ -155,7 +155,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testEqualsVsNr() {
-        ObjectTester.assertEquals(Bezeichner.VS_NR, new Bezeichner(Bezeichner.VS_NR.getName()));
+        ObjectTester.assertEquals(Bezeichner.VS_NR, (Bezeichner.VS_NR.getName()));
     }
 
     /**

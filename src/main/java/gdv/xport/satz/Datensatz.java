@@ -12,29 +12,20 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.NAME_LEERSTELLEN;
-import static gdv.xport.feld.Bezeichner.NAME_TEILDATENSATZNUMMER;
-import static gdv.xport.feld.Bezeichner.NAME_VERMITTLER;
-import static gdv.xport.feld.Bezeichner.NAME_WAGNISART;
-import gdv.xport.config.Config;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.io.ImportException;
-import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.satz.feld.common.Feld1bis7;
-import gdv.xport.satz.feld.common.TeildatensatzNummer;
-import gdv.xport.satz.feld.common.WagnisartLeben;
-import gdv.xport.util.SatzTyp;
+import static gdv.xport.feld.Bezeichner.*;
 
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.PushbackReader;
+import java.io.*;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import gdv.xport.config.Config;
+import gdv.xport.feld.*;
+import gdv.xport.io.ImportException;
+import gdv.xport.io.PushbackLineNumberReader;
+import gdv.xport.satz.feld.common.*;
+import gdv.xport.util.SatzTyp;
 
 /**
  * Datensatz ist von {@link Satz} abgeleitet, enthaelt aber zusaetzlich noch
@@ -50,9 +41,9 @@ public class Datensatz extends Satz {
 	/** 3 Zeichen, Byte 11 - 13. */
     private final NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
 	/** 3 Zeichen, Byte 59 - 60. */
-	private final AlphaNumFeld wagnisart = new AlphaNumFeld(new Bezeichner(NAME_WAGNISART), 1, 59);
+	private final AlphaNumFeld wagnisart = new AlphaNumFeld((WAGNISART), 1, 59);
 	/** 3 Zeichen, Byte 255 - 256. */
-    private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld(new Bezeichner(NAME_TEILDATENSATZNUMMER), 1, 255);
+    private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld((TEILDATENSATZNUMMER), 1, 255);
 	/** Zum Abspeichern der Wagnisart oder Art (Unter-Sparte). */
 	private int art;
 
@@ -258,7 +249,7 @@ public class Datensatz extends Satz {
 	@Override
 	public void addFiller() {
 		for (Teildatensatz tds : this.getTeildatensaetze()) {
-			tds.add(new AlphaNumFeld(new Bezeichner(NAME_LEERSTELLEN), 213, 43));
+			tds.add(new AlphaNumFeld((LEERSTELLEN), 213, 43));
 		}
 	}
 

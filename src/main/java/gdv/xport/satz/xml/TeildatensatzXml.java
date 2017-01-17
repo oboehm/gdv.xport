@@ -30,8 +30,7 @@ import java.util.Map;
 
 import javax.xml.stream.XMLStreamException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.*;
 
 /**
  * Dieser {@link Teildatensatz} wurde um Belange fuer die XML-Verarbeitung
@@ -42,7 +41,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class TeildatensatzXml extends Teildatensatz {
 
-    private static final Logger LOG = LoggerFactory.getLogger(TeildatensatzXml.class);
+    private static final Logger LOG = LogManager.getLogger(TeildatensatzXml.class);
     private static final Map<String, FeldXml> MISSING_FELDER = new HashMap<String, FeldXml>();
     private final List<FeldReferenz> feldReferenzen = new ArrayList<FeldReferenz>();
     private Satzende satzende;
@@ -124,7 +123,7 @@ public final class TeildatensatzXml extends Teildatensatz {
         }
         int length = endAddress + 1 - startAddress;
         if (length > 0) {
-            Feld leerstelle = new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_LEERSTELLEN), endAddress + 1 - startAddress, startAddress);
+            Feld leerstelle = new AlphaNumFeld((Bezeichner.LEERSTELLEN), endAddress + 1 - startAddress, startAddress);
             this.add(leerstelle);
         }
     }

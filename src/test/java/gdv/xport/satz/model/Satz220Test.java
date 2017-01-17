@@ -104,7 +104,7 @@ public class Satz220Test extends AbstractDatensatzTest {
         assertEquals(514, input.length());
         Datensatz wagnisdaten = SatzFactory.getDatensatz(220, 30);
         wagnisdaten.importFrom(input);
-        Feld x = wagnisdaten.getFeld(Bezeichner.NAME_ZUSAETZLICHE_SATZKENNUNG, 2);
+        Feld x = wagnisdaten.getFeld(Bezeichner.ZUSAETZLICHE_SATZKENNUNG, 2);
         assertEquals("X", x.getInhalt());
         checkDatensatz(wagnisdaten, input);
     }

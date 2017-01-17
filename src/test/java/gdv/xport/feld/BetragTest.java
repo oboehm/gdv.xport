@@ -59,7 +59,7 @@ public final class BetragTest extends AbstractFeldTest {
     @Test
     public void testBetragEnum() {
         Betrag b = new Betrag(Feld9999.GESAMTBEITRAG);
-        assertEquals(new Bezeichner(Bezeichner.NAME_GESAMTBEITRAG), b.getBezeichner());
+        assertEquals((Bezeichner.GESAMTBEITRAG), b.getBezeichner());
     }
 
     /**

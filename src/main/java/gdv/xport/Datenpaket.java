@@ -12,10 +12,7 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.NAME_ABSENDER;
-import static gdv.xport.feld.Bezeichner.NAME_ADRESSAT;
-import static gdv.xport.feld.Bezeichner.NAME_ERSTELLUNGSDATUM_ZEITRAUM_BIS;
-import static gdv.xport.feld.Bezeichner.NAME_ERSTELLUNGSDATUM_ZEITRAUM_VOM;
+import static gdv.xport.feld.Bezeichner.*;
 
 import java.io.*;
 import java.net.URL;
@@ -26,18 +23,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.Feld;
+import gdv.xport.feld.*;
 import gdv.xport.io.*;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Nachsatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.*;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
-import gdv.xport.util.SatzFactory;
-import gdv.xport.util.SatzTyp;
-import gdv.xport.util.URLReader;
+import gdv.xport.util.*;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import net.sf.oval.constraint.AssertCheck;
@@ -438,7 +429,7 @@ public final class Datenpaket {
      * @return das komplette Absender-Feld
      */
     private Feld getAbsenderFeld() {
-        return this.vorsatz.getFeld(NAME_ABSENDER);
+        return this.vorsatz.getFeld(Bezeichner.ABSENDER);
     }
 
     /**

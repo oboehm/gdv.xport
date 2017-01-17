@@ -25,8 +25,7 @@ import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.*;
 
 import gdv.xport.feld.*;
 import gdv.xport.util.XmlHelper;
@@ -40,7 +39,7 @@ import gdv.xport.util.XmlHelper;
  */
 public final class FeldXml extends Feld {
 
-    private static final Logger LOG = LoggerFactory.getLogger(FeldXml.class);
+    private static final Logger LOG = LogManager.getLogger(FeldXml.class);
 
     private final String id;
     private final Datentyp datentyp;

@@ -20,7 +20,7 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.NAME_SATZNUMMER;
+import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -31,10 +31,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -58,7 +55,7 @@ public class Teildatensatz extends Satz {
     private final SortedSet<Feld> sortedFelder = new TreeSet<Feld>();
 
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
-    private final Zeichen satznummer = new Zeichen(new Bezeichner(NAME_SATZNUMMER), 256);
+    private final Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
@@ -346,6 +343,7 @@ public class Teildatensatz extends Satz {
      * @return List der Felder (sortiert)
      * @since 0.2
      */
+    @Override
     public Collection<Feld> getFelder() {
         return new TreeSet<Feld>(datenfelder.values());
     }
