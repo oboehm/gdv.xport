@@ -18,24 +18,20 @@
 
 package gdv.xport.util;
 
-import gdv.xport.Datenpaket;
-import gdv.xport.config.Config;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.Undefiniert;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Teildatensatz;
-
 import java.io.*;
 import java.text.MessageFormat;
 import java.util.Date;
 import java.util.Iterator;
 
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
+import javax.xml.stream.*;
 
 import org.apache.commons.io.IOUtils;
+
+import gdv.xport.Datenpaket;
+import gdv.xport.config.Config;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.Undefiniert;
+import gdv.xport.satz.*;
 
 /**
  * Diese Klasse gibt die verschiedenen Saetze und Felder als HTML aus.
@@ -77,23 +73,6 @@ public final class HtmlFormatter extends AbstractFormatter {
      */
     public HtmlFormatter() {
         this(System.out);
-    }
-
-    /**
-     * Instantiiert einen neuen HtmlFormatter.
-     * <p>
-     * TODO: wird in 1.2 entsorgt
-     * </p>
-     *
-     * @param file the file
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @deprecated bitte {@link #HtmlFormatter(Writer)} verwenden, da sonst
-     *             niemand da ist, der den internen Writer schliesst.
-     */
-    @Deprecated
-    public HtmlFormatter(final File file) throws IOException {
-        this(new FileWriter(file));
-        this.title = "GDV-Datei " + file;
     }
 
     /**

@@ -220,36 +220,12 @@ public class Teildatensatz extends Satz {
      * @see Satz#set(String, String)
      */
     @Override
-    public void set(final String name, final String value) {
+    public void set(final Bezeichner name, final String value) {
         Feld x = this.getFeld(name);
         if (x == Feld.NULL_FELD) {
             throw new IllegalArgumentException("Feld \"" + name + "\" not found");
         }
         x.setInhalt(value);
-    }
-
-    /**
-     * Verpasst dem angegebenen Feld einen Namen.
-     *
-     * @param feld ein Feld
-     * @deprecated wird ab 1.2 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public void set(final Feld feld) {
-        String name = feld.getBezeichnung();
-        this.set(name, feld);
-    }
-
-    /**
-     * Verpasst dem angegebenen Feld einen Namen.
-     *
-     * @param name Name des Felds
-     * @param feld Feld
-     * @deprecated wird ab 1.2 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public void set(final String name, final Feld feld) {
-        datenfelder.put(new Bezeichner(name), feld);
     }
 
     /**

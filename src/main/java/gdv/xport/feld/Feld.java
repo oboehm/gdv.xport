@@ -22,9 +22,7 @@ package gdv.xport.feld;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.*;
 import java.nio.ByteBuffer;
 import java.util.List;
 
@@ -38,9 +36,7 @@ import gdv.xport.config.Config;
 import gdv.xport.satz.feld.FeldX;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
-import net.sf.oval.constraint.Min;
-import net.sf.oval.constraint.NotEqual;
-import net.sf.oval.constraint.SizeCheck;
+import net.sf.oval.constraint.*;
 import net.sf.oval.context.ClassContext;
 
 /**
@@ -139,23 +135,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
 
     /**
      * Erzeugt ein neues Feld.
-     * <p>
-     * TODO: Bitte nicht mehr benutzen - wird in 1.2 entfernt!
-     * </p>
-     *
-     * @param name der Name
-     * @param length die Anzahl der Bytes
-     * @param start die Start-Adresse
-     * @param alignment die Ausrichtung
-     * @deprecated durch {@link #Feld(Bezeichner, int, int, Align)} abgeloest
-     */
-    @Deprecated
-    public Feld(final String name, final int length, final int start, final Align alignment) {
-        this(new Bezeichner(name), length, start, alignment);
-    }
-
-    /**
-     * Erzeugt ein neues Feld.
      *
      * @param bezeichner der Name des Felds
      * @param length die Anzahl der Bytes
@@ -186,7 +165,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            the alignment
      */
     public Feld(final String name, final int length, final int start, final char c, final Align alignment) {
-        this(name, length, start, alignment);
+        this(new Bezeichner(name), length, start, alignment);
         this.setInhalt(c);
     }
 
@@ -205,7 +184,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            the alignment
      */
     public Feld(final String name, final int length, final int start, final String s, final Align alignment) {
-        this(name, length, start, alignment);
+        this(new Bezeichner(name), length, start, alignment);
         this.setInhalt(s);
     }
 

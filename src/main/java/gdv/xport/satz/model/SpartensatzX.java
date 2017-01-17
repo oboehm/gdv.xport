@@ -18,16 +18,21 @@
 
 package gdv.xport.satz.model;
 
-import gdv.xport.satz.feld.FeldX;
-
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import gdv.xport.satz.feld.FeldX;
+
 /**
  * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die nach
  * dem SOP-Muster aufgebaut sind und eine Sparte besitzen.
+ * <p>
+ * Die alten Spartensatz-Klasse, die schon laengere Zeit als "deprecated"
+ * markiert war, wurde mit 2.0 entsorgt. Der Name "SpartensatzX" fuer diese
+ * Klasse wurde aber beibehalten.
+ * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (06.04.2011)
@@ -42,10 +47,8 @@ public abstract class SpartensatzX extends SatzX {
     /**
      * Instantiates a new spartensatz x.
      *
-     * @param satzart
-     *            the satzart
-     * @param felder
-     *            the felder
+     * @param satzart the satzart
+     * @param felder the felder
      */
     public SpartensatzX(final int satzart, final Enum<?>[] felder) {
         super(satzart, felder);
@@ -54,10 +57,8 @@ public abstract class SpartensatzX extends SatzX {
     /**
      * Instantiates a new spartensatz x.
      *
-     * @param satzart
-     *            the satzart
-     * @param sparte
-     *            the sparte
+     * @param satzart the satzart
+     * @param sparte the sparte
      */
     public SpartensatzX(final int satzart, final int sparte) {
         super(satzart, FeldX.values());
@@ -67,12 +68,9 @@ public abstract class SpartensatzX extends SatzX {
     /**
      * Instantiates a new spartensatz x.
      *
-     * @param satzart
-     *            the satzart
-     * @param sparte
-     *            the sparte
-     * @param felder
-     *            the felder
+     * @param satzart the satzart
+     * @param sparte the sparte
+     * @param felder the felder
      */
     public SpartensatzX(final int satzart, final int sparte, final Enum<?>[] felder) {
         super(satzart, sparte, felder);
@@ -88,8 +86,7 @@ public abstract class SpartensatzX extends SatzX {
     /**
      * Liefert die entsprechende Enum-Felder zur angeforderten Spalte zurueck.
      *
-     * @param sparte
-     *            Sparte
+     * @param sparte Sparte
      * @return the Enum-Felder
      */
     protected Enum<?>[] getFelderFor(final int sparte) {
@@ -105,10 +102,10 @@ public abstract class SpartensatzX extends SatzX {
     }
 
     /**
-     * Abhaengig von der Sparte muessen wir hier noch die verschiedenen Teildatensaetze aufsetzen.
+     * Abhaengig von der Sparte muessen wir hier noch die verschiedenen
+     * Teildatensaetze aufsetzen.
      *
-     * @param x
-     *            Sparte (z.B. 30)
+     * @param x Sparte (z.B. 30)
      * @see gdv.xport.satz.Datensatz#setSparte(int)
      */
     @Override

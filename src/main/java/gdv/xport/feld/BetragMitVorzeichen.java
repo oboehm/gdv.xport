@@ -54,22 +54,6 @@ public final class BetragMitVorzeichen extends Betrag {
 
     /**
      * Instantiiert einen neuen BetragMitVorzeichen.
-     * <p>
-     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
-     * </p>
-     *
-     * @param name Bezeichner
-     * @param length das Vorzeichen muss dabei mitgezaehlt werden
-     * @param start Start-Byte (beginnend bei 1)
-     * @deprecated bitte {@link #BetragMitVorzeichen(Bezeichner, int, int)} benutzen
-     */
-    @Deprecated
-    public BetragMitVorzeichen(final String name, final int length, final int start) {
-        this(new Bezeichner(name), length, start);
-    }
-
-    /**
-     * Instantiiert einen neuen BetragMitVorzeichen.
      *
      * @param name Bezeichner
      * @param length das Vorzeichen muss dabei mitgezaehlt werden
@@ -79,22 +63,6 @@ public final class BetragMitVorzeichen extends Betrag {
     public BetragMitVorzeichen(final Bezeichner name, final int length, final int start) {
         super(name, length, start);
         this.setVorzeichen('+');
-    }
-
-    /**
-     * Instantiiert einen neuen BetragMitVorzeichen.
-     * <p>
-     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
-     * </p>
-     *
-     * @param name Bezeichner
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 0.6
-     * @deprecated bitte {@link #BetragMitVorzeichen(Bezeichner, FeldInfo)} benutzen
-     */
-    @Deprecated
-    public BetragMitVorzeichen(final String name, final FeldInfo info) {
-        this(new Bezeichner(name), info);
     }
 
     /**
