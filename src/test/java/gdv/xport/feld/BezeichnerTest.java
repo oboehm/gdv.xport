@@ -137,16 +137,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testEqualsVuNummer() {
-        ObjectTester.assertEquals(Bezeichner.VU_NR, (Bezeichner.VU_NR.getName()));
-    }
-
-    /**
-     * Und auch mit {@link Bezeichner#LFD_PERSONENNR_GEVO} gab es Probleme...
-     */
-    @Test
-    public void testEqualsPersonenNr() {
-        ObjectTester.assertEquals(Bezeichner.LFD_PERSONEN_NR_IM_GEVO,
-                (Bezeichner.LFD_PERSONEN_NR_IM_GEVO.getName()));
+        ObjectTester.assertEquals(Bezeichner.VU_NR, new Bezeichner("VuNr"));
     }
 
     /**
@@ -155,7 +146,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testEqualsVsNr() {
-        ObjectTester.assertEquals(Bezeichner.VS_NR, (Bezeichner.VS_NR.getName()));
+        ObjectTester.assertEquals(Bezeichner.VS_NR, new Bezeichner("VsNr"));
     }
 
     /**
