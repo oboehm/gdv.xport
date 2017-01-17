@@ -151,7 +151,7 @@ public class Datensatz extends Satz {
 			this.setSparte(satzNr.getSparte());
 		}
 		if (satzNr.hasWagnisart()) {
-			this.setWagnisart("" + satzNr.getWagnisart());
+		    this.set(Bezeichner.WAGNISART, Integer.toString(satzNr.getWagnisart()));
 		}
 		if (satzNr.hasTeildatensatzNummer()) {
 			this.setTeildatensatzNummer("" + satzNr.getTeildatensatzNummer());
@@ -366,20 +366,6 @@ public class Datensatz extends Satz {
 	 */
 	public String getVersicherungsscheinNummer() {
 		return this.getFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER).getInhalt().trim();
-	}
-
-	/**
-	 * Sets the wagnisart.
-	 * <p>
-	 * TODO: wird in 1.2 entsorgt
-	 * <p>
-	 *
-	 * @param wagnisart the new wagnisart
-	 * @deprecated bitte Feld "WAGNISART" holen und Inhalt setzen
-	 */
-	@Deprecated
-	public void setWagnisart(final String wagnisart) {
-		this.wagnisart.setInhalt(wagnisart);
 	}
 
 	/**

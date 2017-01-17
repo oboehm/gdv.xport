@@ -18,7 +18,9 @@
 
 package gdv.xport.satz.model;
 
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -189,6 +191,19 @@ public class Satz220Test extends AbstractDatensatzTest {
         Satz220 sparte53 = new Satz220(53);
         sparte53.importFrom(input);
         assertTrue(sparte53.isValid());
+    }
+
+    /**
+     * Hier testen wir, ob der Umgang mit der Wagnisart einigermassen
+     * funktioniert.
+     */
+    @Test
+    public void testSparte40Wagnisart() {
+        Satz220 sparte40 = new Satz220(40);
+        sparte40.set(Bezeichner.WAGNISART, "1");
+        assertEquals("1", sparte40.get(Bezeichner.WAGNISART).trim());
+        assertThat(sparte40.hasWagnisart(), is(Boolean.TRUE));
+        assertEquals("1", sparte40.getWagnisart().trim());
     }
 
 }
