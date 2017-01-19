@@ -18,19 +18,12 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.regex.Pattern;
 
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.*;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
