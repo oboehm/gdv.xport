@@ -475,16 +475,27 @@ public abstract class Satz {
                 + " vorhanden!");
     }
 
-	/**
-	 * Liefert den Inhalt des gewuenschten Feldes.
-	 *
-	 * @since 0.3
-	 * @param name gewuenschter Bezeichner des Feldes
-	 * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
-	 */
-	public final String getFeldInhalt(final String name) {
-		return this.getFeld(name).getInhalt().trim();
-	}
+    /**
+     * Liefert den Inhalt des gewuenschten Feldes.
+     *
+     * @param bezeichner gewuenschter Bezeichner des Feldes
+     * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
+     * @since 2.0
+     */
+    public final String getFeldInhalt(final Bezeichner bezeichner) {
+        return this.getFeldInhalt(bezeichner.getName());
+    }
+
+    /**
+     * Liefert den Inhalt des gewuenschten Feldes.
+     *
+     * @param name gewuenschter Bezeichner des Feldes
+     * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
+     * @since 0.3
+     */
+    public final String getFeldInhalt(final String name) {
+        return this.getFeld(name).getInhalt().trim();
+    }
 
     /**
      * Liefert das gewuenschte Feld.

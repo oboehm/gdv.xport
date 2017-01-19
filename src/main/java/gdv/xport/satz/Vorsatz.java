@@ -51,9 +51,9 @@ public final class Vorsatz extends Satz {
     /** 30 Zeichen, Byte 40 - 69. */
     private final AlphaNumFeld adressat = new AlphaNumFeld((ADRESSAT), 30, 40);
     /** 8 Zeichen, Byte 70 - 77. */
-    private final Datum von = new Datum(NAME_ERSTELLUNGSDATUM_ZEITRAUM_VOM, 70);
+    private final Datum von = new Datum(ERSTELLUNGSDAT_ZEITRAUM_VOM, 70);
     /** 8 Zeichen, Byte 78 - 85. */
-    private final Datum bis = new Datum(NAME_ERSTELLUNGSDATUM_ZEITRAUM_BIS, 78);
+    private final Datum bis = new Datum(ERSTELLUNGSDAT_ZEITRAUM_BIS, 78);
     /** 10 Zeichen, Byte 86 - 95. */
     private final AlphaNumFeld vermittler = new AlphaNumFeld((VERMITTLER), 10, 86);
     /** Die Versionen fuer die verschiedenen Datensaetze. */
@@ -144,7 +144,7 @@ public final class Vorsatz extends Satz {
     }
 
     private void setUpVersionTds1() {
-        addVersion(1, new Version(NAME_VERSION_SATZART_0001, 96, "2.1"));
+        addVersion(1, new Version(VERSION_SATZART_0001, 96, "2.1"));
         addVersion(100, 99, "2.1");
         addVersion(200, 102, "2.2");
         addVersion(210, 50, 105, "   ");
@@ -187,7 +187,7 @@ public final class Vorsatz extends Satz {
         addVersion(410, 216, "   ");
         addVersion(430, 219, "   ");
         addVersion(500, 222, "   ");
-        addVersion(9999, new Version(NAME_VERSION_SATZART_9999, 225, "1.1"));
+        addVersion(9999, new Version(VERSION_SATZART_9999, 225, "1.1"));
         addVersion(420, 228, "   ");
         addVersion(450, 231, "   ");
         addVersion(550, 234, "   ");

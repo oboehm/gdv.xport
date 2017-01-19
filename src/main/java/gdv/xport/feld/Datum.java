@@ -68,7 +68,18 @@ public final class Datum extends Feld {
     }
 
     /**
-     * Instantiates a new datum.
+     * Erstellt ein neues Datum.
+     *
+     * @param bezeichner Bezeichner
+     * @param start the start
+     * @since 2.0
+     */
+    public Datum(final Bezeichner bezeichner, final int start) {
+        this(bezeichner, 8, start);
+    }
+
+    /**
+     * Erstellt ein neues Datum.
      *
      * @param name the name
      * @param start the start
