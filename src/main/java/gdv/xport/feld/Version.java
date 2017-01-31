@@ -52,6 +52,17 @@ public class Version extends Feld {
     /**
      * Instantiiert ein neues Versions-Objekt.
      *
+     * @param bezeichner Name des Feldes
+     * @param start Start-Byte (beginnend bei 1)
+     * @param v Versions-String (z.B. "1.1")
+     */
+    public Version(final Bezeichner bezeichner, final int start, final String v) {
+        this(bezeichner.getName(), start, v);
+    }
+
+    /**
+     * Instantiiert ein neues Versions-Objekt.
+     *
      * @param name Name des Feldes
      * @param start Start-Byte (beginnend bei 1)
      * @param v Versions-String (z.B. "1.1")

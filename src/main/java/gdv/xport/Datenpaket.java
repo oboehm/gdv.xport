@@ -384,7 +384,7 @@ public final class Datenpaket {
      * @return Erstellungsdatum bis
      */
     public Datum getErstellungsDatumVon() {
-        return (Datum) this.vorsatz.getFeld(NAME_ERSTELLUNGSDATUM_ZEITRAUM_VOM);
+        return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDAT_ZEITRAUM_VOM);
     }
 
     /**
@@ -403,7 +403,7 @@ public final class Datenpaket {
      * @return Erstellungdatum bis
      */
     public Datum getErstellungsDatumBis() {
-        return (Datum) this.vorsatz.getFeld(NAME_ERSTELLUNGSDATUM_ZEITRAUM_BIS);
+        return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDAT_ZEITRAUM_BIS);
     }
 
     /**
@@ -455,7 +455,7 @@ public final class Datenpaket {
      * @return das komplette Adressat-Feld
      */
     private Feld getAdressatFeld() {
-        return this.vorsatz.getFeld(NAME_ADRESSAT);
+        return this.vorsatz.getFeld(ADRESSAT);
     }
 
     /**

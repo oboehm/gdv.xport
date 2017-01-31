@@ -414,7 +414,7 @@ public class Datensatz extends Satz {
 	 * @since 0.6
 	 */
 	public String getVermittler() {
-		return this.getFeldInhalt(NAME_VERMITTLER);
+		return this.getFeldInhalt(VERMITTLER);
 	}
 
 	/**

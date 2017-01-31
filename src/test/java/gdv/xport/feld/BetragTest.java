@@ -19,11 +19,12 @@
 package gdv.xport.feld;
 
 import static org.junit.Assert.assertEquals;
-import gdv.xport.satz.feld.Feld9999;
 
 import java.util.Locale;
 
 import org.junit.Test;
+
+import gdv.xport.satz.feld.Feld9999;
 
 /**
  * JUnit-Test fuer die Betrag-Klasse.
