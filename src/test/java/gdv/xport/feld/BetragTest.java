@@ -45,7 +45,7 @@ public final class BetragTest extends AbstractFeldTest {
     }
 
     /**
-     * Test-Methode fuer {@link Betrag#Betrag(String, int, int)}.
+     * Test-Methode fuer {@link Betrag#toDouble()}.
      */
     @Test
     public void testBetrag() {
