@@ -208,7 +208,7 @@
       </action>
     </release>
 
-    <release version="0.5.1" date="2-Feb-2011"
+    <release version="0.5.1" date="02-Feb-2011"
              description="Support f&#252;r Sparte 50 bis 53 (KFZ Haftpflicht / Vollkasko)">
       <action dev="oboehm" type="fix" date="19-Jan-2011" >
         NumberFormatException bei NumFeldern mit gro&#223;en Zahlen behoben.
