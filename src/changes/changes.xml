@@ -17,10 +17,10 @@
 
   <body>
 
-    <release version="2.0.0" date="2017"
+    <release version="2.0.0" date="02-Feb-2017"
              description="Bereinigungen">
       <action dev="oboehm" type="update" date="17-Jan-2017">
-        Wegen gr&#246;sseren Aenderungen wurde Version 1.2 jetzt zur
+        Wegen gr&#246;&#223;eren &#196;nderungen wurde Version 1.2 jetzt zur
         neuen Version 2.0 erhoben.
       </action>
       <action dev="oboehm" type="update" date="16-Jan-2017">
