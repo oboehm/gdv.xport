@@ -20,11 +20,9 @@
 
 package gdv.xport.satz;
 
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.BetragMitVorzeichen;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.NumFeld;
+import static gdv.xport.feld.Bezeichner.*;
+
+import gdv.xport.feld.*;
 
 /**
  * Dies ist der letzte Satz, der Nachsatz eben.
@@ -37,24 +35,22 @@ import gdv.xport.feld.NumFeld;
  */
 public final class Nachsatz extends Satz {
 
-    private final NumFeld anzahlSaetze = new NumFeld(new Bezeichner(Bezeichner.NAME_ANZAHL_SAETZE), 10, 5);
-    private final AlphaNumFeld vermittler = new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_VERMITTLER), 10, 15);
-    private final Betrag gesamtBeitrag = new Betrag(new Bezeichner(Bezeichner.NAME_GESAMTBEITRAG), 15, 25);
-    private final BetragMitVorzeichen gesamtBeitragBrutto = new BetragMitVorzeichen(new Bezeichner(
-            Bezeichner.NAME_GESAMTBEITRAG_BRUTTO), 15, 40);
-    private final BetragMitVorzeichen gesamtProvisionsBetrag = new BetragMitVorzeichen(new Bezeichner(
-            Bezeichner.NAME_GESAMTPROVISIONSBETRAG), 15, 55);
-    private final BetragMitVorzeichen versicherungsLeistungen = new BetragMitVorzeichen(new Bezeichner(
-            Bezeichner.NAME_VERSICHERUNGSLEISTUNGEN), 15, 70);
-    private final BetragMitVorzeichen schadenbearbeitungsKosten = new BetragMitVorzeichen(new Bezeichner(
-            Bezeichner.NAME_SCHADENBEARBEITUNGSKOSTEN), 15, 85);
+    private final NumFeld anzahlSaetze = new NumFeld((Bezeichner.ANZAHL_SAETZE), 10, 5);
+    private final AlphaNumFeld vermittler = new AlphaNumFeld((Bezeichner.VERMITTLER), 10, 15);
+    private final Betrag gesamtBeitrag = new Betrag((Bezeichner.GESAMTBEITRAG), 15, 25);
+    private final BetragMitVorzeichen gesamtBeitragBrutto = new BetragMitVorzeichen(GESAMTBEITRAG_BRUTTO, 15, 40);
+    private final BetragMitVorzeichen gesamtProvisionsBetrag = new BetragMitVorzeichen(GESAMTPROVISIONSBETRAG, 15, 55);
+    private final BetragMitVorzeichen versicherungsLeistungen = new BetragMitVorzeichen(VERSICHERUNGSLEISTUNGEN, 15,
+            70);
+    private final BetragMitVorzeichen schadenbearbeitungsKosten = new BetragMitVorzeichen(SCHADENBEARBEITUNGSKOSTEN, 15,
+            85);
 
     /**
      * Default-Constructor.
      */
     public Nachsatz() {
         super("9999", 1);
-        this.remove(Bezeichner.NAME_SATZNUMMER);
+        this.remove(Bezeichner.SATZNUMMER);
         this.setUpTeildatensatz();
         this.setAnzahlSaetze(0);
     }
@@ -67,7 +63,7 @@ public final class Nachsatz extends Satz {
         add(this.gesamtProvisionsBetrag);
         add(this.versicherungsLeistungen);
         add(this.schadenbearbeitungsKosten);
-        add(new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_LEERSTELLEN), 157, 100));
+        add(new AlphaNumFeld((Bezeichner.LEERSTELLEN), 157, 100));
     }
 
     /**

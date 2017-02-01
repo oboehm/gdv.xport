@@ -31,20 +31,6 @@ import gdv.xport.annotation.FeldInfo;
 public class Betrag extends NumFeld {
 
     /**
-     * Legt ein neues Betrags-Feld an.
-     * <p>
-     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
-     * </p>
-     *
-     * @param name Name des Feldes
-     * @deprecated bitte {@link #Betrag(Bezeichner, int, int)} verwenden
-     */
-    @Deprecated
-    public Betrag(final String name) {
-        super(name, "00000000000000");
-    }
-
-    /**
      * Legt ein neues Betrags-Feld an. Die Informationen dazu werden
      * aus der uebergebenen Enum bezogen.
      *
@@ -68,22 +54,6 @@ public class Betrag extends NumFeld {
 
     /**
      * Instantiiert einen neuen Betrag.
-     * <p>
-     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
-     * </p>
-     *
-     * @param name Name des Feldes
-     * @param length Laenge
-     * @param start Start-Byte (beginnend bei 1)
-     * @deprecated bitte {@link #Betrag(Bezeichner, int, int)} benutzen
-     */
-    @Deprecated
-    public Betrag(final String name, final int length, final int start) {
-        this(new Bezeichner(name), length, start);
-    }
-
-    /**
-     * Instantiiert einen neuen Betrag.
      *
      * @param name Name des Feldes
      * @param length Laenge
@@ -92,22 +62,6 @@ public class Betrag extends NumFeld {
      */
     public Betrag(final Bezeichner name, final int length, final int start) {
         super(name, length, start, 0, 2);
-    }
-
-    /**
-     * Instantiiert einen neuen Betrag.
-     * <p>
-     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
-     * </p>
-     *
-     * @param name Bezeichner
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 0.6
-     * @deprecated bitte {@link #Betrag(Bezeichner, FeldInfo)} benutzen
-     */
-    @Deprecated
-    public Betrag(final String name, final FeldInfo info) {
-        this(new Bezeichner(name), info);
     }
 
     /**

@@ -68,11 +68,13 @@ public class NullFormatterTest extends AbstractFormatterTest {
     @IntegrationTest
     @Test
     public void testWriteDatenpaketToFile() throws IOException {
-        File output = new File("target", "output.txt");
+        File output = File.createTempFile("output", ".txt");
         Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1");
         NullFormatter formatter = new NullFormatter(writer);
+        Datenpaket datenpaket = new Datenpaket();
         try {
-            formatter.write(MUSTER_DATENPAKET);
+            datenpaket.importFrom(MUSTERDATEI, "ISO-8859-1");
+            formatter.write(datenpaket);
             writer.close();
             FileTester.assertContentEquals(MUSTERDATEI, output, "ISO-8859-1");
         } finally {

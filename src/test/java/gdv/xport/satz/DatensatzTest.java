@@ -31,8 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.*;
 
 /**
  * Gemeinsame Oberklasse fuer SatzTest.
@@ -43,7 +42,7 @@ import org.slf4j.LoggerFactory;
  */
 public class DatensatzTest extends AbstractDatensatzTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DatensatzTest.class);
+    private static final Logger LOG = LogManager.getLogger(DatensatzTest.class);
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -63,7 +62,9 @@ public class DatensatzTest extends AbstractDatensatzTest {
     @Test
     public void testDatensatzStringInt() throws IOException {
         Satz adressteil = new Datensatz("0100", 5);
-        adressteil.add(new AlphaNumFeld(Bezeichner.NAME_ANREDESCHLUESSEL, 1, 43, '6'));
+        AlphaNumFeld schluessel = new AlphaNumFeld((Bezeichner.ANREDESCHLUESSEL), 1, 43);
+        schluessel.setInhalt('6');
+        adressteil.add(schluessel);
         LOG.info("adressteil=" + adressteil.toShortString());
         checkExport(adressteil, 43, 43, "6", 1280);
     }
@@ -74,9 +75,9 @@ public class DatensatzTest extends AbstractDatensatzTest {
     @Test
     public void testSet() {
         Satz ds = new Datensatz("0200", 2);
-        ds.add(new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_INKASSOART), 1, 43));
-        ds.set(Bezeichner.NAME_INKASSOART, "2");
-        assertEquals(ds.get(Bezeichner.NAME_INKASSOART), "2");
+        ds.add(new AlphaNumFeld((Bezeichner.INKASSOART), 1, 43));
+        ds.set(Bezeichner.INKASSOART, "2");
+        assertEquals(ds.get(Bezeichner.INKASSOART), "2");
     }
 
     /**

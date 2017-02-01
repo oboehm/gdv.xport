@@ -17,14 +17,25 @@
 
   <body>
 
-    <release version="1.2.0" date="2017"
+    <release version="2.0.0" date="02-Feb-2017"
              description="Bereinigungen">
+      <action dev="oboehm" type="update" date="17-Jan-2017">
+        Wegen gr&#246;&#223;eren &#196;nderungen wurde Version 1.2 jetzt zur
+        neuen Version 2.0 erhoben.
+      </action>
+      <action dev="oboehm" type="update" date="16-Jan-2017">
+        Umstieg auf Log4J-2 als neues Logging-Framework.
+      </action>
+      <action dev="oboehm" type="delete" date="15-Jan-2017">
+        Deprecated String-Konstanten in Bezeichner gel&#246;scht.
+        Als Ersatz gibt es String-Konstanten mit "NAME_"-Prefix.
+      </action>
+      <action dev="oboehm" type="update" date="24-Okt-2016">
+        Encoding-Probleme sind jetzt beseitigt.
+      </action>
       <action dev="oboehm" type="add" date="10-Jun-2016">
       	&#220;ber CsvFormatter k&#246;nnen Datenpakete jetzt ins CVS-Format
       	exportiert werden.
-      </action>
-      <action dev="oboehm" type="delete" date="08-Feb-2016">
-        Deprecated String-Konstanten in Bezeichner gel&#246;scht.
       </action>
     </release>
 
@@ -197,7 +208,7 @@
       </action>
     </release>
 
-    <release version="0.5.1" date="2-Feb-2011"
+    <release version="0.5.1" date="02-Feb-2011"
              description="Support f&#252;r Sparte 50 bis 53 (KFZ Haftpflicht / Vollkasko)">
       <action dev="oboehm" type="fix" date="19-Jan-2011" >
         NumberFormatException bei NumFeldern mit gro&#223;en Zahlen behoben.

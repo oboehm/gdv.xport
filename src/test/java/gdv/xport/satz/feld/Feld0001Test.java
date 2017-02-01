@@ -18,18 +18,16 @@
 
 package gdv.xport.satz.feld;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.model.SatzX;
+import static org.junit.Assert.*;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.model.SatzX;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**
@@ -58,9 +56,9 @@ public class Feld0001Test {
      */
     @Test
     public void testVersionSatzart0001() {
-        Feld x = vorsatz.getTeildatensatz(1).getFeld(Bezeichner.NAME_VERSION_SATZART_0001);
+        Feld x = vorsatz.getTeildatensatz(1).getFeld(Bezeichner.VERSION_SATZART_0001);
         assertNotNull(x);
-        assertEquals(Bezeichner.NAME_VERSION_SATZART_0001, x.getBezeichnung());
+        assertEquals(Bezeichner.VERSION_SATZART_0001, x.getBezeichner());
         assertEquals(96, x.getByteAdresse());
     }
 

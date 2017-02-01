@@ -27,8 +27,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.*;
 
 import gdv.xport.util.XmlHelper;
 
@@ -41,7 +40,7 @@ import gdv.xport.util.XmlHelper;
  */
 public class Satzende {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Satzende.class);
+    private static final Logger LOG = LogManager.getLogger(Satzende.class);
     private final List<FeldReferenz> feldReferenzen = new ArrayList<FeldReferenz>();
 
     /**

@@ -20,20 +20,17 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.annotation.FeldInfo;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.text.*;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import gdv.xport.annotation.FeldInfo;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.constraint.MatchPatternCheck;
 import net.sf.oval.context.ClassContext;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * The Class Datum.
@@ -71,13 +68,24 @@ public final class Datum extends Feld {
     }
 
     /**
-     * Instantiates a new datum.
+     * Erstellt ein neues Datum.
+     *
+     * @param bezeichner Bezeichner
+     * @param start the start
+     * @since 2.0
+     */
+    public Datum(final Bezeichner bezeichner, final int start) {
+        this(bezeichner, 8, start);
+    }
+
+    /**
+     * Erstellt ein neues Datum.
      *
      * @param name the name
      * @param start the start
      */
     public Datum(final String name, final int start) {
-        this(name, 8, start);
+        this(new Bezeichner(name), 8, start);
     }
 
     /**
@@ -92,22 +100,6 @@ public final class Datum extends Feld {
 
     /**
      * Legt ein neues Datum an.
-     * <p>
-     * TODO: Bitte nicht mehr benutzen - wird in 1.2 entfernt!
-     * </p>
-     *
-     * @param name Name
-     * @param length Anzahl Bytes
-     * @param start Byte-Adresse
-     * @deprecated durch {@link #Datum(Bezeichner, int, int)} abgeloest
-     */
-    @Deprecated
-    public Datum(final String name, final int length, final int start) {
-        this(new Bezeichner(name), length, start);
-    }
-
-    /**
-     * Legt ein neues Datum an.
      *
      * @param bezeichner Bezeichner
      * @param length Anzahl Bytes
@@ -116,22 +108,6 @@ public final class Datum extends Feld {
     public Datum(Bezeichner bezeichner, int length, int start) {
         super(bezeichner, length, start, Align.RIGHT);
         dateFormat = getDateFormat(length);
-    }
-
-    /**
-     * Instantiiert ein neues Datum.
-     * <p>
-     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
-     * </p>
-     *
-     * @param name Bezeichner
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 0.6
-     * @deprecated bitte {@link #Datum(Bezeichner, FeldInfo)} verwenden
-     */
-    @Deprecated
-    public Datum(final String name, final FeldInfo info) {
-        this(new Bezeichner(name), info);
     }
 
     /**
@@ -155,7 +131,7 @@ public final class Datum extends Feld {
      * @param inhalt Datum der Form "ddmmjjjj" oder "ddjjjj" oder "dd"
      */
     public Datum(final String name, final int length, final int start, final String inhalt) {
-        this(name, length, start);
+        this(new Bezeichner(name), length, start);
         this.setInhalt(inhalt);
     }
 

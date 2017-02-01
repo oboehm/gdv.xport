@@ -35,8 +35,7 @@ import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.*;
 
 /**
  * Im Gegensatz zum SOP-Ansatz und zur SatzX-Klasse wird hier eine XML-
@@ -50,7 +49,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class SatzXml extends Datensatz {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SatzXml.class);
+    private static final Logger LOG = LogManager.getLogger(SatzXml.class);
 
     /**
      * Instantiiert einen neuen Satz.
@@ -192,7 +191,7 @@ public final class SatzXml extends Datensatz {
         List<SatzTyp> satzTypen = new ArrayList<SatzTyp>();
         if (this.hasWagnisart()) {
             TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(1);
-            FeldReferenz feldReferenz = tdsXml.getFeldRefenz(new Bezeichner(Bezeichner.NAME_WAGNISART));
+            FeldReferenz feldReferenz = tdsXml.getFeldRefenz((Bezeichner.WAGNISART));
             for (String value : feldReferenz.getDefaultWerte()) {
                 satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), Integer.parseInt(value)));
             }

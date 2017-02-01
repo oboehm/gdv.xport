@@ -18,15 +18,10 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.NAME_LAUFZEITRABATT_IN_PROZENT;
-import static gdv.xport.feld.Bezeichner.NAME_VERTRAGSSTATUS;
+import static gdv.xport.feld.Bezeichner.LAUFZEITRABATT_IN_PROZENT;
+import static gdv.xport.feld.Bezeichner.VERTRAGSSTATUS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.satz.model.Satz210;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -35,6 +30,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import gdv.xport.config.Config;
+import gdv.xport.feld.*;
+import gdv.xport.satz.model.Satz210;
 
 /**
  * Urspruenglich war dies die Testklasse fuer die Klasse
@@ -93,7 +92,7 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
         Datensatz vertragsteil = new Satz210(30);
         vertragsteil.setFolgenummer(42);
         Teildatensatz teildatensatz = vertragsteil.getTeildatensatz(1);
-        Feld feld = teildatensatz.getFeld(Bezeichner.NAME_FOLGENUMMER);
+        Feld feld = teildatensatz.getFeld(Bezeichner.FOLGENUMMER);
         assertNotNull(feld);
         assertEquals("42", feld.getInhalt());
     }
@@ -134,11 +133,11 @@ public class VertragsspezifischerTeilTest extends AbstractSatzTest {
         Datensatz vertragsteil = new Satz210(30);
         vertragsteil.importFrom(input);
         assertEquals("9999", vertragsteil.getVuNummer().trim());
-        Feld rabatt = vertragsteil.getFeld(NAME_LAUFZEITRABATT_IN_PROZENT);
+        Feld rabatt = vertragsteil.getFeld(LAUFZEITRABATT_IN_PROZENT);
         assertEquals("1000", rabatt.getInhalt());
         NumFeld prozent = (NumFeld) rabatt;
         assertEquals(10.00, prozent.toDouble(), 0.001);
-        Feld vertragsstatus = vertragsteil.getFeld(NAME_VERTRAGSSTATUS);
+        Feld vertragsstatus = vertragsteil.getFeld(VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         StringWriter swriter = new StringWriter(256);
         vertragsteil.export(swriter, "");

@@ -38,7 +38,7 @@ public class VersionTest {
     public void testVersion() {
         Version v = new Version(Feld0001.VERSION_SATZART_0001);
         assertEquals(96, v.getByteAdresse());
-        assertEquals(new Bezeichner(Bezeichner.NAME_VERSION_SATZART_0001), v.getBezeichner());
+        assertEquals((Bezeichner.VERSION_SATZART_0001), v.getBezeichner());
     }
 
 }

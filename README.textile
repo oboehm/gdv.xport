@@ -1,13 +1,24 @@
+!https://api.travis-ci.org/oboehm/gdv.xport.svg?branch=develop/2.0(Build Status)!:https://travis-ci.org/oboehm/gdv.xport !https://img.shields.io/badge/license-Apache%202.0-blue.svg(Apache License 2.0)!:http://www.apache.org/licenses/LICENSE-2.0.html
+
 h1. Was ist gdv.xport?
+
 
 gdv.xport ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert. Sie vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung der verschiedenen Datensaetze.
 
 Das "x" in port steht fur "im"- und "ex"-port. Die Bibliothek ist Open Source und steht unter der Apache License.
 
+
+
 h2. Aehnliche Projekte
 
 Fuer Ruby gibt es "OpenGDV":https://github.com/vendis/opengdv/, einer Open-Source-Bibliothek, die unter der MIT-License steht.
 
+
+
 h2. Weitere Infos
 
 Im "Wiki":https://github.com/oboehm/gdv.xport/wiki ist alles Wichtige zu gdv.xport zusammengefasst. Weitere Infos wie z.B. die "JavaDocs":http://www.aosd.de/gdv.xport/apidocs/index.html finden Sie auch auf der "Maven Projekt-Seite":http://www.aosd.de/gdv.xport/ .
+
+* CI-Build: https://travis-ci.org/oboehm/gdv.xport
+* Wiki: https://github.com/oboehm/gdv.xport/wiki
+* Projekt-Seite: http://www.aosd.de/gdv.xport/

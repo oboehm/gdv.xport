@@ -33,8 +33,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.*;
 
 import patterntesting.runtime.log.LogWatch;
 
@@ -50,7 +49,7 @@ import patterntesting.runtime.log.LogWatch;
  */
 public class XmlService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(XmlService.class);
+    private static final Logger LOG = LogManager.getLogger(XmlService.class);
     private static final Map<String, XmlService> INSTANCES = new WeakHashMap<String, XmlService>();
     private final List<SatzXml> saetze = new ArrayList<SatzXml>();
     private final Map<SatzTyp, SatzXml> satzarten = new HashMap<SatzTyp, SatzXml>();

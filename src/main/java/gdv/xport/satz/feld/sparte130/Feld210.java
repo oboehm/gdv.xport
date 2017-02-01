@@ -171,7 +171,7 @@ public enum Feld210 {
             type = AlphaNumFeld.class,
             anzahlBytes = 3,
             byteAdresse = 142)
-    WAEHRUNGSSCHUESSEL,
+    WAEHRUNGSSCHLUESSEL,
 
     /**
      * Zuschlagsbetrag in Währungseinheiten.
@@ -199,7 +199,7 @@ public enum Feld210 {
             nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 157)
-    ABSCHLAGSBEITRAG_IN_WAEHRUNGSEINHEITEN,
+    ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Gesamtversicherungssummer in Währungseinheiten.
@@ -570,7 +570,7 @@ public enum Feld210 {
             type = AlphaNumFeld.class,
             anzahlBytes = 1,
             byteAdresse = 10)
-    BUENDELUNSKENNZEICHEN,
+    BUENDELUNGSKENNZEICHEN,
 
     /**
      * Sparte.

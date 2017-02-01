@@ -100,8 +100,8 @@ public final class DatenpaketTest {
         int expectedLength = 1024 + 4 * Config.getEOD().length();
         assertEquals(expectedLength, data.length());
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_0001));
-        assertEquals("1.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_9999));
+        assertEquals("2.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
+        assertEquals("1.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(0, nachsatz.getAnzahlSaetze());
         assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
@@ -143,9 +143,9 @@ public final class DatenpaketTest {
     public void testAdd() {
         datenpaket.add(new Satz220());
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_0001));
+        assertEquals("2.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
         assertEquals("2.1", vorsatz.getVersion(100));
-        assertEquals("1.1", vorsatz.getVersion(Bezeichner.NAME_VERSION_SATZART_9999));
+        assertEquals("1.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(1, nachsatz.getAnzahlSaetze());
     }
@@ -332,7 +332,7 @@ public final class DatenpaketTest {
         String muster = getResourceAsString("/musterdatei_041222.txt");
         datenpaket.importFrom(muster);
         Satz vertragsteil = datenpaket.getDatensaetze().get(2);
-        Feld vertragsstatus = vertragsteil.getFeld(Bezeichner.NAME_VERTRAGSSTATUS);
+        Feld vertragsstatus = vertragsteil.getFeld(Bezeichner.VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         checkExportWith(muster);
     }

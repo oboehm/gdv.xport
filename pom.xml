@@ -11,7 +11,7 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>jar</packaging>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>2.0.0</version>
   <name>GDV-Xport</name>
   <url>http://www.aosd.de/gdv.xport/</url>
   <organization>
@@ -30,7 +30,7 @@
 
   <properties>
 
-    <patterntesting.version>1.6.3</patterntesting.version>
+    <patterntesting.version>1.7.0</patterntesting.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.7</java.version>
 
@@ -55,8 +55,11 @@
     <!-- super.clone() should be called when overriding Object.clone() -->
     <sonar.issue.ignore.multicriteria.4.ruleKey>squid:S1182</sonar.issue.ignore.multicriteria.4.ruleKey>
     <sonar.issue.ignore.multicriteria.4.resourceKey>**/feld/*.java</sonar.issue.ignore.multicriteria.4.resourceKey>
+    <!-- Subclasses that add fields should override "equals" -->
+    <sonar.issue.ignore.multicriteria.2160.ruleKey>squid:S2160</sonar.issue.ignore.multicriteria.2160.ruleKey>
+    <sonar.issue.ignore.multicriteria.2160.resourceKey>src/main/java/gdv/xport/**/*satz*.java</sonar.issue.ignore.multicriteria.2160.resourceKey>
     <!-- ignore violations -->
-    <sonar.issue.ignore.multicriteria>1,2,3,4</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>1,2,3,4,2160</sonar.issue.ignore.multicriteria>
 
   </properties>
 
@@ -233,14 +236,14 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
-        <version>2.7.1</version>
+        <version>3.2</version>
       </plugin>
 
       <!-- Code Coverage  -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.7.2.201409121644</version>
+        <version>0.7.7.201606060606</version>
         <configuration>
           <destFile>${sonar.jacoco.reportPath}</destFile>
           <append>true</append>
@@ -542,20 +545,8 @@
   </issueManagement>
   
   <ciManagement>
-    <system>jenkins</system>
-    <url>http://miniserver07:8280/view/gdv.xport/</url>
-    <notifiers>
-      <notifier>
-        <type>mail</type>
-        <sendOnError>true</sendOnError>
-        <sendOnFailure>true</sendOnFailure>
-        <sendOnSuccess>false</sendOnSuccess>
-        <sendOnWarning>false</sendOnWarning>
-        <configuration>
-          <address>oliver.boehm@gmail.com</address>
-        </configuration>
-      </notifier>
-    </notifiers>
+    <system>Travis CI</system>
+    <url>https://travis-ci.org/oboehm/gdv.xport</url>
   </ciManagement>
   
   <mailingLists>

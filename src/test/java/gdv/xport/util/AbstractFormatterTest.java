@@ -18,21 +18,15 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.regex.Pattern;
 
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.*;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.DatenpaketStreamer;
@@ -43,12 +37,20 @@ import patterntesting.runtime.junit.FileTester;
 /**
  * Gemeinsame Oberklasse fuer die verschiedenen Formatter-Tests.
  *
+ * Einige Tests passieren auf korrektem Encoding. Da die Beispieldaten
+ * vom GDV alle ISO-8859-1-kodiert sind, kann das File-Encoding beim
+ * Start der VM ebenfalls darauf eingestellt sein, d.h. die VM kann mit
+ * <pre>
+ * -Dfile.encoding=ISO-8859-1
+ * </pre>
+ * gestartet werden, falls einige Tests fehlschlagen sollten.
+ *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (30.11.2010)
  */
 public abstract class AbstractFormatterTest extends AbstractTest {
 
-    private static Log log = LogFactory.getLog(AbstractFormatterTest.class);
+    private static final Logger LOG = LogManager.getLogger(AbstractFormatterTest.class);
     private static XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
     /** Die Musterdatei, die wir fuer einige Tests verwenden. */
@@ -68,22 +70,6 @@ public abstract class AbstractFormatterTest extends AbstractTest {
     }
 
     /**
-     * Einige Tests passieren auf das korrekte Encoding. Da die Beispieldaten
-     * vom GDV alle ISO-8859-1-kodiert sind, sollte das File-Encoding beim
-     * Start der VM ebenfalls darauf eingestellt sein, d.h. die VM sollte mit
-     * <pre>
-     * -Dfile.encoding=ISO-8859-1
-     * </pre>
-     * gestartet werden. falls nicht, wird dieser Test fehlschlagen.
-     */
-    @Test
-    public void testFileEncoding() {
-        String defaultEncoding = Charset.defaultCharset().name();
-        String fileEncoding = System.getProperty("file.encoding", defaultEncoding);
-        assertEquals("wrong launch config", "ISO-8859-1", fileEncoding);
-    }
-
-    /**
      * Tested die Formattierung der Musterdatei als HTML.
      *
      * @param formatter the formatter
@@ -97,7 +83,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
         InputStream istream = AbstractFormatterTest.class.getResourceAsStream("/musterdatei_041222.txt");
         File siteDir = new File("target", "site");
         if (siteDir.mkdirs()) {
-            log.info("created: " + siteDir);
+            LOG.info("created: " + siteDir);
         }
         File exportFile = new File(siteDir, filename);
         Writer writer = new OutputStreamWriter(new FileOutputStream(exportFile), "ISO-8859-1");
@@ -105,7 +91,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
             datenpaket.importFrom(istream);
             formatter.setWriter(writer);
             formatter.write(datenpaket);
-            log.info(datenpaket + " exported to " + exportFile);
+            LOG.debug("{} exported to {} .", datenpaket, exportFile);
         } finally {
             writer.close();
             istream.close();
@@ -127,14 +113,14 @@ public abstract class AbstractFormatterTest extends AbstractTest {
         formatter.setWriter(writer);
         try {
             exportMusterdatei(formatter);
-            log.info("Musterdatei was exported to " + output);
+            LOG.info("Musterdatei was exported to '{}'.", output);
         } finally {
             writer.close();
             output.deleteOnExit();
         }
         File exported = new File("target/site", filename);
         if (exported.exists()) {
-            log.info(output + " will be compared with already generated " + exported);
+            LOG.info(output + " will be compared with already generated " + exported);
             FileTester.assertContentEquals(exported, output, Charset.forName("ISO-8859-1"),
                     Pattern.compile("<!--.*-->"));
         }
@@ -177,7 +163,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
                 n += xmlr.getText().length();
             }
         }
-        log.info(n + " bytes text in " + xmlString.length() + " bytes XML");
+        LOG.info(n + " bytes text in " + xmlString.length() + " bytes XML");
     }
 
 }

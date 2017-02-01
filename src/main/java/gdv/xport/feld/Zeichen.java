@@ -41,21 +41,6 @@ public class Zeichen extends AlphaNumFeld {
 
     /**
      * Instanziiert ein neues Zeichen.
-     * <p>
-     * TODO: Bitte nicht mehr verwenden, wird mit 1.2 entsorgt!
-     * </p>
-     *
-     * @param name der Name
-     * @param start die Byte-Adresse
-     * @deprecated bitte {@link #Zeichen(Bezeichner, int)} verwenden
-     */
-    @Deprecated
-    public Zeichen(final String name, final int start) {
-        this(new Bezeichner(name), start);
-    }
-
-    /**
-     * Instanziiert ein neues Zeichen.
      *
      * @param bezeichner der Bezeichner
      * @param start die Byte-Adresse
@@ -98,17 +83,6 @@ public class Zeichen extends AlphaNumFeld {
     public Zeichen(final String name, final FeldInfo info) {
         this(new Bezeichner(name), info.byteAdresse());
         assert info.anzahlBytes() == 1 : "Zeichen kann nur 1 Byte lang sein";
-    }
-
-    /**
-     * Instantiates a new zeichen.
-     *
-     * @param name the name
-     * @param start the start
-     * @param c the c
-     */
-    public Zeichen(final String name, final int start, final char c) {
-        super(name, 1, start, c);
     }
 
     /**

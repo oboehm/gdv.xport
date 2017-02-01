@@ -49,6 +49,16 @@ public class BezeichnerTest {
     }
 
     /**
+     * Die Konstante NAME1 sollte als toSring() "Name1" zuruckliefern, sonst
+     * klappt das Mapping der Bezeichner aus den annotierten Feld-Enums nicht.
+     */
+    @Test
+    public void testNAME1toString() {
+        Bezeichner createdName1 = new Bezeichner(Bezeichner.NAME1.toString());
+        assertEquals(Bezeichner.NAME1, createdName1);
+    }
+
+    /**
      * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Die Daten
      * dazu stammen aus der XML-Datei ("VUVM2013").
      */
@@ -116,7 +126,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testEqualsVermittler() {
-        ObjectTester.assertEquals(new Bezeichner(Bezeichner.NAME_VERMITTLER),
+        ObjectTester.assertEquals((Bezeichner.VERMITTLER),
                 new Bezeichner("Gesch\u00e4ftsstelle / Vermittler"));
     }
 
@@ -127,16 +137,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testEqualsVuNummer() {
-        ObjectTester.assertEquals(Bezeichner.VU_NR, new Bezeichner(Bezeichner.VU_NR.getName()));
-    }
-
-    /**
-     * Und auch mit {@link Bezeichner#LFD_PERSONENNR_GEVO} gab es Probleme...
-     */
-    @Test
-    public void testEqualsPersonenNr() {
-        ObjectTester.assertEquals(Bezeichner.LFD_PERSONEN_NR_IM_GEVO,
-                new Bezeichner(Bezeichner.LFD_PERSONEN_NR_IM_GEVO.getName()));
+        ObjectTester.assertEquals(Bezeichner.VU_NR, new Bezeichner("VuNr"));
     }
 
     /**
@@ -145,7 +146,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testEqualsVsNr() {
-        ObjectTester.assertEquals(Bezeichner.VS_NR, new Bezeichner(Bezeichner.VS_NR.getName()));
+        ObjectTester.assertEquals(Bezeichner.VS_NR, new Bezeichner("VsNr"));
     }
 
     /**

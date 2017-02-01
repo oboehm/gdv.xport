@@ -295,7 +295,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
                 + "0040901 0000000000000000000 EUR000000000000000000000000000000041"
                 + "1410000000000 0001000                                           "
                 + "           000000                                               ");
-        assertEquals("1", satz210.getFeld(Bezeichner.NAME_VERTRAGSSTATUS).getInhalt());
+        assertEquals("1", satz210.getFeld(Bezeichner.VERTRAGSSTATUS).getInhalt());
     }
 
     private static void checkImportExport(final SatzXml satz, final String content) throws IOException {
@@ -320,7 +320,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     }
 
     private void checkVertragsstatus(SatzXml satz210) {
-        Feld vertragsstatus = satz210.getFeld(Bezeichner.NAME_VERTRAGSSTATUS);
+        Feld vertragsstatus = satz210.getFeld(Bezeichner.VERTRAGSSTATUS);
         assertEquals(43, vertragsstatus.getByteAdresse());
     }
 

@@ -74,7 +74,7 @@ public final class SatzFactoryTest extends AbstractTest {
     @Test
     public void testGetSatzInt() {
         Satz satz = getSatz(1);
-        assertNotNull(satz.getFeld(Bezeichner.NAME_VERSION_SATZART_0100));
+        assertNotNull(satz.getFeld(Bezeichner.VERSION_SATZART_0100));
     }
 
     /**
@@ -238,7 +238,7 @@ public final class SatzFactoryTest extends AbstractTest {
     @Test
     public void testGetSatzart210Sparte30() {
         Datensatz satz210 = getDatensatz(210, 30);
-        Feld vertragsstatus = satz210.getFeld(Bezeichner.NAME_VERTRAGSSTATUS);
+        Feld vertragsstatus = satz210.getFeld(Bezeichner.VERTRAGSSTATUS);
         assertEquals(43, vertragsstatus.getByteAdresse());
     }
 
@@ -254,7 +254,7 @@ public final class SatzFactoryTest extends AbstractTest {
     private void checkGetDatensatz(final int satzart, final int sparte, final Enum<?>[] felder, final String satzNr) {
         checkGetDatensatz(satzart, sparte, felder);
         Satz datensatz = getDatensatz(satzart, sparte);
-        Feld satznummer = datensatz.getFeld(Bezeichner.NAME_SATZNUMMER, 1);
+        Feld satznummer = datensatz.getFeld(Bezeichner.SATZNUMMER, 1);
         assertEquals("falsche Satznummer", satzNr, satznummer.getInhalt());
     }
 

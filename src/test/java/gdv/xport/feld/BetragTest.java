@@ -19,11 +19,12 @@
 package gdv.xport.feld;
 
 import static org.junit.Assert.assertEquals;
-import gdv.xport.satz.feld.Feld9999;
 
 import java.util.Locale;
 
 import org.junit.Test;
+
+import gdv.xport.satz.feld.Feld9999;
 
 /**
  * JUnit-Test fuer die Betrag-Klasse.
@@ -45,7 +46,7 @@ public final class BetragTest extends AbstractFeldTest {
     }
 
     /**
-     * Test-Methode fuer {@link Betrag#Betrag(String, int, int)}.
+     * Test-Methode fuer {@link Betrag#toDouble()}.
      */
     @Test
     public void testBetrag() {
@@ -59,7 +60,7 @@ public final class BetragTest extends AbstractFeldTest {
     @Test
     public void testBetragEnum() {
         Betrag b = new Betrag(Feld9999.GESAMTBEITRAG);
-        assertEquals(new Bezeichner(Bezeichner.NAME_GESAMTBEITRAG), b.getBezeichner());
+        assertEquals((Bezeichner.GESAMTBEITRAG), b.getBezeichner());
     }
 
     /**

@@ -20,22 +20,19 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.satz.feld.common.Feld1bis7;
-import gdv.xport.satz.feld.sparte50.Feld210;
+import static org.junit.Assert.*;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
-
-import net.sf.oval.ConstraintViolation;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.sparte50.Feld210;
+import net.sf.oval.ConstraintViolation;
 import patterntesting.runtime.junit.CloneableTester;
 
 /**
@@ -162,9 +159,9 @@ public final class FeldTest extends AbstractFeldTest {
      */
     @Test
     public void testGetBezeichner() {
-        Feld x = new Feld(Bezeichner.NAME_SATZART, "Test", Align.LEFT);
-        assertEquals(Bezeichner.NAME_SATZART, x.getBezeichnung());
-        assertEquals(new Bezeichner(Bezeichner.NAME_SATZART), x.getBezeichner());
+        Feld x = new Feld(Bezeichner.SATZART.getName(), "Test", Align.LEFT);
+        assertEquals(Bezeichner.SATZART.getName(), x.getBezeichnung());
+        assertEquals(Bezeichner.SATZART, x.getBezeichner());
     }
 
     /**
@@ -183,8 +180,7 @@ public final class FeldTest extends AbstractFeldTest {
     @Test
     public void testGetAsBezeichner() {
         Bezeichner adressat = Feld.getAsBezeichner(Greeting.ADRESSAT);
-        assertEquals(new Bezeichner(Bezeichner.NAME_ADRESSAT), adressat);
-        assertEquals(Bezeichner.NAME_ADRESSAT, adressat.getName());
+        assertEquals(Bezeichner.ADRESSAT, adressat);
     }
 
     /**

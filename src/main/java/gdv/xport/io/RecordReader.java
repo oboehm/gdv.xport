@@ -83,19 +83,23 @@ public class RecordReader extends Reader {
         for (int i = 0; i < 256; i++) {
             int ch = this.reader.read();
             if ((ch == '\n') || (ch == '\r') || (ch == -1)) {
+                buffer[256] = ch;
                 if (i == 0) {
-                    buffer[256] = ch;
                     pos = 256;
                     break;
                 }
                 LOG.info("Record " + recordNo + " has only " + i + " characters and is filled with " + (256 - i)
                         + " spaces.");
-                do {
-                    buffer[i] = ' ';
-                    i++;
-                } while (i < 256);
+                fillBufferWithSpaces(i);
+                break;
             }
             buffer[i] = ch;
+        }
+    }
+
+    private void fillBufferWithSpaces(int start) {
+        for (int i = start; i < 256; i++) {
+            buffer[i] = ' ';
         }
     }
 

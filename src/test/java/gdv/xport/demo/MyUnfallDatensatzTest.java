@@ -18,26 +18,24 @@
 
 package gdv.xport.demo;
 
-import static org.junit.Assert.assertEquals;
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.util.SatzFactory;
-
-import java.io.IOException;
-import java.net.URL;
-import java.net.UnknownHostException;
-
-import javax.xml.stream.XMLStreamException;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import patterntesting.concurrent.junit.ParallelRunner;
 import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.junit.SmokeRunner;
+
+import javax.xml.stream.XMLStreamException;
+import java.io.IOException;
+import java.net.URL;
+import java.net.UnknownHostException;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * JUnit-Test fuer die MyUnfallDatensatz-Klasse.
@@ -45,7 +43,7 @@ import patterntesting.runtime.annotation.IntegrationTest;
  * @author oliver (ob@aosd.de)
  * @since 0.4 (11.07.2010)
  */
-@RunWith(ParallelRunner.class)
+@RunWith(SmokeRunner.class)
 public final class MyUnfallDatensatzTest {
 
     private static final Logger LOG = LogManager.getLogger(MyUnfallDatensatzTest.class);

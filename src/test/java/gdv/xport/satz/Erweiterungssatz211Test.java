@@ -63,9 +63,9 @@ public class Erweiterungssatz211Test {
         LOG.info(erweiterungssatz + " created.");
         assertEquals(sparte, erweiterungssatz.getSparte());
         assertEquals(Config.getVUNummer().getInhalt().trim(), erweiterungssatz.getVuNummer());
-        Feld spartenFeld = erweiterungssatz.getFeld(Bezeichner.NAME_SPARTE);
-        assertEquals(new NumFeld(new Bezeichner(Bezeichner.NAME_SPARTE), 3, 11, sparte), spartenFeld);
-        Feld vermittler = erweiterungssatz.getFeld(Bezeichner.NAME_VERMITTLER);
+        Feld spartenFeld = erweiterungssatz.getFeld(Bezeichner.SPARTE);
+        assertEquals(new NumFeld((Bezeichner.SPARTE), 3, 11, sparte), spartenFeld);
+        Feld vermittler = erweiterungssatz.getFeld(Bezeichner.VERMITTLER);
         assertEquals(33, vermittler.getByteAdresse());
     }
 

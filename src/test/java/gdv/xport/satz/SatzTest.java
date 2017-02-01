@@ -18,15 +18,10 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.io.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -34,10 +29,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
@@ -93,7 +85,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testAdd() {
-        satz.add(new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_NAME1), 30, 44));
+        satz.add(new AlphaNumFeld((Bezeichner.NAME1), 30, 44));
         satz.add(new AlphaNumFeld(new Bezeichner("Bumm"), 4, 50));
     }
 
@@ -113,9 +105,9 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGet() {
-        satz.add(new AlphaNumFeld(new Bezeichner(Bezeichner.NAME_ORT), 30, 50));
-        satz.set(Bezeichner.NAME_ORT, "Stuttgart");
-        assertEquals("Stuttgart", satz.get(Bezeichner.NAME_ORT).trim());
+        satz.add(new AlphaNumFeld((Bezeichner.ORT), 30, 50));
+        satz.set(Bezeichner.ORT.getName(), "Stuttgart");
+        assertEquals("Stuttgart", satz.get(Bezeichner.ORT.getName()).trim());
     }
 
     /**
@@ -154,14 +146,14 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testExportFile() throws IOException {
         File tmpFile = File.createTempFile("gdv", ".xport");
-        LOG.info("File \"" + tmpFile + "\" created.");
+        LOG.info("File \"{}\" created.", tmpFile);
         try {
             satz.export(tmpFile);
             String exported = FileUtils.readFileToString(tmpFile);
             assertEquals(satz.toLongString(), exported);
         } finally {
             tmpFile.delete();
-            LOG.info("File \"" + tmpFile + "\" deleted.");
+            LOG.info("File \"{}\" deleted.", tmpFile);
         }
     }
 

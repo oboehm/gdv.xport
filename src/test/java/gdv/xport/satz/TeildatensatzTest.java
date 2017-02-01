@@ -27,8 +27,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.*;
 
 /**
  * Test-Klasse fuer {@link Teildatensatz}.
@@ -38,7 +37,7 @@ import org.slf4j.LoggerFactory;
  */
 public class TeildatensatzTest extends AbstractSatzTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(TeildatensatzTest.class);
+    private static final Logger LOG = LogManager.getLogger(TeildatensatzTest.class);
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -124,7 +123,8 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testRemove() {
         Teildatensatz tds = new Teildatensatz(100, 1);
-        Zeichen satznummer = new Zeichen("Satznummer", 256, '1');
+        Zeichen satznummer = new Zeichen(new Bezeichner("Satznummer"), 256);
+        satznummer.setInhalt('1');
         tds.add(satznummer);
         assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
         tds.remove(satznummer.getBezeichnung());

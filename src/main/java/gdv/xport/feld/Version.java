@@ -18,8 +18,6 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.annotation.FeldInfo;
-
 /**
  * Versions-Feld.
  *
@@ -28,21 +26,6 @@ import gdv.xport.annotation.FeldInfo;
  * @version $Revision$
  */
 public class Version extends Feld {
-
-    /**
-     * Legt ein neues Versions-Feld an.
-     * <p>
-     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
-     * </p>
-     *
-     * @param name Name des Feldes
-     * @param start Start-Byte (beginnend bei 1)
-     * @deprecated bitte {@link #Version(Bezeichner, int)} benutzen
-     */
-    @Deprecated
-    public Version(final String name, final int start) {
-        this(new Bezeichner(name), start);
-    }
 
     /**
      * Legt ein neues Versions-Feld an.
@@ -68,19 +51,13 @@ public class Version extends Feld {
 
     /**
      * Instantiiert ein neues Versions-Objekt.
-     * <p>
-     * TODO: bitte nicht mehr verwenden - wird in 1.2 entfernt!
-     * </p>
      *
-     * @param name Bezeichner
-     * @param info mit der Start-Adresse
-     * @since 0.6
-     * @deprecated bitte {@link #Version(Enum)} benutzen
+     * @param bezeichner Name des Feldes
+     * @param start Start-Byte (beginnend bei 1)
+     * @param v Versions-String (z.B. "1.1")
      */
-    @Deprecated
-    public Version(final String name, final FeldInfo info) {
-        this(name, info.byteAdresse());
-        assert info.anzahlBytes() == 3 : "Version hat nicht das Format x.x";
+    public Version(final Bezeichner bezeichner, final int start, final String v) {
+        this(bezeichner.getName(), start, v);
     }
 
     /**
