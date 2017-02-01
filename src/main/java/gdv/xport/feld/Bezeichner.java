@@ -612,7 +612,7 @@ public final class Bezeichner {
     public static final Bezeichner RENTE_INCL_UEBERSCHUSSBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rente inkl. Ueberschussbeteiligung");
     public static final Bezeichner RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rente inkl. Ueberschussanrechnung");
     public static final Bezeichner RENTENZAHLWEISE = new Bezeichner("Rentenzahlweise");
-    public static final Bezeichner RESTLAUFZEIT_VERTRAGES = new Bezeichner("Restlaufzeit des Vertrages");
+    public static final Bezeichner RESTLAUFZEIT_DES_VERTRAGES = new Bezeichner("Restlaufzeit des Vertrages");
     public static final Bezeichner RISIKOGRUPPE_RISIKOART = new Bezeichner("Risikogruppe / Risikoart");
     public static final Bezeichner RISIKOGRUPPE_RISIKOART1 = RISIKOGRUPPE_RISIKOART;
     public static final Bezeichner RISIKOGRUPPE_RISIKOART2 = RISIKOGRUPPE_RISIKOART;
@@ -3505,12 +3505,6 @@ public final class Bezeichner {
     public static final String NAME_LAENDERKENNZEICHEN_DER_RISIKOANSCHRIFT = "Laenderkennzeichen der Risikoanschrift";
     /** @deprecated Bitte entsprechende Bezeichner-Konstante verwenden. */
     @Deprecated
-    public static final String NAME_WAEHRUNGSSCHUESSEL = "Waehrungsschluessel";
-    /** @deprecated Bitte entsprechende Bezeichner-Konstante verwenden. */
-    @Deprecated
-    public static final String NAME_ABSCHLAGSBEITRAG_IN_WAEHRUNGSEINHEITEN = "Abschlagsbeitrag";
-    /** @deprecated Bitte entsprechende Bezeichner-Konstante verwenden. */
-    @Deprecated
     public static final String NAME_GESAMTVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = "Gesamtversicherungssummer";
     /** @deprecated Bitte entsprechende Bezeichner-Konstante verwenden. */
     @Deprecated
@@ -3551,9 +3545,6 @@ public final class Bezeichner {
     /** @deprecated Bitte entsprechende Bezeichner-Konstante verwenden. */
     @Deprecated
     public static final String NAME_OBJEKTNUMMER2 = "Objektnummer";
-    /** @deprecated Bitte entsprechende Bezeichner-Konstante verwenden. */
-    @Deprecated
-    public static final String NAME_BUENDELUNSKENNZEICHEN = "Buendelungskennzeichen";
     /** @deprecated Bitte entsprechende Bezeichner-Konstante verwenden. */
     @Deprecated
     public static final String NAME_GESCHAEFTSSTELLE_VERMITTLER = "Geschaeftsstelle / Vermittler";
