@@ -38,16 +38,10 @@ import gdv.xport.feld.internal.UmlautMapper;
  * beruecksichtigt werden sollen.
  * </p>
  * <p>
- * Die String-Konstanten werden ab 1.2 durch entsprechnende Bezeichner-
- * Konstanten ersetzt werden. Fuer diese Uebergangszeit wurden diese Konstanten
- * durch entsprechende Konstanten mit dem Prefix "NAME_" und die alten
- * String-Konstanten als "deprecated" gekennzeichnet.
- * </p>
- * <p>
- * Bitte Konstanten alphabetisch ordnen bzw. eintragen! (oboehm, 26-Jan-2013)
- * </p>
- * <p>
- * TODO: Ersetzung String-Konstanten durch Bezeichner-Konstenten (ab 1.2)
+ * Die ehemaligen String-Konstanten werden ab 2.0 durch entsprechnende Bezeichner-
+ * Konstanten ersetzt. Fuer eine Uebergangszeit sind die alten String-Konstanten
+ * durch den Prefix "NAME_" gekennzeichnet, werden aber ab der Version 2.2 nicht
+ * mehr zur Verfuegung stehen.
  * </p>
  *
  * @author oliver
@@ -58,7 +52,7 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<>();
 
-    /////////// Bezeichner-Konstanten /////////////////////////////////////////
+    /////////// Bezeichner-Konstanten (alphabetisch geordnet) /////////////////
 
     public static final Bezeichner ABGANGSDAT = new Bezeichner("Abgangsdatum", "Abgangsdat");
     public static final Bezeichner ABGANGSGRUND = new Bezeichner("Abgangsgrund");
@@ -960,7 +954,10 @@ public final class Bezeichner {
     public static final Bezeichner ZUZAHLUNGSRECHT = new Bezeichner("Zuzahlungsrecht");
     public static final Bezeichner ZWANG_ZUR_BUZ = new Bezeichner("Zwang zur BUZ");
 
+
+
     /////////// Konstanten mit NAME_-Prefix ///////////////////////////////////
+    // TODO: ab v2.2 entfernen
 
     /** @deprecated Bitte entsprechende Bezeichner-Konstante verwenden. */
     @Deprecated
