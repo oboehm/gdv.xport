@@ -77,13 +77,13 @@ public enum Feld221Wagnis13 {
 	 * Beitragsfreie Erlebensfall VS in Währungseinheiten.
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 14, type = Betrag.class, anzahlBytes = 14, byteAdresse = 104)
-	BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT,
+    BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
 	/**
 	 * Beitragsfreie Todesfall VS in Währungseinheiten.
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 15, type = Betrag.class, anzahlBytes = 14, byteAdresse = 118)
-	BEITRAGSFREIE_TODESFALL_VS_IN_WAEHRUNGSEINHEIT,
+    BEITRAGSFREIE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
 	/**
 	 * Rückkaufswert in Währungseinheiten.

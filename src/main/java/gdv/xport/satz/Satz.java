@@ -810,7 +810,8 @@ public abstract class Satz {
             int art = readSatzart(reader);
             return art == this.getSatzart();
         } catch (EOFException ex) {
-            LOG.info("No next teildatensatz:", ex);
+            LOG.info("No next teildatensatz found ({}).", ex.getLocalizedMessage());
+            LOG.debug("Details:", ex);
             return false;
         }
 	}

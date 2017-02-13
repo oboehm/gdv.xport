@@ -439,7 +439,7 @@ public enum Feld220Wagnis13 {
      * (9,0 Stellen)
      */
     @FeldInfo(teildatensatz = 2, nr = 20, type = Betrag.class, anzahlBytes = 9, byteAdresse = 176)
-    ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG,
+    ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Anteiliger Dynamikprozentsatz.
