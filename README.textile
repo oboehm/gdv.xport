@@ -9,9 +9,7 @@ Ab 2018 ist eine Version 3.0 ist geplant, mit der diese Bibliothek um einen Serv
 Derzeitig ist folgende Aufteilung geplant:
 
 * *lib*: gdv.xport als Java-Bibliothek
-* web:
-  * *service*: gdv.xport als Microservice (vermutlich als Spring-Boot-Anwendung)
-  * *ui*: Web-Client zum gdv.xport-Service (Technik noch unklar, je nach vorhandene Resourcen)
+* *service*: gdv.xport als Microservice (vermutlich als Spring-Boot-Anwendung)
 
 
 

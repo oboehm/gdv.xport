@@ -16,6 +16,7 @@
 
   <modules>
     <module>lib</module>
+    <module>service</module>
   </modules>
 
   <url>http://www.aosd.de/gdv.xport/</url>
@@ -38,6 +39,7 @@
   <properties>
 
     <patterntesting.version>1.7.0</patterntesting.version>
+    <spring.version>1.5.1.RELEASE</spring.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
 
@@ -332,6 +334,15 @@
         <groupId>org.patterntesting</groupId>
         <artifactId>patterntesting-concurrent</artifactId>
         <version>${patterntesting.version}</version>
+      </dependency>
+
+      <!-- Import dependency management from Spring Boot -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
 
       <!-- Object Validation Framework (OVal) -->

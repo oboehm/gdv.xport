@@ -1,0 +1,11 @@
+# Allgemeine Informationen
+application:
+  name:             GDV-Xport-Services
+
+spring:
+  profiles:
+    active:         default
+
+# Port 2517 ist 0x9D5 =~ gDV
+server:
+  port:             2517
