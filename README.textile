@@ -15,6 +15,12 @@ Fuer Ruby gibt es "OpenGDV":https://github.com/vendis/opengdv/, einer Open-Sourc
 
 
 
+h2. GIT Branching-Modell
+
+Entwickelt wird nach "A successful Git branching model":http://nvie.com/posts/a-successful-git-branching-model/ von Vincent Driessen. D.h. die aktuelle Version finden auf dem develop-Branch statt (derzeit: "develop/2.1":https://github.com/oboehm/gdv.xport/tree/develop/2.1), waehrend das letzte Release im Release-Zweig (derzeit: "release/2.0":https://github.com/oboehm/gdv.xport/tree/release/2.0) zu finden ist.
+
+
+
 h2. Weitere Infos
 
 Im "Wiki":https://github.com/oboehm/gdv.xport/wiki ist alles Wichtige zu gdv.xport zusammengefasst. Weitere Infos wie z.B. die "JavaDocs":http://www.aosd.de/gdv.xport/apidocs/index.html finden Sie auch auf der "Maven Projekt-Seite":http://www.aosd.de/gdv.xport/ .
