@@ -16,7 +16,7 @@
  * (c)reated 13.02.2017 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport;
+package gdv.xport.service;
 
 import gdv.xport.service.XPortApplication;
 import org.junit.Test;
@@ -29,7 +29,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = XPortApplication.class)
-public class XPortApplicationTests {
+public class XPortApplicationTest {
 
     /**
      * Momentan ist dies nur ein Test, ob die Spring-Einstellungen stimmen.
