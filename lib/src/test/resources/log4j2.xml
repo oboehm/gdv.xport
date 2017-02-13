@@ -9,7 +9,7 @@
     <Root level="error">
       <AppenderRef ref="Console" />
     </Root>
-    <logger name="gdv.xport" level="DEBUG" />
+    <logger name="gdv.xport" level="INFO" />
     <logger name="gdv.xport.satz" level="INFO" />
     <logger name="gdv.xport.Datenpaket" level="INFO" />
     <logger name="gdv.xport.util" level="INFO" />
