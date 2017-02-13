@@ -180,7 +180,7 @@ public enum Feld210 {
             anzahlBytes = 2,
             byteAdresse = 110
     )
-    RESTLAUFZEIT_VERTRAG,
+    RESTLAUFZEIT_DES_VERTRAGES,
 
     /**
      * Laufzeitrabatt in % (2,2 Stellen).

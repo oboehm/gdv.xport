@@ -344,7 +344,7 @@ public enum Feld200 {
             anzahlBytes = 2,
             byteAdresse = 195
     )
-    RESTLAUFZEIT_VERTRAG,
+    RESTLAUFZEIT_DES_VERTRAGES,
 
     /**
      * Gemaess Laufzeitrabatt VAG-Novelle 01-07-1991.
