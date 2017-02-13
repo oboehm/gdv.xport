@@ -185,7 +185,7 @@ public enum Feld220Wagnis0 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 241)
-    DATUM_UNVERFALLBARKEIT,
+    DAT_UNVERFALLBARKEIT,
 
     /**
      * Art des Berufschluesselverzeichnisses.
