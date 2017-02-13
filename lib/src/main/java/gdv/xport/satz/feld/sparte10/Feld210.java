@@ -309,7 +309,7 @@ public enum Feld210 {
             byteAdresse = 160,
             nachkommaStellen = 2
     )
-    ZUZAHLUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,
+    ZUZAHLUNGSBETRAG_IN_WE,
 
     /**
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschluesselt
