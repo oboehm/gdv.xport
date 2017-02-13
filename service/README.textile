@@ -1,0 +1,6 @@
+h1. Was ist gdv-xport-service?
+
+
+gdv-xport-servcice bildet die REST-Schnittstelle der Java-Bibliothek "gdv-xport-lib", um auch anderen Programmiersprachen den Umgang mit dem GDV-Format zu erleichtern. Diese Bibliothek vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung der verschiedenen Datensaetze.
+
+Das "x" in port steht fur "im"- und "ex"-port. Die Bibliothek und dieser Microservice ist Open Source und steht unter der Apache License.
