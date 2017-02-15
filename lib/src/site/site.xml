@@ -25,7 +25,7 @@
   <body>
 
     <head>
-      <meta name="keywords" content="GDV, Austauschformat, Versicherung"/>
+      <![CDATA[<meta name="keywords" content="GDV, Austauschformat, Versicherung"/>]]>
     </head>
   
     <links>
@@ -60,9 +60,7 @@
     <menu ref="modules" />
 
     <menu ref="reports" />
-	  
-	${reports}
-	  
+
   </body>
 
 </project>
