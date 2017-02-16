@@ -17,13 +17,20 @@
  */
 package gdv.xport.service.web;
 
+import gdv.xport.Datenpaket;
+import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import patterntesting.runtime.log.LogWatch;
 
+import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 
 /**
  * Dieser Controller repraesentiert das REST-Interface zur Datenpaket-Klasse.
@@ -36,10 +43,22 @@ public final class DatenpaketController {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketController.class);
 
+    /**
+     * Validiert die uebergebene URI.
+     *
+     * @param uri the uri
+     * @return the response entity
+     * @throws IOException the io exception
+     */
     @GetMapping("/validate")
-    public String validate(URI uri) {
-        LOG.info("Will validate Datenpakete in {}...", uri);
-        throw new UnsupportedOperationException("not yet implemented");
+    public ResponseEntity<List<ConstraintViolation>> validate(@RequestParam("uri") URI uri) throws IOException {
+        LogWatch watch = new LogWatch();
+        LOG.info("Validating Datenpakete in {}...", uri);
+        Datenpaket datenpaket = new Datenpaket();
+        datenpaket.importFrom(uri);
+        List<ConstraintViolation> violations = datenpaket.validate();
+        LOG.info("Validating Datenpakete in {} finished with {} violation(s) in {}.", uri, violations.size(), watch);
+        return ResponseEntity.ok(violations);
     }
 
 }

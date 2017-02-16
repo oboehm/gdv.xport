@@ -2,6 +2,12 @@
 application:
   name:             GDV-Xport-Services
 
+logging:
+  level:
+    org:
+      springframework:  INFO
+      hibernate:        WARN
+
 spring:
   profiles:
     active:         default

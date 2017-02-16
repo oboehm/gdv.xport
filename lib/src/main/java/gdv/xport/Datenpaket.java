@@ -12,27 +12,34 @@
 
 package gdv.xport;
 
-import static gdv.xport.feld.Bezeichner.*;
-
-import java.io.*;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.*;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.Feld;
 import gdv.xport.io.*;
-import gdv.xport.satz.*;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Nachsatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
-import gdv.xport.util.*;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
+import gdv.xport.util.URLReader;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.*;
+import java.net.URI;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.util.*;
+
+import static gdv.xport.feld.Bezeichner.*;
 
 /**
  * Ein Datenpaket besteht aus {@link Vorsatz}, mehrere {@link Datensatz}-Elementen
@@ -210,6 +217,19 @@ public final class Datenpaket {
         }
         nachsatz.export(writer);
         LOG.info(datensaetze.size() + " Datensaetze exported.");
+    }
+
+    /**
+     * Damit kann direkt ueber das Netz importiert werden. Gibt man eine
+     * File-URL (oder File) an, kann man damit auch direkt aus einer Datei importieren.
+     *
+     * @param uri z.B.
+     *            http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @throws IOException wenn z.B. das Netz weg ist
+     * @since 3.0
+     */
+    public void importFrom(final URI uri) throws IOException {
+        importFrom(uri.toURL());
     }
 
     /**

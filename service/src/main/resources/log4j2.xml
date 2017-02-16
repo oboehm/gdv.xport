@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+  <Appenders>
+    <Console name="CONSOLE" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss} %highlight{%-5p} %style{[%-10.10t]}{white} %cyan{%-30.30C{4}} - %msg%n%highlight{%throwable}" />
+    </Console>
+  </Appenders>
+
+  <Loggers>
+    <logger name="gdv.xport" level="INFO" />
+    <logger name="gdv.xport.satz" level="WARN" />
+    <logger name="org.apache" level="INFO" />
+    <logger name="org.springframework" level="INFO" />
+    <Root level="INFO">
+      <AppenderRef ref="CONSOLE" />
+    </Root>
+  </Loggers>
+
+</Configuration>

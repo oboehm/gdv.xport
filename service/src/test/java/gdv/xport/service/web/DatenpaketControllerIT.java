@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 13.02.17 by oliver (ob@oasd.de)
+ * (c)reated 16.02.17 by oliver (ob@oasd.de)
  */
 package gdv.xport.service.web;
 
@@ -24,21 +24,21 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 /**
- * EInfacher Integrationstests fuer die {@link PingController}-Klasse. Die
- * Test-Klasse ist mehr oder weniger von HelloControllerIT in
- * https://github.com/spring-guides/gs-actuator-service.git abgeschaut.
+ * Integrationstests fuer den {@link DatenpaketController}.
  *
  * @author <a href="ob@aosd.de">oliver</a>
  */
-public final class PingControllerIT extends AbstractControllerIT {
+public final class DatenpaketControllerIT extends AbstractControllerIT {
 
     /**
-     * Hier ueberpruefen wir, ob wir was vom Ping-Service zurueckbekommen.
+     * Hier testen wir, ob wir mit dem Musterdatensatz eine leere Liste von
+     * Violations zurueckbekommen.
      */
     @Test
-    public void testPing() {
-        ResponseEntity<String> response = getResponseEntityFor("/ping", String.class);
-        assertThat(response.getBody(), equalTo("OK"));
+    public void testValidateURI() {
+        ResponseEntity<String> response = getResponseEntityFor(
+                "/Datenpakete/validate?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt", String.class);
+        assertThat(response.getBody(), equalTo("[]"));
     }
 
 }
