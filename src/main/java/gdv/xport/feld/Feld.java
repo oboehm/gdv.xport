@@ -20,24 +20,27 @@
 
 package gdv.xport.feld;
 
-import java.io.IOException;
-import java.io.Writer;
-import java.lang.reflect.*;
-import java.nio.ByteBuffer;
-import java.util.List;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.WordUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 import gdv.xport.satz.feld.FeldX;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
-import net.sf.oval.constraint.*;
+import net.sf.oval.constraint.Min;
+import net.sf.oval.constraint.NotEqual;
+import net.sf.oval.constraint.SizeCheck;
 import net.sf.oval.context.ClassContext;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.io.Writer;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.nio.ByteBuffer;
+import java.util.List;
 
 /**
  * Die Feld-Klasse bezieht ihre Information hauptsaechlich aus Enum-Klassen wie
@@ -323,37 +326,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     public String getBezeichnung() {
         return this.bezeichner.getName();
-    }
-
-    /**
-     * Im Gegensatz zur Bezeichnung, die aus mehreren Woertern in Gross- und
-     * Kleinbuchstaben bestehen kann, steht der Bezeichner nur aus einem Wort
-     * (in Grossbuchstaben). Er wird aus der Bezeichnung unter Zuhilfenahme der
-     * {@link Bezeichner}-Klasse ermittelt, wenn das bezeichner-Attribute nicht
-     * gesetzt (bzw. UNBEKANNT) ist.
-     * <p>
-     * In 1.0 wurde die Methode in "getBezeichnerAsString" umbenannt, um die
-     * Verwirrung mit der Bezeichner-Klasse nicht zu gross werden zu lassen.
-     * Vorher hiess diese Klasse "getBezeichner", lieferte aber einen String
-     * zurueck.
-     * </p>
-     *
-     * @return Bezeichner in Grossbuchstaben
-     * @since 0.6 (vor 1.0 hiess diese Methode "getBezeichner")
-     * @deprecated durch {@link #getBezeichner()} ersetzt
-     */
-    @Deprecated
-    public String getBezeichnerAsString() {
-        if (!this.bezeichnerEnum.equals(FeldX.UNBEKANNT)) {
-            return this.bezeichnerEnum.name();
-        }
-        try {
-            Field field = Bezeichner.getField(this.bezeichner.getName());
-            return field.getName();
-        } catch (IllegalArgumentException iae) {
-            LOG.info("\"" + this.bezeichner + "\" not found in " + Bezeichner.class + ":", iae);
-            return this.bezeichner.getName().replaceAll(" ", "_").toUpperCase();
-        }
     }
 
     /**
