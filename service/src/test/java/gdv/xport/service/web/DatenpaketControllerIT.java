@@ -62,7 +62,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testValidatePost() throws IOException {
         String text = createDummyDatenpaketText();
-        String response = template.postForObject(baseURI.toString() + "/Datenpakete/validate", text, String.class);
+        String response = postResponseObjectFor("/Datenpakete/validate", text, String.class);
         LOG.info("Response of validation is '{}'.", response);
         assertThat(response, containsString("VU-Nummer is not set"));
     }

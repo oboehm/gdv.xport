@@ -17,6 +17,7 @@
  */
 package gdv.xport.service.web;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
@@ -42,11 +43,14 @@ import java.net.URI;
 public abstract class AbstractControllerIT {
 
     private static final Logger LOG = LogManager.getLogger(AbstractControllerIT.class);
+
     @LocalServerPort
     private int port;
+
     @Autowired
-    protected TestRestTemplate template;
-    protected URI baseURI;
+    private TestRestTemplate template;
+
+    private URI baseURI;
 
     /**
      * REST-URI aufsetzen.
@@ -57,18 +61,34 @@ public abstract class AbstractControllerIT {
     }
 
     /**
-     * Baut die URL zusammen und ruft den Service auf.
+     * Baut die URL zusammen und ruft den Service als GET-Request auf.
      *
-     * @param <T>  the type parameter
-     * @param path the path
-     * @param type the type
-     * @return the response entity for
+     * @param <T>  Typ-Parameter
+     * @param path Context-Pfad der URL
+     * @param type Typ der erwarteten Antwort
+     * @return Antwort des abgesendeten Requests
      */
     protected <T> ResponseEntity<T> getResponseEntityFor(String path, Class<T> type) {
         LogWatch watch = new LogWatch();
-        LOG.info("Requesting {}{} with {}...", baseURI, path, type);
+        LOG.info("Requesting {}{}...", baseURI, path);
         ResponseEntity<T> response = template.getForEntity(baseURI.toString() + path, type);
-        LOG.info("Requesting {}{} with {} successful finished with {} after {}.", baseURI, path, type, response, watch);
+        LOG.info("Requesting {}{} successful finished with {} after {}.", baseURI, path, response, watch);
+        return response;
+    }
+
+    /**
+     * Baut die URL zusammen und ruft den Service als POST-Request auf.
+     *
+     * @param <T>  Typ-Parameter
+     * @param path Context-Pfad der URL
+     * @param type Typ der erwarteten Antwort
+     * @return Antwort des abgesendeten Requests
+     */
+    protected <T> T postResponseObjectFor(String path, String text, Class<T> type) {
+        LogWatch watch = new LogWatch();
+        LOG.info("Requesting {}{} with {} characters...", baseURI, path, StringUtils.length(text));
+        T response = template.postForObject(baseURI.toString() + path, text, type);
+        LOG.info("Requesting {}{} successful finished with {} after {}.", baseURI, path, response, watch);
         return response;
     }
 
