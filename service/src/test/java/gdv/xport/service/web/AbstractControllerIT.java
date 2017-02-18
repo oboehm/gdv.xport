@@ -45,15 +45,15 @@ public abstract class AbstractControllerIT {
     @LocalServerPort
     private int port;
     @Autowired
-    private TestRestTemplate template;
-    private URI base;
+    protected TestRestTemplate template;
+    protected URI baseURI;
 
     /**
      * REST-URI aufsetzen.
      */
     @Before
     public void setUp() {
-        this.base = URI.create("http://localhost:" + port);
+        this.baseURI = URI.create("http://localhost:" + port);
     }
 
     /**
@@ -64,11 +64,11 @@ public abstract class AbstractControllerIT {
      * @param type the type
      * @return the response entity for
      */
-    protected  <T> ResponseEntity<T> getResponseEntityFor(String path, Class<T> type) {
+    protected <T> ResponseEntity<T> getResponseEntityFor(String path, Class<T> type) {
         LogWatch watch = new LogWatch();
-        LOG.info("Requesting {}{} with {}...", base, path, type);
-        ResponseEntity<T> response = template.getForEntity(base.toString() + path, type);
-        LOG.info("Requesting {}{} with {} successful finished with {} after {}.", base, path, type, response, watch);
+        LOG.info("Requesting {}{} with {}...", baseURI, path, type);
+        ResponseEntity<T> response = template.getForEntity(baseURI.toString() + path, type);
+        LOG.info("Requesting {}{} with {} successful finished with {} after {}.", baseURI, path, type, response, watch);
         return response;
     }
 

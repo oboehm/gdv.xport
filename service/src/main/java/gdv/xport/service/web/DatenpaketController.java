@@ -19,17 +19,18 @@ package gdv.xport.service.web;
 
 import gdv.xport.Datenpaket;
 import net.sf.oval.ConstraintViolation;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.ExtendedModelMap;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import patterntesting.runtime.log.LogWatch;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,14 +52,50 @@ public final class DatenpaketController {
      * @throws IOException the io exception
      */
     @GetMapping("/validate")
-    public ResponseEntity<List<ConstraintViolation>> validate(@RequestParam("uri") URI uri) throws IOException {
+    public ResponseEntity<List<Model>> validate(@RequestParam("uri") URI uri) throws IOException {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete in {}...", uri);
         Datenpaket datenpaket = new Datenpaket();
         datenpaket.importFrom(uri);
-        List<ConstraintViolation> violations = datenpaket.validate();
+        List<Model> violations = validate(datenpaket);
         LOG.info("Validating Datenpakete in {} finished with {} violation(s) in {}.", uri, violations.size(), watch);
         return ResponseEntity.ok(violations);
+    }
+
+    /**
+     * Validiert die eingelesenen Datenpakete.
+     *
+     * @param text Text, der ueber die Leitung reinkommt.
+     * @return the response entity
+     * @throws IOException the io exception
+     */
+    @PostMapping("/validate")
+    public ResponseEntity<List<Model>> validate(@RequestBody String text) throws IOException {
+        LogWatch watch = new LogWatch();
+        LOG.info("Validating Datenpakete in posted stream of {} length...", StringUtils.length(text));
+        Datenpaket datenpaket = new Datenpaket();
+        datenpaket.importFrom(text);
+        List<Model> violations = validate(datenpaket);
+        LOG.info("Validating Datenpakete in posted stream finished with {} violation(s) in {}.", violations.size(), watch);
+        return ResponseEntity.ok(violations);
+    }
+
+    private static List<Model> validate(Datenpaket datenpaket) {
+        List<ConstraintViolation> violations = datenpaket.validate();
+        return toModelList(violations);
+    }
+
+    private static List<Model> toModelList(List<ConstraintViolation> violations) {
+        List<Model> models = new ArrayList<Model>();
+        for (ConstraintViolation cv : violations) {
+            Model m = new ExtendedModelMap();
+            m.addAttribute("context", cv.getContext().getCompileTimeType());
+            m.addAttribute("invalidValue", cv.getInvalidValue());
+            m.addAttribute("message", cv.getMessage());
+            m.addAttribute("validatedObject", cv.getValidatedObject().toString());
+            models.add(m);
+        }
+        return models;
     }
 
 }
