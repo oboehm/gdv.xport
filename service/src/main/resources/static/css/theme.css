@@ -12,6 +12,7 @@ body {
 .footer {
     font-size: x-small;
     text-align: right;
+    margin-right: 10px;
 }
 
 .container-fluid {
