@@ -18,27 +18,26 @@
 
 package gdv.xport.service.web;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.junit.Test;
+import org.springframework.http.ResponseEntity;
+
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.Assert.assertThat;
 
 /**
- * Dieser Controller ist die Verbindung zur Index-Seite. Sie stammt aus
- * https://springframework.guru/spring-boot-web-application-part-2-using-thymeleaf/.
+ * Integrationstests fuer den {@link IndexController}.
  *
  * @author oboehm
- * @since 3.0 (19.02.2017)
  */
-@Controller
-public class IndexController {
+public final class IndexControllerIT extends AbstractControllerIT{
 
     /**
-     * Diese Methode verwendet Spring-Boot, um "/" auf "index.hmtl" zu mappen.
-     *
-     * @return "index"
+     * Mit diesem Test pruefen wir, ob wir die "index.html"-Seite bekommen.
      */
-    @RequestMapping("/")
-    String index(){
-        return "index";
+    @Test
+    public void testIndexHtml() {
+        ResponseEntity<String> response = getResponseEntityFor("/", String.class);
+        assertThat(response.getBody(), containsString("<title>"));
     }
 
 }
