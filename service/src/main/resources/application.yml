@@ -9,6 +9,9 @@ logging:
       hibernate:        WARN
 
 spring:
+  mvc:
+    favicon:
+      enabled:      false
   profiles:
     active:         default
 
