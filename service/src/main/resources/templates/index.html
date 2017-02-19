@@ -4,17 +4,26 @@
 <head lang="de">
     <title>gdv-xport</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="../static/css/theme.css"
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/3.1.1-1/jquery.min.js}"></script>    <link href="../static/css/theme.css"
           th:href="@{css/theme.css}" rel="stylesheet" media="screen"/>
 </head>
 
 <body>
-    <h1>GDV.XPort-Services</h1>
-    <p>
-        Die GDV.XPort-Services bauen auf der gdv.xport-Library auf und bieten
-        die darin enhaltene Java-API &uuml;ber REST-Services auch f&uuml;r andere
-        Sprachen an.
-    </p>
+    <!-- add bootstrap styling -->
+    <div class="container">
+        <div class="jumbotron">
+            <h1>GDV.XPort-Services</h1>
+            <p>
+                Die GDV.XPort-Services bauen auf der gdv.xport-Library auf und bieten
+                die darin enhaltene Java-API &uuml;ber REST-Services auch f&uuml;r andere
+                Sprachen an.
+            </p>
+        </div>
+    </div>
 </body>
 
 </html>

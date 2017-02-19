@@ -345,6 +345,18 @@
         <scope>import</scope>
       </dependency>
 
+      <!-- WebJars -->
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>bootstrap</artifactId>
+        <version>3.3.7-1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>jquery</artifactId>
+        <version>3.1.1-1</version>
+      </dependency>
+
       <!-- Object Validation Framework (OVal) -->
       <dependency>
         <groupId>net.sf.oval</groupId>
