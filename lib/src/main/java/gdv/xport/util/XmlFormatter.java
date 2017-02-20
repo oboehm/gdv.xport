@@ -18,20 +18,6 @@
 
 package gdv.xport.util;
 
-import java.io.*;
-import java.util.Date;
-import java.util.Formatter;
-import java.util.Iterator;
-
-import javax.xml.stream.FactoryConfigurationError;
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.output.WriterOutputStream;
-import org.apache.logging.log4j.*;
-
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.config.ConfigException;
@@ -39,6 +25,19 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.output.WriterOutputStream;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.xml.stream.FactoryConfigurationError;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
+import java.io.*;
+import java.util.Date;
+import java.util.Formatter;
+import java.util.Iterator;
 
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
@@ -153,10 +152,10 @@ public final class XmlFormatter extends AbstractFormatter {
     }
 
     private void write(final String attribute, final String format, final Object... args) throws XMLStreamException {
-        Formatter formatter = new Formatter();
-        String s = formatter.format(format, args).toString();
-        xmlStreamWriter.writeAttribute(attribute, s);
-        formatter.close();
+        try (Formatter formatter = new Formatter()) {
+            String s = formatter.format(format, args).toString();
+            xmlStreamWriter.writeAttribute(attribute, s);
+        }
     }
 
     /**
