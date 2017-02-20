@@ -62,11 +62,14 @@
     <!-- super.clone() should be called when overriding Object.clone() -->
     <sonar.issue.ignore.multicriteria.4.ruleKey>squid:S1182</sonar.issue.ignore.multicriteria.4.ruleKey>
     <sonar.issue.ignore.multicriteria.4.resourceKey>**/feld/*.java</sonar.issue.ignore.multicriteria.4.resourceKey>
+    <!-- Utility classes should not have public constructors -->
+    <sonar.issue.ignore.multicriteria.1118.ruleKey>squid:S1118</sonar.issue.ignore.multicriteria.1118.ruleKey>
+    <sonar.issue.ignore.multicriteria.1118.resourceKey>src/main/java/gdv/xport/service/XPortApplication.java</sonar.issue.ignore.multicriteria.1118.resourceKey>
     <!-- Subclasses that add fields should override "equals" -->
     <sonar.issue.ignore.multicriteria.2160.ruleKey>squid:S2160</sonar.issue.ignore.multicriteria.2160.ruleKey>
     <sonar.issue.ignore.multicriteria.2160.resourceKey>src/main/java/gdv/xport/**/*satz*.java</sonar.issue.ignore.multicriteria.2160.resourceKey>
     <!-- ignore violations -->
-    <sonar.issue.ignore.multicriteria>1,2,3,4,2160</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>1,2,3,4,1118,2160</sonar.issue.ignore.multicriteria>
 
   </properties>
 
