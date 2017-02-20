@@ -52,6 +52,12 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- REST API doc -->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+    </dependency>
+
     <!-- WebJars -->
     <dependency>
       <groupId>org.webjars</groupId>
