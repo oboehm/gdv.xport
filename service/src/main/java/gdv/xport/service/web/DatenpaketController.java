@@ -18,6 +18,9 @@
 package gdv.xport.service.web;
 
 import gdv.xport.Datenpaket;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -47,11 +50,21 @@ public final class DatenpaketController {
     /**
      * Validiert die uebergebene URI.
      *
-     * @param uri the uri
+     * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
      * @return the response entity
      * @throws IOException the io exception
      */
     @GetMapping("/validate")
+    @ApiOperation(value = "validiert die uebergebene URI")
+    @ApiImplicitParams({
+            @ApiImplicitParam(
+                    name = "uri",
+                    value = "z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
+                    required = true,
+                    dataType = "string",
+                    paramType = "query"
+            )
+    })
     public ResponseEntity<List<Model>> validate(@RequestParam("uri") URI uri) throws IOException {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete in {}...", uri);
