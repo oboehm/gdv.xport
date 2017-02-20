@@ -41,4 +41,14 @@ public class IndexController {
         return "index";
     }
 
+    /**
+     * Mapping fuer Validate-Seite
+     *
+     * @return "validate"
+     */
+    @RequestMapping("/validate")
+    String validate(){
+        return "validate";
+    }
+
 }
