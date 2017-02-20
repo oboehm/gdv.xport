@@ -19,7 +19,7 @@
 package gdv.xport.service.web;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * Dieser Controller ist die Verbindung zur Index-Seite. Sie stammt aus
@@ -36,7 +36,7 @@ public class IndexController {
      *
      * @return "index"
      */
-    @RequestMapping("/")
+    @GetMapping("/")
     String index(){
         return "index";
     }
@@ -46,7 +46,7 @@ public class IndexController {
      *
      * @return "validate"
      */
-    @RequestMapping("/validate")
+    @GetMapping("/validate")
     String validate(){
         return "validate";
     }

@@ -17,7 +17,7 @@
  */
 package gdv.xport.service.web;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -34,7 +34,7 @@ public final class PingController {
      *
      * @return "OK"
      */
-    @RequestMapping("/ping")
+    @GetMapping("/ping")
     public String ping() {
         return "OK";
     }
