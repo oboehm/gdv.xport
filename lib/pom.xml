@@ -17,7 +17,7 @@
 
   <artifactId>gdv-xport-lib</artifactId>
   <packaging>jar</packaging>
-  <name>GDV-Xport-Lib</name>
+  <name>GDV.XPort-Lib</name>
 
   <url>http://www.aosd.de/gdv.xport/</url>
   <organization>

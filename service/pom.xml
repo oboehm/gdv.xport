@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>gdv-xport-service</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>GDV.XPort-Services</name>
   <description>Service-Schnittstelle zur GDV-Xport-Lib</description>
@@ -82,12 +82,39 @@
 
 
   <build>
+
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <!--
+        we want to produce an executable WAR
+        http://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html
+       -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
+
     </plugins>
+
   </build>
 
 
