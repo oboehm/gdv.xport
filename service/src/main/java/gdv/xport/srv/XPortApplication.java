@@ -16,26 +16,26 @@
  * (c)reated 13.02.2017 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.service;
+package gdv.xport.srv;
 
-import gdv.xport.service.XPortApplication;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
- * Unit-Tests fuer die {@link XPortApplication}-Klasse.
+ * Haupt-Anwendung fuer Spring.
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = XPortApplication.class)
-public class XPortApplicationTest {
+@ComponentScan(basePackages = {"gdv.xport.srv"})
+@SpringBootApplication
+public class XPortApplication {
 
     /**
-     * Momentan ist dies nur ein Test, ob die Spring-Einstellungen stimmen.
+     * Einstiegspunkt fuer die Spring-Anwendung
+     *
+     * @param args Input-Argumente, ueblicherweise leer
      */
-	@Test
-	public void contextLoads() {
+    public static void main(String[] args) {
+		SpringApplication.run(XPortApplication.class, args);
 	}
 
 }

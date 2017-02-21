@@ -15,7 +15,7 @@
  *
  * (c)reated 16.02.17 by oliver (ob@oasd.de)
  */
-package gdv.xport.service.web;
+package gdv.xport.srv.web;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;

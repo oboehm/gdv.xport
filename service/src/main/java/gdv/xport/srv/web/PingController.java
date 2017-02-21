@@ -15,30 +15,28 @@
  *
  * (c)reated 13.02.17 by oliver (ob@oasd.de)
  */
-package gdv.xport.service.web;
+package gdv.xport.srv.web;
 
-import org.junit.Test;
-import org.springframework.http.ResponseEntity;
-
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * EInfacher Integrationstests fuer die {@link PingController}-Klasse. Die
- * Test-Klasse ist mehr oder weniger von HelloControllerIT in
- * https://github.com/spring-guides/gs-actuator-service.git abgeschaut.
+ * Der PingController dient als Endpunkt fuer den Ping-Service. Dieser dient
+ * hauptsaechlich zur Fehlersuche.
  *
  * @author <a href="ob@aosd.de">oliver</a>
  */
-public final class PingControllerIT extends AbstractControllerIT {
+@RestController
+public final class PingController {
 
     /**
-     * Hier ueberpruefen wir, ob wir was vom Ping-Service zurueckbekommen.
+     * Ein sehr einfacher PING-Service, der immer nur "OK" zurueckgibt.
+     *
+     * @return "OK"
      */
-    @Test
-    public void testPing() {
-        ResponseEntity<String> response = getResponseEntityFor("/ping", String.class);
-        assertThat(response.getBody(), equalTo("OK"));
+    @GetMapping("/ping")
+    public String ping() {
+        return "OK";
     }
 
 }

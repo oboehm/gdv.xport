@@ -16,7 +16,7 @@
  * (c)reated 19.02.17 by oliver (ob@oasd.de)
  */
 
-package gdv.xport.service.web;
+package gdv.xport.srv.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -13,31 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 19.02.17 by oliver (ob@oasd.de)
+ * (c)reated 13.02.17 by oliver (ob@oasd.de)
  */
-
-package gdv.xport.service.web;
+package gdv.xport.srv.web;
 
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 
-import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 /**
- * Integrationstests fuer den {@link IndexController}.
+ * EInfacher Integrationstests fuer die {@link PingController}-Klasse. Die
+ * Test-Klasse ist mehr oder weniger von HelloControllerIT in
+ * https://github.com/spring-guides/gs-actuator-service.git abgeschaut.
  *
- * @author oboehm
+ * @author <a href="ob@aosd.de">oliver</a>
  */
-public final class IndexControllerIT extends AbstractControllerIT{
+public final class PingControllerIT extends AbstractControllerIT {
 
     /**
-     * Mit diesem Test pruefen wir, ob wir die "index.html"-Seite bekommen.
+     * Hier ueberpruefen wir, ob wir was vom Ping-Service zurueckbekommen.
      */
     @Test
-    public void testIndexHtml() {
-        ResponseEntity<String> response = getResponseEntityFor("/", String.class);
-        assertThat(response.getBody(), containsString("<title>"));
+    public void testPing() {
+        ResponseEntity<String> response = getResponseEntityFor("/ping", String.class);
+        assertThat(response.getBody(), equalTo("OK"));
     }
 
 }

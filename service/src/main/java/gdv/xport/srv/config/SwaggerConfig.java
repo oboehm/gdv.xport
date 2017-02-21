@@ -16,7 +16,7 @@
  * (c)reated 20.02.2017 by oliver (ob@oasd.de)
  */
 
-package gdv.xport.service.config;
+package gdv.xport.srv.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -5,4 +5,4 @@
  * @since 13.02.2017
  * @author oliver (ob@oasd.de)
  */
-package gdv.xport.service.web;
+package gdv.xport.srv.web;

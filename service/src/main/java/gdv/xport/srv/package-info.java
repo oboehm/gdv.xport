@@ -13,30 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * (c)reated 13.02.17 by oliver (ob@oasd.de)
+ * (c)reated 21.02.2017 by oliver (ob@oasd.de)
  */
-package gdv.xport.service.web;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Der PingController dient als Endpunkt fuer den Ping-Service. Dieser dient
- * hauptsaechlich zur Fehlersuche.
+ * In diesem Package befinden sich die Klassen, die von Spring-Boot zum
+ * Starten vorgesehen sind. Unterhalb dieses Package orientiert sich die
+ * Packagestruktur nach <a
+ * href="http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-structuring-your-code.html">Structuring
+ * your code</a> aus der Spring-Boot-Dokumentation.
  *
- * @author <a href="ob@aosd.de">oliver</a>
+ * @author oboehm (o.boehm@optica.de)
+ * @since 3.0.0 (21.02.2017)
  */
-@RestController
-public final class PingController {
-
-    /**
-     * Ein sehr einfacher PING-Service, der immer nur "OK" zurueckgibt.
-     *
-     * @return "OK"
-     */
-    @GetMapping("/ping")
-    public String ping() {
-        return "OK";
-    }
-
-}
+package gdv.xport.srv;

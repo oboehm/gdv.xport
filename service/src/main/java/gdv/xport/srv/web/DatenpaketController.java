@@ -15,9 +15,10 @@
  *
  * (c)reated 15.02.17 by oliver (ob@oasd.de)
  */
-package gdv.xport.service.web;
+package gdv.xport.srv.web;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.srv.service.DatenpaketService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -25,6 +26,7 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
@@ -47,6 +49,9 @@ public final class DatenpaketController {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketController.class);
 
+    @Autowired
+    private DatenpaketService service;
+
     /**
      * Validiert die uebergebene URI.
      *
@@ -68,9 +73,7 @@ public final class DatenpaketController {
     public ResponseEntity<List<Model>> validate(@RequestParam("uri") URI uri) throws IOException {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete in {}...", uri);
-        Datenpaket datenpaket = new Datenpaket();
-        datenpaket.importFrom(uri);
-        List<Model> violations = validate(datenpaket);
+        List<Model> violations = service.validate(uri);
         LOG.info("Validating Datenpakete in {} finished with {} violation(s) in {}.", uri, violations.size(), watch);
         return ResponseEntity.ok(violations);
     }
@@ -86,29 +89,9 @@ public final class DatenpaketController {
     public ResponseEntity<List<Model>> validate(@RequestBody String text) throws IOException {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete in posted stream of {} length...", StringUtils.length(text));
-        Datenpaket datenpaket = new Datenpaket();
-        datenpaket.importFrom(text);
-        List<Model> violations = validate(datenpaket);
+        List<Model> violations = service.validate(text);
         LOG.info("Validating Datenpakete in posted stream finished with {} violation(s) in {}.", violations.size(), watch);
         return ResponseEntity.ok(violations);
-    }
-
-    private static List<Model> validate(Datenpaket datenpaket) {
-        List<ConstraintViolation> violations = datenpaket.validate();
-        return toModelList(violations);
-    }
-
-    private static List<Model> toModelList(List<ConstraintViolation> violations) {
-        List<Model> models = new ArrayList<Model>();
-        for (ConstraintViolation cv : violations) {
-            Model m = new ExtendedModelMap();
-            m.addAttribute("context", cv.getContext().getCompileTimeType());
-            m.addAttribute("invalidValue", cv.getInvalidValue());
-            m.addAttribute("message", cv.getMessage());
-            m.addAttribute("validatedObject", cv.getValidatedObject().toString());
-            models.add(m);
-        }
-        return models;
     }
 
 }
