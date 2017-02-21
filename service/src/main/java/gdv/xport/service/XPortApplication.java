@@ -20,10 +20,12 @@ package gdv.xport.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Haupt-Anwendung fuer Spring.
  */
+@ComponentScan(basePackages = {"gdv.xport.service"})
 @SpringBootApplication
 public class XPortApplication {
 

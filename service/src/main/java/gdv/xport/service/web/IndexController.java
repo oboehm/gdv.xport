@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 
     /**
-     * Diese Methode verwendet Spring-Boot, um "/" auf "index.hmtl" zu mappen.
+     * Diese Methode verwendet Spring-Boot, um "/" auf "index.html" zu mappen.
      *
      * @return "index"
      */
