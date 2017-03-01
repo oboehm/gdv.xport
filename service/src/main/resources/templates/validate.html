@@ -17,9 +17,9 @@
                 Hier&uuml;ber k&ouml;nnen Sie bestehende GDV-Datens&auml;tze validieren.
             </p>
             <div class="panel-body">
-                <form id="validierung" action="#" th:action="@{/validate}" method="post">
+                <form id="validierung" action="#" th:action="@{/Datenpakete/validate}" method="get">
                     <div class="form-group">
-                        <label class="control-label">URI:</label>
+                        <label class="control-label" >URI:</label>
                         <input type="text" class="form-control" value="http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt" />
                     </div>
                     <div class="text-center">

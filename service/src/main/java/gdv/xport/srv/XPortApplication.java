@@ -18,9 +18,13 @@
 
 package gdv.xport.srv;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+
+import java.util.Arrays;
 
 /**
  * Haupt-Anwendung fuer Spring.
@@ -29,13 +33,17 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 public class XPortApplication {
 
+    private static final Logger LOG = LogManager.getLogger(XPortApplication.class);
+
     /**
      * Einstiegspunkt fuer die Spring-Anwendung
      *
      * @param args Input-Argumente, ueblicherweise leer
      */
     public static void main(String[] args) {
+        LOG.info("XPortApplicaton will be started with args={}.", Arrays.toString(args));
 		SpringApplication.run(XPortApplication.class, args);
+        LOG.info("All services are up and running.");
 	}
 
 }
