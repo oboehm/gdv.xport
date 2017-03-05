@@ -41,12 +41,10 @@
                     </div>
                 </form>
                 <!-- Datei validieren -->
-                <form id="validierungFile" action="#" th:action="@{/Datenpakete/validate}" method="post" enctype="multipart/form-data">
+                <form id="validierungFile" th:action="@{/Datenpakete/validateUploaded}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="control-label" >Datei:</label>
                         <input type="file" name="file" />
-                    </div>
-                    <div class="text-center">
                         <button type="submit" class="btn btn-primary" value="Upload">OK</button>
                     </div>
                 </form>

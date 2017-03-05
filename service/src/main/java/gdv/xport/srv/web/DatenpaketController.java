@@ -17,25 +17,22 @@
  */
 package gdv.xport.srv.web;
 
-import gdv.xport.Datenpaket;
 import gdv.xport.srv.service.DatenpaketService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import net.sf.oval.ConstraintViolation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import patterntesting.runtime.log.LogWatch;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -91,6 +88,23 @@ public final class DatenpaketController {
         LOG.info("Validating Datenpakete in posted stream of {} length...", StringUtils.length(text));
         List<Model> violations = service.validate(text);
         LOG.info("Validating Datenpakete in posted stream finished with {} violation(s) in {}.", violations.size(), watch);
+        return ResponseEntity.ok(violations);
+    }
+
+    /**
+     * Laedt die gewuenschte Datei und validiert die darin enthaltenen Datenpakete.
+     *
+     * @param file gewuenschte Datei
+     * @return the response entity
+     * @throws IOException the io exception
+     */
+    @PostMapping("/validateUploaded")
+    public ResponseEntity<List<Model>> handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
+        LogWatch watch = new LogWatch();
+        LOG.info("Validating Datenpakete in posted file '{}'...", file);
+        String text = new String(file.getBytes());
+        List<Model> violations = service.validate(text);
+        LOG.info("Validating Datenpakete in {} finished with {} violation(s) in {}.", file, violations.size(), watch);
         return ResponseEntity.ok(violations);
     }
 
