@@ -33,7 +33,11 @@
                 <form id="validierungText" action="#" th:action="@{/Datenpakete/validate}" method="post">
                     <div class="form-group">
                         <label class="control-label" >Text:</label>
-                        <textarea class="form-control" name="text">00019999 XXX Versicherung AG...</textarea>
+                        <textarea class="form-control" name="text">0001HelloWorld                         Test-Adressat                 1302201413022014845/6666662.12.12.2                                                            1.41.4                                                      1.1                            1
+0001HelloWorld                         Test-Adressat                 1302201413022014845/666666                           1.2                        1.2                           1.2                                                                         2
+0001HelloWorld                         Test-Adressat                 1302201413022014845/666666                                                                                                                                                                3
+99990000000000845/66666600000000000000000000000000000+00000000000000+00000000000000+00000000000000+
+</textarea>
                     </div>
                     <div class="text-center">
                         <a class="btn btn-default" href="validate.html" th:href="@{/validate}">Abbrechen</a>
@@ -45,7 +49,10 @@
                     <div class="form-group">
                         <label class="control-label" >Datei:</label>
                         <input type="file" name="file" />
-                        <button type="submit" class="btn btn-primary" value="Upload">OK</button>
+                    </div>
+                    <div class="text-center">
+                        <a class="btn btn-default" href="validate.html" th:href="@{/validate}">Abbrechen</a>
+                        <button type="submit" class="btn btn-primary" value="Upload">Senden</button>
                     </div>
                 </form>
             </div>

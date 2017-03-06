@@ -83,7 +83,7 @@ public final class DatenpaketController {
      * @throws IOException the io exception
      */
     @PostMapping("/validate")
-    public ResponseEntity<List<Model>> validate(@RequestBody String text) throws IOException {
+    public ResponseEntity<List<Model>> validate(@RequestParam("text") String text) throws IOException {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete in posted stream of {} length...", StringUtils.length(text));
         List<Model> violations = service.validate(text);
