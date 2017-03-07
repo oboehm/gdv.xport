@@ -20,7 +20,6 @@ package gdv.xport.srv.service;
 
 import org.springframework.ui.Model;
 
-import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
@@ -37,17 +36,15 @@ public interface DatenpaketService {
      *
      * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
      * @return List mit Constraint-Verletzungen
-     * @throws IOException the io exception
      */
-    List<Model> validate(URI uri) throws IOException;
+    List<Model> validate(URI uri);
 
     /**
      * Validiert die eingelesenen Datenpakete.
      *
      * @param text Text, der ueber die Leitung reinkommt.
      * @return the response entity
-     * @throws IOException the io exception
      */
-    public List<Model> validate(String text) throws IOException;
+    public List<Model> validate(String text);
 
 }

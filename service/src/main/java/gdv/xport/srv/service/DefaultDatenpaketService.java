@@ -20,6 +20,9 @@ package gdv.xport.srv.service;
 
 import gdv.xport.Datenpaket;
 import net.sf.oval.ConstraintViolation;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ExtendedModelMap;
@@ -40,18 +43,24 @@ import java.util.List;
 @Description("Default-Implementierung des Datenpaket-Services")
 public final class DefaultDatenpaketService implements DatenpaketService {
 
+    private static final Logger LOG = LogManager.getLogger(DefaultDatenpaketService.class);
+
     /**
      * Validiert die uebergebene URI.
      *
      * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
      * @return List mit Constraint-Verletzungen
-     * @throws IOException the io exception
      */
     @Override
-    public List<Model> validate(URI uri) throws IOException {
+    public List<Model> validate(URI uri) {
         Datenpaket datenpaket = new Datenpaket();
-        datenpaket.importFrom(uri);
-        return validate(datenpaket);
+        try {
+            datenpaket.importFrom(uri);
+            return validate(datenpaket);
+        } catch (IOException ioe) {
+            LOG.warn("Cannot validate '{}':", uri, ioe);
+            return asModelList(ioe);
+        }
     }
 
     /**
@@ -59,13 +68,17 @@ public final class DefaultDatenpaketService implements DatenpaketService {
      *
      * @param text Text, der ueber die Leitung reinkommt.
      * @return the response entity
-     * @throws IOException the io exception
      */
     @Override
-    public List<Model> validate(String text) throws IOException {
+    public List<Model> validate(String text) {
         Datenpaket datenpaket = new Datenpaket();
-        datenpaket.importFrom(text);
-        return validate(datenpaket);
+        try {
+            datenpaket.importFrom(text);
+            return validate(datenpaket);
+        } catch (IOException ioe) {
+            LOG.warn("Cannot validate '{}':", StringUtils.abbreviate(text, 18), ioe);
+            return asModelList(ioe);
+        }
     }
 
     private static List<Model> validate(Datenpaket datenpaket) {
@@ -81,8 +94,25 @@ public final class DefaultDatenpaketService implements DatenpaketService {
             m.addAttribute("invalidValue", cv.getInvalidValue());
             m.addAttribute("message", cv.getMessage());
             m.addAttribute("validatedObject", cv.getValidatedObject().toString());
+            m.addAttribute("causes", cv.getCauses());
             models.add(m);
         }
+        return models;
+    }
+
+    /**
+     * Hierueber laesst sich eine {@link IOException} in eine "Violation"-Liste
+     * umwandeln, die fuer die Ausgabe der Validierung zum Einsatz kommt.
+     *
+     * @param ioe the ioe
+     * @return the list
+     */
+    public static List<Model> asModelList(IOException ioe) {
+        List<Model> models = new ArrayList<Model>();
+        Model m = new ExtendedModelMap();
+        m.addAttribute("message", ioe.getMessage());
+        m.addAttribute("causes", ioe);
+        models.add(m);
         return models;
     }
 

@@ -18,6 +18,7 @@
 package gdv.xport.srv.web;
 
 import gdv.xport.srv.service.DatenpaketService;
+import gdv.xport.srv.service.DefaultDatenpaketService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -80,10 +81,9 @@ public final class DatenpaketController {
      *
      * @param text Text, der ueber die Leitung reinkommt.
      * @return the response entity
-     * @throws IOException the io exception
      */
     @PostMapping("/validate")
-    public ResponseEntity<List<Model>> validate(@RequestParam("text") String text) throws IOException {
+    public ResponseEntity<List<Model>> validate(@RequestParam("text") String text) {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete in posted stream of {} length...", StringUtils.length(text));
         List<Model> violations = service.validate(text);
@@ -99,13 +99,19 @@ public final class DatenpaketController {
      * @throws IOException the io exception
      */
     @PostMapping("/validateUploaded")
-    public ResponseEntity<List<Model>> handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
+    public ResponseEntity<List<Model>> validate(@RequestParam("file") MultipartFile file) {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete in posted file '{}'...", file);
-        String text = new String(file.getBytes());
-        List<Model> violations = service.validate(text);
-        LOG.info("Validating Datenpakete in {} finished with {} violation(s) in {}.", file, violations.size(), watch);
-        return ResponseEntity.ok(violations);
+        String text = null;
+        try {
+            text = new String(file.getBytes());
+            List<Model> violations = service.validate(text);
+            LOG.info("Validating Datenpakete in {} finished with {} violation(s) in {}.", file, violations.size(), watch);
+            return ResponseEntity.ok(violations);
+        } catch (IOException ioe) {
+            LOG.warn("Cannot upload and validate {}:", file.getOriginalFilename(), ioe);
+            return ResponseEntity.badRequest().body(DefaultDatenpaketService.asModelList(ioe));
+        }
     }
 
 }

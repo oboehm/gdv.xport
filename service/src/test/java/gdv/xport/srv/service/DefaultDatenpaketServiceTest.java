@@ -17,11 +17,12 @@
  */
 package gdv.xport.srv.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.springframework.ui.Model;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
@@ -34,18 +35,28 @@ import static org.junit.Assert.assertEquals;
  */
 public final class DefaultDatenpaketServiceTest {
 
+    private static Logger LOG = LogManager.getLogger(DefaultDatenpaketServiceTest.class);
     private final DatenpaketService service = new DefaultDatenpaketService();
 
     /**
      * Test fuer {@link DefaultDatenpaketService#validate(URI)}.
-     *
-     * @throws IOException the io exception
      */
     @Test
-    public void testValidateUri() throws IOException {
+    public void testValidateUri() {
         File musterdatei = new File("../lib/src/test/resources/musterdatei_041222.txt");
         List<Model> violations = service.validate(musterdatei.toURI());
         assertEquals(0, violations.size());
+    }
+
+    /**
+     * Hier testen wir die eine provoierte IO-Exception.
+     */
+    @Test
+    public void testValidateInvalidUri() {
+        URI invalidURI = new File("/invalid/uri").toURI();
+        List<Model> violations = service.validate(invalidURI);
+        assertEquals(1, violations.size());
+        LOG.info("violations = {}", violations);
     }
 
 }
