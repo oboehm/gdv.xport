@@ -47,7 +47,13 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
 
     /**
      * Hier testen wir, ob wir mit dem Musterdatensatz eine leere Liste von
-     * Violations zurueckbekommen.
+     * Violations zurueckbekommen. Aus folgenden Gruenden kann dieser Test
+     * fehlschlagen:
+     * <ul>
+     *     <li>keine Internetverbindung,</li>
+     *     <li>die verwendete URI ist nicht (mehr) erreichbar,</li>
+     *     <li>Programmierfehler.</li>
+     * </ul>
      */
     @Test
     public void testValidateURI() {

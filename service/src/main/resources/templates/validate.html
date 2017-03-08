@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout" >
 
 <head>
     <title>Validierung</title>
@@ -33,6 +33,7 @@
                 <form id="validierungText" action="#" th:action="@{/Datenpakete/validate}" method="post">
                     <div class="form-group">
                         <label class="control-label" >Text:</label>
+                        <!-- TODO: hier muessen wir noch die Textarea als Body und nicht als Parameter schicken -->
                         <textarea class="form-control" name="text">0001HelloWorld                         Test-Adressat                 1302201413022014845/6666662.12.12.2                                                            1.41.4                                                      1.1                            1
 0001HelloWorld                         Test-Adressat                 1302201413022014845/666666                           1.2                        1.2                           1.2                                                                         2
 0001HelloWorld                         Test-Adressat                 1302201413022014845/666666                                                                                                                                                                3

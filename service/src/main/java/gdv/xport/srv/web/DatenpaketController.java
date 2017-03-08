@@ -91,7 +91,9 @@ public final class DatenpaketController {
     }
 
     /**
-     * Laedt die gewuenschte Datei und validiert die darin enthaltenen Datenpakete.
+     * Laedt die gewuenschte Datei und validiert die darin enthaltenen
+     * Datenpakete. Da hierueber der Inhalt der Datei mit uebertragen wird,
+     * wird dieser Service ueber POST angesprochen.
      *
      * @param file gewuenschte Datei
      * @return the response entity
