@@ -84,6 +84,22 @@ public abstract class AbstractControllerIT {
      * @param type Typ der erwarteten Antwort
      * @return Antwort des abgesendeten Requests
      */
+    protected <T> ResponseEntity<T> postResponseEntityFor(String path, String text, Class<T> type) {
+        LogWatch watch = new LogWatch();
+        LOG.info("Requesting {}{} with {} characters...", baseURI, path, StringUtils.length(text));
+        ResponseEntity<T> response = template.postForEntity(baseURI.toString() + path, text, type);
+        LOG.info("Requesting {}{} successful finished with {} after {}.", baseURI, path, response, watch);
+        return response;
+    }
+
+    /**
+     * Baut die URL zusammen und ruft den Service als POST-Request auf.
+     *
+     * @param <T>  Typ-Parameter
+     * @param path Context-Pfad der URL
+     * @param type Typ der erwarteten Antwort
+     * @return Antwort des abgesendeten Requests
+     */
     protected <T> T postResponseObjectFor(String path, String text, Class<T> type) {
         LogWatch watch = new LogWatch();
         LOG.info("Requesting {}{} with {} characters...", baseURI, path, StringUtils.length(text));

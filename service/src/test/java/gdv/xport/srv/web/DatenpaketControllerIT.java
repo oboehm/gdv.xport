@@ -23,7 +23,9 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -38,6 +40,7 @@ import static org.junit.Assert.assertThat;
  *
  * @author <a href="ob@aosd.de">oliver</a>
  */
+@RunWith(SpringRunner.class)
 public final class DatenpaketControllerIT extends AbstractControllerIT {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketControllerIT.class);

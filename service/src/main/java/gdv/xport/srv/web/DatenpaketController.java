@@ -55,7 +55,6 @@ public final class DatenpaketController {
      *
      * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
      * @return the response entity
-     * @throws IOException the io exception
      */
     @GetMapping("/validate")
     @ApiOperation(value = "validiert die uebergebene URI")
@@ -68,7 +67,7 @@ public final class DatenpaketController {
                     paramType = "query"
             )
     })
-    public ResponseEntity<List<Model>> validate(@RequestParam("uri") URI uri) throws IOException {
+    public ResponseEntity<List<Model>> validate(@RequestParam("uri") URI uri) {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete in {}...", uri);
         List<Model> violations = service.validate(uri);
@@ -83,7 +82,7 @@ public final class DatenpaketController {
      * @return the response entity
      */
     @PostMapping("/validate")
-    public ResponseEntity<List<Model>> validate(@RequestParam("text") String text) {
+    public ResponseEntity<List<Model>> validate(@RequestBody String text) {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete in posted stream of {} length...", StringUtils.length(text));
         List<Model> violations = service.validate(text);
