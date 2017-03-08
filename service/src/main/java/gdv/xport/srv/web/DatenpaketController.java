@@ -78,14 +78,15 @@ public final class DatenpaketController {
     /**
      * Validiert die eingelesenen Datenpakete.
      *
-     * @param text Text, der ueber die Leitung reinkommt.
+     * @param body Text, der ueber die Leitung reinkommt.
      * @return the response entity
      */
     @PostMapping("/validate")
-    public ResponseEntity<List<Model>> validate(@RequestBody String text) {
+    public ResponseEntity<List<Model>> validate(@RequestBody(required = false) String body, @RequestParam(required = false) String text) {
         LogWatch watch = new LogWatch();
-        LOG.info("Validating Datenpakete in posted stream of {} length...", StringUtils.length(text));
-        List<Model> violations = service.validate(text);
+        String content = (StringUtils.isBlank(text)) ? body : text;
+        LOG.info("Validating Datenpakete in posted stream of {} bytes...", StringUtils.length(content));
+        List<Model> violations = service.validate(content);
         LOG.info("Validating Datenpakete in posted stream finished with {} violation(s) in {}.", violations.size(), watch);
         return ResponseEntity.ok(violations);
     }
