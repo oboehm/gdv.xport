@@ -9,7 +9,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express orimplied.
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
@@ -19,7 +19,9 @@
 package gdv.xport.srv.service;
 
 import org.springframework.ui.Model;
+import org.springframework.util.MimeType;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
@@ -46,5 +48,26 @@ public interface DatenpaketService {
      * @return the response entity
      */
     public List<Model> validate(String text);
+
+    /**
+     * Holt sich das Datenpaket von der angegebenen URI und formattiert das
+     * Datenpaket anhand des uebergebenen Formatters.
+     *
+     * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @param type gewuenschte Formattierung
+     * @return string formatiertes Datenpaket
+     * @throws IOException kann beim Lesen der URI auftreten
+     */
+    public String format(URI uri, MimeType type) throws IOException;
+
+    /**
+     * Holt sich das Datenpaket, das als Text im GDV-Format uebergeben wird
+     * und formattiert das Datenpaket anhand des uebergebenen Formatters.
+     *
+     * @param text      Text, der ueber die Leitung reinkommt.
+     * @param type gewuenschte Formattierung
+     * @return string formatiertes Datenpaket
+     */
+    public String format(String text, MimeType type);
 
 }

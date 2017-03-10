@@ -19,6 +19,8 @@
 package gdv.xport.srv.service;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.util.AbstractFormatter;
+import gdv.xport.util.HtmlFormatter;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -27,8 +29,11 @@ import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
+import org.springframework.util.MimeType;
 
 import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +86,61 @@ public final class DefaultDatenpaketService implements DatenpaketService {
         }
     }
 
+    /**
+     * Holt sich das Datenpaket von der angegebenen URI und formattiert das
+     * Datenpaket anhand des uebergebenen Formatters.
+     *
+     * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @param mimeType gewuenschte Formattierung
+     * @return string formatiertes Datenpaket
+     * @throws IOException kann beim Lesen der URI auftreten
+     */
+    @Override
+    public String format(URI uri, MimeType mimeType) throws IOException {
+        Datenpaket datenpaket = new Datenpaket();
+        datenpaket.importFrom(uri);
+        return format(datenpaket, mimeType);
+    }
+
+    /**
+     * Holt sich das Datenpaket, das als Text im GDV-Format uebergeben wird
+     * und formattiert das Datenpaket anhand des uebergebenen Formatters.
+     *
+     * @param text Text, der ueber die Leitung reinkommt.
+     * @param mimeType gewuenschte Formattierung
+     * @return string formatiertes Datenpaket
+     */
+    @Override
+    public String format(String text, MimeType mimeType) {
+        Datenpaket datenpaket = new Datenpaket();
+        try {
+            datenpaket.importFrom(text);
+            return format(datenpaket, mimeType);
+        } catch (IOException ioe) {
+            throw new IllegalArgumentException("strange input '" + text + "'", ioe);
+        }
+    }
+
+    private static String format(Datenpaket datenpaket, MimeType mimeType) throws IOException {
+        StringWriter swriter = new StringWriter();
+        try {
+            AbstractFormatter formatter = getFormatterFor(mimeType, swriter);
+            formatter.write(datenpaket);
+        } finally {
+            swriter.close();
+        }
+        return swriter.toString();
+    }
+
+    private static AbstractFormatter getFormatterFor(MimeType mimeType, Writer writer) {
+        String type = mimeType.getSubtype();
+        if ("html".equalsIgnoreCase(type)) {
+            return new HtmlFormatter(writer);
+        } else {
+            throw new UnsupportedOperationException(mimeType + " is not (yet) supported");
+        }
+    }
+
     private static List<Model> validate(Datenpaket datenpaket) {
         List<ConstraintViolation> violations = datenpaket.validate();
         return toModelList(violations);
@@ -103,6 +163,17 @@ public final class DefaultDatenpaketService implements DatenpaketService {
     /**
      * Hierueber laesst sich eine {@link IOException} in eine "Violation"-Liste
      * umwandeln, die fuer die Ausgabe der Validierung zum Einsatz kommt.
+     * <p>
+     *     Die Methode ist public, da sie nicht nur intern, sondern auch an
+     *     anderer Stelle benoetigt wird. Eventuell wird sie in eine eigene
+     *     Util-Klasse wandern (eher ungern) oder an einer besser geeigneten
+     *     Stelle abgelegt (ob, 09-Feb-2017),
+     *     Momentan ist diese Methode hier nur geparkt, bis ich einen besseren
+     *     Platz dafuer
+     * </p>
+     * <p>
+     * TODO: besseren Platz fuer diese Methode suchen (ob, 09-Feb-2017)
+     * </p>
      *
      * @param ioe the ioe
      * @return the list

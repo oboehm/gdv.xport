@@ -21,12 +21,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.springframework.ui.Model;
+import org.springframework.util.MimeType;
+import org.springframework.util.MimeTypeUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit-Tests DefaultDatenpaketServiceTest.
@@ -49,7 +55,7 @@ public final class DefaultDatenpaketServiceTest {
     }
 
     /**
-     * Hier testen wir die eine provoierte IO-Exception.
+     * Hier testen wir die eine provozierte IO-Exception.
      */
     @Test
     public void testValidateInvalidUri() {
@@ -57,6 +63,24 @@ public final class DefaultDatenpaketServiceTest {
         List<Model> violations = service.validate(invalidURI);
         assertEquals(1, violations.size());
         LOG.info("violations = {}", violations);
+    }
+
+    /**
+     * Test-Methode fuer {@link DefaultDatenpaketService#format(URI, MimeType)}.
+     * <p>
+     *     Hinweis: Die verwendete Test-Datei liegt im anderen (lib-)Modul -
+     *     ist etwas unschoen.
+     * </p>
+     *
+     * @throws IOException the io exception
+     */
+    @Test
+    public void testFormatUri() throws IOException {
+        File testExport = new File("../lib/src/test/resources/gdv/xport/test-export.txt");
+        assertTrue(testExport + " does not exist", testExport.exists());
+        String html = service.format(testExport.toURI(), MimeTypeUtils.TEXT_HTML);
+        assertThat(html, containsString("<html"));
+        assertThat(html, containsString("</html>"));
     }
 
 }
