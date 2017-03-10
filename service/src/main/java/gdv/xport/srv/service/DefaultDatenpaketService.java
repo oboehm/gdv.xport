@@ -19,8 +19,7 @@
 package gdv.xport.srv.service;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.util.AbstractFormatter;
-import gdv.xport.util.HtmlFormatter;
+import gdv.xport.util.*;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -136,8 +135,14 @@ public final class DefaultDatenpaketService implements DatenpaketService {
         String type = mimeType.getSubtype();
         if ("html".equalsIgnoreCase(type)) {
             return new HtmlFormatter(writer);
+        } else if ("plain".equalsIgnoreCase(type)) {
+            return new NullFormatter(writer);
+        } else if ("xml".equalsIgnoreCase(type)) {
+            return new XmlFormatter(writer);
+        } else if ("csv".equalsIgnoreCase(type)) {
+            return new CsvFormatter(writer);
         } else {
-            throw new UnsupportedOperationException(mimeType + " is not (yet) supported");
+            throw new UnsupportedOperationException("mime-type '" + mimeType + "' is not (yet) supported");
         }
     }
 
