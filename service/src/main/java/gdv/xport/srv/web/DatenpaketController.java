@@ -99,7 +99,6 @@ public final class DatenpaketController {
      *
      * @param file gewuenschte Datei
      * @return the response entity
-     * @throws IOException bei Lesefehlern
      */
     @PostMapping("/validateUploaded")
     public ResponseEntity<List<Model>> validate(@RequestParam("file") MultipartFile file) {
