@@ -79,6 +79,7 @@ public final class DatenpaketController {
      * Validiert die eingelesenen Datenpakete.
      *
      * @param body Text, der ueber die Leitung reinkommt.
+     * @param text alternativ kann der Text auch als Parameter reinkommen
      * @return the response entity
      */
     @PostMapping("/validate")
@@ -98,7 +99,7 @@ public final class DatenpaketController {
      *
      * @param file gewuenschte Datei
      * @return the response entity
-     * @throws IOException the io exception
+     * @throws IOException bei Lesefehlern
      */
     @PostMapping("/validateUploaded")
     public ResponseEntity<List<Model>> validate(@RequestParam("file") MultipartFile file) {
