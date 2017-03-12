@@ -40,7 +40,7 @@
           <td>D-Day</td>
           <td>Finaler Release-Build und Release-Test (inkl. Signierung)</td>
           <td>baue alle Artefakte auf dem Release-Branch
-            (<tt>mvn -B -Prelease -Dfile.encoding=ISO-8859-1 -Dpatterntesting.integrationTest
+            (<tt>mvn -B -Prelease -Dpatterntesting.integrationTest
             clean install source:jar javadoc:jar gpg:sign -Dgpg.passphrase=xx</tt>)
           </td>
         </tr>
