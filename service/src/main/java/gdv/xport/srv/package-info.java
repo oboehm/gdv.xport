@@ -24,7 +24,7 @@
  * href="http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-structuring-your-code.html">Structuring
  * your code</a> aus der Spring-Boot-Dokumentation.
  *
- * @author oboehm (o.boehm@optica.de)
+ * @author oboehm (ob@aosd.de)
  * @since 3.0.0 (21.02.2017)
  */
 package gdv.xport.srv;
