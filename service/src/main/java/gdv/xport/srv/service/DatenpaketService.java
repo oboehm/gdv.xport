@@ -47,7 +47,7 @@ public interface DatenpaketService {
      * @param text Text, der ueber die Leitung reinkommt.
      * @return the response entity
      */
-    public List<Model> validate(String text);
+    List<Model> validate(String text);
 
     /**
      * Holt sich das Datenpaket von der angegebenen URI und formattiert das
@@ -58,16 +58,16 @@ public interface DatenpaketService {
      * @return string formatiertes Datenpaket
      * @throws IOException kann beim Lesen der URI auftreten
      */
-    public String format(URI uri, MimeType type) throws IOException;
+    String format(URI uri, MimeType type) throws IOException;
 
     /**
      * Holt sich das Datenpaket, das als Text im GDV-Format uebergeben wird
      * und formattiert das Datenpaket anhand des uebergebenen Formatters.
      *
-     * @param text      Text, der ueber die Leitung reinkommt.
+     * @param text Text, der ueber die Leitung reinkommt.
      * @param type gewuenschte Formattierung
      * @return string formatiertes Datenpaket
      */
-    public String format(String text, MimeType type);
+    String format(String text, MimeType type);
 
 }
