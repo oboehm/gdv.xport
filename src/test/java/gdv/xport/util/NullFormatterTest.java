@@ -18,18 +18,16 @@
 
 package gdv.xport.util;
 
-import java.io.*;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import gdv.xport.Datenpaket;
 import gdv.xport.event.ImportListener;
+import org.apache.logging.log4j.*;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.SmokeRunner;
+
+import java.io.*;
 
 /**
  * JUnit-Tests fuer die {@link NullFormatter}-Klasse.
@@ -40,7 +38,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 @RunWith(SmokeRunner.class)
 public class NullFormatterTest extends AbstractFormatterTest {
 
-    private static final Log LOG = LogFactory.getLog(NullFormatterTest.class);
+    private static final Logger LOG = LogManager.getLogger(NullFormatterTest.class);
 
     /**
      * Test-Methode fuer {@link NullFormatter#write(Datenpaket)}.
