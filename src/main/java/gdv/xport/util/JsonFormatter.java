@@ -17,10 +17,9 @@
  */
 package gdv.xport.util;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Satz;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -35,6 +34,8 @@ import java.io.Writer;
  * @since 2.1.0
  */
 public class JsonFormatter extends AbstractFormatter {
+
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     /**
      * Default-Konstruktor.
@@ -69,26 +70,8 @@ public class JsonFormatter extends AbstractFormatter {
      */
     @Override
     public void write(final Datenpaket datenpaket) throws IOException {
-        this.write("{\n\t{\n\t\t\"vorsatz\": ");
-        this.write(datenpaket.getVorsatz());
-        this.write("\t}\n\t");
-        for (Datensatz satz : datenpaket.getDatensaetze()) {
-            this.write(satz);
-        }
-        this.write("\t{\n\t\t\"nachsatz\": ");
-        this.write(datenpaket.getNachsatz());
-        this.write("}\n}\n");
-    }
-
-    /**
-     * Wandelt den Satz in JSON um.
-     *
-     * @param satz Satz, der ausgegeben werden soll
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Override
-    public void write(final Satz satz) throws IOException {
-        this.write("\"" + satz.toLongString() + "\"");
+        String value = OBJECT_MAPPER.writeValueAsString(datenpaket);
+        this.write(value);
     }
 
 }

@@ -3,23 +3,13 @@
  */
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.SATZART;
-import static gdv.xport.feld.Bezeichner.SPARTE;
-import static patterntesting.runtime.NullConstants.NULL_STRING;
-
-import java.io.*;
-import java.lang.reflect.Field;
-import java.util.*;
-
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
@@ -29,6 +19,18 @@ import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.*;
+import java.lang.reflect.Field;
+import java.util.*;
+
+import static gdv.xport.feld.Bezeichner.SATZART;
+import static gdv.xport.feld.Bezeichner.SPARTE;
+import static patterntesting.runtime.NullConstants.NULL_STRING;
 
 /**
  * Die Satz-Klasse ist die oberste Klasse, von der alle weiteren Saetze
@@ -560,6 +562,7 @@ public abstract class Satz {
 	 * @return den Satz-Typ
 	 * @since 1.0
 	 */
+	@JsonIgnore
 	public final SatzTyp getSatzTyp() {
 	    if (this.hasWagnisart()) {
 	        String wagnisart = this.getWagnisart();
@@ -605,6 +608,7 @@ public abstract class Satz {
      * @since 0.9
 	 * @return die Sparte
 	 */
+	@JsonIgnore
 	public int getSparte() {
 	    NumFeld sparte = (NumFeld) this.getFeld(Feld1bis7.SPARTE);
 	    return sparte.toInt();
@@ -621,6 +625,7 @@ public abstract class Satz {
      *
      * @return die Wagnisart
      */
+    @JsonIgnore
     public final String getWagnisart() {
         Feld wagnisart = this.getFeld(Bezeichner.WAGNISART);
         return wagnisart.getInhalt();
