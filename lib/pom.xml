@@ -231,7 +231,12 @@
     <dependency>
       <groupId>net.sf.oval</groupId>
       <artifactId>oval</artifactId>
-      <version>1.40</version>
+    </dependency>
+    <!-- for JsonFormatter -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <optional>true</optional>
     </dependency>
 
   </dependencies>
