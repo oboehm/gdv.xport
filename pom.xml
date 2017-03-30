@@ -47,7 +47,6 @@
 
     <!-- Sonar -->
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-    <sonar.jacoco.reportPath>target/jacoco.exec</sonar.jacoco.reportPath>
 
     <!-- Sonar 4.x Violations Filter -->
     <!-- System.out and System.err should not be used as loggers -->
@@ -184,8 +183,8 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.9</version>
         <configuration>
-          <destFile>${sonar.jacoco.reportPath}</destFile>
           <append>true</append>
         </configuration>
         <executions>
@@ -202,6 +201,11 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.eluder.coveralls</groupId>
+        <artifactId>coveralls-maven-plugin</artifactId>
+        <version>4.3.0</version>
       </plugin>
 
   	</plugins>
