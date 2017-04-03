@@ -26,8 +26,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.util.MimeType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import patterntesting.runtime.log.LogWatch;
@@ -104,9 +106,8 @@ public final class DatenpaketController {
     public ResponseEntity<List<Model>> validate(@RequestParam("file") MultipartFile file) {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete in posted file '{}'...", file);
-        String text = null;
         try {
-            text = new String(file.getBytes());
+            String text = new String(file.getBytes());
             List<Model> violations = service.validate(text);
             LOG.info("Validating Datenpakete in {} finished with {} violation(s) in {}.", file, violations.size(), watch);
             return ResponseEntity.ok(violations);
@@ -114,6 +115,28 @@ public final class DatenpaketController {
             LOG.warn("Cannot upload and validate {}:", file.getOriginalFilename(), ioe);
             return ResponseEntity.badRequest().body(DefaultDatenpaketService.asModelList(ioe));
         }
+    }
+
+    /**
+     * Formattiert das Datenpaket, das als Text reinkommt, in das gewuenschte
+     * Format wie HTML, XML, JSON oder CSV.
+     *
+     * @param body the body
+     * @param text the text
+     * @return the string
+     */
+    @PostMapping(
+            value = "/format",
+            produces = MediaType.TEXT_HTML_VALUE
+            //produces = { MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, "text/csv" }
+    )
+    public @ResponseBody String format(@RequestBody(required = false) String body, @RequestParam(required = false) String text) {
+        LogWatch watch = new LogWatch();
+        String content = (StringUtils.isBlank(text)) ? body : text;
+        LOG.info("Formatting Datenpakete in posted stream of {} bytes...", StringUtils.length(content));
+        String response = service.format(content, MimeType.valueOf(MediaType.TEXT_HTML_VALUE));
+        LOG.info("Formatting Datenpakete in posted stream finished in {}.", watch);
+        return response;
     }
 
 }

@@ -232,7 +232,8 @@
       <groupId>net.sf.oval</groupId>
       <artifactId>oval</artifactId>
     </dependency>
-    <!-- for JsonFormatter -->
+
+    <!-- JSON -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>

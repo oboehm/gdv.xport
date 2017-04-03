@@ -19,7 +19,6 @@ package gdv.xport.srv.web;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
-import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -29,10 +28,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.List;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -70,15 +67,32 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      */
     @Test
     public void testValidatePost() throws IOException {
-        String text = createDummyDatenpaketText();
-        String response = postResponseObjectFor("/Datenpakete/validate", text, String.class);
-        LOG.info("Response of validation is '{}'.", response);
+        String response = callRestWithDummyDatenpaket("/Datenpakete/validate");
         assertThat(response, containsString("VU-Nummer is not set"));
+    }
+
+    /**
+     * Hier schicken wir ein leeres Dummy-Paket und erwarten als Antwort das
+     * Datenpaket als HTML formattiert zurueck.
+     *
+     * @throws IOException the io exception
+     */
+    @Test
+    public void testFormat() throws IOException {
+        String response = callRestWithDummyDatenpaket("/Datenpakete/format");
+    }
+
+    private String callRestWithDummyDatenpaket(String path) throws IOException {
+        String text = createDummyDatenpaketText();
+        String response = postResponseObjectFor(path, text, String.class);
+        LOG.info("Response of '{}' is '{}'.", path, response);
+        assertThat(response, not(containsString("Internal Server Error")));
+        assertThat(response, notNullValue());
+        return response;
     }
 
     private static String createDummyDatenpaketText() throws IOException {
         Datenpaket dummy = new Datenpaket(Config.DUMMY_VU_NUMMER);
-        List<ConstraintViolation> violations = dummy.validate();
         StringWriter writer = new StringWriter();
         dummy.export(writer);
         writer.flush();
