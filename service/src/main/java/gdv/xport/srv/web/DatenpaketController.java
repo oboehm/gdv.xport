@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import patterntesting.runtime.log.LogWatch;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
@@ -126,17 +127,35 @@ public final class DatenpaketController {
      * @return the string
      */
     @PostMapping(
-            value = "/format",
-            produces = MediaType.TEXT_HTML_VALUE
-            //produces = { MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, "text/csv" }
+            value = "/format{suffix}",
+            produces = { MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, "text/csv" }
     )
-    public @ResponseBody String format(@RequestBody(required = false) String body, @RequestParam(required = false) String text) {
+    public @ResponseBody String format(@RequestBody(required = false) String body,
+                                       @RequestParam(required = false) String text,
+                                       @PathVariable(required = false) String suffix,
+                                       HttpServletRequest request) {
         LogWatch watch = new LogWatch();
         String content = (StringUtils.isBlank(text)) ? body : text;
         LOG.info("Formatting Datenpakete in posted stream of {} bytes...", StringUtils.length(content));
-        String response = service.format(content, MimeType.valueOf(MediaType.TEXT_HTML_VALUE));
+        MimeType type = toMimeType(suffix, request);
+        String response = service.format(content, type);
         LOG.info("Formatting Datenpakete in posted stream finished in {}.", watch);
         return response;
+    }
+
+    private static MimeType toMimeType(String format, HttpServletRequest request) {
+        String fmt = format;
+        if (StringUtils.isBlank(format)) {
+            String[] accepted = request.getHeader("accept").split(",");
+            fmt = accepted[0];
+        }
+        fmt = fmt.toLowerCase();
+        if (fmt.contains("html")) {
+            return MediaType.TEXT_HTML;
+        } else {
+            LOG.info("Will use '{}' as MimeType for unknown format parameter '{}'.", MediaType.TEXT_PLAIN, fmt);
+            return MediaType.TEXT_PLAIN;
+        }
     }
 
 }
