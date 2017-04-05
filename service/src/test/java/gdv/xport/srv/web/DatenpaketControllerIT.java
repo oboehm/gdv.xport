@@ -73,13 +73,25 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
 
     /**
      * Hier schicken wir ein leeres Dummy-Paket und erwarten als Antwort das
-     * Datenpaket als HTML formattiert zurueck.
+     * Datenpaket wieder zurueck.
      *
      * @throws IOException the io exception
      */
     @Test
     public void testFormat() throws IOException {
         String response = callRestWithDummyDatenpaket("/Datenpakete/format");
+        assertThat(response, not(isEmptyString()));
+    }
+
+    /**
+     * Hier testen wir die HTML-Formattierung.
+     *
+     * @throws IOException the io exception
+     */
+    @Test
+    public void testFormatHtml() throws IOException {
+        String response = callRestWithDummyDatenpaket("/Datenpakete/format.html");
+        assertThat(response, containsString("<html"));
     }
 
     private String callRestWithDummyDatenpaket(String path) throws IOException {
