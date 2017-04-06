@@ -94,17 +94,6 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         assertThat(response, containsString("<html"));
     }
 
-    /**
-     * Hier testen wir die CSV-Formattierung.
-     *
-     * @throws IOException the io exception
-     */
-    @Test
-    public void testFormatCsv() throws IOException {
-        String response = callRestWithDummyDatenpaket("/Datenpakete/format.csv");
-        assertThat(response, containsString(";"));
-    }
-
     private String callRestWithDummyDatenpaket(String path) throws IOException {
         String text = createDummyDatenpaketText();
         String response = postResponseObjectFor(path, text, String.class);
@@ -121,6 +110,19 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         writer.flush();
         writer.close();
         return writer.toString();
+    }
+
+    /**
+     * Hier schicken wir eine URI und erwarten als Antwort CSV-Datei.
+     *
+     * @throws IOException the io exception
+     */
+    @Test
+    public void testFormatURI() throws IOException {
+        ResponseEntity<String> response = getResponseEntityFor(
+                "/Datenpakete/format.csv?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
+                String.class);
+        assertThat(response.getBody(), containsString(";"));
     }
 
 }

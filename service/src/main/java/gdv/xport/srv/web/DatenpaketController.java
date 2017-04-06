@@ -119,11 +119,41 @@ public final class DatenpaketController {
     }
 
     /**
+     * Formattiert das Datenpaket, das von der uebergebenen URI abgeholt wird,
+     * in das gewuenscht Format wie HTML, XML, JSON oder CSV.
+     *
+     * @param uri     z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @param request der urspruengliche Request (zur Format-Bestimmung)
+     * @return erzeugtes Format als Text
+     * @throws IOException the io exception
+     */
+    @GetMapping("/format")
+    @ApiOperation(value = "formattiert die uebergebene URI")
+    @ApiImplicitParams({
+            @ApiImplicitParam(
+                    name = "uri",
+                    value = "z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
+                    required = true,
+                    dataType = "string",
+                    paramType = "query"
+            )
+    })
+    public @ResponseBody String format(@RequestParam("uri") URI uri, HttpServletRequest request) throws IOException {
+        LogWatch watch = new LogWatch();
+        MimeType type = toMimeType(request);
+        LOG.info("Formatting Datenpakete from {} as {}...", uri, type);
+        String response = service.format(uri, type);
+        LOG.info("Formatting Datenpakete from {} as {} finished after {}.", uri, type, watch);
+        return response;
+    }
+
+    /**
      * Formattiert das Datenpaket, das als Text reinkommt, in das gewuenschte
      * Format wie HTML, XML, JSON oder CSV.
      *
-     * @param body the body
-     * @param text the text
+     * @param body    the body
+     * @param text    the text
+     * @param request der urspruengliche Request (zur Format-Bestimmung)
      * @return the string
      */
     @PostMapping(

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout" >
+
+<head>
+    <title>Validierung</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 layout:fragment="header">Global Header</h1>
+        <div layout:fragment="content">
+            <h1>Formattierung</h1>
+            <p>
+                Hier&uuml;ber k&ouml;nnen Sie bestehende GDV-Datens&auml;tze in verschiedenen Formaten ausgeben lassen.
+            </p>
+            <div class="panel-body">
+                <!-- URI formattieren -->
+                <form id="inputURI" action="#" th:action="@{/Datenpakete/format}" method="get">
+                    <div class="form-group">
+                        <label class="control-label" >URI:</label>
+                        <input type="text" class="form-control" name="uri"
+                               value="http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt" />
+                    </div>
+                    <div class="text-center">
+                        <a class="btn btn-default" href="validate.html" th:href="@{/validate}">Abbrechen</a>
+                        <button type="submit" class="btn btn-primary">Senden</button>
+                    </div>
+                </form>
+                <!-- TODO: Text formattieren -->
+                <!-- TODO: Datei validieren -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
