@@ -94,6 +94,17 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         assertThat(response, containsString("<html"));
     }
 
+    /**
+     * Hier testen wir die CSV-Formattierung.
+     *
+     * @throws IOException the io exception
+     */
+    @Test
+    public void testFormatCsv() throws IOException {
+        String response = callRestWithDummyDatenpaket("/Datenpakete/format.csv");
+        assertThat(response, containsString(";"));
+    }
+
     private String callRestWithDummyDatenpaket(String path) throws IOException {
         String text = createDummyDatenpaketText();
         String response = postResponseObjectFor(path, text, String.class);
