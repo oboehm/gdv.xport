@@ -161,13 +161,14 @@ public final class DatenpaketController {
     )
     public @ResponseBody String format(@RequestBody(required = false) String body,
                                        @RequestParam(required = false) String text,
+                                       @RequestParam(required = false) String type,
                                        HttpServletRequest request) {
         LogWatch watch = new LogWatch();
-        MimeType type = toMimeType(request);
+        MimeType mimeType = toMimeType(type, request);
         String content = (StringUtils.isBlank(text)) ? body : text;
-        LOG.info("Formatting Datenpakete in posted stream of {} bytes as {}...", StringUtils.length(content), type);
-        String response = service.format(content, type);
-        LOG.info("Formatting Datenpakete in posted stream as {} finished in {}.", type, watch);
+        LOG.info("Formatting Datenpakete in posted stream of {} bytes as {}...", StringUtils.length(content), mimeType);
+        String response = service.format(content, mimeType);
+        LOG.info("Formatting Datenpakete in posted stream as {} finished in {}.", mimeType, watch);
         return response;
     }
 
@@ -193,13 +194,26 @@ public final class DatenpaketController {
         return response;
     }
 
+
+    private static MimeType toMimeType(String type, HttpServletRequest request) {
+        if (StringUtils.isBlank(type)) {
+            return toMimeType(request);
+        } else {
+            return toMimeType(type);
+        }
+    }
+
     private static MimeType toMimeType(HttpServletRequest request) {
-        String format = StringUtils.substringAfterLast(request.getServletPath(), ".").toLowerCase();
+        String format = StringUtils.substringAfterLast(request.getServletPath(), ".");
         if (StringUtils.isBlank(format)) {
             String[] accepted = request.getHeader("accept").split(",");
             format = accepted[0];
         }
-        switch (format) {
+        return toMimeType(format);
+    }
+
+    private static MimeType toMimeType(String format) {
+        switch (format.toLowerCase()) {
             case "html":
                 return MediaType.TEXT_HTML;
             case "xml":

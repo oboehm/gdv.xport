@@ -30,7 +30,7 @@
                     </div>
                 </form>
                 <!-- TODO: Text formattieren -->
-                <form id="inputText" action="#" th:action="@{/Datenpakete/format.html}" method="post">
+                <form id="inputText" action="#" th:action="@{/Datenpakete/format}" method="post">
                     <div class="form-group">
                         <label class="control-label">Text:</label>
                         <!-- TODO: hier muessen wir noch die Textarea als Body und nicht als Parameter schicken -->
@@ -39,6 +39,15 @@
 0001HelloWorld                         Test-Adressat                 1302201413022014845/666666                                                                                                                                                                3
 99990000000000845/66666600000000000000000000000000000+00000000000000+00000000000000+00000000000000+
 </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Format:</label>
+                        <select class="form-control" title="Format-Typ" name="type">
+                            <option>HTML</option>
+                            <option>XML</option>
+                            <option>CSV</option>
+                            <option>JSON</option>
+                        </select>
                     </div>
                     <div class="text-center">
                         <a class="btn btn-default" href="format.html" th:href="@{/validate}">Abbrechen</a>
