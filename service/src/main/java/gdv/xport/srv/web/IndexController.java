@@ -51,4 +51,14 @@ public class IndexController {
         return "validate";
     }
 
+    /**
+     * Mapping fuer Format-Seite
+     *
+     * @return "format"
+     */
+    @GetMapping("/format")
+    String format(){
+        return "format";
+    }
+
 }
