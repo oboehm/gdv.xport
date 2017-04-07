@@ -113,7 +113,13 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     }
 
     /**
-     * Hier schicken wir eine URI und erwarten als Antwort CSV-Datei.
+     * Hier schicken wir eine URI und erwarten als Antwort CSV-Datei. Aus
+     * folgenden Gruenden kann dieser Tes fehlschlagen:
+     * <ul>
+     *     <li>keine Internetverbindung,</li>
+     *     <li>die verwendete URI ist nicht (mehr) erreichbar,</li>
+     *     <li>Programmierfehler.</li>
+     * </ul>
      *
      * @throws IOException the io exception
      */

@@ -152,9 +152,8 @@ public final class DatenpaketController {
      * Format wie HTML, XML, JSON oder CSV.
      *
      * @param body    the body
-     * @param text    the text
+     * @return erzeugtes Format als Text
      * @param request der urspruengliche Request (zur Format-Bestimmung)
-     * @return the string
      */
     @PostMapping(
             value = "/format",
@@ -164,11 +163,33 @@ public final class DatenpaketController {
                                        @RequestParam(required = false) String text,
                                        HttpServletRequest request) {
         LogWatch watch = new LogWatch();
-        String content = (StringUtils.isBlank(text)) ? body : text;
-        LOG.info("Formatting Datenpakete in posted stream of {} bytes...", StringUtils.length(content));
         MimeType type = toMimeType(request);
+        String content = (StringUtils.isBlank(text)) ? body : text;
+        LOG.info("Formatting Datenpakete in posted stream of {} bytes as {}...", StringUtils.length(content), type);
         String response = service.format(content, type);
-        LOG.info("Formatting Datenpakete in posted stream finished in {}.", watch);
+        LOG.info("Formatting Datenpakete in posted stream as {} finished in {}.", type, watch);
+        return response;
+    }
+
+    /**
+     * Laedt die gewuenschte Datei und formattiert die darin enthaltenen
+     * Datenpakete. Da hierueber der Inhalt der Datei mit uebertragen wird,
+     * wird dieser Service ueber POST angesprochen.
+     *
+     * @param file    gewuenschte Datei
+     * @param request der urspruengliche Request (zur Format-Bestimmung)
+     * @return erzeugtes Format als Text
+     * @throws IOException the io exception
+     */
+    @PostMapping("/formatUploaded")
+    public @ResponseBody String format (@RequestParam("file") MultipartFile file,
+                                        HttpServletRequest request) throws IOException {
+        LogWatch watch = new LogWatch();
+        MimeType type = toMimeType(request);
+        LOG.info("Formatting Datenpakete in posted file '{}' as {}...", file, type);
+        String text = new String(file.getBytes());
+        String response = service.format(text, type);
+        LOG.info("Formatting Datenpakete in posted file '{}' as {} finished after {}.", file, type, watch);
         return response;
     }
 
