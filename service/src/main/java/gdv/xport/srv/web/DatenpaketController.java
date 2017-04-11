@@ -26,6 +26,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -138,13 +140,18 @@ public final class DatenpaketController {
                     paramType = "query"
             )
     })
-    public @ResponseBody String format(@RequestParam("uri") URI uri, HttpServletRequest request) throws IOException {
+    public @ResponseBody ResponseEntity<String> format(@RequestParam("uri") URI uri, HttpServletRequest request) throws IOException {
         LogWatch watch = new LogWatch();
         MimeType type = toMimeType(request);
         LOG.info("Formatting Datenpakete from {} as {}...", uri, type);
-        String response = service.format(uri, type);
+        ResponseEntity<String> response = format(uri, type);
         LOG.info("Formatting Datenpakete from {} as {} finished after {}.", uri, type, watch);
         return response;
+    }
+
+    private ResponseEntity<String> format(URI uri, MimeType mimeType) throws IOException {
+        String response = service.format(uri, mimeType);
+        return createResponseEntity(response, (MediaType) mimeType);
     }
 
     /**
@@ -159,7 +166,7 @@ public final class DatenpaketController {
             value = "/format",
             produces = { MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, "text/csv" }
     )
-    public @ResponseBody String format(@RequestBody(required = false) String body,
+    public @ResponseBody ResponseEntity<String> format(@RequestBody(required = false) String body,
                                        @RequestParam(required = false) String text,
                                        @RequestParam(required = false) String type,
                                        HttpServletRequest request) {
@@ -167,7 +174,7 @@ public final class DatenpaketController {
         MimeType mimeType = toMimeType(type, request);
         String content = (StringUtils.isBlank(text)) ? body : text;
         LOG.info("Formatting Datenpakete in posted stream of {} bytes as {}...", StringUtils.length(content), mimeType);
-        String response = service.format(content, mimeType);
+        ResponseEntity<String> response = format(content, mimeType);
         LOG.info("Formatting Datenpakete in posted stream as {} finished in {}.", mimeType, watch);
         return response;
     }
@@ -183,17 +190,27 @@ public final class DatenpaketController {
      * @throws IOException the io exception
      */
     @PostMapping("/formatUploaded")
-    public @ResponseBody String format (@RequestParam("file") MultipartFile file,
+    public @ResponseBody ResponseEntity<String> format (@RequestParam("file") MultipartFile file,
                                         HttpServletRequest request) throws IOException {
         LogWatch watch = new LogWatch();
         MimeType type = toMimeType(request);
         LOG.info("Formatting Datenpakete in posted file '{}' as {}...", file, type);
         String text = new String(file.getBytes());
-        String response = service.format(text, type);
+        ResponseEntity<String> response = format(text, type);
         LOG.info("Formatting Datenpakete in posted file '{}' as {} finished after {}.", file, type, watch);
         return response;
     }
 
+    private ResponseEntity<String> format(String content, MimeType mimeType) {
+        String response = service.format(content, mimeType);
+        return createResponseEntity(response, (MediaType) mimeType);
+    }
+
+    private static ResponseEntity<String> createResponseEntity(String response, MediaType mimeType) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.setContentType(mimeType);
+        return new ResponseEntity<>(response, responseHeaders, HttpStatus.CREATED);
+    }
 
     private static MimeType toMimeType(String type, HttpServletRequest request) {
         if (StringUtils.isBlank(type)) {
