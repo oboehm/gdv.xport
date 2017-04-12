@@ -140,11 +140,13 @@ public final class DatenpaketController {
                     paramType = "query"
             )
     })
-    public @ResponseBody ResponseEntity<String> format(@RequestParam("uri") URI uri, HttpServletRequest request) throws IOException {
+    public @ResponseBody ResponseEntity<String> format(@RequestParam("uri") URI uri,
+                                                       @RequestParam(required = false) String type,
+                                                       HttpServletRequest request) throws IOException {
         LogWatch watch = new LogWatch();
-        MimeType type = toMimeType(request);
+        MimeType mimeType = toMimeType(type, request);
         LOG.info("Formatting Datenpakete from {} as {}...", uri, type);
-        ResponseEntity<String> response = format(uri, type);
+        ResponseEntity<String> response = format(uri, mimeType);
         LOG.info("Formatting Datenpakete from {} as {} finished after {}.", uri, type, watch);
         return response;
     }
