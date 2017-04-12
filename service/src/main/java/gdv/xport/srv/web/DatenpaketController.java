@@ -192,13 +192,15 @@ public final class DatenpaketController {
      * @throws IOException the io exception
      */
     @PostMapping("/formatUploaded")
-    public @ResponseBody ResponseEntity<String> format (@RequestParam("file") MultipartFile file,
-                                        HttpServletRequest request) throws IOException {
+    public @ResponseBody ResponseEntity<String> format (
+            @RequestParam("file") MultipartFile file,
+            @RequestParam(required = false) String type,
+            HttpServletRequest request) throws IOException {
         LogWatch watch = new LogWatch();
-        MimeType type = toMimeType(request);
+        MimeType mimeType = toMimeType(type, request);
         LOG.info("Formatting Datenpakete in posted file '{}' as {}...", file, type);
         String text = new String(file.getBytes());
-        ResponseEntity<String> response = format(text, type);
+        ResponseEntity<String> response = format(text, mimeType);
         LOG.info("Formatting Datenpakete in posted file '{}' as {} finished after {}.", file, type, watch);
         return response;
     }
