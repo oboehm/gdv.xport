@@ -51,6 +51,7 @@ import java.util.List;
 public final class DatenpaketController {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketController.class);
+    private static final String TEXT_CSV = "text/comma-separated-values";
 
     @Autowired
     private DatenpaketService service;
@@ -166,7 +167,7 @@ public final class DatenpaketController {
      */
     @PostMapping(
             value = "/format",
-            produces = { MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, "text/csv" }
+            produces = { MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, TEXT_CSV }
     )
     public @ResponseBody ResponseEntity<String> format(@RequestBody(required = false) String body,
                                        @RequestParam(required = false) String text,
@@ -240,7 +241,7 @@ public final class DatenpaketController {
             case "xml":
                 return MediaType.TEXT_XML;
             case "csv":
-                return MediaType.valueOf("text/csv");
+                return MediaType.valueOf(TEXT_CSV);
             case "json":
                 return MediaType.APPLICATION_JSON;
             default:
