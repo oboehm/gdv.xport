@@ -1,1 +1,1 @@
-web:    java -jar service/target/gdv-xport-service-*.war
+web:    java -Dserver.port=$PORT $JAVA_OPTS -jar service/target/gdv-xport-service-*.war
