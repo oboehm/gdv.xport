@@ -1,0 +1,27 @@
+= Deployment
+
+Für das Deployment auf Heroku sind hautpsächlich die beiden Dateien
+
+  * apps.json
+  * Procfile
+
+zuständig.
+
+== Deployment auf Heroku
+
+Um den Branch _feature/spring-boot_ nach Heroku zu deployen, sind folgende
+Kommandos nötig:
+
+----
+heroku login
+git push heroku feature/spring-boot:master
+----
+
+Damit wird dieser Branch auf den Heroku-Master-Branch geschoben, da Heroku
+nur auf diesem Branch automatisch baut.
+
+== Anwendung stoppen
+
+----
+heroku ps:scale web=0
+----
