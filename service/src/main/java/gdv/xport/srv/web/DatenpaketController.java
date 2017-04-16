@@ -19,6 +19,7 @@ package gdv.xport.srv.web;
 
 import gdv.xport.srv.service.DatenpaketService;
 import gdv.xport.srv.service.DefaultDatenpaketService;
+import gdv.xport.util.URLReader;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -35,6 +36,7 @@ import org.springframework.util.MimeType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import patterntesting.runtime.log.LogWatch;
+import patterntesting.runtime.util.Converter;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -145,11 +147,11 @@ public final class DatenpaketController {
                                                        @RequestParam(required = false) String type,
                                                        HttpServletRequest request) throws IOException {
         LogWatch watch = new LogWatch();
-        MimeType mimeType = toMimeType(type, request);
-        LOG.info("Formatting Datenpakete from {} as {}...", uri, type);
-        ResponseEntity<String> response = format(uri, mimeType);
-        LOG.info("Formatting Datenpakete from {} as {} finished after {}.", uri, type, watch);
-        return response;
+        LOG.info("Reading Datenpakete from {}...", uri);
+        URLReader urlReader = new URLReader(uri.toURL());
+        String content = urlReader.read();
+        LOG.info("Reading Datenpakete from {} finished after {} with {} bytes.", uri, watch, content.length());
+        return format(content, type, request);
     }
 
     private ResponseEntity<String> format(URI uri, MimeType mimeType) throws IOException {
@@ -173,12 +175,17 @@ public final class DatenpaketController {
                                        @RequestParam(required = false) String text,
                                        @RequestParam(required = false) String type,
                                        HttpServletRequest request) {
+        String content = (StringUtils.isBlank(text)) ? body : text;
+        return format(content, type, request);
+    }
+
+    private ResponseEntity<String> format(String content, @RequestParam(required = false) String type, HttpServletRequest request) {
         LogWatch watch = new LogWatch();
         MimeType mimeType = toMimeType(type, request);
-        String content = (StringUtils.isBlank(text)) ? body : text;
-        LOG.info("Formatting Datenpakete in posted stream of {} bytes as {}...", StringUtils.length(content), mimeType);
+        LOG.info("Formatting Datenpakete of {} as {}...", Converter.getMemoryAsString(StringUtils.length(content)), mimeType);
+        LOG.debug("request={}, content={}", request, content);
         ResponseEntity<String> response = format(content, mimeType);
-        LOG.info("Formatting Datenpakete in posted stream as {} finished in {}.", mimeType, watch);
+        LOG.info("Formatting Datenpakete as {} finished in {}.", mimeType, watch);
         return response;
     }
 
