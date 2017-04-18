@@ -61,7 +61,8 @@ public final class DatenpaketController {
     /**
      * Validiert die uebergebene URI.
      *
-     * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @param uri     z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @param request the request
      * @return the response entity
      */
     @GetMapping("/validate")
@@ -75,12 +76,14 @@ public final class DatenpaketController {
                     paramType = "query"
             )
     })
-    public ResponseEntity<List<Model>> validate(@RequestParam("uri") URI uri) {
-        LogWatch watch = new LogWatch();
-        LOG.info("Validating Datenpakete in {}...", uri);
-        List<Model> violations = service.validate(uri);
-        LOG.info("Validating Datenpakete in {} finished with {} violation(s) in {}.", uri, violations.size(), watch);
-        return ResponseEntity.ok(violations);
+    public ResponseEntity<List<Model>> validate(@RequestParam("uri") URI uri, HttpServletRequest request) {
+        try {
+            String content = readFrom(uri);
+            return validate(content, request);
+        } catch (IOException ioe) {
+            LOG.warn("Cannot validate '{}':", uri, ioe);
+            return ResponseEntity.ok(DefaultDatenpaketService.asModelList(ioe));
+        }
     }
 
     /**
@@ -91,12 +94,19 @@ public final class DatenpaketController {
      * @return the response entity
      */
     @PostMapping("/validate")
-    public ResponseEntity<List<Model>> validate(@RequestBody(required = false) String body, @RequestParam(required = false) String text) {
-        LogWatch watch = new LogWatch();
+    public ResponseEntity<List<Model>> validate(@RequestBody(required = false) String body,
+                                                @RequestParam(required = false) String text,
+                                                HttpServletRequest request) {
         String content = (StringUtils.isBlank(text)) ? body : text;
-        LOG.info("Validating Datenpakete in posted stream of {} bytes...", StringUtils.length(content));
+        return validate(content, request);
+    }
+
+    private ResponseEntity<List<Model>> validate(String content, HttpServletRequest request) {
+        LogWatch watch = new LogWatch();
+        LOG.info("Validating Datenpakete of {}...", Converter.getMemoryAsString(StringUtils.length(content)));
+        LOG.debug("request={}, content={}", request, content);
         List<Model> violations = service.validate(content);
-        LOG.info("Validating Datenpakete in posted stream finished with {} violation(s) in {}.", violations.size(), watch);
+        LOG.info("Validating Datenpakete finished with {} violation(s) in {}.", violations.size(), watch);
         return ResponseEntity.ok(violations);
     }
 
@@ -146,12 +156,17 @@ public final class DatenpaketController {
     public @ResponseBody ResponseEntity<String> format(@RequestParam("uri") URI uri,
                                                        @RequestParam(required = false) String type,
                                                        HttpServletRequest request) throws IOException {
+        String content = readFrom(uri);
+        return format(content, type, request);
+    }
+
+    private static String readFrom(@RequestParam("uri") URI uri) throws IOException {
         LogWatch watch = new LogWatch();
         LOG.info("Reading Datenpakete from {}...", uri);
         URLReader urlReader = new URLReader(uri.toURL());
         String content = urlReader.read();
         LOG.info("Reading Datenpakete from {} finished after {} with {} bytes.", uri, watch, content.length());
-        return format(content, type, request);
+        return content;
     }
 
     private ResponseEntity<String> format(URI uri, MimeType mimeType) throws IOException {
@@ -179,16 +194,6 @@ public final class DatenpaketController {
         return format(content, type, request);
     }
 
-    private ResponseEntity<String> format(String content, @RequestParam(required = false) String type, HttpServletRequest request) {
-        LogWatch watch = new LogWatch();
-        MimeType mimeType = toMimeType(type, request);
-        LOG.info("Formatting Datenpakete of {} as {}...", Converter.getMemoryAsString(StringUtils.length(content)), mimeType);
-        LOG.debug("request={}, content={}", request, content);
-        ResponseEntity<String> response = format(content, mimeType);
-        LOG.info("Formatting Datenpakete as {} finished in {}.", mimeType, watch);
-        return response;
-    }
-
     /**
      * Laedt die gewuenschte Datei und formattiert die darin enthaltenen
      * Datenpakete. Da hierueber der Inhalt der Datei mit uebertragen wird,
@@ -205,11 +210,19 @@ public final class DatenpaketController {
             @RequestParam(required = false) String type,
             HttpServletRequest request) throws IOException {
         LogWatch watch = new LogWatch();
-        MimeType mimeType = toMimeType(type, request);
-        LOG.info("Formatting Datenpakete in posted file '{}' as {}...", file, type);
+        LOG.info("Reading Datenpakete from {}...", file);
         String text = new String(file.getBytes());
-        ResponseEntity<String> response = format(text, mimeType);
-        LOG.info("Formatting Datenpakete in posted file '{}' as {} finished after {}.", file, type, watch);
+        LOG.info("Reading Datenpakete from {} finished after {} with {} bytes.", file, watch, text.length());
+        return format(text, type, request);
+    }
+
+    private ResponseEntity<String> format(String content, @RequestParam(required = false) String type, HttpServletRequest request) {
+        LogWatch watch = new LogWatch();
+        MimeType mimeType = toMimeType(type, request);
+        LOG.info("Formatting Datenpakete of {} as {}...", Converter.getMemoryAsString(StringUtils.length(content)), mimeType);
+        LOG.debug("request={}, content={}", request, content);
+        ResponseEntity<String> response = format(content, mimeType);
+        LOG.info("Formatting Datenpakete as {} finished in {}.", mimeType, watch);
         return response;
     }
 
