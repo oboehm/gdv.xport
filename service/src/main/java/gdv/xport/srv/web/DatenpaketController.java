@@ -89,8 +89,9 @@ public final class DatenpaketController {
     /**
      * Validiert die eingelesenen Datenpakete.
      *
-     * @param body Text, der ueber die Leitung reinkommt.
-     * @param text alternativ kann der Text auch als Parameter reinkommen
+     * @param body    Text, der ueber die Leitung reinkommt.
+     * @param text    alternativ kann der Text auch als Parameter reinkommen
+     * @param request the request
      * @return the response entity
      */
     @PostMapping("/validate")
@@ -115,18 +116,15 @@ public final class DatenpaketController {
      * Datenpakete. Da hierueber der Inhalt der Datei mit uebertragen wird,
      * wird dieser Service ueber POST angesprochen.
      *
-     * @param file gewuenschte Datei
+     * @param file    gewuenschte Datei
+     * @param request the request
      * @return the response entity
      */
     @PostMapping("/validateUploaded")
-    public ResponseEntity<List<Model>> validate(@RequestParam("file") MultipartFile file) {
-        LogWatch watch = new LogWatch();
-        LOG.info("Validating Datenpakete in posted file '{}'...", file);
+    public ResponseEntity<List<Model>> validate(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
         try {
-            String text = new String(file.getBytes());
-            List<Model> violations = service.validate(text);
-            LOG.info("Validating Datenpakete in {} finished with {} violation(s) in {}.", file, violations.size(), watch);
-            return ResponseEntity.ok(violations);
+            String text = readFrom(file);
+            return validate(text, request);
         } catch (IOException ioe) {
             LOG.warn("Cannot upload and validate {}:", file.getOriginalFilename(), ioe);
             return ResponseEntity.badRequest().body(DefaultDatenpaketService.asModelList(ioe));
@@ -169,11 +167,6 @@ public final class DatenpaketController {
         return content;
     }
 
-    private ResponseEntity<String> format(URI uri, MimeType mimeType) throws IOException {
-        String response = service.format(uri, mimeType);
-        return createResponseEntity(response, (MediaType) mimeType);
-    }
-
     /**
      * Formattiert das Datenpaket, das als Text reinkommt, in das gewuenschte
      * Format wie HTML, XML, JSON oder CSV.
@@ -209,11 +202,16 @@ public final class DatenpaketController {
             @RequestParam("file") MultipartFile file,
             @RequestParam(required = false) String type,
             HttpServletRequest request) throws IOException {
+        String text = readFrom(file);
+        return format(text, type, request);
+    }
+
+    private String readFrom(@RequestParam("file") MultipartFile file) throws IOException {
         LogWatch watch = new LogWatch();
         LOG.info("Reading Datenpakete from {}...", file);
         String text = new String(file.getBytes());
         LOG.info("Reading Datenpakete from {} finished after {} with {} bytes.", file, watch, text.length());
-        return format(text, type, request);
+        return text;
     }
 
     private ResponseEntity<String> format(String content, @RequestParam(required = false) String type, HttpServletRequest request) {
