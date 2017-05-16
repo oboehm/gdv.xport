@@ -114,9 +114,25 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <executions>
           <execution>
+            <id>package</id>
             <goals>
               <goal>repackage</goal>
             </goals>
+          </execution>
+          <execution>
+            <!-- additional information for META-INF/build-info.properties -->
+            <id>build</id>
+            <goals>
+              <goal>build-info</goal>
+            </goals>
+            <configuration>
+              <additionalProperties>
+                <encoding.source>${project.build.sourceEncoding}</encoding.source>
+                <encoding.reporting>${project.build.sourceEncoding}</encoding.reporting>
+                <java.source>${java.version}</java.source>
+                <java.target>${java.version}</java.target>
+              </additionalProperties>
+            </configuration>
           </execution>
         </executions>
       </plugin>
