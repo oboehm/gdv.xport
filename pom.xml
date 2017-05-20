@@ -84,6 +84,13 @@
         </includes>
         <filtering>true</filtering>
       </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <excludes>
+          <exclude>META-INF/build-info.properties</exclude>
+        </excludes>
+        <filtering>false</filtering>
+      </resource>
     </resources>
 
     <!--

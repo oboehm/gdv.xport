@@ -86,6 +86,12 @@
       <artifactId>spring-boot-starter-log4j2</artifactId>
     </dependency>
 
+    <!-- others -->
+    <dependency>
+      <groupId>org.patterntesting</groupId>
+      <artifactId>patterntesting-rt</artifactId>
+    </dependency>
+
   </dependencies>
 
 
