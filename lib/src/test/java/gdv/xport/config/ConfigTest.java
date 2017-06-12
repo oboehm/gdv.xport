@@ -18,19 +18,25 @@
 
 package gdv.xport.config;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+
 /**
+ * Unit-Tests fuer {@link Config}-Klasse.
+ *
  * @author oliver
  * @since 08.10.2009
  * @version $Revision$
@@ -79,6 +85,18 @@ public class ConfigTest {
             assertEquals(expected, umlaute);
         } finally {
             istream.close();
+        }
+    }
+
+    /**
+     * Test-Methode fuer {@link Config#getConnection()}.
+     *
+     * @throws SQLException
+     */
+    @Test
+    public void testGetConnection() throws SQLException {
+        try (Connection connection = Config.getConnection()) {
+            assertThat(connection.isClosed(), is(Boolean.FALSE));
         }
     }
 

@@ -202,6 +202,10 @@
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+    </dependency>
 
 	<!-- PatternTesting -->
     <dependency>
@@ -216,15 +220,8 @@
     </dependency>
     <dependency>
       <groupId>org.patterntesting</groupId>
-      <artifactId>patterntesting-check-ct</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.patterntesting</groupId>
-      <artifactId>patterntesting-check-rt</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-concurrent</artifactId>
+      <scope>test</scope>
     </dependency>
 
     <!-- Object Validation Framework (OVal) -->

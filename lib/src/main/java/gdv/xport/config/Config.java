@@ -18,13 +18,16 @@
 
 package gdv.xport.config;
 
-import java.nio.charset.Charset;
-
+import gdv.xport.feld.VUNummer;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hsqldb.jdbc.JDBCDriver;
 
-import gdv.xport.feld.VUNummer;
+import java.nio.charset.Charset;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * Ueber diese Klasse koennen globale Werte (wie z.B. die VU-Nummer) konfiguriert
@@ -42,7 +45,7 @@ public final class Config {
     public static final Charset DEFAULT_ENCODING = Charset.forName("ISO-8859-1");
     /** Standard-Encoding als String. */
     public static final String DEFAULT_ENCODING_NAME = DEFAULT_ENCODING.toString();
-    /** Fals VUNummer nicht gesetzt ist, wird dies als Dummy eingesetzt. */
+    /** Falls VUNummer nicht gesetzt ist, wird dies als Dummy eingesetzt. */
     public static final String DUMMY_VU_NUMMER = "DUMMY";
     /** Property-Name fuer die VU-Nummer. */
     public static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
@@ -124,5 +127,16 @@ public final class Config {
         return StringUtils.isNotEmpty(eod);
     }
 
-}
+    /**
+     * Liefert eine DB-Connection fuer den JDBCAppender aus Log4J.
+     *
+     * @return eine DB-Connection
+     */
+    public static Connection getConnection() throws SQLException {
+        String jdbcURL = "jdbc:hsqldb:mem:testdb";
+        boolean ok = JDBCDriver.driverInstance.acceptsURL(jdbcURL);
+        LOG.debug("'{}' is {}accepted as JDBC URL.", jdbcURL, ok ? "" : "not ");
+        return DriverManager.getConnection(jdbcURL);
+    }
 
+}

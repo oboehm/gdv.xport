@@ -24,6 +24,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import patterntesting.runtime.monitor.ClasspathMonitor;
+import patterntesting.runtime.monitor.ResourcepathMonitor;
 
 import java.util.Arrays;
 
@@ -38,6 +39,7 @@ public class XPortApplication {
 
     static {
         ClasspathMonitor.registerAsMBean();
+        ResourcepathMonitor.getInstance().registerMeAsMBean();
     }
 
     /**

@@ -346,21 +346,16 @@
         <artifactId>log4j-core</artifactId>
         <version>2.8</version>
       </dependency>
+      <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>2.4.0</version>
+      </dependency>
 
       <!-- PatternTesting -->
       <dependency>
         <groupId>org.patterntesting</groupId>
         <artifactId>patterntesting-rt</artifactId>
-        <version>${patterntesting.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.patterntesting</groupId>
-        <artifactId>patterntesting-check-ct</artifactId>
-        <version>${patterntesting.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.patterntesting</groupId>
-        <artifactId>patterntesting-check-rt</artifactId>
         <version>${patterntesting.version}</version>
       </dependency>
       <dependency>
