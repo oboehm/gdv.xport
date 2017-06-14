@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
@@ -95,8 +96,10 @@ public class ConfigTest {
      */
     @Test
     public void testGetConnection() throws SQLException {
-        try (Connection connection = Config.getConnection()) {
+        try (Connection connection = Config.getConnection();
+                Statement stmt = connection.createStatement()) {
             assertThat(connection.isClosed(), is(Boolean.FALSE));
+            stmt.execute("SELECT * FROM logbook");
         }
     }
 

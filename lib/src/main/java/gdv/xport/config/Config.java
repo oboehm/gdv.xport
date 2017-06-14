@@ -28,6 +28,7 @@ import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Ueber diese Klasse koennen globale Werte (wie z.B. die VU-Nummer) konfiguriert
@@ -129,6 +130,8 @@ public final class Config {
 
     /**
      * Liefert eine DB-Connection fuer den JDBCAppender aus Log4J.
+     * Falls die Log-Tabelle, auf die in log4j2.xml verwiesen wird, nicht
+     * exisitert, wird sie samt Spalten angelegt.
      *
      * @return eine DB-Connection
      */
@@ -136,7 +139,12 @@ public final class Config {
         String jdbcURL = "jdbc:hsqldb:mem:testdb";
         boolean ok = JDBCDriver.driverInstance.acceptsURL(jdbcURL);
         LOG.debug("'{}' is {}accepted as JDBC URL.", jdbcURL, ok ? "" : "not ");
-        return DriverManager.getConnection(jdbcURL);
+        Connection connection = DriverManager.getConnection(jdbcURL);
+        try (Statement stmt = connection.createStatement()) {
+            stmt.execute("CREATE TABLE IF NOT EXISTS logbook (event_date TIMESTAMP, level CHAR(5), logger VARCHAR (255)," +
+                    " message VARCHAR (255), throwable VARCHAR (100))");
+        }
+        return connection;
     }
 
 }

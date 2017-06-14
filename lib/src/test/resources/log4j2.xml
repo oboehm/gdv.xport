@@ -4,14 +4,14 @@
     <Console name="CONSOLE" target="SYSTEM_OUT">
       <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
     </Console>
-    <JDBC name="DB" tableName="LOGGING.APPLICATION_LOG">
+    <JDBC name="DB" tableName="logbook">
       <ConnectionFactory class="gdv.xport.config.Config"
                          method="getConnection" />
-      <Column name="EVENT_DATE" isEventTimestamp="true" />
-      <Column name="LEVEL" pattern="%level" />
-      <Column name="LOGGER" pattern="%logger" />
-      <Column name="MESSAGE" pattern="%message" />
-      <Column name="THROWABLE" pattern="%ex{full}" />
+      <Column name="event_date" isEventTimestamp="true" />
+      <Column name="level" pattern="%level" />
+      <Column name="logger" pattern="%logger" />
+      <Column name="message" pattern="%message" />
+      <Column name="throwable" pattern="%ex{full}" />
     </JDBC>
   </Appenders>
   <Loggers>
