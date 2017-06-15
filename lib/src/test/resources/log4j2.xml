@@ -15,15 +15,14 @@
     </JDBC>
   </Appenders>
   <Loggers>
-    <Root level="error">
-      <AppenderRef ref="Console" />
-    </Root>
     <logger name="gdv.xport" level="INFO" />
+    <logger name="gdv.xport.config" level="DEBUG" />
     <logger name="gdv.xport.satz" level="INFO" />
     <logger name="gdv.xport.Datenpaket" level="INFO" />
     <logger name="gdv.xport.util" level="INFO" />
-    <Root level="ERROR">
+    <Root level="DEBUG" additivity="false">
       <AppenderRef ref="CONSOLE" />
+      <AppenderRef ref="DB" level="INFO" />
     </Root>
   </Loggers>
 </Configuration>
