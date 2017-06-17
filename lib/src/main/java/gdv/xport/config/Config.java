@@ -131,7 +131,7 @@ public final class Config {
     /**
      * Liefert eine DB-Connection fuer den JDBCAppender aus Log4J.
      * Falls die Log-Tabelle, auf die in log4j2.xml verwiesen wird, nicht
-     * exisitert, wird sie samt Spalten angelegt.
+     * existiert, wird sie samt Spalten angelegt.
      *
      * @return eine DB-Connection
      */
