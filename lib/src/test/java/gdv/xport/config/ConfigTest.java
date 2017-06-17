@@ -88,43 +88,4 @@ public class ConfigTest {
         }
     }
 
-    /**
-     * Test-Methode fuer {@link Config#getConnection()}.
-     *
-     * @throws SQLException the sql exception
-     */
-    @Test
-    public void testGetConnection() throws SQLException {
-        try (Connection connection = Config.getConnection();
-                Statement stmt = connection.createStatement()) {
-            assertThat(connection.isClosed(), is(Boolean.FALSE));
-            LOG.info("Got connection {}.", connection);
-        }
-    }
-
-    /**
-     * Hier wird getestet, ob tatsaechlich etwas in die logbook-Tabelle
-     * geschrieben wurde.
-     *
-     * @throws SQLException the sql exception
-     */
-    @Test
-    public void testReadLogbook() throws SQLException {
-        LOG.info("Reading logbook...");
-        int n = 0;
-        try (Connection connection = Config.getConnection();
-             Statement stmt = connection.createStatement()) {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM logbook");
-            while (rs.next()) {
-                n++;
-                Timestamp ts = rs.getTimestamp("event_date");
-                String level = rs.getString("level");
-                String msg = rs.getString("message");
-                LOG.debug("{}. entry: {} {} {}", n, ts, level, msg);
-            }
-        }
-        assertThat(n, greaterThan(Integer.valueOf(0)));
-        LOG.info("{} entries read from logbook.", n);
-    }
-
 }

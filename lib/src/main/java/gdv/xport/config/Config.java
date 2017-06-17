@@ -128,23 +128,4 @@ public final class Config {
         return StringUtils.isNotEmpty(eod);
     }
 
-    /**
-     * Liefert eine DB-Connection fuer den JDBCAppender aus Log4J.
-     * Falls die Log-Tabelle, auf die in log4j2.xml verwiesen wird, nicht
-     * existiert, wird sie samt Spalten angelegt.
-     *
-     * @return eine DB-Connection
-     */
-    public static Connection getConnection() throws SQLException {
-        String jdbcURL = "jdbc:hsqldb:mem:testdb";
-        boolean ok = JDBCDriver.driverInstance.acceptsURL(jdbcURL);
-        LOG.debug("'{}' is {}accepted as JDBC URL.", jdbcURL, ok ? "" : "not ");
-        Connection connection = DriverManager.getConnection(jdbcURL);
-        try (Statement stmt = connection.createStatement()) {
-            stmt.execute("CREATE TABLE IF NOT EXISTS logbook (event_date TIMESTAMP, level CHAR(5), logger VARCHAR (255)," +
-                    " message VARCHAR (255), throwable VARCHAR (100))");
-        }
-        return connection;
-    }
-
 }
