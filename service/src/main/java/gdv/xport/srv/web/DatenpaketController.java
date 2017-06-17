@@ -105,7 +105,7 @@ public final class DatenpaketController {
     private ResponseEntity<List<Model>> validate(String content, HttpServletRequest request) {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete of {}...", Converter.getMemoryAsString(StringUtils.length(content)));
-        LOG.debug("request={}, content={}", request, content);
+        LOG.debug(content);
         List<Model> violations = service.validate(content);
         LOG.info("Validating Datenpakete finished with {} violation(s) in {}.", violations.size(), watch);
         return ResponseEntity.ok(violations);
@@ -218,13 +218,13 @@ public final class DatenpaketController {
         LogWatch watch = new LogWatch();
         MimeType mimeType = toMimeType(type, request);
         LOG.info("Formatting Datenpakete of {} as {}...", Converter.getMemoryAsString(StringUtils.length(content)), mimeType);
-        LOG.debug("request={}, content={}", request, content);
         ResponseEntity<String> response = format(content, mimeType);
         LOG.info("Formatting Datenpakete as {} finished in {}.", mimeType, watch);
         return response;
     }
 
     private ResponseEntity<String> format(String content, MimeType mimeType) {
+        LOG.debug(content);
         String response = service.format(content, mimeType);
         return createResponseEntity(response, (MediaType) mimeType);
     }

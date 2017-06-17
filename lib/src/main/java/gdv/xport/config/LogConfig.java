@@ -89,7 +89,7 @@ public final class LogConfig {
         try (Connection connection = DriverManager.getConnection(jdbcURL);
                 Statement stmt = connection.createStatement()) {
             stmt.execute("CREATE TABLE IF NOT EXISTS logbook (event_date TIMESTAMP, level CHAR(5), logger VARCHAR (255)," +
-                    " message VARCHAR (65535), throwable VARCHAR (255))");
+                    " message VARCHAR (65535), throwable VARCHAR (65535))");
         } catch (SQLException sex) {
             throw new ConfigException("cannot create logbook", sex);
         }

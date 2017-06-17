@@ -17,12 +17,14 @@
  */
 package gdv.xport.srv.config;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Enumeration;
 
 /**
  * Der LogInterceptor protokolliert die ein- und ausgehenden Requests.
@@ -43,8 +45,42 @@ public final class LogInterceptor extends HandlerInterceptorAdapter {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        LOG.info("URI {} was called.", request.getRequestURI());
+        logAccess("<-", request, response);
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Headers:");
+            Enumeration<String> headerNames = request.getHeaderNames();
+            while (headerNames.hasMoreElements()) {
+                String name = headerNames.nextElement();
+                LOG.debug("\t{}=\"{}\"", name, request.getHeader(name));
+            }
+        }
         return true;
+    }
+
+    /**
+     * Hierueber wird der Status-Code der Anfrage protokolliert.
+     *
+     * @param request reinkommender Request
+     * @param response fuer den Status-Code
+     * @param handler uninteressant
+     * @param ex Exception im Fehlerfall
+     */
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+        if (ex == null) {
+            logAccess("->", request, response);
+        } else {
+            LOG.error("{} ** \"{} {} {}\":", request.getRemoteHost(), request.getMethod(), request.getRequestURI(),
+                    request.getProtocol(), ex);
+        }
+    }
+
+    private static void logAccess(String prefix, HttpServletRequest request, HttpServletResponse response) {
+        int status = response.getStatus();
+        Level level = (status < 400) ? Level.INFO : Level.WARN;
+        LOG.log(level, "{} {} \"{} {} {}\" {} {} \"{}\"", request.getRemoteHost(), prefix, request.getMethod(),
+                request.getRequestURI(), request.getProtocol(), status, request.getContentLength(),
+                request.getHeader("user-agent"));
     }
 
 }

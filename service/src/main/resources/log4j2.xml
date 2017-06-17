@@ -27,7 +27,10 @@
   <Loggers>
     <logger name="gdv.xport" level="INFO" />
     <logger name="gdv.xport.satz" level="WARN" />
-    <logger name="gdv.xport.srv.web.DatenpaketController" level="DEBUG">
+    <logger name="gdv.xport.srv.config.LogInterceptor" level="INFO" >
+      <AppenderRef ref="DB" level="INFO" />
+    </logger>
+    <logger name="gdv.xport.srv.web.DatenpaketController" level="DEBUG" >
       <AppenderRef ref="DB" level="DEBUG" />
     </logger>
     <logger name="org.apache" level="INFO" />
