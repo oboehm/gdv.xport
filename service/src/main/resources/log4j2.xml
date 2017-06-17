@@ -13,13 +13,22 @@
         <ThresholdFilter level="INFO" onMatch="DENY" onMismatch="NEUTRAL" />
       </Filters>
     </Console>
+    <JDBC name="DB" tableName="logbook">
+      <ConnectionFactory class="gdv.xport.config.LogConfig"
+                         method="getConnection" />
+      <Column name="event_date" isEventTimestamp="true" />
+      <Column name="level" pattern="%level" />
+      <Column name="logger" pattern="%logger" />
+      <Column name="message" pattern="%message" />
+      <Column name="throwable" pattern="%ex{full}" />
+    </JDBC>
   </Appenders>
 
   <Loggers>
     <logger name="gdv.xport" level="INFO" />
     <logger name="gdv.xport.satz" level="WARN" />
     <logger name="gdv.xport.srv.web.DatenpaketController" level="DEBUG">
-      <AppenderRef ref="DEBUGGER" level="DEBUG" />
+      <AppenderRef ref="DB" level="DEBUG" />
     </logger>
     <logger name="org.apache" level="INFO" />
     <logger name="org.springframework" level="INFO" />

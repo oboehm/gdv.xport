@@ -49,10 +49,11 @@ public final class LogConfig {
      * aber normalerweise wird due URI nur einmal am Anfang eingestellt und
      * damit einmal instanziiert.
      *
-     * @param jdbcURI z.B. "jdbc:hsqldb:mem:logdb"
+     * @param uri z.B. "jdbc:hsqldb:mem:logdb"
      */
-    public LogConfig(String jdbcURI) {
-        this.jdbcURI = URI.create(jdbcURI);
+    public LogConfig(String uri) {
+        this.jdbcURI = URI.create(uri);
+        createLogTable(uri);
         instance = this;
     }
 
@@ -81,12 +82,22 @@ public final class LogConfig {
         String jdbcURL = instance.getJdbcURI().toString();
         boolean ok = JDBCDriver.driverInstance.acceptsURL(jdbcURL);
         LOG.debug("'{}' is {}accepted as JDBC URL.", jdbcURL, ok ? "" : "not ");
-        Connection connection = DriverManager.getConnection(jdbcURL);
-        try (Statement stmt = connection.createStatement()) {
+        return DriverManager.getConnection(jdbcURL);
+    }
+
+    private static void createLogTable(String jdbcURL) {
+        try (Connection connection = DriverManager.getConnection(jdbcURL);
+                Statement stmt = connection.createStatement()) {
             stmt.execute("CREATE TABLE IF NOT EXISTS logbook (event_date TIMESTAMP, level CHAR(5), logger VARCHAR (255)," +
                     " message VARCHAR (255), throwable VARCHAR (100))");
+        } catch (SQLException sex) {
+            throw new ConfigException("cannot create logbook", sex);
         }
-        return connection;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + "(" + jdbcURI + ")";
     }
 
 }

@@ -18,11 +18,14 @@
 
 package gdv.xport.srv;
 
+import gdv.xport.config.LogConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.core.env.Environment;
 import patterntesting.runtime.monitor.ClasspathMonitor;
 import patterntesting.runtime.monitor.ResourcepathMonitor;
 
@@ -37,9 +40,21 @@ public class XPortApplication {
 
     private static final Logger LOG = LogManager.getLogger(XPortApplication.class);
 
+    @Value("${logging.url}")
+    private LogConfig logConfig;
+
     static {
         ClasspathMonitor.registerAsMBean();
         ResourcepathMonitor.getInstance().registerMeAsMBean();
+    }
+
+    /**
+     * Liefert die Logging-Konfiguration.
+     *
+     * @return Logging-Konfiguration
+     */
+    public LogConfig getLogConfig() {
+        return this.logConfig;
     }
 
     /**

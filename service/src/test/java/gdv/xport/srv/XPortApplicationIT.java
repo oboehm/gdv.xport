@@ -18,6 +18,7 @@
 
 package gdv.xport.srv;
 
+import gdv.xport.config.LogConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -29,6 +30,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.Matchers.isEmptyOrNullString;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 
@@ -49,6 +51,9 @@ public class XPortApplicationIT {
     @Autowired
     private Environment env;
 
+    @Autowired
+    private XPortApplication application;
+
     /**
      * Hier ueberpruefen wir die Spring-Konfiguration aus 'application.yml'.
      */
@@ -57,6 +62,16 @@ public class XPortApplicationIT {
         String applName = env.getProperty("application.name");
         LOG.info("applName = \"{}\".", applName);
         assertThat(applName, not(isEmptyOrNullString()));
+    }
+
+    /**
+     * Hier ueberpruefen wir die Logging-Konfiguration.
+     */
+    @Test
+    public void testGetLogConfig() {
+        LogConfig config = application.getLogConfig();
+        assertThat(config, notNullValue());
+        LOG.info("config = {}", config);
     }
 
 }
