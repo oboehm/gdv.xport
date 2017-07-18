@@ -17,14 +17,12 @@
  */
 package gdv.xport.srv.config;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.apache.logging.log4j.*;
+import org.springframework.util.*;
+import org.springframework.web.servlet.handler.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Enumeration;
+import javax.servlet.http.*;
+import java.util.*;
 
 /**
  * Der LogInterceptor protokolliert die ein- und ausgehenden Requests.
@@ -70,8 +68,8 @@ public final class LogInterceptor extends HandlerInterceptorAdapter {
         if (ex == null) {
             logAccess("->", request, response);
         } else {
-            LOG.error("{} ** \"{} {} {}\":", request.getRemoteHost(), request.getMethod(), request.getRequestURI(),
-                    request.getProtocol(), ex);
+            LOG.error("{} ** \"{} {} {}\":", request.getRemoteHost(), request.getMethod(),
+                    getRequestURIwithParams(request), request.getProtocol(), ex);
         }
     }
 
@@ -79,8 +77,31 @@ public final class LogInterceptor extends HandlerInterceptorAdapter {
         int status = response.getStatus();
         Level level = (status < 400) ? Level.INFO : Level.WARN;
         LOG.log(level, "{} {} \"{} {} {}\" {} {} \"{}\"", request.getRemoteHost(), prefix, request.getMethod(),
-                request.getRequestURI(), request.getProtocol(), status, request.getContentLength(),
+                getRequestURIwithParams(request), request.getProtocol(), status, request.getContentLength(),
                 request.getHeader("user-agent"));
+    }
+
+    private static String getRequestURIwithParams(HttpServletRequest request) {
+        String requestURI = request.getRequestURI();
+        if ("GET".equalsIgnoreCase(request.getMethod())) {
+            requestURI += toParameterString(request.getParameterMap());
+        }
+        return requestURI;
+    }
+
+    private static String toParameterString(Map<String, String[]> parameterMap) {
+        if (parameterMap.isEmpty()) {
+            return "";
+        }
+        StringBuilder buf = new StringBuilder();
+        for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
+            buf.append('&');
+            buf.append(entry.getKey());
+            buf.append('=');
+            buf.append(StringUtils.arrayToCommaDelimitedString(entry.getValue()));
+        }
+        buf.setCharAt(0, '?');
+        return buf.toString();
     }
 
 }

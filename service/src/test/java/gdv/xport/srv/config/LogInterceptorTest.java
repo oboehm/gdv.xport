@@ -17,6 +17,7 @@
  */
 package gdv.xport.srv.config;
 
+import org.apache.logging.log4j.*;
 import org.junit.*;
 import org.springframework.mock.web.*;
 
@@ -27,6 +28,7 @@ import org.springframework.mock.web.*;
  */
 public final class LogInterceptorTest {
 
+    private static final Logger LOG = LogManager.getLogger(LogInterceptorTest.class);
     private final LogInterceptor interceptor = new LogInterceptor();
     private final MockHttpServletRequest request = new MockHttpServletRequest();
     private final MockHttpServletResponse response = new MockHttpServletResponse();
@@ -38,6 +40,7 @@ public final class LogInterceptorTest {
     public void setUpRequest() {
         request.setRequestURI("/gdv/xport");
         request.setMethod("GET");
+        request.addParameter("hello", "world");
     }
 
     /**
@@ -62,6 +65,7 @@ public final class LogInterceptorTest {
      */
     @Test
     public void testAfterCompletionWithException() {
+        LOG.info("Simulating an exception for testing...");
         interceptor.afterCompletion(request, response, "testAfterCompletion", new IllegalStateException("bumm"));
     }
 
