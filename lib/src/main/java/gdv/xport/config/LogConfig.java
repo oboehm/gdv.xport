@@ -17,11 +17,10 @@
  */
 package gdv.xport.config;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.hsqldb.jdbc.JDBCDriver;
+import org.apache.logging.log4j.*;
+import org.hsqldb.jdbc.*;
 
-import java.net.URI;
+import java.net.*;
 import java.sql.*;
 
 /**
@@ -55,6 +54,7 @@ public final class LogConfig {
         this.jdbcURI = URI.create(uri);
         createLogTable(uri);
         instance = this;
+        LOG.debug("LogConfig is created with '{}'.", uri);
     }
 
     /**
@@ -88,8 +88,10 @@ public final class LogConfig {
     private static void createLogTable(String jdbcURL) {
         try (Connection connection = DriverManager.getConnection(jdbcURL);
                 Statement stmt = connection.createStatement()) {
-            stmt.execute("CREATE TABLE IF NOT EXISTS logbook (event_date TIMESTAMP, level CHAR(5), logger VARCHAR (255)," +
-                    " message VARCHAR (65535), throwable VARCHAR (65535))");
+            stmt.execute(
+                    "CREATE TABLE IF NOT EXISTS logbook (event_date TIMESTAMP, level CHAR(5), logger VARCHAR (255), " +
+                            "message VARCHAR (65535), throwable VARCHAR (65535))");
+            LOG.debug("Table 'logbook' is created (update count = {}).", stmt.getUpdateCount());
         } catch (SQLException sex) {
             throw new ConfigException("cannot create logbook", sex);
         }

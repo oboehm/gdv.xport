@@ -33,6 +33,7 @@ import static org.junit.Assert.*;
 public final class LogConfigTest {
 
     private static final Logger LOG = LogManager.getLogger(LogConfigTest.class);
+    private final LogConfig logConfig = new LogConfig();
 
     /**
      * Test-Methode fuer {@link LogConfig#getConnection()}.
@@ -46,6 +47,18 @@ public final class LogConfigTest {
             assertThat(connection.isClosed(), is(Boolean.FALSE));
             LOG.info("Got connection {}.", connection);
         }
+    }
+
+    /**
+     * Momentan dient der Test nur dazu, um das Verhalten der Anwendung
+     * herauszufinden, wenn eine Postgres-DB im Spiel ist. Waehrend dieser
+     * Phase wird dieser Test auch fehlschlagen.
+     *
+     * @throws SQLException, wenn die Verbindungsdaten nicht stimmen
+     */
+    @Test
+    public void getGetPostgresConnection() throws SQLException {
+        LogConfig psqlConfig = new LogConfig("jdbc:postgresql://localhost/logbook?user=logger&password=geheim");
     }
 
     /**
