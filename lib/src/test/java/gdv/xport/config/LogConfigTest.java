@@ -57,6 +57,7 @@ public final class LogConfigTest {
      * @throws SQLException, wenn die Verbindungsdaten nicht stimmen
      */
     @Test
+    @Ignore
     public void getGetPostgresConnection() throws SQLException {
         LogConfig psqlConfig = new LogConfig("jdbc:postgresql://localhost/logbook?user=logger&password=geheim");
     }
