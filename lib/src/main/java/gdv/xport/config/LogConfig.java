@@ -82,7 +82,20 @@ public final class LogConfig {
         String jdbcURL = instance.getJdbcURI().toString();
         boolean ok = JDBCDriver.driverInstance.acceptsURL(jdbcURL);
         LOG.debug("'{}' is {}accepted as JDBC URL.", jdbcURL, ok ? "" : "not ");
-        return DriverManager.getConnection(jdbcURL);
+        Connection connection = DriverManager.getConnection(jdbcURL);
+        connection.setAutoCommit(true);
+        return connection;
+    }
+
+    private static void closeConnetion() {
+        try {
+            Connection connection = getConnection();
+            connection.commit();
+            connection.close();
+        } catch (SQLException sex) {
+            LOG.info("Cannot close connection ({}).", sex.getMessage());
+            LOG.debug("Details:", sex);
+        }
     }
 
     private static void createLogTable(String jdbcURL) {

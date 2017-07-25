@@ -59,6 +59,8 @@ public final class LogConfigTest {
     @Test
     public void getGetPostgresConnection() throws SQLException {
         LogConfig psqlConfig = new LogConfig("jdbc:postgresql://localhost/logbook?user=logger&password=geheim");
+        LOG.info("{} was successful craeted.", psqlConfig);
+        readLogbook();
     }
 
     /**
@@ -70,6 +72,10 @@ public final class LogConfigTest {
     @Test
     public void testReadLogbook() throws SQLException {
         LOG.info("Reading logbook...");
+        readLogbook();
+    }
+
+    private void readLogbook() throws SQLException {
         int n = 0;
         try (Connection connection = LogConfig.getConnection();
              Statement stmt = connection.createStatement()) {

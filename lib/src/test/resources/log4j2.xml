@@ -8,10 +8,10 @@
       <ConnectionFactory class="gdv.xport.config.LogConfig"
                          method="getConnection" />
       <Column name="event_date" isEventTimestamp="true" />
-      <Column name="level" pattern="%level" />
-      <Column name="logger" pattern="%logger" />
-      <Column name="message" pattern="%message" />
-      <Column name="throwable" pattern="%ex{full}" />
+      <Column name="level" pattern="%level" isUnicode="false" />
+      <Column name="logger" pattern="%logger" isUnicode="false" />
+      <Column name="message" pattern="%message" isUnicode="false" />
+      <Column name="throwable" pattern="%ex{full}" isUnicode="false" />
     </JDBC>
   </Appenders>
   <Loggers>
