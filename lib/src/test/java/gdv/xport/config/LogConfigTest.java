@@ -19,6 +19,7 @@ package gdv.xport.config;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.sql.*;
@@ -57,6 +58,7 @@ public final class LogConfigTest {
      * @throws SQLException, wenn die Verbindungsdaten nicht stimmen
      */
     @Test
+    @Ignore
     public void getGetPostgresConnection() throws SQLException {
         LogConfig psqlConfig = new LogConfig("jdbc:postgresql://localhost/logbook?user=logger&password=geheim");
         LOG.info("{} was successful craeted.", psqlConfig);
