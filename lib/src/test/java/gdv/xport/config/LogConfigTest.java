@@ -35,7 +35,6 @@ import static org.junit.Assert.*;
 public final class LogConfigTest {
 
     private static final Logger LOG = LogManager.getLogger(LogConfigTest.class);
-    private final LogConfig logConfig = new LogConfig();
 
     /**
      * Test-Methode fuer {@link LogConfig#getConnection()}.
@@ -78,6 +77,20 @@ public final class LogConfigTest {
         }
         assertThat(n, greaterThan(0));
         LOG.info("{} entries read from logbook.", n);
+    }
+
+    /**
+     * Hier raeumen wir nach dem Test die Test-Log-Eintraege wieder auf.
+     *
+     * @throws SQLException bei JDBC-Problemen
+     */
+    @AfterClass
+    public static void cleanLogBook() throws SQLException {
+        try (Connection connection = LogConfig.getConnection();
+                Statement stmt = connection.createStatement()) {
+            int n = stmt.executeUpdate("DELETE FROM logbook WHERE logger like 'gdv.xport.config.LogConfig%'");
+            LOG.info("{} entries were removed from logbook.", n);
+        }
     }
 
 }
