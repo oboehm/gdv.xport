@@ -18,7 +18,6 @@
 package gdv.xport.config;
 
 import org.apache.logging.log4j.*;
-import org.hsqldb.jdbc.*;
 
 import java.net.*;
 import java.sql.*;
@@ -37,7 +36,7 @@ public final class LogConfig {
      * Als Default-Configuration wird eine Inmemory-DB verwendet.   1
      */
     public LogConfig() {
-        this("jdbc:hsqldb:mem:logdb");
+        this(readJdbcURI());
     }
 
     /**
@@ -55,6 +54,15 @@ public final class LogConfig {
         createLogTable(uri);
         instance = this;
         LOG.debug("LogConfig is created with '{}'.", uri);
+    }
+
+    private static String readJdbcURI() {
+        String dbURL = System.getenv("DATABASE_URL");
+        if (dbURL != null) {
+            LOG.info("Read DATABASE_URL='{}' from environment.", dbURL);
+            return dbURL;
+        }
+        return System.getProperty("DATABASE_URL","jdbc:hsqldb:mem:logdb");
     }
 
     /**
@@ -80,8 +88,6 @@ public final class LogConfig {
      */
     public static Connection getConnection() throws SQLException {
         String jdbcURL = instance.getJdbcURI().toString();
-        boolean ok = JDBCDriver.driverInstance.acceptsURL(jdbcURL);
-        LOG.debug("'{}' is {}accepted as JDBC URL.", jdbcURL, ok ? "" : "not ");
         Connection connection = DriverManager.getConnection(jdbcURL);
         connection.setAutoCommit(true);
         return connection;

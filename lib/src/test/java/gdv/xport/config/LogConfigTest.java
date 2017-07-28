@@ -17,19 +17,20 @@
  */
 package gdv.xport.config;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.apache.logging.log4j.*;
+import org.junit.*;
 
 import java.sql.*;
 
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 /**
- * Unit-Tests fuer {@link LogConfig}.
+ * Unit-Tests fuer {@link LogConfig}. Standardmaessig wird eine In-Memory-DB
+ * (HSQL) zum Testen verwendet. Moechte man z.B. eine MySQL oder PostgreSQL zum
+ * Testen verwenden, kann man dies ueber die Environment-Variable DATABASE_URL
+ * (DATABASE_URL=jdbc:postgresql://localhost/logbook?user=logger&password=geheim)
+ * einstellen.
  */
 public final class LogConfigTest {
 
@@ -48,21 +49,6 @@ public final class LogConfigTest {
             assertThat(connection.isClosed(), is(Boolean.FALSE));
             LOG.info("Got connection {}.", connection);
         }
-    }
-
-    /**
-     * Momentan dient der Test nur dazu, um das Verhalten der Anwendung
-     * herauszufinden, wenn eine Postgres-DB im Spiel ist. Waehrend dieser
-     * Phase wird dieser Test auch fehlschlagen.
-     *
-     * @throws SQLException, wenn die Verbindungsdaten nicht stimmen
-     */
-    @Test
-    @Ignore
-    public void getGetPostgresConnection() throws SQLException {
-        LogConfig psqlConfig = new LogConfig("jdbc:postgresql://localhost/logbook?user=logger&password=geheim");
-        LOG.info("{} was successful craeted.", psqlConfig);
-        readLogbook();
     }
 
     /**
