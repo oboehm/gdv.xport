@@ -30,13 +30,13 @@ public final class LogConfig {
 
     private static final Logger LOG = LogManager.getLogger(LogConfig.class);
     private static LogConfig instance = new LogConfig();
-    private final URI jdbcURI;
+    private final URI dbURI;
 
     /**
      * Als Default-Configuration wird eine Inmemory-DB verwendet.   1
      */
     public LogConfig() {
-        this(readJdbcURI());
+        this(readDatabaseURL());
     }
 
     /**
@@ -49,20 +49,20 @@ public final class LogConfig {
      *
      * @param uri z.B. "jdbc:hsqldb:mem:logdb"
      */
-    public LogConfig(String uri) {
-        this.jdbcURI = URI.create(uri);
+    public LogConfig(URI uri) {
+        this.dbURI = uri;
         createLogTable(uri);
         instance = this;
         LOG.debug("LogConfig is created with '{}'.", uri);
     }
 
-    private static String readJdbcURI() {
+    private static URI readDatabaseURL() {
         String dbURL = System.getenv("DATABASE_URL");
         if (dbURL != null) {
             LOG.info("Read DATABASE_URL='{}' from environment.", dbURL);
-            return dbURL;
+            return URI.create(dbURL);
         }
-        return System.getProperty("DATABASE_URL","jdbc:hsqldb:mem:logdb");
+        return URI.create(System.getProperty("DATABASE_URL","jdbc:hsqldb:mem:logdb"));
     }
 
     /**
@@ -70,8 +70,8 @@ public final class LogConfig {
      *
      * @return z.B. "jdbc:hsqldb:mem:logdb"
      */
-    public URI getJdbcURI() {
-        return this.jdbcURI;
+    public URI getDbURI() {
+        return this.dbURI;
     }
 
     /**
@@ -87,10 +87,25 @@ public final class LogConfig {
      * @return eine DB-Connection
      */
     public static Connection getConnection() throws SQLException {
-        String jdbcURL = instance.getJdbcURI().toString();
-        Connection connection = DriverManager.getConnection(jdbcURL);
+        Connection connection = getConnection(instance.getDbURI());
         connection.setAutoCommit(true);
         return connection;
+    }
+
+    private static Connection getConnection(URI uri) throws SQLException {
+        String scheme = uri.getScheme();
+        if (uri.getScheme().startsWith("jdbc")) {
+            return DriverManager.getConnection(uri.toString());
+        }
+        String[] userinfos = uri.getUserInfo().split(":");
+        String path = uri.getPath();
+        if (scheme.startsWith("postgres")) {
+            scheme = "postgresql";
+            path += "?sslmode=require";
+        }
+        String dbUrl = "jdbc:" + scheme + "://" + uri.getHost() + ':' + uri.getPort() + path;
+        LOG.debug("Connect to '{}'.", dbUrl);
+        return DriverManager.getConnection(dbUrl, userinfos[0], userinfos[1]);
     }
 
     private static void closeConnetion() {
@@ -104,8 +119,8 @@ public final class LogConfig {
         }
     }
 
-    private static void createLogTable(String jdbcURL) {
-        try (Connection connection = DriverManager.getConnection(jdbcURL);
+    private static void createLogTable(URI jdbcURL) {
+        try (Connection connection = getConnection(jdbcURL);
                 Statement stmt = connection.createStatement()) {
             stmt.execute(
                     "CREATE TABLE IF NOT EXISTS logbook (event_date TIMESTAMP, level CHAR(5), logger VARCHAR (255), " +
@@ -118,7 +133,7 @@ public final class LogConfig {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + "(" + jdbcURI + ")";
+        return this.getClass().getSimpleName() + "(" + dbURI + ")";
     }
 
 }
