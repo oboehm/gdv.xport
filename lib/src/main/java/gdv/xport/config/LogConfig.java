@@ -40,6 +40,15 @@ public final class LogConfig {
     }
 
     /**
+     * Dieser Konstruktor wird von Spring fuer's Autowirering benoetigt.
+     *
+     * @param uri JDBC-URI
+     */
+    public LogConfig(String uri) {
+        this(URI.create(uri));
+    }
+
+    /**
      * Hierueber wird die URL fuer die Datenbank eingestellt, auf die dann
      * der JDBCAppender aus Log4J2 losgelassen wird. Gleichzeitig wird diese
      * Instanz fuer {@link #getConnection()} gespeichert. Dies ist zwar etwas
