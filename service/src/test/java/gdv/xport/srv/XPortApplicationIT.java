@@ -18,20 +18,16 @@
 
 package gdv.xport.srv;
 
-import gdv.xport.config.LogConfig;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.env.Environment;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.apache.logging.log4j.*;
+import org.junit.*;
+import org.junit.runner.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.test.context.*;
+import org.springframework.core.env.*;
+import org.springframework.test.context.junit4.*;
 
-import static org.hamcrest.Matchers.isEmptyOrNullString;
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 
 /**
@@ -62,16 +58,6 @@ public class XPortApplicationIT {
         String applName = env.getProperty("application.name");
         LOG.info("applName = \"{}\".", applName);
         assertThat(applName, not(isEmptyOrNullString()));
-    }
-
-    /**
-     * Hier ueberpruefen wir die Logging-Konfiguration.
-     */
-    @Test
-    public void testGetLogConfig() {
-        LogConfig config = application.getLogConfig();
-        assertThat(config, notNullValue());
-        LOG.info("config = {}", config);
     }
 
 }
