@@ -22,9 +22,14 @@ import org.apache.logging.log4j.*;
 import org.junit.*;
 import org.junit.runner.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.context.embedded.*;
 import org.springframework.boot.test.context.*;
+import org.springframework.boot.test.web.client.*;
 import org.springframework.core.env.*;
+import org.springframework.http.*;
 import org.springframework.test.context.junit4.*;
+
+import java.net.*;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -39,7 +44,7 @@ import static org.junit.Assert.*;
  * @author oboehm
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = XPortApplication.class)
+@SpringBootTest(classes = XPortApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class XPortApplicationIT {
 
     private static final Logger LOG = LogManager.getLogger(XPortApplicationIT.class);
@@ -50,6 +55,17 @@ public class XPortApplicationIT {
     @Autowired
     private XPortApplication application;
 
+    @LocalServerPort
+    private int port;
+
+    @Autowired private TestRestTemplate template;
+    private URI converterURI;
+
+    @Before
+    public void setUpBaseURI() {
+        converterURI = URI.create("http://localhost:" + port);
+    }
+
     /**
      * Hier ueberpruefen wir die Spring-Konfiguration aus 'application.yml'.
      */
@@ -58,6 +74,18 @@ public class XPortApplicationIT {
         String applName = env.getProperty("application.name");
         LOG.info("applName = \"{}\".", applName);
         assertThat(applName, not(isEmptyOrNullString()));
+    }
+
+    /**
+     * Hier ueberprufen wir den Info-Endpoint des Actuators, der einige
+     * Informationen zur Anwendung (wie die Version) liefern sollte.
+     */
+    @Test
+    public void testInfo() {
+        ResponseEntity<String> response = template.getForEntity(converterURI + "/info.json", String.class);
+        String info = response.getBody();
+        LOG.info("info = \"{}\"", info);
+        assertThat(info, containsString("build"));
     }
 
 }
