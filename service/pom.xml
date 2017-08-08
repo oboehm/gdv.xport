@@ -41,10 +41,6 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-log4j2</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
 
@@ -138,6 +134,8 @@
             <phase>generate-resources</phase>
             <configuration>
               <additionalProperties>
+                <application.title>GDV.Xport</application.title>
+                <application.version>${project.version}</application.version>
                 <java.source>${java.version}</java.source>
                 <java.target>${java.version}</java.target>
               </additionalProperties>

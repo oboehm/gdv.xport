@@ -3,6 +3,10 @@
 
   <Appenders>
     <Console name="CONSOLE" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss} %highlight{%-5p} [%-10.10t] %-30.30C{4} - %msg%n" />
+      <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+    </Console>
+    <Console name="COLOR_CONSOLE" target="SYSTEM_OUT">
       <PatternLayout pattern="%d{HH:mm:ss} %highlight{%-5p} %style{[%-10.10t]}{white} %cyan{%-30.30C{4}} - %msg%n%highlight{%throwable}" />
       <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
     </Console>
