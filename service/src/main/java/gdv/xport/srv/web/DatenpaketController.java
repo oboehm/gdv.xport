@@ -17,31 +17,24 @@
  */
 package gdv.xport.srv.web;
 
-import gdv.xport.srv.service.DatenpaketService;
-import gdv.xport.srv.service.DefaultDatenpaketService;
-import gdv.xport.util.URLReader;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import gdv.xport.srv.service.*;
+import gdv.xport.util.*;
+import io.swagger.annotations.*;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.util.MimeType;
+import org.apache.logging.log4j.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.*;
+import org.springframework.ui.*;
+import org.springframework.util.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import patterntesting.runtime.log.LogWatch;
-import patterntesting.runtime.util.Converter;
+import org.springframework.web.multipart.*;
+import patterntesting.runtime.log.*;
+import patterntesting.runtime.util.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.net.URI;
-import java.util.List;
+import javax.servlet.http.*;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 /**
  * Dieser Controller repraesentiert das REST-Interface zur Datenpaket-Klasse.
@@ -266,6 +259,22 @@ public final class DatenpaketController {
                 LOG.info("Will use '{}' as MimeType for unknown format parameter '{}'.", MediaType.TEXT_PLAIN, format);
                 return MediaType.TEXT_PLAIN;
         }
+    }
+    /**
+     * Falsche Parameter oder falscher Input wurde angegeben - bad request.
+     *
+     * @param ex Ursache
+     * @return Antwort als PDF
+     */
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorDetail> handleException(IllegalArgumentException ex) {
+        return errorResponse(HttpStatus.BAD_REQUEST, "Input ist korrupt", ex);
+    }
+
+    private ResponseEntity<ErrorDetail> errorResponse(HttpStatus status, String text, Exception ex) {
+        LOG.error("{}:", text, ex);
+        ErrorDetail errDetail = new ErrorDetail(text, ex);
+        return new ResponseEntity<>(errDetail, status);
     }
 
 }

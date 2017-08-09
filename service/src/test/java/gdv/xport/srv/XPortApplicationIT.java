@@ -88,4 +88,16 @@ public class XPortApplicationIT {
         assertThat(info, containsString("build"));
     }
 
+    /**
+     * Wenn die Format-Resource aufgerufen wird, sollte kein Response-Code 500
+     * zurueckkommen.
+     */
+    @Test
+    public void testFormatError() {
+        ResponseEntity<String> response = template.postForEntity(converterURI + "/Datenpakete/format", "xxxx", String.class);
+        assertThat(response.getStatusCodeValue(), not(500));
+        assertEquals(400, response.getStatusCodeValue());
+        LOG.info("response = '{}'", response.getBody());
+    }
+
 }
