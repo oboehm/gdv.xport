@@ -17,6 +17,9 @@
  */
 package gdv.xport.srv.web;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import gdv.xport.srv.web.util.*;
+
 import java.io.*;
 import java.time.*;
 
@@ -49,6 +52,8 @@ public class ErrorDetail implements Serializable {
      *
      * @return Zeitpunkt der Anlage
      */
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     public LocalDateTime getWhen() {
         return when;
     }
