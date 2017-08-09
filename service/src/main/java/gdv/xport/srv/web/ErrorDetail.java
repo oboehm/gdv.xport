@@ -19,32 +19,49 @@ package gdv.xport.srv.web;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import gdv.xport.srv.web.util.*;
+import org.springframework.http.*;
 
+import javax.servlet.http.*;
 import java.io.*;
+import java.net.*;
 import java.time.*;
 
 /**
- * Klasse ErrorDetail enthaelt Angaben zum Fehler und aufgetretenen Exception.
+ * Klasse ErrorDetail enthaelt Angaben zum Fehler und aufgetretener Exception.
  *
  * @author oboehm
  * @since 3.0 (09.08.2017)
  */
 public class ErrorDetail implements Serializable {
 
+    private final URI request;
+    private final HttpStatus status;
+    private final String message;
     private final LocalDateTime when;
-    private final String text;
-    private final Throwable cause;
 
     /**
      * Instanzierung.
      *
-     * @param text Fehlertext (fuer den Anwender)
+     * @param request urspruenglicher Request
+     * @param status HTTP-Status
      * @param cause eigentliche Ursache
      */
-    public ErrorDetail(String text, Throwable cause) {
+    public ErrorDetail(HttpServletRequest request, HttpStatus status, Throwable cause) {
+        this(URI.create(request.getRequestURL().toString()), status, cause.getLocalizedMessage());
+    }
+
+    /**
+     * Instanzierung.
+     *
+     * @param requestURI aufgerufene URI, bei der es Probleme gab
+     * @param status HTTP-Status
+     * @param text Fehlertext (fuer den Anwender)
+     */
+    public ErrorDetail(URI requestURI, HttpStatus status, String text) {
         this.when = LocalDateTime.now();
-        this.text = text;
-        this.cause = cause;
+        this.request = requestURI;
+        this.status = status;
+        this.message = text;
     }
 
     /**
@@ -59,23 +76,30 @@ public class ErrorDetail implements Serializable {
     }
 
     /**
+     * Liefert die URI, bei der das Problem aufgetreten ist.
+     *
+     * @return URI
+     */
+    public URI getRequest() {
+        return request;
+    }
+
+    /**
+     * HTTP-Status, der zurueckgeliefert wurde.
+     *
+     * @return z.B. 400 (Bad Request)
+     */
+    public HttpStatus getStatus() {
+        return status;
+    }
+
+    /**
      * Rueckgabe des Textes, der fuer den Anwender angezeigt werden soll.
      *
      * @return z.B. "Input ist korrupt"
      */
-    public String getText() {
-        return text;
-    }
-
-    /**
-     * Rueckgabe der ursaechlichen Exception. Diese Exception ist nur zur
-     * Unterstuetzung fuer die Analyse, nicht aber fur den Endbenutzer
-     * vorgesehen.
-     *
-     * @return z.B. eine IllegalArgumentException bei Parameter-Fehlern
-     */
-    public Throwable getCause() {
-        return cause;
+    public String getMessage() {
+        return message;
     }
 
 }

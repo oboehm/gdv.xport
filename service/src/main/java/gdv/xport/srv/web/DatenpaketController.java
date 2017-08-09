@@ -51,6 +51,9 @@ public final class DatenpaketController {
     @Autowired
     private DatenpaketService service;
 
+    @Autowired
+    HttpServletRequest request;
+
     /**
      * Validiert die uebergebene URI.
      *
@@ -268,12 +271,12 @@ public final class DatenpaketController {
      */
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorDetail> handleException(IllegalArgumentException ex) {
-        return errorResponse(HttpStatus.BAD_REQUEST, "Input ist korrupt", ex);
+        return errorResponse(HttpStatus.BAD_REQUEST, ex);
     }
 
-    private ResponseEntity<ErrorDetail> errorResponse(HttpStatus status, String text, Exception ex) {
-        LOG.error("{}:", text, ex);
-        ErrorDetail errDetail = new ErrorDetail(text, ex);
+    private ResponseEntity<ErrorDetail> errorResponse(HttpStatus status, Throwable t) {
+        LOG.error("Call of {} fails with HTTP status {}:", request.getRequestURI(), status, t);
+        ErrorDetail errDetail = new ErrorDetail(request, status, t);
         return new ResponseEntity<>(errDetail, status);
     }
 
