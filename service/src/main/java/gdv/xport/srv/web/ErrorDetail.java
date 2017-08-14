@@ -102,4 +102,14 @@ public class ErrorDetail implements Serializable {
         return message;
     }
 
+    /**
+     * Ausgabe der wichtigsten Attribute.
+     *
+     * @return Status mit URI und Message
+     */
+    @Override
+    public String toString() {
+        return status + " - " + request +  " (\"" + message + "\")";
+    }
+
 }

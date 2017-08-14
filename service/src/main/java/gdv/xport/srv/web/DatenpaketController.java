@@ -263,21 +263,29 @@ public final class DatenpaketController {
                 return MediaType.TEXT_PLAIN;
         }
     }
+
     /**
      * Falsche Parameter oder falscher Input wurde angegeben - bad request.
+     * Wir liefern hier die Fehlermeldung nicht als Entity, sondern als String
+     * zurueck, damit wir auf den angeforderten MediaType reagieren koennen.
+     * Spring kann hier nur den verwendeten ErrorDetail nur als JSON
+     * zurueckgeben. Bei anderen MimeTypes kommt dann
+     * <pre>
+     * org.springframework.web.HttpMediaTypeNotAcceptableException: Could not find acceptable representation
+     * </pre>
      *
      * @param ex Ursache
      * @return Antwort als PDF
      */
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ErrorDetail> handleException(IllegalArgumentException ex) {
+    public ResponseEntity<String> handleException(IllegalArgumentException ex) {
         return errorResponse(HttpStatus.BAD_REQUEST, ex);
     }
 
-    private ResponseEntity<ErrorDetail> errorResponse(HttpStatus status, Throwable t) {
+    private ResponseEntity<String> errorResponse(HttpStatus status, Throwable t) {
         LOG.error("Call of {} fails with HTTP status {}:", request.getRequestURI(), status, t);
         ErrorDetail errDetail = new ErrorDetail(request, status, t);
-        return new ResponseEntity<>(errDetail, status);
+        return new ResponseEntity<>(errDetail.toString(), status);
     }
 
 }
