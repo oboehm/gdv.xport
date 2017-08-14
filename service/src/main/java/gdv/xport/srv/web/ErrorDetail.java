@@ -17,9 +17,13 @@
  */
 package gdv.xport.srv.web;
 
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.annotation.*;
 import gdv.xport.srv.web.util.*;
+import org.apache.logging.log4j.*;
 import org.springframework.http.*;
+import org.springframework.util.*;
 
 import javax.servlet.http.*;
 import java.io.*;
@@ -33,6 +37,8 @@ import java.time.*;
  * @since 3.0 (09.08.2017)
  */
 public class ErrorDetail implements Serializable {
+
+    private static final Logger LOG = LogManager.getLogger(ErrorDetail.class);
 
     private final URI request;
     private final HttpStatus status;
@@ -100,6 +106,32 @@ public class ErrorDetail implements Serializable {
      */
     public String getMessage() {
         return message;
+    }
+
+    /**
+     * Konvertiert die ErrorDetails ins gewuenschte Format.
+     *
+     * @param mimeType Mime-Type
+     * @return entsprechende String-Repraesentation
+     */
+    public String toString(MimeType mimeType) {
+        String type = mimeType.getSubtype().toLowerCase();
+        switch(type) {
+            case "json":
+                return this.toJsonString();
+            default:
+                return this.toString();
+        }
+    }
+
+    private String toJsonString() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException ex) {
+            LOG.warn("Cannot serialize {} as JSON: ", this, ex);
+            return "{ error: '" + this.toString() + "' }";
+        }
     }
 
     /**

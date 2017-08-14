@@ -19,12 +19,12 @@ package gdv.xport.srv.web;/*
 import org.apache.logging.log4j.*;
 import org.junit.*;
 import org.springframework.http.*;
+import org.springframework.util.*;
 
 import java.net.*;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 /**
  * Unit-Tests fuer {@link ErrorDetail}-Klasse.
@@ -45,6 +45,28 @@ public final class ErrorDetailTest {
     public void testToString() {
         String s = errorDetail.toString();
         assertThat("looks like default implementation", s, not(containsString("@")));
+        LOG.info("s = \"{}\"", s);
+    }
+
+    /**
+     * Unit-Test fuer {@link ErrorDetail#toString(MimeType)}.
+     */
+    @Test
+    public void testToStringTextPlain() {
+        checkToString(MimeTypeUtils.TEXT_PLAIN, "test");
+    }
+
+    /**
+     * Unit-Test fuer {@link ErrorDetail#toString(MimeType)}.
+     */
+    @Test
+    public void testToStringJSON() {
+        checkToString(MimeTypeUtils.APPLICATION_JSON, "status");
+    }
+
+    private void checkToString(MimeType applicationJson, String expectedSubstring) {
+        String s = errorDetail.toString(applicationJson);
+        assertThat(s, containsString(expectedSubstring));
         LOG.info("s = \"{}\"", s);
     }
 

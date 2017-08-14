@@ -258,9 +258,17 @@ public final class DatenpaketController {
                 return MediaType.valueOf(TEXT_CSV);
             case "json":
                 return MediaType.APPLICATION_JSON;
-            default:
-                LOG.info("Will use '{}' as MimeType for unknown format parameter '{}'.", MediaType.TEXT_PLAIN, format);
+            case "plain":
                 return MediaType.TEXT_PLAIN;
+            default:
+                try {
+                    return MediaType.valueOf(format);
+                } catch (InvalidMediaTypeException ex) {
+                    LOG.info("Will use '{}' as MimeType for unknown format parameter '{}'.", MediaType.TEXT_PLAIN,
+                            format);
+                    LOG.debug("Details:", ex);
+                    return MediaType.TEXT_PLAIN;
+                }
         }
     }
 
@@ -275,17 +283,15 @@ public final class DatenpaketController {
      * </pre>
      *
      * @param ex Ursache
-     * @return Antwort als PDF
+     * @return Antwort
      */
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<String> handleException(IllegalArgumentException ex) {
-        return errorResponse(HttpStatus.BAD_REQUEST, ex);
-    }
-
-    private ResponseEntity<String> errorResponse(HttpStatus status, Throwable t) {
-        LOG.error("Call of {} fails with HTTP status {}:", request.getRequestURI(), status, t);
-        ErrorDetail errDetail = new ErrorDetail(request, status, t);
-        return new ResponseEntity<>(errDetail.toString(), status);
+    public String handleException(IllegalArgumentException ex) {
+        ErrorDetail errDetail = new ErrorDetail(request, HttpStatus.BAD_REQUEST, ex);
+        LOG.info("Call of {} fails: {}", request.getRequestURI(), errDetail);
+        MimeType mimeType = toMimeType(request);
+        return errDetail.toString(mimeType);
     }
 
 }
