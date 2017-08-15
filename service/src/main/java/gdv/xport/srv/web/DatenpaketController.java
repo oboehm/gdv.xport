@@ -52,7 +52,7 @@ public final class DatenpaketController {
     private DatenpaketService service;
 
     @Autowired
-    HttpServletRequest request;
+    private HttpServletRequest request;
 
     /**
      * Validiert die uebergebene URI.
@@ -233,19 +233,24 @@ public final class DatenpaketController {
 
     private static MimeType toMimeType(String type, HttpServletRequest request) {
         if (StringUtils.isBlank(type)) {
-            return toMimeType(request);
+            return toMimeTypes(request).get(0);
         } else {
             return toMimeType(type);
         }
     }
 
-    private static MimeType toMimeType(HttpServletRequest request) {
+    private static List<MimeType> toMimeTypes(HttpServletRequest request) {
+        Set<MimeType> mimeTypes = new LinkedHashSet<>();
         String format = StringUtils.substringAfterLast(request.getServletPath(), ".");
-        if (StringUtils.isBlank(format)) {
-            String[] accepted = request.getHeader("accept").split(",");
-            format = accepted[0];
+        if (StringUtils.isNotBlank(format)) {
+            mimeTypes.add(toMimeType(format));
         }
-        return toMimeType(format);
+        String[] accepted = request.getHeader("accept").split(",");
+        for (String accept : accepted) {
+            mimeTypes.add(toMimeType(accept));
+        }
+        mimeTypes.add(MimeTypeUtils.APPLICATION_JSON);
+        return new ArrayList<>(mimeTypes);
     }
 
     private static MimeType toMimeType(String format) {
@@ -289,9 +294,18 @@ public final class DatenpaketController {
     @ExceptionHandler(IllegalArgumentException.class)
     public String handleException(IllegalArgumentException ex) {
         ErrorDetail errDetail = new ErrorDetail(request, HttpStatus.BAD_REQUEST, ex);
-        LOG.info("Call of {} fails: {}", request.getRequestURI(), errDetail);
-        MimeType mimeType = toMimeType(request);
-        return errDetail.toString(mimeType);
+        LOG.info("Call of '{}' fails: {}", request.getRequestURI(), errDetail);
+        return errDetail.toString(toMimeTypes(request));
+    }
+
+    /**
+     * Normalerweise wird dieses Attribut von Spring injected. Aber z
+     * Testzwecken koennen wir es hierueber explizit setzen.
+     *
+     * @param request einkommender HTTP-Request
+     */
+    protected void setRequest(HttpServletRequest request) {
+        this.request = request;
     }
 
 }

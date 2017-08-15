@@ -29,6 +29,7 @@ import javax.servlet.http.*;
 import java.io.*;
 import java.net.*;
 import java.time.*;
+import java.util.*;
 
 /**
  * Klasse ErrorDetail enthaelt Angaben zum Fehler und aufgetretener Exception.
@@ -111,17 +112,14 @@ public class ErrorDetail implements Serializable {
     /**
      * Konvertiert die ErrorDetails ins gewuenschte Format.
      *
-     * @param mimeType Mime-Type
+     * @param mimeTypes Auswahl an akzeptierten Mime-Types
      * @return entsprechende String-Repraesentation
      */
-    public String toString(MimeType mimeType) {
-        String type = mimeType.getSubtype().toLowerCase();
-        switch(type) {
-            case "json":
-                return this.toJsonString();
-            default:
-                return this.toString();
+    public String toString(List<MimeType> mimeTypes) {
+        if (mimeTypes.contains(MimeTypeUtils.APPLICATION_JSON)) {
+            return this.toJsonString();
         }
+        return this.toString();
     }
 
     private String toJsonString() {
@@ -141,7 +139,7 @@ public class ErrorDetail implements Serializable {
      */
     @Override
     public String toString() {
-        return status + " - " + request +  " (\"" + message + "\")";
+        return status + " " + request +  " (\"" + message + "\")";
     }
 
 }

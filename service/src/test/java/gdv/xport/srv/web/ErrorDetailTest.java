@@ -22,6 +22,7 @@ import org.springframework.http.*;
 import org.springframework.util.*;
 
 import java.net.*;
+import java.util.*;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -49,7 +50,7 @@ public final class ErrorDetailTest {
     }
 
     /**
-     * Unit-Test fuer {@link ErrorDetail#toString(MimeType)}.
+     * Unit-Test fuer {@link ErrorDetail#toString(List)}.
      */
     @Test
     public void testToStringTextPlain() {
@@ -57,7 +58,7 @@ public final class ErrorDetailTest {
     }
 
     /**
-     * Unit-Test fuer {@link ErrorDetail#toString(MimeType)}.
+     * Unit-Test fuer {@link ErrorDetail#toString(List)}.
      */
     @Test
     public void testToStringJSON() {
@@ -65,7 +66,8 @@ public final class ErrorDetailTest {
     }
 
     private void checkToString(MimeType applicationJson, String expectedSubstring) {
-        String s = errorDetail.toString(applicationJson);
+        List<MimeType> mimeTypes = Collections.singletonList(applicationJson);
+        String s = errorDetail.toString(mimeTypes);
         assertThat(s, containsString(expectedSubstring));
         LOG.info("s = \"{}\"", s);
     }

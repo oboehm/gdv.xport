@@ -24,6 +24,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
@@ -129,6 +130,23 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
                 "/Datenpakete/format.csv?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
                 String.class);
         assertThat(response.getBody(), containsString(";"));
+    }
+
+    /**
+     * Hier testen wir, ob die Fehlermeldung im bevorzugten Format (JSON)
+     * zurueckgegeben wird. JSON ist das bevorzugte Format, wenn Wildcards
+     * angegeben werden.
+     */
+    @Test
+    public void testHandleExceptions() {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setRequestURI("/testHandleExceptions");
+        request.addHeader("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+        IllegalArgumentException cause = new IllegalArgumentException("test accepted");
+        DatenpaketController controller = new DatenpaketController();
+        controller.setRequest(request);
+        String response = controller.handleException(cause);
+        assertThat(response, containsString("status"));
     }
 
 }
