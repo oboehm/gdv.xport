@@ -169,6 +169,11 @@
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>0.7.9</version>
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>1.13</version>
+        </plugin>
       </plugins>
     </pluginManagement>
 

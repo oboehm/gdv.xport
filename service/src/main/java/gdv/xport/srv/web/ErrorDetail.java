@@ -116,8 +116,11 @@ public class ErrorDetail implements Serializable {
      * @return entsprechende String-Repraesentation
      */
     public String toString(List<MimeType> mimeTypes) {
-        if (mimeTypes.contains(MimeTypeUtils.APPLICATION_JSON)) {
-            return this.toJsonString();
+        for (MimeType type : mimeTypes) {
+            String subType = type.getSubtype();
+            if ("json".equalsIgnoreCase(subType) || ("*".equals(subType))) {
+                return this.toJsonString();
+            }
         }
         return this.toString();
     }

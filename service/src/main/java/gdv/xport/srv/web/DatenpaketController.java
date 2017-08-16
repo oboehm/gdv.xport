@@ -249,7 +249,7 @@ public final class DatenpaketController {
         for (String accept : accepted) {
             mimeTypes.add(toMimeType(accept));
         }
-        mimeTypes.add(MimeTypeUtils.APPLICATION_JSON);
+        mimeTypes.add(MimeTypeUtils.TEXT_PLAIN);
         return new ArrayList<>(mimeTypes);
     }
 
