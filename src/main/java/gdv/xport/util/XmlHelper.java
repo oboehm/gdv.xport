@@ -10,11 +10,9 @@
 
 package gdv.xport.util;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-import java.net.URL;
-import java.util.Properties;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
@@ -28,9 +26,11 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-
-import org.apache.logging.log4j.*;
-import org.xml.sax.SAXException;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.net.URL;
+import java.util.Properties;
 
 /**
  * Kleine Helper-Klasse fuer den Umgang mit XML.
@@ -143,7 +143,7 @@ public final class XmlHelper {
             switch (event.getEventType()) {
                 case XMLStreamConstants.CHARACTERS:
                     String key = name.getLocalPart();
-                    String value = props.getProperty(key, "") + "\n" + event.asCharacters().toString().trim();
+                    String value = props.getProperty(key, "") + "\n" + event.asCharacters().getData().trim();
                     props.setProperty(key, value.trim());
                     break;
                 case XMLStreamConstants.END_ELEMENT:
