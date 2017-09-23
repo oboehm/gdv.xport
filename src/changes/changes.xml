@@ -17,6 +17,16 @@
 
   <body>
 
+    <release version="2.1.0" date="06-M&#228;r-2017"
+             description="Bugfixing und verbesserte Serialisierung">
+      <action dev="oboehm" type="remove" date="20-Feb-2017">
+        Veraltete Methode 'getBezeichnerAsString()' entfernt.
+      </action>
+      <action dev="oboehm" type="fix" date="13-Feb-2017">
+        Einige Schreibfehler in Bezeichner-Konstanten korrigiert.
+      </action>
+    </release>
+
     <release version="2.0.0" date="02-Feb-2017"
              description="Bereinigungen">
       <action dev="oboehm" type="update" date="17-Jan-2017">
