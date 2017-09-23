@@ -17,6 +17,16 @@
 
   <body>
 
+    <release version="2.1.1" date="24-Sep-2017"
+             description="Bugfix">
+      <action type="fix" issue="issues/4" date="22-Sep-2017">
+        NumberFormatException im XmlHelper mit Woodstox-Parser behoben.
+      </action>
+      <action type="fix" issue="issues/5" date="22-Sep-2017">
+        Feldl&#228;nge von Feld 11 in Feld221Wagnis48 korrigiert.
+      </action>
+    </release>
+
     <release version="2.1.0" date="06-M&#228;r-2017"
              description="Bugfixing und verbesserte Serialisierung">
       <action dev="oboehm" type="remove" date="20-Feb-2017">

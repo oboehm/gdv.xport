@@ -25,6 +25,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10
  * "Leben - Berufsunfähigkeit = Wagnisart 4 und 8 " (Satzart 0221). Siehe auch
+ *
  * http://www.gdv-online.de/vuvm/bestand/rel2015/ds0221.010.48.1.htm
  *
  * @author ralfklemmer
