@@ -11,8 +11,8 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.1</version>
-  <name>GDV-Xport</name>
+  <version>2.1.1.OT</version>
+  <name>GDV-Xport with OnestyTech Fixes</name>
   <url>http://www.aosd.de/gdv.xport/</url>
   <organization>
     <name>AOSD Labs</name>
