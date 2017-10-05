@@ -317,7 +317,24 @@ public final class DatenpaketTest {
         }
     }
 
-    /**
+
+	/**
+	 * Prüfe ob der Wechsel zum nächsten Datensatz korrekt funktioniert auch wenn der folgende Satz die gleiche Satzart+Sparte besitzt...
+	 */
+	@IntegrationTest
+	@Test
+	@SkipTestOn(property = "SKIP_IMPORT_TEST")
+	public void testTeildatensatzWechsel() throws IOException {
+		InputStream istream = this.getClass().getResourceAsStream("/teildatensatz_wechsel.gdv");
+		datenpaket.importFrom(istream);
+		assertTrue(datenpaket.isValid());
+		assertEquals(2, datenpaket.getDatensaetze().size());
+		assertEquals("123456789001", datenpaket.getDatensaetze().get(0).getVersicherungsscheinNummer());
+		assertEquals("123456789002", datenpaket.getDatensaetze().get(1).getVersicherungsscheinNummer());
+	}
+
+
+	/**
      * Der Export eines zuvor importierten Datenpakets sollte identisch mit der
      * Ausgangsdatei sein.
      *
