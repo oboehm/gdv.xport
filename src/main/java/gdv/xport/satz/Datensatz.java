@@ -43,7 +43,7 @@ public class Datensatz extends Satz {
 	/** 3 Zeichen, Byte 59 - 60. */
 	private final AlphaNumFeld wagnisart = new AlphaNumFeld((WAGNISART), 1, 59);
 	/** 3 Zeichen, Byte 255 - 256. */
-    private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld((TEILDATENSATZNUMMER), 1, 255);
+    private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld((TEILDATENSATZNUMMER), 1, 256);
 	/** Zum Abspeichern der Wagnisart oder Art (Unter-Sparte). */
 	private int art;
 
@@ -471,25 +471,40 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Unterklassen (wie Datensatz) sind dafuer verantwortlich, dass auch noch
-	 * die Sparte ueberprueft wird, ob sie noch richtig ist oder ob da schon der
-	 * naechste Satz beginnt.
+	 * Prüfe ob die kommende Zeile ein Teildatensatz der letzten ist. Dazu werden die ersten 7 Felder abgeglichen.
 	 *
 	 * @param reader the reader
-	 * @return true (Default-Implementierung)
+	 * @param lastFeld1To7 Feld1..7 als Char-Array (42 Zeichen) der letzten Zeile oder {@code null} für ersten Teildatensatz
+	 * @return {@code true}, falls ein Teildatensatz, {@code false} falls nicht, d.h. neuer Datensatz.
 	 * @throws IOException bei I/O-Fehlern
-	 * @see Satz#matchesNextTeildatensatz(PushbackLineNumberReader)
+	 * @see Satz#matchesNextTeildatensatz(PushbackLineNumberReader, char[])
 	 * @since 0.5.1
 	 */
 	@Override
-	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader) throws IOException {
-		if (super.matchesNextTeildatensatz(reader)) {
-		    if (this.hasSparte()) {
-    			int sparteRead = readSparte(reader);
-    			return sparteRead == this.getSparte();
-		    } else {
-		        return true;
-		    }
+	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7) throws IOException {
+		if (super.matchesNextTeildatensatz(reader, lastFeld1To7)) {
+			if (lastFeld1To7 == null) {
+				//erster Teildatensatz hat noch keine lastFeld...
+				if (this.hasSparte()) {
+					int sparte = readSparte(reader);
+					return this.getSparte() == sparte;
+				}
+				return true;
+			}
+			else {
+				//wir vergleichen komplett die ersten 7 Felder (42 Zeichen) auf Gleichheit....wenn ein Unterschied -> neuer Datensatz,
+				// TODO: ugly aber ich sehe bisher noch keinen eleganten Weg in der aktuellen Struktur ohne umfangreiche Refaktorings.
+				char[] newFeld1To7 = new char[42];
+				int res = reader.read(newFeld1To7);
+				if (res == -1 || res < 42) {
+					return false;//EOF
+				}
+				reader.unread(newFeld1To7);
+				for (int i = 0; i < 42; i++) {
+					if (lastFeld1To7[i] != newFeld1To7[i]) return false;
+				}
+				return true;
+			}
 		}
 		return false;
 	}
