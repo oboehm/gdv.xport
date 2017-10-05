@@ -69,6 +69,7 @@ public class RecordReader extends Reader {
     @Override
     public int read(char[] cbuf, int off, int len) throws IOException {
         int nrOfChars = 0;
+        if (len == 0) return 0;
         for (int i = off; i < (off + len); i++) {
             int c = this.read();
             if (c == -1) break;
