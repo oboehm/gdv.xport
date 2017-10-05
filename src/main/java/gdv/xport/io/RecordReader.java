@@ -68,12 +68,15 @@ public class RecordReader extends Reader {
      */
     @Override
     public int read(char[] cbuf, int off, int len) throws IOException {
-        int lastChar = 0;
+        int nrOfChars = 0;
+        if (len == 0) return 0;
         for (int i = off; i < (off + len); i++) {
-            lastChar = this.read();
-            cbuf[i] = (char) lastChar;
+            int c = this.read();
+            if (c == -1) break;
+            cbuf[i] = (char) c;
+            nrOfChars++;
         }
-        return lastChar;
+        return nrOfChars > 0 ? nrOfChars : -1;
     }
 
     private void fillBuffer() throws IOException {

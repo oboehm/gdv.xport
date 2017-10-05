@@ -781,31 +781,36 @@ public abstract class Satz {
 	 */
 	public void importFrom(final PushbackLineNumberReader reader) throws IOException {
 		char[] cbuf = new char[257 * teildatensatz.length];
+		char[] feld1to7 = null;
 		for (int i = 0; i < teildatensatz.length; i++) {
             reader.skipNewline();
-			if (!matchesNextTeildatensatz(reader)) {
+			if (!matchesNextTeildatensatz(reader, feld1to7)) {
 				LOG.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
 				        + ", but Satzart or Sparte or Wagnisart or TeildatensatzNummer has changed");
 				break;
 			}
 			importFrom(reader, cbuf, i * 257);
 			cbuf[i * 257 + 256] = '\n';
+			feld1to7 = Arrays.copyOfRange(cbuf, i*257,  i*257 + 42);
 		}
 		importFrom(new String(cbuf));
 	}
 
 	/**
+	 * Prüft ob die kommende Zeile noch zu dem aktuellen Datensatz gehört, d.h. ein weiterer Teildatensatz ist oder ein neuer Datensatz<br/>
+	 * <br/>
 	 * Unterklassen (wie Datensatz) sind dafuer verantwortlich, dass auch noch
-	 * die Sparte ueberprueft wird, ob sie noch richtig ist oder ob da schon der
+	 * die Sparte/... ueberprueft wird, ob sie noch richtig ist oder ob da schon der
 	 * naechste Satz beginnt. Hier (fuer den allgemeinen Fall) wird nur die
 	 * Satzart ueberprueft.
-	 *
+	 * <br/>
 	 * @param reader the reader
-	 * @return true (Default-Implementierung)
+	 * @param lastFeld1To7 die Felder 1 .. 7 aus dem letzten Datensatz
+	 * @return true wenn wenigstens die Satzart übereinstimmt (nur für Vor/Nachsatz anwendbar)
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.5.1
 	 */
-	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader) throws IOException {
+	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7) throws IOException {
 		try {
             int art = readSatzart(reader);
             return art == this.getSatzart();
@@ -819,9 +824,7 @@ public abstract class Satz {
 	private static void importFrom(final Reader reader, final char[] cbuf, final int i)
 	        throws IOException {
 		if (reader.read(cbuf, i, 256) == -1) {
-			String s = new String(cbuf).substring(i);
-			throw new IOException("can't read 256 bytes from " + reader + ", only " + s.length()
-			        + " bytes: " + s);
+			throw new EOFException("can't read 256 bytes from " + reader);
 		}
 	}
 
