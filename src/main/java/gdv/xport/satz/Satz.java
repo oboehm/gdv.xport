@@ -3,23 +3,12 @@
  */
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.SATZART;
-import static gdv.xport.feld.Bezeichner.SPARTE;
-import static patterntesting.runtime.NullConstants.NULL_STRING;
-
-import java.io.*;
-import java.lang.reflect.Field;
-import java.util.*;
-
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
@@ -29,6 +18,18 @@ import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import net.sf.oval.constraint.AssertCheck;
 import net.sf.oval.context.ClassContext;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.*;
+import java.lang.reflect.Field;
+import java.util.*;
+
+import static gdv.xport.feld.Bezeichner.SATZART;
+import static gdv.xport.feld.Bezeichner.SPARTE;
+import static patterntesting.runtime.NullConstants.NULL_STRING;
 
 /**
  * Die Satz-Klasse ist die oberste Klasse, von der alle weiteren Saetze
@@ -797,16 +798,19 @@ public abstract class Satz {
 	}
 
 	/**
-	 * Prüft ob die kommende Zeile noch zu dem aktuellen Datensatz gehört, d.h. ein weiterer Teildatensatz ist oder ein neuer Datensatz<br/>
-	 * <br/>
+	 * Prueft, ob die kommende Zeile noch zu dem aktuellen Datensatz gehoert.
+	 * D.h. es wird geprueft, ob es ein weiterer Teildatensatz oder ein neuer
+     * Datensatz ist.
+	 * <p>
 	 * Unterklassen (wie Datensatz) sind dafuer verantwortlich, dass auch noch
 	 * die Sparte/... ueberprueft wird, ob sie noch richtig ist oder ob da schon der
 	 * naechste Satz beginnt. Hier (fuer den allgemeinen Fall) wird nur die
 	 * Satzart ueberprueft.
-	 * <br/>
+	 * </p>
+     *
 	 * @param reader the reader
 	 * @param lastFeld1To7 die Felder 1 .. 7 aus dem letzten Datensatz
-	 * @return true wenn wenigstens die Satzart übereinstimmt (nur für Vor/Nachsatz anwendbar)
+	 * @return true wenn wenigstens die Satzart uebereinstimmt (nur für Vor/Nachsatz anwendbar)
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.5.1
 	 */
