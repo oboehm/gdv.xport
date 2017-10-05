@@ -60,10 +60,12 @@ import static org.junit.Assert.*;
  * <p>
  * Um die Import- oder Export-Tests auszublenden, koennen beim Aufruf die
  * Optionen
+ * </p>
  * <ul>
  *  <li>-DSKIP_IMPORT_TEST</li>
  *  <li>-DSKIP_EXPORT_TEST</li>
  * </ul>
+ * <p>
  * angegeben werden. Entsprechend beide Properties sind zu setzen, wenn
  * beides, Import- und Export-Tests, ausgeblendet werden sollen.
  * </p>
@@ -315,7 +317,10 @@ public final class DatenpaketTest {
 
 
 	/**
-	 * Prüfe ob der Wechsel zum nächsten Datensatz korrekt funktioniert auch wenn der folgende Satz die gleiche Satzart+Sparte besitzt...
+	 * Pruefe, ob der Wechsel zum naechsten Datensatz korrekt funktioniert,
+     * auch wenn der folgende Satz die gleiche Satzart+Sparte besitzt...
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@IntegrationTest
 	@Test
