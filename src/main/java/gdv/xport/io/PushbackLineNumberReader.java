@@ -104,8 +104,8 @@ public class PushbackLineNumberReader extends PushbackReader {
     @Override
     public int read(final char[] cbuf, final int off, final int len) throws IOException {
         int ret = super.read(cbuf, off, len);
-        for (int i = off; i < off + len; i++) {
-            if (cbuf[i] == '\n') {
+        for (int i = 0; i < ret; i++) {
+            if (cbuf[off+i] == '\n') {
                 this.lineNumber++;
             }
         }
