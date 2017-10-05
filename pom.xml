@@ -440,8 +440,10 @@
     <developer>
       <name>Oliver Boehm</name>
       <id>oboehm</id>
-      <email>oliver.boehm@gmail.com</email>
-      <organization>AOSD</organization>
+      <email>ob@jugs.org</email>
+      <organization>Java User Group Stuttgart</organization>
+      <organizationUrl>http://www.jugs.org</organizationUrl>
+      <url>http://www.aosd.de</url>
       <roles>
         <role>Java Developer</role>
       </roles>
@@ -482,6 +484,20 @@
     <contributor>
       <name>Frank Berger</name>
       <email>Frank.Berger@talanx.com</email>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </contributor>
+    <contributor>
+      <name>NiasSt90</name>
+      <url>https://github.com/NiasSt90</url>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </contributor>
+    <contributor>
+      <name>MarkusFieber</name>
+      <url>https://github.com/MarkusFieber</url>
       <roles>
         <role>Java Developer</role>
       </roles>

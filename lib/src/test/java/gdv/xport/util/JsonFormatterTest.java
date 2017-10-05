@@ -39,6 +39,8 @@ public final class JsonFormatterTest extends AbstractFormatterTest {
 
     /**
      * Tested den Export eines Datenpakets als JSON.
+     *
+     * @throws IOException falls was schief laeuft
      */
     @Test
     public void testWriteDatenpaket() throws IOException {

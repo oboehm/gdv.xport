@@ -18,10 +18,6 @@
 
 package gdv.xport;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
@@ -32,45 +28,47 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz220;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.net.URL;
-import java.net.UnknownHostException;
-import java.util.Date;
-import java.util.List;
-
 import net.sf.oval.ConstraintViolation;
-
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.SmokeRunner;
 
+import java.io.*;
+import java.net.URL;
+import java.net.UnknownHostException;
+import java.util.Date;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
 /**
- * JUnit-Test fuer Datenpaket.
+ * JUnit- und Integrations-Tests fuer {@link Datenpaket}-Klasse. Die
+ * Integrationstests sind durch "@IntegrationTest" gekennzeichnet und werden
+ * ueber
+ * <ul>
+ *  <li>-Dpatterntesting.integrationTest</li>
+ * </ul>
+ * aktiviert. Sie sind standardmaessig ausgeblendet, weil sie etwas laenger
+ * dauern.
+ * <p>
  * Um die Import- oder Export-Tests auszublenden, koennen beim Aufruf die
  * Optionen
+ * </p>
  * <ul>
  *  <li>-DSKIP_IMPORT_TEST</li>
  *  <li>-DSKIP_EXPORT_TEST</li>
  * </ul>
+ * <p>
  * angegeben werden. Entsprechend beide Properties sind zu setzen, wenn
  * beides, Import- und Export-Tests, ausgeblendet werden sollen.
+ * </p>
  *
  * @author oliver
  * @since 23.10.2009
@@ -317,7 +315,27 @@ public final class DatenpaketTest {
         }
     }
 
-    /**
+
+	/**
+	 * Pruefe, ob der Wechsel zum naechsten Datensatz korrekt funktioniert,
+     * auch wenn der folgende Satz die gleiche Satzart+Sparte besitzt...
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@IntegrationTest
+	@Test
+	@SkipTestOn(property = "SKIP_IMPORT_TEST")
+	public void testTeildatensatzWechsel() throws IOException {
+		InputStream istream = this.getClass().getResourceAsStream("/teildatensatz_wechsel.gdv");
+		datenpaket.importFrom(istream);
+		assertTrue(datenpaket.isValid());
+		assertEquals(2, datenpaket.getDatensaetze().size());
+		assertEquals("123456789001", datenpaket.getDatensaetze().get(0).getVersicherungsscheinNummer());
+		assertEquals("123456789002", datenpaket.getDatensaetze().get(1).getVersicherungsscheinNummer());
+	}
+
+
+	/**
      * Der Export eines zuvor importierten Datenpakets sollte identisch mit der
      * Ausgangsdatei sein.
      *

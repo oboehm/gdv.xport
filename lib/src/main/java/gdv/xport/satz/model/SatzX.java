@@ -126,14 +126,15 @@ public class SatzX extends Datensatz {
 	 * richtig ist oder ob da schon der naechste Satz beginnt.
 	 *
 	 * @param reader the reader
+	 * @param lastFeld1To7
 	 * @return true (Default-Implementierung)
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.9
-	 * @see gdv.xport.satz.Satz#matchesNextTeildatensatz(PushbackLineNumberReader)
+	 * @see gdv.xport.satz.Satz#matchesNextTeildatensatz(PushbackLineNumberReader, char[])
 	 */
 	@Override
-	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader) throws IOException {
-		if (super.matchesNextTeildatensatz(reader)) {
+	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7) throws IOException {
+		if (super.matchesNextTeildatensatz(reader, lastFeld1To7)) {
 			WagnisartLeben nextLineWagnisEnum = readWagnisart(reader);
 			TeildatensatzNummer nextLineTeildatensatzNummerEnum = readTeildatensatzNummer(reader);
 
