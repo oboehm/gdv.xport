@@ -17,6 +17,16 @@
 
   <body>
 
+    <release version="2.1.2" date="06-Okt-2017"
+             description="Bugfix">
+      <action dev="NiasSt90" type="fix" date="05-Okt-2017">
+        Teildatenersatz-Erkennung verbessert.
+      </action>
+      <action dev="NiasSt90" type="fix" date="05-Okt-2017">
+        Bezeichneranpassung.
+      </action>
+    </release>
+
     <release version="2.1.1" date="24-Sep-2017"
              description="Bugfix">
       <action type="fix" issue="issues/4" date="22-Sep-2017">
