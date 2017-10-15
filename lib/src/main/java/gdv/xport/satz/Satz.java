@@ -1,6 +1,3 @@
-/**
- *
- */
 package gdv.xport.satz;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

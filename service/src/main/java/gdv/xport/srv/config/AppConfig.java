@@ -17,9 +17,15 @@
  */
 package gdv.xport.srv.config;
 
+import gdv.xport.srv.web.util.DatenpaketHttpMessageConverter;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Ueber AppConfig werden einige Konfigurationseinstellungen vorgenommen.
@@ -37,6 +43,13 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LogInterceptor());
+    }
+
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        DatenpaketHttpMessageConverter datenpaketConverter = new DatenpaketHttpMessageConverter();
+        datenpaketConverter.setSupportedMediaTypes(Collections.singletonList(MediaType.TEXT_PLAIN));
+        converters.add(datenpaketConverter);
     }
 
 }

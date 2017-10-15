@@ -149,4 +149,17 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         assertThat(response, containsString("status"));
     }
 
+    /**
+     * Mit der Endung ".txt" soll der Restservice ein Datenpaket in Textform
+     * zurueckliefern.
+     *
+     * @throws IOException sollte nicht passieren
+     */
+    @Test
+    public void testGetDatenpaketAsText() throws IOException {
+        String response = callRestWithDummyDatenpaket("/Datenpakete/Datenpaket.txt");
+        assertThat(response, not(isEmptyString()));
+        assertThat(response, not(containsString("error")));
+    }
+
 }

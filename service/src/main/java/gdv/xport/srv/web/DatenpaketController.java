@@ -17,24 +17,33 @@
  */
 package gdv.xport.srv.web;
 
-import gdv.xport.srv.service.*;
-import gdv.xport.util.*;
-import io.swagger.annotations.*;
+import gdv.xport.Datenpaket;
+import gdv.xport.srv.service.DatenpaketService;
+import gdv.xport.srv.service.DefaultDatenpaketService;
+import gdv.xport.util.URLReader;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.*;
-import org.springframework.beans.factory.annotation.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
-import org.springframework.ui.*;
-import org.springframework.util.*;
+import org.springframework.ui.Model;
+import org.springframework.util.MimeType;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.*;
-import patterntesting.runtime.log.*;
-import patterntesting.runtime.util.*;
+import org.springframework.web.multipart.MultipartFile;
+import patterntesting.runtime.log.LogWatch;
+import patterntesting.runtime.util.Converter;
 
-import javax.servlet.http.*;
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Dieser Controller repraesentiert das REST-Interface zur Datenpaket-Klasse.
@@ -181,6 +190,20 @@ public final class DatenpaketController {
                                        HttpServletRequest request) {
         String content = (StringUtils.isBlank(text)) ? body : text;
         return format(content, type, request);
+    }
+
+    // TODO: Testen / Experimentell
+    @PostMapping(
+            value = "/Datenpaket", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
+            MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
+    )
+    public @ResponseBody
+    Datenpaket getDatenpket(@RequestBody(required = false) String body, @RequestParam(required = false) String text)
+            throws IOException {
+        String content = (StringUtils.isBlank(text)) ? body : text;
+        Datenpaket datenpaket = new Datenpaket();
+        datenpaket.importFrom(content);
+        return datenpaket;
     }
 
     /**
