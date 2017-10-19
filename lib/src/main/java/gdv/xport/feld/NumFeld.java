@@ -3,18 +3,15 @@
  */
 package gdv.xport.feld;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.List;
+import gdv.xport.annotation.*;
+import net.sf.oval.*;
+import net.sf.oval.constraint.*;
+import net.sf.oval.context.*;
+import org.apache.commons.lang.*;
+import org.apache.logging.log4j.*;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import gdv.xport.annotation.FeldInfo;
-import net.sf.oval.ConstraintViolation;
-import net.sf.oval.constraint.MatchPatternCheck;
-import net.sf.oval.context.ClassContext;
+import java.text.*;
+import java.util.*;
 
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die

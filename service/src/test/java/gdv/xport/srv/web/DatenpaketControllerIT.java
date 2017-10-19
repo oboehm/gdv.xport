@@ -17,21 +17,19 @@
  */
 package gdv.xport.srv.web;
 
-import gdv.xport.Datenpaket;
-import gdv.xport.config.Config;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.http.ResponseEntity;
+import gdv.xport.*;
+import gdv.xport.config.*;
+import org.apache.logging.log4j.*;
+import org.junit.*;
+import org.junit.runner.*;
+import org.springframework.http.*;
 import org.springframework.mock.web.*;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit4.*;
 
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * Integrationstests fuer den {@link DatenpaketController}.
@@ -95,24 +93,6 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         assertThat(response, containsString("<html"));
     }
 
-    private String callRestWithDummyDatenpaket(String path) throws IOException {
-        String text = createDummyDatenpaketText();
-        String response = postResponseObjectFor(path, text, String.class);
-        LOG.info("Response of '{}' is '{}'.", path, response);
-        assertThat(response, not(containsString("Internal Server Error")));
-        assertThat(response, notNullValue());
-        return response;
-    }
-
-    private static String createDummyDatenpaketText() throws IOException {
-        Datenpaket dummy = new Datenpaket(Config.DUMMY_VU_NUMMER);
-        StringWriter writer = new StringWriter();
-        dummy.export(writer);
-        writer.flush();
-        writer.close();
-        return writer.toString();
-    }
-
     /**
      * Hier schicken wir eine URI und erwarten als Antwort CSV-Datei. Aus
      * folgenden Gruenden kann dieser Tes fehlschlagen:
@@ -157,9 +137,45 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      */
     @Test
     public void testGetDatenpaketAsText() throws IOException {
-        String response = callRestWithDummyDatenpaket("/Datenpakete/Datenpaket.txt");
+        checkGetDatenpaketAs(".txt");
+    }
+
+    /**
+     * Mit der Endung ".xml" soll der Restservice ein Datenpaket als XML
+     * zurueckliefern.
+     *
+     * @throws IOException sollte nicht passieren
+     */
+    @Test
+    @Ignore
+    public void testGetDatenpaketAsXML() throws IOException {
+        String response = checkGetDatenpaketAs(".xml");
+        assertThat(response, containsString("<"));
+    }
+
+    private String checkGetDatenpaketAs(String suffix) throws IOException {
+        String response = callRestWithDummyDatenpaket("/Datenpakete/Datenpaket" + suffix);
         assertThat(response, not(isEmptyString()));
         assertThat(response, not(containsString("error")));
+        return response;
+    }
+
+    private String callRestWithDummyDatenpaket(String path) throws IOException {
+        String text = createDummyDatenpaketText();
+        String response = postResponseObjectFor(path, text, String.class);
+        LOG.info("Response of '{}' is '{}'.", path, response);
+        assertThat(response, not(containsString("Internal Server Error")));
+        assertThat(response, notNullValue());
+        return response;
+    }
+
+    private static String createDummyDatenpaketText() throws IOException {
+        Datenpaket dummy = new Datenpaket(Config.DUMMY_VU_NUMMER);
+        StringWriter writer = new StringWriter();
+        dummy.export(writer);
+        writer.flush();
+        writer.close();
+        return writer.toString();
     }
 
 }

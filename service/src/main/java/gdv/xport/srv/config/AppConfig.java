@@ -17,15 +17,14 @@
  */
 package gdv.xport.srv.config;
 
-import gdv.xport.srv.web.util.DatenpaketHttpMessageConverter;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import gdv.xport.srv.web.util.*;
+import org.apache.logging.log4j.*;
+import org.springframework.context.annotation.*;
+import org.springframework.http.*;
+import org.springframework.http.converter.*;
+import org.springframework.web.servlet.config.annotation.*;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Ueber AppConfig werden einige Konfigurationseinstellungen vorgenommen.
@@ -34,6 +33,8 @@ import java.util.List;
  */
 @Configuration
 public class AppConfig extends WebMvcConfigurerAdapter {
+
+    private static final Logger LOG = LogManager.getLogger(AppConfig.class);
 
     /**
      * Hierueber wird der LogIntercepter registriert.
@@ -45,11 +46,19 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new LogInterceptor());
     }
 
+    /**
+     * Fuer Content-Negotiationen registrieren wir hier einen eigenen
+     * HttpMessageConverter, der die Konvertierung eines Datenpakets in
+     * verschiedene Formate wie Text, CSV oder XML unterstuetzt.
+     *
+     * @param converters Liste mit registrierten Converter
+     */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        DatenpaketHttpMessageConverter datenpaketConverter = new DatenpaketHttpMessageConverter();
-        datenpaketConverter.setSupportedMediaTypes(Collections.singletonList(MediaType.TEXT_PLAIN));
-        converters.add(datenpaketConverter);
+        converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_PLAIN));
+        converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_XML, MediaType.APPLICATION_XML));
+        converters.add(new DatenpaketHttpMessageConverter(MediaType.valueOf("text/comma-separated-values")));
+        LOG.info("Message converters {} are configured.", converters);
     }
 
 }

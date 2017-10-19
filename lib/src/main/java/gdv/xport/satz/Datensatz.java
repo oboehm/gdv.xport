@@ -12,20 +12,17 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
+import gdv.xport.config.*;
+import gdv.xport.feld.*;
+import gdv.xport.io.*;
+import gdv.xport.satz.feld.common.*;
+import gdv.xport.util.*;
+import org.apache.logging.log4j.*;
 
 import java.io.*;
-import java.util.List;
+import java.util.*;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.io.ImportException;
-import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.satz.feld.common.*;
-import gdv.xport.util.SatzTyp;
+import static gdv.xport.feld.Bezeichner.*;
 
 /**
  * Datensatz ist von {@link Satz} abgeleitet, enthaelt aber zusaetzlich noch
@@ -315,10 +312,7 @@ public class Datensatz extends Satz {
 	 */
 	@Override
     public boolean hasSparte() {
-		if (this.sparte.isEmpty()) {
-			return false;
-		}
-		return this.getSparte() > 0;
+		return !this.sparte.isEmpty() && this.getSparte() > 0;
 	}
 
 	/**

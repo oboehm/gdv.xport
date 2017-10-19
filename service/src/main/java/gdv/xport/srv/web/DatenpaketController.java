@@ -51,6 +51,7 @@ import java.util.Set;
  * @author <a href="ob@aosd.de">oliver</a>
  */
 @RestController
+// TODO: Context-Pfad in "/v1" umbenennen
 @RequestMapping("/Datenpakete")
 public final class DatenpaketController {
 

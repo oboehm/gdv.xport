@@ -18,6 +18,7 @@ package gdv.xport.srv.web.util;/*
 
 import gdv.xport.Datenpaket;
 import org.junit.Test;
+import org.springframework.http.*;
 import org.springframework.mock.http.MockHttpOutputMessage;
 
 import java.io.IOException;
@@ -36,7 +37,7 @@ import static org.junit.Assert.assertThat;
  */
 public final class DatenpaketHttpMessageConverterTest {
 
-    private final DatenpaketHttpMessageConverter converter = new DatenpaketHttpMessageConverter();
+    private final DatenpaketHttpMessageConverter converter = new DatenpaketHttpMessageConverter(MediaType.TEXT_PLAIN);
 
     @Test
     public void testSupports() {

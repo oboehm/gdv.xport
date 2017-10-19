@@ -17,15 +17,12 @@
  */
 package gdv.xport.srv.web.util;
 
-import gdv.xport.Datenpaket;
-import org.springframework.http.HttpInputMessage;
-import org.springframework.http.HttpOutputMessage;
-import org.springframework.http.converter.AbstractHttpMessageConverter;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.http.converter.HttpMessageNotWritableException;
+import gdv.xport.*;
+import org.apache.logging.log4j.*;
+import org.springframework.http.*;
+import org.springframework.http.converter.*;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * Class DatenpaketHttpMessageConverter.
@@ -34,6 +31,13 @@ import java.io.OutputStream;
  * @since 3.0.0 (14.10.17)
  */
 public class DatenpaketHttpMessageConverter extends AbstractHttpMessageConverter<Datenpaket> {
+
+    private static final Logger LOG = LogManager.getLogger(DatenpaketHttpMessageConverter.class);
+
+    public DatenpaketHttpMessageConverter(MediaType... type) {
+        super(type);
+    }
+
     @Override
     protected boolean supports(Class<?> aClass) {
         return Datenpaket.class.equals(aClass);
@@ -42,15 +46,22 @@ public class DatenpaketHttpMessageConverter extends AbstractHttpMessageConverter
     @Override
     protected Datenpaket readInternal(Class<? extends Datenpaket> aClass, HttpInputMessage httpInputMessage)
             throws IOException, HttpMessageNotReadableException {
+        LOG.info("Reading internal {}...", aClass);
         throw new UnsupportedOperationException("not yet implemented");
     }
 
     @Override
     protected void writeInternal(Datenpaket datenpaket, HttpOutputMessage outputMessage)
             throws IOException, HttpMessageNotWritableException {
+        LOG.info("Writing {} to {}.", datenpaket, outputMessage);
         OutputStream out = outputMessage.getBody();
         datenpaket.export(out);
         out.flush();
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + getSupportedMediaTypes();
     }
 
 }
