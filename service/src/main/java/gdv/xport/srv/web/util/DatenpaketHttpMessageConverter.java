@@ -18,6 +18,7 @@
 package gdv.xport.srv.web.util;
 
 import gdv.xport.*;
+import gdv.xport.util.*;
 import org.apache.logging.log4j.*;
 import org.springframework.http.*;
 import org.springframework.http.converter.*;
@@ -53,9 +54,31 @@ public class DatenpaketHttpMessageConverter extends AbstractHttpMessageConverter
     @Override
     protected void writeInternal(Datenpaket datenpaket, HttpOutputMessage outputMessage)
             throws IOException, HttpMessageNotWritableException {
-        LOG.info("Writing {} to {}.", datenpaket, outputMessage);
+        LOG.info("Writing {} for {}.", datenpaket, getSupportedMediaTypes());
+        MediaType supports = getSupportedMediaTypes().get(0);
+        switch(supports.toString()) {
+            case MediaType.TEXT_PLAIN_VALUE:
+                writeText(datenpaket, outputMessage);
+                break;
+            case MediaType.TEXT_XML_VALUE:
+            case MediaType.APPLICATION_XML_VALUE:
+                writeXML(datenpaket, outputMessage);
+                break;
+            default:
+                throw new UnsupportedOperationException(supports + " not yet supported");
+        }
+    }
+
+    private static void writeText(Datenpaket datenpaket, HttpOutputMessage outputMessage) throws IOException {
         OutputStream out = outputMessage.getBody();
         datenpaket.export(out);
+        out.flush();
+    }
+
+    private static void writeXML(Datenpaket datenpaket, HttpOutputMessage outputMessage) throws IOException {
+        OutputStream out = outputMessage.getBody();
+        XmlFormatter formatter = new XmlFormatter(out);
+        formatter.write(datenpaket);
         out.flush();
     }
 

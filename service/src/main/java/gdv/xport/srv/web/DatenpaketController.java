@@ -196,7 +196,7 @@ public final class DatenpaketController {
     // TODO: Testen / Experimentell
     @PostMapping(
             value = "/Datenpaket", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
-            MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
+            MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
     public @ResponseBody
     Datenpaket getDatenpket(@RequestBody(required = false) String body, @RequestParam(required = false) String text)

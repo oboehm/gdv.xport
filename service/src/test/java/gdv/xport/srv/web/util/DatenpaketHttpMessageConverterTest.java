@@ -16,19 +16,18 @@ package gdv.xport.srv.web.util;/*
  * (c)reated 15.10.17 by oliver (ob@oasd.de)
  */
 
-import gdv.xport.Datenpaket;
-import org.junit.Test;
+import gdv.xport.*;
+import org.apache.commons.lang3.*;
+import org.apache.logging.log4j.*;
+import org.junit.*;
 import org.springframework.http.*;
-import org.springframework.mock.http.MockHttpOutputMessage;
+import org.springframework.mock.http.*;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
+import java.io.*;
+import java.nio.charset.*;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 /**
  * Unit-Tests fuer {@link DatenpaketHttpMessageConverter}-Klasse.
@@ -37,21 +36,45 @@ import static org.junit.Assert.assertThat;
  */
 public final class DatenpaketHttpMessageConverterTest {
 
-    private final DatenpaketHttpMessageConverter converter = new DatenpaketHttpMessageConverter(MediaType.TEXT_PLAIN);
+    private static final Logger LOG = LogManager.getLogger(DatenpaketHttpMessageConverterTest.class);
 
     @Test
     public void testSupports() {
+        DatenpaketHttpMessageConverter converter = new DatenpaketHttpMessageConverter(MediaType.TEXT_PLAIN);
         assertThat(converter.supports(Datenpaket.class), is(true));
     }
 
+    /**
+     * Als Text soll der urspruengliche Input eines Datenpakets wiede
+     * r
+     * ausgegeben werden.
+     *
+     * @throws IOException sollte nicht passieren
+     */
     @Test
-    public void writeInternal() throws IOException {
+    public void testWriteInternalText() throws IOException {
+        String output = convertEmptyDatenpaketFor(MediaType.TEXT_PLAIN);
+        LOG.info("output = \"{}\"", StringUtils.abbreviate(output, 40));
+        assertThat(output, startsWith("0001DUMMYDUMMY"));
+    }
+
+    /**
+     * Bei XML sollen im Output spitze Klammern zu finden sein.
+     *
+     * @throws IOException sollte nicht passieren
+     */
+    @Test
+    public void testWriteInternalXML() throws IOException {
+        String output = convertEmptyDatenpaketFor(MediaType.TEXT_XML);
+        assertThat(output, startsWith("<"));
+    }
+
+    private static String convertEmptyDatenpaketFor(MediaType mediaType) throws IOException {
+        DatenpaketHttpMessageConverter converter = new DatenpaketHttpMessageConverter(mediaType);
         Datenpaket datenpaket = new Datenpaket();
         MockHttpOutputMessage outputMessage = new MockHttpOutputMessage();
         converter.writeInternal(datenpaket, outputMessage);
-        Writer writer = new StringWriter();
-        datenpaket.export(writer);
-        assertEquals(writer.toString(), outputMessage.getBodyAsString(StandardCharsets.ISO_8859_1));
+        return outputMessage.getBodyAsString(StandardCharsets.ISO_8859_1);
     }
 
 }
