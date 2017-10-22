@@ -48,9 +48,9 @@ public abstract class AbstractControllerIT {
     private int port;
 
     @Autowired
-    private TestRestTemplate template;
+    protected TestRestTemplate template;
 
-    private URI baseURI;
+    protected URI baseURI;
 
     /**
      * REST-URI aufsetzen.

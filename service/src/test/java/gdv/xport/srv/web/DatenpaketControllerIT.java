@@ -25,8 +25,10 @@ import org.junit.runner.*;
 import org.springframework.http.*;
 import org.springframework.mock.web.*;
 import org.springframework.test.context.junit4.*;
+import org.springframework.util.*;
 
 import java.io.*;
+import java.net.*;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -147,7 +149,6 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      * @throws IOException sollte nicht passieren
      */
     @Test
-    @Ignore
     public void testGetDatenpaketAsXML() throws IOException {
         String response = checkGetDatenpaketAs(".xml");
         assertThat(response, containsString("<"));
@@ -176,6 +177,28 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         writer.flush();
         writer.close();
         return writer.toString();
+    }
+
+    /**
+     * Hier setzen wir nur den Accept-Header auf XML, um die Funktionsweise
+     * der Content-Negotiation zu testen. Das Beispiel mit dem Aufsetzen des
+     * Headers stammt aus dem Buch "Spring im Einsatz" (S. 326).
+     *
+     * @throws IOException sollte nicht passieren
+     */
+    @Test
+    public void testContentNegotiation() throws IOException {
+        HttpEntity<Object> requestEntity = createPostRequestWithAcceptHeader();
+        URI uri = URI.create(baseURI.toString() + "/Datenpakete/Datenpaket");
+        ResponseEntity<String> response = template.exchange(uri, HttpMethod.POST, requestEntity, String.class);
+        assertThat(response.getBody(), containsString("<"));
+    }
+
+    private static HttpEntity<Object> createPostRequestWithAcceptHeader() throws IOException {
+        String text = createDummyDatenpaketText();
+        MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+        headers.add("Accept", MediaType.TEXT_XML_VALUE);
+        return new HttpEntity<>(text, headers);
     }
 
 }
