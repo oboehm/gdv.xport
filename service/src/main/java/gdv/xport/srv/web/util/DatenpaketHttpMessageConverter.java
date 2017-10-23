@@ -34,9 +34,26 @@ import java.io.*;
 public class DatenpaketHttpMessageConverter extends AbstractHttpMessageConverter<Datenpaket> {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketHttpMessageConverter.class);
+    private final AbstractFormatter formatter;
 
     public DatenpaketHttpMessageConverter(MediaType... type) {
+        this(getFormatterFor(type[0]), type);
+    }
+
+    private DatenpaketHttpMessageConverter(AbstractFormatter formatter, MediaType... type) {
         super(type);
+        this.formatter = formatter;
+    }
+
+    private static AbstractFormatter getFormatterFor(MediaType type) {
+        switch (type.toString()) {
+            case MediaType.TEXT_XML_VALUE:
+            case MediaType.APPLICATION_XML_VALUE:
+                return new XmlFormatter();
+            default:
+                LOG.info("Using NullFormatter for MediaType {}.", type);
+                return new NullFormatter();
+        }
     }
 
     @Override
@@ -55,29 +72,8 @@ public class DatenpaketHttpMessageConverter extends AbstractHttpMessageConverter
     protected void writeInternal(Datenpaket datenpaket, HttpOutputMessage outputMessage)
             throws IOException, HttpMessageNotWritableException {
         LOG.info("Writing {} for {}.", datenpaket, getSupportedMediaTypes());
-        MediaType supports = getSupportedMediaTypes().get(0);
-        switch(supports.toString()) {
-            case MediaType.TEXT_PLAIN_VALUE:
-                writeText(datenpaket, outputMessage);
-                break;
-            case MediaType.TEXT_XML_VALUE:
-            case MediaType.APPLICATION_XML_VALUE:
-                writeXML(datenpaket, outputMessage);
-                break;
-            default:
-                throw new UnsupportedOperationException(supports + " not yet supported");
-        }
-    }
-
-    private static void writeText(Datenpaket datenpaket, HttpOutputMessage outputMessage) throws IOException {
         OutputStream out = outputMessage.getBody();
-        datenpaket.export(out);
-        out.flush();
-    }
-
-    private static void writeXML(Datenpaket datenpaket, HttpOutputMessage outputMessage) throws IOException {
-        OutputStream out = outputMessage.getBody();
-        XmlFormatter formatter = new XmlFormatter(out);
+        formatter.setWriter(out);
         formatter.write(datenpaket);
         out.flush();
     }
