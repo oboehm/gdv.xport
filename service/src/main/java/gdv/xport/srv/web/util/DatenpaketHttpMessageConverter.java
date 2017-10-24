@@ -50,6 +50,9 @@ public class DatenpaketHttpMessageConverter extends AbstractHttpMessageConverter
             case MediaType.TEXT_XML_VALUE:
             case MediaType.APPLICATION_XML_VALUE:
                 return new XmlFormatter();
+            case MediaType.APPLICATION_JSON_VALUE:
+            case MediaType.APPLICATION_JSON_UTF8_VALUE:
+                return new JsonFormatter();
             default:
                 LOG.info("Using NullFormatter for MediaType {}.", type);
                 return new NullFormatter();

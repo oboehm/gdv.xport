@@ -57,6 +57,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_XML, MediaType.APPLICATION_XML));
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_PLAIN));
+        converters.add(new DatenpaketHttpMessageConverter(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON_UTF8));
         converters.add(new DatenpaketHttpMessageConverter(MediaType.valueOf("text/comma-separated-values")));
         LOG.info("Message converters {} are configured.", converters);
     }

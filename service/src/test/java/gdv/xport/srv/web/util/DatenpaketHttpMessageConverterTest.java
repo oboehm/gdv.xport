@@ -54,8 +54,7 @@ public final class DatenpaketHttpMessageConverterTest {
     @Test
     public void testWriteInternalText() throws IOException {
         String output = convertEmptyDatenpaketFor(MediaType.TEXT_PLAIN);
-        LOG.info("output = \"{}\"", StringUtils.abbreviate(output, 40));
-        assertThat(output, startsWith("0001DUMMYDUMMY"));
+        assertThat(output, startsWith("0001"));
     }
 
     /**
@@ -69,12 +68,25 @@ public final class DatenpaketHttpMessageConverterTest {
         assertThat(output, startsWith("<"));
     }
 
+    /**
+     * Hier sollte der Output im JSON-Format sein.
+     *
+     * @throws IOException sollte nicht passieren
+     */
+    @Test
+    public void testWriteInternalJSON() throws IOException {
+        String output = convertEmptyDatenpaketFor(MediaType.APPLICATION_JSON);
+        assertThat(output, startsWith("{"));
+    }
+
     private static String convertEmptyDatenpaketFor(MediaType mediaType) throws IOException {
         DatenpaketHttpMessageConverter converter = new DatenpaketHttpMessageConverter(mediaType);
-        Datenpaket datenpaket = new Datenpaket();
+        Datenpaket datenpaket = new Datenpaket("Empty");
         MockHttpOutputMessage outputMessage = new MockHttpOutputMessage();
         converter.writeInternal(datenpaket, outputMessage);
-        return outputMessage.getBodyAsString(StandardCharsets.ISO_8859_1);
+        String output = outputMessage.getBodyAsString(StandardCharsets.ISO_8859_1);
+        LOG.info("output = \"{}\"", StringUtils.abbreviate(output, 40));
+        return output;
     }
 
 }
