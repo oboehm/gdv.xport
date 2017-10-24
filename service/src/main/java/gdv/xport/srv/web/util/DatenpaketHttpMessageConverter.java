@@ -53,6 +53,8 @@ public class DatenpaketHttpMessageConverter extends AbstractHttpMessageConverter
             case MediaType.APPLICATION_JSON_VALUE:
             case MediaType.APPLICATION_JSON_UTF8_VALUE:
                 return new JsonFormatter();
+            case "text/comma-separated-values":
+                return new CsvFormatter();
             default:
                 LOG.info("Using NullFormatter for MediaType {}.", type);
                 return new NullFormatter();

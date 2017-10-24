@@ -79,6 +79,17 @@ public final class DatenpaketHttpMessageConverterTest {
         assertThat(output, startsWith("{"));
     }
 
+    /**
+     * Hier testen wir den CSV-Export.
+     *
+     * @throws IOException sollte nicht passieren
+     */
+    @Test
+    public void testWriteInternalCSV() throws IOException {
+        String output = convertEmptyDatenpaketFor(MediaType.valueOf("text/comma-separated-values"));
+        assertThat(output, containsString(";"));
+    }
+
     private static String convertEmptyDatenpaketFor(MediaType mediaType) throws IOException {
         DatenpaketHttpMessageConverter converter = new DatenpaketHttpMessageConverter(mediaType);
         Datenpaket datenpaket = new Datenpaket("Empty");
