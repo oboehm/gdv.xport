@@ -18,6 +18,7 @@
 package gdv.xport.srv.web.util;
 
 import gdv.xport.*;
+import gdv.xport.srv.config.AppConfig;
 import gdv.xport.util.*;
 import org.apache.logging.log4j.*;
 import org.springframework.http.*;
@@ -55,7 +56,7 @@ public class DatenpaketHttpMessageConverter extends AbstractHttpMessageConverter
             case MediaType.APPLICATION_JSON_VALUE:
             case MediaType.APPLICATION_JSON_UTF8_VALUE:
                 return new JsonFormatter();
-            case "text/comma-separated-values":
+            case AppConfig.TEXT_CSV:
                 return new CsvFormatter();
             default:
                 LOG.info("Using NullFormatter for MediaType {}.", type);

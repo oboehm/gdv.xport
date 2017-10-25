@@ -154,6 +154,18 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         assertThat(response, containsString("<"));
     }
 
+    /**
+     * Mit der Endung ".csv" soll der Restservice ein Datenpaket als CSV
+     * zurueckliefern.
+     *
+     * @throws IOException sollte nicht passieren
+     */
+    @Test
+    public void testGetDatenpaketAsCSV() throws IOException {
+        String response = checkGetDatenpaketAs(".csv");
+        assertThat(response, containsString(";"));
+    }
+
     private String checkGetDatenpaketAs(String suffix) throws IOException {
         String response = callRestWithDummyDatenpaket("/Datenpakete/Datenpaket" + suffix);
         assertThat(response, not(isEmptyString()));

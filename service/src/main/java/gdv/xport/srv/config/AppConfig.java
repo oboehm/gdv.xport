@@ -36,6 +36,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     private static final Logger LOG = LogManager.getLogger(AppConfig.class);
 
+    /** MediaType als String fuer CSV. */
+    public static final String TEXT_CSV = "text/comma-separated-values";
+
+    /** MediaType fuer CSV. */
+    public static final MediaType MEDIA_TYPE_TEXT_CSV = MediaType.valueOf(TEXT_CSV);
+
     /**
      * Hierueber wird der LogIntercepter registriert.
      *
@@ -58,8 +64,20 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_XML, MediaType.APPLICATION_XML));
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_PLAIN));
         converters.add(new DatenpaketHttpMessageConverter(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON_UTF8));
-        converters.add(new DatenpaketHttpMessageConverter(MediaType.valueOf("text/comma-separated-values")));
+        converters.add(new DatenpaketHttpMessageConverter(MEDIA_TYPE_TEXT_CSV));
         LOG.info("Message converters {} are configured.", converters);
+    }
+
+    /**
+     * Hierueber verknuepfen wir die Endung ".csv" mit dem entsprechenden
+     * {@link MediaType}. Zusammen mit dem DatenpaketHttpMessageConverter
+     * sorgt das dafuer, das Datenpakete als CSV zurueckgegeben werden koennen.
+     *
+     * @param configurer darueber wird ".csv" als Suffix bekannt gemacht
+     */
+    @Override
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        configurer.mediaType("csv", MEDIA_TYPE_TEXT_CSV);
     }
 
 }

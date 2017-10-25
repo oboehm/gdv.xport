@@ -45,6 +45,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import static gdv.xport.srv.config.AppConfig.TEXT_CSV;
+
 /**
  * Dieser Controller repraesentiert das REST-Interface zur Datenpaket-Klasse.
  *
@@ -56,7 +58,6 @@ import java.util.Set;
 public final class DatenpaketController {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketController.class);
-    private static final String TEXT_CSV = "text/comma-separated-values";
 
     @Autowired
     private DatenpaketService service;
@@ -193,13 +194,22 @@ public final class DatenpaketController {
         return format(content, type, request);
     }
 
-    // TODO: Testen / Experimentell
+    /**
+     * Die Umwandlung eines Datenpakets in das gewuenschte Datenformat wird
+     * anhand des Accept-Headers (Content Negotiation) oder anhand des Suffixes
+     * durchgefuehrt.
+     *
+     * @param body Datenpaket im GDV-Format
+     * @param text alternativ kann das Datenpaket aus als Parameter reinkommen
+     * @return Datenpaket
+     * @throws IOException bei Netzproblemen
+     */
     @PostMapping(
             value = "/Datenpaket", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
     public @ResponseBody
-    Datenpaket getDatenpket(@RequestBody(required = false) String body, @RequestParam(required = false) String text)
+    Datenpaket getDatenpaket(@RequestBody(required = false) String body, @RequestParam(required = false) String text)
             throws IOException {
         String content = (StringUtils.isBlank(text)) ? body : text;
         Datenpaket datenpaket = new Datenpaket();

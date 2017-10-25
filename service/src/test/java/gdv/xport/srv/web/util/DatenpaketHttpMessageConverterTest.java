@@ -17,6 +17,7 @@ package gdv.xport.srv.web.util;/*
  */
 
 import gdv.xport.*;
+import gdv.xport.srv.config.AppConfig;
 import org.apache.commons.lang3.*;
 import org.apache.logging.log4j.*;
 import org.junit.*;
@@ -97,7 +98,7 @@ public final class DatenpaketHttpMessageConverterTest {
      */
     @Test
     public void testWriteInternalCSV() throws IOException {
-        String output = convertEmptyDatenpaketFor(MediaType.valueOf("text/comma-separated-values"));
+        String output = convertEmptyDatenpaketFor(AppConfig.MEDIA_TYPE_TEXT_CSV);
         assertThat(output, containsString(";"));
     }
 
