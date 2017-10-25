@@ -37,6 +37,11 @@ public final class JsonFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger(JsonFormatterTest.class);
 
+    @Override
+    protected AbstractFormatter createFormatter() {
+        return new JsonFormatter();
+    }
+
     /**
      * Tested den Export eines Datenpakets als JSON.
      *

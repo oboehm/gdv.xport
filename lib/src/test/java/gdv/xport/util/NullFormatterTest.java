@@ -20,7 +20,8 @@ package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.event.ImportListener;
-import org.apache.logging.log4j.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import patterntesting.runtime.annotation.IntegrationTest;
@@ -39,6 +40,11 @@ import java.io.*;
 public class NullFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger(NullFormatterTest.class);
+
+    @Override
+    protected AbstractFormatter createFormatter() {
+        return new NullFormatter();
+    }
 
     /**
      * Test-Methode fuer {@link NullFormatter#write(Datenpaket)}.

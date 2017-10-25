@@ -18,16 +18,6 @@
 
 package gdv.xport.util;
 
-import java.io.IOException;
-
-import javax.xml.stream.XMLStreamException;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.xml.sax.SAXException;
-
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Align;
 import gdv.xport.feld.Feld;
@@ -35,8 +25,16 @@ import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.Vorsatz;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.xml.sax.SAXException;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.junit.SmokeRunner;
+
+import javax.xml.stream.XMLStreamException;
+import java.io.IOException;
 
 /**
  * JUnit-Test fuer XmlFormatter.
@@ -48,6 +46,11 @@ import patterntesting.runtime.junit.SmokeRunner;
 public class XmlFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger(XmlFormatterTest.class);
+
+    @Override
+    protected AbstractFormatter createFormatter() {
+        return new XmlFormatter();
+    }
 
     /**
      * Test method for {@link gdv.xport.util.XmlFormatter#write(gdv.xport.feld.Feld)}.

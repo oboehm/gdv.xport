@@ -18,20 +18,27 @@
 
 package gdv.xport.util;
 
+import gdv.xport.Datenpaket;
+import gdv.xport.DatenpaketStreamer;
+import gdv.xport.event.ImportListener;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import patterntesting.runtime.junit.FileTester;
+
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.regex.Pattern;
 
-import javax.xml.stream.*;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
-
-import gdv.xport.Datenpaket;
-import gdv.xport.DatenpaketStreamer;
-import gdv.xport.event.ImportListener;
-import patterntesting.runtime.junit.FileTester;
+import static org.hamcrest.Matchers.isEmptyString;
+import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertThat;
 
 
 /**
@@ -70,6 +77,32 @@ public abstract class AbstractFormatterTest extends AbstractTest {
     }
 
     /**
+     * Diese Methode muss von den Unterklassen ueberschrieben werden und einen
+     * Formatter zum Testen bereitstellen.
+     *
+     * @return Formatter zum Testen
+     */
+    abstract protected AbstractFormatter createFormatter();
+
+    /**
+     * Beim Testen im Webumfeld gab es Probleme beim Setzen eines
+     * OutputStreams. Dieser Test dient dazu, um das Problem nachzustellen
+     * und zu analysieren.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testOutputStream() throws IOException {
+        OutputStream ostream = new ByteArrayOutputStream();
+        AbstractFormatter formatter = createFormatter();
+        formatter.setWriter(ostream);
+        formatter.write(new Datenpaket("Test"));
+        String output = ostream.toString();
+        LOG.info("output = \"{}\"", StringUtils.abbreviate(output, 40));
+        assertThat(output, not(isEmptyString()));
+    }
+
+    /**
      * Tested die Formattierung der Musterdatei als HTML.
      *
      * @param formatter the formatter
@@ -80,21 +113,17 @@ public abstract class AbstractFormatterTest extends AbstractTest {
     protected static void exportMusterdatei(final AbstractFormatter formatter, final String filename)
             throws IOException, XMLStreamException {
         Datenpaket datenpaket = new Datenpaket();
-        InputStream istream = AbstractFormatterTest.class.getResourceAsStream("/musterdatei_041222.txt");
         File siteDir = new File("target", "site");
         if (siteDir.mkdirs()) {
             LOG.info("created: " + siteDir);
         }
         File exportFile = new File(siteDir, filename);
-        Writer writer = new OutputStreamWriter(new FileOutputStream(exportFile), "ISO-8859-1");
-        try {
+        try (InputStream istream = AbstractFormatterTest.class.getResourceAsStream("/musterdatei_041222.txt");
+             Writer writer = new OutputStreamWriter(new FileOutputStream(exportFile), "ISO-8859-1")) {
             datenpaket.importFrom(istream);
             formatter.setWriter(writer);
             formatter.write(datenpaket);
             LOG.debug("{} exported to {} .", datenpaket, exportFile);
-        } finally {
-            writer.close();
-            istream.close();
         }
     }
 

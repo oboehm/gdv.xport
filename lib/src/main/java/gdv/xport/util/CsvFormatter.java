@@ -18,18 +18,18 @@
 
 package gdv.xport.util;
 
+import gdv.xport.Datenpaket;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import gdv.xport.Datenpaket;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Satz;
 
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
@@ -137,6 +137,7 @@ public final class CsvFormatter extends AbstractFormatter {
             this.write(";");
         }
         this.write("\n");
+        this.getWriter().flush();
     }
 
     private void resetFelder() {

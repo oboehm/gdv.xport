@@ -18,22 +18,20 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-
-import javax.xml.stream.XMLStreamException;
-
+import gdv.xport.Datenpaket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
-
-import gdv.xport.Datenpaket;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.junit.SmokeRunner;
+
+import javax.xml.stream.XMLStreamException;
+import java.io.IOException;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * JUnit-Test fuer HtmlFormatter.
@@ -45,6 +43,11 @@ import patterntesting.runtime.junit.SmokeRunner;
 public class HtmlFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger(HtmlFormatter.class);
+
+    @Override
+    protected AbstractFormatter createFormatter() {
+        return new HtmlFormatter();
+    }
 
     /**
      * Tested den Export eines Datenpakets als HTML.

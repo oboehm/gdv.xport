@@ -18,20 +18,20 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.*;
-import java.util.List;
-
-import org.apache.commons.io.FileUtils;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
+import org.apache.commons.io.FileUtils;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.SmokeRunner;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit-Test for {@link CsvFormatter}.
@@ -41,6 +41,11 @@ import patterntesting.runtime.junit.SmokeRunner;
  */
 @RunWith(SmokeRunner.class)
 public final class CsvFormatterTest extends AbstractFormatterTest {
+
+    @Override
+    protected AbstractFormatter createFormatter() {
+        return new CsvFormatter();
+    }
 
     /**
      * Basis-Test fuer {@link CsvFormatter#write(Satz)}.
@@ -55,7 +60,7 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
             Satz satz = MUSTER_DATENPAKET.getVorsatz();
             formatter.write(satz);
         }
-        List<String> lines = FileUtils.readLines(output);
+        List<String> lines = FileUtils.readLines(output, StandardCharsets.ISO_8859_1);
         assertEquals(2, lines.size());
         assertEquals("Satzart;", lines.get(0).substring(0, 8));
         File vorsatz = new File("src/test/resources/gdv/xport/util/vorsatz.csv");
@@ -74,7 +79,7 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
             CsvFormatter formatter = new CsvFormatter(writer);
             formatter.write(MUSTER_DATENPAKET);
         }
-        List<String> lines = FileUtils.readLines(output);
+        List<String> lines = FileUtils.readLines(output, StandardCharsets.ISO_8859_1);
         for (int i = 0; i < MUSTER_DATENPAKET.getDatensaetze().size(); i++) {
             Datensatz datensatz = MUSTER_DATENPAKET.getDatensaetze().get(i);
             String[] columns = lines.get(i+2).split(";");
