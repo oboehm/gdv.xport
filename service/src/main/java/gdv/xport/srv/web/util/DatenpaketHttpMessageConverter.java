@@ -47,6 +47,8 @@ public class DatenpaketHttpMessageConverter extends AbstractHttpMessageConverter
 
     private static AbstractFormatter getFormatterFor(MediaType type) {
         switch (type.toString()) {
+            case MediaType.TEXT_HTML_VALUE:
+                return new HtmlFormatter();
             case MediaType.TEXT_XML_VALUE:
             case MediaType.APPLICATION_XML_VALUE:
                 return new XmlFormatter();

@@ -69,6 +69,17 @@ public final class DatenpaketHttpMessageConverterTest {
     }
 
     /**
+     * Der HTML-Output sollte mit &lt;html&gt; anfangen.
+     *
+     * @throws IOException sollte nicht passieren
+     */
+    @Test
+    public void testWriteInternalHTML() throws IOException {
+        String output = convertEmptyDatenpaketFor(MediaType.TEXT_HTML);
+        assertThat(output, containsString("<html"));
+    }
+
+    /**
      * Hier sollte der Output im JSON-Format sein.
      *
      * @throws IOException sollte nicht passieren
