@@ -53,8 +53,7 @@ import static gdv.xport.srv.config.AppConfig.TEXT_CSV;
  * @author <a href="ob@aosd.de">oliver</a>
  */
 @RestController
-// TODO: Context-Pfad in "/v1" umbenennen
-@RequestMapping("/Datenpakete")
+@RequestMapping("/api/v1")
 public final class DatenpaketController {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketController.class);

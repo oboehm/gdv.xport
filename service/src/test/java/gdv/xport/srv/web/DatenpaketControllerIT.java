@@ -56,7 +56,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testValidateURI() {
         ResponseEntity<String> response = getResponseEntityFor(
-                "/Datenpakete/validate?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt", String.class);
+                "/api/v1/validate?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt", String.class);
         assertThat(response.getBody(), equalTo("[]"));
     }
 
@@ -68,7 +68,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      */
     @Test
     public void testValidatePost() throws IOException {
-        String response = callRestWithDummyDatenpaket("/Datenpakete/validate");
+        String response = callRestWithDummyDatenpaket("/api/v1/validate");
         assertThat(response, containsString("VU-Nummer is not set"));
     }
 
@@ -80,7 +80,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      */
     @Test
     public void testFormat() throws IOException {
-        String response = callRestWithDummyDatenpaket("/Datenpakete/format");
+        String response = callRestWithDummyDatenpaket("/api/v1/format");
         assertThat(response, not(isEmptyString()));
     }
 
@@ -91,7 +91,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      */
     @Test
     public void testFormatHtml() throws IOException {
-        String response = callRestWithDummyDatenpaket("/Datenpakete/format.html");
+        String response = callRestWithDummyDatenpaket("/api/v1/format.html");
         assertThat(response, containsString("<html"));
     }
 
@@ -109,7 +109,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testFormatURI() throws IOException {
         ResponseEntity<String> response = getResponseEntityFor(
-                "/Datenpakete/format.csv?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
+                "/api/v1/format.csv?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
                 String.class);
         assertThat(response.getBody(), containsString(";"));
     }
@@ -167,7 +167,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     }
 
     private String checkGetDatenpaketAs(String suffix) throws IOException {
-        String response = callRestWithDummyDatenpaket("/Datenpakete/Datenpaket" + suffix);
+        String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket" + suffix);
         assertThat(response, not(isEmptyString()));
         assertThat(response, not(containsString("error")));
         return response;
@@ -201,7 +201,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testContentNegotiation() throws IOException {
         HttpEntity<Object> requestEntity = createPostRequestWithAcceptHeader();
-        URI uri = URI.create(baseURI.toString() + "/Datenpakete/Datenpaket");
+        URI uri = URI.create(baseURI.toString() + "/api/v1/Datenpaket");
         ResponseEntity<String> response = template.exchange(uri, HttpMethod.POST, requestEntity, String.class);
         assertThat(response.getBody(), containsString("<"));
     }

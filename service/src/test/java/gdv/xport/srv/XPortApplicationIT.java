@@ -94,7 +94,7 @@ public class XPortApplicationIT {
      */
     @Test
     public void testFormatError() {
-        ResponseEntity<String> response = template.postForEntity(converterURI + "/Datenpakete/format", "xxxx", String.class);
+        ResponseEntity<String> response = template.postForEntity(converterURI + "/api/v1/format", "xxxx", String.class);
         assertThat(response.getStatusCodeValue(), not(500));
         assertEquals(400, response.getStatusCodeValue());
         LOG.info("response = '{}'", response.getBody());

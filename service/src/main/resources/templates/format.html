@@ -18,7 +18,7 @@
             </p>
             <div class="panel-body">
                 <!-- URI formattieren -->
-                <form id="inputURI" action="#" th:action="@{/Datenpakete/format}" method="get">
+                <form id="inputURI" action="#" th:action="@{/api/v1/format}" method="get">
                     <div class="form-group">
                         <label class="control-label" >URI:</label>
                         <input type="text" class="form-control" title="URI" name="uri"
@@ -39,7 +39,7 @@
                     </div>
                 </form>
                 <!-- Text formattieren -->
-                <form id="inputText" action="#" th:action="@{/Datenpakete/format}" method="post">
+                <form id="inputText" action="#" th:action="@{/api/v1/format}" method="post">
                     <div class="form-group">
                         <label class="control-label">Text:</label>
                         <!-- TODO: hier muessen wir noch die Textarea als Body und nicht als Parameter schicken -->
@@ -64,7 +64,7 @@
                     </div>
                 </form>
                 <!-- Datei formattieren -->
-                <form id="formatFile" th:action="@{/Datenpakete/formatUploaded}" method="post" enctype="multipart/form-data">
+                <form id="formatFile" th:action="@{/api/v1/formatUploaded}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="control-label" >Datei:</label>
                         <input type="file" name="file" />
