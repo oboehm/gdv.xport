@@ -77,7 +77,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-        configurer.mediaType("csv", MEDIA_TYPE_TEXT_CSV);
+        configurer.mediaType("csv", MEDIA_TYPE_TEXT_CSV)
+                  .defaultContentType(MediaType.TEXT_PLAIN);
     }
 
 }
