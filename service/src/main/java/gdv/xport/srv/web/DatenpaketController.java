@@ -196,10 +196,10 @@ public final class DatenpaketController {
     /**
      * Die Umwandlung eines Datenpakets in das gewuenschte Datenformat wird
      * anhand des Accept-Headers (Content Negotiation) oder anhand des Suffixes
-     * durchgefuehrt.
+     * durchgefuehrt. Das Datenpaket kommt dabei als Text im GDV-Format rein.
      *
      * @param body Datenpaket im GDV-Format
-     * @param text alternativ kann das Datenpaket aus als Parameter reinkommen
+     * @param text alternativ kann das Datenpaket auch als Parameter reinkommen
      * @return Datenpaket
      * @throws IOException bei Netzproblemen
      */
