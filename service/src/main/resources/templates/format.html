@@ -39,7 +39,7 @@
                     </div>
                 </form>
                 <!-- Text formattieren -->
-                <form id="inputText" action="#" th:action="@{/api/v1/format}" method="post">
+                <form id="inputText" action="#" th:action="@{/api/v1/Datenpaket}" method="post">
                     <div class="form-group">
                         <label class="control-label">Text:</label>
                         <!-- TODO: hier muessen wir noch die Textarea als Body und nicht als Parameter schicken -->
@@ -51,11 +51,12 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Format:</label>
-                        <select class="form-control" title="Format-Typ" name="type">
+                        <select class="form-control" title="Format-Typ" name="format">
                             <option>HTML</option>
                             <option>XML</option>
                             <option>CSV</option>
                             <option>JSON</option>
+                            <option>TEXT</option>
                         </select>
                     </div>
                     <div class="text-center">

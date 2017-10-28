@@ -61,6 +61,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_HTML));
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_XML, MediaType.APPLICATION_XML));
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_PLAIN));
         converters.add(new DatenpaketHttpMessageConverter(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON_UTF8));
@@ -78,6 +79,9 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.mediaType("csv", MEDIA_TYPE_TEXT_CSV)
+                  .mediaType("html", MediaType.TEXT_HTML)
+                  .mediaType("text", MediaType.TEXT_PLAIN)
+                  .mediaType("txt", MediaType.TEXT_PLAIN)
                   .defaultContentType(MediaType.TEXT_PLAIN)
                   .favorParameter(true)
                   ;
