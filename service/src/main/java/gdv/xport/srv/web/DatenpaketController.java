@@ -174,26 +174,6 @@ public final class DatenpaketController {
     }
 
     /**
-     * Formattiert das Datenpaket, das als Text reinkommt, in das gewuenschte
-     * Format wie HTML, XML, JSON oder CSV.
-     *
-     * @param body    the body
-     * @return erzeugtes Format als Text
-     * @param request der urspruengliche Request (zur Format-Bestimmung)
-     */
-    @PostMapping(
-            value = "/format",
-            produces = { MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, TEXT_CSV }
-    )
-    public @ResponseBody ResponseEntity<String> format(@RequestBody(required = false) String body,
-                                       @RequestParam(required = false) String text,
-                                       @RequestParam(required = false) String type,
-                                       HttpServletRequest request) {
-        String content = (StringUtils.isBlank(text)) ? body : text;
-        return format(content, type, request);
-    }
-
-    /**
      * Die Umwandlung eines Datenpakets in das gewuenschte Datenformat wird
      * anhand des Accept-Headers (Content Negotiation) oder anhand des Suffixes
      * durchgefuehrt. Das Datenpaket kommt dabei als Text im GDV-Format rein.
@@ -203,6 +183,21 @@ public final class DatenpaketController {
      * @return Datenpaket
      * @throws IOException bei Netzproblemen
      */
+    @ApiOperation(value = "liest das Datenpaket und gibt es im gewuenschten Format zurueck")
+    @ApiImplicitParams({
+            @ApiImplicitParam(
+                    value="Datenpaket im GDV-Format",
+                    dataType = "string",
+                    paramType = "body"
+            ),
+            @ApiImplicitParam(
+                    name = "format",
+                    value = "HTML, XML, JSON, CSV oder TEXT",
+                    required = false,
+                    dataType = "string",
+                    paramType = "query"
+            )
+    })
     @PostMapping(
             value = "/Datenpaket", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}

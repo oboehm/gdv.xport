@@ -90,8 +90,8 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      * @throws IOException the io exception
      */
     @Test
-    public void testFormatHtml() throws IOException {
-        String response = callRestWithDummyDatenpaket("/api/v1/format.html");
+    public void testDatenpaketAsHtml() throws IOException {
+        String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket.html");
         assertThat(response, containsString("<html"));
     }
 

@@ -89,12 +89,12 @@ public class XPortApplicationIT {
     }
 
     /**
-     * Wenn die Format-Resource aufgerufen wird, sollte kein Response-Code 500
+     * Wenn die Datenpaket-Resource aufgerufen wird, sollte kein Response-Code 500
      * zurueckkommen.
      */
     @Test
-    public void testFormatError() {
-        ResponseEntity<String> response = template.postForEntity(converterURI + "/api/v1/format", "xxxx", String.class);
+    public void testDatenpaketError() {
+        ResponseEntity<String> response = template.postForEntity(converterURI + "/api/v1/Datenpaket", "xxxx", String.class);
         assertThat(response.getStatusCodeValue(), not(500));
         assertEquals(400, response.getStatusCodeValue());
         LOG.info("response = '{}'", response.getBody());
