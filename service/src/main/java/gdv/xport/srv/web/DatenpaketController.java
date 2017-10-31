@@ -148,7 +148,6 @@ public final class DatenpaketController {
      *         angeforderte Format transformiert wird
      * @throws IOException the io exception
      */
-    @GetMapping("/Datenpaket")
     @ApiOperation(value = "liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck")
     @ApiImplicitParams({
             @ApiImplicitParam(
@@ -165,8 +164,8 @@ public final class DatenpaketController {
                     paramType = "query"
             )
     })
-    public @ResponseBody
-    Datenpaket getDatenpaket(@RequestParam("uri") URI uri) throws IOException {
+    @GetMapping("/Datenpaket")
+    public @ResponseBody Datenpaket importDatenpaket(@RequestParam("uri") URI uri) throws IOException {
         String content = readFrom(uri);
         return importDatenpaketFrom(content);
     }
@@ -190,7 +189,7 @@ public final class DatenpaketController {
      * @return Datenpaket
      * @throws IOException bei Netzproblemen
      */
-    @ApiOperation(value = "liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck")
+    @ApiOperation("liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck")
     @ApiImplicitParams({
             @ApiImplicitParam(
                     value="Datenpaket im GDV-Format",
@@ -209,7 +208,7 @@ public final class DatenpaketController {
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
     public @ResponseBody
-    Datenpaket getDatenpaket(@RequestBody(required = false) String body, @RequestParam(required = false) String text)
+    Datenpaket importDatenpaket(@RequestBody(required = false) String body, @RequestParam(required = false) String text)
             throws IOException {
         String content = (StringUtils.isBlank(text)) ? body : text;
         return importDatenpaketFrom(content);
@@ -226,18 +225,16 @@ public final class DatenpaketController {
      * Datenpakete. Da hierueber der Inhalt der Datei mit uebertragen wird,
      * wird dieser Service ueber POST angesprochen.
      *
-     * @param file    gewuenschte Datei
-     * @param request der urspruengliche Request (zur Format-Bestimmung)
+     * @param file gewuenschte Datei
      * @return erzeugtes Format als Text
      * @throws IOException the io exception
      */
-    @PostMapping("/formatUploaded")
-    public @ResponseBody ResponseEntity<String> format (
-            @RequestParam("file") MultipartFile file,
-            @RequestParam(required = false) String type,
-            HttpServletRequest request) throws IOException {
+    @ApiOperation("dient zum Laden und Anzeigen einer Datei im GDV-Format")
+    @PostMapping("/Datenpaket/uploaded")
+    public @ResponseBody Datenpaket uploadDatenpaket (
+            @RequestParam("file") MultipartFile file) throws IOException {
         String text = readFrom(file);
-        return format(text, type, request);
+        return importDatenpaketFrom(text);
     }
 
     private String readFrom(@RequestParam("file") MultipartFile file) throws IOException {
@@ -246,15 +243,6 @@ public final class DatenpaketController {
         String text = new String(file.getBytes());
         LOG.info("Reading Datenpakete from {} finished after {} with {} bytes.", file, watch, text.length());
         return text;
-    }
-
-    private ResponseEntity<String> format(String content, @RequestParam(required = false) String type, HttpServletRequest request) {
-        LogWatch watch = new LogWatch();
-        MimeType mimeType = toMimeType(type, request);
-        LOG.info("Formatting Datenpakete of {} as {}...", Converter.getMemoryAsString(StringUtils.length(content)), mimeType);
-        ResponseEntity<String> response = format(content, mimeType);
-        LOG.info("Formatting Datenpakete as {} finished in {}.", mimeType, watch);
-        return response;
     }
 
     private ResponseEntity<String> format(String content, MimeType mimeType) {

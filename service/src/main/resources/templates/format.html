@@ -66,18 +66,19 @@
                     </div>
                 </form>
                 <!-- Datei formattieren -->
-                <form id="formatFile" th:action="@{/api/v1/formatUploaded}" method="post" enctype="multipart/form-data">
+                <form id="formatFile" th:action="@{/api/v1/Datenpaket/uploaded}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="control-label" >Datei:</label>
                         <input type="file" name="file" />
                     </div>
                     <div class="form-group">
                         <label class="control-label">Format:</label>
-                        <select class="form-control" title="Format-Typ" name="type">
+                        <select class="form-control" title="Format-Typ" name="format">
                             <option>HTML</option>
                             <option>XML</option>
                             <option>CSV</option>
                             <option>JSON</option>
+                            <option>TEXT</option>
                         </select>
                     </div>
                     <div class="text-center">
