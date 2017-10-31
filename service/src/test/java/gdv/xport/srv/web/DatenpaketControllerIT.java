@@ -107,9 +107,9 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      * @throws IOException the io exception
      */
     @Test
-    public void testFormatURI() throws IOException {
+    public void testDatenpaketFromURI() throws IOException {
         ResponseEntity<String> response = getResponseEntityFor(
-                "/api/v1/format.csv?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
+                "/api/v1/Datenpaket.csv?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
                 String.class);
         assertThat(response.getBody(), containsString(";"));
     }

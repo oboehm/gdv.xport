@@ -18,7 +18,7 @@
             </p>
             <div class="panel-body">
                 <!-- URI formattieren -->
-                <form id="inputURI" action="#" th:action="@{/api/v1/format}" method="get">
+                <form id="inputURI" action="#" th:action="@{/api/v1/Datenpaket}" method="get">
                     <div class="form-group">
                         <label class="control-label" >URI:</label>
                         <input type="text" class="form-control" title="URI" name="uri"
@@ -26,11 +26,12 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Format:</label>
-                        <select class="form-control" title="Format-Typ" name="type">
+                        <select class="form-control" title="Format-Typ" name="format">
                             <option>HTML</option>
                             <option>XML</option>
                             <option>CSV</option>
                             <option>JSON</option>
+                            <option>TEXT</option>
                         </select>
                     </div>
                     <div class="text-center">

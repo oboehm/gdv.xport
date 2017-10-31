@@ -139,15 +139,17 @@ public final class DatenpaketController {
 
     /**
      * Formattiert das Datenpaket, das von der uebergebenen URI abgeholt wird,
-     * in das gewuenscht Format wie HTML, XML, JSON oder CSV.
+     * in das gewuenscht Format wie HTML, XML, JSON oder CSV. Das Format der
+     * gewuenschten Rueckgabe wird dabei ueber Content Negotiation bestimmt,
+     * d.h. anhand des Accept-Headers, der Endung oder des format-Parameters.
      *
-     * @param uri     z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
-     * @param request der urspruengliche Request (zur Format-Bestimmung)
-     * @return erzeugtes Format als Text
+     * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @return Datenpaket, das dann ueber Content Negotiation in das
+     *         angeforderte Format transformiert wird
      * @throws IOException the io exception
      */
-    @GetMapping("/format")
-    @ApiOperation(value = "formattiert die uebergebene URI")
+    @GetMapping("/Datenpaket")
+    @ApiOperation(value = "liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck")
     @ApiImplicitParams({
             @ApiImplicitParam(
                     name = "uri",
@@ -155,13 +157,18 @@ public final class DatenpaketController {
                     required = true,
                     dataType = "string",
                     paramType = "query"
+            ),
+            @ApiImplicitParam(
+                    name = "format",
+                    value = "HTML, XML, JSON, CSV oder TEXT",
+                    dataType = "string",
+                    paramType = "query"
             )
     })
-    public @ResponseBody ResponseEntity<String> format(@RequestParam("uri") URI uri,
-                                                       @RequestParam(required = false) String type,
-                                                       HttpServletRequest request) throws IOException {
+    public @ResponseBody
+    Datenpaket getDatenpaket(@RequestParam("uri") URI uri) throws IOException {
         String content = readFrom(uri);
-        return format(content, type, request);
+        return importDatenpaketFrom(content);
     }
 
     private static String readFrom(@RequestParam("uri") URI uri) throws IOException {
@@ -183,7 +190,7 @@ public final class DatenpaketController {
      * @return Datenpaket
      * @throws IOException bei Netzproblemen
      */
-    @ApiOperation(value = "liest das Datenpaket und gibt es im gewuenschten Format zurueck")
+    @ApiOperation(value = "liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck")
     @ApiImplicitParams({
             @ApiImplicitParam(
                     value="Datenpaket im GDV-Format",
@@ -193,7 +200,6 @@ public final class DatenpaketController {
             @ApiImplicitParam(
                     name = "format",
                     value = "HTML, XML, JSON, CSV oder TEXT",
-                    required = false,
                     dataType = "string",
                     paramType = "query"
             )
@@ -206,6 +212,10 @@ public final class DatenpaketController {
     Datenpaket getDatenpaket(@RequestBody(required = false) String body, @RequestParam(required = false) String text)
             throws IOException {
         String content = (StringUtils.isBlank(text)) ? body : text;
+        return importDatenpaketFrom(content);
+    }
+
+    private static Datenpaket importDatenpaketFrom(String content) throws IOException {
         Datenpaket datenpaket = new Datenpaket();
         datenpaket.importFrom(content);
         return datenpaket;
