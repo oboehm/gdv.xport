@@ -56,7 +56,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testValidateURI() {
         ResponseEntity<String> response = getResponseEntityFor(
-                "/api/v1/validate?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt", String.class);
+                "/api/v1/Abweichungen?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt", String.class);
         assertThat(response.getBody(), equalTo("[]"));
     }
 

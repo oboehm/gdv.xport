@@ -67,12 +67,10 @@ public final class DatenpaketController {
     /**
      * Validiert die uebergebene URI.
      *
-     * @param uri     z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
-     * @param request the request
-     * @return the response entity
+     * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @return gefundene Abweichungen bzw. Validierungs-Fehler
      */
-    @GetMapping("/validate")
-    @ApiOperation(value = "validiert die uebergebene URI")
+    @ApiOperation(value = "validiert die uebergebene URI und gibt die gefundenen Abweichungen zurueck")
     @ApiImplicitParams({
             @ApiImplicitParam(
                     name = "uri",
@@ -82,13 +80,14 @@ public final class DatenpaketController {
                     paramType = "query"
             )
     })
-    public ResponseEntity<List<Model>> validate(@RequestParam("uri") URI uri, HttpServletRequest request) {
+    @GetMapping("/Abweichungen")
+    public @ResponseBody List<Model> validate(@RequestParam("uri") URI uri) {
         try {
             String content = readFrom(uri);
-            return validate(content, request);
+            return validate(content);
         } catch (IOException ioe) {
             LOG.warn("Cannot validate '{}':", uri, ioe);
-            return ResponseEntity.ok(DefaultDatenpaketService.asModelList(ioe));
+            return DefaultDatenpaketService.asModelList(ioe);
         }
     }
 
@@ -98,8 +97,16 @@ public final class DatenpaketController {
      *
      * @param body Text, der ueber die Leitung reinkommt.
      * @param text alternativ kann der Text auch als Parameter reinkommen
-     * @return the response entity
+     * @return gefundene Abweichungen bzw. Validierungs-Fehler
      */
+    @ApiOperation(value = "validiert den uebergebene Text im GDV-Format und gibt die gefundenen Abweichungen zurueck")
+    @ApiImplicitParams({
+            @ApiImplicitParam(
+                    value="Datenpaket im GDV-Format",
+                    dataType = "string",
+                    paramType = "body"
+            )
+    })
     @PostMapping("/Abweichungen")
     public @ResponseBody
     List<Model> validate(@RequestBody(required = false) String body, @RequestParam(required = false) String text) {
