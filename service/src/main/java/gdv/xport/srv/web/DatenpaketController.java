@@ -39,7 +39,7 @@ import patterntesting.runtime.util.Converter;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.net.URI;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -322,6 +322,21 @@ public final class DatenpaketController {
         ErrorDetail errDetail = new ErrorDetail(request, HttpStatus.BAD_REQUEST, ex);
         LOG.info("Call of '{}' fails: {}", request.getRequestURI(), errDetail);
         return errDetail.toString(toMimeTypes(request));
+    }
+
+    /**
+     * Falsche URI wurde als Parameter angegeben - bad request.
+     *
+     * @param request Anfrage-Request
+     * @param ex      Ursache
+     * @return ErrorDetail
+     */
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({MalformedURLException.class, IllegalArgumentException.class})
+    public ErrorDetail handleException(HttpServletRequest request, Exception ex) {
+        ErrorDetail errDetail = new ErrorDetail(request, HttpStatus.BAD_REQUEST, ex);
+        LOG.info("Call of '{}' fails: {}", request.getRequestURI(), errDetail);
+        return errDetail;
     }
 
     /**
