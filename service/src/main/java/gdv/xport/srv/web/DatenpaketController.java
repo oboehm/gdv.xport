@@ -61,9 +61,6 @@ public final class DatenpaketController {
     @Autowired
     private DatenpaketService service;
 
-    @Autowired
-    private HttpServletRequest request;
-
     /**
      * Validiert die uebergebene URI.
      *
@@ -304,27 +301,6 @@ public final class DatenpaketController {
     }
 
     /**
-     * Falsche Parameter oder falscher Input wurde angegeben - bad request.
-     * Wir liefern hier die Fehlermeldung nicht als Entity, sondern als String
-     * zurueck, damit wir auf den angeforderten MediaType reagieren koennen.
-     * Spring kann hier nur den verwendeten ErrorDetail nur als JSON
-     * zurueckgeben. Bei anderen MimeTypes kommt dann
-     * <pre>
-     * org.springframework.web.HttpMediaTypeNotAcceptableException: Could not find acceptable representation
-     * </pre>
-     *
-     * @param ex Ursache
-     * @return Antwort
-     */
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(IllegalArgumentException.class)
-    public String handleException(IllegalArgumentException ex) {
-        ErrorDetail errDetail = new ErrorDetail(request, HttpStatus.BAD_REQUEST, ex);
-        LOG.info("Call of '{}' fails: {}", request.getRequestURI(), errDetail);
-        return errDetail.toString(toMimeTypes(request));
-    }
-
-    /**
      * Falsche URI wurde als Parameter angegeben - bad request.
      *
      * @param request Anfrage-Request
@@ -337,16 +313,6 @@ public final class DatenpaketController {
         ErrorDetail errDetail = new ErrorDetail(request, HttpStatus.BAD_REQUEST, ex);
         LOG.info("Call of '{}' fails: {}", request.getRequestURI(), errDetail);
         return errDetail;
-    }
-
-    /**
-     * Normalerweise wird dieses Attribut von Spring injected. Aber z
-     * Testzwecken koennen wir es hierueber explizit setzen.
-     *
-     * @param request einkommender HTTP-Request
-     */
-    protected void setRequest(HttpServletRequest request) {
-        this.request = request;
     }
 
 }

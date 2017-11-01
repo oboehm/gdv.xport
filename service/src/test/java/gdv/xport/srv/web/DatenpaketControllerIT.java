@@ -120,15 +120,26 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      * angegeben werden.
      */
     @Test
+    public void testMalformedURIException() throws IOException {
+        ResponseEntity<String> response = getResponseEntityFor(
+                "/api/v1/Datenpaket.json?uri=xxx:gibts.net",
+                String.class);
+        assertThat(response.getBody(), containsString("status"));
+        assertThat(response.getBody(), not(containsString("500")));
+    }
+
+    /**
+     * Hier testen wir den Exceptionhandler direkt.
+     */
+    @Test
     public void testHandleExceptions() {
         MockHttpServletRequest request = new MockHttpServletRequest();
         request.setRequestURI("/testHandleExceptions");
         request.addHeader("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
         IllegalArgumentException cause = new IllegalArgumentException("test accepted");
         DatenpaketController controller = new DatenpaketController();
-        controller.setRequest(request);
-        String response = controller.handleException(cause);
-        assertThat(response, containsString("status"));
+        ErrorDetail response = controller.handleException(request, cause);
+        assertThat(response.getStatus(), is(HttpStatus.BAD_REQUEST));
     }
 
     /**
