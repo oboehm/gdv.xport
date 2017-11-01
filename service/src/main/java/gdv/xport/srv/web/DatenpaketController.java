@@ -93,28 +93,32 @@ public final class DatenpaketController {
     }
 
     /**
-     * Validiert die eingelesenen Datenpakete.
+     * Validiert die eingelesenen Datenpakete und gibt die gefundenen
+     * Abweichungen bzw. Verletzungen als Liste zurueck.
      *
-     * @param body    Text, der ueber die Leitung reinkommt.
-     * @param text    alternativ kann der Text auch als Parameter reinkommen
-     * @param request the request
+     * @param body Text, der ueber die Leitung reinkommt.
+     * @param text alternativ kann der Text auch als Parameter reinkommen
      * @return the response entity
      */
-    @PostMapping("/validate")
-    public ResponseEntity<List<Model>> validate(@RequestBody(required = false) String body,
-                                                @RequestParam(required = false) String text,
-                                                HttpServletRequest request) {
+    @PostMapping("/Abweichungen")
+    public @ResponseBody
+    List<Model> validate(@RequestBody(required = false) String body, @RequestParam(required = false) String text) {
         String content = (StringUtils.isBlank(text)) ? body : text;
-        return validate(content, request);
+        return validate(content);
     }
 
     private ResponseEntity<List<Model>> validate(String content, HttpServletRequest request) {
+        List<Model> violations = validate(content);
+        return ResponseEntity.ok(violations);
+    }
+
+    private List<Model> validate(String content) {
         LogWatch watch = new LogWatch();
         LOG.info("Validating Datenpakete of {}...", Converter.getMemoryAsString(StringUtils.length(content)));
         LOG.debug(content);
         List<Model> violations = service.validate(content);
         LOG.info("Validating Datenpakete finished with {} violation(s) in {}.", violations.size(), watch);
-        return ResponseEntity.ok(violations);
+        return violations;
     }
 
     /**
@@ -243,12 +247,6 @@ public final class DatenpaketController {
         String text = new String(file.getBytes());
         LOG.info("Reading Datenpakete from {} finished after {} with {} bytes.", file, watch, text.length());
         return text;
-    }
-
-    private ResponseEntity<String> format(String content, MimeType mimeType) {
-        LOG.debug(content);
-        String response = service.format(content, mimeType);
-        return createResponseEntity(response, (MediaType) mimeType);
     }
 
     private static ResponseEntity<String> createResponseEntity(String response, MediaType mimeType) {

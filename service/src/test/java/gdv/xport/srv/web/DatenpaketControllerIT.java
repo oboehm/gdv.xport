@@ -68,7 +68,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      */
     @Test
     public void testValidatePost() throws IOException {
-        String response = callRestWithDummyDatenpaket("/api/v1/validate");
+        String response = callRestWithDummyDatenpaket("/api/v1/Abweichungen");
         assertThat(response, containsString("VU-Nummer is not set"));
     }
 
