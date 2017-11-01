@@ -114,9 +114,24 @@ public final class DatenpaketController {
         return validate(content);
     }
 
-    private ResponseEntity<List<Model>> validate(String content, HttpServletRequest request) {
-        List<Model> violations = validate(content);
-        return ResponseEntity.ok(violations);
+    /**
+     * Laedt die gewuenschte Datei und validiert die darin enthaltenen
+     * Datenpakete. Da hierueber der Inhalt der Datei mit uebertragen wird,
+     * wird dieser Service ueber POST angesprochen.
+     *
+     * @param file gewuenschte Datei
+     * @return gefundene Abweichungen bzw. Validierungs-Fehler
+     */
+    @ApiOperation("dient zur Validierung einer Datei im GDV-Format")
+    @PostMapping("/Abweichungen/uploaded")
+    public @ResponseBody List<Model> validate(@RequestParam("file") MultipartFile file) {
+        try {
+            String text = readFrom(file);
+            return validate(text);
+        } catch (IOException ioe) {
+            LOG.warn("Cannot upload and validate {}:", file.getOriginalFilename(), ioe);
+            return DefaultDatenpaketService.asModelList(ioe);
+        }
     }
 
     private List<Model> validate(String content) {
@@ -126,26 +141,6 @@ public final class DatenpaketController {
         List<Model> violations = service.validate(content);
         LOG.info("Validating Datenpakete finished with {} violation(s) in {}.", violations.size(), watch);
         return violations;
-    }
-
-    /**
-     * Laedt die gewuenschte Datei und validiert die darin enthaltenen
-     * Datenpakete. Da hierueber der Inhalt der Datei mit uebertragen wird,
-     * wird dieser Service ueber POST angesprochen.
-     *
-     * @param file    gewuenschte Datei
-     * @param request the request
-     * @return the response entity
-     */
-    @PostMapping("/validateUploaded")
-    public ResponseEntity<List<Model>> validate(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
-        try {
-            String text = readFrom(file);
-            return validate(text, request);
-        } catch (IOException ioe) {
-            LOG.warn("Cannot upload and validate {}:", file.getOriginalFilename(), ioe);
-            return ResponseEntity.badRequest().body(DefaultDatenpaketService.asModelList(ioe));
-        }
     }
 
     /**
