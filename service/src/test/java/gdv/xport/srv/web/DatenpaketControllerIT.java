@@ -116,20 +116,38 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
 
     /**
      * Hier testen wir, ob die Fehlermeldung im bevorzugten Format (JSON)
-     * zurueckgegeben wird. JSON ist das bevorzugte Format, wenn Wildcards
-     * angegeben werden.
+     * zurueckgegeben wird.
      */
     @Test
-    public void testMalformedURIException() throws IOException {
-        ResponseEntity<String> response = getResponseEntityFor(
-                "/api/v1/Datenpaket.json?uri=xxx:gibts.net",
-                String.class);
+    public void testMalformedURLExceptionJSON() {
+        checkMalformedURL("json");
+    }
+
+    /**
+     * Fuer die XML-Serialisierung muessen die entsprechenden XML-Bibliotheken
+     * eingebunden sein. Falls dies nicht der Fall ist, kommt eine
+     * "ClassNotFoundException: com.fasterxml.jackson.dataformat.xml.XmlMapper"
+     * oder eine HttpMediaTypeNotAcceptableException.
+     */
+    @Test
+    public void testMalformedURLExceptionXML()  {
+        checkMalformedURL("xml");
+    }
+
+    private void checkMalformedURL(String format) {
+        ResponseEntity<String> response =
+                getResponseEntityFor("/api/v1/Datenpaket." + format + "?uri=xxx:gibts.net", String.class);
         assertThat(response.getBody(), containsString("status"));
         assertThat(response.getBody(), not(containsString("500")));
     }
 
     /**
-     * Hier testen wir den Exceptionhandler direkt.
+     * Hier testen wir den Exceptionhandler direkt. Im Gegensatz zur vorigen
+     * Version dieser Testmethode testen wir nicht mehr das zurueckgegebene
+     * Format (JSON), sondern das zurueckgegebenen Objekt. Trotzdem setzen
+     * wir hier im accept-Header das bevorzugte Format, falls wir den Test
+     * nochmal umschreiben wollen. Da hier Wildcards angegeben werden, sollte
+     * dabei JSON zurueckgegeben werden.
      */
     @Test
     public void testHandleExceptions() {
