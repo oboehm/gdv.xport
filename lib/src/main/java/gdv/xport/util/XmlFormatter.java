@@ -18,26 +18,17 @@
 
 package gdv.xport.util;
 
-import gdv.xport.Datenpaket;
-import gdv.xport.config.Config;
-import gdv.xport.config.ConfigException;
-import gdv.xport.feld.Feld;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Teildatensatz;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.output.WriterOutputStream;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import gdv.xport.*;
+import gdv.xport.config.*;
+import gdv.xport.feld.*;
+import gdv.xport.satz.*;
+import org.apache.commons.io.*;
+import org.apache.commons.io.output.*;
+import org.apache.logging.log4j.*;
 
-import javax.xml.stream.FactoryConfigurationError;
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
+import javax.xml.stream.*;
 import java.io.*;
-import java.util.Date;
-import java.util.Formatter;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * Diese Klasse dient dazu, um die verschiedenen Saetze und Felder in einer
@@ -112,8 +103,9 @@ public final class XmlFormatter extends AbstractFormatter {
     public void setWriter(final Writer writer) {
         super.setWriter(writer);
         try {
-            this.xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(new WriterOutputStream(writer),
-                    Config.DEFAULT_ENCODING.name());
+            this.xmlStreamWriter = XML_OUTPUT_FACTORY
+                    .createXMLStreamWriter(new WriterOutputStream(writer, Config.DEFAULT_ENCODING),
+                            Config.DEFAULT_ENCODING.name());
         } catch (XMLStreamException ex) {
             throw new IllegalArgumentException("can't create XmlStreamWriter with " + writer, ex);
         }
@@ -149,6 +141,7 @@ public final class XmlFormatter extends AbstractFormatter {
         write("bezeichnung", "%-30.30s", feld.getBezeichnung());
         xmlStreamWriter.writeCharacters(feld.getInhalt());
         xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.flush();
     }
 
     private void write(final String attribute, final String format, final Object... args) throws XMLStreamException {
@@ -176,14 +169,15 @@ public final class XmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeStartElement("teildatensatz");
         xmlStreamWriter.writeAttribute("nr", teildatensatz.getNummer().getInhalt());
         xmlStreamWriter.writeCharacters("\n");
-        for (Iterator<Feld> iterator = teildatensatz.getFelder().iterator(); iterator.hasNext();) {
+        for (Feld feld1 : teildatensatz.getFelder()) {
             writeIndent(level + 1);
-            Feld feld = iterator.next();
+            Feld feld = feld1;
             write(feld);
             xmlStreamWriter.writeCharacters("\n");
         }
         writeIndent(level);
         xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.flush();
     }
 
     /**
@@ -215,8 +209,7 @@ public final class XmlFormatter extends AbstractFormatter {
             xmlStreamWriter.writeAttribute("sparte", datensatz.getSparteFeld().getInhalt());
         }
         xmlStreamWriter.writeCharacters("\n");
-        for (Iterator<Teildatensatz> iterator = satz.getTeildatensaetze().iterator(); iterator.hasNext();) {
-            Teildatensatz teildatensatz = iterator.next();
+        for (Teildatensatz teildatensatz : satz.getTeildatensaetze()) {
             write(teildatensatz, level + 1);
             xmlStreamWriter.writeCharacters("\n");
         }
@@ -248,9 +241,7 @@ public final class XmlFormatter extends AbstractFormatter {
     /**
      * Wandelt das uebergebenen Feld in einen XML-String um.
      *
-     * @param feld
-     *            ein Feld
-     *
+     * @param feld ein Feld
      * @return das Feld als XML-String
      */
     public static String toString(final Feld feld) {
@@ -280,6 +271,7 @@ public final class XmlFormatter extends AbstractFormatter {
         } catch (XMLStreamException shouldnothappen) {
             throw new ShitHappenedException("can't convert " + teildatensatz + " to String", shouldnothappen);
         }
+        swriter.flush();
         IOUtils.closeQuietly(swriter);
         return swriter.toString();
     }

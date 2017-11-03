@@ -94,7 +94,8 @@ public class XPortApplicationIT {
      */
     @Test
     public void testDatenpaketError() {
-        ResponseEntity<String> response = template.postForEntity(converterURI + "/api/v1/Datenpaket", "xxxx", String.class);
+        ResponseEntity<String> response =
+                template.postForEntity(converterURI + "/api/v1/Datenpaket.json", "xxxx", String.class);
         assertThat(response.getStatusCodeValue(), not(500));
         assertEquals(400, response.getStatusCodeValue());
         LOG.info("response = '{}'", response.getBody());

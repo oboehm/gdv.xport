@@ -60,7 +60,7 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     public void testWriteFeld() throws XMLStreamException {
         Feld x = new Feld("Hello", "World", Align.LEFT);
         String xmlString = XmlFormatter.toString(x);
-        LOG.info(x + " as XML: " + xmlString);
+        LOG.info("{} as XML: {}", x, xmlString);
         checkXML(xmlString);
     }
 

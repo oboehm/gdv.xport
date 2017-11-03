@@ -18,20 +18,16 @@
 
 package gdv.xport.util;
 
-import java.io.*;
-import java.text.MessageFormat;
-import java.util.Date;
-import java.util.Iterator;
+import gdv.xport.*;
+import gdv.xport.config.*;
+import gdv.xport.feld.*;
+import gdv.xport.satz.*;
+import org.apache.commons.io.*;
 
 import javax.xml.stream.*;
-
-import org.apache.commons.io.IOUtils;
-
-import gdv.xport.Datenpaket;
-import gdv.xport.config.Config;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.Undefiniert;
-import gdv.xport.satz.*;
+import java.io.*;
+import java.text.*;
+import java.util.*;
 
 /**
  * Diese Klasse gibt die verschiedenen Saetze und Felder als HTML aus.
@@ -60,11 +56,8 @@ public final class HtmlFormatter extends AbstractFormatter {
     }
 
     private static String readTemplate(final String name) throws IOException {
-        InputStream istream = HtmlFormatter.class.getResourceAsStream(name);
-        try {
-            return IOUtils.toString(istream);
-        } finally {
-            istream.close();
+        try (InputStream istream = HtmlFormatter.class.getResourceAsStream(name)) {
+            return IOUtils.toString(istream, Config.DEFAULT_ENCODING);
         }
     }
 
@@ -187,14 +180,13 @@ public final class HtmlFormatter extends AbstractFormatter {
             throws XMLStreamException {
         xmlStreamWriter.writeStartElement("h3");
         xmlStreamWriter.writeCharacters("Satzart " + satz.getSatzart() + " (" + satz.getClass().getSimpleName() + ")");
-        xmlStreamWriter.writeEndElement();
-        xmlStreamWriter.writeCharacters("\n");
         int n = zeile;
-        for (Iterator<Teildatensatz> iterator = satz.getTeildatensaetze().iterator(); iterator.hasNext();) {
-            Teildatensatz teildatensatz = iterator.next();
+        for (Teildatensatz teildatensatz : satz.getTeildatensaetze()) {
             writeDetailsTo(xmlStreamWriter, teildatensatz, n);
             n++;
         }
+        xmlStreamWriter.writeEndElement();
+        xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.flush();
     }
 
@@ -204,8 +196,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeAttribute("class", "Teildatensatz");
         xmlStreamWriter.writeAttribute("title", "Nr. " + teildatensatz.getNummer().getInhalt());
         int endAdresse = 1;
-        for (Iterator<Feld> iterator = teildatensatz.getFelder().iterator(); iterator.hasNext();) {
-            Feld feld = iterator.next();
+        for (Feld feld : teildatensatz.getFelder()) {
             int gap = feld.getByteAdresse() - endAdresse;
             if (gap > 1) {
                 Feld undefiniert = new Undefiniert(gap - 1, endAdresse + 1);
@@ -240,8 +231,7 @@ public final class HtmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeCharacters("\n");
         xmlStreamWriter.writeStartElement("tbody");
         int nr = 1;
-        for (Iterator<Feld> iterator = teildatensatz.getFelder().iterator(); iterator.hasNext();) {
-            Feld feld = iterator.next();
+        for (Feld feld : teildatensatz.getFelder()) {
             writeDetailsTo(xmlStreamWriter, feld, zeile, nr);
             nr++;
         }

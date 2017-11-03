@@ -119,7 +119,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      * zurueckgegeben wird.
      */
     @Test
-    public void testMalformedURLExceptionJSON() {
+    public void testErrorDetailAsJSON() {
         checkMalformedURL("json");
     }
 
@@ -130,14 +130,22 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      * oder eine HttpMediaTypeNotAcceptableException.
      */
     @Test
-    public void testMalformedURLExceptionXML()  {
+    public void testErrorDetailAsXML()  {
         checkMalformedURL("xml");
+    }
+
+    /**
+     * Test, ob ErorDetail auch als HTML geliefert wird
+     */
+    @Test
+    public void testErrorDetailAsHTML() {
+        checkMalformedURL("html");
     }
 
     private void checkMalformedURL(String format) {
         ResponseEntity<String> response =
                 getResponseEntityFor("/api/v1/Datenpaket." + format + "?uri=xxx:gibts.net", String.class);
-        assertThat(response.getBody(), containsString("status"));
+        assertThat(response.getBody().toLowerCase(), containsString("status"));
         assertThat(response.getBody(), not(containsString("500")));
     }
 
