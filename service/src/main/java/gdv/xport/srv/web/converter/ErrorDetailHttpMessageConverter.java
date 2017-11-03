@@ -31,12 +31,17 @@ import java.nio.charset.*;
  * @author oboehm
  * @since 3.0 (02.11.2017)
  */
-public class ErrorDetailHttpMessageConverter extends AbstractHttpMessageConverter<ErrorDetail> {
+public final class ErrorDetailHttpMessageConverter extends AbstractHttpMessageConverter<ErrorDetail> {
 
     private static final Logger LOG = LogManager.getLogger(ErrorDetailHttpMessageConverter.class);
 
-    public ErrorDetailHttpMessageConverter() {
-        super(MediaType.TEXT_HTML);
+    /**
+     * Erzeugt eine MessageConverter fuer die angegebene Media-Typen.
+     *
+     * @param supportedMediaTypes unterstuetzte Media-Typen
+     */
+    public ErrorDetailHttpMessageConverter(MediaType... supportedMediaTypes) {
+        super(supportedMediaTypes);
     }
 
     /**

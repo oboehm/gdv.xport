@@ -39,6 +39,9 @@ public final class DatenpaketHttpMessageConverterTest {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketHttpMessageConverterTest.class);
 
+    /**
+     * Testmethode fuer {@link DatenpaketHttpMessageConverter#supports(Class)}.
+     */
     @Test
     public void testSupports() {
         DatenpaketHttpMessageConverter converter = new DatenpaketHttpMessageConverter(MediaType.TEXT_PLAIN);
@@ -46,8 +49,7 @@ public final class DatenpaketHttpMessageConverterTest {
     }
 
     /**
-     * Als Text soll der urspruengliche Input eines Datenpakets wiede
-     * r
+     * Als Text soll der urspruengliche Input eines Datenpakets wieder
      * ausgegeben werden.
      *
      * @throws IOException sollte nicht passieren

@@ -32,7 +32,7 @@ import java.io.*;
  * @author <a href="ob@aosd.de">oliver</a>
  * @since 3.0.0 (14.10.17)
  */
-public class DatenpaketHttpMessageConverter extends AbstractHttpMessageConverter<Datenpaket> {
+public final class DatenpaketHttpMessageConverter extends AbstractHttpMessageConverter<Datenpaket> {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketHttpMessageConverter.class);
     private final AbstractFormatter formatter;
