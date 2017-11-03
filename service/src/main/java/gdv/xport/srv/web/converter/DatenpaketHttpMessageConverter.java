@@ -15,7 +15,7 @@
  *
  * (c)reated 14.10.17 by oliver (ob@oasd.de)
  */
-package gdv.xport.srv.web.util;
+package gdv.xport.srv.web.converter;
 
 import gdv.xport.*;
 import gdv.xport.srv.config.AppConfig;
