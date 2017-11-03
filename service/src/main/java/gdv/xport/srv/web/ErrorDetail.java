@@ -17,19 +17,15 @@
  */
 package gdv.xport.srv.web;
 
-import com.fasterxml.jackson.core.*;
-import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.annotation.*;
 import gdv.xport.srv.web.util.*;
 import org.apache.logging.log4j.*;
 import org.springframework.http.*;
-import org.springframework.util.*;
 
 import javax.servlet.http.*;
 import java.io.*;
 import java.net.*;
 import java.time.*;
-import java.util.*;
 
 /**
  * Klasse ErrorDetail enthaelt Angaben zum Fehler und aufgetretener Exception.
@@ -107,32 +103,6 @@ public class ErrorDetail implements Serializable {
      */
     public String getMessage() {
         return message;
-    }
-
-    /**
-     * Konvertiert die ErrorDetails ins gewuenschte Format.
-     *
-     * @param mimeTypes Auswahl an akzeptierten Mime-Types
-     * @return entsprechende String-Repraesentation
-     */
-    public String toString(List<MimeType> mimeTypes) {
-        for (MimeType type : mimeTypes) {
-            String subType = type.getSubtype();
-            if ("json".equalsIgnoreCase(subType) || ("*".equals(subType))) {
-                return this.toJsonString();
-            }
-        }
-        return this.toString();
-    }
-
-    private String toJsonString() {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.writeValueAsString(this);
-        } catch (JsonProcessingException ex) {
-            LOG.warn("Cannot serialize {} as JSON: ", this, ex);
-            return "{ error: '" + this.toString() + "' }";
-        }
     }
 
     /**
