@@ -18,20 +18,6 @@
 
 package gdv.xport.satz.model;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
@@ -43,6 +29,16 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
 import gdv.xport.util.SatzFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.util.List;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.*;
 
 /**
  * JUnit-Test fuer Satz220.
@@ -149,16 +145,10 @@ public class Satz220Test extends AbstractDatensatzTest {
      */
     @Test
     public void testImportSparte51() throws IOException {
-        InputStream istream = this.getClass().getResourceAsStream("/gdv/xport/satz/Satz0220051.txt");
-        try {
-            Datenpaket datenpaket = new Datenpaket();
-            datenpaket.importFrom(istream);
-            List<Datensatz> datensaetze = datenpaket.getDatensaetze();
-            assertEquals(51, datensaetze.get(0).getSparte());
-            assertEquals(53, datensaetze.get(1).getSparte());
-        } finally {
-            istream.close();
-        }
+        Datenpaket datenpaket = importDatenpaket("/gdv/xport/satz/Satz0220051.txt");
+        List<Datensatz> datensaetze = datenpaket.getDatensaetze();
+        assertEquals(51, datensaetze.get(0).getSparte());
+        assertEquals(53, datensaetze.get(1).getSparte());
     }
 
     /**
