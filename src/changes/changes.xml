@@ -17,6 +17,14 @@
 
   <body>
 
+    <release version="2.1.3" date="Nov-2017"
+             description="Bugfix">
+      <action dev="oboehm" type="fix" issue="issues/8" date="04-Nov-2017">
+        Teildateners&#228;tze k&#246;nnen jetzt in beliebiger Reihenfolge
+        und mit L&#252;cken importiert werden.
+      </action>
+    </release>
+
     <release version="2.1.2" date="06-Okt-2017"
              description="Bugfix">
       <action dev="NiasSt90" type="fix" date="05-Okt-2017">
