@@ -25,6 +25,7 @@ import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
 
+import static gdv.xport.srv.config.AppConfig.MEDIA_TYPE_TEXT_CSV;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
@@ -55,11 +56,40 @@ public final class ErrorDetailHttpMessageConverterTest {
      */
     @Test
     public void writeInternalHTML() throws IOException {
-        ErrorDetailHttpMessageConverter converter = new ErrorDetailHttpMessageConverter(MediaType.TEXT_HTML);
+        String output = convertErrorDetailFor(MediaType.TEXT_HTML);
+        assertThat(output, containsString("<html>"));
+    }
+
+    /**
+     * Bei Text als MediaType sollte Statuscode und Message enthalten sein.
+     *
+     * @throws IOException sollte nicht passieren
+     */
+    @Test
+    public void writeInternalText() throws IOException {
+        String output = convertErrorDetailFor(MediaType.TEXT_PLAIN);
+        assertEquals(TEST_ERROR_DETAIL.toString(), output.trim());
+    }
+
+    /**
+     * Wird ErrorDetail als CVS ausgegben, sollten die einzelnen Elemente mit
+     * Inhalt im CSV enthalten sein.
+     *
+     * @throws IOException sollte nicht passieren
+     */
+    @Test
+    public void writeInternalCSV() throws IOException {
+        String output = convertErrorDetailFor(MEDIA_TYPE_TEXT_CSV);
+        assertThat(output, containsString("Status"));
+        assertThat(output, containsString(Integer.toString(TEST_ERROR_DETAIL.getStatus().value())));
+        assertThat(output, containsString(";"));
+    }
+
+    private String convertErrorDetailFor(MediaType mediaType) throws IOException {
+        ErrorDetailHttpMessageConverter converter = new ErrorDetailHttpMessageConverter(mediaType);
         MockHttpOutputMessage outputMessage = new MockHttpOutputMessage();
         converter.writeInternal(TEST_ERROR_DETAIL, outputMessage);
-        String output = outputMessage.getBodyAsString(StandardCharsets.ISO_8859_1);
-        assertThat(output, containsString("<html>"));
+        return outputMessage.getBodyAsString(StandardCharsets.ISO_8859_1);
     }
 
 }

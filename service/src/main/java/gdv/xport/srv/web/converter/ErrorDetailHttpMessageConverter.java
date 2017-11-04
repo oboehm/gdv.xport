@@ -25,6 +25,8 @@ import org.springframework.http.converter.*;
 import java.io.*;
 import java.nio.charset.*;
 
+import static gdv.xport.srv.config.AppConfig.*;
+
 /**
  * Klasse ErrorDetailHttpMessageConverter.
  *
@@ -67,13 +69,35 @@ public final class ErrorDetailHttpMessageConverter extends AbstractHttpMessageCo
             throws IOException, HttpMessageNotWritableException {
         LOG.info("Writing {} for {}.", errorDetail, getSupportedMediaTypes());
         Writer writer = new OutputStreamWriter(outputMessage.getBody(), StandardCharsets.ISO_8859_1);
+        switch (getSupportedMediaTypes().get(0).toString()) {
+            case MediaType.TEXT_HTML_VALUE:
+                writeInternalHTML(errorDetail, writer);
+                break;
+            case TEXT_CSV:
+                writeInternalCSV(errorDetail, writer);
+                break;
+            default:
+                writer.write(errorDetail.toString());
+                writer.write('\n');
+                break;
+        }
+        writer.flush();
+    }
+
+    private static void writeInternalHTML(ErrorDetail errorDetail, Writer writer) throws IOException {
         writer.write("<html>\n");
         writer.write("  <body>\n");
         writer.write("    <h1>Status " + errorDetail.getStatus() + " (" + errorDetail.getStatus().name() + ")</h1>\n");
         writer.write("    <p>" + errorDetail.getMessage() + "</p>\n");
         writer.write("  </body>\n");
         writer.write("</html>\n");
-        writer.flush();
+    }
+
+    private static void writeInternalCSV(ErrorDetail errorDetail, Writer writer) throws IOException {
+        writer.write("URI;" + errorDetail.getRequest() + ";\n");
+        writer.write("Status;" + errorDetail.getStatus() + " (" + errorDetail.getStatus().getReasonPhrase() + ");\n");
+        writer.write("Message;" + errorDetail.getMessage() + ";\n");
+        writer.write("Time;" + errorDetail.getWhen() + ";\n");
     }
 
 }

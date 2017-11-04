@@ -67,6 +67,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         converters.add(new DatenpaketHttpMessageConverter(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON_UTF8));
         converters.add(new DatenpaketHttpMessageConverter(MEDIA_TYPE_TEXT_CSV));
         converters.add(new ErrorDetailHttpMessageConverter(MediaType.TEXT_HTML));
+        converters.add(new ErrorDetailHttpMessageConverter(MediaType.TEXT_PLAIN));
+        converters.add(new ErrorDetailHttpMessageConverter(MEDIA_TYPE_TEXT_CSV));
         LOG.info("Message converters {} are configured.", converters);
     }
 
