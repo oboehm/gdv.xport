@@ -18,8 +18,6 @@
 
 package gdv.xport.satz.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
@@ -27,17 +25,17 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-
 import net.sf.oval.ConstraintViolation;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 /**
@@ -138,16 +136,10 @@ public class Satz221Test extends AbstractDatensatzTest {
      */
     @Test
     public void testImportSparte30() throws IOException {
-        InputStream istream = this.getClass().getResourceAsStream("/gdv/xport/satz/Satz0221030.txt");
-        try {
-            Datenpaket datenpaket = new Datenpaket();
-            datenpaket.importFrom(istream);
-            Datensatz erweiterungssatz = datenpaket.getDatensaetze().get(0);
-            Feld lfdNummer = erweiterungssatz.getFeld(Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE);
-            assertEquals("000001", lfdNummer.getInhalt());
-        } finally {
-            istream.close();
-        }
+        Datenpaket datenpaket = importDatenpaket("/gdv/xport/satz/Satz0221030.txt");
+        Datensatz erweiterungssatz = datenpaket.getDatensaetze().get(0);
+        Feld lfdNummer = erweiterungssatz.getFeld(Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE);
+        assertEquals("000001", lfdNummer.getInhalt());
     }
 
     /**

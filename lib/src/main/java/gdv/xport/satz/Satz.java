@@ -177,20 +177,6 @@ public abstract class Satz {
 	}
 
 	/**
-	 * Entfernt alle Teildatensaetze &gt;= n.
-	 *
-	 * @since 0.4
-	 * @param n ab hier wird abgeschnitten (n &gt;= 1)
-	 */
-	public final void removeAllTeildatensaetze(final int n) {
-		if ((n < 1) || (n > this.teildatensatz.length)) {
-			throw new IllegalArgumentException(n + " liegt nicht zwischen 1 und "
-			        + this.teildatensatz.length);
-		}
-		this.teildatensatz = (Teildatensatz[]) ArrayUtils.subarray(this.teildatensatz, 0, n - 1);
-	}
-
-	/**
 	 * Entfernt den gewuenschten Teildatensatz. Ein neuer Teildatensatz kann
 	 * ueber add() hinzugefuegt werden.
 	 *
@@ -685,25 +671,47 @@ public abstract class Satz {
 	 * kollidiert leider mit dem Schluesselwort "import" in Java. Inzwischen
 	 * beruecksichtigt diese Import-Methode auch zusaetzlich eingestreute
 	 * Newlines ("\n") oder/und Wagenruecklaeufe ("\r").
+     *
+     * Vor der Behebung von Issue #8 ist man davon ausgegangen, dass die
+     * Teildatensaetze hintereinander kommen und dass es keine Luecken gibt.
+     * Dies ist aber nicht der Fall. Jetzt koennen die Teildatensaetze in
+     * beliebiger Reihenfolge kommen. Nicht importierte Teildatensaetze
+     * werden am Ende aussortiert.
 	 *
-	 * @param s the s
+	 * @param s String zum Importieren
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void importFrom(final String s) throws IOException {
 		int satzlength = getSatzlength(s);
+		SortedSet<Integer> importedSatznummern = new TreeSet<>();
 		for (int i = 0; i < teildatensatz.length; i++) {
 			String input = s.substring(i * satzlength);
 			if (input.trim().isEmpty()) {
 				LOG.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur " + i
 				        + " Teildatensaetze vorgefunden");
-				this.removeAllTeildatensaetze(i + 1);
+                removeUnusedTeildatensaetze(importedSatznummern);
 				break;
 			}
-			teildatensatz[i].importFrom(input);
+			int satznummer = input.charAt(255) - '0';
+			if ((satznummer < 1) || (satznummer > teildatensatz.length)) {
+			    satznummer = i + 1;
+            }
+            teildatensatz[satznummer-1].importFrom(input);
+            importedSatznummern.add(satznummer);
 		}
 	}
 
-	/**
+    private final void removeUnusedTeildatensaetze(SortedSet<Integer> usedSatznummern) {
+        Teildatensatz[] usedTeildatensaetze = new Teildatensatz[usedSatznummern.size()];
+	    int i = 0;
+	    for (int satznummer : usedSatznummern) {
+	        usedTeildatensaetze[i] = teildatensatz[satznummer - 1];
+	        i++;
+        }
+        this.teildatensatz = usedTeildatensaetze;
+    }
+
+    /**
 	 * Importiert einen Satz von der angegebenen Datei.
 	 *
 	 * @param file die Import-Datei

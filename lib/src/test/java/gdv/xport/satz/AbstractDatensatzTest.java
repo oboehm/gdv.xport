@@ -18,13 +18,17 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import gdv.xport.Datenpaket;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.feld.common.Feld1bis7;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Dies ist die gemeinsame Oberklasse fuer alle Tests, die abgeleitete
@@ -51,6 +55,21 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
      */
     protected Datensatz getDatensatz() {
         return (Datensatz) this.getSatz();
+    }
+
+    /**
+     * Import einen Datensatz von der angegebenen Resource.
+     *
+     * @param resource Name der Resource, z.B. "/gdv/xport/satz/Satz0220051.txt"
+     * @return importiertes Datenpaket
+     * @throws IOException im Fehlerfalle.
+     */
+    protected static Datenpaket importDatenpaket(String resource) throws IOException {
+        Datenpaket datenpaket = new Datenpaket();
+        try (InputStream istream = AbstractDatensatzTest.class.getResourceAsStream(resource)) {
+            datenpaket.importFrom(istream);
+        }
+        return datenpaket;
     }
 
     /**

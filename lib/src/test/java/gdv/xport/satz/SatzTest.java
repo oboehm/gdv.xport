@@ -18,18 +18,11 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
-
-import java.io.*;
-import java.util.*;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
@@ -38,8 +31,19 @@ import gdv.xport.satz.feld.sparte53.Feld220;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
+import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
+
+import java.io.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 /**
  * Test-Klasse fuer Satz.
@@ -293,18 +297,6 @@ public final class SatzTest extends AbstractSatzTest {
         assertEquals(n - 1, s.getTeildatensaetze().size());
         s.removeTeildatensatz(1);
         assertEquals(n - 2, s.getTeildatensaetze().size());
-    }
-
-    /**
-     * Hier testen wir das Entfernen aller Teildatensaetze.
-     *
-     * @since 0.4
-     */
-    @Test
-    public void testRemoveAllTeildatensaetze() {
-        Satz s = new Vorsatz();
-        s.removeAllTeildatensaetze(2);
-        assertEquals(1, s.getTeildatensaetze().size());
     }
 
     /**

@@ -191,7 +191,7 @@ public final class HtmlFormatter extends AbstractFormatter {
     }
 
     private static void writeTo(final XMLStreamWriter xmlStreamWriter, final Teildatensatz teildatensatz,
-            final int zeile) throws XMLStreamException {
+                                final int zeile) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("span");
         xmlStreamWriter.writeAttribute("class", "Teildatensatz");
         xmlStreamWriter.writeAttribute("title", "Nr. " + teildatensatz.getNummer().getInhalt());
@@ -213,7 +213,7 @@ public final class HtmlFormatter extends AbstractFormatter {
     }
 
     private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Teildatensatz teildatensatz,
-            final int zeile) throws XMLStreamException {
+                                       final int zeile) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("h4");
         xmlStreamWriter.writeCharacters("Zeile " + zeile + ": Teildatensatz " + teildatensatz.getNummer().getInhalt());
         xmlStreamWriter.writeEndElement();
@@ -261,7 +261,7 @@ public final class HtmlFormatter extends AbstractFormatter {
     }
 
     private static void writeDetailsTo(final XMLStreamWriter xmlStreamWriter, final Feld feld, final int zeile,
-            final int nr) throws XMLStreamException {
+                                       final int nr) throws XMLStreamException {
         String typ = feld.getClass().getSimpleName();
         xmlStreamWriter.writeStartElement("tr");
         xmlStreamWriter.writeAttribute("class", typ);

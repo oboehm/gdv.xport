@@ -18,16 +18,21 @@
 
 package gdv.xport.satz.model;
 
-import static org.junit.Assert.assertEquals;
+import gdv.xport.Datenpaket;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.AbstractDatensatzTest;
+import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.Feld100;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
+import java.util.List;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * JUnit-Test fuer Satz100.
@@ -173,6 +178,25 @@ public class Satz100Test extends AbstractDatensatzTest {
     @Test(expected = IllegalArgumentException.class)
     public void testGetNameIllegalArgument() {
         satz.getName(4);
+    }
+
+    /**
+     * Dies ist der Unit-Test fuer Issue #8. Der Datensatz enthaelt dabei
+     * Teildatensatz 1, 2 und 4, nicht aber Teildatensatz 3.
+     *
+     * @throws IOException falls der Test-Satz nicht gelesen werden kann
+     */
+    @Test
+    public void testImportSatz100MitLuecke() throws IOException {
+        Datenpaket datenpaket = importDatenpaket("/gdv/xport/satz/Satz0100030.txt");
+        Datensatz satz100 = datenpaket.getDatensaetze().get(0);
+        List<Teildatensatz> teildatensaetze = satz100.getTeildatensaetze();
+        assertEquals(1, teildatensaetze.get(0).getNummer().toInt());
+        assertEquals(2, teildatensaetze.get(1).getNummer().toInt());
+        assertEquals(4, teildatensaetze.get(2).getNummer().toInt());
+        Teildatensatz tds4 = teildatensaetze.get(2);
+        assertEquals("GENODEF1JEV", tds4.getFeld(Bezeichner.BIC1).getInhalt().trim());
+        assertEquals("DE41300606010006605605", tds4.getFeld(Bezeichner.IBAN1).getInhalt().trim());
     }
 
 }
