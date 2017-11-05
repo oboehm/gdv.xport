@@ -19,6 +19,9 @@
 
     <release version="2.1.3" date="Nov-2017"
              description="Bugfix">
+      <action dev="oboehm" type="fix" issue="issues/6" date="05-Nov-2017">
+        Einige Bezeichner (mit _IN_WAEHRUNGSEINHEITEN u.a.) korrigiert.
+      </action>
       <action dev="oboehm" type="fix" issue="issues/8" date="04-Nov-2017">
         Teildateners&#228;tze k&#246;nnen jetzt in beliebiger Reihenfolge
         und mit L&#252;cken importiert werden.
