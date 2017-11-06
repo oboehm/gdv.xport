@@ -1,6 +1,32 @@
 h1. Was ist gdv-xport-service?
 
 
-gdv-xport-service bildet die REST-Schnittstelle der Java-Bibliothek "gdv-xport-lib", um auch anderen Programmiersprachen den Umgang mit dem GDV-Format zu erleichtern. Diese Bibliothek vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung der verschiedenen Datensaetze.
+gdv-xport-service bildet die REST-Schnittstelle der Java-Bibliothek "gdv-xport-lib", um auch anderen Programmiersprachen den Umgang mit dem GDV-Format zu erleichtern.
+Diese Bibliothek vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung der verschiedenen Datensaetze.
 
-Das "x" in port steht fur "im"- und "ex"-port. Die Bibliothek und dieser Microservice ist Open Source und steht unter der Apache License.
+Das "x" in port steht fur "im"- und "ex"-port.
+Die Bibliothek und dieser Microservice ist Open Source und steht unter der Apache License.
+
+
+h2. Start
+
+gdv-xport-service ist eine Spring-Boot-Anwendung.
+Sie kann als WAR-Archive auf einem Tomcat oder anderen Servlet-Container ausgerollt werden, aber auch als alleinstehende Anwendung:
+
+* java -jar gdv-xport-service-x.y.z.jar
+
+Als Port für die Standalone-Anwendung ist 2517 eingestellt.
+Wird die Anwendung lokal gestartet, kann über
+
+* http://localhost:2517/swagger-ui.html
+* http://localhost:2517/swagger-ui.html#/datenpaket45controller
+
+die Dokumentation der REST-Services unter "datenpaket-controller eingesehen werden.
+Andere REST-Services, die in der Dokumentation angzeigt werden, sind Bestandteil der Spring-Booot-Anwendung.
+
+Bestandteil der REST-Services sind auch eine kleine Web-Oberfläche auf Basis von Thymeleaf.
+Über
+
+* http://localhost:2517
+
+kann damit auf die Anwendung zugegriffen werden.

@@ -1,7 +1,10 @@
 h1. Was ist gdv-xport-lib?
 
 
-gdv-xport-lib ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert. Sie vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung der verschiedenen Datensaetze.
+gdv-xport-lib ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
+Sie vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung der verschiedenen Datensaetze.
+
+Mit 3.0 wurde die ArtifactId für Maven in "gdv-xport-lib" umbenannt (bis 2.x: "gdv-xport").
 
 Das "x" in port steht fur "im"- und "ex"-port. Die Bibliothek ist Open Source und steht unter der Apache License.
 
