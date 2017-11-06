@@ -18,16 +18,12 @@
 
 package gdv.xport;
 
-import java.io.NotSerializableException;
+import org.junit.*;
+import org.junit.runner.*;
+import patterntesting.runtime.annotation.*;
+import patterntesting.runtime.junit.*;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import patterntesting.concurrent.junit.ParallelRunner;
-import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.junit.CloneableTester;
-import patterntesting.runtime.junit.ObjectTester;
-import patterntesting.runtime.junit.SerializableTester;
+import java.io.*;
 
 
 /**
@@ -38,7 +34,7 @@ import patterntesting.runtime.junit.SerializableTester;
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (19.11.2010)
  */
-@RunWith(ParallelRunner.class)
+@RunWith(SmokeRunner.class)
 @IntegrationTest
 public class BasisTest {
 
