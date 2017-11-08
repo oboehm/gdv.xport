@@ -58,18 +58,18 @@ public final class Bezeichner {
     public static final Bezeichner ABGANGSDAT = new Bezeichner("Abgangsdatum", "Abgangsdat");
     public static final Bezeichner ABGANGSGRUND = new Bezeichner("Abgangsgrund");
     public static final Bezeichner ABLAUF = new Bezeichner("Ablauf");
-    public static final Bezeichner ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Ablaufleistung incl. Ueberschussanteile");
+    public static final Bezeichner ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Ablaufleistung incl. Ueberschussanteile in Waehrungseinheiten");
     public static final Bezeichner ABSCHLAG1_IN_PROZENT = new Bezeichner("Abschlag-1 in %");
     public static final Bezeichner ABSCHLAG1_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-1 in Waehrungseinheiten", "Abschlag1InWE");
     public static final Bezeichner ABSCHLAG2_IN_PROZENT = new Bezeichner("Abschlag-2 in %");
     public static final Bezeichner ABSCHLAG2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-2 in Waehrungseinheiten", "Abschlag1InWE");
     public static final Bezeichner ABSCHLAG3_IN_PROZENT = new Bezeichner("Abschlag-3 in %");
     public static final Bezeichner ABSCHLAG3_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-3 in Waehrungseinheiten", "Abschlag1InWE");
-    public static final Bezeichner ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlagsbetrag");
+    public static final Bezeichner ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlagsbetrag in Waehrungseinheiten");
     public static final Bezeichner ABSCHLAG_IN_PROZENT = new Bezeichner("Abschlag in %");
     public static final Bezeichner ABSCHLUSSPROVISION = new Bezeichner("Abschlussprovision");
     public static final Bezeichner ABSENDER = new Bezeichner("Absender");
-    public static final Bezeichner ABSOLUTE_BEITRAGSSUMMENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absolute Beitragssummenaenderungssumme");
+    public static final Bezeichner ABSOLUTE_BEITRAGSSUMMENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absolute Beitragssummenaenderungssumme in Waehrungseinheiten");
     public static final Bezeichner ABSOLUTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absolute Erlebensfall VS");
     public static final Bezeichner ABSOLUTE_JAHRESRENTENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absolute Jahresrentenaenderungssumme");
     public static final Bezeichner ABSOLUTE_TODESFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absolute Todesfallaenderungssumme");
@@ -2665,7 +2665,7 @@ public final class Bezeichner {
     public static final String NAME_RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = "Rueckgewaehrsumme zum Ablauf";
     /** @deprecated Bitte entsprechende Bezeichner-Konstante verwenden. */
     @Deprecated
-    public static final String NAME_ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = "Ablaufleistung incl. Ueberschussanteile";
+    public static final String NAME_ABLAUFLEISTUNG_INKL_UEBERSCHUSSANTEILE_IN_WAEHRUNGSEINHEITEN = "Ablaufleistung incl. Ueberschussanteile in Waehrungseinheiten";
     /** @deprecated Bitte entsprechende Bezeichner-Konstante verwenden. */
     @Deprecated
     public static final String NAME_KAPITALERTRAGSSTEUER_BEI_ABLAUF = "Kapitalertragssteuer bei Ablauf";
@@ -3617,8 +3617,8 @@ public final class Bezeichner {
         }
         StringBuilder buf = new StringBuilder();
         String[] words = input.split(" ");
-        for (int i = 0; i < words.length; i++) {
-            buf.append(toShortcut(words[i]));
+        for (String word : words) {
+            buf.append(toShortcut(word));
         }
         return buf.toString();
     }
@@ -3626,8 +3626,8 @@ public final class Bezeichner {
     private static String toShortcut(final String input) {
         StringBuilder converted = new StringBuilder();
         char[] chars = input.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            appendLetterOrDigit(converted, chars[i]);
+        for (char ch : chars) {
+            appendLetterOrDigit(converted, ch);
         }
         String word = converted.toString();
         if (word.endsWith("datum")) {
@@ -3724,23 +3724,23 @@ public final class Bezeichner {
      */
     public static Field getField(final String bezeichnung) {
         Field[] fields = Bezeichner.class.getFields();
-        for (int i = 0; i < fields.length; i++) {
+        for (Field field : fields) {
             try {
-                Object value = fields[i].get(null);
+                Object value = field.get(null);
                 if (value == null) {
                     continue;
                 }
                 if (bezeichnung.equalsIgnoreCase(value.toString())) {
-                    return fields[i];
+                    return field;
                 }
                 if (value instanceof Bezeichner) {
                     Bezeichner bez = (Bezeichner) value;
                     if (bezeichnung.equalsIgnoreCase(bez.getName())) {
-                        return fields[i];
+                        return field;
                     }
                 }
             } catch (IllegalAccessException e) {
-                LOG.debug("Will ignore field {}:", fields[i], e);
+                LOG.debug("Will ignore field {}:", field, e);
             }
         }
         throw new IllegalArgumentException("no constant with text \"" + bezeichnung + "\" defined");
