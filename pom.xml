@@ -218,6 +218,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.20.1</version>
         <configuration>
           <excludes>
             <exclude>**/Abstract*.java</exclude>
@@ -230,7 +231,36 @@
           </systemProperties>
         </configuration>
       </plugin>
-      
+
+      <!-- Integrations-Tests -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>2.20.1</version>
+        <configuration>
+          <!-- disable parallel execution so that JaCoCo listener can properly work -->
+          <parallel>none</parallel>
+          <forkCount>1</forkCount>
+          <perCoreThreadCount>false</perCoreThreadCount>
+          <reuseForks>true</reuseForks>
+          <childDelegation>false</childDelegation>
+          <!--
+            Der Eintrag mit classesDirectory ist ein Workaround fuer Spring-Boot,
+            damit die Integrations-Tests auch wirklich ausegefuert werden,
+            s. https://github.com/spring-projects/spring-boot/issues/6254
+          -->
+          <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+            </goals>
+            <phase>integration-test</phase>
+          </execution>
+        </executions>
+      </plugin>
+
       <!-- Sonar -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -332,47 +362,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.19.1</version>
-      </plugin>
-
-      <!--
-          code smells
-          start 'mvn pmd:pmd'
-          http://maven.apache.org/plugins/maven-pmd-plugin/
-      -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.6</version>
-        <configuration>
-          <sourceEncoding>utf-8</sourceEncoding>
-          <minimumTokens>100</minimumTokens>
-          <targetJdk>${java.version}</targetJdk>
-          <rulesets>
-            <ruleset>${basedir}/config/pmd.xml</ruleset>
-          </rulesets>
-        </configuration>
-      </plugin>
-
-      <!--
-          findbugs
-          start 'mvn findbugs:findbugs'
-          http://mojo.codehaus.org/findbugs-maven-plugin/
-          http://docs.codehaus.org/display/MAVENUSER/FindBugs+Plugin
-       -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <configuration>
-          <findbugsXmlOutput>true</findbugsXmlOutput>
-          <xmlOutput>true</xmlOutput>
-          <threshold>Normal</threshold>
-          <effort>Max</effort>
-          <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
-          <omitVisitors>FindDeadLocalStores,OverridingEqualsNotSymmetrical</omitVisitors>
-          <onlyAnalyze>gdv.xport.-</onlyAnalyze>
-          <relaxed>false</relaxed>
-        </configuration>
+        <version>2.20.1</version>
       </plugin>
 
     </plugins>
