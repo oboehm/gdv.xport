@@ -75,8 +75,6 @@ public final class Bezeichner {
     public static final Bezeichner ABSOLUTE_UNFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absolute Unfallaenderungssumme in Waehrungseinheiten");
     public static final Bezeichner ABWEICHENDES_DYNAMIKENDALTER = new Bezeichner("Abweichendes Dynamikendalter");
     public static final Bezeichner ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absoluter Dynamikerhoehungsbetrag in Waehrungseinheiten");
-    public static final Bezeichner AENDERUNG_DER_BEITRAGSSUMME = new Bezeichner("Aenderung der Beitragssumme");
-    public static final Bezeichner ABSTAND_DER_BEITRAGSSUMMENAENDERUNGSTERMINE = new Bezeichner("Abstand der Beitragssummenaenderungstermine");
     public static final Bezeichner ABSTAND_DER_ERLEBENSFAL_VS_AENDERUNGSTERMINE = new Bezeichner("Abstand der Erlebensfall VS-Aenderungstermine");
     public static final Bezeichner ABSTAND_DER_JAHRESRENTENAENDERUNGSTERMINE = new Bezeichner("Abstand der Jahresrentenaenderungstermine");
     public static final Bezeichner ABSTAND_DER_TODESFALLAENDERUNGSTERMINE = new Bezeichner("Abstand der Todesfallaenderungstermine");
