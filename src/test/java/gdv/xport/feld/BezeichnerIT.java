@@ -58,7 +58,7 @@ public class BezeichnerIT {
     public static Collection<Object[]> data() {
         Collection<Object[]> values = new ArrayList<>();
         for (Field field : Bezeichner.class.getFields()) {
-            if (field.getType().equals(Bezeichner.class)) {
+            if (field.getType().equals(Bezeichner.class) && !(field.getName().startsWith("VERSION"))) {
                 try {
                     Bezeichner b = (Bezeichner) field.get(null);
                     addTo(values, b);
