@@ -75,7 +75,7 @@ public final class Bezeichner {
     public static final Bezeichner ABSOLUTE_UNFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absolute Unfallaenderungssumme in Waehrungseinheiten");
     public static final Bezeichner ABWEICHENDES_DYNAMIKENDALTER = new Bezeichner("Abweichendes Dynamikendalter");
     public static final Bezeichner ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absoluter Dynamikerhoehungsbetrag in Waehrungseinheiten");
-    public static final Bezeichner ABSTAND_DER_ERLEBENSFAL_VS_AENDERUNGSTERMINE = new Bezeichner("Abstand der Erlebensfall VS-Aenderungstermine");
+    public static final Bezeichner ABSTAND_DER_ERLEBENSFAL_VS_AENDERUNGSTERMINE = new Bezeichner("Abstand der Erlebensfall VS-Aenderungstermine","AbstandErlebensfallVsAenderungstermine");
     public static final Bezeichner ABSTAND_DER_JAHRESRENTENAENDERUNGSTERMINE = new Bezeichner("Abstand der Jahresrentenaenderungstermine");
     public static final Bezeichner ABSTAND_DER_TODESFALLAENDERUNGSTERMINE = new Bezeichner("Abstand der Todesfallaenderungstermine");
     public static final Bezeichner ABSTAND_DER_UNFALLAENDERUNGSTERMINE = new Bezeichner("Abstand der Unfallaenderungstermine");
@@ -3631,6 +3631,9 @@ public final class Bezeichner {
         }
         if ("Waehrungseinheiten".equals(word)) {
             return "WE";
+        }
+        if ("der".equals(word) || "des".equals(word)) {
+            return "";
         }
         return WordUtils.capitalize(word);
     }

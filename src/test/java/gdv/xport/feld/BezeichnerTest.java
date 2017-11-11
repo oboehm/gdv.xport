@@ -18,16 +18,13 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.*;
+import org.junit.runner.*;
+import patterntesting.runtime.junit.*;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.*;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import patterntesting.runtime.junit.ObjectTester;
-import patterntesting.runtime.junit.SmokeRunner;
+import static org.junit.Assert.*;
 
 /**
  * JUnit-Tests fuer die {@link Bezeichner}-Klasse.
@@ -99,6 +96,14 @@ public class BezeichnerTest {
     public void testGetTechnischerNameForWaehrungseinheit() {
         Bezeichner zuzahlungsdatum = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten");
         assertEquals("ZuzahlungsbetragInWE", zuzahlungsdatum.getTechnischerName());
+    }
+
+    /**
+     * Artikel wie "der" sind nicht Artikel eines technischen Namens.
+     */
+    @Test
+    public void testGetTechnischerNameWithArtikel() {
+        assertEquals("AbstandJahresrentenaenderungstermine", Bezeichner.ABSTAND_DER_JAHRESRENTENAENDERUNGSTERMINE.getTechnischerName());
     }
 
     /**
