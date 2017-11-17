@@ -58,7 +58,7 @@ public class BezeichnerIT {
     public static Collection<Object[]> data() {
         Collection<Object[]> values = new ArrayList<>();
         for (Field field : Bezeichner.class.getFields()) {
-            if (field.getType().equals(Bezeichner.class) && !(field.getName().startsWith("VERSION"))) {
+            if (field.getType().equals(Bezeichner.class) && !isExcludedFromTest(field)) {
                 try {
                     Bezeichner b = (Bezeichner) field.get(null);
                     addTo(values, b);
@@ -68,6 +68,16 @@ public class BezeichnerIT {
             }
         }
         return values;
+    }
+
+    private static boolean isExcludedFromTest(Field field) {
+        String[] prefixes = { "A", "VERSION" };
+        for (String prefix : prefixes) {
+            if (field.getName().startsWith(prefix)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static void addTo(Collection<Object[]> values, Bezeichner b) {

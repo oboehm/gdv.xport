@@ -3626,16 +3626,19 @@ public final class Bezeichner {
             appendLetterOrDigit(converted, ch);
         }
         String word = converted.toString();
-        if (word.endsWith("datum")) {
-            return word.substring(0, word.length() - 2);
+        switch (word) {
+            case "Waehrungseinheiten":
+                return "WE";
+            case "VS":
+                return "Vs";
+            default:
+                if ((word.length() == 3) && (word.charAt(0) == 'd')) {
+                    return "";
+                } else if (word.endsWith("datum")) {
+                    return word.substring(0, word.length() - 2);
+                }
+                return WordUtils.capitalize(word);
         }
-        if ("Waehrungseinheiten".equals(word)) {
-            return "WE";
-        }
-        if ("der".equals(word) || "des".equals(word)) {
-            return "";
-        }
-        return WordUtils.capitalize(word);
     }
 
     private static void appendLetterOrDigit(StringBuilder converted, char aChar) {

@@ -99,6 +99,17 @@ public class BezeichnerTest {
     }
 
     /**
+     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Namen, die auf
+     * "VS" aufhoeren, haben meist "Vs" (mit kleinem 's') als Endung fuer den
+     * technischen Namen.
+     */
+    @Test
+    public void testGetTechnischerNameForVS() {
+        Bezeichner zuzahlungsdatum = new Bezeichner("Erlebensfall VS");
+        assertEquals("ErlebensfallVs", zuzahlungsdatum.getTechnischerName());
+    }
+
+    /**
      * Artikel wie "der" sind nicht Artikel eines technischen Namens.
      */
     @Test
