@@ -219,8 +219,8 @@ public final class Bezeichner {
     public static final Bezeichner BIC1 = new Bezeichner("BIC 1");
     public static final Bezeichner BIC2 = new Bezeichner("BIC 2");
     public static final Bezeichner BILANZMONAT_ARBEITGEBER = new Bezeichner("Bilanzmonat Arbeitgeber");
-    public static final Bezeichner BLZ1 = new Bezeichner("Bankleitzahl 1");
-    public static final Bezeichner BLZ2 = new Bezeichner("Bankleitzahl 2");
+    public static final Bezeichner BLZ1 = new Bezeichner("Bankleitzahl 1", "Bankleitzahl");
+    public static final Bezeichner BLZ2 = new Bezeichner("Bankleitzahl 2", "Bankleitzahl2");
     public static final Bezeichner BUENDELUNGSKENNZEICHEN = new Bezeichner("Buendelungskennzeichen");
     public static final Bezeichner BUCHUNGSKENNZEICHEN = new Bezeichner("Buchungskennzeichen");
     public static final Bezeichner BUCHUNGSKENNZEICHEN2 = BUCHUNGSKENNZEICHEN;
