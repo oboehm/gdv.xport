@@ -67,6 +67,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
     protected static Datenpaket importDatenpaket(String resource) throws IOException {
         Datenpaket datenpaket = new Datenpaket();
         try (InputStream istream = AbstractDatensatzTest.class.getResourceAsStream(resource)) {
+            assert istream != null : resource + " not found";
             datenpaket.importFrom(istream);
         }
         return datenpaket;
