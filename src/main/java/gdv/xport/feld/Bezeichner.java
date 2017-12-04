@@ -279,9 +279,9 @@ public final class Bezeichner {
     public static final Bezeichner ENDEDATUM_BEI_ROTEN_KENNZEICHEN = new Bezeichner("Endedatum des Versicherungsschutzes bei roten Kennzeichen", "EndedatumBeiRotenKennzeichen");
     public static final Bezeichner ERHOEHUNGSSATZ_8_III_AHB = new Bezeichner("Erhoehungssatz \u00a78, III AHB");
     public static final Bezeichner ERKRANKUNGEN = new Bezeichner("Erkrankungen");
-    public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT = new Bezeichner("Erlebensfall VS");
-    public static final Bezeichner ERLEBENSFALL_VS2_IN_WAEHRUNGSEINHEIT = new Bezeichner("Erlebensfall VS II");
-    public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Erlebensfall VS zum Ablauf");
+    public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT = new Bezeichner("Erlebensfall VS in Waehrungseinheiten");
+    public static final Bezeichner ERLEBENSFALL_VS2_IN_WAEHRUNGSEINHEIT = new Bezeichner("Erlebensfall VS II in Waehrungseinheiten");
+    public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Erlebensfall VS in Waehrungseinheiten zum Ablauf");
     public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Erlebensfall VS II zum Ablauf");
     public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Erlebensfall VS II in Waehrungseinheiten");
     public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Erlebensfall VS in Waehrungseinheiten");
