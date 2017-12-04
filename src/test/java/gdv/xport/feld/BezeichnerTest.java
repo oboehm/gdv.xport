@@ -162,6 +162,14 @@ public class BezeichnerTest {
     }
 
     /**
+     * "...nummer" wird nur manchmal als "...Nr" abgekuerzt.
+     */
+    @Test
+    public void testGetTechnischerNameWithNummer() {
+        assertEquals("Referenznummer", Bezeichner.REFERENZNUMMER.getTechnischerName());
+    }
+
+    /**
      * Zwei Bezeichner mit dem identischen Namen sollten natuerlich gleich
      * sein.
      */

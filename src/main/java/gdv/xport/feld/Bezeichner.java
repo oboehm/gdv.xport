@@ -291,9 +291,9 @@ public final class Bezeichner {
     public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_VOM = new Bezeichner("Erstellungs-Datum-Zeitraum vom");
     public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_BIS = new Bezeichner("Erstellungs-Datum-Zeitraum bis");
 
-    public static final Bezeichner FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG = new Bezeichner("Faelligkeit der letzten Beitragszahlung");
+    public static final Bezeichner FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG = new Bezeichner("Faelligkeit der letzten Beitragszahlung", "FaelligkeitDerLetztenBeitragszahlung");
     public static final Bezeichner FAHRZEUGART = new Bezeichner("Fahrzeugart");
-    public static final Bezeichner FAHRZEUGIDENTIFIZIERUNGSNUMMER = new Bezeichner("Fahrzeugidentifizierungsnummer");
+    public static final Bezeichner FAHRZEUGIDENTIFIZIERUNGSNUMMER = new Bezeichner("Fahrzeugidentifizierungsnummer", "FahrzeugidentifizierungsNr");
     public static final Bezeichner FALLENDE_SUMME = new Bezeichner("fallende Summe");
     public static final Bezeichner FALLENDE_VS = new Bezeichner("fallende VS");
     public static final Bezeichner FAMILIENSTAND = new Bezeichner("Familienstand");
@@ -455,13 +455,13 @@ public final class Bezeichner {
     public static final Bezeichner KH_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KH-Zuschlaege in Waehrungseinheiten");
     public static final Bezeichner KLARTEXT_SICHERUNGSEINRICHTUNG = new Bezeichner("Klartext Sicherungseinrichtung");
     public static final Bezeichner KOLLEKTIV_NR = new Bezeichner("Kollektiv-Nr.");
-    public static final Bezeichner KOMMUNIKATIONSNR1 = new Bezeichner("Kommunikationsnummer 1");
-    public static final Bezeichner KOMMUNIKATIONSNR2 = new Bezeichner("Kommunikationsnummer 2");
-    public static final Bezeichner KOMMUNIKATIONSNR3 = new Bezeichner("Kommunikationsnummer 3");
-    public static final Bezeichner KOMMUNIKATIONSNR4 = new Bezeichner("Kommunikationsnummer 4");
-    public static final Bezeichner KOMMUNIKATIONSNR5 = new Bezeichner("Kommunikationsnummer 5");
-    public static final Bezeichner KOMMUNIKATIONSNR6 = new Bezeichner("Kommunikationsnummer 6");
-    public static final Bezeichner KOMMUNIKATIONSNR7 = new Bezeichner("Kommunikationsnummer 7");
+    public static final Bezeichner KOMMUNIKATIONSNR1 = new Bezeichner("Kommunikationsnummer 1", "KommunikationsNr1");
+    public static final Bezeichner KOMMUNIKATIONSNR2 = new Bezeichner("Kommunikationsnummer 2", "KommunikationsNr2");
+    public static final Bezeichner KOMMUNIKATIONSNR3 = new Bezeichner("Kommunikationsnummer 3", "KommunikationsNr3");
+    public static final Bezeichner KOMMUNIKATIONSNR4 = new Bezeichner("Kommunikationsnummer 4", "KommunikationsNr4");
+    public static final Bezeichner KOMMUNIKATIONSNR5 = new Bezeichner("Kommunikationsnummer 5", "KommunikationsNr5");
+    public static final Bezeichner KOMMUNIKATIONSNR6 = new Bezeichner("Kommunikationsnummer 6", "KommunikationsNr6");
+    public static final Bezeichner KOMMUNIKATIONSNR7 = new Bezeichner("Kommunikationsnummer 7", "KommunikationsNr7");
     public static final Bezeichner KOMMUNIKATIONSTYP1 = new Bezeichner("Kommunikationstyp 1");
     public static final Bezeichner KOMMUNIKATIONSTYP2 = new Bezeichner("Kommunikationstyp 2");
     public static final Bezeichner KOMMUNIKATIONSTYP3 = new Bezeichner("Kommunikationstyp 3");
@@ -469,8 +469,8 @@ public final class Bezeichner {
     public static final Bezeichner KOMMUNIKATIONSTYP5 = new Bezeichner("Kommunikationstyp 5");
     public static final Bezeichner KOMMUNIKATIONSTYP6 = new Bezeichner("Kommunikationstyp 6");
     public static final Bezeichner KOMMUNIKATIONSTYP7 = new Bezeichner("Kommunikationstyp 7");
-    public static final Bezeichner KONTONR1 = new Bezeichner("Kontonummer 1");
-    public static final Bezeichner KONTONR2 = new Bezeichner("Kontonummer 2");
+    public static final Bezeichner KONTONR1 = new Bezeichner("Kontonummer 1", "KontoNr1");
+    public static final Bezeichner KONTONR2 = new Bezeichner("Kontonummer 2", "KontoNr2");
     public static final Bezeichner KOSMETISCHE_OPERATIONEN = new Bezeichner("Kosmetische Operationen");
     public static final Bezeichner KOSMETISCHE_OPERATIONEN_BEITRAGSSATZ = new Bezeichner("Kosmetische Operationen Beitragssatz");
     public static final Bezeichner KRANKENHAUSTAGEGELD = new Bezeichner("Krankenhaustagegeld");
@@ -561,16 +561,16 @@ public final class Bezeichner {
 
     public static final Bezeichner OBJEKTNUMMER = new Bezeichner("Objektnummer");
     public static final Bezeichner OBJEKTNUMMER2 = OBJEKTNUMMER;
-    public static final Bezeichner ORDNUNGS_NUMMER_FUER_WAGNISZUATZ = new Bezeichner("Ordungs-Nummer fuer Wagniszusatz");
+    public static final Bezeichner ORDNUNGS_NUMMER_FUER_WAGNISZUATZ = new Bezeichner("Ordnungs-Nummer fuer Wagniszuatz", "OrdnungsNrWagniszuatz");
     public static final Bezeichner ORDNUNGS_NUMMER_FUER_WAGNISZUSATZ2 = ORDNUNGS_NUMMER_FUER_WAGNISZUATZ;
     public static final Bezeichner ORDNUNGSBEGRIFF = new Bezeichner("Ordnungsbegriff");
     public static final Bezeichner ORT = new Bezeichner("Ort");
 
     public static final Bezeichner PASSIVES_KRIEGSRISIKO = new Bezeichner("passives Kriegsrisiko");
-    public static final Bezeichner PERSONEN_KUNDENNUMMER_DES_VERMITTLERS = new Bezeichner("Personen Kundennummer des Vermittlers");
-    public static final Bezeichner PERSONEN_KUNDENNUMMER_DES_VERSICHERERS = new Bezeichner("Personen-/Kundennummer des Versicherers");
-    public static final Bezeichner PERSONENNUMMER_LFD_NUMMER = new Bezeichner("Personennummer / lfd. Nummer");
-    public static final Bezeichner POLICIERUNGSDAT = new Bezeichner("Policierungsdatum", "Policierungsdat");
+    public static final Bezeichner PERSONEN_KUNDENNUMMER_DES_VERMITTLERS = new Bezeichner("Personen Kundennummer des Vermittlers", "PersonenKundenNrVermittlers");
+    public static final Bezeichner PERSONEN_KUNDENNUMMER_DES_VERSICHERERS = new Bezeichner("Personen-/Kundennummer des Versicherers", "PersonenKundenNrVersicherers");
+    public static final Bezeichner PERSONENNUMMER_LFD_NUMMER = new Bezeichner("Personennummer / lfd. Nummer", "PersonenNrLfdNr");
+    public static final Bezeichner POLICIERUNGSDAT = new Bezeichner("Policierungsdatum", "Policierungsdatum");
     public static final Bezeichner POSTALISCHES_KENNZEICHEN = new Bezeichner("postalisches Kennzeichen");
     public static final Bezeichner POSTFACH = new Bezeichner("postfach");
     public static final Bezeichner POSTLEITZAHL = new Bezeichner("Postleitzahl");
@@ -593,12 +593,11 @@ public final class Bezeichner {
 
     public static final Bezeichner RATENZAHLUNGSZUSCHLAG_IN_PROZENT = new Bezeichner("Ratenzahlungszuschlag in %");
     public static final Bezeichner RECHTSFORM = new Bezeichner("Rechtsform");
-    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMME = new Bezeichner("Referenz-Versicherungsscheinnumme");
     public static final Bezeichner REFERENZNUMMER = new Bezeichner("Referenznummer");
-    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Referenz-Versicherungsscheinnummer");
-    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_1 = new Bezeichner("1. Referenz-Versicherungsscheinnummer");
-    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_2 = new Bezeichner("2. Referenz-Versicherungsscheinnummer");
-    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_3 = new Bezeichner("3. Referenz-Versicherungsscheinnummer");
+    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Referenz-Versicherungsscheinnummer", "ReferenzVsNr");
+    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_1 = new Bezeichner("1. Referenz-Versicherungsscheinnummer", "ReferenzVsNr1");
+    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_2 = new Bezeichner("2. Referenz-Versicherungsscheinnummer", "ReferenzVsNr2");
+    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_3 = new Bezeichner("3. Referenz-Versicherungsscheinnummer", "ReferenzVsNr3");
     public static final Bezeichner REGISTRIERUNGSNUMMER_VERMITTLER = new Bezeichner("Registrierungsnummer Vermittler");
     public static final Bezeichner RENTE_INCL_UEBERSCHUSSBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rente inkl. Ueberschussbeteiligung in Waehrungseinheiten");
     public static final Bezeichner RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rente inkl. Ueberschussanrechnung in Waehrungseinheiten");
@@ -638,12 +637,12 @@ public final class Bezeichner {
     public static final Bezeichner SATZNUMMER4 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER5 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER9 = SATZNUMMER;
-    public static final Bezeichner SATZNUMMERWIEDERHOLUNG = new Bezeichner("Satznummerwiederholung");
-    public static final Bezeichner SATZNUMMERWIEDERHOLUNG1 = new Bezeichner("Satznummerwiederholung1");
-    public static final Bezeichner SATZNUMMERWIEDERHOLUNG2 = new Bezeichner("Satznummerwiederholung2");
-    public static final Bezeichner SATZNUMMERWIEDERHOLUNG3 = new Bezeichner("Satznummerwiederholung3");
-    public static final Bezeichner SATZNUMMERWIEDERHOLUNG4 = new Bezeichner("Satznummerwiederholung4");
-    public static final Bezeichner SATZNUMMERWIEDERHOLUNG9 = new Bezeichner("Satznummerwiederholung9");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG = new Bezeichner("Satznummernwiederholung", "SatzNrnwiederholung");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG1 = new Bezeichner("Satznummerwiederholung1", "SatzNrnwiederholung1");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG2 = new Bezeichner("Satznummerwiederholung2", "SatzNrnwiederholung2");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG3 = new Bezeichner("Satznummerwiederholung3", "SatzNrnwiederholung3");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG4 = new Bezeichner("Satznummerwiederholung4", "SatzNrnwiederholung4");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG9 = new Bezeichner("Satznummerwiederholung9", "SatzNrnwiederholung9");
     public static final Bezeichner SCHADENBEARBEITUNGSKOSTEN = new Bezeichner("Schadenbearbeitungskosten");
     public static final Bezeichner SCHLUESSEL_SICHERUNGSEINRICHTUNG = new Bezeichner("Schluessel Sicherungseinrichtung");
     public static final Bezeichner SCHLUSSALTER_DES_WAISEN = new Bezeichner("Schlussalter des Waisen");
@@ -671,7 +670,7 @@ public final class Bezeichner {
     public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_ERLEBENSFALL = new Bezeichner("Sonstiger Bezeugsberechtigter im Erlebensfall");
     public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL = new Bezeichner("Sonstigter Bezugsberechtigter im Leistungsfall");
     public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL = new Bezeichner("Sonstiger Bezugsberechtigter im Todesfall");
-    public static final Bezeichner SOZIALVERSICHERUNG_NUMMER = new Bezeichner("Sozialversicherung Nummer");
+    public static final Bezeichner SOZIALVERSICHERUNG_NUMMER = new Bezeichner("Sozialversicherung Nummer", "Sozialversicherung");
     public static final Bezeichner SPARTE = new Bezeichner("Sparte");
     public static final Bezeichner SPARTE2 = new Bezeichner("Sparte2", "Sparte2");
     public static final Bezeichner SPARVORGANG = new Bezeichner("Sparvorgang");
@@ -761,7 +760,7 @@ public final class Bezeichner {
     public static final Bezeichner VERSICHERTE_GEFAHREN = new Bezeichner("Versicherte Gefahren");
     public static final Bezeichner VERSICHERUNGSLEISTUNGEN = new Bezeichner("Versicherungsleistungen");
     public static final Bezeichner VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Versicherungsschein-Nummer", "VsNr");
-    public static final Bezeichner VERSICHERUNGSSCHEINNUMMER_VM = new Bezeichner("Versicherungsscheinnummer VM");
+    public static final Bezeichner VERSICHERUNGSSCHEINNUMMER_VM = new Bezeichner("Versicherungsscheinnummer VM", "VsNrVm");
     public static final Bezeichner VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme in Waehrungseinheiten");
     public static final Bezeichner VERSION_SATZART_9999 = new Bezeichner("Version Satzart 9999 Nachsatz");
     public static final Bezeichner VERTRAG_MIT_ZUWACHSGARANTIE = new Bezeichner("Vertrag mit Zuwachsgarantie");
@@ -883,7 +882,7 @@ public final class Bezeichner {
     public static final Bezeichner VERTRAGSFORM = new Bezeichner("Vertragsform");
     public static final Bezeichner VERTRAGSLAUFZEIT = new Bezeichner("Vertragslaufzeit");
     public static final Bezeichner VERTRAGSSTATUS = new Bezeichner("Vertragsstatus");
-    public static final Bezeichner VERTRAGSVERBINDUNGSNUMMER = new Bezeichner("Vertragsverbindungs-Nummer");
+    public static final Bezeichner VERTRAGSVERBINDUNGSNUMMER = new Bezeichner("Vertragsverbindungsnummer", "Vertragsverbindungsnummer");
     public static final Bezeichner VORAUSSICHTLICHES_ENDE = new Bezeichner("voraussichtliches Ende");
     public static final Bezeichner VORLAUFSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Vorlaufsumme in Waehrungseinheiten");
     public static final Bezeichner VORNAME_VP = new Bezeichner("Vorname der VP");
@@ -895,8 +894,8 @@ public final class Bezeichner {
     public static final Bezeichner VORZEICHEN5 = VORZEICHEN;
     public static final Bezeichner VORZUGSSEUERBERECHTIGUNG_PROZENT = new Bezeichner("Vorsteuerabszugsberechtigung in Prozent");
     public static final Bezeichner VORZUGSSTEUERBERECHTIGUNG = new Bezeichner("Vorsteuerabszugsberechtigung Ja/Nein");
-    public static final Bezeichner VP_PERSONENNUMMER_VERMITTLER = new Bezeichner("VP-Personnenummer des Vermittlers");
-    public static final Bezeichner VP_PERSONENNUMMER_VERSICHERER = new Bezeichner("VP-Personnenummer des Versicherers");
+    public static final Bezeichner VP_PERSONENNUMMER_VERMITTLER = new Bezeichner("VP-Personennummer des Vermittlers", "VpPersonenNrVermittlers");
+    public static final Bezeichner VP_PERSONENNUMMER_VERSICHERER = new Bezeichner("VP-Personennummer des Versicherers", "VpPersonenNrVersicherers");
     public static final Bezeichner VS_NR = VERSICHERUNGSSCHEINNUMMER;
     public static final Bezeichner VU_ABRECHNUNGSSTELLE = new Bezeichner("VU-Abrechnungsstelle");
     public static final Bezeichner VU_NR = new Bezeichner("VU-Nummer", "VuNr");
