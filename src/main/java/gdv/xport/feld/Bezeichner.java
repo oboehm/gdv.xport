@@ -3626,12 +3626,12 @@ public final class Bezeichner {
         }
         String word = converted.toString();
         switch (word) {
-            case "Waehrungseinheiten":
-                return "WE";
             case "VN":
                 return "Vn";
             case "VS":
                 return "Vs";
+            case "Waehrungseinheiten":
+                return "WE";
             default:
                 if ((word.length() == 3) && (word.charAt(0) == 'd') && (word.charAt(2) != 'n')) {
                     return "";
@@ -3640,6 +3640,8 @@ public final class Bezeichner {
                 } else if (word.toLowerCase().endsWith("versicherung")) {
                     String versicherung = WordUtils.capitalize(word);
                     return versicherung.substring(0, versicherung.length() - 12) + "Vers";
+                } else if (word.startsWith("eVB")) {
+                    return "eVB" + WordUtils.capitalize(word.substring(3));
                 }
                 return WordUtils.capitalize(word);
         }

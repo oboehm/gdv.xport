@@ -154,6 +154,14 @@ public class BezeichnerTest {
     }
 
     /**
+     * "eVB" wird als "eVB" abgekuerzt.
+     */
+    @Test
+    public void testGetTechnischerNameEVB() {
+        assertEquals("eVBNummer", Bezeichner.EVB_NUMMER.getTechnischerName());
+    }
+
+    /**
      * Zwei Bezeichner mit dem identischen Namen sollten natuerlich gleich
      * sein.
      */
