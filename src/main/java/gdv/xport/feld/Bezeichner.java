@@ -3637,6 +3637,9 @@ public final class Bezeichner {
                     return "";
                 } else if (word.endsWith("datum")) {
                     return word.substring(0, word.length() - 2);
+                } else if (word.toLowerCase().endsWith("versicherung")) {
+                    String versicherung = WordUtils.capitalize(word);
+                    return versicherung.substring(0, versicherung.length() - 12) + "Vers";
                 }
                 return WordUtils.capitalize(word);
         }

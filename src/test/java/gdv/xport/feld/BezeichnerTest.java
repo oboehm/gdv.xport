@@ -146,6 +146,14 @@ public class BezeichnerTest {
     }
 
     /**
+     * "Versicherung" wird als "Vers" abgekuerzt.
+     */
+    @Test
+    public void testGetTechnischerNameWithVersicherung() {
+        assertEquals("ErweiterteNeuwertVers", Bezeichner.ERWEITERTE_NEUWERTVERSICHERUNG.getTechnischerName());
+    }
+
+    /**
      * Zwei Bezeichner mit dem identischen Namen sollten natuerlich gleich
      * sein.
      */
