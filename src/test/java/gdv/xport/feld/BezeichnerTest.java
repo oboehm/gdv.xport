@@ -130,10 +130,18 @@ public class BezeichnerTest {
     }
 
     /**
-     * Artikel wie "der" sind nicht Artikel eines technischen Namens.
+     * Artikel wie "der" sind nicht Bestandteil eines technischen Namens.
      */
     @Test
     public void testGetTechnischerNameWithArtikel() {
+        assertEquals("ErsteZulassungAufDenVn", Bezeichner.ERSTE_ZULASSUNG_AUF_DEN_VN.getTechnischerName());
+    }
+
+    /**
+     * Artikel wie "den" sind dagegen Bestandteil des technischen Namens.
+     */
+    @Test
+    public void testGetTechnischerNameWithDen() {
         assertEquals("AbstandJahresrentenaenderungstermine", Bezeichner.ABSTAND_DER_JAHRESRENTENAENDERUNGSTERMINE.getTechnischerName());
     }
 

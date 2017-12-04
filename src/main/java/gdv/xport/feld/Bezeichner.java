@@ -3628,10 +3628,12 @@ public final class Bezeichner {
         switch (word) {
             case "Waehrungseinheiten":
                 return "WE";
+            case "VN":
+                return "Vn";
             case "VS":
                 return "Vs";
             default:
-                if ((word.length() == 3) && (word.charAt(0) == 'd')) {
+                if ((word.length() == 3) && (word.charAt(0) == 'd') && (word.charAt(2) != 'n')) {
                     return "";
                 } else if (word.endsWith("datum")) {
                     return word.substring(0, word.length() - 2);
