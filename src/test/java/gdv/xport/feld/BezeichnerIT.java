@@ -71,7 +71,7 @@ public class BezeichnerIT {
     }
 
     private static boolean isExcludedFromTest(Field field) {
-        String[] prefixes = { "A", "BE", "VERSION" };
+        String[] prefixes = { "A", "BE", "BUZ", "EINSCHLUSS_PROZENT_SATZ", "VERSION" };
         for (String prefix : prefixes) {
             if (field.getName().startsWith(prefix)) {
                 return true;

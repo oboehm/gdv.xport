@@ -110,6 +110,26 @@ public class BezeichnerTest {
     }
 
     /**
+     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Aus "%-Satz"
+     * wird "...ProzSatz" als technischer Name.
+     */
+    @Test
+    public void testGetTechnischerNameForProzSatz() {
+        Bezeichner prozSatz = Bezeichner.EINSCHLUSS_PROZENT_SATZ;
+        assertEquals("EinschlussProzSatz", prozSatz.getTechnischerName());
+    }
+
+    /**
+     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Aus
+     * "...VP..." wird "...Vp..." als technischer Name.
+     */
+    @Test
+    public void testGetTechnischerNameForVp() {
+        Bezeichner vp = Bezeichner.EINSCHLUSSDAT_VP_PERSONENGRUPPE;
+        assertEquals("EinschlussdatVpPersonengruppe", vp.getTechnischerName());
+    }
+
+    /**
      * Artikel wie "der" sind nicht Artikel eines technischen Namens.
      */
     @Test
