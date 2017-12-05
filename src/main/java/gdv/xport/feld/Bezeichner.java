@@ -294,7 +294,7 @@ public final class Bezeichner {
     public static final Bezeichner FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG = new Bezeichner("Faelligkeit der letzten Beitragszahlung", "FaelligkeitDerLetztenBeitragszahlung");
     public static final Bezeichner FAHRZEUGART = new Bezeichner("Fahrzeugart");
     public static final Bezeichner FAHRZEUGIDENTIFIZIERUNGSNUMMER = new Bezeichner("Fahrzeugidentifizierungsnummer", "FahrzeugidentifizierungsNr");
-    public static final Bezeichner FALLENDE_SUMME = new Bezeichner("fallende Summe");
+    public static final Bezeichner FALLENDE_SUMME = new Bezeichner("fallende Summe", "fallendeSumme");
     public static final Bezeichner FALLENDE_VS = new Bezeichner("fallende VS");
     public static final Bezeichner FAMILIENSTAND = new Bezeichner("Familienstand");
     public static final Bezeichner FESTE_RENTE = new Bezeichner("Feste Rente");
