@@ -320,10 +320,8 @@ public final class Bezeichner {
     public static final Bezeichner GARANTIERTE_FONDSJAHRESRENTE_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Garantierte Fondsjahresrente zum Beginn der Abrufphase");
     public static final Bezeichner GEBURTSDAT = new Bezeichner("Geburtsdatum", "Geburtsdat");
     public static final Bezeichner GEBURTSDAT_VP = new Bezeichner("Geburtsdatum der VP", "GeburtsdatVp");
-    public static final Bezeichner GEBURTSDAT_VP2 = new Bezeichner("Geburtsdatum der 2. VP", "GeburtsdatVp2");
-    public static final Bezeichner GEBURTSDATUM_DER_BEZUGSBERECHTIGTEN_PERSON = new Bezeichner("Geburtsdatum der bezugsberechtigten Person");
-    public static final Bezeichner GEBURTSDATUM_VP = new Bezeichner("Geburtsdatum der VP");
-    public static final Bezeichner GEBURTSDATUM_VP2 = new Bezeichner("Geburtsdatum der VP2");
+    public static final Bezeichner GEBURTSDAT_VP2 = new Bezeichner("Geburtsdatum der 2. VP", "Geburtsdat2Vp");
+    public static final Bezeichner GEBURTSDATUM_DER_BEZUGSBERECHTIGTEN_PERSON = new Bezeichner("Geburtsdatum der bezugsberechtigten Person", "GeburtsdatumDerBezugsberechtigtenPerson");
     public static final Bezeichner GESCHLECHT_VP = new Bezeichner("Geschlecht der VP");
     public static final Bezeichner GEBURTSLAND = new Bezeichner("Geburtsland");
     public static final Bezeichner GEBURTSNAME = new Bezeichner("Geburtsname");
@@ -3625,8 +3623,12 @@ public final class Bezeichner {
         }
         String word = converted.toString();
         switch (word) {
+            case "Gesamtbeitrag":
+                return "Gesbeitrag";
             case "VN":
                 return "Vn";
+            case "VP":
+                return "Vp";
             case "VS":
                 return "Vs";
             case "Waehrungseinheiten":
