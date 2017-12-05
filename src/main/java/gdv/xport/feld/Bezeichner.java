@@ -384,7 +384,6 @@ public final class Bezeichner {
     public static final Bezeichner KAPITALERTRAGSSTEUER_BEI_ABLAUF = new Bezeichner("Kapitalertragssteuer bei Ablauf");
     public static final Bezeichner KAPITALERTRAGSSTEUER_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = new Bezeichner("Kapitalertragssteuer bei Rueckkauf zum Berechnungsstichtag");
     public static final Bezeichner KAPITALERTRAGSTEUERPFLICHT = new Bezeichner("Kapitalertragsteuerpflicht");
-    public static final Bezeichner KAPITALZAHLUNGS_SUMME_IN_WAEHRUNGSEINHEIT = new Bezeichner("Kapitalzahlungs-Summe");
     public static final Bezeichner KAPITALZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Kapitalzahlungssumme in Waehrungseinheiten");
     public static final Bezeichner KAPITALZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = KAPITALZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN;
     public static final Bezeichner KARENZZEIT = new Bezeichner("Karenzzeit");
