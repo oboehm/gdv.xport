@@ -370,7 +370,7 @@ public final class Bezeichner {
     public static final Bezeichner IBAN1 = new Bezeichner("IBAN 1");
     public static final Bezeichner IBAN2 = new Bezeichner("IBAN 2");
     public static final Bezeichner INKASSOART = new Bezeichner("Inkassoart");
-    public static final Bezeichner INTERNES_ORDNUNGSMERKMAL_DES_VM = new Bezeichner("Internes Ordnungsmerkmal des VM");
+    public static final Bezeichner INTERNES_ORDNUNGSMERKMAL_DES_VM = new Bezeichner("Internes Ordnungsmerkmal des VM", "InternesOrdnungsmerkmalDesVM");
     public static final Bezeichner INTRO1 = new Bezeichner("Intro");
     public static final Bezeichner INVALIDITAET = new Bezeichner("Invaliditaet");
     public static final Bezeichner INVALIDITAET_BEITRAGSSATZ = new Bezeichner("Invaliditaet Beitragssatz");
