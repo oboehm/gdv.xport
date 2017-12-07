@@ -494,14 +494,13 @@ public final class Bezeichner {
     public static final Bezeichner LEERSTELLEN3 = new Bezeichner("Leerstellen");
     public static final Bezeichner LEERSTELLEN4 = new Bezeichner("Leerstellen");
     public static final Bezeichner LEERSTELLEN5 = new Bezeichner("Leerstellen");
-    public static final Bezeichner LEISTUNG = new Bezeichner("Leistung");
     public static final Bezeichner LEISTUNG_AB_INVALIDITAETSGRAD_IN_PROZENT = new Bezeichner("Leistung ab Invaliditaetsgrad in Prozent");
     public static final Bezeichner LEISTUNG_BEI_SCHWERER_ERKRANKUNG = new Bezeichner("Leistung bei schwerer Erkrankung");
     public static final Bezeichner LEISTUNGSBEGINN_AB = new Bezeichner("Leistungsbeginn ab");
     public static final Bezeichner LEISTUNGSDAUER = new Bezeichner("Leistungsdauer");
     public static final Bezeichner LEISTUNGSZAHLUNGSWEISE = new Bezeichner("Leistungszahlungsweise");
     public static final Bezeichner LETZTE_ERHOEHUNG = new Bezeichner("letzte Erhoehung");
-    public static final Bezeichner LETZTE_ERHOEHUNG_8_III_AHB = new Bezeichner("Letzte Erhoehung \u00a78, III AHB");
+    public static final Bezeichner LETZTE_ERHOEHUNG_8_III_AHB = new Bezeichner("Letzte Erhoehung \u00a78, III AHB", "LetzteErhoehung8IiiAhb");
     public static final Bezeichner LFD_NUMMER = new Bezeichner("Lfd. Nummer");
     public static final Bezeichner LFD_NUMMER1 = new Bezeichner("Lfd. Nummer");
     public static final Bezeichner LFD_NUMMER2 = new Bezeichner("Lfd. Nummer");
