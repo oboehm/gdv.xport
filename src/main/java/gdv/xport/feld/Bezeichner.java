@@ -482,8 +482,8 @@ public final class Bezeichner {
     public static final Bezeichner KURKOSTEN = new Bezeichner("Kurkosten");
     public static final Bezeichner KURKOSTEN_BEITRAGSSATZ = new Bezeichner("Kurkosten Beitragssatz");
 
-    public static final Bezeichner LAENDERKENNZEICHEN = new Bezeichner("Laenderkennzeichen");
-    public static final Bezeichner LAENDERKENNZEICHEN_DER_RISIKOANSCHRIFT = new Bezeichner("Laenderkennzeichen der Risikoanschrift");
+    public static final Bezeichner LAENDERKENNZEICHEN = new Bezeichner("Laenderkennzeichen", "LKZ");
+    public static final Bezeichner LAENDERKENNZEICHEN_DER_RISIKOANSCHRIFT = new Bezeichner("Laenderkennzeichen der Risikoanschrift", "LKZZurRisikoanschrift");
     public static final Bezeichner LAND_DES_AMTL_KENNZEICHENS = new Bezeichner("Land des amtl. Kennzeichens");
     public static final Bezeichner LAUFZEITRABATT_IN_PROZENT = new Bezeichner("Laufzeitrabatt in %");
     public static final Bezeichner LAUFZEITVERKUERZUNG = new Bezeichner("Laufzeitverkuerzung");
