@@ -18,16 +18,13 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.*;
+import org.junit.runner.*;
+import patterntesting.runtime.junit.*;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.*;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import patterntesting.runtime.junit.ObjectTester;
-import patterntesting.runtime.junit.SmokeRunner;
+import static org.junit.Assert.*;
 
 /**
  * JUnit-Tests fuer die {@link Bezeichner}-Klasse.
@@ -99,6 +96,77 @@ public class BezeichnerTest {
     public void testGetTechnischerNameForWaehrungseinheit() {
         Bezeichner zuzahlungsdatum = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten");
         assertEquals("ZuzahlungsbetragInWE", zuzahlungsdatum.getTechnischerName());
+    }
+
+    /**
+     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Namen, die auf
+     * "VS" aufhoeren, haben meist "Vs" (mit kleinem 's') als Endung fuer den
+     * technischen Namen.
+     */
+    @Test
+    public void testGetTechnischerNameForVS() {
+        Bezeichner zuzahlungsdatum = new Bezeichner("Erlebensfall VS");
+        assertEquals("ErlebensfallVs", zuzahlungsdatum.getTechnischerName());
+    }
+
+    /**
+     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Aus "%-Satz"
+     * wird "...ProzSatz" als technischer Name.
+     */
+    @Test
+    public void testGetTechnischerNameForProzSatz() {
+        Bezeichner prozSatz = Bezeichner.EINSCHLUSS_PROZENT_SATZ;
+        assertEquals("EinschlussProzSatz", prozSatz.getTechnischerName());
+    }
+
+    /**
+     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Aus
+     * "...VP..." wird "...Vp..." als technischer Name.
+     */
+    @Test
+    public void testGetTechnischerNameForVp() {
+        Bezeichner vp = Bezeichner.EINSCHLUSSDAT_VP_PERSONENGRUPPE;
+        assertEquals("EinschlussdatVpPersonengruppe", vp.getTechnischerName());
+    }
+
+    /**
+     * Artikel wie "der" sind nicht Bestandteil eines technischen Namens.
+     */
+    @Test
+    public void testGetTechnischerNameWithArtikel() {
+        assertEquals("ErsteZulassungAufDenVn", Bezeichner.ERSTE_ZULASSUNG_AUF_DEN_VN.getTechnischerName());
+    }
+
+    /**
+     * Artikel wie "den" sind dagegen Bestandteil des technischen Namens.
+     */
+    @Test
+    public void testGetTechnischerNameWithDen() {
+        assertEquals("AbstandJahresrentenaenderungstermine", Bezeichner.ABSTAND_DER_JAHRESRENTENAENDERUNGSTERMINE.getTechnischerName());
+    }
+
+    /**
+     * "Versicherung" wird als "Vers" abgekuerzt.
+     */
+    @Test
+    public void testGetTechnischerNameWithVersicherung() {
+        assertEquals("ErweiterteNeuwertVers", Bezeichner.ERWEITERTE_NEUWERTVERSICHERUNG.getTechnischerName());
+    }
+
+    /**
+     * "eVB" wird als "eVB" abgekuerzt.
+     */
+    @Test
+    public void testGetTechnischerNameEVB() {
+        assertEquals("eVBNummer", Bezeichner.EVB_NUMMER.getTechnischerName());
+    }
+
+    /**
+     * "...nummer" wird nur manchmal als "...Nr" abgekuerzt.
+     */
+    @Test
+    public void testGetTechnischerNameWithNummer() {
+        assertEquals("Referenznummer", Bezeichner.REFERENZNUMMER.getTechnischerName());
     }
 
     /**

@@ -18,24 +18,15 @@
 
 package gdv.xport.satz.xml;
 
-import gdv.xport.util.NotRegisteredException;
-import gdv.xport.util.NotUniqueException;
-import gdv.xport.util.SatzTyp;
-import gdv.xport.util.XmlHelper;
-
-import java.io.InputStream;
-import java.util.*;
-
-import javax.xml.namespace.QName;
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
-
+import gdv.xport.util.*;
 import org.apache.logging.log4j.*;
+import patterntesting.runtime.log.*;
 
-import patterntesting.runtime.log.LogWatch;
+import javax.xml.namespace.*;
+import javax.xml.stream.*;
+import javax.xml.stream.events.*;
+import java.io.*;
+import java.util.*;
 
 /**
  * Hier wird jetzt eine XML-Beschreibung verwendet, um die Saetze fuer die
@@ -50,10 +41,10 @@ import patterntesting.runtime.log.LogWatch;
 public class XmlService {
 
     private static final Logger LOG = LogManager.getLogger(XmlService.class);
-    private static final Map<String, XmlService> INSTANCES = new WeakHashMap<String, XmlService>();
-    private final List<SatzXml> saetze = new ArrayList<SatzXml>();
-    private final Map<SatzTyp, SatzXml> satzarten = new HashMap<SatzTyp, SatzXml>();
-    private final Map<String, FeldXml> felder = new HashMap<String, FeldXml>();
+    private static final Map<String, XmlService> INSTANCES = new WeakHashMap<>();
+    private final List<SatzXml> saetze = new ArrayList<>();
+    private final Map<SatzTyp, SatzXml> satzarten = new HashMap<>();
+    private final Map<String, FeldXml> felder = new HashMap<>();
 
     /**
      * Liefert einen Service anhand des Standard-XML-Handbuchs von 2013.
@@ -192,7 +183,7 @@ public class XmlService {
 
     private static Map<String, FeldXml> parseFelder(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         LOG.trace("Element {} will be parsed.", element);
-        Map<String, FeldXml> felder = new HashMap<String, FeldXml>();
+        Map<String, FeldXml> felder = new HashMap<>();
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
             if (event.isStartElement()) {
@@ -244,7 +235,7 @@ public class XmlService {
         if (satz != null) {
             return new SatzXml(satz);
         }
-        List<SatzTyp> satzTypen = new ArrayList<SatzTyp>();
+        List<SatzTyp> satzTypen = new ArrayList<>();
         for (SatzTyp satzNr : this.satzarten.keySet()) {
             if (satzNr.getSatzart() == satzart) {
                 satzTypen.add(satzNr);
@@ -271,6 +262,16 @@ public class XmlService {
             throw new NotRegisteredException(satzNr);
         }
         return satz;
+    }
+
+    /**
+     * Liefert die registrierten Satzarten.
+     *
+     * @return Satzarten als Hashmap
+     * @since 2.1.4
+     */
+    public Map<SatzTyp, SatzXml> getSatzarten() {
+        return this.satzarten;
     }
 
 }
