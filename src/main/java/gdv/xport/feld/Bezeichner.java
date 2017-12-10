@@ -3616,6 +3616,8 @@ public final class Bezeichner {
         }
         String word = converted.toString();
         switch (word) {
+            case "fuer":
+                return "";
             case "Gesamtbeitrag":
                 return "Gesbeitrag";
             case "VN":
