@@ -661,9 +661,9 @@ public final class Bezeichner {
     public static final Bezeichner SONDERBEDINGUNGEN = new Bezeichner("Sonderbedingungen");
     public static final Bezeichner SONDERBEDINGUNGEN_KLAUSELN = new Bezeichner("Sonderbedingungen / Klauseln");
     public static final Bezeichner SONDERVEREINBARUNGEN = new Bezeichner("Sondervereinbarungen");
-    public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_ERLEBENSFALL = new Bezeichner("Sonstiger Bezeugsberechtigter im Erlebensfall");
-    public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL = new Bezeichner("Sonstigter Bezugsberechtigter im Leistungsfall");
-    public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL = new Bezeichner("Sonstiger Bezugsberechtigter im Todesfall");
+    public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_ERLEBENSFALL = new Bezeichner("Sonstiger Bezugsberechtigter im Erlebensfall", "SonstrBezugsberechtigterImErlebensfall");
+    public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_LEISTUNGSFALL = new Bezeichner("Sonstigter Bezugsberechtigter im Leistungsfall", "SonstrBezugsberechtigterImLeistungsfall");
+    public static final Bezeichner SONSTIGER_BEZUGSBERECHTIGTER_IM_TODESFALL = new Bezeichner("Sonstiger Bezugsberechtigter im Todesfall", "SonstrBezugsberechtigterImTodesfall");
     public static final Bezeichner SOZIALVERSICHERUNG_NUMMER = new Bezeichner("Sozialversicherung Nummer", "Sozialversicherung");
     public static final Bezeichner SPARTE = new Bezeichner("Sparte");
     public static final Bezeichner SPARTE2 = new Bezeichner("Sparte2", "Sparte2");
