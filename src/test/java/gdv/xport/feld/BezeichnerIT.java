@@ -80,7 +80,7 @@ public class BezeichnerIT {
         String[] prefixes =
                 {"A", "BE", "BUZ", "E", "F", "G", "INTRO", "JAHRESRENTENAENDERUNGS_PROZENTSATZ", "K", "L", "N",
                         "ORDNUNGS_NUMMER_FUER_WAGNISZU", "PRODUKTSPEZIFISCHE_ANTRAGSDATEN", "TEILDATENSATZNUMMER",
-                        "R", "S", "TODESFALL_VS", "TODESFALLAENDERUNGS_PROZENTSATZ", "VERSION"};
+                        "R", "S", "TODESFALL", "UN", "VERSION"};
         for (String prefix : prefixes) {
             if (field.getName().startsWith(prefix)) {
                 return true;
