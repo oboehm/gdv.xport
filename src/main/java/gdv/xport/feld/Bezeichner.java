@@ -569,8 +569,8 @@ public final class Bezeichner {
     public static final Bezeichner POLICIERUNGSDAT = new Bezeichner("Policierungsdatum", "Policierungsdatum");
     public static final Bezeichner POSTALISCHES_KENNZEICHEN = new Bezeichner("postalisches Kennzeichen");
     public static final Bezeichner POSTFACH = new Bezeichner("postfach");
-    public static final Bezeichner POSTLEITZAHL = new Bezeichner("Postleitzahl");
-    public static final Bezeichner POSTLEITZAHL_DER_RISIKOANSCHRIFT = new Bezeichner("Postleitzahl der Risikoanschrift");
+    public static final Bezeichner POSTLEITZAHL = new Bezeichner("Postleitzahl", "PLZ");
+    public static final Bezeichner POSTLEITZAHL_DER_RISIKOANSCHRIFT = new Bezeichner("Postleitzahl der Risikoanschrift", "PLZRisikoanschrift");
     public static final Bezeichner PRODUKTBESCHREIBUNG = new Bezeichner("Produktbeschreibung");
     public static final Bezeichner PRODUKTFORM = new Bezeichner("Produktform");
     public static final Bezeichner PRODUKTFORM_GUELTIG_AB = new Bezeichner("Produktform gueltig ab");
