@@ -904,19 +904,19 @@ public final class Bezeichner {
     public static final Bezeichner WAGNISART3 = WAGNISART;
     public static final Bezeichner WAGNISART4 = WAGNISART;
     public static final Bezeichner WAGNISBESCHREIBUNG = new Bezeichner("Wagnisbeschreibung");
-    public static final Bezeichner WAGNISKENNZIFFER = new Bezeichner("Wagniskennziffer");
+    public static final Bezeichner WAGNISKENNZIFFER = new Bezeichner("Wagniskennziffer", "WKZ");
     public static final Bezeichner WAGNISMENGE = new Bezeichner("Wagnismenge");
     public static final Bezeichner WAGNISTEXT = new Bezeichner("Wagnistext");
-    public static final Bezeichner WAISENRENTE_IN_PROZENT = new Bezeichner("Waisenrente in Prozent");
+    public static final Bezeichner WAISENRENTE_IN_PROZENT = new Bezeichner("Waisenrente in Prozent", "WaisenrenteProz");
     public static final Bezeichner WARTEZEIT = new Bezeichner("Wartezeit");
     public static final Bezeichner WECHSELKENNZEICHEN_W_AKZ = new Bezeichner("KFZ - Wechselkennzeichen W-AKZ", "KFZWechselkennzeichenWAKZ");
-    public static final Bezeichner WEITERE_REFERENZNUMMERN = new Bezeichner("Weitere Referenznummern");
+    public static final Bezeichner WEITERE_REFERENZNUMMERN = new Bezeichner("Weitere Referenznummern", "WeitereReferenzNrn");
     public static final Bezeichner WERTPAPIERKENNNUMMER = new Bezeichner("Wertpapierkennnummer");
     public static final Bezeichner WERTUNGSBASIS = new Bezeichner("Wertungsbasis");
     public static final Bezeichner WERTUNGSBASIS2 = WERTUNGSBASIS;
     public static final Bezeichner WERTUNGSMODELL = new Bezeichner("Wertungsmodell");
     public static final Bezeichner WERTUNGSMODELL2 = WERTUNGSMODELL;
-    public static final Bezeichner WITWEN_WITWERRENTE_IN_PROZENT = new Bezeichner("Witwen- / Witwerrente in Prozent");
+    public static final Bezeichner WITWEN_WITWERRENTE_IN_PROZENT = new Bezeichner("Witwen- / Witwerrente in Prozent", "WitwenWitwerrenteProz");
     public static final Bezeichner WOHNEIGENTUM = new Bezeichner("Wohneigentum");
     public static final Bezeichner WOHNFLAECHE_QM = new Bezeichner("Wohnflaeche qm");
 
