@@ -924,7 +924,7 @@ public final class Bezeichner {
     public static final Bezeichner ZAHLUNGSANFANG = new Bezeichner("Zahlungsanfang");
     public static final Bezeichner ZAHLUNGSART = new Bezeichner("Zahlungsart /-weg");
     public static final Bezeichner ZAHLUNGSWEISE = new Bezeichner("Zahlungsweise");
-    public static final Bezeichner ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG = new Bezeichner("Zahlungsweise des kuenftigen Gesamtbetrags");
+    public static final Bezeichner ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG = new Bezeichner("Zahlungsweise des zukuenftigen Gesamtbetrags", "ZahlungsweiseZukuenftigenGesbeitrags");
     public static final Bezeichner ZIELGRUPPENSCHLUESSEL = new Bezeichner("Zielgruppenschluessel");
     public static final Bezeichner ZUKUENFTIGER_BEITRAG = new Bezeichner("Zukuenftiger Beitrag");
     public static final Bezeichner ZUKUENFTIGER_BEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zukuenftiger Beitrag in Waehrungseinheiten");
@@ -939,7 +939,7 @@ public final class Bezeichner {
     public static final Bezeichner ZUZAHLUNGSBETRAG_IN_WE = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten", "ZuzahlungsbetragInWE");
     public static final Bezeichner ZUZAHLUNGSDAT = new Bezeichner("Zuzahlungsdatum", "Zuzahlungsdat");
     public static final Bezeichner ZUZAHLUNGSRECHT = new Bezeichner("Zuzahlungsrecht");
-    public static final Bezeichner ZWANG_ZUR_BUZ = new Bezeichner("Zwang zur BUZ");
+    public static final Bezeichner ZWANG_ZUR_BUZ = new Bezeichner("Zwang zur BUZ", "ZwangZurBuz");
 
 
 
