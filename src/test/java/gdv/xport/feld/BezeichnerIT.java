@@ -17,16 +17,22 @@
  */
 package gdv.xport.feld;
 
-import gdv.xport.satz.xml.*;
-import org.apache.logging.log4j.*;
-import org.junit.*;
-import org.junit.runner.*;
-import org.junit.runners.*;
+import gdv.xport.satz.xml.SatzXml;
+import gdv.xport.satz.xml.XmlService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
+import java.util.TreeSet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 /**
  * Klasse BezeichnerIT ueberpreuft die Konstanten in der {@link Bezeichner}-
@@ -71,8 +77,10 @@ public class BezeichnerIT {
     }
 
     private static boolean isExcludedFromTest(Field field) {
-        String[] prefixes = {"A", "BE", "BUZ", "E", "F", "G", "INTRO", "JAHRESRENTENAENDERUNGS_PROZENTSATZ", "K",
-                "L", "N", "ORDNUNGS_NUMMER_FUER_WAGNISZU", "TEILDATENSATZNUMMER", "VERSION"};
+        String[] prefixes =
+                {"A", "BE", "BUZ", "E", "F", "G", "INTRO", "JAHRESRENTENAENDERUNGS_PROZENTSATZ", "K", "L", "N",
+                        "ORDNUNGS_NUMMER_FUER_WAGNISZU", "PRODUKTSPEZIFISCHE_ANTRAGSDATEN", "TEILDATENSATZNUMMER",
+                        "R", "VERSION"};
         for (String prefix : prefixes) {
             if (field.getName().startsWith(prefix)) {
                 return true;
