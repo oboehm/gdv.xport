@@ -353,14 +353,13 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.4</version>
+        <version>3.0.0</version>
         <configuration>
           <source>${java.version}</source>
           <show>protected</show>
           <links>
             <link>http://docs.oracle.com/javase/8/docs/api/</link>
             <link>http://www.eclipse.org/aspectj/doc/released/runtime-api</link>
-            <link>http://junit.sourceforge.net/javadoc/</link>
           </links>
         </configuration>
       </plugin>

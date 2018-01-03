@@ -29,7 +29,7 @@ import static org.junit.Assert.*;
  * Unit-Tests fuer {@link LogConfig}. Standardmaessig wird eine In-Memory-DB
  * (HSQL) zum Testen verwendet. Moechte man z.B. eine MySQL oder PostgreSQL zum
  * Testen verwenden, kann man dies ueber die Environment-Variable DATABASE_URL
- * (DATABASE_URL=jdbc:postgresql://localhost/logbook?user=logger&password=geheim)
+ * (DATABASE_URL=jdbc:postgresql://localhost/logbook?user=logger&amp;password=geheim)
  * einstellen.
  */
 public final class LogConfigTest {

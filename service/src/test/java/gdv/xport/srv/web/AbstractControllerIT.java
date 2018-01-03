@@ -81,6 +81,7 @@ public abstract class AbstractControllerIT {
      *
      * @param <T>  Typ-Parameter
      * @param path Context-Pfad der URL
+     * @param text Text
      * @param type Typ der erwarteten Antwort
      * @return Antwort des abgesendeten Requests
      */
