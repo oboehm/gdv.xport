@@ -18,9 +18,6 @@
 
 package gdv.xport.satz.model;
 
-import java.io.IOException;
-import java.util.List;
-
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
@@ -28,6 +25,9 @@ import gdv.xport.satz.feld.FeldX;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzTyp;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die nach
@@ -126,7 +126,7 @@ public class SatzX extends Datensatz {
 	 * richtig ist oder ob da schon der naechste Satz beginnt.
 	 *
 	 * @param reader the reader
-	 * @param lastFeld1To7
+	 * @param lastFeld1To7 Feld1..7 als Char-Array (42 Zeichen) der letzten Zeile oder {@code null} für ersten Teildatensatz
 	 * @return true (Default-Implementierung)
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.9
