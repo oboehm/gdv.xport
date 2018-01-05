@@ -245,9 +245,18 @@ public class XmlService {
             throw new NotRegisteredException(satzart);
         }
         if (satzTypen.size() > 1) {
-            throw new NotUniqueException("Sparte for Satzart " + satzart + " is missing: " + satzTypen);
+            checkSatzarten(satzTypen);
         }
         return new SatzXml(this.satzarten.get(satzTypen.get(0)));
+    }
+
+    private static void checkSatzarten(List<SatzTyp> satzTypen) {
+        SatzTyp first = satzTypen.get(0);
+        for (int i = 1; i < satzTypen.size(); i++) {
+            if (first.getSparte() != satzTypen.get(i).getSparte()) {
+                throw new NotUniqueException("Sparte for Satzart " + first.getSatzart() + " is missing: " + satzTypen);
+            }
+        }
     }
 
     /**
