@@ -668,7 +668,7 @@ public final class Bezeichner {
     public static final Bezeichner SPARTE = new Bezeichner("Sparte");
     public static final Bezeichner SPARTE2 = new Bezeichner("Sparte2", "Sparte2");
     public static final Bezeichner SPARVORGANG = new Bezeichner("Sparvorgang");
-    public static final Bezeichner SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Spezifikation der Referenz-Versicherungsscheinnummer");
+    public static final Bezeichner SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Spezifikation der Referenz-Versicherungsscheinnummer", "SpezifikationReferenzVsNr");
     public static final Bezeichner STAATSANGEHOERIGKEIT = new Bezeichner("Staatsangehoerigkeit");
     public static final Bezeichner STAENDIG_BEWOHNT = new Bezeichner("Staendig bewohnt");
     public static final Bezeichner STAERKE = new Bezeichner("Staerke");
@@ -677,7 +677,6 @@ public final class Bezeichner {
     public static final Bezeichner STATUS_SEIT = new Bezeichner("Status seit");
     public static final Bezeichner STEUERNR_JURISTISCHE_PERSON = new Bezeichner("Steuernummer bei juristischen Personen");
     public static final Bezeichner STOCKWERKE = new Bezeichner("Stockwerke");
-    public static final Bezeichner STRASSE = new Bezeichner("Strasse");
     public static final Bezeichner STUNDUNG = new Bezeichner("Stundung");
     public static final Bezeichner STURMZONE = new Bezeichner("Sturmzone");
     public static final Bezeichner SUMMENART_1 = new Bezeichner("Summenart 1");
