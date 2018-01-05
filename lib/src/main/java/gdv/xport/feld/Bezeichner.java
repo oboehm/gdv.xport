@@ -513,7 +513,7 @@ public final class Bezeichner {
     public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART2 = new Bezeichner("Lfd. Nummer zur Wagnisart", "LfdNrZurWagnisart2");
     public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART3 = new Bezeichner("Lfd. Nummer zur Wagnisart", "LfdNrZurWagnisart3");
     public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART4 = new Bezeichner("Lfd. Nummer zur Wagnisart", "LfdNrZurWagnisart4");
-    public static final Bezeichner LFD_PERSONEN_NR_IM_GEVO = new Bezeichner ("Lfd. Personennummer im GeVo", "LfdPersonenNrimGeVo");
+    public static final Bezeichner LFD_PERSONENNR_GEVO = new Bezeichner ("Lfd. Personennummer im GeVo", "LfdPersonenNrImGevo");
     public static final Bezeichner LFD_PERSONENNUMMER_DES_SICHERUNGSGLAEUBIGERS = new Bezeichner("Lfd. Personennummer des Sicherungsglaeubigers");
 
     public static final Bezeichner MEHRLEISTUNGSKLAUSEL = new Bezeichner("Mehrleistungsklausel");
@@ -950,7 +950,7 @@ public final class Bezeichner {
         MAPPING.put(ENDEDATUM_BEI_ROTEN_KENNZEICHEN.name, ENDEDATUM_BEI_ROTEN_KENNZEICHEN.technischerName);
         MAPPING.put(ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS.name,
                 ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS.technischerName);
-        MAPPING.put(LFD_PERSONEN_NR_IM_GEVO.name, LFD_PERSONEN_NR_IM_GEVO.technischerName);
+        MAPPING.put(LFD_PERSONENNR_GEVO.name, LFD_PERSONENNR_GEVO.technischerName);
         MAPPING.put(URSPRUENGLICHES_HAFTUNGSBEGINNDAT.name, URSPRUENGLICHES_HAFTUNGSBEGINNDAT.technischerName);
         MAPPING.put(VS_NR.name, VS_NR.technischerName);
         MAPPING.put(VU_NR.name, VU_NR.technischerName);

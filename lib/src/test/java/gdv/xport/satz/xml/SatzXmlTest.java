@@ -139,7 +139,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      */
     @Test
     public void testGetPersonennummer() {
-        Feld personennummer = satz100.getFeld(Bezeichner.LFD_PERSONEN_NR_IM_GEVO);
+        Feld personennummer = satz100.getFeld(Bezeichner.LFD_PERSONENNR_GEVO);
         assertEquals(6, personennummer.getAnzahlBytes());
         assertEquals(250, personennummer.getByteAdresse());
     }
