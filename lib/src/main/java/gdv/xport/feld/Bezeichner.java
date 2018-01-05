@@ -603,7 +603,7 @@ public final class Bezeichner {
     public static final Bezeichner RISIKOGRUPPE_RISIKOART2 = new Bezeichner("Risikogruppe / Risikoart 2");
     public static final Bezeichner RISIKOKENNZIFFER = new Bezeichner("Risikokennziffer");
     public static final Bezeichner RISIKOORT = new Bezeichner("Risikoort");
-    public static final Bezeichner RISIKOSTRASSE = new Bezeichner("Risikostrasse");
+    public static final Bezeichner RISIKOSTRASSE = new Bezeichner("Risiko Strasse");
     public static final Bezeichner RISIKOTEXT = new Bezeichner("Risikotext");
     public static final Bezeichner RISIKOVORLAUF = new Bezeichner("Risikovorlauf");
     public static final Bezeichner RISKIOEINHEIT1 = new Bezeichner("Risikoeinheit-1");
@@ -612,15 +612,15 @@ public final class Bezeichner {
     public static final Bezeichner RISIKOZUSCHLAEGE = new Bezeichner("Risikozuschlaege");
     public static final Bezeichner RISIKOZUSCHLAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Risikozuschlag in Waehrungseinheiten");
     public static final Bezeichner ROLLE_W_AKZ = new Bezeichner("Rolle W-AKZ", "RolleWAKZ");
-    public static final Bezeichner ROHBAU_EINMALBETRAG = new Bezeichner("Rohbau-Einmalbetrag");
+    public static final Bezeichner ROHBAU_EINMALBETRAG = new Bezeichner("Rohbau-Einmalbetrag in Waehrungseinheiten");
     public static final Bezeichner RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rueckkaufswert in Waehrungseinheiten");
     public static final Bezeichner RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rueckgewaehrsumme zum Ablauf in Waehrungseinheiten");
-    public static final Bezeichner RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rueckkaufswert zum Berechnungsstichtag in Waehrungseinheiten");
+    public static final Bezeichner RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rueckkaufswert zum Berechnungsstichtag in Waehrungseinheiten", "RueckkaufswertZumBerechnugsstichtagInWaehrungseinheiten");
     public static final Bezeichner RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN_MIT_NACHKOMMA = new Bezeichner("Rueckkaufswert in Waehrungseinheiten");
     public static final Bezeichner RUECKKAUFSWERT_GUELTIG_AB = new Bezeichner("Rueckkaufswert gueltig ab");
     public static final Bezeichner RUECKGEWAEHR_BEI_TOD = new Bezeichner("Rueckgewaehr bei Tod");
-    public static final Bezeichner RUECKFUEHRUNGSKOSTEN = new Bezeichner("Rueckfuehrungskosten");
-    public static final Bezeichner RUECKGEWAEHRDAT = new Bezeichner("Rueckgewaehrdatum", "Rueckgewaehrdat");
+    public static final Bezeichner RUECKFUEHRUNGSKOSTEN = new Bezeichner("Rueckfuehrungskosten", "Rueckfuehrungskost");
+    public static final Bezeichner RUECKGEWAEHRDAT = new Bezeichner("Rueckgewaehrdatum", "Rueckgewaehrdatum");
 
     public static final Bezeichner SAISONKENNZEICHEN = new Bezeichner("Saisonkennzeichen");
     public static final Bezeichner SATZART = new Bezeichner("Satzart");
