@@ -514,12 +514,12 @@ public final class Bezeichner {
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE4 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE9 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
     public static final Bezeichner LFD_NUMMER_ZUR_ART_DER_LEISTUNG = new Bezeichner("Laufende Nummer zur Art der Leistung");
-    public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART = new Bezeichner("Lfd Nummer zur Wagnisart");
-    public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART2 = new Bezeichner("Lfd. Nummer Wagnisart");
-    public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART3 = new Bezeichner("Lfd. Numemr Wagnisart");
-    public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART4 = new Bezeichner("Lfd. Nummer zur Wagnisart");
-    public static final Bezeichner LFD_PERSONEN_NR_IM_GEVO = new Bezeichner ("Lfd. Personennummer im GeVo", "LfdPersonenNrImGevo");
-    public static final Bezeichner LFD_PERSONENNR_GEVO = new Bezeichner("Lfd. Personennummer im GeVo");
+    public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART = new Bezeichner("Lfd. Nummer zur Wagnisart", "LfdNrZurWagnisart");
+    public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART1 = new Bezeichner("Lfd. Nummer zur Wagnisart", "LfdNrZurWagnisart1");
+    public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART2 = new Bezeichner("Lfd. Nummer zur Wagnisart", "LfdNrZurWagnisart2");
+    public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART3 = new Bezeichner("Lfd. Nummer zur Wagnisart", "LfdNrZurWagnisart3");
+    public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART4 = new Bezeichner("Lfd. Nummer zur Wagnisart", "LfdNrZurWagnisart4");
+    public static final Bezeichner LFD_PERSONEN_NR_IM_GEVO = new Bezeichner ("Lfd. Personennummer im GeVo", "LfdPersonenNrimGeVo");
     public static final Bezeichner LFD_PERSONENNUMMER_DES_SICHERUNGSGLAEUBIGERS = new Bezeichner("Lfd. Personennummer des Sicherungsglaeubigers");
 
     public static final Bezeichner MEHRLEISTUNGSKLAUSEL = new Bezeichner("Mehrleistungsklausel");
@@ -1019,6 +1019,8 @@ public final class Bezeichner {
         switch (word) {
             case "fuer":
                 return "";
+            case "Nummer":
+                return "Nr";
             case "Gesamtbeitrag":
                 return "Gesbeitrag";
             case "VN":
