@@ -888,7 +888,7 @@ public final class Bezeichner {
     public static final Bezeichner VP_PERSONENNUMMER_VERMITTLER = new Bezeichner("VP-Personennummer des Vermittlers", "VpPersonenNrVermittlers");
     public static final Bezeichner VP_PERSONENNUMMER_VERSICHERER = new Bezeichner("VP-Personennummer des Versicherers", "VpPersonenNrVersicherers");
     public static final Bezeichner VS_NR = VERSICHERUNGSSCHEINNUMMER;
-    public static final Bezeichner VU_ABRECHNUNGSSTELLE = new Bezeichner("VU-Abrechnungsstelle");
+    public static final Bezeichner VU_ABRECHNUNGSSTELLE = new Bezeichner("VU-Abrechnungsstelle", "VuAbrechnungsstelle");
     public static final Bezeichner VU_NR = new Bezeichner("VU-Nummer", "VuNr");
     public static final Bezeichner VU_NUMMER = VU_NR;
 
