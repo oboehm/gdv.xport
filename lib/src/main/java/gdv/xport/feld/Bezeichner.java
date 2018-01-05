@@ -422,9 +422,9 @@ public final class Bezeichner {
     public static final Bezeichner KFV_BEITRAGSSATZ = new Bezeichner("KFV-Beitragssatz");
     public static final Bezeichner KFV_BEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KFV-Beitrag in Waehrungseinheiten");
     public static final Bezeichner KFV_DECKUNGSART = new Bezeichner("KFV-Deckungsart");
-    public static final Bezeichner KFV_RGJ = new Bezeichner("KFV-RGJ");
+    public static final Bezeichner KFV_RGJ = new Bezeichner("KFV-RGJ", "KfvRgj");
     public static final Bezeichner KFV_SCHAEDEN_AUS_RUECKSTUFUNG = new Bezeichner("KFV-Schaeden aus Rueckstufung");
-    public static final Bezeichner KFV_SFS_KLASSE = new Bezeichner("KFV-SF/S-Klasse");
+    public static final Bezeichner KFV_SFS_KLASSE = new Bezeichner("KFV-SF/S-Klasse", "KfvSfSKlasse");
     public static final Bezeichner KFV_TARIFGRUPPE = new Bezeichner("KFV-Tarifgruppe");
     public static final Bezeichner KFV_ZUSCHLAEGE_IN_PROZENT = new Bezeichner("KFV-Zuschlaege in %");
     public static final Bezeichner KFV_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KFV-Zuschlaege in Waehrungseinheiten");
@@ -438,15 +438,9 @@ public final class Bezeichner {
     public static final Bezeichner KH_DECKUNGSART = new Bezeichner("KH Deckungsart");
     public static final Bezeichner KH_DECKUNGSSUMMEN = new Bezeichner("KH-Deckungssummen");
     public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten");
-    public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1 = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten Teil 1");
-    public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2 = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten Teil 2");
-    public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3 = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten Teil 3");
-    public static final Bezeichner KH_DECKUNGSSUMMEN_PERSONENSCHAEDEN = new Bezeichner("KH-Deckungssummen Personenschaeden");
-    public static final Bezeichner KH_DECKUNGSSUMMEN_SACHSCHAEDEN = new Bezeichner("KH-Deckungssummen Sachschaeden");
-    public static final Bezeichner KH_DECKUNGSSUMMEN_VERMOEGENSCHAEDEN = new Bezeichner("KH-Deckungssummen Vermoegensschaeden");
-    public static final Bezeichner KH_RGJ = new Bezeichner("KH-RGJ");
+    public static final Bezeichner KH_RGJ = new Bezeichner("KH-RGJ", "KhRgj");
     public static final Bezeichner KH_SCHAEDEN_AUS_RUECKSTUFUNG = new Bezeichner("KH-Schaeden aus Rueckstufung");
-    public static final Bezeichner KH_SF_S_KLASSE = new Bezeichner("KH-SF/S-Klasse");
+    public static final Bezeichner KH_SF_S_KLASSE = new Bezeichner("KH-SF/S-Klasse", "KhSfSKlasse");
     public static final Bezeichner KH_TARIFGRUPPE = new Bezeichner("KH-Tarifgruppe");
     public static final Bezeichner KH_ZUSCHLAEGE_IN_PROZENT = new Bezeichner("KH-Zuschlaege in %");
     public static final Bezeichner KH_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KH-Zuschlaege in Waehrungseinheiten");
@@ -466,7 +460,7 @@ public final class Bezeichner {
     public static final Bezeichner KOMMUNIKATIONSTYP5 = new Bezeichner("Kommunikationstyp 5");
     public static final Bezeichner KOMMUNIKATIONSTYP6 = new Bezeichner("Kommunikationstyp 6");
     public static final Bezeichner KOMMUNIKATIONSTYP7 = new Bezeichner("Kommunikationstyp 7");
-    public static final Bezeichner KONTONR1 = new Bezeichner("Kontonummer 1", "KontoNr1");
+    public static final Bezeichner KONTONR1 = new Bezeichner("Kontonummer 1", "KontoNr");
     public static final Bezeichner KONTONR2 = new Bezeichner("Kontonummer 2", "KontoNr2");
     public static final Bezeichner KOSMETISCHE_OPERATIONEN = new Bezeichner("Kosmetische Operationen");
     public static final Bezeichner KOSMETISCHE_OPERATIONEN_BEITRAGSSATZ = new Bezeichner("Kosmetische Operationen Beitragssatz");
@@ -477,8 +471,8 @@ public final class Bezeichner {
     public static final Bezeichner KUENDIGUNGSKLAUSEL = new Bezeichner("Kuendigungsklausel");
     public static final Bezeichner KUENDIGUNGSKLAUSEL_VP = new Bezeichner("Kuendigungsklausel VP / Personengruppe gestrichen");
     public static final Bezeichner KUNDENGRUPPE = new Bezeichner("Kundengruppe");
-    public static final Bezeichner KUNDENNR_VERMITTLER = new Bezeichner("Personen-/Kundennummer des Vermittlers");
-    public static final Bezeichner KUNDENNR_VERSICHERER = new Bezeichner("Personen-/Kundennummer des Versicherers");
+    public static final Bezeichner KUNDENNR_VERMITTLER = new Bezeichner("Personen-/Kundennummer des Vermittlers", "PersonenKundenNrVermittlers");
+    public static final Bezeichner KUNDENNR_VERSICHERER = new Bezeichner("Personen-/Kundennummer des Versicherers", "PersonenKundenNrVersicherers");
     public static final Bezeichner KURKOSTEN = new Bezeichner("Kurkosten");
     public static final Bezeichner KURKOSTEN_BEITRAGSSATZ = new Bezeichner("Kurkosten Beitragssatz");
 
@@ -563,8 +557,8 @@ public final class Bezeichner {
     public static final Bezeichner ORT = new Bezeichner("Ort");
 
     public static final Bezeichner PASSIVES_KRIEGSRISIKO = new Bezeichner("passives Kriegsrisiko");
-    public static final Bezeichner PERSONEN_KUNDENNUMMER_DES_VERMITTLERS = new Bezeichner("Personen Kundennummer des Vermittlers", "PersonenKundenNrVermittlers");
-    public static final Bezeichner PERSONEN_KUNDENNUMMER_DES_VERSICHERERS = new Bezeichner("Personen-/Kundennummer des Versicherers", "PersonenKundenNrVersicherers");
+    public static final Bezeichner PERSONEN_KUNDENNUMMER_DES_VERMITTLERS = KUNDENNR_VERMITTLER;
+    public static final Bezeichner PERSONEN_KUNDENNUMMER_DES_VERSICHERERS = KUNDENNR_VERSICHERER;
     public static final Bezeichner PERSONENNUMMER_LFD_NUMMER = new Bezeichner("Personennummer / lfd. Nummer", "PersonenNrLfdNr");
     public static final Bezeichner POLICIERUNGSDAT = new Bezeichner("Policierungsdatum", "Policierungsdatum");
     public static final Bezeichner POSTALISCHES_KENNZEICHEN = new Bezeichner("postalisches Kennzeichen");
@@ -1041,6 +1035,12 @@ public final class Bezeichner {
                     return versicherung.substring(0, versicherung.length() - 12) + "Vers";
                 } else if (word.startsWith("eVB")) {
                     return "eVB" + WordUtils.capitalize(word.substring(3));
+                } else if (word.startsWith("KFT")) {
+                    return "Kft" + WordUtils.capitalize(word.substring(3));
+                } else if (word.startsWith("KFV")) {
+                    return "Kfv" + WordUtils.capitalize(word.substring(3));
+                } else if (word.startsWith("KH")) {
+                    return "Kh" + WordUtils.capitalize(word.substring(2));
                 }
                 return WordUtils.capitalize(word);
         }

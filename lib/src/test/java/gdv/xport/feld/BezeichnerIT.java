@@ -78,8 +78,9 @@ public class BezeichnerIT {
 
     private static boolean isExcludedFromTest(Field field) {
         String[] prefixes =
-                {"A", "BE", "BUZ", "E", "F", "G", "INTRO", "JAHRESRENTENAENDERUNGS_PROZENTSATZ", "K",
-                        "NAECHSTE", "LAUFZEITVERKUERZUNG", "LEISTUNGSDAUER",
+                {"A", "BE", "BUZ", "E", "F", "G", "INTRO", "JAHRESRENTENAENDERUNGS_PROZENTSATZ",
+                        "KARENZZEIT", "KENN",
+                        "LAUFZEITVERKUERZUNG", "LEISTUNGSDAUER", "NAECHSTE",
                         "ORDNUNGS_NUMMER_FUER_WAGNISZU", "PRODUKTSPEZIFISCHE_ANTRAGSDATEN", "TEILDATENSATZNUMMER",
                         "RENTE_INCL_UEBERSCHUSS", "RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN",
                         "SATZNUMMERNWIEDERHOLUNG", "SONSTIGER_BEZUGSBERECHTIGTER_IM_", "SPARVORGANG", "TODESFALL", "UN",
