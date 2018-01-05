@@ -53,7 +53,7 @@ public class XmlService {
      */
     public static XmlService getInstance() {
         try {
-            return getInstance("VUVM2013.xml");
+            return getInstance("VUVM2015.xml");
         } catch (XMLStreamException ex) {
             LOG.error("Cannot parse XML from resource 'VUVM2013.xml':", ex);
             return new XmlService();

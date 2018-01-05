@@ -18,25 +18,29 @@
 
 package gdv.xport.satz.xml;
 
-import static org.junit.Assert.*;
-
-import java.io.IOException;
-import java.util.*;
-
-import javax.xml.stream.XMLStreamException;
-
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.AbstractSatzTest;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
+import gdv.xport.satz.model.*;
+import gdv.xport.util.NotRegisteredException;
+import gdv.xport.util.NotUniqueException;
+import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
-
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.satz.*;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
-import gdv.xport.satz.model.*;
-import gdv.xport.util.*;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
+
+import javax.xml.stream.XMLStreamException;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.Assert.*;
 
 /**
  * Unit-Test fuer {@link XmlService}-Klasse

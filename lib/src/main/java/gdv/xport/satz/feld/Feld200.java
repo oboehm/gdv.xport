@@ -658,7 +658,7 @@ public enum Feld200 {
             teildatensatz = 2,
             nr = 20,
             type = AlphaNumFeld.class,
-            anzahlBytes = 17,
+            anzahlBytes = 35,
             byteAdresse = 220
     )
     VERTRAGSVERBINDUNGSNUMMER,
@@ -670,8 +670,8 @@ public enum Feld200 {
             teildatensatz = 2,
             nr = 21,
             type = AlphaNumFeld.class,
-            anzahlBytes = 19,
-            byteAdresse = 237
+            anzahlBytes = 1,
+            byteAdresse = 255
     )
     LEERSTELLEN2,
 

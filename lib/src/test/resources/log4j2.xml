@@ -20,7 +20,7 @@
     <logger name="gdv.xport.satz" level="INFO" />
     <logger name="gdv.xport.Datenpaket" level="INFO" />
     <logger name="gdv.xport.util" level="INFO" />
-    <Root level="DEBUG" additivity="false">
+    <Root level="INFO" additivity="false">
       <AppenderRef ref="CONSOLE" />
       <AppenderRef ref="DB" level="INFO" />
     </Root>

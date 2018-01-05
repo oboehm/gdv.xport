@@ -1058,7 +1058,7 @@ public enum Feld100 {
             anzahlBytes = 35,
             byteAdresse = 195
     )
-    NAME_SEPA_MANDAT_REFERENZNUMMER,
+    SEPA_MANDAT_REFERENZNUMMER,
 
     /**
      * SEPA-Mandat Ausstellungsdatum
@@ -1073,8 +1073,7 @@ public enum Feld100 {
     SEPA_MANDAT_AUSSTELLUNGSDATUM,
 
     /**
-     * SEPA-Mandat Kontoreferenz
-     *
+     * SEPA-Mandat Kontoreferenz.
      */
     @FeldInfo(
             teildatensatz = 5,
@@ -1086,14 +1085,50 @@ public enum Feld100 {
     SEPA_MANDAT_KONTOREFERENZ,
 
     /**
+     * SEPA-Mandat einmalig/wiederkehrend.
+     */
+    @FeldInfo(
+            teildatensatz = 5,
+            nr = 21,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 1,
+            byteAdresse = 239
+    )
+    SEPA_MANDAT_EINMALIG_WIEDERKEHREND,
+
+    /**
+     * SEPA-Mandat Basis-/Firmenlastschrift.
+     */
+    @FeldInfo(
+            teildatensatz = 5,
+            nr = 22,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 1,
+            byteAdresse = 240
+    )
+    SEPA_MANDAT_BASIS_FIRMENLASTSCHRIFT,
+
+    /**
+     * SEPA-Mandat Basis-/Firmenlastschrift.
+     */
+    @FeldInfo(
+            teildatensatz = 5,
+            nr = 23,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 241
+    )
+    DATUM_SEPA,
+
+    /**
      * Leerstellen.
      */
     @FeldInfo(
             teildatensatz = 5,
             nr = 21,
             type = AlphaNumFeld.class,
-            anzahlBytes = 17,
-            byteAdresse = 239
+            anzahlBytes = 7,
+            byteAdresse = 249
     )
     LEERSTELLEN5,
 
