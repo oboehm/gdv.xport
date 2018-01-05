@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Kontakt</title>
+    <author email="oliver.boehm@gmail.com">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Kontakt">
+      <p>
+        Bei Fragen zur gdv.xport-Bibliothek wenden Sie sich bitte an
+        ob@aosd.de oder schauen unter
+        <a href="http://www.github.com/oboehm/">github.com/oboehm</a>
+        vorbei.
+      </p>
+    </section>
+
+  </body>
+
+</document>

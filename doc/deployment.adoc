@@ -1,0 +1,38 @@
+= Deployment
+
+Für das Deployment auf Heroku sind hautpsächlich die beiden Dateien
+
+  * apps.json
+  * Procfile
+
+zuständig.
+
+== Deployment auf Heroku
+
+Um den Branch _feature/spring-boot_ nach Heroku zu deployen, sind folgende
+Kommandos nötig:
+
+----
+heroku login
+heroku git:remote -a gdv-xport-300
+git push heroku feature/spring-boot:master
+----
+
+Damit wird dieser Branch auf den Heroku-Master-Branch geschoben, da Heroku
+nur auf diesem Branch automatisch baut.
+
+== Anwendung starten / stoppen
+
+Anwendung starten:
+----
+heroku ps:scale web=1
+----
+
+Anwendung stoppen:
+----
+heroku ps:scale web=0
+----
+
+== Anwendung testen
+
+https://gdv-xport-300.herokuapp.com/ aufrufen

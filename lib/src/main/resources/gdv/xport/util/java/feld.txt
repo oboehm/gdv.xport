@@ -1,0 +1,11 @@
+    /**
+     * {0}
+     */
+    @FeldInfo(
+            teildatensatz = {1},
+            nr = {2},
+            type = {3}.class,
+            anzahlBytes = {4},
+            byteAdresse = {5}
+    )
+    {6}

@@ -1,0 +1,12 @@
+    /**
+     * {0} ({8},{7} Stellen).
+     */
+    @FeldInfo(
+            teildatensatz = {1},
+            nr = {2},
+            type = {3}.class,
+            nachkommaStellen = {7},
+            anzahlBytes = {4},
+            byteAdresse = {5}
+    )
+    {6}

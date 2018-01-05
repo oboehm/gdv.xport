@@ -5,6 +5,8 @@
 /target-eclipse
 /dependency-reduced-pom.xml
 /gdv-xport.log
+**/target/
+lib/gdv-xport-lib.iml
 
 ### IntelliJ IDEA ###
 .idea

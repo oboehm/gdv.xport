@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Entwickler-Sektion</title>
+    <author email="oliver.boehm@gmail.com">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Entwickler-Bereich">
+      <p>
+        Dieser Bereich ist f&#252;r die interne Entwicklung gedacht.
+      </p>
+    </section>
+
+  </body>
+
+</document>

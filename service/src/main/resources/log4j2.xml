@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+  <Appenders>
+    <Console name="CONSOLE" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss} %highlight{%-5p} [%-10.10t] %-30.30C{4} - %msg%n" />
+      <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+    </Console>
+    <Console name="COLOR_CONSOLE" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss} %highlight{%-5p} %style{[%-10.10t]}{white} %cyan{%-30.30C{4}} - %msg%n%highlight{%throwable}" />
+      <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+    </Console>
+    <Console name="DEBUGGER" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss} %-5p [%-10.10t] %-30.30C{4} - %msg%n" />
+      <Filters>
+        <ThresholdFilter level="DEBUG" />
+        <ThresholdFilter level="INFO" onMatch="DENY" onMismatch="NEUTRAL" />
+      </Filters>
+    </Console>
+    <JDBC name="DB" tableName="logbook">
+      <ConnectionFactory class="gdv.xport.config.LogConfig"
+                         method="getConnection" />
+      <Column name="event_date" isEventTimestamp="true" />
+      <Column name="level" pattern="%level" isUnicode="false" />
+      <Column name="logger" pattern="%logger" isUnicode="false" />
+      <Column name="message" pattern="%message" isUnicode="false" />
+      <Column name="throwable" pattern="%ex{full}" isUnicode="false" />
+    </JDBC>
+  </Appenders>
+
+  <Loggers>
+    <logger name="gdv.xport" level="INFO" />
+    <logger name="gdv.xport.satz" level="WARN" />
+    <logger name="gdv.xport.srv.config.LogInterceptor" level="INFO" >
+      <AppenderRef ref="DB" level="INFO" />
+    </logger>
+    <logger name="gdv.xport.srv.web.DatenpaketController" level="DEBUG" >
+      <AppenderRef ref="DB" level="DEBUG" />
+    </logger>
+    <logger name="org.apache" level="INFO" />
+    <logger name="org.springframework" level="INFO" />
+    <Root level="INFO">
+      <AppenderRef ref="CONSOLE" level="INFO" />
+    </Root>
+
+  </Loggers>
+
+</Configuration>

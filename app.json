@@ -1,0 +1,6 @@
+{
+  "name": "gdv.xport als Spring-Boot-Anwendung",
+  "description": "Eine einfache Web-Anwendung um gdv.xport, die als Spring-Boot-App auf Heroku laeuft.",
+  "image": "heroku/java",
+  "addons": [ "heroku-postgresql" ]
+}

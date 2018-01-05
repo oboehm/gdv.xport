@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Manual</title>
+    <author email="oliver.boehm@gmail.com">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Die ersten Schritte">
+      <p>
+        gdv.xport ist in erster Linie eine Java-Bibliothek,
+        auch wenn diese ein kleines 
+        <a href="../xref/gdv/xport/Main.html#30">Main-Programm</a> enth&#228;lt.
+      </p>
+      <subsection name="Abh&#228;ngige Bibliotheken">
+      	<p>
+      	  gdv.xport h&#228;ngt von einigen weiteren Bibliotheken ab, die Sie unter
+      	  <a href="../dependencies.html">dependencies.html</a> aufgelistet sehen.
+      	  Binden Sie diese Bibliotheken in den Classpath ein.
+      	</p>
+      </subsection>
+      <subsection name="Hello World">
+        <p>
+          F&#252;r ein erstes Beispiel wollen wir ein leeres Datenpaket erzeugen,
+          die VU-Nummer auf "Hello" und den Adressat (im Vorsatz) auf "World"
+          setzen.
+        </p>
+        <p>
+          Unter <a href="../xref/index.html">Source Xref</a> finden Sie die Sourcen zu diesem
+          <a href="../xref/gdv/xport/demo/HelloWorld.html#30">HelloWorld</a>-Beispiel.
+          Nach Start dieser Anwendung wird
+        </p>
+<source><![CDATA[
+0001HelloHello                         World                         2011200920112009 ...
+0001HelloHello                         World                         2011200920112009 ...
+0001HelloHello                         World                         2011200920112009 ...
+99990000000000          00000000000000000000000000000+00000000000000+00000000000000+00...
+]]></source>
+      </subsection>
+        <p>
+          auf der Console ausgegeben - der Vorsatz mit 3 Teildatens&#228;tze und "Hello" als
+          VU-Nummer und Absender sowie "World" als Absender, gefolgt vom Nachsatz mit der
+          Satznummer "9999".
+        </p>
+    </section>
+
+  </body>
+
+</document>

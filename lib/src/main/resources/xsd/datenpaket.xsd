@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- 
+    Die XSD zu der von gdv.xport generierten XML-Datei
+    (c)reated: 27-Nov-2009 by oliver.boehm@agentes.de
+ -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        targetNamespace="http://labs.agentes.de"
+        elementFormDefault="qualified">
+  <element name="datenpaket">
+    <complexType>
+      <choice minOccurs="0" maxOccurs="unbounded">
+        <element name="satz">
+          <complexType>
+            <sequence>
+              <element name="teildatensatz" minOccurs="0" maxOccurs="unbounded">
+                <complexType>
+                  <sequence>
+                    <element name="feld" nillable="true" minOccurs="0"
+                      maxOccurs="unbounded">
+                      <complexType>
+                        <simpleContent>
+                          <extension base="string">
+                            <attribute name="bytes" type="string" />
+                            <attribute name="bezeichnung" type="string" />
+                          </extension>
+                        </simpleContent>
+                      </complexType>
+                    </element>
+                  </sequence>
+                  <attribute name="nr" type="string" />
+                </complexType>
+              </element>
+            </sequence>
+            <attribute name="satzart" type="string" />
+          </complexType>
+        </element>
+      </choice>
+    </complexType>
+  </element>
+</schema>

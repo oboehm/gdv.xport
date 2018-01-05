@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Manual</title>
+    <author email="oliver.boehm@gmail.com">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Der erste Import">
+      <p>
+        Wenn Sie eine Datei wie z.B. die
+        <a href="http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt">musterdatei_041222.txt</a>
+        von <a href="http://www.gdv-online.de/">www.gdv-online.de</a>
+        importieren wollen, schauen Sie sich am besten das  
+        <a href="../xref/gdv/xport/Main.html#30">Main-Programm</a> an.
+        Dort wird eine beliebige Datei importiert (Option "-import"),
+        als XML (Option "-xml") ausgegeben und
+        anschliessend validiert (Option "-validate").
+      </p>
+      <p>
+        Und hier jetzt der Import:
+      </p>
+<source><![CDATA[
+Datenpaket datenpaket = new Datenpaket();
+datenpaket.importFrom(url);
+]]></source>
+      <p>
+        Neben dem Input einer URL wird auch der Import einer Datei, von einem
+        InputStream oder Reader unterst&#252;tzt.
+      </p>
+      <subsection name="Iterieren &#252;ber die einzelnen S&#228;tze..." >
+        <p>
+          Wenn Sie wissen wollen, wie Sie nach einem Import durch die einzelnen
+          S&#228;tze iterieren k&#246;nnen, schauen Sie sich am besten die
+          <a href="../xref/gdv/xport/Datenpaket.html">Datenpaket</a>-Klasse an,
+          wie die einzelnen Datens&#228;tze in der export-Methode rausgeschrieben werden:
+        </p>
+<source><![CDATA[
+for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext();) {
+    Datensatz datensatz = iterator.next();
+    datensatz.export(writer);
+}
+]]></source>
+      </subsection>
+      <subsection name="Zugriff auf einzelne Felder">
+        <p>
+          &#220;ber einen <a href="../xref/gdv/xport/satz/Satz.html">Satz</a>
+          oder <a href="../xref/gdv/xport/satz/Datensatz.html">Datensatz</a>
+          kommen Sie an die einzelnen
+          <a href="../xref/gdv/xport/feld/Feld.html">Feld</a>er ran. Dazu geben
+          Sie den Namen des Feldes an:
+        </p>
+<source><![CDATA[
+Feld absenderFeld = vorsatz.getFeld("Absender");
+]]></source>
+        <p>
+          Statt "Absender" verwenden Sie besser die Konstanten, die in
+          <a href="../xref/gdv/xport/feld/Bezeichner.html">Bezeichner</a>
+          definiert sind:
+        </p>
+<source><![CDATA[
+Feld absenderFeld = vorsatz.getFeld(Bezeichner.ABSENDER);
+]]></source>
+        <p>
+          (siehe auch die testSetAbsender()-Methode in
+          <a href="../xref-test/gdv/xport/satz/VorsatzTest.html">VorsatzTest</a>)
+        </p>
+      </subsection>
+    </section>
+    
+    <section name="Weitere Importe">
+      <p>
+        Seit 0.9.2 k&#246;nnen auch mehrere Datenpakete &#252;ber einen
+        InputStream oder Reader importiert werden:
+      </p>
+<source><![CDATA[
+List<Datenpaket> datenpakete = new ArrayList<Datenpaket>();
+while (true) {
+    Datenpaket paket = new Datenpaket();
+    try {
+        paket.importFrom(inputStream);
+        datenpakete.add(paket);
+    } catch (EOFException ex) {
+        log.info("EOF nach " + datenpakete.size() + " Datenpaketen erreicht.");
+        break;
+    }
+}
+]]></source>
+      <p>
+        Soll nur ein einzelner Datensatz importiert werden, kann dies
+        direkt ueber die Datensatz-Klasse erfolgen:
+      </p>
+<source><![CDATA[
+Datensatz satz100 = SatzFactory.getDatensatz(100);
+satz100.importFrom(file);
+]]></source>
+      <p>
+        Dieses und weitere Beispiele befinden sich in
+        <a href="../xref/gdv/xport/demo/ImportExport.html">ImportExport</a>.
+      </p>
+    </section>
+
+  </body>
+
+</document>

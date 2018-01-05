@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+
+<head lang="de">
+    <title>gdv.xport</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="../static/css/theme.css" th:href="@{/css/theme.css}"/>
+</head>
+
+<body>
+<!-- add bootstrap styling -->
+<div class="container">
+    <h1 layout:fragment="header">Global Header</h1>
+    <div layout:fragment="content">
+        <h1>GDV.XPort-Services</h1>
+        <p>
+            Die GDV.XPort-Services bauen auf der gdv.xport-Library auf und bieten
+            die darin enhaltene Java-API &uuml;ber REST-Services auch f&uuml;r andere
+            Sprachen an.
+        </p>
+        <p>
+            Die Dokumentation zu den REST-Services kann &uuml;ber das Buch-Symbol
+            <a href="/swagger-ui.html"><span class="glyphicon glyphicon-book"></span></a> oben rechts
+            aufgerufen werden. Auf Wunsch und f&uuml;r die Auswertung durch
+            andere Programme ist sie im JSON-Format &uuml;ber
+            <a href="/v2/api-docs">/v2/api-docs</a> und online als
+            <a href="swagger-ui.html">Swagger-Doku</a> abrufbar.
+        </p>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<document>
+
+  <properties>
+    <title>Folien</title>
+    <author email="oliver.boehm@gmail.com">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Folien zu gdv.xport">
+      <subsection name="Pecha Kucha">
+        <p>
+          Unter <a href="http://labs.agentes.de/slides/gdv-xport.pdf">labs.agentes.de/slides/gdv-xport.pdf</a>
+          finden Sie eine Kurz-&#220;bersicht &#252;ber die Entwicklung des
+          gdv.xport-Frameworks in Form eines Foliensatzes im Pecha-Kucha-Format
+          (20 Folien &#225; 20 Sekunden, s.a. 
+          <a href="http://de.wikipedia.org/wiki/Pecha_Kucha">Wikipedia</a>).
+        </p>
+      </subsection>
+      <subsection name="Video">
+        <p>
+          <object width="425" height="344">
+            <embed src="http://www.youtube.com/v/vqMOiEGivH8&#38;hl=de&#38;fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed>
+          </object>
+        </p>
+        <p>
+          Derselbe Vortrag als Video auf
+          <a href="http://www.youtube.com/watch?v=vqMOiEGivH8">YouTube</a>.
+        </p>
+      </subsection>
+    </section>
+    
+  </body>
+
+</document>

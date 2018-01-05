@@ -1,0 +1,1431 @@
+/*
+ * Copyright (c) 2011 by agentes
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express orimplied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * (c)reated {0,date,short} by {1}
+ */
+
+package gdv.xport.satz.feld;
+
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.feld.*;
+
+
+/**
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 1.
+ * 
+ * @author {1}
+ * @since {0,date,short}
+ */
+public enum Feld1 '{'
+
+    /////   Teildatensatz 1   /////////////////////////////////////////////////
+
+    /**
+     * Satzart.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 1,
+            type = NumFeld.class,
+            anzahlBytes = 4,
+            byteAdresse = 1
+    )
+    SATZART,
+
+    /**
+     * VU-Nummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 2,
+            type = VUNummer.class,
+            anzahlBytes = 5,
+            byteAdresse = 5
+    )
+    VU_NUMMER,
+
+    /**
+     * Absender.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 3,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 30,
+            byteAdresse = 10
+    )
+    ABSENDER,
+
+    /**
+     * Adressat.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 4,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 30,
+            byteAdresse = 40
+    )
+    ADRESSAT,
+
+    /**
+     * Erstellungs-Datum-Zeitraum vom.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 5,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 70
+    )
+    ERSTELLUNGSDATUM_ZEITRAUM_VOM,
+
+    /**
+     * Erstellungs-Datum-Zeitraum bis.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 6,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 78
+    )
+    ERSTELLUNGSDATUM_ZEITRAUM_BIS,
+
+    /**
+     * Geschaeftsstelle/Vermittler.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 7,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 10,
+            byteAdresse = 86
+    )
+    VERMITTLER,
+
+    /**
+     * Version Vorsatz Satzart 0001.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 8,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 96
+    )
+    VERSION_VORSATZ,
+
+    /**
+     * Version Satzart 0100.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 9,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 99
+    )
+    VERSION_SATZART_0100,
+
+    /**
+     * Version Satzart 0200.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 10,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 102
+    )
+    VERSION_SATZART_0200,
+
+    /**
+     * Version Satzart 0210 050.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 11,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 105
+    )
+    VERSION_SATZART_0210_050,
+
+    /**
+     * Version Satzart 0220 051.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 12,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 108
+    )
+    VERSION_SATZART_0220_051,
+
+    /**
+     * Version Satzart 0220 052.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 13,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 111
+    )
+    VERSION_SATZART_0220_052,
+
+    /**
+     * Version Satzart 0220 053.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 14,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 114
+    )
+    VERSION_SATZART_0220_053,
+
+    /**
+     * Version Satzart 0220 054.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 15,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 117
+    )
+    VERSION_SATZART_0220_054,
+
+    /**
+     * Version Satzart 0220 059.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 16,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 120
+    )
+    VERSION_SATZART_0220_059,
+
+    /**
+     * Version Satzart 0210 040.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 17,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 123
+    )
+    VERSION_SATZART_0210_040,
+
+    /**
+     * Version Satzart 0220 040.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 18,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 126
+    )
+    VERSION_SATZART_0220_040,
+
+    /**
+     * Version Satzart 0210 030.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 19,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 129
+    )
+    VERSION_SATZART_0210_030,
+
+    /**
+     * Version Satzart 0220 030.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 20,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 132
+    )
+    VERSION_SATZART_0220_030,
+
+    /**
+     * Version Satzart 0210 010.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 21,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 135
+    )
+    VERSION_SATZART_0210_010,
+
+    /**
+     * Version Satzart 0220 010.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 22,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 138
+    )
+    VERSION_SATZART_0220_010,
+
+    /**
+     * Version Satzart 0210 130.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 23,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 141
+    )
+    VERSION_SATZART_0210_130,
+
+    /**
+     * Version Satzart 0220 130.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 24,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 144
+    )
+    VERSION_SATZART_0220_130,
+
+    /**
+     * Version Satzart 0210 110.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 25,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 147
+    )
+    VERSION_SATZART_0210_110,
+
+    /**
+     * Version Satzart 0220 110.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 26,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 150
+    )
+    VERSION_SATZART_0220_110,
+
+    /**
+     * Version Satzart 0210 140.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 27,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 153
+    )
+    VERSION_SATZART_0210_140,
+
+    /**
+     * Version Satzart 0220 140.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 28,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 156
+    )
+    VERSION_SATZART_0220_140,
+
+    /**
+     * Version Satzart 0210 020.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 29,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 159
+    )
+    VERSION_SATZART_0210_020,
+
+    /**
+     * Version Satzart 0220 020.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 30,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 162
+    )
+    VERSION_SATZART_0220_020,
+
+    /**
+     * Version Satzart 0210 070.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 31,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 165
+    )
+    VERSION_SATZART_0210_070,
+
+    /**
+     * Version Satzart 0220 070.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 32,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 168
+    )
+    VERSION_SATZART_0220_070,
+
+    /**
+     * Version Satzart 0210 510.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 33,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 177
+    )
+    VERSION_SATZART_0210_510,
+
+    /**
+     * Version Satzart 0220 510.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 34,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 180
+    )
+    VERSION_SATZART_0220_510,
+
+    /**
+     * Version Satzart 0250.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 35,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 195
+    )
+    VERSION_SATZART_0250,
+
+    /**
+     * Version Satzart 0260.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 36,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 198
+    )
+    VERSION_SATZART_0260,
+
+    /**
+     * Version Satzart 0210.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 37,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 201
+    )
+    VERSION_SATZART_0210,
+
+    /**
+     * Version Satzart 0220.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 38,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 204
+    )
+    VERSION_SATZART_0220,
+
+    /**
+     * Version Satzart 0220 055.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 39,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 207
+    )
+    VERSION_SATZART_0220_055,
+
+    /**
+     * Version Satzart 0300.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 40,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 210
+    )
+    VERSION_SATZART_0300,
+
+    /**
+     * Version Satzart 0400.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 41,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 213
+    )
+    VERSION_SATZART_0400,
+
+    /**
+     * Version Satzart 0410.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 42,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 216
+    )
+    VERSION_SATZART_0410,
+
+    /**
+     * Version Satzart 0430.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 43,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 219
+    )
+    VERSION_SATZART_0430,
+
+    /**
+     * Version Satzart 0500.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 44,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 222
+    )
+    VERSION_SATZART_0500,
+
+    /**
+     * Version Nachsatz Satzart 9999.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 45,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 225
+    )
+    VERSION_NACHSATZ,
+
+    /**
+     * Version Satzart 0420.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 46,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 228
+    )
+    VERSION_SATZART_0420,
+
+    /**
+     * Version Satzart 0450.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 47,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 231
+    )
+    VERSION_SATZART_0450,
+
+    /**
+     * Version Satzart 0550.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 48,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 234
+    )
+    VERSION_SATZART_0550,
+
+    /**
+     * Art des Absenders.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 49,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 237
+    )
+    ART_DES_ABSENDERS,
+
+    /**
+     * Art des Adressaten.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 50,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 238
+    )
+    ART_DES_ADRESSATEN,
+
+    /**
+     * VU-Abrechnungsstelle.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 51,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 239
+    )
+    VU_ABRECHNUNGSSTELLE,
+
+    /**
+     * Bestandsfuehrende Geschaeftsstelle.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 52,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 2,
+            byteAdresse = 241
+    )
+    BESTANDSFUEHRENDE_GESCHAEFTSSTELLE,
+
+    /**
+     * Version Satzart 0350.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 53,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 243
+    )
+    VERSION_SATZART_0350,
+
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 54,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 10,
+            byteAdresse = 246
+    )
+    LEERSTELLEN,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 55,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER,
+
+    /////   Teildatensatz 2   /////////////////////////////////////////////////
+
+    /**
+     * Satzart.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 1,
+            type = NumFeld.class,
+            anzahlBytes = 4,
+            byteAdresse = 1
+    )
+    SATZART,
+
+    /**
+     * VU-Nummer.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 2,
+            type = VUNummer.class,
+            anzahlBytes = 5,
+            byteAdresse = 5
+    )
+    VU_NUMMER,
+
+    /**
+     * Absender.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 3,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 30,
+            byteAdresse = 10
+    )
+    ABSENDER,
+
+    /**
+     * Adressat.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 4,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 30,
+            byteAdresse = 40
+    )
+    ADRESSAT,
+
+    /**
+     * Erstellungs-Datum-Zeitraum vom.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 5,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 70
+    )
+    ERSTELLUNGSDATUM_ZEITRAUM_VOM,
+
+    /**
+     * Erstellungs-Datum-Zeitraum bis.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 6,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 78
+    )
+    ERSTELLUNGSDATUM_ZEITRAUM_BIS,
+
+    /**
+     * Geschaeftsstelle/Vermittler.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 7,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 10,
+            byteAdresse = 86
+    )
+    VERMITTLER,
+
+    /**
+     * Version Satzart 0211 050.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 8,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 96
+    )
+    VERSION_SATZART_0211_050,
+
+    /**
+     * Version Satzart 0221 051.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 9,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 99
+    )
+    VERSION_SATZART_0221_051,
+
+    /**
+     * Version Satzart 0221 052.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 10,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 102
+    )
+    VERSION_SATZART_0221_052,
+
+    /**
+     * Version Satzart 0221 053.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 11,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 105
+    )
+    VERSION_SATZART_0221_053,
+
+    /**
+     * Version Satzart 0221 054.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 12,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 108
+    )
+    VERSION_SATZART_0221_054,
+
+    /**
+     * Version Satzart 0221 059.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 13,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 111
+    )
+    VERSION_SATZART_0221_059,
+
+    /**
+     * Version Satzart 0221 055.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 14,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 114
+    )
+    VERSION_SATZART_0221_055,
+
+    /**
+     * Version Satzart 0211 040.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 15,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 117
+    )
+    VERSION_SATZART_0211_040,
+
+    /**
+     * Version Satzart 0221 040.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 16,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 120
+    )
+    VERSION_SATZART_0221_040,
+
+    /**
+     * Version Satzart 0221 030.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 17,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 123
+    )
+    VERSION_SATZART_0221_030,
+
+    /**
+     * Version Satzart 0211 010.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 18,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 126
+    )
+    VERSION_SATZART_0211_010,
+
+    /**
+     * Version Satzart 0221 010.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 19,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 129
+    )
+    VERSION_SATZART_0221_010,
+
+    /**
+     * Version Satzart 0211 130.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 20,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 132
+    )
+    VERSION_SATZART_0211_130,
+
+    /**
+     * Version Satzart 0221 130.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 21,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 135
+    )
+    VERSION_SATZART_0221_130,
+
+    /**
+     * Version Satzart 0211 110.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 22,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 138
+    )
+    VERSION_SATZART_0211_110,
+
+    /**
+     * Version Satzart 0221 110.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 23,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 141
+    )
+    VERSION_SATZART_0221_110,
+
+    /**
+     * Version Satzart 0211 140.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 24,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 144
+    )
+    VERSION_SATZART_0211_140,
+
+    /**
+     * Version Satzart 0221 140.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 25,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 147
+    )
+    VERSION_SATZART_0221_140,
+
+    /**
+     * Version Satzart 0221 070.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 26,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 150
+    )
+    VERSION_SATZART_0221_070,
+
+    /**
+     * Version Satzart 0221 510.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 27,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 159
+    )
+    VERSION_SATZART_0221_510,
+
+    /**
+     * Version Satzart 0251.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 28,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 174
+    )
+    VERSION_SATZART_0251,
+
+    /**
+     * Version Satzart 0211.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 29,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 177
+    )
+    VERSION_SATZART_0211,
+
+    /**
+     * Version Satzart 0221.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 30,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 180
+    )
+    VERSION_SATZART_0221,
+
+    /**
+     * Version Satzart 0210 550.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 31,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 183
+    )
+    VERSION_SATZART_0210_550,
+
+    /**
+     * Version Satzart 0220 550.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 32,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 186
+    )
+    VERSION_SATZART_0220_550,
+
+    /**
+     * Version Satzart 0270 550.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 33,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 189
+    )
+    VERSION_SATZART_0270_550,
+
+    /**
+     * Version Satzart 0280 550.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 34,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 192
+    )
+    VERSION_SATZART_0280_550,
+
+    /**
+     * Version Satzart 0291 550.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 35,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 195
+    )
+    VERSION_SATZART_0291_550,
+
+    /**
+     * Version Satzart 0292 550.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 36,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 198
+    )
+    VERSION_SATZART_0292_550,
+
+    /**
+     * Version Satzart 0293 550.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 37,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 201
+    )
+    VERSION_SATZART_0293_550,
+
+    /**
+     * Version Satzart 0294 550.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 38,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 204
+    )
+    VERSION_SATZART_0294_550,
+
+    /**
+     * Version Satzart 0295 550.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 39,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 207
+    )
+    VERSION_SATZART_0295_550,
+
+    /**
+     * Version Satzart 0052.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 40,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 210
+    )
+    VERSION_SATZART_0052,
+
+    /**
+     * Version Satzart 0102.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 41,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 213
+    )
+    VERSION_SATZART_0102,
+
+    /**
+     * Version Satzart 0212.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 42,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 216
+    )
+    VERSION_SATZART_0212,
+
+    /**
+     * Version Satzart 0352.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 43,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 219
+    )
+    VERSION_SATZART_0352,
+
+    /**
+     * Version Satzart 0362.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 44,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 222
+    )
+    VERSION_SATZART_0362,
+
+    /**
+     * Version Satzart 0382.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 45,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 225
+    )
+    VERSION_SATZART_0382,
+
+    /**
+     * Version Satzart 9950.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 46,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 228
+    )
+    VERSION_SATZART_9950,
+
+    /**
+     * Version Satzart 9952.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 47,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 231
+    )
+    VERSION_SATZART_9952,
+
+    /**
+     * Version Satzart 0210 580.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 48,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 234
+    )
+    VERSION_SATZART_0210_580,
+
+    /**
+     * Version Satzart 0220 580.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 49,
+            type = Version.class,
+            anzahlBytes = 3,
+            byteAdresse = 237
+    )
+    VERSION_SATZART_0220_580,
+
+    /**
+     * Produktspezifische Antragsdaten.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 50,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 240
+    )
+    PRODUKTSPEZIFISCHE_ANTRAGSDATEN,
+
+    /**
+     * Produktspezifische Stammdaten.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 51,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 243
+    )
+    PRODUKTSPEZIFISCHE_STAMMDATEN,
+
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 52,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 10,
+            byteAdresse = 246
+    )
+    LEERSTELLEN,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 2,
+            nr = 53,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER,
+
+    /////   Teildatensatz 3   /////////////////////////////////////////////////
+
+    /**
+     * Satzart.
+     */
+    @FeldInfo(
+            teildatensatz = 3,
+            nr = 1,
+            type = NumFeld.class,
+            anzahlBytes = 4,
+            byteAdresse = 1
+    )
+    SATZART,
+
+    /**
+     * VU-Nummer.
+     */
+    @FeldInfo(
+            teildatensatz = 3,
+            nr = 2,
+            type = VUNummer.class,
+            anzahlBytes = 5,
+            byteAdresse = 5
+    )
+    VU_NUMMER,
+
+    /**
+     * Absender.
+     */
+    @FeldInfo(
+            teildatensatz = 3,
+            nr = 3,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 30,
+            byteAdresse = 10
+    )
+    ABSENDER,
+
+    /**
+     * Adressat.
+     */
+    @FeldInfo(
+            teildatensatz = 3,
+            nr = 4,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 30,
+            byteAdresse = 40
+    )
+    ADRESSAT,
+
+    /**
+     * Erstellungs-Datum-Zeitraum vom.
+     */
+    @FeldInfo(
+            teildatensatz = 3,
+            nr = 5,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 70
+    )
+    ERSTELLUNGSDATUM_ZEITRAUM_VOM,
+
+    /**
+     * Erstellungs-Datum-Zeitraum bis.
+     */
+    @FeldInfo(
+            teildatensatz = 3,
+            nr = 6,
+            type = Datum.class,
+            anzahlBytes = 8,
+            byteAdresse = 78
+    )
+    ERSTELLUNGSDATUM_ZEITRAUM_BIS,
+
+    /**
+     * Geschaeftsstelle/Vermittler.
+     */
+    @FeldInfo(
+            teildatensatz = 3,
+            nr = 7,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 10,
+            byteAdresse = 86
+    )
+    VERMITTLER,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(
+            teildatensatz = 3,
+            nr = 8,
+            type = Zeichen.class,
+            anzahlBytes = 1,
+            byteAdresse = 256
+    )
+    SATZNUMMER;
+
+}

@@ -1,0 +1,20 @@
+/*
+ * Style-Sheet fuer die Web-Oberflaeche
+ */
+
+body {
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    font-style: normal;
+}
+
+.footer {
+    font-size: x-small;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.container-fluid {
+    background-color: antiquewhite;
+}

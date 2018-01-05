@@ -10,14 +10,22 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
-  <packaging>jar</packaging>
-  <version>2.1.2</version>
-  <name>GDV-Xport</name>
+  <packaging>pom</packaging>
+  <version>3.0.0-SNAPSHOT</version>
+  <name>GDV.XPort</name>
+
+  <modules>
+    <module>lib</module>
+    <module>service</module>
+  </modules>
+
   <url>http://www.aosd.de/gdv.xport/</url>
+
   <organization>
     <name>AOSD Labs</name>
     <url>http://www.aosd.de/</url>
   </organization>
+
   <!-- see http://maven.apache.org/pom.html#Licenses -->
   <licenses>
     <license>
@@ -30,12 +38,13 @@
 
   <properties>
 
-    <patterntesting.version>1.7.0</patterntesting.version>
+    <patterntesting.version>1.8.0</patterntesting.version>
+    <spring.version>1.5.9.RELEASE</spring.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.7</java.version>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
 
-    <!-- workaround for PMD, see http://jira.codehaus.org/browse/MPMD-86 -->
-    <targetJdk>1.7</targetJdk>
     <main.class>gdv.xport.Main</main.class>
 
     <!-- Sonar -->
@@ -54,107 +63,152 @@
     <!-- super.clone() should be called when overriding Object.clone() -->
     <sonar.issue.ignore.multicriteria.4.ruleKey>squid:S1182</sonar.issue.ignore.multicriteria.4.ruleKey>
     <sonar.issue.ignore.multicriteria.4.resourceKey>**/feld/*.java</sonar.issue.ignore.multicriteria.4.resourceKey>
+    <!-- Utility classes should not have public constructors -->
+    <sonar.issue.ignore.multicriteria.1118.ruleKey>squid:S1118</sonar.issue.ignore.multicriteria.1118.ruleKey>
+    <sonar.issue.ignore.multicriteria.1118.resourceKey>src/main/java/gdv/xport/service/XPortApplication.java</sonar.issue.ignore.multicriteria.1118.resourceKey>
     <!-- Subclasses that add fields should override "equals" -->
     <sonar.issue.ignore.multicriteria.2160.ruleKey>squid:S2160</sonar.issue.ignore.multicriteria.2160.ruleKey>
     <sonar.issue.ignore.multicriteria.2160.resourceKey>src/main/java/gdv/xport/**/*satz*.java</sonar.issue.ignore.multicriteria.2160.resourceKey>
     <!-- ignore violations -->
-    <sonar.issue.ignore.multicriteria>1,2,3,4,2160</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>1,2,3,4,1118,2160</sonar.issue.ignore.multicriteria>
 
   </properties>
 
 
 
   <build>
-    
-    <!-- 
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <excludes>
+          <exclude>**/*.properties</exclude>
+        </excludes>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+
+    <!--
         Dependency management for plugins which are used in different places
         in the POM.
      -->
     <pluginManagement>
       <plugins>
         <plugin>
-	      <groupId>org.codehaus.mojo</groupId>
-	      <artifactId>findbugs-maven-plugin</artifactId>
-	      <version>3.0.3</version>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-changes-plugin</artifactId>
+          <version>2.12.1</version>
         </plugin>
-        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
         <plugin>
-          <groupId>org.eclipse.m2e</groupId>
-          <artifactId>lifecycle-mapping</artifactId>
-          <version>1.0.0</version>
-          <configuration>
-            <lifecycleMappingMetadata>
-              <pluginExecutions>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <versionRange>[0.7.0.201403182114,)</versionRange>
-                    <goals>
-                      <goal>prepare-agent</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore/>
-                  </action>
-                </pluginExecution>
-              </pluginExecutions>
-            </lifecycleMappingMetadata>
-          </configuration>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.6.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.10.4</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jxr-plugin</artifactId>
+          <version>2.5</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>2.9</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.6</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.19.1</version>
+          <version>2.20.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>2.19.1</version>
+          <version>2.20.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>aspectj-maven-plugin</artifactId>
+          <version>1.9</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>3.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.7.9</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>1.13</version>
         </plugin>
       </plugins>
     </pluginManagement>
-  
+
+
   	<plugins>
-  	
-      <!-- 
-          Make The Jar Executable
-          see http://maven.apache.org/shared/maven-archiver/examples/classpath.html
-       -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.4</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>${main.class}</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>2.2</version>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.0.0-M1</version>
         <executions>
           <execution>
-            <phase>package</phase>
+            <id>enforce-versions</id>
             <goals>
-              <goal>shade</goal>
+              <goal>enforce</goal>
             </goals>
             <configuration>
-              <shadedArtifactAttached>true</shadedArtifactAttached>
-              <shadedClassifierName>uberjar</shadedClassifierName>
-              <minimizeJar>true</minimizeJar>
-              <transformers>
-                <transformer
-                  implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>${main.class}</mainClass>
-                </transformer>
-              </transformers>
+              <rules>
+                <bannedPlugins>
+                  <!-- will only display a warning but does not fail the build. -->
+                  <level>WARN</level>
+                  <excludes>
+                    <exclude>org.apache.maven.plugins:maven-verifier-plugin</exclude>
+                  </excludes>
+                  <message>Please consider using the maven-invoker-plugin (http://maven.apache.org/plugins/maven-invoker-plugin/)!</message>
+                </bannedPlugins>
+                <requireMavenVersion>
+                  <version>3.0</version>
+                </requireMavenVersion>
+                <requireJavaVersion>
+                  <version>1.8</version>
+                </requireJavaVersion>
+              </rules>
             </configuration>
           </execution>
         </executions>
@@ -166,58 +220,18 @@
           see http://maven.apache.org/plugins/maven-site-plugin/examples/creating-content.html
       -->
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.4</version>
+        <version>3.6</version>
         <configuration>
           <locales>de</locales>
           <outputEncoding>UTF-8</outputEncoding>
         </configuration>
       </plugin>
-
-  	  <plugin>
-  	  	<groupId>org.apache.maven.plugins</groupId>
-  	  	<artifactId>maven-compiler-plugin</artifactId>
-  	  	<version>3.1</version>
-  	  	<configuration>
-  	  	  <source>${java.version}</source>
-  	  	  <target>${java.version}</target>
-  	  	</configuration>
-  	  </plugin>
-
-      <!--
-        AspectJ compiler
-        @see http://www.mail-archive.com/user@mojo.codehaus.org/msg00157.html
-        @see http://mail-archives.apache.org/mod_mbox/maven-users/200601.mbox/%3CB39B8F0E-BB20-44DB-96B3-3C7FCB85B594@gmail.com%3E
-        @see http://mojo.codehaus.org/aspectj-maven-plugin/differentTestAndCompile.html
-       -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>aspectj-maven-plugin</artifactId>
-        <version>1.5</version>
-        <configuration>
-          <ajdtBuildDefFile>build.ajproperties</ajdtBuildDefFile>
-          <aspectLibraries>
-            <aspectLibrary>
-              <groupId>org.patterntesting</groupId>
-              <artifactId>patterntesting-rt</artifactId>
-            </aspectLibrary>
-            <aspectLibrary>
-              <groupId>org.patterntesting</groupId>
-              <artifactId>patterntesting-check-ct</artifactId>
-            </aspectLibrary>
-            <aspectLibrary>
-              <groupId>org.patterntesting</groupId>
-              <artifactId>patterntesting-check-rt</artifactId>
-            </aspectLibrary>
-          </aspectLibraries>
-        </configuration>
-      </plugin>
-
-	  <!-- we must set some system properties for testing -->
+      <!-- Unit Tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.20.1</version>
         <configuration>
           <excludes>
             <exclude>**/Abstract*.java</exclude>
@@ -230,12 +244,37 @@
           </systemProperties>
         </configuration>
       </plugin>
-      
+      <!-- Integrations-Tests -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <configuration>
+          <!-- disable parallel execution so that JaCoCo listener can properly work -->
+          <parallel>none</parallel>
+          <forkCount>1</forkCount>
+          <perCoreThreadCount>false</perCoreThreadCount>
+          <reuseForks>true</reuseForks>
+          <childDelegation>false</childDelegation>
+          <!--
+            Der Eintrag mit classesDirectory ist ein Workaround fuer Spring-Boot,
+            damit die Integrations-Tests auch wirklich ausegefuert werden,
+            s. https://github.com/spring-projects/spring-boot/issues/6254
+          -->
+          <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+            </goals>
+            <phase>integration-test</phase>
+          </execution>
+        </executions>
+      </plugin>
       <!-- Sonar -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
-        <version>3.2</version>
       </plugin>
 
       <!-- Code Coverage  -->
@@ -273,7 +312,6 @@
 
 
 
-
   <reporting>
 
     <plugins>
@@ -282,14 +320,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.7</version>
-      </plugin>
-
-      <!-- Java Cross Reference Listing -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <version>2.3</version>
+        <version>2.9</version>
       </plugin>
 
       <!--
@@ -299,7 +330,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changes-plugin</artifactId>
-        <version>2.10</version>
         <reportSets>
           <reportSet>
             <reports>
@@ -316,62 +346,14 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.3</version>
+        <version>3.0.0</version>
         <configuration>
           <source>${java.version}</source>
           <show>protected</show>
           <links>
-            <link>http://java.sun.com/javase/6/docs/api/</link>
+            <link>http://docs.oracle.com/javase/8/docs/api/</link>
             <link>http://www.eclipse.org/aspectj/doc/released/runtime-api</link>
-            <link>http://junit.sourceforge.net/javadoc/</link>
           </links>
-        </configuration>
-      </plugin>
-
-      <!-- Unit Tests -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.19.1</version>
-      </plugin>
-
-      <!--
-          code smells
-          start 'mvn pmd:pmd'
-          http://maven.apache.org/plugins/maven-pmd-plugin/
-      -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.6</version>
-        <configuration>
-          <sourceEncoding>utf-8</sourceEncoding>
-          <minimumTokens>100</minimumTokens>
-          <targetJdk>${java.version}</targetJdk>
-          <rulesets>
-            <ruleset>${basedir}/config/pmd.xml</ruleset>
-          </rulesets>
-        </configuration>
-      </plugin>
-
-      <!--
-          findbugs
-          start 'mvn findbugs:findbugs'
-          http://mojo.codehaus.org/findbugs-maven-plugin/
-          http://docs.codehaus.org/display/MAVENUSER/FindBugs+Plugin
-       -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <configuration>
-          <findbugsXmlOutput>true</findbugsXmlOutput>
-          <xmlOutput>true</xmlOutput>
-          <threshold>Normal</threshold>
-          <effort>Max</effort>
-          <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
-          <omitVisitors>FindDeadLocalStores,OverridingEqualsNotSymmetrical</omitVisitors>
-          <onlyAnalyze>gdv.xport.-</onlyAnalyze>
-          <relaxed>false</relaxed>
         </configuration>
       </plugin>
 
@@ -380,107 +362,144 @@
   </reporting>
 
 
+  <dependencyManagement>
 
-  <dependencies>
-  
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>2.4</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-cli</groupId>
-      <artifactId>commons-cli</artifactId>
-      <version>1.2</version>
-    </dependency>
-    <dependency>
-    <groupId>commons-httpclient</groupId>
-    <artifactId>commons-httpclient</artifactId>
-      <version>3.1</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.4</version>
-    </dependency>
-    <!-- @see http://mirrors.ibiblio.org/pub/mirrors/maven2/junit/junit/ -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>[4.5,]</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>2.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.1</version>
-    </dependency>
-	<!-- PatternTesting -->
-    <dependency>
-      <groupId>org.patterntesting</groupId>
-      <artifactId>patterntesting-rt</artifactId>
-      <version>${patterntesting.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.jamonapi</groupId>
-          <artifactId>jamon</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.patterntesting</groupId>
-      <artifactId>patterntesting-check-ct</artifactId>
-      <version>${patterntesting.version}</version>
-       <exclusions>
-        <exclusion>
-          <groupId>com.jamonapi</groupId>
-          <artifactId>jamon</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.patterntesting</groupId>
-      <artifactId>patterntesting-check-rt</artifactId>
-      <version>${patterntesting.version}</version>
-       <exclusions>
-        <exclusion>
-          <groupId>com.jamonapi</groupId>
-          <artifactId>jamon</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.patterntesting</groupId>
-      <artifactId>patterntesting-concurrent</artifactId>
-      <version>${patterntesting.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.jamonapi</groupId>
-          <artifactId>jamon</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <!-- Object Validation Framework (OVal) -->
-    <dependency>
-      <groupId>net.sf.oval</groupId>
-      <artifactId>oval</artifactId>
-      <version>1.40</version>
-    </dependency>
+    <dependencies>
 
-  </dependencies>
-  
+      <!-- Apache Commons -->
+      <dependency>
+        <groupId>commons-lang</groupId>
+        <artifactId>commons-lang</artifactId>
+        <version>2.6</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-cli</groupId>
+        <artifactId>commons-cli</artifactId>
+        <version>1.3.1</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-httpclient</groupId>
+        <artifactId>commons-httpclient</artifactId>
+        <version>3.1</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.5</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.5</version>
+      </dependency>
 
-  
+      <!-- Testing -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+        <scope>test</scope>
+      </dependency>
+
+      <!-- Logging -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>2.8</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>2.8</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>2.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>9.4.1212.jre7</version>
+      </dependency>
+
+      <!-- PatternTesting -->
+      <dependency>
+        <groupId>org.patterntesting</groupId>
+        <artifactId>patterntesting-rt</artifactId>
+        <version>${patterntesting.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.patterntesting</groupId>
+        <artifactId>patterntesting-concurrent</artifactId>
+        <version>${patterntesting.version}</version>
+      </dependency>
+
+      <!-- Import dependency management from Spring Boot -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- for REST API Doc -->
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>2.7.0</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>2.7.0</version>
+      </dependency>
+
+      <!-- WebJars -->
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>bootstrap</artifactId>
+        <version>3.3.7-1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>jquery</artifactId>
+        <version>3.2.1</version>
+      </dependency>
+
+      <!-- Object Validation Framework (OVal) -->
+      <dependency>
+        <groupId>net.sf.oval</groupId>
+        <artifactId>oval</artifactId>
+        <version>1.40</version>
+      </dependency>
+      <!-- for JsonFormatter -->
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.8.10</version>
+        <optional>true</optional>
+      </dependency>
+
+      <!-- JavaBeans Activation Framework (JAF) -->
+      <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>activation</artifactId>
+        <version>1.1.1</version>
+      </dependency>
+
+    </dependencies>
+
+  </dependencyManagement>
+
+
   <!-- More Project Information -->
 
   <description>
-    gdv.xport ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
+    gdv.xport ist zum anderen eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
     Sie erleichtert den Export und Export dieses Datenformats.
+    Zum Anderen sind auch noch Services rund um diese Bibliothek in Planung.
   </description>
 
   <inceptionYear>2009</inceptionYear>
@@ -489,8 +508,10 @@
     <developer>
       <name>Oliver Boehm</name>
       <id>oboehm</id>
-      <email>oliver.boehm@gmail.com</email>
-      <organization>T-Systems</organization>
+      <email>ob@jugs.org</email>
+      <organization>Java User Group Stuttgart</organization>
+      <organizationUrl>http://www.jugs.org</organizationUrl>
+      <url>http://www.aosd.de</url>
       <roles>
         <role>Java Developer</role>
       </roles>
@@ -535,6 +556,20 @@
         <role>Java Developer</role>
       </roles>
     </contributor>
+    <contributor>
+      <name>NiasSt90</name>
+      <url>https://github.com/NiasSt90</url>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </contributor>
+    <contributor>
+      <name>MarkusFieber</name>
+      <url>https://github.com/MarkusFieber</url>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </contributor>
   </contributors>
   
   <scm>
@@ -570,31 +605,11 @@
       <id>release</id>
       <build>
         <plugins>
-          <!-- 
-              Build should fail if FindBugs reports an error
-              see http://mojo.codehaus.org/findbugs-maven-plugin/examples/violationChecking.html
-           -->
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>findbugs-maven-plugin</artifactId>
-            <configuration>
-              <effort>Max</effort>
-              <threshold>Normal</threshold>
-              <excludeFilterFile>config/findbugs-exclude.xml</excludeFilterFile>
-            </configuration>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>check</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
           <!-- We want to sign the artifacts -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.4</version>
+            <version>1.6</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -634,6 +649,7 @@
 		  <plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-changes-plugin</artifactId>
+            <version>2.5.3</version>
 			<executions>
 				<execution>
 					<id>validate-changes</id>

@@ -1,0 +1,5730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Dieser Ausschnitt mit <felder>...</felder> aus der Datei "VUVM2013_010713.xml" 
+	entnommen, da diese Datei fuer erste Experimente etwas zu unhandlich (ca. 7 MB) ist.
+	Der Ausschnitt beinhalt einen Teil der Daten fuer den Teildatensatz 1 von Satz 100
+	(Adressteil), der dann fuer weitere Tests nach und nach ergaenzt wurde.
+	(12-Nov-2014, Oli B.)
+-->
+
+<service>
+
+	<felder>
+		<feld referenz="BN-2003.02.11.22.49.56.157">
+			<name>Aktenzeichen des Sicherungsgläubigers</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>12</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.756">
+			<name>Anredeschluessel</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>19.07.2007 16:30:03</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Anredeschluessel</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>19.07.2007 16:30:03</letzteAenderung>
+				<technischerName>Anredeschluessel</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>(ohne Anrede)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Herr</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Frau</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Firma</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Herr und Frau</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Fräulein</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>6</wert>
+						<beschreibung>Vereinigung</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.346">
+			<name>Bündelungskennzeichen</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.476">
+			<name>Datum</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>02.02.2007 16:43:11</letzteAenderung>
+			<minimaleLaenge>8</minimaleLaenge>
+			<bytes>8</bytes>
+			<datentyp combobox="datentypbox">Datum</datentyp>
+			<nachkommastellen />
+			<bemerkung>Tag/Monat/Jahr (TTMMJJJJ)</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:05:13</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2009.06.03.09.48.57.056">
+			<name>Datum (MMJJJJ)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>03.06.2009 11:57:54</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>6</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung>Monat / Jahr (MMJJJJ)</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>03.06.2009 11:57:54</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.396">
+			<name>Folgenummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>18.03.2004 11:03:49</letzteAenderung>
+			<minimaleLaenge>2</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>
+				<br />
+			</bemerkung>
+			<wertetabelle>
+				<name>Folgenummer</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>18.03.2004 11:03:49</letzteAenderung>
+				<technischerName>Folgenummer</technischerName>
+				<bemerkung>
+					Zeitraum der Lieferung: 01.01.04 - 25.01.04, Vertragsnummer: 4711. Beispiel:
+					<br />
+					Bestandsänderung, Folgenummer 01, 01.01.04;
+					<br />
+					Inkasso, Folgenummer 01, 01.01.04;
+					<br />
+					Bestandsänderung, Folgenummer 02, 05.01.04;
+					<br />
+					Bestandsänderung, Folgenummer 03, 10.01.04;
+					<br />
+					Bestandsänderung, Folgenummer 04, 15.01.04;
+					<br />
+					Bestandsänderung, Folgenummer 05, 16.01.04;
+					<br />
+					Inkasso, Folgenummer 06, 18.01.04;
+					<br />
+					Prov.-Verrechung, Folgenummer 07, 19.01.04;
+					<br />
+					Bestandsänderung, Folgenummer 08, 20.01.04, 11:20;
+					<br />
+					Bestandsänderung, Folgenummer 09, 20.01.04, 11:30.
+					<br />
+					<br />
+					Versicherungsunternehmen, die Bestandsänderung und Inkasso in einem
+					Verarbeitungsgang durchführen, vergeben dafür die gleiche Folgenummer. Zu
+					einer Ver-tragsnummer mehrere Bestandsänderungen oder Inkassosätze
+					geliefert, muss die Folgenummer entsprechend erhöht werden. Innerhalb eines
+					Vorganges bleibt die Folgenummer für alle Satzarten konstant.
+				</bemerkung>
+				<anlagennummer>2</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.426">
+			<name>Geschäftsstelle / Vermittler</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>10</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.227">
+			<name>Geschlecht</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Geschlecht</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Geschlecht</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>juristische Person</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>männlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>weiblich</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.686">
+			<name>JaNein</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>JaNein</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>Janein</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>nein</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>ja</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.846">
+			<name>Laenderkennzeichen</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.06.2009 14:45:39</letzteAenderung>
+			<minimaleLaenge>3</minimaleLaenge>
+			<bytes>3</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Laenderkennzeichen</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.06.2009 14:45:39</letzteAenderung>
+				<technischerName>LKZ</technischerName>
+				<bemerkung>Der Kfz-Länderschlüssel ist eine Veröffentlichung des
+					Verkehrsblattes des Bundesministeriums für Verkehr, Bau- und Wohnungswesen.
+				</bemerkung>
+				<anlagennummer>63</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>A</wert>
+						<beschreibung>Österreich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AFG</wert>
+						<beschreibung>Afghanistan</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AL</wert>
+						<beschreibung>Albanien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AM</wert>
+						<beschreibung>Armenien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AND</wert>
+						<beschreibung>Andorra</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AUS</wert>
+						<beschreibung>Australien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AZ</wert>
+						<beschreibung>Aserbaidschan</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>B</wert>
+						<beschreibung>Belgien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BD</wert>
+						<beschreibung>Bangladesch</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BDS</wert>
+						<beschreibung>Barbados</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BF</wert>
+						<beschreibung>Burkina Faso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BG</wert>
+						<beschreibung>Bulgarien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BH</wert>
+						<beschreibung>Belize</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BIH</wert>
+						<beschreibung>Bosnien und Herzegowina</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BOL</wert>
+						<beschreibung>Bolivien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BR</wert>
+						<beschreibung>Brasilien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BRN</wert>
+						<beschreibung>Bahrain</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BRU</wert>
+						<beschreibung>Brunei Darussalam</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BS</wert>
+						<beschreibung>Bahamas</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BUR</wert>
+						<beschreibung>Myanmar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BVI</wert>
+						<beschreibung>Virgin Islands</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BW</wert>
+						<beschreibung>Botswana</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BY</wert>
+						<beschreibung>Belarus (Weißrußland)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CAM</wert>
+						<beschreibung>Cameroon</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CDN</wert>
+						<beschreibung>Kanada</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CH</wert>
+						<beschreibung>Schweiz</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CI</wert>
+						<beschreibung>Côte d"Ivoire</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CL</wert>
+						<beschreibung>Sri Lanka</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CO</wert>
+						<beschreibung>Kolumbien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CR</wert>
+						<beschreibung>Costa Rica</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CY</wert>
+						<beschreibung>Zypern</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CZ</wert>
+						<beschreibung>Tschechische Republik</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>D</wert>
+						<beschreibung>Deutschland</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DK</wert>
+						<beschreibung>Dänemark</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DOM</wert>
+						<beschreibung>Dominikanische Republik</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DY</wert>
+						<beschreibung>Benin</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DZ</wert>
+						<beschreibung>Algerien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>E</wert>
+						<beschreibung>Spanien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EAK</wert>
+						<beschreibung>Kenia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EAT</wert>
+						<beschreibung>Tansania</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EAU</wert>
+						<beschreibung>Uganda</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EAZ</wert>
+						<beschreibung>Zanzibar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EC</wert>
+						<beschreibung>Ecuador</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ER</wert>
+						<beschreibung>Eritrea</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ES</wert>
+						<beschreibung>El Salvador</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EST</wert>
+						<beschreibung>Estland</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ET</wert>
+						<beschreibung>Ägypten</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ETH</wert>
+						<beschreibung>Äthiopien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>F</wert>
+						<beschreibung>Frankreich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FIN</wert>
+						<beschreibung>Finnland</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FJI</wert>
+						<beschreibung>Fidschi</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FL</wert>
+						<beschreibung>Liechtenstein</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FR</wert>
+						<beschreibung>Färöer (alt)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>G</wert>
+						<beschreibung>Gabon</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GB</wert>
+						<beschreibung>Vereinigtes Königreich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GBA</wert>
+						<beschreibung>Alderney</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GBG</wert>
+						<beschreibung>Guernsey</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GBJ</wert>
+						<beschreibung>Jersey</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GBM</wert>
+						<beschreibung>Insel Man</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GBZ</wert>
+						<beschreibung>Gibraltar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GCA</wert>
+						<beschreibung>Guatemala</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GE</wert>
+						<beschreibung>Georgien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GH</wert>
+						<beschreibung>Ghana</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GR</wert>
+						<beschreibung>Griechenland</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GUY</wert>
+						<beschreibung>Guyana</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>H</wert>
+						<beschreibung>Ungarn</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HKJ</wert>
+						<beschreibung>Jordan</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HR</wert>
+						<beschreibung>Kroatien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>I</wert>
+						<beschreibung>Italien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IL</wert>
+						<beschreibung>Israel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IND</wert>
+						<beschreibung>Indien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IR</wert>
+						<beschreibung>Iran</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IRL</wert>
+						<beschreibung>Irland</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IRQ</wert>
+						<beschreibung>Irak</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IS</wert>
+						<beschreibung>Island</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>J</wert>
+						<beschreibung>Japan</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>JA</wert>
+						<beschreibung>Jamaika</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>K</wert>
+						<beschreibung>Kambodscha</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KS</wert>
+						<beschreibung>Kirgisistan</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KWT</wert>
+						<beschreibung>Kuwait</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KZ</wert>
+						<beschreibung>Kasachstan</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>L</wert>
+						<beschreibung>Luxemburg</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LAO</wert>
+						<beschreibung>Demokratische Volksrepublik Laos</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LAR</wert>
+						<beschreibung>Libyan Arab Jamahiriya</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LB</wert>
+						<beschreibung>Liberia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CU</wert>
+						<beschreibung>Lesotho</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LS</wert>
+						<beschreibung>Lesotho</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LT</wert>
+						<beschreibung>Litauen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LV</wert>
+						<beschreibung>Lettland</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>M</wert>
+						<beschreibung>Malta</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MA</wert>
+						<beschreibung>Marokko</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MAL</wert>
+						<beschreibung>Malaysia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MC</wert>
+						<beschreibung>Monaco</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MD</wert>
+						<beschreibung>Moldau</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MEX</wert>
+						<beschreibung>Mexiko</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MGL</wert>
+						<beschreibung>Mongolei</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MK</wert>
+						<beschreibung>Mazedonien (ehemalige jugoslawische Republik)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MNE</wert>
+						<beschreibung>Montenegro</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MOC</wert>
+						<beschreibung>Mosambik</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MS</wert>
+						<beschreibung>Mauritius</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MW</wert>
+						<beschreibung>Malawi</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>N</wert>
+						<beschreibung>Norwegen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NA</wert>
+						<beschreibung>Niederländ. Antillen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NAM</wert>
+						<beschreibung>Namibia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NAU</wert>
+						<beschreibung>Nauru</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NEP</wert>
+						<beschreibung>Nepal</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NIC</wert>
+						<beschreibung>Nicaragua</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NL</wert>
+						<beschreibung>Niederlande</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NZ</wert>
+						<beschreibung>Neuseeland</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>P</wert>
+						<beschreibung>Portugal</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PA</wert>
+						<beschreibung>Panama</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PK</wert>
+						<beschreibung>Pakistan</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PL</wert>
+						<beschreibung>Polen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PNG</wert>
+						<beschreibung>Papua New Guinea</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PY</wert>
+						<beschreibung>Paraguay</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>Q</wert>
+						<beschreibung>Katar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RA</wert>
+						<beschreibung>Argentinien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RC</wert>
+						<beschreibung>China (Taiwan)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RCA</wert>
+						<beschreibung>Zentralafrikanische Republik</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RCB</wert>
+						<beschreibung>Kongo</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RCH</wert>
+						<beschreibung>Chile</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RG</wert>
+						<beschreibung>Guinea</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RH</wert>
+						<beschreibung>Haiti</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RI</wert>
+						<beschreibung>Indonesien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RIM</wert>
+						<beschreibung>Mauretanien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RL</wert>
+						<beschreibung>Libanon</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RM</wert>
+						<beschreibung>Madagaskar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RMM</wert>
+						<beschreibung>Mali</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RN</wert>
+						<beschreibung>Niger</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RNR</wert>
+						<beschreibung>Zambia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RO</wert>
+						<beschreibung>Rumänien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ROK</wert>
+						<beschreibung>Korea (Republik)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ROU</wert>
+						<beschreibung>Uruguay</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RP</wert>
+						<beschreibung>Philippinen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RSM</wert>
+						<beschreibung>San Marino</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RU</wert>
+						<beschreibung>Burundi</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RUS</wert>
+						<beschreibung>Russische Föderation</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RWA</wert>
+						<beschreibung>Ruanda</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>S</wert>
+						<beschreibung>Schweden</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SA</wert>
+						<beschreibung>Saudi Arabia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SD</wert>
+						<beschreibung>Swasiland</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SN</wert>
+						<beschreibung>Senegal</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SGP</wert>
+						<beschreibung>Singapur</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SK</wert>
+						<beschreibung>Slowakische Republik</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SLO</wert>
+						<beschreibung>Slowenien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SME</wert>
+						<beschreibung>Suriname</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SN</wert>
+						<beschreibung>Senegal</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SO</wert>
+						<beschreibung>Somalia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SRB</wert>
+						<beschreibung>Serbien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SUD</wert>
+						<beschreibung>Sudan</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SY</wert>
+						<beschreibung>Seyschellen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SYR</wert>
+						<beschreibung>Syrien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>T</wert>
+						<beschreibung>Thailand</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TCH</wert>
+						<beschreibung>Chad</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TJ</wert>
+						<beschreibung>Tadschikistan</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TM</wert>
+						<beschreibung>Turkmenistan</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TN</wert>
+						<beschreibung>Tunesien</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TR</wert>
+						<beschreibung>Türkei</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TT</wert>
+						<beschreibung>Trinidad und Tobago</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>UA</wert>
+						<beschreibung>Ukraine</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>UAE</wert>
+						<beschreibung>Vereinigte Arabische Emirate</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>USA</wert>
+						<beschreibung>Vereinigte Staaten</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>UZ</wert>
+						<beschreibung>Usbekistan</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>V</wert>
+						<beschreibung>Vatikanstadt</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>VN</wert>
+						<beschreibung>Vietnam</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>WAG</wert>
+						<beschreibung>Gambia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>WAL</wert>
+						<beschreibung>Sierra Leone</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>WAN</wert>
+						<beschreibung>Nigeria</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>WD</wert>
+						<beschreibung>Dominica</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>WG</wert>
+						<beschreibung>Grenada</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>WL</wert>
+						<beschreibung>Santa Lucia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>WS</wert>
+						<beschreibung>Samoa</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>WV</wert>
+						<beschreibung>St. Vincent und die Grenadinen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>YV</wert>
+						<beschreibung>Venezuela</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>Z</wert>
+						<beschreibung>Sambia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ZA</wert>
+						<beschreibung>Südafrika</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ZRE</wert>
+						<beschreibung>Democratic Republic of the Congo</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ZW</wert>
+						<beschreibung>Simbabwe</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>ARM</wert>
+						<beschreibung>Armenien</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>ANG</wert>
+						<beschreibung>Angola</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>C</wert>
+						<beschreibung>Kuba</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>CD</wert>
+						<beschreibung>Kongo, Demokr. Republik</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>FO</wert>
+						<beschreibung>Färöer</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>HK</wert>
+						<beschreibung>Hongkong</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>HN</wert>
+						<beschreibung>Honduras</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>JOR</wert>
+						<beschreibung>Jordanien</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>KSA</wert>
+						<beschreibung>Königreich Saudi-Arabien</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>MYA</wert>
+						<beschreibung>Myanmar</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>OM</wert>
+						<beschreibung>Oman</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>PE</wert>
+						<beschreibung>Peru</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>RB</wert>
+						<beschreibung>Botsuana</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>RT</wert>
+						<beschreibung>Togo</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>SCG</wert>
+						<beschreibung>Serbien, Montenegro</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>SP</wert>
+						<beschreibung>Somalia</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>THA</wert>
+						<beschreibung>Thailand</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>YU</wert>
+						<beschreibung>Jugoslawien (Serbien/Montenegro)</beschreibung>
+						<gruppe>alt?</gruppe>
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.786">
+			<name>Name (30 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>26.02.2007 11:58:38</letzteAenderung>
+			<minimaleLaenge>30</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>26.02.2007 11:58:38</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.966">
+			<name>Ort</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>25</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.77">
+			<name>Partnerrolle</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>13.02.2008 10:44:06</letzteAenderung>
+			<minimaleLaenge>2</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Partnerrolle</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>13.02.2008 10:44:06</letzteAenderung>
+				<technischerName>Partnerrolle</technischerName>
+				<bemerkung />
+				<anlagennummer>7</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>01</wert>
+						<beschreibung>Versicherungsnehmer</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>02</wert>
+						<beschreibung>Sicherungsgläubiger</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>03</wert>
+						<beschreibung>Beitragszahler</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>04</wert>
+						<beschreibung>Zustellungsbevollmächtigter</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>05</wert>
+						<beschreibung>Leistungsempfänger</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>06</wert>
+						<beschreibung>Korrespondenzpartner</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>07</wert>
+						<beschreibung>GV-Partner</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>08</wert>
+						<beschreibung>Empfänger Beitragsrückerstattung</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>09</wert>
+						<beschreibung>Versicherte Person</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>10</wert>
+						<beschreibung>SFR-Berechtigter</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>11</wert>
+						<beschreibung>Fahrzeughalter</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>12</wert>
+						<beschreibung>Fahrer</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>13</wert>
+						<beschreibung>Abschleppfirma</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>14</wert>
+						<beschreibung>Vermittler</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>15</wert>
+						<beschreibung>Anspruchsteller</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>16</wert>
+						<beschreibung>Mietwagenfirma</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>17</wert>
+						<beschreibung>Polizeidienststelle</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>18</wert>
+						<beschreibung>Zeuge</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>19</wert>
+						<beschreibung>Werkstatt</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>20</wert>
+						<beschreibung>Schadenmanager</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>21</wert>
+						<beschreibung>Sachverständiger</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>22</wert>
+						<beschreibung>Melder(Notrufmeldende Person)</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>23</wert>
+						<beschreibung>Rettungsleitstelle</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>24</wert>
+						<beschreibung>Autobahnmeisterei</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>25</wert>
+						<beschreibung>Pannenhelfer</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>26</wert>
+						<beschreibung>Assisteur</beschreibung>
+						<gruppe>Strassenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>31</wert>
+						<beschreibung>Versicherungsnehmer</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>32</wert>
+						<beschreibung>Sicherungsgläubiger</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>33</wert>
+						<beschreibung>Beitragszahler</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>34</wert>
+						<beschreibung>Zustellungsbevollmächtigter</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>35</wert>
+						<beschreibung>Leistungsempfänger</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>36</wert>
+						<beschreibung>Korrespondenzpartner</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>37</wert>
+						<beschreibung>GV-Partner</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>38</wert>
+						<beschreibung>Empfänger Beitragsrückerstattung</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>39</wert>
+						<beschreibung>Versicherte Person</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>40</wert>
+						<beschreibung>SFR-Berechtigter</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>41</wert>
+						<beschreibung>Fahrzeughalter</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>42</wert>
+						<beschreibung>Fahrer</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>43</wert>
+						<beschreibung>Abschleppfirma</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>44</wert>
+						<beschreibung>Vermittler</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>45</wert>
+						<beschreibung>Anspruchsteller</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>46</wert>
+						<beschreibung>Mietwagenfirma</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>47</wert>
+						<beschreibung>Polizeidienststelle</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>48</wert>
+						<beschreibung>Zeuge</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>49</wert>
+						<beschreibung>Werkstatt</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>50</wert>
+						<beschreibung>Schadenmanager</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>51</wert>
+						<beschreibung>Sachverständiger</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>52</wert>
+						<beschreibung>Melder(Notrufmeldende Person)</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>53</wert>
+						<beschreibung>Rettungsleitstelle</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>54</wert>
+						<beschreibung>Autobahnmeisterei</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>55</wert>
+						<beschreibung>Pannenhelfer</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>56</wert>
+						<beschreibung>Assisteur</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>61</wert>
+						<beschreibung>Versicherungsnehmer</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>62</wert>
+						<beschreibung>Sicherungsgläubiger</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>63</wert>
+						<beschreibung>Beitragszahler</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>64</wert>
+						<beschreibung>Zustellungsbevollmächtigter</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>65</wert>
+						<beschreibung>Leistungsempfänger</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>66</wert>
+						<beschreibung>Korrespondenzpartner</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>67</wert>
+						<beschreibung>GV-Partner</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>68</wert>
+						<beschreibung>Empfänger Beitragsrückerstattung</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>69</wert>
+						<beschreibung>Versicherte Person</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>70</wert>
+						<beschreibung>SFR-Berechtigter</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>71</wert>
+						<beschreibung>Fahrzeughalter</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>72</wert>
+						<beschreibung>Fahrer</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>73</wert>
+						<beschreibung>Abschleppfirma</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>74</wert>
+						<beschreibung>Vermittler</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>75</wert>
+						<beschreibung>Anspruchsteller</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>76</wert>
+						<beschreibung>Mietwagenfirma</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>77</wert>
+						<beschreibung>Polizeidienststelle</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>78</wert>
+						<beschreibung>Zeuge</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>79</wert>
+						<beschreibung>Werkstatt</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>80</wert>
+						<beschreibung>Schadenmanager</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>81</wert>
+						<beschreibung>Sachverständiger</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>82</wert>
+						<beschreibung>Melder(Notrufmeldende Person)</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>83</wert>
+						<beschreibung>Rettungsleitstelle</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>84</wert>
+						<beschreibung>Autobahnmeisterei</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>85</wert>
+						<beschreibung>Pannenhelfer</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>86</wert>
+						<beschreibung>Assisteur</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>A1</wert>
+						<beschreibung>Rechtsanwalt</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>A2</wert>
+						<beschreibung>Eigentümer</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>A3</wert>
+						<beschreibung>Versicherungsunternehmen</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>A4</wert>
+						<beschreibung>Auftraggeber</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>A5</wert>
+						<beschreibung>Zahlungsempfänger</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>A6</wert>
+						<beschreibung>Restwerthändler</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>A7</wert>
+						<beschreibung>Fahrzeuganbieter</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>D1</wert>
+						<beschreibung>Rechtsanwalt</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>D2</wert>
+						<beschreibung>Eigentümer</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>D3</wert>
+						<beschreibung>Versicherungsunternehmen</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>D4</wert>
+						<beschreibung>Auftraggeber</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>D5</wert>
+						<beschreibung>Zahlungsempfänger</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>D6</wert>
+						<beschreibung>Restwerthändler</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>D7</wert>
+						<beschreibung>Fahrzeuganbieter</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>G1</wert>
+						<beschreibung>Rechtsanwalt</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>G2</wert>
+						<beschreibung>Eigentümer</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>G3</wert>
+						<beschreibung>Versicherungsunternehmen</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>G4</wert>
+						<beschreibung>Auftraggeber</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>G5</wert>
+						<beschreibung>Zahlungsempfänger</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>G6</wert>
+						<beschreibung>Restwerthändler</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>G7</wert>
+						<beschreibung>Fahrzeuganbieter</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>X0</wert>
+						<beschreibung>Zahlungsempfänger für Reparaturkosten</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>X1</wert>
+						<beschreibung>Zahlungsempfänger für Gesambetrag</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>X2</wert>
+						<beschreibung>Zahlungsempfänger für Wertminderung</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>X3</wert>
+						<beschreibung>Zahlungsempfänger für An- und Abmeldekosten</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>X4</wert>
+						<beschreibung>Zahlungsempfänger für Umbaukosten</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>X5</wert>
+						<beschreibung>Zahlungsempfänger für Abschlepp-/Bergungskosten
+						</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>X6</wert>
+						<beschreibung>Zahlungsempfänger für Rückführungskosten</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>X7</wert>
+						<beschreibung>Zahlungsempfänger für Nutzungsausfall</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>X8</wert>
+						<beschreibung>Zahlungsempfänger für Kostenpauschale</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>X9</wert>
+						<beschreibung>Zahlungsempfänger für Mietwagenkosten</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>XA</wert>
+						<beschreibung>Zahlungsempfänger für Sachverständigenkosten</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>XB</wert>
+						<beschreibung>Auftraggeber für Gutachten</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Y0</wert>
+						<beschreibung>Zahlungsempfänger für Reparaturkosten</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Y1</wert>
+						<beschreibung>Zahlungsempfänger für Gesambetrag</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Y2</wert>
+						<beschreibung>Zahlungsempfänger für Wertminderung</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Y3</wert>
+						<beschreibung>Zahlungsempfänger für An- und Abmeldekosten</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Y4</wert>
+						<beschreibung>Zahlungsempfänger für Umbaukosten</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Y5</wert>
+						<beschreibung>Zahlungsempfänger für Abschlepp-/Bergungskosten
+						</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Y6</wert>
+						<beschreibung>Zahlungsempfänger für Rückführungskosten</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Y7</wert>
+						<beschreibung>Zahlungsempfänger für Nutzungsausfall</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Y8</wert>
+						<beschreibung>Zahlungsempfänger für Kostenpauschale</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Y9</wert>
+						<beschreibung>Zahlungsempfänger für Mietwagenkosten</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>YA</wert>
+						<beschreibung>Zahlungsempfänger für Sachverständigenkosten</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>YB</wert>
+						<beschreibung>Auftraggeber für Gutachten</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Z0</wert>
+						<beschreibung>Zahlungsempfänger für Reparaturkosten</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Z1</wert>
+						<beschreibung>Zahlungsempfänger für Gesambetrag</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Z2</wert>
+						<beschreibung>Zahlungsempfänger für Wertminderung</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Z3</wert>
+						<beschreibung>Zahlungsempfänger für An- und Abmeldekosten</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Z4</wert>
+						<beschreibung>Zahlungsempfänger für Umbaukosten</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Z5</wert>
+						<beschreibung>Zahlungsempfänger für Abschlepp-/Bergungskosten
+						</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Z6</wert>
+						<beschreibung>Zahlungsempfänger für Rückführungskosten</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Z7</wert>
+						<beschreibung>Zahlungsempfänger für Nutzungsausfall</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Z8</wert>
+						<beschreibung>Zahlungsempfänger für Kostenpauschale</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>Z9</wert>
+						<beschreibung>Zahlungsempfänger für Mietwagenkosten</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>ZA</wert>
+						<beschreibung>Zahlungsempfänger für Sachverständigenkosten</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>ZB</wert>
+						<beschreibung>Auftraggeber für Gutachten</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>B1</wert>
+						<beschreibung>Mitversicherte Person</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>E1</wert>
+						<beschreibung>Mitversicherte Person</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>H1</wert>
+						<beschreibung>Mitversicherte Person</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>B2</wert>
+						<beschreibung>Bezugsberechtigter im Todesfall</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>E2</wert>
+						<beschreibung>Bezugsberechtigter im Todesfall</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>H2</wert>
+						<beschreibung>Bezugsberechtigter im Todesfall</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>B3</wert>
+						<beschreibung>Bezugsberechtigter im Erlebensfall</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>E3</wert>
+						<beschreibung>Bezugsberechtigter im Erlebensfall</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>H3</wert>
+						<beschreibung>Bezugsberechtigter im Erlebensfall</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>B4</wert>
+						<beschreibung>Wirtschaftlich Berechtigter</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>E4</wert>
+						<beschreibung>Wirtschaftlich Berechtigter</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>H4</wert>
+						<beschreibung>Wirtschaftlich Berechtigter</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>B5</wert>
+						<beschreibung>Vertrauensperson</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>E5</wert>
+						<beschreibung>Vertrauensperson</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>H5</wert>
+						<beschreibung>Vertrauensperson</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>B6</wert>
+						<beschreibung>Kontoinhaber</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>E6</wert>
+						<beschreibung>Kontoinhaber</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>H6</wert>
+						<beschreibung>Kontoinhaber</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>B7</wert>
+						<beschreibung>Gesetzlicher Vertreter VN</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>E7</wert>
+						<beschreibung>Gesetzlicher Vertreter VN</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>H7</wert>
+						<beschreibung>Gesetzlicher Vertreter VN</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>B8</wert>
+						<beschreibung>Gesetzlicher Vertreter VP</beschreibung>
+						<gruppe>Straßenadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>E8</wert>
+						<beschreibung>Gesetzlicher Vertreter VP</beschreibung>
+						<gruppe>Postfachadr.</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>H8</wert>
+						<beschreibung>Gesetzlicher Vertreter VP</beschreibung>
+						<gruppe>Großkundenadr.</gruppe>
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.17">
+			<name>Postfach</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>8</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.207">
+			<name>postalisches Kennzeichen</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+ 		<feld referenz="BN-2003.02.11.22.49.55.946">
+			<name>Postleitzahl</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>6</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.47.214">
+			<name>Satzart</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>4</minimaleLaenge>
+			<bytes>4</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.47.344">
+			<name>Sparte</name>
+			<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung
+			</aenderungsart>
+			<letzteAenderung>31.07.2013 11:42:31</letzteAenderung>
+			<minimaleLaenge>3</minimaleLaenge>
+			<bytes>3</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>
+				<br />
+			</bemerkung>
+			<wertetabelle>
+				<name>Spartenverzeichnis</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung
+				</aenderungsart>
+				<letzteAenderung>31.07.2013 11:42:31</letzteAenderung>
+				<technischerName>Spartenverzeichnis</technischerName>
+				<bemerkung>
+					Der Schlüssel orientiert sich nach dem BerVersVerzeichnis des BaFin.
+					Zusätzlich gelten für das BerVersV-Verzeichnis weitere Schlüssel (Im Bereich
+					Investment wird 550 = Investmentfonds und als VU-Nummer die Nummer der
+					Kapitalanlagegesellschaft geschlüsselt).
+					<br />
+					<br />
+					Anmerkung 1:
+					<br />
+					Die Regeln des GDV-Datensatzes sehen vor, dass in vordefinierten
+					Spartensätzen (z.B. 0210.040 und 0220.040 = Haftpflicht) nur die jeweilige
+					Hauptspartennummer mit einer "0" an der dritten Stelle durchgängig geliefert
+					werden kann. Das bedeutet, dass dann auch die zugehörige 0200er-Satzart mit
+					der jeweiligen Hauptsparte zu liefern ist.
+					<br />
+					<br />
+					Nur in Kraftfahrt müssen in den vordefinierten 0220er-Teilspartensätzen auch
+					die entsprechenden Unterspartenschlüssel genutzt werden. Im zugehörigen
+					0210-Satz ist in Kraftfahrt dagegen die Hauptsparte "050" zu liefern (z.B.
+					0210.050 aber 0220.051 und 0220.054).
+					<br />
+					<br />
+					Gibt es keine vorgegebenen Datensätze für eine spezifische Sparte, können
+					die "Allgemeinen Sätze" 0210.000 und 0220.000 dann mit dem jeweiligen
+					Unterspartenschlüssel verwendet werden.
+					<br />
+					<br />
+					Anmerkung 2: Bei gebündelten Sachversicherungen, die Glasversicherungen
+					beinhalten, müssen die unter Sparte 110 beschriebenen Sätze geliefert
+					werden.
+					<br />
+					<br />
+					(1. Diese Sparten werden in den Satzarten von Transport geliefert.)
+					<br />
+					(2. Moped sowie Handel und Handwerk wird in der Regel im Rahmen der
+					Kraftfahrt-Satzarten geliefert)
+					<br />
+				</bemerkung>
+				<anlagennummer>1</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>010</wert>
+						<beschreibung>Lebensversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Leben</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>020</wert>
+						<beschreibung>Krankenversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kranken</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>030</wert>
+						<beschreibung>Allgemeine Unfallversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Unfall</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>040</wert>
+						<beschreibung>Haftpflichtversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Haftpflicht
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>050</wert>
+						<beschreibung>Kraftfahrtversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz -
+							Fahrzeugdaten</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>051</wert>
+						<beschreibung>Kraftfahrzeug-Haftpflichtversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz -
+							Fahrzeughaftpflicht</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>052</wert>
+						<beschreibung>Fahrzeugvollversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz -
+							Fahrzeugvollkasko</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>053</wert>
+						<beschreibung>Fahrzeugteilversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz -
+							Fahrzeugteil</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>054</wert>
+						<beschreibung>Kraftfahrtunfallversicherung (einschließlich der namentlichen
+							Kraftfahrtunfallversicherung)</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz - Unfall
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>055</wert>
+						<beschreibung>Kfz-Baustein</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz - Baustein
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>059</wert>
+						<beschreibung>Kfz-Gepäck</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz - Gepäck
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>060</wert>
+						<beschreibung>Luftfahrtversicherung (einschließlich der
+							Raumfahrtversicherung)</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>063</wert>
+						<beschreibung>Luftfahrzeug-Kaskoversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>065</wert>
+						<beschreibung>Raumfahrzeug-Kaskoversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>069</wert>
+						<beschreibung>übrige und nicht aufgegliederte Luftfahrtversicherung
+							(einschließlich der Raumfahrtversicherung)</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>070</wert>
+						<beschreibung>Rechtsschutzversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Rechtsschutz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>080</wert>
+						<beschreibung>Feuerversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>081</wert>
+						<beschreibung>Feuer-Industrie-Versicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>082</wert>
+						<beschreibung>landwirtschaftliche Feuerversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>083</wert>
+						<beschreibung>sonstige Feuerversicherung (einschließlich der
+							Waldbrandversicherung)</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>089</wert>
+						<beschreibung>übrige und nicht aufgegliederte Feuer-Versicherung
+						</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>090</wert>
+						<beschreibung>Einbruchdiebstahl und Raub (ED)-Versicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>099</wert>
+						<beschreibung>übrige und nicht aufgegliederte ED-Versicherung
+						</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>100</wert>
+						<beschreibung>Leitungswasser (Lw)-Versicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>109</wert>
+						<beschreibung>übrige und nicht aufgegliederte LW-Versicherung
+						</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>110</wert>
+						<beschreibung>Glasversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Glas</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>120</wert>
+						<beschreibung>Sturmversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>123</wert>
+						<beschreibung>Gärtnerei-Sturmversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>124</wert>
+						<beschreibung>Versicherung weiterer Elementarschõden bei gewerblichen
+							Risiken</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>130</wert>
+						<beschreibung>Verbundene Hausratversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von verbundene
+							Hausrat</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>140</wert>
+						<beschreibung>Verbundene Wohngebäudeversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von verbundene
+							Gebäude</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>150</wert>
+						<beschreibung>Hagelversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>160</wert>
+						<beschreibung>Tierversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>161</wert>
+						<beschreibung>langfristige Tierlebensversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>162</wert>
+						<beschreibung>kurzfristige Tierversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>169</wert>
+						<beschreibung>übrige und nicht aufgegliederte Tierversicherung
+						</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>170</wert>
+						<beschreibung>Technische Versicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+							Versicherung</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>171</wert>
+						<beschreibung>Maschinenversicherung (einschließlich der
+							Baugeräteversicherung)</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+							Versicherung</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>172</wert>
+						<beschreibung>Elektronikversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+							Versicherung</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>174</wert>
+						<beschreibung>Montageversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+							Versicherung</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>175</wert>
+						<beschreibung>Haushaltsgeräteversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+							Versicherung</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>176</wert>
+						<beschreibung>Bauleistungsversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+							Versicherung</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>179</wert>
+						<beschreibung>übrige und nicht aufgegliederte technische Versicherung
+						</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+							Versicherung</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>180</wert>
+						<beschreibung>Einheitsversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>181</wert>
+						<beschreibung>Allgemeine Einheitsversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>182</wert>
+						<beschreibung>Juwelierwaren-Einheitsversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>183</wert>
+						<beschreibung>Rauchwaren-Einheitsversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>184</wert>
+						<beschreibung>Textilveredlungs-Einheitsversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>185</wert>
+						<beschreibung>Wäscheschutz-Einheitsversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>189</wert>
+						<beschreibung>übrige und nicht aufgegliederte Einheitsversicherung
+						</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>190</wert>
+						<beschreibung>Transportversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>191</wert>
+						<beschreibung>Kaskoversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>192</wert>
+						<beschreibung>Transportgüterversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>193</wert>
+						<beschreibung>Valorenversicherung (gewerblich)</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>194</wert>
+						<beschreibung>Filmversicherung (ohne Kennzahl 29.2.01)</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>197</wert>
+						<beschreibung>Kriegsrisikoversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>199</wert>
+						<beschreibung>übrige und nicht aufgegliederte Transportversicherung
+							(einschließlich Versicherung von Offshore-Risiken)</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Transport
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>200</wert>
+						<beschreibung>Kredit- und Kautionsversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte ohne Satzarten 021X und 022X</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>201</wert>
+						<beschreibung>Kautionsversicherung (einschließlich Baugarantieversicherung)
+						</beschreibung>
+						<gruppe>Nutzung dieser Sparte ohne Satzarten 021X und 022X</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>202</wert>
+						<beschreibung>Delkredereversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte ohne Satzarten 021X und 022X</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>209</wert>
+						<beschreibung>übrige und nicht aufgegliederte Kredit- und
+							Kautionsversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte ohne Satzarten 021X und 022X</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>210</wert>
+						<beschreibung>Versicherung zusõtzlicher Gefahren zur Feuer- bzw.
+							Feuer-BetriebsunterbrechungsVersicherung Extended Coverage
+							(EC)-Versicherung)</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>230</wert>
+						<beschreibung>Betriebsunterbrechungs-Versicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>231</wert>
+						<beschreibung>Feuer-(Groß)Betriebsunterbrechungs-Versicherung
+						</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von
+							Feuer-Industrie/Gewerbl. Sachvers</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>232</wert>
+						<beschreibung>Technische-Betriebsunterbrechungs-Versicherung/ MBU
+							Elektronik</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Technische
+							Versicherung</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>233</wert>
+						<beschreibung>sonstige Betriebsunterbrechungsversicherungen</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>240</wert>
+						<beschreibung>Beistandsleistungsversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>241</wert>
+						<beschreibung>Schutzbriefversicherung</beschreibung>
+						<gruppe>müsste als Sparte 510 geliefert werden</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>242</wert>
+						<beschreibung>Sportboot-Serviceversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>243</wert>
+						<beschreibung>Flugrückholkostenversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>244</wert>
+						<beschreibung>Schutzbriefversicherung unter Einschluss der sog.
+							Mallorca-Police</beschreibung>
+						<gruppe>müsste als Sparte 510 geliefert werden</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>249</wert>
+						<beschreibung>übrige und nicht aufgegliederte
+							Beistandsleistungsversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>250</wert>
+						<beschreibung>Luft- und Raumfahrzeug-Haftpflichtversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>251</wert>
+						<beschreibung>Luftfahrt- Haftpflichtversicherung (einschließlich der
+							Luftfrachtf³hrer-Haftpflichtversicherung)</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>252</wert>
+						<beschreibung>Raumfahrzeug-Haftpflichtversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>290</wert>
+						<beschreibung>sonstige Schadenversicherung, z. B.
+							Maschinen-Garantie-Versicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>291</wert>
+						<beschreibung>sonstige Sachschadenversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>293</wert>
+						<beschreibung>sonstige Vermögensschadenversicherungen</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>294</wert>
+						<beschreibung>sonstige gemischte Versicherungen</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>296</wert>
+						<beschreibung>Vertrauensschadenversicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>299</wert>
+						<beschreibung>übrige und nicht aufgegliederte sonstige
+							Schadenversicherungen</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>510</wert>
+						<beschreibung>Verkehrsservice</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Verkehrsservice
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>550</wert>
+						<beschreibung>Investmentfonds</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Investmentfonds
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>560</wert>
+						<beschreibung>Kapitalanlagen</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kapitalanlage
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>570</wert>
+						<beschreibung>Baufinanzierungen</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Baufinanzierung
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>580</wert>
+						<beschreibung>Bausparkassen</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Bausparen
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>600</wert>
+						<beschreibung>Moped</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Kfz</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>630</wert>
+						<beschreibung>Rahmen- und Sammelverträge</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>650</wert>
+						<beschreibung>Handel und Handwerk</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition vom allgemeinen Satz
+						</gruppe>
+					</eintrag>
+					<eintrag>
+						<wert>684</wert>
+						<beschreibung>Tierkranken-Versicherung</beschreibung>
+						<gruppe>Nutzung dieser Sparte nach der Satzdefinition von Tierkranken
+						</gruppe>
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.996">
+			<name>Straße</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.826">
+			<name>Titel</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.366">
+			<name>Versicherungsschein-Nummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>04.02.2010 14:55:29</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>17</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>
+				Zu den - innerhalb der Versicherungsscheinnummer - nicht zulässigen
+				Sonderzeichen zählen auch "Leerzeichen".
+				<br />
+				<br />
+				Zulässig sind Ziffern und Buchstaben (ohne Umlaute und ß)
+			</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.54.264">
+			<name>VU-Nummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>17.09.2009 10:58:36</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>Das VU-Nr.-Verzeichnis kann bei der Bundesanstalt für
+				Finanzdienstleistungsaufsicht in Bonn angefordert werden (Graurheindorfer
+				Str. 108, 53117 Bonn, www.bafin.de).</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:41:28</letzteAenderung>
+				<technischerName />
+				<bemerkung>
+					<br />
+				</bemerkung>
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.177">
+			<name>Zielgruppenschlüssel</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>02.10.2003 14:38:54</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Zielgruppenschlüssel</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>02.10.2003 14:38:54</letzteAenderung>
+				<technischerName>Zielgruppenschluessel</technischerName>
+				<bemerkung />
+				<anlagennummer>18</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>01</wert>
+						<beschreibung>Beamte</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>02</wert>
+						<beschreibung>Landwirte</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>03</wert>
+						<beschreibung>Ärzte</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>99</wert>
+						<beschreibung>Sonstige</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<!-- Felder fuer Teildatensatz 2 -->
+		<feld referenz="BN-2003.02.11.22.49.56.277">
+			<name>Personen-/Kundennummer des Versicherers</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>17</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.297">
+			<name>Personen-/Kundennummer des Vermittlers</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>17</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.327">
+			<name>Kundengruppe</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.357">
+			<name>Kontonummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:21:53</letzteAenderung>
+			<minimaleLaenge>12</minimaleLaenge>
+			<bytes>12</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:21:53</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.377">
+			<name>Bankleitzahl</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>8</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.407">
+			<name>AbweichenderKontoinhaber</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 16:51:10</letzteAenderung>
+			<minimaleLaenge>30</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 16:51:10</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.427">
+			<name>Kommunikationstyp</name>
+			<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+			<letzteAenderung>21.05.2012 12:59:27</letzteAenderung>
+			<minimaleLaenge>2</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Kommunikationstyp</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>21.05.2012 12:59:27</letzteAenderung>
+				<technischerName>Kommunikationstyp</technischerName>
+				<bemerkung />
+				<anlagennummer>76</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>10</wert>
+						<beschreibung>Telefonnummer Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>20</wert>
+						<beschreibung>Telefonnummer Geschäftlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>21</wert>
+						<beschreibung>Telefonnnumer</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>30</wert>
+						<beschreibung>Telefonnummer Mobil</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>31</wert>
+						<beschreibung>Telefonnummer Mobil Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>32</wert>
+						<beschreibung>Telefonnummer Mobil Geschäftlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>40</wert>
+						<beschreibung>Telefax</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>41</wert>
+						<beschreibung>Telefax Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>42</wert>
+						<beschreibung>Telefax Geschäftlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>50</wert>
+						<beschreibung>E-Mail</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>51</wert>
+						<beschreibung>E-Mail Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>52</wert>
+						<beschreibung>E-Mail Geschäftlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>53</wert>
+						<beschreibung>Gesicherte E-Mail (z. B. DE-Mail)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>54</wert>
+						<beschreibung>Gesicherte E-Mail Privat (z. B. DE-Mail)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>55</wert>
+						<beschreibung>Gesicherte E-Mail Geschäftlich (z. B. DE-Mail)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>60</wert>
+						<beschreibung>Website</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>61</wert>
+						<beschreibung>Website Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>62</wert>
+						<beschreibung>Website Geschäftlich</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.457">
+			<name>Kommunikationsnummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:21:34</letzteAenderung>
+			<minimaleLaenge>20</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:21:34</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.497">
+			<name>Zahlungsart /-weg</name>
+			<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+			<letzteAenderung>26.01.2012 14:59:38</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Zahlungsart /-weg</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>26.01.2012 14:59:38</letzteAenderung>
+				<technischerName>ZahlungsartWeg</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Lastschrift</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Rechnung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Dauerauftrag</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Depot</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Gehaltsabzug</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>6</wert>
+						<beschreibung>Kreditkarte</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>9</wert>
+						<beschreibung>sonstige</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.507">
+			<name>Familienstand</name>
+			<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+			<letzteAenderung>16.09.2010 15:34:37</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Familienstand</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>16.09.2010 15:34:37</letzteAenderung>
+				<technischerName>Familienstand</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>ledig</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>verheiratet</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>geschieden</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>verwitwet</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>getrennt lebend</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>6</wert>
+						<beschreibung>eheähnliche Gemeinschaft</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>7</wert>
+						<beschreibung>eingetragene Lebenspartnerschaft</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>9</wert>
+						<beschreibung>sonstiges</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.56.527">
+			<name>Lfd. Personennummer im GeVo</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>6</minimaleLaenge>
+			<bytes>6</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.47.364">
+			<name>Satznummer (N)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:32:52</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:32:52</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		
+		<!-- (zusatzliche) Felder fuer Satz 210.10 -->
+		<feld referenz="BN-2003.02.11.22.49.57.959">
+			<name>Kennzeichen Vertragsentstehung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Kennzeichen Vertragsentstehung</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>KennzeichenVertragsentstehung</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Neuantrag</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Zuwachsgarantie</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Abtrennung Gruppenversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Umtausch Risiko</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Übernahme von anderer Gesellschaft</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.509">
+			<name>Waehrungsschluessel</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>22.06.2005 17:09:36</letzteAenderung>
+			<minimaleLaenge>3</minimaleLaenge>
+			<bytes>3</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Waehrungsschluessel</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>22.06.2005 17:09:36</letzteAenderung>
+				<technischerName>Waehrungsschluessel</technischerName>
+				<bemerkung>
+					Der ISO-Code kann auch beim Beuth-Verlag des DIN kostenpflichtig angefordert werden. Wegen des Urheberrechts darf der ISO-Code nicht kopiert werden.
+					<br />
+				</bemerkung>
+				<anlagennummer>3</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert />
+						<beschreibung>(unbekannt)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ADF</wert>
+						<beschreibung>Andorran Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ADP</wert>
+						<beschreibung>Andorran Peseta</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AED</wert>
+						<beschreibung>Utd. Arab Emir. Dirham</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AFA</wert>
+						<beschreibung>Afghanistan Afghani</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ALL</wert>
+						<beschreibung>Albanischer Lek</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ANG</wert>
+						<beschreibung>NL Antillian Guilder</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AON</wert>
+						<beschreibung>Angolanischer New Kwanza</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ARS</wert>
+						<beschreibung>Argentinischer Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ATS</wert>
+						<beschreibung>Österreichischer Schilling</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AUD</wert>
+						<beschreibung>Australischer Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>AWG</wert>
+						<beschreibung>Aruban Florin</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BBD</wert>
+						<beschreibung>Barbados Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BDT</wert>
+						<beschreibung>Bangladeshi Taka</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BEF</wert>
+						<beschreibung>Belgischer Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BGL</wert>
+						<beschreibung>Bulgarischer Lev</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BHD</wert>
+						<beschreibung>Bahraini Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BIF</wert>
+						<beschreibung>Burundi Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BMD</wert>
+						<beschreibung>Bermudian Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BND</wert>
+						<beschreibung>Brunei Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BOB</wert>
+						<beschreibung>Bolivianischer Boliviano</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BRL</wert>
+						<beschreibung>Brasilianischer Real</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BSD</wert>
+						<beschreibung>Bahamian Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BTN</wert>
+						<beschreibung>Bhutan Ngultrum</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BWP</wert>
+						<beschreibung>Botswana Pula</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>BZD</wert>
+						<beschreibung>Belize Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CAD</wert>
+						<beschreibung>Kanadischer Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CHF</wert>
+						<beschreibung>Schweizer Franken</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CLP</wert>
+						<beschreibung>Chilean Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CNY</wert>
+						<beschreibung>Chinese Yuan Renminbi</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>COP</wert>
+						<beschreibung>Colombian Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CRC</wert>
+						<beschreibung>Costa Rican Colon</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CSK</wert>
+						<beschreibung>Tchchischer Koruna</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CUP</wert>
+						<beschreibung>Kubanischer Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CVE</wert>
+						<beschreibung>Cape Verde Escudo</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>CYP</wert>
+						<beschreibung>Zyprisches Pfund</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DEM</wert>
+						<beschreibung>Deutsche Mark</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DJF</wert>
+						<beschreibung>Djibouti Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DKK</wert>
+						<beschreibung>Dänische Krone</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DOP</wert>
+						<beschreibung>Dominican Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>DZD</wert>
+						<beschreibung>Algerian Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ECS</wert>
+						<beschreibung>Ecuador Sucre</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EEK</wert>
+						<beschreibung>Estonian Kroon</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EGP</wert>
+						<beschreibung>Egyptian Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ESP</wert>
+						<beschreibung>Spanische Peseta</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ETB</wert>
+						<beschreibung>Ethiopian Birr</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>EUR</wert>
+						<beschreibung>Euro</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FIM</wert>
+						<beschreibung>Finnish Markka</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FJD</wert>
+						<beschreibung>Fiji Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FKP</wert>
+						<beschreibung>Falkland Islands Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>FRF</wert>
+						<beschreibung>Französische Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GBP</wert>
+						<beschreibung>Britisches Pfund</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GHC</wert>
+						<beschreibung>Ghanaian Cedi</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GIP</wert>
+						<beschreibung>Gibraltar Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GMD</wert>
+						<beschreibung>Gambian Dalasi</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GNF</wert>
+						<beschreibung>Guinea Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GRD</wert>
+						<beschreibung>Griechische Drachmen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GTQ</wert>
+						<beschreibung>Guatemalan Quetzal</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>GYD</wert>
+						<beschreibung>Guyanan Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HKD</wert>
+						<beschreibung>Hong Kong Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HNL</wert>
+						<beschreibung>Honduran Lempira</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HRK</wert>
+						<beschreibung>Kroatische Kuna</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HTG</wert>
+						<beschreibung>Haitian Gourde</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>HUF</wert>
+						<beschreibung>Ungarischer Forint</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IDR</wert>
+						<beschreibung>Indonesian Rupiah</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IEP</wert>
+						<beschreibung>Irisches Punt</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ILS</wert>
+						<beschreibung>Israelisches Neuer Shekel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>INR</wert>
+						<beschreibung>Indian Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IQD</wert>
+						<beschreibung>Irakischer Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>IRR</wert>
+						<beschreibung>Iranischer Rial</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ISK</wert>
+						<beschreibung>Iceland Krona</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ITL</wert>
+						<beschreibung>Italienische Lira</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>JMD</wert>
+						<beschreibung>Jamaican Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>JOD</wert>
+						<beschreibung>Jordanian Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>JPY</wert>
+						<beschreibung>Japanischer Yen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KES</wert>
+						<beschreibung>Kenyan Shilling</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KHR</wert>
+						<beschreibung>Cambodian Riel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KMF</wert>
+						<beschreibung>Comoros Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KPW</wert>
+						<beschreibung>Nord- Koreanischer Won</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KRW</wert>
+						<beschreibung>Koreanischer Won</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KWD</wert>
+						<beschreibung>Kuwaiischeri Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KYD</wert>
+						<beschreibung>Cayman Islands Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>KZT</wert>
+						<beschreibung>Kazakhstan Tenge</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LAK</wert>
+						<beschreibung>Lao Kip</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LBP</wert>
+						<beschreibung>Lebanese Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LKR</wert>
+						<beschreibung>Sri Lanka Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LRD</wert>
+						<beschreibung>Liberian Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LSL</wert>
+						<beschreibung>Lesotho Loti</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LTL</wert>
+						<beschreibung>Lithuanian Litas</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LUF</wert>
+						<beschreibung>Luxemburger Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LVL</wert>
+						<beschreibung>Latvian Lats</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>LYD</wert>
+						<beschreibung>Libyscher Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MAD</wert>
+						<beschreibung>Moroccan Dirham</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MGF</wert>
+						<beschreibung>Malagasy Franc</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MMK</wert>
+						<beschreibung>Myanmar Kyat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MNT</wert>
+						<beschreibung>Mongolian Tugrik</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MOP</wert>
+						<beschreibung>Macau Pataca</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MRO</wert>
+						<beschreibung>Mauritanian Ouguiya</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MTL</wert>
+						<beschreibung>Maltese Lira</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MUR</wert>
+						<beschreibung>Mauritius Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MVR</wert>
+						<beschreibung>Maldive Rufiyaa</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MWK</wert>
+						<beschreibung>Malawi Kwacha</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MXP</wert>
+						<beschreibung>Mexikanischer Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MYR</wert>
+						<beschreibung>Malaysian Ringgit</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>MZM</wert>
+						<beschreibung>Mozambique Metical</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NAD</wert>
+						<beschreibung>Namibia Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NGN</wert>
+						<beschreibung>Nigerian Naira</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NIO</wert>
+						<beschreibung>Nicaraguan Cordoba Oro</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NLG</wert>
+						<beschreibung>Niederländischer Guilder</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NOK</wert>
+						<beschreibung>Norwegische Krone</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NPR</wert>
+						<beschreibung>Nepalese Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>NZD</wert>
+						<beschreibung>Neu Sealändischer Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>OMR</wert>
+						<beschreibung>Omani Rial</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PAB</wert>
+						<beschreibung>Panamanian Balboa</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PEN</wert>
+						<beschreibung>Peruvian Nuevo Sol</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PGK</wert>
+						<beschreibung>Papua New Guinea Kina</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PHP</wert>
+						<beschreibung>Philippinischer Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PKR</wert>
+						<beschreibung>Pakistan Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PLN</wert>
+						<beschreibung>Polnischer Zloty</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PTE</wert>
+						<beschreibung>Portugisiescher Escudo</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>PYG</wert>
+						<beschreibung>Paraguay Guarani</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>QAR</wert>
+						<beschreibung>Qatari Rial</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ROL</wert>
+						<beschreibung>Rumänischer Leu</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>RUB</wert>
+						<beschreibung>Russischer Rubel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SAR</wert>
+						<beschreibung>Saudi Riyal</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SBD</wert>
+						<beschreibung>Solomon Islands Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SCR</wert>
+						<beschreibung>Seychelles Rupee</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SDD</wert>
+						<beschreibung>Sudanese Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SDP</wert>
+						<beschreibung>Sudanese Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SEK</wert>
+						<beschreibung>Schwedische Krone</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SGD</wert>
+						<beschreibung>Singapore Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SHP</wert>
+						<beschreibung>St. Helena Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SIT</wert>
+						<beschreibung>Sloveniischer Tolar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SKK</wert>
+						<beschreibung>Slovak Koruna</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SLL</wert>
+						<beschreibung>Sierra Leone Leone</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SOS</wert>
+						<beschreibung>Somali Shilling</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SRG</wert>
+						<beschreibung>Suriname Guilder</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>STD</wert>
+						<beschreibung>Sao Tome/Principe Dobra</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SVC</wert>
+						<beschreibung>El Salvador Colon</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SYP</wert>
+						<beschreibung>Syrian Pound</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>SZL</wert>
+						<beschreibung>Swaziland Lilangeni</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>THB</wert>
+						<beschreibung>Thai Baht</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TND</wert>
+						<beschreibung>Tunisian Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TOP</wert>
+						<beschreibung>Tongan Pa"anga</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TRL</wert>
+						<beschreibung>Türkische Lira</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TTD</wert>
+						<beschreibung>Trinidad/Tobago Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TWD</wert>
+						<beschreibung>Taiwan Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>TZS</wert>
+						<beschreibung>Tanzanian Shilling</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>UAH</wert>
+						<beschreibung>Ukraine Hryvnia</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>UGS</wert>
+						<beschreibung>Uganda Shilling</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>USD</wert>
+						<beschreibung>US Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>UYP</wert>
+						<beschreibung>Uruguayan Peso</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>VEB</wert>
+						<beschreibung>Venezuelan Bolivar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>VND</wert>
+						<beschreibung>Vietnamese Dong</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>VUV</wert>
+						<beschreibung>Vanuatu Vatu</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>WST</wert>
+						<beschreibung>Samoan Tala</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XAF</wert>
+						<beschreibung>CFA Franc BEAC</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XAG</wert>
+						<beschreibung>Silver (oz.)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XAU</wert>
+						<beschreibung>Gold (oz.)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XEU</wert>
+						<beschreibung>ECU</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XOF</wert>
+						<beschreibung>CFA Franc BCEAO</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XPD</wert>
+						<beschreibung>Palladium (oz.)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>XPT</wert>
+						<beschreibung>Platinum (oz.)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>YUN</wert>
+						<beschreibung>Yugoslav Dinar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ZAR</wert>
+						<beschreibung>South African Rand</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ZMK</wert>
+						<beschreibung>Zambian Kwacha</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>ZWD</wert>
+						<beschreibung>Zimbabwe Dollar</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2006.01.09.16.36.47.556">
+			<name>BetragInWE (12 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>19.07.2007 16:00:27</letzteAenderung>
+			<minimaleLaenge>12</minimaleLaenge>
+			<bytes>12</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung>(12,0 Stellen)</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>24.01.2006 16:23:12</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.999">
+			<name>Verkürzte Beitragszahlungsdauer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>2</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.29">
+			<name>besonderer Verwendungszweck</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>24.01.2006 16:24:45</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>besonderer Verwendungszweck Leben</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>24.01.2006 16:24:45</letzteAenderung>
+				<technischerName>BesondererVerwendungszweckLeben</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Hypothekentilgung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>VL</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Restschuldversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>9</wert>
+						<beschreibung>sonstiges</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.01.214">
+			<name>Vertragsform</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.11.2003 11:02:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Vertragsform</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.11.2003 11:02:42</letzteAenderung>
+				<technischerName>Vertragsform</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>Einzel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Firmengruppen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Vereins-/Verbandsgruppen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Sammelversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.49">
+			<name>Gruppenart</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>40</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.79">
+			<name>Name (20 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>26.02.2007 11:56:29</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>26.02.2007 11:56:29</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.140">
+			<name>Abschlussprovision (5 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>17.09.2009 11:46:03</letzteAenderung>
+			<minimaleLaenge>5</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Fließkomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+			<bemerkung>(3,2 Stellen)</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 16:49:22</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.170">
+			<name>Bestandspflegeprovision (5 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>31.07.2006 15:09:19</letzteAenderung>
+			<minimaleLaenge>5</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:03:07</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.200">
+			<name>Art des Drittrechts</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>2</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Art des Drittrechts</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>ArtDrittrechts</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>01</wert>
+						<beschreibung>Abtretung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>02</wert>
+						<beschreibung>Verpfändung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>03</wert>
+						<beschreibung>Pfändung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>04</wert>
+						<beschreibung>Konkurs</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>05</wert>
+						<beschreibung>Vergleich</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.646">
+			<name>BetragInWE (10,2 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>20.07.2007 12:57:19</letzteAenderung>
+			<minimaleLaenge>12</minimaleLaenge>
+			<bytes>12</bytes>
+			<datentyp combobox="datentypbox">Fließkomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+			<bemerkung>(10,2 Stellen)</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>20.07.2007 12:57:19</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.328">
+			<name>Zahlungsweise</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>28.04.2008 11:26:05</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>
+				blank = Rechtschutz / Verkehrsservice / Kredit (In den Sparten Rechtschutz und Verkehrsservice kann das Datenfeld "Zahlungsweise" in der Satzart 0200 blank sein, die Zahlungsweise wird dann auf Risikoebene in der Satzart 0210, spätestens in Satzart 0220 angegeben. Bei Einzel- und / oder Umsatzanmeldungen muss das Datenfeld "Zahlungsweise" in der Satzart 0400 blank sein.)
+				<br />
+			</bemerkung>
+			<wertetabelle>
+				<name>Zahlungsweise</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>28.04.2008 11:26:01</letzteAenderung>
+				<technischerName>Zahlungsweise</technischerName>
+				<bemerkung />
+				<anlagennummer>14</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>jährlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>halbjährlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>vierteljährlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Sonstiges</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>6</wert>
+						<beschreibung>Einmalbetrag</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>8</wert>
+						<beschreibung>monatlich</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>9</wert>
+						<beschreibung>beitragsfrei</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.11.529">
+			<name>Änderungsgrund</name>
+			<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+			<letzteAenderung>09.08.2012 08:55:40</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Änderungsgrund</name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>09.08.2012 08:55:40</letzteAenderung>
+				<technischerName>Aenderungsgrund</technischerName>
+				<bemerkung>Bei Kreditversicherung immer "99" schlüsseln</bemerkung>
+				<anlagennummer>6</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>00</wert>
+						<beschreibung>Bei Erstausstattung (Stichtagsbestand, Bestandsübernahme)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>01</wert>
+						<beschreibung>Erstlieferung eines Vertrages neue Vertragsnummer nach Vertragstrennung / Nachversicherung z. B.: Umstellung Einzelversicherung in Gruppenversicherung / Umstellung Gruppenversicherung in Einzelversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>02</wert>
+						<beschreibung>VN-Wechsel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>03</wert>
+						<beschreibung>Fahrzeugwechsel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>04</wert>
+						<beschreibung>Änderung Regionalklasse / Tarifgruppe / Typklasse (KFZ)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>05</wert>
+						<beschreibung>Änderung Deckungsumfang / Versicherungsschutz / Übergang von Vollversicherung auf Anwartschaft bzw. von Anwartschaft auf Vollversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>06</wert>
+						<beschreibung>Änderung der SFR-Einstufung (KFZ) / Beitragsrückerstattung (KV)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>07</wert>
+						<beschreibung>Kurzfristiger Einschluß oder Änderung der Deckung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>08</wert>
+						<beschreibung>Wiederinkraftsetzung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>09</wert>
+						<beschreibung>Änderung der Versicherungsdauer / des Versicherungsbeginnes</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>10</wert>
+						<beschreibung>Änderung zum Risiko / Risikozuschlag / Leistungsausschluß</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>11</wert>
+						<beschreibung>Änderung der Bedingungen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>12</wert>
+						<beschreibung>Bedingungsgemäße Zuwachserhöhung / dynamische Leistungsanpassung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>13</wert>
+						<beschreibung>Änderung der Zahlungsweise / Fälligkeit</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>14</wert>
+						<beschreibung>Änderung der Versicherungssumme</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>15</wert>
+						<beschreibung>Erhöhung Zusatzversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>16</wert>
+						<beschreibung>Einschluß Zusatz</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>17</wert>
+						<beschreibung>Ausschluß Zusatz</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>18</wert>
+						<beschreibung>Änderung der Beiträge (z. B. Beitragsanpassung, bedingungsgemäße Beitragserhöhung)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>19</wert>
+						<beschreibung>Änderung Personendaten</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>20</wert>
+						<beschreibung>Vertragszusammenlegung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>21</wert>
+						<beschreibung>Ersatzvertrag</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>22</wert>
+						<beschreibung>Bestandsübertragung (Übertragung von anderem Vermittler)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>23</wert>
+						<beschreibung>Agenturnummernwechsel (Änderung der Organisationseinheit intern beim Vermittler)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>24</wert>
+						<beschreibung>Neuzugang nach Vertragsneuordnung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>25</wert>
+						<beschreibung>Neuzugang nach Tarifwechsel</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>26</wert>
+						<beschreibung>Ablehnung der Dynamikerhöhung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>27</wert>
+						<beschreibung>Bedingungsgemäße Zuwachserhöhung / nichtdynamische Leistungsanpassung (z. B. bei Aufbaumodellen)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>28</wert>
+						<beschreibung>Umstellung der Todesfalleistung in Prozent</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>29</wert>
+						<beschreibung>Wegfall des Risikovorlaufs</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>30</wert>
+						<beschreibung>Tarifliche Beitragsumstellung (z. B. Tarif mit ermäßigtem Anfangsbeitrag)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>31</wert>
+						<beschreibung>Tarifwechsel (Versicherungsscheinnummer bleibt bestehen)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>32</wert>
+						<beschreibung>Zuzahlung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>33</wert>
+						<beschreibung>Änderung des Bezugsrechts</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>34</wert>
+						<beschreibung>Folgerechnung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>35</wert>
+						<beschreibung>Hauptfälligkeitsrechnung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>36</wert>
+						<beschreibung>Neuzugang wegen Übernahme von anderem VU</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>37</wert>
+						<beschreibung>Übergang auf anderes VU</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>38</wert>
+						<beschreibung>SFR-Änderung abhängige Fahrzeuge Wechselkennzeichen (W-AKZ)</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>99</wert>
+						<beschreibung>sonstige Änderung</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.280">
+			<name>RefVSNr</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:31:43</letzteAenderung>
+			<minimaleLaenge>17</minimaleLaenge>
+			<bytes>17</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:31:43</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.350">
+			<name>Betriebliche Altersversorgung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Betriebliche Altersversorgung</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName>BetrieblicheAltersversorgung</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Direktversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Direktversicherung mit Gehaltsumwandlung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Direktversicherung mit anteiliger Gehaltsumwandlung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Rückdeckungsversicherung für Pensionszusage</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Rückdeckungsversicherung für Unterstützungskassenzusage</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.360">
+			<name>Bilanzmonat Arbeitgeber</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>2</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.380">
+			<name>Produktbeschreibung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.849">
+			<name>Produktform</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.869">
+			<name>Produktform gültig ab</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>6</minimaleLaenge>
+			<bytes>6</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2004.09.23.11.43.12.683">
+			<name>Produktname</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:29:58</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung>Produktname</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:29:58</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.23.43.863">
+			<name>Art der steuerlichen Förderung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>04.04.2007 10:11:34</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Steuerart</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>04.04.2007 10:11:34</letzteAenderung>
+				<technischerName>Steuerart</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>irrelevant</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>pauschal besteuerte Direktversicherung nach §40b EStG</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Beiträge steuerfrei nach §3 Ziff.63 EStG</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>zulagengeförderte Direktversicherung nach §10a EStG</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Beiträge steuerfrei nach §3 Ziff.66 EstG</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>keine</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>6</wert>
+						<beschreibung>Zulagegeförderte Privatversicherung nach §10 a EStG</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>7</wert>
+						<beschreibung>Basis-/Rürup-Rente nach § 10 Abs. 1 Nr. 2 Buchstabe b EStG</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.28.36.917">
+			<name>Finanzierungsart</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>01.02.2005 11:30:04</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Finanzierungsart</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>01.02.2005 11:30:04</letzteAenderung>
+				<technischerName>Finanzierungsart</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>irrelevant</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Arbeitgeber finanziert</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Arbeitnehmer finanziert Entgeltumwandlung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Arbeitnehmer finanziert aus versteuertem Einkommen</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>aus Vertrag nicht erkennbar</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Arbeitgeber / Arbeitnehmer</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.30.20.745">
+			<name>Durchführungsweg</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>04.04.2007 10:12:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Durchführungsweg</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>04.04.2007 10:12:42</letzteAenderung>
+				<technischerName>Durchfuehrungsweg</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>irrelevant</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Direktversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Unterstützungskasse</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Pensionskasse</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Pensionsfonds</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>5</wert>
+						<beschreibung>Privat</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>6</wert>
+						<beschreibung>Direktzusage</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>7</wert>
+						<beschreibung>Private Riesterversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>8</wert>
+						<beschreibung>Riesterdirektversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.32.13.618">
+			<name>Finanzierung der Zusage</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>01.02.2005 11:33:11</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Finanzierung der Zusage</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>01.02.2005 11:33:11</letzteAenderung>
+				<technischerName>FinanzierungDerZusage</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>0</wert>
+						<beschreibung>irrelevant</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Rückdeckungsversicherung</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Rückdeckungsversicherung partiell</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>3</wert>
+						<beschreibung>Rückdeckungsversicherung kongruent</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>4</wert>
+						<beschreibung>Pensionsfonds</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.33.37.537">
+			<name>Unternehmensschlüssel</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:40:16</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>4</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:40:16</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.37.14.519">
+			<name>Name (40 Bytes)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>24.01.2006 16:27:09</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>40</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>24.01.2006 16:27:09</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.11.41.32.702">
+			<name>Kollektiv-Nr.</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:21:09</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>15</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung>Nummer des Kollektivvertrages</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:21:09</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+
+		<!-- (zusaetzliche) Felder fuer Satz 212.50 -->
+		<feld referenz="BN-2003.02.11.22.50.04.308">
+			<name>KM_Stand</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:20:28</letzteAenderung>
+			<minimaleLaenge>7</minimaleLaenge>
+			<bytes>7</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:20:28</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.01.695">
+			<name>Prozentsatz (3,2 Stellen)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>17.09.2009 12:57:42</letzteAenderung>
+			<minimaleLaenge>5</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Fließkomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+			<bemerkung>(3,2 Stellen)</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>03.06.2009 11:58:24</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.59.572">
+			<name>Referenznummer (7 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:31:30</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>7</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:31:30</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.03.818">
+			<name>Satznummer (AN)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:32:46</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:32:46</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		
+		<!-- (zusaetzliche) Felder fuer Satz 220.10.0 -->
+		<feld referenz="BN-2003.02.11.22.50.04.489">
+			<name>Lfd. Nummer der versicherten Person (VP)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>17</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.04.519">
+			<name>Wagnisart Leben</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:41:40</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:41:40</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.04.529">
+			<name>lfd. Nummer zur Wagnisart</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>12.12.2005 14:58:53</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>lfd. Nummer zur Wagnisart</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>12.12.2005 14:58:53</letzteAenderung>
+				<technischerName>lfdNummerWagnisart</technischerName>
+				<bemerkung>
+					Erläuterung zu Datenfeld lfd. Nr. der versicherten Person (VP), Wagnisart, lfd. Nr. der Wagnisart in Satzart 0220 (Leben); VS-Nr. 4711:
+					<br />
+					lfd. Nr. der VP = 01, Wagnisart = 0, Lfd. Nr. zur Wagnisart = _;
+					<br />
+					lfd. Nr. der VP = 01, Wagnisart = 1, Lfd. Nr. zur Wagnisart = 1;
+					<br />
+					lfd. Nr. der VP = 01, Wagnisart = 1, Lfd. Nr. zur Wagnisart = 2;
+					<br />
+					lfd. Nr. der VP = 01, Wagnisart = 3, Lfd. Nr. zur Wagnisart = 1;
+					<br />
+					lfd. Nr. der VP = 01, Wagnisart = 3, Lfd. Nr. zur Wagnisart = 2;
+					<br />
+					lfd. Nr. der VP = 02, Wagnisart = 0, Lfd. Nr. zur Wagnisart = _;
+					<br />
+					lfd. Nr. der VP = 02, Wagnisart = 1, Lfd. Nr. zur Wagnisart = 1 ...
+					<br />
+					<br />
+				</bemerkung>
+				<anlagennummer>15</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.55.786">
+			<name>Name (30 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>26.02.2007 11:58:38</letzteAenderung>
+			<minimaleLaenge>30</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>26.02.2007 11:58:38</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.04.559">
+			<name>Vorname der VP</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.168">
+			<name>Berufsschlüssel</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>09.02.2009 09:33:11</letzteAenderung>
+			<minimaleLaenge>3</minimaleLaenge>
+			<bytes>3</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung>
+				Berufsschlüssel der Bundesanstalt für Arbeit
+				<br />
+				Kann bei der zuständigen Bundesagentur für Arbeit angefordert werden
+			</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>02.10.2003 14:48:56</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.58.480">
+			<name>Beruf - Text</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.49.57.188">
+			<name>Beruf - Text (Berufliche Stellung)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.04.609">
+			<name>Anzahl der versicherten Personen</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.12.06.00.874">
+			<name>Mitarbeiter-Status</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>01.02.2005 12:09:17</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>2</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Mitarbeiter-Status</name>
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>01.02.2005 12:09:17</letzteAenderung>
+				<technischerName>MitarbeiterStatus</technischerName>
+				<bemerkung />
+				<anlagennummer>79</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>01</wert>
+						<beschreibung>Sozialversicherungspflichtig Beschäftigte ohne besondere Merkmale</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>02</wert>
+						<beschreibung>Auszubildende</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>03</wert>
+						<beschreibung>Beschäftigte in Altersteilzeit</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>04</wert>
+						<beschreibung>Praktikanten</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>05</wert>
+						<beschreibung>Werksstudenten</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>06</wert>
+						<beschreibung>Geringfügig entlohnte Beschäftigte nach § 8 Abs. 1 Nr. 1 SGB IV</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>07</wert>
+						<beschreibung>Kurzfristig Beschäftigte nach § 8 Abs. 1 Nr. 2 SGB IV</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>08</wert>
+						<beschreibung>Unständig Beschäftigte</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>09</wert>
+						<beschreibung>Altersvollrentner und Versorgungsbezieher wegen Alters</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>10</wert>
+						<beschreibung>Unterbrechung wegen Elternzeit</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>11</wert>
+						<beschreibung>Unterbrechung wegen gesetzlicher Dienstpflicht</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>12</wert>
+						<beschreibung>Beschäftigte in Mutterschutz</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>13</wert>
+						<beschreibung>Ausgeschieden</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>14</wert>
+						<beschreibung>Freigestellt</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>99</wert>
+						<beschreibung>Sonstige</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2005.02.01.12.10.08.134">
+			<name>Sozialversicherung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:34:12</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>12</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung>Nummer der Sozialversicherung</bemerkung>
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:34:12</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2013.02.01.10.41.07.443">
+			<name>Art des Berufsschlüsselverzeichnisses</name>
+			<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+			<letzteAenderung>04.02.2013 13:34:57</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>1</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name>Art des Berufsschlüsselverzeichnisses</name>
+				<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+				<letzteAenderung>04.02.2013 13:34:57</letzteAenderung>
+				<technischerName>ArtDesBerufsschluesselverzeichnisses</technischerName>
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>1</wert>
+						<beschreibung>Berufsschlüssel der Bundesagentur für Arbeit</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>2</wert>
+						<beschreibung>Berufsschlüssel des Statistischen Bundesamtes</beschreibung>
+						<gruppe />
+					</eintrag>
+					<eintrag>
+						<wert>9</wert>
+						<beschreibung>Anderes</beschreibung>
+						<gruppe />
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+
+	</felder>
+
+</service>

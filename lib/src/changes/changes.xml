@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+
+<!-- 
+    A kind of release notes. This document describes the changes in the
+    different releases.
+    
+    see http://maven.apache.org/plugins/maven-changes-plugin/usage.html
+    see http://maven.apache.org/plugins/maven-changes-plugin/changes.html
+ -->
+
+<document>
+
+  <properties>
+    <title>Main changes</title>
+    <author email="oliver.boehm@gmail.com">Oli B.</author>
+  </properties>
+
+  <body>
+
+    <release version="2.1.3" date="06-Nov-2017"
+             description="Bugfix">
+      <action dev="oboehm" type="fix" issue="issues/6" date="05-Nov-2017">
+        Einige Bezeichner (mit _IN_WAEHRUNGSEINHEITEN u.a.) korrigiert.
+      </action>
+      <action dev="oboehm" type="fix" issue="issues/8" date="04-Nov-2017">
+        Teildateners&#228;tze k&#246;nnen jetzt in beliebiger Reihenfolge
+        und mit L&#252;cken importiert werden.
+      </action>
+    </release>
+
+    <release version="2.1.2" date="06-Okt-2017"
+             description="Bugfix">
+      <action dev="NiasSt90" type="fix" date="05-Okt-2017">
+        Teildatenersatz-Erkennung verbessert.
+      </action>
+      <action dev="NiasSt90" type="fix" date="05-Okt-2017">
+        Bezeichneranpassung.
+      </action>
+    </release>
+
+    <release version="2.1.1" date="24-Sep-2017"
+             description="Bugfix">
+      <action type="fix" issue="issues/4" date="22-Sep-2017">
+        NumberFormatException im XmlHelper mit Woodstox-Parser behoben.
+      </action>
+      <action type="fix" issue="issues/5" date="22-Sep-2017">
+        Feldl&#228;nge von Feld 11 in Feld221Wagnis48 korrigiert.
+      </action>
+    </release>
+
+    <release version="2.1.0" date="06-M&#228;r-2017"
+             description="Bugfixing und verbesserte Serialisierung">
+      <action dev="oboehm" type="remove" date="20-Feb-2017">
+        Veraltete Methode 'getBezeichnerAsString()' entfernt.
+      </action>
+      <action dev="oboehm" type="fix" date="13-Feb-2017">
+        Einige Schreibfehler in Bezeichner-Konstanten korrigiert.
+      </action>
+    </release>
+
+    <release version="2.0.0" date="02-Feb-2017"
+             description="Bereinigungen">
+      <action dev="oboehm" type="update" date="17-Jan-2017">
+        Wegen gr&#246;&#223;eren &#196;nderungen wurde Version 1.2 jetzt zur
+        neuen Version 2.0 erhoben.
+      </action>
+      <action dev="oboehm" type="update" date="16-Jan-2017">
+        Umstieg auf Log4J-2 als neues Logging-Framework.
+      </action>
+      <action dev="oboehm" type="delete" date="15-Jan-2017">
+        Deprecated String-Konstanten in Bezeichner gel&#246;scht.
+        Als Ersatz gibt es String-Konstanten mit "NAME_"-Prefix.
+      </action>
+      <action dev="oboehm" type="update" date="24-Okt-2016">
+        Encoding-Probleme sind jetzt beseitigt.
+      </action>
+      <action dev="oboehm" type="add" date="10-Jun-2016">
+      	&#220;ber CsvFormatter k&#246;nnen Datenpakete jetzt ins CVS-Format
+      	exportiert werden.
+      </action>
+    </release>
+
+    <release version="1.1.0" date="08-Feb-2016"
+             description="Registrierung XML-Beschreibung">
+      <action dev="oboehm" type="add" date="06-Feb-2016">
+        Test-Abdeckung von XmlService erh&#246;ht.
+      </action>
+      <action dev="oboehm" type="update" date="03-Feb-2016" >
+        Konstruktoren und Methoden, die als Deprecated gekennzeichnet waren
+        und laut JavaDoc mit 1.1 entfernt werden sollten, wurden entfernt:
+        Constructor XmlFormatter(File) und XmlFormatter.close().
+      </action>
+      <action dev="oboehm" type="update" date="03-Feb-2016" >
+        SatzNummer wurde in SatzTyp umbenannt.
+      </action>
+      <action dev="oboehm" type="update" date="18-Mar-2015" >
+        Fehlende Felder f&#252;r Satzart 0210.030 und 0210.040
+        erg&#228;nzt.
+      </action>
+      <action dev="oboehm" type="update" date="18-Mar-2015" >
+        Fehlende Feld-Referenzen k&#246;nnen jetzt in
+        'gdv/xport/satz/xml/fehlendeFelder.xml'
+        erg&#228;nzt werden.
+      </action>
+    </release>
+
+    <release version="1.0.0" date="03-Feb-2015"
+             description="Streaming-API">
+      <action dev="oboehm" type="update" date="24-Jan-2015" >
+        Anpassungen an die 2013er-Version des GDV-Handbuchs.
+      </action>
+      <action dev="oboehm" type="add" date="18-Jan-2015">
+      	XmlService unterst&#252;tzt die restlichen S&#228;tze auf Basis der
+      	XML-Beschreibung von gdv-online
+      	(http://www.gdv-online.de/vuvm/bestand/best_2013.htm").
+      </action>
+      <action dev="oboehm" type="update" date="05-Aug-2014" >
+        Import- und Export-Methoden der Datenpaket-Klasse unterst&#252;tzen jetzt
+        Encoding.
+      </action>
+      <action dev="oboehm" type="update" date="17-Feb-2014" >
+        DatenpaketStreamer mit Streaming-API eingef&#252;hrt, um den
+        Speicherverbrauch zu begrenzen.
+      </action>
+    </release>
+
+    <release version="0.9.3" date="05-Feb-2014"
+             description="ausf&#252;hrbare Jar-Datei (2. Versuch)">
+      <action dev="oboehm" type="add" date="05-Feb-2014" >
+        Bereitstellung als ausf&#252;hrbare Jar-Datei *und* als Bibliothek.
+      </action>
+      <action dev="fberger" type="add" date="04-Feb-2014" >
+        Unterst&#252;tzung f&#252;r Sparte 110 bei der Satzart 220
+        (Dank an Frank Berger).
+      </action>
+      <action dev="oboehm" type="add" date="03-Feb-2014" >
+        Verwendung eines RecordReaders, um zu kurze Records mit Leerstellen
+        aufzuf&#252;llen.
+      </action>
+    </release>
+
+    <release version="0.9.2" date="02-Feb-2014"
+             description="ausf&#252;hrbare Jar-Datei">
+      <action dev="oboehm" type="add" date="30-Jan-2014" >
+        Bereitstellung als ausf&#252;hrbare Jar-Datei.
+      </action>
+      <action dev="oboehm" type="fix" date="28-Jan-2014" >
+        Ein Input-Stream oder Reader kann jetzt f&#252;r den Import mehrerer
+        Datenpakete verwendet werden.
+      </action>
+      <action dev="fberger" type="add" date="17-Jan-2014" >
+        Unterst&#252;tzung f&#252;r Sparte 140 bei der Satzart 220
+        (Dank an Frank Berger).
+      </action>
+    </release>
+
+    <release version="0.9.1" date="02-Mai-2013"
+             description="Bugfix-Release">
+      <action dev="oboehm" type="fix" date="23-Apr-2013" >
+        Fehlerhafte Definitionen (ENDALTER) in diversen Feld220WagnisXx-Enums korrigiert.
+        Fehlende Felder in Feld220Wagnis9 erg&#228;nzt.
+      </action>
+    </release>
+  
+    <release version="0.9.0" date="21-Apr-2013"
+             description="Unterst&#252;tzung Version 2009">
+      <action dev="oboehm" type="update" date="20-Apr-2013" >
+      	Feld-Klasse akzeptiert jetzt auch Enums im Konstruktor.
+      </action>
+      <action dev="oboehm" type="remove" date="14-M&#228;r-2013" >
+        Option "-java" wird nicht mehr unterst&#252;tzt (Main-Klasse).
+      </action>
+      <action dev="oboehm" type="update" date="25-Feb-2013" >
+        Manifest enth&#228;lt jetzt Main-Klasse.
+      </action>
+      <action dev="ralfklemmer" type="add" date="Jan-2013">
+        Sparte 40 (Haftpflicht) ist hinzugekommen.
+      </action>
+      <action dev="ralfklemmer" type="add" date="Jan-2013">
+        Unterst&#252;tzung von Satzart 222 und 230,
+        Unterst&#252;tzung der Wagnisart f&#252;r diverse Sparten,
+      </action>
+      <action dev="ralfklemmer" type="update" date="22-Nov-2012" >
+        Beginn Umstellung auf Version 2009 des GDV-Handbuches.
+      </action>
+      <action dev="oboehm" type="add" date="17-Jul-2012" >
+        @FelderInfo hinzugef&#252;gt, um gemeinsame FeldInfos
+        herausziehen zu k&#246;nnen.
+      </action>
+      <action dev="oboehm" type="remove" date="17-Jul-2012" >
+        SpartenspezifischerTeil-Klasse als deprecated markiert
+        und SpartenspezifischerTeilTest entfernt.
+      </action>
+    </release>
+
+    <release version="0.7.0" date="17-Jul-2012"
+             description="neue GroupId (com.github.oboehm)">
+      <action dev="oboehm" type="update" date="11-Jul-2012" >
+        Tests parallelisiert und ConcurrentModificationExceptions behoben.
+      </action>
+      <action dev="oboehm" type="update" date="9-Jul-2012" >
+        GroupId ge&#228;ndert zu com.github.oboehm, um Anforderung von
+        https://issues.sonatype.org/browse/OSSRH-3883 zu erf&#252;llen.
+      </action>
+      <action dev="oboehm" type="update" date="11-Jan-2012" >
+        Update auf PatternTesting 1.2 zur Test-Parallelisierung
+        (ParallelSuite).
+      </action>
+    </release>
+
+    <release version="0.6.3" date="01-Okt-2011"
+             description="Bug-Fixing">
+      <action dev="oboehm" type="fix" issue="issues/1" date="06-Sep-2011" >
+        Registrierung eines neuen Datensatzes oder Enums
+        &#252;berschreibt jetzt die alte Einstellung
+        (https://github.com/oboehm/gdv.xport/issues/1).
+      </action>
+    </release>
+
+    <release version="0.6.2" date="31-Aug-2011"
+             description="Maven3-Anpassungen f&#252;r Projekt-Reports">
+      <action dev="oboehm" type="fix" date="31-Aug-2011" >
+        Fehlende Projekt-Reports werden jetzt wieder generiert.
+      </action>
+      <action dev="oboehm" type="fix" date="31-Aug-2011" >
+        Checkstyle-Warnungen reduziert.
+      </action>
+    </release>
+
+    <release version="0.6.1" date="04-Aug-2011"
+             description="Aktualisierung Dokumentation">
+      <action dev="oboehm" type="fix" date="02-Aug-2011" >
+        Fehlerhafter Link zum Download korrigiert.
+      </action>
+      <action dev="oboehm" type="fix" date="17-Jul-2011" >
+        Aktualisierung f&#252;r Eclipse Helios.
+      </action>
+    </release>
+
+    <release version="0.6.0" date="15-Jun-2011"
+             description="erster SOP-Ansatz">
+      <action dev="oboehm" type="fix" date="30-M&#228;r-2011" >
+        Java-Formatter hinzugef&#252;gt, um die Migration des alten Ansatzes
+        zum SOP-Ansatz zu erleichtern.
+      </action>
+      <action dev="oboehm" type="add" date="08-M&#228;r-2011" >
+        SOP-Ansatz mit Hilfe von Enums und Annotations, um die Typ-Sicherheit
+        und Lesbarkeit zu erh&#246;hen.
+      </action>
+    </release>
+
+    <release version="0.5.1" date="02-Feb-2011"
+             description="Support f&#252;r Sparte 50 bis 53 (KFZ Haftpflicht / Vollkasko)">
+      <action dev="oboehm" type="fix" date="19-Jan-2011" >
+        NumberFormatException bei NumFeldern mit gro&#223;en Zahlen behoben.
+      </action>
+      <action dev="oboehm" type="add" date="19-Jan-2011" >
+        Unterst&#252;tzung f&#252;r Sparte 50 bis 53 bei den Satzarten
+        210, 211, 220 und 221 (Dank an Igor Narodetskyi).
+      </action>
+      <action dev="oboehm" type="fix" date="8-Jan-2011" >
+        Coypy&amp;Paste-Fehler von Bezeichner.NAME2 korrigiert.
+      </action>
+      <action dev="oboehm" type="update" date="8-Jan-2011" >
+        HtmlFormatter schreibt jetzt das Ende der HTML-Datei korrekt.
+      </action>
+    </release>
+
+    <release version="0.5.0" date="08-Jan-2011"
+             description="HTML-Support, Support f&#252;r Sparte 10 (Leben)">
+      <action dev="oboehm" type="add" date="02-Jan-2011" >
+        Beginn mit Unterst&#252;tzung f&#252;r Sparte 10 (Leben).
+      </action>
+      <action dev="oboehm" type="update" date="29-Nov-2010" >
+        Dokumentation erg&#228;nzt.
+      </action>
+      <action dev="oboehm" type="add" date="26-Nov-2010">
+        HtmlFormatter f&#252;r die HTML-Ausgabe hinzugef&#252;gt.
+      </action>
+      <action dev="oboehm" type="add" date="18-Nov-2010">
+        Unterst&#252;tzung f&#252;r Satzart 211 und 221 (Erweiterungssatz).
+      </action>
+      <action dev="oboehm" type="update" date="4-Aug-2010" >
+        Eigenes Logo erstellt.
+      </action>
+    </release>
+
+    <release version="0.4.2" date="03-Aug-2010"
+             description="verbesserte Testabdeckung">
+      <action dev="oboehm" type="update" date="18-Jul-2010" >
+        Update auf PatternTesting 1.0.1
+      </action>
+      <action dev="oboehm" type="update" date="8-Feb-2010" >
+        JUnit-Tests f&#252;r io-Package hinzugef&#252;gt.
+      </action>
+    </release>
+
+    <release version="0.4.1" date="08-Feb-2010"
+             description="fehlende (Java-) Docs erg&#228;nzt">
+      <action dev="oboehm" type="update" date="7-Feb-2010" >
+        Dokumentation aktualisiert, Checkstyle-Warnings reduziert
+      </action>
+    </release>
+
+    <release version="0.4.0" date="06-Jan-2010"
+             description="Support f&#252;r Sparte 030">
+      <action dev="oboehm" type="update" date="1-Jan-2010" >
+        Teildatens&#228;tze k&#246;nnen jetzt entfernt und hinzugef&#252;gt werden.
+      </action>
+      <action dev="oboehm" type="add" date="21-Dez-2009" >
+        Satz 0210.030 wird jetzt direkt unterst&#252;tzt.
+      </action>
+    </release>
+
+    <release version="0.3.0" date="15-Dez-2009"
+             description="XML-Support">
+      <action dev="oboehm" type="fix">
+        Vereinfachte und verbesserte XML-Generierung,
+        XSD unter http://labs.agentes.de/xsd/
+      </action>
+      <action dev="oboehm" type="update">
+        Datenpakete k&#246;nnen jetzt auch &#252;ber HTTP importiert werden
+      </action>
+    </release>
+
+    <release version="0.2.1" date="17-Nov-2009"
+             description="Bugfix Datums-Validierung">
+      <action dev="oboehm" type="fix">
+        Fehler in der Datums-Validierung behoben.
+      </action>
+    </release>
+
+    <release version="0.2.0" date="16-Nov-2009"
+             description="Registrierung eigener Datens&#228;tze">
+      <action dev="oboehm" type="add">
+        &#220;ber die SatzFactory-Klasse k&#246;nnen jetzt eigene Datens&#228;tze
+        registriert und/oder bestehende Datens&#228;tze ersetzt werden.
+      </action>
+      <action dev="oboehm" type="add">
+        (Teil-)Datens&#228;tze k&#246;nnen jetzt als XML ausgegeben werden.
+      </action>
+    </release>
+
+    <release version="0.1.2" date="09-Nov-2009"
+             description="Satz 0220.070 definiert">
+      <action dev="oboehm" type="add">
+        Datensatz 220 hinzugef&#252;gt,
+        Felder f&#252;r Sparte 70 (Rechtsschutz) definiert. 
+      </action>
+      <action dev="oboehm" type="update">
+        Datum-Felder werden jetzt auch auf g&#252;ltiges Datum validiert.
+      </action>
+    </release>
+
+    <release version="0.1.1" date="07-Nov-2009"
+             description="Dokumentation aktualisiert">
+      <action dev="oboehm" type="update">
+        Dokumentation aktualisiert (u.a. Download-Sektion hinzugef&#252;gt)
+      </action>
+      <action dev="oboehm" type="update">
+        Unterklassen von VertragsspezifischerTeil entsorgt
+        (die verschiedenen Sparten werden jetzt direkt von dieser
+        Klasse unterst&#252;tzt).
+      </action>
+    </release>
+  
+    <release version="0.1.0" date="06-Nov-2009"
+             description="Import-Unterst&#252;tzung">
+      <action dev="oboehm" type="add">
+        Import-Unterst&#252;tzung mit ISO-8859-1 als Default-Encoding.
+      </action>
+      <action dev="oboehm" type="add">
+        Einsatz von Validatoren, basierend auf OVal
+        (http://oval.sourceforge.net/)
+      </action>
+      <action dev="oboehm" type="add">
+        Allgemeiner und Spartenspezifischer Vertragsteil als Klassen
+        hinzugef&#252;gt.
+      </action>
+    </release>
+
+    <release version="0.0.2" date="26-Okt-2009"
+             description="Datenpaket hinzugef&#252;gt">
+      <action dev="oboehm" type="add">
+        Klasse "Datenpaket" hinzugef&#252;gt, zu dem verschiedene Satz-Klassen hinzugef&#252;gt werden
+        k&#246;nnen. Damit ist ein leerer Export (der nur aus Vorsatz und Nachsatz besteht)
+        m&#246;glich.
+      </action>
+      <action dev="oboehm" type="update">
+        Export mit anderen Datens&#228;tze sind prinzipiell auch m&#246;glich, erfordern aber etwas mehr
+        Aufwand, da eine Datensatz-spezifische Unterst&#252;tzung noch weitgehend fehlt.
+      </action>
+      <action dev="oboehm" type="add">
+        Einsatz der PatternTesting-Bibliothek und Umwandlung in ein AspectJ-Projekt.
+      </action>
+    </release>
+
+    <release version="0.0.1" date="09-Okt-2009"
+             description="erster Prototyp">
+      <action dev="oboehm" type="add">
+        Basisklassen wie Feld, NumFeld oder Satz bereitgestellt.
+      </action>
+    </release>
+
+  </body>
+
+</document>

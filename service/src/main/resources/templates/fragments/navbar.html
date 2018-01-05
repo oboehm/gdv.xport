@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<body>
+<div th:fragment="navbar">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">GDV.XPort-Services</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html" th:href="@{/}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="validate.html">Validierung</a></li>
+                <li><a href="format.html">Formattierung</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/swagger-ui.html" title="REST API-Doc"><span class="glyphicon glyphicon-book"></span></a></li>
+                <li><a href="https://github.com/oboehm/gdv.xport" title="zur Projekt-Seite auf GitHub"><span class="glyphicon glyphicon-info-sign"></span></a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

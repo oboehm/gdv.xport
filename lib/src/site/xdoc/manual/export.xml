@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Manual</title>
+    <author email="oliver.boehm@gmail.com">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Export">
+      <p>
+        Der Export eines Datenpakets ist relativ simpel:
+      </p>
+<source><![CDATA[
+datenpaket.export(file);
+]]></source>
+      <p>
+        Statt <i>file</i> ist auch die Angabe eines Writers oder eines
+        OutputStreams m&#246;glich. Ein Beispiel daf&#252;r findet sich
+        z.B. in
+        <a href="../xref-test/gdv/xport/DatenpaketTest.html">DatenpaketTest</a>.
+      </p>
+      <p>
+        Normalerweise wird jeder Datensatz und Teildatensatz mit einem
+        Zeilenende abgeschlossen. Mit <tt>Config.setEOD("");</tt> kann dies
+        abgestellt oder auch ein anderes Zeichen (oder Zeichenkette)
+        eingestellt werden.
+      </p>
+      <subsection name="Einzel-Export">
+      <p>
+        Ein einzelner Datensatz kann ebenso direkt exportiert werden:
+      </p>
+<source><![CDATA[
+Datensatz satz100 = SatzFactory.getDatensatz(100);
+...
+satz100.export(file);
+]]></source>
+        <p>
+          Dieses Beispiel befindet sich in
+          <a href="../xref/gdv/xport/demo/ImportExport.html">ImportExport</a>.
+        </p>
+      </subsection>
+    </section>
+
+    <section name="Formatter">
+      <p>
+        Zur Untersuchung des GDV-Formats und zur leichteren Fehlersuche gibt
+        es den 
+        <a href="../xref/gdv/xport/util/XmlFormatter.html">XmlFormatter</a>
+        und
+        <a href="../xref/gdv/xport/util/HtmlFormatter.html">HtmlFormatter</a>,
+        die ein Datenpaket nach XML bzw. HTML &#252;berf&#252;hren und beide vom 
+        <a href="../xref/gdv/xport/util/AbstractFormatter.html">AbstractFormatter</a>
+        abgeleitet sind.
+      </p>
+      <subsection name="XML-Format">
+<source><![CDATA[
+AbstractFormatter formatter = new XmlFormatter(new File("musterdatei.xml"));
+formatter.write(datenpaket);
+]]></source>
+        <p>
+          Dieser Ausschnitt formattiert das &#252;bergebene Datenpaket als XML
+          und legt das Ergebnis in der Datei "musterdatei.xml" ab.
+        </p>
+        <p>
+          <a href="../musterdatei_041222.xml"><img src="../img/export-xml.png" alt="XML-Export" border="0"/></a>
+        </p>
+      </subsection>
+      <subsection name="HTML-Format">
+<source><![CDATA[
+AbstractFormatter formatter = new HtmlFormatter(new File("musterdatei.html"));
+formatter.write(datenpaket);
+]]></source>
+        <p>
+          Tauscht man den
+          <a href="../xref/gdv/xport/util/XmlFormatter.html">XmlFormatter</a>
+          gegen den
+          <a href="../xref/gdv/xport/util/HtmlFormatter.html">HtmlFormatter</a>
+          aus, erh&#228;lt man als Ergebnis eine HTML-Datei.
+        </p>
+        <p>
+          <a href="../musterdatei_041222.html"><img src="../img/export-html.png" alt="HTML-Export" border="0"/></a>
+        </p>
+      </subsection>
+    </section>
+
+  </body>
+
+</document>

@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<document>
+
+  <properties>
+    <title>Main</title>
+    <author email="oliver.boehm@gmail.com">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Main-Programm">
+      <p>
+        Mit <tt>gdv.xport.Main</tt> gibt es kleines Haupt-Programm, sodass die
+        Bibliothek auch "standalone" verwendet werden kann.
+        Um den Aufruf der Main-Klasse zu erleichtern, gibt es ein Uberjar, dass
+        alle notwendigen Bibliotheken bereits beinhaltet und sich direkt starten
+        l&#228;sst:
+      </p>
+<source><![CDATA[
+java -jar gdv-xport-0.9.2-uberjar.jar -help
+]]></source>
+      <p>
+        Die Option <tt>-help</tt> liefert eine Kurzhilfe mit
+        Auflistung und Kurzerkl&#228;rung erh&#228;lt der verschiedenen Optionen:
+      </p>
+<source><![CDATA[
+usage: gdv.xport.Main
+ -export <arg>   Export-Datei (bei .xml/.html als Endung ist das Format
+                 XML/HTML, ansonsten GDV)
+ -help           Kurz-Hilfe
+ -html           Ausgabe als HTML
+ -import <arg>   Import-Datei
+ -validate       Validierung der eingelesenen Datensaetze
+ -xml            Ausgabe als XML
+]]></source>
+      <p>
+        Bitte beachten Sie, dass es nur ein sehr einfaches Haupt-Programm ist
+        und haupts&#228;chlich zu Demozwecken dient. So machen die Optionen
+        <tt>-html</tt> und <tt>-xml</tt> zusammen keinen Sinn, f&#252;hren
+        aber nicht zu einer Fehlermeldung (in diesem Fall wird der Datensatz
+        als XML exportiert).
+      </p>
+    </section>
+    
+    <section name="Beispiele">
+      <subsection name="Export als HTML">
+        <p>
+          Der Aufruf von 
+          <i>java gdv.xport.Main -import src/test/resources/musterdatei_041222.txt
+          -export target/musterdatei.html</i> import die angegebene Musterdatei
+          und exportiert sie als <i>musterdatei.html</i> im target-Verzeichnis.
+          Das Format wird dabei durch die Dateiendung <i>.html</i> als HTML
+          festgelegt.
+        </p>
+        <p>
+          <a href="../musterdatei_041222.html"><img src="../img/export-html.png" alt="HTML-Export" border="0"/></a>
+        </p>
+      </subsection>
+      <subsection name="Export als XML">
+        <p>
+          Der Aufruf von 
+          <i>java gdv.xport.Main -import http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt -xml</i>
+          importiert die Musterdatei von gdv-online und gibt sie als XML auf
+          der Konsole aus:
+        </p>
+<source><![CDATA[
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<datenpaket xmlns="http://labs.agentes.de" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schemaLocation="http://labs.agentes.de /xsd/datenpaket.xsd">
+  <satz satzart="0001">
+    <teildatensatz nr="1">
+      <feld bytes="  1-  4" bezeichnung="Satzart                       ">0001</feld>
+      <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+      <feld bytes=" 10- 39" bezeichnung="Absender                      ">XXX Versicherung AG           </feld>
+      <feld bytes=" 40- 69" bezeichnung="Adressat                      ">BRBRIENNEE,JÜRGEN             </feld>
+      <feld bytes=" 70- 77" bezeichnung="Erstellungs-Datum-Zeitraum vom">22072004</feld>
+      <feld bytes=" 78- 85" bezeichnung="Erstellungs-Datum-Zeitraum bis">22072004</feld>
+      <feld bytes=" 86- 95" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+      <feld bytes=" 96- 98" bezeichnung="Version Vorsatz Satzart 0001  ">1.9</feld>
+      <feld bytes=" 99-101" bezeichnung="Version Satzart 0100          ">1.9</feld>
+      <feld bytes="102-104" bezeichnung="Version Satzart 0200          ">1.9</feld>
+      <feld bytes="105-107" bezeichnung="Version Satzart 0210 050      ">2.1</feld>
+      <feld bytes="108-110" bezeichnung="Version Satzart 0220 051      ">2.1</feld>
+      <feld bytes="111-113" bezeichnung="Version Satzart 0220 052      ">2.1</feld>
+      <feld bytes="114-116" bezeichnung="Version Satzart 0220 053      ">2.1</feld>
+      <feld bytes="117-119" bezeichnung="Version Satzart 0220 054      ">2.1</feld>
+      <feld bytes="120-122" bezeichnung="Version Satzart 0220 059      ">   </feld>
+      <feld bytes="123-125" bezeichnung="Version Satzart 0210 040      ">1.5</feld>
+      <feld bytes="126-128" bezeichnung="Version Satzart 0220 040      ">1.3</feld>
+      <feld bytes="129-131" bezeichnung="Version Satzart 0210 030      ">1.6</feld>
+      <feld bytes="132-134" bezeichnung="Version Satzart 0220 030      ">2.0</feld>
+      <feld bytes="135-137" bezeichnung="Version Satzart 0210 010      ">   </feld>
+      <feld bytes="138-140" bezeichnung="Version Satzart 0220 010      ">   </feld>
+      <feld bytes="141-143" bezeichnung="Version Satzart 0210 130      ">1.5</feld>
+      <feld bytes="144-146" bezeichnung="Version Satzart 0220 130      ">1.4</feld>
+      <feld bytes="147-149" bezeichnung="Version Satzart 0210 110      ">   </feld>
+      <feld bytes="150-152" bezeichnung="Version Satzart 0220 110      ">   </feld>
+      <feld bytes="153-155" bezeichnung="Version Satzart 0210 140      ">   </feld>
+      <feld bytes="156-158" bezeichnung="Version Satzart 0220 140      ">   </feld>
+      <feld bytes="159-161" bezeichnung="Version Satzart 0210 020      ">   </feld>
+      <feld bytes="162-164" bezeichnung="Version Satzart 0220 020      ">   </feld>
+      <feld bytes="165-167" bezeichnung="Version Satzart 0210 070      ">   </feld>
+      <feld bytes="168-170" bezeichnung="Version Satzart 0220 070      ">   </feld>
+      <feld bytes="177-179" bezeichnung="Version Satzart 0210 510      ">   </feld>
+      <feld bytes="180-182" bezeichnung="Version Satzart 0220 510      ">   </feld>
+      <feld bytes="195-197" bezeichnung="Version Satzart 0250          ">   </feld>
+      <feld bytes="198-200" bezeichnung="Version Satzart 0260          ">   </feld>
+      <feld bytes="201-203" bezeichnung="Version Satzart 0210          ">   </feld>
+      <feld bytes="204-206" bezeichnung="Version Satzart 0220          ">   </feld>
+      <feld bytes="207-209" bezeichnung="Version Satzart 0220 055      ">   </feld>
+      <feld bytes="210-212" bezeichnung="Version Satzart 0300          ">   </feld>
+      <feld bytes="213-215" bezeichnung="Version Satzart 0400          ">   </feld>
+      <feld bytes="216-218" bezeichnung="Version Satzart 0410          ">   </feld>
+      <feld bytes="219-221" bezeichnung="Version Satzart 0430          ">   </feld>
+      <feld bytes="222-224" bezeichnung="Version Satzart 0500          ">   </feld>
+      <feld bytes="225-227" bezeichnung="Version Nachsatz Satzart 9999 ">1.1</feld>
+      <feld bytes="228-230" bezeichnung="Version Satzart 0420          ">   </feld>
+      <feld bytes="231-233" bezeichnung="Version Satzart 0450          ">   </feld>
+      <feld bytes="234-236" bezeichnung="Version Satzart 0550          ">   </feld>
+      <feld bytes="237-237" bezeichnung="Art des Absenders             ">1</feld>
+      <feld bytes="238-238" bezeichnung="Art des Adressaten            "> </feld>
+      <feld bytes="239-240" bezeichnung="VU-Abrechnungsstelle          ">00</feld>
+      <feld bytes="241-242" bezeichnung="Bestandsfuehrende Geschaeftsst">00</feld>
+      <feld bytes="243-245" bezeichnung="Version Satzart 0350          ">   </feld>
+      <feld bytes="246-255" bezeichnung="Leerstellen                   ">  Z0ZAG001</feld>
+      <feld bytes="256-256" bezeichnung="Satznummer                    ">1</feld>
+    </teildatensatz>
+    <teildatensatz nr="2">
+      <feld bytes="  1-  4" bezeichnung="Satzart                       ">0001</feld>
+      <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+      <feld bytes=" 10- 39" bezeichnung="Absender                      ">XXX Versicherung AG           </feld>
+      <feld bytes=" 40- 69" bezeichnung="Adressat                      ">BRBRIENNEE,JÜRGEN             </feld>
+      <feld bytes=" 70- 77" bezeichnung="Erstellungs-Datum-Zeitraum vom">22072004</feld>
+      <feld bytes=" 78- 85" bezeichnung="Erstellungs-Datum-Zeitraum bis">22072004</feld>
+      <feld bytes=" 86- 95" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+      <feld bytes=" 96- 98" bezeichnung="Version Satzart 0211 050      ">1.0</feld>
+      <feld bytes=" 99-101" bezeichnung="Version Satzart 0221 051      ">1.0</feld>
+      <feld bytes="102-104" bezeichnung="Version Satzart 0221 052      ">1.0</feld>
+      <feld bytes="105-107" bezeichnung="Version Satzart 0221 053      ">1.0</feld>
+      <feld bytes="108-110" bezeichnung="Version Satzart 0221 054      ">1.0</feld>
+      <feld bytes="111-113" bezeichnung="Version Satzart 0221 059      ">   </feld>
+      <feld bytes="114-116" bezeichnung="Version Satzart 0221 055      ">   </feld>
+      <feld bytes="117-119" bezeichnung="Version Satzart 0211 040      ">1.0</feld>
+      <feld bytes="120-122" bezeichnung="Version Satzart 0221 040      ">1.0</feld>
+      <feld bytes="123-125" bezeichnung="Version Satzart 0221 030      ">1.1</feld>
+      <feld bytes="126-128" bezeichnung="Version Satzart 0211 010      ">   </feld>
+      <feld bytes="129-131" bezeichnung="Version Satzart 0221 010      ">   </feld>
+      <feld bytes="132-134" bezeichnung="Version Satzart 0211 130      ">1.0</feld>
+      <feld bytes="135-137" bezeichnung="Version Satzart 0221 130      ">1.0</feld>
+      <feld bytes="138-140" bezeichnung="Version Satzart 0211 110      ">   </feld>
+      <feld bytes="141-143" bezeichnung="Version Satzart 0221 110      ">   </feld>
+      <feld bytes="144-146" bezeichnung="Version Satzart 0211 140      ">   </feld>
+      <feld bytes="147-149" bezeichnung="Version Satzart 0221 140      ">   </feld>
+      <feld bytes="150-152" bezeichnung="Version Satzart 0221 070      ">   </feld>
+      <feld bytes="159-161" bezeichnung="Version Satzart 0221 510      ">   </feld>
+      <feld bytes="174-176" bezeichnung="Version Satzart 0251          ">   </feld>
+      <feld bytes="177-179" bezeichnung="Version Satzart 0211          ">   </feld>
+      <feld bytes="180-182" bezeichnung="Version Satzart 0221          ">   </feld>
+      <feld bytes="183-185" bezeichnung="Version Satzart 0210 550      ">   </feld>
+      <feld bytes="186-188" bezeichnung="Version Satzart 0220 550      ">   </feld>
+      <feld bytes="189-191" bezeichnung="Version Satzart 0270 550      ">   </feld>
+      <feld bytes="192-194" bezeichnung="Version Satzart 0280 550      ">   </feld>
+      <feld bytes="195-197" bezeichnung="Version Satzart 0291 550      ">   </feld>
+      <feld bytes="198-200" bezeichnung="Version Satzart 0292 550      ">   </feld>
+      <feld bytes="201-203" bezeichnung="Version Satzart 0293 550      ">   </feld>
+      <feld bytes="204-206" bezeichnung="Version Satzart 0294 550      ">   </feld>
+      <feld bytes="207-209" bezeichnung="Version Satzart 0295 550      ">   </feld>
+      <feld bytes="210-212" bezeichnung="Version Satzart 0052          ">   </feld>
+      <feld bytes="213-215" bezeichnung="Version Satzart 0102          ">   </feld>
+      <feld bytes="216-218" bezeichnung="Version Satzart 0212          ">   </feld>
+      <feld bytes="219-221" bezeichnung="Version Satzart 0352          ">   </feld>
+      <feld bytes="222-224" bezeichnung="Version Satzart 0362          ">   </feld>
+      <feld bytes="225-227" bezeichnung="Version Satzart 0382          ">   </feld>
+      <feld bytes="228-230" bezeichnung="Version Satzart 9950          ">   </feld>
+      <feld bytes="231-233" bezeichnung="Version Satzart 9952          ">   </feld>
+      <feld bytes="234-236" bezeichnung="Version Satzart 0210 580      ">   </feld>
+      <feld bytes="237-239" bezeichnung="Version Satzart 0220 580      ">   </feld>
+      <feld bytes="240-242" bezeichnung="Produktspezifische Antragsdate">   </feld>
+      <feld bytes="243-245" bezeichnung="Produktspezifische Stammdaten ">   </feld>
+      <feld bytes="246-255" bezeichnung="Leerstellen                   ">  Z0ZAG002</feld>
+      <feld bytes="256-256" bezeichnung="Satznummer                    ">2</feld>
+    </teildatensatz>
+  </satz>
+  <satz satzart="0100" sparte="030">
+    <teildatensatz nr="1">
+      <feld bytes="  1-  4" bezeichnung="Satzart                       ">0100</feld>
+      <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+      <feld bytes=" 10- 10" bezeichnung="Buendelungskennzeichen        "> </feld>
+      <feld bytes=" 11- 13" bezeichnung="Sparte                        ">030</feld>
+      <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
+      <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
+      <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+      <feld bytes=" 43- 43" bezeichnung="Anredeschluessel              ">2</feld>
+      <feld bytes=" 44- 73" bezeichnung="Name 1                        ">Kitzelpfütze                  </feld>
+      <feld bytes="104-133" bezeichnung="Name 3                        ">Martina                       </feld>
+      <feld bytes="134-153" bezeichnung="Titel                         ">                    </feld>
+      <feld bytes="154-156" bezeichnung="Laenderkennzeichen            ">D  </feld>
+      <feld bytes="157-162" bezeichnung="Postleitzahl                  ">52222 </feld>
+      <feld bytes="163-187" bezeichnung="Ort                           ">Stolberg (Rhld.)         </feld>
+      <feld bytes="188-217" bezeichnung="Strasse                       ">Sebeneteriestr. 44            </feld>
+      <feld bytes="218-225" bezeichnung="postfach                      ">        </feld>
+      <feld bytes="226-233" bezeichnung="Geburtsdatum                  ">11111979</feld>
+      <feld bytes="234-236" bezeichnung="Staatsangehoerigkeit          ">D  </feld>
+      <feld bytes="237-238" bezeichnung="Adresskennzeichen             ">01</feld>
+      <feld bytes="239-250" bezeichnung="Aktenzeichen des Sicherungsgla">            </feld>
+      <feld bytes="251-252" bezeichnung="Zielgruppenschluessel         ">99</feld>
+      <feld bytes="253-253" bezeichnung="Aufsichtsfreier Versicherungsn"> </feld>
+      <feld bytes="254-254" bezeichnung="postalisches Kennzeichen      "> </feld>
+      <feld bytes="255-255" bezeichnung="Geschlecht                    ">2</feld>
+      <feld bytes="256-256" bezeichnung="Satznummer                    ">1</feld>
+    </teildatensatz>
+    <teildatensatz nr="2">
+      <feld bytes="  1-  4" bezeichnung="Satzart                       ">0100</feld>
+      <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+      <feld bytes=" 10- 10" bezeichnung="Buendelungskennzeichen        "> </feld>
+      <feld bytes=" 11- 13" bezeichnung="Sparte                        ">030</feld>
+      <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
+      <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
+      <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+      <feld bytes=" 43- 59" bezeichnung="Personen-/Kundennummer des Ver">           B4LTTT</feld>
+      <feld bytes=" 60- 76" bezeichnung="Personen-/Kundennummer des Ver">                 </feld>
+      <feld bytes=" 77-106" bezeichnung="Kundengruppe                  ">                              </feld>
+      <feld bytes="107-118" bezeichnung="Kontonummer 1                 ">1111111111  </feld>
+      <feld bytes="119-126" bezeichnung="Bankleitzahl 1                ">10000000</feld>
+      <feld bytes="127-156" bezeichnung="Abweichender Kontoinhaber 1   ">                              </feld>
+      <feld bytes="157-158" bezeichnung="Kommunikationstyp 1           ">  </feld>
+      <feld bytes="159-178" bezeichnung="Kommunikationsnummer 1        ">                    </feld>
+      <feld bytes="179-180" bezeichnung="Kommunikationstyp 2           ">  </feld>
+      <feld bytes="181-200" bezeichnung="Kommunikationsnummer 2        ">                    </feld>
+      <feld bytes="201-202" bezeichnung="Kommunikationstyp 3           ">  </feld>
+      <feld bytes="203-222" bezeichnung="Kommunikationsnummer 3        ">                    </feld>
+      <feld bytes="223-224" bezeichnung="Kommunikationstyp 4           ">  </feld>
+      <feld bytes="225-244" bezeichnung="Kommunikationsnummer 4        ">                    </feld>
+      <feld bytes="245-245" bezeichnung="Zahlungsart /-weg             ">1</feld>
+      <feld bytes="246-246" bezeichnung="Familienstand                 "> </feld>
+      <feld bytes="250-255" bezeichnung="Lfd. Personennummer im GeVo   ">      </feld>
+      <feld bytes="256-256" bezeichnung="Satznummer                    ">2</feld>
+    </teildatensatz>
+  </satz>
+  <satz satzart="0200" sparte="030">
+    <teildatensatz nr="1">
+      <feld bytes="  1-  4" bezeichnung="Satzart                       ">0200</feld>
+      <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+      <feld bytes=" 10- 10" bezeichnung="Buendelungskennzeichen        "> </feld>
+      <feld bytes=" 11- 13" bezeichnung="Sparte                        ">030</feld>
+      <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
+      <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
+      <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+      <feld bytes=" 43- 43" bezeichnung="Inkassoart                    ">2</feld>
+      <feld bytes=" 44- 51" bezeichnung="Vertragsbeginn                ">01052004</feld>
+      <feld bytes=" 52- 59" bezeichnung="Vertragsablauf                ">01052009</feld>
+      <feld bytes=" 60- 67" bezeichnung="Hauptfaelligkeit              ">01052005</feld>
+      <feld bytes=" 68- 68" bezeichnung="Zahlungsweise                 ">1</feld>
+      <feld bytes=" 69- 69" bezeichnung="Vertragsstatus                ">1</feld>
+      <feld bytes=" 70- 71" bezeichnung="Abgangsgrund                  ">  </feld>
+      <feld bytes=" 72- 79" bezeichnung="Abgangsdatum                  ">00000000</feld>
+      <feld bytes=" 80- 89" bezeichnung="Aenderungsgrund               ">01        </feld>
+      <feld bytes=" 90- 97" bezeichnung="Aenderungsdatum               ">01052004</feld>
+      <feld bytes=" 98- 98" bezeichnung="A,F,B                         ">1</feld>
+      <feld bytes=" 99-103" bezeichnung="Anteil in %                   ">00000</feld>
+      <feld bytes="104-112" bezeichnung="Auftrags-Nr. des Vermittlers  ">         </feld>
+      <feld bytes="113-115" bezeichnung="Waehrungsschluessel           ">EUR</feld>
+      <feld bytes="116-127" bezeichnung="Gesamtbeitrag (Netto) in Waehr">000000041141</feld>
+      <feld bytes="128-157" bezeichnung="Mehrzweckfeld                 ">                              </feld>
+      <feld bytes="158-158" bezeichnung="Kennzeichen Vers.-Steuer frei ">0</feld>
+      <feld bytes="159-175" bezeichnung="Personen-/Kundennummer des Ver">           B4LTTT</feld>
+      <feld bytes="176-192" bezeichnung="Personen-/Kundennummer des Ver">                 </feld>
+      <feld bytes="193-193" bezeichnung="Aufsichtsfreier Vertrag       "> </feld>
+      <feld bytes="194-194" bezeichnung="Aufteilung Versicherungsteuer "> </feld>
+      <feld bytes="195-196" bezeichnung="Restlaufzeit des Vertrages    ">04</feld>
+      <feld bytes="197-200" bezeichnung="Laufzeitrabatt in %           ">1000</feld>
+      <feld bytes="201-208" bezeichnung="Antragsdatum                  ">01052004</feld>
+      <feld bytes="209-225" bezeichnung="Referenz-Versicherungsscheinnu">                 </feld>
+      <feld bytes="226-226" bezeichnung="Spezifikation der Referenz-Ver"> </feld>
+      <feld bytes="227-243" bezeichnung="Ordnungsbegriff               ">                 </feld>
+      <feld bytes="244-246" bezeichnung="Waehrung der Dokumente fuer VN">EUR</feld>
+      <feld bytes="247-247" bezeichnung="Erweiterungssatz vorhanden    ">1</feld>
+      <feld bytes="248-248" bezeichnung="Einzahlung / Ausschuettung    "> </feld>
+      <feld bytes="256-256" bezeichnung="Satznummer                    ">1</feld>
+    </teildatensatz>
+  </satz>
+  <satz satzart="0210" sparte="030">
+    <teildatensatz nr=" ">
+      <feld bytes="  1-  4" bezeichnung="Satzart                       ">0210</feld>
+      <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+      <feld bytes=" 10- 10" bezeichnung="Buendelungskennzeichen        "> </feld>
+      <feld bytes=" 11- 13" bezeichnung="Sparte                        ">030</feld>
+      <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
+      <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
+      <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+      <feld bytes=" 43- 43" bezeichnung="Vertragsstatus                ">1</feld>
+      <feld bytes=" 44- 51" bezeichnung="Beginn                        ">01052004</feld>
+      <feld bytes=" 52- 59" bezeichnung="Ausschluss                    ">01052009</feld>
+      <feld bytes=" 60- 67" bezeichnung="Aenderungsdatum               ">01052004</feld>
+      <feld bytes=" 68- 71" bezeichnung="Allgemeine Versicherungsbeding">0901</feld>
+      <feld bytes=" 72- 72" bezeichnung="Sonderbedingungen             "> </feld>
+      <feld bytes=" 73- 73" bezeichnung="Beitragsrueckgewaehr          ">0</feld>
+      <feld bytes=" 74- 74" bezeichnung="Dynamik                       ">0</feld>
+      <feld bytes=" 75- 79" bezeichnung="Dynamik in %                  ">00000</feld>
+      <feld bytes=" 80- 85" bezeichnung="letzte Erhoehung              ">000000</feld>
+      <feld bytes=" 86- 91" bezeichnung="naechste Erhoehung            ">000000</feld>
+      <feld bytes=" 92- 92" bezeichnung="Beitragsregulierung           "> </feld>
+      <feld bytes=" 93- 95" bezeichnung="Waehrungsschluessel           ">EUR</feld>
+      <feld bytes=" 96-107" bezeichnung="Zuschlagsbetrag in Waehrungsei">000000000000</feld>
+      <feld bytes="108-119" bezeichnung="Abschlagsbetrag in Waehrungsei">000000000000</feld>
+      <feld bytes="120-131" bezeichnung="Gesamtbeitrag in Waehrungseinh">000000041141</feld>
+      <feld bytes="132-136" bezeichnung="Abschlussprovision            ">00000</feld>
+      <feld bytes="137-141" bezeichnung="Folgeprovision                ">00000</feld>
+      <feld bytes="142-142" bezeichnung="Kennzeichen fuer abweichende A"> </feld>
+      <feld bytes="143-143" bezeichnung="Kennzeichen fuer abweichende F">0</feld>
+      <feld bytes="144-145" bezeichnung="Restlaufzeit des Vertrages    ">00</feld>
+      <feld bytes="146-149" bezeichnung="Laufzeitrabatt in %           ">1000</feld>
+      <feld bytes="150-179" bezeichnung="Tarifbezeichnung              ">                              </feld>
+      <feld bytes="180-180" bezeichnung="Erhoehungsart Dynamik         "> </feld>
+      <feld bytes="181-197" bezeichnung="Referenz-Versicherungsscheinnu">                 </feld>
+      <feld bytes="198-198" bezeichnung="Weitere Referenznummern       "> </feld>
+      <feld bytes="199-203" bezeichnung="Produktform                   ">     </feld>
+      <feld bytes="204-209" bezeichnung="Produktform gueltig ab        ">000000</feld>
+      <feld bytes="210-229" bezeichnung="Produktname                   ">                    </feld>
+      <feld bytes="230-236" bezeichnung="Referenznummer                ">       </feld>
+      <feld bytes="256-256" bezeichnung="Satznummer                    "> </feld>
+    </teildatensatz>
+  </satz>
+  <satz satzart="0220" sparte="030">
+    <teildatensatz nr=" ">
+      <feld bytes="  1-  4" bezeichnung="Satzart                       ">0220</feld>
+      <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+      <feld bytes=" 10- 10" bezeichnung="Buendelungskennzeichen        "> </feld>
+      <feld bytes=" 11- 13" bezeichnung="Sparte                        ">030</feld>
+      <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
+      <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
+      <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+      <feld bytes=" 43- 48" bezeichnung="Lfd. Nummer                   ">000001</feld>
+      <feld bytes=" 49- 49" bezeichnung="Satznummer                    ">1</feld>
+      <feld bytes=" 50- 79" bezeichnung="Bezeichnung Personengruppe    ">Kitzelpfütze                  </feld>
+      <feld bytes=" 80- 85" bezeichnung="Anzahl der VP pro Personengrup">000000</feld>
+      <feld bytes=" 86-115" bezeichnung="Name der VP                   ">Kitzelpfütze                  </feld>
+      <feld bytes="116-145" bezeichnung="Vorname der VP                ">Martina                       </feld>
+      <feld bytes="146-153" bezeichnung="Geburtsdatum der VP           ">11111979</feld>
+      <feld bytes="154-154" bezeichnung="Geschlecht der VP             ">1</feld>
+      <feld bytes="155-157" bezeichnung="Berufsschluessel              ">000</feld>
+      <feld bytes="158-187" bezeichnung="Beruf-Text                    ">Hausfrau                      </feld>
+      <feld bytes="188-188" bezeichnung="Gefahrengruppe                ">A</feld>
+      <feld bytes="189-189" bezeichnung="Tarif                         "> </feld>
+      <feld bytes="190-190" bezeichnung="Deckungsumfang                ">1</feld>
+      <feld bytes="191-193" bezeichnung="Waehrungsschluessel           ">EUR</feld>
+      <feld bytes="194-198" bezeichnung="Zuschlag in %                 ">00000</feld>
+      <feld bytes="199-203" bezeichnung="Abschlag in %                 ">00000</feld>
+      <feld bytes="204-215" bezeichnung="Beitrag pro VP oder pro Person">000000041141</feld>
+      <feld bytes="216-223" bezeichnung="Einschlussdatum VP / Personeng">01052004</feld>
+      <feld bytes="224-231" bezeichnung="Ausschlussdatum VP / Personeng">00000000</feld>
+      <feld bytes="232-239" bezeichnung="Aenderungsdatum               ">01052004</feld>
+      <feld bytes="240-240" bezeichnung="Besondere Vereinbarung zum Flu"> </feld>
+      <feld bytes="241-241" bezeichnung="passives Kriegsrisiko         "> </feld>
+      <feld bytes="242-242" bezeichnung="Kuendigungsklausel VP / Person"> </feld>
+      <feld bytes="243-249" bezeichnung="Leerstellen                   ">       </feld>
+      <feld bytes="250-250" bezeichnung="Satznummerwiederholung        ">1</feld>
+    </teildatensatz>
+    <teildatensatz nr=" ">
+      <feld bytes="  1-  4" bezeichnung="Satzart                       ">0220</feld>
+      <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+      <feld bytes=" 10- 10" bezeichnung="Buendelungskennzeichen        "> </feld>
+      <feld bytes=" 11- 13" bezeichnung="Sparte                        ">030</feld>
+      <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
+      <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
+      <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+      <feld bytes=" 43- 48" bezeichnung="Lfd. Nummer                   ">000001</feld>
+      <feld bytes=" 49- 49" bezeichnung="Satznummer                    ">2</feld>
+      <feld bytes=" 50- 58" bezeichnung="Tod                           ">000000000</feld>
+      <feld bytes=" 59- 65" bezeichnung="Tod-Beitragssatz              ">0113050</feld>
+      <feld bytes=" 66- 74" bezeichnung="Invaliditaet                  ">000000000</feld>
+      <feld bytes=" 75- 75" bezeichnung="Kennung Gliedertaxe           ">0</feld>
+      <feld bytes=" 76- 76" bezeichnung="Kennung progressive Invalidita">0</feld>
+      <feld bytes=" 77- 83" bezeichnung="Invaliditaet Beitragssatz     ">0141950</feld>
+      <feld bytes=" 84- 90" bezeichnung="Tagegeld 1                    ">0000000</feld>
+      <feld bytes=" 91- 93" bezeichnung="Beginn Tagegeld 1 ab Tag      ">000</feld>
+      <feld bytes=" 94-100" bezeichnung="Tagegeld 1 Beitragssatz       ">0000000</feld>
+      <feld bytes="101-107" bezeichnung="Tagegeld 2                    ">0000000</feld>
+      <feld bytes="108-110" bezeichnung="Beginn Tagegeld 2 ab Tag      ">000</feld>
+      <feld bytes="111-117" bezeichnung="Tagegeld 2 Beitragssatz       ">0000000</feld>
+      <feld bytes="118-124" bezeichnung="Krankenhaustagegeld           ">0000000</feld>
+      <feld bytes="125-131" bezeichnung="Krankenhaustagegeld Beitragssa">0000000</feld>
+      <feld bytes="132-138" bezeichnung="Genesungsgeld                 ">0000000</feld>
+      <feld bytes="139-145" bezeichnung="Genesungsgeld Beitragssatz    ">0000000</feld>
+      <feld bytes="146-154" bezeichnung="Uebergangsentschaedigung      ">000000000</feld>
+      <feld bytes="155-155" bezeichnung="Kennung Uebergangsentschaedigu">1</feld>
+      <feld bytes="156-162" bezeichnung="Uebergangsentschaedigung Beitr">0000000</feld>
+      <feld bytes="163-171" bezeichnung="Heilkosten                    ">000000000</feld>
+      <feld bytes="172-172" bezeichnung="Art der Heilkosten            "> </feld>
+      <feld bytes="173-179" bezeichnung="Heilkosten Beitragssatz       ">0000000</feld>
+      <feld bytes="180-188" bezeichnung="Feste Rente                   ">000000000</feld>
+      <feld bytes="189-195" bezeichnung="Feste Rente Beitragssatz      ">0000000</feld>
+      <feld bytes="196-204" bezeichnung="Kosmetische Operationen       ">000000000</feld>
+      <feld bytes="205-211" bezeichnung="Kosmetische Operationen Beitra">0000000</feld>
+      <feld bytes="212-220" bezeichnung="Kurkosten                     ">000000000</feld>
+      <feld bytes="221-227" bezeichnung="Kurkosten Beitragssatz        ">0000000</feld>
+      <feld bytes="228-236" bezeichnung="Bergungskosten                ">000000000</feld>
+      <feld bytes="237-243" bezeichnung="Bergungskosten Beitragssatz   ">0000000</feld>
+      <feld bytes="244-244" bezeichnung="Ueberfuehrungskosten          "> </feld>
+      <feld bytes="245-245" bezeichnung="Rueckfuehrungskosten          "> </feld>
+      <feld bytes="246-251" bezeichnung="Prozentsatz progressive Invali">000000</feld>
+      <feld bytes="252-252" bezeichnung="Mehrleistungsklausel          "> </feld>
+      <feld bytes="253-255" bezeichnung="Leerstellen                   ">   </feld>
+      <feld bytes="256-256" bezeichnung="zusaetzliche Satzkennung      ">X</feld>
+    </teildatensatz>
+  </satz>
+  <satz satzart="0221" sparte="030">
+    <teildatensatz nr="1">
+      <feld bytes="  1-  4" bezeichnung="Satzart                       ">0221</feld>
+      <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+      <feld bytes=" 10- 10" bezeichnung="Buendelungskennzeichen        "> </feld>
+      <feld bytes=" 11- 13" bezeichnung="Sparte                        ">030</feld>
+      <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
+      <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
+      <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+      <feld bytes=" 43- 48" bezeichnung="Lfd. Nummer der versicherten P">000001</feld>
+      <feld bytes=" 49- 49" bezeichnung="Satznummer                    ">2</feld>
+      <feld bytes=" 50- 63" bezeichnung="Tod                           ">00000005000000</feld>
+      <feld bytes=" 64- 77" bezeichnung="Invaliditaet                  ">00000025000000</feld>
+      <feld bytes=" 78- 87" bezeichnung="Tagegeld 1                    ">0000000000</feld>
+      <feld bytes=" 88- 97" bezeichnung="Tagegeld 2                    ">0000000000</feld>
+      <feld bytes=" 98-107" bezeichnung="Krankenhaustagegeld           ">0000000000</feld>
+      <feld bytes="108-117" bezeichnung="Genesungsgeld                 ">0000000000</feld>
+      <feld bytes="118-131" bezeichnung="Uebergangsentschaedigung      ">00000000000000</feld>
+      <feld bytes="132-145" bezeichnung="Heilkosten                    ">00000000000000</feld>
+      <feld bytes="146-159" bezeichnung="Feste Rente                   ">00000000000000</feld>
+      <feld bytes="160-173" bezeichnung="Kosmetische Operationen       ">00000000000000</feld>
+      <feld bytes="174-187" bezeichnung="Kurkosten                     ">00000000100000</feld>
+      <feld bytes="188-201" bezeichnung="Bergungskosten                ">00000000000000</feld>
+      <feld bytes="202-255" bezeichnung="Leerstellen                   ">                                                      </feld>
+      <feld bytes="256-256" bezeichnung="zusaetzliche Satzkennung      ">X</feld>
+    </teildatensatz>
+  </satz>
+
+  ...
+
+  <satz satzart="9999">
+    <teildatensatz nr="1">
+      <feld bytes="  1-  4" bezeichnung="Satzart                       ">9999</feld>
+      <feld bytes="  5- 14" bezeichnung="Anzahl der Saetze             ">0000000162</feld>
+      <feld bytes=" 15- 24" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+      <feld bytes=" 25- 39" bezeichnung="Gesamtbeitrag                 ">000000000480600</feld>
+      <feld bytes=" 40- 54" bezeichnung="Gesamtbeitrag-Brutto(Inkasso) ">00000000000000+</feld>
+      <feld bytes=" 55- 69" bezeichnung="Gesamtprovisions-Betrag       ">00000000000000+</feld>
+      <feld bytes=" 70- 84" bezeichnung="Versicherungsleistungen       ">00000000000000+</feld>
+      <feld bytes=" 85- 99" bezeichnung="Schadenbearbeitungskosten     ">00000000000000+</feld>
+      <feld bytes="100-256" bezeichnung="Leerstellen                   ">                                                                                                                                                    Z0ZAG999 </feld>
+    </teildatensatz>
+  </satz>
+</datenpaket>
+<!-- (c)reated by gdv-xport in 681 ms -->
+]]></source>
+        <dl>
+          <dt>Anmerkung:</dt>
+          <dd>
+            Satzart 0221.030 wird erst seit 0.5.0 direkt unterst&#252;tzt.
+            Bis 0.4.2 waren dort die eigentliche Daten unter "Leerstellen"
+            zusammengefasst.
+          </dd>
+        </dl>
+      </subsection>
+    </section>
+
+  </body>
+
+</document>

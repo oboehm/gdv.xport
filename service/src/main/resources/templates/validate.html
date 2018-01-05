@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout" >
+
+<head>
+    <title>Validierung</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 layout:fragment="header">Global Header</h1>
+        <div layout:fragment="content">
+            <h1>Validierung</h1>
+            <p>
+                Hier&uuml;ber k&ouml;nnen Sie bestehende GDV-Datens&auml;tze validieren.
+            </p>
+            <div class="panel-body">
+                <!-- URI validieren -->
+                <form id="validierungURI" action="#" th:action="@{/api/v1/Abweichungen}" method="get">
+                    <div class="form-group">
+                        <label class="control-label" >URI:</label>
+                        <input type="text" class="form-control" name="uri"
+                               value="http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt" />
+                    </div>
+                    <div class="text-center">
+                        <a class="btn btn-default" href="validate.html" th:href="@{/validate}">Abbrechen</a>
+                        <button type="submit" class="btn btn-primary">Senden</button>
+                    </div>
+                </form>
+                <!-- Text validieren -->
+                <form id="validierungText" action="#" th:action="@{/api/v1/Abweichungen}" method="post">
+                    <div class="form-group">
+                        <label class="control-label">Text:</label>
+                        <!-- TODO: hier muessen wir noch die Textarea als Body und nicht als Parameter schicken -->
+                        <textarea class="form-control" name="text">0001HelloWorld                         Test-Adressat                 1302201413022014845/6666662.12.12.2                                                            1.41.4                                                      1.1                            1
+0001HelloWorld                         Test-Adressat                 1302201413022014845/666666                           1.2                        1.2                           1.2                                                                         2
+0001HelloWorld                         Test-Adressat                 1302201413022014845/666666                                                                                                                                                                3
+99990000000000845/66666600000000000000000000000000000+00000000000000+00000000000000+00000000000000+
+</textarea>
+                    </div>
+                    <div class="text-center">
+                        <a class="btn btn-default" href="validate.html" th:href="@{/validate}">Abbrechen</a>
+                        <button type="submit" class="btn btn-primary">Senden</button>
+                    </div>
+                </form>
+                <!-- Datei validieren -->
+                <form id="validierungFile" th:action="@{/api/v1/Abweichungen/uploaded}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="control-label" >Datei:</label>
+                        <input type="file" name="file" />
+                    </div>
+                    <div class="text-center">
+                        <a class="btn btn-default" href="validate.html" th:href="@{/validate}">Abbrechen</a>
+                        <button type="submit" class="btn btn-primary" value="Upload">Senden</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

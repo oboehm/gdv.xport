@@ -1,0 +1,148 @@
+/*
+ * Copyright (c) 2011 by agentes
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express orimplied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * (c)reated {0,date,short} by {1}
+ */
+
+package gdv.xport.satz.feld;
+
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.feld.*;
+
+
+/**
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 9999.
+ * 
+ * @author {1}
+ * @since {0,date,short}
+ */
+public enum Feld9999 '{'
+
+    /////   Teildatensatz 1   /////////////////////////////////////////////////
+
+    /**
+     * Satzart.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 1,
+            type = NumFeld.class,
+            anzahlBytes = 4,
+            byteAdresse = 1
+    )
+    SATZART,
+
+    /**
+     * Anzahl der Saetze.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 2,
+            type = NumFeld.class,
+            anzahlBytes = 10,
+            byteAdresse = 5
+    )
+    ANZAHL_SAETZE,
+
+    /**
+     * Geschaeftsstelle/Vermittler.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 3,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 10,
+            byteAdresse = 15
+    )
+    VERMITTLER,
+
+    /**
+     * Gesamtbeitrag (13,2 Stellen).
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 4,
+            type = Betrag.class,
+            nachkommaStellen = 2,
+            anzahlBytes = 15,
+            byteAdresse = 25
+    )
+    GESAMTBEITRAG,
+
+    /**
+     * Gesamtbeitrag-Brutto(Inkasso) (13,2 Stellen).
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 5,
+            type = BetragMitVorzeichen.class,
+            nachkommaStellen = 2,
+            anzahlBytes = 15,
+            byteAdresse = 40
+    )
+    GESAMTBEITRAG_BRUTTO,
+
+    /**
+     * Gesamtprovisions-Betrag (13,2 Stellen).
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 6,
+            type = BetragMitVorzeichen.class,
+            nachkommaStellen = 2,
+            anzahlBytes = 15,
+            byteAdresse = 55
+    )
+    GESAMTPROVISIONSBETRAG,
+
+    /**
+     * Versicherungsleistungen (13,2 Stellen).
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 7,
+            type = BetragMitVorzeichen.class,
+            nachkommaStellen = 2,
+            anzahlBytes = 15,
+            byteAdresse = 70
+    )
+    VERSICHERUNGSLEISTUNGEN,
+
+    /**
+     * Schadenbearbeitungskosten (13,2 Stellen).
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 8,
+            type = BetragMitVorzeichen.class,
+            nachkommaStellen = 2,
+            anzahlBytes = 15,
+            byteAdresse = 85
+    )
+    SCHADENBEARBEITUNGSKOSTEN,
+
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 9,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 157,
+            byteAdresse = 100
+    )
+    LEERSTELLEN;
+
+'}'

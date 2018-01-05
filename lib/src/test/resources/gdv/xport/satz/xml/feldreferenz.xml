@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feldreferenz referenz="BN-2003.02.11.22.49.47.214">
+	<name>Satzart</name>
+	<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+	<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+	<technischerName>Satzart</technischerName>
+	<bemerkung>
+		1 = Kapitallebensversicherung
+		<br />
+		3 = Risikoversicherung
+	</bemerkung>
+	<minimaleAnzahl>1</minimaleAnzahl>
+	<maximaleAnzahl>1</maximaleAnzahl>
+	<auspraegung>0100</auspraegung>
+	<ntabhaengig>0</ntabhaengig>
+</feldreferenz>

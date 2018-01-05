@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="CONSOLE" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+    </Console>
+    <JDBC name="DB" tableName="logbook">
+      <ConnectionFactory class="gdv.xport.config.LogConfig"
+                         method="getConnection" />
+      <Column name="event_date" isEventTimestamp="true" />
+      <Column name="level" pattern="%level" isUnicode="false" />
+      <Column name="logger" pattern="%logger" isUnicode="false" />
+      <Column name="message" pattern="%message" isUnicode="false" />
+      <Column name="throwable" pattern="%ex{full}" isUnicode="false" />
+    </JDBC>
+  </Appenders>
+  <Loggers>
+    <logger name="gdv.xport" level="INFO" />
+    <logger name="gdv.xport.config" level="DEBUG" />
+    <logger name="gdv.xport.satz" level="INFO" />
+    <logger name="gdv.xport.Datenpaket" level="INFO" />
+    <logger name="gdv.xport.util" level="INFO" />
+    <Root level="INFO" additivity="false">
+      <AppenderRef ref="CONSOLE" />
+      <AppenderRef ref="DB" level="INFO" />
+    </Root>
+  </Loggers>
+</Configuration>

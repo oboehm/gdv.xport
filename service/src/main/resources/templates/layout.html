@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+>
+<head>
+	<meta th:include="fragments/head :: head" th:remove="tag">Global Header</meta>
+</head>
+
+<body>
+
+	<nav th:replace="fragments/navbar :: navbar">Navbar</nav>
+
+	<!--[if lt IE 9]>
+		<p class="browsehappy">
+			Sie verwendenen einen <strong>veralteten</strong> Browser.
+			Bitte <a href="http://browsehappy.com/">aktualisieren Sie Ihren Browser</a>
+			f&uuml;r eine korrekte Darstellung der Seiten.
+		</p>
+	<![endif]-->
+
+	<div class="container">
+
+		<div id="content" layout:fragment="content">
+			<section>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				<p>Praesent scelerisque neque neque, ac elementum quam dignissim interdum.</p>
+				<p>Phasellus et placerat elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				<p>Praesent scelerisque neque neque, ac elementum quam dignissim interdum.</p>
+				<p>Phasellus et placerat elit.</p>
+			</section>
+		</div>
+
+		<hr />
+
+	</div>
+
+	<footer th:replace="fragments/footer :: footer">Page Footer</footer>
+
+</body>
+</html>

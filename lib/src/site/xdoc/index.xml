@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Was ist "gdv.xport"?</title>
+    <author email="oliver.boehm@gmail.com">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Was ist gdv.xport?">
+      <p>
+        <i>gdv.xport</i> ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
+        Sie vereinfacht den Export und Import dieses Datenformats und erm&#246;glicht die Validierung
+        der verschiedenen Datens&#228;tze.
+      </p>
+      <p>
+        Das "x" in port steht fur "im"- und "ex"-port.      
+      </p>
+    </section>
+    
+    <section name="Warum gdv.xport?">
+      <p>
+        Als ich mich im Sommer 2009 auf der Suche nach Java-Bibliotheken f&#252;r das
+        GDV-Austauschformat machte, war die Ausbeute gleich null.
+        Zwar gab und gibt es innerhalb von <a href="http://www.agentes.de">agentes</a>
+        mehrere Projekte im Versicherungsbereicht, aber wenig zum GDV-Format.
+        Von daher wurde die Idee geboren, das vorhandene Knowhow zu sammeln und
+        in eine gemeinsame Bibliothek flie&#223;en zu lassen - der <b>gdv.xport</b>.
+      </p>
+      <p>
+        Gleichzeitig dient das Projekt dazu, Erfahrungen mit
+        verteilter Versions-Kontrolle, genauer: mit <a href="http://git-scm.com/">git</a>,
+        zu sammeln. Derzeitiges Fazit: <a href="http://git-scm.com/">git</a> ist sauschnell
+        (vor allem im Vergleich zu Subversion) und viel besser f&#252;r die mobile Entwicklung
+        (in denen man oft offline ist) geeignet als CVS oder Subversion.
+      </p>
+    </section>
+    
+    <section name="Warum Open Source?" >
+      <p>
+        Diese Bibliothek soll eine erste Hilfe f&#252;r diejenigen Java-Entwickler sein,
+        die sich mit dem GDV-Format zum ersten Mal konfrontiert sehen.
+        Nat&#252;rlich hoffen wir, dass dabei m&#246;glichst viele Entwickler an diesem
+        Projekt beteiligen, so dass wir mit dieser Bibliothek nach M&#246;glichkeit
+        den kompletten Funktionsumfang des GDV-Formates unterst&#252;tzen k&#246;nnen.
+      </p>
+      <p>
+        Inzwischen sind auch einige Datens&#228;tze durch die Community
+        zur&#252;geflossen. So wird inzwischen dank Igor Narodetskyi die
+        Sparte 51 (Fahrzeughaftpflicht) oder dank Frank Berger die Sparte 140
+        (Verbundene Geb&#228;ude) unterst&#252;tzt.
+      </p>
+      <p>
+        Wohl der schwierigste Brocken bei der Unterst&#252;tzung war die Sparte 10
+        (Lebensversicherung) mit ihrer Wagnisart, die von Ralf Klemmer und
+        Andre Janus geleistet wurde. Ihnen haben wir auch die Unterst&#252;tzung
+        der 2009er-Version des GDV-Datensatzes zu verdanken.
+      </p>
+      <p>
+        Auf der anderen Seite erhoffen wir dadurch, dass wir als Ansprechpartner
+        f&#252;r Fragen um den GDV-Export bzw. -Import gefunden werden. Wenn Sie also
+        Hilfe zum GDV-Format (oder zum Versichungsbereich) brauchen,
+        sind Sie bei uns genau richtig (-> Mail an oliver.boehm@gmail.com 
+        mit "GDV-Format" als Betreff).
+      </p>
+    </section>
+
+  </body>
+
+</document>

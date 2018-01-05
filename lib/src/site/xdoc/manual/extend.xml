@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Manual</title>
+    <author email="oliver.boehm@gmail.com">Oliver Boehm</author>
+  </properties>
+
+  <body>
+
+    <section name="Eigene Erweiterungen">
+      <p>
+        Da das GDV-Format aus einer Vielzahl von Satzarten besteht und
+        nicht alle Satzarten innerhalb der Versicherungs-Branche immer
+        standard-konform eingesetzt werden,  k&#246;nnen
+        eigene Datens&#228;tze (die von
+        <a href="../apidocs/gdv/xport/satz/Datensatz.html">Datensatz</a>
+        oder
+        <a href="../apidocs/gdv/xport/satz/Satz.html">Satz</a>
+        abgeleitet werden m&#252;ssen)
+        definiert und bei der
+        <a href="../apidocs/gdv/xport/util/SatzFactory.html">SatzFactory</a>
+        registriert werden.
+      </p>
+      <p>
+        Ab 0.6 wurde die Unterst&#252;tzung eigener S&#228;tze vereinfacht:
+        hier reicht die Beschreibung eines Datensatzes mithilfe einer Enum-Klasse
+        (wie z.B. <a href="../xref/gdv/xport/demo/MyFeld210.html">MyFeld210</a>).
+        Diese kann ueber
+        <a href="../apidocs/gdv/xport/util/SatzFactory.html#registerEnum(java.lang.Class, int)">SatzFactory.registerEnum(..)</a>
+        registriert werden.
+      </p>
+      <p>
+        Ab 1.0 werden &#252;ber den
+        <a href="../apidocs/gdv/xport/satz/xml/XmlService.html">XmlService</a>
+        die restlichen Satzarten durch eine XML-Beschreibung von
+        <a href="http://www.gdv-online.de/vuvm/bestand/best_2013.htm">gdv-online.de</a>.
+        unterst&#252;tzt. Hier k&#246;nnen noch keine eigenen Satzarten
+        eingebracht werden. Dies ist erst f&#252;r eine der n&#228;chsten
+        Versionen gelplant.
+      </p>
+      <p>
+        Im <a href="../apidocs/gdv/xport/demo/package.html">demo</a>-Paket
+        befindet sich
+        <a href="../xref/gdv/xport/demo/MyUnfallDatensatz.html#40">MyUnfallDatensatz</a>
+        als Beispielklasse.
+        Der Aufbau des Datensatzes wird dabei mit Hilfe der
+        <a href="../xref/gdv/xport/demo/MyFeld210.html">MyFeld210</a>-Enum-Klasse
+        beschrieben.
+        In der main-Methode wird die Klasse im Framework registriert.
+        Anschliessend wird das
+        <a href="http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt">Muster-Datenpaket</a>
+        von gdv-online importiert und der erste gefundene MyUnfallDatensatz
+        im GDV-Format und als XML ausgegeben:
+      </p>
+<source><![CDATA[
+02109999  030      59999999999019999009999 01052004 ...
+<satz satzart="0210" sparte="030">
+  <teildatensatz nr=" ">
+    <feld bytes="  1-  4" bezeichnung="Satzart                       ">0210</feld>
+    <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+    <feld bytes=" 10- 10" bezeichnung="Buendelungskennzeichen        "> </feld>
+    <feld bytes=" 11- 13" bezeichnung="Sparte                        ">030</feld>
+    <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
+    <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
+    <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+    <feld bytes=" 44- 51" bezeichnung="Mein Vertragsbeginn           ">01052004</feld>
+    <feld bytes=" 93- 95" bezeichnung="Meine Waehrung                ">EUR</feld>
+    <feld bytes="256-256" bezeichnung="Satznummer                    "> </feld>
+  </teildatensatz>
+</satz>
+]]></source>
+    </section>
+
+    <section name="Warum eigene Erweiterungen?">
+      <p>
+        Auch wenn mit 1.0 s&#228;mtliche Satzarten unterst&#252;tzt werden,
+        k&#246;nnen auch weiterhin eigene Satzarten registriert und bestehende
+        &#252;berschrieben werden. Gr&#252;nde daf&#252;r
+        sind:
+      </p>
+      <ul>
+        <li>
+          Sollte sich der GDV-Standard weiterentwickeln, k&#246;nnen fehlende
+          Satzarten leicht erg&#228;nzt und fehlerhafte Satzarten
+          korrigiert werden.
+        </li>
+        <li>
+          Manche Firmen haben ihre eigenene Interpretation des Standards.
+          Diese k&#246;nnen &#252;ber die Registrierung eigener S&#228;tze
+          dem Framework beigebracht werden.
+        </li>
+      </ul>
+    </section>
+
+  </body>
+
+</document>
