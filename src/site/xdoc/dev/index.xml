@@ -3,18 +3,24 @@
 <document>
 
   <properties>
-    <title>Check-Liste</title>
+    <title>Entwickler-Sektion</title>
     <author email="oliver.boehm@gmail.com">Oliver Boehm</author>
   </properties>
 
   <body>
+
+    <section name="Entwickler-Bereich">
+      <p>
+        Dieser Bereich ist f&#252;r die interne Entwicklung gedacht.
+      </p>
+    </section>
 
     <section name="Check-Liste">
       <p>
         Check-Liste fuer die Auslieferung eines neuen Releases:
       </p>
       <table>
-      	<tr>
+        <tr>
           <th>Zeitpunkt</th>
           <th>Aufgabe</th>
           <th>Anmerkungen</th>
@@ -28,7 +34,7 @@
           <td>vorher</td>
           <td>Release-Branch erstellen</td>
           <td>release-branch erstellen, developer-branch dorthin auschecken
-          	(s.a. <a href="http://nvie.com/posts/a-successful-git-branching-model/">Git Branching-Modell</a>)
+            (s.a. <a href="http://nvie.com/posts/a-successful-git-branching-model/">Git Branching-Modell</a>)
           </td>
         </tr>
         <tr>
@@ -41,7 +47,7 @@
           <td>Finaler Release-Build und Release-Test (inkl. Signierung)</td>
           <td>baue alle Artefakte auf dem Release-Branch
             (<tt>mvn -B -Prelease -Dpatterntesting.integrationTest
-            clean install source:jar javadoc:jar gpg:sign -Dgpg.passphrase=xx</tt>)
+              clean install source:jar javadoc:jar gpg:sign -Dgpg.passphrase=xx</tt>)
           </td>
         </tr>
         <tr>
@@ -101,7 +107,7 @@
           <td>
             auf developer-Branch gehen, mit master mergen;
             <br/>
-          	in pom.xml Version hochz&#228;hlen, "-SNAPSHOT" anh&#228;ngen
+            in pom.xml Version hochz&#228;hlen, "-SNAPSHOT" anh&#228;ngen
           </td>
         </tr>
         <tr>

@@ -144,7 +144,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.6</version>
+          <version>3.7</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -497,9 +497,10 @@
   <!-- More Project Information -->
 
   <description>
-    gdv.xport ist zum anderen eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
+    gdv.xport ist zum einen eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
     Sie erleichtert den Export und Export dieses Datenformats.
-    Zum Anderen sind auch noch Services rund um diese Bibliothek in Planung.
+    Zum Anderen stellt gdv.xport auch Services zur Verfuegung,
+    um ueber REST-Schnittstellen auf die Bibliotheks-Funktionen zugreifen zu koennen.
   </description>
 
   <inceptionYear>2009</inceptionYear>

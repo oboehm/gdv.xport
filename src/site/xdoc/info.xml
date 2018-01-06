@@ -33,6 +33,10 @@
                 2013:
                 <a href="http://www.gdv-online.de/vuvm/bestand/best_2013.htm">www.gdv-online.de/vuvm/bestand/best_2013.htm</a>
               </li>
+              <li>
+                2015:
+                <a href="http://www.gdv-online.de/vuvm/bestand/best_2015.htm">www.gdv-online.de/vuvm/bestand/best_2015.htm</a>
+              </li>
             </ul>
           </li>
           <li>
@@ -57,10 +61,10 @@
         Ab 1.0 werden &#252;ber den
         <a href="apidocs/gdv/xport/satz/xml/XmlService.html">XmlService</a>
         die verschiedenen Satzarten mithilfe der XML-Beschreibung aus
-        <a href="http://www.gdv-online.de/vuvm/bestand/best_2013.htm">gdv-online.de</a>
+        <a href="http://www.gdv-online.de/vuvm/bestand/best_2015.htm">gdv-online.de</a>
         unterst&#252;tzt. Die Basis f&#252;r den Zugriff auf ein Element
         innerhalb eines (Teil-)Datensatzes ist dessen Namen, wie er auch
-        in der Beschreibung des "Handbuch GDV-Datensatz VU-Vermittler" von 2013
+        in der Beschreibung des "Handbuch GDV-Datensatz VU-Vermittler" von 2015
         zu finden ist.
       </p>
       <p>

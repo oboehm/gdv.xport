@@ -37,10 +37,7 @@
       <item name="Release Notes"		    href="changes-report.html" />
       <item name="about gdv.xport"			href="index.html" />
       <item name="GDV-Format"				href="info.html" />
-      <item name="Entwickler"               href="/dev/index.html" collapse="true" >
-        <item name="Tools"                  href="/dev/tools.html"/>
-        <item name="Checkliste"             href="/dev/checklist.html"/>
-      </item>
+      <item name="Entwickler"               href="/dev/index.html" />
       <item name="Kontakt"					href="contact.html" />
       <item name="Download"                 href="downloads.html" />
     </menu>

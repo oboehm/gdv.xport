@@ -17,6 +17,17 @@
 
   <body>
 
+    <release version="3.0.0" date="Jan-2018"
+             description="REST-Services">
+      <action dev="oboehm" type="fix" issue="issues/9" date="06-Jan-2018">
+        XML-Datei von 2015 wurde zus&#228;tzlich zur 2013er-Version hinzugef&#252;gt
+        und als Default verwendet.
+      </action>
+      <action dev="oboehm" type="add" date="2017">
+        Aufteilung von gdv-xport in Bibliothek (gdv-xport-lib) und REST-Services (gdv-xport-service).
+      </action>
+    </release>
+
     <release version="2.1.3" date="06-Nov-2017"
              description="Bugfix">
       <action dev="oboehm" type="fix" issue="issues/6" date="05-Nov-2017">

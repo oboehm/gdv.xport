@@ -85,6 +85,7 @@ public final class LogConfig {
      * </p>
      *
      * @return eine DB-Connection
+     * @throws SQLException bei Problemen mit der Datenbank
      */
     public static Connection getConnection() throws SQLException {
         Connection connection = getConnection(instance.getDbURI());
