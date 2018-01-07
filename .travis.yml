@@ -13,7 +13,7 @@ addons:
       - develop/3.x
 
 after_success:
-- mvn clean integration-test jacoco:report coveralls:report
+- mvn clean integration-test jacoco:report coveralls:report sonar:sonar
 
 cache:
   directories:
