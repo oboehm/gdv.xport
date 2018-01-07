@@ -300,19 +300,18 @@ public final class Bezeichner {
     public static final Bezeichner FESTE_RENTE = new Bezeichner("Feste Rente");
     public static final Bezeichner FESTE_RENTE_BEITRAGSSATZ = new Bezeichner("Feste Rente Beitragssatz");
     public static final Bezeichner FINANZIERUNGSART = new Bezeichner("Finanzierungsart");
-    public static final Bezeichner FINANZIERUNG_ZUSAGE = new Bezeichner("Finanzierung der Zusage");
+    public static final Bezeichner FINANZIERUNG_ZUSAGE = new Bezeichner("Finanzierung der Zusage", "FinanzierungDerZusage");
     public static final Bezeichner FLOTTENKENNZEICHEN = new Bezeichner("Flottenkennzeichen");
     public static final Bezeichner FLOTTENRABATT_IN_PROZENT = new Bezeichner("Flottenrabatt in %");
     public static final Bezeichner FOLGENUMMER = new Bezeichner("Folgenummer");
     public static final Bezeichner FOLGEPROVISION = new Bezeichner("Folgeprovision");
     public static final Bezeichner FONDSKENNUNG = new Bezeichner("Fondskennung");
-    public static final Bezeichner FONDSNAME = new Bezeichner("Fondname");
-    public static final Bezeichner FREMDER_GRUND_UND_BODEN = new Bezeichner("fremder Grund und Boden");
+    public static final Bezeichner FONDSNAME = new Bezeichner("Fondsname");
+    public static final Bezeichner FREMDER_GRUND_UND_BODEN = new Bezeichner("fremder Grund und Boden", "FremderGrundBoden");
     public static final Bezeichner FREMDNUTZUNG = new Bezeichner("Fremdnutzung");
-    public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH = new Bezeichner("Frei vereinbarte Selbstbeteiligung fuer KH");
-    public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO = new Bezeichner("Frei vereinbarte Selbstbeteiligung fuer Teilkasko");
-    public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO = new Bezeichner("Frei vereinbarte Selbstbeteiligung fuer Teilkasko im Rahmen der Vollkasko");
-    public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_VOLLKASKO = new Bezeichner("Frei vereinbarte Selbstbeteiligung fuer Vollkasko");
+    public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH = new Bezeichner("Frei vereinbarte Selbstbeteiligung in Waehrungseinheiten für KH", "FreiVereinbarteSelbstbeteiligungInWEKh");
+    public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO = new Bezeichner("Frei vereinbarte Selbstbeteiligung in Waehrungseinheiten fuer Teilkasko im Rahmen der Vollkasko", "FreiVereinbarteSelbstbeteiligungInWETeilkaskoImRahmenVollkasko");
+    public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_VOLLKASKO = new Bezeichner("Frei vereinbarte Selbstbeteiligung in Waehrungseinheiten fuer Vollkasko", "FreiVereinbarteSelbstbeteiligungInWEVollkasko");
 
     public static final Bezeichner GAP_DECKUNG = new Bezeichner("GAP-Deckung");
     public static final Bezeichner GARAGE = new Bezeichner("Garage");
