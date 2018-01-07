@@ -81,29 +81,6 @@
       </plugin>
 
       <!--
-          Maven Site Plugin
-          call 'mvn site:site' to generate web site
-          see http://maven.apache.org/plugins/maven-site-plugin/examples/creating-content.html
-      -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <configuration>
-          <locales>de</locales>
-          <outputEncoding>UTF-8</outputEncoding>
-        </configuration>
-      </plugin>
-
-  	  <plugin>
-  	  	<groupId>org.apache.maven.plugins</groupId>
-  	  	<artifactId>maven-compiler-plugin</artifactId>
-  	  	<configuration>
-  	  	  <source>${java.version}</source>
-  	  	  <target>${java.version}</target>
-  	  	</configuration>
-  	  </plugin>
-
-      <!--
         AspectJ compiler
         @see http://www.mail-archive.com/user@mojo.codehaus.org/msg00157.html
         @see http://mail-archives.apache.org/mod_mbox/maven-users/200601.mbox/%3CB39B8F0E-BB20-44DB-96B3-3C7FCB85B594@gmail.com%3E
@@ -149,12 +126,6 @@
         </configuration>
       </plugin>
       
-      <!-- Sonar -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>sonar-maven-plugin</artifactId>
-      </plugin>
-
   	</plugins>
   	
   </build>
@@ -249,7 +220,7 @@
   <!-- More Project Information -->
 
   <description>
-    gdv-xport-lib ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
+    gdv-xport-lib ist die Java-Bibliothek fuer den Umgang mit dem GDV-Format.
     Sie erleichtert den Export und Export dieses Datenformats.
   </description>
   

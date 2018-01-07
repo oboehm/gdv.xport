@@ -13,7 +13,9 @@
   <packaging>war</packaging>
 
   <name>GDV.XPort-Services</name>
-  <description>Service-Schnittstelle zur GDV-Xport-Lib</description>
+  <description>
+    Dies ist die Service-Schnittstelle zu GDV-Xport-Lib.
+  </description>
 
 
   <dependencies>
