@@ -1,0 +1,33 @@
+https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport-lib[image:https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport-lib/badge.svg[Maven Metadata]]
+
+
+
+= Was ist gdv-xport-lib?
+
+gdv-xport-lib ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleichtert.
+Sie vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung der verschiedenen Datensaetze.
+
+Mit 3.0 wurde die ArtifactId für Maven in "gdv-xport-lib" umbenannt (bis 2.x: "gdv-xport").
+
+
+
+== Kompatibilitaet von v2 zu v3
+
+Waehrend Version 2 auf der 2013er-Version der XML-Datei von http://www.gdv-online.de/vuvm/index.htm[gdv-online] basiert,
+wurde Version 3 auf die aktuelle Version von 2015 aktualisiert.
+Diese Aenderungen sind aber abwaertskompatibel.
+Allerdings wurde mit der Aktualisierung auch die Bezeichner-Klasse ueberarbeitet:
+
+* die String-Konstanten "NAME_xxx", die als _@Deprecated_ waren, wurden entfernt,
+* die Bezeichner-Konstanten wurden geprueft, Schreibfehler entfernt und doppelte Eintraege entfernt,
+* verwaiste Konstanten, die in der XML-Datei nicht vorhanden sind, wurden entfernt.
+
+Dadurch kann es sein, dass manche Konstanten irrtuemlich geloescht wurden.
+Sollte dies der Fall sein, ein https://github.com/oboehm/gdv.xport/issues/[Issue] erstellen.
+Man kann natuerlich auch die Konstanten in seiner Anwendung selber definieren.
+
+
+
+== Weitere Infos
+
+oberstes link:../README.adoc[README]

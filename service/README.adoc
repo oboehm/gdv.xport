@@ -1,14 +1,16 @@
-h1. Was ist gdv-xport-service?
+https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport-service[image:https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport-service/badge.svg[Maven Metadata]]
 
 
-gdv-xport-service bildet die REST-Schnittstelle der Java-Bibliothek "gdv-xport-lib", um auch anderen Programmiersprachen den Umgang mit dem GDV-Format zu erleichtern.
-Diese Bibliothek vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung der verschiedenen Datensaetze.
 
-Das "x" in port steht fur "im"- und "ex"-port.
-Die Bibliothek und dieser Microservice ist Open Source und steht unter der Apache License.
+= Was ist gdv-xport-service?
 
 
-h2. Start
+gdv-xport-service bildet die REST-Schnittstelle zur Java-Bibliothek "gdv-xport-lib", um auch anderen Programmiersprachen den Umgang mit dem GDV-Format zu erleichtern.
+Sie vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung der verschiedenen Datensaetze.
+
+
+
+== Start
 
 gdv-xport-service ist eine Spring-Boot-Anwendung.
 Sie kann als WAR-Archive auf einem Tomcat oder anderen Servlet-Container ausgerollt werden, aber auch als alleinstehende Anwendung:
@@ -24,9 +26,15 @@ Wird die Anwendung lokal gestartet, kann über
 die Dokumentation der REST-Services unter "datenpaket-controller eingesehen werden.
 Andere REST-Services, die in der Dokumentation angzeigt werden, sind Bestandteil der Spring-Booot-Anwendung.
 
-Bestandteil der REST-Services sind auch eine kleine Web-Oberfläche auf Basis von Thymeleaf.
+Bestandteil der REST-Services ist auch eine kleine Web-Oberfläche auf Basis von Thymeleaf.
 Über
 
 * http://localhost:2517
 
 kann damit auf die Anwendung zugegriffen werden.
+
+
+
+== Weitere Infos
+
+oberstes link:../README.adoc[README]

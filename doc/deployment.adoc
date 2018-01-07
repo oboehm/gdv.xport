@@ -9,7 +9,7 @@ zuständig.
 
 == Deployment auf Heroku
 
-Um den Branch _feature/spring-boot_ nach Heroku zu deployen, sind folgende
+Um den Branch _develop/3.x_ nach Heroku zu deployen, sind folgende
 Kommandos nötig:
 
 ----
