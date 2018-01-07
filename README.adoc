@@ -20,7 +20,7 @@ Die einzelnen Module sind:
 
 == Kompatibilitaet von v2 zu v3
 
-Waehrend Version 2 auf der 2013er-Version der XML-Datei von "gdv-online":http://www.gdv-online.de/vuvm/index.htm basiert,
+Waehrend Version 2 auf der 2013er-Version der XML-Datei von http://www.gdv-online.de/vuvm/index.htm[gdv-online] basiert,
 wurde Version 3 auf die aktuelle Version von 2015 aktualisiert.
 Diese Aenderungen sind aber abwaertskompatibel.
 Allerdings wurde mit der Aktualisierung auch die Bezeichner-Klasse ueberarbeitet:
@@ -30,14 +30,14 @@ Allerdings wurde mit der Aktualisierung auch die Bezeichner-Klasse ueberarbeitet
 * verwaiste Konstanten, die in der XML-Datei nicht vorhanden sind, wurden entfernt.
 
 Dadurch kann es sein, dass manche Konstanten irrtuemlich geloescht wurden.
-Sollte dies der Fall sein, ein "Issue":https://github.com/oboehm/gdv.xport/issues/ erstellen.
+Sollte dies der Fall sein, ein https://github.com/oboehm/gdv.xport/issues/[Issue] erstellen.
 Man kann natuerlich auch die Konstanten in seiner Anwendung selber definieren.
 
 
 
 == Aehnliche Projekte
 
-Fuer Ruby gibt es "OpenGDV":https://github.com/vendis/opengdv/, einer Open-Source-Bibliothek, die unter der MIT-License steht.
+Fuer Ruby gibt es https://github.com/vendis/opengdv/[OpenGDV], einer Open-Source-Bibliothek, die unter der MIT-License steht.
 Allerdings wurde diese Bibliothek schon seit laengerer Zeit nicht mehr aktualisiert.
 
 
@@ -45,14 +45,14 @@ Allerdings wurde diese Bibliothek schon seit laengerer Zeit nicht mehr aktualisi
 == GIT Branching-Modell
 
 Entwickelt wird nach "A successful Git branching model":http://nvie.com/posts/a-successful-git-branching-model/ von Vincent Driessen.
-Die Weiterentwicklung der aktuellen Version findet auf dem develop-Branch statt (derzeit: "develop/3.x":https://github.com/oboehm/gdv.xport/tree/develop/3.x), waehrend das letzte Release im Release-Zweig (derzeit: "release/3.x":https://github.com/oboehm/gdv.xport/tree/release/3.x) zu finden ist.
+Die Weiterentwicklung der aktuellen Version findet auf dem develop-Branch statt (derzeit: https://github.com/oboehm/gdv.xport/tree/develop/3.x[develop/3.x]), waehrend das letzte Release im Release-Zweig (derzeit: https://github.com/oboehm/gdv.xport/tree/release/3.x[release/3.x]) zu finden ist.
 
 
 
 == Weitere Infos
 
-Im "Wiki":https://github.com/oboehm/gdv.xport/wiki ist alles Wichtige zu gdv.xport zusammengefasst.
-Weitere Infos wie z.B. die "JavaDocs":http://www.aosd.de/gdv.xport/apidocs/index.html finden Sie auch auf der "Maven Projekt-Seite":http://www.aosd.de/gdv.xport/ .
+Im https://github.com/oboehm/gdv.xport/wiki[Wiki] ist alles Wichtige zu gdv.xport zusammengefasst.
+Weitere Infos wie z.B. die http://www.aosd.de/gdv.xport/apidocs/index.html[JavaDocs] finden Sie auch auf der http://www.aosd.de/gdv.xport/[Maven Projekt-Seite] .
 
 * CI-Build: https://travis-ci.org/oboehm/gdv.xport
 * Wiki: https://github.com/oboehm/gdv.xport/wiki
