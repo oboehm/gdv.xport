@@ -78,10 +78,10 @@
         <tr>
           <td>D-Day</td>
           <td>Doku und Reports generieren</td>
-          <td>'mvn -Dpatterntesting.integrationTest clean site', danach Umlaute durch Ersatzdarstellung ersetzen
-            ('java -cp ... patterntesting.tool.html.UmlautEncoder target/site'),
+          <td>'mvn -Dpatterntesting.integrationTest clean site-deploy', danach Umlaute durch Ersatzdarstellung ersetzen
+            ('java -cp ... patterntesting.tool.html.UmlautEncoder /tmp/gdv-xport'),
             um Darstellungsprobleme auszuschlie&#223;en.
-            Anschlie&#223;end target/site auf Web-Seite kopieren
+            Anschlie&#223;end /tmp/gdv-xport auf Web-Seite kopieren
           </td>
         </tr>
         <tr>

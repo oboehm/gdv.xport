@@ -2,11 +2,11 @@
 
 h1. Was ist gdv.xport?
 
-gdv.xport ist als Java-Bibliothek gestartet, die den Umgang mit dem GDV-Format erleichtert.
- Das "x" in port steht fur "im"- und "ex"-port. Die Bibliothek ist Open Source und steht unter der Apache License.
+gdv.xport ist als Java-Bibliothek gestartet, die den Umgang mit dem GDV-Format erleichtert. 
+ Das "x" in port steht fur "im"- und "ex"-port. Die Bibliothek ist Open Source und steht unter der Apache License. 
 
-Mit Version 3.0 gibt es neben dieser Bibliothek auch REST-Services fuer Dateien im GDV-Format.
- Die einzelnen Module sind:
+Mit Version 3.0 gibt es neben dieser Bibliothek auch REST-Services fuer Dateien im GDV-Format. 
+ Die einzelnen Module sind: 
 
 * *gdv-xport-lib*: gdv.xport als Java-Bibliothek
 * *gdv-xport-service*: gdv.xport-Services (Spring-Boot-Anwendung)
