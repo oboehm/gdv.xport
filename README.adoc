@@ -1,7 +1,7 @@
-image:https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport/badge.svg[Maven metadata URI]
-image:https://api.travis-ci.org/oboehm/gdv.xport.svg?branch=develop/3.x[BuildStatus]
-image:https://coveralls.io/repos/github/oboehm/gdv.xport/badge.svg?branch=develop%2F3.x[Coverage Status]
-image:https://img.shields.io/badge/license-Apache%202.0-blue.svg[Apache License 2.0]
+https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport[image:https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport/badge.svg[Maven Metadata]]
+https://travis-ci.org/oboehm/gdv.xport[image:https://api.travis-ci.org/oboehm/gdv.xport.svg?branch=develop/3.x[BuildStatus]]
+https://coveralls.io/github/oboehm/gdv.xport[image:https://coveralls.io/repos/github/oboehm/gdv.xport/badge.svg?branch=develop%2F3.x[Coverage Status]]
+http://www.apache.org/licenses/LICENSE-2.0.html[image:https://img.shields.io/badge/license-Apache%202.0-blue.svg[Apache License 2.0]]
 
 
 
