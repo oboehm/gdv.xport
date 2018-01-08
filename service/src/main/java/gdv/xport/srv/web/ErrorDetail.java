@@ -35,8 +35,6 @@ import java.time.*;
  */
 public class ErrorDetail implements Serializable {
 
-    private static final Logger LOG = LogManager.getLogger(ErrorDetail.class);
-
     private final URI request;
     private final HttpStatus status;
     private final String message;
