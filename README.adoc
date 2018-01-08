@@ -1,5 +1,6 @@
 https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport[image:https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport/badge.svg[Maven Metadata]]
 https://travis-ci.org/oboehm/gdv.xport[image:https://api.travis-ci.org/oboehm/gdv.xport.svg?branch=develop/3.x[BuildStatus]]
+https://sonarcloud.io/dashboard?id=com.github.oboehm%3Agdv-xport%3Adevelop%2F3.x[image:https://sonarcloud.io/api/badges/gate?key=com.github.oboehm:gdv-xport:develop/3.x[Quality Gate]]
 https://coveralls.io/github/oboehm/gdv.xport[image:https://coveralls.io/repos/github/oboehm/gdv.xport/badge.svg?branch=develop%2F3.x[Coverage Status]]
 http://www.apache.org/licenses/LICENSE-2.0.html[image:https://img.shields.io/badge/license-Apache%202.0-blue.svg[Apache License 2.0]]
 
@@ -15,6 +16,16 @@ Die einzelnen Module sind:
 
 * link:lib/[*gdv-xport-lib*]: gdv.xport als Java-Bibliothek
 * link:service/[*gdv-xport-service*]: gdv.xport-Services (Spring-Boot-Anwendung)
+
+Damit aendern sich die Maven-Koordinaten fuer der Bibliothek in:
+
+[source,xml]
+----
+<dependency>
+    <groupId>com.github.oboehm</groupId>
+    <artifactId>gdv-xport-lib</artifactId>
+</dependency>
+----
 
 
 
