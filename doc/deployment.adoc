@@ -15,7 +15,7 @@ Kommandos nötig:
 ----
 heroku login
 heroku git:remote -a gdv-xport-300
-git push heroku feature/spring-boot:master
+git push heroku release/3.x:master
 ----
 
 Damit wird dieser Branch auf den Heroku-Master-Branch geschoben, da Heroku
