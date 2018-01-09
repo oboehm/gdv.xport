@@ -28,7 +28,7 @@ deploy_pom_for() {
 }
 
 deploy_jar_for() {
-    subidr=$1
+    subdir=$1
 	module=$2
 	pushd $subdir
 	echo deploying $module in $subdir...
