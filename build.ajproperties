@@ -1,3 +1,0 @@
-src.includes = src/main/java/,\
-               src/test/java/,\
-               src/test/resources/

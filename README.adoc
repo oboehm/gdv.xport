@@ -17,7 +17,7 @@ Die einzelnen Module sind:
 * link:lib/[*gdv-xport-lib*]: gdv.xport als Java-Bibliothek
 * link:service/[*gdv-xport-service*]: gdv.xport-Services (Spring-Boot-Anwendung)
 
-Damit aendern sich die Maven-Koordinaten fuer der Bibliothek in:
+Damit aendern sich die Maven-Koordinaten für der Bibliothek in:
 
 [source,xml]
 ----
@@ -48,6 +48,6 @@ Die Weiterentwicklung der aktuellen Version findet auf dem develop-Branch statt 
 Im https://github.com/oboehm/gdv.xport/wiki[Wiki] ist alles Wichtige zu gdv.xport zusammengefasst.
 Weitere Infos wie z.B. die http://www.aosd.de/gdv.xport/apidocs/index.html[JavaDocs] finden Sie auch auf der http://www.aosd.de/gdv.xport/[Maven Projekt-Seite] .
 
-* CI-Build: https://travis-ci.org/oboehm/gdv.xport
 * Wiki: https://github.com/oboehm/gdv.xport/wiki
 * Projekt-Seite: http://www.aosd.de/gdv.xport/
+* Xing-Gruppe: https://www.xing.com/communities/groups/datenaustausch-im-gdv-format-9756-1053093
