@@ -17,7 +17,14 @@
 
   <body>
 
-    <release version="3.0.0" date="Jan-2018"
+    <release version="3.1.0" date="2019"
+             description="mehr Validierung">
+      <action dev="oboehm" type="add" date="12-Jan-2018">
+        IBANs werden jetzt bei der Validierung auch &#252;berpr&#252;ft.
+      </action>
+    </release>
+
+    <release version="3.0.0" date="10-Jan-2018"
              description="REST-Services">
       <action dev="oboehm" type="fix" issue="issues/9" date="06-Jan-2018">
         XML-Datei von 2015 wurde zus&#228;tzlich zur 2013er-Version hinzugef&#252;gt

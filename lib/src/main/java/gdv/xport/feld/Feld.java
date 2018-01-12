@@ -506,12 +506,12 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * Valid bedeutet: Byte-Adresse &gt;= 1, Feld geht nicht ueber
      * (Teil-)Datensatz-Grenze hinaus, Ausrichtung ist bekannt.
      * <p>
-     * Aus Performance-Gruenden stuetzt sich diese Methode nicht auf validate(),
-     * sondern implementiert die entsprechenden Abfragen selbst.
+     * Aus Performance-Gruenden stuetzt sich diese Methode nicht direkt auf 
+     * validate(), sondern implementiert die entsprechenden Abfragen selbst
+     * und bricht ab, wenn er etwas ungueltiges findet.
      * </p>
      *
      * @return false, falls Verletzung erkannt wird
-     *
      * @since 0.1.0
      */
     public boolean isValid() {
@@ -524,7 +524,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         if (this.ausrichtung == Align.UNKNOWN) {
             return false;
         }
-        return true;
+        return this.validate().isEmpty();
     }
 
     /**

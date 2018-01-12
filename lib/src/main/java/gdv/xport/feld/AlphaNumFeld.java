@@ -3,7 +3,15 @@
  */
 package gdv.xport.feld;
 
+import de.jfachwert.bank.IBAN;
 import gdv.xport.annotation.FeldInfo;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.constraint.AssertValidCheck;
+import net.sf.oval.constraint.SizeCheck;
+import net.sf.oval.context.ClassContext;
+
+import javax.validation.ValidationException;
+import java.util.List;
 
 /**
  * Klasse fuer alphanumerische Zeichen. Die Default-Einstellung fuer die
@@ -114,6 +122,27 @@ public class AlphaNumFeld extends Feld {
     @Override
     public Object clone() {
         return new AlphaNumFeld(this);
+    }
+
+    /**
+     * Bestimmte Feld-Typen wie IBAN oder BIC werden ebenfalls validiert,
+     * sofern dies moeglich ist.
+     * 
+     * @return eine Liste von Validierungs-Fehlern
+     */
+    @Override
+    public List<ConstraintViolation> validate() {
+        List<ConstraintViolation> violations = super.validate();
+        if (!this.isEmpty() && this.getBezeichner().getName().startsWith("IBAN")) {
+            try {
+                IBAN.validate(this.getInhalt());
+            } catch (ValidationException ex) {
+                ConstraintViolation cv = new ConstraintViolation(new AssertValidCheck(), ex.getLocalizedMessage(), this,
+                        this.getInhalt(), new ClassContext(this.getClass()));
+                violations.add(cv);
+            }
+        }
+        return violations;
     }
 
 }

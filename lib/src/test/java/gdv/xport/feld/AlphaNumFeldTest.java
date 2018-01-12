@@ -19,10 +19,16 @@
 package gdv.xport.feld;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.satz.feld.Feld100;
 
+import net.sf.oval.ConstraintViolation;
 import org.junit.Test;
+
+import java.util.List;
 
 /**
  * JUnit-Test fuer AlphaNum-Klasse.
@@ -63,5 +69,17 @@ public final class AlphaNumFeldTest extends AbstractFeldTest {
         assertEquals(Bezeichner.VS_NR, a.getBezeichner());
     }
 
-}
+    /**
+     * Fehlerhafte IBANs sollten bei der Validierung erkannt werden.
+     */
+    @Test
+    public void testValidateIBAN() {
+        AlphaNumFeld iban = new AlphaNumFeld(Bezeichner.IBAN1, 34, 209);
+        assertTrue("empty IBAN should be valid: " + iban, iban.isValid());
+        iban.setInhalt("DE99300606010006605605");
+        List<ConstraintViolation> violations = iban.validate();
+        assertEquals(1, violations.size());
+        assertFalse("not a valid IBAN: " + iban, iban.isValid());
+    }
 
+}

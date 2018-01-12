@@ -25,7 +25,10 @@ import gdv.xport.satz.feld.common.VertragsStatus;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 
+import gdv.xport.util.SatzFactory;
+import net.sf.oval.ConstraintViolation;
 import org.junit.Test;
 import org.apache.logging.log4j.*;
 
@@ -139,9 +142,6 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testCopyConstructor() {
         Teildatensatz orig = new Teildatensatz(100, 1);
-//        AlphaNumFeld vermittler = new AlphaNumFeld(Feld1bis7.VERMITTLER);
-//        vermittler.setInhalt("4711");
-//        orig.add(vermittler);
         Feld name1 = new AlphaNumFeld(Feld100.NAME1);
         name1.setInhalt("Mickey");
         orig.add(name1);
@@ -156,6 +156,19 @@ public class TeildatensatzTest extends AbstractSatzTest {
     private static void assertEqualsFeld(final Feld one, final Feld two) {
         assertEquals(one, two);
         assertEquals(one.getClass(), two.getClass());
+    }
+
+    /**
+     * Mit der Validierung sollten auch fehlerhafte IBANs erkannt werden.
+     */
+    @Test
+    public void testValidateIBAN() {
+        Teildatensatz adressteil4 = SatzFactory.getSatz(100).getTeildatensatz(4);
+        assertTrue("should be valid: " + adressteil4, adressteil4.isValid());
+        Feld iban1 = adressteil4.getFeld(Bezeichner.IBAN1);
+        iban1.setInhalt("DE99300606010006605605");
+        List<ConstraintViolation> violations = adressteil4.validate();
+        assertEquals(1, violations.size());
     }
 
 }

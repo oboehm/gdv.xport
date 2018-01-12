@@ -11,7 +11,7 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>pom</packaging>
-  <version>3.0.1-SNAPSHOT</version>
+  <version>3.1.0-SNAPSHOT</version>
   <name>GDV.XPort</name>
 
   <modules>
@@ -473,6 +473,12 @@
         <artifactId>oval</artifactId>
         <version>1.40</version>
       </dependency>
+      <dependency>
+        <groupId>de.jfachwert</groupId>
+        <artifactId>jfachwert</artifactId>
+        <version>0.4.0</version>
+      </dependency>
+
       <!-- for JsonFormatter -->
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
