@@ -182,6 +182,7 @@ public final class BetragMitVorzeichen extends Betrag {
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#clone()
      */
+    @SuppressWarnings("squid:S2975")
     @Override
     public Object clone() {
         return new BetragMitVorzeichen(this);

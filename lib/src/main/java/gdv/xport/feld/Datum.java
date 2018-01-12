@@ -320,6 +320,7 @@ public final class Datum extends Feld {
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#clone()
      */
+    @SuppressWarnings("squid:S2975")
     @Override
     public Object clone() {
         return new Datum(this);

@@ -73,6 +73,7 @@ public class VUNummer extends AlphaNumFeld {
     /* (non-Javadoc)
      * @see gdv.xport.feld.AlphaNumFeld#clone()
      */
+    @SuppressWarnings("squid:S2975")
     @Override
     public Object clone() {
         return new VUNummer(this);

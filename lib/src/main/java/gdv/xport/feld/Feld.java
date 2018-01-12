@@ -704,6 +704,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *
      * @return eine Kopie
      */
+    @SuppressWarnings("squid:S2975")
     @Override
     public Object clone() {
         return new Feld(this);
