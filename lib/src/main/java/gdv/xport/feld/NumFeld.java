@@ -18,6 +18,7 @@
 package gdv.xport.feld;
 
 import gdv.xport.annotation.*;
+import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.*;
 import net.sf.oval.constraint.*;
 import net.sf.oval.context.*;
@@ -321,9 +322,7 @@ public class NumFeld extends Feld {
             try {
                 this.toLong();
             } catch (NumberFormatException nfe) {
-                ConstraintViolation cv = new ConstraintViolation(new MatchPatternCheck(),
-                        "not a number (" + nfe + ")", this, this.getInhalt(), new ClassContext(this
-                                .getClass()));
+                ConstraintViolation cv = new SimpleConstraintViolation(this, nfe);
                 violations.add(cv);
             }
         }

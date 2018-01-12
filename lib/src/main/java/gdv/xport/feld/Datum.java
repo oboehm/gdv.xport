@@ -20,17 +20,17 @@
 
 package gdv.xport.feld;
 
-import java.text.*;
-import java.util.Date;
-import java.util.List;
-
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.util.SimpleConstraintViolation;
+import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import gdv.xport.annotation.FeldInfo;
-import net.sf.oval.ConstraintViolation;
-import net.sf.oval.constraint.MatchPatternCheck;
-import net.sf.oval.context.ClassContext;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * The Class Datum.
@@ -301,8 +301,8 @@ public final class Datum extends Feld {
     public List<ConstraintViolation> validate() {
         List<ConstraintViolation> violations = super.validate();
         if (!this.isEmpty() && !this.hasValidDate()) {
-            ConstraintViolation cv = new ConstraintViolation(new MatchPatternCheck(), "'" + this.getInhalt()
-                    + "' is not a valid date", this, this.getInhalt(), new ClassContext(this.getClass()));
+            ConstraintViolation cv =
+                    new SimpleConstraintViolation("'" + this.getInhalt() + "' is not a valid date", this);
             violations.add(cv);
         }
         return violations;

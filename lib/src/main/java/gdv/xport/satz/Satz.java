@@ -12,10 +12,9 @@ import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.util.SatzTyp;
+import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
-import net.sf.oval.constraint.AssertCheck;
-import net.sf.oval.context.ClassContext;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -895,9 +894,8 @@ public abstract class Satz {
 		Validator validator = new Validator();
 		List<ConstraintViolation> violations = validator.validate(this);
 		if (!this.satzart.isValid()) {
-			ConstraintViolation cv = new ConstraintViolation(new AssertCheck(), "invalid Satzart "
-			        + this.satzart.getInhalt(), this, this.satzart, new ClassContext(
-			        this.getClass()));
+			ConstraintViolation cv =
+					new SimpleConstraintViolation("invalid Satzart " + this.satzart.getInhalt(), this, this.satzart);
 			violations.add(cv);
 		}
 		if (this.teildatensatz != null) {

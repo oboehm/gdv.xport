@@ -23,6 +23,7 @@ package gdv.xport.feld;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 import gdv.xport.satz.feld.FeldX;
+import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import net.sf.oval.constraint.Min;
@@ -545,8 +546,8 @@ public class Feld implements Comparable<Feld>, Cloneable {
         Validator validator = new Validator();
         List<ConstraintViolation> violations = validator.validate(this);
         if (this.getEndAdresse() > 256) {
-            ConstraintViolation cv = new ConstraintViolation(new SizeCheck(), this + ": boundary exceeded", this,
-                    this.getEndAdresse(), new ClassContext(this.getClass()));
+            ConstraintViolation cv = new SimpleConstraintViolation(this + ": boundary exceeded", this,
+                    this.getEndAdresse());
             violations.add(cv);
         }
         return violations;

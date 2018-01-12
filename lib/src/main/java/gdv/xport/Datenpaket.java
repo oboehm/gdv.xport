@@ -25,6 +25,7 @@ import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
+import gdv.xport.util.SimpleConstraintViolation;
 import gdv.xport.util.URLReader;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -553,9 +554,8 @@ public final class Datenpaket {
     private List<ConstraintViolation> validateVUNummer() {
         List<ConstraintViolation> violations = new ArrayList<ConstraintViolation>();
         if (Config.DUMMY_VU_NUMMER.equals(this.getVuNummer())) {
-            ConstraintViolation cv = new ConstraintViolation(new AssertCheck(),
-                    "VU-Nummer is not set", this, Config.DUMMY_VU_NUMMER, new ClassContext(
-                    this.getClass()));
+            ConstraintViolation cv = new SimpleConstraintViolation(
+                    "VU-Nummer is not set", this, Config.DUMMY_VU_NUMMER);
             violations.add(cv);
         }
         return violations;
@@ -590,9 +590,8 @@ public final class Datenpaket {
             expected++;
             folgenummern.put(key, expected);
             if (folgenr != expected) {
-                ConstraintViolation cv = new ConstraintViolation(new AssertCheck(),
-                        "falsche Folgenummer (erwartet: " + expected + ")", datensatz, folgenr,
-                        new ClassContext(this.getClass()));
+                ConstraintViolation cv = new SimpleConstraintViolation(
+                        "falsche Folgenummer (erwartet: " + expected + ")", datensatz, folgenr);
                 violations.add(cv);
             }
         }
