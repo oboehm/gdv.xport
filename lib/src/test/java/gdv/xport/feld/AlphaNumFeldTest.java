@@ -26,6 +26,8 @@ import gdv.xport.annotation.FeldInfo;
 import gdv.xport.satz.feld.Feld100;
 
 import net.sf.oval.ConstraintViolation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import java.util.List;
@@ -38,6 +40,7 @@ import java.util.List;
  */
 public final class AlphaNumFeldTest extends AbstractFeldTest {
 
+    private static final Logger LOG = LogManager.getLogger(AlphaNumFeldTest.class);
     private enum Alphabet { ALPHA, BETA, GAMMA, DYNAMIK; }
 
     /* (non-Javadoc)
@@ -77,9 +80,24 @@ public final class AlphaNumFeldTest extends AbstractFeldTest {
         AlphaNumFeld iban = new AlphaNumFeld(Bezeichner.IBAN1, 34, 209);
         assertTrue("empty IBAN should be valid: " + iban, iban.isValid());
         iban.setInhalt("DE99300606010006605605");
-        List<ConstraintViolation> violations = iban.validate();
+        assertNotValid(iban);
+    }
+
+    /**
+     * "GENODEF1J" ist keine gueltige BIC (zu kurz).
+     */
+    @Test
+    public void testValidateBIC() {
+        AlphaNumFeld bic = new AlphaNumFeld(Bezeichner.BIC2, 11, 198);
+        bic.setInhalt("GENODEF1J");
+        assertNotValid(bic);
+    }
+
+    private void assertNotValid(AlphaNumFeld feld) {
+        List<ConstraintViolation> violations = feld.validate();
         assertEquals(1, violations.size());
-        assertFalse("not a valid IBAN: " + iban, iban.isValid());
+        assertFalse("not a valid Feld: " + feld, feld.isValid());
+        LOG.info("Violoations = {}", violations);
     }
 
 }
