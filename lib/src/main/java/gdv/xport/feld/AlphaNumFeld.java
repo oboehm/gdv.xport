@@ -3,16 +3,10 @@
  */
 package gdv.xport.feld;
 
-import de.jfachwert.bank.BIC;
-import de.jfachwert.bank.IBAN;
+import de.jfachwert.FachwertFactory;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
-import net.sf.oval.constraint.AssertValidCheck;
-import net.sf.oval.constraint.SizeCheck;
-import net.sf.oval.context.ClassContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.validation.ValidationException;
 import java.util.List;
@@ -141,11 +135,7 @@ public class AlphaNumFeld extends Feld {
         if (!this.isEmpty()) {
             try {
                 String name = this.getBezeichner().getName();
-                if (name.startsWith("IBAN")) {
-                    IBAN.validate(this.getInhalt());
-                } else if (name.startsWith("BIC")) {
-                    BIC.validate(this.getInhalt().trim());
-                }
+                FachwertFactory.getInstance().validate(name, this.getInhalt());
             } catch (ValidationException ex) {
                 ConstraintViolation cv = new SimpleConstraintViolation(this, ex);
                 violations.add(cv);
