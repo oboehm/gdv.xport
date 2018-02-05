@@ -20,19 +20,16 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import gdv.xport.satz.feld.common.Feld1bis7;
+import net.sf.oval.ConstraintViolation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.Locale;
 
-import net.sf.oval.ConstraintViolation;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * Test-Klasse fuer NumFeld.
@@ -104,7 +101,7 @@ public final class NumFeldTest extends AbstractFeldTest {
      */
     @Test
     public void testIsValid() {
-        NumFeld three = new NumFeld("three", "3     ");
+        NumFeld three = new NumFeld("testIsValid", "3     ");
         assertTrue("should be valid", three.isValid());
     }
 
@@ -138,7 +135,7 @@ public final class NumFeldTest extends AbstractFeldTest {
      */
     @Test
     public void testValidate() {
-        NumFeld three = new NumFeld("three", "3     ");
+        NumFeld three = new NumFeld("testValidate", "3     ");
         assertEquals(0, three.validate().size());
     }
 

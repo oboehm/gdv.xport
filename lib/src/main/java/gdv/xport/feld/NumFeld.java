@@ -17,16 +17,17 @@
  */
 package gdv.xport.feld;
 
-import gdv.xport.annotation.*;
+import de.jfachwert.FachwertFactory;
+import gdv.xport.annotation.FeldInfo;
 import gdv.xport.util.SimpleConstraintViolation;
-import net.sf.oval.*;
-import net.sf.oval.constraint.*;
-import net.sf.oval.context.*;
-import org.apache.commons.lang.*;
-import org.apache.logging.log4j.*;
+import net.sf.oval.ConstraintViolation;
+import org.apache.commons.lang.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.text.*;
-import java.util.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.List;
 
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
@@ -318,9 +319,11 @@ public class NumFeld extends Feld {
     @Override
     public List<ConstraintViolation> validate() {
         List<ConstraintViolation> violations = super.validate();
-        if (!this.isEmpty()) {
+        if (this.hasValue()) {
             try {
                 this.toLong();
+                String name = this.getBezeichner().getName();
+                FachwertFactory.getInstance().validate(name, this.getInhalt());
             } catch (NumberFormatException nfe) {
                 ConstraintViolation cv = new SimpleConstraintViolation(this, nfe);
                 violations.add(cv);

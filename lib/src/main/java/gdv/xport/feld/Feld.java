@@ -28,8 +28,6 @@ import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import net.sf.oval.constraint.Min;
 import net.sf.oval.constraint.NotEqual;
-import net.sf.oval.constraint.SizeCheck;
-import net.sf.oval.context.ClassContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.logging.log4j.LogManager;
@@ -501,6 +499,19 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     public boolean isEmpty() {
         return StringUtils.isBlank(this.getInhalt());
+    }
+
+    /**
+     * Dient zum Ermittel, ob ein Werte schon gesetzt wurde. Dabei werden
+     * typische Initialisierungswerte wie "0" als "nicht gesetzt"
+     * interpretiert.
+     *
+     * @return true, falls Feld mit einem Wert belegt ist
+     * @since 3.1
+     */
+    public boolean hasValue() {
+        String value = StringUtils.trimToEmpty(this.getInhalt());
+        return !value.isEmpty() && !value.equals("0");
     }
 
     /**

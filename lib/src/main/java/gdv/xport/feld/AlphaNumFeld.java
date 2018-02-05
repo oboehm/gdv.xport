@@ -132,10 +132,10 @@ public class AlphaNumFeld extends Feld {
     @Override
     public List<ConstraintViolation> validate() {
         List<ConstraintViolation> violations = super.validate();
-        if (!this.isEmpty()) {
+        if (this.hasValue()) {
             try {
                 String name = this.getBezeichner().getName();
-                FachwertFactory.getInstance().validate(name, this.getInhalt());
+                FachwertFactory.getInstance().validate(name, this.getInhalt().trim());
             } catch (ValidationException ex) {
                 ConstraintViolation cv = new SimpleConstraintViolation(this, ex);
                 violations.add(cv);
