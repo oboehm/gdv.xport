@@ -43,6 +43,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 /**
@@ -268,7 +270,7 @@ public final class SatzTest extends AbstractSatzTest {
         for (ConstraintViolation violation : violations) {
             LOG.info("ConstraintViolation: " + violation);
         }
-        assertEquals(2, violations.size());
+        assertThat(violations.size(), is(greaterThan(0)));
     }
 
     /**
