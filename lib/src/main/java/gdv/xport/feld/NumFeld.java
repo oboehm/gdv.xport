@@ -18,12 +18,15 @@
 package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.util.SimpleConstraintViolation;
+import net.sf.oval.ConstraintViolation;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.List;
 
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
@@ -308,6 +311,24 @@ public class NumFeld extends Feld {
         }
         return true;
     }
+
+    /* (non-Javadoc)
+     * @see gdv.xport.feld.Feld#validate()
+     */
+    @Override
+    public List<ConstraintViolation> validate() {
+        List<ConstraintViolation> violations = super.validate();
+        if (this.hasValue()) {
+            try {
+                this.toLong();
+            } catch (NumberFormatException nfe) {
+                ConstraintViolation cv = new SimpleConstraintViolation(this, nfe);
+                violations.add(cv);
+            }
+        }
+        return violations;
+    }
+
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#format()
