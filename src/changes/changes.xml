@@ -17,8 +17,11 @@
 
   <body>
 
-    <release version="3.1.0" date="2019"
+    <release version="3.1.0" date="Apr-2018"
              description="mehr Validierung">
+      <action dev="oboehm" type="fix" issue="issues/10" date="06-Apr-2018">
+        Feld0001.ART_DES_ADRESSATEN korrigiert.
+      </action>
       <action dev="oboehm" type="add" date="12-Jan-2018">
         IBANs und BICs werden jetzt bei der Validierung auch &#252;berpr&#252;ft.
       </action>
