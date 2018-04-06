@@ -130,7 +130,7 @@ public final class Bezeichner {
     public static final Bezeichner ART_DER_STEUERLICHEN_FOERDERUNG = new Bezeichner("Art der steuerlichen Foerderung", "ArtdersteuerlichenFoerderung");
     public static final Bezeichner ART_DER_ZULASSUNG_BEIM_VORBESITZER = new Bezeichner("Art der Zulassung beim Vorbesitzer");
     public static final Bezeichner ART_DES_ABSENDERS = new Bezeichner("Art des Absenders");
-    public static final Bezeichner ART_DES_ADRESSATEN = new Bezeichner("Art des Adressaten");
+    public static final Bezeichner ART_DES_ADRESSATEN = new Bezeichner("Art des Adressaten", "ArtAdressaten");
     public static final Bezeichner ART_DES_AMTLICHEN_KENNZEICHENS = new Bezeichner("Art des amtlichen Kennzeichens");
     public static final Bezeichner ART_DES_DRITTRECHTS = new Bezeichner("Art des Drittrechts");
     public static final Bezeichner AUFBAUART = new Bezeichner("Aufbauart");
