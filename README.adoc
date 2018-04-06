@@ -38,7 +38,7 @@ Allerdings wurde diese Bibliothek schon seit laengerer Zeit nicht mehr aktualisi
 
 == GIT Branching-Modell
 
-Entwickelt wird nach "A successful Git branching model":http://nvie.com/posts/a-successful-git-branching-model/ von Vincent Driessen.
+Entwickelt wird nach http://nvie.com/posts/a-successful-git-branching-model/[A successful Git branching model] von Vincent Driessen.
 Die Weiterentwicklung der aktuellen Version findet auf dem develop-Branch statt (derzeit: https://github.com/oboehm/gdv.xport/tree/develop/3.x[develop/3.x]), waehrend das letzte Release im Release-Zweig (derzeit: https://github.com/oboehm/gdv.xport/tree/release/3.x[release/3.x]) zu finden ist.
 
 

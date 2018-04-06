@@ -20,17 +20,18 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
+import gdv.xport.satz.feld.Feld0001;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author oliver
@@ -128,15 +129,12 @@ public final class VorsatzTest extends AbstractSatzTest {
      */
     @Test
     public void testImportReader() throws IOException {
-        InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
-        try {
+        try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
             vorsatz.importFrom(istream);
             assertTrue(vorsatz + " should be valid", vorsatz.isValid());
             assertEquals("9999", vorsatz.getVuNummer());
             assertEquals("XXX Versicherung AG", vorsatz.getAbsender());
             assertEquals("BRBRIENNEE,J\u00dcRGEN", vorsatz.getAdressat());
-        } finally {
-            istream.close();
         }
     }
 
@@ -174,6 +172,17 @@ public final class VorsatzTest extends AbstractSatzTest {
         String adressat = "Obelix";
         vorsatz.setAdressat(adressat);
         assertEquals(adressat, vorsatz.getAdressat());
+    }
+
+    /**
+     * Testfall fuer Issue 10
+     * (https://github.com/oboehm/gdv.xport/issues/10).
+     */
+    @Test
+    public void testIssue10() {
+        Feld a1 = vorsatz.getFeld(Bezeichner.ART_DES_ADRESSATEN);
+        Feld a2 = vorsatz.getFeld(Feld0001.ART_DES_ADRESSATEN);
+        assertEquals(a1, a2);
     }
 
 }
