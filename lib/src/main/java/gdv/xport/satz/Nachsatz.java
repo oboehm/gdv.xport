@@ -20,9 +20,9 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
-
 import gdv.xport.feld.*;
+
+import static gdv.xport.feld.Bezeichner.*;
 
 /**
  * Dies ist der letzte Satz, der Nachsatz eben.

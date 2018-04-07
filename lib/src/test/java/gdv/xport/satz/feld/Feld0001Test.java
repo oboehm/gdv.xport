@@ -67,7 +67,7 @@ public class Feld0001Test {
     @Test
     public void testArtDesAbsenders() {
         Teildatensatz tds = vorsatz.getTeildatensatz(1);
-        assertTrue("expeced: ART_DES_ABSENDERS in " + tds, tds.hasFeld(Feld0001.ART_DES_ABSENDERS));
+        assertTrue("expected: ART_DES_ABSENDERS in " + tds, tds.hasFeld(Feld0001.ART_DES_ABSENDERS));
     }
 
     /**
@@ -76,7 +76,6 @@ public class Feld0001Test {
      */
     @Test
     public void testIssue10() {
-        Feld0001[] values = Feld0001.values();
         for (Feld0001 entry : Feld0001.values()) {
             if (entry.name().startsWith("INTRO")) {
                 continue;
