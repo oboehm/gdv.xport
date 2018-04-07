@@ -27,7 +27,7 @@ import java.util.EventListener;
 public interface ImportListener extends EventListener {
 
     /**
-     * Sobald ein Satz importiert wurde, werden ein {@link ImportListener}
+     * Sobald ein Satz importiert wurde, werden alle {@link ImportListener}
      * hierueber informiert.
      *
      * @param satz der importierte Satz
