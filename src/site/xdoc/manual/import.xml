@@ -15,7 +15,7 @@
         <a href="http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt">musterdatei_041222.txt</a>
         von <a href="http://www.gdv-online.de/">www.gdv-online.de</a>
         importieren wollen, schauen Sie sich am besten das  
-        <a href="../xref/gdv/xport/Main.html#30">Main-Programm</a> an.
+        <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/Main.java">Main-Programm</a> an.
         Dort wird eine beliebige Datei importiert (Option "-import"),
         als XML (Option "-xml") ausgegeben und
         anschliessend validiert (Option "-validate").
@@ -35,7 +35,7 @@ datenpaket.importFrom(url);
         <p>
           Wenn Sie wissen wollen, wie Sie nach einem Import durch die einzelnen
           S&#228;tze iterieren k&#246;nnen, schauen Sie sich am besten die
-          <a href="../xref/gdv/xport/Datenpaket.html">Datenpaket</a>-Klasse an,
+          <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/Datenpaket.java">Datenpaket</a>-Klasse an,
           wie die einzelnen Datens&#228;tze in der export-Methode rausgeschrieben werden:
         </p>
 <source><![CDATA[
@@ -47,10 +47,10 @@ for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext();)
       </subsection>
       <subsection name="Zugriff auf einzelne Felder">
         <p>
-          &#220;ber einen <a href="../xref/gdv/xport/satz/Satz.html">Satz</a>
-          oder <a href="../xref/gdv/xport/satz/Datensatz.html">Datensatz</a>
+          &#220;ber einen <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/satz/Satz.java">Satz</a>
+          oder <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/satz/Datensatz.java">Datensatz</a>
           kommen Sie an die einzelnen
-          <a href="../xref/gdv/xport/feld/Feld.html">Feld</a>er ran. Dazu geben
+          <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/feld/Feld.java">Feld</a>er ran. Dazu geben
           Sie den Namen des Feldes an:
         </p>
 <source><![CDATA[
@@ -58,7 +58,7 @@ Feld absenderFeld = vorsatz.getFeld("Absender");
 ]]></source>
         <p>
           Statt "Absender" verwenden Sie besser die Konstanten, die in
-          <a href="../xref/gdv/xport/feld/Bezeichner.html">Bezeichner</a>
+          <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/feld/Bezeichner.java">Bezeichner</a>
           definiert sind:
         </p>
 <source><![CDATA[
@@ -66,7 +66,7 @@ Feld absenderFeld = vorsatz.getFeld(Bezeichner.ABSENDER);
 ]]></source>
         <p>
           (siehe auch die testSetAbsender()-Methode in
-          <a href="../xref-test/gdv/xport/satz/VorsatzTest.html">VorsatzTest</a>)
+          <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/test/java/gdv/xport/satz/VorsatzTest.javal">VorsatzTest</a>)
         </p>
       </subsection>
     </section>
@@ -99,7 +99,7 @@ satz100.importFrom(file);
 ]]></source>
       <p>
         Dieses und weitere Beispiele befinden sich in
-        <a href="../xref/gdv/xport/demo/ImportExport.html">ImportExport</a>.
+        <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/demo/ImportExport.java">ImportExport</a>.
       </p>
     </section>
 

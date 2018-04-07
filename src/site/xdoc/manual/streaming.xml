@@ -37,7 +37,7 @@ LOG.info("Statistik: " + statistic);
 ]]></source>
 	  <p>
 	  	Als Beispiel dient hier die
-	  	<a href="../xref/gdv/xport/event/ImportStatistic.html">ImportStatistic</a>,
+	  	<a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/event/ImportStatistic.java">ImportStatistic</a>,
 	  	die das
       	<a href="../apidocs/gdv/xport/event/ImportListener.html">ImportListener</a>-Interface
       	implementiert und nach der Registrierung eine Benachrichtigung 
@@ -48,9 +48,9 @@ Statistik: 128 Saetze, 165 Teildatensaetze
 ]]></source>
 	  <p>
 	    Dies ist die Ausgabe, die die
-	  	<a href="../xref/gdv/xport/event/ImportStatistic.html">ImportStatistic</a>-Klasse
+	  	<a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/event/ImportStatistic.java">ImportStatistic</a>-Klasse
 	  	ausgibt. Das Beispiel selbst findet sich als Unit-Test im
-	  	<a href="../xref-test/gdv/xport/DatenpaketStreamerTest.html#75">DatenpaketStreamerTest</a>
+	  	<a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/test/java/gdv/xport/DatenpaketStreamerTest.java">DatenpaketStreamerTest</a>
 	  	(Methode "readDatenpaket").
 	  </p>
 
