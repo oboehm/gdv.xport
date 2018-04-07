@@ -37,7 +37,7 @@ import static org.junit.Assert.*;
  * @since 0.9.0 (29.11.2012)
  */
 @RunWith(SmokeRunner.class)
-public class Feld0001Test {
+public class Feld0001Test extends AbstractFeldTest {
 
     private static SatzX vorsatz;
 
@@ -76,12 +76,7 @@ public class Feld0001Test {
      */
     @Test
     public void testIssue10() {
-        for (Feld0001 entry : Feld0001.values()) {
-            if (entry.name().startsWith("INTRO")) {
-                continue;
-            }
-            vorsatz.getFeld(entry);
-        }
+        checkEntries(vorsatz, Feld0001.values());
     }
 
 }

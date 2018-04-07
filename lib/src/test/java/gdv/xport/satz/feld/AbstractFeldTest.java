@@ -17,23 +17,31 @@
  */
 package gdv.xport.satz.feld;
 
-import gdv.xport.satz.model.Satz100;
-import org.junit.Test;
+import gdv.xport.satz.model.SatzX;
 
 /**
- * Unit-Tests fuer {@link Feld100}-Klasse.
+ * Class AbstractFeldTest.
  *
- * @author oliver (ob@jfachwert.de)
+ * @author <a href="ob@aosd.de">oliver</a>
  */
-public class Feld100Test extends AbstractFeldTest {
+public abstract class AbstractFeldTest {
 
     /**
-     * Weiterer Testfall fuer Issue 10
+     * Dieser Test ueberprueft die Konstanten einer Enum, um ueber sie
+     * tatsaechlich die Werte eines Satzes ausgelesen werden koennen.
+     * Diese Pruefung wurde mit Issue #10 eingefuehrt
      * (https://github.com/oboehm/gdv.xport/issues/10).
+     *
+     * @param satz Satz, zu dem das Enum gehoert
+     * @param values z.B. Feld100.values()
      */
-    @Test
-    public void testFeld100Konstanten() {
-        checkEntries(new Satz100(), Feld100.values());
+    protected static void checkEntries(SatzX satz, Enum<?>[] values) {
+        for (Enum<?> entry : values) {
+            if (entry.name().startsWith("INTRO")) {
+                continue;
+            }
+            satz.getFeld(entry);
+        }
     }
 
 }

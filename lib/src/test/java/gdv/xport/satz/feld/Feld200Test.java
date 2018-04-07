@@ -17,7 +17,7 @@
  */
 package gdv.xport.satz.feld;
 
-import gdv.xport.satz.model.Satz100;
+import gdv.xport.satz.model.Satz200;
 import org.junit.Test;
 
 /**
@@ -25,15 +25,15 @@ import org.junit.Test;
  *
  * @author oliver (ob@jfachwert.de)
  */
-public class Feld100Test extends AbstractFeldTest {
+public class Feld200Test extends AbstractFeldTest {
 
     /**
      * Weiterer Testfall fuer Issue 10
      * (https://github.com/oboehm/gdv.xport/issues/10).
      */
     @Test
-    public void testFeld100Konstanten() {
-        checkEntries(new Satz100(), Feld100.values());
+    public void testFeld200Konstanten() {
+        checkEntries(new Satz200(), Feld200.values());
     }
 
 }

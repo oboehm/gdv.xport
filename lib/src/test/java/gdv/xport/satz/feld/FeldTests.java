@@ -35,7 +35,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.9 (16.04.2013)
  */
 @RunWith(Suite.class)
-@SuiteClasses({ Wagnisart9Tests.class, Sparte30Tests.class, Feld0001Test.class, Feld100Test.class })
+@SuiteClasses({ Wagnisart9Tests.class, Sparte30Tests.class, Feld0001Test.class, Feld100Test.class, Feld200Test.class })
 public class FeldTests {
 
 }
