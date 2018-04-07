@@ -21,6 +21,7 @@
 package gdv.xport.satz;
 
 import gdv.xport.feld.*;
+import gdv.xport.satz.feld.Feld9999;
 
 import static gdv.xport.feld.Bezeichner.*;
 
@@ -166,6 +167,43 @@ public final class Nachsatz extends Satz {
      */
     public BetragMitVorzeichen getSchadenbearbeitungsKosten() {
         return this.schadenbearbeitungsKosten;
+    }
+
+    /**
+     * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
+     * benutzt, um das Feld zu bestimmen. Dazu werden auch die Konstanten in
+     * {@link gdv.xport.feld.Bezeichner} verwendet.
+     *
+     * @param feld gewuenschtes Feld-Element
+     * @return das gesuchte Feld
+     * @throws IllegalArgumentException falls es das Feld nicht gibt
+     */
+    @Override
+    public Feld getFeld(final Enum<?> feld) throws IllegalArgumentException {
+        if (feld instanceof Feld9999) {
+            return getFeld((Feld9999) feld);
+        } else {
+            return super.getFeld(feld);
+        }
+    }
+
+    private Feld getFeld(Feld9999 feld) {
+        switch (feld) {
+            case VORZEICHEN:
+                return getVorzeichenOf(gesamtBeitragBrutto);
+            case VORZEICHEN2:
+                return getVorzeichenOf(gesamtProvisionsBetrag);
+            case VORZEICHEN3:
+                return getVorzeichenOf(versicherungsLeistungen);
+            case VORZEICHEN4:
+                return getVorzeichenOf(schadenbearbeitungsKosten);
+            default:
+                return super.getFeld(feld);
+        }
+    }
+
+    private Zeichen getVorzeichenOf(BetragMitVorzeichen beitrag) {
+        return new Zeichen(beitrag.getEndAdresse(), beitrag.getVorzeichen());
     }
 
 }
