@@ -19,7 +19,7 @@
 package gdv.xport.feld;
 
 import gdv.xport.feld.internal.UmlautMapper;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -365,7 +365,7 @@ public final class Bezeichner {
     public static final Bezeichner IBAN2 = new Bezeichner("IBAN 2");
     public static final Bezeichner INKASSOART = new Bezeichner("Inkassoart");
     public static final Bezeichner INTERNES_ORDNUNGSMERKMAL_DES_VM = new Bezeichner("Internes Ordnungsmerkmal des VM", "InternesOrdnungsmerkmalDesVM");
-    public static final Bezeichner INTRO1 = new Bezeichner("Intro");
+    public static final Bezeichner INTRO = new Bezeichner("Intro");
     public static final Bezeichner INVALIDITAET = new Bezeichner("Invaliditaet");
     public static final Bezeichner INVALIDITAET_BEITRAGSSATZ = new Bezeichner("Invaliditaet Beitragssatz");
     public static final Bezeichner ISIN_NUMMER = new Bezeichner("ISIN-Nummer");
@@ -1020,7 +1020,7 @@ public final class Bezeichner {
             case "Waehrungseinheiten":
                 return "WE";
             default:
-                if ((word.length() == 3) && (word.charAt(0) == 'd') && (word.charAt(2) != 'n')) {
+                if ((word.length() == 3) && (word.toLowerCase().charAt(0) == 'd') && (word.charAt(2) != 'n')) {
                     return "";
                 } else if (word.endsWith("datum")) {
                     return word.substring(0, word.length() - 2);
@@ -1162,6 +1162,37 @@ public final class Bezeichner {
             return this;
         } else {
             return bezeichner;
+        }
+    }
+
+    /**
+     * Liefert zu einem Feld aus einer Enum-Klasse den entsprechenden
+     * Bezeichner zurueck. Dabei wird die Tatsache ausgenutzt, dass die
+     * Bezeichner-Konstante genauso wie der Eintrag in in der Enum-Klasse
+     * lautet.
+     * <p>
+     * Da manche Enum-Felder noch eine laufende Nummer zur Unterscheidung
+     * haben (Beispiel: INTRO1, INTRO2, ...), wird der letzte Buchstabe bei
+     * der Suche ausgeblendet.
+     * </p>
+     *
+     * @param enumFeld Eintrag aus der Enum-Klasse
+     * @return entsprechender Bezeichner
+     */
+    public static Bezeichner of(final Enum<?> enumFeld) {
+        String name = enumFeld.name();
+        String shortened = name.substring(0, name.length() - 1);
+        Field[] fields = Bezeichner.class.getFields();
+        try {
+            for (Field field : fields) {
+                String fieldName = field.getName();
+                if (name.equalsIgnoreCase(fieldName) || shortened.equalsIgnoreCase(fieldName)) {
+                    return (Bezeichner) field.get(null);
+                }
+            }
+            return (Bezeichner) getField(name).get(null);
+        } catch (IllegalAccessException iae) {
+            throw new IllegalArgumentException("cannot Bezeichner for " + enumFeld);
         }
     }
 

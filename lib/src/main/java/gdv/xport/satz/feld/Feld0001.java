@@ -633,8 +633,7 @@ public enum Feld0001 {
             nr = 55,
             type = Zeichen.class,
             anzahlBytes = 1,
-            byteAdresse = 238,
-            bezeichnung = "ArtAdressaten"
+            byteAdresse = 238
             )
     ART_DES_ADRESSATEN,
 

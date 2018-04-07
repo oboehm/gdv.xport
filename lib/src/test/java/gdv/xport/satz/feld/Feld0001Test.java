@@ -18,17 +18,16 @@
 
 package gdv.xport.satz.feld;
 
-import static org.junit.Assert.*;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.model.SatzX;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.SmokeRunner;
+
+import static org.junit.Assert.*;
 
 /**
  * Hier testen wir (indirekt) die {@link Feld0001} Annotatation, ob die
@@ -69,6 +68,21 @@ public class Feld0001Test {
     public void testArtDesAbsenders() {
         Teildatensatz tds = vorsatz.getTeildatensatz(1);
         assertTrue("expeced: ART_DES_ABSENDERS in " + tds, tds.hasFeld(Feld0001.ART_DES_ABSENDERS));
+    }
+
+    /**
+     * Weiterer Testfall fuer Issue 10
+     * (https://github.com/oboehm/gdv.xport/issues/10).
+     */
+    @Test
+    public void testIssue10() {
+        Feld0001[] values = Feld0001.values();
+        for (Feld0001 entry : Feld0001.values()) {
+            if (entry.name().startsWith("INTRO")) {
+                continue;
+            }
+            vorsatz.getFeld(entry);
+        }
     }
 
 }

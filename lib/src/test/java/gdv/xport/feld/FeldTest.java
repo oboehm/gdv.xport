@@ -20,20 +20,19 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.*;
-
-import java.lang.annotation.Annotation;
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.sparte50.Feld210;
 import net.sf.oval.ConstraintViolation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 import patterntesting.runtime.junit.CloneableTester;
+
+import java.lang.annotation.Annotation;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 /**
  * JUnit-Test fuer die Feld-Klasse.
@@ -149,7 +148,7 @@ public final class FeldTest extends AbstractFeldTest {
         assertEquals(a, b);
         assertEquals(a.hashCode(), b.hashCode());
         b.setInhalt('b');
-        assertFalse(a + " differs from " + b, a.equals(b));
+        assertNotEquals(a + " differs from " + b, a, b);
     }
 
     /**
@@ -212,7 +211,7 @@ public final class FeldTest extends AbstractFeldTest {
      * @return FeldInfo mit einigen Default-Werten
      */
     static FeldInfo createFeldInfo() {
-        FeldInfo feldInfo = new FeldInfo() {
+        return new FeldInfo() {
             @Override
             public Class<? extends Annotation> annotationType() {
                 return null;
@@ -258,7 +257,6 @@ public final class FeldTest extends AbstractFeldTest {
                 return "";
             }
         };
-        return feldInfo;
     }
 
     /**

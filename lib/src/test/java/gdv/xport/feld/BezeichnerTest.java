@@ -18,13 +18,16 @@
 
 package gdv.xport.feld;
 
-import org.junit.*;
-import org.junit.runner.*;
-import patterntesting.runtime.junit.*;
+import gdv.xport.satz.feld.Feld0001;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import patterntesting.runtime.junit.ObjectTester;
+import patterntesting.runtime.junit.SmokeRunner;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * JUnit-Tests fuer die {@link Bezeichner}-Klasse.
@@ -239,6 +242,28 @@ public class BezeichnerTest {
         Bezeichner nr = new Bezeichner("Lfd. Personennummer", "LfdPersonenNrImGevo");
         Bezeichner merged = nrImGevo.mergeWith(nr);
         assertEquals("LfdPersonenNrImGevo", merged.getTechnischerName());
+    }
+
+    /**
+     * Test-Methode fuer {@link Bezeichner#of(Enum)}, die als Ergebnis aus
+     * Issue 10 entstanden ist.
+     */
+    @Test
+    public void testOf() {
+        Bezeichner version = Bezeichner.of(Feld0001.VERSION_SATZART_0210_FEUER);
+        assertEquals(Bezeichner.VERSION_SATZART_0210_FEUER, version);
+    }
+
+    /**
+     * Da doppelte Eintraege in Enums nicht erlaubt sind, sind manche
+     * Enum-Felder durch eine laufende Nummer gekennzeichnet. Z.B. gibt
+     * es in vielen enums ein INTRO1 und INTRO2, obwohl der Bezeichner
+     * dazu eigentlich "INTRO" ist.
+     */
+    @Test
+    public void testOfIntro() {
+        Bezeichner intro = Bezeichner.of(Feld0001.INTRO2);
+        assertEquals(Bezeichner.INTRO, intro);
     }
 
 }

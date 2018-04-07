@@ -20,21 +20,23 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.SATZNUMMER;
+import gdv.xport.config.Config;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
+import gdv.xport.io.ImportException;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.Validator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.Writer;
 import java.util.*;
 import java.util.Map.Entry;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import gdv.xport.config.Config;
-import gdv.xport.feld.*;
-import gdv.xport.io.ImportException;
-import net.sf.oval.ConstraintViolation;
-import net.sf.oval.Validator;
+import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
@@ -49,10 +51,10 @@ public class Teildatensatz extends Satz {
     private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
 
     /** Diese Map dient fuer den Zugriff ueber den Namen. */
-    private final Map<Bezeichner, Feld> datenfelder = new HashMap<Bezeichner, Feld>();
+    private final Map<Bezeichner, Feld> datenfelder = new HashMap<>();
 
     /** Dieses Set dient zum Zugriff ueber die Nummer. */
-    private final SortedSet<Feld> sortedFelder = new TreeSet<Feld>();
+    private final SortedSet<Feld> sortedFelder = new TreeSet<>();
 
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
     private final Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
@@ -159,8 +161,7 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public void add(final Feld feld) {
-        for (Iterator<Feld> iterator = datenfelder.values().iterator(); iterator.hasNext();) {
-            Feld f = iterator.next();
+        for (Feld f : datenfelder.values()) {
             if (!feld.equals(f) && feld.overlapsWith(f)) {
                 if (isSatznummer(f)) {
                     remove(f);
@@ -239,11 +240,12 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public Feld getFeld(final Enum<?> feldX) throws IllegalArgumentException {
-        Feld found = getFeld(feldX.name());
-        if (found == Feld.NULL_FELD) {
-            found = getFeld(Feld.toBezeichnung(feldX));
-        }
-        return found;
+        return getFeld(Bezeichner.of(feldX));
+//        Feld found = getFeld(feldX.name());
+//        if (found == Feld.NULL_FELD) {
+//            found = getFeld(Feld.toBezeichnung(feldX));
+//        }
+//        return found;
     }
 
     /**
@@ -321,7 +323,7 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public Collection<Feld> getFelder() {
-        return new TreeSet<Feld>(datenfelder.values());
+        return new TreeSet<>(datenfelder.values());
     }
 
     /* (non-Javadoc)
