@@ -13,7 +13,7 @@
       <p>
         gdv.xport ist in erster Linie eine Java-Bibliothek,
         auch wenn diese ein kleines 
-        <a href="../xref/gdv/xport/Main.html#30">Main-Programm</a> enth&#228;lt.
+        <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/Main.java">Main-Programm</a> enth&#228;lt.
       </p>
       <subsection name="Abh&#228;ngige Bibliotheken">
       	<p>
@@ -30,7 +30,7 @@
         </p>
         <p>
           Unter <a href="../xref/index.html">Source Xref</a> finden Sie die Sourcen zu diesem
-          <a href="../xref/gdv/xport/demo/HelloWorld.html#30">HelloWorld</a>-Beispiel.
+          <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/demo/HelloWorld.java">HelloWorld</a>-Beispiel.
           Nach Start dieser Anwendung wird
         </p>
 <source><![CDATA[

@@ -20,7 +20,7 @@ datenpaket.export(file);
         Statt <i>file</i> ist auch die Angabe eines Writers oder eines
         OutputStreams m&#246;glich. Ein Beispiel daf&#252;r findet sich
         z.B. in
-        <a href="../xref-test/gdv/xport/DatenpaketTest.html">DatenpaketTest</a>.
+        <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/test/java/gdv/xport/DatenpaketTest.java">DatenpaketTest</a>.
       </p>
       <p>
         Normalerweise wird jeder Datensatz und Teildatensatz mit einem
@@ -39,7 +39,7 @@ satz100.export(file);
 ]]></source>
         <p>
           Dieses Beispiel befindet sich in
-          <a href="../xref/gdv/xport/demo/ImportExport.html">ImportExport</a>.
+          <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/demo/ImportExport.java">ImportExport</a>.
         </p>
       </subsection>
     </section>
@@ -48,11 +48,11 @@ satz100.export(file);
       <p>
         Zur Untersuchung des GDV-Formats und zur leichteren Fehlersuche gibt
         es den 
-        <a href="../xref/gdv/xport/util/XmlFormatter.html">XmlFormatter</a>
+        <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/util/XmlFormatter.java">XmlFormatter</a>
         und
-        <a href="../xref/gdv/xport/util/HtmlFormatter.html">HtmlFormatter</a>,
+        <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/util/HtmlFormatter.java">HtmlFormatter</a>,
         die ein Datenpaket nach XML bzw. HTML &#252;berf&#252;hren und beide vom 
-        <a href="../xref/gdv/xport/util/AbstractFormatter.html">AbstractFormatter</a>
+        <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/util/AbstractFormatter.java">AbstractFormatter</a>
         abgeleitet sind.
       </p>
       <subsection name="XML-Format">
@@ -75,9 +75,9 @@ formatter.write(datenpaket);
 ]]></source>
         <p>
           Tauscht man den
-          <a href="../xref/gdv/xport/util/XmlFormatter.html">XmlFormatter</a>
+          <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/util/XmlFormatter.java">XmlFormatter</a>
           gegen den
-          <a href="../xref/gdv/xport/util/HtmlFormatter.html">HtmlFormatter</a>
+          <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/util/HtmlFormatter.java">HtmlFormatter</a>
           aus, erh&#228;lt man als Ergebnis eine HTML-Datei.
         </p>
         <p>

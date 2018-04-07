@@ -26,7 +26,7 @@
       <p>
         Ab 0.6 wurde die Unterst&#252;tzung eigener S&#228;tze vereinfacht:
         hier reicht die Beschreibung eines Datensatzes mithilfe einer Enum-Klasse
-        (wie z.B. <a href="../xref/gdv/xport/demo/MyFeld210.html">MyFeld210</a>).
+        (wie z.B. <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/demo/MyFeld210.java">MyFeld210</a>).
         Diese kann ueber
         <a href="../apidocs/gdv/xport/util/SatzFactory.html#registerEnum(java.lang.Class, int)">SatzFactory.registerEnum(..)</a>
         registriert werden.
@@ -43,10 +43,10 @@
       <p>
         Im <a href="../apidocs/gdv/xport/demo/package.html">demo</a>-Paket
         befindet sich
-        <a href="../xref/gdv/xport/demo/MyUnfallDatensatz.html#40">MyUnfallDatensatz</a>
+        <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/demo/MyUnfallDatensatz.java">MyUnfallDatensatz</a>
         als Beispielklasse.
         Der Aufbau des Datensatzes wird dabei mit Hilfe der
-        <a href="../xref/gdv/xport/demo/MyFeld210.html">MyFeld210</a>-Enum-Klasse
+        <a href="https://github.com/oboehm/gdv.xport/blob/master/lib/src/main/java/gdv/xport/demo/MyFeld210.java">MyFeld210</a>-Enum-Klasse
         beschrieben.
         In der main-Methode wird die Klasse im Framework registriert.
         Anschliessend wird das
