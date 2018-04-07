@@ -24,8 +24,6 @@ import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.ObjectTester;
 import patterntesting.runtime.junit.SmokeRunner;
 
-import java.lang.reflect.Field;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -221,16 +219,24 @@ public class BezeichnerTest {
     }
 
     /**
-     * Test-Methode fuer {@link Bezeichner#getField(String)}.
-     *
-     * @throws IllegalAccessException the illegal access exception
+     * Test-Methode fuer {@link Bezeichner#of(Enum)}, die als Ergebnis aus
+     * Issue 10 entstanden ist.
      */
     @Test
-    public void testGetField() throws IllegalAccessException {
+    public void testOfEnum() {
+        Bezeichner version = Bezeichner.of(Feld0001.VERSION_SATZART_0210_FEUER);
+        assertEquals(Bezeichner.VERSION_SATZART_0210_FEUER, version);
+    }
+
+    /**
+     * Test-Methode fuer {@link Bezeichner#of(String)}.
+     */
+    @Test
+    public void testOfString() {
         String bezeichnung = "Abgangsdatum";
-        Field field = Bezeichner.getField(bezeichnung);
-        Bezeichner abgangsdat = (Bezeichner) field.get(null);
+        Bezeichner abgangsdat = Bezeichner.of(bezeichnung);
         assertEquals(bezeichnung, abgangsdat.getName());
+        assertEquals(Bezeichner.ABGANGSDAT, abgangsdat);
     }
 
     /**
@@ -242,16 +248,6 @@ public class BezeichnerTest {
         Bezeichner nr = new Bezeichner("Lfd. Personennummer", "LfdPersonenNrImGevo");
         Bezeichner merged = nrImGevo.mergeWith(nr);
         assertEquals("LfdPersonenNrImGevo", merged.getTechnischerName());
-    }
-
-    /**
-     * Test-Methode fuer {@link Bezeichner#of(Enum)}, die als Ergebnis aus
-     * Issue 10 entstanden ist.
-     */
-    @Test
-    public void testOf() {
-        Bezeichner version = Bezeichner.of(Feld0001.VERSION_SATZART_0210_FEUER);
-        assertEquals(Bezeichner.VERSION_SATZART_0210_FEUER, version);
     }
 
     /**

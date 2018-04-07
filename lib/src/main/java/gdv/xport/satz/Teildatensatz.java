@@ -241,11 +241,6 @@ public class Teildatensatz extends Satz {
     @Override
     public Feld getFeld(final Enum<?> feldX) throws IllegalArgumentException {
         return getFeld(Bezeichner.of(feldX));
-//        Feld found = getFeld(feldX.name());
-//        if (found == Feld.NULL_FELD) {
-//            found = getFeld(Feld.toBezeichnung(feldX));
-//        }
-//        return found;
     }
 
     /**

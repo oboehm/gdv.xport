@@ -1124,6 +1124,7 @@ public final class Bezeichner {
      * @param bezeichnung Text der gesuchten Konstanten
      * @return die entsprechende Konstante
      * @since 1.0
+     * @deprecated seit 3.1 durch {@link #of(String)} abgeloest
      */
     public static Field getField(final String bezeichnung) {
         Field[] fields = Bezeichner.class.getFields();
@@ -1178,6 +1179,7 @@ public final class Bezeichner {
      *
      * @param enumFeld Eintrag aus der Enum-Klasse
      * @return entsprechender Bezeichner
+     * @since 3.1
      */
     public static Bezeichner of(final Enum<?> enumFeld) {
         String name = enumFeld.name();
@@ -1190,10 +1192,38 @@ public final class Bezeichner {
                     return (Bezeichner) field.get(null);
                 }
             }
-            return (Bezeichner) getField(name).get(null);
+            return of(name);
         } catch (IllegalAccessException iae) {
-            throw new IllegalArgumentException("cannot Bezeichner for " + enumFeld);
+            throw new IllegalArgumentException("cannot get Bezeichner for " + enumFeld);
         }
+    }
+
+    /**
+     * Liefert zum angegebenen Namen den entsprechenden Bezeichner, falls es
+     * ihn als Konstante gibt. Falls nicht, wird er ganz normal ueber den
+     * Konstruktor erzeugt.
+     *
+     * @param name Bezeichner-Name
+     * @return Bezeichner-Konstante oder neuen Bezeichner
+     * @since 3.1
+     */
+    public static Bezeichner of(String name) {
+        Field[] fields = Bezeichner.class.getFields();
+        for (Field field : fields) {
+            try {
+                Object value = field.get(null);
+                if (value instanceof Bezeichner) {
+                    Bezeichner bez = (Bezeichner) value;
+                    if (name.equalsIgnoreCase(bez.getName()) || name.equalsIgnoreCase(bez.getTechnischerName())) {
+                        return bez;
+                    }
+                }
+            } catch (IllegalAccessException e) {
+                LOG.debug("Will ignore field {}:", field, e);
+            }
+        }
+        LOG.debug("Will generate new Bezeichner '{}'.", name);
+        return new Bezeichner(name);
     }
 
 }
