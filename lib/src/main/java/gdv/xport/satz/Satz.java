@@ -462,7 +462,7 @@ public abstract class Satz {
      * @since 2.0
      */
     public final String getFeldInhalt(final Bezeichner bezeichner) {
-        return this.getFeldInhalt(bezeichner.getName());
+        return this.getFeld(bezeichner).getInhalt().trim();
     }
 
     /**
@@ -471,6 +471,7 @@ public abstract class Satz {
      * @param name gewuenschter Bezeichner des Feldes
      * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
      * @since 0.3
+	 * @deprecated mit 2.0 durch {@link #getFeldInhalt(Bezeichner)} abgeloest
      */
     public final String getFeldInhalt(final String name) {
         return this.getFeld(name).getInhalt().trim();

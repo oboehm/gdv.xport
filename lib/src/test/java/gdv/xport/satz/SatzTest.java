@@ -128,6 +128,14 @@ public final class SatzTest extends AbstractSatzTest {
     }
 
     /**
+     * Testfall fuer Issue #12.
+     */
+    @Test
+    public void testGetFeldInhalt() {
+        assertEquals("0123", satz.getFeldInhalt(Bezeichner.SATZART));
+    }
+
+    /**
      * Ein Export mit einem Teildatensatz sollte aus genau 256 Bytes bestehen,
      * da in der SetUp-Methode das EOD-Zeichen auf "" gesetzt wurde.
      *
