@@ -72,9 +72,13 @@ public enum Feld221Wagnis2Auszahlungen {
      * Nächste Auszahlungssumme in Währungseinheiten.
      * Vereinbarte Auszahlungssumme
      * (12,2 Stellen)
+     * <p>
+     * Typo mit 3.1.1 auf "NAECHSTE_AUSZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN"
+     * korrigiert (vorher: NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN).
+     * </p>
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 64)
-    NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN,
+    NAECHSTE_AUSZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Leerstellen.
