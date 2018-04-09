@@ -358,7 +358,8 @@ public final class Bezeichner {
     public static final Bezeichner HAFTUNG_AB2 = new Bezeichner("Haftung ab");
     public static final Bezeichner HAFTUNG_BIS = new Bezeichner("Haftung bis");
     public static final Bezeichner HAFTUNG_BIS2 = new Bezeichner("Haftung bis");
-    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Haftungswertungssumme in Waehrungseinheiten");
+    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Haftungswertungssumme in Waehrungseinheiten");
+    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN;
     public static final Bezeichner HAUPTFAELLIGKEIT = new Bezeichner("Hauptfaelligkeit");
     public static final Bezeichner HEILKOSTEN = new Bezeichner("Heilkosten");
     public static final Bezeichner HEILKOSTEN_BEITRAGSSATZ = new Bezeichner("Heilkosten Beitragssatz");
