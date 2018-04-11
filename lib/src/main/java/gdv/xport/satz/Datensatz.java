@@ -475,8 +475,8 @@ public class Datensatz extends Satz {
 	 * @since 0.5.1
 	 */
 	@Override
-	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7) throws IOException {
-		if (super.matchesNextTeildatensatz(reader, lastFeld1To7)) {
+	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character lastFeld256) throws IOException {
+		if (super.matchesNextTeildatensatz(reader, lastFeld1To7, lastFeld256)) {
 			if (lastFeld1To7 == null) {
 				//erster Teildatensatz hat noch keine lastFeld...
 				if (this.hasSparte()) {
@@ -486,17 +486,24 @@ public class Datensatz extends Satz {
 				return true;
 			}
 			else {
-				//wir vergleichen komplett die ersten 7 Felder (42 Zeichen) auf Gleichheit....wenn ein Unterschied -> neuer Datensatz,
 				// TODO: ugly aber ich sehe bisher noch keinen eleganten Weg in der aktuellen Struktur ohne umfangreiche Refaktorings.
-				char[] newFeld1To7 = new char[42];
-				int res = reader.read(newFeld1To7);
-				if (res == -1 || res < 42) {
+				char[] newLine = new char[256];
+				int res = reader.read(newLine);
+				if (res == -1 || res < 256) {
 					return false;//EOF
 				}
-				reader.unread(newFeld1To7);
+				reader.unread(newLine);
+				
+                //wir vergleichen komplett die ersten 7 Felder (42 Zeichen) auf Gleichheit....wenn ein Unterschied -> neuer Datensatz,
 				for (int i = 0; i < 42; i++) {
-					if (lastFeld1To7[i] != newFeld1To7[i]) return false;
+					if (lastFeld1To7[i] != newLine[i]) return false;
 				}
+				
+				// Das letzte Feld wird darauf verglichen, dass es groesser als das vorherige ist, falls Teildatensaetze uebersprungen werden
+				if (Character.isDigit(newLine[255]) && Character.isDigit(lastFeld256) && newLine[255] <= lastFeld256) {
+				    return false;
+				}
+				
 				return true;
 			}
 		}
