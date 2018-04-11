@@ -104,7 +104,9 @@ public class BezeichnerIT {
 
     /**
      * Hier werden die moeglichen technischen Namen aus der XML-Beschreibung
-     * ("VUVM2013.xml") ausgelesen und gesammelt.
+     * ("VUVM2013.xml") ausgelesen und gesammelt. Ergaenzt wird die Liste um
+     * technische Namen, die manuell mit "VUVM2013.xml" abgeglichen wurden,
+     * aber nicht ueber die Satzarten eingelesen wurden.
      */
     @BeforeClass
     public static void readTechnischeNamen() {
@@ -114,6 +116,7 @@ public class BezeichnerIT {
                 TECHNISCHE_NAMEN.add(feld.getBezeichner().getTechnischerName());
             }
         }
+        TECHNISCHE_NAMEN.add("AbsoluteJahresrentenaenderungssummeInWE");
     }
 
     /**
