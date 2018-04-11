@@ -133,8 +133,8 @@ public class SatzX extends Datensatz {
 	 * @see gdv.xport.satz.Satz#matchesNextTeildatensatz(PushbackLineNumberReader, char[])
 	 */
 	@Override
-	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7) throws IOException {
-		if (super.matchesNextTeildatensatz(reader, lastFeld1To7)) {
+	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character lastFeld256) throws IOException {
+		if (super.matchesNextTeildatensatz(reader, lastFeld1To7, lastFeld256)) {
 			WagnisartLeben nextLineWagnisEnum = readWagnisart(reader);
 			TeildatensatzNummer nextLineTeildatensatzNummerEnum = readTeildatensatzNummer(reader);
 

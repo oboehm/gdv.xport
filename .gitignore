@@ -13,3 +13,9 @@ lib/gdv-xport-lib.iml
 *.iws
 *.iml
 *.ipr
+
+### Eclipse IDE ###
+bin
+.settings
+.classpath
+.project

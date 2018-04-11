@@ -20,6 +20,8 @@ package gdv.xport.satz;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import gdv.xport.Datenpaket;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
@@ -27,6 +29,7 @@ import gdv.xport.satz.feld.Feld100;
 import gdv.xport.util.SatzTyp;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,8 +58,9 @@ public class DatensatzTest extends AbstractDatensatzTest {
         return new Datensatz();
     }
 
-   /**
+    /**
      * Test method for {@link gdv.xport.satz.Datensatz#Datensatz(java.lang.String, int)}.
+     * 
      * @throws IOException falls der Export schief gegangen ist
      */
     @Test
@@ -124,5 +128,23 @@ public class DatensatzTest extends AbstractDatensatzTest {
         assertEquals("Asterix", orig.getFeld(Feld100.NAME1).getInhalt().trim());
     }
 
-}
+    /**
+     * Testfall fuer Issue 13 (https://github.com/oboehm/gdv.xport/issues/13).
+     */
+    @Test
+    public void testIssue13() throws IOException {
+        Datenpaket datenpaket = new Datenpaket();
+        URL url = this.getClass().getResource("/test_issue13.txt");
+        datenpaket.importFrom(url);
+        
+        // Erwartet 3 Datensaetze 100 mit je zwei Teildatensaetzen 1 und 2
+        assertEquals(3, datenpaket.getDatensaetze().size());
+        for (Datensatz datensatz : datenpaket.getDatensaetze()) {
+            assertEquals(100, datensatz.getSatzart());
+            assertEquals(2, datensatz.getNumberOfTeildatensaetze());
+            assertEquals(1, datensatz.getTeildatensatz(1).getNummer().toInt());
+            assertEquals(2, datensatz.getTeildatensatz(2).getNummer().toInt());
+        }
+    }
 
+}
