@@ -133,7 +133,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
      * Anfängliche Jahresrente in Währungseinheiten.
      * Anfängliche bzw. erste Erlebensfall VS
      */
-    @FeldInfo(teildatensatz = 1, nr = 19, type = Betrag.class, anzahlBytes = 12, byteAdresse = 108)
+    @FeldInfo(teildatensatz = 1, nr = 19, type = Betrag.class, anzahlBytes = 9, byteAdresse = 108)
     ANFAENGLICHE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
