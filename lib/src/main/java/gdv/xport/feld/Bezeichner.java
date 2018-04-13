@@ -625,12 +625,11 @@ public final class Bezeichner {
     public static final Bezeichner SATZNUMMER4 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER5 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER9 = SATZNUMMER;
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG = new Bezeichner("Satznummernwiederholung", "SatzNrnwiederholung");
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG1 = new Bezeichner("Satznummerwiederholung1", "SatzNrnwiederholung1");
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG2 = new Bezeichner("Satznummerwiederholung2", "SatzNrnwiederholung2");
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG3 = new Bezeichner("Satznummerwiederholung3", "SatzNrnwiederholung3");
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG4 = new Bezeichner("Satznummerwiederholung4", "SatzNrnwiederholung4");
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG9 = new Bezeichner("Satznummerwiederholung9", "SatzNrnwiederholung9");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG1 = new Bezeichner("Satznummernwiederholung1", "SatzNrnwiederholung1");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG2 = new Bezeichner("Satznummernwiederholung2", "SatzNrnwiederholung2");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG3 = new Bezeichner("Satznummernwiederholung3", "SatzNrnwiederholung3");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG4 = new Bezeichner("Satznummernwiederholung4", "SatzNrnwiederholung4");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG9 = new Bezeichner("Satznummernwiederholung9", "SatzNrnwiederholung9");
     public static final Bezeichner SCHADENBEARBEITUNGSKOSTEN = new Bezeichner("Schadenbearbeitungskosten");
     public static final Bezeichner SCHLUESSEL_SICHERUNGSEINRICHTUNG = new Bezeichner("Schluessel Sicherungseinrichtung");
     public static final Bezeichner SCHLUSSALTER_DES_WAISEN = new Bezeichner("Schlussalter des Waisen");

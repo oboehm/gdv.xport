@@ -373,7 +373,7 @@ public enum Feld220 {
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 250)
-    SATZNUMMERWIEDERHOLUNG1,
+    SATZNUMMERNWIEDERHOLUNG1,
 
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
@@ -1156,7 +1156,7 @@ public enum Feld220 {
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 250)
-    SATZNUMMERWIEDERHOLUNG2,
+    SATZNUMMERNWIEDERHOLUNG2,
 
     /**
      * Laufende Nummer der versicherten Person (VP) / Personengruppe.
@@ -1358,7 +1358,7 @@ public enum Feld220 {
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 250)
-    SATZNUMMERWIEDERHOLUNG4,
+    SATZNUMMERNWIEDERHOLUNG4,
 
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
@@ -1523,7 +1523,7 @@ public enum Feld220 {
             type = Zeichen.class,
             anzahlBytes = 1,
             byteAdresse = 250)
-    SATZNUMMERWIEDERHOLUNG9,
+    SATZNUMMERNWIEDERHOLUNG9,
 
     /**
      * Laufende Nummer der versicherten Person (VP) / Personengruppe.
