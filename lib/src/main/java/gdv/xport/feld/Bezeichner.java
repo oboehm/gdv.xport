@@ -311,7 +311,7 @@ public final class Bezeichner {
     public static final Bezeichner FREMDER_GRUND_UND_BODEN = new Bezeichner("fremder Grund und Boden", "FremderGrundBoden");
     public static final Bezeichner FREMDNUTZUNG = new Bezeichner("Fremdnutzung");
     public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH = new Bezeichner("Frei vereinbarte Selbstbeteiligung in Waehrungseinheiten für KH", "FreiVereinbarteSelbstbeteiligungInWEKh");
-    public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO = new Bezeichner("Frei vereinbarte Selbstbeteiligung in Waehrungseinheiten fuer Teilkasko im Rahmen der Vollkasko", "FreiVereinbarteSelbstbeteiligungInWETeilkaskoImRahmenVollkasko");
+    public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO = new Bezeichner("Frei vereinbarte Selbstbeteiligung in Waehrungseinheiten fuer Teilkasko im Rahmen der Vollkasko", "FreiVereinbarteSelbstbeteiligungInWETeilkaskoImRahmenVollkasko");
     public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_VOLLKASKO = new Bezeichner("Frei vereinbarte Selbstbeteiligung in Waehrungseinheiten fuer Vollkasko", "FreiVereinbarteSelbstbeteiligungInWEVollkasko");
 
     public static final Bezeichner GAP_DECKUNG = new Bezeichner("GAP-Deckung");
