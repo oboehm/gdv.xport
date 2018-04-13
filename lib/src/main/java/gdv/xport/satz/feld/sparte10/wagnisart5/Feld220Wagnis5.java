@@ -18,7 +18,8 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart5;
 
-import gdv.xport.annotation.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -217,7 +218,7 @@ public enum Feld220Wagnis5 {
      * Rente inklusiv Überschussanrechnung in Währungseinheiten.
      * (10,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 32, type = Betrag.class, anzahlBytes = 12, byteAdresse = 168)
+    @FeldInfo(teildatensatz = 1, nr = 32, type = Betrag.class, anzahlBytes = 12, byteAdresse = 168, bezeichnung = "Rente incl. Ueberschussanrechnung in Waehrungseinheiten")
     RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN,
 
     /**

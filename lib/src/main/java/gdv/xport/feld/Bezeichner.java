@@ -1197,7 +1197,7 @@ public final class Bezeichner {
                     return (Bezeichner) field.get(null);
                 }
             }
-            return of(name);
+            return of(name.replaceAll("_", " "));
         } catch (IllegalAccessException iae) {
             throw new IllegalArgumentException("cannot get Bezeichner for " + enumFeld);
         }
