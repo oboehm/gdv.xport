@@ -52,7 +52,7 @@ public enum Feld221 {
             anzahlBytes = 14,
             byteAdresse = 43
     )
-    KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1,
+    KH_DECKUNGSSUMMEN_IN_WE_TEIL1,
 
     /**
      * KH-Deckungssummen in Waehrungseinheiten Teil 2 (12,2 Stellen).
@@ -65,7 +65,7 @@ public enum Feld221 {
             anzahlBytes = 14,
             byteAdresse = 57
     )
-    KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2,
+    KH_DECKUNGSSUMMEN_IN_WE_TEIL2,
 
     /**
      * KH-Deckungssummen in Waehrungseinheiten Teil 3 (12,2 Stellen).
@@ -78,7 +78,7 @@ public enum Feld221 {
             anzahlBytes = 14,
             byteAdresse = 71
     )
-    KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3,
+    KH_DECKUNGSSUMMEN_IN_WE_TEIL3,
 
     /**
      * KH-Beitrag in Waehrungseinheiten (10,2 Stellen).

@@ -143,7 +143,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
      * 2 = Reduzierung der Beitragssumme VS
      */
     @FeldInfo(teildatensatz = 1, nr = 20, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 117)
-    AENDERUNG_DER_BEITRAGSSUMME,
+    AENDERUNG_BEITRAGSSUMME,
 
     /**
      * Abstand der Beitragssummenänderungstermine.
@@ -153,7 +153,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
      * 999 = unregelmäßige Änderungen/Auszahlungen
      */
     @FeldInfo(teildatensatz = 1, nr = 21, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 118)
-    ABSTAND_DER_BEITRAGSSUMMENAENDERUNGSTERMINE,
+    ABSTAND_BEITRAGSSUMMENAENDERUNGSTERMINE,
 
     /**
      * Beitragssummenänderungs-Prozentsatz.
@@ -184,7 +184,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 25, type = Datum.class, anzahlBytes = 8, byteAdresse = 144)
-    BEGINNDAT_DER_NAECHSTEN_BEITRAGSSUMME,
+    BEGINNDAT_NAECHSTEN_BEITRAGSSUMME,
 
     /**
      * Leerstellen.

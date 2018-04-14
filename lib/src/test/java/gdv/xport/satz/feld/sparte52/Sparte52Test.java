@@ -1,9 +1,12 @@
 package gdv.xport.satz.feld.sparte52;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import gdv.xport.satz.feld.AbstractFeldTest;
+import gdv.xport.satz.feld.sparte51.Feld220;
 import gdv.xport.satz.model.SatzX;
 import patterntesting.runtime.junit.SmokeRunner;
 
@@ -18,7 +21,11 @@ public class Sparte52Test extends AbstractFeldTest {
 
     @Test
     public void testFeld220() {
-        checkEntries(new SatzX(220, Feld220.values()), Feld220.values());
+        // Feld220.TEILDATENSATZ2 nur als Referenz zu Feld220Teil2.
+        Feld220[] felderExklusiveTeildatensatz2 = Arrays.stream(Feld220.values())
+                .filter(feld -> !Feld220.TEILDATENSATZ2.equals(feld))
+                .toArray(Feld220[]::new);
+        checkEntries(new SatzX(220, Feld220.values()), felderExklusiveTeildatensatz2);
     }
 
     @Test

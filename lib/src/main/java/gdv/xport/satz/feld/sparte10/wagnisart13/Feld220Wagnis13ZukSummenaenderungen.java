@@ -163,7 +163,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
      * 999 = unregelmäßige Änderungen/Auszahlungen
      */
     @FeldInfo(teildatensatz = 1, nr = 21, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 118)
-    ABSTAND_DER_ERLEBENSFAL_VS_AENDERUNGSTERMINE,
+    ABSTAND_DER_ERLEBENSFALL_VS_AENDERUNGSTERMINE,
 
     /**
      * Erlebensfall VS-Änderungs-Prozentsatz.
@@ -194,7 +194,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 25, type = Datum.class, anzahlBytes = 8, byteAdresse = 144)
-    BEGINNDAT_DER_NAECHSTEN_ERLEBENSFALL_VS,
+    BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS,
 
     /**
      * Leerstellen.

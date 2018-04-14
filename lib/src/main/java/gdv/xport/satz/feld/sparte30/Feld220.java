@@ -368,6 +368,7 @@ public enum Feld220 {
      * Hier konstant
      */
     @FeldInfo(
+            bezeichnung = "SatzNrnwiederholung1",
             teildatensatz = 1,
             nr = 34,
             type = Zeichen.class,
@@ -1151,6 +1152,7 @@ public enum Feld220 {
      * Hier konstant.
      */
     @FeldInfo(
+            bezeichnung = "SatzNrnwiederholung2",
             teildatensatz = 3,
             nr = 26,
             type = Zeichen.class,
@@ -1353,6 +1355,7 @@ public enum Feld220 {
      * Hier konstant
      */
     @FeldInfo(
+            bezeichnung = "SatzNrnwiederholung4",
             teildatensatz = 4,
             nr = 22,
             type = Zeichen.class,
@@ -1518,6 +1521,7 @@ public enum Feld220 {
      * Hier konstant
      */
     @FeldInfo(
+            bezeichnung = "SatzNrnwiederholung9",
             teildatensatz = 9,
             nr = 18,
             type = Zeichen.class,
