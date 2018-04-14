@@ -218,8 +218,8 @@ public enum Feld220Wagnis5 {
      * (10,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 32, type = Betrag.class, anzahlBytes = 12, byteAdresse = 168)
-    RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN,
-
+    RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WE,
+    
     /**
      * Umtauschrecht.
      * 0 = ja, 1 = nein
