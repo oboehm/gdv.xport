@@ -324,8 +324,8 @@ public enum Feld220 {
             anzahlBytes = 10,
             byteAdresse = 151
     )
-    FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO_IM_RAHMEN_DER_VOLLKASKO,
-
+    FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WE_FUER_TEILKASKO_IM_RAHMEN_VOLLKASKO,
+    
     /**
      * Referenznummer.
      */
@@ -389,7 +389,7 @@ public enum Feld220 {
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
     /**
-     * Teildatensatz 2.
+     * Teildatensatz 2. Siehe {@link Satz220Teil2}.
      */
     @FelderInfo(type = Satz220Teil2.class)
     TEILDATENSATZ2;
