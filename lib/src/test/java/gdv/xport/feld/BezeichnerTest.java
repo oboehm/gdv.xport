@@ -19,6 +19,7 @@
 package gdv.xport.feld;
 
 import gdv.xport.satz.feld.Feld0001;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6ZukSummenaenderungen;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.ObjectTester;
@@ -226,6 +227,17 @@ public class BezeichnerTest {
     public void testOfEnum() {
         Bezeichner version = Bezeichner.of(Feld0001.VERSION_SATZART_0210_FEUER);
         assertEquals(Bezeichner.VERSION_SATZART_0210_FEUER, version);
+    }
+
+    /**
+     * Manchmal sind die Konstanten in den einzelnen Enums leicht
+     * unterschiedlich geschrieben. Trotzdem sollten diese Konstanten
+     * dem entsprechenden Bezeichner zugeordnet werden koennen.
+     */
+    @Test
+    public void testOfEnumName() {
+        Bezeichner beginnDatum = Bezeichner.of(Feld220Wagnis6ZukSummenaenderungen.BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME);
+        assertEquals(Bezeichner.BEGINNDAT_NAECHSTEN_UNFALLSUMME, beginnDatum);
     }
 
     /**

@@ -92,6 +92,7 @@ public final class Bezeichner {
     public static final Bezeichner AENDERUNG_DER_JAHRESRENTE = new Bezeichner("Aenderung der Jahresrente");
     public static final Bezeichner AENDERUNG_DER_UNFALLLEISTUNG = new Bezeichner("Aenderung der Unfallleistung");
     public static final Bezeichner AENDERUNGSDAT = new Bezeichner("Aenderungsdatum", "Aenderungsdat");
+    public static final Bezeichner ANFAENGLICHE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Anfaengliche Beitragssumme in Waehrungseinheiten", "AnfaenglicheBeitragssummeInWE");
     public static final Bezeichner ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Anfaengliche Erlebensfall VS in Waehrungseinheiten");
     public static final Bezeichner ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Anfaengliche Todesfall VS in Waehrungseinheiten");
     public static final Bezeichner ANFAENGLICHE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Anfaengliche Jahresrente in Waehrungseinheiten");
@@ -624,12 +625,11 @@ public final class Bezeichner {
     public static final Bezeichner SATZNUMMER4 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER5 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER9 = SATZNUMMER;
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG = new Bezeichner("Satznummernwiederholung", "SatzNrnwiederholung");
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG1 = new Bezeichner("Satznummerwiederholung1", "SatzNrnwiederholung1");
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG2 = new Bezeichner("Satznummerwiederholung2", "SatzNrnwiederholung2");
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG3 = new Bezeichner("Satznummerwiederholung3", "SatzNrnwiederholung3");
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG4 = new Bezeichner("Satznummerwiederholung4", "SatzNrnwiederholung4");
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG9 = new Bezeichner("Satznummerwiederholung9", "SatzNrnwiederholung9");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG1 = new Bezeichner("Satznummernwiederholung1", "SatzNrnwiederholung1");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG2 = new Bezeichner("Satznummernwiederholung2", "SatzNrnwiederholung2");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG3 = new Bezeichner("Satznummernwiederholung3", "SatzNrnwiederholung3");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG4 = new Bezeichner("Satznummernwiederholung4", "SatzNrnwiederholung4");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG9 = new Bezeichner("Satznummernwiederholung9", "SatzNrnwiederholung9");
     public static final Bezeichner SCHADENBEARBEITUNGSKOSTEN = new Bezeichner("Schadenbearbeitungskosten");
     public static final Bezeichner SCHLUESSEL_SICHERUNGSEINRICHTUNG = new Bezeichner("Schluessel Sicherungseinrichtung");
     public static final Bezeichner SCHLUSSALTER_DES_WAISEN = new Bezeichner("Schlussalter des Waisen");
@@ -1197,7 +1197,7 @@ public final class Bezeichner {
                     return (Bezeichner) field.get(null);
                 }
             }
-            return of(name);
+            return of(name.replaceAll("_", " "));
         } catch (IllegalAccessException iae) {
             throw new IllegalArgumentException("cannot get Bezeichner for " + enumFeld);
         }

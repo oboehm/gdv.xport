@@ -306,7 +306,7 @@ public enum Feld221 {
     LEERSTELLEN2,
 
     /**
-     * Satznummerwiederholung.
+     * Satznummernwiederholung.
      */
     @FeldInfo(
             teildatensatz = 3,
@@ -315,7 +315,7 @@ public enum Feld221 {
             anzahlBytes = 1,
             byteAdresse = 250
     )
-    SATZNUMMERWIEDERHOLUNG,
+    SATZNUMMERNWIEDERHOLUNG,
 
     /**
      * Lfd. Nummer der versicherten Person (VP) / Personengruppe.

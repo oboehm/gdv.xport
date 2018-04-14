@@ -354,7 +354,7 @@ usage: gdv.xport.Main
       <feld bytes="241-241" bezeichnung="passives Kriegsrisiko         "> </feld>
       <feld bytes="242-242" bezeichnung="Kuendigungsklausel VP / Person"> </feld>
       <feld bytes="243-249" bezeichnung="Leerstellen                   ">       </feld>
-      <feld bytes="250-250" bezeichnung="Satznummerwiederholung        ">1</feld>
+      <feld bytes="250-250" bezeichnung="Satznummernwiederholung       ">1</feld>
     </teildatensatz>
     <teildatensatz nr=" ">
       <feld bytes="  1-  4" bezeichnung="Satzart                       ">0220</feld>

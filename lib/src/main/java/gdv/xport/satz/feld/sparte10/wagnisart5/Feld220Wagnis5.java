@@ -217,9 +217,9 @@ public enum Feld220Wagnis5 {
      * Rente inklusiv Überschussanrechnung in Währungseinheiten.
      * (10,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 32, type = Betrag.class, anzahlBytes = 12, byteAdresse = 168)
-    RENTE_INKL_UEBERSCHUSSANRECHNUNG_IN_WE,
-    
+    @FeldInfo(teildatensatz = 1, nr = 32, type = Betrag.class, anzahlBytes = 12, byteAdresse = 168, bezeichnung = "Rente incl. Ueberschussanrechnung in Waehrungseinheiten")
+    RENTE_INCL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN,
+
     /**
      * Umtauschrecht.
      * 0 = ja, 1 = nein

@@ -37,7 +37,7 @@ public abstract class AbstractFeldTest {
      */
     protected static void checkEntries(Satz satz, Enum<?>[] values) {
         for (Enum<?> entry : values) {
-            if (entry.name().startsWith("INTRO")) {
+            if (entry.name().startsWith("INTRO") || entry.name().startsWith("TEILDATENSATZ")) {
                 continue;
             }
             satz.getFeld(entry);
