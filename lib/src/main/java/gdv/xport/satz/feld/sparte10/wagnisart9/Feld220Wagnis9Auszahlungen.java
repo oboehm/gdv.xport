@@ -71,7 +71,7 @@ public enum Feld220Wagnis9Auszahlungen {
      * (9,0 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 9, byteAdresse = 64)
-    NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN,
+    NAECHSTE_AUSZAHLUNGSSUMMER_IN_WE,
 
     /**
      * Nächster Auszahlungstermin.
