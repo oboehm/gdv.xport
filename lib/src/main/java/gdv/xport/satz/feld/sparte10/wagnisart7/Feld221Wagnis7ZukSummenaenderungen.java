@@ -98,7 +98,7 @@ public enum Feld221Wagnis7ZukSummenaenderungen {
      * Anfängliche bzw. erste Beitragssumme
      */
     @FeldInfo(teildatensatz = 1, nr = 15, type = Betrag.class, anzahlBytes = 14, byteAdresse = 106)
-    ANFAENGLICHE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN,
+    ANFAENGLICHE_BEITRAGSSUMME_IN_WE,
 
     /**
      * Absolute Beitragssummenänderungssumme in Währungseinheiten.
