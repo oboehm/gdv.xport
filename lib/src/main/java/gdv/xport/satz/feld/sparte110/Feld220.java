@@ -333,7 +333,7 @@ public enum Feld220 {
             type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 201)
-    DAT_LETZTER_GLASPREISANGLEICHUNG,
+    LETZTER_GLASPREISANGLEICHUNG,
 
 
    /**
@@ -348,7 +348,7 @@ public enum Feld220 {
             anzahlBytes = 1,
             byteAdresse = 209
     )
-    PAUSCHALE_GLASVERSICHERUNG_OHNE_VERSICHERUNGSSUMME,
+    PAUSCHALE_GLAS_VERS_OHNE_VERSICHERUNGSSUMME,
 
     /**
      * Risiko laufende Nummer.
@@ -360,7 +360,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 6,
             byteAdresse = 210)
-    LFD_NUMMER_RISIKO,
+    LFD_NR_RISIKO,
 
     /**
      * Leerstellen.
