@@ -344,7 +344,7 @@ public enum Feld220 {
     /////   Teildatensatz 2   /////////////////////////////////////////////////
 
     /**
-     * Teildatensatz 2.
+     * Teildatensatz 2. Siehe {@link Satz220Teil2}.
      */
     @FelderInfo(type = Satz220Teil2.class)
     TEILDATENSATZ2;
