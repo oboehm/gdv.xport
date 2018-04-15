@@ -18,6 +18,7 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.internal.UmlautMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang.WordUtils;
@@ -438,6 +439,9 @@ public final class Bezeichner {
     public static final Bezeichner KH_DECKUNGSART = new Bezeichner("KH Deckungsart");
     public static final Bezeichner KH_DECKUNGSSUMMEN = new Bezeichner("KH-Deckungssummen");
     public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten");
+    public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1 = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten Teil 1", "KhDeckungssummenInWE");
+    public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2 = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten Teil 2", "KhDeckungssummenInWE");
+    public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3 = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten Teil 3", "KhDeckungssummenInWE");
     public static final Bezeichner KH_RGJ = new Bezeichner("KH-RGJ", "KhRgj");
     public static final Bezeichner KH_SCHAEDEN_AUS_RUECKSTUFUNG = new Bezeichner("KH-Schaeden aus Rueckstufung");
     public static final Bezeichner KH_SF_S_KLASSE = new Bezeichner("KH-SF/S-Klasse", "KhSfSKlasse");
@@ -605,6 +609,7 @@ public final class Bezeichner {
     public static final Bezeichner RISIKOEINSCHRAENKUNG = new Bezeichner("Risikoeinschraenkung");
     public static final Bezeichner RISIKOZUSCHLAEGE = new Bezeichner("Risikozuschlaege");
     public static final Bezeichner RISIKOZUSCHLAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Risikozuschlag in Waehrungseinheiten");
+    public static final Bezeichner RISIKO_LFD_NUMMER = new Bezeichner("Risiko lfd. Nummer", "RisikoLfdNr");
     public static final Bezeichner ROLLE_W_AKZ = new Bezeichner("Rolle W-AKZ", "RolleWAKZ");
     public static final Bezeichner ROHBAU_EINMALBETRAG = new Bezeichner("Rohbau-Einmalbetrag in Waehrungseinheiten");
     public static final Bezeichner RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rueckkaufswert in Waehrungseinheiten");
@@ -1187,12 +1192,25 @@ public final class Bezeichner {
      * @since 3.1
      */
     public static Bezeichner of(final Enum<?> enumFeld) {
+        FeldInfo feldInfo = getFeldInfo(enumFeld);
+        String bezeichnung = feldInfo != null && StringUtils.isNotBlank(feldInfo.bezeichnung())
+                ? feldInfo.bezeichnung()
+                : null;
+        
         String name = enumFeld.name();
         String shortened = name.substring(0, name.length() - 1);
         Field[] fields = Bezeichner.class.getFields();
         try {
             for (Field field : fields) {
                 String fieldName = field.getName();
+                // Vergleiche Enum-Bezeichnung mit Name des Bezeichners
+                if (bezeichnung != null && Bezeichner.class.isAssignableFrom(field.getType())) {
+                    Bezeichner bezeichner = (Bezeichner) field.get(Bezeichner.class);
+                    if (bezeichnung.equals(bezeichner.getName())) {
+                        return bezeichner;
+                    }
+                }
+                // Vergleiche Enum-Konstante mit Name der Bezeichnerkonstante
                 if (name.equalsIgnoreCase(fieldName) || shortened.equalsIgnoreCase(fieldName)) {
                     return (Bezeichner) field.get(null);
                 }
@@ -1200,6 +1218,21 @@ public final class Bezeichner {
             return of(name.replaceAll("_", " "));
         } catch (IllegalAccessException iae) {
             throw new IllegalArgumentException("cannot get Bezeichner for " + enumFeld);
+        }
+    }
+
+    /**
+     * Ermittelt die FeldInfo aus dem uebergebenen Enum.
+     *
+     * @param feldX the feld x
+     * @return the feld info
+     */
+    private static FeldInfo getFeldInfo(final Enum<?> feldX) {
+        try {
+            Field field = feldX.getClass().getField(feldX.name());
+            return field.getAnnotation(FeldInfo.class);
+        } catch (NoSuchFieldException nsfe) {
+            throw new InternalError("no field " + feldX + " (" + nsfe + ")");
         }
     }
 

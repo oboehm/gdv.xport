@@ -355,6 +355,7 @@ public enum Feld220 {
      * Risiko lfd. Nummer. Zur eindeutigen Identifizierung der versicherten Risiken innerhalb der Satzart 220
      */
     @FeldInfo(
+            bezeichnung = "Risiko lfd. Nummer",
             teildatensatz = 1,
             nr = 31,
             type = AlphaNumFeld.class,
