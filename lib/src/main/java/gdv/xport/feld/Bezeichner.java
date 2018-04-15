@@ -439,6 +439,9 @@ public final class Bezeichner {
     public static final Bezeichner KH_DECKUNGSART = new Bezeichner("KH Deckungsart");
     public static final Bezeichner KH_DECKUNGSSUMMEN = new Bezeichner("KH-Deckungssummen");
     public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten");
+    public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1 = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten Teil 1", "KhDeckungssummenInWE");
+    public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2 = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten Teil 2", "KhDeckungssummenInWE");
+    public static final Bezeichner KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3 = new Bezeichner("KH-Deckungssummen in Waehrungseinheiten Teil 3", "KhDeckungssummenInWE");
     public static final Bezeichner KH_RGJ = new Bezeichner("KH-RGJ", "KhRgj");
     public static final Bezeichner KH_SCHAEDEN_AUS_RUECKSTUFUNG = new Bezeichner("KH-Schaeden aus Rueckstufung");
     public static final Bezeichner KH_SF_S_KLASSE = new Bezeichner("KH-SF/S-Klasse", "KhSfSKlasse");
