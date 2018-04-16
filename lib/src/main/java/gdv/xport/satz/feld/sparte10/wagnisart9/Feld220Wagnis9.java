@@ -727,11 +727,59 @@ public enum Feld220Wagnis9 {
      */
     @FeldInfo(teildatensatz = 4, nr = 14, type = NumFeld.class, anzahlBytes = 4, byteAdresse = 91)
     EINRECHNUNGSJAHR,
+    
+    /**
+     * Jahresrente inkl. Gewinnbeteiligung in WE.
+     * (12,2 Stellen)
+     */
+    @FeldInfo(teildatensatz = 4, nr = 15, type = NumFeld.class, anzahlBytes = 14, byteAdresse = 95)
+    JAHRESRENTE_INKL_GEWINNBETEILIGUNG_IN_WAEHRUNGSEINHEITEN,
+    
+    /**
+     * Kapitalzahlungssumme inkl. Gewinnbeteiligung in WE.
+     * (12,2 Stellen)
+     */
+    @FeldInfo(teildatensatz = 4, nr = 16, type = NumFeld.class, anzahlBytes = 14, byteAdresse = 109)
+    KAPITALZAHLUNGSSUMME_INKL_GEWINNBETEILIGUNG_IN_WAEHRUNGSEINHEITEN,
+
+    /**
+     * Termin der Berechnung.
+     * Monat / Jahr (MMJJJJ)
+     */
+    @FeldInfo(teildatensatz = 4, nr = 17, type = Datum.class, anzahlBytes = 6, byteAdresse = 123)
+    TERMIN_DER_BERECHNUNG,
+
+    /**
+     * Altersvorsorgevermögen.
+     * (12,2 Stellen)
+     */
+    @FeldInfo(teildatensatz = 4, nr = 18, type = NumFeld.class, anzahlBytes = 14, byteAdresse = 129)
+    ALTERSVORSORGEVERMOEGEN,
+
+    /**
+     * Beitragsgarantie in Prozent.
+     * (3,2 Stellen)
+     */
+    @FeldInfo(teildatensatz = 4, nr = 19, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 143)
+    BEITRAGSGARANTIE_IN_PROZENT,
+
+    /**
+     * Dauerzulagenantrag.
+     * 0 = nein, 1 = ja
+     */
+    @FeldInfo(teildatensatz = 4, nr = 20, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 148)
+    DAUERZULAGEANTRAG,
+
+    /**
+     * Anzahl der Kinder.
+     */
+    @FeldInfo(teildatensatz = 4, nr = 20, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 149)
+    ANZAHL_DER_KINDER,
 
     /**
      * Leerstellen.
      */
-    @FeldInfo(teildatensatz = 4, nr = 15, type = AlphaNumFeld.class, anzahlBytes = 161, byteAdresse = 95)
+    @FeldInfo(teildatensatz = 4, nr = 21, type = AlphaNumFeld.class, anzahlBytes = 105, byteAdresse = 151)
     LEERSTELLEN4
 
 }

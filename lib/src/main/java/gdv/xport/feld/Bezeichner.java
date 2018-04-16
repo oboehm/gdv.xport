@@ -103,6 +103,7 @@ public final class Bezeichner {
     public static final Bezeichner ANTRAGSDAT = new Bezeichner("Antragsdatum", "Antragsdat");
     public static final Bezeichner ANTRAGSEINGANGSDAT = new Bezeichner("Antragseingangsdatum", "Antragseingangsdatum");
     public static final Bezeichner ANZAHL_DER_AUSZAHLUNGEN = new Bezeichner("Anzahl der Auszahlungen", "AnzAuszahlungen");
+    public static final Bezeichner ANZAHL_DER_KINDER = new Bezeichner("Anzahl der Kinder");
     public static final Bezeichner ANZAHL_DER_VERSICHERTEN_PERSONEN = new Bezeichner("Anzahl der versicherten Personen");
     public static final Bezeichner ART_DES_BERUFSSCHLUESSELVERZEICHNISSES = new Bezeichner("Art des Berufsschluesselverzeichnisses", "ArtDesBerufsschluesselverzeichnisses");
     public static final Bezeichner AUSSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner("Ausschlussdatum VP / Personengruppe", "AusschlussdatVpPersonengruppe");
@@ -117,6 +118,7 @@ public final class Bezeichner {
     public static final Bezeichner AKTUELLE_FONDSJAHRESRENTE_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Aktuelle Fondsjahresrente zum Beginn der Abrufphase");
     public static final Bezeichner ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN = new Bezeichner("Allgemeine Versicherungsbedingungen");
     public static final Bezeichner ALTERSGRUPPE = new Bezeichner("Altersgruppe");
+    public static final Bezeichner ALTERSVORSORGEVERMOEGEN = new Bezeichner("Altersvorsorgevermögen");
     public static final Bezeichner AMTL_KENNZEICHEN = new Bezeichner("Amtl. Kennzeichen");
     public static final Bezeichner ANREDESCHLUESSEL = new Bezeichner("Anredeschluessel");
     public static final Bezeichner ANTEIL_IN_PROZENT = new Bezeichner("Anteil in %");
@@ -171,6 +173,7 @@ public final class Bezeichner {
     public static final Bezeichner BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitragsfreie Erlebensfall VS in Waehrungseinheiten");
     public static final Bezeichner BEITRAGSFREIE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitragsfreie Todesfall VS in Waehrungseinheiten");
     public static final Bezeichner BEITRAGSKLASSE = new Bezeichner("Beitragsklasse");
+    public static final Bezeichner BEITRAGSGARANTIE_IN_PROZENT = new Bezeichner("Beitragsgarantie in Prozent");
     public static final Bezeichner BEITRAGSREGULIERUNG = new Bezeichner("Beitragsregulierung");
     public static final Bezeichner BEITRAGSRUECKGEWAEHR = new Bezeichner("Beitragsrueckgewaehr");
     public static final Bezeichner BEITRAGSUMSTELLUNGSGRUND = new Bezeichner("Beitragsumstellungsgrund");
@@ -238,6 +241,7 @@ public final class Bezeichner {
     public static final Bezeichner DAT_LETZTEN_POSITIVEN_DYNAMIK = new Bezeichner("Datum der letzten positiven Dynamik", "DatLetztenPositivenDynamik");
     public static final Bezeichner DAT_UNVERFALLBARKEIT = new Bezeichner("Datum Unverfallbarkeit");
     public static final Bezeichner DAUERSCHAEDEN_KOERPERLICHE_BEEINTRAECHTIGUNGEN = new Bezeichner("Dauerschaeden / koerperliche Beeintraechtigungen");
+    public static final Bezeichner DAUERZULAGEANTRAG = new Bezeichner("Dauerzulagenantrag");
     public static final Bezeichner DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 1 in Tausend Waehrungseinheiten");
     public static final Bezeichner DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 2 in Tausend Waehrungseinheiten");
     public static final Bezeichner DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 3 in Tausend Waehrungseinheiten");
@@ -380,6 +384,7 @@ public final class Bezeichner {
     public static final Bezeichner JAEHRLICHE_FAHRLEISTUNG = new Bezeichner("Jaehrliche Fahrleistung");
     public static final Bezeichner JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Jahresrente in Waehrungseinheiten");
     public static final Bezeichner JAHRESRENTE_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Jahresrente in Waehrungseinheiten");
+    public static final Bezeichner JAHRESRENTE_INKL_GEWINNBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Jahresrente inkl. Gewinnbeteiligung in WE");
     public static final Bezeichner JAHRESRENTENAENDERUNGS_PROZENTSATZ = new Bezeichner("Jahresrentenaenderungs-Prozentsatz");
 
     public static final Bezeichner KAPITALERTRAGSSTEUER_BEI_ABLAUF = new Bezeichner("Kapitalertragssteuer bei Ablauf");
@@ -387,6 +392,7 @@ public final class Bezeichner {
     public static final Bezeichner KAPITALERTRAGSTEUERPFLICHT = new Bezeichner("Kapitalertragsteuerpflicht");
     public static final Bezeichner KAPITALZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Kapitalzahlungssumme in Waehrungseinheiten");
     public static final Bezeichner KAPITALZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = KAPITALZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN;
+    public static final Bezeichner KAPITALZAHLUNGSSUMME_INKL_GEWINNBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Kapitalzahlungssumme inkl. Gewinnbeteiligung in WE");
     public static final Bezeichner KARENZZEIT = new Bezeichner("Karenzzeit");
     public static final Bezeichner KASKO_BEGINNJAHR = new Bezeichner("Kasko-Beginnjahr");
     public static final Bezeichner KAUFPREIS = new Bezeichner("Kaufpreis");
@@ -697,6 +703,7 @@ public final class Bezeichner {
     public static final Bezeichner TARIFZONE = new Bezeichner("Tarifzone");
     public static final Bezeichner TEILDATENSATZNUMMER = new Bezeichner("Teildatensatznummer");
     public static final Bezeichner TEILKAPITALISIERUNG = new Bezeichner("Teilkapitalisierung");
+    public static final Bezeichner TERMIN_DER_BERECHNUNG = new Bezeichner("Termin der Berechnung");
     public static final Bezeichner THESAUR = new Bezeichner("Thesaur");
     public static final Bezeichner TITEL = new Bezeichner("Titel");
     public static final Bezeichner TOD = new Bezeichner("Tod");
