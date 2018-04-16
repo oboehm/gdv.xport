@@ -152,8 +152,17 @@ public final class Bezeichner {
 
     public static final Bezeichner BAUARTKLASSE = new Bezeichner("Bauartklasse");
     public static final Bezeichner BAUJAHR = new Bezeichner("Baujahr");
+    public static final Bezeichner BAUSTEINSCHLUESSEL = new Bezeichner("Bausteinschluessel");
+    public static final Bezeichner BAUSTEINBEZEICHNUNG = new Bezeichner("Bausteinbezeichnung");
+    public static final Bezeichner BAUSTEIN_ABSCHLAEGE_IN_PROZENT = new Bezeichner("Baustein-Abschlaege in Prozent", "BausteinAbschlaegeInProz");
+    public static final Bezeichner BAUSTEIN_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Baustein-Abschlaege in Waehrungseinheiten");
+    public static final Bezeichner BAUSTEIN_BEGINN = new Bezeichner("Baustein-Beginn");
+    public static final Bezeichner BAUSTEIN_AUSSCHLUSS = new Bezeichner("Baustein-Ausschluss");
+    public static final Bezeichner BAUSTEIN_AENDERUNGSDAT = new Bezeichner("Baustein-Aenderungsdatum");
     public static final Bezeichner BAUSTEIN_GESAMTBEITRAG_1_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Baustein-Gesamtbeitrag 1 in Waehrungseinheiten");
     public static final Bezeichner BAUSTEIN_GESAMTBEITRAG_2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Baustein-Gesamtbeitrag 2 in Waehrungseinheiten");
+    public static final Bezeichner BAUSTEIN_ZUSCHLAEGE_IN_PROZENT = new Bezeichner("Baustein-Zuschlaege in Prozent", "BausteinZuschlaegeInProz");
+    public static final Bezeichner BAUSTEIN_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Baustein-Zuschlaege in Waehrungseinheiten");
     public static final Bezeichner BEDINGUNGEN = new Bezeichner("Bedingungen");
     public static final Bezeichner BEGINN = new Bezeichner("Beginn");
     public static final Bezeichner BEGINN_ABRUFPHASE = new Bezeichner("Beginn Abrufphase");
@@ -668,9 +677,13 @@ public final class Bezeichner {
     public static final Bezeichner SCHLUSSALTER_DES_WAISEN = new Bezeichner("Schlussalter des Waisen");
     public static final Bezeichner SCHUTZBRIEF_VERKEHRSSERVICE = new Bezeichner("Schutzbrief /Verkehrsservice");
     public static final Bezeichner SELBSTBEHALT = new Bezeichner("Selbstbehalt");
+    public static final Bezeichner SELBSTBEHALT_IN_PROZENT = new Bezeichner("Selbstbehalt in Prozent");
+    public static final Bezeichner SELBSTBEHALT_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Selbstbehalt in Waehrungseinheiten");
     public static final Bezeichner SELBSTBETEILIGUNG = new Bezeichner("Selbstbeteiligung");
     public static final Bezeichner SELBSTBETEILIGUNG_IN_PROZENT = new Bezeichner("Selbstbeteiligung in %");
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Selbstbeteiligung in Waehrungseinheiten");
+    public static final Bezeichner SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_MIND = new Bezeichner("Selbstbeteiligung in WE (mind.)", "SelbstbeteiligungInWEMind");
+    public static final Bezeichner SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_MAX = new Bezeichner("Selbstbeteiligung in WE (max.)", "SelbstbeteiligungInWEMax");
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WE_MAX = new Bezeichner("Selbstbeteiligung in WE (max.)");
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WE_MIND = new Bezeichner("Selbstbeteiligung in WE (mind.)");
     public static final Bezeichner SEPA_GLAEUBIGERIDENTIFIKATIONSNUMMER = new Bezeichner("SEPA-Glaeubigeridentifikationsnummer", "SEPAGlaeubigeridentifikationsnummer");
