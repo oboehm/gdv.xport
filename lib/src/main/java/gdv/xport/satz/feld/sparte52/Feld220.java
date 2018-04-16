@@ -375,6 +375,30 @@ public enum Feld220 {
     PERSONENNUMMER_LFD_NUMMER,
 
     /**
+     * Schutzbrief /Verkehrsservice.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 35,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 1,
+            byteAdresse = 199
+    )
+    SCHUTZBRIEF_VERKEHRSSERVICE,
+
+    /**
+     * GAP-Deckung.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 36,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 1,
+            byteAdresse = 200
+    )
+    GAP_DECKUNG,
+
+    /**
      * Satznummer.
      */
     @FeldInfo(
