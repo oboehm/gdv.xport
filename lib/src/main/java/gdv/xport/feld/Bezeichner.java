@@ -68,6 +68,7 @@ public final class Bezeichner {
     public static final Bezeichner ABSCHLAG3_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-3 in Waehrungseinheiten", "Abschlag1InWE");
     public static final Bezeichner ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlagsbetrag in Waehrungseinheiten");
     public static final Bezeichner ABSCHLAG_IN_PROZENT = new Bezeichner("Abschlag in %");
+    public static final Bezeichner ABSCHLAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag in Währungseinheiten");
     public static final Bezeichner ABSCHLUSSPROVISION = new Bezeichner("Abschlussprovision");
     public static final Bezeichner ABSENDER = new Bezeichner("Absender");
     public static final Bezeichner ABSOLUTE_BEITRAGSSUMMENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absolute Beitragssummenaenderungssumme in Waehrungseinheiten");
@@ -116,6 +117,7 @@ public final class Bezeichner {
     public static final Bezeichner AKTUELLE_BEITRAGSDEPOTSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("aktuelle Beitragsdepotsumme in Waehrungseinheiten");
     public static final Bezeichner AKTUELLE_FONDSJAHRESRENTE_ZUM_ABLAUF_INKL_ABRUFPHASE = new Bezeichner("Aktuelle Fondsjahresrente zum Ablauf (inkl. Abrufphase)");
     public static final Bezeichner AKTUELLE_FONDSJAHRESRENTE_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Aktuelle Fondsjahresrente zum Beginn der Abrufphase");
+    public static final Bezeichner ALLGEMEINE_BEDINGUNGEN_FUER_DIE_VERKEHRSSERVICE_VERSICHERUNG = new Bezeichner("Allgemeine Bedingungen für die Verkehrsservice-Versicherung");
     public static final Bezeichner ALLGEMEINE_VERSICHERUNGSBEDINGUNGEN = new Bezeichner("Allgemeine Versicherungsbedingungen");
     public static final Bezeichner ALTERSGRUPPE = new Bezeichner("Altersgruppe");
     public static final Bezeichner ALTERSVORSORGEVERMOEGEN = new Bezeichner("Altersvorsorgevermögen");
@@ -509,6 +511,7 @@ public final class Bezeichner {
     public static final Bezeichner LFD_NUMMER1 = new Bezeichner("Lfd. Nummer");
     public static final Bezeichner LFD_NUMMER2 = new Bezeichner("Lfd. Nummer");
     public static final Bezeichner LFD_NUMMER_DES_FONDS = new Bezeichner("Lfd. Nummer des Fonds");
+    public static final Bezeichner LFD_NUMMER_DES_VERSICHERTEN_FAHRZEUGES = new Bezeichner("lfd. Nummer des versicherten Fahrzeuges");
     public static final Bezeichner LFD_NUMMER_SATZART = new Bezeichner("Lfd. Nummer der Satzart");
     public static final Bezeichner LFD_NUMMER_VP = new Bezeichner("Lfd. Nummer der versicherten Person (VP)");
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
@@ -940,6 +943,7 @@ public final class Bezeichner {
     public static final Bezeichner ZUSCHLAG2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zuschlag-2 in Waehrungseinheiten");
     public static final Bezeichner ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zuschlagsbetrag in Waehrungseinheiten");
     public static final Bezeichner ZUSCHLAG_IN_PROZENT = new Bezeichner("Zuschlag in %");
+    public static final Bezeichner ZUSCHLAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zuschlag in Währungseinheiten");
     public static final Bezeichner ZUZAHLUNGSBETRAG_IN_WE = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten", "ZuzahlungsbetragInWE");
     public static final Bezeichner ZUZAHLUNGSDAT = new Bezeichner("Zuzahlungsdatum", "Zuzahlungsdat");
     public static final Bezeichner ZUZAHLUNGSRECHT = new Bezeichner("Zuzahlungsrecht");
