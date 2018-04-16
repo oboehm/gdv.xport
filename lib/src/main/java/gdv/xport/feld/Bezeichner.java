@@ -1128,8 +1128,8 @@ public final class Bezeichner {
     }
 
     /**
-     * Zum Vergleich zweier {@link Bezeichner} wird zuerst der Name und dann der
-     * technische Name herangezogen.
+     * Zum Vergleich zweier {@link Bezeichner} wird der technische Name
+     * herangezogen.
      *
      * @param obj der andere Bezeichner
      * @return true, wenn er als gleich angesehen wird

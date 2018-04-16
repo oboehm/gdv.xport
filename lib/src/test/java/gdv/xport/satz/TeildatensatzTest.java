@@ -18,19 +18,20 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.*;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.common.VertragsStatus;
+import gdv.xport.util.SatzFactory;
+import net.sf.oval.ConstraintViolation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
-import gdv.xport.util.SatzFactory;
-import net.sf.oval.ConstraintViolation;
-import org.junit.Test;
-import org.apache.logging.log4j.*;
+import static org.junit.Assert.*;
 
 /**
  * Test-Klasse fuer {@link Teildatensatz}.
@@ -169,6 +170,17 @@ public class TeildatensatzTest extends AbstractSatzTest {
         iban1.setInhalt("DE99300606010006605605");
         List<ConstraintViolation> violations = adressteil4.validate();
         assertEquals(1, violations.size());
+    }
+
+    /**
+     * Falls versucht wird, ueberlappende Felder hinzuzufuegen, sollte das
+     * zurueckgewiesen werden.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddOverlapping() {
+        Teildatensatz tds = new Teildatensatz(4711, 1);
+        tds.add(new AlphaNumFeld(Bezeichner.NAME1, 10, 100));
+        tds.add(new AlphaNumFeld(Bezeichner.NAME2, 10, 101));
     }
 
 }
