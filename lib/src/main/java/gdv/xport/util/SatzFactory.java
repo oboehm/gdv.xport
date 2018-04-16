@@ -194,6 +194,7 @@ public final class SatzFactory {
         registerEnum(Feld220Wagnis9ZukSummenaenderungen.class, new SatzTyp(220, 10, 9,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
         
+        // Sparte 51
         registerEnum(Feld221.class, new SatzTyp(221, 51));
 
     }

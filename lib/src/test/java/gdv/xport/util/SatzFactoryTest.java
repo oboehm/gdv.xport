@@ -326,16 +326,41 @@ public final class SatzFactoryTest extends AbstractTest {
 
     /**
      * Hier testen wir mit Satz fuer die Kfz-Haftpflicht (0221.051), ob keine
-     * Loecher im Datensatz sind.
+     * Loecher im Datensatz sind. Problem bereiteten hier urspruenglich die
+     * KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL#-Bezeichner.
      */
     @Test
     public void testSatzart0221051() {
         SatzTyp kfz = new SatzTyp(221, 51);
         Datensatz satz = SatzFactory.getDatensatz(kfz);
-        Teildatensatz tds = satz.getTeildatensatz(1);
+        checkDatensatz(satz);
+    }
+
+    /**
+     * Hier testen wir, ob brav alle Felder ausgefuellt und keine Luecken
+     * vorhanden sind. Bei Satzart 250 fehlt noch die Satznummer auf
+     * Adresse 51, weswegen der Test diese Satzart (ncoh) ausblendet.
+     */
+    @Test
+    public void testSatzarten() {
+        Datenpaket datenpaket = SatzFactory.getAllSupportedSaetze();
+        for (Datensatz datensatz : datenpaket.getDatensaetze()) {
+            if (datensatz.getSatzart() < 250) {
+                checkDatensatz(datensatz);
+            }
+        }
+    }
+
+    private static void checkDatensatz(Datensatz satz) {
+        for (Teildatensatz tds : satz.getTeildatensaetze()) {
+            checkTeildatensatz(tds);
+        }
+    }
+
+    private static void checkTeildatensatz(Teildatensatz tds) {
         int startByte = 1;
         for (Feld feld : tds.getFelder()) {
-            assertEquals("Feld missing before " + feld.getBezeichner(), startByte, feld.getByteAdresse());
+            assertEquals(tds + ": Feld missing before " + feld.getBezeichner(), startByte, feld.getByteAdresse());
             startByte = feld.getEndAdresse() + 1;
         }
     }
