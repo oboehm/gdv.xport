@@ -18,10 +18,6 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import gdv.xport.Datenpaket;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.demo.MyFeld210;
@@ -30,20 +26,21 @@ import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.SatzX;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import patterntesting.runtime.junit.SmokeRunner;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import patterntesting.runtime.junit.SmokeRunner;
+import static org.junit.Assert.*;
 
 /**
  * JUnit-Test fuer SatzFactory.
@@ -324,6 +321,22 @@ public final class SatzFactoryTest extends AbstractTest {
             checkGetDatensatz(210, 30, MyFeld210.values());
         } finally {
             SatzFactory.registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, 210, 30);
+        }
+    }
+
+    /**
+     * Hier testen wir mit Satz fuer die Kfz-Haftpflicht (0221.051), ob keine
+     * Loecher im Datensatz sind.
+     */
+    @Test
+    public void testSatzart0221051() {
+        SatzTyp kfz = new SatzTyp(221, 51);
+        Datensatz satz = SatzFactory.getDatensatz(kfz);
+        Teildatensatz tds = satz.getTeildatensatz(1);
+        int startByte = 1;
+        for (Feld feld : tds.getFelder()) {
+            assertEquals("Feld missing before " + feld.getBezeichner(), startByte, feld.getByteAdresse());
+            startByte = feld.getEndAdresse() + 1;
         }
     }
 

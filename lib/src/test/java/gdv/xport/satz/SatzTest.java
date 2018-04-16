@@ -19,6 +19,7 @@
 package gdv.xport.satz;
 
 import gdv.xport.annotation.FelderInfo;
+import gdv.xport.config.Config;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
@@ -163,7 +164,7 @@ public final class SatzTest extends AbstractSatzTest {
         LOG.info("File \"{}\" created.", tmpFile);
         try {
             satz.export(tmpFile);
-            String exported = FileUtils.readFileToString(tmpFile);
+            String exported = FileUtils.readFileToString(tmpFile, Config.DEFAULT_ENCODING);
             assertEquals(satz.toLongString(), exported);
         } finally {
             tmpFile.delete();
@@ -239,7 +240,7 @@ public final class SatzTest extends AbstractSatzTest {
         LOG.info("File \"" + tmpFile + "\" created.");
         try {
             String fileContent = satz.toLongString();
-            FileUtils.writeStringToFile(tmpFile, fileContent);
+            FileUtils.writeStringToFile(tmpFile, fileContent, Config.DEFAULT_ENCODING);
             satz.importFrom(tmpFile);
             assertEquals(fileContent, satz.toLongString());
         } finally {

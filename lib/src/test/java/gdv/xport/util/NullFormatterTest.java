@@ -24,7 +24,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.SmokeRunner;
 
@@ -69,7 +68,6 @@ public class NullFormatterTest extends AbstractFormatterTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @IntegrationTest
     @Test
     public void testWriteDatenpaketToFile() throws IOException {
         File output = File.createTempFile("output", ".txt");
@@ -93,7 +91,6 @@ public class NullFormatterTest extends AbstractFormatterTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @IntegrationTest
     @Test
     public void testNotice() throws IOException {
         File output = new File("target", "testNotice.txt");

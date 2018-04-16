@@ -182,6 +182,18 @@ public enum Feld221 {
     PERSONENNUMMER_LFD_NUMMER,
 
     /**
+     * Leerstellen .
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 19,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 83,
+            byteAdresse = 173
+    )
+    LEERSTELLEN,
+
+    /**
      * Satznummer.
      */
     @FeldInfo(
