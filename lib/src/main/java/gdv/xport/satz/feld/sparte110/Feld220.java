@@ -364,6 +364,21 @@ public enum Feld220 {
     LFD_NUMMER_RISIKO,
 
     /**
+     * Referenznummer.
+     *
+     * Wenn in einem gebündelten Vertrag (Bündelungskennzeichen = 1) mehrere
+     * gleiche Sparten unter der selben Versicherungsscheinnummer gebündelt
+     * werden, müssen diese im Feld Referenznummer unterschieden werden.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 32,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 7,
+            byteAdresse = 216)
+    REFERENZNUMMER,
+
+    /**
      * Leerstellen.
      */
     @FeldInfo(
