@@ -54,6 +54,7 @@ public class Satz220 extends SpartensatzX {
         MAPPING.put(51, gdv.xport.satz.feld.sparte51.Feld220.values());
         MAPPING.put(52, gdv.xport.satz.feld.sparte52.Feld220.values());
         MAPPING.put(53, gdv.xport.satz.feld.sparte53.Feld220.values());
+        MAPPING.put(59, gdv.xport.satz.feld.sparte59.Feld220.values());
         MAPPING.put(70, gdv.xport.satz.feld.sparte70.Feld220.values());
         MAPPING.put(110, gdv.xport.satz.feld.sparte110.Feld220.values());
         MAPPING.put(140, gdv.xport.satz.feld.sparte140.Feld220.values());

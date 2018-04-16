@@ -22,6 +22,7 @@ import gdv.xport.satz.feld.sparte51.Sparte51Test;
 import gdv.xport.satz.feld.sparte510.Sparte510Test;
 import gdv.xport.satz.feld.sparte52.Sparte52Test;
 import gdv.xport.satz.feld.sparte53.Sparte53Test;
+import gdv.xport.satz.feld.sparte59.Sparte59Test;
 import gdv.xport.satz.feld.sparte70.Sparte70Test;
 
 /**
@@ -36,7 +37,7 @@ import gdv.xport.satz.feld.sparte70.Sparte70Test;
         Sparte10Wagnis5Test.class, Sparte10Wagnis6Test.class, Sparte10Wagnis7Test.class, Sparte10Wagnis9Test.class,
         Sparte10Test.class, Sparte110Test.class, Sparte130Test.class, Sparte140Test.class, Sparte30Test.class,
         Sparte40Test.class, Sparte50Test.class, Sparte51Test.class, Sparte52Test.class, Sparte53Test.class,
-        Sparte70Test.class, Sparte510Test.class })
+        Sparte70Test.class, Sparte510Test.class, Sparte59Test.class })
 public class SpartenTests {
 
 }

@@ -347,6 +347,12 @@ public final class Bezeichner {
     public static final Bezeichner GELTUNGSBEREICHEINSCHRAENKUNG = new Bezeichner("Geltungsbereicheinschraenkung");
     public static final Bezeichner GENESUNGSGELD = new Bezeichner("Genesungsgeld");
     public static final Bezeichner GENESUNGSGELD_BEITRAGSSATZ = new Bezeichner("Genesungsgeld Beitragssatz");
+    public static final Bezeichner GEPAECK_BEGINN = new Bezeichner("Gepäck-Beginn");
+    public static final Bezeichner GEPAECK_AUSSCHLUSS = new Bezeichner("Gepäck-Ausschluss");
+    public static final Bezeichner GEPAECK_AENDERUNGSDAT = new Bezeichner("Gepäck-Änderungsdatum");
+    public static final Bezeichner GEPAECKVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gepäckversicherungssumme in Währungseinheiten");
+    public static final Bezeichner GEPAECKVERSICHERUNGSSUMME_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Gepäckversicherungssumme in Tausend Währungseinheiten");
+    public static final Bezeichner GEPAECK_BEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gepäck-Beitrag in Währungseinheiten");
     public static final Bezeichner GESAMTBEITRAG = new Bezeichner("Gesamtbeitrag");
     public static final Bezeichner GESAMTBEITRAG_BRUTTO = new Bezeichner("Gesamtbeitrag-Brutto(Inkasso)");
     public static final Bezeichner GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gesamtbeitrag (Brutto) in Waehrungseinheiten", "GesbeitragBruttoInWE");
@@ -415,6 +421,7 @@ public final class Bezeichner {
     public static final Bezeichner KENNZEICHEN_ABWEICHENDE_ABSCHLUSSPROVISION = new Bezeichner("Kennzeichen fuer abweichende Abschlussprovision");
     public static final Bezeichner KENNZEICHEN_ABWEICHENDE_BESTANDSPFLEGEPROVISION = new Bezeichner("Kennzeichen fuer abweichende Bestandspflegeprovision");
     public static final Bezeichner KENNZEICHEN_ABWEICHENDE_FOLGEPROVISION = new Bezeichner("Kennzeichen fuer abweichende Folgeprovision");
+    public static final Bezeichner KENNZEICHEN_ABWEICHENDE_PROVISION = new Bezeichner("Kennzeichen fuer abweichende Provision");
     public static final Bezeichner KENNZEICHEN_ABWEICHENDE_VU_NR = new Bezeichner("Kennzeichen zur Erlaeuterung der abweichenden VU-Nr.");
     public static final Bezeichner KENNZEICHEN_FUER_ABWEICHENDE_ABSCHLUSSPROVISION = new Bezeichner("Kennzeichen fuer abweichende Abschlussprovision");
     public static final Bezeichner KENNZEICHEN_FUER_ABWEICHENDE_FOLGEPROVISION = new Bezeichner("Kennzeichen fuer abweichende Folgeprovision");
@@ -710,6 +717,7 @@ public final class Bezeichner {
     public static final Bezeichner TARIF = new Bezeichner("Tarif");
     public static final Bezeichner TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGTEIL_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Tarifbeitrag 100 % fuer Kraftfahrt-Fahrzeugteil in Waehrungseinheiten");
     public static final Bezeichner TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_FAHRZEUGVOLL_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Tarifbeitrag 100 % fuer Kraftfahrt-Fahrzeugvoll in Waehrungseinheiten");
+    public static final Bezeichner TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_GEPAECKVERS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Tarifbeitrag 100 % fuer Kraftfahrt-Gepäckvers. in Waehrungseinheiten");
     public static final Bezeichner TARIFBEITRAG_100_PROZENT_FUER_KRAFTFAHRT_HAFTPFLICHT_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Tarifbeitrag 100 % fuer Kraftfahrt-Haftpflicht in Waehrungseinheiten");
     public static final Bezeichner TARIFBEZEICHNUNG = new Bezeichner("Tarifbezeichnung");
     public static final Bezeichner TARIFBEZEICHNUNG_DES_FOLGETARIFS = new Bezeichner("Tarifbezeichnung des Folgetarifs");
