@@ -328,6 +328,7 @@ public enum Feld220 {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(
+            bezeichnung = "Datum der letzten Glaspreisangleichung",
             teildatensatz = 1,
             nr = 29,
             type = Datum.class,
