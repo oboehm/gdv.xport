@@ -18,9 +18,13 @@
 
 package gdv.xport.satz.xml;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Teildatensatz;
+import gdv.xport.util.SatzTyp;
+import gdv.xport.util.XmlHelper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -28,15 +32,9 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Teildatensatz;
-import gdv.xport.util.SatzTyp;
-import gdv.xport.util.XmlHelper;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Im Gegensatz zum SOP-Ansatz und zur SatzX-Klasse wird hier eine XML-
@@ -48,7 +46,7 @@ import gdv.xport.util.XmlHelper;
  * @author oliver (oliver.boehm@gmail.com)
  * @since 1.0 (30.07.2014)
  */
-public final class SatzXml extends Datensatz {
+public class SatzXml extends Datensatz {
 
     private static final Logger LOG = LogManager.getLogger(SatzXml.class);
 

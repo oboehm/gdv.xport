@@ -31,9 +31,10 @@ import java.util.*;
 /**
  * Hier wird jetzt eine XML-Beschreibung verwendet, um die Saetze fuer die
  * einzelnen Satzarten aufzusetzen. Als Basis fuer die XML-Beschreibung wurde
- * die Datei "VUVM2013_010713.xml" genommen, die ueber <a
+ * urspruenglich die Datei "VUVM2013_010713.xml" genommen, die ueber <a
  * href="http://www.gdv-online.de/vuvm/bestand/best_2013.htm"
- * >www.gdv-online.de</a> heruntergeladen werden kann.
+ * >www.gdv-online.de</a> heruntergeladen werden kann. Inzwischen wird die
+ * aktueller "VUVM2015.xml" verwendet.
  *
  * @author oliver
  * @since 1.0 (15.08.2014)
@@ -55,7 +56,7 @@ public class XmlService {
         try {
             return getInstance("VUVM2015.xml");
         } catch (XMLStreamException ex) {
-            LOG.error("Cannot parse XML from resource 'VUVM2013.xml':", ex);
+            LOG.error("Cannot parse XML from resource 'VUVM2015.xml':", ex);
             return new XmlService();
         }
     }

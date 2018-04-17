@@ -534,6 +534,7 @@ public final class Bezeichner {
     public static final Bezeichner LFD_NUMMER = new Bezeichner("Lfd. Nummer");
     public static final Bezeichner LFD_NUMMER1 = new Bezeichner("Lfd. Nummer");
     public static final Bezeichner LFD_NUMMER2 = new Bezeichner("Lfd. Nummer");
+    public static final Bezeichner LFD_NUMMER_DEKLARATION = new Bezeichner("Lfd. Nr. der Deklaration", "LfdNrDeklaration");
     public static final Bezeichner LFD_NUMMER_DES_FONDS = new Bezeichner("Lfd. Nummer des Fonds");
     public static final Bezeichner LFD_NUMMER_DES_VERSICHERTEN_FAHRZEUGES = new Bezeichner("lfd. Nummer des versicherten Fahrzeuges");
     public static final Bezeichner LFD_NUMMER_SATZART = new Bezeichner("Lfd. Nummer der Satzart");
