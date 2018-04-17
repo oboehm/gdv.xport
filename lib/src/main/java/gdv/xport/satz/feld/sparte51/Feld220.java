@@ -105,6 +105,7 @@ public enum Feld220 {
      * KH-Deckungssummen Personenschaeden.
      */
     @FeldInfo(
+            bezeichnung = "KH-Deckungssummen in Waehrungseinheiten Teil 1",
             teildatensatz = 1,
             nr = 13,
             type = NumFeld.class,
@@ -117,6 +118,7 @@ public enum Feld220 {
      * KH-Deckungssummen Sachschaeden.
      */
     @FeldInfo(
+            bezeichnung = "KH-Deckungssummen in Waehrungseinheiten Teil 2",
             teildatensatz = 1,
             nr = 14,
             type = NumFeld.class,
@@ -129,6 +131,7 @@ public enum Feld220 {
      * KH-Deckungssummen Vermoegensschaeden.
      */
     @FeldInfo(
+            bezeichnung = "KH-Deckungssummen in Waehrungseinheiten Teil 3",
             teildatensatz = 1,
             nr = 15,
             type = NumFeld.class,
