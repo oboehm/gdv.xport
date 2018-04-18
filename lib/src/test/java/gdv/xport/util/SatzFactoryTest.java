@@ -345,7 +345,7 @@ public final class SatzFactoryTest extends AbstractTest {
     public void testSatzarten() {
         Datenpaket datenpaket = SatzFactory.getAllSupportedSaetze();
         for (Datensatz datensatz : datenpaket.getDatensaetze()) {
-            if (datensatz.getSatzart() < 250) {
+            if (datensatz.getSatzart() <= 250) {
                 checkDatensatz(datensatz);
             }
         }

@@ -70,6 +70,7 @@ public final class SatzFactory {
         register(Satz220.class, 220);
         register(Satz221.class, 221);
         register(Satz230.class, 230);
+        register(Satz250.class, 250);
         register(Nachsatz.class, 9999);
 
         // Sparte 10 - Leben - Wagnisart 0

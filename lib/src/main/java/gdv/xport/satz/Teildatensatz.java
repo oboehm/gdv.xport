@@ -21,10 +21,7 @@
 package gdv.xport.satz;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -57,7 +54,7 @@ public class Teildatensatz extends Satz {
     private final SortedSet<Feld> sortedFelder = new TreeSet<>();
 
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
-    private final Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
+    private Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
@@ -101,12 +98,17 @@ public class Teildatensatz extends Satz {
      * @param other der andere Teildatensatz
      */
     public Teildatensatz(final Teildatensatz other) {
-        this(other.getSatzart(), other.getNummer().toInt());
+        this(other.getSatzart(), other.getNummer());
         for (Entry<Bezeichner, Feld> entry : other.datenfelder.entrySet()) {
             Feld copy = (Feld) entry.getValue().clone();
             this.datenfelder.put(entry.getKey(), copy);
             this.sortedFelder.add(copy);
         }
+    }
+    
+    private Teildatensatz(final int satzart, final Zeichen satznummer) {
+        super(satzart, 0);
+        this.satznummer = satznummer;
     }
 
     /**
@@ -147,6 +149,21 @@ public class Teildatensatz extends Satz {
      */
     public Zeichen getNummer() {
         return this.satznummer;
+    }
+
+    /**
+     * Da nicht alle Satzarten die Satznummer am Ende des Satzes haben, kann
+     * man dies ueber diese Methode korrigieren.
+     *
+     * @param satznummer das neue Feld fuer die Satznummer
+     * @since 3.2
+     */
+    public void setSatznummer(Zeichen satznummer) {
+        String nr = this.satznummer.getInhalt();
+        remove(Bezeichner.SATZNUMMER);
+        this.satznummer = new Zeichen(satznummer);
+        this.satznummer.setInhalt(nr);
+        add(this.satznummer);
     }
 
     /**
@@ -209,7 +226,12 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public void remove(final Bezeichner bezeichner) {
-        this.datenfelder.remove(bezeichner);
+        Feld feld = this.datenfelder.get(bezeichner);
+        if (feld != null) {
+            this.datenfelder.remove(bezeichner);
+            this.sortedFelder.remove(feld);
+            LOG.debug("{} was removed from {}.", bezeichner, this);
+        }
     }
 
     /**

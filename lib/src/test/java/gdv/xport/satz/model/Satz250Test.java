@@ -19,6 +19,7 @@ package gdv.xport.satz.model;
 
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
+import gdv.xport.satz.Teildatensatz;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -40,6 +41,18 @@ public final class Satz250Test {
     public void testGetLfdNrDeklaration() {
         Feld lfdNr = satz.getFeld(Bezeichner.LFD_NUMMER_DEKLARATION);
         assertEquals("00000000", lfdNr.getInhalt());
+    }
+
+    /**
+     * Die Satznummer kommt nach der "Lfd. Nr. Deklaration" und sollte laut
+     * Spezifikation immer auf 1 stehen.
+     */
+    @Test
+    public void testGetSatznummer() {
+        Teildatensatz eins = satz.getTeildatensatz(1);
+        Feld satznummer = eins.getFeld(Bezeichner.SATZNUMMER);
+        assertEquals("1", satznummer.getInhalt());
+        assertEquals(51, satznummer.getByteAdresse());
     }
 
 }

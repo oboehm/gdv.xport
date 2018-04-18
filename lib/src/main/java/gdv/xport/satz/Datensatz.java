@@ -33,13 +33,12 @@ import static gdv.xport.feld.Bezeichner.*;
  */
 public class Datensatz extends Satz {
 
-	/** The Constant LOG. */
 	private static final Logger LOG = LogManager.getLogger(Datensatz.class);
 	/** 3 Zeichen, Byte 11 - 13. */
     private final NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
-	/** 3 Zeichen, Byte 59 - 60. */
+	/** 1 Zeichen, Byte 59. */
 	private final AlphaNumFeld wagnisart = new AlphaNumFeld((WAGNISART), 1, 59);
-	/** 3 Zeichen, Byte 255 - 256. */
+	/** 1 Zeichen, Byte 256 - 256. */
     private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld((TEILDATENSATZNUMMER), 1, 256);
 	/** Zum Abspeichern der Wagnisart oder Art (Unter-Sparte). */
 	private int art;
@@ -369,6 +368,20 @@ public class Datensatz extends Satz {
 	 */
 	public String getTeildatensatzNummer() {
 		return teildatensatzNummer.getInhalt().trim();
+	}
+
+	/**
+	 * Da nicht alle Satzarten die Satznummer am Ende des Satzes haben, kann
+	 * man dies ueber diese Methode korrigieren.
+	 * 
+	 * @param satznummer das neue Feld fuer die Satznummer
+	 * @since 3.2   
+	 */
+	public void setSatznummer(Zeichen satznummer) {
+		remove(Bezeichner.SATZNUMMER);
+		for (Teildatensatz tds : getTeildatensaetze()) {
+			tds.setSatznummer(satznummer);
+		}
 	}
 
 	/**
