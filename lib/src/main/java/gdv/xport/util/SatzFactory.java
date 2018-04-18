@@ -19,6 +19,7 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
@@ -340,15 +341,26 @@ public final class SatzFactory {
      * @since 0.2
      */
     public static Satz getSatz(final int satzart) {
-        Class<? extends Satz> clazz = REGISTERED_SATZ_CLASSES.get(new SatzTyp(satzart));
+        return getSatz(new SatzTyp(satzart));
+    }
+    
+    /**
+     * Holt einen Satz.
+     * 
+     * @param satztyp der Satztyp
+     * @return angeforderter Satz
+     * @since 18.04.2018
+     */
+    public static Satz getSatz(final SatzTyp satztyp) {
+        Class<? extends Satz> clazz = REGISTERED_SATZ_CLASSES.get(new SatzTyp(satztyp.getSatzart()));
         if (clazz == null) {
-            return generateSatz(satzart);
+            return generateSatz(satztyp);
         }
         try {
             Satz satz = clazz.newInstance();
-            if (satz.getSatzart() != satzart) {
+            if (satz.getSatzart() != satztyp.getSatzart()) {
                 Constructor<? extends Satz> ctor = clazz.getConstructor(int.class);
-                satz = ctor.newInstance(satzart);
+                satz = ctor.newInstance(satztyp.getSatzart());
             }
             return satz;
         } catch (Exception e) {
@@ -356,7 +368,7 @@ public final class SatzFactory {
             Constructor<? extends Satz> ctor = null;
             try {
                 ctor = clazz.getConstructor(int.class);
-                return ctor.newInstance(satzart);
+                return ctor.newInstance(satztyp.getSatzart());
             } catch (InvocationTargetException ite) {
                 throw new ShitHappenedException(ite.getTargetException() + " in " + ctor, ite);
             } catch (NoSuchMethodException nsme) {
@@ -368,17 +380,17 @@ public final class SatzFactory {
             }
         }
     }
-
-    private static Satz generateSatz(final int satzart) {
-        Class<? extends Enum<?>> enumClass = REGISTERED_ENUM_CLASSES.get(new SatzTyp(satzart));
+    
+    private static Satz generateSatz(final SatzTyp satztyp) {
+        Class<? extends Enum<?>> enumClass = REGISTERED_ENUM_CLASSES.get(satztyp);
         if (enumClass == null) {
-            Satz satz = XML_SERVICE.getSatzart(satzart);
+            Satz satz = XML_SERVICE.getSatzart(satztyp);
             if (satz == null) {
-                throw new NotRegisteredException(satzart);
+                throw new NotRegisteredException(satztyp);
             }
             return satz;
         }
-        return new SatzX(satzart, enumClass);
+        return new SatzX(satztyp, enumClass);
     }
 
     private static Datensatz generateDatensatz(final SatzTyp satzNr) {
@@ -536,9 +548,16 @@ public final class SatzFactory {
      */
     private static Datensatz useFallback(final SatzTyp satzNr) {
         try {
-            Datensatz fallback = (Datensatz) getSatz(satzNr.getSatzart());
+            Datensatz fallback = (Datensatz) getSatz(satzNr);
             if (satzNr.hasSparte()) {
                 fallback.setSparte(satzNr.getSparte());
+            }
+            if (fallback.hasFeld(Bezeichner.UNBEKANNT)) {
+                try {
+                    return (Datensatz) generateSatz(satzNr);
+                } catch (NotRegisteredException ex) {
+                    LOG.warn("XML-Fallback has " + satzNr + " not registed: " + ex);
+                }
             }
             return fallback;
         } catch (NotRegisteredException re) {

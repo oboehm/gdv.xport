@@ -269,6 +269,10 @@ public class XmlService {
     public SatzXml getSatzart(final SatzTyp satzNr) {
         SatzXml satz = this.satzarten.get(satzNr);
         if (satz == null) {
+            satz = getSatzart(satzNr.getSatzart());
+        }
+        
+        if (satz == null) {
             throw new NotRegisteredException(satzNr);
         }
         return satz;

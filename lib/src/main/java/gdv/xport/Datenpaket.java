@@ -343,8 +343,12 @@ public final class Datenpaket {
                 teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
             }
         }
+        int krankenFolgeNr = -1;
+        if (sparte == 20 && satzart == 220) {
+            krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
+        }
         Datensatz satz = SatzFactory.getDatensatz(new SatzTyp(satzart, sparte, wagnisart
-                .getCode(), teildatensatzNummer.getCode()));
+                .getCode(), krankenFolgeNr, teildatensatzNummer.getCode()));
         satz.importFrom(reader);
         return satz;
     }

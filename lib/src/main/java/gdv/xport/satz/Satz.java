@@ -579,6 +579,18 @@ public abstract class Satz {
 	}
 
 	/**
+	 * Schaut nach dem 10. Feld in Satzart 220, Sparte 20 (Kranken) und liefert true zurueck, falls es existiert.
+	 * 
+	 * @return true, falls das Feld existiert
+	 * @since 18.04.2018
+	 */
+    public boolean hasKrankenFolgeNr() {
+        return this.getSatzart() == 220 && this.getSparte() == 20
+                && (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
+                        || this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF));
+    }
+
+	/**
 	 * Liefert den Inhalt des Sparten-Felds. Vorher sollte allerdings mittels
 	 * {@link #hasSparte()} geprueft werden, ob der Satz ein Sparten-Feld
 	 * besitzt.
