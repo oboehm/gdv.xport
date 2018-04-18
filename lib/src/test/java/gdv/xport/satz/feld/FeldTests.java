@@ -22,6 +22,7 @@ package gdv.xport.satz.feld;
 
 import gdv.xport.satz.feld.sparte10.wagnisart9.Wagnisart9Tests;
 import gdv.xport.satz.feld.sparte30.Sparte30Tests;
+import gdv.xport.satz.feld.sparte51.Sparte51Tests;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.*;
@@ -35,7 +36,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @since 0.9 (16.04.2013)
  */
 @RunWith(Suite.class)
-@SuiteClasses({Wagnisart9Tests.class, Sparte30Tests.class, Feld0001Test.class, Feld100Test.class, Feld200Test.class, Feld9999Test.class})
+@SuiteClasses({Wagnisart9Tests.class, Sparte30Tests.class, Sparte51Tests.class, Feld0001Test.class, Feld100Test.class, Feld200Test.class, Feld9999Test.class})
 public class FeldTests {
 
 }
