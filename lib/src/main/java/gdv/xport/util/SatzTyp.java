@@ -43,6 +43,9 @@ public class SatzTyp {
 
 	/** The wagnisart. */
 	private final int wagnisart;
+	
+	/** Kranken, Folgenummer */
+	private final int krankenFolgeNr;
 
 	/** The lfd nummer. */
 	private final int teildatensatzNummer;
@@ -76,27 +79,43 @@ public class SatzTyp {
 	public SatzTyp(final int satzart, final int sparte, final int wagnisart) {
 		this(satzart, sparte, wagnisart, -1);
 	}
-
+	
+	/**
+	 * Legt eine neue SatzNummer an.
+	 * 
+     * @param satzart die Satzart (vierstellig)
+     * @param sparte die Sparte (dreistellig)
+     * @param wagnisart die Wagnisart (ein- bis zweisstellig)
+     * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
+	 */
+	public SatzTyp(final int satzart, final int sparte, final int wagnisart, final int lfdNummer) {
+	    this(satzart, sparte, wagnisart, -1, lfdNummer);
+	}
+	
 	/**
 	 * Legt eine neue SatzNummer an.
 	 *
 	 * @param satzart die Satzart (vierstellig)
 	 * @param sparte die Sparte (dreistellig)
 	 * @param wagnisart die Wagnisart (ein- bis zweisstellig)
+	 * @param krankenFolgeNr Folge-Nr. aus Sparte 20, Satzart 220 (Wert 1-3)
 	 * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
 	 */
-	public SatzTyp(final int satzart, final int sparte, final int wagnisart, final int lfdNummer) {
+	public SatzTyp(final int satzart, final int sparte, final int wagnisart, final int krankenFolgeNr, final int lfdNummer) {
 		assert (0 <= satzart) && (satzart <= 9999) : "Satzart " + satzart
 		        + " muss zwischen 0 und 9999 liegen";
 		assert (sparte == -1) || ((0 <= sparte) && (sparte <= 999)) : "Sparte " + sparte
 		        + " muss zwischen 0 und 999 liegen";
 		assert (wagnisart == -1) || ((0 <= wagnisart) && (wagnisart <= 9)) : "Wagnisart "
 		        + wagnisart + " muss zwischen 0 und 9 liegen";
+		assert (krankenFolgeNr == -1) || ((1 <= krankenFolgeNr) && (krankenFolgeNr <= 3)) : "Kranken Folge-Nr. "
+		        + krankenFolgeNr + " muss zwischen 1 und 3 liegen";
 		assert (lfdNummer == -1) || ((0 <= lfdNummer) && (lfdNummer <= 9)) : "teildatensatzNummer "
 		        + lfdNummer + " muss zwischen 0 und 9 liegen";
 		this.satzart = satzart;
 		this.sparte = sparte;
 		this.wagnisart = wagnisart;
+		this.krankenFolgeNr = krankenFolgeNr;
 		this.teildatensatzNummer = lfdNummer;
 	}
 
@@ -126,6 +145,15 @@ public class SatzTyp {
 	public int getWagnisart() {
 		return this.wagnisart;
 	}
+	
+	/**
+	 * Gets the krankenFolgeNr.
+	 * 
+	 * @return the krankenFolgeNr
+	 */
+	public int getKrankenFolgeNr() {
+	    return this.krankenFolgeNr;
+	}
 
 	/**
 	 * Gets the lfd nummer.
@@ -153,6 +181,15 @@ public class SatzTyp {
 	public boolean hasWagnisart() {
 		return this.wagnisart >= 0;
 	}
+	
+	/**
+	 * Liefert true zurueck, wenn die Folge-Nr in Sparte 20, Satzart 220 gesetzt ist.
+	 * 
+	 * @return true, if successful
+	 */
+	public boolean hasKrankenFolgeNr() {
+	    return this.krankenFolgeNr >= 0;
+	}
 
 	/**
 	 * Liefert true zurueck, wenn die laufende Nummer (Teildatensatz-Nummer)
@@ -170,7 +207,7 @@ public class SatzTyp {
 	 */
 	@Override
 	public int hashCode() {
-		return satzart * 1000000 + sparte * 1000 + wagnisart * 100 + teildatensatzNummer;
+		return satzart * 10000000 + sparte * 10000 + wagnisart * 1000 + krankenFolgeNr * 100 + teildatensatzNummer;
 	}
 
 	/*
@@ -188,6 +225,7 @@ public class SatzTyp {
 		SatzTyp other = (SatzTyp) obj;
 		return (this.satzart == other.satzart) && (this.sparte == other.sparte)
 		        && (this.wagnisart == other.wagnisart)
+		        && (this.krankenFolgeNr == other.krankenFolgeNr)
 		        && (this.teildatensatzNummer == other.teildatensatzNummer);
 	}
 
@@ -208,6 +246,9 @@ public class SatzTyp {
 					buf.append(".");
 	                buf.append(this.teildatensatzNummer);
 				}
+			} else if (this.krankenFolgeNr >= 0) {
+                buf.append(".");
+                buf.append(this.krankenFolgeNr);
 			}
 		}
 		return buf.toString();

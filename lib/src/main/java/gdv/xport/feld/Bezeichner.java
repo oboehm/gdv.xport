@@ -327,6 +327,14 @@ public final class Bezeichner {
     public static final Bezeichner FLOTTENRABATT_IN_PROZENT = new Bezeichner("Flottenrabatt in %");
     public static final Bezeichner FOLGENUMMER = new Bezeichner("Folgenummer");
     public static final Bezeichner FOLGEPROVISION = new Bezeichner("Folgeprovision");
+    /**
+     * Fuer Satzart 220, Sparte 20, Folge-Nr. 1 (Personendaten)
+     */
+    public static final Bezeichner FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF = new Bezeichner("Folge-Nr. zur laufenden Personen-Nummer/Unternummer/laufende Nummer Tarif", "FolgeNrZurLaufendenPersonenNrUnterNrLaufendeNrTarif");
+    /**
+     * Fuer Satzart 220, Sparte 20, Folge-Nr. 2 und 3 (Allgemeine Tarifdaten und Spezielle Tarifdaten)
+     */
+    public static final Bezeichner FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF = new Bezeichner("Folgenummer zur laufenden Personen-Nr. / Unternummer bzw. laufenden Nummer Tarif", "FolgeNrZurLaufendenPersonenNrUnterNrBzwLaufendenNrTarif");
     public static final Bezeichner FONDSKENNUNG = new Bezeichner("Fondskennung");
     public static final Bezeichner FONDSNAME = new Bezeichner("Fondsname");
     public static final Bezeichner FORM = new Bezeichner("Form");

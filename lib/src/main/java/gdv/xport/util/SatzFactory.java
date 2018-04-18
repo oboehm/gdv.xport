@@ -351,7 +351,7 @@ public final class SatzFactory {
      * @since 18.04.2018
      */
     public static Satz getSatz(final SatzTyp satztyp) {
-        Class<? extends Satz> clazz = REGISTERED_SATZ_CLASSES.get(satztyp);
+        Class<? extends Satz> clazz = REGISTERED_SATZ_CLASSES.get(new SatzTyp(satztyp.getSatzart()));
         if (clazz == null) {
             return generateSatz(satztyp);
         }
@@ -360,14 +360,6 @@ public final class SatzFactory {
             if (satz.getSatzart() != satztyp.getSatzart()) {
                 Constructor<? extends Satz> ctor = clazz.getConstructor(int.class);
                 satz = ctor.newInstance(satztyp.getSatzart());
-            }
-            
-            if (satz.hasFeld(Bezeichner.UNBEKANNT)) {
-                try {
-                    return generateSatz(satztyp);
-                } catch (NotRegisteredException ex) {
-                    LOG.warn("XML-Fallback has " + satztyp + " not registed: " + ex);
-                }
             }
             return satz;
         } catch (Exception e) {
@@ -558,6 +550,13 @@ public final class SatzFactory {
             Datensatz fallback = (Datensatz) getSatz(satzNr);
             if (satzNr.hasSparte()) {
                 fallback.setSparte(satzNr.getSparte());
+            }
+            if (fallback.hasFeld(Bezeichner.UNBEKANNT)) {
+                try {
+                    return (Datensatz) generateSatz(satzNr);
+                } catch (NotRegisteredException ex) {
+                    LOG.warn("XML-Fallback has " + satzNr + " not registed: " + ex);
+                }
             }
             return fallback;
         } catch (NotRegisteredException re) {

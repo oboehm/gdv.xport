@@ -435,6 +435,39 @@ public class Datensatz extends Satz {
 	}
 
 	/**
+     * Liest 49 Bytes, um die Folge-Nr. in Satzart 220, Sparte 20 (Kranken) zu bestimmen und stellt die Bytes
+     * anschliessend wieder zurueck in den Reader.
+     *
+     * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen
+     * bereitstellen
+     * @return Folge-Nr
+     * @throws IOException falls was schief gegangen ist
+     */
+    public static int readKrankenFolgeNr(final PushbackLineNumberReader reader) throws IOException {
+        int satzart = readSatzart(reader);
+        if (satzart != 220) {
+            throw new IllegalArgumentException("can't read Kranken Folge-Nr., wrong satzart " + satzart +", must be 220");
+        }
+
+        int sparte = readSparte(reader);
+        if (sparte != 20) {
+            throw new IllegalArgumentException("can't read Kranken Folge-Nr., wrong sparte " + sparte + ", must be 20");
+        }
+        
+        char[] cbuf = new char[49];
+        if (reader.read(cbuf) == -1) {
+            throw new IOException("can't read 49 bytes (" + new String(cbuf) + ") from " + reader);
+        }
+        reader.unread(cbuf);
+        String first10Fields = new String(cbuf);
+        try {
+            return Integer.parseInt(first10Fields.substring(47, 48));
+        } catch (NumberFormatException ex) {
+            throw new ImportException("cannot read kranken Folge-Nr from first 49 bytes (\"" + first10Fields + "\")");
+        }
+    }
+
+	/**
 	 * Liest 1 Byte, um die Wagnisart zu bestimmen und stellt das Byte
 	 * anschliessend wieder zurueck in den Reader.
 	 *
