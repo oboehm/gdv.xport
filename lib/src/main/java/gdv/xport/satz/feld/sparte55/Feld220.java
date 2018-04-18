@@ -171,13 +171,14 @@ public enum Feld220 {
      * SF/S-Klasse.
      */
     @FeldInfo(
+            bezeichnung = "SF/S-Klasse",
             teildatensatz = 1,
             nr = 18,
             type = AlphaNumFeld.class,
             anzahlBytes = 5,
             byteAdresse = 149
     )
-    SF_S_KLASSEN,
+    SFS_KLASSE,
 
     /**
      * Beitragssatz.
