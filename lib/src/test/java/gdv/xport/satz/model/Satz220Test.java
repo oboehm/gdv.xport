@@ -106,7 +106,28 @@ public class Satz220Test extends AbstractDatensatzTest {
         assertEquals("X", x.getInhalt());
         checkDatensatz(wagnisdaten, input);
     }
-
+    
+    /**
+     * Testet den Import der Teildatensaetze 1-4 und 9. Testet die Erweiterung vom {@link Satz220} um 0220.030.4. Zuvor nur Teildatensaetze 1 bis 3 und 9
+     * unterstuetzt.
+     * 
+     * @since 19.04.2018
+     * @throws IOException sollte eigentlich nicht vorkommen, da wir von einem String importieren
+     */
+    @Test
+    public void testSparte30Teildatensatz1bis4und9() throws IOException    {
+        String input = "02209999  030      5999999999901   90099991     1                                                                                                                                                                                                               \n" + 
+                "02209999  030      5999999999901   90099991     2                                                                                                                                                                                                               \n" + 
+                "02209999  030      5999999999901   90099993                                                                                                                                                                                                                     \n" + 
+                "02209999  030      5999999999901   90099991     4                                                                                                                                                                                                               \n" + 
+                "02209999  030      5999999999901   90099991                9                                                                                                                                                                                                    \n"; 
+        
+        assertEquals(1285, input.length());
+        Datensatz satz220 = SatzFactory.getDatensatz(220, 30);
+        satz220.importFrom(input);
+        checkDatensatz(satz220, input);
+    }
+    
     /**
      * Der spezielle Teildatensatz 9 der Sparte 30 bereitet Probleme, da er
      * etwas aus der Reihe tanzt - er kann naemlich als erster Teildatensatz

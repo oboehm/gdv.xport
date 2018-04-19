@@ -132,6 +132,8 @@ public class Satz220 extends SpartensatzX {
                 default:
                     if ((sparte == 30) && (input.charAt(42) == '3')) {
                         addTeildatensatz(3, input);
+                    } else if ((sparte == 30) && (satznummer == '4')) {
+                        addTeildatensatz(4, input);
                     } else if ((sparte == 30) && (input.charAt(59) == '9')) {
                         addTeildatensatz(9, input);
                     } else {
