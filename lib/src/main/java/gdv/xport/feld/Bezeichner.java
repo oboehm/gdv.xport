@@ -118,6 +118,10 @@ public final class Bezeichner {
      * Fuer 0220.170
      */
     public static final Bezeichner ART_DER_SUMME2AN = new Bezeichner("Art der Summe", "ArtSumme2AN");
+    /**
+     * Fuer 022x.130
+     */
+    public static final Bezeichner ART_DER_SUMME3AN = new Bezeichner("Art der Summe", "ArtSumme3AN");
     public static final Bezeichner ART_DER_SUMMENANPASSUNG = new Bezeichner("Art der Summenanpassung");
     public static final Bezeichner ART_DES_SELBSTBEHALT = new Bezeichner("Art des Selbstbehalts", "ArtSelbstbehalt");
     public static final Bezeichner ART_DES_SELBSTBEHALTS = new Bezeichner("Art des Selbstbehalts", "ArtSelbstbehalts");
