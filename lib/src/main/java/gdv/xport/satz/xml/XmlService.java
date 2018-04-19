@@ -271,7 +271,6 @@ public class XmlService {
         if (satz == null) {
             satz = getSatzart(satzNr.getSatzart());
         }
-        
         if (satz == null) {
             throw new NotRegisteredException(satzNr);
         }

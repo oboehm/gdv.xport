@@ -80,8 +80,14 @@ public class XmlServiceTest extends AbstractXmlTest {
     @Test
     public void testGetSatzartTwice() {
         SatzXml one = xmlService.getSatzart(100);
-        one.set(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName(), "4711");
         SatzXml two = xmlService.getSatzart(100);
+        assertEquals(one, two);
+        assertNotSame(one, two);
+        for (int i = 1; i <= one.getNumberOfTeildatensaetze(); i++) {
+            assertEquals(one.getTeildatensatz(i), two.getTeildatensatz(i));
+            assertNotSame(one.getTeildatensatz(i), two.getTeildatensatz(i));
+        }
+        one.set(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName(), "4711");
         two.set(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName(), "4722");
         assertEquals("4722", two.get(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName()).trim());
         assertEquals("4711", one.get(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName()).trim());

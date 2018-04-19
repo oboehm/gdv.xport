@@ -365,4 +365,21 @@ public final class SatzFactoryTest extends AbstractTest {
         }
     }
 
+    /**
+     * Wenn zweimal der gleiche Satz geholt wird, sollte nicht derselbe
+     * zurueckgeliefert werden. Sonst kann es beim Auffuellen des Satzes
+     * zu unerwuenschten Wechselwirkungen mit dem ersten Satz kommen.
+     */
+    @Test
+    public void testGetSatzDifferent() {
+        Satz one = SatzFactory.getSatz(100);
+        Satz two = SatzFactory.getSatz(100);
+        assertEquals(one, two);
+        assertNotSame(one, two);
+        for (int i = 1; i <= one.getNumberOfTeildatensaetze(); i++) {
+            assertEquals(one.getTeildatensatz(i), two.getTeildatensatz(i));
+            assertNotSame(one.getTeildatensatz(i), two.getTeildatensatz(i));
+        }
+    }
+
 }

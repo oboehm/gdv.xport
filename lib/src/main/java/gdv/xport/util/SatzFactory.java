@@ -388,7 +388,12 @@ public final class SatzFactory {
             if (satz == null) {
                 throw new NotRegisteredException(satztyp);
             }
-            return satz;
+            try {
+                return (Satz) satz.clone();
+            } catch (CloneNotSupportedException e) {
+                LOG.warn("Cannot clone {} - will return object itself.", satz);
+                return satz;
+            }
         }
         return new SatzX(satztyp, enumClass);
     }

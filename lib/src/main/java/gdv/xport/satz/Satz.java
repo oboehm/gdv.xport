@@ -34,7 +34,7 @@ import static patterntesting.runtime.NullConstants.NULL_STRING;
  *
  * @author oliver
  */
-public abstract class Satz {
+public abstract class Satz implements Cloneable {
 
 	private static final Logger LOG = LogManager.getLogger(Satz.class);
 	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
@@ -1167,5 +1167,22 @@ public abstract class Satz {
         }
         return false;
     }
+
+	/**
+	 * Legt eine Kopie des Satzes an.
+	 * 
+	 * @return Kopie
+	 * @throws CloneNotSupportedException sollte nicht auftreten
+	 * @see Cloneable
+	 */
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Satz cloned = (Satz) super.clone();
+		cloned.teildatensatz = new Teildatensatz[teildatensatz.length];
+		for (int i = 0; i < teildatensatz.length; i++) {
+			cloned.teildatensatz[i] = (Teildatensatz) teildatensatz[i].clone();
+		}
+		return cloned;
+	}
 
 }
