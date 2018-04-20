@@ -12,6 +12,8 @@
 
 package gdv.xport;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import gdv.xport.event.ImportStatistic;
 
@@ -54,9 +56,7 @@ public final class DatenpaketStreamerTest {
     }
 
     /**
-     * Test-Methode fuer {@link DatenpaketStreamer#readDatenpaket()}. Dies ist
-     * (fast) der gleiche Test wie vorher, nur dass wir hier jetzt 2 Datenpkete
-     * lesen.
+     * Test-Methode fuer {@link DatenpaketStreamer#readDatenpaket()}. Dies ist (fast) der gleiche Test wie vorher, nur dass wir hier jetzt 2 Datenpkete lesen.
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
@@ -79,6 +79,23 @@ public final class DatenpaketStreamerTest {
         streamer.readDatenpaket();
         LOG.info("Statistik: " + statistic);
         assertTrue("expected: number of imported saetze > 2", statistic.getImportedSaetze() > 2);
+    }
+
+    @Test
+    public void testReadNDatenpakete() throws IOException {
+        InputStream istream = this.getClass().getResourceAsStream("/drei_datenpakete.txt");
+
+        ImportStatistic statistic = new ImportStatistic();
+        DatenpaketStreamer streamer = new DatenpaketStreamer(istream);
+        streamer.register(statistic);
+        while (streamer.canReadDatenpaket()) {
+            streamer.readDatenpaket();
+        }
+        
+        LOG.info("Statistik: " + statistic);
+        assertThat("drei_datenpakete.txt hat drei Datenpakete, also drei Vorsaetze", statistic.getImportedVorsaetze(), is(3));
+        assertThat("drei_datenpakete.txt hat drei Datenpakete, zu je 5 Saetzen", statistic.getImportedSaetze(), is(15));
+        assertThat("drei_datenpakete.txt hat drei Datenpakete, also drei Nachsaetze", statistic.getImportedNachsaetze(), is(3));
     }
 
 }
