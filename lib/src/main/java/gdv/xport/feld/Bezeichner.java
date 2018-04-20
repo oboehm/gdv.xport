@@ -591,7 +591,7 @@ public final class Bezeichner {
     public static final Bezeichner KUNDENNR_VERSICHERER = new Bezeichner("Personen-/Kundennummer des Versicherers", "PersonenKundenNrVersicherers");
     public static final Bezeichner KURKOSTEN = new Bezeichner("Kurkosten");
     public static final Bezeichner KURKOSTEN_BEITRAGSSATZ = new Bezeichner("Kurkosten Beitragssatz");
-    public static final Bezeichner KU_ABSCHLAEGE_IN_PRONZENT = new Bezeichner("KU-Abschläge in %", "KuAbschlaegeInProz");
+    public static final Bezeichner KU_ABSCHLAEGE_IN_PROZENT = new Bezeichner("KU-Abschläge in %", "KuAbschlaegeInProz");
     public static final Bezeichner KU_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KU-Abschläge in Währungseinheiten", "KuAbschlaegeInWE");
     public static final Bezeichner KU_AENDERUNGSDATUM = new Bezeichner("KU-Änderungsdatum", "KuAenderungsdat");
     public static final Bezeichner KU_AUSSCHLUSS = new Bezeichner("KU-Ausschluss", "KuAusschluss");
