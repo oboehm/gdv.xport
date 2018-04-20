@@ -476,7 +476,7 @@
       <dependency>
         <groupId>de.jfachwert</groupId>
         <artifactId>jfachwert</artifactId>
-        <version>0.6.1</version>
+        <version>0.7.0</version>
       </dependency>
 
       <!-- for JsonFormatter -->
@@ -545,6 +545,14 @@
       <roles>
         <role>Java Developer</role>
       </roles>
+    </developer>
+    <developer>
+      <name>Ken Schosinsky</name>
+      <id>schosin</id>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+      <url>https://github.com/schosin</url>
     </developer>
   </developers>
   <contributors>
