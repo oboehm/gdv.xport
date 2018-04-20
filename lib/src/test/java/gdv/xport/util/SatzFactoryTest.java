@@ -381,5 +381,19 @@ public final class SatzFactoryTest extends AbstractTest {
             assertNotSame(one.getTeildatensatz(i), two.getTeildatensatz(i));
         }
     }
+    
+    /**
+     * Der gleiche Test wie vorher, nur dass wir hier ncoh einen Schritte
+     * tiefer gehen und zwei Felder vergleichen, ob sie nicht dieselben sind.
+     */
+    @Test
+    public void testGetSatzManipulated() {
+        Teildatensatz one = SatzFactory.getSatz(100).getTeildatensatz(4);
+        Teildatensatz two = SatzFactory.getSatz(100).getTeildatensatz(4);
+        assertNotSame(one, two);
+        Feld oneIban = one.getFeld(Bezeichner.IBAN1);
+        Feld twoIban = two.getFeld(Bezeichner.IBAN1);
+        assertNotSame(oneIban, twoIban);
+    }
 
 }

@@ -1180,7 +1180,7 @@ public abstract class Satz implements Cloneable {
 		Satz cloned = (Satz) super.clone();
 		cloned.teildatensatz = new Teildatensatz[teildatensatz.length];
 		for (int i = 0; i < teildatensatz.length; i++) {
-			cloned.teildatensatz[i] = (Teildatensatz) teildatensatz[i].clone();
+			cloned.teildatensatz[i] = new Teildatensatz(teildatensatz[i]);
 		}
 		return cloned;
 	}

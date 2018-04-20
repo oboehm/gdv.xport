@@ -419,4 +419,15 @@ public class Teildatensatz extends Satz {
         return violations;
     }
 
+    /**
+     * Legt eine Kopie des Teildatensatzes an.
+     *
+     * @return Kopie
+     * @see Cloneable
+     */
+    @Override
+    public Object clone() {
+        return new Teildatensatz(this);
+    }
+
 }

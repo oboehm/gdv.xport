@@ -22,12 +22,14 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.common.VertragsStatus;
 import gdv.xport.util.SatzFactory;
+import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -164,11 +166,10 @@ public class TeildatensatzTest extends AbstractSatzTest {
     public void testValidateIBAN() {
         Teildatensatz adressteil4 = SatzFactory.getSatz(100).getTeildatensatz(4);
         assertTrue("should be valid: " + adressteil4, adressteil4.isValid());
-        //TODO: Ursachenforschung betreiben, warum Test beim 2. Mal fehlschlaegt (19-Apr-2018, oboehm)
-        //Feld iban1 = adressteil4.getFeld(Bezeichner.IBAN1);
-        //iban1.setInhalt("DE99300606010006605605");
-        //List<ConstraintViolation> violations = adressteil4.validate();
-        //assertEquals(1, violations.size());
+        Feld iban1 = adressteil4.getFeld(Bezeichner.IBAN1);
+        iban1.setInhalt("DE99300606010006605605");
+        List<ConstraintViolation> violations = adressteil4.validate();
+        assertEquals(1, violations.size());
     }
 
     /**
