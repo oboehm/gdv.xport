@@ -26,10 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Im Gegensatz zur {@link Datenpaket}-Klasse wird hier ein Datenpaket nicht
- * komplett in den Speicher geladen, sondern satzweise gelesen und anschliessend
- * verworfen. Vorher werden noch die angemeldeten Listener informiert, damit
- * diese die Daten verarbeiten (z.B. exportieren) koennen.
+ * Im Gegensatz zur {@link Datenpaket}-Klasse wird hier ein Datenpaket nicht komplett in den Speicher geladen, sondern satzweise gelesen und anschliessend
+ * verworfen. Vorher werden noch die angemeldeten Listener informiert, damit diese die Daten verarbeiten (z.B. exportieren) koennen.
  *
  * @author oliver
  * @since 1.0
@@ -67,9 +65,8 @@ public class DatenpaketStreamer {
     }
 
     /**
-     * Hiermit wird ein einzelnes Datenpaket gelesen und die verschiedenen
-     * Listener ueber den jeweils importierten Satz informiert. Damit koennen
-     * die Listener eine weitere Verarbeitung (wie z.B. Export) anstossen.
+     * Hiermit wird ein einzelnes Datenpaket gelesen und die verschiedenen Listener ueber den jeweils importierten Satz informiert. Damit koennen die Listener
+     * eine weitere Verarbeitung (wie z.B. Export) anstossen.
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
@@ -81,6 +78,35 @@ public class DatenpaketStreamer {
             if (satz.getSatzart() == 9999) {
                 break;
             }
+        }
+    }
+
+    /**
+     * <p>
+     * Hiermit kann geprueft werden, ob die aktuelle Zeile ein Vorsatz (Satzart 0001) ist und damit der Anfang eines Datenpaketes entspricht.
+     * </p>
+     * <p>
+     * Diese Methode ist dazu gedacht, Dateien mit mehr als einem Datenpaket einfach einlesen zu koennen.
+     * </p>
+     * <p>
+     * Beispiel:
+     * 
+     * <pre>
+     * while (datenpaketStreamer.canReadDatenpaket()) {
+     *     datenpaketStreamer.readDatenpaket();
+     * }
+     * </pre>
+     * </p>
+     * 
+     * @return true, wenn aktuelle Zeile Satzart 0001 (Vorsatz) hat
+     */
+    public boolean canReadDatenpaket() {
+        try {
+            return Vorsatz.readSatzart(reader) == 1;
+        } catch (IOException ex) {
+            return false;
+        } catch (NumberFormatException ex) {
+            return false;
         }
     }
 
