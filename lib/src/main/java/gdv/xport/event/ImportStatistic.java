@@ -23,11 +23,17 @@ import gdv.xport.satz.Satz;
  */
 public final class ImportStatistic implements ImportListener {
 
+    /** The imported vorsaetze. */
+    private int importedVorsaetze = 0;
+
     /** The imported saetze. */
     private int importedSaetze = 0;
 
     /** The imported teildatensaetze. */
     private int importedTeildatensaetze = 0;
+    
+    /** The imported nachsaetze. */
+    private int importedNachsaetze = 0;
 
     /**
      * Ermittelt eine kleine Statistik wie die Anzahl der importierten Saetze.
@@ -37,8 +43,25 @@ public final class ImportStatistic implements ImportListener {
      */
     @Override
     public void notice(final Satz satz) {
+        if (satz.getSatzart() == 1) {
+            importedVorsaetze++;
+        }
+        
         importedSaetze++;
         importedTeildatensaetze += satz.getTeildatensaetze().size();
+        
+        if (satz.getSatzart() == 9999) {
+            importedNachsaetze++;
+        }
+    }
+
+    /**
+     * Liefert die Anzahl der importierten Vorsaetze zurueck.
+     * 
+     * @return Anzahl der importierten Vorsaetze
+     */
+    public int getImportedVorsaetze() {
+        return importedVorsaetze;
     }
 
     /**
@@ -60,13 +83,22 @@ public final class ImportStatistic implements ImportListener {
     }
 
     /**
+     * Liefert die Anzahl der importierten Nachsaetze zurueck.
+     * 
+     * @return Anzal der importierten Nachsaetze
+     */
+    public int getImportedNachsaetze() {
+        return importedNachsaetze;
+    }
+
+    /**
      * Gibt die Statistik in Kurzform aus.
      *
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-        return this.importedSaetze + " Saetze, " + this.importedTeildatensaetze + " Teildatensaetze";
+        return this.importedVorsaetze + " Vorsaetze, " + this.importedSaetze + " Saetze, " + this.importedTeildatensaetze + " Teildatensaetze, " + this.importedNachsaetze + " Nachsaetze";
     }
 
 }
