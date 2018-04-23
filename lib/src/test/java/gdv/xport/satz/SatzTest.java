@@ -18,6 +18,28 @@
 
 package gdv.xport.satz;
 
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
+
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
 import gdv.xport.feld.AlphaNumFeld;
@@ -30,23 +52,11 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte53.Feld220;
 import gdv.xport.satz.model.SatzX;
+import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
-import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
-
-import java.io.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
 
 /**
  * Test-Klasse fuer Satz.
@@ -401,6 +411,20 @@ public final class SatzTest extends AbstractSatzTest {
             assertFalse(feld + " found more than once", bezeichners.contains(b));
             bezeichners.add(b);
         }
+    }
+    
+    /**
+     * Dieser Test stellt sicher, dass Satz.getSatzTyp() in Sparte 40 (Haftpflicht) das Wagnisfeld nicht in den SatzTyp kopiert, da es eine andere Bedeutung als
+     * in Sparte 10 (Leben) hat.
+     */
+    @Test
+    public void testWagnisartSparte40() {
+        Satz satz = SatzFactory.getDatensatz(220, 40);
+        satz.set(Bezeichner.WAGNISART, "123456");
+        SatzTyp satzTyp = satz.getSatzTyp();
+        SatzTyp expectedSatzTyp = new SatzTyp(220, 40);
+        assertEquals("SatzFactory.getDatensatz(220, 40) hat keine Wagnisart im SatzTyp", -1, satzTyp.getWagnisart());
+        assertEquals("SatzTyp von SatzFactory.getDatensatz(220, 40) sollte new SatzTyp(220, 40) entsprechen", expectedSatzTyp, satzTyp);
     }
 
 }
