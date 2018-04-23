@@ -542,7 +542,8 @@ public abstract class Satz implements Cloneable {
 	 */
 	@JsonIgnore
 	public final SatzTyp getSatzTyp() {
-	    if (this.hasWagnisart()) {
+	    // TODO krankenFolgeNr beachten?
+	    if (this.hasSparte() && this.getSparte() == 10 && this.hasWagnisart()) {
 	        String wagnisart = this.getWagnisart();
 	        if (StringUtils.isBlank(wagnisart)) {
 	            return new SatzTyp(this.getSatzart(), this.getSparte());
