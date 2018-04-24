@@ -255,6 +255,7 @@ public final class Bezeichner {
     public static final Bezeichner BERGUNGSKOSTEN_BEITRAGSSATZ = new Bezeichner("Bergungskosten Beitragssatz");
     public static final Bezeichner BERUFSGRUPPENEINTEILUNG = new Bezeichner("Berufsgruppeneinteilung im Industrie-Straf-RS");
     public static final Bezeichner BERUFSSCHLUESSEL = new Bezeichner("Berufsschluessel");
+    public static final Bezeichner BERUFSSCHLUESSEL_VN = new Bezeichner("Berufsschlüssel VN");
     public static final Bezeichner BERUFSSCHLUESSEL_DER_VP = new Bezeichner("Berufsschluessel der VP");
     public static final Bezeichner BERUF_TEXT = new Bezeichner("Beruf-Text");
     public static final Bezeichner BESONDERER_VERWENDUNGSZWECK = new Bezeichner("besonderer Verwendungszweck");
@@ -277,6 +278,7 @@ public final class Bezeichner {
     public static final Bezeichner BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL = new Bezeichner("Bezugsrechtanteil im Leistungsfall");
     public static final Bezeichner BEZUGSRECHTANTEIL_IM_TODESFALL = new Bezeichner("Bezugsrechtanteil im Todesfall");
     public static final Bezeichner BEZUG_ZUR_TEILSPARTE = new Bezeichner("Bezug zur Teilsparte", "BezugZurTeilsparte1");
+    public static final Bezeichner BEZUG_ZUR_TEILSPARTE2 = new Bezeichner("Bezug zur Teilsparte", "BezugZurTeilsparte2");
     public static final Bezeichner BIC1 = new Bezeichner("BIC 1");
     public static final Bezeichner BIC2 = new Bezeichner("BIC 2");
     public static final Bezeichner BILANZMONAT_ARBEITGEBER = new Bezeichner("Bilanzmonat Arbeitgeber");
@@ -309,6 +311,7 @@ public final class Bezeichner {
     public static final Bezeichner DECKUNGSSUMME_4_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 4 in Waehrungseinheiten");
     public static final Bezeichner DECKUNGSSUMME_IN_TSD_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme in Tausend Waehrungseinheiten");
     public static final Bezeichner DECKUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme in Waehrungseinheiten");
+    public static final Bezeichner DECKUNGSRUECKSTELLUNG_VORSORGEZUSCHLAG = new Bezeichner("Deckungsrueckstellung Vorsorgezuschlag");
     public static final Bezeichner DECKUNGSUMFANG = new Bezeichner("Deckungsumfang");
     public static final Bezeichner DECKUNGS_VERSICHERUNGSSUMME = new Bezeichner("Deckungs-/Versicherungssumme");
     public static final Bezeichner DIENSTEINTRITT = new Bezeichner("Diensteintritt");
@@ -444,6 +447,7 @@ public final class Bezeichner {
     public static final Bezeichner GLASPREISANGLEICHUNG = new Bezeichner("Glaspreisangleichung");
     public static final Bezeichner GROSSRISIKEN = new Bezeichner("Aufsichtsfreier Versicherungsnehmer (Grossrisiken)", "AufsichtsfreierVerssnehmerGrossrisiken");
     public static final Bezeichner GRUPPENART = new Bezeichner("Gruppenart");
+    public static final Bezeichner GUELTIG_AB = new Bezeichner("gueltig ab");
     public static final Bezeichner GUELTIGE_AKB = new Bezeichner("Gueltige AKB");
     public static final Bezeichner GUELTIGE_AVB = new Bezeichner("Gueltige AVB");
     public static final Bezeichner GUELTIGKEITSDAUER_IN_TAGEN_BEI_KURZZEITKENNZEICHEN = new Bezeichner("Gueltigkeitsdauer in Tagen bei Kurzzeitkennzeichen");
@@ -1131,6 +1135,7 @@ public final class Bezeichner {
     public static final Bezeichner WARTUNGSVERTRAG = new Bezeichner("Wartungsvertrag");
     public static final Bezeichner WECHSELKENNZEICHEN_W_AKZ = new Bezeichner("KFZ - Wechselkennzeichen W-AKZ", "KFZWechselkennzeichenWAKZ");
     public static final Bezeichner WEITERE_REFERENZNUMMERN = new Bezeichner("Weitere Referenznummern", "WeitereReferenzNrn");
+    public static final Bezeichner WERT_ZUSCHREIBUNG_VORSORGEZUSCHLAG = new Bezeichner("Wert Zuschreibung Vorsorgezuschlag");
     public static final Bezeichner WERTPAPIERKENNNUMMER = new Bezeichner("Wertpapierkennnummer");
     public static final Bezeichner WERTUNGSBASIS = new Bezeichner("Wertungsbasis");
     public static final Bezeichner WERTUNGSBASIS2 = WERTUNGSBASIS;

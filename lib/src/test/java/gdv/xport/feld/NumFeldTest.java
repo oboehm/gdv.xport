@@ -203,4 +203,11 @@ public final class NumFeldTest extends AbstractFeldTest {
         }
     }
 
+    @Test
+    public void testToDoubleTooLong() {
+        NumFeld feld = new NumFeld("name", "123456789012");
+        double value = feld.toDouble();
+        assertEquals(123456789012.0, value, 0.0);
+    }
+
 }

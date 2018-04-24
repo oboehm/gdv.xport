@@ -34,13 +34,10 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  */
 public enum Feld221Wagnis6 {
 
-    // /// Teildatensatz 1 /////////////////////////////////////////////////
+ // /// Teildatensatz 1 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(
-            sparte = 10,
-            teildatensatz = 1,
-            type = Feld1bis7.class)
+    @FelderInfo(sparte = 10, teildatensatz = 1, type = Feld1bis7.class)
     INTRO1,
 
     /**
@@ -64,34 +61,55 @@ public enum Feld221Wagnis6 {
     LFD_NUMMER_ZUR_WAGNISART,
 
     /**
-     * Laufende Nummer der Satzart.
-     * Lfd. Nummer der Satzart 0221.010 (Wagnisart 6) innerhalb der gleichen Folgenummer
-     * (z. B. n-fache hintereinanderfolgende Lieferung der Satzart 0221.010 (Wagnisart 6), wenn mehrere zukünftige
-     * Summenänderungen feststehen)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 11, type = AlphaNumFeld.class, anzahlBytes = 2, byteAdresse = 62)
-    LFD_NUMMER_SATZART,
-
-    /**
-     * Absolute Unfalländerungssumme in Währungseinheiten.
-     * Absolute Summe der Steigerung bzw. Reduzierung der Unfallleistung
-     * (12,2 Stellen).
-     */
-    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 64)
-    ABSOLUTE_UNFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
-
-    /**
-     * Nächste Unfallsumme in Währungseinheiten.
-     * Unfallleistung ab dem nächsten Änderungstermin
+     * Unfallsumme in Währungseinheiten.
      * (12,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 13, type = Betrag.class, anzahlBytes = 14, byteAdresse = 78)
-    NAECHSTE_UNFALLSUMME_IN_WAEHRUNGSEINHEITEN,
+    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 62)
+    UNFALLSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Leerstellen.
      */
-    @FeldInfo(teildatensatz = 1, nr = 14, type = AlphaNumFeld.class, anzahlBytes = 164, byteAdresse = 92)
+    @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 180, byteAdresse = 76)
     LEERSTELLEN,
+
+    // /// Teildatensatz 2 /////////////////////////////////////////////////
+
+    /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
+    @FelderInfo(sparte = 10, teildatensatz = 2, type = Feld1bis7.class)
+    INTRO2,
+
+    /**
+     * Laufende Nummer der versicherten Person (VP).
+     * lfd. Nr., die im VU geführt wird
+     */
+    @FeldInfo(teildatensatz = 2, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
+    LFD_NUMMER_VP_PERSONENGRUPPE2,
+
+    /**
+     * Wagnisart.
+     * 6 = Unfallzusatzversicherung
+     */
+    @FeldInfo(teildatensatz = 2, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
+    WAGNISART2,
+
+    /**
+     * Lfd Nummer zur Wagnisart.
+     */
+    @FeldInfo(teildatensatz = 2, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
+    LFD_NUMMER_ZUR_WAGNISART2,
+
+    /**
+     * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten in Währungseinheiten.
+     * (10,2 Stellen)
+     */
+    @FeldInfo(teildatensatz = 2, nr = 11, type = Betrag.class, anzahlBytes = 12, byteAdresse = 62)
+    ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,
+
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(teildatensatz = 2, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 182, byteAdresse = 74)
+    LEERSTELLEN2,
 
 }

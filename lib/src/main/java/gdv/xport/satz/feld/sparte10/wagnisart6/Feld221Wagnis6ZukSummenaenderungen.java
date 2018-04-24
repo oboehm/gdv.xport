@@ -24,7 +24,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10.
- * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 u. 3 - Zukünftige
+ * (Leben - Kapitallebens-/Risikovers. = Wagnisart 6 - Zukünftige
  * Summenänderungen" (Satzart 0221)).
  *
  * @author ralfklemmer
@@ -32,13 +32,10 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  */
 public enum Feld221Wagnis6ZukSummenaenderungen {
 
-    // /// Teildatensatz 1 /////////////////////////////////////////////////
+ // /// Teildatensatz 1 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(
-            sparte = 10,
-            teildatensatz = 1,
-            type = Feld1bis7.class)
+    @FelderInfo(sparte = 10, teildatensatz = 1, type = Feld1bis7.class)
     INTRO1,
 
     /**
@@ -70,56 +67,24 @@ public enum Feld221Wagnis6ZukSummenaenderungen {
     LFD_NUMMER_SATZART,
 
     /**
-     * Anfängliche Todesfall VS in Währungseinheiten.
-     * Anfängliche bzw. erste Todesfallleistung
-     * (12,2 Stellen)
+     * Absolute Unfalländerungssumme in Währungseinheiten.
+     * Absolute Summe der Steigerung bzw. Reduzierung der Unfallleistung
+     * (12,2 Stellen).
      */
     @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 64)
-    ANFAENGLICHE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
+    ABSOLUTE_UNFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Absolute Todesfalländerungssumme in Währungseinheiten.
-     * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung
-     * (12,0 Stellen)
+     * Nächste Unfallsumme in Währungseinheiten.
+     * Unfallleistung ab dem nächsten Änderungstermin
+     * (12,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 13, type = Betrag.class, anzahlBytes = 14, byteAdresse = 78)
-    ABSOLUTE_TODESFALLAENDERUNGSSUMME_VS_IN_WAEHRUNGSEINHEITEN,
-
-    /**
-     * Nächste Todesfall VS in Währungseinheiten.
-     * Todesfalleistung ab dem nächsten Änderungstermin
-     * (12,0 Stellen)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 14, type = Betrag.class, anzahlBytes = 14, byteAdresse = 92)
-    NAECHSTE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
-
-    /**
-     * Anfängliche Erlebensfall VS in Währungseinheiten.
-     * Anfängliche bzw. erste Erlebensfall VS
-     * (12,2 Stellen)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 15, type = Betrag.class, anzahlBytes = 14, byteAdresse = 106)
-    ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
-
-    /**
-     * Absolute Erlebensfall VS in Währungseinheiten.
-     * Absolute Summe der Steigerung bzw. Reduzierung der Erlebensfall VS
-     * (12,2 Stellen)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 14, byteAdresse = 120)
-    ABSOLUTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
-
-    /**
-     * Nächste Erlebensfall VS in Währungseinheiten.
-     * Erlebensfall VS ab dem nächsten Änderungstermin
-     * (12,2 Stellen)
-     */
-    @FeldInfo(teildatensatz = 1, nr = 17, type = Betrag.class, anzahlBytes = 14, byteAdresse = 134)
-    NAECHSTE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
+    NAECHSTE_UNFALLSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Leerstellen.
      */
-    @FeldInfo(teildatensatz = 1, nr = 18, type = AlphaNumFeld.class, anzahlBytes = 108, byteAdresse = 148)
+    @FeldInfo(teildatensatz = 1, nr = 14, type = AlphaNumFeld.class, anzahlBytes = 164, byteAdresse = 92)
     LEERSTELLEN
 }

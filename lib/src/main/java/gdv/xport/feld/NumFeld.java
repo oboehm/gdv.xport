@@ -285,7 +285,7 @@ public class NumFeld extends Feld {
      * @return die Zahl als Double
      */
     public double toDouble() {
-        double n = toInt();
+        double n = toLong();
         for (int i = 0; i < this.nachkommastellen; i++) {
             n /= 10;
         }
