@@ -111,10 +111,15 @@ public class Betrag extends NumFeld {
     public int toInt() {
         return super.toInt() / 100;
     }
+    
+    @Override
+    public long toLong() {
+        return super.toLong() / 100L;
+    }
 
     @Override
     public double toDouble() {
-        return super.toInt() / 100.0;
+        return super.toLong() / 100.0;
     }
 
     /* (non-Javadoc)
