@@ -278,6 +278,7 @@ public final class Bezeichner {
     public static final Bezeichner BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL = new Bezeichner("Bezugsrechtanteil im Leistungsfall");
     public static final Bezeichner BEZUGSRECHTANTEIL_IM_TODESFALL = new Bezeichner("Bezugsrechtanteil im Todesfall");
     public static final Bezeichner BEZUG_ZUR_TEILSPARTE = new Bezeichner("Bezug zur Teilsparte", "BezugZurTeilsparte1");
+    public static final Bezeichner BEZUG_ZUR_TEILSPARTE2 = new Bezeichner("Bezug zur Teilsparte", "BezugZurTeilsparte2");
     public static final Bezeichner BIC1 = new Bezeichner("BIC 1");
     public static final Bezeichner BIC2 = new Bezeichner("BIC 2");
     public static final Bezeichner BILANZMONAT_ARBEITGEBER = new Bezeichner("Bilanzmonat Arbeitgeber");
