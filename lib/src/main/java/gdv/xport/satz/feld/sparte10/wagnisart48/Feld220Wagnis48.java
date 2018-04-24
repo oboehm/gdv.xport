@@ -32,7 +32,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  */
 public enum Feld220Wagnis48 {
 
-    // /// Teildatensatz 1 /////////////////////////////////////////////////
+ // /// Teildatensatz 1 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
@@ -304,11 +304,25 @@ public enum Feld220Wagnis48 {
      */
     @FeldInfo(teildatensatz = 1, nr = 42, type = NumFeld.class, anzahlBytes = 2, byteAdresse = 227)
     ABWEICHENDE_LEISTUNGSDAUER,
+    
+    /**
+     * Garantierter Steigerungssatz bei BU.
+     * Garantierter Steigerungssatz bei "Beitragsübernahme" durch den VU bei BU (Beitrag/Leistung) (3,2)
+     */
+    @FeldInfo(teildatensatz = 1, nr = 43, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 229)
+    GARANTIERTER_STEIGERUNGSSATZ_BEI_BU,
+    
+    /**
+     * Steigerungssatz für BU-Rente
+     * Garantierter Steigerungssatz bei "Beitragsübernahme" durch den VU bei BU (BUZ-Rente) (3,2)
+     */
+    @FeldInfo(teildatensatz = 1, nr = 44, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 234)
+    STEIGERUNGSSATZ_FUER_BU_RENTE,
 
     /**
      * Leerstellen.
      */
-    @FeldInfo(teildatensatz = 1, nr = 43, type = AlphaNumFeld.class, anzahlBytes = 27, byteAdresse = 229)
+    @FeldInfo(teildatensatz = 1, nr = 45, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 239)
     LEERSTELLEN,
 
     // /// Teildatensatz 2 /////////////////////////////////////////////////

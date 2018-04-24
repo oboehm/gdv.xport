@@ -31,7 +31,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  */
 public enum Feld221Wagnis5 {
 
-    // /// Teildatensatz 1 /////////////////////////////////////////////////
+ // /// Teildatensatz 1 /////////////////////////////////////////////////
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
@@ -66,13 +66,13 @@ public enum Feld221Wagnis5 {
      * erreichte Summe / tarifliche Versicherungssumme
      * (12,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 62)
+    @FeldInfo(teildatensatz = 1, nr = 11, type = Betrag.class, anzahlBytes = 14, byteAdresse = 62)
     VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Leerstellen.
      */
-    @FeldInfo(teildatensatz = 1, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 180, byteAdresse = 76)
+    @FeldInfo(teildatensatz = 1, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 180, byteAdresse = 76)
     LEERSTELLEN,
 
     // /// Teildatensatz 2 /////////////////////////////////////////////////
@@ -109,13 +109,13 @@ public enum Feld221Wagnis5 {
      * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten in Währungseinheiten.
      * (10,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 12, byteAdresse = 62)
+    @FeldInfo(teildatensatz = 2, nr = 11, type = Betrag.class, anzahlBytes = 12, byteAdresse = 62)
     ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
      * Leerstellen.
      */
-    @FeldInfo(teildatensatz = 2, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 182, byteAdresse = 74)
+    @FeldInfo(teildatensatz = 2, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 182, byteAdresse = 74)
     LEERSTELLEN2
 
 }
