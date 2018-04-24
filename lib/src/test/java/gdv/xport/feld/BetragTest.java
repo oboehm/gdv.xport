@@ -37,7 +37,9 @@ public final class BetragTest extends AbstractFeldTest {
 
     private final Betrag betrag = new Betrag(new Bezeichner("test"), 5, 1);
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
      */
     @Override
@@ -85,6 +87,7 @@ public final class BetragTest extends AbstractFeldTest {
 
     /**
      * Ein Betrag sollte als entsprechender Text formattiert werden.
+     * 
      * @since 0.5.1
      */
     @Test
@@ -95,5 +98,12 @@ public final class BetragTest extends AbstractFeldTest {
         }
     }
 
-}
+    @Test
+    public void testToDoubleTooLong() {
+        Betrag betrag = new Betrag(new Bezeichner("test"), 14, 1);
+        betrag.setInhalt("12345678901234");
+        double value = betrag.toDouble();
+        assertEquals(123456789012.34, value, 0.0);
+    }
 
+}
