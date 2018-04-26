@@ -18,6 +18,20 @@
 
 package gdv.xport.satz.model;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
@@ -29,16 +43,6 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
 import gdv.xport.util.SatzFactory;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.util.List;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
 
 /**
  * JUnit-Test fuer Satz220.
@@ -129,32 +133,52 @@ public class Satz220Test extends AbstractDatensatzTest {
     }
     
     /**
-     * Der spezielle Teildatensatz 9 der Sparte 30 bereitet Probleme, da er
-     * etwas aus der Reihe tanzt - er kann naemlich als erster Teildatensatz
-     * auftreten. Der Test-Input dazu stammt von der musterdatei_041222.txt von
-     * gdv-online.
+     * In der Sparte 30 haengt die Identifikation der entsprechenden Teildatensaetze von dem Feld "Zusaetzliche Satzkennung" ab. Dieser Test validiert die
+     * korrekte Gruppierung der Datensaetze.
      *
-     * @throws IOException sollte eigentlich nicht vorkommen, da wir von einem
-     *             String importieren
+     * @throws IOException sollte eigentlich nicht vorkommen, da wir von einem String importieren
      */
     @Test
     public void testSparte30Teildatensatz9() throws IOException {
-        String input = "02209999  030      59999999997019999009999000000001        900 M"
+        String input1 = "02209999  030      59999999997019999009999000000001        900 M"
                 + "artina Kitzekpfutze          00000                              "
                 + "                                                                "
-                + "                                                         9000000" + "\n"
-                + "02209999  030      599999999970199990099990000021Kitzelpfutze   "
+                + "                                                         9000000" + "\n";
+        String input2 =  "02209999  030      599999999970199990099990000021Kitzelpfutze   "
                 + "               000000Kitzelpfutze                  Martina      "
                 + "                 121219792000                              A 1EU"
-                + "R0000000000000000012632010620040000000001062004          1      " + "\n"
-                + "02209999  030      599999999970199990099990000022000000000009310"
+                + "R0000000000000000012632010620040000000001062004          1      " + "\n";
+        String input3 =  "02209999  030      599999999970199990099990000022000000000009310"
                 + "0000000000000116900000000000000000000000000000000000000000000000"
                 + "0000000000000000000000000010000000000000000 00000000000000000000"
                 + "000000000000000000000000000000000000000000000000000  000000    X" + "\n";
-        assertEquals(771, input.length());
-        Datensatz wagnisdaten = SatzFactory.getDatensatz(220, 30);
-        wagnisdaten.importFrom(input);
-        checkDatensatz(wagnisdaten, input);
+        String input4 =  "02219999  030      599999999970199990099990000022               "
+                + "                                                                "
+                + "                                                                "
+                + "                                                               X" + "\n";
+        
+        Datenpaket datenpaket = new Datenpaket();
+        URL url = this.getClass().getResource("/satz220.030.txt");
+        datenpaket.importFrom(url);
+
+        List<Datensatz> datensaetze = datenpaket.getDatensaetze();
+        assertThat("satz220.030.txt hat drei Datensaetze", datensaetze.size(), is(3));
+        
+        List<Teildatensatz> teildatensaetze1 = datensaetze.get(0).getTeildatensaetze();
+        assertThat("satz220.030.txt erster Datensatz hat einen Teilsatz", teildatensaetze1.size(), is(1));
+        checkDatensatz(teildatensaetze1.get(0), input1);
+        assertThat("satz220.030.txt erster Datensatz, erster Teilsatz hat die Satznummer 9", teildatensaetze1.get(0).getNummer().toInt(), is(9));
+        
+        List<Teildatensatz> teildatensaetze2 = datensaetze.get(1).getTeildatensaetze();
+        assertThat("satz220.030.txt zweiter Datensatz hat zwei Teilsaetze", teildatensaetze2.size(), is(2));
+        checkDatensatz(teildatensaetze2.get(0), input2);
+        assertThat("satz220.030.txt zweiter Datensatz, erster Teilsatz hat die Satznummer 1", teildatensaetze2.get(0).getNummer().toInt(), is(1));
+        checkDatensatz(teildatensaetze2.get(1), input3);
+        assertThat("satz220.030.txt zweiter Datensatz, zweiter Teilsatz hat die Satznummer 2", teildatensaetze2.get(1).getNummer().toInt(), is(2));
+
+        List<Teildatensatz> teildatensaetze3 = datensaetze.get(2).getTeildatensaetze();
+        assertThat("satz220.030.txt dritter Datensatz hat einen Teilsatz", teildatensaetze3.size(), is(1));
+        checkDatensatz(teildatensaetze3.get(0), input4);
     }
 
     /**
