@@ -689,32 +689,42 @@ public abstract class Satz implements Cloneable {
 	 * @param s String zum Importieren
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public void importFrom(final String s) throws IOException {
-		int satzlength = getSatzlength(s);
-		SortedSet<Integer> importedSatznummern = new TreeSet<>();
-		for (int i = 0; i < teildatensatz.length; i++) {
-			String input = s.substring(i * satzlength);
-			if (input.trim().isEmpty()) {
-				LOG.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur " + i
-				        + " Teildatensaetze vorgefunden");
-                removeUnusedTeildatensaetze(importedSatznummern);
-				break;
-			}
-			int satznummer = input.charAt(255) - '0';
-			if ((satznummer < 1) || (satznummer > teildatensatz.length)) {
-			    satznummer = i + 1;
+    public void importFrom(final String s) throws IOException {
+        int satzlength = getSatzlength(s);
+        SortedSet<Integer> importedTeilsatzIndexes = new TreeSet<>();
+        for (int i = 0; i < teildatensatz.length; i++) {
+            String input = s.substring(i * satzlength);
+            if (input.trim().isEmpty()) {
+                LOG.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur " + i
+                        + " Teildatensaetze vorgefunden");
+                removeUnusedTeildatensaetze(importedTeilsatzIndexes);
+                break;
             }
-            teildatensatz[satznummer-1].importFrom(input);
-            importedSatznummern.add(satznummer);
-		}
-	}
+            int satznummer = readSatznummer(input.toCharArray()) - '0';
+            int teildatensatzIndex = getTeildatensatzIndex(i, satznummer);
+            teildatensatz[teildatensatzIndex].importFrom(input);
+            importedTeilsatzIndexes.add(teildatensatzIndex);
+        }
+    }
+    
+    private final int getTeildatensatzIndex(int index, int satznummer) {
+        if (satznummer < 1) {
+            return index;
+        }
+        for (int i = 0; i < teildatensatz.length; i++) {
+            if (teildatensatz[i].getNummer().toInt() == satznummer) {
+                return i;
+            }
+        }
+        return index;
+    }
 
-    private final void removeUnusedTeildatensaetze(SortedSet<Integer> usedSatznummern) {
-        Teildatensatz[] usedTeildatensaetze = new Teildatensatz[usedSatznummern.size()];
-	    int i = 0;
-	    for (int satznummer : usedSatznummern) {
-	        usedTeildatensaetze[i] = teildatensatz[satznummer - 1];
-	        i++;
+    private final void removeUnusedTeildatensaetze(SortedSet<Integer> usedIndexes) {
+        Teildatensatz[] usedTeildatensaetze = new Teildatensatz[usedIndexes.size()];
+        int i = 0;
+        for (int teilsatzIndex : usedIndexes) {
+            usedTeildatensaetze[i] = teildatensatz[teilsatzIndex];
+            i++;
         }
         this.teildatensatz = usedTeildatensaetze;
     }
@@ -797,24 +807,24 @@ public abstract class Satz implements Cloneable {
 	 * @param reader the reader
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public void importFrom(final PushbackLineNumberReader reader) throws IOException {
-		char[] cbuf = new char[257 * teildatensatz.length];
-		char[] feld1to7 = null;
-		Character feld256 = null;
-		for (int i = 0; i < teildatensatz.length; i++) {
+    public void importFrom(final PushbackLineNumberReader reader) throws IOException {
+        char[] cbuf = new char[257 * teildatensatz.length];
+        char[] feld1to7 = null;
+        Character satznummer = null;
+        for (int i = 0; i < teildatensatz.length; i++) {
             reader.skipNewline();
-			if (!matchesNextTeildatensatz(reader, feld1to7, feld256)) {
-				LOG.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
-				        + ", but Satzart or Sparte or Wagnisart or TeildatensatzNummer has changed");
-				break;
-			}
-			importFrom(reader, cbuf, i * 257);
-			cbuf[i * 257 + 256] = '\n';
-			feld1to7 = Arrays.copyOfRange(cbuf, i*257,  i*257 + 42);
-			feld256 = cbuf[i*257 + 255];
-		}
-		importFrom(new String(cbuf));
-	}
+            if (!matchesNextTeildatensatz(reader, feld1to7, satznummer)) {
+                LOG.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
+                        + ", but Satzart or Sparte or Wagnisart or TeildatensatzNummer has changed");
+                break;
+            }
+            satznummer = readSatznummer(reader);
+            importFrom(reader, cbuf, i * 257);
+            cbuf[i * 257 + 256] = '\n';
+            feld1to7 = Arrays.copyOfRange(cbuf, i*257,  i*257 + 42);
+        }
+        importFrom(new String(cbuf));
+    }
 
 	/**
 	 * Prueft, ob die kommende Zeile noch zu dem aktuellen Datensatz gehoert.
@@ -833,7 +843,7 @@ public abstract class Satz implements Cloneable {
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.5.1
 	 */
-	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character lastFeld256) throws IOException {
+    protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character satznummer) throws IOException {
 		try {
             int art = readSatzart(reader);
             return art == this.getSatzart();
@@ -1169,6 +1179,186 @@ public abstract class Satz implements Cloneable {
         return false;
     }
 
+    /**
+     * Read satznummer.
+     *
+     * @param reader the reader
+     * @return the teildatensatz nummer
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public static Character readSatznummer(final PushbackReader reader) throws IOException {
+        char[] cbuf = new char[256];
+        if (reader.read(cbuf) == -1) {
+            throw new EOFException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
+        }
+        reader.unread(cbuf);
+        return readSatznummer(cbuf);
+    }
+
+    /**
+     * Read satznummer.
+     *
+     * @param cbuf der eingelesene Satz in char array
+     * @return the teildatensatz nummer
+     */
+    public static char readSatznummer(char[] cbuf) throws IOException {
+        if (cbuf.length < 256) {
+            return 0;
+        }
+        String satz = new String(cbuf);
+        String satzartString = satz.substring(0, 4).trim();
+        int satzart = isNumber(satzartString) ? Integer.parseInt(satzartString) : -1;
+        String sparteString = satz.substring(10, 13).trim();
+        int sparte = isNumber(sparteString) ? Integer.parseInt(sparteString) : -1;
+        
+        int satznummerIndex = 255;
+        switch (satzart) {
+            case 210:
+                switch (sparte) {
+                    case 0:
+                    case 80:
+                    case 170:
+                    case 190:
+                    case 550:
+                    case 560:
+                    case 570:
+                    case 580:
+                        satznummerIndex = 42;
+                        break;
+                    case 130:
+                        satznummerIndex = 250;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 211:
+                switch (sparte) {
+                    case 0:
+                    case 80:
+                    case 170:
+                    case 190:
+                        satznummerIndex = 42;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 220:
+                switch (sparte) {
+                    case 0:
+                        satznummerIndex = 46;
+                        break;
+                    case 30:
+                        if (satz.charAt(48) == '2' && satz.charAt(255) == 'X') {
+                            satznummerIndex = 48;
+                            break;
+                        }
+                        satznummerIndex = 249;
+                        if (Character.isDigit(satz.charAt(satznummerIndex)) && satz.charAt(satznummerIndex) != '0' && satz.charAt(satznummerIndex) != '2') {
+                            break;
+                        }
+                        if (satz.charAt(48) == '1' || satz.charAt(48) == '4') {
+                            satznummerIndex = 48;
+                            break;
+                        }
+                        if (satz.charAt(42) == '3') {
+                            satznummerIndex = 42;
+                            break;
+                        }
+                        satznummerIndex = 59;
+                        break;
+                    case 40:
+                    case 140:
+                        satznummerIndex = 50;
+                        break;
+                    case 70:
+                        satznummerIndex = 52;
+                        break;
+                    case 80:
+                    case 190:
+                        satznummerIndex = 48;
+                        break;
+                    case 170:
+                        satznummerIndex = 49;
+                        break;
+                    case 550:
+                    case 560:
+                    case 570:
+                    case 580:
+                        satznummerIndex = 42;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 221:
+                switch (sparte) {
+                    case 0:
+                        satznummerIndex = 46;
+                        break;
+                    case 30:
+                        if (satz.charAt(48) == '2' && satz.charAt(255) == 'X') {
+                            satznummerIndex = 48;
+                            break;
+                        }
+                        satznummerIndex = 249;
+                        if (Character.isDigit(satz.charAt(satznummerIndex)) && satz.charAt(satznummerIndex) != '0' && satz.charAt(satznummerIndex) != '2') {
+                            break;
+                        }
+                        if (satz.charAt(42) == '3') {
+                            satznummerIndex = 42;
+                            break;
+                        }
+                        satznummerIndex = 59;
+                        break;
+                    case 40:
+                    case 140:
+                        satznummerIndex = 50;
+                        break;
+                    case 70:
+                        satznummerIndex = 52;
+                        break;
+                    case 80:
+                    case 190:
+                        satznummerIndex = 48;
+                        break;
+                    case 170:
+                        satznummerIndex = 49;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 250:
+                switch (sparte) {
+                    case 190:
+                        satznummerIndex = 50;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 251:
+                switch (sparte) {
+                    case 190:
+                        satznummerIndex = 50;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
+        
+        return satz.charAt(satznummerIndex);
+    }
+    
+    public static boolean isNumber(String string) {
+        return string.matches("-?\\d+");
+    }
+    
 	/**
 	 * Legt eine Kopie des Satzes an.
 	 * 

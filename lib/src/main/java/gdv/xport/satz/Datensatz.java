@@ -521,8 +521,8 @@ public class Datensatz extends Satz {
 	 * @since 0.5.1
 	 */
 	@Override
-	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character lastFeld256) throws IOException {
-		if (super.matchesNextTeildatensatz(reader, lastFeld1To7, lastFeld256)) {
+    protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character satznummer) throws IOException {
+        if (super.matchesNextTeildatensatz(reader, lastFeld1To7, satznummer)) {
 			if (lastFeld1To7 == null) {
 				//erster Teildatensatz hat noch keine lastFeld...
 				if (this.hasSparte()) {
@@ -546,7 +546,8 @@ public class Datensatz extends Satz {
 				}
 				
 				// Das letzte Feld wird darauf verglichen, dass es groesser als das vorherige ist, falls Teildatensaetze uebersprungen werden
-				if (Character.isDigit(newLine[255]) && Character.isDigit(lastFeld256) && newLine[255] <= lastFeld256) {
+                char newSatznummer = readSatznummer(newLine);
+                if (Character.isDigit(newSatznummer) && Character.isDigit(satznummer) && newSatznummer <= satznummer) {
 				    return false;
 				}
 				
