@@ -20,7 +20,7 @@ public enum Feld220 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
-            sparte = 30,
+            sparte = 110,
             teildatensatz = 1,
             type = Feld1bis7.class)
     INTRO1,
