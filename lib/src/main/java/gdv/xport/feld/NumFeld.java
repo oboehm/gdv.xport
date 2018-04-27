@@ -286,10 +286,11 @@ public class NumFeld extends Feld {
      */
     public double toDouble() {
         double n = toLong();
+        long d = 1;
         for (int i = 0; i < this.nachkommastellen; i++) {
-            n /= 10;
+            d *= 10;
         }
-        return n;
+        return n / d;
     }
 
     /**
