@@ -126,7 +126,7 @@ public enum Feld220Wagnis13 {
      * zum Ablauf (inkl. Abrufphase)
      * (9,0 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 18, type = Betrag.class, anzahlBytes = 9, byteAdresse = 111)
+    @FeldInfo(teildatensatz = 1, nr = 18, type = NumFeld.class, anzahlBytes = 9, byteAdresse = 111)
     TODESFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF,
 
     /**
@@ -221,7 +221,7 @@ public enum Feld220Wagnis13 {
      * Dynamik %-Satz.
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 31, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 193)
+    @FeldInfo(teildatensatz = 1, nr = 31, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 193)
     DYNAMIK_PROZENT_SATZ,
 
     /**
@@ -291,7 +291,7 @@ public enum Feld220Wagnis13 {
      * kumuliert, incl. aller Dynamiken
      * (9,0 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 39, type = Betrag.class, anzahlBytes = 9, byteAdresse = 222)
+    @FeldInfo(teildatensatz = 1, nr = 39, type = NumFeld.class, anzahlBytes = 9, byteAdresse = 222)
     RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN,
 
     /**

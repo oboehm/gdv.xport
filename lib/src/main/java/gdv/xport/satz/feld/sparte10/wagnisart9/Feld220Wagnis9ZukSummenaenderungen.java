@@ -97,7 +97,7 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
      * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Todesfalleistung
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 80)
+    @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 80)
     TODESFALLAENDERUNGS_PROZENTSATZ,
 
     /**

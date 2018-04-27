@@ -74,7 +74,7 @@ public enum Feld220Wagnis9Auszahlungen {
      * wurde (NAECHSTE_AUSZAHLUNGSSUMMER_IN_WAEHRUNGSEINHEITEN).
      * </p>
      */
-    @FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 9, byteAdresse = 64)
+    @FeldInfo(teildatensatz = 1, nr = 12, type = NumFeld.class, anzahlBytes = 9, byteAdresse = 64)
     NAECHSTE_AUSZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**

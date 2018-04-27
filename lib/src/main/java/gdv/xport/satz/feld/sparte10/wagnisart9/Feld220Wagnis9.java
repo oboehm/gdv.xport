@@ -150,7 +150,7 @@ public enum Feld220Wagnis9 {
      * Dynamik %-Satz.
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 23, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 134)
+    @FeldInfo(teildatensatz = 1, nr = 23, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 134)
     DYNAMIK_PROZENT_SATZ,
 
     /**
@@ -502,21 +502,21 @@ public enum Feld220Wagnis9 {
      * z. B.: 100,00 = volle absolute BfA-Dynamik
      * 50,00 = halbe absolute BfA-Dynamik (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 2, nr = 26, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 211)
+    @FeldInfo(teildatensatz = 2, nr = 26, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 211)
     ANTEILIGER_DYNAMIKPROZENTSATZ,
 
     /**
      * Vereinbarter Dynamikmindestanpassungsprozentsatz.
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 2, nr = 27, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 216)
+    @FeldInfo(teildatensatz = 2, nr = 27, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 216)
     VEREINBARTER_DYNAMIKMINDESTANPASSUNGSPROZENTSATZ,
 
     /**
      * Vereinbarter Dynamikmaximalanpassungsprozentsatz.
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 2, nr = 28, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 221)
+    @FeldInfo(teildatensatz = 2, nr = 28, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 221)
     VEREINBARTER_DYNAMIKMAXIMALANPASSUNGSPROZENTSATZ,
 
     /**
@@ -732,14 +732,14 @@ public enum Feld220Wagnis9 {
      * Jahresrente inkl. Gewinnbeteiligung in WE.
      * (12,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 4, nr = 15, type = NumFeld.class, anzahlBytes = 14, byteAdresse = 95)
+    @FeldInfo(teildatensatz = 4, nr = 15, type = Betrag.class, anzahlBytes = 14, byteAdresse = 95)
     JAHRESRENTE_INKL_GEWINNBETEILIGUNG_IN_WAEHRUNGSEINHEITEN,
     
     /**
      * Kapitalzahlungssumme inkl. Gewinnbeteiligung in WE.
      * (12,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 4, nr = 16, type = NumFeld.class, anzahlBytes = 14, byteAdresse = 109)
+    @FeldInfo(teildatensatz = 4, nr = 16, type = Betrag.class, anzahlBytes = 14, byteAdresse = 109)
     KAPITALZAHLUNGSSUMME_INKL_GEWINNBETEILIGUNG_IN_WAEHRUNGSEINHEITEN,
 
     /**

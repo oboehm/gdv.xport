@@ -47,7 +47,7 @@ public enum Feld211 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 8,
-            type = NumFeld.class,
+            type = Betrag.class,
             nachkommaStellen = 2,
             anzahlBytes = 14,
             byteAdresse = 43
@@ -60,7 +60,7 @@ public enum Feld211 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 9,
-            type = NumFeld.class,
+            type = Betrag.class,
             nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 57

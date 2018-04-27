@@ -160,6 +160,7 @@ public enum Feld210 {
             teildatensatz = 1,
             nr = 16,
             type = NumFeld.class,
+            nachkommaStellen = 3,
             anzahlBytes = 5,
             byteAdresse = 75)
     DYNAMIK_IN_PROZENT,
@@ -261,6 +262,7 @@ public enum Feld210 {
             teildatensatz = 1,
             nr = 24,
             type = NumFeld.class,
+            nachkommaStellen = 2,
             anzahlBytes = 5,
             byteAdresse = 132)
     ABSCHLUSSPROVISION,
@@ -274,6 +276,7 @@ public enum Feld210 {
             teildatensatz = 1,
             nr = 25,
             type = NumFeld.class,
+            nachkommaStellen = 2,
             anzahlBytes = 5,
             byteAdresse = 137)
     FOLGEPROVISION,

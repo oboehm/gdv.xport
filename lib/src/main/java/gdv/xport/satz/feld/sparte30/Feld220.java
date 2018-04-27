@@ -520,6 +520,7 @@ public enum Feld220 {
             teildatensatz = 2,
             nr = 17,
             type = NumFeld.class,
+            nachkommaStellen = 1,
             anzahlBytes = 3,
             byteAdresse = 91)
     BEGINN_TAGEGELD1_AB_TAG,
@@ -560,6 +561,7 @@ public enum Feld220 {
             teildatensatz = 2,
             nr = 20,
             type = NumFeld.class,
+            nachkommaStellen = 1,
             anzahlBytes = 3,
             byteAdresse = 108)
     BEGINN_TAGEGELD2_AB_TAG,

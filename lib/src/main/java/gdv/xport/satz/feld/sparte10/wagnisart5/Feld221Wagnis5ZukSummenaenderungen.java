@@ -82,7 +82,7 @@ public enum Feld221Wagnis5ZukSummenaenderungen {
      * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung
      * (12,0 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 13, type = Betrag.class, anzahlBytes = 14, byteAdresse = 78)
+    @FeldInfo(teildatensatz = 1, nr = 13, type = NumFeld.class, anzahlBytes = 14, byteAdresse = 78)
     ABSOLUTE_TODESFALLAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**

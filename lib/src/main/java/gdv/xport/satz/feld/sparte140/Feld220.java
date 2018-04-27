@@ -283,7 +283,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 27,
-            type = NumFeld.class,
+            type = Betrag.class,
             anzahlBytes = 12,
             nachkommaStellen = 2,
             byteAdresse = 166)
@@ -516,7 +516,7 @@ public enum Feld220 {
             nachkommaStellen = 2,
             anzahlBytes = 4,
             byteAdresse = 150)
-    PRÄMIENFAKTOR,
+    PRAEMIENFAKTOR,
     
     /**
      * Beitrag aktuell in Währungseinheiten

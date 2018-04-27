@@ -105,7 +105,7 @@ public enum Feld210 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 12,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 12,
             byteAdresse = 49
     )
@@ -219,6 +219,7 @@ public enum Feld210 {
             nr = 20,
             type = NumFeld.class,
             anzahlBytes = 5,
+            nachkommaStellen = 2,
             byteAdresse = 131
     )
     BESTANDSPFLEGEPROVISION,
@@ -280,7 +281,7 @@ public enum Feld210 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 24,
-            type = NumFeld.class,
+            type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 151
     )
@@ -751,7 +752,7 @@ public enum Feld210 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 25,
-            type = NumFeld.class,
+            type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 224
             )

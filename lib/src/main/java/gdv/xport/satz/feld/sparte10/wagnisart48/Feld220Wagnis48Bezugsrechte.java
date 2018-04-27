@@ -90,7 +90,7 @@ public enum Feld220Wagnis48Bezugsrechte {
     /**
      * Bezugsrechtanteil im Leistungsfall in Prozent (3,2 Stellen).
      */
-    @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 95)
+    @FeldInfo(teildatensatz = 1, nr = 14, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 95)
     BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL,
 
     /**

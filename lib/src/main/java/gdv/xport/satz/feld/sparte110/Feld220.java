@@ -3,6 +3,7 @@ package gdv.xport.satz.feld.sparte110;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.feld.common.Feld1bis7;
@@ -256,9 +257,8 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 24,
-            type = NumFeld.class,
+            type = Betrag.class,
             anzahlBytes = 12,
-            nachkommaStellen = 2,
             byteAdresse = 167
     )
     BEITRAG,
@@ -285,9 +285,8 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 26,
-            type = NumFeld.class,
+            type = Betrag.class,
             anzahlBytes = 12,
-            nachkommaStellen = 2,
             byteAdresse = 183 )
     SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN,
 

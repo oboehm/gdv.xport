@@ -100,7 +100,7 @@ public enum Feld220Wagnis2ZukSummenaenderungen {
      * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Todesfalleistung
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 77)
+    @FeldInfo(teildatensatz = 1, nr = 15, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 77)
     TODESFALLAENDERUNGS_PROZENTSATZ,
 
     /**
@@ -108,7 +108,7 @@ public enum Feld220Wagnis2ZukSummenaenderungen {
      * Absolute Summe der Steigerung bzw. Reduzierung der Todesfalleistung
      * (9,0 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 9, byteAdresse = 82)
+    @FeldInfo(teildatensatz = 1, nr = 16, type = NumFeld.class, anzahlBytes = 9, byteAdresse = 82)
     ABSOLUTE_TODESFALLAENDERUNGSSUMME_VS_IN_WAEHRUNGSEINHEITEN,
 
     /**
@@ -159,7 +159,7 @@ public enum Feld220Wagnis2ZukSummenaenderungen {
      * Konstanter Prozentsatz der Steigerung bzw. Reduzierung der Jahresrente
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 22, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 124)
+    @FeldInfo(teildatensatz = 1, nr = 22, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 124)
     JAHRESRENTENAENDERUNGS_PROZENTSATZ,
 
     /**

@@ -111,7 +111,7 @@ public enum Feld220Wagnis0 {
     /**
      * Anzahl der versicherten Personen.
      */
-    @FeldInfo(teildatensatz = 1, nr = 17, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 164)
+    @FeldInfo(teildatensatz = 1, nr = 17, type = NumFeld.class, anzahlBytes = 1, byteAdresse = 164)
     ANZAHL_DER_VERSICHERTEN_PERSONEN,
 
     /**

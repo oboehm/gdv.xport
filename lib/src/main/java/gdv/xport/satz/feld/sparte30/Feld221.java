@@ -72,8 +72,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 10,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 14,
             byteAdresse = 50
     )
@@ -85,8 +84,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 11,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 14,
             byteAdresse = 64
     )
@@ -98,8 +96,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 12,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 10,
             byteAdresse = 78
     )
@@ -111,8 +108,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 13,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 10,
             byteAdresse = 88
     )
@@ -124,8 +120,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 14,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 10,
             byteAdresse = 98
     )
@@ -137,8 +132,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 15,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 10,
             byteAdresse = 108
     )
@@ -150,8 +144,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 16,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 14,
             byteAdresse = 118
     )
@@ -163,8 +156,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 17,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 14,
             byteAdresse = 132
     )
@@ -176,8 +168,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 18,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 14,
             byteAdresse = 146
     )
@@ -189,8 +180,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 19,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 14,
             byteAdresse = 160
     )
@@ -202,8 +192,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 20,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 14,
             byteAdresse = 174
     )
@@ -215,8 +204,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 2,
             nr = 21,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 14,
             byteAdresse = 188
     )
@@ -274,8 +262,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 3,
             nr = 9,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 14,
             byteAdresse = 44
     )
