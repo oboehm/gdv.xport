@@ -188,6 +188,7 @@ public enum Feld220 {
             teildatensatz = 1,
             nr = 19,
             type = NumFeld.class,
+            nachkommaStellen = 4,
             anzahlBytes = 3,
             byteAdresse = 154)
     BEITRAGSSATZ,
@@ -198,7 +199,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 20,
-            type = Betrag.class,
+            type = NumFeld.class,
             nachkommaStellen = 1,
             anzahlBytes = 8,
             byteAdresse = 157
@@ -516,10 +517,9 @@ public enum Feld220 {
      */
     @FeldInfo(
             teildatensatz = 2, 
-            nr = 15, type = 
-            NumFeld.class, 
+            nr = 15,
+            type = Betrag.class, 
             anzahlBytes = 12, 
-            nachkommaStellen = 2, 
             byteAdresse = 170)
     SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_MIND,
 
@@ -529,9 +529,8 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 2, 
             nr = 16, 
-            type = NumFeld.class, 
+            type = Betrag.class, 
             anzahlBytes = 12, 
-            nachkommaStellen = 2, 
             byteAdresse = 182)
     SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_MAX,
 

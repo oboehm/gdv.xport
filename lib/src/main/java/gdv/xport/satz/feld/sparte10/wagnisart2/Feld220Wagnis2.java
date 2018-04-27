@@ -153,7 +153,7 @@ public enum Feld220Wagnis2 {
      * Dynamik %-Satz.
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 23, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 134)
+    @FeldInfo(teildatensatz = 1, nr = 23, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 134)
     DYNAMIK_PROZENT_SATZ,
 
     /**
@@ -192,7 +192,7 @@ public enum Feld220Wagnis2 {
      * kumuliert, incl. aller Dynamiken
      * (9,0 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 28, type = Betrag.class, anzahlBytes = 9, byteAdresse = 157)
+    @FeldInfo(teildatensatz = 1, nr = 28, type = NumFeld.class, anzahlBytes = 9, byteAdresse = 157)
     RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN,
 
     /**
@@ -244,7 +244,7 @@ public enum Feld220Wagnis2 {
      * Vertraglich vereinbarte Kapitalzahlungssumme zum Ablauf (inkl. Abrufphase)
      * (9,0 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 35, type = Betrag.class, anzahlBytes = 9, byteAdresse = 204)
+    @FeldInfo(teildatensatz = 1, nr = 35, type = NumFeld.class, anzahlBytes = 9, byteAdresse = 204)
     KAPITALZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
@@ -654,14 +654,14 @@ public enum Feld220Wagnis2 {
      * Jahresrente inkl. Gewinnbeteiligung in WE.
      * (12,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 3, nr = 20, type = NumFeld.class, anzahlBytes = 14, byteAdresse = 158)
+    @FeldInfo(teildatensatz = 3, nr = 20, type = Betrag.class, anzahlBytes = 14, byteAdresse = 158)
     JAHRESRENTE_INKL_GEWINNBETEILIGUNG_IN_WAEHRUNGSEINHEITEN,
     
     /**
      * Kapitalzahlungssumme inkl. Gewinnbeteiligung in WE.
      * (12,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 3, nr = 21, type = NumFeld.class, anzahlBytes = 14, byteAdresse = 158)
+    @FeldInfo(teildatensatz = 3, nr = 21, type = Betrag.class, anzahlBytes = 14, byteAdresse = 158)
     KAPITALZAHLUNGSSUMME_INKL_GEWINNBETEILIGUNG_IN_WAEHRUNGSEINHEITEN,
 
     /**

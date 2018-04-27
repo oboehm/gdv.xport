@@ -119,7 +119,7 @@ public enum Feld230 {
      * Prozentualer Anteil des Beitrags mit dem dieser Fonds aktuell bespart wird
      * (3,4 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 19, type = NumFeld.class, anzahlBytes = 7, byteAdresse = 167)
+    @FeldInfo(teildatensatz = 1, nr = 19, type = NumFeld.class, nachkommaStellen = 4, anzahlBytes = 7, byteAdresse = 167)
     PROZENTSATZ,
 
     /**

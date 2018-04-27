@@ -134,7 +134,7 @@ public enum Feld210 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 14,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 72)
     DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN,
@@ -174,7 +174,7 @@ public enum Feld210 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 17,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 85)
     DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN,
@@ -214,7 +214,7 @@ public enum Feld210 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 20,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 98)
     DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN,
@@ -254,7 +254,7 @@ public enum Feld210 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 23,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 111)
     DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN,
@@ -400,6 +400,7 @@ public enum Feld210 {
             teildatensatz = 1,
             nr = 32,
             type = NumFeld.class,
+            nachkommaStellen = 2,
             anzahlBytes = 5,
             byteAdresse = 166)
     ABSCHLUSSPROVISION,
@@ -415,6 +416,7 @@ public enum Feld210 {
             teildatensatz = 1,
             nr = 33,
             type = NumFeld.class,
+            nachkommaStellen = 2,
             anzahlBytes = 5,
             byteAdresse = 171)
     FOLGEPROVISION,
@@ -472,6 +474,7 @@ public enum Feld210 {
             teildatensatz = 1,
             nr = 37,
             type = NumFeld.class,
+            nachkommaStellen = 2,
             anzahlBytes = 4,
             byteAdresse = 180)
     LAUFZEITRABATT_IN_PROZENT,

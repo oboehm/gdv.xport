@@ -21,6 +21,7 @@ package gdv.xport.satz.feld.sparte53;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
@@ -150,8 +151,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 16,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 6,
             byteAdresse = 91
     )
@@ -163,8 +163,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 17,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 6,
             byteAdresse = 97
     )

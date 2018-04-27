@@ -176,7 +176,7 @@ public enum Feld210 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 22,
-            type = Datum.class,
+            type = NumFeld.class,
             anzahlBytes = 2,
             byteAdresse = 110
     )

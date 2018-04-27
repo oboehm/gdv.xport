@@ -37,8 +37,7 @@ import org.junit.Test;
 import patterntesting.runtime.junit.ObjectTester;
 
 /**
- * Hier setzen wir eine Standard-Konfiguration auf, die wir in den
- * verschiedenen JUnit-Tests verwenden.
+ * Hier setzen wir eine Standard-Konfiguration auf, die wir in den verschiedenen JUnit-Tests verwenden.
  *
  * @author oliver
  * @since 09.10.2009
@@ -65,10 +64,8 @@ abstract public class AbstractSatzTest {
         Config.setVUNummer(VU_NUMMER);
     }
 
-
     /**
-     * Die Satzart ist im ersten Feld (Byte 1 - 4) enthalten und ist in jedem
-     * Satz vorhanden (auch Vorsatz und Nachsatz).
+     * Die Satzart ist im ersten Feld (Byte 1 - 4) enthalten und ist in jedem Satz vorhanden (auch Vorsatz und Nachsatz).
      */
     @Test
     public void testSatzart() {
@@ -92,7 +89,7 @@ abstract public class AbstractSatzTest {
     /**
      * @param satz Satz
      * @param startByte beginnend bei 1
-     * @param endByte   beginnend bei 1
+     * @param endByte beginnend bei 1
      * @param expected erwarteter Export-String
      * @param expectedLength erwartete Laenge
      * @throws IOException sollte bei StringWriter eigentlich nicht vorkommen
@@ -135,8 +132,7 @@ abstract public class AbstractSatzTest {
     }
 
     /**
-     * Setzt fuer den uebergebenen Satz die normalen Felder mit einem Wert,
-     * damit einfache Test-Daten fuer die einzelnen Tests vorhanden sind.
+     * Setzt fuer den uebergebenen Satz die normalen Felder mit einem Wert, damit einfache Test-Daten fuer die einzelnen Tests vorhanden sind.
      *
      * @param satz the new up
      */
@@ -149,10 +145,15 @@ abstract public class AbstractSatzTest {
     private static void setUp(final Teildatensatz tds) {
         for (Feld feld : tds.getFelder()) {
             if ((feld.getByteAdresse() > 42) && (feld.getByteAdresse() < 256)) {
-                feld.setInhalt('1');
+                // TODO hier ist es eventuell noetig die Logik aus Satz.readSatznummer zu uebernehmen
+                // TODO Alternativ die Methode so aendern, dass sie den Index der Satznummer rausgibt und hier dann nutzen
+                if (tds.getSatzart() == 210 && tds.getSparte() == 130 && feld.getByteAdresse() == 251) {
+                    // 0210.130 Satznummer an Adresse 251
+                } else {
+                    feld.setInhalt('1');
+                }
             }
         }
     }
 
 }
-

@@ -183,8 +183,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 19,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 6,
             byteAdresse = 101
     )
@@ -196,8 +195,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 20,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 6,
             byteAdresse = 107
     )

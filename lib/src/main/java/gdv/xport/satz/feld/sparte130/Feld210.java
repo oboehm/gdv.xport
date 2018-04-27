@@ -3,6 +3,7 @@ package gdv.xport.satz.feld.sparte130;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
@@ -21,7 +22,7 @@ public enum Feld210 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
     @FelderInfo(
-            sparte = 30,
+            sparte = 130,
             teildatensatz = 1,
             type = Feld1bis7.class)
     INTRO1,
@@ -181,8 +182,7 @@ public enum Feld210 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 18,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 12,
             byteAdresse = 145)
     ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
@@ -195,8 +195,7 @@ public enum Feld210 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 19,
-            type = NumFeld.class,
-            nachkommaStellen = 2,
+            type = Betrag.class,
             anzahlBytes = 12,
             byteAdresse = 157)
     ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN,
@@ -223,7 +222,7 @@ public enum Feld210 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 21,
-            type = NumFeld.class,
+            type = Betrag.class,
             nachkommaStellen = 2,
             anzahlBytes = 12,
             byteAdresse = 181)
@@ -461,6 +460,7 @@ public enum Feld210 {
             teildatensatz = 1,
             nr = 39,
             type = NumFeld.class,
+            nachkommaStellen = 2,
             anzahlBytes = 4,
             byteAdresse = 232)
     LAUFZEITRABATT_IN_PROZENT,

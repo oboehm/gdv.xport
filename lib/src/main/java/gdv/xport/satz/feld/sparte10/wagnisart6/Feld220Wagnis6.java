@@ -124,7 +124,7 @@ public enum Feld220Wagnis6 {
      * Dynamik %-Satz.
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 19, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 106)
+    @FeldInfo(teildatensatz = 1, nr = 19, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 106)
     DYNAMIK_PROZENT_SATZ,
 
     /**
@@ -182,7 +182,7 @@ public enum Feld220Wagnis6 {
      * Anteil an der VS (100% oder 200%)
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 26, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 134)
+    @FeldInfo(teildatensatz = 1, nr = 26, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 134)
     EINSCHLUSS_PROZENT_SATZ,
 
     /**
@@ -329,21 +329,21 @@ public enum Feld220Wagnis6 {
      * BfA-Dynamik
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 2, nr = 19, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 192)
+    @FeldInfo(teildatensatz = 2, nr = 19, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 192)
     ANTEILIGER_DYNAMIKPROZENTSATZ,
 
     /**
      * Vereinbarter Dynamikmindestanpassungsprozentsatz.
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 2, nr = 20, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 197)
+    @FeldInfo(teildatensatz = 2, nr = 20, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 197)
     VEREINBARTER_DYNAMIKMINDESTANPASSUNGSPROZENTSATZ,
 
     /**
      * Vereinbarter Dynamikmaximalanpassungsprozentsatz.
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 2, nr = 21, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 202)
+    @FeldInfo(teildatensatz = 2, nr = 21, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 202)
     VEREINBARTER_DYNAMIKMAXIMALANPASSUNGSPROZENTSATZ,
 
     /**

@@ -22,6 +22,7 @@ import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Betrag;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -62,8 +63,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 9,
-            type = Betrag.class,
-            nachkommaStellen = 2,
+            type = NumFeld.class,
             anzahlBytes = 12,
             byteAdresse = 57
     )
@@ -75,8 +75,7 @@ public enum Feld221 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 10,
-            type = Betrag.class,
-            nachkommaStellen = 2,
+            type = NumFeld.class,
             anzahlBytes = 12,
             byteAdresse = 69
     )

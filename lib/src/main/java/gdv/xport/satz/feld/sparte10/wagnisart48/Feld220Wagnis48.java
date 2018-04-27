@@ -143,7 +143,7 @@ public enum Feld220Wagnis48 {
      * Dynamik %-Satz.
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 22, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 118)
+    @FeldInfo(teildatensatz = 1, nr = 22, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 118)
     DYNAMIK_PROZENT_SATZ,
 
     /**
@@ -208,7 +208,7 @@ public enum Feld220Wagnis48 {
      * Anteil an der BUZ-Jahresrente an der VS
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 30, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 158)
+    @FeldInfo(teildatensatz = 1, nr = 30, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 158)
     EINSCHLUSS_PROZENT_SATZ,
 
     /**
@@ -264,7 +264,7 @@ public enum Feld220Wagnis48 {
      * Prozent-Satz, ab dem BUZ-Leistung vereinbart ist
      * (3,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 1, nr = 37, type = NumFeld.class, anzahlBytes = 5, byteAdresse = 197)
+    @FeldInfo(teildatensatz = 1, nr = 37, type = NumFeld.class, nachkommaStellen = 2, anzahlBytes = 5, byteAdresse = 197)
     BUZ_PROZENT_SATZ,
 
     /**

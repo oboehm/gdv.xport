@@ -95,7 +95,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 12,
-            type = Zeichen.class,
+            type = NumFeld.class,
             anzahlBytes = 1,
             byteAdresse = 55)
     MENGENSCHLUESSEL,
@@ -107,7 +107,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 13,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 12,
             byteAdresse = 56)
     WAGNISMENGE,
@@ -220,7 +220,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 21,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 133)
     DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN,
@@ -246,7 +246,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 23,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 143)
     DECKUNGSSUMME_2_IN_TAUSEND_WAEHRUNGSEINHEITEN,
@@ -272,7 +272,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 25,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 153)
     DECKUNGSSUMME_3_IN_TAUSEND_WAEHRUNGSEINHEITEN,
@@ -298,7 +298,7 @@ public enum Feld220 {
     @FeldInfo(
             teildatensatz = 1,
             nr = 27,
-            type = Betrag.class,
+            type = NumFeld.class,
             anzahlBytes = 9,
             byteAdresse = 163)
     DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN,
@@ -351,6 +351,7 @@ public enum Feld220 {
             teildatensatz = 1,
             nr = 30,
             type = NumFeld.class,
+            nachkommaStellen = 2,
             anzahlBytes = 5,
             byteAdresse = 174)
     ERHOEHUNGSSATZ_8_III_AHB,

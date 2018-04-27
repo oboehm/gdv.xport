@@ -62,7 +62,7 @@ public enum VertragsStatus {
     @FeldInfo(
             teildatensatz = 1,
             nr = 10,
-            type = NumFeld.class,
+            type = Datum.class,
             anzahlBytes = 8,
             byteAdresse = 52
     )
