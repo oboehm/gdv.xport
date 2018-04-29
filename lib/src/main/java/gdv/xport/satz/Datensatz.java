@@ -476,7 +476,7 @@ public class Datensatz extends Satz {
         try {
             return Integer.parseInt(first10Fields.substring(47, 48));
         } catch (NumberFormatException ex) {
-            throw new ImportException("cannot read kranken Folge-Nr from first 49 bytes (\"" + first10Fields + "\")");
+            return -1;
         }
     }
 
