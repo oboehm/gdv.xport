@@ -37,7 +37,7 @@ import patterntesting.runtime.junit.SmokeSuite;
 @SuiteClasses({ FeldTests.class, ModelTests.class, XmlTests.class, AdressteilTest.class,
         AllgemeinerVertragsteilTest.class, DatensatzTest.class, Erweiterungssatz211Test.class,
         Erweiterungssatz221Test.class, NachsatzTest.class, SatzTest.class, TeildatensatzTest.class,
-        VertragsspezifischerTeilTest.class, VorsatzTest.class })
+        VertragsspezifischerTeilTest.class, VorsatzTest.class, SatznummerTest.class })
 public class SatzTests {
 
 }
