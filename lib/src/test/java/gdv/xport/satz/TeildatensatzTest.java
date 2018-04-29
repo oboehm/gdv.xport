@@ -31,6 +31,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
 /**
@@ -124,7 +126,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      * erweiterte {@link Bezeichner}-Klasse gab es Probleme mit dem Loeschen
      * von Feldern.
      */
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testRemove() {
         Teildatensatz tds = new Teildatensatz(100, 1);
         Zeichen satznummer = new Zeichen(new Bezeichner("Satznummer"), 256);
@@ -132,7 +134,30 @@ public class TeildatensatzTest extends AbstractSatzTest {
         tds.add(satznummer);
         assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
         tds.remove(satznummer.getBezeichnung());
-        assertEquals("remove failed", Feld.NULL_FELD, tds.getFeld(satznummer.getBezeichnung()));
+        try {
+            tds.getFeld(satznummer.getBezeichnung());
+            fail("IllegalArgumentException bei fehlendem Feld erwartet");
+        } catch (IllegalArgumentException ex) {
+            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(), 
+                    allOf(containsString("Satznummer"), containsString("Satzart 0100")));
+            throw ex;
+        }
+    }
+    
+    /**
+     * Bei der internen Umstellung des {@link Teildatensatz}es auf die
+     * erweiterte {@link Bezeichner}-Klasse gab es Probleme mit dem Loeschen
+     * von Feldern.
+     */
+    @Test
+    public void testRemoveSafe() {
+        Teildatensatz tds = new Teildatensatz(100, 1);
+        Zeichen satznummer = new Zeichen(new Bezeichner("Satznummer"), 256);
+        satznummer.setInhalt('1');
+        tds.add(satznummer);
+        assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
+        tds.remove(satznummer.getBezeichnung());
+        assertEquals("remove failed", Feld.NULL_FELD, tds.getFeldSafe(satznummer.getBezeichnung()));
     }
 
     /**

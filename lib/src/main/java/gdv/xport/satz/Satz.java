@@ -285,7 +285,7 @@ public abstract class Satz implements Cloneable {
     public void set(final Bezeichner name, final String value) {
         boolean found = false;
         for (int i = 0; i < teildatensatz.length; i++) {
-            Feld x = teildatensatz[i].getFeld(name);
+            Feld x = teildatensatz[i].getFeldSafe(name);
             if (x != Feld.NULL_FELD) {
                 x.setInhalt(value);
                 found = true;
@@ -380,7 +380,7 @@ public abstract class Satz implements Cloneable {
 	public Feld getFeld(final Enum<?> feld) throws IllegalArgumentException {
 		for (int i = 0; i < teildatensatz.length; i++) {
 			try {
-				Feld x = teildatensatz[i].getFeld(feld);
+				Feld x = teildatensatz[i].getFeldSafe(feld);
 				if (x != Feld.NULL_FELD) {
 					return x;
 				}
@@ -393,6 +393,23 @@ public abstract class Satz implements Cloneable {
 		        + " vorhanden!");
 	}
 
+    /**
+     * Liefert das gewuenschte Feld oder {@link Feld#NULL_FELD}, wenn nicht
+     * vorhanden. Allerdings wird nur der Name des Feldes benutzt, um das Feld zu
+     * bestimmen. Dazu werden auch die Konstanten in
+     * {@link gdv.xport.feld.Bezeichner} verwendet.
+     *
+     * @param feld gewuenschtes Feld-Element
+     * @return das gesuchte Feld
+     */
+    public Feld getFeldSafe(final Enum<?> feld) {
+        try {
+            return getFeld(feld);
+        } catch (IllegalArgumentException ex) {
+            return Feld.NULL_FELD;
+        }
+    }
+
 	/**
 	 * Liefert das gewuenschte Feld falls vorhanden oder null.
 	 *
@@ -401,7 +418,7 @@ public abstract class Satz implements Cloneable {
 	 */
 	public Feld containsFeld(final String name) {
 		for (int i = 0; i < teildatensatz.length; i++) {
-			Feld x = teildatensatz[i].getFeld(name);
+			Feld x = teildatensatz[i].getFeldSafe(name);
 			if (x != Feld.NULL_FELD) {
 				return x;
 			}
@@ -417,9 +434,20 @@ public abstract class Satz implements Cloneable {
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 */
-	public Feld getFeld(final String name) {
+	public Feld getFeld(final String name) throws IllegalArgumentException {
 		return this.getFeld(new Bezeichner(name));
 	}
+	
+    /**
+     * Liefert das gewuenschte Feld oder {@link Feld#NULL_FELD}, wenn nicht
+     * vorhanden.
+     *
+     * @param name gewuenschter Bezeichner des Feldes
+     * @return das gesuchte Feld
+     */
+    public Feld getFeldSafe(final String name) {
+        return this.getFeldSafe(new Bezeichner(name));
+    }
 
     /**
      * Fraegt ab, ob das entsprechende Feld vorhanden ist.
@@ -443,9 +471,9 @@ public abstract class Satz implements Cloneable {
      * @return das gesuchte Feld
      * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
-    public Feld getFeld(final Bezeichner bezeichner) {
+    public Feld getFeld(final Bezeichner bezeichner) throws IllegalArgumentException {
         for (int i = 0; i < teildatensatz.length; i++) {
-            Feld x = teildatensatz[i].getFeld(bezeichner);
+            Feld x = teildatensatz[i].getFeldSafe(bezeichner);
             if (x != Feld.NULL_FELD) {
                 return x;
             }
@@ -455,13 +483,30 @@ public abstract class Satz implements Cloneable {
     }
 
     /**
+     * Liefert das gewuenschte Feld oder {@link Feld#NULL_FELD}, wenn nicht
+     * vorhanden.
+     *
+     * @param bezeichner gewuenschter Bezeichner des Feldes
+     * @return das gesuchte Feld
+     * @throws IllegalArgumentException falls es das Feld nicht gibt
+     */
+    public Feld getFeldSafe(final Bezeichner bezeichner) {
+        try {
+            return getFeld(bezeichner);
+        } catch (IllegalArgumentException ex) {
+            return Feld.NULL_FELD;
+        }
+    }
+
+    /**
      * Liefert den Inhalt des gewuenschten Feldes.
      *
      * @param bezeichner gewuenschter Bezeichner des Feldes
      * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
      * @since 2.0
+     * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
-    public final String getFeldInhalt(final Bezeichner bezeichner) {
+    public final String getFeldInhalt(final Bezeichner bezeichner) throws IllegalArgumentException {
         return this.getFeld(bezeichner).getInhalt().trim();
     }
 
@@ -471,9 +516,10 @@ public abstract class Satz implements Cloneable {
      * @param name gewuenschter Bezeichner des Feldes
      * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
      * @since 0.3
+     * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 * @deprecated mit 2.0 durch {@link #getFeldInhalt(Bezeichner)} abgeloest
      */
-    public final String getFeldInhalt(final String name) {
+    public final String getFeldInhalt(final String name) throws IllegalArgumentException {
         return this.getFeld(name).getInhalt().trim();
     }
 
@@ -483,9 +529,10 @@ public abstract class Satz implements Cloneable {
      * @param bezeichner gewuenschter Bezeichner des Feldes
      * @param nr Nummer des Teildatensatzes (1, 2, ...)
      * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
+     * @throws IllegalArgumentException falls es das Feld nicht gibt
      * @since 2.0
      */
-	public final Feld getFeld(final Bezeichner bezeichner, final int nr) {
+	public final Feld getFeld(final Bezeichner bezeichner, final int nr) throws IllegalArgumentException {
 	    return getFeld(bezeichner.getName(), nr);
 	}
 
@@ -495,9 +542,10 @@ public abstract class Satz implements Cloneable {
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @param nr Nummer des Teildatensatzes (1, 2, ...)
 	 * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
+     * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 * @since 0.2
 	 */
-	public final Feld getFeld(final String name, final int nr) {
+	public final Feld getFeld(final String name, final int nr) throws IllegalArgumentException {
 		assert (0 < nr) && (nr <= teildatensatz.length) : nr + " liegt ausserhalb des Bereichs";
 		return teildatensatz[nr - 1].getFeld(name);
 	}
@@ -508,9 +556,10 @@ public abstract class Satz implements Cloneable {
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @param nr Nummer des Teildatensatzes (1, 2, ...)
 	 * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
+     * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 * @since 0.3
 	 */
-	public final String getFeldInhalt(final String name, final int nr) {
+	public final String getFeldInhalt(final String name, final int nr) throws IllegalArgumentException {
 		return this.getFeld(name, nr).getInhalt().trim();
 	}
 
@@ -576,7 +625,7 @@ public abstract class Satz implements Cloneable {
 	 * @return true, falls Sparten-Feld vorhanden ist
 	 */
 	public boolean hasSparte() {
-	    Feld sparte = this.getFeld(Feld1bis7.SPARTE);
+	    Feld sparte = this.getFeldSafe(Feld1bis7.SPARTE);
 	    return (sparte != Feld.NULL_FELD) && !sparte.isEmpty();
 	}
 
@@ -1058,7 +1107,7 @@ public abstract class Satz implements Cloneable {
     }
 
     private static void setSparteFor(final Teildatensatz tds, final int sparte) {
-        Feld spartenFeld = tds.getFeld(Feld1bis7.SPARTE);
+        Feld spartenFeld = tds.getFeldSafe(Feld1bis7.SPARTE);
         if (spartenFeld == Feld.NULL_FELD) {
             spartenFeld = new NumFeld((SPARTE), 3, 11);
             tds.add(spartenFeld);

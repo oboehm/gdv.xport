@@ -275,7 +275,8 @@ public class Teildatensatz extends Satz {
     public Feld getFeld(final Bezeichner bezeichner) {
         Feld found = datenfelder.get(bezeichner);
         if (found == null) {
-            return Feld.NULL_FELD;
+            throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
+                    + " vorhanden!");
         } else {
             return found;
         }

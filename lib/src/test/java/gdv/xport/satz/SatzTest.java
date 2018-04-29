@@ -18,6 +18,8 @@
 
 package gdv.xport.satz;
 
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
@@ -25,6 +27,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,6 +53,7 @@ import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
+import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte53.Feld220;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.SatzFactory;
@@ -134,7 +138,77 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testGetFeld() {
-        Feld f = satz.getFeld("hemmernet");
+        try {
+            satz.getFeld("hemmernet");
+            fail("IllegalArgumentException bei fehlendem Feld erwartet");
+        } catch (IllegalArgumentException ex) {
+            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
+                    allOf(containsString("Hemmernet"), containsString("Satzart 0123")));
+            throw ex;
+        }
+    }
+    
+    /**
+     * Test method for {@link gdv.xport.satz.Satz#getFeldSafe(java.lang.String)}.
+     * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
+     * {@link Feld#NULL_FELD} erwartet.
+     */
+    public void testGetFeldSafe() {
+        Feld f = satz.getFeldSafe("hemmernet");
+        assertSame(Feld.NULL_FELD, f);
+    }
+    
+    /**
+     * Test method for {@link gdv.xport.satz.Satz#getFeld(java.lang.String)}.
+     * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als
+     * Ergebnis erwartet sondern eine IllegalArgumentException.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetFeldBezeichner() {
+        try {
+            satz.getFeld(new Bezeichner("hemmernet"));
+            fail("IllegalArgumentException bei fehlendem Feld erwartet");
+        } catch (IllegalArgumentException ex) {
+            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
+                    allOf(containsString("Hemmernet"), containsString("Satzart 0123")));
+            throw ex;
+        }
+    }
+    
+    /**
+     * Test method for {@link gdv.xport.satz.Satz#getFeldSafe(java.lang.String)}.
+     * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
+     * {@link Feld#NULL_FELD} erwartet.
+     */
+    public void testGetFeldSafeBezeichner() {
+        Feld f = satz.getFeldSafe(new Bezeichner("hemmernet"));
+        assertSame(Feld.NULL_FELD, f);
+    }
+    
+    /**
+     * Test method for {@link gdv.xport.satz.Satz#getFeld(java.lang.String)}.
+     * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als
+     * Ergebnis erwartet sondern eine IllegalArgumentException.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetFeldEnum() {
+        try {
+            satz.getFeld(Feld221Wagnis13ZukSummenaenderungen.ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN);
+            fail("IllegalArgumentException bei fehlendem Feld erwartet");
+        } catch (IllegalArgumentException ex) {
+            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
+                    allOf(containsString("ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN"), containsString("Satzart 0123")));
+            throw ex;
+        }
+    }
+    
+    /**
+     * Test method for {@link gdv.xport.satz.Satz#getFeldSafe(java.lang.String)}.
+     * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
+     * {@link Feld#NULL_FELD} erwartet.
+     */
+    public void testGetFeldSafeEnum() {
+        Feld f = satz.getFeldSafe(Feld221Wagnis13ZukSummenaenderungen.ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN);
         assertSame(Feld.NULL_FELD, f);
     }
 
