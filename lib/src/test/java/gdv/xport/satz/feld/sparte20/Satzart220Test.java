@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.Test;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
@@ -86,6 +87,26 @@ public class Satzart220Test {
         assertThat("0220.020.3 hat einen Teildatensatz", datensatz3.getNumberOfTeildatensaetze(), is(1));
         Teildatensatz tds3_1 = datensatz3.getTeildatensatz(1);
         assertThat("0220.020.3, Teildatensatz 1 hat 40 Felder in Version 2015", tds3_1.getFelder().size(), is(40));
+    }
+
+    @Test
+    public void testFehlendeKrankenFolgeNr() throws IOException {
+        Datenpaket datenpaket = new Datenpaket();
+        URL url = this.getClass().getResource("/satz220.20.fehlerhaft.txt");
+        datenpaket.importFrom(url);
+
+        List<Datensatz> datensaetze = datenpaket.getDatensaetze();
+        assertThat("0220.020, Drei Datensaetze", datensaetze.size(), is(3));
+
+        for (Datensatz datensatz : datensaetze) {
+            SatzTyp satztyp = datensatz.getSatzTyp();
+            assertThat("Satztyp hat Satzart 220", satztyp.getSatzart(), is(220));
+            assertThat("Satztyp hat Sparte 20", satztyp.getSparte(), is(20));
+            assertThat("Satztyp hat keine Krankenfolgenummer", satztyp.getKrankenFolgeNr(), is(-1));
+
+            assertThat("Datensatz hat einen Teildatensatz", datensatz.getNumberOfTeildatensaetze(), is(1));
+            assertThat("Teildatensatz 1 hat UNBEKANNT", datensatz.getTeildatensatz(1).hasFeld(Bezeichner.UNBEKANNT), is(true));
+        }
     }
 
 }
