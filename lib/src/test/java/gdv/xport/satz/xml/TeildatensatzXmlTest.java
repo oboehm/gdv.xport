@@ -18,7 +18,11 @@
 
 package gdv.xport.satz.xml;
 
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -123,12 +127,35 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
      */
     @Test
     public void testGetLeerstellen() {
-        checkLeerstellen(1, Feld.NULL_FELD);
+        try {
+            satz100.getTeildatensatz(1).getFeld(new Bezeichner("Leerstellen"));
+            fail("IllegalArgumentException bei fehlendem Feld erwartet");
+        } catch (IllegalArgumentException ex) {
+            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(), 
+                    allOf(containsString("Leerstellen"), containsString("Satzart 0100")));
+        }
+        
         checkLeerstellen(2, new AlphaNumFeld(Feld100.LEERSTELLEN));
     }
 
     private void checkLeerstellen(final int satznummer, final Feld expected) {
         Feld leerstellen = satz100.getTeildatensatz(satznummer).getFeld(new Bezeichner("Leerstellen"));
+        assertEquals(expected.getAnzahlBytes(), leerstellen.getAnzahlBytes());
+        assertEquals(expected.getByteAdresse(), leerstellen.getByteAdresse());
+    }
+    
+    /**
+     * Im ersten Teildatensatz von Satz 100 gibt es keine Leerstellen.
+     * Deshalb sollte hier ein Null-Feld zurueckgegeben werden.
+     */
+    @Test
+    public void testGetLeerstellenSafe() {
+        checkLeerstellenSafe(1, Feld.NULL_FELD);
+        checkLeerstellenSafe(2, new AlphaNumFeld(Feld100.LEERSTELLEN));
+    }
+
+    private void checkLeerstellenSafe(final int satznummer, final Feld expected) {
+        Feld leerstellen = satz100.getTeildatensatz(satznummer).getFeldSafe(new Bezeichner("Leerstellen"));
         assertEquals(expected.getAnzahlBytes(), leerstellen.getAnzahlBytes());
         assertEquals(expected.getByteAdresse(), leerstellen.getByteAdresse());
     }
