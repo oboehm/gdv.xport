@@ -21,16 +21,16 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.feld.FeldX;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
+import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.SimpleConstraintViolation;
 import gdv.xport.util.URLReader;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
-import net.sf.oval.constraint.AssertCheck;
-import net.sf.oval.context.ClassContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -343,10 +343,20 @@ public final class Datenpaket {
                 teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
             }
         }
+        
+        // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
         int krankenFolgeNr = -1;
         if (sparte == 20 && satzart == 220) {
             krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
+            
+            // Krankenfolgenummer nicht auslesbar -> Unbekannter Datensatz
+            if (krankenFolgeNr == -1) {
+                Datensatz satz = new SatzX(220, 20, FeldX.class);
+                satz.importFrom(reader);
+                return satz;
+            }
         }
+        
         Datensatz satz = SatzFactory.getDatensatz(new SatzTyp(satzart, sparte, wagnisart
                 .getCode(), krankenFolgeNr, teildatensatzNummer.getCode()));
         satz.importFrom(reader);
