@@ -19,7 +19,18 @@
 
     <release version="3.2.0" date="Mai-2018"
              description="robusteres Verhalten gegen&#252;ber ausgelassener Teildateners&#228;tzen">
-
+      <action dev="schosin" type="fix" issue="issues/26" date="30-Apr-2018">
+        Gruppierung von Teildateners&#228;tzen korrigiert.
+      </action>
+      <action dev="schosin" type="fix" issue="issues/22" date="25-Apr-2018">
+        Inkonsistenz zwischen Satz.getFeld(..) vs. Teildatensatz.getFeld(..) behoben.
+      </action>
+      <action dev="schosin" type="fix" issue="issues/18" date="18-Apr-2018">
+        Konsistenz zwischen XML- und Enum-Beschreibung verbessert.
+      </action>
+      <action dev="schosin" type="fix" date="15-Apr-2018">
+        Fehlende Bezeichner und Enums erg&#228;nzt.
+      </action>
     </release>
 
     <release version="3.1.0" date="07-Apr-2018"
