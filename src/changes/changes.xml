@@ -17,6 +17,11 @@
 
   <body>
 
+    <release version="3.2.0" date="Mai-2018"
+             description="robusteres Verhalten gegen&#252;ber ausgelassener Teildateners&#228;tzen">
+
+    </release>
+
     <release version="3.1.0" date="07-Apr-2018"
              description="mehr Validierung">
       <action dev="oboehm" type="fix" issue="issues/10" date="06-Apr-2018">
