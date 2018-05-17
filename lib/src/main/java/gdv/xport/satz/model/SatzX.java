@@ -125,12 +125,12 @@ public class SatzX extends Datensatz {
 	 * die Wagnisart und die TeildatensatzNummer ueberprueft wird, ob sie noch
 	 * richtig ist oder ob da schon der naechste Satz beginnt.
 	 *
-	 * @param reader the reader
+	 * @param reader ein Reader
 	 * @param lastFeld1To7 Feld1..7 als Char-Array (42 Zeichen) der letzten Zeile oder {@code null} für ersten Teildatensatz
 	 * @return true (Default-Implementierung)
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.9
-	 * @see gdv.xport.satz.Satz#matchesNextTeildatensatz(PushbackLineNumberReader, char[])
+	 * @see gdv.xport.satz.Satz#matchesNextTeildatensatz(PushbackLineNumberReader, char[], Character)
 	 */
 	@Override
 	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character satznummer) throws IOException {

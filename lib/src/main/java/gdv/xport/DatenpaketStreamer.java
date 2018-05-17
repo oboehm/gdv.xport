@@ -83,21 +83,22 @@ public class DatenpaketStreamer {
 
     /**
      * <p>
-     * Hiermit kann geprueft werden, ob die aktuelle Zeile ein Vorsatz (Satzart 0001) ist und damit der Anfang eines Datenpaketes entspricht.
+     * Hiermit kann geprueft werden, ob die aktuelle Zeile ein Vorsatz
+     * (Satzart 0001) ist und damit der Anfang eines Datenpaketes entspricht.
      * </p>
      * <p>
-     * Diese Methode ist dazu gedacht, Dateien mit mehr als einem Datenpaket einfach einlesen zu koennen.
+     * Diese Methode ist dazu gedacht, Dateien mit mehr als einem Datenpaket
+     * einfach einlesen zu koennen.
      * </p>
      * <p>
      * Beispiel:
-     * 
+     * </p>
      * <pre>
      * while (datenpaketStreamer.canReadDatenpaket()) {
      *     datenpaketStreamer.readDatenpaket();
      * }
      * </pre>
-     * </p>
-     * 
+     *
      * @return true, wenn aktuelle Zeile Satzart 0001 (Vorsatz) hat
      */
     public boolean canReadDatenpaket() {

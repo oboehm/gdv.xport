@@ -890,21 +890,22 @@ public abstract class Satz implements Cloneable {
 	/**
 	 * Prueft, ob die kommende Zeile noch zu dem aktuellen Datensatz gehoert.
 	 * D.h. es wird geprueft, ob es ein weiterer Teildatensatz oder ein neuer
-     * Datensatz ist.
+	 * Datensatz ist.
 	 * <p>
 	 * Unterklassen (wie Datensatz) sind dafuer verantwortlich, dass auch noch
 	 * die Sparte/... ueberprueft wird, ob sie noch richtig ist oder ob da schon der
 	 * naechste Satz beginnt. Hier (fuer den allgemeinen Fall) wird nur die
 	 * Satzart ueberprueft.
 	 * </p>
-     *
-	 * @param reader the reader
+	 *
+	 * @param reader       den Reader
 	 * @param lastFeld1To7 die Felder 1 .. 7 aus dem letzten Datensatz
+	 * @param satznummer   die Satznummer
 	 * @return true wenn wenigstens die Satzart uebereinstimmt (nur für Vor/Nachsatz anwendbar)
 	 * @throws IOException bei I/O-Fehlern
 	 * @since 0.5.1
 	 */
-    protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character satznummer) throws IOException {
+	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character satznummer) throws IOException {
 		try {
             int art = readSatzart(reader);
             return art == this.getSatzart();
@@ -1241,11 +1242,11 @@ public abstract class Satz implements Cloneable {
     }
 
     /**
-     * Read satznummer.
+	 * Liest die Satznummer.
      *
-     * @param reader the reader
-     * @return the teildatensatz nummer
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @param reader den Reader
+     * @return Teildatensatz-Nummer
+	 * @throws IOException bei Lesefehler
      */
     public static Character readSatznummer(final PushbackReader reader) throws IOException {
         char[] cbuf = new char[256];
@@ -1256,13 +1257,14 @@ public abstract class Satz implements Cloneable {
         return readSatznummer(cbuf);
     }
 
-    /**
-     * Read satznummer.
-     *
-     * @param cbuf der eingelesene Satz in char array
-     * @return the teildatensatz nummer
-     */
-    public static char readSatznummer(char[] cbuf) throws IOException {
+	/**
+	 * Liest die Satznummer.
+	 *
+	 * @param cbuf der eingelesene Satz in char array
+	 * @return Teildatensatz -Nummer
+	 * @throws IOException bei Lesefehler
+	 */
+	public static char readSatznummer(char[] cbuf) throws IOException {
         if (cbuf.length < 256) {
             return 0;
         }

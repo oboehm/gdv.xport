@@ -17,7 +17,7 @@
 
   <body>
 
-    <release version="3.2.0" date="Mai-2018"
+    <release version="3.2.0" date="18-Mai-2018"
              description="robusteres Verhalten gegen&#252;ber ausgelassener Teildateners&#228;tzen">
       <action dev="schosin" type="fix" issue="issues/26" date="30-Apr-2018">
         Gruppierung von Teildateners&#228;tzen korrigiert.

@@ -513,11 +513,11 @@ public class Datensatz extends Satz {
 	/**
 	 * Prüfe ob die kommende Zeile ein Teildatensatz der letzten ist. Dazu werden die ersten 7 Felder abgeglichen.
 	 *
-	 * @param reader the reader
+	 * @param reader ein Reader
 	 * @param lastFeld1To7 Feld1..7 als Char-Array (42 Zeichen) der letzten Zeile oder {@code null} für ersten Teildatensatz
 	 * @return {@code true}, falls ein Teildatensatz, {@code false} falls nicht, d.h. neuer Datensatz.
 	 * @throws IOException bei I/O-Fehlern
-	 * @see Satz#matchesNextTeildatensatz(PushbackLineNumberReader, char[])
+	 * @see Satz#matchesNextTeildatensatz(PushbackLineNumberReader, char[], Character)
 	 * @since 0.5.1
 	 */
 	@Override
