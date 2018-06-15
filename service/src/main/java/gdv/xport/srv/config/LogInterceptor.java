@@ -83,6 +83,13 @@ public final class LogInterceptor extends HandlerInterceptorAdapter {
 
     private static String getRequestURIwithParams(HttpServletRequest request) {
         String requestURI = request.getRequestURI();
+        if ("/error".equals(requestURI)) {
+            Object errorRequestURI = request.getAttribute("javax.servlet.error.request_uri");
+            if (errorRequestURI != null) {
+                LOG.debug("Request '{}' is mapped to '{}'.", requestURI, errorRequestURI);
+                requestURI = errorRequestURI.toString();
+            }
+        }
         if ("GET".equalsIgnoreCase(request.getMethod())) {
             requestURI += toParameterString(request.getParameterMap());
         }

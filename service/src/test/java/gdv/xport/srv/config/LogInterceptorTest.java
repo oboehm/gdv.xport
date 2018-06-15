@@ -41,6 +41,7 @@ public final class LogInterceptorTest {
         request.setRequestURI("/gdv/xport");
         request.setMethod("GET");
         request.addParameter("hello", "world");
+        request.addHeader("user-agent", "007");
     }
 
     /**
@@ -67,6 +68,20 @@ public final class LogInterceptorTest {
     public void testAfterCompletionWithException() {
         LOG.info("Simulating an exception for testing...");
         interceptor.afterCompletion(request, response, "testAfterCompletion", new IllegalStateException("bumm"));
+    }
+
+    /**
+     * Dieser Test steht den Fall nach, wenn eine falsche URL aufgerufen wird.
+     * Intern wird dies auf "/error" abgebildet. Im Log sollte aber nicht der
+     * "/error"-Path zu sehen sein, sondern der Aufruf des falschen Pfades
+     * (in diesem Beispiel "GET /not/existing/path 404").
+     */
+    @Test
+    public void testError() {
+        response.setStatus(404);
+        request.setRequestURI("/error");
+        request.setAttribute("javax.servlet.error.request_uri", "/gibts/net");
+        interceptor.preHandle(request, response, "testError");
     }
 
 }
