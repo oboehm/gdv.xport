@@ -18,31 +18,6 @@
 
 package gdv.xport.satz;
 
-import static org.hamcrest.CoreMatchers.allOf;
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
 import gdv.xport.feld.AlphaNumFeld;
@@ -59,8 +34,23 @@ import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
+import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
+
+import java.io.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.*;
 
 /**
  * Test-Klasse fuer Satz.
@@ -296,7 +286,6 @@ public final class SatzTest extends AbstractSatzTest {
      *             String lesen
      */
     @Test
-    //@Ignore // Fehler ist noch nicht behoben
     public void testImportFromReaderTwice() throws IOException {
         Satz x = new Datensatz(123, 7);
         Reader reader = new StringReader(INPUT_SATZ_123 + INPUT_SATZ_123);

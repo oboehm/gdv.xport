@@ -22,12 +22,14 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
+import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz220;
+import gdv.xport.util.SatzFactory;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -195,11 +197,8 @@ public final class DatenpaketTest {
     @Test
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportFromReader() throws IOException {
-        InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
-        try {
+        try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
             checkImport(datenpaket, istream);
-        } finally {
-            istream.close();
         }
     }
 
@@ -238,15 +237,12 @@ public final class DatenpaketTest {
     @Test
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImport2DatenpaketeWithReader() throws IOException {
-        Reader reader = new FileReader(new File("src/test/resources/zwei_datenpakete.txt"));
-        try {
+        try (Reader reader = new FileReader(new File("src/test/resources/zwei_datenpakete.txt"))) {
             checkImport(datenpaket, reader);
             Datenpaket zwei = new Datenpaket();
             checkImport(zwei, reader);
             LOG.info(datenpaket + " / " + zwei + " imported.");
             assertFalse(datenpaket.equals(zwei));
-        } finally {
-            reader.close();
         }
     }
 
@@ -514,8 +510,6 @@ public final class DatenpaketTest {
      * Fuer eine Versicherungsscheinnummer muss die Folgenummer immer mit 1
      * anfangen. Taucht dieser Versicherungsscheinnummer fuer den gleichen Satz
      * ein zweites Mal auf, muss die Folgenummer entsprechend erhoeht werden.
-     *
-     * @since 0.3
      */
     @Test
     public void testValidateFolgenummer() {
@@ -531,6 +525,22 @@ public final class DatenpaketTest {
         datensatz.setVersicherungsscheinNummer("4711");
         datensatz.setFolgenummer(nr);
         return datensatz;
+    }
+
+    /**
+     * Testfall, um Issue #33 nachzustellen.
+     *
+     * @throws IOException bei Lesefehlern
+     */
+    @Test
+    public void testIssue33() throws IOException {
+        Satz satz350 = SatzFactory.getDatensatz(350, 30);
+        String exported = satz350.toLongString();
+        try (StringReader in = new StringReader(exported);
+             PushbackLineNumberReader reader = new PushbackLineNumberReader(in)) {
+            Satz imported = Datenpaket.importSatz(reader);
+            assertEquals(satz350, imported);
+        }
     }
 
 }
