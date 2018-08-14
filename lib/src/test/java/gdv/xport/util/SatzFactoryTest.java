@@ -396,4 +396,14 @@ public final class SatzFactoryTest extends AbstractTest {
         assertNotSame(oneIban, twoIban);
     }
 
+    /**
+     * Als ersten Test fuer Issue #33 probieren wir, ob wir Satz 350 erzeugen
+     * koennen.
+     */
+    @Test
+    public void testIssue33() {
+        Datensatz satz350 = SatzFactory.getDatensatz(350, 30);
+        checkDatensatz(satz350);
+    }
+
 }
