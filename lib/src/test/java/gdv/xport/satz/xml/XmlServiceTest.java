@@ -333,4 +333,13 @@ public class XmlServiceTest extends AbstractXmlTest {
         LOG.info("fehlendeFelder = {}", fehlendeFelder);
     }
 
+    /**
+     * Dies ist ein weiterer Testfall fuer Issue #33. Hierbei sollte keine
+     * {@link NotRegisteredException} auftauchen.
+     */
+    @Test
+    public void testSatzart350() {
+        xmlService.getSatzart(350);
+    }
+
 }
