@@ -69,8 +69,11 @@
     <!-- Subclasses that add fields should override "equals" -->
     <sonar.issue.ignore.multicriteria.2160.ruleKey>squid:S2160</sonar.issue.ignore.multicriteria.2160.ruleKey>
     <sonar.issue.ignore.multicriteria.2160.resourceKey>src/main/java/gdv/xport/**/*satz*.java</sonar.issue.ignore.multicriteria.2160.resourceKey>
+    <!-- "clone" should not be overridden -->
+    <sonar.issue.ignore.multicriteria.2975.ruleKey>squid:S2975</sonar.issue.ignore.multicriteria.2975.ruleKey>
+    <sonar.issue.ignore.multicriteria.2975.resourceKey>src/main/java/gdv/xport/**/*satz*.java</sonar.issue.ignore.multicriteria.2975.resourceKey>
     <!-- ignore violations -->
-    <sonar.issue.ignore.multicriteria>1,2,3,4,1118,2160</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>1,2,3,4,1118,2160,2975</sonar.issue.ignore.multicriteria>
 
   </properties>
 

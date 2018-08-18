@@ -17,8 +17,15 @@
 
   <body>
 
+    <release version="3.2.1" date="19-Aug-2018"
+             description="Bug-Fix">
+      <action dev="oboehm" type="fix" issue="issues/33" date="18-Aug-2018">
+        Satzart 350 (Klauseln) wird jetzt intern korrekt als Satzart registriert.
+      </action>
+    </release>
+
     <release version="3.2.0" date="18-Mai-2018"
-             description="robusteres Verhalten gegen&#252;ber ausgelassener Teildateners&#228;tzen">
+             description="robusteres Verhalten gegen&#252;ber ausgelassenen Teildatens&#228;tzen">
       <action dev="schosin" type="fix" issue="issues/26" date="30-Apr-2018">
         Gruppierung von Teildateners&#228;tzen korrigiert.
       </action>
