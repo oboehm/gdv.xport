@@ -212,7 +212,16 @@ public class XmlService {
         LOG.debug("Missing felder for {} saetze will be set.", this.satzarten.size());
         for (SatzXml satz : this.saetze) {
             satz.setFelder(felder);
-            for (SatzTyp type : satz.getSupportedSatzTypen()) {
+            registerSatzart(satz);
+        }
+    }
+
+    private void registerSatzart(SatzXml satz) {
+        List<SatzTyp> supportedSatzTypen = satz.getSupportedSatzTypen();
+        if (supportedSatzTypen.isEmpty()) {
+            this.satzarten.put(new SatzTyp(satz.getSatzart()), satz);
+        } else {
+            for (SatzTyp type : supportedSatzTypen) {
                 this.satzarten.put(type, satz);
                 LOG.trace("Satz {} registered as {}.", satz, type);
             }

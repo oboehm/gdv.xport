@@ -22,14 +22,12 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
-import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz220;
-import gdv.xport.util.SatzFactory;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -211,15 +209,12 @@ public final class DatenpaketTest {
     @Test
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImport2Datenpakete() throws IOException {
-        InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt");
-        try {
+        try (InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt")) {
             checkImport(datenpaket, istream);
             Datenpaket zwei = new Datenpaket();
             checkImport(zwei, istream);
             LOG.info(datenpaket + " / " + zwei + " imported.");
-            assertFalse(datenpaket.equals(zwei));
-        } finally {
-            istream.close();
+            assertNotEquals(datenpaket, zwei);
         }
     }
 
@@ -242,7 +237,7 @@ public final class DatenpaketTest {
             Datenpaket zwei = new Datenpaket();
             checkImport(zwei, reader);
             LOG.info(datenpaket + " / " + zwei + " imported.");
-            assertFalse(datenpaket.equals(zwei));
+            assertNotEquals(datenpaket, zwei);
         }
     }
 
@@ -298,16 +293,13 @@ public final class DatenpaketTest {
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportTrimmed() throws IOException {
         StringBuilder buffer = new StringBuilder();
-        InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
-        try {
+        try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(istream));
             for (String line = reader.readLine(); StringUtils.isNotEmpty(line); line = reader.readLine()) {
                 buffer.append(line.trim() + '\n');
             }
             datenpaket.importFrom(buffer.toString());
             assertTrue(datenpaket.isValid());
-        } finally {
-            istream.close();
         }
     }
 
@@ -373,12 +365,9 @@ public final class DatenpaketTest {
     @Test
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportIgorAsStream() throws IOException {
-        InputStream istream = DatenpaketTest.class.getResourceAsStream("/igor_110120.txt");
-        try {
+        try (InputStream istream = DatenpaketTest.class.getResourceAsStream("/igor_110120.txt")) {
             datenpaket.importFrom(istream);
             assertTrue(datenpaket.validate().toString(), datenpaket.isValid());
-        } finally {
-            istream.close();
         }
     }
 
@@ -434,12 +423,9 @@ public final class DatenpaketTest {
     }
 
     private static String getResourceAsString(final String resource) throws IOException {
-        InputStream istream = DatenpaketTest.class.getResourceAsStream(resource);
-        try {
+        try (InputStream istream = DatenpaketTest.class.getResourceAsStream(resource)) {
             assertNotNull(resource + " not found", istream);
-            return IOUtils.toString(istream);
-        } finally {
-            istream.close();
+            return IOUtils.toString(istream, Config.DEFAULT_ENCODING);
         }
     }
 
@@ -525,22 +511,6 @@ public final class DatenpaketTest {
         datensatz.setVersicherungsscheinNummer("4711");
         datensatz.setFolgenummer(nr);
         return datensatz;
-    }
-
-    /**
-     * Testfall, um Issue #33 nachzustellen.
-     *
-     * @throws IOException bei Lesefehlern
-     */
-    @Test
-    public void testIssue33() throws IOException {
-        Satz satz350 = SatzFactory.getDatensatz(350, 30);
-        String exported = satz350.toLongString();
-        try (StringReader in = new StringReader(exported);
-             PushbackLineNumberReader reader = new PushbackLineNumberReader(in)) {
-            Satz imported = Datenpaket.importSatz(reader);
-            assertEquals(satz350, imported);
-        }
     }
 
 }
