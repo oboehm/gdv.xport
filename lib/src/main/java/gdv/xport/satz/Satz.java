@@ -137,9 +137,9 @@ public abstract class Satz implements Cloneable {
 	 * @since 1.0
 	 */
 	protected final List<Teildatensatz> cloneTeildatensaetze() {
-        List<Teildatensatz> cloned = new ArrayList<Teildatensatz>(this.teildatensatz.length);
-	    for (int i = 0; i < this.teildatensatz.length; i++) {
-            cloned.add(new Teildatensatz(this.teildatensatz[i]));
+        List<Teildatensatz> cloned = new ArrayList<>(this.teildatensatz.length);
+        for (Teildatensatz tds : this.teildatensatz) {
+            cloned.add(new Teildatensatz(tds));
         }
 	    return cloned;
 	}
@@ -252,8 +252,8 @@ public abstract class Satz implements Cloneable {
      * @since 1.0
      */
     public void remove(final Bezeichner bezeichner) {
-        for (int i = 0; i < this.teildatensatz.length; i++) {
-            this.teildatensatz[i].remove(bezeichner);
+        for (Teildatensatz tds : this.teildatensatz) {
+            tds.remove(bezeichner);
         }
     }
 
@@ -284,8 +284,8 @@ public abstract class Satz implements Cloneable {
      */
     public void set(final Bezeichner name, final String value) {
         boolean found = false;
-        for (int i = 0; i < teildatensatz.length; i++) {
-            Feld x = teildatensatz[i].getFeldSafe(name);
+        for (Teildatensatz tds : teildatensatz) {
+            Feld x = tds.getFeldSafe(name);
             if (x != Feld.NULL_FELD) {
                 x.setInhalt(value);
                 found = true;
@@ -385,8 +385,7 @@ public abstract class Satz implements Cloneable {
 					return x;
 				}
 			} catch (IllegalArgumentException e) {
-                LOG.debug("Feld \"" + feld + "\" not found in teildatensatz " + i + " (" + e + ").");
-				continue;
+			    LOG.debug("Feld '{}‘ not found in teildatensatz {}:", feld, i, e);
 			}
 		}
 		throw new IllegalArgumentException("Feld \"" + feld + "\" nicht in " + this.toShortString()
@@ -417,12 +416,12 @@ public abstract class Satz implements Cloneable {
 	 * @return das gesuchte Feld
 	 */
 	public Feld containsFeld(final String name) {
-		for (int i = 0; i < teildatensatz.length; i++) {
-			Feld x = teildatensatz[i].getFeldSafe(name);
-			if (x != Feld.NULL_FELD) {
-				return x;
-			}
-		}
+        for (Teildatensatz tds : teildatensatz) {
+            Feld x = tds.getFeldSafe(name);
+            if (x != Feld.NULL_FELD) {
+                return x;
+            }
+        }
 		LOG.debug("Feld \"{}\" not found in {}.", name, this);
 		return null;
 	}
@@ -456,8 +455,8 @@ public abstract class Satz implements Cloneable {
      * @return true / false
      */
     public boolean hasFeld(final Bezeichner bezeichner) {
-        for (int i = 0; i < teildatensatz.length; i++) {
-            if (teildatensatz[i].hasFeld(bezeichner)) {
+        for (Teildatensatz tds : teildatensatz) {
+            if (tds.hasFeld(bezeichner)) {
                 return true;
             }
         }
@@ -472,8 +471,8 @@ public abstract class Satz implements Cloneable {
      * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
     public Feld getFeld(final Bezeichner bezeichner) throws IllegalArgumentException {
-        for (int i = 0; i < teildatensatz.length; i++) {
-            Feld x = teildatensatz[i].getFeldSafe(bezeichner);
+        for (Teildatensatz tds : teildatensatz) {
+            Feld x = tds.getFeldSafe(bezeichner);
             if (x != Feld.NULL_FELD) {
                 return x;
             }
@@ -690,9 +689,9 @@ public abstract class Satz implements Cloneable {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void export(final Writer writer) throws IOException {
-		for (int i = 0; i < teildatensatz.length; i++) {
-			teildatensatz[i].export(writer);
-		}
+        for (Teildatensatz tds : teildatensatz) {
+            tds.export(writer);
+        }
 	}
 
 	/**
@@ -702,12 +701,9 @@ public abstract class Satz implements Cloneable {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void export(final File file) throws IOException {
-	    Writer writer = new FileWriter(file);
-	    try {
-	        this.export(writer);
-	    } finally {
-	        writer.close();
-	    }
+        try (Writer writer = new FileWriter(file)) {
+            this.export(writer);
+        }
 	}
 
 	/**
@@ -718,9 +714,9 @@ public abstract class Satz implements Cloneable {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void export(final Writer writer, final String eod) throws IOException {
-		for (int i = 0; i < teildatensatz.length; i++) {
-			teildatensatz[i].export(writer, eod);
-		}
+        for (Teildatensatz tds : teildatensatz) {
+            tds.export(writer, eod);
+        }
 	}
 
 	/**
@@ -768,7 +764,7 @@ public abstract class Satz implements Cloneable {
         }
     }
     
-    private final int getTeildatensatzIndex(int index, int satznummer) {
+    private int getTeildatensatzIndex(int index, int satznummer) {
         if (satznummer < 1) {
             return index;
         }
@@ -780,7 +776,7 @@ public abstract class Satz implements Cloneable {
         return index;
     }
 
-    private final void removeUnusedTeildatensaetze(SortedSet<Integer> usedIndexes) {
+    private void removeUnusedTeildatensaetze(SortedSet<Integer> usedIndexes) {
         Teildatensatz[] usedTeildatensaetze = new Teildatensatz[usedIndexes.size()];
         int i = 0;
         for (int teilsatzIndex : usedIndexes) {
@@ -797,12 +793,9 @@ public abstract class Satz implements Cloneable {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void importFrom(final File file) throws IOException {
-	    Reader reader = new FileReader(file);
-	    try {
-	        this.importFrom(reader);
-	    } finally {
-	        reader.close();
-	    }
+        try (Reader reader = new FileReader(file)) {
+            this.importFrom(reader);
+        }
 	}
 
 	/**
@@ -982,9 +975,9 @@ public abstract class Satz implements Cloneable {
 			violations.add(cv);
 		}
 		if (this.teildatensatz != null) {
-			for (int i = 0; i < teildatensatz.length; i++) {
-				violations.addAll(teildatensatz[i].validate());
-			}
+            for (Teildatensatz tds : teildatensatz) {
+                violations.addAll(tds.validate());
+            }
 		}
 		return violations;
 	}
@@ -1067,7 +1060,7 @@ public abstract class Satz implements Cloneable {
 	 */
 	protected static List<Teildatensatz> getTeildatensaetzeFor(final int satzart,
 	        final Enum<?>[] felder) {
-		SortedMap<Integer, Teildatensatz> tdsMap = new TreeMap<Integer, Teildatensatz>();
+		SortedMap<Integer, Teildatensatz> tdsMap = new TreeMap<>();
 		List<MetaFeldInfo> metaFeldInfos = getMetaFeldInfos(felder);
         for (MetaFeldInfo metaFeldInfo : metaFeldInfos) {
 			int n = metaFeldInfo.getTeildatensatzNr();
@@ -1079,7 +1072,7 @@ public abstract class Satz implements Cloneable {
 			add(metaFeldInfo.getFeldEnum(), tds);
 
 		}
-        List<Teildatensatz> teildatensaetze = new ArrayList<Teildatensatz>(tdsMap.values());
+        List<Teildatensatz> teildatensaetze = new ArrayList<>(tdsMap.values());
 		setSparteFor(teildatensaetze, metaFeldInfos);
 		return teildatensaetze;
 	}
@@ -1125,27 +1118,27 @@ public abstract class Satz implements Cloneable {
 	 * @return the meta feld infos
 	 */
 	protected static List<MetaFeldInfo> getMetaFeldInfos(final Enum<?>[] felder) {
-		List<MetaFeldInfo> metaFeldInfos = new ArrayList<MetaFeldInfo>(felder.length);
-		for (int i = 0; i < felder.length; i++) {
-			String name = felder[i].name();
-			try {
-				Field field = felder[i].getClass().getField(name);
-				FelderInfo info = field.getAnnotation(FelderInfo.class);
-				if (info == null) {
-					metaFeldInfos.add(new MetaFeldInfo(felder[i]));
-				} else {
-					metaFeldInfos.addAll(getMetaFeldInfos(info));
-				}
-			} catch (NoSuchFieldException nsfe) {
-				throw new InternalError("no field " + name + " (" + nsfe + ")");
-			}
-		}
+		List<MetaFeldInfo> metaFeldInfos = new ArrayList<>(felder.length);
+        for (Enum<?> f : felder) {
+            String name = f.name();
+            try {
+                Field field = f.getClass().getField(name);
+                FelderInfo info = field.getAnnotation(FelderInfo.class);
+                if (info == null) {
+                    metaFeldInfos.add(new MetaFeldInfo(f));
+                } else {
+                    metaFeldInfos.addAll(getMetaFeldInfos(info));
+                }
+            } catch (NoSuchFieldException nsfe) {
+                throw new InternalError("no field " + name + " (" + nsfe + ")");
+            }
+        }
 		return metaFeldInfos;
 	}
 
 	private static List<MetaFeldInfo> getMetaFeldInfos(final FelderInfo info) {
 		Collection<? extends Enum<?>> enums = getAsList(info);
-		List<MetaFeldInfo> metaFeldInfos = new ArrayList<MetaFeldInfo>(enums.size());
+		List<MetaFeldInfo> metaFeldInfos = new ArrayList<>(enums.size());
 		for (Enum<?> enumX : enums) {
 			metaFeldInfos.add(new MetaFeldInfo(enumX, info));
 		}
@@ -1166,21 +1159,21 @@ public abstract class Satz implements Cloneable {
 	 * @return the feld info list
 	 */
 	private static List<Enum<?>> getAsList(final Enum<?>[] felder) {
-		List<Enum<?>> feldList = new ArrayList<Enum<?>>(felder.length);
-		for (int i = 0; i < felder.length; i++) {
-			String name = felder[i].name();
-			try {
-				Field field = felder[i].getClass().getField(name);
-				FelderInfo info = field.getAnnotation(FelderInfo.class);
-				if (info == null) {
-					feldList.add(felder[i]);
-				} else {
-					feldList.addAll(getAsList(info));
-				}
-			} catch (NoSuchFieldException nsfe) {
-				throw new InternalError("no field " + name + " (" + nsfe + ")");
-			}
-		}
+		List<Enum<?>> feldList = new ArrayList<>(felder.length);
+        for (Enum<?> f : felder) {
+            String name = f.name();
+            try {
+                Field field = f.getClass().getField(name);
+                FelderInfo info = field.getAnnotation(FelderInfo.class);
+                if (info == null) {
+                    feldList.add(f);
+                } else {
+                    feldList.addAll(getAsList(info));
+                }
+            } catch (NoSuchFieldException nsfe) {
+                throw new InternalError("no field " + name + " (" + nsfe + ")");
+            }
+        }
 		return feldList;
 	}
 
@@ -1221,7 +1214,7 @@ public abstract class Satz implements Cloneable {
      * @since 1.2
      */
     public Collection<Feld> getFelder() {
-        List<Feld> felder = new ArrayList<Feld>();
+        List<Feld> felder = new ArrayList<>();
         for (Teildatensatz tds : this.getTeildatensaetze()) {
             for (Feld feld : tds.getFelder()) {
                 if (!contains(feld.getBezeichner(), felder)) {
@@ -1262,9 +1255,8 @@ public abstract class Satz implements Cloneable {
 	 *
 	 * @param cbuf der eingelesene Satz in char array
 	 * @return Teildatensatz -Nummer
-	 * @throws IOException bei Lesefehler
 	 */
-	public static char readSatznummer(char[] cbuf) throws IOException {
+	public static char readSatznummer(char[] cbuf) {
         if (cbuf.length < 256) {
             return 0;
         }
@@ -1313,23 +1305,15 @@ public abstract class Satz implements Cloneable {
                         satznummerIndex = 46;
                         break;
                     case 30:
-                        if (satz.charAt(48) == '2' && satz.charAt(255) == 'X') {
+                        if ((satz.charAt(48) == '2' && satz.charAt(255) == 'X') || (satz.charAt(48) == '1' || satz.charAt(48) == '4')) {
                             satznummerIndex = 48;
-                            break;
-                        }
-                        satznummerIndex = 249;
-                        if (Character.isDigit(satz.charAt(satznummerIndex)) && satz.charAt(satznummerIndex) != '0' && satz.charAt(satznummerIndex) != '2') {
-                            break;
-                        }
-                        if (satz.charAt(48) == '1' || satz.charAt(48) == '4') {
-                            satznummerIndex = 48;
-                            break;
-                        }
-                        if (satz.charAt(42) == '3') {
+                        } else if (Character.isDigit(satz.charAt(satznummerIndex)) && satz.charAt(satznummerIndex) != '0' && satz.charAt(satznummerIndex) != '2') {
+							satznummerIndex = 249;
+                        } else if (satz.charAt(42) == '3') {
                             satznummerIndex = 42;
-                            break;
-                        }
-                        satznummerIndex = 59;
+                        } else {
+							satznummerIndex = 59;
+						}
                         break;
                     case 40:
                     case 140:
@@ -1363,17 +1347,13 @@ public abstract class Satz implements Cloneable {
                     case 30:
                         if (satz.charAt(48) == '2' && satz.charAt(255) == 'X') {
                             satznummerIndex = 48;
-                            break;
-                        }
-                        satznummerIndex = 249;
-                        if (Character.isDigit(satz.charAt(satznummerIndex)) && satz.charAt(satznummerIndex) != '0' && satz.charAt(satznummerIndex) != '2') {
-                            break;
-                        }
-                        if (satz.charAt(42) == '3') {
+                        } else if (Character.isDigit(satz.charAt(satznummerIndex)) && satz.charAt(satznummerIndex) != '0' && satz.charAt(satznummerIndex) != '2') {
+							satznummerIndex = 249;
+                        } else if (satz.charAt(42) == '3') {
                             satznummerIndex = 42;
-                            break;
-                        }
-                        satznummerIndex = 59;
+                        } else {
+							satznummerIndex = 59;
+						}
                         break;
                     case 40:
                     case 140:
@@ -1394,14 +1374,6 @@ public abstract class Satz implements Cloneable {
                 }
                 break;
             case 250:
-                switch (sparte) {
-                    case 190:
-                        satznummerIndex = 50;
-                        break;
-                    default:
-                        break;
-                }
-                break;
             case 251:
                 switch (sparte) {
                     case 190:
