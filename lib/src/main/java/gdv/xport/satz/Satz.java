@@ -1300,6 +1300,7 @@ public abstract class Satz implements Cloneable {
                 }
                 break;
             case 220:
+            case 221:
                 switch (sparte) {
                     case 0:
                         satznummerIndex = 46;
@@ -1334,40 +1335,6 @@ public abstract class Satz implements Cloneable {
                     case 570:
                     case 580:
                         satznummerIndex = 42;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 221:
-                switch (sparte) {
-                    case 0:
-                        satznummerIndex = 46;
-                        break;
-                    case 30:
-                        if (satz.charAt(48) == '2' && satz.charAt(255) == 'X') {
-                            satznummerIndex = 48;
-                        } else if (Character.isDigit(satz.charAt(satznummerIndex)) && satz.charAt(satznummerIndex) != '0' && satz.charAt(satznummerIndex) != '2') {
-							satznummerIndex = 249;
-                        } else if (satz.charAt(42) == '3') {
-                            satznummerIndex = 42;
-                        } else {
-							satznummerIndex = 59;
-						}
-                        break;
-                    case 40:
-                    case 140:
-                        satznummerIndex = 50;
-                        break;
-                    case 70:
-                        satznummerIndex = 52;
-                        break;
-                    case 80:
-                    case 190:
-                        satznummerIndex = 48;
-                        break;
-                    case 170:
-                        satznummerIndex = 49;
                         break;
                     default:
                         break;
