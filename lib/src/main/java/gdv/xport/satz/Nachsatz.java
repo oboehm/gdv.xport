@@ -125,11 +125,10 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @param beitrag
-     *            neuer Gesamtbeitrag
+     * @param beitrag neuer Gesamtbeitrag (Brutto)
      */
     public void setGesamtBeitragBrutto(final double beitrag) {
-        this.gesamtBeitrag.setInhalt(beitrag);
+        this.gesamtBeitragBrutto.setInhalt(beitrag);
     }
 
     /**

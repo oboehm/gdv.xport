@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="3.2.2" date="Sep-2018"
+             description="Bug-Fix">
+      <action dev="oboehm" type="fix" issue="issues/34" date="6-Sep-2018">
+        Setter von GesamtbeitragBrutto im Nachsatz korrigiert.
+      </action>
+    </release>
+
     <release version="3.2.1" date="19-Aug-2018"
              description="Bug-Fix">
       <action dev="oboehm" type="fix" issue="issues/33" date="18-Aug-2018">

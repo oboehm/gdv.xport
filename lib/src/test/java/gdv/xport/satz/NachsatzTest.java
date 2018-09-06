@@ -20,18 +20,18 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
 import gdv.xport.config.Config;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * JUnit-Test fuer Nachsatz.
@@ -162,6 +162,16 @@ public class NachsatzTest extends AbstractSatzTest {
         nachsatz.export(swriter);
         swriter.close();
         assertEquals(INPUT, swriter.toString());
+    }
+
+    /**
+     * Testfall fuer
+     * <a href="https://github.com/oboehm/gdv.xport/issues/34">Issue #34</a>.
+     */
+    @Test
+    public void testSetGesamtBeitragBrutto() {
+        nachsatz.setGesamtBeitragBrutto(47.11);
+        assertEquals(47.11, nachsatz.getGesamtBeitragBrutto().toDouble(), 0.0001);
     }
 
 }
