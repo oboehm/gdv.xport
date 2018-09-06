@@ -1368,6 +1368,7 @@ public abstract class Satz implements Cloneable {
 	 * @throws CloneNotSupportedException sollte nicht auftreten
 	 * @see Cloneable
 	 */
+	@SuppressWarnings("squid:S2975")
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		Satz cloned = (Satz) super.clone();
