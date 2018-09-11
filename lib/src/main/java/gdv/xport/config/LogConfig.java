@@ -54,7 +54,7 @@ public final class LogConfig {
         this.dbURI = uri;
         createLogTable(uri);
         instance = this;
-        LOG.debug("LogConfig is created with '{}'.", uri);
+        LOG.trace("LogConfig is created with '{}'.", uri);
     }
 
     /**
@@ -102,7 +102,23 @@ public final class LogConfig {
      * @throws SQLException bei Problemen mit der Datenbank
      */
     public static Connection getConnection() throws SQLException {
-        Connection connection = getConnection(instance.getDbURI());
+        return instance.getDbConnection();
+    }
+
+    /**
+     * Liefert eine DB-Connection fuer den JDBCAppender aus Log4J.
+     * Falls die Log-Tabelle, auf die in log4j2.xml verwiesen wird, nicht
+     * existiert, wird sie samt Spalten angelegt.
+     * <p>
+     * Anmerkung: im Gegensatz zu {@link #getConnection()} ist diese Methode
+     * <i>nicht</i> statisch.
+     * </p>
+     *
+     * @return eine DB-Connection
+     * @throws SQLException bei Problemen mit der Datenbank
+     */
+    public Connection getDbConnection() throws SQLException {
+        Connection connection = getConnection(dbURI);
         connection.setAutoCommit(true);
         return connection;
     }

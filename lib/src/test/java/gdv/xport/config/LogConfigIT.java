@@ -25,8 +25,11 @@ import org.junit.Test;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 import java.net.URI;
+import java.sql.*;
 
-import static org.junit.Assert.assertNotNull;
+import static junit.framework.TestCase.assertEquals;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.*;
 
 /**
  * Unit-Tests fuer {@link LogConfig}-Klasse.
@@ -58,6 +61,37 @@ public class LogConfigIT {
         String jdbcURL = postgreSQLContainer.getJdbcUrl();
         assertNotNull(jdbcURL);
         LOG.info("jdbcURL = {}", jdbcURL);
+    }
+
+    /**
+     * Als zweite Uebung verwenden wir die DB-Connection, um einen Eintrag ins
+     * Logbook zu schreiben und zu pruefen.
+     * 
+     * @throws SQLException bei SQL-Fehlern
+     */
+    @Test
+    public void testWriteToLogbook() throws SQLException {
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        try (Connection c = logConfig.getDbConnection(); PreparedStatement stmt = c
+                .prepareStatement("INSERT INTO logbook (event_date, level, logger, message) VALUES(?, ?, ?, ?)")) {
+            stmt.setTimestamp(1, now);
+            stmt.setString(2, "TEST");
+            stmt.setString(3, "test.logger");
+            stmt.setString(4, "hello world!");
+            int updated = stmt.executeUpdate();
+            assertEquals(1, updated);
+        }
+        int count = readCountOf("level = 'TEST'");
+        assertThat(count, greaterThan(0));
+    }
+
+    private int readCountOf(String condition) throws SQLException {
+        try (Connection c = logConfig.getDbConnection(); 
+                Statement stmt = c.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM logbook WHERE " + condition)) {
+            assertTrue(rs.next());
+            return rs.getInt(1);
+        }
     }
 
 }
