@@ -47,13 +47,27 @@ public final class LogConfig {
      * aber normalerweise wird due URI nur einmal am Anfang eingestellt und
      * damit einmal instanziiert.
      *
-     * @param uri z.B. "jdbc:hsqldb:mem:logdb"
+     * @param uri z.B. "jdbc:hsqldb:mem:logdb" oder
+     *            "jdbc:postgresql://192.168.99.100:3277/test?user=test&password=test"
      */
     public LogConfig(URI uri) {
         this.dbURI = uri;
         createLogTable(uri);
         instance = this;
         LOG.debug("LogConfig is created with '{}'.", uri);
+    }
+
+    /**
+     * Hierueber wird die URL fuer die Datenbank eingestellt und der angebene
+     * <tt>username</tt> und <tt>password</tt> an die URL angehaengt.
+     *
+     * @param uri      DB-URI, z.B. "jdbc:postgresql://192.168.99.100:3277/test"
+     * @param username DB-User, z.B. "test"
+     * @param password DB-Passwort, z.B. "geheim"
+     * @see #LogConfig(URI) 
+     */
+    public LogConfig(URI uri, String username, String password) {
+        this(URI.create(uri + "?user=" + username + "&password=" + password));
     }
 
     private static URI readDatabaseURL() {
@@ -107,17 +121,6 @@ public final class LogConfig {
         String dbUrl = "jdbc:" + scheme + "://" + uri.getHost() + ':' + uri.getPort() + path;
         LOG.debug("Connect to '{}'.", dbUrl);
         return DriverManager.getConnection(dbUrl, userinfos[0], userinfos[1]);
-    }
-
-    private static void closeConnetion() {
-        try {
-            Connection connection = getConnection();
-            connection.commit();
-            connection.close();
-        } catch (SQLException sex) {
-            LOG.info("Cannot close connection ({}).", sex.getMessage());
-            LOG.debug("Details:", sex);
-        }
     }
 
     private static void createLogTable(URI jdbcURL) {

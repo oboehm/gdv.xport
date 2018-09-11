@@ -19,9 +19,12 @@ package gdv.xport.config;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.testcontainers.containers.PostgreSQLContainer;
+
+import java.net.URI;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -33,12 +36,25 @@ import static org.junit.Assert.assertNotNull;
 public class LogConfigIT {
 
     private static final Logger LOG = LogManager.getLogger(LogConfigIT.class);
+    private static LogConfig logConfig;
 
     @ClassRule
     public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer();
     
+    @BeforeClass
+    public static void setUpLogConfig() {
+        LOG.info("Setting up logConfig...");
+        URI jdbcURI = URI.create(postgreSQLContainer.getJdbcUrl());
+        logConfig = new LogConfig(jdbcURI, postgreSQLContainer.getUsername(), postgreSQLContainer.getPassword());
+        LOG.info("Setting up logConfig {} successful finished.", logConfig);
+    }
+
+    /**
+     * Als allererster Umgang mit Testcontainers probieren wir hier nur, ob wir
+     * eine JDBC-URL bekommen.
+     */
     @Test
-    public void testConnection() {
+    public void testSetUp() {
         String jdbcURL = postgreSQLContainer.getJdbcUrl();
         assertNotNull(jdbcURL);
         LOG.info("jdbcURL = {}", jdbcURL);

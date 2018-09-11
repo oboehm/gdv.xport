@@ -45,6 +45,7 @@ public final class LogConfigTest {
     public void testGetConnection() throws SQLException {
         try (Connection connection = LogConfig.getConnection();
              Statement stmt = connection.createStatement()) {
+            assertNotNull(stmt);
             assertThat(connection.isClosed(), is(Boolean.FALSE));
             LOG.info("Got connection {}.", connection);
         }
