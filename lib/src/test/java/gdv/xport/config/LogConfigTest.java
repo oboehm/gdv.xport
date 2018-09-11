@@ -43,7 +43,7 @@ public final class LogConfigTest {
      */
     @Test
     public void testGetConnection() throws SQLException {
-        try (Connection connection = LogConfig.getConnection();
+        try (Connection connection = getConnection();
              Statement stmt = connection.createStatement()) {
             assertNotNull(stmt);
             assertThat(connection.isClosed(), is(Boolean.FALSE));
@@ -65,7 +65,7 @@ public final class LogConfigTest {
 
     private void readLogbook() throws SQLException {
         int n = 0;
-        try (Connection connection = LogConfig.getConnection();
+        try (Connection connection = getConnection();
              Statement stmt = connection.createStatement()) {
             ResultSet rs = stmt.executeQuery("SELECT * FROM logbook");
             while (rs.next()) {
@@ -87,11 +87,15 @@ public final class LogConfigTest {
      */
     @AfterClass
     public static void cleanLogBook() throws SQLException {
-        try (Connection connection = LogConfig.getConnection();
-                Statement stmt = connection.createStatement()) {
+        try (Connection connection = getConnection();
+             Statement stmt = connection.createStatement()) {
             int n = stmt.executeUpdate("DELETE FROM logbook WHERE logger like 'gdv.xport.config.LogConfig%'");
             LOG.info("{} entries were removed from logbook.", n);
         }
+    }
+
+    private static Connection getConnection() throws SQLException {
+        return new LogConfig().getDbConnection();
     }
 
 }
