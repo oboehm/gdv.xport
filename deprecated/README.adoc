@@ -1,0 +1,20 @@
+https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport-deprecated[image:https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport-deprecated/badge.svg[Maven Metadata]]
+
+
+
+= Was ist gdv-xport-deprecated?
+
+
+In gdv-xport-deprecated sind die Klassen versammelt, die nicht mehr aktuell sind.
+Gründe dafür sind:
+
+* die Klasse wurde inzwischen durch eine andere Klasse ersetzt
+* die Klasse wurde geändert und diese Änderungen sind nicht kompatibel zur Vorgänger-Version
+
+Dieses Modul dient vornehmlich dazu, um die Kompatibilität mit älteren Versionen zu gewährleisten.
+
+
+
+== Weitere Infos
+
+oberstes link:../README.adoc[README]

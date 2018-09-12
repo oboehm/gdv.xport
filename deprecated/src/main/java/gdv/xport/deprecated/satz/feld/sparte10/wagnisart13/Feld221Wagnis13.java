@@ -10,7 +10,7 @@
  * by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.sparte10.wagnisart13;
+package gdv.xport.deprecated.satz.feld.sparte10.wagnisart13;
 
 import gdv.xport.annotation.*;
 import gdv.xport.feld.*;
@@ -28,10 +28,10 @@ public enum Feld221Wagnis13 {
 	// /// Teildatensatz 1 /////////////////////////////////////////////////
 
 	/** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(
-            sparte = 10,
-            teildatensatz = 1,
-            type = Feld1bis7.class)
+	@FelderInfo(
+			sparte = 10,
+			teildatensatz = 1,
+			type = Feld1bis7.class)
 	INTRO1,
 
 	/**
@@ -39,7 +39,7 @@ public enum Feld221Wagnis13 {
 	 * lfd. Nr., die im VU geführt wird
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17,
-	        byteAdresse = 43)
+			byteAdresse = 43)
 	LFD_NUMMER_VP_PERSONENGRUPPE,
 
 	/**
@@ -70,20 +70,20 @@ public enum Feld221Wagnis13 {
 	/**
 	 * Erlebensfall VS II in Währungseinheiten.
 	 */
-	@FeldInfo(teildatensatz = 1, nr = 13, type = Betrag.class, anzahlBytes = 14, byteAdresse = 90) 
-	ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN,
+	@FeldInfo(teildatensatz = 1, nr = 13, type = Betrag.class, anzahlBytes = 14, byteAdresse = 90)
+	ERLEBENSFALL_VS2_IN_WAEHRUNGSEINHEIT,
 
 	/**
 	 * Beitragsfreie Erlebensfall VS in Währungseinheiten.
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 14, type = Betrag.class, anzahlBytes = 14, byteAdresse = 104)
-    BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
+	BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
 	/**
 	 * Beitragsfreie Todesfall VS in Währungseinheiten.
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 15, type = Betrag.class, anzahlBytes = 14, byteAdresse = 118)
-    BEITRAGSFREIE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
+	BEITRAGSFREIE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
 
 	/**
 	 * Rückkaufswert in Währungseinheiten.
@@ -94,23 +94,23 @@ public enum Feld221Wagnis13 {
 	/**
 	 * Guthaben Divid. Ansammlungen in Währungseinheiten.
 	 */
-	@FeldInfo(teildatensatz = 1, nr = 17, type = Betrag.class, anzahlBytes = 14, byteAdresse = 146) 
-	GUTHABEN_DIVID_ANSAMMLUNG_IN_WAEHRUNGSEINHEITEN,
-	
+	@FeldInfo(teildatensatz = 1, nr = 17, type = Betrag.class, anzahlBytes = 14, byteAdresse = 146)
+	GUTHABEN_DIVID_ANSAMMLUNG_IN_WAEHRUNGSEINHEIT,
+
 	/**
 	 * Leerstellen.
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 18, type = AlphaNumFeld.class, anzahlBytes = 96,
-	        byteAdresse = 160)
+			byteAdresse = 160)
 	LEERSTELLEN,
 
 	// /// Teildatensatz 2 /////////////////////////////////////////////////
 
 	/** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-    @FelderInfo(
-            sparte = 10,
-            teildatensatz = 2,
-            type = Feld1bis7.class)
+	@FelderInfo(
+			sparte = 10,
+			teildatensatz = 2,
+			type = Feld1bis7.class)
 	INTRO2,
 
 	/**
@@ -118,7 +118,7 @@ public enum Feld221Wagnis13 {
 	 * lfd. Nr., die im VU geführt wird
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17,
-	        byteAdresse = 43)
+			byteAdresse = 43)
 	LFD_NUMMER_VP_PERSONENGRUPPE2,
 
 	/**
@@ -144,7 +144,7 @@ public enum Feld221Wagnis13 {
 	 * Leerstellen.
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 182,
-	        byteAdresse = 74)
+			byteAdresse = 74)
 	LEERSTELLEN2
 
 }

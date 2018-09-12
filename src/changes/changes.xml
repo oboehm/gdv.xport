@@ -17,6 +17,13 @@
 
   <body>
 
+    <release version="4.0.0-SNAPSHOT" date="2019"
+             description="Aufr&#228;umarbeiten">
+      <action dev="oboehm" type="add" date="12-Sep-2018">
+        Modul gdv-xport-deprecated angelegt.
+      </action>
+    </release>
+
     <release version="3.2.2" date="09-Sep-2018"
              description="Bug-Fix">
       <action dev="oboehm" type="fix" issue="issues/34" date="6-Sep-2018">
