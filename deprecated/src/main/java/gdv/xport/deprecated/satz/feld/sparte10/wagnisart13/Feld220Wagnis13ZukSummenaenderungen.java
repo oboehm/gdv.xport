@@ -16,15 +16,11 @@
  * (c)reated 23.03.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.sparte10.wagnisart13;
+package gdv.xport.deprecated.satz.feld.sparte10.wagnisart13;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -33,7 +29,10 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  *
  * @author ralfklemmer
  * @since 17.01.2013
+ * @deprecated bitte gleichnamige Enum aus gdv.xport.satz.feld.sparte10.wagnisart13
+ * 			   benutzen
  */
+@Deprecated
 public enum Feld220Wagnis13ZukSummenaenderungen {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
@@ -163,7 +162,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
      * 999 = unregelmäßige Änderungen/Auszahlungen
      */
     @FeldInfo(teildatensatz = 1, nr = 21, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 118)
-    ABSTAND_DER_ERLEBENSFALL_VS_AENDERUNGSTERMINE,
+    ABSTAND_DER_ERLEBENSFAL_VS_AENDERUNGSTERMINE,
 
     /**
      * Erlebensfall VS-Änderungs-Prozentsatz.
@@ -194,7 +193,7 @@ public enum Feld220Wagnis13ZukSummenaenderungen {
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 25, type = Datum.class, anzahlBytes = 8, byteAdresse = 144)
-    BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS,
+    BEGINNDAT_DER_NAECHSTEN_ERLEBENSFALL_VS,
 
     /**
      * Leerstellen.

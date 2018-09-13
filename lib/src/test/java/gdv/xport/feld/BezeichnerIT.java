@@ -118,6 +118,11 @@ public class BezeichnerIT {
             }
         }
         TECHNISCHE_NAMEN.add("AbsoluteJahresrentenaenderungssummeInWE");
+        TECHNISCHE_NAMEN.add("GarantierterSteigerungssatzBeiBU");
+        TECHNISCHE_NAMEN.add("Risikozuschlag");
+        TECHNISCHE_NAMEN.add("SteigerungssatzFuerBURente");
+        TECHNISCHE_NAMEN.add("TechnischeWaiseProzImRahmenGesellschafterGesschaeftsfuehrerVers");
+        TECHNISCHE_NAMEN.add("TechnischeWitweWitwerProzImRahmenGesellschafterGesschaeftsfuehrerVers");
     }
 
     /**

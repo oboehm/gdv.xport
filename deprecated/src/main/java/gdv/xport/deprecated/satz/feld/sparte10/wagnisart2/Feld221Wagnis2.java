@@ -10,135 +10,123 @@
  * by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.deprecated.satz.feld.sparte10.wagnisart13;
+package gdv.xport.deprecated.satz.feld.sparte10.wagnisart2;
 
-import gdv.xport.annotation.*;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
- * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10
- * (Leben - Kapitallebens-/Risikovers. = Wagnisart 1 und 3, Leben).
+ * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 221, Sparte 10.
+ * "Leben - Rentenversicherung = Wagnisart 2 " (Satzart 0221)
  *
  * @author ralfklemmer
- * @since 12.11.2012
- * @deprecated bitte gleichnamige Enum aus gdv.xport.satz.feld.sparte10.wagnisart13
+ * @since 19.01.2013
+ * @deprecated bitte gleichnamige Enum aus gdv.xport.satz.feld.sparte10.wagnisart2
  * 			   benutzen
  */
 @Deprecated
-public enum Feld221Wagnis13 {
+public enum Feld221Wagnis2 {
 
 	// /// Teildatensatz 1 /////////////////////////////////////////////////
 
 	/** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-	@FelderInfo(
-			sparte = 10,
-			teildatensatz = 1,
-			type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 1,
+            type = Feld1bis7.class)
 	INTRO1,
 
 	/**
-	 * Lfd. Nummer der versicherten Person (VP).
+	 * Laufende Nummer der versicherten Person (VP).
 	 * lfd. Nr., die im VU geführt wird
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17,
-			byteAdresse = 43)
+	        byteAdresse = 43)
 	LFD_NUMMER_VP_PERSONENGRUPPE,
 
 	/**
 	 * Wagnisart.
-	 * 1 = Kapitallebensversicherung, 3 = Risikoversicherung
+	 * 2 = Rentenversicherung
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
 	WAGNISART,
 
 	/**
 	 * Lfd Nummer zur Wagnisart.
+	 * siehe Anlage 15
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
 	LFD_NUMMER_ZUR_WAGNISART,
 
 	/**
-	 * Erlebensfall VS in Währungseinheiten.
+	 * Rückkaufswert in Währungseinheiten.
+	 * incl. aller Dynamiken
+	 * (12,2 Stellen)
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 11, type = Betrag.class, anzahlBytes = 14, byteAdresse = 62)
-	ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT,
-
-	/**
-	 * Todesfall VS in Währungseinheiten.
-	 */
-	@FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 76)
-	TODESFALL_VS_IN_WAEHRUNGSEINHEIT,
-
-	/**
-	 * Erlebensfall VS II in Währungseinheiten.
-	 */
-	@FeldInfo(teildatensatz = 1, nr = 13, type = Betrag.class, anzahlBytes = 14, byteAdresse = 90)
-	ERLEBENSFALL_VS2_IN_WAEHRUNGSEINHEIT,
-
-	/**
-	 * Beitragsfreie Erlebensfall VS in Währungseinheiten.
-	 */
-	@FeldInfo(teildatensatz = 1, nr = 14, type = Betrag.class, anzahlBytes = 14, byteAdresse = 104)
-	BEITRAGSFREIE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN,
-
-	/**
-	 * Beitragsfreie Todesfall VS in Währungseinheiten.
-	 */
-	@FeldInfo(teildatensatz = 1, nr = 15, type = Betrag.class, anzahlBytes = 14, byteAdresse = 118)
-	BEITRAGSFREIE_TODESFALL_VS_IN_WAEHRUNGSEINHEITEN,
-
-	/**
-	 * Rückkaufswert in Währungseinheiten.
-	 */
-	@FeldInfo(teildatensatz = 1, nr = 16, type = Betrag.class, anzahlBytes = 14, byteAdresse = 132)
 	RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN_MIT_NACHKOMMA,
 
 	/**
 	 * Guthaben Divid. Ansammlungen in Währungseinheiten.
+	 * (12,2 Stellen)
 	 */
-	@FeldInfo(teildatensatz = 1, nr = 17, type = Betrag.class, anzahlBytes = 14, byteAdresse = 146)
+	@FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 76)
 	GUTHABEN_DIVID_ANSAMMLUNG_IN_WAEHRUNGSEINHEIT,
+
+	/**
+	 * Kapitalzahlungs-Summe in Währungseinheiten.
+	 * Vertraglich vereinbarte Kapitalzahlungssumme zum Ablauf (inkl.
+	 * Abrufphase)
+	 * (12,2 Stellen)
+	 */
+	@FeldInfo(teildatensatz = 1, nr = 13, type = Betrag.class, anzahlBytes = 14, byteAdresse = 90)
+	KAPITALZAHLUNGS_SUMME_IN_WAEHRUNGSEINHEIT,
 
 	/**
 	 * Leerstellen.
 	 */
-	@FeldInfo(teildatensatz = 1, nr = 18, type = AlphaNumFeld.class, anzahlBytes = 96,
-			byteAdresse = 160)
+	@FeldInfo(teildatensatz = 1, nr = 14, type = AlphaNumFeld.class, anzahlBytes = 152,
+	        byteAdresse = 104)
 	LEERSTELLEN,
 
 	// /// Teildatensatz 2 /////////////////////////////////////////////////
 
 	/** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
-	@FelderInfo(
-			sparte = 10,
-			teildatensatz = 2,
-			type = Feld1bis7.class)
+    @FelderInfo(
+            sparte = 10,
+            teildatensatz = 2,
+            type = Feld1bis7.class)
 	INTRO2,
 
 	/**
-	 * Lfd. Nummer der versicherten Person (VP).
+	 * Laufende Nummer der versicherten Person (VP).
 	 * lfd. Nr., die im VU geführt wird
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17,
-			byteAdresse = 43)
+	        byteAdresse = 43)
 	LFD_NUMMER_VP_PERSONENGRUPPE2,
 
 	/**
 	 * Wagnisart.
-	 * 1 = Kapitallebensversicherung, 3 = Risikoversicherung
+	 * 2 = Rentenversicherung
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
 	WAGNISART2,
 
 	/**
 	 * Lfd Nummer zur Wagnisart.
+	 * siehe Anlage 15
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
 	LFD_NUMMER_ZUR_WAGNISART2,
 
 	/**
-	 * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten.
+	 * Absoluter Dynamikerhöhungsbetrag in Währungseinheiten.
+	 * (10,2 Stellen)
 	 */
 	@FeldInfo(teildatensatz = 2, nr = 11, type = Betrag.class, anzahlBytes = 12, byteAdresse = 62)
 	ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN,
@@ -146,8 +134,7 @@ public enum Feld221Wagnis13 {
 	/**
 	 * Leerstellen.
 	 */
-	@FeldInfo(teildatensatz = 2, nr = 13, type = AlphaNumFeld.class, anzahlBytes = 182,
-			byteAdresse = 74)
+	@FeldInfo(teildatensatz = 2, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 182,
+	        byteAdresse = 74)
 	LEERSTELLEN2
-
 }

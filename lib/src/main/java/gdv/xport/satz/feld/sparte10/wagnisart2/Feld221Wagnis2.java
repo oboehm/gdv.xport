@@ -69,7 +69,7 @@ public enum Feld221Wagnis2 {
 	 * (12,2 Stellen)
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 12, type = Betrag.class, anzahlBytes = 14, byteAdresse = 76)
-	GUTHABEN_DIVID_ANSAMMLUNG_IN_WAEHRUNGSEINHEIT,
+	GUTHABEN_DIVID_ANSAMMLUNGEN_IN_WAEHRUNGSEINHEITEN,
 
 	/**
 	 * Kapitalzahlungs-Summe in Währungseinheiten.
@@ -78,13 +78,12 @@ public enum Feld221Wagnis2 {
 	 * (12,2 Stellen)
 	 */
 	@FeldInfo(teildatensatz = 1, nr = 13, type = Betrag.class, anzahlBytes = 14, byteAdresse = 90)
-	KAPITALZAHLUNGS_SUMME_IN_WAEHRUNGSEINHEIT,
+	KAPITALZAHLUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
 	/**
 	 * Leerstellen.
 	 */
-	@FeldInfo(teildatensatz = 1, nr = 14, type = AlphaNumFeld.class, anzahlBytes = 152,
-	        byteAdresse = 104)
+	@FeldInfo(teildatensatz = 1, nr = 14, type = AlphaNumFeld.class, anzahlBytes = 152, byteAdresse = 104)
 	LEERSTELLEN,
 
 	// /// Teildatensatz 2 /////////////////////////////////////////////////

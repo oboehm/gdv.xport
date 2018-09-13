@@ -202,13 +202,15 @@ public final class Bezeichner {
     public static final Bezeichner BEGINN_TAGEGELD2_AB_TAG = new Bezeichner("Beginn Tagegeld 2 ab Tag");
     public static final Bezeichner BEGINN_VERSICHERUNGSSCHUTZ = new Bezeichner("Beginn Versicherungsschutz");
     public static final Bezeichner BEGINNDAT_DER_NAECHSTEN_JAHRESRENTE = new Bezeichner("Beginndatum der naechsten Jahresrente", "BeginndatNaechstenJahresrente");
+    public static final Bezeichner BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME = new Bezeichner("Beginndatum der naechsten Unfallsumme", "BeginndatNaechstenUnfallsumme");
     public static final Bezeichner BEGINNDAT_NAECHSTEN_BEITRAGSSUMME = new Bezeichner("Beginndatum der naechsten Beitragssumme");
     public static final Bezeichner BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS = new Bezeichner("Beginndatum der naechsten Erlebensfall VS", "BeginndatNaechstenErlebensfallVs");
     public static final Bezeichner BEGINNDAT_NAECHSTEN_JAHRESRENTE = new Bezeichner("Beginndatum der naechsten Jahresrente", "BeginndatNaechstenJahresrente");
     public static final Bezeichner BEGINNDAT_NAECHSTEN_TODESFALL_VS = new Bezeichner("Beginndatum der naechsten Todesfall VS");
     public static final Bezeichner BEGINNDAT_DER_NAECHSTEN_TODESFALL_VS = BEGINNDAT_NAECHSTEN_TODESFALL_VS; 
     public static final Bezeichner BEGINNDAT_NAECHSTEN_JAHRESRENTESUMME = new Bezeichner("Beginndatum der naechsten Jahresrentensumme");
-    public static final Bezeichner BEGINNDAT_NAECHSTEN_UNFALLSUMME = new Bezeichner("Beginndatum der naechsten Unfallsumme", "BeginndatNaechstenUnfallsumme");
+    /** @deprecated use BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME. */
+    public static final Bezeichner BEGINNDAT_NAECHSTEN_UNFALLSUMME = BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME;
     public static final Bezeichner BEIHILFESTATUS = new Bezeichner("Beihilfestatus");
     public static final Bezeichner BEIHILFETRAEGER = new Bezeichner("Beihilfetraeger");
     public static final Bezeichner BEITRAGSANGLEICHUNGSKLAUSEL = new Bezeichner("Beitragsangleichungsklausel");
@@ -357,6 +359,7 @@ public final class Bezeichner {
     public static final Bezeichner ERHOEHUNGSSATZ_8_III_AHB = new Bezeichner("Erhoehungssatz \u00a78, III AHB");
     public static final Bezeichner ERKRANKUNGEN = new Bezeichner("Erkrankungen");
     public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT = new Bezeichner("Erlebensfall VS in Waehrungseinheiten");
+    public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Erlebensfall VS in Waehrungseinheiten zum Ablauf");
     public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Erlebensfall VS II in Waehrungseinheiten zum Ablauf", "ErlebensfallVsIiInWE");
     public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Erlebensfall VS II in Waehrungseinheiten");
     public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Erlebensfall VS in Waehrungseinheiten");
@@ -403,6 +406,7 @@ public final class Bezeichner {
     public static final Bezeichner GARAGE = new Bezeichner("Garage");
     public static final Bezeichner GARANTIERTE_FONDSJAHRESRENTE_ZUM_ABLAUF_INKL_ABRUFPHASE = new Bezeichner("Garantierte Fondsjahresrente zum Ablauf (inkl. Abrufphase)");
     public static final Bezeichner GARANTIERTE_FONDSJAHRESRENTE_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Garantierte Fondsjahresrente zum Beginn der Abrufphase");
+    public static final Bezeichner GARANTIERTER_STEIGERUNGSSATZ_BEI_BU = new Bezeichner("Garantierter Steigerungssatz bei BU", "GarantierterSteigerungssatzBeiBU");
     public static final Bezeichner GEBURTSDAT = new Bezeichner("Geburtsdatum", "Geburtsdat");
     public static final Bezeichner GEBURTSDATUM_DES_TIERES = new Bezeichner("Geburtsdatum des Tieres", "GeburtsdatumDesTieres");
     public static final Bezeichner GEBURTSDAT_VP = new Bezeichner("Geburtsdatum der VP", "GeburtsdatVp");
@@ -776,6 +780,7 @@ public final class Bezeichner {
     public static final Bezeichner RISIKOLAENDERKENNZEICHEN = new Bezeichner("Risiko Länderkennzeichen");
     public static final Bezeichner RISIKOPOSTLEITZAHL = new Bezeichner("Risiko Postleitzahl");
     public static final Bezeichner RISIKOZUSCHLAEGE = new Bezeichner("Risikozuschlaege");
+    public static final Bezeichner RISIKOZUSCHLAG = new Bezeichner("Risikozuschlag");
     public static final Bezeichner RISIKOZUSCHLAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Risikozuschlag in Waehrungseinheiten");
     public static final Bezeichner RISIKOZUSCHLAG1_IN_PROZENT = new Bezeichner("Risikozuschlag 1 in Prozent");
     public static final Bezeichner RISIKOZUSCHLAG1_AB = new Bezeichner("Risikozuschlag 1 ab");
@@ -869,6 +874,7 @@ public final class Bezeichner {
     public static final Bezeichner STATUS = new Bezeichner("Status");
     public static final Bezeichner STATUS_SEIT = new Bezeichner("Status seit");
     public static final Bezeichner STATUS_TARIF = new Bezeichner("Status Tarif");
+    public static final Bezeichner STEIGERUNGSSATZ_FUER_BU_RENTE = new Bezeichner("Steigerungssatz für BU-Rente", "SteigerungssatzFuerBURente");
     public static final Bezeichner STERILISATION_KASTRATION = new Bezeichner("Sterilisation / Kastration");
     public static final Bezeichner STEUERNR_JURISTISCHE_PERSON = new Bezeichner("Steuernummer bei juristischen Personen");
     public static final Bezeichner STOCKWERKE = new Bezeichner("Stockwerke");
@@ -901,6 +907,8 @@ public final class Bezeichner {
     public static final Bezeichner TARIFLEISTUNG = new Bezeichner("Tarifleistung");
     public static final Bezeichner TARIFWAHL_VERSICHERUNGSUMFANG = new Bezeichner("Tarifwahl / Versicherungsumfang");
     public static final Bezeichner TARIFZONE = new Bezeichner("Tarifzone");
+    public static final Bezeichner TECHNISCHE_WAISE_PROZ_IM_RAHMEN_GESELLSCHAFTER_GESSCHAEFTSFUEHRER_VERS = new Bezeichner("technische Waise % (im Rahmen einer Gesellschafter/Gesschaeftsfuehrer-Vers.", "TechnischeWaiseProzImRahmenGesellschafterGesschaeftsfuehrerVers");
+    public static final Bezeichner TECHNISCHE_WITWE_WITWER_PROZ_IM_RAHMEN_GESELLSCHAFTER_GESSCHAEFTSFUEHRERVERS = new Bezeichner("technische Witwe/Witwer % (im Rahmen einer Gesellschafter/Gesschaeftsfuehrer-Vers.)", "TechnischeWitweWitwerProzImRahmenGesellschafterGesschaeftsfuehrerVers");
     public static final Bezeichner TECHNISCHER_VERS_BEGINN_DES_TARIFES = new Bezeichner("Technischer Vers.-Beginn des Tarifes");
     public static final Bezeichner TEILDATENSATZNUMMER = new Bezeichner("Teildatensatznummer");
     public static final Bezeichner TEILKAPITALISIERUNG = new Bezeichner("Teilkapitalisierung");
