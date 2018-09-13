@@ -8,7 +8,7 @@ gdv-xport-lib ist eine Java-Bibliothek, die den Umgang mit dem GDV-Format erleic
 Sie vereinfacht den Export und Import dieses Datenformats und ermoeglicht die Validierung der verschiedenen Datensaetze.
 
 Mit 3.0 wurde die ArtifactId für Maven in "gdv-xport-lib" umbenannt (bis 2.x: "gdv-xport").
-
+In 4.0 wurden Inkonsistenzen zwischen den einzelnen Enum-Klassen, die die Datensaetze beschreiben, und den entsprechenden Bezeichner-Konstanten bereinigt.
 
 
 == Kompatibilitaet von v2 zu v3
@@ -25,6 +25,19 @@ Allerdings wurde mit der Aktualisierung auch die Bezeichner-Klasse ueberarbeitet
 Dadurch kann es sein, dass manche Konstanten irrtuemlich geloescht wurden.
 Sollte dies der Fall sein, ein https://github.com/oboehm/gdv.xport/issues/[Issue] erstellen.
 Man kann natuerlich auch die Konstanten in seiner Anwendung selber definieren.
+
+
+
+== Kompatibilitaet von v3 zu v4
+
+Durch die Anpassung der Eintraege in den Enum-Klassen an die entsprechende Bezeichner-Konstante sind einzelen Enum-Klassen nicht mehr zur Vorgaenger-Version kompatibel.
+Solche Enum-Klassen liegen dann zusaetzlich in der Vorgaenger-Version im Modul 'gdv-xport-deprecated' vor.
+Damit hat man beim Umsteig auf v4 die Wahl:
+
+* man bleibt bei v3
+* man bindet 'gdv-xport-deprecated' als zusaetzliche Abhaengigkeit ein und tauscht dann nur die Import-Anweisung aus
+* man passt die umbenannten Eintraege in seinem Sourcecode an
+* man verabschiedet sich von der Enum-Klasse und greift ueber die Bezeichner-Klasse auf Satz-Felder zu (empfohlene Variante)
 
 
 
