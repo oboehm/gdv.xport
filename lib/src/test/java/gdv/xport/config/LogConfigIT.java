@@ -29,7 +29,8 @@ import java.sql.*;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit-Tests fuer {@link LogConfig}-Klasse.
@@ -42,29 +43,20 @@ public class LogConfigIT {
     private static LogConfig logConfig;
 
     @ClassRule
-    public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer();
+    public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer().withUsername("Oli B.").withPassword("******");
     
     @BeforeClass
     public static void setUpLogConfig() {
         LOG.info("Setting up logConfig...");
+        //URI jdbcURI = URI.create("jdbc:hsqldb:mem:logdb");
+        //logConfig = new LogConfig(jdbcURI, "sa", "");
         URI jdbcURI = URI.create(postgreSQLContainer.getJdbcUrl());
         logConfig = new LogConfig(jdbcURI, postgreSQLContainer.getUsername(), postgreSQLContainer.getPassword());
         LOG.info("Setting up logConfig {} successful finished.", logConfig);
     }
-
+    
     /**
-     * Als allererster Umgang mit Testcontainers probieren wir hier nur, ob wir
-     * eine JDBC-URL bekommen.
-     */
-    @Test
-    public void testSetUp() {
-        String jdbcURL = postgreSQLContainer.getJdbcUrl();
-        assertNotNull(jdbcURL);
-        LOG.info("jdbcURL = {}", jdbcURL);
-    }
-
-    /**
-     * Als zweite Uebung verwenden wir die DB-Connection, um einen Eintrag ins
+     * Als Testen verwenden wir die DB-Connection, um einen Eintrag ins
      * Logbook zu schreiben und zu pruefen.
      * 
      * @throws SQLException bei SQL-Fehlern
@@ -72,7 +64,7 @@ public class LogConfigIT {
     @Test
     public void testWriteToLogbook() throws SQLException {
         Timestamp now = new Timestamp(System.currentTimeMillis());
-        try (Connection c = logConfig.getDbConnection(); PreparedStatement stmt = c
+        try (Connection c = LogConfig.getConnection(); PreparedStatement stmt = c
                 .prepareStatement("INSERT INTO logbook (event_date, level, logger, message) VALUES(?, ?, ?, ?)")) {
             stmt.setTimestamp(1, now);
             stmt.setString(2, "TEST");

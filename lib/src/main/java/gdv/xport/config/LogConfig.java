@@ -19,6 +19,7 @@ package gdv.xport.config;
 
 import org.apache.logging.log4j.*;
 
+import java.io.UnsupportedEncodingException;
 import java.net.*;
 import java.sql.*;
 
@@ -67,7 +68,16 @@ public final class LogConfig {
      * @see #LogConfig(URI) 
      */
     public LogConfig(URI uri, String username, String password) {
-        this(URI.create(uri + "?user=" + username + "&password=" + password));
+        this(URI.create(uri + "?user=" + encode(username) + "&password=" + encode(password)));
+    }
+
+    private static String encode(String parameter) {
+        try {
+            return URLEncoder.encode(parameter, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            LOG.warn("Cannot encode '{}' in UTF-8:", parameter, ex);
+            return parameter;
+        }
     }
 
     private static URI readDatabaseURL() {
