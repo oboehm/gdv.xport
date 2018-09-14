@@ -16,9 +16,10 @@
  * (c)reated 23.03.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.sparte10.wagnisart9;
+package gdv.xport.deprecated.satz.feld.sparte10.wagnisart9;
 
-import gdv.xport.annotation.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -28,7 +29,10 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  *
  * @author ralfklemmer
  * @since 19.01.2013
+ * @deprecated bitte gleichnamige Enum aus gdv.xport.satz.feld.sparte10.wagnisart9
+ * 			   benutzen
  */
+@Deprecated
 public enum Feld220Wagnis9 {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
@@ -257,7 +261,7 @@ public enum Feld220Wagnis9 {
      * (3,2 Stellen)
      */
     @FeldInfo(teildatensatz = 1, nr = 37, type = Betrag.class, anzahlBytes = 5, byteAdresse = 227)
-    TECHNISCHE_WITWE_WITWER_PROZ_IM_RAHMEN_GESELLSCHAFTER_GESSCHAEFTSFUEHRERVERS,
+    TECHNISCHE_WITWEN_WITTWERRENTE_IN_PROZENT,
 
     /**
      * Waisenrente in Prozent (3,2 Stellen).
@@ -279,7 +283,7 @@ public enum Feld220Wagnis9 {
             type = Betrag.class,
             anzahlBytes = 5,
             byteAdresse = 237)
-    TECHNISCHE_WAISE_PROZ_IM_RAHMEN_GESELLSCHAFTER_GESSCHAEFTSFUEHRER_VERS,
+    TECHNISCHE_WAISE_IN_PROZENT,
 
     /**
      * Schlussalter des Waisen.

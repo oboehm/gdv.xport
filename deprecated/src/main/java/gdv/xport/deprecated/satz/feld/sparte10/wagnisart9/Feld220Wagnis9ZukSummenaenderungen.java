@@ -16,9 +16,10 @@
  * (c)reated 23.03.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.sparte10.wagnisart9;
+package gdv.xport.deprecated.satz.feld.sparte10.wagnisart9;
 
-import gdv.xport.annotation.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
@@ -28,7 +29,10 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  *
  * @author ralfklemmer
  * @since 19.01.2013
+ * @deprecated bitte gleichnamige Enum aus gdv.xport.satz.feld.sparte10.wagnisart9
+ * 			   benutzen
  */
+@Deprecated
 public enum Feld220Wagnis9ZukSummenaenderungen {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
@@ -177,13 +181,13 @@ public enum Feld220Wagnis9ZukSummenaenderungen {
     NAECHSTE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Jahresrente.
+     * Beginndatum der nächsten Jahresrentesumme.
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt
      * werden Datum der nächsten Jahresrente
      * Tag/Monat/Jahr (TTMMJJJJ)
      */
     @FeldInfo(teildatensatz = 1, nr = 25, type = Datum.class, anzahlBytes = 8, byteAdresse = 162)
-    BEGINNDAT_DER_NAECHSTEN_JAHRESRENTE,
+    BEGINNDAT_DER_NAECHSTEN_JAHRESRENTESUMME,
 
     /**
      * Leerstellen.

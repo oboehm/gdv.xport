@@ -118,6 +118,8 @@ public class BezeichnerIT {
             }
         }
         TECHNISCHE_NAMEN.add("AbsoluteJahresrentenaenderungssummeInWE");
+        TECHNISCHE_NAMEN.add("AnzWohneinheiten");
+        TECHNISCHE_NAMEN.add("BasisVersssummeInWE");
         TECHNISCHE_NAMEN.add("GarantierterSteigerungssatzBeiBU");
         TECHNISCHE_NAMEN.add("Risikozuschlag");
         TECHNISCHE_NAMEN.add("SteigerungssatzFuerBURente");

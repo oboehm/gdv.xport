@@ -16,7 +16,7 @@
  * (c)reated 23.03.2011 by Oli B. (ob@aosd.de)
  */
 
-package gdv.xport.satz.feld.sparte10;
+package gdv.xport.deprecated.satz.feld.sparte10;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
@@ -30,7 +30,10 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  *
  * @author oliver (ob@aosd.de)
  * @since 23.03.2011
+ * @deprecated bitte gleichnamige Enum aus gdv.xport.satz.feld.sparte10
+ * 			   benutzen
  */
+@Deprecated
 public enum Feld210 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////
@@ -97,7 +100,7 @@ public enum Feld210 {
             anzahlBytes = 1,
             byteAdresse = 48
     )
-    RISIKOVORLAUF,
+    RISIKOVERLAUF,
 
     /**
      * Vorlaufssumme in Waehrungseinheiten, bezogen auf Risikovorlauf.

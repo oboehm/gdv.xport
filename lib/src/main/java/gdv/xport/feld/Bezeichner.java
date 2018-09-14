@@ -116,13 +116,10 @@ public final class Bezeichner {
     public static final Bezeichner ART_DER_HALTUNG = new Bezeichner("Art der Haltung");
     public static final Bezeichner ART_DER_SUMME = new Bezeichner("Art der Summe");
     public static final Bezeichner ART_DER_TIERKENNZEICHNUNG = new Bezeichner("Art der Tierkennzeichnung");
-    /**
-     * Fuer 0220.170
-     */
+    public static final Bezeichner ART_DER_SCHAETZUNG = new Bezeichner("Art der Schaetzung", "ArtSchaetzung");
+    /** Fuer 0220.170 */
     public static final Bezeichner ART_DER_SUMME2AN = new Bezeichner("Art der Summe", "ArtSumme2AN");
-    /**
-     * Fuer 022x.130
-     */
+    /**  Fuer 022x.130 */
     public static final Bezeichner ART_DER_SUMME3AN = new Bezeichner("Art der Summe", "ArtSumme3AN");
     public static final Bezeichner ART_DER_SUMMENANPASSUNG = new Bezeichner("Art der Summenanpassung");
     public static final Bezeichner ART_DES_SELBSTBEHALT = new Bezeichner("Art des Selbstbehalts", "ArtSelbstbehalt");
@@ -156,6 +153,7 @@ public final class Bezeichner {
     public static final Bezeichner ANZAHL_SAETZE = new Bezeichner("Anzahl der Saetze");
     public static final Bezeichner ANZAHL_VERBLEIBENDE_DYNAMIKWIDERSPRUECHE = new Bezeichner("Anzahl verbleibende Dynamikwidersprueche");
     public static final Bezeichner ANZAHL_VP_PRO_PERSONENGRUPPE = new Bezeichner("Anzahl der VP pro Personengruppe");
+    public static final Bezeichner ANZAHL_WOHNEINHEITEN = new Bezeichner("Anzahl Wohneinheiten", "AnzWohneinheiten");
     public static final Bezeichner ARB = new Bezeichner("ARB (Allgemeine Bedingungen fuer die Rechtschutzvers.)");
     public static final Bezeichner ART_DER_AUSZAHLUNG = new Bezeichner("Art der Auszahlung");
     public static final Bezeichner ART_DES_BEITRAGSSATZES = new Bezeichner("Art des Beitragssatzes", "ArtDesBeitragssatzes");
@@ -180,8 +178,10 @@ public final class Bezeichner {
     public static final Bezeichner AUSSCHLUSSDATUM_VP = new Bezeichner("Ausschlussdatum VP / Personengruppe");
 
     public static final Bezeichner BASISBEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Basisbeitrag in Währungseinheiten");
-    public static final Bezeichner BASIVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Basiversicherungssumme in Waehrungseinheiten");
+    public static final Bezeichner BASISJAHR = new Bezeichner("Basisjahr");
+    public static final Bezeichner BASISVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Basiversicherungssumme in Waehrungseinheiten", "BasisVersssummeInWE");
     public static final Bezeichner BAUARTKLASSE = new Bezeichner("Bauartklasse");
+    public static final Bezeichner BAUPREISINDEX_WERTZUSCHLAG = new Bezeichner("Baupreisindex / Wertzuschlag", "BaupreisindexWertzuschlag");
     public static final Bezeichner BAUJAHR = new Bezeichner("Baujahr");
     public static final Bezeichner BAUSTEINSCHLUESSEL = new Bezeichner("Bausteinschluessel");
     public static final Bezeichner BAUSTEINBEZEICHNUNG = new Bezeichner("Bausteinbezeichnung");
@@ -266,6 +266,7 @@ public final class Bezeichner {
     public static final Bezeichner BESONDERER_VERWENDUNGSZWECK = new Bezeichner("besonderer Verwendungszweck");
     public static final Bezeichner BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO = new Bezeichner("Besondere Vereinbarung zum Fluggastrisiko");
     public static final Bezeichner BESONDERE_VEREINBARUNGEN = new Bezeichner("Besondere Vereinbarungen");
+    public static final Bezeichner BESONDERHEITEN = new Bezeichner("Besonderheiten");
     public static final Bezeichner BESCHREIBUNG_ZU_LFD_NUMMER_OBJEKT_KOMPLEX = new Bezeichner("Beschreibung zu lfd. Nr. Objekt / Komplex");
     public static final Bezeichner BESTANDSFUEHRENDE_GESCHAEFTSSTELLE = new Bezeichner("Bestandsfuehrende Geschaeftsstelle");
     public static final Bezeichner BESTANDSPFLEGEPROVISION = new Bezeichner("Bestandspflegeprovision");
@@ -303,6 +304,7 @@ public final class Bezeichner {
     public static final Bezeichner DAT_LETZTEN_BEITRAGSANGLEICHUNG = new Bezeichner("Datum der letzten Beitragsangleichung", "DatLetztenBeitragsangleichung");
     public static final Bezeichner DAT_LETZTER_GLASPREISANGLEICHUNG = new Bezeichner("Datum der letzten Glaspreisangleichung", "DatLetztenGlaspreisangleichung");
     public static final Bezeichner DAT_LETZTEN_POSITIVEN_DYNAMIK = new Bezeichner("Datum der letzten positiven Dynamik", "DatLetztenPositivenDynamik");
+    public static final Bezeichner DATUM_DER_LETZTEN_SUMMENANPASSUNG = new Bezeichner("Datum der letzten Summenanpassung", "DatLetztenSummenanpassung");
     public static final Bezeichner DAT_UNVERFALLBARKEIT = new Bezeichner("Datum Unverfallbarkeit");
     public static final Bezeichner DAUERSCHAEDEN_KOERPERLICHE_BEEINTRAECHTIGUNGEN = new Bezeichner("Dauerschaeden / koerperliche Beeintraechtigungen");
     public static final Bezeichner DAUERZULAGEANTRAG = new Bezeichner("Dauerzulagenantrag");
@@ -319,6 +321,7 @@ public final class Bezeichner {
     public static final Bezeichner DECKUNGSRUECKSTELLUNG_VORSORGEZUSCHLAG = new Bezeichner("Deckungsrueckstellung Vorsorgezuschlag");
     public static final Bezeichner DECKUNGSUMFANG = new Bezeichner("Deckungsumfang");
     public static final Bezeichner DECKUNGS_VERSICHERUNGSSUMME = new Bezeichner("Deckungs-/Versicherungssumme");
+    public static final Bezeichner DENKMALSCHUTZ = new Bezeichner("Denkmalschutz");
     public static final Bezeichner DIENSTEINTRITT = new Bezeichner("Diensteintritt");
     public static final Bezeichner DIENSTEINTRITTSDAT = new Bezeichner("Diensteintrittsdatum", "Diensteintrittsdat");
     public static final Bezeichner DIREKTANSPRUCH = new Bezeichner("Direktanspruch");
@@ -354,10 +357,10 @@ public final class Bezeichner {
     public static final Bezeichner ERWEITERUNG_DES_GELTUNGSBEREICHES = new Bezeichner("Erweiterung des Geltungsbereiches");
     public static final Bezeichner ERWEITERUNGSSATZ_VORHANDEN = new Bezeichner("Erweiterungssatz vorhanden");
     public static final Bezeichner EVB_NUMMER = new Bezeichner("eVB-Nummer");
-    public static final Bezeichner ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS = new Bezeichner("Erstellungs-Datum, Zeitraum von, Zeitraum bis", "ErstellungsDatZeitraumVomZeitraumBis");
     public static final Bezeichner ENDALTER = new Bezeichner("Endalter");
     public static final Bezeichner EINTRITTSALTER = new Bezeichner("Eintrittsalter");
     public static final Bezeichner EINTRITTSALTER_DER_VP = new Bezeichner("Eintrittsalter der VP");
+    public static final Bezeichner ELEMENTARSCHAEDEN = new Bezeichner("Elementarschaeden");
     public static final Bezeichner ENDEDATUM_BEI_ROTEN_KENNZEICHEN = new Bezeichner("Endedatum des Versicherungsschutzes bei roten Kennzeichen", "EndedatumBeiRotenKennzeichen");
     public static final Bezeichner ERHOEHUNGSSATZ_8_III_AHB = new Bezeichner("Erhoehungssatz \u00a78, III AHB");
     public static final Bezeichner ERKRANKUNGEN = new Bezeichner("Erkrankungen");
@@ -369,8 +372,9 @@ public final class Bezeichner {
     public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Erlebensfall VS in Waehrungseinheiten zum Beginn der Abrufphase", "ErlebensfallVSInWaehrungseinheitenZumBeginnDerAbrufphase");
     public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Erlebensfall VS II in Waehrungseinheiten zum Beginn der Abrufphase", "ErlebensfallVSIIInWaehrungseinheitenZumBeginnDerAbrufphase");
     public static final Bezeichner ERLEBENSFALL_VS_AENDERUNGS_PROZENTSATZ = new Bezeichner("Erlebensfall VS-Aenderungs-Prozentsatz", "ErlebensfalllVsAenderungsProzentsatz");
-    public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_VOM = new Bezeichner("Erstellungs-Datum-Zeitraum vom");
     public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_BIS = new Bezeichner("Erstellungs-Datum-Zeitraum bis");
+    public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_VOM = new Bezeichner("Erstellungs-Datum-Zeitraum vom");
+    public static final Bezeichner ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS = new Bezeichner("Erstellungs-Datum, Zeitraum von, Zeitraum bis", "ErstellungsDatZeitraumVomZeitraumBis");
 
     public static final Bezeichner FABRIK_NR = new Bezeichner("Fabrik-Nr.");
     public static final Bezeichner FAELLIGKEIT_DER_LETZTEN_BEITRAGSZAHLUNG = new Bezeichner("Faelligkeit der letzten Beitragszahlung", "FaelligkeitDerLetztenBeitragszahlung");
@@ -410,6 +414,7 @@ public final class Bezeichner {
     public static final Bezeichner GARANTIERTE_FONDSJAHRESRENTE_ZUM_ABLAUF_INKL_ABRUFPHASE = new Bezeichner("Garantierte Fondsjahresrente zum Ablauf (inkl. Abrufphase)");
     public static final Bezeichner GARANTIERTE_FONDSJAHRESRENTE_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Garantierte Fondsjahresrente zum Beginn der Abrufphase");
     public static final Bezeichner GARANTIERTER_STEIGERUNGSSATZ_BEI_BU = new Bezeichner("Garantierter Steigerungssatz bei BU", "GarantierterSteigerungssatzBeiBU");
+    public static final Bezeichner GEBAEUDETYP = new Bezeichner("Gebaeudetyp");
     public static final Bezeichner GEBURTSDAT = new Bezeichner("Geburtsdatum", "Geburtsdat");
     public static final Bezeichner GEBURTSDATUM_DES_TIERES = new Bezeichner("Geburtsdatum des Tieres", "GeburtsdatumDesTieres");
     public static final Bezeichner GEBURTSDAT_VP = new Bezeichner("Geburtsdatum der VP", "GeburtsdatVp");
@@ -421,6 +426,7 @@ public final class Bezeichner {
     public static final Bezeichner GEBURTSORT = new Bezeichner("Geburtsort");
     public static final Bezeichner GEFAHRENERHOEHUNG = new Bezeichner("Gefahrenerhoehung");
     public static final Bezeichner GEFAHRENGRUPPE = new Bezeichner("Gefahrengruppe");
+    public static final Bezeichner GEFAHRENSCHLUESSEL = new Bezeichner("Gefahrenschluessel");
     public static final Bezeichner GEFAHRGUT = new Bezeichner("Gefahrgut");
     public static final Bezeichner GELTUNGSBEREICH = new Bezeichner("Geltungsbereich");
     public static final Bezeichner GELTUNGSBEREICHEINSCHRAENKUNG = new Bezeichner("Geltungsbereicheinschraenkung");
@@ -620,11 +626,11 @@ public final class Bezeichner {
     public static final Bezeichner LAUFZEITVERKUERZUNG = new Bezeichner("Laufzeitverkuerzung");
     public static final Bezeichner LEBENSLANGE_BEITRAGSZAHLUNG = new Bezeichner("Lebenslange Beitragszahlung");
     public static final Bezeichner LEERSTELLEN = new Bezeichner("Leerstellen");
-    public static final Bezeichner LEERSTELLEN1 = new Bezeichner("Leerstellen");
-    public static final Bezeichner LEERSTELLEN2 = new Bezeichner("Leerstellen");
-    public static final Bezeichner LEERSTELLEN3 = new Bezeichner("Leerstellen");
-    public static final Bezeichner LEERSTELLEN4 = new Bezeichner("Leerstellen");
-    public static final Bezeichner LEERSTELLEN5 = new Bezeichner("Leerstellen");
+    public static final Bezeichner LEERSTELLEN1 = LEERSTELLEN;
+    public static final Bezeichner LEERSTELLEN2 = LEERSTELLEN;
+    public static final Bezeichner LEERSTELLEN3 = LEERSTELLEN;
+    public static final Bezeichner LEERSTELLEN4 = LEERSTELLEN;
+    public static final Bezeichner LEERSTELLEN5 = LEERSTELLEN;
     public static final Bezeichner LEISTUNG_AB_INVALIDITAETSGRAD_IN_PROZENT = new Bezeichner("Leistung ab Invaliditaetsgrad in Prozent");
     public static final Bezeichner LEISTUNG_BEI_SCHWERER_ERKRANKUNG = new Bezeichner("Leistung bei schwerer Erkrankung");
     public static final Bezeichner LEISTUNGSAUSSCHLUSS1_AB = new Bezeichner("Leistungsausschluss 1 ab");
@@ -711,8 +717,10 @@ public final class Bezeichner {
     public static final Bezeichner NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN2 = NETTOBEITRAG_IN_WAEHRUNGSEINHEITEN;
     public static final Bezeichner NEUPREIS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Neupreis in Waehrungseinheiten");
     public static final Bezeichner NEUWERT_LISTENPREIS_IM_ANSCHAFFUNGSJAHR_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Neuwert / Listenpreis im Anschaffungsjahr in Waehrungseinheiten");
+    public static final Bezeichner NEUWERTFAKTOR = new Bezeichner("Neuwertfaktor");
     public static final Bezeichner NUTZUNGSART = new Bezeichner("Nutzungsart");
 
+    public static final Bezeichner OBJEKTBESCHREIBUNG = new Bezeichner("Objektbeschreibung");
     public static final Bezeichner OBJEKTKENNZIFFER = new Bezeichner("Objektkennziffer");
     public static final Bezeichner OBJEKTNUMMER = new Bezeichner("Objektnummer");
     public static final Bezeichner OBJEKTNUMMER2 = OBJEKTNUMMER;
@@ -733,6 +741,8 @@ public final class Bezeichner {
     public static final Bezeichner POSTFACH = new Bezeichner("postfach");
     public static final Bezeichner POSTLEITZAHL = new Bezeichner("Postleitzahl", "PLZ");
     public static final Bezeichner POSTLEITZAHL_DER_RISIKOANSCHRIFT = new Bezeichner("Postleitzahl der Risikoanschrift", "PLZRisikoanschrift");
+    public static final Bezeichner PRAEMIENFAKTOR = new Bezeichner("Praemienfaktor");
+    public static final Bezeichner PRAEMIENRICHTZAHL = new Bezeichner("Praemienrichtzahl");    
     public static final Bezeichner PRAEMIENSATZ_IN_PROMILLE = new Bezeichner("Prämiensatz in Promille");
     public static final Bezeichner PRODUKTBESCHREIBUNG = new Bezeichner("Produktbeschreibung");
     public static final Bezeichner PRODUKTFORM = new Bezeichner("Produktform");
@@ -776,12 +786,12 @@ public final class Bezeichner {
     public static final Bezeichner RISIKOORT = new Bezeichner("Risikoort");
     public static final Bezeichner RISIKOSTRASSE = new Bezeichner("Risiko Strasse");
     public static final Bezeichner RISIKOTEXT = new Bezeichner("Risikotext");
-    public static final Bezeichner RISIKOVORLAUF = new Bezeichner("Risikovorlauf");
     public static final Bezeichner RISKIOEINHEIT1 = new Bezeichner("Risikoeinheit-1");
     public static final Bezeichner RISKIOEINHEIT2 = new Bezeichner("Risikoeinheit-2");
     public static final Bezeichner RISIKOEINSCHRAENKUNG = new Bezeichner("Risikoeinschraenkung");
     public static final Bezeichner RISIKOLAENDERKENNZEICHEN = new Bezeichner("Risiko Länderkennzeichen");
     public static final Bezeichner RISIKOPOSTLEITZAHL = new Bezeichner("Risiko Postleitzahl");
+    public static final Bezeichner RISIKOVORLAUF = new Bezeichner("Risikovorlauf");
     public static final Bezeichner RISIKOZUSCHLAEGE = new Bezeichner("Risikozuschlaege");
     public static final Bezeichner RISIKOZUSCHLAG = new Bezeichner("Risikozuschlag");
     public static final Bezeichner RISIKOZUSCHLAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Risikozuschlag in Waehrungseinheiten");
@@ -816,6 +826,7 @@ public final class Bezeichner {
     public static final Bezeichner SATZNUMMER4 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER5 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER9 = SATZNUMMER;
+    public static final Bezeichner SATZNUMMER38 = new Bezeichner("Satznummer38", "SatzNr");
     public static final Bezeichner SATZNUMMERNWIEDERHOLUNG1 = new Bezeichner("Satznummernwiederholung1", "SatzNrnwiederholung1");
     public static final Bezeichner SATZNUMMERNWIEDERHOLUNG2 = new Bezeichner("Satznummernwiederholung2", "SatzNrnwiederholung2");
     public static final Bezeichner SATZNUMMERNWIEDERHOLUNG3 = new Bezeichner("Satznummernwiederholung3", "SatzNrnwiederholung3");
@@ -960,7 +971,9 @@ public final class Bezeichner {
     public static final Bezeichner UNFALLSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Unfallsumme in Waehrungseinheiten");
     public static final Bezeichner UNTERSTUETZUNGSKASSE_NAME = new Bezeichner("Unterstuetzungskasse Name");
     public static final Bezeichner UNTERSTUETZUNGSKASSE_SCHLUESSEL = new Bezeichner("Unterstuetzungskasse Schluessel");
-    public static final Bezeichner UNTERVERS_VERZICHT = new Bezeichner("Untervers.-Verzicht");
+    public static final Bezeichner UNTERVERSICHERUNGSVERZICHT = new Bezeichner("Unterversicherungsverzicht", "UnterVerssverzicht");
+    /** @deprecated bitte #UNTERVERSICHERUNGSVERZICHT verwenden. */
+    public static final Bezeichner UNTERVERS_VERZICHT = UNTERVERSICHERUNGSVERZICHT;
     public static final Bezeichner UNVERFALLBARKEIT = new Bezeichner("Unverfallbarkeit");
     public static final Bezeichner UNWIDERRUFLICHES_BEZUGSRECHT_IM_ERLEBENSFALL = new Bezeichner("Unwiderrufliches Bezugsrecht im Erlebensfall");
     public static final Bezeichner UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL = new Bezeichner("Unwiderrufliches Bezugsrecht im Leistungsfall");
@@ -1134,6 +1147,7 @@ public final class Bezeichner {
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_3 = new Bezeichner("Waehrungsschluessel 3");
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_4 = new Bezeichner("Waehrungsschluessel 4");
     public static final Bezeichner WAGNIS = new Bezeichner("Wagnis");
+    public static final Bezeichner WAGNIS2 = WAGNIS;
     public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart");
     public static final Bezeichner WAGNISART2 = WAGNISART;
     public static final Bezeichner WAGNISART3 = WAGNISART;
@@ -1147,6 +1161,8 @@ public final class Bezeichner {
     public static final Bezeichner WARTUNGSVERTRAG = new Bezeichner("Wartungsvertrag");
     public static final Bezeichner WECHSELKENNZEICHEN_W_AKZ = new Bezeichner("KFZ - Wechselkennzeichen W-AKZ", "KFZWechselkennzeichenWAKZ");
     public static final Bezeichner WEITERE_REFERENZNUMMERN = new Bezeichner("Weitere Referenznummern", "WeitereReferenzNrn");
+    public static final Bezeichner WERT_1914_PRO_QM_WOHNFLAECHE_IN_MARK = new Bezeichner("Wert 1914 pro qm Wohnflaeche in Mark", "Wert1914ProQmWohnflaecheInMark");
+    public static final Bezeichner WERTERMITTLUNGS_SCHAETZJAHR = new Bezeichner("Wertermittlungs-/Schaetzjahr", "WertermittlungsSchaetzjahr");
     public static final Bezeichner WERT_ZUSCHREIBUNG_VORSORGEZUSCHLAG = new Bezeichner("Wert Zuschreibung Vorsorgezuschlag");
     public static final Bezeichner WERTPAPIERKENNNUMMER = new Bezeichner("Wertpapierkennnummer");
     public static final Bezeichner WERTUNGSBASIS = new Bezeichner("Wertungsbasis");

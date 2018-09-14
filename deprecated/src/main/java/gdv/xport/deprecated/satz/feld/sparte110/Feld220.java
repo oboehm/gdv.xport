@@ -1,4 +1,4 @@
-package gdv.xport.satz.feld.sparte110;
+package gdv.xport.deprecated.satz.feld.sparte110;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
@@ -14,7 +14,10 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  *
  * @author Frank Berger
  * @since 17.01.2014
+ * @deprecated bitte gleichnamige Enum aus gdv.xport.satz.feld.sparte110
+ * 			   benutzen
  */
+@Deprecated
 public enum Feld220 {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
@@ -361,7 +364,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 6,
             byteAdresse = 210)
-    RISIKO_LFD_NUMMER,
+    LFD_NUMMER_RISIKO,
 
     /**
      * Referenznummer.

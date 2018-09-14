@@ -1,12 +1,8 @@
-package gdv.xport.satz.feld.sparte140;
+package gdv.xport.deprecated.satz.feld.sparte140;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -15,7 +11,10 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  *
  * @author Frank Berger
  * @since 17.01.2014
+ * @deprecated bitte gleichnamige Enum aus gdv.xport.satz.feld.sparte140
+ * 			   benutzen
  */
+@Deprecated
 public enum Feld220 {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
@@ -442,7 +441,7 @@ public enum Feld220 {
             type = NumFeld.class,
             anzahlBytes = 12,
             byteAdresse = 98)
-    BASISVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN,
+    BASISVERSICHERUNGSSUMME_IN_WE,
     
     /**
      * Baupreisindex / Wertzuschlag
@@ -458,8 +457,8 @@ public enum Feld220 {
     BAUPREISINDEX_WERTZUSCHLAG,
     
     /**
-     * Versicherungssumme aktuell in Waehrungseinheiten
-     * (12,0 Stellen).
+     * Versicherungssumme aktuell in Währungseinheiten
+     * (12,0 Stellen)
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -467,7 +466,7 @@ public enum Feld220 {
             type = NumFeld.class,
             anzahlBytes = 12,
             byteAdresse = 116)
-    VERSICHERUNGSSUMME_AKTUELL_IN_WAEHRUNGSEINHEITEN,
+    VERSICHERUNGSSUMME_AKTUELL_IN_WE,
     
     /**
      *  Beitragssatz
@@ -492,7 +491,7 @@ public enum Feld220 {
             type = Betrag.class,
             anzahlBytes = 12,
             byteAdresse = 134)
-    BASISBEITRAG_IN_WAEHRUNGSEINHEITEN,
+    BASISBEITRAG_IN_WE,
     
     /**
      * Prämienrichtzahl
@@ -528,7 +527,7 @@ public enum Feld220 {
             type = Betrag.class,
             anzahlBytes = 12,
             byteAdresse = 154)
-    BEITRAG_AKTUELL_IN_WAEHRUNGSEINHEITEN,
+    BEITRAG_AKTUELL_IN_WE,
     
     /**
      * Datum der letzten Summenanpassung
@@ -543,8 +542,8 @@ public enum Feld220 {
     DATUM_DER_LETZTEN_SUMMENANPASSUNG,
     
     /**
-     * Selbstbeteiligung in Prozent
-     * (2,2 Stellen). Der Selbstbehalt gilt für die Grunddeckung. 
+     * Selbstbeteiligung %
+     * (2,2 Stellen) Der Selbstbehalt gilt für die Grunddeckung. 
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -553,7 +552,7 @@ public enum Feld220 {
             nachkommaStellen = 2,
             anzahlBytes = 4,
             byteAdresse = 174)
-    SELBSTBETEILIGUNG_IN_PROZENT,
+    SELBSTBETEILIGUNG_PROZENT,
     
     /**
      *  Selbstbeteiligung in Währungseinheiten
@@ -565,7 +564,7 @@ public enum Feld220 {
             type = Betrag.class,
             anzahlBytes = 12,
             byteAdresse = 178)
-    SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN,
+    SELBSTBETEILIGUNG_IN_WE,
     
     /**
      * Besonderheiten
@@ -632,7 +631,7 @@ public enum Feld220 {
     GEBAEUDETYP,
     
     /**
-     * Art der Schaetzung.
+     * Art der Schätzung
      * siehe Anlage 74
      */
     @FeldInfo(
@@ -644,8 +643,8 @@ public enum Feld220 {
     ART_DER_SCHAETZUNG,
     
     /**
-     * Wertermittlungs-/Schaetzjahr
-     * (JJJJ).
+     * Wertermittlungs-/Schätzjahr
+     * (JJJJ)
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -656,8 +655,8 @@ public enum Feld220 {
     WERTERMITTLUNGS_SCHAETZJAHR,
     
     /**
-     * Wert 1914 pro qm Wohnflaeche in Mark
-     * (4,2 Stellen).
+     * Wert 1914 pro qm Wohnfläche in Mark
+     * (4,2 Stellen)
      */
     @FeldInfo(
             teildatensatz = 2,
@@ -680,7 +679,7 @@ public enum Feld220 {
     REFERENZNUMMER,
     
     /**
-     * Denkmalschutz.
+     * Denkmalschutz
      * 0 = nein
      * 1 = ja
      */
