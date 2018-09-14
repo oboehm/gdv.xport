@@ -137,7 +137,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
     ANFAENGLICHE_JAHRESRENTE_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Änderung der Beitragssumme.
+     * Aenderung der Beitragssumme.
      * 0 = keine Änderung bzw. nur eine Beitragssumme VS
      * 1 = Erhöhung der Beitragssumme VS
      * 2 = Reduzierung der Beitragssumme VS
@@ -146,7 +146,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
     AENDERUNG_DER_BEITRAGSSUMME,
 
     /**
-     * Abstand der Beitragssummenänderungstermine.
+     * Abstand der Beitragssummenaenderungstermine.
      * in Monaten bei periodischen Änderungsterminen 
      * in Monaten bei periodischen Auszahlungen
      * 000 = keine Änderungen/Auszahlungen
@@ -178,7 +178,7 @@ public enum Feld220Wagnis7ZukSummenaenderungen {
     NAECHSTE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Beginndatum der nächsten Beitragssumme.
+     * Beginndatum der naechsten Beitragssumme.
      * Sollten Tag und/oder Monat nicht vorhanden sein, muss "00" geschlüsselt werden Datum der nächsten Erlebensfall
      * VS
      * Tag/Monat/Jahr (TTMMJJJJ)
