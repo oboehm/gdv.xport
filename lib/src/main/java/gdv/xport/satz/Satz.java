@@ -510,19 +510,6 @@ public abstract class Satz implements Cloneable {
     }
 
     /**
-     * Liefert den Inhalt des gewuenschten Feldes.
-     *
-     * @param name gewuenschter Bezeichner des Feldes
-     * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
-     * @since 0.3
-     * @throws IllegalArgumentException falls es das Feld nicht gibt
-	 * @deprecated mit 2.0 durch {@link #getFeldInhalt(Bezeichner)} abgeloest
-     */
-    public final String getFeldInhalt(final String name) throws IllegalArgumentException {
-        return this.getFeld(name).getInhalt().trim();
-    }
-
-    /**
      * Liefert das gewuenschte Feld.
      *
      * @param bezeichner gewuenschter Bezeichner des Feldes

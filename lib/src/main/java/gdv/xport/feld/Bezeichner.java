@@ -1365,40 +1365,7 @@ public final class Bezeichner {
     public String toString() {
         return this.technischerName;
     }
-
-    /**
-     * Hierueber liefern wird die Konstante mit dem uebergebenen Text als
-     * Feld zurueck.
-     *
-     * @param bezeichnung Text der gesuchten Konstanten
-     * @return die entsprechende Konstante
-     * @since 1.0
-     * @deprecated seit 3.1 durch {@link #of(String)} abgeloest
-     */
-    public static Field getField(final String bezeichnung) {
-        Field[] fields = Bezeichner.class.getFields();
-        for (Field field : fields) {
-            try {
-                Object value = field.get(null);
-                if (value == null) {
-                    continue;
-                }
-                if (bezeichnung.equalsIgnoreCase(value.toString())) {
-                    return field;
-                }
-                if (value instanceof Bezeichner) {
-                    Bezeichner bez = (Bezeichner) value;
-                    if (bezeichnung.equalsIgnoreCase(bez.getName())) {
-                        return field;
-                    }
-                }
-            } catch (IllegalAccessException e) {
-                LOG.debug("Will ignore field {}:", field, e);
-            }
-        }
-        throw new IllegalArgumentException("no constant with text \"" + bezeichnung + "\" defined");
-    }
-
+    
     /**
      * Verwendet den uebergebenen Bezeichner, um den technischen Namen zu
      * aktualisieren.

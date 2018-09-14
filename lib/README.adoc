@@ -39,6 +39,8 @@ Damit hat man beim Umsteig auf v4 die Wahl:
 * man passt die umbenannten Eintraege in seinem Sourcecode an
 * man verabschiedet sich von der Enum-Klasse und greift ueber die Bezeichner-Klasse auf Satz-Felder zu (empfohlene Variante)
 
+Desweiteren wurden Methoden, die bereits in v3 als _deprecated_ markiert waren, entfernt.
+
 
 
 == Weitere Infos
