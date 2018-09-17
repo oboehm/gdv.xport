@@ -82,8 +82,7 @@ public class BezeichnerIT {
                         "ANZAHL_DER_AUSZAHLUNGEN",
                         "BE", "BUZ", "EINSCHLUSS_PROZENT_SATZ", "ERLEBENSFALL_VS", "ERSTELLUNGSDAT_ZEITRAUM",
                         "FALLENDE", "GES", "GUTHABEN_DIVID_ANSAMMLUNGEN_IN_WAEHRUNGSEINHEITEN", "INTRO",
-                        "JAHRESRENTENAENDERUNGS_PROZENTSATZ", "KARENZZEIT", "KENN", 
-                        "KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL", "KU_", 
+                        "JAHRESRENTENAENDERUNGS_PROZENTSATZ", "KARENZZEIT", "KENN", "KU_", 
                         "LAUFZEITVERKUERZUNG", "LEISTUNGSDAUER", "NAECHSTE", "ORDNUNGS_NUMMER_FUER_WAGNISZU",
                         "PRODUKTSPEZIFISCHE_ANTRAGSDATEN", "TEILDATENSATZNUMMER", "RENTE_INCL_UEBERSCHUSS",
                         "RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN", "SATZNUMMERNWIEDERHOLUNG",
@@ -121,6 +120,9 @@ public class BezeichnerIT {
         TECHNISCHE_NAMEN.add("AnzWohneinheiten");
         TECHNISCHE_NAMEN.add("BasisVersssummeInWE");
         TECHNISCHE_NAMEN.add("GarantierterSteigerungssatzBeiBU");
+        TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil1");
+        TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil2");
+        TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil3");
         TECHNISCHE_NAMEN.add("Risikozuschlag");
         TECHNISCHE_NAMEN.add("SteigerungssatzFuerBURente");
         TECHNISCHE_NAMEN.add("TechnischeWaiseProzImRahmenGesellschafterGesschaeftsfuehrerVers");

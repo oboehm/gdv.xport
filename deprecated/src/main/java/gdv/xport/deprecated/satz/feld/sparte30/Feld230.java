@@ -16,10 +16,14 @@
  * (c)reated 14.04.11 by oliver
  */
 
-package gdv.xport.satz.feld.sparte30;
+package gdv.xport.deprecated.satz.feld.sparte30;
 
-import gdv.xport.annotation.*;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -28,7 +32,10 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  *
  * @author Ralf
  * @since 20.02.2013
+ * @deprecated bitte gleichnamige Enum aus gdv.xport.satz.feld.sparte30
+ * 			   benutzen
  */
+@Deprecated
 public enum Feld230 {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////
@@ -144,7 +151,7 @@ public enum Feld230 {
             type = Betrag.class,
             anzahlBytes = 14,
             byteAdresse = 91)
-    LEISTUNG_IN_WE,
+    LEISTUNG,
 
     /**
      * Beitragssatz.

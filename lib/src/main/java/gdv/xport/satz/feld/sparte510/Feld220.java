@@ -330,7 +330,7 @@ public enum Feld220 {
     ABSCHLAG_IN_WAEHRUNGSEINHEITEN,
 
     /**
-     * Zusätzliche Texte.
+     * Zusaetzliche Texte.
      */
     @FeldInfo(
             teildatensatz = 1,

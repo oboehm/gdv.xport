@@ -1109,7 +1109,7 @@ public enum Feld100 {
     SEPA_MANDAT_BASIS_FIRMENLASTSCHRIFT,
 
     /**
-     * SEPA-Mandat Basis-/Firmenlastschrift.
+     * Datum SEPA.
      */
     @FeldInfo(
             teildatensatz = 5,
