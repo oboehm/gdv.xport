@@ -90,7 +90,18 @@ public final class LogConfig {
     }
 
     /**
-     * Zur Abrage der JDBC-URL.
+     * Diese Klasse liefert die letzte Instanz, die angelegt wurde. Darueber
+     * laesst sich z.B. die passende JDBC-URL zu statischen
+     * {@link #getConnection()}-Methode abfragen.
+     *
+     * @return z.B. "jdbc:hsqldb:mem:logdb"
+     */
+    public static LogConfig getLastInstance() {
+        return instance;
+    }
+
+    /**
+     * Zur Abfrage der JDBC-URL.
      *
      * @return z.B. "jdbc:hsqldb:mem:logdb"
      */

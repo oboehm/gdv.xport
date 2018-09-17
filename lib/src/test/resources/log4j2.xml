@@ -18,6 +18,7 @@
     <logger name="gdv.xport" level="INFO" />
     <logger name="gdv.xport.config" level="INFO" />
     <logger name="gdv.xport.satz" level="INFO" />
+    <logger name="gdv.xport.satz.Satz" level="WARN" />
     <logger name="gdv.xport.satz.TeildatensatzTest" level="WARN" />
     <logger name="gdv.xport.Datenpaket" level="INFO" />
     <logger name="gdv.xport.util" level="INFO" />

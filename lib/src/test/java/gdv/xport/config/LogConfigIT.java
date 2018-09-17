@@ -19,6 +19,7 @@ package gdv.xport.config;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
@@ -40,18 +41,18 @@ import static org.junit.Assert.assertTrue;
 public class LogConfigIT {
 
     private static final Logger LOG = LogManager.getLogger(LogConfigIT.class);
+    private static LogConfig lastLogConfig = LogConfig.getLastInstance();
     private static LogConfig logConfig;
 
     @ClassRule
-    public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer().withUsername("Oli B.").withPassword("******");
+    public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer().withUsername("sa").withPassword("");
     
     @BeforeClass
     public static void setUpLogConfig() {
         LOG.info("Setting up logConfig...");
         //URI jdbcURI = URI.create("jdbc:hsqldb:mem:logdb");
-        //logConfig = new LogConfig(jdbcURI, "sa", "");
         URI jdbcURI = URI.create(postgreSQLContainer.getJdbcUrl());
-        logConfig = new LogConfig(jdbcURI, postgreSQLContainer.getUsername(), postgreSQLContainer.getPassword());
+        logConfig = new LogConfig(jdbcURI, "sa", "");
         LOG.info("Setting up logConfig {} successful finished.", logConfig);
     }
     
@@ -84,6 +85,16 @@ public class LogConfigIT {
             assertTrue(rs.next());
             return rs.getInt(1);
         }
+    }
+
+    /**
+     * Hierueber setzen wir die Log-Konfiguration wieder auf den Stand vor dem
+     * Test zurueck. Ansonsten kann es passieren, dass die Log-Konfiguration
+     * noch auf die DB des gerade heruntergefahrenen Docker-Containers geht.
+     */
+    @AfterClass
+    public static void resetLogConfig() {
+        logConfig = new LogConfig(lastLogConfig.getDbURI());
     }
 
 }
