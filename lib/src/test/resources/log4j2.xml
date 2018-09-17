@@ -16,10 +16,14 @@
   </Appenders>
   <Loggers>
     <logger name="gdv.xport" level="INFO" />
-    <logger name="gdv.xport.config" level="DEBUG" />
+    <logger name="gdv.xport.config" level="INFO" />
     <logger name="gdv.xport.satz" level="INFO" />
+    <logger name="gdv.xport.satz.TeildatensatzTest" level="WARN" />
     <logger name="gdv.xport.Datenpaket" level="INFO" />
     <logger name="gdv.xport.util" level="INFO" />
+    <logger name="gdv.xport.util.AbstractFormatterTest" level="WARN" />
+    <logger name="gdv.xport.util.XmlFormatterTest" level="WARN" />
+    <logger name="patterntesting.runtime.junit" level="WARN" />
     <Root level="INFO" additivity="false">
       <AppenderRef ref="CONSOLE" />
       <AppenderRef ref="DB" level="INFO" />
