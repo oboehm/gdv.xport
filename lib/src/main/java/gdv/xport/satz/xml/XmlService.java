@@ -54,9 +54,9 @@ public class XmlService {
      */
     public static XmlService getInstance() {
         try {
-            return getInstance("VUVM2015.xml");
+            return getInstance("VUVM2018.xml");
         } catch (XMLStreamException ex) {
-            LOG.error("Cannot parse XML from resource 'VUVM2015.xml':", ex);
+            LOG.error("Cannot parse XML from resource 'VUVM2018.xml':", ex);
             return new XmlService();
         }
     }

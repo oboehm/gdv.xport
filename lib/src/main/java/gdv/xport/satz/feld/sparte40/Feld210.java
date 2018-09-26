@@ -8,10 +8,18 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 210, Sparte 40
  * (Vertragsspezifischer Teil, Haftpflicht).
+ * <p>
+ * Gegenueber der XML-Beschreibung "VUVM2018.xml" fehlt das letzte Feld
+ * "Erweiterter BerVersV-Schluessel".
+ * Von daher sollte die XML-Variante fuer die Instanziierung von
+ * Satz 210.040 herangezogen werden.
+ * </p>
  *
  * @author rklemmer
  * @since 20.02.2013
+ * @deprecated nicht mehr aktuell
  */
+@Deprecated
 public enum Feld210 {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////

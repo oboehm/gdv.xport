@@ -41,6 +41,9 @@ Damit hat man beim Umsteig auf v4 die Wahl:
 
 Desweiteren wurden Methoden, die bereits in v3 als _deprecated_ markiert waren, entfernt.
 
+Mit der Umstellung auf die aktuelle XML-Datei (VUVM2018.xml) wurde die Version von 2013 (VUVM2013.xml) ebenfalls nach 'gdv-xport-deprecated' verschoben.
+Die Vorgaengerversion (VUMVM2015.xml) hingegen ist noch in 'gdv-lib' enthalten.
+
 
 
 == Weitere Infos

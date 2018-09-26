@@ -25,10 +25,18 @@ import gdv.xport.satz.feld.common.*;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 210, Sparte 70.
+ * <p>
+ * Gegenueber der XML-Beschreibung "VUVM2018.xml" fehlt das letzte Feld
+ * "Erweiterter BerVersV-Schluessel".
+ * Von daher sollte die XML-Variante fuer die Instanziierung von
+ * Satz 210.070 herangezogen werden.
+ * </p>
  *
  * @author oliver
  * @since 05.04.11
+ * @deprecated nicht mehr aktuell
  */
+@Deprecated
 public enum Feld210 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////

@@ -27,10 +27,19 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 210, Sparte 10
  * (Vertragsspezifischer Teil, Leben).
+ * <p>
+ * Gegenueber der XML-Beschreibung "VUVM2018.xml" fehlen die im zweiten
+ * Teildatensatz die letzten beiden Felder ("Lebenslange Beitragszahlung"
+ * und "Summe der Zuzahlungen im aktuellen Jahr in Waehrungseinheiten").
+ * Von daher sollte die XML-Variante fuer die Instanziierung von
+ * Satz 210.010 herangezogen werden.
+ * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 23.03.2011
+ * @deprecated nicht mehr aktuell
  */
+@Deprecated
 public enum Feld210 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////

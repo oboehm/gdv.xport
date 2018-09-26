@@ -156,39 +156,6 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz210}, Sparte 10
-     * uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart210Sparte10() throws IOException {
-        checkSatzart(new SatzTyp(210, 10), new Satz210(10));
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz210}, Sparte 30
-     * uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart210Sparte30() throws IOException {
-        checkSatzart(new SatzTyp(210, 30), new Satz210(30));
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz210}, Sparte 40
-     * uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart210Sparte40() throws IOException {
-        checkSatzart(new SatzTyp(210, 40), new Satz210(40));
-    }
-
-    /**
      * Hier testen wir, ob die XML-Variante mit {@link Satz210}, Sparte 50
      * uebereinstimmt.
      *
@@ -197,28 +164,6 @@ public class XmlServiceTest extends AbstractXmlTest {
     @Test
     public void testSatzart210Sparte50() throws IOException {
         checkSatzart(new SatzTyp(210, 50), new Satz210(50));
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz210}, Sparte 70
-     * uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart210Sparte70() throws IOException {
-        checkSatzart(new SatzTyp(210, 70), new Satz210(70));
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz210}, Sparte 130
-     * uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart210Sparte130() throws IOException {
-        checkSatzart(new SatzTyp(210, 130), new Satz210(130));
     }
 
     /**

@@ -12,10 +12,18 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 210, Sparte 130.
  * "Verbundene Hausrat" (Satzart 0210)
+ * <p>
+ * Gegenueber der XML-Beschreibung "VUVM2018.xml" fehlt im 2. Teildatensatz
+ * das letzte Feld "Erweiterter BerVersV-Schluessel".
+ * Von daher sollte die XML-Variante fuer die Instanziierung von
+ * Satz 210.130 herangezogen werden.
+ * </p>
  *
  * @author David
  * @since 20.02.2013
+ * @deprecated nicht mehr aktuell
  */
+@Deprecated
 public enum Feld210 {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////

@@ -182,7 +182,7 @@ public final class Bezeichner {
     public static final Bezeichner BASISBEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Basisbeitrag in Währungseinheiten");
     public static final Bezeichner BASISJAHR = new Bezeichner("Basisjahr");
     public static final Bezeichner BASISVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Basiversicherungssumme in Waehrungseinheiten", "BasisVersssummeInWE");
-    public static final Bezeichner BAUARTKLASSE = new Bezeichner("Bauartklasse");
+    public static final Bezeichner BAUARTKLASSE = new Bezeichner("Bauartklasse", "BauartklasseN");
     public static final Bezeichner BAUPREISINDEX_WERTZUSCHLAG = new Bezeichner("Baupreisindex / Wertzuschlag", "BaupreisindexWertzuschlag");
     public static final Bezeichner BAUJAHR = new Bezeichner("Baujahr");
     public static final Bezeichner BAUSTEINSCHLUESSEL = new Bezeichner("Bausteinschluessel");
@@ -820,7 +820,9 @@ public final class Bezeichner {
     public static final Bezeichner RUECKGEWAEHRSUMME_ZUM_ABLAUF_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rueckgewaehrsumme zum Ablauf in Waehrungseinheiten");
     public static final Bezeichner RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rueckkaufswert zum Berechnungsstichtag in Waehrungseinheiten", "RueckkaufswertZumBerechnugsstichtagInWaehrungseinheiten");
     public static final Bezeichner RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN_MIT_NACHKOMMA = new Bezeichner("Rueckkaufswert in Waehrungseinheiten");
-    public static final Bezeichner RUECKKAUFSWERT_GUELTIG_AB = new Bezeichner("Rueckkaufswert gueltig ab");
+    public static final Bezeichner RUECKKAUFSWERT_GUELTIG_AM = new Bezeichner("Rueckkaufswert gueltig am");
+    /** @deprecated mit 2018 durch RUECKKAUFSWERT_GUELTIG_AM ersetzt. */
+    public static final Bezeichner RUECKKAUFSWERT_GUELTIG_AB = RUECKKAUFSWERT_GUELTIG_AM;
     public static final Bezeichner RUECKGEWAEHR_BEI_TOD = new Bezeichner("Rueckgewaehr bei Tod");
     public static final Bezeichner RUECKFUEHRUNGSKOSTEN = new Bezeichner("Rueckfuehrungskosten", "Rueckfuehrungskost");
     public static final Bezeichner RUECKGEWAEHRDAT = new Bezeichner("Rueckgewaehrdatum", "Rueckgewaehrdatum");

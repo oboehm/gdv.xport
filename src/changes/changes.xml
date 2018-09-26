@@ -19,6 +19,9 @@
 
     <release version="4.0.0-SNAPSHOT" date="2019"
              description="Aufr&#228;umarbeiten">
+      <action dev="oboehm" type="update" date="26-Sep-2018">
+        Aktualisierung auf die aktuelle XML-Version von 2018.
+      </action>
       <action dev="oboehm" type="add" date="12-Sep-2018">
         Modul gdv-xport-deprecated angelegt.
       </action>

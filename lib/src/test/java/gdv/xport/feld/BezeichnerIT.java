@@ -36,7 +36,7 @@ import static org.junit.Assert.fail;
 
 /**
  * Klasse BezeichnerIT ueberpreuft die Konstanten in der {@link Bezeichner}-
- * Klasse, ob der technische Name in "VUVM2013.xml" tatsaechlich existiert.
+ * Klasse, ob der technische Name in "VUVM2018.xml" tatsaechlich existiert.
  * Da der Test die komplette Bezeichner-Klasse durchscannt und mit der
  * 5MB-großen XML-Datei abgleicht, dauert er etwas laenger und ist daher als
  * Integrations-Test mit Suffix IT gekennzeichnet.
@@ -104,8 +104,8 @@ public class BezeichnerIT {
 
     /**
      * Hier werden die moeglichen technischen Namen aus der XML-Beschreibung
-     * ("VUVM2013.xml") ausgelesen und gesammelt. Ergaenzt wird die Liste um
-     * technische Namen, die manuell mit "VUVM2013.xml" abgeglichen wurden,
+     * ("VUVM2018.xml") ausgelesen und gesammelt. Ergaenzt wird die Liste um
+     * technische Namen, die manuell mit "VUVM2018.xml" abgeglichen wurden,
      * aber nicht ueber die Satzarten eingelesen wurden.
      */
     @BeforeClass
@@ -132,7 +132,7 @@ public class BezeichnerIT {
     /**
      * Dieser Test ueberprueft die technische Schreibweise eines Bezeichners.
      * Falls die technische Schreibweise richtig ist, muss sie auch in der
-     * XML-Beschreibung (VUVM2013.xml) vorkommen.
+     * XML-Beschreibung (VUVM2018.xml) vorkommen.
      */
     @Test
     public void testTechnischerName() {
