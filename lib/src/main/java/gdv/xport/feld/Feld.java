@@ -91,9 +91,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @param feldX der entsprechende Aufzaehlungstyp
      * @param info Annotation mit den Feldinformationen
      * @since 0.6
-     * @deprecated feldX wird ab hier nicht mehr verwendet
      */
-    @Deprecated
     public Feld(final Enum<?> feldX, final FeldInfo info) {
         this.bezeichner = Feld.getAsBezeichner(feldX);
         this.byteAdresse = info.byteAdresse();
@@ -292,7 +290,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     private Align getAlignmentFrom(final FeldInfo info) {
-        assert info.align() != null;
         if (info.align() == Align.UNKNOWN) {
             return this.getDefaultAlignment();
         }
