@@ -86,8 +86,7 @@ public class BezeichnerIT {
                         "LAUFZEITVERKUERZUNG", "LEISTUNGSDAUER", "NAECHSTE", "ORDNUNGS_NUMMER_FUER_WAGNISZU",
                         "PRODUKTSPEZIFISCHE_ANTRAGSDATEN", "TEILDATENSATZNUMMER", "RENTE_INCL_UEBERSCHUSS",
                         "RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN", "SATZNUMMERNWIEDERHOLUNG",
-                        "SONSTIGER_BEZUGSBERECHTIGTER_IM_", "SPARVORGANG", "TODESFALL", "UN", "VER",
-                        "ZUKUENFTIGER_BEITRAG", "ZWANG_ZUR_BUZ"};
+                        "SONSTIGER_BEZUGSBERECHTIGTER_IM_", "TODESFALL", "SPARVORGANG", "UN", "VER"};
         for (String prefix : prefixes) {
             if (field.getName().startsWith(prefix)) {
                 return true;
@@ -117,16 +116,14 @@ public class BezeichnerIT {
             }
         }
         TECHNISCHE_NAMEN.add("AbsoluteJahresrentenaenderungssummeInWE");
-        TECHNISCHE_NAMEN.add("AnzWohneinheiten");
-        TECHNISCHE_NAMEN.add("BasisVersssummeInWE");
         TECHNISCHE_NAMEN.add("GarantierterSteigerungssatzBeiBU");
         TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil1");
         TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil2");
         TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil3");
         TECHNISCHE_NAMEN.add("Risikozuschlag");
         TECHNISCHE_NAMEN.add("SteigerungssatzFuerBURente");
-        TECHNISCHE_NAMEN.add("TechnischeWaiseProzImRahmenGesellschafterGesschaeftsfuehrerVers");
-        TECHNISCHE_NAMEN.add("TechnischeWitweWitwerProzImRahmenGesellschafterGesschaeftsfuehrerVers");
+        TECHNISCHE_NAMEN.add("ZukuenftigerBeitrag");
+        TECHNISCHE_NAMEN.add("ZwangZurBuz");
     }
 
     /**

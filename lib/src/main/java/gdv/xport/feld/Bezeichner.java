@@ -979,7 +979,8 @@ public final class Bezeichner {
     public static final Bezeichner TODESFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Todesfall VS in W\u00e4hrungseinheiten");
     public static final Bezeichner TODESFALLAENDERUNGS_PROZENTSATZ = new Bezeichner("Todesfallaenderungs-Prozentsatz");
     public static final Bezeichner TODESFALLLEISTUNG_IN_PROZENT = new Bezeichner("Todesfall-Leistung in %", "TodesfallLeistungInProz");
-    public static final Bezeichner TODESFALLLEISTUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Todesfallleistung in W\u00e4hrungseinheiten");
+    public static final Bezeichner TODESFALLLEISTUNG_IN_WAEHRUNGSEINHEITEN =
+            new Bezeichner("Todesfallleistung in W\u00e4hrungseinheiten", "TodesfallleistungInWaehrungseinheiten");
     public static final Bezeichner TRAEGERUNTERNEHMEN_NAME = new Bezeichner("Traegerunternehmen Name");
     public static final Bezeichner TRAEGERUNTERNEHMEN_SCHLUESSEL = new Bezeichner("Traegerunternehmen Schl\u00fcssel");
     public static final Bezeichner TYPKLASSE = new Bezeichner("Typklasse");
