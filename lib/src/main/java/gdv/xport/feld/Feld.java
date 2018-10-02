@@ -114,22 +114,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            the alignment
      */
     public Feld(final String name, final String s, final Align alignment) {
-        this(name, 1, s, alignment);
-    }
-
-    /**
-     * Instantiates a new feld.
-     *
-     * @param name the name
-     * @param start Start-Adresse
-     * @param s der Inhalt
-     * @param alignment the alignment
-     * @deprecated bitte {@link Feld#Feld(Bezeichner, int, String, Align)}
-     *             verwenden
-     */
-    @Deprecated
-    public Feld(final String name, final int start, final String s, final Align alignment) {
-        this(new Bezeichner(name), start, s, alignment);
+        this(new Bezeichner(name), 1, s, alignment);
     }
 
     /**

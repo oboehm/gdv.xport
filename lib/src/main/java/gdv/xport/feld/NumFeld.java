@@ -112,7 +112,7 @@ public class NumFeld extends Feld {
      * @param value z.B. "01"
      */
     public NumFeld(final String name, final int start, final String value) {
-        super(name, start, value, Align.RIGHT);
+        super(new Bezeichner(name), start, value, Align.RIGHT);
         this.nachkommastellen = 0;
         this.setInhalt(value);
     }
