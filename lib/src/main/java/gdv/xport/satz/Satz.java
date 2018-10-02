@@ -303,7 +303,7 @@ public abstract class Satz implements Cloneable {
 	 * @param value neuer Inhalt
 	 */
 	public final void set(final Enum<?> feldX, final String value) {
-		String name = Feld.getAsBezeichnung(feldX);
+		Bezeichner name = Feld.getAsBezeichner(feldX);
 		this.set(name, value);
 	}
 
@@ -364,7 +364,7 @@ public abstract class Satz implements Cloneable {
 	 * @return Inhalt des gefundenden Felds
 	 */
 	public final String get(final Enum<?> feldX) {
-		String name = Feld.getAsBezeichnung(feldX);
+		Bezeichner name = Feld.getAsBezeichner(feldX);
 		return this.get(name);
 	}
 

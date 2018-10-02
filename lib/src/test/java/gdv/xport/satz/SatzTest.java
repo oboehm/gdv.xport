@@ -107,8 +107,20 @@ public final class SatzTest extends AbstractSatzTest {
      * wurde.
      */
     @Test(expected = IllegalArgumentException.class)
-    public void testSet() {
+    public void testSetUndefined() {
         satz.set("gibtsnet", "plopp");
+    }
+
+    /**
+     * Bei der Umstellung auf "VUVM2018.xml" ist aufgefallen, dass nach der
+     * Korrektur der Feldzugriffe die Folgenummer nicht mehr erkannt wurde.
+     * Mit diesem Test wurde der Folgefehler reproduziert und korrigiert.
+     */
+    @Test
+    public void testSetEnum() {
+        Satz satz100 = SatzFactory.getSatz(100);
+        satz100.set(Feld1bis7.FOLGENUMMER, "13");
+        assertEquals("13", satz100.get(Feld1bis7.FOLGENUMMER));
     }
 
     /**

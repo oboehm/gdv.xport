@@ -66,7 +66,7 @@ public final class SatzFactory {
     static {
         register(Vorsatz.class, 1);
         // Satz100 und Satz200 werden jetzt vom XmlService behandelt
-        register(Satz210.class, 210);
+        //register(Satz210.class, 210);
         register(Satz211.class, 211);
         register(Satz220.class, 220);
         register(Satz221.class, 221);

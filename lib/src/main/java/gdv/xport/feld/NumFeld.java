@@ -148,9 +148,25 @@ public class NumFeld extends Feld {
      * @param value der Inhalt (z.B. "314")
      * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
      * @since 0.4
+     * @deprecated bitte {@link NumFeld#NumFeld(Bezeichner, int, String, int)} 
+     *             verwenden
      */
+    @Deprecated
     public NumFeld(final String name, final int start, final String value,
             final int nachkommastellen) {
+        this(new Bezeichner(name), start, value, nachkommastellen);
+    }
+
+    /**
+     * Instantiiert ein neues numerisches Feld.
+     *
+     * @param name Feld-Bezeichner (z.B. "pi")
+     * @param start Start-Byte (beginnend ab 1)
+     * @param value der Inhalt (z.B. "314")
+     * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
+     * @since 4.0
+     */
+    public NumFeld(final Bezeichner name, final int start, final String value, final int nachkommastellen) {
         super(name, start, value, Align.RIGHT);
         this.nachkommastellen = nachkommastellen;
         this.setInhalt(value);
@@ -206,9 +222,7 @@ public class NumFeld extends Feld {
             throw new IllegalArgumentException(n + " Nachkommastellen sind zuviel (max. "
                     + this.getAnzahlBytes() + " moeglich)");
         }
-        return new NumFeld(this.getBezeichnung(), this.getByteAdresse(),
-                this.getInhalt(), n);
-
+        return new NumFeld(this.getBezeichner(), this.getByteAdresse(), this.getInhalt(), n);
     }
 
     /**

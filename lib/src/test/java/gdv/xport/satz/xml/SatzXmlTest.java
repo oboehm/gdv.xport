@@ -18,9 +18,6 @@
 
 package gdv.xport.satz.xml;
 
-import static gdv.xport.satz.xml.AbstractXmlTest.createXMLEventReader;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
@@ -30,22 +27,23 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.util.SatzTyp;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import patterntesting.runtime.junit.ObjectTester;
+import patterntesting.runtime.junit.SmokeRunner;
 
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLStreamException;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import patterntesting.runtime.junit.ObjectTester;
-import patterntesting.runtime.junit.SmokeRunner;
+import static gdv.xport.satz.xml.AbstractXmlTest.createXMLEventReader;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Unit tests for {@link SatzXml} class.
@@ -168,7 +166,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         assertEquals(5, feld.getAnzahlBytes());
         assertEquals(5, feld.getByteAdresse());
         assertEquals(feld, tds.getFeld(2));
-        assertEquals(tds.getFeld("Folgenummer"), tds.getFeld(6));
+        assertEquals(tds.getFeld(Bezeichner.FOLGENUMMER), tds.getFeld(6));
     }
 
     private static void checkSatzart(final Satz satz) {
@@ -266,6 +264,18 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         SatzXml sparte50 = getSatz("Satz0212.050.xml");
         assertEquals(212, sparte50.getSatzart());
         assertEquals(50, sparte50.getSparte());
+    }
+
+    /**
+     * Bei Satz 210 fehlte die anfaengliche Satznummer.
+     *
+     * @throws XMLStreamException the XML stream exception
+     */
+    @Test
+    public void testSatz210() throws XMLStreamException {
+        SatzXml satz210 = getSatz("Satz0210.xml");
+        assertNotNull(satz210.getFeld(Bezeichner.ERWEITERTER_BERVERSV_SCHLUESSEL));
+        assertNotNull(satz210.getFeld(Bezeichner.SATZ_NR_1));
     }
 
     /**

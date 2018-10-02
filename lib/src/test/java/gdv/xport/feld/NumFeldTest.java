@@ -210,4 +210,18 @@ public final class NumFeldTest extends AbstractFeldTest {
         assertEquals(123456789012.0, value, 0.0);
     }
 
+    /**
+     * Beim Umstieg auf die aktuelle XML-Version von 2018 fiel auf, dass beim
+     * Setzen der Nachkommastellen sich der Bezeichner in manchen Situationen
+     * aenderte. Mit diesem Test wurde das Verhalten nachgestellt und behoben.
+     */
+    @Test
+    public void testMitNachkommastellen() {
+        Bezeichner bezeichner = new Bezeichner("Satznummer", "SatzNr1");
+        NumFeld satznr = new NumFeld(bezeichner, 1, 43, 0);
+        NumFeld satznrOhneNachkommastalle = satznr.mitNachkommastellen(0);
+        assertEquals(satznr, satznrOhneNachkommastalle);
+        assertEquals(bezeichner, satznrOhneNachkommastalle.getBezeichner());
+    }
+
 }

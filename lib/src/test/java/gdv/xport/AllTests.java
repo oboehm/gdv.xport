@@ -21,7 +21,6 @@ package gdv.xport;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
 
-import gdv.xport.config.ConfigTests;
 import gdv.xport.demo.DemoTests;
 import gdv.xport.feld.FeldTests;
 import gdv.xport.io.IoTests;
@@ -40,7 +39,7 @@ import patterntesting.runtime.junit.SmokeSuite;
  * @since 0.7 (11.01.2012)
  */
 @RunWith(SmokeSuite.class)
-@SuiteClasses({ ConfigTests.class, DemoTests.class, FeldTests.class, SpartenTests.class, IoTests.class, SatzTests.class, UtilTests.class,
+@SuiteClasses({ DemoTests.class, FeldTests.class, SpartenTests.class, IoTests.class, SatzTests.class, UtilTests.class,
         BasisTest.class, DatenpaketStreamerTest.class, DatenpaketTest.class, MainTest.class })
 public class AllTests {
 

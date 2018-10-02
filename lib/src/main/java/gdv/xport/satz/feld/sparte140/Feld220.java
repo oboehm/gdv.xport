@@ -418,7 +418,7 @@ public enum Feld220 {
             type = NumFeld.class,
             anzahlBytes = 3,
             byteAdresse = 91)
-    ART_DER_SUMME,
+    ART_DER_SUMME_3N,
     
     /**
      * Basisjahr

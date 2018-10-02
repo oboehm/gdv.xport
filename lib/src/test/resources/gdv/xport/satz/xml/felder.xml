@@ -3,7 +3,8 @@
 	Dieser Ausschnitt mit <felder>...</felder> aus der Datei "VUVM2013_010713.xml" 
 	entnommen, da diese Datei fuer erste Experimente etwas zu unhandlich (ca. 7 MB) ist.
 	Der Ausschnitt beinhalt einen Teil der Daten fuer den Teildatensatz 1 von Satz 100
-	(Adressteil), der dann fuer weitere Tests nach und nach ergaenzt wurde.
+	(Adressteil), der dann fuer weitere Tests nach und nach ergaenzt wurde (z.B. mit
+	neuen feld-Elementen aus "VUVM2018.xml").
 	(12-Nov-2014, Oli B.)
 -->
 
@@ -5722,6 +5723,2698 @@
 						<gruppe />
 					</eintrag>
 				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<!-- aus VUVM2018.xml -->
+		<feld referenz="BN-2003.02.11.22.50.02.616">
+			<name>Erweiterter BerVersV-Schlüssel</name>
+			<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+			<letzteAenderung>12.07.2018 10:06:28</letzteAenderung>
+			<minimaleLaenge>5</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name>Erweiterter BerVersV-Schlüssel </name>
+				<aenderungsart combobox="aenderungsartbox">versionsrelevante Änderung</aenderungsart>
+				<letzteAenderung>12.07.2018 10:06:28</letzteAenderung>
+				<technischerName>ErweiterterBerVersVSchluessel</technischerName>
+				<bemerkung>
+					Die in der Beschreibung angegebenen Kennzahlen richten sich nach der Anlage 1 (zu $23) der Versicherungsberichterstattungs-Verordnung - BerVersV der BaFin.
+					<br />
+					<br />
+					Die Fußnoten 1-9 entsprechen der Anmerkungen zum Abschnitt C der gleichen Anlage.
+				</bemerkung>
+				<anlagennummer>100</anlagennummer>
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle>
+					<eintrag>
+						<wert>01000</wert>
+						<beschreibung>Vz: Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:16:44</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01100</wert>
+						<beschreibung>Einzelversicherung mit Überschussbeteiligung, bei der das Anlagerisiko vom Versicherungsunternehmen getragen wird (ohne Zusatzversicherungen)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:16:50</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01101</wert>
+						<beschreibung>Kapitalbildende Lebensversicherung mit überwiegendem Todesfallcharakter (einschließlich vermögensbildender Lebensversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:38:41</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01102</wert>
+						<beschreibung>Risikoversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:38:50</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01103</wert>
+						<beschreibung>Kapitalbildende Lebensversicherung mit überwiegendem Erlebensfallcharakter</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:38:54</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01104</wert>
+						<beschreibung>Berufsunfähigkeits-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:38:56</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01105</wert>
+						<beschreibung>Pflegerentenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:39:00</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01106</wert>
+						<beschreibung>übrige und nicht aufgegliederte Einzelversicherung (einschließlich der Heirats- und Geburtenversicherung), aber ohne Sonstige Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:39:03</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01107</wert>
+						<beschreibung>Kapitalbildende Lebensversicherung mit überwiegendem Erlebensfallcharakter nach § 1 AltZertG</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:39:07</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01200</wert>
+						<beschreibung>Kollektivversicherung mit Überschussbeteiligung, bei der das Anlagerisiko vom Versicherungsunternehmen getragen wird (ohne Zusatzversicherungen)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:16:54</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01201</wert>
+						<beschreibung>Kapitalversicherung mit überwiegendem Todesfallcharakter (ohne Kennzahlen 01.2.2 und 01.2.3)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:41:53</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01202</wert>
+						<beschreibung>Bausparrisikoversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:42:02</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01203</wert>
+						<beschreibung>Restschuldversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:39:49</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01204</wert>
+						<beschreibung>übrige und nicht aufgegliederte Kollektivversicherung (einschließlich der Heirats- und Geburtenversicherung), aber ohne Sonstige Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:39:59</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01205</wert>
+						<beschreibung>Kapitalbildende Lebensversicherung mit überwiegendem Erlebensfallcharakter nach § 1 AltZertG</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:40:05</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01206</wert>
+						<beschreibung>Reine Beitragszusagen nach § 1 Absatz 2 Nummer 2a BetrAVG</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:40:11</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01300</wert>
+						<beschreibung>Zusatzversicherung (zu Einzel- und Kollektivversicherungen)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:17:58</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01301</wert>
+						<beschreibung>Unfall-Zusatzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:42:47</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01302</wert>
+						<beschreibung>Berufsunfähigkeits-, Invaliditäts-Zusatzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:42:57</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01303</wert>
+						<beschreibung>Risiko- und Zeitrenten-Zusatzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:43:10</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01304</wert>
+						<beschreibung>Pflegerenten-Zusatzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:43:19</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01305</wert>
+						<beschreibung>Sonstige Zusatzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:43:25</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01400</wert>
+						<beschreibung>Sonstige Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:18:07</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01401</wert>
+						<beschreibung>Lebensversicherung, bei der das Anlagerisiko vom Versicherungsnehmer getragen wird</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:44:43</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01402</wert>
+						<beschreibung>Lebensversicherung ohne Überschussbeteiligung, bei der das Anlagerisiko vom Versicherungsunternehmen getragen wird</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:45:22</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01403</wert>
+						<beschreibung>Tontinengeschäfte</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:45:26</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01404</wert>
+						<beschreibung>Kapitalisierungsgeschäfte</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:45:31</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01405</wert>
+						<beschreibung>Lebensversicherung nach § 1 AltZertG, bei der das Anlagerisiko vom Versicherungsnehmer getragen wird</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:45:38</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>01500</wert>
+						<beschreibung>Geschäfte der Verwaltung von Versorgungseinrichtungen</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:45:55</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02000</wert>
+						<beschreibung>Vz: Krankenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:18:14</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02100</wert>
+						<beschreibung>Einzel-Krankheitskostenvollversicherung (ambulant und stationär)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:18:38</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02101</wert>
+						<beschreibung>Einzel-Krankheitskostenvollversicherung (ambulant und stationär), substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:51:43</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02102</wert>
+						<beschreibung>Einzel-Krankheitskostenvollversicherung (ambulant und stationär), nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:52:07</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02103</wert>
+						<beschreibung>Einzel-Krankheitskostenvollversicherung (ambulant und stationär) nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:52:22</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02200</wert>
+						<beschreibung>selbständige Einzel-Krankheitskostenversicherung (ambulant)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:18:43</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02201</wert>
+						<beschreibung>selbständige Einzel-Krankheitskostenversicherung (ambulant), substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:52:35</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02202</wert>
+						<beschreibung>selbständige Einzel-Krankheitskostenversicherung (ambulant), nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:52:39</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02203</wert>
+						<beschreibung>selbständige Einzel-Krankheitskostenversicherung (ambulant) nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:52:50</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02300</wert>
+						<beschreibung>selbständige Einzel-Krankheitskostenversicherung (stationär)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:18:46</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02301</wert>
+						<beschreibung>selbständige Einzel-Krankheitskostenversicherung (stationär), substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:53:14</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02302</wert>
+						<beschreibung>selbständige Einzel-Krankheitskostenversicherung (stationär), nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:53:27</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02303</wert>
+						<beschreibung>selbständige Einzel-Krankheitskostenversicherung (stationär) nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:54:05</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02400</wert>
+						<beschreibung>Einzel-Krankentagegeldversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:18:49</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02401</wert>
+						<beschreibung>Krankentagegeldversicherung (ohne Kennzahlen 02.4.4 und 02.4.5), substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:57:31</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02402</wert>
+						<beschreibung>Krankentagegeldversicherung (ohne Kennzahlen 02.4.4 und 02.4.5), nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:57:35</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02403</wert>
+						<beschreibung>Krankentagegeldversicherung (ohne Kennzahlen 02.4.4 und 02.4.5) nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:57:45</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02404</wert>
+						<beschreibung>Lohnfortzahlungsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:57:50</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02405</wert>
+						<beschreibung>Restschuldversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:57:57</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02500</wert>
+						<beschreibung>selbständige Einzel-Krankenhaustagegeldversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:58:05</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02501</wert>
+						<beschreibung>selbständige Einzel-Krankenhaustagegeldversicherung, substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:58:23</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02503</wert>
+						<beschreibung>selbständige Einzel-Krankenhaustagegeldversicherung nach Art der Schadenversicherung </beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:59:28</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02520</wert>
+						<beschreibung>selbständige Einzel-Krankenhaustagegeldversicherung, nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:58:49</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02600</wert>
+						<beschreibung>sonstige selbständige Einzel-Teilversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:18:52</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02601</wert>
+						<beschreibung>selbständige Zahnbehandlungsversicherung, substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:00:03</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02602</wert>
+						<beschreibung>selbständige Zahnbehandlungsversicherung, nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:00:08</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02603</wert>
+						<beschreibung>selbständige Zahnbehandlungsversicherung nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:00:13</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02604</wert>
+						<beschreibung>Kurkostenversicherung (einschließlich der Kurtagegeldversicherung), substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:00:20</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02605</wert>
+						<beschreibung>Kurkostenversicherung (einschließlich der Kurtagegeldversicherung), nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:00:25</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02606</wert>
+						<beschreibung>Kurkostenversicherung (einschließlich der Kurtagegeldversicherung) nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:00:28</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02607</wert>
+						<beschreibung>Reisekrankenversicherung (gegen festes Entgelt)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:00:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02608</wert>
+						<beschreibung>sonstige Teilversicherung, substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:00:39</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02609</wert>
+						<beschreibung>sonstige Teilversicherung, nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:00:47</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02610</wert>
+						<beschreibung>sonstige Teilversicherung nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02700</wert>
+						<beschreibung>Gruppen-Krankenversicherung (nach Einzel- und Sondertarifen)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:18:55</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02701</wert>
+						<beschreibung>Gruppen-Krankheitskostenvollversicherung (ambulant und stationär), substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:00:52</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02710</wert>
+						<beschreibung>Gruppen-Krankentagegeldversicherung, substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:57:20</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02702</wert>
+						<beschreibung>Gruppen-Krankheitskostenvollversicherung (ambulant und stationär), nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:01:00</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02703</wert>
+						<beschreibung>Gruppen-Krankheitskostenvollversicherung (ambulant und stationär) nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:01:04</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02704</wert>
+						<beschreibung>selbständige Gruppen-Krankheitskostenversicherung (ambulant), substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:01:10</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02705</wert>
+						<beschreibung>selbständige Gruppen-Krankheitskostenversicherung (ambulant), nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:01:15</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02706</wert>
+						<beschreibung>selbständige Gruppen-Krankheitskostenversicherung (ambulant) nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:01:20</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02707</wert>
+						<beschreibung>selbständige Gruppen-Krankheitskostenversicherung (stationär), substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:01:25</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02708</wert>
+						<beschreibung>selbständige Gruppen-Krankheitskostenversicherung (stationär), nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:01:30</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02709</wert>
+						<beschreibung>selbständige Gruppen-Krankheitskostenversicherung (stationär) nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:01:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02711</wert>
+						<beschreibung>Gruppen-Krankentagegeldversicherung, nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02712</wert>
+						<beschreibung>Gruppen-Krankentagegeldversicherung nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02713</wert>
+						<beschreibung>selbständige Gruppen-Krankenhaustagegeldversicherung, substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02714</wert>
+						<beschreibung>selbständige Gruppen-Krankenhaustagegeldversicherung, nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02715</wert>
+						<beschreibung>selbständige Gruppen-Krankenhaustagegeldversicherung nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02716</wert>
+						<beschreibung>sonstige selbständige Gruppenteilversicherung, substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02717</wert>
+						<beschreibung>sonstige selbständige Gruppenteilversicherung, nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02718</wert>
+						<beschreibung>sonstige selbständige Gruppenteilversicherung nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02719</wert>
+						<beschreibung>Gruppen-Pflegepflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02720</wert>
+						<beschreibung>freiwillige Gruppen-Pflegekostenversicherung, substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02721</wert>
+						<beschreibung>freiwillige Gruppen-Pflegekostenversicherung, nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02722</wert>
+						<beschreibung>freiwillige Gruppen-Pflegekostenversicherung nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02723</wert>
+						<beschreibung>freiwillige Gruppen-Pflegetagegeldversicherung, substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02724</wert>
+						<beschreibung>freiwillige Gruppen-Pflegetagegeldversicherung, nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02725</wert>
+						<beschreibung>freiwillige Gruppen-Pflegetagegeldversicherung nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02800</wert>
+						<beschreibung>Pflegekrankenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:18:58</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02801</wert>
+						<beschreibung>Pflegepflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:02:52</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02802</wert>
+						<beschreibung>freiwillige Pflegekostenversicherung, substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:02:59</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02803</wert>
+						<beschreibung>freiwillige Pflegekostenversicherung, nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:03:03</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02804</wert>
+						<beschreibung>freiwillige Pflegekostenversicherung nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:03:07</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02805</wert>
+						<beschreibung>freiwillige Pflegetagegeldversicherung, substitutiv</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:03:21</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02806</wert>
+						<beschreibung>freiwillige Pflegetagegeldversicherung, nicht substitutiv nach Art der Lebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:03:26</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02807</wert>
+						<beschreibung>freiwillige Pflegetagegeldversicherung nach Art der Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:03:29</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>02900</wert>
+						<beschreibung>übrige und nicht aufgegliederte Krankenversicherung (einschließlich der Beihilfeablöseversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:26:43</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03000</wert>
+						<beschreibung>Vz: Unfallversicherung </beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:27:10</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03100</wert>
+						<beschreibung>Einzelunfallversicherung ohne Beitragsrückgewähr</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:27:27</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03101</wert>
+						<beschreibung>Unfallvollversicherung (ohne Kennzahlen 03.1.02 und 03.1.03)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03102</wert>
+						<beschreibung>Volks-Unfallvollversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03103</wert>
+						<beschreibung>Unfallvollversicherung aus der FUSt-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03104</wert>
+						<beschreibung>Versicherung gegen außerberufliche Unfälle</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03105</wert>
+						<beschreibung>Reiseunfallversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03106</wert>
+						<beschreibung>Sportunfallversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03107</wert>
+						<beschreibung>Luftfahrtunfallversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03108</wert>
+						<beschreibung>lebenslängliche Verkehrsmittelunfallversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03109</wert>
+						<beschreibung>Sportbootinsassenunfallversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03199</wert>
+						<beschreibung>übrige und nicht aufgegliederte Einzelunfallversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03200</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:27:32</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03300</wert>
+						<beschreibung>Gruppen-Unfallversicherung ohne Beitragsrückgewähr</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:28:03</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03301</wert>
+						<beschreibung>Gruppen-Unfallvollversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:05:51</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03302</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:05:55</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03303</wert>
+						<beschreibung>Gruppen-Unfallteilversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:06:00</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03400</wert>
+						<beschreibung>Probandenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:28:06</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03500</wert>
+						<beschreibung>Kraftfahrtunfallversicherung (einschließlich der namentlichen Kraftfahrtunfallversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:28:12</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03800</wert>
+						<beschreibung>Unfallversicherung mit Beitragsrückgewähr</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:28:17</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03801</wert>
+						<beschreibung>Einzel-Unfallversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:06:19</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03802</wert>
+						<beschreibung>Gruppen-Unfallversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:06:27</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>03900</wert>
+						<beschreibung>übrige und nicht aufgegliederte Allgemeine Unfallversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:28:20</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04000</wert>
+						<beschreibung>Vz: Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:28:24</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04100</wert>
+						<beschreibung>Privathaftpflichtversicherung (einschließlich Sportboot- und Hundehalter-Haftpflichtversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:28:50</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04200</wert>
+						<beschreibung>Betriebs- und Berufshaftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:35:24</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04201</wert>
+						<beschreibung>Industrie- und Handelsbetriebe</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:06:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04202</wert>
+						<beschreibung>Baugewerbe (einschließlich Architekten und Bauingenieure)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:06:43</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04203</wert>
+						<beschreibung>sonstige Betriebs- und Berufshaftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:06:47</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04300</wert>
+						<beschreibung>Umwelt-Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:35:28</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04301</wert>
+						<beschreibung>Gewässerschaden-Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:06:55</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04302</wert>
+						<beschreibung>Umwelthaftpflicht-Modell</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:06:59</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04400</wert>
+						<beschreibung>Vermögensschaden-Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:35:31</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04500</wert>
+						<beschreibung>Verkehrshaftungsversicherung (einschließlich der Speditions- und Rollfuhrversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:35:38</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04600</wert>
+						<beschreibung>Strahlen- und Atomanlagen-Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:35:42</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04601</wert>
+						<beschreibung>Strahlen-Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:07:06</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04602</wert>
+						<beschreibung>Atomanlagen-Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:07:10</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04700</wert>
+						<beschreibung>Feuerhaftungsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:35:45</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04800</wert>
+						<beschreibung>See, Binnensee- und Flussschifffahrtshaftpflichtversicherung (ohne Kollisionshaftpflichtrisiko) sowie Haftpflichtversicherung für nicht versicherungspflichtige Landfahrzeuge)1</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:35:48</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04801</wert>
+						<beschreibung>Haftpflichtversicherung für nicht versicherungspflichtige Landfahrzeuge mit eigenem Antrieb</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:07:26</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04802</wert>
+						<beschreibung>Haftpflichtversicherung für nicht versicherungspflichtige Landfahrzeuge ohne eigenen Antrieb</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:07:31</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04803</wert>
+						<beschreibung>See-, Binnensee- und Flussschifffahrtshaftpflichtversicherung (ohne Kollisionshaftpflichtrisiko)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:07:40</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04900</wert>
+						<beschreibung>übrige und nicht aufgegliederte Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:07:45</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04901</wert>
+						<beschreibung>Haus- und Grundbesitzerhaftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>21.06.2018 11:15:41</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04902</wert>
+						<beschreibung>Kraftfahrzeug-Parkplatzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>21.06.2018 11:15:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04903</wert>
+						<beschreibung>Kühlgüterhaftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>21.06.2018 11:15:43</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>04999</wert>
+						<beschreibung>sonstige Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>21.06.2018 11:15:44</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>05000</wert>
+						<beschreibung>Vz: Kraftfahrtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:35:51</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>05100</wert>
+						<beschreibung>Kraftfahrzeug-Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:35:54</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>05200</wert>
+						<beschreibung>Fahrzeugvollversicherung2</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:35:59</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>05300</wert>
+						<beschreibung>Fahrzeugteilversicherung2</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:36:07</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>05400</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:36:11</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>05500</wert>
+						<beschreibung>Sonstige Kraftfahrtversicherung (05.2 und 05.3 insgesamt)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:36:24</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>05900</wert>
+						<beschreibung>übrige und nicht aufgegliederte Kraftfahrtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:36:31</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>06000</wert>
+						<beschreibung>Vz: Luftfahrtversicherung (einschließlich der Raumfahrtversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:36:35</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>06100</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:36:39</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>06200</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:36:42</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>06300</wert>
+						<beschreibung>Luftfahrzeug-Kaskoversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:36:44</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>06400</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe>06. Mai</gruppe>
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:36:47</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>06500</wert>
+						<beschreibung>Raumfahrzeug-Kaskoversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:36:50</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>06501</wert>
+						<beschreibung>Pre-Launch-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:07:55</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>06502</wert>
+						<beschreibung>Launch-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:07:59</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>06503</wert>
+						<beschreibung>In-Orbit-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:08:03</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>06900</wert>
+						<beschreibung>übrige und nicht aufgegliederte Luftfahrtversicherung (einschließlich der Raumfahrtversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:36:55</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07000</wert>
+						<beschreibung>Vz: Rechtsschutzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:03</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07100</wert>
+						<beschreibung>Rechtsschutzversicherung nach ARB</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:07</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07101</wert>
+						<beschreibung>Verkehrs-Rechtsschutzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:08:15</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07102</wert>
+						<beschreibung>Fahrzeug-Rechtsschutzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:08:19</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07103</wert>
+						<beschreibung>Fahrer-Rechtsschutzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:08:23</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07104</wert>
+						<beschreibung>Rechtsschutzversicherung für Gewerbetreibende und freiberuflich Tätige</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:08:27</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07105</wert>
+						<beschreibung>Familien-Rechtsschutzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:08:31</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07106</wert>
+						<beschreibung>Familien- und Verkehrs-Rechtsschutzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:08:36</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07107</wert>
+						<beschreibung>Landwirtschafts- und Verkehrs-Rechtsschutzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:08:38</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07108</wert>
+						<beschreibung>Rechtsschutzversicherung für Vereine</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:08:41</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07109</wert>
+						<beschreibung>Rechtsschutzversicherung für Grundstückseigentum und Miete</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:08:44</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07200</wert>
+						<beschreibung>Vermögensschaden-Rechtsschutzversicherung für Aufsichtsräte, Beiräte, Vorstände (VRB)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:10</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07300</wert>
+						<beschreibung>Rechtsschutzversicherung für die Träger öffentlicher Aufgaben (ÖRB)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:15</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07400</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:19</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07500</wert>
+						<beschreibung>Kraftfahrt-Strafrechtsschutzversicherung mit Auslands-Zivilrechtsschutzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:21</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07600</wert>
+						<beschreibung>Spezial-Strafrechtsschutzversicherung für Unternehmen</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:23</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>07900</wert>
+						<beschreibung>übrige und nicht aufgegliederte Rechtsschutzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:26</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>08000</wert>
+						<beschreibung>Vz: Feuerversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:34</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>08100</wert>
+						<beschreibung>Feuer-Industrie-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:39</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>08200</wert>
+						<beschreibung>landwirtschaftliche Feuerversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:55</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>08300</wert>
+						<beschreibung>sonstige Feuerversicherung (einschließlich der Waldbrandversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:37:58</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>09000</wert>
+						<beschreibung>Vz: Einbruchdiebstahl und Raub (ED)-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:38:00</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>10000</wert>
+						<beschreibung>Vz: Leitungswasser (Lw)-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:39:52</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>11000</wert>
+						<beschreibung>Vz: Glasversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:40:02</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>12000</wert>
+						<beschreibung>Vz: Sturmversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:40:08</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>12100</wert>
+						<beschreibung>Sturmversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:40:25</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>12300</wert>
+						<beschreibung>Gärtnerei-Sturmversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:40:53</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>12400</wert>
+						<beschreibung>Versicherung weiterer Elementarschäden bei gewerblichen Risiken</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:41:03</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>13000</wert>
+						<beschreibung>Vz: Verbundene Hausratversicherung3</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:41:19</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>13100</wert>
+						<beschreibung>Verbundene Hausratversicherung ohne Einschluss weiterer Elementarschäden</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:41:26</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>13200</wert>
+						<beschreibung>Verbundene Hausratversicherung unter Einschluss weiterer Elementarschäden</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:41:43</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>14000</wert>
+						<beschreibung>Vz: Verbundene Wohngebäudeversicherung4</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:43:43</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>14100</wert>
+						<beschreibung>Verbundene Wohngebäudeversicherung ohne Einschluss weiterer Elementarschäden</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:43:48</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>14200</wert>
+						<beschreibung>Verbundene Wohngebäudeversicherung unter Einschluss weiterer Elementarschäden</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:43:54</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>15000</wert>
+						<beschreibung>Vz: Hagelversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:44:09</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16000</wert>
+						<beschreibung>Vz: Tierversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:44:13</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16100</wert>
+						<beschreibung>langfristige Tierlebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:46:39</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16101</wert>
+						<beschreibung>Pferdelebensversicherung </beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:09:35</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16102</wert>
+						<beschreibung>Rindviehlebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:09:40</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16103</wert>
+						<beschreibung>Schweinelebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:09:44</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16104</wert>
+						<beschreibung>Geflügellebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:09:48</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16105</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:09:53</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16106</wert>
+						<beschreibung>Hundelebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:09:56</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16109</wert>
+						<beschreibung>übrige langfristige Tierlebensversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:10:07</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16200</wert>
+						<beschreibung>kurzfristige Tierversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:46:46</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16201</wert>
+						<beschreibung>Trächtigkeits-, Leibesfrucht- und Fohlenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:10:14</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16202</wert>
+						<beschreibung>Weidetierversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:10:19</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16203</wert>
+						<beschreibung>Mastviehversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:10:29</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16204</wert>
+						<beschreibung>Schlachttierversicherung (einschließlich Schlachtwertversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:10:33</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16205</wert>
+						<beschreibung>Operations-, Kastrationsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:10:43</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16209</wert>
+						<beschreibung>übrige kurzfristige Tierversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:10:48</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>16900</wert>
+						<beschreibung>übrige und nicht aufgegliederte Tierversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:46:52</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17000</wert>
+						<beschreibung>Vz: Technische Versicherungen</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:44:22</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17100</wert>
+						<beschreibung>Maschinenversicherung (einschließlich der Baugeräteversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:47:01</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17200</wert>
+						<beschreibung>Elektronikversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:47:11</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17300</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:47:15</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17400</wert>
+						<beschreibung>Montageversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:47:20</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17500</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:47:25</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17600</wert>
+						<beschreibung>Bauleistungsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:47:33</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17900</wert>
+						<beschreibung>übrige und nicht aufgegliederte technische Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:47:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17901</wert>
+						<beschreibung>übrige technische Sachschadenversicherungen</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:11:06</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17909</wert>
+						<beschreibung>sonstige technische Versicherungen</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:11:18</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17911</wert>
+						<beschreibung>Reparaturkostenversicherung von Kraftwagen</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17912</wert>
+						<beschreibung>Reparaturkostenversicherung von Fernseh- und Videogeräten</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17913</wert>
+						<beschreibung>Reparaturkostenversicherung von Haushaltsgeräten</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>17914</wert>
+						<beschreibung>Garantieverlängerungsversicherung von technischen Geräten</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>18000</wert>
+						<beschreibung>Vz: Einheitsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:44:28</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>18100</wert>
+						<beschreibung>Allgemeine Einheitsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:47:49</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>18200</wert>
+						<beschreibung>Juwelierwaren-Einheitsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:47:53</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>18300</wert>
+						<beschreibung>Rauchwaren-Einheitsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:48:01</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>18400</wert>
+						<beschreibung>Textilveredelungs-Einheitsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:48:12</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>18500</wert>
+						<beschreibung>Wäscheschutz-Einheitsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:48:20</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>18900</wert>
+						<beschreibung>übrige und nicht aufgegliederte Einheitsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:48:26</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19000</wert>
+						<beschreibung>Vz: Transportversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:48:42</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19100</wert>
+						<beschreibung>Kaskoversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:48:54</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19101</wert>
+						<beschreibung>Seeschifffahrts-Kaskoversicherung5</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:11:29</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19102</wert>
+						<beschreibung>Binnensee- und Flussschifffahrts-Kaskoversicherung5</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:11:33</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19103</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:11:38</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19104</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:11:47</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19105</wert>
+						<beschreibung>Schienenfahrzeug-Kaskoversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:11:58</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19106</wert>
+						<beschreibung>Sportboot-Kaskoversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:12:02</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19107</wert>
+						<beschreibung>Baurisikoversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:12:09</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19109</wert>
+						<beschreibung>übrige Kaskoversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:12:14</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19200</wert>
+						<beschreibung>Transportgüterversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:48:59</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19201</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:12:21</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19202</wert>
+						<beschreibung>Transportgüterversicherung (ohne die Kennzahlen 19.2.3 bis 19.2.6)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:12:26</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19203</wert>
+						<beschreibung>Reiselagerversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:12:31</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19204</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:12:35</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19205</wert>
+						<beschreibung>Container-Kaskoversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:12:47</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19206</wert>
+						<beschreibung>Tiertransportversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:12:52</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19209</wert>
+						<beschreibung>übrige Warenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:12:57</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19300</wert>
+						<beschreibung>Valorenversicherung (gewerblich)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:49:07</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19400</wert>
+						<beschreibung>Filmversicherung (ohne Kennzahl 29.2.01)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:49:15</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19500</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:49:20</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19600</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:49:25</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19700</wert>
+						<beschreibung>Kriegsrisikoversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:49:30</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>19900</wert>
+						<beschreibung>übrige und nicht aufgegliederte Transportversicherung (einschließlich Versicherung von Offshore-Risiken)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:49:45</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>20000</wert>
+						<beschreibung>Vz: Kredit- und Kautionsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:49:55</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>20100</wert>
+						<beschreibung>Kautionsversicherung (einschließlich Baugarantieversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:50:00</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>20200</wert>
+						<beschreibung>Delkredereversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:50:09</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>20201</wert>
+						<beschreibung>Ausfuhrkreditversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:13:16</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>20202</wert>
+						<beschreibung>Warenkreditversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:13:21</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>20203</wert>
+						<beschreibung>Investitionsgüterkreditversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:13:25</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>20204</wert>
+						<beschreibung>Konsumentenkreditversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:13:29</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>20209</wert>
+						<beschreibung>übrige und nicht aufgegliederte Delkredereversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:13:33</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>20300</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:50:16</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>20900</wert>
+						<beschreibung>übrige und nicht aufgegliederte Kredit- und Kautionsversicherung6</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:50:21</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>21000</wert>
+						<beschreibung>Vz: Versicherung zusätzlicher Gefahren zur Feuer- bzw. Feuer-Betriebsunterbrechungs-Versicherung (Extended Coverage (EC)-Versicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:50:45</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>22000</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:51:02</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>23000</wert>
+						<beschreibung>Vz: Betriebsunterbrechungs-Versicherung7</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:51:09</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>23100</wert>
+						<beschreibung>Feuer-Betriebsunterbrechungs-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:53:01</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>23200</wert>
+						<beschreibung>Technische Betriebsunterbrechungs-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:54:24</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>23300</wert>
+						<beschreibung>sonstige Betriebsunterbrechungs-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:54:29</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>23399</wert>
+						<beschreibung>übrige und nicht aufgegliederte Vermögensschadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>24000</wert>
+						<beschreibung>Vz: Beistandsleistungsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:51:15</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>24100</wert>
+						<beschreibung>Schutzbriefversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:55:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>24200</wert>
+						<beschreibung>Sportboot-Serviceversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:55:45</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>24300</wert>
+						<beschreibung>Flugrückholkostenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:55:53</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>24400</wert>
+						<beschreibung>Schutzbriefversicherung unter Einschluss der sog. Mallorca-Police8</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:56:11</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>24900</wert>
+						<beschreibung>übrige und nicht aufgegliederte Beistandsleistungsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:56:47</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>25000</wert>
+						<beschreibung>Vz: Luft- und Raumfahrzeug-Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:58:12</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>25100</wert>
+						<beschreibung>Luftfahrt-Haftpflichtversicherung (einschließlich der Luftfrachtführer-Haftpflichtversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:58:30</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>25200</wert>
+						<beschreibung>Raumfahrzeug-Haftpflichtversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 09:58:45</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>28000</wert>
+						<beschreibung>Vz: Sonstige Sachversicherung (09, 10, 11, 12, 15, 16, 17, 18, 21 und 23 insgesamt)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:02:01</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29000</wert>
+						<beschreibung>Vz: Sonstige Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:02:12</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29100</wert>
+						<beschreibung>sonstige Sachschadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:03:53</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29101</wert>
+						<beschreibung>Schwamm- und Hausbockkäferversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29102</wert>
+						<beschreibung>Ausstellungsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29103</wert>
+						<beschreibung>Fahrradversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29104</wert>
+						<beschreibung>Garderobenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29105</wert>
+						<beschreibung>Jagd- und Sportwaffenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29106</wert>
+						<beschreibung>Musikinstrumenteversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29107</wert>
+						<beschreibung>Fotoapparateversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29108</wert>
+						<beschreibung>Kühlgüterversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29109</wert>
+						<beschreibung>Warenversicherung in Tiefkühlanlagen</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29110</wert>
+						<beschreibung>Atomanlagen-Sachversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29111</wert>
+						<beschreibung>Automatenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29112</wert>
+						<beschreibung>Reisegepäckversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29113</wert>
+						<beschreibung>Kraftfahrtgepäckversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29114</wert>
+						<beschreibung>Valorenversicherung (privat)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29115</wert>
+						<beschreibung>Freizeitsportgeräteversicherung (einschließlich der Skibruchversicherung)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29116</wert>
+						<beschreibung>Verderbschadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29117</wert>
+						<beschreibung>Gärtnerei-Verderbschadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29119</wert>
+						<beschreibung>Campingversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29120</wert>
+						<beschreibung>Versicherung von Kunstgegenständen</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29121</wert>
+						<beschreibung>Versicherung von Auktionen</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29122</wert>
+						<beschreibung>Brillenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29199</wert>
+						<beschreibung>übrige und nicht aufgegliederte Sachschadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29200</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:04:04</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29300</wert>
+						<beschreibung>sonstige Vermögensschadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:04:08</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29301</wert>
+						<beschreibung>Boykott- und Streikversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29302</wert>
+						<beschreibung>Reise-Rücktrittskosten-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29303</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29304</wert>
+						<beschreibung>Lizenzverlustversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29305</wert>
+						<beschreibung>Tierkrankenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29306</wert>
+						<beschreibung>Maschinengarantieversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29307</wert>
+						<beschreibung>Datenmissbrauchversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29308</wert>
+						<beschreibung>Scheckkartenversicherung von Scheckkarteninhabern</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29309</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29310</wert>
+						<beschreibung>Insolvenzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29311</wert>
+						<beschreibung>Schlüsselverlustversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29312</wert>
+						<beschreibung>Garantieversicherung von Kraftfahrzeugen</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29313</wert>
+						<beschreibung>Mietverlustversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29314</wert>
+						<beschreibung>Raumfahrzeug-Vermögensschadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29315</wert>
+						<beschreibung>Milchgeldausfallversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29316</wert>
+						<beschreibung>Produktschutzversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29400</wert>
+						<beschreibung>sonstige gemischte Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:04:14</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29401</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29402</wert>
+						<beschreibung>Tank- und Fassleckageversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29403</wert>
+						<beschreibung>Filmtheater-Einheitsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29404</wert>
+						<beschreibung>Versicherung von Winzerbetrieben gegen Frostschäden</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29405</wert>
+						<beschreibung>Allgefahrenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29406</wert>
+						<beschreibung>Inhaltsversicherung für Geschäfte und Betriebe</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29407</wert>
+						<beschreibung>Erweiterte Haushaltsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29408</wert>
+						<beschreibung>Dynamische Sachversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29499</wert>
+						<beschreibung>übrige und nicht aufgegliederte gemischte Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29500</wert>
+						<beschreibung>aufgehoben</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:04:19</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29600</wert>
+						<beschreibung>Vertrauensschadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:04:38</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29601</wert>
+						<beschreibung>Vertrauensschadenversicherung (ohne Kennzahlen 29.6.02 bis 29.6.04)</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29602</wert>
+						<beschreibung>Computermissbrauchversicherung </beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29603</wert>
+						<beschreibung>Versicherung gegen Veruntreuung von Selbstfahrervermietfahrzeugen </beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29604</wert>
+						<beschreibung>Eigenschadenversicherung von Körperschaften und Anstalten des öffentlichen Rechts</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29699</wert>
+						<beschreibung>übrige und nicht aufgegliederte Vertrauensschadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>29900</wert>
+						<beschreibung>übrige und nicht aufgegliederte sonstige Schadenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:04:55</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>30000</wert>
+						<beschreibung>Schaden- und Unfallversicherung9 insgesamt selbst abgeschlossenes Versicherungsgeschäft: übernommenes Versicherungsgeschäft:</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>02.07.2018 10:05:10</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>70000</wert>
+						<beschreibung>Gewerbliche Gebäudeversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>70100</wert>
+						<beschreibung>Sach-Inhaltsversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>70200</wert>
+						<beschreibung>Flexible Ertragsausfallversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>70300</wert>
+						<beschreibung>Cyberversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>70400</wert>
+						<beschreibung>Funktionale Invalidität</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>70500</wert>
+						<beschreibung>Auslandsreisekrankenversicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>70600</wert>
+						<beschreibung>Haus- und Wohnungsschutzbrief</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+					<eintrag>
+						<wert>70700</wert>
+						<beschreibung>Fahrrad-Kasko-Versicherung</beschreibung>
+						<gruppe />
+						<aenderungsart combobox="aenderungsartbox">neu</aenderungsart>
+						<letzteAenderung>27.04.2018 10:25:37</letzteAenderung>
+					</eintrag>
+				</alleWerteDerTabelle>
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.02.646">
+			<name>Spartenbezeichnung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.02.676">
+			<name>Art der versicherten Summe 1</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.02.716">
+			<name>Art der versicherten Summe 2</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.02.736">
+			<name>Art der versicherten Summe 3</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.00.763">
+			<name>Abschlussprovision in %</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 16:53:53</letzteAenderung>
+			<minimaleLaenge>5</minimaleLaenge>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Fließkomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 16:53:53</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.02.826">
+			<name>Risikobeschreibung</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:31:59</letzteAenderung>
+			<minimaleLaenge>30</minimaleLaenge>
+			<bytes>30</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:31:59</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.02.866">
+			<name>FristüberwachungGrund (20 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:15:33</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:15:33</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.02.896">
+			<name>Zeitraum</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+			<minimaleLaenge>3</minimaleLaenge>
+			<bytes>3</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
+			</wertetabelle>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.02.916">
+			<name>Info-Feld (20 Byte)</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>25.01.2006 17:19:15</letzteAenderung>
+			<minimaleLaenge>1</minimaleLaenge>
+			<bytes>20</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen />
+			<bemerkung />
+			<wertetabelle>
+				<name />
+				<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+				<letzteAenderung>25.01.2006 17:19:15</letzteAenderung>
+				<technischerName />
+				<bemerkung />
+				<anlagennummer />
+				<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
+				<alleWerteDerTabelle />
 			</wertetabelle>
 		</feld>
 

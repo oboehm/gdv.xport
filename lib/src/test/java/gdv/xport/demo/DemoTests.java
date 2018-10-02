@@ -3,7 +3,6 @@ package gdv.xport.demo;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
 
-import patterntesting.concurrent.junit.ParallelSuite;
 import patterntesting.runtime.junit.SmokeRunner;
 
 /**

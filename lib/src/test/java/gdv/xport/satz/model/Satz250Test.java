@@ -39,7 +39,7 @@ public final class Satz250Test {
      */
     @Test
     public void testGetLfdNrDeklaration() {
-        Feld lfdNr = satz.getFeld(Bezeichner.LFD_NUMMER_DEKLARATION);
+        Feld lfdNr = satz.getFeld(Bezeichner.LFD_NR_DEKLARATION_1);
         assertEquals("00000000", lfdNr.getInhalt());
     }
 

@@ -55,7 +55,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
     public static final Feld NULL_FELD = new Feld();
     /** optional: Name des Felds. */
     private final Bezeichner bezeichner;
-    private final Enum<?> bezeichnerEnum;
     private final StringBuilder inhalt;
     /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256. */
     @Min(1)
@@ -92,9 +91,10 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @param feldX der entsprechende Aufzaehlungstyp
      * @param info Annotation mit den Feldinformationen
      * @since 0.6
+     * @deprecated feldX wird ab hier nicht mehr verwendet
      */
+    @Deprecated
     public Feld(final Enum<?> feldX, final FeldInfo info) {
-        this.bezeichnerEnum = feldX;
         this.bezeichner = Feld.getAsBezeichner(feldX);
         this.byteAdresse = info.byteAdresse();
         this.ausrichtung = getAlignmentFrom(info);
@@ -126,13 +126,27 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @param start Start-Adresse
      * @param s der Inhalt
      * @param alignment the alignment
+     * @deprecated bitte {@link Feld#Feld(Bezeichner, int, String, Align)}
+     *             verwenden
      */
+    @Deprecated
     public Feld(final String name, final int start, final String s, final Align alignment) {
-        this.bezeichner = new Bezeichner(name);
+        this(new Bezeichner(name), start, s, alignment);
+    }
+
+    /**
+     * Instantiates a new feld.
+     *
+     * @param name the name
+     * @param start Start-Adresse
+     * @param s der Inhalt
+     * @param alignment the alignment
+     */
+    public Feld(final Bezeichner name, final int start, final String s, final Align alignment) {
+        this.bezeichner = name;
         this.inhalt = new StringBuilder(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
     /**
@@ -149,7 +163,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.inhalt = getEmptyStringBuilder(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
     /**
@@ -219,7 +232,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
-        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
     /**
@@ -249,7 +261,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
-        this.bezeichnerEnum = FeldX.UNBEKANNT;
     }
 
     /**

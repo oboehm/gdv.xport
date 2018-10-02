@@ -143,7 +143,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      * hier keine {@link NotUniqueException} erwarten.
      * <p>
      * Der Vergleich mit dem Default-Constructor von {@link Satz210} schlaegt
-     * leider fehl. Dies liegt aber an der {@link Satz210}-Klasse, die hier
+     * leider fehl. Dies liegt aber an der {@link Satz210}-Klasse, da hier
      * die allgemeine Definition fuer Sparte "0" fehlt.
      * </p>
      *
@@ -153,6 +153,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     public void testSatzart210() throws IOException {
         SatzXml satzXml = xmlService.getSatzart(210);
         assertEquals(210, satzXml.getSatzart());
+        assertNotNull(satzXml.getFeld(Bezeichner.SATZ_NR_1));
     }
 
     /**
