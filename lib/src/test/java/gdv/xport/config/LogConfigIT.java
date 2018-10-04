@@ -19,10 +19,7 @@ package gdv.xport.config;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.ClassRule;
-import org.junit.Test;
+import org.junit.*;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 import java.net.URI;
@@ -34,10 +31,15 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Unit-Tests fuer {@link LogConfig}-Klasse.
+ * Unit-Tests fuer {@link LogConfig}-Klasse. Zum Starten wird hier ein
+ * Docker-Container mit einer Postgres-DB hochgefahren. Da das Hochfahren
+ * des Docker-Containers etwas laenger dauert (ca. 5 - 10 Sek.), wurde dieser
+ * Test auf 'Ignore' gesetzt, da er gegenueber {@link LogConfigTest} (noch)
+ * keine neuen Erkenntnisse bringt.
  *
  * @author oboehm
  */
+@Ignore // weil's zu lange dauert (s.o.)
 public class LogConfigIT {
 
     private static final Logger LOG = LogManager.getLogger(LogConfigIT.class);
@@ -50,7 +52,6 @@ public class LogConfigIT {
     @BeforeClass
     public static void setUpLogConfig() {
         LOG.info("Setting up logConfig...");
-        //URI jdbcURI = URI.create("jdbc:hsqldb:mem:logdb");
         URI jdbcURI = URI.create(postgreSQLContainer.getJdbcUrl());
         logConfig = new LogConfig(jdbcURI, "sa", "");
         LOG.info("Setting up logConfig {} successful finished.", logConfig);

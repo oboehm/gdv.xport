@@ -85,7 +85,6 @@ public class BezeichnerIT {
                         "JAHRESRENTENAENDERUNGS_PROZENTSATZ", "KARENZZEIT", "KENN", "KU_", 
                         "LAUFZEITVERKUERZUNG", "LEISTUNGSDAUER", "NAECHSTE", "ORDNUNGS_NUMMER_FUER_WAGNISZU",
                         "PRODUKTSPEZIFISCHE_ANTRAGSDATEN", "TEILDATENSATZNUMMER", "RENTE_INCL_UEBERSCHUSS",
-                        "RUECKKAUFSWERT_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN", "SATZNUMMERNWIEDERHOLUNG",
                         "SONSTIGER_BEZUGSBERECHTIGTER_IM_", "TODESFALL", "SPARVORGANG", "UN", "VER"};
         for (String prefix : prefixes) {
             if (field.getName().startsWith(prefix)) {
