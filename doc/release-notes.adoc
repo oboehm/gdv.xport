@@ -10,3 +10,7 @@
 * #_neu_#: es gibt ein neues Modulu 'gdv-xport-deprecated', in der Klassen und Enumerationen verschoben wurden, die 'deprecated' sind.
   Dieses Abhängigkeit nicht nur dann benötigt, wenn man noch einer dieser Klassen verwendet.
 
+
+== 3.x (10-Jan-2018)
+
+Die Versionen 3.x und früher sind unter http://www.aosd.de/gdv.xport/changes-report.html[changes] aufgelistet.

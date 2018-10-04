@@ -17,9 +17,10 @@
 
   <body>
 
-    <release version="1.x">
+    <release version="4.x">
       <action dev="oboehm">
-        Verlagerung der Release-Notes nach doc/release-notes.adoc
+        Verlagerung der Release-Notes nach
+        <a href="https://github.com/oboehm/gdv.xport/blob/develop/4.x/doc/release-notes.adoc">doc/release-notes.adoc</a>
       </action>
     </release>
 
