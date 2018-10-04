@@ -1,0 +1,12 @@
+= Release-Notes
+
+
+
+== 4.0 (kommt noch)
+
+* Aktualisierung auf die aktuelle XML-Version von 2018.
+* Bezeichner-Klasse wurde aufgeräumt und falsche bzw. nicht benötigte Konstanten entfernt.
+  Ebenso wurden manche Konstanten ind den Feld-Beschreibungen korrigiert.
+* #_neu_#: es gibt ein neues Modulu 'gdv-xport-deprecated', in der Klassen und Enumerationen verschoben wurden, die 'deprecated' sind.
+  Dieses Abhängigkeit nicht nur dann benötigt, wenn man noch einer dieser Klassen verwendet.
+
