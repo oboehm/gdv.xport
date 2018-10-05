@@ -81,8 +81,7 @@ public class BezeichnerIT {
                 {"ABSTAND", "ABWEICHENDE_LEISTUNGSDAUER", "AENDERUNG", "ANFAENGLICHE", "AUSZAHLUNGSWEISE",
                         "ANZAHL_DER_AUSZAHLUNGEN",
                         "BE", "BUZ", "EINSCHLUSS_PROZENT_SATZ", "ERLEBENSFALL_VS", "ERSTELLUNGSDAT_ZEITRAUM",
-                        "FALLENDE", "GES", "GUTHABEN_DIVID_ANSAMMLUNGEN_IN_WAEHRUNGSEINHEITEN", "INTRO",
-                        "JAHRESRENTENAENDERUNGS_PROZENTSATZ", "KARENZZEIT", "KENN", "KU_", 
+                        "FALLENDE", "GES", "INTRO", "KARENZZEIT", "KENN", "KU_", 
                         "LAUFZEITVERKUERZUNG", "LEISTUNGSDAUER", "NAECHSTE", "ORDNUNGS_NUMMER_FUER_WAGNISZU",
                         "PRODUKTSPEZIFISCHE_ANTRAGSDATEN", "TEILDATENSATZNUMMER", "RENTE_INCL_UEBERSCHUSS",
                         "SONSTIGER_BEZUGSBERECHTIGTER_IM_", "TODESFALL", "SPARVORGANG", "UN", "VER"};
@@ -116,6 +115,8 @@ public class BezeichnerIT {
         }
         TECHNISCHE_NAMEN.add("AbsoluteJahresrentenaenderungssummeInWE");
         TECHNISCHE_NAMEN.add("GarantierterSteigerungssatzBeiBU");
+        TECHNISCHE_NAMEN.add("GuthabenDividAnsammlungenInWE");
+        TECHNISCHE_NAMEN.add("JahresrentenaenderungsProzentsatz");
         TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil1");
         TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil2");
         TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil3");

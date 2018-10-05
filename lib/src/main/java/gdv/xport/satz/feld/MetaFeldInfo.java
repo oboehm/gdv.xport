@@ -58,7 +58,7 @@ public final class MetaFeldInfo {
      *
      * @return das Aufzaehlungs-Feld
      */
-    public Enum<?> getFeldEnum() {
+    public Enum getFeldEnum() {
         return this.feldEnum;
     }
 

@@ -472,7 +472,8 @@ public final class Bezeichner {
     public static final Bezeichner GUELTIGE_AVB = new Bezeichner("Gueltige AVB");
     public static final Bezeichner GUELTIGKEITSDAUER_IN_TAGEN_BEI_KURZZEITKENNZEICHEN = new Bezeichner("Gueltigkeitsdauer in Tagen bei Kurzzeitkennzeichen");
     public static final Bezeichner GUTHABEN_DIVID_ANSAMMLUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Guthaben Divid. Ansammlung in W\u00e4hrungseinheiten");
-    public static final Bezeichner GUTHABEN_DIVID_ANSAMMLUNGEN_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Guthaben Divid. Ansammlungen in W\u00e4hrungseinheiten");
+    public static final Bezeichner GUTHABEN_DIVID_ANSAMMLUNGEN_IN_WAEHRUNGSEINHEITEN =
+            new Bezeichner("Guthaben Divid. Ansammlungen in W\u00e4hrungseinheiten", "GuthabenDividAnsammlungenInWE");
 
     public static final Bezeichner HAFTUNG_AB = new Bezeichner("Haftung ab");
     public static final Bezeichner HAFTUNG_AB2 = new Bezeichner("Haftung ab");
@@ -504,7 +505,8 @@ public final class Bezeichner {
     public static final Bezeichner JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Jahresrente in W\u00e4hrungseinheiten");
     public static final Bezeichner JAHRESRENTE_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Jahresrente in W\u00e4hrungseinheiten");
     public static final Bezeichner JAHRESRENTE_INKL_GEWINNBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Jahresrente inkl. Gewinnbeteiligung in WE");
-    public static final Bezeichner JAHRESRENTENAENDERUNGS_PROZENTSATZ = new Bezeichner("Jahresrentenaenderungs-Prozentsatz");
+    public static final Bezeichner JAHRESRENTENAENDERUNGS_PROZENTSATZ =
+            new Bezeichner("Jahresrenten\u00e4nderungs-Prozentsatz", "JahresrentenaenderungsProzentsatz");
 
     public static final Bezeichner KAPITALERTRAGSSTEUER_BEI_ABLAUF = new Bezeichner("Kapitalertragssteuer bei Ablauf");
     public static final Bezeichner KAPITALERTRAGSSTEUER_BEI_RUECKKAUF_ZUM_BERECHNUNGSSTICHTAG = new Bezeichner("Kapitalertragssteuer bei Rueckkauf zum Berechnungsstichtag");
