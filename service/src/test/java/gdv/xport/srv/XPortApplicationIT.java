@@ -71,7 +71,7 @@ public class XPortApplicationIT {
      */
 	@Test
     public void testApplicationConfig() {
-        String applName = env.getProperty("application.name");
+        String applName = env.getProperty("spring.application.name");
         LOG.info("applName = \"{}\".", applName);
         assertThat(applName, not(isEmptyOrNullString()));
     }
