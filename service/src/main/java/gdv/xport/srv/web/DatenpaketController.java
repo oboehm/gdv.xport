@@ -167,7 +167,7 @@ public final class DatenpaketController {
                     paramType = "query"
             )
     })
-    @GetMapping("/Datenpaket")
+    @GetMapping(path = "/Datenpaket*")
     public @ResponseBody Datenpaket importDatenpaket(@RequestParam("uri") URI uri) throws IOException {
         String content = readFrom(uri);
         return importDatenpaketFrom(content);
@@ -207,7 +207,7 @@ public final class DatenpaketController {
             )
     })
     @PostMapping(
-            value = "/Datenpaket", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
+            path = "/Datenpaket*", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
     public @ResponseBody

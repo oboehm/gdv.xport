@@ -32,7 +32,7 @@ import java.util.*;
  * @author <a href="ob@aosd.de">oliver</a>
  */
 @Configuration
-public class AppConfig extends WebMvcConfigurerAdapter {
+public class AppConfig implements WebMvcConfigurer {
 
     private static final Logger LOG = LogManager.getLogger(AppConfig.class);
 
@@ -86,7 +86,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
                   .mediaType("text", MediaType.TEXT_PLAIN)
                   .mediaType("txt", MediaType.TEXT_PLAIN)
                   .defaultContentType(MediaType.TEXT_PLAIN)
-                  .favorParameter(true)
+                  .favorParameter(false)
+                  .favorPathExtension(true)
                   ;
     }
 
