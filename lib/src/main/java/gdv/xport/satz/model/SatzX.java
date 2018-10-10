@@ -145,9 +145,8 @@ public class SatzX extends Datensatz {
 			boolean currentLineTeildatensatzNummerIsSet = this.getTeildatensatzNummer().trim()
 			        .length() > 0;
 
-			WagnisartLeben currentLineWagnisEnum = WagnisartLeben.NULL;
-			if (currentLineWagnisartIsSet) {
-				currentLineWagnisEnum = WagnisartLeben.isIn(Integer.parseInt(this.getWagnisart()));
+			if (!currentLineWagnisartIsSet) {
+				return true;
 			}
 
 			TeildatensatzNummer currentLineTeildatensatzEnum = TeildatensatzNummer.NULL;
@@ -156,16 +155,10 @@ public class SatzX extends Datensatz {
 				        .getTeildatensatzNummer()));
 			}
 
-			if (!currentLineWagnisartIsSet) {
-				return true;
-			}
-
             if ((nextLineWagnisartIsSet)
-                    && (nextLineWagnisEnum == currentLineWagnisEnum)) {
+                    && (nextLineWagnisEnum == WagnisartLeben.isIn(Integer.parseInt(this.getWagnisart())))) {
                 if (currentLineTeildatensatzNummerIsSet || nextLineTeildatensatzNummerIsSet) {
-                    if (nextLineTeildatensatzNummerEnum == currentLineTeildatensatzEnum) {
-                        return true;
-                    }
+					return nextLineTeildatensatzNummerEnum == currentLineTeildatensatzEnum;
                 } else {
                     // wagnisarten sind gleich und die
                     // Teildatensatznummer sind beide nicht gesetzt
@@ -175,4 +168,5 @@ public class SatzX extends Datensatz {
 		}
 		return false;
 	}
+
 }

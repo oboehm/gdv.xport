@@ -511,7 +511,10 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Prüfe ob die kommende Zeile ein Teildatensatz der letzten ist. Dazu werden die ersten 7 Felder abgeglichen.
+	 * Prüfe ob die kommende Zeile ein Teildatensatz der letzten ist. Dazu
+	 * werden (normalerweise) die ersten 7 Felder abgeglichen. Leider fuehrt
+	 * dieses Verfahren nicht immer zum Erfolg, sodass wir uns in bestimmten
+	 * Situationen doch den ganzen naechsten Teildatensatz anschauen muessen.
 	 *
 	 * @param reader ein Reader
 	 * @param lastFeld1To7 Feld1..7 als Char-Array (42 Zeichen) der letzten Zeile oder {@code null} für ersten Teildatensatz
@@ -525,13 +528,8 @@ public class Datensatz extends Satz {
         if (super.matchesNextTeildatensatz(reader, lastFeld1To7, satznummer)) {
 			if (lastFeld1To7 == null) {
 				//erster Teildatensatz hat noch keine lastFeld...
-				if (this.hasSparte()) {
-					int sparte = readSparte(reader);
-					return this.getSparte() == sparte;
-				}
-				return true;
-			}
-			else {
+				return matchesFirstTeildatensatz(reader);
+			} else {
 				// TODO: ugly aber ich sehe bisher noch keinen eleganten Weg in der aktuellen Struktur ohne umfangreiche Refaktorings.
 				char[] newLine = new char[256];
 				int res = reader.read(newLine);
@@ -544,17 +542,24 @@ public class Datensatz extends Satz {
 				for (int i = 0; i < 42; i++) {
 					if (lastFeld1To7[i] != newLine[i]) return false;
 				}
-				
-				// Das letzte Feld wird darauf verglichen, dass es groesser als das vorherige ist, falls Teildatensaetze uebersprungen werden
-                char newSatznummer = readSatznummer(newLine);
-                if (Character.isDigit(newSatznummer) && Character.isDigit(satznummer) && newSatznummer <= satznummer) {
-				    return false;
-				}
-				
-				return true;
+				return matchesLastFeld(satznummer, newLine);
 			}
 		}
 		return false;
+	}
+
+	private boolean matchesFirstTeildatensatz(PushbackLineNumberReader reader) throws IOException {
+		if (this.hasSparte()) {
+			int sparte = readSparte(reader);
+			return this.getSparte() == sparte;
+		}
+		return true;
+	}
+
+	private static boolean matchesLastFeld(Character satznummer, char[] newLine) {
+		// Das letzte Feld wird darauf verglichen, dass es groesser als das vorherige ist, falls Teildatensaetze uebersprungen werden
+		char newSatznummer = readSatznummer(newLine);
+		return !(Character.isDigit(newSatznummer) && Character.isDigit(satznummer) && newSatznummer <= satznummer);
 	}
 
 	/*

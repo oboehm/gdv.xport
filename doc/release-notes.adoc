@@ -10,7 +10,7 @@
 * #_neu_#: es gibt ein neues Modulu 'gdv-xport-deprecated', in der Klassen und Enumerationen verschoben wurden, die 'deprecated' sind.
   Dieses Abhängigkeit nicht nur dann benötigt, wenn man noch einer dieser Klassen verwendet
 * #_geplant_#: Performance-Optimierung und Verringerund des Speicher-Abdrucks (Footprint).
-* #_geplant_#: Reduzierung der Komplexität
+* Komplexität mancher Methoden reduziert
 
 
 

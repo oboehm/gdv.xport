@@ -1256,24 +1256,8 @@ public abstract class Satz implements Cloneable {
         int satznummerIndex = 255;
         switch (satzart) {
             case 210:
-                switch (sparte) {
-                    case 0:
-                    case 80:
-                    case 170:
-                    case 190:
-                    case 550:
-                    case 560:
-                    case 570:
-                    case 580:
-                        satznummerIndex = 42;
-                        break;
-                    case 130:
-                        satznummerIndex = 250;
-                        break;
-                    default:
-                        break;
-                }
-                break;
+				satznummerIndex = getSatznummerIndexOfSatz210(sparte);
+				break;
             case 211:
                 switch (sparte) {
                     case 0:
@@ -1288,45 +1272,8 @@ public abstract class Satz implements Cloneable {
                 break;
             case 220:
             case 221:
-                switch (sparte) {
-                    case 0:
-                        satznummerIndex = 46;
-                        break;
-                    case 30:
-                        if ((satz.charAt(48) == '2' && satz.charAt(255) == 'X') || (satz.charAt(48) == '1' || satz.charAt(48) == '4')) {
-                            satznummerIndex = 48;
-                        } else if (Character.isDigit(satz.charAt(satznummerIndex)) && satz.charAt(satznummerIndex) != '0' && satz.charAt(satznummerIndex) != '2') {
-							satznummerIndex = 249;
-                        } else if (satz.charAt(42) == '3') {
-                            satznummerIndex = 42;
-                        } else {
-							satznummerIndex = 59;
-						}
-                        break;
-                    case 40:
-                    case 140:
-                        satznummerIndex = 50;
-                        break;
-                    case 70:
-                        satznummerIndex = 52;
-                        break;
-                    case 80:
-                    case 190:
-                        satznummerIndex = 48;
-                        break;
-                    case 170:
-                        satznummerIndex = 49;
-                        break;
-                    case 550:
-                    case 560:
-                    case 570:
-                    case 580:
-                        satznummerIndex = 42;
-                        break;
-                    default:
-                        break;
-                }
-                break;
+				satznummerIndex = getSatznummerIndexOf(satz, sparte);
+				break;
             case 250:
             case 251:
                 switch (sparte) {
@@ -1343,8 +1290,60 @@ public abstract class Satz implements Cloneable {
         
         return satz.charAt(satznummerIndex);
     }
-    
-    public static boolean isNumber(String string) {
+
+	private static int getSatznummerIndexOfSatz210(int sparte) {
+		switch (sparte) {
+			case 0:
+			case 80:
+			case 170:
+			case 190:
+			case 550:
+			case 560:
+			case 570:
+			case 580:
+				return 42;
+			case 130:
+				return 250;
+			default:
+				return 255;
+		}
+	}
+
+	private static int getSatznummerIndexOf(String satz, int sparte) {
+		switch (sparte) {
+			case 0:
+				return 46;
+			case 30:
+				if ((satz.charAt(48) == '2' && satz.charAt(255) == 'X') || (satz.charAt(48) == '1' || satz.charAt(48) == '4')) {
+					return 48;
+				} else if (Character.isDigit(satz.charAt(255)) && satz.charAt(255) != '0' && satz.charAt(255) != '2') {
+					return 249;
+				} else if (satz.charAt(42) == '3') {
+					return 42;
+				} else {
+					return 59;
+				}
+			case 40:
+			case 140:
+				return 50;
+			case 70:
+				return 52;
+			case 80:
+			case 190:
+				return 48;
+			case 170:
+				return 49;
+			case 550:
+			case 560:
+			case 570:
+			case 580:
+				return 42;
+			default:
+				return 255;
+		}
+	}
+
+	public static boolean isNumber(String string) {
         return string.matches("-?\\d+");
     }
     
