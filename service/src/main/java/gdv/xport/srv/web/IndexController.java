@@ -46,7 +46,7 @@ public class IndexController {
      *
      * @return "validate"
      */
-    @GetMapping("/validate")
+    @GetMapping("/validate*")
     String validate(){
         return "validate";
     }
@@ -56,7 +56,7 @@ public class IndexController {
      *
      * @return "format"
      */
-    @GetMapping("/format")
+    @GetMapping("/format*")
     String format(){
         return "format";
     }

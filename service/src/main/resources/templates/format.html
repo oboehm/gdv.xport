@@ -4,13 +4,17 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout" >
 
-<head>
-    <title>Validierung</title>
+<head lang="de">
+    <title>Formattierung</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="../static/css/theme.css" th:href="@{/css/theme.css}"/>
 </head>
 
 <body>
     <div class="container">
-        <h1 layout:fragment="header">Global Header</h1>
+        <div layout:fragment="header"> </div>
         <div layout:fragment="content">
             <h1>Formattierung</h1>
             <p>

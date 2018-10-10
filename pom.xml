@@ -481,7 +481,12 @@
         <version>2.9.2</version>
       </dependency>
 
-      <!-- WebJars -->
+      <!-- Thymeleaf + WebJars (see https://igorski.co/java/spring-boot/layout-dialect-spring-boot-2/) -->
+      <dependency>
+        <groupId>nz.net.ultraq.thymeleaf</groupId>
+        <artifactId>thymeleaf-layout-dialect</artifactId>
+        <version>2.3.0</version>
+      </dependency>
       <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>bootstrap</artifactId>
