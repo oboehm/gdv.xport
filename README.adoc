@@ -1,6 +1,6 @@
 https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport[image:https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport/badge.svg[Maven Metadata]]
 https://travis-ci.org/oboehm/gdv.xport[image:https://api.travis-ci.org/oboehm/gdv.xport.svg[BuildStatus]]
-https://sonarcloud.io/dashboard?id=com.github.oboehm%3Agdv-xport[image:https://sonarcloud.io/api/project_badges/measure?metric=alert_status&project=com.github.oboehm:gdv-xport[Quality Gate]]
+https://sonarcloud.io/dashboard?id=com.github.oboehm%3Agdv-xport%3Adevelop%2F4.x[image:https://sonarcloud.io/api/project_badges/measure?metric=alert_status&project=com.github.oboehm:gdv-xport[Quality Gate]]
 https://coveralls.io/github/oboehm/gdv.xport[image:https://coveralls.io/repos/github/oboehm/gdv.xport/badge.svg[Coverage Status]]
 http://www.apache.org/licenses/LICENSE-2.0.html[image:https://img.shields.io/badge/license-Apache%202.0-blue.svg[Apache License 2.0]]
 
@@ -16,6 +16,7 @@ Die einzelnen Module sind:
 
 * link:lib/[*gdv-xport-lib*]: gdv.xport als Java-Bibliothek
 * link:service/[*gdv-xport-service*]: gdv.xport-Services (Spring-Boot-Anwendung)
+* link:deprecated/[gdv-xport-deprecated]: gdv.xport-Deprecated (aussortierte Altlasten, mit 4.0 eingeführt)
 
 Damit aendern sich die Maven-Koordinaten für der Bibliothek in:
 
@@ -39,7 +40,7 @@ Allerdings wurde diese Bibliothek schon seit laengerer Zeit nicht mehr aktualisi
 == GIT Branching-Modell
 
 Entwickelt wird nach http://nvie.com/posts/a-successful-git-branching-model/[A successful Git branching model] von Vincent Driessen.
-Die Weiterentwicklung der aktuellen Version findet auf dem develop-Branch statt (derzeit: https://github.com/oboehm/gdv.xport/tree/develop/3.x[develop/3.x]), waehrend das letzte Release im Release-Zweig (derzeit: https://github.com/oboehm/gdv.xport/tree/release/3.x[release/3.x]) zu finden ist.
+Die Weiterentwicklung der aktuellen Version findet auf dem develop-Branch statt (derzeit: https://github.com/oboehm/gdv.xport/tree/develop/4.x[develop/4.x]), waehrend das letzte Release im Release-Zweig (derzeit: https://github.com/oboehm/gdv.xport/tree/release/4.x[release/4.x]) zu finden ist.
 
 
 
@@ -49,6 +50,5 @@ Im https://github.com/oboehm/gdv.xport/wiki[Wiki] ist alles Wichtige zu gdv.xpor
 Weitere Infos wie z.B. die http://www.aosd.de/gdv.xport/apidocs/index.html[JavaDocs] finden Sie auch auf der http://www.aosd.de/gdv.xport/[Maven Projekt-Seite] .
 
 * https://github.com/oboehm/gdv.xport/blob/develop/4.x/doc/release-notes.adoc[Release Notes]
-* Wiki: https://github.com/oboehm/gdv.xport/wiki
 * Projekt-Seite: http://www.aosd.de/gdv.xport/
 * Xing-Gruppe: https://www.xing.com/communities/groups/datenaustausch-im-gdv-format-9756-1053093

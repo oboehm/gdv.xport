@@ -8,9 +8,12 @@
 * Bezeichner-Klasse wurde aufgeräumt und falsche bzw. nicht benötigte Konstanten entfernt.
   Ebenso wurden manche Konstanten ind den Feld-Beschreibungen korrigiert.
 * #_neu_#: es gibt ein neues Modulu 'gdv-xport-deprecated', in der Klassen und Enumerationen verschoben wurden, die 'deprecated' sind.
-  Dieses Abhängigkeit nicht nur dann benötigt, wenn man noch einer dieser Klassen verwendet.
+  Dieses Abhängigkeit nicht nur dann benötigt, wenn man noch einer dieser Klassen verwendet
+* #_geplant_#: Performance-Optimierung und Verringerund des Speicher-Abdrucks (Footprint).
+* #_geplant_#: Reduzierung der Komplexität
 
 
-== 3.x (10-Jan-2018)
 
-Die Versionen 3.x und früher sind unter http://www.aosd.de/gdv.xport/changes-report.html[changes] aufgelistet.
+== 0.0.1 bis 3.2.2
+
+Die Versionen 3.x und früher sind auf der Maven-Projekt-Seite unter http://www.aosd.de/gdv.xport/changes-report.html[changes] aufgelistet.
