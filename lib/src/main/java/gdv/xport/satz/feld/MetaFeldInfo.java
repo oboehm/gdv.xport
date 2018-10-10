@@ -30,7 +30,7 @@ import gdv.xport.annotation.FelderInfo;
  */
 public final class MetaFeldInfo {
 
-    private final Enum<?> feldEnum;
+    private final Enum feldEnum;
     private final FelderInfo felderInfo;
 
     /**
@@ -38,7 +38,7 @@ public final class MetaFeldInfo {
      *
      * @param enumX das Aufzaehlungs-Feld
      */
-    public MetaFeldInfo(final Enum<?> enumX) {
+    public MetaFeldInfo(final Enum enumX) {
         this(enumX, null);
     }
 
@@ -48,7 +48,7 @@ public final class MetaFeldInfo {
      * @param enumX das Aufzaehlungs-Feld
      * @param info weiere Infos zum enumX
      */
-    public MetaFeldInfo(final Enum<?> enumX, final FelderInfo info) {
+    public MetaFeldInfo(final Enum enumX, final FelderInfo info) {
         this.feldEnum = enumX;
         this.felderInfo = info;
     }
@@ -77,7 +77,7 @@ public final class MetaFeldInfo {
      * @param feldX the feld x
      * @return the feld info
      */
-    public static FeldInfo getFeldInfo(final Enum<?> feldX) {
+    public static FeldInfo getFeldInfo(final Enum feldX) {
         String name = feldX.name();
         try {
             FeldInfo info = feldX.getClass().getField(name).getAnnotation(FeldInfo.class);

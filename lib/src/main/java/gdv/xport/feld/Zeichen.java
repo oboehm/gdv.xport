@@ -57,7 +57,7 @@ public class Zeichen extends AlphaNumFeld {
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
      */
-    public Zeichen(final Enum<?> feldX) {
+    public Zeichen(final Enum feldX) {
         this(feldX, Feld.getFeldInfo(feldX));
     }
 
@@ -68,7 +68,7 @@ public class Zeichen extends AlphaNumFeld {
      * @param info mit Angabe der Start-Adresse
      * @since 0.6
      */
-    public Zeichen(final Enum<?> feldX, final FeldInfo info) {
+    public Zeichen(final Enum feldX, final FeldInfo info) {
         super(feldX, info);
         assert info.anzahlBytes() == 1 : "Zeichen kann nur 1 Byte lang sein";
     }

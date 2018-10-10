@@ -259,7 +259,7 @@ public class XmlServiceTest extends AbstractXmlTest {
         checkSatzart(new SatzTyp(220, 10, 0), Feld220Wagnis0.class);
     }
 
-    private static void checkSatzart(final SatzTyp satzNr, final Class<? extends Enum<?>> enumClass)
+    private static void checkSatzart(final SatzTyp satzNr, final Class<? extends Enum> enumClass)
             throws IOException {
         checkSatz(xmlService.getSatzart(satzNr), new SatzX(satzNr, enumClass));
     }

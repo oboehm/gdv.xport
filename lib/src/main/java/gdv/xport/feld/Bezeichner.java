@@ -1465,7 +1465,7 @@ public final class Bezeichner {
      * @return entsprechender Bezeichner
      * @since 3.1
      */
-    public static Bezeichner of(final Enum<?> enumFeld) {
+    public static Bezeichner of(final Enum enumFeld) {
         FeldInfo feldInfo = getFeldInfo(enumFeld);
         String bezeichnung = feldInfo != null && StringUtils.isNotBlank(feldInfo.bezeichnung())
                 ? feldInfo.bezeichnung()
@@ -1501,7 +1501,7 @@ public final class Bezeichner {
      * @param feldX the feld x
      * @return the feld info
      */
-    private static FeldInfo getFeldInfo(final Enum<?> feldX) {
+    private static FeldInfo getFeldInfo(final Enum feldX) {
         try {
             Field field = feldX.getClass().getField(feldX.name());
             return field.getAnnotation(FeldInfo.class);

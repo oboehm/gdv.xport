@@ -207,7 +207,7 @@ public class Datensatz extends Satz {
      * @param feldX the feld x
      * @param value the value
      */
-    private void setUp(final Teildatensatz tds, final Enum<?> feldX, final Feld value) {
+    private void setUp(final Teildatensatz tds, final Enum feldX, final Feld value) {
         if (!tds.hasFeld(feldX)) {
             LOG.trace("{} initialized with value {}.", tds, value);
             tds.add(value);

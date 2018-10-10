@@ -51,7 +51,7 @@ public final class Datum extends Feld {
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
      */
-    public Datum(final Enum<?> feldX) {
+    public Datum(final Enum feldX) {
         this(feldX, Feld.getFeldInfo(feldX));
     }
 
@@ -62,7 +62,7 @@ public final class Datum extends Feld {
      * @param info mit Angabe der Start-Adresse
      * @since 0.6
      */
-    public Datum(final Enum<?> feldX, final FeldInfo info) {
+    public Datum(final Enum feldX, final FeldInfo info) {
         super(feldX, info);
         this.dateFormat = getDateFormat(info.anzahlBytes());
     }

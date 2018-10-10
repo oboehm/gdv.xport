@@ -261,7 +261,7 @@ public class Teildatensatz extends Satz {
      * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
     @Override
-    public Feld getFeld(final Enum<?> feldX) throws IllegalArgumentException {
+    public Feld getFeld(final Enum feldX) throws IllegalArgumentException {
         return getFeld(Bezeichner.of(feldX));
     }
 
@@ -299,7 +299,7 @@ public class Teildatensatz extends Satz {
      * @return true, falls Feld vorhanden ist.
      * @since 0.9
      */
-    public boolean hasFeld(final Enum<?> feldX) {
+    public boolean hasFeld(final Enum feldX) {
         return this.hasFeld(new Bezeichner(Feld.toBezeichnung(feldX)));
     }
 

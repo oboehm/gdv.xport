@@ -35,8 +35,8 @@ public abstract class AbstractFeldTest {
      * @param satz Satz, zu dem das Enum gehoert
      * @param values z.B. Feld100.values()
      */
-    protected static void checkEntries(Satz satz, Enum<?>[] values) {
-        for (Enum<?> entry : values) {
+    protected static void checkEntries(Satz satz, Enum[] values) {
+        for (Enum entry : values) {
             if (entry.name().startsWith("INTRO") || entry.name().startsWith("TEILDATENSATZ")) {
                 continue;
             }

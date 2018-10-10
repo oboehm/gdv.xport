@@ -37,7 +37,7 @@ public class Betrag extends NumFeld {
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
      */
-    public Betrag(final Enum<?> feldX) {
+    public Betrag(final Enum feldX) {
         super(feldX);
     }
 
@@ -48,7 +48,7 @@ public class Betrag extends NumFeld {
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
      */
-    public Betrag(final Enum<?> feldX, final FeldInfo info) {
+    public Betrag(final Enum feldX, final FeldInfo info) {
         super(feldX, info);
     }
 

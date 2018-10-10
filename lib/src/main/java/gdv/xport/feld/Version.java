@@ -45,7 +45,7 @@ public class Version extends Feld {
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
      */
-    public Version(final Enum<?> feldX) {
+    public Version(final Enum feldX) {
         super(feldX);
     }
 

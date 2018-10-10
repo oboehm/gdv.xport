@@ -178,7 +178,7 @@ public final class Nachsatz extends Satz {
      * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
     @Override
-    public Feld getFeld(final Enum<?> feld) throws IllegalArgumentException {
+    public Feld getFeld(final Enum feld) throws IllegalArgumentException {
         if (feld instanceof Feld9999) {
             return getFeld((Feld9999) feld);
         } else {

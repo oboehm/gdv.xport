@@ -45,7 +45,7 @@ public class SatzX extends Datensatz {
 	 * @param satzart z.B. 100
 	 * @param felder mit allen Elementen des Datensatzes
 	 */
-	public SatzX(final int satzart, final Enum<?>[] felder) {
+	public SatzX(final int satzart, final Enum[] felder) {
 		super(satzart, getTeildatensaetzeFor(satzart, felder));
 	}
 
@@ -55,7 +55,7 @@ public class SatzX extends Datensatz {
 	 * @param satzart z.B. 100
 	 * @param enumClass Enumerationen-Klasse mit den Feldbeschreibungen
 	 */
-	public SatzX(final int satzart, final Class<? extends Enum<?>> enumClass) {
+	public SatzX(final int satzart, final Class<? extends Enum> enumClass) {
 		super(satzart, getTeildatensaetzeFor(satzart, enumClass));
 	}
 
@@ -66,7 +66,7 @@ public class SatzX extends Datensatz {
 	 * @param sparte Sparte
 	 * @param felder mit allen Elementen des Datensatzes
 	 */
-	public SatzX(final int satzart, final int sparte, final Enum<?>[] felder) {
+	public SatzX(final int satzart, final int sparte, final Enum[] felder) {
 		super(satzart, sparte, getTeildatensaetzeFor(satzart, felder));
 	}
 
@@ -77,7 +77,7 @@ public class SatzX extends Datensatz {
 	 * @param sparte Sparte
 	 * @param enumClass Enumerationen-Klasse mit den Feldbeschreibungen
 	 */
-	public SatzX(final int satzart, final int sparte, final Class<? extends Enum<?>> enumClass) {
+	public SatzX(final int satzart, final int sparte, final Class<? extends Enum> enumClass) {
 		super(satzart, sparte, getTeildatensaetzeFor(satzart, enumClass));
 	}
 
@@ -100,13 +100,13 @@ public class SatzX extends Datensatz {
 	 * @param enumClass Enum-Klasse, die den Datensatz beschreibt
 	 * @since 0.9
 	 */
-	public SatzX(final SatzTyp satzNr, final Class<? extends Enum<?>> enumClass) {
+	public SatzX(final SatzTyp satzNr, final Class<? extends Enum> enumClass) {
 		super(satzNr, getTeildatensaetzeFor(satzNr.getSatzart(), enumClass));
 	}
 
 	private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart,
-	        final Class<? extends Enum<?>> enumClass) {
-		Enum<?>[] constants = enumClass.getEnumConstants();
+	        final Class<? extends Enum> enumClass) {
+		Enum[] constants = enumClass.getEnumConstants();
 		return getTeildatensaetzeFor(satzart, constants);
 	}
 
@@ -115,7 +115,7 @@ public class SatzX extends Datensatz {
 	 *
 	 * @param felder Felder fuer die Teildatensaetze.
 	 */
-	protected void setUpTeildatensaetze(final Enum<?>[] felder) {
+	protected void setUpTeildatensaetze(final Enum[] felder) {
 		super.createTeildatensaetze(getTeildatensaetzeFor(this.getSatzart(), felder));
 		super.completeTeildatensaetze();
 	}

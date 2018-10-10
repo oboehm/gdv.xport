@@ -81,7 +81,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
      */
-    public Feld(final Enum<?> feldX) {
+    public Feld(final Enum feldX) {
         this(feldX, getFeldInfo(feldX));
     }
 
@@ -92,7 +92,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @param info Annotation mit den Feldinformationen
      * @since 0.6
      */
-    public Feld(final Enum<?> feldX, final FeldInfo info) {
+    public Feld(final Enum feldX, final FeldInfo info) {
         this.bezeichner = Feld.getAsBezeichner(feldX);
         this.byteAdresse = info.byteAdresse();
         this.ausrichtung = getAlignmentFrom(info);
@@ -294,7 +294,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @param info die FeldInfo-Annotation mit dem gewuenschten Datentyp
      * @return das erzeugte Feld
      */
-    public static Feld createFeld(final Enum<?> feldX, final FeldInfo info) {
+    public static Feld createFeld(final Enum feldX, final FeldInfo info) {
         try {
             Constructor<? extends Feld> ctor = info.type().getConstructor(Enum.class, FeldInfo.class);
             return ctor.newInstance(feldX, info);
@@ -628,7 +628,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @return den Bezeichner
      * @since 1.0
      */
-    public static Bezeichner getAsBezeichner(final Enum<?> feldX) {
+    public static Bezeichner getAsBezeichner(final Enum feldX) {
         Object object = getAsObject(feldX);
         if (object instanceof Bezeichner) {
             return (Bezeichner) object;
@@ -644,11 +644,11 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @param feldX das Feld-Element mit dem gesuchten Bezeichner
      * @return z.B. "Inkassoart"
      */
-    public static String getAsBezeichnung(final Enum<?> feldX) {
+    public static String getAsBezeichnung(final Enum feldX) {
         return getAsObject(feldX).toString();
     }
 
-    private static Object getAsObject(final Enum<?> feldX) {
+    private static Object getAsObject(final Enum feldX) {
         try {
             Field field = Bezeichner.class.getField(feldX.name());
             return field.get(null);
@@ -670,7 +670,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            z.B. HELLO_WORLD (als Aufzaehlungstyp)
      * @return z.B. "Hello World"
      */
-    public static String toBezeichnung(final Enum<?> name) {
+    public static String toBezeichnung(final Enum name) {
         FeldInfo feldInfo = getFeldInfo(name);
         if ((feldInfo == null) || StringUtils.isEmpty(feldInfo.bezeichnung())) {
             return toBezeichnung(name.name());
@@ -692,7 +692,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @param feldX the feld x
      * @return the feld info
      */
-    protected static FeldInfo getFeldInfo(final Enum<?> feldX) {
+    protected static FeldInfo getFeldInfo(final Enum feldX) {
         try {
             Field field = feldX.getClass().getField(feldX.name());
             return field.getAnnotation(FeldInfo.class);

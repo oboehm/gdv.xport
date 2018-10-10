@@ -243,17 +243,17 @@ public final class SatzFactoryTest extends AbstractTest {
         checkGetDatensatz(220, 140, gdv.xport.satz.feld.sparte140.Feld220.values(), "1");
     }
 
-    private void checkGetDatensatz(final int satzart, final int sparte, final Enum<?>[] felder, final String satzNr) {
+    private void checkGetDatensatz(final int satzart, final int sparte, final Enum[] felder, final String satzNr) {
         checkGetDatensatz(satzart, sparte, felder);
         Satz datensatz = getDatensatz(satzart, sparte);
         Feld satznummer = datensatz.getFeld(Bezeichner.SATZNUMMER, 1);
         assertEquals("falsche Satznummer", satzNr, satznummer.getInhalt());
     }
 
-    private void checkGetDatensatz(final int satzart, final int sparte, final Enum<?>[] felder) {
+    private void checkGetDatensatz(final int satzart, final int sparte, final Enum[] felder) {
         Satz datensatz = getDatensatz(satzart, sparte);
         for (int i = 0; i < felder.length; i++) {
-            Enum<?> feldInfo = felder[i];
+            Enum feldInfo = felder[i];
             if (feldInfo instanceof FeldInfo) {
                 String inhalt = datensatz.get(feldInfo);
                 assertNotNull("not found: " + feldInfo, inhalt);

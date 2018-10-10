@@ -35,7 +35,7 @@ import java.util.*;
 public class Satz230 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
-    private static final Map<Integer, Enum<?>[]> MAPPING = new HashMap<Integer, Enum<?>[]>();
+    private static final Map<Integer, Enum[]> MAPPING = new HashMap<Integer, Enum[]>();
 
     static {
         MAPPING.put(10, gdv.xport.satz.feld.sparte10.wagnisart9.Feld230.values());
@@ -65,7 +65,7 @@ public class Satz230 extends SpartensatzX {
      * @see gdv.xport.satz.model.SpartensatzX#getMapping()
      */
     @Override
-    protected Map<Integer, Enum<?>[]> getMapping() {
+    protected Map<Integer, Enum[]> getMapping() {
         return MAPPING;
     }
 

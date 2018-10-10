@@ -302,7 +302,7 @@ public abstract class Satz implements Cloneable {
 	 * @param feldX das gewuenschte Feld-Element
 	 * @param value neuer Inhalt
 	 */
-	public final void set(final Enum<?> feldX, final String value) {
+	public final void set(final Enum feldX, final String value) {
 		Bezeichner name = Feld.getAsBezeichner(feldX);
 		this.set(name, value);
 	}
@@ -314,7 +314,7 @@ public abstract class Satz implements Cloneable {
      * @param value neuer Inhalt
      * @since 0.9 (oboehm, 1-Apr-2013)
      */
-    public final void set(final Enum<?> feldX, final Integer value) {
+    public final void set(final Enum feldX, final Integer value) {
         this.set(feldX, Integer.toString(value));
     }
 
@@ -325,7 +325,7 @@ public abstract class Satz implements Cloneable {
      * @param value neuer Inhalt
      * @since 0.9 (oboehm, 1-Apr-2013)
      */
-    public final void set(final Enum<?> feldX, final Character value) {
+    public final void set(final Enum feldX, final Character value) {
         this.set(feldX, Character.toString(value));
     }
 
@@ -363,7 +363,7 @@ public abstract class Satz implements Cloneable {
 	 * @param feldX das gewuenschte Feld-Element
 	 * @return Inhalt des gefundenden Felds
 	 */
-	public final String get(final Enum<?> feldX) {
+	public final String get(final Enum feldX) {
 		Bezeichner name = Feld.getAsBezeichner(feldX);
 		return this.get(name);
 	}
@@ -377,7 +377,7 @@ public abstract class Satz implements Cloneable {
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 */
-	public Feld getFeld(final Enum<?> feld) throws IllegalArgumentException {
+	public Feld getFeld(final Enum feld) throws IllegalArgumentException {
 		for (int i = 0; i < teildatensatz.length; i++) {
 			try {
 				Feld x = teildatensatz[i].getFeldSafe(feld);
@@ -401,7 +401,7 @@ public abstract class Satz implements Cloneable {
      * @param feld gewuenschtes Feld-Element
      * @return das gesuchte Feld
      */
-    public Feld getFeldSafe(final Enum<?> feld) {
+    public Feld getFeldSafe(final Enum feld) {
         try {
             return getFeld(feld);
         } catch (IllegalArgumentException ex) {
@@ -1046,7 +1046,7 @@ public abstract class Satz implements Cloneable {
 	 * @return eine Liste mit Teildatensaetzen
 	 */
 	protected static List<Teildatensatz> getTeildatensaetzeFor(final int satzart,
-	        final Enum<?>[] felder) {
+	        final Enum[] felder) {
 		SortedMap<Integer, Teildatensatz> tdsMap = new TreeMap<>();
 		List<MetaFeldInfo> metaFeldInfos = getMetaFeldInfos(felder);
         for (MetaFeldInfo metaFeldInfo : metaFeldInfos) {
@@ -1104,9 +1104,9 @@ public abstract class Satz implements Cloneable {
 	 * @param felder the felder
 	 * @return the meta feld infos
 	 */
-	protected static List<MetaFeldInfo> getMetaFeldInfos(final Enum<?>[] felder) {
+	protected static List<MetaFeldInfo> getMetaFeldInfos(final Enum[] felder) {
 		List<MetaFeldInfo> metaFeldInfos = new ArrayList<>(felder.length);
-        for (Enum<?> f : felder) {
+        for (Enum f : felder) {
             String name = f.name();
             try {
                 Field field = f.getClass().getField(name);
@@ -1124,16 +1124,16 @@ public abstract class Satz implements Cloneable {
 	}
 
 	private static List<MetaFeldInfo> getMetaFeldInfos(final FelderInfo info) {
-		Collection<? extends Enum<?>> enums = getAsList(info);
+		Collection<? extends Enum> enums = getAsList(info);
 		List<MetaFeldInfo> metaFeldInfos = new ArrayList<>(enums.size());
-		for (Enum<?> enumX : enums) {
+		for (Enum enumX : enums) {
 			metaFeldInfos.add(new MetaFeldInfo(enumX, info));
 		}
 		return metaFeldInfos;
 	}
 
-	private static Collection<? extends Enum<?>> getAsList(final FelderInfo info) {
-		Class<? extends Enum<?>> enumClass = info.type();
+	private static Collection<? extends Enum> getAsList(final FelderInfo info) {
+		Class<? extends Enum> enumClass = info.type();
 		return getAsList(enumClass.getEnumConstants());
 	}
 
@@ -1145,9 +1145,9 @@ public abstract class Satz implements Cloneable {
 	 * @param felder the felder
 	 * @return the feld info list
 	 */
-	private static List<Enum<?>> getAsList(final Enum<?>[] felder) {
-		List<Enum<?>> feldList = new ArrayList<>(felder.length);
-        for (Enum<?> f : felder) {
+	private static List<Enum> getAsList(final Enum[] felder) {
+		List<Enum> feldList = new ArrayList<>(felder.length);
+        for (Enum f : felder) {
             String name = f.name();
             try {
                 Field field = f.getClass().getField(name);
@@ -1177,7 +1177,7 @@ public abstract class Satz implements Cloneable {
 	 * @param feldX das Feld-Element
 	 * @param tds der entsprechende Teildatensatz
 	 */
-	protected static void add(final Enum<?> feldX, final Teildatensatz tds) {
+	protected static void add(final Enum feldX, final Teildatensatz tds) {
 		FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
 		Feld feld = Feld.createFeld(feldX, info);
 		if (info.nr() < 7) {      // TODO: diese Abfrage ist eigentlich unnoetig
@@ -1190,7 +1190,7 @@ public abstract class Satz implements Cloneable {
 		}
 	}
 
-	private static boolean isSatznummer(final Enum<?> feldX) {
+	private static boolean isSatznummer(final Enum feldX) {
 		return (feldX.name().length() <= 11) && feldX.name().startsWith("SATZNUMMER");
 	}
 

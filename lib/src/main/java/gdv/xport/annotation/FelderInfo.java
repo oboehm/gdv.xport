@@ -39,7 +39,7 @@ public @interface FelderInfo {
      *
      * @return den Typ der Enum
      */
-    Class<? extends Enum<?>> type();
+    Class<? extends Enum> type();
 
     /**
      * Sparte, fuer den die referenzierten FeldInfos gelten. Mit diesem Wert

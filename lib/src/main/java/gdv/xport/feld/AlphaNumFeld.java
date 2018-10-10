@@ -26,7 +26,7 @@ public class AlphaNumFeld extends Feld {
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
      */
-    public AlphaNumFeld(final Enum<?> feldX) {
+    public AlphaNumFeld(final Enum feldX) {
         super(feldX);
     }
 
@@ -89,7 +89,7 @@ public class AlphaNumFeld extends Feld {
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
      */
-    public AlphaNumFeld(final Enum<?> feldX, final FeldInfo info) {
+    public AlphaNumFeld(final Enum feldX, final FeldInfo info) {
         super(feldX, info);
     }
 

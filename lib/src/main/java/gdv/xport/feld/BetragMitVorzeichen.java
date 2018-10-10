@@ -36,7 +36,7 @@ public final class BetragMitVorzeichen extends Betrag {
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
      */
-    public BetragMitVorzeichen(final Enum<?> feldX) {
+    public BetragMitVorzeichen(final Enum feldX) {
         this(feldX, Feld.getFeldInfo(feldX));
     }
 
@@ -47,7 +47,7 @@ public final class BetragMitVorzeichen extends Betrag {
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
      */
-    public BetragMitVorzeichen(final Enum<?> feldX, final FeldInfo info) {
+    public BetragMitVorzeichen(final Enum feldX, final FeldInfo info) {
         super(feldX, info);
         this.setVorzeichen('+');
     }

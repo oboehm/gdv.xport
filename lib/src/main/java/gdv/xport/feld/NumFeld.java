@@ -50,7 +50,7 @@ public class NumFeld extends Feld {
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
      */
-    public NumFeld(final Enum<?> feldX) {
+    public NumFeld(final Enum feldX) {
         this(feldX, Feld.getFeldInfo(feldX));
     }
 
@@ -61,7 +61,7 @@ public class NumFeld extends Feld {
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
      */
-    public NumFeld(final Enum<?> feldX, final FeldInfo info) {
+    public NumFeld(final Enum feldX, final FeldInfo info) {
         super(feldX, info);
         this.nachkommastellen = info.nachkommaStellen();
         this.setInhalt(0);

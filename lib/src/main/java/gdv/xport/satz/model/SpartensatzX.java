@@ -18,12 +18,11 @@
 
 package gdv.xport.satz.model;
 
-import java.util.Map;
-
+import gdv.xport.satz.feld.FeldX;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import gdv.xport.satz.feld.FeldX;
+import java.util.Map;
 
 /**
  * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die nach
@@ -50,7 +49,7 @@ public abstract class SpartensatzX extends SatzX {
      * @param satzart the satzart
      * @param felder the felder
      */
-    public SpartensatzX(final int satzart, final Enum<?>[] felder) {
+    public SpartensatzX(final int satzart, final Enum[] felder) {
         super(satzart, felder);
     }
 
@@ -72,7 +71,7 @@ public abstract class SpartensatzX extends SatzX {
      * @param sparte the sparte
      * @param felder the felder
      */
-    public SpartensatzX(final int satzart, final int sparte, final Enum<?>[] felder) {
+    public SpartensatzX(final int satzart, final int sparte, final Enum[] felder) {
         super(satzart, sparte, felder);
     }
 
@@ -81,7 +80,7 @@ public abstract class SpartensatzX extends SatzX {
      *
      * @return the mapping
      */
-    protected abstract Map<Integer, Enum<?>[]> getMapping();
+    protected abstract Map<Integer, Enum[]> getMapping();
 
     /**
      * Liefert die entsprechende Enum-Felder zur angeforderten Spalte zurueck.
@@ -89,9 +88,9 @@ public abstract class SpartensatzX extends SatzX {
      * @param sparte Sparte
      * @return the Enum-Felder
      */
-    protected Enum<?>[] getFelderFor(final int sparte) {
-        Map<Integer, Enum<?>[]> map = this.getMapping();
-        Enum<?>[] felder = map.get(sparte);
+    protected Enum[] getFelderFor(final int sparte) {
+        Map<Integer, Enum[]> map = this.getMapping();
+        Enum[] felder = map.get(sparte);
         if (felder == null) {
             if (sparte == UNKNOWN_SPARTE) {
                 return FeldX.values();
@@ -114,7 +113,7 @@ public abstract class SpartensatzX extends SatzX {
             LOG.debug("nothing to do here - old Sparte = new Sparte (" + x + ")");
             return;
         }
-        Enum<?>[] felder = this.getFelderFor(x);
+        Enum[] felder = this.getFelderFor(x);
         this.setUpTeildatensaetze(felder);
         super.setSparte(x);
     }

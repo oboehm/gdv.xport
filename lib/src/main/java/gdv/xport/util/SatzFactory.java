@@ -59,8 +59,8 @@ public final class SatzFactory {
             new ConcurrentHashMap<SatzTyp, Class<? extends Satz>>();
     private static final Map<SatzTyp, Class<? extends Datensatz>> REGISTERED_DATENSATZ_CLASSES =
             new ConcurrentHashMap<SatzTyp, Class<? extends Datensatz>>();
-    private static final Map<SatzTyp, Class<? extends Enum<?>>> REGISTERED_ENUM_CLASSES =
-            new ConcurrentHashMap<SatzTyp, Class<? extends Enum<?>>>();
+    private static final Map<SatzTyp, Class<? extends Enum>> REGISTERED_ENUM_CLASSES =
+            new ConcurrentHashMap<SatzTyp, Class<? extends Enum>>();
     private static final XmlService XML_SERVICE = XmlService.getInstance();
 
     static {
@@ -235,7 +235,7 @@ public final class SatzFactory {
      * @param satzart die Satzart (1-9999)
      * @since 0.6
      */
-    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart) {
+    public static void registerEnum(final Class<? extends Enum> enumClass, final int satzart) {
         registerEnum(enumClass, new SatzTyp(satzart));
     }
 
@@ -248,7 +248,7 @@ public final class SatzFactory {
      * @param sparte die Sparte (0-999)
      * @since 0.6
      */
-    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final int satzart, final int sparte) {
+    public static void registerEnum(final Class<? extends Enum> enumClass, final int satzart, final int sparte) {
         registerEnum(enumClass, new SatzTyp(satzart, sparte));
     }
 
@@ -260,7 +260,7 @@ public final class SatzFactory {
      * @param satzNr die SatzNummer (z.B. new SatzNummer(100))
      * @since 0.9
      */
-    public static void registerEnum(final Class<? extends Enum<?>> enumClass, final SatzTyp satzNr) {
+    public static void registerEnum(final Class<? extends Enum> enumClass, final SatzTyp satzNr) {
         if (REGISTERED_DATENSATZ_CLASSES.containsKey(satzNr)) {
             LOG.info("Registered " + REGISTERED_DATENSATZ_CLASSES.get(satzNr) + " for " + satzNr
                     + " will be replaced by " + enumClass);
@@ -382,7 +382,7 @@ public final class SatzFactory {
     }
     
     private static Satz generateSatz(final SatzTyp satztyp) {
-        Class<? extends Enum<?>> enumClass = REGISTERED_ENUM_CLASSES.get(satztyp);
+        Class<? extends Enum> enumClass = REGISTERED_ENUM_CLASSES.get(satztyp);
         if (enumClass == null) {
             Satz satz = XML_SERVICE.getSatzart(satztyp);
             if (satz == null) {
@@ -399,7 +399,7 @@ public final class SatzFactory {
     }
 
     private static Datensatz generateDatensatz(final SatzTyp satzNr) {
-        Class<? extends Enum<?>> enumClass = REGISTERED_ENUM_CLASSES.get(satzNr);
+        Class<? extends Enum> enumClass = REGISTERED_ENUM_CLASSES.get(satzNr);
         if (enumClass != null) {
             return new SatzX(satzNr, enumClass);
         }
