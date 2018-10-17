@@ -3,7 +3,9 @@ language: java
 jdk:
   - oraclejdk8
 
-sudo : required services : - docker
+sudo: required
+services:
+  - docker
 
 addons:
   sonarcloud:
