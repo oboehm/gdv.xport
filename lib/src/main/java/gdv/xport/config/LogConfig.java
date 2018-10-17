@@ -49,7 +49,7 @@ public final class LogConfig {
      * damit einmal instanziiert.
      *
      * @param uri z.B. "jdbc:hsqldb:mem:logdb" oder
-     *            "jdbc:postgresql://192.168.99.100:3277/test?user=test&password=test"
+     *            "jdbc:postgresql://192.168.99.100:3277/test?user=test&amp;password=test"
      */
     public LogConfig(URI uri) {
         this.dbURI = uri;
