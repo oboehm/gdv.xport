@@ -24,6 +24,14 @@
       </action>
     </release>
 
+    <release version="3.2.3" date="17-Okt-2018"
+             description="Security-Fix">
+      <action dev="oboehm" type="fix" date="16-Okt-2018">
+        Jackson-Bibliothek f&#252;r JSON-Serialisierung aktualisiert
+        (behebt CVE-2018-7489, s. https://github.com/oboehm/gdv.xport/network/alert/pom.xml/com.fasterxml.jackson.core:jackson-databind/open)
+      </action>
+    </release>
+
     <release version="3.2.2" date="09-Sep-2018"
              description="Bug-Fix">
       <action dev="oboehm" type="fix" issue="issues/34" date="6-Sep-2018">
