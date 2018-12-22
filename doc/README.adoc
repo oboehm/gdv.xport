@@ -1,0 +1,50 @@
+= Entwickler-Bereich
+
+Dieser Bereich ist für die interne Entwicklung gedacht:
+
+* link:delivery.adoc[Check-Liste]: für die Auslieferung eines neuen Releases
+* link:deployment.adoc[Deployment]: für das Deployment auf Heroku
+* link:release-notes[Release Notes]: Übersicht über die einzelnen Versionen
+
+
+== Wünsche und Wehwehchen
+
+Falls dir ein Feature fehlt - einfach eine Anfrage unter 
+https://github.com/oboehm/gdv.xport/issues[Issues] stellen und mit dem Label "Wunsch" markieren.
+Um die Chancen für eine Realsierung zu erhöhen, darf man gerne selber Hand anlegen und die Implementierung liefern.
+Pull-Requests werden gerne entgegengenommen, sofern man einige einfache Regeln einhält (s.u.).
+
+Fehler werden ebenfalls als https://github.com/oboehm/gdv.xport/issues[Issue] eingestellt und dem Label "Bug" gekennzeichnet.
+Wichtig ist vor allem, dass sich der Bug reproduzieren lässt.
+Je genauer die Beschreibung hierfür ist, desto größer ist die Wahrscheinlichkeit, dass der Bug gefunden wird.
+Nur dann kann man ihn auch beheben.
+
+
+
+== Eigener Fork
+
+Gerne darf man einen eigenen Fork von gdv.xport ziehen, um mit dem Code zu experimentieren.
+Während das letzte Release auf dem https://github.com/oboehm/gdv.xport[master]-Branch zu finden ist,
+findet die aktuelle Entwicklung auf dem https://github.com/oboehm/gdv.xport/tree/develop/4.x[develop/4.x]-Branch statt.
+
+Um festzustellen, ob das Projekt richtig aufgesetzt ist, startet man am besten die Unit-Tests, die ca. 90% des Codes abdecken.
+Laufen sie durch und ist alles im grünen Bereich, kann man dann bequem den Code erkunden und eigene Experimente (oder Erweiterungen) anstellen.
+
+Es wäre nett, wenn du deine Erweiterungen wieder in gdv.xport zurückfließen lässt,
+sofern sie von allgemeiner Bedeutung sind und es sicht nicht um Firmengeheimnisse handelt.
+Auf diese Weise sind schon viele Erweiterungen und Korrekturen in gdv.xport eingeflossen, von der letztendlich alle profitieren.
+
+
+
+== Regeln für Pull-Requests
+
+- Bitte auf dem develop-Branch (aktuell: `develop/4.x`) arbeiten und dafür den Pull-Request erstellen.
+  Wird auf dem master-Branch gearbeitet, bringt dies das ganze 
+  https://nvie.com/posts/a-successful-git-branching-model/[GitFlow-Modell] durcheinander, nachdem hier entwickelt wird.
+- Bitte die Prinzipien von https://de.wikipedia.org/wiki/Clean_Code[Clean Code] beachten.
+- Bitte die Tests nicht vergessen und darauf achten, dass alle Tests grün sind.
+- Es liegt keine Lizenz-Verletzung vor und die Änderungen und Erweiterungen des Codes stehen ebenfalls unter der Apache-Lizenz.
+
+Noch ein Hinweis zu den Tests, weil sie überlebenswichtig für künftige Refactor-Maßnahmen sind:
+Gern gesehen sind Test-Datensätze aus dem realen Leben, da das GDV-Format viele Interpretierungsspielräume lässt, die vielleicht nur falsch umgesetzt wurden.
+Bitte aber darauf achten, dass diese Test-Sätze keine personen- oder firmenbezogene Daten enthalten.

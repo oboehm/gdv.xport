@@ -10,12 +10,12 @@
 <project name="gdv.xport">
 
   <bannerLeft>
-    <name>GDV.XPORT</name>
+    <name>gdv.xport</name>
+    <src>img/gdv-xport.png</src>
   </bannerLeft>
  
   <bannerRight>
-    <name>GDV.XPORT</name>
-    <src>img/gdv-xport.png</src>
+    <name>gdv.xport</name>
   </bannerRight>
  
   <version position="left"/>
