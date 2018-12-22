@@ -1,0 +1,82 @@
+= Auslieferung eines neuen Releases
+
+
+== Checkliste
+
+Check-Liste für die Auslieferung eines neuen Releases:
+
+[cols="1,2,4", options="header"]
+.Check-Liste
+|===
+|Zeitpunkt |Aufgabe |Anmerkung
+
+|vorher
+|Release-Notes erstellen
+|link:release-notes.adoc[release-notes.adoc] aktualisieren
+
+|vorher
+|Release-Branch erstellen
+|release-branch erstellen, developer-branch dorthin auschecken
+(s.a. http://nvie.com/posts/a-successful-git-branching-model/[Git Branching-Modell]) 
+
+|D-Day 
+|Versions-Nummer aktualisieren 
+|im Release-Branch überall "-SNAPSHOT" aus dem POM entfernen
+
+|D-Day
+|Finaler Release-Build und Release-Test (inkl. Signierung)
+|baue alle Artefakte auf dem Release-Branch 
+(`mvn -B -Prelease -Dpatterntesting.integrationTest clean install source:jar javadoc:jar gpg:sign -Dgpg.passphrase=xx`) 
+
+|D-Day
+|JARs auf https://oss.sonatype.org/[oss.sonatype.org] hochladen
+|verwende das Skript link:../src/script/deploy.sh[src/script/deploy.sh], um die Artefakte nach
+https://oss.sonatype.org/[oss.sonatype.org] hochzuladen
+(aber nicht vergessen, vorher noch die VERSION-Variable in diesem Skript anzupassen).
+
+|D-Day
+|Release ins Maven Central
+|nach dem Hochladen ins Staging-Repository
+https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide#SonatypeOSSMavenRepositoryUsageGuide-8.ReleaseIt[release it]:
+selektiere "Staging Repositories" auf
+https://oss.sonatype.org/[oss.sonatype.org],
+drücke "Refresh" und dann "Close" und "Release".
+
+|D-Day
+|Doku und -Reports generieren
+|Starte `mvn -Dpatterntesting.integrationTest clean site-deploy` starten.
+Kopiere `/tmp/gdv-xport` anschließend auf die Web-Seite.
+
+|D-Day
+|release-Branch auf master mergen
+|dazu lokal auf master-Branch gehen, mit release-Branch mergen und anschließend comitten;
+
+|D-Day
+|Label setzen
+|`git tag gdv-xport-4.0.0` (lokal)
+`git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-4.0.0` (remote)
+
+|nachher
+|Beginn mit nächstem Snapshot
+|auf developer-Branch gehen, mit master mergen;
+in pom.xml Version hochzählen, "-SNAPSHOT" anhängen 
+
+|nachhar
+|Auslieferung bekanntmachen
+|Nachricht in entsprechende Xing-Gruppe
+(https://www.xing.com/communities/groups/datenaustausch-im-gdv-format-1053093[Datenaustausch im GDV-Format])
+ 
+|nachher
+|Maven Central prüfen
+|nach ein paar Tagen: überprüfen, ob die neue Version im https://search.maven.org/search?q=gdv.xport[Central Repository] angekommen ist 
+|===
+
+
+
+== Troubleshooting
+
+Wenn der Upload nach https://oss.sonatype.org/[oss.sonatype.org] hängenbleibt, kann man nach
+https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide#SonatypeOSSMavenRepositoryUsageGuide-7b.StageExistingArtifacts[Stage Existing Artifacts]
+vorgehen oder mal
+https://docs.sonatype.org/display/Repository/Uploading+3rd-party+Artifacts+to+The+Central+Repository[Uploading 3rd-party Artifacts]
+durchlesen.

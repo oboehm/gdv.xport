@@ -46,9 +46,9 @@ Die Weiterentwicklung der aktuellen Version findet auf dem develop-Branch statt 
 
 == Weitere Infos
 
-Im https://github.com/oboehm/gdv.xport/wiki[Wiki] ist alles Wichtige zu gdv.xport zusammengefasst.
+Unter link:doc/[doc] ist das Wichtigste für Entwickler zusammengefasst.
 Weitere Infos wie z.B. die http://www.aosd.de/gdv.xport/apidocs/index.html[JavaDocs] finden Sie auch auf der http://www.aosd.de/gdv.xport/[Maven Projekt-Seite] .
 
-* https://github.com/oboehm/gdv.xport/blob/develop/4.x/doc/release-notes.adoc[Release Notes]
+* link:doc/release-notes.adoc[Release Notes]
 * Projekt-Seite: http://www.aosd.de/gdv.xport/
 * Xing-Gruppe: https://www.xing.com/communities/groups/datenaustausch-im-gdv-format-9756-1053093

@@ -10,12 +10,12 @@
 <project name="gdv.xport">
 
   <bannerLeft>
-    <name> gdv.xport </name>
-    <src>img/gdv-xport.png</src>
+    <name>GDV.XPORT</name>
   </bannerLeft>
  
   <bannerRight>
-    <name> gdv.xport </name>
+    <name>GDV.XPORT</name>
+    <src>img/gdv-xport.png</src>
   </bannerRight>
  
   <version position="left"/>
@@ -37,21 +37,17 @@
       <item name="Release Notes"		    href="changes-report.html" />
       <item name="about gdv.xport"			href="index.html" />
       <item name="GDV-Format"				href="info.html" />
-      <item name="Entwickler"               href="/dev/index.html" />
       <item name="Kontakt"					href="contact.html" />
-      <item name="Download"                 href="downloads.html" />
+      <item name="Download" href="downloads.html"/>
     </menu>
     <menu name="Anleitung">
-      <item name="Hello World"              href="manual/hello.html" />
-      <item name="Der erste Import"         href="manual/import.html" />
-      <item name="Das Hauptprogramm"        href="manual/main.html" />
-      <item name="Export"                   href="manual/export.html" />
+      <item name="Hello World" href="manual/hello.html"/>
+      <item name="Der erste Import" href="manual/import.html"/>
+      <item name="Das Hauptprogramm" href="manual/main.html"/>
+      <item name="Export" href="manual/export.html"/>
       <item name="Streaming API"			href="manual/streaming.html" />
-      <item name="Erweiterungen"            href="manual/extend.html" />
-      <item name="JavaDoc API"              href="apidocs/index.html" />
-    </menu>
-    <menu name="Folien">
-      <item name="Kurz-&#220;bersicht"      href="slides/slides.html" />
+      <item name="Erweiterungen" href="manual/extend.html"/>
+      <item name="JavaDoc API" href="apidocs/index.html"/>
     </menu>
 
     <menu ref="modules" />
