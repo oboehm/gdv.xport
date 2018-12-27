@@ -248,20 +248,6 @@ public final class DatenpaketController {
         return text;
     }
 
-    private static ResponseEntity<String> createResponseEntity(String response, MediaType mimeType) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.setContentType(mimeType);
-        return new ResponseEntity<>(response, responseHeaders, HttpStatus.CREATED);
-    }
-
-    private static MimeType toMimeType(String type, HttpServletRequest request) {
-        if (StringUtils.isBlank(type)) {
-            return toMimeTypes(request).get(0);
-        } else {
-            return toMimeType(type);
-        }
-    }
-
     private static List<MimeType> toMimeTypes(HttpServletRequest request) {
         Set<MimeType> mimeTypes = new LinkedHashSet<>();
         String format = StringUtils.substringAfterLast(request.getServletPath(), ".");

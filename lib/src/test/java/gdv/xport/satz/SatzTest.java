@@ -86,7 +86,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testSatz() {
         Satz satz100 = new Datensatz(100, 1);
-        assertEquals(satz100.getSatzart(), 100);
+        assertEquals(100, satz100.getSatzart());
     }
 
     /**

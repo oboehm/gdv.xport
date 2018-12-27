@@ -1,11 +1,5 @@
 package gdv.xport.satz.feld.sparte140;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.IOException;
-
-import org.junit.Test;
-
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.model.Satz220;
@@ -13,6 +7,11 @@ import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzTyp;
+import org.junit.Test;
+
+import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit-Tests fuer {@link Feld220}.
@@ -53,17 +52,17 @@ public class Feld220Test extends AbstractDatensatzTest {
         // Teste SatzXml
         SatzXml satzXml = XmlService.getInstance().getSatzart(new SatzTyp(220, 140));
         satzXml.importFrom(input);
-        assertEquals("Zwei Teildatensaetze erwartet (SatzXml)", satzXml.getNumberOfTeildatensaetze(), 2);
+        assertEquals("Zwei Teildatensaetze erwartet (SatzXml)", 2, satzXml.getNumberOfTeildatensaetze());
 
         // Teste SatzX
         SatzX satzX = new SatzX(220, Feld220.values());
         satzX.importFrom(input);
-        assertEquals("Zwei Teildatensaetze erwartet (SatzX)", satzX.getNumberOfTeildatensaetze(), 2);
+        assertEquals("Zwei Teildatensaetze erwartet (SatzX)", 2, satzX.getNumberOfTeildatensaetze());
 
         // Teste Satz220 (default via Datenpaket)
         Satz220 satz220 = new Satz220(140);
         satz220.importFrom(input);
-        assertEquals("Zwei Teildatensaetze erwartet (Satz220)", satz220.getNumberOfTeildatensaetze(), 2);
+        assertEquals("Zwei Teildatensaetze erwartet (Satz220)", 2, satz220.getNumberOfTeildatensaetze());
     }
 
 }

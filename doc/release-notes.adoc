@@ -2,6 +2,12 @@
 
 
 
+== 4.1 (in Planung)
+
+* Performance-Optimierung und Verringerund des Speicher-Abdrucks (Footprint).
+
+
+
 == 4.0 (kommt noch)
 
 * Aktualisierung auf die aktuelle XML-Version von 2018.
@@ -9,8 +15,8 @@
   Ebenso wurden manche Konstanten ind den Feld-Beschreibungen korrigiert.
 * #_neu_#: es gibt ein neues Modul 'gdv-xport-deprecated', in der Klassen und Enumerationen verschoben wurden, die 'deprecated' sind.
   Dieses Abhängigkeit nicht nur dann benötigt, wenn man noch einer dieser Klassen verwendet
-* #_geplant_#: Performance-Optimierung und Verringerund des Speicher-Abdrucks (Footprint).
 * Komplexität mancher Methoden reduziert
+* Umstellung auf Java 8 
 
 
 

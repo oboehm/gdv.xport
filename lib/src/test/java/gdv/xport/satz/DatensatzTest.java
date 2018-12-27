@@ -18,23 +18,23 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.util.SatzTyp;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-import org.apache.logging.log4j.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Gemeinsame Oberklasse fuer SatzTest.
@@ -81,7 +81,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
         Satz ds = new Datensatz("0200", 2);
         ds.add(new AlphaNumFeld((Bezeichner.INKASSOART), 1, 43));
         ds.set(Bezeichner.INKASSOART, "2");
-        assertEquals(ds.get(Bezeichner.INKASSOART), "2");
+        assertEquals("2", ds.get(Bezeichner.INKASSOART));
     }
 
     /**

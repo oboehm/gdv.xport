@@ -550,8 +550,7 @@ public class Datensatz extends Satz {
 
 	private boolean matchesFirstTeildatensatz(PushbackLineNumberReader reader) throws IOException {
 		if (this.hasSparte()) {
-			int sparte = readSparte(reader);
-			return this.getSparte() == sparte;
+			return this.getSparte() == readSparte(reader);
 		}
 		return true;
 	}

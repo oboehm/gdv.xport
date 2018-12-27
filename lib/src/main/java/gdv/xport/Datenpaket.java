@@ -53,7 +53,7 @@ public final class Datenpaket {
 
     private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
     private final Vorsatz vorsatz = new Vorsatz();
-    private final List<Datensatz> datensaetze = new ArrayList<Datensatz>();
+    private final List<Datensatz> datensaetze = new ArrayList<>();
     private Nachsatz nachsatz = new Nachsatz();
 
     /**
@@ -182,11 +182,8 @@ public final class Datenpaket {
      * @since 1.0
      */
     public void export(final File file, final Charset encoding) throws IOException {
-        Writer writer = new OutputStreamWriter(new FileOutputStream(file), encoding);
-        try {
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), encoding)) {
             export(writer);
-        } finally {
-            writer.close();
         }
     }
 
@@ -212,8 +209,7 @@ public final class Datenpaket {
      */
     public void export(final Writer writer) throws IOException {
         vorsatz.export(writer);
-        for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext(); ) {
-            Satz datensatz = iterator.next();
+        for (Datensatz datensatz : datensaetze) {
             datensatz.export(writer);
         }
         nachsatz.export(writer);
@@ -330,7 +326,8 @@ public final class Datenpaket {
         }
     }
 
-    private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart) throws IOException {
+    private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
+            throws IOException {
         int sparte = Datensatz.readSparte(reader);
         WagnisartLeben wagnisart = WagnisartLeben.NULL;
         TeildatensatzNummer teildatensatzNummer = TeildatensatzNummer.NULL;
@@ -343,12 +340,12 @@ public final class Datenpaket {
                 teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
             }
         }
-        
+
         // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
         int krankenFolgeNr = -1;
         if (sparte == 20 && satzart == 220) {
             krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
-            
+
             // Krankenfolgenummer nicht auslesbar -> Unbekannter Datensatz
             if (krankenFolgeNr == -1) {
                 Datensatz satz = new SatzX(220, 20, FeldX.class);
@@ -356,9 +353,9 @@ public final class Datenpaket {
                 return satz;
             }
         }
-        
-        Datensatz satz = SatzFactory.getDatensatz(new SatzTyp(satzart, sparte, wagnisart
-                .getCode(), krankenFolgeNr, teildatensatzNummer.getCode()));
+
+        Datensatz satz = SatzFactory.getDatensatz(
+                new SatzTyp(satzart, sparte, wagnisart.getCode(), krankenFolgeNr, teildatensatzNummer.getCode()));
         satz.importFrom(reader);
         return satz;
     }
@@ -395,11 +392,8 @@ public final class Datenpaket {
      * @since 1.0
      */
     public void importFrom(final File file, final Charset encoding) throws IOException {
-        Reader reader = new InputStreamReader(new FileInputStream(file), encoding);
-        try {
+        try (Reader reader = new InputStreamReader(new FileInputStream(file), encoding)) {
             this.importFrom(reader);
-        } finally {
-            reader.close();
         }
     }
 
@@ -510,8 +504,7 @@ public final class Datenpaket {
      */
     public String getVermittler() {
         String vermittler = this.vorsatz.getVermittler();
-        assert vermittler.equals(this.nachsatz.getVermittler()) : vorsatz + " or " + nachsatz
-                + " is corrupt";
+        assert vermittler.equals(this.nachsatz.getVermittler()) : vorsatz + " or " + nachsatz + " is corrupt";
         return vermittler;
     }
 
@@ -568,8 +561,8 @@ public final class Datenpaket {
     private List<ConstraintViolation> validateVUNummer() {
         List<ConstraintViolation> violations = new ArrayList<ConstraintViolation>();
         if (Config.DUMMY_VU_NUMMER.equals(this.getVuNummer())) {
-            ConstraintViolation cv = new SimpleConstraintViolation(
-                    "VU-Nummer is not set", this, Config.DUMMY_VU_NUMMER);
+            ConstraintViolation cv =
+                    new SimpleConstraintViolation("VU-Nummer is not set", this, Config.DUMMY_VU_NUMMER);
             violations.add(cv);
         }
         return violations;
@@ -590,8 +583,7 @@ public final class Datenpaket {
         Map<String, Integer> folgenummern = new HashMap<String, Integer>();
         for (Datensatz datensatz : this.datensaetze) {
             String nr = datensatz.getVersicherungsscheinNummer().trim();
-            String key = nr + datensatz.getSatzartFeld().getInhalt()
-                    + datensatz.getSparteFeld().getInhalt();
+            String key = nr + datensatz.getSatzartFeld().getInhalt() + datensatz.getSparteFeld().getInhalt();
             Integer expected = folgenummern.get(key);
             if (expected == null) {
                 expected = 1;
@@ -604,8 +596,9 @@ public final class Datenpaket {
             expected++;
             folgenummern.put(key, expected);
             if (folgenr != expected) {
-                ConstraintViolation cv = new SimpleConstraintViolation(
-                        "falsche Folgenummer (erwartet: " + expected + ")", datensatz, folgenr);
+                ConstraintViolation cv =
+                        new SimpleConstraintViolation("falsche Folgenummer (erwartet: " + expected + ")", datensatz,
+                                folgenr);
                 violations.add(cv);
             }
         }
@@ -618,8 +611,8 @@ public final class Datenpaket {
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " for " + this.getVuNummer() + " with "
-                + this.datensaetze.size() + "+2 (Daten-)Saetze";
+        return this.getClass().getSimpleName() + " for " + this.getVuNummer() + " with " + this.datensaetze.size() +
+                "+2 (Daten-)Saetze";
     }
 
 }

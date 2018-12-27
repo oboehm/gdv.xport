@@ -217,6 +217,7 @@ public final class Bezeichner {
     public static final Bezeichner BEGINNDAT_DER_NAECHSTEN_TODESFALL_VS = BEGINNDAT_NAECHSTEN_TODESFALL_VS; 
     public static final Bezeichner BEGINNDAT_NAECHSTEN_JAHRESRENTESUMME = new Bezeichner("Beginndatum der naechsten Jahresrentensumme");
     /** @deprecated use BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME. */
+    @Deprecated
     public static final Bezeichner BEGINNDAT_NAECHSTEN_UNFALLSUMME = BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME;
     public static final Bezeichner BEIHILFESTATUS = new Bezeichner("Beihilfestatus");
     public static final Bezeichner BEIHILFETRAEGER = new Bezeichner("Beihilfetraeger");
@@ -832,6 +833,7 @@ public final class Bezeichner {
     public static final Bezeichner RUECKKAUFSWERT_IN_WAEHRUNGSEINHEITEN_MIT_NACHKOMMA = new Bezeichner("Rueckkaufswert in W\u00e4hrungseinheiten");
     public static final Bezeichner RUECKKAUFSWERT_GUELTIG_AM = new Bezeichner("Rueckkaufswert gueltig am");
     /** @deprecated mit 2018 durch RUECKKAUFSWERT_GUELTIG_AM ersetzt. */
+    @Deprecated
     public static final Bezeichner RUECKKAUFSWERT_GUELTIG_AB = RUECKKAUFSWERT_GUELTIG_AM;
     public static final Bezeichner RUECKGEWAEHR_BEI_TOD = new Bezeichner("Rueckgewaehr bei Tod");
     public static final Bezeichner RUECKFUEHRUNGSKOSTEN = new Bezeichner("Rueckfuehrungskosten", "Rueckfuehrungskost");
@@ -846,16 +848,22 @@ public final class Bezeichner {
     public static final Bezeichner SATZ_NR_9 = new Bezeichner("Satznummer", "SatzNr9");
     public static final Bezeichner SATZNUMMER = new Bezeichner("Satznummer");
     /** @deprecated bitte SATZNUMMER oder SATZ_NR_1 verwenden. */
+    @Deprecated
     public static final Bezeichner SATZNUMMER1 = SATZNUMMER;
     /** @deprecated bitte SATZNUMMER oder SATZ_NR_2 verwenden. */
+    @Deprecated
     public static final Bezeichner SATZNUMMER2 = SATZNUMMER;
     /** @deprecated bitte SATZNUMMER oder SATZ_NR_3 verwenden. */
+    @Deprecated
     public static final Bezeichner SATZNUMMER3 = SATZNUMMER;
     /** @deprecated bitte SATZNUMMER oder SATZ_NR_4 verwenden. */
+    @Deprecated
     public static final Bezeichner SATZNUMMER4 = SATZNUMMER;
     /** @deprecated bitte SATZNUMMER verwenden. */
+    @Deprecated
     public static final Bezeichner SATZNUMMER5 = SATZNUMMER;
     /** @deprecated bitte SATZNUMMER oder SATZ_NR_9 verwenden. */
+    @Deprecated
     public static final Bezeichner SATZNUMMER9 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER38 = new Bezeichner("Satznummer38", "SatzNr");
     public static final Bezeichner SATZNUMMERNWIEDERHOLUNG =
@@ -883,8 +891,10 @@ public final class Bezeichner {
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WE_MAX = new Bezeichner("Selbstbeteiligung in WE (max.)", "SelbstbeteiligungInWeMax");
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WE_MIND = new Bezeichner("Selbstbeteiligung in WE (mind.)", "SelbstbeteiligungInWeMind");
     /** @deprecated bitte {@link #SELBSTBETEILIGUNG_IN_WE_MAX} verwenden. */
+    @Deprecated
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_MAX = SELBSTBETEILIGUNG_IN_WE_MAX;
     /** @deprecated bitte {@link #SELBSTBETEILIGUNG_IN_WE_MIND} verwenden. */
+    @Deprecated
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_MIND = SELBSTBETEILIGUNG_IN_WE_MIND;
     public static final Bezeichner SEPA_GLAEUBIGERIDENTIFIKATIONSNUMMER = new Bezeichner("SEPA-Glaeubigeridentifikationsnummer", "SEPAGlaeubigeridentifikationsnummer");
     public static final Bezeichner SEPA_MANDAT_AUSSTELLUNGSDATUM = new Bezeichner("SEPA-Mandat Ausstellungsdatum", "SEPAMandatAusstellungsdatum");
@@ -1011,6 +1021,7 @@ public final class Bezeichner {
     public static final Bezeichner UNTERSTUETZUNGSKASSE_SCHLUESSEL = new Bezeichner("Unterstuetzungskasse Schl\u00fcssel");
     public static final Bezeichner UNTERVERSICHERUNGSVERZICHT = new Bezeichner("Unterversicherungsverzicht", "UnterVerssverzicht");
     /** @deprecated bitte #UNTERVERSICHERUNGSVERZICHT verwenden. */
+    @Deprecated
     public static final Bezeichner UNTERVERS_VERZICHT = UNTERVERSICHERUNGSVERZICHT;
     public static final Bezeichner UNVERFALLBARKEIT = new Bezeichner("Unverfallbarkeit");
     public static final Bezeichner UNWIDERRUFLICHES_BEZUGSRECHT_IM_ERLEBENSFALL = new Bezeichner("Unwiderrufliches Bezugsrecht im Erlebensfall");
@@ -1186,12 +1197,16 @@ public final class Bezeichner {
     public static final Bezeichner WAEHRUNGSSCHLUESSEL3 = new Bezeichner("Waehrungsschl\u00fcssel 3");
     public static final Bezeichner WAEHRUNGSSCHLUESSEL4 = new Bezeichner("Waehrungsschl\u00fcssel 4");
     /** @deprecated bitte Konstanten ohne '_' benutzen. */
+    @Deprecated
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_1 = WAEHRUNGSSCHLUESSEL1;
     /** @deprecated bitte Konstanten ohne '_' benutzen. */
+    @Deprecated
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_2 = WAEHRUNGSSCHLUESSEL2;
     /** @deprecated bitte Konstanten ohne '_' benutzen. */
+    @Deprecated
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_3 = WAEHRUNGSSCHLUESSEL3;
     /** @deprecated bitte Konstanten ohne '_' benutzen. */
+    @Deprecated
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_4 = WAEHRUNGSSCHLUESSEL4;
     public static final Bezeichner WAGNIS = new Bezeichner("Wagnis");
     public static final Bezeichner WAGNIS2 = WAGNIS;
