@@ -7,9 +7,12 @@ Für das Deployment auf Heroku sind hautpsächlich die beiden Dateien
 
 zuständig.
 
+
 == Deployment auf Heroku
 
-Um den Branch _develop/3.x_ nach Heroku zu deployen, sind folgende
+=== Heroku CLI
+
+Um den Branch _release/3.x_ nach Heroku zu deployen, sind folgende
 Kommandos nötig:
 
 ----
@@ -21,18 +24,24 @@ git push heroku release/3.x:master
 Damit wird dieser Branch auf den Heroku-Master-Branch geschoben, da Heroku
 nur auf diesem Branch automatisch baut.
 
+=== GitHub
+
+Einfach auf release/4.x committen - dann sollte alles automatisch gebaut werden.
+Unter https://gdv-xport-400.herokuapp.com/ läuft dann die Anwendung.
+
+
 == Anwendung starten / stoppen
 
-Anwendung starten:
+Anwendung `gdv-xport-400` starten:
 ----
-heroku ps:scale web=1
+heroku ps:scale web=1 -a gdv-xport-400
 ----
 
 Anwendung stoppen:
 ----
-heroku ps:scale web=0
+heroku ps:scale web=0 -a gdv-xport-400
 ----
 
 == Anwendung testen
 
-https://gdv-xport-300.herokuapp.com/ aufrufen
+https://gdv-xport-400.herokuapp.com/ aufrufen
