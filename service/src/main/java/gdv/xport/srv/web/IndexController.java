@@ -18,8 +18,11 @@
 
 package gdv.xport.srv.web;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Map;
 
 /**
  * Dieser Controller ist die Verbindung zur Index-Seite. Sie stammt aus
@@ -31,18 +34,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
+    @Value("${spring.application.version}")
+    private String appVersion = "unbekannt";
+
     /**
      * Diese Methode verwendet Spring-Boot, um "/" auf "index.html" zu mappen.
+     * Und um die App-Version fuer Thymeleaf in den Context zu legen.
      *
      * @return "index"
      */
     @GetMapping("/")
-    String index(){
+    String index(Map<String, Object> model) {
+        model.put("appVersion", appVersion);
         return "index";
     }
 
     /**
-     * Mapping fuer Validate-Seite
+     * Mapping fuer Validate-Seite.
      *
      * @return "validate"
      */
@@ -52,7 +60,7 @@ public class IndexController {
     }
 
     /**
-     * Mapping fuer Format-Seite
+     * Mapping fuer Format-Seite.
      *
      * @return "format"
      */

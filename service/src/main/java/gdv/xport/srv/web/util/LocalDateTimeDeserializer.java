@@ -26,7 +26,7 @@ import java.time.format.*;
 
 /**
  * Da Spring noch keine Deserializer fuer {@link LocalDateTime} aus Java 8
- * mitbring, muessen wir das vorlaeufig noch selbst machen.
+ * mitbringt, muessen wir das vorlaeufig noch selbst machen.
  */
 public final class LocalDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
 
