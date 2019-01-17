@@ -8,7 +8,7 @@
 
 
 
-== 4.0 (Jan-2019)
+== 4.0 (20-Jan-2019)
 
 * Aktualisierung auf die aktuelle XML-Version von 2018.
 * Bezeichner-Klasse wurde aufgeräumt und falsche bzw. nicht benötigte Konstanten entfernt.
