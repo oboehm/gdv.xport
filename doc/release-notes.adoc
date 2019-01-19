@@ -12,10 +12,10 @@
 
 * Aktualisierung auf die aktuelle XML-Version von 2018.
 * Bezeichner-Klasse wurde aufgeräumt und falsche bzw. nicht benötigte Konstanten entfernt.
-  Ebenso wurden manche Konstanten ind den Feld-Beschreibungen korrigiert.
+  Ebenso wurden manche Konstanten in den Feld-Beschreibungen korrigiert.
 * #_neu_#: es gibt ein neues Modul 'gdv-xport-deprecated', in der Klassen und Enumerationen verschoben wurden, die 'deprecated' sind.
   Dieses Abhängigkeit wird nur dann benötigt, wenn man noch einer dieser Klassen verwendet
-* Komplexität mancher Methoden reduziert
+* Komplexität reduziert
 * Umstellung auf Java 8 
 
 
