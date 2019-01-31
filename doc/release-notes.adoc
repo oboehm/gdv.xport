@@ -7,8 +7,13 @@
 * Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
 
 
+== 4.0.1 (Feb-2019)
 
-== 4.0 (Jan-2019)
+* _fixed_: Problem beim CSV-Export mit Sonderzeichen (Strichpunkt) behoben
+  (https://github.com/oboehm/gdv.xport/issues/35[Issue #35])
+
+
+== 4.0.0 (15-Jan-2019)
 
 * Aktualisierung auf die aktuelle XML-Version von 2018.
 * Bezeichner-Klasse wurde aufgeräumt und falsche bzw. nicht benötigte Konstanten entfernt.

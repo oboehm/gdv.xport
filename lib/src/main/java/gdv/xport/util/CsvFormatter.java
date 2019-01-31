@@ -19,10 +19,12 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -103,7 +105,7 @@ public final class CsvFormatter extends AbstractFormatter {
         this.buildHead(datenpaket.getNachsatz());
     }
 
-    private void buildHead(Satz satz) throws IOException {
+    private void buildHead(Satz satz) {
         for (Feld feld : satz.getFelder()) {
             if (!felder.containsKey(feld.getBezeichner())) {
                 felder.put(feld.getBezeichner(), feld);
@@ -133,11 +135,20 @@ public final class CsvFormatter extends AbstractFormatter {
             this.felder.put(feld.getBezeichner(), feld);
         }
         for (Feld feld : this.felder.values()) {
-            this.write(feld.getInhalt().trim());
+            writeColumn(feld);
             this.write(";");
         }
         this.write("\n");
         this.getWriter().flush();
+    }
+
+    private void writeColumn(Feld feld) throws IOException {
+        String content = feld.getInhalt().trim();
+        if (feld instanceof AlphaNumFeld) {
+            this.write(StringEscapeUtils.escapeCsv(content));
+        } else {
+            this.write(content);
+        }
     }
 
     private void resetFelder() {

@@ -21,6 +21,7 @@ package gdv.xport.util;
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -54,17 +55,7 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
      */
     @Test
     public void testWriteSatz() throws IOException {
-        File output = new File("target", "vorsatz.csv");
-        try (Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1")) {
-            CsvFormatter formatter = new CsvFormatter(writer);
-            Satz satz = MUSTER_DATENPAKET.getVorsatz();
-            formatter.write(satz);
-        }
-        List<String> lines = FileUtils.readLines(output, StandardCharsets.ISO_8859_1);
-        assertEquals(2, lines.size());
-        assertEquals("Satzart;", lines.get(0).substring(0, 8));
-        File vorsatz = new File("src/test/resources/gdv/xport/util/vorsatz.csv");
-        FileTester.assertContentEquals(vorsatz, output);
+        checkWriteSatz(MUSTER_DATENPAKET.getVorsatz(), "vorsatz.csv");
     }
 
     /**
@@ -75,7 +66,7 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
     @Test
     public void testWriteDatenpaket() throws IOException {
         File output = new File("target", "musterdatei.csv");
-        try (Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1")) {
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(output), StandardCharsets.ISO_8859_1)) {
             CsvFormatter formatter = new CsvFormatter(writer);
             formatter.write(MUSTER_DATENPAKET);
         }
@@ -85,6 +76,32 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
             String[] columns = lines.get(i+2).split(";");
             assertEquals("line " + (i+2), datensatz.getSatzart(), Integer.parseInt(columns[0]));
         }
+    }
+
+    /**
+     * Hier wird getestet, ob Strichpunkte richtig maskiert wereen. Dies ist
+     * der Testfall fuer Issue #35.
+     *
+     * @throws IOException bei Schreib/Lese-Fehlern
+     */
+    @Test
+    public void testSemicolon() throws IOException {
+        Vorsatz satz = MUSTER_DATENPAKET.getVorsatz();
+        satz.setAdressat("Strich;\"Punkt\",Komma");
+        checkWriteSatz(satz, "issue35.csv");
+    }
+
+    private void checkWriteSatz(Satz satz, String filename) throws IOException {
+        File output = new File("target", filename);
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(output), StandardCharsets.ISO_8859_1)) {
+            CsvFormatter formatter = new CsvFormatter(writer);
+            formatter.write(satz);
+        }
+        List<String> lines = FileUtils.readLines(output, StandardCharsets.ISO_8859_1);
+        assertEquals(2, lines.size());
+        assertEquals("Satzart;", lines.get(0).substring(0, 8));
+        File vorsatz = new File("src/test/resources/gdv/xport/util/", filename);
+        FileTester.assertContentEquals(vorsatz, output);
     }
 
 }
