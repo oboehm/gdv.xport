@@ -19,7 +19,6 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
@@ -97,7 +96,7 @@ public final class CsvFormatter extends AbstractFormatter {
         this.writeBody(satz);
     }
 
-    private void buildHead(final Datenpaket datenpaket) throws IOException {
+    private void buildHead(final Datenpaket datenpaket) {
         this.buildHead(datenpaket.getVorsatz());
         for (Datensatz satz : datenpaket.getDatensaetze()) {
             this.buildHead(satz);
@@ -135,20 +134,11 @@ public final class CsvFormatter extends AbstractFormatter {
             this.felder.put(feld.getBezeichner(), feld);
         }
         for (Feld feld : this.felder.values()) {
-            writeColumn(feld);
+            this.write(StringEscapeUtils.escapeCsv(feld.getInhalt().trim()));
             this.write(";");
         }
         this.write("\n");
         this.getWriter().flush();
-    }
-
-    private void writeColumn(Feld feld) throws IOException {
-        String content = feld.getInhalt().trim();
-        if (feld instanceof AlphaNumFeld) {
-            this.write(StringEscapeUtils.escapeCsv(content));
-        } else {
-            this.write(content);
-        }
     }
 
     private void resetFelder() {
