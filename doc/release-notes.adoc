@@ -7,7 +7,7 @@
 * Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
 
 
-== 4.0.1 (Feb-2019)
+== 4.0.1 (2-Feb-2019)
 
 * _fixed_: Problem beim CSV-Export mit Sonderzeichen (Strichpunkt) behoben
   (https://github.com/oboehm/gdv.xport/issues/35[Issue #35])
