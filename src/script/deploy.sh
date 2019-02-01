@@ -8,7 +8,7 @@
 
 # set up some constants
 URL=https://oss.sonatype.org/service/local/staging/deploy/maven2/
-VERSION=3.2.3
+VERSION=4.0.0
 options="gpg:sign-and-deploy-file -Durl=$URL -DrepositoryId=sonatype-nexus-staging"
 
 # passphrase is needed for signing
@@ -56,3 +56,4 @@ deploy_war_for() {
 deploy_pom_for gdv-xport
 deploy_jar_for lib gdv-xport-lib
 deploy_war_for service gdv-xport-service
+deploy_jar_for deprecated gdv-xport-deprecated
