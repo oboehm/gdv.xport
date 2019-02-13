@@ -7,6 +7,11 @@
 * Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
 
 
+== 4.0.2 (14-Feb-2019)
+
+* _fixed_: Start-Probleme mit Uberjar
+  (https://github.com/oboehm/gdv.xport/issues/36[Issue #36])
+
 == 4.0.1 (2-Feb-2019)
 
 * _fixed_: Problem beim CSV-Export mit Sonderzeichen (Strichpunkt) behoben
