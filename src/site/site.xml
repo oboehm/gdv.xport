@@ -34,7 +34,7 @@
     </links>
     
     <menu name="gdv.xport">
-      <item name="Release Notes"		    href="changes-report.html" />
+      <item name="Release Notes"		    href="https://github.com/oboehm/gdv.xport/blob/master/doc/release-notes.adoc" />
       <item name="about gdv.xport"			href="index.html" />
       <item name="GDV-Format"				href="info.html" />
       <item name="Kontakt"					href="contact.html" />
