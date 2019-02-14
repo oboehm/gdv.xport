@@ -34,6 +34,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.*;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 
 import static org.hamcrest.Matchers.isEmptyString;
@@ -108,10 +109,9 @@ public abstract class AbstractFormatterTest extends AbstractTest {
      * @param formatter the formatter
      * @param filename the filename
      * @throws IOException falls was schiefgelaufen ist
-     * @throws XMLStreamException falls was schiefgelaufen ist
      */
-    protected static void exportMusterdatei(final AbstractFormatter formatter, final String filename)
-            throws IOException, XMLStreamException {
+    protected static File exportMusterdatei(final AbstractFormatter formatter, final String filename)
+            throws IOException {
         Datenpaket datenpaket = new Datenpaket();
         File siteDir = new File("target", "site");
         if (siteDir.mkdirs()) {
@@ -119,12 +119,13 @@ public abstract class AbstractFormatterTest extends AbstractTest {
         }
         File exportFile = new File(siteDir, filename);
         try (InputStream istream = AbstractFormatterTest.class.getResourceAsStream("/musterdatei_041222.txt");
-             Writer writer = new OutputStreamWriter(new FileOutputStream(exportFile), "ISO-8859-1")) {
+             Writer writer = new OutputStreamWriter(new FileOutputStream(exportFile), StandardCharsets.ISO_8859_1)) {
             datenpaket.importFrom(istream);
             formatter.setWriter(writer);
             formatter.write(datenpaket);
             LOG.debug("{} exported to {} .", datenpaket, exportFile);
         }
+        return exportFile;
     }
 
     /**
@@ -138,7 +139,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
      */
     protected static void checkNotice(final AbstractFormatter formatter, final String filename) throws IOException {
         File output = File.createTempFile("test-notice", ".export");
-        Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1");
+        Writer writer = new OutputStreamWriter(new FileOutputStream(output), StandardCharsets.ISO_8859_1);
         formatter.setWriter(writer);
         try {
             exportMusterdatei(formatter);
@@ -166,7 +167,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     protected static void exportMusterdatei(final AbstractFormatter formatter) throws IOException {
-        Reader reader = new InputStreamReader(new FileInputStream(MUSTERDATEI), "ISO-8859-1");
+        Reader reader = new InputStreamReader(new FileInputStream(MUSTERDATEI), StandardCharsets.ISO_8859_1);
         DatenpaketStreamer datenpaketStreamer = new DatenpaketStreamer(reader);
         datenpaketStreamer.register(formatter);
         try {

@@ -169,9 +169,8 @@ public final class XmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeStartElement("teildatensatz");
         xmlStreamWriter.writeAttribute("nr", teildatensatz.getNummer().getInhalt());
         xmlStreamWriter.writeCharacters("\n");
-        for (Feld feld1 : teildatensatz.getFelder()) {
+        for (Feld feld : teildatensatz.getFelder()) {
             writeIndent(level + 1);
-            Feld feld = feld1;
             write(feld);
             xmlStreamWriter.writeCharacters("\n");
         }
@@ -225,7 +224,7 @@ public final class XmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeStartElement("datenpaket");
         xmlStreamWriter.writeDefaultNamespace("http://labs.agentes.de");
         xmlStreamWriter.writeNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
-        xmlStreamWriter.writeNamespace("schemaLocation", "http://labs.agentes.de /xsd/datenpaket.xsd");
+        xmlStreamWriter.writeNamespace("schemaLocation", "https://raw.githubusercontent.com/oboehm/gdv.xport/master/lib/src/main/resources/xsd/datenpaket.xsd");
         xmlStreamWriter.writeCharacters("\n");
     }
 

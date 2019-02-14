@@ -28,12 +28,15 @@ import gdv.xport.satz.Vorsatz;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.xml.sax.SAXException;
-import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.junit.SmokeRunner;
 
+import javax.xml.XMLConstants;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -42,7 +45,6 @@ import java.io.IOException;
  * @author oliver (ob@aosd.de)
  * @since 0.2 (14.11.2009)
  */
-@RunWith(SmokeRunner.class)
 public class XmlFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger(XmlFormatterTest.class);
@@ -107,13 +109,13 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     /**
      * Tested die Formattierung der Musterdatei als HTML.
      *
-     * @throws XMLStreamException falls was schiefgelaufen ist
+     * @throws SAXException falls was schiefgelaufen ist
      * @throws IOException falls was schiefgelaufen ist
      */
     @Test
-    @IntegrationTest
-    public void testMusterdatei() throws IOException, XMLStreamException {
-        exportMusterdatei(new XmlFormatter(), "musterdatei_041222.xml");
+    public void testMusterdatei() throws IOException, SAXException {
+        File xmlFile = exportMusterdatei(new XmlFormatter(), "musterdatei_041222.xml");
+        validate(xmlFile);
     }
 
     /**
@@ -123,7 +125,6 @@ public class XmlFormatterTest extends AbstractFormatterTest {
      * @throws IOException falls was schiefgelaufen ist
      */
     @Test
-    @IntegrationTest
     public void testNotice() throws IOException {
         checkNotice(new XmlFormatter(), "musterdatei_041222.xml");
     }
@@ -139,6 +140,13 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     public void testXmlFormatter() throws IOException {
         XmlFormatter formatter = new XmlFormatter();
         formatter.write(new Datenpaket("4711"));
+    }
+
+    private static void validate(File file) throws IOException, SAXException {
+        SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        Schema schema = schemaFactory.newSchema(new File("src/main/resources/xsd/datenpaket.xsd"));
+        Validator validator = schema.newValidator();
+        validator.validate(new StreamSource(file));
     }
 
 }

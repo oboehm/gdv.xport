@@ -3,7 +3,7 @@
     Die XSD zu der von gdv.xport generierten XML-Datei
     (c)reated: 27-Nov-2009 by oliver.boehm@agentes.de
  -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://labs.agentes.de"
         elementFormDefault="qualified">
   <element name="datenpaket">
@@ -32,6 +32,7 @@
               </element>
             </sequence>
             <attribute name="satzart" type="string" />
+            <attribute name="sparte" type="string" />
           </complexType>
         </element>
       </choice>
