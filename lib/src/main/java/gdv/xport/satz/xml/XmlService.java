@@ -91,7 +91,10 @@ public class XmlService {
         if (istream == null) {
             throw new XMLStreamException("resource '" + resourceName + "' not found");
         }
-        return XMLInputFactory.newInstance().createXMLEventReader(istream);
+        XMLInputFactory factory = XMLInputFactory.newInstance();
+        factory.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, Boolean.FALSE);
+        factory.setProperty(XMLInputFactory.SUPPORT_DTD, Boolean.FALSE);
+        return factory.createXMLEventReader(istream);
     }
 
     /** Only for internal fallback. */

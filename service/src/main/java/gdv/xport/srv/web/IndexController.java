@@ -44,7 +44,7 @@ public class IndexController {
      * @return "index"
      */
     @GetMapping("/")
-    String index(Map<String, Object> model) {
+    public String index(Map<String, Object> model) {
         model.put("appVersion", appVersion);
         return "index";
     }
@@ -55,7 +55,7 @@ public class IndexController {
      * @return "validate"
      */
     @GetMapping("/validate*")
-    String validate(){
+    public String validate(){
         return "validate";
     }
 
@@ -65,7 +65,7 @@ public class IndexController {
      * @return "format"
      */
     @GetMapping("/format*")
-    String format(){
+    public String format(){
         return "format";
     }
 
