@@ -18,17 +18,17 @@
 
 package gdv.xport.util;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-
+import gdv.xport.config.Config;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.io.*;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * Da mit den Hausmitteln des JDKs das Lesen einer URL nicht immer so einfach
@@ -40,13 +40,17 @@ import org.apache.logging.log4j.Logger;
 public class URLReader {
 
     private static final Logger LOG = LogManager.getLogger(URLReader.class);
-    private final URL url;
+    private final URI url;
 
     /**
      * @param url URL, von der gelesen werden soll
      */
     public URLReader(final URL url) {
-        this.url = url;
+        this(URI.create(url.toString()));
+    }
+
+    public URLReader(final URI uri) {
+        this.url = uri;
     }
 
     /**
@@ -56,6 +60,9 @@ public class URLReader {
      * @throws IOException falls die URL nicht erreichbar ist
      */
     public String read() throws IOException {
+        if (url.getScheme().equals("file")) {
+            return FileUtils.readFileToString(new File(url), Config.DEFAULT_ENCODING);
+        }
         try {
             HttpClient httpClient = new HttpClient();
             GetMethod get = new GetMethod(url.toString());
@@ -65,7 +72,7 @@ public class URLReader {
             return content;
         } catch(IllegalStateException ise) {
             LOG.info(ise + " - fallback to URLConnection");
-            URLConnection connection = url.openConnection();
+            URLConnection connection = url.toURL().openConnection();
             return read(connection);
         }
     }

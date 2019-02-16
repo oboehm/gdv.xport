@@ -19,13 +19,11 @@ package gdv.xport.util;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
+import patterntesting.runtime.junit.FileTester;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-
-import static org.hamcrest.Matchers.equalToIgnoringWhiteSpace;
-import static org.junit.Assert.assertThat;
 
 /**
  * Unit-Tests fuer {@link URLReader}-Klasse.
@@ -35,17 +33,18 @@ import static org.junit.Assert.assertThat;
 public final class URLReaderTest {
 
     /**
-     * Beim Lesen von Dateien kann es Probleme mit dem Encoding geben.
+     * Dies ist ein Testfall fuer Issue 37.
      *
      * @throws IOException bei Lesefehlern
      */
     @Test
     public void testReadFile() throws IOException {
-        File file = new File("src/test/resources", "test_issue13.txt");
+        File file = new File("src/test/resources", "musterdatei_041222.txt");
         URLReader urlReader = new URLReader(file.toURI().toURL());
-        String content = urlReader.read().trim();
-        String expected = FileUtils.readFileToString(file, StandardCharsets.UTF_8).trim();
-        assertThat(content, equalToIgnoringWhiteSpace(expected));
+        String content = urlReader.read();
+        File targetFile = new File("target", "musterdatei_041222.txt");
+        FileUtils.write(targetFile, content, StandardCharsets.ISO_8859_1);
+        FileTester.assertContentEquals(file, targetFile);
     }
 
 }

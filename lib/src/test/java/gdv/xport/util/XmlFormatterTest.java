@@ -142,7 +142,7 @@ public class XmlFormatterTest extends AbstractFormatterTest {
         formatter.write(new Datenpaket("4711"));
     }
 
-    private static void validate(File file) throws IOException, SAXException {
+    public static void validate(File file) throws IOException, SAXException {
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         Schema schema = schemaFactory.newSchema(new File("src/main/resources/xsd/datenpaket.xsd"));
         Validator validator = schema.newValidator();

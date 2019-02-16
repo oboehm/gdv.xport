@@ -18,16 +18,13 @@
 
 package gdv.xport;
 
-import java.io.File;
-import java.io.IOException;
+import gdv.xport.util.XmlFormatterTest;
+import org.junit.Test;
+import org.xml.sax.SAXException;
 
 import javax.xml.stream.XMLStreamException;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.junit.SmokeRunner;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * JUnit-Test fuer die Main-Klasse.
@@ -35,8 +32,6 @@ import patterntesting.runtime.junit.SmokeRunner;
  * @author oliver (ob@aosd.de)
  * @since 0.5.1 (26.01.2011)
  */
-@RunWith(SmokeRunner.class)
-@IntegrationTest
 public final class MainTest {
 
     /**
@@ -60,12 +55,15 @@ public final class MainTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      * @throws XMLStreamException the xML stream exception
+     * @throws SAXException bei Problemen
      */
     @Test
-    public void testMainXml() throws IOException, XMLStreamException {
+    public void testMainXml() throws IOException, XMLStreamException, SAXException {
+        File generated = new File("target", "musterdatei_041222.xml");
         String[] args = { "-import", new File("src/test/resources/musterdatei_041222.txt").toURI().toString(), "-xml",
-                "-export", "target/musterdatei_041222.xml" };
+                "-export", generated.toString()};
         Main.main(args);
+        XmlFormatterTest.validate(generated);
     }
 
 }
