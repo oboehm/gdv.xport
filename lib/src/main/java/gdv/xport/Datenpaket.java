@@ -368,7 +368,7 @@ public final class Datenpaket {
      * @since 0.2
      */
     public void importFrom(final File file) throws IOException {
-        importFrom(file, Charset.defaultCharset());
+        importFrom(file, Config.DEFAULT_ENCODING);
     }
 
     /**
@@ -559,7 +559,7 @@ public final class Datenpaket {
     }
 
     private List<ConstraintViolation> validateVUNummer() {
-        List<ConstraintViolation> violations = new ArrayList<ConstraintViolation>();
+        List<ConstraintViolation> violations = new ArrayList<>();
         if (Config.DUMMY_VU_NUMMER.equals(this.getVuNummer())) {
             ConstraintViolation cv =
                     new SimpleConstraintViolation("VU-Nummer is not set", this, Config.DUMMY_VU_NUMMER);
@@ -579,16 +579,12 @@ public final class Datenpaket {
      * @since 0.3
      */
     private List<ConstraintViolation> validateFolgenummern() {
-        List<ConstraintViolation> violations = new ArrayList<ConstraintViolation>();
-        Map<String, Integer> folgenummern = new HashMap<String, Integer>();
+        List<ConstraintViolation> violations = new ArrayList<>();
+        Map<String, Integer> folgenummern = new HashMap<>();
         for (Datensatz datensatz : this.datensaetze) {
             String nr = datensatz.getVersicherungsscheinNummer().trim();
             String key = nr + datensatz.getSatzartFeld().getInhalt() + datensatz.getSparteFeld().getInhalt();
-            Integer expected = folgenummern.get(key);
-            if (expected == null) {
-                expected = 1;
-                folgenummern.put(key, expected);
-            }
+            Integer expected = folgenummern.computeIfAbsent(key, k -> 1);
             int folgenr = datensatz.getFolgenummer();
             if (folgenr == expected) {
                 continue;

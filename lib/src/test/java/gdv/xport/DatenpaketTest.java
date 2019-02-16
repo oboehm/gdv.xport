@@ -261,6 +261,21 @@ public final class DatenpaketTest {
     }
 
     /**
+     * Ursache fuer Issue 37 war ein Encoding-Problem beim Import. Hiermit
+     * wurde das Problem nachgestellt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    @SkipTestOn(property = "SKIP_IMPORT_TEST")
+    public void testImportFromFile() throws IOException {
+        File file = new File("src/test/resources", "musterdatei_041222.txt");
+        datenpaket.importFrom(file);
+        assertTrue(datenpaket.isValid());
+        assertEquals("BRBRIENNEE,J\u00dcRGEN", datenpaket.getAdressat());
+    }
+
+    /**
      * Der Test wurde als IntegrationTest markiert, da dazu eine Online-Verbindung
      * noetig ist (die nicht immer vorausgesetzt werden kann).
      *
@@ -296,7 +311,7 @@ public final class DatenpaketTest {
         try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(istream));
             for (String line = reader.readLine(); StringUtils.isNotEmpty(line); line = reader.readLine()) {
-                buffer.append(line.trim() + '\n');
+                buffer.append(line.trim()).append('\n');
             }
             datenpaket.importFrom(buffer.toString());
             assertTrue(datenpaket.isValid());

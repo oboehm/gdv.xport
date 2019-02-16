@@ -22,6 +22,10 @@ import gdv.xport.util.AbstractFormatter;
 import gdv.xport.util.HtmlFormatter;
 import gdv.xport.util.NullFormatter;
 import gdv.xport.util.XmlFormatter;
+import net.sf.oval.ConstraintViolation;
+import org.apache.commons.cli.*;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.output.NullWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,14 +37,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.xml.stream.XMLStreamException;
-
-import net.sf.oval.ConstraintViolation;
-
-import org.apache.commons.cli.*;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.output.NullWriter;
 
 /**
  * Ein kleines Hauptprogramm, falls "gdv.xport" nicht als Bibliothek eingesetzt
@@ -63,12 +59,10 @@ public final class Main {
      *            http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt -validate -xml)
      * @throws IOException
      *             falls der Import oder Export schief gegangen ist
-     * @throws XMLStreamException
-     *             falls bei der XML-Generierung was schief gelaufen ist.
      */
-    public static void main(final String[] args) throws IOException, XMLStreamException {
+    public static void main(final String[] args) throws IOException {
         Options options = createOptions();
-        CommandLineParser parser = new GnuParser();
+        CommandLineParser parser = new DefaultParser();
         try {
             CommandLine cmd = parser.parse(options, args);
             // Option "-help"
@@ -104,6 +98,7 @@ public final class Main {
             String filename = cmd.getOptionValue("import");
             importFrom(filename, datenpaket);
         } else {
+            System.out.println("Warte auf Eingabe von STDIN...");
             datenpaket.importFrom(System.in);
         }
         return datenpaket;
@@ -134,12 +129,9 @@ public final class Main {
                     formatter = new HtmlFormatter();
                 }
             }
-            OutputStream ostream = new FileOutputStream(file);
-            try {
+            try (OutputStream ostream = new FileOutputStream(file)) {
                 formatter.setWriter(ostream);
                 formatter.write(datenpaket);
-            } finally {
-                ostream.close();
             }
         } else {
             formatter.write(datenpaket);
