@@ -22,13 +22,9 @@ import gdv.xport.feld.VUNummer;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hsqldb.jdbc.JDBCDriver;
 
 import java.nio.charset.Charset;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Ueber diese Klasse koennen globale Werte (wie z.B. die VU-Nummer) konfiguriert
@@ -43,7 +39,7 @@ import java.sql.Statement;
 public final class Config {
 
     /** Standard-Encoding ist "ISO-8859-1". */
-    public static final Charset DEFAULT_ENCODING = Charset.forName("ISO-8859-1");
+    public static final Charset DEFAULT_ENCODING = StandardCharsets.ISO_8859_1;
     /** Standard-Encoding als String. */
     public static final String DEFAULT_ENCODING_NAME = DEFAULT_ENCODING.toString();
     /** Falls VUNummer nicht gesetzt ist, wird dies als Dummy eingesetzt. */

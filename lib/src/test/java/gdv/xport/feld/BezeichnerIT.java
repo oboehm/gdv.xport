@@ -121,6 +121,8 @@ public class BezeichnerIT {
         TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil2");
         TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil3");
         TECHNISCHE_NAMEN.add("Risikozuschlag");
+        TECHNISCHE_NAMEN.add("SatzNrnwiederholung4");
+        TECHNISCHE_NAMEN.add("SatzNrnwiederholung9");
         TECHNISCHE_NAMEN.add("SteigerungssatzFuerBURente");
         TECHNISCHE_NAMEN.add("ZukuenftigerBeitrag");
         TECHNISCHE_NAMEN.add("ZwangZurBuz");
