@@ -61,9 +61,9 @@ public final class DefaultDatenpaketService implements DatenpaketService {
         try {
             datenpaket.importFrom(uri);
             return validate(datenpaket);
-        } catch (IOException ioe) {
-            LOG.warn("Cannot validate '{}':", uri, ioe);
-            return asModelList(ioe);
+        } catch (IOException | IllegalArgumentException ex) {
+            LOG.warn("Cannot validate '{}':", uri, ex);
+            return asModelList(ex);
         }
     }
 
@@ -156,7 +156,7 @@ public final class DefaultDatenpaketService implements DatenpaketService {
     }
 
     private static List<Model> toModelList(List<ConstraintViolation> violations) {
-        List<Model> models = new ArrayList<Model>();
+        List<Model> models = new ArrayList<>();
         for (ConstraintViolation cv : violations) {
             Model m = new ExtendedModelMap();
             m.addAttribute("context", cv.getContext().getCompileTimeType());
@@ -184,14 +184,14 @@ public final class DefaultDatenpaketService implements DatenpaketService {
      * TODO: besseren Platz fuer diese Methode suchen (ob, 09-Feb-2017)
      * </p>
      *
-     * @param ioe the ioe
+     * @param ex Exception
      * @return the list
      */
-    public static List<Model> asModelList(IOException ioe) {
-        List<Model> models = new ArrayList<Model>();
+    public static List<Model> asModelList(Exception ex) {
+        List<Model> models = new ArrayList<>();
         Model m = new ExtendedModelMap();
-        m.addAttribute("message", ioe.getMessage());
-        m.addAttribute("causes", ioe);
+        m.addAttribute("message", ex.getMessage());
+        m.addAttribute("causes", ex);
         models.add(m);
         return models;
     }
