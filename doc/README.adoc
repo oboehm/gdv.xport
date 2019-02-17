@@ -1,3 +1,9 @@
+https://travis-ci.org/oboehm/gdv.xport[image:https://api.travis-ci.org/oboehm/gdv.xport.svg[BuildStatus]]
+https://github.com/oboehm/gdv.xport/issues[image:https://img.shields.io/github/issues/oboehm/gdv.xport.svg[Issues]]
+https://sonarcloud.io/dashboard?id=com.github.oboehm%3Agdv-xport%3Adevelop%2F4.x[image:https://sonarcloud.io/api/project_badges/measure?metric=alert_status&project=com.github.oboehm:gdv-xport[Quality Gate]]
+https://coveralls.io/github/oboehm/gdv.xport[image:https://coveralls.io/repos/github/oboehm/gdv.xport/badge.svg[Coverage Status]]
+
+
 = Entwickler-Bereich
 
 Dieser Bereich ist für die interne Entwicklung gedacht:
