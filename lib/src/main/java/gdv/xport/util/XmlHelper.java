@@ -77,6 +77,7 @@ public final class XmlHelper {
      * @throws SAXException bei einem XML-Fehler
      * @throws IOException bei einem Lese-Fehler
      */
+    @SuppressWarnings("squid:S2755")
     public static void validate(final Source source, final String xsdResource) throws SAXException,
             IOException {
         Schema schema = getSchema(xsdResource);

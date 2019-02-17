@@ -61,7 +61,7 @@ public class URLReader {
      */
     public String read() throws IOException {
         if (url.getScheme().equals("file")) {
-            return FileUtils.readFileToString(toFile(url), Config.DEFAULT_ENCODING);
+            return readFile();
         }
         try {
             HttpClient httpClient = new HttpClient();
@@ -77,12 +77,12 @@ public class URLReader {
         }
     }
 
-    private static File toFile(URI uri) {
-        File file = new File(uri);
-        if (!file.canRead()) {
-            throw new IllegalArgumentException("cannot read " + file);
+    private String readFile() throws IOException {
+        File file = new File(url);
+        if (file.toString().contains("..")) {
+            throw new IllegalArgumentException("strange filename detected: " + file);
         }
-        return file;
+        return FileUtils.readFileToString(file, Config.DEFAULT_ENCODING);
     }
 
     private static String read(final URLConnection connection) throws IOException {
