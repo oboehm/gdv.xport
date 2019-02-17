@@ -1,7 +1,5 @@
 /*
- * $Id$
- *
- * Copyright (c) 2009 - 2012 by Oli B.
+ * Copyright (c) 2009 - 2019 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,16 +18,17 @@
 
 package gdv.xport.satz;
 
-import static gdv.xport.feld.Bezeichner.*;
-
-import java.io.IOException;
-import java.util.*;
-
+import gdv.xport.config.Config;
+import gdv.xport.feld.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import java.io.IOException;
+import java.util.Formatter;
+import java.util.HashMap;
+import java.util.Map;
+
+import static gdv.xport.feld.Bezeichner.*;
 
 /**
  * Dies ist der erste Satz, der Vorsatz eben.

@@ -1,7 +1,5 @@
 /*
- * $Id$
- *
- * Copyright (c) 2012 by Oliver Boehm
+ * Copyright (c) 2012-2019 by Oliver Boehm
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +18,15 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart9;
 
-import static org.junit.Assert.assertEquals;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.*;
+import gdv.xport.satz.AbstractDatensatzTest;
+import gdv.xport.satz.Satz;
 import gdv.xport.satz.model.SatzX;
+import org.junit.Test;
 
 import java.io.IOException;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author oboehm
