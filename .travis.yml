@@ -12,9 +12,6 @@ addons:
     organization: "oboehm-github"
     token:
       secure: "WTaDw/VYgljoVPhez3mJX0deg6Ji5sn4AvMxXr4yk7s2ErIKGkojrfsUgiodQIWWiRhy8pIuzRqDTpkoKoRi8lvdYeRdr8R2rOLltdFhV1/jSgdQsa1mUtgI2XnzRG6o3XzGHQQIWl6gpjufNPYJ6IJ9v+aRG7iobh4l7VD655JDFCVfRMrsoI1IaqDuOxKXlfFhZoDQwuPfzGkhox0rUTd0WjQXffMKhTwKzWF/HeWnStO+CzUXGF7o/juJgInxs7rrA/X2MUp9xnc0Fl55iqxoMo/CMyHziNBCRroJneNt/NU9rYtGXhs0V5km79FkU1yNx2aEpzwX9K8s8cwAKYVYumyHKcRdNozYIraVy1rAC01FETLolYqbAfgv3miE9JXOdoQcmI+pV+aCLGCmxpxyXVeujxdxi1+KDso5CVlv5m0sDKmMgD9qcECw95TswolLcf8bJADpJRHQQB957Q6RGXAwzgtWs8Na7AuNSzWkK7gv/mGdysZkkNV4jSuqBlGW8ZWMka3ffaltOc+jqsHps31DHjgh4fnyaDFnPeYDHsd8nFPtffulIAzR7o+6HSBj6ZPKsu1i4iuQO8+tuHOxgjdXEiGZ37p8xDQBmZnIROFvzK1GV7WcQaKklY+4jgnMkCE4PU1xHfqtTRx06iD3HEJbiQRLF/HSrM+T8Ho="
-    branches:
-      - master
-      - develop/4.x
 
 after_success:
 - mvn clean integration-test jacoco:report coveralls:report sonar:sonar
