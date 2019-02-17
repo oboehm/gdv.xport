@@ -61,7 +61,7 @@ public class URLReader {
      */
     public String read() throws IOException {
         if (url.getScheme().equals("file")) {
-            return FileUtils.readFileToString(new File(url), Config.DEFAULT_ENCODING);
+            return FileUtils.readFileToString(toFile(url), Config.DEFAULT_ENCODING);
         }
         try {
             HttpClient httpClient = new HttpClient();
@@ -75,6 +75,14 @@ public class URLReader {
             URLConnection connection = url.toURL().openConnection();
             return read(connection);
         }
+    }
+
+    private static File toFile(URI uri) {
+        File file = new File(uri);
+        if (!file.canRead()) {
+            throw new IllegalArgumentException("cannot read " + file);
+        }
+        return file;
     }
 
     private static String read(final URLConnection connection) throws IOException {
