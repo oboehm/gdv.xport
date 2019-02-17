@@ -10,6 +10,7 @@ Dieser Bereich ist für die interne Entwicklung gedacht:
 
 * link:delivery.adoc[Check-Liste]: für die Auslieferung eines neuen Releases
 * link:deployment.adoc[Deployment]: für das Deployment auf Heroku
+* link:build.adoc[CI-Build]: Continuous Integration Build
 * link:release-notes[Release Notes]: Übersicht über die einzelnen Versionen
 
 
