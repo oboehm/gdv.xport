@@ -85,7 +85,7 @@ public class XPortApplicationIT {
      */
     @Test
     public void testInfo() {
-        ResponseEntity<String> response = template.getForEntity(converterURI + "/info.json", String.class);
+        ResponseEntity<String> response = template.getForEntity(converterURI + "/actuator/info", String.class);
         String info = response.getBody();
         LOG.info("info = \"{}\"", info);
         assertThat(info, containsString("build"));
