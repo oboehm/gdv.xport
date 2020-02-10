@@ -18,20 +18,6 @@
 
 package gdv.xport.satz.model;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
@@ -42,7 +28,19 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
 import gdv.xport.util.SatzFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.*;
 
 /**
  * JUnit-Test fuer Satz220.
@@ -239,6 +237,16 @@ public class Satz220Test extends AbstractDatensatzTest {
         assertEquals("1", sparte40.get(Bezeichner.WAGNISART).trim());
         assertThat(sparte40.hasWagnisart(), is(Boolean.TRUE));
         assertEquals("1", sparte40.getWagnisart().trim());
+    }
+
+    /**
+     * Dies ist der Testfall fuer Issue 39
+     * (https://github.com/oboehm/gdv.xport/issues/39).
+     */
+    @Test
+    public void testSetWagnis9Ablauf() {
+        Satz220 satz220 = new Satz220(10);
+        satz220.set(Feld220Wagnis9.ABLAUF, "02022020");
     }
 
 }
