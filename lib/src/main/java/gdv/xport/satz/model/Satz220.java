@@ -18,14 +18,8 @@
 
 package gdv.xport.satz.model;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import gdv.xport.io.ImportException;
-import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.feld.MetaFeldInfo;
 
 /**
  * Diese Klasse repraesentiert die Satzart 220. Es handelt es sich dabei um eine
@@ -46,9 +40,10 @@ import gdv.xport.satz.feld.MetaFeldInfo;
 public class Satz220 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
-    private static final Map<Integer, Enum[]> MAPPING = new HashMap<Integer, Enum[]>();
+    private static final Map<Integer, Enum[]> MAPPING = new HashMap<>();
 
     static {
+        MAPPING.put(10, gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9.values());
         MAPPING.put(30, gdv.xport.satz.feld.sparte30.Feld220.values());
         MAPPING.put(40, gdv.xport.satz.feld.sparte40.Feld220.values());
         MAPPING.put(51, gdv.xport.satz.feld.sparte51.Feld220.values());
