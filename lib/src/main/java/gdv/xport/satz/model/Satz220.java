@@ -18,7 +18,15 @@
 
 package gdv.xport.satz.model;
 
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.satz.feld.sparte10.wagnisart9.*;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,11 +47,17 @@ import java.util.Map;
  */
 public class Satz220 extends SpartensatzX {
 
+    private static final Logger LOG = LogManager.getLogger(Satz220.class);
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static final Map<Integer, Enum[]> MAPPING = new HashMap<>();
+    private static final List<Enum[]> MAPPING_SPARTE10 = new ArrayList<>();
 
     static {
-        MAPPING.put(10, gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9.values());
+        MAPPING_SPARTE10.add(Feld220Wagnis9.values());
+        MAPPING_SPARTE10.add(Feld220Wagnis9Bezugsrechte.values());
+        MAPPING_SPARTE10.add(Feld220Wagnis9Auszahlungen.values());
+        MAPPING_SPARTE10.add(Feld220Wagnis9ZukSummenaenderungen.values());
+        MAPPING_SPARTE10.add(Feld220Wagnis9Wertungssummen.values());
         MAPPING.put(30, gdv.xport.satz.feld.sparte30.Feld220.values());
         MAPPING.put(40, gdv.xport.satz.feld.sparte40.Feld220.values());
         MAPPING.put(51, gdv.xport.satz.feld.sparte51.Feld220.values());
@@ -74,6 +88,27 @@ public class Satz220 extends SpartensatzX {
         super(220, sparte);
     }
 
+    @Override
+    public void set(Bezeichner name, String value) {
+        if ((this.getSparte() == 10) && !hasFeld(name)) {
+            setUpSparte10With(name);
+        }
+        super.set(name, value);
+    }
+
+    private void setUpSparte10With(Bezeichner name) {
+        for (Enum[] sparte10Values : MAPPING_SPARTE10) {
+            for (Enum e : sparte10Values) {
+                String normalized = StringUtils.removeAll(e.name(), "_");
+                if (name.getTechnischerName().equalsIgnoreCase(normalized)) {
+                    LOG.info("Satz 220.010 wird mit {} aufgesetzt.", e);
+                    setUpTeildatensaetze(sparte10Values);
+                    return;
+                }
+            }
+        }
+    }
+
     /**
      * Liefert die Mapping-Tabelle zu Sparte - Feldxxx zurueck.
      *
@@ -84,4 +119,5 @@ public class Satz220 extends SpartensatzX {
     protected Map<Integer, Enum[]> getMapping() {
         return MAPPING;
     }
+
 }

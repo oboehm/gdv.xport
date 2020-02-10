@@ -29,6 +29,7 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Bezugsrechte;
 import gdv.xport.util.SatzFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -247,6 +248,14 @@ public class Satz220Test extends AbstractDatensatzTest {
     public void testSetWagnis9Ablauf() {
         Satz220 satz220 = new Satz220(10);
         satz220.set(Feld220Wagnis9.ABLAUF, "02022020");
+        assertEquals("02022020", satz220.get(Feld220Wagnis9.ABLAUF));
+    }
+
+    @Test
+    public void testSetWagnis9Bezugsrechte() {
+        Satz220 satz220 = new Satz220(10);
+        satz220.set(Feld220Wagnis9Bezugsrechte.BEZUGSBERECHTIGT_IM_TODESFALL, "9");
+        assertEquals("9", satz220.get(Feld220Wagnis9Bezugsrechte.BEZUGSBERECHTIGT_IM_TODESFALL));
     }
 
 }
