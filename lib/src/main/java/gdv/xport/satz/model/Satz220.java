@@ -24,10 +24,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Diese Klasse repraesentiert die Satzart 220. Es handelt es sich dabei um eine
@@ -50,14 +47,24 @@ public class Satz220 extends SpartensatzX {
     private static final Logger LOG = LogManager.getLogger(Satz220.class);
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static final Map<Integer, Enum[]> MAPPING = new HashMap<>();
-    private static final List<Enum[]> MAPPING_SPARTE10 = new ArrayList<>();
+    private static final Map<Integer, List<Enum[]>> MAPPING_SPARTE10 = new HashMap<>();
 
     static {
-        MAPPING_SPARTE10.add(Feld220Wagnis9.values());
-        MAPPING_SPARTE10.add(Feld220Wagnis9Bezugsrechte.values());
-        MAPPING_SPARTE10.add(Feld220Wagnis9Auszahlungen.values());
-        MAPPING_SPARTE10.add(Feld220Wagnis9ZukSummenaenderungen.values());
-        MAPPING_SPARTE10.add(Feld220Wagnis9Wertungssummen.values());
+        initMappingSparte10();
+        initMapping();
+    }
+
+    private static void initMappingSparte10() {
+        MAPPING_SPARTE10.put(9, asList(Feld220Wagnis9.values(), Feld220Wagnis9Bezugsrechte.values(),
+                Feld220Wagnis9Auszahlungen.values(), Feld220Wagnis9ZukSummenaenderungen.values(),
+                Feld220Wagnis9Wertungssummen.values()));
+    }
+
+    private static List<Enum[]> asList(Enum[]... enums) {
+        return Arrays.asList(enums);
+    }
+
+    private static void initMapping() {
         MAPPING.put(30, gdv.xport.satz.feld.sparte30.Feld220.values());
         MAPPING.put(40, gdv.xport.satz.feld.sparte40.Feld220.values());
         MAPPING.put(51, gdv.xport.satz.feld.sparte51.Feld220.values());
@@ -97,16 +104,42 @@ public class Satz220 extends SpartensatzX {
     }
 
     private void setUpSparte10With(Bezeichner name) {
-        for (Enum[] sparte10Values : MAPPING_SPARTE10) {
-            for (Enum e : sparte10Values) {
-                String normalized = StringUtils.removeAll(e.name(), "_");
-                if (name.getTechnischerName().equalsIgnoreCase(normalized)) {
-                    LOG.info("Satz 220.010 wird mit {} aufgesetzt.", e);
-                    setUpTeildatensaetze(sparte10Values);
-                    return;
-                }
+        for (int art : MAPPING_SPARTE10.keySet()) {
+            if (hasInSparte10(name, art)) {
+                LOG.info("Satz 220.010 wird fuer Wagnisart {} aufgesetzt.", art);
+                setUpSparte10With(name, MAPPING_SPARTE10.get(art));
+                break;
             }
         }
+    }
+
+    private void setUpSparte10With(Bezeichner name, List<Enum[]> valuesList) {
+        for (Enum[] sparte10Values : valuesList) {
+            if (hasInSparte10(name, sparte10Values)) {
+                setUpTeildatensaetze(sparte10Values);
+                return;
+            }
+        }
+        LOG.warn("Satz 220.010 mit {} konnte nicht aufgesetzt werden.", name);
+    }
+
+    private boolean hasInSparte10(Bezeichner name, int wagnisart) {
+        for (Enum[] sparte10Values : MAPPING_SPARTE10.get(wagnisart)) {
+            if (hasInSparte10(name, sparte10Values)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hasInSparte10(Bezeichner name, Enum[] sparte10Values) {
+        for (Enum e : sparte10Values) {
+            String normalized = StringUtils.removeAll(e.name(), "_");
+            if (name.getTechnischerName().equalsIgnoreCase(normalized)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
