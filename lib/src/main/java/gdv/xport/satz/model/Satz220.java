@@ -76,23 +76,25 @@ public class Satz220 extends SpartensatzX {
     }
 
     private static void initMappingSparte10() {
+        MAPPING_SPARTE10.put(1, asList(Feld220Wagnis13.values(), Feld220Wagnis13Bezugsrechte.values(),
+                Feld220Wagnis13Auszahlungen.values(), Feld220Wagnis13ZukSummenaenderungen.values(),
+                Feld220Wagnis13Wertungssummen.values()));
         MAPPING_SPARTE10.put(2, asList(Feld220Wagnis2.values(), Feld220Wagnis2Bezugsrechte.values(),
                 Feld220Wagnis2Auszahlungen.values(), Feld220Wagnis2ZukSummenaenderungen.values(),
                 Feld220Wagnis2Wertungssummen.values()));
+        MAPPING_SPARTE10.put(3, MAPPING_SPARTE10.get(1));
+        MAPPING_SPARTE10.put(4, asList(Feld220Wagnis48.values(), Feld220Wagnis48Bezugsrechte.values(),
+                Feld220Wagnis48ZukSummenaenderungen.values(), Feld220Wagnis48Wertungssummen.values()));
         MAPPING_SPARTE10.put(5, asList(Feld220Wagnis5.values(), Feld220Wagnis5Bezugsrechte.values(),
                 Feld220Wagnis5ZukSummenaenderungen.values(), Feld220Wagnis5Wertungssummen.values()));
         MAPPING_SPARTE10.put(6, asList(Feld220Wagnis6.values(), Feld220Wagnis6Bezugsrechte.values(),
                 Feld220Wagnis6ZukSummenaenderungen.values(), Feld220Wagnis6Wertungssummen.values()));
         MAPPING_SPARTE10.put(7, asList(Feld220Wagnis7.values(), Feld220Wagnis7Bezugsrechte.values(),
                 Feld220Wagnis7ZukSummenaenderungen.values(), Feld220Wagnis7Wertungssummen.values()));
+        MAPPING_SPARTE10.put(8, MAPPING_SPARTE10.get(4));
         MAPPING_SPARTE10.put(9, asList(Feld220Wagnis9.values(), Feld220Wagnis9Bezugsrechte.values(),
                 Feld220Wagnis9Auszahlungen.values(), Feld220Wagnis9ZukSummenaenderungen.values(),
                 Feld220Wagnis9Wertungssummen.values()));
-        MAPPING_SPARTE10.put(13, asList(Feld220Wagnis13.values(), Feld220Wagnis13Bezugsrechte.values(),
-                Feld220Wagnis13Auszahlungen.values(), Feld220Wagnis13ZukSummenaenderungen.values(),
-                Feld220Wagnis13Wertungssummen.values()));
-        MAPPING_SPARTE10.put(48, asList(Feld220Wagnis48.values(), Feld220Wagnis48Bezugsrechte.values(),
-                Feld220Wagnis48ZukSummenaenderungen.values(), Feld220Wagnis48Wertungssummen.values()));
     }
 
     private static List<Enum[]> asList(Enum[]... enums) {
