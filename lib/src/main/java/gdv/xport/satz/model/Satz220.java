@@ -66,7 +66,7 @@ public class Satz220 extends SpartensatzX {
     private static final Logger LOG = LogManager.getLogger(Satz220.class);
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static final Map<Integer, Enum[]> MAPPING = new HashMap<>();
-    private static final Map<Integer, List<Enum[]>> MAPPING_SPARTE10 = new HashMap<>();
+    private static final List<Enum[]>[] MAPPING_SPARTE10 = new List[10];
 
     static {
         initMappingSparte10();
@@ -74,26 +74,26 @@ public class Satz220 extends SpartensatzX {
     }
 
     private static void initMappingSparte10() {
-        MAPPING_SPARTE10.put(0, asList(Feld220Wagnis0.values()));
-        MAPPING_SPARTE10.put(1, asList(Feld220Wagnis13.values(), Feld220Wagnis13Bezugsrechte.values(),
+        MAPPING_SPARTE10[0] = asList(Feld220Wagnis0.values());
+        MAPPING_SPARTE10[1] = asList(Feld220Wagnis13.values(), Feld220Wagnis13Bezugsrechte.values(),
                 Feld220Wagnis13Auszahlungen.values(), Feld220Wagnis13ZukSummenaenderungen.values(),
-                Feld220Wagnis13Wertungssummen.values()));
-        MAPPING_SPARTE10.put(2, asList(Feld220Wagnis2.values(), Feld220Wagnis2Bezugsrechte.values(),
+                Feld220Wagnis13Wertungssummen.values());
+        MAPPING_SPARTE10[2] = asList(Feld220Wagnis2.values(), Feld220Wagnis2Bezugsrechte.values(),
                 Feld220Wagnis2Auszahlungen.values(), Feld220Wagnis2ZukSummenaenderungen.values(),
-                Feld220Wagnis2Wertungssummen.values()));
-        MAPPING_SPARTE10.put(3, MAPPING_SPARTE10.get(1));
-        MAPPING_SPARTE10.put(4, asList(Feld220Wagnis48.values(), Feld220Wagnis48Bezugsrechte.values(),
-                Feld220Wagnis48ZukSummenaenderungen.values(), Feld220Wagnis48Wertungssummen.values()));
-        MAPPING_SPARTE10.put(5, asList(Feld220Wagnis5.values(), Feld220Wagnis5Bezugsrechte.values(),
-                Feld220Wagnis5ZukSummenaenderungen.values(), Feld220Wagnis5Wertungssummen.values()));
-        MAPPING_SPARTE10.put(6, asList(Feld220Wagnis6.values(), Feld220Wagnis6Bezugsrechte.values(),
-                Feld220Wagnis6ZukSummenaenderungen.values(), Feld220Wagnis6Wertungssummen.values()));
-        MAPPING_SPARTE10.put(7, asList(Feld220Wagnis7.values(), Feld220Wagnis7Bezugsrechte.values(),
-                Feld220Wagnis7ZukSummenaenderungen.values(), Feld220Wagnis7Wertungssummen.values()));
-        MAPPING_SPARTE10.put(8, MAPPING_SPARTE10.get(4));
-        MAPPING_SPARTE10.put(9, asList(Feld220Wagnis9.values(), Feld220Wagnis9Bezugsrechte.values(),
+                Feld220Wagnis2Wertungssummen.values());
+        MAPPING_SPARTE10[3] = MAPPING_SPARTE10[1];
+        MAPPING_SPARTE10[4] = asList(Feld220Wagnis48.values(), Feld220Wagnis48Bezugsrechte.values(),
+                Feld220Wagnis48ZukSummenaenderungen.values(), Feld220Wagnis48Wertungssummen.values());
+        MAPPING_SPARTE10[5] = asList(Feld220Wagnis5.values(), Feld220Wagnis5Bezugsrechte.values(),
+                Feld220Wagnis5ZukSummenaenderungen.values(), Feld220Wagnis5Wertungssummen.values());
+        MAPPING_SPARTE10[6] = asList(Feld220Wagnis6.values(), Feld220Wagnis6Bezugsrechte.values(),
+                Feld220Wagnis6ZukSummenaenderungen.values(), Feld220Wagnis6Wertungssummen.values());
+        MAPPING_SPARTE10[7] = asList(Feld220Wagnis7.values(), Feld220Wagnis7Bezugsrechte.values(),
+                Feld220Wagnis7ZukSummenaenderungen.values(), Feld220Wagnis7Wertungssummen.values());
+        MAPPING_SPARTE10[8] = MAPPING_SPARTE10[4];
+        MAPPING_SPARTE10[9] = asList(Feld220Wagnis9.values(), Feld220Wagnis9Bezugsrechte.values(),
                 Feld220Wagnis9Auszahlungen.values(), Feld220Wagnis9ZukSummenaenderungen.values(),
-                Feld220Wagnis9Wertungssummen.values()));
+                Feld220Wagnis9Wertungssummen.values());
     }
 
     private static List<Enum[]> asList(Enum[]... enums) {
@@ -138,7 +138,7 @@ public class Satz220 extends SpartensatzX {
      * @param wagnisart Zahl von 1 bis 9
      */
     public Satz220(final int sparte, final int wagnisart) {
-        this(MAPPING_SPARTE10.get(wagnisart).get(0));
+        this(MAPPING_SPARTE10[wagnisart].get(0));
         if (sparte != 10) {
             throw new IllegalArgumentException(
                     "falsche Sparte (" + sparte + ") - Wagnisart " + wagnisart + " gibt es nur bei Sparte 10");
@@ -165,10 +165,10 @@ public class Satz220 extends SpartensatzX {
     }
 
     private void setUpSparte10With(Bezeichner name) {
-        for (int art : MAPPING_SPARTE10.keySet()) {
+        for (int art = 0; art < MAPPING_SPARTE10.length; art++) {
             if (hasInSparte10(name, art)) {
                 LOG.info("Satz 220.010 wird fuer Wagnisart {} aufgesetzt.", art);
-                setUpSparte10With(name, MAPPING_SPARTE10.get(art));
+                setUpSparte10With(name, MAPPING_SPARTE10[art]);
                 break;
             }
         }
@@ -185,7 +185,7 @@ public class Satz220 extends SpartensatzX {
     }
 
     private boolean hasInSparte10(Bezeichner name, int wagnisart) {
-        for (Enum[] sparte10Values : MAPPING_SPARTE10.get(wagnisart)) {
+        for (Enum[] sparte10Values : MAPPING_SPARTE10[wagnisart]) {
             if (hasInSparte10(name, sparte10Values)) {
                 return true;
             }
