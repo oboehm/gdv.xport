@@ -128,6 +128,9 @@ public class Satz220 extends SpartensatzX {
      */
     public Satz220(final int sparte) {
         super(220, sparte);
+        if (sparte == 10) {
+            LOG.warn("Wagnisart fehlt - fuer Sparte 10 bitte anderen Konstruktor verwenden.");
+        }
     }
 
     /**
@@ -141,7 +144,7 @@ public class Satz220 extends SpartensatzX {
         this(MAPPING_SPARTE10[wagnisart].get(0));
         if (sparte != 10) {
             throw new IllegalArgumentException(
-                    "falsche Sparte (" + sparte + ") - Wagnisart " + wagnisart + " gibt es nur bei Sparte 10");
+                    "falsche Sparte " + sparte + ": Wagnisart " + wagnisart + " gibt es nur bei Sparte 10");
         }
         this.getFeld(Bezeichner.WAGNISART).setInhalt(wagnisart);
     }
@@ -154,6 +157,18 @@ public class Satz220 extends SpartensatzX {
      */
     public Satz220(final Enum[] felder) {
         super(220, 10, felder);
+        this.getFeld(Bezeichner.WAGNISART).setInhalt(getWagnisartFrom(felder));
+    }
+
+    private static int getWagnisartFrom(Enum[] felder) {
+        for (int art = 0; art < MAPPING_SPARTE10.length; art++) {
+            for (Enum[] enumValues : MAPPING_SPARTE10[art]) {
+                if (Arrays.equals(felder, enumValues)) {
+                    return art;
+                }
+            }
+        }
+        return 0;
     }
 
     @Override

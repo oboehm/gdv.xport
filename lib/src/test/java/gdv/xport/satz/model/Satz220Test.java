@@ -272,9 +272,16 @@ public class Satz220Test extends AbstractDatensatzTest {
         assertEquals("9", satz220.getWagnisart());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testCtorWrongSparte() {
+        new Satz220(50, 9);
+    }
+
     @Test
     public void testCtorSparte10() {
         Satz220 satz220 = new Satz220(Feld220Wagnis9.values());
+        assertEquals(10, satz220.getSparte());
+        assertEquals("9", satz220.getWagnisart());
     }
 
 }
