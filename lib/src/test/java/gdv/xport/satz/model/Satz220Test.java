@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012 by Oli B.
+ * Copyright (c) 2011-2020 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -264,6 +264,17 @@ public class Satz220Test extends AbstractDatensatzTest {
         Satz220 satz220 = new Satz220(10);
         satz220.set(Feld220Wagnis48ZukSummenaenderungen.BEGINNDAT_DER_NAECHSTEN_JAHRESRENTE, "12022020");
         assertEquals("12022020", satz220.get(Feld220Wagnis48ZukSummenaenderungen.BEGINNDAT_DER_NAECHSTEN_JAHRESRENTE));
+    }
+
+    @Test
+    public void testCtorSparteWagnisart() {
+        Satz220 satz220 = new Satz220(10, 9);
+        assertEquals("9", satz220.getWagnisart());
+    }
+
+    @Test
+    public void testCtorSparte10() {
+        Satz220 satz220 = new Satz220(Feld220Wagnis9.values());
     }
 
 }

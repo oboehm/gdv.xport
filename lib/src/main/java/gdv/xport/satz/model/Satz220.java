@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013 by aosd.de
+ * Copyright (c) 2011-2020 by aosd.de
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@
 package gdv.xport.satz.model;
 
 import gdv.xport.feld.Bezeichner;
+import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte10.wagnisart13.*;
 import gdv.xport.satz.feld.sparte10.wagnisart2.*;
 import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48;
@@ -42,10 +43,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Diese Klasse repraesentiert die Satzart 220. Es handelt es sich dabei um eine
@@ -76,6 +74,7 @@ public class Satz220 extends SpartensatzX {
     }
 
     private static void initMappingSparte10() {
+        MAPPING_SPARTE10.put(0, asList(Feld220Wagnis0.values()));
         MAPPING_SPARTE10.put(1, asList(Feld220Wagnis13.values(), Feld220Wagnis13Bezugsrechte.values(),
                 Feld220Wagnis13Auszahlungen.values(), Feld220Wagnis13ZukSummenaenderungen.values(),
                 Feld220Wagnis13Wertungssummen.values()));
@@ -125,11 +124,36 @@ public class Satz220 extends SpartensatzX {
     /**
      * Legt ein neues Satz220-Objekt fuer die uebergebene Sparte an.
      *
-     * @param sparte
-     *            Sparte (z.B. 10)
+     * @param sparte Sparte (z.B. 10)
      */
     public Satz220(final int sparte) {
         super(220, sparte);
+    }
+
+    /**
+     * Dieser Konstruktor ist fuer Sparte 10 gedacht, wo es verschiedene
+     * Auspraegungen durch die Wagnisart gibt.
+     *
+     * @param sparte sollte immer 10 sein
+     * @param wagnisart Zahl von 1 bis 9
+     */
+    public Satz220(final int sparte, final int wagnisart) {
+        this(MAPPING_SPARTE10.get(wagnisart).get(0));
+        if (sparte != 10) {
+            throw new IllegalArgumentException(
+                    "falsche Sparte (" + sparte + ") - Wagnisart " + wagnisart + " gibt es nur bei Sparte 10");
+        }
+        this.getFeld(Bezeichner.WAGNISART).setInhalt(wagnisart);
+    }
+
+    /**
+     * Dies ist der Konstruktor fuer Sparte 10. Hier gibt es verschiedene
+     * Belegung der Wagnisart, die ueber die Felder vorbelegt werden.
+     *
+     * @param felder z.B. Feld220Wagnis9.values()
+     */
+    public Satz220(final Enum[] felder) {
+        super(220, 10, felder);
     }
 
     @Override

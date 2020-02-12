@@ -1,13 +1,19 @@
 /*
- * Copyright (c) 2009 - 2012 by Oli B. Licensed under the Apache License,
- * Version 2.0 (the "License"); you may not use this file except in compliance
- * with the License. You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law
- * or agreed to in writing, software distributed under the License is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express orimplied. See the License for the specific language
- * governing permissions and limitations under the License. (c)reated 12.10.2009
- * by Oli B. (ob@aosd.de)
+ * Copyright (c) 2009-2020 by Oli B.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express orimplied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * (c)reated 12.10.2009 by Oli B. (ob@aosd.de)
  */
 
 package gdv.xport.satz;
@@ -129,9 +135,7 @@ public class Datensatz extends Satz {
 	 * @param tdsList Liste mit den Teildatensaetzen
 	 */
 	public Datensatz(final int satzart, final int sparte, final List<Teildatensatz> tdsList) {
-		this(satzart, tdsList);
-		this.setSparte(sparte);
-		this.completeTeildatensaetze();
+		this(satzart, complete(tdsList, sparte));
 	}
 
 	/**
@@ -189,25 +193,22 @@ public class Datensatz extends Satz {
 	 * @since 0.4
 	 */
 	protected void setUpTeildatensatz(final Teildatensatz tds) {
-	    if (!tds.hasFeld(Feld1bis7.VU_NUMMER)) {
-    	    this.setUp(tds, Feld1bis7.VU_NUMMER, Config.getVUNummer());
-            this.setUp(tds, Feld1bis7.BUENDELUNGSKENNZEICHEN, new AlphaNumFeld(Feld1bis7.BUENDELUNGSKENNZEICHEN));
-            this.setUp(tds, Feld1bis7.SPARTE, this.sparte);
-            this.setUp(tds, Feld1bis7.VERSICHERUNGSSCHEINNUMMER, new AlphaNumFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER));
-            this.setUp(tds, Feld1bis7.FOLGENUMMER, new NumFeld(Feld1bis7.FOLGENUMMER));
-            this.setUp(tds, Feld1bis7.VERMITTLER, new AlphaNumFeld(Feld1bis7.VERMITTLER));
-            LOG.trace(tds + " is set up.");
-	    }
+		setUpTeildatensatz(tds, this.sparte);
 	}
 
-    /**
-     * Sets the up.
-     *
-     * @param tds the tds
-     * @param feldX the feld x
-     * @param value the value
-     */
-    private void setUp(final Teildatensatz tds, final Enum feldX, final Feld value) {
+	protected static void setUpTeildatensatz(final Teildatensatz tds, final NumFeld sparte) {
+		if (!tds.hasFeld(Feld1bis7.VU_NUMMER)) {
+			setUp(tds, Feld1bis7.VU_NUMMER, Config.getVUNummer());
+			setUp(tds, Feld1bis7.BUENDELUNGSKENNZEICHEN, new AlphaNumFeld(Feld1bis7.BUENDELUNGSKENNZEICHEN));
+			setUp(tds, Feld1bis7.SPARTE, sparte);
+			setUp(tds, Feld1bis7.VERSICHERUNGSSCHEINNUMMER, new AlphaNumFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER));
+			setUp(tds, Feld1bis7.FOLGENUMMER, new NumFeld(Feld1bis7.FOLGENUMMER));
+			setUp(tds, Feld1bis7.VERMITTLER, new AlphaNumFeld(Feld1bis7.VERMITTLER));
+			LOG.trace(tds + " is set up.");
+		}
+	}
+
+	private static void setUp(final Teildatensatz tds, final Enum feldX, final Feld value) {
         if (!tds.hasFeld(feldX)) {
             LOG.trace("{} initialized with value {}.", tds, value);
             tds.add(value);
@@ -226,6 +227,15 @@ public class Datensatz extends Satz {
 		for (Teildatensatz tds : this.getTeildatensaetze()) {
 			setUpTeildatensatz(tds);
 		}
+	}
+
+	protected static List<Teildatensatz> complete(List<Teildatensatz> teildatensaetze, int sparte) {
+		NumFeld sparteFeld = new NumFeld(Feld1bis7.SPARTE);
+		sparteFeld.setInhalt(sparte);
+		for (Teildatensatz tds : teildatensaetze) {
+			setUpTeildatensatz(tds, sparteFeld);
+		}
+		return teildatensaetze;
 	}
 
 	/**
