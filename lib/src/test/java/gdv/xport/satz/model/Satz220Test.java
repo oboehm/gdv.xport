@@ -28,6 +28,7 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
+import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Bezugsrechte;
 import gdv.xport.util.SatzFactory;
@@ -256,6 +257,13 @@ public class Satz220Test extends AbstractDatensatzTest {
         Satz220 satz220 = new Satz220(10);
         satz220.set(Feld220Wagnis9Bezugsrechte.BEZUGSBERECHTIGT_IM_TODESFALL, "9");
         assertEquals("9", satz220.get(Feld220Wagnis9Bezugsrechte.BEZUGSBERECHTIGT_IM_TODESFALL));
+    }
+
+    @Test
+    public void testSetWagnis8() {
+        Satz220 satz220 = new Satz220(10);
+        satz220.set(Feld220Wagnis48ZukSummenaenderungen.BEGINNDAT_DER_NAECHSTEN_JAHRESRENTE, "12022020");
+        assertEquals("12022020", satz220.get(Feld220Wagnis48ZukSummenaenderungen.BEGINNDAT_DER_NAECHSTEN_JAHRESRENTE));
     }
 
 }

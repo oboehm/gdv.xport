@@ -171,8 +171,7 @@ public class Satz220 extends SpartensatzX {
 
     private boolean hasInSparte10(Bezeichner name, Enum[] sparte10Values) {
         for (Enum e : sparte10Values) {
-            String normalized = StringUtils.removeAll(e.name(), "_");
-            if (name.getTechnischerName().equalsIgnoreCase(normalized)) {
+            if (name.equals(Bezeichner.of(e))) {
                 return true;
             }
         }
