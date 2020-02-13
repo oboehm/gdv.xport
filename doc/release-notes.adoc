@@ -7,7 +7,7 @@
 * Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
 
 
-== 4.0.4 (Feb-2020)
+== 4.0.4 (14-Feb-2020)
 
 * _fixed_: weniger Probleme in Satzart 0220.010 und 0221.010 beim Umgang mit der Wagnisart
 (https://github.com/oboehm/gdv.xport/issues/39[Issue #39])
