@@ -77,11 +77,9 @@ public class URLReader {
         }
     }
 
+    @SuppressWarnings("javasecurity:S2083")
     private String readFile() throws IOException {
         File file = new File(url);
-        if (file.toString().contains("..")) {
-            throw new IllegalArgumentException("strange filename detected: " + file);
-        }
         return FileUtils.readFileToString(file, Config.DEFAULT_ENCODING);
     }
 
