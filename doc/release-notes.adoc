@@ -11,6 +11,8 @@
 
 * _fixed_: weniger Probleme in Satzart 0220.010 und 0221.010 beim Umgang mit der Wagnisart
 (https://github.com/oboehm/gdv.xport/issues/39[Issue #39])
+* _fixed_: Security-Problem mit jackson-databind behoben
+(https://github.com/oboehm/gdv.xport/issues/38[Issue #38])
 
 == 4.0.3 (16-Feb-2019)
 
