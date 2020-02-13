@@ -25,6 +25,8 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7;
+import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -157,6 +159,17 @@ public class Satz221Test extends AbstractDatensatzTest {
         sparte51.importFrom(input);
         List<ConstraintViolation> violations = sparte51.validate();
         assertTrue(violations + " should be empty", violations.isEmpty());
+    }
+
+    /**
+     * Dies ist ein Testfall fuer Satz 221, analog zu Issue 39
+     * (https://github.com/oboehm/gdv.xport/issues/39).
+     */
+    @Test
+    public void testSetWagnis7Beitragssumme() {
+        Satz221 satz221 = new Satz221(10);
+        satz221.set(Feld221Wagnis7.BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN, "00000000001250");
+        assertEquals("00000000001250", satz221.get(Feld221Wagnis7.BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN));
     }
 
 }

@@ -74,30 +74,26 @@ public class Satz220 extends SpartensatzX {
     }
 
     private static void initMappingSparte10() {
-        MAPPING_SPARTE10[0] = asList(Feld220Wagnis0.values());
-        MAPPING_SPARTE10[1] = asList(Feld220Wagnis13.values(), Feld220Wagnis13Bezugsrechte.values(),
+        MAPPING_SPARTE10[0] = Collections.singletonList(Feld220Wagnis0.values());
+        MAPPING_SPARTE10[1] = Arrays.asList(Feld220Wagnis13.values(), Feld220Wagnis13Bezugsrechte.values(),
                 Feld220Wagnis13Auszahlungen.values(), Feld220Wagnis13ZukSummenaenderungen.values(),
                 Feld220Wagnis13Wertungssummen.values());
-        MAPPING_SPARTE10[2] = asList(Feld220Wagnis2.values(), Feld220Wagnis2Bezugsrechte.values(),
+        MAPPING_SPARTE10[2] = Arrays.asList(Feld220Wagnis2.values(), Feld220Wagnis2Bezugsrechte.values(),
                 Feld220Wagnis2Auszahlungen.values(), Feld220Wagnis2ZukSummenaenderungen.values(),
                 Feld220Wagnis2Wertungssummen.values());
         MAPPING_SPARTE10[3] = MAPPING_SPARTE10[1];
-        MAPPING_SPARTE10[4] = asList(Feld220Wagnis48.values(), Feld220Wagnis48Bezugsrechte.values(),
+        MAPPING_SPARTE10[4] = Arrays.asList(Feld220Wagnis48.values(), Feld220Wagnis48Bezugsrechte.values(),
                 Feld220Wagnis48ZukSummenaenderungen.values(), Feld220Wagnis48Wertungssummen.values());
-        MAPPING_SPARTE10[5] = asList(Feld220Wagnis5.values(), Feld220Wagnis5Bezugsrechte.values(),
+        MAPPING_SPARTE10[5] = Arrays.asList(Feld220Wagnis5.values(), Feld220Wagnis5Bezugsrechte.values(),
                 Feld220Wagnis5ZukSummenaenderungen.values(), Feld220Wagnis5Wertungssummen.values());
-        MAPPING_SPARTE10[6] = asList(Feld220Wagnis6.values(), Feld220Wagnis6Bezugsrechte.values(),
+        MAPPING_SPARTE10[6] = Arrays.asList(Feld220Wagnis6.values(), Feld220Wagnis6Bezugsrechte.values(),
                 Feld220Wagnis6ZukSummenaenderungen.values(), Feld220Wagnis6Wertungssummen.values());
-        MAPPING_SPARTE10[7] = asList(Feld220Wagnis7.values(), Feld220Wagnis7Bezugsrechte.values(),
+        MAPPING_SPARTE10[7] = Arrays.asList(Feld220Wagnis7.values(), Feld220Wagnis7Bezugsrechte.values(),
                 Feld220Wagnis7ZukSummenaenderungen.values(), Feld220Wagnis7Wertungssummen.values());
         MAPPING_SPARTE10[8] = MAPPING_SPARTE10[4];
-        MAPPING_SPARTE10[9] = asList(Feld220Wagnis9.values(), Feld220Wagnis9Bezugsrechte.values(),
+        MAPPING_SPARTE10[9] = Arrays.asList(Feld220Wagnis9.values(), Feld220Wagnis9Bezugsrechte.values(),
                 Feld220Wagnis9Auszahlungen.values(), Feld220Wagnis9ZukSummenaenderungen.values(),
                 Feld220Wagnis9Wertungssummen.values());
-    }
-
-    private static List<Enum[]> asList(Enum[]... enums) {
-        return Arrays.asList(enums);
     }
 
     private static void initMapping() {
@@ -174,33 +170,33 @@ public class Satz220 extends SpartensatzX {
     @Override
     public void set(Bezeichner name, String value) {
         if ((this.getSparte() == 10) && !hasFeld(name)) {
-            setUpSparte10With(name);
+            setUpTeildatensatzeOf(this, name, MAPPING_SPARTE10);
         }
         super.set(name, value);
     }
 
-    private void setUpSparte10With(Bezeichner name) {
-        for (int art = 0; art < MAPPING_SPARTE10.length; art++) {
-            if (hasInSparte10(name, art)) {
-                LOG.info("Satz 220.010 wird fuer Wagnisart {} aufgesetzt.", art);
-                setUpSparte10With(name, MAPPING_SPARTE10[art]);
+    protected static void setUpTeildatensatzeOf(SatzX satz, Bezeichner name, List<Enum[]>[] mappings) {
+        for (int art = 0; art < mappings.length; art++) {
+            if (hasIn(mappings[art], name)) {
+                LOG.info("{} wird fuer Wagnisart {} aufgesetzt.", satz.toShortString(), art);
+                setUpTeildatensatzeOf(satz, name, mappings[art]);
                 break;
             }
         }
     }
 
-    private void setUpSparte10With(Bezeichner name, List<Enum[]> valuesList) {
+    private static void setUpTeildatensatzeOf(SatzX satz, Bezeichner name, List<Enum[]> valuesList) {
         for (Enum[] sparte10Values : valuesList) {
             if (hasInSparte10(name, sparte10Values)) {
-                setUpTeildatensaetze(sparte10Values);
+                satz.setUpTeildatensaetze(sparte10Values);
                 return;
             }
         }
-        LOG.warn("Satz 220.010 mit {} konnte nicht aufgesetzt werden.", name);
+        LOG.warn("{} mit {} konnte nicht aufgesetzt werden.", satz.toShortString(), name);
     }
 
-    private boolean hasInSparte10(Bezeichner name, int wagnisart) {
-        for (Enum[] sparte10Values : MAPPING_SPARTE10[wagnisart]) {
+    private static boolean hasIn(List<Enum[]> mappingList, Bezeichner name) {
+        for (Enum[] sparte10Values : mappingList) {
             if (hasInSparte10(name, sparte10Values)) {
                 return true;
             }
@@ -208,7 +204,7 @@ public class Satz220 extends SpartensatzX {
         return false;
     }
 
-    private boolean hasInSparte10(Bezeichner name, Enum[] sparte10Values) {
+    private static boolean hasInSparte10(Bezeichner name, Enum[] sparte10Values) {
         for (Enum e : sparte10Values) {
             if (name.equals(Bezeichner.of(e))) {
                 return true;
