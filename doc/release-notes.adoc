@@ -9,8 +9,8 @@
 
 == 4.0.4 (14-Feb-2020)
 
-* _fixed_: weniger Probleme in Satzart 0220.010 und 0221.010 beim Umgang mit der Wagnisart
-(https://github.com/oboehm/gdv.xport/issues/39[Issue #39])
+* zusätzlicher Konstruktor für Wagnisart in Satzart 0220.010 und 0221.010
+(behebt https://github.com/oboehm/gdv.xport/issues/39[Issue #39])
 * _fixed_: Security-Problem mit jackson-databind behoben
 (https://github.com/oboehm/gdv.xport/issues/38[Issue #38])
 

@@ -2,7 +2,7 @@
 
 .Build-Server
 |===
-|Server|master |develop/4.x |Konfiguration
+|Server|master |develop |Konfiguration
 
 |https://travis-ci.org/oboehm/gdv.xport/branches[Travis-CI.org]
 |https://travis-ci.org/oboehm/gdv.xport/branches[image:https://travis-ci.org/oboehm/gdv.xport.svg?branch=master[Build Status]]

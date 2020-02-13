@@ -9,7 +9,7 @@ http://www.apache.org/licenses/LICENSE-2.0.html[image:https://img.shields.io/bad
 gdv.xport ist als Java-Bibliothek gestartet, die den Umgang mit dem GDV-Format erleichtert. 
 Das "x" in port steht fur "im"- und "ex"-port. Die Bibliothek ist Open Source und steht unter der Apache License. 
 
-Mit Version 3.0 gibt es neben dieser Bibliothek auch REST-Services fuer Dateien im GDV-Format. 
+Ab Version 3.0 gibt es neben dieser Bibliothek auch REST-Services fuer Dateien im GDV-Format.
 Die einzelnen Module sind: 
 
 * link:lib/[*gdv-xport-lib*]: gdv.xport als Java-Bibliothek
@@ -28,7 +28,7 @@ Damit aendern sich die Maven-Koordinaten für der Bibliothek in:
 
 
 
-== Aehnliche Projekte
+== Ähnliche Projekte
 
 Fuer Ruby gibt es https://github.com/vendis/opengdv/[OpenGDV], einer Open-Source-Bibliothek, die unter der MIT-License steht.
 Allerdings wurde diese Bibliothek schon seit laengerer Zeit nicht mehr aktualisiert.
@@ -38,7 +38,7 @@ Allerdings wurde diese Bibliothek schon seit laengerer Zeit nicht mehr aktualisi
 == GIT Branching-Modell
 
 Entwickelt wird nach http://nvie.com/posts/a-successful-git-branching-model/[A successful Git branching model] von Vincent Driessen.
-Die Weiterentwicklung der aktuellen Version findet auf dem develop-Branch statt (derzeit: https://github.com/oboehm/gdv.xport/tree/develop/4.x[develop/4.x]), waehrend das letzte Release im Release-Zweig (derzeit: https://github.com/oboehm/gdv.xport/tree/release/4.x[release/4.x]) zu finden ist.
+Die Weiterentwicklung der aktuellen Version findet auf dem develop-Branch statt, waehrend das letzte Release im Release-Zweig (derzeit: https://github.com/oboehm/gdv.xport/tree/release/4.x[release/4.x]) zu finden ist.
 
 
 

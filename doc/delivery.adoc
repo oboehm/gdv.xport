@@ -26,7 +26,8 @@ Check-Liste für die Auslieferung eines neuen Releases:
 |D-Day
 |Finaler Release-Build und Release-Test (inkl. Signierung)
 |baue alle Artefakte auf dem Release-Branch 
-(`mvn -B -Prelease -Dpatterntesting.integrationTest clean install source:jar javadoc:jar gpg:sign -Dgpg.passphrase=xx`) 
+(`mvn -B -Prelease -Dpatterntesting.integrationTest clean install source:jar javadoc:jar gpg:sign -Dgpg.passphrase=xx`);
+sollte das maven-surefire-plugin unter Java 11 mit einer NullPointerException aussteigen, den Build mit Java 8 versuchen
 
 |D-Day
 |JARs auf https://oss.sonatype.org/[oss.sonatype.org] hochladen
