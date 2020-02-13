@@ -134,7 +134,7 @@ public class Satz220 extends SpartensatzX {
      * Auspraegungen durch die Wagnisart gibt.
      *
      * @param sparte sollte immer 10 sein
-     * @param wagnisart Zahl von 1 bis 9
+     * @param wagnisart Zahl von 0 bis 9
      */
     public Satz220(final int sparte, final int wagnisart) {
         this(MAPPING_SPARTE10[wagnisart].get(0));
@@ -153,12 +153,12 @@ public class Satz220 extends SpartensatzX {
      */
     public Satz220(final Enum[] felder) {
         super(220, 10, felder);
-        this.getFeld(Bezeichner.WAGNISART).setInhalt(getWagnisartFrom(felder));
+        this.getFeld(Bezeichner.WAGNISART).setInhalt(getWagnisartFrom(MAPPING_SPARTE10, felder));
     }
 
-    private static int getWagnisartFrom(Enum[] felder) {
-        for (int art = 0; art < MAPPING_SPARTE10.length; art++) {
-            for (Enum[] enumValues : MAPPING_SPARTE10[art]) {
+    protected static int getWagnisartFrom(List<Enum[]>[] mapping10, Enum[] felder) {
+        for (int art = 0; art < mapping10.length; art++) {
+            for (Enum[] enumValues : mapping10[art]) {
                 if (Arrays.equals(felder, enumValues)) {
                     return art;
                 }

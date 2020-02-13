@@ -2,15 +2,20 @@
 
 
 
-== 4.1 (in Planung)
+== 4.1 (immer noch in Planung)
 
 * Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
 
 
+== 4.0.4 (Feb-2020)
+
+* _fixed_: weniger Probleme in Satzart 0220.010 und 0221.010 beim Umgang mit der Wagnisart
+(https://github.com/oboehm/gdv.xport/issues/39[Issue #39])
+
 == 4.0.3 (16-Feb-2019)
 
 * _fixed_: Umlaut-Problem und fehlerhafter XML-Header
-  (https://github.com/oboehm/gdv.xport/issues/37[Issue #37])
+(https://github.com/oboehm/gdv.xport/issues/37[Issue #37])
 
 == 4.0.2 (14-Feb-2019)
 

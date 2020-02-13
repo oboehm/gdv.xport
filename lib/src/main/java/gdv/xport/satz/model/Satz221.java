@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012 by Oli B.
+ * Copyright (c) 2011-2020 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,8 @@ import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6;
 import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7;
 import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7ZukSummenaenderungen;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
@@ -46,6 +48,7 @@ import java.util.*;
  */
 public class Satz221 extends SpartensatzX {
 
+    private static final Logger LOG = LogManager.getLogger(Satz221.class);
     /** Mapping table for sparte to Feldxxx enumeration. */
     private static final Map<Integer, Enum[]> MAPPING = new HashMap<Integer, Enum[]>();
     private static final List<Enum[]>[] MAPPING_SPARTE10 = new List[10];
@@ -96,6 +99,36 @@ public class Satz221 extends SpartensatzX {
      */
     public Satz221(final int sparte) {
         super(221, sparte);
+        if (sparte == 10) {
+            LOG.warn("Wagnisart fehlt - fuer Sparte 10 bitte anderen Konstruktor verwenden.");
+        }
+    }
+
+    /**
+     * Dieser Konstruktor ist fuer Sparte 10 gedacht, wo es verschiedene
+     * Auspraegungen durch die Wagnisart gibt.
+     *
+     * @param sparte sollte immer 10 sein
+     * @param wagnisart Zahl von 0 bis 9
+     */
+    public Satz221(final int sparte, final int wagnisart) {
+        this(MAPPING_SPARTE10[wagnisart].get(0));
+        if (sparte != 10) {
+            throw new IllegalArgumentException(
+                    "falsche Sparte " + sparte + ": Wagnisart " + wagnisart + " gibt es nur bei Sparte 10");
+        }
+        this.getFeld(Bezeichner.WAGNISART).setInhalt(wagnisart);
+    }
+
+    /**
+     * Dies ist der Konstruktor fuer Sparte 10. Hier gibt es verschiedene
+     * Belegung der Wagnisart, die ueber die Felder vorbelegt werden.
+     *
+     * @param felder z.B. Feld221Wagnis7.values()
+     */
+    public Satz221(final Enum[] felder) {
+        super(220, 10, felder);
+        this.getFeld(Bezeichner.WAGNISART).setInhalt(Satz220.getWagnisartFrom(MAPPING_SPARTE10, felder));
     }
 
     @Override

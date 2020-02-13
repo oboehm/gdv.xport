@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012 by Oli B.
+ * Copyright (c) 2011-2020 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,8 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2;
+import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6;
 import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
 import net.sf.oval.ConstraintViolation;
@@ -170,6 +172,24 @@ public class Satz221Test extends AbstractDatensatzTest {
         Satz221 satz221 = new Satz221(10);
         satz221.set(Feld221Wagnis7.BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN, "00000000001250");
         assertEquals("00000000001250", satz221.get(Feld221Wagnis7.BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN));
+    }
+
+    @Test
+    public void testCtorSparteWagnisart() {
+        Satz221 satz221 = new Satz221(10, 8);
+        assertEquals("8", satz221.getWagnisart());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testCtorWrongSparte() {
+        new Satz221(50, 7);
+    }
+
+    @Test
+    public void testCtorSparte10() {
+        Satz221 satz221 = new Satz221(Feld221Wagnis2.values());
+        assertEquals(10, satz221.getSparte());
+        assertEquals("2", satz221.getWagnisart());
     }
 
 }
