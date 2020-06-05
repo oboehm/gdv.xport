@@ -40,7 +40,7 @@
   <properties>
 
     <patterntesting.version>1.8.0</patterntesting.version>
-    <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+    <spring-boot.version>2.1.12.RELEASE</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -695,9 +695,6 @@
           </plugin>
           <plugin>
             <artifactId>maven-install-plugin</artifactId>
-            <configuration>
-              <createChecksum>true</createChecksum>
-            </configuration>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
