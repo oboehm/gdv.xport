@@ -7,6 +7,17 @@
 * Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
 
 
+== 4.0.5 (SNAPSHOT)
+
+* _fixed_: Fehler in der Swagger-API-Dokumentation behoben
+(https://github.com/oboehm/gdv.xport/issues/45[Issue #45])
+* #_neu_#: rudimentäre Docker-Unterstützung
+(https://github.com/oboehm/gdv.xport/issues/46[Issue #46])
+* Dokumentation um Bau-Anleitung ergänzt
+(https://github.com/oboehm/gdv.xport/issues/42[Issue #42])
+
+
+
 == 4.0.4 (14-Feb-2020)
 
 * zusätzlicher Konstruktor für Wagnisart in Satzart 0220.010 und 0221.010
