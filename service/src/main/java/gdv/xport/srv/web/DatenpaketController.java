@@ -24,6 +24,7 @@ import gdv.xport.util.URLReader;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -68,17 +69,9 @@ public final class DatenpaketController {
      * @return gefundene Abweichungen bzw. Validierungs-Fehler
      */
     @ApiOperation(value = "validiert die uebergebene URI und gibt die gefundenen Abweichungen zurueck")
-    @ApiImplicitParams({
-            @ApiImplicitParam(
-                    name = "uri",
-                    value = "z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
-                    required = true,
-                    dataType = "string",
-                    paramType = "query"
-            )
-    })
     @GetMapping("/Abweichungen")
-    public @ResponseBody List<Model> validate(@RequestParam("uri") URI uri) {
+    public @ResponseBody List<Model> validate(
+            @ApiParam(value = "z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri) {
         try {
             String content = readFrom(uri);
             return validate(content);
@@ -97,16 +90,11 @@ public final class DatenpaketController {
      * @return gefundene Abweichungen bzw. Validierungs-Fehler
      */
     @ApiOperation(value = "validiert den uebergebene Text im GDV-Format und gibt die gefundenen Abweichungen zurueck")
-    @ApiImplicitParams({
-            @ApiImplicitParam(
-                    value="Datenpaket im GDV-Format",
-                    dataType = "string",
-                    paramType = "body"
-            )
-    })
     @PostMapping("/Abweichungen")
     public @ResponseBody
-    List<Model> validate(@RequestBody(required = false) String body, @RequestParam(required = false) String text) {
+    List<Model> validate(
+            @ApiParam(value = "Datenpaket im GDV-Format") @RequestBody(required = false) String body,
+            @ApiParam(value = "Datenpaket im GDV-Format (alternativ als Parameter)") @RequestParam(required = false) String text) {
         String content = (StringUtils.isBlank(text)) ? body : text;
         return validate(content);
     }
@@ -152,23 +140,12 @@ public final class DatenpaketController {
      * @throws IOException the io exception
      */
     @ApiOperation(value = "liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck")
-    @ApiImplicitParams({
-            @ApiImplicitParam(
-                    name = "uri",
-                    value = "z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
-                    required = true,
-                    dataType = "string",
-                    paramType = "query"
-            ),
-            @ApiImplicitParam(
-                    name = "format",
-                    value = "HTML, XML, JSON, CSV oder TEXT",
-                    dataType = "string",
-                    paramType = "query"
-            )
-    })
     @GetMapping(path = "/Datenpaket*")
-    public @ResponseBody Datenpaket importDatenpaket(@RequestParam("uri") URI uri) throws IOException {
+    public @ResponseBody
+    Datenpaket importDatenpaket(
+            @ApiParam(value = "URI, die auf einen Datensatz verweist",
+                    example = "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri)
+            throws IOException {
         String content = readFrom(uri);
         return importDatenpaketFrom(content);
     }
@@ -193,25 +170,14 @@ public final class DatenpaketController {
      * @throws IOException bei Netzproblemen
      */
     @ApiOperation("liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck")
-    @ApiImplicitParams({
-            @ApiImplicitParam(
-                    value="Datenpaket im GDV-Format",
-                    dataType = "string",
-                    paramType = "body"
-            ),
-            @ApiImplicitParam(
-                    name = "format",
-                    value = "HTML, XML, JSON, CSV oder TEXT",
-                    dataType = "string",
-                    paramType = "query"
-            )
-    })
     @PostMapping(
             path = "/Datenpaket*", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
     public @ResponseBody
-    Datenpaket importDatenpaket(@RequestBody(required = false) String body, @RequestParam(required = false) String text)
+    Datenpaket importDatenpaket(
+            @ApiParam(value = "Datenpaket im GDV-Format") @RequestBody(required = false) String body,
+            @ApiParam(value = "HTML, XML, JSON, CSV oder TEXT") @RequestParam(required = false) String text)
             throws IOException {
         String content = (StringUtils.isBlank(text)) ? body : text;
         return importDatenpaketFrom(content);

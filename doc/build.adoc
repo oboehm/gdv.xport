@@ -1,4 +1,6 @@
-= CI-Build
+= Bau der Anwendung
+
+== CI-Build
 
 .Build-Server
 |===
@@ -26,3 +28,40 @@
 |===
 
 Der CI-Build (CI: Continuous Integration) läuft nach einem Commit und einem Push auf GitHub automatisch an.
+
+
+== Manueller Bau mit Maven
+
+Voraussetzung für den manuellen Bau der Anwendung sind:
+
+* Java 8
+* http://maven.apache.org/[Maven], mindestens in Version 3.6
+
+Sind diese Voraussetzungen gegeben, kann die WAR-Datei für den Start als Web-Anwendung über folgendes Kommando gebaut werden:
+
+```
+mvn -DskipTests package
+```
+
+Mit der Option `-DskipTests` werden die Unit-Tests übersprungen.
+Nach ca. 30 Sekunden sind dann alle Module gebaut.
+Die WAR-Datei für den Start als Web-Anwendung befindet sich im Verzeichnis `service/target`.
+
+
+
+== Bauen im Container
+
+Sind die Voraussetzung für den manuellen Bau nicht gegeben (kein Java, kein Maven), kann die Anwendung auch über Docker gebaut werden.
+Dazu gibt es auf oberster Ebene ein link:../Dockerfile[Dockerfile], mit dem die gesamte Anwendung in Docker gebaut werden kann:
+
+```
+docker build -t gdv.xport -f Dockerfile .
+```
+
+Danach kann dieser Docker-Container über
+
+```
+docker run -p 2517:2517 gdv.xport
+```
+
+gestartet und unter http://localhost:2517/ aufgerufen werden.
