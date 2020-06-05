@@ -631,6 +631,13 @@
         <role>Java Developer</role>
       </roles>
     </contributor>
+    <contributor>
+      <name>Jan-Benedikt Jagusch</name>
+      <url>https://github.com/janjagusch</url>
+      <roles>
+        <role>Maintainer (Dockerfile)</role>
+      </roles>
+    </contributor>
   </contributors>
   
   <scm>

@@ -8,9 +8,9 @@ https://coveralls.io/github/oboehm/gdv.xport[image:https://coveralls.io/repos/gi
 
 Dieser Bereich ist für die interne Entwicklung gedacht:
 
+* link:build.adoc[Build]: CI-Build, manueller Bau und Bauen über Docker
 * link:delivery.adoc[Check-Liste]: für die Auslieferung eines neuen Releases
 * link:deployment.adoc[Deployment]: für das Deployment auf Heroku
-* link:build.adoc[CI-Build]: Continuous Integration Build
 * link:release-notes[Release Notes]: Übersicht über die einzelnen Versionen
 
 
@@ -32,7 +32,7 @@ Nur dann kann man ihn auch beheben.
 
 Gerne darf man einen eigenen Fork von gdv.xport ziehen, um mit dem Code zu experimentieren.
 Während das letzte Release auf dem https://github.com/oboehm/gdv.xport[master]-Branch zu finden ist,
-findet die aktuelle Entwicklung auf dem https://github.com/oboehm/gdv.xport/tree/develop/4.x[develop/4.x]-Branch statt.
+findet die aktuelle Entwicklung auf dem https://github.com/oboehm/gdv.xport/tree/develop[develop]-Branch statt.
 
 Um festzustellen, ob das Projekt richtig aufgesetzt ist, startet man am besten die Unit-Tests, die ca. 90% des Codes abdecken.
 Laufen sie durch und ist alles im grünen Bereich, kann man dann bequem den Code erkunden und eigene Experimente (oder Erweiterungen) anstellen.
