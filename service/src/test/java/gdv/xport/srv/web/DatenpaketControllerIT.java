@@ -103,11 +103,9 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      *     <li>die verwendete URI ist nicht (mehr) erreichbar,</li>
      *     <li>Programmierfehler.</li>
      * </ul>
-     *
-     * @throws IOException the io exception
      */
     @Test
-    public void testDatenpaketFromURI() throws IOException {
+    public void testDatenpaketFromURI() {
         ResponseEntity<String> response = getResponseEntityFor(
                 "/api/v1/Datenpaket.csv?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
                 String.class);
@@ -248,6 +246,19 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
         headers.add("Accept", MediaType.TEXT_XML_VALUE);
         return new HttpEntity<>(text, headers);
+    }
+
+    /**
+     * Dies ist der Testfall fuer Issue 48.
+     */
+    @Test
+    public void testFormatArgument() {
+        ResponseEntity<String> response = getResponseEntityFor(
+                "/api/v1/Datenpaket*?format=JSON&uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
+                String.class);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        String json = response.getBody().trim();
+        assertThat(json, startsWith("{"));
     }
 
 }

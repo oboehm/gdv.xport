@@ -9,6 +9,8 @@
 
 == 4.0.5 (SNAPSHOT)
 
+* _fixed_: format-Parameter in `api/v1/Datenpaket*` wird jetzt beachtet
+(https://github.com/oboehm/gdv.xport/issues/48[Issue #48])
 * _fixed_: Fehler in der Swagger-API-Dokumentation behoben
 (https://github.com/oboehm/gdv.xport/issues/45[Issue #45])
 * #_neu_#: rudimentäre Docker-Unterstützung

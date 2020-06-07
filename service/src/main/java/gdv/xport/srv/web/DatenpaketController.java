@@ -21,15 +21,15 @@ import gdv.xport.Datenpaket;
 import gdv.xport.srv.service.DatenpaketService;
 import gdv.xport.srv.service.DefaultDatenpaketService;
 import gdv.xport.util.URLReader;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.InvalidMediaTypeException;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.util.MimeType;
 import org.springframework.util.MimeTypeUtils;
@@ -40,7 +40,8 @@ import patterntesting.runtime.util.Converter;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.net.*;
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -135,19 +136,27 @@ public final class DatenpaketController {
      * d.h. anhand des Accept-Headers, der Endung oder des format-Parameters.
      *
      * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @param format statt per Content Negotiation kann auch der format-Parameter
+     *               belegt werden
      * @return Datenpaket, das dann ueber Content Negotiation in das
      *         angeforderte Format transformiert wird
      * @throws IOException the io exception
      */
-    @ApiOperation(value = "liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck")
+    @ApiOperation(value = "Liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck." +
+            " Der Stern '*' in /Datenpaket* steht dabei fuer ein beliebiges Muster." +
+            " So kann z.B. auch /Datenpaket.csv als URI angegeben werden." +
+            " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser.")
     @GetMapping(path = "/Datenpaket*")
-    public @ResponseBody
-    Datenpaket importDatenpaket(
+    public @ResponseBody String importDatenpaket(
             @ApiParam(value = "URI, die auf einen Datensatz verweist",
-                    example = "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri)
+                    example = "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri,
+            @ApiParam(value = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
+                    " normalerweise wird das Format ueber den Accept-Header vorgegeben, kann aber hierueber explizit gesetzt werden.",
+                    example = "JSON") @RequestParam(required = false) String format,
+            HttpServletRequest request)
             throws IOException {
         String content = readFrom(uri);
-        return importDatenpaketFrom(content);
+        return formatDatenpaket(content, format, request);
     }
 
     private static String readFrom(@RequestParam("uri") URI uri) throws IOException {
@@ -166,27 +175,32 @@ public final class DatenpaketController {
      *
      * @param body Datenpaket im GDV-Format
      * @param text alternativ kann das Datenpaket auch als Parameter reinkommen
+     * @param format statt per Content Negotiation kann auch der format-Parameter
+     *               belegt werden
      * @return Datenpaket
-     * @throws IOException bei Netzproblemen
      */
-    @ApiOperation("liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck")
+    @ApiOperation("Liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck." +
+            " Der Stern '*' in /Datenpaket* steht dabei fuer ein beliebiges Muster." +
+            " So kann z.B. auch /Datenpaket.csv als URI angegeben werden." +
+            " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser.")
     @PostMapping(
             path = "/Datenpaket*", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
-    public @ResponseBody
-    Datenpaket importDatenpaket(
+    public @ResponseBody String importDatenpaket(
             @ApiParam(value = "Datenpaket im GDV-Format") @RequestBody(required = false) String body,
-            @ApiParam(value = "HTML, XML, JSON, CSV oder TEXT") @RequestParam(required = false) String text)
-            throws IOException {
+            @ApiParam(value = "Datenpaket im GDV-Format (als Alternative zur Uebergabe im Body)") @RequestParam(required = false) String text,
+            @ApiParam(value = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
+                    " normalerweise wird das Format ueber den Accept-Header vorgegeben, kann aber hierueber explizit gesetzt werden.",
+                    example = "JSON") @RequestParam(required = false) String format,
+            HttpServletRequest request) {
         String content = (StringUtils.isBlank(text)) ? body : text;
-        return importDatenpaketFrom(content);
+        return formatDatenpaket(content, format, request);
     }
 
-    private static Datenpaket importDatenpaketFrom(String content) throws IOException {
-        Datenpaket datenpaket = new Datenpaket();
-        datenpaket.importFrom(content);
-        return datenpaket;
+    private String formatDatenpaket(String content, String format, HttpServletRequest request) {
+        MimeType type = toMimeType(format, request);
+        return service.format(content, type);
     }
 
     /**
@@ -212,6 +226,20 @@ public final class DatenpaketController {
         String text = new String(file.getBytes());
         LOG.info("Reading Datenpakete from {} finished after {} with {} bytes.", file, watch, text.length());
         return text;
+    }
+
+    private static Datenpaket importDatenpaketFrom(String content) throws IOException {
+        Datenpaket datenpaket = new Datenpaket();
+        datenpaket.importFrom(content);
+        return datenpaket;
+    }
+
+    private static MimeType toMimeType(String format, HttpServletRequest request) {
+        if (StringUtils.isBlank(format)) {
+            return toMimeTypes(request).get(0);
+        } else {
+            return toMimeType(format);
+        }
     }
 
     private static List<MimeType> toMimeTypes(HttpServletRequest request) {
