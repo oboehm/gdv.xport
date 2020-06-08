@@ -11,7 +11,7 @@ Dieser Bereich ist für die interne Entwicklung gedacht:
 * link:build.adoc[Build]: CI-Build, manueller Bau und Bauen über Docker
 * link:delivery.adoc[Check-Liste]: für die Auslieferung eines neuen Releases
 * link:deployment.adoc[Deployment]: für das Deployment auf Heroku
-* link:release-notes[Release Notes]: Übersicht über die einzelnen Versionen
+* link:../CHANGELOG.md[Changelog]: Übersicht über die einzelnen Versionen
 
 
 == Wünsche und Wehwehchen

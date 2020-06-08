@@ -20,7 +20,7 @@
     <release version="4.x" date="2019" description="Aktualisierung auf XML-Version von 2018">
       <action dev="oboehm">
         Verlagerung der Release-Notes nach
-        https://github.com/oboehm/gdv.xport/blob/develop/4.x/doc/release-notes.adoc
+        https://github.com/oboehm/gdv.xport/blob/develop/CHANGELOG.md
       </action>
     </release>
 

@@ -12,7 +12,7 @@ Check-Liste für die Auslieferung eines neuen Releases:
 
 |vorher
 |Release-Notes erstellen
-|link:release-notes.adoc[release-notes.adoc] aktualisieren
+|link:../CHANGELOG.md[CHANGELOG.md] aktualisieren
 
 |vorher
 |Release-Branch erstellen

@@ -54,6 +54,6 @@ Die Weiterentwicklung der aktuellen Version findet auf dem https://github.com/ob
 Unter link:doc/[doc] ist das Wichtigste für Entwickler zusammengefasst.
 Weitere Infos wie z.B. die http://www.aosd.de/gdv.xport/apidocs/index.html[JavaDocs] finden Sie auch auf der http://www.aosd.de/gdv.xport/[Maven Projekt-Seite] .
 
-* link:doc/release-notes.adoc[Release Notes]
+* link:CHANGELOG.md[Release Notes]
 * Projekt-Seite: http://www.aosd.de/gdv.xport/
 * Xing-Gruppe: https://www.xing.com/communities/groups/datenaustausch-im-gdv-format-9756-1053093
