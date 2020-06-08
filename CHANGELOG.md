@@ -14,7 +14,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
 
 
-## [Unreleased]
+## [4.1.0] - 2020-06-08
 
 ### Added
 - rudimentäre Docker-Unterstützung
