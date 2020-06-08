@@ -58,9 +58,13 @@ Kopiere `/tmp/gdv-xport` anschließend auf die Web-Seite.
 `git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-4.0.0` (remote)
 
 |nachher
+|Tickets schließen
+|https://github.com/oboehm/gdv.xport/issues[offene Tickets] schließen, die mit diesem Release bearbeitet wurden
+
+|nachher
 |Beginn mit nächstem Snapshot
 |auf developer-Branch gehen, mit master mergen;
-in pom.xml Version hochzählen, "-SNAPSHOT" anhängen 
+in pom.xml Version hochzählen, "-SNAPSHOT" anhängen
 
 |nachhar
 |Auslieferung bekanntmachen
