@@ -41,6 +41,14 @@ Ab Version 4.1 gibt es jetzt dank der Mithilfe von https://github.com/janjagusch
 Unter link:doc/build.adoc[doc/build.adoc] ist der Aufruf beschrieben.
 Auch der manuelle Bau der Anwendung ist dort beschrieben.
 
+Inzwischen gibt es unter https://hub.docker.com/r/oboehm/gdv.xport ein dockerhub-Repository, in dem das Docker-Image über
+
+```
+docker pull oboehm/gdv.xport
+```
+
+abgeholt werden kann.
+
 
 == GIT Branching-Modell
 
