@@ -54,8 +54,12 @@ Kopiere `/tmp/gdv-xport` anschließend auf die Web-Seite.
 
 |D-Day
 |Label setzen
-|`git tag gdv-xport-4.0.0` (lokal)
-`git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-4.0.0` (remote)
+|`git tag gdv-xport-4.1.0` (lokal)
+`git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-4.1.0` (remote)
+
+|D-Day
+|Docker-Image bauen und pushen
+|s.u.
 
 |nachher
 |Tickets schließen
@@ -66,7 +70,7 @@ Kopiere `/tmp/gdv-xport` anschließend auf die Web-Seite.
 |auf developer-Branch gehen, mit master mergen;
 in pom.xml Version hochzählen, "-SNAPSHOT" anhängen
 
-|nachhar
+|nachher
 |Auslieferung bekanntmachen
 |Nachricht in entsprechende Xing-Gruppe
 (https://www.xing.com/communities/groups/datenaustausch-im-gdv-format-1053093[Datenaustausch im GDV-Format])
@@ -75,6 +79,18 @@ in pom.xml Version hochzählen, "-SNAPSHOT" anhängen
 |Maven Central prüfen
 |nach ein paar Tagen: überprüfen, ob die neue Version im https://search.maven.org/search?q=gdv.xport[Central Repository] angekommen ist 
 |===
+
+
+
+== Docker-Hub
+
+Um ein Docker-Image auf https://hub.docker.com/r/oboehm/gdv.xport zu bringen, sind folgende Schritte nötig
+(s.a. https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html):
+
+* Docker-Image bauen: `docker build -t gdv.xport -f Dockerfile .`
+* Image-ID ermitteln: `docker images`
+* Docker-Image taggen: `docker tag <Image-ID> oboehm/gdv.xport:4.1.0`
+* Docker-Image pushen: `docker push oboehm/gdv.xport`
 
 
 
