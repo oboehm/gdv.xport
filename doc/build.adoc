@@ -61,7 +61,7 @@ docker build -t gdv.xport -f Dockerfile .
 Danach kann dieser Docker-Container über
 
 ```
-docker run -p 2517:2517 gdv.xport
+docker run --name gdv-xport -p 2517:2517 gdv.xport
 ```
 
 gestartet und unter http://localhost:2517/ aufgerufen werden.
