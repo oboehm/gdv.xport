@@ -11,6 +11,9 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Planned]
 
+- Initialisierung Vorsatz überarbeiten und Versionen fuer die Satzarten nicht bei optionalen Satzarten vorbelegen
+- Datenpaket.add(..)-Methode bekommt einen zusaetzlichen Parameter fuer die Version im Vorsatz
+- Datenpaket.add(..)-Methode fügt automatisch die richtige Version im Vorsatz ein
 - Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
 
 
