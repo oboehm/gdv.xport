@@ -109,6 +109,7 @@ public final class FaqTest {
         dd.add(satz200);
         Vorsatz vorsatz = dd.getVorsatz();
         Feld version = vorsatz.getFeld(Bezeichner.VERSION_SATZART_0200);
+        vorsatz.set(Bezeichner.VERSION_SATZART_0052, "   ");
         assertEquals(102, version.getByteAdresse());
         //assertEquals("2.5", version.getInhalt());   // schlaegt fehl, da mit "2.2" vorbelegt ist
     }

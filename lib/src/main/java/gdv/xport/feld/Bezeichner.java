@@ -1145,7 +1145,7 @@ public final class Bezeichner {
     public static final Bezeichner VERSION_SATZART_0293_550 = new Bezeichner("Version Satzart 0293 550");
     public static final Bezeichner VERSION_SATZART_0294_550 = new Bezeichner("Version Satzart 0294 550");
     public static final Bezeichner VERSION_SATZART_0295_550 = new Bezeichner("Version Satzart 0295 550");
-    public static final Bezeichner VERSION_SATZART_0052 = new Bezeichner("Version Satzart 0051");
+    public static final Bezeichner VERSION_SATZART_0052 = new Bezeichner("Version Satzart 0052");
     public static final Bezeichner VERSION_SATZART_0102 = new Bezeichner("Version Satzart 0102");
     public static final Bezeichner VERSION_SATZART_0212 = new Bezeichner("Version Satzart 0212");
     public static final Bezeichner VERSION_SATZART_0352 = new Bezeichner("Version Satzart 0352");
