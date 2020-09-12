@@ -143,9 +143,9 @@ public final class Vorsatz extends Satz {
     }
 
     private void setUpVersionTds1() {
-        addVersion(1, new Version(VERSION_SATZART_0001, 96, "2.1"));
-        addVersion(100, 99, "2.1");
-        addVersion(200, 102, "2.2");
+        addVersion(1, new Version(VERSION_SATZART_0001, 96, "2.4"));
+        addVersion(100, 99, "   ");
+        addVersion(200, 102, "   ");
         addVersion(210, 50, 105, "   ");
         addVersion(220, 51, 108, "   ");
         addVersion(220, 52, 111, "   ");
@@ -166,8 +166,8 @@ public final class Vorsatz extends Satz {
         addVersion(220, 140, 156, "   ");
         addVersion(210, 20, 159, "   ");
         addVersion(220, 20, 162, "   ");
-        addVersion(210, 70, 165, "1.4");
-        addVersion(220, 70, 168, "1.4");
+        addVersion(210, 70, 165, "   ");
+        addVersion(220, 70, 168, "   ");
         addVersion(210, 171, "   ");
         addVersion(220, 174, "   ");
         addVersion(210, 510, 177, "   ");
@@ -204,7 +204,7 @@ public final class Vorsatz extends Satz {
         addVersion(tds, 221, 55, 114, "   ");
         addVersion(tds, 211, 40, 117, "   ");
         addVersion(tds, 221, 40, 120, "   ");
-        addVersion(tds, 221, 30, 123, "1.2");
+        addVersion(tds, 221, 30, 123, "   ");
         addVersion(tds, 211, 10, 126, "   ");
         addVersion(tds, 221, 10, 129, "   ");
         addVersion(tds, 211, 130, 132, "   ");
@@ -213,17 +213,17 @@ public final class Vorsatz extends Satz {
         addVersion(tds, 221, 110, 141, "   ");
         addVersion(tds, 211, 140, 144, "   ");
         addVersion(tds, 221, 140, 147, "   ");
-        addVersion(tds, 221, 70, 150, "1.2");
+        addVersion(tds, 221, 70, 150, "   ");
         addVersion(tds, 211, 153, "   ");
-        addVersion(tds, 221, 156, "1.2");
+        addVersion(tds, 221, 156, "   ");
         addVersion(tds, 221, 510, 159, "   ");
         addVersion(tds, 211, 162, "   ");
-        addVersion(tds, 221, 165, "1.2");
+        addVersion(tds, 221, 165, "   ");
         addVersion(tds, 211, 168, "   ");
-        addVersion(tds, 221, 171, "1.2");
+        addVersion(tds, 221, 171, "   ");
         addVersion(tds, 251, 174, "   ");
         addVersion(tds, 211, 177, "   ");
-        addVersion(tds, 221, 180, "1.2");
+        addVersion(tds, 221, 180, "   ");
         addVersion(tds, 210, 550, 183, "   ");
         addVersion(tds, 220, 550, 186, "   ");
         addVersion(tds, 270, 550, 189, "   ");

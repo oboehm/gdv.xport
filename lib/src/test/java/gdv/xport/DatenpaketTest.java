@@ -98,7 +98,7 @@ public final class DatenpaketTest {
         int expectedLength = 1024 + 4 * Config.getEOD().length();
         assertEquals(expectedLength, data.length());
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
+        assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
         assertEquals("1.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(0, nachsatz.getAnzahlSaetze());
@@ -141,8 +141,7 @@ public final class DatenpaketTest {
     public void testAdd() {
         datenpaket.add(new Satz220());
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
-        assertEquals("2.1", vorsatz.getVersion(100));
+        assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
         assertEquals("1.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(1, nachsatz.getAnzahlSaetze());
