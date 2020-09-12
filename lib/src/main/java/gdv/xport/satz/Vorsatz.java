@@ -413,4 +413,49 @@ public final class Vorsatz extends Satz {
         return this.getVersion(getVersionBezeichnung(art, sparte));
     }
 
+    /**
+     * Setzen der Version.
+     *
+     * @param bezeichner Bezeichner
+     * @param version    z.B. "1.2"
+     * @since 4.1.1
+     */
+    public void setVersion(Bezeichner bezeichner, String version) {
+        this.getFeld(bezeichner).setInhalt(version);
+    }
+
+    /**
+     * Setzen der Version.
+     *
+     * @param bezeichner Bezeichner
+     * @param version    z.B. "1.2"
+     * @since 4.1.1
+     */
+    public void setVersion(String bezeichner, String version) {
+        this.getFeld(bezeichner).setInhalt(version);
+    }
+
+    /**
+     * Setzen der Version.
+     *
+     * @param art     Satzart
+     * @param version z.B. "1.2"
+     * @since 4.1.1
+     */
+    public void setVersion(int art, String version) {
+        this.setVersion(getVersionBezeichnung(art), version);
+    }
+
+    /**
+     * Setzen der Version.
+     *
+     * @param art     Satzart
+     * @param sparte  Sparte
+     * @param version z.B. "1.2"
+     * @since 4.1.1
+     */
+    public void setVersion(int art, int sparte, String version) {
+        this.setVersion(getVersionBezeichnung(art, sparte), version);
+    }
+
 }

@@ -8,6 +8,7 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.util.SatzFactory;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -22,6 +23,11 @@ import static org.junit.Assert.assertTrue;
  * @since 4.2 (08.09.20)
  */
 public final class FaqTest {
+
+    @BeforeClass
+    public static void resetSatzfactory() {
+        SatzFactory.reset();
+    }
 
     /**
      * FRAGE:

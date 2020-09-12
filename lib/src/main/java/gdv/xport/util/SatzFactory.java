@@ -64,6 +64,10 @@ public final class SatzFactory {
     private static final XmlService XML_SERVICE = XmlService.getInstance();
 
     static {
+        registerDefault();
+    }
+
+    private static void registerDefault() {
         register(Vorsatz.class, 1);
         // Satz100, Satz200 und Satz210 werden jetzt vom XmlService behandelt
         register(Satz211.class, 211);
@@ -194,16 +198,30 @@ public final class SatzFactory {
                 new SatzTyp(220, 10, 9, TeildatensatzNummer.WERTUNGSSUMMEN.getCode()));
         registerEnum(Feld220Wagnis9ZukSummenaenderungen.class, new SatzTyp(220, 10, 9,
                 TeildatensatzNummer.ZUKUENFTIGE_SUMMENAENDERUNG.getCode()));
-        
+
         // Sparte 51
         registerEnum(Feld221.class, new SatzTyp(221, 51));
-
     }
 
     /**
      * Instantiates a new satz factory.
      */
     private SatzFactory() {
+    }
+
+    /**
+     * Mit dieser Klasse konnen die Registrierungen wieder komplett
+     * rueckgaengig gemacht werden. Diese Methode wurde vor allem zur
+     * Unterstuetzung der Unit-Tests eingefuehrt.
+     *
+     * @since 4.1.1
+     */
+    public static void reset() {
+        REGISTERED_SATZ_CLASSES.clear();
+        REGISTERED_DATENSATZ_CLASSES.clear();
+        REGISTERED_ENUM_CLASSES.clear();
+        registerDefault();
+        LOG.debug("Satzfactory wurde zurueckgesetzt.");
     }
 
     /**
