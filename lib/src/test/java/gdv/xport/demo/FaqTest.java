@@ -54,6 +54,8 @@ public final class FaqTest {
      * stattdessen verwendet werden kann:
      *
      *  Bezeichner.ERWEITERTER_BERVERSV_SCHLUESSEL
+     *
+     * @throws IOException the io exception
      */
     @Test
     public void testFeld210Sparte30() throws IOException {
