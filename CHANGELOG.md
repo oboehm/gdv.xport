@@ -17,6 +17,10 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
 
 
+## [Unreleased]
+
+...
+
 ## [4.2.0] - 2020-09-17
 
 ### Added
