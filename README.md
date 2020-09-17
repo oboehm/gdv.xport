@@ -34,7 +34,7 @@ Allerdings wurde diese Bibliothek schon seit laengerer Zeit nicht mehr aktualisi
 ## ![Docker](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/320px-Docker_%28container_engine%29_logo.svg.png)
 
 Ab Version 4.1 gibt es jetzt dank der Mithilfe von [janjagusch](https://github.com/janjagusch) ein erstes [Dockerfile](Dockerfile), mit dem sowohl die Anwendung gebaut, als auch im Container gestartet werden kann.
-Unter [doc/build.adoc](link:doc/build.adoc) ist der Aufruf beschrieben.
+Unter [doc/build.adoc](doc/build.adoc) ist der Aufruf beschrieben.
 Auch der manuelle Bau der Anwendung ist dort beschrieben.
 
 Inzwischen gibt es unter https://hub.docker.com/r/oboehm/gdv.xport ein dockerhub-Repository, in dem das Docker-Image über
