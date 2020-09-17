@@ -21,7 +21,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Added
 
-- Vorsatz.serVersion(..) eingeführt
+- Vorsatz.setVersion(..) eingeführt
 
 ### Changed
 
