@@ -152,6 +152,18 @@ public final class Datenpaket {
     }
 
     /**
+     * Fuegt den Datensatz hinzu und traegt die angegebene Version an der
+     * entsprechenden Stelle im Vorsatz ein.
+     *
+     * @param datensatz
+     * @param version
+     * @since 4.3
+     */
+    public void add(final Datensatz datensatz, double version) {
+        throw new UnsupportedOperationException("not yet implemented");
+    }
+
+    /**
      * Export.
      *
      * @param file Datei, in die exportiert werden soll

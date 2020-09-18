@@ -147,6 +147,13 @@ public final class DatenpaketTest {
         assertEquals(1, nachsatz.getAnzahlSaetze());
     }
 
+    @Test
+    public void testAddVersion() {
+        datenpaket.add(new Satz100(), 2.3);
+        Vorsatz vorsatz = datenpaket.getVorsatz();
+        assertEquals("2.3", vorsatz.getVersion(100));
+    }
+
     /**
      * Falls kein Datum gesetzt wird, sollte als Default das heutige DAtum
      * zurueckgegeben werden.
