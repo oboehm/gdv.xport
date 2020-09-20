@@ -56,7 +56,7 @@ public final class Vorsatz extends Satz {
     /** 10 Zeichen, Byte 86 - 95. */
     private final AlphaNumFeld vermittler = new AlphaNumFeld((VERMITTLER), 10, 86);
     /** Die Versionen fuer die verschiedenen Datensaetze. */
-    private final Map<Integer, Version> versions = new HashMap<Integer, Version>();
+    private final Map<Integer, Version> versions = new HashMap<>();
 
     /**
      * Hiermit wird ein Vorsatz mit 3 Teildatensaetzen erstellt.
@@ -275,20 +275,14 @@ public final class Vorsatz extends Satz {
     }
 
     private static String getVersionBezeichnung(final int art) {
-        Formatter formatter = new Formatter();
-        try  {
+        try (Formatter formatter = new Formatter()) {
             return formatter.format("Version Satzart %04d", art).toString();
-        } finally {
-            formatter.close();
         }
     }
 
     private static String getVersionBezeichnung(final int art, final int sparte) {
-        Formatter formatter = new Formatter();
-        try  {
+        try (Formatter formatter = new Formatter()) {
             return formatter.format("Version Satzart %04d %03d", art, sparte).toString();
-        } finally {
-            formatter.close();
         }
     }
 
@@ -444,6 +438,18 @@ public final class Vorsatz extends Satz {
      */
     public void setVersion(int art, String version) {
         this.setVersion(getVersionBezeichnung(art), version);
+    }
+
+    /**
+     * Setzen der Version.
+     *
+     * @param art     Satzart
+     * @param sparte  Sparte
+     * @param version z.B. 1.2
+     * @since 4.3
+     */
+    public void setVersion(int art, int sparte, double version) {
+        this.setVersion(getVersionBezeichnung(art, sparte), Double.toString(version));
     }
 
     /**

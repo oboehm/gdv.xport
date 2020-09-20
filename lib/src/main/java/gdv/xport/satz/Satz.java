@@ -451,7 +451,7 @@ public abstract class Satz implements Cloneable {
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 */
 	public Feld getFeld(final String name) throws IllegalArgumentException {
-		return this.getFeld(new Bezeichner(name));
+		return this.getFeld(Bezeichner.of(name));
 	}
 	
     /**
@@ -462,7 +462,7 @@ public abstract class Satz implements Cloneable {
      * @return das gesuchte Feld
      */
     public Feld getFeldSafe(final String name) {
-        return this.getFeldSafe(new Bezeichner(name));
+        return this.getFeldSafe(Bezeichner.of(name));
     }
 
     /**

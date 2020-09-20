@@ -1551,6 +1551,10 @@ public final class Bezeichner {
                 LOG.debug("Will ignore field {}:", field, e);
             }
         }
+        if (name.endsWith("000")) {
+            LOG.debug("Will look for '{}' without trailing '000'.", name);
+            return of(name.substring(0, name.length() - 3));
+        }
         LOG.debug("Will generate new Bezeichner '{}'.", name);
         return new Bezeichner(name);
     }

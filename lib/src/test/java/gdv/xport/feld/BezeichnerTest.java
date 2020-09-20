@@ -237,7 +237,7 @@ public class BezeichnerTest {
     @Test
     public void testOfEnumName() {
         Bezeichner beginnDatum = Bezeichner.of(Feld220Wagnis6ZukSummenaenderungen.BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME);
-        assertEquals(Bezeichner.BEGINNDAT_NAECHSTEN_UNFALLSUMME, beginnDatum);
+        assertEquals(Bezeichner.BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME, beginnDatum);
     }
 
     /**
@@ -249,6 +249,18 @@ public class BezeichnerTest {
         Bezeichner abgangsdat = Bezeichner.of(bezeichnung);
         assertEquals(bezeichnung, abgangsdat.getName());
         assertEquals(Bezeichner.ABGANGSDAT, abgangsdat);
+    }
+
+    @Test
+    public void testOfVersionSatzart() {
+        assertEquals(Bezeichner.VERSION_SATZART_0100, Bezeichner.of("VersionSatzart0100"));
+        assertEquals(Bezeichner.VERSION_SATZART_0100, Bezeichner.of("VersionSatzart0100000"));
+    }
+
+    @Test
+    public void testOfVersionSatzartSparte() {
+        Bezeichner version = Bezeichner.of("VersionSatzart0210050");
+        assertEquals(Bezeichner.VERSION_SATZART_0210_050, version);
     }
 
     /**
