@@ -155,7 +155,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Zeichen satznummer = new Zeichen(new Bezeichner("Satznummer"), 256);
         satznummer.setInhalt('1');
         tds.add(satznummer);
-        assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
+        assertEquals(satznummer, tds.getFeld(satznummer.getBezeichner()));
         tds.remove(satznummer.getBezeichnung());
         assertEquals("remove failed", Feld.NULL_FELD, tds.getFeldSafe(satznummer.getBezeichnung()));
     }

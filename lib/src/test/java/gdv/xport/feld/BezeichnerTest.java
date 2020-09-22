@@ -286,4 +286,14 @@ public class BezeichnerTest {
         assertEquals(Bezeichner.INTRO, intro);
     }
 
+    /**
+     * Es gibt mehere Bezeichner mit "Satznummer" als Namen. Hier gilt es, den
+     * richtigen Bezeichner zu finden ;-)
+     */
+    @Test
+    public void testOfSatznummer() {
+        Bezeichner satznummer = Bezeichner.of("Satznummer");
+        assertEquals(Bezeichner.SATZNUMMER, satznummer);
+    }
+
 }

@@ -20,15 +20,13 @@ package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.internal.UmlautMapper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang.WordUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Diese Klasse enthaelt die Namen der einzelnen Felder. Die Konstanten sind
@@ -53,6 +51,7 @@ public final class Bezeichner {
 
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<>();
+    private static final List<Bezeichner> CONSTANTS = new ArrayList<>();
 
     /////////// Bezeichner-Konstanten (alphabetisch geordnet) /////////////////
 
@@ -1282,6 +1281,22 @@ public final class Bezeichner {
         MAPPING.put(URSPRUENGLICHES_HAFTUNGSBEGINNDAT.name, URSPRUENGLICHES_HAFTUNGSBEGINNDAT.technischerName);
         MAPPING.put(VS_NR.name, VS_NR.technischerName);
         MAPPING.put(VU_NR.name, VU_NR.technischerName);
+        findConstants();
+    }
+
+    private static void findConstants() {
+        Field[] fields = Bezeichner.class.getFields();
+        for (Field field : fields) {
+            try {
+                Object value = field.get(null);
+                if (value instanceof Bezeichner) {
+                    Bezeichner bez = (Bezeichner) value;
+                    CONSTANTS.add(bez);
+                }
+            } catch (IllegalAccessException e) {
+                LOG.debug("Will ignore field {}:", field, e);
+            }
+        }
     }
 
     /**
@@ -1537,18 +1552,14 @@ public final class Bezeichner {
      * @since 3.1
      */
     public static Bezeichner of(String name) {
-        Field[] fields = Bezeichner.class.getFields();
-        for (Field field : fields) {
-            try {
-                Object value = field.get(null);
-                if (value instanceof Bezeichner) {
-                    Bezeichner bez = (Bezeichner) value;
-                    if (name.equalsIgnoreCase(bez.getName()) || name.equalsIgnoreCase(bez.getTechnischerName())) {
-                        return bez;
-                    }
-                }
-            } catch (IllegalAccessException e) {
-                LOG.debug("Will ignore field {}:", field, e);
+        for (Bezeichner bez : CONSTANTS) {
+            if (name.equalsIgnoreCase(bez.getTechnischerName())) {
+                return bez;
+            }
+        }
+        for (Bezeichner bez : CONSTANTS) {
+            if (name.equalsIgnoreCase(bez.getName())) {
+                return bez;
             }
         }
         if (name.endsWith("000")) {
