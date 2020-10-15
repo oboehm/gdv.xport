@@ -129,7 +129,7 @@ public class SatzTyp {
 		        + " muss zwischen 0 und 9999 liegen";
 		assert (sparte == -1) || ((0 <= sparte) && (sparte <= 999)) : "Sparte " + sparte
 		        + " muss zwischen 0 und 999 liegen";
-		assert (wagnisart == -1) || ((0 <= wagnisart) && (wagnisart <= 9)) : "Wagnisart "
+		assert (wagnisart == -1) || ((0 <= wagnisart) && (wagnisart <= 9)) || (wagnisart == 13) : "Wagnisart "
 		        + wagnisart + " muss zwischen 0 und 9 liegen";
 		assert (krankenFolgeNr == -1) || ((1 <= krankenFolgeNr) && (krankenFolgeNr <= 3)) : "Kranken Folge-Nr. "
 		        + krankenFolgeNr + " muss zwischen 1 und 3 liegen";
@@ -230,7 +230,7 @@ public class SatzTyp {
 	 */
 	@Override
 	public int hashCode() {
-		return satzart * 10000000 + sparte * 10000 + wagnisart * 1000 + krankenFolgeNr * 100 + teildatensatzNummer;
+		return satzart * 10000000 + sparte * 10000 + zweistellig(wagnisart) * 1000 + krankenFolgeNr * 100 + teildatensatzNummer;
 	}
 
 	/*
@@ -247,9 +247,22 @@ public class SatzTyp {
 		}
 		SatzTyp other = (SatzTyp) obj;
 		return (this.satzart == other.satzart) && (this.sparte == other.sparte)
-		        && (this.wagnisart == other.wagnisart)
+		        && (zweistellig(this.wagnisart) == zweistellig(other.wagnisart))
 		        && (this.krankenFolgeNr == other.krankenFolgeNr)
 		        && (this.teildatensatzNummer == other.teildatensatzNummer);
+	}
+
+	private static int zweistellig(int art) {
+		switch (art) {
+			case 1:
+			case 3:
+				return 13;
+			case 4:
+			case 8:
+				return 48;
+			default:
+				return art;
+		}
 	}
 
 	/*
@@ -264,7 +277,7 @@ public class SatzTyp {
 			buf.append("." + new DecimalFormat("000").format(this.sparte));
 			if (this.wagnisart >= 0) {
 				buf.append(".");
-				buf.append(this.wagnisart);
+				buf.append(zweistellig(this.wagnisart));
 				if (this.teildatensatzNummer >= 0) {
 					buf.append(".");
 	                buf.append(this.teildatensatzNummer);

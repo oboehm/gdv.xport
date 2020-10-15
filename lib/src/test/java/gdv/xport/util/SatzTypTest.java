@@ -82,6 +82,12 @@ public class SatzTypTest {
         assertEquals(SatzTyp.of("0220.010.6.1"), new SatzTyp(220, 10, 6, 1));
     }
 
+    @Test
+    public void testOfWagnisart1u3() {
+        assertEquals(SatzTyp.of("0220.010.13.7"), new SatzTyp(220, 10, 1, 7));
+        assertEquals(SatzTyp.of("0220.010.13.7"), new SatzTyp(220, 10, 3, 7));
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testOfInvalid() {
         SatzTyp.of("0001.a");
