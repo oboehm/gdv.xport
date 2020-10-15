@@ -18,6 +18,8 @@
 
 package gdv.xport.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.text.DecimalFormat;
 
 /**
@@ -49,6 +51,27 @@ public class SatzTyp {
 
 	/** The lfd nummer. */
 	private final int teildatensatzNummer;
+
+	/**
+	 * Damit laesst sich ein SatzTyp anhand der entsprechenden String-
+	 * Repraesentation erzeugen.
+	 *
+	 * @param nr z.B. "0210.050"
+	 * @return der entsprechende SatzTyp
+	 * @since 4.3
+	 */
+	public static SatzTyp of(String nr) {
+		int[] numbers = { -1, -1, -1, -1 };
+		try {
+			String[] parts = StringUtils.split(nr, '.');
+			for (int i = 0; i < parts.length; i++) {
+				numbers[i] = Integer.parseInt(parts[i]);
+			}
+			return new SatzTyp(numbers[0], numbers[1], numbers[2], numbers[3]);
+		} catch (NumberFormatException ex) {
+			throw new IllegalArgumentException("kein Satz-Typ: '" + nr + "'", ex);
+		}
+	}
 
 	/**
 	 * Instantiates a new satz nummer.

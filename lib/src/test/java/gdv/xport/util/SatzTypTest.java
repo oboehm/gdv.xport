@@ -18,13 +18,11 @@
 
 package gdv.xport.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import gdv.xport.satz.feld.common.WagnisartLeben;
-
 import org.junit.Test;
-
 import patterntesting.runtime.junit.ObjectTester;
+
+import static org.junit.Assert.*;
 
 /**
  * JUnit-Tests fuer {@link SatzTyp}.
@@ -51,7 +49,7 @@ public class SatzTypTest {
     public void testNotEquals() {
         SatzTyp one = new SatzTyp(1, 1);
         SatzTyp other = new SatzTyp(1, 1, 1);
-        assertFalse("expected: " + one + " != " + other, one.equals(other));
+        assertNotEquals(other, one.equals(other));
     }
 
     /**
@@ -74,6 +72,19 @@ public class SatzTypTest {
         assertEquals("0210.050", new SatzTyp(210, 50).toString());
         assertEquals("0220.010.0", new SatzTyp(220, 10, 0).toString());
         assertEquals("0220.010.6.1", new SatzTyp(220, 10, 6, 1).toString());
+    }
+
+    @Test
+    public void testOf() {
+        assertEquals(SatzTyp.of("0001"), new SatzTyp(1));
+        assertEquals(SatzTyp.of("0210.050"), new SatzTyp(210, 50));
+        assertEquals(SatzTyp.of("0220.010.0"), new SatzTyp(220, 10, 0));
+        assertEquals(SatzTyp.of("0220.010.6.1"), new SatzTyp(220, 10, 6, 1));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testOfInvalid() {
+        SatzTyp.of("0001.a");
     }
 
 }
