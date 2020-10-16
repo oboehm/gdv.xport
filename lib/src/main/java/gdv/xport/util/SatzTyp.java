@@ -129,8 +129,8 @@ public class SatzTyp {
 		        + " muss zwischen 0 und 9999 liegen";
 		assert (sparte == -1) || ((0 <= sparte) && (sparte <= 999)) : "Sparte " + sparte
 		        + " muss zwischen 0 und 999 liegen";
-		assert (wagnisart == -1) || ((0 <= wagnisart) && (wagnisart <= 9)) || (wagnisart == 13) : "Wagnisart "
-		        + wagnisart + " muss zwischen 0 und 9 liegen";
+		assert (wagnisart == -1) || ((0 <= wagnisart) && (wagnisart <= 9)) || (wagnisart == 13) || (wagnisart == 48) :
+				"Wagnisart " + wagnisart + " muss zwischen 0 und 9 liegen";
 		assert (krankenFolgeNr == -1) || ((1 <= krankenFolgeNr) && (krankenFolgeNr <= 3)) : "Kranken Folge-Nr. "
 		        + krankenFolgeNr + " muss zwischen 1 und 3 liegen";
 		assert (lfdNummer == -1) || ((0 <= lfdNummer) && (lfdNummer <= 9)) : "teildatensatzNummer "
@@ -167,6 +167,39 @@ public class SatzTyp {
 	 */
 	public int getWagnisart() {
 		return this.wagnisart;
+	}
+
+	/**
+	 * Liefert die Art zurueck. Dies ist bei SatzTyp "0220.580.01" der letzte
+	 * Teil ("01"). Im Wesentlichen macht diese Methode nur bei den Satz-Typen
+	 * "0220.580.01" und "0220.580.2" Sinn.
+	 *
+	 * Bei Satz-Typen mit Wagnisart wird hier die Wagnisart als String zurueck-
+	 * gegeben.
+	 *
+	 * @return z.B. "01" bei SatzTyp "0220.580.01"
+	 * @since 4.3
+	 */
+	public String getArt() {
+		if (this.wagnisart < 0) {
+			return "";
+		} else if ((this.wagnisart == 1) && (this.sparte == 580)) {
+			return "01";
+		} else {
+			return Integer.toString(this.wagnisart);
+		}
+	}
+
+	/**
+	 * Liefert true oder false zurueck, je nachdem, ob der SatzTyp eine Art
+	 * hat. Dies ist z.B. bei den Satz-Typen 0220.580.01" und "0220.580.2"
+	 * der Fall.
+	 *
+	 * @return true oder false
+	 * @since 4.3
+	 */
+	public boolean hasArt() {
+		return this.wagnisart >= 0;
 	}
 	
 	/**
