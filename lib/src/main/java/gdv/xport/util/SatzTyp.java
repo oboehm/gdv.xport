@@ -185,9 +185,17 @@ public class SatzTyp {
 			return "";
 		} else if ((this.wagnisart == 1) && (this.sparte == 580)) {
 			return "01";
-		} else {
-			return Integer.toString(this.wagnisart);
+		} else if (this.sparte == 10) {
+			switch (this.wagnisart) {
+				case 1:
+				case 3:
+					return "13";
+				case 4:
+				case 8:
+					return "48";
+			}
 		}
+		return Integer.toString(this.wagnisart);
 	}
 
 	/**
@@ -263,7 +271,7 @@ public class SatzTyp {
 	 */
 	@Override
 	public int hashCode() {
-		return satzart * 10000000 + sparte * 10000 + zweistellig(wagnisart) * 1000 + krankenFolgeNr * 100 + teildatensatzNummer;
+		return satzart * 10000000 + sparte * 10000 + krankenFolgeNr * 100 + teildatensatzNummer;
 	}
 
 	/*
@@ -280,22 +288,9 @@ public class SatzTyp {
 		}
 		SatzTyp other = (SatzTyp) obj;
 		return (this.satzart == other.satzart) && (this.sparte == other.sparte)
-		        && (zweistellig(this.wagnisart) == zweistellig(other.wagnisart))
+		        && (this.getArt().equals(other.getArt()))
 		        && (this.krankenFolgeNr == other.krankenFolgeNr)
 		        && (this.teildatensatzNummer == other.teildatensatzNummer);
-	}
-
-	private static int zweistellig(int art) {
-		switch (art) {
-			case 1:
-			case 3:
-				return 13;
-			case 4:
-			case 8:
-				return 48;
-			default:
-				return art;
-		}
 	}
 
 	/*
@@ -308,9 +303,9 @@ public class SatzTyp {
 		buf.append(new DecimalFormat("0000").format(this.satzart));
 		if (this.sparte >= 0) {
 			buf.append("." + new DecimalFormat("000").format(this.sparte));
-			if (this.wagnisart >= 0) {
+			if (this.hasArt()) {
 				buf.append(".");
-				buf.append(zweistellig(this.wagnisart));
+				buf.append(this.getArt());
 				if (this.teildatensatzNummer >= 0) {
 					buf.append(".");
 	                buf.append(this.teildatensatzNummer);

@@ -121,9 +121,27 @@ public class SatzTypTest {
     }
 
     @Test
+    public void testGetArtWagnisart13() {
+        assertEquals("13", new SatzTyp(220, 10, 1).getArt());
+        assertEquals("13", new SatzTyp(220, 10, 3).getArt());
+    }
+
+    @Test
+    public void testGetArtWagnisart48() {
+        assertEquals("48", new SatzTyp(220, 10, 4).getArt());
+        assertEquals("48", new SatzTyp(220, 10, 8).getArt());
+    }
+
+    @Test
     public void testHasArt() {
         assertTrue(SatzTyp.of("0220.020.1").hasArt());
         assertFalse(SatzTyp.of("0220.000").hasArt());
+    }
+
+    @Test
+    public void testToStringBausparen() {
+        assertEquals("0220.580.01", SatzTyp.of("0220.580.01").toString());
+        assertEquals("0220.580.2", SatzTyp.of("0220.580.2").toString());
     }
 
 }
