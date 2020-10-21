@@ -51,32 +51,6 @@ public class ImportExportTest {
     private static Log log = LogFactory.getLog(ImportExportTest.class);
 
     /**
-     * Dies ist ein Beispiel, wie man einen Test nicht schreiben sollte,
-     * da er nur unter Windows funktionieren wird.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    @RunTestOn(osName = "Windows", hide = true)
-    public void testImportSatz100Windows() throws IOException {
-        File tmpFile = new File("C:\\temp", "datensatz.gdv");
-        checkImportSatz100(tmpFile);
-    }
-
-    /**
-     * Dies ist ein Beispiel, wie man einen Test nicht schreiben sollte,
-     * da er nur unter unixoiden Betriebssystemen funktionieren wird.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    @RunTestOn(osName = {"Mac", "Linux"}, hide = true)
-    public void testImportSatz100WUnix() throws IOException {
-        File tmpFile = new File("/tmp", "datensatz.gdv");
-        checkImportSatz100(tmpFile);
-    }
-
-    /**
      * Test-Methode fuer {@link ImportExport#importSatz100(File)}.
      *
      * @throws IOException Signals that an I/O exception has occurred.

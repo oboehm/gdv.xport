@@ -401,4 +401,10 @@ public final class SatzFactoryTest extends AbstractTest {
         checkDatensatz(satz350);
     }
 
+    @Test
+    public void testDatensatz200Teil2() {
+        Datensatz satz200 = SatzFactory.getDatensatz(new SatzTyp(200, -1, -1, -1, 2));
+        assertEquals(200, satz200.getSatzart());
+    }
+
 }

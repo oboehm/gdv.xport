@@ -52,6 +52,9 @@ public class SatzTyp {
 	/** The lfd nummer. */
 	private final int teildatensatzNummer;
 
+	/** Bausparen, bausparenArt */
+	private final int bausparenArt;
+
 	/**
 	 * Damit laesst sich ein SatzTyp anhand der entsprechenden String-
 	 * Repraesentation erzeugen.
@@ -67,7 +70,15 @@ public class SatzTyp {
 			for (int i = 0; i < parts.length; i++) {
 				numbers[i] = Integer.parseInt(parts[i]);
 			}
-			return new SatzTyp(numbers[0], numbers[1], numbers[2], numbers[3]);
+			if (numbers[1] == 20) {
+				//bei Kranken muss krankenFolgeNr belegt werden
+				return new SatzTyp(numbers[0], numbers[1], numbers[2], numbers[2], -1);
+			} else if (numbers[1] == 580) {
+				// bei Bausparen muss bausparenArt belegt werden
+				return new SatzTyp(numbers[0], numbers[1], numbers[2], -1, -1, numbers[2]);
+			} else {
+				return new SatzTyp(numbers[0], numbers[1], numbers[2], numbers[3]);
+			}
 		} catch (NumberFormatException ex) {
 			throw new IllegalArgumentException("kein Satz-Typ: '" + nr + "'", ex);
 		}
@@ -97,10 +108,19 @@ public class SatzTyp {
 	 *
 	 * @param satzart the satzart
 	 * @param sparte the sparte
-	 * @param wagnisart the wagnisart
+	 * @param artFolgeNr Wagnisart (Sparte 10) bzw. krankenFolgeNr (Sparte 20) bzw. bausparenArt (Sparte 580, Satzart 220 (Wert 1 - 2))
+	 * @since 4.X
 	 */
-	public SatzTyp(final int satzart, final int sparte, final int wagnisart) {
-		this(satzart, sparte, wagnisart, -1);
+	public SatzTyp(final int satzart, final int sparte, final int artFolgeNr) {
+		this(satzart, sparte, artFolgeNr, -1);
+		// Alternativ: (scheitert aktuell daran, dass Attribute 'final' sind)
+//		if (sparte == 20) {
+//			this(satzart, sparte, -1, artFolgeNr, -1);
+//		} else if (sparte == 580) {
+//			this(satzart, sparte, -1, -1, -1, artFolgeNr);
+//		} else {
+//			this(satzart, sparte, artFolgeNr, -1);
+//		}
 	}
 	
 	/**
@@ -125,6 +145,21 @@ public class SatzTyp {
 	 * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
 	 */
 	public SatzTyp(final int satzart, final int sparte, final int wagnisart, final int krankenFolgeNr, final int lfdNummer) {
+      this(satzart, sparte,  wagnisart, krankenFolgeNr, lfdNummer, -1);
+  }
+
+	/**
+	 * Legt eine neue SatzNummer an.
+	 *
+	 * @param satzart die Satzart (vierstellig)
+	 * @param sparte die Sparte (dreistellig)
+	 * @param wagnisart die Wagnisart (ein- bis zweisstellig)
+	 * @param krankenFolgeNr Folge-Nr. aus Sparte 20, Satzart 220 (Wert 1-3)
+	 * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
+	 * @param bausparenArt die Art bei Sparte 580, Satzart 220 (Wert 1 - 2)
+	 * @since 4.X
+	 */
+	private SatzTyp(final int satzart, final int sparte, final int wagnisart, final int krankenFolgeNr, final int lfdNummer, final int bausparenArt) {
 		assert (0 <= satzart) && (satzart <= 9999) : "Satzart " + satzart
 		        + " muss zwischen 0 und 9999 liegen";
 		assert (sparte == -1) || ((0 <= sparte) && (sparte <= 999)) : "Sparte " + sparte
@@ -135,11 +170,14 @@ public class SatzTyp {
 		        + krankenFolgeNr + " muss zwischen 1 und 3 liegen";
 		assert (lfdNummer == -1) || ((0 <= lfdNummer) && (lfdNummer <= 9)) : "teildatensatzNummer "
 		        + lfdNummer + " muss zwischen 0 und 9 liegen";
+		assert (bausparenArt == -1) || ((0 <= bausparenArt) && (bausparenArt <= 9)) : "bausparenArt "
+		        + bausparenArt + " muss zwischen 0 und 9 liegen";
 		this.satzart = satzart;
 		this.sparte = sparte;
 		this.wagnisart = wagnisart;
 		this.krankenFolgeNr = krankenFolgeNr;
 		this.teildatensatzNummer = lfdNummer;
+		this.bausparenArt = bausparenArt;
 	}
 
 	/**
@@ -167,6 +205,25 @@ public class SatzTyp {
 	 */
 	public int getWagnisart() {
 		return this.wagnisart;
+	}
+
+	/**
+	 * Liefert die BausparenArt zurueck. Dies ist bei SatzTyp "0220.580.01" der letzte
+	 * Teil ("01"). Diese Methode macht nur bei den Satz-Typen
+	 * "0220.580.01" und "0220.580.2" Sinn.
+	 *
+	 * @return z.B. "01" bei SatzTyp "0220.580.01"
+	 * @since 4.X
+	 */
+	public String getBausparenArt() {
+		if (this.bausparenArt < 0) {
+			return "";
+		}
+		if (this.bausparenArt == 1) {
+			return "01";
+		} else {
+			return Integer.toString(this.bausparenArt);
+		}
 	}
 
 	/**
