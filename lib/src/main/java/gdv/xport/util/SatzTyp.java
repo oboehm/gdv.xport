@@ -109,8 +109,9 @@ public class SatzTyp {
 	 * @param satzart the satzart
 	 * @param sparte the sparte
 	 * @param artFolgeNr Wagnisart (Sparte 10) bzw. krankenFolgeNr (Sparte 20) bzw. bausparenArt (Sparte 580, Satzart 220 (Wert 1 - 2))
-	 * @since 4.X
+	 * @deprecated wurde ersetzt durch {@link #of(String)}
 	 */
+	@Deprecated
 	public SatzTyp(final int satzart, final int sparte, final int artFolgeNr) {
 		this(satzart, sparte, artFolgeNr, -1);
 		// Alternativ: (scheitert aktuell daran, dass Attribute 'final' sind)
@@ -130,7 +131,9 @@ public class SatzTyp {
      * @param sparte die Sparte (dreistellig)
      * @param wagnisart die Wagnisart (ein- bis zweisstellig)
      * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
+	 * @deprecated wurde ersetzt durch {@link #of(String)}
 	 */
+	@Deprecated
 	public SatzTyp(final int satzart, final int sparte, final int wagnisart, final int lfdNummer) {
 	    this(satzart, sparte, wagnisart, -1, lfdNummer);
 	}
@@ -143,7 +146,9 @@ public class SatzTyp {
 	 * @param wagnisart die Wagnisart (ein- bis zweisstellig)
 	 * @param krankenFolgeNr Folge-Nr. aus Sparte 20, Satzart 220 (Wert 1-3)
 	 * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
+	 * @deprecated wurde ersetzt durch {@link #of(String)}
 	 */
+	@Deprecated
 	public SatzTyp(final int satzart, final int sparte, final int wagnisart, final int krankenFolgeNr, final int lfdNummer) {
       this(satzart, sparte,  wagnisart, krankenFolgeNr, lfdNummer, -1);
   }
@@ -212,27 +217,36 @@ public class SatzTyp {
 	 * Teil ("01"). Diese Methode macht nur bei den Satz-Typen
 	 * "0220.580.01" und "0220.580.2" Sinn.
 	 *
-	 * @return z.B. "01" bei SatzTyp "0220.580.01"
-	 * @since 4.X
+	 * @return z.B. 1 bei SatzTyp "0220.580.01"
+	 * @since 4.3
 	 */
-	public String getBausparenArt() {
-		if (this.bausparenArt < 0) {
+	public int getBausparenArt() {
+		return this.bausparenArt;
+	}
+
+	/**
+	 * Liefert die BausparenArt zurueck. Dies ist bei SatzTyp "0220.580.01" der letzte
+	 * Teil ("01"). Diese Methode macht nur bei den Satz-Typen
+	 * "0220.580.01" und "0220.580.2" Sinn.
+	 *
+	 * @return z.B. "01" bei SatzTyp "0220.580.01"
+	 * @since 4.3
+	 */
+	public String getBausparenArtAsString() {
+		if (this.getBausparenArt() < 0) {
 			return "";
 		}
-		if (this.bausparenArt == 1) {
+		if (this.getBausparenArt() == 1) {
 			return "01";
 		} else {
-			return Integer.toString(this.bausparenArt);
+			return Integer.toString(this.getBausparenArt());
 		}
 	}
 
 	/**
-	 * Liefert die Art zurueck. Dies ist bei SatzTyp "0220.580.01" der letzte
-	 * Teil ("01"). Im Wesentlichen macht diese Methode nur bei den Satz-Typen
-	 * "0220.580.01" und "0220.580.2" Sinn.
-	 *
-	 * Bei Satz-Typen mit Wagnisart wird hier die Wagnisart als String zurueck-
-	 * gegeben.
+	 * Liefert die Wagnisart, BausparenArt oder KrankenFolgeNr als String
+	 * zurueck. Dies ist der dritte Teil nach der Sparte, als z.B. die
+	 * "0" bei SatzTyp.of("0220.010.0").
 	 *
 	 * @return z.B. "01" bei SatzTyp "0220.580.01"
 	 * @since 4.3
@@ -264,7 +278,7 @@ public class SatzTyp {
 	 * @since 4.3
 	 */
 	public boolean hasArt() {
-		return this.wagnisart >= 0;
+		return (this.wagnisart >= 0) || (this.bausparenArt >= 0) || (this.krankenFolgeNr >= 0);
 	}
 	
 	/**
