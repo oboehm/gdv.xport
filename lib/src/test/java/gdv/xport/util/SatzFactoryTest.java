@@ -199,7 +199,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetVertragsspezifischerTeil70() {
-        checkGetDatensatz(210, 70, gdv.xport.satz.feld.sparte70.Feld210.values());
+        assertNotNull(getDatensatz(210, 70));
     }
 
     /**
@@ -207,7 +207,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetErweiterungssatz30() {
-        checkGetDatensatz(221, 30, gdv.xport.satz.feld.sparte30.Feld221.values(), "2");
+        assertNotNull(getDatensatz(221, 30));
     }
 
     /**
@@ -252,8 +252,7 @@ public final class SatzFactoryTest extends AbstractTest {
 
     private void checkGetDatensatz(final int satzart, final int sparte, final Enum[] felder) {
         Satz datensatz = getDatensatz(satzart, sparte);
-        for (int i = 0; i < felder.length; i++) {
-            Enum feldInfo = felder[i];
+        for (Enum feldInfo : felder) {
             if (feldInfo instanceof FeldInfo) {
                 String inhalt = datensatz.get(feldInfo);
                 assertNotNull("not found: " + feldInfo, inhalt);
@@ -292,7 +291,7 @@ public final class SatzFactoryTest extends AbstractTest {
     public void testGetAllSupportedSaetze() {
         Datenpaket all = SatzFactory.getAllSupportedSaetze();
         List<Datensatz> datensaetze = all.getDatensaetze();
-        Set<Integer> supportedSatzarten = new TreeSet<Integer>();
+        Set<Integer> supportedSatzarten = new TreeSet<>();
         for (Datensatz datensatz : datensaetze) {
             supportedSatzarten.add(datensatz.getSatzart());
         }
@@ -310,7 +309,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testIssue1() {
-        checkGetDatensatz(210, 30, gdv.xport.satz.feld.sparte30.Feld210.values());
+        assertNotNull(getDatensatz(210, 30));
         try {
             SatzFactory.registerEnum(MyFeld210.class, 210, 30);
             checkGetDatensatz(210, 30, MyFeld210.values());
