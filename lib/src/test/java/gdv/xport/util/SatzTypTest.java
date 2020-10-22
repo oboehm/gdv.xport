@@ -151,4 +151,21 @@ public class SatzTypTest {
         assertEquals("", SatzTyp.of("0220.570").getBausparenArt());
     }
 
+    @Test
+    public void testGetKrankenFolgeNr() {
+        assertEquals(1, SatzTyp.of("0220.020.1").getKrankenFolgeNr());
+        assertEquals(2, SatzTyp.of("0220.020.2").getKrankenFolgeNr());
+        assertEquals(3, SatzTyp.of("0220.020.3").getKrankenFolgeNr());
+    }
+
+    @Test
+    public void testHasKrankenFolgeNr() {
+        assertTrue(SatzTyp.of("0220.020.1").hasKrankenFolgeNr());
+        assertTrue(SatzTyp.of("0220.020.2").hasKrankenFolgeNr());
+        assertTrue(SatzTyp.of("0220.020.3").hasKrankenFolgeNr());
+        assertFalse(SatzTyp.of("0220.000").hasKrankenFolgeNr());
+        assertFalse(SatzTyp.of("0220.580.01").hasKrankenFolgeNr());
+        assertFalse(SatzTyp.of("0220.580.2").hasKrankenFolgeNr());
+    }
+
 }
