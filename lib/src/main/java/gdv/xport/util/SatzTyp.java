@@ -213,6 +213,16 @@ public class SatzTyp {
 	}
 
 	/**
+	 * Liefert die Wagnisart als String.
+	 *
+	 * @return z.B. "9"
+	 * @since 4.3
+	 */
+	public String getWagnisartAsString() {
+		return Integer.toString(this.getWagnisart());
+	}
+
+	/**
 	 * Liefert die BausparenArt zurueck. Dies ist bei SatzTyp "0220.580.01" der letzte
 	 * Teil ("01"). Diese Methode macht nur bei den Satz-Typen
 	 * "0220.580.01" und "0220.580.2" Sinn.
