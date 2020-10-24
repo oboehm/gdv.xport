@@ -254,6 +254,34 @@ public class SatzTyp {
 	}
 
 	/**
+	 * Liefert die Wagnisart, BausparenArt oder KrankenFolgeNr zurueck.
+	 * Dies ist der dritte Teil nach der Sparte, als z.B. die 0 bei
+	 * SatzTyp.of("0220.010.0").
+	 *
+	 * @return z.B. 1 bei SatzTyp "0220.580.01"
+	 * @since 4.3
+	 */
+	public int getArt() {
+		if (this.getSparte() == 10) {
+			switch (this.getWagnisart()) {
+				case 1:
+				case 3:
+					return 13;
+				case 4:
+				case 8:
+					return 48;
+				default:
+					return this.getWagnisart();
+			}
+		} else if (this.getSparte() == 20) {
+			return this.getKrankenFolgeNr();
+		} else if (this.getSparte() == 580) {
+			return this.getBausparenArt();
+		}
+		return -1;
+	}
+
+	/**
 	 * Liefert die Wagnisart, BausparenArt oder KrankenFolgeNr als String
 	 * zurueck. Dies ist der dritte Teil nach der Sparte, als z.B. die
 	 * "0" bei SatzTyp.of("0220.010.0").
@@ -261,22 +289,12 @@ public class SatzTyp {
 	 * @return z.B. "01" bei SatzTyp "0220.580.01"
 	 * @since 4.3
 	 */
-	public String getArt() {
-		if (this.wagnisart < 0) {
-			return "";
-		} else if ((this.wagnisart == 1) && (this.sparte == 580)) {
+	public String getArtAsString() {
+		if (this.getBausparenArt() == 1) {
 			return "01";
-		} else if (this.sparte == 10) {
-			switch (this.wagnisart) {
-				case 1:
-				case 3:
-					return "13";
-				case 4:
-				case 8:
-					return "48";
-			}
+		} else {
+			return Integer.toString(this.getArt());
 		}
-		return Integer.toString(this.wagnisart);
 	}
 
 	/**
@@ -301,7 +319,7 @@ public class SatzTyp {
 	}
 
 	/**
-	 * Gets the lfd nummer.
+	 * Dies ist die laufende Nummer bei der Wagnisart.
 	 *
 	 * @return the lfd nummer
 	 */
@@ -337,7 +355,7 @@ public class SatzTyp {
 	}
 
 	/**
-	 * Liefert true zurueck, wenn die laufende Nummer (Teildatensatz-Nummer)
+	 * Liefert true zurueck, wenn die laufende Nummer (fuer Wagnisart)
 	 * gesetzt ist.
 	 *
 	 * @return true, if successful
@@ -352,7 +370,7 @@ public class SatzTyp {
 	 */
 	@Override
 	public int hashCode() {
-		return satzart * 10000000 + sparte * 10000 + krankenFolgeNr * 100 + teildatensatzNummer;
+		return getSatzart() * 10000000 + getSparte() * 10000 + getArt() * 100 + getTeildatensatzNummer();
 	}
 
 	/*
@@ -369,8 +387,7 @@ public class SatzTyp {
 		}
 		SatzTyp other = (SatzTyp) obj;
 		return (this.satzart == other.satzart) && (this.sparte == other.sparte)
-		        && (this.getArt().equals(other.getArt()))
-		        && (this.krankenFolgeNr == other.krankenFolgeNr)
+		        && (this.getArt() == other.getArt())
 		        && (this.teildatensatzNummer == other.teildatensatzNummer);
 	}
 
@@ -386,7 +403,7 @@ public class SatzTyp {
 			buf.append("." + new DecimalFormat("000").format(this.sparte));
 			if (this.hasArt()) {
 				buf.append(".");
-				buf.append(this.getArt());
+				buf.append(this.getArtAsString());
 				if (this.teildatensatzNummer >= 0) {
 					buf.append(".");
 	                buf.append(this.teildatensatzNummer);
