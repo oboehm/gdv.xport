@@ -109,9 +109,7 @@ public class SatzTyp {
 	 * @param satzart the satzart
 	 * @param sparte the sparte
 	 * @param artFolgeNr Wagnisart (Sparte 10) bzw. krankenFolgeNr (Sparte 20) bzw. bausparenArt (Sparte 580, Satzart 220 (Wert 1 - 2))
-	 * @deprecated wurde ersetzt durch {@link #of(String)}
 	 */
-	@Deprecated
 	public SatzTyp(final int satzart, final int sparte, final int artFolgeNr) {
 		this(satzart, sparte, artFolgeNr, -1);
 		// Alternativ: (scheitert aktuell daran, dass Attribute 'final' sind)
@@ -131,9 +129,7 @@ public class SatzTyp {
      * @param sparte die Sparte (dreistellig)
      * @param wagnisart die Wagnisart (ein- bis zweisstellig)
      * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
-	 * @deprecated wurde ersetzt durch {@link #of(String)}
 	 */
-	@Deprecated
 	public SatzTyp(final int satzart, final int sparte, final int wagnisart, final int lfdNummer) {
 	    this(satzart, sparte, wagnisart, -1, lfdNummer);
 	}
@@ -262,12 +258,12 @@ public class SatzTyp {
 	 * @since 4.3
 	 */
 	public String getArt() {
-		if (this.wagnisart < 0) {
+		if (this.getWagnisart() < 0) {
 			return "";
-		} else if ((this.wagnisart == 1) && (this.sparte == 580)) {
+		} else if ((this.getWagnisart() == 1) && (this.getSparte() == 580)) {
 			return "01";
-		} else if (this.sparte == 10) {
-			switch (this.wagnisart) {
+		} else if (this.getSparte() == 10) {
+			switch (this.getWagnisart()) {
 				case 1:
 				case 3:
 					return "13";
@@ -276,7 +272,7 @@ public class SatzTyp {
 					return "48";
 			}
 		}
-		return Integer.toString(this.wagnisart);
+		return Integer.toString(this.getWagnisart());
 	}
 
 	/**
@@ -288,7 +284,7 @@ public class SatzTyp {
 	 * @since 4.3
 	 */
 	public boolean hasArt() {
-		return (this.wagnisart >= 0) || (this.bausparenArt >= 0) || (this.krankenFolgeNr >= 0);
+		return (this.getWagnisart() >= 0) || (this.getBausparenArt() >= 0) || (this.getKrankenFolgeNr() >= 0);
 	}
 	
 	/**
@@ -315,7 +311,7 @@ public class SatzTyp {
 	 * @return true, if successful
 	 */
 	public boolean hasSparte() {
-		return this.sparte >= 0;
+		return this.getSparte() >= 0;
 	}
 
 	/**
@@ -324,7 +320,7 @@ public class SatzTyp {
 	 * @return true, if successful
 	 */
 	public boolean hasWagnisart() {
-		return this.wagnisart >= 0;
+		return this.getWagnisart() >= 0;
 	}
 	
 	/**
@@ -333,7 +329,7 @@ public class SatzTyp {
 	 * @return true, if successful
 	 */
 	public boolean hasKrankenFolgeNr() {
-	    return this.krankenFolgeNr >= 0;
+	    return this.getKrankenFolgeNr() >= 0;
 	}
 
 	/**
@@ -343,7 +339,7 @@ public class SatzTyp {
 	 * @return true, if successful
 	 */
 	public boolean hasTeildatensatzNummer() {
-		return this.teildatensatzNummer >= 0;
+		return this.getTeildatensatzNummer() >= 0;
 	}
 
 	/*
@@ -368,10 +364,10 @@ public class SatzTyp {
 			return false;
 		}
 		SatzTyp other = (SatzTyp) obj;
-		return (this.satzart == other.satzart) && (this.sparte == other.sparte)
+		return (this.satzart == other.satzart) && (this.getSparte() == other.getSparte())
 		        && (this.getArt().equals(other.getArt()))
-		        && (this.krankenFolgeNr == other.krankenFolgeNr)
-		        && (this.teildatensatzNummer == other.teildatensatzNummer);
+		        && (this.getKrankenFolgeNr() == other.getKrankenFolgeNr())
+		        && (this.getTeildatensatzNummer() == other.getTeildatensatzNummer());
 	}
 
 	/*
@@ -382,18 +378,18 @@ public class SatzTyp {
 	public String toString() {
 		StringBuilder buf = new StringBuilder();
 		buf.append(new DecimalFormat("0000").format(this.satzart));
-		if (this.sparte >= 0) {
-			buf.append("." + new DecimalFormat("000").format(this.sparte));
+		if (this.getSparte() >= 0) {
+			buf.append("." + new DecimalFormat("000").format(this.getSparte()));
 			if (this.hasArt()) {
 				buf.append(".");
 				buf.append(this.getArt());
-				if (this.teildatensatzNummer >= 0) {
+				if (this.getTeildatensatzNummer() >= 0) {
 					buf.append(".");
-	                buf.append(this.teildatensatzNummer);
+	                buf.append(this.getTeildatensatzNummer());
 				}
-			} else if (this.krankenFolgeNr >= 0) {
+			} else if (this.getKrankenFolgeNr() >= 0) {
                 buf.append(".");
-                buf.append(this.krankenFolgeNr);
+                buf.append(this.getKrankenFolgeNr());
 			}
 		}
 		return buf.toString();
