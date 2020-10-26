@@ -105,29 +105,29 @@ public class SatzTypTest {
 
     @Test
     public void testGetArt() {
-        assertEquals("1", SatzTyp.of("0220.020.1").getArt());
-        assertEquals("2", SatzTyp.of("0220.020.2").getArt());
-        assertEquals("3", SatzTyp.of("0220.020.3").getArt());
-        assertEquals("01", SatzTyp.of("0220.580.01").getArt());
-        assertEquals("2", SatzTyp.of("0220.580.2").getArt());
+        assertEquals("1", SatzTyp.of("0220.020.1").getArtAsString());
+        assertEquals("2", SatzTyp.of("0220.020.2").getArtAsString());
+        assertEquals("3", SatzTyp.of("0220.020.3").getArtAsString());
+        assertEquals("01", SatzTyp.of("0220.580.01").getArtAsString());
+        assertEquals("2", SatzTyp.of("0220.580.2").getArtAsString());
     }
 
     @Test
     public void testGetArt4Wagnisart() {
-        assertEquals("0", SatzTyp.of("0220.010.0").getArt());
-        assertEquals("13", SatzTyp.of("0220.010.13").getArt());
-        assertEquals("13", SatzTyp.of("0221.010.13").getArt());
-        assertEquals("48", SatzTyp.of("0220.010.48").getArt());
-        assertEquals("48", SatzTyp.of("0221.010.48").getArt());
-        assertEquals("6", SatzTyp.of("0220.010.6").getArt());
-        assertEquals("6", SatzTyp.of("0221.010.6").getArt());
-        assertEquals("5", SatzTyp.of("0220.010.5").getArt());
-        assertEquals("5", SatzTyp.of("0221.010.5").getArt());
-        assertEquals("2", SatzTyp.of("0220.010.2").getArt());
-        assertEquals("2", SatzTyp.of("0221.010.2").getArt());
-        assertEquals("7", SatzTyp.of("0220.010.7").getArt());
-        assertEquals("7", SatzTyp.of("0221.010.7").getArt());
-        assertEquals("9", SatzTyp.of("0220.010.9").getArt());
+        assertEquals("0", SatzTyp.of("0220.010.0").getArtAsString());
+        assertEquals("13", SatzTyp.of("0220.010.13").getArtAsString());
+        assertEquals("13", SatzTyp.of("0221.010.13").getArtAsString());
+        assertEquals("48", SatzTyp.of("0220.010.48").getArtAsString());
+        assertEquals("48", SatzTyp.of("0221.010.48").getArtAsString());
+        assertEquals("6", SatzTyp.of("0220.010.6").getArtAsString());
+        assertEquals("6", SatzTyp.of("0221.010.6").getArtAsString());
+        assertEquals("5", SatzTyp.of("0220.010.5").getArtAsString());
+        assertEquals("5", SatzTyp.of("0221.010.5").getArtAsString());
+        assertEquals("2", SatzTyp.of("0220.010.2").getArtAsString());
+        assertEquals("2", SatzTyp.of("0221.010.2").getArtAsString());
+        assertEquals("7", SatzTyp.of("0220.010.7").getArtAsString());
+        assertEquals("7", SatzTyp.of("0221.010.7").getArtAsString());
+        assertEquals("9", SatzTyp.of("0220.010.9").getArtAsString());
     }
 
     @Test
@@ -150,15 +150,15 @@ public class SatzTypTest {
 
     @Test
     public void testGetArtWagnisart13() {
-        assertEquals("13", SatzTyp.of("220.10.1").getArt());
-        assertEquals("13", SatzTyp.of("220.10.3").getArt());
+        assertEquals("13", SatzTyp.of("220.10.1").getArtAsString());
+        assertEquals("13", SatzTyp.of("220.10.3").getArtAsString());
         assertEquals("13", SatzTyp.of("0220.010.13").getWagnisartAsString());
     }
 
     @Test
     public void testGetArtWagnisart48() {
-        assertEquals("48", SatzTyp.of("220.10.4").getArt());
-        assertEquals("48", SatzTyp.of("220.10.8").getArt());
+        assertEquals("48", SatzTyp.of("220.10.4").getArtAsString());
+        assertEquals("48", SatzTyp.of("220.10.8").getArtAsString());
         assertEquals("48", SatzTyp.of("0220.010.48").getWagnisartAsString());
     }
 
