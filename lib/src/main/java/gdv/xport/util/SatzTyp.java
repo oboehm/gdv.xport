@@ -383,7 +383,7 @@ public class SatzTyp {
 		}
 		SatzTyp other = (SatzTyp) obj;
 		return (this.satzart == other.satzart) && (this.getSparte() == other.getSparte())
-		        && (this.getArt().equals(other.getArt()))
+		        && (this.getArt() == other.getArt())
 		        && (this.getKrankenFolgeNr() == other.getKrankenFolgeNr())
 		        && (this.getTeildatensatzNummer() == other.getTeildatensatzNummer());
 	}
@@ -395,7 +395,7 @@ public class SatzTyp {
 	@Override
 	public String toString() {
 		StringBuilder buf = new StringBuilder();
-		buf.append(new DecimalFormat("0000").format(this.satzart));
+		buf.append(new DecimalFormat("0000").format(this.getSatzart()));
 		if (this.getSparte() >= 0) {
 			buf.append("." + new DecimalFormat("000").format(this.getSparte()));
 			if (this.hasArt()) {
