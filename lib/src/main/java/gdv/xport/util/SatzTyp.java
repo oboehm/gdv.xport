@@ -177,7 +177,7 @@ public class SatzTyp {
 		this.sparte = sparte;
 		this.wagnisart = wagnisart;
 		this.krankenFolgeNr = krankenFolgeNr;
-		this.teildatensatzNummer = lfdNummer;
+		this.teildatensatzNummer = ((wagnisart > 0) && (lfdNummer < 0) && (sparte == 10)) ? 1 :  lfdNummer;
 		this.bausparenArt = bausparenArt;
 	}
 

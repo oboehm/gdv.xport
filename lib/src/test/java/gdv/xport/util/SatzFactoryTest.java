@@ -401,9 +401,21 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     @Test
-    public void testDatensatz200Teil2() {
-        Datensatz satz200 = SatzFactory.getDatensatz(new SatzTyp(200, -1, -1, -1, 2));
+    public void testDatensatz200() {
+        Datensatz satz200 = SatzFactory.getDatensatz(new SatzTyp(200));
         assertEquals(200, satz200.getSatzart());
+    }
+
+    /**
+     * SatzTyp "0220.010.13" gibt es eigentlich nicht. Oft ist damit aber
+     * eigentlich SatzTyp "0220.010.13.1" gemeint. Daher sollte auch dieser
+     * Satz zurueckkommen.
+     */
+    @Test
+    public void testGetWagnisart1u3() {
+        Datensatz a = SatzFactory.getDatensatz(SatzTyp.of("0220.010.13.1"));
+        Datensatz b = SatzFactory.getDatensatz(SatzTyp.of("0220.010.13"));
+        assertEquals(a, b);
     }
 
 }

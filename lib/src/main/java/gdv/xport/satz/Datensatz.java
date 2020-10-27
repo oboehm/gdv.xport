@@ -150,8 +150,8 @@ public class Datensatz extends Satz {
 		if (satzNr.hasSparte()) {
 			this.setSparte(satzNr.getSparte());
 		}
-		if (satzNr.hasWagnisart()) {
-		    this.set(Bezeichner.WAGNISART, Integer.toString(satzNr.getWagnisart()));
+		if (satzNr.hasWagnisart() && (satzNr.getWagnisart() <= 9)) {
+		    this.set(Bezeichner.WAGNISART, satzNr.getWagnisartAsString());
 		}
 		if (satzNr.hasTeildatensatzNummer()) {
 			this.setTeildatensatzNummer("" + satzNr.getTeildatensatzNummer());
