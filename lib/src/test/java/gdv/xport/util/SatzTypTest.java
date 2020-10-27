@@ -198,4 +198,11 @@ public class SatzTypTest {
         assertFalse(SatzTyp.of("0220.580.2").hasKrankenFolgeNr());
     }
 
+    @Test
+    public void testToStringKrankenFolgeNr() {
+        assertEquals("0220.020.1", SatzTyp.of("0220.020.1").toString());
+        assertEquals("0220.020.2", SatzTyp.of("0220.020.2").toString());
+        assertEquals("0220.020.3", SatzTyp.of("0220.020.3").toString());
+    }
+
 }

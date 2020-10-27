@@ -405,9 +405,6 @@ public class SatzTyp {
 					buf.append(".");
 	                buf.append(this.getTeildatensatzNummer());
 				}
-			} else if (this.getKrankenFolgeNr() >= 0) {
-                buf.append(".");
-                buf.append(this.getKrankenFolgeNr());
 			}
 		}
 		return buf.toString();
