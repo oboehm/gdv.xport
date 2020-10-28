@@ -98,6 +98,15 @@ public class SatzTypTest {
         assertEquals(SatzTyp.of("0220.010.13.7"), new SatzTyp(220, 10, 3, 7));
     }
 
+    /**
+     * SatzTyp "0220.010.13" gibt es eigentlich nicht. Oft ist damit aber
+     * eigentlich SatzTyp "0220.010.13.1" gemeint.
+     */
+    @Test
+    public void tesetOfWagnisartLeben() {
+        assertEquals(SatzTyp.of("0220.010.13.1"), SatzTyp.of("0220.010.13"));
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testOfInvalid() {
         SatzTyp.of("0001.a");

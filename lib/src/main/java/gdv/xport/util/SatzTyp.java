@@ -395,13 +395,13 @@ public class SatzTyp {
 	@Override
 	public String toString() {
 		StringBuilder buf = new StringBuilder();
-		buf.append(new DecimalFormat("0000").format(this.getSatzart()));
+		buf.append(String.format("%04d", this.getSatzart()));
 		if (this.getSparte() >= 0) {
-			buf.append("." + new DecimalFormat("000").format(this.getSparte()));
+			buf.append(String.format(".%03d", this.getSparte()));
 			if (this.hasArt()) {
 				buf.append(".");
 				buf.append(this.getArtAsString());
-				if (this.teildatensatzNummer >= 0) {
+				if (this.getTeildatensatzNummer() >= 0) {
 					buf.append(".");
 	                buf.append(this.getTeildatensatzNummer());
 				}
