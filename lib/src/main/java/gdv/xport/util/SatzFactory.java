@@ -56,11 +56,11 @@ public final class SatzFactory {
 
     private static final Logger LOG = LogManager.getLogger(SatzFactory.class);
     private static final Map<SatzTyp, Class<? extends Satz>> REGISTERED_SATZ_CLASSES =
-            new ConcurrentHashMap<SatzTyp, Class<? extends Satz>>();
+            new ConcurrentHashMap<>();
     private static final Map<SatzTyp, Class<? extends Datensatz>> REGISTERED_DATENSATZ_CLASSES =
-            new ConcurrentHashMap<SatzTyp, Class<? extends Datensatz>>();
+            new ConcurrentHashMap<>();
     private static final Map<SatzTyp, Class<? extends Enum>> REGISTERED_ENUM_CLASSES =
-            new ConcurrentHashMap<SatzTyp, Class<? extends Enum>>();
+            new ConcurrentHashMap<>();
     private static final XmlService XML_SERVICE = XmlService.getInstance();
 
     static {
@@ -251,7 +251,9 @@ public final class SatzFactory {
      * @param enumClass die Aufzaehlungsklasse, z.B. Feld100.class
      * @param satzart die Satzart (1-9999)
      * @since 0.6
+     * @deprecated bitte nur noch {@link #registerEnum(Class, SatzTyp)} verwenden
      */
+    @Deprecated
     public static void registerEnum(final Class<? extends Enum> enumClass, final int satzart) {
         registerEnum(enumClass, new SatzTyp(satzart));
     }
@@ -264,7 +266,9 @@ public final class SatzFactory {
      * @param satzart die Satzart (1-9999)
      * @param sparte die Sparte (0-999)
      * @since 0.6
+     * @deprecated bitte nur noch {@link #registerEnum(Class, SatzTyp)} verwenden
      */
+    @Deprecated
     public static void registerEnum(final Class<? extends Enum> enumClass, final int satzart, final int sparte) {
         registerEnum(enumClass, new SatzTyp(satzart, sparte));
     }

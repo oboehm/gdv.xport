@@ -18,14 +18,15 @@
 
 package gdv.xport.demo;
 
-import java.io.IOException;
-import java.net.URL;
-
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlFormatter;
+
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * Diese Demo-Klasse zeigt u.a., wie man eine Enumeration beim gdv-xport-Framework registriert. Sie repraesentiert den
@@ -47,7 +48,7 @@ public class MyUnfallDatensatz extends SatzX {
      */
     public static void main(final String[] args) throws IOException {
         // im Framework registrieren
-        SatzFactory.registerEnum(MyFeld210.class, 210, 30);
+        SatzFactory.registerEnum(MyFeld210.class, SatzTyp.of("0210.30"));
         importMusterdatei();
         // und hiermit melden wir den Datensatz wieder vom Framework ab
         SatzFactory.unregister(210, 30);
