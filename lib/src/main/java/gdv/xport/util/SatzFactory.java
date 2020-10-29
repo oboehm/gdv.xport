@@ -296,11 +296,25 @@ public final class SatzFactory {
      *
      * @param satzart the satzart
      * @since 0.2
+     * @deprecated in v4.3 durch {@link #unregister(SatzTyp)} ersetzt
      */
+    @Deprecated
     public static void unregister(final int satzart) {
         SatzTyp key = new SatzTyp(satzart);
-        REGISTERED_SATZ_CLASSES.remove(key);
-        REGISTERED_ENUM_CLASSES.remove(key);
+        unregister(key);
+    }
+
+    /**
+     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
+     * Testen hilfreich sein kann). Diese unregister-Methode ersetzt ab 4.2 die
+     * anderen uregister-Methoden.
+     *
+     * @param typ SatzTyp bzw. Satzart
+     * @since 4.3
+     */
+    public static void unregister(SatzTyp typ) {
+        REGISTERED_SATZ_CLASSES.remove(typ);
+        REGISTERED_ENUM_CLASSES.remove(typ);
     }
 
     /**
@@ -334,9 +348,11 @@ public final class SatzFactory {
      * @param satzart the satzart
      * @param sparte the sparte
      * @since 0.2
+     * @deprecated in v4.3 durch {@link #unregister(SatzTyp)} ersetzt
      */
+    @Deprecated
     public static void unregister(final int satzart, final int sparte) {
-        unregister(satzart, sparte, -1);
+        unregister(new SatzTyp(satzart, sparte));
     }
 
     /**
@@ -347,11 +363,12 @@ public final class SatzFactory {
      * @param sparte the sparte
      * @param wagnisart the wagnisart
      * @since 0.8
+     * @deprecated in v4.3 durch {@link #unregister(SatzTyp)} ersetzt
      */
+    @Deprecated
     public static void unregister(final int satzart, final int sparte, final int wagnisart) {
-        SatzTyp key = new SatzTyp(satzart, sparte, wagnisart, -1);
-        REGISTERED_DATENSATZ_CLASSES.remove(key);
-        REGISTERED_ENUM_CLASSES.remove(key);
+        SatzTyp key = new SatzTyp(satzart, sparte, wagnisart);
+        unregister(key);
     }
 
     /**

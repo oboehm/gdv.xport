@@ -112,13 +112,14 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testRegisterSatz() {
-        SatzFactory.register(Datensatz.class, 47);
-        Satz satz = SatzFactory.getSatz(47);
+        int satzart = 47;
+        SatzFactory.register(Datensatz.class, satzart);
+        Satz satz = SatzFactory.getSatz(satzart);
         assertEquals(Datensatz.class, satz.getClass());
-        assertEquals(47, satz.getSatzart());
-        SatzFactory.unregister(47);
+        assertEquals(satzart, satz.getSatzart());
+        SatzFactory.unregister(new SatzTyp(satzart));
         try {
-            satz = SatzFactory.getSatz(47);
+            satz = SatzFactory.getSatz(satzart);
             fail("unregister failed for " + satz);
         } catch (NotRegisteredException expected) {
             LOG.info(satz + " successful unregistered (" + expected + ")");
@@ -130,26 +131,29 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testRegisterDatensatz() {
-        SatzFactory.register(SatzX.class, 47, 11);
-        Satz satz = SatzFactory.getDatensatz(47, 11);
+        SatzTyp typ = SatzTyp.of("0047.11");
+        SatzFactory.register(SatzX.class, typ);
+        Satz satz = SatzFactory.getDatensatz(typ);
         assertEquals(SatzX.class, satz.getClass());
-        SatzFactory.unregister(47, 11);
+        SatzFactory.unregister(typ);
     }
 
     @Test
     public void testRegisterEnum() {
-        SatzFactory.registerEnum(MyFeld210.class, SatzTyp.of("0047"));
-        Satz satz = SatzFactory.getSatz(47);
+        SatzTyp typ = SatzTyp.of("0047");
+        SatzFactory.registerEnum(MyFeld210.class, typ);
+        Satz satz = SatzFactory.getSatz(typ);
         assertSatzart47(satz);
-        SatzFactory.unregister(47);
+        SatzFactory.unregister(typ);
     }
 
     @Test
     public void testRegisterEnum4Sparte() {
-        SatzFactory.registerEnum(MyFeld210.class, SatzTyp.of("0047.11"));
-        Satz satz = SatzFactory.getDatensatz(47, 11);
+        SatzTyp typ = SatzTyp.of("0047.11");
+        SatzFactory.registerEnum(MyFeld210.class, typ);
+        Satz satz = SatzFactory.getDatensatz(typ);
         assertSatzart47(satz);
-        SatzFactory.unregister(47, 11);
+        SatzFactory.unregister(typ);
     }
 
     private void assertSatzart47(final Satz satz) {
