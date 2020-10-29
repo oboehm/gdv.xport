@@ -22,6 +22,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.common.VertragsStatus;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -189,7 +190,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testValidateIBAN() {
-        Teildatensatz adressteil4 = SatzFactory.getSatz(100).getTeildatensatz(4);
+        Teildatensatz adressteil4 = SatzFactory.getSatz(new SatzTyp(100)).getTeildatensatz(4);
         assertTrue("should be valid: " + adressteil4, adressteil4.isValid());
         Feld iban1 = adressteil4.getFeld(Bezeichner.IBAN1);
         iban1.setInhalt("DE99300606010006605605");

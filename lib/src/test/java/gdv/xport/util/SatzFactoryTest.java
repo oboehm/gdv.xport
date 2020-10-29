@@ -87,7 +87,7 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     private static Satz getSatz(final int satzart) {
-        Satz satz = SatzFactory.getSatz(satzart);
+        Satz satz = SatzFactory.getSatz(new SatzTyp(satzart));
         assertEquals(satzart, satz.getSatzart());
         return satz;
     }
@@ -114,12 +114,12 @@ public final class SatzFactoryTest extends AbstractTest {
     public void testRegisterSatz() {
         int satzart = 47;
         SatzFactory.register(Datensatz.class, satzart);
-        Satz satz = SatzFactory.getSatz(satzart);
+        Satz satz = SatzFactory.getSatz(new SatzTyp(satzart));
         assertEquals(Datensatz.class, satz.getClass());
         assertEquals(satzart, satz.getSatzart());
         SatzFactory.unregister(new SatzTyp(satzart));
         try {
-            satz = SatzFactory.getSatz(satzart);
+            satz = SatzFactory.getSatz(new SatzTyp(satzart));
             fail("unregister failed for " + satz);
         } catch (NotRegisteredException expected) {
             LOG.info(satz + " successful unregistered (" + expected + ")");
@@ -364,8 +364,8 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetSatzDifferent() {
-        Satz one = SatzFactory.getSatz(100);
-        Satz two = SatzFactory.getSatz(100);
+        Satz one = SatzFactory.getSatz(new SatzTyp(100));
+        Satz two = SatzFactory.getSatz(new SatzTyp(100));
         assertEquals(one, two);
         assertNotSame(one, two);
         for (int i = 1; i <= one.getNumberOfTeildatensaetze(); i++) {
@@ -380,8 +380,8 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetSatzManipulated() {
-        Teildatensatz one = SatzFactory.getSatz(100).getTeildatensatz(4);
-        Teildatensatz two = SatzFactory.getSatz(100).getTeildatensatz(4);
+        Teildatensatz one = SatzFactory.getSatz(new SatzTyp(100)).getTeildatensatz(4);
+        Teildatensatz two = SatzFactory.getSatz(new SatzTyp(100)).getTeildatensatz(4);
         assertNotSame(one, two);
         Feld oneIban = one.getFeld(Bezeichner.IBAN1);
         Feld twoIban = two.getFeld(Bezeichner.IBAN1);

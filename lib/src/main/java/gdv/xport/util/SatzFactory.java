@@ -377,7 +377,9 @@ public final class SatzFactory {
      * @param satzart the satzart
      * @return angeforderte Satz
      * @since 0.2
+     * @deprecated durch {@link #getSatz(SatzTyp)} abgeloest
      */
+    @Deprecated
     public static Satz getSatz(final int satzart) {
         return getSatz(new SatzTyp(satzart));
     }
@@ -455,14 +457,14 @@ public final class SatzFactory {
      * @since 0.2
      */
     public static Satz getSatz(final String content) {
-        int satzart = Integer.parseInt(content.substring(0, 4));
+        SatzTyp satzart = SatzTyp.of(content.substring(0, 4));
         Satz satz;
         try {
             satz = getSatz(satzart);
         } catch (RuntimeException e) {
             LOG.debug("can't get Satz " + satzart + " (" + e + "), parsing Sparte...");
             int sparte = Integer.parseInt(content.substring(10, 13));
-            satz = getDatensatz(satzart, sparte);
+            satz = getDatensatz(new SatzTyp(satzart.getSatzart(), sparte));
         }
         try {
             satz.importFrom(content);
@@ -480,7 +482,7 @@ public final class SatzFactory {
      * @since 0.2
      */
     public static Datensatz getDatensatz(final int satzart) {
-        return (Datensatz) getSatz(satzart);
+        return (Datensatz) getSatz(new SatzTyp(satzart));
     }
 
     /**

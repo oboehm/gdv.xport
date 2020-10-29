@@ -118,7 +118,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testSetEnum() {
-        Satz satz100 = SatzFactory.getSatz(100);
+        Satz satz100 = SatzFactory.getSatz(new SatzTyp(100));
         satz100.set(Feld1bis7.FOLGENUMMER, "13");
         assertEquals("13", satz100.get(Feld1bis7.FOLGENUMMER));
     }
