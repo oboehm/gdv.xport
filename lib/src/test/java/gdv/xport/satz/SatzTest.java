@@ -48,6 +48,7 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -283,11 +284,8 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testImportFromReader() throws IOException {
         Satz x = new Datensatz(123, 7);
-        Reader reader = new StringReader(INPUT_SATZ_123);
-        try {
+        try (Reader reader = new StringReader(INPUT_SATZ_123)) {
             checkImport(x, reader);
-        } finally {
-            reader.close();
         }
     }
 
@@ -300,12 +298,9 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testImportFromReaderTwice() throws IOException {
         Satz x = new Datensatz(123, 7);
-        Reader reader = new StringReader(INPUT_SATZ_123 + INPUT_SATZ_123);
-        try {
+        try (Reader reader = new StringReader(INPUT_SATZ_123 + INPUT_SATZ_123)) {
             checkImport(x, reader);
             checkImport(x, reader);
-        } finally {
-            reader.close();
         }
     }
 
@@ -377,7 +372,7 @@ public final class SatzTest extends AbstractSatzTest {
         Satz b = new Datensatz(123);
         ObjectTester.assertEquals(a, b);
         b.add(new Feld("c", 55, 'c'));
-        assertFalse(a + " differs from " + b, a.equals(b));
+        assertNotEquals(a, b);
     }
 
     /**
@@ -395,9 +390,6 @@ public final class SatzTest extends AbstractSatzTest {
         assertEquals(n - 2, s.getTeildatensaetze().size());
     }
 
-    /**
-     * Test method for {@link Satz#getAsList(Enum[])}.
-     */
     @Test
     public void testGetAsListSimple() {
         List<MetaFeldInfo> feldInfos = Satz.getMetaFeldInfos(Feld200.values());
@@ -407,9 +399,6 @@ public final class SatzTest extends AbstractSatzTest {
                 feldInfos.size() >= Feld200.values().length);
     }
 
-    /**
-     * Test method for {@link Satz#getAsList(Enum[])}.
-     */
     @Test
     public void testGetAsListComposite() {
         List<MetaFeldInfo> feldInfos = Satz.getMetaFeldInfos(Feld220.values());
