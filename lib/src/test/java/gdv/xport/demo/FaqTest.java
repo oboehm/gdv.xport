@@ -8,6 +8,7 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -59,7 +60,7 @@ public final class FaqTest {
      */
     @Test
     public void testFeld210Sparte30() throws IOException {
-        Datensatz satz = SatzFactory.getDatensatz(210, 30);
+        Datensatz satz = SatzFactory.getDatensatz(SatzTyp.of("0210.030"));
         satz.set(Bezeichner.of("Erweiterter BerVersV-Schluessel"), "12345");
         String schluessel = satz.get(Bezeichner.ERWEITERTER_BERVERSV_SCHLUESSEL);
         assertEquals("12345", schluessel);
@@ -112,7 +113,7 @@ public final class FaqTest {
     @Test
     public void testCreateDatenpaket() {
         Datenpaket dd = new Datenpaket("Hello");
-        Datensatz satz200 = SatzFactory.getDatensatz(200);
+        Datensatz satz200 = SatzFactory.getDatensatz(SatzTyp.of("0200"));
         satz200.set(Feld200.ABGANGSGRUND, 10);
         dd.add(satz200);
         Vorsatz vorsatz = dd.getVorsatz();

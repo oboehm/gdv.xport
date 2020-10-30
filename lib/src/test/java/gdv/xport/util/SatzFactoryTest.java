@@ -180,7 +180,7 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     private static void checkGetDatensatz(final int satzart) {
-        Satz datensatz = SatzFactory.getDatensatz(satzart);
+        Satz datensatz = SatzFactory.getDatensatz(new SatzTyp(satzart));
         assertEquals(satzart, datensatz.getSatzart());
     }
 
@@ -259,7 +259,7 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     private static Datensatz getDatensatz(final int satzart, final int sparte) {
-        Datensatz datensatz = SatzFactory.getDatensatz(satzart, sparte);
+        Datensatz datensatz = SatzFactory.getDatensatz(new SatzTyp(satzart, sparte));
         assertEquals(satzart, datensatz.getSatzart());
         assertEquals(sparte, datensatz.getSparte());
         return datensatz;
@@ -273,7 +273,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testImport() throws IOException {
-        Datensatz datensatz = SatzFactory.getDatensatz(210, 30);
+        Datensatz datensatz = SatzFactory.getDatensatz(SatzTyp.of("210.30"));
         String s = "02109999  030      599999999990199990099991010520040105200901052"
                 + "0040901 0000000000000000000 EUR000000000000000000000000000000041"
                 + "1410000000000 0001000                                           "
@@ -394,7 +394,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testIssue33() {
-        Datensatz satz350 = SatzFactory.getDatensatz(350, 30);
+        Datensatz satz350 = SatzFactory.getDatensatz(SatzTyp.of("350.30"));
         checkDatensatz(satz350);
     }
 

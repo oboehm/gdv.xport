@@ -30,6 +30,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -61,7 +62,7 @@ public final class ImportExport {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public static void exportSatz100(final File file) throws IOException {
-        Datensatz satz100 = SatzFactory.getDatensatz(100);
+        Datensatz satz100 = SatzFactory.getDatensatz(SatzTyp.of("0100"));
         satz100.set(Feld100.ANREDESCHLUESSEL, 1);
         satz100.set(Feld100.NAME1, "Duck");
         satz100.set(Feld100.NAME3, "Dagobert");
@@ -78,7 +79,7 @@ public final class ImportExport {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public static Datensatz importSatz100(final File file) throws IOException {
-        Datensatz satz100 = SatzFactory.getDatensatz(100);
+        Datensatz satz100 = SatzFactory.getDatensatz(SatzTyp.of("0100"));
         satz100.importFrom(file);
         LOG.info("Datensatz " + satz100.getSatzart() + " von " + satz100.getFeld(Feld100.NAME3) + " "
                 + satz100.getFeld(Feld100.NAME1) + " importiert.");

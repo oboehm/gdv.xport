@@ -480,7 +480,9 @@ public final class SatzFactory {
      * @param satzart den registrierten Datensatz fuer
      * @return den registrierten Datensatz fuer 'satzart'
      * @since 0.2
+     * @deprecated durch {@link #getDatensatz(SatzTyp)} abgeloest
      */
+    @Deprecated
     public static Datensatz getDatensatz(final int satzart) {
         return (Datensatz) getSatz(new SatzTyp(satzart));
     }
@@ -491,7 +493,9 @@ public final class SatzFactory {
      * @param satzart z.B. 210
      * @param sparte z.B. 70 (Rechtsschutz)
      * @return den registrierten Datensatz fuer 'satzart', 'sparte'
+     * @deprecated durch {@link #getDatensatz(SatzTyp)} abgeloest
      */
+    @Deprecated
     public static Datensatz getDatensatz(final int satzart, final int sparte) {
         return getDatensatz(new SatzTyp(satzart, sparte));
     }
@@ -505,7 +509,9 @@ public final class SatzFactory {
      * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart'
      *
      * @since 0.8
+     * @deprecated durch {@link #getDatensatz(SatzTyp)} abgeloest
      */
+    @Deprecated
     public static Datensatz getDatensatz(final int satzart, final int sparte, final int wagnisart) {
         return getDatensatz(new SatzTyp(satzart, sparte, wagnisart));
     }
