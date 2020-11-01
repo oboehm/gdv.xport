@@ -27,7 +27,7 @@ public class Satzart220Test {
 
     @Test
     public void testSatzart220FolgeNr1() {
-        Satz satz = SatzFactory.getDatensatz(new SatzTyp(220, 20, -1, 1, -1));
+        Satz satz = SatzFactory.getDatensatz(SatzTyp.of("0220.020.1"));
         assertThat("0220.020.1 hat einen Teildatensatz", satz.getNumberOfTeildatensaetze(), is(1));
         
         Teildatensatz tds1 = satz.getTeildatensatz(1);
@@ -36,7 +36,7 @@ public class Satzart220Test {
     
     @Test
     public void testSatzart220FolgeNr2() {
-        Satz satz = SatzFactory.getDatensatz(new SatzTyp(220, 20, -1, 2, -1));
+        Satz satz = SatzFactory.getDatensatz(SatzTyp.of("0220.020.2"));
         assertThat("0220.020.2 hat einen Teildatensatz", satz.getNumberOfTeildatensaetze(), is(1));
         
         Teildatensatz tds1 = satz.getTeildatensatz(1);
@@ -45,7 +45,7 @@ public class Satzart220Test {
     
     @Test
     public void testSatzart220FolgeNr3() {
-        Satz satz = SatzFactory.getDatensatz(new SatzTyp(220, 20, -1, 3, -1));
+        Satz satz = SatzFactory.getDatensatz(SatzTyp.of("0220.020.3"));
         assertThat("0220.020.3 hat einen Teildatensatz", satz.getNumberOfTeildatensaetze(), is(1));
         
         Teildatensatz tds1 = satz.getTeildatensatz(1);
