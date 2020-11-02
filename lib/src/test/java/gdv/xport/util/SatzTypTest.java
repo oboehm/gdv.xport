@@ -214,4 +214,11 @@ public class SatzTypTest {
         assertEquals("0220.020.3", SatzTyp.of("0220.020.3").toString());
     }
 
+    @Test
+    public void testOfKrankenFolgeNr() {
+        assertEquals(new SatzTyp(220, 20, 1), SatzTyp.of("0220.020.1"));
+        assertEquals(new SatzTyp(220, 20, 2), SatzTyp.of("0220.020.2"));
+        assertEquals(new SatzTyp(220, 20, 3), SatzTyp.of("0220.020.3"));
+    }
+
 }

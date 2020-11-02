@@ -111,7 +111,7 @@ public class SatzTyp {
 	 * @param artFolgeNr Wagnisart (Sparte 10) bzw. krankenFolgeNr (Sparte 20) bzw. bausparenArt (Sparte 580, Satzart 220 (Wert 1 - 2))
 	 */
 	public SatzTyp(final int satzart, final int sparte, final int artFolgeNr) {
-		this(satzart, sparte, artFolgeNr, -1);
+		this(satzart, sparte, (sparte == 20) ? -1 : artFolgeNr, (sparte == 20) ? artFolgeNr : -1, -1);
 		// Alternativ: (scheitert aktuell daran, dass Attribute 'final' sind)
 //		if (sparte == 20) {
 //			this(satzart, sparte, -1, artFolgeNr, -1);
