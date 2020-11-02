@@ -342,33 +342,29 @@ public final class Datenpaket {
     private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
             throws IOException {
         int sparte = Datensatz.readSparte(reader);
-        WagnisartLeben wagnisart = WagnisartLeben.NULL;
-        TeildatensatzNummer teildatensatzNummer = TeildatensatzNummer.NULL;
+        SatzTyp satzTyp = new SatzTyp(satzart, sparte);
         if (sparte == 10 && satzart > 210) {
-            wagnisart = Datensatz.readWagnisart(reader);
+            WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
+            satzTyp = new SatzTyp(satzart, sparte, wagnisart.getCode());
             if (wagnisart != WagnisartLeben.NULL) {
                 // wagnisart 0 hat immer ein Leerzeichen als
                 // teildatenSatzmummer. Nur groesser 0
                 // besitzt per Definition Werte.
-                teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
+                TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
+                satzTyp = new SatzTyp(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
             }
-        }
-
-        // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
-        int krankenFolgeNr = -1;
-        if (sparte == 20 && satzart == 220) {
-            krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
-
+        } else if (sparte == 20 && satzart == 220) {
+            // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
+            int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
             // Krankenfolgenummer nicht auslesbar -> Unbekannter Datensatz
             if (krankenFolgeNr == -1) {
                 Datensatz satz = new SatzX(220, 20, FeldX.class);
                 satz.importFrom(reader);
                 return satz;
             }
+            satzTyp = new SatzTyp(satzart, sparte, krankenFolgeNr);
         }
-
-        Datensatz satz = SatzFactory.getDatensatz(
-                new SatzTyp(satzart, sparte, wagnisart.getCode(), krankenFolgeNr, teildatensatzNummer.getCode()));
+        Datensatz satz = SatzFactory.getDatensatz(satzTyp);
         satz.importFrom(reader);
         return satz;
     }
