@@ -191,6 +191,13 @@ public class SatzTypTest {
     }
 
     @Test
+    public void testOfBausparenArt() {
+        assertEquals(SatzTyp.of("0220.580.01"), new SatzTyp(220, 580, 1));
+        assertEquals(SatzTyp.of("0220.580.2"), new SatzTyp(220, 580, 2));
+        assertEquals(SatzTyp.of("0220.570"), new SatzTyp(220, 570));
+    }
+
+    @Test
     public void testGetKrankenFolgeNr() {
         assertEquals(1, SatzTyp.of("0220.020.1").getKrankenFolgeNr());
         assertEquals(2, SatzTyp.of("0220.020.2").getKrankenFolgeNr());
