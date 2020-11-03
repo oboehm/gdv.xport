@@ -187,7 +187,7 @@ public class SatzXml extends Datensatz {
      * @return the supported satz typen
      */
     public List<SatzTyp> getSupportedSatzTypen() {
-        List<SatzTyp> satzTypen = new ArrayList<SatzTyp>();
+        List<SatzTyp> satzTypen = new ArrayList<>();
         if (this.hasWagnisart()) {
             TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(1);
             FeldReferenz feldReferenz = tdsXml.getFeldRefenz((Bezeichner.WAGNISART));
@@ -200,11 +200,11 @@ public class SatzXml extends Datensatz {
                     ? tdsXml.getFeldRefenz(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
                     : tdsXml.getFeldRefenz(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF);
             if (feldReferenz.getBemerkung().contains("mit \"1\" belegt")) {
-                satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), -1, 1, -1));
+                satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(),1));
             } else if (feldReferenz.getBemerkung().contains("mit \"2\" belegt")) {
-                satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), -1, 2, -1));
+                satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(),2));
             } else if (feldReferenz.getBemerkung().contains("mit \"3\" belegt")) {
-                satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), -1, 3, -1));
+                satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), 3));
             } else {
                 LOG.error("Expected Folge-Nr. Bemerkung containing 'mit \"X\"X belegt' for Satzart 220, Sparte 20, Feld 10 with X being 1, 2 or 3, but got "
                         + feldReferenz.getBemerkung());

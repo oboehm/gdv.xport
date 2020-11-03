@@ -345,13 +345,14 @@ public final class Datenpaket {
         SatzTyp satzTyp = new SatzTyp(satzart, sparte);
         if (sparte == 10 && satzart > 210) {
             WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
-            satzTyp = new SatzTyp(satzart, sparte, wagnisart.getCode());
             if (wagnisart != WagnisartLeben.NULL) {
                 // wagnisart 0 hat immer ein Leerzeichen als
                 // teildatenSatzmummer. Nur groesser 0
                 // besitzt per Definition Werte.
                 TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
                 satzTyp = new SatzTyp(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
+            } else {
+                satzTyp = new SatzTyp(satzart, sparte, wagnisart.getCode());
             }
         } else if (sparte == 20 && satzart == 220) {
             // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig

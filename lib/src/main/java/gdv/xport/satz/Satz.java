@@ -611,7 +611,7 @@ public abstract class Satz implements Cloneable {
             if (StringUtils.isBlank(krankenFolgeNr) || !StringUtils.isNumeric(krankenFolgeNr)) {
                 return new SatzTyp(this.getSatzart(), this.getSparte());
             }
-            return new SatzTyp(this.getSatzart(), this.getSparte(), -1, Integer.parseInt(krankenFolgeNr), -1);
+            return new SatzTyp(this.getSatzart(), this.getSparte(), Integer.parseInt(krankenFolgeNr));
 	    } else if (this.hasSparte()) {
 	        return new SatzTyp(this.getSatzart(), this.getSparte());
 	    } else {

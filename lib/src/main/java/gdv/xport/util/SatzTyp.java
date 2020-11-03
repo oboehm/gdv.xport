@@ -72,7 +72,7 @@ public class SatzTyp {
 			}
 			if (numbers[1] == 20) {
 				//bei Kranken muss krankenFolgeNr belegt werden
-				return new SatzTyp(numbers[0], numbers[1], numbers[2], numbers[2], -1);
+				return new SatzTyp(numbers[0], numbers[1], numbers[2]);
 			} else if (numbers[1] == 580) {
 				// bei Bausparen muss bausparenArt belegt werden
 				return new SatzTyp(numbers[0], numbers[1], numbers[2], -1, -1, numbers[2]);
