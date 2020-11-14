@@ -175,7 +175,7 @@ public class SatzTyp {
 		assert (bausparenArt == -1) || ((0 <= bausparenArt) && (bausparenArt <= 9)) : "bausparenArt "
 		        + bausparenArt + " muss zwischen 0 und 9 liegen";
 		this.satzart = satzart;
-		this.sparte = sparte;
+		this.sparte = ((satzart == 210 ) || (satzart == 211 ) || (satzart == 220 )) && (sparte < 0) ? 0 : sparte;
 		this.wagnisart = wagnisart;
 		this.krankenFolgeNr = krankenFolgeNr;
 		this.teildatensatzNummer = ((wagnisart > 0) && (lfdNummer < 0) && (sparte == 10)) ? 1 :  lfdNummer;

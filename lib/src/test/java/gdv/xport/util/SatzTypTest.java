@@ -240,4 +240,16 @@ public class SatzTypTest {
         assertEquals(new SatzTyp(220, 20, 3), SatzTyp.of("0220.020.3"));
     }
 
+    /**
+     * Fuer Satzart 210, 211 und 220 gibt es einen "Allgemeinen Satz", die
+     * "000" als Sparte hat. Daher sollte "0210" auf "0210.000" abgebildet
+     * werden (entsprechendes gilt fuer Satzart 211 und 220).
+     */
+    @Test
+    public void testAllgemeinerSatz() {
+        assertEquals(SatzTyp.of("0210.000"), SatzTyp.of("0210"));
+        assertEquals(SatzTyp.of("0211.000"), SatzTyp.of("0211"));
+        assertEquals(SatzTyp.of("0220.000"), SatzTyp.of("0220"));
+    }
+
 }
