@@ -151,10 +151,10 @@ public class Datensatz extends Satz {
 			this.setSparte(satzNr.getSparte());
 		}
 		if (satzNr.hasWagnisart() && (satzNr.getWagnisart() <= 9)) {
-		    this.set(Bezeichner.WAGNISART, satzNr.getWagnisartAsString());
+		    this.set(Bezeichner.WAGNISART, satzNr.getWagnisartAsString());		// TODO: Wagnisart kann auch Wagnisart1 sein
 		}
 		if (satzNr.hasTeildatensatzNummer()) {
-			this.setTeildatensatzNummer("" + satzNr.getTeildatensatzNummer());
+			this.setTeildatensatzNummer("" + satzNr.getTeildatensatzNummer());	// TODO: f. 580 und Bausparart fraglich, ob das funktioniert
 		}
 		this.completeTeildatensaetze();
 	}

@@ -1048,7 +1048,7 @@ public abstract class Satz implements Cloneable {
 	 */
 	@Override
 	public int hashCode() {
-		return this.getSatzart();
+		return this.getSatzart();			// TODO: intelligentere Implementierung mit weniger Kollisionen
 	}
 
 	// /// Enum-Behandlung und Auswertung der Meta-Infos ///////////////////
