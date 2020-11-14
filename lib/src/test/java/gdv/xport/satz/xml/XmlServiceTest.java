@@ -50,8 +50,8 @@ import static org.junit.Assert.*;
  */
 public class XmlServiceTest extends AbstractXmlTest {
 
-    private static Logger LOG = LogManager.getLogger(XmlServiceTest.class);
-    private static XmlService xmlService = XmlService.getInstance();
+    private static final Logger LOG = LogManager.getLogger(XmlServiceTest.class);
+    private static final XmlService xmlService = XmlService.getInstance();
 
     /**
      * Einfache Test-Methode fuer {@link XmlService#getSatzart(int)}.
@@ -164,7 +164,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart210Sparte50() throws IOException {
-        checkSatzart(new SatzTyp(210, 50), new Satz210(50));
+        checkSatzart(SatzTyp.of("0210.050"), new Satz210(50));
     }
 
     /**

@@ -34,7 +34,7 @@ import java.util.*;
  * urspruenglich die Datei "VUVM2013_010713.xml" genommen, die ueber <a
  * href="http://www.gdv-online.de/vuvm/bestand/best_2013.htm"
  * >www.gdv-online.de</a> heruntergeladen werden kann. Inzwischen wird die
- * aktueller "VUVM2015.xml" verwendet.
+ * aktuelle "VUVM2018.xml" verwendet.
  *
  * @author oliver
  * @since 1.0 (15.08.2014)
@@ -232,41 +232,44 @@ public class XmlService {
   }
 
   /**
-   * <b>Was ist der tiefere Sinn dieser Methode ?? </b></br>
-   * <b>Was ist der tiefere Sinn dieser Methode ?? </b>
    * </p>
    * Liefert den Satz zur gewuenschten Satzart. Falls es mehr wie einen Satz zur
    * gesuchten Satzart gibt (d.h. wenn es mehrere Sparten gibt), wird eine
    * {@link NotUniqueException} geworfen.
    * <p>
-   * Um Nebeneffekte zu vermeiden wird jedesmal ein neuer Satz erzeugt und
-   * zurueckgeliefert.
+   * Urspruenglich war diese Methoden fuer Satzarten wie 100 oder 200 vorgesehen,
+   * die keine Sparte besitzen. Fuer andere Satzarten wird deswegen eine
+   * {@link NotUniqueException} geworfen, da die Methode dafuer nicht verwendet
+   * werden soll. Seit v0.9 ist die durch {@link SatzTyp} gekapselt.
    * </p>
    *
    * @param satzart z.B. 100 fuer Satz100 (Adressteil)
    * @return die entsprechende Satzart
+   * @deprecated wird durch {@link #getSatzart(SatzTyp)} abgeloest
    */
+  @Deprecated
   public SatzXml getSatzart(final int satzart)  {
-    StringBuilder satzartBuf = new StringBuilder();
-    satzartBuf.append(String.format("%04d", satzart));
-
-    SatzXml satz = this.satzarten.get(SatzTyp.of(satzartBuf.toString()));
-    if (satz != null)   {
-      return new SatzXml(satz);
-    }
-    List<SatzTyp> satzTypen = new ArrayList<>();
-    for (SatzTyp satzNr : this.satzarten.keySet())   {
-      if (satzNr.getSatzart() == satzart)     {
-        satzTypen.add(satzNr);
-      }
-    }
-    if (satzTypen.isEmpty())   {
-      throw new NotRegisteredException(satzart);
-    }
-    if (satzTypen.size() > 1)    {
-      checkSatzarten(satzTypen);
-    }
-    return new SatzXml(this.satzarten.get(satzTypen.get(0)));
+      return getSatzart(SatzTyp.of(Integer.toString(satzart)));
+//    StringBuilder satzartBuf = new StringBuilder();
+//    satzartBuf.append(String.format("%04d", satzart));
+//
+//    SatzXml satz = this.satzarten.get(SatzTyp.of(satzartBuf.toString()));
+//    if (satz != null)   {
+//      return new SatzXml(satz);
+//    }
+//    List<SatzTyp> satzTypen = new ArrayList<>();
+//    for (SatzTyp satzNr : this.satzarten.keySet())   {
+//      if (satzNr.getSatzart() == satzart)     {
+//        satzTypen.add(satzNr);
+//      }
+//    }
+//    if (satzTypen.isEmpty())   {
+//      throw new NotRegisteredException(satzart);
+//    }
+//    if (satzTypen.size() > 1)    {
+//      checkSatzarten(satzTypen);
+//    }
+//    return new SatzXml(this.satzarten.get(satzTypen.get(0)));
   }
 
     private static void checkSatzarten(List<SatzTyp> satzTypen) {
@@ -280,6 +283,10 @@ public class XmlService {
 
     /**
      * Liefert den Satz zur gewuenschten Satzart.
+     * <p>
+     * Um Nebeneffekte zu vermeiden wird jedesmal ein neuer Satz erzeugt und
+     * zurueckgeliefert.
+     * </p>
      *
      * @param satzNr z.B. 'new Satznummer(100)' fuer Satz100 (Adressteil)
      * @return die entsprechende Satzart
@@ -296,7 +303,7 @@ public class XmlService {
         if (satz == null) {
             throw new NotRegisteredException(satzNr);
         }
-        return satz;
+        return new SatzXml(satz);
     }
 
     /**

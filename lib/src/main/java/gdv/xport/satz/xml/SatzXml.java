@@ -287,14 +287,18 @@ public class SatzXml extends Datensatz {
     return satzTypen;
   }
 
-  @Override
-  public boolean equals(Object obj)
-  {
-    if (!super.equals(obj))
-    {
-      return false;
-    }
-    SatzXml other = (SatzXml) obj;
-    return this.gdvSatzartName.equalsIgnoreCase(other.gdvSatzartName);
-  }
+  /*
+   * ist nicht notwendig, da die Oberklasse (Datensatz) bereits eine korrekt
+   * Implementierung der equals-Methode liefern sollte.
+   */
+//  @Override
+//  public boolean equals(Object obj)
+//  {
+//    if (!super.equals(obj))
+//    {
+//      return false;
+//    }
+//    SatzXml other = (SatzXml) obj;
+//    return this.gdvSatzartName.equalsIgnoreCase(other.gdvSatzartName);
+//  }
 }
