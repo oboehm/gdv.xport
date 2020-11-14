@@ -117,7 +117,7 @@ public class SatzTyp {
     @Deprecated
     public SatzTyp(final int satzart, final int sparte, final int artFolgeNr) {
       this(satzart, sparte, artFolgeNr, -1);
- 
+
     }
 
     /**
@@ -125,14 +125,15 @@ public class SatzTyp {
      * 
      * @param satzart die Satzart (vierstellig)
      * @param sparte die Sparte (dreistellig)
-     * @param wagnisart die Wagnisart (ein- bis zweisstellig)
+	 * @param artFolgeNr Wagnisart (Sparte 10) bzw. krankenFolgeNr (Sparte 20) bzw. bausparenArt (Sparte 580, Satzart 220 (Wert 1 - 2))
      * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
      * @deprecated wurde ersetzt durch {@link #of(String)}
      */
     @Deprecated
-    public SatzTyp(final int satzart, final int sparte, final int wagnisart,  final int lfdNummer) {
-      this(satzart, sparte, wagnisart, -1, lfdNummer);
-    }
+	public SatzTyp(final int satzart, final int sparte, final int artFolgeNr, final int lfdNummer) {
+		this(satzart, sparte, (sparte == 20) || (sparte == 580) ? -1 : artFolgeNr, (sparte == 20) ? artFolgeNr : -1,
+				lfdNummer, (sparte == 580) ? artFolgeNr : -1);
+	}
 
     /**
      * Legt eine neue SatzNummer an.
