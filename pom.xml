@@ -642,6 +642,12 @@
         <role>Maintainer (Dockerfile)</role>
       </roles>
     </contributor>
+    <contributor>
+      <name>Klaus-Dieter Junke</name>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </contributor>
   </contributors>
   
   <scm>

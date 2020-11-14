@@ -20,8 +20,6 @@ package gdv.xport.util;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.text.DecimalFormat;
-
 /**
  * Der SatzTyp fuehrt Satzart, Sparte, Wagnisart und laufende Nummer eines
  * Teildatensatz zusammen. Sie wird von der {@link SatzFactory} fuer die
@@ -55,92 +53,101 @@ public class SatzTyp {
 	/** Bausparen, bausparenArt */
 	private final int bausparenArt;
 
-	/**
-	 * Damit laesst sich ein SatzTyp anhand der entsprechenden String-
-	 * Repraesentation erzeugen.
-	 *
-	 * @param nr z.B. "0210.050"
-	 * @return der entsprechende SatzTyp
-	 * @since 4.3
-	 */
-	public static SatzTyp of(String nr) {
-		int[] numbers = { -1, -1, -1, -1 };
-		try {
-			String[] parts = StringUtils.split(nr, '.');
-			for (int i = 0; i < parts.length; i++) {
-				numbers[i] = Integer.parseInt(parts[i]);
-			}
-			if (numbers[1] == 20) {
-				//bei Kranken muss krankenFolgeNr belegt werden
-				return new SatzTyp(numbers[0], numbers[1], numbers[2]);
-			} else if (numbers[1] == 580) {
-				// bei Bausparen muss bausparenArt belegt werden
-				return new SatzTyp(numbers[0], numbers[1], numbers[2], -1, -1, numbers[2]);
-			} else {
-				return new SatzTyp(numbers[0], numbers[1], numbers[2], numbers[3]);
-			}
-		} catch (NumberFormatException ex) {
-			throw new IllegalArgumentException("kein Satz-Typ: '" + nr + "'", ex);
-		}
-	}
+    /**
+     * Damit laesst sich ein SatzTyp anhand der entsprechenden String-
+     * Repraesentation erzeugen.
+     *
+     * @param nr z.B. "0210.050"
+     * @return der entsprechende SatzTyp
+     * @since 4.3
+     */
+    public static SatzTyp of(String nr)  {
+      int[] numbers = { -1, -1, -1, -1 };
+      try {
+        String[] parts = StringUtils.split(nr, '.');
+        for (int i = 0; i < parts.length; i++) {
+          numbers[i] = Integer.parseInt(parts[i]);
+        }
+        if (numbers[1] == 20) {
+          // bei Kranken muss krankenFolgeNr belegt werden
+         return new SatzTyp(numbers[0], numbers[1], -1, numbers[2], -1, -1);
+       } else if (numbers[1] == 580) {
+        // bei Bausparen muss bausparenArt belegt werden
+        return new SatzTyp(numbers[0], numbers[1], -1, -1, -1, numbers[2]);
+      } else {
+        return new SatzTyp(numbers[0], numbers[1], numbers[2], -1, numbers[3], -1);
+      }
+    } catch (NumberFormatException ex)  {
+      throw new IllegalArgumentException("kein Satz-Typ: '" + nr + "'", ex);
+    }
+  }
 
-	/**
-	 * Instantiates a new satz nummer.
-	 *
-	 * @param satzart the satzart
-	 */
-	public SatzTyp(final int satzart) {
-		this(satzart, -1);
-	}
+    /**
+     * Instantiates a new satz nummer.
+     *
+     * @param satzart the satzart
+     * @deprecated wurde ersetzt durch {@link #of(String)}
+     */
+    @Deprecated
+    public SatzTyp(final int satzart) {
+      this(satzart, -1);
+    }
 
-	/**
-	 * Instantiates a new satz nummer.
-	 *
-	 * @param satzart Satzart
-	 * @param sparte Sparte
-	 */
-	public SatzTyp(final int satzart, final int sparte) {
-		this(satzart, sparte, -1);
-	}
+    /**
+     * Instantiates a new satz nummer.
+     *
+     * @param satzart Satzart
+     * @param sparte Sparte
+     * @deprecated wurde ersetzt durch {@link #of(String)}
+     */
+    @Deprecated
+    public SatzTyp(final int satzart, final int sparte) {
+      this(satzart, sparte, -1);
+    }
 
-	/**
-	 * Instantiates a new satz nummer.
-	 *
-	 * @param satzart the satzart
-	 * @param sparte the sparte
-	 * @param artFolgeNr Wagnisart (Sparte 10) bzw. krankenFolgeNr (Sparte 20) bzw. bausparenArt (Sparte 580, Satzart 220 (Wert 1 - 2))
-	 */
-	public SatzTyp(final int satzart, final int sparte, final int artFolgeNr) {
-		this(satzart, sparte, artFolgeNr, -1);
-	}
-	
-	/**
-	 * Legt eine neue SatzNummer an.
-	 * 
+    /**
+     * Instantiates a new satz nummer.
+     *
+     * @param satzart the satzart
+     * @param sparte the sparte
+     * @param artFolgeNr Wagnisart (Sparte 10) bzw. krankenFolgeNr (Sparte 20)
+     *          bzw. bausparenArt (Sparte 580, Satzart 220 (Wert 1 - 2))
+     * @deprecated wurde ersetzt durch {@link #of(String)}
+     */
+    @Deprecated
+    public SatzTyp(final int satzart, final int sparte, final int artFolgeNr) {
+      this(satzart, sparte, artFolgeNr, -1);
+ 
+    }
+
+    /**
+     * Legt eine neue SatzNummer an.
+     * 
      * @param satzart die Satzart (vierstellig)
      * @param sparte die Sparte (dreistellig)
-	 * @param artFolgeNr Wagnisart (Sparte 10) bzw. krankenFolgeNr (Sparte 20) bzw. bausparenArt (Sparte 580, Satzart 220 (Wert 1 - 2))
-     * @param lfdNummer bei Wagnisart die laufende Nummer (Teildatensatz-Nummer)
-	 */
-	public SatzTyp(final int satzart, final int sparte, final int artFolgeNr, final int lfdNummer) {
-	    this(satzart, sparte, (sparte == 20) || (sparte == 580) ? -1 : artFolgeNr, (sparte == 20) ? artFolgeNr : -1,
-				lfdNummer, (sparte == 580) ? artFolgeNr : -1);
-	}
-	
-	/**
-	 * Legt eine neue SatzNummer an.
-	 *
-	 * @param satzart die Satzart (vierstellig)
-	 * @param sparte die Sparte (dreistellig)
-	 * @param wagnisart die Wagnisart (ein- bis zweisstellig)
-	 * @param krankenFolgeNr Folge-Nr. aus Sparte 20, Satzart 220 (Wert 1-3)
-	 * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
-	 * @deprecated wurde ersetzt durch {@link #of(String)}
-	 */
-	@Deprecated
-	public SatzTyp(final int satzart, final int sparte, final int wagnisart, final int krankenFolgeNr, final int lfdNummer) {
-      this(satzart, sparte,  wagnisart, krankenFolgeNr, lfdNummer, -1);
-  }
+     * @param wagnisart die Wagnisart (ein- bis zweisstellig)
+     * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
+     * @deprecated wurde ersetzt durch {@link #of(String)}
+     */
+    @Deprecated
+    public SatzTyp(final int satzart, final int sparte, final int wagnisart,  final int lfdNummer) {
+      this(satzart, sparte, wagnisart, -1, lfdNummer);
+    }
+
+    /**
+     * Legt eine neue SatzNummer an.
+     *
+     * @param satzart die Satzart (vierstellig)
+     * @param sparte die Sparte (dreistellig)
+     * @param wagnisart die Wagnisart (ein- bis zweisstellig)
+     * @param krankenFolgeNr Folge-Nr. aus Sparte 20, Satzart 220 (Wert 1-3)
+     * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
+     * @deprecated wurde ersetzt durch {@link #of(String)}
+     */
+    @Deprecated
+    public SatzTyp(final int satzart, final int sparte, final int wagnisart, final int krankenFolgeNr, final int lfdNummer) {
+      this(satzart, sparte, wagnisart, krankenFolgeNr, lfdNummer, -1);
+    }
 
 	/**
 	 * Legt eine neue SatzNummer an.
@@ -192,14 +199,25 @@ public class SatzTyp {
 		return this.sparte;
 	}
 
-	/**
-	 * Gets the wagnisart.
-	 *
-	 * @return the wagnisart
-	 */
-	public int getWagnisart() {
-		return this.wagnisart;
-	}
+  /**
+   * Liefert die Sparte als String.
+   *
+   * @return z.B. "030"
+   * @since 4.3
+   */
+  public String getSparteAsString()
+  {
+    return Integer.toString(this.getSparte());
+  }
+
+  /**
+   * Gets the wagnisart.
+   *
+   * @return the wagnisart
+   */
+  public int getWagnisart()   {
+    return this.wagnisart;
+  }
 
 	/**
 	 * Liefert die Wagnisart als String.
@@ -343,15 +361,26 @@ public class SatzTyp {
 	    return this.getKrankenFolgeNr() >= 0;
 	}
 
-	/**
-	 * Liefert true zurueck, wenn die laufende Nummer (fuer Wagnisart)
-	 * gesetzt ist.
-	 *
-	 * @return true, if successful
-	 */
-	public boolean hasTeildatensatzNummer() {
-		return this.getTeildatensatzNummer() >= 0;
-	}
+    /**
+     * Liefert true zurueck, wenn die Bausparen-Artin Sparte 580, Satzart 220
+     * gesetzt ist.
+     * 
+     * @return true, if successful
+     */
+    public boolean hasBausparenArt()
+    {
+      return this.getBausparenArt() >= 0;
+    }
+
+    /**
+     * Liefert true zurueck, wenn die laufende Nummer (fuer Wagnisart) gesetzt
+     * ist.
+     *
+     * @return true, if successful
+     */
+    public boolean hasTeildatensatzNummer()  {
+      return this.getTeildatensatzNummer() >= 0;
+    }
 
 	/*
 	 * (non-Javadoc)
@@ -381,26 +410,85 @@ public class SatzTyp {
 		        && (this.getTeildatensatzNummer() == other.getTeildatensatzNummer());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder buf = new StringBuilder();
-		buf.append(String.format("%04d", this.getSatzart()));
-		if (this.getSparte() >= 0) {
-			buf.append(String.format(".%03d", this.getSparte()));
-			if (this.hasArt()) {
-				buf.append(".");
-				buf.append(this.getArtAsString());
-				if (this.getTeildatensatzNummer() >= 0) {
-					buf.append(".");
-	                buf.append(this.getTeildatensatzNummer());
-				}
-			}
-		}
-		return buf.toString();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString()
+  {
+    StringBuilder buf = new StringBuilder();
+    buf.append(String.format("%04d", this.getSatzart()));
+    // if (this.getSparte() >= 0)
+    // {
+    // buf.append(String.format(".%03d", this.getSparte()));
+    // if (this.hasArt())
+    // {
+    // buf.append(".");
+    // buf.append(this.getArtAsString());
+    // if (this.getTeildatensatzNummer() >= 0)
+    // {
+    // buf.append(".");
+    // buf.append(this.getTeildatensatzNummer());
+    // }
+    // }
+    // }
 
+/*
+*
+* So kann auch ein fehlbesetzter Inhalt zurueck gegeben werden:
+* z.B.: "0200..1" nach Aufruf von "new SatzTyp(200, -1, -1,  1)"
+* 
+*/
+
+    if (this.hasSparte() || this.hasArt() || this.hasTeildatensatzNummer())
+    {
+      if (this.getSparte() >= 0)
+      {
+        buf.append(String.format(".%03d", this.getSparte()));
+        if (this.hasArt())
+        {
+          buf.append(".");
+          buf.append(this.getArtAsString());
+          if (this.getTeildatensatzNummer() >= 0)
+          {
+            buf.append(".");
+            buf.append(this.getTeildatensatzNummer());
+          }
+        }
+        else
+        {
+          if (this.getTeildatensatzNummer() >= 0)
+          {
+            buf.append("..");
+            buf.append(this.getTeildatensatzNummer());
+          }
+        }
+      }
+      else
+      {
+        if (hasArt())
+        {
+          buf.append("..");
+          buf.append(this.getArtAsString());
+          if (this.getTeildatensatzNummer() >= 0)
+          {
+            buf.append(".");
+            buf.append(this.getTeildatensatzNummer());
+          }
+        }
+        else
+        {
+          if (this.getTeildatensatzNummer() >= 0)
+          {
+            buf.append("...");
+            buf.append(this.getTeildatensatzNummer());
+          }
+        }
+      }
+    }
+
+    return buf.toString();
+  }
 }

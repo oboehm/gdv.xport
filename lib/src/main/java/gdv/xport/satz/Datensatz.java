@@ -48,6 +48,21 @@ public class Datensatz extends Satz {
     private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld((TEILDATENSATZNUMMER), 1, 256);
 	/** Zum Abspeichern der Wagnisart oder Art (Unter-Sparte). */
 	private int art;
+  /**
+   * Zum Abspeichern der Satznummer einer 0220er-GdvSatzart der Sparte 010
+   * (Leben). Die Namen dieser Satzarten bestehen bestehen aus 4 Teilen:
+   * <satzart>.<sparte>.<wagnisart>.<gdvSatzartNummer>. Beispiel:
+   * "0220.010.13.6" (siehe Online-Version bei gdv-online.de). Wird benoetigt,
+   * um 0220er-Satzarten bei Leben zu unterscheiden wg. Bezugsrechte,
+   * Auszahlungen, zukünftige Summenänderungen und Wertungssummen. Nicht
+   * verwechseln mit Satznummer eines Teildatensatzes!
+   */
+  private String gdvSatzartNummer = "";
+  /**
+   * Zum Abspeichern des Namens einer Gdv-Satzart gemaess Online-Version bei
+   * gdv-online.de
+   */
+  private String gdvSatzartName = "";
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der.
@@ -96,13 +111,17 @@ public class Datensatz extends Satz {
 	 * @param satzart z.B. 100
 	 * @param tdsList Liste mit den Teildatensaetzen
 	 */
-	public Datensatz(final int satzart, final List<? extends Teildatensatz> tdsList) {
-		super(satzart, tdsList);
-		if (tdsList.get(0).hasSparte()) {
-		    this.sparte.setInhalt(tdsList.get(0).getSparte());
-		}
-		this.completeTeildatensaetze();
-	}
+  public Datensatz(final int satzart, final List<? extends Teildatensatz> tdsList) {
+    this(satzart, tdsList, null);
+    // super(satzart, tdsList);
+    // if (tdsList.get(0)
+    // .hasSparte())
+    // {
+    // this.sparte.setInhalt(tdsList.get(0)
+    // .getSparte());
+    // }
+    // this.completeTeildatensaetze();
+  }
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
@@ -135,42 +154,82 @@ public class Datensatz extends Satz {
 	 * @param tdsList Liste mit den Teildatensaetzen
 	 */
 	public Datensatz(final int satzart, final int sparte, final List<Teildatensatz> tdsList) {
-		this(satzart, complete(tdsList, sparte));
+		this(satzart, complete(tdsList, sparte), null);
+        // this(satzart, complete(tdsList, sparte));
 	}
 
-	/**
-	 * Instantiiert einen neuen Datensatz.
-	 *
-	 * @param satzNr die SatzNummer
-	 * @param tdsList Liste mit den Teildatensaetzen
-	 * @since 0.9
-	 */
-	public Datensatz(final SatzTyp satzNr, final List<Teildatensatz> tdsList) {
-		this(satzNr.getSatzart(), tdsList);
-		if (satzNr.hasSparte()) {
-			this.setSparte(satzNr.getSparte());
-		}
-		if (satzNr.hasWagnisart() && (satzNr.getWagnisart() <= 9)) {
-		    this.set(Bezeichner.WAGNISART, satzNr.getWagnisartAsString());
-		}
-		if (satzNr.hasTeildatensatzNummer()) {
-			this.setTeildatensatzNummer("" + satzNr.getTeildatensatzNummer());
-		}
-		this.completeTeildatensaetze();
-	}
-
-    /**
-     * Dies ist der Copy-Constructor, mit dem man einen bestehenden Datensatz
-     * kopieren kann.
-     *
-     * @param other der originale Datensatz
-     */
-	public Datensatz(final Datensatz other) {
-	    this(other.getSatzart(), other.getSparte(), other.cloneTeildatensaetze());
-        this.art = other.art;
-        this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
-        this.wagnisart.setInhalt(other.wagnisart.getInhalt());
+  /**
+   * Instantiiert einen neuen Datensatz.
+   *
+   * @param satzNr die SatzNummer
+   * @param tdsList Liste mit den Teildatensaetzen
+   * @since 0.9
+   */
+  public Datensatz(final SatzTyp satzNr, final List<Teildatensatz> tdsList) {
+    this(satzNr.getSatzart(), tdsList);
+    if (satzNr.hasSparte())  {
+      this.setSparte(satzNr.getSparte());
     }
+    if (satzNr.hasWagnisart())  {
+      this.set(Bezeichner.WAGNISART, Integer.toString(satzNr.getWagnisart()));
+    }
+    if (satzNr.hasTeildatensatzNummer()) {
+      this.setTeildatensatzNummer("" + satzNr.getTeildatensatzNummer());
+    }
+    this.completeTeildatensaetze();
+  }
+
+  /**
+   * Instantiiert einen neuen Datensatz.
+   *
+   * @param satzart z.B. 100
+   * @param tdsList Liste mit den Teildatensaetzen
+   * @param satzVersion die Version des Satzes
+   */
+  public Datensatz(final int satzart,
+      final List<? extends Teildatensatz> tdsList,
+      final AlphaNumFeld satzVersion)
+  {
+    super(satzart, tdsList, satzVersion);
+    if (tdsList.get(0)
+        .hasSparte())
+    {
+      this.sparte.setInhalt(tdsList.get(0)
+          .getSparte());
+    }
+    this.completeTeildatensaetze();
+  }
+
+  /**
+   * Instantiiert einen neuen Datensatz.
+   *
+   * @param satzart z.B. 100
+   * @param sparte z.B. 70 (Rechtsschutz)
+   * @param tdsList Liste mit den Teildatensaetzen
+   * @param satzVersion die Version des Satzes
+   */
+  public Datensatz(final int satzart, final int sparte,
+      final List<Teildatensatz> tdsList, final AlphaNumFeld satzVersion)
+  {
+    this(satzart, complete(tdsList, sparte), satzVersion);
+  }
+
+  /**
+   * Dies ist der Copy-Constructor, mit dem man einen bestehenden Datensatz
+   * kopieren kann.
+   *
+   * @param other der originale Datensatz
+   */
+  public Datensatz(final Datensatz other)
+  {
+    this(other.getSatzart(), other.getSparte(), other.cloneTeildatensaetze(),
+        other.getSatzversion());
+    // this(other.getSatzart(), other.getSparte(),
+    // other.cloneTeildatensaetze());
+    this.art = other.art;
+    this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
+    this.wagnisart.setInhalt(other.wagnisart.getInhalt());
+  }
 
     /**
 	 * Kann von Unterklassen verwendet werden, um die Teildatensaetze
@@ -333,7 +392,78 @@ public class Datensatz extends Satz {
 		return this.sparte;
 	}
 
-	/**
+  /**
+   * Setzt die Satzartnummer einer Satzart. Nicht verwechseln mit Satznummer!
+   *
+   * @param x z.B. "6" fuer Satzart 0220, Sparte 010, Wagnisart 2, Bezugsrechte
+   */
+  protected void setGdvSatzartNummer(final String x)
+  {
+    this.gdvSatzartNummer = x;
+  }
+
+  /**
+   * Gets die Satzartnummer. Nicht verwechseln mit Satznummer!
+   * 
+   * Manche Satzarten wie Leben haben ein Element fuer die Satznummer, im Feld
+   * Satzartnummer gespeichert. Dies ist z.B. fuer Satz 0220.010.13.6
+   * (Bezugsrechte) der Fall.
+   *
+   * @return die Satzartnummer als String
+   */
+  public String getGdvSatzartNummer()
+  {
+    return this.gdvSatzartNummer;
+  }
+
+  /**
+   * Setzen des Namens einer Gdv-Satzart.
+   * </p>
+   * Der <code>string</code> wird mit dem Trennzeichen '.' an den bisherigen
+   * Inhalt angehaengt.
+   * </p>
+   * 
+   * @param string
+   */
+  protected void setGdvSatzartName(String string)
+  {
+    StringBuilder buf = new StringBuilder();
+
+    if (this.getGdvSatzartName()
+        .isEmpty())
+    {
+      buf.append(string);
+    }
+    else
+    {
+      buf.append(this.getGdvSatzartName())
+          .append(".")
+          .append(string);
+    }
+
+    this.gdvSatzartName = buf.toString();
+  }
+
+  /**
+   * @return Name der GDV-Satzart gemaess Online-Version bei gdv-online.de
+   */
+  public String getGdvSatzartName()
+  {
+    return this.gdvSatzartName;
+  }
+
+  /**
+   * Wenn der Datensatz ein Element fuer eine Untersparte hat, wird 'true'
+   * zurueckgegeben. Dies ist z.B. fuer Satz 220.580.1 (Bausparen) der Fall.
+   *
+   * @return true, falls der Datensatz eine Untersparte hat.
+   */
+  public boolean hasSatzartNummer()
+  {
+    return !this.gdvSatzartNummer.isEmpty();
+  }
+
+	 /**
 	 * Sets the vu nummer.
 	 *
 	 * @param s VU-Nummer (max. 5 Stellen)
@@ -543,7 +673,7 @@ public class Datensatz extends Satz {
 				// TODO: ugly aber ich sehe bisher noch keinen eleganten Weg in der aktuellen Struktur ohne umfangreiche Refaktorings.
 				char[] newLine = new char[256];
 				int res = reader.read(newLine);
-				if (res == -1 || res < 256) {
+				if (res < 256) {
 					return false;//EOF
 				}
 				reader.unread(newLine);
@@ -584,10 +714,14 @@ public class Datensatz extends Satz {
 	        if (this.hasArt()) {
 	            buf.append(".");
 	            buf.append(this.getArt());
-	        }
-        }
-		return buf.toString();
-	}
+                if (this.hasSatzartNummer()) {
+                    buf.append(".");
+                    buf.append(this.getGdvSatzartNummer());
+                }
+            }
+         }
+         return buf.toString();
+      }
 
 	/**
 	 * Read teildatensatz nummer.

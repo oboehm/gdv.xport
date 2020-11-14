@@ -219,49 +219,55 @@ public class XmlService {
         }
     }
 
-    private void registerSatzart(SatzXml satz) {
-        List<SatzTyp> supportedSatzTypen = satz.getSupportedSatzTypen();
-        if (supportedSatzTypen.isEmpty()) {
-            this.satzarten.put(new SatzTyp(satz.getSatzart()), satz);
-        } else {
-            for (SatzTyp type : supportedSatzTypen) {
-                this.satzarten.put(type, satz);
-                LOG.trace("Satz {} registered as {}.", satz, type);
-            }
-        }
+  private void registerSatzart(SatzXml satz)  {
+    List<SatzTyp> supportedSatzTypen = satz.getSupportedSatzTypen();
+    if (supportedSatzTypen.isEmpty())    {
+      this.satzarten.put(SatzTyp.of(satz.getGdvSatzartName()), satz);
+    } else {
+      for (SatzTyp type : supportedSatzTypen)      {
+        this.satzarten.put(type, satz);
+        LOG.trace("Satz {} registered as {}.", satz, type);
+      }
     }
+  }
 
-    /**
-     * Liefert den Satz zur gewuenschten Satzart. Falls es mehr wie einen Satz
-     * zur gesuchten Satzart gibt (d.h. wenn es mehrere Sparten gibt), wird
-     * eine {@link NotUniqueException} geworfen.
-     * <p>
-     * Um Nebeneffekte zu vermeiden wird jedesmal ein neuer Satz erzeugt und
-     * zurueckgeliefert.
-     * </p>
-     *
-     * @param satzart z.B. 100 fuer Satz100 (Adressteil)
-     * @return die entsprechende Satzart
-     */
-    public SatzXml getSatzart(final int satzart) {
-        SatzXml satz = this.satzarten.get(new SatzTyp(satzart));
-        if (satz != null) {
-            return new SatzXml(satz);
-        }
-        List<SatzTyp> satzTypen = new ArrayList<>();
-        for (SatzTyp satzNr : this.satzarten.keySet()) {
-            if (satzNr.getSatzart() == satzart) {
-                satzTypen.add(satzNr);
-            }
-        }
-        if (satzTypen.isEmpty()) {
-            throw new NotRegisteredException(satzart);
-        }
-        if (satzTypen.size() > 1) {
-            checkSatzarten(satzTypen);
-        }
-        return new SatzXml(this.satzarten.get(satzTypen.get(0)));
+  /**
+   * <b>Was ist der tiefere Sinn dieser Methode ?? </b></br>
+   * <b>Was ist der tiefere Sinn dieser Methode ?? </b>
+   * </p>
+   * Liefert den Satz zur gewuenschten Satzart. Falls es mehr wie einen Satz zur
+   * gesuchten Satzart gibt (d.h. wenn es mehrere Sparten gibt), wird eine
+   * {@link NotUniqueException} geworfen.
+   * <p>
+   * Um Nebeneffekte zu vermeiden wird jedesmal ein neuer Satz erzeugt und
+   * zurueckgeliefert.
+   * </p>
+   *
+   * @param satzart z.B. 100 fuer Satz100 (Adressteil)
+   * @return die entsprechende Satzart
+   */
+  public SatzXml getSatzart(final int satzart)  {
+    StringBuilder satzartBuf = new StringBuilder();
+    satzartBuf.append(String.format("%04d", satzart));
+
+    SatzXml satz = this.satzarten.get(SatzTyp.of(satzartBuf.toString()));
+    if (satz != null)   {
+      return new SatzXml(satz);
     }
+    List<SatzTyp> satzTypen = new ArrayList<>();
+    for (SatzTyp satzNr : this.satzarten.keySet())   {
+      if (satzNr.getSatzart() == satzart)     {
+        satzTypen.add(satzNr);
+      }
+    }
+    if (satzTypen.isEmpty())   {
+      throw new NotRegisteredException(satzart);
+    }
+    if (satzTypen.size() > 1)    {
+      checkSatzarten(satzTypen);
+    }
+    return new SatzXml(this.satzarten.get(satzTypen.get(0)));
+  }
 
     private static void checkSatzarten(List<SatzTyp> satzTypen) {
         SatzTyp first = satzTypen.get(0);
@@ -280,9 +286,13 @@ public class XmlService {
      */
     public SatzXml getSatzart(final SatzTyp satzNr) {
         SatzXml satz = this.satzarten.get(satzNr);
-        if (satz == null) {
-            satz = getSatzart(satzNr.getSatzart());
-        }
+ 
+        // nichts erraten, genau liefern, was gefordert ist
+        // if (satz == null)
+        // {
+        // satz = getSatzart(satzNr.getSatzart());
+        // }
+
         if (satz == null) {
             throw new NotRegisteredException(satzNr);
         }

@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
+import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
@@ -57,9 +58,12 @@ public abstract class Satz implements Cloneable {
 	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
 	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
 
-	protected Satz(final int art) {
-		this(art, 1);
-	}
+    private final AlphaNumFeld satzVersion = new AlphaNumFeld(3, 1);
+
+  protected Satz(final int art)
+  {
+    this(art, 1);
+  }
 
 	protected Satz(final String art) {
 		this(art, (art.length() + 255) / 256);
@@ -109,19 +113,34 @@ public abstract class Satz implements Cloneable {
 		this.createTeildatensaetze(n);
 	}
 
-	/**
-	 * Instanziiert einen neuen Satz.
-	 *
-	 * @param art z.B. 100 (f. Adressteil)
-	 * @param tdsList Liste mit den Teildatensaetzen
-	 */
-	public Satz(final int art, final List<? extends Teildatensatz> tdsList) {
-		this.satzart.setInhalt(art);
-		this.createTeildatensaetze(tdsList);
-	}
+    /**
+     * Instanziiert einen neuen Satz.
+     *
+     * @param art z.B. 100 (f. Adressteil)
+     * @param tdsList Liste mit den Teildatensaetzen
+     */
+     public Satz(final int art, final List<? extends Teildatensatz> tdsList) {
+        this(art, tdsList, null);
+     }
 
-	protected void createTeildatensaetze(final int n) {
-		teildatensatz = new Teildatensatz[n];
+  /**
+   * Instanziiert einen neuen Satz.
+   *
+   * @param art z.B. 100 (f. Adressteil)
+   * @param tdsList Liste mit den Teildatensaetzen
+   * @param satzVersion die Version des Satzes
+   */
+  public Satz(final int art, final List<? extends Teildatensatz> tdsList,
+      final AlphaNumFeld satzVersion)
+  {
+    this.satzart.setInhalt(art);
+    if (satzVersion != null)
+      this.setSatzversion(satzVersion.getInhalt());
+    this.createTeildatensaetze(tdsList);
+  }
+
+    protected void createTeildatensaetze(final int n) {
+        teildatensatz = new Teildatensatz[n];
 		for (int i = 0; i < n; i++) {
 			teildatensatz[i] = new Teildatensatz(satzart, i + 1);
 		}
@@ -347,7 +366,25 @@ public abstract class Satz implements Cloneable {
     }
 
     /**
-	 * Liefert den Inhalt des gewuenschten Feldes.
+     * Setzt die Version des Satzes
+     * 
+     * @param version
+     */
+    public final void setSatzversion(final String version) {
+        this.satzVersion.setInhalt(version);
+    }
+
+    /**
+     * Liefert die Satzversion
+     * 
+     * @return die Satzversion
+     */
+    public final AlphaNumFeld getSatzversion() {
+        return this.satzVersion;
+    }
+
+    /**
+     * Liefert den Inhalt des gewuenschten Feldes.
 	 *
 	 * @param name gesuchtes Feld
 	 * @return Inhalt des gefundenden Felds (NULL_STRING, falls 'name' nicht
