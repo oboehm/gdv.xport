@@ -273,11 +273,23 @@ public class Teildatensatz extends Satz {
     public Feld getFeld(final Bezeichner bezeichner) {
         Feld found = datenfelder.get(bezeichner);
         if (found == null) {
+            found = findFeld(bezeichner);
+        }
+        if (found == null) {
             throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
                     + " vorhanden!");
         } else {
             return found;
         }
+    }
+
+    private Feld findFeld(final Bezeichner bezeichner) {
+        for (Entry<Bezeichner, Feld> entry : datenfelder.entrySet()) {
+            if (entry.getKey().getName().equals(bezeichner.getName())) {
+                return entry.getValue();
+            }
+        }
+        return null;
     }
 
     /**

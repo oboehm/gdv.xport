@@ -298,6 +298,9 @@ public class XmlService {
         // das ermoeglich die Anfrage mit Satzart 0350.030, obwohl es die nicht gibt (s. Issue 33)
         if ((satz == null) && satzNr.hasSparte()) {
             satz = getSatzart(SatzTyp.of(Integer.toString(satzNr.getSatzart())));
+            if (satz != null) {
+                satz.setSparte(satzNr.getSparte());
+            }
         }
         if (satz == null) {
             throw new NotRegisteredException(satzNr);

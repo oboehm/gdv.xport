@@ -252,4 +252,14 @@ public class SatzTypTest {
         assertEquals(SatzTyp.of("0220.000"), SatzTyp.of("0220"));
     }
 
+    /**
+     * SatzTyp "0220.010" gibt es eigentlich nicht. In diesem Fall sollte die
+     * Wagnisart 0 genommen werden.
+     */
+    @Test
+    public void testLebenWagnisart0() {
+        assertEquals(SatzTyp.of("0220.010.0"), SatzTyp.of("0220.010"));
+        assertEquals("0220.010.0", SatzTyp.of("0220.010.0").toString());
+    }
+
 }

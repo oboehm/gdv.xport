@@ -445,6 +445,18 @@ public final class SatzFactory {
     public static Datensatz getDatensatz(final SatzTyp satzNr) {
         Class<? extends Datensatz> clazz = REGISTERED_DATENSATZ_CLASSES.get(satzNr);
         if (clazz == null) {
+            try {
+                return XML_SERVICE.getSatzart(satzNr);
+            } catch (NotRegisteredException ex) {
+                LOG.info("SatzTyp {} is not part of the XML description.", satzNr);
+                LOG.debug("Details:", ex);
+            }
+        }
+        return generateDatensatz(satzNr, clazz);
+    }
+
+    private static Datensatz generateDatensatz(SatzTyp satzNr, Class<? extends Datensatz> clazz) {
+        if (clazz == null) {
             return generateDatensatz(satzNr);
         }
         try {
