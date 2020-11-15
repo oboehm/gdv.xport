@@ -283,23 +283,22 @@ public class XmlService {
 
     /**
      * Liefert den Satz zur gewuenschten Satzart.
+     * Dabei koennen auch Satzarten wie "0350.030", die es so direkt nicht gibt
+     * in der XML-Beschreibung, angefordert werden.
      * <p>
      * Um Nebeneffekte zu vermeiden wird jedesmal ein neuer Satz erzeugt und
      * zurueckgeliefert.
      * </p>
      *
-     * @param satzNr z.B. 'new Satznummer(100)' fuer Satz100 (Adressteil)
+     * @param satzNr z.B. SatzTyp.of("0100") fuer Satz100 (Adressteil)
      * @return die entsprechende Satzart
      */
     public SatzXml getSatzart(final SatzTyp satzNr) {
         SatzXml satz = this.satzarten.get(satzNr);
- 
-        // nichts erraten, genau liefern, was gefordert ist
-        // if (satz == null)
-        // {
-        // satz = getSatzart(satzNr.getSatzart());
-        // }
-
+        // das ermoeglich die Anfrage mit Satzart 0350.030, obwohl es die nicht gibt (s. Issue 33)
+        if ((satz == null) && satzNr.hasSparte()) {
+            satz = getSatzart(SatzTyp.of(Integer.toString(satzNr.getSatzart())));
+        }
         if (satz == null) {
             throw new NotRegisteredException(satzNr);
         }

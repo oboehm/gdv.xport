@@ -396,6 +396,7 @@ public final class SatzFactoryTest extends AbstractTest {
     public void testIssue33() {
         Datensatz satz350 = SatzFactory.getDatensatz(SatzTyp.of("350.30"));
         checkDatensatz(satz350);
+        assertEquals(30, satz350.getSparte());
     }
 
     @Test
