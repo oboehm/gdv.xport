@@ -229,6 +229,8 @@ public class Datensatz extends Satz {
     this.art = other.art;
     this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
     this.wagnisart.setInhalt(other.wagnisart.getInhalt());
+    this.gdvSatzartName = other.gdvSatzartName;
+    this.gdvSatzartNummer = other.gdvSatzartNummer;
   }
 
     /**
@@ -264,14 +266,16 @@ public class Datensatz extends Satz {
 			setUp(tds, Feld1bis7.FOLGENUMMER, new NumFeld(Feld1bis7.FOLGENUMMER));
 			setUp(tds, Feld1bis7.VERMITTLER, new AlphaNumFeld(Feld1bis7.VERMITTLER));
 			LOG.trace(tds + " is set up.");
+		} else if (tds.hasFeld(Feld1bis7.SPARTE)) {
+			tds.getFeld(Feld1bis7.SPARTE).setInhalt(sparte.getInhalt());
 		}
 	}
 
 	private static void setUp(final Teildatensatz tds, final Enum feldX, final Feld value) {
-        if (!tds.hasFeld(feldX)) {
-            LOG.trace("{} initialized with value {}.", tds, value);
-            tds.add(value);
-        }
+		if (!tds.hasFeld(feldX)) {
+			LOG.trace("{} initialized with value {}.", tds, value);
+			tds.add(value);
+		}
     }
 
     /**
@@ -423,7 +427,7 @@ public class Datensatz extends Satz {
    * Inhalt angehaengt.
    * </p>
    * 
-   * @param string
+   * @param string letzer Teil der Satzart
    */
   protected void setGdvSatzartName(String string)
   {
