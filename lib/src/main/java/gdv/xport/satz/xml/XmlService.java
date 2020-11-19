@@ -294,14 +294,37 @@ public class XmlService {
      * @return die entsprechende Satzart
      */
     public SatzXml getSatzart(final SatzTyp satzNr) {
-        SatzXml satz = this.satzarten.get(satzNr);
-        // das ermoeglich die Anfrage mit Satzart 0350.030, obwohl es die nicht gibt (s. Issue 33)
-        if ((satz == null) && satzNr.hasSparte()) {
-            satz = getSatzart(SatzTyp.of(Integer.toString(satzNr.getSatzart())));
-            if (satz != null) {
+        try {
+            return getRegisteredSatzart(satzNr);
+        } catch (NotRegisteredException ex) {
+            if (satzNr.hasSparte()) {
+                // das ermoeglich die Anfrage mit Satzart 0350.030, obwohl es die nicht gibt (s. Issue 33)
+                SatzTyp satzart = SatzTyp.of(Integer.toString(satzNr.getSatzart()));
+                LOG.info("SatzTyp {} is not registered - will use {} as fallback.", satzNr, satzart);
+                LOG.debug("Details:", ex);
+                SatzXml satz = getRegisteredSatzart(satzart);
                 satz.setSparte(satzNr.getSparte());
+                return satz;
+            } else {
+                throw ex;
             }
         }
+    }
+
+    /**
+     * Liefert den Satz zur gewuenschten Satzart.
+     * Im Gegensatz zu {@link #getSatzart(SatzTyp)} liefert diese Methode nur
+     * Datensaetze zurueck, die unter diesem SatzTyp registiert wurden.
+     * <p>
+     * Um Nebeneffekte zu vermeiden wird jedesmal ein neuer Satz erzeugt und
+     * zurueckgeliefert.
+     * </p>
+     *
+     * @param satzNr z.B. SatzTyp.of("0100") fuer Satz100 (Adressteil)
+     * @return die entsprechende Satzart
+     */
+    public SatzXml getRegisteredSatzart(final SatzTyp satzNr) {
+        SatzXml satz = this.satzarten.get(satzNr);
         if (satz == null) {
             throw new NotRegisteredException(satzNr);
         }
