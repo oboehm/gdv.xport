@@ -427,7 +427,7 @@ public class Datensatz extends Satz {
    * Inhalt angehaengt.
    * </p>
    * 
-   * @param string letzer Teil der Satzart
+   * @param string naechster Teil der Satzart
    */
   protected void setGdvSatzartName(String string)
   {

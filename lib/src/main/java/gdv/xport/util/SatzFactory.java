@@ -437,14 +437,18 @@ public final class SatzFactory {
      * <li>Teildatensatz-Nummer (6 = Bezugsrechte, 7 = Auszahlungen, 8 =
      * zukünftige Summenänderungen, 9 = Wertungssummen)</li>
      * </ul>
+     * <p>
+     * Falls der gewuenschte Datensatz nicht registriert ist, wird der Datensatz
+     * anhand der von {@link XmlService} bestimmt.
+     * </p>
      *
-     * @param satzNr z.B. new Satznummer(210, 70, 1, 6)
-     * @return den registrierten Datensatz fuer 'satzart', 'sparte',
-     *         'wagnisart', 'teildatensatzNummer'
+     * @param satzNr z.B. SatzTyp.of("0210.070.1.6")
+     * @return den passenden Datensatz
      */
     public static Datensatz getDatensatz(final SatzTyp satzNr) {
         Class<? extends Datensatz> clazz = REGISTERED_DATENSATZ_CLASSES.get(satzNr);
         if (clazz == null) {
+            // wird u.a. fuer den Import von Datensaetzen benoetigt
             try {
                 return XML_SERVICE.getSatzart(satzNr);
             } catch (NotRegisteredException ex) {
