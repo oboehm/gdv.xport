@@ -55,6 +55,17 @@ import static patterntesting.runtime.NullConstants.NULL_STRING;
 public abstract class Satz implements Cloneable {
 
 	private static final Logger LOG = LogManager.getLogger(Satz.class);
+	private static final SatzTyp[] SATZARTEN_OHNE_SATZNUMMER = {
+			SatzTyp.of("0210.110"), SatzTyp.of("0220.110"),
+			SatzTyp.of("0210.040"),
+			SatzTyp.of("0220.020.1"), SatzTyp.of("0220.020.2"), SatzTyp.of("0220.020.3"),
+			SatzTyp.of("0210.070"),
+			SatzTyp.of("0260.190"),
+			SatzTyp.of("0210.030"),
+			SatzTyp.of("0211.130"), SatzTyp.of("0220.130"), SatzTyp.of("0221.130"),
+			SatzTyp.of("0210.510"), SatzTyp.of("0220.510")
+	};
+
 	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
 	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
 
@@ -654,6 +665,32 @@ public abstract class Satz implements Cloneable {
 	    } else {
 	        return new SatzTyp(this.getSatzart());
 	    }
+	}
+
+	/**
+	 * Die meisten Satzarten haben eine Satznummer. Es gibt aber auch Satzarten
+	 * wie
+	 * 0210.110, 0220.110,
+	 * 0210.040,
+	 * 0220.020.1, 0220.020.2, 0220.020.3,
+	 * 0210.070,
+	 * 0260.190,
+	 * 0210.030,
+	 * 0211.130, 0220.130, 0221.130,
+	 * 0210.510, 0220.510 -
+	 * diese haben keine Satznummer.
+	 *
+	 * @return false fuer Saetze ohne Satznummern
+	 * @since 4.3
+	 */
+	public boolean hasSatznummer() {
+		SatzTyp satzTyp = getSatzTyp();
+		for (SatzTyp ohneSatzTyp : SATZARTEN_OHNE_SATZNUMMER) {
+			if (satzTyp.equals(ohneSatzTyp)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**

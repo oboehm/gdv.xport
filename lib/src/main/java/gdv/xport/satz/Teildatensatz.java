@@ -19,7 +19,10 @@
 package gdv.xport.satz;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.io.ImportException;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -42,7 +45,6 @@ import static gdv.xport.feld.Bezeichner.SATZNUMMER;
  */
 public class Teildatensatz extends Satz {
 
-    /** The Constant log. */
     private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
 
     /** Diese Map dient fuer den Zugriff ueber den Namen. */
@@ -136,7 +138,9 @@ public class Teildatensatz extends Satz {
      */
     private void initDatenfelder() {
         this.add(this.getSatzartFeld());
-        this.add(this.satznummer);
+        if (this.hasSatznummer()) {
+            this.add(this.satznummer);
+        }
     }
 
     /**
@@ -187,8 +191,13 @@ public class Teildatensatz extends Satz {
                 }
             }
         }
+        if (feld.getBezeichnung().startsWith("Satznummer")) {
+           feld.setInhalt(this.satznummer.getInhalt());
+        }
+ 
         datenfelder.put(feld.getBezeichner(), feld);
-        sortedFelder.add(feld);
+        if (!sortedFelder.add(feld))
+           LOG.debug("Bezeichner " + feld.getBezeichner() + "(Bezeichnung " + feld.getBezeichnung() + ") schon vorhanden: " + " in " + this + this.satznummer);
     }
 
     /**
