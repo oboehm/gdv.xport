@@ -24,6 +24,7 @@ import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.io.ImportException;
+import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import org.apache.logging.log4j.LogManager;
@@ -46,6 +47,53 @@ import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 public class Teildatensatz extends Satz {
 
     private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
+    private static final Map<SatzTyp, Integer[]> ABWEICHENDE_SATZNUMMERN = new HashMap<>();
+
+    static {
+        addAbweichendeSatznummer(SatzTyp.of("0220.570"), 43, 43);
+        // TODO ab hier muessen die Satznummer der Teildatensaetze noch geprueft werden
+        addAbweichendeSatznummer(SatzTyp.of("0210.580"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0220.580.01"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0220.580.2"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0210.080"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0211.080"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0220.080"), 49);
+        addAbweichendeSatznummer(SatzTyp.of("0221.080"), 49);
+        addAbweichendeSatznummer(SatzTyp.of("0220.040"), 51);
+        addAbweichendeSatznummer(SatzTyp.of("0221.040"), 51);
+        addAbweichendeSatznummer(SatzTyp.of("0210.550"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0220.550"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0270.550"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0280.550"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0291.550"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0292.550"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0293.550"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0294.550"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0295.550"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0220.070"), 53);
+        addAbweichendeSatznummer(SatzTyp.of("0221.070"), 53);
+        addAbweichendeSatznummer(SatzTyp.of("0210.170"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0211.170"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0220.170"), 50);
+        addAbweichendeSatznummer(SatzTyp.of("0221.170"), 50);
+        addAbweichendeSatznummer(SatzTyp.of("0210.190"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0211.190"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0220.190"), 49);
+        addAbweichendeSatznummer(SatzTyp.of("0221.190"), 49);
+        addAbweichendeSatznummer(SatzTyp.of("0250.190"), 51);
+        addAbweichendeSatznummer(SatzTyp.of("0251.190"), 51);
+        addAbweichendeSatznummer(SatzTyp.of("0220.030"), 49);
+        addAbweichendeSatznummer(SatzTyp.of("0221.030"), 49);
+        addAbweichendeSatznummer(SatzTyp.of("0220.140"), 51);
+        addAbweichendeSatznummer(SatzTyp.of("0210.130"), 251);
+        addAbweichendeSatznummer(SatzTyp.of("0450"), 51);
+        addAbweichendeSatznummer(SatzTyp.of("0500"), 66, 256);
+        addAbweichendeSatznummer(SatzTyp.of("0550"), 66);
+    }
+    
+    private static void addAbweichendeSatznummer(SatzTyp satzTyp, Integer... startAdresse) {
+        ABWEICHENDE_SATZNUMMERN.put(satzTyp, startAdresse);
+    }
 
     /** Diese Map dient fuer den Zugriff ueber den Namen. */
     private final Map<Bezeichner, Feld> datenfelder = new HashMap<>();
@@ -139,8 +187,19 @@ public class Teildatensatz extends Satz {
     private void initDatenfelder() {
         this.add(this.getSatzartFeld());
         if (this.hasSatznummer()) {
-            this.add(this.satznummer);
+            initSatznummer();
         }
+    }
+
+    private void initSatznummer() {
+        SatzTyp satzTyp = getSatzTyp();
+        Integer[] startAdressen = ABWEICHENDE_SATZNUMMERN.get(satzTyp);
+        int nr = Integer.parseInt(this.satznummer.getInhalt());
+        if ((startAdressen != null) && (nr <= startAdressen.length)) {
+            this.satznummer = new Zeichen(SATZNUMMER, startAdressen[nr-1]).withInhalt(this.satznummer.getInhalt());
+            LOG.debug("{}. Satznummer is moved to {}.", nr, this.satznummer);
+        }
+        this.add(this.satznummer);
     }
 
     /**

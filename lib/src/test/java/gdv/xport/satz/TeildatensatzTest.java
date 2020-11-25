@@ -209,4 +209,12 @@ public class TeildatensatzTest extends AbstractSatzTest {
         tds.add(new AlphaNumFeld(Bezeichner.NAME2, 10, 101));
     }
 
+    @Test
+    public void testTeildatensatz500() {
+        Teildatensatz tds = new Teildatensatz(500, 1);
+        Zeichen satznummer = tds.getNummer();
+        assertEquals(66, satznummer.getByteAdresse());
+        assertEquals("1", satznummer.getInhalt());
+    }
+
 }

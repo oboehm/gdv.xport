@@ -95,6 +95,11 @@ public class Zeichen extends AlphaNumFeld {
         super(other);
     }
 
+    @Override
+    public Zeichen withInhalt(String inhalt) {
+        return (Zeichen) super.withInhalt(inhalt);
+    }
+
     /**
      * Falls man keinen String will, sondern ein einzelnes Zeichen braucht.
      *
