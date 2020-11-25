@@ -58,17 +58,6 @@ public class TeildatensatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.satz.Teildatensatz#export(java.io.Writer)}.
-     * @throws IOException sollte eigentlich nicht auftreten
-     */
-    @Test
-    public void testExport() throws IOException {
-        Teildatensatz teildatensatz = new Teildatensatz(new NumFeld("Feld42", "0042"), 1);
-        this.checkExport(teildatensatz, 1, 4, "0042", 256);
-        this.checkExport(teildatensatz, 255, 256, " 1", 256);
-    }
-
-    /**
      * Die einzelnen Felder sollten in der Reihenfolge der Byte-Adresse
      * geliefert werden.
      */
@@ -95,20 +84,6 @@ public class TeildatensatzTest extends AbstractSatzTest {
         tds.add(new NumFeld(VertragsStatus.AUSSCHLUSS));
         assertFalse("unexpected: VERTRAGSSTATUS in " + tds, tds.hasFeld(VertragsStatus.VERTRAGSSTATUS));
         assertTrue("expected: AUSSCHLUSS in " + tds, tds.hasFeld(VertragsStatus.AUSSCHLUSS));
-    }
-
-    /**
-     * Test-Methode fuer {@link Teildatensatz#getFeld(int)}.
-     */
-    @Test
-    public void testGetFeld() {
-        Teildatensatz tds = new Teildatensatz(100, 1);
-        assertEquals(tds.getSatzartFeld(), tds.getFeld(1));
-        assertEquals(tds.getNummer(), tds.getFeld(2));
-        NumFeld two = new NumFeld(new Bezeichner("two"), 2, 5);
-        tds.add(two);
-        Feld feld = tds.getFeld(2);
-        assertEquals(two, feld);
     }
 
     /**
@@ -190,7 +165,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testValidateIBAN() {
-        Teildatensatz adressteil4 = SatzFactory.getSatz(new SatzTyp(100)).getTeildatensatz(4);
+        Teildatensatz adressteil4 = SatzFactory.getSatz(SatzTyp.of("0100")).getTeildatensatz(4);
         assertTrue("should be valid: " + adressteil4, adressteil4.isValid());
         Feld iban1 = adressteil4.getFeld(Bezeichner.IBAN1);
         iban1.setInhalt("DE99300606010006605605");
@@ -207,14 +182,6 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Teildatensatz tds = new Teildatensatz(4711, 1);
         tds.add(new AlphaNumFeld(Bezeichner.NAME1, 10, 100));
         tds.add(new AlphaNumFeld(Bezeichner.NAME2, 10, 101));
-    }
-
-    @Test
-    public void testTeildatensatz500() {
-        Teildatensatz tds = new Teildatensatz(500, 1);
-        Zeichen satznummer = tds.getNummer();
-        assertEquals(66, satznummer.getByteAdresse());
-        assertEquals("1", satznummer.getInhalt());
     }
 
 }

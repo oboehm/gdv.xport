@@ -48,6 +48,7 @@ public final class TeildatensatzXml extends Teildatensatz {
 
     static {
         try {
+            // TODO: Pruefen, ob das fuer VUVM2018.xml noch gebraucht wird und entfernen
             MISSING_FELDER.putAll(XmlService.getInstance("fehlendeFelder.xml").getFelder());
         } catch (XMLStreamException ex) {
             throw new IllegalArgumentException("cannot get missing felder from resource 'fehlendeFelder.xml'", ex);

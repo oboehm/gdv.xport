@@ -27,6 +27,7 @@ import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
+import gdv.xport.satz.enums.TeildatensatzEnum;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.util.SatzTyp;
@@ -153,7 +154,7 @@ public abstract class Satz implements Cloneable {
     protected void createTeildatensaetze(final int n) {
         teildatensatz = new Teildatensatz[n];
 		for (int i = 0; i < n; i++) {
-			teildatensatz[i] = new Teildatensatz(satzart, i + 1);
+			teildatensatz[i] = new TeildatensatzEnum(satzart, i + 1);
 		}
 	}
 
@@ -1143,7 +1144,7 @@ public abstract class Satz implements Cloneable {
 			int n = metaFeldInfo.getTeildatensatzNr();
 			Teildatensatz tds = tdsMap.get(n);
 			if (tds == null) {
-				tds = new Teildatensatz(satzart, n);
+				tds = new TeildatensatzEnum(satzart, n);
 				tdsMap.put(n, tds);
 			}
 			add(metaFeldInfo.getFeldEnum(), tds);

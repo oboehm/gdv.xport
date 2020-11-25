@@ -272,14 +272,14 @@ public class XmlService {
 //    return new SatzXml(this.satzarten.get(satzTypen.get(0)));
   }
 
-    private static void checkSatzarten(List<SatzTyp> satzTypen) {
-        SatzTyp first = satzTypen.get(0);
-        for (int i = 1; i < satzTypen.size(); i++) {
-            if (first.getSparte() != satzTypen.get(i).getSparte()) {
-                throw new NotUniqueException("Sparte for Satzart " + first.getSatzart() + " is missing: " + satzTypen);
-            }
-        }
-    }
+//    private static void checkSatzarten(List<SatzTyp> satzTypen) {
+//        SatzTyp first = satzTypen.get(0);
+//        for (int i = 1; i < satzTypen.size(); i++) {
+//            if (first.getSparte() != satzTypen.get(i).getSparte()) {
+//                throw new NotUniqueException("Sparte for Satzart " + first.getSatzart() + " is missing: " + satzTypen);
+//            }
+//        }
+//    }
 
     /**
      * Liefert den Satz zur gewuenschten Satzart.
@@ -288,6 +288,14 @@ public class XmlService {
      * <p>
      * Um Nebeneffekte zu vermeiden wird jedesmal ein neuer Satz erzeugt und
      * zurueckgeliefert.
+     * </p>
+     * <p>
+     * TODO: Aufteilen in getSatzart(SatzTyp) und getSatzart(SatzTyp, int sparte)
+     *       Vermutlich gehoert diese Funktionalitaet auch eher in die SatzFactory.
+     *       Problem hierbei ist, dass es Satzarten wie "0211.170" gibt, in
+     *       die verschiedene Satzarten erlauben. D.h. "170" ist hier nicht die
+     *       Sparte, sondern steht eher als Sammelnummer fuer verschiedene
+     *       Satzarten.
      * </p>
      *
      * @param satzNr z.B. SatzTyp.of("0100") fuer Satz100 (Adressteil)
