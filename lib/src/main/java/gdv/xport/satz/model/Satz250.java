@@ -22,6 +22,7 @@ import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
+import gdv.xport.util.SatzTyp;
 
 /**
  *  Die Klasse Satz250 hat als Besonderheit, dass die Satznummer nicht am Ende
@@ -42,7 +43,7 @@ public class Satz250 extends SatzXml {
     }
 
     private static SatzXml setUpSatzart250() {
-        SatzXml satz = XmlService.getInstance().getSatzart(250);
+        SatzXml satz = XmlService.getInstance().getSatzart(SatzTyp.of("0250.190"));
         satz.setSatznummer(new Zeichen(Bezeichner.SATZNUMMER, 51));
         satz.getTeildatensatz(2).add(new NumFeld(Bezeichner.of("Praemie in Waehrungseinheiten 2"), 12, 124).mitNachkommastellen(2));
         return satz;

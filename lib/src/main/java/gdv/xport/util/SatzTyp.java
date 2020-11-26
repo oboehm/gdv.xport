@@ -162,7 +162,7 @@ public class SatzTyp {
 	 * @since 4.X
 	 */
 	private SatzTyp(final int satzart, final int sparte, final int wagnisart, final int krankenFolgeNr, final int lfdNummer, final int bausparenArt) {
-		assert (0 <= satzart) && (satzart <= 9999) : "Satzart " + satzart
+		assert (satzart <= 9999) : "Satzart " + satzart
 		        + " muss zwischen 0 und 9999 liegen";
 		assert (sparte == -1) || ((0 <= sparte) && (sparte <= 999)) : "Sparte " + sparte
 		        + " muss zwischen 0 und 999 liegen";

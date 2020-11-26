@@ -370,7 +370,7 @@ public abstract class Satz implements Cloneable {
     /**
      * Setzt die Version des Satzes
      * 
-     * @param version
+     * @param version die Satzversion
      */
     public final void setSatzversion(final String version) {
         this.satzVersion.setInhalt(version);
@@ -620,7 +620,13 @@ public abstract class Satz implements Cloneable {
      * @since 0.3
 	 */
 	public final int getSatzart() {
-		return this.satzart.toInt();
+		try {
+			return this.satzart.toInt();
+		} catch (NumberFormatException ex) {
+			LOG.warn("{} is not a valid Satzart.", this.satzart);
+			LOG.debug("Details:", ex);
+			return -1;
+		}
 	}
 
 	/**
