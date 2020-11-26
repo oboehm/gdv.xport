@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.enums;
 
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.Teildatensatz;
@@ -122,7 +123,7 @@ public final class TeildatensatzEnum extends Teildatensatz {
             throw new IllegalArgumentException("Satznummer (" + nr
                     + ") muss zwischen 1 und 9 liegen");
         }
-        this.satznummer.setInhalt(Character.forDigit(nr, 10));
+        this.getSatznummer().setInhalt(Character.forDigit(nr, 10));
         this.initDatenfelder();
     }
 
@@ -136,12 +137,12 @@ public final class TeildatensatzEnum extends Teildatensatz {
     private void initSatznummer() {
         SatzTyp satzTyp = getSatzTyp();
         Integer[] startAdressen = ABWEICHENDE_SATZNUMMERN.get(satzTyp);
-        int nr = Integer.parseInt(this.satznummer.getInhalt());
+        int nr = Integer.parseInt(this.getSatznummer().getInhalt());
         if ((startAdressen != null) && (nr <= startAdressen.length)) {
-            this.satznummer = new Zeichen(SATZNUMMER, startAdressen[nr-1]).withInhalt(this.satznummer.getInhalt());
-            LOG.debug("{}. Satznummer is moved to {}.", nr, this.satznummer);
+            this.setSatznummer(new Zeichen(SATZNUMMER, startAdressen[nr-1]).withInhalt(this.getSatznummer().getInhalt()));
+            LOG.debug("{}. Satznummer is moved to {}.", nr, this.getSatznummer());
         }
-        this.add(this.satznummer);
+        this.add(this.getSatznummer());
     }
 
     /**

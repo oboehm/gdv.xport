@@ -58,7 +58,7 @@ public class Teildatensatz extends Satz {
     private final SortedSet<Feld> sortedFelder = new TreeSet<>();
 
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
-    protected Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
+    private Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
@@ -146,8 +146,21 @@ public class Teildatensatz extends Satz {
      *
      * @return Satznummer als einzelnes Zeichen ('1' ... '9')
      * @since 0.2
+     * @deprecated durch {@link #getSatznummer()} abgeloest
      */
     public Zeichen getNummer() {
+        return this.getSatznummer();
+    }
+
+    /**
+     * Liefert die Satznummer zurueck. Sie wurde aus Symmetriegruenden
+     * zu {@link #setSatznummer(Zeichen)} eingefuehrt und loest die alte
+     * getNummer()-Methode ab.
+     *
+     * @return Satznummer als einzelnes Zeichen ('1' ... '9')
+     * @since 4.3
+     */
+    public Zeichen getSatznummer() {
         return this.satznummer;
     }
 

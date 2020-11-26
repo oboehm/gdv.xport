@@ -50,7 +50,7 @@ public class TeildatensatzEnumTest extends TeildatensatzTest {
     public void testGetFeld() {
         Teildatensatz tds = new TeildatensatzEnum(100, 1);
         assertEquals(tds.getSatzartFeld(), tds.getFeld(1));
-        assertEquals(tds.getNummer(), tds.getFeld(2));
+        assertEquals(tds.getSatznummer(), tds.getFeld(2));
         NumFeld two = new NumFeld(new Bezeichner("two"), 2, 5);
         tds.add(two);
         Feld feld = tds.getFeld(2);
@@ -71,7 +71,7 @@ public class TeildatensatzEnumTest extends TeildatensatzTest {
     @Test
     public void testTeildatensatz500() {
         Teildatensatz tds = new TeildatensatzEnum(500, 1);
-        Zeichen satznummer = tds.getNummer();
+        Zeichen satznummer = tds.getSatznummer();
         assertEquals(66, satznummer.getByteAdresse());
         assertEquals("1", satznummer.getInhalt());
     }
