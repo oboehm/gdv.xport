@@ -40,6 +40,9 @@ import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
  * beruecksichtigt. Und ein Teildatensatz besteht aus mehreren Datenfeldern.
+ * <p>
+ * TODO: Code nach TeildatensatzEnum verlagern und als abstract kennzeichnen
+ * </p>
  *
  * @author ob@aosd.de
  * @since 04.10.2009

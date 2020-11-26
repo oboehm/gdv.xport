@@ -41,6 +41,16 @@ import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 public final class TeildatensatzEnum extends Teildatensatz {
 
     private static final Logger LOG = LogManager.getLogger();
+    private static final SatzTyp[] SATZARTEN_OHNE_SATZNUMMER = {
+            SatzTyp.of("0210.110"), SatzTyp.of("0220.110"),
+            SatzTyp.of("0210.040"),
+            SatzTyp.of("0220.020.1"), SatzTyp.of("0220.020.2"), SatzTyp.of("0220.020.3"),
+            SatzTyp.of("0210.070"),
+            SatzTyp.of("0260.190"),
+            SatzTyp.of("0210.030"),
+            SatzTyp.of("0211.130"), SatzTyp.of("0220.130"), SatzTyp.of("0221.130"),
+            SatzTyp.of("0210.510"), SatzTyp.of("0220.510")
+    };
     private static final Map<SatzTyp, Integer[]> ABWEICHENDE_SATZNUMMERN = new HashMap<>();
 
     static {
@@ -132,6 +142,31 @@ public final class TeildatensatzEnum extends Teildatensatz {
             LOG.debug("{}. Satznummer is moved to {}.", nr, this.satznummer);
         }
         this.add(this.satznummer);
+    }
+
+    /**
+     * Die meisten Satzarten haben eine Satznummer. Es gibt aber auch Satzarten
+     * wie
+     * 0210.110, 0220.110,
+     * 0210.040,
+     * 0220.020.1, 0220.020.2, 0220.020.3,
+     * 0210.070,
+     * 0260.190,
+     * 0210.030,
+     * 0211.130, 0220.130, 0221.130,
+     * 0210.510, 0220.510 -
+     * diese haben keine Satznummer.
+     *
+     * @return false fuer Saetze ohne Satznummern
+     */
+    private boolean hasSatznummer() {
+        SatzTyp satzTyp = getSatzTyp();
+        for (SatzTyp ohneSatzTyp : SATZARTEN_OHNE_SATZNUMMER) {
+            if (satzTyp.equals(ohneSatzTyp)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
