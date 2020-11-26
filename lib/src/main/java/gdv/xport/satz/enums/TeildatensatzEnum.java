@@ -18,7 +18,6 @@
 
 package gdv.xport.satz.enums;
 
-import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.Teildatensatz;
@@ -56,41 +55,40 @@ public final class TeildatensatzEnum extends Teildatensatz {
 
     static {
         addAbweichendeSatznummer(SatzTyp.of("0220.570"), 43, 43);
-        // TODO ab hier muessen die Satznummer der Teildatensaetze noch geprueft werden
-        addAbweichendeSatznummer(SatzTyp.of("0210.580"), 43);
-        addAbweichendeSatznummer(SatzTyp.of("0220.580.01"), 43);
-        addAbweichendeSatznummer(SatzTyp.of("0220.580.2"), 43);
-        addAbweichendeSatznummer(SatzTyp.of("0210.080"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0210.580"), 43, 43);
+        addAbweichendeSatznummer(SatzTyp.of("0220.580.01"), 43, 43);
+        addAbweichendeSatznummer(SatzTyp.of("0220.580.2"), 43, 43);
+        addAbweichendeSatznummer(SatzTyp.of("0210.080"), 43, 43);
         addAbweichendeSatznummer(SatzTyp.of("0211.080"), 43);
-        addAbweichendeSatznummer(SatzTyp.of("0220.080"), 49);
+        addAbweichendeSatznummer(SatzTyp.of("0220.080"), 49, 49);
         addAbweichendeSatznummer(SatzTyp.of("0221.080"), 49);
-        addAbweichendeSatznummer(SatzTyp.of("0220.040"), 51);
+        addAbweichendeSatznummer(SatzTyp.of("0220.040"), 51, 51);
         addAbweichendeSatznummer(SatzTyp.of("0221.040"), 51);
         addAbweichendeSatznummer(SatzTyp.of("0210.550"), 43);
         addAbweichendeSatznummer(SatzTyp.of("0220.550"), 43);
-        addAbweichendeSatznummer(SatzTyp.of("0270.550"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0270.550"), 43, 43);
         addAbweichendeSatznummer(SatzTyp.of("0280.550"), 43);
         addAbweichendeSatznummer(SatzTyp.of("0291.550"), 43);
         addAbweichendeSatznummer(SatzTyp.of("0292.550"), 43);
         addAbweichendeSatznummer(SatzTyp.of("0293.550"), 43);
         addAbweichendeSatznummer(SatzTyp.of("0294.550"), 43);
         addAbweichendeSatznummer(SatzTyp.of("0295.550"), 43);
-        addAbweichendeSatznummer(SatzTyp.of("0220.070"), 53);
-        addAbweichendeSatznummer(SatzTyp.of("0221.070"), 53);
-        addAbweichendeSatznummer(SatzTyp.of("0210.170"), 43);
+        addAbweichendeSatznummer(SatzTyp.of("0220.070"), 53, 53);
+        addAbweichendeSatznummer(SatzTyp.of("0221.070"), 53, 53);
+        addAbweichendeSatznummer(SatzTyp.of("0210.170"), 43, 43);
         addAbweichendeSatznummer(SatzTyp.of("0211.170"), 43);
-        addAbweichendeSatznummer(SatzTyp.of("0220.170"), 50);
+        addAbweichendeSatznummer(SatzTyp.of("0220.170"), 50, 50);
         addAbweichendeSatznummer(SatzTyp.of("0221.170"), 50);
         addAbweichendeSatznummer(SatzTyp.of("0210.190"), 43);
         addAbweichendeSatznummer(SatzTyp.of("0211.190"), 43);
-        addAbweichendeSatznummer(SatzTyp.of("0220.190"), 49);
+        addAbweichendeSatznummer(SatzTyp.of("0220.190"), 49, 49);
         addAbweichendeSatznummer(SatzTyp.of("0221.190"), 49);
-        addAbweichendeSatznummer(SatzTyp.of("0250.190"), 51);
+        addAbweichendeSatznummer(SatzTyp.of("0250.190"), 51, 51);
         addAbweichendeSatznummer(SatzTyp.of("0251.190"), 51);
-        addAbweichendeSatznummer(SatzTyp.of("0220.030"), 49);
-        addAbweichendeSatznummer(SatzTyp.of("0221.030"), 49);
-        addAbweichendeSatznummer(SatzTyp.of("0220.140"), 51);
-        addAbweichendeSatznummer(SatzTyp.of("0210.130"), 251);
+        addAbweichendeSatznummer(SatzTyp.of("0220.030"), 49, 49);
+        addAbweichendeSatznummer(SatzTyp.of("0221.030"), 49, 43);
+        addAbweichendeSatznummer(SatzTyp.of("0220.140"), 51, 51);
+        addAbweichendeSatznummer(SatzTyp.of("0210.130"), 251, 251);
         addAbweichendeSatznummer(SatzTyp.of("0450"), 51);
         addAbweichendeSatznummer(SatzTyp.of("0500"), 66, 256);
         addAbweichendeSatznummer(SatzTyp.of("0550"), 66);
