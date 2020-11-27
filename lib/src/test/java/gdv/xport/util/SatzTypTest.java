@@ -262,4 +262,18 @@ public class SatzTypTest {
         assertEquals("0220.010.0", SatzTyp.of("0220.010.0").toString());
     }
 
+    @Test
+    public void testGetParent() {
+        assertEquals(SatzTyp.of("0220.020"), SatzTyp.of("0220.020.1").getParent());
+        assertEquals(SatzTyp.of("0220"), SatzTyp.of("0220.020").getParent());
+
+    }
+
+    @Test
+    public void testHasParent() {
+        assertFalse(SatzTyp.of("0100").hasParent());
+        assertTrue(SatzTyp.of("0220.020").hasParent());
+        assertFalse(SatzTyp.of("0220").hasParent());
+    }
+
 }

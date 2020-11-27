@@ -162,7 +162,7 @@ public class SatzTyp {
 	 * @since 4.X
 	 */
 	private SatzTyp(final int satzart, final int sparte, final int wagnisart, final int krankenFolgeNr, final int lfdNummer, final int bausparenArt) {
-		assert (satzart <= 9999) : "Satzart " + satzart
+		assert (satzart >= 0) && (satzart <= 9999) : "Satzart " + satzart
 		        + " muss zwischen 0 und 9999 liegen";
 		assert (sparte == -1) || ((0 <= sparte) && (sparte <= 999)) : "Sparte " + sparte
 		        + " muss zwischen 0 und 999 liegen";
@@ -341,7 +341,16 @@ public class SatzTyp {
 	 * @return true, if successful
 	 */
 	public boolean hasSparte() {
-		return this.getSparte() >= 0;
+		return this.getSparte() > 0;
+	}
+
+	public boolean hasParent() {
+		return StringUtils.countMatches(this.toString(), '.') > 0;
+	}
+
+	public SatzTyp getParent() {
+		String parent = StringUtils.substringBeforeLast(this.toString(), ".");
+		return SatzTyp.of(parent);
 	}
 
 	/**

@@ -625,7 +625,7 @@ public abstract class Satz implements Cloneable {
 		} catch (NumberFormatException ex) {
 			LOG.warn("{} is not a valid Satzart.", this.satzart);
 			LOG.debug("Details:", ex);
-			return -1;
+			return 0;
 		}
 	}
 
