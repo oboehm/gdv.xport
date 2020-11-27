@@ -266,7 +266,7 @@ public final class SatzFactory {
     public static Satz getSatz(final SatzTyp satztyp) {
         Class<? extends Satz> clazz = REGISTERED_SATZ_CLASSES.get(new SatzTyp(satztyp.getSatzart()));
         if (clazz == null) {
-            return generateSatz(satztyp);
+            return getSatzFromXmlService(satztyp);
         }
         try {
             Satz satz = clazz.newInstance();
@@ -292,7 +292,23 @@ public final class SatzFactory {
             }
         }
     }
-    
+
+    private static Satz getSatzFromXmlService(SatzTyp satztyp) {
+        try {
+            return XML_SERVICE.getSatzart(satztyp);
+        } catch (NotRegisteredException ex) {
+            LOG.info("{} is not avalaible via XmlService.", satztyp);
+            LOG.debug("Details:", ex);
+            if (satztyp.hasParent()) {
+                SatzXml satz = XML_SERVICE.getSatzart(satztyp.getParent());
+                satz.setSparte(satztyp.getSparte());
+                return satz;
+            } else {
+                return generateSatz(satztyp);
+            }
+        }
+    }
+
     private static Satz generateSatz(final SatzTyp satztyp) {
         Class<? extends Enum> enumClass = REGISTERED_ENUM_CLASSES.get(satztyp);
         if (enumClass == null) {

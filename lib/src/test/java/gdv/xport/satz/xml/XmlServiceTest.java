@@ -30,6 +30,7 @@ import gdv.xport.util.NotUniqueException;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -209,12 +210,14 @@ public class XmlServiceTest extends AbstractXmlTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
+    @Test
+    @Ignore // TODO: nach SatzFactory verschieben
     public void testSatzart230() throws IOException {
         checkSatzart(230, new Satz230());
     }
 
     private static void checkSatzart(final int nr, final Satz reference) throws IOException {
-        SatzXml satzXml = xmlService.getSatzart(nr);
+        SatzXml satzXml = xmlService.getSatzart(SatzTyp.of(String.format("%04d", nr)));
         assertEquals(nr, satzXml.getSatzart());
         checkSatz(satzXml, reference);
     }

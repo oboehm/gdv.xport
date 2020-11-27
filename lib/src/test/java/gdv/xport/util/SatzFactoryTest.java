@@ -417,4 +417,15 @@ public final class SatzFactoryTest extends AbstractTest {
         assertEquals(a, b);
     }
 
+    /**
+     * Fuer den Import muss es moeglich sein, den Satz zu bekommen, der
+     * am besten passt.
+     */
+    @Test
+    public void testGetSatz100Sparte30() {
+        Satz satz = SatzFactory.getSatz(SatzTyp.of("0100.030"));
+        assertEquals(100, satz.getSatzart());
+        assertEquals(30, satz.getSparte());
+    }
+
 }
