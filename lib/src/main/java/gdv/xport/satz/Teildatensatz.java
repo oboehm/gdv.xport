@@ -24,7 +24,6 @@ import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.io.ImportException;
-import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import org.apache.logging.log4j.LogManager;
@@ -148,6 +147,7 @@ public class Teildatensatz extends Satz {
      * @since 0.2
      * @deprecated durch {@link #getSatznummer()} abgeloest
      */
+    @Deprecated
     public Zeichen getNummer() {
         return this.getSatznummer();
     }
@@ -448,6 +448,11 @@ public class Teildatensatz extends Satz {
             violations.addAll(feld.validate());
         }
         return violations;
+    }
+
+    @Override
+    public String toShortString() {
+        return "Teildatensatz " + this.getSatznummer().toInt();
     }
 
     /**

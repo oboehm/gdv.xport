@@ -287,8 +287,23 @@ public class XmlServiceTest extends AbstractXmlTest {
      * {@link NotRegisteredException} auftauchen.
      */
     @Test
+    @Ignore // TODO: nach SatzFactoryTest verschieben
     public void testSatzart350() {
         xmlService.getSatzart(350);
+    }
+
+    /**
+     * Satzart 0220.010.9.9 macht noch Probleme. Feld Nr. 21 - 28 scheinen
+     * im Teildatensatz 9 zu fehlen.
+     */
+    @Test
+    public void testLebenTeildatensatz9() {
+        SatzXml wertungssummen = xmlService.getSatzart(SatzTyp.of("0220.010.9.9"));
+        Teildatensatz teildatensatz9 = wertungssummen.getTeildatensatz(1);
+        Feld haftungsbeginn = teildatensatz9.getFeld(20);
+        assertEquals(128, haftungsbeginn.getEndAdresse());
+        Feld beitragssumme = teildatensatz9.getFeld(21);
+        assertEquals("Feld 21 ist nicht Beitragssumme, sondern " + beitragssumme, 129, beitragssumme.getByteAdresse());
     }
 
 }

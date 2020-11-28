@@ -1050,7 +1050,7 @@ public abstract class Satz implements Cloneable {
 	 * @return the string
 	 */
 	public String toShortString() {
-		return "Satzart " + this.satzart.getInhalt();
+		return this.getClass().getSimpleName() + " " + this.satzart.getInhalt();
 	}
 
 	/**
