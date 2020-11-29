@@ -62,12 +62,9 @@ public final class SatzFactory {
     private static void registerDefault() {
         register(Vorsatz.class, 1);
         // Mit Ausnahme von Vorsatz und Nachsatz werden alle Saetze jetzt vom XmlService behandelt
-
         register(Nachsatz.class, 9999);
     }
-    /**
-     * Instantiates a new satz factory.
-     */
+
     private SatzFactory() {
     }
 
@@ -238,21 +235,21 @@ public final class SatzFactory {
     }
 
     /**
-     * Gets the satz.
+     * Liefert einen Satz mit der angegebenen Satzart.
+     * <p>
+     * Das klappt nur, wenn satzart= 0001, 0052, 0100, 0102, 0200, 0202, 0300,
+     * 0342, 0350, 0352, 0372, 0382, 0390, 0392, 0400, 0410, 0420, 0430, 0450,
+     * 0500, 0550, 0600, 9950, 9951, 9952, 9999 !!
+     * Deswegen wurde diese Methode durch {@link #getSatz(SatzTyp)} ersetzt
+     * </p>
      *
-     * @param satzart the satzart
+     * @param satzart Satzart
      * @return angeforderte Satz
      * @since 0.2
      * @deprecated durch {@link #getSatz(SatzTyp)} abgeloest
      */
     @Deprecated
     public static Satz getSatz(final int satzart) {
-    /*
-     * Das klappt nur, wenn satzart= 0001, 0052, 0100, 0102, 0200, 0202, 0300,
-     * 0342, 0350, 0352, 0372, 0382, 0390, 0392, 0400, 0410, 0420, 0430, 0450,
-     * 0500, 0550, 0600, 9950, 9951, 9952, 9999 !!
-     */
-
         return getSatz(new SatzTyp(satzart));
     }
     
@@ -339,12 +336,6 @@ public final class SatzFactory {
      * Versucht anhand des uebergebenen Strings herauszufinden, um was fuer eine
      * Satzart es sich handelt und liefert dann einen entsprechende (gefuellten)
      * Satz zurueck.
-     * </p>
-     * <b>Prinzipieller Fehler!!</b> Um den korrekten Satzaufbau zu liefern, muss
-     * die Version der Satzatz bekannt sein! Diese Info steht immer im Vorsatz des
-     * zugehörigen Datenpaketes. Lt. Auskunft vom GDV werden z.T. noch Saetze aus
-     * Release 01.11.2009 verarbeitet.
-     * </p>
      *
      * @param content the content
      * @return einen gefuellten Satz
@@ -370,11 +361,12 @@ public final class SatzFactory {
        * Alle anderen Satzarten benoetigen weitere Angaben (Sparte, Wagnisart,
        * Satznummer (Sparte 010, 040, 190), BausparetArt)
        */
-          satz = getSatz(SatzTyp.of(satzartBuf.toString()));
+            // TODO: Umstellung auf Satzart-spezifische Implementierung (29-Nov-2020)
+            satz = getSatz(SatzTyp.of(satzartBuf.toString()));
         } catch (RuntimeException e) {
             LOG.debug("can't get Satz " + satzart + " (" + e + "), parsing Sparte...");
             int sparte = Integer.parseInt(content.substring(10, 13));
-            satzartBuf.append(String.format("%03d", sparte));
+            satzartBuf.append(String.format(".%03d", sparte));
 
       /*
        * Das klappt nicht, wenn satzart= 0220.580.01, 0220.580.2, 0220.020.1,
@@ -529,7 +521,7 @@ public final class SatzFactory {
 
     /**
      * Als Fallback wird nur der Datensatz fuer die entsprechende Satzart
-     * zurueckgeben. Falls dieser nicht exisitert, wird ein (allgemeiner)
+     * zurueckgeben. Falls dieser nicht existiert, wird ein (allgemeiner)
      * Datensatz mit Satzart und Sparte als Parameter erzeugt.
      * <p>
      * TODO: Besser waere es, zuerst den Datensatz zu suchen, der am besten
@@ -555,12 +547,11 @@ public final class SatzFactory {
             }
             return fallback;
         } catch (NotRegisteredException re) {
-            LOG.warn("Reduced functionality for (unknown or unsupported) Satzart " + satzNr + ":", re);
-            throw re;
-      // Datensatz satz = new Datensatz(satzNr.getSatzart(),
-      // satzNr.getSparte());
-      // satz.addFiller();
-      // return satz;
+            // Dieser Teil wird fuer den Import benoetigt, um auch unsupported Datensaetze zu unterstuetzen
+            LOG.warn("Reduced functionality for (unknown or unsupported) Satzart {}:",  satzNr, re);
+            Datensatz satz = new Datensatz(satzNr.getSatzart(), satzNr.getSparte());
+            satz.addFiller();
+            return satz;
         }
     }
 
