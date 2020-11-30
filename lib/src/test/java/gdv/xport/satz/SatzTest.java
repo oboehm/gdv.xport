@@ -119,7 +119,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testSetEnum() {
-        Satz satz100 = SatzFactory.getSatz(new SatzTyp(100));
+        Satz satz100 = SatzFactory.getSatz(SatzTyp.of("0100"));
         satz100.set(Feld1bis7.FOLGENUMMER, "13");
         assertEquals("13", satz100.get(Feld1bis7.FOLGENUMMER));
     }
@@ -146,7 +146,7 @@ public final class SatzTest extends AbstractSatzTest {
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
             assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("Hemmernet"), containsString("Satzart 0123")));
+                    allOf(containsString("Hemmernet"), containsString(" 0123")));
             throw ex;
         }
     }
@@ -173,7 +173,7 @@ public final class SatzTest extends AbstractSatzTest {
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
             assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("Hemmernet"), containsString("Satzart 0123")));
+                    allOf(containsString("Hemmernet"), containsString(" 0123")));
             throw ex;
         }
     }
@@ -200,7 +200,7 @@ public final class SatzTest extends AbstractSatzTest {
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
             assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN"), containsString("Satzart 0123")));
+                    allOf(containsString("ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN"), containsString(" 0123")));
             throw ex;
         }
     }
@@ -254,8 +254,7 @@ public final class SatzTest extends AbstractSatzTest {
             String exported = FileUtils.readFileToString(tmpFile, Config.DEFAULT_ENCODING);
             assertEquals(satz.toLongString(), exported);
         } finally {
-            tmpFile.delete();
-            LOG.info("File \"{}\" deleted.", tmpFile);
+            delete(tmpFile);
         }
     }
 
@@ -324,9 +323,13 @@ public final class SatzTest extends AbstractSatzTest {
             satz.importFrom(tmpFile);
             assertEquals(fileContent, satz.toLongString());
         } finally {
-            tmpFile.delete();
-            LOG.info("File \"" + tmpFile + "\" deleted.");
+            delete(tmpFile);
         }
+    }
+
+    private static void delete(File tmpFile) {
+        boolean ok = tmpFile.delete();
+        LOG.info("File \"{}\" {} deleted.", tmpFile, ok ? "successful" : "not");
     }
 
     /**
@@ -447,7 +450,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testGetSatzTyp() {
         Satz satz220 = new SatzX(220, Feld220Wagnis0.class);
-        assertEquals(new SatzTyp(220, 10, 0), satz220.getSatzTyp());
+        assertEquals(SatzTyp.of("0220.010.0"), satz220.getSatzTyp());
     }
 
     /**
@@ -483,7 +486,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testWagnisartSparte40() {
-        SatzTyp expectedSatzTyp = new SatzTyp(220, 40);
+        SatzTyp expectedSatzTyp = SatzTyp.of("0220.040");
         Satz satz = SatzFactory.getDatensatz(expectedSatzTyp);
         satz.set(Bezeichner.WAGNISART, "123456");
         SatzTyp satzTyp = satz.getSatzTyp();
