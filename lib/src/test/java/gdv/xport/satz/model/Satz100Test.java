@@ -119,14 +119,11 @@ public class Satz100Test extends AbstractDatensatzTest {
      */
     @Test
     public void testImportReader() throws IOException {
-        Reader reader = new StringReader(INPUT_050);
-        try {
+        try (Reader reader = new StringReader(INPUT_050)) {
             satz.importFrom(reader);
             assertEquals(50, satz.getSparte());
             int ch = reader.read();
             assertEquals(-1, ch);
-        } finally {
-            reader.close();
         }
     }
 
@@ -138,14 +135,11 @@ public class Satz100Test extends AbstractDatensatzTest {
      */
     @Test
     public void testImportStream() throws IOException {
-        Reader reader = new StringReader(INPUT_050);
-        try {
+        try (Reader reader = new StringReader(INPUT_050)) {
             satz.importFrom(reader);
             assertEquals(50, satz.getSparte());
             int ch = reader.read();
             assertEquals(-1, ch);
-        } finally {
-            reader.close();
         }
     }
 
@@ -191,9 +185,9 @@ public class Satz100Test extends AbstractDatensatzTest {
         Datenpaket datenpaket = importDatenpaket("/gdv/xport/satz/Satz0100030.txt");
         Datensatz satz100 = datenpaket.getDatensaetze().get(0);
         List<Teildatensatz> teildatensaetze = satz100.getTeildatensaetze();
-        assertEquals(1, teildatensaetze.get(0).getNummer().toInt());
-        assertEquals(2, teildatensaetze.get(1).getNummer().toInt());
-        assertEquals(4, teildatensaetze.get(2).getNummer().toInt());
+        assertEquals(1, teildatensaetze.get(0).getSatznummer().toInt());
+        assertEquals(2, teildatensaetze.get(1).getSatznummer().toInt());
+        assertEquals(4, teildatensaetze.get(2).getSatznummer().toInt());
         Teildatensatz tds4 = teildatensaetze.get(2);
         assertEquals("GENODEF1JEV", tds4.getFeld(Bezeichner.BIC1).getInhalt().trim());
         assertEquals("DE41300606010006605605", tds4.getFeld(Bezeichner.IBAN1).getInhalt().trim());

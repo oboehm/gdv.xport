@@ -398,7 +398,7 @@ public class SatzTyp {
 	 */
 	@Override
 	public int hashCode() {
-		return getSatzart() * 10000000 + getSparte() * 10000 + getArt() * 100 + getTeildatensatzNummer();
+		return toString().hashCode();
 	}
 
 	/*
@@ -413,11 +413,7 @@ public class SatzTyp {
 		if (!(obj instanceof SatzTyp)) {
 			return false;
 		}
-		SatzTyp other = (SatzTyp) obj;
-		return (this.satzart == other.satzart) && (this.getSparte() == other.getSparte())
-		        && (this.getArt() == other.getArt())
-		        && (this.getKrankenFolgeNr() == other.getKrankenFolgeNr())
-		        && (this.getTeildatensatzNummer() == other.getTeildatensatzNummer());
+		return this.toString().equals(obj.toString());
 	}
 
   /*

@@ -276,4 +276,12 @@ public class SatzTypTest {
         assertFalse(SatzTyp.of("0220").hasParent());
     }
 
+    @Test
+    public void testSatzTyp100() {
+        SatzTyp a = SatzTyp.of("0100");
+        SatzTyp b = SatzTyp.of("0100.000");
+        assertEquals(a.toString(), b.toString());
+        ObjectTester.assertEquals(a, b);
+    }
+
 }
