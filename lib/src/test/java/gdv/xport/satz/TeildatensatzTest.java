@@ -26,6 +26,7 @@ import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -114,7 +115,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
             tds.getFeld(satznummer.getBezeichnung());
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
-            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(), 
+            MatcherAssert.assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
                     allOf(containsString("Satznummer"), containsString("Satzart 0100")));
             throw ex;
         }
