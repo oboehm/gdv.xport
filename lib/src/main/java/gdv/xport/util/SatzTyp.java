@@ -86,9 +86,7 @@ public class SatzTyp {
      * Instantiates a new satz nummer.
      *
      * @param satzart the satzart
-     * @deprecated wurde ersetzt durch {@link #of(String)}
      */
-    @Deprecated
     public SatzTyp(final int satzart) {
       this(satzart, -1);
     }
@@ -98,9 +96,7 @@ public class SatzTyp {
      *
      * @param satzart Satzart
      * @param sparte Sparte
-     * @deprecated wurde ersetzt durch {@link #of(String)}
      */
-    @Deprecated
     public SatzTyp(final int satzart, final int sparte) {
       this(satzart, sparte, -1);
     }

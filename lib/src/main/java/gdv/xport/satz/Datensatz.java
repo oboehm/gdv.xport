@@ -624,6 +624,28 @@ public class Datensatz extends Satz {
         }
     }
 
+    public static int readBausparenArt(final PushbackLineNumberReader reader) throws IOException {
+		int satzart = readSatzart(reader);
+		if (satzart != 220) {
+			throw new IllegalArgumentException("can't read BausparenArt, wrong satzart " + satzart +", must be 220");
+		}
+		int sparte = readSparte(reader);
+		if (sparte != 580) {
+			throw new IllegalArgumentException("can't read BausparenArt, wrong sparte " + sparte + ", must be 580");
+		}
+		char[] cbuf = new char[45];
+		if (reader.read(cbuf) == -1) {
+			throw new IOException("can't read 45 bytes (" + new String(cbuf) + ") from " + reader);
+		}
+		reader.unread(cbuf);
+		String first10Fields = new String(cbuf);
+		try {
+			return Integer.parseInt(first10Fields.substring(43, 44));
+		} catch (NumberFormatException ex) {
+			return -1;
+		}
+	}
+
 	/**
 	 * Liest 1 Byte, um die Wagnisart zu bestimmen und stellt das Byte
 	 * anschliessend wieder zurueck in den Reader.
