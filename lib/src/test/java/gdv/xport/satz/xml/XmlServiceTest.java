@@ -306,4 +306,17 @@ public class XmlServiceTest extends AbstractXmlTest {
         assertEquals("Feld 21 ist nicht Beitragssumme, sondern " + beitragssumme, 129, beitragssumme.getByteAdresse());
     }
 
+    @Test
+    //@Ignore // noch wird Bausparen-Art nicht vorbelegt
+    public void testBausparenArt() {
+        SatzTyp bausparen = SatzTyp.of("0220.580.2");
+        Satz darlehen = xmlService.getSatzart(bausparen);
+        assertEquals(bausparen.getSatzart(), darlehen.getSatzart());
+        assertEquals(bausparen.getSparte(), darlehen.getSparte());
+        Feld produkt = darlehen.getFeld(Bezeichner.of("Produkt"));
+        assertEquals("580", produkt.getInhalt());
+        Feld art = darlehen.getFeld(Bezeichner.of("Art1"));
+        assertEquals("2", art.getInhalt());
+    }
+
 }

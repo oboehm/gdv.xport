@@ -342,7 +342,7 @@ public final class Datenpaket {
     private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
             throws IOException {
         int sparte = Datensatz.readSparte(reader);
-        SatzTyp satzTyp = new SatzTyp(satzart, sparte);
+        SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
         if (sparte == 10 && satzart > 210) {
             WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
             if (wagnisart != WagnisartLeben.NULL) {
@@ -350,9 +350,9 @@ public final class Datenpaket {
                 // teildatenSatzmummer. Nur groesser 0
                 // besitzt per Definition Werte.
                 TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
-                satzTyp = new SatzTyp(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
+                satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
             } else {
-                satzTyp = new SatzTyp(satzart, sparte, wagnisart.getCode());
+                satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode());
             }
         } else if (sparte == 20 && satzart == 220) {
             // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
@@ -363,8 +363,22 @@ public final class Datenpaket {
                 satz.importFrom(reader);
                 return satz;
             }
-            satzTyp = new SatzTyp(satzart, sparte, krankenFolgeNr);
+            satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
+        }  else if (sparte == 580 && satzart == 220) {
+            // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
+            // noetig
+            int bausparArt = Datensatz.readBausparenArt(reader);
+            // BausparenArt nicht auslesbar -> Unbekannter Datensatz
+            if (bausparArt == -1) {
+                Datensatz satz = new SatzX(220, 20, FeldX.class);
+                satz.importFrom(reader);
+                return satz;
+            } else if (bausparArt == 0) {
+                bausparArt = 1;
+            }
+            satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
         }
+
         Datensatz satz = SatzFactory.getDatensatz(satzTyp);
         satz.importFrom(reader);
         return satz;

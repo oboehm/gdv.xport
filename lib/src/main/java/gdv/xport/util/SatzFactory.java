@@ -61,7 +61,10 @@ public final class SatzFactory {
 
     private static void registerDefault() {
         register(Vorsatz.class, 1);
-        // Mit Ausnahme von Vorsatz und Nachsatz werden alle Saetze jetzt vom XmlService behandelt
+
+        // hier enthaelt die XML-Beschreibung f. KH-Deckungssumme weniger Infos
+        registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, SatzTyp.of("0221.051"));
+
         register(Nachsatz.class, 9999);
     }
 
@@ -100,9 +103,7 @@ public final class SatzFactory {
       } catch (NoSuchMethodException ex) {
           throw new IllegalArgumentException("no default constructor found in "   + clazz, ex);
       }
-      StringBuilder satzartBuf = new StringBuilder();
-      satzartBuf.append(String.format("%04d", satzart));
-      REGISTERED_SATZ_CLASSES.put(SatzTyp.of(satzartBuf.toString()), clazz);
+      REGISTERED_SATZ_CLASSES.put(SatzTyp.of(satzart), clazz);
   }
 
     /**
@@ -306,15 +307,15 @@ public final class SatzFactory {
         }
     }
 
-    private static Satz generateSatz(final SatzTyp satztyp) {
+    private static Datensatz generateSatz(final SatzTyp satztyp) {
         Class<? extends Enum> enumClass = REGISTERED_ENUM_CLASSES.get(satztyp);
         if (enumClass == null) {
-            Satz satz = XML_SERVICE.getSatzart(satztyp);
+            Datensatz satz = XML_SERVICE.getSatzart(satztyp);
             if (satz == null) {
                 throw new NotRegisteredException(satztyp);
             }
             try {
-                return (Satz) satz.clone();
+                return (Datensatz) satz.clone();
             } catch (CloneNotSupportedException e) {
                 LOG.warn("Cannot clone {} - will return object itself.", satz);
                 return satz;
@@ -458,7 +459,7 @@ public final class SatzFactory {
         if (clazz == null) {
             // wird u.a. fuer den Import von Datensaetzen benoetigt
             try {
-                return XML_SERVICE.getSatzart(satzNr);
+                return generateSatz(satzNr);
             } catch (NotRegisteredException ex) {
                 LOG.info("SatzTyp {} is not part of the XML description.", satzNr);
                 LOG.debug("Details:", ex);
@@ -540,7 +541,7 @@ public final class SatzFactory {
             }
             if (fallback.hasFeld(Bezeichner.UNBEKANNT)) {
                 try {
-                    return (Datensatz) generateSatz(satzNr);
+                    return generateSatz(satzNr);
                 } catch (NotRegisteredException ex) {
                     LOG.warn("XML-Fallback has " + satzNr + " not registered: " + ex);
                 }

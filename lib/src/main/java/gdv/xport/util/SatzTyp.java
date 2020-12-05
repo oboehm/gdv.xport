@@ -82,6 +82,28 @@ public class SatzTyp {
     }
   }
 
+	/**
+	 * Anhand der übergebenen Zahlen wird der entsprechende SatzTyp aufgebaut.
+	 *
+	 * @param args the args
+	 * @return the satz typ
+	 * @since 4.3
+	 */
+	public static SatzTyp of(int... args) {
+    	switch(args.length) {
+			case 1:
+				return of(String.format("%04d", args[0]));
+			case 2:
+				return of(String.format("%04d.%03d", args[0], args[1]));
+			case 3:
+				return of(String.format("%04d.%03d.%d", args[0], args[1], args[2]));
+			case 4:
+				return of(String.format("%04d.%03d.%d.%d", args[0], args[1], args[2], args[3]));
+			default:
+				throw new IllegalArgumentException("1 - 4 arguments expected, not " + args.length);
+		}
+	}
+
     /**
      * Instantiates a new satz nummer.
      *
