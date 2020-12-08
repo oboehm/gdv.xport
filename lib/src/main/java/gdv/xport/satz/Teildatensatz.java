@@ -452,7 +452,11 @@ public class Teildatensatz extends Satz {
 
     @Override
     public String toShortString() {
-        return String.format("Teildatensatz %d Satzart %04d", this.getSatznummer().toInt(), this.getSatzart());
+        String s = String.format("Teildatensatz %d Satzart %04d", this.getSatznummer().toInt(), this.getSatzart());
+        if (sortedFelder.size() < 4) {
+            return s;
+        }
+        return s + "." + getFeld(4).getInhalt();
     }
 
     /**

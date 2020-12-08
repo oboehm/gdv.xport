@@ -33,7 +33,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -570,26 +570,21 @@ public final class SatzFactory {
      * @since 0.6
      */
     public static Datenpaket getAllSupportedSaetze() {
-        Datenpaket all = new Datenpaket();
-
-        Iterator<Map.Entry<SatzTyp, SatzXml>> itXml = XML_SERVICE.getSatzarten()
-                                                                 .entrySet()
-                                                                 .iterator();
-
-        Iterator<Map.Entry<SatzTyp, Class<? extends Enum>>> itEnum =
-            REGISTERED_ENUM_CLASSES.entrySet()
-              .iterator();
-
-        while (itXml.hasNext())
-        {
-          Map.Entry<SatzTyp, SatzXml> entry = itXml.next();
-          all.add(entry.getValue());
+        Map<SatzTyp, Datensatz> supportedSaetze = new HashMap<>();
+        for (Map.Entry<SatzTyp, SatzXml> entry : XML_SERVICE.getSatzarten().entrySet()) {
+            supportedSaetze.put(entry.getKey(), entry.getValue());
         }
-
-        while (itEnum.hasNext())
-        {
-          Map.Entry<SatzTyp, Class<? extends Enum>> entry = itEnum.next();
-          all.add(new SatzX(entry.getKey(), entry.getValue()));
+        for (Map.Entry<SatzTyp, Class<? extends Enum>> entry : REGISTERED_ENUM_CLASSES.entrySet()) {
+            supportedSaetze.put(entry.getKey(), new SatzX(entry.getKey(), entry.getValue()));
+        }
+        for (Map.Entry<SatzTyp, Class<? extends Datensatz>> entry : REGISTERED_DATENSATZ_CLASSES.entrySet()) {
+            supportedSaetze.put(entry.getKey(), generateDatensatz(entry.getKey(), entry.getValue()));
+        }
+        supportedSaetze.remove(SatzTyp.of("0001"));
+        supportedSaetze.remove(SatzTyp.of("9999"));
+        Datenpaket all = new Datenpaket();
+        for (Datensatz satz : supportedSaetze.values()) {
+            all.add(satz);
         }
         return all;
     }
