@@ -222,16 +222,26 @@ public class XmlService {
   private void registerSatzart(SatzXml satz)  {
     List<SatzTyp> supportedSatzTypen = satz.getSupportedSatzTypen();
     if (supportedSatzTypen.isEmpty())    {
-      this.satzarten.put(SatzTyp.of(satz.getGdvSatzartName()), satz);
+      registerSatzart(SatzTyp.of(satz.getGdvSatzartName()), satz);
     } else {
       for (SatzTyp type : supportedSatzTypen)      {
-        this.satzarten.put(type, satz);
+        registerSatzart(type, satz);
         LOG.trace("Satz {} registered as {}.", satz, type);
       }
     }
   }
 
-  /**
+    private SatzXml registerSatzart(SatzTyp type, SatzXml satz) {
+        if (type.hasSparte()) {
+            satz.setSparte(type.getSparte());
+            if (type.hasBausparenArt()) {
+                satz.getFeld("Art1").setInhalt(type.getBausparenArt());
+            }
+        }
+        return this.satzarten.put(type, satz);
+    }
+
+    /**
    * </p>
    * Liefert den Satz zur gewuenschten Satzart. Falls es mehr wie einen Satz zur
    * gesuchten Satzart gibt (d.h. wenn es mehrere Sparten gibt), wird eine

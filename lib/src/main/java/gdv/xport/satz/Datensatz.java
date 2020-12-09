@@ -329,6 +329,11 @@ public class Datensatz extends Satz {
 	 */
 	public void setSparte(final int x) {
 		this.sparte.setInhalt(x);
+		for (Teildatensatz tds : getTeildatensaetze()) {
+			if (tds.getFelder().size() > 3) {
+				tds.getFeld(4).setInhalt(x);
+			}
+		}
 	}
 
 	/**

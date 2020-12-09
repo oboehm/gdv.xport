@@ -307,7 +307,6 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     @Test
-    //@Ignore // noch wird Bausparen-Art nicht vorbelegt
     public void testBausparenArt() {
         SatzTyp bausparen = SatzTyp.of("0220.580.2");
         Satz darlehen = xmlService.getSatzart(bausparen);
