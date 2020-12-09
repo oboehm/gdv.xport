@@ -17,20 +17,21 @@
  */
 package gdv.xport.feld;
 
-import gdv.xport.satz.xml.SatzXml;
-import gdv.xport.satz.xml.XmlService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 import static org.junit.Assert.fail;
 
@@ -106,26 +107,13 @@ public class BezeichnerIT {
      * aber nicht ueber die Satzarten eingelesen wurden.
      */
     @BeforeClass
-    public static void readTechnischeNamen() {
-        Collection<SatzXml> satzarten = XmlService.getInstance().getSatzarten().values();
-        for (SatzXml satz : satzarten) {
-            for (Feld feld : satz.getFelder()) {
-                TECHNISCHE_NAMEN.add(feld.getBezeichner().getTechnischerName());
-            }
-        }
-        TECHNISCHE_NAMEN.add("AbsoluteJahresrentenaenderungssummeInWE");
-        TECHNISCHE_NAMEN.add("GarantierterSteigerungssatzBeiBU");
-        TECHNISCHE_NAMEN.add("GuthabenDividAnsammlungenInWE");
-        TECHNISCHE_NAMEN.add("JahresrentenaenderungsProzentsatz");
+    public static void readTechnischeNamen() throws ParserConfigurationException, SAXException, IOException {
+        VuvmHandler handler = new VuvmHandler();
+        handler.scan("src/main/resources/gdv/xport/satz/xml/VUVM2018.xml");
+        TECHNISCHE_NAMEN.addAll(handler.getTechnischeNamen());
         TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil1");
         TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil2");
         TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil3");
-        TECHNISCHE_NAMEN.add("Risikozuschlag");
-        TECHNISCHE_NAMEN.add("SatzNrnwiederholung4");
-        TECHNISCHE_NAMEN.add("SatzNrnwiederholung9");
-        TECHNISCHE_NAMEN.add("SteigerungssatzFuerBURente");
-        TECHNISCHE_NAMEN.add("ZukuenftigerBeitrag");
-        TECHNISCHE_NAMEN.add("ZwangZurBuz");
     }
 
     /**
@@ -135,9 +123,51 @@ public class BezeichnerIT {
      */
     @Test
     public void testTechnischerName() {
-        if (!TECHNISCHE_NAMEN.contains(bezeichner.getTechnischerName())) {
+        if (!mapsTechnischerName(bezeichner.getTechnischerName())) {
             fail("wrong technischer Name: " + bezeichner);
         }
+    }
+
+    private boolean mapsTechnischerName(String name) {
+        if (TECHNISCHE_NAMEN.contains(name)) {
+            return true;
+        }
+        char lastchar = name.charAt(name.length()-1);
+        if (Character.isDigit(lastchar)) {
+            return mapsTechnischerName(name.substring(0, name.length()-1));
+        }
+        return false;
+    }
+
+
+
+    static class VuvmHandler extends DefaultHandler {
+
+        private final Set<String> technischeNamen = new HashSet<>();
+        private String elementValue;
+
+        public void scan(String resource) throws ParserConfigurationException, SAXException, IOException {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            SAXParser saxParser = factory.newSAXParser();
+            saxParser.parse(resource, this);
+        }
+
+        public Set<String> getTechnischeNamen() {
+            return technischeNamen;
+        }
+
+        @Override
+        public void characters(char[] ch, int start, int length) throws SAXException {
+            elementValue = new String(ch, start, length);
+        }
+
+        @Override
+        public void endElement(String uri, String localName, String qName) throws SAXException {
+            if ("technischerName".equals(qName)) {
+                technischeNamen.add(elementValue);
+            }
+        }
+
     }
 
 }

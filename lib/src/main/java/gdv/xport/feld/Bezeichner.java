@@ -113,6 +113,8 @@ public final class Bezeichner {
     public static final Bezeichner ANZAHL_DER_VERSICHERTEN_TIERE_OHNE_NAMENSANGABE_TIERGRUPPE = new Bezeichner("Anzahl der versicherten Tiere ohne Namensangabe (Tiergruppe)", "AnzahlDerVersichertenTiereOhneNamensangabeTiergruppe");
     public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO1 = new Bezeichner("Anzahl der Plaetze (Risiko 1)", "AnzPlaetzeRisiko1");
     public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO2 = new Bezeichner("Anzahl der Plaetze (Risiko 2)", "AnzPlaetzeRisiko2");
+    /** Fuer 0220.580 */
+    public static final Bezeichner ART_580 = new Bezeichner("Art");
     public static final Bezeichner ART_DER_HALTUNG = new Bezeichner("Art der Haltung", "ArtDerHaltung");
     public static final Bezeichner ART_DER_TIERKENNZEICHNUNG = new Bezeichner("Art der Tierkennzeichnung", "ArtDerTierkennzeichnung");
     public static final Bezeichner ART_DER_SCHAETZUNG = new Bezeichner("Art der Schaetzung", "ArtSchaetzung");
@@ -926,6 +928,7 @@ public final class Bezeichner {
     public static final Bezeichner SOZIALVERSICHERUNG_NUMMER = new Bezeichner("Sozialversicherung Nummer", "Sozialversicherung");
     public static final Bezeichner SPARTE = new Bezeichner("Sparte");
     public static final Bezeichner SPARTE2 = new Bezeichner("Sparte2", "Sparte2");
+    public static final Bezeichner SPARTE_SA0100_TD5_FELD15 = new Bezeichner("Sparte", "Sparte2");
     public static final Bezeichner SPARVORGANG = new Bezeichner("Sparvorgang");
     public static final Bezeichner SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Spezifikation der Referenz-Versicherungsscheinnummer", "SpezifikationReferenzVsNr");
     public static final Bezeichner STAATSANGEHOERIGKEIT = new Bezeichner("Staatsangehoerigkeit");
@@ -1210,11 +1213,12 @@ public final class Bezeichner {
     @Deprecated
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_4 = WAEHRUNGSSCHLUESSEL4;
     public static final Bezeichner WAGNIS = new Bezeichner("Wagnis");
-    public static final Bezeichner WAGNIS2 = WAGNIS;
+  // public static final Bezeichner WAGNIS2 = WAGNIS;
     public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart");
-    public static final Bezeichner WAGNISART2 = WAGNISART;
-    public static final Bezeichner WAGNISART3 = WAGNISART;
-    public static final Bezeichner WAGNISART4 = WAGNISART;
+    public static final Bezeichner WAGNISART_HAFTPFLICHT = new Bezeichner("WagnisartHaftpflicht");
+  // public static final Bezeichner WAGNISART2 = WAGNISART;
+  // public static final Bezeichner WAGNISART3 = WAGNISART;
+  // public static final Bezeichner WAGNISART4 = WAGNISART;
     public static final Bezeichner WAGNISBESCHREIBUNG = new Bezeichner("Wagnisbeschreibung");
     public static final Bezeichner WAGNISKENNZIFFER = new Bezeichner("Wagniskennziffer", "WKZ");
     public static final Bezeichner WAGNISMENGE = new Bezeichner("Wagnismenge");
