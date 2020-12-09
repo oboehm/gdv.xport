@@ -299,7 +299,7 @@ public final class Bezeichner {
     public static final Bezeichner BRE_STAFFEL = new Bezeichner("BRE-Staffel", "BreStaffel");
     public static final Bezeichner BUENDELUNGSKENNZEICHEN = new Bezeichner("Buendelungskennzeichen");
     public static final Bezeichner BUCHUNGSKENNZEICHEN = new Bezeichner("Buchungskennzeichen");
-    public static final Bezeichner BUCHUNGSKENNZEICHEN2 = BUCHUNGSKENNZEICHEN;
+    public static final Bezeichner BUCHUNGSKENNZEICHEN2 = new Bezeichner("Buchungskennzeichen2");
     public static final Bezeichner BUZ_LEISTUNG_VON = new Bezeichner("BUZ Leistung von");
     public static final Bezeichner BUZ_LEISTUNG_BIS = new Bezeichner("BUZ Leistung bis");
     public static final Bezeichner BUZ_PROZENT_SATZ = new Bezeichner("BUZ %-Satz");
@@ -476,11 +476,11 @@ public final class Bezeichner {
             new Bezeichner("Guthaben Divid. Ansammlungen in W\u00e4hrungseinheiten", "GuthabenDividAnsammlungenInWE");
 
     public static final Bezeichner HAFTUNG_AB = new Bezeichner("Haftung ab");
-    public static final Bezeichner HAFTUNG_AB2 = new Bezeichner("Haftung ab");
+    public static final Bezeichner HAFTUNG_AB2 = new Bezeichner("Haftung ab 2");
     public static final Bezeichner HAFTUNG_BIS = new Bezeichner("Haftung bis");
-    public static final Bezeichner HAFTUNG_BIS2 = new Bezeichner("Haftung bis");
+    public static final Bezeichner HAFTUNG_BIS2 = new Bezeichner("Haftung bis 2");
     public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten");
-    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN;
+    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten 2");
     public static final Bezeichner HAUPTFAELLIGKEIT = new Bezeichner("Hauptfaelligkeit");
     public static final Bezeichner HEILKOSTEN = new Bezeichner("Heilkosten", "Heilkost");
     public static final Bezeichner HEILKOSTEN_BEITRAGSSATZ = new Bezeichner("Heilkosten Beitragssatz", "HeilkostBeitragssatz");
@@ -771,9 +771,9 @@ public final class Bezeichner {
     public static final Bezeichner PRODUKTSPEZIFISCHE_STAMMDATEN = new Bezeichner("Produktspezifische Stammdaten");
     public static final Bezeichner PROVISION = new Bezeichner("Provision");
     public static final Bezeichner PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Provisionspflichtige Beitragssumme in W\u00e4hrungseinheiten");
-    public static final Bezeichner PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2 = PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN;
+    public static final Bezeichner PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Provisionspflichtige Beitragssumme in W\u00e4hrungseinheiten 2");
     public static final Bezeichner PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Provisionspflichtige Wertungssumme in W\u00e4hrungseinheiten");
-    public static final Bezeichner PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN;
+    public static final Bezeichner PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Provisionspflichtige Wertungssumme in W\u00e4hrungseinheiten 2");
     public static final Bezeichner PROZENTSATZ = new Bezeichner("Prozentsatz");
     public static final Bezeichner PROZENTSATZ_PROGRESSIVE_INVALIDITAET = new Bezeichner("Prozentsatz progressive Invaliditaet");
     public static final Bezeichner PROZENTSATZ_PROGRESSIVE_INVALIDITAET_MEHRLEISTUNG_BEI_INVALIDITAET = new Bezeichner("Prozentsatz progressive Invaliditaet / Mehrleistung bei Invaliditaet");
@@ -1229,9 +1229,9 @@ public final class Bezeichner {
     public static final Bezeichner WERT_ZUSCHREIBUNG_VORSORGEZUSCHLAG = new Bezeichner("Wert Zuschreibung Vorsorgezuschlag");
     public static final Bezeichner WERTPAPIERKENNNUMMER = new Bezeichner("Wertpapierkennnummer");
     public static final Bezeichner WERTUNGSBASIS = new Bezeichner("Wertungsbasis");
-    public static final Bezeichner WERTUNGSBASIS2 = WERTUNGSBASIS;
+    public static final Bezeichner WERTUNGSBASIS2 = new Bezeichner("Wertungsbasis2");
     public static final Bezeichner WERTUNGSMODELL = new Bezeichner("Wertungsmodell");
-    public static final Bezeichner WERTUNGSMODELL2 = WERTUNGSMODELL;
+    public static final Bezeichner WERTUNGSMODELL2 = new Bezeichner("Wertungsmodell2");
     public static final Bezeichner WIDERSPRUCH_VORSORGEZUSCHLAG = new Bezeichner("Widerspruch Vorsorgezuschlag");
     public static final Bezeichner WITWEN_WITWERRENTE_IN_PROZENT = new Bezeichner("Witwen- / Witwerrente in Prozent", "WitwenWitwerrenteProz");
     public static final Bezeichner WOHNEIGENTUM = new Bezeichner("Wohneigentum");

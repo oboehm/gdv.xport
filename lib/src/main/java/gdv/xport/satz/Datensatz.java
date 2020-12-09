@@ -170,7 +170,7 @@ public class Datensatz extends Satz {
     if (satzNr.hasSparte())  {
       this.setSparte(satzNr.getSparte());
     }
-    if (satzNr.hasWagnisart())  {
+    if (satzNr.hasWagnisart() && satzNr.getWagnisart() < 10)  {
       this.set(Bezeichner.WAGNISART, Integer.toString(satzNr.getWagnisart()));
     }
     if (satzNr.hasTeildatensatzNummer()) {

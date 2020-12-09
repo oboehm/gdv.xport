@@ -205,7 +205,6 @@ public class Teildatensatz extends Satz {
         if (feld.getBezeichnung().startsWith("Satznummer")) {
            feld.setInhalt(this.satznummer.getInhalt());
         }
- 
         datenfelder.put(feld.getBezeichner(), feld);
         if (!sortedFelder.add(feld))
            LOG.debug("Bezeichner " + feld.getBezeichner() + "(Bezeichnung " + feld.getBezeichnung() + ") schon vorhanden: " + " in " + this + this.satznummer);
