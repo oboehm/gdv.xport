@@ -24,7 +24,6 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Wertungssummen;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
@@ -67,11 +66,20 @@ public final class SatzFactory {
         registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, SatzTyp.of("0221.051"));
 
         // hier gibt es noch Doppeldeutigkeiten in der XML-Beschreibung
+        registerEnum(gdv.xport.satz.feld.sparte10.Feld220Wagnis0.class, SatzTyp.of("0220.010.0"));
         registerEnum(gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen.class, SatzTyp.of("0220.010.2.9"));
         registerEnum(gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6Wertungssummen.class, SatzTyp.of("0220.010.6.9"));
         registerEnum(gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13Wertungssummen.class, SatzTyp.of("0220.010.13.9"));
         registerEnum(gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Wertungssummen.class, SatzTyp.of("0220.010.48.9"));
         registerEnum(gdv.xport.satz.feld.sparte10.wagnisart5.Feld220Wagnis5Wertungssummen.class, SatzTyp.of("0220.010.5.9"));
+        registerEnum(gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7.class, SatzTyp.of("0220.010.7.1"));
+        registerEnum(gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Bezugsrechte.class, SatzTyp.of("0220.010.7.6"));
+        registerEnum(gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7ZukSummenaenderungen.class, SatzTyp.of("0220.010.7.8"));
+        registerEnum(gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Wertungssummen.class, SatzTyp.of("0220.010.7.9"));
+        registerEnum(gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9.class, SatzTyp.of("0220.010.9.1"));
+        registerEnum(gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Bezugsrechte.class, SatzTyp.of("0220.010.9.6"));
+        registerEnum(gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Auszahlungen.class, SatzTyp.of("0220.010.9.7"));
+        registerEnum(gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9ZukSummenaenderungen.class, SatzTyp.of("0220.010.9.8"));
         registerEnum(gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Wertungssummen.class, SatzTyp.of("0220.010.9.9"));
 
         register(Nachsatz.class, 9999);
