@@ -56,7 +56,7 @@ public final class Vorsatz extends Satz {
     /** 10 Zeichen, Byte 86 - 95. */
     private final AlphaNumFeld vermittler = new AlphaNumFeld((VERMITTLER), 10, 86);
     /** Die Versionen fuer die verschiedenen Datensaetze. */
-    private final Map<Integer, Version> versions = new HashMap<>();
+    private final Map<Integer, Version> versions = new HashMap<Integer, Version>();
 
     /**
      * Hiermit wird ein Vorsatz mit 3 Teildatensaetzen erstellt.
@@ -268,21 +268,27 @@ public final class Vorsatz extends Satz {
     }
 
     private void addVersion(final Teildatensatz tds, final int art, final int sparte, final int byteadresse,
-            final String version) {
+                            final String version) {
         assert sparte < 1000 : "unbekannte Sparte " + sparte;
         String s = getVersionBezeichnung(art, sparte);
         addVersion(tds, art * 1000 + sparte, new Version(s, byteadresse, version));
     }
 
     private static String getVersionBezeichnung(final int art) {
-        try (Formatter formatter = new Formatter()) {
+        Formatter formatter = new Formatter();
+        try  {
             return formatter.format("Version Satzart %04d", art).toString();
+        } finally {
+            formatter.close();
         }
     }
 
     private static String getVersionBezeichnung(final int art, final int sparte) {
-        try (Formatter formatter = new Formatter()) {
+        Formatter formatter = new Formatter();
+        try  {
             return formatter.format("Version Satzart %04d %03d", art, sparte).toString();
+        } finally {
+            formatter.close();
         }
     }
 
@@ -405,63 +411,6 @@ public final class Vorsatz extends Satz {
      */
     public String getVersion(final int art, final int sparte) {
         return this.getVersion(getVersionBezeichnung(art, sparte));
-    }
-
-    /**
-     * Setzen der Version.
-     *
-     * @param bezeichner Bezeichner
-     * @param version    z.B. "1.2"
-     * @since 4.1.1
-     */
-    public void setVersion(Bezeichner bezeichner, String version) {
-        this.getFeld(bezeichner).setInhalt(version);
-    }
-
-    /**
-     * Setzen der Version.
-     *
-     * @param bezeichner Bezeichner
-     * @param version    z.B. "1.2"
-     * @since 4.1.1
-     */
-    public void setVersion(String bezeichner, String version) {
-        this.getFeld(bezeichner).setInhalt(version);
-    }
-
-    /**
-     * Setzen der Version.
-     *
-     * @param art     Satzart
-     * @param version z.B. "1.2"
-     * @since 4.1.1
-     */
-    public void setVersion(int art, String version) {
-        this.setVersion(getVersionBezeichnung(art), version);
-    }
-
-    /**
-     * Setzen der Version.
-     *
-     * @param art     Satzart
-     * @param sparte  Sparte
-     * @param version z.B. 1.2
-     * @since 4.3
-     */
-    public void setVersion(int art, int sparte, double version) {
-        this.setVersion(getVersionBezeichnung(art, sparte), Double.toString(version));
-    }
-
-    /**
-     * Setzen der Version.
-     *
-     * @param art     Satzart
-     * @param sparte  Sparte
-     * @param version z.B. "1.2"
-     * @since 4.1.1
-     */
-    public void setVersion(int art, int sparte, String version) {
-        this.setVersion(getVersionBezeichnung(art, sparte), version);
     }
 
 }

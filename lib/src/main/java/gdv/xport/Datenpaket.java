@@ -152,19 +152,6 @@ public final class Datenpaket {
     }
 
     /**
-     * Fuegt den Datensatz hinzu und traegt die angegebene Version an der
-     * entsprechenden Stelle im Vorsatz ein.
-     *
-     * @param datensatz Datensatz
-     * @param version   z.B. 1.2
-     * @since 4.3
-     */
-    public void add(final Datensatz datensatz, double version) {
-        add(datensatz);
-        getVorsatz().setVersion(datensatz.getSatzart(), datensatz.getSparte(), version);
-    }
-
-    /**
      * Export.
      *
      * @param file Datei, in die exportiert werden soll

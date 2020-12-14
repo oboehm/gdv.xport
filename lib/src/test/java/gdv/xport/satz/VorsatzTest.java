@@ -183,28 +183,4 @@ public final class VorsatzTest extends AbstractSatzTest {
         assertEquals(a1, a2);
     }
 
-    @Test
-    public void testSetVersion() {
-        vorsatz.setVersion(Bezeichner.VERSION_SATZART_0100, "2.1");
-        assertEquals("2.1", vorsatz.getVersion(100));
-    }
-
-    @Test
-    public void testSetVersionString() {
-        vorsatz.setVersion(Bezeichner.VERSION_SATZART_0102, "1.2");
-        assertEquals("1.2", vorsatz.getVersion(102));
-    }
-
-    @Test
-    public void testSetVersionSaztart() {
-        vorsatz.setVersion(200, "2.0");
-        assertEquals("2.0", vorsatz.getVersion(200));
-    }
-
-    @Test
-    public void testSetVersionSaztartSparte() {
-        vorsatz.setVersion(210, 50,"2.5");
-        assertEquals("2.5", vorsatz.getVersion(210, 50));
-    }
-
 }
