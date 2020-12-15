@@ -18,6 +18,7 @@
 
 package gdv.xport.feld;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.internal.UmlautMapper;
 import org.apache.commons.lang.WordUtils;
@@ -1556,6 +1557,29 @@ public final class Bezeichner {
         }
         Bezeichner other = (Bezeichner) obj;
         return this.getTechnischerName().equalsIgnoreCase(other.getTechnischerName());
+    }
+
+    /**
+     * Manche Bezeichner wie "HaftungswertungssummeInWE" koennen eventuell
+     * auch als Variante wie "HaftungswertungssummeInWE1" (also mit
+     * angehaengter "1") auftreten. Mit dieser Methode kann man sich die
+     * verschiedenen Varianten eines Bezeichners geben lassen.
+     *
+     * @return Liste von Varianten
+     * @since 4.3
+     */
+    @JsonIgnore
+    public Set<Bezeichner> getVariants() {
+        Set<Bezeichner> variants = new HashSet<>();
+        variants.add(this);
+        char lastchar = name.charAt(name.length()-1);
+        if (lastchar == '1') {
+            String shorten = technischerName.substring(0, technischerName.length()-1).trim();
+            variants.add(Bezeichner.of(shorten));
+        } else if (Character.isAlphabetic(lastchar)) {
+            variants.add(Bezeichner.of(name + "1"));
+        }
+        return variants;
     }
 
     /**

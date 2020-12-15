@@ -29,6 +29,7 @@ import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
 import gdv.xport.satz.feld.sparte53.Feld220;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.SatzFactory;
@@ -492,6 +493,21 @@ public final class SatzTest extends AbstractSatzTest {
         SatzTyp satzTyp = satz.getSatzTyp();
         assertEquals("SatzFactory.getDatensatz(220, 40) hat keine Wagnisart im SatzTyp", -1, satzTyp.getWagnisart());
         assertEquals("SatzTyp von SatzFactory.getDatensatz(220, 40) sollte new SatzTyp(220, 40) entsprechen", expectedSatzTyp, satzTyp);
+    }
+
+    /**
+     * Fuer die Abwaertskompatibilitaet mit der korrigierten VUVM2018-XML-Datei
+     * ist es wichtig, dass auch die alten Namen (ohne "1" am Ende) weiterhin
+     * funktionieren.
+     */
+    @Test
+    public void testGetFeldWithSameNames() {
+        Satz wertungssummen = new SatzX(SatzTyp.of("0220.010.2.9"), Feld220Wagnis2Wertungssummen.class);
+        Feld f1 = wertungssummen.getFeld(Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN);
+        Feld f2 = wertungssummen.getFeld(Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2);
+        assertNotEquals(f1, f2);
+        Feld summe = wertungssummen.getFeld(Bezeichner.of("Haftungswertungssumme in W\u00e4hrungseinheiten 1"));
+        assertEquals(f1, summe);
     }
 
 }

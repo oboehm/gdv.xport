@@ -25,6 +25,11 @@ import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.ObjectTester;
 import patterntesting.runtime.junit.SmokeRunner;
 
+import java.util.Set;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -294,6 +299,12 @@ public class BezeichnerTest {
     public void testOfSatznummer() {
         Bezeichner satznummer = Bezeichner.of("Satznummer");
         assertEquals(Bezeichner.SATZNUMMER, satznummer);
+    }
+
+    @Test
+    public void testGetVariants() {
+        Set<Bezeichner> variants = Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN.getVariants();
+        assertThat(variants.size(), greaterThan(1));
     }
 
 }
