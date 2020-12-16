@@ -129,7 +129,7 @@ public class BezeichnerIT {
     }
 
     private boolean mapsTechnischerName(String name) {
-        if (TECHNISCHE_NAMEN.contains(name)) {
+        if (TECHNISCHE_NAMEN.contains(name) || TECHNISCHE_NAMEN.contains(name + "1")) {
             return true;
         }
         char lastchar = name.charAt(name.length()-1);
