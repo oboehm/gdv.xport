@@ -60,6 +60,21 @@ public abstract class Satz implements Cloneable {
 	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
 	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
 
+  /**
+   * Zum Abspeichern der Satznummer einer 0220er-GdvSatzart der Sparte 010
+   * (Leben). Die Namen dieser Satzarten bestehen bestehen aus 4 Teilen:
+   * <satzart>.<sparte>.<wagnisart>.<gdvSatzartNummer>. Beispiel:
+   * "0220.010.13.6" (siehe Online-Version bei gdv-online.de). Wird benoetigt,
+   * um 0220er-Satzarten bei Leben zu unterscheiden wg. Bezugsrechte,
+   * Auszahlungen, zukünftige Summenänderungen und Wertungssummen. Nicht
+   * verwechseln mit Satznummer eines Teildatensatzes!
+   */
+  private String gdvSatzartNummer = "";
+  /**
+   * Zum Abspeichern des Namens einer Gdv-Satzart gemaess Online-Version bei
+   * gdv-online.de
+   */
+  private String gdvSatzartName = "";
     private final AlphaNumFeld satzVersion = new AlphaNumFeld(3, 1);
 
   protected Satz(final int art)
@@ -116,6 +131,20 @@ public abstract class Satz implements Cloneable {
 	}
 
     /**
+     * The Constructor.
+     *
+     * @param satz z.B. Satzart 0100 (f. Adressteil)
+     * @param n    Anzahl der Teildatensaetze
+     */
+    public Satz(final Satz satz, final int n) {
+        this.satzart.setInhalt(SatzTyp.of(satz.getGdvSatzartName()).getSatzart());
+        this.gdvSatzartName = satz.getGdvSatzartName();
+        this.gdvSatzartNummer = satz.getGdvSatzartNummer();
+        this.setSatzversion(satz.getSatzversion().getInhalt());
+
+        this.createTeildatensaetze(n);
+    }
+    /**
      * Instanziiert einen neuen Satz.
      *
      * @param art z.B. 100 (f. Adressteil)
@@ -125,6 +154,20 @@ public abstract class Satz implements Cloneable {
         this(art, tdsList, null);
      }
 
+    /**
+     * Instanziiert einen neuen Satz.
+     *
+     * @param satz        z.B. 100 (f. Adressteil)
+     * @param tdsList     Liste mit den Teildatensaetzen
+     * @param satzVersion die Version des Satzes
+     */
+    public Satz(final Satz satz, final List<? extends Teildatensatz> tdsList) {
+        this.satzart.setInhalt(satz.getSatzart());
+        this.satzVersion.setInhalt(satz.getSatzversion().getInhalt());
+        this.gdvSatzartName = satz.getGdvSatzartName();
+        this.gdvSatzartNummer = satz.getGdvSatzartNummer();
+        this.createTeildatensaetze(tdsList);
+    }
   /**
    * Instanziiert einen neuen Satz.
    *
@@ -132,9 +175,9 @@ public abstract class Satz implements Cloneable {
    * @param tdsList Liste mit den Teildatensaetzen
    * @param satzVersion die Version des Satzes
    */
-  public Satz(final int art, final List<? extends Teildatensatz> tdsList,
-      final AlphaNumFeld satzVersion)
-  {
+    public Satz(
+            final int art, final List<? extends Teildatensatz> tdsList, final AlphaNumFeld satzVersion
+    ) {
     this.satzart.setInhalt(art);
     if (satzVersion != null)
       this.setSatzversion(satzVersion.getInhalt());
@@ -169,7 +212,7 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
-	 * Hier wirde eine Kopie aller Teildatensaetze zurueckgegeben.
+     * Hier wird eine Kopie aller Teildatensaetze zurueckgegeben.
 	 *
 	 * @return Liste mit Teildatensaetzen
 	 * @since 1.0
@@ -193,9 +236,14 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
-	 * Liefert den n-ten Teildatensatz zurueck.
+     * Liefert den n-ten Teildatensatz aus der Liste der Teildatensätze zurueck.
+     * <p>
+     * <b>Achtung</b> n ist nicht immer identisch mit der Satznummer des
+     * Teildatensatzes (siehe z.B. Satzart 0221.140).<br/>
+     * Dazu besser {@link #getTeildatensatzSatzNr(int)} verwenden.
 	 *
-	 * @param n Nummer des Teildatensatzes (beginnend mit 1)
+     * @param n Nummer (Index n-1 in der Liste der Teildatensätze) des
+     *          Teildatensatzes (beginnend mit 1)
 	 * @return the teildatensatz
 	 * @since 0.2
 	 */
@@ -203,6 +251,19 @@ public abstract class Satz implements Cloneable {
 		return this.teildatensatz[n - 1];
 	}
 
+    /**
+     * Liefert den Teildatensatz mit der wirklichen Satznummer n zurueck.
+     *
+     * @param n Satznummer des Teildatensatzes
+     * @return the teildatensatz
+     */
+    public final Teildatensatz getTeildatensatzBySatzNr(final int n) {
+        for (Teildatensatz tds : this.teildatensatz) {
+            if (Integer.parseInt(tds.getSatznummer().getInhalt()) == n) return tds;
+        }
+
+        throw new IllegalArgumentException("Satznummer " + n + " nicht vorhanden.");
+    }
 	/**
 	 * Hiermit koennen Unterklassen alle Teildatensaetze wieder entfernen (wird
 	 * z.B. vom Satz 0220.030 benoetigt).
@@ -217,9 +278,9 @@ public abstract class Satz implements Cloneable {
 	 * Entfernt den gewuenschten Teildatensatz. Ein neuer Teildatensatz kann
 	 * ueber add() hinzugefuegt werden.
 	 *
+     * @param n der gewuenschte Teildatensatz (beginnend bei 1)
 	 * @see #add(Teildatensatz)
 	 * @since 0.4
-	 * @param n der gewuenschte Teildatensatz (beginnend bei 1)
 	 */
 	public final void removeTeildatensatz(final int n) {
 		if ((n < 1) || (n > this.teildatensatz.length)) {
@@ -232,8 +293,8 @@ public abstract class Satz implements Cloneable {
 	/**
 	 * Und hierueber kann ein Teildatensatz hinzugefuegt werden.
 	 *
-	 * @since 0.4
 	 * @param tds der neue (gefuellte) Teildatensatz
+     * @since 0.4
 	 */
 	public final void add(final Teildatensatz tds) {
 		this.teildatensatz = (Teildatensatz[]) ArrayUtils.add(this.teildatensatz, tds);
@@ -310,6 +371,15 @@ public abstract class Satz implements Cloneable {
     }
 
     /**
+     * Setzt den Inhalt des gewuenschten Feldes.
+     *
+     * @param name  Name des Felds (Bezeichnung)
+     * @param value neuer Inhalt
+     */
+    public void set(final Bezeichner name, final Integer value) {
+        this.set(name, Integer.toString(value));
+    }
+    /**
      * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden
      * wird. Normalerweise braeuchten wir eigentlich nur die erste Fundstelle
      * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
@@ -367,6 +437,55 @@ public abstract class Satz implements Cloneable {
         this.set(feldX, Character.toString(value));
     }
 
+    /**
+     * Setzt die Satzartnummer einer Satzart. Nicht verwechseln mit Satznummer!
+     *
+     * @param x z.B. "6" fuer Satzart 0220, Sparte 010, Wagnisart 2, Bezugsrechte
+     */
+    protected void setGdvSatzartNummer(final String x) {
+        this.gdvSatzartNummer = x;
+    }
+
+    /**
+     * Gets die Satzartnummer. Nicht verwechseln mit Satznummer!
+     * <p>
+     * Manche Satzarten wie Leben haben ein Element fuer die Satznummer, im Feld
+     * Satzartnummer gespeichert. Dies ist z.B. fuer Satz 0220.010.13.6
+     * (Bezugsrechte) der Fall.
+     *
+     * @return die Satzartnummer als String
+     */
+    public String getGdvSatzartNummer() {
+        return this.gdvSatzartNummer;
+    }
+
+    /**
+     * @return Name der GDV-Satzart gemaess Online-Version bei gdv-online.de
+     */
+    public String getGdvSatzartName() {
+        return this.gdvSatzartName;
+    }
+
+    /**
+     * Setzen des Namens einer Gdv-Satzart.
+     * </p>
+     * Der <code>string</code> wird mit dem Trennzeichen '.' an den bisherigen
+     * Inhalt angehaengt.
+     * </p>
+     *
+     * @param string
+     */
+    protected void setGdvSatzartName(String string) {
+        StringBuilder buf = new StringBuilder();
+
+        if (this.gdvSatzartName.isEmpty()) {
+            buf.append(string);
+        } else {
+            buf.append(this.gdvSatzartName).append(".").append(string);
+        }
+
+        this.gdvSatzartName = buf.toString();
+    }
     /**
      * Setzt die Version des Satzes
      * 
@@ -559,8 +678,8 @@ public abstract class Satz implements Cloneable {
      *
      * @param bezeichner gewuenschter Bezeichner des Feldes
      * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
-     * @since 2.0
      * @throws IllegalArgumentException falls es das Feld nicht gibt
+     * @since 2.0
      */
     public final String getFeldInhalt(final Bezeichner bezeichner) throws IllegalArgumentException {
         return this.getFeld(bezeichner).getInhalt().trim();
@@ -670,8 +789,8 @@ public abstract class Satz implements Cloneable {
 	 * Schaut nach einem Feld "SPARTE" und liefert true zurueck, falls es
 	 * existiert.
 	 *
+     * @return true, falls Sparten-Feld vorhanden ist
 	 * @since 0.9
-	 * @return true, falls Sparten-Feld vorhanden ist
 	 */
 	public boolean hasSparte() {
 	    Feld sparte = this.getFeldSafe(Feld1bis7.SPARTE);
@@ -682,15 +801,16 @@ public abstract class Satz implements Cloneable {
      * Schaut nach einem Feld "WAGNISART" und liefert true zurueck, falls es
      * existiert.
      *
-     * @since 1.0
      * @return true, falls Wagnisart-Feld vorhanden ist
+     * @since 1.0
 	 */
 	public boolean hasWagnisart() {
 	    return this.hasFeld((Bezeichner.WAGNISART));
 	}
 
 	/**
-	 * Schaut nach dem 10. Feld in Satzart 220, Sparte 20 (Kranken) und liefert true zurueck, falls es existiert.
+     * Schaut nach dem 10. Feld in Satzart 220, Sparte 20 (Kranken) und liefert
+     * true zurueck, falls es existiert.
 	 * 
 	 * @return true, falls das Feld existiert
 	 * @since 18.04.2018
@@ -706,8 +826,8 @@ public abstract class Satz implements Cloneable {
 	 * {@link #hasSparte()} geprueft werden, ob der Satz ein Sparten-Feld
 	 * besitzt.
 	 *
+     * @return die Sparte
      * @since 0.9
-	 * @return die Sparte
 	 */
 	@JsonIgnore
 	public int getSparte() {
@@ -770,9 +890,9 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
-	 * @since 0.3
 	 * @param ostream z.B. System.out
 	 * @throws IOException falls mal was schief geht
+     * @since 0.3
 	 */
 	public void export(final OutputStream ostream) throws IOException {
 		Writer writer = new OutputStreamWriter(ostream);
@@ -782,16 +902,16 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
-	 * Eigentlich wollte ich ja diese Methode "import" nennen, aber das
-	 * kollidiert leider mit dem Schluesselwort "import" in Java. Inzwischen
-	 * beruecksichtigt diese Import-Methode auch zusaetzlich eingestreute
-	 * Newlines ("\n") oder/und Wagenruecklaeufe ("\r").
-     *
+     * Eigentlich wollte ich ja diese Methode "import" nennen, aber das kollidiert
+     * leider mit dem Schluesselwort "import" in Java. Inzwischen beruecksichtigt
+     * diese Import-Methode auch zusaetzlich eingestreute Newlines ("\n") oder/und
+     * Wagenruecklaeufe ("\r").
+     * <p>
      * Vor der Behebung von Issue #8 ist man davon ausgegangen, dass die
-     * Teildatensaetze hintereinander kommen und dass es keine Luecken gibt.
-     * Dies ist aber nicht der Fall. Jetzt koennen die Teildatensaetze in
-     * beliebiger Reihenfolge kommen. Nicht importierte Teildatensaetze
-     * werden am Ende aussortiert.
+     * Teildatensaetze hintereinander kommen und dass es keine Luecken gibt. Dies
+     * ist aber nicht der Fall. Jetzt koennen die Teildatensaetze in beliebiger
+     * Reihenfolge kommen. Nicht importierte Teildatensaetze werden am Ende
+     * aussortiert.
 	 *
 	 * @param s String zum Importieren
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -819,7 +939,7 @@ public abstract class Satz implements Cloneable {
             return index;
         }
         for (int i = 0; i < teildatensatz.length; i++) {
-            if (teildatensatz[i].getNummer().toInt() == satznummer) {
+            if (teildatensatz[i].getSatznummer().toInt() == satznummer) {
                 return i;
             }
         }
@@ -852,9 +972,9 @@ public abstract class Satz implements Cloneable {
 	 * Ermittelt die Satzlaenge. Je nachdem, ob das Zeilenende aus keinem, einem
 	 * oder zwei Zeichen besteht, wird 256, 257 oder 258 zurueckgegeben.
 	 *
-	 * @since 0.4
 	 * @param s der komplette Satz
 	 * @return 256, 257 oder 258
+     * @since 0.4
 	 */
 	protected final int getSatzlength(final String s) {
 		int satzlength = 256;
@@ -1052,7 +1172,7 @@ public abstract class Satz implements Cloneable {
 	 * @return the string
 	 */
 	public String toShortString() {
-		return this.getClass().getSimpleName() + " " + this.satzart.getInhalt();
+        return "Satzart " + this.satzart.getInhalt();
 	}
 
 	/**
