@@ -159,7 +159,6 @@ public abstract class Satz implements Cloneable {
      *
      * @param satz        z.B. 100 (f. Adressteil)
      * @param tdsList     Liste mit den Teildatensaetzen
-     * @param satzVersion die Version des Satzes
      */
     public Satz(final Satz satz, final List<? extends Teildatensatz> tdsList) {
         this.satzart.setInhalt(satz.getSatzart());
@@ -240,7 +239,7 @@ public abstract class Satz implements Cloneable {
      * <p>
      * <b>Achtung</b> n ist nicht immer identisch mit der Satznummer des
      * Teildatensatzes (siehe z.B. Satzart 0221.140).<br/>
-     * Dazu besser {@link #getTeildatensatzSatzNr(int)} verwenden.
+     * Dazu besser {@link #getTeildatensatzBySatzNr(int)} verwenden.
 	 *
      * @param n Nummer (Index n-1 in der Liste der Teildatensätze) des
      *          Teildatensatzes (beginnend mit 1)
@@ -758,7 +757,7 @@ public abstract class Satz implements Cloneable {
 	 * @since 1.0
 	 */
 	@JsonIgnore
-	public final SatzTyp getSatzTyp() {
+	public SatzTyp getSatzTyp() {
 	    // TODO krankenFolgeNr beachten?
 	    if (this.hasSparte() && this.getSparte() == 10 && this.hasWagnisart()) {
 	        String wagnisart = this.getWagnisart();

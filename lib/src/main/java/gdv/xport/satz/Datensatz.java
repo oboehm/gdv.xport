@@ -23,6 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.io.*;
 import gdv.xport.satz.feld.common.*;
 import gdv.xport.util.*;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.*;
 
 import java.io.*;
@@ -229,7 +230,7 @@ public class Datensatz extends Satz {
     this.art = other.art;
     this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
     this.wagnisart.setInhalt(other.wagnisart.getInhalt());
-    this.gdvSatzartName = other.gdvSatzartName;
+        this.gdvSatzartName = other.getGdvSatzartName();
     this.gdvSatzartNummer = other.gdvSatzartNummer;
   }
 
@@ -258,7 +259,8 @@ public class Datensatz extends Satz {
 	}
 
 	protected static void setUpTeildatensatz(final Teildatensatz tds, final NumFeld sparte) {
-		if (!tds.hasFeld(Feld1bis7.VU_NUMMER)) {
+        if (!tds.hasFeld(Feld1bis7.VU_NUMMER) && !tds.get(Feld1bis7.SATZART)
+                                                     .equalsIgnoreCase("9999")) {
 			setUp(tds, Feld1bis7.VU_NUMMER, Config.getVUNummer());
 			setUp(tds, Feld1bis7.BUENDELUNGSKENNZEICHEN, new AlphaNumFeld(Feld1bis7.BUENDELUNGSKENNZEICHEN));
 			setUp(tds, Feld1bis7.SPARTE, sparte);
@@ -401,65 +403,6 @@ public class Datensatz extends Satz {
 		return this.sparte;
 	}
 
-  /**
-   * Setzt die Satzartnummer einer Satzart. Nicht verwechseln mit Satznummer!
-   *
-   * @param x z.B. "6" fuer Satzart 0220, Sparte 010, Wagnisart 2, Bezugsrechte
-   */
-  protected void setGdvSatzartNummer(final String x)
-  {
-    this.gdvSatzartNummer = x;
-  }
-
-  /**
-   * Gets die Satzartnummer. Nicht verwechseln mit Satznummer!
-   * 
-   * Manche Satzarten wie Leben haben ein Element fuer die Satznummer, im Feld
-   * Satzartnummer gespeichert. Dies ist z.B. fuer Satz 0220.010.13.6
-   * (Bezugsrechte) der Fall.
-   *
-   * @return die Satzartnummer als String
-   */
-  public String getGdvSatzartNummer()
-  {
-    return this.gdvSatzartNummer;
-  }
-
-  /**
-   * Setzen des Namens einer Gdv-Satzart.
-   * </p>
-   * Der <code>string</code> wird mit dem Trennzeichen '.' an den bisherigen
-   * Inhalt angehaengt.
-   * </p>
-   * 
-   * @param string naechster Teil der Satzart
-   */
-  protected void setGdvSatzartName(String string)
-  {
-    StringBuilder buf = new StringBuilder();
-
-    if (this.getGdvSatzartName()
-        .isEmpty())
-    {
-      buf.append(string);
-    }
-    else
-    {
-      buf.append(this.getGdvSatzartName())
-          .append(".")
-          .append(string);
-    }
-
-    this.gdvSatzartName = buf.toString();
-  }
-
-  /**
-   * @return Name der GDV-Satzart gemaess Online-Version bei gdv-online.de
-   */
-  public String getGdvSatzartName()
-  {
-    return this.gdvSatzartName;
-  }
 
   /**
    * Wenn der Datensatz ein Element fuer eine Untersparte hat, wird 'true'
@@ -597,11 +540,10 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-     * Liest 49 Bytes, um die Folge-Nr. in Satzart 220, Sparte 20 (Kranken) zu bestimmen und stellt die Bytes
-     * anschliessend wieder zurueck in den Reader.
+     * Liest 49 Bytes, um die Folge-Nr. in Satzart 220, Sparte 20 (Kranken) zu
+     * bestimmen und stellt die Bytes anschliessend wieder zurueck in den Reader.
      *
-     * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen
-     * bereitstellen
+     * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen bereitstellen
      * @return Folge-Nr
      * @throws IOException falls was schief gegangen ist
      */
@@ -629,6 +571,15 @@ public class Datensatz extends Satz {
         }
     }
 
+    /**
+     * Liest 45 Bytes, um die Bauspar-Art in Satzart 220, Sparte 580 (Bausparen)
+     * zu bestimmen und stellt die Bytes anschliessend wieder zurueck in den
+     * Reader.
+     *
+     * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen bereitstellen
+     * @return Folge-Nr
+     * @throws IOException falls was schief gegangen ist
+     */
     public static int readBausparenArt(final PushbackLineNumberReader reader) throws IOException {
 		int satzart = readSatzart(reader);
 		if (satzart != 220) {
@@ -655,8 +606,7 @@ public class Datensatz extends Satz {
 	 * Liest 1 Byte, um die Wagnisart zu bestimmen und stellt das Byte
 	 * anschliessend wieder zurueck in den Reader.
 	 *
-	 * @param reader muss mind. einen Pushback-Puffer von 1 Zeichen
-	 * bereitstellen
+     * @param reader muss mind. einen Pushback-Puffer von 1 Zeichen bereitstellen
 	 * @return Wagnisart
 	 * @throws IOException falls was schief gegangen ist
 	 */
@@ -688,8 +638,10 @@ public class Datensatz extends Satz {
 	 * Situationen doch den ganzen naechsten Teildatensatz anschauen muessen.
 	 *
 	 * @param reader ein Reader
-	 * @param lastFeld1To7 Feld1..7 als Char-Array (42 Zeichen) der letzten Zeile oder {@code null} für ersten Teildatensatz
-	 * @return {@code true}, falls ein Teildatensatz, {@code false} falls nicht, d.h. neuer Datensatz.
+     * @param lastFeld1To7 Feld1..7 als Char-Array (42 Zeichen) der letzten Zeile
+     *                     oder {@code null} für ersten Teildatensatz
+     * @return {@code true}, falls ein Teildatensatz, {@code false} falls nicht,
+     * d.h. neuer Datensatz.
 	 * @throws IOException bei I/O-Fehlern
 	 * @see Satz#matchesNextTeildatensatz(PushbackLineNumberReader, char[], Character)
 	 * @since 0.5.1
@@ -698,18 +650,19 @@ public class Datensatz extends Satz {
     protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character satznummer) throws IOException {
         if (super.matchesNextTeildatensatz(reader, lastFeld1To7, satznummer)) {
 			if (lastFeld1To7 == null) {
-				//erster Teildatensatz hat noch keine lastFeld...
+                // erster Teildatensatz hat noch keine lastFeld...
 				return matchesFirstTeildatensatz(reader);
 			} else {
 				// TODO: ugly aber ich sehe bisher noch keinen eleganten Weg in der aktuellen Struktur ohne umfangreiche Refaktorings.
 				char[] newLine = new char[256];
 				int res = reader.read(newLine);
-				if (res < 256) {
-					return false;//EOF
+                if (res < 256) {
+                    return false;// EOF
 				}
 				reader.unread(newLine);
 				
-                //wir vergleichen komplett die ersten 7 Felder (42 Zeichen) auf Gleichheit....wenn ein Unterschied -> neuer Datensatz,
+                // wir vergleichen komplett die ersten 7 Felder (42 Zeichen) auf
+                // Gleichheit....wenn ein Unterschied -> neuer Datensatz,
 				for (int i = 0; i < 42; i++) {
 					if (lastFeld1To7[i] != newLine[i]) return false;
 				}
@@ -727,7 +680,8 @@ public class Datensatz extends Satz {
 	}
 
 	private static boolean matchesLastFeld(Character satznummer, char[] newLine) {
-		// Das letzte Feld wird darauf verglichen, dass es groesser als das vorherige ist, falls Teildatensaetze uebersprungen werden
+        // Das letzte Feld wird darauf verglichen, dass es groesser als das
+        // vorherige ist, falls Teildatensaetze uebersprungen werden
 		char newSatznummer = readSatznummer(newLine);
 		return !(Character.isDigit(newSatznummer) && Character.isDigit(satznummer) && newSatznummer <= satznummer);
 	}
@@ -793,5 +747,13 @@ public class Datensatz extends Satz {
 	public int hashCode() {
 		return super.hashCode() + this.art;
 	}
+
+    @Override
+    public SatzTyp getSatzTyp() {
+    	if (StringUtils.isBlank(gdvSatzartName)) {
+    		return super.getSatzTyp();
+		}
+        return SatzTyp.of(gdvSatzartName);
+    }
 
 }
