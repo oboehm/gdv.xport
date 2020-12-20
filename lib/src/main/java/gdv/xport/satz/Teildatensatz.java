@@ -315,16 +315,13 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public Feld getFeld(final Bezeichner bezeichner) {
-        Feld found = datenfelder.get(bezeichner);
-        if (found == null) {
-            found = findFeld(bezeichner);
+        for (Bezeichner b : bezeichner.getVariants()) {
+            Feld feld = datenfelder.get(b);
+            if (feld != null) {
+                return feld;
+            }
         }
-        if (found == null) {
-            throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
-                    + " vorhanden!");
-        } else {
-            return found;
-        }
+        return findFeld(bezeichner);
     }
 
     private Feld findFeld(final Bezeichner bezeichner) {
@@ -333,7 +330,8 @@ public class Teildatensatz extends Satz {
                 return entry.getValue();
             }
         }
-        return null;
+        throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
+                + " vorhanden!");
     }
 
     /**
@@ -367,7 +365,12 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public boolean hasFeld(final Bezeichner bezeichner) {
-        return this.datenfelder.containsKey(bezeichner);
+        for (Bezeichner b : bezeichner.getVariants()) {
+            if (this.datenfelder.containsKey(b)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

@@ -28,8 +28,8 @@ import patterntesting.runtime.junit.SmokeRunner;
 import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -305,6 +305,12 @@ public class BezeichnerTest {
     public void testGetVariants() {
         Set<Bezeichner> variants = Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN.getVariants();
         assertThat(variants.size(), greaterThan(1));
+    }
+
+    @Test
+    public void testgetVersionVariants() {
+        assertThat(Bezeichner.SATZART_0100.getVariants(), hasItem(Bezeichner.VERSION_SATZART_0100));
+        assertThat(Bezeichner.VERSION_SATZART_0100.getVariants(), hasItem(Bezeichner.SATZART_0100));
     }
 
 }

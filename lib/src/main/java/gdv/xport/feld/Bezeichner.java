@@ -1573,7 +1573,11 @@ public final class Bezeichner {
         Set<Bezeichner> variants = new HashSet<>();
         variants.add(this);
         char lastchar = name.charAt(name.length()-1);
-        if (lastchar == '1') {
+        if (name.startsWith("Satzart")) {
+            variants.add(Bezeichner.of("Version " + name));
+        } else if (name.startsWith("Version")) {
+            variants.add(Bezeichner.of(name.substring(7).trim()));
+        } else if (lastchar == '1') {
             String shorten = technischerName.substring(0, technischerName.length()-1).trim();
             variants.add(Bezeichner.of(shorten));
         } else if (Character.isAlphabetic(lastchar)) {

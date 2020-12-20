@@ -22,6 +22,8 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.feld.Feld0001;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -181,6 +183,22 @@ public final class VorsatzTest extends AbstractSatzTest {
         Feld a1 = vorsatz.getFeld(Bezeichner.ART_DES_ADRESSATEN);
         Feld a2 = vorsatz.getFeld(Feld0001.ART_DES_ADRESSATEN);
         assertEquals(a1, a2);
+    }
+
+    @Test
+    public void testSetVersion() {
+        SatzTyp satzTyp = SatzTyp.of("0100");
+        vorsatz.setVersion(satzTyp);
+        String expected = SatzFactory.getDatensatz(satzTyp).getSatzversion().getInhalt();
+        assertEquals(expected, vorsatz.getVersion(100));
+    }
+
+    @Test
+    public void testSetVersionSatzartSparte() {
+        SatzTyp satzTyp = SatzTyp.of("0210.050");
+        vorsatz.setVersion(satzTyp);
+        String expected = SatzFactory.getDatensatz(satzTyp).getSatzversion().getInhalt();
+        assertEquals(expected, vorsatz.getVersion(210, 50));
     }
 
 }

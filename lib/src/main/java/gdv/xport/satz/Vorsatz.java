@@ -20,6 +20,9 @@ package gdv.xport.satz;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -397,7 +400,11 @@ public final class Vorsatz extends Satz {
      * @param art
      *            Satzart
      * @return z.B. 1.1
+     * @deprecated wurde ersetzt durch {@link #getVersion(SatzTyp)},<br/>
+     * weil diese Methode nur bei Satzarten mit einfachem
+     * Gdv-Satznamen (ohneSparte) funktioniert
      */
+    @Deprecated
     public String getVersion(final int art) {
         return this.getVersion(getVersionBezeichnung(art));
     }
@@ -408,9 +415,88 @@ public final class Vorsatz extends Satz {
      * @param sparte
      *            z.B. 70 (Rechtsschutz)
      * @return z.B. 1.1
+     * @deprecated wurde ersetzt durch {@link #getVersion(SatzTyp)},<br/>
+     * weil diese Methode nur bei Satzarten mit einfachem
+     * Gdv-Satznamen (ohneSparte) funktioniert
      */
     public String getVersion(final int art, final int sparte) {
         return this.getVersion(getVersionBezeichnung(art, sparte));
+    }
+
+    /**
+     * Liefert die Version zum gewuenschten SatzTyp.
+     *
+     * @param satzTyp z.B. SatzTyp.of("0100");
+     * @return z.B. 2.3
+     * @since 5.0
+     * @since 5.0
+     */
+    public String getVersion(SatzTyp satzTyp) {
+        throw new UnsupportedOperationException("not yet implemented");
+    }
+
+    /**
+     * Setzen der Satzart-Version eines Datensatzes.
+     *
+     * @param satz der Satz
+     * @return <code>true</code> wenn im Vorsatz Version gesetzt wurde,
+     * <code>false</code> wenn Satzart im Vorsatz unbekannt
+     *
+     * TODO: Setter sollten keinen Rückgabewert besitzen - lieber IllegalArgumentException werfen
+     */
+    public boolean setVersion(Satz satz) {
+        boolean bReturn = false;
+        StringBuilder buf = new StringBuilder();
+        String[] parts = StringUtils.split(satz.getSatzTyp()
+                                               .toString(), '.');
+
+        buf.append("Satzart");
+        buf.append(parts[0]);
+
+        if (parts.length > 1)
+            buf.append(parts[1]);
+
+        Bezeichner bezeichner = new Bezeichner(buf.toString());
+
+        if (this.hasFeld(bezeichner)) {
+            this.set(bezeichner, satz.getSatzversion()
+                                     .getInhalt());
+            bReturn = true;
+        }
+
+        return bReturn;
+    }
+
+    /**
+     * Setzen der Satzart-Version eines SatzTyps.
+     *
+     * @param satzTyp der Satztyp
+     * @return <code>true</code> wenn im Vorsatz Version gesetzt wurde,
+     * <code>false</code> wenn Satzart zum SatzTyp im Vorsatz unbekannt
+     *
+     * TODO: Setter sollten keinen Rückgabewert besitzen - lieber IllegalArgumentException werfen
+     */
+    public boolean setVersion(SatzTyp satzTyp) {
+        boolean bReturn = false;
+        StringBuilder buf = new StringBuilder();
+        String[] parts = StringUtils.split(satzTyp.toString(), '.');
+
+        buf.append("Satzart");
+        buf.append(parts[0]);
+
+        if (parts.length > 1)
+            buf.append(parts[1]);
+
+        Bezeichner bezeichner = new Bezeichner(buf.toString());
+
+        if (this.hasFeld(bezeichner)) {
+            this.set(bezeichner, SatzFactory.getDatensatz(satzTyp)
+                                            .getSatzversion()
+                                            .getInhalt());
+            bReturn = true;
+        }
+
+        return bReturn;
     }
 
 }
