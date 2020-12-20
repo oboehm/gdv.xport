@@ -259,37 +259,39 @@ public class XmlService {
    */
   @Deprecated
   public SatzXml getSatzart(final int satzart)  {
-      return getSatzart(SatzTyp.of(Integer.toString(satzart)));
-//    StringBuilder satzartBuf = new StringBuilder();
-//    satzartBuf.append(String.format("%04d", satzart));
-//
-//    SatzXml satz = this.satzarten.get(SatzTyp.of(satzartBuf.toString()));
-//    if (satz != null)   {
-//      return new SatzXml(satz);
-//    }
-//    List<SatzTyp> satzTypen = new ArrayList<>();
-//    for (SatzTyp satzNr : this.satzarten.keySet())   {
-//      if (satzNr.getSatzart() == satzart)     {
-//        satzTypen.add(satzNr);
-//      }
-//    }
-//    if (satzTypen.isEmpty())   {
-//      throw new NotRegisteredException(satzart);
-//    }
-//    if (satzTypen.size() > 1)    {
-//      checkSatzarten(satzTypen);
-//    }
-//    return new SatzXml(this.satzarten.get(satzTypen.get(0)));
+        StringBuilder satzartBuf = new StringBuilder();
+        satzartBuf.append(String.format("%03d", satzart));
+
+        // SatzXml satz = this.satzarten.get(SatzTyp.of(satzartBuf.toString()));
+        SatzXml satz = this.satzarten.get(SatzTyp.of(Integer.toString(satzart)));
+        if (satz != null) {
+            return new SatzXml(satz);
+        }
+        List<SatzTyp> satzTypen = new ArrayList<>();
+        for (SatzTyp satzNr : this.satzarten.keySet()) {
+            if (satzNr.getSatzart() == satzart) {
+                satzTypen.add(satzNr);
+            }
+        }
+        if (satzTypen.isEmpty()) {
+            throw new NotRegisteredException(satzart);
+        }
+        if (satzTypen.size() > 1) {
+            checkSatzarten(satzTypen);
+        }
+        return new SatzXml(this.satzarten.get(satzTypen.get(0)));
   }
 
-//    private static void checkSatzarten(List<SatzTyp> satzTypen) {
-//        SatzTyp first = satzTypen.get(0);
-//        for (int i = 1; i < satzTypen.size(); i++) {
-//            if (first.getSparte() != satzTypen.get(i).getSparte()) {
-//                throw new NotUniqueException("Sparte for Satzart " + first.getSatzart() + " is missing: " + satzTypen);
-//            }
-//        }
-//    }
+    private static void checkSatzarten(List<SatzTyp> satzTypen) {
+        SatzTyp first = satzTypen.get(0);
+        for (int i = 1; i < satzTypen.size(); i++) {
+            if (first.getSparte() != satzTypen.get(i)
+                                              .getSparte()) {
+                throw new NotUniqueException("Sparte for Satzart " + first.getSatzart()
+                        + " is missing: " + satzTypen);
+            }
+        }
+    }
 
     /**
      * Liefert den Satz zur gewuenschten Satzart.
@@ -313,46 +315,18 @@ public class XmlService {
      */
     public SatzXml getSatzart(final SatzTyp satzNr) {
         SatzXml satz = this.satzarten.get(satzNr);
+        // nichts erraten, genau liefern, was gefordert ist
+        // if (satz == null)
+        // {
+        // satz = getSatzart(satzNr.getSatzart());
+        // }
         if (satz == null) {
             throw new NotRegisteredException(satzNr);
         }
+        // eine Kopie erzeugen
         return new SatzXml(satz);
-//        try {
-//            return getRegisteredSatzart(satzNr);
-//        } catch (NotRegisteredException ex) {
-//            if (satzNr.hasSparte()) {
-//                // das ermoeglich die Anfrage mit Satzart 0350.030, obwohl es die nicht gibt (s. Issue 33)
-//                SatzTyp satzart = SatzTyp.of(Integer.toString(satzNr.getSatzart()));
-//                LOG.info("SatzTyp {} is not registered - will use {} as fallback.", satzNr, satzart);
-//                LOG.debug("Details:", ex);
-//                SatzXml satz = getRegisteredSatzart(satzart);
-//                satz.setSparte(satzNr.getSparte());
-//                return satz;
-//            } else {
-//                throw ex;
-//            }
-//        }
     }
 
-//    /**
-//     * Liefert den Satz zur gewuenschten Satzart.
-//     * Im Gegensatz zu {@link #getSatzart(SatzTyp)} liefert diese Methode nur
-//     * Datensaetze zurueck, die unter diesem SatzTyp registiert wurden.
-//     * <p>
-//     * Um Nebeneffekte zu vermeiden wird jedesmal ein neuer Satz erzeugt und
-//     * zurueckgeliefert.
-//     * </p>
-//     *
-//     * @param satzNr z.B. SatzTyp.of("0100") fuer Satz100 (Adressteil)
-//     * @return die entsprechende Satzart
-//     */
-//    public SatzXml getRegisteredSatzart(final SatzTyp satzNr) {
-//        SatzXml satz = this.satzarten.get(satzNr);
-//        if (satz == null) {
-//            throw new NotRegisteredException(satzNr);
-//        }
-//        return new SatzXml(satz);
-//    }
 
     /**
      * Liefert die registrierten Satzarten.
