@@ -199,6 +199,8 @@ public class XmlServiceTest extends AbstractXmlTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
+    @Test
+    @Ignore // TODO: nach SatzFactory verschieben
     public void testSatzart221() throws IOException {
         checkSatzart(221, new Satz221());
     }
@@ -297,7 +299,6 @@ public class XmlServiceTest extends AbstractXmlTest {
      * im Teildatensatz 9 zu fehlen.
      */
     @Test
-    @Ignore // TODO: aktualisiert VUVM2018.xml einspielen
     public void testLebenTeildatensatz9() {
         SatzXml wertungssummen = xmlService.getSatzart(SatzTyp.of("0220.010.9.9"));
         Teildatensatz teildatensatz9 = wertungssummen.getTeildatensatz(1);

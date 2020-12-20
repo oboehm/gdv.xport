@@ -49,7 +49,6 @@ public class SatzXml extends Datensatz {
 
     private static final Logger LOG = LogManager.getLogger(SatzXml.class);
 
-    private final String gdvSatzartName = "";
 
   /**
    * Instantiiert einen neuen Satz.
@@ -138,7 +137,7 @@ public class SatzXml extends Datensatz {
     private TeildatensatzXml parseSatzanfang(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         Attribute teilsatz = element.getAttributeByName(new QName("teilsatz"));
         int nr = Integer.parseInt(teilsatz.getValue());
-        TeildatensatzXml tds = new TeildatensatzXml(this.getSatzart(), nr);
+        TeildatensatzXml tds = new TeildatensatzXml(this, nr);
         LOG.debug("Teildatensatz {} added to {}.", nr, this);
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
@@ -287,18 +286,4 @@ public class SatzXml extends Datensatz {
     return satzTypen;
   }
 
-  /*
-   * ist nicht notwendig, da die Oberklasse (Datensatz) bereits eine korrekt
-   * Implementierung der equals-Methode liefern sollte.
-   */
-//  @Override
-//  public boolean equals(Object obj)
-//  {
-//    if (!super.equals(obj))
-//    {
-//      return false;
-//    }
-//    SatzXml other = (SatzXml) obj;
-//    return this.gdvSatzartName.equalsIgnoreCase(other.gdvSatzartName);
-//  }
 }
