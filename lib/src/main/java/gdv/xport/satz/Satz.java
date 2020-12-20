@@ -137,13 +137,13 @@ public abstract class Satz implements Cloneable {
      * @param n    Anzahl der Teildatensaetze
      */
     public Satz(final Satz satz, final int n) {
-        this.satzart.setInhalt(SatzTyp.of(satz.getGdvSatzartName()).getSatzart());
+        this.satzart.setInhalt(satz.getSatzart());
         this.gdvSatzartName = satz.getGdvSatzartName();
         this.gdvSatzartNummer = satz.getGdvSatzartNummer();
         this.setSatzversion(satz.getSatzversion().getInhalt());
-
         this.createTeildatensaetze(n);
     }
+
     /**
      * Instanziiert einen neuen Satz.
      *

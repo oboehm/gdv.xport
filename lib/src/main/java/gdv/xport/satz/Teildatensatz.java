@@ -39,9 +39,6 @@ import static gdv.xport.feld.Bezeichner.SATZNUMMER;
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
  * beruecksichtigt. Und ein Teildatensatz besteht aus mehreren Datenfeldern.
- * <p>
- * TODO: Code nach TeildatensatzEnum verlagern und als abstract kennzeichnen
- * </p>
  *
  * @author ob@aosd.de
  * @since 04.10.2009
@@ -64,7 +61,7 @@ public class Teildatensatz extends Satz {
      *
      * @param satzart z.B. 100
      */
-    protected Teildatensatz(final NumFeld satzart) {
+    public Teildatensatz(final NumFeld satzart) {
         super(satzart, 0);
         this.satznummer.setInhalt(' ');
         this.initDatenfelder();
@@ -95,13 +92,26 @@ public class Teildatensatz extends Satz {
     }
 
     /**
-     * Dies ist der Copy-Constructor, falls man eine Kopie eines
-     * Teildatensatzes braucht.
+     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart, Nummer
+     * und Version des zugeheorigen Satzes.
+     *
+     * @param satz        z.B. 100
+     * @param nr          Nummer des Teildatensatzes (zwischen 1 und 9)
+     */
+    public Teildatensatz(final Satz satz, final int nr) {
+        super(satz, 0);
+        initSatznummer(nr);
+    }
+
+    /**
+     * Dies ist der Copy-Constructor, falls man eine Kopie eines Teildatensatzes
+     * braucht.
      *
      * @param other der andere Teildatensatz
      */
     public Teildatensatz(final Teildatensatz other) {
         this(other.getSatzart(), other.getNummer());
+        this.satznummer = other.satznummer;
         for (Entry<Bezeichner, Feld> entry : other.datenfelder.entrySet()) {
             Feld copy = (Feld) entry.getValue().clone();
             this.datenfelder.put(entry.getKey(), copy);
@@ -192,6 +202,11 @@ public class Teildatensatz extends Satz {
     @Override
     public void add(final Feld feld) {
         for (Feld f : datenfelder.values()) {
+            if (LOG.isDebugEnabled() && f.getBezeichnung().startsWith("Satznummer")
+                    && feld.getBezeichnung().startsWith("Satznummer")) {
+                LOG.debug(f.getBezeichnung() + "(" + f.getBezeichner().getTechnischerName() + ") gefunden in "
+                        + this + this.satznummer);
+            }
             if (!feld.equals(f) && feld.overlapsWith(f)) {
                 if (isSatznummer(f)) {
                     remove(f);
@@ -203,11 +218,21 @@ public class Teildatensatz extends Satz {
             }
         }
         if (feld.getBezeichnung().startsWith("Satznummer")) {
-           feld.setInhalt(this.satznummer.getInhalt());
+            feld.setInhalt(this.satznummer.getInhalt());
+        }
+        if (feld.getBezeichnung().startsWith("Vorzeichen")) {
+            LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
+            feld.setInhalt("+");
+        }
+        if (this.getSatzart() == 1 && feld.getBezeichner().getTechnischerName().equals("Satzart0001")) {
+            LOG.debug("{}({}) einfuegen in {} {}}", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(),
+                    this, this.getSatzversion());
+            feld.setInhalt(this.getSatzversion().getInhalt());
         }
         datenfelder.put(feld.getBezeichner(), feld);
-        if (!sortedFelder.add(feld))
-           LOG.debug("Bezeichner " + feld.getBezeichner() + "(Bezeichnung " + feld.getBezeichnung() + ") schon vorhanden: " + " in " + this + this.satznummer);
+        if (!sortedFelder.add(feld)) {
+            LOG.debug("Bezeichner {} schon vorhanden in {} {}.", feld.getBezeichner(), this, this.satznummer);
+        }
     }
 
     /**
