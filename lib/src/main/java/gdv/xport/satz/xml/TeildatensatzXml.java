@@ -22,15 +22,14 @@ import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import javax.xml.stream.XMLStreamException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.xml.stream.XMLStreamException;
-
-import org.apache.logging.log4j.*;
 
 /**
  * Dieser {@link Teildatensatz} wurde um Belange fuer die XML-Verarbeitung
@@ -42,8 +41,8 @@ import org.apache.logging.log4j.*;
 public final class TeildatensatzXml extends Teildatensatz {
 
     private static final Logger LOG = LogManager.getLogger(TeildatensatzXml.class);
-    private static final Map<String, FeldXml> MISSING_FELDER = new HashMap<String, FeldXml>();
-    private final List<FeldReferenz> feldReferenzen = new ArrayList<FeldReferenz>();
+    private static final Map<String, FeldXml> MISSING_FELDER = new HashMap<>();
+    private final List<FeldReferenz> feldReferenzen = new ArrayList<>();
     private Satzende satzende;
 
     static {
@@ -64,6 +63,17 @@ public final class TeildatensatzXml extends Teildatensatz {
      */
     public TeildatensatzXml(final int satzart, final int nr) {
         super(satzart, nr);
+    }
+
+    /**
+     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart und
+     * Nummer.
+     *
+     * @param satz SatzXml, zu dem der Teildatensatz gehoert
+     * @param nr   Nummer des Teildatensatzes (zwischen 1 und 9)
+     */
+    public TeildatensatzXml(final SatzXml satz, final int nr) {
+        super(satz, nr);
     }
 
     /**
