@@ -167,21 +167,22 @@ public abstract class Satz implements Cloneable {
         this.gdvSatzartNummer = satz.getGdvSatzartNummer();
         this.createTeildatensaetze(tdsList);
     }
-  /**
-   * Instanziiert einen neuen Satz.
-   *
-   * @param art z.B. 100 (f. Adressteil)
-   * @param tdsList Liste mit den Teildatensaetzen
-   * @param satzVersion die Version des Satzes
-   */
+
+	/**
+	 * Instanziiert einen neuen Satz.
+	 *
+	 * @param art         z.B. 100 (f. Adressteil)
+	 * @param tdsList     Liste mit den Teildatensaetzen
+	 * @param satzVersion die Version des Satzes
+	 */
     public Satz(
             final int art, final List<? extends Teildatensatz> tdsList, final AlphaNumFeld satzVersion
     ) {
     this.satzart.setInhalt(art);
     if (satzVersion != null)
-      this.setSatzversion(satzVersion.getInhalt());
+		this.setSatzversion(satzVersion.getInhalt());
     this.createTeildatensaetze(tdsList);
-  }
+	}
 
     protected void createTeildatensaetze(final int n) {
         teildatensatz = new Teildatensatz[n];
@@ -193,7 +194,7 @@ public abstract class Satz implements Cloneable {
 	protected void createTeildatensaetze(final List<? extends Teildatensatz> tdsList) {
 		teildatensatz = new Teildatensatz[tdsList.size()];
 		for (int i = 0; i < tdsList.size(); i++) {
-			teildatensatz[i] = tdsList.get(i);
+			teildatensatz[i] = new Teildatensatz(tdsList.get(i));
 			teildatensatz[i].add(this.satzart);
 		}
 	}
@@ -472,7 +473,7 @@ public abstract class Satz implements Cloneable {
      * Inhalt angehaengt.
      * </p>
      *
-     * @param string
+     * @param string Satzart-Name
      */
     protected void setGdvSatzartName(String string) {
         StringBuilder buf = new StringBuilder();

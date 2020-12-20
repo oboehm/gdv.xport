@@ -50,8 +50,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 /**
@@ -157,6 +156,7 @@ public final class SatzTest extends AbstractSatzTest {
      * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
      * {@link Feld#NULL_FELD} erwartet.
      */
+    @Test
     public void testGetFeldSafe() {
         Feld f = satz.getFeldSafe("hemmernet");
         assertSame(Feld.NULL_FELD, f);
@@ -184,6 +184,7 @@ public final class SatzTest extends AbstractSatzTest {
      * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
      * {@link Feld#NULL_FELD} erwartet.
      */
+    @Test
     public void testGetFeldSafeBezeichner() {
         Feld f = satz.getFeldSafe(new Bezeichner("hemmernet"));
         assertSame(Feld.NULL_FELD, f);
@@ -211,6 +212,7 @@ public final class SatzTest extends AbstractSatzTest {
      * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
      * {@link Feld#NULL_FELD} erwartet.
      */
+    @Test
     public void testGetFeldSafeEnum() {
         Feld f = satz.getFeldSafe(Feld221Wagnis13ZukSummenaenderungen.ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN);
         assertSame(Feld.NULL_FELD, f);
@@ -508,6 +510,24 @@ public final class SatzTest extends AbstractSatzTest {
         assertNotEquals(f1, f2);
         Feld summe = wertungssummen.getFeld(Bezeichner.of("Haftungswertungssumme in W\u00e4hrungseinheiten 1"));
         assertEquals(f1, summe);
+    }
+
+    @Test
+    public void testTeildatensatzCtor() {
+        Satz satz102 = SatzFactory.getSatz(SatzTyp.of("0102"));
+        Satz testsatz = new TestSatz(102, satz102.getTeildatensaetze());
+        assertEquals(satz102.toLongString(), testsatz.toLongString());
+        satz102.set(Bezeichner.BERUF_TEXT, "Tester");
+        assertThat(testsatz.getFeld(Bezeichner.BERUF_TEXT).getInhalt().trim(), isEmptyString());
+        assertNotEquals(satz102.toLongString(), testsatz.toLongString());
+    }
+
+
+
+    static class TestSatz extends Satz {
+        public TestSatz(int art, List<? extends Teildatensatz> tdsList) {
+            super(art, tdsList);
+        }
     }
 
 }
