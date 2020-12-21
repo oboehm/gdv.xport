@@ -28,6 +28,7 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz220;
+import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -99,7 +100,7 @@ public final class DatenpaketTest {
         assertEquals(expectedLength, data.length());
         Vorsatz vorsatz = datenpaket.getVorsatz();
         assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
-        assertEquals("1.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
+        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(0, nachsatz.getAnzahlSaetze());
         assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
@@ -126,6 +127,7 @@ public final class DatenpaketTest {
         datum.setInhalt("13022014");
         datenpaket.setErstellungsDatumVon(datum);
         datenpaket.setErstellungsDatumBis(datum);
+        datenpaket.getVorsatz().set(Bezeichner.VERSION_SATZART_9999, "1.1");
         File file = File.createTempFile("datenpaket", ".txt");
         Config.setEOD("\n");
         datenpaket.export(file);
@@ -142,7 +144,7 @@ public final class DatenpaketTest {
         datenpaket.add(new Satz220());
         Vorsatz vorsatz = datenpaket.getVorsatz();
         assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
-        assertEquals("1.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
+        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(1, nachsatz.getAnzahlSaetze());
     }

@@ -523,7 +523,7 @@ public abstract class Satz implements Cloneable {
      * gefunden wurde)
      * @since 2.0
      */
-    public final String get(final Bezeichner bezeichner) {
+    public String get(final Bezeichner bezeichner) {
         Feld f = getFeld(bezeichner);
         if (f == Feld.NULL_FELD) {
             return NULL_STRING;

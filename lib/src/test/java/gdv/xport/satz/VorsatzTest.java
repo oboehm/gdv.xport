@@ -20,6 +20,7 @@ package gdv.xport.satz;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.feld.Feld0001;
 import gdv.xport.util.SatzFactory;
@@ -29,9 +30,10 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.util.Date;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM;
+import static org.junit.Assert.*;
 
 /**
  * @author oliver
@@ -93,6 +95,20 @@ public final class VorsatzTest extends AbstractSatzTest {
         String endDatum = "09102009";
         vorsatz.setErstellungsZeitraum(startDatum, endDatum);
         checkExport(70, 85, startDatum + endDatum);
+        assertEquals(startDatum + endDatum, vorsatz.getErstellungsZeitraum());
+        assertEquals(startDatum, vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM).toString());
+        assertEquals(endDatum, vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS).toString());
+    }
+
+    @Test
+    public void testGetFeldErstellungsdat() {
+        Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, 70);
+        Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, 78);
+        von.setInhalt("20201220");
+        bis.setInhalt("20201222");
+        vorsatz.setErstellungsZeitraum(von, bis);
+        assertEquals(von, vorsatz.getFeld(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM));
+        assertEquals(bis, vorsatz.getFeld(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS));
     }
 
     /**
@@ -198,6 +214,25 @@ public final class VorsatzTest extends AbstractSatzTest {
         vorsatz.setVersion(satzTyp);
         String expected = SatzFactory.getDatensatz(satzTyp).getSatzversion().getInhalt();
         assertEquals(expected, vorsatz.getVersion(210, 50));
+    }
+
+    @Test
+    public void testSetVersionVorsatz() {
+        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
+    }
+
+    @Test
+    public void testSetVersionNachsatz() {
+        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
+    }
+
+    @Test
+    public void testBezeichner() {
+        assertNotNull(vorsatz.get(Bezeichner.ABSENDER));
+        assertNotNull(vorsatz.get(Bezeichner.ADRESSAT));
+        assertNotNull(vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM));
+        assertNotNull(vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS));
+        assertNotNull(vorsatz.get(Bezeichner.VERMITTLER));
     }
 
 }

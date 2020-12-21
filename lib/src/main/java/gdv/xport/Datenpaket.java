@@ -414,8 +414,7 @@ public final class Datenpaket {
      * @param d Erstellungsdatum von
      */
     public void setErstellungsDatumVon(final Datum d) {
-        Datum von = this.getErstellungsDatumVon();
-        von.setInhalt(d);
+        this.vorsatz.setErstellungsZeitraumVon(d);
     }
 
     /**
@@ -424,7 +423,7 @@ public final class Datenpaket {
      * @return Erstellungsdatum bis
      */
     public Datum getErstellungsDatumVon() {
-        return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDAT_ZEITRAUM_VOM);
+        return this.vorsatz.getErstellungsZeitraumVon();
     }
 
     /**
@@ -433,8 +432,7 @@ public final class Datenpaket {
      * @param d Erstellungsdatum bis
      */
     public void setErstellungsDatumBis(final Datum d) {
-        Datum bis = this.getErstellungsDatumBis();
-        bis.setInhalt(d);
+        this.vorsatz.setErstellungsZeitraumBis(d);
     }
 
     /**
@@ -443,7 +441,7 @@ public final class Datenpaket {
      * @return Erstellungdatum bis
      */
     public Datum getErstellungsDatumBis() {
-        return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDAT_ZEITRAUM_BIS);
+        return this.vorsatz.getErstellungsZeitraumBis();
     }
 
     /**
@@ -452,8 +450,7 @@ public final class Datenpaket {
      * @param s neuer Absender
      */
     public void setAbsender(final String s) {
-        Feld absender = this.getAbsenderFeld();
-        absender.setInhalt(s);
+        this.vorsatz.setAbsender(s);
     }
 
     /**
@@ -478,8 +475,7 @@ public final class Datenpaket {
      * @param s Adressat
      */
     public void setAdressat(final String s) {
-        Feld adressat = this.getAdressatFeld();
-        adressat.setInhalt(s);
+        this.vorsatz.setAdressat(s);
     }
 
     /**
