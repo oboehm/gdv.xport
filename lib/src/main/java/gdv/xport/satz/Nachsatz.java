@@ -57,10 +57,8 @@ public final class Nachsatz extends Satz {
      * Default-Constructor.
      */
     public Nachsatz() {
-        super("9999", 1);
-        this.remove(Bezeichner.SATZNUMMER);
-        this.setUpTeildatensatz();
-        this.setAnzahlSaetze(0);
+        super(satz9999, satz9999.cloneTeildatensaetze());
+        //this.setUpTeildatensatz();
     }
 
     private void setUpTeildatensatz() {
@@ -137,15 +135,12 @@ public final class Nachsatz extends Satz {
      * @return Gesamtbeitrag
      */
     public Betrag getGesamtBeitrag() {
-        return (Betrag) this.getFeld(Bezeichner.GESAMTBEITRAG);
+        return Betrag.of(this.getFeld(Bezeichner.GESAMTBEITRAG));
     }
 
     /**
      * @param beitrag neuer Gesamtbeitrag (Brutto)
-     *
-     * @deprecated ersetzt durch {@link #setGesamtBeitragBrutto(String)}
      */
-    @Deprecated
     public void setGesamtBeitragBrutto(final double beitrag) {
         this.gesamtBeitragBrutto.setInhalt(beitrag);
     }

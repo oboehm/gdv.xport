@@ -131,5 +131,11 @@ public class Betrag extends NumFeld {
         return new Betrag(this);
     }
 
+    public static Betrag of(Feld feld) {
+        Betrag betrag = new Betrag(feld.getBezeichner(), feld.getAnzahlBytes(), feld.getByteAdresse());
+        betrag.setInhalt(feld.getInhalt());
+        return betrag;
+    }
+
 }
 
