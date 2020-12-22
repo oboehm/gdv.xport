@@ -20,6 +20,10 @@ package gdv.xport.satz;
 
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld9999;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static gdv.xport.feld.Bezeichner.*;
 
@@ -29,10 +33,15 @@ import static gdv.xport.feld.Bezeichner.*;
  * Da Vorsatz und Nachsatz von der Datenpaket-Klasse benoetigt werden, habe
  * ich das "deprecated" wieder entfernt (24-Nov-2012, oboehm).
  * </p>
+ *
  * @author oliver
  * @since 05.10.2009
  */
 public final class Nachsatz extends Satz {
+
+    private static final Logger LOG = LogManager.getLogger(Nachsatz.class);
+
+    private static Datensatz satz9999 = SatzFactory.getDatensatz(SatzTyp.of("9999"));
 
     private final NumFeld anzahlSaetze = new NumFeld((Bezeichner.ANZAHL_SAETZE), 10, 5);
     private final AlphaNumFeld vermittler = new AlphaNumFeld((Bezeichner.VERMITTLER), 10, 15);
@@ -86,13 +95,11 @@ public final class Nachsatz extends Satz {
      * Anzahl der Saetze um 1 erhoehen.
      */
     public void increaseAnzahlSaetze() {
-        int n = this.getAnzahlSaetze();
-        this.setAnzahlSaetze(n + 1);
+        this.setAnzahlSaetze(this.getAnzahlSaetze() + 1);
     }
 
     /**
-     * @param s
-     *            Vermittler
+     * @param s Vermittler
      */
     public void setVermittler(final String s) {
         this.vermittler.setInhalt(s);
@@ -145,7 +152,7 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @return Versichuerungsleistungen
+     * @return VersicherungsLeistungen (Feld 9)
      */
     public BetragMitVorzeichen getVersicherungsLeistungen() {
         return this.versicherungsLeistungen;
