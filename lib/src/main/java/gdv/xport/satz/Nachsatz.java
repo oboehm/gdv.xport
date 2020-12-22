@@ -41,7 +41,7 @@ public final class Nachsatz extends Satz {
 
     private static final Logger LOG = LogManager.getLogger(Nachsatz.class);
 
-    private static Datensatz satz9999 = SatzFactory.getDatensatz(SatzTyp.of("9999"));
+    private static final Datensatz satz9999 = SatzFactory.getDatensatz(SatzTyp.of("9999"));
 
     private final NumFeld anzahlSaetze = new NumFeld((Bezeichner.ANZAHL_SAETZE), 10, 5);
     private final AlphaNumFeld vermittler = new AlphaNumFeld((Bezeichner.VERMITTLER), 10, 15);
@@ -80,15 +80,16 @@ public final class Nachsatz extends Satz {
      * @param n Anzahl der eingeschlossenen Saetze
      */
     public void setAnzahlSaetze(final int n) {
-        this.anzahlSaetze.setInhalt(n);
-        this.getTeildatensatz(1).add(anzahlSaetze);
+        this.set(Bezeichner.ANZAHL_SAETZE, n);
     }
 
     /**
      * @return Anzahl der eingeschlossenen Saetze
      */
     public int getAnzahlSaetze() {
-        return this.anzahlSaetze.toInt();
+        return Integer.parseInt(this.getFeld(Bezeichner.ANZAHL_SAETZE)
+                                    .getInhalt()
+                                    .trim());
     }
 
     /**
@@ -102,38 +103,75 @@ public final class Nachsatz extends Satz {
      * @param s Vermittler
      */
     public void setVermittler(final String s) {
-        this.vermittler.setInhalt(s);
+        this.set(Bezeichner.GESCHAEFTSSTELLE_VERMITTLER, s);
     }
 
     /**
      * @return Vermittler
      */
     public String getVermittler() {
-        return this.vermittler.getInhalt().trim();
+        return this.getFeld(Bezeichner.GESCHAEFTSSTELLE_VERMITTLER)
+                   .getInhalt()
+                   .trim();
     }
 
     /**
      * Setzt den Gesamtbeitrag.
      *
-     * @param beitrag
-     *            der neue Gesamtbeitrag
+     * @param strBeitrag der neue Gesamtbeitrag
      */
-    public void setGesamtBeitrag(final double beitrag) {
-        this.gesamtBeitrag.setInhalt(beitrag);
+    public void setGesamtBeitrag(final String strBeitrag) {
+        this.set(Bezeichner.GESAMTBEITRAG, strBeitrag);
+    }
+
+    /**
+     * Setzt den Gesamtbeitrag.
+     *
+     * @param numFeldBeitrag der neue Gesamtbeitrag
+     */
+    public void setGesamtBeitrag(final NumFeld numFeldBeitrag) {
+        this.set(Bezeichner.GESAMTBEITRAG, numFeldBeitrag.getInhalt());
     }
 
     /**
      * @return Gesamtbeitrag
      */
     public Betrag getGesamtBeitrag() {
-        return this.gesamtBeitrag;
+        return (Betrag) this.getFeld(Bezeichner.GESAMTBEITRAG);
     }
 
     /**
      * @param beitrag neuer Gesamtbeitrag (Brutto)
+     *
+     * @deprecated ersetzt durch {@link #setGesamtBeitragBrutto(String)}
      */
+    @Deprecated
     public void setGesamtBeitragBrutto(final double beitrag) {
         this.gesamtBeitragBrutto.setInhalt(beitrag);
+    }
+
+    /**
+     * Setzt den Gesamtbeitrag-Brutto(Inkasso) (Feld 5)
+     *
+     * @param strBeitrag neuer Gesamtbeitrag-Brutto(Inkasso)
+     * @since 5.0
+     */
+    public void setGesamtBeitragBrutto(final String strBeitrag) {
+        this.getTeildatensatz(1)
+            .getFeld(5)
+            .setInhalt(strBeitrag);
+    }
+
+    /**
+     * Setzt den Gesamtbeitrag-Brutto(Inkasso) (Feld 5)
+     *
+     * @param numFeldBeitrag neuer Gesamtbeitrag-Brutto(Inkasso)
+     * @since 5.0
+     */
+    public void setGesamtBeitragBrutto(final NumFeld numFeldBeitrag) {
+        this.getTeildatensatz(1)
+            .getFeld(5)
+            .setInhalt(numFeldBeitrag.getInhalt());
     }
 
     /**
