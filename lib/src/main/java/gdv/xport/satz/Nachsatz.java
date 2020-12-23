@@ -40,11 +40,8 @@ import static gdv.xport.feld.Bezeichner.*;
 public final class Nachsatz extends Satz {
 
     private static final Logger LOG = LogManager.getLogger(Nachsatz.class);
-
     private static final Datensatz satz9999 = SatzFactory.getDatensatz(SatzTyp.of("9999"));
 
-    private final NumFeld anzahlSaetze = new NumFeld((Bezeichner.ANZAHL_SAETZE), 10, 5);
-    private final AlphaNumFeld vermittler = new AlphaNumFeld((Bezeichner.VERMITTLER), 10, 15);
     private final Betrag gesamtBeitrag = new Betrag((Bezeichner.GESAMTBEITRAG), 15, 25);
     private final BetragMitVorzeichen gesamtBeitragBrutto = new BetragMitVorzeichen(GESAMTBEITRAG_BRUTTO, 15, 40);
     private final BetragMitVorzeichen gesamtProvisionsBetrag = new BetragMitVorzeichen(GESAMTPROVISIONSBETRAG, 15, 55);
@@ -58,18 +55,6 @@ public final class Nachsatz extends Satz {
      */
     public Nachsatz() {
         super(satz9999, satz9999.cloneTeildatensaetze());
-        //this.setUpTeildatensatz();
-    }
-
-    private void setUpTeildatensatz() {
-        add(this.anzahlSaetze);
-        add(this.vermittler);
-        add(this.gesamtBeitrag);
-        add(this.gesamtBeitragBrutto);
-        add(this.gesamtProvisionsBetrag);
-        add(this.versicherungsLeistungen);
-        add(this.schadenbearbeitungsKosten);
-        add(new AlphaNumFeld((Bezeichner.LEERSTELLEN), 157, 100));
     }
 
     /**
