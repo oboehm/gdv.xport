@@ -179,10 +179,17 @@ public class NachsatzTest extends AbstractSatzTest {
     }
 
     @Test
-    public void testAddGesamtBetrag() {
+    public void testAddGesamtBeitrag() {
         nachsatz.setGesamtBeitrag("12340");
         nachsatz.addGesamtBeitrag(5L);
         assertEquals(123.45, nachsatz.getGesamtBeitrag().toDouble(), 0.0001);
+    }
+
+    @Test
+    public void testAddGesamtBeitragBrutto() {
+        nachsatz.setGesamtBeitragBruttoMitVorzeichen(-10.50);
+        nachsatz.addGesamtBeitragBrutto(1100);
+        assertEquals(0.50, nachsatz.getGesamtBeitragBruttoMitVorzeichen().toDouble(), 0.0001);
     }
 
 }

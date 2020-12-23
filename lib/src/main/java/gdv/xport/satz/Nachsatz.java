@@ -194,6 +194,50 @@ public final class Nachsatz extends Satz {
     }
 
     /**
+     * Erhoeht den Gesamtbeitrag-Brutto(Inkasso) (Feld 5 und Feld 6)
+     *
+     * @param beitrag neuer Summand fuer Gesamtbeitrag-Brutto(Inkasso)
+     * @since 5.0
+     */
+    public void addGesamtBeitragBrutto(final long beitrag) {
+        Long beitragNach;
+
+        try {
+            beitragNach = Long.parseLong(this.getTeildatensatz(1)
+                                             .getFeld(5)
+                                             .getInhalt()
+                                             .trim());
+        } catch (NumberFormatException e) {
+            beitragNach = 0L;
+        }
+
+        if (("-").equals(this.getTeildatensatz(1)
+                             .getFeld(6)
+                             .getInhalt()
+                             .trim()))
+            beitragNach *= -1;
+
+        beitragNach += beitrag;
+
+        if (beitragNach >= 0) {
+            this.getTeildatensatz(1)
+                .getFeld(5)
+                .setInhalt(beitragNach.toString());
+            this.getTeildatensatz(1)
+                .getFeld(6)
+                .setInhalt("+");
+        } else {
+            beitragNach *= -1;
+            this.getTeildatensatz(1)
+                .getFeld(5)
+                .setInhalt(beitragNach.toString());
+            this.getTeildatensatz(1)
+                .getFeld(6)
+                .setInhalt("-");
+        }
+    }
+
+    /**
      * Diese Methode wird kuenftig nur den Betragsteil zurueckliefern und damit
      * auch eine andere Semantik bekommen. Bis dahin ist diese Methode aber
      * deprecated.
