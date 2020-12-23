@@ -42,8 +42,6 @@ public final class Nachsatz extends Satz {
     private static final Logger LOG = LogManager.getLogger(Nachsatz.class);
     private static final Datensatz satz9999 = SatzFactory.getDatensatz(SatzTyp.of("9999"));
 
-    private final Betrag gesamtBeitrag = new Betrag((Bezeichner.GESAMTBEITRAG), 15, 25);
-    private final BetragMitVorzeichen gesamtBeitragBrutto = new BetragMitVorzeichen(GESAMTBEITRAG_BRUTTO, 15, 40);
     private final BetragMitVorzeichen gesamtProvisionsBetrag = new BetragMitVorzeichen(GESAMTPROVISIONSBETRAG, 15, 55);
     private final BetragMitVorzeichen versicherungsLeistungen = new BetragMitVorzeichen(VERSICHERUNGSLEISTUNGEN, 15,
             70);
@@ -102,6 +100,7 @@ public final class Nachsatz extends Satz {
      * Setzt den Gesamtbeitrag.
      *
      * @param strBeitrag der neue Gesamtbeitrag
+     * @since 5.0
      */
     public void setGesamtBeitrag(final String strBeitrag) {
         this.set(Bezeichner.GESAMTBEITRAG, strBeitrag);
@@ -111,13 +110,17 @@ public final class Nachsatz extends Satz {
      * Setzt den Gesamtbeitrag.
      *
      * @param numFeldBeitrag der neue Gesamtbeitrag
+     * @since 5.0
      */
     public void setGesamtBeitrag(final NumFeld numFeldBeitrag) {
         this.set(Bezeichner.GESAMTBEITRAG, numFeldBeitrag.getInhalt());
     }
 
     /**
-     * @return Gesamtbeitrag
+     * Diese Methode liefert den Gesamt-Beitrag als {@link Betrag} und nicht
+     * als String zurueck, um nicht die Kompatibilitaet mit v4 zu brechen.
+     *
+     * @return Gesamtbeitrag als Betrag
      */
     public Betrag getGesamtBeitrag() {
         return Betrag.of(this.getFeld(Bezeichner.GESAMTBEITRAG));
@@ -125,9 +128,21 @@ public final class Nachsatz extends Satz {
 
     /**
      * @param beitrag neuer Gesamtbeitrag (Brutto)
+     * @deprecated durch {@link #setGesamtBeitragBruttoMitVorzeichen(double)} abgeloest
      */
+    @Deprecated
     public void setGesamtBeitragBrutto(final double beitrag) {
-        this.gesamtBeitragBrutto.setInhalt(beitrag);
+        this.setGesamtBeitragBruttoMitVorzeichen(beitrag);
+    }
+
+    /**
+     * @param beitrag neuer Gesamtbeitrag (Brutto)
+     */
+    public void setGesamtBeitragBruttoMitVorzeichen(final double beitrag) {
+        BetragMitVorzeichen bmv = getGesamtBeitragBruttoMitVorzeichen();
+        bmv.setInhalt(beitrag);
+        setGesamtBeitragBrutto(bmv.getBetrag().getInhalt());
+        setVorzeichenGesamtbeitragBrutto(Character.toString(bmv.getVorzeichen()));
     }
 
     /**
@@ -155,10 +170,50 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @return Gesamtbeitrag (Brutto)
+     * Diese Methode wird kuenftig nur den Betragsteil zurueckliefern und damit
+     * auch eine andere Semantik bekommen. Bis dahin ist diese Methode aber
+     * deprecated.
+     *
+     * @return Gesamtbeitrag-Brutto(Inkasso) (Feld 5)
+     * @deprecated wurde durch {@link #getGesamtBeitragBruttoMitVorzeichen()} ersetzt
      */
+    @Deprecated
     public BetragMitVorzeichen getGesamtBeitragBrutto() {
-        return this.gesamtBeitragBrutto;
+        return getGesamtBeitragBruttoMitVorzeichen();
+    }
+
+    /**
+     * Diese Methode ersetzt die alte {@link #getGesamtBeitragBrutto()}.
+     *
+     * @return Gesamtbeitrag-Brutto(Inkasso) (Feld 5)
+     * @since 5.0
+     */
+    public BetragMitVorzeichen getGesamtBeitragBruttoMitVorzeichen() {
+        NumFeld brutto = (NumFeld) getFeld(GESAMTBEITRAG_BRUTTO);
+        AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(VORZEICHEN);
+        return BetragMitVorzeichen.of(brutto, vorzeichen);
+    }
+
+    /**
+     * Setzt das Vorzeichen Gesamtbeitrag-Brutto(Inkasso) (Feld 6)
+     *
+     * @param strVorzeichen
+     * @since 5.0
+     */
+    public void setVorzeichenGesamtbeitragBrutto(final String strVorzeichen) {
+        if (("+").equalsIgnoreCase(strVorzeichen) || ("-").equalsIgnoreCase(strVorzeichen))
+            this.getTeildatensatz(1).getFeld(6).setInhalt(strVorzeichen);
+        else throw new IllegalArgumentException(strVorzeichen + ": kein Vorzeichen");
+    }
+
+    /**
+     * Liefert das Vorzeichen Gesamtbeitrag-Brutto(Inkasso) (Feld 6)
+     *
+     * @return das Vorzeichen
+     * @since 5.0
+     */
+    public String getVorzeichenGesamtbeitragBrutto() {
+        return this.getTeildatensatz(1).getFeld(6).getInhalt().trim();
     }
 
     /**
@@ -212,7 +267,7 @@ public final class Nachsatz extends Satz {
     private Feld getFeld(Feld9999 feld) {
         switch (feld) {
             case VORZEICHEN:
-                return getVorzeichenOf(gesamtBeitragBrutto);
+                return getVorzeichenOf(getGesamtBeitragBrutto());
             case VORZEICHEN2:
                 return getVorzeichenOf(gesamtProvisionsBetrag);
             case VORZEICHEN3:
