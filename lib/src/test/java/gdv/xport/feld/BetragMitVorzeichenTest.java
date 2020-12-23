@@ -92,5 +92,21 @@ public final class BetragMitVorzeichenTest extends AbstractFeldTest {
         }
     }
 
-}
+    @Test
+    public void testOf() {
+        NumFeld betrag = new NumFeld(Bezeichner.GESAMTBEITRAG_BRUTTO, 40, "00000000004711", 2);
+        AlphaNumFeld vorzeichen = new Zeichen(Bezeichner.VORZEICHEN, 54, '+');
+        BetragMitVorzeichen bmz = BetragMitVorzeichen.of(betrag, vorzeichen);
+        assertEquals(54, bmz.getEndAdresse());
+        assertEquals("00000000004711+", bmz.getInhalt());
+        assertEquals(betrag, bmz.getBetrag());
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testOfWithException() {
+        NumFeld betrag = new NumFeld(Bezeichner.GESAMTBEITRAG_BRUTTO, 40, "00000000004711", 2);
+        AlphaNumFeld vorzeichen = new Zeichen(Bezeichner.VORZEICHEN, 55, '+');
+        BetragMitVorzeichen.of(betrag, vorzeichen);
+    }
+
+}

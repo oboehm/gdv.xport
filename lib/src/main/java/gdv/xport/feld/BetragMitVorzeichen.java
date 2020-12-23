@@ -104,6 +104,24 @@ public final class BetragMitVorzeichen extends Betrag {
         return s.charAt(s.length() - 1);
     }
 
+    /**
+     * Liefert nur den Betragsteil ohne Vorzeichen zurueck.
+     *
+     * @return Betrag ohne Vorzeichen
+     * @since 5.0
+     */
+    public Betrag getBetrag() {
+        String name = getBezeichnung();
+        if (name.endsWith("mit Vorzeichen")) {
+            name = name.substring(0, name.length() - 15).trim();
+        } else {
+            name += " ohne Vorzeichen";
+        }
+        Betrag betrag = new Betrag(Bezeichner.of(name), getAnzahlBytes()-1, getByteAdresse());
+        betrag.setInhalt(getInhalt().substring(0, betrag.getAnzahlBytes()));
+        return betrag;
+    }
+
     /*
      * @see gdv.xport.feld.Betrag#setInhalt(double)
      */
@@ -188,5 +206,23 @@ public final class BetragMitVorzeichen extends Betrag {
         return new BetragMitVorzeichen(this);
     }
 
-}
+    /**
+     * Hiermit kann man einen Betrag mit angrenzendem Vorzeichen zu
+     * {@link BetragMitVorzeichen} zusammenfassen
+     *
+     * @param betrag     der Betrag
+     * @param vorzeichen das Vorzeichen
+     * @return Betrag mit Vorzeichen
+     * @since 5.0
+     */
+    public static BetragMitVorzeichen of(NumFeld betrag, AlphaNumFeld vorzeichen) {
+        if (betrag.getEndAdresse() + 1 != vorzeichen.getByteAdresse()) {
+            throw new IllegalArgumentException("gap between " + betrag + " and " + vorzeichen + " (cannot merge)");
+        }
+        BetragMitVorzeichen bmv = new BetragMitVorzeichen(Bezeichner.of(betrag.getBezeichnung() + " mit Vorzeichen"),
+                betrag.getAnzahlBytes() + 1, betrag.getByteAdresse());
+        bmv.setInhalt(betrag.getInhalt() + vorzeichen.getInhalt());
+        return bmv;
+    }
 
+}
