@@ -43,8 +43,6 @@ public final class Nachsatz extends Satz {
     private static final Datensatz satz9999 = SatzFactory.getDatensatz(SatzTyp.of("9999"));
 
     private final BetragMitVorzeichen gesamtProvisionsBetrag = new BetragMitVorzeichen(GESAMTPROVISIONSBETRAG, 15, 55);
-    private final BetragMitVorzeichen versicherungsLeistungen = new BetragMitVorzeichen(VERSICHERUNGSLEISTUNGEN, 15,
-            70);
     private final BetragMitVorzeichen schadenbearbeitungsKosten = new BetragMitVorzeichen(SCHADENBEARBEITUNGSKOSTEN, 15,
             85);
 
@@ -137,6 +135,7 @@ public final class Nachsatz extends Satz {
 
     /**
      * @param beitrag neuer Gesamtbeitrag (Brutto)
+     * @since 5.0
      */
     public void setGesamtBeitragBruttoMitVorzeichen(final double beitrag) {
         BetragMitVorzeichen bmv = getGesamtBeitragBruttoMitVorzeichen();
@@ -217,18 +216,92 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @param betrag
-     *            neuer Betrag
+     * Durch {@link #setVersicherungsLeistungenMitVorzeichen(double)}
+     * ersetzt.
+     *
+     * @param betrag neuer Betrag
+     * @deprecated durch {@link #setVersicherungsLeistungenMitVorzeichen(double)} ersetzt
      */
-    public void setVersicherungsLeistungen(final Double betrag) {
-        this.versicherungsLeistungen.setInhalt(betrag);
+    public void setVersicherungsLeistungen(final double betrag) {
+        setVersicherungsLeistungenMitVorzeichen(betrag);
+    }
+
+    /**
+     * Ersetzt {@link #setVersicherungsLeistungen(double)}.
+     *
+     * @param betrag neuer Betrag
+     * @since 5.0
+     */
+    public void setVersicherungsLeistungenMitVorzeichen(final double betrag) {
+        BetragMitVorzeichen bmv = getVersicherungsLeistungenMitVorzeichen();
+        bmv.setInhalt(betrag);
+        setVersicherungsLeistungen(bmv.getBetrag().getInhalt());
+        setVorzeichenVersicherungsLeistungen(Character.toString(bmv.getVorzeichen()));
+    }
+
+    /**
+     * Diese Methode wird kuenftig nur den Betragsteil zurueckliefern und damit
+     * auch eine andere Semantik bekommen. Bis dahin ist diese Methode aber
+     * deprecated.
+     *
+     * @return VersicherungsLeistungen (Feld 9)
+     * @deprecated durch {@link #getVersicherungsLeistungenMitVorzeichen()} ersetzt
+     */
+    @Deprecated
+    public BetragMitVorzeichen getVersicherungsLeistungen() {
+        return this.getVersicherungsLeistungenMitVorzeichen();
+    }
+
+    /**
+     * Setzt die Versicherungsleistungen (Feld 9)
+     *
+     * @param strBeitrag neue Versicherungsleitungen
+     * @since 5.0
+     */
+    public void setVersicherungsLeistungen(final String strBeitrag) {
+        this.getTeildatensatz(1).getFeld(9).setInhalt(strBeitrag);
+    }
+
+    /**
+     * Setzt die Versicherungsleistungen (Feld 9)
+     *
+     * @param numFeldBeitrag neue Versicherungsleitungen
+     * @since 5.0
+     */
+    public void setVersicherungsLeistungen(final NumFeld numFeldBeitrag) {
+        this.getTeildatensatz(1).getFeld(9).setInhalt(numFeldBeitrag.getInhalt());
     }
 
     /**
      * @return VersicherungsLeistungen (Feld 9)
+     * @since 5.0
      */
-    public BetragMitVorzeichen getVersicherungsLeistungen() {
-        return this.versicherungsLeistungen;
+    public BetragMitVorzeichen getVersicherungsLeistungenMitVorzeichen() {
+        NumFeld brutto = (NumFeld) getFeld(VERSICHERUNGSLEISTUNGEN);
+        AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(VORZEICHEN3);
+        return BetragMitVorzeichen.of(brutto, vorzeichen);
+    }
+
+    /**
+     * Setzt das Vorzeichen VersicherungsLeistungen (Feld 10)
+     *
+     * @param strVorzeichen
+     * @since 5.0
+     */
+    public void setVorzeichenVersicherungsLeistungen(final String strVorzeichen) {
+        if (("+").equalsIgnoreCase(strVorzeichen) || ("-").equalsIgnoreCase(strVorzeichen))
+            this.getTeildatensatz(1).getFeld(10).setInhalt(strVorzeichen);
+        else throw new IllegalArgumentException(strVorzeichen + ": kein Vorzeichen");
+    }
+
+    /**
+     * Liefert das Vorzeichen VersicherungsLeistungen (Feld 10)
+     *
+     * @return das Vorzeichen
+     * @since 5.0
+     */
+    public String getVorzeichenVersicherungsLeistungen() {
+        return this.getTeildatensatz(1).getFeld(10).getInhalt().trim();
     }
 
     /**
@@ -271,7 +344,7 @@ public final class Nachsatz extends Satz {
             case VORZEICHEN2:
                 return getVorzeichenOf(gesamtProvisionsBetrag);
             case VORZEICHEN3:
-                return getVorzeichenOf(versicherungsLeistungen);
+                return getVorzeichenOf(getVersicherungsLeistungenMitVorzeichen());
             case VORZEICHEN4:
                 return getVorzeichenOf(schadenbearbeitungsKosten);
             default:

@@ -1297,10 +1297,10 @@ public final class Bezeichner {
     public static final Bezeichner VORNAME_VP = new Bezeichner("Vorname der VP");
     public static final Bezeichner VORSTEUERABZUGSBERECHTIGT = new Bezeichner("Vorsteuerabzugsberechtigt");
     public static final Bezeichner VORZEICHEN = new Bezeichner("Vorzeichen");
-    public static final Bezeichner VORZEICHEN2 = VORZEICHEN;
-    public static final Bezeichner VORZEICHEN3 = VORZEICHEN;
-    public static final Bezeichner VORZEICHEN4 = VORZEICHEN;
-    public static final Bezeichner VORZEICHEN5 = VORZEICHEN;
+    public static final Bezeichner VORZEICHEN2 = new Bezeichner("Vorzeichen2");
+    public static final Bezeichner VORZEICHEN3 = new Bezeichner("Vorzeichen3");
+    public static final Bezeichner VORZEICHEN4 = new Bezeichner("Vorzeichen4");
+    public static final Bezeichner VORZEICHEN5 = new Bezeichner("Vorzeichen5");
     public static final Bezeichner VORZUGSSEUERBERECHTIGUNG_PROZENT = new Bezeichner("Vorsteuerabszugsberechtigung in Prozent");
     public static final Bezeichner VORZUGSSTEUERBERECHTIGUNG = new Bezeichner("Vorsteuerabszugsberechtigung Ja/Nein");
     public static final Bezeichner VP_PERSONENNUMMER_VERMITTLER = new Bezeichner("VP-Personennummer des Vermittlers", "VpPersonenNrVermittlers");
