@@ -173,6 +173,13 @@ public class NachsatzTest extends AbstractSatzTest {
     }
 
     @Test
+    public void testAddProvisonBetrag() {
+        nachsatz.setGesamtProvisonBetragMitVorzeichen(2.50);
+        nachsatz.addGesamtProvisionsBetrag(-255);
+        assertEquals(-0.05, nachsatz.getGesamtProvisonBetragMitVorzeichen().toDouble(), 0.0001);
+    }
+
+    @Test
     public void testSetVersicherungsleistungen() {
         nachsatz.setVersicherungsLeistungenMitVorzeichen(12.50);
         assertEquals(12.50, nachsatz.getVersicherungsLeistungenMitVorzeichen().toDouble(), 0.0001);

@@ -42,7 +42,6 @@ public final class Nachsatz extends Satz {
     private static final Logger LOG = LogManager.getLogger(Nachsatz.class);
     private static final Datensatz satz9999 = SatzFactory.getDatensatz(SatzTyp.of("9999"));
 
-    private final BetragMitVorzeichen gesamtProvisionsBetrag = new BetragMitVorzeichen(GESAMTPROVISIONSBETRAG, 15, 55);
     private final BetragMitVorzeichen schadenbearbeitungsKosten = new BetragMitVorzeichen(SCHADENBEARBEITUNGSKOSTEN, 15,
             85);
 
@@ -285,6 +284,137 @@ public final class Nachsatz extends Satz {
     }
 
     /**
+     * Setzt den Gesamtprovisions-Betrag (Feld 7)
+     *
+     * @param strBeitrag neuer Gesamtprovisions-Betrag
+     * @since 5.0
+     */
+    public void setGesamtProvisonBetrag(final String strBeitrag) {
+        this.getTeildatensatz(1)
+            .getFeld(7)
+            .setInhalt(strBeitrag);
+    }
+
+    /**
+     * Setzt den Gesamtprovisions-Betrag (Feld 7)
+     *
+     * @param numFeldBeitrag neuer Gesamtprovisions-Betrag
+     * @since 5.0
+     */
+    public void setGesamtProvisonBetrag(final NumFeld numFeldBeitrag) {
+        this.getTeildatensatz(1)
+            .getFeld(7)
+            .setInhalt(numFeldBeitrag.getInhalt());
+    }
+
+    /**
+     * Setzt den Gesamtprovisions-Betrag (Feld 7)
+     *
+     * @param betrag neuer Gesamtprovisions-Betrag
+     * @since 5.0
+     */
+    public void setGesamtProvisonBetragMitVorzeichen(final double betrag) {
+        BetragMitVorzeichen bmv = getGesamtProvisonBetragMitVorzeichen();
+        bmv.setInhalt(betrag);
+        setGesamtProvisonBetrag(bmv.getBetrag().getInhalt());
+        setVorzeichenGesamtProvisonBetrag(Character.toString(bmv.getVorzeichen()));
+    }
+
+    /**
+     * Erhoeht den Gesamtprovisions-Betrag (Feld 7 und Feld 8)
+     *
+     * @param betrag neuer Summand fuer Gesamtprovisions-Betrag
+     * @since 5.0
+     */
+    public void addGesamtProvisionsBetrag(final long betrag) {
+        Long betragNach;
+
+        try {
+            betragNach = Long.parseLong(this.getTeildatensatz(1)
+                                            .getFeld(7)
+                                            .getInhalt()
+                                            .trim());
+        } catch (NumberFormatException e) {
+            betragNach = 0L;
+        }
+
+        if (("-").equals(this.getTeildatensatz(1)
+                             .getFeld(8)
+                             .getInhalt()
+                             .trim()))
+            betragNach *= -1;
+
+        betragNach += betrag;
+
+        if (betragNach >= 0) {
+            this.getTeildatensatz(1)
+                .getFeld(7)
+                .setInhalt(betragNach.toString());
+            this.getTeildatensatz(1)
+                .getFeld(8)
+                .setInhalt("+");
+        } else {
+            betragNach *= -1;
+            this.getTeildatensatz(1)
+                .getFeld(7)
+                .setInhalt(betragNach.toString());
+            this.getTeildatensatz(1)
+                .getFeld(8)
+                .setInhalt("-");
+        }
+    }
+
+    /**
+     * Analog zu den anderen Be(i)trags-Methoden liefert diese Methode ein
+     * Betrags-Feld zurueck.
+     *
+     * @return Gesamtprovisions-Betrag (Feld 7)
+     * @since 5.0
+     */
+    public Betrag getGesamtProvisonBetrag() {
+        return Betrag.of(this.getTeildatensatz(1).getFeld(7));
+    }
+
+    /**
+     * @return Gesamtprovisions-Betrag (Feld 7)
+     * @since 5.0
+     */
+    public BetragMitVorzeichen getGesamtProvisonBetragMitVorzeichen() {
+        NumFeld brutto = (NumFeld) getFeld(GESAMTPROVISIONSBETRAG);
+        AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(VORZEICHEN2);
+        return BetragMitVorzeichen.of(brutto, vorzeichen);
+    }
+
+    /**
+     * Setzt das Vorzeichen Gesamtprovisions-Betrag (Feld 8)
+     *
+     * @param strVorzeichen Vorzeichen
+     * @since 5.0
+     */
+    public void setVorzeichenGesamtProvisonBetrag(final String strVorzeichen) {
+        if (("+").equalsIgnoreCase(strVorzeichen) || ("-").equalsIgnoreCase(
+                strVorzeichen))
+            this.getTeildatensatz(1)
+                .getFeld(8)
+                .setInhalt(strVorzeichen);
+        else
+            throw new IllegalArgumentException(strVorzeichen + ": kein Vorzeichen");
+    }
+
+    /**
+     * Liefert das Vorzeichen Schadenbearbeitungskosten (Feld 12)
+     *
+     * @return das Vorzeichen
+     * @since 5.0
+     */
+    public String getVorzeichenGesamtProvisonBetrag() {
+        return this.getTeildatensatz(1)
+                   .getFeld(8)
+                   .getInhalt()
+                   .trim();
+    }
+
+    /**
      * Durch {@link #setVersicherungsLeistungenMitVorzeichen(double)}
      * ersetzt.
      *
@@ -354,7 +484,7 @@ public final class Nachsatz extends Satz {
     /**
      * Setzt das Vorzeichen VersicherungsLeistungen (Feld 10)
      *
-     * @param strVorzeichen
+     * @param strVorzeichen Vorzeichen
      * @since 5.0
      */
     public void setVorzeichenVersicherungsLeistungen(final String strVorzeichen) {
@@ -411,7 +541,7 @@ public final class Nachsatz extends Satz {
             case VORZEICHEN:
                 return getVorzeichenOf(getGesamtBeitragBrutto());
             case VORZEICHEN2:
-                return getVorzeichenOf(gesamtProvisionsBetrag);
+                return getVorzeichenOf(getGesamtBeitragBruttoMitVorzeichen());
             case VORZEICHEN3:
                 return getVorzeichenOf(getVersicherungsLeistungenMitVorzeichen());
             case VORZEICHEN4:
