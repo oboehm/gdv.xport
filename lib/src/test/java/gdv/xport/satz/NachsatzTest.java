@@ -42,7 +42,7 @@ public class NachsatzTest extends AbstractSatzTest {
     private static final Logger LOG = LogManager.getLogger(NachsatzTest.class);
     private final Nachsatz nachsatz = new Nachsatz();
     /** aus musterdatei_041222.txt */
-    private static String INPUT
+    private static final String INPUT
             = "99990000000162999900999900000000048060000000000000000+0000000000"
             + "0000+00000000000000+00000000000000+                             "
             + "                                                                "
@@ -176,6 +176,13 @@ public class NachsatzTest extends AbstractSatzTest {
     public void testSetVersicherungsleistungen() {
         nachsatz.setVersicherungsLeistungenMitVorzeichen(12.50);
         assertEquals(12.50, nachsatz.getVersicherungsLeistungenMitVorzeichen().toDouble(), 0.0001);
+    }
+
+    @Test
+    public void testAddGesamtBetrag() {
+        nachsatz.setGesamtBeitrag("12340");
+        nachsatz.addGesamtBeitrag(5L);
+        assertEquals(123.45, nachsatz.getGesamtBeitrag().toDouble(), 0.0001);
     }
 
 }

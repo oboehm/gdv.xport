@@ -115,6 +115,31 @@ public final class Nachsatz extends Satz {
     }
 
     /**
+     * Erhoeht den Gesamtbeitrag (Feld 4)
+     *
+     * @param beitrag neuer Summand fuer Gesamtbeitrag (in Cents)
+     * @since 5.0
+     */
+    public void addGesamtBeitrag(final long beitrag) {
+        Long beitragNach;
+
+        try {
+            beitragNach = Long.parseLong(this.getTeildatensatz(1)
+                                             .getFeld(4)
+                                             .getInhalt()
+                                             .trim());
+        } catch (NumberFormatException e) {
+            beitragNach = 0L;
+        }
+
+        beitragNach += beitrag;
+
+        this.getTeildatensatz(1)
+            .getFeld(4)
+            .setInhalt(beitragNach.toString());
+    }
+
+    /**
      * Diese Methode liefert den Gesamt-Beitrag als {@link Betrag} und nicht
      * als String zurueck, um nicht die Kompatibilitaet mit v4 zu brechen.
      *
@@ -196,7 +221,7 @@ public final class Nachsatz extends Satz {
     /**
      * Setzt das Vorzeichen Gesamtbeitrag-Brutto(Inkasso) (Feld 6)
      *
-     * @param strVorzeichen
+     * @param strVorzeichen Vorzeichen
      * @since 5.0
      */
     public void setVorzeichenGesamtbeitragBrutto(final String strVorzeichen) {
