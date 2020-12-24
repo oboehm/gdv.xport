@@ -472,6 +472,50 @@ public final class Nachsatz extends Satz {
     }
 
     /**
+     * Erhoeht die VersicherungsLeistungen (Feld 9 und Feld 10)
+     *
+     * @param betrag neuer Summand fuer Versicherungsleitungen
+     * @since 5.0
+     */
+    public void addVersicherungsLeistungen(final long betrag) {
+        Long betragNach;
+
+        try {
+            betragNach = Long.parseLong(this.getTeildatensatz(1)
+                                            .getFeld(9)
+                                            .getInhalt()
+                                            .trim());
+        } catch (NumberFormatException e) {
+            betragNach = 0L;
+        }
+
+        if (("-").equals(this.getTeildatensatz(1)
+                             .getFeld(10)
+                             .getInhalt()
+                             .trim()))
+            betragNach *= -1;
+
+        betragNach += betrag;
+
+        if (betragNach >= 0) {
+            this.getTeildatensatz(1)
+                .getFeld(9)
+                .setInhalt(betragNach.toString());
+            this.getTeildatensatz(1)
+                .getFeld(10)
+                .setInhalt("+");
+        } else {
+            betragNach *= -1;
+            this.getTeildatensatz(1)
+                .getFeld(9)
+                .setInhalt(betragNach.toString());
+            this.getTeildatensatz(1)
+                .getFeld(10)
+                .setInhalt("-");
+        }
+    }
+
+    /**
      * @return VersicherungsLeistungen (Feld 9)
      * @since 5.0
      */

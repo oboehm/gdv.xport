@@ -180,9 +180,10 @@ public class NachsatzTest extends AbstractSatzTest {
     }
 
     @Test
-    public void testSetVersicherungsleistungen() {
+    public void testAddVersicherungsleistungen() {
         nachsatz.setVersicherungsLeistungenMitVorzeichen(12.50);
-        assertEquals(12.50, nachsatz.getVersicherungsLeistungenMitVorzeichen().toDouble(), 0.0001);
+        nachsatz.addVersicherungsLeistungen(55);
+        assertEquals(13.05, nachsatz.getVersicherungsLeistungenMitVorzeichen().toDouble(), 0.0001);
     }
 
     @Test
