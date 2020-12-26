@@ -42,9 +42,6 @@ public final class Nachsatz extends Satz {
     private static final Logger LOG = LogManager.getLogger(Nachsatz.class);
     private static final Datensatz satz9999 = SatzFactory.getDatensatz(SatzTyp.of("9999"));
 
-    private final BetragMitVorzeichen schadenbearbeitungsKosten = new BetragMitVorzeichen(SCHADENBEARBEITUNGSKOSTEN, 15,
-            85);
-
     /**
      * Default-Constructor.
      */
@@ -548,18 +545,110 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @param kosten
-     *            Kosten der Schadensbearbeitung
+     * @param kosten  Kosten der Schadensbearbeitung
+     * @deprecated durch {@link #setSchadenbearbeitungsKostenMitVorzeichen(double)} abgelöst
      */
     public void setSchadenbearbeitungsKosten(final double kosten) {
-        this.schadenbearbeitungsKosten.setInhalt(kosten);
+        setSchadenbearbeitungsKostenMitVorzeichen(kosten);
+    }
+
+    /**
+     * @param beitrag neuer Gesamtbeitrag (Brutto)
+     * @since 5.0
+     */
+    public void setSchadenbearbeitungsKostenMitVorzeichen(final double beitrag) {
+        BetragMitVorzeichen bmv = getSchadenbearbKostenMitVorzeichen();
+        bmv.setInhalt(beitrag);
+        setSchadenbearbKosten(bmv.getBetrag().getInhalt());
+        setVorzeichenSchadenbearbKosten(Character.toString(bmv.getVorzeichen()));
+    }
+
+    /**
+     * Setzt die Schadenbearbeitungskosten (Feld 11)
+     *
+     * @param strBeitrag neue Schadenbearbeitungskosten
+     * @since 5.0
+     */
+    public void setSchadenbearbKosten(final String strBeitrag) {
+        this.getTeildatensatz(1).getFeld(11).setInhalt(strBeitrag);
+    }
+
+    /**
+     * Setzt die Schadenbearbeitungskosten (Feld 11)
+     *
+     * @param numFeldBeitrag neue Schadenbearbeitungskosten
+     * @since 5.0
+     */
+    public void setSchadenbearbKosten(final NumFeld numFeldBeitrag) {
+        this.getTeildatensatz(1).getFeld(11).setInhalt(numFeldBeitrag.getInhalt());
+    }
+
+    /**
+     * Erhoeht die Schadenbearbeitungskosten (Feld 11 und Feld 12)
+     *
+     * @param betrag neuer Summand fuer Schadenbearbeitungskosten
+     * @since 5.0
+     */
+    public void addSchadenbearbeitungskosten(final long betrag) {
+        Long betragNach;
+
+        try {
+            betragNach = Long.parseLong(this.getTeildatensatz(1).getFeld(11).getInhalt().trim());
+        } catch (NumberFormatException e) {
+            betragNach = 0L;
+        }
+
+        if (("-").equals(this.getTeildatensatz(1).getFeld(12).getInhalt().trim())) betragNach *= -1;
+
+        betragNach += betrag;
+
+        if (betragNach >= 0) {
+            this.getTeildatensatz(1).getFeld(11).setInhalt(betragNach.toString());
+            this.getTeildatensatz(1).getFeld(12).setInhalt("+");
+        } else {
+            betragNach *= -1;
+            this.getTeildatensatz(1).getFeld(11).setInhalt(betragNach.toString());
+            this.getTeildatensatz(1).getFeld(12).setInhalt("-");
+        }
     }
 
     /**
      * @return Kosten der Schadensbearbeitung
+     * @deprecated durch {@link #getSchadenbearbKostenMitVorzeichen()} abgeloest
      */
+    @Deprecated
     public BetragMitVorzeichen getSchadenbearbeitungsKosten() {
-        return this.schadenbearbeitungsKosten;
+        return getSchadenbearbKostenMitVorzeichen();
+    }
+
+    /**
+     * @return Schadenbearbeitungskosten (Feld 11)
+     */
+    public BetragMitVorzeichen getSchadenbearbKostenMitVorzeichen() {
+        NumFeld betrag = (NumFeld) getFeld(SCHADENBEARBEITUNGSKOSTEN);
+        AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(VORZEICHEN4);
+        return BetragMitVorzeichen.of(betrag, vorzeichen);
+    }
+
+    /**
+     * Setzt das Vorzeichen Schadenbearbeitungskosten (Feld 12)
+     *
+     * @param strVorzeichen
+     */
+    public void setVorzeichenSchadenbearbKosten(final String strVorzeichen) {
+        if (("+").equalsIgnoreCase(strVorzeichen) || ("-").equalsIgnoreCase(strVorzeichen))
+            this.getTeildatensatz(1).getFeld(12).setInhalt(strVorzeichen);
+        else throw new IllegalArgumentException(strVorzeichen + ": kein Vorzeichen");
+
+    }
+
+    /**
+     * Liefert das Vorzeichen Schadenbearbeitungskosten (Feld 12)
+     *
+     * @return das Vorzeichen
+     */
+    public String getVorzeichenSchadenbearbKosten() {
+        return this.getTeildatensatz(1).getFeld(12).getInhalt().trim();
     }
 
     /**
@@ -589,7 +678,7 @@ public final class Nachsatz extends Satz {
             case VORZEICHEN3:
                 return getVorzeichenOf(getVersicherungsLeistungenMitVorzeichen());
             case VORZEICHEN4:
-                return getVorzeichenOf(schadenbearbeitungsKosten);
+                return getVorzeichenOf(getSchadenbearbKostenMitVorzeichen());
             default:
                 return super.getFeld(feld);
         }
