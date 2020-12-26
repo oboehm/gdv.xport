@@ -25,6 +25,8 @@ import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
+
 import static gdv.xport.feld.Bezeichner.*;
 
 /**
@@ -47,6 +49,32 @@ public final class Nachsatz extends Satz {
      */
     public Nachsatz() {
         super(satz9999, satz9999.cloneTeildatensaetze());
+    }
+
+    /**
+     * Legt einen Nachsatz mit dem angegebenen Inhalt an.
+     *
+     * @param content Inhalt des Nachsatz
+     * @since 5.0
+     */
+    public Nachsatz(final String content) {
+        this();
+        try {
+            this.importFrom(content);
+            LOG.debug(this + " created from \"" + content + '"');
+        } catch (IOException ioe) {
+            throw new IllegalArgumentException("argument too short", ioe);
+        }
+    }
+
+    /**
+     * Dies ist der Copy-Constructor, mit dem man einen bestehenden Nachsatz
+     * kopieren kann.
+     *
+     * @param other der originale Nachsatz
+     */
+    public Nachsatz(final Nachsatz other) {
+        super(1, other.cloneTeildatensaetze(), other.getSatzversion());
     }
 
     /**
@@ -633,7 +661,7 @@ public final class Nachsatz extends Satz {
     /**
      * Setzt das Vorzeichen Schadenbearbeitungskosten (Feld 12)
      *
-     * @param strVorzeichen
+     * @param strVorzeichen Vorzeichen
      */
     public void setVorzeichenSchadenbearbKosten(final String strVorzeichen) {
         if (("+").equalsIgnoreCase(strVorzeichen) || ("-").equalsIgnoreCase(strVorzeichen))
