@@ -64,6 +64,7 @@ public final class Datenpaket {
      */
     public Datenpaket() {
         this(Config.getVUNummer().getInhalt());
+        this.vorsatz.setVersion(this.nachsatz);
     }
 
     /**
@@ -74,11 +75,14 @@ public final class Datenpaket {
      * @since 0.3
      */
     public Datenpaket(final String vuNummer) {
+        this.vorsatz.setVersion(this.nachsatz);
         Datum heute = Datum.heute();
         this.setErstellungsDatumVon(heute);
+        // Zeitraum-bis nicht vorbelegen ? - Warum, ist nur Default, falls nicht gesetzt wird
         this.setErstellungsDatumBis(heute);
         this.setVuNummer(vuNummer);
-        this.setAbsender(vuNummer);
+        // Absender nicht mit vuNummer vorbelegen! - Warum nicht? Ist das VU nicht der Absender?
+        // this.setAbsender(vuNummer);
         LOG.debug(this + " created.");
     }
 
