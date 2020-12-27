@@ -167,13 +167,31 @@ public final class Datenpaket {
     }
 
     /**
-     * Fuegt den uebergebenen Datensatz hinzu.
+     * Fuegt den uebergebenen Datensatz hinzu.<br/>
+     * <b>Achtung:</b> Satzart 001 (Vorsatz) bzw. Satzart 9999 (Nachsatz) kann
+     * nicht hinzugefuegt werden!
      *
      * @param datensatz Datensatz, der hinzugefuegt werden soll
      */
     public void add(final Datensatz datensatz) {
+        if (("0001").equalsIgnoreCase(datensatz.getGdvSatzartName()) || ("9999")
+                .equalsIgnoreCase(datensatz.getGdvSatzartName()))
+            throw new IllegalArgumentException(("0001").equalsIgnoreCase(datensatz
+                    .getGdvSatzartName()) ? "Einen Vorsatz gibt es bereits!"
+                    : "Einen Nachsatz gibt es bereits!");
         datensaetze.add(datensatz);
-        nachsatz.increaseAnzahlSaetze();
+        vorsatz.setVersion(datensatz);
+
+        if (("0200").equalsIgnoreCase(datensatz.getGdvSatzartName()))
+            setNachsatzSummenAus0200(datensatz);
+
+        if (("0400").equalsIgnoreCase(datensatz.getGdvSatzartName()))
+            setNachsatzSummenAus0400(datensatz);
+
+        if (("0500").equalsIgnoreCase(datensatz.getGdvSatzartName()))
+            setNachsatzSummenAus0500(datensatz);
+
+        nachsatz.setAnzahlSaetze(datensaetze.size());
     }
 
     /**
@@ -643,4 +661,94 @@ public final class Datenpaket {
                 "+2 (Daten-)Saetze";
     }
 
+    private void setNachsatzSummenAus0200(Datensatz datensatz) {
+        Long wert;
+        try {
+            wert = Long.parseLong(datensatz.getTeildatensatz(1)
+                                           .getFeld(22)
+                                           .getInhalt());
+        } catch (NumberFormatException e) {
+            wert = 0L;
+        }
+
+        nachsatz.addGesamtBeitrag(wert);
+    }
+
+    private void setNachsatzSummenAus0400(Datensatz datensatz) {
+        Long wert;
+        try {
+            wert = Long.parseLong(datensatz.getTeildatensatz(1)
+                                           .getFeld(26)
+                                           .getInhalt()
+                                           .trim());
+        } catch (NumberFormatException e) {
+            wert = 0L;
+        }
+
+        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+                                               .getFeld(27)
+                                               .getInhalt()
+                                               .trim())) {
+            wert *= -1;
+        }
+
+        nachsatz.addGesamtBeitragBrutto(wert);
+
+        try {
+            wert = Long.parseLong(datensatz.getTeildatensatz(1)
+                                           .getFeld(28)
+                                           .getInhalt()
+                                           .trim());
+        } catch (NumberFormatException e) {
+            wert = 0L;
+        }
+
+        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+                                               .getFeld(29)
+                                               .getInhalt()
+                                               .trim())) {
+            wert *= -1;
+        }
+
+        nachsatz.addGesamtProvisionsBetrag(wert);
+    }
+
+    private void setNachsatzSummenAus0500(Datensatz datensatz) {
+        Long wert;
+        try {
+            wert = Long.parseLong(datensatz.getTeildatensatz(1)
+                                           .getFeld(25)
+                                           .getInhalt()
+                                           .trim());
+        } catch (NumberFormatException e) {
+            wert = 0L;
+        }
+
+        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+                                               .getFeld(26)
+                                               .getInhalt()
+                                               .trim())) {
+            wert *= -1;
+        }
+
+        nachsatz.addVersicherungsLeistungen(wert);
+
+        try {
+            wert = Long.parseLong(datensatz.getTeildatensatz(1)
+                                           .getFeld(27)
+                                           .getInhalt()
+                                           .trim());
+        } catch (NumberFormatException e) {
+            wert = 0L;
+        }
+
+        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+                                               .getFeld(28)
+                                               .getInhalt()
+                                               .trim())) {
+            wert *= -1;
+        }
+
+        nachsatz.addSchadenbearbeitungskosten(wert);
+    }
 }

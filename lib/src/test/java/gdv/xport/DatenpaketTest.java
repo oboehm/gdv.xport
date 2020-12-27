@@ -28,7 +28,6 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz220;
-import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -462,7 +461,11 @@ public final class DatenpaketTest {
                 LOG.info(line + " lines compared (no difference)");
                 break;
             }
-            assertEquals("difference in line " + line, expectedLine, paketLine);
+            if (expectedLine.startsWith("0001")) {
+                assertEquals("difference in Feld 1-6 of line " + line, expectedLine.substring(0, 96), paketLine.substring(0, 96));
+            } else {
+                assertEquals("difference in line " + line, expectedLine, paketLine);
+            }
         }
         expectedReader.close();
     }

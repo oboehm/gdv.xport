@@ -25,7 +25,6 @@ import gdv.xport.satz.Vorsatz;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import patterntesting.runtime.annotation.Broken;
 import patterntesting.runtime.junit.SmokeRunner;
 
 import java.io.*;
@@ -107,7 +106,7 @@ public final class CsvFormatterTest extends AbstractFormatterTest {
     private void assertLine2Equals(File reference, File file) throws IOException {
         List<String> refLines = FileUtils.readLines(reference, StandardCharsets.ISO_8859_1);
         List<String> lines = FileUtils.readLines(file, StandardCharsets.ISO_8859_1);
-        assertEquals(refLines.get(1).substring(0, 158), lines.get(1).substring(0, 158));
+        assertEquals(refLines.get(1).substring(0, 80), lines.get(1).substring(0, 80));
     }
 
 }
