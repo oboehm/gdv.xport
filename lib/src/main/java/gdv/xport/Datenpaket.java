@@ -163,7 +163,7 @@ public final class Datenpaket {
      * @return the nachsatz
      */
     public Nachsatz getNachsatz() {
-        return nachsatz;
+        return new Nachsatz(this.nachsatz);
     }
 
     /**
