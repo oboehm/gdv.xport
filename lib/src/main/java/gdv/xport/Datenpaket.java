@@ -118,6 +118,19 @@ public final class Datenpaket {
     }
 
     /**
+     * Gets the saetze.
+     *
+     * @return the saetze
+     * @since 5.0
+     */
+    public List<Satz> getAllSaetze() {
+        List<Satz> satzListe = new ArrayList<>();
+        satzListe.add(this.vorsatz);
+        satzListe.addAll(datensaetze);
+        satzListe.add(this.nachsatz);
+        return Collections.unmodifiableList(satzListe);
+    }
+    /**
      * Sets the datensaetze.
      *
      * @param datensaetze the datensaetze to set
@@ -128,16 +141,24 @@ public final class Datenpaket {
     }
 
     /**
-     * Gets the vorsatz.
+     * Liefert eine Kopie(!) des internen Vorsatzes.
+     * <p>
+     * <b>Achtung:</b> Der Vorsatz wird intern durch das Datenpaket verwaltet und
+     * darf nicht von aussen verändert werden.
+     * </p>
      *
      * @return the vorsatz
      */
     public Vorsatz getVorsatz() {
-        return vorsatz;
+        return new Vorsatz(this.vorsatz);
     }
 
     /**
-     * Gets the nachsatz.
+     * Liefert eine Kopie(!) des internen Nachsatzes.
+     * <p>
+     * <b>Achtung:</b> Der Nachsatz wird intern durch das Datenpaket verwaltet und
+     * darf nicht von aussen verändert werden.
+     * </p>
      *
      * @return the nachsatz
      */
