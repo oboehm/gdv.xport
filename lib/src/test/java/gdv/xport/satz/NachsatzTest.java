@@ -207,4 +207,10 @@ public class NachsatzTest extends AbstractSatzTest {
         assertEquals(123.45, nachsatz.getSchadenbearbKostenMitVorzeichen().toDouble(), 0.0001);
     }
 
+    @Test
+    public void testCopyCtor() {
+        Nachsatz copy = new Nachsatz(nachsatz);
+        assertEquals(nachsatz, copy);
+    }
+
 }
