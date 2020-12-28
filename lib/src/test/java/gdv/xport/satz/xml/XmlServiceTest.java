@@ -320,4 +320,9 @@ public class XmlServiceTest extends AbstractXmlTest {
         assertEquals("2", art.getInhalt());
     }
 
+    @Test
+    public void testGetSatzVersion() {
+        assertEquals("2.4", xmlService.getSatzVersion(SatzTyp.of("0001")));
+    }
+
 }

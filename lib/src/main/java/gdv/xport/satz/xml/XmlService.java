@@ -338,4 +338,15 @@ public class XmlService {
         return this.satzarten;
     }
 
+    /**
+     * Liefert die Satzversion eines registrierten Satztyps
+     *
+     * @param satzTyp
+     * @return die Version
+     * @since 5.0
+     */
+    public String getSatzVersion(final SatzTyp satzTyp) {
+        return this.satzarten.get(satzTyp).getSatzversion().getInhalt();
+    }
+
 }
