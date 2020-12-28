@@ -25,12 +25,16 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.feld.Feld0001;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.List;
 
 import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM;
 import static org.junit.Assert.*;
@@ -135,6 +139,16 @@ public final class VorsatzTest extends AbstractSatzTest {
         Vorsatz imported = new Vorsatz(content);
         assertEquals(content, imported.toLongString());
         assertEquals(vorsatz, imported);
+    }
+
+    @Test
+    public void testImportVersion() throws IOException {
+        File musterdatei = new File("src/test/resources/musterdatei_041222.txt");
+        vorsatz.importFrom(musterdatei);
+        assertEquals("1.9", vorsatz.getVersion(SatzTyp.of("0001")));
+        assertEquals("1.9", vorsatz.getVersion(SatzTyp.of("0100")));
+        assertEquals("1.9", vorsatz.getVersion(SatzTyp.of("0200")));
+        assertEquals("2.1", vorsatz.getVersion(SatzTyp.of("0210.50")));
     }
 
     /**

@@ -266,27 +266,17 @@ public final class Vorsatz extends Satz {
     }
 
     /**
-     * @param art
-     *            Satzart
+     * @param art Satzart
      * @return z.B. 1.1
-     * @deprecated wurde ersetzt durch {@link #getVersion(SatzTyp)},<br/>
-     * weil diese Methode nur bei Satzarten mit einfachem
-     * Gdv-Satznamen (ohneSparte) funktioniert
      */
-    @Deprecated
     public String getVersion(final int art) {
         return this.getVersion(getVersionBezeichnung(art));
     }
 
     /**
-     * @param art
-     *            Satzart
-     * @param sparte
-     *            z.B. 70 (Rechtsschutz)
+     * @param art Satzart
+     * @param sparte z.B. 70 (Rechtsschutz)
      * @return z.B. 1.1
-     * @deprecated wurde ersetzt durch {@link #getVersion(SatzTyp)},<br/>
-     * weil diese Methode nur bei Satzarten mit einfachem
-     * Gdv-Satznamen (ohneSparte) funktioniert
      */
     public String getVersion(final int art, final int sparte) {
         return this.getVersion(getVersionBezeichnung(art, sparte));
@@ -298,10 +288,10 @@ public final class Vorsatz extends Satz {
      * @param satzTyp z.B. SatzTyp.of("0100");
      * @return z.B. 2.3
      * @since 5.0
-     * @since 5.0
      */
     public String getVersion(SatzTyp satzTyp) {
-        throw new UnsupportedOperationException("not yet implemented");
+        Bezeichner bezeichner = Bezeichner.of("Version Satzart " + satzTyp);
+        return this.getVersion(bezeichner);
     }
 
     /**
@@ -367,6 +357,8 @@ public final class Vorsatz extends Satz {
 
         return bReturn;
     }
+
+
 
     /**
      * Da im Feld "Erstellungs-Datum Zeitraum vom- Zeitraum bis" (Adresse 70-85)

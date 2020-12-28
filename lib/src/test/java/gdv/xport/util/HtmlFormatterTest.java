@@ -109,4 +109,3 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
     }
 
 }
-
