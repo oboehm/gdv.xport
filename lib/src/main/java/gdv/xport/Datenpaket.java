@@ -452,7 +452,8 @@ public final class Datenpaket {
     }
 
     /**
-     * Sets the erstellungs datum von.
+     * Sets the erstellungsDatumVon im Vorsatz (Byte 70 - 77) (alle
+     * Teildatensätze)
      *
      * @param d Erstellungsdatum von
      */
@@ -488,28 +489,21 @@ public final class Datenpaket {
     }
 
     /**
-     * Sets the absender.
+     * Sets the absender im Vorsatz (Byte 10 - 39) (alle Teildatensätze)
      *
-     * @param s neuer Absender
+     * @param absender neuer Absender
      */
-    public void setAbsender(final String s) {
-        this.vorsatz.setAbsender(s);
+    public void setAbsender(final String absender) {
+        this.vorsatz.setAbsender(absender);
     }
 
     /**
-     * Gets the absender.
+     * Gets the absender im Vorsatz (Byte 10 - 39) (alle Teildatensätze)
      *
      * @return Absender
      */
     public String getAbsender() {
-        return this.getAbsenderFeld().getInhalt().trim();
-    }
-
-    /**
-     * @return das komplette Absender-Feld
-     */
-    private Feld getAbsenderFeld() {
-        return this.vorsatz.getFeld(Bezeichner.ABSENDER);
+        return this.vorsatz.getAbsender();
     }
 
     /**
@@ -527,18 +521,12 @@ public final class Datenpaket {
      * @return Adressat
      */
     public String getAdressat() {
-        return this.getAdressatFeld().getInhalt().trim();
+        return this.vorsatz.getAdressat();
     }
 
     /**
-     * @return das komplette Adressat-Feld
-     */
-    private Feld getAdressatFeld() {
-        return this.vorsatz.getFeld(ADRESSAT);
-    }
-
-    /**
-     * Sets the vermittler.
+     * Sets the vermittler Um Geschaeftsstelle/Vermittler in Vorsatz (alle
+     * Teildatensaetze) und Nachsatz setzen zu koennen.
      *
      * @param s Vermittler
      */
