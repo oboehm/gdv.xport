@@ -60,10 +60,8 @@ public final class SatzFactory {
     }
 
     private static void registerDefault() {
-        register(Vorsatz.class, 1);
         // hier enthaelt die XML-Beschreibung f. KH-Deckungssumme weniger Infos
         registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, SatzTyp.of("0221.051"));
-        register(Nachsatz.class, 9999);
     }
 
     private SatzFactory() {

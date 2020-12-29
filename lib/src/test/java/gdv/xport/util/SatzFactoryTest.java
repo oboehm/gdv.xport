@@ -63,7 +63,7 @@ public final class SatzFactoryTest extends AbstractTest {
         String content = vorsatz.toLongString();
         Satz satz = SatzFactory.getSatz(content);
         assertEquals(content, satz.toLongString());
-        assertEquals(Vorsatz.class, satz.getClass());
+        assertEquals(SatzTyp.of("0001"), satz.getSatzTyp());
     }
 
     /**
