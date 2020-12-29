@@ -24,6 +24,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
@@ -142,7 +143,9 @@ public class NumFeld extends Feld {
 
     /**
      * Instantiiert ein neues numerisches Feld.
-     *
+     * <p>
+     * TODO: wird mit 5.2, spaetestens aber mit 6.0 entfernt
+     * </p>
      * @param name Feld-Bezeichner (z.B. "pi")
      * @param start Start-Byte (beginnend ab 1)
      * @param value der Inhalt (z.B. "314")
@@ -299,12 +302,19 @@ public class NumFeld extends Feld {
      * @return die Zahl als Double
      */
     public double toDouble() {
-        double n = toLong();
-        long d = 1;
-        for (int i = 0; i < this.nachkommastellen; i++) {
-            d *= 10;
-        }
-        return n / d;
+        return toBigDecimal().doubleValue();
+    }
+
+    /**
+     * Wenn eine Zahl Nachkommastellen hat, sollte sie auch als {@link BigDecimal}
+     * ausgegeben werden koennen.
+     *
+     * @since 5.0
+     * @return die Zahl als {@link BigDecimal}
+     */
+    public BigDecimal toBigDecimal() {
+        BigDecimal d = new BigDecimal(getInhalt());
+        return d.movePointLeft(this.nachkommastellen);
     }
 
     /**
