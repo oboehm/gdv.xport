@@ -307,15 +307,8 @@ public final class SatzFactory {
         Class<? extends Enum> enumClass = REGISTERED_ENUM_CLASSES.get(satztyp);
         if (enumClass == null) {
             Datensatz satz = XML_SERVICE.getSatzart(satztyp);
-            if (satz == null) {
-                throw new NotRegisteredException(satztyp);
-            }
-            try {
-                return (Datensatz) satz.clone();
-            } catch (CloneNotSupportedException e) {
-                LOG.warn("Cannot clone {} - will return object itself.", satz);
-                return satz;
-            }
+            // ein satz.clone() ist nun nicht mehr noetig, da XML_SERVICE.getSatzart(..) bereits eine Kopie erzeugt
+            return satz;
         }
         return new SatzX(satztyp, enumClass);
     }
@@ -423,7 +416,6 @@ public final class SatzFactory {
      * @param sparte z.B. 70 (Rechtsschutz)
      * @param wagnisart z.B. 1 (Kapitallebensversicherung)
      * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart'
-     *
      * @since 0.8
      * @deprecated durch {@link #getDatensatz(SatzTyp)} abgeloest
      */
@@ -457,8 +449,8 @@ public final class SatzFactory {
             try {
                 return generateSatz(satzNr);
             } catch (NotRegisteredException ex) {
-                LOG.info("SatzTyp {} is not part of the XML description.", satzNr);
-                LOG.debug("Details:", ex);
+                LOG.debug("SatzTyp {} is not part of the XML description.", satzNr);
+                LOG.trace("Details:", ex);
             }
         }
         return generateDatensatz(satzNr, clazz);
