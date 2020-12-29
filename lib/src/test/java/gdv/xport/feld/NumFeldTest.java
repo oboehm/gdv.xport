@@ -216,6 +216,15 @@ public final class NumFeldTest extends AbstractFeldTest {
         assertEquals(new BigDecimal("123.45"), feld.toBigDecimal());
     }
 
+    @Test
+    public void testAdd() {
+        NumFeld feld = new NumFeld("fuffzig", "5000").mitNachkommastellen(2);
+        BigDecimal summe = feld.add(BigDecimal.TEN);
+        BigDecimal expected = new BigDecimal("60.00");
+        assertEquals(expected, summe);
+        assertEquals(expected, feld.toBigDecimal());
+    }
+
     /**
      * Beim Umstieg auf die aktuelle XML-Version von 2018 fiel auf, dass beim
      * Setzen der Nachkommastellen sich der Bezeichner in manchen Situationen

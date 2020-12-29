@@ -255,6 +255,16 @@ public class NumFeld extends Feld {
         this.setInhalt(formatted);
     }
 
+    /**
+     * Setzt den Inhalt mit der uebergebenen Zahl.
+     *
+     * @param n Zahl
+     * @since 5.0
+     */
+    public void setInhalt(BigDecimal n) {
+        setInhalt(n.movePointRight(this.nachkommastellen).toString());
+    }
+
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#resetInhalt()
      */
@@ -315,6 +325,19 @@ public class NumFeld extends Feld {
     public BigDecimal toBigDecimal() {
         BigDecimal d = new BigDecimal(getInhalt());
         return d.movePointLeft(this.nachkommastellen);
+    }
+
+    /**
+     * Addiert den Summand auf und liefert die Summe zurueck.
+     *
+     * @param summand der aufaddiert wird
+     * @return Summe
+     * @since 5.0
+     */
+    public BigDecimal add(BigDecimal summand) {
+        BigDecimal summe = toBigDecimal().add(summand);
+        setInhalt(summe);
+        return summe;
     }
 
     /**
