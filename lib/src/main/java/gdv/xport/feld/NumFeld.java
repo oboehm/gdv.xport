@@ -29,6 +29,8 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 
+import static java.math.BigDecimal.ROUND_UP;
+
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
  * Darstellung ist rechtsbuendig.
@@ -337,7 +339,7 @@ public class NumFeld extends Feld {
     public BigDecimal add(BigDecimal summand) {
         BigDecimal summe = toBigDecimal().add(summand);
         setInhalt(summe);
-        return summe;
+        return summe.setScale(nachkommastellen, ROUND_UP);
     }
 
     /**

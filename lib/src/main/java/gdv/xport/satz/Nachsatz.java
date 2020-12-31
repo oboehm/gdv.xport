@@ -181,6 +181,7 @@ public final class Nachsatz extends Satz {
      * Erhoeht den Gesamtbeitrag (Feld 4)
      *
      * @param beitrag neuer Summand fuer Gesamtbeitrag (in Cents)
+     * @return aufaddierte Summe
      * @since 5.0
      */
     public BigDecimal addGesamtBeitrag(final BigDecimal beitrag) {
@@ -209,10 +210,22 @@ public final class Nachsatz extends Satz {
     }
 
     /**
+     * Setzt den Gesamtbeitrag-Brutto (Inkasso, Feld 5).
+     *
      * @param beitrag neuer Gesamtbeitrag (Brutto)
      * @since 5.0
      */
     public void setGesamtBeitragBruttoMitVorzeichen(final double beitrag) {
+        setGesamtBeitragBruttoMitVorzeichen(BigDecimal.valueOf(beitrag));
+    }
+
+    /**
+     * Setzt den Gesamtbeitrag-Brutto (Inkasso, Feld 5).
+     *
+     * @param beitrag neuer Gesamtbeitrag (Brutto)
+     * @since 5.0
+     */
+    public void setGesamtBeitragBruttoMitVorzeichen(final BigDecimal beitrag) {
         BetragMitVorzeichen bmv = getGesamtBeitragBruttoMitVorzeichen();
         bmv.setInhalt(beitrag);
         setGesamtBeitragBrutto(bmv.getBetrag().getInhalt());
@@ -248,7 +261,9 @@ public final class Nachsatz extends Satz {
      *
      * @param beitrag neuer Summand fuer Gesamtbeitrag-Brutto(Inkasso)
      * @since 5.0
+     * @deprecated bitte {@link #addGesamtBeitragBrutto(BigDecimal)} verwenden, da Bedeutung von 'long' mehrdeutig ist
      */
+    @Deprecated // TODO: vor Release wieder entfernen (31-Dez-2020, oboehm)
     public void addGesamtBeitragBrutto(final long beitrag) {
         Long beitragNach;
 
@@ -285,6 +300,19 @@ public final class Nachsatz extends Satz {
                 .getFeld(6)
                 .setInhalt("-");
         }
+    }
+
+    /**
+     * Erhoeht den Gesamtbeitrag-Brutto(Inkasso) (Feld 5 und Feld 6)
+     *
+     * @param beitrag neuer Summand fuer Gesamtbeitrag-Brutto(Inkasso)
+     * @return aufaddierte Summe
+     * @since 5.0
+     */
+    public BigDecimal addGesamtBeitragBrutto(final BigDecimal beitrag) {
+        BigDecimal summe = getGesamtBeitragBruttoMitVorzeichen().add(beitrag);
+        setGesamtBeitragBruttoMitVorzeichen(summe);
+        return summe;
     }
 
     /**

@@ -18,12 +18,13 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.Locale;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * The Class BetragMitVorzeichenTest.
@@ -66,10 +67,24 @@ public final class BetragMitVorzeichenTest extends AbstractFeldTest {
      * Test to double negative.
      */
     @Test
-    public void testToDoubleNegative() {
+    public void testToDoubleNegativ() {
         betrag.setInhalt(-1.2);
         assertEquals("0120-", betrag.getInhalt());
         assertEquals(-1.2, betrag.toDouble(), 0.001);
+    }
+
+    @Test
+    public void testToBigDecimalPositiv() {
+        betrag.setInhalt(new BigDecimal("1.20"));
+        assertEquals("0120+", betrag.getInhalt());
+        assertEquals(new BigDecimal("1.20"), betrag.toBigDecimal());
+    }
+
+    @Test
+    public void testToBigDecimalNegativ() {
+        betrag.setInhalt(new BigDecimal("-1.20"));
+        assertEquals("0120-", betrag.getInhalt());
+        assertEquals(new BigDecimal("-1.20"), betrag.toBigDecimal());
     }
 
     /**

@@ -20,6 +20,8 @@ package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
 
+import java.math.BigDecimal;
+
 /**
  * Im Gegensatz zum Betrag hat diese Klasse ein Vorzeichen ('+' oder '-').
  *
@@ -136,6 +138,11 @@ public final class BetragMitVorzeichen extends Betrag {
         }
     }
 
+    @Override
+    public void setInhalt(final BigDecimal x) {
+        setInhalt(x.doubleValue());
+    }
+
     /* (non-Javadoc)
      * @see gdv.xport.feld.Betrag#setInhalt(int)
      */
@@ -163,9 +170,14 @@ public final class BetragMitVorzeichen extends Betrag {
      */
     @Override
     public double toDouble() {
+        return toBigDecimal().doubleValue();
+    }
+
+    @Override
+    public BigDecimal toBigDecimal() {
         String s = this.getInhalt();
-        double x = Integer.parseInt(s.substring(0, s.length() - 1)) / 100.0;
-        return (this.getVorzeichen() == '-') ? -x : x;
+        BigDecimal x = new BigDecimal(Integer.parseInt(s.substring(0, s.length() - 1))).movePointLeft(getNachkommastellen());
+        return (this.getVorzeichen() == '-') ? x.negate() : x;
     }
 
     /* (non-Javadoc)

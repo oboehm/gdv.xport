@@ -198,8 +198,9 @@ public class NachsatzTest extends AbstractSatzTest {
     @Test
     public void testAddGesamtBeitragBrutto() {
         nachsatz.setGesamtBeitragBruttoMitVorzeichen(-10.50);
-        nachsatz.addGesamtBeitragBrutto(1100);
-        assertEquals(0.50, nachsatz.getGesamtBeitragBruttoMitVorzeichen().toDouble(), 0.0001);
+        BigDecimal betrag = nachsatz.addGesamtBeitragBrutto(BigDecimal.valueOf(11));
+        assertEquals(new BigDecimal("0.50"), betrag);
+        assertEquals(betrag, nachsatz.getGesamtBeitragBruttoMitVorzeichen().toBigDecimal());
     }
 
     @Test
