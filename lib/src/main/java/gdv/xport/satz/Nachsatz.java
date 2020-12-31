@@ -26,6 +26,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import static gdv.xport.feld.Bezeichner.*;
 
@@ -132,6 +133,16 @@ public final class Nachsatz extends Satz {
     /**
      * Setzt den Gesamtbeitrag.
      *
+     * @param beitrag der neue Gesamtbeitrag
+     * @since 5.0
+     */
+    public void setGesamtBeitrag(final BigDecimal beitrag) {
+        this.set(Bezeichner.GESAMTBEITRAG, beitrag.movePointRight(2).toString());
+    }
+
+    /**
+     * Setzt den Gesamtbeitrag.
+     *
      * @param numFeldBeitrag der neue Gesamtbeitrag
      * @since 5.0
      */
@@ -144,7 +155,9 @@ public final class Nachsatz extends Satz {
      *
      * @param beitrag neuer Summand fuer Gesamtbeitrag (in Cents)
      * @since 5.0
+     * @deprecated bitte {@link #addGesamtBeitrag(BigDecimal)} verwenden, da Bedeutung von 'long' mehrdeutig ist
      */
+    @Deprecated // TODO: vor Release wieder entfernen (31-Dez-2020, oboehm)
     public void addGesamtBeitrag(final long beitrag) {
         Long beitragNach;
 
@@ -162,6 +175,18 @@ public final class Nachsatz extends Satz {
         this.getTeildatensatz(1)
             .getFeld(4)
             .setInhalt(beitragNach.toString());
+    }
+
+    /**
+     * Erhoeht den Gesamtbeitrag (Feld 4)
+     *
+     * @param beitrag neuer Summand fuer Gesamtbeitrag (in Cents)
+     * @since 5.0
+     */
+    public BigDecimal addGesamtBeitrag(final BigDecimal beitrag) {
+        BigDecimal summe = getGesamtBeitrag().add(beitrag);
+        setGesamtBeitrag(summe);
+        return summe;
     }
 
     /**

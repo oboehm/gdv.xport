@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.math.BigDecimal;
 
 import static org.junit.Assert.assertEquals;
 
@@ -189,8 +190,9 @@ public class NachsatzTest extends AbstractSatzTest {
     @Test
     public void testAddGesamtBeitrag() {
         nachsatz.setGesamtBeitrag("12340");
-        nachsatz.addGesamtBeitrag(5L);
-        assertEquals(123.45, nachsatz.getGesamtBeitrag().toDouble(), 0.0001);
+        BigDecimal betrag = nachsatz.addGesamtBeitrag(new BigDecimal("0.05"));
+        assertEquals(new BigDecimal("123.45"), betrag);
+        assertEquals(betrag, nachsatz.getGesamtBeitrag().toBigDecimal());
     }
 
     @Test
