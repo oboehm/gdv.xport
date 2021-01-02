@@ -62,7 +62,7 @@ public final class Nachsatz extends Satz {
         this();
         try {
             this.importFrom(content);
-            LOG.debug(this + " created from \"" + content + '"');
+            LOG.debug("{} created from \"{}\"", this, content);
         } catch (IOException ioe) {
             throw new IllegalArgumentException("argument too short", ioe);
         }
@@ -141,16 +141,6 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * Setzt den Gesamtbeitrag.
-     *
-     * @param numFeldBeitrag der neue Gesamtbeitrag
-     * @since 5.0
-     */
-    public void setGesamtBeitrag(final NumFeld numFeldBeitrag) {
-        this.set(Bezeichner.GESAMTBEITRAG, numFeldBeitrag.getInhalt());
-    }
-
-    /**
      * Erhoeht den Gesamtbeitrag (Feld 4)
      *
      * @param beitrag neuer Summand fuer Gesamtbeitrag (in Cents)
@@ -202,21 +192,11 @@ public final class Nachsatz extends Satz {
 
     /**
      * @param beitrag neuer Gesamtbeitrag (Brutto)
-     * @deprecated durch {@link #setGesamtBeitragBruttoMitVorzeichen(double)} abgeloest
+     * @deprecated durch {@link #setGesamtBeitragBruttoMitVorzeichen(BigDecimal)} abgeloest
      */
     @Deprecated
     public void setGesamtBeitragBrutto(final double beitrag) {
-        this.setGesamtBeitragBruttoMitVorzeichen(beitrag);
-    }
-
-    /**
-     * Setzt den Gesamtbeitrag-Brutto (Inkasso, Feld 5).
-     *
-     * @param beitrag neuer Gesamtbeitrag (Brutto)
-     * @since 5.0
-     */
-    public void setGesamtBeitragBruttoMitVorzeichen(final double beitrag) {
-        setGesamtBeitragBruttoMitVorzeichen(BigDecimal.valueOf(beitrag));
+        this.setGesamtBeitragBruttoMitVorzeichen(BigDecimal.valueOf(beitrag));
     }
 
     /**
@@ -242,18 +222,6 @@ public final class Nachsatz extends Satz {
         this.getTeildatensatz(1)
             .getFeld(5)
             .setInhalt(strBeitrag);
-    }
-
-    /**
-     * Setzt den Gesamtbeitrag-Brutto(Inkasso) (Feld 5)
-     *
-     * @param numFeldBeitrag neuer Gesamtbeitrag-Brutto(Inkasso)
-     * @since 5.0
-     */
-    public void setGesamtBeitragBrutto(final NumFeld numFeldBeitrag) {
-        this.getTeildatensatz(1)
-            .getFeld(5)
-            .setInhalt(numFeldBeitrag.getInhalt());
     }
 
     /**
@@ -372,18 +340,6 @@ public final class Nachsatz extends Satz {
         this.getTeildatensatz(1)
             .getFeld(7)
             .setInhalt(strBeitrag);
-    }
-
-    /**
-     * Setzt den Gesamtprovisions-Betrag (Feld 7)
-     *
-     * @param numFeldBeitrag neuer Gesamtprovisions-Betrag
-     * @since 5.0
-     */
-    public void setGesamtProvisonBetrag(final NumFeld numFeldBeitrag) {
-        this.getTeildatensatz(1)
-            .getFeld(7)
-            .setInhalt(numFeldBeitrag.getInhalt());
     }
 
     /**
@@ -521,16 +477,6 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * Setzt die Versicherungsleistungen (Feld 9)
-     *
-     * @param numFeldBeitrag neue Versicherungsleitungen
-     * @since 5.0
-     */
-    public void setVersicherungsLeistungen(final NumFeld numFeldBeitrag) {
-        this.getTeildatensatz(1).getFeld(9).setInhalt(numFeldBeitrag.getInhalt());
-    }
-
-    /**
      * Erhoeht die VersicherungsLeistungen (Feld 9 und Feld 10)
      *
      * @param betrag neuer Summand fuer Versicherungsleitungen
@@ -614,16 +560,6 @@ public final class Nachsatz extends Satz {
      */
     public void setSchadenbearbKosten(final String strBeitrag) {
         this.getTeildatensatz(1).getFeld(11).setInhalt(strBeitrag);
-    }
-
-    /**
-     * Setzt die Schadenbearbeitungskosten (Feld 11)
-     *
-     * @param numFeldBeitrag neue Schadenbearbeitungskosten
-     * @since 5.0
-     */
-    public void setSchadenbearbKosten(final NumFeld numFeldBeitrag) {
-        this.getTeildatensatz(1).getFeld(11).setInhalt(numFeldBeitrag.getInhalt());
     }
 
     /**
