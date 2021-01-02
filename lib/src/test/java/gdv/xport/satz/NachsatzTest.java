@@ -182,8 +182,8 @@ public class NachsatzTest extends AbstractSatzTest {
 
     @Test
     public void testAddVersicherungsleistungen() {
-        nachsatz.setVersicherungsLeistungenMitVorzeichen(12.50);
-        nachsatz.addVersicherungsLeistungen(55);
+        nachsatz.setVersicherungsLeistungenMitVorzeichen(BigDecimal.valueOf(12.50));
+        nachsatz.addVersicherungsLeistungen(BigDecimal.valueOf(0.55));
         assertEquals(13.05, nachsatz.getVersicherungsLeistungenMitVorzeichen().toDouble(), 0.0001);
     }
 

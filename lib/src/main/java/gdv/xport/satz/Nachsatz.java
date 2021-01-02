@@ -474,14 +474,14 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * Durch {@link #setVersicherungsLeistungenMitVorzeichen(double)}
+     * Durch {@link #setVersicherungsLeistungenMitVorzeichen(BigDecimal)}
      * ersetzt.
      *
      * @param betrag neuer Betrag
-     * @deprecated durch {@link #setVersicherungsLeistungenMitVorzeichen(double)} ersetzt
+     * @deprecated durch {@link #setVersicherungsLeistungenMitVorzeichen(BigDecimal)} ersetzt
      */
     public void setVersicherungsLeistungen(final double betrag) {
-        setVersicherungsLeistungenMitVorzeichen(betrag);
+        setVersicherungsLeistungenMitVorzeichen(BigDecimal.valueOf(betrag));
     }
 
     /**
@@ -490,7 +490,7 @@ public final class Nachsatz extends Satz {
      * @param betrag neuer Betrag
      * @since 5.0
      */
-    public void setVersicherungsLeistungenMitVorzeichen(final double betrag) {
+    public void setVersicherungsLeistungenMitVorzeichen(final BigDecimal betrag) {
         BetragMitVorzeichen bmv = getVersicherungsLeistungenMitVorzeichen();
         bmv.setInhalt(betrag);
         setVersicherungsLeistungen(bmv.getBetrag().getInhalt());
@@ -534,44 +534,23 @@ public final class Nachsatz extends Satz {
      * Erhoeht die VersicherungsLeistungen (Feld 9 und Feld 10)
      *
      * @param betrag neuer Summand fuer Versicherungsleitungen
+     * @deprecated bitte {@link #addVersicherungsLeistungen(BigDecimal)} verwenden, da Bedeutung von 'long' mehrdeutig ist
+     */
+    @Deprecated // TODO: vor Release wieder entfernen (02-Jan-2021, oboehm)
+    public void addVersicherungsLeistungen(final long betrag) {
+        addVersicherungsLeistungen(BigDecimal.valueOf(betrag).movePointLeft(2));
+    }
+
+    /**
+     * Erhoeht die VersicherungsLeistungen (Feld 9 und Feld 10)
+     *
+     * @param betrag neuer Summand fuer Versicherungsleitungen
      * @since 5.0
      */
-    public void addVersicherungsLeistungen(final long betrag) {
-        Long betragNach;
-
-        try {
-            betragNach = Long.parseLong(this.getTeildatensatz(1)
-                                            .getFeld(9)
-                                            .getInhalt()
-                                            .trim());
-        } catch (NumberFormatException e) {
-            betragNach = 0L;
-        }
-
-        if (("-").equals(this.getTeildatensatz(1)
-                             .getFeld(10)
-                             .getInhalt()
-                             .trim()))
-            betragNach *= -1;
-
-        betragNach += betrag;
-
-        if (betragNach >= 0) {
-            this.getTeildatensatz(1)
-                .getFeld(9)
-                .setInhalt(betragNach.toString());
-            this.getTeildatensatz(1)
-                .getFeld(10)
-                .setInhalt("+");
-        } else {
-            betragNach *= -1;
-            this.getTeildatensatz(1)
-                .getFeld(9)
-                .setInhalt(betragNach.toString());
-            this.getTeildatensatz(1)
-                .getFeld(10)
-                .setInhalt("-");
-        }
+    public BigDecimal addVersicherungsLeistungen(final BigDecimal betrag) {
+        BigDecimal summe = getVersicherungsLeistungenMitVorzeichen().add(betrag);
+        this.setVersicherungsLeistungenMitVorzeichen(summe);
+        return summe;
     }
 
     /**
@@ -683,7 +662,7 @@ public final class Nachsatz extends Satz {
      * Liefert die Schandenbearbeitunskosten.
      *
      * @return Schadenbearbeitungskosten mit Vorzeichen (Feld 11+12)
-     * @sinc3 5.0
+     * @since 5.0
      */
     public BetragMitVorzeichen getSchadenbearbeitungskostenMitVorzeichen() {
         NumFeld betrag = (NumFeld) getFeld(SCHADENBEARBEITUNGSKOSTEN);
