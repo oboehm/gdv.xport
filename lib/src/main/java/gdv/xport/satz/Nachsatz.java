@@ -392,8 +392,8 @@ public final class Nachsatz extends Satz {
      * @param betrag neuer Gesamtprovisions-Betrag
      * @since 5.0
      */
-    public void setGesamtProvisonBetragMitVorzeichen(final double betrag) {
-        BetragMitVorzeichen bmv = getGesamtProvisonBetragMitVorzeichen();
+    public void setGesamtProvisionsBetragMitVorzeichen(final BigDecimal betrag) {
+        BetragMitVorzeichen bmv = getGesamtProvisionsBetragMitVorzeichen();
         bmv.setInhalt(betrag);
         setGesamtProvisonBetrag(bmv.getBetrag().getInhalt());
         setVorzeichenGesamtProvisonBetrag(Character.toString(bmv.getVorzeichen()));
@@ -404,43 +404,23 @@ public final class Nachsatz extends Satz {
      *
      * @param betrag neuer Summand fuer Gesamtprovisions-Betrag
      * @since 5.0
+     * @deprecated bitte {@link #addGesamtProvisionsBetrag(BigDecimal)} verwenden, da Bedeutung von 'long' mehrdeutig ist
      */
+    @Deprecated // TODO: vor Release wieder entfernen (31-Dez-2020, oboehm)
     public void addGesamtProvisionsBetrag(final long betrag) {
-        Long betragNach;
+        addGesamtProvisionsBetrag(BigDecimal.valueOf(betrag).movePointLeft(2));
+    }
 
-        try {
-            betragNach = Long.parseLong(this.getTeildatensatz(1)
-                                            .getFeld(7)
-                                            .getInhalt()
-                                            .trim());
-        } catch (NumberFormatException e) {
-            betragNach = 0L;
-        }
-
-        if (("-").equals(this.getTeildatensatz(1)
-                             .getFeld(8)
-                             .getInhalt()
-                             .trim()))
-            betragNach *= -1;
-
-        betragNach += betrag;
-
-        if (betragNach >= 0) {
-            this.getTeildatensatz(1)
-                .getFeld(7)
-                .setInhalt(betragNach.toString());
-            this.getTeildatensatz(1)
-                .getFeld(8)
-                .setInhalt("+");
-        } else {
-            betragNach *= -1;
-            this.getTeildatensatz(1)
-                .getFeld(7)
-                .setInhalt(betragNach.toString());
-            this.getTeildatensatz(1)
-                .getFeld(8)
-                .setInhalt("-");
-        }
+    /**
+     * Erhoeht den Gesamtprovisions-Betrag (Feld 7 und Feld 8)
+     *
+     * @param betrag neuer Summand fuer Gesamtprovisions-Betrag
+     * @since 5.0
+     */
+    public BigDecimal addGesamtProvisionsBetrag(final BigDecimal betrag) {
+        BigDecimal summe = getGesamtProvisionsBetragMitVorzeichen().add(betrag);
+        this.setGesamtProvisionsBetragMitVorzeichen(summe);
+        return summe;
     }
 
     /**
@@ -458,7 +438,7 @@ public final class Nachsatz extends Satz {
      * @return Gesamtprovisions-Betrag (Feld 7)
      * @since 5.0
      */
-    public BetragMitVorzeichen getGesamtProvisonBetragMitVorzeichen() {
+    public BetragMitVorzeichen getGesamtProvisionsBetragMitVorzeichen() {
         NumFeld brutto = (NumFeld) getFeld(GESAMTPROVISIONSBETRAG);
         AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(VORZEICHEN2);
         return BetragMitVorzeichen.of(brutto, vorzeichen);
