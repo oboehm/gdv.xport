@@ -205,9 +205,9 @@ public class NachsatzTest extends AbstractSatzTest {
 
     @Test
     public void testAddSchadenbarbeitung() {
-        nachsatz.setSchadenbearbeitungsKostenMitVorzeichen(100.00);
-        nachsatz.addSchadenbearbeitungskosten(2345);
-        assertEquals(123.45, nachsatz.getSchadenbearbKostenMitVorzeichen().toDouble(), 0.0001);
+        nachsatz.setSchadenbearbeitungskostenMitVorzeichen(BigDecimal.valueOf(100));
+        nachsatz.addSchadenbearbeitungskosten(BigDecimal.valueOf(23.45));
+        assertEquals(123.45, nachsatz.getSchadenbearbeitungskostenMitVorzeichen().toDouble(), 0.0001);
     }
 
     @Test

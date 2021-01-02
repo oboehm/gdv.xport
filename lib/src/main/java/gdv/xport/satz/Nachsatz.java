@@ -608,18 +608,20 @@ public final class Nachsatz extends Satz {
 
     /**
      * @param kosten  Kosten der Schadensbearbeitung
-     * @deprecated durch {@link #setSchadenbearbeitungsKostenMitVorzeichen(double)} abgelöst
+     * @deprecated durch {@link #setSchadenbearbeitungskostenMitVorzeichen(BigDecimal)} abgelöst
      */
     public void setSchadenbearbeitungsKosten(final double kosten) {
-        setSchadenbearbeitungsKostenMitVorzeichen(kosten);
+        setSchadenbearbeitungskostenMitVorzeichen(BigDecimal.valueOf(kosten));
     }
 
     /**
+     * Setzt die Schadenbearbeitungskosten.
+     *
      * @param beitrag neuer Gesamtbeitrag (Brutto)
      * @since 5.0
      */
-    public void setSchadenbearbeitungsKostenMitVorzeichen(final double beitrag) {
-        BetragMitVorzeichen bmv = getSchadenbearbKostenMitVorzeichen();
+    public void setSchadenbearbeitungskostenMitVorzeichen(final BigDecimal beitrag) {
+        BetragMitVorzeichen bmv = getSchadenbearbeitungskostenMitVorzeichen();
         bmv.setInhalt(beitrag);
         setSchadenbearbKosten(bmv.getBetrag().getInhalt());
         setVorzeichenSchadenbearbKosten(Character.toString(bmv.getVorzeichen()));
@@ -649,44 +651,41 @@ public final class Nachsatz extends Satz {
      * Erhoeht die Schadenbearbeitungskosten (Feld 11 und Feld 12)
      *
      * @param betrag neuer Summand fuer Schadenbearbeitungskosten
+     * @deprecated bitte {@link #addSchadenbearbeitungskosten(BigDecimal)} verwenden, da Bedeutung von 'long' mehrdeutig ist
+     */
+    @Deprecated // TODO: vor Release wieder entfernen (02-Jan-2021, oboehm)
+    public void addSchadenbearbeitungskosten(final long betrag) {
+        addSchadenbearbeitungskosten(BigDecimal.valueOf(betrag).movePointLeft(2));
+    }
+
+    /**
+     * Erhoeht die Schadenbearbeitungskosten (Feld 11 und Feld 12)
+     *
+     * @param betrag neuer Summand fuer Schadenbearbeitungskosten
      * @since 5.0
      */
-    public void addSchadenbearbeitungskosten(final long betrag) {
-        Long betragNach;
-
-        try {
-            betragNach = Long.parseLong(this.getTeildatensatz(1).getFeld(11).getInhalt().trim());
-        } catch (NumberFormatException e) {
-            betragNach = 0L;
-        }
-
-        if (("-").equals(this.getTeildatensatz(1).getFeld(12).getInhalt().trim())) betragNach *= -1;
-
-        betragNach += betrag;
-
-        if (betragNach >= 0) {
-            this.getTeildatensatz(1).getFeld(11).setInhalt(betragNach.toString());
-            this.getTeildatensatz(1).getFeld(12).setInhalt("+");
-        } else {
-            betragNach *= -1;
-            this.getTeildatensatz(1).getFeld(11).setInhalt(betragNach.toString());
-            this.getTeildatensatz(1).getFeld(12).setInhalt("-");
-        }
+    public BigDecimal addSchadenbearbeitungskosten(final BigDecimal betrag) {
+        BigDecimal summe = getSchadenbearbeitungskostenMitVorzeichen().add(betrag);
+        this.setSchadenbearbeitungskostenMitVorzeichen(summe);
+        return summe;
     }
 
     /**
      * @return Kosten der Schadensbearbeitung
-     * @deprecated durch {@link #getSchadenbearbKostenMitVorzeichen()} abgeloest
+     * @deprecated durch {@link #getSchadenbearbeitungskostenMitVorzeichen()} abgeloest
      */
     @Deprecated
     public BetragMitVorzeichen getSchadenbearbeitungsKosten() {
-        return getSchadenbearbKostenMitVorzeichen();
+        return getSchadenbearbeitungskostenMitVorzeichen();
     }
 
     /**
-     * @return Schadenbearbeitungskosten (Feld 11)
+     * Liefert die Schandenbearbeitunskosten.
+     *
+     * @return Schadenbearbeitungskosten mit Vorzeichen (Feld 11+12)
+     * @sinc3 5.0
      */
-    public BetragMitVorzeichen getSchadenbearbKostenMitVorzeichen() {
+    public BetragMitVorzeichen getSchadenbearbeitungskostenMitVorzeichen() {
         NumFeld betrag = (NumFeld) getFeld(SCHADENBEARBEITUNGSKOSTEN);
         AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(VORZEICHEN4);
         return BetragMitVorzeichen.of(betrag, vorzeichen);
@@ -740,7 +739,7 @@ public final class Nachsatz extends Satz {
             case VORZEICHEN3:
                 return getVorzeichenOf(getVersicherungsLeistungenMitVorzeichen());
             case VORZEICHEN4:
-                return getVorzeichenOf(getSchadenbearbKostenMitVorzeichen());
+                return getVorzeichenOf(getSchadenbearbeitungskostenMitVorzeichen());
             default:
                 return super.getFeld(feld);
         }
