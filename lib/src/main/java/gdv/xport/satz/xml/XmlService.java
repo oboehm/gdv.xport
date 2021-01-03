@@ -242,23 +242,22 @@ public class XmlService {
     }
 
     /**
-   * </p>
-   * Liefert den Satz zur gewuenschten Satzart. Falls es mehr wie einen Satz zur
-   * gesuchten Satzart gibt (d.h. wenn es mehrere Sparten gibt), wird eine
-   * {@link NotUniqueException} geworfen.
-   * <p>
-   * Urspruenglich war diese Methoden fuer Satzarten wie 100 oder 200 vorgesehen,
-   * die keine Sparte besitzen. Fuer andere Satzarten wird deswegen eine
-   * {@link NotUniqueException} geworfen, da die Methode dafuer nicht verwendet
-   * werden soll. Seit v0.9 ist die durch {@link SatzTyp} gekapselt.
-   * </p>
-   *
-   * @param satzart z.B. 100 fuer Satz100 (Adressteil)
-   * @return die entsprechende Satzart
-   * @deprecated wird durch {@link #getSatzart(SatzTyp)} abgeloest
-   */
-  @Deprecated
-  public SatzXml getSatzart(final int satzart)  {
+     * Liefert den Satz zur gewuenschten Satzart. Falls es mehr wie einen Satz zur
+     * gesuchten Satzart gibt (d.h. wenn es mehrere Sparten gibt), wird eine
+     * {@link NotUniqueException} geworfen.
+     * <p>
+     * Urspruenglich war diese Methoden fuer Satzarten wie 100 oder 200 vorgesehen,
+     * die keine Sparte besitzen. Fuer andere Satzarten wird deswegen eine
+     * {@link NotUniqueException} geworfen, da die Methode dafuer nicht verwendet
+     * werden soll. Seit v0.9 ist die durch {@link SatzTyp} gekapselt.
+     * </p>
+     *
+     * @param satzart z.B. 100 fuer Satz100 (Adressteil)
+     * @return die entsprechende Satzart
+     * @deprecated wird durch {@link #getSatzart(SatzTyp)} abgeloest
+     */
+    @Deprecated
+    public SatzXml getSatzart(final int satzart)  {
         StringBuilder satzartBuf = new StringBuilder();
         satzartBuf.append(String.format("%03d", satzart));
 
@@ -315,11 +314,6 @@ public class XmlService {
      */
     public SatzXml getSatzart(final SatzTyp satzNr) {
         SatzXml satz = this.satzarten.get(satzNr);
-        // nichts erraten, genau liefern, was gefordert ist
-        // if (satz == null)
-        // {
-        // satz = getSatzart(satzNr.getSatzart());
-        // }
         if (satz == null) {
             throw new NotRegisteredException(satzNr);
         }
