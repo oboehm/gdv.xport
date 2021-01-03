@@ -31,7 +31,7 @@ public class Feld9999Test extends AbstractFeldTest {
      * Weiterer Testfall fuer Issue 10
      * (https://github.com/oboehm/gdv.xport/issues/10).
      */
-    @Test
+    @Test(expected = UnsupportedOperationException.class)
     public void testFeld9999Konstanten() {
         checkEntries(new Nachsatz(), Feld9999.values());
     }
