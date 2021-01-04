@@ -49,7 +49,8 @@ public enum Feld221 {
             nr = 8,
             type = Betrag.class,
             anzahlBytes = 14,
-            byteAdresse = 43
+            byteAdresse = 43,
+            nachkommaStellen = 2
     )
     KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1,
 
@@ -61,7 +62,8 @@ public enum Feld221 {
             nr = 9,
             type = Betrag.class,
             anzahlBytes = 14,
-            byteAdresse = 57
+            byteAdresse = 57,
+            nachkommaStellen = 2
     )
     KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2,
 
@@ -73,7 +75,8 @@ public enum Feld221 {
             nr = 10,
             type = Betrag.class,
             anzahlBytes = 14,
-            byteAdresse = 71
+            byteAdresse = 71,
+            nachkommaStellen = 2
     )
     KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3,
 

@@ -64,9 +64,9 @@ public final class Bezeichner {
     public static final Bezeichner ABSCHLAG1_IN_PROZENT = new Bezeichner("Abschlag-1 in %");
     public static final Bezeichner ABSCHLAG1_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-1 in W\u00e4hrungseinheiten", "Abschlag1InWE");
     public static final Bezeichner ABSCHLAG2_IN_PROZENT = new Bezeichner("Abschlag-2 in %");
-    public static final Bezeichner ABSCHLAG2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-2 in W\u00e4hrungseinheiten", "Abschlag1InWE");
+    public static final Bezeichner ABSCHLAG2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-2 in W\u00e4hrungseinheiten", "Abschlag2InWE");
     public static final Bezeichner ABSCHLAG3_IN_PROZENT = new Bezeichner("Abschlag-3 in %");
-    public static final Bezeichner ABSCHLAG3_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-3 in W\u00e4hrungseinheiten", "Abschlag1InWE");
+    public static final Bezeichner ABSCHLAG3_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-3 in W\u00e4hrungseinheiten", "Abschlag3InWE");
     public static final Bezeichner ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlagsbetrag in W\u00e4hrungseinheiten");
     public static final Bezeichner ABSCHLAG_IN_PROZENT = new Bezeichner("Abschlag in %");
     public static final Bezeichner ABSCHLAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag in Währungseinheiten");

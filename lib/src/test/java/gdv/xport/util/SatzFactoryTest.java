@@ -21,6 +21,7 @@ package gdv.xport.util;
 import gdv.xport.Datenpaket;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.demo.MyFeld210;
+import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
@@ -327,6 +328,15 @@ public final class SatzFactoryTest extends AbstractTest {
         SatzTyp kfz = new SatzTyp(221, 51);
         Datensatz satz = SatzFactory.getDatensatz(kfz);
         checkDatensatz(satz);
+        checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1);
+        checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2);
+        checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3);
+    }
+
+    private static void checkDeckungssumme(Datensatz satz, Bezeichner name) {
+        Betrag betrag = (Betrag) satz.getFeld(name);
+        assertEquals(14, betrag.getAnzahlBytes());
+        assertEquals(2, betrag.getNachkommastellen());
     }
 
     /**

@@ -194,15 +194,22 @@ public class XmlServiceTest extends AbstractXmlTest {
 
     /**
      * Hier testen wir, ob die XML-Variante mit {@link Satz221} uebereinstimmt.
-     * Da aber die Angabe der Satzart nicht eindeutig ist, sondern noch die
-     * Angabe der Sparte fehlt, erwarten wir eine {@link NotUniqueException}.
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    @Ignore // TODO: nach SatzFactory verschieben
     public void testSatzart221() throws IOException {
-        checkSatzart(221, new Satz221());
+        checkSatzart221(30);
+        checkSatzart221(40);
+        checkSatzart221(52);
+        checkSatzart221(53);
+        checkSatzart221(55);
+        checkSatzart221(59);
+        //checkSatzart221(70);
+    }
+
+    private void checkSatzart221(int sparte) throws IOException {
+        checkSatzart(SatzTyp.of(221, sparte), new Satz221(sparte));
     }
 
     /**
