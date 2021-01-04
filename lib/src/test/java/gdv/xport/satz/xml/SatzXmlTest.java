@@ -21,6 +21,7 @@ package gdv.xport.satz.xml;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
@@ -143,7 +144,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     }
 
     /**
-     * 2 Teildatensaetze sind momentan in "Satz100.xml" defniert. Normalerweise
+     * 2 Teildatensaetze sind momentan in "Satz100.xml" definiert. Normalerweise
      * sollten es 5 sein, aber aus Uebersichtsgruenden sind nur 2
      * Teildatensaetze in der Test-Resource vorhanden.
      */
@@ -195,12 +196,33 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      */
     @Test
     public void testSatz0220BausparenAntrag() throws XMLStreamException {
-        XMLEventReader parser = createXMLEventReader("Satz220.580.01.xml");
+        XMLEventReader parser = createXMLEventReader("Satz0220.580.01.xml");
         try {
             SatzXml satz220 = new SatzXml(parser);
             assertEquals(220, satz220.getSatzart());
             assertEquals(580, satz220.getSparte());
             assertEquals(1, satz220.getArt());
+        } finally {
+            parser.close();
+        }
+    }
+
+    @Test
+    public void testSatz0221070() throws XMLStreamException {
+        XMLEventReader parser = createXMLEventReader("Satz0221.070.xml");
+        try {
+            SatzXml satz221 = new SatzXml(parser);
+            satz221.setFelder(getFelder());
+            setUp(satz221);
+            assertEquals(221, satz221.getSatzart());
+            assertEquals(70, satz221.getSparte());
+            assertEquals(2, satz221.getNumberOfTeildatensaetze());
+            for (int nr = 1; nr <= 2; nr++) {
+                Teildatensatz tds = satz221.getTeildatensatz(nr);
+                Feld feld = tds.getFeld(Bezeichner.SATZNUMMER);
+                Zeichen satznummer = new Zeichen(Bezeichner.SATZNUMMER, feld.getByteAdresse(), Character.forDigit(nr, 10));
+                assertEquals(satznummer, tds.getSatznummer());
+            }
         } finally {
             parser.close();
         }

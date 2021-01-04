@@ -18,8 +18,10 @@
 
 package gdv.xport.satz.xml;
 
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Teildatensatz;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlHelper;
 import org.apache.logging.log4j.LogManager;
@@ -50,15 +52,15 @@ public class SatzXml extends Datensatz {
     private static final Logger LOG = LogManager.getLogger(SatzXml.class);
 
 
-  /**
-   * Instantiiert einen neuen Satz.
-   *
-   * @param parser XML-Event-Parser
-   * @throws XMLStreamException the XML stream exception
-   */
-  public SatzXml(final XMLEventReader parser) throws XMLStreamException {
-    this(parser, XmlHelper.getNextStartElement("satzart", parser));
-  }
+    /**
+     * Instantiiert einen neuen Satz.
+     *
+     * @param parser XML-Event-Parser
+     * @throws XMLStreamException the XML stream exception
+     */
+    public SatzXml(final XMLEventReader parser) throws XMLStreamException {
+        this(parser, XmlHelper.getNextStartElement("satzart", parser));
+    }
 
     /**
      * Instantiiert einen neuen Satz.
@@ -207,21 +209,32 @@ public class SatzXml extends Datensatz {
 
   }
 
-  /**
-   * Verwendet die uebergebene Map, um die Teildatensaetze um fehlende
-   * Informationen zu ergaenzen.
-   *
-   * @param felder the felder
-   */
-  public void setFelder(Map<String, FeldXml> felder) {
-    LOG.trace("Setting missing felder infos to {}.", this);
-    for (Teildatensatz tds : this.getTeildatensaetze())  {
-      TeildatensatzXml tdsXml = (TeildatensatzXml) tds;
-      tdsXml.updateWith(felder);
+    /**
+     * Verwendet die uebergebene Map, um die Teildatensaetze um fehlende
+     * Informationen zu ergaenzen.
+     *
+     * @param felder the felder
+     */
+    public void setFelder(Map<String, FeldXml> felder) {
+        LOG.trace("Setting missing felder infos to {}.", this);
+        for (int n = 1; n <= this.getNumberOfTeildatensaetze(); n++) {
+            TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(n);
+            tdsXml.updateWith(felder);
+            updateSatznummer(n, tdsXml);
+        }
     }
-  }
 
-  /**
+    private void updateSatznummer(int n, TeildatensatzXml tdsXml) {
+        if (tdsXml.hasFeld(Bezeichner.SATZNUMMER) || tdsXml.hasFeld(Bezeichner.SATZ_NR_2)) {
+            Feld feld = tdsXml.getFeld(Bezeichner.SATZNUMMER);
+            Zeichen satznr = new Zeichen(Bezeichner.SATZNUMMER, feld.getByteAdresse(), Character.forDigit(n, 10));
+            tdsXml.setSatznummer(satznr);
+            tdsXml.remove(feld);
+            tdsXml.add(satznr);
+        }
+    }
+
+    /**
    * Liefert eine Liste der unterstuetzten Satz-Typen. Dies ist vor allem fuer
    * Satz 220 Sparte 10 von Bedeutung, die verschienden Wagnisarten
    * unterstuetzen koennen.
