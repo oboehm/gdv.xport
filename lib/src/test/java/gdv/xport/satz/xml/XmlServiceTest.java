@@ -30,7 +30,6 @@ import gdv.xport.util.NotUniqueException;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Ignore;
 import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -55,11 +54,11 @@ public class XmlServiceTest extends AbstractXmlTest {
     private static final XmlService xmlService = XmlService.getInstance();
 
     /**
-     * Einfache Test-Methode fuer {@link XmlService#getSatzart(int)}.
+     * Einfache Test-Methode fuer {@link XmlService#getSatzart(SatzTyp)}.
      */
     @Test
     public void testGetSatzart() {
-        SatzXml satz = xmlService.getSatzart(100);
+        SatzXml satz = xmlService.getSatzart(SatzTyp.of(100));
         assertNotNull(satz);
         assertEquals(100, satz.getSatzart());
     }
@@ -70,18 +69,18 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test(expected = NotRegisteredException.class)
     public void testGetSatzartNonExisting() {
-        xmlService.getSatzart(451);
+        xmlService.getSatzart(SatzTyp.of(451));
     }
 
     /**
-     * Einfache Test-Methode fuer {@link XmlService#getSatzart(int)}. Wir
+     * Einfache Test-Methode fuer {@link XmlService#getSatzart(SatzTyp)}. Wir
      * moechten jedesmal ein "frisches" {@link SatzXml}-Objekt bekommen. Daher
      * holen wir ihn uns zweimal...
      */
     @Test
     public void testGetSatzartTwice() {
-        SatzXml one = xmlService.getSatzart(100);
-        SatzXml two = xmlService.getSatzart(100);
+        SatzXml one = xmlService.getSatzart(SatzTyp.of(100));
+        SatzXml two = xmlService.getSatzart(SatzTyp.of(100));
         assertEquals(one, two);
         assertNotSame(one, two);
         for (int i = 1; i <= one.getNumberOfTeildatensaetze(); i++) {
@@ -100,22 +99,25 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testGetVorsatz() {
-        SatzXml vorsatz = xmlService.getSatzart(1);
+        SatzXml vorsatz = xmlService.getSatzart(SatzTyp.of(1));
         Feld version = vorsatz.getFeld("Satzart 0100");
         assertNotNull(version);
     }
 
     /**
      * Hier begutachten wir etwas genauer den von
-     * {@link XmlService#getSatzart(int)} zurueckgelieferten Satz.
+     * {@link XmlService#getSatzart(SatzTyp)} zurueckgelieferten Satz.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testGetSatzart200() {
-        SatzXml satz200 = xmlService.getSatzart(200);
+    public void testGetSatzart200() throws IOException {
+        SatzXml satz200 = xmlService.getSatzart(SatzTyp.of(200));
         assertEquals(2, satz200.getTeildatensaetze().size());
         Feld inkasso = satz200.getFeld(Bezeichner.INKASSOART);
         assertEquals(1, inkasso.getAnzahlBytes());
         assertEquals(43, inkasso.getByteAdresse());
+        checkImport(satz200);
     }
 
     /**
@@ -175,7 +177,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart211() throws IOException {
-        setUpAndCheckSatz(xmlService.getSatzart(211), new Satz211());
+        setUpAndCheckSatz(xmlService.getSatzart(SatzTyp.of(211)), new Satz211());
     }
 
     /**
@@ -187,7 +189,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart220() throws IOException {
-        setUpAndCheckSatz(xmlService.getSatzart(220), new Satz220());
+        setUpAndCheckSatz(xmlService.getSatzart(SatzTyp.of(220)), new Satz220());
     }
 
     /**
@@ -252,6 +254,11 @@ public class XmlServiceTest extends AbstractXmlTest {
         setUpAndCheckSatz(satzXml, reference);
     }
 
+    private static void checkImport(SatzXml satz) throws IOException {
+        SatzXml reference = new SatzXml(satz);
+        setUpAndCheckSatz(satz, reference);
+    }
+
     private static void setUpAndCheckSatz(SatzXml satzXml, final Satz reference) throws IOException, AssertionError {
         AbstractSatzTest.setUp(reference);
         String importString = reference.toLongString();
@@ -279,7 +286,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart220Wagnis0() throws IOException {
-        checkSatzart(new SatzTyp(220, 10, 0), Feld220Wagnis0.class);
+        checkSatzart(SatzTyp.of(220, 10, 0), Feld220Wagnis0.class);
     }
 
     private static void checkSatzart(final SatzTyp satzNr, final Class<? extends Enum> enumClass)
@@ -305,11 +312,14 @@ public class XmlServiceTest extends AbstractXmlTest {
     /**
      * Dies ist ein weiterer Testfall fuer Issue #33. Hierbei sollte keine
      * {@link NotRegisteredException} auftauchen.
+     *
+     * @throws IOException the io exception
      */
     @Test
-    @Ignore // TODO: nach SatzFactoryTest verschieben
-    public void testSatzart350() {
-        xmlService.getSatzart(350);
+    public void testSatzart350() throws IOException {
+        SatzXml satz350 = xmlService.getSatzart(SatzTyp.of(350));
+        assertNotNull(satz350);
+        checkImport(satz350);
     }
 
     /**
