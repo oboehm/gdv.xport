@@ -227,7 +227,7 @@ public class SatzXml extends Datensatz {
     private void updateSatznummer(int n, TeildatensatzXml tdsXml) {
         if (tdsXml.hasFeld(Bezeichner.SATZNUMMER) || tdsXml.hasFeld(Bezeichner.SATZ_NR_2)) {
             Feld feld = tdsXml.getFeld(Bezeichner.SATZNUMMER);
-            Zeichen satznr = new Zeichen(Bezeichner.SATZNUMMER, feld.getByteAdresse(), Character.forDigit(n, 10));
+            Zeichen satznr = new Zeichen(feld.getBezeichner(), feld.getByteAdresse(), Character.forDigit(n, 10));
             tdsXml.setSatznummer(satznr);
             tdsXml.remove(feld);
             tdsXml.add(satznr);

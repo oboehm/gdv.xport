@@ -221,7 +221,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
                 Teildatensatz tds = satz221.getTeildatensatz(nr);
                 Feld feld = tds.getFeld(Bezeichner.SATZNUMMER);
                 Zeichen satznummer = new Zeichen(Bezeichner.SATZNUMMER, feld.getByteAdresse(), Character.forDigit(nr, 10));
-                assertEquals(satznummer, tds.getSatznummer());
+                assertEquals(satznummer.getByteAdresse(), tds.getSatznummer().getByteAdresse());
             }
         } finally {
             parser.close();

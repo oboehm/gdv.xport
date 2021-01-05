@@ -205,7 +205,6 @@ public class XmlServiceTest extends AbstractXmlTest {
         checkSatzart221(53);
         checkSatzart221(55);
         checkSatzart221(59);
-        //checkSatzart221(70);
     }
 
     private void checkSatzart221(int sparte) throws IOException {
@@ -213,16 +212,31 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz230} uebereinstimmt.
-     * Da aber die Angabe der Satzart nicht eindeutig ist, sondern noch die
-     * Angabe der Sparte fehlt, erwarten wir eine {@link NotUniqueException}.
+     * Satzart 0221.070 hat einige Eigenheiten wie Satznummer auf Position 53
+     * oder 2 Teildatensaetze. Deswegen wird er hier gesondert getestet.
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    @Ignore // TODO: nach SatzFactory verschieben
+    public void testSatzart0221070() throws IOException {
+        SatzXml satzXml = xmlService.getSatzart(SatzTyp.of("0221.070"));
+        Satz221 reference = new Satz221(70);
+        checkTeildatensaetze(satzXml, reference.getTeildatensaetze());
+    }
+
+    /**
+     * Hier testen wir, ob die XML-Variante mit {@link Satz230} uebereinstimmt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
     public void testSatzart230() throws IOException {
-        checkSatzart(230, new Satz230());
+        checkSatzart230(10);
+        //checkSatzart230(30);
+    }
+
+    private void checkSatzart230(int sparte) throws IOException {
+        checkSatzart(SatzTyp.of(230, sparte), new Satz230(sparte));
     }
 
     private static void checkSatzart(final int nr, final Satz reference) throws IOException {
@@ -244,8 +258,9 @@ public class XmlServiceTest extends AbstractXmlTest {
 
     private static void setUpAndCheckSatz(SatzXml satzXml, final Satz reference) throws IOException, AssertionError {
         AbstractSatzTest.setUp(reference);
+        String importString = reference.toLongString();
         satzXml.importFrom(reference.toLongString());
-        assertEquals(reference.toLongString(), satzXml.toLongString());
+        assertEquals(importString, satzXml.toLongString());
         ObjectTester.assertEquals(reference, satzXml);
     }
 
