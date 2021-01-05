@@ -147,12 +147,10 @@ public class XmlServiceTest extends AbstractXmlTest {
      * leider fehl. Dies liegt aber an der {@link Satz210}-Klasse, da hier
      * die allgemeine Definition fuer Sparte "0" fehlt.
      * </p>
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testSatzart210() throws IOException {
-        SatzXml satzXml = xmlService.getSatzart(210);
+    public void testSatzart210() {
+        SatzXml satzXml = xmlService.getSatzart(SatzTyp.of(210));
         assertEquals(210, satzXml.getSatzart());
         assertNotNull(satzXml.getFeld(Bezeichner.SATZ_NR_1));
     }
@@ -214,11 +212,9 @@ public class XmlServiceTest extends AbstractXmlTest {
     /**
      * Satzart 0221.070 hat einige Eigenheiten wie Satznummer auf Position 53
      * oder 2 Teildatensaetze. Deswegen wird er hier gesondert getestet.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testSatzart0221070() throws IOException {
+    public void testSatzart0221070() {
         SatzXml satzXml = xmlService.getSatzart(SatzTyp.of("0221.070"));
         Satz221 reference = new Satz221(70);
         checkTeildatensaetze(satzXml, reference.getTeildatensaetze());
@@ -232,7 +228,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     @Test
     public void testSatzart230() throws IOException {
         checkSatzart230(10);
-        //checkSatzart230(30);
+        checkSatzart230(30);
     }
 
     private void checkSatzart230(int sparte) throws IOException {

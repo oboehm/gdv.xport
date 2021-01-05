@@ -214,14 +214,47 @@ public enum Feld230 {
     LEISTUNG_AB_INVALIDITAETSGRAD_IN_PROZENT,
 
     /**
-     * Leerstellen.
+     * Referenznummer.
      */
     @FeldInfo(
             teildatensatz = 1,
             nr = 21,
             type = AlphaNumFeld.class,
-            anzahlBytes = 117,
+            anzahlBytes = 7,
             byteAdresse = 139)
+    REFERENZNUMMER,
+
+    /**
+     * Dauer der Leistung in Monaten.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 22,
+            type = NumFeld.class,
+            anzahlBytes = 3,
+            byteAdresse = 146)
+    DAUER_DER_LEISTUNG_IN_MONATEN,
+
+    /**
+     * Ende der Leistungszahlung.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 23,
+            type = NumFeld.class,
+            anzahlBytes = 8,
+            byteAdresse = 149)
+    ENDE_DER_LEISTUNGSZAHLUNG,
+
+    /**
+     * Leerstellen.
+     */
+    @FeldInfo(
+            teildatensatz = 1,
+            nr = 24,
+            type = AlphaNumFeld.class,
+            anzahlBytes = 99,
+            byteAdresse = 157)
     LEERSTELLEN,
 
     /**
