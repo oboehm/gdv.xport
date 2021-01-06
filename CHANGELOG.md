@@ -11,15 +11,27 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Planned]
 
-- Initialisierung Vorsatz überarbeiten und Versionen fuer die Satzarten nicht bei optionalen Satzarten vorbelegen
-- Datenpaket.add(..)-Methode bekommt einen zusaetzlichen Parameter fuer die Version im Vorsatz
-- Datenpaket.add(..)-Methode fügt automatisch die richtige Version im Vorsatz ein
 - Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
+- ByteAdresse durchgängiger verwenden
 
 
 ## [Unreleased]
 
-...
+### Added
+
+- Versionen im Vorsatz können jetzt mit der aktuellen Version der 2018er-Ausgabe vorbelegt werden
+- Nachsatz besitzt eine add-Methode
+- numerische Felder akzeptieren BigDecimal und können auch nach BigDecimal konvertiert werden
+- ByteAdresse ist als neuer Datentyp hinzugekommen und wird bei Teildatensatz.getFeld(..) als Parameter akzeptiert
+
+
+### Changed
+
+- es werden viel mehr Satzarten direkt auf der XML-Beschreibung in VUVM2018.xml abgeleitet
+- Widersprüche in VUVM2018.xml wurden manuell bereinigt
+- SatzTyp wurde ausgebaut und um of(..)-Methode erweitert
+
+
 
 ## [4.2.0] - 2020-09-17
 
