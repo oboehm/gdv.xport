@@ -35,7 +35,7 @@ public class ByteAdresse extends Number implements Fachwert {
     private static final Validator VALIDATOR = new Validator();
     final byte adresse;
 
-    public ByteAdresse(int adresse) {
+    private ByteAdresse(int adresse) {
         this.adresse = (byte) (VALIDATOR.verify(adresse) - 129);
     }
 

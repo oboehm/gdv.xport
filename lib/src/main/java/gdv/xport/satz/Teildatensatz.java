@@ -19,10 +19,7 @@
 package gdv.xport.satz;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -342,6 +339,24 @@ public class Teildatensatz extends Satz {
      */
     public Feld getFeld(final int nr) {
         return (Feld) sortedFelder.toArray()[nr -1];
+    }
+
+    /**
+     * Liefert das Feld mit der angegebenen Byte-Adresse. Im Gegensatz zur
+     * Nr. in {@link #getFeld(int)} aendert sich diese nicht, wenn neue
+     * Elemente in einem Teildatensatz hinzukommen.
+     *
+     * @param adresse zwischen 1 und 256
+     * @return das entsprechende Feld
+     * @since 5.0
+     */
+    public Feld getFeld(final ByteAdresse adresse) {
+        for (Feld f : getFelder()) {
+            if (adresse.intValue() == f.getByteAdresse()) {
+                return f;
+            }
+        }
+        throw new IllegalArgumentException("invalid address " + adresse);
     }
 
     /**

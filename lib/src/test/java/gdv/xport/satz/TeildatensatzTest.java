@@ -29,7 +29,6 @@ import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -96,6 +95,15 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Feld feld = new NumFeld("Hello", 55, "World");
         tds.add(feld);
         assertEquals(feld, tds.getFeld("Hello"));
+    }
+
+    @Test
+    public void testGetFeldByteAdresse() {
+        Teildatensatz tds = new Teildatensatz(4711, 1);
+        ByteAdresse adresse = ByteAdresse.of(11);
+        Feld feld = new NumFeld(Bezeichner.PRODUKTNAME, 47, adresse.intValue() );
+        tds.add(feld);
+        assertEquals(feld, tds.getFeld(adresse));
     }
 
     /**
