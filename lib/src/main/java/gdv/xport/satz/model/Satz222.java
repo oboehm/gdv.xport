@@ -27,10 +27,15 @@ import java.util.*;
  * Alternativ kann man auch direkt <code>new SatzX(222, Feld222.values())</code>
  * verwenden.
  * </p>
+ * <p>
+ * TODO: Wird ab v6 nach gdv-xport-deprecated verschoben.
+ * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.9 (29.03.2013)
+ * @deprecated besser {@link gdv.xport.util.SatzFactory#getSatz(SatzTyp)} verwenden
  */
+@Deprecated
 public class Satz222 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
