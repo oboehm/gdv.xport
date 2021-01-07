@@ -446,35 +446,14 @@ public class SatzTyp {
 	public String toString() {
 		StringBuilder buf = new StringBuilder();
 		buf.append(String.format("%04d", this.getSatzart()));
-		if (this.hasSparte() || this.hasArt() || this.hasTeildatensatzNummer()) {
-			if (this.getSparte() >= 0) {
-				buf.append(String.format(".%03d", this.getSparte()));
-				if (this.hasArt()) {
+		if (this.hasSparte()) {
+			buf.append(String.format(".%03d", this.getSparte()));
+			if (this.hasArt()) {
+				buf.append(".");
+				buf.append(this.getArtAsString());
+				if (this.getTeildatensatzNummer() >= 0) {
 					buf.append(".");
-					buf.append(this.getArtAsString());
-					if (this.getTeildatensatzNummer() >= 0) {
-						buf.append(".");
-						buf.append(this.getTeildatensatzNummer());
-					}
-				} else {
-					if (this.getTeildatensatzNummer() >= 0) {
-						buf.append("..");
-						buf.append(this.getTeildatensatzNummer());
-					}
-				}
-			} else {
-				if (hasArt()) {
-					buf.append("..");
-					buf.append(this.getArtAsString());
-					if (this.getTeildatensatzNummer() >= 0) {
-						buf.append(".");
-						buf.append(this.getTeildatensatzNummer());
-					}
-				} else {
-					if (this.getTeildatensatzNummer() >= 0) {
-						buf.append("...");
-						buf.append(this.getTeildatensatzNummer());
-					}
+					buf.append(this.getTeildatensatzNummer());
 				}
 			}
 		}
