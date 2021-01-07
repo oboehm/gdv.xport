@@ -765,7 +765,7 @@ public abstract class Satz implements Cloneable {
 	        if (StringUtils.isBlank(wagnisart)) {
 	            return new SatzTyp(this.getSatzart(), this.getSparte());
 	        }
-            return new SatzTyp(this.getSatzart(), this.getSparte(), Integer.parseInt(wagnisart));
+            return SatzTyp.of(this.getSatzart(), this.getSparte(), Integer.parseInt(wagnisart));
 	    } else if (this.hasSparte() && this.getSparte() == 20  && this.getSatzart() == 220) {
             String krankenFolgeNr = null;
             if (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)) {
@@ -777,7 +777,7 @@ public abstract class Satz implements Cloneable {
             if (StringUtils.isBlank(krankenFolgeNr) || !StringUtils.isNumeric(krankenFolgeNr)) {
                 return new SatzTyp(this.getSatzart(), this.getSparte());
             }
-            return new SatzTyp(this.getSatzart(), this.getSparte(), Integer.parseInt(krankenFolgeNr));
+            return SatzTyp.of(this.getSatzart(), this.getSparte(), Integer.parseInt(krankenFolgeNr));
 	    } else if (this.hasSparte()) {
 	        return new SatzTyp(this.getSatzart(), this.getSparte());
 	    } else {

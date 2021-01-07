@@ -124,13 +124,14 @@ public class SatzTyp {
     }
 
     /**
-     * Instantiates a new satz nummer.
+     * Instantiiert einen neuen SatzTyp.
+	 * TODO: wird mit v6 entfernt werden
      *
      * @param satzart the satzart
      * @param sparte the sparte
      * @param artFolgeNr Wagnisart (Sparte 10) bzw. krankenFolgeNr (Sparte 20)
      *          bzw. bausparenArt (Sparte 580, Satzart 220 (Wert 1 - 2))
-     * @deprecated wurde ersetzt durch {@link #of(String)}
+     * @deprecated wurde ersetzt durch {@link #of(int...)}
      */
     @Deprecated
     public SatzTyp(final int satzart, final int sparte, final int artFolgeNr) {
@@ -139,7 +140,8 @@ public class SatzTyp {
     }
 
     /**
-     * Legt eine neue SatzNummer an.
+     * Legt eine neuen SatzTyp an.
+	 * TODO: Wird ab v6 nicht mehr zur Verfuegung stehen.
      * 
      * @param satzart die Satzart (vierstellig)
      * @param sparte die Sparte (dreistellig)
@@ -155,6 +157,7 @@ public class SatzTyp {
 
     /**
      * Legt eine neue SatzNummer an.
+	 * TODO: Wird ab v6 nicht mehr zur Verfuegung stehen.
      *
      * @param satzart die Satzart (vierstellig)
      * @param sparte die Sparte (dreistellig)
@@ -434,85 +437,48 @@ public class SatzTyp {
 		return this.toString().equals(obj.toString());
 	}
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see java.lang.Object#toString()
-   */
-  @Override
-  public String toString()
-  {
-    StringBuilder buf = new StringBuilder();
-    buf.append(String.format("%04d", this.getSatzart()));
-    // if (this.getSparte() >= 0)
-    // {
-    // buf.append(String.format(".%03d", this.getSparte()));
-    // if (this.hasArt())
-    // {
-    // buf.append(".");
-    // buf.append(this.getArtAsString());
-    // if (this.getTeildatensatzNummer() >= 0)
-    // {
-    // buf.append(".");
-    // buf.append(this.getTeildatensatzNummer());
-    // }
-    // }
-    // }
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder buf = new StringBuilder();
+		buf.append(String.format("%04d", this.getSatzart()));
+		if (this.hasSparte() || this.hasArt() || this.hasTeildatensatzNummer()) {
+			if (this.getSparte() >= 0) {
+				buf.append(String.format(".%03d", this.getSparte()));
+				if (this.hasArt()) {
+					buf.append(".");
+					buf.append(this.getArtAsString());
+					if (this.getTeildatensatzNummer() >= 0) {
+						buf.append(".");
+						buf.append(this.getTeildatensatzNummer());
+					}
+				} else {
+					if (this.getTeildatensatzNummer() >= 0) {
+						buf.append("..");
+						buf.append(this.getTeildatensatzNummer());
+					}
+				}
+			} else {
+				if (hasArt()) {
+					buf.append("..");
+					buf.append(this.getArtAsString());
+					if (this.getTeildatensatzNummer() >= 0) {
+						buf.append(".");
+						buf.append(this.getTeildatensatzNummer());
+					}
+				} else {
+					if (this.getTeildatensatzNummer() >= 0) {
+						buf.append("...");
+						buf.append(this.getTeildatensatzNummer());
+					}
+				}
+			}
+		}
+		return buf.toString();
+	}
 
-/*
-*
-* So kann auch ein fehlbesetzter Inhalt zurueck gegeben werden:
-* z.B.: "0200..1" nach Aufruf von "new SatzTyp(200, -1, -1,  1)"
-* 
-*/
-
-    if (this.hasSparte() || this.hasArt() || this.hasTeildatensatzNummer())
-    {
-      if (this.getSparte() >= 0)
-      {
-        buf.append(String.format(".%03d", this.getSparte()));
-        if (this.hasArt())
-        {
-          buf.append(".");
-          buf.append(this.getArtAsString());
-          if (this.getTeildatensatzNummer() >= 0)
-          {
-            buf.append(".");
-            buf.append(this.getTeildatensatzNummer());
-          }
-        }
-        else
-        {
-          if (this.getTeildatensatzNummer() >= 0)
-          {
-            buf.append("..");
-            buf.append(this.getTeildatensatzNummer());
-          }
-        }
-      }
-      else
-      {
-        if (hasArt())
-        {
-          buf.append("..");
-          buf.append(this.getArtAsString());
-          if (this.getTeildatensatzNummer() >= 0)
-          {
-            buf.append(".");
-            buf.append(this.getTeildatensatzNummer());
-          }
-        }
-        else
-        {
-          if (this.getTeildatensatzNummer() >= 0)
-          {
-            buf.append("...");
-            buf.append(this.getTeildatensatzNummer());
-          }
-        }
-      }
-    }
-
-    return buf.toString();
-  }
 }

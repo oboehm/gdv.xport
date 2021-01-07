@@ -47,8 +47,8 @@ public class SatzTypTest {
      */
     @Test
     public void testNotEquals() {
-        SatzTyp one = new SatzTyp(1, 1);
-        SatzTyp other = new SatzTyp(1, 1, 1);
+        SatzTyp one = SatzTyp.of(1, 1);
+        SatzTyp other = SatzTyp.of(1, 1, 1);
         assertNotEquals(other, one.equals(other));
     }
 
@@ -59,7 +59,7 @@ public class SatzTypTest {
     @Test
     public void testEqualsSparte() {
         SatzTyp satz210 = new SatzTyp(210, 30);
-        SatzTyp sparte30 = new SatzTyp(210, 30, WagnisartLeben.NULL.getCode(), -1);
+        SatzTyp sparte30 = SatzTyp.of(210, 30, WagnisartLeben.NULL.getCode());
         ObjectTester.assertEquals(satz210, sparte30);
     }
 
@@ -68,18 +68,18 @@ public class SatzTypTest {
      */
     @Test
     public void testToString() {
-        assertEquals("0001", new SatzTyp(1).toString());
-        assertEquals("0210.050", new SatzTyp(210, 50).toString());
-        assertEquals("0220.010.0", new SatzTyp(220, 10, 0).toString());
-        assertEquals("0220.010.6.1", new SatzTyp(220, 10, 6, 1).toString());
+        assertEquals("0001", SatzTyp.of(1).toString());
+        assertEquals("0210.050", SatzTyp.of(210, 50).toString());
+        assertEquals("0220.010.0", SatzTyp.of(220, 10, 0).toString());
+        assertEquals("0220.010.6.1", SatzTyp.of(220, 10, 6, 1).toString());
     }
 
     @Test
     public void testOf() {
-        assertEquals(SatzTyp.of("0001"), new SatzTyp(1));
-        assertEquals(SatzTyp.of("0210.050"), new SatzTyp(210, 50));
-        assertEquals(SatzTyp.of("0220.010.0"), new SatzTyp(220, 10, 0));
-        assertEquals(SatzTyp.of("0220.010.6.1"), new SatzTyp(220, 10, 6, 1));
+        assertEquals(SatzTyp.of("0001"), SatzTyp.of(1));
+        assertEquals(SatzTyp.of("0210.050"), SatzTyp.of(210, 50));
+        assertEquals(SatzTyp.of("0220.010.0"), SatzTyp.of(220, 10, 0));
+        assertEquals(SatzTyp.of("0220.010.6.1"), SatzTyp.of(220, 10, 6, 1));
     }
 
     @Test
@@ -94,8 +94,8 @@ public class SatzTypTest {
 
     @Test
     public void testOfWagnisart1u3() {
-        assertEquals(SatzTyp.of("0220.010.13.7"), new SatzTyp(220, 10, 1, 7));
-        assertEquals(SatzTyp.of("0220.010.13.7"), new SatzTyp(220, 10, 3, 7));
+        assertEquals(SatzTyp.of("0220.010.13.7"), SatzTyp.of(220, 10, 1, 7));
+        assertEquals(SatzTyp.of("0220.010.13.7"), SatzTyp.of(220, 10, 3, 7));
     }
 
     /**
@@ -159,14 +159,14 @@ public class SatzTypTest {
 
     @Test
     public void testOfWagnisart() {
-        assertEquals(SatzTyp.of("0220.010.0"), new SatzTyp(220, 10, 0));
-        assertEquals(SatzTyp.of("0220.010.13"), new SatzTyp(220, 10, 13));
-        assertEquals(SatzTyp.of("0221.010.13"), new SatzTyp(221, 10, 13));
-        assertEquals(SatzTyp.of("0220.010.48"), new SatzTyp(220, 10, 48));
-        assertEquals(SatzTyp.of("0221.010.48"), new SatzTyp(221, 10, 48));
-        assertEquals(SatzTyp.of("0220.010.6"), new SatzTyp(220, 10, 6));
-        assertEquals(SatzTyp.of("0221.010.6"), new SatzTyp(221, 10, 6));
-        assertEquals(SatzTyp.of("0220.010.9"), new SatzTyp(220, 10, 9));
+        assertEquals(SatzTyp.of("0220.010.0"), SatzTyp.of(220, 10, 0));
+        assertEquals(SatzTyp.of("0220.010.13"), SatzTyp.of(220, 10, 13));
+        assertEquals(SatzTyp.of("0221.010.13"), SatzTyp.of(221, 10, 13));
+        assertEquals(SatzTyp.of("0220.010.48"), SatzTyp.of(220, 10, 48));
+        assertEquals(SatzTyp.of("0221.010.48"), SatzTyp.of(221, 10, 48));
+        assertEquals(SatzTyp.of("0220.010.6"), SatzTyp.of(220, 10, 6));
+        assertEquals(SatzTyp.of("0221.010.6"), SatzTyp.of(221, 10, 6));
+        assertEquals(SatzTyp.of("0220.010.9"), SatzTyp.of(220, 10, 9));
     }
 
     @Test
@@ -204,9 +204,9 @@ public class SatzTypTest {
 
     @Test
     public void testOfBausparenArt() {
-        assertEquals(SatzTyp.of("0220.580.01"), new SatzTyp(220, 580, 1));
-        assertEquals(SatzTyp.of("0220.580.2"), new SatzTyp(220, 580, 2));
-        assertEquals(SatzTyp.of("0220.570"), new SatzTyp(220, 570));
+        assertEquals(SatzTyp.of("0220.580.01"), SatzTyp.of(220, 580, 1));
+        assertEquals(SatzTyp.of("0220.580.2"), SatzTyp.of(220, 580, 2));
+        assertEquals(SatzTyp.of("0220.570"), SatzTyp.of(220, 570));
     }
 
     @Test
@@ -235,9 +235,9 @@ public class SatzTypTest {
 
     @Test
     public void testOfKrankenFolgeNr() {
-        assertEquals(new SatzTyp(220, 20, 1), SatzTyp.of("0220.020.1"));
-        assertEquals(new SatzTyp(220, 20, 2), SatzTyp.of("0220.020.2"));
-        assertEquals(new SatzTyp(220, 20, 3), SatzTyp.of("0220.020.3"));
+        assertEquals(SatzTyp.of(220, 20, 1), SatzTyp.of("0220.020.1"));
+        assertEquals(SatzTyp.of(220, 20, 2), SatzTyp.of("0220.020.2"));
+        assertEquals(SatzTyp.of(220, 20, 3), SatzTyp.of("0220.020.3"));
     }
 
     /**

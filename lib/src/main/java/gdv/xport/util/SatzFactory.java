@@ -245,7 +245,7 @@ public final class SatzFactory {
      */
     @Deprecated
     public static void unregister(final int satzart, final int sparte, final int wagnisart) {
-        SatzTyp key = new SatzTyp(satzart, sparte, wagnisart, -1);
+        SatzTyp key = SatzTyp.of(satzart, sparte, wagnisart);
         REGISTERED_DATENSATZ_CLASSES.remove(key);
         REGISTERED_ENUM_CLASSES.remove(key);
     }
@@ -445,7 +445,7 @@ public final class SatzFactory {
      */
     @Deprecated
     public static Datensatz getDatensatz(final int satzart, final int sparte, final int wagnisart) {
-        return getDatensatz(new SatzTyp(satzart, sparte, wagnisart));
+        return getDatensatz(SatzTyp.of(satzart, sparte, wagnisart));
     }
 
     /**

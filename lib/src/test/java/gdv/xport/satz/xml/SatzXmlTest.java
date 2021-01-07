@@ -377,7 +377,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     public void testSatz220Wagnis0() throws XMLStreamException {
         SatzXml satz220 = getSatz("Satz0220.010.0.xml");
         List<SatzTyp> supported = satz220.getSupportedSatzTypen();
-        assertEquals(new SatzTyp(220, 10, 0), supported.get(0));
+        assertEquals(SatzTyp.of(220, 10, 0), supported.get(0));
     }
 
 }
