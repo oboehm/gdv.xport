@@ -165,7 +165,7 @@ public class Teildatensatz extends Satz {
      * getNummer()-Methode ab.
      *
      * @return Satznummer als einzelnes Zeichen ('1' ... '9')
-     * @since 4.3
+     * @since 5.0
      */
     public Zeichen getSatznummer() {
         return this.satznummer;

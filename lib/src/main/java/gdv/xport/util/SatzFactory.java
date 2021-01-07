@@ -161,7 +161,7 @@ public final class SatzFactory {
      *
      * @param satzart the satzart
      * @since 0.2
-     * @deprecated in v4.3 durch {@link #unregister(SatzTyp)} ersetzt
+     * @deprecated in v5.0 durch {@link #unregister(SatzTyp)} ersetzt
      */
     @Deprecated
     public static void unregister(final int satzart) {
@@ -176,7 +176,7 @@ public final class SatzFactory {
      * anderen uregister-Methoden.
      *
      * @param typ SatzTyp bzw. Satzart
-     * @since 4.3
+     * @since 5.0
      */
     public static void unregister(SatzTyp typ) {
         REGISTERED_SATZ_CLASSES.remove(typ);
@@ -223,7 +223,7 @@ public final class SatzFactory {
      * @param satzart the satzart
      * @param sparte the sparte
      * @since 0.2
-     * @deprecated in v4.3 durch {@link #unregister(SatzTyp)} ersetzt
+     * @deprecated in v5.0 durch {@link #unregister(SatzTyp)} ersetzt
      */
     @Deprecated
     public static void unregister(final int satzart, final int sparte) {
@@ -241,7 +241,7 @@ public final class SatzFactory {
      * @param sparte the sparte
      * @param wagnisart the wagnisart
      * @since 0.8
-     * @deprecated in v4.3 durch {@link #unregister(SatzTyp)} ersetzt
+     * @deprecated in v5.0 durch {@link #unregister(SatzTyp)} ersetzt
      */
     @Deprecated
     public static void unregister(final int satzart, final int sparte, final int wagnisart) {

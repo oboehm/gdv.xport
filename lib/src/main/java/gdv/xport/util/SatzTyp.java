@@ -59,7 +59,7 @@ public class SatzTyp {
      *
      * @param nr z.B. "0210.050"
      * @return der entsprechende SatzTyp
-     * @since 4.3
+     * @since 5.0
      */
     public static SatzTyp of(String nr)  {
       int[] numbers = { -1, -1, -1, -1 };
@@ -87,7 +87,7 @@ public class SatzTyp {
 	 *
 	 * @param args the args
 	 * @return the satz typ
-	 * @since 4.3
+	 * @since 5.0
 	 */
 	public static SatzTyp of(int... args) {
     	switch(args.length) {
@@ -225,7 +225,7 @@ public class SatzTyp {
    * Liefert die Sparte als String.
    *
    * @return z.B. "030"
-   * @since 4.3
+   * @since 5.0
    */
   public String getSparteAsString()
   {
@@ -245,7 +245,7 @@ public class SatzTyp {
 	 * Liefert die Wagnisart als String.
 	 *
 	 * @return z.B. "9"
-	 * @since 4.3
+	 * @since 5.0
 	 */
 	public String getWagnisartAsString() {
 		return Integer.toString(this.getWagnisart());
@@ -257,7 +257,7 @@ public class SatzTyp {
 	 * "0220.580.01" und "0220.580.2" Sinn.
 	 *
 	 * @return z.B. 1 bei SatzTyp "0220.580.01"
-	 * @since 4.3
+	 * @since 5.0
 	 */
 	public int getBausparenArt() {
 		return this.bausparenArt;
@@ -269,7 +269,7 @@ public class SatzTyp {
 	 * "0220.580.01" und "0220.580.2" Sinn.
 	 *
 	 * @return z.B. "01" bei SatzTyp "0220.580.01"
-	 * @since 4.3
+	 * @since 5.0
 	 */
 	public String getBausparenArtAsString() {
 		if (this.getBausparenArt() < 0) {
@@ -288,7 +288,7 @@ public class SatzTyp {
 	 * SatzTyp.of("0220.010.0").
 	 *
 	 * @return z.B. 1 bei SatzTyp "0220.580.01"
-	 * @since 4.3
+	 * @since 5.0
 	 */
 	public int getArt() {
 		if (this.getSparte() == 10) {
@@ -316,7 +316,7 @@ public class SatzTyp {
 	 * "0" bei SatzTyp.of("0220.010.0").
 	 *
 	 * @return z.B. "01" bei SatzTyp "0220.580.01"
-	 * @since 4.3
+	 * @since 5.0
 	 */
 	public String getArtAsString() {
 		if (this.getBausparenArt() == 1) {
@@ -332,7 +332,7 @@ public class SatzTyp {
 	 * der Fall.
 	 *
 	 * @return true oder false
-	 * @since 4.3
+	 * @since 5.0
 	 */
 	public boolean hasArt() {
 		return (this.getWagnisart() >= 0) || (this.getBausparenArt() >= 0) || (this.getKrankenFolgeNr() >= 0);

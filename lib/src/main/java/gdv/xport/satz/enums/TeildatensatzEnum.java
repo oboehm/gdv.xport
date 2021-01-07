@@ -36,7 +36,7 @@ import static gdv.xport.feld.Bezeichner.SATZNUMMER;
  * XML-Variante des Teildatensatzes eher hinderlich sind.
  *
  * @author oboehm
- * @since 4.3 (25.11.2020)
+ * @since 5.0 (25.11.2020)
  */
 public final class TeildatensatzEnum extends Teildatensatz {
 

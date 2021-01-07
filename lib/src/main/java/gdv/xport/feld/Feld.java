@@ -407,7 +407,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *
      * @param inhalt neuer Inhalt
      * @return das gesetzte Feld
-     * @since 4.3
+     * @since 5.0
      */
     public Feld withInhalt(String inhalt) {
         this.setInhalt(inhalt);

@@ -1567,7 +1567,7 @@ public final class Bezeichner {
      * verschiedenen Varianten eines Bezeichners geben lassen.
      *
      * @return Liste von Varianten
-     * @since 4.3
+     * @since 5.0
      */
     @JsonIgnore
     public Set<Bezeichner> getVariants() {
