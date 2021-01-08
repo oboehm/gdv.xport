@@ -28,6 +28,8 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.satz.model.Satz220;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -41,6 +43,7 @@ import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.SmokeRunner;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Date;
@@ -530,6 +533,15 @@ public final class DatenpaketTest {
         datensatz.setVersicherungsscheinNummer("4711");
         datensatz.setFolgenummer(nr);
         return datensatz;
+    }
+
+    @Test
+    public void testAddSatz200() {
+        Datensatz satz200 = SatzFactory.getDatensatz(SatzTyp.of(200));
+        satz200.set(Bezeichner.GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN, "20050");
+        datenpaket.add(satz200);
+        Nachsatz nachsatz = datenpaket.getNachsatz();
+        assertEquals(new BigDecimal("200.50"), nachsatz.getGesamtBeitrag().toBigDecimal());
     }
 
 }

@@ -182,9 +182,9 @@ public final class Datenpaket {
                     : "Einen Nachsatz gibt es bereits!");
         datensaetze.add(datensatz);
         vorsatz.setVersion(datensatz);
-
-        if (("0200").equalsIgnoreCase(datensatz.getGdvSatzartName()))
+        if (datensatz.getSatzTyp().equals(SatzTyp.of(200))) {
             setNachsatzSummenAus0200(datensatz);
+        }
 
         if (("0400").equalsIgnoreCase(datensatz.getGdvSatzartName()))
             setNachsatzSummenAus0400(datensatz);
@@ -654,8 +654,8 @@ public final class Datenpaket {
         Long wert;
         try {
             wert = Long.parseLong(datensatz.getTeildatensatz(1)
-                                           .getFeld(22)
-                                           .getInhalt());
+                                  .getFeld(22)
+                    .getInhalt());
         } catch (NumberFormatException e) {
             wert = 0L;
         }
