@@ -27,7 +27,6 @@ import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz100;
-import gdv.xport.satz.model.Satz220;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
@@ -106,9 +105,9 @@ public final class DatenpaketTest {
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(0, nachsatz.getAnzahlSaetze());
         assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
-        assertEquals(0.0, nachsatz.getGesamtBeitragBrutto().toDouble(), 0.001);
-        assertEquals(0.0, nachsatz.getVersicherungsLeistungen().toDouble(), 0.001);
-        assertEquals(0.0, nachsatz.getSchadenbearbeitungsKosten().toDouble(), 0.001);
+        assertEquals(0.0, nachsatz.getGesamtBeitragBruttoMitVorzeichen().toDouble(), 0.001);
+        assertEquals(0.0, nachsatz.getVersicherungsLeistungenMitVorzeichen().toDouble(), 0.001);
+        assertEquals(0.0, nachsatz.getSchadenbearbeitungskostenMitVorzeichen().toDouble(), 0.001);
     }
 
     /**
@@ -143,7 +142,7 @@ public final class DatenpaketTest {
      */
     @Test
     public void testAdd() {
-        datenpaket.add(new Satz220());
+        datenpaket.add(SatzFactory.getDatensatz(SatzTyp.of(220)));
         Vorsatz vorsatz = datenpaket.getVorsatz();
         assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
         assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
@@ -235,7 +234,7 @@ public final class DatenpaketTest {
     @Test
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImport2DatenpaketeWithReader() throws IOException {
-        try (Reader reader = new FileReader(new File("src/test/resources/zwei_datenpakete.txt"))) {
+        try (Reader reader = new FileReader("src/test/resources/zwei_datenpakete.txt")) {
             checkImport(datenpaket, reader);
             Datenpaket zwei = new Datenpaket();
             checkImport(zwei, reader);
@@ -536,12 +535,38 @@ public final class DatenpaketTest {
     }
 
     @Test
-    public void testAddSatz200() {
-        Datensatz satz200 = SatzFactory.getDatensatz(SatzTyp.of(200));
-        satz200.set(Bezeichner.GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN, "20050");
-        datenpaket.add(satz200);
+    public void testAddDatensatz200() {
+        BigDecimal summe = addDatensatz(SatzTyp.of(200), Bezeichner.GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN,
+                new BigDecimal("200.50"), new BigDecimal("21.72"));
         Nachsatz nachsatz = datenpaket.getNachsatz();
-        assertEquals(new BigDecimal("200.50"), nachsatz.getGesamtBeitrag().toBigDecimal());
+        assertEquals(summe, nachsatz.getGesamtBeitrag().toBigDecimal());
+    }
+
+    @Test
+    public void testAddDatensatz400() {
+        BigDecimal summe = addDatensatz(SatzTyp.of(400), Bezeichner.GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN,
+                new BigDecimal(100), new BigDecimal("11.11"));
+        Nachsatz nachsatz = datenpaket.getNachsatz();
+        assertEquals(summe, nachsatz.getGesamtBeitragBruttoMitVorzeichen().toBigDecimal());
+    }
+
+    @Test
+    public void testAddDatensatz500() {
+        BigDecimal summe = addDatensatz(SatzTyp.of(500), Bezeichner.BETRAG_IN_WAEHRUNGSEINHEITEN_GEMAESS_ZAHLUNGSART,
+                new BigDecimal(500), new BigDecimal("55.50"));
+        Nachsatz nachsatz = datenpaket.getNachsatz();
+        assertEquals(summe, nachsatz.getVersicherungsLeistungenMitVorzeichen().toBigDecimal());
+    }
+
+    private BigDecimal addDatensatz(SatzTyp satzTyp, Bezeichner bezeichner, BigDecimal...beitraege) {
+        BigDecimal summe = BigDecimal.ZERO;
+        for (BigDecimal beitrag : beitraege) {
+            Datensatz datensatz = SatzFactory.getDatensatz(satzTyp);
+            datensatz.set(bezeichner, beitrag.movePointRight(2).toString());
+            datenpaket.add(datensatz);
+            summe = summe.add(beitrag);
+        }
+        return summe;
     }
 
 }

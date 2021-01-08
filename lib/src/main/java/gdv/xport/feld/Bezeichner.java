@@ -277,6 +277,7 @@ public final class Bezeichner {
     public static final Bezeichner BESCHREIBUNG_ZU_LFD_NUMMER_OBJEKT_KOMPLEX = new Bezeichner("Beschreibung zu lfd. Nr. Objekt / Komplex");
     public static final Bezeichner BESTANDSFUEHRENDE_GESCHAEFTSSTELLE = new Bezeichner("Bestandsfuehrende Geschaeftsstelle");
     public static final Bezeichner BESTANDSPFLEGEPROVISION = new Bezeichner("Bestandspflegeprovision");
+    public static final Bezeichner BETRAG_IN_WAEHRUNGSEINHEITEN_GEMAESS_ZAHLUNGSART = new Bezeichner("Betrag in Waehrungseinheiten gemaess Zahlungsart", "BetragInWEGemaessZahlungsart");
     public static final Bezeichner BETRAG_VORSORGEZUSCHLAG = new Bezeichner("Betrag Vorsorgezuschlag");
     public static final Bezeichner BETRIEBSART = new Bezeichner("Betriebsart");
     public static final Bezeichner BETRIEBLICHE_ALTERSVORSORGE = new Bezeichner("Betriebliche Altersvorsorge");

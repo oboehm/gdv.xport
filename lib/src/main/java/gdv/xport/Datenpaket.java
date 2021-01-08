@@ -13,9 +13,7 @@
 package gdv.xport;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
-import gdv.xport.feld.Feld;
 import gdv.xport.io.*;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
@@ -40,8 +38,6 @@ import java.net.URI;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.*;
-
-import static gdv.xport.feld.Bezeichner.*;
 
 /**
  * Ein Datenpaket besteht aus {@link Vorsatz}, mehrere {@link Datensatz}-Elementen
@@ -184,14 +180,11 @@ public final class Datenpaket {
         vorsatz.setVersion(datensatz);
         if (datensatz.getSatzTyp().equals(SatzTyp.of(200))) {
             setNachsatzSummenAus0200(datensatz);
-        }
-
-        if (("0400").equalsIgnoreCase(datensatz.getGdvSatzartName()))
+        } else if (datensatz.getSatzTyp().equals(SatzTyp.of(400))) {
             setNachsatzSummenAus0400(datensatz);
-
-        if (("0500").equalsIgnoreCase(datensatz.getGdvSatzartName()))
+        } else if (datensatz.getSatzTyp().equals(SatzTyp.of(500))) {
             setNachsatzSummenAus0500(datensatz);
-
+        }
         nachsatz.setAnzahlSaetze(datensaetze.size());
     }
 
