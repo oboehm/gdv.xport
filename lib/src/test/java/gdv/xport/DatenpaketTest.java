@@ -20,6 +20,7 @@ package gdv.xport;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.ByteAdresse;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
@@ -537,6 +538,7 @@ public final class DatenpaketTest {
     @Test
     public void testAddDatensatz200() {
         BigDecimal summe = addDatensatz(SatzTyp.of(200), Bezeichner.GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN,
+                ByteAdresse.of(256),
                 new BigDecimal("200.50"), new BigDecimal("21.72"));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(summe, nachsatz.getGesamtBeitrag().toBigDecimal());
@@ -545,7 +547,8 @@ public final class DatenpaketTest {
     @Test
     public void testAddDatensatz400() {
         BigDecimal summe = addDatensatz(SatzTyp.of(400), Bezeichner.GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN,
-                new BigDecimal(100), new BigDecimal("11.11"));
+                ByteAdresse.of(150),
+                new BigDecimal(-100), new BigDecimal("11.11"));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(summe, nachsatz.getGesamtBeitragBruttoMitVorzeichen().toBigDecimal());
     }
@@ -553,7 +556,8 @@ public final class DatenpaketTest {
     @Test
     public void testAddDatensatz500() {
         BigDecimal summe = addDatensatz(SatzTyp.of(500), Bezeichner.BETRAG_IN_WAEHRUNGSEINHEITEN_GEMAESS_ZAHLUNGSART,
-                new BigDecimal(500), new BigDecimal("55.50"));
+                ByteAdresse.of(153),
+                new BigDecimal(500), new BigDecimal("55.50"), new BigDecimal(-600));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(summe, nachsatz.getVersicherungsLeistungenMitVorzeichen().toBigDecimal());
     }
@@ -563,6 +567,21 @@ public final class DatenpaketTest {
         for (BigDecimal beitrag : beitraege) {
             Datensatz datensatz = SatzFactory.getDatensatz(satzTyp);
             datensatz.set(bezeichner, beitrag.movePointRight(2).toString());
+            datenpaket.add(datensatz);
+            summe = summe.add(beitrag);
+        }
+        return summe;
+    }
+
+    private BigDecimal addDatensatz(SatzTyp satzTyp, Bezeichner bezeichner, ByteAdresse vorzeichen, BigDecimal...beitraege) {
+        BigDecimal summe = BigDecimal.ZERO;
+        for (BigDecimal beitrag : beitraege) {
+            BigDecimal positiv = beitrag.abs();
+            Datensatz datensatz = SatzFactory.getDatensatz(satzTyp);
+            datensatz.set(bezeichner, positiv.movePointRight(2).toString());
+            if (beitrag.compareTo(BigDecimal.ZERO) < 0) {
+                datensatz.getTeildatensatz(1).set(vorzeichen, "-");
+            }
             datenpaket.add(datensatz);
             summe = summe.add(beitrag);
         }

@@ -107,7 +107,7 @@ public class Teildatensatz extends Satz {
      * @param other der andere Teildatensatz
      */
     public Teildatensatz(final Teildatensatz other) {
-        this(other.getSatzart(), other.getNummer());
+        this(other.getSatzart(), other.getSatznummer());
         this.satznummer = other.satznummer;
         for (Entry<Bezeichner, Feld> entry : other.datenfelder.entrySet()) {
             Feld copy = (Feld) entry.getValue().clone();
@@ -287,6 +287,18 @@ public class Teildatensatz extends Satz {
         if (x == Feld.NULL_FELD) {
             throw new IllegalArgumentException("Feld \"" + name + "\" not found");
         }
+        x.setInhalt(value);
+    }
+
+    /**
+     * Setzt das gewuenschte Feld anhand der uebergebenen ByteAdresse.
+     *
+     * @param adresse Adresse des gewuenschten Feldes
+     * @param value   Wert
+     * @since 5.0
+     */
+    public void set(final ByteAdresse adresse, final String value) {
+        Feld x = this.getFeld(adresse);
         x.setInhalt(value);
     }
 

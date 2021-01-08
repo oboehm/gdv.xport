@@ -31,4 +31,9 @@ public final class ByteAdresseTest {
        ByteAdresse.of(257);
     }
 
+    @Test
+    public void testToString() {
+        assertEquals("222", ByteAdresse.of(222).toString());
+    }
+
 }

@@ -65,7 +65,7 @@ public class ByteAdresse extends Number implements Fachwert {
 
     @Override
     public String toString() {
-        return Byte.toString(adresse);
+        return Integer.toString(intValue());
     }
 
 
