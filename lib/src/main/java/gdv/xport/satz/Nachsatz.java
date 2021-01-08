@@ -33,8 +33,12 @@ import static gdv.xport.feld.Bezeichner.*;
 /**
  * Dies ist der letzte Satz, der Nachsatz eben.
  * <p>
- * Da Vorsatz und Nachsatz von der Datenpaket-Klasse benoetigt werden, habe
- * ich das "deprecated" wieder entfernt (24-Nov-2012, oboehm).
+ * Fuer den einfacheren Umgang mit den einzelnen Betraegen, die hier im
+ * Nachsatz zusammengefasst werden, sind jeweils Betrag und Vorzeichen
+ * zusammengefasst und werden als {@link BetragMitVorzeichen} zurueckgegeben.
+ * Ist man nur am Betrag oder Vorzeichen interessiert, kann man sich das
+ * dann ueber {@link BetragMitVorzeichen#getBetrag()} und
+ * {@link BetragMitVorzeichen#getVorzeichen()} abholen.
  * </p>
  *
  * @author oliver
@@ -53,16 +57,23 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * Legt einen Nachsatz mit dem angegebenen Inhalt an.
+     * Erzeugt einen Nachsatz mit dem angegebenen Inhalt.
+     * <p>
+     * Anmerkung: Die urspruengliche Implementierung als Konstruktor wurde
+     * in eine statische of()-Methode umgewandelt, da {@link #Satz(String)}
+     * semantisch eine andere Bedeutung hat - dort repraesentiert der
+     * uebergebene Parameter die Satzart, hier den kompletten Inhalt.
+     * </p>
      *
      * @param content Inhalt des Nachsatz
      * @since 5.0
      */
-    public Nachsatz(final String content) {
-        this();
+    public static Nachsatz of(final String content) {
+        Nachsatz nachsatz = new Nachsatz();
         try {
-            this.importFrom(content);
-            LOG.debug("{} created from \"{}\"", this, content);
+            nachsatz.importFrom(content);
+            LOG.debug("{} created from \"{}\"", nachsatz, content);
+            return nachsatz;
         } catch (IOException ioe) {
             throw new IllegalArgumentException("argument too short", ioe);
         }
@@ -144,33 +155,6 @@ public final class Nachsatz extends Satz {
      * Erhoeht den Gesamtbeitrag (Feld 4)
      *
      * @param beitrag neuer Summand fuer Gesamtbeitrag (in Cents)
-     * @since 5.0
-     * @deprecated bitte {@link #addGesamtBeitrag(BigDecimal)} verwenden, da Bedeutung von 'long' mehrdeutig ist
-     */
-    @Deprecated // TODO: vor Release wieder entfernen (31-Dez-2020, oboehm)
-    public void addGesamtBeitrag(final long beitrag) {
-        Long beitragNach;
-
-        try {
-            beitragNach = Long.parseLong(this.getTeildatensatz(1)
-                                             .getFeld(4)
-                                             .getInhalt()
-                                             .trim());
-        } catch (NumberFormatException e) {
-            beitragNach = 0L;
-        }
-
-        beitragNach += beitrag;
-
-        this.getTeildatensatz(1)
-            .getFeld(4)
-            .setInhalt(beitragNach.toString());
-    }
-
-    /**
-     * Erhoeht den Gesamtbeitrag (Feld 4)
-     *
-     * @param beitrag neuer Summand fuer Gesamtbeitrag (in Cents)
      * @return aufaddierte Summe
      * @since 5.0
      */
@@ -182,7 +166,7 @@ public final class Nachsatz extends Satz {
 
     /**
      * Diese Methode liefert den Gesamt-Beitrag als {@link Betrag} und nicht
-     * als String zurueck, um nicht die Kompatibilitaet mit v4 zu brechen.
+     * als String zurueck, um die Kompatibilitaet mit v4 zu wahren.
      *
      * @return Gesamtbeitrag als Betrag
      */
@@ -191,6 +175,11 @@ public final class Nachsatz extends Satz {
     }
 
     /**
+     * Setzt den Brutto-Gesamtbeitrag, inklusive dem Vorzeichen.
+     * <p>
+     * TODO: wird in v6 entfernt werden.
+     * </p>
+     *
      * @param beitrag neuer Gesamtbeitrag (Brutto)
      * @deprecated durch {@link #setGesamtBeitragBruttoMitVorzeichen(BigDecimal)} abgeloest
      */
@@ -217,59 +206,11 @@ public final class Nachsatz extends Satz {
      *
      * @param strBeitrag neuer Gesamtbeitrag-Brutto(Inkasso)
      * @since 5.0
-     * @deprecated wird durch {@link #setGesamtBeitragBruttoMitVorzeichen(BigDecimal)} abgedeckt
      */
-    @Deprecated // TODO: vor Release entfernen (03-Jan-2020, oboehm)
     public void setGesamtBeitragBrutto(final String strBeitrag) {
         this.getTeildatensatz(1)
             .getFeld(5)
             .setInhalt(strBeitrag);
-    }
-
-    /**
-     * Erhoeht den Gesamtbeitrag-Brutto(Inkasso) (Feld 5 und Feld 6)
-     *
-     * @param beitrag neuer Summand fuer Gesamtbeitrag-Brutto(Inkasso)
-     * @since 5.0
-     * @deprecated bitte {@link #addGesamtBeitragBrutto(BigDecimal)} verwenden, da Bedeutung von 'long' mehrdeutig ist
-     */
-    @Deprecated // TODO: vor Release entfernen (31-Dez-2020, oboehm)
-    public void addGesamtBeitragBrutto(final long beitrag) {
-        Long beitragNach;
-
-        try {
-            beitragNach = Long.parseLong(this.getTeildatensatz(1)
-                                             .getFeld(5)
-                                             .getInhalt()
-                                             .trim());
-        } catch (NumberFormatException e) {
-            beitragNach = 0L;
-        }
-
-        if (("-").equals(this.getTeildatensatz(1)
-                             .getFeld(6)
-                             .getInhalt()
-                             .trim()))
-            beitragNach *= -1;
-
-        beitragNach += beitrag;
-
-        if (beitragNach >= 0) {
-            this.getTeildatensatz(1)
-                .getFeld(5)
-                .setInhalt(beitragNach.toString());
-            this.getTeildatensatz(1)
-                .getFeld(6)
-                .setInhalt("+");
-        } else {
-            beitragNach *= -1;
-            this.getTeildatensatz(1)
-                .getFeld(5)
-                .setInhalt(beitragNach.toString());
-            this.getTeildatensatz(1)
-                .getFeld(6)
-                .setInhalt("-");
-        }
     }
 
     /**
@@ -289,6 +230,9 @@ public final class Nachsatz extends Satz {
      * Diese Methode wird kuenftig nur den Betragsteil zurueckliefern und damit
      * auch eine andere Semantik bekommen. Bis dahin ist diese Methode aber
      * deprecated.
+     * <p>
+     * TODO: Wird mit v6 entfernt oder nur den Betragsteil zurueckliefern.
+     * </p>
      *
      * @return Gesamtbeitrag-Brutto(Inkasso) (Feld 5)
      * @deprecated wurde durch {@link #getGesamtBeitragBruttoMitVorzeichen()} ersetzt
@@ -323,34 +267,7 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * Liefert das Vorzeichen Gesamtbeitrag-Brutto(Inkasso) (Feld 6)
-     *
-     * @return das Vorzeichen
-     * @since 5.0
-     * @deprecated durch {@link #getGesamtBeitragBruttoMitVorzeichen()} abgedeckt
-     */
-    @Deprecated // TODO: vor Release entfernen (03-Jan-2021, oboehm)
-    public String getVorzeichenGesamtbeitragBrutto() {
-        return this.getTeildatensatz(1).getFeld(6).getInhalt().trim();
-    }
-
-    /**
-     * Setzt den Gesamtprovisions-Betrag (Feld 7)
-     *
-     * @param strBeitrag neuer Gesamtprovisions-Betrag
-     * @since 5.0
-     * @deprecated durch {@link #setGesamtProvisionsBetrag(String)} ersetzt
-     *             (wg. einheitlicher Schreibweise mit ...Provisions...)
-     */
-    @Deprecated // TODO: vor Release entfernen (03-Jan-2021, oboehm)
-    public void setGesamtProvisonBetrag(final String strBeitrag) {
-        this.getTeildatensatz(1)
-            .getFeld(7)
-            .setInhalt(strBeitrag);
-    }
-
-    /**
-     * Setzt den Gesamtprovisions-Betrag (Feld 7)
+     * Setzt den Gesamtprovisions-Betrag (Feld 7).
      *
      * @param strBeitrag neuer Gesamtprovisions-Betrag
      * @since 5.0
@@ -379,18 +296,6 @@ public final class Nachsatz extends Satz {
      *
      * @param betrag neuer Summand fuer Gesamtprovisions-Betrag
      * @since 5.0
-     * @deprecated bitte {@link #addGesamtProvisionsBetrag(BigDecimal)} verwenden, da Bedeutung von 'long' mehrdeutig ist
-     */
-    @Deprecated // TODO: vor Release entfernen (31-Dez-2020, oboehm)
-    public void addGesamtProvisionsBetrag(final long betrag) {
-        addGesamtProvisionsBetrag(BigDecimal.valueOf(betrag).movePointLeft(2));
-    }
-
-    /**
-     * Erhoeht den Gesamtprovisions-Betrag (Feld 7 und Feld 8)
-     *
-     * @param betrag neuer Summand fuer Gesamtprovisions-Betrag
-     * @since 5.0
      */
     public BigDecimal addGesamtProvisionsBetrag(final BigDecimal betrag) {
         BigDecimal summe = getGesamtProvisionsBetragMitVorzeichen().add(betrag);
@@ -399,19 +304,8 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * Analog zu den anderen Be(i)trags-Methoden liefert diese Methode ein
-     * Betrags-Feld zurueck.
+     * Liefert den Gesamt-Provisionsbetrag, inklusive Vorzeichen.
      *
-     * @return Gesamtprovisions-Betrag (Feld 7)
-     * @since 5.0
-     * @deprecated wird durch {@link #getGesamtProvisionsBetragMitVorzeichen()} abgedeckt
-     */
-    @Deprecated // TODO: vor Release entfernen (03-Jan-2021, oboehm)
-    public Betrag getGesamtProvisonBetrag() {
-        return Betrag.of(this.getTeildatensatz(1).getFeld(7));
-    }
-
-    /**
      * @return Gesamtprovisions-Betrag (Feld 7)
      * @since 5.0
      */
@@ -419,25 +313,6 @@ public final class Nachsatz extends Satz {
         NumFeld brutto = (NumFeld) getFeld(GESAMTPROVISIONSBETRAG);
         AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(VORZEICHEN2);
         return BetragMitVorzeichen.of(brutto, vorzeichen);
-    }
-
-    /**
-     * Setzt das Vorzeichen Gesamtprovisions-Betrag (Feld 8).
-     *
-     * @param strVorzeichen Vorzeichen
-     * @since 5.0
-     * @deprecated ersetzt durch {@link #setVorzeichenGesamtProvisionsBetrag(String)}
-     *             (wg. einheitlicher Schreibweise mit ...Provisions...)
-     */
-    @Deprecated // TODO: vor Release entfernen (03-Jan-2021, oboehm)
-    public void setVorzeichenGesamtProvisonBetrag(final String strVorzeichen) {
-        if (("+").equalsIgnoreCase(strVorzeichen) || ("-").equalsIgnoreCase(
-                strVorzeichen))
-            this.getTeildatensatz(1)
-                .getFeld(8)
-                .setInhalt(strVorzeichen);
-        else
-            throw new IllegalArgumentException(strVorzeichen + ": kein Vorzeichen");
     }
 
     /**
@@ -457,27 +332,16 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * Liefert das Vorzeichen Schadenbearbeitungskosten (Feld 12)
-     *
-     * @return das Vorzeichen
-     * @since 5.0
-     * @deprecated ersetzt durch {@link #getGesamtProvisionsBetragMitVorzeichen()} abgedeckt
-     */
-    @Deprecated // TODO: vor Release entfernen (03-Jan-2021, oboehm)
-    public String getVorzeichenGesamtProvisonBetrag() {
-        return this.getTeildatensatz(1)
-                   .getFeld(8)
-                   .getInhalt()
-                   .trim();
-    }
-
-    /**
      * Durch {@link #setVersicherungsLeistungenMitVorzeichen(BigDecimal)}
      * ersetzt.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param betrag neuer Betrag
      * @deprecated durch {@link #setVersicherungsLeistungenMitVorzeichen(BigDecimal)} ersetzt
      */
+    @Deprecated
     public void setVersicherungsLeistungen(final double betrag) {
         setVersicherungsLeistungenMitVorzeichen(BigDecimal.valueOf(betrag));
     }
@@ -499,6 +363,9 @@ public final class Nachsatz extends Satz {
      * Diese Methode wird kuenftig nur den Betragsteil zurueckliefern und damit
      * auch eine andere Semantik bekommen. Bis dahin ist diese Methode aber
      * deprecated.
+     * <p>
+     * TODO: Wird mit v6 entfernt oder liefert Betrag zurueck.
+     * </p>
      *
      * @return VersicherungsLeistungen (Feld 9)
      * @deprecated durch {@link #getVersicherungsLeistungenMitVorzeichen()} ersetzt
@@ -522,17 +389,6 @@ public final class Nachsatz extends Satz {
      * Erhoeht die VersicherungsLeistungen (Feld 9 und Feld 10)
      *
      * @param betrag neuer Summand fuer Versicherungsleitungen
-     * @deprecated bitte {@link #addVersicherungsLeistungen(BigDecimal)} verwenden, da Bedeutung von 'long' mehrdeutig ist
-     */
-    @Deprecated // TODO: vor Release entfernen (02-Jan-2021, oboehm)
-    public void addVersicherungsLeistungen(final long betrag) {
-        addVersicherungsLeistungen(BigDecimal.valueOf(betrag).movePointLeft(2));
-    }
-
-    /**
-     * Erhoeht die VersicherungsLeistungen (Feld 9 und Feld 10)
-     *
-     * @param betrag neuer Summand fuer Versicherungsleitungen
      * @since 5.0
      */
     public BigDecimal addVersicherungsLeistungen(final BigDecimal betrag) {
@@ -542,6 +398,8 @@ public final class Nachsatz extends Satz {
     }
 
     /**
+     * Liefert die Versicherungsleistungen, inklusiv Vorzeichen.
+     *
      * @return VersicherungsLeistungen (Feld 9)
      * @since 5.0
      */
@@ -564,18 +422,11 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * Liefert das Vorzeichen VersicherungsLeistungen (Feld 10)
+     * Setzt die Schadenbearbeitungskosten.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
-     * @return das Vorzeichen
-     * @since 5.0
-     * @deprecated durch {@link #getVersicherungsLeistungenMitVorzeichen()} abgedeckt
-     */
-    @Deprecated // TODO: vor Release entfernen (03-Jan-2021, oboehm)
-    public String getVorzeichenVersicherungsLeistungen() {
-        return this.getTeildatensatz(1).getFeld(10).getInhalt().trim();
-    }
-
-    /**
      * @param kosten  Kosten der Schadensbearbeitung
      * @deprecated durch {@link #setSchadenbearbeitungskostenMitVorzeichen(BigDecimal)} abgelöst
      */
@@ -593,20 +444,7 @@ public final class Nachsatz extends Satz {
         BetragMitVorzeichen bmv = getSchadenbearbeitungskostenMitVorzeichen();
         bmv.setInhalt(beitrag);
         setSchadenbearbeitungskosten(bmv.getBetrag().getInhalt());
-        setVorzeichenSchadenbearbKosten(Character.toString(bmv.getVorzeichen()));
-    }
-
-    /**
-     * Setzt die Schadenbearbeitungskosten (Feld 11).
-     *
-     * @param strBeitrag neue Schadenbearbeitungskosten
-     * @since 5.0
-     * @deprecated durch {@link #setSchadenbearbeitungskosten(String)} ersetzt
-     *             (wg. einheitlicher Schreibweise ...bearbeitungskosten)
-     */
-    @Deprecated // TODO: vor Release entfernen (03-Jan-2021, oboehm)
-    public void setSchadenbearbKosten(final String strBeitrag) {
-        this.getTeildatensatz(1).getFeld(11).setInhalt(strBeitrag);
+        setVorzeichenSchadenbearbeitungskosten(Character.toString(bmv.getVorzeichen()));
     }
 
     /**
@@ -623,17 +461,6 @@ public final class Nachsatz extends Satz {
      * Erhoeht die Schadenbearbeitungskosten (Feld 11 und Feld 12)
      *
      * @param betrag neuer Summand fuer Schadenbearbeitungskosten
-     * @deprecated bitte {@link #addSchadenbearbeitungskosten(BigDecimal)} verwenden, da Bedeutung von 'long' mehrdeutig ist
-     */
-    @Deprecated // TODO: vor Release entfernen (02-Jan-2021, oboehm)
-    public void addSchadenbearbeitungskosten(final long betrag) {
-        addSchadenbearbeitungskosten(BigDecimal.valueOf(betrag).movePointLeft(2));
-    }
-
-    /**
-     * Erhoeht die Schadenbearbeitungskosten (Feld 11 und Feld 12)
-     *
-     * @param betrag neuer Summand fuer Schadenbearbeitungskosten
      * @since 5.0
      */
     public BigDecimal addSchadenbearbeitungskosten(final BigDecimal betrag) {
@@ -643,6 +470,11 @@ public final class Nachsatz extends Satz {
     }
 
     /**
+     * Liefert die Schandenbearbeitunskosten.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
+     *
      * @return Kosten der Schadensbearbeitung
      * @deprecated durch {@link #getSchadenbearbeitungskostenMitVorzeichen()} abgeloest
      */
@@ -667,37 +499,11 @@ public final class Nachsatz extends Satz {
      * Setzt das Vorzeichen Schadenbearbeitungskosten (Feld 12)
      *
      * @param strVorzeichen Vorzeichen
-     * @deprecated durch {@link #setVorzeichenSchadenbearbeitungskosten(String)} ersetzt
-     *             (wg. einheitlicher Schreibweise ...bearbeitungskosten)
-     */
-    @Deprecated // TODO: vor Release entfernen (03-Jan-2021, oboehm)
-    public void setVorzeichenSchadenbearbKosten(final String strVorzeichen) {
-        if (("+").equalsIgnoreCase(strVorzeichen) || ("-").equalsIgnoreCase(strVorzeichen))
-            this.getTeildatensatz(1).getFeld(12).setInhalt(strVorzeichen);
-        else throw new IllegalArgumentException(strVorzeichen + ": kein Vorzeichen");
-
-    }
-
-    /**
-     * Setzt das Vorzeichen Schadenbearbeitungskosten (Feld 12)
-     *
-     * @param strVorzeichen Vorzeichen
      */
     public void setVorzeichenSchadenbearbeitungskosten(final String strVorzeichen) {
         if (("+").equalsIgnoreCase(strVorzeichen) || ("-").equalsIgnoreCase(strVorzeichen))
             this.getTeildatensatz(1).getFeld(12).setInhalt(strVorzeichen);
         else throw new IllegalArgumentException(strVorzeichen + ": kein Vorzeichen");
-    }
-
-    /**
-     * Liefert das Vorzeichen Schadenbearbeitungskosten (Feld 12).
-     *
-     * @return das Vorzeichen
-     * @deprecated durch {@link #getSchadenbearbeitungskostenMitVorzeichen()} abgedeckt
-     */
-    @Deprecated // TODO: vor Release entfernen (03-Jan-2021, oboehm)
-    public String getVorzeichenSchadenbearbKosten() {
-        return this.getTeildatensatz(1).getFeld(12).getInhalt().trim();
     }
 
     /**

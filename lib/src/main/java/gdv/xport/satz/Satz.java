@@ -104,8 +104,8 @@ public abstract class Satz implements Cloneable {
 	/**
 	 * Instantiates a new satz.
 	 *
-	 * @param content the content
-	 * @param n the n
+	 * @param content die Satzart
+	 * @param n Anzahl
 	 */
 	public Satz(final String content, final int n) {
 		this.satzart.setInhalt(content);
@@ -175,13 +175,10 @@ public abstract class Satz implements Cloneable {
 	 * @param tdsList     Liste mit den Teildatensaetzen
 	 * @param satzVersion die Version des Satzes
 	 */
-    public Satz(
-            final int art, final List<? extends Teildatensatz> tdsList, final AlphaNumFeld satzVersion
-    ) {
-    this.satzart.setInhalt(art);
-    if (satzVersion != null)
-		this.setSatzversion(satzVersion.getInhalt());
-    this.createTeildatensaetze(tdsList);
+	public Satz(final int art, final List<? extends Teildatensatz> tdsList, final AlphaNumFeld satzVersion) {
+		this.satzart.setInhalt(art);
+		if (satzVersion != null) this.setSatzversion(satzVersion.getInhalt());
+		this.createTeildatensaetze(tdsList);
 	}
 
     protected void createTeildatensaetze(final int n) {

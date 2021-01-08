@@ -35,6 +35,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -659,7 +660,7 @@ public final class Datenpaket {
             wert = 0L;
         }
 
-        nachsatz.addGesamtBeitrag(wert);
+        nachsatz.addGesamtBeitrag(new BigDecimal(wert).movePointLeft(2));
     }
 
     private void setNachsatzSummenAus0400(Datensatz datensatz) {
@@ -680,7 +681,7 @@ public final class Datenpaket {
             wert *= -1;
         }
 
-        nachsatz.addGesamtBeitragBrutto(wert);
+        nachsatz.addGesamtBeitragBrutto(new BigDecimal(wert).movePointLeft(2));
 
         try {
             wert = Long.parseLong(datensatz.getTeildatensatz(1)
@@ -698,7 +699,7 @@ public final class Datenpaket {
             wert *= -1;
         }
 
-        nachsatz.addGesamtProvisionsBetrag(wert);
+        nachsatz.addGesamtProvisionsBetrag(new BigDecimal(wert).movePointLeft(2));
     }
 
     private void setNachsatzSummenAus0500(Datensatz datensatz) {
@@ -719,7 +720,7 @@ public final class Datenpaket {
             wert *= -1;
         }
 
-        nachsatz.addVersicherungsLeistungen(wert);
+        nachsatz.addVersicherungsLeistungen(new BigDecimal(wert).movePointLeft(2));
 
         try {
             wert = Long.parseLong(datensatz.getTeildatensatz(1)
@@ -737,6 +738,6 @@ public final class Datenpaket {
             wert *= -1;
         }
 
-        nachsatz.addSchadenbearbeitungskosten(wert);
+        nachsatz.addSchadenbearbeitungskosten(new BigDecimal(wert).movePointLeft(2));
     }
 }
