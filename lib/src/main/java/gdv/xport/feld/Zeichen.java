@@ -51,6 +51,19 @@ public class Zeichen extends AlphaNumFeld {
     }
 
     /**
+     * Instanziiert ein neues Zeichen.
+     *
+     * @param bezeichner der Bezeichner
+     * @param start die Byte-Adresse
+     * @param c Zeichen
+     * @since 5.0
+     */
+    public Zeichen(final Bezeichner bezeichner, final int start, final char c) {
+        super(bezeichner, 1, start);
+        super.setInhalt(c);
+    }
+
+    /**
      * Legt ein neues Zeichen-Feld an. Die Informationen dazu werden
      * aus der uebergebenen Enum bezogen.
      *
@@ -93,6 +106,11 @@ public class Zeichen extends AlphaNumFeld {
      */
     public Zeichen(final Zeichen other) {
         super(other);
+    }
+
+    @Override
+    public Zeichen withInhalt(String inhalt) {
+        return (Zeichen) super.withInhalt(inhalt);
     }
 
     /**

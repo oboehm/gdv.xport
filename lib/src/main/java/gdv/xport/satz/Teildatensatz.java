@@ -42,7 +42,6 @@ import static gdv.xport.feld.Bezeichner.SATZNUMMER;
  */
 public class Teildatensatz extends Satz {
 
-    /** The Constant log. */
     private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
 
     /** Diese Map dient fuer den Zugriff ueber den Namen. */
@@ -90,13 +89,26 @@ public class Teildatensatz extends Satz {
     }
 
     /**
-     * Dies ist der Copy-Constructor, falls man eine Kopie eines
-     * Teildatensatzes braucht.
+     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart, Nummer
+     * und Version des zugeheorigen Satzes.
+     *
+     * @param satz        z.B. 100
+     * @param nr          Nummer des Teildatensatzes (zwischen 1 und 9)
+     */
+    public Teildatensatz(final Satz satz, final int nr) {
+        super(satz, 0);
+        initSatznummer(nr);
+    }
+
+    /**
+     * Dies ist der Copy-Constructor, falls man eine Kopie eines Teildatensatzes
+     * braucht.
      *
      * @param other der andere Teildatensatz
      */
     public Teildatensatz(final Teildatensatz other) {
         this(other.getSatzart(), other.getNummer());
+        this.satznummer = other.satznummer;
         for (Entry<Bezeichner, Feld> entry : other.datenfelder.entrySet()) {
             Feld copy = (Feld) entry.getValue().clone();
             this.datenfelder.put(entry.getKey(), copy);
@@ -131,12 +143,8 @@ public class Teildatensatz extends Satz {
         assert n == 0 : "ein Teildatensatz hat keine weiteren Teildatensaetze";
     }
 
-    /**
-     * Inits the datenfelder.
-     */
     private void initDatenfelder() {
         this.add(this.getSatzartFeld());
-        this.add(this.satznummer);
     }
 
     /**
@@ -144,8 +152,22 @@ public class Teildatensatz extends Satz {
      *
      * @return Satznummer als einzelnes Zeichen ('1' ... '9')
      * @since 0.2
+     * @deprecated durch {@link #getSatznummer()} abgeloest
      */
+    @Deprecated
     public Zeichen getNummer() {
+        return this.getSatznummer();
+    }
+
+    /**
+     * Liefert die Satznummer zurueck. Sie wurde aus Symmetriegruenden
+     * zu {@link #setSatznummer(Zeichen)} eingefuehrt und loest die alte
+     * getNummer()-Methode ab.
+     *
+     * @return Satznummer als einzelnes Zeichen ('1' ... '9')
+     * @since 5.0
+     */
+    public Zeichen getSatznummer() {
         return this.satznummer;
     }
 
@@ -177,6 +199,11 @@ public class Teildatensatz extends Satz {
     @Override
     public void add(final Feld feld) {
         for (Feld f : datenfelder.values()) {
+            if (LOG.isDebugEnabled() && f.getBezeichnung().startsWith("Satznummer")
+                    && feld.getBezeichnung().startsWith("Satznummer")) {
+                LOG.debug(f.getBezeichnung() + "(" + f.getBezeichner().getTechnischerName() + ") gefunden in "
+                        + this + this.satznummer);
+            }
             if (!feld.equals(f) && feld.overlapsWith(f)) {
                 if (isSatznummer(f)) {
                     remove(f);
@@ -187,8 +214,22 @@ public class Teildatensatz extends Satz {
                 }
             }
         }
+        if (feld.getBezeichnung().startsWith("Satznummer")) {
+            feld.setInhalt(this.satznummer.getInhalt());
+        }
+        if (feld.getBezeichnung().startsWith("Vorzeichen")) {
+            LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
+            feld.setInhalt("+");
+        }
+        if (this.getSatzart() == 1 && feld.getBezeichner().getTechnischerName().equals("Satzart0001")) {
+            LOG.debug("{}({}) einfuegen in {} {}}", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(),
+                    this, this.getSatzversion());
+            feld.setInhalt(this.getSatzversion().getInhalt());
+        }
         datenfelder.put(feld.getBezeichner(), feld);
-        sortedFelder.add(feld);
+        if (!sortedFelder.add(feld)) {
+            LOG.debug("Bezeichner {} schon vorhanden in {} {}.", feld.getBezeichner(), this, this.satznummer);
+        }
     }
 
     /**
@@ -271,13 +312,23 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public Feld getFeld(final Bezeichner bezeichner) {
-        Feld found = datenfelder.get(bezeichner);
-        if (found == null) {
-            throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
-                    + " vorhanden!");
-        } else {
-            return found;
+        for (Bezeichner b : bezeichner.getVariants()) {
+            Feld feld = datenfelder.get(b);
+            if (feld != null) {
+                return feld;
+            }
         }
+        return findFeld(bezeichner);
+    }
+
+    private Feld findFeld(final Bezeichner bezeichner) {
+        for (Entry<Bezeichner, Feld> entry : datenfelder.entrySet()) {
+            if (entry.getKey().getName().equals(bezeichner.getName())) {
+                return entry.getValue();
+            }
+        }
+        throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
+                + " vorhanden!");
     }
 
     /**
@@ -288,6 +339,24 @@ public class Teildatensatz extends Satz {
      */
     public Feld getFeld(final int nr) {
         return (Feld) sortedFelder.toArray()[nr -1];
+    }
+
+    /**
+     * Liefert das Feld mit der angegebenen Byte-Adresse. Im Gegensatz zur
+     * Nr. in {@link #getFeld(int)} aendert sich diese nicht, wenn neue
+     * Elemente in einem Teildatensatz hinzukommen.
+     *
+     * @param adresse zwischen 1 und 256
+     * @return das entsprechende Feld
+     * @since 5.0
+     */
+    public Feld getFeld(final ByteAdresse adresse) {
+        for (Feld f : getFelder()) {
+            if (adresse.intValue() == f.getByteAdresse()) {
+                return f;
+            }
+        }
+        throw new IllegalArgumentException("invalid address " + adresse);
     }
 
     /**
@@ -311,7 +380,12 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public boolean hasFeld(final Bezeichner bezeichner) {
-        return this.datenfelder.containsKey(bezeichner);
+        for (Bezeichner b : bezeichner.getVariants()) {
+            if (this.datenfelder.containsKey(b)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -416,6 +490,15 @@ public class Teildatensatz extends Satz {
             violations.addAll(feld.validate());
         }
         return violations;
+    }
+
+    @Override
+    public String toShortString() {
+        String s = String.format("Teildatensatz %d Satzart %04d", this.getSatznummer().toInt(), this.getSatzart());
+        if (sortedFelder.size() < 4) {
+            return s;
+        }
+        return s + "." + getFeld(4).getInhalt();
     }
 
     /**

@@ -11,7 +11,7 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 30.
- * "Unfall - Wagnisdaten /-zusatz" (Satzart 0220)-
+ * "Unfall - Wagnisdaten /-zusatz" (Satzart 0220).
  *
  * @author rklemmer
  * @since 20.02.2013

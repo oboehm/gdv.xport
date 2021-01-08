@@ -64,6 +64,7 @@ public final class Datenpaket {
      */
     public Datenpaket() {
         this(Config.getVUNummer().getInhalt());
+        this.vorsatz.setVersion(this.nachsatz);
     }
 
     /**
@@ -74,11 +75,14 @@ public final class Datenpaket {
      * @since 0.3
      */
     public Datenpaket(final String vuNummer) {
+        this.vorsatz.setVersion(this.nachsatz);
         Datum heute = Datum.heute();
         this.setErstellungsDatumVon(heute);
+        // Zeitraum-bis nicht vorbelegen ? - Warum, ist nur Default, falls nicht gesetzt wird
         this.setErstellungsDatumBis(heute);
         this.setVuNummer(vuNummer);
-        this.setAbsender(vuNummer);
+        // Absender nicht mit vuNummer vorbelegen! - Warum nicht? Ist das VU nicht der Absender?
+        // this.setAbsender(vuNummer);
         LOG.debug(this + " created.");
     }
 
@@ -114,6 +118,19 @@ public final class Datenpaket {
     }
 
     /**
+     * Gets the saetze.
+     *
+     * @return the saetze
+     * @since 5.0
+     */
+    public List<Satz> getAllSaetze() {
+        List<Satz> satzListe = new ArrayList<>();
+        satzListe.add(this.vorsatz);
+        satzListe.addAll(datensaetze);
+        satzListe.add(this.nachsatz);
+        return Collections.unmodifiableList(satzListe);
+    }
+    /**
      * Sets the datensaetze.
      *
      * @param datensaetze the datensaetze to set
@@ -124,44 +141,57 @@ public final class Datenpaket {
     }
 
     /**
-     * Gets the vorsatz.
+     * Liefert eine Kopie(!) des internen Vorsatzes.
+     * <p>
+     * <b>Achtung:</b> Der Vorsatz wird intern durch das Datenpaket verwaltet und
+     * darf nicht von aussen verändert werden.
+     * </p>
      *
      * @return the vorsatz
      */
     public Vorsatz getVorsatz() {
-        return vorsatz;
+        return new Vorsatz(this.vorsatz);
     }
 
     /**
-     * Gets the nachsatz.
+     * Liefert eine Kopie(!) des internen Nachsatzes.
+     * <p>
+     * <b>Achtung:</b> Der Nachsatz wird intern durch das Datenpaket verwaltet und
+     * darf nicht von aussen verändert werden.
+     * </p>
      *
      * @return the nachsatz
      */
     public Nachsatz getNachsatz() {
-        return nachsatz;
+        return new Nachsatz(this.nachsatz);
     }
 
     /**
-     * Fuegt den uebergebenen Datensatz hinzu.
+     * Fuegt den uebergebenen Datensatz hinzu.<br/>
+     * <b>Achtung:</b> Satzart 001 (Vorsatz) bzw. Satzart 9999 (Nachsatz) kann
+     * nicht hinzugefuegt werden!
      *
      * @param datensatz Datensatz, der hinzugefuegt werden soll
      */
     public void add(final Datensatz datensatz) {
+        if (("0001").equalsIgnoreCase(datensatz.getGdvSatzartName()) || ("9999")
+                .equalsIgnoreCase(datensatz.getGdvSatzartName()))
+            throw new IllegalArgumentException(("0001").equalsIgnoreCase(datensatz
+                    .getGdvSatzartName()) ? "Einen Vorsatz gibt es bereits!"
+                    : "Einen Nachsatz gibt es bereits!");
         datensaetze.add(datensatz);
-        nachsatz.increaseAnzahlSaetze();
-    }
+        vorsatz.setVersion(datensatz);
 
-    /**
-     * Fuegt den Datensatz hinzu und traegt die angegebene Version an der
-     * entsprechenden Stelle im Vorsatz ein.
-     *
-     * @param datensatz Datensatz
-     * @param version   z.B. 1.2
-     * @since 4.3
-     */
-    public void add(final Datensatz datensatz, double version) {
-        add(datensatz);
-        getVorsatz().setVersion(datensatz.getSatzart(), datensatz.getSparte(), version);
+        if (("0200").equalsIgnoreCase(datensatz.getGdvSatzartName()))
+            setNachsatzSummenAus0200(datensatz);
+
+        if (("0400").equalsIgnoreCase(datensatz.getGdvSatzartName()))
+            setNachsatzSummenAus0400(datensatz);
+
+        if (("0500").equalsIgnoreCase(datensatz.getGdvSatzartName()))
+            setNachsatzSummenAus0500(datensatz);
+
+        nachsatz.setAnzahlSaetze(datensaetze.size());
     }
 
     /**
@@ -315,7 +345,7 @@ public final class Datenpaket {
                 this.nachsatz = (Nachsatz) satz;
                 break;
             }
-            this.add((Datensatz) satz);
+            datensaetze.add((Datensatz) satz);
         }
     }
 
@@ -342,7 +372,7 @@ public final class Datenpaket {
     private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
             throws IOException {
         int sparte = Datensatz.readSparte(reader);
-        SatzTyp satzTyp = new SatzTyp(satzart, sparte);
+        SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
         if (sparte == 10 && satzart > 210) {
             WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
             if (wagnisart != WagnisartLeben.NULL) {
@@ -350,9 +380,9 @@ public final class Datenpaket {
                 // teildatenSatzmummer. Nur groesser 0
                 // besitzt per Definition Werte.
                 TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
-                satzTyp = new SatzTyp(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
+                satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
             } else {
-                satzTyp = new SatzTyp(satzart, sparte, wagnisart.getCode());
+                satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode());
             }
         } else if (sparte == 20 && satzart == 220) {
             // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
@@ -363,8 +393,22 @@ public final class Datenpaket {
                 satz.importFrom(reader);
                 return satz;
             }
-            satzTyp = new SatzTyp(satzart, sparte, krankenFolgeNr);
+            satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
+        }  else if (sparte == 580 && satzart == 220) {
+            // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
+            // noetig
+            int bausparArt = Datensatz.readBausparenArt(reader);
+            // BausparenArt nicht auslesbar -> Unbekannter Datensatz
+            if (bausparArt == -1) {
+                Datensatz satz = new SatzX(220, 20, FeldX.class);
+                satz.importFrom(reader);
+                return satz;
+            } else if (bausparArt == 0) {
+                bausparArt = 1;
+            }
+            satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
         }
+
         Datensatz satz = SatzFactory.getDatensatz(satzTyp);
         satz.importFrom(reader);
         return satz;
@@ -408,13 +452,13 @@ public final class Datenpaket {
     }
 
     /**
-     * Sets the erstellungs datum von.
+     * Sets the erstellungsDatumVon im Vorsatz (Byte 70 - 77) (alle
+     * Teildatensätze)
      *
      * @param d Erstellungsdatum von
      */
     public void setErstellungsDatumVon(final Datum d) {
-        Datum von = this.getErstellungsDatumVon();
-        von.setInhalt(d);
+        this.vorsatz.setErstellungsZeitraumVon(d);
     }
 
     /**
@@ -423,7 +467,7 @@ public final class Datenpaket {
      * @return Erstellungsdatum bis
      */
     public Datum getErstellungsDatumVon() {
-        return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDAT_ZEITRAUM_VOM);
+        return this.vorsatz.getErstellungsZeitraumVon();
     }
 
     /**
@@ -432,8 +476,7 @@ public final class Datenpaket {
      * @param d Erstellungsdatum bis
      */
     public void setErstellungsDatumBis(final Datum d) {
-        Datum bis = this.getErstellungsDatumBis();
-        bis.setInhalt(d);
+        this.vorsatz.setErstellungsZeitraumBis(d);
     }
 
     /**
@@ -442,33 +485,25 @@ public final class Datenpaket {
      * @return Erstellungdatum bis
      */
     public Datum getErstellungsDatumBis() {
-        return (Datum) this.vorsatz.getFeld(ERSTELLUNGSDAT_ZEITRAUM_BIS);
+        return this.vorsatz.getErstellungsZeitraumBis();
     }
 
     /**
-     * Sets the absender.
+     * Sets the absender im Vorsatz (Byte 10 - 39) (alle Teildatensätze)
      *
-     * @param s neuer Absender
+     * @param absender neuer Absender
      */
-    public void setAbsender(final String s) {
-        Feld absender = this.getAbsenderFeld();
-        absender.setInhalt(s);
+    public void setAbsender(final String absender) {
+        this.vorsatz.setAbsender(absender);
     }
 
     /**
-     * Gets the absender.
+     * Gets the absender im Vorsatz (Byte 10 - 39) (alle Teildatensätze)
      *
      * @return Absender
      */
     public String getAbsender() {
-        return this.getAbsenderFeld().getInhalt().trim();
-    }
-
-    /**
-     * @return das komplette Absender-Feld
-     */
-    private Feld getAbsenderFeld() {
-        return this.vorsatz.getFeld(Bezeichner.ABSENDER);
+        return this.vorsatz.getAbsender();
     }
 
     /**
@@ -477,8 +512,7 @@ public final class Datenpaket {
      * @param s Adressat
      */
     public void setAdressat(final String s) {
-        Feld adressat = this.getAdressatFeld();
-        adressat.setInhalt(s);
+        this.vorsatz.setAdressat(s);
     }
 
     /**
@@ -487,18 +521,12 @@ public final class Datenpaket {
      * @return Adressat
      */
     public String getAdressat() {
-        return this.getAdressatFeld().getInhalt().trim();
+        return this.vorsatz.getAdressat();
     }
 
     /**
-     * @return das komplette Adressat-Feld
-     */
-    private Feld getAdressatFeld() {
-        return this.vorsatz.getFeld(ADRESSAT);
-    }
-
-    /**
-     * Sets the vermittler.
+     * Sets the vermittler Um Geschaeftsstelle/Vermittler in Vorsatz (alle
+     * Teildatensaetze) und Nachsatz setzen zu koennen.
      *
      * @param s Vermittler
      */
@@ -621,4 +649,94 @@ public final class Datenpaket {
                 "+2 (Daten-)Saetze";
     }
 
+    private void setNachsatzSummenAus0200(Datensatz datensatz) {
+        Long wert;
+        try {
+            wert = Long.parseLong(datensatz.getTeildatensatz(1)
+                                           .getFeld(22)
+                                           .getInhalt());
+        } catch (NumberFormatException e) {
+            wert = 0L;
+        }
+
+        nachsatz.addGesamtBeitrag(wert);
+    }
+
+    private void setNachsatzSummenAus0400(Datensatz datensatz) {
+        Long wert;
+        try {
+            wert = Long.parseLong(datensatz.getTeildatensatz(1)
+                                           .getFeld(26)
+                                           .getInhalt()
+                                           .trim());
+        } catch (NumberFormatException e) {
+            wert = 0L;
+        }
+
+        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+                                               .getFeld(27)
+                                               .getInhalt()
+                                               .trim())) {
+            wert *= -1;
+        }
+
+        nachsatz.addGesamtBeitragBrutto(wert);
+
+        try {
+            wert = Long.parseLong(datensatz.getTeildatensatz(1)
+                                           .getFeld(28)
+                                           .getInhalt()
+                                           .trim());
+        } catch (NumberFormatException e) {
+            wert = 0L;
+        }
+
+        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+                                               .getFeld(29)
+                                               .getInhalt()
+                                               .trim())) {
+            wert *= -1;
+        }
+
+        nachsatz.addGesamtProvisionsBetrag(wert);
+    }
+
+    private void setNachsatzSummenAus0500(Datensatz datensatz) {
+        Long wert;
+        try {
+            wert = Long.parseLong(datensatz.getTeildatensatz(1)
+                                           .getFeld(25)
+                                           .getInhalt()
+                                           .trim());
+        } catch (NumberFormatException e) {
+            wert = 0L;
+        }
+
+        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+                                               .getFeld(26)
+                                               .getInhalt()
+                                               .trim())) {
+            wert *= -1;
+        }
+
+        nachsatz.addVersicherungsLeistungen(wert);
+
+        try {
+            wert = Long.parseLong(datensatz.getTeildatensatz(1)
+                                           .getFeld(27)
+                                           .getInhalt()
+                                           .trim());
+        } catch (NumberFormatException e) {
+            wert = 0L;
+        }
+
+        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+                                               .getFeld(28)
+                                               .getInhalt()
+                                               .trim())) {
+            wert *= -1;
+        }
+
+        nachsatz.addSchadenbearbeitungskosten(wert);
+    }
 }

@@ -18,6 +18,8 @@
 
 package gdv.xport.feld.internal;
 
+import de.jfachwert.Text;
+
 /**
  * Dies ist eine interne Hilfsklasse, um Umlaute aufzuloesen.
  *
@@ -36,24 +38,7 @@ public final class UmlautMapper {
      * @return aufgeloester Umlaut oder Zeichen selbst
      */
     public static String replaceUmlaut(char umlaut) {
-        switch (umlaut) {
-            case '\u00c4':
-                return "Ae";
-            case '\u00d6':
-                return "Oe";
-            case '\u00dc':
-                return "Ue";
-            case '\u00e4':
-                return "ae";
-            case '\u00f6':
-                return "oe";
-            case '\u00fc':
-                return "ue";
-            case '\u00df':
-                return "ss";
-            default:
-                return Character.toString(umlaut);
-        }
+        return Text.replaceUmlaute(Character.toString(umlaut));
     }
 
 }

@@ -19,8 +19,9 @@
 package gdv.xport.satz.xml;
 
 import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Teildatensatz;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlHelper;
 import org.apache.logging.log4j.LogManager;
@@ -49,6 +50,7 @@ import java.util.Map;
 public class SatzXml extends Datensatz {
 
     private static final Logger LOG = LogManager.getLogger(SatzXml.class);
+
 
     /**
      * Instantiiert einen neuen Satz.
@@ -104,15 +106,19 @@ public class SatzXml extends Datensatz {
         throw new XMLStreamException("end of " + element + " not found");
     }
 
-    private void parseElement(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
-        LOG.trace("Parsing element {}.", element);
-        QName name = element.getName();
-        if ("satzanfang".equals(name.getLocalPart())) {
-            parseTeildatensatz(element, reader);
-        } else if ("feldreferenz".equals(name.getLocalPart())) {
-            parseFeldreferenz(element, reader);
-        }
+  private void parseElement(final StartElement element, final XMLEventReader reader) throws XMLStreamException  {
+    LOG.trace("Parsing element {}.", element);
+    QName name = element.getName();
+
+    if ("satzanfang".equals(name.getLocalPart()))  {
+      parseTeildatensatz(element, reader);
+    } else if ("feldreferenz".equals(name.getLocalPart()))  {
+      parseFeldreferenz(element, reader);
     }
+    else if ("version".equals(name.getLocalPart()))  {
+      parseSatzversion(element, reader);
+    }
+  }
 
     private void parseTeildatensatz(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         TeildatensatzXml tds = parseSatzanfang(element, reader);
@@ -133,7 +139,7 @@ public class SatzXml extends Datensatz {
     private TeildatensatzXml parseSatzanfang(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         Attribute teilsatz = element.getAttributeByName(new QName("teilsatz"));
         int nr = Integer.parseInt(teilsatz.getValue());
-        TeildatensatzXml tds = new TeildatensatzXml(this.getSatzart(), nr);
+        TeildatensatzXml tds = new TeildatensatzXml(this, nr);
         LOG.debug("Teildatensatz {} added to {}.", nr, this);
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
@@ -147,23 +153,61 @@ public class SatzXml extends Datensatz {
         throw new XMLStreamException("end of " + element + " not found");
     }
 
-    /**
-     * Parses the feldreferenz.
-     *
-     * @param element the element
-     * @param reader the reader
-     * @throws XMLStreamException the XML stream exception
-     */
-    private void parseFeldreferenz(StartElement element, final XMLEventReader reader) throws XMLStreamException {
-        FeldReferenz referenz = new FeldReferenz(reader, element);
-        if (referenz.hasAuspraegung()) {
-            if ("Satzart".equals(referenz.getName())) {
-                this.getSatzartFeld().setInhalt(referenz.getAuspraegung());
-            } else if ("Sparte".equals(referenz.getName())) {
-                this.setSparte(referenz.getAuspraegung());
-            }
-        }
+  /**
+   * Parses the feldreferenz.
+   *
+   * @param element the element
+   * @param reader the reader
+   * @throws XMLStreamException the XML stream exception
+   */
+  private void parseFeldreferenz(StartElement element, final XMLEventReader reader) throws XMLStreamException  {
+    FeldReferenz referenz = new FeldReferenz(reader, element);
+    if (referenz.hasAuspraegung()) {
+      if ("Satzart".equals(referenz.getName())) {
+        this.getSatzartFeld().setInhalt(referenz.getAuspraegung());
+
+        this.setGdvSatzartName(referenz.getAuspraegung());
+      } else if ("Sparte".equals(referenz.getName())) {
+        this.setSparte(referenz.getAuspraegung());
+
+        this.setGdvSatzartName(referenz.getAuspraegung());
+        LOG.debug("Sparte: " + referenz.getAuspraegung());
+      }
+      else if ("Satznummer".equals(referenz.getName()))
+      {
+        this.setGdvSatzartNummer(referenz.getAuspraegung());
+
+        this.setGdvSatzartName(referenz.getAuspraegung());
+        LOG.debug("Satznummer: " + referenz.getAuspraegung());
+      }
     }
+  }
+
+
+
+  /**
+   * Parses the version
+   * 
+   * @param element the element
+   * @param reader the reader
+   * @throws XMLStreamException the XML stream exception
+   */
+
+  private void parseSatzversion(final StartElement element,
+      final XMLEventReader reader) throws XMLStreamException
+  {
+    if (reader.hasNext())
+    {
+      XMLEvent event = reader.nextEvent();
+      if (event.isCharacters())
+      {
+        this.getSatzversion()
+            .setInhalt(event.asCharacters()
+                .getData());
+      }
+    }
+
+  }
 
     /**
      * Verwendet die uebergebene Map, um die Teildatensaetze um fehlende
@@ -173,47 +217,86 @@ public class SatzXml extends Datensatz {
      */
     public void setFelder(Map<String, FeldXml> felder) {
         LOG.trace("Setting missing felder infos to {}.", this);
-        for (Teildatensatz tds : this.getTeildatensaetze()) {
-            TeildatensatzXml tdsXml = (TeildatensatzXml) tds;
+        for (int n = 1; n <= this.getNumberOfTeildatensaetze(); n++) {
+            TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(n);
             tdsXml.updateWith(felder);
+            updateSatznummer(n, tdsXml);
+        }
+    }
+
+    private void updateSatznummer(int n, TeildatensatzXml tdsXml) {
+        if (tdsXml.hasFeld(Bezeichner.SATZNUMMER) || tdsXml.hasFeld(Bezeichner.SATZ_NR_2)) {
+            Feld feld = tdsXml.getFeld(Bezeichner.SATZNUMMER);
+            Zeichen satznr = new Zeichen(feld.getBezeichner(), feld.getByteAdresse(), Character.forDigit(n, 10));
+            tdsXml.setSatznummer(satznr);
+            tdsXml.remove(feld);
+            tdsXml.add(satznr);
         }
     }
 
     /**
-     * Liefert eine Liste der unterstuetzten Satz-Typen. Dies ist vor allem
-     * fuer Satz 220 Sparte 10 von Bedeutung, die verschienden Wagnisarten
-     * unterstuetzen koennen.
-     *
-     * @return the supported satz typen
-     */
-    public List<SatzTyp> getSupportedSatzTypen() {
-        List<SatzTyp> satzTypen = new ArrayList<>();
-        if (this.hasWagnisart()) {
-            TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(1);
-            FeldReferenz feldReferenz = tdsXml.getFeldRefenz((Bezeichner.WAGNISART));
-            for (String value : feldReferenz.getDefaultWerte()) {
-                satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), Integer.parseInt(value)));
-            }
-        } else if (this.hasKrankenFolgeNr()) {
-            TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(1);
-            FeldReferenz feldReferenz = this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
-                    ? tdsXml.getFeldRefenz(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
-                    : tdsXml.getFeldRefenz(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF);
-            if (feldReferenz.getBemerkung().contains("mit \"1\" belegt")) {
-                satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(),1));
-            } else if (feldReferenz.getBemerkung().contains("mit \"2\" belegt")) {
-                satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(),2));
-            } else if (feldReferenz.getBemerkung().contains("mit \"3\" belegt")) {
-                satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), 3));
-            } else {
-                LOG.error("Expected Folge-Nr. Bemerkung containing 'mit \"X\"X belegt' for Satzart 220, Sparte 20, Feld 10 with X being 1, 2 or 3, but got "
-                        + feldReferenz.getBemerkung());
-                satzTypen.add(this.getSatzTyp());
-            }
-        } else {
-            satzTypen.add(this.getSatzTyp());
-        }
-        return satzTypen;
-    }
-    
+   * Liefert eine Liste der unterstuetzten Satz-Typen. Dies ist vor allem fuer
+   * Satz 220 Sparte 10 von Bedeutung, die verschienden Wagnisarten
+   * unterstuetzen koennen.
+   *
+   * @return the supported satz typen
+   */
+  public List<SatzTyp> getSupportedSatzTypen() {
+    List<SatzTyp> satzTypen = new ArrayList<>();
+    satzTypen.add(SatzTyp.of(this.getGdvSatzartName()));
+
+    // if (this.hasWagnisart() && this.hasSparte() && this.getSparte() == 10)
+    // {
+    // TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(1);
+    // FeldReferenz feldReferenz = tdsXml.getFeldRefenz((Bezeichner.WAGNISART));
+    // for (String value : feldReferenz.getDefaultWerte())
+    // {
+    // satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), Integer
+    // .parseInt(value)));
+    // }
+    // }
+    // else if (this.hasKrankenFolgeNr())
+    // {
+    // TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(1);
+    // FeldReferenz feldReferenz = this.hasFeld(
+    // Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
+    // ? tdsXml.getFeldRefenz(
+    // Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
+    // : tdsXml.getFeldRefenz(
+    // Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF);
+    // if (feldReferenz.getBemerkung()
+    // .contains("mit \"1\" belegt"))
+    // {
+    // satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), -1, 1,
+    // -1));
+    // }
+    // else if (feldReferenz.getBemerkung()
+    // .contains("mit \"2\" belegt"))
+    // {
+    // satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), -1, 2,
+    // -1));
+    // }
+    // else if (feldReferenz.getBemerkung()
+    // .contains("mit \"3\" belegt"))
+    // {
+    // satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), -1, 3,
+    // -1));
+    // }
+    // else
+    // {
+    // LOG.error(
+    // "Expected Folge-Nr. Bemerkung containing 'mit \"X\"X belegt' for Satzart
+    // 220, Sparte 20, Feld 10 with X being 1, 2 or 3, but got "
+    // + feldReferenz.getBemerkung());
+    // satzTypen.add(this.getSatzTyp());
+    // }
+    // }
+    // else
+    // {
+    // satzTypen.add(this.getSatzTyp());
+    // }
+
+    return satzTypen;
+  }
+
 }

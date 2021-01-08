@@ -99,7 +99,7 @@ public final class DatenpaketTest {
         assertEquals(expectedLength, data.length());
         Vorsatz vorsatz = datenpaket.getVorsatz();
         assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
-        assertEquals("1.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
+        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(0, nachsatz.getAnzahlSaetze());
         assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
@@ -126,6 +126,7 @@ public final class DatenpaketTest {
         datum.setInhalt("13022014");
         datenpaket.setErstellungsDatumVon(datum);
         datenpaket.setErstellungsDatumBis(datum);
+        datenpaket.getVorsatz().set(Bezeichner.VERSION_SATZART_9999, "1.1");
         File file = File.createTempFile("datenpaket", ".txt");
         Config.setEOD("\n");
         datenpaket.export(file);
@@ -142,16 +143,9 @@ public final class DatenpaketTest {
         datenpaket.add(new Satz220());
         Vorsatz vorsatz = datenpaket.getVorsatz();
         assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
-        assertEquals("1.1", vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
+        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(1, nachsatz.getAnzahlSaetze());
-    }
-
-    @Test
-    public void testAddVersion() {
-        datenpaket.add(new Satz100(), 2.3);
-        Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.3", vorsatz.getVersion(100));
     }
 
     /**
@@ -467,7 +461,11 @@ public final class DatenpaketTest {
                 LOG.info(line + " lines compared (no difference)");
                 break;
             }
-            assertEquals("difference in line " + line, expectedLine, paketLine);
+            if (expectedLine.startsWith("0001")) {
+                assertEquals("difference in Feld 1-6 of line " + line, expectedLine.substring(0, 96), paketLine.substring(0, 96));
+            } else {
+                assertEquals("difference in line " + line, expectedLine, paketLine);
+            }
         }
         expectedReader.close();
     }

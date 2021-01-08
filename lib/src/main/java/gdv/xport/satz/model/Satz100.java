@@ -19,6 +19,7 @@
 package gdv.xport.satz.model;
 
 import gdv.xport.satz.feld.Feld100;
+import gdv.xport.util.SatzTyp;
 
 /**
  * Diese Klasse repraesentiert die Satzart 100. Es handelt es sich dabei um eine
@@ -26,8 +27,10 @@ import gdv.xport.satz.feld.Feld100;
  * nach dem Soplet-Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>)
  * implementiert wurde.
  * <p>
- * Da langfristig (ab 1.0) die Adressteil-Klasse rausfliegen wird, wurde diese
- * Klasse um die fehlenden Methoden noch ergaenzt.
+ * Im Gegensatz zur Satz-Klasse, die von der {@link gdv.xport.util.SatzFactory}
+ * zurueckgegeben wird, gibt es zusaetzliche Methoden zum Setzen des Vor- und
+ * Nachnamens. Ansonsten bietet diese Klasse keine Vorteile gegenueber dem
+ * Rueckgabewert von {@link gdv.xport.util.SatzFactory#getSatz(SatzTyp)}.
  * </p>
  *
  * @author oliver (ob@aosd.de)

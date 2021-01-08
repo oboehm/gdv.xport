@@ -29,6 +29,7 @@ import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderungen;
+import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
 import gdv.xport.satz.feld.sparte53.Feld220;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.SatzFactory;
@@ -49,8 +50,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 /**
@@ -119,7 +119,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testSetEnum() {
-        Satz satz100 = SatzFactory.getSatz(new SatzTyp(100));
+        Satz satz100 = SatzFactory.getSatz(SatzTyp.of("0100"));
         satz100.set(Feld1bis7.FOLGENUMMER, "13");
         assertEquals("13", satz100.get(Feld1bis7.FOLGENUMMER));
     }
@@ -146,7 +146,7 @@ public final class SatzTest extends AbstractSatzTest {
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
             assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("Hemmernet"), containsString("Satzart 0123")));
+                    allOf(containsString("Hemmernet"), containsString(" 0123")));
             throw ex;
         }
     }
@@ -156,6 +156,7 @@ public final class SatzTest extends AbstractSatzTest {
      * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
      * {@link Feld#NULL_FELD} erwartet.
      */
+    @Test
     public void testGetFeldSafe() {
         Feld f = satz.getFeldSafe("hemmernet");
         assertSame(Feld.NULL_FELD, f);
@@ -173,7 +174,7 @@ public final class SatzTest extends AbstractSatzTest {
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
             assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("Hemmernet"), containsString("Satzart 0123")));
+                    allOf(containsString("Hemmernet"), containsString(" 0123")));
             throw ex;
         }
     }
@@ -183,6 +184,7 @@ public final class SatzTest extends AbstractSatzTest {
      * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
      * {@link Feld#NULL_FELD} erwartet.
      */
+    @Test
     public void testGetFeldSafeBezeichner() {
         Feld f = satz.getFeldSafe(new Bezeichner("hemmernet"));
         assertSame(Feld.NULL_FELD, f);
@@ -200,7 +202,7 @@ public final class SatzTest extends AbstractSatzTest {
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
             assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN"), containsString("Satzart 0123")));
+                    allOf(containsString("ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN"), containsString(" 0123")));
             throw ex;
         }
     }
@@ -210,6 +212,7 @@ public final class SatzTest extends AbstractSatzTest {
      * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
      * {@link Feld#NULL_FELD} erwartet.
      */
+    @Test
     public void testGetFeldSafeEnum() {
         Feld f = satz.getFeldSafe(Feld221Wagnis13ZukSummenaenderungen.ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN);
         assertSame(Feld.NULL_FELD, f);
@@ -254,8 +257,7 @@ public final class SatzTest extends AbstractSatzTest {
             String exported = FileUtils.readFileToString(tmpFile, Config.DEFAULT_ENCODING);
             assertEquals(satz.toLongString(), exported);
         } finally {
-            tmpFile.delete();
-            LOG.info("File \"{}\" deleted.", tmpFile);
+            delete(tmpFile);
         }
     }
 
@@ -324,9 +326,13 @@ public final class SatzTest extends AbstractSatzTest {
             satz.importFrom(tmpFile);
             assertEquals(fileContent, satz.toLongString());
         } finally {
-            tmpFile.delete();
-            LOG.info("File \"" + tmpFile + "\" deleted.");
+            delete(tmpFile);
         }
+    }
+
+    private static void delete(File tmpFile) {
+        boolean ok = tmpFile.delete();
+        LOG.info("File \"{}\" {} deleted.", tmpFile, ok ? "successful" : "not");
     }
 
     /**
@@ -447,7 +453,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testGetSatzTyp() {
         Satz satz220 = new SatzX(220, Feld220Wagnis0.class);
-        assertEquals(new SatzTyp(220, 10, 0), satz220.getSatzTyp());
+        assertEquals(SatzTyp.of("0220.010.0"), satz220.getSatzTyp());
     }
 
     /**
@@ -483,12 +489,45 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testWagnisartSparte40() {
-        SatzTyp expectedSatzTyp = new SatzTyp(220, 40);
+        SatzTyp expectedSatzTyp = SatzTyp.of("0220.040");
         Satz satz = SatzFactory.getDatensatz(expectedSatzTyp);
         satz.set(Bezeichner.WAGNISART, "123456");
         SatzTyp satzTyp = satz.getSatzTyp();
         assertEquals("SatzFactory.getDatensatz(220, 40) hat keine Wagnisart im SatzTyp", -1, satzTyp.getWagnisart());
         assertEquals("SatzTyp von SatzFactory.getDatensatz(220, 40) sollte new SatzTyp(220, 40) entsprechen", expectedSatzTyp, satzTyp);
+    }
+
+    /**
+     * Fuer die Abwaertskompatibilitaet mit der korrigierten VUVM2018-XML-Datei
+     * ist es wichtig, dass auch die alten Namen (ohne "1" am Ende) weiterhin
+     * funktionieren.
+     */
+    @Test
+    public void testGetFeldWithSameNames() {
+        Satz wertungssummen = new SatzX(SatzTyp.of("0220.010.2.9"), Feld220Wagnis2Wertungssummen.class);
+        Feld f1 = wertungssummen.getFeld(Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN);
+        Feld f2 = wertungssummen.getFeld(Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2);
+        assertNotEquals(f1, f2);
+        Feld summe = wertungssummen.getFeld(Bezeichner.of("Haftungswertungssumme in W\u00e4hrungseinheiten 1"));
+        assertEquals(f1, summe);
+    }
+
+    @Test
+    public void testTeildatensatzCtor() {
+        Satz satz102 = SatzFactory.getSatz(SatzTyp.of("0102"));
+        Satz testsatz = new TestSatz(102, satz102.getTeildatensaetze());
+        assertEquals(satz102.toLongString(), testsatz.toLongString());
+        satz102.set(Bezeichner.BERUF_TEXT, "Tester");
+        assertThat(testsatz.getFeld(Bezeichner.BERUF_TEXT).getInhalt().trim(), isEmptyString());
+        assertNotEquals(satz102.toLongString(), testsatz.toLongString());
+    }
+
+
+
+    static class TestSatz extends Satz {
+        public TestSatz(int art, List<? extends Teildatensatz> tdsList) {
+            super(art, tdsList);
+        }
     }
 
 }

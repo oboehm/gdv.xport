@@ -50,15 +50,15 @@ import static org.junit.Assert.*;
  */
 public class XmlServiceTest extends AbstractXmlTest {
 
-    private static Logger LOG = LogManager.getLogger(XmlServiceTest.class);
-    private static XmlService xmlService = XmlService.getInstance();
+    private static final Logger LOG = LogManager.getLogger(XmlServiceTest.class);
+    private static final XmlService xmlService = XmlService.getInstance();
 
     /**
-     * Einfache Test-Methode fuer {@link XmlService#getSatzart(int)}.
+     * Einfache Test-Methode fuer {@link XmlService#getSatzart(SatzTyp)}.
      */
     @Test
     public void testGetSatzart() {
-        SatzXml satz = xmlService.getSatzart(100);
+        SatzXml satz = xmlService.getSatzart(SatzTyp.of(100));
         assertNotNull(satz);
         assertEquals(100, satz.getSatzart());
     }
@@ -69,18 +69,18 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test(expected = NotRegisteredException.class)
     public void testGetSatzartNonExisting() {
-        xmlService.getSatzart(451);
+        xmlService.getSatzart(SatzTyp.of(451));
     }
 
     /**
-     * Einfache Test-Methode fuer {@link XmlService#getSatzart(int)}. Wir
+     * Einfache Test-Methode fuer {@link XmlService#getSatzart(SatzTyp)}. Wir
      * moechten jedesmal ein "frisches" {@link SatzXml}-Objekt bekommen. Daher
      * holen wir ihn uns zweimal...
      */
     @Test
     public void testGetSatzartTwice() {
-        SatzXml one = xmlService.getSatzart(100);
-        SatzXml two = xmlService.getSatzart(100);
+        SatzXml one = xmlService.getSatzart(SatzTyp.of(100));
+        SatzXml two = xmlService.getSatzart(SatzTyp.of(100));
         assertEquals(one, two);
         assertNotSame(one, two);
         for (int i = 1; i <= one.getNumberOfTeildatensaetze(); i++) {
@@ -99,22 +99,25 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testGetVorsatz() {
-        SatzXml vorsatz = xmlService.getSatzart(1);
+        SatzXml vorsatz = xmlService.getSatzart(SatzTyp.of(1));
         Feld version = vorsatz.getFeld("Satzart 0100");
         assertNotNull(version);
     }
 
     /**
      * Hier begutachten wir etwas genauer den von
-     * {@link XmlService#getSatzart(int)} zurueckgelieferten Satz.
+     * {@link XmlService#getSatzart(SatzTyp)} zurueckgelieferten Satz.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testGetSatzart200() {
-        SatzXml satz200 = xmlService.getSatzart(200);
+    public void testGetSatzart200() throws IOException {
+        SatzXml satz200 = xmlService.getSatzart(SatzTyp.of(200));
         assertEquals(2, satz200.getTeildatensaetze().size());
         Feld inkasso = satz200.getFeld(Bezeichner.INKASSOART);
         assertEquals(1, inkasso.getAnzahlBytes());
         assertEquals(43, inkasso.getByteAdresse());
+        checkImport(satz200);
     }
 
     /**
@@ -146,12 +149,10 @@ public class XmlServiceTest extends AbstractXmlTest {
      * leider fehl. Dies liegt aber an der {@link Satz210}-Klasse, da hier
      * die allgemeine Definition fuer Sparte "0" fehlt.
      * </p>
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testSatzart210() throws IOException {
-        SatzXml satzXml = xmlService.getSatzart(210);
+    public void testSatzart210() {
+        SatzXml satzXml = xmlService.getSatzart(SatzTyp.of(210));
         assertEquals(210, satzXml.getSatzart());
         assertNotNull(satzXml.getFeld(Bezeichner.SATZ_NR_1));
     }
@@ -164,7 +165,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart210Sparte50() throws IOException {
-        checkSatzart(new SatzTyp(210, 50), new Satz210(50));
+        checkSatzart(SatzTyp.of("0210.050"), new Satz210(50));
     }
 
     /**
@@ -176,7 +177,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart211() throws IOException {
-        setUpAndCheckSatz(xmlService.getSatzart(211), new Satz211());
+        setUpAndCheckSatz(xmlService.getSatzart(SatzTyp.of(211)), new Satz211());
     }
 
     /**
@@ -188,33 +189,56 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart220() throws IOException {
-        setUpAndCheckSatz(xmlService.getSatzart(220), new Satz220());
+        setUpAndCheckSatz(xmlService.getSatzart(SatzTyp.of(220)), new Satz220());
     }
 
     /**
      * Hier testen wir, ob die XML-Variante mit {@link Satz221} uebereinstimmt.
-     * Da aber die Angabe der Satzart nicht eindeutig ist, sondern noch die
-     * Angabe der Sparte fehlt, erwarten wir eine {@link NotUniqueException}.
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
+    @Test
     public void testSatzart221() throws IOException {
-        checkSatzart(221, new Satz221());
+        checkSatzart221(30);
+        checkSatzart221(40);
+        checkSatzart221(52);
+        checkSatzart221(53);
+        checkSatzart221(55);
+        checkSatzart221(59);
+    }
+
+    private void checkSatzart221(int sparte) throws IOException {
+        checkSatzart(SatzTyp.of(221, sparte), new Satz221(sparte));
+    }
+
+    /**
+     * Satzart 0221.070 hat einige Eigenheiten wie Satznummer auf Position 53
+     * oder 2 Teildatensaetze. Deswegen wird er hier gesondert getestet.
+     */
+    @Test
+    public void testSatzart0221070() {
+        SatzXml satzXml = xmlService.getSatzart(SatzTyp.of("0221.070"));
+        Satz221 reference = new Satz221(70);
+        checkTeildatensaetze(satzXml, reference.getTeildatensaetze());
     }
 
     /**
      * Hier testen wir, ob die XML-Variante mit {@link Satz230} uebereinstimmt.
-     * Da aber die Angabe der Satzart nicht eindeutig ist, sondern noch die
-     * Angabe der Sparte fehlt, erwarten wir eine {@link NotUniqueException}.
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
+    @Test
     public void testSatzart230() throws IOException {
-        checkSatzart(230, new Satz230());
+        checkSatzart230(10);
+        checkSatzart230(30);
+    }
+
+    private void checkSatzart230(int sparte) throws IOException {
+        checkSatzart(SatzTyp.of(230, sparte), new Satz230(sparte));
     }
 
     private static void checkSatzart(final int nr, final Satz reference) throws IOException {
-        SatzXml satzXml = xmlService.getSatzart(nr);
+        SatzXml satzXml = xmlService.getSatzart(SatzTyp.of(String.format("%04d", nr)));
         assertEquals(nr, satzXml.getSatzart());
         checkSatz(satzXml, reference);
     }
@@ -230,10 +254,16 @@ public class XmlServiceTest extends AbstractXmlTest {
         setUpAndCheckSatz(satzXml, reference);
     }
 
+    private static void checkImport(SatzXml satz) throws IOException {
+        SatzXml reference = new SatzXml(satz);
+        setUpAndCheckSatz(satz, reference);
+    }
+
     private static void setUpAndCheckSatz(SatzXml satzXml, final Satz reference) throws IOException, AssertionError {
         AbstractSatzTest.setUp(reference);
+        String importString = reference.toLongString();
         satzXml.importFrom(reference.toLongString());
-        assertEquals(reference.toLongString(), satzXml.toLongString());
+        assertEquals(importString, satzXml.toLongString());
         ObjectTester.assertEquals(reference, satzXml);
     }
 
@@ -256,7 +286,7 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart220Wagnis0() throws IOException {
-        checkSatzart(new SatzTyp(220, 10, 0), Feld220Wagnis0.class);
+        checkSatzart(SatzTyp.of(220, 10, 0), Feld220Wagnis0.class);
     }
 
     private static void checkSatzart(final SatzTyp satzNr, final Class<? extends Enum> enumClass)
@@ -282,10 +312,45 @@ public class XmlServiceTest extends AbstractXmlTest {
     /**
      * Dies ist ein weiterer Testfall fuer Issue #33. Hierbei sollte keine
      * {@link NotRegisteredException} auftauchen.
+     *
+     * @throws IOException the io exception
      */
     @Test
-    public void testSatzart350() {
-        xmlService.getSatzart(350);
+    public void testSatzart350() throws IOException {
+        SatzXml satz350 = xmlService.getSatzart(SatzTyp.of(350));
+        assertNotNull(satz350);
+        checkImport(satz350);
+    }
+
+    /**
+     * Satzart 0220.010.9.9 macht noch Probleme. Feld Nr. 21 - 28 scheinen
+     * im Teildatensatz 9 zu fehlen.
+     */
+    @Test
+    public void testLebenTeildatensatz9() {
+        SatzXml wertungssummen = xmlService.getSatzart(SatzTyp.of("0220.010.9.9"));
+        Teildatensatz teildatensatz9 = wertungssummen.getTeildatensatz(1);
+        Feld haftungsbeginn = teildatensatz9.getFeld(20);
+        assertEquals(128, haftungsbeginn.getEndAdresse());
+        Feld beitragssumme = teildatensatz9.getFeld(21);
+        assertEquals("Feld 21 ist nicht Beitragssumme, sondern " + beitragssumme, 129, beitragssumme.getByteAdresse());
+    }
+
+    @Test
+    public void testBausparenArt() {
+        SatzTyp bausparen = SatzTyp.of("0220.580.2");
+        Satz darlehen = xmlService.getSatzart(bausparen);
+        assertEquals(bausparen.getSatzart(), darlehen.getSatzart());
+        assertEquals(bausparen.getSparte(), darlehen.getSparte());
+        Feld produkt = darlehen.getFeld(Bezeichner.of("Produkt"));
+        assertEquals("580", produkt.getInhalt());
+        Feld art = darlehen.getFeld(Bezeichner.of("Art1"));
+        assertEquals("2", art.getInhalt());
+    }
+
+    @Test
+    public void testGetSatzVersion() {
+        assertEquals("2.4", xmlService.getSatzVersion(SatzTyp.of("0001")));
     }
 
 }

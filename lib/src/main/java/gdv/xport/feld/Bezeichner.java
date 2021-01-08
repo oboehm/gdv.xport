@@ -18,6 +18,7 @@
 
 package gdv.xport.feld;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.internal.UmlautMapper;
 import org.apache.commons.lang.WordUtils;
@@ -63,9 +64,9 @@ public final class Bezeichner {
     public static final Bezeichner ABSCHLAG1_IN_PROZENT = new Bezeichner("Abschlag-1 in %");
     public static final Bezeichner ABSCHLAG1_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-1 in W\u00e4hrungseinheiten", "Abschlag1InWE");
     public static final Bezeichner ABSCHLAG2_IN_PROZENT = new Bezeichner("Abschlag-2 in %");
-    public static final Bezeichner ABSCHLAG2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-2 in W\u00e4hrungseinheiten", "Abschlag1InWE");
+    public static final Bezeichner ABSCHLAG2_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-2 in W\u00e4hrungseinheiten", "Abschlag2InWE");
     public static final Bezeichner ABSCHLAG3_IN_PROZENT = new Bezeichner("Abschlag-3 in %");
-    public static final Bezeichner ABSCHLAG3_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-3 in W\u00e4hrungseinheiten", "Abschlag1InWE");
+    public static final Bezeichner ABSCHLAG3_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag-3 in W\u00e4hrungseinheiten", "Abschlag3InWE");
     public static final Bezeichner ABSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlagsbetrag in W\u00e4hrungseinheiten");
     public static final Bezeichner ABSCHLAG_IN_PROZENT = new Bezeichner("Abschlag in %");
     public static final Bezeichner ABSCHLAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Abschlag in Währungseinheiten");
@@ -113,6 +114,8 @@ public final class Bezeichner {
     public static final Bezeichner ANZAHL_DER_VERSICHERTEN_TIERE_OHNE_NAMENSANGABE_TIERGRUPPE = new Bezeichner("Anzahl der versicherten Tiere ohne Namensangabe (Tiergruppe)", "AnzahlDerVersichertenTiereOhneNamensangabeTiergruppe");
     public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO1 = new Bezeichner("Anzahl der Plaetze (Risiko 1)", "AnzPlaetzeRisiko1");
     public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO2 = new Bezeichner("Anzahl der Plaetze (Risiko 2)", "AnzPlaetzeRisiko2");
+    /** Fuer 0220.580 */
+    public static final Bezeichner ART_580 = new Bezeichner("Art");
     public static final Bezeichner ART_DER_HALTUNG = new Bezeichner("Art der Haltung", "ArtDerHaltung");
     public static final Bezeichner ART_DER_TIERKENNZEICHNUNG = new Bezeichner("Art der Tierkennzeichnung", "ArtDerTierkennzeichnung");
     public static final Bezeichner ART_DER_SCHAETZUNG = new Bezeichner("Art der Schaetzung", "ArtSchaetzung");
@@ -266,7 +269,7 @@ public final class Bezeichner {
     public static final Bezeichner BERUFSSCHLUESSEL = new Bezeichner("Berufsschluessel");
     public static final Bezeichner BERUFSSCHLUESSEL_VN = new Bezeichner("Berufsschlüssel VN");
     public static final Bezeichner BERUFSSCHLUESSEL_DER_VP = new Bezeichner("Berufsschluessel der VP");
-    public static final Bezeichner BERUF_TEXT = new Bezeichner("Beruf-Text");
+    public static final Bezeichner BERUF_TEXT = new Bezeichner("Beruf-Text", "BerufTextBeruflicheStellung");
     public static final Bezeichner BESONDERER_VERWENDUNGSZWECK = new Bezeichner("besonderer Verwendungszweck");
     public static final Bezeichner BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO = new Bezeichner("Besondere Vereinbarung zum Fluggastrisiko");
     public static final Bezeichner BESONDERE_VEREINBARUNGEN = new Bezeichner("Besondere Vereinbarungen");
@@ -299,7 +302,7 @@ public final class Bezeichner {
     public static final Bezeichner BRE_STAFFEL = new Bezeichner("BRE-Staffel", "BreStaffel");
     public static final Bezeichner BUENDELUNGSKENNZEICHEN = new Bezeichner("Buendelungskennzeichen");
     public static final Bezeichner BUCHUNGSKENNZEICHEN = new Bezeichner("Buchungskennzeichen");
-    public static final Bezeichner BUCHUNGSKENNZEICHEN2 = BUCHUNGSKENNZEICHEN;
+    public static final Bezeichner BUCHUNGSKENNZEICHEN2 = new Bezeichner("Buchungskennzeichen2");
     public static final Bezeichner BUZ_LEISTUNG_VON = new Bezeichner("BUZ Leistung von");
     public static final Bezeichner BUZ_LEISTUNG_BIS = new Bezeichner("BUZ Leistung bis");
     public static final Bezeichner BUZ_PROZENT_SATZ = new Bezeichner("BUZ %-Satz");
@@ -446,7 +449,8 @@ public final class Bezeichner {
     public static final Bezeichner GEPAECKVERSICHERUNGSSUMME_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Gepaeckversicherungssumme in Tausend Währungseinheiten", "GepaeckVersssummeInTausendWE");
     public static final Bezeichner GEPAECK_BEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gepaeck-Beitrag in W\u00e4hrungseinheiten");
     public static final Bezeichner GESAMTBEITRAG = new Bezeichner("Gesamtbeitrag");
-    public static final Bezeichner GESAMTBEITRAG_BRUTTO = new Bezeichner("Gesamtbeitrag-Brutto(Inkasso)");
+    public static final Bezeichner GESAMTBEITRAG_BRUTTO = new Bezeichner("Gesamtbeitrag-Brutto(Inkasso)", "GesbeitragBruttoInkasso");
+    public static final Bezeichner GESAMTBEITRAG_BRUTTO_INKASSO = GESAMTBEITRAG_BRUTTO;
     public static final Bezeichner GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gesamtbeitrag (Brutto) in W\u00e4hrungseinheiten", "GesbeitragBruttoInWE");
     public static final Bezeichner GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gesamtbeitrag in W\u00e4hrungseinheiten", "GesbeitragNettoInWE");
     public static final Bezeichner GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Gesamtbeitrag in W\u00e4hrungseinheiten", "GesbeitragInWE");
@@ -476,11 +480,11 @@ public final class Bezeichner {
             new Bezeichner("Guthaben Divid. Ansammlungen in W\u00e4hrungseinheiten", "GuthabenDividAnsammlungenInWE");
 
     public static final Bezeichner HAFTUNG_AB = new Bezeichner("Haftung ab");
-    public static final Bezeichner HAFTUNG_AB2 = new Bezeichner("Haftung ab");
+    public static final Bezeichner HAFTUNG_AB2 = new Bezeichner("Haftung ab 2");
     public static final Bezeichner HAFTUNG_BIS = new Bezeichner("Haftung bis");
-    public static final Bezeichner HAFTUNG_BIS2 = new Bezeichner("Haftung bis");
+    public static final Bezeichner HAFTUNG_BIS2 = new Bezeichner("Haftung bis 2");
     public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten");
-    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN;
+    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten 2");
     public static final Bezeichner HAUPTFAELLIGKEIT = new Bezeichner("Hauptfaelligkeit");
     public static final Bezeichner HEILKOSTEN = new Bezeichner("Heilkosten", "Heilkost");
     public static final Bezeichner HEILKOSTEN_BEITRAGSSATZ = new Bezeichner("Heilkosten Beitragssatz", "HeilkostBeitragssatz");
@@ -771,9 +775,9 @@ public final class Bezeichner {
     public static final Bezeichner PRODUKTSPEZIFISCHE_STAMMDATEN = new Bezeichner("Produktspezifische Stammdaten");
     public static final Bezeichner PROVISION = new Bezeichner("Provision");
     public static final Bezeichner PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Provisionspflichtige Beitragssumme in W\u00e4hrungseinheiten");
-    public static final Bezeichner PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2 = PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN;
+    public static final Bezeichner PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Provisionspflichtige Beitragssumme in W\u00e4hrungseinheiten 2");
     public static final Bezeichner PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Provisionspflichtige Wertungssumme in W\u00e4hrungseinheiten");
-    public static final Bezeichner PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN;
+    public static final Bezeichner PROVISIONSPFLICHTIGE_WERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Provisionspflichtige Wertungssumme in W\u00e4hrungseinheiten 2");
     public static final Bezeichner PROZENTSATZ = new Bezeichner("Prozentsatz");
     public static final Bezeichner PROZENTSATZ_PROGRESSIVE_INVALIDITAET = new Bezeichner("Prozentsatz progressive Invaliditaet");
     public static final Bezeichner PROZENTSATZ_PROGRESSIVE_INVALIDITAET_MEHRLEISTUNG_BEI_INVALIDITAET = new Bezeichner("Prozentsatz progressive Invaliditaet / Mehrleistung bei Invaliditaet");
@@ -840,11 +844,126 @@ public final class Bezeichner {
 
     public static final Bezeichner SAISONKENNZEICHEN = new Bezeichner("Saisonkennzeichen");
     public static final Bezeichner SATZART = new Bezeichner("Satzart");
-    public static final Bezeichner SATZ_NR_1 = new Bezeichner("Satznummer", "SatzNr1");
-    public static final Bezeichner SATZ_NR_2 = new Bezeichner("Satznummer", "SatzNr2");
-    public static final Bezeichner SATZ_NR_3 = new Bezeichner("Satznummer", "SatzNr3");
-    public static final Bezeichner SATZ_NR_4 = new Bezeichner("Satznummer", "SatzNr4");
-    public static final Bezeichner SATZ_NR_9 = new Bezeichner("Satznummer", "SatzNr9");
+    public static final Bezeichner SATZART_9999 = new Bezeichner("Satzart 9999");
+    public static final Bezeichner SATZART_0001 = new Bezeichner("Satzart 0001");
+    public static final Bezeichner SATZART_0100 = new Bezeichner("Satzart 0100");
+    public static final Bezeichner SATZART_0200 = new Bezeichner("Satzart 0200");
+    public static final Bezeichner SATZART_0202_ALLG_ANTRAGSDATEN = new Bezeichner("Satzart 0202");
+    public static final Bezeichner SATZART_0210_050 = new Bezeichner("Satzart 0210.050");
+    public static final Bezeichner SATZART_0220_051 = new Bezeichner("Satzart 0220.051");
+    public static final Bezeichner SATZART_0220_052 = new Bezeichner("Satzart 0220.052");
+    public static final Bezeichner SATZART_0220_053 = new Bezeichner("Satzart 0220.053");
+    public static final Bezeichner SATZART_0220_054 = new Bezeichner("Satzart 0220.054");
+    public static final Bezeichner SATZART_0220_059 = new Bezeichner("Satzart 0220.059");
+    public static final Bezeichner SATZART_0210_040 = new Bezeichner("Satzart 0210.040");
+    public static final Bezeichner SATZART_0220_040 = new Bezeichner("Satzart 0220.040");
+    public static final Bezeichner SATZART_0210_030 = new Bezeichner("Satzart 0210.030");
+    public static final Bezeichner SATZART_0220_030 = new Bezeichner("Satzart 0220.030");
+    public static final Bezeichner SATZART_0210_010 = new Bezeichner("Satzart 0210.010");
+    public static final Bezeichner SATZART_0220_010 = new Bezeichner("Satzart 0220.010");
+    public static final Bezeichner SATZART_0210_130 = new Bezeichner("Satzart 0210.130");
+    public static final Bezeichner SATZART_0220_130 = new Bezeichner("Satzart 0220.130");
+    public static final Bezeichner SATZART_0210_110 = new Bezeichner("Satzart 0210.110");
+    public static final Bezeichner SATZART_0220_110 = new Bezeichner("Satzart 0220.110");
+    public static final Bezeichner SATZART_0210_140 = new Bezeichner("Satzart 0210.140");
+    public static final Bezeichner SATZART_0220_140 = new Bezeichner("Satzart 0220.140");
+    public static final Bezeichner SATZART_0210_020 = new Bezeichner("Satzart 0210.020");
+    public static final Bezeichner SATZART_0220_020 = new Bezeichner("Satzart 0220.020");
+    public static final Bezeichner SATZART_0210_070 = new Bezeichner("Satzart 0210.070");
+    public static final Bezeichner SATZART_0220_070 = new Bezeichner("Satzart 0220.070");
+    public static final Bezeichner SATZART_0210_FEUER = new Bezeichner("Satzart 0210.080");
+    public static final Bezeichner SATZART_0220_FEUER = new Bezeichner("Satzart 0220.080");
+    public static final Bezeichner SATZART_0210_510 = new Bezeichner("Satzart 0210.510");
+    public static final Bezeichner SATZART_0220_510 = new Bezeichner("Satzart 0220.510");
+    public static final Bezeichner SATZART_0210_TRANSPORT = new Bezeichner("Satzart 0210.190");
+    public static final Bezeichner SATZART_0220_TRANSPORT = new Bezeichner("Satzart 0220.190");
+    public static final Bezeichner SATZART_0250_TRANSPORT = new Bezeichner("Satzart 0250.190");
+    public static final Bezeichner SATZART_0260_TRANSPORT = new Bezeichner("Satzart 0260.190");
+    public static final Bezeichner SATZART_0210_NICHT_DEF_SPARTEN = new Bezeichner("Satzart 0210.000");
+    public static final Bezeichner SATZART_0210_TECH_VERS = new Bezeichner("Satzart 0210.170");
+    public static final Bezeichner SATZART_0220_NICHT_DEF_SPARTEN = new Bezeichner("Satzart 0220.000");
+    public static final Bezeichner SATZART_0220_TECH_VERS = new Bezeichner("Satzart 0220.170");
+    public static final Bezeichner SATZART_0220_055 = new Bezeichner("Satzart 0220.055");
+    public static final Bezeichner SATZART_0300_BETEILIGUNGSINFORMATION = new Bezeichner("Satzart 0300");
+    public static final Bezeichner SATZART_0342_BEGLEITDOK = new Bezeichner("Satzart 0342");
+    public static final Bezeichner SATZART_0400_INKASSO = new Bezeichner("Satzart 0400");
+    public static final Bezeichner SATZART_0410_INKASSO = new Bezeichner("Satzart 0410");
+    public static final Bezeichner SATZART_0430_INKASSO = new Bezeichner("Satzart 0430");
+    public static final Bezeichner SATZART_0500_SCHADENINFORMATION = new Bezeichner("Satzart 0500");
+    public static final Bezeichner SATZART_0420_VERSICHERUNGSTEUERABRECHNUNG = new Bezeichner("Satzart 0420");
+    public static final Bezeichner SATZART_0450_INKASSOABRECHNUNG = new Bezeichner("Satzart 0450");
+    public static final Bezeichner SATZART_0550_SCHADENABRECHNUNG = new Bezeichner("Satzart 0550");
+    public static final Bezeichner SATZART_0350_KLAUSELN = new Bezeichner("Satzart 0350");
+    public static final Bezeichner SATZART_0211_050 = new Bezeichner("Satzart 0211.050");
+    public static final Bezeichner SATZART_0221_051 = new Bezeichner("Satzart 0221.051");
+    public static final Bezeichner SATZART_0221_052 = new Bezeichner("Satzart 0221.052");
+    public static final Bezeichner SATZART_0221_053 = new Bezeichner("Satzart 0221.053");
+    public static final Bezeichner SATZART_0221_054 = new Bezeichner("Satzart 0221.054");
+    public static final Bezeichner SATZART_0221_055 = new Bezeichner("Satzart 0221.055");
+    public static final Bezeichner SATZART_0221_059 = new Bezeichner("Satzart 0221.059");
+    public static final Bezeichner SATZART_0211_040 = new Bezeichner("Satzart 0211.040");
+    public static final Bezeichner SATZART_0221_040 = new Bezeichner("Satzart 0221.040");
+    public static final Bezeichner SATZART_0221_030 = new Bezeichner("Satzart 0221.030");
+    public static final Bezeichner SATZART_0211_010 = new Bezeichner("Satzart 0211.010");
+    public static final Bezeichner SATZART_0221_010 = new Bezeichner("Satzart 0221.010");
+    public static final Bezeichner SATZART_0211_130 = new Bezeichner("Satzart 0211.130");
+    public static final Bezeichner SATZART_0221_130 = new Bezeichner("Satzart 0221.130");
+    public static final Bezeichner SATZART_0211_110 = new Bezeichner("Satzart 0211.110");
+    public static final Bezeichner SATZART_0221_110 = new Bezeichner("Satzart 0221.110");
+    public static final Bezeichner SATZART_0211_140 = new Bezeichner("Satzart 0211.140");
+    public static final Bezeichner SATZART_0221_140 = new Bezeichner("Satzart 0221.140");
+    public static final Bezeichner SATZART_0221_070 = new Bezeichner("Satzart 0221.070");
+    public static final Bezeichner SATZART_0211_FEUER = new Bezeichner("Satzart 0211.080");
+    public static final Bezeichner SATZART_0221_FEUER = new Bezeichner("Satzart 0221.080");
+    public static final Bezeichner SATZART_0221_510 = new Bezeichner("Satzart 0221.510");
+    public static final Bezeichner SATZART_0211_TRANSPORT = new Bezeichner("Satzart 0211.190");
+    public static final Bezeichner SATZART_0221_TRANSPORT = new Bezeichner("Satzart 0221.190");
+    public static final Bezeichner SATZART_0222 = new Bezeichner("Satzart 0222.030");
+    public static final Bezeichner SATZART_0225_LEBEN = new Bezeichner("Satzart 0225.010");
+    public static final Bezeichner SATZART_0230_LEBEN = new Bezeichner("Satzart 0230.010");
+    public static final Bezeichner SATZART_0230_UNFALL = new Bezeichner("Satzart 0230.030");
+    public static final Bezeichner SATZART_0230_KFZ_WECHSEL_AKZ = new Bezeichner("Satzart 0230.050");
+    public static final Bezeichner SATZART_0230_GEBAEUDE = new Bezeichner("Satzart 0230.140");
+    public static final Bezeichner SATZART_0251_TRANSPORT = new Bezeichner("Satzart 0251.190");
+    public static final Bezeichner SATZART_0211_NICHT_DEF_SPARTEN = new Bezeichner("Satzart 0211.000");
+    public static final Bezeichner SATZART_0211_TECH_VERS = new Bezeichner("Satzart 0211.170");
+    public static final Bezeichner SATZART_0221_NICHT_DEF_SPARTEN = new Bezeichner("Satzart 0221.000");
+    public static final Bezeichner SATZART_0221_TECH_VERS = new Bezeichner("Satzart 0221.170");
+    public static final Bezeichner SATZART_0210_550 = new Bezeichner("Satzart 0210.550");
+    public static final Bezeichner SATZART_0210_560 = new Bezeichner("Satzart 0210.560");
+    public static final Bezeichner SATZART_0210_570 = new Bezeichner("Satzart 0210.570");
+    public static final Bezeichner SATZART_0220_550 = new Bezeichner("Satzart 0220.550");
+    public static final Bezeichner SATZART_0220_560 = new Bezeichner("Satzart 0220.560");
+    public static final Bezeichner SATZART_0220_570 = new Bezeichner("Satzart 0220.570");
+    public static final Bezeichner SATZART_0270_550 = new Bezeichner("Satzart 0270.550");
+    public static final Bezeichner SATZART_0280_550 = new Bezeichner("Satzart 0280.550");
+    public static final Bezeichner SATZART_0291_550 = new Bezeichner("Satzart 0291.550");
+    public static final Bezeichner SATZART_0292_550 = new Bezeichner("Satzart 0292.550");
+    public static final Bezeichner SATZART_0293_550 = new Bezeichner("Satzart 0293.550");
+    public static final Bezeichner SATZART_0294_550 = new Bezeichner("Satzart 0294.550");
+    public static final Bezeichner SATZART_0295_550 = new Bezeichner("Satzart 0295.550");
+    public static final Bezeichner SATZART_0052 = new Bezeichner("Satzart 0052");
+    public static final Bezeichner SATZART_0102 = new Bezeichner("Satzart 0102");
+    public static final Bezeichner SATZART_0212 = new Bezeichner("Satzart 0212");
+    public static final Bezeichner SATZART_0352 = new Bezeichner("Satzart 0352");
+    public static final Bezeichner SATZART_0362 = new Bezeichner("Satzart 0362");
+    public static final Bezeichner SATZART_0382 = new Bezeichner("Satzart 0382");
+    public static final Bezeichner SATZART_0390_RABATTE = new Bezeichner("Satzart 0390");
+    public static final Bezeichner SATZART_0392_EVB = new Bezeichner("Satzart 0392");
+    public static final Bezeichner SATZART_9950 = new Bezeichner("Satzart 9950");
+    public static final Bezeichner SATZART_9951_MIME = new Bezeichner("Satzart 9951");
+    public static final Bezeichner SATZART_9952 = new Bezeichner("Satzart 9952");
+    public static final Bezeichner SATZART_0210_580 = new Bezeichner("Satzart 0210.580");
+    public static final Bezeichner SATZART_0210_684 = new Bezeichner("Satzart 0210.684");
+    public static final Bezeichner SATZART_0220_580 = new Bezeichner("Satzart 0220.580");
+    public static final Bezeichner SATZART_0220_684 = new Bezeichner("Satzart 0220.684");
+    public static final Bezeichner SATZART_0372 = new Bezeichner("Satzart 0372");
+    public static final Bezeichner SATZART_0600 = new Bezeichner("Satzart 0600");
+    public static final Bezeichner SATZ_NR_1 = new Bezeichner("Satznummer1", "SatzNr1");
+    public static final Bezeichner SATZ_NR_2 = new Bezeichner("Satznummer2", "SatzNr2");
+    public static final Bezeichner SATZ_NR_3 = new Bezeichner("Satznummer3", "SatzNr3");
+    public static final Bezeichner SATZ_NR_4 = new Bezeichner("Satznummer4", "SatzNr4");
+    public static final Bezeichner SATZ_NR_9 = new Bezeichner("Satznummer9", "SatzNr9");
     public static final Bezeichner SATZNUMMER = new Bezeichner("Satznummer");
     /** @deprecated bitte SATZNUMMER oder SATZ_NR_1 verwenden. */
     @Deprecated
@@ -926,6 +1045,7 @@ public final class Bezeichner {
     public static final Bezeichner SOZIALVERSICHERUNG_NUMMER = new Bezeichner("Sozialversicherung Nummer", "Sozialversicherung");
     public static final Bezeichner SPARTE = new Bezeichner("Sparte");
     public static final Bezeichner SPARTE2 = new Bezeichner("Sparte2", "Sparte2");
+    public static final Bezeichner SPARTE_SA0100_TD5_FELD15 = SPARTE2;
     public static final Bezeichner SPARVORGANG = new Bezeichner("Sparvorgang");
     public static final Bezeichner SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Spezifikation der Referenz-Versicherungsscheinnummer", "SpezifikationReferenzVsNr");
     public static final Bezeichner STAATSANGEHOERIGKEIT = new Bezeichner("Staatsangehoerigkeit");
@@ -1048,38 +1168,38 @@ public final class Bezeichner {
     public static final Bezeichner VERSICHERUNGSSCHUTZ = new Bezeichner("Versicherungsschutz");
     public static final Bezeichner VERSICHERUNGSSUMME_AKTUELL_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme aktuell in W\u00e4hrungseinheiten");
     public static final Bezeichner VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme in W\u00e4hrungseinheiten");
-    public static final Bezeichner VERSION_SATZART_9999 = new Bezeichner("Version Satzart 9999 Nachsatz");
+    public static final Bezeichner VERSION_SATZART_9999 = new Bezeichner("Version Satzart 9999 Nachsatz", "Satzart9999");
     public static final Bezeichner VERTRAG_MIT_ZUWACHSGARANTIE = new Bezeichner("Vertrag mit Zuwachsgarantie");
     public static final Bezeichner VERSION_SATZART_0001 = new Bezeichner("Version Satzart 0001");
     public static final Bezeichner VERSION_SATZART_0100 = new Bezeichner("Version Satzart 0100");
     public static final Bezeichner VERSION_SATZART_0200 = new Bezeichner("Version Satzart 0200");
     public static final Bezeichner VERSION_SATZART_0202_ALLG_ANTRAGSDATEN = new Bezeichner("Version Satzart 0202 Allgemeine Antragsdaten");
-    public static final Bezeichner VERSION_SATZART_0210_050 = new Bezeichner("Version Satzart 0210 050");
-    public static final Bezeichner VERSION_SATZART_0220_051 = new Bezeichner("Version Satzart 0220 051");
-    public static final Bezeichner VERSION_SATZART_0220_052 = new Bezeichner("Version Satzart 0220 052");
-    public static final Bezeichner VERSION_SATZART_0220_053 = new Bezeichner("Version Satzart 0220 053");
-    public static final Bezeichner VERSION_SATZART_0220_054 = new Bezeichner("Version Satzart 0220 054");
-    public static final Bezeichner VERSION_SATZART_0220_059 = new Bezeichner("Version Satzart 0220 059");
-    public static final Bezeichner VERSION_SATZART_0210_040 = new Bezeichner("Version Satzart 0210 040");
-    public static final Bezeichner VERSION_SATZART_0220_040 = new Bezeichner("Version Satzart 0220 040");
-    public static final Bezeichner VERSION_SATZART_0210_030 = new Bezeichner("Version Satzart 0210 030");
-    public static final Bezeichner VERSION_SATZART_0220_030 = new Bezeichner("Version Satzart 0220 030");
-    public static final Bezeichner VERSION_SATZART_0210_010 = new Bezeichner("Version Satzart 0210 010");
-    public static final Bezeichner VERSION_SATZART_0220_010 = new Bezeichner("Version Satzart 0220 010");
-    public static final Bezeichner VERSION_SATZART_0210_130 = new Bezeichner("Version Satzart 0210 130");
-    public static final Bezeichner VERSION_SATZART_0220_130 = new Bezeichner("Version Satzart 0220 130");
-    public static final Bezeichner VERSION_SATZART_0210_110 = new Bezeichner("Version Satzart 0210 110");
-    public static final Bezeichner VERSION_SATZART_0220_110 = new Bezeichner("Version Satzart 0220 110");
-    public static final Bezeichner VERSION_SATZART_0210_140 = new Bezeichner("Version Satzart 0210 140");
-    public static final Bezeichner VERSION_SATZART_0220_140 = new Bezeichner("Version Satzart 0220 140");
-    public static final Bezeichner VERSION_SATZART_0210_020 = new Bezeichner("Version Satzart 0210 020");
-    public static final Bezeichner VERSION_SATZART_0220_020 = new Bezeichner("Version Satzart 0220 020");
-    public static final Bezeichner VERSION_SATZART_0210_070 = new Bezeichner("Version Satzart 0210 070");
-    public static final Bezeichner VERSION_SATZART_0220_070 = new Bezeichner("Version Satzart 0220 070");
+    public static final Bezeichner VERSION_SATZART_0210_050 = new Bezeichner("Version Satzart 0210.050");
+    public static final Bezeichner VERSION_SATZART_0220_051 = new Bezeichner("Version Satzart 0220.051");
+    public static final Bezeichner VERSION_SATZART_0220_052 = new Bezeichner("Version Satzart 0220.052");
+    public static final Bezeichner VERSION_SATZART_0220_053 = new Bezeichner("Version Satzart 0220.053");
+    public static final Bezeichner VERSION_SATZART_0220_054 = new Bezeichner("Version Satzart 0220.054");
+    public static final Bezeichner VERSION_SATZART_0220_059 = new Bezeichner("Version Satzart 0220.059");
+    public static final Bezeichner VERSION_SATZART_0210_040 = new Bezeichner("Version Satzart 0210.040");
+    public static final Bezeichner VERSION_SATZART_0220_040 = new Bezeichner("Version Satzart 0220.040");
+    public static final Bezeichner VERSION_SATZART_0210_030 = new Bezeichner("Version Satzart 0210.030");
+    public static final Bezeichner VERSION_SATZART_0220_030 = new Bezeichner("Version Satzart 0220.030");
+    public static final Bezeichner VERSION_SATZART_0210_010 = new Bezeichner("Version Satzart 0210.010");
+    public static final Bezeichner VERSION_SATZART_0220_010 = new Bezeichner("Version Satzart 0220.010");
+    public static final Bezeichner VERSION_SATZART_0210_130 = new Bezeichner("Version Satzart 0210.130");
+    public static final Bezeichner VERSION_SATZART_0220_130 = new Bezeichner("Version Satzart 0220.130");
+    public static final Bezeichner VERSION_SATZART_0210_110 = new Bezeichner("Version Satzart 0210.110");
+    public static final Bezeichner VERSION_SATZART_0220_110 = new Bezeichner("Version Satzart 0220.110");
+    public static final Bezeichner VERSION_SATZART_0210_140 = new Bezeichner("Version Satzart 0210.140");
+    public static final Bezeichner VERSION_SATZART_0220_140 = new Bezeichner("Version Satzart 0220.140");
+    public static final Bezeichner VERSION_SATZART_0210_020 = new Bezeichner("Version Satzart 0210.020");
+    public static final Bezeichner VERSION_SATZART_0220_020 = new Bezeichner("Version Satzart 0220.020");
+    public static final Bezeichner VERSION_SATZART_0210_070 = new Bezeichner("Version Satzart 0210.070");
+    public static final Bezeichner VERSION_SATZART_0220_070 = new Bezeichner("Version Satzart 0220.070");
     public static final Bezeichner VERSION_SATZART_0210_FEUER = new Bezeichner("Version Satzart 0210 Feuer-Industrie/Gewerbliche Sachversicherung");
     public static final Bezeichner VERSION_SATZART_0220_FEUER = new Bezeichner("Version Satzart 0220 Feuer-Industrie/Gewerbliche Sachversicherung");
-    public static final Bezeichner VERSION_SATZART_0210_510 = new Bezeichner("Version Satzart 0210 510");
-    public static final Bezeichner VERSION_SATZART_0220_510 = new Bezeichner("Version Satzart 0220 510");
+    public static final Bezeichner VERSION_SATZART_0210_510 = new Bezeichner("Version Satzart 0210.510");
+    public static final Bezeichner VERSION_SATZART_0220_510 = new Bezeichner("Version Satzart 0220.510");
     public static final Bezeichner VERSION_SATZART_0210_TRANSPORT = new Bezeichner("Version Satzart 0210 Transport");
     public static final Bezeichner VERSION_SATZART_0220_TRANSPORT = new Bezeichner("Version Satzart 0220 Transport");
     public static final Bezeichner VERSION_SATZART_0250_TRANSPORT = new Bezeichner("Version Satzart 0250 Transport Einzelanmeldung");
@@ -1099,28 +1219,28 @@ public final class Bezeichner {
     public static final Bezeichner VERSION_SATZART_0450_INKASSOABRECHNUNG = new Bezeichner("Version Satzart 0450 Inkassoabrechnung");
     public static final Bezeichner VERSION_SATZART_0550_SCHADENABRECHNUNG = new Bezeichner("Version Satzart 0550 Schadenabrechnung");
     public static final Bezeichner VERSION_SATZART_0350_KLAUSELN = new Bezeichner("Version Satzart 0350 Klausel");
-    public static final Bezeichner VERSION_SATZART_0211_050 = new Bezeichner("Version Satzart 0211 050");
-    public static final Bezeichner VERSION_SATZART_0221_051 = new Bezeichner("Version Satzart 0221 051");
-    public static final Bezeichner VERSION_SATZART_0221_052 = new Bezeichner("Version Satzart 0221 052");
-    public static final Bezeichner VERSION_SATZART_0221_053 = new Bezeichner("Version Satzart 0221 053");
-    public static final Bezeichner VERSION_SATZART_0221_054 = new Bezeichner("Version Satzart 0221 054");
-    public static final Bezeichner VERSION_SATZART_0221_055 = new Bezeichner("Version Satzart 0221 055");
-    public static final Bezeichner VERSION_SATZART_0221_059 = new Bezeichner("Version Satzart 0221 059");
-    public static final Bezeichner VERSION_SATZART_0211_040 = new Bezeichner("Version Satzart 0211 040");
-    public static final Bezeichner VERSION_SATZART_0221_040 = new Bezeichner("Version Satzart 0221 040");
-    public static final Bezeichner VERSION_SATZART_0221_030 = new Bezeichner("Version Satzart 0221 030");
-    public static final Bezeichner VERSION_SATZART_0211_010 = new Bezeichner("Version Satzart 0211 010");
-    public static final Bezeichner VERSION_SATZART_0221_010 = new Bezeichner("Version Satzart 0221 010");
-    public static final Bezeichner VERSION_SATZART_0211_130 = new Bezeichner("Version Satzart 0211 130");
-    public static final Bezeichner VERSION_SATZART_0221_130 = new Bezeichner("Version Satzart 0221 130");
-    public static final Bezeichner VERSION_SATZART_0211_110 = new Bezeichner("Version Satzart 0211 110");
-    public static final Bezeichner VERSION_SATZART_0221_110 = new Bezeichner("Version Satzart 0221 110");
-    public static final Bezeichner VERSION_SATZART_0211_140 = new Bezeichner("Version Satzart 0211 140");
-    public static final Bezeichner VERSION_SATZART_0221_140 = new Bezeichner("Version Satzart 0221 140");
-    public static final Bezeichner VERSION_SATZART_0221_070 = new Bezeichner("Version Satzart 0221 070");
+    public static final Bezeichner VERSION_SATZART_0211_050 = new Bezeichner("Version Satzart 0211.050");
+    public static final Bezeichner VERSION_SATZART_0221_051 = new Bezeichner("Version Satzart 0221.051");
+    public static final Bezeichner VERSION_SATZART_0221_052 = new Bezeichner("Version Satzart 0221.052");
+    public static final Bezeichner VERSION_SATZART_0221_053 = new Bezeichner("Version Satzart 0221.053");
+    public static final Bezeichner VERSION_SATZART_0221_054 = new Bezeichner("Version Satzart 0221.054");
+    public static final Bezeichner VERSION_SATZART_0221_055 = new Bezeichner("Version Satzart 0221.055");
+    public static final Bezeichner VERSION_SATZART_0221_059 = new Bezeichner("Version Satzart 0221.059");
+    public static final Bezeichner VERSION_SATZART_0211_040 = new Bezeichner("Version Satzart 0211.040");
+    public static final Bezeichner VERSION_SATZART_0221_040 = new Bezeichner("Version Satzart 0221.040");
+    public static final Bezeichner VERSION_SATZART_0221_030 = new Bezeichner("Version Satzart 0221.030");
+    public static final Bezeichner VERSION_SATZART_0211_010 = new Bezeichner("Version Satzart 0211.010");
+    public static final Bezeichner VERSION_SATZART_0221_010 = new Bezeichner("Version Satzart 0221.010");
+    public static final Bezeichner VERSION_SATZART_0211_130 = new Bezeichner("Version Satzart 0211.130");
+    public static final Bezeichner VERSION_SATZART_0221_130 = new Bezeichner("Version Satzart 0221.130");
+    public static final Bezeichner VERSION_SATZART_0211_110 = new Bezeichner("Version Satzart 0211.110");
+    public static final Bezeichner VERSION_SATZART_0221_110 = new Bezeichner("Version Satzart 0221.110");
+    public static final Bezeichner VERSION_SATZART_0211_140 = new Bezeichner("Version Satzart 0211.140");
+    public static final Bezeichner VERSION_SATZART_0221_140 = new Bezeichner("Version Satzart 0221.140");
+    public static final Bezeichner VERSION_SATZART_0221_070 = new Bezeichner("Version Satzart 0221.070");
     public static final Bezeichner VERSION_SATZART_0211_FEUER = new Bezeichner("Version Satzart 0211 Feuer-Industrie/Gewerbliche Sachversicherung");
     public static final Bezeichner VERSION_SATZART_0221_FEUER = new Bezeichner("Version Satzart 0221 Feuer-Industrie/Gewerbliche Sachversicherung");
-    public static final Bezeichner VERSION_SATZART_0221_510 = new Bezeichner("Version Satzart 0221 510");
+    public static final Bezeichner VERSION_SATZART_0221_510 = new Bezeichner("Version Satzart 0221.510");
     public static final Bezeichner VERSION_SATZART_0211_TRANSPORT = new Bezeichner("Version Satzart 0211 Transport");
     public static final Bezeichner VERSION_SATZART_0221_TRANSPORT = new Bezeichner("Version Satzart 0221 Transport");
     public static final Bezeichner VERSION_SATZART_0222 = new Bezeichner("Version Satzart 0222");
@@ -1131,19 +1251,19 @@ public final class Bezeichner {
     public static final Bezeichner VERSION_SATZART_0211_TECH_VERS = new Bezeichner("Version Satzart 0211 Technische Versicherungen");
     public static final Bezeichner VERSION_SATZART_0221_NICHT_DEF_SPARTEN = new Bezeichner("Version Satzart 0221 Nicht einzeln definierte Sparten");
     public static final Bezeichner VERSION_SATZART_0221_TECH_VERS = new Bezeichner("Version Satzart 0221 Technische Versicherungen");
-    public static final Bezeichner VERSION_SATZART_0210_550 = new Bezeichner("Version Satzart 0210 550");
-    public static final Bezeichner VERSION_SATZART_0210_560 = new Bezeichner("Version Satzart 0210 560");
-    public static final Bezeichner VERSION_SATZART_0210_570 = new Bezeichner("Version Satzart 0210 570");
-    public static final Bezeichner VERSION_SATZART_0220_550 = new Bezeichner("Version Satzart 0220 550");
-    public static final Bezeichner VERSION_SATZART_0220_560 = new Bezeichner("Version Satzart 0220 560");
-    public static final Bezeichner VERSION_SATZART_0220_570 = new Bezeichner("Version Satzart 0220 570");
-    public static final Bezeichner VERSION_SATZART_0270_550 = new Bezeichner("Version Satzart 0270 550");
-    public static final Bezeichner VERSION_SATZART_0280_550 = new Bezeichner("Version Satzart 0280 550");
-    public static final Bezeichner VERSION_SATZART_0291_550 = new Bezeichner("Version Satzart 0291 550");
-    public static final Bezeichner VERSION_SATZART_0292_550 = new Bezeichner("Version Satzart 0292 550");
-    public static final Bezeichner VERSION_SATZART_0293_550 = new Bezeichner("Version Satzart 0293 550");
-    public static final Bezeichner VERSION_SATZART_0294_550 = new Bezeichner("Version Satzart 0294 550");
-    public static final Bezeichner VERSION_SATZART_0295_550 = new Bezeichner("Version Satzart 0295 550");
+    public static final Bezeichner VERSION_SATZART_0210_550 = new Bezeichner("Version Satzart 0210.550");
+    public static final Bezeichner VERSION_SATZART_0210_560 = new Bezeichner("Version Satzart 0210.560");
+    public static final Bezeichner VERSION_SATZART_0210_570 = new Bezeichner("Version Satzart 0210.570");
+    public static final Bezeichner VERSION_SATZART_0220_550 = new Bezeichner("Version Satzart 0220.550");
+    public static final Bezeichner VERSION_SATZART_0220_560 = new Bezeichner("Version Satzart 0220.560");
+    public static final Bezeichner VERSION_SATZART_0220_570 = new Bezeichner("Version Satzart 0220.570");
+    public static final Bezeichner VERSION_SATZART_0270_550 = new Bezeichner("Version Satzart 0270.550");
+    public static final Bezeichner VERSION_SATZART_0280_550 = new Bezeichner("Version Satzart 0280.550");
+    public static final Bezeichner VERSION_SATZART_0291_550 = new Bezeichner("Version Satzart 0291.550");
+    public static final Bezeichner VERSION_SATZART_0292_550 = new Bezeichner("Version Satzart 0292.550");
+    public static final Bezeichner VERSION_SATZART_0293_550 = new Bezeichner("Version Satzart 0293.550");
+    public static final Bezeichner VERSION_SATZART_0294_550 = new Bezeichner("Version Satzart 0294.550");
+    public static final Bezeichner VERSION_SATZART_0295_550 = new Bezeichner("Version Satzart 0295.550");
     public static final Bezeichner VERSION_SATZART_0052 = new Bezeichner("Version Satzart 0052");
     public static final Bezeichner VERSION_SATZART_0102 = new Bezeichner("Version Satzart 0102");
     public static final Bezeichner VERSION_SATZART_0212 = new Bezeichner("Version Satzart 0212");
@@ -1155,10 +1275,10 @@ public final class Bezeichner {
     public static final Bezeichner VERSION_SATZART_9950 = new Bezeichner("Version Satzart 9950");
     public static final Bezeichner VERSION_SATZART_9951_MIME = new Bezeichner("Version Satzart 9951 MIME-Datei");
     public static final Bezeichner VERSION_SATZART_9952 = new Bezeichner("Version Satzart 9952");
-    public static final Bezeichner VERSION_SATZART_0210_580 = new Bezeichner("Version Satzart 0210 580");
-    public static final Bezeichner VERSION_SATZART_0210_684 = new Bezeichner("Version Satzart 0210 684");
-    public static final Bezeichner VERSION_SATZART_0220_580 = new Bezeichner("Version Satzart 0220 580");
-    public static final Bezeichner VERSION_SATZART_0220_684 = new Bezeichner("Version Satzart 0220 684");
+    public static final Bezeichner VERSION_SATZART_0210_580 = new Bezeichner("Version Satzart 0210.580");
+    public static final Bezeichner VERSION_SATZART_0210_684 = new Bezeichner("Version Satzart 0210.684");
+    public static final Bezeichner VERSION_SATZART_0220_580 = new Bezeichner("Version Satzart 0220.580");
+    public static final Bezeichner VERSION_SATZART_0220_684 = new Bezeichner("Version Satzart 0220.684");
     public static final Bezeichner VERSION_SATZART_0372 = new Bezeichner("Version Satzart 0372");
     public static final Bezeichner VERSION_SATZART_0600 = new Bezeichner("Version Satzart 0600");
     public static final Bezeichner VERTRAGSABLAUF = new Bezeichner("Vertragsablauf");
@@ -1178,10 +1298,10 @@ public final class Bezeichner {
     public static final Bezeichner VORNAME_VP = new Bezeichner("Vorname der VP");
     public static final Bezeichner VORSTEUERABZUGSBERECHTIGT = new Bezeichner("Vorsteuerabzugsberechtigt");
     public static final Bezeichner VORZEICHEN = new Bezeichner("Vorzeichen");
-    public static final Bezeichner VORZEICHEN2 = VORZEICHEN;
-    public static final Bezeichner VORZEICHEN3 = VORZEICHEN;
-    public static final Bezeichner VORZEICHEN4 = VORZEICHEN;
-    public static final Bezeichner VORZEICHEN5 = VORZEICHEN;
+    public static final Bezeichner VORZEICHEN2 = new Bezeichner("Vorzeichen2");
+    public static final Bezeichner VORZEICHEN3 = new Bezeichner("Vorzeichen3");
+    public static final Bezeichner VORZEICHEN4 = new Bezeichner("Vorzeichen4");
+    public static final Bezeichner VORZEICHEN5 = new Bezeichner("Vorzeichen5");
     public static final Bezeichner VORZUGSSEUERBERECHTIGUNG_PROZENT = new Bezeichner("Vorsteuerabszugsberechtigung in Prozent");
     public static final Bezeichner VORZUGSSTEUERBERECHTIGUNG = new Bezeichner("Vorsteuerabszugsberechtigung Ja/Nein");
     public static final Bezeichner VP_PERSONENNUMMER_VERMITTLER = new Bezeichner("VP-Personennummer des Vermittlers", "VpPersonenNrVermittlers");
@@ -1210,11 +1330,12 @@ public final class Bezeichner {
     @Deprecated
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_4 = WAEHRUNGSSCHLUESSEL4;
     public static final Bezeichner WAGNIS = new Bezeichner("Wagnis");
-    public static final Bezeichner WAGNIS2 = WAGNIS;
+  // public static final Bezeichner WAGNIS2 = WAGNIS;
     public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart");
-    public static final Bezeichner WAGNISART2 = WAGNISART;
-    public static final Bezeichner WAGNISART3 = WAGNISART;
-    public static final Bezeichner WAGNISART4 = WAGNISART;
+    public static final Bezeichner WAGNISART_HAFTPFLICHT = new Bezeichner("WagnisartHaftpflicht");
+  // public static final Bezeichner WAGNISART2 = WAGNISART;
+  // public static final Bezeichner WAGNISART3 = WAGNISART;
+  // public static final Bezeichner WAGNISART4 = WAGNISART;
     public static final Bezeichner WAGNISBESCHREIBUNG = new Bezeichner("Wagnisbeschreibung");
     public static final Bezeichner WAGNISKENNZIFFER = new Bezeichner("Wagniskennziffer", "WKZ");
     public static final Bezeichner WAGNISMENGE = new Bezeichner("Wagnismenge");
@@ -1229,9 +1350,9 @@ public final class Bezeichner {
     public static final Bezeichner WERT_ZUSCHREIBUNG_VORSORGEZUSCHLAG = new Bezeichner("Wert Zuschreibung Vorsorgezuschlag");
     public static final Bezeichner WERTPAPIERKENNNUMMER = new Bezeichner("Wertpapierkennnummer");
     public static final Bezeichner WERTUNGSBASIS = new Bezeichner("Wertungsbasis");
-    public static final Bezeichner WERTUNGSBASIS2 = WERTUNGSBASIS;
+    public static final Bezeichner WERTUNGSBASIS2 = new Bezeichner("Wertungsbasis2");
     public static final Bezeichner WERTUNGSMODELL = new Bezeichner("Wertungsmodell");
-    public static final Bezeichner WERTUNGSMODELL2 = WERTUNGSMODELL;
+    public static final Bezeichner WERTUNGSMODELL2 = new Bezeichner("Wertungsmodell2");
     public static final Bezeichner WIDERSPRUCH_VORSORGEZUSCHLAG = new Bezeichner("Widerspruch Vorsorgezuschlag");
     public static final Bezeichner WITWEN_WITWERRENTE_IN_PROZENT = new Bezeichner("Witwen- / Witwerrente in Prozent", "WitwenWitwerrenteProz");
     public static final Bezeichner WOHNEIGENTUM = new Bezeichner("Wohneigentum");
@@ -1437,6 +1558,33 @@ public final class Bezeichner {
         }
         Bezeichner other = (Bezeichner) obj;
         return this.getTechnischerName().equalsIgnoreCase(other.getTechnischerName());
+    }
+
+    /**
+     * Manche Bezeichner wie "HaftungswertungssummeInWE" koennen eventuell
+     * auch als Variante wie "HaftungswertungssummeInWE1" (also mit
+     * angehaengter "1") auftreten. Mit dieser Methode kann man sich die
+     * verschiedenen Varianten eines Bezeichners geben lassen.
+     *
+     * @return Liste von Varianten
+     * @since 5.0
+     */
+    @JsonIgnore
+    public Set<Bezeichner> getVariants() {
+        Set<Bezeichner> variants = new HashSet<>();
+        variants.add(this);
+        char lastchar = name.charAt(name.length()-1);
+        if (name.startsWith("Satzart")) {
+            variants.add(Bezeichner.of("Version " + name));
+        } else if (name.startsWith("Version")) {
+            variants.add(Bezeichner.of(name.substring(7).trim()));
+        } else if (lastchar == '1') {
+            String shorten = technischerName.substring(0, technischerName.length()-1).trim();
+            variants.add(Bezeichner.of(shorten));
+        } else if (Character.isAlphabetic(lastchar)) {
+            variants.add(Bezeichner.of(name + "1"));
+        }
+        return variants;
     }
 
     /**

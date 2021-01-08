@@ -18,12 +18,13 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.Locale;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * The Class BetragMitVorzeichenTest.
@@ -66,10 +67,24 @@ public final class BetragMitVorzeichenTest extends AbstractFeldTest {
      * Test to double negative.
      */
     @Test
-    public void testToDoubleNegative() {
+    public void testToDoubleNegativ() {
         betrag.setInhalt(-1.2);
         assertEquals("0120-", betrag.getInhalt());
         assertEquals(-1.2, betrag.toDouble(), 0.001);
+    }
+
+    @Test
+    public void testToBigDecimalPositiv() {
+        betrag.setInhalt(new BigDecimal("1.20"));
+        assertEquals("0120+", betrag.getInhalt());
+        assertEquals(new BigDecimal("1.20"), betrag.toBigDecimal());
+    }
+
+    @Test
+    public void testToBigDecimalNegativ() {
+        betrag.setInhalt(new BigDecimal("-1.20"));
+        assertEquals("0120-", betrag.getInhalt());
+        assertEquals(new BigDecimal("-1.20"), betrag.toBigDecimal());
     }
 
     /**
@@ -92,5 +107,21 @@ public final class BetragMitVorzeichenTest extends AbstractFeldTest {
         }
     }
 
-}
+    @Test
+    public void testOf() {
+        NumFeld betrag = new NumFeld(Bezeichner.GESAMTBEITRAG_BRUTTO, 40, "00000000004711", 2);
+        AlphaNumFeld vorzeichen = new Zeichen(Bezeichner.VORZEICHEN, 54, '+');
+        BetragMitVorzeichen bmz = BetragMitVorzeichen.of(betrag, vorzeichen);
+        assertEquals(54, bmz.getEndAdresse());
+        assertEquals("00000000004711+", bmz.getInhalt());
+        assertEquals(betrag, bmz.getBetrag());
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testOfWithException() {
+        NumFeld betrag = new NumFeld(Bezeichner.GESAMTBEITRAG_BRUTTO, 40, "00000000004711", 2);
+        AlphaNumFeld vorzeichen = new Zeichen(Bezeichner.VORZEICHEN, 55, '+');
+        BetragMitVorzeichen.of(betrag, vorzeichen);
+    }
+
+}

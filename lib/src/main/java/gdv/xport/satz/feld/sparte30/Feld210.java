@@ -31,6 +31,9 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  * Von daher sollte die XML-Variante fuer die Instanziierung von
  * Satz 210.030 herangezogen werden.
  * </p>
+ * <p>
+ * TODO: Klasse ist nicht mehr aktuell und wird ab v6 nach gdv-xport-deprecated verschoben.
+ * </p>
  *
  * @author Ralf
  * @since 20.02.2013

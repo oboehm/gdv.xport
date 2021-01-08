@@ -24,6 +24,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Locale;
 
@@ -206,6 +207,22 @@ public final class NumFeldTest extends AbstractFeldTest {
         NumFeld feld = new NumFeld("name", "123456789012");
         double value = feld.toDouble();
         assertEquals(123456789012.0, value, 0.0);
+    }
+
+    @Test
+    public void testToBigDecimal() {
+        NumFeld feld = new NumFeld("test", "12345").mitNachkommastellen(2);
+        BigDecimal betrag = feld.toBigDecimal();
+        assertEquals(new BigDecimal("123.45"), feld.toBigDecimal());
+    }
+
+    @Test
+    public void testAdd() {
+        NumFeld feld = new NumFeld("fuffzig", "5000").mitNachkommastellen(2);
+        BigDecimal summe = feld.add(BigDecimal.TEN);
+        BigDecimal expected = new BigDecimal("60.00");
+        assertEquals(expected, summe);
+        assertEquals(expected, feld.toBigDecimal());
     }
 
     /**

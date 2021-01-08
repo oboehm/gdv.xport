@@ -21,6 +21,7 @@ package gdv.xport.util;
 import gdv.xport.Datenpaket;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.demo.MyFeld210;
+import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
@@ -36,6 +37,7 @@ import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.SmokeRunner;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -62,7 +64,7 @@ public final class SatzFactoryTest extends AbstractTest {
         String content = vorsatz.toLongString();
         Satz satz = SatzFactory.getSatz(content);
         assertEquals(content, satz.toLongString());
-        assertEquals(Vorsatz.class, satz.getClass());
+        assertEquals(SatzTyp.of("0001"), satz.getSatzTyp());
     }
 
     /**
@@ -326,18 +328,29 @@ public final class SatzFactoryTest extends AbstractTest {
         SatzTyp kfz = new SatzTyp(221, 51);
         Datensatz satz = SatzFactory.getDatensatz(kfz);
         checkDatensatz(satz);
+        checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1);
+        checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2);
+        checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3);
+    }
+
+    private static void checkDeckungssumme(Datensatz satz, Bezeichner name) {
+        Betrag betrag = (Betrag) satz.getFeld(name);
+        assertEquals(14, betrag.getAnzahlBytes());
+        assertEquals(2, betrag.getNachkommastellen());
     }
 
     /**
      * Hier testen wir, ob brav alle Felder ausgefuellt und keine Luecken
      * vorhanden sind. Bei Satzart 250 fehlt noch die Satznummer auf
-     * Adresse 51, weswegen der Test diese Satzart (ncoh) ausblendet.
+     * Adresse 51, weswegen der Test diese Satzart (noch) ausblendet.
      */
     @Test
     public void testSatzarten() {
+        List<SatzTyp> ignoredForTests = Arrays.asList(SatzTyp.of("0210.580"), SatzTyp.of("0220.570"), SatzTyp.of("0230.050"));
         Datenpaket datenpaket = SatzFactory.getAllSupportedSaetze();
         for (Datensatz datensatz : datenpaket.getDatensaetze()) {
-            if (datensatz.getSatzart() <= 250) {
+            SatzTyp satzTyp = datensatz.getSatzTyp();
+            if ((datensatz.getSatzart() <= 250) && !ignoredForTests.contains(satzTyp)) {
                 checkDatensatz(datensatz);
             }
         }
@@ -396,6 +409,7 @@ public final class SatzFactoryTest extends AbstractTest {
     public void testIssue33() {
         Datensatz satz350 = SatzFactory.getDatensatz(SatzTyp.of("350.30"));
         checkDatensatz(satz350);
+        assertEquals(30, satz350.getSparte());
     }
 
     @Test
@@ -413,6 +427,25 @@ public final class SatzFactoryTest extends AbstractTest {
     public void testGetWagnisart1u3() {
         Datensatz a = SatzFactory.getDatensatz(SatzTyp.of("0220.010.13.1"));
         Datensatz b = SatzFactory.getDatensatz(SatzTyp.of("0220.010.13"));
+        assertEquals(a, b);
+    }
+
+    /**
+     * Fuer den Import muss es moeglich sein, den Satz zu bekommen, der
+     * am besten passt.
+     */
+    @Test
+    public void testGetSatz100Sparte30() {
+        Satz satz = SatzFactory.getSatz(SatzTyp.of("0100.030"));
+        assertEquals(100, satz.getSatzart());
+        assertEquals(30, satz.getSparte());
+    }
+
+    @Test
+    public void testGetDatensatz100() {
+        SatzTyp satzart100 = SatzTyp.of("0100");
+        Satz a = SatzFactory.getDatensatz(satzart100);
+        Satz b = SatzFactory.getSatz(satzart100);
         assertEquals(a, b);
     }
 

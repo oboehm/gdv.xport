@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.math.BigDecimal;
 
 import static org.junit.Assert.assertEquals;
 
@@ -42,7 +43,7 @@ public class NachsatzTest extends AbstractSatzTest {
     private static final Logger LOG = LogManager.getLogger(NachsatzTest.class);
     private final Nachsatz nachsatz = new Nachsatz();
     /** aus musterdatei_041222.txt */
-    private static String INPUT
+    private static final String INPUT
             = "99990000000162999900999900000000048060000000000000000+0000000000"
             + "0000+00000000000000+00000000000000+                             "
             + "                                                                "
@@ -168,8 +169,51 @@ public class NachsatzTest extends AbstractSatzTest {
      */
     @Test
     public void testSetGesamtBeitragBrutto() {
-        nachsatz.setGesamtBeitragBrutto(47.11);
-        assertEquals(47.11, nachsatz.getGesamtBeitragBrutto().toDouble(), 0.0001);
+        nachsatz.setGesamtBeitragBruttoMitVorzeichen(BigDecimal.valueOf(47.11));
+        assertEquals(47.11, nachsatz.getGesamtBeitragBruttoMitVorzeichen().toDouble(), 0.0001);
+    }
+
+    @Test
+    public void testAddProvisonBetrag() {
+        nachsatz.setGesamtProvisionsBetragMitVorzeichen(BigDecimal.valueOf(2.50));
+        nachsatz.addGesamtProvisionsBetrag(BigDecimal.valueOf(-2.55));
+        assertEquals(-0.05, nachsatz.getGesamtProvisionsBetragMitVorzeichen().toDouble(), 0.0001);
+    }
+
+    @Test
+    public void testAddVersicherungsleistungen() {
+        nachsatz.setVersicherungsLeistungenMitVorzeichen(BigDecimal.valueOf(12.50));
+        nachsatz.addVersicherungsLeistungen(BigDecimal.valueOf(0.55));
+        assertEquals(13.05, nachsatz.getVersicherungsLeistungenMitVorzeichen().toDouble(), 0.0001);
+    }
+
+    @Test
+    public void testAddGesamtBeitrag() {
+        nachsatz.setGesamtBeitrag("12340");
+        BigDecimal betrag = nachsatz.addGesamtBeitrag(new BigDecimal("0.05"));
+        assertEquals(new BigDecimal("123.45"), betrag);
+        assertEquals(betrag, nachsatz.getGesamtBeitrag().toBigDecimal());
+    }
+
+    @Test
+    public void testAddGesamtBeitragBrutto() {
+        nachsatz.setGesamtBeitragBruttoMitVorzeichen(BigDecimal.valueOf(-10.50));
+        BigDecimal betrag = nachsatz.addGesamtBeitragBrutto(BigDecimal.valueOf(11));
+        assertEquals(new BigDecimal("0.50"), betrag);
+        assertEquals(betrag, nachsatz.getGesamtBeitragBruttoMitVorzeichen().toBigDecimal());
+    }
+
+    @Test
+    public void testAddSchadenbarbeitung() {
+        nachsatz.setSchadenbearbeitungskostenMitVorzeichen(BigDecimal.valueOf(100));
+        nachsatz.addSchadenbearbeitungskosten(BigDecimal.valueOf(23.45));
+        assertEquals(123.45, nachsatz.getSchadenbearbeitungskostenMitVorzeichen().toDouble(), 0.0001);
+    }
+
+    @Test
+    public void testCopyCtor() {
+        Nachsatz copy = new Nachsatz(nachsatz);
+        assertEquals(nachsatz, copy);
     }
 
 }

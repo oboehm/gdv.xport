@@ -20,16 +20,24 @@ package gdv.xport.satz;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.feld.Feld0001;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
+import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM;
+import static org.junit.Assert.*;
 
 /**
  * @author oliver
@@ -63,7 +71,6 @@ public final class VorsatzTest extends AbstractSatzTest {
         checkExport(1, 9, expected);
         checkExport(257, 265, expected);
         checkExport(256+246, 256+256, "          2");
-        checkExport(225, 227, "1.1");
         checkExport(768, 768, "3");
     }
 
@@ -92,6 +99,20 @@ public final class VorsatzTest extends AbstractSatzTest {
         String endDatum = "09102009";
         vorsatz.setErstellungsZeitraum(startDatum, endDatum);
         checkExport(70, 85, startDatum + endDatum);
+        assertEquals(startDatum + endDatum, vorsatz.getErstellungsZeitraum());
+        assertEquals(startDatum, vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM).toString());
+        assertEquals(endDatum, vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS).toString());
+    }
+
+    @Test
+    public void testGetFeldErstellungsdat() {
+        Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, 70);
+        Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, 78);
+        von.setInhalt("20201220");
+        bis.setInhalt("20201222");
+        vorsatz.setErstellungsZeitraum(von, bis);
+        assertEquals(von, vorsatz.getFeld(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM));
+        assertEquals(bis, vorsatz.getFeld(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS));
     }
 
     /**
@@ -118,6 +139,16 @@ public final class VorsatzTest extends AbstractSatzTest {
         Vorsatz imported = new Vorsatz(content);
         assertEquals(content, imported.toLongString());
         assertEquals(vorsatz, imported);
+    }
+
+    @Test
+    public void testImportVersion() throws IOException {
+        File musterdatei = new File("src/test/resources/musterdatei_041222.txt");
+        vorsatz.importFrom(musterdatei);
+        assertEquals("1.9", vorsatz.getVersion(SatzTyp.of("0001")));
+        assertEquals("1.9", vorsatz.getVersion(SatzTyp.of("0100")));
+        assertEquals("1.9", vorsatz.getVersion(SatzTyp.of("0200")));
+        assertEquals("2.1", vorsatz.getVersion(SatzTyp.of("0210.50")));
     }
 
     /**
@@ -185,26 +216,37 @@ public final class VorsatzTest extends AbstractSatzTest {
 
     @Test
     public void testSetVersion() {
-        vorsatz.setVersion(Bezeichner.VERSION_SATZART_0100, "2.1");
-        assertEquals("2.1", vorsatz.getVersion(100));
+        SatzTyp satzTyp = SatzTyp.of("0100");
+        vorsatz.setVersion(satzTyp);
+        String expected = SatzFactory.getDatensatz(satzTyp).getSatzversion().getInhalt();
+        assertEquals(expected, vorsatz.getVersion(100));
     }
 
     @Test
-    public void testSetVersionString() {
-        vorsatz.setVersion(Bezeichner.VERSION_SATZART_0102, "1.2");
-        assertEquals("1.2", vorsatz.getVersion(102));
+    public void testSetVersionSatzartSparte() {
+        SatzTyp satzTyp = SatzTyp.of("0210.050");
+        vorsatz.setVersion(satzTyp);
+        String expected = SatzFactory.getDatensatz(satzTyp).getSatzversion().getInhalt();
+        assertEquals(expected, vorsatz.getVersion(210, 50));
     }
 
     @Test
-    public void testSetVersionSaztart() {
-        vorsatz.setVersion(200, "2.0");
-        assertEquals("2.0", vorsatz.getVersion(200));
+    public void testSetVersionVorsatz() {
+        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
     }
 
     @Test
-    public void testSetVersionSaztartSparte() {
-        vorsatz.setVersion(210, 50,"2.5");
-        assertEquals("2.5", vorsatz.getVersion(210, 50));
+    public void testSetVersionNachsatz() {
+        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
+    }
+
+    @Test
+    public void testBezeichner() {
+        assertNotNull(vorsatz.get(Bezeichner.ABSENDER));
+        assertNotNull(vorsatz.get(Bezeichner.ADRESSAT));
+        assertNotNull(vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM));
+        assertNotNull(vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS));
+        assertNotNull(vorsatz.get(Bezeichner.VERMITTLER));
     }
 
 }

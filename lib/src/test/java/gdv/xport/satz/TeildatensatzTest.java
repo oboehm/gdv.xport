@@ -26,9 +26,9 @@ import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -55,17 +55,6 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Override
     protected Satz getSatz() {
         return new Teildatensatz(123, 1);
-    }
-
-    /**
-     * Test method for {@link gdv.xport.satz.Teildatensatz#export(java.io.Writer)}.
-     * @throws IOException sollte eigentlich nicht auftreten
-     */
-    @Test
-    public void testExport() throws IOException {
-        Teildatensatz teildatensatz = new Teildatensatz(new NumFeld("Feld42", "0042"), 1);
-        this.checkExport(teildatensatz, 1, 4, "0042", 256);
-        this.checkExport(teildatensatz, 255, 256, " 1", 256);
     }
 
     /**
@@ -98,20 +87,6 @@ public class TeildatensatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Test-Methode fuer {@link Teildatensatz#getFeld(int)}.
-     */
-    @Test
-    public void testGetFeld() {
-        Teildatensatz tds = new Teildatensatz(100, 1);
-        assertEquals(tds.getSatzartFeld(), tds.getFeld(1));
-        assertEquals(tds.getNummer(), tds.getFeld(2));
-        NumFeld two = new NumFeld(new Bezeichner("two"), 2, 5);
-        tds.add(two);
-        Feld feld = tds.getFeld(2);
-        assertEquals(two, feld);
-    }
-
-    /**
      * Test-Methode fuer {@link Teildatensatz#getFeld(String)}.
      */
     @Test
@@ -120,6 +95,15 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Feld feld = new NumFeld("Hello", 55, "World");
         tds.add(feld);
         assertEquals(feld, tds.getFeld("Hello"));
+    }
+
+    @Test
+    public void testGetFeldByteAdresse() {
+        Teildatensatz tds = new Teildatensatz(4711, 1);
+        ByteAdresse adresse = ByteAdresse.of(11);
+        Feld feld = new NumFeld(Bezeichner.PRODUKTNAME, 47, adresse.intValue() );
+        tds.add(feld);
+        assertEquals(feld, tds.getFeld(adresse));
     }
 
     /**
@@ -139,7 +123,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
             tds.getFeld(satznummer.getBezeichnung());
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
-            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(), 
+            MatcherAssert.assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
                     allOf(containsString("Satznummer"), containsString("Satzart 0100")));
             throw ex;
         }
@@ -190,7 +174,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testValidateIBAN() {
-        Teildatensatz adressteil4 = SatzFactory.getSatz(new SatzTyp(100)).getTeildatensatz(4);
+        Teildatensatz adressteil4 = SatzFactory.getSatz(SatzTyp.of("0100")).getTeildatensatz(4);
         assertTrue("should be valid: " + adressteil4, adressteil4.isValid());
         Feld iban1 = adressteil4.getFeld(Bezeichner.IBAN1);
         iban1.setInhalt("DE99300606010006605605");

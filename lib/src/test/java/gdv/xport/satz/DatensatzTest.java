@@ -22,13 +22,16 @@ import gdv.xport.Datenpaket;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
+import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.Feld100;
+import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -113,7 +116,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
      */
     @Test
     public void testCopyConstructor() {
-        List<Teildatensatz> teildatensaetze = new ArrayList<Teildatensatz>();
+        List<Teildatensatz> teildatensaetze = new ArrayList<>();
         Teildatensatz tds = new Teildatensatz(100, 1);
         tds.add(new Feld(Feld100.NAME1));
         tds.set(Feld100.NAME1, "Asterix");
@@ -144,8 +147,22 @@ public class DatensatzTest extends AbstractDatensatzTest {
         for (Datensatz datensatz : datenpaket.getDatensaetze()) {
             assertEquals(100, datensatz.getSatzart());
             assertEquals(2, datensatz.getNumberOfTeildatensaetze());
-            assertEquals(1, datensatz.getTeildatensatz(1).getNummer().toInt());
-            assertEquals(2, datensatz.getTeildatensatz(2).getNummer().toInt());
+            assertEquals(1, datensatz.getTeildatensatz(1).getSatznummer().toInt());
+            assertEquals(2, datensatz.getTeildatensatz(2).getSatznummer().toInt());
+        }
+    }
+
+    @Test
+    public void testReadBauspartArt() throws IOException {
+        int art = 2;
+        SatzTyp bausparen = SatzTyp.of("0220.580.2");
+        Datensatz datensatz = SatzFactory.getDatensatz(bausparen);
+        datensatz.getFeld(Bezeichner.of("Produkt")).setInhalt("580");
+        datensatz.getFeld(Bezeichner.of("Art1")).setInhalt(art);
+        try (PushbackLineNumberReader reader = new PushbackLineNumberReader(
+                new StringReader(datensatz.toLongString()), 50)) {
+            int bausparArt = Datensatz.readBausparenArt(reader);
+            assertEquals(art, bausparArt);
         }
     }
 

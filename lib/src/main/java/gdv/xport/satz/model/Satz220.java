@@ -51,16 +51,14 @@ import java.util.*;
  * Soplet- Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>)
  * implementiert wurde.
  * <p>
- * <b>HINWEIS</b>: Bitte nicht {@link gdv.xport.satz.feld.sparte30.Feld220}
- * ueber {@link gdv.xport.util.SatzFactory#registerEnum(Class, int, int)} fuer
- * Satz 220, Sparte 30 registrieren, sondern diese Klasse hier. Sie behandelt
- * den Import fuer Teildatensatz 9 richtig, der vom allgemeinen Schema etwas
- * abweicht.
+ * TODO: Wird ab v6 nach gdv-xport-deprecated verschoben.
  * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (08.04.2011)
+ * @deprecated besser {@link gdv.xport.util.SatzFactory#getSatz(SatzTyp)} verwenden
  */
+@Deprecated
 public class Satz220 extends SpartensatzX {
 
     private static final Logger LOG = LogManager.getLogger(Satz220.class);
