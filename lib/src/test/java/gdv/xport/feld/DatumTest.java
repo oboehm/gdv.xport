@@ -18,20 +18,19 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Date;
-import java.util.List;
-
 import net.sf.oval.ConstraintViolation;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import patterntesting.runtime.junit.SmokeRunner;
+
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Testklasse fuer Datum-Klasse.
@@ -73,6 +72,12 @@ public final class DatumTest extends AbstractFeldTest {
         LOG.info("Silvester is at " + silvester.toDate());
         Datum invalid = new Datum("invalid", "xxxxxxxx");
         LOG.info("invalid date: " + invalid.toDate());
+    }
+
+    @Test
+    public void testToLocalDate() {
+        Datum valentinstag2021 = new Datum("Valentinstag", "14022021");
+        assertEquals(LocalDate.of(2021, 2, 14), valentinstag2021.toLocalDate());
     }
 
     /**

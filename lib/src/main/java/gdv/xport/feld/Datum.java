@@ -27,6 +27,8 @@ import org.apache.logging.log4j.Logger;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -221,6 +223,18 @@ public final class Datum extends Feld {
             throw new IllegalStateException(this + " has an invalid date (\""
                     + this.getInhalt() + "\")");
         }
+    }
+
+    /**
+     * Wandelt das Datum in ein {@link LocalDate} um
+     *
+     * @return Datum als {@link LocalDate}
+     * @since 5.0
+     */
+    public LocalDate toLocalDate() {
+        SimpleDateFormat df = (SimpleDateFormat) dateFormat;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(df.toPattern());
+        return LocalDate.parse(this.getInhalt(), formatter);
     }
 
     /**

@@ -189,6 +189,12 @@ public final class SatzTest extends AbstractSatzTest {
         assertEquals(new BigDecimal("5.12"), betrag.toBigDecimal());
     }
 
+    @Test
+    public void testGetDatum() {
+        Datum datum = checkGetFeld(Bezeichner.SCHADENDATUM, Datum.class, "09012021");
+        assertEquals(2021, datum.toLocalDate().getYear());
+    }
+
     private <T extends Feld> T checkGetFeld(Bezeichner bezeichner, Class<T> clazz, String inhalt) {
         Satz satz = SatzFactory.getSatz(SatzTyp.of(500));
         Feld feld = satz.getFeld(bezeichner);

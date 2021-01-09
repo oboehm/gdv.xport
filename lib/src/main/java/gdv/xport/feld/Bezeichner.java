@@ -995,6 +995,8 @@ public final class Bezeichner {
     public static final Bezeichner SATZNUMMERNWIEDERHOLUNG9 = new Bezeichner("Satznummernwiederholung9", "SatzNrnwiederholung9");
     public static final Bezeichner SCHADENBEARBEITUNGSKOSTEN = new Bezeichner("Schadenbearbeitungskosten", "Schadenbearbeitungskost");
     public static final Bezeichner SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Schadenbearbeitungskosten in W\u00e4hrungseinheiten", "SchadenbearbeitungskostinWE");
+    public static final Bezeichner SCHADENDATUM = new Bezeichner("Schadendatum");
+    public static final Bezeichner SCHADENMELDEDATUM = new Bezeichner("Schadenmeldedatum");
     public static final Bezeichner SCHAEDEN_AUS_RUECKSTUFUNG = new Bezeichner("Schäden aus Rückstufung");
     public static final Bezeichner SCHLUESSEL_SICHERUNGSEINRICHTUNG = new Bezeichner("Schl\u00fcssel Sicherungseinrichtung");
     public static final Bezeichner SCHLUSSALTER_DES_WAISEN = new Bezeichner("Schlussalter des Waisen");
