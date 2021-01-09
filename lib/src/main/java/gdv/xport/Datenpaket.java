@@ -14,6 +14,7 @@ package gdv.xport;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.Betrag;
+import gdv.xport.feld.BetragMitVorzeichen;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
 import gdv.xport.io.*;
@@ -35,7 +36,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
-import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -651,46 +651,20 @@ public final class Datenpaket {
     }
 
     private void setNachsatzSummenAus0400(Datensatz datensatz) {
-        Betrag betrag = datensatz.getFeld(Bezeichner.GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN, Betrag.class);
-        BigDecimal wert = betrag.toBigDecimal();
-        if ("-".equals(datensatz.getTeildatensatz(1)
-                                               .getFeld(27)
-                                               .getInhalt()
-                                               .trim())) {
-            wert = wert.negate();
-        }
-        nachsatz.addGesamtBeitragBrutto(wert);
-
-        betrag = datensatz.getFeld(Bezeichner.GESAMTPROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN, Betrag.class);
-        wert = betrag.toBigDecimal();
-        if ("-".equals(datensatz.getTeildatensatz(1)
-                                               .getFeld(29)
-                                               .getInhalt()
-                                               .trim())) {
-            wert = wert.negate();
-        }
-        nachsatz.addGesamtProvisionsBetrag(wert);
+        BetragMitVorzeichen betrag = datensatz.getFeld(Bezeichner.GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN,
+                BetragMitVorzeichen.class);
+        nachsatz.addGesamtBeitragBrutto(betrag.toBigDecimal());
+        betrag = datensatz.getFeld(Bezeichner.GESAMTPROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN, BetragMitVorzeichen.class);
+        nachsatz.addGesamtProvisionsBetrag(betrag.toBigDecimal());
     }
 
     private void setNachsatzSummenAus0500(Datensatz datensatz) {
-        Betrag betrag = datensatz.getFeld(Bezeichner.BETRAG_IN_WAEHRUNGSEINHEITEN_GEMAESS_ZAHLUNGSART, Betrag.class);
-        BigDecimal wert = betrag.toBigDecimal();
-        if ("-".equals(datensatz.getTeildatensatz(1)
-                                               .getFeld(26)
-                                               .getInhalt()
-                                               .trim())) {
-            wert = wert.negate();
-        }
-        nachsatz.addVersicherungsLeistungen(wert);
-
-        betrag = datensatz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, Betrag.class);
-        wert = betrag.toBigDecimal();
-        if ("-".equals(datensatz.getTeildatensatz(1)
-                                               .getFeld(28)
-                                               .getInhalt()
-                                               .trim())) {
-            wert = wert.negate();
-        }
-        nachsatz.addSchadenbearbeitungskosten(wert);
+        BetragMitVorzeichen betrag = datensatz.getFeld(Bezeichner.BETRAG_IN_WAEHRUNGSEINHEITEN_GEMAESS_ZAHLUNGSART,
+                BetragMitVorzeichen.class);
+        nachsatz.addVersicherungsLeistungen(betrag.toBigDecimal());
+        betrag = datensatz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN,
+                BetragMitVorzeichen.class);
+        nachsatz.addSchadenbearbeitungskosten(betrag.toBigDecimal());
     }
+
 }
