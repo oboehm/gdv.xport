@@ -18,26 +18,24 @@
 
 package gdv.xport.demo;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import gdv.xport.Datenpaket;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.feld.Feld100;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.annotation.SkipTestOn;
+import patterntesting.runtime.junit.SmokeRunner;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.annotation.RunTestOn;
-import patterntesting.runtime.annotation.SkipTestOn;
-import patterntesting.runtime.junit.SmokeRunner;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * JUnit-Test fuer {@link ImportExport}.
@@ -48,7 +46,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 @RunWith(SmokeRunner.class)
 public class ImportExportTest {
 
-    private static Log log = LogFactory.getLog(ImportExportTest.class);
+    private static final Log log = LogFactory.getLog(ImportExportTest.class);
 
     /**
      * Test-Methode fuer {@link ImportExport#importSatz100(File)}.
@@ -67,9 +65,9 @@ public class ImportExportTest {
             ImportExport.exportSatz100(tmpFile);
             Datensatz satz100 = ImportExport.importSatz100(tmpFile);
             assertEquals(100, satz100.getSatzart());
-            assertEquals("1", satz100.getFeld(Feld100.ANREDESCHLUESSEL).getInhalt());
-            assertEquals("Duck", satz100.getFeld(Feld100.NAME1).getInhalt().trim());
-            assertEquals("1", satz100.getFeld(Feld100.GESCHLECHT).getInhalt());
+            assertEquals("1", satz100.getFeld(Bezeichner.ANREDESCHLUESSEL).getInhalt());
+            assertEquals("Duck", satz100.getFeld(Bezeichner.NAME1).getInhalt().trim());
+            assertEquals("1", satz100.getFeld(Bezeichner.GESCHLECHT).getInhalt());
         } finally {
             tmpFile.delete();
             log.info("file \"" + tmpFile + "\" deleted.");

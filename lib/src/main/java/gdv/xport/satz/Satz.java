@@ -545,11 +545,16 @@ public abstract class Satz implements Cloneable {
 	 * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
 	 * benutzt, um das Feld zu bestimmen. Dazu werden auch die Konstanten in
      * {@link gdv.xport.feld.Bezeichner} verwendet.
+	 * <p>
+	 * TODO: Wird in v6 entfernt werden.
+	 * </p>
 	 *
 	 * @param feld gewuenschtes Feld-Element
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
+	 * @deprecated inzwischen durch {@link #getFeld(Bezeichner)} abgeloest
 	 */
+	@Deprecated
 	public Feld getFeld(final Enum feld) throws IllegalArgumentException {
 		for (int i = 0; i < teildatensatz.length; i++) {
 			try {

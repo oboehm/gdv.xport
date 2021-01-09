@@ -119,16 +119,16 @@ public class DatensatzTest extends AbstractDatensatzTest {
         List<Teildatensatz> teildatensaetze = new ArrayList<>();
         Teildatensatz tds = new Teildatensatz(100, 1);
         tds.add(new Feld(Feld100.NAME1));
-        tds.set(Feld100.NAME1, "Asterix");
+        tds.set(Bezeichner.NAME1, "Asterix");
         teildatensaetze.add(tds);
         teildatensaetze.add(new Teildatensatz(100, 2));
         Datensatz orig = new Datensatz(new SatzTyp(100), teildatensaetze);
         Datensatz copy = new Datensatz(orig);
-        assertEquals(orig.get(Feld100.NAME1), copy.get(Feld100.NAME1));
+        assertEquals(orig.get(Bezeichner.NAME1), copy.get(Bezeichner.NAME1));
         assertEquals(orig.toLongString(), copy.toLongString());
-        copy.set(Feld100.NAME1, "Obelix");
-        assertEquals("Obelix", copy.getFeld(Feld100.NAME1).getInhalt().trim());
-        assertEquals("Asterix", orig.getFeld(Feld100.NAME1).getInhalt().trim());
+        copy.set(Bezeichner.NAME1, "Obelix");
+        assertEquals("Obelix", copy.getFeld(Bezeichner.NAME1).getInhalt().trim());
+        assertEquals("Asterix", orig.getFeld(Bezeichner.NAME1).getInhalt().trim());
     }
 
     /**

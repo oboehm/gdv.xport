@@ -107,7 +107,7 @@ public class Satz100Test extends AbstractDatensatzTest {
         assertEquals(1, satz.getFolgenummer());
         assertEquals("9999009999", satz.getVermittler());
         assertEquals("1", satz.get(Feld100.ANREDESCHLUESSEL));
-        assertEquals("Pollsmann", satz.get(Feld100.NAME1).trim());
+        assertEquals("Pollsmann", satz.get(Bezeichner.NAME1).trim());
         assertEquals("           W45WWW", satz.get(Feld100.KUNDENNR_VERSICHERER));
     }
 

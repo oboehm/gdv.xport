@@ -510,11 +510,16 @@ public final class Nachsatz extends Satz {
      * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
      * benutzt, um das Feld zu bestimmen. Dazu werden auch die Konstanten in
      * {@link gdv.xport.feld.Bezeichner} verwendet.
+     * <p>
+     * TODO: Wird in v6 entfernt werden.
+     * </p>
      *
      * @param feld gewuenschtes Feld-Element
      * @return das gesuchte Feld
      * @throws IllegalArgumentException falls es das Feld nicht gibt
+     * @deprecated inzwischen durch {@link #getFeld(Bezeichner)} abgeloest
      */
+    @Deprecated
     @Override
     public Feld getFeld(final Enum feld) throws IllegalArgumentException {
         if (feld instanceof Feld9999) {

@@ -19,9 +19,12 @@
 package gdv.xport.demo;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.feld.Feld100;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.EOFException;
 import java.io.File;
@@ -29,10 +32,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import gdv.xport.util.SatzTyp;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * Diese Klasse enthaelt einige Beispiele fuer den Import und Export von
@@ -63,10 +62,10 @@ public final class ImportExport {
      */
     public static void exportSatz100(final File file) throws IOException {
         Datensatz satz100 = SatzFactory.getDatensatz(SatzTyp.of("0100"));
-        satz100.set(Feld100.ANREDESCHLUESSEL, 1);
-        satz100.set(Feld100.NAME1, "Duck");
-        satz100.set(Feld100.NAME3, "Dagobert");
-        satz100.set(Feld100.GESCHLECHT, '1');
+        satz100.set(Bezeichner.ANREDESCHLUESSEL, 1);
+        satz100.set(Bezeichner.NAME1, "Duck");
+        satz100.set(Bezeichner.NAME3, "Dagobert");
+        satz100.set(Bezeichner.GESCHLECHT, "1");
         satz100.export(file);
     }
 
@@ -81,8 +80,8 @@ public final class ImportExport {
     public static Datensatz importSatz100(final File file) throws IOException {
         Datensatz satz100 = SatzFactory.getDatensatz(SatzTyp.of("0100"));
         satz100.importFrom(file);
-        LOG.info("Datensatz " + satz100.getSatzart() + " von " + satz100.getFeld(Feld100.NAME3) + " "
-                + satz100.getFeld(Feld100.NAME1) + " importiert.");
+        LOG.info("Datensatz " + satz100.getSatzart() + " von " + satz100.getFeld(Bezeichner.NAME3) + " "
+                + satz100.getFeld(Bezeichner.NAME1) + " importiert.");
         return satz100;
     }
 
@@ -94,7 +93,7 @@ public final class ImportExport {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public static List<Datenpaket> importDatenpakete(final InputStream inputStream) throws IOException {
-        List<Datenpaket> datenpakete = new ArrayList<Datenpaket>();
+        List<Datenpaket> datenpakete = new ArrayList<>();
         while (inputStream.available() >= 0) {
             Datenpaket paket = new Datenpaket();
             try {
