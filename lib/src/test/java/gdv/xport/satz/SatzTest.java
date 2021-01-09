@@ -211,6 +211,17 @@ public final class SatzTest extends AbstractSatzTest {
         return betrag;
     }
 
+    @Test
+    public void testGetBetragMitVorzeichen() {
+        Satz satz = SatzFactory.getSatz(SatzTyp.of(500));
+        satz.set(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, "00000000123");
+        satz.getTeildatensatz(1).set(ByteAdresse.of(167), "-");
+        BetragMitVorzeichen betrag = satz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, BetragMitVorzeichen.class);
+        assertEquals(14, betrag.getAnzahlBytes());
+        assertEquals('-', betrag.getVorzeichen());
+        assertEquals(new BigDecimal("-1.23"), betrag.toBigDecimal());
+    }
+
     /**
      * Test method for {@link gdv.xport.satz.Satz#getFeldSafe(java.lang.String)}.
      * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf

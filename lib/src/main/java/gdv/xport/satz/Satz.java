@@ -21,10 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.enums.TeildatensatzEnum;
@@ -668,6 +665,9 @@ public abstract class Satz implements Cloneable {
 
 	/**
 	 * Liefert das gewuenschte Feld im gewuenschten Typ.
+	 * Falls als Typ {@link BetragMitVorzeichen} gewuenscht wird, wird das
+	 * Feld mit dem angegebenen Bezeichner und das benachbarte Vorzeichenfeld
+	 * zusammengefasst und als Einheit zurueckgegeben.
 	 *
 	 * @param bezeichner gewuenschter Bezeichner des Feldes
 	 * @param clazz      Feld-Typ
@@ -676,6 +676,9 @@ public abstract class Satz implements Cloneable {
 	 * @since 5.0
 	 */
     public <T extends Feld> T getFeld(final Bezeichner bezeichner, final Class<T> clazz) {
+    	if (clazz.equals(BetragMitVorzeichen.class)) {
+    		return (T) getBetragMitVorzeichen(bezeichner);
+		}
 		Feld feld = getFeld(bezeichner);
 		if (clazz.isAssignableFrom(feld.getClass())) {
 			return (T) feld;
@@ -687,6 +690,26 @@ public abstract class Satz implements Cloneable {
 				throw new IllegalArgumentException("cannot instantiate " + clazz, ex);
 			}
 		}
+	}
+
+	private BetragMitVorzeichen getBetragMitVorzeichen(final Bezeichner bezeichner) {
+    	Betrag betrag = getFeld(bezeichner, Betrag.class);
+    	Feld vorzeichen = getVorzeichenOf(bezeichner);
+    	BetragMitVorzeichen bmv = new BetragMitVorzeichen(Bezeichner.of(bezeichner.getName() + " mit Vorzeichen"),
+				betrag.getAnzahlBytes()+1, betrag.getByteAdresse());
+    	bmv.setInhalt(betrag.getInhalt() + vorzeichen.getInhalt());
+    	return bmv;
+	}
+
+	private Feld getVorzeichenOf(final Bezeichner bezeichner) {
+		for (int n = 1; n <= getNumberOfTeildatensaetze(); n++) {
+			Teildatensatz tds = getTeildatensatz(n);
+			if (tds.hasFeld(bezeichner)) {
+				Feld beforeVorzeichen = tds.getFeld(bezeichner);
+				return tds.getFeld(ByteAdresse.of(beforeVorzeichen.getEndAdresse()+1));
+			}
+		}
+		throw new IllegalArgumentException(bezeichner + " does not exist");
 	}
 
     /**
