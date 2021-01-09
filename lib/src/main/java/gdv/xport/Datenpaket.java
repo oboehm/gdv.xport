@@ -13,6 +13,8 @@
 package gdv.xport;
 
 import gdv.xport.config.Config;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
 import gdv.xport.io.*;
 import gdv.xport.satz.Datensatz;
@@ -644,93 +646,51 @@ public final class Datenpaket {
     }
 
     private void setNachsatzSummenAus0200(Datensatz datensatz) {
-        Long wert;
-        try {
-            wert = Long.parseLong(datensatz.getTeildatensatz(1)
-                                  .getFeld(22)
-                    .getInhalt());
-        } catch (NumberFormatException e) {
-            wert = 0L;
-        }
-
-        nachsatz.addGesamtBeitrag(new BigDecimal(wert).movePointLeft(2));
+        Betrag beitrag = datensatz.getFeld(Bezeichner.GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN, Betrag.class);
+        nachsatz.addGesamtBeitrag(beitrag.toBigDecimal());
     }
 
     private void setNachsatzSummenAus0400(Datensatz datensatz) {
-        Long wert;
-        try {
-            wert = Long.parseLong(datensatz.getTeildatensatz(1)
-                                           .getFeld(26)
-                                           .getInhalt()
-                                           .trim());
-        } catch (NumberFormatException e) {
-            wert = 0L;
-        }
-
-        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+        Betrag betrag = datensatz.getFeld(Bezeichner.GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN, Betrag.class);
+        BigDecimal wert = betrag.toBigDecimal();
+        if ("-".equals(datensatz.getTeildatensatz(1)
                                                .getFeld(27)
                                                .getInhalt()
                                                .trim())) {
-            wert *= -1;
+            wert = wert.negate();
         }
+        nachsatz.addGesamtBeitragBrutto(wert);
 
-        nachsatz.addGesamtBeitragBrutto(new BigDecimal(wert).movePointLeft(2));
-
-        try {
-            wert = Long.parseLong(datensatz.getTeildatensatz(1)
-                                           .getFeld(28)
-                                           .getInhalt()
-                                           .trim());
-        } catch (NumberFormatException e) {
-            wert = 0L;
-        }
-
-        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+        betrag = datensatz.getFeld(Bezeichner.GESAMTPROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN, Betrag.class);
+        wert = betrag.toBigDecimal();
+        if ("-".equals(datensatz.getTeildatensatz(1)
                                                .getFeld(29)
                                                .getInhalt()
                                                .trim())) {
-            wert *= -1;
+            wert = wert.negate();
         }
-
-        nachsatz.addGesamtProvisionsBetrag(new BigDecimal(wert).movePointLeft(2));
+        nachsatz.addGesamtProvisionsBetrag(wert);
     }
 
     private void setNachsatzSummenAus0500(Datensatz datensatz) {
-        Long wert;
-        try {
-            wert = Long.parseLong(datensatz.getTeildatensatz(1)
-                                           .getFeld(25)
-                                           .getInhalt()
-                                           .trim());
-        } catch (NumberFormatException e) {
-            wert = 0L;
-        }
-
-        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+        Betrag betrag = datensatz.getFeld(Bezeichner.BETRAG_IN_WAEHRUNGSEINHEITEN_GEMAESS_ZAHLUNGSART, Betrag.class);
+        BigDecimal wert = betrag.toBigDecimal();
+        if ("-".equals(datensatz.getTeildatensatz(1)
                                                .getFeld(26)
                                                .getInhalt()
                                                .trim())) {
-            wert *= -1;
+            wert = wert.negate();
         }
+        nachsatz.addVersicherungsLeistungen(wert);
 
-        nachsatz.addVersicherungsLeistungen(new BigDecimal(wert).movePointLeft(2));
-
-        try {
-            wert = Long.parseLong(datensatz.getTeildatensatz(1)
-                                           .getFeld(27)
-                                           .getInhalt()
-                                           .trim());
-        } catch (NumberFormatException e) {
-            wert = 0L;
-        }
-
-        if (wert != 0 && ("-").equals(datensatz.getTeildatensatz(1)
+        betrag = datensatz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, Betrag.class);
+        wert = betrag.toBigDecimal();
+        if ("-".equals(datensatz.getTeildatensatz(1)
                                                .getFeld(28)
                                                .getInhalt()
                                                .trim())) {
-            wert *= -1;
+            wert = wert.negate();
         }
-
-        nachsatz.addSchadenbearbeitungskosten(new BigDecimal(wert).movePointLeft(2));
+        nachsatz.addSchadenbearbeitungskosten(wert);
     }
 }

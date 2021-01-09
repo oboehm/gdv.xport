@@ -313,8 +313,8 @@ public final class SatzFactory {
         try {
             return XML_SERVICE.getSatzart(satztyp);
         } catch (NotRegisteredException ex) {
-            LOG.info("{} is not avalaible via XmlService.", satztyp);
-            LOG.debug("Details:", ex);
+            LOG.debug("{} is not avalaible via XmlService.", satztyp);
+            LOG.trace("Details:", ex);
             if (satztyp.hasParent()) {
                 SatzXml satz = XML_SERVICE.getSatzart(satztyp.getParent());
                 satz.setSparte(satztyp.getSparte());
