@@ -64,23 +64,43 @@ public class Zeichen extends AlphaNumFeld {
     }
 
     /**
+     * Copy-Constructor.
+     *
+     * @param feld Zeichen-Feld, das kopiert wird
+     * @since 5.0
+     */
+    public Zeichen(final Feld feld) {
+        super(feld);
+    }
+
+    /**
      * Legt ein neues Zeichen-Feld an. Die Informationen dazu werden
      * aus der uebergebenen Enum bezogen.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
+     * @deprecated inzwischen durch {@link #Zeichen(Bezeichner, int)} abgeloest
      */
+    @Deprecated
     public Zeichen(final Enum feldX) {
         this(feldX, Feld.getFeldInfo(feldX));
     }
 
     /**
      * Instantiiert ein neues Zeichen.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param feldX Feld
      * @param info mit Angabe der Start-Adresse
      * @since 0.6
+     * @deprecated inzwischen durch {@link #Zeichen(Bezeichner, int)} abgeloest
      */
+    @Deprecated
     public Zeichen(final Enum feldX, final FeldInfo info) {
         super(feldX, info);
         assert info.anzahlBytes() == 1 : "Zeichen kann nur 1 Byte lang sein";

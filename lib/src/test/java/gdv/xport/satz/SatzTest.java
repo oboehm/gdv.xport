@@ -195,6 +195,12 @@ public final class SatzTest extends AbstractSatzTest {
         assertEquals(2021, datum.toLocalDate().getYear());
     }
 
+    @Test
+    public void testGetVorzeichen() {
+        Zeichen vorzeichen = checkGetFeld(Bezeichner.VORZEICHEN, Zeichen.class, "+");
+        assertEquals('+', vorzeichen.toChar());
+    }
+
     private <T extends Feld> T checkGetFeld(Bezeichner bezeichner, Class<T> clazz, String inhalt) {
         Satz satz = SatzFactory.getSatz(SatzTyp.of(500));
         Feld feld = satz.getFeld(bezeichner);
