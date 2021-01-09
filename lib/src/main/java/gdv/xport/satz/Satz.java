@@ -40,6 +40,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -654,6 +655,29 @@ public abstract class Satz implements Cloneable {
         throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
                 + " vorhanden!");
     }
+
+	/**
+	 * Liefert das gewuenschte Feld im gewuenschten Typ.
+	 *
+	 * @param bezeichner gewuenschter Bezeichner des Feldes
+	 * @param clazz      Feld-Typ
+	 * @return das gesuchte Feld
+	 * @throws IllegalArgumentException falls es das Feld nicht gibt
+	 * @since 5.0
+	 */
+    public <T extends Feld> T getFeld(final Bezeichner bezeichner, final Class<T> clazz) {
+		Feld feld = getFeld(bezeichner);
+		if (clazz.isAssignableFrom(feld.getClass())) {
+			return (T) feld;
+		} else {
+			try {
+				Constructor<T> ctor = clazz.getConstructor(Feld.class);
+				return ctor.newInstance(feld);
+			} catch (ReflectiveOperationException ex) {
+				throw new IllegalArgumentException("cannot instantiate " + clazz, ex);
+			}
+		}
+	}
 
     /**
      * Liefert das gewuenschte Feld oder {@link Feld#NULL_FELD}, wenn nicht

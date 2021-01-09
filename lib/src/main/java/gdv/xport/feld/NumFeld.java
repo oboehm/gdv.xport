@@ -200,9 +200,13 @@ public class NumFeld extends Feld {
      *
      * @param other das originale Feld
      */
-    public NumFeld(final NumFeld other) {
+    public NumFeld(final Feld other) {
         super(other);
-        this.nachkommastellen = other.nachkommastellen;
+        if (other instanceof NumFeld) {
+            this.nachkommastellen = ((NumFeld) other).nachkommastellen;
+        } else {
+            this.nachkommastellen = 0;
+        }
     }
 
     /**

@@ -81,7 +81,7 @@ public class Betrag extends NumFeld {
      *
      * @param other das originale Feld
      */
-    public Betrag(final Betrag other) {
+    public Betrag(final Feld other) {
         super(other);
     }
 

@@ -20,10 +20,7 @@ package gdv.xport.satz;
 
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
@@ -43,6 +40,7 @@ import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -178,7 +176,29 @@ public final class SatzTest extends AbstractSatzTest {
             throw ex;
         }
     }
-    
+
+    @Test
+    public void testGetNumFeld() {
+        NumFeld satzart = checkGetFeld(Bezeichner.SATZART, NumFeld.class, "0500");
+        assertEquals(500, satzart.toInt());
+    }
+
+    @Test
+    public void testGetBetrag() {
+        Betrag betrag = checkGetFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, Betrag.class, "512");
+        assertEquals(new BigDecimal("5.12"), betrag.toBigDecimal());
+    }
+
+    private <T extends Feld> T checkGetFeld(Bezeichner bezeichner, Class<T> clazz, String inhalt) {
+        Satz satz = SatzFactory.getSatz(SatzTyp.of(500));
+        Feld feld = satz.getFeld(bezeichner);
+        feld.setInhalt(inhalt);
+        T betrag = satz.getFeld(bezeichner, clazz);
+        assertEquals(feld.getByteAdresse(), betrag.getByteAdresse());
+        assertEquals(feld.getInhalt(), betrag.getInhalt());
+        return betrag;
+    }
+
     /**
      * Test method for {@link gdv.xport.satz.Satz#getFeldSafe(java.lang.String)}.
      * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
