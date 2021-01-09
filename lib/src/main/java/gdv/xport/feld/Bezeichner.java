@@ -461,6 +461,7 @@ public final class Bezeichner {
     public static final Bezeichner GESAMTBEITRAG_VP_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gesamtbeitrag VP in W\u00e4hrungseinheiten", "GesbeitragVpInWE");
     public static final Bezeichner GESAMTMASSE = new Bezeichner("Gesamtmasse");
     public static final Bezeichner GESAMTPROVISIONSBETRAG = new Bezeichner("Gesamtprovisions-Betrag");
+    public static final Bezeichner GESAMTPROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gesamtprovisions-Betrag in W\u00e4hrungseinheiten", "GesProvisionsbetraginWE");
     public static final Bezeichner GESAMTVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gesamtversicherungssumme in W\u00e4hrungseinheiten");
     public static final Bezeichner GESCHAEFTSSTELLE_VERMITTLER = new Bezeichner("Geschaeftsstelle / Vermittler");
     public static final Bezeichner GESCHLECHT = new Bezeichner("Geschlecht");
@@ -993,6 +994,7 @@ public final class Bezeichner {
     public static final Bezeichner SATZNUMMERNWIEDERHOLUNG4 = new Bezeichner("Satznummernwiederholung4", "SatzNrnwiederholung4");
     public static final Bezeichner SATZNUMMERNWIEDERHOLUNG9 = new Bezeichner("Satznummernwiederholung9", "SatzNrnwiederholung9");
     public static final Bezeichner SCHADENBEARBEITUNGSKOSTEN = new Bezeichner("Schadenbearbeitungskosten", "Schadenbearbeitungskost");
+    public static final Bezeichner SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Schadenbearbeitungskosten in W\u00e4hrungseinheiten", "SchadenbearbeitungskostinWE");
     public static final Bezeichner SCHAEDEN_AUS_RUECKSTUFUNG = new Bezeichner("Schäden aus Rückstufung");
     public static final Bezeichner SCHLUESSEL_SICHERUNGSEINRICHTUNG = new Bezeichner("Schl\u00fcssel Sicherungseinrichtung");
     public static final Bezeichner SCHLUSSALTER_DES_WAISEN = new Bezeichner("Schlussalter des Waisen");

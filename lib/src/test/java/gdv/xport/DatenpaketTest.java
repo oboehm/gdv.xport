@@ -545,7 +545,7 @@ public final class DatenpaketTest {
     }
 
     @Test
-    public void testAddDatensatz400() {
+    public void testAddDatensatz400BeitragBrutto() {
         BigDecimal summe = addDatensatz(SatzTyp.of(400), Bezeichner.GESAMTBEITRAG_BRUTTO_IN_WAEHRUNGSEINHEITEN,
                 ByteAdresse.of(150),
                 new BigDecimal(-100), new BigDecimal("11.11"));
@@ -554,12 +554,30 @@ public final class DatenpaketTest {
     }
 
     @Test
-    public void testAddDatensatz500() {
+    public void testAddDatensatz400Provision() {
+        BigDecimal summe = addDatensatz(SatzTyp.of(400), Bezeichner.GESAMTPROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN,
+                ByteAdresse.of(162),
+                BigDecimal.TEN, new BigDecimal("-0.11"));
+        Nachsatz nachsatz = datenpaket.getNachsatz();
+        assertEquals(summe, nachsatz.getGesamtProvisionsBetragMitVorzeichen().toBigDecimal());
+    }
+
+    @Test
+    public void testAddDatensatz500VersicherungsLeistungen() {
         BigDecimal summe = addDatensatz(SatzTyp.of(500), Bezeichner.BETRAG_IN_WAEHRUNGSEINHEITEN_GEMAESS_ZAHLUNGSART,
                 ByteAdresse.of(153),
                 new BigDecimal(500), new BigDecimal("55.50"), new BigDecimal(-600));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(summe, nachsatz.getVersicherungsLeistungenMitVorzeichen().toBigDecimal());
+    }
+
+    @Test
+    public void testAddDatensatz500Schaden() {
+        BigDecimal summe = addDatensatz(SatzTyp.of(500), Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN,
+                ByteAdresse.of(167),
+                new BigDecimal(500), new BigDecimal("55.50"), new BigDecimal(-600));
+        Nachsatz nachsatz = datenpaket.getNachsatz();
+        assertEquals(summe, nachsatz.getSchadenbearbeitungskostenMitVorzeichen().toBigDecimal());
     }
 
     private BigDecimal addDatensatz(SatzTyp satzTyp, Bezeichner bezeichner, BigDecimal...beitraege) {
