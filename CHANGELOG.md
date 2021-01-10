@@ -30,6 +30,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - es werden viel mehr Satzarten direkt auf der XML-Beschreibung in VUVM2018.xml abgeleitet
 - Widersprüche in VUVM2018.xml wurden manuell bereinigt
 - SatzTyp wurde ausgebaut und um of(..)-Methode erweitert
+- gdv-xport-service auf OpenAPI / Swagger 3.0 aktualisiert
 
 
 
