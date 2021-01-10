@@ -20,8 +20,8 @@ Sie kann als WAR-Archive auf einem Tomcat oder anderen Servlet-Container ausgero
 Als Port für die Standalone-Anwendung ist 2517 eingestellt.
 Wird die Anwendung lokal gestartet, kann über
 
-* http://localhost:2517/swagger-ui.html
-* http://localhost:2517/swagger-ui.html#/datenpaket45controller
+* http://localhost:2517/swagger-ui/
+* http://localhost:2517/swagger-ui/#/datenpaket-controller
 
 die Dokumentation der REST-Services unter "datenpaket-controller eingesehen werden.
 Andere REST-Services, die in der Dokumentation angzeigt werden, sind Bestandteil der Spring-Booot-Anwendung.

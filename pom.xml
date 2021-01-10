@@ -40,7 +40,7 @@
   <properties>
 
     <patterntesting.version>1.8.0</patterntesting.version>
-    <spring-boot.version>2.1.12.RELEASE</spring-boot.version>
+    <spring-boot.version>2.2.12.RELEASE</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -50,31 +50,6 @@
 
     <!-- Sonar -->
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-
-    <!-- Sonar 4.x Violations Filter -->
-    <!-- System.out and System.err should not be used as loggers -->
-    <sonar.issue.ignore.multicriteria.1.ruleKey>squid:S106</sonar.issue.ignore.multicriteria.1.ruleKey>
-    <sonar.issue.ignore.multicriteria.1.resourceKey>**</sonar.issue.ignore.multicriteria.1.resourceKey>
-    <!-- System.exit(...) and Runtime.getRuntime().exit(...) should not be called -->
-    <sonar.issue.ignore.multicriteria.2.ruleKey>squid:S1147</sonar.issue.ignore.multicriteria.2.ruleKey>
-    <sonar.issue.ignore.multicriteria.2.resourceKey>**/Main.java</sonar.issue.ignore.multicriteria.2.resourceKey>
-    <!-- String literals should not be duplicated -->
-    <sonar.issue.ignore.multicriteria.3.ruleKey>squid:S1192</sonar.issue.ignore.multicriteria.3.ruleKey>
-    <sonar.issue.ignore.multicriteria.3.resourceKey>**</sonar.issue.ignore.multicriteria.3.resourceKey>
-    <!-- super.clone() should be called when overriding Object.clone() -->
-    <sonar.issue.ignore.multicriteria.4.ruleKey>squid:S1182</sonar.issue.ignore.multicriteria.4.ruleKey>
-    <sonar.issue.ignore.multicriteria.4.resourceKey>**/feld/*.java</sonar.issue.ignore.multicriteria.4.resourceKey>
-    <!-- Utility classes should not have public constructors -->
-    <sonar.issue.ignore.multicriteria.1118.ruleKey>squid:S1118</sonar.issue.ignore.multicriteria.1118.ruleKey>
-    <sonar.issue.ignore.multicriteria.1118.resourceKey>src/main/java/gdv/xport/service/XPortApplication.java</sonar.issue.ignore.multicriteria.1118.resourceKey>
-    <!-- Subclasses that add fields should override "equals" -->
-    <sonar.issue.ignore.multicriteria.2160.ruleKey>squid:S2160</sonar.issue.ignore.multicriteria.2160.ruleKey>
-    <sonar.issue.ignore.multicriteria.2160.resourceKey>src/main/java/gdv/xport/**/*satz*.java</sonar.issue.ignore.multicriteria.2160.resourceKey>
-    <!-- "clone" should not be overridden -->
-    <sonar.issue.ignore.multicriteria.2975.ruleKey>squid:S2975</sonar.issue.ignore.multicriteria.2975.ruleKey>
-    <sonar.issue.ignore.multicriteria.2975.resourceKey>src/main/java/gdv/xport/**/*satz*.java</sonar.issue.ignore.multicriteria.2975.resourceKey>
-    <!-- ignore violations -->
-    <sonar.issue.ignore.multicriteria>1,2,3,4,1118,2160,2975</sonar.issue.ignore.multicriteria>
 
   </properties>
 
@@ -183,7 +158,7 @@
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.5</version>
+          <version>0.8.6</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -199,7 +174,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.0.0-M2</version>
+        <version>3.0.0-M3</version>
         <executions>
           <execution>
             <id>enforce-versions</id>
@@ -492,30 +467,25 @@
       <!-- for REST API Doc -->
       <dependency>
         <groupId>io.springfox</groupId>
-        <artifactId>springfox-swagger2</artifactId>
-        <version>2.9.2</version>
-      </dependency>
-      <dependency>
-        <groupId>io.springfox</groupId>
-        <artifactId>springfox-swagger-ui</artifactId>
-        <version>2.9.2</version>
+        <artifactId>springfox-boot-starter</artifactId>
+        <version>3.0.0</version>
       </dependency>
 
       <!-- Thymeleaf + WebJars (see https://igorski.co/java/spring-boot/layout-dialect-spring-boot-2/) -->
       <dependency>
         <groupId>nz.net.ultraq.thymeleaf</groupId>
         <artifactId>thymeleaf-layout-dialect</artifactId>
-        <version>2.4.1</version>
+        <version>2.5.2</version>
       </dependency>
       <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>bootstrap</artifactId>
-        <version>4.3.1</version>
+        <version>4.5.3</version>
       </dependency>
       <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>jquery</artifactId>
-        <version>3.4.1</version>
+        <version>3.5.1</version>
       </dependency>
 
       <!-- Object Validation Framework (OVal) -->
@@ -527,14 +497,14 @@
       <dependency>
         <groupId>de.jfachwert</groupId>
         <artifactId>jfachwert</artifactId>
-        <version>2.3.0</version>
+        <version>3.0.0</version>
       </dependency>
 
       <!-- for JsonFormatter -->
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>2.10.0.pr1</version>
+        <version>2.11.4</version>
         <optional>true</optional>
       </dependency>
 
