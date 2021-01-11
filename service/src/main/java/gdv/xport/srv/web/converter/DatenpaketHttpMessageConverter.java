@@ -54,7 +54,6 @@ public final class DatenpaketHttpMessageConverter extends AbstractHttpMessageCon
             case MediaType.APPLICATION_XML_VALUE:
                 return new XmlFormatter();
             case MediaType.APPLICATION_JSON_VALUE:
-            case MediaType.APPLICATION_JSON_UTF8_VALUE:
                 return new JsonFormatter();
             case AppConfig.TEXT_CSV:
                 return new CsvFormatter();
@@ -71,7 +70,7 @@ public final class DatenpaketHttpMessageConverter extends AbstractHttpMessageCon
 
     @Override
     protected Datenpaket readInternal(Class<? extends Datenpaket> aClass, HttpInputMessage httpInputMessage)
-            throws IOException, HttpMessageNotReadableException {
+            throws HttpMessageNotReadableException {
         LOG.info("Reading internal {}...", aClass);
         throw new UnsupportedOperationException("not yet implemented");
     }

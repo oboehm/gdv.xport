@@ -18,6 +18,7 @@
 package gdv.xport.srv.web;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.srv.config.AppConfig;
 import gdv.xport.srv.service.DatenpaketService;
 import gdv.xport.srv.service.DefaultDatenpaketService;
 import gdv.xport.util.URLReader;
@@ -55,7 +56,7 @@ import static gdv.xport.srv.config.AppConfig.TEXT_CSV;
  * @author <a href="ob@aosd.de">oliver</a>
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public final class DatenpaketController {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketController.class);
@@ -70,7 +71,7 @@ public final class DatenpaketController {
      * @return gefundene Abweichungen bzw. Validierungs-Fehler
      */
     @ApiOperation(value = "validiert die uebergebene URI und gibt die gefundenen Abweichungen zurueck")
-    @GetMapping("/Abweichungen")
+    @GetMapping("/v1/Abweichungen")
     public @ResponseBody List<Model> validate(
             @ApiParam(value = "z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri) {
         try {
@@ -91,7 +92,7 @@ public final class DatenpaketController {
      * @return gefundene Abweichungen bzw. Validierungs-Fehler
      */
     @ApiOperation(value = "validiert den uebergebene Text im GDV-Format und gibt die gefundenen Abweichungen zurueck")
-    @PostMapping("/Abweichungen")
+    @PostMapping("/v1/Abweichungen")
     public @ResponseBody
     List<Model> validate(
             @ApiParam(value = "Datenpaket im GDV-Format") @RequestBody(required = false) String body,
@@ -109,7 +110,7 @@ public final class DatenpaketController {
      * @return gefundene Abweichungen bzw. Validierungs-Fehler
      */
     @ApiOperation("dient zur Validierung einer Datei im GDV-Format")
-    @PostMapping("/Abweichungen/uploaded")
+    @PostMapping("/v1/Abweichungen/uploaded")
     public @ResponseBody List<Model> validate(@RequestParam("file") MultipartFile file) {
         try {
             String text = readFrom(file);
@@ -146,30 +147,30 @@ public final class DatenpaketController {
             " Der Stern '*' in /Datenpaket* steht dabei fuer ein beliebiges Muster." +
             " So kann z.B. auch /Datenpaket.csv als URI angegeben werden." +
             " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser.")
-    @GetMapping(path = "/Datenpaket*")
+    @GetMapping(path = "/v1/Datenpaket*")
     public @ResponseBody String importDatenpaket(
             @ApiParam(value = "URI, die auf einen Datensatz verweist",
                     example = "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri,
             @ApiParam(value = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
                     " normalerweise wird das Format ueber den Accept-Header vorgegeben, kann aber hierueber explizit gesetzt werden.",
                     example = "JSON") @RequestParam(required = false) String format,
-            HttpServletRequest request)
-            throws IOException {
+            HttpServletRequest request) throws IOException {
         String content = readFrom(uri);
         return formatDatenpaket(content, format, request);
     }
+
     @ApiOperation(value = "Liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck." +
             " Der Stern '*' in /Datenpaket* steht dabei fuer ein beliebiges Muster." +
             " So kann z.B. auch /Datenpaket.csv als URI angegeben werden." +
-            " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser.")
-    @GetMapping(path = "/2Datenpaket*")
-    public @ResponseBody Datenpaket importDatenpaket2(
+            " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser." +
+            " Im Gegensatz zu v1 wird hier das Format nicht ueber den format-Parameter bestimmt," +
+            " sondern ueber den Content-Type (Content-Negotiation).")
+    @GetMapping(path = "/v2/Datenpaket*",
+            produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE, MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE, AppConfig.TEXT_CSV, MediaType.TEXT_PLAIN_VALUE})
+    public @ResponseBody Datenpaket importDatenpaketV2(
             @ApiParam(value = "URI, die auf einen Datensatz verweist",
-                    example = "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri,
-            @ApiParam(value = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
-                    " normalerweise wird das Format ueber den Accept-Header vorgegeben, kann aber hierueber explizit gesetzt werden.",
-                    example = "JSON") @RequestParam(required = false) String format,
-            HttpServletRequest request)
+                    example = "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri)
             throws IOException {
         String content = readFrom(uri);
         return service.importDatenpaket(content);
@@ -200,7 +201,7 @@ public final class DatenpaketController {
             " So kann z.B. auch /Datenpaket.csv als URI angegeben werden." +
             " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser.")
     @PostMapping(
-            path = "/Datenpaket*", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
+            path = "/v1/Datenpaket*", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
     public @ResponseBody String importDatenpaket(
@@ -229,7 +230,7 @@ public final class DatenpaketController {
      * @throws IOException the io exception
      */
     @ApiOperation("dient zum Laden und Anzeigen einer Datei im GDV-Format")
-    @PostMapping("/Datenpaket/uploaded")
+    @PostMapping("/v1/Datenpaket/uploaded")
     public @ResponseBody Datenpaket uploadDatenpaket (
             @RequestParam("file") MultipartFile file) throws IOException {
         String text = readFrom(file);

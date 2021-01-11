@@ -26,11 +26,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import patterntesting.runtime.log.LogWatch;
 
 import java.net.URI;
+import java.util.Arrays;
 
 /**
  * In AbstractControllerIT sind einige Gemeinsamkeiter der verschiedenen
@@ -63,15 +64,18 @@ public abstract class AbstractControllerIT {
     /**
      * Baut die URL zusammen und ruft den Service als GET-Request auf.
      *
-     * @param <T>  Typ-Parameter
-     * @param path Context-Pfad der URL
-     * @param type Typ der erwarteten Antwort
+     * @param <T>        Typ-Parameter
+     * @param path       Context-Pfad der URL
+     * @param type       Typ der erwarteten Antwort
+     * @param mediaTypes Content-Types
      * @return Antwort des abgesendeten Requests
      */
-    protected <T> ResponseEntity<T> getResponseEntityFor(String path, Class<T> type) {
+    protected <T> ResponseEntity<T> getResponseEntityFor(String path, Class<T> type, MediaType... mediaTypes) {
         LogWatch watch = new LogWatch();
         LOG.info("Requesting {}{}...", baseURI, path);
-        ResponseEntity<T> response = template.getForEntity(baseURI.toString() + path, type);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(mediaTypes));
+        ResponseEntity<T> response = template.exchange(baseURI.toString() + path, HttpMethod.GET, new HttpEntity<>(headers), type);
         LOG.info("Requesting {}{} successful finished with {} after {}.", baseURI, path, response, watch);
         return response;
     }
