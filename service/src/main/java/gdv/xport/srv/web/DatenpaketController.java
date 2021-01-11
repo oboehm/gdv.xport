@@ -158,6 +158,22 @@ public final class DatenpaketController {
         String content = readFrom(uri);
         return formatDatenpaket(content, format, request);
     }
+    @ApiOperation(value = "Liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck." +
+            " Der Stern '*' in /Datenpaket* steht dabei fuer ein beliebiges Muster." +
+            " So kann z.B. auch /Datenpaket.csv als URI angegeben werden." +
+            " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser.")
+    @GetMapping(path = "/2Datenpaket*")
+    public @ResponseBody Datenpaket importDatenpaket2(
+            @ApiParam(value = "URI, die auf einen Datensatz verweist",
+                    example = "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri,
+            @ApiParam(value = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
+                    " normalerweise wird das Format ueber den Accept-Header vorgegeben, kann aber hierueber explizit gesetzt werden.",
+                    example = "JSON") @RequestParam(required = false) String format,
+            HttpServletRequest request)
+            throws IOException {
+        String content = readFrom(uri);
+        return service.importDatenpaket(content);
+    }
 
     private static String readFrom(@RequestParam("uri") URI uri) throws IOException {
         LogWatch watch = new LogWatch();

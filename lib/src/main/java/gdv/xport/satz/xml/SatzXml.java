@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.xml;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.Zeichen;
@@ -235,68 +236,17 @@ public class SatzXml extends Datensatz {
     }
 
     /**
-   * Liefert eine Liste der unterstuetzten Satz-Typen. Dies ist vor allem fuer
-   * Satz 220 Sparte 10 von Bedeutung, die verschienden Wagnisarten
-   * unterstuetzen koennen.
-   *
-   * @return the supported satz typen
-   */
-  public List<SatzTyp> getSupportedSatzTypen() {
-    List<SatzTyp> satzTypen = new ArrayList<>();
-    satzTypen.add(SatzTyp.of(this.getGdvSatzartName()));
-
-    // if (this.hasWagnisart() && this.hasSparte() && this.getSparte() == 10)
-    // {
-    // TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(1);
-    // FeldReferenz feldReferenz = tdsXml.getFeldRefenz((Bezeichner.WAGNISART));
-    // for (String value : feldReferenz.getDefaultWerte())
-    // {
-    // satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), Integer
-    // .parseInt(value)));
-    // }
-    // }
-    // else if (this.hasKrankenFolgeNr())
-    // {
-    // TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(1);
-    // FeldReferenz feldReferenz = this.hasFeld(
-    // Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
-    // ? tdsXml.getFeldRefenz(
-    // Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)
-    // : tdsXml.getFeldRefenz(
-    // Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF);
-    // if (feldReferenz.getBemerkung()
-    // .contains("mit \"1\" belegt"))
-    // {
-    // satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), -1, 1,
-    // -1));
-    // }
-    // else if (feldReferenz.getBemerkung()
-    // .contains("mit \"2\" belegt"))
-    // {
-    // satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), -1, 2,
-    // -1));
-    // }
-    // else if (feldReferenz.getBemerkung()
-    // .contains("mit \"3\" belegt"))
-    // {
-    // satzTypen.add(new SatzTyp(this.getSatzart(), this.getSparte(), -1, 3,
-    // -1));
-    // }
-    // else
-    // {
-    // LOG.error(
-    // "Expected Folge-Nr. Bemerkung containing 'mit \"X\"X belegt' for Satzart
-    // 220, Sparte 20, Feld 10 with X being 1, 2 or 3, but got "
-    // + feldReferenz.getBemerkung());
-    // satzTypen.add(this.getSatzTyp());
-    // }
-    // }
-    // else
-    // {
-    // satzTypen.add(this.getSatzTyp());
-    // }
-
-    return satzTypen;
-  }
+     * Liefert eine Liste der unterstuetzten Satz-Typen. Dies ist vor allem fuer
+     * Satz 220 Sparte 10 von Bedeutung, die verschienden Wagnisarten
+     * unterstuetzen koennen.
+     *
+     * @return the supported satz typen
+     */
+    @JsonIgnore
+    public List<SatzTyp> getSupportedSatzTypen() {
+        List<SatzTyp> satzTypen = new ArrayList<>();
+        satzTypen.add(SatzTyp.of(this.getGdvSatzartName()));
+        return satzTypen;
+    }
 
 }

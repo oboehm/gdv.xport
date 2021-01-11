@@ -111,10 +111,20 @@ public final class DefaultDatenpaketService implements DatenpaketService {
      */
     @Override
     public String format(String text, MimeType mimeType) {
+        Datenpaket datenpaket = importDatenpaket(text);
+        try {
+            return format(datenpaket, mimeType);
+        } catch (IOException ioe) {
+            throw new IllegalArgumentException("strange input '" + text + "'", ioe);
+        }
+    }
+
+    @Override
+    public Datenpaket importDatenpaket(String text) {
         Datenpaket datenpaket = new Datenpaket();
         try {
             datenpaket.importFrom(text);
-            return format(datenpaket, mimeType);
+            return datenpaket;
         } catch (IOException ioe) {
             throw new IllegalArgumentException("strange input '" + text + "'", ioe);
         }

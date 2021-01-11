@@ -18,6 +18,7 @@
 
 package gdv.xport.srv.service;
 
+import gdv.xport.Datenpaket;
 import org.springframework.ui.Model;
 import org.springframework.util.MimeType;
 
@@ -69,5 +70,14 @@ public interface DatenpaketService {
      * @return string formatiertes Datenpaket
      */
     String format(String text, MimeType type);
+
+    /**
+     * Importiert den Text als Datenpaket.
+     *
+     * @param text GDV-Datensaetze
+     * @return importiertes Datenpaket
+     * @since 5.0
+     */
+    Datenpaket importDatenpaket(String text);
 
 }
