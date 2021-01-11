@@ -20,6 +20,8 @@ package gdv.xport.srv.web;
 import gdv.xport.*;
 import gdv.xport.config.*;
 import org.apache.logging.log4j.*;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.*;
 import org.junit.runner.*;
 import org.springframework.http.*;
@@ -30,7 +32,11 @@ import org.springframework.util.*;
 import java.io.*;
 import java.net.*;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.Matchers.emptyString;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.*;
 
 /**
@@ -57,7 +63,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     public void testValidateURI() {
         ResponseEntity<String> response = getResponseEntityFor(
                 "/api/v1/Abweichungen?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt", String.class);
-        assertThat(response.getBody(), equalTo("[]"));
+        MatcherAssert.assertThat(response.getBody(), equalTo("[]"));
     }
 
     /**
@@ -69,7 +75,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testValidatePost() throws IOException {
         String response = callRestWithDummyDatenpaket("/api/v1/Abweichungen");
-        assertThat(response, containsString("VU-Nummer is not set"));
+        MatcherAssert.assertThat(response, containsString("VU-Nummer is not set"));
     }
 
     /**
@@ -81,7 +87,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testFormat() throws IOException {
         String response = callRestWithDummyDatenpaket("/api/v1/format");
-        assertThat(response, not(isEmptyString()));
+        MatcherAssert.assertThat(response, not(emptyString()));
     }
 
     /**
@@ -92,7 +98,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testDatenpaketAsHtml() throws IOException {
         String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket.html");
-        assertThat(response, containsString("<html"));
+        MatcherAssert.assertThat(response, containsString("<html"));
     }
 
     /**
@@ -109,7 +115,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         ResponseEntity<String> response = getResponseEntityFor(
                 "/api/v1/Datenpaket.csv?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
                 String.class);
-        assertThat(response.getBody(), containsString(";"));
+        MatcherAssert.assertThat(response.getBody(), containsString(";"));
     }
 
     /**
@@ -143,8 +149,8 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     private void checkMalformedURL(String format) {
         ResponseEntity<String> response =
                 getResponseEntityFor("/api/v1/Datenpaket." + format + "?uri=xxx:gibts.net", String.class);
-        assertThat(response.getBody().toLowerCase(), containsString("status"));
-        assertThat(response.getBody(), not(containsString("500")));
+        MatcherAssert.assertThat(response.getBody().toLowerCase(), containsString("status"));
+        MatcherAssert.assertThat(response.getBody(), not(containsString("500")));
     }
 
     /**
@@ -163,7 +169,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         IllegalArgumentException cause = new IllegalArgumentException("test accepted");
         DatenpaketController controller = new DatenpaketController();
         ErrorDetail response = controller.handleException(request, cause);
-        assertThat(response.getStatus(), is(HttpStatus.BAD_REQUEST));
+        MatcherAssert.assertThat(response.getStatus(), Matchers.is(HttpStatus.BAD_REQUEST));
     }
 
     /**
@@ -186,7 +192,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testGetDatenpaketAsXML() throws IOException {
         String response = checkGetDatenpaketAs(".xml");
-        assertThat(response, containsString("<"));
+        MatcherAssert.assertThat(response, containsString("<"));
     }
 
     /**
@@ -198,13 +204,13 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     @Test
     public void testGetDatenpaketAsCSV() throws IOException {
         String response = checkGetDatenpaketAs(".csv");
-        assertThat(response, containsString(";"));
+        MatcherAssert.assertThat(response, containsString(";"));
     }
 
     private String checkGetDatenpaketAs(String suffix) throws IOException {
         String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket" + suffix);
-        assertThat(response, not(isEmptyString()));
-        assertThat(response, not(containsString("error")));
+        MatcherAssert.assertThat(response, not(emptyString()));
+        MatcherAssert.assertThat(response, not(containsString("error")));
         return response;
     }
 
@@ -212,8 +218,8 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         String text = createDummyDatenpaketText();
         String response = postResponseObjectFor(path, text, String.class);
         LOG.info("Response of '{}' is '{}'.", path, response);
-        assertThat(response, not(containsString("Internal Server Error")));
-        assertThat(response, notNullValue());
+        MatcherAssert.assertThat(response, not(containsString("Internal Server Error")));
+        MatcherAssert.assertThat(response, notNullValue());
         return response;
     }
 
@@ -238,7 +244,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         HttpEntity<Object> requestEntity = createPostRequestWithAcceptHeader();
         URI uri = URI.create(baseURI.toString() + "/api/v1/Datenpaket");
         ResponseEntity<String> response = template.exchange(uri, HttpMethod.POST, requestEntity, String.class);
-        assertThat(response.getBody(), containsString("<"));
+        MatcherAssert.assertThat(response.getBody(), containsString("<"));
     }
 
     private static HttpEntity<Object> createPostRequestWithAcceptHeader() throws IOException {
@@ -258,7 +264,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
                 String.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         String json = response.getBody().trim();
-        assertThat(json, startsWith("{"));
+        MatcherAssert.assertThat(json, startsWith("{"));
     }
 
 }

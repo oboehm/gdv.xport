@@ -259,6 +259,9 @@
               <name>patterntesting.integrationTest</name>
               <value>true</value>
             </property>
+            <includes>
+              <include>**/*IT.java</include>
+            </includes>
           </systemProperties>
         </configuration>
         <executions>
