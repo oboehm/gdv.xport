@@ -68,17 +68,26 @@ public final class LogInterceptor extends HandlerInterceptorAdapter {
         if (ex == null) {
             logAccess("->", request, response);
         } else {
-            LOG.error("{} ** \"{} {} {}\":", request.getRemoteHost(), request.getMethod(),
-                    getRequestURIwithParams(request), request.getProtocol(), ex);
+            LOG.error("{} ** \"{} {} {}\" {}:", request.getRemoteHost(), request.getMethod(), request.getRequestURI(),
+                    request.getProtocol(), response.getStatus(), ex);
         }
     }
 
     private static void logAccess(String prefix, HttpServletRequest request, HttpServletResponse response) {
         int status = response.getStatus();
-        Level level = (status < 400) ? Level.INFO : Level.WARN;
-        LOG.log(level, "{} {} \"{} {} {}\" {} {} \"{}\"", request.getRemoteHost(), prefix, request.getMethod(),
-                getRequestURIwithParams(request), request.getProtocol(), status, request.getContentLength(),
-                request.getHeader("user-agent"));
+        if (status >= 500) {
+            LOG.error("{} {} \"{} {} {}\" {} {} {} {} {}", request.getRemoteHost(), prefix, request.getMethod(),
+                    getRequestURIwithParams(request), request.getProtocol(), status, request.getContentLength(),
+                    getHeader(request, "Content-Type"), getHeader(request, "accept"), getHeader(request, "user-agent"));
+        } else if (status >= 400) {
+            LOG.warn("{} {} \"{} {} {}\" {} {} {} {} {}", request.getRemoteHost(), prefix, request.getMethod(),
+                    getRequestURIwithParams(request), request.getProtocol(), status, request.getContentLength(),
+                    getHeader(request, "Content-Type"), getHeader(request, "accept"), getHeader(request, "user-agent"));
+        } else {
+            LOG.info("{} {} \"{} {} {}\" {} {} {} {} {}", request.getRemoteHost(), prefix, request.getMethod(),
+                    getRequestURIwithParams(request), request.getProtocol(), status, request.getContentLength(),
+                    getHeader(request, "Content-Type"), getHeader(request, "accept"), getHeader(request, "user-agent"));
+        }
     }
 
     private static String getRequestURIwithParams(HttpServletRequest request) {
@@ -109,6 +118,10 @@ public final class LogInterceptor extends HandlerInterceptorAdapter {
         }
         buf.setCharAt(0, '?');
         return buf.toString();
+    }
+
+    private static String getHeader(HttpServletRequest request, String name) {
+        return name + "=\"" + request.getHeader(name) + '"';
     }
 
 }
