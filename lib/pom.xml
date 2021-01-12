@@ -125,8 +125,18 @@
           </systemProperties>
         </configuration>
       </plugin>
-      
-  	</plugins>
+
+      <!-- 'mvn clirr:clirr' liefert die inkompatiblen API-Changes -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>clirr-maven-plugin</artifactId>
+        <configuration>
+          <!-- Compare the current code against last release -->
+          <comparisonVersion>4.2.0</comparisonVersion>
+        </configuration>
+      </plugin>
+
+    </plugins>
   	
   </build>
 
@@ -252,7 +262,27 @@
     gdv-xport-lib ist die Java-Bibliothek fuer den Umgang mit dem GDV-Format.
     Sie erleichtert den Export und Export dieses Datenformats.
   </description>
-  
+
+
+
+  <profiles>
+    <profile>
+      <id>compatibility</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>clirr-maven-plugin</artifactId>
+            <version>2.8</version>
+            <configuration>
+              <!-- Compare the current code against version 1.2 -->
+              <comparisonVersion>4.2.0</comparisonVersion>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
   
 
 </project>
