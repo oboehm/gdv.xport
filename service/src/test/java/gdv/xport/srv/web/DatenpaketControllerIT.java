@@ -102,6 +102,12 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         MatcherAssert.assertThat(response, containsString("<html"));
     }
 
+    @Test
+    public void testDatenpaketV2() throws IOException {
+        String response = callRestWithDummyDatenpaket("/api/v2/Datenpaket", MediaType.TEXT_HTML);
+        MatcherAssert.assertThat(response, containsString("<html"));
+    }
+
     /**
      * Hier schicken wir eine URI und erwarten als Antwort CSV-Datei. Aus
      * folgenden Gruenden kann dieser Tes fehlschlagen:
@@ -215,9 +221,9 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
         return response;
     }
 
-    private String callRestWithDummyDatenpaket(String path) throws IOException {
+    private String callRestWithDummyDatenpaket(String path, MediaType... mediaTypes) throws IOException {
         String text = createDummyDatenpaketText();
-        String response = postResponseObjectFor(path, text, String.class);
+        String response = postResponseObjectFor(path, text, String.class, mediaTypes);
         LOG.info("Response of '{}' is '{}'.", path, response);
         MatcherAssert.assertThat(response, not(containsString("Internal Server Error")));
         MatcherAssert.assertThat(response, notNullValue());
