@@ -29,9 +29,12 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import patterntesting.runtime.log.LogWatch;
+import springfox.documentation.service.MediaTypes;
 
 import java.net.URI;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * In AbstractControllerIT sind einige Gemeinsamkeiter der verschiedenen
@@ -71,29 +74,36 @@ public abstract class AbstractControllerIT {
      * @return Antwort des abgesendeten Requests
      */
     protected <T> ResponseEntity<T> getResponseEntityFor(String path, Class<T> type, MediaType... mediaTypes) {
-        LogWatch watch = new LogWatch();
-        LOG.info("Requesting {}{}...", baseURI, path);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(mediaTypes));
-        ResponseEntity<T> response = template.exchange(baseURI.toString() + path, HttpMethod.GET, new HttpEntity<>(headers), type);
-        LOG.info("Requesting {}{} successful finished with {} after {}.", baseURI, path, response, watch);
-        return response;
+        return exchangeResponseEntity(HttpMethod.GET, path, null, type, mediaTypes);
     }
 
     /**
      * Baut die URL zusammen und ruft den Service als POST-Request auf.
      *
-     * @param <T>  Typ-Parameter
-     * @param path Context-Pfad der URL
-     * @param text Text
-     * @param type Typ der erwarteten Antwort
+     * @param <T>        Typ-Parameter
+     * @param path       Context-Pfad der URL
+     * @param text       Text
+     * @param type       Typ der erwarteten Antwort
+     * @param mediaTypes Content-Types
      * @return Antwort des abgesendeten Requests
      */
-    protected <T> T postResponseObjectFor(String path, String text, Class<T> type) {
+    protected <T> T postResponseObjectFor(String path, T text, Class<T> type, MediaType... mediaTypes) {
+        ResponseEntity<T> response = exchangeResponseEntity(HttpMethod.POST, path, text, type, mediaTypes);
+        return response.getBody();
+    }
+
+    private <T> ResponseEntity<T> exchangeResponseEntity(HttpMethod method, String path, T text, Class<T> type, MediaType[] mediaTypes) {
         LogWatch watch = new LogWatch();
-        LOG.info("Requesting {}{} with {} characters...", baseURI, path, StringUtils.length(text));
-        T response = template.postForObject(baseURI.toString() + path, text, type);
-        LOG.info("Requesting {}{} successful finished with {} after {}.", baseURI, path, response, watch);
+        LOG.info("Requesting {}{}...", baseURI, path);
+        HttpHeaders headers = new HttpHeaders();
+        if (mediaTypes.length > 0) {
+            headers.setAccept(Arrays.asList(mediaTypes));
+        } else {
+            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        }
+        ResponseEntity<T> response =
+                template.exchange(baseURI.toString() + path, method, new HttpEntity<>(text, headers), type);
+        LOG.info("{}} {}{} successful finished with {} after {}.", method, baseURI, path, response, watch);
         return response;
     }
 

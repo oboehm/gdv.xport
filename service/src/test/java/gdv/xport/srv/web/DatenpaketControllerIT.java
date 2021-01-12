@@ -87,7 +87,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      */
     @Test
     public void testFormat() throws IOException {
-        String response = callRestWithDummyDatenpaket("/api/v1/format");
+        String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket");
         MatcherAssert.assertThat(response, not(emptyString()));
     }
 

@@ -18,6 +18,7 @@
 
 package gdv.xport.srv.web;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 
@@ -37,7 +38,7 @@ public final class IndexControllerIT extends AbstractControllerIT{
     @Test
     public void testIndexHtml() {
         ResponseEntity<String> response = getResponseEntityFor("/", String.class);
-        assertThat(response.getBody(), containsString("<title>"));
+        MatcherAssert.assertThat(response.getBody(), containsString("<title>"));
     }
 
 }
