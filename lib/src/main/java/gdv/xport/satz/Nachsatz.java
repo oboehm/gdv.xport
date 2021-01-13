@@ -146,6 +146,17 @@ public final class Nachsatz extends Satz {
      * Setzt den Gesamtbeitrag.
      *
      * @param beitrag der neue Gesamtbeitrag
+     * @deprecated durch {@link #setGesamtBeitrag(BigDecimal)} abgeloest
+     */
+    @Deprecated
+    public void setGesamtBeitrag(final double beitrag) {
+        this.setGesamtBeitrag(BigDecimal.valueOf(beitrag));
+    }
+
+    /**
+     * Setzt den Gesamtbeitrag.
+     *
+     * @param beitrag der neue Gesamtbeitrag
      * @since 5.0
      */
     public void setGesamtBeitrag(final BigDecimal beitrag) {

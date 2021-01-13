@@ -86,19 +86,21 @@ public final class Vorsatz extends Satz {
         super(1, other.cloneTeildatensaetze(), other.getSatzversion());
     }
 
-    private static String getVersionBezeichnung(final int art) {
+    private static Bezeichner getVersionBezeichner(final int art) {
         Formatter formatter = new Formatter();
         try  {
-            return formatter.format("Version Satzart %04d", art).toString();
+            String bezeichnung = formatter.format("Version Satzart %04d", art).toString();
+            return Bezeichner.of(bezeichnung);
         } finally {
             formatter.close();
         }
     }
 
-    private static String getVersionBezeichnung(final int art, final int sparte) {
+    private static Bezeichner getVersionBezeichner(final int art, final int sparte) {
         Formatter formatter = new Formatter();
         try  {
-            return formatter.format("Version Satzart %04d %03d", art, sparte).toString();
+            String bezeichnung = formatter.format("Version Satzart %04d %03d", art, sparte).toString();
+            return Bezeichner.of(bezeichnung);
         } finally {
             formatter.close();
         }
@@ -269,7 +271,7 @@ public final class Vorsatz extends Satz {
      * @return z.B. 1.1
      */
     public String getVersion(final int art) {
-        return this.getVersion(getVersionBezeichnung(art));
+        return this.getVersion(getVersionBezeichner(art));
     }
 
     /**
@@ -278,7 +280,7 @@ public final class Vorsatz extends Satz {
      * @return z.B. 1.1
      */
     public String getVersion(final int art, final int sparte) {
-        return this.getVersion(getVersionBezeichnung(art, sparte));
+        return this.getVersion(getVersionBezeichner(art, sparte));
     }
 
     /**
@@ -297,13 +299,8 @@ public final class Vorsatz extends Satz {
      * Setzen der Satzart-Version eines Datensatzes.
      *
      * @param satz der Satz
-     * @return <code>true</code> wenn im Vorsatz Version gesetzt wurde,
-     * <code>false</code> wenn Satzart im Vorsatz unbekannt
-     *
-     * TODO: Setter sollten keinen Rückgabewert besitzen - lieber IllegalArgumentException werfen
      */
-    public boolean setVersion(Satz satz) {
-        boolean bReturn = false;
+    public void setVersion(Satz satz) {
         StringBuilder buf = new StringBuilder();
         String[] parts = StringUtils.split(satz.getSatzTyp()
                 .toString(), '.');
@@ -319,23 +316,17 @@ public final class Vorsatz extends Satz {
         if (this.hasFeld(bezeichner)) {
             this.set(bezeichner, satz.getSatzversion()
                     .getInhalt());
-            bReturn = true;
+        } else {
+            throw new IllegalArgumentException("Version Satzart " + bezeichner + " unbekannt");
         }
-
-        return bReturn;
     }
 
     /**
      * Setzen der Satzart-Version eines SatzTyps.
      *
      * @param satzTyp der Satztyp
-     * @return <code>true</code> wenn im Vorsatz Version gesetzt wurde,
-     * <code>false</code> wenn Satzart zum SatzTyp im Vorsatz unbekannt
-     *
-     * TODO: Setter sollten keinen Rückgabewert besitzen - lieber IllegalArgumentException werfen
      */
-    public boolean setVersion(SatzTyp satzTyp) {
-        boolean bReturn = false;
+    public void setVersion(SatzTyp satzTyp) {
         StringBuilder buf = new StringBuilder();
         String[] parts = StringUtils.split(satzTyp.toString(), '.');
 
@@ -351,13 +342,60 @@ public final class Vorsatz extends Satz {
             this.set(bezeichner, SatzFactory.getDatensatz(satzTyp)
                     .getSatzversion()
                     .getInhalt());
-            bReturn = true;
+        } else {
+            throw new IllegalArgumentException("Version Satzart " + bezeichner + " unbekannt");
         }
-
-        return bReturn;
     }
 
+    /**
+     * Setzen der Version.
+     *
+     * @param bezeichner Bezeichner
+     * @param version    z.B. "1.2"
+     * @since 4.1.1
+     */
+    public void setVersion(Bezeichner bezeichner, String version) {
+        this.getFeld(bezeichner).setInhalt(version);
+    }
 
+    /**
+     * Setzen der Version.
+     * <p>
+     * TODO: wurde nur intern benoetigt und wird mit v5.2 entfernt
+     * </p>
+     *
+     * @param bezeichner Bezeichner
+     * @param version    z.B. "1.2"
+     * @since 4.1.1
+     * @deprecated durch {@link #setVersion(Bezeichner, String)} ersetzt
+     */
+    @Deprecated
+    public void setVersion(String bezeichner, String version) {
+        this.getFeld(bezeichner).setInhalt(version);
+    }
+
+    /**
+     * Setzen der Version.
+     *
+     * @param art     Satzart
+     * @param version z.B. "1.2"
+     * @since 4.1.1
+     */
+    public void setVersion(int art, String version) {
+        this.setVersion(getVersionBezeichner(art), version);
+    }
+
+    /**
+     * Setzen der Version.
+     *
+     * @param art     Satzart
+     * @param sparte  Sparte
+     * @param version z.B. "1.2"
+     * @since 4.1.1
+     */
+    public void setVersion(int art, int sparte, String version) {
+        this.setVersion(getVersionBezeichner(art, sparte), version);
+    }
 
     /**
      * Da im Feld "Erstellungs-Datum Zeitraum vom- Zeitraum bis" (Adresse 70-85)

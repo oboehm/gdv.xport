@@ -1335,12 +1335,16 @@ public final class Bezeichner {
     @Deprecated
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_4 = WAEHRUNGSSCHLUESSEL4;
     public static final Bezeichner WAGNIS = new Bezeichner("Wagnis");
-  // public static final Bezeichner WAGNIS2 = WAGNIS;
+    /** @deprecated bitte {@link #WAGNIS} benutzen. */
+    public static final Bezeichner WAGNIS2 = WAGNIS;
     public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart");
     public static final Bezeichner WAGNISART_HAFTPFLICHT = new Bezeichner("WagnisartHaftpflicht");
-  // public static final Bezeichner WAGNISART2 = WAGNISART;
-  // public static final Bezeichner WAGNISART3 = WAGNISART;
-  // public static final Bezeichner WAGNISART4 = WAGNISART;
+    /** @deprecated bitte {@link #WAGNISART} benutzen. */
+    public static final Bezeichner WAGNISART2 = WAGNISART;
+    /** @deprecated bitte {@link #WAGNISART} benutzen. */
+    public static final Bezeichner WAGNISART3 = WAGNISART;
+    /** @deprecated bitte {@link #WAGNISART} benutzen. */
+    public static final Bezeichner WAGNISART4 = WAGNISART;
     public static final Bezeichner WAGNISBESCHREIBUNG = new Bezeichner("Wagnisbeschreibung");
     public static final Bezeichner WAGNISKENNZIFFER = new Bezeichner("Wagniskennziffer", "WKZ");
     public static final Bezeichner WAGNISMENGE = new Bezeichner("Wagnismenge");
