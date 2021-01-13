@@ -50,7 +50,7 @@ import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM;
 public final class Vorsatz extends Satz {
 
     private static final Logger LOG = LogManager.getLogger(Vorsatz.class);
-    private static Datensatz satz0001 = SatzFactory.getDatensatz(SatzTyp.of(
+    private static final Datensatz satz0001 = SatzFactory.getDatensatz(SatzTyp.of(
             "0001"));
 
     /**
@@ -87,22 +87,16 @@ public final class Vorsatz extends Satz {
     }
 
     private static Bezeichner getVersionBezeichner(final int art) {
-        Formatter formatter = new Formatter();
-        try  {
+        try (Formatter formatter = new Formatter()) {
             String bezeichnung = formatter.format("Version Satzart %04d", art).toString();
             return Bezeichner.of(bezeichnung);
-        } finally {
-            formatter.close();
         }
     }
 
     private static Bezeichner getVersionBezeichner(final int art, final int sparte) {
-        Formatter formatter = new Formatter();
-        try  {
+        try (Formatter formatter = new Formatter()) {
             String bezeichnung = formatter.format("Version Satzart %04d %03d", art, sparte).toString();
             return Bezeichner.of(bezeichnung);
-        } finally {
-            formatter.close();
         }
     }
 
@@ -317,7 +311,7 @@ public final class Vorsatz extends Satz {
             this.set(bezeichner, satz.getSatzversion()
                     .getInhalt());
         } else {
-            throw new IllegalArgumentException("Version Satzart " + bezeichner + " unbekannt");
+            LOG.warn("Version Satzart {} ist im Vorsatz unbekannt.", satz.getSatzTyp());
         }
     }
 
