@@ -48,7 +48,7 @@ public class XmlService {
     private final Map<String, FeldXml> felder = new HashMap<>();
 
     /**
-     * Liefert einen Service anhand des Standard-XML-Handbuchs von 2013.
+     * Liefert einen Service anhand des Standard-XML-Handbuchs von 2018.
      *
      * @return der frisch instantiierte XmlService
      */

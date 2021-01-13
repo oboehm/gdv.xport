@@ -28,6 +28,7 @@ import gdv.xport.satz.xml.XmlService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -47,13 +48,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class XmlSatzFactory {
 
     private static final Logger LOG = LogManager.getLogger(XmlSatzFactory.class);
-    private final Map<SatzTyp, Class<? extends Satz>> REGISTERED_SATZ_CLASSES =
-            new ConcurrentHashMap<>();
-    private final Map<SatzTyp, Class<? extends Datensatz>> REGISTERED_DATENSATZ_CLASSES =
-            new ConcurrentHashMap<>();
-    private final Map<SatzTyp, Class<? extends Enum>> REGISTERED_ENUM_CLASSES =
-            new ConcurrentHashMap<>();
-    private final XmlService XML_SERVICE = XmlService.getInstance();
+    private final Map<SatzTyp, Class<? extends Satz>> registeredSatzClasses = new ConcurrentHashMap<>();
+    private final Map<SatzTyp, Class<? extends Datensatz>> registeredDatensatzClasses = new ConcurrentHashMap<>();
+    private final Map<SatzTyp, Class<? extends Enum>> registeredEnumClasses = new ConcurrentHashMap<>();
+    private final XmlService xmlService;
 
     {
         registerDefault();
@@ -64,7 +62,8 @@ public class XmlSatzFactory {
         registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, SatzTyp.of("0221.051"));
     }
 
-    private XmlSatzFactory() {
+    private XmlSatzFactory(XmlService xmlService) {
+        this.xmlService = xmlService;
     }
 
     /**
@@ -74,7 +73,19 @@ public class XmlSatzFactory {
      * @return Factory auf Basis von VUVM2018.xml
      */
     public static XmlSatzFactory getInstance() {
-        return new XmlSatzFactory();
+        return new XmlSatzFactory(XmlService.getInstance());
+    }
+
+    /**
+     * Hierueber kann man sich die Default-Factory mit der gewuenschten
+     * XML-Beschreibung der GDV-Datensaetze holen.
+     *
+     * @param resource z.B. "VUVM2015.xml"
+     * @return Factory auf Basis der uebergebenen Resource
+     * @throws XMLStreamException the xml stream exception
+     */
+    public static XmlSatzFactory getInstance(final String resource) throws XMLStreamException {
+        return new XmlSatzFactory(XmlService.getInstance(resource));
     }
 
     /**
@@ -83,9 +94,9 @@ public class XmlSatzFactory {
      * Unterstuetzung der Unit-Tests eingefuehrt.
      */
     public void reset() {
-        REGISTERED_SATZ_CLASSES.clear();
-        REGISTERED_DATENSATZ_CLASSES.clear();
-        REGISTERED_ENUM_CLASSES.clear();
+        registeredSatzClasses.clear();
+        registeredDatensatzClasses.clear();
+        registeredEnumClasses.clear();
         registerDefault();
         LOG.debug("{} wurde zurueckgesetzt.", this);
     }
@@ -106,7 +117,7 @@ public class XmlSatzFactory {
         } catch (NoSuchMethodException ex) {
             throw new IllegalArgumentException("no default constructor found in " + clazz, ex);
         }
-        REGISTERED_SATZ_CLASSES.put(SatzTyp.of(satzart), clazz);
+        registeredSatzClasses.put(SatzTyp.of(satzart), clazz);
     }
 
     /**
@@ -117,12 +128,12 @@ public class XmlSatzFactory {
      * @param satzNr die SatzNummer (z.B. new SatzNummer(100))
      */
     public void registerEnum(final Class<? extends Enum> enumClass, final SatzTyp satzNr) {
-        if (REGISTERED_DATENSATZ_CLASSES.containsKey(satzNr)) {
-            LOG.info("Registered " + REGISTERED_DATENSATZ_CLASSES.get(satzNr) + " for " + satzNr
+        if (registeredDatensatzClasses.containsKey(satzNr)) {
+            LOG.info("Registered " + registeredDatensatzClasses.get(satzNr) + " for " + satzNr
                     + " will be replaced by " + enumClass);
-            REGISTERED_DATENSATZ_CLASSES.remove(satzNr);
+            registeredDatensatzClasses.remove(satzNr);
         }
-        REGISTERED_ENUM_CLASSES.put(satzNr, enumClass);
+        registeredEnumClasses.put(satzNr, enumClass);
     }
 
     /**
@@ -133,8 +144,8 @@ public class XmlSatzFactory {
      * @param typ SatzTyp bzw. Satzart
      */
     public void unregister(SatzTyp typ) {
-        REGISTERED_SATZ_CLASSES.remove(typ);
-        REGISTERED_ENUM_CLASSES.remove(typ);
+        registeredSatzClasses.remove(typ);
+        registeredEnumClasses.remove(typ);
     }
 
     /**
@@ -145,7 +156,7 @@ public class XmlSatzFactory {
      * @param satzNr the satz nr
      */
     public void register(final Class<? extends Datensatz> clazz, final SatzTyp satzNr) {
-        REGISTERED_DATENSATZ_CLASSES.put(satzNr, clazz);
+        registeredDatensatzClasses.put(satzNr, clazz);
     }
 
     /**
@@ -155,7 +166,7 @@ public class XmlSatzFactory {
      * @return angeforderter Satz
      */
     public Satz getSatz(final SatzTyp satztyp) {
-        Class<? extends Satz> clazz = REGISTERED_SATZ_CLASSES.get(new SatzTyp(satztyp.getSatzart()));
+        Class<? extends Satz> clazz = registeredSatzClasses.get(new SatzTyp(satztyp.getSatzart()));
         if (clazz == null) {
             return getSatzFromXmlService(satztyp);
         }
@@ -186,12 +197,12 @@ public class XmlSatzFactory {
 
     private Satz getSatzFromXmlService(SatzTyp satztyp) {
         try {
-            return XML_SERVICE.getSatzart(satztyp);
+            return xmlService.getSatzart(satztyp);
         } catch (NotRegisteredException ex) {
             LOG.debug("{} is not avalaible via XmlService.", satztyp);
             LOG.trace("Details:", ex);
             if (satztyp.hasParent()) {
-                SatzXml satz = XML_SERVICE.getSatzart(satztyp.getParent());
+                SatzXml satz = xmlService.getSatzart(satztyp.getParent());
                 satz.setSparte(satztyp.getSparte());
                 return satz;
             } else {
@@ -201,16 +212,16 @@ public class XmlSatzFactory {
     }
 
     private Datensatz generateSatz(final SatzTyp satztyp) {
-        Class<? extends Enum> enumClass = REGISTERED_ENUM_CLASSES.get(satztyp);
+        Class<? extends Enum> enumClass = registeredEnumClasses.get(satztyp);
         if (enumClass == null) {
             // ein clone() ist nun nicht mehr noetig, da XML_SERVICE.getSatzart(..) bereits eine Kopie erzeugt
-            return XML_SERVICE.getSatzart(satztyp);
+            return xmlService.getSatzart(satztyp);
         }
         return new SatzX(satztyp, enumClass);
     }
 
     private Datensatz generateDatensatz(final SatzTyp satzNr) {
-        Class<? extends Enum> enumClass = REGISTERED_ENUM_CLASSES.get(satzNr);
+        Class<? extends Enum> enumClass = registeredEnumClasses.get(satzNr);
         if (enumClass != null) {
             return new SatzX(satzNr, enumClass);
         }
@@ -294,7 +305,7 @@ public class XmlSatzFactory {
      * @return den passenden Datensatz
      */
     public Datensatz getDatensatz(final SatzTyp satzNr) {
-        Class<? extends Datensatz> clazz = REGISTERED_DATENSATZ_CLASSES.get(satzNr);
+        Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(satzNr);
         if (clazz == null) {
             // wird u.a. fuer den Import von Datensaetzen benoetigt
             try {
@@ -402,13 +413,13 @@ public class XmlSatzFactory {
      */
     public Datenpaket getAllSupportedSaetze() {
         Map<SatzTyp, Datensatz> supportedSaetze = new HashMap<>();
-        for (Map.Entry<SatzTyp, SatzXml> entry : XML_SERVICE.getSatzarten().entrySet()) {
+        for (Map.Entry<SatzTyp, SatzXml> entry : xmlService.getSatzarten().entrySet()) {
             supportedSaetze.put(entry.getKey(), entry.getValue());
         }
-        for (Map.Entry<SatzTyp, Class<? extends Enum>> entry : REGISTERED_ENUM_CLASSES.entrySet()) {
+        for (Map.Entry<SatzTyp, Class<? extends Enum>> entry : registeredEnumClasses.entrySet()) {
             supportedSaetze.put(entry.getKey(), new SatzX(entry.getKey(), entry.getValue()));
         }
-        for (Map.Entry<SatzTyp, Class<? extends Datensatz>> entry : REGISTERED_DATENSATZ_CLASSES.entrySet()) {
+        for (Map.Entry<SatzTyp, Class<? extends Datensatz>> entry : registeredDatensatzClasses.entrySet()) {
             supportedSaetze.put(entry.getKey(), generateDatensatz(entry.getKey(), entry.getValue()));
         }
         supportedSaetze.remove(SatzTyp.of("0001"));
