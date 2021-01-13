@@ -193,7 +193,6 @@ public final class Vorsatz extends Satz {
     /**
      * @return Erstellungszeitraum (VonDatum, BisDatum)
      * TODO: Hier wuerde ich als Ergebnis eher eine Date-Range erwarten,
-     *       z.B.  com.google.common.collect.Range<LocalDate> aus guava-Lib
      */
     public String getErstellungsZeitraum() {
         return this.getFeld(Bezeichner.ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS).getInhalt().trim();

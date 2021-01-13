@@ -166,9 +166,11 @@ public final class Datenpaket {
     }
 
     /**
-     * Fuegt den uebergebenen Datensatz hinzu.<br/>
+     * Fuegt den uebergebenen Datensatz hinzu.
+     * <p>
      * <b>Achtung:</b> Satzart 001 (Vorsatz) bzw. Satzart 9999 (Nachsatz) kann
      * nicht hinzugefuegt werden!
+     * </p>
      *
      * @param datensatz Datensatz, der hinzugefuegt werden soll
      */

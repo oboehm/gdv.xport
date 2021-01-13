@@ -236,6 +236,7 @@ public abstract class Satz implements Cloneable {
      * <b>Achtung</b> n ist nicht immer identisch mit der Satznummer des
      * Teildatensatzes (siehe z.B. Satzart 0221.140).<br/>
      * Dazu besser {@link #getTeildatensatzBySatzNr(int)} verwenden.
+	 * </p>
 	 *
      * @param n Nummer (Index n-1 in der Liste der Teildatensätze) des
      *          Teildatensatzes (beginnend mit 1)
@@ -463,7 +464,7 @@ public abstract class Satz implements Cloneable {
 
     /**
      * Setzen des Namens einer Gdv-Satzart.
-     * </p>
+     * <p>
      * Der <code>string</code> wird mit dem Trennzeichen '.' an den bisherigen
      * Inhalt angehaengt.
      * </p>

@@ -41,6 +41,7 @@ public class IndexController {
      * Diese Methode verwendet Spring-Boot, um "/" auf "index.html" zu mappen.
      * Und um die App-Version fuer Thymeleaf in den Context zu legen.
      *
+     * @param model the model
      * @return "index"
      */
     @GetMapping("/")

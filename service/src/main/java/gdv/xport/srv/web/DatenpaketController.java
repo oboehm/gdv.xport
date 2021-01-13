@@ -136,11 +136,10 @@ public final class DatenpaketController {
      * gewuenschten Rueckgabe wird dabei ueber Content Negotiation bestimmt,
      * d.h. anhand des Accept-Headers, der Endung oder des format-Parameters.
      *
-     * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
-     * @param format statt per Content Negotiation kann auch der format-Parameter
-     *               belegt werden
-     * @return Datenpaket, das dann ueber Content Negotiation in das
-     *         angeforderte Format transformiert wird
+     * @param uri     z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @param format  statt per Content Negotiation kann auch der format-Parameter               belegt werden
+     * @param request der HTTP-Request
+     * @return Datenpaket, das dann ueber Content Negotiation in das         angeforderte Format transformiert wird
      * @throws IOException the io exception
      */
     @ApiOperation(value = "Liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck." +
@@ -190,11 +189,11 @@ public final class DatenpaketController {
      * anhand des Accept-Headers (Content Negotiation) oder anhand des Suffixes
      * durchgefuehrt. Das Datenpaket kommt dabei als Text im GDV-Format rein.
      *
-     * @param body Datenpaket im GDV-Format
-     * @param text alternativ kann das Datenpaket auch als Parameter reinkommen
-     * @param format statt per Content Negotiation kann auch der format-Parameter
-     *               belegt werden
-     * @return Datenpaket
+     * @param body    Datenpaket im GDV-Format
+     * @param text    alternativ kann das Datenpaket auch als Parameter reinkommen
+     * @param format  statt per Content Negotiation kann auch der format-Parameter               belegt werden
+     * @param request der HTTP-Request
+     * @return Datenpaket string
      */
     @ApiOperation("Liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck." +
             " Der Stern '*' in /Datenpaket* steht dabei fuer ein beliebiges Muster." +

@@ -566,7 +566,7 @@ public final class SatzFactory {
      * 
      * Satzarten, die mit <b>{@link #register(Class, int)}</b> registriert wurden,
      * werden nicht aufgefuehrt!
-     * </p>
+     * <p>
      * Grund: Ein Objekt vom Typ &lt;code&gt;Satz&lt;/code&gt; kann
      * nicht auf &lt;code&gt;Datensatz&lt;/code&gt; gecastet werden.
      * </p>

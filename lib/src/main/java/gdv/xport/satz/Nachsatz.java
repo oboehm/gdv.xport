@@ -60,12 +60,13 @@ public final class Nachsatz extends Satz {
      * Erzeugt einen Nachsatz mit dem angegebenen Inhalt.
      * <p>
      * Anmerkung: Die urspruengliche Implementierung als Konstruktor wurde
-     * in eine statische of()-Methode umgewandelt, da {@link #Satz(String)}
+     * in eine statische of()-Methode umgewandelt, da Satz(String)
      * semantisch eine andere Bedeutung hat - dort repraesentiert der
      * uebergebene Parameter die Satzart, hier den kompletten Inhalt.
      * </p>
      *
      * @param content Inhalt des Nachsatz
+     * @return frisch kreierten Nachsatz
      * @since 5.0
      */
     public static Nachsatz of(final String content) {
@@ -295,6 +296,7 @@ public final class Nachsatz extends Satz {
      * Erhoeht den Gesamtprovisions-Betrag (Feld 7 und Feld 8)
      *
      * @param betrag neuer Summand fuer Gesamtprovisions-Betrag
+     * @return Summe
      * @since 5.0
      */
     public BigDecimal addGesamtProvisionsBetrag(final BigDecimal betrag) {
@@ -389,6 +391,7 @@ public final class Nachsatz extends Satz {
      * Erhoeht die VersicherungsLeistungen (Feld 9 und Feld 10)
      *
      * @param betrag neuer Summand fuer Versicherungsleitungen
+     * @return Summe
      * @since 5.0
      */
     public BigDecimal addVersicherungsLeistungen(final BigDecimal betrag) {
@@ -461,6 +464,7 @@ public final class Nachsatz extends Satz {
      * Erhoeht die Schadenbearbeitungskosten (Feld 11 und Feld 12)
      *
      * @param betrag neuer Summand fuer Schadenbearbeitungskosten
+     * @return Summe
      * @since 5.0
      */
     public BigDecimal addSchadenbearbeitungskosten(final BigDecimal betrag) {

@@ -335,7 +335,7 @@ public class XmlService {
     /**
      * Liefert die Satzversion eines registrierten Satztyps
      *
-     * @param satzTyp
+     * @param satzTyp die Satzart
      * @return die Version
      * @since 5.0
      */
