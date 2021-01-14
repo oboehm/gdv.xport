@@ -58,12 +58,12 @@ public class Datensatz extends Satz {
    * Auszahlungen, zukünftige Summenänderungen und Wertungssummen. Nicht
    * verwechseln mit Satznummer eines Teildatensatzes!
    */
-  private String gdvSatzartNummer = "";
+    // private String gdvSatzartNummer = "";
   /**
    * Zum Abspeichern des Namens einer Gdv-Satzart gemaess Online-Version bei
    * gdv-online.de
    */
-  private String gdvSatzartName = "";
+    // private String gdvSatzartName = "";
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der.
@@ -221,17 +221,11 @@ public class Datensatz extends Satz {
    *
    * @param other der originale Datensatz
    */
-  public Datensatz(final Datensatz other)
-  {
-    this(other.getSatzart(), other.getSparte(), other.cloneTeildatensaetze(),
-        other.getSatzversion());
-    // this(other.getSatzart(), other.getSparte(),
-    // other.cloneTeildatensaetze());
+    public Datensatz(final Datensatz other) {
+        super(other, other.cloneTeildatensaetze());
     this.art = other.art;
     this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
     this.wagnisart.setInhalt(other.wagnisart.getInhalt());
-        this.gdvSatzartName = other.getGdvSatzartName();
-    this.gdvSatzartNummer = other.gdvSatzartNummer;
   }
 
     /**
@@ -410,9 +404,8 @@ public class Datensatz extends Satz {
    *
    * @return true, falls der Datensatz eine Untersparte hat.
    */
-  public boolean hasSatzartNummer()
-  {
-    return !this.gdvSatzartNummer.isEmpty();
+    public boolean hasSatzartNummer() {
+        return !this.getGdvSatzartNummer().isEmpty();
   }
 
 	/**
@@ -584,11 +577,11 @@ public class Datensatz extends Satz {
     public static int readBausparenArt(final PushbackLineNumberReader reader) throws IOException {
 		int satzart = readSatzart(reader);
 		if (satzart != 220) {
-			throw new IllegalArgumentException("can't read BausparenArt, wrong satzart " + satzart +", must be 220");
+			throw new IllegalArgumentException("can't read Bauspar-Art, wrong satzart " + satzart +", must be 220");
 		}
 		int sparte = readSparte(reader);
 		if (sparte != 580) {
-			throw new IllegalArgumentException("can't read BausparenArt, wrong sparte " + sparte + ", must be 580");
+			throw new IllegalArgumentException("can't read Bauspar-Art, wrong sparte " + sparte + ", must be 580");
 		}
 		char[] cbuf = new char[45];
 		if (reader.read(cbuf) == -1) {
@@ -749,12 +742,10 @@ public class Datensatz extends Satz {
 		return super.hashCode() + this.art;
 	}
 
-    @Override
-    public SatzTyp getSatzTyp() {
-    	if (StringUtils.isBlank(gdvSatzartName)) {
-    		return super.getSatzTyp();
-		}
-        return SatzTyp.of(gdvSatzartName);
-    }
+    // @Override
+    // public SatzTyp getSatzTyp()
+    // {
+    // return SatzTyp.of(gdvSatzartName);
+    // }
 
 }
