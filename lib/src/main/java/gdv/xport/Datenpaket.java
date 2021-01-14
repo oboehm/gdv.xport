@@ -69,6 +69,11 @@ public final class Datenpaket {
     /**
      * Falls die VU-Nummer noch nicht konfiguriert ist, kann man zu diesem
      * Konstruktor greifen.
+     * <p>
+     * Absender wird jetzt nicht mehr vorbelegt, da der Absender der Klarname
+     * des VUs ist (und nicht bekannt ist). Auch das ErstellungsDatumBis wird
+     * nicht mehr vorbelegt.
+     * </p>
      *
      * @param vuNummer die Nummer des Versicherungsunternehmens (VU)
      * @since 0.3
@@ -77,11 +82,7 @@ public final class Datenpaket {
         this.vorsatz.setVersion(this.nachsatz);
         Datum heute = Datum.heute();
         this.setErstellungsDatumVon(heute);
-        // Zeitraum-bis nicht vorbelegen ? - Warum, ist nur Default, falls nicht gesetzt wird
-        this.setErstellungsDatumBis(heute);
         this.setVuNummer(vuNummer);
-        // Absender nicht mit vuNummer vorbelegen! - Warum nicht? Ist das VU nicht der Absender?
-        // this.setAbsender(vuNummer);
         LOG.debug(this + " created.");
     }
 
@@ -371,7 +372,7 @@ public final class Datenpaket {
             throws IOException {
         int sparte = Datensatz.readSparte(reader);
         SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
-        if (sparte == 10 && satzart > 210) {
+        if (sparte == 10 && ((satzart == 210) || (satzart == 221))) {
             WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
             if (wagnisart != WagnisartLeben.NULL) {
                 // wagnisart 0 hat immer ein Leerzeichen als

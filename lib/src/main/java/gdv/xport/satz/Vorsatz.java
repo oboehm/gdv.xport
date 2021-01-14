@@ -47,11 +47,12 @@ import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM;
  * @author oliver
  * @since 0.0.1 (09-Okt-2009)
  */
-public final class Vorsatz extends Satz {
+public class Vorsatz extends Satz {
 
     private static final Logger LOG = LogManager.getLogger(Vorsatz.class);
-    private static final Datensatz satz0001 = SatzFactory.getDatensatz(SatzTyp.of(
-            "0001"));
+    // TODO: die Teildatensaetze der gewuenschte Version muessen von aussen reingereicht werden
+    //       (z.B. ueber die XmlSatzFactory)
+    private static final Datensatz satz0001 = SatzFactory.getDatensatz(SatzTyp.of("0001"));
 
     /**
      * Hiermit wird ein Vorsatz mit 3 Teildatensaetzen erstellt.
