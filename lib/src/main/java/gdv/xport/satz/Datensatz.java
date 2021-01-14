@@ -49,21 +49,6 @@ public class Datensatz extends Satz {
     private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld((TEILDATENSATZNUMMER), 1, 256);
 	/** Zum Abspeichern der Wagnisart oder Art (Unter-Sparte). */
 	private int art;
-  /**
-   * Zum Abspeichern der Satznummer einer 0220er-GdvSatzart der Sparte 010
-   * (Leben). Die Namen dieser Satzarten bestehen bestehen aus 4 Teilen:
-   * <satzart>.<sparte>.<wagnisart>.<gdvSatzartNummer>. Beispiel:
-   * "0220.010.13.6" (siehe Online-Version bei gdv-online.de). Wird benoetigt,
-   * um 0220er-Satzarten bei Leben zu unterscheiden wg. Bezugsrechte,
-   * Auszahlungen, zukünftige Summenänderungen und Wertungssummen. Nicht
-   * verwechseln mit Satznummer eines Teildatensatzes!
-   */
-    // private String gdvSatzartNummer = "";
-  /**
-   * Zum Abspeichern des Namens einer Gdv-Satzart gemaess Online-Version bei
-   * gdv-online.de
-   */
-    // private String gdvSatzartName = "";
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der.
@@ -112,17 +97,9 @@ public class Datensatz extends Satz {
 	 * @param satzart z.B. 100
 	 * @param tdsList Liste mit den Teildatensaetzen
 	 */
-  public Datensatz(final int satzart, final List<? extends Teildatensatz> tdsList) {
-    this(satzart, tdsList, null);
-    // super(satzart, tdsList);
-    // if (tdsList.get(0)
-    // .hasSparte())
-    // {
-    // this.sparte.setInhalt(tdsList.get(0)
-    // .getSparte());
-    // }
-    // this.completeTeildatensaetze();
-  }
+	public Datensatz(final int satzart, final List<? extends Teildatensatz> tdsList) {
+		this(satzart, tdsList, null);
+	}
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
@@ -215,18 +192,18 @@ public class Datensatz extends Satz {
     this(satzart, complete(tdsList, sparte), satzVersion);
   }
 
-  /**
-   * Dies ist der Copy-Constructor, mit dem man einen bestehenden Datensatz
-   * kopieren kann.
-   *
-   * @param other der originale Datensatz
-   */
-    public Datensatz(final Datensatz other) {
-        super(other, other.cloneTeildatensaetze());
-    this.art = other.art;
-    this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
-    this.wagnisart.setInhalt(other.wagnisart.getInhalt());
-  }
+	/**
+	 * Dies ist der Copy-Constructor, mit dem man einen bestehenden Datensatz
+	 * kopieren kann.
+	 *
+	 * @param other der originale Datensatz
+	 */
+	public Datensatz(final Datensatz other) {
+		this(other.getSatzart(), other.getSparte(), other.cloneTeildatensaetze(), other.getSatzversion());
+		this.art = other.art;
+		this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
+		this.wagnisart.setInhalt(other.wagnisart.getInhalt());
+	}
 
     /**
 	 * Kann von Unterklassen verwendet werden, um die Teildatensaetze
@@ -741,11 +718,5 @@ public class Datensatz extends Satz {
 	public int hashCode() {
 		return super.hashCode() + this.art;
 	}
-
-    // @Override
-    // public SatzTyp getSatzTyp()
-    // {
-    // return SatzTyp.of(gdvSatzartName);
-    // }
 
 }
