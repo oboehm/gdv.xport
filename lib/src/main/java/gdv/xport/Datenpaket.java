@@ -344,7 +344,7 @@ public final class Datenpaket {
                 this.nachsatz = (Nachsatz) satz;
                 break;
             }
-            datensaetze.add((Datensatz) satz);
+            this.add((Datensatz) satz);
         }
     }
 
@@ -408,6 +408,10 @@ public final class Datenpaket {
             satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
         }
 
+        // ACHTUNG:
+        // das funktioniert nicht zufriedenstellend, weil die gelesene Sparte nicht
+        // immer mit der Sparte in GDV-Satznamen übereinstimmt. Dazu sollte das
+        // "Spartenverzeichnis" lt. Anlagen des GDV ausgewertet werden!
         Datensatz satz = SatzFactory.getDatensatz(satzTyp);
         satz.importFrom(reader);
         return satz;
