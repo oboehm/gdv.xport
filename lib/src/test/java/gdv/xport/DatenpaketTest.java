@@ -156,13 +156,11 @@ public final class DatenpaketTest {
      * zurueckgegeben werden.
      */
     @Test
-    public void testGetErstellungsDatum() {
+    public void testGetErstellungsDatumVon() {
         Datum von = datenpaket.getErstellungsDatumVon();
-        Datum bis = datenpaket.getErstellungsDatumBis();
         Datum heute = Datum.heute();
         Date today = heute.toDate();
         assertEquals(today, von.toDate());
-        assertEquals(today, bis.toDate());
     }
 
     /**
