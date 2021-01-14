@@ -33,9 +33,23 @@ import static org.junit.Assert.*;
 public final class XmlSatzFactoryTest {
 
     @Test
-    public void testGetInstance2015() throws XMLStreamException {
+    public void testGetInstance2015() {
         XmlSatzFactory factory = XmlSatzFactory.getInstance("VUVM2015.xml");
         assertNotNull(factory);
+    }
+
+    @Test
+    public void testGetSameInstance() {
+        XmlSatzFactory f1 = XmlSatzFactory.getInstance();
+        XmlSatzFactory f2 = XmlSatzFactory.getInstance();
+        assertSame(f1, f2);
+    }
+
+    @Test
+    public void testGetDifferentInstances() {
+        XmlSatzFactory f2015 = XmlSatzFactory.getInstance("VUVM2015.xml");
+        XmlSatzFactory f2018 = XmlSatzFactory.getInstance("VUVM2018.xml");
+        assertNotEquals(f2015, f2018);
     }
 
 }

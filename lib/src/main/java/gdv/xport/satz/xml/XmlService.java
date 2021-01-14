@@ -42,7 +42,7 @@ import java.util.*;
 public class XmlService {
 
     private static final Logger LOG = LogManager.getLogger(XmlService.class);
-    private static final Map<String, XmlService> INSTANCES = new WeakHashMap<>();
+    private static final Map<String, XmlService> INSTANCES = new HashMap<>();
     private final List<SatzXml> saetze = new ArrayList<>();
     private final Map<SatzTyp, SatzXml> satzarten = new HashMap<>();
     private final Map<String, FeldXml> felder = new HashMap<>();
@@ -341,6 +341,12 @@ public class XmlService {
      */
     public String getSatzVersion(final SatzTyp satzTyp) {
         return this.satzarten.get(satzTyp).getSatzversion().getInhalt();
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + " (Vorsatz " + getSatzVersion(SatzTyp.of("0001"))
+                + "/" + getSatzVersion(SatzTyp.of("0052")) + ")";
     }
 
 }

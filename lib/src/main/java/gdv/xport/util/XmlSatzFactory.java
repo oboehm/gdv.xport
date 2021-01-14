@@ -48,6 +48,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class XmlSatzFactory {
 
     private static final Logger LOG = LogManager.getLogger(XmlSatzFactory.class);
+    private static final Map<String, XmlSatzFactory> INSTANCES = new HashMap<>();
     private final Map<SatzTyp, Class<? extends Satz>> registeredSatzClasses = new ConcurrentHashMap<>();
     private final Map<SatzTyp, Class<? extends Datensatz>> registeredDatensatzClasses = new ConcurrentHashMap<>();
     private final Map<SatzTyp, Class<? extends Enum>> registeredEnumClasses = new ConcurrentHashMap<>();
@@ -73,19 +74,29 @@ public class XmlSatzFactory {
      * @return Factory auf Basis von VUVM2018.xml
      */
     public static XmlSatzFactory getInstance() {
-        return new XmlSatzFactory(XmlService.getInstance());
+        return getInstance("VUVM2018.xml");
     }
 
     /**
      * Hierueber kann man sich die Default-Factory mit der gewuenschten
-     * XML-Beschreibung der GDV-Datensaetze holen.
+     * XML-Beschreibung der GDV-Datensaetze holen. Es wird dabei fuer die
+     * gleiche Resource auch die gleiche Instanz zurueckgegeben.
      *
      * @param resource z.B. "VUVM2015.xml"
      * @return Factory auf Basis der uebergebenen Resource
-     * @throws XMLStreamException the xml stream exception
      */
-    public static XmlSatzFactory getInstance(final String resource) throws XMLStreamException {
-        return new XmlSatzFactory(XmlService.getInstance(resource));
+    public static XmlSatzFactory getInstance(final String resource) {
+        XmlSatzFactory factory = INSTANCES.get(resource);
+        try {
+            if (factory == null) {
+                factory = new XmlSatzFactory(XmlService.getInstance(resource));
+                INSTANCES.put(resource, factory);
+                LOG.info("{} wurde angelegt.", factory);
+            }
+            return factory;
+        } catch (XMLStreamException ex) {
+            throw new IllegalArgumentException("invalid resource: " + resource, ex);
+        }
     }
 
     /**
@@ -429,6 +440,11 @@ public class XmlSatzFactory {
             all.add(satz);
         }
         return all;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + " mit " + this.xmlService;
     }
 
 }
