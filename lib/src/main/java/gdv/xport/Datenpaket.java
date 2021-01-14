@@ -344,7 +344,7 @@ public final class Datenpaket {
                 this.nachsatz = (Nachsatz) satz;
                 break;
             }
-            this.add((Datensatz) satz);
+            datensaetze.add((Datensatz) satz);
         }
     }
 
