@@ -20,6 +20,7 @@ package gdv.xport.util;
 
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
+import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Vorsatz;
 import org.junit.Test;
 
@@ -59,7 +60,6 @@ public final class XmlSatzFactoryTest {
     }
 
     @Test
-    //@Ignore // noch nicht implementiert
     public void testVorsatz2015() {
         assertEquals("1.1", getVersionSatzart0052(f2015));
     }
@@ -70,10 +70,16 @@ public final class XmlSatzFactoryTest {
     }
 
     private String getVersionSatzart0052(XmlSatzFactory factory) {
-        Vorsatz vorsatz = new Vorsatz(factory);
+        Vorsatz vorsatz = factory.getVorsatz();
         vorsatz.setVersion(SatzTyp.of("0052"));
         Feld version = vorsatz.getFeld(Bezeichner.VERSION_SATZART_0052);
         return version.getInhalt();
+    }
+
+    @Test
+    public void testGetNachsatz2015() {
+        Nachsatz nachsatz = f2015.getNachsatz();
+        assertEquals("1.1", nachsatz.getSatzversion().getInhalt());
     }
 
 }

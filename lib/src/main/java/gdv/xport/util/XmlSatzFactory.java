@@ -21,7 +21,9 @@ package gdv.xport.util;
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
@@ -295,6 +297,26 @@ public class XmlSatzFactory implements VersionHandler {
         } catch (IOException ioe) {
             throw new IllegalArgumentException("can't parse " + content, ioe);
         }
+    }
+
+    /**
+     * Liefert den passenden Vorsatz.
+     *
+     * @return Vorsatz
+     * @since 5.0
+     */
+    public Vorsatz getVorsatz() {
+        return new Vorsatz(this);
+    }
+
+    /**
+     * Liefert den passenden Nachsatz.
+     *
+     * @return Nachsatz
+     * @since 5.0
+     */
+    public Nachsatz getNachsatz() {
+        return new Nachsatz(this);
     }
 
     /**

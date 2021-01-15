@@ -22,6 +22,8 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld9999;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
+import gdv.xport.util.VersionHandler;
+import gdv.xport.util.XmlSatzFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -48,12 +50,29 @@ public final class Nachsatz extends Satz {
 
     private static final Logger LOG = LogManager.getLogger(Nachsatz.class);
     private static final Datensatz satz9999 = SatzFactory.getDatensatz(SatzTyp.of("9999"));
+    private final VersionHandler versionHandler;
 
     /**
      * Default-Constructor.
      */
     public Nachsatz() {
-        super(satz9999, satz9999.cloneTeildatensaetze());
+        this(XmlSatzFactory.getInstance());
+    }
+
+    /**
+     * Ueber die mitgegebene Factory wird der Nachsatz genauso aufgebaut, wie
+     * die {@link XmlSatzFactory} als Vorlage liefert.
+     *
+     * @param factory sollte die Vorlage fuer den Nachsatz liefern.
+     * @since 5.0
+     */
+    public Nachsatz(XmlSatzFactory factory) {
+        this(factory.getDatensatz(SatzTyp.of("9999")), factory);
+    }
+
+    private Nachsatz(Satz vorlage, VersionHandler versionHandler) {
+        super(vorlage, vorlage.cloneTeildatensaetze());
+        this.versionHandler = versionHandler;
     }
 
     /**
@@ -88,7 +107,7 @@ public final class Nachsatz extends Satz {
      * @since 5.0
      */
     public Nachsatz(final Nachsatz other) {
-        super(9999, other.cloneTeildatensaetze(), other.getSatzversion());
+        this(other, other.versionHandler);
     }
 
     /**
