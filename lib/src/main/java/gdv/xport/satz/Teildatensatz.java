@@ -215,6 +215,7 @@ public class Teildatensatz extends Satz {
             }
         }
         if (feld.getBezeichnung().startsWith("Satznummer")) {
+            LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
             feld.setInhalt(this.satznummer.getInhalt());
         }
         if (feld.getBezeichnung().startsWith("Vorzeichen")) {
@@ -340,7 +341,7 @@ public class Teildatensatz extends Satz {
             }
         }
         throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
-                + " vorhanden!");
+                + " nicht vorhanden!");
     }
 
     /**

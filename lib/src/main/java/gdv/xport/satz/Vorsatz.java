@@ -237,6 +237,17 @@ public class Vorsatz extends Satz {
     }
 
     /**
+     * Setzen der Satzart-Version eines Datensatzes, falls die Satzart im Vorsatz
+     * bekannt ist.
+     *
+     * @param satz der Satz
+     * @return die Satzversion oder <code>null</code> wenn Satzart unbekannt
+     */
+    public String getVersion(Satz satz) {
+        return getVersion(satz.getSatzTyp());
+    }
+
+    /**
      * Ermittelt die Version des uebergebenen Bezeichners.
      *
      * @param bezeichner z.B. VERSION_VORSATZ; hier koennen alle die
