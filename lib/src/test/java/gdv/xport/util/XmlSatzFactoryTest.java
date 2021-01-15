@@ -18,6 +18,11 @@
 
 package gdv.xport.util;
 
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Vorsatz;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.xml.stream.XMLStreamException;
@@ -50,6 +55,27 @@ public final class XmlSatzFactoryTest {
         XmlSatzFactory f2015 = XmlSatzFactory.getInstance("VUVM2015.xml");
         XmlSatzFactory f2018 = XmlSatzFactory.getInstance("VUVM2018.xml");
         assertNotEquals(f2015, f2018);
+    }
+
+    @Test
+    @Ignore // noch nicht implementiert
+    public void testVorsatz2015() {
+        XmlSatzFactory f2015 = XmlSatzFactory.getInstance("VUVM2015.xml");
+        assertEquals("1.1", getVersionSatzart0052(f2015));
+    }
+
+    @Test
+    public void testVorsatz2018() {
+        XmlSatzFactory f2018 = XmlSatzFactory.getInstance("VUVM2018.xml");
+        assertEquals("1.2", getVersionSatzart0052(f2018));
+    }
+
+    private String getVersionSatzart0052(XmlSatzFactory factory) {
+        Datensatz satz = factory.getDatensatz(SatzTyp.of("0001"));
+        Vorsatz vorsatz = new Vorsatz(satz);
+        vorsatz.setVersion(SatzTyp.of("0052"));
+        Feld version = vorsatz.getFeld(Bezeichner.VERSION_SATZART_0052);
+        return version.getInhalt();
     }
 
 }
