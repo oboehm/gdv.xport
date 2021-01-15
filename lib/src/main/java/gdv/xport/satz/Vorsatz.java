@@ -50,15 +50,26 @@ import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM;
 public class Vorsatz extends Satz {
 
     private static final Logger LOG = LogManager.getLogger(Vorsatz.class);
-    // TODO: die Teildatensaetze der gewuenschte Version muessen von aussen reingereicht werden
-    //       (z.B. ueber die XmlSatzFactory)
-    private static final Datensatz satz0001 = SatzFactory.getDatensatz(SatzTyp.of("0001"));
+    private static final Datensatz SATZ_0001 = SatzFactory.getDatensatz(SatzTyp.of("0001"));
 
     /**
      * Hiermit wird ein Vorsatz mit 3 Teildatensaetzen erstellt.
      */
     public Vorsatz() {
-        super(1, satz0001.getTeildatensaetze(), satz0001.getSatzversion());
+        this(SATZ_0001);
+    }
+
+    /**
+     * Anhand einer anderen Vorlage (Vorsatz) kann man hierueber einen Vorsatz
+     * mit den gleichen Versionsnummer anlegen. Dieser Konstruktor ist fuer
+     * die XmlSatzFactory vorgesehen, um damit einen passenden Vorsatz zu
+     * einer aelteren XML-Beschreibung bereitstellen zu koennen.
+     *
+     * @param vorlage anderer Vorsatz
+     * @since 5.0
+     */
+    public Vorsatz(Datensatz vorlage) {
+        super(1, vorlage.getTeildatensaetze(), vorlage.getSatzversion());
         setVuNummer(Config.getVUNummer().getInhalt());
     }
 
