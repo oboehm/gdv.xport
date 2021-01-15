@@ -45,7 +45,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author oliver (ob@aosd.de)
  * @since 5.0
  */
-public class XmlSatzFactory {
+public class XmlSatzFactory implements VersionHandler {
 
     private static final Logger LOG = LogManager.getLogger(XmlSatzFactory.class);
     private static final Map<String, XmlSatzFactory> INSTANCES = new HashMap<>();
@@ -445,6 +445,17 @@ public class XmlSatzFactory {
     @Override
     public String toString() {
         return this.getClass().getSimpleName() + " mit " + this.xmlService;
+    }
+
+    /**
+     * Liefert die (Default-)Version der angefragten Satzart
+     *
+     * @param satzTyp Satzart
+     * @return z.B. "2.4"
+     */
+    @Override
+    public String getVersionOf(SatzTyp satzTyp) {
+        return getDatensatz(satzTyp).getSatzversion().getInhalt();
     }
 
 }

@@ -22,8 +22,9 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
-import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
+import gdv.xport.util.VersionHandler;
+import gdv.xport.util.XmlSatzFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -50,26 +51,29 @@ import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM;
 public class Vorsatz extends Satz {
 
     private static final Logger LOG = LogManager.getLogger(Vorsatz.class);
-    private static final Datensatz SATZ_0001 = SatzFactory.getDatensatz(SatzTyp.of("0001"));
+    private final VersionHandler versionHandler;
 
     /**
      * Hiermit wird ein Vorsatz mit 3 Teildatensaetzen erstellt.
      */
     public Vorsatz() {
-        this(SATZ_0001);
+        this(XmlSatzFactory.getInstance());
     }
 
     /**
-     * Anhand einer anderen Vorlage (Vorsatz) kann man hierueber einen Vorsatz
-     * mit den gleichen Versionsnummer anlegen. Dieser Konstruktor ist fuer
-     * die XmlSatzFactory vorgesehen, um damit einen passenden Vorsatz zu
-     * einer aelteren XML-Beschreibung bereitstellen zu koennen.
+     * Ueber die mitgegebene Factory wird der Vorsatz genauso aufgebaut, wie
+     * die {@link XmlSatzFactory} als Vorlage liefert.
      *
-     * @param vorlage anderer Vorsatz
+     * @param factory sollte die Vorlage fuer den Vorsatz liefern.
      * @since 5.0
      */
-    public Vorsatz(Datensatz vorlage) {
+    public Vorsatz(XmlSatzFactory factory) {
+        this(factory.getDatensatz(SatzTyp.of("0001")), factory);
+    }
+
+    private Vorsatz(Satz vorlage, VersionHandler versionHandler) {
         super(1, vorlage.getTeildatensaetze(), vorlage.getSatzversion());
+        this.versionHandler = versionHandler;
         setVuNummer(Config.getVUNummer().getInhalt());
     }
 
@@ -95,7 +99,7 @@ public class Vorsatz extends Satz {
      * @param other der originale Vorsatz
      */
     public Vorsatz(final Vorsatz other) {
-        super(1, other.cloneTeildatensaetze(), other.getSatzversion());
+        this(other, other.versionHandler);
     }
 
     private static Bezeichner getVersionBezeichner(final int art) {
@@ -356,9 +360,7 @@ public class Vorsatz extends Satz {
         Bezeichner bezeichner = new Bezeichner(buf.toString());
 
         if (this.hasFeld(bezeichner)) {
-            this.set(bezeichner, SatzFactory.getDatensatz(satzTyp)
-                    .getSatzversion()
-                    .getInhalt());
+            this.set(bezeichner, versionHandler.getVersionOf(satzTyp));
         } else {
             throw new IllegalArgumentException("Version Satzart " + bezeichner + " unbekannt");
         }
