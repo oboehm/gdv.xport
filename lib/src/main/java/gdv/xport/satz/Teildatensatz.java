@@ -107,8 +107,7 @@ public class Teildatensatz extends Satz {
      * @param other der andere Teildatensatz
      */
     public Teildatensatz(final Teildatensatz other) {
-        this(other.getSatzart(), other.getSatznummer());
-        this.satznummer = other.satznummer;
+        this(other, other.getSatznummer().toInt());
         for (Entry<Bezeichner, Feld> entry : other.datenfelder.entrySet()) {
             Feld copy = (Feld) entry.getValue().clone();
             this.datenfelder.put(entry.getKey(), copy);
@@ -116,11 +115,6 @@ public class Teildatensatz extends Satz {
         }
     }
     
-    private Teildatensatz(final int satzart, final Zeichen satznummer) {
-        super(satzart, 0);
-        this.satznummer = satznummer;
-    }
-
     /**
      * Inits the satznummer.
      *
