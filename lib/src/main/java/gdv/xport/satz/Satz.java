@@ -190,7 +190,6 @@ public abstract class Satz implements Cloneable {
 		teildatensatz = new Teildatensatz[tdsList.size()];
 		for (int i = 0; i < tdsList.size(); i++) {
 			teildatensatz[i] = new Teildatensatz(tdsList.get(i));
-			teildatensatz[i].add(this.satzart);
 		}
 	}
 
