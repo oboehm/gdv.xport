@@ -372,7 +372,7 @@ public final class Datenpaket {
             throws IOException {
         int sparte = Datensatz.readSparte(reader);
         SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
-        if (sparte == 10 && ((satzart == 210) || (satzart == 221))) {
+        if (sparte == 10 && ((satzart == 210) || (satzart == 220) || (satzart == 221))) {
             WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
             if (wagnisart != WagnisartLeben.NULL) {
                 // wagnisart 0 hat immer ein Leerzeichen als
