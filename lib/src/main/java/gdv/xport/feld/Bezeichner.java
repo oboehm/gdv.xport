@@ -485,7 +485,7 @@ public final class Bezeichner {
     public static final Bezeichner HAFTUNG_AB2 = new Bezeichner("Haftung ab 2");
     public static final Bezeichner HAFTUNG_BIS = new Bezeichner("Haftung bis");
     public static final Bezeichner HAFTUNG_BIS2 = new Bezeichner("Haftung bis 2");
-    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten");
+    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten", "HaftungswertungssummeInWE", "HaftungswertungssummeInWE1");
     public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten 2");
     public static final Bezeichner HAUPTFAELLIGKEIT = new Bezeichner("Hauptfaelligkeit");
     public static final Bezeichner HEILKOSTEN = new Bezeichner("Heilkosten", "Heilkost");
@@ -966,7 +966,7 @@ public final class Bezeichner {
     public static final Bezeichner SATZ_NR_3 = new Bezeichner("Satznummer3", "SatzNr3");
     public static final Bezeichner SATZ_NR_4 = new Bezeichner("Satznummer4", "SatzNr4");
     public static final Bezeichner SATZ_NR_9 = new Bezeichner("Satznummer9", "SatzNr9");
-    public static final Bezeichner SATZNUMMER = new Bezeichner("Satznummer");
+    public static final Bezeichner SATZNUMMER = new Bezeichner("Satznummer", "Satznummer", "SatzNr1");
     /** @deprecated bitte SATZNUMMER oder SATZ_NR_1 verwenden. */
     @Deprecated
     public static final Bezeichner SATZNUMMER1 = SATZNUMMER;
@@ -1302,7 +1302,7 @@ public final class Bezeichner {
     public static final Bezeichner VORNAME_DER_VERSICHERTEN_PERSON_VP = new Bezeichner("Vorname der versicherten Person (VP)");
     public static final Bezeichner VORNAME_VP = new Bezeichner("Vorname der VP");
     public static final Bezeichner VORSTEUERABZUGSBERECHTIGT = new Bezeichner("Vorsteuerabzugsberechtigt");
-    public static final Bezeichner VORZEICHEN = new Bezeichner("Vorzeichen");
+    public static final Bezeichner VORZEICHEN = new Bezeichner("Vorzeichen", "Vorzeichen", "Vorzeichen1");
     public static final Bezeichner VORZEICHEN2 = new Bezeichner("Vorzeichen2");
     public static final Bezeichner VORZEICHEN3 = new Bezeichner("Vorzeichen3");
     public static final Bezeichner VORZEICHEN4 = new Bezeichner("Vorzeichen4");
@@ -1606,8 +1606,6 @@ public final class Bezeichner {
         } else if (lastchar == '1') {
             String shorten = technischerName.substring(0, technischerName.length()-1).trim();
             vars.add(Bezeichner.of(shorten));
-        } else if (Character.isAlphabetic(lastchar)) {
-            vars.add(Bezeichner.of(name + "1"));
         }
         return vars;
     }
