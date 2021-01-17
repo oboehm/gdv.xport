@@ -1173,7 +1173,7 @@ public final class Bezeichner {
     public static final Bezeichner VERSICHERUNGSSCHUTZ = new Bezeichner("Versicherungsschutz");
     public static final Bezeichner VERSICHERUNGSSUMME_AKTUELL_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme aktuell in W\u00e4hrungseinheiten");
     public static final Bezeichner VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme in W\u00e4hrungseinheiten");
-    public static final Bezeichner VERSION_SATZART_9999 = new Bezeichner("Version Satzart 9999 Nachsatz", "Satzart9999");
+    public static final Bezeichner VERSION_SATZART_9999 = new Bezeichner("Version Satzart 9999 Nachsatz", "Satzart9999", "Nachsatzsatzart9999");
     public static final Bezeichner VERTRAG_MIT_ZUWACHSGARANTIE = new Bezeichner("Vertrag mit Zuwachsgarantie");
     public static final Bezeichner VERSION_SATZART_0001 = new Bezeichner("Version Satzart 0001");
     public static final Bezeichner VERSION_SATZART_0100 = new Bezeichner("Version Satzart 0100");
@@ -1394,6 +1394,7 @@ public final class Bezeichner {
     private final String name;
     private final String technischerName;
     private final int hash;
+    private final Set<Bezeichner> variants = new HashSet<>();
 
     // Mapping fuer manche Bezeichner (Name <--> technischer Name)
     static {
@@ -1461,6 +1462,21 @@ public final class Bezeichner {
         this.name = name;
         this.technischerName = StringUtils.isEmpty(technischerName) ? toTechnischerName(name) : technischerName;
         this.hash = this.technischerName.toUpperCase().hashCode();
+    }
+
+    /**
+     * Legt einen neuen Bezeichner mit dem gewuenschten Name an.
+     *
+     * @param name            der gewuenschte Name
+     * @param technischerName der entsprechende technische Name
+     * @param varianten       moegliche Varianten des technischen Namens
+     * @since 5.0
+     */
+    public Bezeichner(final String name, final String technischerName, final String... varianten) {
+        this(name, technischerName);
+        for (String s : varianten) {
+            this.variants.add(new Bezeichner(name, s));
+        }
     }
 
     private static String toTechnischerName(final String input) {
@@ -1580,20 +1596,20 @@ public final class Bezeichner {
      */
     @JsonIgnore
     public Set<Bezeichner> getVariants() {
-        Set<Bezeichner> variants = new HashSet<>();
-        variants.add(this);
+        Set<Bezeichner> vars = new HashSet<>(variants);
+        vars.add(this);
         char lastchar = name.charAt(name.length()-1);
         if (name.startsWith("Satzart")) {
-            variants.add(Bezeichner.of("Version " + name));
+            vars.add(Bezeichner.of("Version " + name));
         } else if (name.startsWith("Version")) {
-            variants.add(Bezeichner.of(name.substring(7).trim()));
+            vars.add(Bezeichner.of(name.substring(7).trim()));
         } else if (lastchar == '1') {
             String shorten = technischerName.substring(0, technischerName.length()-1).trim();
-            variants.add(Bezeichner.of(shorten));
+            vars.add(Bezeichner.of(shorten));
         } else if (Character.isAlphabetic(lastchar)) {
-            variants.add(Bezeichner.of(name + "1"));
+            vars.add(Bezeichner.of(name + "1"));
         }
-        return variants;
+        return vars;
     }
 
     /**

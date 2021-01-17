@@ -313,4 +313,10 @@ public class BezeichnerTest {
         assertThat(Bezeichner.VERSION_SATZART_0100.getVariants(), hasItem(Bezeichner.SATZART_0100));
     }
 
+    @Test
+    public void testVersionSatzart9999() {
+        Bezeichner nachsatzart = new Bezeichner("Nachsatzsatzart9999");
+        assertThat(Bezeichner.VERSION_SATZART_9999.getVariants(), hasItem(nachsatzart));
+    }
+
 }
