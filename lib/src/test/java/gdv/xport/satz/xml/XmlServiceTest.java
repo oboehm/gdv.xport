@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.xml;
 
+import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractSatzTest;
@@ -230,7 +231,9 @@ public class XmlServiceTest extends AbstractXmlTest {
     @Test
     public void testSatzart230() throws IOException {
         checkSatzart230(10);
-        checkSatzart230(30);
+        if ("VUVM2018.xml".equals(Config.getXmlResource())) {
+            checkSatzart230(30);
+        }
     }
 
     private void checkSatzart230(int sparte) throws IOException {

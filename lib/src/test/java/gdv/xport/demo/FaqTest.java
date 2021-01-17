@@ -1,6 +1,7 @@
 package gdv.xport.demo;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
@@ -9,6 +10,8 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -24,6 +27,8 @@ import static org.junit.Assert.assertTrue;
  * @since 4.2 (08.09.20)
  */
 public final class FaqTest {
+
+    private static final Logger LOG = LogManager.getLogger();
 
     @BeforeClass
     public static void resetSatzfactory() {
@@ -60,16 +65,20 @@ public final class FaqTest {
      */
     @Test
     public void testFeld210Sparte30() throws IOException {
-        Datensatz satz = SatzFactory.getDatensatz(SatzTyp.of("0210.030"));
-        satz.set(Bezeichner.of("Erweiterter BerVersV-Schluessel"), "12345");
-        String schluessel = satz.get(Bezeichner.ERWEITERTER_BERVERSV_SCHLUESSEL);
-        assertEquals("12345", schluessel);
-        Feld schluesselFeld = satz.getFeld(Bezeichner.ERWEITERTER_BERVERSV_SCHLUESSEL);
-        assertTrue(schluesselFeld instanceof NumFeld);
-        assertEquals(239, schluesselFeld.getByteAdresse());
-        assertEquals(5, schluesselFeld.getAnzahlBytes());
-        assertEquals("12345", schluesselFeld.getInhalt());
-        satz.export(System.out);
+        if ("VUVM2018.xml".equals(Config.getXmlResource())) {
+            Datensatz satz = SatzFactory.getDatensatz(SatzTyp.of("0210.030"));
+            satz.set(Bezeichner.of("Erweiterter BerVersV-Schluessel"), "12345");
+            String schluessel = satz.get(Bezeichner.ERWEITERTER_BERVERSV_SCHLUESSEL);
+            assertEquals("12345", schluessel);
+            Feld schluesselFeld = satz.getFeld(Bezeichner.ERWEITERTER_BERVERSV_SCHLUESSEL);
+            assertTrue(schluesselFeld instanceof NumFeld);
+            assertEquals(239, schluesselFeld.getByteAdresse());
+            assertEquals(5, schluesselFeld.getAnzahlBytes());
+            assertEquals("12345", schluesselFeld.getInhalt());
+            satz.export(System.out);
+        } else {
+            LOG.info("Bezeichner ERWEITERTER_BERVERSV_SCHLUESSEL ist nicht in {} vorhanden.", Config.getXmlResource());
+        }
     }
 
     /**
