@@ -94,6 +94,19 @@ public final class Config {
     }
 
     /**
+     * Liefert den Namen der XML-Resource zurueck, in der die XML-Beschreibung
+     * der GDV-Datensaetze enhalten ist. Ueber "-Dgdv.XML-Resource=..." kann
+     * hierueber eine andere Resource (z.B. VUVM2015.xml) eingestellt werden.
+     *
+     * @return "VUVM2018.xml", wenn nicht per System-Property was anderes
+     *         angegeben ist
+     * @since 5.0
+     */
+    public static String getXmlResource() {
+        return System.getProperty("gdv.XML-Resource", "VUVM2018.xml");
+    }
+
+    /**
      * Hier kann der "End Of Datensatz" (EOD) gesetzt werden.
      * Dieses Zeichen (oder Zeichenkette) wird am Ende jeden
      * Datensatzes mit ausgegeben.

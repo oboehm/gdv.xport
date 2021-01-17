@@ -19,6 +19,7 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
@@ -76,7 +77,7 @@ public class XmlSatzFactory implements VersionHandler {
      * @return Factory auf Basis von VUVM2018.xml
      */
     public static XmlSatzFactory getInstance() {
-        return getInstance("VUVM2018.xml");
+        return getInstance(Config.getXmlResource());
     }
 
     /**

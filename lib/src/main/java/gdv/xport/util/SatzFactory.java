@@ -20,7 +20,9 @@ package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.xml.XmlService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -375,6 +377,26 @@ public final class SatzFactory {
      */
     public static Datenpaket getAllSupportedSaetze() {
         return FACTORY.getAllSupportedSaetze();
+    }
+
+    /**
+     * Liefert den passenden Vorsatz.
+     *
+     * @return Vorsatz
+     * @since 5.0
+     */
+    public static Vorsatz getVorsatz() {
+        return FACTORY.getVorsatz();
+    }
+
+    /**
+     * Liefert den passenden Nachsatz.
+     *
+     * @return Nachsatz
+     * @since 5.0
+     */
+    public static Nachsatz getNachsatz() {
+        return FACTORY.getNachsatz();
     }
 
 }

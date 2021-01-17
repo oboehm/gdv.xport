@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.xml;
 
+import gdv.xport.config.Config;
 import gdv.xport.util.*;
 import org.apache.logging.log4j.*;
 import patterntesting.runtime.log.*;
@@ -53,10 +54,11 @@ public class XmlService {
      * @return der frisch instantiierte XmlService
      */
     public static XmlService getInstance() {
+        String xmlResource = Config.getXmlResource();
         try {
-            return getInstance("VUVM2018.xml");
+            return getInstance(xmlResource);
         } catch (XMLStreamException ex) {
-            LOG.error("Cannot parse XML from resource 'VUVM2018.xml':", ex);
+            LOG.error("Cannot parse XML from resource '{}':", xmlResource, ex);
             return new XmlService();
         }
     }
@@ -83,6 +85,7 @@ public class XmlService {
                 parser.close();
             }
         }
+        LOG.info("Instance {} with resource {} was created.", service, resource);
         return service;
     }
 
@@ -340,7 +343,12 @@ public class XmlService {
      * @since 5.0
      */
     public String getSatzVersion(final SatzTyp satzTyp) {
-        return this.satzarten.get(satzTyp).getSatzversion().getInhalt();
+        SatzXml satzXml = this.satzarten.get(satzTyp);
+        if (satzXml == null) {
+            return "?";
+        } else {
+            return satzXml.getSatzversion().getInhalt();
+        }
     }
 
     @Override
