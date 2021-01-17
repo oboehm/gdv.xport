@@ -19,7 +19,9 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Added
 
-- Versionen im Vorsatz können jetzt mit der aktuellen Version der 2018er-Ausgabe vorbelegt werden
+- statt "VUVM2018.xml" kann jetzt über '-Dgdv.XML-Resource=VUVM2015.xml' die 2015er-Version vorgegeben werden (oder andere Versionen)
+- XmlSatzFactory erlaubt die Unterstützung mehrerer GDV-Versionen gleichzeitig
+- Versionen im Vorsatz können jetzt mit der aktuellen Version der aus der XML-Beschreibung vorbelegt werden
 - Nachsatz besitzt eine add-Methode
 - numerische Felder akzeptieren BigDecimal und können auch nach BigDecimal konvertiert werden
 - ByteAdresse ist als neuer Datentyp hinzugekommen und wird bei Teildatensatz.getFeld(..) als Parameter akzeptiert
