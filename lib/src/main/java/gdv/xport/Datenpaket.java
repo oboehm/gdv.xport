@@ -141,29 +141,31 @@ public final class Datenpaket {
     }
 
     /**
-     * Liefert eine Kopie(!) des internen Vorsatzes.
+     * Liefert den internen Vorsatz.
      * <p>
-     * <b>Achtung:</b> Der Vorsatz wird intern durch das Datenpaket verwaltet und
-     * darf nicht von aussen verändert werden.
+     * <b>Achtung:</b>Der Vorsatz wird intern durch das Datenpaket verwaltet.
+     * Er kann aber veraendert werden, wenn dies notwendig ist (z.B. zum
+     * Setzen der Satzart-Versionen).
      * </p>
      *
-     * @return the vorsatz
+     * @return Vorsatz
      */
     public Vorsatz getVorsatz() {
-        return new Vorsatz(this.vorsatz);
+        return this.vorsatz;
     }
 
     /**
-     * Liefert eine Kopie(!) des internen Nachsatzes.
+     * Liefert den internen Nachsatz.
      * <p>
-     * <b>Achtung:</b> Der Nachsatz wird intern durch das Datenpaket verwaltet und
-     * darf nicht von aussen verändert werden.
+     * <b>Achtung:</b>Der Nachsatz wird intern durch das Datenpaket verwaltet.
+     * Aus Symmetriegruenden zum Vorsatz kann auch der Nachsatz veraendert
+     * werden. Normalerweise sollte das aber nicht notwendig sein.
      * </p>
      *
-     * @return the nachsatz
+     * @return Nachsatz
      */
     public Nachsatz getNachsatz() {
-        return new Nachsatz(this.nachsatz);
+        return this.nachsatz;
     }
 
     /**

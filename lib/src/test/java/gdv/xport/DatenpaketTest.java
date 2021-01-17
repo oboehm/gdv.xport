@@ -604,4 +604,11 @@ public final class DatenpaketTest {
         return summe;
     }
 
+    @Test
+    public void testSetVersionNachsatz() {
+        Bezeichner satzart9999 = Bezeichner.VERSION_SATZART_9999;
+        datenpaket.getVorsatz().setVersion(satzart9999, "0.9");
+        assertEquals("0.9", datenpaket.getVorsatz().getVersion(satzart9999));
+    }
+
 }
