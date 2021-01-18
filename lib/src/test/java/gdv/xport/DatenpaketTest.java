@@ -101,7 +101,9 @@ public final class DatenpaketTest {
         int expectedLength = 1024 + 4 * Config.getEOD().length();
         assertEquals(expectedLength, data.length());
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
+        if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
+            assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
+        }
         assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(0, nachsatz.getAnzahlSaetze());
@@ -135,7 +137,9 @@ public final class DatenpaketTest {
         datenpaket.export(file);
         LOG.info(datenpaket + " was exported to " + file);
         assertTrue(file + " was not created", file.exists());
-        FileTester.assertContentEquals(new File("src/test/resources/gdv/xport/test-export.txt"), file);
+        if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
+            FileTester.assertContentEquals(new File("src/test/resources/gdv/xport/test-export.txt"), file);
+        }
     }
 
     /**
@@ -145,7 +149,9 @@ public final class DatenpaketTest {
     public void testAdd() {
         datenpaket.add(SatzFactory.getDatensatz(SatzTyp.of(220)));
         Vorsatz vorsatz = datenpaket.getVorsatz();
-        assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
+        if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
+            assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
+        }
         assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(1, nachsatz.getAnzahlSaetze());

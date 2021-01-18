@@ -128,7 +128,9 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart100() throws IOException {
-        checkSatzart(100, new Satz100());
+        if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
+            checkSatzart(100, new Satz100());
+        }
     }
 
     /**
@@ -138,7 +140,9 @@ public class XmlServiceTest extends AbstractXmlTest {
      */
     @Test
     public void testSatzart200() throws IOException {
-        checkSatzart(200, new Satz200());
+        if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
+            checkSatzart(200, new Satz200());
+        }
     }
 
     /**
@@ -353,7 +357,8 @@ public class XmlServiceTest extends AbstractXmlTest {
 
     @Test
     public void testGetSatzVersion() {
-        assertEquals("2.4", xmlService.getSatzVersion(SatzTyp.of("0001")));
+        String expected = "VUVM2013.xml".equals(Config.getXmlResource()) ? "2.3" :"2.4";
+        assertEquals(expected, xmlService.getSatzVersion(SatzTyp.of("0001")));
     }
 
 }
