@@ -345,6 +345,59 @@ public class Teildatensatz extends Satz {
      * @return das Feld (z.B. mit der Satzart)
      */
     public Feld getFeld(final int nr) {
+     int myNr = nr;
+
+    // 2018er-Version: in SA0100, TD1: es gibt kein Feld-Nr 27! Die SatzNr ist
+    // Feld 26 !!!
+    // 2018er-Version: in SA0210.050, TD1: es gibt kein Feld-Nr 35! Die SatzNr
+    // ist Feld 34 !!!
+    // 2018er-Version: in SA0220.010.13.1, TD1: es gibt kein Feld-Nr 46! Die
+    // Satznummer ist Feld 45 !!!
+    // 2018er-Version: in SA0600, TD2: es gibt kein Feld-Nr 13! Die Satznummer
+    // ist Feld 12 !!!
+    // 2018er-Version: in SA0600, TD3: es gibt kein Feld-Nr 14! Die Satznummer
+    // ist Feld 13 !!!
+    // 2018er-Version: in SA9950, TD1: es gibt kein Feld-Nr 11! Die Satznummer
+    // ist Feld 10 !!!
+    // 2018er-Version: in SA9951, TD1: es gibt kein Feld-Nr 11! Die Satznummer
+    // ist Feld 10 !!!
+
+    switch (this.getGdvSatzartName()) {
+      case "0100":
+        if (("1").equals(this.getSatznummer()
+            .getInhalt()) && myNr == 27)
+          myNr--;
+        break;
+      case "0210.050":
+        if (("1").equals(this.getSatznummer()
+            .getInhalt()) && myNr == 35)
+          myNr--;
+        break;
+      case "0220.010.13.1":
+        if (("1").equals(this.getSatznummer()
+            .getInhalt()) && myNr == 46)
+          myNr--;
+        break;
+      case "0600":
+        if (("2").equals(this.getSatznummer()
+            .getInhalt()) && myNr == 13)
+        {
+          myNr--;
+        }
+        else if (("3").equals(this.getSatznummer()
+            .getInhalt()) && myNr == 14)
+          myNr--;
+
+        break;
+      case "9950":
+      case "9951":
+        if (("1").equals(this.getSatznummer()
+            .getInhalt()) && myNr == 11)
+          myNr--;
+        break;
+      default:
+        break;
+    }
         return (Feld) sortedFelder.toArray()[nr -1];
     }
 
