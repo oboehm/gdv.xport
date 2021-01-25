@@ -18,8 +18,13 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld0001;
 import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6ZukSummenaenderungen;
+import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.ObjectTester;
@@ -30,8 +35,7 @@ import java.util.Set;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasItem;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * JUnit-Tests fuer die {@link Bezeichner}-Klasse.
@@ -41,6 +45,8 @@ import static org.junit.Assert.assertTrue;
  */
 @RunWith(SmokeRunner.class)
 public class BezeichnerTest {
+
+    private static final Logger LOG = LogManager.getLogger();
 
     /**
      * Test-Methode fuer {@link Bezeichner#toString()}.
@@ -311,6 +317,17 @@ public class BezeichnerTest {
     public void testgetVersionVariants() {
         assertThat(Bezeichner.SATZART_0100.getVariants(), hasItem(Bezeichner.VERSION_SATZART_0100));
         assertThat(Bezeichner.VERSION_SATZART_0100.getVariants(), hasItem(Bezeichner.SATZART_0100));
+    }
+
+    @Test
+    public void testVariantsWEs() {
+        Satz satz220 = SatzFactory.getSatz(SatzTyp.of("0220.010.13.9"));
+        Feld we1 = satz220.getFeld(Bezeichner.of("HaftungswertungssummeInWE1"));
+        Feld we2 = satz220.getFeld(Bezeichner.of("HaftungswertungssummeInWE2"));
+        assertNotEquals(we1, we2);
+        LOG.info("{} und {} sind unterschiedlich.", we1, we2);
+        Feld we = satz220.getFeld(Bezeichner.of("HaftungswertungssummeInWE"));
+        assertEquals(we, we1);
     }
 
     @Test
