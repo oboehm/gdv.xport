@@ -383,7 +383,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testIsValid() {
-        Satz a = new Datensatz("xxxx", 1);
+        Satz a = new Datensatz("0000", 1);
         assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
     }
 
@@ -402,7 +402,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testValidate() {
-        Satz a = new Datensatz("xxxx", 1);
+        Satz a = new Datensatz("   0", 1);
         assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
         List<ConstraintViolation> violations = a.validate();
         for (ConstraintViolation violation : violations) {

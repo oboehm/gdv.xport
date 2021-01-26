@@ -795,13 +795,7 @@ public abstract class Satz implements Cloneable {
      * @since 0.3
 	 */
 	public final int getSatzart() {
-		try {
-			return this.satzart.toInt();
-		} catch (NumberFormatException ex) {
-			LOG.warn("{} is not a valid Satzart.", this.satzart);
-			LOG.debug("Details:", ex);
-			return 0;
-		}
+		return this.satzart.toInt();
 	}
 
 	/**
@@ -1171,7 +1165,7 @@ public abstract class Satz implements Cloneable {
 	 * @return true/false
 	 */
 	public boolean isValid() {
-		if (!this.satzart.isValid()) {
+		if (!this.satzart.isValid() || (this.getSatzart() < 1)) {
 			return false;
 		}
 		if (this.teildatensatz != null) {
@@ -1193,7 +1187,7 @@ public abstract class Satz implements Cloneable {
 	public List<ConstraintViolation> validate() {
 		Validator validator = new Validator();
 		List<ConstraintViolation> violations = validator.validate(this);
-		if (!this.satzart.isValid()) {
+		if (!this.satzart.isValid() || (this.getSatzart() < 1)) {
 			ConstraintViolation cv =
 					new SimpleConstraintViolation("invalid Satzart " + this.satzart.getInhalt(), this, this.satzart);
 			violations.add(cv);
