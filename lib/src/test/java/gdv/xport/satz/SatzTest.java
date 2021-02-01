@@ -35,6 +35,7 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -497,6 +498,14 @@ public final class SatzTest extends AbstractSatzTest {
     public void testGetSatzTyp() {
         Satz satz220 = new SatzX(220, Feld220Wagnis0.class);
         assertEquals(SatzTyp.of("0220.010.0"), satz220.getSatzTyp());
+    }
+
+    @Test
+    @Ignore // getSatzTyp() muss noch angepasst werden
+    public void testSatzart022001013() {
+        SatzTyp satzTyp = SatzTyp.of("0220.010.13.6");
+        Satz satz220 = SatzFactory.getSatz(satzTyp);
+        assertEquals(satzTyp, satz220.getSatzTyp());
     }
 
     /**

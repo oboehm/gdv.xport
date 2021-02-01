@@ -398,7 +398,7 @@ public class Teildatensatz extends Satz {
       default:
         break;
     }
-        return (Feld) sortedFelder.toArray()[nr -1];
+        return (Feld) sortedFelder.toArray()[myNr - 1];
     }
 
     /**
