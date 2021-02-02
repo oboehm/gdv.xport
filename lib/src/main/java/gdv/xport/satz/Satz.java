@@ -807,25 +807,11 @@ public abstract class Satz implements Cloneable {
 	 */
 	@JsonIgnore
 	public SatzTyp getSatzTyp() {
-	    // TODO krankenFolgeNr beachten?
-	    if (this.hasSparte() && this.getSparte() == 10 && this.hasWagnisart()) {
+		if (StringUtils.isNotEmpty(this.gdvSatzartName)) {
+			return SatzTyp.of(this.gdvSatzartName);
+		} else if (this.hasSparte() && this.getSparte() == 10 && this.hasWagnisart()) {
 	        String wagnisart = this.getWagnisart();
-	        if (StringUtils.isBlank(wagnisart)) {
-	            return new SatzTyp(this.getSatzart(), this.getSparte());
-	        }
             return SatzTyp.of(this.getSatzart(), this.getSparte(), Integer.parseInt(wagnisart));
-	    } else if (this.hasSparte() && this.getSparte() == 20  && this.getSatzart() == 220) {
-            String krankenFolgeNr = null;
-            if (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)) {
-                krankenFolgeNr = this.getFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF).getInhalt();
-            } else if (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF)) {
-                krankenFolgeNr = this.getFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF).getInhalt();
-            }
-
-            if (StringUtils.isBlank(krankenFolgeNr) || !StringUtils.isNumeric(krankenFolgeNr)) {
-                return new SatzTyp(this.getSatzart(), this.getSparte());
-            }
-            return SatzTyp.of(this.getSatzart(), this.getSparte(), Integer.parseInt(krankenFolgeNr));
 	    } else if (this.hasSparte()) {
 	        return new SatzTyp(this.getSatzart(), this.getSparte());
 	    } else {

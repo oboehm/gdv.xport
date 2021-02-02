@@ -18,16 +18,21 @@
 
 package gdv.xport.satz;
 
-import gdv.xport.config.*;
+import gdv.xport.config.Config;
 import gdv.xport.feld.*;
-import gdv.xport.io.*;
-import gdv.xport.satz.feld.common.*;
-import gdv.xport.util.*;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.*;
+import gdv.xport.io.ImportException;
+import gdv.xport.io.PushbackLineNumberReader;
+import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.TeildatensatzNummer;
+import gdv.xport.satz.feld.common.WagnisartLeben;
+import gdv.xport.util.SatzTyp;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.io.*;
-import java.util.*;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.PushbackReader;
+import java.util.List;
 
 import static gdv.xport.feld.Bezeichner.*;
 
@@ -203,6 +208,8 @@ public class Datensatz extends Satz {
 		this.art = other.art;
 		this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
 		this.wagnisart.setInhalt(other.wagnisart.getInhalt());
+		this.setGdvSatzartName(other.getGdvSatzartName());
+		this.setGdvSatzartNummer(other.getGdvSatzartNummer());
 	}
 
     /**
