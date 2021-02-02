@@ -100,8 +100,13 @@ public class SatzX extends Datensatz {
 	 * @param enumClass Enum-Klasse, die den Datensatz beschreibt
 	 * @since 0.9
 	 */
-	public SatzX(final SatzTyp satzNr, final Class<? extends Enum> enumClass) {
-		super(satzNr, getTeildatensaetzeFor(satzNr.getSatzart(), enumClass));
+  public SatzX(final SatzTyp satzNr, final Class<? extends Enum> enumClass)
+  {
+    super(satzNr, getTeildatensaetzeFor(satzNr, enumClass));
+
+    this.setGdvSatzartName(satzNr.toString());
+    if (satzNr.hasSparte())
+      this.setSparte(satzNr.getSparteAsString());
 	}
 
 	private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart,
@@ -110,6 +115,15 @@ public class SatzX extends Datensatz {
 		return getTeildatensaetzeFor(satzart, constants);
 	}
 
+  /**
+   * hierdurch werden Teildatensaetze erzeugt, die ihren GdvSatzartNamen kennen
+   */
+  private static List<Teildatensatz> getTeildatensaetzeFor(final SatzTyp satzNr,
+      final Class<? extends Enum> enumClass)
+  {
+    Enum[] constants = enumClass.getEnumConstants();
+    return getTeildatensaetzeFor(satzNr, constants);
+  }
 	/**
 	 * Setzt die Teildatensaetze mit den angegebenen Feldern auf.
 	 *

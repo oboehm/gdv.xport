@@ -1295,6 +1295,39 @@ public abstract class Satz implements Cloneable {
 		return teildatensaetze;
 	}
 
+	/**
+	 * Durch die Uebergabe eines SatzTyp kann der GdvSatzartName im
+	 *       Teildatensatz besetzt werden. Bei den SatzXml ist alles eleganter..
+	 *
+	 *       Hier passiert die Magie: die Annotationen der uebergebenen Enum
+	 *       werden ausgelesen und in eine Liste mit den Teildatensaetzen gepackt.
+	 *
+	 * @param satzTyp the satzTyp
+	 * @param felder the felder
+	 * @return eine Liste mit Teildatensaetzen
+	 */
+	protected static List<Teildatensatz> getTeildatensaetzeFor(
+			final SatzTyp satzTyp, final Enum[] felder)
+	{
+		SortedMap<Integer, Teildatensatz> tdsMap = new TreeMap<>();
+		List<MetaFeldInfo> metaFeldInfos = getMetaFeldInfos(felder);
+		for (MetaFeldInfo metaFeldInfo : metaFeldInfos)
+		{
+			int n = metaFeldInfo.getTeildatensatzNr();
+			Teildatensatz tds = tdsMap.get(n);
+			if (tds == null)
+			{
+				tds = new Teildatensatz(satzTyp, n);
+				tdsMap.put(n, tds);
+			}
+			add(metaFeldInfo.getFeldEnum(), tds);
+
+		}
+		List<Teildatensatz> teildatensaetze = new ArrayList<>(tdsMap.values());
+		setSparteFor(teildatensaetze, metaFeldInfos);
+		return teildatensaetze;
+	}
+
     private static void setSparteFor(final List<Teildatensatz> teildatensaetze,
             final List<MetaFeldInfo> metaFeldInfos) {
         int sparte = getSparte(metaFeldInfos);

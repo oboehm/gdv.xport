@@ -21,6 +21,7 @@ package gdv.xport.satz;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
+import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import org.apache.logging.log4j.LogManager;
@@ -87,6 +88,19 @@ public class Teildatensatz extends Satz {
         super(satzart, 0);
         initSatznummer(nr);
     }
+
+  /**
+   * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart und
+   * Nummer.
+   *
+   * @param satzTyp z.B. 0220.050
+   * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
+   */
+  public Teildatensatz(final SatzTyp satzTyp, final int nr)
+  {
+    this(satzTyp.getSatzart(), nr);
+    this.setGdvSatzartName(satzTyp.toString());
+  }
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart, Nummer
