@@ -19,6 +19,7 @@
 package gdv.xport.satz;
 
 import gdv.xport.config.Config;
+import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
@@ -214,6 +215,11 @@ public class NachsatzTest extends AbstractSatzTest {
     public void testCopyCtor() {
         Nachsatz copy = new Nachsatz(nachsatz);
         assertEquals(nachsatz, copy);
+    }
+
+    @Test
+    public void testGetSatzTyp() {
+        assertEquals(SatzTyp.of("9999"), nachsatz.getSatzTyp());
     }
 
 }
