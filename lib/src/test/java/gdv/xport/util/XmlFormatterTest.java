@@ -107,7 +107,7 @@ public class XmlFormatterTest extends AbstractFormatterTest {
     }
 
     /**
-     * Tested die Formattierung der Musterdatei als HTML.
+     * Tested die Formatierung der Musterdatei als HTML.
      *
      * @throws SAXException falls was schiefgelaufen ist
      * @throws IOException falls was schiefgelaufen ist
