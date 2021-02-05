@@ -26,7 +26,6 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzTyp;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -139,7 +138,6 @@ public class Datensatz extends Satz {
 	 */
 	public Datensatz(final int satzart, final int sparte, final List<Teildatensatz> tdsList) {
 		this(satzart, complete(tdsList, sparte), null);
-        // this(satzart, complete(tdsList, sparte));
 	}
 
   /**
@@ -205,14 +203,11 @@ public class Datensatz extends Satz {
 	 * @param other der originale Datensatz
 	 */
 	public Datensatz(final Datensatz other) {
-		//super(other, other.cloneTeildatensaetze());
-		this(other.getSatzart(), other.getSparte(), other.cloneTeildatensaetze(), other.getSatzversion());
+		super(other, other.cloneTeildatensaetze());
+		this.sparte.setInhalt(other.sparte.getInhalt());
 		this.art = other.art;
 		this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
 		this.wagnisart.setInhalt(other.wagnisart.getInhalt());
-		if (StringUtils.isBlank(getGdvSatzartName())) {
-			this.setGdvSatzartName(other.getGdvSatzartName());
-		}
 	}
 
     /**

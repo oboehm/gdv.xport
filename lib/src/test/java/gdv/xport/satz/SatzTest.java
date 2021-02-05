@@ -500,7 +500,6 @@ public final class SatzTest extends AbstractSatzTest {
     }
 
     @Test
-    //@Ignore // getSatzTyp() muss noch angepasst werden
     public void testSatzart022001013() {
         SatzTyp satzTyp = SatzTyp.of("0220.010.13.6");
         Satz satz220 = SatzFactory.getSatz(satzTyp);
