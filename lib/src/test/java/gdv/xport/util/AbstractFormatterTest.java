@@ -104,7 +104,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
     }
 
     /**
-     * Tested die Formattierung der Musterdatei als HTML.
+     * Tested die Formatierung der Musterdatei als HTML.
      *
      * @param formatter the formatter
      * @param filename the filename

@@ -85,7 +85,7 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
     }
 
     /**
-     * Tested die Formattierung der Musterdatei als HTML.
+     * Tested die Formatierung der Musterdatei als HTML.
      *
      * @throws XMLStreamException falls was schiefgelaufen ist
      * @throws IOException falls was schiefgelaufen ist

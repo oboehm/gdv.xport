@@ -85,7 +85,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     }
 
     /**
-     * Hier testen wir die HTML-Formattierung.
+     * Hier testen wir die HTML-Formatierung.
      *
      * @throws IOException the io exception
      */

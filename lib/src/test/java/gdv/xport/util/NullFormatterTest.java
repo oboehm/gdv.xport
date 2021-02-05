@@ -63,7 +63,7 @@ public class NullFormatterTest extends AbstractFormatterTest {
 
     /**
      * Test-Methode fuer {@link NullFormatter#write(Datenpaket)}.
-     * Hier testen wir, ob der Formatter tatsaechlich keine Formattierung
+     * Hier testen wir, ob der Formatter tatsaechlich keine Formatierung
      * vornimmt und als Result die gleiche Datei wie die Eingabe-Datei
      * rausschreibt.
      *

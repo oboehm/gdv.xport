@@ -90,7 +90,7 @@ public final class DefaultDatenpaketService implements DatenpaketService {
      * Datenpaket anhand des uebergebenen Formatters.
      *
      * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
-     * @param mimeType gewuenschte Formattierung
+     * @param mimeType gewuenschte Formatierung
      * @return string formatiertes Datenpaket
      * @throws IOException kann beim Lesen der URI auftreten
      */
@@ -106,7 +106,7 @@ public final class DefaultDatenpaketService implements DatenpaketService {
      * und formattiert das Datenpaket anhand des uebergebenen Formatters.
      *
      * @param text Text, der ueber die Leitung reinkommt.
-     * @param mimeType gewuenschte Formattierung
+     * @param mimeType gewuenschte Formatierung
      * @return string formatiertes Datenpaket
      */
     @Override
