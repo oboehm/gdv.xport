@@ -645,7 +645,14 @@
     <contributor>
       <name>Klaus-Dieter Junke</name>
       <roles>
-        <role>Java Developer</role>
+        <role>COBOL Expert</role>
+      </roles>
+    </contributor>
+    <contributor>
+      <name>Andy Teubner</name>
+      <url>https://github.com/andyfined</url>
+      <roles>
+        <role>Lektor</role>
       </roles>
     </contributor>
   </contributors>

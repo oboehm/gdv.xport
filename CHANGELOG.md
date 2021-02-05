@@ -34,6 +34,8 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - Widersprüche in VUVM2018.xml wurden manuell bereinigt
 - SatzTyp wurde ausgebaut und um of(..)-Methode erweitert
 - gdv-xport-service auf OpenAPI / Swagger 3.0 aktualisiert
+- _fixed_: Formatierung in Javaoc wird jetzt korrekt mit einem 't' geschrieben
+  ([Issue #57](https://github.com/oboehm/gdv.xport/issues/57))
 
 
 
