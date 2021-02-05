@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * Dieser Formatter macht keine eigentliche Formattierung, sondern reicht den
+ * Dieser Formatter macht keine eigentliche Formatierung, sondern reicht den
  * Datensatz einfach durch.
  *
  * @author oliver (ob@aosd.de)

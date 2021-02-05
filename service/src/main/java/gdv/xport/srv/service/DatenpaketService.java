@@ -55,7 +55,7 @@ public interface DatenpaketService {
      * Datenpaket anhand des uebergebenen Formatters.
      *
      * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
-     * @param type gewuenschte Formattierung
+     * @param type gewuenschte Formatierung
      * @return string formatiertes Datenpaket
      * @throws IOException kann beim Lesen der URI auftreten
      */
@@ -66,7 +66,7 @@ public interface DatenpaketService {
      * und formattiert das Datenpaket anhand des uebergebenen Formatters.
      *
      * @param text Text, der ueber die Leitung reinkommt.
-     * @param type gewuenschte Formattierung
+     * @param type gewuenschte Formatierung
      * @return string formatiertes Datenpaket
      */
     String format(String text, MimeType type);
