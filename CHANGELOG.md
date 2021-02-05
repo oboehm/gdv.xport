@@ -11,6 +11,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Planned]
 
+- core-Lib mit Basis-Funktionalität herausziehen
 - Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
 - ByteAdresse durchgängiger verwenden
 
