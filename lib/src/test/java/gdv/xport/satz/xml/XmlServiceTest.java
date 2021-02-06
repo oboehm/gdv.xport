@@ -347,11 +347,15 @@ public class XmlServiceTest extends AbstractXmlTest {
     public void testBausparenArt() {
         SatzTyp bausparen = SatzTyp.of("0220.580.2");
         Satz darlehen = xmlService.getSatzart(bausparen);
-        assertEquals(bausparen.getSatzart(), darlehen.getSatzart());
-        assertEquals(bausparen.getSparte(), darlehen.getSparte());
+        assertEquals(220, darlehen.getSatzart());
+        assertEquals(580, darlehen.getSparte());
+        assertEquals(580, darlehen.getTeildatensatz(2).getSparte());
+        assertEquals(580, darlehen.getTeildatensatz(3).getSparte());
         Feld produkt = darlehen.getFeld(Bezeichner.of("Produkt"));
         assertEquals("580", produkt.getInhalt());
-        Feld art = darlehen.getFeld(Bezeichner.of("Art1"));
+        assertEquals("580", darlehen.getTeildatensatz(2).getFeld(Bezeichner.SPARTE).getInhalt());
+        assertEquals("580", darlehen.getTeildatensatz(3).getFeld(Bezeichner.SPARTE).getInhalt());
+        Feld art = darlehen.getFeld(Bezeichner.of("Art"));
         assertEquals("2", art.getInhalt());
     }
 

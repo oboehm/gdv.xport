@@ -126,6 +126,12 @@ public enum Feld230 {
      * Leerstellen.
      */
     @FeldInfo(teildatensatz = 1, nr = 20, type = AlphaNumFeld.class, anzahlBytes = 82, byteAdresse = 174)
-    LEERSTELLEN
+    LEERSTELLEN,
+
+    /**
+     * Satznummer.
+     */
+    @FeldInfo(teildatensatz = 1, nr = 21, type = AlphaNumFeld.class, anzahlBytes = 1, byteAdresse = 256)
+    SATZNUMMER
 
 }
