@@ -1,19 +1,19 @@
 package gdv.xport.satz;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 /**
  * Testklasse fuer {@link Datensatz#readSatznummer(char[])} in Satzarten 0210,
@@ -30,7 +30,7 @@ public class SatznummerTest {
             + "                                                                "
             + "                                                                ";
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Satz {0}, Pos. {1}")
     public static Collection<Object[]> data() {
         List<Object[]> data = new ArrayList<>();
 

@@ -1494,52 +1494,65 @@ public abstract class Satz implements Cloneable {
 	 * @return Teildatensatz -Nummer
 	 */
 	public static char readSatznummer(char[] cbuf) {
-        if (cbuf.length < 256) {
-            return 0;
-        }
-        String satz = new String(cbuf);
-        String satzartString = satz.substring(0, 4).trim();
-        int satzart = isNumber(satzartString) ? Integer.parseInt(satzartString) : -1;
-        String sparteString = satz.substring(10, 13).trim();
-        int sparte = isNumber(sparteString) ? Integer.parseInt(sparteString) : -1;
-        
-        int satznummerIndex = 255;
-        switch (satzart) {
-            case 210:
+		if (cbuf.length < 256) {
+			return 0;
+		}
+		String satz = new String(cbuf);
+		String satzartString = satz.substring(0, 4)
+								   .trim();
+		int satzart = isNumber(satzartString) ? Integer.parseInt(satzartString)
+				: -1;
+		String sparteString = satz.substring(10, 13)
+								  .trim();
+		int sparte = isNumber(sparteString) ? Integer.parseInt(sparteString) : -1;
+
+		int satznummerIndex = 255;
+		switch (satzart) {
+			case 210:
 				satznummerIndex = getSatznummerIndexOfSatz210(sparte);
 				break;
-            case 211:
-                switch (sparte) {
-                    case 0:
-                    case 80:
-                    case 170:
-                    case 190:
-                        satznummerIndex = 42;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 220:
-            case 221:
+			case 211:
+				switch (sparte) {
+					case 0:
+					case 80:
+					case 170:
+					case 190:
+						satznummerIndex = 42;
+						break;
+					default:
+						break;
+				}
+				break;
+			case 220:
+			case 221:
 				satznummerIndex = getSatznummerIndexOf(satz, sparte);
 				break;
-            case 250:
-            case 251:
-                switch (sparte) {
-                    case 190:
-                        satznummerIndex = 50;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
-        }
-        
-        return satz.charAt(satznummerIndex);
-    }
+			case 250:
+			case 251:
+				satznummerIndex = 50;
+				break;
+			case 270:
+			case 280:
+			case 291:
+			case 292:
+			case 293:
+			case 294:
+			case 295:
+				satznummerIndex = 42;
+				break;
+			case 410:
+			case 420:
+			case 450:
+				satznummerIndex = 50;
+				break;
+			case 550:
+				satznummerIndex = 65;
+				break;
+			default:
+				break;
+		}
+		return satz.charAt(satznummerIndex);
+	}
 
 	private static int getSatznummerIndexOfSatz210(int sparte) {
 		switch (sparte) {
@@ -1564,9 +1577,11 @@ public abstract class Satz implements Cloneable {
 			case 0:
 				return 46;
 			case 30:
-				if ((satz.charAt(48) == '2' && satz.charAt(255) == 'X') || (satz.charAt(48) == '1' || satz.charAt(48) == '4')) {
+				if ((satz.charAt(48) == '2' && satz.charAt(255) == 'X') || (satz.charAt(
+						48) == '1' || satz.charAt(48) == '4')) {
 					return 48;
-				} else if (Character.isDigit(satz.charAt(255)) && satz.charAt(255) != '0' && satz.charAt(255) != '2') {
+				} else if (Character.isDigit(satz.charAt(255)) && satz.charAt(255) != '0'
+						&& satz.charAt(255) != '2') {
 					return 249;
 				} else if (satz.charAt(42) == '3') {
 					return 42;
