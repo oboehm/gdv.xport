@@ -38,12 +38,6 @@ import java.util.*;
  * Bezeichner-Konstanten Leerzeichen, die bei einem Vergleich nicht
  * beruecksichtigt werden sollen.
  * </p>
- * <p>
- * Die ehemaligen String-Konstanten werden ab 2.0 durch entsprechnende Bezeichner-
- * Konstanten ersetzt. Fuer eine Uebergangszeit sind die alten String-Konstanten
- * durch den Prefix "NAME_" gekennzeichnet, werden aber ab der Version 2.2 nicht
- * mehr zur Verfuegung stehen.
- * </p>
  *
  * @author oliver
  * @since 15.10.2009
@@ -1598,13 +1592,13 @@ public final class Bezeichner {
     public Set<Bezeichner> getVariants() {
         Set<Bezeichner> vars = new HashSet<>(variants);
         vars.add(this);
-        char lastchar = name.charAt(name.length()-1);
-        if (name.startsWith("Satzart")) {
+        char lastchar = getName().charAt(getName().length()-1);
+        if (getName().startsWith("Satzart")) {
             vars.add(Bezeichner.of("Version " + name));
-        } else if (name.startsWith("Version")) {
-            vars.add(Bezeichner.of(name.substring(7).trim()));
+        } else if (getName().startsWith("Version")) {
+            vars.add(Bezeichner.of(getName().substring(7).trim()));
         } else if (lastchar == '1') {
-            String shorten = technischerName.substring(0, technischerName.length()-1).trim();
+            String shorten = getTechnischerName().substring(0, getTechnischerName().length()-1).trim();
             vars.add(Bezeichner.of(shorten));
         }
         return vars;
