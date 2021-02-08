@@ -1398,20 +1398,20 @@ public final class Bezeichner {
 
     // Mapping fuer manche Bezeichner (Name <--> technischer Name)
     static {
-        MAPPING.put(AUSSCHLUSSDAT_VP_PERSONENGRUPPE.name, AUSSCHLUSSDAT_VP_PERSONENGRUPPE.technischerName);
-        MAPPING.put(BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS.name, BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS.technischerName);
-        MAPPING.put(BEGINNDAT_NAECHSTEN_JAHRESRENTE.name, BEGINNDAT_NAECHSTEN_JAHRESRENTE.technischerName);
-        MAPPING.put(BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME.name, BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME.technischerName);
-        MAPPING.put(DAT_BEZUGSFERTIGKEIT.name, DAT_BEZUGSFERTIGKEIT.technischerName);
-        MAPPING.put(DAT_LETZTEN_BEITRAGSANGLEICHUNG.name, DAT_LETZTEN_BEITRAGSANGLEICHUNG.technischerName);
-        MAPPING.put(DAT_LETZTEN_POSITIVEN_DYNAMIK.name, DAT_LETZTEN_POSITIVEN_DYNAMIK.technischerName);
-        MAPPING.put(ENDEDATUM_BEI_ROTEN_KENNZEICHEN.name, ENDEDATUM_BEI_ROTEN_KENNZEICHEN.technischerName);
-        MAPPING.put(ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS.name,
-                ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS.technischerName);
-        MAPPING.put(LFD_PERSONENNR_GEVO.name, LFD_PERSONENNR_GEVO.technischerName);
-        MAPPING.put(URSPRUENGLICHES_HAFTUNGSBEGINNDAT.name, URSPRUENGLICHES_HAFTUNGSBEGINNDAT.technischerName);
-        MAPPING.put(VS_NR.name, VS_NR.technischerName);
-        MAPPING.put(VU_NR.name, VU_NR.technischerName);
+        MAPPING.put(AUSSCHLUSSDAT_VP_PERSONENGRUPPE.getName(), AUSSCHLUSSDAT_VP_PERSONENGRUPPE.getTechnischerName());
+        MAPPING.put(BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS.getName(), BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS.getTechnischerName());
+        MAPPING.put(BEGINNDAT_NAECHSTEN_JAHRESRENTE.getName(), BEGINNDAT_NAECHSTEN_JAHRESRENTE.getTechnischerName());
+        MAPPING.put(BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME.getName(), BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME.getTechnischerName());
+        MAPPING.put(DAT_BEZUGSFERTIGKEIT.getName(), DAT_BEZUGSFERTIGKEIT.getTechnischerName());
+        MAPPING.put(DAT_LETZTEN_BEITRAGSANGLEICHUNG.getName(), DAT_LETZTEN_BEITRAGSANGLEICHUNG.getTechnischerName());
+        MAPPING.put(DAT_LETZTEN_POSITIVEN_DYNAMIK.getName(), DAT_LETZTEN_POSITIVEN_DYNAMIK.getTechnischerName());
+        MAPPING.put(ENDEDATUM_BEI_ROTEN_KENNZEICHEN.getName(), ENDEDATUM_BEI_ROTEN_KENNZEICHEN.getTechnischerName());
+        MAPPING.put(ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS.getName(),
+                ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS.getTechnischerName());
+        MAPPING.put(LFD_PERSONENNR_GEVO.getName(), LFD_PERSONENNR_GEVO.getTechnischerName());
+        MAPPING.put(URSPRUENGLICHES_HAFTUNGSBEGINNDAT.getName(), URSPRUENGLICHES_HAFTUNGSBEGINNDAT.getTechnischerName());
+        MAPPING.put(VS_NR.getName(), VS_NR.getTechnischerName());
+        MAPPING.put(VU_NR.getName(), VU_NR.getTechnischerName());
         findConstants();
     }
 
@@ -1634,7 +1634,7 @@ public final class Bezeichner {
      */
     @Override
     public String toString() {
-        return this.technischerName;
+        return this.getTechnischerName();
     }
     
     /**
@@ -1645,7 +1645,7 @@ public final class Bezeichner {
      * @return the bezeichner
      */
     public Bezeichner mergeWith(final Bezeichner bezeichner) {
-        if (this.technischerName.equals(bezeichner.getTechnischerName())) {
+        if (this.getTechnischerName().equals(bezeichner.getTechnischerName())) {
             LOG.trace("Merge of {} and {} is ignored.", this, bezeichner);
             return this;
         } else {
