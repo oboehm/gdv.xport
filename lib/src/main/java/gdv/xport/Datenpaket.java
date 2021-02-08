@@ -55,6 +55,21 @@ public final class Datenpaket {
     private final List<Datensatz> datensaetze = new ArrayList<>();
     private Nachsatz nachsatz = new Nachsatz();
 
+    private static final int[] spartenIdentischZu_000 = {60, 63, 65, 69, 160,
+            161, 162, 169, 233, 240, 241, 242, 243, 249, 250, 251, 252, 290, 291, 293,
+            294, 296, 299, 630, 650};
+
+    private static final int[] spartenIdentischZu_080 = {80, 81, 82, 83, 89,
+            90, 99, 100, 109, 120, 123, 124, 150, 210, 230, 231};
+
+    private static final int[] spartenIdentischZu_170 = {170, 171, 172, 174,
+            175, 176, 179, 232};
+
+    private static final int[] spartenIdentischZu_190 = {180, 181, 182, 183,
+            184, 185, 189, 190, 191, 192, 193, 194, 197, 199};
+
+    private static final int[] spartenIdentischZu_510 = {241, 244, 510};
+
     /**
      * Wenn man den Default-Konstruktor verwendet, sollte man vorher die
      * VU-Nummer konfiguriert haben.
@@ -374,6 +389,20 @@ public final class Datenpaket {
             throws IOException {
         int sparte = Datensatz.readSparte(reader);
         SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
+        if (satzart >= 210 && satzart < 300) {
+            if (isIdentischZu000(sparte))
+                satzTyp = SatzTyp.of(satzart, 0);
+            else if (isIdentischZu080(sparte))
+                satzTyp = SatzTyp.of(satzart, 80);
+            else if (isIdentischZu170(sparte))
+                satzTyp = SatzTyp.of(satzart, 170);
+            else if (isIdentischZu190(sparte))
+                satzTyp = SatzTyp.of(satzart, 190);
+            else if (isIdentischZu510(sparte))
+                satzTyp = SatzTyp.of(satzart, 510);
+            else if (600 == sparte)
+                satzTyp = SatzTyp.of(satzart, 50);
+        }
         if (sparte == 10 && ((satzart == 210) || (satzart == 220) || (satzart == 221))) {
             WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
             if (wagnisart != WagnisartLeben.NULL) {
@@ -419,6 +448,80 @@ public final class Datenpaket {
         return satz;
     }
 
+    /**
+     * Sparten, die gemaess Spartenverzeichnis
+     * (Anlagen_GDV-Datendatz_VU-Vermittler) nach Satzdefinition vom Allgemeinen
+     * Satz geliefert werden.
+     */
+    private static boolean isIdentischZu000(int sparte) {
+        boolean ret = false;
+
+        for (int sparte000 : spartenIdentischZu_000) {
+            if (sparte000 == sparte)
+                return true;
+        }
+        return ret;
+    }
+
+    /**
+     * Sparten, die gemaess Spartenverzeichnis
+     * (Anlagen_GDV-Datendatz_VU-Vermittler) nach Satzdefinition vom
+     * Feuer-Industrie/Gewerbl. Sachvers. geliefert werden.
+     */
+    private static boolean isIdentischZu080(int sparte) {
+        boolean ret = false;
+
+        for (int sparte000 : spartenIdentischZu_080) {
+            if (sparte000 == sparte)
+                return true;
+        }
+        return ret;
+    }
+
+    /**
+     * Sparten, die gemaess Spartenverzeichnis
+     * (Anlagen_GDV-Datendatz_VU-Vermittler) nach Satzdefinition von Technische
+     * Versicherung geliefert werden.
+     */
+    private static boolean isIdentischZu170(int sparte) {
+        boolean ret = false;
+
+        for (int sparte170 : spartenIdentischZu_170) {
+            if (sparte170 == sparte)
+                return true;
+        }
+        return ret;
+    }
+
+    /**
+     * Sparten, die gemaess Spartenverzeichnis
+     * (Anlagen_GDV-Datendatz_VU-Vermittler) nach Satzdefinition von Transport
+     * geliefert werden.
+     */
+    private static boolean isIdentischZu190(int sparte) {
+        boolean ret = false;
+
+        for (int sparte190 : spartenIdentischZu_190) {
+            if (sparte190 == sparte)
+                return true;
+        }
+        return ret;
+    }
+
+    /**
+     * Sparten, die gemaess Spartenverzeichnis
+     * (Anlagen_GDV-Datendatz_VU-Vermittler) nach Satzdefinition von
+     * Verkehrsservice geliefert werden.
+     */
+    private static boolean isIdentischZu510(int sparte) {
+        boolean ret = false;
+
+        for (int sparte510 : spartenIdentischZu_510) {
+            if (sparte510 == sparte)
+                return true;
+        }
+        return ret;
+    }
     /**
      * Importieren einer Datei.
      *
