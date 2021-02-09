@@ -104,7 +104,7 @@ public final class Nachsatz extends Satz {
      * @since 5.0
      */
     public Nachsatz(final Nachsatz other) {
-        super(9999, other.cloneTeildatensaetze(), other.getSatzversion());
+        super(other, other.cloneTeildatensaetze());
     }
 
     /**

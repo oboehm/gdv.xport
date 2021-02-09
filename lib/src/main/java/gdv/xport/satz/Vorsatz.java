@@ -72,7 +72,7 @@ public class Vorsatz extends Satz {
     }
 
     private Vorsatz(Satz vorlage, VersionHandler versionHandler) {
-        super(1, vorlage.getTeildatensaetze(), vorlage.getSatzversion());
+        super(vorlage, vorlage.cloneTeildatensaetze());
         this.versionHandler = versionHandler;
         setVuNummer(Config.getVUNummer().getInhalt());
     }
