@@ -20,7 +20,6 @@ package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
@@ -401,11 +400,6 @@ public class XmlSatzFactory implements VersionHandler {
      * Als Fallback wird nur der Datensatz fuer die entsprechende Satzart
      * zurueckgeben. Falls dieser nicht existiert, wird ein (allgemeiner)
      * Datensatz mit Satzart und Sparte als Parameter erzeugt.
-     * <p>
-     * TODO: Besser waere es, zuerst den Datensatz zu suchen, der am besten
-     * passt. D.h. auch die anderen Werte der uebergebenen SatzNummer wie Sparte
-     * oder Wagnisart sollten dabei beruecksichtigt werden.
-     * </p>
      *
      * @param satzNr die SatzNummer
      * @return der erzeugte Datensatz
@@ -415,13 +409,6 @@ public class XmlSatzFactory implements VersionHandler {
             Datensatz fallback = (Datensatz) getSatz(satzNr);
             if (satzNr.hasSparte()) {
                 fallback.setSparte(satzNr.getSparte());
-            }
-            if (fallback.hasFeld(Bezeichner.UNBEKANNT)) {
-                try {
-                    return generateSatz(satzNr);
-                } catch (NotRegisteredException ex) {
-                    LOG.warn("XML-Fallback has " + satzNr + " not registered: " + ex);
-                }
             }
             return fallback;
         } catch (NotRegisteredException re) {
