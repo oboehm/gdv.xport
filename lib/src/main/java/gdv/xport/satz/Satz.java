@@ -108,13 +108,6 @@ public abstract class Satz implements Cloneable {
 	public Satz(final String content, final int n) {
 		this.satzart.setInhalt(content);
 		this.createTeildatensaetze(n);
-		if (content.length() > 4) {
-			try {
-				this.importFrom(content);
-			} catch (IOException ioe) {
-				throw new IllegalArgumentException("1st argument too short", ioe);
-			}
-		}
 	}
 
 	/**
