@@ -31,7 +31,6 @@ import gdv.xport.satz.feld.sparte53.Feld220;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
-import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -48,7 +47,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.isEmptyString;
 import static org.junit.Assert.*;
 
 /**
@@ -395,20 +394,6 @@ public final class SatzTest extends AbstractSatzTest {
         NumFeld schrott = new NumFeld("schrott", "xxxx");
         satz.add(schrott);
         assertFalse(satz + " has invalid fields!", satz.isValid());
-    }
-
-    /**
-     * Bei einem unbekannten Datensatz sollte die Validierung fehlschlagen.
-     */
-    @Test
-    public void testValidate() {
-        Satz a = new Datensatz("   0", 1);
-        assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
-        List<ConstraintViolation> violations = a.validate();
-        for (ConstraintViolation violation : violations) {
-            LOG.info("ConstraintViolation: " + violation);
-        }
-        assertThat(violations.size(), is(greaterThan(0)));
     }
 
     /**

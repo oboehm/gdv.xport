@@ -67,134 +67,157 @@ public class Datensatz extends Satz {
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param satzart z.B. "0100"
+	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp)} verwenden
 	 */
+	@Deprecated
 	public Datensatz(final String satzart) {
-		super(satzart);
-		this.setUpTeildatensaetze();
+		this(SatzTyp.of(satzart));
 	}
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param satzart z.B. 100
+	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp)} verwenden
 	 */
+	@Deprecated
 	public Datensatz(final int satzart) {
-		super(satzart, 1);
-		this.setUpTeildatensaetze();
+		this(SatzTyp.of(satzart));
 	}
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param satzart z.B. 100
 	 * @param n Anzahl der Teildatensaetze
+	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp, int)} verwenden
 	 */
+	@Deprecated
 	public Datensatz(final String satzart, final int n) {
-		super(satzart, n);
-		this.setUpTeildatensaetze();
+		this(SatzTyp.of(satzart), n);
 	}
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param satzart z.B. 100
 	 * @param tdsList Liste mit den Teildatensaetzen
+	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp, List)} verwenden
 	 */
+	@Deprecated
 	public Datensatz(final int satzart, final List<? extends Teildatensatz> tdsList) {
-		this(satzart, tdsList, null);
+		this(SatzTyp.of(satzart), tdsList);
+	}
+
+	/**
+	 * Instantiiert einen neuen Datensatz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
+	 *
+	 * @param satzart z.B. 100
+	 * @param sparte z.B. 70 (Rechtsschutz)
+	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp)} verwenden
+	 */
+	@Deprecated
+	public Datensatz(final int satzart, final int sparte) {
+		this(SatzTyp.of(satzart, sparte));
 	}
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
 	 *
-	 * @param satzart z.B. 100
-	 * @param sparte z.B. 70 (Rechtsschutz)
+	 * @param satzTyp z.B. "0100.070" (Adressteil, Rechtsschutz)
+	 * @since 5.0
 	 */
-	public Datensatz(final int satzart, final int sparte) {
-		this(satzart, sparte, 1);
+	public Datensatz(SatzTyp satzTyp) {
+		this(satzTyp, 1);
 	}
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param satzart z.B. 100
 	 * @param sparte z.B. 70 (Rechtsschutz)
 	 * @param n Anzahl der Teildatensaetze
+	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp, int)} verwenden
 	 */
+	@Deprecated
 	public Datensatz(final int satzart, final int sparte, final int n) {
-		super(satzart, n);
-		this.setSparte(sparte);
-		this.setUpTeildatensaetze();
+		this(SatzTyp.of(satzart, sparte), n);
 	}
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
 	 *
+	 * @param satzTyp z.B. "0100.070" (Adressteil, Rechtsschutz)
+	 * @param n Anzahl der Teildatensaetze
+	 * @since 5.0
+	 */
+	public Datensatz(SatzTyp satzTyp, final int n) {
+		super(satzTyp.getSatzart(), n);
+		if (satzTyp.hasSparte()) {
+			this.sparte.setInhalt(satzTyp.getSparte());
+		}
+		this.setUpTeildatensaetze();
+	}
+
+	/**
+	 * Instantiiert einen neuen Datensatz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
+	 *
 	 * @param satzart z.B. 100
 	 * @param sparte z.B. 70 (Rechtsschutz)
 	 * @param tdsList Liste mit den Teildatensaetzen
+	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp, List)} verwenden
 	 */
+	@Deprecated
 	public Datensatz(final int satzart, final int sparte, final List<Teildatensatz> tdsList) {
-		this(satzart, complete(tdsList, sparte), null);
+		this(SatzTyp.of(satzart, sparte), tdsList);
 	}
 
-  /**
-   * Instantiiert einen neuen Datensatz.
-   *
-   * @param satzNr die SatzNummer
-   * @param tdsList Liste mit den Teildatensaetzen
-   * @since 0.9
-   */
-  public Datensatz(final SatzTyp satzNr, final List<Teildatensatz> tdsList) {
-    this(satzNr.getSatzart(), tdsList);
-    if (satzNr.hasSparte())  {
-      this.setSparte(satzNr.getSparte());
-    }
-    if (satzNr.hasWagnisart() && satzNr.getWagnisart() < 10)  {
-      this.set(Bezeichner.WAGNISART, Integer.toString(satzNr.getWagnisart()));
-    }
-    if (satzNr.hasTeildatensatzNummer()) {
+	/**
+	 * Instantiiert einen neuen Datensatz.
+	 *
+	 * @param satzNr  die SatzNummer
+	 * @param tdsList Liste mit den Teildatensaetzen
+	 * @since 0.9
+	 */
+	public Datensatz(final SatzTyp satzNr, final List<? extends Teildatensatz> tdsList) {
+		super(satzNr.getSatzart(), tdsList, null);
+		if (tdsList.get(0).hasSparte()) {
+			this.sparte.setInhalt(tdsList.get(0).getSparte());
+		}
+		this.completeTeildatensaetze();
+		if (satzNr.hasSparte()) {
+			this.setSparte(satzNr.getSparte());
+		}
+		if (satzNr.hasWagnisart() && satzNr.getWagnisart() < 10) {
+			this.set(Bezeichner.WAGNISART, Integer.toString(satzNr.getWagnisart()));
+		}
+		if (satzNr.hasTeildatensatzNummer()) {
 			this.setTeildatensatzNummer("" + satzNr.getTeildatensatzNummer());
-    }
-    this.completeTeildatensaetze();
-  }
-
-  /**
-   * Instantiiert einen neuen Datensatz.
-   *
-   * @param satzart z.B. 100
-   * @param tdsList Liste mit den Teildatensaetzen
-   * @param satzVersion die Version des Satzes
-   */
-  public Datensatz(final int satzart,
-      final List<? extends Teildatensatz> tdsList,
-      final AlphaNumFeld satzVersion)
-  {
-    super(satzart, tdsList, satzVersion);
-    if (tdsList.get(0)
-        .hasSparte())
-    {
-      this.sparte.setInhalt(tdsList.get(0)
-          .getSparte());
-    }
-    this.completeTeildatensaetze();
-  }
-
-  /**
-   * Instantiiert einen neuen Datensatz.
-   *
-   * @param satzart z.B. 100
-   * @param sparte z.B. 70 (Rechtsschutz)
-   * @param tdsList Liste mit den Teildatensaetzen
-   * @param satzVersion die Version des Satzes
-   */
-  public Datensatz(final int satzart, final int sparte,
-      final List<Teildatensatz> tdsList, final AlphaNumFeld satzVersion)
-  {
-    this(satzart, complete(tdsList, sparte), satzVersion);
-  }
+		}
+	}
 
 	/**
 	 * Dies ist der Copy-Constructor, mit dem man einen bestehenden Datensatz
@@ -268,25 +291,6 @@ public class Datensatz extends Satz {
 		for (Teildatensatz tds : this.getTeildatensaetze()) {
 			setUpTeildatensatz(tds);
 		}
-	}
-
-	protected static List<Teildatensatz> complete(List<Teildatensatz> teildatensaetze, int sparte) {
-		NumFeld sparteFeld = new NumFeld(Feld1bis7.SPARTE);
-		sparteFeld.setInhalt(sparte);
-		for (Teildatensatz tds : teildatensaetze) {
-			setUpTeildatensatz(tds, sparteFeld);
-		}
-		return teildatensaetze;
-	}
-
-	/**
-	 * Hiermit kann ein einzelner Teildatensatz aufgesetzt werden.
-	 *
-	 * @param n Nummer des Teildatensatzes (beginnend bei 1)
-	 * @since 0.5
-	 */
-	protected final void setUpTeildatensatz(final int n) {
-		this.setUpTeildatensatz(this.getTeildatensatz(n));
 	}
 
 	/*
