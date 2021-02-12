@@ -77,34 +77,59 @@ public abstract class Satz implements Cloneable {
 
 	/**
 	 * Instantiates a new satz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param art Satzart
 	 * @param n Anzahl der Teildatensaetze
+	 * @deprecated bitte {@link Satz(SatzTyp, int)} verwenden
 	 */
+	@Deprecated
 	public Satz(final NumFeld art, final int n) {
-		this.satzart.setInhalt(art.getInhalt());
-		this.createTeildatensaetze(n);
+		this(SatzTyp.of(art.getInhalt()), n);
 	}
 
 	/**
 	 * Instantiates a new satz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param content die Satzart
 	 * @param n Anzahl
+	 * @deprecated bitte {@link Satz(SatzTyp, int)} verwenden
 	 */
+	@Deprecated
 	public Satz(final String content, final int n) {
-		this.satzart.setInhalt(content);
-		this.createTeildatensaetze(n);
+		this(SatzTyp.of(content), n);
 	}
 
 	/**
 	 * The Constructor.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param art z.B. 100 (f. Adressteil)
 	 * @param n Anzahl der Teildatensaetze
+	 * @deprecated bitte {@link Satz(SatzTyp, int)} verwenden
 	 */
+	@Deprecated
 	public Satz(final int art, final int n) {
-		this.satzart.setInhalt(art);
+		this(SatzTyp.of(art), n);
+	}
+
+	/**
+	 * Mit diesem Konstruktor wird ein Satz fuer die entsprechende Satzart
+	 * mit n Teildatensaetzen angelegt.
+	 *
+	 * @param art z.B. Satzart 0100 (f. Adressteil)
+	 * @param n Anzahl der Teildatensaetze
+	 * @since 5.0
+	 */
+	public Satz(final SatzTyp art, final int n) {
+		this.satzart.setInhalt(art.getSatzart());
 		this.createTeildatensaetze(n);
 	}
 
@@ -122,18 +147,34 @@ public abstract class Satz implements Cloneable {
         this.createTeildatensaetze(n);
     }
 
-    /**
-     * Instanziiert einen neuen Satz.
-     *
-     * @param art z.B. 100 (f. Adressteil)
-     * @param tdsList Liste mit den Teildatensaetzen
-     */
-     public Satz(final int art, final List<? extends Teildatensatz> tdsList) {
-		 this.satzart.setInhalt(art);
-		 this.createTeildatensaetze(tdsList);
-     }
+	/**
+	 * Instanziiert einen neuen Satz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
+	 *
+	 * @param art z.B. 100 (f. Adressteil)
+	 * @param tdsList Liste mit den Teildatensaetzen
+	 * @deprecated bitte {@link Satz(SatzTyp, List)} verwenden
+	 */
+	@Deprecated
+	public Satz(final int art, final List<? extends Teildatensatz> tdsList) {
+		this(SatzTyp.of(art), tdsList);
+	}
 
-    /**
+	/**
+	 * Instanziiert einen neuen Satz.
+	 *
+	 * @param art     Satzart, z.B. 100 (f. Adressteil)
+	 * @param tdsList Liste mit den Teildatensaetzen
+	 * @since 5.0
+	 */
+	public Satz(final SatzTyp art, final List<? extends Teildatensatz> tdsList) {
+		this.satzart.setInhalt(art.getSatzart());
+		this.createTeildatensaetze(tdsList);
+	}
+
+	/**
      * Instanziiert einen neuen Satz.
      *
      * @param satz        z.B. 100 (f. Adressteil)
