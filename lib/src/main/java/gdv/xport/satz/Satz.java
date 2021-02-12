@@ -152,7 +152,7 @@ public abstract class Satz implements Cloneable {
      * @param satz        z.B. 100 (f. Adressteil)
      * @param tdsList     Liste mit den Teildatensaetzen
      */
-    public Satz(final Satz satz, final List<? extends Teildatensatz> tdsList) {
+    protected Satz(final Satz satz, final List<? extends Teildatensatz> tdsList) {
         this.satzart.setInhalt(satz.getSatzart());
         this.satzVersion.setInhalt(satz.getSatzversion().getInhalt());
         this.gdvSatzartName = satz.getGdvSatzartName();
