@@ -142,7 +142,8 @@ public abstract class Satz implements Cloneable {
      * @param tdsList Liste mit den Teildatensaetzen
      */
      public Satz(final int art, final List<? extends Teildatensatz> tdsList) {
-        this(art, tdsList, null);
+		 this.satzart.setInhalt(art);
+		 this.createTeildatensaetze(tdsList);
      }
 
     /**
@@ -158,19 +159,6 @@ public abstract class Satz implements Cloneable {
         this.gdvSatzartNummer = satz.getGdvSatzartNummer();
         this.createTeildatensaetze(tdsList);
     }
-
-	/**
-	 * Instanziiert einen neuen Satz.
-	 *
-	 * @param art         z.B. 100 (f. Adressteil)
-	 * @param tdsList     Liste mit den Teildatensaetzen
-	 * @param satzVersion die Version des Satzes
-	 */
-	public Satz(final int art, final List<? extends Teildatensatz> tdsList, final AlphaNumFeld satzVersion) {
-		this.satzart.setInhalt(art);
-		if (satzVersion != null) this.setSatzversion(satzVersion.getInhalt());
-		this.createTeildatensaetze(tdsList);
-	}
 
     protected void createTeildatensaetze(final int n) {
         teildatensatz = new Teildatensatz[n];
