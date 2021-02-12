@@ -56,9 +56,14 @@ public class Teildatensatz extends Satz {
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param satzart z.B. 100
+     * @deprecated wird nicht mehr benoetigt
      */
+    @Deprecated
     public Teildatensatz(final NumFeld satzart) {
         super(satzart, 0);
         this.satznummer.setInhalt(' ');
@@ -89,18 +94,17 @@ public class Teildatensatz extends Satz {
         initSatznummer(nr);
     }
 
-  /**
-   * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart und
-   * Nummer.
-   *
-   * @param satzTyp z.B. 0220.050
-   * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
-   */
-  public Teildatensatz(final SatzTyp satzTyp, final int nr)
-  {
-    this(satzTyp.getSatzart(), nr);
-    this.setGdvSatzartName(satzTyp.toString());
-  }
+    /**
+     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart und
+     * Nummer.
+     *
+     * @param satzTyp z.B. 0220.050
+     * @param nr      Nummer des Teildatensatzes (zwischen 1 und 9)
+     */
+    public Teildatensatz(final SatzTyp satzTyp, final int nr) {
+        this(satzTyp.getSatzart(), nr);
+        this.setGdvSatzartName(satzTyp.toString());
+    }
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart, Nummer

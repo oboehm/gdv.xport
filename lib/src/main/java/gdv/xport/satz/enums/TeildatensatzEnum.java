@@ -98,6 +98,7 @@ public final class TeildatensatzEnum extends Teildatensatz {
         ABWEICHENDE_SATZNUMMERN.put(satzTyp, startAdresse);
     }
 
+    @Deprecated // TODO: mit v6 entsorgen
     public TeildatensatzEnum(NumFeld satzart) {
         super(satzart);
     }
