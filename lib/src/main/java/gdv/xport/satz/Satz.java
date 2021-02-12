@@ -75,19 +75,6 @@ public abstract class Satz implements Cloneable {
   private String gdvSatzartName = "";
     private final AlphaNumFeld satzVersion = new AlphaNumFeld(3, 1);
 
-  protected Satz(final int art)
-  {
-    this(art, 1);
-  }
-
-	protected Satz(final String art) {
-		this(art, (art.length() + 255) / 256);
-	}
-
-	protected Satz(final NumFeld art) {
-		this(art.getInhalt());
-	}
-
 	/**
 	 * Instantiates a new satz.
 	 *
