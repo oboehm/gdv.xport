@@ -203,7 +203,7 @@ public class Datensatz extends Satz {
 	 * @since 0.9
 	 */
 	public Datensatz(final SatzTyp satzNr, final List<? extends Teildatensatz> tdsList) {
-		super(satzNr.getSatzart(), tdsList);
+		super(satzNr, tdsList);
 		if (tdsList.get(0).hasSparte()) {
 			this.sparte.setInhalt(tdsList.get(0).getSparte());
 		}
