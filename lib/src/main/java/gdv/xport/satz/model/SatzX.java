@@ -42,43 +42,74 @@ public class SatzX extends Datensatz {
 	/**
 	 * Instantiiert einen neuen Datensatz.
 	 *
+	 * @param satzTyp         Satzart
+	 * @param teildatensaetze Teildatensaetze
+	 * @since 5.0
+	 */
+	public SatzX(SatzTyp satzTyp, List<Teildatensatz> teildatensaetze) {
+		super(satzTyp, teildatensaetze);
+	}
+
+	/**
+	 * Instantiiert einen neuen Datensatz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
+	 *
 	 * @param satzart z.B. 100
 	 * @param felder mit allen Elementen des Datensatzes
+	 * @deprecated bitte {@link SatzX#SatzX(SatzTyp, List)} verwenden
 	 */
+	@Deprecated
 	public SatzX(final int satzart, final Enum[] felder) {
-		super(satzart, getTeildatensaetzeFor(satzart, felder));
+		this(SatzTyp.of(satzart), getTeildatensaetzeFor(satzart, felder));
 	}
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param satzart z.B. 100
 	 * @param enumClass Enumerationen-Klasse mit den Feldbeschreibungen
+	 * @deprecated bitte {@link SatzX#SatzX(SatzTyp, List)} verwenden
 	 */
+	@Deprecated
 	public SatzX(final int satzart, final Class<? extends Enum> enumClass) {
-		super(satzart, getTeildatensaetzeFor(satzart, enumClass));
+		this(SatzTyp.of(satzart), getTeildatensaetzeFor(satzart, enumClass));
 	}
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param satzart z.B. 100
 	 * @param sparte Sparte
 	 * @param felder mit allen Elementen des Datensatzes
+	 * @deprecated bitte {@link SatzX#SatzX(SatzTyp, List)} verwenden
 	 */
+	@Deprecated
 	public SatzX(final int satzart, final int sparte, final Enum[] felder) {
-		super(satzart, sparte, getTeildatensaetzeFor(satzart, felder));
+		this(SatzTyp.of(satzart, sparte), getTeildatensaetzeFor(satzart, felder));
 	}
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param satzart z.B. 100
 	 * @param sparte Sparte
 	 * @param enumClass Enumerationen-Klasse mit den Feldbeschreibungen
+	 * @deprecated bitte {@link SatzX#SatzX(SatzTyp, List)} verwenden
 	 */
+	@Deprecated
 	public SatzX(final int satzart, final int sparte, final Class<? extends Enum> enumClass) {
-		super(satzart, sparte, getTeildatensaetzeFor(satzart, enumClass));
+		this(SatzTyp.of(satzart, sparte), getTeildatensaetzeFor(satzart, enumClass));
 	}
 
 	/**
