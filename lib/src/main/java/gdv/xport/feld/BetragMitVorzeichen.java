@@ -186,7 +186,7 @@ public final class BetragMitVorzeichen extends Betrag {
     @Override
     public BigDecimal toBigDecimal() {
         String s = this.getInhalt();
-        BigDecimal x = new BigDecimal(Integer.parseInt(s.substring(0, s.length() - 1))).movePointLeft(getNachkommastellen());
+        BigDecimal x = new BigDecimal(Long.parseLong(s.substring(0, s.length() - 1))).movePointLeft(getNachkommastellen());
         return (this.getVorzeichen() == '-') ? x.negate() : x;
     }
 

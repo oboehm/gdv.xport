@@ -92,9 +92,6 @@ public abstract class SpartensatzX extends SatzX {
         Map<Integer, Enum[]> map = this.getMapping();
         Enum[] felder = map.get(sparte);
         if (felder == null) {
-            if (sparte == UNKNOWN_SPARTE) {
-                return FeldX.values();
-            }
             return FeldX.values();
         }
         return felder;

@@ -390,6 +390,15 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     @Test
+    public void testGetBausparenArtTwice() throws IOException {
+        SatzTyp bausparen = SatzTyp.of("0220.580.2");
+        SatzXml one = xmlService.getSatzart(bausparen);
+        checkImport(one);
+        Satz two = xmlService.getSatzart(bausparen);
+        assertEquals("2", two.getFeld(Bezeichner.of("Art")).getInhalt());
+    }
+
+    @Test
     public void testGetSatzVersion() {
         String expected = "VUVM2013.xml".equals(Config.getXmlResource()) ? "2.3" :"2.4";
         assertEquals(expected, xmlService.getSatzVersion(SatzTyp.of("0001")));

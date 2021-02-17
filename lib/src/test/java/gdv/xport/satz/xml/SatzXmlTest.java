@@ -43,8 +43,7 @@ import java.util.List;
 import java.util.Map;
 
 import static gdv.xport.satz.xml.AbstractXmlTest.createXMLEventReader;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * Unit tests for {@link SatzXml} class.
@@ -378,6 +377,15 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         SatzXml satz220 = getSatz("Satz0220.010.0.xml");
         List<SatzTyp> supported = satz220.getSupportedSatzTypen();
         assertEquals(SatzTyp.of(220, 10, 0), supported.get(0));
+    }
+
+    @Test
+    public void testCopyCtor() throws XMLStreamException {
+        SatzXml orig = getSatz("Satz0220.010.0.xml");
+        SatzXml copy = new SatzXml(orig);
+        assertEquals(orig, copy);
+        copy.set(Bezeichner.BERUFSSCHLUESSEL, "123");
+        assertNotEquals(orig, copy);
     }
 
 }

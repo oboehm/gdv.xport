@@ -264,6 +264,7 @@ public final class Bezeichner {
     public static final Bezeichner BERUFSSCHLUESSEL_VN = new Bezeichner("Berufsschlüssel VN");
     public static final Bezeichner BERUFSSCHLUESSEL_DER_VP = new Bezeichner("Berufsschluessel der VP");
     public static final Bezeichner BERUF_TEXT = new Bezeichner("Beruf-Text", "BerufTextBeruflicheStellung");
+    public static final Bezeichner BERUF_TEXT_BERUFLICHE_STELLUNG = new Bezeichner("Beruf-Text (Berufliche Stellung)", "BerufTextBeruflicheStellung");
     public static final Bezeichner BESONDERER_VERWENDUNGSZWECK = new Bezeichner("besonderer Verwendungszweck");
     public static final Bezeichner BESONDERE_VEREINBARUNG_ZUM_FLUGGASTRISIKO = new Bezeichner("Besondere Vereinbarung zum Fluggastrisiko");
     public static final Bezeichner BESONDERE_VEREINBARUNGEN = new Bezeichner("Besondere Vereinbarungen");

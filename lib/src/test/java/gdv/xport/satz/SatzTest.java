@@ -557,8 +557,6 @@ public final class SatzTest extends AbstractSatzTest {
         assertNotEquals(satz102.toLongString(), testsatz.toLongString());
     }
 
-
-
     static class TestSatz extends Satz {
         public TestSatz(int art, List<? extends Teildatensatz> tdsList) {
             super(art, tdsList);
