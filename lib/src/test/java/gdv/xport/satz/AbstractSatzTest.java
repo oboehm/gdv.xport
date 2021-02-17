@@ -18,23 +18,20 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.VUNummer;
 import gdv.xport.satz.feld.common.Feld1bis7;
-
-import java.io.IOException;
-import java.io.StringWriter;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import patterntesting.runtime.junit.ObjectTester;
+
+import java.io.IOException;
+import java.io.StringWriter;
+
+import static org.junit.Assert.*;
 
 /**
  * Hier setzen wir eine Standard-Konfiguration auf, die wir in den verschiedenen JUnit-Tests verwenden.
@@ -144,14 +141,9 @@ abstract public class AbstractSatzTest {
 
     private static void setUp(final Teildatensatz tds) {
         for (Feld feld : tds.getFelder()) {
-            if ((feld.getByteAdresse() > 42) && (feld.getByteAdresse() < 256)) {
-                // TODO hier ist es eventuell noetig die Logik aus Satz.readSatznummer zu uebernehmen
-                // TODO Alternativ die Methode so aendern, dass sie den Index der Satznummer rausgibt und hier dann nutzen
-                if (tds.getSatzart() == 210 && tds.getSparte() == 130 && feld.getByteAdresse() == 251) {
-                    // 0210.130 Satznummer an Adresse 251
-                } else {
-                    feld.setInhalt('1');
-                }
+            if ((feld.getByteAdresse() > 42) && (feld.getByteAdresse() < 256)
+                    && !feld.getBezeichner().getTechnischerName().startsWith("SatzNr")) {
+                feld.setInhalt('1');
             }
         }
     }

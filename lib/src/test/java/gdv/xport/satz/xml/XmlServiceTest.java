@@ -21,6 +21,7 @@ package gdv.xport.satz.xml;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.AbstractSatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
@@ -269,7 +270,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     private static void setUpAndCheckSatz(SatzXml satzXml, final Satz reference) throws IOException, AssertionError {
         AbstractSatzTest.setUp(reference);
         String importString = reference.toLongString();
-        satzXml.importFrom(reference.toLongString());
+        satzXml.importFrom(importString);
         assertEquals(importString, satzXml.toLongString());
         ObjectTester.assertEquals(reference, satzXml);
     }
@@ -327,6 +328,35 @@ public class XmlServiceTest extends AbstractXmlTest {
         SatzXml satz350 = xmlService.getSatzart(SatzTyp.of(350));
         assertNotNull(satz350);
         checkImport(satz350);
+    }
+
+    /**
+     * Hier ist die Besonderheit, dass Satzart "0220.140" die Satznummer auf
+     * Position 51 hat.
+     *
+     * @throws IOException the io exception
+     */
+    @Test
+    public void testSatzart0220140() throws IOException {
+        SatzXml satz220 = xmlService.getSatzart(SatzTyp.of("0220.140"));
+        List<Teildatensatz> teildatensaetze = satz220.getTeildatensaetze();
+        assertEquals(2, teildatensaetze.size());
+        for (int i = 0; i < teildatensaetze.size(); i++) {
+            Teildatensatz tds = teildatensaetze.get(i);
+            Zeichen satznummer = tds.getSatznummer();
+            assertEquals(i+1, satznummer.toInt());
+            //assertEquals(51, satznummer.getByteAdresse());
+        }
+        checkImport(satz220);
+    }
+
+    @Test
+    public void testGetSatzarten() throws IOException {
+        Map<SatzTyp, SatzXml> satzarten = xmlService.getSatzarten();
+        for (Map.Entry<SatzTyp, SatzXml> entry : satzarten.entrySet()) {
+            LOG.info("Pruefe Import fuer {}...", entry.getKey());
+            checkImport(entry.getValue());
+        }
     }
 
     /**
