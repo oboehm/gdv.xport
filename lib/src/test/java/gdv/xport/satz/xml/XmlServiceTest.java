@@ -359,6 +359,39 @@ public class XmlServiceTest extends AbstractXmlTest {
         }
     }
 
+    @Test
+    public void testCloning() throws IOException {
+        Map<SatzTyp, SatzXml> satzarten = xmlService.getSatzarten();
+        for (Map.Entry<SatzTyp, SatzXml> entry : satzarten.entrySet()) {
+            LOG.info("Pruefe Clonen von {}...", entry.getKey());
+            checkCloning(entry.getValue());
+        }
+    }
+
+    private static void checkCloning(SatzXml orig) throws IOException {
+        SatzXml copy = new SatzXml(orig);
+        assertEquals(orig, copy);
+        assertNotSame(orig, copy);
+        checkFeldCloning(orig, copy);
+        for (int i = 1; i <= orig.getNumberOfTeildatensaetze(); i++) {
+            checkFeldCloning(orig.getTeildatensatz(i), copy.getTeildatensatz(i));
+        }
+    }
+
+    private static void checkFeldCloning(Satz orig, Satz copy) {
+        for (Feld feld : orig.getFelder()) {
+            Feld copyFeld = copy.getFeld(feld.getBezeichner());
+            assertEquals(feld, copyFeld);
+            assertNotSame(feld, copyFeld);
+            String inhalt = feld.getInhalt();
+            feld.setInhalt("9");
+            copyFeld.setInhalt("8");
+            assertNotEquals(feld, copyFeld);
+            feld.setInhalt(inhalt);
+            copyFeld.setInhalt(inhalt);
+        }
+    }
+
     /**
      * Satzart 0220.010.9.9 macht noch Probleme. Feld Nr. 21 - 28 scheinen
      * im Teildatensatz 9 zu fehlen.
@@ -390,12 +423,13 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     @Test
-    public void testGetBausparenArtTwice() throws IOException {
+    public void testGetSatzartenAndChangeBausparenArt() throws IOException {
         SatzTyp bausparen = SatzTyp.of("0220.580.2");
-        SatzXml one = xmlService.getSatzart(bausparen);
-        checkImport(one);
-        Satz two = xmlService.getSatzart(bausparen);
-        assertEquals("2", two.getFeld(Bezeichner.of("Art")).getInhalt());
+        Map<SatzTyp, SatzXml> satzarten = xmlService.getSatzarten();
+        SatzXml satzXml = satzarten.get(bausparen);
+        checkImport(satzXml);
+        SatzXml darlehen = xmlService.getSatzart(bausparen);
+        assertEquals("2", darlehen.getFeld(Bezeichner.of("Art")).getInhalt());
     }
 
     @Test

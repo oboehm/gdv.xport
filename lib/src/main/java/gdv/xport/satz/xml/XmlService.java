@@ -19,15 +19,25 @@
 package gdv.xport.satz.xml;
 
 import gdv.xport.config.Config;
-import gdv.xport.util.*;
-import org.apache.logging.log4j.*;
-import patterntesting.runtime.log.*;
+import gdv.xport.util.NotRegisteredException;
+import gdv.xport.util.NotUniqueException;
+import gdv.xport.util.SatzTyp;
+import gdv.xport.util.XmlHelper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import patterntesting.runtime.log.LogWatch;
 
-import javax.xml.namespace.*;
-import javax.xml.stream.*;
-import javax.xml.stream.events.*;
-import java.io.*;
-import java.util.*;
+import javax.xml.namespace.QName;
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Hier wird jetzt eine XML-Beschreibung verwendet, um die Saetze fuer die
@@ -332,7 +342,11 @@ public class XmlService {
      * @since 2.1.4
      */
     public Map<SatzTyp, SatzXml> getSatzarten() {
-        return this.satzarten;
+        Map<SatzTyp, SatzXml> copy = new HashMap<>();
+        for (Map.Entry<SatzTyp, SatzXml> entry : satzarten.entrySet()) {
+            copy.put(entry.getKey(), new SatzXml(entry.getValue()));
+        }
+        return copy;
     }
 
     /**

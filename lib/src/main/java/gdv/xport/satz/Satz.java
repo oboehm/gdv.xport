@@ -659,18 +659,29 @@ public abstract class Satz implements Cloneable {
      * @return das gesuchte Feld
      * @throws IllegalArgumentException falls es das Feld nicht gibt
      */
-    public Feld getFeld(final Bezeichner bezeichner) throws IllegalArgumentException {
-        for (Teildatensatz tds : teildatensatz) {
-        	for (Bezeichner b : bezeichner.getVariants()) {
+	public Feld getFeld(final Bezeichner bezeichner) throws IllegalArgumentException {
+		for (Teildatensatz tds : teildatensatz) {
+			for (Feld f : tds.getFelder()) {
+				if (bezeichner.equals(f.getBezeichner())) {
+					return f;
+				}
+			}
+		}
+		return findFeld(bezeichner);
+	}
+
+	private Feld findFeld(final Bezeichner bezeichner) throws IllegalArgumentException {
+		for (Teildatensatz tds : teildatensatz) {
+			for (Bezeichner b : bezeichner.getVariants()) {
 				Feld x = tds.getFeldSafe(b);
 				if (x != Feld.NULL_FELD) {
 					return x;
 				}
 			}
-        }
-        throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
-                + " vorhanden!");
-    }
+		}
+		throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
+				+ " vorhanden!");
+	}
 
 	/**
 	 * Liefert das gewuenschte Feld im gewuenschten Typ.

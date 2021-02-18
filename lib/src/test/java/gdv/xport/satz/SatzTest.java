@@ -29,6 +29,7 @@ import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderun
 import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
 import gdv.xport.satz.feld.sparte53.Feld220;
 import gdv.xport.satz.model.SatzX;
+import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
 import org.apache.commons.io.FileUtils;
@@ -146,6 +147,14 @@ public final class SatzTest extends AbstractSatzTest {
                     allOf(containsString("Hemmernet"), containsString(" 0123")));
             throw ex;
         }
+    }
+
+    @Test
+    public void testGetFeldWagnis2() {
+        Satz satz = XmlService.getInstance().getSatzart(SatzTyp.of("0220.140"));
+        Bezeichner wagnis2 = new Bezeichner("Wagnis", "Wagnis2");
+        Feld feld = satz.getFeld(wagnis2);
+        assertEquals(wagnis2, feld.getBezeichner());
     }
     
     /**
@@ -499,6 +508,15 @@ public final class SatzTest extends AbstractSatzTest {
         Collection<Feld> felder = satz.getFelder();
         Teildatensatz lonelyTeildatensatz = satz.getTeildatensatz(1);
         CollectionTester.assertEquals(lonelyTeildatensatz.getFelder(), felder);
+    }
+
+    @Test
+    public void testGetFelder2Teildatensaetze() {
+        Satz satz = XmlService.getInstance().getSatzart(SatzTyp.of("0220.140"));
+        Collection<Feld> expected = satz.getTeildatensatz(1).getFelder();
+        expected.addAll(satz.getTeildatensatz(2).getFelder());
+        Collection<Feld> felder = satz.getFelder();
+        CollectionTester.assertEquals(expected, felder);
     }
 
     /**
