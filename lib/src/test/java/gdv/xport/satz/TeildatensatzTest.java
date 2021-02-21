@@ -142,7 +142,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
         tds.add(satznummer);
         assertEquals(satznummer, tds.getFeld(satznummer.getBezeichner()));
         tds.remove(satznummer.getBezeichnung());
-        assertEquals("remove failed", Feld.NULL_FELD, tds.getFeldSafe(satznummer.getBezeichnung()));
+        assertFalse(tds.hasFeld(satznummer.getBezeichner()));
     }
 
     /**

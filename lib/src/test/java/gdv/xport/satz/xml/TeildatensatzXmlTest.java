@@ -18,20 +18,21 @@
 
 package gdv.xport.satz.xml;
 
-import static org.hamcrest.CoreMatchers.allOf;
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import javax.xml.stream.XMLStreamException;
-
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
+import gdv.xport.satz.TeildatensatzTest;
+import gdv.xport.satz.feld.Feld100;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import gdv.xport.feld.*;
-import gdv.xport.satz.*;
-import gdv.xport.satz.feld.Feld100;
+import javax.xml.stream.XMLStreamException;
+
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.*;
 
 /**
  * JUnit-Tests fuer die {@link TeildatensatzXml}-Klasse.
@@ -150,14 +151,8 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
      */
     @Test
     public void testGetLeerstellenSafe() {
-        checkLeerstellenSafe(1, Feld.NULL_FELD);
-        checkLeerstellenSafe(2, new AlphaNumFeld(Feld100.LEERSTELLEN));
-    }
-
-    private void checkLeerstellenSafe(final int satznummer, final Feld expected) {
-        Feld leerstellen = satz100.getTeildatensatz(satznummer).getFeldSafe(new Bezeichner("Leerstellen"));
-        assertEquals(expected.getAnzahlBytes(), leerstellen.getAnzahlBytes());
-        assertEquals(expected.getByteAdresse(), leerstellen.getByteAdresse());
+        assertFalse(satz100.getTeildatensatz(1).hasFeld(Bezeichner.of("Leerstellen")));
+        checkLeerstellen(2, new AlphaNumFeld(Feld100.LEERSTELLEN));
     }
 
     /**

@@ -17,6 +17,7 @@
  */
 package gdv.xport.satz.feld;
 
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Satz;
 
 /**
@@ -40,7 +41,7 @@ public abstract class AbstractFeldTest {
             if (entry.name().startsWith("INTRO") || entry.name().startsWith("TEILDATENSATZ")) {
                 continue;
             }
-            satz.getFeld(entry);
+            satz.getFeld(Bezeichner.of(entry));
         }
     }
 

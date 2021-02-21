@@ -158,17 +158,6 @@ public final class SatzTest extends AbstractSatzTest {
     }
     
     /**
-     * Test method for {@link gdv.xport.satz.Satz#getFeldSafe(java.lang.String)}.
-     * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
-     * {@link Feld#NULL_FELD} erwartet.
-     */
-    @Test
-    public void testGetFeldSafe() {
-        Feld f = satz.getFeldSafe("hemmernet");
-        assertSame(Feld.NULL_FELD, f);
-    }
-    
-    /**
      * Test method for {@link gdv.xport.satz.Satz#getFeld(java.lang.String)}.
      * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als
      * Ergebnis erwartet sondern eine IllegalArgumentException.
@@ -231,17 +220,6 @@ public final class SatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.satz.Satz#getFeldSafe(java.lang.String)}.
-     * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
-     * {@link Feld#NULL_FELD} erwartet.
-     */
-    @Test
-    public void testGetFeldSafeBezeichner() {
-        Feld f = satz.getFeldSafe(new Bezeichner("hemmernet"));
-        assertSame(Feld.NULL_FELD, f);
-    }
-    
-    /**
      * Test method for {@link gdv.xport.satz.Satz#getFeld(java.lang.String)}.
      * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als
      * Ergebnis erwartet sondern eine IllegalArgumentException.
@@ -258,17 +236,6 @@ public final class SatzTest extends AbstractSatzTest {
         }
     }
     
-    /**
-     * Test method for {@link gdv.xport.satz.Satz#getFeldSafe(java.lang.String)}.
-     * Fuer ein Feld, das nicht existiert, wird bei diesem Aufruf
-     * {@link Feld#NULL_FELD} erwartet.
-     */
-    @Test
-    public void testGetFeldSafeEnum() {
-        Feld f = satz.getFeldSafe(Feld221Wagnis13ZukSummenaenderungen.ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN);
-        assertSame(Feld.NULL_FELD, f);
-    }
-
     /**
      * Testfall fuer Issue #12.
      */

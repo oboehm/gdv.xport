@@ -397,11 +397,11 @@ public abstract class Satz implements Cloneable {
     public void set(final Bezeichner name, final String value) {
         boolean found = false;
         for (Teildatensatz tds : teildatensatz) {
-            Feld x = tds.getFeldSafe(name);
-            if (x != Feld.NULL_FELD) {
-                x.setInhalt(value);
-                found = true;
-            }
+        	if (tds.hasFeld(name)) {
+        		Feld x = tds.getFeld(name);
+        		x.setInhalt(value);
+        		found = true;
+			}
         }
         if (!found) {
             throw new IllegalArgumentException("Feld \"" + name + "\" not found");
@@ -563,13 +563,8 @@ public abstract class Satz implements Cloneable {
 	@Deprecated
 	public Feld getFeld(final Enum feld) throws IllegalArgumentException {
 		for (int i = 0; i < teildatensatz.length; i++) {
-			try {
-				Feld x = teildatensatz[i].getFeldSafe(feld);
-				if (x != Feld.NULL_FELD) {
-					return x;
-				}
-			} catch (IllegalArgumentException e) {
-			    LOG.debug("Feld '{}‘ not found in teildatensatz {}:", feld, i, e);
+			if (teildatensatz[i].hasFeld(feld)) {
+				return teildatensatz[i].getFeld(feld);
 			}
 		}
 		throw new IllegalArgumentException("Feld \"" + feld + "\" nicht in " + this.toShortString()
@@ -600,19 +595,22 @@ public abstract class Satz implements Cloneable {
 
 	/**
 	 * Liefert das gewuenschte Feld falls vorhanden oder null.
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @return das gesuchte Feld
+	 * @deprecated bitte {@link #hasFeld(Bezeichner)} verwenden
 	 */
+	@Deprecated
 	public Feld containsFeld(final String name) {
-        for (Teildatensatz tds : teildatensatz) {
-            Feld x = tds.getFeldSafe(name);
-            if (x != Feld.NULL_FELD) {
-                return x;
-            }
-        }
-		LOG.debug("Feld \"{}\" not found in {}.", name, this);
-		return null;
+		Bezeichner bezeichner = Bezeichner.of(name);
+		if (hasFeld(bezeichner)) {
+			return getFeld(bezeichner);
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -673,9 +671,8 @@ public abstract class Satz implements Cloneable {
 	private Feld findFeld(final Bezeichner bezeichner) throws IllegalArgumentException {
 		for (Teildatensatz tds : teildatensatz) {
 			for (Bezeichner b : bezeichner.getVariants()) {
-				Feld x = tds.getFeldSafe(b);
-				if (x != Feld.NULL_FELD) {
-					return x;
+				if (tds.hasFeld(b)) {
+					return tds.getFeld(b);
 				}
 			}
 		}
@@ -735,10 +732,15 @@ public abstract class Satz implements Cloneable {
     /**
      * Liefert das gewuenschte Feld oder {@link Feld#NULL_FELD}, wenn nicht
      * vorhanden.
+	 * <p>
+	 * TODO: wird mit v6 abgeloest
+	 * </p>
      *
      * @param bezeichner gewuenschter Bezeichner des Feldes
      * @return das gesuchte Feld
+	 * @deprecated bitte {@link #hasFeld(Bezeichner)} und {@link #getFeld(Bezeichner)} verwenden
      */
+    @Deprecated
     public Feld getFeldSafe(final Bezeichner bezeichner) {
         try {
             return getFeld(bezeichner);
@@ -847,8 +849,7 @@ public abstract class Satz implements Cloneable {
 	 * @since 0.9
 	 */
 	public boolean hasSparte() {
-	    Feld sparte = this.getFeldSafe(Feld1bis7.SPARTE);
-	    return (sparte != Feld.NULL_FELD) && !sparte.isEmpty();
+		return hasFeld(Bezeichner.of(Feld1bis7.SPARTE));
 	}
 
 	/**
@@ -1358,12 +1359,11 @@ public abstract class Satz implements Cloneable {
     }
 
     private static void setSparteFor(final Teildatensatz tds, final int sparte) {
-        Feld spartenFeld = tds.getFeldSafe(Feld1bis7.SPARTE);
-        if (spartenFeld == Feld.NULL_FELD) {
-            spartenFeld = new NumFeld((SPARTE), 3, 11);
-            tds.add(spartenFeld);
-        }
-        spartenFeld.setInhalt(sparte);
+		if (!tds.hasFeld(Feld1bis7.SPARTE)) {
+			Feld spartenFeld = new NumFeld((SPARTE), 3, 11);
+			tds.add(spartenFeld);
+		}
+		tds.getFeld(Feld1bis7.SPARTE).setInhalt(sparte);
     }
 
     /**
