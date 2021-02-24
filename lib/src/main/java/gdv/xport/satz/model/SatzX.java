@@ -77,7 +77,7 @@ public class SatzX extends Datensatz {
 	 */
 	@Deprecated
 	public SatzX(final int satzart, final Class<? extends Enum> enumClass) {
-		this(SatzTyp.of(satzart), getTeildatensaetzeFor(satzart, enumClass));
+		this(SatzTyp.of(satzart), getTeildatensaetzeFor(SatzTyp.of(satzart), enumClass));
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class SatzX extends Datensatz {
 	 */
 	@Deprecated
 	public SatzX(final int satzart, final int sparte, final Class<? extends Enum> enumClass) {
-		this(SatzTyp.of(satzart, sparte), getTeildatensaetzeFor(satzart, enumClass));
+		this(SatzTyp.of(satzart, sparte), getTeildatensaetzeFor(SatzTyp.of(satzart, sparte), enumClass));
 	}
 
 	/**
@@ -138,12 +138,9 @@ public class SatzX extends Datensatz {
     this.setGdvSatzartName(satzNr.toString());
     if (satzNr.hasSparte())
       this.setSparte(satzNr.getSparteAsString());
-	}
-
-	private static List<Teildatensatz> getTeildatensaetzeFor(final int satzart,
-	        final Class<? extends Enum> enumClass) {
-		Enum[] constants = enumClass.getEnumConstants();
-		return getTeildatensaetzeFor(satzart, constants);
+	  if (satzNr.hasTeildatensatzNummer())
+		  this.setGdvSatzartNummer(String.valueOf(satzNr
+				  .getTeildatensatzNummer()));
 	}
 
   /**
