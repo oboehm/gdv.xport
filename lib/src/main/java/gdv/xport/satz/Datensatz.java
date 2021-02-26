@@ -61,10 +61,8 @@ public class Datensatz extends Satz {
 	 *
 	 * @since 0.6
 	 */
-  public Datensatz()
-  {
-    this(SatzTyp.of(0), getTeildatensaetzeFor(SatzTyp.of(0), Feld1bis7
-        .values()));
+	public Datensatz() {
+		this(SatzTyp.of(0));
 	}
 
 	/**
