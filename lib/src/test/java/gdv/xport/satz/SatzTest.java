@@ -402,7 +402,7 @@ public final class SatzTest extends AbstractSatzTest {
 
     @Test
     public void testGetAsListSimple() {
-        List<MetaFeldInfo> feldInfos = Satz.getMetaFeldInfos(Feld200.values());
+        List<MetaFeldInfo> feldInfos = SatzX.getMetaFeldInfos(Feld200.values());
         assertFalse("empty list", feldInfos.isEmpty());
         LOG.info("Feld200 has " + feldInfos.size() + " FeldInfos.");
         assertTrue("Feld200 should have more than " + Feld200.values().length + " entries",
@@ -411,7 +411,7 @@ public final class SatzTest extends AbstractSatzTest {
 
     @Test
     public void testGetAsListComposite() {
-        List<MetaFeldInfo> feldInfos = Satz.getMetaFeldInfos(Feld220.values());
+        List<MetaFeldInfo> feldInfos = SatzX.getMetaFeldInfos(Feld220.values());
         assertFalse("empty list", feldInfos.isEmpty());
         LOG.info(Feld220.class.getName() + " has " + feldInfos.size() + " FeldInfos.");
         assertTrue("elements are missing", feldInfos.size() > Feld220.values().length);
@@ -425,7 +425,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGetAsListTeildatensatz() {
-        List<MetaFeldInfo> metaFeldInfos = Satz.getMetaFeldInfos(Feld200.values());
+        List<MetaFeldInfo> metaFeldInfos = SatzX.getMetaFeldInfos(Feld200.values());
         int found = 0;
         for (MetaFeldInfo metaFeldInfo : metaFeldInfos) {
             if (metaFeldInfo.getName().equals("SATZART")) {
