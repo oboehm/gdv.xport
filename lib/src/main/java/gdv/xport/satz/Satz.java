@@ -665,10 +665,8 @@ public abstract class Satz implements Cloneable {
 
 	private Feld findFeld(final Bezeichner bezeichner) throws IllegalArgumentException {
 		for (Teildatensatz tds : teildatensatz) {
-			for (Bezeichner b : bezeichner.getVariants()) {
-				if (tds.hasFeld(b)) {
-					return tds.getFeld(b);
-				}
+			if (tds.hasFeld(bezeichner)) {
+				return tds.getFeld(bezeichner);
 			}
 		}
 		throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
