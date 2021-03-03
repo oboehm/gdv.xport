@@ -7,3 +7,8 @@ Damit kann es wie normaler Source-Code behandelt und zusammen mit dem Source-Cod
 Ein weiterer Vorteil von AsciiDoc ist, dass es auch von GitHub unterstützt wird.
 Damit kann man die einzelnen Kapitel oder den Einstieg über link:de/index.adoc[index.adoc] über GitHub direkt anschauen,
 solange das Dokument noch im Entstehen und noch nicht unter http://www.aosd.de/gdv.xport/ zu finden ist.
+
+== Inhalt
+
+4. link:de/04_solution_strategy.adoc[Lösungsstrategie]
+9. link:de/09_design_decisions.adoc[Designentscheidungen]
