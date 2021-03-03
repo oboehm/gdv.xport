@@ -1,0 +1,59 @@
+[[section-solution-strategy]]
+== Lösungsstrategie
+
+Die Beschreibung der GDV-Datensätzen ist sehr stark an COBOL-Datenstrukturen ausgerichtet.
+Dafür gibt es in Java keine direkte Unterstützung.
+Daher bietet gdv.xport Basis-Typen und Strukturen zur Verfügung, um auch in Java GDV-Datensätze importieren und exportieren zu können.
+
+
+
+=== Basis-Typen
+
+t.b.c.
+
+
+
+=== Datensätze und Strutkuren
+
+t.b.c.
+
+
+
+=== Import
+
+Damit der Import unterbrechungsfrei durchlaufen kann, wurden einige Kompromisse eingegangen:
+
+* keine Validierung während des Imports
+* Unterstützung von unbekannten Datensätzen
+
+Damit können auch GDV-Datensätze importiert werden, die Fehler enthalten.
+Diese Fehler können im Nachgang über Validierung aufgedeckt werden.
+
+
+=== Validierung
+
+Da zur Unterstützung des Imports fehlerhafte Werte gesetzt werden können, gibt es zwei Methoden für die Validierung:
+
+* `isVald()`
+* `validate()`
+
+Wenn du nur wissen will, ob z.B. ein Datensatz gültig ist, rufst du die `isValid()`-Methode auf.
+Möchtest du es genauer wissen, verwendest du die `validate()`-Methode.
+Im Falle eines Fehlers erhälst du eine Liste mit Constraint-Verletzungen.
+
+
+
+=== Encoding
+
+Als Encoding wird ISO-8859-15 verwendet.
+Um Encoding-Probleme zu vermeiden, wird im Source-Code und in Resourcen keine Umlaute, sondern stets die Ersatzdarstellung (z.B. `W\u00e4hrungseinheiten`) verwendet.
+
+Auch in Kommentaren im Source-Code werden keine Umlaute verwendet.
+Hier werden Umlaute ausgeschrieben, z.B. `/* Waehrungseinheiten */`).
+Dies hat Auswirkungen auf die Javadoc-Generierung.
+Dies wird aber in Kauf genommen, um Probleme mit falschen Encoding zu vermeiden.
+
+[TIP]
+--
+Für die Architektur-Dokumentation werden Umlaute akzeptiert.
+--

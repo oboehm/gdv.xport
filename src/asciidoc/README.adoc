@@ -1,0 +1,9 @@
+= image:images/arc42-logo.png[arc42] Dokumentation
+
+Die Architektur-Dokumentation von gdv.xport orientiert sich am https://github.com/arc42/arc42-template[Arc42-Template].
+Als Format wird AsciiDoc verwendet, weil es mit jedem x-beliebigen Editor (und damit auch direkt aus der IDE) erstellt werden kann.
+Damit kann es wie normaler Source-Code behandelt und zusammen mit dem Source-Code abgelegt und versioniert werden.
+
+Ein weiterer Vorteil von AsciiDoc ist, dass es auch von GitHub unterstützt wird.
+Damit kann man die einzelnen Kapitel oder den Einstieg über link:de/index.adoc[index.adoc] über GitHub direkt anschauen,
+solange das Dokument noch im Entstehen und noch nicht unter http://www.aosd.de/gdv.xport/ zu finden ist.

@@ -1,0 +1,74 @@
+// header file for arc42-template,
+// including all help texts
+//
+// ====================================
+
+// configuration
+include::includes/config.adoc[]
+
+= gdv.xport, Architektur
+:author: Oli B. <ob@aosd.de>
+:toc-title: Inhaltsverzeichnis
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+:sectlinks:
+
+// additional style
+include::includes/style.adoc[]
+
+== Disclaimer
+Benutzung auf eigene Gefahr.
+
+// numbering from here on
+:numbered:
+
+<<<<
+// 1. Anforderungen und Ziele
+include::01_introduction_and_goals.adoc[]
+
+<<<<
+// 2. Randbedingungen
+include::02_architecture_constraints.adoc[]
+
+<<<<
+// 3. Kontextabgrenzung
+include::03_system_scope_and_context.adoc[]
+
+<<<<
+// 4. Lösungsstrategie
+include::04_solution_strategy.adoc[]
+
+<<<<
+// 5. Bausteinsicht
+include::05_building_block_view.adoc[]
+
+<<<<
+// 6. Laufzeitsicht
+include::06_runtime_view.adoc[]
+
+<<<<
+// 7. Verteilungssicht
+include::07_deployment_view.adoc[]
+
+<<<<
+// 8. Querschnittliche Konzepte
+include::08_concepts.adoc[]
+
+<<<<
+// 9. Entscheidungen
+include::09_design_decisions.adoc[]
+
+<<<<
+// 10. Qualität...
+include::10_quality_scenarios.adoc[]
+
+<<<<
+// 11. Risiken
+include::11_technical_risks.adoc[]
+
+<<<<
+// 12. Glossar
+include::12_glossary.adoc[]

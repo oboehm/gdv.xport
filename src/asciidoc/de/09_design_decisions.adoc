@@ -1,0 +1,26 @@
+[[section-design-decisions]]
+
+== Entwurfsentscheidungen
+
+
+=== XML-Parsing
+
+Die XML-Beschreibung der GDV-Datensätze, aus denen die verschiedenen Satz-Klassen generiert werden, ist ca. 8 MB groß.
+Um die Startup-Phase von gdv.xport zu beschleunigen, wurde auf einen DOM-Parser verzichtet.
+Stattdessen wird ein StAX-Parser verwendet.
+
+
+
+=== Ungültige Werte
+
+Damit es beim Import nicht zu Unterbrechungen durch fehlerhafte Werte kommt, werden fehlerhafte Werte bei Konstruktoren oder Methoden akzeptiert, die für den Import benötigt werden.
+Um dennoch feststellen zu können, ob ein Wert oder Datensatz gültig ist, gibt es in den Klassen eine isVald() und validate()-Methode.
+
+
+
+=== Logging
+
+Als Log-Framework wird https://logging.apache.org/log4j/2.x/[Log4J 2] verwendet, da es sehr weit verbreitet und performant ist.
+Aktuell sind die Log-Meldungen noch größtenteils auf Englisch.
+Da GDV vorwiegend im deutschsprachigen Raum eingesetzt wird, werden künftig die Log-Meldungen auf Deutsch (ohne Umlaute) ausgegeben.
+Dies hilft, Log-Meldungen von gdv.xport von System-Meldungen zu unterscheiden.
