@@ -18,13 +18,13 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.Locale;
-
+import gdv.xport.satz.feld.Feld9999;
 import org.junit.Test;
 
-import gdv.xport.satz.feld.Feld9999;
+import java.math.BigDecimal;
+import java.util.Locale;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * JUnit-Test fuer die Betrag-Klasse.
@@ -104,6 +104,12 @@ public final class BetragTest extends AbstractFeldTest {
         betrag.setInhalt("12345678901234");
         double value = betrag.toDouble();
         assertEquals(123456789012.34, value, 0.0);
+    }
+
+    @Test
+    public void testSetBigDecimalGerundet() {
+        betrag.setInhalt(new BigDecimal("123.456"));
+        assertEquals(new BigDecimal("123.46"), betrag.toBigDecimal());
     }
 
 }

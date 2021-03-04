@@ -175,6 +175,12 @@ public class NachsatzTest extends AbstractSatzTest {
     }
 
     @Test
+    public void testSetGesamtBeitragBruttoGerundet() {
+        nachsatz.setGesamtBeitragBruttoMitVorzeichen(BigDecimal.valueOf(123.456));
+        assertEquals(new BigDecimal("123.46"), nachsatz.getGesamtBeitragBruttoMitVorzeichen().toBigDecimal());
+    }
+
+    @Test
     public void testAddProvisonBetrag() {
         nachsatz.setGesamtProvisionsBetragMitVorzeichen(BigDecimal.valueOf(2.50));
         nachsatz.addGesamtProvisionsBetrag(BigDecimal.valueOf(-2.55));

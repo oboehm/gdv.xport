@@ -21,6 +21,7 @@ package gdv.xport.feld;
 import gdv.xport.annotation.FeldInfo;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * Im Gegensatz zum Betrag hat diese Klasse ein Vorzeichen ('+' oder '-').
@@ -150,7 +151,8 @@ public final class BetragMitVorzeichen extends Betrag {
 
     @Override
     public void setInhalt(final BigDecimal x) {
-        setInhalt(x.doubleValue());
+        int n = getNachkommastellen();
+        setInhalt(x.setScale(n, RoundingMode.HALF_UP).doubleValue());
     }
 
     /* (non-Javadoc)
