@@ -25,12 +25,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 
-import static java.math.BigDecimal.ROUND_UP;
+import static java.math.BigDecimal.*;
 
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
@@ -269,7 +268,7 @@ public class NumFeld extends Feld {
      * @since 5.0
      */
     public void setInhalt(BigDecimal n) {
-        setInhalt(n.movePointRight(this.nachkommastellen).setScale(0, RoundingMode.HALF_UP).toString());
+        setInhalt(n.movePointRight(this.nachkommastellen).setScale(0, ROUND_HALF_UP).toString());
     }
 
     /* (non-Javadoc)
