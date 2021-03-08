@@ -1,0 +1,43 @@
+[[section-runtime-view]]
+== Laufzeitsicht
+
+
+
+=== XmlService
+
+Während in der Anfangsphase (v0.x) die einzelnen Satz-Elemente über Enums zusammen mit Annotationen beschrieben wurde, wurde mit v1.0 zusätzlich die XML-Beschreibung herangezogen, die inzwischen vom GDV zur Verfügung gestellt wurde.
+Mit v5.0 können inzwischen alle Satzarten aus der XML-Beschreibung generiert werden. Diese Aufgabe übernimmt der XmlService.
+
+Brauchst du nur die vom GDV definierten Satzarten, ist der XmlService ausreichend.
+Möchtest du hingegen noch eigene Satzarten definieren oder leicht abgewandelte Satzarten einsetzen, brauchst du die SatzFactory und SatzRegistry.
+
+Normalerweise holst du dir über `XmlService.getInstance()` die aktuelle Version der XML-Beschreibung als Basis (derzeit VUVM2018.xml).
+Da die verschiedenen XML-Beschreibungen aufwärtskompatibel sind, kannst du damit auch Datensätze, die noch auf einer älteren Beschreibung basiseren, importieren oder exportieren. Willst du dennoch die Instanz zur entsprechenden XML-Beschreibung, kannst du sie als Parameter übergeben:
+
+[source,java]
+----
+    XmlService service = XmlService.getInstance("VUVM2013.xml");
+----
+
+
+
+
+=== SatzFactory und SatzRegistry
+
+In der Anfangsphase unterstützte gdv.xport nur sehr wenige Satzarten.
+Um trotzdem weitere Satzarten zu unterstützen, konnte man programmatisch eigene Satzarten über Ableitung definierten oder über Enums zusammen mit Annotationen beschreiben.
+Über die SatzFactory konnte man bereits seit v0.1 so neue Satzarten registrieren, die dann dann Import und Export unbekannter Satzarten ermöglichten.
+
+In der Zwischenzeit wurde viele der Enums, die in der Anfangsphase zur Unterstützung der verschiedenen Satzarten entstanden sind, durch die Satzart aus dem XmlService ersetzt.
+
+
+
+=== Objekt-Erzeugung und Validierung
+
+Es ist möglich, ungültige Sätze und Felder anzulegen.
+Dies ist dem Import geschuldet.
+Dort soll ein ungültiger Wert nicht zu einem Abbruch bzw. Exception führen.
+
+Um trotzdem Datensätze und Felder überprüfen zu können, gibt es eine `validate()`-Methode.
+Diese liefert eine Liste von Verletzungen auf, die dann weiter analyisiert werden können.
+Wenn man nur wissen will, ob ein Wert oder Satz gütig ist, verwendet man die `isValid()`-Methode.
