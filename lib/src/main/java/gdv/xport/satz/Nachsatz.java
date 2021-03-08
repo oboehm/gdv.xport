@@ -22,7 +22,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld9999;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
-import gdv.xport.util.XmlSatzFactory;
+import gdv.xport.util.SatzRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -54,17 +54,17 @@ public final class Nachsatz extends Satz {
      * Default-Constructor.
      */
     public Nachsatz() {
-        this(XmlSatzFactory.getInstance());
+        this(SatzRegistry.getInstance());
     }
 
     /**
      * Ueber die mitgegebene Factory wird der Nachsatz genauso aufgebaut, wie
-     * die {@link XmlSatzFactory} als Vorlage liefert.
+     * die {@link SatzRegistry} als Vorlage liefert.
      *
      * @param factory sollte die Vorlage fuer den Nachsatz liefern.
      * @since 5.0
      */
-    public Nachsatz(XmlSatzFactory factory) {
+    public Nachsatz(SatzRegistry factory) {
         this(factory.getDatensatz(SatzTyp.of("9999")));
     }
 

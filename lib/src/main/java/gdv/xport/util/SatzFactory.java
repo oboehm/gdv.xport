@@ -31,8 +31,8 @@ import org.apache.logging.log4j.Logger;
  * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import
  * kommt, in den entsprechenden Satz wandeln zu koennen.
  * <p>
- * Mit 5.0 wurde die Funktionalitaet in {@link XmlSatzFactory} ausgelagert. Im
- * Gegensatz zu SatzFactory kann man sich von der {@link XmlSatzFactory} auch
+ * Mit 5.0 wurde die Funktionalitaet in {@link SatzRegistry} ausgelagert. Im
+ * Gegensatz zu SatzFactory kann man sich von der {@link SatzRegistry} auch
  * verschiedene Instanzen geben lassen - z.B. zur Unterstuetzung von aelteren
  * Versionen der GDV-Satzbeschreibungen.
  * </p>
@@ -43,7 +43,7 @@ import org.apache.logging.log4j.Logger;
 public final class SatzFactory {
 
     private static final Logger LOG = LogManager.getLogger(SatzFactory.class);
-    private static final XmlSatzFactory FACTORY = XmlSatzFactory.getInstance();
+    private static final SatzRegistry FACTORY = SatzRegistry.getInstance();
 
     private SatzFactory() {
     }
