@@ -39,7 +39,7 @@ import java.util.List;
  * @since 04.10.2009
  * @version $Revision$
  */
-public final class Datum extends Feld {
+public final class Datum extends NumFeld {
 
     private static final Logger LOG = LogManager.getLogger(Feld.class);
     private final DateFormat dateFormat;
@@ -106,7 +106,7 @@ public final class Datum extends Feld {
      * @param start Byte-Adresse
      */
     public Datum(Bezeichner bezeichner, int length, int start) {
-        super(bezeichner, length, start, Align.RIGHT);
+        super(bezeichner, length, start);
         dateFormat = getDateFormat(length);
     }
 
@@ -118,7 +118,7 @@ public final class Datum extends Feld {
      * @since 1.0
      */
     public Datum(final Bezeichner bezeichner, final FeldInfo info) {
-        super(bezeichner, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.RIGHT : info.align());
+        super(bezeichner, info);
         dateFormat = getDateFormat(info.anzahlBytes());
     }
 
@@ -137,7 +137,10 @@ public final class Datum extends Feld {
 
     /**
      * Instantiates a new datum.
+     *
+     * @deprecated bitte Constructor mit Bezeichner verwenden
      */
+    @Deprecated
     public Datum() {
         this(1);
     }
@@ -146,19 +149,26 @@ public final class Datum extends Feld {
      * Instantiates a new datum.
      *
      * @param start the start
+     * @deprecated bitte Constructor mit Bezeichner verwenden
      */
+    @Deprecated
     public Datum(final int start) {
         this(8, start);
     }
 
     /**
      * Instantiates a new datum.
+     * <p>
+     * TODO: wird mit v6 entfernt
+     * </p>
      *
      * @param length the length
      * @param start the start
+     * @deprecated bitte {@link Datum#Datum(Bezeichner, int, int)} verwenden
      */
+    @Deprecated
     public Datum(final int length, final int start) {
-        super(length, start, Align.RIGHT);
+        super(Bezeichner.of("Datum"), length, start);
         dateFormat = getDateFormat(length);
     }
 
