@@ -329,7 +329,7 @@ public class NumFeld extends Feld {
      * @return die Zahl als {@link BigDecimal}
      */
     public BigDecimal toBigDecimal() {
-        BigDecimal d = new BigDecimal(getInhalt());
+        BigDecimal d = new BigDecimal(getInhalt().trim());
         return d.movePointLeft(this.nachkommastellen);
     }
 
@@ -346,26 +346,6 @@ public class NumFeld extends Feld {
         return summe.setScale(nachkommastellen, ROUND_UP);
     }
 
-    /**
-     * @return true, wenn der Inhalt eine Zahl ist
-     */
-    @Override
-    public boolean isValid() {
-        if (!super.isValid()) {
-            return false;
-        }
-        if (this.isEmpty()) {
-            return true;
-        }
-        try {
-            this.toLong();
-        } catch (NumberFormatException nfe) {
-            LOG.info(this + " is invalid: not a number (" + nfe + ")");
-            return false;
-        }
-        return true;
-    }
-
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#validate()
      */
@@ -374,7 +354,7 @@ public class NumFeld extends Feld {
         List<ConstraintViolation> violations = super.validate();
         if (this.hasValue()) {
             try {
-                this.toLong();
+                this.toBigDecimal();
             } catch (NumberFormatException nfe) {
                 ConstraintViolation cv = new SimpleConstraintViolation(this, nfe);
                 violations.add(cv);

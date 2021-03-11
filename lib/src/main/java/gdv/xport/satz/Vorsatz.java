@@ -24,7 +24,7 @@ import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.VersionHandler;
-import gdv.xport.util.XmlSatzFactory;
+import gdv.xport.util.SatzRegistry;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -57,17 +57,17 @@ public class Vorsatz extends Satz {
      * Hiermit wird ein Vorsatz mit 3 Teildatensaetzen erstellt.
      */
     public Vorsatz() {
-        this(XmlSatzFactory.getInstance());
+        this(SatzRegistry.getInstance());
     }
 
     /**
      * Ueber die mitgegebene Factory wird der Vorsatz genauso aufgebaut, wie
-     * die {@link XmlSatzFactory} als Vorlage liefert.
+     * die {@link SatzRegistry} als Vorlage liefert.
      *
      * @param factory sollte die Vorlage fuer den Vorsatz liefern.
      * @since 5.0
      */
-    public Vorsatz(XmlSatzFactory factory) {
+    public Vorsatz(SatzRegistry factory) {
         this(factory.getDatensatz(SatzTyp.of("0001")), factory);
     }
 

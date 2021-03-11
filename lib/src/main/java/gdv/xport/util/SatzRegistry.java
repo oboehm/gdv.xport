@@ -43,14 +43,19 @@ import java.util.concurrent.ConcurrentHashMap;
  * verschiedene Instanzen fuer die jeweilige XML-Beschreibung der GDV-
  * Datensaetze erzeugt werden koennen. Dies ist mit der SatzFactory-Klasse
  * nicht moeglich, da sie ein rein statische Klasse ist.
+ * <p>
+ * Da die Klasse auch zum Registrieren eigener Satzarten gedacht ist, wurde
+ * sie in SatzRegistry umbenannt. Funktional entspricht sie aber der
+ * {@link SatzFactory}-Klasse (s.o.).
+ * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 5.0
  */
-public class XmlSatzFactory implements VersionHandler {
+public class SatzRegistry implements VersionHandler {
 
-    private static final Logger LOG = LogManager.getLogger(XmlSatzFactory.class);
-    private static final Map<String, XmlSatzFactory> INSTANCES = new HashMap<>();
+    private static final Logger LOG = LogManager.getLogger(SatzRegistry.class);
+    private static final Map<String, SatzRegistry> INSTANCES = new HashMap<>();
     private final Map<SatzTyp, Class<? extends Satz>> registeredSatzClasses = new ConcurrentHashMap<>();
     private final Map<SatzTyp, Class<? extends Datensatz>> registeredDatensatzClasses = new ConcurrentHashMap<>();
     private final Map<SatzTyp, Class<? extends Enum>> registeredEnumClasses = new ConcurrentHashMap<>();
@@ -65,7 +70,7 @@ public class XmlSatzFactory implements VersionHandler {
         registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, SatzTyp.of("0221.051"));
     }
 
-    private XmlSatzFactory(XmlService xmlService) {
+    private SatzRegistry(XmlService xmlService) {
         this.xmlService = xmlService;
     }
 
@@ -75,7 +80,7 @@ public class XmlSatzFactory implements VersionHandler {
      *
      * @return Factory auf Basis von VUVM2018.xml
      */
-    public static XmlSatzFactory getInstance() {
+    public static SatzRegistry getInstance() {
         return getInstance(Config.getXmlResource());
     }
 
@@ -87,11 +92,11 @@ public class XmlSatzFactory implements VersionHandler {
      * @param resource z.B. "VUVM2015.xml"
      * @return Factory auf Basis der uebergebenen Resource
      */
-    public static XmlSatzFactory getInstance(final String resource) {
-        XmlSatzFactory factory = INSTANCES.get(resource);
+    public static SatzRegistry getInstance(final String resource) {
+        SatzRegistry factory = INSTANCES.get(resource);
         try {
             if (factory == null) {
-                factory = new XmlSatzFactory(XmlService.getInstance(resource));
+                factory = new SatzRegistry(XmlService.getInstance(resource));
                 INSTANCES.put(resource, factory);
                 LOG.info("{} wurde angelegt.", factory);
             }

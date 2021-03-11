@@ -27,15 +27,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Unit-Tests fuer {@link XmlSatzFactory}.
+ * Unit-Tests fuer {@link SatzRegistry}.
  *
  * @author oboehm
  * @since 5.0 (13.01.2021)
  */
-public final class XmlSatzFactoryTest {
+public final class SatzRegistryTest {
 
-    private final XmlSatzFactory f2015 = XmlSatzFactory.getInstance("VUVM2015.xml");
-    private final XmlSatzFactory f2018 = XmlSatzFactory.getInstance("VUVM2018.xml");
+    private final SatzRegistry f2015 = SatzRegistry.getInstance("VUVM2015.xml");
+    private final SatzRegistry f2018 = SatzRegistry.getInstance("VUVM2018.xml");
 
     @Test
     public void testGetInstance2015() {
@@ -44,8 +44,8 @@ public final class XmlSatzFactoryTest {
 
     @Test
     public void testGetSameInstance() {
-        XmlSatzFactory f1 = XmlSatzFactory.getInstance();
-        XmlSatzFactory f2 = XmlSatzFactory.getInstance();
+        SatzRegistry f1 = SatzRegistry.getInstance();
+        SatzRegistry f2 = SatzRegistry.getInstance();
         assertSame(f1, f2);
     }
 
@@ -69,7 +69,7 @@ public final class XmlSatzFactoryTest {
         assertEquals("1.2", getVersionSatzart0052(f2018));
     }
 
-    private String getVersionSatzart0052(XmlSatzFactory factory) {
+    private String getVersionSatzart0052(SatzRegistry factory) {
         Vorsatz vorsatz = factory.getVorsatz();
         vorsatz.setVersion(SatzTyp.of("0052"));
         Feld version = vorsatz.getFeld(Bezeichner.VERSION_SATZART_0052);

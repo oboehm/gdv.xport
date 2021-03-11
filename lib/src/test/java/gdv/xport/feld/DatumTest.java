@@ -29,6 +29,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -127,12 +129,12 @@ public final class DatumTest extends AbstractFeldTest {
         for (ConstraintViolation violation : violations) {
             LOG.info(violation);
         }
-        assertEquals(1, violations.size());
+        assertThat(violations.size(), greaterThan(0));
     }
 
     /**
      * Wenn ein Datum nur aus 6 Zeichen besteht, hat es laut
-     * Broschuere Vermittle das Format MMJJJJ.
+     * Broschuere Vermittler das Format MMJJJJ.
      *
      * @since 0.2
      */

@@ -239,4 +239,16 @@ public final class NumFeldTest extends AbstractFeldTest {
         assertEquals(bezeichner, satznrOhneNachkommastalle.getBezeichner());
     }
 
+    /**
+     * In der XML-Beschreibung zum Satzart "0221.051" sind 3 Deckungssummen
+     * zu einem NumFeld der Laenge 42 zusammengefasst. Das fuehrt bei der
+     * Validierung zu Problemen, die hierueber nachgestellt werden.
+     */
+    @Test
+    public void testKhDeckungssummenInWE() {
+        NumFeld summen = new NumFeld(Bezeichner.of("KhDeckungssummenInWE"), 42, 43);
+        summen.setInhalt("000050000000000000000000000000000000000000");
+        assertTrue(summen.isValid());
+    }
+
 }

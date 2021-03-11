@@ -11,4 +11,5 @@ solange das Dokument noch im Entstehen und noch nicht unter http://www.aosd.de/g
 == Inhalt
 
 4. link:de/04_solution_strategy.adoc[Lösungsstrategie]
+6. link:de/06_runtime_view.adoc[Laufzeitsicht]
 9. link:de/09_design_decisions.adoc[Designentscheidungen]
