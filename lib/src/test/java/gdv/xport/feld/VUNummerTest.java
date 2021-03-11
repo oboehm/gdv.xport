@@ -18,9 +18,10 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Die VUNummer (Versicherungs-Unternehmen-Nummer) ist ein fuenfstelliges
@@ -36,7 +37,7 @@ public class VUNummerTest extends AbstractFeldTest {
      * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
      */
     @Override
-    protected Feld getTestFeld() {
+    protected VUNummer getTestFeld() {
         return new VUNummer("4711");
     }
 
@@ -48,6 +49,19 @@ public class VUNummerTest extends AbstractFeldTest {
         VUNummer vunr = new VUNummer("1234");
         assertEquals(5, vunr.getAnzahlBytes());
         assertEquals("1234 ", vunr.getInhalt());
+    }
+
+    @Test
+    public void testGetBoundaries() {
+        VUNummer vunr = getTestFeld();
+        assertEquals(5, vunr.getByteAdresse());
+        assertEquals(5, vunr.getAnzahlBytes());
+    }
+
+    @Test
+    public void testDefaultCtor() {
+        VUNummer vunr = new VUNummer();
+        assertTrue(vunr.isEmpty());
     }
 
 }
