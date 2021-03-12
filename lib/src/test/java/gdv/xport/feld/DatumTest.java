@@ -25,6 +25,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.SmokeRunner;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -228,6 +229,16 @@ public final class DatumTest extends AbstractFeldTest {
     private static void checkDatumFormat(final String inhalt, final String expected) {
         Datum datum = new Datum("Test-Datum", inhalt);
         assertEquals(expected, datum.format());
+    }
+
+    @Test
+    public void testAddOne() {
+        Datum d = new Datum("Test-Datum", "31032021");
+        Datum e = new Datum(d);
+        BigDecimal added = d.add(BigDecimal.ONE);
+        assertEquals("01042021", d.getInhalt());
+        e.setInhalt(added);
+        assertEquals(d, e);
     }
 
 }

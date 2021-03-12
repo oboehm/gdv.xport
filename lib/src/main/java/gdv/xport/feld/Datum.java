@@ -24,10 +24,12 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
@@ -213,12 +215,37 @@ public final class Datum extends NumFeld {
     }
 
     /**
-     * Sets the inhalt.
+     * Setzt den Inhalt anhand des uebergebenen Datums.
      *
-     * @param d the new inhalt
+     * @param d neues Datum
      */
     public void setInhalt(final Date d) {
         this.setInhalt(dateFormat.format(d));
+    }
+
+    /**
+     * Setzt den Inhalt anhand des uebergebenen Datums.
+     *
+     * @param localDate neues Datum
+     * @since 5.0
+     */
+    public void setInhalt(final LocalDate localDate) {
+        this.setInhalt(Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+    }
+
+    /**
+     * Addiert den Summand auf und liefert das Datum als Zahl zurueck.
+     *
+     * @param anzahlTage Anzahl Tage
+     * @return Summe
+     * @since 5.0
+     */
+    @Override
+    public BigDecimal add(BigDecimal anzahlTage) {
+        LocalDate d = toLocalDate();
+        d = d.plusDays(anzahlTage.intValue());
+        setInhalt(d);
+        return toBigDecimal();
     }
 
     /**
