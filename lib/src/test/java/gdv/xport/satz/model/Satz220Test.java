@@ -26,7 +26,7 @@ import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.feld.common.Satz220Teil2;
 import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
@@ -205,7 +205,7 @@ public class Satz220Test extends AbstractDatensatzTest {
         Satz220 sparte51 = new Satz220(51);
         assertEquals(2, sparte51.getTeildatensaetze().size());
         Teildatensatz teil2 = sparte51.getTeildatensatz(2);
-        Feld satzart = teil2.getFeld(Feld1bis7.SATZART);
+        Feld satzart = teil2.getFeld(Kopffelder1bis7.SATZART.getBezeichner());
         assertEquals(1, satzart.getByteAdresse());
         Feld produktkennung = teil2.getFeld(Satz220Teil2.PRODUKTKENNUNG);
         assertEquals(43, produktkennung.getByteAdresse());

@@ -68,7 +68,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
      */
     @Test
     public void testDatensatzStringInt() throws IOException {
-        Satz adressteil = new Datensatz("0100", 5);
+        Satz adressteil = new Datensatz(SatzTyp.of("0100"), 5);
         AlphaNumFeld schluessel = new AlphaNumFeld((Bezeichner.ANREDESCHLUESSEL), 1, 43);
         schluessel.setInhalt('6');
         adressteil.add(schluessel);
@@ -81,7 +81,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
      */
     @Test
     public void testSet() {
-        Satz ds = new Datensatz("0200", 2);
+        Satz ds = new Datensatz(SatzTyp.of("0200"), 2);
         ds.add(new AlphaNumFeld((Bezeichner.INKASSOART), 1, 43));
         ds.set(Bezeichner.INKASSOART, "2");
         assertEquals("2", ds.get(Bezeichner.INKASSOART));
@@ -92,7 +92,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
      */
     @Test
     public void testSetSparteString() {
-        Datensatz ds = new Datensatz("0220");
+        Datensatz ds = new Datensatz(SatzTyp.of("0220"));
         ds.setSparte("580");
         assertEquals(580, ds.getSparte());
     }
@@ -102,7 +102,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
      */
     @Test
     public void testSetSparteWithArt() {
-        Datensatz ds = new Datensatz("0220");
+        Datensatz ds = new Datensatz(SatzTyp.of("0220"));
         ds.setSparte("580.2");
         assertEquals(580, ds.getSparte());
         assertEquals(2, ds.getArt());
@@ -117,12 +117,12 @@ public class DatensatzTest extends AbstractDatensatzTest {
     @Test
     public void testCopyConstructor() {
         List<Teildatensatz> teildatensaetze = new ArrayList<>();
-        Teildatensatz tds = new Teildatensatz(100, 1);
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
         tds.add(new Feld(Feld100.NAME1));
         tds.set(Bezeichner.NAME1, "Asterix");
         teildatensaetze.add(tds);
         teildatensaetze.add(new Teildatensatz(100, 2));
-        Datensatz orig = new Datensatz(new SatzTyp(100), teildatensaetze);
+        Datensatz orig = new Datensatz(SatzTyp.of(100), teildatensaetze);
         Datensatz copy = new Datensatz(orig);
         assertEquals(orig.get(Bezeichner.NAME1), copy.get(Bezeichner.NAME1));
         assertEquals(orig.toLongString(), copy.toLongString());
@@ -158,7 +158,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
         SatzTyp bausparen = SatzTyp.of("0220.580.2");
         Datensatz datensatz = SatzFactory.getDatensatz(bausparen);
         datensatz.getFeld(Bezeichner.of("Produkt")).setInhalt("580");
-        datensatz.getFeld(Bezeichner.of("Art1")).setInhalt(art);
+        datensatz.getFeld(Bezeichner.of("Art")).setInhalt(art);
         try (PushbackLineNumberReader reader = new PushbackLineNumberReader(
                 new StringReader(datensatz.toLongString()), 50)) {
             int bausparArt = Datensatz.readBausparenArt(reader);

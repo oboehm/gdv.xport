@@ -20,6 +20,7 @@ package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.feld.sparte50.Feld210;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
@@ -89,7 +90,7 @@ public final class FeldTest extends AbstractFeldTest {
      */
     @Test
     public void testFeldWithEnum() {
-        Feld satzart = new Feld(Feld1bis7.SATZART);
+        Feld satzart = new Feld(Kopffelder1bis7.SATZART);
         assertTrue("expected: " + satzart + " is valid", satzart.isValid());
         assertEquals(1, satzart.getByteAdresse());
         assertEquals(4, satzart.getAnzahlBytes());

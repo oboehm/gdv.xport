@@ -24,6 +24,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld200;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
@@ -118,8 +119,8 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testSetEnum() {
         Satz satz100 = SatzFactory.getSatz(SatzTyp.of("0100"));
-        satz100.set(Feld1bis7.FOLGENUMMER, "13");
-        assertEquals("13", satz100.get(Feld1bis7.FOLGENUMMER));
+        satz100.set(Kopffelder1bis7.FOLGENUMMER.getBezeichner(), "13");
+        assertEquals("13", satz100.get(Kopffelder1bis7.FOLGENUMMER.getBezeichner()));
     }
 
     /**
@@ -287,7 +288,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testImport() throws IOException {
-        Satz x = new Datensatz(123);
+        Satz x = new Datensatz(SatzTyp.of(123));
         x.add(new AlphaNumFeld(new Bezeichner("F1"), 5, 5));
         x.importFrom(INPUT_SATZ_123);
         assertEquals(123, x.getSatzart());
@@ -303,7 +304,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testImportFromReader() throws IOException {
-        Satz x = new Datensatz(123, 7);
+        Satz x = new Datensatz(SatzTyp.of(123, 7));
         try (Reader reader = new StringReader(INPUT_SATZ_123)) {
             checkImport(x, reader);
         }
@@ -317,7 +318,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testImportFromReaderTwice() throws IOException {
-        Satz x = new Datensatz(123, 7);
+        Satz x = new Datensatz(SatzTyp.of(123, 7));
         try (Reader reader = new StringReader(INPUT_SATZ_123 + INPUT_SATZ_123)) {
             checkImport(x, reader);
             checkImport(x, reader);
@@ -358,7 +359,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testIsValid() {
-        Satz a = new Datensatz("0000", 1);
+        Satz a = new Datensatz(SatzTyp.of("0000"), 1);
         assertFalse("Diese Satzart gibt es nicht: " + a, a.isValid());
     }
 
@@ -378,8 +379,8 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testIsEquals() {
-        Satz a = new Datensatz(123);
-        Satz b = new Datensatz(123);
+        Satz a = new Datensatz(SatzTyp.of(123));
+        Satz b = new Datensatz(SatzTyp.of(123));
         ObjectTester.assertEquals(a, b);
         b.add(new Feld("c", 55, 'c'));
         assertNotEquals(a, b);
@@ -447,7 +448,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testSatzartInhalt() {
-        Feld satzart = satz.getFeld(Feld1bis7.SATZART);
+        Feld satzart = satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner());
         assertEquals("0123", satzart.getInhalt());
     }
 

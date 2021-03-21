@@ -20,7 +20,7 @@ package gdv.xport.satz;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -88,7 +88,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
     @Test
     public void testVuNummer() {
         this.datensatz.setVuNummer("12345");
-        Feld vuNummer = datensatz.getFeld(Feld1bis7.VU_NUMMER);
+    Feld vuNummer = datensatz.getFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner());
         assertTrue("expected: is valid", vuNummer.isValid());
         assertEquals("12345", vuNummer.getInhalt());
     }
@@ -99,8 +99,9 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testBuendelungskennzeichen() {
-        this.datensatz.set(Feld1bis7.BUENDELUNGSKENNZEICHEN, '1');
-        Feld kennzeichen = this.datensatz.getFeld(Feld1bis7.BUENDELUNGSKENNZEICHEN);
+    this.datensatz.set(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), "1");
+    Feld kennzeichen =
+        this.datensatz.getFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner());
         assertEquals("1", kennzeichen.getInhalt());
     }
 
@@ -113,7 +114,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
         int sparte = this.datensatz.getSparte();
         assertTrue(sparte + " >= 0", sparte >= 0);
         assertTrue(sparte + " <= 999", sparte <= 999);
-        Feld feld = this.datensatz.getFeld(Feld1bis7.SPARTE);
+    Feld feld = this.datensatz.getFeld(Kopffelder1bis7.SPARTE.getBezeichner());
         assertEquals(sparte, Integer.parseInt(feld.getInhalt()));
     }
 
@@ -125,7 +126,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
     public void testVersicherungsscheinNummer() {
         String nr = "Scheinnummer34567";
         this.datensatz.setVersicherungsscheinNummer(nr);
-        assertEquals(nr, this.datensatz.getFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER).getInhalt());
+        assertEquals(nr, this.datensatz.getFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner()).getInhalt());
     }
 
     /**
@@ -135,7 +136,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testFolgenummer() {
-        this.datensatz.set(Feld1bis7.FOLGENUMMER, 42);
+    this.datensatz.set(Kopffelder1bis7.FOLGENUMMER.getBezeichner(), 42);
         assertEquals(42, this.datensatz.getFolgenummer());
     }
 
@@ -145,7 +146,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
     @Test
     public void testVermittler() {
         String vermittler = "Fritz";
-        this.datensatz.set(Feld1bis7.VERMITTLER, vermittler);
+    this.datensatz.set(Kopffelder1bis7.VERMITTLER.getBezeichner(), vermittler);
         assertEquals(vermittler, this.datensatz.getVermittler());
     }
 

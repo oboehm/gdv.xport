@@ -21,7 +21,7 @@ package gdv.xport.satz;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.VUNummer;
-import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
@@ -67,7 +67,7 @@ abstract public class AbstractSatzTest {
     @Test
     public void testSatzart() {
         Satz satz = this.getSatz();
-        Feld satzart = satz.getFeld(Feld1bis7.SATZART);
+    Feld satzart = satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner());
         assertTrue("expected: is valid", satzart.isValid());
         assertFalse("expected: not empty", satzart.isEmpty());
         assertEquals(satz.getSatzart(), Integer.parseInt(satzart.getInhalt()));

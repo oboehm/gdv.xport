@@ -18,7 +18,7 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -45,7 +45,7 @@ public final class NumFeldTest extends AbstractFeldTest {
      */
     @Override
     protected Feld getTestFeld() {
-        return new NumFeld(Feld1bis7.SPARTE);
+        return new NumFeld(Kopffelder1bis7.SPARTE);
     }
 
     /**
@@ -72,7 +72,7 @@ public final class NumFeldTest extends AbstractFeldTest {
      */
     @Test
     public void testNumFeldWithEnum() {
-        NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
+        NumFeld sparte = new NumFeld(Kopffelder1bis7.SPARTE);
         assertEquals(0, sparte.toInt());
     }
 

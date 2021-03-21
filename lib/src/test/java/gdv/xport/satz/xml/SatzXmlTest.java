@@ -25,7 +25,7 @@ import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.util.SatzTyp;
 import org.junit.BeforeClass;
@@ -239,10 +239,10 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         XMLEventReader parser = createXMLEventReader("Satz100.xml");
         try {
             SatzXml satz = new SatzXml(parser);
-            String expected = satz.getFeld(Feld1bis7.SATZART).getInhalt();
+            String expected = satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner()).getInhalt();
             Map<String, FeldXml> felder = getFelder();
             satz.setFelder(felder);
-            assertEquals(expected, satz.getFeld(Feld1bis7.SATZART).getInhalt());
+            assertEquals(expected, satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner()).getInhalt());
         } finally {
             parser.close();
         }
