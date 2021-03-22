@@ -22,7 +22,7 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzTyp;
@@ -47,7 +47,7 @@ public class Datensatz extends Satz {
 
 	private static final Logger LOG = LogManager.getLogger(Datensatz.class);
 	/** 3 Zeichen, Byte 11 - 13. */
-    private final NumFeld sparte = new NumFeld(Feld1bis7.SPARTE);
+  private final NumFeld sparte = new NumFeld(Kopffelder1bis7.SPARTE);
 	/** 1 Zeichen, Byte 59. */
 	private final AlphaNumFeld wagnisart = new AlphaNumFeld((WAGNISART), 1, 59);
 	/** 1 Zeichen, Byte 256 - 256. */
@@ -56,9 +56,14 @@ public class Datensatz extends Satz {
 	private int art;
 
 	/**
-	 * Default-Konstruktor (wird zur Registrierung bei der.
-	 * {@link gdv.xport.util.SatzFactory} benoetigt).
-	 *
+	 * Default-Konstruktor (wird zur Registrierung bei der {@link gdv.xport.util.SatzFactory}
+	 * benoetigt).
+	 * <p>
+	 * @Klaus: In {@link gdv.xport.util.SatzRegistry#getSatz(SatzTyp)} wird der
+	 *         Default-Constructor per Reflection aufgerufen. Daher kann er nicht
+	 *         einfach entfernt werden.
+	 * </p>
+	 * 
 	 * @since 0.6
 	 */
 	public Datensatz() {
@@ -196,7 +201,7 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz.
+   * Instantiiert einen neuen Datensatz. (nur von SatzX)
 	 *
 	 * @param satzNr  die SatzNummer
 	 * @param tdsList Liste mit den Teildatensaetzen
@@ -258,22 +263,24 @@ public class Datensatz extends Satz {
 	}
 
 	protected static void setUpTeildatensatz(final Teildatensatz tds, final NumFeld sparte) {
-        if (!tds.hasFeld(Feld1bis7.VU_NUMMER) && !tds.get(Feld1bis7.SATZART)
+    if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()) && !tds.get(Kopffelder1bis7.SATZART.getBezeichner())
                                                      .equalsIgnoreCase("9999")) {
-			setUp(tds, Feld1bis7.VU_NUMMER, Config.getVUNummer());
-			setUp(tds, Feld1bis7.BUENDELUNGSKENNZEICHEN, new AlphaNumFeld(Feld1bis7.BUENDELUNGSKENNZEICHEN));
-			setUp(tds, Feld1bis7.SPARTE, sparte);
-			setUp(tds, Feld1bis7.VERSICHERUNGSSCHEINNUMMER, new AlphaNumFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER));
-			setUp(tds, Feld1bis7.FOLGENUMMER, new NumFeld(Feld1bis7.FOLGENUMMER));
-			setUp(tds, Feld1bis7.VERMITTLER, new AlphaNumFeld(Feld1bis7.VERMITTLER));
-			LOG.trace(tds + " is set up.");
-		} else if (tds.hasFeld(Feld1bis7.SPARTE)) {
-			tds.getFeld(Feld1bis7.SPARTE).setInhalt(sparte.getInhalt());
+      setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), Config.getVUNummer());
+      setUp(tds, Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN));
+      setUp(tds, Kopffelder1bis7.SPARTE.getBezeichner(), sparte);
+      setUp(tds, Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER));
+      setUp(tds, Kopffelder1bis7.FOLGENUMMER.getBezeichner(), new NumFeld(Kopffelder1bis7.FOLGENUMMER));
+      setUp(tds, Kopffelder1bis7.VERMITTLER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERMITTLER));
+      LOG.trace(tds + " is set up.");
+    } else if (tds.hasFeld(Kopffelder1bis7.SPARTE)) {
+      tds.getFeld(Kopffelder1bis7.SPARTE.getBezeichner()).setInhalt(sparte.getInhalt());
 		}
 	}
 
-	private static void setUp(final Teildatensatz tds, final Enum feldX, final Feld value) {
-		if (!tds.hasFeld(feldX)) {
+  private static void setUp(final Teildatensatz tds, final Bezeichner bezeichner, final Feld value)
+  {
+    if (!tds.hasFeld(bezeichner))
+    {
 			LOG.trace("{} initialized with value {}.", tds, value);
 			tds.add(value);
 		}
@@ -305,12 +312,19 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Sets the sparte.
+	 * Setzt die Sparte.
 	 *
 	 * @param x z.B. 70 (Rechtsschutz)
 	 */
 	public void setSparte(final int x) {
 		this.sparte.setInhalt(x);
+/**
+ *
+ * @Oli: was soll hier geschehen? Das Besetzen von "sparte" innerhalb der Teildatensaetze
+ *       ist falsch z.B. bei GdvSatzart "0220.000" (Sparte 000 gibt es nicht),
+ *       "0220.170" (Sparte 170 gibt es nicht), u.a.
+ *       siehe Mail vom 15.03.2021
+ */
 		for (Teildatensatz tds : getTeildatensaetze()) {
 			if (tds.getFelder().size() > 3) {
 				tds.getFeld(4).setInhalt(x);
@@ -400,7 +414,7 @@ public class Datensatz extends Satz {
 	 * @param s VU-Nummer (max. 5 Stellen)
 	 */
 	public void setVuNummer(final String s) {
-	    this.getFeld(Feld1bis7.VU_NUMMER).setInhalt(s);
+    this.getFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()).setInhalt(s);
 	}
 
 	/**
@@ -409,7 +423,7 @@ public class Datensatz extends Satz {
 	 * @return die VU-Nummer
 	 */
 	public String getVuNummer() {
-		return this.getFeld(Feld1bis7.VU_NUMMER).getInhalt().trim();
+    return this.getFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()).getInhalt().trim();
 	}
 
 	/**
@@ -419,7 +433,7 @@ public class Datensatz extends Satz {
 	 * @since 0.3
 	 */
 	public void setVersicherungsscheinNummer(final String nr) {
-	    this.getFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER).setInhalt(nr);
+    this.getFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner()).setInhalt(nr);
 	}
 
 	/**
@@ -429,11 +443,13 @@ public class Datensatz extends Satz {
 	 * @since 0.3
 	 */
 	public String getVersicherungsscheinNummer() {
-		return this.getFeld(Feld1bis7.VERSICHERUNGSSCHEINNUMMER).getInhalt().trim();
+    return this.getFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner()).getInhalt().trim();
 	}
 
 	/**
-	 * Gets the teildatensatz nummer.
+   * Gets the teildatensatz nummer. (wird nur von SatzX verwendet!)
+   *
+   * @Oli: das ist Unsinn. Ein Datensatz hat keine TeildatensatzNummer!
 	 *
 	 * @return the teildatensatz nummer
 	 */
@@ -471,7 +487,7 @@ public class Datensatz extends Satz {
 	 * @since 0.3
 	 */
 	public void setFolgenummer(final int nr) {
-	    this.getFeld(Feld1bis7.FOLGENUMMER).setInhalt(nr);
+    this.getFeld(Kopffelder1bis7.FOLGENUMMER.getBezeichner()).setInhalt(Integer.toString(nr));
 	}
 
 	/**
@@ -481,7 +497,7 @@ public class Datensatz extends Satz {
 	 * @since 0.3
 	 */
 	public int getFolgenummer() {
-	    NumFeld folgenummer = (NumFeld) this.getFeld(Feld1bis7.FOLGENUMMER);
+    NumFeld folgenummer = (NumFeld) this.getFeld(Kopffelder1bis7.FOLGENUMMER.getBezeichner());
 		return folgenummer.toInt();
 	}
 
