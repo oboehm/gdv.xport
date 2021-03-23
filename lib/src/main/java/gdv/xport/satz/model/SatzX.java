@@ -28,7 +28,7 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.enums.TeildatensatzEnum;
 import gdv.xport.satz.feld.FeldX;
 import gdv.xport.satz.feld.MetaFeldInfo;
-import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzTyp;
@@ -38,8 +38,6 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.*;
-
-import static gdv.xport.feld.Bezeichner.SPARTE;
 
 /**
  * Dies ist die gemeinsame Oberklasse aller Saetze in diesem Package, die nach
@@ -172,7 +170,7 @@ public class SatzX extends Datensatz {
 	 * @param felder Felder fuer die Teildatensaetze.
 	 */
 	protected void setUpTeildatensaetze(final Enum[] felder) {
-		super.createTeildatensaetze(getTeildatensaetzeFor(this.getSatzart(), felder));
+		super.createTeildatensaetze(getTeildatensaetzeFor(SatzTyp.of(this.getSatzart()), felder));
 		super.completeTeildatensaetze();
 	}
 
@@ -310,12 +308,15 @@ public class SatzX extends Datensatz {
 		}
 	}
 
-	private static void setSparteFor(final Teildatensatz tds, final int sparte) {
-		if (!tds.hasFeld(Feld1bis7.SPARTE)) {
-			Feld spartenFeld = new NumFeld((SPARTE), 3, 11);
+  private static void setSparteFor(final Teildatensatz tds, final int sparte)
+  {
+    if (!tds.hasFeld(Kopffelder1bis7.SPARTE))
+    {
+      Feld spartenFeld = new NumFeld(Kopffelder1bis7.SPARTE);
 			tds.add(spartenFeld);
 		}
-		tds.getFeld(Feld1bis7.SPARTE).setInhalt(sparte);
+    tds.getFeld(Kopffelder1bis7.SPARTE.getBezeichner())
+        .setInhalt(sparte);
 	}
 
 	/**
