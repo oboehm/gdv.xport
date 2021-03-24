@@ -23,7 +23,7 @@ import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.enums.TeildatensatzEnum;
-import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
@@ -824,9 +824,6 @@ public abstract class Satz implements Cloneable {
 	public SatzTyp getSatzTyp() {
 		if (StringUtils.isNotEmpty(this.gdvSatzartName)) {
 			return SatzTyp.of(this.gdvSatzartName);
-		} else if (this.hasSparte() && this.getSparte() == 10 && this.hasWagnisart()) {
-	        String wagnisart = this.getWagnisart();
-            return SatzTyp.of(this.getSatzart(), this.getSparte(), Integer.parseInt(wagnisart));
 	    } else if (this.hasSparte()) {
 	        return new SatzTyp(this.getSatzart(), this.getSparte());
 	    } else {
@@ -841,8 +838,9 @@ public abstract class Satz implements Cloneable {
      * @return true, falls Sparten-Feld vorhanden ist
 	 * @since 0.9
 	 */
-	public boolean hasSparte() {
-		return hasFeld(Bezeichner.of(Feld1bis7.SPARTE));
+  public boolean hasSparte()
+  {
+    return hasFeld(Bezeichner.of(Kopffelder1bis7.SPARTE.getBezeichnung()));
 	}
 
 	/**
@@ -878,8 +876,9 @@ public abstract class Satz implements Cloneable {
      * @since 0.9
 	 */
 	@JsonIgnore
-	public int getSparte() {
-	    NumFeld sparte = (NumFeld) this.getFeld(Feld1bis7.SPARTE);
+  public int getSparte()
+  {
+    NumFeld sparte = (NumFeld) this.getFeld(Kopffelder1bis7.SPARTE.getBezeichner());
 	    return sparte.toInt();
 	}
 
