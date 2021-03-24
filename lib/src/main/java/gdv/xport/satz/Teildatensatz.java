@@ -181,6 +181,9 @@ public class Teildatensatz extends Satz {
 
     /**
      * Liefert die Satznummer zurueck.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @return Satznummer als einzelnes Zeichen ('1' ... '9')
      * @since 0.2

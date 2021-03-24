@@ -401,7 +401,10 @@ public final class Datenpaket {
             else if (isIdentischZu510(sparte))
                 satzTyp = SatzTyp.of(satzart, 510);
             else if (600 == sparte)
+            // lt. GDV-Spartenverseichnis wird Moped wie Sparte 050 behandelt
                 satzTyp = SatzTyp.of(satzart, 50);
+           else
+                satzTyp = SatzTyp.of(satzart, sparte);
         }
         if (sparte == 10 && ((satzart == 210) || (satzart == 220) || (satzart == 221))) {
             WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
