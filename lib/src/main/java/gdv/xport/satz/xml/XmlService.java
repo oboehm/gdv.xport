@@ -57,6 +57,7 @@ public class XmlService {
     private final List<SatzXml> saetze = new ArrayList<>();
     private final Map<SatzTyp, SatzXml> satzarten = new HashMap<>();
     private final Map<String, FeldXml> felder = new HashMap<>();
+  private String gdvRelease = "";
 
     /**
      * Liefert einen Service anhand des Standard-XML-Handbuchs von 2018.
@@ -155,7 +156,12 @@ public class XmlService {
     private void parseElement(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
         LOG.trace("Parsing element {}.", element);
         QName name = element.getName();
-        if ("satzarten".equals(name.getLocalPart())) {
+    if ("info".equals(name.getLocalPart()))
+    {
+      parseInfo(element, reader);
+    }
+    else if ("satzarten".equals(name.getLocalPart()))
+    {
             parseSatzarten(element, reader);
         } else if ("felder".equals(name.getLocalPart())) {
             this.felder.putAll(parseFelder(element, reader));
@@ -179,6 +185,36 @@ public class XmlService {
         }
         throw new XMLStreamException("end of " + element + " not found");
     }
+
+  private void parseInfo(final StartElement element,
+      final XMLEventReader reader) throws XMLStreamException
+  {
+    while (reader.hasNext())
+    {
+      XMLEvent event = reader.nextEvent();
+      if (XmlHelper.isStartElement(event, "stand"))
+      {
+        if (reader.hasNext())
+        {
+          event = reader.nextEvent();
+          if (event.isCharacters())
+          {
+            this.gdvRelease = event.asCharacters()
+                .getData();
+            LOG.info(this.gdvRelease);
+          }
+        }
+
+        LOG.debug("GdvRelease found.", this.gdvRelease);
+      }
+      else if (XmlHelper.isEndElement(event, element.getName()))
+      {
+        LOG.debug("GdvRelease {} successful parsed. ", this.gdvRelease);
+        return;
+      }
+    }
+    throw new XMLStreamException("end of " + element + " not found");
+  }
 
     /**
      * Liest die &lt;felder&gt;-Elemente ein und liefert sie als Map zurueck.
@@ -363,6 +399,16 @@ public class XmlService {
         } else {
             return satzXml.getSatzversion().getInhalt();
         }
+    }
+
+    /**
+     * Liefert das Release der erzeugten Xml-Saetze
+     *
+     * @return das Release der erzeugten XmlSaetze
+     */
+    public String getGdvRelease()
+    {
+        return this.gdvRelease;
     }
 
     @Override
