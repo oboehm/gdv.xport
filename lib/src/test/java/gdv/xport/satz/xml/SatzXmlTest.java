@@ -36,6 +36,7 @@ import patterntesting.runtime.junit.SmokeRunner;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
+import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Collection;
@@ -388,4 +389,11 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         assertNotEquals(orig, copy);
     }
 
+    @Test
+    public void testOf() throws IOException, XMLStreamException {
+        File xmlFile = new File("src/test/resources/gdv/xport/satz/xml/Satz100.xml");
+        assertTrue(xmlFile.exists());
+        SatzXml fromXML = SatzXml.of(xmlFile);
+        assertNotNull(fromXML);
+    }
 }

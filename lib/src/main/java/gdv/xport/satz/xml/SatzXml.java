@@ -30,10 +30,15 @@ import org.apache.logging.log4j.Logger;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -71,7 +76,7 @@ public class SatzXml extends Datensatz {
      * @throws XMLStreamException the XML stream exception
      */
     public SatzXml(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
-        super(0);
+        super(SatzTyp.of(0));
         parse(element, parser);
     }
 
@@ -249,4 +254,26 @@ public class SatzXml extends Datensatz {
         return satzTypen;
     }
 
+    /**
+     * Hier kann man mithile einer XML-Beschreibung einen Satz generieren.
+     * Diese Methode dient dazu, um die Notwendigkeit der Enum-Beschreibung
+     * weiter zu reduzieren.
+     *
+     * @param file Datei mit XML-Beschreibung
+     * @return einen Satz gemaess der XML-Beschreibung
+     * @throws IOException        the io exception
+     * @throws XMLStreamException the xml stream exception
+     * @since 5.0
+     */
+    public static SatzXml of(File file) throws IOException, XMLStreamException {
+        XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+        try (InputStream istream = new FileInputStream(file)) {
+            XMLEventReader parser = xmlInputFactory.createXMLEventReader(istream);
+            try {
+                return new SatzXml(parser);
+            } finally {
+                parser.close();
+            }
+        }
+    }
 }
