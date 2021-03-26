@@ -67,7 +67,7 @@ public class SatzRegistry implements VersionHandler {
 
     private void registerDefault() {
         // hier enthaelt die XML-Beschreibung f. KH-Deckungssumme weniger Infos
-        registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, SatzTyp.of("0221.051"));
+        //registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, SatzTyp.of("0221.051"));
     }
 
     private SatzRegistry(XmlService xmlService) {

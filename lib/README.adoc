@@ -11,6 +11,19 @@ Mit 3.0 wurde die ArtifactId für Maven in "gdv-xport-lib" umbenannt (bis 2.x: "
 In 4.0 wurden Inkonsistenzen zwischen den einzelnen Enum-Klassen, die die Datensaetze beschreiben, und den entsprechenden Bezeichner-Konstanten bereinigt.
 Ferner basiert 4.0 jetzt auf der 2018er-Version der XML-Datei von http://www.gdv-online.de/vuvm/index.htm[gdv-online].
 
+Version 5 basiert nun komplett auf die XML-Beschreibung von http://www.gdv-online.de/vuvm/index.htm[gdv-online].
+Ferner kann man sich in v5 über XmlService.getInstance("VUVM2013.xml") gezielt auf eine bestimmte Version der XML-Beschreibung beziehen.
+
+
+== Kompatibiltaet von v5 zu v4
+
+In Satz 0221.051 (Kfz) gibt es ein Abweichung von der Beschreibung ueber die Enum-Klasse `gdv.xport.satz.feld.sparte51.Feld221` und der XML-Beschreibung des GDVs.
+Waehrend in der Enum-Beschreibung die KH-Deckungssummen in Teil 1, 2 und 3 aufgeteilt sind, sind diese in der XML-Beschreibung nur als Ganzes deklariert. Lediglich in der Beschreibung zu diesem Feld wird darauf verwiesen, dass dieses Feld eigentlich aus 3 Teilen besteht.
+Möchte man hier das alte Verhalten, muss man die `Feld221`-Enum ueber die `SatzRegistry` registrieren:
+
+```java
+    SatzRegistry.getInstance().registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, SatzTyp.of(221, 51));
+```
 
 
 == Kompatibilitaet von v3 zu v4

@@ -325,12 +325,17 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testSatzart0221051() {
-        SatzTyp kfz = new SatzTyp(221, 51);
-        Datensatz satz = SatzFactory.getDatensatz(kfz);
-        checkDatensatz(satz);
-        checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1);
-        checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2);
-        checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3);
+        SatzTyp kfz = SatzTyp.of(221, 51);
+        try {
+            SatzRegistry.getInstance().registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, kfz);
+            Datensatz satz = SatzFactory.getDatensatz(kfz);
+            checkDatensatz(satz);
+            checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1);
+            checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2);
+            checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3);
+        } finally {
+            SatzRegistry.getInstance().unregister(kfz);
+        }
     }
 
     private static void checkDeckungssumme(Datensatz satz, Bezeichner name) {
