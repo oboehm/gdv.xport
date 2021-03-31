@@ -21,6 +21,7 @@ package gdv.xport.util;
 import gdv.xport.config.Config;
 import gdv.xport.config.ConfigException;
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,6 +33,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.List;
 
 /**
  * Diese Klasse orientiert an sich an der GDV-XML-Beschreibung fuer das
@@ -100,11 +102,26 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     public void write(final Satz satz) throws IOException {
         try {
             xmlStreamWriter.writeStartElement("satzart");
+            xmlStreamWriter.writeCharacters("\n");
+            write(satz.getTeildatensaetze());
             xmlStreamWriter.writeEndElement();
             xmlStreamWriter.writeCharacters("\n");
             xmlStreamWriter.flush();
         } catch (XMLStreamException ex) {
             throw new IOException("cannot format " + satz, ex);
+        }
+    }
+
+    private void write(List<Teildatensatz> teildatensaetze) throws XMLStreamException {
+        for (Teildatensatz tds : teildatensaetze) {
+            xmlStreamWriter.writeStartElement("satzanfang");
+            xmlStreamWriter.writeAttribute("teilsatz", tds.getSatznummer().getInhalt());
+            xmlStreamWriter.writeEndElement();
+            xmlStreamWriter.writeCharacters("\n");
+            xmlStreamWriter.writeStartElement("satzende");
+            xmlStreamWriter.writeEndElement();
+            xmlStreamWriter.writeCharacters("\n");
+            xmlStreamWriter.flush();
         }
     }
 

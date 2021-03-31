@@ -18,16 +18,22 @@
 package gdv.xport.util;
 
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
+import javax.xml.stream.XMLStreamException;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.startsWith;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Unit-Tests fuer gdv.xport.util.GdvXmlFormatter.
@@ -46,6 +52,23 @@ public final class GdvXmlFormatterTest {
             formatter.write(satz100);
             assertThat(writer.toString().trim(), startsWith("<satzart"));
             LOG.info(writer.toString());
+        }
+    }
+
+    @Test
+    public void testCreateSatzFromOutput() throws IOException, XMLStreamException {
+        Satz adressteil = XmlService.getInstance().getSatzart(SatzTyp.of(102));
+        File output = new File("target", "satz102.xml");
+        formatTo(output, adressteil);
+        SatzXml generated = SatzXml.of(output);
+        assertNotNull(generated);
+        assertEquals(adressteil.getNumberOfTeildatensaetze(), generated.getNumberOfTeildatensaetze());
+    }
+
+    private void formatTo(File output, Satz satz) throws IOException {
+        try (FileOutputStream ostream = new FileOutputStream(output)) {
+            GdvXmlFormatter formatter = new GdvXmlFormatter(ostream);
+            formatter.write(satz);
         }
     }
 
