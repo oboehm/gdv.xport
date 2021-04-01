@@ -31,7 +31,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.startsWith;
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -50,7 +50,7 @@ public final class GdvXmlFormatterTest {
             GdvXmlFormatter formatter = new GdvXmlFormatter(writer);
             Satz satz100 = XmlService.getInstance().getSatzart(SatzTyp.of(100));
             formatter.write(satz100);
-            assertThat(writer.toString().trim(), startsWith("<satzart"));
+            assertThat(writer.toString().trim(), containsString("<satzart"));
             LOG.info(writer.toString());
         }
     }

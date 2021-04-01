@@ -22,6 +22,7 @@ import gdv.xport.config.Config;
 import gdv.xport.config.ConfigException;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
+import javanet.staxutils.IndentingXMLStreamWriter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,6 +34,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
@@ -53,6 +55,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     private static final Logger LOG = LogManager.getLogger(GdvXmlFormatter.class);
     private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
     private XMLStreamWriter xmlStreamWriter;
+    //private IndentingXMLStreamWriter xmlStreamWriter;
 
     /**
      * Default-Konstruktor.
@@ -69,7 +72,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     public GdvXmlFormatter(final Writer writer) {
         super(writer);
         try {
-            this.xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(writer);
+            this.xmlStreamWriter = createXMLStreamWriter(writer);
         } catch (XMLStreamException ex) {
             throw new ShitHappenedException("you should never see this", ex);
         } catch (FactoryConfigurationError ex) {
@@ -85,7 +88,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     public GdvXmlFormatter(final OutputStream ostream) {
         super(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
         try {
-            this.xmlStreamWriter = XML_OUTPUT_FACTORY.createXMLStreamWriter(ostream, Config.DEFAULT_ENCODING.name());
+            this.xmlStreamWriter = createXMLStreamWriter(ostream);
         } catch (XMLStreamException ex) {
             throw new ShitHappenedException("you should never see this", ex);
         } catch (FactoryConfigurationError ex) {
@@ -101,11 +104,11 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     @Override
     public void write(final Satz satz) throws IOException {
         try {
+            xmlStreamWriter.writeStartDocument(StandardCharsets.ISO_8859_1.toString(), "1.0");
             xmlStreamWriter.writeStartElement("satzart");
-            xmlStreamWriter.writeCharacters("\n");
             write(satz.getTeildatensaetze());
             xmlStreamWriter.writeEndElement();
-            xmlStreamWriter.writeCharacters("\n");
+            xmlStreamWriter.writeEndDocument();
             xmlStreamWriter.flush();
         } catch (XMLStreamException ex) {
             throw new IOException("cannot format " + satz, ex);
@@ -114,15 +117,28 @@ public final class GdvXmlFormatter extends AbstractFormatter {
 
     private void write(List<Teildatensatz> teildatensaetze) throws XMLStreamException {
         for (Teildatensatz tds : teildatensaetze) {
-            xmlStreamWriter.writeStartElement("satzanfang");
+            xmlStreamWriter.writeEmptyElement("satzanfang");
             xmlStreamWriter.writeAttribute("teilsatz", tds.getSatznummer().getInhalt());
-            xmlStreamWriter.writeEndElement();
-            xmlStreamWriter.writeCharacters("\n");
-            xmlStreamWriter.writeStartElement("satzende");
-            xmlStreamWriter.writeEndElement();
-            xmlStreamWriter.writeCharacters("\n");
+            xmlStreamWriter.writeEmptyElement("satzende");
             xmlStreamWriter.flush();
         }
+    }
+
+    private static XMLStreamWriter createXMLStreamWriter(Writer textWriter) throws XMLStreamException {
+        XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter);
+        return toIndentingStreamWriter(out);
+    }
+
+    private static XMLStreamWriter createXMLStreamWriter(OutputStream textWriter) throws XMLStreamException {
+        XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter, Config.DEFAULT_ENCODING.name());
+        return toIndentingStreamWriter(out);
+    }
+
+    //https://stackoverflow.com/questions/10105187/java-indentingxmlstreamwriter-alternative
+    private static IndentingXMLStreamWriter toIndentingStreamWriter(XMLStreamWriter out) {
+        IndentingXMLStreamWriter indentWriter = new IndentingXMLStreamWriter(out);
+        indentWriter.setIndent("\t");
+        return indentWriter;
     }
 
 }
