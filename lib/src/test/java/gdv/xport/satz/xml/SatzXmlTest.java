@@ -28,6 +28,7 @@ import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.util.SatzTyp;
+import org.hamcrest.MatcherAssert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,6 +45,7 @@ import java.util.List;
 import java.util.Map;
 
 import static gdv.xport.satz.xml.AbstractXmlTest.createXMLEventReader;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.*;
 
 /**
@@ -395,5 +397,6 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         assertTrue(xmlFile.exists());
         SatzXml fromXML = SatzXml.of(xmlFile);
         assertNotNull(fromXML);
+        MatcherAssert.assertThat(fromXML.getFelder().size(), greaterThan(10));
     }
 }

@@ -19,6 +19,7 @@
 package gdv.xport.feld;
 
 import gdv.xport.util.ShitHappenedException;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -53,7 +54,7 @@ public enum Datentyp {
 
     private final Class<? extends Feld> feldClass;
 
-    private Datentyp(final Class<? extends Feld> clazz) {
+    Datentyp(final Class<? extends Feld> clazz) {
         this.feldClass = clazz;
     }
 
@@ -92,6 +93,10 @@ public enum Datentyp {
         }
     }
 
+    public String capitalize() {
+        return WordUtils.capitalize(toString().toLowerCase());
+    }
+
     /**
      * Liefert den gewuenschten Datentyp zurueck.
      *
@@ -100,6 +105,43 @@ public enum Datentyp {
      */
     public static Datentyp asValue(final String name) {
         return Datentyp.valueOf(name.toUpperCase());
+    }
+
+    /**
+     * Wandelt einen Datentyp wieder zurueck in den String aus der
+     * GDV-XML-Beschreibung.
+     *
+     * @param feld z.B. ein numerischer Wert (ohne Nachkommastellen)
+     * @return z.B. "Numerisch"
+     * @since 5.0
+     */
+    public static String asString(Feld feld) {
+        if (feld instanceof NumFeld) {
+            NumFeld n = (NumFeld) feld;
+            if (n.getNachkommastellen() > 0) {
+                return FLIESSKOMMA.capitalize();
+            } else {
+                return NUMERISCH.capitalize();
+            }
+        }
+        return asString(feld.getClass());
+    }
+
+    /**
+     * Wandelt einen Datentyp wieder zurueck in den String aus der
+     * GDV-XML-Beschreibung.
+     *
+     * @param clazz z.B. NumFeld.class
+     * @return z.B. "Numerisch"
+     * @since 5.0
+     */
+    public static String asString(Class<? extends Feld> clazz) {
+        for (Datentyp t : Datentyp.values()) {
+            if (t.feldClass.isAssignableFrom(clazz)) {
+                return WordUtils.capitalize(t.toString().toLowerCase());
+            }
+        }
+        throw new IllegalArgumentException("no presentation available for " + clazz);
     }
 
 }

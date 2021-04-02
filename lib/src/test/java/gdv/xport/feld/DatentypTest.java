@@ -18,9 +18,9 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit-Test fuer {@link Datentyp}.
@@ -46,6 +46,12 @@ public class DatentypTest {
     @Test
     public void testAsValueFliesskomma() {
         assertEquals(Datentyp.FLIESSKOMMA, Datentyp.asValue("Flie\u00dfkomma"));
+    }
+
+    @Test
+    public void testAsStringNumFeld() {
+        NumFeld n = new NumFeld(Bezeichner.of("test"), 2, 1);
+        assertEquals("Numerisch", Datentyp.asString(n));
     }
 
 }

@@ -6,19 +6,19 @@ import gdv.xport.event.ImportListener;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.*;
 
 /**
  * Dies ist das gemeinsame Oberklasse der verschiedenen Formatter. Es wird
  * z.B. von der Main-Klasse fuer die Ausgabe verwendet.
+ * <p>
+ * Seit 5.0 wird das {@link AutoCloseable}-Interface implementiert.
+ * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (29.11.2010)
  */
-public abstract class AbstractFormatter implements ImportListener {
+public abstract class AbstractFormatter implements ImportListener, AutoCloseable {
 
     private Writer writer;
 
@@ -129,6 +129,17 @@ public abstract class AbstractFormatter implements ImportListener {
      */
     public void write(final String content) throws IOException {
         this.writer.write(content);
+    }
+
+    /**
+     * Schliesst die Writer-Resource.
+     *
+     * @throws IOException falls was schief geht
+     * @since 5.0
+     */
+    @Override
+    public void close() throws IOException {
+        writer.close();
     }
 
 }

@@ -270,7 +270,10 @@ public class SatzXml extends Datensatz {
         try (InputStream istream = new FileInputStream(file)) {
             XMLEventReader parser = xmlInputFactory.createXMLEventReader(istream);
             try {
-                return new SatzXml(parser);
+                SatzXml satz = new SatzXml(parser);
+                Map<String, FeldXml> xmlFelder = XmlService.parseFelder(parser);
+                satz.setFelder(xmlFelder);
+                return satz;
             } finally {
                 parser.close();
             }

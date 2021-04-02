@@ -51,7 +51,6 @@ public final class GdvXmlFormatterTest {
             Satz satz100 = XmlService.getInstance().getSatzart(SatzTyp.of(100));
             formatter.write(satz100);
             assertThat(writer.toString().trim(), containsString("<satzart"));
-            LOG.info(writer.toString());
         }
     }
 
@@ -63,13 +62,15 @@ public final class GdvXmlFormatterTest {
         SatzXml generated = SatzXml.of(output);
         assertNotNull(generated);
         assertEquals(adressteil.getNumberOfTeildatensaetze(), generated.getNumberOfTeildatensaetze());
+        assertEquals(adressteil.getFelder().size(), generated.getFelder().size());
     }
 
     private void formatTo(File output, Satz satz) throws IOException {
-        try (FileOutputStream ostream = new FileOutputStream(output)) {
-            GdvXmlFormatter formatter = new GdvXmlFormatter(ostream);
+        try (FileOutputStream ostream = new FileOutputStream(output);
+             GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
             formatter.write(satz);
         }
+        LOG.info("{} wurde nach {} geschrieben.", satz, output);
     }
 
 }

@@ -20,6 +20,10 @@ package gdv.xport.util;
 
 import gdv.xport.config.Config;
 import gdv.xport.config.ConfigException;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Datentyp;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import javanet.staxutils.IndentingXMLStreamWriter;
@@ -35,6 +39,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -54,8 +59,8 @@ public final class GdvXmlFormatter extends AbstractFormatter {
 
     private static final Logger LOG = LogManager.getLogger(GdvXmlFormatter.class);
     private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
-    private XMLStreamWriter xmlStreamWriter;
-    //private IndentingXMLStreamWriter xmlStreamWriter;
+    private final XMLStreamWriter xmlStreamWriter;
+    private final List<Feld> felder = new ArrayList<>();
 
     /**
      * Default-Konstruktor.
@@ -96,6 +101,41 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         }
     }
 
+    private static XMLStreamWriter createXMLStreamWriter(OutputStream textWriter) throws XMLStreamException {
+        XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter, Config.DEFAULT_ENCODING.name());
+        return writeHead(out);
+    }
+
+    private static XMLStreamWriter writeHead(XMLStreamWriter writer) throws XMLStreamException {
+        XMLStreamWriter indentingWriter = toIndentingStreamWriter(writer);
+        indentingWriter.writeStartDocument(StandardCharsets.ISO_8859_1.toString(), "1.0");
+        indentingWriter.writeStartElement("service");
+        indentingWriter.writeStartElement("satzarten");
+        return indentingWriter;
+    }
+
+    /**
+     * Hierueber werden noch die Felder-Definitionen und der Abspann
+     * rausgeschrieben, ehe die Writer-Resource geschlossen wird.
+     *
+     * @throws IOException falls was schief geht
+     */
+    @Override
+    public void close() throws IOException {
+        try {
+            xmlStreamWriter.writeEndElement();
+            writeFelder();
+            xmlStreamWriter.writeEndElement();
+            xmlStreamWriter.writeEndDocument();
+            xmlStreamWriter.flush();
+            xmlStreamWriter.close();
+        } catch (XMLStreamException ex) {
+            throw new IOException("cannot close " + xmlStreamWriter, ex);
+        } finally {
+            super.close();
+        }
+    }
+
     /**
      * Ausgabe eines Datensatzes als XML.
      *
@@ -104,12 +144,9 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     @Override
     public void write(final Satz satz) throws IOException {
         try {
-            xmlStreamWriter.writeStartDocument(StandardCharsets.ISO_8859_1.toString(), "1.0");
             xmlStreamWriter.writeStartElement("satzart");
             write(satz.getTeildatensaetze());
             xmlStreamWriter.writeEndElement();
-            xmlStreamWriter.writeEndDocument();
-            xmlStreamWriter.flush();
         } catch (XMLStreamException ex) {
             throw new IOException("cannot format " + satz, ex);
         }
@@ -119,18 +156,58 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         for (Teildatensatz tds : teildatensaetze) {
             xmlStreamWriter.writeEmptyElement("satzanfang");
             xmlStreamWriter.writeAttribute("teilsatz", tds.getSatznummer().getInhalt());
+            for (Feld feld : tds.getFelder()) {
+                writeReferenz(feld.getBezeichner());
+                felder.add(feld);
+            }
             xmlStreamWriter.writeEmptyElement("satzende");
             xmlStreamWriter.flush();
         }
     }
 
-    private static XMLStreamWriter createXMLStreamWriter(Writer textWriter) throws XMLStreamException {
-        XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter);
-        return toIndentingStreamWriter(out);
+    private void writeReferenz(Bezeichner bezeichner) throws XMLStreamException {
+        xmlStreamWriter.writeStartElement("feldreferenz");
+        xmlStreamWriter.writeAttribute("referenz", bezeichner.getTechnischerName());
+        writeElement("name", bezeichner.getName());
+        writeElement("technischerName", bezeichner.getTechnischerName());
+        xmlStreamWriter.writeEndElement();
     }
 
-    private static XMLStreamWriter createXMLStreamWriter(OutputStream textWriter) throws XMLStreamException {
-        XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter, Config.DEFAULT_ENCODING.name());
+    private void writeFelder() throws XMLStreamException {
+        xmlStreamWriter.writeStartElement("felder");
+        for (Feld feld : felder) {
+            write(feld);
+        }
+        xmlStreamWriter.writeEndElement();
+    }
+
+    private void write(Feld feld) throws XMLStreamException {
+        xmlStreamWriter.writeStartElement("feld");
+        xmlStreamWriter.writeAttribute("referenz", feld.getBezeichner().getTechnischerName());
+        writeElement("name", feld.getBezeichner().getName());
+        writeElement("bytes", Integer.toString(feld.getAnzahlBytes()));
+        writeElement("datentyp", Datentyp.asString(feld));
+        if (feld instanceof NumFeld) {
+            writeNachkommastellen((NumFeld) feld);
+        }
+
+        xmlStreamWriter.writeEndElement();
+    }
+
+    private void writeNachkommastellen(NumFeld feld) throws XMLStreamException {
+        if (feld.getNachkommastellen() > 0) {
+            writeElement("nachkommastellen", Integer.toString(feld.getNachkommastellen()));
+        }
+    }
+
+    private void writeElement(String tag, String value) throws XMLStreamException {
+        xmlStreamWriter.writeStartElement(tag);
+        xmlStreamWriter.writeCharacters(value);
+        xmlStreamWriter.writeEndElement();
+    }
+
+    private static XMLStreamWriter createXMLStreamWriter(Writer textWriter) throws XMLStreamException {
+        XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter);
         return toIndentingStreamWriter(out);
     }
 
