@@ -39,8 +39,9 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Diese Klasse orientiert an sich an der GDV-XML-Beschreibung fuer das
@@ -60,7 +61,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     private static final Logger LOG = LogManager.getLogger(GdvXmlFormatter.class);
     private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
     private final XMLStreamWriter xmlStreamWriter;
-    private final List<Feld> felder = new ArrayList<>();
+    private final Set<Feld> felder = new TreeSet<>();
 
     /**
      * Default-Konstruktor.
@@ -145,6 +146,9 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     public void write(final Satz satz) throws IOException {
         try {
             xmlStreamWriter.writeStartElement("satzart");
+            xmlStreamWriter.writeStartElement("kennzeichnung");
+            writeReferenz(satz.getSatzartFeld());
+            xmlStreamWriter.writeEndElement();
             write(satz.getTeildatensaetze());
             xmlStreamWriter.writeEndElement();
         } catch (XMLStreamException ex) {
@@ -157,7 +161,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
             xmlStreamWriter.writeEmptyElement("satzanfang");
             xmlStreamWriter.writeAttribute("teilsatz", tds.getSatznummer().getInhalt());
             for (Feld feld : tds.getFelder()) {
-                writeReferenz(feld.getBezeichner());
+                writeReferenz(feld);
                 felder.add(feld);
             }
             xmlStreamWriter.writeEmptyElement("satzende");
@@ -165,11 +169,15 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         }
     }
 
-    private void writeReferenz(Bezeichner bezeichner) throws XMLStreamException {
+    private void writeReferenz(Feld feld) throws XMLStreamException {
+        Bezeichner bezeichner = feld.getBezeichner();
         xmlStreamWriter.writeStartElement("feldreferenz");
         xmlStreamWriter.writeAttribute("referenz", bezeichner.getTechnischerName());
         writeElement("name", bezeichner.getName());
         writeElement("technischerName", bezeichner.getTechnischerName());
+        if (feld.hasValue()) {
+            writeElement("auspraegung", feld.getInhalt());
+        }
         xmlStreamWriter.writeEndElement();
     }
 

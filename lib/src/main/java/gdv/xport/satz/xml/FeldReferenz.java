@@ -18,20 +18,19 @@
 
 package gdv.xport.satz.xml;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.util.XmlHelper;
+import org.apache.commons.lang.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.logging.log4j.*;
-
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.util.XmlHelper;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * Diese Klasse repraesentiert den Wert, der als "&lt;feldreferenz&gt;" ueber XML
@@ -152,7 +151,7 @@ public final class FeldReferenz {
     /**
      * Dient zum Ermitteln, ob uerhaupt das auspraegung-Feld belegt ist.
      *
-     * @return true falls auspraeung &gt; 0
+     * @return true falls auspraegung &gt; 0
      */
     public boolean hasAuspraegung() {
         return StringUtils.isNotEmpty(this.auspraegung);

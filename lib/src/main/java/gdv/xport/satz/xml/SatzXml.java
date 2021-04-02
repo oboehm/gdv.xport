@@ -57,7 +57,6 @@ public class SatzXml extends Datensatz {
 
     private static final Logger LOG = LogManager.getLogger(SatzXml.class);
 
-
     /**
      * Instantiiert einen neuen Satz.
      *

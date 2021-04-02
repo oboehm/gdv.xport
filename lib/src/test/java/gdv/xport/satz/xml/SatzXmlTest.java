@@ -398,5 +398,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         SatzXml fromXML = SatzXml.of(xmlFile);
         assertNotNull(fromXML);
         MatcherAssert.assertThat(fromXML.getFelder().size(), greaterThan(10));
+        assertEquals(100, fromXML.getSatzart());
     }
+
 }

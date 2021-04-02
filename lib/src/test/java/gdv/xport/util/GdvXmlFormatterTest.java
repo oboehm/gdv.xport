@@ -63,6 +63,7 @@ public final class GdvXmlFormatterTest {
         assertNotNull(generated);
         assertEquals(adressteil.getNumberOfTeildatensaetze(), generated.getNumberOfTeildatensaetze());
         assertEquals(adressteil.getFelder().size(), generated.getFelder().size());
+        assertEquals(102, generated.getSatzart());
     }
 
     private void formatTo(File output, Satz satz) throws IOException {
