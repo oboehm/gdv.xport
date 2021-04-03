@@ -159,9 +159,11 @@ public final class GdvXmlFormatter extends AbstractFormatter {
 
     private void write(List<Teildatensatz> teildatensaetze) throws XMLStreamException {
         for (Teildatensatz tds : teildatensaetze) {
+            writeComment(tds.toShortString());
             xmlStreamWriter.writeEmptyElement("satzanfang");
             xmlStreamWriter.writeAttribute("teilsatz", tds.getSatznummer().getInhalt());
             for (Feld feld : tds.getFelder()) {
+                writeComment(feld.toString());
                 writeReferenz(feld);
                 felder.add(feld);
             }
@@ -199,7 +201,6 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         if (feld instanceof NumFeld) {
             writeNachkommastellen((NumFeld) feld);
         }
-
         xmlStreamWriter.writeEndElement();
     }
 
