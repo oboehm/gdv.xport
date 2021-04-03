@@ -346,13 +346,31 @@ public class NumFeld extends Feld {
         return summe.setScale(nachkommastellen, ROUND_UP);
     }
 
+    /**
+     * Dient zum Ermittel, ob ein Werte schon gesetzt wurde. Dabei werden
+     * typische Initialisierungswerte wie "0" als "nicht gesetzt"
+     * interpretiert.
+     *
+     * @return true, falls Feld mit einem Wert belegt ist
+     * @since 3.1
+     */
+    @Override
+    public boolean hasValue() {
+        try {
+            return super.hasValue() && !ZERO.equals(toBigDecimal());
+        } catch (NumberFormatException ex) {
+            LOG.debug("{} hat ungueltigen Wert:", this, ex);
+            return false;
+        }
+    }
+
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#validate()
      */
     @Override
     public List<ConstraintViolation> validate() {
         List<ConstraintViolation> violations = super.validate();
-        if (this.hasValue()) {
+        if (StringUtils.isNotBlank(this.getInhalt())) {
             try {
                 this.toBigDecimal();
             } catch (NumberFormatException nfe) {

@@ -251,4 +251,25 @@ public final class NumFeldTest extends AbstractFeldTest {
         assertTrue(summen.isValid());
     }
 
+    @Test
+    public void testHasValue() {
+        NumFeld n = new NumFeld(Bezeichner.of("Test"), 1, 1);
+        n.setInhalt(1);
+        assertTrue(n.hasValue());
+    }
+
+    @Test
+    public void testHasValueEmpty() {
+        NumFeld n = new NumFeld(Bezeichner.of("Test"), 1, 1);
+        n.setInhalt(" ");
+        assertFalse(n.hasValue());
+    }
+
+    @Test
+    public void testHasValueXXXXXXXX() {
+        NumFeld n = new NumFeld(Bezeichner.of("Test-Datum"), 8, 1);
+        n.setInhalt("xxxxxxxx");
+        assertFalse(n.hasValue());
+    }
+
 }

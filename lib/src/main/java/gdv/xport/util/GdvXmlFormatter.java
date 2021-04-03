@@ -145,6 +145,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     @Override
     public void write(final Satz satz) throws IOException {
         try {
+            writeComment(satz.toShortString());
             xmlStreamWriter.writeStartElement("satzart");
             xmlStreamWriter.writeStartElement("kennzeichnung");
             writeReferenz(satz.getSatzartFeld());
@@ -212,6 +213,10 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeStartElement(tag);
         xmlStreamWriter.writeCharacters(value);
         xmlStreamWriter.writeEndElement();
+    }
+
+    private void writeComment(String comment) throws XMLStreamException {
+        xmlStreamWriter.writeComment(" " + comment.trim() + " ");
     }
 
     private static XMLStreamWriter createXMLStreamWriter(Writer textWriter) throws XMLStreamException {
