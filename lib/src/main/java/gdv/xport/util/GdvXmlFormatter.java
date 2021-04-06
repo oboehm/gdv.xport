@@ -149,6 +149,9 @@ public final class GdvXmlFormatter extends AbstractFormatter {
             xmlStreamWriter.writeStartElement("satzart");
             xmlStreamWriter.writeStartElement("kennzeichnung");
             writeReferenz(satz.getSatzartFeld());
+            if (satz.hasSparte()) {
+                writeReferenz(satz.getSparteFeld());
+            }
             xmlStreamWriter.writeEndElement();
             write(satz.getTeildatensaetze());
             xmlStreamWriter.writeEndElement();

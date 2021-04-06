@@ -9,11 +9,19 @@ Daher bietet gdv.xport Basis-Typen und Strukturen zur Verfügung, um auch in Jav
 
 === Basis-Typen
 
-t.b.c.
+Die XML-Beschreibung kennt nur *`N`* (numersich) und *`AN`* (alpha-numerisch) als Datentyp.
+Diese werden auf `NumFeld` und `AlphaNumFeld` abgebildet, die beide von der gemeinsamen Oberklasse `Feld` abgeleitet sind.
+
+Daneben gibt es aus Gründen der Bequemlichkeit weitere Feld-Typen:
+
+* `Zeichen` (`AlphaNumFeld` der Länge 1)
+* `Datum` (von `NumFeld` abgeleitet, da in der XML-Beschreibung meist 'N' als Datentyp steht)
+* `Betrag` (`NumFeld` mit 2 Nachkommastellen)
+* `BetragMitVorzeichen` (Betrag + Vorzeichen)
 
 
 
-=== Datensätze und Strutkuren
+=== Datensätze und Strukturen
 
 t.b.c.
 
