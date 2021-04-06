@@ -825,7 +825,7 @@ public abstract class Satz implements Cloneable {
 		if (this.hasSparte()) {
 			return getFeld(Bezeichner.SPARTE, NumFeld.class);
 		} else {
-			throw new IllegalArgumentException(this.toShortString() + " has no 'Sparte'");
+			return new NumFeld(Bezeichner.SPARTE, 11, 3);
 		}
 	}
 
