@@ -1,22 +1,22 @@
 package gdv.xport.satz.feld.sparte20;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-
-import gdv.xport.config.Config;
-import org.junit.Test;
-
 import gdv.xport.Datenpaket;
+import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 
 /**
  * Unit-Tests fuer 0220.020.[1-3].
@@ -107,7 +107,7 @@ public class Satzart220Test {
             SatzTyp satztyp = datensatz.getSatzTyp();
             assertThat("Satztyp hat Satzart 220", satztyp.getSatzart(), is(220));
             assertThat("Satztyp hat Sparte 20", satztyp.getSparte(), is(20));
-            assertThat("Satztyp hat keine Krankenfolgenummer", satztyp.getKrankenFolgeNr(), is(-1));
+            assertFalse("Satztyp hat keine Krankenfolgenummer", satztyp.hasKrankenFolgeNr());
 
             assertThat("Datensatz hat einen Teildatensatz", datensatz.getNumberOfTeildatensaetze(), is(1));
             assertThat("Teildatensatz 1 hat UNBEKANNT", datensatz.getTeildatensatz(1).hasFeld(Bezeichner.UNBEKANNT), is(true));

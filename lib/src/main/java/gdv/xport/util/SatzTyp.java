@@ -18,12 +18,21 @@
 
 package gdv.xport.util;
 
+import de.jfachwert.pruefung.exception.LocalizedIllegalArgumentException;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+
+import javax.validation.ValidationException;
+import java.util.Arrays;
 
 /**
  * Der SatzTyp fuehrt Satzart, Sparte, Wagnisart und laufende Nummer eines
  * Teildatensatz zusammen. Sie wird von der {@link SatzFactory} fuer die
  * Registrierung verwendet.
+ * <p>
+ * Mit v5.0 wurde die Klasse einem kompletten Refactoring unterzogen, da sich
+ * zuviele Redundanzen eingeschlichen haben.
+ * </p>
  * <p>
  * Vorher hiess diese Klasse "SatzNummer", wurde aber mit 1.1 in SatzType
  * umbenannt, da "Satznummer" als Klassenname etwas irritierend ist, da es ein
@@ -35,52 +44,20 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class SatzTyp {
 
-	/** The satzart. */
-	private final int satzart;
+	private static final Validator VALIDATOR = new Validator();
+	private final short[] teil;
 
-	/** The sparte. */
-	private final int sparte;
-
-	/** The wagnisart. */
-	private final int wagnisart;
-	
-	/** Kranken, Folgenummer */
-	private final int krankenFolgeNr;
-
-	/** The lfd nummer. */
-	private final int teildatensatzNummer;
-
-	/** Bausparen, bausparenArt */
-	private final int bausparenArt;
-
-    /**
-     * Damit laesst sich ein SatzTyp anhand der entsprechenden String-
-     * Repraesentation erzeugen.
-     *
-     * @param nr z.B. "0210.050"
-     * @return der entsprechende SatzTyp
-     * @since 5.0
-     */
-    public static SatzTyp of(String nr)  {
-      int[] numbers = { -1, -1, -1, -1 };
-      try {
-        String[] parts = StringUtils.split(nr, '.');
-        for (int i = 0; i < parts.length; i++) {
-          numbers[i] = Integer.parseInt(parts[i]);
-        }
-        if (numbers[1] == 20) {
-          // bei Kranken muss krankenFolgeNr belegt werden
-         return new SatzTyp(numbers[0], numbers[1], -1, numbers[2], -1, -1);
-       } else if (numbers[1] == 580) {
-        // bei Bausparen muss bausparenArt belegt werden
-        return new SatzTyp(numbers[0], numbers[1], -1, -1, -1, numbers[2]);
-      } else {
-        return new SatzTyp(numbers[0], numbers[1], numbers[2], -1, numbers[3], -1);
-      }
-    } catch (NumberFormatException ex)  {
-      throw new IllegalArgumentException("kein Satz-Typ: '" + nr + "'", ex);
-    }
-  }
+	/**
+	 * Damit laesst sich ein SatzTyp anhand der entsprechenden String-
+	 * Repraesentation erzeugen.
+	 *
+	 * @param nr z.B. "0210.050"
+	 * @return der entsprechende SatzTyp
+	 * @since 5.0
+	 */
+	public static SatzTyp of(String nr)  {
+		return new SatzTyp(nr);
+	}
 
 	/**
 	 * Anhand der übergebenen Zahlen wird der entsprechende SatzTyp aufgebaut.
@@ -90,7 +67,7 @@ public class SatzTyp {
 	 * @since 5.0
 	 */
 	public static SatzTyp of(int... args) {
-    	switch(args.length) {
+		switch(args.length) {
 			case 1:
 				return of(String.format("%04d", args[0]));
 			case 2:
@@ -104,103 +81,54 @@ public class SatzTyp {
 		}
 	}
 
-    /**
-     * Instantiates a new satz nummer.
-     *
-     * @param satzart the satzart
-     */
-    public SatzTyp(final int satzart) {
-      this(satzart, -1);
-    }
-
-    /**
-     * Instantiates a new satz nummer.
-     *
-     * @param satzart Satzart
-     * @param sparte Sparte
-     */
-    public SatzTyp(final int satzart, final int sparte) {
-      this(satzart, sparte, -1);
-    }
-
-    /**
-     * Instantiiert einen neuen SatzTyp.
-	 * TODO: wird mit v6 entfernt werden
-     *
-     * @param satzart the satzart
-     * @param sparte the sparte
-     * @param artFolgeNr Wagnisart (Sparte 10) bzw. krankenFolgeNr (Sparte 20)
-     *          bzw. bausparenArt (Sparte 580, Satzart 220 (Wert 1 - 2))
-     * @deprecated wurde ersetzt durch {@link #of(int...)}
-     */
-    @Deprecated
-    public SatzTyp(final int satzart, final int sparte, final int artFolgeNr) {
-      this(satzart, sparte, artFolgeNr, -1);
-
-    }
-
-    /**
-     * Legt eine neuen SatzTyp an.
-	 * TODO: Wird ab v6 nicht mehr zur Verfuegung stehen.
-     * 
-     * @param satzart die Satzart (vierstellig)
-     * @param sparte die Sparte (dreistellig)
-	 * @param artFolgeNr Wagnisart (Sparte 10) bzw. krankenFolgeNr (Sparte 20) bzw. bausparenArt (Sparte 580, Satzart 220 (Wert 1 - 2))
-     * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
-     * @deprecated wurde ersetzt durch {@link #of(String)}
-     */
-    @Deprecated
-	public SatzTyp(final int satzart, final int sparte, final int artFolgeNr, final int lfdNummer) {
-		this(satzart, sparte, (sparte == 20) || (sparte == 580) ? -1 : artFolgeNr, (sparte == 20) ? artFolgeNr : -1,
-				lfdNummer, (sparte == 580) ? artFolgeNr : -1);
+	/**
+	 * Damit laesst sich ein SatzTyp anhand der entsprechenden String-
+	 * Repraesentation erzeugen.
+	 *
+	 * @param nr z.B. "0210.050"
+	 */
+	public SatzTyp(String nr) {
+		this(toIntArray(nr));
 	}
 
-    /**
-     * Legt eine neue SatzNummer an.
-	 * TODO: Wird ab v6 nicht mehr zur Verfuegung stehen.
-     *
-     * @param satzart die Satzart (vierstellig)
-     * @param sparte die Sparte (dreistellig)
-     * @param wagnisart die Wagnisart (ein- bis zweisstellig)
-     * @param krankenFolgeNr Folge-Nr. aus Sparte 20, Satzart 220 (Wert 1-3)
-     * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
-     * @deprecated wurde ersetzt durch {@link #of(String)}
-     */
-    @Deprecated
-    public SatzTyp(final int satzart, final int sparte, final int wagnisart, final int krankenFolgeNr, final int lfdNummer) {
-      this(satzart, sparte, wagnisart, krankenFolgeNr, lfdNummer, -1);
-    }
+	private static int[] toIntArray(String nr) {
+		String[] parts = StringUtils.split(nr, '.');
+		int[] array = new int[parts.length];
+		try {
+			for (int i = 0; i < parts.length; i++) {
+				array[i] = Integer.parseInt(parts[i]);
+			}
+			return array;
+		} catch (NumberFormatException ex)  {
+			throw new IllegalArgumentException("kein Satz-Typ: '" + nr + "'", ex);
+		}
+	}
 
 	/**
-	 * Legt eine neue SatzNummer an.
+	 * Damit laesst sich ein SatzTyp anhand der Einzelteile zusammensetzen.
 	 *
-	 * @param satzart die Satzart (vierstellig)
-	 * @param sparte die Sparte (dreistellig)
-	 * @param wagnisart die Wagnisart (ein- bis zweisstellig)
-	 * @param krankenFolgeNr Folge-Nr. aus Sparte 20, Satzart 220 (Wert 1-3)
-	 * @param lfdNummer die laufende Nummer (Teildatensatz-Nummer)
-	 * @param bausparenArt die Art bei Sparte 580, Satzart 220 (Wert 1 - 2)
-	 * @since 4.X
+	 * @param args z.B. 0210, 050
 	 */
-	private SatzTyp(final int satzart, final int sparte, final int wagnisart, final int krankenFolgeNr, final int lfdNummer, final int bausparenArt) {
-		assert (satzart >= 0) && (satzart <= 9999) : "Satzart " + satzart
-		        + " muss zwischen 0 und 9999 liegen";
-		assert (sparte == -1) || ((0 <= sparte) && (sparte <= 999)) : "Sparte " + sparte
-		        + " muss zwischen 0 und 999 liegen";
-		assert (wagnisart == -1) || ((0 <= wagnisart) && (wagnisart <= 9)) || (wagnisart == 13) || (wagnisart == 48) :
-				"Wagnisart " + wagnisart + " muss zwischen 0 und 9 liegen";
-		assert (krankenFolgeNr == -1) || ((1 <= krankenFolgeNr) && (krankenFolgeNr <= 3)) : "Kranken Folge-Nr. "
-		        + krankenFolgeNr + " muss zwischen 1 und 3 liegen";
-		assert (lfdNummer == -1) || ((0 <= lfdNummer) && (lfdNummer <= 9)) : "teildatensatzNummer "
-		        + lfdNummer + " muss zwischen 0 und 9 liegen";
-		assert (bausparenArt == -1) || ((0 <= bausparenArt) && (bausparenArt <= 9)) : "bausparenArt "
-		        + bausparenArt + " muss zwischen 0 und 9 liegen";
-		this.satzart = satzart;
-		this.sparte = ((satzart == 210 ) || (satzart == 211 ) || (satzart == 220 )) && (sparte < 0) ? 0 : sparte;
-		this.wagnisart = ((satzart == 220) && (sparte == 10) && (wagnisart < 0)) ? 0 : wagnisart;
-		this.krankenFolgeNr = krankenFolgeNr;
-		this.teildatensatzNummer = ((wagnisart > 0) && (lfdNummer < 0) && (sparte == 10)) ? 1 :  lfdNummer;
-		this.bausparenArt = bausparenArt;
+	public SatzTyp(int... args) {
+		this.teil = createArray(VALIDATOR.verify(args));
+	}
+
+	private static short[] createArray(int[] args) {
+		short[] array = new short[args.length];
+		for (int i = 0; i < args.length; i++) {
+			array[i] = (short) args[i];
+		}
+		int satzart = array[0];
+		if (((satzart == 210 ) || (satzart == 211 ) || (satzart == 220 )) && (args.length < 2)) {
+			array = ArrayUtils.add(array, (short) 0);
+		}
+		if ((array.length == 2) && (satzart == 220) && (array[1] == 10)) {
+			array = ArrayUtils.add(array, (short) 0);
+		}
+		if ((array.length == 3) && (array[1] == 10) && (array[2] > 0)) {
+			array = ArrayUtils.add(array, (short) 1);
+		}
+		return array;
 	}
 
 	/**
@@ -209,7 +137,7 @@ public class SatzTyp {
 	 * @return the satzart
 	 */
 	public int getSatzart() {
-		return this.satzart;
+		return teil[0];
 	}
 
 	/**
@@ -218,28 +146,29 @@ public class SatzTyp {
 	 * @return the sparte
 	 */
 	public int getSparte() {
-		return this.sparte;
+		return teil[1];
 	}
 
-  /**
-   * Liefert die Sparte als String.
-   *
-   * @return z.B. "030"
-   * @since 5.0
-   */
-  public String getSparteAsString()
-  {
-    return Integer.toString(this.getSparte());
-  }
+	/**
+	 * Liefert die Sparte als String.
+	 *
+	 * @return z.B. "030"
+	 * @since 5.0
+	 */
+	public String getSparteAsString()
+	{
+		return Integer.toString(this.getSparte());
+	}
 
-  /**
-   * Gets the wagnisart.
-   *
-   * @return the wagnisart
-   */
-  public int getWagnisart()   {
-    return this.wagnisart;
-  }
+	/**
+	 * Gets the wagnisart.
+	 *
+	 * @return the wagnisart
+	 */
+	public int getWagnisart() {
+		assertTrue("Wagnisart", hasWagnisart());
+		return teil[2];
+	}
 
 	/**
 	 * Liefert die Wagnisart als String.
@@ -257,10 +186,10 @@ public class SatzTyp {
 	 * "0220.580.01" und "0220.580.2" Sinn.
 	 *
 	 * @return z.B. 1 bei SatzTyp "0220.580.01"
-	 * @since 5.0
 	 */
 	public int getBausparenArt() {
-		return this.bausparenArt;
+		assertTrue("BausparenArt", hasBausparenArt());
+		return teil[2];
 	}
 
 	/**
@@ -269,10 +198,9 @@ public class SatzTyp {
 	 * "0220.580.01" und "0220.580.2" Sinn.
 	 *
 	 * @return z.B. "01" bei SatzTyp "0220.580.01"
-	 * @since 5.0
 	 */
 	public String getBausparenArtAsString() {
-		if (this.getBausparenArt() < 0) {
+		if (!this.hasBausparenArt()) {
 			return "";
 		}
 		if (this.getBausparenArt() == 1) {
@@ -288,9 +216,9 @@ public class SatzTyp {
 	 * SatzTyp.of("0220.010.0").
 	 *
 	 * @return z.B. 1 bei SatzTyp "0220.580.01"
-	 * @since 5.0
 	 */
 	public int getArt() {
+		assertTrue("Art", hasArt());
 		if (this.getSparte() == 10) {
 			switch (this.getWagnisart()) {
 				case 1:
@@ -316,10 +244,9 @@ public class SatzTyp {
 	 * "0" bei SatzTyp.of("0220.010.0").
 	 *
 	 * @return z.B. "01" bei SatzTyp "0220.580.01"
-	 * @since 5.0
 	 */
 	public String getArtAsString() {
-		if (this.getBausparenArt() == 1) {
+		if (this.hasBausparenArt() && this.getBausparenArt() == 1) {
 			return "01";
 		} else {
 			return Integer.toString(this.getArt());
@@ -332,19 +259,19 @@ public class SatzTyp {
 	 * der Fall.
 	 *
 	 * @return true oder false
-	 * @since 5.0
 	 */
 	public boolean hasArt() {
-		return (this.getWagnisart() >= 0) || (this.getBausparenArt() >= 0) || (this.getKrankenFolgeNr() >= 0);
+		return this.hasWagnisart() || this.hasBausparenArt() || this.hasKrankenFolgeNr();
 	}
-	
+
 	/**
 	 * Gets the krankenFolgeNr.
-	 * 
+	 *
 	 * @return the krankenFolgeNr
 	 */
 	public int getKrankenFolgeNr() {
-	    return this.krankenFolgeNr;
+		assertTrue("KrankenFolgeNr", hasKrankenFolgeNr());
+		return teil[2];
 	}
 
 	/**
@@ -353,7 +280,8 @@ public class SatzTyp {
 	 * @return the lfd nummer
 	 */
 	public int getTeildatensatzNummer() {
-		return this.teildatensatzNummer;
+		assertTrue("TeildatensatzNummer", hasTeildatensatzNummer());
+		return teil.length > 3 ? teil[3] : 0;
 	}
 
 	/**
@@ -362,7 +290,7 @@ public class SatzTyp {
 	 * @return true, if successful
 	 */
 	public boolean hasSparte() {
-		return this.getSparte() > 0;
+		return teil.length > 1 && teil[1] > 0;
 	}
 
 	public boolean hasParent() {
@@ -380,38 +308,37 @@ public class SatzTyp {
 	 * @return true, if successful
 	 */
 	public boolean hasWagnisart() {
-		return this.getWagnisart() >= 0;
+		return teil.length > 2 && teil[2] >= 0;
 	}
-	
+
 	/**
 	 * Liefert true zurueck, wenn die Folge-Nr in Sparte 20, Satzart 220 gesetzt ist.
-	 * 
+	 *
 	 * @return true, if successful
 	 */
 	public boolean hasKrankenFolgeNr() {
-	    return this.getKrankenFolgeNr() >= 0;
+		return teil.length > 2 && teil[2] >= 0 && getSparte() == 20;
 	}
 
-    /**
-     * Liefert true zurueck, wenn die Bausparen-Artin Sparte 580, Satzart 220
-     * gesetzt ist.
-     * 
-     * @return true, if successful
-     */
-    public boolean hasBausparenArt()
-    {
-      return this.getBausparenArt() >= 0;
-    }
+	/**
+	 * Liefert true zurueck, wenn die Bausparen-Artin Sparte 580, Satzart 220
+	 * gesetzt ist.
+	 *
+	 * @return true, if successful
+	 */
+	public boolean hasBausparenArt() {
+		return getSatzart() == 220 && getSparte() == 580;
+	}
 
-    /**
-     * Liefert true zurueck, wenn die laufende Nummer (fuer Wagnisart) gesetzt
-     * ist.
-     *
-     * @return true, if successful
-     */
-    public boolean hasTeildatensatzNummer()  {
-      return this.getTeildatensatzNummer() >= 0;
-    }
+	/**
+	 * Liefert true zurueck, wenn die laufende Nummer (fuer Wagnisart) gesetzt
+	 * ist.
+	 *
+	 * @return true, if successful
+	 */
+	public boolean hasTeildatensatzNummer() {
+		return teil.length > 3;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -451,13 +378,52 @@ public class SatzTyp {
 			if (this.hasArt()) {
 				buf.append(".");
 				buf.append(this.getArtAsString());
-				if (this.getTeildatensatzNummer() >= 0) {
+				if (this.hasTeildatensatzNummer()) {
 					buf.append(".");
 					buf.append(this.getTeildatensatzNummer());
 				}
 			}
 		}
 		return buf.toString();
+	}
+
+	private void assertTrue(String attribute, boolean condition) {
+		if (!condition) {
+			throw new IllegalArgumentException(this + " hat keine " + attribute);
+		}
+	}
+
+
+
+	public static class Validator {
+
+		/**
+		 * Ein gueltiger SatzTyp besteht aus 1 bis 4 Teilen.
+		 *
+		 * @param args Array, das ueberprueft wird
+		 * @return das Array selber (zur Weiterverarbeitung)
+		 */
+		public int[] validate(int[] args) {
+			if ((args.length < 1) || (args.length > 4)) {
+				throw new ValidationException("array " + Arrays.toString(args) + ": expected size is 1..4");
+			}
+			return args;
+		}
+
+		/**
+		 * Der Unterschied zu validate liegt nur in der ausgeloesten Exception.
+		 *
+		 * @param args Array, das ueberprueft wird
+		 * @return das Array selber (zur Weiterverarbeitung)
+		 */
+		public int[] verify(int[] args) {
+			try {
+				return validate(args);
+			} catch (ValidationException ex) {
+				throw new LocalizedIllegalArgumentException(ex);
+			}
+		}
+
 	}
 
 }

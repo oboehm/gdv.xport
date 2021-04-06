@@ -514,7 +514,7 @@ public final class SatzTest extends AbstractSatzTest {
         Satz satz = SatzFactory.getDatensatz(expectedSatzTyp);
         satz.set(Bezeichner.WAGNISART, "123456");
         SatzTyp satzTyp = satz.getSatzTyp();
-        assertEquals("SatzFactory.getDatensatz(220, 40) hat keine Wagnisart im SatzTyp", -1, satzTyp.getWagnisart());
+        assertFalse("SatzFactory.getDatensatz(220, 40) hat keine Wagnisart im SatzTyp", satzTyp.hasWagnisart());
         assertEquals("SatzTyp von SatzFactory.getDatensatz(220, 40) sollte new SatzTyp(220, 40) entsprechen", expectedSatzTyp, satzTyp);
     }
 
