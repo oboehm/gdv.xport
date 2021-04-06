@@ -814,22 +814,6 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
-	 * Liefer das Sparten-Feld zurueck. Diese Methode wurde aus
-	 * Symmetriegruenden zu {@link #getSatzartFeld()} mit v5.0
-	 * eingefuehrt.
-	 *
-	 * @return Spartenfeld
-	 * @since 5.0
-	 */
-	public NumFeld getSparteFeld() {
-		if (this.hasSparte()) {
-			return getFeld(Bezeichner.SPARTE, NumFeld.class);
-		} else {
-			return new NumFeld(Bezeichner.SPARTE, 11, 3);
-		}
-	}
-
-	/**
 	 * Liefert den Satz-Typ zurueck. Der Satz-Typ ist eine Zusammenfassung aus
 	 * Satzart und Sparte.
 	 *
