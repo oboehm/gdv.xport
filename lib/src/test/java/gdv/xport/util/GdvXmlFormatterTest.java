@@ -22,6 +22,7 @@ import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
 import javax.xml.stream.XMLStreamException;
@@ -58,15 +59,32 @@ public final class GdvXmlFormatterTest {
     public void testCreateSatzFromOutput() throws IOException, XMLStreamException {
         Satz adressteil = XmlService.getInstance().getSatzart(SatzTyp.of(102));
         File output = new File("target", "satz102.xml");
-        formatTo(output, adressteil);
-        SatzXml generated = SatzXml.of(output);
-        assertNotNull(generated);
+        SatzXml generated = formatSatz(adressteil, output);
         assertEquals(adressteil.getNumberOfTeildatensaetze(), generated.getNumberOfTeildatensaetze());
         assertEquals(adressteil.getFelder().size(), generated.getFelder().size());
         assertEquals(102, generated.getSatzart());
     }
 
-    private void formatTo(File output, Satz satz) throws IOException {
+    @Test
+    public void testBausparen() throws IOException, XMLStreamException {
+        SatzTyp bausparen = SatzTyp.of("0220.580.01");
+        Satz satz = XmlService.getInstance().getSatzart(bausparen);
+        File target = new File("target", "satz0220.580.01.xml");
+        SatzXml generated = formatSatz(satz, target);
+        assertEquals(220, generated.getSatzart());
+        assertEquals(580, generated.getSparte());
+        assertEquals(bausparen, generated.getSatzTyp());
+    }
+
+    @NotNull
+    private static SatzXml formatSatz(Satz adressteil, File output) throws IOException, XMLStreamException {
+        formatTo(output, adressteil);
+        SatzXml generated = SatzXml.of(output);
+        assertNotNull(generated);
+        return generated;
+    }
+
+    private static void formatTo(File output, Satz satz) throws IOException {
         try (FileOutputStream ostream = new FileOutputStream(output);
              GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
             formatter.write(satz);

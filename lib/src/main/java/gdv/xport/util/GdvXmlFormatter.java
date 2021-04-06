@@ -20,10 +20,7 @@ package gdv.xport.util;
 
 import gdv.xport.config.Config;
 import gdv.xport.config.ConfigException;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Datentyp;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.*;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import javanet.staxutils.IndentingXMLStreamWriter;
@@ -39,9 +36,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Diese Klasse orientiert an sich an der GDV-XML-Beschreibung fuer das
@@ -61,7 +57,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     private static final Logger LOG = LogManager.getLogger(GdvXmlFormatter.class);
     private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
     private final XMLStreamWriter xmlStreamWriter;
-    private final Set<Feld> felder = new TreeSet<>();
+    private final List<Feld> felder = new ArrayList<>();
 
     /**
      * Default-Konstruktor.
@@ -149,9 +145,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
             xmlStreamWriter.writeStartElement("satzart");
             xmlStreamWriter.writeStartElement("kennzeichnung");
             writeReferenz(satz.getSatzartFeld());
-            if (satz.hasSparte()) {
-                writeReferenz(satz.getSparteFeld());
-            }
+            writeSparte(satz);
             xmlStreamWriter.writeEndElement();
             write(satz.getTeildatensaetze());
             xmlStreamWriter.writeEndElement();
@@ -185,6 +179,13 @@ public final class GdvXmlFormatter extends AbstractFormatter {
             writeElement("auspraegung", feld.getInhalt());
         }
         xmlStreamWriter.writeEndElement();
+    }
+
+    private void writeSparte(Satz satz) throws XMLStreamException {
+        if (satz.hasSparte()) {
+            Feld sparteFeld = new Feld(Bezeichner.SPARTE, 11, satz.getSatzTyp().toString().substring(5), Align.LEFT);
+            writeReferenz(sparteFeld);
+        }
     }
 
     private void writeFelder() throws XMLStreamException {
