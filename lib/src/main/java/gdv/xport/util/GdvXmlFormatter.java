@@ -143,15 +143,20 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         try {
             writeComment(satz.toShortString());
             xmlStreamWriter.writeStartElement("satzart");
-            xmlStreamWriter.writeStartElement("kennzeichnung");
-            writeReferenz(satz.getSatzartFeld());
-            writeSparte(satz);
-            xmlStreamWriter.writeEndElement();
+            writeKennzeichnung(satz);
+            writeElement("version", satz.getSatzversion().getInhalt());
             write(satz.getTeildatensaetze());
             xmlStreamWriter.writeEndElement();
         } catch (XMLStreamException ex) {
             throw new IOException("cannot format " + satz, ex);
         }
+    }
+
+    private void writeKennzeichnung(Satz satz) throws XMLStreamException {
+        xmlStreamWriter.writeStartElement("kennzeichnung");
+        writeReferenz(satz.getSatzartFeld());
+        writeSparte(satz);
+        xmlStreamWriter.writeEndElement();
     }
 
     private void write(List<Teildatensatz> teildatensaetze) throws XMLStreamException {

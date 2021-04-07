@@ -63,6 +63,7 @@ public final class GdvXmlFormatterTest {
         assertEquals(adressteil.getNumberOfTeildatensaetze(), generated.getNumberOfTeildatensaetze());
         assertEquals(adressteil.getFelder().size(), generated.getFelder().size());
         assertEquals(102, generated.getSatzart());
+        assertEquals(adressteil.getSatzversion(), generated.getSatzversion());
     }
 
     @Test
