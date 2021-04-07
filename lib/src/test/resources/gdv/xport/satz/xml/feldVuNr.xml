@@ -22,4 +22,5 @@
 		<veroeffentlichungVerboten>0</veroeffentlichungVerboten>
 		<alleWerteDerTabelle />
 	</wertetabelle>
+	<auspraegung>test</auspraegung>
 </feld>

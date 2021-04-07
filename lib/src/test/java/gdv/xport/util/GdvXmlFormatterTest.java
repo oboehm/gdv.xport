@@ -64,6 +64,7 @@ public final class GdvXmlFormatterTest {
         assertEquals(adressteil.getFelder().size(), generated.getFelder().size());
         assertEquals(102, generated.getSatzart());
         assertEquals(adressteil.getSatzversion(), generated.getSatzversion());
+        assertEquals(adressteil, generated);
     }
 
     @Test
@@ -75,6 +76,30 @@ public final class GdvXmlFormatterTest {
         assertEquals(220, generated.getSatzart());
         assertEquals(580, generated.getSparte());
         assertEquals(bausparen, generated.getSatzTyp());
+    }
+
+    /**
+     * Hier testen wir mit Satz fuer die Kfz-Haftpflicht (0221.051) gegen die
+     * Enum-Beschreibung aus Feld221. Im Gegensatz zur GDV-XML-Beschreibung ist
+     * hier die Deckungssumme in 3 Teile aufgeteilt, was die Handhabung damit
+     * vereinfacht.
+     *
+     * @throws IOException        the io exception
+     * @throws XMLStreamException the xml stream exception
+     */
+    @Test
+    public void testSatzart0221051() throws IOException, XMLStreamException {
+        File target = new File("target", "satz0221.051.xml");
+        SatzTyp kfz = SatzTyp.of(221, 51);
+        try {
+            SatzRegistry.getInstance().registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, kfz);
+            Satz satz = SatzFactory.getDatensatz(kfz);
+            formatTo(target, satz);
+            Satz formatted = SatzXml.of(target);
+            assertEquals(satz, formatted);
+        } finally {
+            SatzRegistry.getInstance().unregister(kfz);
+        }
     }
 
     @NotNull

@@ -18,17 +18,17 @@
 
 package gdv.xport.satz.xml;
 
-import java.util.Properties;
+import gdv.xport.feld.*;
+import gdv.xport.util.XmlHelper;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
-
-import org.apache.logging.log4j.*;
-
-import gdv.xport.feld.*;
-import gdv.xport.util.XmlHelper;
+import java.util.Properties;
 
 /**
  * Im Gegensatz zur {@link Feld}-Klasse kommen hier die einzelnen Werte als
@@ -69,11 +69,17 @@ public final class FeldXml extends Feld {
     }
 
     private FeldXml(final Properties props) {
-        super(new Bezeichner(props), Integer.parseInt(props.getProperty("bytes", "1")), 0, Align.UNKNOWN);
+        super(new Bezeichner(props), 0, toInhalt(props), Align.LEFT);
         this.id = props.getProperty("ID");
         this.datentyp = Datentyp.asValue(props.getProperty("datentyp"));
         this.nachkommastellen = Integer.parseInt(props.getProperty("nachkommastellen", "0"));
         LOG.debug("{} created.", this);
+    }
+
+    private static String toInhalt(Properties props) {
+        int l = Integer.parseInt(props.getProperty("bytes", "1"));
+        String s = props.getProperty("auspraegung", " ");
+        return StringUtils.rightPad(s, l);
     }
 
     private static Properties parse(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
@@ -131,14 +137,17 @@ public final class FeldXml extends Feld {
      */
     public Feld toFeld(final int byteAddress, final Bezeichner neuerBezeichner) {
         Bezeichner merged = this.getBezeichner().mergeWith(neuerBezeichner);
+        Feld f = this.datentyp.asFeld(merged, this.getAnzahlBytes(), byteAddress);
         switch (this.datentyp) {
             case NUMERISCH:
             case FLIESSKOMMA:
-                return new NumFeld(merged, this.getAnzahlBytes(), byteAddress)
+                f = new NumFeld(merged, this.getAnzahlBytes(), byteAddress)
                         .mitNachkommastellen(this.nachkommastellen);
-            default:
-                return this.datentyp.asFeld(merged, this.getAnzahlBytes(), byteAddress);
         }
+        if (hasValue()) {
+            f.setInhalt(getInhalt());
+        }
+        return f;
     }
 
     /* (non-Javadoc)

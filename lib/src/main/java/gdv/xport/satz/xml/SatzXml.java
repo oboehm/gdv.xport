@@ -158,13 +158,6 @@ public class SatzXml extends Datensatz {
         throw new XMLStreamException("end of " + element + " not found");
     }
 
-  /**
-   * Parses the feldreferenz.
-   *
-   * @param element the element
-   * @param reader the reader
-   * @throws XMLStreamException the XML stream exception
-   */
   private void parseFeldreferenz(StartElement element, final XMLEventReader reader) throws XMLStreamException  {
     FeldReferenz referenz = new FeldReferenz(reader, element);
     if (referenz.hasAuspraegung()) {

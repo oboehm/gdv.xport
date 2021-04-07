@@ -104,6 +104,7 @@ public final class TeildatensatzXml extends Teildatensatz {
         int byteAddress = 1;
         for (FeldReferenz referenz : this.feldReferenzen) {
             FeldXml feldXml = getFeld(felder, referenz.getId());
+            feldXml.setInhalt(referenz.getAuspraegung());
             this.addFeld(feldXml, byteAddress, referenz.getBezeichner());
             byteAddress += feldXml.getAnzahlBytes();
         }

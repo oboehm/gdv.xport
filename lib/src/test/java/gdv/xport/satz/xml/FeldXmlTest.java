@@ -18,23 +18,17 @@
 
 package gdv.xport.satz.xml;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Datentyp;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-
-import java.io.IOException;
-
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLStreamException;
-
+import gdv.xport.feld.*;
 import org.apache.commons.lang.StringUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLStreamException;
+import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author oliver (oliver.boehm@gmail.com)
@@ -107,6 +101,7 @@ public class FeldXmlTest extends AbstractXmlTest {
         FeldXml vuNr = createFeldXmlFrom("feldVuNr.xml");
         assertEquals(Bezeichner.VU_NR, vuNr.getBezeichner());
         assertEquals(5, vuNr.getAnzahlBytes());
+        assertEquals("test ", vuNr.getInhalt());
     }
 
     /**
