@@ -35,10 +35,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -258,17 +255,42 @@ public class SatzXml extends Datensatz {
      * @since 5.0
      */
     public static SatzXml of(File file) throws IOException, XMLStreamException {
-        XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         try (InputStream istream = new FileInputStream(file)) {
-            XMLEventReader parser = xmlInputFactory.createXMLEventReader(istream);
-            try {
-                SatzXml satz = new SatzXml(parser);
-                Map<String, FeldXml> xmlFelder = XmlService.parseFelder(parser);
-                satz.setFelder(xmlFelder);
-                return satz;
-            } finally {
-                parser.close();
-            }
+            return createSatzXml(istream);
         }
     }
+
+    /**
+     * Hier kann man mithile einer XML-Beschreibung einen Satz generieren.
+     * Diese Methode dient dazu, um die Notwendigkeit der Enum-Beschreibung
+     * weiter zu reduzieren.
+     *
+     * @param resource Classpath-Resource mit XML-Beschreibung
+     * @return einen Satz gemaess der XML-Beschreibung
+     * @throws IOException        the io exception
+     * @throws XMLStreamException the xml stream exception
+     * @since 5.0
+     */
+    public static SatzXml of(String resource) throws IOException, XMLStreamException {
+        try (InputStream istream = SatzXml.class.getResourceAsStream(resource)) {
+            if (istream == null) {
+                throw new IllegalArgumentException("not a resource: " + resource);
+            }
+            return createSatzXml(istream);
+        }
+    }
+
+    private static SatzXml createSatzXml(InputStream istream) throws XMLStreamException {
+        XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+        XMLEventReader parser = xmlInputFactory.createXMLEventReader(istream);
+        try {
+            SatzXml satz = new SatzXml(parser);
+            Map<String, FeldXml> xmlFelder = XmlService.parseFelder(parser);
+            satz.setFelder(xmlFelder);
+            return satz;
+        } finally {
+            parser.close();
+        }
+    }
+
 }

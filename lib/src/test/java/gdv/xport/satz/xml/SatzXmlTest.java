@@ -392,13 +392,19 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     }
 
     @Test
-    public void testOf() throws IOException, XMLStreamException {
+    public void testOfFile() throws IOException, XMLStreamException {
         File xmlFile = new File("src/test/resources/gdv/xport/satz/xml/Satz100.xml");
         assertTrue(xmlFile.exists());
         SatzXml fromXML = SatzXml.of(xmlFile);
         assertNotNull(fromXML);
         MatcherAssert.assertThat(fromXML.getFelder().size(), greaterThan(10));
         assertEquals(100, fromXML.getSatzart());
+    }
+
+    @Test
+    public void testOfResource() throws IOException, XMLStreamException {
+        SatzXml fromXML = SatzXml.of("Satz0221.051.xml");
+        assertEquals(SatzTyp.of("0221.051"), fromXML.getSatzTyp());
     }
 
 }

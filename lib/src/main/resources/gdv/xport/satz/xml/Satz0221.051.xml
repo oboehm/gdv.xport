@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<service>
+	<satzarten>
+		<!-- Satzart 0221.051 -->
+		<satzart>
+			<kennzeichnung>
+				<feldreferenz referenz="Satzart">
+					<name>Satzart</name>
+					<technischerName>Satzart</technischerName>
+					<auspraegung>0221</auspraegung>
+				</feldreferenz>
+				<feldreferenz referenz="Sparte">
+					<name>Sparte</name>
+					<technischerName>Sparte</technischerName>
+					<auspraegung>051</auspraegung>
+				</feldreferenz>
+			</kennzeichnung>
+			<version>1.0</version>
+			<!-- Teildatensatz 1 Satzart 0221.051 -->
+			<satzanfang teilsatz="1"/>
+			<!-- NumFeld Satzart(1-4): "0221" -->
+			<feldreferenz referenz="Satzart">
+				<name>Satzart</name>
+				<technischerName>Satzart</technischerName>
+				<auspraegung>0221</auspraegung>
+			</feldreferenz>
+			<!-- VUNummer (5-9) -->
+			<feldreferenz referenz="VuNr">
+				<name>VU-Nummer</name>
+				<technischerName>VuNr</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Buendelungskennzeichen(10-10) -->
+			<feldreferenz referenz="Buendelungskennzeichen">
+				<name>Bündelungskennzeichen</name>
+				<technischerName>Buendelungskennzeichen</technischerName>
+			</feldreferenz>
+			<!-- NumFeld Sparte(11-13): "051" -->
+			<feldreferenz referenz="Sparte">
+				<name>Sparte</name>
+				<technischerName>Sparte</technischerName>
+				<auspraegung>051</auspraegung>
+			</feldreferenz>
+			<!-- AlphaNumFeld VsNr(14-30) -->
+			<feldreferenz referenz="VsNr">
+				<name>Versicherungsschein-Nummer</name>
+				<technischerName>VsNr</technischerName>
+			</feldreferenz>
+			<!-- NumFeld FolgeNr(31-32) -->
+			<feldreferenz referenz="FolgeNr">
+				<name>Folgenummer</name>
+				<technischerName>FolgeNr</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld GeschaeftsstelleVermittler(33-42) -->
+			<feldreferenz referenz="GeschaeftsstelleVermittler">
+				<name>Geschaeftsstelle/Vermittler</name>
+				<technischerName>GeschaeftsstelleVermittler</technischerName>
+			</feldreferenz>
+			<!-- Betrag KhDeckungssummenInWETeil1(43-56) -->
+			<feldreferenz referenz="KhDeckungssummenInWETeil1">
+				<name>KH-Deckungssummen in Währungseinheiten Teil 1</name>
+				<technischerName>KhDeckungssummenInWETeil1</technischerName>
+			</feldreferenz>
+			<!-- Betrag KhDeckungssummenInWETeil2(57-70) -->
+			<feldreferenz referenz="KhDeckungssummenInWETeil2">
+				<name>KH-Deckungssummen in Währungseinheiten Teil 2</name>
+				<technischerName>KhDeckungssummenInWETeil2</technischerName>
+			</feldreferenz>
+			<!-- Betrag KhDeckungssummenInWETeil3(71-84) -->
+			<feldreferenz referenz="KhDeckungssummenInWETeil3">
+				<name>KH-Deckungssummen in Währungseinheiten Teil 3</name>
+				<technischerName>KhDeckungssummenInWETeil3</technischerName>
+			</feldreferenz>
+			<!-- Betrag KhBeitragInWE(85-96) -->
+			<feldreferenz referenz="KhBeitragInWE">
+				<name>KH-Beitrag in Währungseinheiten</name>
+				<technischerName>KhBeitragInWE</technischerName>
+			</feldreferenz>
+			<!-- Betrag KhZuschlaegeInWE(97-108) -->
+			<feldreferenz referenz="KhZuschlaegeInWE">
+				<name>KH-Zuschlaege in Währungseinheiten</name>
+				<technischerName>KhZuschlaegeInWE</technischerName>
+			</feldreferenz>
+			<!-- Betrag KhAbschlaegeInWE(109-120) -->
+			<feldreferenz referenz="KhAbschlaegeInWE">
+				<name>KH-Abschlaege in Währungseinheiten</name>
+				<technischerName>KhAbschlaegeInWE</technischerName>
+			</feldreferenz>
+			<!-- Betrag Tarifbeitrag100ProzKraftfahrtHaftpflichtInWE(121-132) -->
+			<feldreferenz referenz="Tarifbeitrag100ProzKraftfahrtHaftpflichtInWE">
+				<name>Tarifbeitrag 100 % fuer Kraftfahrt-Haftpflicht in Währungseinheiten</name>
+				<technischerName>Tarifbeitrag100ProzKraftfahrtHaftpflichtInWE</technischerName>
+			</feldreferenz>
+			<!-- Betrag FreiVereinbarteSelbstbeteiligungInWEKh(133-144) -->
+			<feldreferenz referenz="FreiVereinbarteSelbstbeteiligungInWEKh">
+				<name>Frei vereinbarte Selbstbeteiligung in Währungseinheiten für KH</name>
+				<technischerName>FreiVereinbarteSelbstbeteiligungInWEKh</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Referenznummer(145-151) -->
+			<feldreferenz referenz="Referenznummer">
+				<name>Referenznummer</name>
+				<technischerName>Referenznummer</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld LfdNr(152-155) -->
+			<feldreferenz referenz="LfdNr">
+				<name>Lfd. Nummer</name>
+				<technischerName>LfdNr</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld PersonenNrLfdNr(156-172) -->
+			<feldreferenz referenz="PersonenNrLfdNr">
+				<name>Personennummer / lfd. Nummer</name>
+				<technischerName>PersonenNrLfdNr</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Leerstellen(173-255) -->
+			<feldreferenz referenz="Leerstellen">
+				<name>Leerstellen</name>
+				<technischerName>Leerstellen</technischerName>
+			</feldreferenz>
+			<!-- Zeichen Satznummer(256-256): "1" -->
+			<feldreferenz referenz="Satznummer">
+				<name>Satznummer</name>
+				<technischerName>Satznummer</technischerName>
+				<auspraegung>1</auspraegung>
+			</feldreferenz>
+			<satzende/>
+		</satzart>
+	</satzarten>
+	<felder>
+		<feld referenz="Satzart">
+			<name>Satzart</name>
+			<bytes>4</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="VuNr">
+			<name>VU-Nummer</name>
+			<bytes>5</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="Buendelungskennzeichen">
+			<name>Bündelungskennzeichen</name>
+			<bytes>1</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="Sparte">
+			<name>Sparte</name>
+			<bytes>3</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="VsNr">
+			<name>Versicherungsschein-Nummer</name>
+			<bytes>17</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="FolgeNr">
+			<name>Folgenummer</name>
+			<bytes>2</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="GeschaeftsstelleVermittler">
+			<name>Geschaeftsstelle/Vermittler</name>
+			<bytes>10</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="KhDeckungssummenInWETeil1">
+			<name>KH-Deckungssummen in Währungseinheiten Teil 1</name>
+			<bytes>14</bytes>
+			<datentyp>Fliesskomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+		</feld>
+		<feld referenz="KhDeckungssummenInWETeil2">
+			<name>KH-Deckungssummen in Währungseinheiten Teil 2</name>
+			<bytes>14</bytes>
+			<datentyp>Fliesskomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+		</feld>
+		<feld referenz="KhDeckungssummenInWETeil3">
+			<name>KH-Deckungssummen in Währungseinheiten Teil 3</name>
+			<bytes>14</bytes>
+			<datentyp>Fliesskomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+		</feld>
+		<feld referenz="KhBeitragInWE">
+			<name>KH-Beitrag in Währungseinheiten</name>
+			<bytes>12</bytes>
+			<datentyp>Fliesskomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+		</feld>
+		<feld referenz="KhZuschlaegeInWE">
+			<name>KH-Zuschlaege in Währungseinheiten</name>
+			<bytes>12</bytes>
+			<datentyp>Fliesskomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+		</feld>
+		<feld referenz="KhAbschlaegeInWE">
+			<name>KH-Abschlaege in Währungseinheiten</name>
+			<bytes>12</bytes>
+			<datentyp>Fliesskomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+		</feld>
+		<feld referenz="Tarifbeitrag100ProzKraftfahrtHaftpflichtInWE">
+			<name>Tarifbeitrag 100 % fuer Kraftfahrt-Haftpflicht in Währungseinheiten</name>
+			<bytes>12</bytes>
+			<datentyp>Fliesskomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+		</feld>
+		<feld referenz="FreiVereinbarteSelbstbeteiligungInWEKh">
+			<name>Frei vereinbarte Selbstbeteiligung in Währungseinheiten für KH</name>
+			<bytes>12</bytes>
+			<datentyp>Fliesskomma</datentyp>
+			<nachkommastellen>2</nachkommastellen>
+		</feld>
+		<feld referenz="Referenznummer">
+			<name>Referenznummer</name>
+			<bytes>7</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="LfdNr">
+			<name>Lfd. Nummer</name>
+			<bytes>4</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="PersonenNrLfdNr">
+			<name>Personennummer / lfd. Nummer</name>
+			<bytes>17</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="Leerstellen">
+			<name>Leerstellen</name>
+			<bytes>83</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="Satznummer">
+			<name>Satznummer</name>
+			<bytes>1</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+	</felder>
+</service>
