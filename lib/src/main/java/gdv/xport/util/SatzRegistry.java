@@ -189,7 +189,12 @@ public class SatzRegistry implements VersionHandler {
         if (satz == null) {
             return getSatzFromXmlService(satztyp);
         }
-        return newInstance(satztyp, satz.getClass());
+        try {
+            return (Satz) satz.clone();
+        } catch (CloneNotSupportedException ex) {
+            LOG.warn("{} fuer Satzart {} konnte nicht geclone't werden:", satz, satztyp, ex);
+            return newInstance(satztyp, satz.getClass());
+        }
     }
 
     private static Satz newInstance(SatzTyp satztyp, Class<? extends Satz> clazz) {
