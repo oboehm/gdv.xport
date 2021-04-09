@@ -32,6 +32,7 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.SatzX;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.SmokeRunner;
@@ -54,6 +55,11 @@ import static org.junit.Assert.*;
 public final class SatzFactoryTest extends AbstractTest {
 
     private static final Logger LOG = LogManager.getLogger(SatzFactoryTest.class);
+
+    @Before
+    public void resetSatzFactory() {
+        SatzFactory.reset();
+    }
 
     /**
      * Testet getSatz().

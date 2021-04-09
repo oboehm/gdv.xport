@@ -57,7 +57,6 @@ public class SatzRegistry implements VersionHandler {
     private static final Logger LOG = LogManager.getLogger(SatzRegistry.class);
     private static final Map<String, SatzRegistry> INSTANCES = new HashMap<>();
     private final Map<SatzTyp, Satz> registeredSaetze = new ConcurrentHashMap<>();
-    private final Map<SatzTyp, Class<? extends Datensatz>> registeredDatensatzClasses = new ConcurrentHashMap<>();
     private final Map<SatzTyp, Class<? extends Enum>> registeredEnumClasses = new ConcurrentHashMap<>();
     private final XmlService xmlService;
 
@@ -113,7 +112,6 @@ public class SatzRegistry implements VersionHandler {
      */
     public void reset() {
         registeredSaetze.clear();
-        registeredDatensatzClasses.clear();
         registeredEnumClasses.clear();
         registerDefault();
         LOG.debug("{} wurde zurueckgesetzt.", this);
@@ -147,10 +145,10 @@ public class SatzRegistry implements VersionHandler {
      * @param satzNr die SatzNummer (z.B. new SatzNummer(100))
      */
     public void registerEnum(final Class<? extends Enum> enumClass, final SatzTyp satzNr) {
-        if (registeredDatensatzClasses.containsKey(satzNr)) {
-            LOG.info("Registered " + registeredDatensatzClasses.get(satzNr) + " for " + satzNr
+        if (registeredSaetze.containsKey(satzNr)) {
+            LOG.info("Registered " + registeredSaetze.get(satzNr) + " for " + satzNr
                     + " will be replaced by " + enumClass);
-            registeredDatensatzClasses.remove(satzNr);
+            registeredSaetze.remove(satzNr);
         }
         registeredEnumClasses.put(satzNr, enumClass);
     }
@@ -175,8 +173,7 @@ public class SatzRegistry implements VersionHandler {
      * @param satzNr the satz nr
      */
     public void register(final Class<? extends Datensatz> clazz, final SatzTyp satzNr) {
-        registeredDatensatzClasses.put(satzNr, clazz);
-    }
+        registeredSaetze.put(satzNr, generateDatensatz(satzNr, clazz));    }
 
     /**
      * Holt einen Satz.
@@ -353,17 +350,11 @@ public class SatzRegistry implements VersionHandler {
      * @return den passenden Datensatz
      */
     public Datensatz getDatensatz(final SatzTyp satzNr) {
-        Class<? extends Datensatz> clazz = registeredDatensatzClasses.get(satzNr);
-        if (clazz == null) {
-            // wird u.a. fuer den Import von Datensaetzen benoetigt
-            try {
-                return generateSatz(satzNr);
-            } catch (NotRegisteredException ex) {
-                LOG.debug("SatzTyp {} is not part of the XML description.", satzNr);
-                LOG.trace("Details:", ex);
-            }
+        Satz satz = registeredSaetze.get(satzNr);
+        if ((satz != null) && (satz instanceof Datensatz)) {
+            return (Datensatz) satz;
         }
-        return generateDatensatz(satzNr, clazz);
+        return generateDatensatz(satzNr);
     }
 
     private Datensatz generateDatensatz(SatzTyp satzNr, Class<? extends Datensatz> clazz) {
@@ -455,8 +446,11 @@ public class SatzRegistry implements VersionHandler {
         for (Map.Entry<SatzTyp, Class<? extends Enum>> entry : registeredEnumClasses.entrySet()) {
             supportedSaetze.put(entry.getKey(), new SatzX(entry.getKey(), entry.getValue()));
         }
-        for (Map.Entry<SatzTyp, Class<? extends Datensatz>> entry : registeredDatensatzClasses.entrySet()) {
-            supportedSaetze.put(entry.getKey(), generateDatensatz(entry.getKey(), entry.getValue()));
+        for (Map.Entry<SatzTyp, Satz> entry : registeredSaetze.entrySet()) {
+            Satz value = entry.getValue();
+            if (value instanceof Datensatz) {
+                supportedSaetze.put(entry.getKey(), (Datensatz) value);
+            }
         }
         supportedSaetze.remove(SatzTyp.of("0001"));
         supportedSaetze.remove(SatzTyp.of("9999"));
