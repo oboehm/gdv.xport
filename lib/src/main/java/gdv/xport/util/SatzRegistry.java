@@ -56,7 +56,7 @@ public class SatzRegistry implements VersionHandler {
 
     private static final Logger LOG = LogManager.getLogger(SatzRegistry.class);
     private static final Map<String, SatzRegistry> INSTANCES = new HashMap<>();
-    private final Map<SatzTyp, Class<? extends Satz>> registeredSatzClasses = new ConcurrentHashMap<>();
+    private final Map<SatzTyp, Satz> registeredSaetze = new ConcurrentHashMap<>();
     private final Map<SatzTyp, Class<? extends Datensatz>> registeredDatensatzClasses = new ConcurrentHashMap<>();
     private final Map<SatzTyp, Class<? extends Enum>> registeredEnumClasses = new ConcurrentHashMap<>();
     private final XmlService xmlService;
@@ -112,7 +112,7 @@ public class SatzRegistry implements VersionHandler {
      * Unterstuetzung der Unit-Tests eingefuehrt.
      */
     public void reset() {
-        registeredSatzClasses.clear();
+        registeredSaetze.clear();
         registeredDatensatzClasses.clear();
         registeredEnumClasses.clear();
         registerDefault();
@@ -135,7 +135,8 @@ public class SatzRegistry implements VersionHandler {
         } catch (NoSuchMethodException ex) {
             throw new IllegalArgumentException("no default constructor found in " + clazz, ex);
         }
-        registeredSatzClasses.put(SatzTyp.of(satzart), clazz);
+        SatzTyp satzTyp = SatzTyp.of(satzart);
+        registeredSaetze.put(satzTyp, newInstance(satzTyp, clazz));
     }
 
     /**
@@ -162,7 +163,7 @@ public class SatzRegistry implements VersionHandler {
      * @param typ SatzTyp bzw. Satzart
      */
     public void unregister(SatzTyp typ) {
-        registeredSatzClasses.remove(typ);
+        registeredSaetze.remove(typ);
         registeredEnumClasses.remove(typ);
     }
 
@@ -184,10 +185,14 @@ public class SatzRegistry implements VersionHandler {
      * @return angeforderter Satz
      */
     public Satz getSatz(final SatzTyp satztyp) {
-        Class<? extends Satz> clazz = registeredSatzClasses.get(new SatzTyp(satztyp.getSatzart()));
-        if (clazz == null) {
+        Satz satz = registeredSaetze.get(satztyp);
+        if (satz == null) {
             return getSatzFromXmlService(satztyp);
         }
+        return newInstance(satztyp, satz.getClass());
+    }
+
+    private static Satz newInstance(SatzTyp satztyp, Class<? extends Satz> clazz) {
         try {
             Satz satz = clazz.newInstance();
             if (satz.getSatzart() != satztyp.getSatzart()) {
