@@ -57,7 +57,6 @@ public class SatzRegistry implements VersionHandler {
     private static final Logger LOG = LogManager.getLogger(SatzRegistry.class);
     private static final Map<String, SatzRegistry> INSTANCES = new HashMap<>();
     private final Map<SatzTyp, Satz> registeredSaetze = new ConcurrentHashMap<>();
-    private final Map<SatzTyp, Class<? extends Enum>> registeredEnumClasses = new ConcurrentHashMap<>();
     private final XmlService xmlService;
 
     {
@@ -112,7 +111,6 @@ public class SatzRegistry implements VersionHandler {
      */
     public void reset() {
         registeredSaetze.clear();
-        registeredEnumClasses.clear();
         registerDefault();
         LOG.debug("{} wurde zurueckgesetzt.", this);
     }
@@ -145,12 +143,7 @@ public class SatzRegistry implements VersionHandler {
      * @param satzNr die SatzNummer (z.B. new SatzNummer(100))
      */
     public void registerEnum(final Class<? extends Enum> enumClass, final SatzTyp satzNr) {
-        if (registeredSaetze.containsKey(satzNr)) {
-            LOG.info("Registered " + registeredSaetze.get(satzNr) + " for " + satzNr
-                    + " will be replaced by " + enumClass);
-            registeredSaetze.remove(satzNr);
-        }
-        registeredEnumClasses.put(satzNr, enumClass);
+        registeredSaetze.put(satzNr, new SatzX(satzNr, enumClass));
     }
 
     /**
@@ -162,7 +155,6 @@ public class SatzRegistry implements VersionHandler {
      */
     public void unregister(SatzTyp typ) {
         registeredSaetze.remove(typ);
-        registeredEnumClasses.remove(typ);
     }
 
     /**
@@ -224,32 +216,19 @@ public class SatzRegistry implements VersionHandler {
         try {
             return xmlService.getSatzart(satztyp);
         } catch (NotRegisteredException ex) {
-            LOG.debug("{} is not avalaible via XmlService.", satztyp);
-            LOG.trace("Details:", ex);
             if (satztyp.hasParent()) {
+                LOG.debug("{} is not avalaible via XmlService.", satztyp);
+                LOG.trace("Details:", ex);
                 SatzXml satz = xmlService.getSatzart(satztyp.getParent());
                 satz.setSparte(satztyp.getSparte());
                 return satz;
             } else {
-                return generateSatz(satztyp);
+                throw ex;
             }
         }
     }
 
-    private Datensatz generateSatz(final SatzTyp satztyp) {
-        Class<? extends Enum> enumClass = registeredEnumClasses.get(satztyp);
-        if (enumClass == null) {
-            // ein clone() ist nun nicht mehr noetig, da XML_SERVICE.getSatzart(..) bereits eine Kopie erzeugt
-            return xmlService.getSatzart(satztyp);
-        }
-        return new SatzX(satztyp, enumClass);
-    }
-
     private Datensatz generateDatensatz(final SatzTyp satzNr) {
-        Class<? extends Enum> enumClass = registeredEnumClasses.get(satzNr);
-        if (enumClass != null) {
-            return new SatzX(satzNr, enumClass);
-        }
         LOG.trace("Will use fallback for Satz {}:", satzNr);
         return useFallback(satzNr);
     }
@@ -442,9 +421,6 @@ public class SatzRegistry implements VersionHandler {
         Map<SatzTyp, Datensatz> supportedSaetze = new HashMap<>();
         for (Map.Entry<SatzTyp, SatzXml> entry : xmlService.getSatzarten().entrySet()) {
             supportedSaetze.put(entry.getKey(), entry.getValue());
-        }
-        for (Map.Entry<SatzTyp, Class<? extends Enum>> entry : registeredEnumClasses.entrySet()) {
-            supportedSaetze.put(entry.getKey(), new SatzX(entry.getKey(), entry.getValue()));
         }
         for (Map.Entry<SatzTyp, Satz> entry : registeredSaetze.entrySet()) {
             Satz value = entry.getValue();
