@@ -132,7 +132,7 @@ public class SatzRegistry implements VersionHandler {
             throw new IllegalArgumentException("no default constructor found in " + clazz, ex);
         }
         SatzTyp satzTyp = SatzTyp.of(satzart);
-        registeredSaetze.put(satzTyp, newInstance(satzTyp, clazz));
+        register(newInstance(satzTyp, clazz), satzTyp);
     }
 
     /**
@@ -141,9 +141,34 @@ public class SatzRegistry implements VersionHandler {
      *
      * @param enumClass ie Aufzaehlungsklasse, z.B. Feld100.class
      * @param satzNr die SatzNummer (z.B. new SatzNummer(100))
+     * @deprecated durch {@link #register(Satz, SatzTyp)} abgeloest
      */
+    @Deprecated
     public void registerEnum(final Class<? extends Enum> enumClass, final SatzTyp satzNr) {
-        registeredSaetze.put(satzNr, new SatzX(satzNr, enumClass));
+        register(new SatzX(satzNr, enumClass), satzNr);
+    }
+
+    /**
+     * Mit dieser Methode kann ein beliebiger Satz registriert werden. Sie
+     * loest die alter registerEnum-Methode ab, in der ein Satz mithilfe einer
+     * Enum-Beschreibung registriert werden konnte.
+     * <p>
+     * Mit der verbesserten Unterstuetzung der GDV-XML-Beschreibung in v5.0
+     * kann jetzt auch diese XML-Beschreibung fuer die Registrierung eigener
+     * Datensaetze verwendet und hierueber registriert werden. So kann z.B.
+     * mit
+     * <pre>
+     * SatzRegistry.getInstance().register(SatzXml.of("Satz0221.051.xml"), SatzTyp.of("0221.051"));
+     * </pre>
+     * eine eigene Beschreibung fuer Satzart 0221.051 registriert werden.
+     * </p>
+     *
+     * @param satz   Satz-Vorlage (z.B. SatzXml.of("Satz0221.051.xml"))
+     * @param satzNr Satzart (z.B. SatzTyp.of("0221.051"))
+     * @since 5.0
+     */
+    public void register(final Satz satz, final SatzTyp satzNr) {
+        registeredSaetze.put(satzNr, satz);
     }
 
     /**
