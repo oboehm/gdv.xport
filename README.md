@@ -61,5 +61,6 @@ Weitere Infos wie z.B. die [JavaDocs](http://www.aosd.de/gdv.xport/apidocs/index
 * [Release Notes](CHANGELOG.md)
 * Projekt-Seite: http://www.aosd.de/gdv.xport/
 * [Architektur-Doku](src/asciidoc/README.adoc)
+* die eigentliche [gdv-xport-lib](lib/REAMDE.adoc)-Bibliothek
 * Xing-Gruppe: https://www.xing.com/communities/groups/datenaustausch-im-gdv-format-9756-1053093
 * [GDV Online-Handbuch](http://www.gdv-online.de/vuvm/bestand/rel2018/samenue.html) zu den verschiedene Satzarten
