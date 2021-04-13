@@ -29,6 +29,22 @@ Möchte man hier das alte Verhalten, muss man die Resource "Satz0221.051.xml" al
 Da mit v5 die Enum-Aufzählungstypen komplett durch XML-Beschreibungen ersetzt werden können, sind sie jetzt als @Deprecated gekennzeichnet.
 Sie werden mit v6 verschwinden bzw. nach [gdv-xport-deprecated](../deprecated/README.adoc) verschoben.
 
+Für eigene Enum-Beschreibungen, die man gerne weiterverwenden möchte, wurde der `GdvXmlFormatter` eingeführt.
+Mit ihm können die Enum-Beschreibungen nach XML konvertiert werden:
+
+```java
+    SatzTyp kfz = SatzTyp.of(221, 51);
+    SatzRegistry.getInstance().registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, kfz);
+    Satz satz = SatzFactory.getDatensatz(kfz);
+    try (FileOutputStream ostream = new FileOutputStream(new File("Satz0221.051.xml"));
+         GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
+        formatter.write(satz);
+    }
+```
+
+Mit diesem Beispiel wird die Enum aus `Feld221` als XML in die Datei "Satz0221.051.xml" geschrieben.
+Diese Datei kann dann über die `SatzXML`-Klasse für die Registrierung eigener Sätze verwendet werden.
+
 
 == Kompatibilitaet von v3 zu v4
 

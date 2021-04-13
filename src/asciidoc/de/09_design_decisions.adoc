@@ -3,6 +3,20 @@
 == Entwurfsentscheidungen
 
 
+=== Enum-Beschreibung
+
+In der Anfangszeit konnten die verschiedenen GDV-Datensätze über Aufzählungstypen (Enums) zusammen mit Annotationen beschrieben werden.
+Dies hatte den Vorteil, dass mit reinen Java-Mitteln Datensätze definiert werden konnte, ohne dass man auf Unterstützung durch die IDE verzichten musste.
+
+Mit v2 gab es dann mit der XML-Beschreibung durch http://www.gdv-online.de/vuvm/[GDV-Online] eine Unterstützung aller Satzarten.
+Allerdings gibt es in den GDV-Datensätzen einige Sonderfälle, die damit in v2 nur unzureichend abgedeckt werden konnten.
+Deswegen war bis v4 immer noch die Unterstützung durch die Enum-Beschreibungen notwendig, wenn auch mit fallender Bedeutung.
+
+Mit v5 ist jetzt eine durchgehende Abdeckung durch die XML-Beschreibung möglich.
+Um vor allem für Neu-Einsteiger die Verwirrung gering zu halten, wird mit v6 nur noch der XML-Ansatz für die Datensatz-Beschreibung unterstützt.
+Mit dem GdvXmlFormatter kann man Enum-Beschreibung nach XML überführen, sodass man eigene Enum-Beschreibungen (sofern vorhanden) nach XML konvertieren und weiterverwenden kann.
+
+
 === XML-Parsing
 
 Die XML-Beschreibung der GDV-Datensätze, aus denen die verschiedenen Satz-Klassen generiert werden, ist ca. 8 MB groß.
