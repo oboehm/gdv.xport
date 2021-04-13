@@ -17,6 +17,7 @@
  */
 package gdv.xport.util;
 
+import gdv.xport.feld.Feld;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
@@ -104,8 +105,13 @@ public final class GdvXmlFormatterTest {
             SatzRegistry.getInstance().registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, kfz);
             Satz satz = SatzFactory.getDatensatz(kfz);
             formatTo(target, satz);
-            Satz formatted = SatzXml.of(target);
-            assertEquals(satz, formatted);
+            Satz xmlSatz = SatzXml.of(target);
+            assertEquals(satz, xmlSatz);
+            for (Feld feld : satz.getFelder()) {
+                Feld xmlFeld = xmlSatz.getFeld(feld.getBezeichner());
+                assertEquals(feld, xmlFeld);
+                assertEquals(feld.getClass(), xmlFeld.getClass());
+            }
         } finally {
             SatzRegistry.getInstance().unregister(kfz);
         }

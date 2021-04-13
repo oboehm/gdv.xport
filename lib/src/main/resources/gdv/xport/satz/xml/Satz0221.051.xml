@@ -133,7 +133,7 @@
 		<feld referenz="VuNr">
 			<name>VU-Nummer</name>
 			<bytes>5</bytes>
-			<datentyp>Alphanumerisch</datentyp>
+			<datentyp>Vunummer</datentyp>
 		</feld>
 		<feld referenz="Buendelungskennzeichen">
 			<name>Bündelungskennzeichen</name>

@@ -43,10 +43,21 @@ public class VUNummer extends AlphaNumFeld {
      * @param nr VU-Nummer (max. 5 Stellen)
      */
     public VUNummer(final String nr) {
-        super(Bezeichner.VU_NR, 5, 5);
+        this(Bezeichner.VU_NR, 5, 5);
         assert nr.length() <= 5 : "nur max. 5 Stellen erlaubt";
         this.setInhalt(nr);
         super.setAnzahlBytes(5);
+    }
+
+    /**
+     * Diese Konstruktor ist nur fuer den internen Gebrauch gedacht.
+     *
+     * @param bezeichner Bezeichner
+     * @param length     Laenge
+     * @param start      Start-Adresse
+     */
+    public VUNummer(Bezeichner bezeichner, int length, int start) {
+        super(bezeichner, length, start);
     }
 
     /**

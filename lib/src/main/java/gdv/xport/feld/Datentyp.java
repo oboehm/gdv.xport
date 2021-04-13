@@ -34,6 +34,9 @@ import java.lang.reflect.InvocationTargetException;
  */
 public enum Datentyp {
 
+    /** VU-Nummer. */
+    VUNUMMER(VUNummer.class),
+
     /** Alphanumerische Zeichen oder String. */
     ALPHANUMERISCH(AlphaNumFeld.class),
 
