@@ -52,7 +52,7 @@ public enum Feld220Wagnis2 {
      * Wagnisart.
      * 2 = Rentenversicherung
      */
-    @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
+    @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60, value = "2")
     WAGNISART,
 
     /**

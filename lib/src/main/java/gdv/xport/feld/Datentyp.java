@@ -37,6 +37,9 @@ public enum Datentyp {
     /** VU-Nummer. */
     VUNUMMER(VUNummer.class),
 
+    /** Zeichen. */
+    ZEICHEN(Zeichen.class),
+
     /** Alphanumerische Zeichen oder String. */
     ALPHANUMERISCH(AlphaNumFeld.class),
 
@@ -122,7 +125,7 @@ public enum Datentyp {
      * @since 5.0
      */
     public static String asString(Feld feld) {
-        if ((feld instanceof NumFeld) && !(feld instanceof Betrag)) {
+        if ((feld instanceof NumFeld) && !(feld instanceof Betrag) && !(feld instanceof Datum)) {
             NumFeld n = (NumFeld) feld;
             if (n.getNachkommastellen() > 0) {
                 return FLIESSKOMMA.capitalize();

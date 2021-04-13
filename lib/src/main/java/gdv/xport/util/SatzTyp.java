@@ -161,6 +161,23 @@ public class SatzTyp {
 	}
 
 	/**
+	 * Liefert die Sparte zusammen mit der Art (falls vorhanden).
+	 *
+	 * @return z.B. "010.2"
+	 */
+	public String getSparteMitArt() {
+		StringBuilder buf = new StringBuilder();
+		if (hasSparte()) {
+			buf.append(String.format("%03d", this.getSparte()));
+			if (this.hasArt()) {
+				buf.append(".");
+				buf.append(this.getArtAsString());
+			}
+		}
+		return buf.toString();
+	}
+
+	/**
 	 * Gets the wagnisart.
 	 *
 	 * @return the wagnisart
@@ -374,14 +391,11 @@ public class SatzTyp {
 		StringBuilder buf = new StringBuilder();
 		buf.append(String.format("%04d", this.getSatzart()));
 		if (this.hasSparte()) {
-			buf.append(String.format(".%03d", this.getSparte()));
-			if (this.hasArt()) {
+			buf.append(".");
+			buf.append(getSparteMitArt());
+			if (this.hasTeildatensatzNummer()) {
 				buf.append(".");
-				buf.append(this.getArtAsString());
-				if (this.hasTeildatensatzNummer()) {
-					buf.append(".");
-					buf.append(this.getTeildatensatzNummer());
-				}
+				buf.append(this.getTeildatensatzNummer());
 			}
 		}
 		return buf.toString();

@@ -47,7 +47,18 @@ public class Zeichen extends AlphaNumFeld {
      * @since 1.0
      */
     public Zeichen(final Bezeichner bezeichner, final int start) {
-        super(bezeichner, 1, start);
+        this(bezeichner, 1, start);
+    }
+
+    /**
+     * Nur fuer den internen Gebrauch.
+     *
+     * @param bezeichner der Bezeichner
+     * @param length Laenge
+     * @param start die Byte-Adresse
+     */
+    public Zeichen(Bezeichner bezeichner, int length, int start) {
+        super(bezeichner, length, start);
     }
 
     /**

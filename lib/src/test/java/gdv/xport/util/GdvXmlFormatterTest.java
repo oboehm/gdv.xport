@@ -99,21 +99,29 @@ public final class GdvXmlFormatterTest {
      */
     @Test
     public void testSatzart0221051() throws IOException, XMLStreamException {
-        File target = new File(XML_DIR, "satz0221.051.xml");
-        SatzTyp kfz = SatzTyp.of(221, 51);
+        checkSatzart(SatzTyp.of(221, 51), gdv.xport.satz.feld.sparte51.Feld221.class);
+    }
+
+    //@Test
+    public void testSatzartLebenWagnis2() throws IOException, XMLStreamException {
+        checkSatzart(SatzTyp.of("0220.010.2.1"), gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2.class);
+    }
+
+    private void checkSatzart(SatzTyp satzTyp, Class<? extends Enum> enumClass) throws IOException, XMLStreamException {
+        File target = new File(XML_DIR, String.format("satz%s.xml", satzTyp.toString()));
         try {
-            SatzRegistry.getInstance().registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, kfz);
-            Satz satz = SatzFactory.getDatensatz(kfz);
+            SatzRegistry.getInstance().registerEnum(enumClass, satzTyp);
+            Satz satz = SatzFactory.getDatensatz(satzTyp);
             formatTo(target, satz);
             Satz xmlSatz = SatzXml.of(target);
-            assertEquals(satz, xmlSatz);
             for (Feld feld : satz.getFelder()) {
                 Feld xmlFeld = xmlSatz.getFeld(feld.getBezeichner());
                 assertEquals(feld, xmlFeld);
                 assertEquals(feld.getClass(), xmlFeld.getClass());
             }
+            assertEquals(satz, xmlSatz);
         } finally {
-            SatzRegistry.getInstance().unregister(kfz);
+            SatzRegistry.getInstance().unregister(satzTyp);
         }
     }
 

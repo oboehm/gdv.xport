@@ -546,7 +546,7 @@ public class Teildatensatz extends Satz {
             int end = start + feld.getAnzahlBytes();
             data.replace(start, end, feld.getInhalt());
         }
-        assert data.length() == 256 : "Teildatensatz ist nicht 256 Bytes lang";
+        assert data.length() == 256 : "Teildatensatz ist " + data.length() + " und nicht 256 Bytes lang";
         writer.write(data.toString());
         writer.write(eod);
     }

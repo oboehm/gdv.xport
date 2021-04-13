@@ -156,6 +156,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeStartElement("kennzeichnung");
         writeReferenz(satz.getSatzartFeld());
         writeSparte(satz);
+        writeSatznummer(satz);
         xmlStreamWriter.writeEndElement();
     }
 
@@ -177,7 +178,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     private void writeReferenz(Feld feld) throws XMLStreamException {
         Bezeichner bezeichner = feld.getBezeichner();
         xmlStreamWriter.writeStartElement("feldreferenz");
-        xmlStreamWriter.writeAttribute("referenz", bezeichner.getTechnischerName());
+        xmlStreamWriter.writeAttribute("referenz", toFeldReferenzId(feld));
         writeElement("name", bezeichner.getName());
         writeElement("technischerName", bezeichner.getTechnischerName());
         if (feld.hasValue()) {
@@ -186,11 +187,21 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeEndElement();
     }
 
+    private String toFeldReferenzId(Feld feld) {
+        return String.format("%03d-%03d-%s", feld.getByteAdresse(), feld.getEndAdresse(),
+                feld.getBezeichner().getTechnischerName());
+    }
+
     private void writeSparte(Satz satz) throws XMLStreamException {
         if (satz.hasSparte()) {
-            Feld sparteFeld = new Feld(Bezeichner.SPARTE, 11, satz.getSatzTyp().toString().substring(5), Align.LEFT);
+            Feld sparteFeld = new Feld(Bezeichner.SPARTE, 11, satz.getSatzTyp().getSparteMitArt(), Align.LEFT);
             writeReferenz(sparteFeld);
         }
+    }
+
+    private void writeSatznummer(Satz satz) throws XMLStreamException {
+        Feld satznummer = new Feld(Bezeichner.SATZNUMMER, 256, satz.getGdvSatzartNummer(), Align.LEFT);
+        writeReferenz(satznummer);
     }
 
     private void writeFelder() throws XMLStreamException {
@@ -203,7 +214,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
 
     private void write(Feld feld) throws XMLStreamException {
         xmlStreamWriter.writeStartElement("feld");
-        xmlStreamWriter.writeAttribute("referenz", feld.getBezeichner().getTechnischerName());
+        xmlStreamWriter.writeAttribute("referenz", toFeldReferenzId(feld));
         writeElement("name", feld.getBezeichner().getName());
         writeElement("bytes", Integer.toString(feld.getAnzahlBytes()));
         writeElement("datentyp", Datentyp.asString(feld));
