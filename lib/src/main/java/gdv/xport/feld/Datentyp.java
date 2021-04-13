@@ -40,6 +40,9 @@ public enum Datentyp {
     /** Datum. */
     DATUM(Datum.class),
 
+    /** Betrag. */
+    BETRAG(Betrag.class),
+
     /** Gleitkomma-Zahlen. */
     FLIESSKOMMA(NumFeld.class),
 
@@ -116,7 +119,7 @@ public enum Datentyp {
      * @since 5.0
      */
     public static String asString(Feld feld) {
-        if (feld instanceof NumFeld) {
+        if ((feld instanceof NumFeld) && !(feld instanceof Betrag)) {
             NumFeld n = (NumFeld) feld;
             if (n.getNachkommastellen() > 0) {
                 return FLIESSKOMMA.capitalize();

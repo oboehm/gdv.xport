@@ -30,6 +30,7 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.SatzX;
+import gdv.xport.satz.xml.SatzXml;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
@@ -37,6 +38,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.SmokeRunner;
 
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -328,12 +330,15 @@ public final class SatzFactoryTest extends AbstractTest {
      * Hier testen wir mit Satz fuer die Kfz-Haftpflicht (0221.051), ob keine
      * Loecher im Datensatz sind. Problem bereiteten hier urspruenglich die
      * KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL#-Bezeichner.
+     *
+     * @throws XMLStreamException the xml stream exception
+     * @throws IOException        the io exception
      */
     @Test
-    public void testSatzart0221051() {
+    public void testSatzart0221051() throws XMLStreamException, IOException {
         SatzTyp kfz = SatzTyp.of(221, 51);
         try {
-            SatzRegistry.getInstance().registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, kfz);
+            SatzRegistry.getInstance().register(SatzXml.of("Satz0221.051.xml"), kfz);
             Datensatz satz = SatzFactory.getDatensatz(kfz);
             checkDatensatz(satz);
             checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1);

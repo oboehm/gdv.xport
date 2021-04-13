@@ -163,32 +163,27 @@
 		<feld referenz="KhDeckungssummenInWETeil1">
 			<name>KH-Deckungssummen in Währungseinheiten Teil 1</name>
 			<bytes>14</bytes>
-			<datentyp>Fliesskomma</datentyp>
-			<nachkommastellen>2</nachkommastellen>
+			<datentyp>Betrag</datentyp>
 		</feld>
 		<feld referenz="KhDeckungssummenInWETeil2">
 			<name>KH-Deckungssummen in Währungseinheiten Teil 2</name>
 			<bytes>14</bytes>
-			<datentyp>Fliesskomma</datentyp>
-			<nachkommastellen>2</nachkommastellen>
+			<datentyp>Betrag</datentyp>
 		</feld>
 		<feld referenz="KhDeckungssummenInWETeil3">
 			<name>KH-Deckungssummen in Währungseinheiten Teil 3</name>
 			<bytes>14</bytes>
-			<datentyp>Fliesskomma</datentyp>
-			<nachkommastellen>2</nachkommastellen>
+			<datentyp>Betrag</datentyp>
 		</feld>
 		<feld referenz="KhBeitragInWE">
 			<name>KH-Beitrag in Währungseinheiten</name>
 			<bytes>12</bytes>
-			<datentyp>Fliesskomma</datentyp>
-			<nachkommastellen>2</nachkommastellen>
+			<datentyp>Betrag</datentyp>
 		</feld>
 		<feld referenz="KhZuschlaegeInWE">
 			<name>KH-Zuschlaege in Währungseinheiten</name>
 			<bytes>12</bytes>
-			<datentyp>Fliesskomma</datentyp>
-			<nachkommastellen>2</nachkommastellen>
+			<datentyp>Betrag</datentyp>
 		</feld>
 		<feld referenz="KhAbschlaegeInWE">
 			<name>KH-Abschlaege in Währungseinheiten</name>
@@ -199,14 +194,12 @@
 		<feld referenz="Tarifbeitrag100ProzKraftfahrtHaftpflichtInWE">
 			<name>Tarifbeitrag 100 % fuer Kraftfahrt-Haftpflicht in Währungseinheiten</name>
 			<bytes>12</bytes>
-			<datentyp>Fliesskomma</datentyp>
-			<nachkommastellen>2</nachkommastellen>
+			<datentyp>Betrag</datentyp>
 		</feld>
 		<feld referenz="FreiVereinbarteSelbstbeteiligungInWEKh">
 			<name>Frei vereinbarte Selbstbeteiligung in Währungseinheiten für KH</name>
 			<bytes>12</bytes>
-			<datentyp>Fliesskomma</datentyp>
-			<nachkommastellen>2</nachkommastellen>
+			<datentyp>Betrag</datentyp>
 		</feld>
 		<feld referenz="Referenznummer">
 			<name>Referenznummer</name>

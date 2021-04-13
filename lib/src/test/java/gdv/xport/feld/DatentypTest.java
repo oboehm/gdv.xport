@@ -54,4 +54,10 @@ public class DatentypTest {
         assertEquals("Numerisch", Datentyp.asString(n));
     }
 
+    @Test
+    public void testBetrag() {
+        Betrag b = new Betrag(Bezeichner.of("Test-Betrag"), 4, 1);
+        assertEquals("Betrag", Datentyp.asString(b));
+    }
+
 }
