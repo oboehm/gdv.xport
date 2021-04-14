@@ -661,7 +661,7 @@ public enum Feld220Wagnis2 {
      * Kapitalzahlungssumme inkl. Gewinnbeteiligung in WE.
      * (12,2 Stellen)
      */
-    @FeldInfo(teildatensatz = 3, nr = 21, type = Betrag.class, anzahlBytes = 14, byteAdresse = 158)
+    @FeldInfo(teildatensatz = 3, nr = 21, type = Betrag.class, anzahlBytes = 14, byteAdresse = 172)
     KAPITALZAHLUNGSSUMME_INKL_GEWINNBETEILIGUNG_IN_WAEHRUNGSEINHEITEN,
 
     /**

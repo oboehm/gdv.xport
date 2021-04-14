@@ -519,7 +519,8 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public Collection<Feld> getFelder() {
-        return new TreeSet<>(datenfelder.values());
+        return sortedFelder;
+        //return new TreeSet<>(datenfelder.values());
     }
 
     /* (non-Javadoc)

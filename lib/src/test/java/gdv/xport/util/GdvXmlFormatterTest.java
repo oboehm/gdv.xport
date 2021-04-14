@@ -17,8 +17,10 @@
  */
 package gdv.xport.util;
 
+import gdv.xport.feld.ByteAdresse;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
 import org.apache.logging.log4j.LogManager;
@@ -102,7 +104,7 @@ public final class GdvXmlFormatterTest {
         checkSatzart(SatzTyp.of(221, 51), gdv.xport.satz.feld.sparte51.Feld221.class);
     }
 
-    //@Test
+    @Test
     public void testSatzartLebenWagnis2() throws IOException, XMLStreamException {
         checkSatzart(SatzTyp.of("0220.010.2.1"), gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2.class);
     }
@@ -114,15 +116,22 @@ public final class GdvXmlFormatterTest {
             Satz satz = SatzFactory.getDatensatz(satzTyp);
             formatTo(target, satz);
             Satz xmlSatz = SatzXml.of(target);
-            for (Feld feld : satz.getFelder()) {
-                Feld xmlFeld = xmlSatz.getFeld(feld.getBezeichner());
-                assertEquals(feld, xmlFeld);
-                assertEquals(feld.getClass(), xmlFeld.getClass());
+            for (int i = 1; i <= satz.getNumberOfTeildatensaetze(); i++) {
+                checkTeildatensatz(satz.getTeildatensatz(i), xmlSatz.getTeildatensatz(i));
             }
             assertEquals(satz, xmlSatz);
         } finally {
             SatzRegistry.getInstance().unregister(satzTyp);
         }
+    }
+
+    private static void checkTeildatensatz(Teildatensatz reference, Teildatensatz teildatensatz) {
+        for (Feld refFeld : reference.getFelder()) {
+            Feld feld = teildatensatz.getFeld(ByteAdresse.of(refFeld.getByteAdresse()));
+            assertEquals(refFeld, feld);
+            assertEquals(refFeld.getClass(), feld.getClass());
+        }
+        assertEquals(reference, teildatensatz);
     }
 
     @NotNull
