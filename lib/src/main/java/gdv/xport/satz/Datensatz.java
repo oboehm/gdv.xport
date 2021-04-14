@@ -52,8 +52,6 @@ public class Datensatz extends Satz {
 	private final AlphaNumFeld wagnisart = new AlphaNumFeld((WAGNISART), 1, 59);
 	/** 1 Zeichen, Byte 256 - 256. */
     private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld((TEILDATENSATZNUMMER), 1, 256);
-	/** Zum Abspeichern der Wagnisart oder Art (Unter-Sparte). */
-	private int art;
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der {@link gdv.xport.util.SatzFactory}
@@ -233,7 +231,6 @@ public class Datensatz extends Satz {
 	public Datensatz(final Datensatz other) {
 		super(other, other.cloneTeildatensaetze());
 		this.sparte.setInhalt(other.sparte.getInhalt());
-		this.art = other.art;
 		this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
 		this.wagnisart.setInhalt(other.wagnisart.getInhalt());
 	}
@@ -341,8 +338,8 @@ public class Datensatz extends Satz {
 	public void setSparte(final String x) {
 	    String[] parts = x.split("\\.");
 	    this.setSparte(Integer.parseInt(parts[0]));
-	    if (parts.length > 1) {
-	        this.art = Integer.parseInt(parts[1]);
+	    if ((parts.length > 1) && getGdvSatzartName().isEmpty()) {
+			this.setGdvSatzartName(String.format("%04d.%s", getSatzart(), x));
 	    }
 	}
 
@@ -364,7 +361,7 @@ public class Datensatz extends Satz {
      * @return 0 oder Untersparte / Art
      */
 	public int getArt() {
-	    return this.art;
+		return this.getSatzTyp().getArt();
 	}
 
 	/**
@@ -374,7 +371,7 @@ public class Datensatz extends Satz {
 	 * @return true, falls der Datensatz eine Untersparte hat.
 	 */
 	public boolean hasArt() {
-	    return this.art > 0;
+		return this.getSatzTyp().hasArt();
 	}
 
 	/**
