@@ -38,6 +38,8 @@ import patterntesting.runtime.junit.ObjectTester;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -436,6 +438,13 @@ public class XmlServiceTest extends AbstractXmlTest {
     public void testGetSatzVersion() {
         String expected = "VUVM2013.xml".equals(Config.getXmlResource()) ? "2.3" :"2.4";
         assertEquals(expected, xmlService.getSatzVersion(SatzTyp.of("0001")));
+    }
+
+    @Test
+    public void testGetInstanceURI() throws URISyntaxException, XMLStreamException {
+        URI uri = getClass().getResource("VUVM2018.xml").toURI();
+        XmlService instance = XmlService.getInstance(uri);
+        assertNotNull(uri);
     }
 
 }

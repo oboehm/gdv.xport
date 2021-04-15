@@ -33,7 +33,9 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -88,16 +90,43 @@ public class XmlService {
     public static XmlService getInstance(final String resource) throws XMLStreamException {
         XmlService service = INSTANCES.get(resource);
         if (service == null) {
-            XMLEventReader parser = createXMLEventReader(resource);
+            service = createXmlService(resource);
+            INSTANCES.put(resource, service);
+            LOG.info("Neuer XmlService mit Resource {} wird angelegt.", resource);
+        }
+        return service;
+    }
+
+    public static XmlService getInstance(URI resource) throws XMLStreamException {
+        XmlService service = INSTANCES.get(resource.toString());
+        if (service == null) {
+            service = createXmlService(resource);
+            INSTANCES.put(resource.toString(), service);
+        }
+        return service;
+    }
+
+    private static XmlService createXmlService(URI resource) throws XMLStreamException {
+        try (InputStream istream = resource.toURL().openStream()) {
+            XMLEventReader parser = createXMLEventReader(istream);
             try {
-                service = new XmlService(parser);
-                INSTANCES.put(resource, service);
+                return new XmlService(parser);
             } finally {
                 parser.close();
             }
+        } catch (IOException ex) {
+            throw new IllegalArgumentException("illegal resource: " + resource, ex);
         }
-        LOG.info("Instance {} with resource {} was created.", service, resource);
-        return service;
+    }
+
+    private static XmlService createXmlService(String resource) throws XMLStreamException {
+        XMLEventReader parser = createXMLEventReader(resource);
+        try {
+            LOG.info("Neuer XmlService mit Resource {} wird angelegt.", resource);
+            return new XmlService(parser);
+        } finally {
+            parser.close();
+        }
     }
 
     private  static XMLEventReader createXMLEventReader(final String resourceName) throws XMLStreamException {
@@ -105,6 +134,10 @@ public class XmlService {
         if (istream == null) {
             throw new XMLStreamException("resource '" + resourceName + "' not found");
         }
+        return createXMLEventReader(istream);
+    }
+
+    private static XMLEventReader createXMLEventReader(InputStream istream) throws XMLStreamException {
         XMLInputFactory factory = XMLInputFactory.newInstance();
         factory.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, Boolean.FALSE);
         factory.setProperty(XMLInputFactory.SUPPORT_DTD, Boolean.FALSE);
