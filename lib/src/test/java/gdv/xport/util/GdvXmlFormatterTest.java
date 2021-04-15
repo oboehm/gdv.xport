@@ -45,10 +45,15 @@ import static org.junit.Assert.assertNotNull;
  *
  * @author oliver
  */
-public final class GdvXmlFormatterTest {
+public final class GdvXmlFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger();
     private static final File XML_DIR = new File("target", "xml");
+
+    @Override
+    protected AbstractFormatter createFormatter() {
+        return new GdvXmlFormatter();
+    }
 
     @BeforeClass
     public static void setUpXmlDir() {

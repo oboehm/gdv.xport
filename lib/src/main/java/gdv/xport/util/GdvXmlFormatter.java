@@ -56,7 +56,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
 
     private static final Logger LOG = LogManager.getLogger(GdvXmlFormatter.class);
     private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
-    private final XMLStreamWriter xmlStreamWriter;
+    private XMLStreamWriter xmlStreamWriter;
     private final List<Feld> felder = new ArrayList<>();
 
     /**
@@ -73,13 +73,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
      */
     public GdvXmlFormatter(final Writer writer) {
         super(writer);
-        try {
-            this.xmlStreamWriter = createXMLStreamWriter(writer);
-        } catch (XMLStreamException ex) {
-            throw new ShitHappenedException("you should never see this", ex);
-        } catch (FactoryConfigurationError ex) {
-            throw new ConfigException("XML problems", ex);
-        }
+        this.xmlStreamWriter = createXMLStreamWriter(writer);
     }
 
     /**
@@ -89,18 +83,18 @@ public final class GdvXmlFormatter extends AbstractFormatter {
      */
     public GdvXmlFormatter(final OutputStream ostream) {
         super(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
+        this.xmlStreamWriter = createXMLStreamWriter(ostream);
+    }
+
+    private static XMLStreamWriter createXMLStreamWriter(OutputStream textWriter) {
         try {
-            this.xmlStreamWriter = createXMLStreamWriter(ostream);
+            XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter, Config.DEFAULT_ENCODING.name());
+            return writeHead(out);
         } catch (XMLStreamException ex) {
-            throw new ShitHappenedException("you should never see this", ex);
+            throw new IllegalArgumentException("can't create XmlStreamWriter with " + textWriter, ex);
         } catch (FactoryConfigurationError ex) {
             throw new ConfigException("XML problems", ex);
         }
-    }
-
-    private static XMLStreamWriter createXMLStreamWriter(OutputStream textWriter) throws XMLStreamException {
-        XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter, Config.DEFAULT_ENCODING.name());
-        return writeHead(out);
     }
 
     private static XMLStreamWriter writeHead(XMLStreamWriter writer) throws XMLStreamException {
@@ -109,6 +103,18 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         indentingWriter.writeStartElement("service");
         indentingWriter.writeStartElement("satzarten");
         return indentingWriter;
+    }
+
+    @Override
+    public void setWriter(Writer writer) {
+        super.setWriter(writer);
+        this.xmlStreamWriter = createXMLStreamWriter(writer);
+    }
+
+    @Override
+    public void setWriter(OutputStream ostream) {
+        super.setWriter(ostream);
+        this.xmlStreamWriter = createXMLStreamWriter(ostream);
     }
 
     /**
@@ -240,9 +246,15 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeComment(" " + comment.trim() + " ");
     }
 
-    private static XMLStreamWriter createXMLStreamWriter(Writer textWriter) throws XMLStreamException {
-        XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter);
-        return toIndentingStreamWriter(out);
+    private static XMLStreamWriter createXMLStreamWriter(Writer textWriter) {
+        try {
+            XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter);
+            return toIndentingStreamWriter(out);
+        } catch (XMLStreamException ex) {
+            throw new IllegalArgumentException("can't create XmlStreamWriter with " + textWriter, ex);
+        } catch (FactoryConfigurationError ex) {
+            throw new ConfigException("XML problems", ex);
+        }
     }
 
     //https://stackoverflow.com/questions/10105187/java-indentingxmlstreamwriter-alternative

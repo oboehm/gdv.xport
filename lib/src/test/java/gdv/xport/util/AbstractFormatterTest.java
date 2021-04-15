@@ -24,6 +24,7 @@ import gdv.xport.event.ImportListener;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import patterntesting.runtime.junit.FileTester;
@@ -37,9 +38,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 
-import static org.hamcrest.Matchers.isEmptyString;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 
 /**
@@ -100,7 +99,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
         formatter.write(new Datenpaket("Test"));
         String output = ostream.toString();
         LOG.info("output = \"{}\"", StringUtils.abbreviate(output, 40));
-        assertThat(output, not(isEmptyString()));
+        MatcherAssert.assertThat(output, not(emptyString()));
     }
 
     /**
