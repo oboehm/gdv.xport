@@ -17,6 +17,7 @@
  */
 package gdv.xport.util;
 
+import gdv.xport.Datenpaket;
 import gdv.xport.feld.ByteAdresse;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Satz;
@@ -30,10 +31,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.xml.stream.XMLStreamException;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -153,6 +151,15 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
             formatter.write(satz);
         }
         LOG.info("{} wurde nach {} geschrieben.", satz, output);
+    }
+
+    @Test
+    public void testWriteDatensatz() throws IOException {
+        File target = new File(XML_DIR, "datensatz.xml");
+        try (FileOutputStream ostream = new FileOutputStream(target);
+             GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
+            formatter.write(new Datenpaket());
+        }
     }
 
 }
