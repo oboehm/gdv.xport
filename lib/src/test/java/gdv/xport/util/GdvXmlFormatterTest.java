@@ -170,4 +170,11 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
         assertEquals(reference, teildatensatz);
     }
 
+    @Test
+    public void testMusterdatei() throws IOException, XMLStreamException {
+        File xmlFile = exportMusterdatei(new GdvXmlFormatter(), "musterdatei_GdvXmlFormatter.xml");
+        XmlService xmlService = XmlService.getInstance(xmlFile.toURI());
+        assertNotNull(xmlService);
+    }
+
 }

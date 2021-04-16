@@ -86,17 +86,6 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         this.xmlStreamWriter = createXMLStreamWriter(ostream);
     }
 
-    private static XMLStreamWriter createXMLStreamWriter(OutputStream textWriter) {
-        try {
-            XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter, Config.DEFAULT_ENCODING.name());
-            return writeHead(out);
-        } catch (XMLStreamException ex) {
-            throw new IllegalArgumentException("can't create XmlStreamWriter with " + textWriter, ex);
-        } catch (FactoryConfigurationError ex) {
-            throw new ConfigException("XML problems", ex);
-        }
-    }
-
     private static XMLStreamWriter writeHead(XMLStreamWriter writer) throws XMLStreamException {
         XMLStreamWriter indentingWriter = toIndentingStreamWriter(writer);
         indentingWriter.writeStartDocument(StandardCharsets.ISO_8859_1.toString(), "1.0");
@@ -246,10 +235,21 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeComment(" " + comment.trim() + " ");
     }
 
+    private static XMLStreamWriter createXMLStreamWriter(OutputStream textWriter) {
+        try {
+            XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter, Config.DEFAULT_ENCODING.name());
+            return writeHead(out);
+        } catch (XMLStreamException ex) {
+            throw new IllegalArgumentException("can't create XmlStreamWriter with " + textWriter, ex);
+        } catch (FactoryConfigurationError ex) {
+            throw new ConfigException("XML problems", ex);
+        }
+    }
+
     private static XMLStreamWriter createXMLStreamWriter(Writer textWriter) {
         try {
             XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter);
-            return toIndentingStreamWriter(out);
+            return writeHead(out);
         } catch (XMLStreamException ex) {
             throw new IllegalArgumentException("can't create XmlStreamWriter with " + textWriter, ex);
         } catch (FactoryConfigurationError ex) {

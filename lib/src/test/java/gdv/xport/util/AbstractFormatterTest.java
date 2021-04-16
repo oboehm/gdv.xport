@@ -122,6 +122,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
             datenpaket.importFrom(istream);
             formatter.setWriter(writer);
             formatter.write(datenpaket);
+            formatter.close();
             LOG.debug("{} exported to {} .", datenpaket, exportFile);
         }
         return exportFile;
