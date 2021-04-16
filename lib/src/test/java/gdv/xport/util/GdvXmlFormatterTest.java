@@ -154,12 +154,16 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
     }
 
     @Test
-    public void testWriteDatensatz() throws IOException {
+    public void testWriteDatensatz() throws IOException, XMLStreamException {
         File target = new File(XML_DIR, "datensatz.xml");
+        Datenpaket datenpaket = new Datenpaket();
         try (FileOutputStream ostream = new FileOutputStream(target);
              GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
-            formatter.write(new Datenpaket());
+            formatter.write(datenpaket);
         }
+        XmlService xmlService = XmlService.getInstance(target.toURI());
+        assertEquals(datenpaket.getVorsatz(), xmlService.getSatzart(SatzTyp.of(1)));
+        assertEquals(datenpaket.getNachsatz(), xmlService.getSatzart(SatzTyp.of(9999)));
     }
 
 }
