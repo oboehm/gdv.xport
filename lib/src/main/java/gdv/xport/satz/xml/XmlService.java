@@ -70,7 +70,7 @@ public class XmlService {
         String xmlResource = Config.getXmlResource();
         try {
             return getInstance(xmlResource);
-        } catch (XMLStreamException ex) {
+        } catch (XMLStreamException | IOException ex) {
             LOG.error("Cannot parse XML from resource '{}':", xmlResource, ex);
             return new XmlService();
         }
@@ -84,57 +84,63 @@ public class XmlService {
      *
      * @param resource Resource-Name (z.B. "VUVM2013.xml")
      * @return der frisch instantiierte XmlService
-     * @throws XMLStreamException falls die angegebene Resource nicht existiert
-     *             oder nicht interpretiert werden kann
+     * @throws XMLStreamException falls die angegebene Resource nicht existiert             oder nicht interpretiert werden kann
+     * @throws IOException        bei Lesefehlern
      */
-    public static XmlService getInstance(final String resource) throws XMLStreamException {
+    public static XmlService getInstance(final String resource) throws XMLStreamException, IOException {
         XmlService service = INSTANCES.get(resource);
         if (service == null) {
             service = createXmlService(resource);
             INSTANCES.put(resource, service);
-            LOG.info("Neuer XmlService mit Resource {} wird angelegt.", resource);
+            LOG.info("{} wurde mit Resource {} angelegt.", service, resource);
         }
         return service;
     }
 
-    public static XmlService getInstance(URI resource) throws XMLStreamException {
+    /**
+     * Dies ist die allgemeinere Variante von {@link #getInstance(String)},
+     * die eine URI als Parameter erwartet. Dies kann die URI zu einer
+     * Classpath-Resource oder zu einer Datei sein, theoretisch aber auch
+     * eine URI zu einer Web-Resource.
+     *
+     * @param resource z.B. eine File-URI
+     * @return der frisch instantiierte XmlService
+     * @throws XMLStreamException falls die angegebene Resource nicht existiert             oder nicht interpretiert werden kann
+     * @throws IOException        bei Lesefehlern
+     * @since 5.0
+     */
+    public static XmlService getInstance(URI resource) throws XMLStreamException, IOException {
         XmlService service = INSTANCES.get(resource.toString());
         if (service == null) {
             service = createXmlService(resource);
             INSTANCES.put(resource.toString(), service);
+            LOG.info("{} wurde mit Resource {} angelegt.", service, resource);
         }
         return service;
     }
 
-    private static XmlService createXmlService(URI resource) throws XMLStreamException {
+    private static XmlService createXmlService(URI resource) throws XMLStreamException, IOException {
         try (InputStream istream = resource.toURL().openStream()) {
-            XMLEventReader parser = createXMLEventReader(istream);
-            try {
-                return new XmlService(parser);
-            } finally {
-                parser.close();
-            }
-        } catch (IOException ex) {
-            throw new IllegalArgumentException("illegal resource: " + resource, ex);
+            return createXmlService(istream);
         }
     }
 
-    private static XmlService createXmlService(String resource) throws XMLStreamException {
-        XMLEventReader parser = createXMLEventReader(resource);
+    private static XmlService createXmlService(String resource) throws XMLStreamException, IOException {
+        try (InputStream istream = XmlService.class.getResourceAsStream(resource)) {
+            if (istream == null) {
+                throw new XMLStreamException("resource '" + resource + "' not found");
+            }
+            return createXmlService(istream);
+        }
+    }
+
+    private static XmlService createXmlService(InputStream istream) throws XMLStreamException {
+        XMLEventReader parser = createXMLEventReader(istream);
         try {
-            LOG.info("Neuer XmlService mit Resource {} wird angelegt.", resource);
             return new XmlService(parser);
         } finally {
             parser.close();
         }
-    }
-
-    private  static XMLEventReader createXMLEventReader(final String resourceName) throws XMLStreamException {
-        InputStream istream = XmlService.class.getResourceAsStream(resourceName);
-        if (istream == null) {
-            throw new XMLStreamException("resource '" + resourceName + "' not found");
-        }
-        return createXMLEventReader(istream);
     }
 
     private static XMLEventReader createXMLEventReader(InputStream istream) throws XMLStreamException {

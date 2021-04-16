@@ -310,9 +310,10 @@ public class XmlServiceTest extends AbstractXmlTest {
      * laesst.
      *
      * @throws XMLStreamException the XML stream exception
+     * @throws IOException        the io exception
      */
     @Test
-    public void testGetFehlendeFelder() throws XMLStreamException {
+    public void testGetFehlendeFelder() throws XMLStreamException, IOException {
         XmlService felderService = XmlService.getInstance("fehlendeFelder.xml");
         Map<String, FeldXml> fehlendeFelder = felderService.getFelder();
         assertFalse("should be not empty: " + fehlendeFelder, fehlendeFelder.isEmpty());
@@ -441,7 +442,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     @Test
-    public void testGetInstanceURI() throws URISyntaxException, XMLStreamException {
+    public void testGetInstanceURI() throws URISyntaxException, XMLStreamException, IOException {
         URI uri = getClass().getResource("VUVM2018.xml").toURI();
         XmlService instance = XmlService.getInstance(uri);
         assertNotNull(uri);

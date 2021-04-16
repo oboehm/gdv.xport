@@ -99,7 +99,7 @@ public class SatzRegistry implements VersionHandler {
                 LOG.info("{} wurde angelegt.", factory);
             }
             return factory;
-        } catch (XMLStreamException ex) {
+        } catch (XMLStreamException | IOException ex) {
             throw new IllegalArgumentException("invalid resource: " + resource, ex);
         }
     }

@@ -26,6 +26,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.xml.stream.XMLStreamException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +50,7 @@ public final class TeildatensatzXml extends Teildatensatz {
         try {
             // TODO: Pruefen, ob das fuer VUVM2018.xml noch gebraucht wird und entfernen
             MISSING_FELDER.putAll(XmlService.getInstance("fehlendeFelder.xml").getFelder());
-        } catch (XMLStreamException ex) {
+        } catch (XMLStreamException | IOException ex) {
             throw new IllegalArgumentException("cannot get missing felder from resource 'fehlendeFelder.xml'", ex);
         }
     }
