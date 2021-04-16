@@ -20,6 +20,7 @@ package gdv.xport.util;
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.ByteAdresse;
 import gdv.xport.feld.Feld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.xml.SatzXml;
@@ -143,8 +144,18 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
 
     @Test
     public void testWriteDatensatz() throws IOException, XMLStreamException {
-        File target = new File(XML_DIR, "datensatz.xml");
         Datenpaket datenpaket = new Datenpaket();
+        formatDatenpaket(datenpaket);
+    }
+
+    @Test
+    public void testFormatAllSupportedSaetze() throws IOException, XMLStreamException {
+        Datenpaket datenpaket = SatzFactory.getAllSupportedSaetze();
+        formatDatenpaket(datenpaket);
+    }
+
+    private void formatDatenpaket(Datenpaket datenpaket) throws IOException, XMLStreamException {
+        File target = new File(XML_DIR, String.format("datensatz%d.xml", datenpaket.getAllSaetze().size()));
         try (FileOutputStream ostream = new FileOutputStream(target);
              GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
             formatter.write(datenpaket);
@@ -152,6 +163,10 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
         XmlService xmlService = XmlService.getInstance(target.toURI());
         checkSatz(datenpaket.getVorsatz(), xmlService.getSatzart(SatzTyp.of(1)));
         checkSatz(datenpaket.getNachsatz(), xmlService.getSatzart(SatzTyp.of(9999)));
+        for (Satz satz : datenpaket.getAllSaetze()) {
+            LOG.debug("{} wird geprueft.", satz);
+            checkSatz(satz, xmlService.getSatzart(satz.getSatzTyp()));
+        }
     }
 
     private static void checkSatz(Satz reference, Satz satz) {
@@ -165,7 +180,11 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
         for (Feld refFeld : reference.getFelder()) {
             Feld feld = teildatensatz.getFeld(ByteAdresse.of(refFeld.getByteAdresse()));
             assertEquals(refFeld, feld);
-            assertEquals(refFeld.getClass(), feld.getClass());
+            if (feld.getClass().equals(Zeichen.class) && !refFeld.getClass().equals(Zeichen.class)) {
+                LOG.info("Datentyp von {} weicht von {} ab ({}).", refFeld, feld, reference);
+            } else {
+                assertEquals(refFeld.getClass(), feld.getClass());
+            }
         }
         assertEquals(reference, teildatensatz);
     }
