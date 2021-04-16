@@ -119,22 +119,10 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
             Satz satz = SatzFactory.getDatensatz(satzTyp);
             formatTo(target, satz);
             Satz xmlSatz = SatzXml.of(target);
-            for (int i = 1; i <= satz.getNumberOfTeildatensaetze(); i++) {
-                checkTeildatensatz(satz.getTeildatensatz(i), xmlSatz.getTeildatensatz(i));
-            }
-            assertEquals(satz, xmlSatz);
+            checkSatz(satz, xmlSatz);
         } finally {
             SatzRegistry.getInstance().unregister(satzTyp);
         }
-    }
-
-    private static void checkTeildatensatz(Teildatensatz reference, Teildatensatz teildatensatz) {
-        for (Feld refFeld : reference.getFelder()) {
-            Feld feld = teildatensatz.getFeld(ByteAdresse.of(refFeld.getByteAdresse()));
-            assertEquals(refFeld, feld);
-            assertEquals(refFeld.getClass(), feld.getClass());
-        }
-        assertEquals(reference, teildatensatz);
     }
 
     @NotNull
@@ -162,8 +150,24 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
             formatter.write(datenpaket);
         }
         XmlService xmlService = XmlService.getInstance(target.toURI());
-        assertEquals(datenpaket.getVorsatz(), xmlService.getSatzart(SatzTyp.of(1)));
-        assertEquals(datenpaket.getNachsatz(), xmlService.getSatzart(SatzTyp.of(9999)));
+        checkSatz(datenpaket.getVorsatz(), xmlService.getSatzart(SatzTyp.of(1)));
+        checkSatz(datenpaket.getNachsatz(), xmlService.getSatzart(SatzTyp.of(9999)));
+    }
+
+    private static void checkSatz(Satz reference, Satz satz) {
+        for (int i = 1; i <= reference.getNumberOfTeildatensaetze(); i++) {
+            checkTeildatensatz(reference.getTeildatensatz(i), satz.getTeildatensatz(i));
+        }
+        assertEquals(reference, satz);
+    }
+
+    private static void checkTeildatensatz(Teildatensatz reference, Teildatensatz teildatensatz) {
+        for (Feld refFeld : reference.getFelder()) {
+            Feld feld = teildatensatz.getFeld(ByteAdresse.of(refFeld.getByteAdresse()));
+            assertEquals(refFeld, feld);
+            assertEquals(refFeld.getClass(), feld.getClass());
+        }
+        assertEquals(reference, teildatensatz);
     }
 
 }
