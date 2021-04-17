@@ -29,6 +29,36 @@ Um trotzdem weitere Satzarten zu unterstützen, konnte man programmatisch eigene
 Über die SatzFactory konnte man bereits seit v0.1 so neue Satzarten registrieren, die dann dann Import und Export unbekannter Satzarten ermöglichten.
 
 In der Zwischenzeit wurde viele der Enums, die in der Anfangsphase zur Unterstützung der verschiedenen Satzarten entstanden sind, durch die Satzart aus dem XmlService ersetzt.
+Inzwischen können eigene Satzarten auch über XML beschrieben werden.
+Damit werden Enums nicht mehr benötigt und werden in Zukunft nicht mehr unterstützt werden.
+
+Die SatzRegistry-Klasse ist später hinzugekommen.
+Sie ermöglicht im Gegensatz zur rein statischen SatzFactory-Klasse die Verwendung mehrere Instanzen, z.B. zur gleichzeitigen Unterstützung mehrere Versionen der GDV-Handbücher.
+
+
+
+==== Definition eigener Satzarten
+
+Mit der SatzXML-Klasse können eigene Satzarten auf Basis der XML-Beschreibung des GDVs beschrieben werden.
+Am einfachsten geht das, wenn man über die GdvXmlFormatter-Klasse einen beliebige Satzart exportiert und diese dann anpasst:
+
+[source,java]
+----
+    Satz satz = XmlService.getInstance().getSatzart(SatzTyp.of(221, 51));
+    try (FileOutputStream ostream = new FileOutputStream(new File("Satz0221.051.xml"));
+        GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
+        formatter.write(satz);
+    }
+----
+
+Die Datei "Satz0221.051.xml", die durch dieses Code-Beispiel erzeugt wird, kann anschließend für eigenen Vorstellungen der gewünschten Satzart angepasst werden.
+Damit der neue Satz für eigene Imports und Exports verwendet werden kann, registriert man ihn über die SatzXML-Klasse:
+
+----
+    Satz mySatz = SatzXml.of(new File("Satz0221.051.xml"));
+    SatzRegistry.getInstance().register(mySatz, SatzTyp.of("0221.051"));
+----
+
 
 
 
