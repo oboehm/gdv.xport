@@ -769,7 +769,6 @@ public final class Bezeichner {
     public static final Bezeichner PRODUKTKENNUNG = new Bezeichner("Produktkennung");
     public static final Bezeichner PRODUKTNAME = new Bezeichner("Produktname");
     public static final Bezeichner PRODUKTSPEZIFISCHE_ANTRAGSDATEN = new Bezeichner("Produktspezifische Antragsdaten");
-    public static final Bezeichner PRODUKTSPEZIFISCHE_STAMMDATEN = new Bezeichner("Produktspezifische Stammdaten");
     public static final Bezeichner PROVISION = new Bezeichner("Provision");
     public static final Bezeichner PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Provisionspflichtige Beitragssumme in W\u00e4hrungseinheiten");
     public static final Bezeichner PROVISIONSPFLICHTIGE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Provisionspflichtige Beitragssumme in W\u00e4hrungseinheiten 2");
@@ -1333,7 +1332,6 @@ public final class Bezeichner {
     /** @deprecated bitte {@link #WAGNIS} benutzen. */
     public static final Bezeichner WAGNIS2 = WAGNIS;
     public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart");
-    public static final Bezeichner WAGNISART_HAFTPFLICHT = new Bezeichner("WagnisartHaftpflicht");
     /** @deprecated bitte {@link #WAGNISART} benutzen. */
     public static final Bezeichner WAGNISART2 = WAGNISART;
     /** @deprecated bitte {@link #WAGNISART} benutzen. */
@@ -1347,7 +1345,7 @@ public final class Bezeichner {
     public static final Bezeichner WAISENRENTE_IN_PROZENT = new Bezeichner("Waisenrente in Prozent", "WaisenrenteProz");
     public static final Bezeichner WARTEZEIT = new Bezeichner("Wartezeit");
     public static final Bezeichner WARTUNGSVERTRAG = new Bezeichner("Wartungsvertrag");
-    public static final Bezeichner WECHSELKENNZEICHEN_W_AKZ = new Bezeichner("KFZ - Wechselkennzeichen W-AKZ", "KFZWechselkennzeichenWAKZ");
+    public static final Bezeichner WECHSELKENNZEICHEN_W_AKZ = new Bezeichner("Wechselkennzeichen W-AKZ", "WechselkennzeichenWAKZ");
     public static final Bezeichner WEITERE_REFERENZNUMMERN = new Bezeichner("Weitere Referenznummern", "WeitereReferenzNrn");
     public static final Bezeichner WERT_1914_PRO_QM_WOHNFLAECHE_IN_MARK = new Bezeichner("Wert 1914 pro qm Wohnflaeche in Mark", "Wert1914ProQmWohnflaecheInMark");
     public static final Bezeichner WERTERMITTLUNGS_SCHAETZJAHR = new Bezeichner("Wertermittlungs-/Schaetzjahr", "WertermittlungsSchaetzjahr");

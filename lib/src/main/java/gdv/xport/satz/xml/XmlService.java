@@ -36,10 +36,7 @@ import javax.xml.stream.events.XMLEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Hier wird jetzt eine XML-Beschreibung verwendet, um die Saetze fuer die
@@ -55,7 +52,7 @@ import java.util.Map;
 public class XmlService {
 
     private static final Logger LOG = LogManager.getLogger(XmlService.class);
-    private static final Map<String, XmlService> INSTANCES = new HashMap<>();
+    private static final Map<String, XmlService> INSTANCES = new WeakHashMap<>();
     private final List<SatzXml> saetze = new ArrayList<>();
     private final Map<SatzTyp, SatzXml> satzarten = new HashMap<>();
     private final Map<String, FeldXml> felder = new HashMap<>();
