@@ -266,6 +266,13 @@ public final class NumFeldTest extends AbstractFeldTest {
     }
 
     @Test
+    public void testHasValue000() {
+        NumFeld n = new NumFeld(Bezeichner.of("Test"), 12, 1).mitNachkommastellen(2);
+        n.setInhalt("000000000000");
+        assertFalse(n.hasValue());
+    }
+
+    @Test
     public void testHasValueXXXXXXXX() {
         NumFeld n = new NumFeld(Bezeichner.of("Test-Datum"), 8, 1);
         n.setInhalt("xxxxxxxx");

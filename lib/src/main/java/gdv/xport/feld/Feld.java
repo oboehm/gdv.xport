@@ -513,8 +513,8 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @since 3.1
      */
     public boolean hasValue() {
-        String value = StringUtils.trimToEmpty(this.getInhalt());
-        return !value.isEmpty() && !value.equals("0");
+        String value = StringUtils.replaceChars(getInhalt(), '0', ' ');
+        return StringUtils.isNotBlank(value);
     }
 
     /**
