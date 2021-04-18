@@ -585,8 +585,12 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " " + this.getBezeichner() + "(" + this.byteAdresse + "-"
-                + this.getEndAdresse() + "): \"" + this.getInhalt().trim() + "\"";
+        return toShortString() + ": \"" + this.getInhalt() + "\"";
+    }
+
+    public String toShortString() {
+        return this.getClass().getSimpleName() + " " + this.getBezeichner() + " (" + this.byteAdresse + "-"
+                    + this.getEndAdresse() + ")";
     }
 
     /**

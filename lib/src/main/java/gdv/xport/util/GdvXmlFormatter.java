@@ -161,7 +161,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
             xmlStreamWriter.writeEmptyElement("satzanfang");
             xmlStreamWriter.writeAttribute("teilsatz", tds.getSatznummer().getInhalt());
             for (Feld feld : tds.getFelder()) {
-                writeComment(feld.toString());
+                writeComment(feld.toShortString());
                 writeReferenz(feld);
                 felder.add(feld);
             }
@@ -177,7 +177,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         writeElement("name", bezeichner.getName());
         writeElement("technischerName", bezeichner.getTechnischerName());
         if (feld.hasValue()) {
-            writeElement("auspraegung", feld.getInhalt());
+            writeElement("auspraegung", feld.getInhalt().trim());
         }
         xmlStreamWriter.writeEndElement();
     }
