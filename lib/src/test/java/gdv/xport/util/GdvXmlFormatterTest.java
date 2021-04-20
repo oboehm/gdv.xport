@@ -145,24 +145,29 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
     @Test
     public void testWriteDatensatz() throws IOException, XMLStreamException {
         Datenpaket datenpaket = new Datenpaket();
-        formatDatenpaket(datenpaket);
+        formatDatenpaket(datenpaket, "datenpaket.xml");
     }
 
     @Test
     public void testFormatAllSupportedSaetze() throws IOException, XMLStreamException {
         Datenpaket datenpaket = SatzFactory.getAllSupportedSaetze();
-        formatDatenpaket(datenpaket);
+        formatDatenpaket(datenpaket, "datenpaket2018.xml");
     }
 
     @Test
     public void testFormatAllSupportedSaetze2015() throws IOException, XMLStreamException {
         Datenpaket datenpaket = SatzRegistry.getInstance("VUVM2015.xml").getAllSupportedSaetze();
-        formatDatenpaket(datenpaket);
+        formatDatenpaket(datenpaket, "datenpaket2015.xml");
     }
 
-    private void formatDatenpaket(Datenpaket datenpaket) throws IOException, XMLStreamException {
-        File target = new File(XML_DIR,
-                String.format("datensatz%s.xml", datenpaket.getVorsatz().getVersion(SatzTyp.of("0052")).trim()));
+    @Test
+    public void testFormatAllSupportedSaetze2013() throws IOException, XMLStreamException {
+        Datenpaket datenpaket = SatzRegistry.getInstance("VUVM2013.xml").getAllSupportedSaetze();
+        formatDatenpaket(datenpaket, "datenpaket2013.xml");
+    }
+
+    private void formatDatenpaket(Datenpaket datenpaket, String filename) throws IOException, XMLStreamException {
+        File target = new File(XML_DIR, filename);
         try (FileOutputStream ostream = new FileOutputStream(target);
              GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
             formatter.write(datenpaket);
