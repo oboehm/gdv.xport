@@ -154,8 +154,15 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
         formatDatenpaket(datenpaket);
     }
 
+    @Test
+    public void testFormatAllSupportedSaetze2015() throws IOException, XMLStreamException {
+        Datenpaket datenpaket = SatzRegistry.getInstance("VUVM2015.xml").getAllSupportedSaetze();
+        formatDatenpaket(datenpaket);
+    }
+
     private void formatDatenpaket(Datenpaket datenpaket) throws IOException, XMLStreamException {
-        File target = new File(XML_DIR, String.format("datensatz%d.xml", datenpaket.getAllSaetze().size()));
+        File target = new File(XML_DIR,
+                String.format("datensatz%s.xml", datenpaket.getVorsatz().getVersion(SatzTyp.of("0052")).trim()));
         try (FileOutputStream ostream = new FileOutputStream(target);
              GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
             formatter.write(datenpaket);

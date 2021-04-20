@@ -449,8 +449,13 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     @Test
-    public void testVUVM2018small() throws XMLStreamException, IOException {
+    public void testVUVM2018() throws XMLStreamException, IOException {
         compareXml("VUVM2018xL.xml", "VUVM2018.xml");
+    }
+
+    @Test
+    public void testVUVM2015() throws XMLStreamException, IOException {
+        compareXml("VUVM2015xL.xml", "VUVM2015.xml");
     }
 
     private static void compareXml(String refResource, String resource) throws XMLStreamException, IOException {
