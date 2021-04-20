@@ -448,4 +448,18 @@ public class XmlServiceTest extends AbstractXmlTest {
         assertNotNull(uri);
     }
 
+    @Test
+    public void testVUVM2018small() throws XMLStreamException, IOException {
+        compareXml("VUVM2018xL.xml", "VUVM2018.xml");
+    }
+
+    private static void compareXml(String refResource, String resource) throws XMLStreamException, IOException {
+        XmlService refService = XmlService.getInstance(refResource);
+        XmlService service = XmlService.getInstance(resource);
+        for (Map.Entry<SatzTyp, SatzXml> entry : refService.getSatzarten().entrySet()) {
+            SatzXml satz = service.getSatzart(entry.getKey());
+            assertEquals(entry.getValue(), satz);
+        }
+    }
+
 }

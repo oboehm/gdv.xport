@@ -43,7 +43,6 @@
 			<feldreferenz referenz="005-009-VuNr">
 				<name>VU-Nummer</name>
 				<technischerName>VuNr</technischerName>
-				<auspraegung>5183</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Absender (10-39) -->
 			<feldreferenz referenz="010-039-Absender">
@@ -364,7 +363,6 @@
 			<feldreferenz referenz="070-085-ErstellungsDatZeitraumVomZeitraumBis">
 				<name>Erstellungs-Datum, Zeitraum von, Zeitraum bis</name>
 				<technischerName>ErstellungsDatZeitraumVomZeitraumBis</technischerName>
-				<auspraegung>1804202100000000</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschaeftsstelleVermittler (86-95) -->
 			<feldreferenz referenz="086-095-GeschaeftsstelleVermittler">
