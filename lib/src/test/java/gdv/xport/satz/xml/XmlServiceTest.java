@@ -458,12 +458,17 @@ public class XmlServiceTest extends AbstractXmlTest {
         compareXml("VUVM2015xL.xml", "VUVM2015.xml");
     }
 
+    @Test
+    public void testVUVM2013() throws XMLStreamException, IOException {
+        compareXml("VUVM2013xL.xml", "VUVM2013.xml");
+    }
+
     private static void compareXml(String refResource, String resource) throws XMLStreamException, IOException {
         XmlService refService = XmlService.getInstance(refResource);
         XmlService service = XmlService.getInstance(resource);
         for (Map.Entry<SatzTyp, SatzXml> entry : refService.getSatzarten().entrySet()) {
             SatzXml satz = service.getSatzart(entry.getKey());
-            assertEquals(entry.getValue(), satz);
+            assertEquals(entry.getValue().toLongString(), satz.toLongString());
         }
     }
 
