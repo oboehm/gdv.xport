@@ -1,0 +1,18 @@
+[[section-glossary]]
+== Glossar
+
+
+
+
+[cols="1,4" options="header"]
+|===
+|Begriff
+|Definition
+
+| VU
+| Versicherungsunternehmen
+
+| VU-Nummer
+| 4- oder 5-stelligen Nummer, die ein Versicherungsunternehmen (VU) kennzeichnet und von der GDV vergeben wird.
+
+|===

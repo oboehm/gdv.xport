@@ -23,6 +23,9 @@ Die XML-Beschreibung der GDV-Datensätze, aus denen die verschiedenen Satz-Klass
 Um die Startup-Phase von gdv.xport zu beschleunigen, wurde auf einen DOM-Parser verzichtet.
 Stattdessen wird ein StAX-Parser verwendet.
 
+Mit v5 wurde mit dem `GdvXmlFormatter` die ursprüngliche XML-Datei (VUVM2018.xml) nochmal aus allen Satzarten, die unterstützt werden, generiert.
+Dadurch konnte die XML-Datei zum Parsen auf ca. 2 MB reduziert werden, was das Parsen um weitere 40% beschleunigte.
+
 
 
 === Ungültige Werte

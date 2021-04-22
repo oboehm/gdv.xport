@@ -1,0 +1,53 @@
+[[section-introduction-and-goals]]
+==	Einführung und Ziele
+
+Für den Austausch von Daten zwischen Versicherungsunternehmen (VU) kommt oft noch das GDV-Format zum Einsatz, dessen Beschreibung noch aus der Blütezeit des COBOL-Zeitalters stammt.
+Dementsprechend schwierig gestaltet sich der Umgang mit dieser Beschreibung für Java-Entwickler.
+
+
+
+=== Aufgabenstellung
+
+Ziel von gdv.xport ist es, ein Java-Framework zur Verfügung zu stellen, um die Arbeit mit GDV-Datensätzen zu unterstützen.
+Anfangs lag dabei der Fokus auf die Beschreibung von Datensätzen mit Hilfe von Java-Sprachmitteln (Enums + Annotationen).
+Damit war es möglich, auch mit Datensätzen zu arbeiten, die noch nicht unterstützt wurden.
+
+Seit der Umstellung auf der XML-Beschreibung als Basis für die Unterstützung der verschiedenen Satzarten ist die Notwendigkeit, eigene Datensätze zu definieren, nicht mehr so wichtig.
+Seitdem liegt der Fokus vor allem auf:
+
+* Unterstützung von Export- und Import
+* Import: auch unbekannte oder fehlerhafte Datensätze sollen ohne Abbruch importiert werden können
+* Validierungs-Möglichkeiten
+* Möglichkeit zur Registrierung eigener oder abgewandelter Satzarten
+
+Die Performance war kein Ziel bei der Entwicklung, da Import- und Export meist im Batch-Betrieb (Dunkelverarbeitung) ablaufen.
+Auch der Speicherverbrauch war anfangs nicht im Fokus.
+Allerdings gab es hierzu Feedback, dass bei großen Datensätzen der Speicher gerne ausgeht.
+Deswegen wurde mit 1.0 eine Streaming-API eingeführt, mit der Datensätze nicht mehr komplett in den Speicher gelesen werden müssen.
+
+Daneben dient die das Projekt auch zur Evaluierung neuer Technologien wie Micro-Services oder Docker (gdv-xport-service).
+
+
+=== Qualitätsziele
+
+* Stabilität:
+** stabile Schnittstelle
+** Abwärtskompatibilität zur Vorgänger-Version
+** automatische Tests (angestrebte Testabdeckung: > 70%)
+* Vollständigkeit der unterstützten Datensätze
+
+Künftig:
+
+* Reduzierung des Speicherverbrauchs
+* Vereinfachung der API
+
+
+
+=== Stakeholder
+
+[cols="1,2" options="header"]
+|===
+| Rolle | Erwartungshaltung
+| Java-Entwickler | intuitive API, Unterstützung bei Fehl-Bedienung
+| Betrieb | Protokollierung wichtiger Ereignisse, Unterstützung bei der Fehlersuche
+|===
