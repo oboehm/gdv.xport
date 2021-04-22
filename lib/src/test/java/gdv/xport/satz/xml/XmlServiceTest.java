@@ -305,22 +305,6 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     /**
-     * In "fehlendeFelder.xml" finden sich die Felder mit fehlenden
-     * Referenzen. Dies ist der Test, ob sich diese Resource einlesen
-     * laesst.
-     *
-     * @throws XMLStreamException the XML stream exception
-     * @throws IOException        the io exception
-     */
-    @Test
-    public void testGetFehlendeFelder() throws XMLStreamException, IOException {
-        XmlService felderService = XmlService.getInstance("fehlendeFelder.xml");
-        Map<String, FeldXml> fehlendeFelder = felderService.getFelder();
-        assertFalse("should be not empty: " + fehlendeFelder, fehlendeFelder.isEmpty());
-        LOG.info("fehlendeFelder = {}", fehlendeFelder);
-    }
-
-    /**
      * Dies ist ein weiterer Testfall fuer Issue #33. Hierbei sollte keine
      * {@link NotRegisteredException} auftauchen.
      *

@@ -25,10 +25,7 @@ import gdv.xport.satz.Teildatensatz;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.xml.stream.XMLStreamException;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,18 +39,8 @@ import java.util.Map;
 public final class TeildatensatzXml extends Teildatensatz {
 
     private static final Logger LOG = LogManager.getLogger(TeildatensatzXml.class);
-    private static final Map<String, FeldXml> MISSING_FELDER = new HashMap<>();
     private final List<FeldReferenz> feldReferenzen = new ArrayList<>();
     private Satzende satzende;
-
-    static {
-        try {
-            // TODO: Pruefen, ob das fuer VUVM2018.xml noch gebraucht wird und entfernen
-            MISSING_FELDER.putAll(XmlService.getInstance("fehlendeFelder.xml").getFelder());
-        } catch (XMLStreamException | IOException ex) {
-            throw new IllegalArgumentException("cannot get missing felder from resource 'fehlendeFelder.xml'", ex);
-        }
-    }
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart
@@ -115,10 +102,6 @@ public final class TeildatensatzXml extends Teildatensatz {
 
     private FeldXml getFeld(Map<String, FeldXml> felder, String id) {
         FeldXml feldXml = felder.get(id);
-        if (feldXml == null) {
-            LOG.info("Will try fallback for reference '{}'.", id);
-            feldXml = MISSING_FELDER.get(id);
-        }
         if (feldXml == null) {
             throw new IllegalArgumentException("reference '" + id + "' not found in " + felder);
         }
