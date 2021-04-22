@@ -35,7 +35,9 @@ import gdv.xport.util.SatzTyp;
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (09.03.2011)
+ * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 public class Satz100 extends SatzX {
 
     /**

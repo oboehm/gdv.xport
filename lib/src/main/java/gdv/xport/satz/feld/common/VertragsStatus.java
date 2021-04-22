@@ -20,16 +20,20 @@ package gdv.xport.satz.feld.common;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 
 /**
  * Der Vertragsstatus und folgende Feld-Informationen sind fuer Satz210 und
  * Sparte 30 und 70 identisch und wurden in diese Klasse herausgezogen.
- * 
+ * <p>
+ * TODO: Wird mit v6 entfernt.
+ * </p>
+ *
  * @author oliver
  * @since 0.7.1 (17.07.2012)
+ * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 public enum VertragsStatus {
 
     /**

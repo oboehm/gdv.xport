@@ -28,7 +28,9 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  *
  * @author ralfklemmer
  * @since 19
+ * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 public enum Feld221Wagnis2Auszahlungen {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////

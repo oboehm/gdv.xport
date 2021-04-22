@@ -32,7 +32,9 @@ import gdv.xport.satz.feld.common.VorsatzFeld1bis6;
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (08.03.2011)
+ * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 public enum Feld0001 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////

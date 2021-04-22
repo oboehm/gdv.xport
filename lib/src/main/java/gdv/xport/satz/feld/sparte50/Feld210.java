@@ -29,7 +29,9 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  *
  * @author oliver
  * @since 05.04.11
+ * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 public enum Feld210 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////

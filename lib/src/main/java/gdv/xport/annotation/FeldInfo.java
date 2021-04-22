@@ -18,19 +18,24 @@
 
 package gdv.xport.annotation;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-
 import gdv.xport.feld.Align;
 import gdv.xport.feld.Feld;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * Diese Annotation dient als Behaelter fuer einige Meta-Informationen wie
  * Byte-Adresse oder Datentyp.
+ * <p>
+ * TODO: Wird mit v6 entfernt.
+ * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (06.03.2011)
+ * @deprecated Enums mit dieser Annotation werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FeldInfo {
 

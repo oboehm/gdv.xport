@@ -21,7 +21,6 @@ package gdv.xport.satz.feld.sparte10.wagnisart13;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
@@ -33,7 +32,9 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  *
  * @author ralfklemmer
  * @since 17.01.2013
+ * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 public enum Feld220Wagnis13Auszahlungen {
 
     // /// Teildatensatz 1 /////////////////////////////////////////////////

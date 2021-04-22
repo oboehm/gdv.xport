@@ -23,10 +23,15 @@ import gdv.xport.feld.*;
 
 /**
  * Jeder Vorsatz beginnt mit denselben 6 Feldern. Dies sind die Felder, die in diesem Enum zusammengefasst sind.
+ * <p>
+ * TODO: Wird mit v6 entfernt.
+ * </p>
  *
  * @author oliver
  * @since 0.9.0 (22.11.2012)
+ * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 public enum VorsatzFeld1bis6 {
 
     /**

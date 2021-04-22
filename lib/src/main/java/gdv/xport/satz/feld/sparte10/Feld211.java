@@ -25,10 +25,15 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 211, Sparte 10.
+ * <p>
+ * TODO: Wird mit v6 entfernt.
+ * </p>
  *
  * @author oliver
  * @since 06.04.11
+ * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 public enum Feld211 {
 
     /////   Teildatensatz 1   /////////////////////////////////////////////////

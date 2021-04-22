@@ -35,7 +35,9 @@ import java.util.Map;
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (06.04.2011)
+ * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 public abstract class SpartensatzX extends SatzX {
 
     private static final Logger LOG = LogManager.getLogger(SpartensatzX.class);

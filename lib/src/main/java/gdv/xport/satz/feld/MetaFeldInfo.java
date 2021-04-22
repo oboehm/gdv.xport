@@ -27,7 +27,9 @@ import gdv.xport.annotation.FelderInfo;
  *
  * @author oliver
  * @since 0.7.1 (29.08.2012)
+ * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 public final class MetaFeldInfo {
 
     private final Enum feldEnum;

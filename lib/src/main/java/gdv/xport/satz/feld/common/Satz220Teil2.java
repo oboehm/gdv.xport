@@ -28,10 +28,15 @@ import gdv.xport.feld.Zeichen;
 /**
  * Teil 2 des Datensatzes 220 fuer die Sparten 51, 52 und 53 ist identisch
  * aufgebaut. Dieser Teil wurde in diese Klasse herausgezogen.
+ * <p>
+ * TODO: Wird mit v6 entfernt.
+ * </p>
  *
  * @author oliver
  * @since 0.7.1 (17.07.2012)
+ * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
  */
+@Deprecated
 public enum Satz220Teil2 {
 
     /** Feld 1 - 7 sind fuer jeden (Teil-)Datensatz identisch. */
