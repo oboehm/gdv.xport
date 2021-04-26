@@ -18,6 +18,8 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.demo.MyUnfallDatensatz;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.ByteAdresse;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.Zeichen;
@@ -36,8 +38,7 @@ import java.io.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * Unit-Tests fuer gdv.xport.util.GdvXmlFormatter.
@@ -69,6 +70,30 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
             formatter.write(satz100);
             assertThat(writer.toString().trim(), containsString("<satzart"));
         }
+    }
+
+    /**
+     * Wenn ein Satz Luecken enthaelt, sollte bei der Formattierung dies
+     * ausgefuellt werden. Sonst klappt es mit dem Initalisierung von SatzXML
+     * nicht.
+     *
+     * @throws IOException im Fehlerfall
+     * @throws XMLStreamException im Fehlerfall
+     */
+    @Test
+    public void testWriteSatzWithLuecken() throws IOException, XMLStreamException {
+        File output = new File(XML_DIR, "SatzMitLuecken.xml");
+        Satz satz = XmlService.getInstance().getSatzart(SatzTyp.of(102));
+        Teildatensatz tds = satz.getTeildatensatz(1);
+        tds.remove(Bezeichner.of("Taetigkeit"));
+        try (OutputStream ostream = new FileOutputStream(output);
+             GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
+            formatter.write(satz);
+        }
+        Satz imported = SatzXml.of(output);
+        assertFalse(imported.hasFeld(Bezeichner.of("Taetigkeit")));
+        Bezeichner bezug = Bezeichner.of("Bezug zu VN");
+        assertEquals(satz.getFeld(bezug), imported.getFeld(bezug));
     }
 
     @Test

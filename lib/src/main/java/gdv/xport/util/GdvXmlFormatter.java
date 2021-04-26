@@ -37,6 +37,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -160,7 +161,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
             writeComment(tds.toShortString());
             xmlStreamWriter.writeEmptyElement("satzanfang");
             xmlStreamWriter.writeAttribute("teilsatz", tds.getSatznummer().getInhalt());
-            for (Feld feld : tds.getFelder()) {
+            for (Feld feld : getFelderOhneLuecken(tds)) {
                 writeComment(feld.toShortString());
                 writeReferenz(feld);
                 felder.add(feld);
@@ -168,6 +169,20 @@ public final class GdvXmlFormatter extends AbstractFormatter {
             xmlStreamWriter.writeEmptyElement("satzende");
             xmlStreamWriter.flush();
         }
+    }
+
+    private List<Feld> getFelderOhneLuecken(Teildatensatz tds) {
+        List<Feld> felder = new ArrayList<>();
+        int adresse = 1;
+        for (Feld feld : tds.getFelder()) {
+            if (adresse < feld.getByteAdresse()) {
+                felder.add(new AlphaNumFeld(Bezeichner.of("Leerstellen"), feld.getByteAdresse()-adresse, adresse));
+                LOG.info("An Adresse {} wurde {} mit Leerstellen aufgefuellt.", adresse, tds.toShortString());
+            }
+            felder.add(feld);
+            adresse = feld.getEndAdresse() + 1;
+        }
+        return felder;
     }
 
     private void writeReferenz(Feld feld) throws XMLStreamException {
