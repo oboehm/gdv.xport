@@ -19,9 +19,16 @@
 package gdv.xport.demo;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
+import gdv.xport.satz.model.SatzX;
+import gdv.xport.satz.xml.SatzXml;
+import gdv.xport.satz.xml.XmlService;
+import gdv.xport.util.GdvXmlFormatter;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
@@ -31,10 +38,12 @@ import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.junit.SmokeRunner;
 
 import javax.xml.stream.XMLStreamException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.net.UnknownHostException;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -58,7 +67,7 @@ public final class MyUnfallDatensatzTest {
     @IntegrationTest
     public void testMyUnfallDatensatz() throws IOException {
         // im Framework registrieren
-        SatzFactory.register(MyUnfallDatensatz.class, 210, 30);
+        SatzFactory.register(MyUnfallDatensatz.class, SatzTyp.of(210, 30));
         // Datenpaket importieren
         Datenpaket datenpaket = new Datenpaket();
         URL url = this.getClass().getResource("/musterdatei_041222.txt");
@@ -66,7 +75,7 @@ public final class MyUnfallDatensatzTest {
         // jetzt den ersten Datensatz 210, Sparte 30 suchen und testen
         for (Datensatz datensatz : datenpaket.getDatensaetze()) {
             if ((datensatz.getSatzart() == 210) && (datensatz.getSparte() == 30)) {
-                assertEquals("EUR", datensatz.getFeld(MyFeld210.BAUJAHR).getInhalt());
+                assertEquals("EUR", datensatz.getFeld(Bezeichner.of("Baujahr")).getInhalt());
                 break;
             }
         }
@@ -81,24 +90,35 @@ public final class MyUnfallDatensatzTest {
     @Test
     public void testBezeichner() {
         Datensatz myDatensatz = new MyUnfallDatensatz();
-        Feld baujahr = myDatensatz.getFeld(MyFeld210.BAUJAHR);
+        Feld baujahr = myDatensatz.getFeld(Bezeichner.of("Baujahr"));
         assertEquals("Baujahr", baujahr.getBezeichnung());
     }
 
     /**
      * Testet die main-Methode.
      *
-     * @throws XMLStreamException bei fehlerhaftem XML
      * @throws IOException falls die URL nicht erreicht werden kann
      */
     @Test
     @IntegrationTest
-    public void testMain() throws IOException, XMLStreamException {
+    public void testMain() throws IOException {
         try {
             MyUnfallDatensatz.main(new String[] {});
         } catch (UnknownHostException mayhappen) {
             LOG.warn("Offline? testMain() abgebrochen!", mayhappen);
         }
+    }
+
+    @Test
+    public void testFormatter() throws IOException, XMLStreamException {
+        File file = new File("target", "MyUnfalldatensatz.xml");
+        Satz satz = new MyUnfallDatensatz();
+        try (OutputStream ostream = new FileOutputStream(file);
+             GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
+            formatter.write(satz);
+        }
+        Satz imported = SatzXml.of(file);
+        assertEquals(satz, imported);
     }
 
     /**
@@ -108,7 +128,7 @@ public final class MyUnfallDatensatzTest {
      */
     @AfterClass
     public static void restoreSatzFactory() {
-        SatzFactory.unregister(210, 30);
+        SatzFactory.unregister(SatzTyp.of("0210.030"));
     }
 
 }

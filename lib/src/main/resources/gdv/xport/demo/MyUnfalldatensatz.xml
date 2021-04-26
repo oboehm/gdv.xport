@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<service>
+	<satzarten>
+		<!-- Satzart 0210.030 -->
+		<satzart>
+			<kennzeichnung>
+				<feldreferenz referenz="001-004-Satzart">
+					<name>Satzart</name>
+					<technischerName>Satzart</technischerName>
+					<auspraegung>0210</auspraegung>
+				</feldreferenz>
+				<feldreferenz referenz="011-013-Sparte">
+					<name>Sparte</name>
+					<technischerName>Sparte</technischerName>
+					<auspraegung>030</auspraegung>
+				</feldreferenz>
+				<feldreferenz referenz="256-255-Satznummer">
+					<name>Satznummer</name>
+					<technischerName>Satznummer</technischerName>
+				</feldreferenz>
+			</kennzeichnung>
+			<version>   </version>
+			<!-- Teildatensatz 1 Satzart 0210.030 -->
+			<satzanfang teilsatz="1"/>
+			<!-- NumFeld Satzart (1-4) -->
+			<feldreferenz referenz="001-004-Satzart">
+				<name>Satzart</name>
+				<technischerName>Satzart</technischerName>
+				<auspraegung>0210</auspraegung>
+			</feldreferenz>
+			<!-- VUNummer VuNr (5-9) -->
+			<feldreferenz referenz="005-009-VuNr">
+				<name>VU-Nummer</name>
+				<technischerName>VuNr</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Buendelungskennzeichen (10-10) -->
+			<feldreferenz referenz="010-010-Buendelungskennzeichen">
+				<name>Bündelungskennzeichen</name>
+				<technischerName>Buendelungskennzeichen</technischerName>
+			</feldreferenz>
+			<!-- NumFeld Sparte (11-13) -->
+			<feldreferenz referenz="011-013-Sparte">
+				<name>Sparte</name>
+				<technischerName>Sparte</technischerName>
+				<auspraegung>030</auspraegung>
+			</feldreferenz>
+			<!-- AlphaNumFeld VsNr (14-30) -->
+			<feldreferenz referenz="014-030-VsNr">
+				<name>Versicherungsschein-Nummer</name>
+				<technischerName>VsNr</technischerName>
+			</feldreferenz>
+			<!-- NumFeld FolgeNr (31-32) -->
+			<feldreferenz referenz="031-032-FolgeNr">
+				<name>Folgenummer</name>
+				<technischerName>FolgeNr</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld GeschaeftsstelleVermittler (33-42) -->
+			<feldreferenz referenz="033-042-GeschaeftsstelleVermittler">
+				<name>Geschaeftsstelle/Vermittler</name>
+				<technischerName>GeschaeftsstelleVermittler</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Leerstellen (43-43) -->
+			<feldreferenz referenz="043-043-Leerstellen">
+				<name>Leerstellen</name>
+				<technischerName>Leerstellen</technischerName>
+			</feldreferenz>
+			<!-- Datum Vertragsbeginn (44-51) -->
+			<feldreferenz referenz="044-051-Vertragsbeginn">
+				<name>Vertragsbeginn</name>
+				<technischerName>Vertragsbeginn</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Leerstellen (52-92) -->
+			<feldreferenz referenz="052-092-Leerstellen">
+				<name>Leerstellen</name>
+				<technischerName>Leerstellen</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Baujahr (93-95) -->
+			<feldreferenz referenz="093-095-Baujahr">
+				<name>Baujahr</name>
+				<technischerName>Baujahr</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Leerstellen (96-255) -->
+			<feldreferenz referenz="096-255-Leerstellen">
+				<name>Leerstellen</name>
+				<technischerName>Leerstellen</technischerName>
+			</feldreferenz>
+			<!-- Zeichen Satznummer (256-256) -->
+			<feldreferenz referenz="256-256-Satznummer">
+				<name>Satznummer</name>
+				<technischerName>Satznummer</technischerName>
+				<auspraegung>1</auspraegung>
+			</feldreferenz>
+			<satzende/>
+		</satzart>
+	</satzarten>
+	<felder>
+		<feld referenz="001-004-Satzart">
+			<name>Satzart</name>
+			<bytes>4</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="005-009-VuNr">
+			<name>VU-Nummer</name>
+			<bytes>5</bytes>
+			<datentyp>Vunummer</datentyp>
+		</feld>
+		<feld referenz="010-010-Buendelungskennzeichen">
+			<name>Bündelungskennzeichen</name>
+			<bytes>1</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="011-013-Sparte">
+			<name>Sparte</name>
+			<bytes>3</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="014-030-VsNr">
+			<name>Versicherungsschein-Nummer</name>
+			<bytes>17</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="031-032-FolgeNr">
+			<name>Folgenummer</name>
+			<bytes>2</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="033-042-GeschaeftsstelleVermittler">
+			<name>Geschaeftsstelle/Vermittler</name>
+			<bytes>10</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="043-043-Leerstellen">
+			<name>Leerstellen</name>
+			<bytes>1</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="044-051-Vertragsbeginn">
+			<name>Vertragsbeginn</name>
+			<bytes>8</bytes>
+			<datentyp>Datum</datentyp>
+		</feld>
+		<feld referenz="052-092-Leerstellen">
+			<name>Leerstellen</name>
+			<bytes>41</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="093-095-Baujahr">
+			<name>Baujahr</name>
+			<bytes>3</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="096-255-Leerstellen">
+			<name>Leerstellen</name>
+			<bytes>160</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="256-256-Satznummer">
+			<name>Satznummer</name>
+			<bytes>1</bytes>
+			<datentyp>Zeichen</datentyp>
+		</feld>
+	</felder>
+</service>

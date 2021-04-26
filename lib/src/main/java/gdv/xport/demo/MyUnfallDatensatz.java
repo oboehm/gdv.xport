@@ -21,11 +21,14 @@ package gdv.xport.demo;
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.model.SatzX;
+import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlFormatter;
 
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 /**
@@ -35,10 +38,10 @@ import java.net.URL;
  * @author oliver (ob@aosd.de)
  * @since 0.3 (21.11.2009)
  */
-public class MyUnfallDatensatz extends SatzX {
+public class MyUnfallDatensatz extends SatzXml {
 
     /**
-     * Hier wird die Enum-Klasse {@link MyFeld210} mit der Datenbeschreibung am
+     * Hier wird die XML-Beschreibung "MyUnfalldatensatz.xml" mit der Datenbeschreibung am
      * Framework registriert und anschliessend das Beispiel von <a href=
      * "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt">
      * musterdatei_041222.txt</a> importiert.
@@ -48,10 +51,11 @@ public class MyUnfallDatensatz extends SatzX {
      */
     public static void main(final String[] args) throws IOException {
         // im Framework registrieren
-        SatzFactory.registerEnum(MyFeld210.class, SatzTyp.of("0210.30"));
+        //SatzFactory.registerEnum(MyFeld210.class, SatzTyp.of("0210.30"));
+        SatzFactory.register(MyUnfallDatensatz.class, SatzTyp.of("0210.30"));
         importMusterdatei();
         // und hiermit melden wir den Datensatz wieder vom Framework ab
-        SatzFactory.unregister(210, 30);
+        SatzFactory.unregister(SatzTyp.of("0210.30"));
     }
 
     private static void importMusterdatei() throws IOException {
@@ -72,7 +76,15 @@ public class MyUnfallDatensatz extends SatzX {
      * Hiermit initialisieren wir die Klasse mit Satzart 210 und Sparte 30 (Unfall).
      */
     public MyUnfallDatensatz() {
-        super(210, 30, MyFeld210.values());
+        super(readResource());
+    }
+
+    private static SatzXml readResource() {
+        try {
+            return SatzXml.of("/gdv/xport/demo/MyUnfallDatensatz.xml");
+        } catch (IOException | XMLStreamException ex) {
+            throw new IllegalStateException("cannot read resource", ex);
+        }
     }
 
 }
