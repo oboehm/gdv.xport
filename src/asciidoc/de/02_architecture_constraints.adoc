@@ -1,0 +1,14 @@
+[[section-architecture-constraints]]
+== Randbedingungen
+
+
+=== Technische Randbedingungen
+
+gdv.xport setzt auf Java 8 und XML auf.
+
+
+=== Organisatorische Randbedinungen
+
+gdv.xport wird nach dem http://nvie.com/posts/a-successful-git-branching-model/[GitFlow-Modell].
+D.h. die eigentliche Entwicklung findet auf dem develop-Zweig statt.
+Releases werden manuell gebaut, wie unter https://github.com/oboehm/gdv.xport/blob/master/doc/build.adoc[Bau der Anwendung] beschrieben.

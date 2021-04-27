@@ -11,7 +11,6 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Planned]
 
-- core-Lib mit Basis-Funktionalität herausziehen
 - Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
 - ByteAdresse durchgängiger verwenden
 
@@ -22,7 +21,8 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 - statt "VUVM2018.xml" kann jetzt über '-Dgdv.XML-Resource=VUVM2015.xml' die 2015er-Version vorgegeben werden (oder andere Versionen)
 - XmlSatzFactory erlaubt die Unterstützung mehrerer GDV-Versionen gleichzeitig
-- Versionen im Vorsatz können jetzt mit der aktuellen Version der aus der XML-Beschreibung vorbelegt werden
+- GdvXmlFormatter formattiert (exportiert) jetzt Datensätze in das XML-Format von GDV-Online
+- Versionen im Vorsatz können jetzt mit der aktuellen Version aus der XML-Beschreibung vorbelegt werden
 - Nachsatz besitzt eine add-Methode
 - numerische Felder akzeptieren BigDecimal und können auch nach BigDecimal konvertiert werden
 - ByteAdresse ist als neuer Datentyp hinzugekommen und wird bei Teildatensatz.getFeld(..) als Parameter akzeptiert
@@ -32,6 +32,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 - es werden viel mehr Satzarten direkt auf der XML-Beschreibung in VUVM2018.xml abgeleitet
 - Widersprüche in VUVM2018.xml wurden manuell bereinigt
+- Enums zur Beschreibung von Datensätzen sind jetzt @deprecated  
 - SatzTyp wurde ausgebaut und um of(..)-Methode erweitert
 - gdv-xport-service auf OpenAPI / Swagger 3.0 aktualisiert
 - _fixed_: Formatierung in Javaoc wird jetzt korrekt mit einem 't' geschrieben
