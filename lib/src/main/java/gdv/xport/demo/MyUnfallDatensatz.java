@@ -51,7 +51,6 @@ public class MyUnfallDatensatz extends SatzXml {
      */
     public static void main(final String[] args) throws IOException {
         // im Framework registrieren
-        //SatzFactory.registerEnum(MyFeld210.class, SatzTyp.of("0210.30"));
         SatzFactory.register(MyUnfallDatensatz.class, SatzTyp.of("0210.30"));
         importMusterdatei();
         // und hiermit melden wir den Datensatz wieder vom Framework ab

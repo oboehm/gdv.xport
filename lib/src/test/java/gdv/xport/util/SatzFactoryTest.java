@@ -20,7 +20,6 @@ package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.demo.MyFeld210;
 import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
@@ -146,30 +145,6 @@ public final class SatzFactoryTest extends AbstractTest {
         Satz satz = SatzFactory.getDatensatz(typ);
         assertEquals(SatzX.class, satz.getClass());
         SatzFactory.unregister(typ);
-    }
-
-    @Test
-    public void testRegisterEnum() {
-        SatzTyp typ = SatzTyp.of("0047");
-        SatzFactory.registerEnum(MyFeld210.class, typ);
-        Satz satz = SatzFactory.getSatz(typ);
-        assertSatzart47(satz);
-        SatzFactory.unregister(typ);
-    }
-
-    @Test
-    public void testRegisterEnum4Sparte() {
-        SatzTyp typ = SatzTyp.of("0047.11");
-        SatzFactory.registerEnum(MyFeld210.class, typ);
-        Satz satz = SatzFactory.getDatensatz(typ);
-        assertSatzart47(satz);
-        SatzFactory.unregister(typ);
-    }
-
-    private void assertSatzart47(final Satz satz) {
-        assertEquals(47, satz.getSatzart());
-        Feld x = satz.getFeld(MyFeld210.BAUJAHR);
-        assertNotNull(x);
     }
 
     /**
@@ -307,23 +282,6 @@ public final class SatzFactoryTest extends AbstractTest {
         LOG.info(n + " Satzarten supported: " + supportedSatzarten);
         assertTrue("only " + n + " Datensaetze supported", n > 5);
         assertTrue("Satzart 342 expected to be supported", supportedSatzarten.contains(342));
-    }
-
-    /**
-     * Das Registrieren/Deregistrieren von Enum-Saetzen scheint nicht richtig zu funktionieren. Dies wird mit diesem
-     * Test nachgestellt (s. Issue 1).
-     *
-     * @since 0.6.3
-     */
-    @Test
-    public void testIssue1() {
-        assertNotNull(getDatensatz(210, 30));
-        try {
-            SatzFactory.registerEnum(MyFeld210.class, SatzTyp.of("0210.30"));
-            checkGetDatensatz(210, 30, MyFeld210.values());
-        } finally {
-            SatzFactory.registerEnum(gdv.xport.satz.feld.sparte30.Feld210.class, SatzTyp.of("0210.30"));
-        }
     }
 
     /**

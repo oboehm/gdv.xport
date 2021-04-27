@@ -81,12 +81,6 @@ public final class MyUnfallDatensatzTest {
         }
     }
 
-    /**
-     * Die Bezeichnung von MyFeld210.MEINE_WAEHRUNG sollte "Meine Waehrung"
-     * im Datensatz lauten.
-     *
-     * @since 0.6
-     */
     @Test
     public void testBezeichner() {
         Datensatz myDatensatz = new MyUnfallDatensatz();
