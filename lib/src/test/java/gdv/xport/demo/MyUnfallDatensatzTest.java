@@ -82,7 +82,7 @@ public final class MyUnfallDatensatzTest {
     }
 
     @Test
-    public void testBezeichner() {
+    public void testBezeichner() throws XMLStreamException, IOException {
         Datensatz myDatensatz = new MyUnfallDatensatz();
         Feld baujahr = myDatensatz.getFeld(Bezeichner.of("Baujahr"));
         assertEquals("Baujahr", baujahr.getBezeichnung());

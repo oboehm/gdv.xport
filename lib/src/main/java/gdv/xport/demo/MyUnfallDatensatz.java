@@ -73,17 +73,13 @@ public class MyUnfallDatensatz extends SatzXml {
 
     /**
      * Hiermit initialisieren wir die Klasse mit Satzart 210 und Sparte 30 (Unfall).
+     * Die Satzartz ergibt sich dabei aus der Beschreibung in "MyUnfallDatensatz.xml".
+     *
+     * @throws XMLStreamException bei XML-Fehlern in MyUnfallDatensatz.xml"
+     * @throws IOException        bei Lesefehlern
      */
-    public MyUnfallDatensatz() {
-        super(readResource());
-    }
-
-    private static SatzXml readResource() {
-        try {
-            return SatzXml.of("/gdv/xport/demo/MyUnfallDatensatz.xml");
-        } catch (IOException | XMLStreamException ex) {
-            throw new IllegalStateException("cannot read resource", ex);
-        }
+    public MyUnfallDatensatz() throws XMLStreamException, IOException {
+        super(SatzXml.of("/gdv/xport/demo/MyUnfallDatensatz.xml"));
     }
 
 }

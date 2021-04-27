@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+	Diese XML-Beschreibung wurde fuer v5 ueber GdvXmlFormatter aus der
+	urspruenglichen Enum 'MyFeld210' erzeugt. Man kann aber auch einen
+	bestehende XML-Satzbeschreibung (z.B. aus VUVM2018.xml) hernehmen
+	und anpassen.
+
+	WICHTIG: Die XML-Beschreibung darf keine Luecken aufweisen. Sonst
+	stimmt die Start-Adresse der Felder nicht. Die Start-Adresse wird
+	aus dem jeweiligen vorigen Feld bestimmt (End-Adresse + 1).
+-->
 <service>
 	<satzarten>
 		<!-- Satzart 0210.030 -->
