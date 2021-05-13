@@ -450,6 +450,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     private static void compareXml(String refResource, String resource) throws XMLStreamException, IOException {
         XmlService refService = XmlService.getInstance(refResource);
         XmlService service = XmlService.getInstance(resource);
+        assertEquals(refService.getGdvRelease(), service.getGdvRelease());
         for (Map.Entry<SatzTyp, SatzXml> entry : refService.getSatzarten().entrySet()) {
             SatzXml satz = service.getSatzart(entry.getKey());
             assertEquals(entry.getValue().toLongString(), satz.toLongString());

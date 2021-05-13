@@ -8,6 +8,9 @@
 	ins src/test-Verzeichnis verschoben.
 -->
 <service>
+	<info>
+		<stand>01.07.2013</stand>
+	</info>
 	<satzarten>
 		<!-- Satzart 0001 -->
 		<satzart>
