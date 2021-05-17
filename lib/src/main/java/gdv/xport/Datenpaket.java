@@ -388,7 +388,7 @@ public final class Datenpaket {
     private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
             throws IOException {
         int sparte = Datensatz.readSparte(reader);
-        SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
+        SatzTyp satzTyp = SatzTyp.of(satzart);
         if (satzart >= 210 && satzart < 300) {
             if (isIdentischZu000(sparte))
                 satzTyp = SatzTyp.of(satzart, 0);

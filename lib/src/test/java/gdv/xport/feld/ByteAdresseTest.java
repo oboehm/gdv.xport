@@ -1,8 +1,15 @@
 package gdv.xport.feld;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.util.Map;
+
+import static org.hamcrest.collection.IsEmptyCollection.empty;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit-Tests fuer gdv.xport.feld.ByteAdresse.
@@ -10,6 +17,8 @@ import static org.junit.Assert.*;
  * @author <a href="ob@aosd.de">oliver</a>
  */
 public final class ByteAdresseTest {
+
+    private static final Logger LOG = LogManager.getLogger();
 
     @Test(expected = IllegalArgumentException.class)
     public void testAdresseNull() {
@@ -34,6 +43,17 @@ public final class ByteAdresseTest {
     @Test
     public void testToString() {
         assertEquals("222", ByteAdresse.of(222).toString());
+    }
+
+    @Test
+    public void testToMap() {
+        ByteAdresse adresse = ByteAdresse.of(128);
+        try {
+            Map<String, Object> map = adresse.toMap();
+            MatcherAssert.assertThat(map.values(), Matchers.not(empty()));
+        } catch (UnsupportedOperationException mayhappen) {
+            LOG.info("{}.toMap() schlug fehl:", adresse, mayhappen);
+        }
     }
 
 }
