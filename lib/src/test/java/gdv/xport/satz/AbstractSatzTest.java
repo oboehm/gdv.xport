@@ -129,7 +129,8 @@ abstract public class AbstractSatzTest {
     }
 
     /**
-     * Setzt fuer den uebergebenen Satz die normalen Felder mit einem Wert, damit einfache Test-Daten fuer die einzelnen Tests vorhanden sind.
+     * Setzt fuer den uebergebenen Satz die normalen Felder mit einem Wert,
+     * damit einfache Test-Daten fuer die einzelnen Tests vorhanden sind.
      *
      * @param satz the new up
      */

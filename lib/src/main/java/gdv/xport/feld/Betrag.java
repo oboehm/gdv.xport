@@ -33,21 +33,31 @@ public class Betrag extends NumFeld {
     /**
      * Legt ein neues Betrags-Feld an. Die Informationen dazu werden
      * aus der uebergebenen Enum bezogen.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
+     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     public Betrag(final Enum feldX) {
         super(feldX);
     }
 
     /**
      * Instantiiert ein neuen Betrag.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param feldX Feld
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 0.6
+     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     public Betrag(final Enum feldX, final FeldInfo info) {
         super(feldX, info);
     }
@@ -66,11 +76,16 @@ public class Betrag extends NumFeld {
 
     /**
      * Instantiiert einen neuen Betrag.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 1.0
+     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     public Betrag(final Bezeichner name, final FeldInfo info) {
         super(name, info);
     }

@@ -80,11 +80,16 @@ public final class BetragMitVorzeichen extends Betrag {
 
     /**
      * Instantiiert einen neuen BetragMitVorzeichen.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 1.0
+     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     public BetragMitVorzeichen(final Bezeichner name, final FeldInfo info) {
         super(name, info);
         this.setVorzeichen('+');

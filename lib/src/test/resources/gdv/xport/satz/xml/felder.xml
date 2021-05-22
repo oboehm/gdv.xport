@@ -8527,6 +8527,19 @@
 			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
 		</feld>
 
+		<feld referenz="BN-2007.07.20.11.46.19.997">
+			<name>Risikogruppe_Risikoart</name>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Alphanumerisch</datentyp>
+			<nachkommastellen>0</nachkommastellen>
+		</feld>
+		<feld referenz="BN-2003.02.11.22.50.16.426">
+			<name>lfd. Nummer</name>
+			<bytes>5</bytes>
+			<datentyp combobox="datentypbox">Numerisch</datentyp>
+			<nachkommastellen />
+		</feld>
+
 	</felder>
 
 </service>

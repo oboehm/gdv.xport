@@ -431,7 +431,7 @@ public class XmlService {
     public String getSatzVersion(final SatzTyp satzTyp) {
         SatzXml satzXml = this.satzarten.get(satzTyp);
         if (satzXml == null) {
-            return "?";
+            throw new IllegalArgumentException("nicht registriert: " + satzTyp);
         } else {
             return satzXml.getSatzversion().getInhalt();
         }
@@ -449,8 +449,7 @@ public class XmlService {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " (Vorsatz " + getSatzVersion(SatzTyp.of("0001"))
-                + "/" + getSatzVersion(SatzTyp.of("0052")) + ")";
+        return this.getClass().getSimpleName() + " (Stand " + getGdvRelease() + ")";
     }
 
 }

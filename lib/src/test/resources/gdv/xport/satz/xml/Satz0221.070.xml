@@ -175,6 +175,28 @@
 				<ntabhaengig>0</ntabhaengig>
 			</feldreferenz>
 		</satzanfang>
+		<feldreferenz referenz="BN-2007.07.20.11.46.19.997">
+			<name>Risikogruppe / Risikoart</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>20.07.2007 12:14:48</letzteAenderung>
+			<technischerName>RisikogruppeRisikoart1</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig />
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.50.16.426">
+			<name>lfd. Nummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>09.01.2006 14:00:28</letzteAenderung>
+			<technischerName>LfdNr1</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
 		<feldreferenz referenz="BN-2003.02.11.22.49.47.364">
 			<name>Satznummer</name>
 			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
@@ -306,6 +328,28 @@
 				<ntabhaengig>0</ntabhaengig>
 			</feldreferenz>
 		</satzanfang>
+		<feldreferenz referenz="BN-2007.07.20.11.46.19.997">
+			<name>Risikogruppe / Risikoart</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>20.07.2007 12:14:48</letzteAenderung>
+			<technischerName>RisikogruppeRisikoart1</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig />
+		</feldreferenz>
+		<feldreferenz referenz="BN-2003.02.11.22.50.16.426">
+			<name>lfd. Nummer</name>
+			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+			<letzteAenderung>09.01.2006 14:00:28</letzteAenderung>
+			<technischerName>LfdNr1</technischerName>
+			<bemerkung />
+			<minimaleAnzahl>0</minimaleAnzahl>
+			<maximaleAnzahl>1</maximaleAnzahl>
+			<auspraegung />
+			<ntabhaengig>0</ntabhaengig>
+		</feldreferenz>
 		<feldreferenz referenz="BN-2003.02.11.22.49.47.364">
 			<name>Satznummer</name>
 			<aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>

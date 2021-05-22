@@ -178,4 +178,12 @@ public class FeldXmlTest extends AbstractXmlTest {
         assertEquals(expected, converted.getClass());
     }
 
+    @Test
+    public void testToDatum() throws XMLStreamException {
+        FeldXml datum = createFeldXmlFrom("feldDatum.xml");
+        datum.setInhalt("21052021");
+        Feld converted = datum.toFeld(10, Bezeichner.of("heute"));
+        assertEquals(datum.getInhalt(), converted.getInhalt());
+    }
+
 }

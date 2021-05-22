@@ -75,10 +75,15 @@ public class Feld implements Comparable<Feld>, Cloneable {
     /**
      * Legt ein neues Feld an. Die Informationen dazu werden aus der
      * uebergebenen Enum bezogen.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
+     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     public Feld(final Enum feldX) {
         this(feldX, getFeldInfo(feldX));
     }
@@ -86,10 +91,15 @@ public class Feld implements Comparable<Feld>, Cloneable {
     /**
      * Kreiert ein neues Feld.
      *
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      * @param feldX der entsprechende Aufzaehlungstyp
      * @param info Annotation mit den Feldinformationen
      * @since 0.6
+     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     public Feld(final Enum feldX, final FeldInfo info) {
         this.bezeichner = Feld.getAsBezeichner(feldX);
         this.byteAdresse = info.byteAdresse();
@@ -287,11 +297,16 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation
      * ergibt (Factory-Methode). Der Name wird dabei aus dem uebergebenen
      * Enum-Feld abgeleitet.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param feldX Enum fuer das erzeugte Feld
      * @param info die FeldInfo-Annotation mit dem gewuenschten Datentyp
      * @return das erzeugte Feld
+     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     public static Feld createFeld(final Enum feldX, final FeldInfo info) {
         try {
             Constructor<? extends Feld> ctor = info.type().getConstructor(Enum.class, FeldInfo.class);

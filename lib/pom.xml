@@ -252,6 +252,10 @@
       <groupId>de.jfachwert</groupId>
       <artifactId>jfachwert</artifactId>
     </dependency>
+    <dependency>
+      <groupId>javax.money</groupId>
+      <artifactId>money-api</artifactId>
+    </dependency>
 
     <!-- JSON -->
     <dependency>

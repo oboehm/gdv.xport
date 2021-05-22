@@ -19,9 +19,6 @@
 package gdv.xport.satz.xml;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlHelper;
@@ -35,7 +32,10 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -215,19 +215,19 @@ public class SatzXml extends Datensatz {
         for (int n = 1; n <= this.getNumberOfTeildatensaetze(); n++) {
             TeildatensatzXml tdsXml = (TeildatensatzXml) this.getTeildatensatz(n);
             tdsXml.updateWith(felder);
-            updateSatznummer(n, tdsXml);
+            //updateSatznummer(n, tdsXml);
         }
     }
 
-    private void updateSatznummer(int n, TeildatensatzXml tdsXml) {
-        if (tdsXml.hasFeld(Bezeichner.SATZNUMMER) || tdsXml.hasFeld(Bezeichner.SATZ_NR_2)) {
-            Feld feld = tdsXml.getFeld(Bezeichner.SATZNUMMER);
-            Zeichen satznr = new Zeichen(feld.getBezeichner(), feld.getByteAdresse(), Character.forDigit(n, 10));
-            tdsXml.setSatznummer(satznr);
-            tdsXml.remove(feld);
-            tdsXml.add(satznr);
-        }
-    }
+//    private void updateSatznummer(int n, TeildatensatzXml tdsXml) {
+//        if (tdsXml.hasFeld(Bezeichner.SATZNUMMER) || tdsXml.hasFeld(Bezeichner.SATZ_NR_2)) {
+//            Feld feld = tdsXml.getFeld(Bezeichner.SATZNUMMER);
+//            Zeichen satznr = new Zeichen(feld.getBezeichner(), feld.getByteAdresse(), Character.forDigit(n, 10));
+//            tdsXml.setSatznummer(satznr);
+//            tdsXml.remove(feld);
+//            tdsXml.add(satznr);
+//        }
+//    }
 
     /**
      * Liefert eine Liste der unterstuetzten Satz-Typen. Dies ist vor allem fuer

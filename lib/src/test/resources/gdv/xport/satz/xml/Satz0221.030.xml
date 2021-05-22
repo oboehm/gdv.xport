@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<service>
+	<satzarten>
+		<!-- Satzart 0221.030 -->
+		<satzart>
+			<kennzeichnung>
+				<feldreferenz referenz="001-004-Satzart">
+					<name>Satzart</name>
+					<technischerName>Satzart</technischerName>
+					<auspraegung>0221</auspraegung>
+				</feldreferenz>
+				<feldreferenz referenz="011-013-Sparte">
+					<name>Sparte</name>
+					<technischerName>Sparte</technischerName>
+					<auspraegung>030</auspraegung>
+				</feldreferenz>
+				<feldreferenz referenz="256-255-Satznummer">
+					<name>Satznummer</name>
+					<technischerName>Satznummer</technischerName>
+				</feldreferenz>
+			</kennzeichnung>
+			<version>   </version>
+			<!-- Teildatensatz 2 Satzart 0221.030 -->
+			<satzanfang teilsatz="2"/>
+			<!-- NumFeld Satzart (1-4) -->
+			<feldreferenz referenz="001-004-Satzart">
+				<name>Satzart</name>
+				<technischerName>Satzart</technischerName>
+				<auspraegung>0221</auspraegung>
+			</feldreferenz>
+			<!-- VUNummer VuNr (5-9) -->
+			<feldreferenz referenz="005-009-VuNr">
+				<name>VU-Nummer</name>
+				<technischerName>VuNr</technischerName>
+				<auspraegung>5183</auspraegung>
+			</feldreferenz>
+			<!-- AlphaNumFeld Buendelungskennzeichen (10-10) -->
+			<feldreferenz referenz="010-010-Buendelungskennzeichen">
+				<name>Bündelungskennzeichen</name>
+				<technischerName>Buendelungskennzeichen</technischerName>
+			</feldreferenz>
+			<!-- NumFeld Sparte (11-13) -->
+			<feldreferenz referenz="011-013-Sparte">
+				<name>Sparte</name>
+				<technischerName>Sparte</technischerName>
+				<auspraegung>030</auspraegung>
+			</feldreferenz>
+			<!-- AlphaNumFeld VsNr (14-30) -->
+			<feldreferenz referenz="014-030-VsNr">
+				<name>Versicherungsschein-Nummer</name>
+				<technischerName>VsNr</technischerName>
+			</feldreferenz>
+			<!-- NumFeld FolgeNr (31-32) -->
+			<feldreferenz referenz="031-032-FolgeNr">
+				<name>Folgenummer</name>
+				<technischerName>FolgeNr</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld GeschaeftsstelleVermittler (33-42) -->
+			<feldreferenz referenz="033-042-GeschaeftsstelleVermittler">
+				<name>Geschaeftsstelle/Vermittler</name>
+				<technischerName>GeschaeftsstelleVermittler</technischerName>
+			</feldreferenz>
+			<!-- NumFeld LfdNrVersichertenPersonVpPersonengruppe (43-48) -->
+			<feldreferenz referenz="043-048-LfdNrVersichertenPersonVpPersonengruppe">
+				<name>Lfd. Nummer der versicherten Person (VP) / Personengruppe</name>
+				<technischerName>LfdNrVersichertenPersonVpPersonengruppe</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Satznummer (49-49) -->
+			<feldreferenz referenz="049-049-Satznummer">
+				<name>Satznummer</name>
+				<technischerName>Satznummer</technischerName>
+				<auspraegung>2</auspraegung>
+			</feldreferenz>
+			<!-- Betrag Tod (50-63) -->
+			<feldreferenz referenz="050-063-Tod">
+				<name>Tod</name>
+				<technischerName>Tod</technischerName>
+			</feldreferenz>
+			<!-- Betrag Invaliditaet (64-77) -->
+			<feldreferenz referenz="064-077-Invaliditaet">
+				<name>Invaliditaet</name>
+				<technischerName>Invaliditaet</technischerName>
+			</feldreferenz>
+			<!-- Betrag Tagegeld1 (78-87) -->
+			<feldreferenz referenz="078-087-Tagegeld1">
+				<name>Tagegeld 1</name>
+				<technischerName>Tagegeld1</technischerName>
+			</feldreferenz>
+			<!-- Betrag Tagegeld2 (88-97) -->
+			<feldreferenz referenz="088-097-Tagegeld2">
+				<name>Tagegeld 2</name>
+				<technischerName>Tagegeld2</technischerName>
+			</feldreferenz>
+			<!-- Betrag Krankenhaustagegeld (98-107) -->
+			<feldreferenz referenz="098-107-Krankenhaustagegeld">
+				<name>Krankenhaustagegeld</name>
+				<technischerName>Krankenhaustagegeld</technischerName>
+			</feldreferenz>
+			<!-- Betrag Genesungsgeld (108-117) -->
+			<feldreferenz referenz="108-117-Genesungsgeld">
+				<name>Genesungsgeld</name>
+				<technischerName>Genesungsgeld</technischerName>
+			</feldreferenz>
+			<!-- Betrag Uebergangsentschaedigung (118-131) -->
+			<feldreferenz referenz="118-131-Uebergangsentschaedigung">
+				<name>Uebergangsentschaedigung</name>
+				<technischerName>Uebergangsentschaedigung</technischerName>
+			</feldreferenz>
+			<!-- Betrag Heilkost (132-145) -->
+			<feldreferenz referenz="132-145-Heilkost">
+				<name>Heilkosten</name>
+				<technischerName>Heilkost</technischerName>
+			</feldreferenz>
+			<!-- Betrag FesteRente (146-159) -->
+			<feldreferenz referenz="146-159-FesteRente">
+				<name>Feste Rente</name>
+				<technischerName>FesteRente</technischerName>
+			</feldreferenz>
+			<!-- Betrag KosmetischeOperationen (160-173) -->
+			<feldreferenz referenz="160-173-KosmetischeOperationen">
+				<name>Kosmetische Operationen</name>
+				<technischerName>KosmetischeOperationen</technischerName>
+			</feldreferenz>
+			<!-- Betrag Kurkost (174-187) -->
+			<feldreferenz referenz="174-187-Kurkost">
+				<name>Kurkosten</name>
+				<technischerName>Kurkost</technischerName>
+			</feldreferenz>
+			<!-- Betrag Bergungskosten (188-201) -->
+			<feldreferenz referenz="188-201-Bergungskosten">
+				<name>Bergungskosten</name>
+				<technischerName>Bergungskosten</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Leerstellen (202-255) -->
+			<feldreferenz referenz="202-255-Leerstellen">
+				<name>Leerstellen</name>
+				<technischerName>Leerstellen</technischerName>
+			</feldreferenz>
+			<!-- Zeichen ZusaetzlicheSatzkennung (256-256) -->
+			<feldreferenz referenz="256-256-ZusaetzlicheSatzkennung">
+				<name>zusaetzliche Satzkennung</name>
+				<technischerName>ZusaetzlicheSatzkennung</technischerName>
+			</feldreferenz>
+			<satzende/>
+			<!-- Teildatensatz 3 Satzart 0221.030 -->
+			<satzanfang teilsatz="3"/>
+			<!-- NumFeld Satzart (1-4) -->
+			<feldreferenz referenz="001-004-Satzart">
+				<name>Satzart</name>
+				<technischerName>Satzart</technischerName>
+				<auspraegung>0221</auspraegung>
+			</feldreferenz>
+			<!-- VUNummer VuNr (5-9) -->
+			<feldreferenz referenz="005-009-VuNr">
+				<name>VU-Nummer</name>
+				<technischerName>VuNr</technischerName>
+				<auspraegung>5183</auspraegung>
+			</feldreferenz>
+			<!-- AlphaNumFeld Buendelungskennzeichen (10-10) -->
+			<feldreferenz referenz="010-010-Buendelungskennzeichen">
+				<name>Bündelungskennzeichen</name>
+				<technischerName>Buendelungskennzeichen</technischerName>
+			</feldreferenz>
+			<!-- NumFeld Sparte (11-13) -->
+			<feldreferenz referenz="011-013-Sparte">
+				<name>Sparte</name>
+				<technischerName>Sparte</technischerName>
+				<auspraegung>030</auspraegung>
+			</feldreferenz>
+			<!-- AlphaNumFeld VsNr (14-30) -->
+			<feldreferenz referenz="014-030-VsNr">
+				<name>Versicherungsschein-Nummer</name>
+				<technischerName>VsNr</technischerName>
+			</feldreferenz>
+			<!-- NumFeld FolgeNr (31-32) -->
+			<feldreferenz referenz="031-032-FolgeNr">
+				<name>Folgenummer</name>
+				<technischerName>FolgeNr</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld GeschaeftsstelleVermittler (33-42) -->
+			<feldreferenz referenz="033-042-GeschaeftsstelleVermittler">
+				<name>Geschaeftsstelle/Vermittler</name>
+				<technischerName>GeschaeftsstelleVermittler</technischerName>
+			</feldreferenz>
+			<!-- NumFeld Satznummer (43-43) -->
+			<feldreferenz referenz="043-043-Satznummer">
+				<name>Satznummer</name>
+				<technischerName>Satznummer</technischerName>
+				<auspraegung>3</auspraegung>
+			</feldreferenz>
+			<!-- Betrag Serviceleistungen (44-57) -->
+			<feldreferenz referenz="044-057-Serviceleistungen">
+				<name>Serviceleistungen</name>
+				<technischerName>Serviceleistungen</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Referenznummer (58-64) -->
+			<feldreferenz referenz="058-064-Referenznummer">
+				<name>Referenznummer</name>
+				<technischerName>Referenznummer</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Leerstellen (65-249) -->
+			<feldreferenz referenz="065-249-Leerstellen">
+				<name>Leerstellen</name>
+				<technischerName>Leerstellen</technischerName>
+			</feldreferenz>
+			<!-- NumFeld SatzNrnwiederholung1 (250-250) -->
+			<feldreferenz referenz="250-250-SatzNrnwiederholung1">
+				<name>Satznummernwiederholung</name>
+				<technischerName>SatzNrnwiederholung1</technischerName>
+				<auspraegung>3</auspraegung>
+			</feldreferenz>
+			<!-- NumFeld LfdNrVersichertenPersonVpPersonengruppe (251-256) -->
+			<feldreferenz referenz="251-256-LfdNrVersichertenPersonVpPersonengruppe">
+				<name>Lfd. Nummer der versicherten Person (VP) / Personengruppe</name>
+				<technischerName>LfdNrVersichertenPersonVpPersonengruppe</technischerName>
+			</feldreferenz>
+			<satzende/>
+		</satzart>
+	</satzarten>
+	<felder>
+		<feld referenz="001-004-Satzart">
+			<name>Satzart</name>
+			<bytes>4</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="005-009-VuNr">
+			<name>VU-Nummer</name>
+			<bytes>5</bytes>
+			<datentyp>Vunummer</datentyp>
+		</feld>
+		<feld referenz="010-010-Buendelungskennzeichen">
+			<name>Bündelungskennzeichen</name>
+			<bytes>1</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="011-013-Sparte">
+			<name>Sparte</name>
+			<bytes>3</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="014-030-VsNr">
+			<name>Versicherungsschein-Nummer</name>
+			<bytes>17</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="031-032-FolgeNr">
+			<name>Folgenummer</name>
+			<bytes>2</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="033-042-GeschaeftsstelleVermittler">
+			<name>Geschaeftsstelle/Vermittler</name>
+			<bytes>10</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="043-048-LfdNrVersichertenPersonVpPersonengruppe">
+			<name>Lfd. Nummer der versicherten Person (VP) / Personengruppe</name>
+			<bytes>6</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="049-049-Satznummer">
+			<name>Satznummer</name>
+			<bytes>1</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="050-063-Tod">
+			<name>Tod</name>
+			<bytes>14</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="064-077-Invaliditaet">
+			<name>Invaliditaet</name>
+			<bytes>14</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="078-087-Tagegeld1">
+			<name>Tagegeld 1</name>
+			<bytes>10</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="088-097-Tagegeld2">
+			<name>Tagegeld 2</name>
+			<bytes>10</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="098-107-Krankenhaustagegeld">
+			<name>Krankenhaustagegeld</name>
+			<bytes>10</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="108-117-Genesungsgeld">
+			<name>Genesungsgeld</name>
+			<bytes>10</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="118-131-Uebergangsentschaedigung">
+			<name>Uebergangsentschaedigung</name>
+			<bytes>14</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="132-145-Heilkost">
+			<name>Heilkosten</name>
+			<bytes>14</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="146-159-FesteRente">
+			<name>Feste Rente</name>
+			<bytes>14</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="160-173-KosmetischeOperationen">
+			<name>Kosmetische Operationen</name>
+			<bytes>14</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="174-187-Kurkost">
+			<name>Kurkosten</name>
+			<bytes>14</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="188-201-Bergungskosten">
+			<name>Bergungskosten</name>
+			<bytes>14</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="202-255-Leerstellen">
+			<name>Leerstellen</name>
+			<bytes>54</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="256-256-ZusaetzlicheSatzkennung">
+			<name>zusaetzliche Satzkennung</name>
+			<bytes>1</bytes>
+			<datentyp>Zeichen</datentyp>
+		</feld>
+		<feld referenz="001-004-Satzart">
+			<name>Satzart</name>
+			<bytes>4</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="005-009-VuNr">
+			<name>VU-Nummer</name>
+			<bytes>5</bytes>
+			<datentyp>Vunummer</datentyp>
+		</feld>
+		<feld referenz="010-010-Buendelungskennzeichen">
+			<name>Bündelungskennzeichen</name>
+			<bytes>1</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="011-013-Sparte">
+			<name>Sparte</name>
+			<bytes>3</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="014-030-VsNr">
+			<name>Versicherungsschein-Nummer</name>
+			<bytes>17</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="031-032-FolgeNr">
+			<name>Folgenummer</name>
+			<bytes>2</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="033-042-GeschaeftsstelleVermittler">
+			<name>Geschaeftsstelle/Vermittler</name>
+			<bytes>10</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="043-043-Satznummer">
+			<name>Satznummer</name>
+			<bytes>1</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="044-057-Serviceleistungen">
+			<name>Serviceleistungen</name>
+			<bytes>14</bytes>
+			<datentyp>Betrag</datentyp>
+		</feld>
+		<feld referenz="058-064-Referenznummer">
+			<name>Referenznummer</name>
+			<bytes>7</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="065-249-Leerstellen">
+			<name>Leerstellen</name>
+			<bytes>185</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="250-250-SatzNrnwiederholung1">
+			<name>Satznummernwiederholung</name>
+			<bytes>1</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="251-256-LfdNrVersichertenPersonVpPersonengruppe">
+			<name>Lfd. Nummer der versicherten Person (VP) / Personengruppe</name>
+			<bytes>6</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+	</felder>
+</service>

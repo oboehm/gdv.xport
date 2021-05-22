@@ -49,21 +49,31 @@ public final class Datum extends NumFeld {
     /**
      * Legt ein neues Datums-Feld an. Die Informationen dazu werden
      * aus der uebergebenen Enum bezogen.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param feldX Enum mit den Feldinformationen
      * @since 0.9
+     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     public Datum(final Enum feldX) {
         this(feldX, Feld.getFeldInfo(feldX));
     }
 
     /**
      * Instantiiert ein neues Datum.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param feldX Feld
      * @param info mit Angabe der Start-Adresse
      * @since 0.6
+     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     public Datum(final Enum feldX, final FeldInfo info) {
         super(feldX, info);
         this.dateFormat = getDateFormat(info.anzahlBytes());

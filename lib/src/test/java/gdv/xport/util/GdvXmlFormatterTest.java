@@ -18,7 +18,6 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.demo.MyUnfallDatensatz;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.ByteAdresse;
 import gdv.xport.feld.Feld;
@@ -138,6 +137,11 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
         checkSatzart(SatzTyp.of("0220.010.2.1"), gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2.class);
     }
 
+    @Test
+    public void testSatzart0221030() throws IOException, XMLStreamException {
+        checkSatzart(SatzTyp.of(221, 30), gdv.xport.satz.feld.sparte30.Feld221.class);
+    }
+
     private void checkSatzart(SatzTyp satzTyp, Class<? extends Enum> enumClass) throws IOException, XMLStreamException {
         File target = new File(XML_DIR, String.format("satz%s.xml", satzTyp.toString()));
         try {
@@ -216,11 +220,10 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
     private static void checkTeildatensatz(Teildatensatz reference, Teildatensatz teildatensatz) {
         for (Feld refFeld : reference.getFelder()) {
             Feld feld = teildatensatz.getFeld(ByteAdresse.of(refFeld.getByteAdresse()));
-            assertEquals(refFeld, feld);
             if (feld.getClass().equals(Zeichen.class) && !refFeld.getClass().equals(Zeichen.class)) {
                 LOG.info("Datentyp von {} weicht von {} ab ({}).", refFeld, feld, reference);
             } else {
-                assertEquals(refFeld.getClass(), feld.getClass());
+                assertEquals(refFeld, feld);
             }
         }
         assertEquals(reference, teildatensatz);

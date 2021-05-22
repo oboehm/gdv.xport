@@ -18,10 +18,7 @@
 
 package gdv.xport.satz.xml;
 
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
@@ -219,15 +216,28 @@ public class SatzXmlTest extends AbstractDatensatzTest {
             assertEquals(221, satz221.getSatzart());
             assertEquals(70, satz221.getSparte());
             assertEquals(2, satz221.getNumberOfTeildatensaetze());
-            for (int nr = 1; nr <= 2; nr++) {
-                Teildatensatz tds = satz221.getTeildatensatz(nr);
-                Feld feld = tds.getFeld(Bezeichner.SATZNUMMER);
-                Zeichen satznummer = new Zeichen(Bezeichner.SATZNUMMER, feld.getByteAdresse(), Character.forDigit(nr, 10));
-                assertEquals(satznummer.getByteAdresse(), tds.getSatznummer().getByteAdresse());
-            }
+            checkSatznummer(satz221, 1, ByteAdresse.of(53));
+            checkSatznummer(satz221, 2, ByteAdresse.of(53));
         } finally {
             parser.close();
         }
+    }
+
+    @Test
+    public void testSatz0221030() throws XMLStreamException, IOException {
+        SatzXml satz221 = SatzXml.of("Satz0221.030.xml");
+        assertEquals(221, satz221.getSatzart());
+        assertEquals(30, satz221.getSparte());
+        assertEquals(2, satz221.getNumberOfTeildatensaetze());
+        checkSatznummer(satz221, 2, ByteAdresse.of(49));
+        checkSatznummer(satz221, 3, ByteAdresse.of(43));
+    }
+
+    private void checkSatznummer(SatzXml satz, int nr, ByteAdresse adr) {
+        Teildatensatz tds = satz.getTeildatensatzBySatzNr(nr);
+        Feld feld = tds.getFeld(Bezeichner.SATZNUMMER);
+        assertEquals(Integer.toString(nr), feld.getInhalt());
+        assertEquals(adr.intValue(), feld.getByteAdresse());
     }
 
     /**

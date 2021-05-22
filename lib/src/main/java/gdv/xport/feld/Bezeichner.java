@@ -1656,11 +1656,16 @@ public final class Bezeichner {
      * haben (Beispiel: INTRO1, INTRO2, ...), wird der letzte Buchstabe bei
      * der Suche ausgeblendet.
      * </p>
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
      *
      * @param enumFeld Eintrag aus der Enum-Klasse
      * @return entsprechender Bezeichner
      * @since 3.1
+     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     public static Bezeichner of(final Enum enumFeld) {
         FeldInfo feldInfo = getFeldInfo(enumFeld);
         String bezeichnung = feldInfo != null && StringUtils.isNotBlank(feldInfo.bezeichnung())
