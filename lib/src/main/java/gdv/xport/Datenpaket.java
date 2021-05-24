@@ -48,7 +48,7 @@ import java.util.*;
  * @author oliver
  * @since 23.10.2009
  */
-public final class Datenpaket {
+public class Datenpaket {
 
     private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
     private final Vorsatz vorsatz = new Vorsatz();

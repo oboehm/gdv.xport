@@ -9,6 +9,9 @@
 |Begriff
 |Definition
 
+| Sparte
+| Die Sparte kennzeichnet einen Versicherungsbereich (z.B. Lebensvericherung = Sparte 010).
+
 | VU
 | Versicherungsunternehmen
 
