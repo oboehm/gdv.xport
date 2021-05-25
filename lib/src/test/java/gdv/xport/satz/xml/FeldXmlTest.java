@@ -19,7 +19,7 @@
 package gdv.xport.satz.xml;
 
 import gdv.xport.feld.*;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
