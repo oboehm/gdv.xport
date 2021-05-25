@@ -434,7 +434,7 @@ public class SatzTyp {
 			try {
 				return validate(args);
 			} catch (ValidationException ex) {
-				throw new LocalizedIllegalArgumentException(ex);
+				throw new IllegalArgumentException(ex);
 			}
 		}
 

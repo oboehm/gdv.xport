@@ -399,7 +399,9 @@ public class Vorsatz extends Satz {
      * @param art     Satzart
      * @param version z.B. "1.2"
      * @since 4.1.1
+     * @deprecated durch {@link #setVersion(Bezeichner, String)} ersetzt
      */
+    @Deprecated
     public void setVersion(int art, String version) {
         this.setVersion(getVersionBezeichner(art), version);
     }

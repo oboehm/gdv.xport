@@ -206,8 +206,7 @@ public class SatzRegistry implements VersionHandler {
         try {
             return (Satz) satz.clone();
         } catch (CloneNotSupportedException ex) {
-            LOG.warn("{} fuer Satzart {} konnte nicht geclone't werden:", satz, satztyp, ex);
-            return newInstance(satztyp, satz.getClass());
+            throw new IllegalArgumentException(satztyp + " laesst sich nicht clonen", ex);
         }
     }
 
@@ -242,7 +241,7 @@ public class SatzRegistry implements VersionHandler {
             return xmlService.getSatzart(satztyp);
         } catch (NotRegisteredException ex) {
             if (satztyp.hasParent()) {
-                LOG.debug("{} is not avalaible via XmlService.", satztyp);
+                LOG.error("{} is not available via XmlService.", satztyp);
                 LOG.trace("Details:", ex);
                 SatzXml satz = xmlService.getSatzart(satztyp.getParent());
                 satz.setSparte(satztyp.getSparte());
@@ -355,7 +354,7 @@ public class SatzRegistry implements VersionHandler {
      */
     public Datensatz getDatensatz(final SatzTyp satzNr) {
         Satz satz = registeredSaetze.get(satzNr);
-        if ((satz != null) && (satz instanceof Datensatz)) {
+        if (satz instanceof Datensatz) {
             return (Datensatz) satz;
         }
         return generateDatensatz(satzNr);
@@ -468,7 +467,7 @@ public class SatzRegistry implements VersionHandler {
     }
 
     /**
-     * Liefert die (Default-)Version der angefragten Satzart
+     * Liefert die Version der angefragten Satzart
      *
      * @param satzTyp Satzart
      * @return z.B. "2.4"
