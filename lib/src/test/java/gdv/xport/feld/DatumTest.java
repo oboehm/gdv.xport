@@ -45,7 +45,7 @@ import static org.junit.Assert.assertTrue;
 @RunWith(SmokeRunner.class)
 public final class DatumTest extends AbstractFeldTest {
 
-    private static final Logger LOG = LogManager.getLogger(DatumTest.class);
+    private static final Logger LOG = LogManager.getLogger();
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()

@@ -29,9 +29,17 @@ import java.sql.*;
  */
 public final class LogConfig {
 
-    private static final Logger LOG = LogManager.getLogger(LogConfig.class);
-    private static LogConfig instance = new LogConfig();
+    private static final Logger LOG = LogManager.getLogger();
+    private static LogConfig instance;
     private final URI dbURI;
+
+    static {
+        try {
+            instance = new LogConfig();
+        } catch (ConfigException ex) {
+            LOG.fatal("Kann keine LogConfig-Instanz anlegen:", ex);
+        }
+    }
 
     /**
      * Als Default-Configuration wird eine Inmemory-DB verwendet.   1
