@@ -17,11 +17,17 @@
  */
 package gdv.xport.config;
 
-import org.apache.logging.log4j.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.hsqldb.jdbc.JDBCDriver;
 
 import java.io.UnsupportedEncodingException;
-import java.net.*;
-import java.sql.*;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * In der Klasse LogConfig sind zusaetzliche Angaben zur Log-Konfiguration
@@ -29,16 +35,19 @@ import java.sql.*;
  */
 public final class LogConfig {
 
-    private static final Logger LOG = LogManager.getLogger();
+    private static final Logger LOG;
     private static LogConfig instance;
     private final URI dbURI;
 
     static {
+        JDBCDriver driver = new JDBCDriver();
         try {
             instance = new LogConfig();
         } catch (ConfigException ex) {
-            LOG.fatal("Kann keine LogConfig-Instanz anlegen:", ex);
+            LogManager.getLogger().fatal("Kann keine LogConfig-Instanz anlegen:", ex);
         }
+        LOG = LogManager.getLogger();
+        LOG.debug("{} ist registriert.", driver);
     }
 
     /**
@@ -63,7 +72,6 @@ public final class LogConfig {
         this.dbURI = uri;
         createLogTable(uri);
         instance = this;
-        LOG.trace("LogConfig is created with '{}'.", uri);
     }
 
     /**
@@ -174,7 +182,6 @@ public final class LogConfig {
             stmt.execute(
                     "CREATE TABLE IF NOT EXISTS logbook (event_date TIMESTAMP, level CHAR(5), logger VARCHAR (255), " +
                             "message VARCHAR (65535), throwable VARCHAR (65535))");
-            LOG.debug("Table 'logbook' is created (update count = {}).", stmt.getUpdateCount());
         } catch (SQLException sex) {
             throw new ConfigException("cannot create logbook", sex);
         }
