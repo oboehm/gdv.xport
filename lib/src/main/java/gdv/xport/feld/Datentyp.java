@@ -19,7 +19,10 @@
 package gdv.xport.feld;
 
 import gdv.xport.util.ShitHappenedException;
-import org.apache.commons.lang3.text.WordUtils;
+import org.apache.commons.text.WordUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -61,6 +64,7 @@ public enum Datentyp {
     /** Unbekannter Typ. */
     UNBEKANNT(Feld.class);
 
+    private static final Logger LOG = LogManager.getLogger();
     private final Class<? extends Feld> feldClass;
 
     Datentyp(final Class<? extends Feld> clazz) {
@@ -87,18 +91,34 @@ public enum Datentyp {
     public Feld asFeld(final Bezeichner bezeichner, final int anzahlBytes, final int byteAddress) {
         Class<? extends Feld> clazz = this.asClass();
         try {
-            Constructor<? extends Feld> ctor = clazz.getConstructor(Bezeichner.class, int.class, int.class);
+            Constructor<? extends Feld> ctor = getConstructor(clazz);
             return ctor.newInstance(bezeichner, anzahlBytes, byteAddress);
         } catch (SecurityException ex) {
             throw new ShitHappenedException("cannot instantiate " + clazz, ex);
-        } catch (NoSuchMethodException ex) {
-            throw new ShitHappenedException("cannot find needed constructor of " + clazz, ex);
         } catch (InstantiationException ex) {
             throw new ShitHappenedException("cannot instantiate " + clazz, ex);
         } catch (IllegalAccessException ex) {
             throw new ShitHappenedException("cannot access constructor of " + clazz, ex);
         } catch (InvocationTargetException ex) {
             throw new ShitHappenedException("cannot invoke " + clazz, ex);
+        }
+    }
+
+    private Constructor<? extends Feld> getConstructor(Class<? extends Feld> clazz) {
+        try {
+            Constructor<? extends Feld> ctor = clazz.getConstructor(Bezeichner.class, int.class, int.class);
+            return ctor;
+        } catch (NoSuchMethodException ex) {
+            LOG.debug("{} hat keinen public Constructor ({}).", clazz, ex.getMessage());
+            LOG.trace("Details:", ex);
+            for (Constructor<?> ctor : clazz.getDeclaredConstructors()) {
+                Class<?>[] types = ctor.getParameterTypes();
+                if ((types.length == 3) && types[0].isAssignableFrom(Bezeichner.class) && types[1].isAssignableFrom(int.class) && types[1].isAssignableFrom(int.class)) {
+                    ctor.setAccessible(true);
+                    return (Constructor<? extends Feld>) ctor;
+                }
+            }
+            throw new ShitHappenedException("cannot find needed constructor of " + clazz, ex);
         }
     }
 

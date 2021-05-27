@@ -58,7 +58,7 @@ public class Zeichen extends AlphaNumFeld {
      * @param length Laenge
      * @param start die Byte-Adresse
      */
-    public Zeichen(Bezeichner bezeichner, int length, int start) {
+    private Zeichen(Bezeichner bezeichner, int length, int start) {
         super(bezeichner, length, start);
     }
 
