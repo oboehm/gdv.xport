@@ -49,14 +49,7 @@ public class VUNummer extends AlphaNumFeld {
         super.setAnzahlBytes(5);
     }
 
-    /**
-     * Diese Konstruktor ist nur fuer den internen Gebrauch gedacht.
-     *
-     * @param bezeichner Bezeichner
-     * @param length     Laenge
-     * @param start      Start-Adresse
-     */
-    public VUNummer(Bezeichner bezeichner, int length, int start) {
+    private VUNummer(Bezeichner bezeichner, int length, int start) {
         super(bezeichner, length, start);
     }
 

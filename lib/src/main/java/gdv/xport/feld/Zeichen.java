@@ -50,14 +50,6 @@ public class Zeichen extends AlphaNumFeld {
         this(bezeichner, 1, start);
     }
 
-    /**
-     * Nur fuer den internen Gebrauch. Wird vom XmlService verwendet, um
-     * Felder vorzubelegen.
-     *
-     * @param bezeichner der Bezeichner
-     * @param length Laenge
-     * @param start die Byte-Adresse
-     */
     private Zeichen(Bezeichner bezeichner, int length, int start) {
         super(bezeichner, length, start);
     }
