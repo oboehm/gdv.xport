@@ -108,6 +108,7 @@ public final class Bezeichner {
     public static final Bezeichner ANZAHL_DER_VERSICHERTEN_TIERE_OHNE_NAMENSANGABE_TIERGRUPPE = new Bezeichner("Anzahl der versicherten Tiere ohne Namensangabe (Tiergruppe)", "AnzahlDerVersichertenTiereOhneNamensangabeTiergruppe");
     public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO1 = new Bezeichner("Anzahl der Plaetze (Risiko 1)", "AnzPlaetzeRisiko1");
     public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO2 = new Bezeichner("Anzahl der Plaetze (Risiko 2)", "AnzPlaetzeRisiko2");
+    public static final Bezeichner ART1 = new Bezeichner("Art1", "Art1", "Art");
     /** Fuer 0220.580 */
     public static final Bezeichner ART_580 = new Bezeichner("Art");
     public static final Bezeichner ART_DER_HALTUNG = new Bezeichner("Art der Haltung", "ArtDerHaltung");
@@ -481,6 +482,7 @@ public final class Bezeichner {
     public static final Bezeichner HAFTUNG_BIS = new Bezeichner("Haftung bis");
     public static final Bezeichner HAFTUNG_BIS2 = new Bezeichner("Haftung bis 2");
     public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten", "HaftungswertungssummeInWE", "HaftungswertungssummeInWE1");
+    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN1 = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten 1", "HaftungswertungssummeInWE1", "HaftungswertungssummeInWE");
     public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten 2");
     public static final Bezeichner HAUPTFAELLIGKEIT = new Bezeichner("Hauptfaelligkeit");
     public static final Bezeichner HEILKOSTEN = new Bezeichner("Heilkosten", "Heilkost");
@@ -1596,9 +1598,6 @@ public final class Bezeichner {
             vars.add(Bezeichner.of("Version " + name));
         } else if (getName().startsWith("Version")) {
             vars.add(Bezeichner.of(getName().substring(7).trim()));
-        } else if (lastchar == '1') {
-            String shorten = getTechnischerName().substring(0, getTechnischerName().length()-1).trim();
-            vars.add(Bezeichner.of(shorten));
         }
         return vars;
     }
