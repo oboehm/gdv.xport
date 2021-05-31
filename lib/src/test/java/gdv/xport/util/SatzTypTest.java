@@ -18,7 +18,6 @@
 
 package gdv.xport.util;
 
-import gdv.xport.satz.feld.common.WagnisartLeben;
 import org.junit.Test;
 import patterntesting.runtime.junit.ObjectTester;
 
@@ -47,8 +46,8 @@ public class SatzTypTest {
      */
     @Test
     public void testNotEquals() {
-        SatzTyp one = SatzTyp.of(1, 1);
-        SatzTyp other = SatzTyp.of(1, 1, 1);
+        SatzTyp one = SatzTyp.of(220, 10);
+        SatzTyp other = SatzTyp.of(220, 10, 2);
         assertNotEquals(other, one.equals(other));
     }
 
@@ -58,9 +57,9 @@ public class SatzTypTest {
      */
     @Test
     public void testEqualsSparte() {
-        SatzTyp satz210 = new SatzTyp(210, 30);
-        SatzTyp sparte30 = SatzTyp.of(210, 30, WagnisartLeben.NULL.getCode());
-        ObjectTester.assertEquals(satz210, sparte30);
+        SatzTyp satz220 = new SatzTyp(220, 10);
+        SatzTyp sparte10 = SatzTyp.of(220, 10, 0);
+        ObjectTester.assertEquals(satz220, sparte10);
     }
 
     /**
@@ -110,6 +109,11 @@ public class SatzTypTest {
     @Test(expected = IllegalArgumentException.class)
     public void testOfInvalid() {
         SatzTyp.of("0001.a");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testOfInvalidString() {
+        SatzTyp.of("0220.020.2.1");
     }
 
     @Test

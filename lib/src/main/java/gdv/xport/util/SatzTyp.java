@@ -18,7 +18,6 @@
 
 package gdv.xport.util;
 
-import de.jfachwert.pruefung.exception.LocalizedIllegalArgumentException;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -418,10 +417,92 @@ public class SatzTyp {
 		 * @return das Array selber (zur Weiterverarbeitung)
 		 */
 		public int[] validate(int[] args) {
-			if ((args.length < 1) || (args.length > 4)) {
-				throw new ValidationException("array " + Arrays.toString(args) + ": expected size is 1..4");
+			validateLength(args, 4);
+			switch(args[0]) {
+				case 1:
+				case 9999:
+					validateLength(args, 1);
+					break;
+				case 52:
+				case 100:
+				case 102:
+				case 200:
+				case 202:
+				case 210:
+				case 230:
+				case 260:
+				case 270:
+				case 280:
+				case 291:
+				case 292:
+				case 293:
+				case 294:
+				case 295:
+				case 300:
+				case 342:
+				case 350:
+				case 352:
+				case 362:
+				case 372:
+				case 382:
+				case 390:
+				case 392:
+				case 400:
+				case 410:
+				case 420:
+				case 430:
+				case 450:
+				case 500:
+				case 550:
+				case 600:
+				case 9950:
+				case 9951:
+				case 9952:
+					validateLength(args, 2);
+					break;
+				case 220:
+					validateSatzart0220(args);
+					break;
 			}
 			return args;
+		}
+
+		private static void validateLength(int[] args, int max) {
+			if ((args.length < 1) || (args.length > max)) {
+				throw new ValidationException("array " + Arrays.toString(args) + ": expected size is 1.." + max);
+			}
+		}
+
+		private void validateSatzart0220(int[] args) {
+			if (args.length > 1) {
+				switch (args[1]) {
+					case 0:
+					case 30:
+					case 40:
+					case 51:
+					case 52:
+					case 53:
+					case 54:
+					case 55:
+					case 59:
+					case 70:
+					case 80:
+					case 110:
+					case 170:
+					case 190:
+					case 510:
+					case 550:
+					case 560:
+					case 570:
+					case 684:
+						validateLength(args, 2);
+						break;
+					case 20:
+					case 580:
+						validateLength(args, 3);
+						break;
+				}
+			}
 		}
 
 		/**
