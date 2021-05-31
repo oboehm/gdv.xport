@@ -27,9 +27,11 @@ import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
+import org.apache.commons.lang3.Range;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.validation.ValidationException;
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -55,6 +57,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SatzRegistry implements VersionHandler {
 
     private static final Logger LOG = LogManager.getLogger(SatzRegistry.class);
+    /** Default-Validator, der nur Satzart 800 - 899 akzeptiert. */
+    public static final Validator VALIDATOR = new Validator();
+    /** Dieser Validator akzeptiert alle Satzarten zwischen 0 und 9999. */
+    public static final Validator NO_VALIDATOR = new Validator(Range.between(0, 9999));
     private static final Map<String, SatzRegistry> INSTANCES = new HashMap<>();
     private final Map<SatzTyp, Satz> registeredSaetze = new ConcurrentHashMap<>();
     private final XmlService xmlService;
@@ -119,12 +125,27 @@ public class SatzRegistry implements VersionHandler {
      * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
      * unterstuetzte Datensaetze) registriert werden. Die Kasse <em>muss</em>
      * einen Default-Konstruktor bereitstellen. Ansonsten wird hier eine
-     * {@link IllegalArgumentException} geworfen (seit 0.6).
+     * {@link IllegalArgumentException} geworfen.
      *
      * @param clazz   the clazz
      * @param satzart the satzart
      */
     public void register(final Class<? extends Satz> clazz, final int satzart) {
+        register(clazz, satzart, VALIDATOR);
+    }
+
+    /**
+     * Mit dieser Methode kann ein Validator mit uebergeben werden. So kann
+     * z.B. {@link SatzRegistry#NO_VALIDATOR} mit uebergeben werden, um die
+     * Default-Validierung abzuschalten. Als Default werden nur Datensaetze
+     * mit der Satzart 800 - 899 zugelassen.
+     *
+     * @param clazz   the clazz
+     * @param satzart the satzart
+     * @param validator fuer die Validierung der Satzart
+     * @see #register(Satz, SatzTyp)
+     */
+    public void register(final Class<? extends Satz> clazz, final int satzart, Validator validator) {
         try {
             Constructor<? extends Satz> ctor = clazz.getConstructor();
             LOG.debug("Default constructor {} found.", ctor);
@@ -132,7 +153,7 @@ public class SatzRegistry implements VersionHandler {
             throw new IllegalArgumentException("no default constructor found in " + clazz, ex);
         }
         SatzTyp satzTyp = SatzTyp.of(satzart);
-        register(newInstance(satzTyp, clazz), satzTyp);
+        register(newInstance(satzTyp, clazz), satzTyp, validator);
     }
 
     /**
@@ -145,7 +166,7 @@ public class SatzRegistry implements VersionHandler {
      */
     @Deprecated
     public void registerEnum(final Class<? extends Enum> enumClass, final SatzTyp satzNr) {
-        register(new SatzX(satzNr, enumClass), satzNr);
+        register(new SatzX(satzNr, enumClass), satzNr, NO_VALIDATOR);
     }
 
     /**
@@ -165,9 +186,24 @@ public class SatzRegistry implements VersionHandler {
      *
      * @param satz   Satz-Vorlage (z.B. SatzXml.of("Satz0221.051.xml"))
      * @param satzNr Satzart (z.B. SatzTyp.of("0221.051"))
-     * @since 5.0
      */
     public void register(final Satz satz, final SatzTyp satzNr) {
+        register(satz, satzNr, VALIDATOR);
+    }
+
+    /**
+     * Mit dieser register-Methode kann ein eigener Validator mit uebergeben
+     * werden. Dies ist hilfreich, wenn man den vom GDV vorgegebenen Bereich
+     * fuer eigene Datensaetze (800-899) verlassen will. Dann kann man z.B.
+     * den NO_VALIDATOR uebergeben, der alle Satzarten zwischen 0 und 9999
+     * akzeptiert.
+     *
+     * @param satz   Satz-Vorlage (z.B. SatzXml.of("Satz0221.051.xml"))
+     * @param satzNr Satzart (z.B. SatzTyp.of("0221.051"))
+     * @param validator Validator fuer den SatzTyp
+     */
+    public void register(final Satz satz, final SatzTyp satzNr, Validator validator) {
+        validator.validate(satzNr);
         registeredSaetze.put(satzNr, satz);
     }
 
@@ -475,6 +511,25 @@ public class SatzRegistry implements VersionHandler {
     @Override
     public String getVersionOf(SatzTyp satzTyp) {
         return getDatensatz(satzTyp).getSatzversion().getInhalt();
+    }
+
+
+
+    static class Validator {
+        private final Range<Integer> allowed;
+        public Validator() {
+            this(Range.between(800, 899));
+        }
+        public Validator(Range<Integer> allowed) {
+            this.allowed = allowed;
+        }
+        public SatzTyp validate(SatzTyp x) {
+            if (allowed.contains(x.getSatzart())) {
+                return x;
+            } else {
+                throw new ValidationException(x.getSatzart() + " liegt ausserhalb von " + allowed);
+            }
+        }
     }
 
 }

@@ -71,7 +71,7 @@ public final class SatzFactory {
      * @since 0.2
      */
     public static void register(final Class<? extends Satz> clazz, final int satzart) {
-        FACTORY.register(clazz, satzart);
+        FACTORY.register(clazz, satzart, SatzRegistry.NO_VALIDATOR);
     }
 
     /**

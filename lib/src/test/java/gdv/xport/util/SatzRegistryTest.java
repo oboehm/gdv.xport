@@ -20,9 +20,12 @@ package gdv.xport.util;
 
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
+import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Vorsatz;
 import org.junit.Test;
+
+import javax.validation.ValidationException;
 
 import static org.junit.Assert.*;
 
@@ -80,6 +83,11 @@ public final class SatzRegistryTest {
     public void testGetNachsatz2015() {
         Nachsatz nachsatz = f2015.getNachsatz();
         assertEquals("1.1", nachsatz.getSatzversion().getInhalt());
+    }
+
+    @Test(expected = ValidationException.class)
+    public void testRegister() {
+        f2018.register(Datensatz.class, 47);
     }
 
 }
