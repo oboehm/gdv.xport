@@ -22,7 +22,6 @@ import gdv.xport.util.ShitHappenedException;
 import org.apache.commons.text.WordUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -113,7 +112,7 @@ public enum Datentyp {
             LOG.trace("Details:", ex);
             for (Constructor<?> ctor : clazz.getDeclaredConstructors()) {
                 Class<?>[] types = ctor.getParameterTypes();
-                if ((types.length == 3) && types[0].isAssignableFrom(Bezeichner.class) && types[1].isAssignableFrom(int.class) && types[1].isAssignableFrom(int.class)) {
+                if ((types.length == 3) && types[0].isAssignableFrom(Bezeichner.class) && types[1].isAssignableFrom(int.class) && types[2].isAssignableFrom(int.class)) {
                     ctor.setAccessible(true);
                     return (Constructor<? extends Feld>) ctor;
                 }
