@@ -80,35 +80,6 @@
         </executions>
       </plugin>
 
-      <!--
-        AspectJ compiler
-        @see http://www.mail-archive.com/user@mojo.codehaus.org/msg00157.html
-        @see http://mail-archives.apache.org/mod_mbox/maven-users/200601.mbox/%3CB39B8F0E-BB20-44DB-96B3-3C7FCB85B594@gmail.com%3E
-        @see http://mojo.codehaus.org/aspectj-maven-plugin/differentTestAndCompile.html
-       -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>aspectj-maven-plugin</artifactId>
-        <version>1.9</version>
-        <configuration>
-          <ajdtBuildDefFile>build.ajproperties</ajdtBuildDefFile>
-          <aspectLibraries>
-            <aspectLibrary>
-              <groupId>org.patterntesting</groupId>
-              <artifactId>patterntesting-rt</artifactId>
-            </aspectLibrary>
-            <aspectLibrary>
-              <groupId>org.patterntesting</groupId>
-              <artifactId>patterntesting-check-ct</artifactId>
-            </aspectLibrary>
-            <aspectLibrary>
-              <groupId>org.patterntesting</groupId>
-              <artifactId>patterntesting-check-rt</artifactId>
-            </aspectLibrary>
-          </aspectLibraries>
-        </configuration>
-      </plugin>
-
 	  <!-- we must set some system properties for testing -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -225,11 +196,25 @@
           <groupId>com.google.code.findbugs</groupId>
           <artifactId>jsr305</artifactId>
         </exclusion>
+        <exclusion>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter</artifactId>
+        </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-concurrent</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.patterntesting</groupId>
+      <artifactId>patterntesting-compat</artifactId>
       <scope>test</scope>
     </dependency>
 
