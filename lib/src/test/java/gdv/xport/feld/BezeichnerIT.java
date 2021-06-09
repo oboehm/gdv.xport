@@ -111,9 +111,9 @@ public class BezeichnerIT {
         VuvmHandler handler = new VuvmHandler();
         handler.scan("src/main/resources/gdv/xport/satz/xml/VUVM2018.xml");
         TECHNISCHE_NAMEN.addAll(handler.getTechnischeNamen());
-        TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil1");
-        TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil2");
-        TECHNISCHE_NAMEN.add("KhDeckungssummenInWETeil3");
+        TECHNISCHE_NAMEN.addAll(Arrays.asList("DynamikInProz", "KhDeckungsart",
+                "KhDeckungssummenInWETeil1", "KhDeckungssummenInWETeil2", "KhDeckungssummenInWETeil3",
+                "Mengenschluessel", "Risikozuschlag", "VpPersonenNrVersicherers"));
     }
 
     /**
@@ -157,12 +157,12 @@ public class BezeichnerIT {
         }
 
         @Override
-        public void characters(char[] ch, int start, int length) throws SAXException {
+        public void characters(char[] ch, int start, int length) {
             elementValue = new String(ch, start, length);
         }
 
         @Override
-        public void endElement(String uri, String localName, String qName) throws SAXException {
+        public void endElement(String uri, String localName, String qName) {
             if ("technischerName".equals(qName)) {
                 technischeNamen.add(elementValue);
             }
