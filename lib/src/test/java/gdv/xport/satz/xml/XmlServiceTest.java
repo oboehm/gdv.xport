@@ -165,6 +165,13 @@ public class XmlServiceTest extends AbstractXmlTest {
         assertNotNull(satzXml.getFeld(Bezeichner.SATZ_NR_1));
     }
 
+    @Test
+    public void testSatzart210Sparte0() {
+        SatzXml satzXml = xmlService.getSatzart(SatzTyp.of("0210.000"));
+        assertEquals(210, satzXml.getSatzart());
+        assertEquals(SatzTyp.of("0210.000"), satzXml.getSatzTyp());
+    }
+
     /**
      * Hier testen wir, ob die XML-Variante mit {@link Satz210}, Sparte 50
      * uebereinstimmt.
