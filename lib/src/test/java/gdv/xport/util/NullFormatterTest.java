@@ -23,12 +23,10 @@ import gdv.xport.event.ImportListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.junit.FileTester;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * JUnit-Tests fuer die {@link NullFormatter}-Klasse.
@@ -36,7 +34,6 @@ import java.io.*;
  * @author oliver (ob@aosd.de)
  * @since 0.5.1 (26.01.2011)
  */
-@RunWith(SmokeRunner.class)
 public class NullFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger(NullFormatterTest.class);
@@ -69,11 +66,10 @@ public class NullFormatterTest extends AbstractFormatterTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @IntegrationTest
     @Test
     public void testWriteDatenpaketToFile() throws IOException {
         File output = File.createTempFile("output", ".txt");
-        Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1");
+        Writer writer = new OutputStreamWriter(new FileOutputStream(output), StandardCharsets.ISO_8859_1);
         NullFormatter formatter = new NullFormatter(writer);
         Datenpaket datenpaket = new Datenpaket();
         try {
@@ -93,11 +89,10 @@ public class NullFormatterTest extends AbstractFormatterTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @IntegrationTest
     @Test
     public void testNotice() throws IOException {
         File output = new File("target", "testNotice.txt");
-        Writer writer = new OutputStreamWriter(new FileOutputStream(output), "ISO-8859-1");
+        Writer writer = new OutputStreamWriter(new FileOutputStream(output), StandardCharsets.ISO_8859_1);
         try {
             exportMusterdatei(new NullFormatter(writer));
             writer.close();

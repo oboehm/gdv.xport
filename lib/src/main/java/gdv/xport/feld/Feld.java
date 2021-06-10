@@ -349,10 +349,17 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     /**
-     * Sets the inhalt.
+     * Setzt den Inhalt. Hierueber kann auch ein Inhalt gesetzt werden, der
+     * nicht zum Datentyp passt (z.B. Buchstaben in einem {@link NumFeld},
+     * damit ein Import nicht beim ersten fehlerhaften Feld abbricht.
+     * Dieses Verhalten kann auch nicht von Unterklassen ueberschrieben
+     * werden, da diese Methode 'final' ist.
+     * <p>
+     * Um festzustellen, ob ein Feld einen gueltigen Wert hat, kann die
+     * {@link #isValid()}-Methode verwendet werden.
+     * </p>
      *
-     * @param s
-     *            the new inhalt
+     * @param s der neue Inhalt
      */
     public final void setInhalt(final String s) {
         int anzahlBytes = this.getAnzahlBytes();

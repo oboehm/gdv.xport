@@ -22,10 +22,6 @@ import gdv.xport.Datenpaket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.xml.sax.SAXException;
-import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -39,7 +35,6 @@ import static org.junit.Assert.assertTrue;
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (23.11.2010)
  */
-@RunWith(SmokeRunner.class)
 public class HtmlFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger(HtmlFormatter.class);
@@ -53,11 +48,9 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
      * Tested den Export eines Datenpakets als HTML.
      *
      * @throws XMLStreamException falls was schiefgelaufen ist
-     * @throws SAXException falls was schiefgelaufen ist
-     * @throws IOException falls was schiefgelaufen ist
      */
     @Test
-    public void testWriteDatenpaket() throws XMLStreamException, SAXException, IOException {
+    public void testWriteDatenpaket() throws XMLStreamException {
         Datenpaket datenpaket = new Datenpaket();
         String htmlString = HtmlFormatter.toString(datenpaket);
         LOG.debug(datenpaket + " as HTML:\n" + htmlString);
@@ -70,13 +63,9 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
      * Fuer Umlaute sollte die HTML-Ersatzdarstellung verwendet werden, um
      * Encoding-Probleme zu vermeiden. Da dies der verwendete XMLStreamWriter
      * nicht zulaesst, wurde diese Methode wieder auskommentiert.
-     *
-     * @throws XMLStreamException falls was schiefgelaufen ist
-     * @throws SAXException falls was schiefgelaufen ist
-     * @throws IOException falls was schiefgelaufen ist
      */
     //@Test
-    public void testUmlauts() throws XMLStreamException, SAXException, IOException {
+    public void testUmlauts() {
         String absender = "\u00dcb\u00e4rraschung-AG";
         Datenpaket datenpaket = new Datenpaket();
         datenpaket.setAbsender(absender);
@@ -87,12 +76,10 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
     /**
      * Tested die Formatierung der Musterdatei als HTML.
      *
-     * @throws XMLStreamException falls was schiefgelaufen ist
      * @throws IOException falls was schiefgelaufen ist
      */
     @Test
-    @IntegrationTest
-    public void testMusterdatei() throws IOException, XMLStreamException {
+    public void testMusterdatei() throws IOException {
         exportMusterdatei(new HtmlFormatter(), "musterdatei_041222.html");
     }
 
@@ -103,7 +90,6 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
      * @throws IOException falls was schiefgelaufen ist
      */
     @Test
-    @IntegrationTest
     public void testNotice() throws IOException {
         checkNotice(new HtmlFormatter(), "musterdatei_041222.html");
     }

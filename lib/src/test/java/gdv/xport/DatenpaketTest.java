@@ -53,30 +53,13 @@ import static org.junit.Assert.*;
 
 /**
  * JUnit- und Integrations-Tests fuer {@link Datenpaket}-Klasse. Die
- * Integrationstests sind durch "@IntegrationTest" gekennzeichnet und werden
- * ueber
- * <ul>
- *  <li>-Dpatterntesting.integrationTest</li>
- * </ul>
- * aktiviert. Sie sind standardmaessig ausgeblendet, weil sie etwas laenger
- * dauern.
- * <p>
- * Um die Import- oder Export-Tests auszublenden, koennen beim Aufruf die
- * Optionen
- * </p>
- * <ul>
- *  <li>-DSKIP_IMPORT_TEST</li>
- *  <li>-DSKIP_EXPORT_TEST</li>
- * </ul>
- * <p>
- * angegeben werden. Entsprechend beide Properties sind zu setzen, wenn
- * beides, Import- und Export-Tests, ausgeblendet werden sollen.
- * </p>
+ * Integrationstests waren urspruenglich durch "@IntegrationTest" gekennzeichnet.
+ * Mit dem JUnit-Vintage-Runner aus JUnit 5 has aber nicht mehr zuverlaessig
+ * funktioniert, sodass jetzt darauf verzichtet wird.
  *
  * @author oliver
  * @since 23.10.2009
  */
-@RunWith(SmokeRunner.class)
 public final class DatenpaketTest {
 
     private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
@@ -91,7 +74,6 @@ public final class DatenpaketTest {
      * @throws IOException falls z.B. die Platte voll ist
      */
     @Test
-    @SkipTestOn(property = "SKIP_EXPORT_TEST")
     public void testEmptyExport() throws IOException {
         Datenpaket empty = new Datenpaket();
         StringWriter swriter = new StringWriter(1024);
@@ -332,9 +314,7 @@ public final class DatenpaketTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	@IntegrationTest
 	@Test
-	@SkipTestOn(property = "SKIP_IMPORT_TEST")
 	public void testTeildatensatzWechsel() throws IOException {
 		InputStream istream = this.getClass().getResourceAsStream("/teildatensatz_wechsel.gdv");
 		datenpaket.importFrom(istream);
@@ -352,9 +332,7 @@ public final class DatenpaketTest {
      * @since 0.5.0
      * @throws IOException falls die Platte kaputt ist
      */
-    @IntegrationTest
     @Test
-    @SkipTestOn(property = { "SKIP_IMPORT_TEST", "SKIP_EXPORT_TEST" })
     public void testImportExport() throws IOException {
         Config.setEOD("\n");
         String muster = getResourceAsString("/musterdatei_041222.txt");
@@ -399,7 +377,6 @@ public final class DatenpaketTest {
      * @throws IOException bei I/O-Problemen
      */
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testBenderLeben() throws IOException {
         importResource("/Bender_Leben.GDV");
     }
@@ -410,7 +387,6 @@ public final class DatenpaketTest {
      * @throws IOException bei I/O-Problemen
      */
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testLebenWagnis2Riester() throws IOException {
         importResource("/Leben_Wagnis2_Riester.GDV");
     }
@@ -421,7 +397,6 @@ public final class DatenpaketTest {
      * @throws IOException bei I/O-Problemen
      */
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testLebenWagnis3Riskikoversicherung() throws IOException {
         importResource("/Leben_Wagnis3_Risikoversicherung.GDV");
     }
@@ -432,7 +407,6 @@ public final class DatenpaketTest {
      * @throws IOException bei I/O-Problemen
      */
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testLebenWagnis4BU() throws IOException {
         importResource("/Leben_Wagnis4_BU.GDV");
     }
