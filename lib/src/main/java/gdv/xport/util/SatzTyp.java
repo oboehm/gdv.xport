@@ -118,7 +118,7 @@ public class SatzTyp {
 			array[i] = (short) args[i];
 		}
 		int satzart = array[0];
-		if (((satzart == 210 ) || (satzart == 211 ) || (satzart == 220 )) && (args.length < 2)) {
+		if (((satzart == 210 ) || (satzart == 211 ) || (satzart == 220 )|| (satzart == 221)) && (args.length < 2)) {
 			array = ArrayUtils.add(array, (short) 0);
 		}
 		if ((array.length == 2) && (satzart == 220) && (array[1] == 10)) {
@@ -463,6 +463,9 @@ public class SatzTyp {
 				case 220:
 					validateSatzart0220(args);
 					break;
+        case 221:
+          validateSatzart0221(args);
+          break;
 			}
 			return args;
 		}
@@ -504,6 +507,39 @@ public class SatzTyp {
 				}
 			}
 		}
+
+    private void validateSatzart0221(int[] args)
+    {
+      if (args.length > 1)
+      {
+        switch (args[1])
+        {
+          case 0:
+          case 30:
+          case 40:
+          case 51:
+          case 52:
+          case 53:
+          case 54:
+          case 55:
+          case 59:
+          case 70:
+          case 80:
+          case 110:
+          case 130:
+          case 140:
+          case 170:
+          case 190:
+          case 510:
+          case 550:
+          case 560:
+          case 570:
+          case 684:
+            validateLength(args, 2);
+            break;
+        }
+      }
+    }
 
 		/**
 		 * Der Unterschied zu validate liegt nur in der ausgeloesten Exception.
