@@ -23572,7 +23572,7 @@
 			</feldreferenz>
 			<satzende/>
 		</satzart>
-		<!-- Satzart 0211 -->
+		<!-- Satzart 0211.000 -->
 		<satzart>
 			<kennzeichnung>
 				<feldreferenz referenz="001-004-Satzart">
@@ -23849,7 +23849,7 @@
 			</feldreferenz>
 			<satzende/>
 		</satzart>
-		<!-- Satzart 0210 -->
+		<!-- Satzart 0210.000 -->
 		<satzart>
 			<kennzeichnung>
 				<feldreferenz referenz="001-004-Satzart">
@@ -27681,7 +27681,7 @@
 			</feldreferenz>
 			<satzende/>
 		</satzart>
-		<!-- Satzart 0220 -->
+		<!-- Satzart 0220.000 -->
 		<satzart>
 			<kennzeichnung>
 				<feldreferenz referenz="001-004-Satzart">
@@ -28541,7 +28541,7 @@
 			</feldreferenz>
 			<satzende/>
 		</satzart>
-		<!-- Satzart 0221 -->
+		<!-- Satzart 0221.000 -->
 		<satzart>
 			<kennzeichnung>
 				<feldreferenz referenz="001-004-Satzart">
