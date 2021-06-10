@@ -338,7 +338,7 @@ public class Vorsatz extends Satz {
             this.set(bezeichner, satz.getSatzversion()
                     .getInhalt());
         } else {
-            LOG.warn("Version Satzart {} ist im Vorsatz unbekannt.", satz.getSatzTyp());
+            LOG.debug("Version Satzart {} ist im Vorsatz unbekannt.", satz.getSatzTyp());
         }
     }
 
