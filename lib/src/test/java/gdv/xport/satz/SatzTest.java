@@ -543,6 +543,12 @@ public final class SatzTest extends AbstractSatzTest {
         assertNotEquals(satz102.toLongString(), testsatz.toLongString());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetNumFeldWithLetter() {
+        Satz satz200 = XmlService.getInstance().getSatzart(SatzTyp.of("0200"));
+        satz200.set(Bezeichner.GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN, "A99999999999");
+    }
+
     static class TestSatz extends Satz {
         public TestSatz(int art, List<? extends Teildatensatz> tdsList) {
             super(art, tdsList);

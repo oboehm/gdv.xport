@@ -286,7 +286,7 @@ public abstract class Satz implements Cloneable {
 			throw new IllegalArgumentException(n + " liegt nicht zwischen 1 und "
 			        + this.teildatensatz.length);
 		}
-		this.teildatensatz = (Teildatensatz[]) ArrayUtils.remove(this.teildatensatz, n - 1);
+		this.teildatensatz = ArrayUtils.remove(this.teildatensatz, n - 1);
 	}
 
 	/**
@@ -296,7 +296,7 @@ public abstract class Satz implements Cloneable {
      * @since 0.4
 	 */
 	public final void add(final Teildatensatz tds) {
-		this.teildatensatz = (Teildatensatz[]) ArrayUtils.add(this.teildatensatz, tds);
+		this.teildatensatz = ArrayUtils.add(this.teildatensatz, tds);
 	}
 
 	/**
@@ -395,6 +395,9 @@ public abstract class Satz implements Cloneable {
         	if (tds.hasFeld(name)) {
         		Feld x = tds.getFeld(name);
         		x.setInhalt(value);
+        		if (x.isInvalid()) {
+        			throw new IllegalArgumentException(String.format("ungueltiger Wert '%s' fuer %s", value, x));
+				}
         		found = true;
 			}
         }
