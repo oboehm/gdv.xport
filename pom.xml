@@ -128,7 +128,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.2.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -215,7 +215,6 @@
       -->
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.6</version>
         <configuration>
           <locales>de</locales>
           <outputEncoding>UTF-8</outputEncoding>
