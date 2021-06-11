@@ -384,6 +384,13 @@ public class SatzRegistry implements VersionHandler {
      * Falls der gewuenschte Datensatz nicht registriert ist, wird der Datensatz
      * anhand der von {@link XmlService} bestimmt.
      * </p>
+     * <p>
+     * Im Gegensatz zu {@link #getSatz(SatzTyp)} wird hier auf jeden Fall
+     * ein Datensatz zurueckgeliefert, auch wenn der SatzTyp weder registriert
+     * noch ueber den {@link XmlService} verfuegbar ist. Dies ist vor allem
+     * fuer den Import relevant, damit er nicht bei unbekannten Datensaetzen
+     * abbricht.
+     * </p>
      *
      * @param satzNr z.B. SatzTyp.of("0210.070.1.6")
      * @return den passenden Datensatz
@@ -397,9 +404,6 @@ public class SatzRegistry implements VersionHandler {
     }
 
     private Datensatz generateDatensatz(SatzTyp satzNr, Class<? extends Datensatz> clazz) {
-        if (clazz == null) {
-            return generateDatensatz(satzNr);
-        }
         try {
             Constructor<? extends Datensatz> ctor = clazz.getConstructor(int.class, int.class);
             return ctor.newInstance(satzNr.getSatzart(), satzNr.getSparte());
