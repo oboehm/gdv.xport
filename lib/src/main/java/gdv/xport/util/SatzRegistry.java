@@ -248,7 +248,7 @@ public class SatzRegistry implements VersionHandler {
 
     private static Satz newInstance(SatzTyp satztyp, Class<? extends Satz> clazz) {
         try {
-            Satz satz = clazz.newInstance();
+            Satz satz = clazz.getDeclaredConstructor().newInstance();
             if (satz.getSatzart() != satztyp.getSatzart()) {
                 Constructor<? extends Satz> ctor = clazz.getConstructor(int.class);
                 satz = ctor.newInstance(satztyp.getSatzart());
@@ -433,11 +433,9 @@ public class SatzRegistry implements VersionHandler {
 
     private static Datensatz getDatensatz(final Class<? extends Datensatz> clazz) {
         try {
-            return clazz.newInstance();
-        } catch (InstantiationException e) {
+            return clazz.getDeclaredConstructor().newInstance();
+        } catch (ReflectiveOperationException e) {
             throw new IllegalArgumentException("can't instantiate " + clazz, e);
-        } catch (IllegalAccessException e) {
-            throw new IllegalArgumentException("can't access default constructor of " + clazz, e);
         }
     }
 
@@ -495,6 +493,16 @@ public class SatzRegistry implements VersionHandler {
             all.add(satz);
         }
         return all;
+    }
+
+    /**
+     * Liefert das Release der jeweiligen XML-Beschreibung, aus der die GDV-Datensaetze erzeugt
+     * wurden.
+     *
+     * @return das Release der erzeugten XmlSaetze
+     */
+    public String getGdvRelease() {
+        return xmlService.getGdvRelease();
     }
 
     @Override

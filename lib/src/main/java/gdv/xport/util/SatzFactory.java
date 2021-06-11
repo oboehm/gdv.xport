@@ -399,4 +399,14 @@ public final class SatzFactory {
         return FACTORY.getNachsatz();
     }
 
+  /**
+   * Liefert das Release der jeweiligen XML-Beschreibung, aus der die GDV-Datensaetze erzeugt
+   * wurden.
+   *
+   * @return das Release der erzeugten XmlSaetze
+   */
+  public static String getGdvRelease() {
+    return FACTORY.getGdvRelease();
+  }
+
 }

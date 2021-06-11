@@ -32,6 +32,7 @@ import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.SatzXml;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,6 +45,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import static org.hamcrest.Matchers.emptyString;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.*;
 
 /**
@@ -421,6 +424,13 @@ public final class SatzFactoryTest extends AbstractTest {
         Satz a = SatzFactory.getDatensatz(satzart100);
         Satz b = SatzFactory.getSatz(satzart100);
         assertEquals(a, b);
+    }
+
+    @Test
+    public void testGetGdvRelease() {
+        String release = SatzFactory.getGdvRelease();
+        MatcherAssert.assertThat(release, not(emptyString()));
+        LOG.info("release = {}", release);
     }
 
 }
