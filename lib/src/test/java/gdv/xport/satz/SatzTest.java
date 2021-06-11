@@ -26,6 +26,7 @@ import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
+import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13;
 import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
 import gdv.xport.satz.feld.sparte53.Feld220;
@@ -459,6 +460,13 @@ public final class SatzTest extends AbstractSatzTest {
     public void testGetSatzTyp() {
         Satz satz220 = new SatzX(220, Feld220Wagnis0.class);
         assertEquals(SatzTyp.of("0220.010.0"), satz220.getSatzTyp());
+    }
+
+    @Test
+    public void testSatzartFeld220Wagnis13() {
+        Satz satz220 = new SatzX(220, Feld220Wagnis13.class);
+        satz220.set(Bezeichner.WAGNISART, "1");
+        assertEquals(SatzTyp.of("0220.010.13"), satz220.getSatzTyp());
     }
 
     @Test

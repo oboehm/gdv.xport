@@ -828,7 +828,12 @@ public abstract class Satz implements Cloneable {
 		if (StringUtils.isNotEmpty(this.gdvSatzartName)) {
 			return SatzTyp.of(this.gdvSatzartName);
 	    } else if (this.hasSparte()) {
-	        return new SatzTyp(this.getSatzart(), this.getSparte());
+			if (this.hasWagnisart()) {
+				return SatzTyp.of(this.getSatzart(), this.getSparte(),
+						Integer.parseInt(this.getWagnisart()));
+			} else {
+				return new SatzTyp(this.getSatzart(), this.getSparte());
+			}
 	    } else {
 	        return new SatzTyp(this.getSatzart());
 	    }
