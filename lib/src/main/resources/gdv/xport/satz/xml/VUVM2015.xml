@@ -23394,7 +23394,7 @@
 			</feldreferenz>
 			<satzende/>
 		</satzart>
-		<!-- Satzart 0211 -->
+		<!-- Satzart 0211.000 -->
 		<satzart>
 			<kennzeichnung>
 				<feldreferenz referenz="001-004-Satzart">
@@ -23402,6 +23402,11 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0211</auspraegung>
 				</feldreferenz>
+                <feldreferenz referenz="011-013-Sparte">
+                    <name>Sparte</name>
+                    <technischerName>Sparte</technischerName>
+                    <auspraegung/>
+                </feldreferenz>
 				<feldreferenz referenz="256-255-Satznummer">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
@@ -23671,7 +23676,7 @@
 			</feldreferenz>
 			<satzende/>
 		</satzart>
-		<!-- Satzart 0210 -->
+		<!-- Satzart 0210.000 -->
 		<satzart>
 			<kennzeichnung>
 				<feldreferenz referenz="001-004-Satzart">
@@ -23679,6 +23684,11 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0210</auspraegung>
 				</feldreferenz>
+                <feldreferenz referenz="011-013-Sparte">
+                    <name>Sparte</name>
+                    <technischerName>Sparte</technischerName>
+                    <auspraegung/>
+              </feldreferenz>
 				<feldreferenz referenz="256-255-Satznummer">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
@@ -27473,7 +27483,7 @@
 			</feldreferenz>
 			<satzende/>
 		</satzart>
-		<!-- Satzart 0220 -->
+		<!-- Satzart 0220.000 -->
 		<satzart>
 			<kennzeichnung>
 				<feldreferenz referenz="001-004-Satzart">
@@ -27481,6 +27491,11 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0220</auspraegung>
 				</feldreferenz>
+                <feldreferenz referenz="011-013-Sparte">
+                    <name>Sparte</name>
+                    <technischerName>Sparte</technischerName>
+                    <auspraegung/>
+                </feldreferenz>
 				<feldreferenz referenz="256-255-Satznummer">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
@@ -28333,7 +28348,7 @@
 			</feldreferenz>
 			<satzende/>
 		</satzart>
-		<!-- Satzart 0221 -->
+      <!-- Satzart 0221.000 -->
 		<satzart>
 			<kennzeichnung>
 				<feldreferenz referenz="001-004-Satzart">
@@ -28341,6 +28356,11 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0221</auspraegung>
 				</feldreferenz>
+                <feldreferenz referenz="011-013-Sparte">
+                    <name>Sparte</name>
+                    <technischerName>Sparte</technischerName>
+                    <auspraegung/>
+                </feldreferenz>
 				<feldreferenz referenz="256-255-Satznummer">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
