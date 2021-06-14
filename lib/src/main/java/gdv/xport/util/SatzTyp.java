@@ -118,9 +118,6 @@ public class SatzTyp {
 			array[i] = (short) args[i];
 		}
 		int satzart = array[0];
-		if (((satzart == 210 ) || (satzart == 211 ) || (satzart == 220 )|| (satzart == 221)) && (args.length < 2)) {
-			array = ArrayUtils.add(array, (short) 0);
-		}
 		if ((array.length == 2) && (satzart == 220) && (array[1] == 10)) {
 			array = ArrayUtils.add(array, (short) 0);
 		}
@@ -128,6 +125,14 @@ public class SatzTyp {
 			array = ArrayUtils.add(array, (short) 1);
 		}
 		return array;
+	}
+
+	private static boolean isAllgemeineSatzart(int satzart) {
+		return (satzart == 210) || (satzart == 211) || (satzart == 220) || (satzart == 221);
+	}
+
+	private boolean isAllgemeineSatzart() {
+		return isAllgemeineSatzart(getSatzart());
 	}
 
 	/**
@@ -310,7 +315,8 @@ public class SatzTyp {
 	}
 
 	public boolean hasParent() {
-		return StringUtils.countMatches(this.toString(), '.') > 0;
+		//return StringUtils.countMatches(this.toString(), '.') > 0;
+		return teil.length > 1;
 	}
 
 	public SatzTyp getParent() {
@@ -396,6 +402,8 @@ public class SatzTyp {
 				buf.append(".");
 				buf.append(this.getTeildatensatzNummer());
 			}
+		} else if (isAllgemeineSatzart()) {
+			buf.append(".000");
 		}
 		return buf.toString();
 	}

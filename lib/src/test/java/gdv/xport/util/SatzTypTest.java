@@ -255,10 +255,10 @@ public class SatzTypTest {
         assertEquals(SatzTyp.of("0211.000"), SatzTyp.of("0211"));
         assertEquals(SatzTyp.of("0220.000"), SatzTyp.of("0220"));
         assertEquals(SatzTyp.of("0221.000"), SatzTyp.of("0221"));
-//        assertEquals(SatzTyp.of("0210.000").toString(), "0210.000");
-//        assertEquals(SatzTyp.of("0211.000").toString(), "0211.000");
-//        assertEquals(SatzTyp.of("0220.000").toString(), "0220.000");
-//        assertEquals(SatzTyp.of("0221.000").toString(), "0221.000");
+        assertEquals("0210.000", SatzTyp.of("0210.000").toString());
+        assertEquals("0211.000", SatzTyp.of("0211.000").toString());
+        assertEquals("0220.000", SatzTyp.of("0220.000").toString());
+        assertEquals("0221.000", SatzTyp.of("0221.000").toString());
     }
 
     /**
