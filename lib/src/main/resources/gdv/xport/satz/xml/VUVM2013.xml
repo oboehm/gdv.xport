@@ -23198,7 +23198,7 @@
                 <feldreferenz referenz="011-013-Sparte">
                     <name>Sparte</name>
                     <technischerName>Sparte</technischerName>
-                    <auspraegung/>
+                    <auspraegung>000</auspraegung>
                 </feldreferenz>
 				<feldreferenz referenz="256-255-Satznummer">
 					<name>Satznummer</name>
@@ -23480,7 +23480,7 @@
                 <feldreferenz referenz="011-013-Sparte">
                     <name>Sparte</name>
                     <technischerName>Sparte</technischerName>
-                    <auspraegung/>
+                    <auspraegung>000</auspraegung>
               </feldreferenz>
 				<feldreferenz referenz="256-255-Satznummer">
 					<name>Satznummer</name>
@@ -27282,7 +27282,7 @@
                 <feldreferenz referenz="011-013-Sparte">
                     <name>Sparte</name>
                     <technischerName>Sparte</technischerName>
-                    <auspraegung/>
+                    <auspraegung>000</auspraegung>
                 </feldreferenz>
 				<feldreferenz referenz="256-255-Satznummer">
 					<name>Satznummer</name>
@@ -28132,7 +28132,7 @@
                 <feldreferenz referenz="011-013-Sparte">
                     <name>Sparte</name>
                     <technischerName>Sparte</technischerName>
-                    <auspraegung/>
+                    <auspraegung>000</auspraegung>
                 </feldreferenz>
 				<feldreferenz referenz="256-255-Satznummer">
 					<name>Satznummer</name>
