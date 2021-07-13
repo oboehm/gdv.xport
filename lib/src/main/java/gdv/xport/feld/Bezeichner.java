@@ -1127,7 +1127,7 @@ public final class Bezeichner {
 
     public static final Bezeichner UEBERFUEHRUNGSKOSTEN = new Bezeichner("Ueberfuehrungskosten", "Ueberfuehrungskost");
     public static final Bezeichner UEBERGANGSENTSCHAEDIGUNG = new Bezeichner("Uebergangsentschaedigung");
-    public static final Bezeichner UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ = new Bezeichner("Uebergangsentschaedigung Beitragssatz");
+    public static final Bezeichner UEBERGANGSENTSCHAEDIGUNG_BEITRAGSSATZ = new Bezeichner("Uebergangsentschaedigung Beitragssatz", "UebergangsentschaedigungBeitragssatz");
     public static final Bezeichner UEBERSCHUSS_GUELTIG_AB = new Bezeichner("Ueberschuss gueltig ab");
     public static final Bezeichner UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Ueberschussanteile zum Berechnungsstichtag in W\u00e4hrungseinheiten", "UeberschussanteileZumBerechnungsstichtagInWaehrungseinheiten");
     public static final Bezeichner UMBAUTER_RAUM = new Bezeichner("umbauter Raum");
