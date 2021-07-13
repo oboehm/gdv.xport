@@ -274,7 +274,11 @@ public class SatzRegistry implements VersionHandler {
 
     private Satz getSatzFromXmlService(SatzTyp satztyp) {
         try {
-            return xmlService.getSatzart(satztyp);
+            SatzXml satz = xmlService.getSatzart(satztyp);
+            if (satztyp.hasSparte()) {
+                satz.setSparte(satztyp.getSparte());
+            }
+            return satz;
         } catch (NotRegisteredException ex) {
             if (satztyp.hasParent()) {
                 LOG.error("{} is not available via XmlService.", satztyp);
