@@ -828,9 +828,15 @@ public abstract class Satz implements Cloneable {
 		if (StringUtils.isNotEmpty(this.gdvSatzartName)) {
 			return SatzTyp.of(this.gdvSatzartName);
 	    } else if (this.hasSparte()) {
-			if (this.hasWagnisart()) {
+					if (this.hasWagnisart() && this.getWagnisart().matches("\\d")) {
 				return SatzTyp.of(this.getSatzart(), this.getSparte(),
 						Integer.parseInt(this.getWagnisart()));
+					} else if (this.hasKrankenFolgeNr() && this.getKrankenFolgeNr().matches("\\d")) {
+						return SatzTyp.of(this.getSatzart(), this.getSparte(),
+								Integer.parseInt(this.getKrankenFolgeNr()));
+					} else if (this.hasBausparenArt() && this.getBausparenArt().matches("\\d")) {
+						return SatzTyp.of(this.getSatzart(), this.getSparte(),
+								Integer.parseInt(this.getBausparenArt()));
 			} else {
 				return new SatzTyp(this.getSatzart(), this.getSparte());
 			}
@@ -876,6 +882,20 @@ public abstract class Satz implements Cloneable {
     }
 
 	/**
+  /**
+   * Schaut nach dem 9. Feld in Satzart 220, Sparte 580 (Bausparen) und liefert true zurueck, falls
+   * es existiert.
+   *
+   * @return true, falls das Feld existiert
+   * @since 30.06.2021
+   */
+  public boolean hasBausparenArt()
+  {
+    return this.getSatzart() == 220 && this.getSparte() == 580
+        && (this.hasFeld(Bezeichner.ART_580));
+  }
+
+	/**
 	 * Liefert den Inhalt des Sparten-Felds. Vorher sollte allerdings mittels
 	 * {@link #hasSparte()} geprueft werden, ob der Satz ein Sparten-Feld
 	 * besitzt.
@@ -907,6 +927,41 @@ public abstract class Satz implements Cloneable {
         return wagnisart.getInhalt();
     }
 
+	/**
+   * Liefert den Inhalt des 10. Feldes in Satzart 220, Sparte 20 (Kranken). Vorhersollte allerdings
+   * mittels {@link #hasKrankenFolgeNr()} geprueft werden, ob der Satz eine KrankenfolgeNr-Feld
+   * besitzt.
+   * <p>
+   *
+   * @return die KrankenFolgeNr
+   */
+  @JsonIgnore
+  public final String getKrankenFolgeNr()
+  {
+    String inhalt = NULL_STRING;
+    if (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF))
+      inhalt = this.get(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF);
+    if (inhalt == NULL_STRING)
+      inhalt =
+          this.get(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF);
+
+    return inhalt;
+  }
+
+  /**
+   * Liefert den Inhalt des 9. Feldes in Satzart 0220, Sparte 580 (Bausparen). Vorher sollte
+   * allerdings mittels {@link #hasBausparenArt()} geprueft werden, ob der Satz ein
+   * Bausparenart-Feld besitzt.
+   * <p>
+   *
+   * @return die Bausparenart
+   */
+  @JsonIgnore
+  public final String getBausparenArt()
+  {
+    Feld art = this.getFeld(Bezeichner.ART_580);
+    return art.getInhalt();
+  }
 	/**
      * Exportiert den Satz.
 	 *
@@ -1227,11 +1282,7 @@ public abstract class Satz implements Cloneable {
 	 * @return the string
 	 */
 	public String toShortString() {
-		String gdvSatzart = this.getGdvSatzartName();
-		if (StringUtils.isEmpty(gdvSatzart)) {
-			gdvSatzart = this.satzart.getInhalt();
-		}
-		return "Satzart " + gdvSatzart;
+        return "Satzart " + this.getSatzTyp();
 	}
 
 	/**
