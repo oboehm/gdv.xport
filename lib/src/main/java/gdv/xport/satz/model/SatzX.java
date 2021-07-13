@@ -107,7 +107,7 @@ public class SatzX extends Datensatz {
 	 */
 	@Deprecated
 	public SatzX(final int satzart, final int sparte, final Enum[] felder) {
-		this(SatzTyp.of(satzart, sparte), getTeildatensaetzeFor(satzart, felder));
+		super(satzart, complete(getTeildatensaetzeFor(satzart, felder), sparte));
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class SatzX extends Datensatz {
 	 */
 	@Deprecated
 	public SatzX(final int satzart, final int sparte, final Class<? extends Enum> enumClass) {
-		this(SatzTyp.of(satzart, sparte), getTeildatensaetzeFor(SatzTyp.of(satzart, sparte), enumClass));
+		super(satzart, complete(getTeildatensaetzeFor(SatzTyp.of(satzart), enumClass), sparte));
 	}
 
 	/**
@@ -152,9 +152,17 @@ public class SatzX extends Datensatz {
     this.setGdvSatzartName(satzNr.toString());
     if (satzNr.hasSparte())
       this.setSparte(satzNr.getSparteAsString());
-	  if (satzNr.hasTeildatensatzNummer())
-		  this.setGdvSatzartNummer(String.valueOf(satzNr
-				  .getTeildatensatzNummer()));
+    if (satzNr.hasGdvSatzartNummer())
+      this.setGdvSatzartNummer(String.valueOf(satzNr.getGdvSatzartNummer()));
+  }
+
+  private static List<Teildatensatz> complete(List<Teildatensatz> teildatensaetze, int sparte) {
+    NumFeld sparteFeld = new NumFeld(Kopffelder1bis7.SPARTE);
+    sparteFeld.setInhalt(sparte);
+    for (Teildatensatz tds : teildatensaetze) {
+      setUpTeildatensatz(tds, sparteFeld);
+    }
+    return teildatensaetze;
 	}
 
   /**
