@@ -530,13 +530,16 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * Dient zum Ermittel, ob ein Werte schon gesetzt wurde. Dabei werden
      * typische Initialisierungswerte wie "0" als "nicht gesetzt"
      * interpretiert.
+     * <p>
+	 * Rechtbuendige Felder werden als numrerische Felder interpretiert!
+     * </p>
      *
      * @return true, falls Feld mit einem Wert belegt ist
      * @since 3.1
      */
     public boolean hasValue() {
-        String value = StringUtils.replaceChars(getInhalt(), '0', ' ');
-        return StringUtils.isNotBlank(value);
+        String value = getInhalt();
+        return StringUtils.isNotBlank((this.ausrichtung.compareTo(Align.RIGHT) == 0) ? StringUtils.replaceChars(value, '0', ' ') : value);
     }
 
     /**
