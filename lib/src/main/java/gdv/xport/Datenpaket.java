@@ -388,7 +388,7 @@ public class Datenpaket {
     private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
             throws IOException {
         int sparte = Datensatz.readSparte(reader);
-        SatzTyp satzTyp = SatzTyp.of(satzart);
+        SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
         if (satzart >= 210 && satzart < 300) {
             if (isIdentischZu000(sparte))
                 satzTyp = SatzTyp.of(satzart, 0);
@@ -433,7 +433,7 @@ public class Datenpaket {
             int bausparArt = Datensatz.readBausparenArt(reader);
             // BausparenArt nicht auslesbar -> Unbekannter Datensatz
             if (bausparArt == -1) {
-                Datensatz satz = new SatzX(220, 20, FeldX.class);
+                Datensatz satz = new SatzX(220, 580, FeldX.class);
                 satz.importFrom(reader);
                 return satz;
             } else if (bausparArt == 0) {
@@ -442,10 +442,6 @@ public class Datenpaket {
             satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
         }
 
-        // ACHTUNG:
-        // das funktioniert nicht zufriedenstellend, weil die gelesene Sparte nicht
-        // immer mit der Sparte in GDV-Satznamen übereinstimmt. Dazu sollte das
-        // "Spartenverzeichnis" lt. Anlagen des GDV ausgewertet werden!
         Datensatz satz = SatzFactory.getDatensatz(satzTyp);
         satz.importFrom(reader);
         return satz;
