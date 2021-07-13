@@ -403,7 +403,6 @@ public class SatzTyp {
 	}
 
 	public boolean hasParent() {
-		//return StringUtils.countMatches(this.toString(), '.') > 0;
 		return teil.length > 1;
 	}
 
@@ -576,7 +575,13 @@ public class SatzTyp {
 				case 200:
 				case 202:
 				case 210:
+        case 211:
+        case 212:
+        case 222:
+        case 225:
 				case 230:
+        case 250:
+        case 251:
 				case 260:
 				case 270:
 				case 280:
@@ -638,6 +643,8 @@ public class SatzTyp {
 					case 70:
 					case 80:
 					case 110:
+          case 130:
+          case 140:
 					case 170:
 					case 190:
 					case 510:
