@@ -1227,7 +1227,11 @@ public abstract class Satz implements Cloneable {
 	 * @return the string
 	 */
 	public String toShortString() {
-        return "Satzart " + this.satzart.getInhalt();
+		String gdvSatzart = this.getGdvSatzartName();
+		if (StringUtils.isEmpty(gdvSatzart)) {
+			gdvSatzart = this.satzart.getInhalt();
+		}
+		return "Satzart " + gdvSatzart;
 	}
 
 	/**

@@ -69,7 +69,18 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz.
+	 * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.</br>
+	 * Der Teildatensatz besteht nur aus 8 Feldern:</br>
+	 * <ul>
+	 * <li>Satzart</li>
+	 * <li>VU_NUMMER</li>
+	 * <li>BUENDELUNGSKENNZEICHEN</li>
+	 * <li>SPARTE</li>
+	 * <li>VERSICHEURUNGSSCHEINNUMMER</li>
+	 * <li>FOLGENUMMER</li>
+	 * <li>VERMITTLER</li>
+	 * <li>SATZNUMMER</li>
+	 * </ul>
 	 * <p>
 	 * TODO: Wird mit v6 entfernt.
 	 * </p>
@@ -83,8 +94,19 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz.
-	 * <p>
+	 * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.</br>
+	 * Der Teildatensatz besteht nur aus 8 Feldern:</br>
+	 * <ul>
+	 * <li>Satzart</li>
+	 * <li>VU_NUMMER</li>
+	 * <li>BUENDELUNGSKENNZEICHEN</li>
+	 * <li>SPARTE</li>
+	 * <li>VERSICHEURUNGSSCHEINNUMMER</li>
+	 * <li>FOLGENUMMER</li>
+	 * <li>VERMITTLER</li>
+	 * <li>SATZNUMMER</li>
+	 * </ul>
+	 * </p>
 	 * TODO: Wird mit v6 entfernt.
 	 * </p>
 	 *
@@ -97,7 +119,18 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz.
+	 * Instantiiert einen neuen Datensatz.</br>
+	 * Der Teildatensatz besteht nur aus 8 Feldern:</br>
+	 * <ul>
+	 * <li>Satzart</li>
+	 * <li>VU_NUMMER</li>
+	 * <li>BUENDELUNGSKENNZEICHEN</li>
+	 * <li>SPARTE</li>
+	 * <li>VERSICHEURUNGSSCHEINNUMMER</li>
+	 * <li>FOLGENUMMER</li>
+	 * <li>VERMITTLER</li>
+	 * <li>SATZNUMMER</li>
+	 * </ul>
 	 * <p>
 	 * TODO: Wird mit v6 entfernt.
 	 * </p>
@@ -127,7 +160,18 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz.
+	 * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.</br>
+	 * Der Teildatensatz besteht nur aus 8 Feldern:</br>
+	 * <ul>
+	 * <li>Satzart</li>
+	 * <li>VU_NUMMER</li>
+	 * <li>BUENDELUNGSKENNZEICHEN</li>
+	 * <li>SPARTE</li>
+	 * <li>VERSICHEURUNGSSCHEINNUMMER</li>
+	 * <li>FOLGENUMMER</li>
+	 * <li>VERMITTLER</li>
+	 * <li>SATZNUMMER</li>
+	 * </ul>
 	 * <p>
 	 * TODO: Wird mit v6 entfernt.
 	 * </p>
@@ -142,9 +186,21 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz.
+     * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.</br>
+     * Der Teildatensatz besteht nur aus 8 Feldern:</br>
+     * <ul>
+     * <li>Satzart</li>
+     * <li>VU_NUMMER</li>
+     * <li>BUENDELUNGSKENNZEICHEN</li>
+     * <li>SPARTE</li>
+     * <li>VERSICHEURUNGSSCHEINNUMMER</li>
+     * <li>FOLGENUMMER</li>
+     * <li>VERMITTLER</li>
+     * <li>SATZNUMMER</li>
+     * </ul>
+     * Das Feld 4 (Sparte) im Teildatensatz wird nur bei den vordefinierten GDV-Spartensaetzen belegt.
 	 *
-	 * @param satzTyp z.B. "0100.070" (Adressteil, Rechtsschutz)
+     * @param satzTyp z.B. "0210.040" (Vertragsspezifischer Teil, Haftpflicht)
 	 * @since 5.0
 	 */
 	public Datensatz(SatzTyp satzTyp) {
@@ -152,7 +208,18 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz.
+	   * Instantiiert einen neuen Datensatz.</br>
+	   * Die Teildatensaetze bestehen nur aus 8 Feldern:</br>
+	   * <ul>
+	   * <li>Satzart</li>
+	   * <li>VU_NUMMER</li>
+	   * <li>BUENDELUNGSKENNZEICHEN</li>
+	   * <li>SPARTE</li>
+	   * <li>VERSICHEURUNGSSCHEINNUMMER</li>
+	   * <li>FOLGENUMMER</li>
+	   * <li>VERMITTLER</li>
+	   * <li>SATZNUMMER</li>
+	   * </ul>
 	 * <p>
 	 * TODO: Wird mit v6 entfernt.
 	 * </p>
@@ -168,9 +235,21 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz.
+     * Instantiiert einen neuen Datensatz.</br>
+     * Die Teildatensaetze bestehen nur aus 8 Feldern:</br>
+     * <ul>
+     * <li>Satzart</li>
+     * <li>VU_NUMMER</li>
+     * <li>BUENDELUNGSKENNZEICHEN</li>
+     * <li>SPARTE</li>
+     * <li>VERSICHEURUNGSSCHEINNUMMER</li>
+     * <li>FOLGENUMMER</li>
+     * <li>VERMITTLER</li>
+     * <li>SATZNUMMER</li>
+     * </ul>
+     * Das Feld 4 (Sparte) im Teildatensatz wird nur bei vordefinierten Spartensaetzen belegt.
 	 *
-	 * @param satzTyp z.B. "0100.070" (Adressteil, Rechtsschutz)
+     * @param satzTyp z.B. "0100" (Adressteil) oder "0220.110" (Glas)
 	 * @param n Anzahl der Teildatensaetze
 	 * @since 5.0
 	 */
@@ -205,7 +284,7 @@ public class Datensatz extends Satz {
 	 * @param tdsList Liste mit den Teildatensaetzen
 	 * @since 0.9
 	 */
-	public Datensatz(final SatzTyp satzNr, final List<? extends Teildatensatz> tdsList) {
+	protected Datensatz(final SatzTyp satzNr, final List<? extends Teildatensatz> tdsList) {
 		super(satzNr, tdsList);
 		if (tdsList.get(0).hasSparte()) {
 			this.sparte.setInhalt(tdsList.get(0).getSparte());
@@ -382,7 +461,12 @@ public class Datensatz extends Satz {
 	 */
 	@Override
     public boolean hasSparte() {
-		return !this.sparte.isEmpty() && this.getSparte() > 0;
+        /**
+         * @Oli: die Abfrage auf Existenz von "sparte" ist noetig, damit es beim Debugging nicht in
+         *       "Satz.toString()" zur RuntimeException kommen kann, solange das Datensatz-Objekt noch
+         *       nicht fertig ist.
+         */
+		return this.sparte != null &&  !this.sparte.isEmpty() && this.getSparte() > 0;
 	}
 
 	/**
@@ -509,12 +593,12 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Liest 14 Bytes, um die Satzart zu bestimmen und stellt die Bytes
+	 * Liest 14 Bytes, um die Sparte zu bestimmen und stellt die Bytes
 	 * anschliessend wieder zurueck in den Reader.
 	 *
 	 * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen
 	 * bereitstellen
-	 * @return Satzart
+	 * @return Sparte
 	 * @throws IOException falls was schief gegangen ist
 	 */
 	public static int readSparte(final PushbackReader reader) throws IOException {
@@ -677,28 +761,6 @@ public class Datensatz extends Satz {
         // vorherige ist, falls Teildatensaetze uebersprungen werden
 		char newSatznummer = readSatznummer(newLine);
 		return !(Character.isDigit(newSatznummer) && Character.isDigit(satznummer) && newSatznummer <= satznummer);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see gdv.xport.satz.Satz#toShortString()
-	 */
-	@Override
-	public String toShortString() {
-	    StringBuilder buf = new StringBuilder(super.toShortString());
-	    if (this.hasSparte()) {
-	        buf.append(".");
-	        buf.append(this.sparte.getInhalt());
-	        if (this.hasArt()) {
-	            buf.append(".");
-	            buf.append(this.getArt());
-                if (this.hasSatzartNummer()) {
-                    buf.append(".");
-                    buf.append(this.getGdvSatzartNummer());
-                }
-	        }
-        }
-		return buf.toString();
 	}
 
 	/**
