@@ -36,9 +36,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * Diese Klasse orientiert an sich an der GDV-XML-Beschreibung fuer das
@@ -58,7 +56,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     private static final Logger LOG = LogManager.getLogger(GdvXmlFormatter.class);
     private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
     private XMLStreamWriter xmlStreamWriter;
-    private final List<Feld> felder = new ArrayList<>();
+	private final Map<String, Feld> felder = new HashMap<>();
 
     /**
      * Default-Konstruktor.
@@ -164,7 +162,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
             for (Feld feld : getFelderOhneLuecken(tds)) {
                 writeComment(feld.toShortString());
                 writeReferenz(feld);
-                felder.add(feld);
+                felder.putIfAbsent(toFeldReferenzId(feld), feld);
             }
             xmlStreamWriter.writeEmptyElement("satzende");
             xmlStreamWriter.flush();
@@ -198,12 +196,23 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     }
 
     private String toFeldReferenzId(Feld feld) {
-        return String.format("%03d-%03d-%s", feld.getByteAdresse(), feld.getEndAdresse(),
-                feld.getBezeichner().getTechnischerName());
+      /*
+       * @Oli: die Erweiterung um den Datentyp ist notwendig, weil es Felder gibt, deren Namen und
+       *       Byte-Adresse identisch sind. Z.B. ist das Feld "SatzNr" (Byte-Adresse 256) in Satzart
+       *       "0300" numerisch und in Satzart "0211.110" alpha-numerisch. Ohne die Erweiterung wird
+       *       beim spaeteren Generieren der Saetze an allen Stellen mit "SatzNr" der gleiche Datentyp
+       *       verwendet, der zuerst gefunden wird. Und damit gibt es keine Uebereinstimmung zwischen
+       *       Saetzen, die aus den originalen (!) VUVMs (src/test-Verzeichnis) erzeugt werden, und
+       *       denen, die aus den verkaerzten VUVMs erzeugt werden.
+       *
+       *       Diese Referenz wird auch als Key in HashMap "felder" verwendet!
+       */
+        return String.format("%03d-%03d-%s-%s", feld.getByteAdresse(), feld.getEndAdresse(),
+                feld.getBezeichner().getTechnischerName(), Datentyp.asString(feld));
     }
 
     private void writeSparte(Satz satz) throws XMLStreamException {
-        if (satz.hasSparte()) {
+        if (satz.getSatzTyp().hasSparteInGdvSatzartName()) {
             Feld sparteFeld = new Feld(Bezeichner.SPARTE, 11, satz.getSatzTyp().getSparteMitArt(), Align.LEFT);
             writeReferenz(sparteFeld);
         }
@@ -215,9 +224,11 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     }
 
     private void writeFelder() throws XMLStreamException {
+        TreeMap<String, Feld> sorted = new TreeMap<>(felder);
+        Set<Map.Entry<String, Feld>> mappings = sorted.entrySet();
         xmlStreamWriter.writeStartElement("felder");
-        for (Feld feld : felder) {
-            write(feld);
+         for (Map.Entry<String, Feld> entry : mappings) {
+            write(entry.getValue());
         }
         xmlStreamWriter.writeEndElement();
     }
