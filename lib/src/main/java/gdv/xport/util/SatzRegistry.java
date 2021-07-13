@@ -24,6 +24,8 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.feld.common.TeildatensatzNummer;
+import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
@@ -302,55 +304,201 @@ public class SatzRegistry implements VersionHandler {
      * Satzart es sich handelt und liefert dann einen entsprechenden (gefuellten)
      * Satz zurueck.
      * <p>
-     * Im ersten Schritt wird nach der passenden Satzart gesucht. Das klappt nur,
-     * wenn satzart = 0001, 0052, 0100, 0102, 0200, 0202, 0300,
-     * 0342, 0350, 0352, 0372, 0382, 0390, 0392, 0400, 0410, 0420, 0430, 0450,
-     * 0500, 0550, 0600, 9950, 9951, 9952, 9999.
-     * Daher wird im 2. Versuch noch die Sparte hinzugenommen.
+     * Im ersten Schritt wird versucht, einen moeglichst passenden SatzTyp zu ermitteln. Zu diesem
+     * SatzTyp wird dann versucht, eine registrierte Satzart zu finden. Wenn das fehlschlaegt, wird im
+     * 2. Schritt als Ersatz eine Satzart generiert aus "satzart" und "sparte".
      * </p>
      * <p>
-     * Das klappt nicht, wenn satzart= 0220.580.01, 0220.580.2, 0220.020.1,
-     * 0220.020.2, 0220.020.3, 0220.010.13.1, 0220.010.13.6, 0220.010.13.7,
-     * 0220.010.13.8, 0220.010.13.9, 0220.010.2.1, 0220.010.2.6, 0220.010.2.7,
-     * 0220.010.2.8, 0220.010.2.9, 0220.010.48.1, 0220.010.48.6,
-     * 0220.010.48.8, 0220.010.48.9, 0220.010.5.1, 0220.010.5.6, 0220.010.5.8,
-     * 0220.010.5.9, 0220.010.6.1, 0220.010.6.6, 0220.010.6.8, 0220.010.6.9,
-     * 0220.010.7.1, 0220.010.7.6, 0220.010.7.8, 0220.010.7.9, 0220.010.9.1,
-     * 0220.010.9.6, 0220.010.9.7, 0220.010.9.8, 0220.010.9.9 !!
-     * Diese Satzarten benoetigen weitere Angaben (Wagnisart (Sparte 010),
-     * Satznummer (Sparte 010), KrankenfolgeNummer (Sparte 020), BausparenArt
-     * (Sparte 580).
-     * Fuer diese Satzarten kann diese Methode nicht verwendet werden.
-     * </p>
-     * <p>
-     * ACHTUNG: Um den ganz korrekten Satzaufbau zu liefern, muesste dazu die
-     * Version der Satzatz bekannt sein! Diese Info steht immer im Vorsatz des
-     * zugehörigen Datenpaketes. Lt. Auskunft vom GDV werden z.T. noch Saetze
-     * aus Release 01.11.2009 verarbeitet. Da hier aber die aktuellste Version
-     * verwendet wird, kann der zurueckgegebene Satz mehr Felder enthalten, als die
-     * tatsaechliche Version. Diese Unschaerfe wird hier in Kauf genommen, da i.d.R.
-     * immer nur Felder hinzugefuegt werden. Dies muss beim Zugriff ueber die
-     * Feld-Nr. beachtet werden.
+     * ACHTUNG: Um den ganz korrekten Satzaufbau zu liefern, muesste dazu die Version der Satzatz
+     * bekannt sein! Diese Info steht immer im Vorsatz des zugehörigen Datenpaketes. Lt. Auskunft vom
+     * GDV werden z.T. noch Saetze aus Release 01.11.2009 verarbeitet. Da hier aber die aktuellste
+     * Version verwendet wird, kann der zurueckgegebene Satz mehr Felder enthalten, als die
+     * tatsaechliche Version. Diese Unschaerfe wird hier in Kauf genommen, da i.d.R. immer nur Felder
+     * hinzugefuegt werden. Dies muss beim Zugriff ueber die Feld-Nr. beachtet werden.
      * </p>
      *
      * @param content the content
      * @return einen gefuellten Satz
      */
+//    public Satz getSatz(final String content) {
+//        int satzart = Integer.parseInt(content.substring(0, 4));
+//        Satz satz;
+//        try {
+//            satz = getSatz(SatzTyp.of(satzart));
+//        } catch (NotRegisteredException e) {
+//            LOG.debug("can't get Satz " + satzart + " (" + e + "), parsing Sparte...");
+//            int sparte = Integer.parseInt(content.substring(10, 13));
+//            satz = getDatensatz(SatzTyp.of(satzart, sparte));
+//        }
+//        try {
+//            satz.importFrom(content);
+//            return satz;
+//        } catch (IOException ioe) {
+//            throw new IllegalArgumentException("can't parse " + content, ioe);
+//        }
+//    }
     public Satz getSatz(final String content) {
-        int satzart = Integer.parseInt(content.substring(0, 4));
+        /*
+         * @Oli: diese Variante sollte deutlich besser passen als die bisherige. Jedoch habe ich nicht
+         *       bis zum Exzess getestet. Bitte pruef das doch noch mal.
+         */
+        SatzTyp satzTyp;
+
+        try {
+            satzTyp = errateSatzTyp(content);
+        } catch (IOException ioe) {
+            throw new IllegalArgumentException("can't recognize SatzTyp " + content, ioe);
+        }
+
         Satz satz;
         try {
-            satz = getSatz(SatzTyp.of(satzart));
+            satz = getSatz(satzTyp);
         } catch (NotRegisteredException e) {
-            LOG.debug("can't get Satz " + satzart + " (" + e + "), parsing Sparte...");
-            int sparte = Integer.parseInt(content.substring(10, 13));
-            satz = getDatensatz(SatzTyp.of(satzart, sparte));
+            LOG.debug("can't get Satz " + satzTyp.toString() + " (" + e + "), try fallback...");
+            satz = getDatensatz(satzTyp);
         }
         try {
             satz.importFrom(content);
             return satz;
         } catch (IOException ioe) {
             throw new IllegalArgumentException("can't parse " + content, ioe);
+        }
+    }
+
+    private SatzTyp errateSatzTyp(final String content) throws IOException {
+        /**
+         * @Oli: das entspricht im Wesentlichen der Methode "Datenpaket.importDatensatz(...)".
+         */
+        SatzTyp satzTyp;
+        int satzart = Integer.parseInt(content.substring(0, 4));
+
+        if (satzart == 1 || satzart == 9999)
+            return SatzTyp.of(satzart);
+
+        int sparte = errateSparte(content);
+        satzTyp = SatzTyp.of(satzart, sparte);
+        if (satzart >= 210 && satzart < 300)  {
+            if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
+                WagnisartLeben wagnisart = errateWagnisart(content);
+                if (wagnisart != WagnisartLeben.NULL) {
+                    // wagnisart 0 hat immer ein Leerzeichen als
+                    // teildatenSatzmummer. Nur groesser 0
+                    // besitzt per Definition Werte.
+                    TeildatensatzNummer teildatensatzNummer = errateGdvSatzartNummer(content);
+                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
+                } else {
+                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode());
+                }
+            } else if (sparte == 20 && satzart == 220) {
+                // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
+                int krankenFolgeNr = errateKrankenFolgeNr(content);
+                // Krankenfolgenummer nicht auslesbar -> Unbekannter Datensatz
+                if (krankenFolgeNr == -1) {
+                    satzTyp = SatzTyp.of(satzart, sparte);
+                } else {
+                    satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
+                }
+            } else if (sparte == 580 && satzart == 220) {
+                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
+                // noetig
+                int bausparArt = errateBausparenArt(content);
+                // BausparenArt nicht auslesbar -> Unbekannter Datensatz
+                if (bausparArt == -1)  {
+                    satzTyp = SatzTyp.of(satzart, sparte);
+                } else {
+                    satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
+                }
+            } else {
+                /**
+                 * @Oli: Da nun "SatzTyp.java" das folgende if...else Konstrukt enthaelt, koenntest du das
+                 *       auch ersetzen durch: "satzTyp =SatzTyp.of(satzart, sparte);"
+                 */
+                // if (isIdentischZu000(sparte))
+                // satzTyp = SatzTyp.of(satzart, 0);
+                // else if (isIdentischZu080(sparte))
+                // satzTyp = SatzTyp.of(satzart, 80);
+                // else if (isIdentischZu170(sparte))
+                // satzTyp = SatzTyp.of(satzart, 170);
+                // else if (isIdentischZu190(sparte))
+                // satzTyp = SatzTyp.of(satzart, 190);
+                // else if (isIdentischZu510(sparte))
+                // satzTyp = SatzTyp.of(satzart, 510);
+                // else if (600 == sparte)
+                // // lt. GDV-Spartenverseichnis wird Moped wie Sparte 050 behandelt
+                // satzTyp = SatzTyp.of(satzart, 50);
+                // else
+                // satzTyp = SatzTyp.of(satzart, sparte);
+                satzTyp = SatzTyp.of(satzart, sparte);
+            }
+        }
+
+        return satzTyp;
+    }
+
+    private static int errateSparte(final String content) throws IOException {
+        try {
+            return Integer.parseInt(content.substring(10, 13));
+        } catch (StringIndexOutOfBoundsException | NumberFormatException ex) {
+            throw new IOException("cannot read sparte from first 14 bytes (\"" + content + "\")", ex);
+        }
+    }
+
+    private static WagnisartLeben errateWagnisart(final String content) throws IOException {
+        if (content.length() < 60)
+            throw new IOException("can't read Byte 60 from " + content);
+
+        String wagnisart = content.substring(59, 60);
+
+        if (wagnisart.trim().length() == 0) {
+            return WagnisartLeben.NULL;
+        } else {
+            try {
+                return WagnisartLeben.isIn(Integer.parseInt(wagnisart));
+            } catch (NumberFormatException e) {
+                LOG.warn("Not allowed value for wagnisart found. Type Number is required but was \""
+                        + wagnisart + "\".");
+                return WagnisartLeben.NULL;
+            }
+        }
+    }
+
+    private static TeildatensatzNummer errateGdvSatzartNummer(final String content) throws IOException {
+        if (content.length() < 256)
+            throw new IOException("can't read Byte 256 from " + content);
+
+        String teildatenSatz = content.substring(content.length() - 1, content.length());
+        if (teildatenSatz.trim().length() == 0) {
+            return TeildatensatzNummer.NULL;
+        } else {
+            try {
+                return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
+            } catch (NumberFormatException e) {
+                LOG.warn(
+                        "Value \"" + teildatenSatz + "\" for TeildatensatzNummer found, but Number expected.");
+                return TeildatensatzNummer.NULL;
+            }
+        }
+    }
+
+    private static int errateKrankenFolgeNr(final String content) throws IOException {
+        if (content.length() < 48)
+            throw new IOException("can't read Byte 48 from " + content);
+
+        try {
+            return Integer.parseInt(content.substring(47, 48));
+        } catch (NumberFormatException ex) {
+            return -1;
+        }
+    }
+
+    private static int errateBausparenArt(final String content) throws IOException {
+        if (content.length() < 44)
+            throw new IOException("can't read Byte 44 from " + content);
+
+        try {
+            return Integer.parseInt(content.substring(43, 44));
+        } catch (NumberFormatException ex) {
+            return -1;
         }
     }
 
