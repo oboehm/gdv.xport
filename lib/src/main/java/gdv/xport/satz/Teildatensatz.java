@@ -124,6 +124,8 @@ public class Teildatensatz extends Satz {
         super(satzTyp, 0);
         initSatznummer(nr);
         this.setGdvSatzartName(satzTyp.toString());
+ 		if (satzTyp.hasGdvSatzartNummer())
+			this.setGdvSatzartNummer(String.valueOf(satzTyp.getGdvSatzartNummer()));
     }
 
     /**
@@ -253,6 +255,21 @@ public class Teildatensatz extends Satz {
             LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
             feld.setInhalt(this.satznummer.getInhalt());
         }
+    /*
+     * @Oli: bei den 0220.020er-Saetzen ist die KrankenFolgeNr wichtig fuer die Erkennbarkeit der
+     *       Satzart.
+     */
+    if (this.getGdvSatzartName()
+        .startsWith("0220.020")
+        && feld.getBezeichner()
+            .getTechnischerName()
+            .startsWith("FolgeNrZurLaufendenPersonenNrUnterNr"))
+    {
+      LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner()
+          .getTechnischerName(), this);
+      feld.setInhalt(this.getSatzTyp()
+          .getKrankenFolgeNr());
+    }
         if (feld.getBezeichnung().startsWith("Vorzeichen")) {
             LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
             feld.setInhalt("+");
@@ -601,11 +618,12 @@ public class Teildatensatz extends Satz {
 
     @Override
     public String toShortString() {
-        String s = String.format("Teildatensatz %d Satzart %04d", this.getSatznummer().toInt(), this.getSatzart());
-        if (sortedFelder.size() < 4) {
-            return s;
-        }
-        return s + "." + getFeld(4).getInhalt();
+        if (sortedFelder.size() < 4)
+            return String.format("Teildatensatz %d Satzart %04d", this.getSatznummer()
+			      .toInt(), this.getSatzart());
+        else
+            return String.format("Teildatensatz %d Satzart %s", this.getSatznummer().toInt(),
+                   this.getSatzTyp());
     }
 
     /**
