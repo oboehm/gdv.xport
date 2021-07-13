@@ -338,7 +338,23 @@ public class Vorsatz extends Satz {
             this.set(bezeichner, satz.getSatzversion()
                     .getInhalt());
         } else {
-            LOG.debug("Version Satzart {} ist im Vorsatz unbekannt.", satz.getSatzTyp());
+            /*
+             * @Oli: im Vorsatz gibt es kein Feld mit Namen"Satzart 0212.050" sondern nur "Satzart 0212" !
+             *       Damit sind KFZ - Fahrzeugdaten "Antrag" gemeint.
+			 *       Oder waere es besser, dies in den VUVMs zu korrigieren?
+             */
+            if (satz.getSatzTyp().toString().equalsIgnoreCase("0212.050")) {
+                buf = new StringBuilder();
+                buf.append("Satzart");
+                buf.append(parts[0]);
+                bezeichner = new Bezeichner(buf.toString());
+                if (this.hasFeld(bezeichner)) {
+                    this.set(bezeichner, satz.getSatzversion()
+                            .getInhalt());
+                } else {
+                    LOG.warn("Version Satzart {} ist im Vorsatz unbekannt.", satz.getSatzTyp());
+                }
+            }
         }
     }
 
