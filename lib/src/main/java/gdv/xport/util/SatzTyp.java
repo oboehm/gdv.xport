@@ -183,7 +183,7 @@ public class SatzTyp {
 		if ((array.length == 2) && (satzart == 220) && (array[1] == 10)) {
 			array = ArrayUtils.add(array, (short) 0);
 		}
-    if ((array.length == 3) && (satzart == 220) && (array[1] == 10) && (array[2] > 0)) {
+    if ((array.length == 3) && (satzart == 220 || satzart == 221) && (array[1] == 10) && (array[2] > 0)) {
 			array = ArrayUtils.add(array, (short) 1);
 		}
 		return array;
