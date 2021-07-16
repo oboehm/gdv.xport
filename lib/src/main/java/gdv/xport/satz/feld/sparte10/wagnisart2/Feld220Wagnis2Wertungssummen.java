@@ -49,18 +49,16 @@ public enum Feld220Wagnis2Wertungssummen {
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
-    /**
-     * Wagnisart.
-     * 2 = Rentenversicherung
-     */
-    @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
-    WAGNISART,
-
-    /**
-     * Laufende Nummer zur Wagnisart.
-     */
-    @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
-    LFD_NUMMER_ZUR_WAGNISART,
+  /**
+   * Wagnisart. 2 = Rentenversicherung
+   */
+  @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60, value = "2")
+  WAGNISART,
+  /**
+   * Laufende Nummer zur Wagnisart.
+   */
+  @FeldInfo(teildatensatz = 1, nr = 10, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 61)
+  LFD_NUMMER_ZUR_WAGNISART,
 
     /**
      * Laufende Nummer der Satzart.

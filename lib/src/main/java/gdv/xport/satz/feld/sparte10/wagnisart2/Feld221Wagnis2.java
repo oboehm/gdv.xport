@@ -44,12 +44,11 @@ public enum Feld221Wagnis2 {
 	        byteAdresse = 43)
 	LFD_NUMMER_VP_PERSONENGRUPPE,
 
-	/**
-	 * Wagnisart.
-	 * 2 = Rentenversicherung
-	 */
-	@FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
-	WAGNISART,
+  /**
+   * Wagnisart. 2 = Rentenversicherung
+   */
+  @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60, value = "2")
+  WAGNISART,
 
 	/**
 	 * Lfd Nummer zur Wagnisart.
@@ -105,12 +104,11 @@ public enum Feld221Wagnis2 {
 	        byteAdresse = 43)
 	LFD_NUMMER_VP_PERSONENGRUPPE2,
 
-	/**
-	 * Wagnisart.
-	 * 2 = Rentenversicherung
-	 */
-	@FeldInfo(teildatensatz = 2, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
-	WAGNISART2,
+  /**
+   * Wagnisart. 2 = Rentenversicherung
+   */
+  @FeldInfo(teildatensatz = 2, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60, value = "2")
+  WAGNISART2,
 
 	/**
 	 * Lfd Nummer zur Wagnisart.
