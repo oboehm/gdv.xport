@@ -50,12 +50,11 @@ public enum Feld220Wagnis5 {
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
-    /**
-     * Wagnisart.
-     * 5 = Risikozusatzversicherung
-     */
-    @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
-    WAGNISART,
+  /**
+   * Wagnisart. 5 = Risikozusatzversicherung
+   */
+  @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60, value = "5")
+  WAGNISART,
 
     /**
      * Lfd Nummer zur Wagnisart.
@@ -277,12 +276,11 @@ public enum Feld220Wagnis5 {
     @FeldInfo(teildatensatz = 2, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE2,
 
-    /**
-     * Wagnisart.
-     * 5 = Risikozusatzversicherung
-     */
-    @FeldInfo(teildatensatz = 2, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
-    WAGNISART2,
+  /**
+   * Wagnisart. 5 = Risikozusatzversicherung
+   */
+  @FeldInfo(teildatensatz = 2, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60, value = "5")
+  WAGNISART2,
 
     /**
      * Lfd Nummer zur Wagnisart.
