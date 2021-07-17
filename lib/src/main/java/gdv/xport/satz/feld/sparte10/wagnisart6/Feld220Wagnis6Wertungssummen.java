@@ -49,12 +49,11 @@ public enum Feld220Wagnis6Wertungssummen {
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
-    /**
-     * Wagnisart.
-     * 4 = BUZ, 8 = Selbständige Berufsunfähigkeitsvers.
-     */
-    @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
-    WAGNISART,
+  /**
+   * Wagnisart. 4 = BUZ, 8 = Selbständige Berufsunfähigkeitsvers.
+   */
+  @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60, value = "6")
+  WAGNISART,
 
     /**
      * Lfd Nummer zur Wagnisart.

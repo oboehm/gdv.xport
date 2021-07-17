@@ -50,12 +50,11 @@ public enum Feld221Wagnis7ZukSummenaenderungen {
     @FeldInfo(teildatensatz = 1, nr = 8, type = AlphaNumFeld.class, anzahlBytes = 17, byteAdresse = 43)
     LFD_NUMMER_VP_PERSONENGRUPPE,
 
-    /**
-     * Wagnisart.
-     * 7 = Fondsgebundene Lebensversicherung
-     */
-    @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
-    WAGNISART,
+  /**
+   * Wagnisart. 7 = Fondsgebundene Lebensversicherung
+   */
+  @FeldInfo(teildatensatz = 1, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60, value = "7")
+  WAGNISART,
 
     /**
      * Laufendes Nummer zur Wagnisart.
