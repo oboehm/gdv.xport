@@ -388,139 +388,57 @@ public class Datenpaket {
     private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
             throws IOException {
         int sparte = Datensatz.readSparte(reader);
+        /*
+         * @Oli: Da ein SatzTyp nun stets 'seine' Sparte kennt unabhaengig vom zugehoerigen
+         *       "GdvSatzartNamen", sollte die Sparte uebergeben werden!
+         */
         SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
         if (satzart >= 210 && satzart < 300) {
-            if (isIdentischZu000(sparte))
-                satzTyp = SatzTyp.of(satzart, 0);
-            else if (isIdentischZu080(sparte))
-                satzTyp = SatzTyp.of(satzart, 80);
-            else if (isIdentischZu170(sparte))
-                satzTyp = SatzTyp.of(satzart, 170);
-            else if (isIdentischZu190(sparte))
-                satzTyp = SatzTyp.of(satzart, 190);
-            else if (isIdentischZu510(sparte))
-                satzTyp = SatzTyp.of(satzart, 510);
-            else if (600 == sparte)
-            // lt. GDV-Spartenverseichnis wird Moped wie Sparte 050 behandelt
-                satzTyp = SatzTyp.of(satzart, 50);
-           else
+            if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
+                WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
+                if (wagnisart != WagnisartLeben.NULL) {
+                    // wagnisart 0 hat immer ein Leerzeichen als
+                    // teildatenSatzmummer. Nur groesser 0
+                    // besitzt per Definition Werte.
+                    TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
+                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
+                } else {
+                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode());
+                }
+            } else if (sparte == 20 && satzart == 220) {
+                // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
+                int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
+                // Krankenfolgenummer nicht auslesbar -> Unbekannter Datensatz
+                if (krankenFolgeNr == -1) {
+                    Datensatz satz = new SatzX(220, 20, FeldX.class);
+                    satz.importFrom(reader);
+                    return satz;
+                }
+                satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
+            }  else if (sparte == 580 && satzart == 220) {
+                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
+                // noetig
+                int bausparArt = Datensatz.readBausparenArt(reader);
+                // BausparenArt nicht auslesbar -> Unbekannter Datensatz
+                if (bausparArt == -1) {
+                    Datensatz satz = new SatzX(220, 580, FeldX.class);
+                    satz.importFrom(reader);
+                    return satz;
+                }
+                satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
+            }
+            else {
                 satzTyp = SatzTyp.of(satzart, sparte);
+            }
         }
-        if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
-            WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
-            if (wagnisart != WagnisartLeben.NULL) {
-                // wagnisart 0 hat immer ein Leerzeichen als
-                // teildatenSatzmummer. Nur groesser 0
-                // besitzt per Definition Werte.
-                TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
-                satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
-            } else {
-                satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode());
-            }
-        } else if (sparte == 20 && satzart == 220) {
-            // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
-            int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
-            // Krankenfolgenummer nicht auslesbar -> Unbekannter Datensatz
-            if (krankenFolgeNr == -1) {
-                Datensatz satz = new SatzX(220, 20, FeldX.class);
-                satz.importFrom(reader);
-                return satz;
-            }
-            satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
-        }  else if (sparte == 580 && satzart == 220) {
-            // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
-            // noetig
-            int bausparArt = Datensatz.readBausparenArt(reader);
-            // BausparenArt nicht auslesbar -> Unbekannter Datensatz
-            if (bausparArt == -1) {
-                Datensatz satz = new SatzX(220, 580, FeldX.class);
-                satz.importFrom(reader);
-                return satz;
-            } else if (bausparArt == 0) {
-                bausparArt = 1;
-            }
-            satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
-        }
-
+        /*
+         * @Oli: jetzt klappt es, egal welchen Wert die Sparte hat.
+         */
         Datensatz satz = SatzFactory.getDatensatz(satzTyp);
         satz.importFrom(reader);
         return satz;
     }
 
-    /**
-     * Sparten, die gemaess Spartenverzeichnis
-     * (Anlagen_GDV-Datendatz_VU-Vermittler) nach Satzdefinition vom Allgemeinen
-     * Satz geliefert werden.
-     */
-    private static boolean isIdentischZu000(int sparte) {
-        boolean ret = false;
-
-        for (int sparte000 : spartenIdentischZu_000) {
-            if (sparte000 == sparte)
-                return true;
-        }
-        return ret;
-    }
-
-    /**
-     * Sparten, die gemaess Spartenverzeichnis
-     * (Anlagen_GDV-Datendatz_VU-Vermittler) nach Satzdefinition vom
-     * Feuer-Industrie/Gewerbl. Sachvers. geliefert werden.
-     */
-    private static boolean isIdentischZu080(int sparte) {
-        boolean ret = false;
-
-        for (int sparte000 : spartenIdentischZu_080) {
-            if (sparte000 == sparte)
-                return true;
-        }
-        return ret;
-    }
-
-    /**
-     * Sparten, die gemaess Spartenverzeichnis
-     * (Anlagen_GDV-Datendatz_VU-Vermittler) nach Satzdefinition von Technische
-     * Versicherung geliefert werden.
-     */
-    private static boolean isIdentischZu170(int sparte) {
-        boolean ret = false;
-
-        for (int sparte170 : spartenIdentischZu_170) {
-            if (sparte170 == sparte)
-                return true;
-        }
-        return ret;
-    }
-
-    /**
-     * Sparten, die gemaess Spartenverzeichnis
-     * (Anlagen_GDV-Datendatz_VU-Vermittler) nach Satzdefinition von Transport
-     * geliefert werden.
-     */
-    private static boolean isIdentischZu190(int sparte) {
-        boolean ret = false;
-
-        for (int sparte190 : spartenIdentischZu_190) {
-            if (sparte190 == sparte)
-                return true;
-        }
-        return ret;
-    }
-
-    /**
-     * Sparten, die gemaess Spartenverzeichnis
-     * (Anlagen_GDV-Datendatz_VU-Vermittler) nach Satzdefinition von
-     * Verkehrsservice geliefert werden.
-     */
-    private static boolean isIdentischZu510(int sparte) {
-        boolean ret = false;
-
-        for (int sparte510 : spartenIdentischZu_510) {
-            if (sparte510 == sparte)
-                return true;
-        }
-        return ret;
-    }
     /**
      * Importieren einer Datei.
      *
