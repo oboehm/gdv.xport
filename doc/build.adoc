@@ -6,7 +6,12 @@
 |===
 |Server|master |develop |Konfiguration
 
-|https://travis-ci.org/oboehm/gdv.xport/branches[Travis-CI.org]
+|https://travis-ci.com/oboehm/gdv.xport/branches[Travis-CI.com]
+|https://travis-ci.com/oboehm/gdv.xport/branches[image:https://travis-ci.com/oboehm/gdv.xport.svg?branch=master[Build Status]]
+|https://travis-ci.com/oboehm/gdv.xport/branches[image:https://travis-ci.com/oboehm/gdv.xport.svg?branch=develop%2F4.x[Build Status]]
+|s. link:../.travis.yml[.travis.yml]
+
+|https://travis-ci.org/oboehm/gdv.xport/branches[Travis-CI.org] (alt)
 |https://travis-ci.org/oboehm/gdv.xport/branches[image:https://travis-ci.org/oboehm/gdv.xport.svg?branch=master[Build Status]]
 |https://travis-ci.org/oboehm/gdv.xport/branches[image:https://travis-ci.org/oboehm/gdv.xport.svg?branch=develop%2F4.x[Build Status]]
 |s. link:../.travis.yml[.travis.yml]
