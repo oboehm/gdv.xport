@@ -26,36 +26,36 @@ import java.util.Arrays;
 
 /**
  * Der SatzTyp ist eine Repraesentation des Namens einer GDV-Satzdefinition bzw. seiner Bestandteile.
- * </br>
+ * <p>
  * Der Aufbau des <b>GDV-Satzartnames</b> folgt dem Schema
- * &lt;satzart&gt;[.&lt;sparte&gt;[.&lt;art&gt;[.&lt;gdvsatzartnummer&gt;]]].</br>
+ * &lt;satzart&gt;[.&lt;sparte&gt;[.&lt;art&gt;[.&lt;gdvsatzartnummer&gt;]]].<br>
  * (siehe auch {{@link #getGdvSatzartName()})
  * <p/>
- * Näheres findet sich unter "online-version" z.B. hier (rel 01.07.2018):</br>
- * "http://www.gdv-online.de/vuvm/bestand/best_2018.htm"
  * <p>
+ * Näheres findet sich unter "online-version" z.B. hier (rel 01.07.2018):<br>
+ * "http://www.gdv-online.de/vuvm/bestand/best_2018.htm"
  * Es gilt:
  * <ul>
  * <li><b>&lt;satzart&gt; </b>: 1. Teil aus 4 Ziffern z.B. "0200" bzw. "0100" bzw. "0220"</li>
  * <li><b>&lt;sparte&gt; </b>: 2. Teil aus 3 Ziffern z.B. "000" bzw. "010" bzw."030" bzw "580". Nur
- * bei Satzarten "02XX" </br>
- * (z.B. "0210", "0211", "0220", "0221" u.a.) ! </br>
+ * bei Satzarten "02XX" <br>
+ * (z.B. "0210", "0211", "0220", "0221" u.a.) ! <br>
  * Achtung: nicht verwechseln mit der "GDV-Sparte" als Inhalt von Feld 4 (Adresse 11-13) eines
- * Teildatensatzes!</br>
+ * Teildatensatzes!<br>
  * Nur in wenigen vordefinierten Spartensaetzen entspricht &lt;sparte&gt; der GDV-Sparte (z.B.
- * GDV-Sparte "040" in "0210.040").</br>
- * Die meisten GDV-Sparten werden ueber gemeinsame Satzdefinitionen abgebildet.</br>
+ * GDV-Sparte "040" in "0210.040").<br>
+ * Die meisten GDV-Sparten werden ueber gemeinsame Satzdefinitionen abgebildet.<br>
  * Beispiel: GDV-Sparten "296" und "299" werden gemäß GDV-Satzarten "0210.000", "0211.000",
- * "0220.000", "0221.000" beschrieben. </br>
+ * "0220.000", "0221.000" beschrieben. <br>
  * GDV-Sparten "080", "081", "082, "083" und "089" werden über GDV-Satzarten "0210.080", "0211.080",
- * "0220.080", "0221.080" beschrieben.</br>
+ * "0220.080", "0221.080" beschrieben.<br>
  * Weitere Infos liefern finden sich z.B. hier (rel 01.07.2018):
  * "http://www.gdv-online.de/vuvm/bestand/rel2018/anl1.htm"</li>
  * <li><b>&lt;art&gt; </b>: 3. Teil aus 1-2 Ziffern, Bedeutung ist abhängig von &lt;sparte&gt;:
  * <ul>
- * <li>&lt;sparte&gt; <b>"010"</b> (Leben): Wagnisart "13", "2", "48", "5", "6", "7", "9". </br>
+ * <li>&lt;sparte&gt; <b>"010"</b> (Leben): Wagnisart "13", "2", "48", "5", "6", "7", "9". <br>
  * Achtung: nicht verwechseln mit "GDV-Wagnisart" als Inhalt von Feld 9 (Adresse 60-60) eines
- * Teildatensatzes der </br>
+ * Teildatensatzes der <br>
  * "02XX"er-Satzarten fuer Leben (GDV-Sparte "010")! "13" bzw. "48" steht jeweils als Abkürzung fuer
  * "GDV-Wagnisart 1 und 3" bzw. "GDV-Wagnisart 4 und 8".</li>
  * <li>&lt;sparte&gt; <b>"020"</b> (Kranken): KrankenfolgeNummer "1", "2", "3" im Feld 10 (Adresse
@@ -66,9 +66,9 @@ import java.util.Arrays;
  * Weitere Infos liefern finden sich hier: "http://www.gdv-online.de/vuvm/bestand/best_2018.htm"
  * </li>
  * <li><b>&lt;gdvsatzartnummer&gt; </b>: 4. Teil aus 1 Ziffer (nur fuer &lt;sparte&gt; <b>"010"</b>
- * in den Satzarten "0220" bzw. "0221"). Wird benoetigt, um zu unterscheiden zwischen</br>
+ * in den Satzarten "0220" bzw. "0221"). Wird benoetigt, um zu unterscheiden zwischen<br>
  * 'Standard' ("1") und den Erweiterungen 'Bezugsrechte' ("6"), 'Auszahlung' ("7"), zukünftige
- * Summenänderung' ("8") und 'Wertungssummen' ("9").</br>
+ * Summenänderung' ("8") und 'Wertungssummen' ("9").<br>
  * Achtung: die Erweiterungen bestehen jeweils aus 1 Teildatensatz mit Satznummer =
  * &lt;gdvsatzartnummer&gt; !</li>
  * </ul>
@@ -121,7 +121,7 @@ public class SatzTyp {
 	}
 
 	/**
-   * Anhand der übergebenen Zahlen wird der entsprechende SatzTyp aufgebaut.</br>
+   * Anhand der übergebenen Zahlen wird der entsprechende SatzTyp aufgebaut.<br>
    * Es gilt: &lt;satzart&gt;[.&lt;sparte&gt;[.&lt;art&gt;[.&lt;gdvsatzartnummer&gt;]]]
 	 *
    * @param args the args (max. Anzahl 4)
@@ -248,7 +248,7 @@ public class SatzTyp {
 	}
 
 	/**
-   * Gets the wagnisart.</br>
+   * Gets the wagnisart.<br>
    * <b>Achtung:</b> Anders als bei den Kindklassen von <code>"Satz.java"</code> kann die Wagnisart
    * hier 1- bis 2-stellig sein abhaengig von der Instanziierung dieses "SatzTyp"-Objektes!
 	 *
@@ -276,7 +276,7 @@ public class SatzTyp {
 
 	/**
    * Liefert die BausparenArt zurueck. Dies ist bei SatzTyp "0220.580.01" der letzte Teil. Diese
-   * Methode macht nur bei den Satz-Typen "0220.580.01" und "0220.580.2" Sinn. </br>
+   * Methode macht nur bei den Satz-Typen "0220.580.01" und "0220.580.2" Sinn. <br>
    * <b>Achtung:</b> BausparenArt ist immer 1-stellig unabhaengig von der Instanziierung dieses
    * "SatzTyp"-Objektes!
 	 *
@@ -288,7 +288,7 @@ public class SatzTyp {
 	}
 
 	/**
-   * Liefert die BausparenArt zurueck als 3. Teil des GdvSatzartNamens. </br>
+   * Liefert die BausparenArt zurueck als 3. Teil des GdvSatzartNamens. <br>
    * Dies ist bei SatzTyp "0220.580.01" der letzte Teil ("01"). Diese Methode macht nur bei den
    * Satz-Typen "0220.580.01" und "0220.580.2" Sinn.
 	 *

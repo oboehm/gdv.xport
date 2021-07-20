@@ -180,9 +180,11 @@ public class SatzRegistry implements VersionHandler {
      * kann jetzt auch diese XML-Beschreibung fuer die Registrierung eigener
      * Datensaetze verwendet und hierueber registriert werden. So kann z.B.
      * mit
+     * </p>
      * <pre>
      * SatzRegistry.getInstance().register(SatzXml.of("Satz0221.051.xml"), SatzTyp.of("0221.051"));
      * </pre>
+     * <p>
      * eine eigene Beschreibung fuer Satzart 0221.051 registriert werden.
      * </p>
      *
@@ -366,7 +368,7 @@ public class SatzRegistry implements VersionHandler {
     }
 
     private SatzTyp errateSatzTyp(final String content) throws IOException {
-        /**
+        /*
          * @Oli: das entspricht im Wesentlichen der Methode "Datenpaket.importDatensatz(...)".
          */
         SatzTyp satzTyp;
@@ -409,25 +411,6 @@ public class SatzRegistry implements VersionHandler {
                     satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
                 }
             } else {
-                /**
-                 * @Oli: Da nun "SatzTyp.java" das folgende if...else Konstrukt enthaelt, koenntest du das
-                 *       auch ersetzen durch: "satzTyp =SatzTyp.of(satzart, sparte);"
-                 */
-                // if (isIdentischZu000(sparte))
-                // satzTyp = SatzTyp.of(satzart, 0);
-                // else if (isIdentischZu080(sparte))
-                // satzTyp = SatzTyp.of(satzart, 80);
-                // else if (isIdentischZu170(sparte))
-                // satzTyp = SatzTyp.of(satzart, 170);
-                // else if (isIdentischZu190(sparte))
-                // satzTyp = SatzTyp.of(satzart, 190);
-                // else if (isIdentischZu510(sparte))
-                // satzTyp = SatzTyp.of(satzart, 510);
-                // else if (600 == sparte)
-                // // lt. GDV-Spartenverseichnis wird Moped wie Sparte 050 behandelt
-                // satzTyp = SatzTyp.of(satzart, 50);
-                // else
-                // satzTyp = SatzTyp.of(satzart, sparte);
                 satzTyp = SatzTyp.of(satzart, sparte);
             }
         }

@@ -57,7 +57,7 @@ public class Datensatz extends Satz {
 	 * Default-Konstruktor (wird zur Registrierung bei der {@link gdv.xport.util.SatzFactory}
 	 * benoetigt).
 	 * <p>
-	 * @Klaus: In {@link gdv.xport.util.SatzRegistry#getSatz(SatzTyp)} wird der
+	 * Anm.:   In {@link gdv.xport.util.SatzRegistry#getSatz(SatzTyp)} wird der
 	 *         Default-Constructor per Reflection aufgerufen. Daher kann er nicht
 	 *         einfach entfernt werden.
 	 * </p>
@@ -69,8 +69,8 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.</br>
-	 * Der Teildatensatz besteht nur aus 8 Feldern:</br>
+	 * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.<br>
+	 * Der Teildatensatz besteht nur aus 8 Feldern:<br>
 	 * <ul>
 	 * <li>Satzart</li>
 	 * <li>VU_NUMMER</li>
@@ -94,8 +94,8 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.</br>
-	 * Der Teildatensatz besteht nur aus 8 Feldern:</br>
+	 * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.<br>
+	 * Der Teildatensatz besteht nur aus 8 Feldern:<br>
 	 * <ul>
 	 * <li>Satzart</li>
 	 * <li>VU_NUMMER</li>
@@ -106,7 +106,7 @@ public class Datensatz extends Satz {
 	 * <li>VERMITTLER</li>
 	 * <li>SATZNUMMER</li>
 	 * </ul>
-	 * </p>
+	 * <p>
 	 * TODO: Wird mit v6 entfernt.
 	 * </p>
 	 *
@@ -119,8 +119,8 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz.</br>
-	 * Der Teildatensatz besteht nur aus 8 Feldern:</br>
+	 * Instantiiert einen neuen Datensatz.<br>
+	 * Der Teildatensatz besteht nur aus 8 Feldern:<br>
 	 * <ul>
 	 * <li>Satzart</li>
 	 * <li>VU_NUMMER</li>
@@ -160,8 +160,8 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.</br>
-	 * Der Teildatensatz besteht nur aus 8 Feldern:</br>
+	 * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.<br>
+	 * Der Teildatensatz besteht nur aus 8 Feldern:<br>
 	 * <ul>
 	 * <li>Satzart</li>
 	 * <li>VU_NUMMER</li>
@@ -186,8 +186,8 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-     * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.</br>
-     * Der Teildatensatz besteht nur aus 8 Feldern:</br>
+     * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.<br>
+     * Der Teildatensatz besteht nur aus 8 Feldern:<br>
      * <ul>
      * <li>Satzart</li>
      * <li>VU_NUMMER</li>
@@ -208,8 +208,8 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	   * Instantiiert einen neuen Datensatz.</br>
-	   * Die Teildatensaetze bestehen nur aus 8 Feldern:</br>
+	   * Instantiiert einen neuen Datensatz.<br>
+	   * Die Teildatensaetze bestehen nur aus 8 Feldern:<br>
 	   * <ul>
 	   * <li>Satzart</li>
 	   * <li>VU_NUMMER</li>
@@ -235,8 +235,8 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-     * Instantiiert einen neuen Datensatz.</br>
-     * Die Teildatensaetze bestehen nur aus 8 Feldern:</br>
+     * Instantiiert einen neuen Datensatz.<br>
+     * Die Teildatensaetze bestehen nur aus 8 Feldern:<br>
      * <ul>
      * <li>Satzart</li>
      * <li>VU_NUMMER</li>
@@ -394,13 +394,6 @@ public class Datensatz extends Satz {
 	 */
 	public void setSparte(final int x) {
 		this.sparte.setInhalt(x);
-/**
- *
- * @Oli: was soll hier geschehen? Das Besetzen von "sparte" innerhalb der Teildatensaetze
- *       ist falsch z.B. bei GdvSatzart "0220.000" (Sparte 000 gibt es nicht),
- *       "0220.170" (Sparte 170 gibt es nicht), u.a.
- *       siehe Mail vom 15.03.2021
- */
 		for (Teildatensatz tds : getTeildatensaetze()) {
 			if (tds.getFelder().size() > 3) {
 				tds.getFeld(4).setInhalt(x);
@@ -461,7 +454,7 @@ public class Datensatz extends Satz {
 	 */
 	@Override
     public boolean hasSparte() {
-        /**
+        /*
          * @Oli: die Abfrage auf Existenz von "sparte" ist noetig, damit es beim Debugging nicht in
          *       "Satz.toString()" zur RuntimeException kommen kann, solange das Datensatz-Objekt noch
          *       nicht fertig ist.
@@ -528,9 +521,7 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-   * Gets the teildatensatz nummer. (wird nur von SatzX verwendet!)
-   *
-   * @Oli: das ist Unsinn. Ein Datensatz hat keine TeildatensatzNummer!
+   	 * Gets the teildatensatz nummer. (wird nur von SatzX verwendet!)
 	 *
 	 * @return the teildatensatz nummer
 	 */

@@ -108,7 +108,7 @@ public abstract class Satz implements Cloneable {
 	 *
 	 * @param art z.B. 100 (f. Adressteil)
 	 * @param n Anzahl der Teildatensaetze
-	 * @deprecated bitte {@link Satz(SatzTyp, int)} verwenden
+	 * @deprecated bitte {@link Satz#Satz(SatzTyp, int)} verwenden
 	 */
 	@Deprecated
 	public Satz(final int art, final int n) {
@@ -237,7 +237,7 @@ public abstract class Satz implements Cloneable {
      * Liefert den n-ten Teildatensatz aus der Liste der Teildatensätze zurueck.
      * <p>
      * <b>Achtung</b> n ist nicht immer identisch mit der Satznummer des
-     * Teildatensatzes (siehe z.B. Satzart 0221.140).<br/>
+     * Teildatensatzes (siehe z.B. Satzart 0221.140).
      * Dazu besser {@link #getTeildatensatzBySatzNr(int)} verwenden.
 	 * </p>
 	 *
@@ -682,6 +682,7 @@ public abstract class Satz implements Cloneable {
 	 * Feld mit dem angegebenen Bezeichner und das benachbarte Vorzeichenfeld
 	 * zusammengefasst und als Einheit zurueckgegeben.
 	 *
+	 * @param <T> 	     Unterklasse von Feld
 	 * @param bezeichner gewuenschter Bezeichner des Feldes
 	 * @param clazz      Feld-Typ
 	 * @return das gesuchte Feld
