@@ -30,7 +30,7 @@ import java.util.Arrays;
  * Der Aufbau des <b>GDV-Satzartnames</b> folgt dem Schema
  * &lt;satzart&gt;[.&lt;sparte&gt;[.&lt;art&gt;[.&lt;gdvsatzartnummer&gt;]]].<br>
  * (siehe auch {{@link #getGdvSatzartName()})
- * <p/>
+ * </p>
  * <p>
  * Näheres findet sich unter "online-version" z.B. hier (rel 01.07.2018):<br>
  * "http://www.gdv-online.de/vuvm/bestand/best_2018.htm"
@@ -71,7 +71,6 @@ import java.util.Arrays;
  * Summenänderung' ("8") und 'Wertungssummen' ("9").<br>
  * Achtung: die Erweiterungen bestehen jeweils aus 1 Teildatensatz mit Satznummer =
  * &lt;gdvsatzartnummer&gt; !</li>
- * </ul>
  * </ul>
  * <p>
  * Mit v5.0 wurde die Klasse einem kompletten Refactoring unterzogen, da sich zuviele Redundanzen

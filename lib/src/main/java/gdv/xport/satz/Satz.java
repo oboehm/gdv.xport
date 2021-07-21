@@ -78,7 +78,7 @@ public abstract class Satz implements Cloneable {
 	 *
 	 * @param art Satzart
 	 * @param n Anzahl der Teildatensaetze
-	 * @deprecated bitte {@link Satz(SatzTyp, int)} verwenden
+	 * @deprecated bitte {@link Satz#Satz(SatzTyp, int)} verwenden
 	 */
 	@Deprecated
 	public Satz(final NumFeld art, final int n) {
@@ -93,7 +93,7 @@ public abstract class Satz implements Cloneable {
 	 *
 	 * @param content die Satzart
 	 * @param n Anzahl
-	 * @deprecated bitte {@link Satz(SatzTyp, int)} verwenden
+	 * @deprecated bitte {@link Satz#Satz(SatzTyp, int)} verwenden
 	 */
 	@Deprecated
 	public Satz(final String content, final int n) {
@@ -150,7 +150,7 @@ public abstract class Satz implements Cloneable {
 	 *
 	 * @param art z.B. 100 (f. Adressteil)
 	 * @param tdsList Liste mit den Teildatensaetzen
-	 * @deprecated bitte {@link Satz(SatzTyp, List)} verwenden
+	 * @deprecated bitte {@link Satz#Satz(SatzTyp, List)} verwenden
 	 */
 	@Deprecated
 	public Satz(final int art, final List<? extends Teildatensatz> tdsList) {
