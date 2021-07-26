@@ -49,7 +49,7 @@ abgeholt werden kann.
 ## GIT Branching-Modell
 
 Entwickelt wird nach [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/) von Vincent Driessen.
-Die Weiterentwicklung der aktuellen Version findet auf dem [develop](https://github.com/oboehm/gdv.xport/tree/develop)-Branch statt, waehrend das letzte Release im Release-Zweig (derzeit: [release/4.x](https://github.com/oboehm/gdv.xport/tree/release/4.x)) zu finden ist.
+Die Weiterentwicklung der aktuellen Version findet auf dem [develop](https://github.com/oboehm/gdv.xport/tree/develop)-Branch statt, waehrend das letzte Release im Release-Zweig (derzeit: [release/5.x](https://github.com/oboehm/gdv.xport/tree/release/5.x)) zu finden ist.
 
 
 
