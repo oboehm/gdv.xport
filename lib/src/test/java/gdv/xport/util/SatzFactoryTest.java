@@ -419,6 +419,13 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     @Test
+    public void testGetSatz210Sparte40() {
+        Satz satz = SatzFactory.getSatz(SatzTyp.of("0210.040"));
+        assertEquals(210, satz.getSatzart());
+        assertEquals(40, satz.getSparte());
+    }
+
+    @Test
     public void testGetDatensatz100() {
         SatzTyp satzart100 = SatzTyp.of("0100");
         Satz a = SatzFactory.getDatensatz(satzart100);

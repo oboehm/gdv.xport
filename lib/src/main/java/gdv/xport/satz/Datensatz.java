@@ -296,8 +296,8 @@ public class Datensatz extends Satz {
 		if (satzNr.hasWagnisart() && satzNr.getWagnisart() < 10) {
 			this.set(Bezeichner.WAGNISART, Integer.toString(satzNr.getWagnisart()));
 		}
-		if (satzNr.hasTeildatensatzNummer()) {
-			this.setTeildatensatzNummer("" + satzNr.getTeildatensatzNummer());
+		if (satzNr.hasGdvSatzartNummer()) {
+			this.setTeildatensatzNummer("" + satzNr.getGdvSatzartNummer());
 		}
 	}
 
