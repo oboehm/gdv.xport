@@ -9,8 +9,16 @@
 |Begriff
 |Definition
 
+| Satzart
+| Die Satzart ist zum einen eine vierstellige Zahl von 0001 (Vorsatz) bis 9999 (Nachsatz), die einen Datensatz kennzeichnet.
+Zum anderen wird sie aber auch zusammen mit der Sparte (und weiterer Kennzeichner) als Kennzeichen für einen einzelnen Datensatz verwendet.
+Im http://www.gdv-online.de/vuvm/bestand/rel2018/samenue.html[GDV Online-Handbuch] sind alle Satzarten aufgelistet.
+
+In gdv.xport wird dieses zusammengesetzte Kennzeichen über http://www.aosd.de/gdv.xport/apidocs/gdv/xport/util/SatzTyp.html[SatzTyp] gekapselt.
+
 | Sparte
 | Die Sparte kennzeichnet einen Versicherungsbereich (z.B. Lebensvericherung = Sparte 010).
+Eine Übersicht aller Sparte sind im http://www.gdv-online.de/vuvm/bestand/rel2018/anl1.htm[Spartenverzeichnis] aufgeführt.
 
 | VU
 | Versicherungsunternehmen
@@ -18,4 +26,12 @@
 | VU-Nummer
 | 4- oder 5-stelligen Nummer, die ein Versicherungsunternehmen (VU) kennzeichnet und von der GDV vergeben wird.
 
+| VUVM2018.xml
+| Diese XML-Datei enthält die GDV-Schnittstellenbeschreibung und wird über http://www.gdv-online.de/vuvm/ zur Verfügung gestellt.
+Neben dem Stand von 2018 sind auch ältere Versionen verfügbar.
+
+gdv.xport verwendet eine abgespeckte Version, die nur die XML-Daten enthält, die für die Generierung der Datensätze notwendig sind.
+
 |===
+
+Weitere Begriffe und Fragen können der http://www.gdv-online.de/vuvm/bestand/faq.html[FAQ] von GDV Online entnommen werden.
