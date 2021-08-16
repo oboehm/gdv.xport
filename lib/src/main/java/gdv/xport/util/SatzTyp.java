@@ -345,7 +345,7 @@ public class SatzTyp {
 	 */
 	@Deprecated
 	public String getArtAsString() {
-		if (this.hasBausparenArt() && this.getBausparenArt() == 1) {
+		if (this.hasBausparenArt() && (this.getBausparenArt() == 0 || this.getBausparenArt() == 1)) {
 			return "01";
 		} else {
 			return Integer.toString(this.getArt());
