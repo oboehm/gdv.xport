@@ -297,7 +297,7 @@ public class SatzTyp {
 		if (!this.hasBausparenArt()) {
 			return "";
 		}
-		if (this.getBausparenArt() == 1) {
+		if ((this.getBausparenArt() == 0) || (this.getBausparenArt() == 1)) {
 			return "01";
 		} else {
 			return Integer.toString(this.getBausparenArt());

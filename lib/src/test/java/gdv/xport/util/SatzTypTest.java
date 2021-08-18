@@ -201,9 +201,10 @@ public class SatzTypTest {
 
     @Test
     public void testGetBausparenArt() {
-        assertEquals("01", SatzTyp.of("0220.580.01").getBausparenArtAsString());
-        assertEquals("2", SatzTyp.of("0220.580.2").getBausparenArtAsString());
-        assertEquals("", SatzTyp.of("0220.570").getBausparenArtAsString());
+        assertEquals("01", SatzTyp.of(220, 580, 0).getBausparenArtAsString());
+        assertEquals("01", SatzTyp.of(220, 580, 1).getBausparenArtAsString());
+        assertEquals("2", SatzTyp.of(220, 580, 2).getBausparenArtAsString());
+        assertEquals("", SatzTyp.of(220, 570).getBausparenArtAsString());
     }
 
     @Test
