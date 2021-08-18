@@ -278,12 +278,17 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-   * Instantiiert einen neuen Datensatz. (nur von SatzX)
+	 * Instantiiert einen neuen Datensatz. (nur von SatzX)
+	 * <p>
+	 * TODO: Wird mit v6 entfernt.
+	 * </p>
 	 *
 	 * @param satzNr  die SatzNummer
 	 * @param tdsList Liste mit den Teildatensaetzen
 	 * @since 0.9
+	 * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
 	 */
+	@Deprecated
 	protected Datensatz(final SatzTyp satzNr, final List<? extends Teildatensatz> tdsList) {
 		super(satzNr, tdsList);
 		if (tdsList.get(0).hasSparte()) {
