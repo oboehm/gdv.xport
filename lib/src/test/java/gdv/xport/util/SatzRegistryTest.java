@@ -20,10 +20,7 @@ package gdv.xport.util;
 
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Nachsatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.*;
 import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
@@ -99,6 +96,10 @@ public final class SatzRegistryTest {
         assertEquals(220, wagnis13.getSatzart());
         assertEquals(10, wagnis13.getSparte());
         MatcherAssert.assertThat(wagnis13.getWagnisart(), either(is("1")).or(is("3")));
+        for (int nr = 1; nr <= 3; nr++) {
+            Teildatensatz tds = wagnis13.getTeildatensatz(nr);
+            assertEquals(nr, tds.getSatznummer().toInt());
+        }
     }
 
 }
