@@ -22,11 +22,14 @@ import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
+import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import javax.validation.ValidationException;
 
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 /**
@@ -88,6 +91,14 @@ public final class SatzRegistryTest {
     @Test(expected = ValidationException.class)
     public void testRegister() {
         f2018.register(Datensatz.class, 47);
+    }
+
+    @Test
+    public void testSatz200Wagnis13() {
+        Satz wagnis13 = f2018.getSatz(SatzTyp.of("0220.010.13.1"));
+        assertEquals(220, wagnis13.getSatzart());
+        assertEquals(10, wagnis13.getSparte());
+        MatcherAssert.assertThat(wagnis13.getWagnisart(), either(is("1")).or(is("3")));
     }
 
 }

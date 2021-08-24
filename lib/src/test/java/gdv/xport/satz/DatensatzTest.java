@@ -166,4 +166,13 @@ public class DatensatzTest extends AbstractDatensatzTest {
         }
     }
 
+    @Test
+    public void testInit() {
+        SatzTyp wagnis13 = SatzTyp.of("0220.010.13.1");
+        Datensatz datensatz = new Datensatz(wagnis13);
+        assertEquals(220, datensatz.getSatzart());
+        assertEquals(10, datensatz.getSparte());
+        assertEquals(wagnis13, datensatz.getSatzTyp());
+    }
+
 }

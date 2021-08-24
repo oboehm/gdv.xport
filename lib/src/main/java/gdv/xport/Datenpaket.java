@@ -696,4 +696,29 @@ public class Datenpaket {
         nachsatz.addSchadenbearbeitungskosten(betrag.toBigDecimal());
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Datenpaket other = (Datenpaket) obj;
+        return Objects.equals(vorsatz, other.vorsatz) && isEquals(datensaetze, other.datensaetze) && Objects.equals(nachsatz, other.nachsatz);
+    }
+
+    private static boolean isEquals(List<Datensatz> d1, List<Datensatz> d2) {
+        if (d1.size() != d2.size()) {
+            return false;
+        }
+        for (int i = 0; i < d1.size(); i++) {
+            if (!d1.get(i).equals(d2.get(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return datensaetze.size();
+    }
+
 }

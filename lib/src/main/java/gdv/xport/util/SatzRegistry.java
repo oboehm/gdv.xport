@@ -279,9 +279,7 @@ public class SatzRegistry implements VersionHandler {
     private Satz getSatzFromXmlService(SatzTyp satztyp) {
         try {
             SatzXml satz = xmlService.getSatzart(satztyp);
-            if (satztyp.hasSparte()) {
-                satz.setSparte(satztyp.getSparte());
-            }
+            satz.init(satztyp);
             return satz;
         } catch (NotRegisteredException ex) {
             if (satztyp.hasParent()) {
@@ -616,9 +614,7 @@ public class SatzRegistry implements VersionHandler {
      */
     public Datenpaket getAllSupportedSaetze() {
         Map<SatzTyp, Datensatz> supportedSaetze = new HashMap<>();
-        for (Map.Entry<SatzTyp, SatzXml> entry : xmlService.getSatzarten().entrySet()) {
-            supportedSaetze.put(entry.getKey(), entry.getValue());
-        }
+        supportedSaetze.putAll(xmlService.getSatzarten());
         for (Map.Entry<SatzTyp, Satz> entry : registeredSaetze.entrySet()) {
             Satz value = entry.getValue();
             if (value instanceof Datensatz) {

@@ -29,6 +29,7 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.IOUtils;
@@ -36,11 +37,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
 import patterntesting.runtime.junit.FileTester;
-import patterntesting.runtime.junit.SmokeRunner;
+import patterntesting.runtime.junit.ObjectTester;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -63,6 +63,7 @@ import static org.junit.Assert.*;
 public final class DatenpaketTest {
 
     private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
+    private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance();
     /** Fuer jeden Test gibt es ein frisches Datenpaket. */
     private final Datenpaket datenpaket = new Datenpaket();
 
@@ -589,6 +590,38 @@ public final class DatenpaketTest {
         Bezeichner satzart9999 = Bezeichner.VERSION_SATZART_9999;
         datenpaket.getVorsatz().setVersion(satzart9999, "0.9");
         assertEquals("0.9", datenpaket.getVorsatz().getVersion(satzart9999));
+    }
+
+    @Test
+    public void testEquals() {
+        Datenpaket one = new Datenpaket();
+        Datenpaket two = new Datenpaket();
+        ObjectTester.assertEquals(one, two);
+    }
+
+    @Test
+    public void testNotEquals() {
+        Datenpaket x = new Datenpaket();
+        x.add(SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.010.13.1")));
+        assertNotEquals(datenpaket, x);
+    }
+
+    /**
+     * Hierueber wird Issue #61 nachgestellt.
+     *
+     * @throws IOException im Fehlerfall
+     */
+    @Test
+    public void testExportImportWagnisart13() throws IOException {
+        File testfile = new File("target", "issue61.gdv");
+        Datensatz leben = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.010.13.1"));
+        Datensatz bezugsrechte = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.010.13.6"));
+        datenpaket.add(leben);
+        datenpaket.add(bezugsrechte);
+        datenpaket.export(testfile);
+        Datenpaket imported = new Datenpaket();
+        imported.importFrom(testfile);
+        assertEquals(datenpaket, imported);
     }
 
 }

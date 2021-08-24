@@ -244,7 +244,7 @@ public class SatzXml extends Datensatz {
     }
 
     /**
-     * Hier kann man mithile einer XML-Beschreibung einen Satz generieren.
+     * Hier kann man mithilfe einer XML-Beschreibung einen Satz generieren.
      * Diese Methode dient dazu, um die Notwendigkeit der Enum-Beschreibung
      * weiter zu reduzieren.
      *

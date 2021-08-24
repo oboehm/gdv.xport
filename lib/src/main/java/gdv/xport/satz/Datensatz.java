@@ -253,11 +253,9 @@ public class Datensatz extends Satz {
 	 * @param n Anzahl der Teildatensaetze
 	 * @since 5.0
 	 */
-  public Datensatz(final SatzTyp satzTyp, final int n)
-  {
-    super(satzTyp, n);
-    if (satzTyp.hasSparte())
-      this.setSparte(satzTyp.getSparte());
+	public Datensatz(final SatzTyp satzTyp, final int n) {
+		super(satzTyp, n);
+		this.init(satzTyp);
 		this.setUpTeildatensaetze();
 	}
 
@@ -390,6 +388,30 @@ public class Datensatz extends Satz {
 		for (Teildatensatz tds : this.getTeildatensaetze()) {
 			tds.add(new AlphaNumFeld((LEERSTELLEN), 213, 43));
 		}
+	}
+
+	/**
+	 * Dient dazu, um mit den Informationen des Satztyps Sparte und andere
+	 * Felder vorzubelegen.
+	 *
+	 * @param satztyp SatzTyp, z.B. "0220.010.13.1"
+	 * @since 5.1
+	 */
+	public void init(SatzTyp satztyp)  {
+		if (satztyp.hasSparte()) {
+			setSparte(satztyp.getSparte());
+		}
+		if (satztyp.hasWagnisart()) {
+			initWagnisart(satztyp.getWagnisart());
+		}
+	}
+
+	private void initWagnisart(int art) {
+		if (!hasWagnisart()) {
+			add(new AlphaNumFeld(WAGNISART, 1, 60));
+		}
+		Feld wagnisart = getFeld(WAGNISART);
+		wagnisart.setInhalt(Integer.toString(art).substring(0, 1));
 	}
 
 	/**
