@@ -607,21 +607,34 @@ public final class DatenpaketTest {
     }
 
     /**
-     * Hierueber wird Issue #61 nachgestellt.
+     * Hierueber wird der fehlerhafte Import aus Issue #61 nachgestellt.
      *
      * @throws IOException im Fehlerfall
      */
     @Test
+    public void testImportWagnisart13() throws IOException {
+        File testfile = new File("src/test/resources", "gdv/xport/satz/testcase_0220_010_13.txt");
+        Datenpaket imported = new Datenpaket();
+        imported.importFrom(testfile, "IBM850");
+        File exportFile = new File("target", "exported_0220_010_13.txt");
+        for (Datensatz ds : imported.getDatensaetze()) {
+            assertTrue(ds.isValid());
+        }
+        imported.export(exportFile, "IBM850");
+        FileTester.assertContentEquals(testfile, exportFile);
+    }
+
+    @Test
     public void testExportImportWagnisart13() throws IOException {
         File testfile = new File("target", "issue61.gdv");
         Datensatz leben = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.010.13.1"));
-        Datensatz bezugsrechte = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.010.13.6"));
+        leben.removeTeildatensatz(3);
         datenpaket.add(leben);
-        datenpaket.add(bezugsrechte);
+        datenpaket.add(SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.010.13.6")));
         datenpaket.export(testfile);
         Datenpaket imported = new Datenpaket();
         imported.importFrom(testfile);
-        assertEquals(datenpaket, imported);
+        assertEquals(2, imported.getDatensaetze().size());
     }
 
 }

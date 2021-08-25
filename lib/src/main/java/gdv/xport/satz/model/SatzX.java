@@ -215,7 +215,7 @@ public class SatzX extends Datensatz {
 
 			TeildatensatzNummer currentLineTeildatensatzEnum = TeildatensatzNummer.NULL;
 			if (currentLineTeildatensatzNummerIsSet) {
-				currentLineTeildatensatzEnum = TeildatensatzNummer.isIn(Integer.parseInt(this
+				currentLineTeildatensatzEnum = TeildatensatzNummer.of(Integer.parseInt(this
 				        .getTeildatensatzNummer()));
 			}
 

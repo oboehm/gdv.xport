@@ -799,7 +799,7 @@ public class Datensatz extends Satz {
             return TeildatensatzNummer.NULL;
         } else {
             try {
-                return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
+                return TeildatensatzNummer.of(Integer.parseInt(teildatenSatz));
             } catch (NumberFormatException e) {
                 LOG.warn("Value \"" + teildatenSatz + "\" for TeildatensatzNummer found, but Number expected.");
                 return TeildatensatzNummer.NULL;

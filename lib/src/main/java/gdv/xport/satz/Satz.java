@@ -1153,7 +1153,16 @@ public abstract class Satz implements Cloneable {
                         + ", but Satzart or Sparte or Wagnisart or TeildatensatzNummer has changed");
                 break;
             }
-            satznummer = readSatznummer(reader);
+            Character nr = readSatznummer(reader);
+			if (Character.isDigit(nr) && (teildatensatz[i].getSatznummer().toChar() != nr)
+					// TODO: readSatznummer(..) fuer Satzart 022x.030 und 022x.040 korrigieren (25-Aug-2021, oboehm)
+					&& (getSparte() < 30)) {
+				LOG.info("{} erwartet statt {} - ueberspringe {} Teildatensaetze.",
+						teildatensatz[i].getSatznummer(), nr, (teildatensatz.length - i));
+
+				continue;
+			}
+			satznummer = nr;
             importFrom(reader, cbuf, i * 257);
             cbuf[i * 257 + 256] = '\n';
             feld1to7 = Arrays.copyOfRange(cbuf, i*257,  i*257 + 42);

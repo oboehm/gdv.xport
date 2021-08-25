@@ -452,7 +452,7 @@ public class SatzRegistry implements VersionHandler {
             return TeildatensatzNummer.NULL;
         } else {
             try {
-                return TeildatensatzNummer.isIn(Integer.parseInt(teildatenSatz));
+                return TeildatensatzNummer.of(Integer.parseInt(teildatenSatz));
             } catch (NumberFormatException e) {
                 LOG.warn(
                         "Value \"" + teildatenSatz + "\" for TeildatensatzNummer found, but Number expected.");

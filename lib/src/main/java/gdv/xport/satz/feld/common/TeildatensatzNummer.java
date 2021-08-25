@@ -24,6 +24,15 @@ public enum TeildatensatzNummer {
     /** The null. */
     NULL(-1),
 
+	/** Satznummer 1. */
+	EINS(1),
+
+	/** Satznummer 2. */
+	ZWEI(2),
+
+	/** Satznummer 3. */
+	DREI(3),
+
     /** The bezugsrechte. */
     BEZUGSRECHTE(6),
 
@@ -56,8 +65,21 @@ public enum TeildatensatzNummer {
 	 *
 	 * @param code the code
 	 * @return the teildatensatz nummer
+	 * @deprecated durch {@link TeildatensatzNummer#of(int)} ersetzt
 	 */
+	@Deprecated
 	public static TeildatensatzNummer isIn(final int code) {
+		return of(code);
+	}
+
+	/**
+	 * Liefert zu einer Zahl die entsprechende {@link TeildatensatzNummer}
+	 * zurueck.
+	 *
+	 * @param code Nummer zwischen 1 und 9
+	 * @return z.B. BEZUGSRECHTE
+	 */
+	public static TeildatensatzNummer of(final int code) {
 		for (TeildatensatzNummer existing : TeildatensatzNummer.values()) {
 			if (existing.getCode() == code) {
 				return existing;

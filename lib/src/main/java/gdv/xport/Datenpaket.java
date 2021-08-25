@@ -272,6 +272,7 @@ public class Datenpaket {
             datensatz.export(writer);
         }
         nachsatz.export(writer);
+        writer.flush();
         LOG.info(datensaetze.size() + " Datensaetze exported.");
     }
 
