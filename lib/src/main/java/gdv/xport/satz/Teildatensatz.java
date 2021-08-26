@@ -203,12 +203,12 @@ public class Teildatensatz extends Satz {
      * @since 5.0
      */
     public Zeichen getSatznummer() {
-        if (hasFeld(SATZNUMMER)) {
+        if ((this.satznummer.getByteAdresse() == 256) && hasFeld(SATZNUMMER)) {
             Zeichen nr = getFeld(SATZNUMMER, Zeichen.class);
             if (nr.isEmpty()) {
                 nr.setInhalt(this.satznummer.getInhalt());
             }
-            return nr;
+            this.satznummer = nr;
         }
         return this.satznummer;
     }
@@ -219,7 +219,10 @@ public class Teildatensatz extends Satz {
      *
      * @param satznummer das neue Feld fuer die Satznummer
      * @since 3.2
+     * @deprecated ab 5.1 nicht mehr noetig, da {@link #getSatznummer()}
+     *             jetzt die tatsaechliche Satznummer liefert
      */
+    @Deprecated
     public void setSatznummer(Zeichen satznummer) {
         String nr = this.satznummer.getInhalt();
         remove(Bezeichner.SATZNUMMER);
