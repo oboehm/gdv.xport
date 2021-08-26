@@ -231,13 +231,9 @@ public class SatzTyp {
 	 */
 	public String getSparteMitArt() {
 		StringBuilder buf = new StringBuilder();
-		/*
 		String[] parts = StringUtils.split(this.getGdvSatzartName(), '.');
 		if (parts.length > 1) {
 			buf.append(parts[1]);
-		 */
-		if (hasSparte()) {
-			buf.append(getSparteAsString());
 			if (this.hasArt()) {
 				buf.append(".");
 				buf.append(this.getArtAsString());
