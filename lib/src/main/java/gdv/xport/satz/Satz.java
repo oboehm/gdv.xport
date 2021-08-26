@@ -1143,6 +1143,7 @@ public abstract class Satz implements Cloneable {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
     public void importFrom(final PushbackLineNumberReader reader) throws IOException {
+    	SortedSet<Integer> used = new TreeSet<>();
         char[] cbuf = new char[257 * teildatensatz.length];
         char[] feld1to7 = null;
         Character satznummer = null;
@@ -1157,17 +1158,18 @@ public abstract class Satz implements Cloneable {
 			if (Character.isDigit(nr) && (teildatensatz[i].getSatznummer().toChar() != nr)
 					// TODO: readSatznummer(..) fuer Satzart 022x.030 und 022x.040 korrigieren (25-Aug-2021, oboehm)
 					&& (getSparte() < 30)) {
-				LOG.info("{} erwartet statt {} - ueberspringe {} Teildatensaetze.",
-						teildatensatz[i].getSatznummer(), nr, (teildatensatz.length - i));
-
+				LOG.info("{} erwartet statt {} - ueberspringe Teildatensatz {}.",
+						teildatensatz[i].getSatznummer(), nr, i+1);
 				continue;
 			}
+			used.add(i);
 			satznummer = nr;
             importFrom(reader, cbuf, i * 257);
             cbuf[i * 257 + 256] = '\n';
             feld1to7 = Arrays.copyOfRange(cbuf, i*257,  i*257 + 42);
         }
         importFrom(new String(cbuf));
+		removeUnusedTeildatensaetze(used);
     }
 
 	/**

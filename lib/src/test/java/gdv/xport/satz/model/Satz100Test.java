@@ -187,9 +187,8 @@ public class Satz100Test extends AbstractDatensatzTest {
         List<Teildatensatz> teildatensaetze = satz100.getTeildatensaetze();
         assertEquals(1, teildatensaetze.get(0).getSatznummer().toInt());
         assertEquals(2, teildatensaetze.get(1).getSatznummer().toInt());
-        //assertEquals(4, teildatensaetze.get(2).getSatznummer().toInt());
-        //Teildatensatz tds4 = teildatensaetze.get(2);
-        Teildatensatz tds4 = teildatensaetze.get(3);
+        assertEquals(4, teildatensaetze.get(2).getSatznummer().toInt());
+        Teildatensatz tds4 = teildatensaetze.get(2);
         assertEquals("GENODEF1JEV", tds4.getFeld(Bezeichner.BIC1).getInhalt().trim());
         assertEquals("DE41300606010006605605", tds4.getFeld(Bezeichner.IBAN1).getInhalt().trim());
     }
