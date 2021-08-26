@@ -22,6 +22,7 @@ import gdv.xport.feld.*;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.common.VertragsStatus;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
@@ -45,6 +46,7 @@ import static org.junit.Assert.*;
 public class TeildatensatzTest extends AbstractSatzTest {
 
     private static final Logger LOG = LogManager.getLogger(TeildatensatzTest.class);
+    private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance();
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -191,6 +193,38 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Teildatensatz tds = new Teildatensatz(4711, 1);
         tds.add(new AlphaNumFeld(Bezeichner.NAME1, 10, 100));
         tds.add(new AlphaNumFeld(Bezeichner.NAME2, 10, 101));
+    }
+
+    @Test
+    public void testGetSatznummer() {
+        Datensatz satz220 = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.010.13.1"));
+        for (int n = 1; n < satz220.getNumberOfTeildatensaetze(); n++) {
+            checkSatznummer(satz220, n, ByteAdresse.of(256), Character.forDigit(n, 10));
+        }
+    }
+
+    @Test
+    public void testGetSatznummer220Fahrzeughaftpflicht() {
+        Datensatz satz220 = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.051"));
+        checkSatznummer(satz220, 1, ByteAdresse.of(256), '1');
+        checkSatznummer(satz220, 2, ByteAdresse.of(256), '2');
+    }
+
+    @Test
+    public void testGetSatznummer220Wagnisdaten() {
+        Datensatz satz220 = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.030"));
+        checkSatznummer(satz220, 1, ByteAdresse.of(49), '1');
+        checkSatznummer(satz220, 2, ByteAdresse.of(49), '2');
+        checkSatznummer(satz220, 3, ByteAdresse.of(43), '3');
+        checkSatznummer(satz220, 4, ByteAdresse.of(49), '4');
+        checkSatznummer(satz220, 5, ByteAdresse.of(60), '9');
+    }
+
+    private void checkSatznummer(Datensatz satz, int n, ByteAdresse start, char inhalt) {
+        Teildatensatz tds = satz.getTeildatensatz(n);
+        Zeichen satznummer = tds.getSatznummer();
+        Zeichen expected = new Zeichen(satznummer.getBezeichner(), start.intValue(), inhalt);
+        assertEquals(expected, satznummer);
     }
 
 }

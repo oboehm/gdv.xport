@@ -633,7 +633,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         }
         Feld other = (Feld) obj;
         return this.bezeichner.equals(other.bezeichner) && this.getInhalt().equals(other.getInhalt())
-                && (this.byteAdresse == other.byteAdresse) && this.ausrichtung == other.ausrichtung;
+                && (this.byteAdresse == other.byteAdresse);
     }
 
     /*

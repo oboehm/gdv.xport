@@ -66,7 +66,6 @@ public class Teildatensatz extends Satz {
     @Deprecated
     public Teildatensatz(final NumFeld satzart) {
         super(satzart, 0);
-        this.satznummer.setInhalt(' ');
         this.initDatenfelder();
     }
 
@@ -109,7 +108,6 @@ public class Teildatensatz extends Satz {
      */
     public Teildatensatz(final SatzTyp satzTyp) {
         super(satzTyp, 0);
-        this.satznummer.setInhalt(' ');
         this.initDatenfelder();
     }
 
@@ -205,6 +203,13 @@ public class Teildatensatz extends Satz {
      * @since 5.0
      */
     public Zeichen getSatznummer() {
+        if (hasFeld(SATZNUMMER)) {
+            Zeichen nr = getFeld(SATZNUMMER, Zeichen.class);
+            if (nr.isEmpty()) {
+                nr.setInhalt(this.satznummer.getInhalt());
+            }
+            return nr;
+        }
         return this.satznummer;
     }
 
@@ -239,7 +244,7 @@ public class Teildatensatz extends Satz {
             if (LOG.isDebugEnabled() && f.getBezeichnung().startsWith("Satznummer")
                     && feld.getBezeichnung().startsWith("Satznummer")) {
                 LOG.debug(f.getBezeichnung() + "(" + f.getBezeichner().getTechnischerName() + ") gefunden in "
-                        + this + this.satznummer);
+                        + this + this.getSatznummer());
             }
             if (!feld.equals(f) && feld.overlapsWith(f)) {
                 if (isSatznummer(f)) {
@@ -253,7 +258,7 @@ public class Teildatensatz extends Satz {
         }
         if (feld.getBezeichnung().startsWith("Satznummer")) {
             LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
-            feld.setInhalt(this.satznummer.getInhalt());
+            feld.setInhalt(this.getSatznummer().getInhalt());
         }
     /*
      * @Oli: bei den 0220.020er-Saetzen ist die KrankenFolgeNr wichtig fuer die Erkennbarkeit der
@@ -281,7 +286,7 @@ public class Teildatensatz extends Satz {
         }
         datenfelder.put(feld.getBezeichner(), feld);
         if (!sortedFelder.add(feld)) {
-            LOG.debug("Bezeichner {} schon vorhanden in {} {}.", feld.getBezeichner(), this, this.satznummer);
+            LOG.debug("Bezeichner {} schon vorhanden in {} {}.", feld.getBezeichner(), this, this.getSatznummer());
         }
     }
 
