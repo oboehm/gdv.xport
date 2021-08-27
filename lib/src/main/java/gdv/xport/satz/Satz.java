@@ -1144,31 +1144,27 @@ public abstract class Satz implements Cloneable {
 	 */
     public void importFrom(final PushbackLineNumberReader reader) throws IOException {
     	SortedSet<Integer> used = new TreeSet<>();
-        char[] cbuf = new char[257 * teildatensatz.length];
         char[] feld1to7 = null;
         Character satznummer = null;
         for (int i = 0; i < teildatensatz.length; i++) {
             reader.skipNewline();
             if (!matchesNextTeildatensatz(reader, feld1to7, satznummer)) {
-                LOG.info((teildatensatz.length - i) + " more Teildatensaetze expected for " + this
-                        + ", but Satzart or Sparte or Wagnisart or TeildatensatzNummer has changed");
+            	LOG.info("Zeile {}: mehr Teildatensaetze erwartet fuer {}.", reader.getLineNumber(), this);
                 break;
             }
-            Character nr = readSatznummer(reader);
-			if (Character.isDigit(nr) && (teildatensatz[i].getSatznummer().toChar() != nr)
-					// TODO: readSatznummer(..) fuer Satzart 022x.030 und 022x.040 korrigieren (25-Aug-2021, oboehm)
-					&& (getSparte() < 30)) {
-				LOG.info("{} erwartet statt {} - ueberspringe Teildatensatz {}.",
-						teildatensatz[i].getSatznummer(), nr, i+1);
+			char nr = readSatznummer(reader, teildatensatz[i].getSatznummer().getByteAdresse());
+			if ((teildatensatz.length > 1) && Character.isDigit(nr) && (teildatensatz[i].getSatznummer().toChar() != nr)) {
+				LOG.info("Zeile {}: {} erwartet statt {} - ueberspringe Teildatensatz {}.",
+						reader.getLineNumber(), teildatensatz[i].getSatznummer(), nr, i+1);
 				continue;
 			}
 			used.add(i);
 			satznummer = nr;
-            importFrom(reader, cbuf, i * 257);
-            cbuf[i * 257 + 256] = '\n';
-            feld1to7 = Arrays.copyOfRange(cbuf, i*257,  i*257 + 42);
+			char[] cbuf = new char[257];
+			importFrom(reader, cbuf, 0);
+			teildatensatz[i].importFrom(new String(cbuf));
+			feld1to7 = Arrays.copyOfRange(cbuf, 0, 42);
         }
-        importFrom(new String(cbuf));
 		removeUnusedTeildatensaetze(used);
     }
 
@@ -1366,6 +1362,15 @@ public abstract class Satz implements Cloneable {
         }
         return false;
     }
+
+    private static char readSatznummer(final PushbackReader reader, int position) throws IOException {
+		char[] cbuf = new char[position];
+		if (reader.read(cbuf) == -1) {
+			throw new EOFException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
+		}
+		reader.unread(cbuf);
+		return cbuf[position-1];
+	}
 
     /**
 	 * Liest die Satznummer.
