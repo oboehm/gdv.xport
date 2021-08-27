@@ -621,6 +621,10 @@ public class Feld implements Comparable<Feld>, Cloneable {
     /**
      * Zwei Felder sind gleich, wenn sie die gleiche Adresse und den gleichen
      * Inhalt haben.
+     * <p>
+     * ACHTUNG: Bis v5.1 wurde noch die Ausrichtung fuer die Gleichheit
+     * herangezogen. Ab v5.1 spielt dies aber keine Rolle mehr.
+     * </p>
      *
      * @param obj das andere Feld
      * @return true, wenn beide Felder gleich sind
