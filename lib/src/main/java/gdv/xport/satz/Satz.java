@@ -51,7 +51,7 @@ public abstract class Satz implements Cloneable {
 	private static final Logger LOG = LogManager.getLogger(Satz.class);
 
 	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
-	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
+	protected Teildatensatz[] teildatensatz = new Teildatensatz[0];
 
   /**
    * Zum Abspeichern der Satznummer einer 0220er-GdvSatzart der Sparte 010
@@ -1028,24 +1028,25 @@ public abstract class Satz implements Cloneable {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
     public void importFrom(final String s) throws IOException {
-        int satzlength = getSatzlength(s);
-        SortedSet<Integer> importedTeilsatzIndexes = new TreeSet<>();
-        for (int i = 0; i < teildatensatz.length; i++) {
-            String input = s.substring(i * satzlength);
-            if (input.trim().isEmpty()) {
-                LOG.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur " + i
-                        + " Teildatensaetze vorgefunden");
-                removeUnusedTeildatensaetze(importedTeilsatzIndexes);
-                break;
-            }
-            int satznummer = readSatznummer(input.toCharArray()) - '0';
-            int teildatensatzIndex = getTeildatensatzIndex(i, satznummer);
-            teildatensatz[teildatensatzIndex].importFrom(input);
-            importedTeilsatzIndexes.add(teildatensatzIndex);
-        }
+    	importFrom(new PushbackLineNumberReader(new StringReader(s), 256));
+//        int satzlength = getSatzlength(s);
+//        SortedSet<Integer> importedTeilsatzIndexes = new TreeSet<>();
+//        for (int i = 0; i < teildatensatz.length; i++) {
+//            String input = s.substring(i * satzlength);
+//            if (input.trim().isEmpty()) {
+//                LOG.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur " + i
+//                        + " Teildatensaetze vorgefunden");
+//                removeUnusedTeildatensaetze(importedTeilsatzIndexes);
+//                break;
+//            }
+//            int satznummer = readSatznummer(input.toCharArray()) - '0';
+//            int teildatensatzIndex = getTeildatensatzIndex(i, satznummer);
+//            teildatensatz[teildatensatzIndex].importFrom(input);
+//            importedTeilsatzIndexes.add(teildatensatzIndex);
+//        }
     }
     
-    private int getTeildatensatzIndex(int index, int satznummer) {
+    protected int getTeildatensatzIndex(int index, int satznummer) {
         if (satznummer < 1) {
             return index;
         }
@@ -1057,7 +1058,7 @@ public abstract class Satz implements Cloneable {
         return index;
     }
 
-    private void removeUnusedTeildatensaetze(SortedSet<Integer> usedIndexes) {
+    protected void removeUnusedTeildatensaetze(SortedSet<Integer> usedIndexes) {
         Teildatensatz[] usedTeildatensaetze = new Teildatensatz[usedIndexes.size()];
         int i = 0;
         for (int teilsatzIndex : usedIndexes) {

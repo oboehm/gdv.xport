@@ -746,7 +746,8 @@ public class Datensatz extends Satz {
         if (super.matchesNextTeildatensatz(reader, lastFeld1To7, satznummer)) {
 			if (lastFeld1To7 == null) {
 				//erster Teildatensatz hat noch keine lastFeld...
-				return matchesFirstTeildatensatz(reader);
+				//return matchesFirstTeildatensatz(reader);
+				return true;
 			} else {
 				// TODO: ugly aber ich sehe bisher noch keinen eleganten Weg in der aktuellen Struktur ohne umfangreiche Refaktorings.
 				char[] newLine = new char[256];
@@ -761,7 +762,8 @@ public class Datensatz extends Satz {
 				for (int i = 0; i < 42; i++) {
 					if (lastFeld1To7[i] != newLine[i]) return false;
 				}
-				return matchesLastFeld(satznummer, newLine);
+				//return matchesLastFeld(satznummer, newLine);
+				return true;
 			}
 		}
 		return false;

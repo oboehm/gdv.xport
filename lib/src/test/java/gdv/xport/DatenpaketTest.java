@@ -637,4 +637,16 @@ public final class DatenpaketTest {
         assertEquals(2, imported.getDatensaetze().size());
     }
 
+    @Test
+    public void testExportImport221Wagnisdaten() throws IOException {
+        File testfile = new File("target", "exported_0221_030.txt");
+        Datensatz unfall = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0221.030"));
+        datenpaket.add(unfall);
+        datenpaket.export(testfile);
+        Datenpaket imported = new Datenpaket();
+        imported.importFrom(testfile);
+        assertEquals(1, imported.getDatensaetze().size());
+        assertEquals(unfall, imported.getDatensaetze().get(0));
+    }
+
 }

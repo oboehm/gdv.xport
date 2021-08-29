@@ -354,6 +354,11 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     @Test
+    public void testSatzart220Wagnisdaten() throws IOException {
+        checkImport(xmlService.getSatzart(SatzTyp.of("0220.030")));
+    }
+
+    @Test
     public void testCloning() throws IOException {
         Map<SatzTyp, SatzXml> satzarten = xmlService.getSatzarten();
         for (Map.Entry<SatzTyp, SatzXml> entry : satzarten.entrySet()) {

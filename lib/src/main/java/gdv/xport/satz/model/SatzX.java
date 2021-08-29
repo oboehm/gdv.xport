@@ -427,4 +427,23 @@ public class SatzX extends Datensatz {
 		return (feldX.name().length() <= 11) && feldX.name().startsWith("SATZNUMMER");
 	}
 
+	@Override
+	public void importFrom(final String s) throws IOException {
+        int satzlength = getSatzlength(s);
+        SortedSet<Integer> importedTeilsatzIndexes = new TreeSet<>();
+        for (int i = 0; i < teildatensatz.length; i++) {
+            String input = s.substring(i * satzlength);
+            if (input.trim().isEmpty()) {
+                LOG.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur " + i
+                        + " Teildatensaetze vorgefunden");
+                removeUnusedTeildatensaetze(importedTeilsatzIndexes);
+                break;
+            }
+            int satznummer = readSatznummer(input.toCharArray()) - '0';
+            int teildatensatzIndex = getTeildatensatzIndex(i, satznummer);
+            teildatensatz[teildatensatzIndex].importFrom(input);
+            importedTeilsatzIndexes.add(teildatensatzIndex);
+        }
+	}
+
 }
