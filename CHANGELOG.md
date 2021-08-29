@@ -15,6 +15,14 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - ByteAdresse durchgängiger verwenden
 
 
+## [5.1.0] - 2021-08-29
+
+### Changed
+
+- _fixed_: Datensätze mit Sparte Leben werden jetzt korrekt importiert
+  ([Issue #61](https://github.com/oboehm/gdv.xport/issues/61))
+
+
 ## [5.0.0] - 2021-07-22
 
 ### Added
