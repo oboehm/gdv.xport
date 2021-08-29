@@ -1,5 +1,6 @@
 package gdv.xport.satz;
 
+import gdv.xport.satz.model.SatzX;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -288,11 +289,11 @@ public class SatznummerTest {
     @Test
     public void testReadSatznummer() throws IOException {
         char[] line = updateLine(LINE.toCharArray(), prefix, expected, value);
-        char satznummer = Satz.readSatznummer(line);
+        char satznummer = SatzX.readSatznummer(line);
         if (satznummer != value) {
             LOG.error("Falsche Satznummer fuer Prefix '" + prefix + "'");
         }
-        assertThat(Satz.readSatznummer(line), is(value));
+        assertThat(SatzX.readSatznummer(line), is(value));
     }
 
     private char[] updateLine(char[] line, String prefix, int set, Character value) {

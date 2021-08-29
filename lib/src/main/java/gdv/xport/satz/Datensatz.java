@@ -776,13 +776,6 @@ public class Datensatz extends Satz {
 		return true;
 	}
 
-	private static boolean matchesLastFeld(Character satznummer, char[] newLine) {
-        // Das letzte Feld wird darauf verglichen, dass es groesser als das
-        // vorherige ist, falls Teildatensaetze uebersprungen werden
-		char newSatznummer = readSatznummer(newLine);
-		return !(Character.isDigit(newSatznummer) && Character.isDigit(satznummer) && newSatznummer <= satznummer);
-	}
-
 	/**
 	 * Read teildatensatz nummer.
 	 *

@@ -35,7 +35,9 @@ import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.EOFException;
 import java.io.IOException;
+import java.io.PushbackReader;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -431,7 +433,8 @@ public class SatzX extends Datensatz {
 	public void importFrom(final String s) throws IOException {
         int satzlength = getSatzlength(s);
         SortedSet<Integer> importedTeilsatzIndexes = new TreeSet<>();
-        for (int i = 0; i < teildatensatz.length; i++) {
+		List<Teildatensatz> teildatensaetze = getTeildatensaetze();
+		for (int i = 0; i < teildatensaetze.size(); i++) {
             String input = s.substring(i * satzlength);
             if (input.trim().isEmpty()) {
                 LOG.info("mehr Daten fuer Satz " + this.getSatzart() + " erwartet, aber nur " + i
@@ -441,9 +444,163 @@ public class SatzX extends Datensatz {
             }
             int satznummer = readSatznummer(input.toCharArray()) - '0';
             int teildatensatzIndex = getTeildatensatzIndex(i, satznummer);
-            teildatensatz[teildatensatzIndex].importFrom(input);
+            teildatensaetze.get(teildatensatzIndex).importFrom(input);
             importedTeilsatzIndexes.add(teildatensatzIndex);
         }
+	}
+
+	protected int getTeildatensatzIndex(int index, int satznummer) {
+		if (satznummer < 1) {
+			return index;
+		}
+		List<Teildatensatz> teildatensaetze = getTeildatensaetze();
+		for (int i = 0; i < teildatensaetze.size(); i++) {
+			if (teildatensaetze.get(i).getSatznummer().toInt() == satznummer) {
+				return i;
+			}
+		}
+		return index;
+	}
+
+	/**
+	 * Liest die Satznummer.
+	 *
+	 * @param reader den Reader
+	 * @return Teildatensatz-Nummer
+	 * @throws IOException bei Lesefehler
+	 */
+	public static Character readSatznummer(final PushbackReader reader) throws IOException {
+		char[] cbuf = new char[256];
+		if (reader.read(cbuf) == -1) {
+			throw new EOFException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
+		}
+		reader.unread(cbuf);
+		return readSatznummer(cbuf);
+	}
+
+	/**
+	 * Liest die Satznummer.
+	 *
+	 * @param cbuf der eingelesene Satz in char array
+	 * @return Teildatensatz -Nummer
+	 */
+	public static char readSatznummer(char[] cbuf) {
+		if (cbuf.length < 256) {
+			return 0;
+		}
+		String satz = new String(cbuf);
+		String satzartString = satz.substring(0, 4)
+								   .trim();
+		int satzart = isNumber(satzartString) ? Integer.parseInt(satzartString)
+				: -1;
+		String sparteString = satz.substring(10, 13)
+								  .trim();
+		int sparte = isNumber(sparteString) ? Integer.parseInt(sparteString) : -1;
+
+		int satznummerIndex = 255;
+		switch (satzart) {
+			case 210:
+				satznummerIndex = getSatznummerIndexOfSatz210(sparte);
+				break;
+			case 211:
+				switch (sparte) {
+					case 0:
+					case 80:
+					case 170:
+					case 190:
+						satznummerIndex = 42;
+						break;
+					default:
+						break;
+				}
+				break;
+			case 220:
+			case 221:
+				satznummerIndex = getSatznummerIndexOf(satz, sparte);
+				break;
+			case 250:
+			case 251:
+				satznummerIndex = 50;
+				break;
+			case 270:
+			case 280:
+			case 291:
+			case 292:
+			case 293:
+			case 294:
+			case 295:
+				satznummerIndex = 42;
+				break;
+			case 410:
+			case 420:
+			case 450:
+				satznummerIndex = 50;
+				break;
+			case 550:
+				satznummerIndex = 65;
+				break;
+			default:
+				break;
+		}
+		return satz.charAt(satznummerIndex);
+	}
+
+	private static int getSatznummerIndexOfSatz210(int sparte) {
+		switch (sparte) {
+			case 0:
+			case 80:
+			case 170:
+			case 190:
+			case 550:
+			case 560:
+			case 570:
+			case 580:
+				return 42;
+			case 130:
+				return 250;
+			default:
+				return 255;
+		}
+	}
+
+	private static int getSatznummerIndexOf(String satz, int sparte) {
+		switch (sparte) {
+			case 0:
+				return 46;
+			case 30:
+				if ((satz.charAt(48) == '2' && satz.charAt(255) == 'X') || (satz.charAt(
+						48) == '1' || satz.charAt(48) == '4')) {
+					return 48;
+				} else if (Character.isDigit(satz.charAt(255)) && satz.charAt(255) != '0'
+						&& satz.charAt(255) != '2') {
+					return 249;
+				} else if (satz.charAt(42) == '3') {
+					return 42;
+				} else {
+					return 59;
+				}
+			case 40:
+			case 140:
+				return 50;
+			case 70:
+				return 52;
+			case 80:
+			case 190:
+				return 48;
+			case 170:
+				return 49;
+			case 550:
+			case 560:
+			case 570:
+			case 580:
+				return 42;
+			default:
+				return 255;
+		}
+	}
+
+	public static boolean isNumber(String string) {
+		return string.matches("-?\\d+");
 	}
 
 }
