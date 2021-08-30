@@ -57,6 +57,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
     private XMLStreamWriter xmlStreamWriter;
 	private final Map<String, Feld> felder = new HashMap<>();
+  private String gueltigAbDatum = "";
 
     /**
      * Default-Konstruktor.
@@ -72,7 +73,22 @@ public final class GdvXmlFormatter extends AbstractFormatter {
      */
     public GdvXmlFormatter(final Writer writer) {
         super(writer);
-        this.xmlStreamWriter = createXMLStreamWriter(writer);
+        this.xmlStreamWriter = createXMLStreamWriter(writer, this.gueltigAbDatum);
+    }
+
+  /**
+   * Der Konstruktor fuer einen {@link OutputStream}.
+   *
+   * @param ostream z.B. System.out
+   * @param gueltigAbDatum Datum, ab dem erzeugte XML-Beschreibung gilt (Format TT.MM.JJJJ) z.B.
+   *          "01.07.2018". <br>
+   *          Dieser Wert erscheint in Analogie zur GDV-XML-Beschreibung am Beginn der
+   *          XML-Beschreibung in einem Tag: &ltinfo&gt&ltstand&gt...&lt/stand&gt&lt/info&gt
+   */
+  public GdvXmlFormatter(final OutputStream ostream, final String gueltigAbDatum) {
+    super(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
+    this.gueltigAbDatum = gueltigAbDatum;
+    this.xmlStreamWriter = createXMLStreamWriter(ostream, this.gueltigAbDatum);
     }
 
     /**
@@ -82,13 +98,23 @@ public final class GdvXmlFormatter extends AbstractFormatter {
      */
     public GdvXmlFormatter(final OutputStream ostream) {
         super(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
-        this.xmlStreamWriter = createXMLStreamWriter(ostream);
+    this.xmlStreamWriter = createXMLStreamWriter(ostream, this.gueltigAbDatum);
     }
 
-    private static XMLStreamWriter writeHead(XMLStreamWriter writer) throws XMLStreamException {
+    private static XMLStreamWriter writeHead(XMLStreamWriter writer, String gueltigAbDatum) throws XMLStreamException {
         XMLStreamWriter indentingWriter = toIndentingStreamWriter(writer);
         indentingWriter.writeStartDocument(StandardCharsets.ISO_8859_1.toString(), "1.0");
         indentingWriter.writeStartElement("service");
+    /**
+     * Das folgende Info-Tag orientiert an sich an der GDV-XML-Beschreibung
+     */
+    if (gueltigAbDatum.length() > 0) {
+      indentingWriter.writeStartElement("info");
+      indentingWriter.writeStartElement("stand");
+      indentingWriter.writeCharacters(gueltigAbDatum);
+      indentingWriter.writeEndElement();
+      indentingWriter.writeEndElement();
+    }
         indentingWriter.writeStartElement("satzarten");
         return indentingWriter;
     }
@@ -96,13 +122,13 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     @Override
     public void setWriter(Writer writer) {
         super.setWriter(writer);
-        this.xmlStreamWriter = createXMLStreamWriter(writer);
+        this.xmlStreamWriter = createXMLStreamWriter(writer, this.gueltigAbDatum);
     }
 
     @Override
     public void setWriter(OutputStream ostream) {
         super.setWriter(ostream);
-        this.xmlStreamWriter = createXMLStreamWriter(ostream);
+        this.xmlStreamWriter = createXMLStreamWriter(ostream, this.gueltigAbDatum);
     }
 
     /**
@@ -261,10 +287,10 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         xmlStreamWriter.writeComment(" " + comment.trim() + " ");
     }
 
-    private static XMLStreamWriter createXMLStreamWriter(OutputStream textWriter) {
+    private static XMLStreamWriter createXMLStreamWriter(OutputStream textWriter, String gdvSatzVersion) {
         try {
             XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter, Config.DEFAULT_ENCODING.name());
-            return writeHead(out);
+            return writeHead(out, gdvSatzVersion);
         } catch (XMLStreamException ex) {
             throw new IllegalArgumentException("can't create XmlStreamWriter with " + textWriter, ex);
         } catch (FactoryConfigurationError ex) {
@@ -272,10 +298,10 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         }
     }
 
-    private static XMLStreamWriter createXMLStreamWriter(Writer textWriter) {
+    private static XMLStreamWriter createXMLStreamWriter(Writer textWriter, String gdvSatzVersion) {
         try {
             XMLStreamWriter out = XML_OUTPUT_FACTORY.createXMLStreamWriter(textWriter);
-            return writeHead(out);
+            return writeHead(out, gdvSatzVersion);
         } catch (XMLStreamException ex) {
             throw new IllegalArgumentException("can't create XmlStreamWriter with " + textWriter, ex);
         } catch (FactoryConfigurationError ex) {
