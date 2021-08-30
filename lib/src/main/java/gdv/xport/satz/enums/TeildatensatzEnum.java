@@ -174,4 +174,16 @@ public final class TeildatensatzEnum extends Teildatensatz {
         return true;
     }
 
+    @Override
+    public Zeichen getSatznummer() {
+        if ((this.satznummer.getByteAdresse() == 256) && hasFeld(SATZNUMMER)) {
+            Zeichen nr = getFeld(SATZNUMMER, Zeichen.class);
+            if (nr.isEmpty()) {
+                nr.setInhalt(this.satznummer.getInhalt());
+            }
+            this.satznummer = nr;
+        }
+        return super.getSatznummer();
+    }
+
 }

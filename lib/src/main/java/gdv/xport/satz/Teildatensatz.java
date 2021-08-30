@@ -52,7 +52,7 @@ public class Teildatensatz extends Satz {
     private final SortedSet<Feld> sortedFelder = new TreeSet<>();
 
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
-    private Feld satznummer = new Zeichen(SATZNUMMER, 256);
+    protected Feld satznummer = new Zeichen(SATZNUMMER, 256);
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
@@ -203,13 +203,6 @@ public class Teildatensatz extends Satz {
      * @since 5.0
      */
     public Zeichen getSatznummer() {
-        if ((this.satznummer.getByteAdresse() == 256) && hasFeld(SATZNUMMER)) {
-            Zeichen nr = getFeld(SATZNUMMER, Zeichen.class);
-            if (nr.isEmpty()) {
-                nr.setInhalt(this.satznummer.getInhalt());
-            }
-            this.satznummer = nr;
-        }
         return new Zeichen(this.satznummer);
     }
 
