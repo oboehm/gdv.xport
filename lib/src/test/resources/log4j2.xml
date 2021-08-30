@@ -2,7 +2,7 @@
 <Configuration status="WARN">
   <Appenders>
     <Console name="CONSOLE" target="SYSTEM_OUT">
-      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+      <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %-36.36logger{3} - %msg%n" />
     </Console>
     <JDBC name="DB" tableName="logbook">
       <ConnectionFactory class="gdv.xport.config.LogConfig"
@@ -18,7 +18,7 @@
     <logger name="gdv.xport" level="INFO" />
     <logger name="gdv.xport.config" level="INFO" />
     <logger name="gdv.xport.satz" level="INFO" />
-    <logger name="gdv.xport.satz.Satz" level="INFO" />
+    <logger name="gdv.xport.satz.Satz" level="WARN" />
     <logger name="gdv.xport.satz.TeildatensatzTest" level="WARN" />
     <logger name="gdv.xport.Datenpaket" level="INFO" />
     <logger name="gdv.xport.util" level="INFO" />

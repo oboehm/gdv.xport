@@ -52,7 +52,7 @@ public class Teildatensatz extends Satz {
     private final SortedSet<Feld> sortedFelder = new TreeSet<>();
 
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
-    private Zeichen satznummer = new Zeichen(SATZNUMMER, 256);
+    private Feld satznummer = new Zeichen(SATZNUMMER, 256);
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
@@ -210,7 +210,7 @@ public class Teildatensatz extends Satz {
             }
             this.satznummer = nr;
         }
-        return this.satznummer;
+        return new Zeichen(this.satznummer);
     }
 
     /**
@@ -261,7 +261,8 @@ public class Teildatensatz extends Satz {
         }
         if (feld.getBezeichnung().startsWith("Satznummer")) {
             LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
-            feld.setInhalt(this.getSatznummer().getInhalt());
+            feld.setInhalt(this.satznummer.getInhalt());
+            this.satznummer = feld;
         }
     /*
      * @Oli: bei den 0220.020er-Saetzen ist die KrankenFolgeNr wichtig fuer die Erkennbarkeit der
