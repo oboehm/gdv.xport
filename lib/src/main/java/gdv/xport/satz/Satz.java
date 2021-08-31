@@ -840,10 +840,10 @@ public abstract class Satz implements Cloneable {
 						return SatzTyp.of(this.getSatzart(), this.getSparte(),
 								Integer.parseInt(this.getBausparenArt()));
 			} else {
-				return new SatzTyp(this.getSatzart(), this.getSparte());
+				return SatzTyp.of(this.getSatzart(), this.getSparte());
 			}
 	    } else {
-	        return new SatzTyp(this.getSatzart());
+	        return SatzTyp.of(this.getSatzart());
 	    }
 	}
 
