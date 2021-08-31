@@ -557,6 +557,16 @@ public final class SatzTest extends AbstractSatzTest {
         satz200.set(Bezeichner.GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN, "A99999999999");
     }
 
+    @Test
+    public void testIsComplete() {
+        Satz satz100 = XmlService.getInstance().getSatzart(SatzTyp.of("0100"));
+        assertTrue(satz100.isComplete());
+        satz100.removeTeildatensatz(3);
+        assertFalse(satz100.isComplete());
+    }
+
+
+
     static class TestSatz extends Satz {
         public TestSatz(int art, List<? extends Teildatensatz> tdsList) {
             super(art, tdsList);

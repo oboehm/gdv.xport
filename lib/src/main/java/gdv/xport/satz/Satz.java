@@ -25,6 +25,7 @@ import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.enums.TeildatensatzEnum;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.model.SatzX;
+import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
@@ -1222,6 +1223,18 @@ public abstract class Satz implements Cloneable {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Sind alle Teildatensaetze eines Satzes vorhanden und ausgefuellt,
+	 * liefert diese Methode 'true' zurueck.
+	 *
+	 * @return false, wenn ein Teildatensatz fehlt
+	 * @since 5.2
+	 */
+	public boolean isComplete() {
+		Satz reference = XmlService.getInstance().getSatzart(getSatzTyp());
+		return getNumberOfTeildatensaetze() == reference.getNumberOfTeildatensaetze();
 	}
 
 	/**

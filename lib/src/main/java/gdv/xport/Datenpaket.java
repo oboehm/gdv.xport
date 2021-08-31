@@ -485,6 +485,11 @@ public class Datenpaket {
      * @since 5.2
      */
     public Datenpaket pack() {
+        for (Datensatz ds : datensaetze) {
+            if (!ds.isComplete()) {
+                throw new UnsupportedOperationException("implementation in progress...");
+            }
+        }
         return this;
     }
 
