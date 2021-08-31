@@ -36,6 +36,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
@@ -46,9 +47,11 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.List;
 
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.*;
 
 /**
@@ -613,15 +616,25 @@ public final class DatenpaketTest {
      */
     @Test
     public void testImportWagnisart13() throws IOException {
-        File testfile = new File("src/test/resources", "gdv/xport/satz/testcase_0220_010_13.txt");
+        checkImport("testcase_0220_010_13.txt", Charset.forName("IBM850"));
+    }
+
+    private static Datenpaket checkImport(String filename, Charset encoding) throws IOException {
+        File testfile = new File("src/test/resources/gdv/xport/satz", filename);
         Datenpaket imported = new Datenpaket();
-        imported.importFrom(testfile, "IBM850");
-        File exportFile = new File("target", "exported_0220_010_13.txt");
+        imported.importFrom(testfile, encoding);
+        File exportDir = new File("target", "export");
+        if (exportDir.mkdir()) {
+            LOG.info("Verzeichnis {} wurde angelegt.", exportDir);
+        }
+        File exportFile = new File(exportDir, filename);
         for (Datensatz ds : imported.getDatensaetze()) {
             assertTrue(ds.isValid());
         }
-        imported.export(exportFile, "IBM850");
+        imported.export(exportFile, encoding);
         FileTester.assertContentEquals(testfile, exportFile);
+        LOG.info("{} wurde nach {} exportiert.", imported, exportFile);
+        return imported;
     }
 
     @Test
@@ -647,6 +660,20 @@ public final class DatenpaketTest {
         imported.importFrom(testfile);
         assertEquals(1, imported.getDatensaetze().size());
         assertEquals(unfall, imported.getDatensaetze().get(0));
+    }
+
+
+    /**
+     * Dies ist Testfall fuer Issue #62.
+     *
+     * @throws IOException im Fehlerfall
+     */
+    @Test
+    public void testPack() throws IOException {
+        Datenpaket x = checkImport("testcase_0220_mit_0221_versetzt.txt", Charset.forName("IBM850"));
+        int anzahlSaetze = x.getDatensaetze().size();
+        Datenpaket unpacked = x.pack();
+        MatcherAssert.assertThat(unpacked.getDatensaetze().size(), greaterThan(anzahlSaetze));
     }
 
 }

@@ -478,6 +478,17 @@ public class Datenpaket {
     }
 
     /**
+     * Fasst benachbarte Saetze mit Luecken zusammen, sofern es sinnvoll ist.
+     * Diese Version wurde mit Issue #62 eingefuehrt.
+     *
+     * @return das Datenpaket selbst zur Weiterverarbeitung
+     * @since 5.2
+     */
+    public Datenpaket pack() {
+        return this;
+    }
+
+    /**
      * Sets the erstellungsDatumVon im Vorsatz (Byte 70 - 77) (alle
      * Teildatensätze)
      *
