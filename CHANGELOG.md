@@ -15,6 +15,13 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - ByteAdresse durchgängiger verwenden
 
 
+## [Unreleased]
+
+### Added
+
+- GdvXmlFormatter generiert jetzt eine Info-Angabe nach dem XML-Header
+
+
 ## [5.1.0] - 2021-08-29
 
 ### Changed

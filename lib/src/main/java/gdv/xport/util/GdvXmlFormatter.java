@@ -36,6 +36,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -55,9 +56,10 @@ public final class GdvXmlFormatter extends AbstractFormatter {
 
     private static final Logger LOG = LogManager.getLogger(GdvXmlFormatter.class);
     private static final XMLOutputFactory XML_OUTPUT_FACTORY = XMLOutputFactory.newInstance();
+    private static final String DEFAULT_INFO = "(c)reated by gdv-xport at " + LocalDate.now();
     private XMLStreamWriter xmlStreamWriter;
 	private final Map<String, Feld> felder = new HashMap<>();
-  private String gueltigAbDatum = "";
+    private final String gueltigAbDatum;
 
     /**
      * Default-Konstruktor.
@@ -72,11 +74,24 @@ public final class GdvXmlFormatter extends AbstractFormatter {
      * @param writer the writer
      */
     public GdvXmlFormatter(final Writer writer) {
+        this(writer, DEFAULT_INFO);
+    }
+
+    /**
+     * Der Konstruktor fuer die normale Arbeit.
+     * Als Info erscheint dabei der Zeitpunkt der Generierung (analog zum
+     * {@link XmlFormatter}, wo es als Kommentar ans Ende geschrieben wird).
+     *
+     * @param writer the writer
+     * @param gueltigAbDatum Info, die nach dem XML-Header steht
+     */
+    public GdvXmlFormatter(final Writer writer, final String gueltigAbDatum) {
         super(writer);
+        this.gueltigAbDatum = DEFAULT_INFO;
         this.xmlStreamWriter = createXMLStreamWriter(writer, this.gueltigAbDatum);
     }
 
-  /**
+    /**
    * Der Konstruktor fuer einen {@link OutputStream}.
    *
    * @param ostream z.B. System.out
@@ -93,30 +108,31 @@ public final class GdvXmlFormatter extends AbstractFormatter {
 
     /**
      * Der Konstruktor fuer einen {@link OutputStream}.
+     * Als Info erscheint dabei der Zeitpunkt der Generierung (analog zum
+     * {@link XmlFormatter}, wo es als Kommentar ans Ende geschrieben wird).
      *
      * @param ostream z.B. System.out
      */
     public GdvXmlFormatter(final OutputStream ostream) {
-        super(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
-    this.xmlStreamWriter = createXMLStreamWriter(ostream, this.gueltigAbDatum);
+        this(ostream, DEFAULT_INFO);
     }
 
     private static XMLStreamWriter writeHead(XMLStreamWriter writer, String gueltigAbDatum) throws XMLStreamException {
         XMLStreamWriter indentingWriter = toIndentingStreamWriter(writer);
         indentingWriter.writeStartDocument(StandardCharsets.ISO_8859_1.toString(), "1.0");
         indentingWriter.writeStartElement("service");
-    /**
-     * Das folgende Info-Tag orientiert an sich an der GDV-XML-Beschreibung
-     */
-    if (gueltigAbDatum.length() > 0) {
-      indentingWriter.writeStartElement("info");
-      indentingWriter.writeStartElement("stand");
-      indentingWriter.writeCharacters(gueltigAbDatum);
-      indentingWriter.writeEndElement();
-      indentingWriter.writeEndElement();
-    }
+        writeInfo(gueltigAbDatum, indentingWriter);
         indentingWriter.writeStartElement("satzarten");
         return indentingWriter;
+    }
+
+    private static void writeInfo(String gueltigAbDatum, XMLStreamWriter indentingWriter) throws XMLStreamException {
+        // Das folgende Info-Tag orientiert an sich an der GDV-XML-Beschreibung
+        indentingWriter.writeStartElement("info");
+        indentingWriter.writeStartElement("stand");
+        indentingWriter.writeCharacters(gueltigAbDatum);
+        indentingWriter.writeEndElement();
+        indentingWriter.writeEndElement();
     }
 
     @Override
