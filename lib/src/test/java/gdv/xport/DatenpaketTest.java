@@ -51,7 +51,7 @@ import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.List;
 
-import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.*;
 
 /**
@@ -673,7 +673,7 @@ public final class DatenpaketTest {
         Datenpaket x = checkImport("testcase_0220_mit_0221_versetzt.txt", Charset.forName("IBM850"));
         int anzahlSaetze = x.getDatensaetze().size();
         Datenpaket unpacked = x.pack();
-        MatcherAssert.assertThat(unpacked.getDatensaetze().size(), greaterThan(anzahlSaetze));
+        MatcherAssert.assertThat(unpacked.getDatensaetze().size(), lessThan(anzahlSaetze));
     }
 
 }

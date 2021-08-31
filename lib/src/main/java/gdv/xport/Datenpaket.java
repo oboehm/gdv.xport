@@ -485,12 +485,38 @@ public class Datenpaket {
      * @since 5.2
      */
     public Datenpaket pack() {
-        for (Datensatz ds : datensaetze) {
+        for (int i = 0; i < datensaetze.size(); i++) {
+            Datensatz ds = datensaetze.get(i);
             if (!ds.isComplete()) {
-                throw new UnsupportedOperationException("implementation in progress...");
+                Optional<Datensatz> next = findNextDatensatz(ds.getSatzTyp(), i+1);
+                if (next.isPresent()) {
+                    ds.mergeWith(next.get());
+                }
             }
         }
+        removeEmptyDatensaetze();
         return this;
+    }
+
+    private void removeEmptyDatensaetze() {
+        List<Datensatz> cleaned = new ArrayList<>();
+        for (Datensatz ds : datensaetze) {
+            if (ds.getNumberOfTeildatensaetze() > 0) {
+                cleaned.add(ds);
+            }
+        }
+        datensaetze.clear();
+        datensaetze.addAll(cleaned);
+    }
+
+    private Optional<Datensatz> findNextDatensatz(SatzTyp satzTyp, int position) {
+        for (int i = position; i < datensaetze.size(); i++) {
+            Datensatz ds = datensaetze.get(i);
+            if (satzTyp.equals(ds.getSatzTyp())) {
+                return Optional.of(ds);
+            }
+        }
+        return Optional.empty();
     }
 
     /**

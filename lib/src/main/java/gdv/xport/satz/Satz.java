@@ -1238,6 +1238,42 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
+	 * Vereinigt den anderen Satz mit dem aktuellen Satz, falls das moeglich
+	 * ist. In diesem Fall werden aus dem anderen Satz alle Teildatensaetze
+	 * entfernt.
+	 *
+	 * @param other der andere Satz, aus dem die Teildatensaetze gezogen werden
+	 * @since 5.2
+	 */
+	public void mergeWith(Satz other) {
+		if (canBeMergedWith(other)) {
+			LOG.info("{} wird mit {} zusammengefasst.", this, other);
+			for (Teildatensatz otherTds : other.teildatensatz) {
+				add(otherTds);
+			}
+			other.removeUnusedTeildatensaetze(new TreeSet<>());
+		}
+	}
+
+	private boolean canBeMergedWith(Satz other) {
+		for (Teildatensatz otherTds : other.teildatensatz) {
+			Zeichen satznr = otherTds.getSatznummer();
+			Feld versicherungscheinnr = otherTds.getFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER);
+			Feld folgenummer = otherTds.getFeld(Bezeichner.FOLGENUMMER);
+			for (Teildatensatz thisTds : teildatensatz) {
+				if (satznr.equals(thisTds.getSatznummer())) {
+					return false;
+				}
+				if (!versicherungscheinnr.equals(thisTds.getFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER)) &&
+						!folgenummer.equals(thisTds.getFeld(Bezeichner.FOLGENUMMER))) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Validiert die einzelnen Teildatensaetze.
 	 *
 	 * @return Liste mit Constraint-Verletzungen
