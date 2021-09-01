@@ -133,6 +133,24 @@ public class Datenpaket {
     }
 
     /**
+     * Liefert die Liste der Datensaetze zurueck, die mit dem uebergebenen
+     * {@link SatzTyp} uebereinstimmen.
+     *
+     * @param typ gewuenschter {@link SatzTyp}
+     * @return Liste von Datensaetzen
+     * @since 5.2
+     */
+    public List<Datensatz> getDatensaetze(SatzTyp typ) {
+        List<Datensatz> saetze = new ArrayList<>();
+        for (Datensatz ds : datensaetze) {
+            if (typ.equals(ds.getSatzTyp())) {
+                saetze.add(ds);
+            }
+        }
+        return saetze;
+    }
+
+    /**
      * Gets the saetze.
      *
      * @return the saetze

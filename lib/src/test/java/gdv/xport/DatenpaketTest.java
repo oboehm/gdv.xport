@@ -51,6 +51,7 @@ import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.List;
 
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.*;
 
@@ -674,6 +675,17 @@ public final class DatenpaketTest {
         int anzahlSaetze = x.getDatensaetze().size();
         Datenpaket unpacked = x.pack();
         MatcherAssert.assertThat(unpacked.getDatensaetze().size(), lessThan(anzahlSaetze));
+        checkDatensatz(x, SatzTyp.of("0220.010.13.1"));
+        checkDatensatz(x, SatzTyp.of("0221.010.13.1"));
+    }
+
+    private void checkDatensatz(Datenpaket paket, SatzTyp typ) {
+        List<Datensatz> datensaetze = paket.getDatensaetze(typ);
+        assertFalse(datensaetze.isEmpty());
+        for (Datensatz ds : datensaetze) {
+            MatcherAssert.assertThat(ds.getNumberOfTeildatensaetze(), greaterThan(1));
+            assertTrue(ds.isValid());
+        }
     }
 
 }
