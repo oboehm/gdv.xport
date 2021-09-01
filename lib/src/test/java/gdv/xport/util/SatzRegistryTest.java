@@ -18,6 +18,7 @@
 
 package gdv.xport.util;
 
+import gdv.xport.Datenpaket;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.*;
@@ -74,6 +75,10 @@ public final class SatzRegistryTest {
 
     private String getVersionSatzart0052(SatzRegistry factory) {
         Vorsatz vorsatz = factory.getVorsatz();
+        return getVersionSatzart0052(vorsatz);
+    }
+
+    private String getVersionSatzart0052(Vorsatz vorsatz) {
         vorsatz.setVersion(SatzTyp.of("0052"));
         Feld version = vorsatz.getFeld(Bezeichner.VERSION_SATZART_0052);
         return version.getInhalt();
@@ -100,6 +105,15 @@ public final class SatzRegistryTest {
             Teildatensatz tds = wagnis13.getTeildatensatz(nr);
             assertEquals(nr, tds.getSatznummer().toInt());
         }
+    }
+
+    @Test
+    public void testGetAllSupportedSaetze2015() {
+        Datenpaket d2015 = f2015.getAllSupportedSaetze();
+        assertEquals(159, d2015.getDatensaetze().size());
+        assertEquals(161, d2015.getAllSaetze().size());
+        assertEquals("1.1", getVersionSatzart0052(d2015.getVorsatz()));
+        assertEquals("1.1", d2015.getNachsatz().getSatzversion().getInhalt());
     }
 
 }

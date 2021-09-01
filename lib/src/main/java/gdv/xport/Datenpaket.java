@@ -51,7 +51,7 @@ import java.util.*;
 public class Datenpaket {
 
     private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
-    private final Vorsatz vorsatz = new Vorsatz();
+    private Vorsatz vorsatz = new Vorsatz();
     private final List<Datensatz> datensaetze = new ArrayList<>();
     private Nachsatz nachsatz = new Nachsatz();
 
@@ -99,6 +99,31 @@ public class Datenpaket {
         this.setErstellungsDatumVon(heute);
         this.setVuNummer(vuNummer);
         LOG.debug(this + " created.");
+    }
+
+    /**
+     * Legt ein Datenpaket mit den angegebenen Datensaetze an.
+     *
+     * @param datensaetze fuers Datenpaket
+     * @return ein neues Datenpaket
+     * @since 5.2
+     */
+    public static Datenpaket of(Collection<Satz> datensaetze) {
+        Datenpaket datenpaket = new Datenpaket();
+        List<Datensatz> dsList = new ArrayList<>();
+        for (Satz satz : datensaetze) {
+            if (satz instanceof Vorsatz) {
+                datenpaket.vorsatz = (Vorsatz) satz;
+            } else if (satz.getSatzart() == 9999) {
+                LOG.debug("Nachsatz {} wird ignoriert.", satz);
+            } else {
+                dsList.add((Datensatz) satz);
+            }
+        }
+        for (Datensatz satz : dsList) {
+            datenpaket.add(satz);
+        }
+        return datenpaket;
     }
 
     /**

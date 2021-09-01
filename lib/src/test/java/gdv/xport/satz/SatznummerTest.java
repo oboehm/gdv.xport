@@ -19,6 +19,9 @@ import static org.junit.Assert.assertThat;
 /**
  * Testklasse fuer {@link Datensatz#readSatznummer(char[])} in Satzarten 0210,
  * 0211, 0220, 0221, 0250 und 0251.
+ * <p>
+ * TODO: Pruefen, ob diese Tests noch Sinn machen (01-Sep-2021, oboehm)
+ * </p>
  * 
  * @author Ken Schosinsky
  */

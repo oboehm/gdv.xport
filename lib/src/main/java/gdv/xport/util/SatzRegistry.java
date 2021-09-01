@@ -613,7 +613,7 @@ public class SatzRegistry implements VersionHandler {
      * @return Datenpaket mit allen unterstuetzten Satzarten
      */
     public Datenpaket getAllSupportedSaetze() {
-        Map<SatzTyp, Datensatz> supportedSaetze = new HashMap<>();
+        Map<SatzTyp, Satz> supportedSaetze = new HashMap<>();
         supportedSaetze.putAll(xmlService.getSatzarten());
         for (Map.Entry<SatzTyp, Satz> entry : registeredSaetze.entrySet()) {
             Satz value = entry.getValue();
@@ -622,12 +622,8 @@ public class SatzRegistry implements VersionHandler {
             }
         }
         supportedSaetze.remove(SatzTyp.of("0001"));
-        supportedSaetze.remove(SatzTyp.of("9999"));
-        Datenpaket all = new Datenpaket();
-        for (Datensatz satz : supportedSaetze.values()) {
-            all.add(satz);
-        }
-        return all;
+        supportedSaetze.put(SatzTyp.of("0001"), new Vorsatz(this));
+        return Datenpaket.of(supportedSaetze.values());
     }
 
     /**
