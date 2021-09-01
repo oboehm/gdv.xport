@@ -1128,14 +1128,26 @@ public abstract class Satz implements Cloneable {
             	LOG.info("Zeile {}: mehr Teildatensaetze erwartet fuer {}.", reader.getLineNumber(), this);
                 break;
             }
-			char nr = readSatznummer(reader, teildatensatz[i].getSatznummer().getByteAdresse());
-			if ((teildatensatz.length > 1) && Character.isDigit(nr) && (teildatensatz[i].getSatznummer().toChar() != nr)) {
-				LOG.info("Zeile {}: {} erwartet statt {} - ueberspringe Teildatensatz {}.",
-						reader.getLineNumber(), teildatensatz[i].getSatznummer(), nr, i+1);
-				continue;
+            boolean teildatensatzGefunden = false;
+            for (int j = i; j < teildatensatz.length; j++) {
+            	// pruefe ob dieser oder einer der naechsten Teildatensaetze zur gelieferten Satznummer passen
+				char nr = readSatznummer(reader, teildatensatz[j].getSatznummer().getByteAdresse());
+				if (!Character.isDigit(nr) || (teildatensatz[j].getSatznummer().toChar() != nr)) {
+					LOG.info("Zeile {}: {} erwartet statt {} - ueberspringe Teildatensatz {}.",
+							reader.getLineNumber(), teildatensatz[j].getSatznummer(), nr, j+1);
+					continue;
+				}
+				i = j; // falls wir einen Datensatz finden, der passt, machen wir damit weiter
+				teildatensatzGefunden = true;
+				satznummer = nr;
+				break;
+			}
+            if (!teildatensatzGefunden && i > 0) {
+            	// erster Teildatensatz wird verwendet, falls keiner der Teildatensaetze via Satznummer identifiziert
+				// werden kann.
+				break;
 			}
 			used.add(i);
-			satznummer = nr;
 			char[] cbuf = new char[257];
 			importFrom(reader, cbuf, 0);
 			teildatensatz[i].importFrom(new String(cbuf));

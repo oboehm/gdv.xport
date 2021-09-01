@@ -23,10 +23,7 @@ import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.ByteAdresse;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
-import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.Nachsatz;
-import gdv.xport.satz.Satz;
-import gdv.xport.satz.Vorsatz;
+import gdv.xport.satz.*;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
@@ -34,6 +31,7 @@ import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
@@ -48,6 +46,7 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -266,6 +265,23 @@ public final class DatenpaketTest {
         File file = new File("src/test/resources", "musterdatei_041222.txt");
         datenpaket.importFrom(file);
         assertTrue(datenpaket.isValid());
+
+        // test that every teildatensatz of all datensaetze has the correct satznummer (according to the identified
+        // teildatensatz
+        List<Pair<Integer, Integer>> wrongDatensatzTeildatensatzList = new ArrayList<>();
+        for (int i = 0; i < datenpaket.getDatensaetze().size(); i++) {
+            Datensatz datensatz = datenpaket.getDatensaetze().get(i);
+            for (int j = 0; j < datensatz.getTeildatensaetze().size(); j++) {
+                Teildatensatz teildatensatz = datensatz.getTeildatensaetze().get(j);
+                char satznummerOfTeildatensatz = teildatensatz.getSatznummer().toChar();
+                if (teildatensatz.hasFeld(Bezeichner.SATZNUMMER) && StringUtils.isNumeric(teildatensatz.get(Bezeichner.SATZNUMMER)) && !String.valueOf(satznummerOfTeildatensatz).equals(teildatensatz.get(Bezeichner.SATZNUMMER))) {
+                    wrongDatensatzTeildatensatzList.add(Pair.of(i, j));
+                }
+            }
+        }
+
+        assertTrue("There are teildatensaetze with wrong satznummern: (datensatz, teildatensatz) -> " + wrongDatensatzTeildatensatzList.toString(), wrongDatensatzTeildatensatzList.isEmpty());
+
         assertEquals("BRBRIENNEE,J\u00dcRGEN", datenpaket.getAdressat());
     }
 
@@ -688,4 +704,44 @@ public final class DatenpaketTest {
         }
     }
 
+    @Test
+    public void testExportImportSchaden500() throws IOException {
+        /*
+        In der aktuellen Version (VUVM2018.xml) ist fuer Datensatz 0500 im ersten Teilsatz eine Satznummerwiederholung vorgesehen.
+        Der Rueckimport muss korrekt zwei Datensaetze erkennen, selbst wenn wir jeweils den zweiten Datensatz nicht exportieren.
+         */
+        File testfile = new File("target", "schadensatz_500_zwei_datensaetze.gdv");
+        Datensatz schaden = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0500"));
+        schaden.removeTeildatensatz(2);
+        Datensatz schaden2 = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0500"));
+        schaden2.removeTeildatensatz(2);
+        datenpaket.add(schaden);
+        datenpaket.add(schaden2);
+        datenpaket.export(testfile);
+        Datenpaket imported = new Datenpaket();
+        imported.importFrom(testfile);
+        assertEquals(2, imported.getDatensaetze().size());
+    }
+
+    @Test
+    public void testExportImportSchaden500V1_5() throws IOException {
+        /*
+        In Version 1.5 war fuer Datensatz 0500 im ersten Teilsatz die Satznummerwiederholung noch nicht vorgesehen.
+        Wir simulieren das, indem die Satznummerwiederholung mit 'leer' geliefert wird.
+        Trotzdem muss der Rueckimport korrekt zwei Datensaetze erkennen und nicht nur einen.
+         */
+        File testfile = new File("target", "schadensatz_500_zwei_datensaetze_v1_5.gdv");
+        Datensatz schaden = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0500"));
+        schaden.set("SatzNr2", " "); // setze Satznummerwiederholung auf 'leer'
+        schaden.removeTeildatensatz(2);
+        Datensatz schaden2 = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0500"));
+        schaden2.set("SatzNr2", " "); // setze Satznummerwiederholung auf 'leer'
+        schaden2.removeTeildatensatz(2);
+        datenpaket.add(schaden);
+        datenpaket.add(schaden2);
+        datenpaket.export(testfile);
+        Datenpaket imported = new Datenpaket();
+        imported.importFrom(testfile);
+        assertEquals(2, imported.getDatensaetze().size());
+    }
 }
