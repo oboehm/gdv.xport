@@ -19,7 +19,15 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Added
 
+- Datenpaket besitzt jetzt eine pack()-Methode
+  ([Issue #62](https://github.com/oboehm/gdv.xport/issues/62))
 - GdvXmlFormatter generiert jetzt eine Info-Angabe nach dem XML-Header
+
+### Changed
+
+- _fixed_: Parsen von Teildatensätzen ohne Satznummer korrigiert
+  ([Issue #63](https://github.com/oboehm/gdv.xport/pull/63))
+- _fixed_: SatzRegistry.getAllSupportedSaetze() liefert jetzt den passenden Vorsatz zur SatzRegistry
 
 
 ## [5.1.0] - 2021-08-29

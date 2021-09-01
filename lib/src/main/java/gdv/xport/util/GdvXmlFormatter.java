@@ -59,7 +59,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     private static final String DEFAULT_INFO = "(c)reated by gdv-xport at " + LocalDate.now();
     private XMLStreamWriter xmlStreamWriter;
 	private final Map<String, Feld> felder = new HashMap<>();
-    private final String gueltigAbDatum;
+    private final String stand;
 
     /**
      * Default-Konstruktor.
@@ -83,27 +83,27 @@ public final class GdvXmlFormatter extends AbstractFormatter {
      * {@link XmlFormatter}, wo es als Kommentar ans Ende geschrieben wird).
      *
      * @param writer the writer
-     * @param gueltigAbDatum Info, die nach dem XML-Header steht
+     * @param stand Info, die nach dem XML-Header steht
      */
-    public GdvXmlFormatter(final Writer writer, final String gueltigAbDatum) {
+    public GdvXmlFormatter(final Writer writer, final String stand) {
         super(writer);
-        this.gueltigAbDatum = DEFAULT_INFO;
-        this.xmlStreamWriter = createXMLStreamWriter(writer, this.gueltigAbDatum);
+        this.stand = DEFAULT_INFO;
+        this.xmlStreamWriter = createXMLStreamWriter(writer, this.stand);
     }
 
     /**
    * Der Konstruktor fuer einen {@link OutputStream}.
    *
    * @param ostream z.B. System.out
-   * @param gueltigAbDatum Datum, ab dem erzeugte XML-Beschreibung gilt (Format TT.MM.JJJJ) z.B.
+   * @param stand Datum, ab dem erzeugte XML-Beschreibung gilt (Format TT.MM.JJJJ) z.B.
    *          "01.07.2018". <br>
    *          Dieser Wert erscheint in Analogie zur GDV-XML-Beschreibung am Beginn der
    *          XML-Beschreibung in einem Tag: &ltinfo&gt&ltstand&gt...&lt/stand&gt&lt/info&gt
    */
-  public GdvXmlFormatter(final OutputStream ostream, final String gueltigAbDatum) {
+  public GdvXmlFormatter(final OutputStream ostream, final String stand) {
     super(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
-    this.gueltigAbDatum = gueltigAbDatum;
-    this.xmlStreamWriter = createXMLStreamWriter(ostream, this.gueltigAbDatum);
+    this.stand = stand;
+    this.xmlStreamWriter = createXMLStreamWriter(ostream, this.stand);
     }
 
     /**
@@ -138,13 +138,13 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     @Override
     public void setWriter(Writer writer) {
         super.setWriter(writer);
-        this.xmlStreamWriter = createXMLStreamWriter(writer, this.gueltigAbDatum);
+        this.xmlStreamWriter = createXMLStreamWriter(writer, this.stand);
     }
 
     @Override
     public void setWriter(OutputStream ostream) {
         super.setWriter(ostream);
-        this.xmlStreamWriter = createXMLStreamWriter(ostream, this.gueltigAbDatum);
+        this.xmlStreamWriter = createXMLStreamWriter(ostream, this.stand);
     }
 
     /**
