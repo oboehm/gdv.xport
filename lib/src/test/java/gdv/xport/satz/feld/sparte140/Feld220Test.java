@@ -40,11 +40,11 @@ public class Feld220Test extends AbstractDatensatzTest {
     @Test
     public void testTeildatensaetze() throws IOException {
         String input = 
-                  "02209999  140      59999999997019999009999                      "
+                  "02209999  140      59999999997019999009999        1             "
                 + "                                                                "
                 + "                                                                "
-                + "                                                               1" + "\n"
-                + "02209999  140      59999999997019999009999                      "
+                + "                                                                " + "\n"
+                + "02209999  140      59999999997019999009999        2             "
                 + "                                                                "
                 + "                                                                "
                 + "                                                               2" + "\n";
