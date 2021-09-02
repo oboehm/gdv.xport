@@ -430,7 +430,7 @@ public class SatzX extends Datensatz {
 	}
 
 	@Override
-	public void importFrom(final String s) throws IOException {
+	public SatzX importFrom(final String s) throws IOException {
         int satzlength = getSatzlength(s);
         SortedSet<Integer> importedTeilsatzIndexes = new TreeSet<>();
 		List<Teildatensatz> teildatensaetze = getTeildatensaetze();
@@ -447,6 +447,7 @@ public class SatzX extends Datensatz {
             teildatensaetze.get(teildatensatzIndex).importFrom(input);
             importedTeilsatzIndexes.add(teildatensatzIndex);
         }
+		return this;
 	}
 
 	protected int getTeildatensatzIndex(int index, int satznummer) {

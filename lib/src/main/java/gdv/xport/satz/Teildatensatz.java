@@ -575,7 +575,7 @@ public class Teildatensatz extends Satz {
      * @see gdv.xport.satz.Satz#importFrom(java.lang.String)
      */
     @Override
-    public void importFrom(final String content) throws IOException {
+    public Teildatensatz importFrom(final String content) throws IOException {
         for (Feld feld : datenfelder.values()) {
             int begin = (feld.getByteAdresse() - 1) % 256;
             int end = begin + feld.getAnzahlBytes();
@@ -586,6 +586,7 @@ public class Teildatensatz extends Satz {
             String s = content.substring(begin, end);
             feld.setInhalt(s);
         }
+        return this;
     }
 
     /* (non-Javadoc)

@@ -1027,10 +1027,11 @@ public abstract class Satz implements Cloneable {
      * aussortiert.
 	 *
 	 * @param s String zum Importieren
+	 * @return Satz zur Weiterverabeitung (seit 5.2)
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-    public void importFrom(final String s) throws IOException {
-    	importFrom(new PushbackLineNumberReader(new StringReader(s), 256));
+    public Satz importFrom(final String s) throws IOException {
+    	return importFrom(new PushbackLineNumberReader(new StringReader(s), 256));
     }
     
     protected void removeUnusedTeildatensaetze(SortedSet<Integer> usedIndexes) {
@@ -1047,11 +1048,12 @@ public abstract class Satz implements Cloneable {
 	 * Importiert einen Satz von der angegebenen Datei.
 	 *
 	 * @param file die Import-Datei
+	 * @return Satz zur Weiterverabeitung (seit 5.2)
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public void importFrom(final File file) throws IOException {
+	public Satz importFrom(final File file) throws IOException {
         try (Reader reader = new FileReader(file)) {
-            this.importFrom(reader);
+            return this.importFrom(reader);
         }
 	}
 
@@ -1083,25 +1085,27 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
-	 * Import from.
+	 * Import von einem {@link InputStream}.
 	 *
 	 * @param istream the istream
+	 * @return Satz zur Weiterverabeitung (seit 5.2)
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public final void importFrom(final InputStream istream) throws IOException {
-		importFrom(new InputStreamReader(istream, Config.DEFAULT_ENCODING));
+	public final Satz importFrom(final InputStream istream) throws IOException {
+		return importFrom(new InputStreamReader(istream, Config.DEFAULT_ENCODING));
 	}
 
 	/**
-	 * Import from.
+	 * Import von einem {@link Reader}.
 	 *
 	 * @param reader the reader
+	 * @return Satz zur Weiterverabeitung (seit 5.2)
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public final void importFrom(final Reader reader) throws IOException {
+	public final Satz importFrom(final Reader reader) throws IOException {
 	    PushbackLineNumberReader lnr = new PushbackLineNumberReader(reader, 256);
 		try {
-            importFrom(lnr);
+            return importFrom(lnr);
 		} catch (IOException ioe) {
 		    throw new ImportException(lnr, "read error", ioe);
 		} catch (NumberFormatException nfe) {
@@ -1116,9 +1120,10 @@ public abstract class Satz implements Cloneable {
 	 * koennen (wie z.B. fehlende Sparten-Eintraege).
 	 *
 	 * @param reader the reader
+	 * @return Satz zur Weiterverabeitung (seit 5.2)
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-    public void importFrom(final PushbackLineNumberReader reader) throws IOException {
+    public Satz importFrom(final PushbackLineNumberReader reader) throws IOException {
     	SortedSet<Integer> used = new TreeSet<>();
         char[] feld1to7 = null;
         Character satznummer = null;
@@ -1154,6 +1159,7 @@ public abstract class Satz implements Cloneable {
 			feld1to7 = Arrays.copyOfRange(cbuf, 0, 42);
         }
 		removeUnusedTeildatensaetze(used);
+        return this;
     }
 
 	/**
