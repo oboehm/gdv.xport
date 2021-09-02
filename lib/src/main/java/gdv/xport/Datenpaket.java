@@ -114,8 +114,8 @@ public class Datenpaket {
         for (Satz satz : datensaetze) {
             if (satz instanceof Vorsatz) {
                 datenpaket.vorsatz = (Vorsatz) satz;
-            } else if (satz.getSatzart() == 9999) {
-                LOG.debug("Nachsatz {} wird ignoriert.", satz);
+            } else if (satz instanceof Nachsatz) {
+                datenpaket.nachsatz = (Nachsatz) satz;
             } else {
                 dsList.add((Datensatz) satz);
             }

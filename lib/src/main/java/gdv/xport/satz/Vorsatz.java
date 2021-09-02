@@ -50,6 +50,9 @@ import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM;
  */
 public class Vorsatz extends Satz {
 
+    /** Satzart fuer Vorsatz. */
+    public static final SatzTyp SATZART = SatzTyp.of("0001");
+
     private static final Logger LOG = LogManager.getLogger(Vorsatz.class);
     private final VersionHandler versionHandler;
 
@@ -68,7 +71,7 @@ public class Vorsatz extends Satz {
      * @since 5.0
      */
     public Vorsatz(SatzRegistry factory) {
-        this(factory.getDatensatz(SatzTyp.of("0001")), factory);
+        this(factory.getDatensatz(SATZART), factory);
     }
 
     private Vorsatz(Satz vorlage, VersionHandler versionHandler) {

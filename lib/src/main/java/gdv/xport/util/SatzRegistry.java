@@ -621,8 +621,10 @@ public class SatzRegistry implements VersionHandler {
                 supportedSaetze.put(entry.getKey(), (Datensatz) value);
             }
         }
-        supportedSaetze.remove(SatzTyp.of("0001"));
-        supportedSaetze.put(SatzTyp.of("0001"), new Vorsatz(this));
+        supportedSaetze.remove(Vorsatz.SATZART);
+        supportedSaetze.put(Vorsatz.SATZART, new Vorsatz(this));
+        supportedSaetze.remove(Nachsatz.SATZART);
+        supportedSaetze.put(Nachsatz.SATZART, new Nachsatz(this));
         return Datenpaket.of(supportedSaetze.values());
     }
 

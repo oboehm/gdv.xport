@@ -47,8 +47,11 @@ import static gdv.xport.feld.Bezeichner.*;
  */
 public final class Nachsatz extends Satz {
 
+    /** Satzart fuer Nachsatz. */
+    public static final SatzTyp SATZART = SatzTyp.of("9999");
+
     private static final Logger LOG = LogManager.getLogger(Nachsatz.class);
-    private static final Datensatz satz9999 = SatzFactory.getDatensatz(SatzTyp.of("9999"));
+    private static final Datensatz satz9999 = SatzFactory.getDatensatz(SATZART);
 
     /**
      * Default-Constructor.
@@ -65,7 +68,7 @@ public final class Nachsatz extends Satz {
      * @since 5.0
      */
     public Nachsatz(SatzRegistry factory) {
-        this(factory.getDatensatz(SatzTyp.of("9999")));
+        this(factory.getDatensatz(SATZART));
     }
 
     private Nachsatz(Satz vorlage) {
