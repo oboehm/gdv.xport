@@ -325,11 +325,12 @@ public class Datenpaket {
      *
      * @param uri z.B.
      *            http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @return das Datenpaket zur Weiterverabeitung (seit 5.2)
      * @throws IOException wenn z.B. das Netz weg ist
      * @since 3.0
      */
-    public void importFrom(final URI uri) throws IOException {
-        importFrom(uri.toURL());
+    public Datenpaket importFrom(final URI uri) throws IOException {
+        return importFrom(uri.toURL());
     }
 
     /**
@@ -338,49 +339,54 @@ public class Datenpaket {
      *
      * @param url z.B.
      *            http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
+     * @return das Datenpaket zur Weiterverabeitung (seit 5.2)
      * @throws IOException wenn z.B. das Netz weg ist
      * @since 0.3
      */
-    public void importFrom(final URL url) throws IOException {
+    public Datenpaket importFrom(final URL url) throws IOException {
         URLReader urlReader = new URLReader(url);
         String content = urlReader.read();
-        importFrom(content);
+        return importFrom(content);
     }
 
     /**
      * Importiert direkt aus einem String.
      *
      * @param content Inhalt der eingelesen wird
+     * @return das Datenpaket zur Weiterverabeitung (seit 5.2)
      * @throws IOException sollte eigentlich nicht vorkommen
      * @since 0.3
      */
-    public void importFrom(final String content) throws IOException {
-        Reader reader = new StringReader(content);
-        importFrom(reader);
-        reader.close();
+    public Datenpaket importFrom(final String content) throws IOException {
+        try (Reader reader = new StringReader(content)) {
+            importFrom(reader);
+        }
+        return this;
     }
 
     /**
-     * Import from.
+     * Importiert von einem {@link InputStream}.
      *
      * @param istream z.B. Sytem.in
+     * @return das Datenpaket zur Weiterverabeitung (seit 5.2)
      * @throws IOException falls es Fehler beim Lesen gibt
      */
-    public void importFrom(final InputStream istream) throws IOException {
+    public Datenpaket importFrom(final InputStream istream) throws IOException {
         Reader reader = new RecyclingInputStreamReader(istream, Config.DEFAULT_ENCODING);
-        importFrom(reader);
+        return importFrom(reader);
     }
 
     /**
-     * Import from.
+     * Import von einem {@link Reader}.
      *
      * @param reader hiervon wird importiert
+     * @return das Datenpaket zur Weiterverabeitung (seit 5.2)
      * @throws IOException falls was schiefgelaufen ist
      */
-    public void importFrom(final Reader reader) throws IOException {
+    public Datenpaket importFrom(final Reader reader) throws IOException {
         PushbackLineNumberReader lnr = new PushbackLineNumberReader(new RecordReader(reader), 256);
         try {
-            importFrom(lnr);
+            return importFrom(lnr);
         } catch (EOFException eofe) {
             throw new ExtendedEOFException("line " + lnr.getLineNumber() + ": " + eofe.getMessage(), eofe);
         } catch (IOException ioe) {
@@ -395,9 +401,10 @@ public class Datenpaket {
      * Satzart und Sparte wieder zurueckgestellt werden kann.
      *
      * @param reader PushbackReader mit einem Puffer von mind. 14 Zeichen
+     * @return das Datenpaket zur Weiterverabeitung (seit 5.2)
      * @throws IOException falls was schief gelaufen ist
      */
-    public void importFrom(final PushbackLineNumberReader reader) throws IOException {
+    public Datenpaket importFrom(final PushbackLineNumberReader reader) throws IOException {
         this.vorsatz.importFrom(reader);
         while (true) {
             Satz satz = importSatz(reader);
@@ -407,6 +414,7 @@ public class Datenpaket {
             }
             datensaetze.add((Datensatz) satz);
         }
+        return this;
     }
 
     /**

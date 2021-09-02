@@ -633,18 +633,18 @@ public final class DatenpaketTest {
      */
     @Test
     public void testImportWagnisart13() throws IOException {
-        checkImport("testcase_0220_010_13.txt", Charset.forName("IBM850"));
+        checkImport("gdv/xport/satz/testcase_0220_010_13.txt", Charset.forName("IBM850"));
     }
 
     private static Datenpaket checkImport(String filename, Charset encoding) throws IOException {
-        File testfile = new File("src/test/resources/gdv/xport/satz", filename);
+        File testfile = new File("src/test/resources", filename);
         Datenpaket imported = new Datenpaket();
         imported.importFrom(testfile, encoding);
         File exportDir = new File("target", "export");
         if (exportDir.mkdir()) {
             LOG.info("Verzeichnis {} wurde angelegt.", exportDir);
         }
-        File exportFile = new File(exportDir, filename);
+        File exportFile = new File(exportDir, testfile.getName());
         for (Datensatz ds : imported.getDatensaetze()) {
             assertTrue(ds.isValid());
         }
@@ -687,7 +687,7 @@ public final class DatenpaketTest {
      */
     @Test
     public void testPack() throws IOException {
-        Datenpaket x = checkImport("testcase_0220_mit_0221_versetzt.txt", Charset.forName("IBM850"));
+        Datenpaket x = checkImport("gdv/xport/satz/testcase_0220_mit_0221_versetzt.txt", Charset.forName("IBM850"));
         int anzahlSaetze = x.getDatensaetze().size();
         Datenpaket unpacked = x.pack();
         MatcherAssert.assertThat(unpacked.getDatensaetze().size(), lessThan(anzahlSaetze));
@@ -702,6 +702,15 @@ public final class DatenpaketTest {
             MatcherAssert.assertThat(ds.getNumberOfTeildatensaetze(), greaterThan(1));
             assertTrue(ds.isValid());
         }
+    }
+
+    @Test
+    public void testPackMusterdatei() throws IOException {
+        try (InputStream istream = getClass().getResourceAsStream("/musterdatei_041222.txt")) {
+            assertNotNull(istream);
+            datenpaket.importFrom(istream).pack();
+        }
+        MatcherAssert.assertThat(datenpaket.getDatensaetze().size(), lessThan(129));
     }
 
     @Test

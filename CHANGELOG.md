@@ -25,6 +25,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Changed
 
+- Datenpaket#importFrom(..)-Methoden liefern jetzt ein Datenpaket zur Weiterverarbeitung zurück, z.B. für `x = importFrom(istream).pack();`
 - _fixed_: Parsen von Teildatensätzen ohne Satznummer korrigiert
   ([Issue #63](https://github.com/oboehm/gdv.xport/pull/63))
 - _fixed_: SatzRegistry.getAllSupportedSaetze() liefert jetzt den passenden Vorsatz zur SatzRegistry
