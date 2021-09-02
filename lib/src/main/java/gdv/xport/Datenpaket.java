@@ -12,6 +12,7 @@
 
 package gdv.xport;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Betrag;
 import gdv.xport.feld.BetragMitVorzeichen;
@@ -671,6 +672,7 @@ public class Datenpaket {
      *
      * @return true/false
      */
+    @JsonIgnore
     public boolean isValid() {
         if (!this.vorsatz.isValid()) {
             LOG.info(this.vorsatz + " is not valid");

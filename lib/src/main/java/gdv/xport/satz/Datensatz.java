@@ -18,6 +18,7 @@
 
 package gdv.xport.satz;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
@@ -459,6 +460,7 @@ public class Datensatz extends Satz {
      *
      * @return 0 oder Untersparte / Art
      */
+	@JsonIgnore
 	public int getArt() {
 		return this.getSatzTyp().getArt();
 	}
@@ -523,6 +525,7 @@ public class Datensatz extends Satz {
 	 *
 	 * @return die VU-Nummer
 	 */
+	@JsonIgnore
 	public String getVuNummer() {
     return this.getFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()).getInhalt().trim();
 	}
@@ -543,6 +546,7 @@ public class Datensatz extends Satz {
 	 * @return die Versicherungsschein-Nummer
 	 * @since 0.3
 	 */
+	@JsonIgnore
 	public String getVersicherungsscheinNummer() {
     return this.getFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner()).getInhalt().trim();
 	}

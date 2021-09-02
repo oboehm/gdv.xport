@@ -17,7 +17,6 @@
  */
 package gdv.xport.srv.web;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
@@ -29,12 +28,10 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import patterntesting.runtime.log.LogWatch;
-import springfox.documentation.service.MediaTypes;
 
 import java.net.URI;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 /**
  * In AbstractControllerIT sind einige Gemeinsamkeiter der verschiedenen
@@ -103,7 +100,7 @@ public abstract class AbstractControllerIT {
         }
         ResponseEntity<T> response =
                 template.exchange(baseURI.toString() + path, method, new HttpEntity<>(text, headers), type);
-        LOG.info("{}} {}{} successful finished with {} after {}.", method, baseURI, path, response, watch);
+        LOG.info("{}} {}{} finished with {} after {}.", method, baseURI, path, response.getStatusCode(), watch);
         return response;
     }
 

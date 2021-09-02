@@ -20,13 +20,13 @@ package gdv.xport.util;
 import gdv.xport.Datenpaket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.StringWriter;
 
 import static org.hamcrest.Matchers.startsWith;
-import static org.junit.Assert.assertThat;
 
 /**
  * Unit-Tests fuer {@link JsonFormatter}-Klasse.
@@ -49,13 +49,23 @@ public final class JsonFormatterTest extends AbstractFormatterTest {
      */
     @Test
     public void testWriteDatenpaket() throws IOException {
+        checkWrite(new Datenpaket());
+    }
+
+    @Test
+    public void testWriteCompleteDatenpaket() throws IOException {
+        Datenpaket complete = SatzRegistry.getInstance().getAllSupportedSaetze();
+        checkWrite(complete);
+    }
+
+    private void checkWrite(Datenpaket datenpaket) throws IOException {
         try (StringWriter swriter = new StringWriter()) {
             JsonFormatter formatter = new JsonFormatter(swriter);
-            formatter.write(new Datenpaket());
+            formatter.write(datenpaket);
             swriter.flush();
             String jsonString = swriter.toString().trim();
-            LOG.info("jsonString = '{}'", jsonString);
-            assertThat(jsonString, startsWith("{"));
+            MatcherAssert.assertThat(jsonString, startsWith("{"));
+            LOG.info("{} wurde nach JSON formatiert.", datenpaket);
         }
     }
 
