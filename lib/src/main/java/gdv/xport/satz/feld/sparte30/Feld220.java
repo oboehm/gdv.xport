@@ -377,15 +377,19 @@ public enum Feld220 {
             byteAdresse = 250)
     SATZNUMMERNWIEDERHOLUNG1,
 
+  /**
+   * Art des Berufschluesselverzeichnusses. Bei der Verwendung des Berufsschlüsselverzeichnisses der
+   * Bundesagentur für Arbeit sowie des Statistischen Bundesamtes sind nur die ersten drei Stellen
+   * relevant. 1 = Berufsschlüssel der Bundesagentur für Arbeit 2 = Berufsschlüssel des
+   * Statistischen Bundesamtes 9 = Anderes
+   */
+  @FeldInfo(teildatensatz = 1, nr = 35, type = AlphaNumFeld.class, anzahlBytes = 1, byteAdresse = 251)
+  ART_DES_BERUFSCHLUESSELVERZEICHNISSES,
+
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
      */
-    @FeldInfo(
-            teildatensatz = 1,
-            nr = 35,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 6,
-            byteAdresse = 251)
+  @FeldInfo(teildatensatz = 1, nr = 36, type = AlphaNumFeld.class, anzahlBytes = 5, byteAdresse = 252)
     LEERSTELLEN1,
 
     // /// Teildatensatz 2 /////////////////////////////////////////////////
@@ -1341,38 +1345,35 @@ public enum Feld220 {
             byteAdresse = 172)
     UEBERSCHUSSANTEILE_ZUM_BERECHNUNGSSTICHTAG_IN_WAEHRUNGSEINHEITEN,
 
+  /**
+   * Ende der Rentenzahlung Tag/Monat/Jahr (TTMMJJJJ)
+   */
+  @FeldInfo(teildatensatz = 4, nr = 21, type = Datum.class, anzahlBytes = 8, byteAdresse = 186)
+  ENDE_DER_RENTENZAHLUNG,
+
+  /**
+   * Dauer des Rentenbezugs in Monaten
+   */
+  @FeldInfo(teildatensatz = 4, nr = 22, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 194)
+  DAUER_DES_RENTENBEZUGS_IN_MONATEN,
+
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
      */
-    @FeldInfo(
-            teildatensatz = 4,
-            nr = 21,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 64,
-            byteAdresse = 186)
+  @FeldInfo(teildatensatz = 4, nr = 23, type = AlphaNumFeld.class, anzahlBytes = 52, byteAdresse = 197)
     LEERSTELLEN4,
 
     /**
      * Satznummernwiederholung.
      * Hier konstant
      */
-    @FeldInfo(
-            teildatensatz = 4,
-            nr = 22,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 250)
+  @FeldInfo(teildatensatz = 4, nr = 24, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 249)
     SATZNUMMERNWIEDERHOLUNG4,
 
     /**
      * Leerstellen. Freie Stellen fuer weitere Belegung.
      */
-    @FeldInfo(
-            teildatensatz = 4,
-            nr = 23,
-            type = AlphaNumFeld.class,
-            anzahlBytes = 6,
-            byteAdresse = 251)
+  @FeldInfo(teildatensatz = 4, nr = 25, type = AlphaNumFeld.class, anzahlBytes = 7, byteAdresse = 250)
     LEERSTELLEN5,
 
     // /// Teildatensatz 9 /////////////////////////////////////////////////
@@ -1404,12 +1405,7 @@ public enum Feld220 {
      * Satznummer.
      * konstant 9
      */
-    @FeldInfo(
-            teildatensatz = 9,
-            nr = 9,
-            type = NumFeld.class,
-            anzahlBytes = 1,
-            byteAdresse = 60)
+  @FeldInfo(teildatensatz = 9, nr = 9, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 60)
     SATZNUMMER9,
 
     /**
