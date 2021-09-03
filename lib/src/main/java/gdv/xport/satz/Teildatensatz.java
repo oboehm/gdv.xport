@@ -32,8 +32,6 @@ import java.io.Writer;
 import java.util.*;
 import java.util.Map.Entry;
 
-import static gdv.xport.feld.Bezeichner.SATZNUMMER;
-
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
  * beruecksichtigt. Und ein Teildatensatz besteht aus mehreren Datenfeldern.
@@ -52,7 +50,7 @@ public class Teildatensatz extends Satz {
     private final SortedSet<Feld> sortedFelder = new TreeSet<>();
 
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
-    protected Feld satznummer = new Zeichen(SATZNUMMER, 256);
+    protected Satznummer satznummer = new Satznummer();
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
@@ -219,7 +217,7 @@ public class Teildatensatz extends Satz {
     public void setSatznummer(Zeichen satznummer) {
         String nr = this.satznummer.getInhalt();
         remove(Bezeichner.SATZNUMMER);
-        this.satznummer = new Zeichen(satznummer);
+        this.satznummer = new Satznummer(satznummer);
         this.satznummer.setInhalt(nr);
         add(this.satznummer);
     }
@@ -255,7 +253,7 @@ public class Teildatensatz extends Satz {
         if (feld.getBezeichnung().startsWith("Satznummer")) {
             LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
             feld.setInhalt(this.satznummer.getInhalt());
-            this.satznummer = feld;
+            this.satznummer = new Satznummer(feld);
         }
     /*
      * @Oli: bei den 0220.020er-Saetzen ist die KrankenFolgeNr wichtig fuer die Erkennbarkeit der
