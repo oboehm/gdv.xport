@@ -227,13 +227,7 @@ public enum Feld221 {
     /**
      * zusaetzliche Satzkennung.
      */
-    @FeldInfo(
-            teildatensatz = 2,
-            nr = 23,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 256
-    )
+  @FeldInfo(teildatensatz = 2, nr = 23, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 256, value = "X")
     ZUSAETZLICHE_SATZKENNUNG,
 
     /////   Teildatensatz 3   /////////////////////////////////////////////////
@@ -297,13 +291,7 @@ public enum Feld221 {
     /**
      * Satznummernwiederholung.
      */
-    @FeldInfo(
-            teildatensatz = 3,
-            nr = 12,
-            type = NumFeld.class,
-            anzahlBytes = 1,
-            byteAdresse = 250
-    )
+  @FeldInfo(teildatensatz = 3, nr = 12, type = AlphaNumFeld.class, anzahlBytes = 1, byteAdresse = 250, value = "3")
     SATZNUMMERNWIEDERHOLUNG,
 
     /**
