@@ -621,6 +621,25 @@ public class SatzRegistry implements VersionHandler {
                 supportedSaetze.put(entry.getKey(), (Datensatz) value);
             }
         }
+        return createDatenpaket(supportedSaetze);
+    }
+
+    /**
+     * Liefert ein Datenpaket mit den angegebenen Satzarten.
+     *
+     * @param typen gewuenschte Satzarten
+     * @return Datenpaket mit gewuenschten Satzarten
+     * @since 5.2
+     */
+    public Datenpaket getSupportedSaetzeWith(SatzTyp ... typen) {
+        Map<SatzTyp, Satz> supportedSaetze = new HashMap<>();
+        for (SatzTyp t : typen) {
+            supportedSaetze.put(t, xmlService.getSatzart(t));
+        }
+        return createDatenpaket(supportedSaetze);
+    }
+
+    private Datenpaket createDatenpaket(Map<SatzTyp, Satz> supportedSaetze) {
         supportedSaetze.remove(Vorsatz.SATZART);
         supportedSaetze.put(Vorsatz.SATZART, new Vorsatz(this));
         supportedSaetze.remove(Nachsatz.SATZART);

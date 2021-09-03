@@ -21,6 +21,7 @@ import gdv.xport.Datenpaket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -48,14 +49,24 @@ public final class JsonFormatterTest extends AbstractFormatterTest {
      * @throws IOException falls was schief laeuft
      */
     @Test
-    public void testWriteDatenpaket() throws IOException {
+    public void testWriteEmptyDatenpaket() throws IOException {
         checkWrite(new Datenpaket());
     }
 
     @Test
+    @Ignore // dauert zu lang (ca. 4 Sek.)
     public void testWriteCompleteDatenpaket() throws IOException {
         Datenpaket complete = SatzRegistry.getInstance().getAllSupportedSaetze();
         checkWrite(complete);
+    }
+
+    @Test
+    public void testWriteDatenpaket() throws IOException {
+        Datenpaket datenpaket = SatzRegistry.getInstance().getSupportedSaetzeWith(
+                SatzTyp.of("0100"),
+                SatzTyp.of("0500")
+        );
+        checkWrite(datenpaket);
     }
 
     private void checkWrite(Datenpaket datenpaket) throws IOException {
