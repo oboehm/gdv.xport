@@ -39,7 +39,8 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Unit-Tests fuer {@link Satznummer}.
+ * Unit-Tests fuer {@link Satznummer}. Dieser Test ersetzt jetzt den alten
+ * SatznummerTest im satz-Package.
  *
  * @author <a href="ob@aosd.de">oliver</a>
  */
