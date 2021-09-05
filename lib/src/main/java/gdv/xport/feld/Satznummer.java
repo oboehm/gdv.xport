@@ -18,6 +18,8 @@
 package gdv.xport.feld;
 
 import gdv.xport.satz.Teildatensatz;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -32,6 +34,8 @@ import static gdv.xport.feld.Bezeichner.SATZNUMMER;
  * @since 5.2 (03.09.21)
  */
 public class Satznummer extends Zeichen {
+
+    private static final Logger LOG = LogManager.getLogger();
 
     /**
      * Default-Constructor.
@@ -60,10 +64,22 @@ public class Satznummer extends Zeichen {
      */
     public static Satznummer readSatznummer(PushbackReader reader, Teildatensatz teildatensatz) throws IOException{
         Satznummer nr = new Satznummer(teildatensatz.getSatznummer());
-        return readSatznummer(reader, nr);
+        switch (teildatensatz.getSatzTyp().getGdvSatzartName()) {
+            case "0220.030":
+            case "0221.030":
+                return readAmbiguousSatznummer(reader, nr, teildatensatz);
+            case "0500":
+                return readSatznumme500(reader, nr);
+            default:
+                return readSatznummer(reader, nr);
+        }
     }
 
     private static Satznummer readSatznummer(PushbackReader reader, Satznummer nr) throws IOException {
+        return (Satznummer) readZeichen(reader, nr);
+    }
+
+    private static Zeichen readZeichen(PushbackReader reader, Zeichen nr) throws IOException {
         int position = nr.getByteAdresse();
         char[] cbuf = new char[position];
         if (reader.read(cbuf) == -1) {
@@ -71,6 +87,44 @@ public class Satznummer extends Zeichen {
         }
         reader.unread(cbuf);
         nr.setInhalt(cbuf[position-1]);
+        return nr;
+    }
+
+    private static Satznummer readAmbiguousSatznummer(PushbackReader reader, Satznummer nr, Teildatensatz teildatensatz)
+            throws IOException {
+        if (teildatensatz.hasFeld(Bezeichner.SATZNUMMERNWIEDERHOLUNG)) {
+            Zeichen wiederholung = teildatensatz.getFeld(Bezeichner.SATZNUMMERNWIEDERHOLUNG, Zeichen.class);
+            wiederholung = readZeichen(reader, wiederholung);
+            if (nr.toChar() != wiederholung.toChar()) {
+                LOG.debug("{} stimmt nicht mit {} ueberein.", nr, wiederholung);
+                nr.resetInhalt();
+            }
+        } else if (teildatensatz.hasFeld(Bezeichner.ZUSAETZLICHE_SATZKENNUNG)) {
+            Zeichen satzkennung = teildatensatz.getFeld(Bezeichner.ZUSAETZLICHE_SATZKENNUNG, Zeichen.class);
+            satzkennung = readZeichen(reader, satzkennung);
+            if (satzkennung.toChar() != 'X') {
+                LOG.debug("Es fehlt {} fuer {}.", satzkennung, teildatensatz);
+                nr.resetInhalt();
+            }
+        }
+        return nr;
+    }
+
+    private static Satznummer readSatznumme500(PushbackReader reader, Satznummer nr) throws IOException {
+        Satznummer feld256 = readSatznummer(reader, new Satznummer());
+        nr.setInhalt(feld256.getInhalt());
+        switch (feld256.toInt()) {
+            case 1:
+                if (nr.getByteAdresse() == 256) {
+                    nr.resetInhalt();
+                }
+                break;
+            default:
+                if (nr.getByteAdresse() != 256) {
+                    nr.resetInhalt();
+                }
+                break;
+        }
         return nr;
     }
 

@@ -432,6 +432,13 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     @Test
+    public void testZusaetzlicheKennung() {
+        Satz satz = xmlService.getSatzart(SatzTyp.of("0220.030"));
+        Zeichen satzkennung = satz.getFeld(Bezeichner.ZUSAETZLICHE_SATZKENNUNG, Zeichen.class);
+        assertEquals("X", satzkennung.getInhalt());
+    }
+
+    @Test
     public void testGetSatzVersion() {
         String expected = "VUVM2013.xml".equals(Config.getXmlResource()) ? "2.3" :"2.4";
         assertEquals(expected, xmlService.getSatzVersion(SatzTyp.of("0001")));
