@@ -893,12 +893,7 @@ public enum Feld220 {
      * ein Feld Satznummernwiederholung eingeführt. Nicht jedoch im Teilsatz
      * 0220.030/2, da hier die Position schon belegt war.
      */
-    @FeldInfo(
-            teildatensatz = 2,
-            nr = 45,
-            type = Zeichen.class,
-            anzahlBytes = 1,
-            byteAdresse = 256)
+  @FeldInfo(teildatensatz = 2, nr = 45, type = Zeichen.class, anzahlBytes = 1, byteAdresse = 256, value = "X")
     ZUSAETZLICHE_SATZKENNUNG,
 
     // /// Teildatensatz 3 /////////////////////////////////////////////////
