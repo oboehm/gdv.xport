@@ -122,10 +122,10 @@ public class Satz220Test extends AbstractDatensatzTest {
     @Test
     public void testSparte30Teildatensatz1bis4und9() throws IOException    {
         String input = "02209999  030      5999999999901   90099991     1                                                                                                                                                                                                               \n" + 
-                "02209999  030      5999999999901   90099991     2                                                                                                                                                                                                               \n" + 
-                "02209999  030      5999999999901   90099993                                                                                                                                                                                                                     \n" + 
-                "02209999  030      5999999999901   90099991     4                                                                                                                                                                                                               \n" + 
-                "02209999  030      5999999999901   90099991                9                                                                                                                                                                                                    \n"; 
+                "02209999  030      5999999999901   90099991     2                                                                                                                                                                                                              X\n" +
+                "02209999  030      5999999999901   90099993                                                                                                                                                                                                              3      \n" +
+                "02209999  030      5999999999901   90099991     4                                                                                                                                                                                                       4       \n" +
+                "02209999  030      5999999999901   90099991                9                                                                                                                                                                                             9      \n";
         
         assertEquals(1285, input.length());
         Datensatz satz220 = SatzFactory.getDatensatz(SatzTyp.of("0220.030"));

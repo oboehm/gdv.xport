@@ -1136,7 +1136,7 @@ public abstract class Satz implements Cloneable {
             boolean teildatensatzGefunden = false;
             for (int j = i; j < teildatensatz.length; j++) {
             	// pruefe ob dieser oder einer der naechsten Teildatensaetze zur gelieferten Satznummer passen
-				char nr = readSatznummer(reader, teildatensatz[j].getSatznummer().getByteAdresse());
+				char nr = Satznummer.readSatznummer(reader, teildatensatz[j]).toChar();
 				if (!Character.isDigit(nr) || (teildatensatz[j].getSatznummer().toChar() != nr)) {
 					LOG.info("Zeile {}: {} erwartet statt {} - ueberspringe Teildatensatz {}.",
 							reader.getLineNumber(), teildatensatz[j].getSatznummer(), nr, j+1);
@@ -1404,15 +1404,6 @@ public abstract class Satz implements Cloneable {
         }
         return false;
     }
-
-    private static char readSatznummer(final PushbackReader reader, int position) throws IOException {
-		char[] cbuf = new char[position];
-		if (reader.read(cbuf) == -1) {
-			throw new EOFException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
-		}
-		reader.unread(cbuf);
-		return cbuf[position-1];
-	}
 
     /**
 	 * Liest die Satznummer.

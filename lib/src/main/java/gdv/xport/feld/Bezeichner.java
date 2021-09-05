@@ -21,8 +21,8 @@ package gdv.xport.feld;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.internal.UmlautMapper;
-import org.apache.commons.text.WordUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.WordUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -685,7 +685,7 @@ public final class Bezeichner {
      * Fuer Satzart 220, Sparte 20, Folge-Nr. 2 und 3 (Allgemeine Tarifdaten und Spezielle Tarifdaten)
      */
     public static final Bezeichner LAUFENDE_NUMMER_TARIF = new Bezeichner("Laufende Nummer Tarif");
-    public static final Bezeichner LFD_NUMMER_VP = new Bezeichner("Lfd. Nummer der versicherten Person (VP)");
+    public static final Bezeichner LFD_NUMMER_VP = new Bezeichner("Lfd. Nummer der versicherten Person (VP)", "LfdNrVersichertenPersonVpPersonengruppe", "LfdNrVersichertenPersonVpPersonengruppe1", "LfdNrVpPersonengruppe2", "LfdNrVersichertenPersonVpPersonengruppe3", "LfdNrVersichertenPersonVpPersonengruppe4", "LfdNrVersichertenPersonVp9");
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE1 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE2 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
@@ -982,8 +982,7 @@ public final class Bezeichner {
     @Deprecated
     public static final Bezeichner SATZNUMMER9 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER38 = new Bezeichner("Satznummer38", "SatzNr");
-    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG =
-            new Bezeichner("Satznummernwiederholung", "SatzNrnwiederholung1");
+    public static final Bezeichner SATZNUMMERNWIEDERHOLUNG = new Bezeichner("Satznummernwiederholung", "SatzNrnwiederholung", "SatzNrnwiederholung1", "SatzNrnwiederholung2", "SatzNrnwiederholung3");
     public static final Bezeichner SATZNUMMERNWIEDERHOLUNG1 = new Bezeichner("Satznummernwiederholung1", "SatzNrnwiederholung1");
     public static final Bezeichner SATZNUMMERNWIEDERHOLUNG2 = new Bezeichner("Satznummernwiederholung2", "SatzNrnwiederholung2");
     public static final Bezeichner SATZNUMMERNWIEDERHOLUNG3 = new Bezeichner("Satznummernwiederholung3", "SatzNrnwiederholung3");

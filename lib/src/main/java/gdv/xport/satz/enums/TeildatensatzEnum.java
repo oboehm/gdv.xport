@@ -19,6 +19,7 @@
 package gdv.xport.satz.enums;
 
 import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Satznummer;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.util.SatzTyp;
@@ -181,7 +182,7 @@ public final class TeildatensatzEnum extends Teildatensatz {
             if (nr.isEmpty()) {
                 nr.setInhalt(this.satznummer.getInhalt());
             }
-            this.satznummer = nr;
+            this.satznummer = new Satznummer(nr);
         }
         return super.getSatznummer();
     }
