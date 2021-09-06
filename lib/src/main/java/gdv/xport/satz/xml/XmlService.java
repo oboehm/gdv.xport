@@ -19,7 +19,6 @@
 package gdv.xport.satz.xml;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
 import gdv.xport.util.NotRegisteredException;
 import gdv.xport.util.NotUniqueException;
 import gdv.xport.util.SatzTyp;
@@ -323,9 +322,6 @@ public class XmlService {
             if (type.hasBausparenArt()) {
                 satz.getFeld("Art1").setInhalt(type.getBausparenArt());
             }
-        }
-        if (satz.hasFeld(Bezeichner.ZUSAETZLICHE_SATZKENNUNG)) {
-            satz.set(Bezeichner.ZUSAETZLICHE_SATZKENNUNG, "X");
         }
         return this.satzarten.put(type, satz);
     }

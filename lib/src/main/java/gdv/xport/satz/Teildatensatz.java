@@ -254,8 +254,10 @@ public class Teildatensatz extends Satz {
             LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
             feld.setInhalt(this.satznummer.getInhalt());
             this.satznummer = new Satznummer(feld);
+        } else if (feld.getBezeichner().equals(Bezeichner.ZUSAETZLICHE_SATZKENNUNG)) {
+            feld.setInhalt("X");
         }
-    /*
+        /*
      * @Oli: bei den 0220.020er-Saetzen ist die KrankenFolgeNr wichtig fuer die Erkennbarkeit der
      *       Satzart.
      */
