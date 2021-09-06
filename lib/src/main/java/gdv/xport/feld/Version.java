@@ -18,6 +18,10 @@
 
 package gdv.xport.feld;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import gdv.xport.util.SatzTyp;
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Versions-Feld.
  *
@@ -85,6 +89,18 @@ public class Version extends Feld {
     public Version(final String name, final int start, final String v) {
         super(name, 3, start, v, Align.LEFT);
         assert v.length() == 3 : "Version hat nicht das Format x.x";
+    }
+
+    /**
+     * Leitet den SatzTyp aus dem Bezeichner ab.
+     *
+     * @return z.B. SatzTyp.of("0100") für "Satzart 0001"
+     * @since 2.5
+     */
+    @JsonIgnore
+    public SatzTyp getSatzTyp() {
+        String typ = StringUtils.substringAfter(getBezeichnung(), "Satzart").trim();
+        return SatzTyp.of(typ);
     }
 
 }

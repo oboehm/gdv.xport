@@ -18,10 +18,10 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-import gdv.xport.satz.feld.Feld0001;
-
+import gdv.xport.util.SatzTyp;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit-Tests fuer {@link Version}-Klasse.
@@ -31,14 +31,23 @@ import org.junit.Test;
  */
 public class VersionTest {
 
-    /**
-     * Test method for {@link Version#Version(Enum)}.
-     */
     @Test
     public void testVersion() {
-        Version v = new Version(Feld0001.VERSION_SATZART_0001);
+        Version v = new Version(Bezeichner.VERSION_SATZART_0001, 96);
         assertEquals(96, v.getByteAdresse());
         assertEquals((Bezeichner.VERSION_SATZART_0001), v.getBezeichner());
+    }
+
+    @Test
+    public void testGetSatzTyp1() {
+        Version v = new Version(Bezeichner.VERSION_SATZART_0001, 96);
+        assertEquals(SatzTyp.of("0001"), v.getSatzTyp());
+    }
+
+    @Test
+    public void testGetSatzTyp210() {
+        Version v = new Version(Bezeichner.VERSION_SATZART_0210_050, 105);
+        assertEquals(SatzTyp.of("0210.050"), v.getSatzTyp());
     }
 
 }
