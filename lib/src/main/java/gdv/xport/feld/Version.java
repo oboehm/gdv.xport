@@ -55,6 +55,16 @@ public class Version extends Feld {
     }
 
     /**
+     * Legt ein neues Versions-Feld an (Copy-Constructor).
+     *
+     * @param feld andere Feld, aus dem kopiert wird.
+     * @since 5.2
+     */
+    public Version(final Feld feld) {
+        super(feld);
+    }
+
+    /**
      * Instantiiert ein neues Versions-Objekt.
      *
      * @param bezeichner Name des Feldes

@@ -39,12 +39,13 @@ import org.junit.Test;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
 import patterntesting.runtime.junit.FileTester;
+import patterntesting.runtime.junit.NetworkTester;
 import patterntesting.runtime.junit.ObjectTester;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.net.URI;
 import java.net.URL;
-import java.net.UnknownHostException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Date;
@@ -296,13 +297,12 @@ public final class DatenpaketTest {
     @Test
     @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportFromHTTP() throws IOException {
-        URL url = new URL(
-                "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
-        try {
-            datenpaket.importFrom(url);
+        URI uri = URI.create("http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
+        if (NetworkTester.exists(uri)) {
+            datenpaket.importFrom(uri);
             assertTrue(datenpaket.isValid());
-        } catch (UnknownHostException mayhappen) {
-            LOG.warn("Offline? Import von " + url + " abgebrochen!", mayhappen);
+        } else {
+            LOG.info("Offline? Import von {} wird uebersprungen.", uri);
         }
     }
 

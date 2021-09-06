@@ -22,18 +22,16 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
+import gdv.xport.feld.Version;
+import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.VersionHandler;
-import gdv.xport.util.SatzRegistry;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Formatter;
-import java.util.List;
+import java.util.*;
 
 import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS;
 import static gdv.xport.feld.Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM;
@@ -435,6 +433,25 @@ public class Vorsatz extends Satz {
      */
     public void setVersion(int art, int sparte, String version) {
         this.setVersion(getVersionBezeichner(art, sparte), version);
+    }
+
+    /**
+     * Liefert eine Liste aller gesetzter Versionen im Vorsatz.
+     * <p>
+     * TODO: auf Hashmap statt List umbauen (6-Okt-2020, oboehm)
+     * </p>
+     *
+     * @return Liste mit Versionen
+     * @since 5.2
+     */
+    public List<Version> getSatzartVersionen() {
+        List<Version> versions = new ArrayList<>();
+        for (Feld f : getFelder()) {
+            if (!f.isEmpty() && f.getBezeichner().getName().startsWith("Satzart")) {
+                versions.add(new Version(f));
+            }
+        }
+        return versions;
     }
 
     /**
