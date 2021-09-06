@@ -425,8 +425,7 @@ public class SatzX extends Datensatz {
 		}
 	}
 
-	private static boolean isSatznummer(final Enum feldX) {
-		return (feldX.name().length() <= 11) && feldX.name().startsWith("SATZNUMMER");
+	private static boolean isSatznummer(final Enum feldX) {return (feldX.name().length() <= 11) && feldX.name().startsWith("SATZNUMMER");
 	}
 
 	@Override

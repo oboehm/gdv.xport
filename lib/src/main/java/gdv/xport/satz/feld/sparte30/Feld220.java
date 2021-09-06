@@ -2,11 +2,7 @@ package gdv.xport.satz.feld.sparte30;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -1347,7 +1343,8 @@ public enum Feld220 {
   ENDE_DER_RENTENZAHLUNG,
 
   /**
-   * Dauer des Rentenbezugs in Monaten
+   * Dauer des Rentenbezugs in Monaten. Sofern eine lebenslange Rentenzahlung vereinbart wurde, ist
+   * das Feld "Dauer der Rentenbezugs in Monaten" mit "999" zu befuellen.
    */
   @FeldInfo(teildatensatz = 4, nr = 22, type = NumFeld.class, anzahlBytes = 3, byteAdresse = 194)
   DAUER_DES_RENTENBEZUGS_IN_MONATEN,
@@ -1506,7 +1503,7 @@ public enum Feld220 {
             type = AlphaNumFeld.class,
             anzahlBytes = 135,
             byteAdresse = 115)
-    LEERSTELLEN3,
+    LEERSTELLEN9,
 
     /**
      * Satznummernwiederholung.
@@ -1529,6 +1526,6 @@ public enum Feld220 {
             type = NumFeld.class,
             anzahlBytes = 6,
             byteAdresse = 251)
-    LFD_NUMMER_VP,
+    LFD_NUMMER_VP
 
 }

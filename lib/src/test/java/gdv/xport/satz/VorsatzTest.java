@@ -26,16 +26,14 @@ import gdv.xport.feld.Version;
 import gdv.xport.satz.feld.Feld0001;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
-import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
-import java.util.List;
+import java.util.Map;
 
-import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.*;
 
 /**
@@ -99,8 +97,8 @@ public final class VorsatzTest extends AbstractSatzTest {
         vorsatz.setErstellungsZeitraum(startDatum, endDatum);
         checkExport(70, 85, startDatum + endDatum);
         assertEquals(startDatum + endDatum, vorsatz.getErstellungsZeitraum());
-        assertEquals(startDatum, vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM).toString());
-        assertEquals(endDatum, vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS).toString());
+        assertEquals(startDatum, vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM));
+        assertEquals(endDatum, vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS));
     }
 
     @Test
@@ -144,12 +142,11 @@ public final class VorsatzTest extends AbstractSatzTest {
     public void testImportVersion() throws IOException {
         File musterdatei = new File("src/test/resources/musterdatei_041222.txt");
         vorsatz.importFrom(musterdatei);
-        assertEquals("1.9", vorsatz.getVersion(SatzTyp.of("0001")));
-        assertEquals("1.9", vorsatz.getVersion(SatzTyp.of("0100")));
-        assertEquals("1.9", vorsatz.getVersion(SatzTyp.of("0200")));
-        assertEquals("2.1", vorsatz.getVersion(SatzTyp.of("0210.50")));
-        List<Version> versionen = vorsatz.getSatzartVersionen();
-        MatcherAssert.assertThat(versionen.size(), greaterThan(4));
+        Map<SatzTyp, Version> versionen = vorsatz.getSatzartVersionen();
+        assertEquals("1.9", versionen.get(SatzTyp.of("0001")).getInhalt());
+        assertEquals("1.9", versionen.get(SatzTyp.of("0100")).getInhalt());
+        assertEquals("1.9", versionen.get(SatzTyp.of("0200")).getInhalt());
+        assertEquals("2.1", versionen.get(SatzTyp.of("0210.50")).getInhalt());
     }
 
     /**

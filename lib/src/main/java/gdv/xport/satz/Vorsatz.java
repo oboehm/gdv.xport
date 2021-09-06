@@ -437,21 +437,20 @@ public class Vorsatz extends Satz {
 
     /**
      * Liefert eine Liste aller gesetzter Versionen im Vorsatz.
-     * <p>
-     * TODO: auf Hashmap statt List umbauen (6-Okt-2020, oboehm)
-     * </p>
      *
      * @return Liste mit Versionen
      * @since 5.2
      */
-    public List<Version> getSatzartVersionen() {
-        List<Version> versions = new ArrayList<>();
+    public Map<SatzTyp, Version> getSatzartVersionen() {
+        Map<SatzTyp, Version> versionen = new HashMap<>();
         for (Feld f : getFelder()) {
-            if (!f.isEmpty() && f.getBezeichner().getName().startsWith("Satzart")) {
-                versions.add(new Version(f));
+            if (!f.isEmpty() && f.getBezeichner().getName().startsWith("Satzart")
+                    && !f.getBezeichner().equals(Bezeichner.SATZART)) {
+                Version v = new Version(f);
+                versionen.put(v.getSatzTyp(), v);
             }
         }
-        return versions;
+        return versionen;
     }
 
     /**

@@ -147,7 +147,7 @@ public class SatzTyp {
 	}
 
 	private static int[] toIntArray(String nr) {
-		String[] parts = StringUtils.split(nr, '.');
+		String[] parts = StringUtils.split(nr, ". ");
 		int[] array = new int[parts.length];
 		try {
 			for (int i = 0; i < parts.length; i++) {
