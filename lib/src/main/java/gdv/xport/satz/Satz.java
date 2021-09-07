@@ -508,6 +508,16 @@ public abstract class Satz implements Cloneable {
         return this.satzVersion;
     }
 
+	/**
+	 * Liefert die Version des Satzes.
+	 *
+	 * @return z.B. "1.2"
+	 * @since 5.2
+	 */
+	public final String getVersion() {
+    	return this.satzVersion.getInhalt();
+	}
+
     /**
      * Liefert den Inhalt des gewuenschten Feldes.
 	 *

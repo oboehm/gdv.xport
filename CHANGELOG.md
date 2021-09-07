@@ -19,6 +19,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Added
 
+- SatzRegistry.getSatz(..) akzeptiert jetzt zusätzlich die gewünschte Version
 - Liste der gesetzten Versionen läßt sich jetzt über `Vorsatz.getSatzartVersionen()` abfragen
 - Datenpaket besitzt jetzt eine pack()-Methode
   ([Issue #62](https://github.com/oboehm/gdv.xport/issues/62))

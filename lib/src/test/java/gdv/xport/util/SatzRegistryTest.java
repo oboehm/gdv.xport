@@ -116,4 +116,11 @@ public final class SatzRegistryTest {
         assertEquals("1.1", d2015.getNachsatz().getSatzversion().getInhalt());
     }
 
+    @Test
+    public void testGetSatz2013() {
+        Satz satz = SatzRegistry.getSatz(SatzTyp.of("0230.030"), "1.0");
+        assertEquals(SatzTyp.of("0230.030"), satz.getSatzTyp());
+        assertEquals("1.0", satz.getVersion());
+    }
+
 }

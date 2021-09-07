@@ -67,15 +67,6 @@ public class SatzRegistry implements VersionHandler {
     private final Map<SatzTyp, Satz> registeredSaetze = new ConcurrentHashMap<>();
     private final XmlService xmlService;
 
-    {
-        registerDefault();
-    }
-
-    private void registerDefault() {
-        // hier enthaelt die XML-Beschreibung f. KH-Deckungssumme weniger Infos
-        //registerEnum(gdv.xport.satz.feld.sparte51.Feld221.class, SatzTyp.of("0221.051"));
-    }
-
     private SatzRegistry(XmlService xmlService) {
         this.xmlService = xmlService;
     }
@@ -113,13 +104,42 @@ public class SatzRegistry implements VersionHandler {
     }
 
     /**
+     * Liefert den Datensatz mit der gewuenschten Version. Dazu werden die
+     * Instanzen mit den verschiedenen XML-Beschreibungen durchsucht. Wird
+     * keine gefunden, wird der Satz der aktuellen Instanz zurueckgegeben.
+     *
+     * @param satzTyp SatzTyp
+     * @param version gewuenschte Version
+     * @return Satz mit der gewuenschten Version
+     * @since 5.2
+     */
+    public static Satz getSatz(SatzTyp satzTyp, String version) {
+        createInstances();
+        Satz satz = getInstance().getSatz(satzTyp);
+        for (SatzRegistry registry : INSTANCES.values()) {
+            Satz ds = registry.getSatz(satzTyp);
+            if (version.equals(ds.getVersion())) {
+                return ds;
+            }
+        }
+        LOG.warn("Version {} fuer {} wurde nicht gefunden - verwende {} als Default (Version {}).", version,
+                satzTyp, satz.toShortString(), satz.getVersion());
+        return satz;
+    }
+
+    private static void createInstances() {
+        getInstance("VUVM2013.xml");
+        getInstance("VUVM2015.xml");
+        getInstance("VUVM2018.xml");
+    }
+
+    /**
      * Mit dieser Klasse konnen die Registrierungen wieder komplett
      * rueckgaengig gemacht werden. Diese Methode wurde vor allem zur
      * Unterstuetzung der Unit-Tests eingefuehrt.
      */
     public void reset() {
         registeredSaetze.clear();
-        registerDefault();
         LOG.debug("{} wurde zurueckgesetzt.", this);
     }
 
