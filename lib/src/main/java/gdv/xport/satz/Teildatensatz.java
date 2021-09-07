@@ -250,40 +250,34 @@ public class Teildatensatz extends Satz {
                 }
             }
         }
+        setUpFeld(feld);
+        datenfelder.put(feld.getBezeichner(), feld);
+        if (!sortedFelder.add(feld)) {
+            LOG.debug("Bezeichner {} schon vorhanden in {} {}.", feld.getBezeichner(), this, this.getSatznummer());
+        }
+    }
+
+    private void setUpFeld(Feld feld) {
         if (feld.getBezeichnung().startsWith("Satznummer")) {
             LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
             feld.setInhalt(this.satznummer.getInhalt());
             this.satznummer = new Satznummer(feld);
         } else if (feld.getBezeichner().equals(Bezeichner.ZUSAETZLICHE_SATZKENNUNG)) {
             feld.setInhalt("X");
-        }
-        /*
-     * @Oli: bei den 0220.020er-Saetzen ist die KrankenFolgeNr wichtig fuer die Erkennbarkeit der
-     *       Satzart.
-     */
-    if (this.getGdvSatzartName()
-        .startsWith("0220.020")
-        && feld.getBezeichner()
-            .getTechnischerName()
-            .startsWith("FolgeNrZurLaufendenPersonenNrUnterNr"))
-    {
-      LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner()
-          .getTechnischerName(), this);
-      feld.setInhalt(this.getSatzTyp()
-          .getKrankenFolgeNr());
-    }
-        if (feld.getBezeichnung().startsWith("Vorzeichen")) {
+        } else if (feld.getBezeichnung().startsWith("Vorzeichen")) {
             LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
             feld.setInhalt("+");
-        }
-        if (this.getSatzart() == 1 && feld.getBezeichner().getTechnischerName().equals("Satzart0001")) {
+        } else if (this.getSatzart() == 1 && feld.getBezeichner().getTechnischerName().equals("Satzart0001")) {
             LOG.debug("{}({}) einfuegen in {} {}}", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(),
                     this, this.getSatzversion());
             feld.setInhalt(this.getSatzversion().getInhalt());
-        }
-        datenfelder.put(feld.getBezeichner(), feld);
-        if (!sortedFelder.add(feld)) {
-            LOG.debug("Bezeichner {} schon vorhanden in {} {}.", feld.getBezeichner(), this, this.getSatznummer());
+        } else if (this.getGdvSatzartName().startsWith("0220.020")
+                && feld.getBezeichner().getTechnischerName().startsWith("FolgeNrZurLaufendenPersonenNrUnterNr")) {
+            // bei den 0220.020er-Saetzen ist die KrankenFolgeNr wichtig fuer die Erkennbarkeit der
+            // Satzart.
+            LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner()
+                    .getTechnischerName(), this);
+            feld.setInhalt(this.getSatzTyp().getKrankenFolgeNr());
         }
     }
 
