@@ -14,10 +14,7 @@ package gdv.xport;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.BetragMitVorzeichen;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Datum;
+import gdv.xport.feld.*;
 import gdv.xport.io.*;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
@@ -407,8 +404,9 @@ public class Datenpaket {
      */
     public Datenpaket importFrom(final PushbackLineNumberReader reader) throws IOException {
         this.vorsatz.importFrom(reader);
+        Map<SatzTyp, Version> satzartVersionen = this.vorsatz.getSatzartVersionen();
         while (true) {
-            Satz satz = importSatz(reader);
+            Satz satz = importSatz(reader, satzartVersionen);
             if (satz.getSatzart() == 9999) {
                 this.nachsatz = (Nachsatz) satz;
                 break;
@@ -416,6 +414,15 @@ public class Datenpaket {
             datensaetze.add((Datensatz) satz);
         }
         return this;
+    }
+
+    private static Satz importSatz(PushbackLineNumberReader reader, Map<SatzTyp, Version> satzartVersionen) throws IOException {
+        Satz satz = importSatz(reader);
+        Version wanted = satzartVersionen.get(satz.getSatzTyp());
+        if ((wanted != null) && !wanted.getInhalt().equals(satz.getVersion())) {
+            LOG.warn("{} wurde in Version {} importiert (satt {}).", satz, satz.getVersion(), wanted);
+        }
+        return satz;
     }
 
     /**
