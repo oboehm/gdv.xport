@@ -24,10 +24,7 @@ import gdv.xport.satz.feld.FeldX;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.satz.model.SatzX;
-import gdv.xport.util.SatzFactory;
-import gdv.xport.util.SatzTyp;
-import gdv.xport.util.SimpleConstraintViolation;
-import gdv.xport.util.URLReader;
+import gdv.xport.util.*;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import org.apache.logging.log4j.LogManager;
@@ -422,17 +419,55 @@ public class Datenpaket {
         if (satzart == 9999) {
             return importNachsatzFrom(reader);
         } else {
-            return importSatzFrom(reader, satzartVersionen, satzart);
+            return importSatzFrom(reader, satzart, satzartVersionen);
         }
     }
 
-    private static Satz importSatzFrom(PushbackLineNumberReader reader, Map<SatzTyp, Version> satzartVersionen, int satzart) throws IOException {
-        Satz satz = importDatensatz(reader, satzart);
-        Version wanted = satzartVersionen.get(satz.getSatzTyp());
-        if ((wanted != null) && !wanted.getInhalt().equals(satz.getVersion())) {
-            LOG.warn("{} wurde in Version {} importiert (satt {}).", satz, satz.getVersion(), wanted);
+    private static Satz importSatzFrom(PushbackLineNumberReader reader, int satzart,
+                                       Map<SatzTyp, Version> satzartVersionen) throws IOException {
+        SatzTyp satzTyp = readSatzTyp(reader, satzart);
+        Version wanted = satzartVersionen.get(satzTyp);
+        if (wanted == null) {
+            return importDatensatz(reader, satzart);
+        } else {
+            Satz satz = SatzRegistry.getSatz(satzTyp, satzartVersionen.get(satzTyp).getInhalt());
+            satz.importFrom(reader);
+            return satz;
         }
-        return satz;
+    }
+
+    private static SatzTyp readSatzTyp(PushbackLineNumberReader reader, int satzart) throws IOException {
+        int sparte = Datensatz.readSparte(reader);
+        SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
+        if (satzart >= 210 && satzart < 300) {
+            if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
+                WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
+                if (wagnisart != WagnisartLeben.NULL) {
+                    // wagnisart 0 hat immer ein Leerzeichen als
+                    // teildatenSatzmummer. Nur groesser 0
+                    // besitzt per Definition Werte.
+                    TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
+                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
+                } else {
+                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode());
+                }
+            } else if (sparte == 20 && satzart == 220) {
+                // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
+                int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
+                // Krankenfolgenummer nicht auslesbar -> Unbekannter Datensatz
+                satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
+            }  else if (sparte == 580 && satzart == 220) {
+                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
+                // noetig
+                int bausparArt = Datensatz.readBausparenArt(reader);
+                // BausparenArt nicht auslesbar -> Unbekannter Datensatz
+                satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
+            }
+            else {
+                satzTyp = SatzTyp.of(satzart, sparte);
+            }
+        }
+        return satzTyp;
     }
 
     /**
