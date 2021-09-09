@@ -417,7 +417,17 @@ public class Datenpaket {
     }
 
     private static Satz importSatz(PushbackLineNumberReader reader, Map<SatzTyp, Version> satzartVersionen) throws IOException {
-        Satz satz = importSatz(reader);
+        int satzart = Satz.readSatzart(reader);
+        LOG.debug("Satzart {} wird importiert...", satzart);
+        if (satzart == 9999) {
+            return importNachsatzFrom(reader);
+        } else {
+            return importSatzFrom(reader, satzartVersionen, satzart);
+        }
+    }
+
+    private static Satz importSatzFrom(PushbackLineNumberReader reader, Map<SatzTyp, Version> satzartVersionen, int satzart) throws IOException {
+        Satz satz = importDatensatz(reader, satzart);
         Version wanted = satzartVersionen.get(satz.getSatzTyp());
         if ((wanted != null) && !wanted.getInhalt().equals(satz.getVersion())) {
             LOG.warn("{} wurde in Version {} importiert (satt {}).", satz, satz.getVersion(), wanted);
@@ -437,12 +447,16 @@ public class Datenpaket {
         int satzart = Satz.readSatzart(reader);
         LOG.debug("reading Satzart " + satzart + "...");
         if (satzart == 9999) {
-            Nachsatz nachsatz = new Nachsatz();
-            nachsatz.importFrom(reader);
-            return nachsatz;
+            return importNachsatzFrom(reader);
         } else {
             return importDatensatz(reader, satzart);
         }
+    }
+
+    private static Nachsatz importNachsatzFrom(PushbackLineNumberReader reader) throws IOException {
+        Nachsatz nachsatz = new Nachsatz();
+        nachsatz.importFrom(reader);
+        return nachsatz;
     }
 
     private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)

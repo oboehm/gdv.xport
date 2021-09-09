@@ -116,7 +116,11 @@ public class SatzTyp {
 	 * @since 5.0
 	 */
 	public static SatzTyp of(String nr)  {
-		return new SatzTyp(nr);
+		return of(nr, ".");
+	}
+
+	public static SatzTyp of(String nr, String separatorChars) {
+		return new SatzTyp(nr, separatorChars);
 	}
 
 	/**
@@ -142,12 +146,12 @@ public class SatzTyp {
 		}
 	}
 
-	private SatzTyp(String nr) {
-		this(toIntArray(nr));
+	private SatzTyp(String nr, String separatorChars) {
+		this(toIntArray(nr, separatorChars));
 	}
 
-	private static int[] toIntArray(String nr) {
-		String[] parts = StringUtils.split(nr, ". ");
+	private static int[] toIntArray(String nr, String separatorChars) {
+		String[] parts = StringUtils.split(nr, separatorChars);
 		int[] array = new int[parts.length];
 		try {
 			for (int i = 0; i < parts.length; i++) {

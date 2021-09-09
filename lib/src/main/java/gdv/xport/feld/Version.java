@@ -100,7 +100,7 @@ public class Version extends Feld {
     @JsonIgnore
     public SatzTyp getSatzTyp() {
         String typ = StringUtils.substringAfter(getBezeichnung(), "Satzart").trim();
-        return SatzTyp.of(typ);
+        return SatzTyp.of(typ, ". ");
     }
 
 }
