@@ -52,7 +52,6 @@ public class Datensatz extends Satz {
 	/** 1 Zeichen, Byte 59. */
 	private final AlphaNumFeld wagnisart = new AlphaNumFeld((WAGNISART), 1, 59);
 	/** 1 Zeichen, Byte 256 - 256. */
-    private final AlphaNumFeld teildatensatzNummer = new AlphaNumFeld((TEILDATENSATZNUMMER), 1, 256);
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der {@link gdv.xport.util.SatzFactory}
@@ -305,7 +304,6 @@ public class Datensatz extends Satz {
 	public Datensatz(final Datensatz other) {
 		super(other, other.cloneTeildatensaetze());
 		this.sparte.setInhalt(other.sparte.getInhalt());
-		this.teildatensatzNummer.setInhalt(other.teildatensatzNummer.getInhalt());
 		this.wagnisart.setInhalt(other.wagnisart.getInhalt());
 	}
 
@@ -544,11 +542,16 @@ public class Datensatz extends Satz {
 
 	/**
    	 * Gets the teildatensatz nummer. (wird nur von SatzX verwendet!)
+	 * <p>
+	 * TODO: wird mit v6 entfernt
+	 * </p>
 	 *
 	 * @return the teildatensatz nummer
+	 * @deprecated ohne Funktion
 	 */
+	@Deprecated
 	public String getTeildatensatzNummer() {
-		return teildatensatzNummer.getInhalt().trim();
+		return " ";
 	}
 
 	/**
@@ -567,11 +570,16 @@ public class Datensatz extends Satz {
 
 	/**
 	 * Sets the teildatensatz nummer.
+	 * <p>
+	 * TODO: wird mit v6 entfernt
+	 * </p>
 	 *
 	 * @param teildatensatzNummer the new teildatensatz nummer
+	 * @deprecated nicht noetig, wird automatisch gesetzt
 	 */
+	@Deprecated
 	public void setTeildatensatzNummer(final String teildatensatzNummer) {
-		this.teildatensatzNummer.setInhalt(teildatensatzNummer);
+		LOG.warn("setTeildatensatzNummer({}) wird ignoriert", teildatensatzNummer);
 	}
 
 	/**
@@ -762,13 +770,6 @@ public class Datensatz extends Satz {
 			}
 		}
 		return false;
-	}
-
-	private boolean matchesFirstTeildatensatz(PushbackLineNumberReader reader) throws IOException {
-		if (this.hasSparte()) {
-			return this.getSparte() == readSparte(reader);
-		}
-		return true;
 	}
 
 	/**

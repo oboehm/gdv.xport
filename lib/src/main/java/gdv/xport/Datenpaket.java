@@ -24,7 +24,10 @@ import gdv.xport.satz.feld.FeldX;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.satz.model.SatzX;
-import gdv.xport.util.*;
+import gdv.xport.util.SatzRegistry;
+import gdv.xport.util.SatzTyp;
+import gdv.xport.util.SimpleConstraintViolation;
+import gdv.xport.util.URLReader;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
 import org.apache.logging.log4j.LogManager;
@@ -460,19 +463,11 @@ public class Datenpaket {
                     // Nur groesser 0 besitzt per Definition Werte.
                     TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
                     satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
-                } else {
-                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode());
                 }
             } else if (sparte == 20 && satzart == 220) {
                 // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
                 int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
                 satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
-            }  else if (sparte == 580 && satzart == 220) {
-                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart noetig
-                int bausparArt = Datensatz.readBausparenArt(reader);
-                satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
-            } else {
-                satzTyp = SatzTyp.of(satzart, sparte);
             }
         }
         return satzTyp;

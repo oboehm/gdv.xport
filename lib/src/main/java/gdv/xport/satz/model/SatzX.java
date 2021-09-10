@@ -29,8 +29,6 @@ import gdv.xport.satz.enums.TeildatensatzEnum;
 import gdv.xport.satz.feld.FeldX;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
-import gdv.xport.satz.feld.common.TeildatensatzNummer;
-import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -201,36 +199,7 @@ public class SatzX extends Datensatz {
 	@Override
 	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character satznummer) throws IOException {
 		if (super.matchesNextTeildatensatz(reader, lastFeld1To7, satznummer)) {
-			WagnisartLeben nextLineWagnisEnum = readWagnisart(reader);
-			TeildatensatzNummer nextLineTeildatensatzNummerEnum = readTeildatensatzNummer(reader);
-
-			boolean nextLineWagnisartIsSet = nextLineWagnisEnum != WagnisartLeben.NULL;
-            boolean nextLineTeildatensatzNummerIsSet =
-                    nextLineTeildatensatzNummerEnum != TeildatensatzNummer.NULL;
-            boolean currentLineWagnisartIsSet = this.hasWagnisart() && this.getWagnisart().trim().length() > 0;
-			boolean currentLineTeildatensatzNummerIsSet = this.getTeildatensatzNummer().trim()
-			        .length() > 0;
-
-			if (!currentLineWagnisartIsSet) {
-				return true;
-			}
-
-			TeildatensatzNummer currentLineTeildatensatzEnum = TeildatensatzNummer.NULL;
-			if (currentLineTeildatensatzNummerIsSet) {
-				currentLineTeildatensatzEnum = TeildatensatzNummer.of(Integer.parseInt(this
-				        .getTeildatensatzNummer()));
-			}
-
-            if ((nextLineWagnisartIsSet)
-                    && (nextLineWagnisEnum == WagnisartLeben.isIn(Integer.parseInt(this.getWagnisart())))) {
-                if (currentLineTeildatensatzNummerIsSet || nextLineTeildatensatzNummerIsSet) {
-					return nextLineTeildatensatzNummerEnum == currentLineTeildatensatzEnum;
-                } else {
-                    // wagnisarten sind gleich und die
-                    // Teildatensatznummer sind beide nicht gesetzt
-                    return true;
-                }
-            }
+            return !(this.hasWagnisart() && this.getWagnisart().trim().length() > 0);
 		}
 		return false;
 	}

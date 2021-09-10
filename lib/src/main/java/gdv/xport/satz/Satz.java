@@ -410,10 +410,15 @@ public abstract class Satz implements Cloneable {
 
 	/**
 	 * Setzt den Inhalt des gewuenschten Feldes.
+	 * <p>
+	 * TODO: wird mit v6 entsorgt
+	 * </p>
 	 *
 	 * @param feldX das gewuenschte Feld-Element
 	 * @param value neuer Inhalt
+	 * @deprecated wird ab v6 nicht mehr unterstuetzt
 	 */
+	@Deprecated
 	public final void set(final Enum feldX, final String value) {
 		Bezeichner name = Feld.getAsBezeichner(feldX);
 		this.set(name, value);
@@ -421,22 +426,32 @@ public abstract class Satz implements Cloneable {
 
     /**
      * Setzt den Inhalt des gewuenschten Feldes.
+	 * <p>
+	 * TODO: wird mit v6 entsorgt
+	 * </p>
      *
      * @param feldX das gewuenschte Feld-Element
      * @param value neuer Inhalt
      * @since 0.9 (oboehm, 1-Apr-2013)
-     */
+	 * @deprecated wird ab v6 nicht mehr unterstuetzt
+	 */
+	@Deprecated
     public final void set(final Enum feldX, final Integer value) {
         this.set(feldX, Integer.toString(value));
     }
 
     /**
      * Setzt den Inhalt des gewuenschten Feldes.
+	 * <p>
+	 * TODO: wird mit v6 entsorgt
+	 * </p>
      *
      * @param feldX das gewuenschte Feld-Element
      * @param value neuer Inhalt
      * @since 0.9 (oboehm, 1-Apr-2013)
-     */
+	 * @deprecated wird ab v6 nicht mehr unterstuetzt
+	 */
+	@Deprecated
     public final void set(final Enum feldX, final Character value) {
         this.set(feldX, Character.toString(value));
     }
@@ -637,10 +652,15 @@ public abstract class Satz implements Cloneable {
     /**
      * Liefert das gewuenschte Feld oder {@link Feld#NULL_FELD}, wenn nicht
      * vorhanden.
+	 * <p>
+	 * TODO: wird in v6 entfernt
+	 * </p>
      *
      * @param name gewuenschter Bezeichner des Feldes
      * @return das gesuchte Feld
-     */
+	 * @deprecated bitte {@link #hasFeld(Bezeichner)} und {@link #getFeld(Bezeichner)} verwenden
+	 */
+	@Deprecated
     public Feld getFeldSafe(final String name) {
         return this.getFeldSafe(Bezeichner.of(name));
     }
