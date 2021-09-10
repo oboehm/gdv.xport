@@ -443,9 +443,8 @@ public class Datenpaket {
             if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
                 WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
                 if (wagnisart != WagnisartLeben.NULL) {
-                    // wagnisart 0 hat immer ein Leerzeichen als
-                    // teildatenSatzmummer. Nur groesser 0
-                    // besitzt per Definition Werte.
+                    // wagnisart 0 hat immer ein Leerzeichen als teildatenSatzmummer.
+                    // Nur groesser 0 besitzt per Definition Werte.
                     TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
                     satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
                 } else {
@@ -454,16 +453,12 @@ public class Datenpaket {
             } else if (sparte == 20 && satzart == 220) {
                 // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
                 int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
-                // Krankenfolgenummer nicht auslesbar -> Unbekannter Datensatz
                 satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
             }  else if (sparte == 580 && satzart == 220) {
-                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
-                // noetig
+                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart noetig
                 int bausparArt = Datensatz.readBausparenArt(reader);
-                // BausparenArt nicht auslesbar -> Unbekannter Datensatz
                 satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
-            }
-            else {
+            } else {
                 satzTyp = SatzTyp.of(satzart, sparte);
             }
         }
@@ -496,54 +491,11 @@ public class Datenpaket {
 
     private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
             throws IOException {
-        int sparte = Datensatz.readSparte(reader);
-        /*
-         * @Oli: Da ein SatzTyp nun stets 'seine' Sparte kennt unabhaengig vom zugehoerigen
-         *       "GdvSatzartNamen", sollte die Sparte uebergeben werden!
-         */
-        SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
-        if (satzart >= 210 && satzart < 300) {
-            if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
-                WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
-                if (wagnisart != WagnisartLeben.NULL) {
-                    // wagnisart 0 hat immer ein Leerzeichen als
-                    // teildatenSatzmummer. Nur groesser 0
-                    // besitzt per Definition Werte.
-                    TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
-                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
-                } else {
-                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode());
-                }
-            } else if (sparte == 20 && satzart == 220) {
-                // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
-                int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
-                // Krankenfolgenummer nicht auslesbar -> Unbekannter Datensatz
-                if (krankenFolgeNr == -1) {
-                    Datensatz satz = new SatzX(220, 20, FeldX.class);
-                    satz.importFrom(reader);
-                    return satz;
-                }
-                satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
-            }  else if (sparte == 580 && satzart == 220) {
-                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
-                // noetig
-                int bausparArt = Datensatz.readBausparenArt(reader);
-                // BausparenArt nicht auslesbar -> Unbekannter Datensatz
-                if (bausparArt == -1) {
-                    Datensatz satz = new SatzX(220, 580, FeldX.class);
-                    satz.importFrom(reader);
-                    return satz;
-                }
-                satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
-            }
-            else {
-                satzTyp = SatzTyp.of(satzart, sparte);
-            }
+        SatzTyp satzTyp = readSatzTyp(reader, satzart);
+        Datensatz satz = SatzRegistry.getInstance().getDatensatz(satzTyp);
+        if (satzTyp.equals(SatzTyp.of("0220.020"))) {
+            satz = new SatzX(220, 20, FeldX.class);
         }
-        /*
-         * @Oli: jetzt klappt es, egal welchen Wert die Sparte hat.
-         */
-        Datensatz satz = SatzFactory.getDatensatz(satzTyp);
         satz.importFrom(reader);
         return satz;
     }
@@ -597,9 +549,7 @@ public class Datenpaket {
             Datensatz ds = datensaetze.get(i);
             if (!ds.isComplete()) {
                 Optional<Datensatz> next = findNextDatensatz(ds.getSatzTyp(), i+1);
-                if (next.isPresent()) {
-                    ds.mergeWith(next.get());
-                }
+                next.ifPresent(ds::mergeWith);
             }
         }
         removeEmptyDatensaetze();
