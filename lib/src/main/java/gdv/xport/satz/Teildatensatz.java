@@ -32,8 +32,6 @@ import java.io.Writer;
 import java.util.*;
 import java.util.Map.Entry;
 
-import static gdv.xport.feld.Bezeichner.SATZNUMMER;
-
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
  * beruecksichtigt. Und ein Teildatensatz besteht aus mehreren Datenfeldern.
@@ -203,8 +201,8 @@ public class Teildatensatz extends Satz {
      * @since 5.0
      */
     public Zeichen getSatznummer() {
-        if ((this.satznummer.getByteAdresse() == 256) && hasFeld(SATZNUMMER)) {
-            Zeichen nr = getFeld(SATZNUMMER, Zeichen.class);
+        if ((this.satznummer.getByteAdresse() == 256) && hasFeld(Bezeichner.SATZNUMMER)) {
+            Zeichen nr = getFeld(Bezeichner.SATZNUMMER, Zeichen.class);
             if (nr.isEmpty()) {
                 nr.setInhalt(this.satznummer.getInhalt());
             }

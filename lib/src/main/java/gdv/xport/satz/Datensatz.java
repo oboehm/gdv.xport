@@ -294,15 +294,6 @@ public class Datensatz extends Satz {
 			this.sparte.setInhalt(tdsList.get(0).getSparte());
 		}
 		this.completeTeildatensaetze();
-		if (satzNr.hasSparte()) {
-			this.setSparte(satzNr.getSparte());
-		}
-		if (satzNr.hasWagnisart() && satzNr.getWagnisart() < 10) {
-			this.set(Bezeichner.WAGNISART, Integer.toString(satzNr.getWagnisart()));
-		}
-		if (satzNr.hasGdvSatzartNummer()) {
-			this.setTeildatensatzNummer("" + satzNr.getGdvSatzartNummer());
-		}
 	}
 
 	/**

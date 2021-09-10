@@ -62,13 +62,13 @@ import static org.junit.Assert.*;
 public final class SatzTest extends AbstractSatzTest {
 
     private static final Logger LOG = LogManager.getLogger(SatzTest.class);
-    private static final String INPUT_SATZ_123
-            = "0123Hello 007                                                   "
+    private static final String INPUT_SATZ_210
+            = "0210Hello 050      59999999990019999009999                      "
             + "                                                                "
             + "                                                                "
             + "                                                               1"
             + "\n";
-    private final Satz satz = new Datensatz(123);
+    private final Satz satz = new Datensatz(SatzTyp.of(210));
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.
@@ -78,7 +78,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Override
     protected Satz getSatz() {
-        return new Datensatz(123);
+        return new Datensatz(SatzTyp.of(210));
     }
 
     /**
@@ -86,7 +86,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testSatz() {
-        Satz satz100 = new Datensatz(100, 1);
+        Satz satz100 = new Datensatz(SatzTyp.of(100, 1));
         assertEquals(100, satz100.getSatzart());
     }
 
@@ -146,7 +146,7 @@ public final class SatzTest extends AbstractSatzTest {
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
             assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("Hemmernet"), containsString(" 0123")));
+                    allOf(containsString("Hemmernet"), containsString(" 0210")));
             throw ex;
         }
     }
@@ -171,7 +171,7 @@ public final class SatzTest extends AbstractSatzTest {
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
             assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("Hemmernet"), containsString(" 0123")));
+                    allOf(containsString("Hemmernet"), containsString(" 0210")));
             throw ex;
         }
     }
@@ -233,7 +233,7 @@ public final class SatzTest extends AbstractSatzTest {
             fail("IllegalArgumentException bei fehlendem Feld erwartet");
         } catch (IllegalArgumentException ex) {
             assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN"), containsString(" 0123")));
+                    allOf(containsString("ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN"), containsString(" 0210")));
             throw ex;
         }
     }
@@ -243,7 +243,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGetFeldInhalt() {
-        assertEquals("0123", satz.getFeldInhalt(Bezeichner.SATZART));
+        assertEquals("0210", satz.getFeldInhalt(Bezeichner.SATZART));
     }
 
     /**
@@ -289,12 +289,12 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testImport() throws IOException {
-        Satz x = new Datensatz(SatzTyp.of(123));
+        Satz x = new Datensatz(SatzTyp.of(210));
         x.add(new AlphaNumFeld(new Bezeichner("F1"), 5, 5));
-        x.importFrom(INPUT_SATZ_123);
-        assertEquals(123, x.getSatzart());
+        x.importFrom(INPUT_SATZ_210);
+        assertEquals(210, x.getSatzart());
         assertEquals("Hello", x.getFeld("F1").getInhalt());
-        assertEquals(INPUT_SATZ_123.trim(), x.toLongString().trim());
+        assertEquals(INPUT_SATZ_210.trim(), x.toLongString().trim());
     }
 
     /**
@@ -305,8 +305,8 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testImportFromReader() throws IOException {
-        Satz x = new Datensatz(SatzTyp.of(123, 7));
-        try (Reader reader = new StringReader(INPUT_SATZ_123)) {
+        Satz x = new Datensatz(SatzTyp.of(210, 50));
+        try (Reader reader = new StringReader(INPUT_SATZ_210)) {
             checkImport(x, reader);
         }
     }
@@ -319,8 +319,8 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testImportFromReaderTwice() throws IOException {
-        Satz x = new Datensatz(SatzTyp.of(123, 7));
-        try (Reader reader = new StringReader(INPUT_SATZ_123 + INPUT_SATZ_123)) {
+        Satz x = new Datensatz(SatzTyp.of(210, 50));
+        try (Reader reader = new StringReader(INPUT_SATZ_210 + INPUT_SATZ_210)) {
             checkImport(x, reader);
             checkImport(x, reader);
         }
@@ -328,7 +328,7 @@ public final class SatzTest extends AbstractSatzTest {
 
     private void checkImport(final Satz x, final Reader reader) throws IOException {
         x.importFrom(reader);
-        assertEquals(INPUT_SATZ_123.trim(), x.toLongString().trim());
+        assertEquals(INPUT_SATZ_210.trim(), x.toLongString().trim());
     }
 
     /**
@@ -380,8 +380,8 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testIsEquals() {
-        Satz a = new Datensatz(SatzTyp.of(123));
-        Satz b = new Datensatz(SatzTyp.of(123));
+        Satz a = new Datensatz(SatzTyp.of(220));
+        Satz b = new Datensatz(SatzTyp.of(220));
         ObjectTester.assertEquals(a, b);
         b.add(new Feld("c", 55, 'c'));
         assertNotEquals(a, b);
@@ -450,7 +450,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testSatzartInhalt() {
         Feld satzart = satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner());
-        assertEquals("0123", satzart.getInhalt());
+        assertEquals("0210", satzart.getInhalt());
     }
 
     /**
@@ -520,7 +520,7 @@ public final class SatzTest extends AbstractSatzTest {
     public void testWagnisartSparte40() {
         SatzTyp expectedSatzTyp = SatzTyp.of("0220.040");
         Satz satz = SatzFactory.getDatensatz(expectedSatzTyp);
-        satz.set(Bezeichner.WAGNISART, "123456");
+        satz.set(Bezeichner.WAGNISART, "220456");
         SatzTyp satzTyp = satz.getSatzTyp();
         assertFalse("SatzFactory.getDatensatz(220, 40) hat keine Wagnisart im SatzTyp", satzTyp.hasWagnisart());
         assertEquals("SatzTyp von SatzFactory.getDatensatz(220, 40) sollte new SatzTyp(220, 40) entsprechen", expectedSatzTyp, satzTyp);
