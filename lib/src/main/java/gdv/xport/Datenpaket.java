@@ -394,6 +394,10 @@ public class Datenpaket {
     /**
      * Der hier verwendete PushbackReader wird benoetigt, damit die gelesene
      * Satzart und Sparte wieder zurueckgestellt werden kann.
+     * <p>
+     * Im Gegensatz zu {@link Datenpaket#importSatz(PushbackLineNumberReader, Map)}
+     * werden die Versionen (aus dem Vorsatz) nicht beruecksichtigt.
+     * </p>
      *
      * @param reader PushbackReader mit einem Puffer von mind. 14 Zeichen
      * @return das Datenpaket zur Weiterverabeitung (seit 5.2)
@@ -413,7 +417,16 @@ public class Datenpaket {
         return this;
     }
 
-    private static Satz importSatz(PushbackLineNumberReader reader, Map<SatzTyp, Version> satzartVersionen) throws IOException {
+    /**
+     * Der hier verwendete PushbackReader wird benoetigt, damit die gelesene
+     * Satzart und Sparte wieder zurueckgestellt werden kann.
+     *
+     * @param reader PushbackReader mit einem Puffer von mind. 14 Zeichen
+     * @param satzartVersionen Satz-Versionen aus dem Vorsatz
+     * @return das Datenpaket zur Weiterverabeitung
+     * @throws IOException falls was schief gelaufen ist
+     */
+    public static Satz importSatz(PushbackLineNumberReader reader, Map<SatzTyp, Version> satzartVersionen) throws IOException {
         int satzart = Satz.readSatzart(reader);
         LOG.debug("Satzart {} wird importiert...", satzart);
         if (satzart == 9999) {

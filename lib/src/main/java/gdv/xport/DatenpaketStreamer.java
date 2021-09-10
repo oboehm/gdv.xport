@@ -13,17 +13,21 @@ package gdv.xport;
 
 import gdv.xport.config.Config;
 import gdv.xport.event.ImportListener;
+import gdv.xport.feld.Version;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.io.RecordReader;
 import gdv.xport.io.RecyclingInputStreamReader;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
+import gdv.xport.util.SatzTyp;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Im Gegensatz zur {@link Datenpaket}-Klasse wird hier ein Datenpaket nicht komplett in den Speicher geladen, sondern satzweise gelesen und anschliessend
@@ -36,6 +40,7 @@ public class DatenpaketStreamer {
 
     private final PushbackLineNumberReader reader;
     private final List<ImportListener> importListener = new ArrayList<ImportListener>();
+    private Map<SatzTyp, Version> satzartVersionen = new HashMap<>();
 
     /**
      * Legt einen neuen {@link DatenpaketStreamer} an.
@@ -73,7 +78,7 @@ public class DatenpaketStreamer {
     public void readDatenpaket() throws IOException {
         readVorsatz();
         while (true) {
-            Satz satz = Datenpaket.importSatz(reader);
+            Satz satz = Datenpaket.importSatz(reader, satzartVersionen);
             notice(satz);
             if (satz.getSatzart() == 9999) {
                 break;
@@ -114,6 +119,7 @@ public class DatenpaketStreamer {
     private void readVorsatz() throws IOException {
         Vorsatz vorsatz = new Vorsatz();
         vorsatz.importFrom(reader);
+        satzartVersionen = vorsatz.getSatzartVersionen();
         notice(vorsatz);
     }
 
