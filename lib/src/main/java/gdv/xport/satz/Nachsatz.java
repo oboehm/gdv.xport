@@ -342,8 +342,8 @@ public final class Nachsatz extends Satz {
      * @since 5.0
      */
     public BetragMitVorzeichen getGesamtProvisionsBetragMitVorzeichen() {
-        NumFeld brutto = (NumFeld) getFeld(GESAMTPROVISIONSBETRAG);
-        AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(VORZEICHEN2);
+        NumFeld brutto = getFeld(GESAMTPROVISIONSBETRAG, NumFeld.class);
+        AlphaNumFeld vorzeichen = getFeld(VORZEICHEN2, AlphaNumFeld.class);
         return BetragMitVorzeichen.of(brutto, vorzeichen);
     }
 

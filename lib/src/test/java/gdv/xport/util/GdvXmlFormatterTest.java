@@ -201,6 +201,12 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
         formatDatenpaket(datenpaket, "datenpaket2009.xml");
     }
 
+    @Test
+    public void testFormatAllSupportedSaetze2007() throws IOException, XMLStreamException {
+        Datenpaket datenpaket = SatzRegistry.getInstance("VUVM2007.xml").getAllSupportedSaetze();
+        formatDatenpaket(datenpaket, "datenpaket2007.xml");
+    }
+
     private void formatDatenpaket(Datenpaket datenpaket, String filename) throws IOException, XMLStreamException {
         File target = new File(XML_DIR, filename);
         try (FileOutputStream ostream = new FileOutputStream(target);

@@ -19,6 +19,7 @@
 package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
+import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -193,7 +194,11 @@ public final class BetragMitVorzeichen extends Betrag {
     @Override
     public BigDecimal toBigDecimal() {
         String s = this.getInhalt();
-        BigDecimal x = new BigDecimal(Long.parseLong(s.substring(0, s.length() - 1))).movePointLeft(getNachkommastellen());
+        String n = s.substring(0, s.length() - 1);
+        if (StringUtils.isBlank(n)) {
+            return BigDecimal.ZERO;
+        }
+        BigDecimal x = new BigDecimal(Long.parseLong(n)).movePointLeft(getNachkommastellen());
         return (this.getVorzeichen() == '-') ? x.negate() : x;
     }
 
