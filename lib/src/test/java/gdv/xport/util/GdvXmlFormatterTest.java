@@ -195,6 +195,12 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
         formatDatenpaket(datenpaket, "datenpaket2013.xml");
     }
 
+    @Test
+    public void testFormatAllSupportedSaetze2009() throws IOException, XMLStreamException {
+        Datenpaket datenpaket = SatzRegistry.getInstance("VUVM2009.xml").getAllSupportedSaetze();
+        formatDatenpaket(datenpaket, "datenpaket2009.xml");
+    }
+
     private void formatDatenpaket(Datenpaket datenpaket, String filename) throws IOException, XMLStreamException {
         File target = new File(XML_DIR, filename);
         try (FileOutputStream ostream = new FileOutputStream(target);
@@ -219,6 +225,10 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
 
     private static void checkTeildatensatz(Teildatensatz reference, Teildatensatz teildatensatz) {
         for (Feld refFeld : reference.getFelder()) {
+            if (refFeld.getBezeichner().equals(Bezeichner.LEERSTELLEN)) {
+                LOG.info("{} wird fuer Vergleich ignoriert.", refFeld);
+                continue;
+            }
             Feld feld = teildatensatz.getFeld(ByteAdresse.of(refFeld.getByteAdresse()));
             if (feld.getClass().equals(Zeichen.class) && !refFeld.getClass().equals(Zeichen.class)) {
                 LOG.info("Datentyp von {} weicht von {} ab ({}).", refFeld, feld, reference);
