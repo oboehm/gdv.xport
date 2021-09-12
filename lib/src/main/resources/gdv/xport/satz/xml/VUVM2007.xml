@@ -35,7 +35,6 @@
 			<feldreferenz referenz="005-009-VuNr-Alphanumerisch">
 				<name>VU-Nummer</name>
 				<technischerName>VuNr</technischerName>
-				<auspraegung>5183</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Absender (10-39) -->
 			<feldreferenz referenz="010-039-Absender-Alphanumerisch">
@@ -61,151 +60,126 @@
 			<feldreferenz referenz="096-098-Satzart0001-Alphanumerisch">
 				<name>Satzart 0001</name>
 				<technischerName>Satzart0001</technischerName>
-				<auspraegung>2.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0100 (99-101) -->
 			<feldreferenz referenz="099-101-Satzart0100-Alphanumerisch">
 				<name>Satzart 0100</name>
 				<technischerName>Satzart0100</technischerName>
-				<auspraegung>2.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0200 (102-104) -->
 			<feldreferenz referenz="102-104-Satzart0200-Alphanumerisch">
 				<name>Satzart 0200</name>
 				<technischerName>Satzart0200</technischerName>
-				<auspraegung>2.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210050 (105-107) -->
 			<feldreferenz referenz="105-107-Satzart0210050-Alphanumerisch">
 				<name>Satzart 0210 050</name>
 				<technischerName>Satzart0210050</technischerName>
-				<auspraegung>2.4</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220051 (108-110) -->
 			<feldreferenz referenz="108-110-Satzart0220051-Alphanumerisch">
 				<name>Satzart 0220 051</name>
 				<technischerName>Satzart0220051</technischerName>
-				<auspraegung>2.3</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220052 (111-113) -->
 			<feldreferenz referenz="111-113-Satzart0220052-Alphanumerisch">
 				<name>Satzart 0220 052</name>
 				<technischerName>Satzart0220052</technischerName>
-				<auspraegung>2.3</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220053 (114-116) -->
 			<feldreferenz referenz="114-116-Satzart0220053-Alphanumerisch">
 				<name>Satzart 0220 053</name>
 				<technischerName>Satzart0220053</technischerName>
-				<auspraegung>2.3</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220054 (117-119) -->
 			<feldreferenz referenz="117-119-Satzart0220054-Alphanumerisch">
 				<name>Satzart 0220 054</name>
 				<technischerName>Satzart0220054</technischerName>
-				<auspraegung>2.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220059 (120-122) -->
 			<feldreferenz referenz="120-122-Satzart0220059-Alphanumerisch">
 				<name>Satzart 0220 059</name>
 				<technischerName>Satzart0220059</technischerName>
-				<auspraegung>2.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210040 (123-125) -->
 			<feldreferenz referenz="123-125-Satzart0210040-Alphanumerisch">
 				<name>Satzart 0210 040</name>
 				<technischerName>Satzart0210040</technischerName>
-				<auspraegung>1.6</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220040 (126-128) -->
 			<feldreferenz referenz="126-128-Satzart0220040-Alphanumerisch">
 				<name>Satzart 0220 040</name>
 				<technischerName>Satzart0220040</technischerName>
-				<auspraegung>1.6</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210030 (129-131) -->
 			<feldreferenz referenz="129-131-Satzart0210030-Alphanumerisch">
 				<name>Satzart 0210 030</name>
 				<technischerName>Satzart0210030</technischerName>
-				<auspraegung>1.7</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220030 (132-134) -->
 			<feldreferenz referenz="132-134-Satzart0220030-Alphanumerisch">
 				<name>Satzart 0220 030</name>
 				<technischerName>Satzart0220030</technischerName>
-				<auspraegung>2.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210010 (135-137) -->
 			<feldreferenz referenz="135-137-Satzart0210010-Alphanumerisch">
 				<name>Satzart 0210 010</name>
 				<technischerName>Satzart0210010</technischerName>
-				<auspraegung>1.7</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220010 (138-140) -->
 			<feldreferenz referenz="138-140-Satzart0220010-Alphanumerisch">
 				<name>Satzart 0220 010</name>
 				<technischerName>Satzart0220010</technischerName>
-				<auspraegung>1.8</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210130 (141-143) -->
 			<feldreferenz referenz="141-143-Satzart0210130-Alphanumerisch">
 				<name>Satzart 0210 130</name>
 				<technischerName>Satzart0210130</technischerName>
-				<auspraegung>1.7</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220130 (144-146) -->
 			<feldreferenz referenz="144-146-Satzart0220130-Alphanumerisch">
 				<name>Satzart 0220 130</name>
 				<technischerName>Satzart0220130</technischerName>
-				<auspraegung>1.5</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210110 (147-149) -->
 			<feldreferenz referenz="147-149-Satzart0210110-Alphanumerisch">
 				<name>Satzart 0210 110</name>
 				<technischerName>Satzart0210110</technischerName>
-				<auspraegung>1.5</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220110 (150-152) -->
 			<feldreferenz referenz="150-152-Satzart0220110-Alphanumerisch">
 				<name>Satzart 0220 110</name>
 				<technischerName>Satzart0220110</technischerName>
-				<auspraegung>1.4</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210140 (153-155) -->
 			<feldreferenz referenz="153-155-Satzart0210140-Alphanumerisch">
 				<name>Satzart 0210 140</name>
 				<technischerName>Satzart0210140</technischerName>
-				<auspraegung>1.4</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220140 (156-158) -->
 			<feldreferenz referenz="156-158-Satzart0220140-Alphanumerisch">
 				<name>Satzart 0220 140</name>
 				<technischerName>Satzart0220140</technischerName>
-				<auspraegung>1.5</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210020 (159-161) -->
 			<feldreferenz referenz="159-161-Satzart0210020-Alphanumerisch">
 				<name>Satzart 0210 020</name>
 				<technischerName>Satzart0210020</technischerName>
-				<auspraegung>1.5</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220020 (162-164) -->
 			<feldreferenz referenz="162-164-Satzart0220020-Alphanumerisch">
 				<name>Satzart 0220 020</name>
 				<technischerName>Satzart0220020</technischerName>
-				<auspraegung>1.3</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210070 (165-167) -->
 			<feldreferenz referenz="165-167-Satzart0210070-Alphanumerisch">
 				<name>Satzart 0210 070</name>
 				<technischerName>Satzart0210070</technischerName>
-				<auspraegung>1.4</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220070 (168-170) -->
 			<feldreferenz referenz="168-170-Satzart0220070-Alphanumerisch">
 				<name>Satzart 0220 070</name>
 				<technischerName>Satzart0220070</technischerName>
-				<auspraegung>1.4</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210 (171-173) -->
 			<feldreferenz referenz="171-173-Satzart0210-Alphanumerisch">
@@ -221,13 +195,11 @@
 			<feldreferenz referenz="177-179-Satzart0210510-Alphanumerisch">
 				<name>Satzart 0210 510</name>
 				<technischerName>Satzart0210510</technischerName>
-				<auspraegung>1.4</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220510 (180-182) -->
 			<feldreferenz referenz="180-182-Satzart0220510-Alphanumerisch">
 				<name>Satzart 0220 510</name>
 				<technischerName>Satzart0220510</technischerName>
-				<auspraegung>1.3</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (183-194) -->
 			<feldreferenz referenz="183-194-Leerstellen-Alphanumerisch">
@@ -348,7 +320,6 @@
 			<feldreferenz referenz="005-009-VuNr-Alphanumerisch">
 				<name>VU-Nummer</name>
 				<technischerName>VuNr</technischerName>
-				<auspraegung>5183</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Absender (10-39) -->
 			<feldreferenz referenz="010-039-Absender-Alphanumerisch">
@@ -374,115 +345,96 @@
 			<feldreferenz referenz="096-098-Satzart0211050-Alphanumerisch">
 				<name>Satzart 0211 050</name>
 				<technischerName>Satzart0211050</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221051 (99-101) -->
 			<feldreferenz referenz="099-101-Satzart0221051-Alphanumerisch">
 				<name>Satzart 0221 051</name>
 				<technischerName>Satzart0221051</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221052 (102-104) -->
 			<feldreferenz referenz="102-104-Satzart0221052-Alphanumerisch">
 				<name>Satzart 0221 052</name>
 				<technischerName>Satzart0221052</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221053 (105-107) -->
 			<feldreferenz referenz="105-107-Satzart0221053-Alphanumerisch">
 				<name>Satzart 0221 053</name>
 				<technischerName>Satzart0221053</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221054 (108-110) -->
 			<feldreferenz referenz="108-110-Satzart0221054-Alphanumerisch">
 				<name>Satzart 0221 054</name>
 				<technischerName>Satzart0221054</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221059 (111-113) -->
 			<feldreferenz referenz="111-113-Satzart0221059-Alphanumerisch">
 				<name>Satzart 0221 059</name>
 				<technischerName>Satzart0221059</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221055 (114-116) -->
 			<feldreferenz referenz="114-116-Satzart0221055-Alphanumerisch">
 				<name>Satzart 0221 055</name>
 				<technischerName>Satzart0221055</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0211040 (117-119) -->
 			<feldreferenz referenz="117-119-Satzart0211040-Alphanumerisch">
 				<name>Satzart 0211 040</name>
 				<technischerName>Satzart0211040</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221040 (120-122) -->
 			<feldreferenz referenz="120-122-Satzart0221040-Alphanumerisch">
 				<name>Satzart 0221 040</name>
 				<technischerName>Satzart0221040</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221030 (123-125) -->
 			<feldreferenz referenz="123-125-Satzart0221030-Alphanumerisch">
 				<name>Satzart 0221 030</name>
 				<technischerName>Satzart0221030</technischerName>
-				<auspraegung>1.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0211010 (126-128) -->
 			<feldreferenz referenz="126-128-Satzart0211010-Alphanumerisch">
 				<name>Satzart 0211 010</name>
 				<technischerName>Satzart0211010</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221010 (129-131) -->
 			<feldreferenz referenz="129-131-Satzart0221010-Alphanumerisch">
 				<name>Satzart 0221 010</name>
 				<technischerName>Satzart0221010</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0211130 (132-134) -->
 			<feldreferenz referenz="132-134-Satzart0211130-Alphanumerisch">
 				<name>Satzart 0211 130</name>
 				<technischerName>Satzart0211130</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221130 (135-137) -->
 			<feldreferenz referenz="135-137-Satzart0221130-Alphanumerisch">
 				<name>Satzart 0221 130</name>
 				<technischerName>Satzart0221130</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0211110 (138-140) -->
 			<feldreferenz referenz="138-140-Satzart0211110-Alphanumerisch">
 				<name>Satzart 0211 110</name>
 				<technischerName>Satzart0211110</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221110 (141-143) -->
 			<feldreferenz referenz="141-143-Satzart0221110-Alphanumerisch">
 				<name>Satzart 0221 110</name>
 				<technischerName>Satzart0221110</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0211140 (144-146) -->
 			<feldreferenz referenz="144-146-Satzart0211140-Alphanumerisch">
 				<name>Satzart 0211 140</name>
 				<technischerName>Satzart0211140</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221140 (147-149) -->
 			<feldreferenz referenz="147-149-Satzart0221140-Alphanumerisch">
 				<name>Satzart 0221 140</name>
 				<technischerName>Satzart0221140</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0221070 (150-152) -->
 			<feldreferenz referenz="150-152-Satzart0221070-Alphanumerisch">
 				<name>Satzart 0221 070</name>
 				<technischerName>Satzart0221070</technischerName>
-				<auspraegung>1.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0211 (153-155) -->
 			<feldreferenz referenz="153-155-Satzart0211-Alphanumerisch">
@@ -498,7 +450,6 @@
 			<feldreferenz referenz="159-161-Satzart0221510-Alphanumerisch">
 				<name>Satzart 0221 510</name>
 				<technischerName>Satzart0221510</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (162-173) -->
 			<feldreferenz referenz="162-173-Leerstellen-Alphanumerisch">
@@ -519,115 +470,96 @@
 			<feldreferenz referenz="183-185-Satzart0210550-Alphanumerisch">
 				<name>Satzart 0210 550</name>
 				<technischerName>Satzart0210550</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220550 (186-188) -->
 			<feldreferenz referenz="186-188-Satzart0220550-Alphanumerisch">
 				<name>Satzart 0220 550</name>
 				<technischerName>Satzart0220550</technischerName>
-				<auspraegung>1.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0270550 (189-191) -->
 			<feldreferenz referenz="189-191-Satzart0270550-Alphanumerisch">
 				<name>Satzart 0270 550</name>
 				<technischerName>Satzart0270550</technischerName>
-				<auspraegung>1.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0280550 (192-194) -->
 			<feldreferenz referenz="192-194-Satzart0280550-Alphanumerisch">
 				<name>Satzart 0280 550</name>
 				<technischerName>Satzart0280550</technischerName>
-				<auspraegung>1.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0291550 (195-197) -->
 			<feldreferenz referenz="195-197-Satzart0291550-Alphanumerisch">
 				<name>Satzart 0291 550</name>
 				<technischerName>Satzart0291550</technischerName>
-				<auspraegung>1.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0292550 (198-200) -->
 			<feldreferenz referenz="198-200-Satzart0292550-Alphanumerisch">
 				<name>Satzart 0292 550</name>
 				<technischerName>Satzart0292550</technischerName>
-				<auspraegung>1.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0293550 (201-203) -->
 			<feldreferenz referenz="201-203-Satzart0293550-Alphanumerisch">
 				<name>Satzart 0293 550</name>
 				<technischerName>Satzart0293550</technischerName>
-				<auspraegung>1.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0294550 (204-206) -->
 			<feldreferenz referenz="204-206-Satzart0294550-Alphanumerisch">
 				<name>Satzart 0294 550</name>
 				<technischerName>Satzart0294550</technischerName>
-				<auspraegung>1.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0295550 (207-209) -->
 			<feldreferenz referenz="207-209-Satzart0295550-Alphanumerisch">
 				<name>Satzart 0295 550</name>
 				<technischerName>Satzart0295550</technischerName>
-				<auspraegung>1.2</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0052 (210-212) -->
 			<feldreferenz referenz="210-212-Satzart0052-Alphanumerisch">
 				<name>Satzart 0052</name>
 				<technischerName>Satzart0052</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0102 (213-215) -->
 			<feldreferenz referenz="213-215-Satzart0102-Alphanumerisch">
 				<name>Satzart 0102</name>
 				<technischerName>Satzart0102</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0212 (216-218) -->
 			<feldreferenz referenz="216-218-Satzart0212-Alphanumerisch">
 				<name>Satzart 0212</name>
 				<technischerName>Satzart0212</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0352 (219-221) -->
 			<feldreferenz referenz="219-221-Satzart0352-Alphanumerisch">
 				<name>Satzart 0352</name>
 				<technischerName>Satzart0352</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0362 (222-224) -->
 			<feldreferenz referenz="222-224-Satzart0362-Alphanumerisch">
 				<name>Satzart 0362</name>
 				<technischerName>Satzart0362</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0382 (225-227) -->
 			<feldreferenz referenz="225-227-Satzart0382-Alphanumerisch">
 				<name>Satzart 0382</name>
 				<technischerName>Satzart0382</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart9950 (228-230) -->
 			<feldreferenz referenz="228-230-Satzart9950-Alphanumerisch">
 				<name>Satzart 9950</name>
 				<technischerName>Satzart9950</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart9952 (231-233) -->
 			<feldreferenz referenz="231-233-Satzart9952-Alphanumerisch">
 				<name>Satzart 9952</name>
 				<technischerName>Satzart9952</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210580 (234-236) -->
 			<feldreferenz referenz="234-236-Satzart0210580-Alphanumerisch">
 				<name>Satzart 0210 580</name>
 				<technischerName>Satzart0210580</technischerName>
-				<auspraegung>1.1</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0220580 (237-239) -->
 			<feldreferenz referenz="237-239-Satzart0220580-Alphanumerisch">
 				<name>Satzart 0220 580</name>
 				<technischerName>Satzart0220580</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ProduktspezifischeAntragsdaten0372 (240-242) -->
 			<feldreferenz referenz="240-242-ProduktspezifischeAntragsdaten0372-Alphanumerisch">
@@ -663,7 +595,6 @@
 			<feldreferenz referenz="005-009-VuNr-Alphanumerisch">
 				<name>VU-Nummer</name>
 				<technischerName>VuNr</technischerName>
-				<auspraegung>5183</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Absender (10-39) -->
 			<feldreferenz referenz="010-039-Absender-Alphanumerisch">
@@ -28414,7 +28345,6 @@
 			<feldreferenz referenz="005-014-AnzSaetze-Numerisch">
 				<name>Anzahl der Sätze</name>
 				<technischerName>AnzSaetze</technischerName>
-				<auspraegung>0000000144</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschaeftsstelleVermittler (15-24) -->
 			<feldreferenz referenz="015-024-GeschaeftsstelleVermittler-Alphanumerisch">

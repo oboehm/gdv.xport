@@ -471,6 +471,11 @@ public class XmlServiceTest extends AbstractXmlTest {
         compareXml("VUVM2009_011109.xml", "VUVM2009.xml");
     }
 
+    @Test
+    public void testVUVM2007() throws XMLStreamException, IOException {
+        compareXml("VUVM2007_150507.xml", "VUVM2007.xml");
+    }
+
     private static void compareXml(String refResource, String resource) throws XMLStreamException, IOException {
         XmlService refService = XmlService.getInstance(refResource);
         XmlService service = XmlService.getInstance(resource);
