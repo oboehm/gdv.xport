@@ -19,6 +19,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Added
 
+- zusätzliche Unterstützung von Datensätzen Stand 2009 und 2007
 - SatzRegistry.getSatz(..) akzeptiert jetzt zusätzlich die gewünschte Version
 - Liste der gesetzten Versionen läßt sich jetzt über `Vorsatz.getSatzartVersionen()` abfragen
 - Datenpaket besitzt jetzt eine pack()-Methode
