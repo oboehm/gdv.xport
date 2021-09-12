@@ -28371,7 +28371,6 @@
 			<feldreferenz referenz="055-056-GesprovisionsBetrag-Alphanumerisch">
 				<name>Gesamtprovisions-Betrag</name>
 				<technischerName>GesprovisionsBetrag</technischerName>
-				<auspraegung>00</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Vorzeichen2 (57-57) -->
 			<feldreferenz referenz="057-057-Vorzeichen2-Alphanumerisch">
