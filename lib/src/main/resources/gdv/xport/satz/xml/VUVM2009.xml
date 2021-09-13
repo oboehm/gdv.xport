@@ -6116,13 +6116,13 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (129-185) -->
 			<feldreferenz referenz="129-185-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen1</name>
+				<technischerName>Leerstellen1</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen2</name>
+				<technischerName>Leerstellen2</technischerName>
 			</feldreferenz>
 			<!-- NumFeld SatzNr (256-256) -->
 			<feldreferenz referenz="256-256-SatzNr-Numerisch">
@@ -6370,13 +6370,13 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (129-185) -->
 			<feldreferenz referenz="129-185-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen1</name>
+				<technischerName>Leerstellen1</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen2</name>
+				<technischerName>Leerstellen2</technischerName>
 			</feldreferenz>
 			<!-- NumFeld SatzNr (256-256) -->
 			<feldreferenz referenz="256-256-SatzNr-Numerisch">
@@ -13958,13 +13958,13 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (129-185) -->
 			<feldreferenz referenz="129-185-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen1</name>
+				<technischerName>Leerstellen1</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen2</name>
+				<technischerName>Leerstellen2</technischerName>
 			</feldreferenz>
 			<!-- NumFeld SatzNr (256-256) -->
 			<feldreferenz referenz="256-256-SatzNr-Numerisch">
@@ -14844,13 +14844,13 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (129-185) -->
 			<feldreferenz referenz="129-185-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen1</name>
+				<technischerName>Leerstellen1</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen2</name>
+				<technischerName>Leerstellen2</technischerName>
 			</feldreferenz>
 			<!-- NumFeld SatzNr (256-256) -->
 			<feldreferenz referenz="256-256-SatzNr-Numerisch">
@@ -26165,13 +26165,13 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (129-185) -->
 			<feldreferenz referenz="129-185-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen1</name>
+				<technischerName>Leerstellen1</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen2</name>
+				<technischerName>Leerstellen2</technischerName>
 			</feldreferenz>
 			<!-- NumFeld SatzNr (256-256) -->
 			<feldreferenz referenz="256-256-SatzNr-Numerisch">
@@ -29583,13 +29583,13 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (129-185) -->
 			<feldreferenz referenz="129-185-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen1</name>
+				<technischerName>Leerstellen1</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen2</name>
+				<technischerName>Leerstellen2</technischerName>
 			</feldreferenz>
 			<!-- NumFeld SatzNr (256-256) -->
 			<feldreferenz referenz="256-256-SatzNr-Numerisch">
