@@ -218,8 +218,8 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (201-206) -->
 			<feldreferenz referenz="201-206-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen1</name>
+				<technischerName>Leerstellen1</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld KfzBaustein (207-209) -->
 			<feldreferenz referenz="207-209-KfzBaustein-Alphanumerisch">
@@ -298,8 +298,8 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (246-255) -->
 			<feldreferenz referenz="246-255-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen2</name>
+				<technischerName>Leerstellen2</technischerName>
 			</feldreferenz>
 			<!-- NumFeld SatzNr (256-256) -->
 			<feldreferenz referenz="256-256-SatzNr-Numerisch">
@@ -453,8 +453,8 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (162-173) -->
 			<feldreferenz referenz="162-173-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen3</name>
+				<technischerName>Leerstellen3</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0251Einzelanmeldung (174-176) -->
 			<feldreferenz referenz="174-176-Satzart0251Einzelanmeldung-Alphanumerisch">
@@ -463,8 +463,8 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (177-182) -->
 			<feldreferenz referenz="177-182-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen4</name>
+				<technischerName>Leerstellen4</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210550 (183-185) -->
 			<feldreferenz referenz="183-185-Satzart0210550-Alphanumerisch">
@@ -573,8 +573,8 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (246-255) -->
 			<feldreferenz referenz="246-255-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen5</name>
+				<technischerName>Leerstellen5</technischerName>
 			</feldreferenz>
 			<!-- NumFeld SatzNr (256-256) -->
 			<feldreferenz referenz="256-256-SatzNr-Numerisch">
@@ -688,8 +688,8 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (138-255) -->
 			<feldreferenz referenz="138-255-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen6</name>
+				<technischerName>Leerstellen6</technischerName>
 			</feldreferenz>
 			<!-- NumFeld SatzNr (256-256) -->
 			<feldreferenz referenz="256-256-SatzNr-Numerisch">
@@ -5514,13 +5514,13 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (129-185) -->
 			<feldreferenz referenz="129-185-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen1</name>
+				<technischerName>Leerstellen1</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
-				<name>Leerstellen</name>
-				<technischerName>Leerstellen</technischerName>
+				<name>Leerstellen2</name>
+				<technischerName>Leerstellen2</technischerName>
 			</feldreferenz>
 			<!-- NumFeld SatzNr (256-256) -->
 			<feldreferenz referenz="256-256-SatzNr-Numerisch">
@@ -8879,10 +8879,11 @@
 				<name>Wagnistext</name>
 				<technischerName>Wagnistext</technischerName>
 			</feldreferenz>
-			<!-- NumFeld Wagnisbeschreibung (102-181) -->
-			<feldreferenz referenz="102-181-Wagnisbeschreibung-Numerisch">
+			<!-- AlphaNumFeld Wagnisbeschreibung (102-181) -->
+			<feldreferenz referenz="102-181-Wagnisbeschreibung-Alphanumerisch">
 				<name>Wagnisbeschreibung</name>
 				<technischerName>Wagnisbeschreibung</technischerName>
+                <auspraegung>00000000000000000000000000000000000000000000000000000000000000000000000000000000</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld PLZRisikoanschrift (182-187) -->
 			<feldreferenz referenz="182-187-PLZRisikoanschrift-Alphanumerisch">
@@ -36971,10 +36972,10 @@
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="102-181-Wagnisbeschreibung-Numerisch">
+		<feld referenz="102-181-Wagnisbeschreibung-Alphanumerisch">
 			<name>Wagnisbeschreibung</name>
 			<bytes>80</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Alphanumerisch</datentyp>
 		</feld>
 		<feld referenz="103-103-KennzeichenAbweichendeFolgeprovision-Alphanumerisch">
 			<name>Kennzeichen für abweichende Folgeprovision</name>

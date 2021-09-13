@@ -32,6 +32,7 @@ import gdv.xport.util.NotUniqueException;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -55,7 +56,12 @@ import static org.junit.Assert.*;
 public class XmlServiceTest extends AbstractXmlTest {
 
     private static final Logger LOG = LogManager.getLogger(XmlServiceTest.class);
-    private static final XmlService xmlService = XmlService.getInstance();
+    private static XmlService xmlService;
+
+    @BeforeClass
+    public static void setUpXmlService() throws XMLStreamException, IOException {
+        xmlService = XmlService.getInstance("VUVM2018.xml");
+    }
 
     /**
      * Einfache Test-Methode fuer {@link XmlService#getSatzart(SatzTyp)}.
@@ -439,17 +445,13 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     @Test
-    public void testGetSatzVersion() {
-        String expected = "2.4";
-        switch (Config.getXmlResource()) {
-            case "VUVM2013.xml":
-                expected = "2.3";
-                break;
-            case "VUVM2009.xml":
-                expected = "2.2.";
-                break;
-        }
-        assertEquals(expected, xmlService.getSatzVersion(SatzTyp.of("0001")));
+    public void testGetSatzVersion2018() throws XMLStreamException, IOException {
+        assertEquals("2.4", XmlService.getInstance("VUVM2018.xml").getSatzVersion(SatzTyp.of("0001")));
+    }
+
+    @Test
+    public void testGetSatzVersion2015() throws XMLStreamException, IOException {
+        assertEquals("2.3", XmlService.getInstance("VUVM2013.xml").getSatzVersion(SatzTyp.of("0001")));
     }
 
     @Test

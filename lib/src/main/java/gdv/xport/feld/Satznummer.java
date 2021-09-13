@@ -119,9 +119,14 @@ public class Satznummer extends Zeichen {
                     nr.resetInhalt();
                 }
                 break;
-            default:
+            case 2:
                 if (nr.getByteAdresse() != 256) {
                     nr.resetInhalt();
+                }
+                break;
+            default:
+                if (nr.getByteAdresse() != 256) {
+                    nr.setInhalt(1);
                 }
                 break;
         }
