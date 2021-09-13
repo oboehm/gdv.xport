@@ -99,8 +99,14 @@ public class Version extends Feld {
      */
     @JsonIgnore
     public SatzTyp getSatzTyp() {
-        String typ = StringUtils.substringAfter(getBezeichnung(), "Satzart").trim();
-        return SatzTyp.of(typ, ". ");
+        StringBuilder bufSatzTyp = new StringBuilder();
+        String typ = StringUtils.substringAfter(getBezeichner().getTechnischerName(), "Satzart").trim();
+        bufSatzTyp.append(typ.substring(0, 4));
+        if (typ.length() > 4) {
+            bufSatzTyp.append('.');
+            bufSatzTyp.append(typ.substring(4, 7));
+        }
+        return SatzTyp.of(bufSatzTyp.toString());
     }
 
 }

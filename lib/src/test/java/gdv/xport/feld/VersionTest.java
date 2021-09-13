@@ -50,4 +50,10 @@ public class VersionTest {
         assertEquals(SatzTyp.of("0210.050"), v.getSatzTyp());
     }
 
+    @Test
+    public void testGetSatzTyp0210080() {
+        Version v = new Version(new Bezeichner("Satzart 0210", "Satzart0210080"), 171);
+        assertEquals(SatzTyp.of("0210.080"), v.getSatzTyp());
+    }
+
 }

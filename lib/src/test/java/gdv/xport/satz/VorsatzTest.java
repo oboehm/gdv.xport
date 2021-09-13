@@ -146,7 +146,7 @@ public final class VorsatzTest extends AbstractSatzTest {
         assertEquals("1.9", versionen.get(SatzTyp.of("0001")).getInhalt());
         assertEquals("1.9", versionen.get(SatzTyp.of("0100")).getInhalt());
         assertEquals("1.9", versionen.get(SatzTyp.of("0200")).getInhalt());
-        assertEquals("2.1", versionen.get(SatzTyp.of("0210.50")).getInhalt());
+        assertEquals("2.1", versionen.get(SatzTyp.of("0210.050")).getInhalt());
     }
 
     /**
