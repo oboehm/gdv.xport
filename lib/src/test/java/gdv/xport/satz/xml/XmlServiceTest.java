@@ -440,7 +440,15 @@ public class XmlServiceTest extends AbstractXmlTest {
 
     @Test
     public void testGetSatzVersion() {
-        String expected = "VUVM2013.xml".equals(Config.getXmlResource()) ? "2.3" :"2.4";
+        String expected = "2.4";
+        switch (Config.getXmlResource()) {
+            case "VUVM2013.xml":
+                expected = "2.3";
+                break;
+            case "VUVM2009.xml":
+                expected = "2.2.";
+                break;
+        }
         assertEquals(expected, xmlService.getSatzVersion(SatzTyp.of("0001")));
     }
 

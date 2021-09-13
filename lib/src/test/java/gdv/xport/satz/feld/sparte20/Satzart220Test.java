@@ -7,7 +7,9 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -49,11 +51,11 @@ public class Satzart220Test {
     
     @Test
     public void testSatzart220FolgeNr3() {
-        Satz satz = SatzFactory.getDatensatz(SatzTyp.of("0220.020.3"));
-        assertThat("0220.020.3 hat einen Teildatensatz", satz.getNumberOfTeildatensaetze(), is(1));
+        Satz satz = SatzRegistry.getInstance("VUVM2015.xml").getDatensatz(SatzTyp.of("0220.020.3"));
+        MatcherAssert.assertThat("0220.020.3 hat einen Teildatensatz", satz.getNumberOfTeildatensaetze(), is(1));
         
         Teildatensatz tds1 = satz.getTeildatensatz(1);
-        assertThat("0220.020.3, Teildatensatz 1 hat 40 Felder in Version 2015", tds1.getFelder().size(), is(40));
+        MatcherAssert.assertThat("0220.020.3, Teildatensatz 1 hat 40 Felder in Version 2015", tds1.getFelder().size(), is(40));
     }
     
     @Test

@@ -21,7 +21,7 @@ package gdv.xport.feld;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.Feld0001;
 import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6ZukSummenaenderungen;
-import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -321,7 +321,7 @@ public class BezeichnerTest {
 
     @Test
     public void testVariantsWEs() {
-        Satz satz220 = SatzFactory.getSatz(SatzTyp.of("0220.010.13.9"));
+        Satz satz220 = SatzRegistry.getInstance("VUVM2018.xml").getSatz(SatzTyp.of("0220.010.13.9"));
         Feld we1 = satz220.getFeld(Bezeichner.of("HaftungswertungssummeInWE1"));
         Feld we2 = satz220.getFeld(Bezeichner.of("HaftungswertungssummeInWE2"));
         assertNotEquals(we1, we2);

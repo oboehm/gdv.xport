@@ -32,6 +32,7 @@ import gdv.xport.satz.feld.sparte10.wagnisart48.Feld220Wagnis48ZukSummenaenderun
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
 import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9Bezugsrechte;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -128,7 +129,7 @@ public class Satz220Test extends AbstractDatensatzTest {
                 "02209999  030      5999999999901   90099991                9                                                                                                                                                                                             9      \n";
         
         assertEquals(1285, input.length());
-        Datensatz satz220 = SatzFactory.getDatensatz(SatzTyp.of("0220.030"));
+        Datensatz satz220 = SatzRegistry.getInstance("VUVM2018.xml").getDatensatz(SatzTyp.of("0220.030"));
         satz220.importFrom(input);
         checkDatensatz(satz220, input);
     }
