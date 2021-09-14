@@ -556,7 +556,7 @@ public final class DatenpaketTest {
     public void testAddDatensatz400Provision() {
         BigDecimal summe = addDatensatz(SatzTyp.of(400), Bezeichner.GESAMTPROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN,
                 ByteAdresse.of(162),
-                BigDecimal.TEN, new BigDecimal("-0.11"));
+                new BigDecimal("0.99"), new BigDecimal("-0.11"));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(summe, nachsatz.getGesamtProvisionsBetragMitVorzeichen().toBigDecimal());
     }

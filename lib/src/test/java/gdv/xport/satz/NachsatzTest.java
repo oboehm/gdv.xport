@@ -182,8 +182,8 @@ public class NachsatzTest extends AbstractSatzTest {
 
     @Test
     public void testAddProvisonBetrag() {
-        nachsatz.setGesamtProvisionsBetragMitVorzeichen(BigDecimal.valueOf(2.50));
-        nachsatz.addGesamtProvisionsBetrag(BigDecimal.valueOf(-2.55));
+        nachsatz.setGesamtProvisionsBetragMitVorzeichen(BigDecimal.valueOf(0.50));
+        nachsatz.addGesamtProvisionsBetrag(BigDecimal.valueOf(-0.55));
         assertEquals(-0.05, nachsatz.getGesamtProvisionsBetragMitVorzeichen().toDouble(), 0.0001);
     }
 

@@ -52,7 +52,7 @@ import java.util.*;
 public class XmlService {
 
     private static final Logger LOG = LogManager.getLogger(XmlService.class);
-    private static final Map<String, XmlService> INSTANCES = new WeakHashMap<>();
+    private static final Map<String, XmlService> INSTANCES = new HashMap<>();
     private final List<SatzXml> saetze = new ArrayList<>();
     private final Map<SatzTyp, SatzXml> satzarten = new HashMap<>();
     private final Map<String, FeldXml> felder = new HashMap<>();

@@ -118,7 +118,7 @@ public final class SatzRegistryTest {
 
     @Test
     public void testGetSatz2013() {
-        Satz satz = SatzRegistry.getSatz(SatzTyp.of("0230.030"), "1.0");
+        Satz satz = SatzRegistry.getInstance("VUVM2013.xml").getSatz(SatzTyp.of("0230.030"), "1.0");
         assertEquals(SatzTyp.of("0230.030"), satz.getSatzTyp());
         assertEquals("1.0", satz.getVersion());
     }
