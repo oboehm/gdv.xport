@@ -116,19 +116,34 @@ public class SatzRegistry implements VersionHandler {
     public static Satz getSatz(SatzTyp satzTyp, String version) {
         createInstances();
         Satz satz = getInstance().getSatz(satzTyp);
+        float satzVersion = asFloat(satz.getVersion());
+        float requiredVersion = asFloat(version);
         for (SatzRegistry registry : INSTANCES.values()) {
             Satz ds = registry.getSatz(satzTyp);
             if (version.equals(ds.getVersion())) {
                 return ds;
+            } else if ((asFloat(ds.getVersion()) < satzVersion) && (asFloat(ds.getVersion()) > requiredVersion)) {
+                satz = ds;
+                satzVersion = asFloat(ds.getVersion());
             }
         }
-        LOG.warn("Version {} fuer {} wurde nicht gefunden - verwende {} als Default (Version {}).", version,
+        LOG.warn("Exakte Version {} fuer {} wurde nicht gefunden - verwende {} (Version {}).", version,
                 satzTyp, satz.toShortString(), satz.getVersion());
         return satz;
     }
 
+    private static float asFloat(String version) {
+        try {
+            return Float.valueOf(version);
+        } catch (NumberFormatException ex) {
+            LOG.info("Kann aus '{}' keine Version ermitteln ({}).", version, ex);
+            LOG.debug("Details:", ex);
+            return 0.0F;
+        }
+    }
+
     private static void createInstances() {
-        getInstance("VUVM2007.xml");
+        //getInstance("VUVM2007.xml");
         getInstance("VUVM2009.xml");
         getInstance("VUVM2013.xml");
         getInstance("VUVM2015.xml");

@@ -94,10 +94,10 @@ größer ist als die Anzahl der Felder. Diese Fehler wurden (und werden vermutli
 2009er-Version: in SA0100, TD1: es gibt kein Feld-Nr 27! Die SatzNr ist Feld 26 !!!
 2009er-Version: in SA0210.050, TD1: es gibt kein Feld-Nr 35! Die SatzNr ist Feld 34 !!!
 2009er-Version: in SA0220.010.13.1, TD1: es gibt kein Feld-Nr 46! Die Satznummer ist Feld 45 !!!
+2009er-Version: in SA0600, TD2: es gibt kein Feld-Nr 13! Die Satznummer ist Feld 12 !!!
+2009er-Version: in SA0600, TD3: es gibt kein Feld-Nr 14! Die Satznummer ist Feld 13 !!!
 2009er-Version: in SA9950, TD1: es gibt kein Feld-Nr 11! Die Satznummer ist Feld 10 !!!
+2009er-Version: in SA9951, TD1: es gibt kein Feld-Nr 11! Die Satznummer ist Feld 10 !!!
 
 Deshalb musste ich auch die Methode "Teildatensatz.getFeld(int)" anpassen:
 In den o.g. Situationen wird der übergebene Feld-Index um 1 erniedrigt.
-
-
- 

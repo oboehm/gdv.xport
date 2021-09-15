@@ -38,6 +38,7 @@ import static org.junit.Assert.*;
  */
 public final class SatzRegistryTest {
 
+    private final SatzRegistry f2009 = SatzRegistry.getInstance("VUVM2009.xml");
     private final SatzRegistry f2015 = SatzRegistry.getInstance("VUVM2015.xml");
     private final SatzRegistry f2018 = SatzRegistry.getInstance("VUVM2018.xml");
 
@@ -121,6 +122,14 @@ public final class SatzRegistryTest {
         Satz satz = SatzRegistry.getInstance("VUVM2013.xml").getSatz(SatzTyp.of("0230.030"), "1.0");
         assertEquals(SatzTyp.of("0230.030"), satz.getSatzTyp());
         assertEquals("1.0", satz.getVersion());
+    }
+
+    @Test
+    public void testGetSatz() {
+        SatzTyp satzTyp = SatzTyp.of("0220.020.3");
+        Satz satz = SatzRegistry.getSatz(satzTyp, "1.2");
+        Satz expected = f2009.getSatz(satzTyp);
+        assertEquals("different versions", expected, satz);
     }
 
 }

@@ -33,6 +33,7 @@ import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -482,6 +483,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     @Test
+    @Ignore
     public void testVUVM2007() throws XMLStreamException, IOException {
         compareXml("VUVM2007_150507.xml", "VUVM2007.xml");
     }

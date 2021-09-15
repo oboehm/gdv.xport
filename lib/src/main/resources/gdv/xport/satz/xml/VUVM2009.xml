@@ -9025,7 +9025,7 @@
                 <technischerName>Wagnistext</technischerName>
             </feldreferenz>
             <!-- NumFeld Wagnisbeschreibung (102-181) -->
-            <feldreferenz referenz="102-181-Wagnisbeschreibung-Numerisch">
+            <feldreferenz referenz="102-181-Wagnisbeschreibung-Alphanumerisch">
                 <name>Wagnisbeschreibung</name>
                 <technischerName>Wagnisbeschreibung</technischerName>
             </feldreferenz>
@@ -37385,10 +37385,10 @@
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="102-181-Wagnisbeschreibung-Numerisch">
+        <feld referenz="102-181-Wagnisbeschreibung-Alphanumerisch">
             <name>Wagnisbeschreibung</name>
             <bytes>80</bytes>
-            <datentyp>Numerisch</datentyp>
+            <datentyp>Alphanumerisch</datentyp>
         </feld>
         <feld referenz="103-103-KennzeichenAbweichendeFolgeprovision-Alphanumerisch">
             <name>Kennzeichen für abweichende Folgeprovision</name>
