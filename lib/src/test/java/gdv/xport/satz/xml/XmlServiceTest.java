@@ -478,7 +478,7 @@ public class XmlServiceTest extends AbstractXmlTest {
 
     @Test
     public void testVUVM2009() throws XMLStreamException, IOException {
-        compareXml("VUVM2009_011109.xml", "VUVM2009.xml");
+        compareXml("VUVM2009xL.xml", "VUVM2009.xml");
     }
 
     @Test
