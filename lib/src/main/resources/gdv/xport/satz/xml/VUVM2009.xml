@@ -17967,7 +17967,7 @@
                     <technischerName>Satznummer</technischerName>
                 </feldreferenz>
             </kennzeichnung>
-			<version>1.3</version>
+			<version>1.4</version>
             <!-- Teildatensatz 1 Satzart 0220.020.3 -->
             <satzanfang teilsatz="1"/>
             <!-- NumFeld Satzart (1-4) -->
@@ -18173,7 +18173,7 @@
                     <technischerName>Satznummer</technischerName>
                 </feldreferenz>
             </kennzeichnung>
-			<version>1.3</version>
+			<version>1.4</version>
             <!-- Teildatensatz 1 Satzart 0220.020.2 -->
             <satzanfang teilsatz="1"/>
             <!-- NumFeld Satzart (1-4) -->

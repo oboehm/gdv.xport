@@ -30,7 +30,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.xml.stream.XMLStreamException;
@@ -200,13 +199,6 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
     public void testFormatAllSupportedSaetze2009() throws IOException, XMLStreamException {
         Datenpaket datenpaket = SatzRegistry.getInstance("VUVM2009.xml").getAllSupportedSaetze();
         formatDatenpaket(datenpaket, "datenpaket2009.xml");
-    }
-
-    @Test
-    @Ignore
-    public void testFormatAllSupportedSaetze2007() throws IOException, XMLStreamException {
-        Datenpaket datenpaket = SatzRegistry.getInstance("VUVM2007.xml").getAllSupportedSaetze();
-        formatDatenpaket(datenpaket, "datenpaket2007.xml");
     }
 
     private void formatDatenpaket(Datenpaket datenpaket, String filename) throws IOException, XMLStreamException {

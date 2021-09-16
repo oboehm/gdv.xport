@@ -19,7 +19,8 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Added
 
-- zusätzliche Unterstützung von Datensätzen Stand 2009 und 2007
+- zusätzliche Unterstützung von Datensätzen Stand 2009
+  (Stand 2007 wird nicht unterstützt, weil die vom GDV bereit gestellte `VUVM20007_150507.xml` [Fehler](http://www.gdv-online.de/vuvm/bestand/best_2007.htm) enthält und damit z.B. Satz 0220.030 beim Import nicht richtig gefüllt wird)
 - SatzRegistry.getSatz(..) akzeptiert jetzt zusätzlich die gewünschte Version
 - Liste der gesetzten Versionen läßt sich jetzt über `Vorsatz.getSatzartVersionen()` abfragen
 - Datenpaket besitzt jetzt eine pack()-Methode
