@@ -468,6 +468,13 @@ public class Datenpaket {
                 // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
                 int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
                 satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
+            }  else if (sparte == 580 && satzart == 220) {
+                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
+                // noetig
+                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart noetig
+                int bausparArt = Datensatz.readBausparenArt(reader);
+                // BausparenArt nicht auslesbar -> Unbekannter Datensatz
+                satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
             }
         }
         return satzTyp;

@@ -133,4 +133,9 @@ public class Satznummer extends Zeichen {
         return nr;
     }
 
+    @Override
+    public Object clone() {
+        return new Satznummer(this);
+    }
+
 }
