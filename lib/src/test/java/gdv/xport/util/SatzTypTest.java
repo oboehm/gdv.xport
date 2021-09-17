@@ -36,8 +36,8 @@ public class SatzTypTest {
      */
     @Test
     public void testEqualsObject() {
-        SatzTyp one = new SatzTyp(1);
-        SatzTyp anotherOne = new SatzTyp(1);
+        SatzTyp one = SatzTyp.of(1);
+        SatzTyp anotherOne = SatzTyp.of(1);
         ObjectTester.assertEquals(one, anotherOne);
     }
 
@@ -57,7 +57,7 @@ public class SatzTypTest {
      */
     @Test
     public void testEqualsSparte() {
-        SatzTyp satz220 = new SatzTyp(220, 10);
+        SatzTyp satz220 = SatzTyp.of(220, 10);
         SatzTyp sparte10 = SatzTyp.of(220, 10, 0);
         ObjectTester.assertEquals(satz220, sparte10);
     }
@@ -144,24 +144,6 @@ public class SatzTypTest {
     }
 
     @Test
-    public void testGetWagnisartAsString() {
-        assertEquals("0", SatzTyp.of("0220.010.0").getWagnisartAsString());
-        assertEquals("13", SatzTyp.of("0220.010.13").getWagnisartAsString());
-        assertEquals("13", SatzTyp.of("0221.010.13").getWagnisartAsString());
-        assertEquals("48", SatzTyp.of("0220.010.48").getWagnisartAsString());
-        assertEquals("48", SatzTyp.of("0221.010.48").getWagnisartAsString());
-        assertEquals("6", SatzTyp.of("0220.010.6").getWagnisartAsString());
-        assertEquals("6", SatzTyp.of("0221.010.6").getWagnisartAsString());
-        assertEquals("5", SatzTyp.of("0220.010.5").getWagnisartAsString());
-        assertEquals("5", SatzTyp.of("0221.010.5").getWagnisartAsString());
-        assertEquals("2", SatzTyp.of("0220.010.2").getWagnisartAsString());
-        assertEquals("2", SatzTyp.of("0221.010.2").getWagnisartAsString());
-        assertEquals("7", SatzTyp.of("0220.010.7").getWagnisartAsString());
-        assertEquals("7", SatzTyp.of("0221.010.7").getWagnisartAsString());
-        assertEquals("9", SatzTyp.of("0220.010.9").getWagnisartAsString());
-    }
-
-    @Test
     public void testOfWagnisart() {
         assertEquals(SatzTyp.of("0220.010.0"), SatzTyp.of(220, 10, 0));
         assertEquals(SatzTyp.of("0220.010.13"), SatzTyp.of(220, 10, 13));
@@ -177,14 +159,12 @@ public class SatzTypTest {
     public void testGetArtWagnisart13() {
         assertEquals("13", SatzTyp.of("220.10.1").getArtAsString());
         assertEquals("13", SatzTyp.of("220.10.3").getArtAsString());
-        assertEquals("13", SatzTyp.of("0220.010.13").getWagnisartAsString());
     }
 
     @Test
     public void testGetArtWagnisart48() {
         assertEquals("48", SatzTyp.of("220.10.4").getArtAsString());
         assertEquals("48", SatzTyp.of("220.10.8").getArtAsString());
-        assertEquals("48", SatzTyp.of("0220.010.48").getWagnisartAsString());
     }
 
     @Test

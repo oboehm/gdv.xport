@@ -26,9 +26,9 @@ import java.util.Map.Entry;
 import java.util.WeakHashMap;
 
 /**
- * Im Gegensatz zum normalen liefert verwendet diese Klasse immer den gleichen.
- * {@link Reader} fuer einen bereits verwendeten {@link InputStream}. Dies
- * vermeidet Probleme, wenn der Constructor mehrfach mit dem gleichen
+ * Im Gegensatz zum normalen InputStreamReader verwendet diese Klasse immer den
+ * gleichen {@link Reader} fuer einen bereits verwendeten {@link InputStream}.
+ * Dies vermeidet Probleme, wenn der Constructor mehrfach mit dem gleichen
  * {@link InputStream} aufgerufen wird, um den Original-Stream mit mehreren
  * Readern bis zum Ende lesen zu koennen.
  *

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 by Oli B.
+ * Copyright (c) 2013-2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -119,7 +119,7 @@ public class SatzTyp {
 		return of(nr, ".");
 	}
 
-	public static SatzTyp of(String nr, String separatorChars) {
+	private static SatzTyp of(String nr, String separatorChars) {
 		return new SatzTyp(nr, separatorChars);
 	}
 
@@ -336,15 +336,10 @@ public class SatzTyp {
 	 * Liefert die Wagnisart, BausparenArt oder KrankenFolgeNr als String
 	 * zurueck. Dies ist der dritte Teil nach der Sparte, also z.B. die
 	 * "0" bei SatzTyp.of("0220.010.0").
-	 * <p>
-	 * TODO: Tests ueberarbeiten und 'private' machen
-	 * </p>
 	 *
 	 * @return z.B. "01" bei SatzTyp "0220.580.01"
-	 * @deprecated wird nur intern bzw. zum Testen verwendet
 	 */
-	@Deprecated
-	public String getArtAsString() {
+	String getArtAsString() {
 		if (this.hasBausparenArt() && (this.getBausparenArt() == 0 || this.getBausparenArt() == 1)) {
 			return "01";
 		} else {
