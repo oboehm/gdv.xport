@@ -32,6 +32,7 @@ import gdv.xport.util.NotUniqueException;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
@@ -45,6 +46,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import static org.hamcrest.Matchers.either;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 /**
@@ -357,6 +360,19 @@ public class XmlServiceTest extends AbstractXmlTest {
             LOG.info("Pruefe Import fuer {}...", entry.getKey());
             checkImport(entry.getValue());
         }
+    }
+
+    @Test
+    public void testGetSatzarten221Wagnisart48() {
+        Map<SatzTyp, SatzXml> satzarten = xmlService.getSatzarten();
+        SatzXml satz = satzarten.get(SatzTyp.of("0221.010.48.1"));
+        MatcherAssert.assertThat(satz.getWagnisart(), either(is("4")).or(is("8")));
+    }
+
+    @Test
+    public void testGetSatzart221Wagnisart48() {
+        SatzXml satz = xmlService.getSatzart(SatzTyp.of("0221.010.48.1"));
+        MatcherAssert.assertThat(satz.getWagnisart(), either(is("4")).or(is("8")));
     }
 
     @Test

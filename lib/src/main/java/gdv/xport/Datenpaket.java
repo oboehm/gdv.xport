@@ -458,12 +458,10 @@ public class Datenpaket {
         if (satzart >= 210 && satzart < 300) {
             if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
                 WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
-                if (wagnisart != WagnisartLeben.NULL) {
-                    // wagnisart 0 hat immer ein Leerzeichen als teildatenSatzmummer.
-                    // Nur groesser 0 besitzt per Definition Werte.
-                    TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
-                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
-                }
+                // wagnisart 0 hat immer ein Leerzeichen als teildatenSatzmummer.
+                // Nur groesser 0 besitzt per Definition Werte.
+                TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
+                satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
             } else if (sparte == 20 && satzart == 220) {
                 // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
                 int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);

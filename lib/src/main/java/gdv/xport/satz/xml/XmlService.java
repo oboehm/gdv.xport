@@ -19,10 +19,7 @@
 package gdv.xport.satz.xml;
 
 import gdv.xport.config.Config;
-import gdv.xport.util.NotRegisteredException;
-import gdv.xport.util.NotUniqueException;
-import gdv.xport.util.SatzTyp;
-import gdv.xport.util.XmlHelper;
+import gdv.xport.util.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import patterntesting.runtime.log.LogWatch;
@@ -317,12 +314,7 @@ public class XmlService {
   }
 
     private SatzXml registerSatzart(SatzTyp type, SatzXml satz) {
-        if (type.hasSparte()) {
-            satz.setSparte(type.getSparte());
-            if (type.hasBausparenArt()) {
-                satz.getFeld("Art1").setInhalt(type.getBausparenArt());
-            }
-        }
+        satz.init(type);
         return this.satzarten.put(type, satz);
     }
 
@@ -398,14 +390,14 @@ public class XmlService {
      * @return die entsprechende Satzart
      */
     public SatzXml getSatzart(final SatzTyp satzNr) {
-        SatzXml satz = this.satzarten.get(satzNr);
+        SatzXml satz = satzarten.get(satzNr);
         if (satz == null) {
             throw new NotRegisteredException(satzNr);
         }
-        // eine Kopie erzeugen
-        return new SatzXml(satz);
+        SatzXml copy = new SatzXml(satz);
+        copy.init(satzNr);
+        return copy;
     }
-
 
     /**
      * Liefert die registrierten Satzarten.
@@ -416,7 +408,10 @@ public class XmlService {
     public Map<SatzTyp, SatzXml> getSatzarten() {
         Map<SatzTyp, SatzXml> copy = new HashMap<>();
         for (Map.Entry<SatzTyp, SatzXml> entry : satzarten.entrySet()) {
-            copy.put(entry.getKey(), new SatzXml(entry.getValue()));
+            SatzTyp satzTyp = entry.getKey();
+            SatzXml satz = new SatzXml(entry.getValue());
+            satz.init(satzTyp);
+            copy.put(satzTyp, satz);
         }
         return copy;
     }

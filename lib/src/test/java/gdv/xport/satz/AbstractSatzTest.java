@@ -144,7 +144,7 @@ abstract public class AbstractSatzTest {
         for (Feld feld : tds.getFelder()) {
             String technischerName = feld.getBezeichner().getTechnischerName();
             if ((feld.getByteAdresse() > 42) && (feld.getByteAdresse() < 256)
-                    && !technischerName.startsWith("Satz")) {
+                    && !technischerName.startsWith("Satz") && !technischerName.startsWith("Wagnisart")) {
                 feld.setInhalt('1');
             }
         }

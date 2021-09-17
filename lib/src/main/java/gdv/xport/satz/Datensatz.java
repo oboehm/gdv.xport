@@ -394,6 +394,9 @@ public class Datensatz extends Satz {
 		if (satztyp.hasWagnisart()) {
 			initWagnisart(satztyp.getWagnisart());
 		}
+		if (satztyp.hasBausparenArt()) {
+			initBausparenart(satztyp.getBausparenArt());
+		}
 	}
 
 	private void initWagnisart(int art) {
@@ -402,6 +405,13 @@ public class Datensatz extends Satz {
 		}
 		Feld wagnisart = getFeld(WAGNISART);
 		wagnisart.setInhalt(Integer.toString(art).substring(0, 1));
+	}
+
+	private void initBausparenart(int art) {
+		for (Teildatensatz tds : getTeildatensaetze()) {
+			Feld bausparenart = tds.getFeld(ART1);
+			bausparenart.setInhalt(art);
+		}
 	}
 
 	/**

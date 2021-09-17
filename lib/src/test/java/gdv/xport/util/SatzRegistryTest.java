@@ -97,15 +97,63 @@ public final class SatzRegistryTest {
     }
 
     @Test
-    public void testSatz200Wagnis13() {
-        Satz wagnis13 = f2018.getSatz(SatzTyp.of("0220.010.13.1"));
-        assertEquals(220, wagnis13.getSatzart());
+    public void testSatz220Wagnis13() {
+        checkWagnis(220, 10, 13, 1);
+    }
+
+    @Test
+    public void testSatz221Wagnis13() {
+        checkWagnis(221, 10, 13, 1);
+    }
+
+    private void checkWagnis31(int satzart) {
+        Satz wagnis13 = f2018.getSatz(SatzTyp.of(satzart, 10, 13, 1));
+        assertEquals(satzart, wagnis13.getSatzart());
         assertEquals(10, wagnis13.getSparte());
         MatcherAssert.assertThat(wagnis13.getWagnisart(), either(is("1")).or(is("3")));
-        for (int nr = 1; nr <= 3; nr++) {
+        for (int nr = 1; nr <= wagnis13.getNumberOfTeildatensaetze(); nr++) {
             Teildatensatz tds = wagnis13.getTeildatensatz(nr);
             assertEquals(nr, tds.getSatznummer().toInt());
         }
+    }
+
+    @Test
+    public void testSatz220Tds6() {
+        Satz wagnis = checkWagnis(220, 10, 13, 6);
+        assertNotNull(wagnis.getTeildatensatzBySatzNr(6));
+    }
+
+    @Test
+    public void testSatz220Rentenversicherung() {
+        checkWagnis(220, 10, 2, 1);
+    }
+
+    @Test
+    public void testSatz220Bezugsrecht() {
+        checkWagnis(220, 10, 2, 6);
+    }
+
+    @Test
+    public void testSatz221Auszahlung() {
+        checkWagnis(221, 10, 2, 7);
+    }
+
+    @Test
+    public void testSatz221Berufsunfaehigkeit() {
+        Satz wagnis = checkWagnis(221, 10, 48, 1);
+        assertNotNull(wagnis.getTeildatensatzBySatzNr(2));
+    }
+
+    private Satz checkWagnis(int satzart, int sparte, int wagnisart, int satznr) {
+        Satz wagnis = f2018.getSatz(SatzTyp.of(satzart, sparte, wagnisart, satznr));
+        assertEquals(satzart, wagnis.getSatzart());
+        assertEquals(sparte, wagnis.getSparte());
+        if (wagnisart < 10) {
+            assertEquals(Integer.toString(wagnisart), wagnis.getWagnisart());
+        } else {
+            MatcherAssert.assertThat(Integer.parseInt(wagnis.getWagnisart()), either(is(wagnisart / 10)).or(is(wagnisart % 10)));
+        }
+        return wagnis;
     }
 
     @Test

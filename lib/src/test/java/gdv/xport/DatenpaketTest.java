@@ -38,6 +38,7 @@ import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
+import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.NetworkTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -362,6 +363,19 @@ public final class DatenpaketTest {
         Feld vertragsstatus = vertragsteil.getFeld(Bezeichner.VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         checkExportWith(muster);
+    }
+
+    @Test
+    public void testImportExportAllDatensaetze() throws IOException {
+        Datenpaket dp = SATZ_REGISTRY.getAllSupportedSaetze();
+        File exportFile = new File("target/export/all.txt");
+        dp.export(exportFile);
+        datenpaket.importFrom(exportFile);
+        File imported = new File("target/export/all-imported.txt");
+        datenpaket.export(imported);
+        FileTester.assertContentEquals(exportFile, imported);
+        CollectionTester.assertEquals(dp.getAllSaetze(), datenpaket.getAllSaetze());
+        assertEquals(dp, datenpaket);
     }
 
     /**
@@ -753,4 +767,5 @@ public final class DatenpaketTest {
         imported.importFrom(testfile);
         assertEquals(2, imported.getDatensaetze().size());
     }
+
 }
