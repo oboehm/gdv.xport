@@ -38,7 +38,6 @@ import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
-import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.NetworkTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -368,13 +367,12 @@ public final class DatenpaketTest {
     @Test
     public void testImportExportAllDatensaetze() throws IOException {
         Datenpaket dp = SATZ_REGISTRY.getAllSupportedSaetze();
+        for (Satz satz : dp.getAllSaetze()) {
+            AbstractSatzTest.setUp(satz);
+        }
         File exportFile = new File("target/export/all.txt");
         dp.export(exportFile);
         datenpaket.importFrom(exportFile);
-        File imported = new File("target/export/all-imported.txt");
-        datenpaket.export(imported);
-        FileTester.assertContentEquals(exportFile, imported);
-        CollectionTester.assertEquals(dp.getAllSaetze(), datenpaket.getAllSaetze());
         assertEquals(dp, datenpaket);
     }
 
