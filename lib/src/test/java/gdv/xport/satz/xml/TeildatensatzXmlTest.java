@@ -118,7 +118,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
     public void testGetSatzart() {
         TeildatensatzXml tds = new TeildatensatzXml(200, 1);
         assertEquals(200, tds.getSatzart());
-        tds.set(Bezeichner.SATZART.getName(), "0222");
+        tds.setFeld(Bezeichner.SATZART, "0222");
         assertEquals(222, tds.getSatzart());
     }
 

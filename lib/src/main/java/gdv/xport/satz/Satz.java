@@ -357,56 +357,103 @@ public abstract class Satz implements Cloneable {
         }
     }
 
-    /**
-     * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden
-     * wird. Normalerweise braeuchten wir eigentlich nur die erste Fundstelle
-     * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
-     * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
-     * gefunden wird, wird eine IllegalArgumentException geworfen.
-     *
-     * @param name Name des Felds (Bezeichnung)
-     * @param value the value
-     */
-    public void set(final String name, final String value) {
-        this.set(new Bezeichner(name), value);
-    }
+	/**
+	 * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden
+	 * wird. Normalerweise braeuchten wir eigentlich nur die erste Fundstelle
+	 * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
+	 * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
+	 * gefunden wird, wird eine IllegalArgumentException geworfen.
+	 *
+	 * @param name Name des Felds (Bezeichnung)
+	 * @param value the value
+	 * @deprecated wurde durch {@link Satz#setFeld(String, String)} ersetzt
+	 */
+	@Deprecated
+	public void set(final String name, final String value) {
+		this.setFeld(new Bezeichner(name), value);
+	}
 
-    /**
+	/**
+	 * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden
+	 * wird. Normalerweise braeuchten wir eigentlich nur die erste Fundstelle
+	 * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
+	 * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
+	 * gefunden wird, wird eine IllegalArgumentException geworfen.
+	 *
+	 * @param name Name des Felds (Bezeichnung)
+	 * @param value the value
+	 * @since 5.2
+	 */
+	public void setFeld(final String name, final String value) {
+		this.setFeld(new Bezeichner(name), value);
+	}
+
+	/**
      * Setzt den Inhalt des gewuenschten Feldes.
      *
      * @param name  Name des Felds (Bezeichnung)
      * @param value neuer Inhalt
+	 * @deprecated wurde durch {@link Satz#setFeld(Bezeichner, Integer)} ersetzt
      */
     public void set(final Bezeichner name, final Integer value) {
-        this.set(name, Integer.toString(value));
+        this.setFeld(name, Integer.toString(value));
     }
-    /**
-     * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden
-     * wird. Normalerweise braeuchten wir eigentlich nur die erste Fundstelle
-     * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
-     * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
-     * gefunden wird, wird eine IllegalArgumentException geworfen.
-     *
-     * @param name Name des Felds (Bezeichnung)
-     * @param value the value
-     * @since 2.0
-     */
-    public void set(final Bezeichner name, final String value) {
-        boolean found = false;
-        for (Teildatensatz tds : teildatensatz) {
-        	if (tds.hasFeld(name)) {
-        		Feld x = tds.getFeld(name);
-        		x.setInhalt(value);
-        		if (x.isInvalid()) {
-        			throw new IllegalArgumentException(String.format("ungueltiger Wert '%s' fuer %s", value, x));
+
+	/**
+	 * Setzt den Inhalt des gewuenschten Feldes.
+	 *
+	 * @param name  Name des Felds (Bezeichnung)
+	 * @param value neuer Inhalt
+	 * @since 5.2
+	 */
+	public void setFeld(final Bezeichner name, final Integer value) {
+		this.set(name, Integer.toString(value));
+	}
+
+	/**
+	 * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden
+	 * wird. Normalerweise braeuchten wir eigentlich nur die erste Fundstelle
+	 * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
+	 * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
+	 * gefunden wird, wird eine IllegalArgumentException geworfen.
+	 *
+	 * @param name Name des Felds (Bezeichnung)
+	 * @param value the value
+	 * @since 2.0
+	 * @deprecated wurde durch {@link Satz#setFeld(Bezeichner, String)} ersetzt
+	 */
+	@Deprecated
+	public void set(final Bezeichner name, final String value) {
+		setFeld(name, value);
+	}
+
+	/**
+	 * Setzt das angegebene Feld in allen Teildatensaetzen, in denen es gefunden
+	 * wird. Normalerweise braeuchten wir eigentlich nur die erste Fundstelle
+	 * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
+	 * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
+	 * gefunden wird, wird eine IllegalArgumentException geworfen.
+	 *
+	 * @param name Name des Felds (Bezeichnung)
+	 * @param value the value
+	 * @since 5.2
+	 */
+	public void setFeld(final Bezeichner name, final String value) {
+		boolean found = false;
+		for (Teildatensatz tds : teildatensatz) {
+			if (tds.hasFeld(name)) {
+				Feld x = tds.getFeld(name);
+				x.setInhalt(value);
+				if (x.isInvalid()) {
+					throw new IllegalArgumentException(String.format("ungueltiger Wert '%s' fuer %s", value, x));
 				}
-        		found = true;
+				found = true;
 			}
-        }
-        if (!found) {
-            throw new IllegalArgumentException("Feld \"" + name + "\" not found");
-        }
-    }
+		}
+		if (!found) {
+			throw new IllegalArgumentException("Feld \"" + name + "\" not found");
+		}
+	}
 
 	/**
 	 * Setzt den Inhalt des gewuenschten Feldes.
@@ -539,7 +586,9 @@ public abstract class Satz implements Cloneable {
 	 * @param name gesuchtes Feld
 	 * @return Inhalt des gefundenden Felds (NULL_STRING, falls 'name' nicht
 	 * gefunden wurde)
+	 * @deprecated bitte {@link Satz#getFeld(String)} verwenden
 	 */
+    @Deprecated
 	public final String get(final String name) {
 		return get(new Bezeichner(name));
 	}
@@ -551,7 +600,9 @@ public abstract class Satz implements Cloneable {
      * @return Inhalt des gefundenden Felds (NULL_STRING, falls 'name' nicht
      * gefunden wurde)
      * @since 2.0
+	 * @deprecated bitte {@link Satz#getFeld(Bezeichner)} verwenden
      */
+    @Deprecated
     public String get(final Bezeichner bezeichner) {
         Feld f = getFeld(bezeichner);
         if (f == Feld.NULL_FELD) {
@@ -563,10 +614,15 @@ public abstract class Satz implements Cloneable {
 
 	/**
 	 * Liefert den Inhalt des gewuenschten Feldes.
+	 * <p>
+	 * TODO: wird ab v6 entfernt werden
+	 * </p>
 	 *
 	 * @param feldX das gewuenschte Feld-Element
 	 * @return Inhalt des gefundenden Felds
+	 * @deprecated wird kuenftig nicht mehr unterstuetzt
 	 */
+	@Deprecated
 	public final String get(final Enum feldX) {
 		Bezeichner name = Feld.getAsBezeichner(feldX);
 		return this.get(name);

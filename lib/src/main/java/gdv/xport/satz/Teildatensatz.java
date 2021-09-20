@@ -338,9 +338,25 @@ public class Teildatensatz extends Satz {
      * @param name der Name des Feldes
      * @param value der gewuenschte Werte als String
      * @see Satz#set(String, String)
+     * @deprecated wurde durch {@link Teildatensatz#setFeld(Bezeichner, String)} ersetzt
      */
+    @Deprecated
     @Override
     public void set(final Bezeichner name, final String value) {
+        setFeld(name, value);
+    }
+
+    /**
+     * Setzt das gewuenschte Feld. Falls es nicht vorhanden ist, wird analog
+     * zur Oberklasse eine {@link IllegalArgumentException} geworfen.
+     *
+     * @param name der Name des Feldes
+     * @param value der gewuenschte Werte als String
+     * @see Satz#set(String, String)
+     * @since 5.2
+     */
+    @Override
+    public void setFeld(final Bezeichner name, final String value) {
         Feld x = this.getFeld(name);
         if (x == Feld.NULL_FELD) {
             throw new IllegalArgumentException("Feld \"" + name + "\" not found");
@@ -354,8 +370,22 @@ public class Teildatensatz extends Satz {
      * @param adresse Adresse des gewuenschten Feldes
      * @param value   Wert
      * @since 5.0
+     * @deprecated wurde durch {@link Teildatensatz#setFeld(ByteAdresse, String)} ersetzt
      */
+    @Deprecated
     public void set(final ByteAdresse adresse, final String value) {
+        Feld x = this.getFeld(adresse);
+        x.setInhalt(value);
+    }
+
+    /**
+     * Setzt das gewuenschte Feld anhand der uebergebenen ByteAdresse.
+     *
+     * @param adresse Adresse des gewuenschten Feldes
+     * @param value   Wert
+     * @since 5.2
+     */
+    public void setFeld(final ByteAdresse adresse, final String value) {
         Feld x = this.getFeld(adresse);
         x.setInhalt(value);
     }
