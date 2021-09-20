@@ -119,7 +119,14 @@ public class SatzRegistry implements VersionHandler {
         float satzVersion = asFloat(satz.getVersion());
         float requiredVersion = asFloat(version);
         for (SatzRegistry registry : INSTANCES.values()) {
-            Satz ds = registry.getSatz(satzTyp);
+            Satz ds = null;
+            try {
+                ds = registry.getSatz(satzTyp);
+            } catch (NotRegisteredException e) {
+                // satzTyp ist in dieser Version nicht registriert, gehe zur nächsten Version
+                LOG.debug("Satzart {} in {} nicht registriert, suche weiter", satzTyp, registry);
+                continue;
+            }
             if (version.equals(ds.getVersion())) {
                 return ds;
             } else if ((asFloat(ds.getVersion()) < satzVersion) && (asFloat(ds.getVersion()) > requiredVersion)) {

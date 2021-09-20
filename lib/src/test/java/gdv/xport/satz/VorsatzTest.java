@@ -18,6 +18,7 @@
 
 package gdv.xport.satz;
 
+import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
@@ -25,6 +26,7 @@ import gdv.xport.feld.Feld;
 import gdv.xport.feld.Version;
 import gdv.xport.satz.feld.Feld0001;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.junit.Test;
 
@@ -271,4 +273,19 @@ public final class VorsatzTest extends AbstractSatzTest {
         assertNotNull(vorsatz.get(Bezeichner.VERMITTLER));
     }
 
+    @Test
+    public void testImportVersionPreferSparte() throws IOException {
+        Datenpaket dp = SatzRegistry.getInstance("VUVM2018.xml").getAllSupportedSaetze();
+        for (Satz satz : dp.getAllSaetze()) {
+            AbstractSatzTest.setUp(satz);
+        }
+        File exportFile = new File("target/export/testVersionenHashMapPreferSpalte.txt");
+        dp.export(exportFile);
+        vorsatz.importFrom(exportFile);
+        Map<SatzTyp, Version> versionen = vorsatz.getSatzartVersionen();
+        assertEquals("2.4", versionen.get(SatzTyp.of(1)).getInhalt());
+        assertEquals("2.4", versionen.get(SatzTyp.of(220, 30)).getInhalt());
+        assertEquals("1.7", versionen.get(SatzTyp.of(210, 190)).getInhalt());
+        assertEquals("1.3", versionen.get(SatzTyp.of(220, 295)).getInhalt());
+    }
 }
