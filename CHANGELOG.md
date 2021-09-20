@@ -29,7 +29,8 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Changed
 
-- Datenpaket#importFrom(..)-Methoden berücksichtigen jetzt die angegebene Version aus dem Vorsatz und liefern Sätze der entsprechende Version (aktuell nur für Version VUVM2013, VUVM2015 und VUVM2018)
+- Datenpaket#setVuNummer(..) und Datenpaket#setVermittler(..) setzt jetzt nicht nur die Werte im Vor-/Nachsatz, sondern in allen Sätzen
+- Datenpaket#importFrom(..)-Methoden berücksichtigen jetzt die angegebene Version aus dem Vorsatz und liefern Sätze der entsprechende Version (aktuell nur für Version VUVM2013, VUVM2015 und VUVM2018, [Issue #64](https://github.com/oboehm/gdv.xport/issues/64))
 - Datenpaket#importFrom(..)-Methoden liefern jetzt ein Datenpaket zur Weiterverarbeitung zurück, z.B. für `x = importFrom(istream).pack();`
 - _fixed_: Parsen von Teildatensätzen ohne Satznummer korrigiert
   ([Issue #63](https://github.com/oboehm/gdv.xport/pull/63))
