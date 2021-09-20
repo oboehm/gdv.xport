@@ -132,7 +132,9 @@ public class Datenpaket {
     public void setVuNummer(final String vuNummer) {
         this.vorsatz.setVuNummer(vuNummer);
         for (Datensatz datensatz : this.datensaetze) {
-            datensatz.setVuNummer(vuNummer);
+            if (datensatz.hasFeld(Bezeichner.VU_NUMMER)) {
+                datensatz.setVuNummer(vuNummer);
+            }
         }
     }
 
@@ -672,6 +674,9 @@ public class Datenpaket {
     public void setVermittler(final String s) {
         this.vorsatz.setVermittler(s);
         this.nachsatz.setVermittler(s);
+        for (Satz satz : getDatensaetze()) {
+            satz.set(Bezeichner.VERMITTLER, s);
+        }
     }
 
     /**

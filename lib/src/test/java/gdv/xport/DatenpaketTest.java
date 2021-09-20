@@ -51,8 +51,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 /**
@@ -171,13 +170,28 @@ public final class DatenpaketTest {
      */
     @Test
     public void testSetVermittler() {
+        Datenpaket dp = SatzRegistry.getInstance().getAllSupportedSaetze();
         String vermittler = "08/15";
-        datenpaket.setVermittler(vermittler);
-        assertEquals(vermittler, datenpaket.getVermittler());
-        Vorsatz vorsatz = datenpaket.getVorsatz();
+        dp.setVermittler(vermittler);
+        assertEquals(vermittler, dp.getVermittler());
+        Vorsatz vorsatz = dp.getVorsatz();
         assertEquals(vermittler, vorsatz.getVermittler());
-        Nachsatz nachsatz = datenpaket.getNachsatz();
+        Nachsatz nachsatz = dp.getNachsatz();
         assertEquals(vermittler, nachsatz.getVermittler());
+        for (Datensatz satz : dp.getDatensaetze()) {
+            assertEquals(vermittler, satz.getVermittler());
+        }
+    }
+
+    @Test
+    public void testSetVuNummer() {
+        Datenpaket dp = SatzRegistry.getInstance().getAllSupportedSaetze();
+        dp.setVuNummer("12345");
+        for (Datensatz satz : dp.getDatensaetze()) {
+            if (satz.hasFeld(Bezeichner.VU_NUMMER)) {
+                assertEquals("12345", satz.getVuNummer());
+            }
+        }
     }
 
     /**
@@ -185,9 +199,7 @@ public final class DatenpaketTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @IntegrationTest
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportFromReader() throws IOException {
         try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
             checkImport(datenpaket, istream);
