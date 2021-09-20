@@ -19,10 +19,7 @@
 package gdv.xport;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.ByteAdresse;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.Feld;
+import gdv.xport.feld.*;
 import gdv.xport.satz.*;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.util.SatzFactory;
@@ -726,7 +723,7 @@ public final class DatenpaketTest {
     }
 
     @Test
-    public void testExportImportSchaden500() throws IOException {
+    public void testExportImportSchaden500V1_8() throws IOException {
         /*
         In der aktuellen Version (VUVM2018.xml) ist fuer Datensatz 0500 im ersten Teilsatz eine Satznummerwiederholung vorgesehen.
         Der Rueckimport muss korrekt zwei Datensaetze erkennen, selbst wenn wir jeweils den zweiten Datensatz nicht exportieren.
@@ -742,6 +739,9 @@ public final class DatenpaketTest {
         Datenpaket imported = new Datenpaket();
         imported.importFrom(testfile);
         assertEquals(2, imported.getDatensaetze().size());
+
+        Version version0500 = imported.getVorsatz().getSatzartVersionen().get(SatzTyp.of("0500"));
+        assertEquals("Version vom Datensatz 0500 stimmt nicht", "1.8", version0500 != null ? version0500.getInhalt() : "nicht vorhanden");
     }
 
     @Test
@@ -751,12 +751,11 @@ public final class DatenpaketTest {
         Wir simulieren das, indem die Satznummerwiederholung mit 'leer' geliefert wird.
         Trotzdem muss der Rueckimport korrekt zwei Datensaetze erkennen und nicht nur einen.
          */
+        SatzRegistry satzRegistry2009 = SatzRegistry.getInstance("VUVM2009.xml");
         File testfile = new File("target", "schadensatz_500_zwei_datensaetze_v1_5.gdv");
-        Datensatz schaden = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0500"));
-        schaden.set("SatzNr2", " "); // setze Satznummerwiederholung auf 'leer'
+        Datensatz schaden = satzRegistry2009.getDatensatz(SatzTyp.of("0500"));
         schaden.removeTeildatensatz(2);
-        Datensatz schaden2 = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0500"));
-        schaden2.set("SatzNr2", " "); // setze Satznummerwiederholung auf 'leer'
+        Datensatz schaden2 = satzRegistry2009.getDatensatz(SatzTyp.of("0500"));
         schaden2.removeTeildatensatz(2);
         datenpaket.add(schaden);
         datenpaket.add(schaden2);
@@ -764,6 +763,30 @@ public final class DatenpaketTest {
         Datenpaket imported = new Datenpaket();
         imported.importFrom(testfile);
         assertEquals(2, imported.getDatensaetze().size());
+
+        Version version0500 = imported.getVorsatz().getSatzartVersionen().get(SatzTyp.of("0500"));
+        assertEquals("Version vom Datensatz 0500 stimmt nicht", "1.5", version0500 != null ? version0500.getInhalt() : "nicht vorhanden");
+    }
+
+    /**
+     * Test dass ein Datensatz in einer alten Version korrekt ist, in einer neuen Version aber nicht korrekt
+     *
+     * Testfall eines Beispiels eines 0220.010.48-er Datensatzes, Änderung zwischen VUVM2015 und VUVM2018 (Risikozuschlag in %)
+     * @throws IOException
+     */
+    @Test
+    public void testImport0220_010_48_version_differences() throws IOException {
+        Datenpaket datenpaket2_1 = new Datenpaket();
+        File testfile = new File("src/test/resources", "gdv/xport/satz/testcase_0220_010_48_v2_1.txt");
+        datenpaket2_1.importFrom(testfile, Charset.forName("IBM850"));
+        datenpaket2_1.validate();
+        assertTrue("Datenpaket muss gültig sein", datenpaket2_1.isValid());
+
+        Datenpaket datenpaket2_2 = new Datenpaket();
+        testfile = new File("src/test/resources", "gdv/xport/satz/testcase_0220_010_48_v2_2_error.txt");
+        datenpaket2_2.importFrom(testfile, Charset.forName("IBM850"));
+        datenpaket2_2.validate();
+        assertFalse("Datenpaket darf nicht gültig sein", datenpaket2_2.isValid());
     }
 
 }

@@ -442,9 +442,9 @@ public class Vorsatz extends Satz {
      * @since 5.2
      */
     public Map<SatzTyp, Version> getSatzartVersionen() {
-        Map<SatzTyp, Version> versionen = new HashMap<>();
+        VersionenHashMap versionen = new VersionenHashMap();
         for (Feld f : getFelder()) {
-            if (!f.isEmpty() && f.getBezeichner().getName().startsWith("Satzart")
+            if (!f.isEmpty() && f.getBezeichner().getTechnischerName().startsWith("Satzart")
                     && !f.getBezeichner().equals(Bezeichner.SATZART)) {
                 Version v = new Version(f);
                 versionen.put(v.getSatzTyp(), v);
