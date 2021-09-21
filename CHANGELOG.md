@@ -36,6 +36,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
   ([Issue #63](https://github.com/oboehm/gdv.xport/pull/63))
 - _fixed_: Satznummer wird jetzt auch für Satzart 0220.030 und anderen Satzarten mit mehrdeutigen Satznummernpositionen korrekt erkannt
 - _fixed_: SatzRegistry.getAllSupportedSaetze() liefert jetzt den passenden Vorsatz zur SatzRegistry
+- Satz#set(..) durch Satz#setFeld(..) ersetzt und Satz#get(..) als @Deprecated markiert
 
 
 ## [5.1.0] - 2021-08-29

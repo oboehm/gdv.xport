@@ -7,6 +7,17 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Optional;
 
+/**
+ * Die Idee bei der VersionenHashMap ist, bei der Abfrage der Versionen fuer
+ * einen bestimmte Satzart (also z.B. 0220.010.7.6) eben nur auf die
+ * "uebergeordnete" Gruppe zu gehen (in dem Falle 0220.010, da nur für diese
+ * Kombination eine Version im Vorsatz geliefert wird).
+ * Diese Logik ist bei {@link VersionenHashMap#get(Object)} abgebildet (s.a.
+ * https://github.com/oboehm/gdv.xport/issues/64#issuecomment-924107450).
+ *
+ * @since 5.2
+ * @author markusneidhart
+ */
 public class VersionenHashMap extends HashMap<SatzTyp, Version> {
 
     @Override

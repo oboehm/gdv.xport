@@ -649,6 +649,13 @@
         <role>Lektor</role>
       </roles>
     </contributor>
+    <contributor>
+      <name>Markus Neidhardt</name>
+      <url>https://github.com/markusneidhart</url>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </contributor>
   </contributors>
   
   <scm>
