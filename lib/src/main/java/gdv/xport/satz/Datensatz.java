@@ -614,16 +614,6 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Gets the vermittler.
-	 *
-	 * @return the vermittler
-	 * @since 0.6
-	 */
-	public String getVermittler() {
-		return this.getFeldInhalt(VERMITTLER);
-	}
-
-	/**
 	 * Liest 14 Bytes, um die Sparte zu bestimmen und stellt die Bytes
 	 * anschliessend wieder zurueck in den Reader.
 	 *

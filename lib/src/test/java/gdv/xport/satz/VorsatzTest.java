@@ -288,4 +288,12 @@ public final class VorsatzTest extends AbstractSatzTest {
         assertEquals("1.7", versionen.get(SatzTyp.of(210, 190)).getInhalt());
         assertEquals("1.3", versionen.get(SatzTyp.of(220, 295)).getInhalt());
     }
+
+    @Test
+    public void testSetVermittler() {
+        vorsatz.setVermittler("12345");
+        assertEquals("12345", vorsatz.getVermittler());
+        assertEquals("12345", vorsatz.getFeld(Bezeichner.VERMITTLER).getInhalt().trim());
+    }
+
 }

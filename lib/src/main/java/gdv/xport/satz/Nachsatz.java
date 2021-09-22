@@ -136,22 +136,6 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * @param s Vermittler
-     */
-    public void setVermittler(final String s) {
-        this.set(Bezeichner.GESCHAEFTSSTELLE_VERMITTLER, s);
-    }
-
-    /**
-     * @return Vermittler
-     */
-    public String getVermittler() {
-        return this.getFeld(Bezeichner.GESCHAEFTSSTELLE_VERMITTLER)
-                   .getInhalt()
-                   .trim();
-    }
-
-    /**
      * Setzt den Gesamtbeitrag.
      *
      * @param strBeitrag der neue Gesamtbeitrag

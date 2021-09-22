@@ -395,6 +395,7 @@ public abstract class Satz implements Cloneable {
      * @param value neuer Inhalt
 	 * @deprecated wurde durch {@link Satz#setFeld(Bezeichner, Integer)} ersetzt
      */
+	@Deprecated
     public void set(final Bezeichner name, final Integer value) {
         this.setFeld(name, Integer.toString(value));
     }
@@ -502,6 +503,26 @@ public abstract class Satz implements Cloneable {
     public final void set(final Enum feldX, final Character value) {
         this.set(feldX, Character.toString(value));
     }
+
+	/**
+	 * Setzt den Vermittler in das entsprechende Feld.
+	 *
+	 * @param vermittler der Vermittler
+	 * @since 5.2
+	 */
+	public final void setVermittler(String vermittler) {
+		setFeld(Bezeichner.VERMITTLER, vermittler);
+	}
+
+	/**
+	 * Liefert den Vermittler zurueck.
+	 *
+	 * @return Vermittler
+	 * @since 5.2
+	 */
+	public final String getVermittler() {
+		return getFeld(Bezeichner.VERMITTLER).getInhalt().trim();
+	}
 
     /**
      * Setzt die Satzartnummer einer Satzart. Nicht verwechseln mit Satznummer!
@@ -865,10 +886,9 @@ public abstract class Satz implements Cloneable {
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @param nr Nummer des Teildatensatzes (1, 2, ...)
 	 * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
-     * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 * @since 0.2
 	 */
-	public final Feld getFeld(final String name, final int nr) throws IllegalArgumentException {
+	public final Feld getFeld(final String name, final int nr) {
 		assert (0 < nr) && (nr <= teildatensatz.length) : nr + " liegt ausserhalb des Bereichs";
 		return teildatensatz[nr - 1].getFeld(name);
 	}
@@ -879,10 +899,9 @@ public abstract class Satz implements Cloneable {
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @param nr Nummer des Teildatensatzes (1, 2, ...)
 	 * @return Inhalt des Feldes (getrimmt, d.h. ohne Leerzeichen am Ende)
-     * @throws IllegalArgumentException falls es das Feld nicht gibt
 	 * @since 0.3
 	 */
-	public final String getFeldInhalt(final String name, final int nr) throws IllegalArgumentException {
+	public final String getFeldInhalt(final String name, final int nr) {
 		return this.getFeld(name, nr).getInhalt().trim();
 	}
 

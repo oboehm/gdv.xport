@@ -234,25 +234,6 @@ public class Vorsatz extends Satz {
     }
 
     /**
-     * Um Geschaeftsstelle/Vermittler (Byte 86 - 95) in allen Teildatensaetzen
-     * setzen zu koennen.
-     *
-     * @param s neuer Vermittler
-     */
-    public void setVermittler(final String s) {
-        this.set(Bezeichner.GESCHAEFTSSTELLE_VERMITTLER, s);
-    }
-
-    /**
-     * @return Vermittler
-     */
-    public String getVermittler() {
-        return this.getFeld(Bezeichner.GESCHAEFTSSTELLE_VERMITTLER)
-                .getInhalt()
-                .trim();
-    }
-
-    /**
      * Setzen der Satzart-Version eines Datensatzes, falls die Satzart im Vorsatz
      * bekannt ist.
      *

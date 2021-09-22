@@ -672,10 +672,8 @@ public class Datenpaket {
      * @param s Vermittler
      */
     public void setVermittler(final String s) {
-        this.vorsatz.setVermittler(s);
-        this.nachsatz.setVermittler(s);
-        for (Satz satz : getDatensaetze()) {
-            satz.set(Bezeichner.VERMITTLER, s);
+        for (Satz satz : getAllSaetze()) {
+            satz.setVermittler(s);
         }
     }
 
