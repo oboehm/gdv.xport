@@ -33,6 +33,7 @@ import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.collection.IsIn;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
@@ -351,6 +352,38 @@ public class XmlServiceTest extends AbstractXmlTest {
             //assertEquals(51, satznummer.getByteAdresse());
         }
         checkImport(satz220);
+    }
+
+    @Test
+    public void testSatzart0225() {
+        SatzXml satz = xmlService.getSatzart(SatzTyp.of("0225.010"));
+        assertNotNull(satz);
+    }
+
+    @Test
+    public void testSatzart022058001() {
+        SatzXml satz = xmlService.getSatzart(SatzTyp.of("0220.580.01"));
+        assertFalse(satz.hasVuNummer());
+        MatcherAssert.assertThat(satz.getArt(), IsIn.oneOf(0, 1));
+        assertEquals(4, satz.getNumberOfTeildatensaetze());
+        checkSatzart220580(satz);
+    }
+
+    @Test
+    public void testSatzart02205802() {
+        SatzXml satz = xmlService.getSatzart(SatzTyp.of("0220.580.2"));
+        assertTrue(satz.hasVuNummer());
+        assertEquals(2, satz.getArt());
+        assertEquals(3, satz.getNumberOfTeildatensaetze());
+        checkSatzart220580(satz);
+    }
+
+    private void checkSatzart220580(SatzXml satz) {
+        for (int n = 1; n <= satz.getNumberOfTeildatensaetze(); n++) {
+            Zeichen satznr = satz.getTeildatensatz(n).getSatznummer();
+            assertEquals(n, satznr.toInt());
+            assertEquals(43, satznr.getByteAdresse());
+        }
     }
 
     @Test

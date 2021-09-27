@@ -35,6 +35,7 @@ import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
+import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.NetworkTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -138,6 +139,15 @@ public final class DatenpaketTest {
         assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(1, nachsatz.getAnzahlSaetze());
+    }
+
+    @Test
+    public void testAddVorbelegung() {
+        datenpaket.setVuNummer("007");
+        datenpaket.setVermittler("JamesBond");
+        datenpaket.add(SatzFactory.getDatensatz(SatzTyp.of(100)));
+        assertEquals(datenpaket.getVuNummer(), datenpaket.getDatensaetze().get(0).getVuNummer());
+        assertEquals(datenpaket.getVermittler(), datenpaket.getDatensaetze().get(0).getVermittler());
     }
 
     /**
@@ -382,6 +392,7 @@ public final class DatenpaketTest {
         File exportFile = new File("target/export/all.txt");
         dp.export(exportFile);
         datenpaket.importFrom(exportFile);
+        CollectionTester.assertEquals(dp.getAllSaetze(), datenpaket.getAllSaetze());
         assertEquals(dp, datenpaket);
     }
 

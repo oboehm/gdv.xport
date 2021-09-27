@@ -516,7 +516,7 @@ public class Datensatz extends Satz {
 	 * @param s VU-Nummer (max. 5 Stellen)
 	 */
 	public void setVuNummer(final String s) {
-    this.getFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()).setInhalt(s);
+    	setFeld(VU_NUMMER, s);
 	}
 
 	/**
@@ -526,7 +526,19 @@ public class Datensatz extends Satz {
 	 */
 	@JsonIgnore
 	public String getVuNummer() {
-    return this.getFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()).getInhalt().trim();
+		return this.getFeld(VU_NUMMER).getInhalt().trim();
+	}
+
+	/**
+	 * Nicht jeder Datensatz hat eine VU-Nummer. So kommt sie in Satzart
+	 * 0291.550 nicht vor.
+	 *
+	 * @return true, if VU-Nummer vorhanden ist
+	 * @since 5.2
+	 */
+	@JsonIgnore
+	public boolean hasVuNummer() {
+		return hasFeld(VU_NUMMER);
 	}
 
 	/**
@@ -760,9 +772,15 @@ public class Datensatz extends Satz {
 				}
 				reader.unread(newLine);
 				
-                // wir vergleichen komplett die ersten 7 Felder (42 Zeichen) auf
+                // wir vergleichen teilweise die ersten 7 Felder (42 Zeichen) auf
                 // Gleichheit....wenn ein Unterschied -> neuer Datensatz,
-				for (int i = 0; i < 42; i++) {
+				for (int i = 0; i < 4; i++) {
+					if (lastFeld1To7[i] != newLine[i]) return false;
+				}
+				for (int i = 10; i < 13; i++) {
+					if (lastFeld1To7[i] != newLine[i]) return false;
+				}
+				for (int i = 30; i < 42; i++) {
 					if (lastFeld1To7[i] != newLine[i]) return false;
 				}
 				//return matchesLastFeld(satznummer, newLine);

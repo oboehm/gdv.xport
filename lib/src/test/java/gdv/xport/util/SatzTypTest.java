@@ -168,6 +168,13 @@ public class SatzTypTest {
     }
 
     @Test
+    public void testGetLebenWagnisart48() {
+        SatzTyp satzTyp = SatzTyp.of(221, 10, 4, 2);
+        assertEquals("48", satzTyp.getArtAsString());
+        assertEquals("0221.010.48.1", satzTyp.toString());
+    }
+
+    @Test
     public void testHasArt() {
         assertTrue(SatzTyp.of("0220.020.1").hasArt());
         assertFalse(SatzTyp.of("0220.000").hasArt());

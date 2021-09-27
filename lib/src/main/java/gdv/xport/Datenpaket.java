@@ -30,6 +30,7 @@ import gdv.xport.util.SimpleConstraintViolation;
 import gdv.xport.util.URLReader;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -241,6 +242,7 @@ public class Datenpaket {
             throw new IllegalArgumentException(("0001").equalsIgnoreCase(datensatz
                     .getGdvSatzartName()) ? "Einen Vorsatz gibt es bereits!"
                     : "Einen Nachsatz gibt es bereits!");
+        preset(datensatz);
         datensaetze.add(datensatz);
         vorsatz.setVersion(datensatz);
         if (datensatz.getSatzTyp().equals(SatzTyp.of(200))) {
@@ -251,6 +253,15 @@ public class Datenpaket {
             setNachsatzSummenAus0500(datensatz);
         }
         nachsatz.setAnzahlSaetze(datensaetze.size());
+    }
+
+    private void preset(Datensatz datensatz) {
+        if (StringUtils.isNotEmpty(getVuNummer()) && datensatz.hasVuNummer() && StringUtils.isEmpty(datensatz.getVuNummer())) {
+            datensatz.setVuNummer(getVuNummer());
+        }
+        if (StringUtils.isEmpty(datensatz.getVermittler())) {
+            datensatz.setVermittler(getVermittler());
+        }
     }
 
     /**

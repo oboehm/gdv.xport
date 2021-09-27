@@ -25,6 +25,7 @@ import gdv.xport.feld.Feld;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.Feld100;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,8 +37,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Gemeinsame Oberklasse fuer SatzTest.
@@ -173,6 +173,36 @@ public class DatensatzTest extends AbstractDatensatzTest {
         assertEquals(220, datensatz.getSatzart());
         assertEquals(10, datensatz.getSparte());
         assertEquals(wagnis13, datensatz.getSatzTyp());
+    }
+
+    @Test
+    public void testSetVuNummerWagnisart() {
+        checkVuNummer(SatzTyp.of("0221.010.5.1"));
+    }
+
+    @Test
+    public void testSetVuNummerBausparen() {
+        Datensatz satz = checkVuNummer(SatzTyp.of("0220.580.2"));
+        assertTrue(satz.hasVuNummer());
+    }
+
+    private Datensatz checkVuNummer(SatzTyp satzTyp) {
+        String vunr = "12345";
+        Datensatz datensatz = SatzRegistry.getInstance().getDatensatz(satzTyp);
+        datensatz.setVuNummer(vunr);
+        assertEquals(vunr, datensatz.getVuNummer());
+        for (Teildatensatz tds : datensatz.getTeildatensaetze()) {
+            if (tds.hasFeld(Bezeichner.VU_NUMMER)) {
+                assertEquals(vunr, tds.getFeld(Bezeichner.VU_NUMMER).getInhalt());
+            }
+        }
+        return datensatz;
+    }
+
+    @Test
+    public void testHasVuNummer() {
+        Datensatz datensatz = SatzRegistry.getInstance().getDatensatz(SatzTyp.of("0220.580.01"));
+        assertFalse(datensatz.hasVuNummer());
     }
 
 }
