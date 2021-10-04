@@ -115,7 +115,8 @@ public class BezeichnerIT {
                 "AktuelleFondsjahresrenteZumBeginnDerAbrufphase",
                 "DynamikInProz", "GueltigeAVB", "KhDeckungsart",
                 "KhDeckungssummenInWETeil1", "KhDeckungssummenInWETeil2", "KhDeckungssummenInWETeil3",
-                "Mengenschluessel", "Risikozuschlag", "UebergangsentschaedigungBeitragssatz",
+                "Mengenschluessel", "Risikozuschlag", "RueckkaufswertGueltigAb",
+                "SelbstbehaltInProz", "UebergangsentschaedigungBeitragssatz",
                 "VpPersonenNrVersicherers"));
     }
 
