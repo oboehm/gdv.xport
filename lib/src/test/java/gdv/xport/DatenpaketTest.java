@@ -35,7 +35,6 @@ import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
-import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.NetworkTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -49,7 +48,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.*;
 
 /**
@@ -392,7 +392,6 @@ public final class DatenpaketTest {
         File exportFile = new File("target/export/all.txt");
         dp.export(exportFile);
         datenpaket.importFrom(exportFile);
-        CollectionTester.assertEquals(dp.getAllSaetze(), datenpaket.getAllSaetze());
         assertEquals(dp, datenpaket);
     }
 
@@ -793,9 +792,9 @@ public final class DatenpaketTest {
 
     /**
      * Test dass ein Datensatz in einer alten Version korrekt ist, in einer neuen Version aber nicht korrekt
+     * Testfall eines Beispiels eines 0220.010.48-er Datensatzes, Aenderung zwischen VUVM2015 und VUVM2018 (Risikozuschlag in %)
      *
-     * Testfall eines Beispiels eines 0220.010.48-er Datensatzes, Änderung zwischen VUVM2015 und VUVM2018 (Risikozuschlag in %)
-     * @throws IOException
+     * @throws IOException im Fehlerfall
      */
     @Test
     public void testImport0220_010_48_version_differences() throws IOException {
@@ -809,7 +808,7 @@ public final class DatenpaketTest {
         testfile = new File("src/test/resources", "gdv/xport/satz/testcase_0220_010_48_v2_2_error.txt");
         datenpaket2_2.importFrom(testfile, Charset.forName("IBM850"));
         datenpaket2_2.validate();
-        assertFalse("Datenpaket darf nicht gültig sein", datenpaket2_2.isValid());
+        assertFalse("Datenpaket darf nicht gueltig sein", datenpaket2_2.isValid());
     }
 
 }

@@ -54,21 +54,6 @@ public class Datenpaket {
     private final List<Datensatz> datensaetze = new ArrayList<>();
     private Nachsatz nachsatz = new Nachsatz();
 
-    private static final int[] spartenIdentischZu_000 = {60, 63, 65, 69, 160,
-            161, 162, 169, 233, 240, 241, 242, 243, 249, 250, 251, 252, 290, 291, 293,
-            294, 296, 299, 630, 650};
-
-    private static final int[] spartenIdentischZu_080 = {80, 81, 82, 83, 89,
-            90, 99, 100, 109, 120, 123, 124, 150, 210, 230, 231};
-
-    private static final int[] spartenIdentischZu_170 = {170, 171, 172, 174,
-            175, 176, 179, 232};
-
-    private static final int[] spartenIdentischZu_190 = {180, 181, 182, 183,
-            184, 185, 189, 190, 191, 192, 193, 194, 197, 199};
-
-    private static final int[] spartenIdentischZu_510 = {241, 244, 510};
-
     /**
      * Wenn man den Default-Konstruktor verwendet, sollte man vorher die
      * VU-Nummer konfiguriert haben.
@@ -115,6 +100,7 @@ public class Datenpaket {
                 datenpaket.vorsatz = (Vorsatz) satz;
             } else if (satz instanceof Nachsatz) {
                 datenpaket.nachsatz = (Nachsatz) satz;
+                datenpaket.vorsatz.setVersion(datenpaket.nachsatz);
             } else {
                 dsList.add((Datensatz) satz);
             }
@@ -442,7 +428,7 @@ public class Datenpaket {
      * @return das Datenpaket zur Weiterverabeitung
      * @throws IOException falls was schief gelaufen ist
      */
-    public static Satz importSatz(PushbackLineNumberReader reader, Map<SatzTyp, Version> satzartVersionen) throws IOException {
+    protected static Satz importSatz(PushbackLineNumberReader reader, Map<SatzTyp, Version> satzartVersionen) throws IOException {
         int satzart = Satz.readSatzart(reader);
         LOG.debug("Satzart {} wird importiert...", satzart);
         if (satzart == 9999) {
