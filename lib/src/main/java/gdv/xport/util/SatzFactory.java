@@ -88,7 +88,7 @@ public final class SatzFactory {
      */
     @Deprecated
     public static void registerEnum(final Class<? extends Enum> enumClass, final int satzart) {
-        registerEnum(enumClass, new SatzTyp(satzart));
+        registerEnum(enumClass, SatzTyp.of(satzart));
     }
 
     /**
@@ -106,7 +106,7 @@ public final class SatzFactory {
      */
     @Deprecated
     public static void registerEnum(final Class<? extends Enum> enumClass, final int satzart, final int sparte) {
-        registerEnum(enumClass, new SatzTyp(satzart, sparte));
+        registerEnum(enumClass, SatzTyp.of(satzart, sparte));
     }
 
     /**
@@ -134,7 +134,7 @@ public final class SatzFactory {
      */
     @Deprecated
     public static void unregister(final int satzart) {
-        SatzTyp key = new SatzTyp(satzart);
+        SatzTyp key = SatzTyp.of(satzart);
         unregister(key);
     }
 
@@ -165,7 +165,7 @@ public final class SatzFactory {
      */
     @Deprecated
     public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte) {
-        register(clazz, new SatzTyp(satzart, sparte));
+        register(clazz, SatzTyp.of(satzart, sparte));
     }
 
     /**
@@ -194,7 +194,7 @@ public final class SatzFactory {
      */
     @Deprecated
     public static void unregister(final int satzart, final int sparte) {
-        unregister(new SatzTyp(satzart, sparte));
+        unregister(SatzTyp.of(satzart, sparte));
     }
 
     /**
@@ -235,7 +235,7 @@ public final class SatzFactory {
      */
     @Deprecated
     public static Satz getSatz(final int satzart) {
-        return getSatz(new SatzTyp(satzart));
+        return getSatz(SatzTyp.of(satzart));
     }
     
     /**
@@ -319,7 +319,7 @@ public final class SatzFactory {
      */
     @Deprecated
     public static Datensatz getDatensatz(final int satzart, final int sparte) {
-        return getDatensatz(new SatzTyp(satzart, sparte));
+        return getDatensatz(SatzTyp.of(satzart, sparte));
     }
 
     /**
