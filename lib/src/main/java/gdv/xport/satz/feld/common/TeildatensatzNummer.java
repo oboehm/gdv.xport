@@ -85,6 +85,9 @@ public enum TeildatensatzNummer {
 				return existing;
 			}
 		}
+		if (code > 0 && code < BEZUGSRECHTE.getCode()) {
+			return EINS;
+		}
 		return TeildatensatzNummer.NULL;
 	}
 }
