@@ -19,7 +19,10 @@
 package gdv.xport.satz.xml;
 
 import gdv.xport.config.Config;
-import gdv.xport.util.*;
+import gdv.xport.util.NotRegisteredException;
+import gdv.xport.util.NotUniqueException;
+import gdv.xport.util.SatzTyp;
+import gdv.xport.util.XmlHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import patterntesting.runtime.log.LogWatch;
@@ -33,7 +36,10 @@ import javax.xml.stream.events.XMLEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Hier wird jetzt eine XML-Beschreibung verwendet, um die Saetze fuer die
@@ -394,9 +400,7 @@ public class XmlService {
         if (satz == null) {
             throw new NotRegisteredException(satzNr);
         }
-        SatzXml copy = new SatzXml(satz);
-        copy.init(satzNr);
-        return copy;
+        return new SatzXml(satz);
     }
 
     /**
@@ -408,10 +412,7 @@ public class XmlService {
     public Map<SatzTyp, SatzXml> getSatzarten() {
         Map<SatzTyp, SatzXml> copy = new HashMap<>();
         for (Map.Entry<SatzTyp, SatzXml> entry : satzarten.entrySet()) {
-            SatzTyp satzTyp = entry.getKey();
-            SatzXml satz = new SatzXml(entry.getValue());
-            satz.init(satzTyp);
-            copy.put(satzTyp, satz);
+            copy.put(entry.getKey(), new SatzXml(entry.getValue()));
         }
         return copy;
     }
