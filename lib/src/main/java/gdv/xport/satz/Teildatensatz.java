@@ -518,7 +518,9 @@ public class Teildatensatz extends Satz {
      * @param feldX the feld x
      * @return true, falls Feld vorhanden ist.
      * @since 0.9
+     * @deprecated inzwischen durch {@link #hasFeld(Bezeichner)} abgeloest
      */
+    @Deprecated
     public boolean hasFeld(final Enum feldX) {
         return this.hasFeld(Bezeichner.of(feldX));
     }
