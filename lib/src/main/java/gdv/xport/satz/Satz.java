@@ -291,6 +291,28 @@ public abstract class Satz implements Cloneable {
 		this.teildatensatz = ArrayUtils.remove(this.teildatensatz, n - 1);
 	}
 
+    /**
+     * Entfernt den gewuenschten Teildatensatz mit der wirklichen Satznummer n.
+     *
+     * @param n wirkliche Satznummer des Teildatensatzes
+     */
+    public final void removeTeildatensatzBySatzNr(final int n) {
+        boolean treffer = false;
+        int index = 0;
+
+        for (Teildatensatz tds : this.teildatensatz) {
+             if (Integer.parseInt(tds.getSatznummer().getInhalt()) == n)
+                 treffer = true;
+             else
+                 index++;
+        }
+
+        if (!treffer)
+            throw new IllegalArgumentException("Teildatensatz " + n + " existiert nicht.");
+
+        this.teildatensatz = ArrayUtils.remove(this.teildatensatz, index);
+    }
+
 	/**
 	 * Und hierueber kann ein Teildatensatz hinzugefuegt werden.
 	 *
@@ -578,7 +600,7 @@ public abstract class Satz implements Cloneable {
      * 
      * @param version die Satzversion
      */
-    public final void setSatzversion(final String version) {
+    private final void setSatzversion(final String version) {
         this.satzVersion.setInhalt(version);
     }
 
@@ -1243,7 +1265,7 @@ public abstract class Satz implements Cloneable {
             	// pruefe ob dieser oder einer der naechsten Teildatensaetze zur gelieferten Satznummer passen
 				char nr = Satznummer.readSatznummer(reader, teildatensatz[j]).toChar();
 				if (!Character.isDigit(nr) || (teildatensatz[j].getSatznummer().toChar() != nr)) {
-					LOG.info("Zeile {}: {} erwartet statt {} - ueberspringe Teildatensatz {}.",
+					LOG.debug("Zeile {}: {} erwartet statt {} - ueberspringe Teildatensatz {}.",
 							reader.getLineNumber(), teildatensatz[j].getSatznummer(), nr, j+1);
 					continue;
 				}
