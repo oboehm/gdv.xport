@@ -174,37 +174,39 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
     @Test
     public void testWriteDatensatz() throws IOException, XMLStreamException {
         Datenpaket datenpaket = new Datenpaket();
-        formatDatenpaket(datenpaket, "datenpaket.xml");
+        formatDatenpaket(datenpaket, "TEST", "datenpaket.xml");
     }
 
     @Test
     public void testFormatAllSupportedSaetze() throws IOException, XMLStreamException {
         Datenpaket datenpaket = SatzFactory.getAllSupportedSaetze();
-        formatDatenpaket(datenpaket, "datenpaket2018.xml");
+        formatDatenpaket("VUVM2018.xml", "datenpaket2018.xml");
     }
 
     @Test
     public void testFormatAllSupportedSaetze2015() throws IOException, XMLStreamException {
-        Datenpaket datenpaket = SatzRegistry.getInstance("VUVM2015.xml").getAllSupportedSaetze();
-        formatDatenpaket(datenpaket, "datenpaket2015.xml");
+        formatDatenpaket("VUVM2015.xml", "datenpaket2015.xml");
     }
 
     @Test
     public void testFormatAllSupportedSaetze2013() throws IOException, XMLStreamException {
-        Datenpaket datenpaket = SatzRegistry.getInstance("VUVM2013.xml").getAllSupportedSaetze();
-        formatDatenpaket(datenpaket, "datenpaket2013.xml");
+        formatDatenpaket("VUVM2013.xml", "datenpaket2013.xml");
     }
 
     @Test
     public void testFormatAllSupportedSaetze2009() throws IOException, XMLStreamException {
-        Datenpaket datenpaket = SatzRegistry.getInstance("VUVM2009.xml").getAllSupportedSaetze();
-        formatDatenpaket(datenpaket, "datenpaket2009.xml");
+        formatDatenpaket("VUVM2009.xml", "datenpaket2009.xml");
     }
 
-    private void formatDatenpaket(Datenpaket datenpaket, String filename) throws IOException, XMLStreamException {
+    private void formatDatenpaket(String gdvXml, String filename) throws IOException, XMLStreamException {
+        Datenpaket datenpaket = SatzRegistry.getInstance(gdvXml).getAllSupportedSaetze();
+        formatDatenpaket(datenpaket, SatzRegistry.getInstance(gdvXml).getGdvRelease(), filename);
+    }
+
+    private void formatDatenpaket(Datenpaket datenpaket, String stand, String filename) throws IOException, XMLStreamException {
         File target = new File(XML_DIR, filename);
         try (FileOutputStream ostream = new FileOutputStream(target);
-             GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
+             GdvXmlFormatter formatter = new GdvXmlFormatter(ostream, stand)) {
             formatter.write(datenpaket);
         }
         XmlService xmlService = XmlService.getInstance(target.toURI());
