@@ -27,20 +27,27 @@ public class VersionenHashMap extends HashMap<SatzTyp, Version> {
 
     @Override
     public Version get(Object satzTyp) {
-        Optional<Entry<SatzTyp, Version>> entry = findEntry(satzTyp);
-        return entry.map(Entry::getValue).orElse(null);
+        Version v = super.get(satzTyp);
+        if (v == null) {
+            Optional<Entry<SatzTyp, Version>> entry = findEntry(satzTyp);
+            v = entry.map(Entry::getValue).orElse(null);
+        }
+        return v;
     }
 
     private Optional<Entry<SatzTyp, Version>> findEntry(Object key) {
         if (!(key instanceof SatzTyp)) {
             return Optional.empty();
         }
-
         SatzTyp satzTyp = (SatzTyp) key;
         return entrySet().stream()
-                .filter(e -> e.getKey().getSatzart() == satzTyp.getSatzart() && (!satzTyp.hasSparte() || !e.getKey().hasSparte() || e.getKey().getSparte() == satzTyp.getSparte()))
-                .sorted(Comparator.comparingInt(e1 -> -e1.getKey().getSparte()))
-                .findFirst();
+                .filter(e -> matches(e, satzTyp)).min(Comparator.comparingInt(e1 -> -e1.getKey().getSparte()));
+    }
+
+    private static boolean matches(Entry<SatzTyp, Version> e, SatzTyp satzTyp) {
+        SatzTyp stored = e.getKey();
+        return stored.getSatzart() == satzTyp.getSatzart() &&
+                (!satzTyp.hasSparte() || !stored.hasSparte() || stored.getSparte() == satzTyp.getSparte());
     }
 
 }

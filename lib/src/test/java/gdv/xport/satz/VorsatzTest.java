@@ -254,7 +254,7 @@ public final class VorsatzTest extends AbstractSatzTest {
 
     @Test
     public void testSetVersionSatzart() {
-        vorsatz.setVersion(200, "2.0");
+        vorsatz.setVersion(Bezeichner.SATZART_0200, "2.0");
         assertEquals("2.0", vorsatz.getVersion(200));
     }
 
@@ -286,6 +286,7 @@ public final class VorsatzTest extends AbstractSatzTest {
         assertEquals("2.4", versionen.get(SatzTyp.of(1)).getInhalt());
         assertEquals("2.4", versionen.get(SatzTyp.of(220, 30)).getInhalt());
         assertEquals("1.7", versionen.get(SatzTyp.of(210, 190)).getInhalt());
+        assertEquals("1.3", versionen.get(SatzTyp.of(220, 0)).getInhalt());
         assertEquals("1.3", versionen.get(SatzTyp.of(220, 295)).getInhalt());
     }
 
