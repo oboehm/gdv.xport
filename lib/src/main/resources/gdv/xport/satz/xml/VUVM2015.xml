@@ -26,7 +26,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.4</version>
-			<!-- Teildatensatz 1 Satzart 0001. -->
+			<!-- Teildatensatz 1 Satzart 0001 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -331,7 +331,7 @@
 				<auspraegung>1</auspraegung>
 			</feldreferenz>
 			<satzende/>
-			<!-- Teildatensatz 2 Satzart 0001. -->
+			<!-- Teildatensatz 2 Satzart 0001 -->
 			<satzanfang teilsatz="2"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -626,7 +626,7 @@
 				<auspraegung>2</auspraegung>
 			</feldreferenz>
 			<satzende/>
-			<!-- Teildatensatz 3 Satzart 0001. -->
+			<!-- Teildatensatz 3 Satzart 0001 -->
 			<satzanfang teilsatz="3"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -1950,7 +1950,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>1.0</version>
-			<!-- Teildatensatz 1 Satzart 0221.010 -->
+			<!-- Teildatensatz 1 Satzart 0221.010.5.1 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -2021,7 +2021,7 @@
 				<auspraegung>1</auspraegung>
 			</feldreferenz>
 			<satzende/>
-			<!-- Teildatensatz 2 Satzart 0221.010 -->
+			<!-- Teildatensatz 2 Satzart 0221.010.5.1 -->
 			<satzanfang teilsatz="2"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -2107,7 +2107,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>1.0</version>
-			<!-- Teildatensatz 1 Satzart 0372.000 -->
+			<!-- Teildatensatz 1 Satzart 0372 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -2217,7 +2217,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>1.1</version>
-			<!-- Teildatensatz 1 Satzart 0220.580 -->
+			<!-- Teildatensatz 1 Satzart 0220.580.2 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -2368,7 +2368,7 @@
 				<technischerName>Leerstellen</technischerName>
 			</feldreferenz>
 			<satzende/>
-			<!-- Teildatensatz 2 Satzart 0220.580 -->
+			<!-- Teildatensatz 2 Satzart 0220.580.2 -->
 			<satzanfang teilsatz="2"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -2494,7 +2494,7 @@
 				<technischerName>Leerstellen</technischerName>
 			</feldreferenz>
 			<satzende/>
-			<!-- Teildatensatz 3 Satzart 0220.580 -->
+			<!-- Teildatensatz 3 Satzart 0220.580.2 -->
 			<satzanfang teilsatz="3"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -2666,7 +2666,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>1.0</version>
-			<!-- Teildatensatz 2 Satzart 0221.010 -->
+			<!-- Teildatensatz 2 Satzart 0221.010.48.1 -->
 			<satzanfang teilsatz="2"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -2984,7 +2984,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>1.7</version>
-			<!-- Teildatensatz 1 Satzart 0400.000 -->
+			<!-- Teildatensatz 1 Satzart 0400 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -3214,7 +3214,7 @@
 				<auspraegung>1</auspraegung>
 			</feldreferenz>
 			<satzende/>
-			<!-- Teildatensatz 2 Satzart 0400.000 -->
+			<!-- Teildatensatz 2 Satzart 0400 -->
 			<satzanfang teilsatz="2"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -3497,7 +3497,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>1.0</version>
-			<!-- Teildatensatz 8 Satzart 0221.010 -->
+			<!-- Teildatensatz 8 Satzart 0221.010.5.8 -->
 			<satzanfang teilsatz="8"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -3803,7 +3803,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 1 Satzart 0220.010 -->
+			<!-- Teildatensatz 1 Satzart 0220.010.0 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -3980,7 +3980,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>1.0</version>
-			<!-- Teildatensatz 8 Satzart 0221.010 -->
+			<!-- Teildatensatz 8 Satzart 0221.010.13.8 -->
 			<satzanfang teilsatz="8"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -4470,7 +4470,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 1 Satzart 0220.010 -->
+			<!-- Teildatensatz 1 Satzart 0220.010.48.1 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -4706,7 +4706,7 @@
 				<auspraegung>1</auspraegung>
 			</feldreferenz>
 			<satzende/>
-			<!-- Teildatensatz 2 Satzart 0220.010 -->
+			<!-- Teildatensatz 2 Satzart 0220.010.48.1 -->
 			<satzanfang teilsatz="2"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -5115,7 +5115,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 8 Satzart 0220.010 -->
+			<!-- Teildatensatz 8 Satzart 0220.010.48.8 -->
 			<satzanfang teilsatz="8"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -5328,7 +5328,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>1.0</version>
-			<!-- Teildatensatz 1 Satzart 0221.010 -->
+			<!-- Teildatensatz 1 Satzart 0221.010.13.1 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -5429,7 +5429,7 @@
 				<auspraegung>1</auspraegung>
 			</feldreferenz>
 			<satzende/>
-			<!-- Teildatensatz 2 Satzart 0221.010 -->
+			<!-- Teildatensatz 2 Satzart 0221.010.13.1 -->
 			<satzanfang teilsatz="2"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -5521,7 +5521,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 6 Satzart 0220.010 -->
+			<!-- Teildatensatz 6 Satzart 0220.010.48.6 -->
 			<satzanfang teilsatz="6"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -5633,7 +5633,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 9 Satzart 0220.010 -->
+			<!-- Teildatensatz 9 Satzart 0220.010.6.9 -->
 			<satzanfang teilsatz="9"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -5804,7 +5804,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>1.0</version>
-			<!-- Teildatensatz 1 Satzart 0382.000 -->
+			<!-- Teildatensatz 1 Satzart 0382 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -5950,7 +5950,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 8 Satzart 0220.010 -->
+			<!-- Teildatensatz 8 Satzart 0220.010.6.8 -->
 			<satzanfang teilsatz="8"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -6077,7 +6077,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>1.0</version>
-			<!-- Teildatensatz 7 Satzart 0221.010 -->
+			<!-- Teildatensatz 7 Satzart 0221.010.13.7 -->
 			<satzanfang teilsatz="7"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -6270,7 +6270,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 9 Satzart 0220.010 -->
+			<!-- Teildatensatz 9 Satzart 0220.010.48.9 -->
 			<satzanfang teilsatz="9"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -6447,7 +6447,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 6 Satzart 0220.010 -->
+			<!-- Teildatensatz 6 Satzart 0220.010.6.6 -->
 			<satzanfang teilsatz="6"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -6559,7 +6559,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 9 Satzart 0220.010 -->
+			<!-- Teildatensatz 9 Satzart 0220.010.2.9 -->
 			<satzanfang teilsatz="9"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -6852,7 +6852,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 8 Satzart 0220.010 -->
+			<!-- Teildatensatz 8 Satzart 0220.010.2.8 -->
 			<satzanfang teilsatz="8"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -7110,7 +7110,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 7 Satzart 0220.010 -->
+			<!-- Teildatensatz 7 Satzart 0220.010.2.7 -->
 			<satzanfang teilsatz="7"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -7353,7 +7353,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 6 Satzart 0220.010 -->
+			<!-- Teildatensatz 6 Satzart 0220.010.2.6 -->
 			<satzanfang teilsatz="6"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -7485,7 +7485,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 1 Satzart 0220.010 -->
+			<!-- Teildatensatz 1 Satzart 0220.010.6.1 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -7656,7 +7656,7 @@
 				<auspraegung>1</auspraegung>
 			</feldreferenz>
 			<satzende/>
-			<!-- Teildatensatz 2 Satzart 0220.010 -->
+			<!-- Teildatensatz 2 Satzart 0220.010.6.1 -->
 			<satzanfang teilsatz="2"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -7913,7 +7913,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>1.6</version>
-			<!-- Teildatensatz 1 Satzart 0410.000 -->
+			<!-- Teildatensatz 1 Satzart 0410 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -8173,7 +8173,7 @@
 				</feldreferenz>
 			</kennzeichnung>
 			<version>2.1</version>
-			<!-- Teildatensatz 1 Satzart 0220.010 -->
+			<!-- Teildatensatz 1 Satzart 0220.010.2.1 -->
 			<satzanfang teilsatz="1"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -8424,7 +8424,7 @@
 				<auspraegung>1</auspraegung>
 			</feldreferenz>
 			<satzende/>
-			<!-- Teildatensatz 2 Satzart 0220.010 -->
+			<!-- Teildatensatz 2 Satzart 0220.010.2.1 -->
 			<satzanfang teilsatz="2"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
@@ -8590,7 +8590,7 @@
 				<auspraegung>2</auspraegung>
 			</feldreferenz>
 			<satzende/>
-			<!-- Teildatensatz 3 Satzart 0220.010 -->
+			<!-- Teildatensatz 3 Satzart 0220.010.2.1 -->
 			<satzanfang teilsatz="3"/>
 			<!-- NumFeld Satzart (1-4) -->
 			<feldreferenz referenz="001-004-Satzart-Numerisch">
