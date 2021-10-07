@@ -290,4 +290,18 @@ public class SatzTypTest {
         assertEquals("000", x.getSparteMitArt());
     }
 
+    @Test
+    public void testSatzTyp220Sparte81() {
+        SatzTyp x = SatzTyp.of(220, 81);
+        assertEquals(81, x.getSparte());
+        assertEquals("0220.080", x.getGdvSatzartName());
+    }
+
+    @Test
+    public void testSatzTyp220Sparte296() {
+        SatzTyp x = SatzTyp.of(220, 296);
+        assertEquals(296, x.getSparte());
+        assertEquals("0220.000", x.getGdvSatzartName());
+    }
+
 }
