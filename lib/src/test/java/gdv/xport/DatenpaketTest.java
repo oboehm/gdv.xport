@@ -802,7 +802,7 @@ public final class DatenpaketTest {
         File testfile = new File("src/test/resources", "gdv/xport/satz/testcase_0220_010_48_v2_1.txt");
         datenpaket2_1.importFrom(testfile, Charset.forName("IBM850"));
         datenpaket2_1.validate();
-        assertTrue("Datenpaket muss gültig sein", datenpaket2_1.isValid());
+        assertTrue("Datenpaket muss gueltig sein", datenpaket2_1.isValid());
 
         Datenpaket datenpaket2_2 = new Datenpaket();
         testfile = new File("src/test/resources", "gdv/xport/satz/testcase_0220_010_48_v2_2_error.txt");
