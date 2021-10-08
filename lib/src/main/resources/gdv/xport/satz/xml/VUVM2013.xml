@@ -564,10 +564,10 @@
 				<name>Satzart 0102</name>
 				<technischerName>Satzart0102</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld Satzart0212 (216-218) -->
-			<feldreferenz referenz="216-218-Satzart0212-Alphanumerisch">
+			<!-- AlphaNumFeld Satzart0212050 (216-218) -->
+			<feldreferenz referenz="216-218-Satzart0212050-Alphanumerisch">
 				<name>Satzart 0212</name>
-				<technischerName>Satzart0212</technischerName>
+				<technischerName>Satzart0212050</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0352 (219-221) -->
 			<feldreferenz referenz="219-221-Satzart0352-Alphanumerisch">
@@ -12361,10 +12361,10 @@
 				<name>Datum der ersten Auszahlung</name>
 				<technischerName>DatumDerErstenAuszahlung</technischerName>
 			</feldreferenz>
-			<!-- NumFeld Effektivzins (217-221) -->
-			<feldreferenz referenz="217-221-Effektivzins-Fliesskomma">
+			<!-- NumFeld EffektivzinsInProzent (217-221) -->
+			<feldreferenz referenz="217-221-EffektivzinsInProzent-Fliesskomma">
 				<name>Effektivzins in Prozent</name>
-				<technischerName>Effektivzins</technischerName>
+				<technischerName>EffektivzinsInProzent</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (222-256) -->
 			<feldreferenz referenz="222-256-Leerstellen-Alphanumerisch">
@@ -45922,7 +45922,7 @@
 			<bytes>3</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="216-218-Satzart0212-Alphanumerisch">
+		<feld referenz="216-218-Satzart0212050-Alphanumerisch">
 			<name>Satzart 0212</name>
 			<bytes>3</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -45970,6 +45970,12 @@
 		</feld>
 		<feld referenz="217-221-Effektivzins-Fliesskomma">
 			<name>Effektivzins</name>
+			<bytes>5</bytes>
+			<datentyp>Fliesskomma</datentyp>
+			<nachkommastellen>3</nachkommastellen>
+		</feld>
+		<feld referenz="217-221-EffektivzinsInProzent-Fliesskomma">
+			<name>Effektivzins in Prozent</name>
 			<bytes>5</bytes>
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>3</nachkommastellen>
