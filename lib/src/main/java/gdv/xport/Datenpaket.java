@@ -551,7 +551,21 @@ public class Datenpaket {
 
     /**
      * Fasst benachbarte Saetze mit Luecken zusammen, sofern es sinnvoll ist.
-     * Diese Version wurde mit Issue #62 eingefuehrt.
+     * So kann z.B. folgende Reihenfolge in den Datensaetzen vorkommen:
+     * <pre>
+     *     0220.010.13.1 Teildatensatz 1
+     *     0221.010.13.1 Teildatensatz 1
+     *     0220.010.13.1 Teildatensatz 2
+     * </pre>
+     * Logisch gehoeren Teildatensatz 1 und 2 von Satzart 0220.010.13.1
+     * zusammen. Gemaess den FAQ des GDVs ist es wohl zulaessig, dass
+     * Teildatensatz 1 von Satzart 0221.xxx dazwischen stehen darf. Daher
+     * fasst die pack-Methode dieses getrennten Teildatensaetze wieder
+     * zusammen.
+     * <p>
+     * Diese Version wurde mit Issue #62 eingefuehrt. Naehere Infos siehe
+     * https://github.com/oboehm/gdv.xport/issues/62.
+     * </p>
      *
      * @return das Datenpaket selbst zur Weiterverarbeitung
      * @since 5.2
