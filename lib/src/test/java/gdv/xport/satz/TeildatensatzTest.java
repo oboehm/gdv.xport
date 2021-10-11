@@ -159,11 +159,11 @@ public class TeildatensatzTest extends AbstractSatzTest {
         name1.setInhalt("Mickey");
         orig.add(name1);
         Teildatensatz copy = new Teildatensatz(orig);
-        assertEqualsFeld(orig.getFeld(Feld100.NAME1), copy.getFeld(Feld100.NAME1));
+        assertEqualsFeld(orig.getFeld(Bezeichner.NAME1), copy.getFeld(Bezeichner.NAME1));
         assertEquals(orig, copy);
-        copy.set(Feld100.NAME1, "Goofy");
-        assertEquals("Goofy", copy.get(Feld100.NAME1).trim());
-        assertEquals("Mickey", orig.get(Feld100.NAME1).trim());
+        copy.setFeld(Bezeichner.NAME1, "Goofy");
+        assertEquals("Goofy", copy.getFeld(Bezeichner.NAME1).getInhalt().trim());
+        assertEquals("Mickey", orig.getFeld(Bezeichner.NAME1).getInhalt().trim());
     }
 
     private static void assertEqualsFeld(final Feld one, final Feld two) {

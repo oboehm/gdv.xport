@@ -391,20 +391,6 @@ public class Teildatensatz extends Satz {
     }
 
     /**
-     * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
-     * benutzt, um das Feld zu bestimmen. Dazu werden auch die Konstanten in
-     * {@link gdv.xport.feld.Bezeichner} verwendet.
-     *
-     * @param feldX gewuenschtes Feld-Element
-     * @return das gesuchte Feld
-     * @throws IllegalArgumentException falls es das Feld nicht gibt
-     */
-    @Override
-    public Feld getFeld(final Enum feldX) throws IllegalArgumentException {
-        return getFeld(Bezeichner.of(feldX));
-    }
-
-    /**
      * Liefert das gewuenschte Feld.
      *
      * @param bezeichner gewuenschter Bezeichner des Feldes

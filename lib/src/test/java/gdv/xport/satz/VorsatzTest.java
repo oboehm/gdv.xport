@@ -24,7 +24,6 @@ import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.Version;
-import gdv.xport.satz.feld.Feld0001;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
@@ -201,17 +200,6 @@ public final class VorsatzTest extends AbstractSatzTest {
         String adressat = "Obelix";
         vorsatz.setAdressat(adressat);
         assertEquals(adressat, vorsatz.getAdressat());
-    }
-
-    /**
-     * Testfall fuer Issue 10
-     * (https://github.com/oboehm/gdv.xport/issues/10).
-     */
-    @Test
-    public void testIssue10() {
-        Feld a1 = vorsatz.getFeld(Bezeichner.ART_DES_ADRESSATEN);
-        Feld a2 = vorsatz.getFeld(Feld0001.ART_DES_ADRESSATEN);
-        assertEquals(a1, a2);
     }
 
     @Test

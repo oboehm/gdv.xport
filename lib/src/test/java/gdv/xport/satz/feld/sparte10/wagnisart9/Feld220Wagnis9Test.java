@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.feld.sparte10.wagnisart9;
 
+import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
@@ -72,7 +73,7 @@ public class Feld220Wagnis9Test extends AbstractDatensatzTest {
                 + "                                                               6"
                 + "\n";
         wagnisdaten.importFrom(input);
-        Feld wagnisart = wagnisdaten.getFeld(Feld220Wagnis9.WAGNISART);
+        Feld wagnisart = wagnisdaten.getFeld(Bezeichner.WAGNISART);
         assertEquals("9", wagnisart.getInhalt());
         checkDatensatz(wagnisdaten, input);
     }

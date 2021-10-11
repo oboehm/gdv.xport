@@ -300,7 +300,7 @@ public final class DatenpaketTest {
             }
         }
 
-        assertTrue("There are teildatensaetze with wrong satznummern: (datensatz, teildatensatz) -> " + wrongDatensatzTeildatensatzList.toString(), wrongDatensatzTeildatensatzList.isEmpty());
+        assertTrue("There are teildatensaetze with wrong satznummern: (datensatz, teildatensatz) -> " + wrongDatensatzTeildatensatzList, wrongDatensatzTeildatensatzList.isEmpty());
 
         assertEquals("BRBRIENNEE,J\u00dcRGEN", datenpaket.getAdressat());
     }
@@ -377,7 +377,7 @@ public final class DatenpaketTest {
         Config.setEOD("\n");
         String muster = getResourceAsString("/musterdatei_041222.txt");
         datenpaket.importFrom(muster);
-        Satz vertragsteil = datenpaket.getDatensaetze().get(2);
+        Satz vertragsteil = datenpaket.getDatensaetze().get(1);
         Feld vertragsstatus = vertragsteil.getFeld(Bezeichner.VERTRAGSSTATUS);
         assertEquals("1", vertragsstatus.getInhalt());
         checkExportWith(muster);
