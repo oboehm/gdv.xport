@@ -406,28 +406,80 @@ public class Vorsatz extends Satz {
      * @since 5.2
      */
     public Map<SatzTyp, Version> getSatzartVersionen() {
-        VersionenHashMap versionen = new VersionenHashMap();
+        Map<SatzTyp, Version> versionen = new HashMap<>();
         for (Feld f : getFelder()) {
             if (!f.isEmpty() && f.getBezeichner().getTechnischerName().startsWith("Satzart")
                     && !f.getBezeichner().equals(Bezeichner.SATZART)) {
                 Version v = new Version(f);
-                versionen.put(v.getSatzTyp(), v);
+                switch (f.getBezeichner().getTechnischerName()) {
+                    case "Satzart0220020":
+                        // alle 0220.020er Satzarten haben die gleiche Version!
+                        versionen.put(SatzTyp.of("0220.020.1"), v);
+                        versionen.put(SatzTyp.of("0220.020.2"), v);
+                        versionen.put(SatzTyp.of("0220.020.3"), v);
+                        break;
+                    case "Satzart0220580":
+                        // alle 0220.580er Satzarten haben die gleiche Version!
+                        versionen.put(SatzTyp.of("0220.580.01"), v);
+                        versionen.put(SatzTyp.of("0220.580.2"), v);
+                        break;
+                    case "Satzart0220010":
+                        // alle 0220.010er Satzarten haben die gleiche Version!
+                        versionen.put(SatzTyp.of("0220.010.0"), v);
+                        versionen.put(SatzTyp.of("0220.010.13.1"), v);
+                        versionen.put(SatzTyp.of("0220.010.13.6"), v);
+                        versionen.put(SatzTyp.of("0220.010.13.7"), v);
+                        versionen.put(SatzTyp.of("0220.010.13.8"), v);
+                        versionen.put(SatzTyp.of("0220.010.13.9"), v);
+                        versionen.put(SatzTyp.of("0220.010.2.1"), v);
+                        versionen.put(SatzTyp.of("0220.010.2.6"), v);
+                        versionen.put(SatzTyp.of("0220.010.2.7"), v);
+                        versionen.put(SatzTyp.of("0220.010.2.8"), v);
+                        versionen.put(SatzTyp.of("0220.010.2.9"), v);
+                        versionen.put(SatzTyp.of("0220.010.48.1"), v);
+                        versionen.put(SatzTyp.of("0220.010.48.6"), v);
+                        versionen.put(SatzTyp.of("0220.010.48.8"), v);
+                        versionen.put(SatzTyp.of("0220.010.48.9"), v);
+                        versionen.put(SatzTyp.of("0220.010.5.1"), v);
+                        versionen.put(SatzTyp.of("0220.010.5.6"), v);
+                        versionen.put(SatzTyp.of("0220.010.5.8"), v);
+                        versionen.put(SatzTyp.of("0220.010.5.9"), v);
+                        versionen.put(SatzTyp.of("0220.010.6.1"), v);
+                        versionen.put(SatzTyp.of("0220.010.6.6"), v);
+                        versionen.put(SatzTyp.of("0220.010.6.8"), v);
+                        versionen.put(SatzTyp.of("0220.010.6.9"), v);
+                        versionen.put(SatzTyp.of("0220.010.7.1"), v);
+                        versionen.put(SatzTyp.of("0220.010.7.6"), v);
+                        versionen.put(SatzTyp.of("0220.010.7.8"), v);
+                        versionen.put(SatzTyp.of("0220.010.7.9"), v);
+                        versionen.put(SatzTyp.of("0220.010.9.1"), v);
+                        versionen.put(SatzTyp.of("0220.010.9.6"), v);
+                        versionen.put(SatzTyp.of("0220.010.9.7"), v);
+                        versionen.put(SatzTyp.of("0220.010.9.8"), v);
+                        versionen.put(SatzTyp.of("0220.010.9.9"), v);
+                        break;
+                    case "Satzart0221010":
+                        // alle 0221.010er Satzarten haben die gleiche Version!
+                        versionen.put(SatzTyp.of("0221.010.13.1"), v);
+                        versionen.put(SatzTyp.of("0221.010.13.7"), v);
+                        versionen.put(SatzTyp.of("0221.010.13.8"), v);
+                        versionen.put(SatzTyp.of("0221.010.2.1"), v);
+                        versionen.put(SatzTyp.of("0221.010.2.7"), v);
+                        versionen.put(SatzTyp.of("0221.010.2.8"), v);
+                        versionen.put(SatzTyp.of("0221.010.48.1"), v);
+                        versionen.put(SatzTyp.of("0221.010.5.1"), v);
+                        versionen.put(SatzTyp.of("0221.010.5.8"), v);
+                        versionen.put(SatzTyp.of("0221.010.6.1"), v);
+                        versionen.put(SatzTyp.of("0221.010.6.8"), v);
+                        versionen.put(SatzTyp.of("0221.010.7.1"), v);
+                        versionen.put(SatzTyp.of("0221.010.7.8"), v);
+                        break;
+                    default:
+                        versionen.put(v.getSatzTyp(), v);
+                }
             }
         }
         return versionen;
-    }
-
-    /**
-     * Da im Feld "Erstellungs-Datum Zeitraum vom- Zeitraum bis" (Adresse 70-85)
-     * 2 Datumsfelder zusammengefasst sind, ist diese Methode ueberschrieben,
-     * um diese beiden Felder auch einzeln abfragen zu koennen.
-     *
-     * @param bezeichner gesuchtes Field
-     * @return Wert des Feldes als String
-     */
-    @Override
-    public String get(Bezeichner bezeichner) {
-        return getFeld(bezeichner).getInhalt();
     }
 
     /**
@@ -473,48 +525,49 @@ public class Vorsatz extends Satz {
 
 
 
-    /**
-     * Die Idee bei der VersionenHashMap ist, bei der Abfrage der Versionen fuer
-     * einen bestimmte Satzart (also z.B. 0220.010.7.6) eben nur auf die
-     * "uebergeordnete" Gruppe zu gehen (in dem Falle 0220.010, da nur für diese
-     * Kombination eine Version im Vorsatz geliefert wird).
-     * Diese Logik ist bei {@link VersionenHashMap#get(Object)} abgebildet (s.a.
-     * https://github.com/oboehm/gdv.xport/issues/64#issuecomment-924107450).
-     *
-     * @since 5.2
-     * @author markusneidhart
-     */
-    private static class VersionenHashMap extends HashMap<SatzTyp, Version> {
+//    /**
+//     * Die Idee bei der VersionenHashMap ist, bei der Abfrage der Versionen fuer
+//     * einen bestimmte Satzart (also z.B. 0220.010.7.6) eben nur auf die
+//     * "uebergeordnete" Gruppe zu gehen (in dem Falle 0220.010, da nur für diese
+//     * Kombination eine Version im Vorsatz geliefert wird).
+//     * Diese Logik ist bei {@link VersionenHashMap#get(Object)} abgebildet (s.a.
+//     * https://github.com/oboehm/gdv.xport/issues/64#issuecomment-924107450).
+//     *
+//     * @since 5.2
+//     * @author markusneidhart
+//     */
+//    private static class VersionenHashMap extends HashMap<SatzTyp, Version> {
+//
+//        @Override
+//        public boolean containsKey(Object satzTyp) {
+//            return findEntry(satzTyp).isPresent();
+//        }
+//
+//        @Override
+//        public Version get(Object satzTyp) {
+//            Version v = super.get(satzTyp);
+//            if (v == null) {
+//                Optional<Entry<SatzTyp, Version>> entry = findEntry(satzTyp);
+//                v = entry.map(Entry::getValue).orElse(null);
+//            }
+//            return v;
+//        }
+//
+//        private Optional<Entry<SatzTyp, Version>> findEntry(Object key) {
+//            if (!(key instanceof SatzTyp)) {
+//                return Optional.empty();
+//            }
+//            SatzTyp satzTyp = (SatzTyp) key;
+//            return entrySet().stream()
+//                    .filter(e -> matches(e, satzTyp)).min(Comparator.comparingInt(e1 -> -e1.getKey().getSparte()));
+//        }
+//
+//        private static boolean matches(Entry<SatzTyp, Version> e, SatzTyp satzTyp) {
+//            SatzTyp stored = e.getKey();
+//            return stored.getSatzart() == satzTyp.getSatzart() &&
+//                    (!satzTyp.hasSparte() || !stored.hasSparte() || stored.getSparte() == satzTyp.getSparte());
+//        }
+//
+//    }
 
-        @Override
-        public boolean containsKey(Object satzTyp) {
-            return findEntry(satzTyp).isPresent();
-        }
-
-        @Override
-        public Version get(Object satzTyp) {
-            Version v = super.get(satzTyp);
-            if (v == null) {
-                Optional<Entry<SatzTyp, Version>> entry = findEntry(satzTyp);
-                v = entry.map(Entry::getValue).orElse(null);
-            }
-            return v;
-        }
-
-        private Optional<Entry<SatzTyp, Version>> findEntry(Object key) {
-            if (!(key instanceof SatzTyp)) {
-                return Optional.empty();
-            }
-            SatzTyp satzTyp = (SatzTyp) key;
-            return entrySet().stream()
-                    .filter(e -> matches(e, satzTyp)).min(Comparator.comparingInt(e1 -> -e1.getKey().getSparte()));
-        }
-
-        private static boolean matches(Entry<SatzTyp, Version> e, SatzTyp satzTyp) {
-            SatzTyp stored = e.getKey();
-            return stored.getSatzart() == satzTyp.getSatzart() &&
-                    (!satzTyp.hasSparte() || !stored.hasSparte() || stored.getSparte() == satzTyp.getSparte());
-        }
-
-    }
 }

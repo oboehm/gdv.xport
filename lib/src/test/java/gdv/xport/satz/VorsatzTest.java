@@ -98,8 +98,8 @@ public final class VorsatzTest extends AbstractSatzTest {
         vorsatz.setErstellungsZeitraum(startDatum, endDatum);
         checkExport(70, 85, startDatum + endDatum);
         assertEquals(startDatum + endDatum, vorsatz.getErstellungsZeitraum());
-        assertEquals(startDatum, vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM));
-        assertEquals(endDatum, vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS));
+        assertEquals(startDatum, vorsatz.getFeld(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM).getInhalt());
+        assertEquals(endDatum, vorsatz.getFeld(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS).getInhalt());
     }
 
     @Test
@@ -254,11 +254,11 @@ public final class VorsatzTest extends AbstractSatzTest {
 
     @Test
     public void testBezeichner() {
-        assertNotNull(vorsatz.get(Bezeichner.ABSENDER));
-        assertNotNull(vorsatz.get(Bezeichner.ADRESSAT));
-        assertNotNull(vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM));
-        assertNotNull(vorsatz.get(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS));
-        assertNotNull(vorsatz.get(Bezeichner.VERMITTLER));
+        assertNotNull(vorsatz.getFeld(Bezeichner.ABSENDER));
+        assertNotNull(vorsatz.getFeld(Bezeichner.ADRESSAT));
+        assertNotNull(vorsatz.getFeld(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM));
+        assertNotNull(vorsatz.getFeld(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS));
+        assertNotNull(vorsatz.getFeld(Bezeichner.VERMITTLER));
     }
 
     @Test
@@ -277,7 +277,7 @@ public final class VorsatzTest extends AbstractSatzTest {
         assertEquals("1.3", versionen.get(SatzTyp.of(220, 0)).getInhalt());
         assertEquals("1.5", versionen.get(SatzTyp.of(220, 80)).getInhalt());
         assertEquals("1.5", versionen.get(SatzTyp.of(220, 81)).getInhalt());
-        assertEquals("1.3", versionen.get(SatzTyp.of(220, 295)).getInhalt());
+        assertEquals("1.3", versionen.get(SatzTyp.of(220, 296)).getInhalt());
     }
 
     @Test
