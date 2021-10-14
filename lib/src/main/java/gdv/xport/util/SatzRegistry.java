@@ -330,6 +330,9 @@ public class SatzRegistry implements VersionHandler {
                 LOG.trace("Details:", ex);
                 SatzXml satz = xmlService.getSatzart(satztyp.getParent());
                 satz.setSparte(satztyp.getSparte());
+                if (satztyp.getSparte() != satz.getSatzTyp().getSparte()) {
+                    satz.resetGdvSatzartName();
+                }
                 return satz;
             } else {
                 throw ex;

@@ -2,7 +2,6 @@ package gdv.xport.satz.feld.sparte20;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
@@ -112,7 +111,6 @@ public class Satzart220Test {
             assertFalse("Satztyp hat keine Krankenfolgenummer", satztyp.hasKrankenFolgeNr());
 
             assertThat("Datensatz hat einen Teildatensatz", datensatz.getNumberOfTeildatensaetze(), is(1));
-            assertThat("Teildatensatz 1 hat UNBEKANNT", datensatz.getTeildatensatz(1).hasFeld(Bezeichner.UNBEKANNT), is(true));
         }
     }
 

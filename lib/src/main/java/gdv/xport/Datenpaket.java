@@ -20,10 +20,8 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.feld.FeldX;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
-import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.SimpleConstraintViolation;
@@ -505,9 +503,6 @@ public class Datenpaket {
             throws IOException {
         SatzTyp satzTyp = readSatzTyp(reader, satzart);
         Datensatz satz = SatzRegistry.getInstance().getDatensatz(satzTyp);
-        if (satzTyp.equals(SatzTyp.of("0220.020"))) {
-            satz = new SatzX(220, 20, FeldX.class);
-        }
         satz.importFrom(reader);
         return satz;
     }

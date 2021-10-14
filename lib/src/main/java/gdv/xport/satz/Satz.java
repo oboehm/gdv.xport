@@ -595,6 +595,11 @@ public abstract class Satz implements Cloneable {
 
         this.gdvSatzartName = buf.toString();
     }
+
+    public void resetGdvSatzartName() {
+    	this.gdvSatzartName = "";
+	}
+
     /**
      * Setzt die Version des Satzes
      * 
