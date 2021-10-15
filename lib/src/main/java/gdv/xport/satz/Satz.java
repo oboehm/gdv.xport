@@ -301,8 +301,10 @@ public abstract class Satz implements Cloneable {
         int index = 0;
 
         for (Teildatensatz tds : this.teildatensatz) {
-             if (Integer.parseInt(tds.getSatznummer().getInhalt()) == n)
+            if (Integer.parseInt(tds.getSatznummer() .getInhalt()) == n) {
                  treffer = true;
+                 break;
+             }
              else
                  index++;
         }
@@ -1258,7 +1260,7 @@ public abstract class Satz implements Cloneable {
     public Satz importFrom(final PushbackLineNumberReader reader) throws IOException {
     	SortedSet<Integer> used = new TreeSet<>();
         char[] feld1to7 = null;
-        Character satznummer = null;
+        char satznummer = '0';
         for (int i = 0; i < teildatensatz.length; i++) {
             reader.skipNewline();
             if (!matchesNextTeildatensatz(reader, feld1to7, satznummer)) {

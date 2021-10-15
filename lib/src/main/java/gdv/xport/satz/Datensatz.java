@@ -403,8 +403,7 @@ public class Datensatz extends Satz {
 		if (!hasWagnisart()) {
 			add(new AlphaNumFeld(WAGNISART, 1, 60));
 		}
-		Feld wagnisart = getFeld(WAGNISART);
-		wagnisart.setInhalt(Integer.toString(art).substring(0, 1));
+        setFeld(WAGNISART, Integer.toString(art).substring(0, 1));
 	}
 
 	private void initBausparenart(int art) {
@@ -548,7 +547,7 @@ public class Datensatz extends Satz {
 	 * @since 0.3
 	 */
 	public void setVersicherungsscheinNummer(final String nr) {
-    this.getFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner()).setInhalt(nr);
+	   this.setFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner(), nr);
 	}
 
 	/**
@@ -783,11 +782,17 @@ public class Datensatz extends Satz {
 				for (int i = 30; i < 42; i++) {
 					if (lastFeld1To7[i] != newLine[i]) return false;
 				}
-				//return matchesLastFeld(satznummer, newLine);
-				return true;
+				return matchesLastFeld(satznummer, newLine);
 			}
 		}
 		return false;
+	}
+
+	private static boolean matchesLastFeld(Character satznummer, char[] newLine) {
+		// Das letzte Feld wird darauf verglichen, dass es groesser als das
+		// vorherige ist, falls Teildatensaetze uebersprungen werden
+		char newSatznummer = readSatznummer(newLine);
+		return !(Character.isDigit(newSatznummer) && Character.isDigit(satznummer) && newSatznummer <= satznummer);
 	}
 
 	/**

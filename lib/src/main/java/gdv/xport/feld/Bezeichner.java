@@ -199,7 +199,7 @@ public final class Bezeichner {
     public static final Bezeichner BEGINN = new Bezeichner("Beginn");
     public static final Bezeichner BEGINN_ABRUFPHASE = new Bezeichner("Beginn Abrufphase");
     public static final Bezeichner BEGINN_DER_ANWARTSCHAFT = new Bezeichner("Beginn der Anwartschaft");
-    public static final Bezeichner BEGINN_DER_RENTENZAHLUNG = new Bezeichner("Beginn der Rentenzahlung");
+    public static final Bezeichner BEGINN_DER_RENTENZAHLUNG = new Bezeichner("Beginn der Rentenzahlung", "BeginnRentenzahlung");
     public static final Bezeichner BEGINN_DER_ZAHLUNG_AB_TAG = new Bezeichner("Beginn der Zahlung ab Tag");
     public static final Bezeichner BEGINN_TAGEGELD1_AB_TAG = new Bezeichner("Beginn Tagegeld 1 ab Tag");
     public static final Bezeichner BEGINN_TAGEGELD2_AB_TAG = new Bezeichner("Beginn Tagegeld 2 ab Tag");
@@ -312,6 +312,7 @@ public final class Bezeichner {
     public static final Bezeichner DATUM_DER_LETZTEN_SUMMENANPASSUNG = new Bezeichner("Datum der letzten Summenanpassung", "DatLetztenSummenanpassung");
     public static final Bezeichner DATUM_SEPA = new Bezeichner("SEPA-Ablaufdatum oder erloschen am", "SEPA");
     public static final Bezeichner DAT_UNVERFALLBARKEIT = new Bezeichner("Datum Unverfallbarkeit");
+    public static final Bezeichner DAUER_DES_RENTENBEZUGS_IN_MONATEN = new Bezeichner("Dauer des Rentenbezugs in Monaten", "DauerDesRentenbezugsInMonaten");
     public static final Bezeichner DAUERSCHAEDEN_KOERPERLICHE_BEEINTRAECHTIGUNGEN = new Bezeichner("Dauerschaeden / koerperliche Beeintraechtigungen");
     public static final Bezeichner DAUERZULAGEANTRAG = new Bezeichner("Dauerzulagenantrag");
     public static final Bezeichner DECKUNGSSUMME_1_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Deckungssumme 1 in Tausend W\u00e4hrungseinheiten");
@@ -350,6 +351,7 @@ public final class Bezeichner {
     public static final Bezeichner EINSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner("Einschlussdatum VP / Personengruppe", "EinschlussdatVpPersonengruppe");
     public static final Bezeichner EINZAHLUNG_AUSSCHUETTUNG = new Bezeichner("Einzahlung / Ausschuettung");
     public static final Bezeichner ENDE_DER_ANWARTSCHAFT = new Bezeichner("Ende der Anwartschaft");
+    public static final Bezeichner ENDE_DER_RENTENZAHLUNG = new Bezeichner("Ende der Rentenzahlung", "EndeDerRentenzahlung");
     public static final Bezeichner ENDEDATUM_DES_VERSICHERUNGSSCHUTZES_BEI_ROTEN_KENNZEICHEN = new Bezeichner("Endedatum des Versicherungsschutzes bei roten Kennzeichen", "EndedatumBeiRotenKennzeichen");
     public static final Bezeichner ENTSCHAEDIGUNGSGRENZE_PRO_LEISTUNGSFALL = new Bezeichner("Entschädigungsgrenze pro Leistungsfall");
     public static final Bezeichner ENTSCHAEDIGUNGSGRENZE_PRO_VERSICHERUNGSJAHR = new Bezeichner("Entschädigungsgrenze pro Versicherungsjahr");
@@ -641,11 +643,12 @@ public final class Bezeichner {
     public static final Bezeichner LAUFZEITVERKUERZUNG = new Bezeichner("Laufzeitverkuerzung");
     public static final Bezeichner LEBENSLANGE_BEITRAGSZAHLUNG = new Bezeichner("Lebenslange Beitragszahlung");
     public static final Bezeichner LEERSTELLEN = new Bezeichner("Leerstellen");
-    public static final Bezeichner LEERSTELLEN1 = LEERSTELLEN;
+  public static final Bezeichner LEERSTELLEN1 = new Bezeichner("Leerstellen", "Leerstellen1");
     public static final Bezeichner LEERSTELLEN2 = LEERSTELLEN;
     public static final Bezeichner LEERSTELLEN3 = LEERSTELLEN;
-    public static final Bezeichner LEERSTELLEN4 = LEERSTELLEN;
+  public static final Bezeichner LEERSTELLEN4 = new Bezeichner("Leerstellen", "Leerstellen4");
     public static final Bezeichner LEERSTELLEN5 = LEERSTELLEN;
+  public static final Bezeichner LEERSTELLEN9 = LEERSTELLEN;
     public static final Bezeichner LEISTUNG_AB_INVALIDITAETSGRAD_IN_PROZENT = new Bezeichner("Leistung ab Invaliditaetsgrad in Prozent");
     public static final Bezeichner LEISTUNG_BEI_SCHWERER_ERKRANKUNG = new Bezeichner("Leistung bei schwerer Erkrankung");
     public static final Bezeichner LEISTUNG_IN_WE = new Bezeichner("Leistung in WE", "LeistungInWE");
@@ -686,12 +689,13 @@ public final class Bezeichner {
      */
     public static final Bezeichner LAUFENDE_NUMMER_TARIF = new Bezeichner("Laufende Nummer Tarif");
     public static final Bezeichner LFD_NUMMER_VP = new Bezeichner("Lfd. Nummer der versicherten Person (VP)", "LfdNrVersichertenPersonVpPersonengruppe", "LfdNrVersichertenPersonVpPersonengruppe1", "LfdNrVpPersonengruppe2", "LfdNrVersichertenPersonVpPersonengruppe3", "LfdNrVersichertenPersonVpPersonengruppe4", "LfdNrVersichertenPersonVp9");
-    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
-    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE1 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
-    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE2 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
-    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE3 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
-    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE4 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
-    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE9 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
+    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVersichertenPersonVpPersonengruppe");
+    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE1 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVersichertenPersonVpPersonengruppe1");
+    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE2 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVpPersonengruppe2");
+    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE3 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVersichertenPersonVpPersonengruppe3");
+    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE4 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVersichertenPersonVpPersonengruppe4");
+    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE9 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVersichertenPersonVp9");
+    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE10 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVersichertenPersonVpPersonengruppe");
     public static final Bezeichner LFD_NUMMER_ZUR_ART_DER_LEISTUNG = new Bezeichner("Laufende Nummer zur Art der Leistung", "LaufendeNummerZurArtDerLeistung");
     public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART = new Bezeichner("Lfd. Nummer zur Wagnisart", "LfdNrZurWagnisart");
     public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART1 = new Bezeichner("Lfd. Nummer zur Wagnisart", "LfdNrZurWagnisart1");

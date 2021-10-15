@@ -30,6 +30,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.xml.stream.XMLStreamException;
@@ -179,8 +180,8 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
 
     @Test
     public void testFormatAllSupportedSaetze() throws IOException, XMLStreamException {
-        Datenpaket datenpaket = SatzFactory.getAllSupportedSaetze();
         formatDatenpaket("VUVM2018.xml", "datenpaket2018.xml");
+        formatDatenpaket("VUVM2018xL.xml", "datenpaket2018xL.xml");
     }
 
     @Test
@@ -196,6 +197,15 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
     @Test
     public void testFormatAllSupportedSaetze2009() throws IOException, XMLStreamException {
         formatDatenpaket("VUVM2009.xml", "datenpaket2009.xml");
+    }
+
+    @Test
+    @Ignore // kein Unit-Test mehr, dauern zu lang (> 2s)
+    public void testFormatAllSupportedSaetze20xxxL() throws IOException, XMLStreamException {
+        formatDatenpaket("VUVM2018xL.xml", "datenpaket2018xL.xml");
+        formatDatenpaket("VUVM2015xL.xml", "datenpaket2015xL.xml");
+        formatDatenpaket("VUVM2013xL.xml", "datenpaket2013xL.xml");
+        formatDatenpaket("VUVM2009xL.xml", "datenpaket2009xL.xml");
     }
 
     private void formatDatenpaket(String gdvXml, String filename) throws IOException, XMLStreamException {

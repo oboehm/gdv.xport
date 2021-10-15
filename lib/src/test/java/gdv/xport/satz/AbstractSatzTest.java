@@ -143,7 +143,11 @@ abstract public class AbstractSatzTest {
     private static void setUp(final Teildatensatz tds) {
         for (Feld feld : tds.getFelder()) {
             String technischerName = feld.getBezeichner().getTechnischerName();
-            if ((feld.getByteAdresse() > 42) && (feld.getByteAdresse() < 256)
+            if (feld.getBezeichnung().equalsIgnoreCase("Versicherungsschein-Nummer")) {
+                feld.setInhalt("__123456789__");
+            } else if (technischerName.startsWith("GeschaeftsstelleVermittler")) {
+                feld.setInhalt("__77777___");
+            } else if ((feld.getByteAdresse() > 42) && (feld.getByteAdresse() < 256)
                     && !technischerName.startsWith("Satz") && !technischerName.toLowerCase().contains("art")
                     && !technischerName.startsWith("FolgeNrZurLaufendenPersonenNr")
                     && !technischerName.startsWith("Vorzeichen")
