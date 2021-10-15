@@ -561,10 +561,10 @@
                 <name>Satzart 0102</name>
                 <technischerName>Satzart0102</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld Satzart0212 (216-218) -->
-            <feldreferenz referenz="216-218-Satzart0212-Alphanumerisch">
+			<!-- AlphaNumFeld Satzart0212050 (216-218) -->
+			<feldreferenz referenz="216-218-Satzart0212050-Alphanumerisch">
                 <name>Satzart 0212</name>
-                <technischerName>Satzart0212</technischerName>
+				<technischerName>Satzart0212050</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Satzart0352 (219-221) -->
             <feldreferenz referenz="219-221-Satzart0352-Alphanumerisch">
@@ -9024,7 +9024,7 @@
                 <name>Wagnistext</name>
                 <technischerName>Wagnistext</technischerName>
             </feldreferenz>
-            <!-- NumFeld Wagnisbeschreibung (102-181) -->
+			<!-- AlphaNumFeld Wagnisbeschreibung (102-181) -->
             <feldreferenz referenz="102-181-Wagnisbeschreibung-Alphanumerisch">
                 <name>Wagnisbeschreibung</name>
                 <technischerName>Wagnisbeschreibung</technischerName>
@@ -12202,10 +12202,10 @@
                 <name>Datum der ersten Auszahlung</name>
                 <technischerName>DatumDerErstenAuszahlung</technischerName>
             </feldreferenz>
-            <!-- NumFeld Effektivzins (217-221) -->
-            <feldreferenz referenz="217-221-Effektivzins-Fliesskomma">
+			<!-- NumFeld EffektivzinsInProzent (217-221) -->
+			<feldreferenz referenz="217-221-EffektivzinsInProzent-Fliesskomma">
                 <name>Effektivzins in Prozent</name>
-                <technischerName>Effektivzins</technischerName>
+				<technischerName>EffektivzinsInProzent</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Leerstellen (222-256) -->
             <feldreferenz referenz="222-256-Leerstellen-Alphanumerisch">
@@ -26825,10 +26825,16 @@
                 <name>Ordnungsbegriff</name>
                 <technischerName>Ordnungsbegriff</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld Leerstellen (254-256) -->
-            <feldreferenz referenz="254-256-Leerstellen-Alphanumerisch">
+			<!-- AlphaNumFeld Leerstellen (254-255) -->
+			<feldreferenz referenz="254-255-Leerstellen-Alphanumerisch">
                 <name>Leerstellen</name>
                 <technischerName>Leerstellen</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld SatzNr2 (256-256) -->
+			<feldreferenz referenz="256-256-SatzNr2-Alphanumerisch">
+				<name>Satznummer</name>
+				<technischerName>SatzNr2</technischerName>
+				<auspraegung>1</auspraegung>
             </feldreferenz>
             <satzende/>
             <!-- Teildatensatz 2 Satzart 0500 -->
@@ -45340,7 +45346,7 @@
             <bytes>3</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="216-218-Satzart0212-Alphanumerisch">
+		<feld referenz="216-218-Satzart0212050-Alphanumerisch">
             <name>Satzart 0212</name>
             <bytes>3</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -45392,6 +45398,12 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>3</nachkommastellen>
         </feld>
+		<feld referenz="217-221-EffektivzinsInProzent-Fliesskomma">
+			<name>Effektivzins in Prozent</name>
+			<bytes>5</bytes>
+			<datentyp>Fliesskomma</datentyp>
+			<nachkommastellen>3</nachkommastellen>
+		</feld>
         <feld referenz="217-224-Abgangsdat-Datum">
             <name>Abgangsdatum</name>
             <bytes>8</bytes>
@@ -46904,6 +46916,11 @@
             <name>Satznummer</name>
             <bytes>1</bytes>
             <datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="256-256-SatzNr2-Alphanumerisch">
+			<name>Satznummer</name>
+			<bytes>1</bytes>
+			<datentyp>Alphanumerisch</datentyp>
         </feld>
         <feld referenz="256-256-ZusaetzlicheSatzkennung-Alphanumerisch">
             <name>Zusätzliche Satzkennung</name>
