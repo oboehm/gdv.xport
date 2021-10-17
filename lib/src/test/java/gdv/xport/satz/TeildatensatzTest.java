@@ -33,8 +33,7 @@ import org.junit.Test;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.allOf;
-import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 /**
@@ -225,6 +224,74 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Zeichen satznummer = tds.getSatznummer();
         Zeichen expected = new Zeichen(satznummer.getBezeichner(), start.intValue(), inhalt);
         assertEquals(expected, satznummer);
+    }
+
+    @Test
+    public void testGetSatzIdentVorsatz() {
+        Satz vorsatz = SATZ_REGISTRY.getVorsatz();
+        checkSatzNrOnly(vorsatz);
+    }
+
+    @Test
+    public void testGetSatzIdentSatzNrOnly() {
+        Satz satz = SATZ_REGISTRY.getSatz(SatzTyp.of("0210.010"));
+        checkSatzNrOnly(satz);
+    }
+
+    private void checkSatzNrOnly(Satz satz) {
+        for (int n = 1; n <= satz.getNumberOfTeildatensaetze(); n++) {
+            Teildatensatz tds = satz.getTeildatensatz(n);
+            assertSatzIdentHasSatzNr(tds, n, 256);
+        }
+    }
+
+    @Test
+    public void testGetSatzIdentSatzNr2() {
+        Satz satz = SATZ_REGISTRY.getSatz(SatzTyp.of("0221.010.48.1"));
+        assertSatzIdentHasSatzNr(satz.getTeildatensatz(1), 2, 256);
+    }
+
+    @Test
+    public void testGetSatzIdentSatzNrPos50() {
+        Satz satz = SATZ_REGISTRY.getSatz(SatzTyp.of("0221.170"));
+        assertSatzIdentHasSatzNr(satz.getTeildatensatz(1), 2, 50);
+    }
+
+    private void assertSatzIdentHasSatzNr(Teildatensatz tds, int nr, int byteAddress) {
+        Zeichen expected = new Zeichen(new Bezeichner("SatzNr"), byteAddress, Character.forDigit(nr, 10));
+        MatcherAssert.assertThat(tds.getSatzIdent(), hasItems(expected));
+    }
+
+    @Test
+    public void testGetSatzIdentFolgeNr() {
+        Satz satz = SATZ_REGISTRY.getSatz(SatzTyp.of("0220.020.3"));
+        MatcherAssert.assertThat(satz.getTeildatensatz(1).getSatzIdent(), hasItems(
+                new Zeichen(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF, 48, '3')));
+    }
+
+    @Test
+    public void testGetSatzIdentSatzComplex() {
+        Satz satz = SATZ_REGISTRY.getSatz(SatzTyp.of("0220.030"));
+        MatcherAssert.assertThat(satz.getTeildatensatz(1).getSatzIdent(),
+                hasItems(
+                    new Zeichen(Bezeichner.SATZ_NR_1, 49, '1'),
+                    new Zeichen(Bezeichner.SATZNUMMERNWIEDERHOLUNG1, 250, '1')));
+        MatcherAssert.assertThat(satz.getTeildatensatz(2).getSatzIdent(),
+                hasItems(
+                        new Zeichen(Bezeichner.SATZ_NR_2, 49, '2'),
+                        new Zeichen(Bezeichner.ZUSAETZLICHE_SATZKENNUNG, 256, 'X')));
+        MatcherAssert.assertThat(satz.getTeildatensatz(3).getSatzIdent(),
+                hasItems(
+                        new Zeichen(Bezeichner.SATZ_NR_3, 43, '3'),
+                        new Zeichen(Bezeichner.SATZNUMMERNWIEDERHOLUNG2, 250, '3')));
+        MatcherAssert.assertThat(satz.getTeildatensatz(4).getSatzIdent(),
+                hasItems(
+                        new Zeichen(Bezeichner.SATZ_NR_4, 49, '4'),
+                        new Zeichen(Bezeichner.SATZNUMMERNWIEDERHOLUNG2, 249, '4')));
+        MatcherAssert.assertThat(satz.getTeildatensatz(5).getSatzIdent(),
+                hasItems(
+                        new Zeichen(Bezeichner.SATZ_NR_9, 60, '9'),
+                        new Zeichen(Bezeichner.SATZNUMMERNWIEDERHOLUNG3, 250, '9')));
     }
 
 }

@@ -144,6 +144,7 @@ public class Teildatensatz extends Satz {
      */
     public Teildatensatz(final Teildatensatz other) {
         this(other, other.getSatznummer().toInt());
+
         for (Entry<Bezeichner, Feld> entry : other.datenfelder.entrySet()) {
             Feld copy = (Feld) entry.getValue().clone();
             this.datenfelder.put(entry.getKey(), copy);
@@ -560,6 +561,28 @@ public class Teildatensatz extends Satz {
     @Override
     public Collection<Feld> getFelder() {
         return sortedFelder;
+    }
+
+    /**
+     * Liefert die Liste der speziellen Kennzeichen zur Identifikation beim Import zurueck.
+     * Jedes Element enthaelt Byte-Adresse und Inhalt.
+     *
+     * @return Liste der speziellen Kennzeichen
+     */
+    public List<Zeichen> getSatzIdent() {
+        String[] identBezeichner = {"FolgeNrZurLaufendenPersonenNrUnterNrBzwLaufendenNrTarif",
+                                    "FolgeNrZurLaufendenPersonenNrUnterNrLaufendeNrTarif", "SatzNr", "SatzNr1",
+                                    "SatzNr2", "SatzNr3", "SatzNr4", "SatzNr9", "SatzNrnwiederholung",
+                                    "SatzNrnwiederholung1", "SatzNrnwiederholung2", "SatzNrnwiederholung3",
+                                    "Satznummer", "ZusaetzlicheSatzkennung"};
+        List<Zeichen> satzIdent = new ArrayList<>();
+        for (String s : identBezeichner) {
+            Bezeichner b = new Bezeichner(s);
+            if (hasFeld(b)) {
+                satzIdent.add(getFeld(b, Zeichen.class));
+            }
+        }
+        return satzIdent;
     }
 
     /* (non-Javadoc)
