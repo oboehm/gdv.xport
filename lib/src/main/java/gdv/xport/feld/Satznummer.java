@@ -24,6 +24,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.PushbackReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import static gdv.xport.feld.Bezeichner.SATZNUMMER;
@@ -70,10 +71,9 @@ public class Satznummer extends Zeichen {
 
     private static Satznummer readSatznummer(PushbackReader reader, Satznummer nr, Teildatensatz teildatensatz)
             throws IOException {
-         List<Zeichen> satzIdents = teildatensatz.getSatzIdent();
+         List<Zeichen> satzIdents = getSatzIdent(teildatensatz);
          for (Zeichen ident : satzIdents) {
-             Zeichen inhalt = new Zeichen(ident);
-             inhalt = readZeichen(reader, inhalt);
+             Zeichen inhalt = readZeichen(reader, new Zeichen(ident));
              if (inhalt.toChar() != ident.toChar()) {
                  LOG.debug("{} passt nicht, {} wird zurueckgesetzt.", ident, nr);
                  nr.resetInhalt();
@@ -92,6 +92,22 @@ public class Satznummer extends Zeichen {
         reader.unread(cbuf);
         nr.setInhalt(cbuf[position-1]);
         return nr;
+    }
+
+    private static List<Zeichen> getSatzIdent(Teildatensatz tds) {
+        String[] identBezeichner = {"FolgeNrZurLaufendenPersonenNrUnterNrBzwLaufendenNrTarif",
+                                    "FolgeNrZurLaufendenPersonenNrUnterNrLaufendeNrTarif", "SatzNr", "SatzNr1",
+                                    "SatzNr2", "SatzNr3", "SatzNr4", "SatzNr9", "SatzNrnwiederholung",
+                                    "SatzNrnwiederholung1", "SatzNrnwiederholung2", "SatzNrnwiederholung3",
+                                    "Satznummer", "ZusaetzlicheSatzkennung"};
+        List<Zeichen> satzIdent = new ArrayList<>();
+        for (String s : identBezeichner) {
+            Bezeichner b = new Bezeichner(s);
+            if (tds.hasFeld(b)) {
+                satzIdent.add(tds.getFeld(b, Zeichen.class));
+            }
+        }
+        return satzIdent;
     }
 
     @Override
