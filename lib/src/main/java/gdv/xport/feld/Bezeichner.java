@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2013 by Oli B.
+ * Copyright (c) 2009 - 2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -694,7 +694,7 @@ public final class Bezeichner {
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE2 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVpPersonengruppe2");
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE3 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVersichertenPersonVpPersonengruppe3");
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE4 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVersichertenPersonVpPersonengruppe4");
-    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE9 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVersichertenPersonVp9");
+    public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE9 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / PersonengruppeAN", "LfdNrVersichertenPersonVp9");
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE10 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe", "LfdNrVersichertenPersonVpPersonengruppe");
     public static final Bezeichner LFD_NUMMER_ZUR_ART_DER_LEISTUNG = new Bezeichner("Laufende Nummer zur Art der Leistung", "LaufendeNummerZurArtDerLeistung");
     public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART = new Bezeichner("Lfd. Nummer zur Wagnisart", "LfdNrZurWagnisart");

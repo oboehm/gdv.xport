@@ -1526,6 +1526,6 @@ public enum Feld220 {
             type = NumFeld.class,
             anzahlBytes = 6,
             byteAdresse = 251)
-    LFD_NUMMER_VP
+    LFD_NUMMER_VP_PERSONENGRUPPE10,
 
 }
