@@ -1443,6 +1443,20 @@ public abstract class Satz implements Cloneable {
                 violations.addAll(tds.validate());
             }
 		}
+		violations.addAll(validateUniqueEntries());
+		return violations;
+	}
+
+	private List<ConstraintViolation> validateUniqueEntries() {
+		List<ConstraintViolation> violations = new ArrayList<>();
+		String vermittler = getVermittler();
+		for (Teildatensatz tds : teildatensatz) {
+			if (!vermittler.equals(tds.getVermittler())) {
+				ConstraintViolation cv = new SimpleConstraintViolation("Vermittler differs from '" + vermittler + "'",
+						this, tds.getVermittler());
+				violations.add(cv);
+			}
+		}
 		return violations;
 	}
 

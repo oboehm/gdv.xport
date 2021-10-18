@@ -33,10 +33,13 @@ import gdv.xport.satz.feld.sparte53.Feld220;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzFactory;
+import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
+import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -50,7 +53,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.isEmptyString;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 /**
@@ -372,6 +375,18 @@ public final class SatzTest extends AbstractSatzTest {
         NumFeld schrott = new NumFeld("schrott", "xxxx");
         satz.add(schrott);
         assertFalse(satz + " has invalid fields!", satz.isValid());
+    }
+
+    @Test
+    public void testValidateDifferentVermittler() {
+        Satz x = SatzRegistry.getInstance().getSatz(SatzTyp.of(200));
+        x.setVermittler("James");
+        List<ConstraintViolation> violations = x.validate();
+        MatcherAssert.assertThat(violations, is(empty()));
+        Teildatensatz tds = x.getTeildatensatz(2);
+        tds.setVermittler("Bond");
+        violations = x.validate();
+        MatcherAssert.assertThat(violations, is(not(empty())));
     }
 
     /**
