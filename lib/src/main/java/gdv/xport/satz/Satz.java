@@ -650,7 +650,7 @@ public abstract class Satz implements Cloneable {
      * @return Inhalt des gefundenden Felds (NULL_STRING, falls 'name' nicht
      * gefunden wurde)
      * @since 2.0
-	 * @deprecated bitte {@link Satz#getFeld(Bezeichner)} verwenden
+	 * @deprecated bitte {@link Satz#getFeldInhalt(Bezeichner)} verwenden
      */
     @Deprecated
     public String get(final Bezeichner bezeichner) {

@@ -48,10 +48,9 @@ public class Datensatz extends Satz {
 
 	private static final Logger LOG = LogManager.getLogger(Datensatz.class);
 	/** 3 Zeichen, Byte 11 - 13. */
-  private final NumFeld sparte = new NumFeld(Kopffelder1bis7.SPARTE);
+  	private final NumFeld sparte = new NumFeld(Kopffelder1bis7.SPARTE);
 	/** 1 Zeichen, Byte 59. */
 	private final AlphaNumFeld wagnisart = new AlphaNumFeld((WAGNISART), 1, 59);
-	/** 1 Zeichen, Byte 256 - 256. */
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der {@link gdv.xport.util.SatzFactory}
@@ -332,8 +331,8 @@ public class Datensatz extends Satz {
 	}
 
 	protected static void setUpTeildatensatz(final Teildatensatz tds, final NumFeld sparte) {
-    if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()) && !tds.get(Kopffelder1bis7.SATZART.getBezeichner())
-                                                     .equalsIgnoreCase("9999")) {
+    if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()) && !tds.getFeldInhalt(Kopffelder1bis7.SATZART.getBezeichner())
+                                                     .equals("9999")) {
       setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), Config.getVUNummer());
       setUp(tds, Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN));
       setUp(tds, Kopffelder1bis7.SPARTE.getBezeichner(), sparte);
@@ -610,7 +609,7 @@ public class Datensatz extends Satz {
 	 * @since 0.3
 	 */
 	public void setFolgenummer(final int nr) {
-    this.getFeld(Kopffelder1bis7.FOLGENUMMER.getBezeichner()).setInhalt(Integer.toString(nr));
+		this.setFeld(Kopffelder1bis7.FOLGENUMMER.getBezeichner(), nr);
 	}
 
 	/**
