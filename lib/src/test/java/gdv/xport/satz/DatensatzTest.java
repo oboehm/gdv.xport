@@ -207,8 +207,31 @@ public class DatensatzTest extends AbstractDatensatzTest {
 
     @Test
     public void testInitBausparenArt() {
-        Datensatz antrag = new Datensatz(SatzTyp.of("0220.580.01"), 1);
-        assertEquals(1, antrag.getNumberOfTeildatensaetze());
+        checkInitArt(SatzTyp.of("0220.580.01"), Bezeichner.ART1);
+    }
+
+    @Test
+    public void testInitBausparenArt2() {
+        Datensatz satz = checkInitArt(SatzTyp.of("0220.580.2"), Bezeichner.ART1);
+        assertEquals("2", satz.getFeldInhalt(Bezeichner.ART1));
+    }
+
+    @Test
+    public void testInitWagnisArt() {
+        checkInitArt(SatzTyp.of("0220.010.13"), Bezeichner.WAGNISART);
+    }
+
+    @Test
+    public void testInitWagnisArt2() {
+        Datensatz satz = checkInitArt(SatzTyp.of("0220.010.2"), Bezeichner.WAGNISART);
+        assertEquals("2", satz.getFeldInhalt(Bezeichner.WAGNISART));
+    }
+
+    private Datensatz checkInitArt(SatzTyp satzTyp, Bezeichner art) {
+        Datensatz satz = new Datensatz(satzTyp, 1);
+        assertEquals(1, satz.getNumberOfTeildatensaetze());
+        assertTrue(satz.getTeildatensatz(1).hasFeld(art));
+        return satz;
     }
 
 }

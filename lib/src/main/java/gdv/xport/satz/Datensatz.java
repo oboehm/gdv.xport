@@ -186,7 +186,7 @@ public class Datensatz extends Satz {
 
 	/**
      * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.<br>
-     * Der Teildatensatz besteht nur aus 8 Feldern (oder SatzTyp "0220.580.X" aus 9 Feldern):<br>
+     * Der Teildatensatz besteht nur aus 8 oder 9 Feldern:
      * <ul>
      * <li>Satzart</li>
      * <li>VU_NUMMER</li>
@@ -195,7 +195,7 @@ public class Datensatz extends Satz {
      * <li>VERSICHEURUNGSSCHEINNUMMER</li>
      * <li>FOLGENUMMER</li>
      * <li>VERMITTLER</li>
-     * <li>ART (nur bei "0220.580.X")</li>
+     * <li>ART ("0220.580.X") oder WAGNISART (bei "0220.010.X") </li>
      * <li>SATZNUMMER</li>
      * </ul>
      * Das Feld 4 (Sparte) im Teildatensatz wird nur bei den vordefinierten GDV-Spartensaetzen belegt.
@@ -235,8 +235,8 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-     * Instantiiert einen neuen Datensatz.<br>
-     * Die Teildatensaetze bestehen nur aus 8 Feldern:<br>
+     * Instantiiert einen neuen Datensatz.
+     * Die Teildatensaetze bestehen nur aus 8 oder 9 Feldern:
      * <ul>
      * <li>Satzart</li>
      * <li>VU_NUMMER</li>
@@ -245,7 +245,7 @@ public class Datensatz extends Satz {
      * <li>VERSICHEURUNGSSCHEINNUMMER</li>
      * <li>FOLGENUMMER</li>
      * <li>VERMITTLER</li>
-     * <li>ART (nur bei "0220.580.X")</li>
+	 * <li>ART ("0220.580.X") oder WAGNISART (bei "0220.010.X") </li>
      * <li>SATZNUMMER</li>
      * </ul>
      * Das Feld 4 (Sparte) im Teildatensatz wird nur bei vordefinierten Spartensaetzen belegt.
