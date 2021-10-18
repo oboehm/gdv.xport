@@ -119,14 +119,14 @@ public class DatensatzTest extends AbstractDatensatzTest {
         List<Teildatensatz> teildatensaetze = new ArrayList<>();
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
         tds.add(new Feld(Feld100.NAME1));
-        tds.set(Bezeichner.NAME1, "Asterix");
+        tds.setFeld(Bezeichner.NAME1, "Asterix");
         teildatensaetze.add(tds);
         teildatensaetze.add(new Teildatensatz(100, 2));
         Datensatz orig = new Datensatz(SatzTyp.of(100), teildatensaetze);
         Datensatz copy = new Datensatz(orig);
-        assertEquals(orig.get(Bezeichner.NAME1), copy.get(Bezeichner.NAME1));
+        assertEquals(orig.getFeldInhalt(Bezeichner.NAME1), copy.getFeldInhalt(Bezeichner.NAME1));
         assertEquals(orig.toLongString(), copy.toLongString());
-        copy.set(Bezeichner.NAME1, "Obelix");
+        copy.setFeld(Bezeichner.NAME1, "Obelix");
         assertEquals("Obelix", copy.getFeld(Bezeichner.NAME1).getInhalt().trim());
         assertEquals("Asterix", orig.getFeld(Bezeichner.NAME1).getInhalt().trim());
     }
@@ -203,6 +203,12 @@ public class DatensatzTest extends AbstractDatensatzTest {
     public void testHasVuNummer() {
         Datensatz datensatz = SatzRegistry.getInstance().getDatensatz(SatzTyp.of("0220.580.01"));
         assertFalse(datensatz.hasVuNummer());
+    }
+
+    @Test
+    public void testInitBausparenArt() {
+        Datensatz antrag = new Datensatz(SatzTyp.of("0220.580.01"), 1);
+        assertEquals(1, antrag.getNumberOfTeildatensaetze());
     }
 
 }

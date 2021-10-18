@@ -186,7 +186,7 @@ public class Datensatz extends Satz {
 
 	/**
      * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.<br>
-     * Der Teildatensatz besteht nur aus 8 Feldern:<br>
+     * Der Teildatensatz besteht nur aus 8 Feldern (oder SatzTyp "0220.580.X" aus 9 Feldern):<br>
      * <ul>
      * <li>Satzart</li>
      * <li>VU_NUMMER</li>
@@ -195,6 +195,7 @@ public class Datensatz extends Satz {
      * <li>VERSICHEURUNGSSCHEINNUMMER</li>
      * <li>FOLGENUMMER</li>
      * <li>VERMITTLER</li>
+     * <li>ART (nur bei "0220.580.X")</li>
      * <li>SATZNUMMER</li>
      * </ul>
      * Das Feld 4 (Sparte) im Teildatensatz wird nur bei den vordefinierten GDV-Spartensaetzen belegt.
@@ -244,6 +245,7 @@ public class Datensatz extends Satz {
      * <li>VERSICHEURUNGSSCHEINNUMMER</li>
      * <li>FOLGENUMMER</li>
      * <li>VERMITTLER</li>
+     * <li>ART (nur bei "0220.580.X")</li>
      * <li>SATZNUMMER</li>
      * </ul>
      * Das Feld 4 (Sparte) im Teildatensatz wird nur bei vordefinierten Spartensaetzen belegt.
@@ -406,6 +408,9 @@ public class Datensatz extends Satz {
 	}
 
 	private void initBausparenart(int art) {
+		if (!hasBausparenArt()) {
+			add(new AlphaNumFeld(ART1, 1, 44));
+		}
 		for (Teildatensatz tds : getTeildatensaetze()) {
 			Feld bausparenart = tds.getFeld(ART1);
 			bausparenart.setInhalt(art);
