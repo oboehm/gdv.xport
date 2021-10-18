@@ -1449,12 +1449,18 @@ public abstract class Satz implements Cloneable {
 
 	private List<ConstraintViolation> validateUniqueEntries() {
 		List<ConstraintViolation> violations = new ArrayList<>();
-		String vermittler = getVermittler();
-		for (Teildatensatz tds : teildatensatz) {
-			if (!vermittler.equals(tds.getVermittler())) {
-				ConstraintViolation cv = new SimpleConstraintViolation("Vermittler differs from '" + vermittler + "'",
-						this, tds.getVermittler());
-				violations.add(cv);
+		Bezeichner bezeichner[] = { Bezeichner.VU_NR, Bezeichner.VS_NR, Bezeichner.VERMITTLER };
+		for (Bezeichner b : bezeichner) {
+			if (!hasFeld(b)) {
+				continue;
+			}
+			String inhalt = getFeldInhalt(b);
+			for (Teildatensatz tds : teildatensatz) {
+				if (!inhalt.equals(tds.getFeldInhalt(b))) {
+					ConstraintViolation cv = new SimpleConstraintViolation("has different values: " + getFeld(b),
+							this, tds.getFeld(b));
+					violations.add(cv);
+				}
 			}
 		}
 		return violations;

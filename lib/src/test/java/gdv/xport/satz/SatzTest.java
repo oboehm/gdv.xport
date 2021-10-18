@@ -389,6 +389,16 @@ public final class SatzTest extends AbstractSatzTest {
         MatcherAssert.assertThat(violations, is(not(empty())));
     }
 
+    @Test
+    public void testValidateDifferentVuNr() {
+        Datensatz x = SatzRegistry.getInstance().getDatensatz(SatzTyp.of(200));
+        x.setVuNummer("12345");
+        Teildatensatz tds = x.getTeildatensatz(2);
+        tds.setFeld(Bezeichner.VU_NR, "67890");
+        List<ConstraintViolation> violations = x.validate();
+        MatcherAssert.assertThat(violations, is(not(empty())));
+    }
+
     /**
      * Zwei gleiche Datensaetze muessen natuerlich auch den gleichen Hashcode
      * besitzen.
