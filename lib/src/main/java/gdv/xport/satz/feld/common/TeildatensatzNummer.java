@@ -18,7 +18,13 @@ package gdv.xport.satz.feld.common;
 
 /**
  * The Enum TeildatensatzNummer.
+ * <p>
+ * TODO: Wird mit v7 entfernt.
+ * </p>
+ *
+ * @deprecated wird nur zum Auslesen der Satznummer verwendet und ist obsolet
  */
+@Deprecated
 public enum TeildatensatzNummer {
 
     /** The null. */

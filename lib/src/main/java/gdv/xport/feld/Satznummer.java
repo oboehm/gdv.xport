@@ -56,6 +56,27 @@ public class Satznummer extends Zeichen {
     }
 
     /**
+     * Liest das letzte Feld eines Teildatensatzes, in dem (im Normalfall) die
+     * Satznummer steht. Die Logik dieser Methode stammt urspruenglich aus
+     * der Methode readTeildatensatzNummer(..) in Datensatz.
+     *
+     * @param reader der Reader zum Lesen
+     * @return die Satznummer
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public static Satznummer readSatznummer(final PushbackReader reader) throws IOException {
+        char[] cbuf = new char[256];
+        if (reader.read(cbuf) == -1) {
+            throw new EOFException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
+        }
+        reader.unread(cbuf);
+        String teildatenSatz = new String(cbuf).substring(cbuf.length - 1, cbuf.length);
+        Satznummer satznr = new Satznummer();
+        satznr.setInhalt(teildatenSatz);
+        return satznr;
+    }
+
+    /**
      * Ermittelt aus dem uebergebenen Teildatensatz die korrekte Satznummer.
      *
      * @param reader PushbackReader, um die gelesenen Zeichen wieder

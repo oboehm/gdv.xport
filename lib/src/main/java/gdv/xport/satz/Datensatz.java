@@ -30,7 +30,6 @@ import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.PushbackReader;
 import java.util.List;
@@ -804,28 +803,19 @@ public class Datensatz extends Satz {
 
 	/**
 	 * Read teildatensatz nummer.
+	 * <p>
+	 * TODO: wird mit v7 entfernt
+	 * </p>
 	 *
 	 * @param reader the reader
 	 * @return the teildatensatz nummer
 	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @deprecated bitte {@link Satznummer#readSatznummer(PushbackReader)} verwenden
 	 */
+	@Deprecated
     public static TeildatensatzNummer readTeildatensatzNummer(final PushbackReader reader) throws IOException {
-        char[] cbuf = new char[256];
-        if (reader.read(cbuf) == -1) {
-            throw new EOFException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
-        }
-        reader.unread(cbuf);
-        String teildatenSatz = new String(cbuf).substring(cbuf.length - 1, cbuf.length);
-        if (teildatenSatz.trim().length() == 0) {
-            return TeildatensatzNummer.NULL;
-        } else {
-            try {
-                return TeildatensatzNummer.of(Integer.parseInt(teildatenSatz));
-            } catch (NumberFormatException e) {
-                LOG.warn("Value \"" + teildatenSatz + "\" for TeildatensatzNummer found, but Number expected.");
-                return TeildatensatzNummer.NULL;
-            }
-        }
+		Satznummer satznr = Satznummer.readSatznummer(reader);
+		return TeildatensatzNummer.of(satznr.toInt());
     }
 
 }
