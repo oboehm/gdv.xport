@@ -411,10 +411,7 @@ public class Datensatz extends Satz {
 		if (!hasBausparenArt()) {
 			add(new AlphaNumFeld(ART1, 1, 44));
 		}
-		for (Teildatensatz tds : getTeildatensaetze()) {
-			Feld bausparenart = tds.getFeld(ART1);
-			bausparenart.setInhalt(art);
-		}
+        setFeld(ART1, art);
 	}
 
 	/**
@@ -582,10 +579,16 @@ public class Datensatz extends Satz {
 	/**
 	 * Da nicht alle Satzarten die Satznummer am Ende des Satzes haben, kann
 	 * man dies ueber diese Methode korrigieren.
+	 * <p>
+	 * TODO: wird ab v7 nicht mehr unterstuetzt
+	 * </p>
 	 * 
 	 * @param satznummer das neue Feld fuer die Satznummer
-	 * @since 3.2   
+	 * @since 3.2
+	 * @deprecated ab 5.1 nicht mehr noetig, da {@link Teildatensatz#getSatznummer()}
+	 *             jetzt die tatsaechliche Satznummer liefert
 	 */
+	@Deprecated
 	public void setSatznummer(Zeichen satznummer) {
 		remove(Bezeichner.SATZNUMMER);
 		for (Teildatensatz tds : getTeildatensaetze()) {

@@ -20,6 +20,7 @@ package gdv.xport.satz.model;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
+import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzTyp;
@@ -49,9 +50,18 @@ public class Satz250 extends SatzXml {
 
     private static SatzXml setUpSatzart250() {
         SatzXml satz = XmlService.getInstance().getSatzart(SatzTyp.of("0250.190"));
-        satz.setSatznummer(new Zeichen(Bezeichner.SATZNUMMER, 51));
+        setSatznummer(satz, new Zeichen(Bezeichner.SATZNUMMER, 51));
         satz.getTeildatensatz(2).add(new NumFeld(Bezeichner.of("Praemie in Waehrungseinheiten 2"), 12, 124).mitNachkommastellen(2));
         return satz;
+    }
+
+    private static void setSatznummer(SatzXml satz, Zeichen satznummer) {
+        satz.remove(Bezeichner.SATZNUMMER);
+        for (Teildatensatz tds : satz.getTeildatensaetze()) {
+            String nr = tds.getSatznummer().getInhalt();
+            satznummer.setInhalt(nr);
+            tds.add(satznummer);
+        }
     }
 
 }

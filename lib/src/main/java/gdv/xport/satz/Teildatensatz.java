@@ -215,6 +215,9 @@ public class Teildatensatz extends Satz {
     /**
      * Da nicht alle Satzarten die Satznummer am Ende des Satzes haben, kann
      * man dies ueber diese Methode korrigieren.
+     * <p>
+     * TODO: wird ab v7 nicht mehr unterstuetzt
+     * </p>
      *
      * @param satznummer das neue Feld fuer die Satznummer
      * @since 3.2
