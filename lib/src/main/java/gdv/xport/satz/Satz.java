@@ -1456,7 +1456,7 @@ public abstract class Satz implements Cloneable {
 			}
 			String inhalt = getFeldInhalt(b);
 			for (Teildatensatz tds : teildatensatz) {
-				if (!inhalt.equals(tds.getFeldInhalt(b))) {
+				if (tds.hasFeld(b) && !inhalt.equals(tds.getFeldInhalt(b))) {
 					ConstraintViolation cv = new SimpleConstraintViolation("has different values: " + getFeld(b),
 							this, tds.getFeld(b));
 					violations.add(cv);

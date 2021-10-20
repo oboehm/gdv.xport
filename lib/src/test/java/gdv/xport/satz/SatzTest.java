@@ -399,6 +399,12 @@ public final class SatzTest extends AbstractSatzTest {
         MatcherAssert.assertThat(violations, is(not(empty())));
     }
 
+    @Test
+    public void testValidateBausparen() {
+        Datensatz darlehen = SatzRegistry.getInstance().getDatensatz(SatzTyp.of("0220.580.2"));
+        darlehen.validate();
+    }
+
     /**
      * Zwei gleiche Datensaetze muessen natuerlich auch den gleichen Hashcode
      * besitzen.
