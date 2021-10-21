@@ -259,7 +259,7 @@ public enum Feld210 {
      */
     @FeldInfo(
             teildatensatz = 1,
-            nr = 13,
+            nr = 28,
             type = AlphaNumFeld.class,
             anzahlBytes = 103,
             byteAdresse = 154

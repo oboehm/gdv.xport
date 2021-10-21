@@ -447,7 +447,7 @@ public class Datenpaket {
             return satz;
         }
     }
-
+    // TODO: nach SatzTyp verschieben
     private static SatzTyp readSatzTyp(PushbackLineNumberReader reader, int satzart) throws IOException {
         int sparte = Datensatz.readSparte(reader);
         SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
