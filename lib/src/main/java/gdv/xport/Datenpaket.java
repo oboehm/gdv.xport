@@ -20,7 +20,6 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
@@ -457,8 +456,8 @@ public class Datenpaket {
                 WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
                 // wagnisart 0 hat immer ein Leerzeichen als teildatenSatzmummer.
                 // Nur groesser 0 besitzt per Definition Werte.
-                TeildatensatzNummer teildatensatzNummer = Datensatz.readTeildatensatzNummer(reader);
-                satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
+                Satznummer satznr = Satznummer.readSatznummer(reader);
+                satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), satznr.toInt());
             } else if (sparte == 20 && satzart == 220) {
                 // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
                 int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);

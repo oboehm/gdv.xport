@@ -65,15 +65,19 @@ public class Satznummer extends Zeichen {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public static Satznummer readSatznummer(final PushbackReader reader) throws IOException {
-        char[] cbuf = new char[256];
+        Satznummer satznr = new Satznummer();
+        satznr.read(reader);
+        return satznr;
+    }
+
+    private void read(PushbackReader reader) throws IOException {
+        char[] cbuf = new char[getByteAdresse()];
         if (reader.read(cbuf) == -1) {
             throw new EOFException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
         }
         reader.unread(cbuf);
         String teildatenSatz = new String(cbuf).substring(cbuf.length - 1, cbuf.length);
-        Satznummer satznr = new Satznummer();
-        satznr.setInhalt(teildatenSatz);
-        return satznr;
+        setInhalt(teildatenSatz);
     }
 
     /**
