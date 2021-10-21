@@ -25,7 +25,6 @@ import gdv.xport.feld.NumFeld;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.enums.TeildatensatzEnum;
 import gdv.xport.satz.feld.FeldX;
 import gdv.xport.satz.feld.MetaFeldInfo;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
@@ -222,7 +221,8 @@ public class SatzX extends Datensatz {
 			int n = metaFeldInfo.getTeildatensatzNr();
 			Teildatensatz tds = tdsMap.get(n);
 			if (tds == null) {
-				tds = new TeildatensatzEnum(satzart, n);
+       // tds = new TeildatensatzEnum(satzart, n);
+        tds = new Teildatensatz(SatzTyp.of(satzart), n);
 				tdsMap.put(n, tds);
 			}
 			add(metaFeldInfo.getFeldEnum(), tds);

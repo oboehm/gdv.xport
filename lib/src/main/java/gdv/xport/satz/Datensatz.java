@@ -340,6 +340,34 @@ public class Datensatz extends Satz {
       setUp(tds, Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER));
       setUp(tds, Kopffelder1bis7.FOLGENUMMER.getBezeichner(), new NumFeld(Kopffelder1bis7.FOLGENUMMER));
       setUp(tds, Kopffelder1bis7.VERMITTLER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERMITTLER));
+
+
+      /**
+       * @Oli: wenn dieser Teildatensatz via "Datensatz(final SatzTyp satzTyp, final int n)" erzeugt
+       *       wurde, handelte es sich bisher um einen "TeildatensatzEnum". Er beinhaltete immer ein
+       *       Feld "Satznummer". Mit der Aenderung in "Satz.createTeildatensaetze(final int n)"
+       *       gibt es aus "Datensatz(final SatzTyp satzTyp, final int n)" nur noch einen
+       *       "Teildatensatz". Also muss das Feld "Satznummer" wieder ergaenzt werden, falls nicht
+       *       vorhanden.
+       **/
+      if (!tds.hasFeld(Bezeichner.SATZNUMMER))
+      {
+        try
+        {
+          setUp(tds, Bezeichner.SATZNUMMER, new Satznummer(tds.getSatznummer()));
+        }
+        catch (IllegalArgumentException e)
+        {
+          /**
+           * @Oli: "Teildatensatz.add(final Feld feld)" wirft diese Exception, wenn es beim
+           *       Einfuegen eines Feldes zur Ueberschneidung kommt. Das geschieht hier besonders
+           *       dann, wenn ein Teildatensatz per definitionem keine Satznummer hat (z.B. 0220.110
+           *       oder 0210.030)!
+           */
+          LOG.debug("Teildatensatz {} hat kein Platz fuer Satznummer", tds.toLongString());
+        }
+      }
+
       LOG.trace(tds + " is set up.");
     } else if (tds.hasFeld(Kopffelder1bis7.SPARTE)) {
       tds.getFeld(Kopffelder1bis7.SPARTE.getBezeichner()).setInhalt(sparte.getInhalt());
