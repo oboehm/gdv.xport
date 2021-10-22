@@ -25,6 +25,7 @@ import gdv.xport.satz.feld.sparte50.Feld210;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 import patterntesting.runtime.junit.CloneableTester;
 
@@ -275,6 +276,33 @@ public final class FeldTest extends AbstractFeldTest {
     @Test
     public void testCloneable() {
         CloneableTester.assertCloning(Feld.class);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testOverflow() {
+        Feld feld = new AlphaNumFeld(Bezeichner.NAME1, 5, 1, Align.LEFT);
+        feld.setInhalt("hello world");
+    }
+
+    @Test
+    @Ignore     // da Einfluss auf andere Tests
+    public void testTruncateLeft() {
+        System.setProperty("gdv.BOOL-auto-feld-maxinhalt", "true");
+        Feld feld = new AlphaNumFeld(Bezeichner.NAME1, 5, 1, Align.LEFT);
+        feld.setInhalt("hello world");
+        assertEquals("hello", feld.getInhalt());
+    }
+
+    @Test
+    @Ignore     // da Einfluss auf andere Tests
+    public void testTruncateRight() {
+        // org.junit.ComparisonFailure:
+        //Expected :world
+        //Actual   :99999
+        System.setProperty("gdv.BOOL-auto-feld-maxinhalt", "true");
+        Feld feld = new AlphaNumFeld(Bezeichner.NAME1, 5, 1, Align.RIGHT);
+        feld.setInhalt("hello world");
+        assertEquals("world", feld.getInhalt());
     }
 
 }
