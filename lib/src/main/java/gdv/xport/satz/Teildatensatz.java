@@ -566,6 +566,28 @@ public class Teildatensatz extends Satz {
         return sortedFelder;
     }
 
+    /**
+     * Liefert die Liste der speziellen Kennzeichen zur Identifikation beim Import zurueck.
+     * Jedes Element enthaelt Byte-Adresse und Inhalt.
+     *
+     * @return Liste der speziellen Kennzeichen
+     */
+    public List<Zeichen> getSatzIdent() {
+        String[] identBezeichner = {"FolgeNrZurLaufendenPersonenNrUnterNrBzwLaufendenNrTarif",
+                "FolgeNrZurLaufendenPersonenNrUnterNrLaufendeNrTarif", "SatzNr", "SatzNr1",
+                "SatzNr2", "SatzNr3", "SatzNr4", "SatzNr9", "SatzNrnwiederholung",
+                "SatzNrnwiederholung1", "SatzNrnwiederholung2", "SatzNrnwiederholung3",
+                "Satznummer", "ZusaetzlicheSatzkennung"};
+        List<Zeichen> satzIdent = new ArrayList<>();
+        for (String s : identBezeichner) {
+            Bezeichner b = new Bezeichner(s);
+            if (hasFeld(b)) {
+                satzIdent.add(getFeld(b, Zeichen.class));
+            }
+        }
+        return satzIdent;
+    }
+
     /* (non-Javadoc)
      * @see gdv.xport.satz.Datensatz#export(java.io.Writer)
      */
