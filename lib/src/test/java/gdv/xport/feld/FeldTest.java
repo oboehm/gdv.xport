@@ -18,18 +18,14 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.annotation.FeldInfo;
-import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.config.Config;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
-import gdv.xport.satz.feld.sparte50.Feld210;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Ignore;
 import org.junit.Test;
 import patterntesting.runtime.junit.CloneableTester;
 
-import java.lang.annotation.Annotation;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -43,7 +39,7 @@ import static org.junit.Assert.*;
 public final class FeldTest extends AbstractFeldTest {
 
     private static final Logger LOG = LogManager.getLogger(FeldTest.class);
-    private enum Greeting { HELLO_WORLD, ADRESSAT; }
+    private enum Greeting { HELLO_WORLD, ADRESSAT }
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
@@ -85,12 +81,8 @@ public final class FeldTest extends AbstractFeldTest {
         assertEquals("x", zeichen.getInhalt());
     }
 
-    /**
-     * Testet, ob ein Feld nur mit einem Enum angelegt werden kann. Als
-     * Enum wird dabei die Satzart aus {@link Feld1bis7} verwendet.
-     */
     @Test
-    public void testFeldWithEnum() {
+    public void testKopffelder() {
         Feld satzart = new Feld(Kopffelder1bis7.SATZART);
         assertTrue("expected: " + satzart + " is valid", satzart.isValid());
         assertEquals(1, satzart.getByteAdresse());
@@ -183,83 +175,6 @@ public final class FeldTest extends AbstractFeldTest {
     }
 
     /**
-     * Wenn eine Enum-Konstante bereits als Bezeichner zur Verfuegung steht,
-     * soll dieses zurueckgegeben.
-     */
-    @Test
-    public void testGetAsBezeichnerWechselkennzeichen() {
-        Bezeichner b = Feld.getAsBezeichner(Feld210.WECHSELKENNZEICHEN_W_AKZ);
-        assertEquals(Bezeichner.WECHSELKENNZEICHEN_W_AKZ, b);
-    }
-
-    /**
-     * Hier wollen wir testen, ob aus dem Bezeichner "HELLO_WORLD" als
-     * Bezeichnung tatsaechlich "Hello World" rauskommt.
-     */
-    @Test
-    public void testCreateFeld() {
-        FeldInfo feldInfo = createFeldInfo();
-        Greeting hello = Greeting.HELLO_WORLD;
-        Feld feld = Feld.createFeld(hello, feldInfo);
-        assertEquals(new Bezeichner("HELLO_WORLD"), feld.getBezeichner());
-        assertEquals("Hello World", feld.getBezeichnung());
-    }
-
-    /**
-     * Hier wird eine vorbelegte FeldInfo-Annotation zum Testen erzeugt.
-     *
-     * @return FeldInfo mit einigen Default-Werten
-     */
-    static FeldInfo createFeldInfo() {
-        return new FeldInfo() {
-            @Override
-            public Class<? extends Annotation> annotationType() {
-                return null;
-            }
-            @Override
-            public Class<? extends Feld> type() {
-                return Zeichen.class;
-            }
-            @Override
-            public int teildatensatz() {
-                return 1;
-            }
-            @Override
-            public int nr() {
-                return 11;
-            }
-            @Override
-            public int nachkommaStellen() {
-                return 0;
-            }
-            @Override
-            public String erlaeuterung() {
-                return "only for testing";
-            }
-            @Override
-            public int byteAdresse() {
-                return 100;
-            }
-            @Override
-            public int anzahlBytes() {
-                return 1;
-            }
-            @Override
-            public Align align() {
-                return Align.UNKNOWN;
-            }
-            @Override
-            public String bezeichnung() {
-                return "";
-            }
-            @Override
-            public String value() {
-                return "";
-            }
-        };
-    }
-
-    /**
      * Test-Methode fuer {@link Feld#getInhalt()} in Zusammenhang mit dem
      * Encoding.
      */
@@ -280,29 +195,53 @@ public final class FeldTest extends AbstractFeldTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testOverflow() {
-        Feld feld = new AlphaNumFeld(Bezeichner.NAME1, 5, 1, Align.LEFT);
-        feld.setInhalt("hello world");
+        boolean isTruncate = Config.isTruncate();
+        try {
+            Config.setTruncate(false);
+            Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.LEFT);
+            feld.setInhalt("hello world");
+        } finally {
+            Config.setTruncate(isTruncate);
+        }
     }
 
     @Test
-    @Ignore     // da Einfluss auf andere Tests
     public void testTruncateLeft() {
-        System.setProperty("gdv.BOOL-auto-feld-maxinhalt", "true");
-        Feld feld = new AlphaNumFeld(Bezeichner.NAME1, 5, 1, Align.LEFT);
-        feld.setInhalt("hello world");
-        assertEquals("hello", feld.getInhalt());
+        boolean isTruncate = Config.isTruncate();
+        try {
+            Config.setTruncate(true);
+            Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.LEFT);
+            feld.setInhalt("hello world");
+            assertEquals("hello", feld.getInhalt());
+        } finally {
+            Config.setTruncate(isTruncate);
+        }
     }
 
     @Test
-    @Ignore     // da Einfluss auf andere Tests
     public void testTruncateRight() {
-        // org.junit.ComparisonFailure:
-        //Expected :world
-        //Actual   :99999
-        System.setProperty("gdv.BOOL-auto-feld-maxinhalt", "true");
-        Feld feld = new AlphaNumFeld(Bezeichner.NAME1, 5, 1, Align.RIGHT);
-        feld.setInhalt("hello world");
-        assertEquals("world", feld.getInhalt());
+        boolean isTruncate = Config.isTruncate();
+        try {
+            Config.setTruncate(true);
+            Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.RIGHT);
+            feld.setInhalt("hello world");
+            assertEquals("world", feld.getInhalt());
+        } finally {
+            Config.setTruncate(isTruncate);
+        }
+    }
+
+    @Test
+    public void testNoTruncate() {
+        boolean isTruncate = Config.isTruncate();
+        try {
+            Config.setTruncate(true);
+            Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.RIGHT);
+            feld.setInhalt("hi");
+            assertEquals("hi", feld.getInhalt().trim());
+        } finally {
+            Config.setTruncate(isTruncate);
+        }
     }
 
 }

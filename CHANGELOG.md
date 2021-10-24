@@ -15,6 +15,14 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - ByteAdresse durchgängiger verwenden
 
 
+## [Unreleased]
+
+### Added
+
+- Ueber Config#setTruncate(..) bzw. ueber die SystemProperty "gdv.truncate" kann das Verhalten beim Setzen von Feldern konfiguriert werden
+- Satz#setVermittler(..) und Satz#getVermittler() hinzugefügt
+
+
 ## [5.2.0] - 2021-10-10
 
 ### Added

@@ -48,6 +48,7 @@ public final class Config {
     public static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
     private static final Logger LOG = LogManager.getLogger(Config.class);
     private static VUNummer vunummer;
+    private static boolean truncate = Boolean.getBoolean(System.getProperty("gdv.truncate", "false"));
     /* end of datensatz */
     private static String eod = "\n";
 
@@ -104,6 +105,36 @@ public final class Config {
      */
     public static String getXmlResource() {
         return System.getProperty("gdv.XML-Resource", "VUVM2018.xml");
+    }
+
+    /**
+     * Gibt an, wie Felder bei Ueberlauf zu behandeln sind. Bei Text-Feldern
+     * wird der Wert je nach {@link gdv.xport.feld.Align} links- oder rechts-
+     * buendig abgeschnitten, bei numerischen Feldern wird dann der Maximal-
+     * Wert getzt.
+     *
+     * @param value bei true werden Felder beim Setzen abgeschnitten
+     * @since 5.3
+     */
+    public static void setTruncate(boolean value) {
+        truncate = value;
+    }
+
+    /**
+     * Gibt an, wie Felder bei Ueberlauf zu behandeln sind. Standardmaessig
+     * gibt es eine {@link IllegalArgumentException}, wenn Felder mit einem
+     * zu grossen Wert gestetzt werden.
+     * <p>
+     * Ueber die SystemProperty "gdv.truncate" kann die Voreinstellung
+     * global geaendert werden ("-Dgdv.truncate=true") oder ueber
+     * {@link Config#setTruncate(boolean)} von Fall zu Fall.
+     * </p>
+     *
+     * @return true: Felder werden abgeschnitten
+     * @since 5.3
+     */
+    public static boolean isTruncate() {
+        return truncate;
     }
 
     /**

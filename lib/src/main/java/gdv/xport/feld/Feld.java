@@ -20,7 +20,6 @@ package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
-import gdv.xport.satz.feld.FeldX;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
@@ -51,7 +50,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
     private static final Logger LOG = LogManager.getLogger(Feld.class);
     /** statt "null". */
     public static final Feld NULL_FELD = new Feld();
-    /** optional: Name des Felds. */
     private final Bezeichner bezeichner;
     private final StringBuilder inhalt;
     /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256. */
@@ -69,7 +67,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @since 1.0
      */
     public Feld() {
-        this(FeldX.UNBEKANNT);
+        this(Bezeichner.UNBEKANNT, 213, 43, Align.LEFT);
     }
 
     /**
@@ -352,17 +350,16 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * Setzt den Inhalt. Hierueber kann auch ein Inhalt gesetzt werden, der
      * nicht zum Datentyp passt (z.B. Buchstaben in einem {@link NumFeld},
      * damit ein Import nicht beim ersten fehlerhaften Feld abbricht.
-     * Dieses Verhalten kann auch nicht von Unterklassen ueberschrieben
-     * werden, da diese Methode 'final' ist.
      * <p>
      * Um festzustellen, ob ein Feld einen gueltigen Wert hat, kann die
      * {@link #isValid()}-Methode verwendet werden.
      * </p>
      *
-     * @param s der neue Inhalt
+     * @param neuerInhalt der neue Inhalt
      */
-    public final void setInhalt(final String s) {
+    public void setInhalt(final String neuerInhalt) {
         int anzahlBytes = this.getAnzahlBytes();
+        String s = Config.isTruncate() ? truncate(neuerInhalt) : neuerInhalt;
         if (s.length() > anzahlBytes) {
             throw new IllegalArgumentException("Feld " + this.getBezeichner() + ": Parameter \"" + s
                     + "\" ist laenger als " + anzahlBytes + " Zeichen!");
@@ -379,6 +376,23 @@ public class Feld implements Comparable<Feld>, Cloneable {
                 break;
             default:
                 throw new IllegalStateException("object was not properly initialized");
+        }
+    }
+
+    /**
+     * Schneidet einen zu langen String je nach Alignment links oder rechts ab.
+     *
+     * @param s String, der evtl. gekuerzt wird
+     * @return String der Laenge {@link #getAnzahlBytes()}
+     */
+    protected String truncate(String s) {
+        if (s.length() <= getAnzahlBytes()) {
+            return s;
+        }
+        if (ausrichtung == Align.LEFT) {
+            return s.substring(0, getAnzahlBytes());
+        } else {
+            return s.substring(s.length() - getAnzahlBytes());
         }
     }
 
@@ -708,11 +722,16 @@ public class Feld implements Comparable<Feld>, Cloneable {
 
     /**
      * Konvertiert einen Bezeichner (in GROSSBUCHSTABEN) in die entsprechende Bezeichnung.
+     * <p>
+     * TODO: wird mit v6 entfernt
+     * </p>
      *
      * @param name
      *            z.B. HELLO_WORLD (als Aufzaehlungstyp)
      * @return z.B. "Hello World"
+     * @deprecated Enum wird ab v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     public static String toBezeichnung(final Enum name) {
         FeldInfo feldInfo = getFeldInfo(name);
         if ((feldInfo == null) || StringUtils.isEmpty(feldInfo.bezeichnung())) {
@@ -734,7 +753,9 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *
      * @param feldX the feld x
      * @return the feld info
+     * @deprecated FeldInfo wird mit v6 nicht mehr unterstuetzt
      */
+    @Deprecated
     protected static FeldInfo getFeldInfo(final Enum feldX) {
         try {
             Field field = feldX.getClass().getField(feldX.name());

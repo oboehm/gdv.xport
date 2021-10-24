@@ -18,19 +18,15 @@
 
 package gdv.xport.feld;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import gdv.xport.annotation.FeldInfo;
 import gdv.xport.satz.feld.Feld100;
-
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import java.util.List;
+
+import static org.junit.Assert.*;
 
 /**
  * JUnit-Test fuer AlphaNum-Klasse.
@@ -49,17 +45,6 @@ public final class AlphaNumFeldTest extends AbstractFeldTest {
     @Override
     protected Feld getTestFeld() {
         return new AlphaNumFeld(Feld100.NAME1);
-    }
-
-    /**
-     * Test-Methode fuer {@link AlphaNumFeld#AlphaNumFeld(Enum, FeldInfo)}.
-     */
-    @Test
-    public void testAlphaNumFeldEnumFeldInfo() {
-        Alphabet alpha = Alphabet.DYNAMIK;
-        FeldInfo info = FeldTest.createFeldInfo();
-        AlphaNumFeld feld = new AlphaNumFeld(alpha, info);
-        assertEquals("Dynamik", feld.getBezeichnung());
     }
 
     /**

@@ -18,6 +18,7 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.config.Config;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
@@ -277,6 +278,45 @@ public final class NumFeldTest extends AbstractFeldTest {
         NumFeld n = new NumFeld(Bezeichner.of("Test-Datum"), 8, 1);
         n.setInhalt("xxxxxxxx");
         assertFalse(n.hasValue());
+    }
+
+    @Test
+    public void testTruncate() {
+        boolean isTruncate = Config.isTruncate();
+        try {
+            Config.setTruncate(true);
+            NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1);
+            feld.setInhalt("123456");
+            assertEquals("99999", feld.getInhalt());
+        } finally {
+            Config.setTruncate(isTruncate);
+        }
+    }
+
+    @Test
+    public void testTruncate0003210() {
+        boolean isTruncate = Config.isTruncate();
+        try {
+            Config.setTruncate(true);
+            NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 6, 1);
+            feld.setInhalt("0003210");
+            assertEquals("003210", feld.getInhalt());
+        } finally {
+            Config.setTruncate(isTruncate);
+        }
+    }
+
+    @Test
+    public void testNoTruncate() {
+        boolean isTruncate = Config.isTruncate();
+        try {
+            Config.setTruncate(true);
+            NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1);
+            feld.setInhalt("42");
+            assertEquals("00042", feld.getInhalt());
+        } finally {
+            Config.setTruncate(isTruncate);
+        }
     }
 
 }
