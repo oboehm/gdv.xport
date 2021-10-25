@@ -20,12 +20,11 @@ package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.config.Config;
+import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.feld.common.TeildatensatzNummer;
-import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
@@ -36,6 +35,7 @@ import org.apache.logging.log4j.Logger;
 import javax.validation.ValidationException;
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
+import java.io.StringReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -395,120 +395,14 @@ public class SatzRegistry implements VersionHandler {
     }
 
     private SatzTyp errateSatzTyp(final String content) throws IOException {
-        /*
-         * @Oli: das entspricht im Wesentlichen der Methode "Datenpaket.importDatensatz(...)".
-         */
-        SatzTyp satzTyp;
         int satzart = Integer.parseInt(content.substring(0, 4));
-
-        if (satzart == 1 || satzart == 9999)
+        if (satzart == 1 || satzart == 9999) {
             return SatzTyp.of(satzart);
-
-        int sparte = errateSparte(content);
-        satzTyp = SatzTyp.of(satzart, sparte);
-        if (satzart >= 210 && satzart < 300)  {
-            if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
-                WagnisartLeben wagnisart = errateWagnisart(content);
-                if (wagnisart != WagnisartLeben.NULL) {
-                    // wagnisart 0 hat immer ein Leerzeichen als
-                    // teildatenSatzmummer. Nur groesser 0
-                    // besitzt per Definition Werte.
-                    TeildatensatzNummer teildatensatzNummer = errateGdvSatzartNummer(content);
-                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), teildatensatzNummer.getCode());
-                } else {
-                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode());
-                }
-            } else if (sparte == 20 && satzart == 220) {
-                // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
-                int krankenFolgeNr = errateKrankenFolgeNr(content);
-                // Krankenfolgenummer nicht auslesbar -> Unbekannter Datensatz
-                if (krankenFolgeNr == -1) {
-                    satzTyp = SatzTyp.of(satzart, sparte);
-                } else {
-                    satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
-                }
-            } else if (sparte == 580 && satzart == 220) {
-                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
-                // noetig
-                int bausparArt = errateBausparenArt(content);
-                // BausparenArt nicht auslesbar -> Unbekannter Datensatz
-                if (bausparArt == -1)  {
-                    satzTyp = SatzTyp.of(satzart, sparte);
-                } else {
-                    satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
-                }
-            } else {
-                satzTyp = SatzTyp.of(satzart, sparte);
-            }
         }
-
-        return satzTyp;
-    }
-
-    private static int errateSparte(final String content) throws IOException {
-        try {
-            return Integer.parseInt(content.substring(10, 13));
-        } catch (StringIndexOutOfBoundsException | NumberFormatException ex) {
-            throw new IOException("cannot read sparte from first 14 bytes (\"" + content + "\")", ex);
-        }
-    }
-
-    private static WagnisartLeben errateWagnisart(final String content) throws IOException {
-        if (content.length() < 60)
-            throw new IOException("can't read Byte 60 from " + content);
-
-        String wagnisart = content.substring(59, 60);
-
-        if (wagnisart.trim().length() == 0) {
-            return WagnisartLeben.NULL;
-        } else {
-            try {
-                return WagnisartLeben.isIn(Integer.parseInt(wagnisart));
-            } catch (NumberFormatException e) {
-                LOG.warn("Not allowed value for wagnisart found. Type Number is required but was \""
-                        + wagnisart + "\".");
-                return WagnisartLeben.NULL;
-            }
-        }
-    }
-
-    private static TeildatensatzNummer errateGdvSatzartNummer(final String content) throws IOException {
-        if (content.length() < 256)
-            throw new IOException("can't read Byte 256 from " + content);
-
-        String teildatenSatz = content.substring(content.length() - 1);
-        if (teildatenSatz.trim().length() == 0) {
-            return TeildatensatzNummer.NULL;
-        } else {
-            try {
-                return TeildatensatzNummer.of(Integer.parseInt(teildatenSatz));
-            } catch (NumberFormatException e) {
-                LOG.warn(
-                        "Value \"" + teildatenSatz + "\" for TeildatensatzNummer found, but Number expected.");
-                return TeildatensatzNummer.NULL;
-            }
-        }
-    }
-
-    private static int errateKrankenFolgeNr(final String content) throws IOException {
-        if (content.length() < 48)
-            throw new IOException("can't read Byte 48 from " + content);
-
-        try {
-            return Integer.parseInt(content.substring(47, 48));
-        } catch (NumberFormatException ex) {
-            return -1;
-        }
-    }
-
-    private static int errateBausparenArt(final String content) throws IOException {
-        if (content.length() < 44)
-            throw new IOException("can't read Byte 44 from " + content);
-
-        try {
-            return Integer.parseInt(content.substring(43, 44));
-        } catch (NumberFormatException ex) {
-            return -1;
+        // Da das im Wesentlichen der Methode "Datenpaket.importDatensatz(...)" entspricht...
+        try (PushbackLineNumberReader reader = new PushbackLineNumberReader(new StringReader(content))) {
+            Satz satz = Datenpaket.importSatz(reader);
+            return satz.getSatzTyp();
         }
     }
 
