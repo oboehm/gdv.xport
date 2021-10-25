@@ -20,6 +20,7 @@ package gdv.xport;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
+import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.*;
 import gdv.xport.satz.model.Satz100;
 import gdv.xport.util.SatzFactory;
@@ -809,6 +810,15 @@ public final class DatenpaketTest {
         datenpaket2_2.importFrom(testfile, Charset.forName("IBM850"));
         datenpaket2_2.validate();
         assertFalse("Datenpaket darf nicht gueltig sein", datenpaket2_2.isValid());
+    }
+
+    @Test
+    public void testImportUnbekannterSatz() throws IOException {
+        File testfile = new File("src/test/resources", "gdv/xport/satz/Satz0123.txt");
+        try (PushbackLineNumberReader reader = new PushbackLineNumberReader(new FileReader(testfile))) {
+            Satz satz = Datenpaket.importSatz(reader);
+            assertEquals(123, satz.getSatzart());
+        }
     }
 
 }

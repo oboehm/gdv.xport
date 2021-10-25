@@ -47,7 +47,7 @@ public class PushbackLineNumberReader extends PushbackReader {
      * @param in the in
      */
     public PushbackLineNumberReader(final Reader in) {
-        super(in);
+        this(in, 256);
     }
 
     /**
