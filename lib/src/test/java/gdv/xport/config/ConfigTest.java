@@ -83,10 +83,4 @@ public class ConfigTest {
         }
     }
 
-    @Test
-    public void testGetProperties() {
-        Config config = new Config();
-        assertFalse(config.getProperties().isEmpty());
-    }
-
 }

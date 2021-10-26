@@ -37,7 +37,6 @@ import java.util.Properties;
  *
  * @author oliver
  * @since 08.10.2009
- * @version $Revision$
  */
 public final class Config {
 
@@ -63,11 +62,22 @@ public final class Config {
 
     /**
      * Zum Testen mit einer Standard-Konfiguration.
+     * Ueber "-Dgdv.config=meine.properties" kann man eine andere
+     * Resource fuer die Standard-Konfiguration einstellen.
+     *
+     * @since 5.3
      */
     public Config() {
-        this("/gdv/xport/config/default.properties");
+        this(System.getProperty("gdv.config", "/gdv/xport/config/default.properties"));
     }
 
+    /**
+     * Moechte man eine andere Konfiguration, kann man hierueber eine
+     * alternative Resource angeben.
+     *
+     * @param resource z.B. "/gdv/xport/config/default6.properties"
+     * @since 5.3
+     */
     public Config (String resource) {
         this(loadProperties(resource));
     }
@@ -91,16 +101,12 @@ public final class Config {
         }
     }
 
-    public Properties getProperties() {
-        return this.properties;
-    }
-
     public String getProperty(String key, String defaultValue) {
         return this.properties.getProperty(key, defaultValue);
     }
 
-    public void setProperty(String key, String value) {
-        this.properties.setProperty(key, value);
+    public boolean getBoolProperty(String key) {
+        return Boolean.parseBoolean(getProperty(key, "false"));
     }
 
     /**

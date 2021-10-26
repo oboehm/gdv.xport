@@ -321,8 +321,7 @@ public final class NumFeldTest extends AbstractFeldTest {
 
     @Test
     public void testSetInhaltWithLeadingBlank() {
-        Config config = new Config();
-        config.setProperty("gdv.numfeld.fill-blanks", "true");
+        Config config = new Config("/gdv/xport/config/default6.properties");
         Feld numFeld4 = new NumFeld(new Bezeichner("numTesttest"), 9, 1, 2).mitConfig(config);
         numFeld4.setInhalt(" 1234567");
         assertEquals("001234567", numFeld4.getInhalt());

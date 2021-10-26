@@ -297,7 +297,7 @@ public class NumFeld extends Feld {
 
     @Override
     public void setInhalt(String s) {
-        if (Boolean.parseBoolean(config.getProperty("gdv.numfeld.fill-blanks", "false"))) {
+        if (config.getBoolProperty("gdv.numfeld.fill-blanks")) {
             super.setInhalt(s.trim());
         } else {
             super.setInhalt(s);
