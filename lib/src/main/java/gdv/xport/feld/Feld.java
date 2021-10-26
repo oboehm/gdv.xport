@@ -58,7 +58,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     /** Ausrichtung: rechts- oder linksbuendig. */
     @NotEqual("UNKNOWN")
     private final Align ausrichtung;
-    protected Config config = Config.getInstance();
+    protected Config config = Config.getDefault();
 
     /**
      * Legt ein neues Feld an. Dieser Default-Konstruktor ist fuer Unterklassen
@@ -122,6 +122,19 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     public Feld(final String name, final String s, final Align alignment) {
         this(new Bezeichner(name), 1, s, alignment);
+    }
+
+    /**
+     * Liefert eine neues Feld mit neuer Konfiguration
+     *
+     * @param c neue Konfiguration
+     * @return neues NumFeld
+     * @since 5.3
+     */
+    public Feld mitConfig(Config c) {
+        Feld x = new Feld(this);
+        x.config = c;
+        return x;
     }
 
     /**
@@ -360,7 +373,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     public void setInhalt(final String neuerInhalt) {
         int anzahlBytes = this.getAnzahlBytes();
-        String s = Config.isTruncate() ? truncate(neuerInhalt) : neuerInhalt;
+        String s = config.getBoolProperty("gdv.feld.truncate") ? truncate(neuerInhalt) : neuerInhalt;
         if (s.length() > anzahlBytes) {
             throw new IllegalArgumentException("Feld " + this.getBezeichner() + ": Parameter \"" + s
                     + "\" ist laenger als " + anzahlBytes + " Zeichen!");

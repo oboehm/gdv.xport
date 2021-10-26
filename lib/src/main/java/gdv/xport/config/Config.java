@@ -40,6 +40,10 @@ import java.util.Properties;
  */
 public final class Config {
 
+    private static final Logger LOG = LogManager.getLogger(Config.class);
+    private static VUNummer vunummer;
+    private static String eod = "\n";
+
     /** Standard-Encoding ist "ISO-8859-1". */
     public static final Charset DEFAULT_ENCODING = StandardCharsets.ISO_8859_1;
     /** Standard-Encoding als String. */
@@ -48,16 +52,15 @@ public final class Config {
     public static final String DUMMY_VU_NUMMER = "DUMMY";
     /** Property-Name fuer die VU-Nummer. */
     public static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
-    private static final Logger LOG = LogManager.getLogger(Config.class);
-    private static final Config INSTANCE = new Config();
-    private static VUNummer vunummer;
-    private static boolean truncate = Boolean.getBoolean(System.getProperty("gdv.truncate", "false"));
-    /* end of datensatz */
-    private static String eod = "\n";
+    /** Default-Konfiguration fuer v5. */
+    public static final Config V5 = new Config("/gdv/xport/config/default.properties");
+    /** Default-Konfiguration fuer v6. */
+    public static final Config V6 = new Config("/gdv/xport/config/default6.properties");
+
     private final Properties properties;
 
-    public static Config getInstance() {
-        return INSTANCE;
+    public static Config getDefault() {
+        return V5;
     }
 
     /**
@@ -159,36 +162,6 @@ public final class Config {
      */
     public static String getXmlResource() {
         return System.getProperty("gdv.XML-Resource", "VUVM2018.xml");
-    }
-
-    /**
-     * Gibt an, wie Felder bei Ueberlauf zu behandeln sind. Bei Text-Feldern
-     * wird der Wert je nach {@link gdv.xport.feld.Align} links- oder rechts-
-     * buendig abgeschnitten, bei numerischen Feldern wird dann der Maximal-
-     * Wert getzt.
-     *
-     * @param value bei true werden Felder beim Setzen abgeschnitten
-     * @since 5.3
-     */
-    public static void setTruncate(boolean value) {
-        truncate = value;
-    }
-
-    /**
-     * Gibt an, wie Felder bei Ueberlauf zu behandeln sind. Standardmaessig
-     * gibt es eine {@link IllegalArgumentException}, wenn Felder mit einem
-     * zu grossen Wert gestetzt werden.
-     * <p>
-     * Ueber die SystemProperty "gdv.truncate" kann die Voreinstellung
-     * global geaendert werden ("-Dgdv.truncate=true") oder ueber
-     * {@link Config#setTruncate(boolean)} von Fall zu Fall.
-     * </p>
-     *
-     * @return true: Felder werden abgeschnitten
-     * @since 5.3
-     */
-    public static boolean isTruncate() {
-        return truncate;
     }
 
     /**

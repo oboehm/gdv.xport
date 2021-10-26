@@ -282,47 +282,28 @@ public final class NumFeldTest extends AbstractFeldTest {
 
     @Test
     public void testTruncate() {
-        boolean isTruncate = Config.isTruncate();
-        try {
-            Config.setTruncate(true);
-            NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1);
-            feld.setInhalt("123456");
-            assertEquals("99999", feld.getInhalt());
-        } finally {
-            Config.setTruncate(isTruncate);
-        }
+        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1).mitConfig(Config.V6);
+        feld.setInhalt("123456");
+        assertEquals("99999", feld.getInhalt());
     }
 
     @Test
     public void testTruncate0003210() {
-        boolean isTruncate = Config.isTruncate();
-        try {
-            Config.setTruncate(true);
-            NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 6, 1);
-            feld.setInhalt("0003210");
-            assertEquals("003210", feld.getInhalt());
-        } finally {
-            Config.setTruncate(isTruncate);
-        }
+        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 6, 1).mitConfig(Config.V6);
+        feld.setInhalt("0003210");
+        assertEquals("003210", feld.getInhalt());
     }
 
     @Test
     public void testNoTruncate() {
-        boolean isTruncate = Config.isTruncate();
-        try {
-            Config.setTruncate(true);
-            NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1);
-            feld.setInhalt("42");
-            assertEquals("00042", feld.getInhalt());
-        } finally {
-            Config.setTruncate(isTruncate);
-        }
+        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1).mitConfig(Config.V6);
+        feld.setInhalt("42");
+        assertEquals("00042", feld.getInhalt());
     }
 
     @Test
     public void testSetInhaltWithLeadingBlank() {
-        Config config = new Config("/gdv/xport/config/default6.properties");
-        Feld numFeld4 = new NumFeld(new Bezeichner("numTesttest"), 9, 1, 2).mitConfig(config);
+        Feld numFeld4 = new NumFeld(new Bezeichner("numTesttest"), 9, 1, 2).mitConfig(Config.V6);
         numFeld4.setInhalt(" 1234567");
         assertEquals("001234567", numFeld4.getInhalt());
     }

@@ -225,7 +225,7 @@ public class SatzRegistry implements VersionHandler {
      * mit
      * </p>
      * <pre>
-     * SatzRegistry.getInstance().register(SatzXml.of("Satz0221.051.xml"), SatzTyp.of("0221.051"));
+     * SatzRegistry.getDefault().register(SatzXml.of("Satz0221.051.xml"), SatzTyp.of("0221.051"));
      * </pre>
      * <p>
      * eine eigene Beschreibung fuer Satzart 0221.051 registriert werden.

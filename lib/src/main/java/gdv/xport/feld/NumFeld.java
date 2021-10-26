@@ -251,7 +251,9 @@ public class NumFeld extends Feld {
      *
      * @param c neue Konfiguration
      * @return neues NumFeld
+     * @since 5.3
      */
+    @Override
     public NumFeld mitConfig(Config c) {
         NumFeld x = new NumFeld(this);
         x.config = c;

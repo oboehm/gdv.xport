@@ -195,53 +195,29 @@ public final class FeldTest extends AbstractFeldTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testOverflow() {
-        boolean isTruncate = Config.isTruncate();
-        try {
-            Config.setTruncate(false);
-            Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.LEFT);
-            feld.setInhalt("hello world");
-        } finally {
-            Config.setTruncate(isTruncate);
-        }
+        Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.LEFT);
+        feld.setInhalt("hello world");
     }
 
     @Test
     public void testTruncateLeft() {
-        boolean isTruncate = Config.isTruncate();
-        try {
-            Config.setTruncate(true);
-            Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.LEFT);
-            feld.setInhalt("hello world");
-            assertEquals("hello", feld.getInhalt());
-        } finally {
-            Config.setTruncate(isTruncate);
-        }
+        Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.LEFT).mitConfig(Config.V6);
+        feld.setInhalt("hello world");
+        assertEquals("hello", feld.getInhalt());
     }
 
     @Test
     public void testTruncateRight() {
-        boolean isTruncate = Config.isTruncate();
-        try {
-            Config.setTruncate(true);
-            Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.RIGHT);
-            feld.setInhalt("hello world");
-            assertEquals("world", feld.getInhalt());
-        } finally {
-            Config.setTruncate(isTruncate);
-        }
+        Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.RIGHT).mitConfig(Config.V6);
+        feld.setInhalt("hello world");
+        assertEquals("world", feld.getInhalt());
     }
 
     @Test
     public void testNoTruncate() {
-        boolean isTruncate = Config.isTruncate();
-        try {
-            Config.setTruncate(true);
-            Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.RIGHT);
-            feld.setInhalt("hi");
-            assertEquals("hi", feld.getInhalt().trim());
-        } finally {
-            Config.setTruncate(isTruncate);
-        }
+        Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.RIGHT).mitConfig(Config.V6);
+        feld.setInhalt("hi");
+        assertEquals("hi", feld.getInhalt().trim());
     }
 
 }
