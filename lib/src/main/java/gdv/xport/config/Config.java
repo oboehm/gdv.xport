@@ -23,8 +23,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Properties;
 
 /**
  * Ueber diese Klasse koennen globale Werte (wie z.B. die VU-Nummer) konfiguriert
@@ -47,12 +50,57 @@ public final class Config {
     /** Property-Name fuer die VU-Nummer. */
     public static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
     private static final Logger LOG = LogManager.getLogger(Config.class);
+    private static final Config INSTANCE = new Config();
     private static VUNummer vunummer;
     private static boolean truncate = Boolean.getBoolean(System.getProperty("gdv.truncate", "false"));
     /* end of datensatz */
     private static String eod = "\n";
+    private final Properties properties;
 
-    private Config() {
+    public static Config getInstance() {
+        return INSTANCE;
+    }
+
+    /**
+     * Zum Testen mit einer Standard-Konfiguration.
+     */
+    public Config() {
+        this("/gdv/xport/config/default.properties");
+    }
+
+    public Config (String resource) {
+        this(loadProperties(resource));
+    }
+
+    private Config(Properties props) {
+        this.properties = props;
+        this.properties.putAll(System.getProperties());
+    }
+
+    private static Properties loadProperties(String resource) {
+        Properties properties = new Properties();
+        try (InputStream input = Config.class.getResourceAsStream(resource)) {
+            if (input == null) {
+                throw new IllegalArgumentException(String.format("Resource '%s' exitiert nicht", resource));
+            }
+            LOG.info("Properties werden aus '{}' eingelesen.", resource);
+            properties.load(input);
+            return properties;
+        } catch (IOException ex) {
+            throw new IllegalArgumentException(String.format("'%s' ist fehlerhaft", ex));
+        }
+    }
+
+    public Properties getProperties() {
+        return this.properties;
+    }
+
+    public String getProperty(String key, String defaultValue) {
+        return this.properties.getProperty(key, defaultValue);
+    }
+
+    public void setProperty(String key, String value) {
+        this.properties.setProperty(key, value);
     }
 
     /**

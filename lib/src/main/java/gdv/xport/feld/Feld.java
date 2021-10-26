@@ -58,6 +58,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     /** Ausrichtung: rechts- oder linksbuendig. */
     @NotEqual("UNKNOWN")
     private final Align ausrichtung;
+    protected Config config = Config.getInstance();
 
     /**
      * Legt ein neues Feld an. Dieser Default-Konstruktor ist fuer Unterklassen

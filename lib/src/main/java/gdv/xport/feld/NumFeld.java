@@ -18,6 +18,7 @@
 package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.config.Config;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.lang3.StringUtils;
@@ -246,6 +247,18 @@ public class NumFeld extends Feld {
     }
 
     /**
+     * Liefert eine neues NumFeld mit neuer Konfiguration
+     *
+     * @param c neue Konfiguration
+     * @return neues NumFeld
+     */
+    public NumFeld mitConfig(Config c) {
+        NumFeld x = new NumFeld(this);
+        x.config = c;
+        return x;
+    }
+
+    /**
      * Liefert die Anzahl der Nachkommastellen.
      *
      * @return Anzahl der Nachkommastellen
@@ -280,6 +293,15 @@ public class NumFeld extends Feld {
      */
     public void setInhalt(BigDecimal n) {
         setInhalt(n.movePointRight(this.nachkommastellen).setScale(0, RoundingMode.HALF_UP).toString());
+    }
+
+    @Override
+    public void setInhalt(String s) {
+        if (Boolean.parseBoolean(config.getProperty("gdv.numfeld.fill-blanks", "false"))) {
+            super.setInhalt(s.trim());
+        } else {
+            super.setInhalt(s);
+        }
     }
 
     /* (non-Javadoc)

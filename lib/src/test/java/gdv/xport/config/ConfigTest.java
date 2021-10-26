@@ -26,13 +26,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.*;
 
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * Unit-Tests fuer {@link Config}-Klasse.
@@ -86,6 +81,12 @@ public class ConfigTest {
         } finally {
             istream.close();
         }
+    }
+
+    @Test
+    public void testGetProperties() {
+        Config config = new Config();
+        assertFalse(config.getProperties().isEmpty());
     }
 
 }
