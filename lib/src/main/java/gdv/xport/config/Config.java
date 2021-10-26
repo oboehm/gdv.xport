@@ -23,6 +23,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.annotation.concurrent.Immutable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
@@ -30,19 +31,30 @@ import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 /**
- * Ueber diese Klasse koennen globale Werte (wie z.B. die VU-Nummer) konfiguriert
- * (d.h. gesetzt) und auch abgefragt werden.
- * Ueblicherweise sollten diese Werte am Anfang programmatisch gesetzt werden.
- * Alternativ koennen sie auch ueber System-Properties konfiguriert werden.
+ * Ueber diese Klassen koennen Default-Werte abgefragt und das Verhalten der
+ * Anwendung gesteuert werden. Mit v5.3 wurde die Klasse umgebaut, um
+ * verschiedene Konfigurationen zu unterstuetzen.
+ * <p>
+ * Ueber die Option "-Dgdv.config=..." koennen eigene Property-Dateien fuer
+ * die Vorbelegung angegeben werden. So kann mit
+ * <pre>
+ *     -Dgdv.config=/gdv/xport/config/default6.properties
+ * </pre>
+ * das Verhalten fuer v6 eingestellt werden, in der sich z.B. das Verhalten von
+ * Setzen von Feldern mit zu grossen Werten aendern wird. Einzelne Properties
+ * koennen aber auch durch SystemProperties (z.B. "-Dgdv.feld.truncate=true")
+ * uebersteuert werden.
+ * </p>
  *
  * @author oliver
  * @since 08.10.2009
  */
+@Immutable
 public final class Config {
 
     private static final Logger LOG = LogManager.getLogger(Config.class);
-    private static VUNummer vunummer;
     private static String eod = "\n";
+    private static Config instance = new Config();
 
     /** Standard-Encoding ist "ISO-8859-1". */
     public static final Charset DEFAULT_ENCODING = StandardCharsets.ISO_8859_1;
@@ -59,8 +71,8 @@ public final class Config {
 
     private final Properties properties;
 
-    public static Config getDefault() {
-        return V5;
+    public static Config getInstance() {
+        return instance;
     }
 
     /**
@@ -104,38 +116,65 @@ public final class Config {
         }
     }
 
+    /**
+     * Liefert den Wert einer Property zuruecke
+     *
+     * @param key Name der Property
+     * @param defaultValue Default-Wert, falls Property nicht gesetzt ist
+     * @return Wert der Property als String
+     * @since 5.3
+     */
     public String getProperty(String key, String defaultValue) {
         return this.properties.getProperty(key, defaultValue);
     }
 
-    public boolean getBoolProperty(String key) {
+    /**
+     * Liefert eine Property als Bool-Wert zurueck.
+     *
+     * @param key Name der Property
+     * @return true oder false
+     * @since 5.3
+     */
+    public boolean getBool(String key) {
         return Boolean.parseBoolean(getProperty(key, "false"));
     }
 
     /**
-     * Diese Methode dient zwar hauptsaechlich zu Testzwecken, kann aber auch
-     * aufgerufen werden, wenn man nicht mehr sicher ist, was denn alles
-     * konfiguriert ist.
+     * Diese Methode ist ohne Funktion.
+     *
+     * @deprecated wird in kuenftigen Versionen nicht mehr unterstuetzt
      */
+    @Deprecated
     public static synchronized void reset() {
-        vunummer = null;
+        LOG.warn("reset() ist ohne Version und wird in kuenftigen Versionen entfernt.");
     }
 
     /**
      * Damit kann die VU-Nummer gesetzt werden.
+     *
      * @param nr die VU-Nummer als String
+     * @deprecated wird kuenftig nicht mehr unterstuetzt
      */
+    @Deprecated
     public static synchronized void setVUNummer(final String nr) {
         setVUNummer(new VUNummer(nr));
     }
 
     /**
      * Damit kann die VU-Nummer gesetzt werden.
+     *
      * @param nr VU-Nummer
+     * @deprecated wird kuenftig nicht mehr unterstuetzt
      */
+    @Deprecated
     public static synchronized void setVUNummer(final VUNummer nr) {
-        vunummer = nr;
-        LOG.info("konfigurierte VU-Nummer: " + vunummer);
+        if (!getVUNummer().equals(nr)) {
+            // da die Config nicht veraendert werden soll, muessen wir eine eine neue Config erzeugen
+            Properties props = new Properties(instance.properties);
+            props.setProperty(GDV_VU_NUMMER, nr.getInhalt());
+            instance = new Config(props);
+            LOG.info("konfigurierte VU-Nummer: " + nr);
+        }
     }
 
     /**
@@ -145,10 +184,7 @@ public final class Config {
      * @return VU-Nummer bzw. "DUMMY"
      */
     public static synchronized VUNummer getVUNummer() {
-        if (vunummer == null) {
-            vunummer = new VUNummer(System.getProperty(GDV_VU_NUMMER, DUMMY_VU_NUMMER));
-        }
-        return vunummer;
+        return new VUNummer(instance.getProperty(GDV_VU_NUMMER, DUMMY_VU_NUMMER));
     }
 
     /**

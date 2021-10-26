@@ -31,7 +31,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 
-import static java.math.BigDecimal.*;
+import static java.math.BigDecimal.ZERO;
 
 /**
  * Klasse fuer numerische Zeichen. Die Default-Einstellung fuer die
@@ -299,7 +299,7 @@ public class NumFeld extends Feld {
 
     @Override
     public void setInhalt(String s) {
-        if (config.getBoolProperty("gdv.numfeld.fill-blanks")) {
+        if (config.getBool("gdv.numfeld.fill-blanks")) {
             super.setInhalt(s.trim());
         } else {
             super.setInhalt(s);
