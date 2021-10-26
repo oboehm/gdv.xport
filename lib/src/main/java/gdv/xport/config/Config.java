@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -99,7 +100,6 @@ public final class Config {
 
     private Config(Properties props) {
         this.properties = props;
-        this.properties.putAll(System.getProperties());
     }
 
     private static Properties loadProperties(String resource) {
@@ -110,9 +110,20 @@ public final class Config {
             }
             LOG.info("Properties werden aus '{}' eingelesen.", resource);
             properties.load(input);
+            addGdvSystemProperties(properties);
             return properties;
         } catch (IOException ex) {
             throw new IllegalArgumentException(String.format("'%s' ist fehlerhaft", ex));
+        }
+    }
+
+    // nur die SystemProperties, die mit "gdv." anfangen, werden uebernommen
+    private static void addGdvSystemProperties(Properties props) {
+        for (Map.Entry<Object, Object> entry : System.getProperties().entrySet()) {
+            String key = (String) entry.getKey();
+            if (key.startsWith("gdv.")) {
+                props.setProperty(key, (String) entry.getValue());
+            }
         }
     }
 
