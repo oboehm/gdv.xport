@@ -106,7 +106,6 @@ public final class DatenpaketTest {
      *             falls Temp-Datei nicht angelegt werden kann.
      */
     @Test
-    @SkipTestOn(property = "SKIP_EXPORT_TEST")
     public void testExportFile() throws IOException {
         datenpaket.setVuNummer("Hello");
         datenpaket.setAbsender("World");
@@ -118,7 +117,6 @@ public final class DatenpaketTest {
         datenpaket.setErstellungsDatumBis(datum);
         datenpaket.getVorsatz().set(Bezeichner.VERSION_SATZART_9999, "1.1");
         File file = File.createTempFile("datenpaket", ".txt");
-        Config.setEOD("\n");
         datenpaket.export(file);
         LOG.info(datenpaket + " was exported to " + file);
         assertTrue(file + " was not created", file.exists());

@@ -40,6 +40,7 @@ import static org.junit.Assert.assertNotNull;
 public class ConfigTest {
 
     private static final Logger LOG = LogManager.getLogger(ConfigTest.class);
+    private final Config config = Config.getInstance();
 
     /**
      * Test method for {@link gdv.xport.config.Config#getVUNummer()}:
@@ -81,6 +82,12 @@ public class ConfigTest {
         } finally {
             istream.close();
         }
+    }
+
+    @Test
+    public void testEOD() {
+        String eod = config.getString("gdv.eod");
+        assertEquals("\n", eod);
     }
 
 }

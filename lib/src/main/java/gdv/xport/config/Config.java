@@ -29,6 +29,7 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Properties;
 
 /**
@@ -54,7 +55,6 @@ import java.util.Properties;
 public final class Config {
 
     private static final Logger LOG = LogManager.getLogger(Config.class);
-    private static String eod = "\n";
     private static Config instance = new Config();
 
     /** Standard-Encoding ist "ISO-8859-1". */
@@ -128,7 +128,7 @@ public final class Config {
     }
 
     /**
-     * Liefert den Wert einer Property zuruecke
+     * Liefert den Wert einer Property zurueck.
      *
      * @param key Name der Property
      * @param defaultValue Default-Wert, falls Property nicht gesetzt ist
@@ -137,6 +137,17 @@ public final class Config {
      */
     public String getProperty(String key, String defaultValue) {
         return this.properties.getProperty(key, defaultValue);
+    }
+
+    /**
+     * Liefert den Wert einer Property als String zurueck
+     *
+     * @param key Name der Property
+     * @return Wert der Property als String
+     * @since 5.3
+     */
+    public String getString(String key) {
+        return this.properties.getProperty(key);
     }
 
     /**
@@ -181,9 +192,7 @@ public final class Config {
     public static synchronized void setVUNummer(final VUNummer nr) {
         if (!getVUNummer().equals(nr)) {
             // da die Config nicht veraendert werden soll, muessen wir eine eine neue Config erzeugen
-            Properties props = new Properties(instance.properties);
-            props.setProperty(GDV_VU_NUMMER, nr.getInhalt());
-            instance = new Config(props);
+            instance = createConfigWith(GDV_VU_NUMMER, nr.getInhalt());
             LOG.info("konfigurierte VU-Nummer: " + nr);
         }
     }
@@ -218,9 +227,20 @@ public final class Config {
      *
      * @since 0.3
      * @param linefeed z.B. "\n"
+     * @deprecated wird kuenftig nicht mehr unterstuetzt
      */
+    @Deprecated
     public static synchronized void setEOD(final String linefeed) {
-        eod = linefeed;
+        if (Objects.equals(getEOD(), linefeed)) {
+            // da die Config nicht veraendert werden soll, muessen wir eine eine neue Config erzeugen
+            instance = createConfigWith("gdv.eod", linefeed);
+        }
+    }
+
+    private static Config createConfigWith(String key, String value) {
+        Properties props = new Properties(instance.properties);
+        props.setProperty(key, value);
+        return new Config(props);
     }
 
     /**
@@ -230,7 +250,7 @@ public final class Config {
      * @return End-of-Datensatz
      */
     public static synchronized String getEOD() {
-        return eod;
+        return instance.getString("gdv.eod");
     }
 
     /**
@@ -239,7 +259,7 @@ public final class Config {
      * @return true, falls ja
      */
     public static synchronized boolean hasEOD() {
-        return StringUtils.isNotEmpty(eod);
+        return StringUtils.isNotEmpty(getEOD());
     }
 
 }
