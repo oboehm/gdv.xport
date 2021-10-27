@@ -201,21 +201,21 @@ public final class FeldTest extends AbstractFeldTest {
 
     @Test
     public void testTruncateLeft() {
-        Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.LEFT).mitConfig(Config.V6);
+        Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.LEFT).mitConfig(Config.EXPERIMENTAL);
         feld.setInhalt("hello world");
         assertEquals("hello", feld.getInhalt());
     }
 
     @Test
     public void testTruncateRight() {
-        Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.RIGHT).mitConfig(Config.V6);
+        Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.RIGHT).mitConfig(Config.EXPERIMENTAL);
         feld.setInhalt("hello world");
         assertEquals("world", feld.getInhalt());
     }
 
     @Test
     public void testNoTruncate() {
-        Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.RIGHT).mitConfig(Config.V6);
+        Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.RIGHT).mitConfig(Config.EXPERIMENTAL);
         feld.setInhalt("hi");
         assertEquals("hi", feld.getInhalt().trim());
     }

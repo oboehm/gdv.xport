@@ -40,7 +40,7 @@ import java.util.Properties;
  * Ueber die Option "-Dgdv.config=..." koennen eigene Property-Dateien fuer
  * die Vorbelegung angegeben werden. So kann mit
  * <pre>
- *     -Dgdv.config=/gdv/xport/config/default6.properties
+ *     -Dgdv.config=/gdv/xport/config/experimental.properties
  * </pre>
  * das Verhalten fuer v6 eingestellt werden, in der sich z.B. das Verhalten von
  * Setzen von Feldern mit zu grossen Werten aendern wird. Einzelne Properties
@@ -65,10 +65,16 @@ public final class Config {
     public static final String DUMMY_VU_NUMMER = "DUMMY";
     /** Property-Name fuer die VU-Nummer. */
     public static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
-    /** Default-Konfiguration fuer v5. */
-    public static final Config V5 = new Config("/gdv/xport/config/default.properties");
-    /** Default-Konfiguration fuer v6. */
-    public static final Config V6 = new Config("/gdv/xport/config/default6.properties");
+    /** Default-Konfiguration fuer VUVM2009er-Version. */
+    public static final Config V2009 = new Config("/gdv/xport/config/2009.properties");
+    /** Default-Konfiguration fuer VUVM2013er-Version. */
+    public static final Config V2013 = new Config("/gdv/xport/config/2013.properties");
+    /** Default-Konfiguration fuer VUVM2015er-Version. */
+    public static final Config V2015 = new Config("/gdv/xport/config/2015.properties");
+    /** Default-Konfiguration fuer VUVM2018er-Version. */
+    public static final Config V2018 = new Config("/gdv/xport/config/2018.properties");
+    /** Experimentale Konfiguration zum Testen neuer Features. */
+    public static final Config EXPERIMENTAL = new Config("/gdv/xport/config/experimental.properties");
 
     private final Properties properties;
 
@@ -84,14 +90,14 @@ public final class Config {
      * @since 5.3
      */
     public Config() {
-        this(System.getProperty("gdv.config", "/gdv/xport/config/default.properties"));
+        this(System.getProperty("gdv.config", "/gdv/xport/config/2018.properties"));
     }
 
     /**
      * Moechte man eine andere Konfiguration, kann man hierueber eine
      * alternative Resource angeben.
      *
-     * @param resource z.B. "/gdv/xport/config/default6.properties"
+     * @param resource z.B. "/gdv/xport/config/experimental.properties"
      * @since 5.3
      */
     public Config (String resource) {

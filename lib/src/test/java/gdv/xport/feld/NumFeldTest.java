@@ -282,28 +282,28 @@ public final class NumFeldTest extends AbstractFeldTest {
 
     @Test
     public void testTruncate() {
-        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1).mitConfig(Config.V6);
+        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1).mitConfig(Config.EXPERIMENTAL);
         feld.setInhalt("123456");
         assertEquals("99999", feld.getInhalt());
     }
 
     @Test
     public void testTruncate0003210() {
-        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 6, 1).mitConfig(Config.V6);
+        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 6, 1).mitConfig(Config.EXPERIMENTAL);
         feld.setInhalt("0003210");
         assertEquals("003210", feld.getInhalt());
     }
 
     @Test
     public void testNoTruncate() {
-        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1).mitConfig(Config.V6);
+        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1).mitConfig(Config.EXPERIMENTAL);
         feld.setInhalt("42");
         assertEquals("00042", feld.getInhalt());
     }
 
     @Test
     public void testSetInhaltWithLeadingBlank() {
-        Feld numFeld4 = new NumFeld(new Bezeichner("numTesttest"), 9, 1, 2).mitConfig(Config.V6);
+        Feld numFeld4 = new NumFeld(new Bezeichner("numTesttest"), 9, 1, 2).mitConfig(Config.EXPERIMENTAL);
         numFeld4.setInhalt(" 1234567");
         assertEquals("001234567", numFeld4.getInhalt());
     }
