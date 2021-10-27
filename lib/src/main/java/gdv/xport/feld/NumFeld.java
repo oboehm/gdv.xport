@@ -145,33 +145,19 @@ public class NumFeld extends Feld {
 
     /**
      * Instantiiert ein neues numerisches Feld.
+     * <p>
+     * TODO: wird mit 5.2, spaetestens aber mit 6.0 entfernt
+     * </p>
      *
      * @param name Bezeichner
      * @param info mit der Start-Adresse und weiteren Angaben
      * @since 1.0
+     * @deprecated FeldInfo wird kuenftig nicht mehr unterstuetzt
      */
+    @Deprecated
     public NumFeld(final Bezeichner name, final FeldInfo info) {
         super(name, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.RIGHT : info.align());
         this.nachkommastellen = info.nachkommaStellen();
-    }
-
-    /**
-     * Instantiiert ein neues numerisches Feld.
-     * <p>
-     * TODO: wird mit 5.2, spaetestens aber mit 6.0 entfernt
-     * </p>
-     * @param name Feld-Bezeichner (z.B. "pi")
-     * @param start Start-Byte (beginnend ab 1)
-     * @param value der Inhalt (z.B. "314")
-     * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
-     * @since 0.4
-     * @deprecated bitte {@link NumFeld#NumFeld(Bezeichner, int, String, int)} 
-     *             verwenden
-     */
-    @Deprecated
-    public NumFeld(final String name, final int start, final String value,
-            final int nachkommastellen) {
-        this(new Bezeichner(name), start, value, nachkommastellen);
     }
 
     /**
@@ -270,6 +256,18 @@ public class NumFeld extends Feld {
     }
 
     /**
+     * Setzt den Inhalt mit der uebergebenen Ziffer.
+     *
+     * @param c neuer Inhalt
+     */
+    @Override
+    public void setInhalt(final char c) {
+        this.setInhalt(Character.toString(c));
+    }
+
+    /**
+     * Setzt den Inhalt mit der uebergebenen Zahl.
+     *
      * @param n neuer Inhalt
      */
     @Override
@@ -278,6 +276,8 @@ public class NumFeld extends Feld {
     }
 
     /**
+     * Setzt den Inhalt mit der uebergebenen Zahl.
+     *
      * @param n neuer Inhalt
      */
     public void setInhalt(final long n) {

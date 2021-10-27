@@ -308,4 +308,12 @@ public final class NumFeldTest extends AbstractFeldTest {
         assertEquals("001234567", numFeld4.getInhalt());
     }
 
+    @Test
+    public void testSetInhaltChar() {
+        NumFeld one = new NumFeld(Bezeichner.ANTEILE, 5, 1);
+        one.setInhalt('1');
+        assertEquals(1, one.toInt());
+        assertEquals("00001", one.getInhalt());
+    }
+
 }
