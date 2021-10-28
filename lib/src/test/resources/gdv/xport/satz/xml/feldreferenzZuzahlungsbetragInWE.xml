@@ -1,0 +1,11 @@
+<feldreferenz referenz="BN-2003.02.11.22.49.55.646">
+    <name>Zuzahlungsbetrag in Währungseinheiten</name>
+    <aenderungsart combobox="aenderungsartbox">keine Änderung</aenderungsart>
+    <letzteAenderung>11.02.2003 22:49:42</letzteAenderung>
+    <technischerName>ZuzahlungsbetragInWE</technischerName>
+    <bemerkung>Letzter Zuzahlungsbetrag</bemerkung>
+    <minimaleAnzahl>0</minimaleAnzahl>
+    <maximaleAnzahl>1</maximaleAnzahl>
+    <auspraegung />
+    <ntabhaengig>0</ntabhaengig>
+</feldreferenz>

@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.xml;
 
+import de.jfachwert.Text;
 import gdv.xport.feld.*;
 import gdv.xport.util.XmlHelper;
 import org.apache.commons.lang3.StringUtils;
@@ -125,7 +126,7 @@ public final class FeldXml extends Feld {
      * @return das entsprechende Feld
      */
     public Feld toFeld(final int byteAddress) {
-        return this.toFeld(byteAddress, this.getBezeichner());
+        return this.toFeld(byteAddress, this.getBezeichner(), "");
     }
 
     /**
@@ -134,20 +135,11 @@ public final class FeldXml extends Feld {
      * @param byteAddress die Byte-Adresse
      * @param neuerBezeichner the neuer bezeichner
      * @return das entsprechende Feld
+     * @deprecated alte Version
      */
+    @Deprecated
     public Feld toFeld(final int byteAddress, final Bezeichner neuerBezeichner) {
-        Bezeichner merged = this.getBezeichner().mergeWith(neuerBezeichner);
-        Feld f = this.datentyp.asFeld(merged, this.getAnzahlBytes(), byteAddress);
-        switch (this.datentyp) {
-            case NUMERISCH:
-            case FLIESSKOMMA:
-                f = new NumFeld(merged, this.getAnzahlBytes(), byteAddress)
-                        .mitNachkommastellen(this.nachkommastellen);
-        }
-        if (hasValue()) {
-            f.setInhalt(getInhalt());
-        }
-        return f;
+        return toFeld(byteAddress, neuerBezeichner, "");
     }
 
     /**
@@ -158,7 +150,10 @@ public final class FeldXml extends Feld {
      * @return das entsprechende Feld
      */
     public Feld toFeld(final int byteAddress, final FeldReferenz referenz) {
-        Bezeichner neuerBezeichner = referenz.getBezeichner();
+        return toFeld(byteAddress, referenz.getBezeichner(), referenz.getBemerkung());
+    }
+
+    private Feld toFeld(final int byteAddress, final Bezeichner neuerBezeichner, final String bemerkung) {
         Bezeichner merged = this.getBezeichner().mergeWith(neuerBezeichner);
         Feld f = this.datentyp.asFeld(merged, this.getAnzahlBytes(), byteAddress);
         switch (this.datentyp) {
@@ -168,7 +163,7 @@ public final class FeldXml extends Feld {
                         .mitNachkommastellen(this.nachkommastellen);
                 break;
             case ALPHANUMERISCH:
-                if (referenz.hasBemerkung("rechtsbuendig")) {
+                if (Text.replaceUmlaute(bemerkung).contains("rechtsbuendig")) {
                     f = new AlphaNumFeld(merged, this.getAnzahlBytes(), byteAddress, Align.RIGHT);
                 }
                 break;

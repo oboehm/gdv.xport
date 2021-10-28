@@ -154,7 +154,8 @@ public class FeldXmlTest extends AbstractXmlTest {
     @Test
     public void testToFeldBezeichner() throws XMLStreamException {
         FeldXml gleitkomma = createFeldXmlFrom("feldFliesskomma.xml");
-        Feld feld = gleitkomma.toFeld(160, Bezeichner.ZUZAHLUNGSBETRAG_IN_WE);
+        FeldReferenz referenz = new FeldReferenz(createXMLEventReader("feldreferenzZuzahlungsbetragInWE.xml"));
+        Feld feld = gleitkomma.toFeld(160, referenz);
         assertEquals(Bezeichner.ZUZAHLUNGSBETRAG_IN_WE, feld.getBezeichner());
     }
 
@@ -182,7 +183,8 @@ public class FeldXmlTest extends AbstractXmlTest {
     public void testToDatum() throws XMLStreamException {
         FeldXml datum = createFeldXmlFrom("feldDatum.xml");
         datum.setInhalt("21052021");
-        Feld converted = datum.toFeld(10, Bezeichner.of("heute"));
+        FeldReferenz referenz = new FeldReferenz(createXMLEventReader("feldreferenzDatum.xml"));
+        Feld converted = datum.toFeld(10, referenz);
         assertEquals(datum.getInhalt(), converted.getInhalt());
     }
 

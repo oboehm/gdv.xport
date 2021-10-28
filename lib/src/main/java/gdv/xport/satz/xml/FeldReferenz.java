@@ -18,7 +18,6 @@
 
 package gdv.xport.satz.xml;
 
-import de.jfachwert.Text;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.util.XmlHelper;
 import org.apache.commons.lang3.StringUtils;
@@ -156,10 +155,6 @@ public final class FeldReferenz {
      */
     public boolean hasAuspraegung() {
         return StringUtils.isNotEmpty(this.auspraegung);
-    }
-
-    public boolean hasBemerkung(String s) {
-        return Text.replaceUmlaute(this.bemerkung).contains(s);
     }
 
     /* (non-Javadoc)

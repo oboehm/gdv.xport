@@ -19,9 +19,7 @@
 package gdv.xport.satz.xml;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.satz.AbstractSatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
@@ -538,6 +536,15 @@ public class XmlServiceTest extends AbstractXmlTest {
             SatzXml satz = service.getSatzart(entry.getKey());
             assertEquals(entry.getValue().toLongString(), satz.toLongString());
         }
+    }
+
+    @Test
+    public void testAlignment() throws XMLStreamException, IOException {
+        XmlService service = XmlService.getInstance("VUVM2018xL.xml");
+        SatzXml satz = service.getSatzart(SatzTyp.of("0100"));
+        Feld rechtsbuendig = satz.getFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER);
+        rechtsbuendig.setInhalt("0123456789abcdef");
+        assertEquals(" 0123456789abcdef", rechtsbuendig.getInhalt());
     }
 
 }
