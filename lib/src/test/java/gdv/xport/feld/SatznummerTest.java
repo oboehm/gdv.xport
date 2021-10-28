@@ -125,4 +125,12 @@ public final class SatznummerTest {
         }
     }
 
+    @Test
+    public void testIsValid() {
+        for (Teildatensatz tds : satz.getTeildatensaetze()) {
+            Zeichen nr = tds.getSatznummer();
+            assertTrue(nr.isValid());
+        }
+    }
+
 }

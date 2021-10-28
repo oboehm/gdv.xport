@@ -55,7 +55,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      */
     @Override
     protected Satz getSatz() {
-        return new Teildatensatz(123, 1);
+        return new Teildatensatz(SatzTyp.of(123, 1));
     }
 
     /**
@@ -224,6 +224,16 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Zeichen satznummer = tds.getSatznummer();
         Zeichen expected = new Zeichen(satznummer.getBezeichner(), start.intValue(), inhalt);
         assertEquals(expected, satznummer);
+    }
+
+    @Test
+    public void testGetSatznummerInvalid() {
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of(123), 1);
+        Zeichen nr = new Zeichen(Bezeichner.SATZNUMMER, 222, '0');
+        new Satznummer(nr);
+        tds.add(nr);
+        assertEquals(1, tds.getSatznummer().toInt());
+        assertEquals(222, tds.getSatznummer().getByteAdresse());
     }
 
 }

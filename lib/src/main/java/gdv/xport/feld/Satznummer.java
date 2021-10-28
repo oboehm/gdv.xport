@@ -18,6 +18,8 @@
 package gdv.xport.feld;
 
 import gdv.xport.satz.Teildatensatz;
+import gdv.xport.util.SimpleConstraintViolation;
+import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -116,6 +118,18 @@ public class Satznummer extends Zeichen {
         reader.unread(cbuf);
         nr.setInhalt(cbuf[position-1]);
         return nr;
+    }
+
+    @Override
+    public List<ConstraintViolation> validate() {
+        List<ConstraintViolation> violations = super.validate();
+        char c = toChar();
+        if (c == '0') {
+            violations.add(new SimpleConstraintViolation("'0' is not allowed as Satznummer", this, c));
+        } else if (!Character.isDigit(c)) {
+            violations.add(new SimpleConstraintViolation("only digits are allowed as Satznummer", this, c));
+        }
+        return violations;
     }
 
     @Override

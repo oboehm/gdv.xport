@@ -203,11 +203,11 @@ public class Teildatensatz extends Satz {
      */
     public Zeichen getSatznummer() {
         if ((this.satznummer.getByteAdresse() == 256) && hasFeld(Bezeichner.SATZNUMMER)) {
-            Zeichen nr = getFeld(Bezeichner.SATZNUMMER, Zeichen.class);
-            if (nr.isEmpty()) {
+            Satznummer nr = getFeld(Bezeichner.SATZNUMMER, Satznummer.class);
+            if (nr.isEmpty() || nr.isInvalid()) {
                 nr.setInhalt(this.satznummer.getInhalt());
             }
-            this.satznummer = new Satznummer(nr);
+            this.satznummer = nr;
         }
         return new Zeichen(this.satznummer);
     }
