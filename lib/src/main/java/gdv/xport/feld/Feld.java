@@ -58,7 +58,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     /** Ausrichtung: rechts- oder linksbuendig. */
     @NotEqual("UNKNOWN")
     private final Align ausrichtung;
-    protected Config config = Config.getInstance();
+    protected final Config config;
 
     /**
      * Legt ein neues Feld an. Dieser Default-Konstruktor ist fuer Unterklassen
@@ -104,6 +104,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.byteAdresse = info.byteAdresse();
         this.ausrichtung = getAlignmentFrom(info);
         this.inhalt = new StringBuilder(info.anzahlBytes());
+        this.config = Config.getInstance();
         for (int i = 0; i < info.anzahlBytes(); i++) {
             this.inhalt.append(' ');
         }
@@ -132,9 +133,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @since 5.3
      */
     public Feld mitConfig(Config c) {
-        Feld x = new Feld(this);
-        x.config = c;
-        return x;
+        return new Feld(this, c);
     }
 
     /**
@@ -150,6 +149,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.inhalt = new StringBuilder(s);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
+        this.config = Config.getInstance();
     }
 
     /**
@@ -162,10 +162,15 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @since 1.0
      */
     public Feld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
+        this(bezeichner, length, start, alignment, Config.getInstance());
+    }
+
+    private Feld(Bezeichner bezeichner, int length, int start, Align alignment, Config config) {
         this.bezeichner = bezeichner;
         this.inhalt = getEmptyStringBuilder(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
+        this.config = config;
     }
 
     /**
@@ -235,6 +240,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
+        this.config = Config.getInstance();
     }
 
     /**
@@ -264,6 +270,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
+        this.config = Config.getInstance();
     }
 
     /**
@@ -274,6 +281,11 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     public Feld(final Feld other) {
         this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.ausrichtung);
+        this.setInhalt(other.getInhalt());
+    }
+
+    protected Feld(final Feld other, final Config config) {
+        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.ausrichtung, config);
         this.setInhalt(other.getInhalt());
     }
 
