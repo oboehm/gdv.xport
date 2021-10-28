@@ -150,6 +150,35 @@ public final class FeldXml extends Feld {
         return f;
     }
 
+    /**
+     * Wandelt das FeldXml-Objekt in ein {@link Feld}-Objekt um.
+     *
+     * @param byteAddress die Byte-Adresse
+     * @param referenz mit Bezeichner und Bemerkung
+     * @return das entsprechende Feld
+     */
+    public Feld toFeld(final int byteAddress, final FeldReferenz referenz) {
+        Bezeichner neuerBezeichner = referenz.getBezeichner();
+        Bezeichner merged = this.getBezeichner().mergeWith(neuerBezeichner);
+        Feld f = this.datentyp.asFeld(merged, this.getAnzahlBytes(), byteAddress);
+        switch (this.datentyp) {
+            case NUMERISCH:
+            case FLIESSKOMMA:
+                f = new NumFeld(merged, this.getAnzahlBytes(), byteAddress)
+                        .mitNachkommastellen(this.nachkommastellen);
+                break;
+            case ALPHANUMERISCH:
+                if (referenz.hasBemerkung("rechtsbuendig")) {
+                    f = new AlphaNumFeld(merged, this.getAnzahlBytes(), byteAddress, Align.RIGHT);
+                }
+                break;
+        }
+        if (hasValue()) {
+            f.setInhalt(getInhalt());
+        }
+        return f;
+    }
+
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#toString()
      */
