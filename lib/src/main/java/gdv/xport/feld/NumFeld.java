@@ -199,7 +199,11 @@ public class NumFeld extends Feld {
      * @param other das originale Feld
      */
     public NumFeld(final Feld other) {
-        super(other);
+        this(other, Config.getInstance());
+    }
+
+    private NumFeld(Feld other, Config config) {
+        super(other, config);
         if (other instanceof NumFeld) {
             this.nachkommastellen = ((NumFeld) other).nachkommastellen;
         } else {
@@ -241,9 +245,7 @@ public class NumFeld extends Feld {
      */
     @Override
     public NumFeld mitConfig(Config c) {
-        NumFeld x = new NumFeld(this);
-        x.config = c;
-        return x;
+        return new NumFeld(this, c);
     }
 
     /**
