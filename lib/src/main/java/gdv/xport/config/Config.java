@@ -65,14 +65,8 @@ public final class Config {
     public static final String DUMMY_VU_NUMMER = "DUMMY";
     /** Property-Name fuer die VU-Nummer. */
     public static final String GDV_VU_NUMMER = "gdv.VU-Nummer";
-    /** Default-Konfiguration fuer VUVM2009er-Version. */
-    public static final Config V2009 = new Config("/gdv/xport/config/2009.properties");
-    /** Default-Konfiguration fuer VUVM2013er-Version. */
-    public static final Config V2013 = new Config("/gdv/xport/config/2013.properties");
-    /** Default-Konfiguration fuer VUVM2015er-Version. */
-    public static final Config V2015 = new Config("/gdv/xport/config/2015.properties");
     /** Default-Konfiguration fuer VUVM2018er-Version. */
-    public static final Config V2018 = new Config("/gdv/xport/config/2018.properties");
+    public static final Config DEFAULT = new Config("/gdv/xport/config/default.properties");
     /** Experimentale Konfiguration zum Testen neuer Features. */
     public static final Config EXPERIMENTAL = new Config("/gdv/xport/config/experimental.properties");
 
@@ -90,7 +84,7 @@ public final class Config {
      * @since 5.3
      */
     public Config() {
-        this(System.getProperty("gdv.config", "/gdv/xport/config/2018.properties"));
+        this(System.getProperty("gdv.config", "/gdv/xport/config/default.properties"));
     }
 
     /**
