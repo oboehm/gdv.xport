@@ -284,7 +284,16 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         if (feld instanceof NumFeld) {
             writeNachkommastellen((NumFeld) feld);
         }
+        if (feld instanceof AlphaNumFeld) {
+            writeAlignment((AlphaNumFeld) feld);
+        }
         xmlStreamWriter.writeEndElement();
+    }
+
+    private void writeAlignment(AlphaNumFeld feld) throws XMLStreamException {
+        if (feld.getAusrichtung() == Align.RIGHT) {
+            writeElement("bemerkung", "rechtsbuendig");
+        }
     }
 
     private void writeNachkommastellen(NumFeld feld) throws XMLStreamException {

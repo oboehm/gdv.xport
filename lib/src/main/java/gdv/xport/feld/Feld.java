@@ -298,6 +298,16 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     /**
+     * Liefert die Ausrichtung eines Feldes. Dies ist hauptsaechlich fuer
+     * alhpanumerische Felder interessant.
+     *
+     * @return linksbuendig oder rechtsbuendig
+     */
+    public Align getAusrichtung() {
+        return ausrichtung;
+    }
+
+    /**
      * Die Default-Ausrichtung ist links-buendig. Diese Vorgabe kann aber von den Unterklassen ueberschrieben werde.
      *
      * @return links-buendig

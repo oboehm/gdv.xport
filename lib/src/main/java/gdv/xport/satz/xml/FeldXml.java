@@ -105,7 +105,7 @@ public final class FeldXml extends Feld {
      *
      * @return the datentyp
      */
-    public final Datentyp getDatentyp() {
+    public Datentyp getDatentyp() {
         return this.datentyp;
     }
 
@@ -115,7 +115,7 @@ public final class FeldXml extends Feld {
      *
      * @return the nachkommastellen
      */
-    public final int getNachkommastellen() {
+    public int getNachkommastellen() {
         return this.nachkommastellen;
     }
 
@@ -163,7 +163,7 @@ public final class FeldXml extends Feld {
                         .mitNachkommastellen(this.nachkommastellen);
                 break;
             case ALPHANUMERISCH:
-                if (Text.replaceUmlaute(bemerkung).contains("rechtsbuendig")) {
+                if (Text.replaceUmlaute(bemerkung).toLowerCase().contains("rechtsbuendig")) {
                     f = new AlphaNumFeld(merged, this.getAnzahlBytes(), byteAddress, Align.RIGHT);
                 }
                 break;
