@@ -540,7 +540,7 @@ public class XmlServiceTest extends AbstractXmlTest {
 
     @Test
     public void testAlignment() throws XMLStreamException, IOException {
-        XmlService service = XmlService.getInstance("VUVM2018xL.xml");
+        XmlService service = XmlService.getInstance("VUVM2018.xml");
         SatzXml satz = service.getSatzart(SatzTyp.of("0100"));
         Feld rechtsbuendig = satz.getFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER);
         rechtsbuendig.setInhalt("0123456789abcdef");

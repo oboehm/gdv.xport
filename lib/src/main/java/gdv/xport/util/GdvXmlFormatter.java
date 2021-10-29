@@ -234,21 +234,19 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         if (feld.hasValue()) {
             writeElement("auspraegung", feld.getInhalt().trim());
         }
+        if (feld instanceof AlphaNumFeld) {
+            writeAlignment((AlphaNumFeld) feld);
+        }
         xmlStreamWriter.writeEndElement();
     }
 
+    private void writeAlignment(AlphaNumFeld feld) throws XMLStreamException {
+        if (feld.getAusrichtung() == Align.RIGHT) {
+            writeElement("bemerkung", "rechtsbuendig");
+        }
+    }
+
     private String toFeldReferenzId(Feld feld) {
-      /*
-       * @Oli: die Erweiterung um den Datentyp ist notwendig, weil es Felder gibt, deren Namen und
-       *       Byte-Adresse identisch sind. Z.B. ist das Feld "SatzNr" (Byte-Adresse 256) in Satzart
-       *       "0300" numerisch und in Satzart "0211.110" alpha-numerisch. Ohne die Erweiterung wird
-       *       beim spaeteren Generieren der Saetze an allen Stellen mit "SatzNr" der gleiche Datentyp
-       *       verwendet, der zuerst gefunden wird. Und damit gibt es keine Uebereinstimmung zwischen
-       *       Saetzen, die aus den originalen (!) VUVMs (src/test-Verzeichnis) erzeugt werden, und
-       *       denen, die aus den verkaerzten VUVMs erzeugt werden.
-       *
-       *       Diese Referenz wird auch als Key in HashMap "felder" verwendet!
-       */
         return String.format("%03d-%03d-%s-%s", feld.getByteAdresse(), feld.getEndAdresse(),
                 feld.getBezeichner().getTechnischerName(), Datentyp.asString(feld));
     }
@@ -284,16 +282,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         if (feld instanceof NumFeld) {
             writeNachkommastellen((NumFeld) feld);
         }
-        if (feld instanceof AlphaNumFeld) {
-            writeAlignment((AlphaNumFeld) feld);
-        }
         xmlStreamWriter.writeEndElement();
-    }
-
-    private void writeAlignment(AlphaNumFeld feld) throws XMLStreamException {
-        if (feld.getAusrichtung() == Align.RIGHT) {
-            writeElement("bemerkung", "rechtsbuendig");
-        }
     }
 
     private void writeNachkommastellen(NumFeld feld) throws XMLStreamException {

@@ -113,11 +113,12 @@ public class BezeichnerIT {
         TECHNISCHE_NAMEN.addAll(handler.getTechnischeNamen());
         TECHNISCHE_NAMEN.addAll(Arrays.asList("AblaufleistungInclUeberschussanteileInWaehrungseinheiten",
                 "AktuelleFondsjahresrenteZumBeginnDerAbrufphase",
-                "DynamikInProz", "GueltigeAVB", "KhDeckungsart",
+                "DynamikInProz", "GueltigeAVB", "Hersteller", "KhDeckungsart",
                 "KhDeckungssummenInWETeil1", "KhDeckungssummenInWETeil2", "KhDeckungssummenInWETeil3",
-                "Mengenschluessel", "Risikozuschlag", "RueckkaufswertGueltigAb",
-                "SelbstbehaltInProz", "UebergangsentschaedigungBeitragssatz",
-                "VpPersonenNrVersicherers"));
+                "Mengenschluessel", "NeuwertListenpreisImAnschaffungsjahrInWE",
+                "Risikozuschlag", "Risikozuschlag2Bis", "RueckkaufswertGueltigAb",
+                "SelbstbehaltInProz", "SEPAMandatReferenznummer", "UebergangsentschaedigungBeitragssatz",
+                "VpPersonenNrVersicherers", "Wartungsvertrag"));
     }
 
     /**

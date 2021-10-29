@@ -246,6 +246,7 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
                 LOG.info("Datentyp von {} weicht von {} ab ({}).", refFeld, feld, reference);
             } else {
                 assertEquals(refFeld, feld);
+                assertEquals(refFeld.getAusrichtung(), feld.getAusrichtung());
             }
         }
         assertEquals(reference, teildatensatz);
