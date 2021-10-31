@@ -19,7 +19,6 @@
 package gdv.xport.config;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -40,25 +39,15 @@ import static org.junit.Assert.assertNotNull;
 public class ConfigTest {
 
     private static final Logger LOG = LogManager.getLogger(ConfigTest.class);
-    private final Config config = Config.getInstance();
+    private final Config config = new Config();
 
     /**
-     * Test method for {@link gdv.xport.config.Config#getVUNummer()}:
-     * Entweder ist die entsprechende Property gesetzt, oder wir erwarten hier
-     * eine ConfigException.
+     * Test method for {@link Config#getVUNr()} ()}.
      */
     @Test
     public void testGetVUnummer() {
         String vuNummer = System.getProperty(Config.GDV_VU_NUMMER);
-        if (StringUtils.isEmpty(vuNummer)) {
-            try {
-                Config.getVUNummer();
-            } catch (ConfigException expected) {
-                LOG.info("expected: " + expected);
-            }
-        } else {
-            assertEquals(vuNummer, Config.getVUNummer().getInhalt().trim());
-        }
+        assertEquals(vuNummer, config.getVUNr().getInhalt().trim());
     }
 
     /**

@@ -202,9 +202,21 @@ public final class Config {
      * Falls sie noch nicht gesetzt wurde, wird ein "DUMMY" zurueckgegeben.
      *
      * @return VU-Nummer bzw. "DUMMY"
+     * @deprecated ersetzt durch {@link Config#getVUNr()}
      */
+    @Deprecated
     public static synchronized VUNummer getVUNummer() {
         return new VUNummer(instance.getProperty(GDV_VU_NUMMER, DUMMY_VU_NUMMER));
+    }
+
+    /**
+     * Hiermit kann die voreingestellte VU-Nummer abgefragt werden.
+     *
+     * @return VU-Nummer
+     * @sincd 5.3
+     */
+    public VUNummer getVUNr() {
+        return new VUNummer(getString(GDV_VU_NUMMER));
     }
 
     /**
