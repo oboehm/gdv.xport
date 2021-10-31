@@ -33,6 +33,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
@@ -68,6 +69,14 @@ public final class DatenpaketTest {
     private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance("VUVM2018.xml");
     /** Fuer jeden Test gibt es ein frisches Datenpaket. */
     private final Datenpaket datenpaket = new Datenpaket();
+
+    @BeforeClass
+    public static void setUpExportDir() {
+        File exportDir = new File("target", "export");
+        if (exportDir.mkdir()) {
+            LOG.info("Verzeichnis {} wurde angelegt.", exportDir);
+        }
+    }
 
     /**
      * Test-Methode fuer {@link gdv.xport.Datenpaket#export(java.io.Writer)}.
