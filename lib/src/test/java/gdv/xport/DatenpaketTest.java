@@ -472,7 +472,6 @@ public final class DatenpaketTest {
     }
 
     private void importResource(final String name) throws IOException {
-        Config.setEOD("\n");
         String content = getResourceAsString(name);
         datenpaket.importFrom(content);
         checkExportWith(content);

@@ -128,6 +128,19 @@ public final class Config {
     }
 
     /**
+     * Dient zum Erzeugen einer neuen Config mit der gewuenschten Property.
+     *
+     * @param key z.B. "gdv.numfeld.fill-blanks"
+     * @param value neuer Wert
+     * @return neue Config mit key=value
+     */
+    public Config withProperty(String key, String value) {
+        Properties props = new Properties(properties);
+        props.setProperty(key, value);
+        return new Config(props);
+    }
+
+    /**
      * Liefert den Wert einer Property zurueck.
      *
      * @param key Name der Property

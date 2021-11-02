@@ -46,8 +46,8 @@ public class ConfigTest {
      */
     @Test
     public void testGetVUnummer() {
-        String vuNummer = System.getProperty(Config.GDV_VU_NUMMER);
-        assertEquals(vuNummer, config.getVUNr().getInhalt().trim());
+        Config newConfig = config.withProperty(Config.GDV_VU_NUMMER, "James");
+        assertEquals("James", newConfig.getVUNr().getInhalt().trim());
     }
 
     /**

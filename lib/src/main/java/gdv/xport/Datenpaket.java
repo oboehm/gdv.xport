@@ -49,17 +49,32 @@ public class Datenpaket {
     private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
     private Vorsatz vorsatz = new Vorsatz();
     private final List<Datensatz> datensaetze = new ArrayList<>();
+    private final Config config;
     private Nachsatz nachsatz = new Nachsatz();
 
     /**
      * Wenn man den Default-Konstruktor verwendet, sollte man vorher die
      * VU-Nummer konfiguriert haben.
      *
-     * @see Config#getVUNummer()
+     * @see Config#getVUNr()
      */
     public Datenpaket() {
-        this(Config.getVUNummer().getInhalt());
+        this(Config.getInstance());
+    }
+
+    /**
+     * Hierueber kann eine eigene Config mit uebergeben werden.
+     *
+     * @param config eigene Config
+     * @since 5.3
+     */
+    public Datenpaket(Config config) {
+        this.config = config;
         this.vorsatz.setVersion(this.nachsatz);
+        Datum heute = Datum.heute();
+        this.setErstellungsDatumVon(heute);
+        this.setVuNummer(config.getVUNr().getInhalt());
+        LOG.debug(this + " created.");
     }
 
     /**
@@ -75,11 +90,7 @@ public class Datenpaket {
      * @since 0.3
      */
     public Datenpaket(final String vuNummer) {
-        this.vorsatz.setVersion(this.nachsatz);
-        Datum heute = Datum.heute();
-        this.setErstellungsDatumVon(heute);
-        this.setVuNummer(vuNummer);
-        LOG.debug(this + " created.");
+        this(Config.getInstance().withProperty("gdv.VU-Nummer", vuNummer));
     }
 
     /**
