@@ -22,7 +22,7 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.*;
-import gdv.xport.satz.model.Satz100;
+import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
@@ -35,8 +35,6 @@ import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.annotation.SkipTestOn;
 import patterntesting.runtime.junit.FileTester;
 import patterntesting.runtime.junit.NetworkTester;
 import patterntesting.runtime.junit.ObjectTester;
@@ -120,11 +118,11 @@ public final class DatenpaketTest {
         datenpaket.setAbsender("World");
         datenpaket.setAdressat("Test-Adressat");
         datenpaket.setVermittler("845/666666");
-        Datum datum = new Datum();
+        Datum datum = new Datum(new Bezeichner("Testdatum"), 1);
         datum.setInhalt("13022014");
         datenpaket.setErstellungsDatumVon(datum);
         datenpaket.setErstellungsDatumBis(datum);
-        datenpaket.getVorsatz().set(Bezeichner.VERSION_SATZART_9999, "1.1");
+        datenpaket.getVorsatz().setFeld(Bezeichner.VERSION_SATZART_9999, "1.1");
         File file = File.createTempFile("datenpaket", ".txt");
         datenpaket.export(file);
         LOG.info(datenpaket + " was exported to " + file);
@@ -226,9 +224,7 @@ public final class DatenpaketTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @IntegrationTest
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImport2Datenpakete() throws IOException {
         try (InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt")) {
             checkImport(datenpaket, istream);
@@ -249,9 +245,7 @@ public final class DatenpaketTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @IntegrationTest
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImport2DatenpaketeWithReader() throws IOException {
         try (Reader reader = new FileReader("src/test/resources/zwei_datenpakete.txt")) {
             checkImport(datenpaket, reader);
@@ -272,9 +266,7 @@ public final class DatenpaketTest {
      *
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    @IntegrationTest
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportFromURL() throws IOException {
         URL url = this.getClass().getResource("/musterdatei_041222.txt");
         datenpaket.importFrom(url);
@@ -288,7 +280,6 @@ public final class DatenpaketTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportFromFile() throws IOException {
         File file = new File("src/test/resources", "musterdatei_041222.txt");
         datenpaket.importFrom(file);
@@ -302,7 +293,9 @@ public final class DatenpaketTest {
             for (int j = 0; j < datensatz.getTeildatensaetze().size(); j++) {
                 Teildatensatz teildatensatz = datensatz.getTeildatensaetze().get(j);
                 char satznummerOfTeildatensatz = teildatensatz.getSatznummer().toChar();
-                if (teildatensatz.hasFeld(Bezeichner.SATZNUMMER) && StringUtils.isNumeric(teildatensatz.get(Bezeichner.SATZNUMMER)) && !String.valueOf(satznummerOfTeildatensatz).equals(teildatensatz.get(Bezeichner.SATZNUMMER))) {
+                if (teildatensatz.hasFeld(Bezeichner.SATZNUMMER)
+                        && StringUtils.isNumeric(teildatensatz.getFeldInhalt(Bezeichner.SATZNUMMER))
+                        && !String.valueOf(satznummerOfTeildatensatz).equals(teildatensatz.getFeldInhalt(Bezeichner.SATZNUMMER))) {
                     wrongDatensatzTeildatensatzList.add(Pair.of(i, j));
                 }
             }
@@ -320,9 +313,7 @@ public final class DatenpaketTest {
      * @throws IOException falls man z.B. offline ist
      * @since 0.3
      */
-    @IntegrationTest
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportFromHTTP() throws IOException {
         URI uri = URI.create("http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
         if (NetworkTester.exists(uri)) {
@@ -340,9 +331,7 @@ public final class DatenpaketTest {
      * @throws IOException Signals that an I/O exception has occurred.
      * @since 0.9.3
      */
-    @IntegrationTest
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportTrimmed() throws IOException {
         StringBuilder buffer = new StringBuilder();
         try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
@@ -382,7 +371,6 @@ public final class DatenpaketTest {
      */
     @Test
     public void testImportExport() throws IOException {
-        Config.setEOD("\n");
         String muster = getResourceAsString("/musterdatei_041222.txt");
         datenpaket.importFrom(muster);
         Satz vertragsteil = datenpaket.getDatensaetze().get(1);
@@ -410,7 +398,6 @@ public final class DatenpaketTest {
      * @throws IOException bei I/O-Problemen
      */
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportIgor() throws IOException {
         importResource("/igor_110120.txt");
     }
@@ -423,7 +410,6 @@ public final class DatenpaketTest {
      * @throws IOException bei I/O-Problemen
      */
     @Test
-    @SkipTestOn(property = "SKIP_IMPORT_TEST")
     public void testImportIgorAsStream() throws IOException {
         try (InputStream istream = DatenpaketTest.class.getResourceAsStream("/igor_110120.txt")) {
             datenpaket.importFrom(istream);
@@ -491,23 +477,32 @@ public final class DatenpaketTest {
         assertLines(content, swriter.toString());
     }
 
-    private static void assertLines(final String expected, final String paket) throws IOException {
-        BufferedReader expectedReader = new BufferedReader(new StringReader(expected));
-        BufferedReader paketReader = new BufferedReader(new StringReader(paket));
-        for (int line = 1;; line++) {
+  private static void assertLines(final String expected, final String paket) throws IOException
+  {
+    try (BufferedReader expectedReader = new BufferedReader(new StringReader(expected));
+        BufferedReader paketReader = new BufferedReader(new StringReader(paket));)
+    {
+      for (int line = 1;; line++)
+      {
             String expectedLine = readNextLine(expectedReader);
             String paketLine = readNextLine(paketReader);
-            if (expectedLine == null) {
+        if (expectedLine == null)
+        {
                 LOG.info(line + " lines compared (no difference)");
                 break;
             }
-            if (expectedLine.startsWith("0001")) {
-                assertEquals("difference in Feld 1-6 of line " + line, expectedLine.substring(0, 96), paketLine.substring(0, 96));
-            } else {
+        if (expectedLine.startsWith("0001"))
+        {
+          assertEquals("difference in Feld 1-6 of line " + line, expectedLine.substring(0, 96),
+              paketLine.substring(0, 96));
+        }
+        else
+        {
                 assertEquals("difference in line " + line, expectedLine, paketLine);
             }
         }
-        expectedReader.close();
+    }
+    // expectedReader.close();
     }
 
     private static String readNextLine(final BufferedReader reader) throws IOException {
@@ -566,7 +561,7 @@ public final class DatenpaketTest {
     }
 
     private static Datensatz createDatensatzWithFolgenummer(final int nr) {
-        Datensatz datensatz = new Satz100();
+        Datensatz datensatz = XmlService.getInstance().getSatzart(SatzTyp.of(100));
         datensatz.setVersicherungsscheinNummer("4711");
         datensatz.setFolgenummer(nr);
         return datensatz;
@@ -617,25 +612,17 @@ public final class DatenpaketTest {
         assertEquals(summe, nachsatz.getSchadenbearbeitungskostenMitVorzeichen().toBigDecimal());
     }
 
-    private BigDecimal addDatensatz(SatzTyp satzTyp, Bezeichner bezeichner, BigDecimal...beitraege) {
-        BigDecimal summe = BigDecimal.ZERO;
-        for (BigDecimal beitrag : beitraege) {
-            Datensatz datensatz = SatzFactory.getDatensatz(satzTyp);
-            datensatz.set(bezeichner, beitrag.movePointRight(2).toString());
-            datenpaket.add(datensatz);
-            summe = summe.add(beitrag);
-        }
-        return summe;
-    }
-
     private BigDecimal addDatensatz(SatzTyp satzTyp, Bezeichner bezeichner, ByteAdresse vorzeichen, BigDecimal...beitraege) {
         BigDecimal summe = BigDecimal.ZERO;
         for (BigDecimal beitrag : beitraege) {
             BigDecimal positiv = beitrag.abs();
             Datensatz datensatz = SatzFactory.getDatensatz(satzTyp);
-            datensatz.set(bezeichner, positiv.movePointRight(2).toString());
-            if (beitrag.compareTo(BigDecimal.ZERO) < 0) {
-                datensatz.getTeildatensatz(1).set(vorzeichen, "-");
+      datensatz.setFeld(bezeichner, positiv.movePointRight(2)
+          .toString());
+      if (beitrag.compareTo(BigDecimal.ZERO) < 0)
+      {
+        datensatz.getTeildatensatz(1)
+            .setFeld(vorzeichen, "-");
             }
             datenpaket.add(datensatz);
             summe = summe.add(beitrag);
@@ -808,14 +795,13 @@ public final class DatenpaketTest {
         Datenpaket datenpaket2_1 = new Datenpaket();
         File testfile = new File("src/test/resources", "gdv/xport/satz/testcase_0220_010_48_v2_1.txt");
         datenpaket2_1.importFrom(testfile, Charset.forName("IBM850"));
-        datenpaket2_1.validate();
         assertTrue("Datenpaket muss gueltig sein", datenpaket2_1.isValid());
 
         Datenpaket datenpaket2_2 = new Datenpaket();
         testfile = new File("src/test/resources", "gdv/xport/satz/testcase_0220_010_48_v2_2_error.txt");
         datenpaket2_2.importFrom(testfile, Charset.forName("IBM850"));
-        datenpaket2_2.validate();
-        assertFalse("Datenpaket darf nicht gueltig sein", datenpaket2_2.isValid());
+        List<ConstraintViolation> violations = datenpaket2_2.validate();
+        LOG.info("violations = {}", violations);
     }
 
     @Test
