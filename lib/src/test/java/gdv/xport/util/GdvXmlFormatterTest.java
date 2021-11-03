@@ -210,6 +210,7 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
 
     private void formatDatenpaket(String gdvXml, String filename) throws IOException, XMLStreamException {
         Datenpaket datenpaket = SatzRegistry.getInstance(gdvXml).getAllSupportedSaetze();
+        datenpaket.setVuNummer("    ");
         formatDatenpaket(datenpaket, SatzRegistry.getInstance(gdvXml).getGdvRelease(), filename);
     }
 

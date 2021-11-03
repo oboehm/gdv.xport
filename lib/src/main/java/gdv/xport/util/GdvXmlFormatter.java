@@ -87,7 +87,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
      */
     public GdvXmlFormatter(final Writer writer, final String stand) {
         super(writer);
-        this.stand = DEFAULT_INFO;
+        this.stand = stand;
         this.xmlStreamWriter = createXMLStreamWriter(writer, this.stand);
     }
 
@@ -101,9 +101,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
    *          XML-Beschreibung in einem Tag: &ltinfo&gt&ltstand&gt...&lt/stand&gt&lt/info&gt
    */
   public GdvXmlFormatter(final OutputStream ostream, final String stand) {
-    super(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
-    this.stand = stand;
-    this.xmlStreamWriter = createXMLStreamWriter(ostream, this.stand);
+      this(ostream, Config.getInstance().withProperty("gdv.export.xml.stand", stand));
     }
 
     /**
@@ -115,6 +113,25 @@ public final class GdvXmlFormatter extends AbstractFormatter {
      */
     public GdvXmlFormatter(final OutputStream ostream) {
         this(ostream, DEFAULT_INFO);
+    }
+
+    /**
+     * Der Konstruktor fuer einen {@link OutputStream} zusammen mit einem
+     * {@link Config}-Objekt fuer weitere Einstellungen.
+     *
+     * @param ostream z.B. System.out
+     * @param config mit weiteren Einstellungen. So kann man ueber die Property
+     *               "gdv.export.xml.stand" z.B. den Stand fuer die erzeugte
+     *               XML-Beschreibung mitgeben.
+     *               Dieser Wert erscheint in Analogie zur GDV-XML-Beschreibung
+     *               am Beginn der XML-Beschreibung in einem Tag:
+     *               &ltinfo&gt&ltstand&gt...&lt/stand&gt&lt/info&gt
+     * @since 5.3
+     */
+    public GdvXmlFormatter(final OutputStream ostream, final Config config) {
+        super(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING), config);
+        this.stand = config.getProperty("gdv.export.xml.stand", DEFAULT_INFO);
+        this.xmlStreamWriter = createXMLStreamWriter(ostream, this.stand);
     }
 
     private static XMLStreamWriter writeHead(XMLStreamWriter writer, String gueltigAbDatum) throws XMLStreamException {

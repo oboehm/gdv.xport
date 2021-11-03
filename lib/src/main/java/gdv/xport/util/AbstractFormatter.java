@@ -20,6 +20,7 @@ import java.io.*;
  */
 public abstract class AbstractFormatter implements ImportListener, AutoCloseable {
 
+    private final Config config;
     private Writer writer;
 
     /**
@@ -35,7 +36,12 @@ public abstract class AbstractFormatter implements ImportListener, AutoCloseable
      * @param writer the writer
      */
     public AbstractFormatter(final Writer writer) {
+        this(writer, Config.getInstance());
+    }
+
+    protected AbstractFormatter(final Writer writer, final Config config) {
         this.writer = writer;
+        this.config = config;
     }
 
     /**
@@ -45,6 +51,10 @@ public abstract class AbstractFormatter implements ImportListener, AutoCloseable
      */
     public AbstractFormatter(final OutputStream ostream) {
         this(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
+    }
+
+    protected final Config getConfig() {
+        return config;
     }
 
     /**
