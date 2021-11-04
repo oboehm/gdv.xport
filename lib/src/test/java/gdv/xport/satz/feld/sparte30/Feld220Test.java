@@ -18,17 +18,17 @@
 
 package gdv.xport.satz.feld.sparte30;
 
-import static org.junit.Assert.assertEquals;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.model.Satz220;
 import gdv.xport.satz.model.SatzX;
+import org.junit.Test;
 
 import java.io.IOException;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit-Tests fuer {@link Feld220}.
@@ -67,13 +67,12 @@ public class Feld220Test extends AbstractDatensatzTest {
         String input = "02209999  030      599999999990199990099990000011Kitzelpfutze   "
                 + "               000000Kitzelpfutze                  Martina      "
                 + "                 111119791000Hausfrau                      A 1EU"
-                + "R0000000000000000041141010520040000000001052004          1      "
-                + "\n"
-                + "02209999  030      599999999990199990099990000012000000000011305"
-                + "0000000000000141950000000000000000000000000000000000000000000000"
-                + "0000000000000000000000000010000000000000000 00000000000000000000"
-                + "000000000000000000000000000000000000000000000000000  000000    X"
-                + "\n";
+        + "R0000000000000000041141010520040000000001052004          1      " + "\n"
+        + "02209999  030      5999999999901   90099991     2                                                                                                                                                                                                              X\n"
+        + "02209999  030      5999999999901   90099993                                                                                                                                                                                                              3      \n"
+        + "02209999  030      5999999999901   90099991     4                                                                                                                                                                                                       4       \n"
+        + "02209999  030      5999999999901   90099991                9                                                                                                                                                                                             9      \n";
+
         wagnisdaten.importFrom(input);
         Feld x = wagnisdaten.getFeld(Bezeichner.ZUSAETZLICHE_SATZKENNUNG, 2);
         assertEquals("X", x.getInhalt());
