@@ -124,4 +124,16 @@ public final class BetragMitVorzeichenTest extends AbstractFeldTest {
         BetragMitVorzeichen.of(betrag, vorzeichen);
     }
 
+    @Test
+    public void testSetInhalt() {
+        betrag.setInhalt("123+");
+        assertEquals("0123+", betrag.getInhalt());
+    }
+
+    @Test
+    public void testSetInhaltOhneVorzeichen() {
+        betrag.setInhalt("123");
+        assertEquals("0123+", betrag.getInhalt());
+    }
+
 }

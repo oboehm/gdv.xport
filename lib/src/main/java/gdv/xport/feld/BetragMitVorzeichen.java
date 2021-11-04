@@ -23,6 +23,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 /**
  * Im Gegensatz zum Betrag hat diese Klasse ein Vorzeichen ('+' oder '-').
@@ -75,7 +77,7 @@ public final class BetragMitVorzeichen extends Betrag {
      * @since 1.0
      */
     public BetragMitVorzeichen(final Bezeichner name, final int length, final int start) {
-        super(name, length, start);
+        super(name, start, StringUtils.repeat('0', length-1) + "+");
         this.setVorzeichen('+');
     }
 
@@ -146,13 +148,8 @@ public final class BetragMitVorzeichen extends Betrag {
      */
     @Override
     public void setInhalt(final double x) {
-        if (x >= 0) {
-            super.setInhalt(x * 10);
-            this.setVorzeichen('+');
-        } else {
-            super.setInhalt(-x * 10);
-            this.setVorzeichen('-');
-        }
+        long n = Math.round(x * 100);
+        setInhalt(n);
     }
 
     @Override
@@ -174,12 +171,23 @@ public final class BetragMitVorzeichen extends Betrag {
      */
     @Override
     public void setInhalt(final long n) {
+        String pattern = StringUtils.repeat("0", this.getAnzahlBytes()-1);
+        NumberFormat format = new DecimalFormat(pattern);
+        String formatted = format.format(Math.abs(n));
         if (n >= 0) {
-            super.setInhalt(n * 10);
-            this.setVorzeichen('+');
+            this.setInhalt(formatted + '+');
         } else {
-            super.setInhalt(-n * 10);
-            this.setVorzeichen('-');
+            this.setInhalt(formatted + '-');
+        }
+    }
+
+    @Override
+    public void setInhalt(String s) {
+        char lastChar = StringUtils.reverse(" " + s).charAt(0);
+        if ((lastChar != '+') && (lastChar != '-')) {
+            super.setInhalt(s + "+");
+        } else {
+            super.setInhalt(s);
         }
     }
 

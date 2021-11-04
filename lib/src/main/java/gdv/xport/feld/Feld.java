@@ -416,7 +416,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     /**
-     * Schneidet einen zu langen String je nach Alignment links oder rechts ab.
+     * Schneidet einen zu langen String unabhaengig vom Alignment rechts ab.
      *
      * @param s String, der evtl. gekuerzt wird
      * @return String der Laenge {@link #getAnzahlBytes()}
@@ -425,11 +425,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         if (s.length() <= getAnzahlBytes()) {
             return s;
         }
-        if (ausrichtung == Align.LEFT) {
-            return s.substring(0, getAnzahlBytes());
-        } else {
-            return s.substring(s.length() - getAnzahlBytes());
-        }
+        return s.substring(0, getAnzahlBytes());
     }
 
     /**

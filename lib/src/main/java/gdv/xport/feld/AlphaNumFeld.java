@@ -5,6 +5,7 @@ package gdv.xport.feld;
 
 import de.jfachwert.FachwertFactory;
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.config.Config;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
 
@@ -122,6 +123,22 @@ public class AlphaNumFeld extends Feld {
      */
     public AlphaNumFeld(final Feld other) {
         super(other);
+    }
+
+    protected AlphaNumFeld(AlphaNumFeld other, Config c) {
+        super(other, c);
+    }
+
+    /**
+     * Liefert eine neues Feld mit neuer Konfiguration
+     *
+     * @param c neue Konfiguration
+     * @return neues NumFeld
+     * @since 5.3
+     */
+    @Override
+    public AlphaNumFeld mitConfig(Config c) {
+        return new AlphaNumFeld(this, c);
     }
 
     /* (non-Javadoc)

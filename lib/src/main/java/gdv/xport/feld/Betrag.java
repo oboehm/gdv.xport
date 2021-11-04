@@ -74,6 +74,10 @@ public class Betrag extends NumFeld {
         super(name, length, start, 0, 2);
     }
 
+    public Betrag(final Bezeichner name, final int start, final String value) {
+        super(name, start, value, 2);
+    }
+
     /**
      * Instantiiert einen neuen Betrag.
      * <p>
