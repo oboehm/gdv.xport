@@ -1,7 +1,6 @@
 package gdv.xport.feld;
 
 import gdv.xport.config.Config;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -171,10 +170,9 @@ public class FeldUeberlaufTest {
    * Test method for {@link gdv.xport.BetragMitVorzeichen#setInhalt(String)} .
    */
   @Test
-  @Ignore // hier fehlt noch die Implementierung #mitConfig(Config)
   public void testBetragMitVorzeichen()
   {
-    BetragMitVorzeichen betragMVz = new BetragMitVorzeichen(new Bezeichner("betragTEstVZ"), 10, 2);
+    BetragMitVorzeichen betragMVz = new BetragMitVorzeichen(new Bezeichner("betragTEstVZ"), 10, 2).mitConfig(TRUNCATE);
 
     betragMVz.setInhalt("123");
     assertEquals("000000123+", betragMVz.getInhalt());
@@ -200,20 +198,15 @@ public class FeldUeberlaufTest {
      *       "Teildatensatz.ImportFrom(..)" gesorgt.
      */
 
-    Exception exception1 = assertThrows(NumberFormatException.class, () ->
+    Exception exception1 = assertThrows(IllegalArgumentException.class, () ->
     {
       betragMVz.setInhalt("1A3");
     });
 
     assertTrue(exception1.getMessage()
-        .contains("For input string"));
+        .contains("1A3"));
 
-    Exception exception2 = assertThrows(NumberFormatException.class, () ->
-    {
-      betragMVz.setInhalt("");
-    });
-
-    assertTrue(exception2.getMessage()
-        .contains("For input string"));
+    // ist erlaubt - ansonsten waere der Musterdatensatz ungueltig!
+    betragMVz.setInhalt("");
   }
 }

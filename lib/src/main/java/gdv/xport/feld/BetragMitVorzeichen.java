@@ -40,6 +40,7 @@ import java.text.NumberFormat;
 public final class BetragMitVorzeichen extends Betrag {
 
     private static final Logger LOG = LogManager.getLogger();
+    private static final Validator DEFAULT_VALIDATOR = new Validator(Config.getInstance());
 
     /**
      * Legt ein neues Betrags-Feld an. Die Informationen dazu werden
@@ -83,8 +84,16 @@ public final class BetragMitVorzeichen extends Betrag {
      * @since 1.0
      */
     public BetragMitVorzeichen(final Bezeichner name, final int length, final int start) {
-        super(name, start, StringUtils.repeat('0', length-1) + "+", new Validator(Config.getInstance()));
+        this(name, length, start, DEFAULT_VALIDATOR);
+    }
+
+    public BetragMitVorzeichen(final Bezeichner name, final int length, final int start, Feld.Validator validator) {
+        super(name, start, StringUtils.repeat('0', length-1) + "+", validator);
         this.setVorzeichen('+');
+    }
+
+    private BetragMitVorzeichen(final BetragMitVorzeichen other, final Config config) {
+        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), new BetragMitVorzeichen.Validator(config));
     }
 
     /**
@@ -112,6 +121,18 @@ public final class BetragMitVorzeichen extends Betrag {
      */
     public BetragMitVorzeichen(final Feld other) {
         super(other);
+    }
+
+    /**
+     * Liefert einen neuen Betrag mit neuer Konfiguration
+     *
+     * @param c neue Konfiguration
+     * @return neuer Betrag
+     * @since 5.3
+     */
+    @Override
+    public BetragMitVorzeichen mitConfig(Config c) {
+        return new BetragMitVorzeichen(this, c);
     }
 
     /**
@@ -188,13 +209,23 @@ public final class BetragMitVorzeichen extends Betrag {
     }
 
     @Override
-    public void setInhalt(String s) {
+    public void setInhalt(String value) {
+        char firstChar = (value + " ").charAt(0);
+        String s = ((firstChar == '+') || (firstChar == '-')) ? value.substring(1) + firstChar : value;
         char lastChar = StringUtils.reverse(" " + s).charAt(0);
         if ((lastChar != '+') && (lastChar != '-')) {
             super.setInhalt(s + "+");
         } else {
             super.setInhalt(s);
         }
+    }
+
+    protected String truncate(String s) {
+        if (s.length() <= getAnzahlBytes()) {
+            return s;
+        }
+        String number = super.truncate(s).substring(0, getAnzahlBytes()-1);
+        return number + s.charAt(s.length()-1);
     }
 
     /* (non-Javadoc)
