@@ -18,6 +18,7 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.ByteAdresse;
 import gdv.xport.feld.Feld;
@@ -49,6 +50,7 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger();
     private static final File XML_DIR = new File("target", "xml");
+    private static final Config COMPACT = Config.EMPTY.withProperty("gdv.export.xml.compact", "true");
 
     @Override
     protected AbstractFormatter createFormatter() {
@@ -217,7 +219,7 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
     private void formatDatenpaket(Datenpaket datenpaket, String stand, String filename) throws IOException, XMLStreamException {
         File target = new File(XML_DIR, filename);
         try (FileOutputStream ostream = new FileOutputStream(target);
-             GdvXmlFormatter formatter = new GdvXmlFormatter(ostream, stand)) {
+             GdvXmlFormatter formatter = new GdvXmlFormatter(ostream, COMPACT.withProperty("gdv.export.xml.stand", stand))) {
             formatter.write(datenpaket);
         }
         XmlService xmlService = XmlService.getInstance(target.toURI());

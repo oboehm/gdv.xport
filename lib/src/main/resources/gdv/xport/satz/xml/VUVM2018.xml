@@ -10840,7 +10840,6 @@
 			<feldreferenz referenz="154-154-VorzeichenZumRabattZuschlag-Alphanumerisch">
 				<name>Vorzeichen zum Rabatt/Zuschlag</name>
 				<technischerName>VorzeichenZumRabattZuschlag</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- Datum GueltigAbDatum (155-162) -->
 			<feldreferenz referenz="155-162-GueltigAbDatum-Datum">

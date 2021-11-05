@@ -10626,7 +10626,6 @@
 			<feldreferenz referenz="154-154-VorzeichenZumRabattZuschlag-Alphanumerisch">
 				<name>Vorzeichen zum Rabatt/Zuschlag</name>
 				<technischerName>VorzeichenZumRabattZuschlag</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- Datum GueltigAbDatum (155-162) -->
 			<feldreferenz referenz="155-162-GueltigAbDatum-Datum">
@@ -11153,7 +11152,6 @@
 			<feldreferenz referenz="085-085-Vorzeichen11-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen11</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld SteuerBetragInWE1 (86-99) -->
 			<feldreferenz referenz="086-099-SteuerBetragInWE1-Fliesskomma">
@@ -11164,7 +11162,6 @@
 			<feldreferenz referenz="100-100-Vorzeichen12-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen12</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel1 (101-103) -->
 			<feldreferenz referenz="101-103-Waehrungsschluessel1-Alphanumerisch">
