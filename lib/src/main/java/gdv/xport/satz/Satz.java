@@ -480,21 +480,13 @@ public abstract class Satz implements Cloneable {
 			if (tds.hasFeld(name)) {
 				Feld x = tds.getFeld(name);	// TODO: tds.getFeld(name, config) - fuer Validierung (05-Okt-2021)
 				x.setInhalt(value);
-				verifyFeldInhalt(x);
+				x.mitConfig(config).getValidator().verify(value);
 				found = true;
 			}
 		}
 		if (!found) {
 			throw new IllegalArgumentException("Feld \"" + name + "\" not found");
 		}
-	}
-
-	private static void verifyFeldInhalt(Feld x) {
-		Feld.Validator validator = x.getValidator();
-		if (x instanceof NumFeld) {
-			validator = new NumFeld.Validator();
-		}
-		validator.verifyInhalt(x.getInhalt());
 	}
 
 	/**
@@ -619,12 +611,7 @@ public abstract class Satz implements Cloneable {
     	this.gdvSatzartName = "";
 	}
 
-    /**
-     * Setzt die Version des Satzes
-     * 
-     * @param version die Satzversion
-     */
-    private final void setSatzversion(final String version) {
+    private void setSatzversion(final String version) {
         this.satzVersion.setInhalt(version);
     }
 
@@ -1466,7 +1453,7 @@ public abstract class Satz implements Cloneable {
 
 	private List<ConstraintViolation> validateUniqueEntries() {
 		List<ConstraintViolation> violations = new ArrayList<>();
-		Bezeichner bezeichner[] = { Bezeichner.VU_NR, Bezeichner.VS_NR, Bezeichner.VERMITTLER };
+		Bezeichner[] bezeichner = { Bezeichner.VU_NR, Bezeichner.VS_NR, Bezeichner.VERMITTLER };
 		for (Bezeichner b : bezeichner) {
 			if (!hasFeld(b)) {
 				continue;

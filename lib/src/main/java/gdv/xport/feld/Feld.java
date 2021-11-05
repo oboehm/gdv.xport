@@ -896,23 +896,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
             return value;
         }
 
-        /**
-         * Dieser validate-Methode validiert immer, unabhaengig von der
-         * eingestellten Konfiguration. Im Unterschied zur validate-Methode
-         * wird hier im Fehlerfall eine {@link IllegalArgumentException}
-         * ausgeloest.
-         *
-         * @param value Wert, der validiert werden soll
-         * @return der Wert selber zur Weiterverarbeitung
-         */
-        public String verifyInhalt(String value) {
-            try {
-                return validateInhalt(value);
-            } catch (ValidationException ex) {
-                throw new IllegalArgumentException(ex);
-            }
-        }
-
     }
 
 }
