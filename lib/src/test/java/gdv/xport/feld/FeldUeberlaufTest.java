@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class FeldUeberlaufTest {
 
   private static final Config TRUNCATE = Config.getInstance().withProperty("gdv.feld.truncate", "true")
-          .withProperty("gdv.feld.validate", "true");
+                                               .withProperty("gdv.feld.validate", "true");
 
   /**
    * Test method for {@link Feld#setInhalt(String)} bei Align.RIGHT .
@@ -125,10 +125,9 @@ public class FeldUeberlaufTest {
    * Test method for {@link gdv.xport.Betrag#setInhalt()} .
    */
   @Test
-  @Ignore // Validierung laesst sich noch nicht konfigierieren
   public void testBetrag()
   {
-    Betrag betrag = new Betrag(new Bezeichner("betragTest"), 10, 20);
+    Betrag betrag = new Betrag(new Bezeichner("betragTest"), 10, 20).mitConfig(TRUNCATE);
 
     betrag.setInhalt("123");
     assertEquals("0000000123", betrag.getInhalt());
@@ -148,7 +147,7 @@ public class FeldUeberlaufTest {
     });
 
     assertTrue(exception1.getMessage()
-        .contains("Betrag can't store negative number"));
+        .contains("-123"));
 
     /**
      * @Oli: ein Betrag-Feld darf unter keinen Umständen einen nicht-numerischen Inhalt haben!
@@ -156,21 +155,16 @@ public class FeldUeberlaufTest {
      *       Lege deine Stirn nicht in Sorgenfalen wg. des Imports. Dafuer habe ich in
      *       "Teildatensatz.ImportFrom(..)" gesorgt.
      */
-    Exception exception2 = assertThrows(NumberFormatException.class, () ->
+    Exception exception2 = assertThrows(IllegalArgumentException.class, () ->
     {
       betrag.setInhalt("1A3");
     });
 
     assertTrue(exception2.getMessage()
-        .contains("For input string"));
+        .contains("1A3"));
 
-    Exception exception3 = assertThrows(NumberFormatException.class, () ->
-    {
-      betrag.setInhalt("");
-    });
-
-    assertTrue(exception3.getMessage()
-        .contains("For input string"));
+    // ist erlaubt - ansonsten waere der Musterdatensatz ungueltig!
+    betrag.setInhalt("");
   }
 
   /**

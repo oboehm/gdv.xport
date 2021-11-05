@@ -19,6 +19,7 @@
 package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.config.Config;
 
 /**
  * Standardmaessig hat das Beitrags-Feld 12,2 Stellen (12 Vorkommastellen +
@@ -29,6 +30,8 @@ import gdv.xport.annotation.FeldInfo;
  * @version $Revision$
  */
 public class Betrag extends NumFeld {
+
+    private static final Feld.Validator DEFAULT_VALIDATOR =new NumFeld.Validator(Config.getInstance());
 
     /**
      * Legt ein neues Betrags-Feld an. Die Informationen dazu werden
@@ -71,11 +74,19 @@ public class Betrag extends NumFeld {
      * @since 1.0
      */
     public Betrag(final Bezeichner name, final int length, final int start) {
-        super(name, length, start, 0, 2);
+        this(name, length, start, DEFAULT_VALIDATOR);
+    }
+
+    private Betrag(final Betrag other, final Config config) {
+        this(other.getBezeichner(), other.getByteAdresse(), other.getInhalt(), new NumFeld.Validator(config));
+    }
+
+    private Betrag(final Bezeichner name, final int length, final int start, final Feld.Validator validator) {
+        super(name, length, start, 2, validator);
     }
 
     protected Betrag(final Bezeichner name, final int start, final String value, final Feld.Validator validator) {
-        super(name, value.length(), start, 2, validator);
+        this(name, value.length(), start, validator);
         this.setInhalt(value);
     }
 
@@ -103,6 +114,18 @@ public class Betrag extends NumFeld {
      */
     public Betrag(final Feld other) {
         super(other);
+    }
+
+    /**
+     * Liefert einen neuen Betrag mit neuer Konfiguration
+     *
+     * @param c neue Konfiguration
+     * @return neuer Betrag
+     * @since 5.3
+     */
+    @Override
+    public Betrag mitConfig(Config c) {
+        return new Betrag(this, c);
     }
 
     /* (non-Javadoc)

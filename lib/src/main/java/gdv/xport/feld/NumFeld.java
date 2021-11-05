@@ -300,7 +300,8 @@ public class NumFeld extends Feld {
     }
 
     @Override
-    public void setInhalt(String s) {
+    public void setInhalt(String value) {
+        String s = validator.verify(value);
         if (config.getBool("gdv.numfeld.fill-blanks")) {
             super.setInhalt(s.trim());
         } else {
@@ -321,7 +322,7 @@ public class NumFeld extends Feld {
 
     @Override
     protected String truncate(String s) {
-        if (s.startsWith("0")) {
+        if (s.startsWith("0") && (s.length() > 1)) {
             return truncate(s.substring(1));
         } else if (s.length() > getAnzahlBytes()) {
             LOG.info("NumFeld {} wird auf {} Ziffern gekuerzt", getBezeichner(), getAnzahlBytes());

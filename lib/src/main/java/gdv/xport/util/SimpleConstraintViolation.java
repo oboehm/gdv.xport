@@ -18,11 +18,9 @@
 package gdv.xport.util;
 
 import gdv.xport.feld.Feld;
-import net.sf.oval.Check;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.constraint.AssertValidCheck;
 import net.sf.oval.context.ClassContext;
-import net.sf.oval.context.OValContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -48,6 +46,11 @@ public final class SimpleConstraintViolation extends ConstraintViolation {
     
     public SimpleConstraintViolation(String message, Object validatedObject, Object invalidValue) {
         super(new AssertValidCheck(), message, validatedObject, invalidValue, new ClassContext(validatedObject.getClass()));
+    }
+
+    @Override
+    public String toString() {
+        return getValidatedObject() + " -> " + getMessage();
     }
 
 }
