@@ -26,6 +26,8 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import patterntesting.runtime.junit.CloneableTester;
 
+import javax.validation.ValidationException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -207,10 +209,32 @@ public final class FeldTest extends AbstractFeldTest {
     }
 
     @Test
+    public void testTruncateRight() {
+        Feld feld = new Feld(Bezeichner.NAME1, 6, 1, Align.RIGHT).mitConfig(Config.EXPERIMENTAL);
+        feld.setInhalt("hello world");
+        assertEquals("hello ", feld.getInhalt());
+    }
+
+    @Test
     public void testNoTruncate() {
         Feld feld = new Feld(Bezeichner.NAME1, 5, 1, Align.RIGHT).mitConfig(Config.EXPERIMENTAL);
         feld.setInhalt("hi");
         assertEquals("hi", feld.getInhalt().trim());
+    }
+
+    @Test
+    public void testValidator() {
+        Feld.Validator validator = new Feld.Validator();
+        String ok = "ok";
+        assertEquals(ok, validator.validate(ok));
+    }
+
+    @Test(expected = ValidationException.class)
+    public void testValidatorInvalidChars() {
+        Feld.Validator validator = new Feld.Validator();
+        byte[] bytes = { 'a', 'b', 1, -127 };
+        String invalid = new String(bytes, StandardCharsets.US_ASCII);
+        validator.validate(invalid);
     }
 
 }

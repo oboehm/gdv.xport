@@ -22,7 +22,6 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.satz.enums.TeildatensatzEnum;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.XmlService;
@@ -54,6 +53,7 @@ public abstract class Satz implements Cloneable {
 
 	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
 	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
+	private Config config = Config.getInstance();
 
   /**
    * Zum Abspeichern der Satznummer einer 0220er-GdvSatzart der Sparte 010
@@ -184,6 +184,16 @@ public abstract class Satz implements Cloneable {
         this.gdvSatzartNummer = satz.getGdvSatzartNummer();
         this.createTeildatensaetze(tdsList);
     }
+
+	/**
+	 * Hierueber laesst sich die Default-Konfiguration abaendern.
+	 *
+	 * @param config die neue Konfiguration
+	 * @since 5.3
+	 */
+	public void setConfig(Config config) {
+		this.config = config;
+	}
 
     protected void createTeildatensaetze(final int n) {
         teildatensatz = new Teildatensatz[n];
@@ -468,17 +478,23 @@ public abstract class Satz implements Cloneable {
 		boolean found = false;
 		for (Teildatensatz tds : teildatensatz) {
 			if (tds.hasFeld(name)) {
-				Feld x = tds.getFeld(name);
+				Feld x = tds.getFeld(name);	// TODO: tds.getFeld(name, config) - fuer Validierung (05-Okt-2021)
 				x.setInhalt(value);
-				if (x.isInvalid()) {
-					throw new IllegalArgumentException(String.format("ungueltiger Wert '%s' fuer %s", value, x));
-				}
+				verifyFeldInhalt(x);
 				found = true;
 			}
 		}
 		if (!found) {
 			throw new IllegalArgumentException("Feld \"" + name + "\" not found");
 		}
+	}
+
+	private static void verifyFeldInhalt(Feld x) {
+		Feld.Validator validator = x.getValidator();
+		if (x instanceof NumFeld) {
+			validator = new NumFeld.Validator();
+		}
+		validator.verifyInhalt(x.getInhalt());
 	}
 
 	/**

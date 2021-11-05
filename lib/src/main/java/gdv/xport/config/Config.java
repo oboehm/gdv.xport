@@ -69,6 +69,8 @@ public final class Config {
     public static final Config DEFAULT = new Config("/gdv/xport/config/default.properties");
     /** Experimentale Konfiguration zum Testen neuer Features. */
     public static final Config EXPERIMENTAL = new Config("/gdv/xport/config/experimental.properties");
+    /** Eine leere Konfiguration zum Ueberschreiben. */
+    public static final Config EMPTY = new Config(new Properties());
 
     private final Properties properties;
 

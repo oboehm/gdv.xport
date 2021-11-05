@@ -18,11 +18,13 @@
 
 package gdv.xport.feld;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import de.jfachwert.SimpleValidator;
+import de.jfachwert.Text;
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
-import net.sf.oval.Validator;
 import net.sf.oval.constraint.Min;
 import net.sf.oval.constraint.NotEqual;
 import org.apache.commons.lang3.StringUtils;
@@ -30,6 +32,7 @@ import org.apache.commons.text.WordUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.validation.ValidationException;
 import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.Constructor;
@@ -59,6 +62,8 @@ public class Feld implements Comparable<Feld>, Cloneable {
     @NotEqual("UNKNOWN")
     private final Align ausrichtung;
     protected final Config config;
+    @JsonIgnore
+    protected final Validator validator;
 
     /**
      * Legt ein neues Feld an. Dieser Default-Konstruktor ist fuer Unterklassen
@@ -105,6 +110,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.ausrichtung = getAlignmentFrom(info);
         this.inhalt = new StringBuilder(info.anzahlBytes());
         this.config = Config.getInstance();
+        this.validator = new Validator(config);
         for (int i = 0; i < info.anzahlBytes(); i++) {
             this.inhalt.append(' ');
         }
@@ -133,7 +139,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @since 5.3
      */
     public Feld mitConfig(Config c) {
-        return new Feld(this, c);
+        return new Feld(this, new Validator(c));
     }
 
     /**
@@ -150,6 +156,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.config = Config.getInstance();
+        this.validator = new Validator(config);
     }
 
     /**
@@ -162,15 +169,16 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @since 1.0
      */
     public Feld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
-        this(bezeichner, length, start, alignment, Config.getInstance());
+        this(bezeichner, length, start, alignment, new Validator(Config.getInstance()));
     }
 
-    private Feld(Bezeichner bezeichner, int length, int start, Align alignment, Config config) {
+    protected Feld(Bezeichner bezeichner, int length, int start, Align alignment, Validator validator) {
         this.bezeichner = bezeichner;
         this.inhalt = getEmptyStringBuilder(length);
         this.byteAdresse = start;
         this.ausrichtung = alignment;
-        this.config = config;
+        this.validator = validator;
+        this.config = validator.getConfig();
     }
 
     /**
@@ -241,6 +249,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
+        this.validator = new Validator(config);
     }
 
     /**
@@ -271,6 +280,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
+        this.validator = new Validator(config);
     }
 
     /**
@@ -284,9 +294,13 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.setInhalt(other.getInhalt());
     }
 
-    protected Feld(final Feld other, final Config config) {
-        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.ausrichtung, config);
+    protected Feld(final Feld other, final Validator validator) {
+        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.ausrichtung, validator);
         this.setInhalt(other.getInhalt());
+    }
+
+    protected Feld(final Feld other, final Config config) {
+        this(other, new Validator(config));
     }
 
     private static StringBuilder getEmptyStringBuilder(final int length) {
@@ -628,11 +642,17 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @return eine Liste mit Constraint-Verletzungen
      */
     public List<ConstraintViolation> validate() {
-        Validator validator = new Validator();
-        List<ConstraintViolation> violations = validator.validate(this);
+        net.sf.oval.Validator ovalValidator = new net.sf.oval.Validator();
+        List<ConstraintViolation> violations = ovalValidator.validate(this);
         if (this.getEndAdresse() > 256) {
-            ConstraintViolation cv = new SimpleConstraintViolation(this + ": boundary exceeded", this,
+            ConstraintViolation cv = new SimpleConstraintViolation(this + ": Endadresse ueberschritten", this,
                     this.getEndAdresse());
+            violations.add(cv);
+        }
+        try {
+            this.validator.validateInhalt(getInhalt());
+        } catch (ValidationException ex) {
+            ConstraintViolation cv = new SimpleConstraintViolation(this, ex);
             violations.add(cv);
         }
         return violations;
@@ -798,6 +818,16 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     /**
+     * Hierueber kann der Validator zur Pruefung im Vorfeld
+     * geholot werden.
+     *
+     * @return aktuellen Validator
+     */
+    public Feld.Validator getValidator() {
+        return this.validator;
+    }
+
+    /**
      * Die clone-Methode hat gegenueber dem CopyConstructor
      * {@link Feld#Feld(Feld)} den Vorteil, dass es den richtigen Typ fuer die
      * abgeleiteten Klassen zurueckliefert.
@@ -808,6 +838,84 @@ public class Feld implements Comparable<Feld>, Cloneable {
     @Override
     public Object clone() {
         return new Feld(this);
+    }
+
+
+
+    /**
+     * Die Validierung von Werten wurde jetzt in einer eingenen Validator-
+     * Klasse zusammengefasst. Damit kann die Validierung auch unabhaengig
+     * von Feld-Klasse im Vorfeld eingesetzt werden, um Werte auf ihre
+     * Gueltigkeit pruefen zu koennen.
+     *
+     * @since 5.3
+     */
+    public static class Validator implements SimpleValidator<String> {
+
+        private final Config config;
+
+        public Validator() {
+            this(Config.EMPTY.withProperty("gdv.feld.validate", "true"));
+        }
+
+        public Validator(Config config) {
+            this.config = config;
+        }
+
+        protected Config getConfig() {
+            return this.config;
+        }
+
+        /**
+         * Dieser validate-Methode validiert nur bei enstsprechender
+         * Konfiguration.
+         *
+         * @param value Wert, der validiert werden soll
+         * @return der Wert selber zur Weiterverarbeitung
+         */
+        @Override
+        public String validate(String value) {
+            if (!config.getBool("gdv.feld.validate")) {
+                return value;
+            }
+            return validateInhalt(value);
+        }
+
+        /**
+         * Dieser validate-Methode validiert immer, unabhaengig von der
+         * eingestellten Konfiguration.
+         *
+         * @param value Wert, der validiert werden soll
+         * @return der Wert selber zur Weiterverarbeitung
+         */
+        protected String validateInhalt(String value) {
+            LOG.debug("Inhalt von '{}' wird validiert.", value);
+            if (value == null) {
+                throw new ValidationException("null-Werte sind nicht erlaubt");
+            }
+            if (!StringUtils.isAsciiPrintable(Text.replaceUmlaute(value))) {
+                throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen", value));
+            }
+            return value;
+        }
+
+        /**
+         * Dieser validate-Methode validiert immer, unabhaengig von der
+         * eingestellten Konfiguration. Im Unterschied zur validate-Methode
+         * wird hier im Fehlerfall eine {@link IllegalArgumentException}
+         * ausgeloest.
+         *
+         * @param value Wert, der validiert werden soll
+         * @return der Wert selber zur Weiterverarbeitung
+         */
+        public String verifyInhalt(String value) {
+            try {
+                return validateInhalt(value);
+            } catch (ValidationException ex) {
+                throw new IllegalArgumentException(ex);
+            }
+        }
+
     }
 
 }

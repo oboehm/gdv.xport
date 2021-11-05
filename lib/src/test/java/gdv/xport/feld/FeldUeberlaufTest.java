@@ -77,7 +77,7 @@ public class FeldUeberlaufTest {
   }
 
   /**
-   * Test method for {@link Feld#setInhalt()} bei NumFeld .
+   * Test method for {@link Feld#setInhalt(String)} bei NumFeld .
    */
   @Test
   @Ignore // Validierung laesst sich noch nicht konfigierieren

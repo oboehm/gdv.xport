@@ -44,6 +44,7 @@ import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -247,7 +248,7 @@ public final class DatenpaketTest {
      */
     @Test
     public void testImport2DatenpaketeWithReader() throws IOException {
-        try (Reader reader = new FileReader("src/test/resources/zwei_datenpakete.txt")) {
+        try (Reader reader = new InputStreamReader(new FileInputStream("src/test/resources/zwei_datenpakete.txt"), StandardCharsets.ISO_8859_1)) {
             checkImport(datenpaket, reader);
             Datenpaket zwei = new Datenpaket();
             checkImport(zwei, reader);
@@ -258,6 +259,8 @@ public final class DatenpaketTest {
 
     private static void checkImport(final Datenpaket paket, final Reader reader) throws IOException {
         paket.importFrom(reader);
+        List<ConstraintViolation> violations = paket.validate();
+        LOG.info("violations = {}", violations);
         assertTrue(paket.isValid());
     }
 
@@ -283,6 +286,8 @@ public final class DatenpaketTest {
     public void testImportFromFile() throws IOException {
         File file = new File("src/test/resources", "musterdatei_041222.txt");
         datenpaket.importFrom(file);
+        List<ConstraintViolation> violations = datenpaket.validate();
+        LOG.info("violations = {}", violations);
         assertTrue(datenpaket.isValid());
 
         // test that every teildatensatz of all datensaetze has the correct satznummer (according to the identified
@@ -335,11 +340,13 @@ public final class DatenpaketTest {
     public void testImportTrimmed() throws IOException {
         StringBuilder buffer = new StringBuilder();
         try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(istream));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(istream, StandardCharsets.ISO_8859_1));
             for (String line = reader.readLine(); StringUtils.isNotEmpty(line); line = reader.readLine()) {
                 buffer.append(line.trim()).append('\n');
             }
             datenpaket.importFrom(buffer.toString());
+            List<ConstraintViolation> violations = datenpaket.validate();
+            LOG.info("violations = {}", violations);
             assertTrue(datenpaket.isValid());
         }
     }

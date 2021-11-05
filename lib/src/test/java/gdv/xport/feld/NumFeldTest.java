@@ -25,6 +25,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
+import javax.validation.ValidationException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Locale;
@@ -314,6 +315,31 @@ public final class NumFeldTest extends AbstractFeldTest {
         one.setInhalt('1');
         assertEquals(1, one.toInt());
         assertEquals("00001", one.getInhalt());
+    }
+
+    @Test
+    public void testValidator() {
+        NumFeld.Validator validator = new NumFeld.Validator();
+        String theAnswer = "42";
+        assertEquals(theAnswer, validator.validate(theAnswer));
+    }
+
+    @Test(expected = ValidationException.class)
+    public void testValidatorFails() {
+        NumFeld.Validator validator = new NumFeld.Validator();
+        validator.validate("no");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testValidatorVerifyFails() {
+        NumFeld.Validator validator = new NumFeld.Validator();
+        validator.verify("not valid");
+    }
+
+    @Test(expected = ValidationException.class)
+    public void testValidatorNegativeNumber() {
+        NumFeld.Validator validator = new NumFeld.Validator();
+        validator.validate("-1");
     }
 
 }

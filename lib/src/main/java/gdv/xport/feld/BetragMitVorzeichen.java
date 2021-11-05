@@ -19,8 +19,12 @@
 package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
+import gdv.xport.config.Config;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import javax.validation.ValidationException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -34,6 +38,8 @@ import java.text.NumberFormat;
  * @version $Revision$
  */
 public final class BetragMitVorzeichen extends Betrag {
+
+    private static final Logger LOG = LogManager.getLogger();
 
     /**
      * Legt ein neues Betrags-Feld an. Die Informationen dazu werden
@@ -77,7 +83,7 @@ public final class BetragMitVorzeichen extends Betrag {
      * @since 1.0
      */
     public BetragMitVorzeichen(final Bezeichner name, final int length, final int start) {
-        super(name, start, StringUtils.repeat('0', length-1) + "+");
+        super(name, start, StringUtils.repeat('0', length-1) + "+", new Validator(Config.getInstance()));
         this.setVorzeichen('+');
     }
 
@@ -265,6 +271,41 @@ public final class BetragMitVorzeichen extends Betrag {
                 betrag.getAnzahlBytes() + 1, betrag.getByteAdresse());
         bmv.setInhalt(betrag.getInhalt() + vorzeichen.getInhalt());
         return bmv;
+    }
+
+
+
+    /**
+     * Die Validierung von Werten wurde jetzt in einer eingenen Validator-
+     * Klasse zusammengefasst. Damit kann die Validierung auch unabhaengig
+     * von NumFeld-Klasse im Vorfeld eingesetzt werden, um Werte auf ihre
+     * Gueltigkeit pruefen zu koennen.
+     *
+     * @since 5.3
+     */
+    public static class Validator extends NumFeld.Validator {
+
+        public Validator() {
+            super();
+        }
+
+        public Validator(Config config) {
+            super(config);
+        }
+
+        @Override
+        protected String validateInhalt(String nummer) {
+            LOG.debug("{} wird als Betrag mit Vorzeichen validiert.", nummer);
+            if (StringUtils.isNotBlank(nummer)) {
+                char vorzeichen = nummer.charAt(nummer.length() - 1);
+                if ((vorzeichen != '+') && (vorzeichen != '-')) {
+                    throw new ValidationException(String.format("'%s' hat falsches Vorzeichen ('%c')", nummer, vorzeichen));
+                }
+                super.validateInhalt(nummer.substring(0, nummer.length()-1));
+            }
+            return nummer;
+        }
+
     }
 
 }

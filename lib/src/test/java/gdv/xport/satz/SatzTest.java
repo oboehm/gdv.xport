@@ -585,6 +585,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test(expected = IllegalArgumentException.class)
     public void testSetNumFeldWithLetter() {
         Satz satz200 = XmlService.getInstance().getSatzart(SatzTyp.of("0200"));
+        satz200.setConfig(Config.EMPTY.withProperty("gdv.feld.validate", "true"));
         satz200.set(Bezeichner.GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN, "A99999999999");
     }
 

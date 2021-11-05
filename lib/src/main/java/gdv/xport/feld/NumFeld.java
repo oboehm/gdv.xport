@@ -19,17 +19,16 @@ package gdv.xport.feld;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
-import gdv.xport.util.SimpleConstraintViolation;
-import net.sf.oval.ConstraintViolation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.validation.ValidationException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.List;
 
 import static java.math.BigDecimal.ZERO;
 
@@ -46,6 +45,7 @@ import static java.math.BigDecimal.ZERO;
 public class NumFeld extends Feld {
 
     private static final Logger LOG = LogManager.getLogger(NumFeld.class);
+    private static final Feld.Validator DEFAULT_VALIDATOR =new NumFeld.Validator(Config.getInstance());
     private final int nachkommastellen;
 
     /**
@@ -87,8 +87,8 @@ public class NumFeld extends Feld {
      * @param s z.B. "4"
      */
     public NumFeld(final String name, final String s) {
-        super(name, s, Align.RIGHT);
-        this.nachkommastellen = 0;
+        this(new Bezeichner(name), s.length(), 1, 0, DEFAULT_VALIDATOR);
+        this.setInhalt(s);
     }
 
     /**
@@ -100,9 +100,7 @@ public class NumFeld extends Feld {
      * @since 1.0
      */
     public NumFeld(Bezeichner bezeichner, int length, int start) {
-        super(bezeichner, length, start, Align.RIGHT);
-        this.nachkommastellen = 0;
-        this.setInhalt(0);
+        this(bezeichner, length, start, 0, DEFAULT_VALIDATOR);
     }
 
     /**
@@ -115,8 +113,7 @@ public class NumFeld extends Feld {
      * @since 1.0
      */
     public NumFeld(final Bezeichner bezeichner, final int length, final int start, final int value) {
-        super(bezeichner, length, start, Align.RIGHT);
-        this.nachkommastellen = 0;
+        this(bezeichner, length, start);
         this.setInhalt(value);
     }
 
@@ -127,8 +124,7 @@ public class NumFeld extends Feld {
      * @param value z.B. "01"
      */
     public NumFeld(final String name, final int start, final String value) {
-        super(new Bezeichner(name), start, value, Align.RIGHT);
-        this.nachkommastellen = 0;
+        this(new Bezeichner(name), value.length(), start);
         this.setInhalt(value);
     }
 
@@ -139,8 +135,8 @@ public class NumFeld extends Feld {
      * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
      */
     public NumFeld(final String name, final String s, final int nachkommastellen) {
-        super(name, s, Align.RIGHT);
-        this.nachkommastellen = nachkommastellen;
+        this(new Bezeichner(name), s.length(), 1, nachkommastellen, DEFAULT_VALIDATOR);
+        this.setInhalt(s);
     }
 
     /**
@@ -156,8 +152,7 @@ public class NumFeld extends Feld {
      */
     @Deprecated
     public NumFeld(final Bezeichner name, final FeldInfo info) {
-        super(name, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.RIGHT : info.align());
-        this.nachkommastellen = info.nachkommaStellen();
+        this(name, info.anzahlBytes(), info.byteAdresse(), info.nachkommaStellen(), DEFAULT_VALIDATOR);
     }
 
     /**
@@ -170,8 +165,7 @@ public class NumFeld extends Feld {
      * @since 4.0
      */
     public NumFeld(final Bezeichner name, final int start, final String value, final int nachkommastellen) {
-        super(name, start, value, Align.RIGHT);
-        this.nachkommastellen = nachkommastellen;
+        this(name, value.length(), start, nachkommastellen, DEFAULT_VALIDATOR);
         this.setInhalt(value);
     }
 
@@ -187,9 +181,15 @@ public class NumFeld extends Feld {
      */
     public NumFeld(final Bezeichner name, final int length, final int start, final int value,
             final int nachkommastellen) {
-        super(name, length, start, Align.RIGHT);
-        this.nachkommastellen = nachkommastellen;
+        this(name, length, start, nachkommastellen, DEFAULT_VALIDATOR);
         this.setInhalt(value);
+    }
+
+    protected NumFeld(final Bezeichner name, final int length, final int start,
+                      final int nachkommastellen, final Feld.Validator validator) {
+        super(name, length, start, Align.RIGHT, validator);
+        this.nachkommastellen = nachkommastellen;
+        this.setInhalt(0);
     }
 
     /**
@@ -413,24 +413,6 @@ public class NumFeld extends Feld {
     }
 
     /* (non-Javadoc)
-     * @see gdv.xport.feld.Feld#validate()
-     */
-    @Override
-    public List<ConstraintViolation> validate() {
-        List<ConstraintViolation> violations = super.validate();
-        if (StringUtils.isNotBlank(this.getInhalt())) {
-            try {
-                this.toBigDecimal();
-            } catch (NumberFormatException nfe) {
-                ConstraintViolation cv = new SimpleConstraintViolation(this, nfe);
-                violations.add(cv);
-            }
-        }
-        return violations;
-    }
-
-
-    /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#format()
      */
     @Override
@@ -451,6 +433,44 @@ public class NumFeld extends Feld {
     @Override
     public Object clone() {
         return new NumFeld(this);
+    }
+
+
+    /**
+     * Die Validierung von Werten wurde jetzt in einer eingenen Validator-
+     * Klasse zusammengefasst. Damit kann die Validierung auch unabhaengig
+     * von NumFeld-Klasse im Vorfeld eingesetzt werden, um Werte auf ihre
+     * Gueltigkeit pruefen zu koennen.
+     *
+     * @since 5.3
+     */
+    public static class Validator extends Feld.Validator {
+
+        public Validator() {
+            super();
+        }
+
+        public Validator(Config config) {
+            super(config);
+        }
+
+        @Override
+        protected String validateInhalt(String value) {
+            String nummer = super.validateInhalt(value);
+            LOG.debug("{} wird als Zahl validiert.", nummer);
+            if (StringUtils.isNotBlank(nummer)) {
+                try {
+                    BigInteger n = new BigInteger(nummer.trim());
+                    if (n.compareTo(BigInteger.ZERO) < 0) {
+                        throw new ValidationException(String.format("'%s' muss positiv sein", nummer));
+                    }
+                } catch (NumberFormatException nfe) {
+                    throw new ValidationException(String.format("'%s' ist keine Zahl", nummer), nfe);
+                }
+            }
+            return nummer;
+        }
+
     }
 
 }

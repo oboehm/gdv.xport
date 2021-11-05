@@ -74,8 +74,9 @@ public class Betrag extends NumFeld {
         super(name, length, start, 0, 2);
     }
 
-    public Betrag(final Bezeichner name, final int start, final String value) {
-        super(name, start, value, 2);
+    protected Betrag(final Bezeichner name, final int start, final String value, final Feld.Validator validator) {
+        super(name, value.length(), start, 2, validator);
+        this.setInhalt(value);
     }
 
     /**
