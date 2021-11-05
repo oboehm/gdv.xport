@@ -126,7 +126,7 @@ public class AlphaNumFeld extends Feld {
     }
 
     protected AlphaNumFeld(AlphaNumFeld other, Config c) {
-        super(other, c);
+        super(other, new Feld.Validator(c));
     }
 
     /**

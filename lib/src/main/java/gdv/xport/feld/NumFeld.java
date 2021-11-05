@@ -203,7 +203,7 @@ public class NumFeld extends Feld {
     }
 
     private NumFeld(Feld other, Config config) {
-        super(other, config);
+        super(other, new Validator(config));
         if (other instanceof NumFeld) {
             this.nachkommastellen = ((NumFeld) other).nachkommastellen;
         } else {

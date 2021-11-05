@@ -137,7 +137,8 @@ public final class Config {
      * @return neue Config mit key=value
      */
     public Config withProperty(String key, String value) {
-        Properties props = new Properties(properties);
+        Properties props = new Properties();
+        props.putAll(properties);
         props.setProperty(key, value);
         return new Config(props);
     }

@@ -18,7 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 public class FeldUeberlaufTest {
 
-    private static final Config TRUNCATE = Config.getInstance().withProperty("gdv.feld.truncate", "true");
+  private static final Config TRUNCATE = Config.getInstance().withProperty("gdv.feld.truncate", "true")
+          .withProperty("gdv.feld.validate", "true");
 
   /**
    * Test method for {@link Feld#setInhalt(String)} bei Align.RIGHT .
@@ -80,7 +81,6 @@ public class FeldUeberlaufTest {
    * Test method for {@link Feld#setInhalt(String)} bei NumFeld .
    */
   @Test
-  @Ignore // Validierung laesst sich noch nicht konfigierieren
   public void testNumFeld()
   {
     NumFeld numFeldOhneNachkomma = new NumFeld(new Bezeichner("numOhneNachkommaTestFeld"), 5, 1).mitConfig(TRUNCATE);
@@ -112,13 +112,13 @@ public class FeldUeberlaufTest {
      *       "Teildatensatz.ImportFrom(..)" gesorgt.
      */
 
-    Exception exception = assertThrows(NumberFormatException.class, () ->
+    Exception exception = assertThrows(IllegalArgumentException.class, () ->
     {
       numFeldOhneNachkomma.setInhalt("AA");
     });
 
     assertTrue(exception.getMessage()
-        .contains("For input string"));
+        .contains("AA"));
   }
 
   /**

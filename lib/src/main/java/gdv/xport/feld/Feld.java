@@ -299,10 +299,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.setInhalt(other.getInhalt());
     }
 
-    protected Feld(final Feld other, final Config config) {
-        this(other, new Validator(config));
-    }
-
     private static StringBuilder getEmptyStringBuilder(final int length) {
         StringBuilder sbuf = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
@@ -410,6 +406,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     public void setInhalt(final String neuerInhalt) {
         int anzahlBytes = this.getAnzahlBytes();
         String s = config.getBool("gdv.feld.truncate") ? truncate(neuerInhalt) : neuerInhalt;
+        s = validator.verify(s);
         if (s.length() > anzahlBytes) {
             throw new IllegalArgumentException("Feld " + this.getBezeichner() + ": Parameter \"" + s
                     + "\" ist laenger als " + anzahlBytes + " Zeichen!");
