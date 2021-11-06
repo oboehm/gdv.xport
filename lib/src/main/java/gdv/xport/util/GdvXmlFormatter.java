@@ -267,8 +267,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     private static boolean hasDefaultValue(Feld feld) {
         String technischerName = feld.getBezeichner().getTechnischerName().toLowerCase();
         if (feld.getAnzahlBytes() == 1) {
-            return ("+".equals(feld.getInhalt()) && technischerName.startsWith("vorzeichen"))
-                    || technischerName.startsWith("wagnisart") || technischerName.equals("art");
+            return "+".equals(feld.getInhalt()) && technischerName.startsWith("vorzeichen");
         }
         return false;
     }

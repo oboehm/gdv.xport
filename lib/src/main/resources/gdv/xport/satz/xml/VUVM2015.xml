@@ -804,6 +804,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -925,6 +926,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -1081,6 +1083,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -1298,6 +1301,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -1489,6 +1493,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -1660,6 +1665,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -1886,6 +1892,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -1978,6 +1985,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -1998,6 +2006,7 @@
 			<feldreferenz referenz="060-060-Wagnisart-Alphanumerisch">
 				<name>Wagnisart</name>
 				<technischerName>Wagnisart</technischerName>
+				<auspraegung>5</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld LfdNrZurWagnisart (61-61) -->
 			<feldreferenz referenz="061-061-LfdNrZurWagnisart-Alphanumerisch">
@@ -2049,6 +2058,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -2069,6 +2079,7 @@
 			<feldreferenz referenz="060-060-Wagnisart-Alphanumerisch">
 				<name>Wagnisart</name>
 				<technischerName>Wagnisart</technischerName>
+				<auspraegung>5</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld LfdNrZurWagnisart (61-61) -->
 			<feldreferenz referenz="061-061-LfdNrZurWagnisart-Alphanumerisch">
@@ -2134,6 +2145,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -2245,6 +2257,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -2396,6 +2409,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -2522,6 +2536,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -2694,6 +2709,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -2785,6 +2801,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -2926,6 +2943,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -3011,6 +3029,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -3176,6 +3195,7 @@
 			<feldreferenz referenz="225-241-PersonenKundenNrVermittlers-Alphanumerisch">
 				<name>Personen-/Kundennummer des Vermittlers</name>
 				<technischerName>PersonenKundenNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld AufteilungVerssteuerGemaessEgRichtlinien (242-242) -->
 			<feldreferenz referenz="242-242-AufteilungVerssteuerGemaessEgRichtlinien-Alphanumerisch">
@@ -3241,6 +3261,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -3347,6 +3368,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -3413,6 +3435,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -3525,6 +3548,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -3631,6 +3655,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -3831,6 +3856,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -3901,11 +3927,13 @@
 			<feldreferenz referenz="173-189-PersonenKundenNrVersicherers-Alphanumerisch">
 				<name>Personen-/Kundennummer des Versicherers</name>
 				<technischerName>PersonenKundenNrVersicherers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld PersonenKundenNrVermittlers (190-206) -->
 			<feldreferenz referenz="190-206-PersonenKundenNrVermittlers-Alphanumerisch">
 				<name>Personen-/Kundennummer des Vermittlers</name>
 				<technischerName>PersonenKundenNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- Datum Diensteintritt (207-214) -->
 			<feldreferenz referenz="207-214-Diensteintritt-Datum">
@@ -4008,6 +4036,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -4129,6 +4158,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -4255,6 +4285,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -4421,6 +4452,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -4498,6 +4530,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -4734,6 +4767,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -4880,6 +4914,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -5056,6 +5091,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -5143,6 +5179,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -5269,6 +5306,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -5356,6 +5394,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -5457,6 +5496,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -5549,6 +5589,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -5661,6 +5702,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -5831,6 +5873,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -5978,6 +6021,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -6105,6 +6149,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -6201,6 +6246,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -6298,6 +6344,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -6475,6 +6522,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -6587,6 +6635,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -6763,6 +6812,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -6880,6 +6930,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -7041,6 +7092,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -7138,6 +7190,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -7249,6 +7302,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -7381,6 +7435,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -7513,6 +7568,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -7684,6 +7740,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -7830,6 +7887,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -7940,6 +7998,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -8080,6 +8139,7 @@
 			<feldreferenz referenz="177-193-LfdNrVersichertenPersonVp-Alphanumerisch">
 				<name>Lfd. Nummer der versicherten Person (VP)</name>
 				<technischerName>LfdNrVersichertenPersonVp</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld PolicendarleheninWE (194-204) -->
 			<feldreferenz referenz="194-204-PolicendarleheninWE-Fliesskomma">
@@ -8201,6 +8261,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -8452,6 +8513,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -8618,6 +8680,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -8779,6 +8842,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -8869,6 +8933,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -9014,6 +9079,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -9130,6 +9196,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -9311,6 +9378,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -9422,6 +9490,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -9623,6 +9692,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -9848,6 +9918,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -9930,6 +10001,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -10001,6 +10073,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -10086,6 +10159,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -10308,6 +10382,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -10389,6 +10464,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -10481,6 +10557,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -10571,6 +10648,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -10738,6 +10816,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -10839,6 +10918,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -10925,6 +11005,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -11007,6 +11088,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -11107,6 +11189,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -11327,6 +11410,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -11437,6 +11521,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -11497,11 +11582,13 @@
 			<feldreferenz referenz="088-107-VermittlerNrAssekuradeur1-Alphanumerisch">
 				<name>Vermittler-Nummer Assekuradeur</name>
 				<technischerName>VermittlerNrAssekuradeur1</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld VsNrBeteiligtenGesellschaft1 (108-124) -->
 			<feldreferenz referenz="108-124-VsNrBeteiligtenGesellschaft1-Alphanumerisch">
 				<name>Versicherungsschein-Nummer der beteiligten Gesellschaft</name>
 				<technischerName>VsNrBeteiligtenGesellschaft1</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen2 (125-136) -->
 			<feldreferenz referenz="125-136-Leerstellen2-Alphanumerisch">
@@ -11527,11 +11614,13 @@
 			<feldreferenz referenz="148-167-VermittlerNrAssekuradeur2-Alphanumerisch">
 				<name>Vermittler-NummerAssekuradeur</name>
 				<technischerName>VermittlerNrAssekuradeur2</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld VsNrBeteiligtenGesellschaft2 (168-184) -->
 			<feldreferenz referenz="168-184-VsNrBeteiligtenGesellschaft2-Alphanumerisch">
 				<name>Versicherungsschein-Nummer der beteiligten Gesellschaft</name>
 				<technischerName>VsNrBeteiligtenGesellschaft2</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen3 (185-196) -->
 			<feldreferenz referenz="185-196-Leerstellen3-Alphanumerisch">
@@ -11557,11 +11646,13 @@
 			<feldreferenz referenz="208-227-VermittlerNrAssekuradeur3-Alphanumerisch">
 				<name>Vermittler-NummerAssekuradeur</name>
 				<technischerName>VermittlerNrAssekuradeur3</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld VsNrBeteiligtenGesellschaft3 (228-244) -->
 			<feldreferenz referenz="228-244-VsNrBeteiligtenGesellschaft3-Alphanumerisch">
 				<name>Versicherungsschein-Nummer der beteiligten Gesellschaft</name>
 				<technischerName>VsNrBeteiligtenGesellschaft3</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (245-255) -->
 			<feldreferenz referenz="245-255-Leerstellen-Alphanumerisch">
@@ -11602,6 +11693,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -11678,6 +11770,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -11769,6 +11862,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -12004,6 +12098,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -12029,6 +12124,7 @@
 			<feldreferenz referenz="061-077-VsNrVermittlers-Alphanumerisch">
 				<name>Versicherungsscheinnummer des Vermittlers</name>
 				<technischerName>VsNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ArtMeldung (78-79) -->
 			<feldreferenz referenz="078-079-ArtMeldung-Alphanumerisch">
@@ -12174,6 +12270,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -12365,6 +12462,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -12461,6 +12559,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -12587,6 +12686,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -12758,6 +12858,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -12929,6 +13030,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -13115,6 +13217,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -13302,6 +13405,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -13533,6 +13637,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -13554,11 +13659,13 @@
 			<feldreferenz referenz="044-060-VpPersonenNrVersicherers-Alphanumerisch">
 				<name>VP-Personennummer des Versicherers</name>
 				<technischerName>VpPersonenNrVersicherers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld VpPersonenNrVermittlers (61-77) -->
 			<feldreferenz referenz="061-077-VpPersonenNrVermittlers-Alphanumerisch">
 				<name>VP-Personennummer des Vermittlers</name>
 				<technischerName>VpPersonenNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Serviceleistungen (78-86) -->
 			<feldreferenz referenz="078-086-Serviceleistungen-Numerisch">
@@ -13675,6 +13782,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -13797,6 +13905,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -13919,6 +14028,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -14025,6 +14135,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -14181,6 +14292,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -14317,6 +14429,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -14448,6 +14561,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -14525,6 +14639,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -14701,6 +14816,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -14813,6 +14929,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -14974,6 +15091,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -15091,6 +15209,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -15202,6 +15321,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -15314,6 +15434,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -15446,6 +15567,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -15622,6 +15744,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -15724,6 +15847,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -15851,6 +15975,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -15963,6 +16088,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -16209,6 +16335,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -16380,6 +16507,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -16501,6 +16629,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -16641,6 +16770,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -16738,6 +16868,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -16934,6 +17065,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -17074,6 +17206,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -17089,6 +17222,7 @@
 			<feldreferenz referenz="043-062-SchadenNrVu-Alphanumerisch">
 				<name>Schadennummer des VU</name>
 				<technischerName>SchadenNrVu</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld LfdNrBearbeitungsVorganges (63-65) -->
 			<feldreferenz referenz="063-065-LfdNrBearbeitungsVorganges-Numerisch">
@@ -17115,11 +17249,13 @@
 			<feldreferenz referenz="085-101-VsNrVermittlers-Alphanumerisch">
 				<name>Versicherungsscheinnummer des Vermittlers</name>
 				<technischerName>VsNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld SchadenNrVermittlers (102-121) -->
 			<feldreferenz referenz="102-121-SchadenNrVermittlers-Alphanumerisch">
 				<name>Schadennummer des Vermittlers</name>
 				<technischerName>SchadenNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld LfdNrDeklaration (122-129) -->
 			<feldreferenz referenz="122-129-LfdNrDeklaration-Numerisch">
@@ -17264,6 +17400,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -17369,6 +17506,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -17504,6 +17642,7 @@
 			<feldreferenz referenz="235-251-PersonenKundenNrVersicherers-Alphanumerisch">
 				<name>Personen-/Kundennummer des Versicherers</name>
 				<technischerName>PersonenKundenNrVersicherers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Saisonkennzeichen (252-255) -->
 			<feldreferenz referenz="252-255-Saisonkennzeichen-Alphanumerisch">
@@ -17545,6 +17684,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -17766,6 +17906,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -17997,6 +18138,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -18078,6 +18220,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -18268,6 +18411,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -18404,6 +18548,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -18629,6 +18774,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -18853,6 +18999,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -19014,6 +19161,7 @@
 			<feldreferenz referenz="202-218-VsNrVermittlers-Alphanumerisch">
 				<name>Versicherungsscheinnummer des Vermittlers</name>
 				<technischerName>VsNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (219-256) -->
 			<feldreferenz referenz="219-256-Leerstellen-Alphanumerisch">
@@ -19070,6 +19218,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -19166,6 +19315,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -19257,6 +19407,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -19347,6 +19498,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -19472,6 +19624,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -19547,6 +19700,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -19692,6 +19846,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -19757,6 +19912,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -19849,6 +20005,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -19964,6 +20121,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -20039,6 +20197,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -20114,6 +20273,7 @@
 			<feldreferenz referenz="104-112-AuftragsNrVermittlers-Alphanumerisch">
 				<name>Auftrags-Nr. des Vermittlers</name>
 				<technischerName>AuftragsNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (113-115) -->
 			<feldreferenz referenz="113-115-Waehrungsschluessel-Alphanumerisch">
@@ -20139,11 +20299,13 @@
 			<feldreferenz referenz="159-175-PersonenKundenNrVersicherers-Alphanumerisch">
 				<name>Personen-/Kundennummer des Versicherers</name>
 				<technischerName>PersonenKundenNrVersicherers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld PersonenKundenNrVermittlers (176-192) -->
 			<feldreferenz referenz="176-192-PersonenKundenNrVermittlers-Alphanumerisch">
 				<name>Personen-/Kundennummer des Vermittlers</name>
 				<technischerName>PersonenKundenNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld AufsichtsfreierVertrag (193-193) -->
 			<feldreferenz referenz="193-193-AufsichtsfreierVertrag-Alphanumerisch">
@@ -20239,6 +20401,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -20259,6 +20422,7 @@
 			<feldreferenz referenz="044-060-VsNrVm-Alphanumerisch">
 				<name>Versicherungsscheinnummer VM</name>
 				<technischerName>VsNrVm</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktform (61-65) -->
 			<feldreferenz referenz="061-065-Produktform-Alphanumerisch">
@@ -20375,6 +20539,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -20456,6 +20621,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -20536,6 +20702,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -20652,6 +20819,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -20743,6 +20911,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -20874,6 +21043,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -21070,6 +21240,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -21236,6 +21407,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -21342,6 +21514,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -21558,6 +21731,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -21649,6 +21823,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -21840,6 +22015,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -21956,6 +22132,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -22042,6 +22219,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -22228,6 +22406,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -22338,6 +22517,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -22414,6 +22594,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -22600,6 +22781,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -22706,6 +22888,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -22807,6 +22990,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -23003,6 +23187,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -23103,6 +23288,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -23179,6 +23365,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -23395,6 +23582,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -23500,6 +23688,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -23581,6 +23770,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -23702,6 +23892,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -23794,6 +23985,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -23875,6 +24067,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -23981,6 +24174,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -24107,6 +24301,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -24273,6 +24468,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -24444,6 +24640,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -24605,6 +24802,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -24770,6 +24968,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -24806,6 +25005,7 @@
 			<feldreferenz referenz="064-080-VsNrVermittlers-Alphanumerisch">
 				<name>Versicherungsscheinnummer des Vermittlers</name>
 				<technischerName>VsNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Vertragsstatus (81-81) -->
 			<feldreferenz referenz="081-081-Vertragsstatus-Alphanumerisch">
@@ -25006,6 +25206,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -25177,6 +25378,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -25333,6 +25535,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -25564,6 +25767,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -25720,6 +25924,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -25821,6 +26026,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -25986,6 +26192,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -26077,6 +26284,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -26279,6 +26487,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -26411,6 +26620,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -26566,6 +26776,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -26711,6 +26922,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -26808,6 +27020,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -26920,6 +27133,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -27096,6 +27310,7 @@
 			<feldreferenz referenz="014-030-VsNr1-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr1</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -27126,6 +27341,7 @@
 			<feldreferenz referenz="062-078-VsNr2-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr2</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld RolleWAKZ (79-80) -->
 			<feldreferenz referenz="079-080-RolleWAKZ-Alphanumerisch">
@@ -27186,6 +27402,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -27201,6 +27418,7 @@
 			<feldreferenz referenz="043-062-SchadenNrVu1-Alphanumerisch">
 				<name>Schadennummer des VU</name>
 				<technischerName>SchadenNrVu1</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld LfdNrBearbeitungsvorganges (63-65) -->
 			<feldreferenz referenz="063-065-LfdNrBearbeitungsvorganges-Numerisch">
@@ -27227,6 +27445,7 @@
 			<feldreferenz referenz="076-095-SchadenNrVermittlers1-Alphanumerisch">
 				<name>Schadennummer des Vermittlers</name>
 				<technischerName>SchadenNrVermittlers1</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld AFB (96-96) -->
 			<feldreferenz referenz="096-096-AFB-Alphanumerisch">
@@ -27392,6 +27611,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -27422,11 +27642,13 @@
 			<feldreferenz referenz="104-123-SchadenNrVu2-Alphanumerisch">
 				<name>Schadennummer des VU</name>
 				<technischerName>SchadenNrVu2</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld SchadenNrVermittlers2 (124-143) -->
 			<feldreferenz referenz="124-143-SchadenNrVermittlers2-Alphanumerisch">
 				<name>Schadennummer des Vermittlers</name>
 				<technischerName>SchadenNrVermittlers2</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld HoeheDerSchadenreserve (144-157) -->
 			<feldreferenz referenz="144-157-HoeheDerSchadenreserve-Fliesskomma">
@@ -27487,6 +27709,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -27582,6 +27805,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -27717,6 +27941,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -27732,11 +27957,13 @@
 			<feldreferenz referenz="043-059-PersonenKundenNrVersicherers-Alphanumerisch">
 				<name>Personen-/Kundennummer des Versicherers</name>
 				<technischerName>PersonenKundenNrVersicherers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld PersonenKundenNrVermittlers (60-76) -->
 			<feldreferenz referenz="060-076-PersonenKundenNrVermittlers-Alphanumerisch">
 				<name>Personen-/Kundennummer des Vermittlers</name>
 				<technischerName>PersonenKundenNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Kundengruppe (77-106) -->
 			<feldreferenz referenz="077-106-Kundengruppe-Alphanumerisch">
@@ -27852,6 +28079,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -27937,6 +28165,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -28042,6 +28271,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -28187,6 +28417,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -28302,6 +28533,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -28367,6 +28599,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -28453,6 +28686,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -28569,6 +28803,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -28674,6 +28909,7 @@
 			<feldreferenz referenz="158-160-AnzVersichertenFahrzeuge-Alphanumerisch">
 				<name>Anzahl der versicherten Fahrzeuge</name>
 				<technischerName>AnzVersichertenFahrzeuge</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZuschlagInProz (161-165) -->
 			<feldreferenz referenz="161-165-ZuschlagInProz-Fliesskomma">
@@ -28759,6 +28995,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -29005,6 +29242,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -29096,6 +29334,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -29285,6 +29524,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -29455,6 +29695,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -29581,6 +29822,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -29687,6 +29929,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -29818,6 +30061,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -30014,6 +30258,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -30159,6 +30404,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -30204,6 +30450,7 @@
 			<feldreferenz referenz="111-127-VsNrVorVers-Alphanumerisch">
 				<name>Versicherungsscheinnummer der Vor-/ Mitversicherung</name>
 				<technischerName>VsNrVorVers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AnzSchaedenImLaufendenJahr (128-131) -->
 			<feldreferenz referenz="128-131-AnzSchaedenImLaufendenJahr-Numerisch">
@@ -30354,6 +30601,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -30440,6 +30688,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -30475,6 +30724,7 @@
 			<feldreferenz referenz="078-094-PersonenKundenNrVersicherers-Alphanumerisch">
 				<name>Personen-/Kundennummer des Versicherers</name>
 				<technischerName>PersonenKundenNrVersicherers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (95-255) -->
 			<feldreferenz referenz="095-255-Leerstellen-Alphanumerisch">
@@ -30537,6 +30787,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -30714,6 +30965,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -30875,6 +31127,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -30956,6 +31209,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -31047,6 +31301,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -31178,6 +31433,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -31214,6 +31470,7 @@
 			<feldreferenz referenz="070-086-VsNrVermittlers-Alphanumerisch">
 				<name>Versicherungsscheinnummer des Vermittlers</name>
 				<technischerName>VsNrVermittlers</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Anmeldeturnus (87-88) -->
 			<feldreferenz referenz="087-088-Anmeldeturnus-Alphanumerisch">
@@ -31259,6 +31516,7 @@
 			<feldreferenz referenz="191-198-ZertifikatsNr-Alphanumerisch">
 				<name>Zertifikatsnummer</name>
 				<technischerName>ZertifikatsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ArtWare (199-213) -->
 			<feldreferenz referenz="199-213-ArtWare-Alphanumerisch">
@@ -31314,6 +31572,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -31456,6 +31715,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -31692,6 +31952,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -31848,6 +32109,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -31944,6 +32206,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -32034,6 +32297,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -32175,6 +32439,7 @@
 			<feldreferenz referenz="014-030-VertragsNr-Alphanumerisch">
 				<name>Vertragsnummer</name>
 				<technischerName>VertragsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
