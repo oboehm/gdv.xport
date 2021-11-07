@@ -18,11 +18,14 @@
 package gdv.xport.util;
 
 import gdv.xport.feld.Feld;
+import gdv.xport.satz.Satz;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.constraint.AssertValidCheck;
 import net.sf.oval.context.ClassContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.List;
 
 /**
  * Die Klasse SimpleConstraintViolation vereinfacht den Umgang mit
@@ -48,9 +51,30 @@ public final class SimpleConstraintViolation extends ConstraintViolation {
         super(new AssertValidCheck(), message, validatedObject, invalidValue, new ClassContext(validatedObject.getClass()));
     }
 
+    public SimpleConstraintViolation(Satz satz, List<ConstraintViolation> violations) {
+        this(String.format("%s: %d Problem(e)", satz.toShortString(), violations.size()), satz, violations);
+    }
+
     @Override
     public String toString() {
         return getValidatedObject() + " -> " + getMessage();
+    }
+
+    public static String toString(List<ConstraintViolation> violations) {
+        StringBuilder buf = new StringBuilder();
+        for (ConstraintViolation cv : violations) {
+            if (cv.getInvalidValue() instanceof List) {
+                buf.append(cv.getValidatedObject()).append(":\n");
+                List<?> cvViolations = (List) cv.getInvalidValue();
+                for (int i = 0; i < cvViolations.size(); i++) {
+                    buf.append("\t- ").append(cvViolations.get(i));
+                }
+            } else {
+                buf.append(cv);
+            }
+            buf.append('\n');
+        }
+        return buf.toString();
     }
 
 }

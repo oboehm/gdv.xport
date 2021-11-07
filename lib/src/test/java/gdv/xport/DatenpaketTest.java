@@ -26,6 +26,7 @@ import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
+import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -238,7 +239,9 @@ public final class DatenpaketTest {
 
     private static void checkImport(final Datenpaket paket, final InputStream istream) throws IOException {
         paket.importFrom(istream);
-        assertTrue(paket.isValid());
+        List<ConstraintViolation> violations = paket.validate();
+        LOG.info("VIOLATIONS:\t{}", SimpleConstraintViolation.toString(violations));
+        assertTrue(violations.isEmpty());
     }
 
     /**

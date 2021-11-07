@@ -1444,7 +1444,10 @@ public abstract class Satz implements Cloneable {
 		}
 		if (this.teildatensatz != null) {
             for (Teildatensatz tds : teildatensatz) {
-                violations.addAll(tds.validate());
+				List<ConstraintViolation> tdsViolations = tds.validate();
+				if (!tdsViolations.isEmpty()) {
+					violations.add(new SimpleConstraintViolation(tds, tdsViolations));
+				}
             }
 		}
 		violations.addAll(validateUniqueEntries());
