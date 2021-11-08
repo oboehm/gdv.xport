@@ -652,15 +652,12 @@ public class Teildatensatz extends Satz {
         return true;
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Satz#validate()
-     */
     @Override
-    public List<ConstraintViolation> validate() {
+    public List<ConstraintViolation> validate(Config validationConfig) {
         Validator validator = new Validator();
         List<ConstraintViolation> violations = validator.validate(this);
         for (Feld feld : datenfelder.values()) {
-            violations.addAll(feld.validate());
+            violations.addAll(feld.validate(validationConfig));
         }
         return violations;
     }

@@ -456,8 +456,8 @@ public class NumFeld extends Feld {
         }
 
         @Override
-        protected String validateInhalt(String value) {
-            String nummer = super.validateInhalt(value);
+        protected String validateLax(String value) {
+            String nummer = super.validateLax(value);
             LOG.debug("{} wird als Zahl validiert.", nummer);
             if (StringUtils.isNotBlank(nummer)) {
                 try {
@@ -472,6 +472,15 @@ public class NumFeld extends Feld {
                 throw new ValidationException("Zahl darf nicht leer sein");
             }
             return nummer;
+        }
+
+        @Override
+        protected String validateStrict(String value) {
+            if (StringUtils.isBlank(value)) {
+                throw new ValidationException("Zahl darf nicht leer sein");
+            } else {
+                return validateLax(value);
+            }
         }
 
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2019 by Oli B.
+ * Copyright (c) 2009 - 2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -636,6 +636,10 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @return eine Liste mit Constraint-Verletzungen
      */
     public List<ConstraintViolation> validate() {
+        return validate(Config.LAX);
+    }
+
+    public List<ConstraintViolation> validate(Config validationConfig) {
         net.sf.oval.Validator ovalValidator = new net.sf.oval.Validator();
         List<ConstraintViolation> violations = ovalValidator.validate(this);
         if (this.getEndAdresse() > 256) {
@@ -644,7 +648,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
             violations.add(cv);
         }
         try {
-            this.validator.validateInhalt(getInhalt());
+            this.validator.validate(getInhalt(), validationConfig);
         } catch (ValidationException ex) {
             ConstraintViolation cv = new SimpleConstraintViolation(this, ex);
             violations.add(cv);
@@ -849,7 +853,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         private final Config config;
 
         public Validator() {
-            this(Config.EMPTY.withProperty("gdv.feld.validate", "true"));
+            this(Config.LAX);
         }
 
         public Validator(Config config) {
@@ -869,32 +873,31 @@ public class Feld implements Comparable<Feld>, Cloneable {
          */
         @Override
         public String validate(String value) {
-            if (!isValidationRequired()) {
-                return value;
-            }
-            return validateInhalt(value);
+            return validate(value, config);
         }
 
-        private boolean isValidationRequired() {
-            switch (config.getProperty("gdv.feld.validate", "false").toLowerCase()) {
+        public String validate(String value, Config validationConfig) {
+            String feldValidate = validationConfig.getString("gdv.feld.validate").toLowerCase();
+            switch (feldValidate) {
                 case "true":
                 case "on":
                 case "lax":
+                    return validateLax(value);
                 case "strict":
-                    return true;
+                    return validateStrict(value);
                 default:
-                    return false;
+                    return value;
             }
         }
 
         /**
-         * Dieser validate-Methode validiert immer, unabhaengig von der
-         * eingestellten Konfiguration.
+         * Dieser validate-Methode bietet eine Basis-Validierung fuer die
+         * Standard-Faelle.
          *
          * @param value Wert, der validiert werden soll
          * @return der Wert selber zur Weiterverarbeitung
          */
-        protected String validateInhalt(String value) {
+        protected String validateLax(String value) {
             LOG.debug("Inhalt von '{}' wird validiert.", value);
             if (value == null) {
                 throw new ValidationException("null-Werte sind nicht erlaubt");
@@ -903,6 +906,17 @@ public class Feld implements Comparable<Feld>, Cloneable {
                 throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen", value));
             }
             return value;
+        }
+
+        /**
+         * Dieser validate-Methode validiert strenger und kann von Unterklassen
+         * ueberschrieben werden.
+         *
+         * @param value Wert, der validiert werden soll
+         * @return der Wert selber zur Weiterverarbeitung
+         */
+        protected String validateStrict(String value) {
+            return validateLax(value);
         }
 
     }

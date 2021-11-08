@@ -743,15 +743,19 @@ public class Datenpaket {
      * @return Liste der ConstraintViolations
      */
     public List<ConstraintViolation> validate() {
+        return validate(config);
+    }
+
+    public List<ConstraintViolation> validate(Config validationConfig) {
         Validator validator = new Validator();
         List<ConstraintViolation> violations = validator.validate(this);
         violations.addAll(validateVUNummer());
-        violations.addAll(this.vorsatz.validate());
+        violations.addAll(this.vorsatz.validate(validationConfig));
         for (Satz datensatz : this.datensaetze) {
-            violations.addAll(datensatz.validate());
+            violations.addAll(datensatz.validate(validationConfig));
         }
         violations.addAll(this.validateFolgenummern());
-        violations.addAll(this.nachsatz.validate());
+        violations.addAll(this.nachsatz.validate(validationConfig));
         return violations;
     }
 

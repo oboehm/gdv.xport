@@ -1435,6 +1435,10 @@ public abstract class Satz implements Cloneable {
 	 * @return Liste mit Constraint-Verletzungen
 	 */
 	public List<ConstraintViolation> validate() {
+		return validate(Config.LAX);
+	}
+
+	public List<ConstraintViolation> validate(Config validationConfig) {
 		Validator validator = new Validator();
 		List<ConstraintViolation> violations = validator.validate(this);
 		if (!this.satzart.isValid() || (this.getSatzart() < 1)) {
@@ -1443,16 +1447,18 @@ public abstract class Satz implements Cloneable {
 			violations.add(cv);
 		}
 		if (this.teildatensatz != null) {
-            for (Teildatensatz tds : teildatensatz) {
-				List<ConstraintViolation> tdsViolations = tds.validate();
+			for (Teildatensatz tds : teildatensatz) {
+				List<ConstraintViolation> tdsViolations = tds.validate(validationConfig);
 				if (!tdsViolations.isEmpty()) {
 					violations.add(new SimpleConstraintViolation(tds, tdsViolations));
 				}
-            }
+			}
 		}
 		violations.addAll(validateUniqueEntries());
 		return violations;
 	}
+
+
 
 	private List<ConstraintViolation> validateUniqueEntries() {
 		List<ConstraintViolation> violations = new ArrayList<>();

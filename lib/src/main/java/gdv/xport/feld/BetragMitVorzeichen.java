@@ -325,14 +325,14 @@ public final class BetragMitVorzeichen extends Betrag {
         }
 
         @Override
-        protected String validateInhalt(String nummer) {
+        protected String validateLax(String nummer) {
             LOG.debug("{} wird als Betrag mit Vorzeichen validiert.", nummer);
             if (StringUtils.isNotBlank(nummer)) {
                 char vorzeichen = nummer.charAt(nummer.length() - 1);
                 if ((vorzeichen != '+') && (vorzeichen != '-')) {
                     throw new ValidationException(String.format("'%s' hat falsches Vorzeichen ('%c')", nummer, vorzeichen));
                 }
-                super.validateInhalt(nummer.substring(0, nummer.length()-1));
+                super.validateLax(nummer.substring(0, nummer.length()-1));
             }
             return nummer;
         }

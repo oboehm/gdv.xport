@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2012 by Oli B.
+ * Copyright (c) 2009 - 2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,6 +71,8 @@ public final class Config {
     public static final Config EXPERIMENTAL = new Config("/gdv/xport/config/experimental.properties");
     /** Eine leere Konfiguration zum Ueberschreiben. */
     public static final Config EMPTY = new Config(new Properties());
+    /** Die Konfiguration fuer die Default-Validierung. */
+    public static final Config LAX = EMPTY.withProperty("gdv.feld.validate", "lax");
 
     private final Properties properties;
 
@@ -163,7 +165,7 @@ public final class Config {
      * @since 5.3
      */
     public String getString(String key) {
-        return this.properties.getProperty(key);
+        return this.properties.getProperty(key, "");
     }
 
     /**
@@ -229,7 +231,7 @@ public final class Config {
      * Hiermit kann die voreingestellte VU-Nummer abgefragt werden.
      *
      * @return VU-Nummer
-     * @sincd 5.3
+     * @since 5.3
      */
     public VUNummer getVUNr() {
         return new VUNummer(getString(GDV_VU_NUMMER));

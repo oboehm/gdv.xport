@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2012 by Oli B.
+ * Copyright (c) 2009 - 2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -215,9 +215,20 @@ public final class DatenpaketTest {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @Test
-    public void testImportFromReader() throws IOException {
+    public void testImportMusterdatei() throws IOException {
         try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
             checkImport(datenpaket, istream);
+        }
+    }
+
+    @Test
+    public void testImportMusterdateiStrict() throws IOException {
+        Datenpaket paket = new Datenpaket(Config.getInstance().withProperty("gdv.feld.validate", "strict"));
+        try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
+            paket.importFrom(istream);
+            List<ConstraintViolation> violations = paket.validate();
+            LOG.info("VIOLATIONS:\t{}", SimpleConstraintViolation.toString(violations));
+            assertFalse(violations.isEmpty());
         }
     }
 
