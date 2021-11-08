@@ -50,7 +50,6 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger();
     private static final File XML_DIR = new File("target", "xml");
-    private static final Config COMPACT = Config.EMPTY.withProperty("gdv.export.xml.compact", "true");
 
     @Override
     protected AbstractFormatter createFormatter() {
@@ -218,16 +217,42 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
 
     private void formatDatenpaket(Datenpaket datenpaket, String stand, String filename) throws IOException, XMLStreamException {
         File target = new File(XML_DIR, filename);
-        try (FileOutputStream ostream = new FileOutputStream(target);
-             GdvXmlFormatter formatter = new GdvXmlFormatter(ostream, COMPACT.withProperty("gdv.export.xml.stand", stand))) {
-            formatter.write(datenpaket);
-        }
+        formatDatenpaket(datenpaket, stand, target);
         XmlService xmlService = XmlService.getInstance(target.toURI());
         checkSatz(datenpaket.getVorsatz(), xmlService.getSatzart(SatzTyp.of(1)));
         checkSatz(datenpaket.getNachsatz(), xmlService.getSatzart(SatzTyp.of(9999)));
         for (Satz satz : datenpaket.getAllSaetze()) {
             LOG.debug("{} wird geprueft.", satz);
             checkSatz(satz, xmlService.getSatzart(satz.getSatzTyp()));
+        }
+        writeResettedDatenpnaket(datenpaket, stand, filename);
+    }
+
+    // fuer eine potentielle neue Volage wird hier ein Datenpaket ohne Werte herausgeschrieben
+    private void writeResettedDatenpnaket(Datenpaket datenpaket, String stand, String filename) throws IOException {
+        String[] namen = {"Satzart0", "Satzart9", "Wagnisart", "Art", "Vorzeichen", "ZusaetzlicheSatzkennung", "Folge",
+                          "AnzSaetze"};
+        for (Satz satz : datenpaket.getAllSaetze()) {
+            for (Teildatensatz tds: satz.getTeildatensaetze()) {
+                for (Feld feld : tds.getFelder()) {
+                    String technischerName = feld.getBezeichner().getTechnischerName();
+                    for (String s : namen) {
+                        if (technischerName.startsWith(s)) {
+                            feld.resetInhalt();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        formatDatenpaket(datenpaket, stand, new File(XML_DIR, "r" + filename));
+    }
+
+    private void formatDatenpaket(Datenpaket datenpaket, String stand, File target) throws IOException {
+        try (FileOutputStream ostream = new FileOutputStream(target);
+             GdvXmlFormatter formatter = new GdvXmlFormatter(ostream, Config.EMPTY.withProperty("gdv.export.xml.stand",
+                     stand))) {
+            formatter.write(datenpaket);
         }
     }
 

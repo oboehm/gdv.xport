@@ -161,6 +161,9 @@ public final class FeldXml extends Feld {
             case FLIESSKOMMA:
                 f = new NumFeld(merged, this.getAnzahlBytes(), byteAddress)
                         .mitNachkommastellen(this.nachkommastellen);
+//                if (bemerkung.contains("MMJJJJ")) {
+//                    f = new Datum(merged, this.getAnzahlBytes(), byteAddress);
+//                }
                 break;
             case ALPHANUMERISCH:
                 if (Text.replaceUmlaute(bemerkung).toLowerCase().contains("rechtsbuendig")) {

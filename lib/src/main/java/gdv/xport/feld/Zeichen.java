@@ -68,16 +68,6 @@ public class Zeichen extends AlphaNumFeld {
     }
 
     /**
-     * Copy-Constructor.
-     *
-     * @param feld Zeichen-Feld, das kopiert wird
-     * @since 5.0
-     */
-    public Zeichen(final Feld feld) {
-        super(feld);
-    }
-
-    /**
      * Legt ein neues Zeichen-Feld an. Die Informationen dazu werden
      * aus der uebergebenen Enum bezogen.
      * <p>
@@ -128,7 +118,7 @@ public class Zeichen extends AlphaNumFeld {
      *
      * @param other das originale Zeichen
      */
-    public Zeichen(final Zeichen other) {
+    public Zeichen(final Feld other) {
         super(other);
     }
 

@@ -249,27 +249,14 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         writeElement("name", bezeichner.getName());
         writeElement("technischerName", bezeichner.getTechnischerName());
         if (feld.hasValue()) {
-            writeAuspraegung(feld);
+            writeElement("auspraegung", feld.getInhalt().trim());
         }
         if (feld instanceof AlphaNumFeld) {
             writeAlignment((AlphaNumFeld) feld);
+//        } else if (feld instanceof Datum) {
+//            writeElement("bemerkung", "MMJJJJ");
         }
         xmlStreamWriter.writeEndElement();
-    }
-
-    private void writeAuspraegung(Feld feld) throws XMLStreamException {
-        if (getConfig().getBool("gdv.export.xml.compact") && hasDefaultValue(feld)) {
-            return;
-        }
-        writeElement("auspraegung", feld.getInhalt().trim());
-    }
-
-    private static boolean hasDefaultValue(Feld feld) {
-        String technischerName = feld.getBezeichner().getTechnischerName().toLowerCase();
-        if (feld.getAnzahlBytes() == 1) {
-            return "+".equals(feld.getInhalt()) && technischerName.startsWith("vorzeichen");
-        }
-        return false;
     }
 
     private void writeAlignment(AlphaNumFeld feld) throws XMLStreamException {
