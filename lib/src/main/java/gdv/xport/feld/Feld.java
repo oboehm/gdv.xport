@@ -869,10 +869,22 @@ public class Feld implements Comparable<Feld>, Cloneable {
          */
         @Override
         public String validate(String value) {
-            if (!config.getBool("gdv.feld.validate")) {
+            if (!isValidationRequired()) {
                 return value;
             }
             return validateInhalt(value);
+        }
+
+        private boolean isValidationRequired() {
+            switch (config.getProperty("gdv.feld.validate", "false").toLowerCase()) {
+                case "true":
+                case "on":
+                case "lax":
+                case "strict":
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         /**

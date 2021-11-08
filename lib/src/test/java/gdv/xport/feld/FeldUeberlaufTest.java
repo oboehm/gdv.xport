@@ -3,8 +3,7 @@ package gdv.xport.feld;
 import gdv.xport.config.Config;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
@@ -19,6 +18,7 @@ public class FeldUeberlaufTest {
 
   private static final Config TRUNCATE = Config.getInstance().withProperty("gdv.feld.truncate", "true")
                                                .withProperty("gdv.feld.validate", "true");
+  private static final Config STRICT = TRUNCATE.withProperty("gdv.feld.validate", "strict");
 
   /**
    * Test method for {@link Feld#setInhalt(String)} bei Align.RIGHT .
@@ -131,11 +131,17 @@ public class FeldUeberlaufTest {
     betrag.setInhalt("123");
     assertEquals("0000000123", betrag.getInhalt());
 
+    betrag.setInhalt("");
+    assertEquals("0000000000", betrag.getInhalt());
+
     betrag.setInhalt(123456);
     assertEquals("0012345600", betrag.getInhalt());
 
     betrag.setInhalt(1234567890L);
     assertEquals("1234567890", betrag.getInhalt());
+
+    betrag.setInhalt(12345678900L);
+    assertEquals("9999999999", betrag.getInhalt());
 
     /**
      * @Oli: ein Betrag-Feld darf nicht negativ sein!
@@ -162,8 +168,6 @@ public class FeldUeberlaufTest {
     assertTrue(exception2.getMessage()
         .contains("1A3"));
 
-    // ist erlaubt - ansonsten waere der Musterdatensatz ungueltig!
-    betrag.setInhalt("");
   }
 
   /**
@@ -172,7 +176,7 @@ public class FeldUeberlaufTest {
   @Test
   public void testBetragMitVorzeichen()
   {
-    BetragMitVorzeichen betragMVz = new BetragMitVorzeichen(new Bezeichner("betragTEstVZ"), 10, 2).mitConfig(TRUNCATE);
+    BetragMitVorzeichen betragMVz = new BetragMitVorzeichen(new Bezeichner("betragTEstVZ"), 10, 2).mitConfig(STRICT);
 
     betragMVz.setInhalt("123");
     assertEquals("000000123+", betragMVz.getInhalt());
@@ -206,7 +210,11 @@ public class FeldUeberlaufTest {
     assertTrue(exception1.getMessage()
         .contains("1A3"));
 
-    // ist erlaubt - ansonsten waere der Musterdatensatz ungueltig!
+    Exception exception2 = assertThrows(IllegalArgumentException.class, () ->
+    {
     betragMVz.setInhalt("");
+    });
+
+    assertFalse(exception2.getMessage().isEmpty());
   }
 }

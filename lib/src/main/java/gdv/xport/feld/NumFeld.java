@@ -468,6 +468,8 @@ public class NumFeld extends Feld {
                 } catch (NumberFormatException nfe) {
                     throw new ValidationException(String.format("'%s' ist keine Zahl", nummer), nfe);
                 }
+            } else if ("strict".equals(getConfig().getString("gdv.feld.validate"))) {
+                throw new ValidationException("Zahl darf nicht leer sein");
             }
             return nummer;
         }
