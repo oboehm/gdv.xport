@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service>
+	<satzarten>
+		<!-- Satzart 0820 -->
+		<satzart>
+			<kennzeichnung>
+				<feldreferenz referenz="Satzart">
+					<name>Satzart</name>
+					<technischerName>Satzart</technischerName>
+					<auspraegung>0820</auspraegung>
+				</feldreferenz>
+			</kennzeichnung>
+			<version>1.0</version>
+			<!-- Teildatensatz 1 Satzart 0820 -->
+			<satzanfang teilsatz="1"/>
+			<!-- NumFeld Satzart(1-4): "0820" -->
+			<feldreferenz referenz="Satzart">
+				<name>Satzart</name>
+				<technischerName>Satzart</technischerName>
+				<auspraegung>0820</auspraegung>
+			</feldreferenz>
+			<!-- VUNummer (5-9) -->
+			<feldreferenz referenz="VuNr">
+				<name>VU-Nummer</name>
+				<technischerName>VuNr</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Buendelungskennzeichen(10-10) -->
+			<feldreferenz referenz="Buendelungskennzeichen">
+				<name>Bündelungskennzeichen</name>
+				<technischerName>Buendelungskennzeichen</technischerName>
+			</feldreferenz>
+			<!-- NumFeld Sparte(11-13) -->
+			<feldreferenz referenz="Sparte">
+				<name>Sparte</name>
+				<technischerName>Sparte</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld VsNr(14-30) -->
+			<feldreferenz referenz="VsNr">
+				<name>Versicherungsschein-Nummer</name>
+				<technischerName>VsNr</technischerName>
+			</feldreferenz>
+			<!-- NumFeld FolgeNr(31-32) -->
+			<feldreferenz referenz="FolgeNr">
+				<name>Folgenummer</name>
+				<technischerName>FolgeNr</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld GeschaeftsstelleVermittler(33-42) -->
+			<feldreferenz referenz="GeschaeftsstelleVermittler">
+				<name>Geschaeftsstelle/Vermittler</name>
+				<technischerName>GeschaeftsstelleVermittler</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Bemerkung(43-72) -->
+			<feldreferenz referenz="Bemerkung">
+				<name>Bemerkung</name>
+				<technischerName>Bemerkung</technischerName>
+			</feldreferenz>
+			<!-- AlphaNumFeld Leerstellen(73-255) -->
+			<feldreferenz referenz="Leerstellen">
+				<name>Leerstellen</name>
+				<technischerName>Leerstellen</technischerName>
+			</feldreferenz>
+			<!-- Zeichen Satznummer(256-256): "1" -->
+			<feldreferenz referenz="Satznummer">
+				<name>Satznummer</name>
+				<technischerName>Satznummer</technischerName>
+				<auspraegung>1</auspraegung>
+			</feldreferenz>
+			<satzende/>
+		</satzart>
+	</satzarten>
+	<felder>
+		<feld referenz="Satzart">
+			<name>Satzart</name>
+			<bytes>4</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="VuNr">
+			<name>VU-Nummer</name>
+			<bytes>5</bytes>
+			<datentyp>Vunummer</datentyp>
+		</feld>
+		<feld referenz="Buendelungskennzeichen">
+			<name>Bündelungskennzeichen</name>
+			<bytes>1</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="Sparte">
+			<name>Sparte</name>
+			<bytes>3</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="VsNr">
+			<name>Versicherungsschein-Nummer</name>
+			<bytes>17</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="FolgeNr">
+			<name>Folgenummer</name>
+			<bytes>2</bytes>
+			<datentyp>Numerisch</datentyp>
+		</feld>
+		<feld referenz="GeschaeftsstelleVermittler">
+			<name>Geschaeftsstelle/Vermittler</name>
+			<bytes>10</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="Bemerkung">
+			<name>Bemerkung</name>
+			<bytes>30</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="Leerstellen">
+			<name>Leerstellen</name>
+			<bytes>183</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+		<feld referenz="Satznummer">
+			<name>Satznummer</name>
+			<bytes>1</bytes>
+			<datentyp>Alphanumerisch</datentyp>
+		</feld>
+	</felder>
+</service>
