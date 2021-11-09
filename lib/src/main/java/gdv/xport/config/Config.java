@@ -39,9 +39,11 @@ import java.util.Properties;
  * <p>
  * Ueber die Option "-Dgdv.config=..." koennen eigene Property-Dateien fuer
  * die Vorbelegung angegeben werden. So kann mit
+ * </p>
  * <pre>
  *     -Dgdv.config=/gdv/xport/config/experimental.properties
  * </pre>
+ * <p>
  * das Verhalten fuer v6 eingestellt werden, in der sich z.B. das Verhalten von
  * Setzen von Feldern mit zu grossen Werten aendern wird. Einzelne Properties
  * koennen aber auch durch SystemProperties (z.B. "-Dgdv.feld.truncate=true")

@@ -15,7 +15,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - ByteAdresse durchgängiger verwenden
 
 
-## [Unreleased]
+## [5.3.0] - 2021-11-11
 
 ### Added
 
@@ -25,13 +25,13 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Changed
 
-- _fixed_: Registrierte Datensätze werden in SatzRegistry richtig geklont
-  ([Issue #66](https://github.com/oboehm/gdv.xport/issues/66))
+- Validierung verbessert und ausgebaut
 - rechtsbündige Ausrichtung bei AlphaNumFeld wird jetzt aus Bemerkungs-Tag abgeleitet
 - statische Methoden in Config durch Properties ersetzt
-- Validierung verbessert und ausgebaut
 - Datenpaket kann jetzt als Listener beim DatenpaketStreamer registriert werden
 - Stand Test-Dateien teilweise aktualisiert
+- _fixed_: Registrierte Datensätze werden in SatzRegistry richtig geklont
+  ([Issue #66](https://github.com/oboehm/gdv.xport/issues/66))
 
 
 ## [5.2.0] - 2021-10-10

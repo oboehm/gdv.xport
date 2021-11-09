@@ -92,14 +92,15 @@ public final class GdvXmlFormatter extends AbstractFormatter {
     }
 
     /**
-   * Der Konstruktor fuer einen {@link OutputStream}.
-   *
-   * @param ostream z.B. System.out
-   * @param stand Datum, ab dem erzeugte XML-Beschreibung gilt (Format TT.MM.JJJJ) z.B.
-   *          "01.07.2018". <br>
-   *          Dieser Wert erscheint in Analogie zur GDV-XML-Beschreibung am Beginn der
-   *          XML-Beschreibung in einem Tag: &ltinfo&gt&ltstand&gt...&lt/stand&gt&lt/info&gt
-   */
+     * Der Konstruktor fuer einen {@link OutputStream}.
+     *
+     * @param ostream z.B. System.out
+     * @param stand Datum, ab dem erzeugte XML-Beschreibung gilt (Format TT.MM.JJJJ) z.B.
+     *          "01.07.2018". <br>
+     *          Dieser Wert erscheint in Analogie zur GDV-XML-Beschreibung am Beginn der
+     *          XML-Beschreibung in einem Tag:
+     *          &lt;info&gt;&lt;stand&gt;...&lt;/stand&gt;&lt;/info&gt;
+     */
   public GdvXmlFormatter(final OutputStream ostream, final String stand) {
       this(ostream, Config.getInstance().withProperty("gdv.export.xml.stand", stand));
     }
@@ -125,7 +126,7 @@ public final class GdvXmlFormatter extends AbstractFormatter {
      *               XML-Beschreibung mitgeben.
      *               Dieser Wert erscheint in Analogie zur GDV-XML-Beschreibung
      *               am Beginn der XML-Beschreibung in einem Tag:
-     *               &ltinfo&gt&ltstand&gt...&lt/stand&gt&lt/info&gt
+     *               &lt;info&gt;&lt;stand&gt;...&lt;/stand&gt;&lt;/info&gt;
      * @since 5.3
      */
     public GdvXmlFormatter(final OutputStream ostream, final Config config) {
