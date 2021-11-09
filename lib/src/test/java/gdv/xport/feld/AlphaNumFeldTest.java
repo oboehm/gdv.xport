@@ -18,6 +18,7 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.config.Config;
 import gdv.xport.satz.feld.Feld100;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
@@ -37,7 +38,6 @@ import static org.junit.Assert.*;
 public final class AlphaNumFeldTest extends AbstractFeldTest {
 
     private static final Logger LOG = LogManager.getLogger(AlphaNumFeldTest.class);
-    private enum Alphabet { ALPHA, BETA, GAMMA, DYNAMIK; }
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
@@ -83,6 +83,16 @@ public final class AlphaNumFeldTest extends AbstractFeldTest {
         assertEquals(1, violations.size());
         assertFalse("not a valid Feld: " + feld, feld.isValid());
         LOG.info("Violoations = {}", violations);
+    }
+
+    @Test
+    public void testValidateAlignStrict() {
+        AlphaNumFeld name = new AlphaNumFeld(Bezeichner.NAME1, 8, 1, Align.LEFT)
+                .mitConfig(Config.EMPTY.withProperty("gdv.feld.validate", "strict"));
+        name.setInhalt("Hugo");
+        assertEquals("Hugo    ", name.getInhalt());
+        name.setInhalt("  Boss  ");
+        assertEquals("Boss    ", name.getInhalt());
     }
 
 }

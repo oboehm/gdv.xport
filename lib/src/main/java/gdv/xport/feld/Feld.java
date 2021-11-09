@@ -266,6 +266,9 @@ public class Feld implements Comparable<Feld>, Cloneable {
 
     /**
      * Instantiates a new feld.
+     * <p>
+     * TODO: wird mit v7 entfernt
+     * </p>
      *
      * @param length
      *            the length
@@ -273,7 +276,9 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            the start
      * @param alignment
      *            the alignment
+     * @deprecated Felder ohne Bezeichner werden ab v7 nicht mehr unterstuetzt
      */
+    @Deprecated
     public Feld(final int length, final int start, final Align alignment) {
         this.inhalt = getEmptyStringBuilder(length);
         this.byteAdresse = start;

@@ -34,6 +34,8 @@ import java.util.List;
  */
 public class AlphaNumFeld extends Feld {
 
+    private static final Validator DEFAULT_VALIDATOR = new Validator(Config.getInstance());
+
     /**
      * Legt ein neues alphanumerisches Feld an. Die Informationen dazu werden
      * aus der uebergebenen Enum bezogen.
@@ -52,12 +54,18 @@ public class AlphaNumFeld extends Feld {
 
     /**
      * Legt ein neues alphanumerisches Feld an.
+     * <p>
+     * TODO: wird mit v7 entfernt
+     * </p>
      *
      * @param name Bezeichner
      * @param s Inhalt
+     * @deprecated wird in v7 nicht mehr unterstuetzt
      */
+    @Deprecated
     public AlphaNumFeld(final String name, final String s) {
-        super(name, s, Align.LEFT);
+        this(new Bezeichner(name), s.length(), 1);
+        this.setInhalt(s);
     }
 
     /**
@@ -69,7 +77,7 @@ public class AlphaNumFeld extends Feld {
      * @since 1.0
      */
     public AlphaNumFeld(final Bezeichner bezeichner, final int length, final int start) {
-        super(bezeichner, length, start, Align.LEFT);
+        this(bezeichner, length, start, Align.LEFT);
     }
 
     /**
@@ -82,24 +90,42 @@ public class AlphaNumFeld extends Feld {
      * @since 1.0
      */
     public AlphaNumFeld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
-        super(bezeichner, length, start, alignment);
+        this(bezeichner, length, start, alignment, DEFAULT_VALIDATOR);
+    }
+
+    protected AlphaNumFeld(Bezeichner bezeichner, int length, int start, Align alignment, Feld.Validator validator) {
+        super(bezeichner, length, start, alignment, validator);
     }
 
     /**
+     * Legt ein neues alpha-numerisches Feld an.
+     * <p>
+     * TODO: wird mit v7 entfernt
+     * </p>
+     *
      * @param length Laenge in Bytes
      * @param start Start-Byte (beginnend bei 1)
+     * @deprecated Felder ohne Bezeichner werden ab v7 nicht mehr unterstuetzt
      */
+    @Deprecated
     public AlphaNumFeld(final int length, final int start) {
-        super(length, start, Align.LEFT);
+        this(length, start, Align.LEFT);
     }
 
     /**
+     * Legt ein neues alpha-numerisches Feld an.
+     * <p>
+     * TODO: wird mit v7 entfernt
+     * </p>
+     *
      * @param length Laenge in Bytes
      * @param start Start-Byte (beginnend bei 1)
      * @param alignment Ausrichtung
+     * @deprecated Felder ohne Bezeichner werden ab v7 nicht mehr unterstuetzt
      */
+    @Deprecated
     public AlphaNumFeld(final int length, final int start, final Align alignment) {
-        super(length, start, alignment);
+        this(Bezeichner.of("NN"), length, start, alignment);
     }
 
     /**
@@ -136,11 +162,11 @@ public class AlphaNumFeld extends Feld {
      * @param other das originale Feld
      */
     public AlphaNumFeld(final Feld other) {
-        super(other);
+        super(other, DEFAULT_VALIDATOR);
     }
 
     protected AlphaNumFeld(AlphaNumFeld other, Config c) {
-        super(other, new Feld.Validator(c));
+        super(other, new Validator(c));
     }
 
     /**
@@ -184,6 +210,34 @@ public class AlphaNumFeld extends Feld {
             }
         }
         return violations;
+    }
+
+
+
+    /**
+     * Die Validierung von Werten wurde jetzt in einer eingenen Validator-
+     * Klasse zusammengefasst. Damit kann die Validierung auch unabhaengig
+     * von AlphaNumFeld-Klasse im Vorfeld eingesetzt werden, um Werte auf ihre
+     * Gueltigkeit pruefen zu koennen.
+     *
+     * @since 5.3
+     */
+    public static class Validator extends Feld.Validator {
+
+        public Validator() {
+            super();
+        }
+
+        public Validator(Config config) {
+            super(config);
+        }
+
+        @Override
+        protected String validateStrict(String value) {
+            String trimmed = validateLax(value).trim();
+            return trimmed;
+        }
+
     }
 
 }
