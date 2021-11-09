@@ -22,12 +22,18 @@ import gdv.xport.Datenpaket;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.*;
+import gdv.xport.satz.xml.SatzXml;
 import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import javax.validation.ValidationException;
+import javax.xml.stream.XMLStreamException;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.either;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 /**
@@ -180,4 +186,43 @@ public final class SatzRegistryTest {
         assertEquals("different versions", expected, satz);
     }
 
+    @Test
+    public void testRegisterSatz0820() throws IOException {
+        try {
+            SatzRegistry.getInstance().register(SatzXml.of("/gdv/xport/satz/xml/Satz0820.xml"), SatzTyp.of("0820"));
+        } catch (XMLStreamException e) {
+            fail("Fehler bei der Registrierung.");
+        }
+        Datenpaket datenpaket = new Datenpaket();
+        File testfile = new File("src/test/resources", "test0820satzregistry.txt");
+        datenpaket.importFrom(testfile, Charset.forName("UTF8"));
+        assertTrue("Datenpaket muss gueltig sein", datenpaket.isValid());
+        assertEquals("Es wergen genau 6 Datensätze erwartet.", 6, datenpaket.getDatensaetze().size());
+
+        Datensatz datensatz3 = datenpaket.getDatensaetze().get(2);
+        Datensatz datensatz6 = datenpaket.getDatensaetze().get(5);
+
+        assertTrue("Die 0820er-Datensätze dürfen nicht ein und dasselbe Objekt sein.",
+                datensatz3 != datensatz6);
+
+        // prüfe Datensatz 3: 0820, VsNr=59999999999, Bemerkung=Hier die Bemerkung D1
+        assertEquals("SatzTyp stimmt nicht", SatzTyp.of("0820"), datensatz3.getSatzTyp());
+        assertEquals("VsNr stimmt nicht", "59999999999", datensatz3.getVersicherungsscheinNummer());
+        assertEquals("Bemerkung stimmt nicht", "Hier die Bemerkung D1", datensatz3.getFeld("Bemerkung").getInhalt().trim());
+
+        // prüfe Datensatz 6: 0820, VsNr=59999999998, Bemerkung=Hier die Bemerkung D2
+        assertEquals("SatzTyp stimmt nicht", SatzTyp.of("0820"), datensatz6.getSatzTyp());
+        assertEquals("VsNr stimmt nicht", "59999999998", datensatz6.getVersicherungsscheinNummer());
+        assertEquals("Bemerkung stimmt nicht", "Hier die Bemerkung D2", datensatz6.getFeld("Bemerkung").getInhalt().trim());
+
+        // pack Methode muss funktionieren
+        try {
+            datenpaket.pack();
+        } catch (NotRegisteredException e) {
+            fail("Pack-Methode hat nicht funktioniert, da der Satz nicht als registriert erkannt wurde.");
+        }
+
+        // deregistrieren
+        SatzRegistry.getInstance().unregister(SatzTyp.of("0820"));
+    }
 }
