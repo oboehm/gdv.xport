@@ -454,7 +454,12 @@ public class SatzRegistry implements VersionHandler {
     public Datensatz getDatensatz(final SatzTyp satzNr) {
         Satz satz = registeredSaetze.get(satzNr);
         if (satz instanceof Datensatz) {
-            return (Datensatz) satz;
+            try {
+                return (Datensatz) satz.clone();
+            } catch (CloneNotSupportedException ex) {
+                throw new IllegalArgumentException(satzNr + " laesst sich nicht clonen", ex);
+            }
+
         }
         return generateDatensatz(satzNr);
     }

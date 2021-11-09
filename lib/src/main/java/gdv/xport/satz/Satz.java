@@ -24,7 +24,7 @@ import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.model.SatzX;
-import gdv.xport.satz.xml.XmlService;
+import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
@@ -1389,7 +1389,7 @@ public abstract class Satz implements Cloneable {
 	 * @since 5.2
 	 */
 	public boolean isComplete() {
-		Satz reference = XmlService.getInstance().getSatzart(getSatzTyp());
+		Satz reference = SatzRegistry.getInstance().getSatz(getSatzTyp());
 		return getNumberOfTeildatensaetze() == reference.getNumberOfTeildatensaetze();
 	}
 
