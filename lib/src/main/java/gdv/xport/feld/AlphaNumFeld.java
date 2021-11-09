@@ -239,7 +239,7 @@ public class AlphaNumFeld extends Feld {
         protected String validateStrict(String value) {
             String trimmed = validateLax(value).trim();
             if ((trimmed.length() < value.length()) && (trimmed.length() > 0)) {
-                LOG.warn("Wert '{}' wurde auf '{}' fuer die weitere Verabeitung verkuerzt.", value, trimmed);
+                LOG.debug("Wert '{}' wurde auf '{}' fuer die weitere Verabeitung verkuerzt.", value, trimmed);
             }
             return trimmed;
         }

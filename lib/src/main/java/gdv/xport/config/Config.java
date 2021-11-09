@@ -73,6 +73,8 @@ public final class Config {
     public static final Config EMPTY = new Config(new Properties());
     /** Die Konfiguration fuer die Default-Validierung. */
     public static final Config LAX = EMPTY.withProperty("gdv.feld.validate", "lax");
+    /** Die Konfiguration fuer die strikte Validierung. */
+    public static final Config STRICT = EMPTY.withProperty("gdv.feld.validate", "strict");
 
     private final Properties properties;
 

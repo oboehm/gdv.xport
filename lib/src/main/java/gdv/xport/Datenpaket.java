@@ -14,6 +14,7 @@ package gdv.xport;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.config.Config;
+import gdv.xport.event.ImportListener;
 import gdv.xport.feld.*;
 import gdv.xport.io.*;
 import gdv.xport.satz.Datensatz;
@@ -44,7 +45,7 @@ import java.util.*;
  * @author oliver
  * @since 23.10.2009
  */
-public class Datenpaket {
+public class Datenpaket implements ImportListener {
 
     private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
     private Vorsatz vorsatz = new Vorsatz();
@@ -265,7 +266,7 @@ public class Datenpaket {
      * @throws IOException falls was schiefgelaufen ist (z.B. Platte voll)
      */
     public void export(final File file) throws IOException {
-        export(file, Charset.defaultCharset());
+        export(file, Config.DEFAULT_ENCODING);
     }
 
     /**
@@ -857,6 +858,30 @@ public class Datenpaket {
     @Override
     public int hashCode() {
         return datensaetze.size();
+    }
+
+    /**
+     * Damit kann das Datenpaket selbst als Listener beim
+     * {@link DatenpaketStreamer} registriert werden.
+     *
+     * @param satz der importierte Satz
+     * @since 5.3
+     */
+    @Override
+    public void notice(Satz satz) {
+        try {
+            if (satz.getSatzart() == 1) {
+                LOG.info("Vorsatz {} wurde erkannt - {} wird zurueckgesetzt.", satz,this);
+                this.datensaetze.clear();
+                this.vorsatz.importFrom(satz.toLongString());
+            } else if (satz.getSatzart() == 9999) {
+                this.nachsatz.importFrom(satz.toLongString());
+            } else {
+                add((Datensatz) satz);
+            }
+        } catch (IOException ex) {
+            throw new IllegalStateException("Import-Fehler in " + satz, ex);
+        }
     }
 
 }

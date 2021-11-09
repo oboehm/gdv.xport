@@ -414,7 +414,7 @@ public final class DatenpaketTest {
 
     /**
      * Hier wird die Import-Datei getestet, die mir Igor geschickt hat und
-     * mit dem es anfangs Probleme gab.
+     * mit der es anfangs Probleme gab.
      *
      * @throws IOException bei I/O-Problemen
      */
@@ -501,7 +501,7 @@ public final class DatenpaketTest {
   private static void assertLines(final String expected, final String paket) throws IOException
   {
     try (BufferedReader expectedReader = new BufferedReader(new StringReader(expected));
-        BufferedReader paketReader = new BufferedReader(new StringReader(paket));)
+        BufferedReader paketReader = new BufferedReader(new StringReader(paket)))
     {
       for (int line = 1;; line++)
       {

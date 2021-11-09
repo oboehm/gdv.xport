@@ -12,21 +12,21 @@
 
 package gdv.xport;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import gdv.xport.config.Config;
 import gdv.xport.event.ImportStatistic;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import patterntesting.runtime.annotation.IntegrationTest;
+import patterntesting.runtime.junit.SmokeRunner;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.junit.SmokeRunner;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit-Tests fuer {@link DatenpaketStreamer}.
@@ -93,9 +93,22 @@ public final class DatenpaketStreamerTest {
         }
         
         LOG.info("Statistik: " + statistic);
-        assertThat("drei_datenpakete.txt hat drei Datenpakete, also drei Vorsaetze", statistic.getImportedVorsaetze(), is(3));
-        assertThat("drei_datenpakete.txt hat drei Datenpakete, zu je 5 Saetzen", statistic.getImportedSaetze(), is(15));
-        assertThat("drei_datenpakete.txt hat drei Datenpakete, also drei Nachsaetze", statistic.getImportedNachsaetze(), is(3));
+        MatcherAssert.assertThat("drei_datenpakete.txt hat drei Datenpakete, also drei Vorsaetze", statistic.getImportedVorsaetze(), is(3));
+        MatcherAssert.assertThat("drei_datenpakete.txt hat drei Datenpakete, zu je 5 Saetzen", statistic.getImportedSaetze(), is(15));
+        MatcherAssert.assertThat("drei_datenpakete.txt hat drei Datenpakete, also drei Nachsaetze", statistic.getImportedNachsaetze(), is(3));
+    }
+
+    @Test
+    public void testImportKlausTest() throws IOException {
+        try (InputStream istream = this.getClass().getResourceAsStream("/datenpakete/Klaus_Test_1112345670000301.gdv")) {
+            DatenpaketStreamer streamer = new DatenpaketStreamer(istream);
+            Datenpaket datenpaket = new Datenpaket();
+            streamer.register(datenpaket);
+            while (streamer.canReadDatenpaket()) {
+                streamer.readDatenpaket();
+                datenpaket.validate(Config.STRICT);
+            }
+        }
     }
 
 }
