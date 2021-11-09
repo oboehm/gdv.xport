@@ -19,8 +19,19 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Added
 
-- Ueber Config#setTruncate(..) bzw. ueber die SystemProperty "gdv.truncate" kann das Verhalten beim Setzen von Feldern konfiguriert werden
+- über Properties kann das Standard-Verhalten beim Setzen von Feldern oder Valdierung konfiguriert werden
+  (s. [default.properties](lib/src/main/resources/gdv/xport/config/default.properties))
 - Satz#setVermittler(..) und Satz#getVermittler() hinzugefügt
+
+### Changed
+
+- _fixed_: Registrierte Datensätze werden in SatzRegistry richtig geklont
+  ([Issue #66](https://github.com/oboehm/gdv.xport/issues/66))
+- rechtsbündige Ausrichtung bei AlphaNumFeld wird jetzt aus Bemerkungs-Tag abgeleitet
+- statische Methoden in Config durch Properties ersetzt
+- Validierung verbessert und ausgebaut
+- Datenpaket kann jetzt als Listener beim DatenpaketStreamer registriert werden
+- Stand Test-Dateien teilweise aktualisiert
 
 
 ## [5.2.0] - 2021-10-10
@@ -128,6 +139,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 ## [4.0.2] - 2019-02-14
 
 ### Changed
+
 - _fixed_: Start-Probleme mit Uberjar
   ([Issue #36](https://github.com/oboehm/gdv.xport/issues/36))
 
