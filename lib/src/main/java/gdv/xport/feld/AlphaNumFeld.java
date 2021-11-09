@@ -22,6 +22,8 @@ import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.validation.ValidationException;
 import java.util.List;
@@ -34,6 +36,7 @@ import java.util.List;
  */
 public class AlphaNumFeld extends Feld {
 
+    private static final Logger LOG = LogManager.getLogger();
     private static final Validator DEFAULT_VALIDATOR = new Validator(Config.getInstance());
 
     /**
@@ -235,6 +238,9 @@ public class AlphaNumFeld extends Feld {
         @Override
         protected String validateStrict(String value) {
             String trimmed = validateLax(value).trim();
+            if ((trimmed.length() < value.length()) && (trimmed.length() > 0)) {
+                LOG.warn("Wert '{}' wurde auf '{}' fuer die weitere Verabeitung verkuerzt.", value, trimmed);
+            }
             return trimmed;
         }
 
