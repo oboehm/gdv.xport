@@ -105,6 +105,10 @@ public class BezeichnerIT {
      * ("VUVM2018.xml") ausgelesen und gesammelt. Ergaenzt wird die Liste um
      * technische Namen, die manuell mit "VUVM2018.xml" abgeglichen wurden,
      * aber nicht ueber die Satzarten eingelesen wurden.
+     *
+     * @throws ParserConfigurationException im Fehlerfall
+     * @throws SAXException                 im Fehlerfall
+     * @throws IOException                  im Fehlerfall
      */
     @BeforeClass
     public static void readTechnischeNamen() throws ParserConfigurationException, SAXException, IOException {

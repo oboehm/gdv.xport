@@ -34,11 +34,11 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.*;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.emptyString;
+import static org.hamcrest.Matchers.not;
 
 
 /**
@@ -58,7 +58,7 @@ import static org.hamcrest.Matchers.*;
 public abstract class AbstractFormatterTest extends AbstractTest {
 
     private static final Logger LOG = LogManager.getLogger(AbstractFormatterTest.class);
-    private static XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+    private static final XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
     /** Die Musterdatei, die wir fuer einige Tests verwenden. */
     protected static final File MUSTERDATEI = new File("src/test/resources/musterdatei_041222.txt");
@@ -108,6 +108,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
      * @param formatter the formatter
      * @param filename the filename
      * @throws IOException falls was schiefgelaufen ist
+     * @return exportierte Datei
      */
     protected static File exportMusterdatei(final AbstractFormatter formatter, final String filename)
             throws IOException {
@@ -151,7 +152,7 @@ public abstract class AbstractFormatterTest extends AbstractTest {
         File exported = new File("target/site", filename);
         if (exported.exists()) {
             LOG.info(output + " will be compared with already generated " + exported);
-            FileTester.assertContentEquals(exported, output, Charset.forName("ISO-8859-1"),
+            FileTester.assertContentEquals(exported, output, StandardCharsets.ISO_8859_1,
                     Pattern.compile("<!--.*-->"));
         }
     }

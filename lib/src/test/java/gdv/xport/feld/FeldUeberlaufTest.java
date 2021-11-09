@@ -10,9 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * JUnit-Test fuer den Feld-Ueberlauf.
  * 
  * @author junke
- * @version $Revision:$<br/>
- *          $Date:$<br/>
- *          $Author:$
  */
 public class FeldUeberlaufTest {
 
@@ -102,15 +99,6 @@ public class FeldUeberlaufTest {
     numFeldOhneNachkomma.setInhalt("99");
     assertEquals("00099", numFeldOhneNachkomma.getInhalt());
 
-    /**
-     * @Oli: ein numerisches Feld darf unter keinen Umständen einen nicht-numerischen Inhalt haben!
-     *       Ansonsten kann es passieren, dass via "Betrag.Betrag(final Feld other)" ein Betrag-Feld
-     *       auch einen nicht-numerischen Inhalt hat!
-     * 
-     *       Lege deine Stirn nicht in Sorgenfalen wg. des Imports. Dafuer habe ich in
-     *       "Teildatensatz.ImportFrom(..)" gesorgt.
-     */
-
     Exception exception = assertThrows(IllegalArgumentException.class, () ->
     {
       numFeldOhneNachkomma.setInhalt("AA");
@@ -120,9 +108,6 @@ public class FeldUeberlaufTest {
         .contains("AA"));
   }
 
-  /**
-   * Test method for {@link gdv.xport.Betrag#setInhalt()} .
-   */
   @Test
   public void testBetrag()
   {
@@ -143,9 +128,6 @@ public class FeldUeberlaufTest {
     betrag.setInhalt(12345678900L);
     assertEquals("9999999999", betrag.getInhalt());
 
-    /**
-     * @Oli: ein Betrag-Feld darf nicht negativ sein!
-     */
     Exception exception1 = assertThrows(IllegalArgumentException.class, () ->
     {
       betrag.setInhalt("-123");
@@ -154,12 +136,6 @@ public class FeldUeberlaufTest {
     assertTrue(exception1.getMessage()
         .contains("-123"));
 
-    /**
-     * @Oli: ein Betrag-Feld darf unter keinen Umständen einen nicht-numerischen Inhalt haben!
-     * 
-     *       Lege deine Stirn nicht in Sorgenfalen wg. des Imports. Dafuer habe ich in
-     *       "Teildatensatz.ImportFrom(..)" gesorgt.
-     */
     Exception exception2 = assertThrows(IllegalArgumentException.class, () ->
     {
       betrag.setInhalt("1A3");
@@ -170,9 +146,6 @@ public class FeldUeberlaufTest {
 
   }
 
-  /**
-   * Test method for {@link gdv.xport.BetragMitVorzeichen#setInhalt(String)} .
-   */
   @Test
   public void testBetragMitVorzeichen()
   {
@@ -193,14 +166,6 @@ public class FeldUeberlaufTest {
     Long wert = 12345678901L;
     betragMVz.setInhalt(wert);
     assertEquals("999999999+", betragMVz.getInhalt());
-
-    /**
-     * @Oli: ein BetragMitVorzeichen-Feld darf unter keinen Umständen einen nicht-numerischen Inhalt
-     *       haben!
-     * 
-     *       Lege deine Stirn nicht in Sorgenfalen wg. des Imports. Dafuer habe ich in
-     *       "Teildatensatz.ImportFrom(..)" gesorgt.
-     */
 
     Exception exception1 = assertThrows(IllegalArgumentException.class, () ->
     {
