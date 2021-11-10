@@ -72,8 +72,7 @@ in pom.xml Version hochzählen, "-SNAPSHOT" anhängen
 
 |nachher
 |Auslieferung bekanntmachen
-|Nachricht in entsprechende Xing-Gruppe
-(https://www.xing.com/communities/groups/datenaustausch-im-gdv-format-1053093[Datenaustausch im GDV-Format])
+|Nachricht auf https://twitter.com/search?q=gdv.xport&src=typed_query&f=live[Twitter]
  
 |nachher
 |Maven Central prüfen
