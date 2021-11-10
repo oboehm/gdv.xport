@@ -109,6 +109,13 @@
       <artifactId>postgresql</artifactId>
     </dependency>
 
+    <!-- Testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
     <!-- others -->
     <dependency>
       <groupId>org.patterntesting</groupId>

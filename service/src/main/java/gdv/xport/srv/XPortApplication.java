@@ -22,8 +22,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import patterntesting.runtime.monitor.ClasspathMonitor;
-import patterntesting.runtime.monitor.ResourcepathMonitor;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Arrays;
@@ -36,11 +34,6 @@ import java.util.Arrays;
 public class XPortApplication {
 
     private static final Logger LOG = LogManager.getLogger(XPortApplication.class);
-
-    static {
-        ClasspathMonitor.registerAsMBean();
-        ResourcepathMonitor.getInstance().registerMeAsMBean();
-    }
 
     /**
      * Einstiegspunkt fuer die Spring-Anwendung
