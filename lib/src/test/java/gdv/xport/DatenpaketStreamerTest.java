@@ -100,7 +100,7 @@ public final class DatenpaketStreamerTest {
 
     @Test
     public void testImportKlausTest() throws IOException {
-        try (InputStream istream = this.getClass().getResourceAsStream("/datenpakete/Klaus_Test_1112345670000301.gdv")) {
+        try (InputStream istream = this.getClass().getResourceAsStream("/datenpakete/Klaus_Test.gdv")) {
             DatenpaketStreamer streamer = new DatenpaketStreamer(istream);
             Datenpaket datenpaket = new Datenpaket();
             streamer.register(datenpaket);
