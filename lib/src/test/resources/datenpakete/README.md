@@ -9,6 +9,8 @@ In diesem Verzeichnis liegen einige zusätzliche Test-Dateien, die ich u.a. von 
   Gegenüber der originalen musterdatei_041222.txt aus 2004 wurde hier Satzart 0220.030 von Version 2.0 (vor 01.01.2002) auf Version 2.2 angehoben
 * `test0820satzregistry.txt`:
   Beispielpaket, die eine selbstdefiniere Satzart (0820) enthält.
+* `zwei_datenpakete_strict.txt`:
+  aktualisierte Datei von zwei_datenpaket.txt, die aus 2 Datenpaketen besteht.
 
 ---
 Stuttgart, 10. November 2021,

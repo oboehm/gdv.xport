@@ -47,11 +47,8 @@ public final class DatenpaketStreamerTest {
     @IntegrationTest
     @Test
     public void testReadDatenpaket() throws IOException {
-        InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
-        try {
+        try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
             readDatenpaket(istream);
-        } finally {
-            istream.close();
         }
     }
 
@@ -63,12 +60,9 @@ public final class DatenpaketStreamerTest {
     @IntegrationTest
     @Test
     public void testRead2Datenpakete() throws IOException {
-        InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt");
-        try {
+        try (InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt")) {
             readDatenpaket(istream);
             readDatenpaket(istream);
-        } finally {
-            istream.close();
         }
     }
 
@@ -100,7 +94,21 @@ public final class DatenpaketStreamerTest {
 
     @Test
     public void testImportKlausTest() throws IOException {
-        try (InputStream istream = this.getClass().getResourceAsStream("/datenpakete/Klaus_Test.gdv")) {
+        importStrict("/datenpakete/Klaus_Test.gdv");
+    }
+
+    @Test
+    public void testImportMusterdatei2009() throws IOException {
+        importStrict("/datenpakete/musterdatei_2009.txt");
+    }
+
+    @Test
+    public void testImportZweiDatenpaketeStrict() throws IOException {
+        importStrict("/datenpakete/zwei_datenpakete_strict.txt");
+    }
+
+    private static void importStrict(String resource) throws IOException {
+        try (InputStream istream = DatenpaketStreamer.class.getResourceAsStream(resource)) {
             DatenpaketStreamer streamer = new DatenpaketStreamer(istream);
             Datenpaket datenpaket = new Datenpaket();
             streamer.register(datenpaket);
