@@ -194,7 +194,7 @@ public final class SatzRegistryTest {
             fail("Fehler bei der Registrierung.");
         }
         Datenpaket datenpaket = new Datenpaket();
-        File testfile = new File("src/test/resources", "test0820satzregistry.txt");
+        File testfile = new File("src/test/resources", "datenpakete/test0820satzregistry.txt");
         datenpaket.importFrom(testfile, Charset.forName("UTF8"));
         assertTrue("Datenpaket muss gueltig sein", datenpaket.isValid());
         assertEquals("Es wergen genau 6 Datensätze erwartet.", 6, datenpaket.getDatensaetze().size());
