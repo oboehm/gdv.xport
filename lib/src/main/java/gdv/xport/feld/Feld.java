@@ -411,7 +411,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     public void setInhalt(final String neuerInhalt) {
         int anzahlBytes = this.getAnzahlBytes();
         String s = config.getBool("gdv.feld.truncate") ? truncate(neuerInhalt) : neuerInhalt;
-        s = validator.verify(s);
+        s = validator.verify(s, this);
         if (s.length() > anzahlBytes) {
             throw new IllegalArgumentException("Feld " + this.getBezeichner() + ": Parameter \"" + s
                     + "\" ist laenger als " + anzahlBytes + " Zeichen!");
@@ -867,6 +867,24 @@ public class Feld implements Comparable<Feld>, Cloneable {
 
         protected Config getConfig() {
             return this.config;
+        }
+
+        /**
+         * Im Gegensatzu zur validate-Methode wird hier eine
+         * {@link IllegalArgumentException} ausgeloest und das
+         * betroffene Feld noch mit ausgegeben
+         *
+         * @param value Wert, der validiert werden soll
+         * @param validatedFeld Feld, das validiert wurde
+         * @return der Wert selber zur Weiterverarbeitung
+         */
+        public String verify(String value, Feld validatedFeld) {
+            try {
+                return validate(value);
+            } catch (ValidationException ex) {
+                throw new IllegalArgumentException(
+                        String.format("%s: Wert '%s' ist nicht erlaubt", validatedFeld, value), ex);
+            }
         }
 
         /**
