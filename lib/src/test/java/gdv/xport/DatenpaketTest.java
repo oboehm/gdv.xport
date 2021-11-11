@@ -262,13 +262,25 @@ public final class DatenpaketTest {
      */
     @Test
     public void testImport2DatenpaketeWithReader() throws IOException {
-        try (Reader reader = new InputStreamReader(new FileInputStream("src/test/resources/zwei_datenpakete.txt"), StandardCharsets.ISO_8859_1)) {
+        checkZweiDatenpakete("src/test/resources/zwei_datenpakete.txt", Config.LAX);
+    }
+
+    @Test
+    public void testImport2DatenpaketeStrict() throws IOException {
+        checkZweiDatenpakete("src/test/resources/datenpakete/zwei_datenpakete_strict.txt", Config.STRICT);
+    }
+
+    private void checkZweiDatenpakete(String filename, Config config) throws IOException {
+        try (Reader reader = new InputStreamReader(new FileInputStream(filename), StandardCharsets.ISO_8859_1)) {
             checkImport(datenpaket, reader);
             Datenpaket zwei = new Datenpaket();
             checkImport(zwei, reader);
             LOG.info(datenpaket + " / " + zwei + " imported.");
             assertNotEquals(datenpaket, zwei);
         }
+        List<ConstraintViolation> violations = datenpaket.validate(config);
+        LOG.info("violations = {}", violations);
+        assertTrue(violations.isEmpty());
     }
 
     private static void checkImport(final Datenpaket paket, final Reader reader) throws IOException {
