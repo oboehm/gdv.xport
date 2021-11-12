@@ -134,7 +134,7 @@ public class SatzRegistry implements VersionHandler {
                 satzVersion = asFloat(ds.getVersion());
             }
         }
-        LOG.warn("Exakte Version {} fuer {} wurde nicht gefunden - verwende {} (Version {}).", version,
+        LOG.info("Exakte Version {} fuer {} wurde nicht gefunden - verwende {} (Version {}).", version,
                 satzTyp, satz.toShortString(), satz.getVersion());
         return satz;
     }

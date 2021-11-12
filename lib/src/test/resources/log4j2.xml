@@ -4,6 +4,11 @@
     <Console name="CONSOLE" target="SYSTEM_OUT">
       <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %-36.36logger{3} - %msg%n" />
     </Console>
+    <File name="ValidatorFile" fileName="logs/validator.log" append="false">
+      <PatternLayout>
+        <Pattern>%d{yyyy/MM/dd-HH:mm:ss}\t%m%n</Pattern>
+      </PatternLayout>
+    </File>
     <JDBC name="DB" tableName="logbook">
       <ConnectionFactory class="gdv.xport.config.LogConfig"
                          method="getConnection" />
@@ -24,6 +29,9 @@
     <logger name="gdv.xport.util" level="INFO" />
     <logger name="gdv.xport.util.AbstractFormatterTest" level="WARN" />
     <logger name="gdv.xport.util.XmlFormatterTest" level="WARN" />
+    <logger name="gdv.xport.event.SatzValidator" level="INFO">
+      <AppenderRef ref="ValidatorFile" />
+    </logger>
     <logger name="patterntesting.runtime.junit" level="WARN" />
     <Root level="INFO" additivity="false">
       <AppenderRef ref="CONSOLE" />
