@@ -669,7 +669,7 @@
   
   <ciManagement>
     <system>Travis CI</system>
-    <url>https://travis-ci.com/oboehm/gdv.xport</url>
+    <url>https://travis-ci.com/github/oboehm/gdv.xport</url>
   </ciManagement>
 
   <!--
