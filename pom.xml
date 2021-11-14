@@ -325,7 +325,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.9</version>
+        <version>3.1.2</version>
       </plugin>
 
       <!--
@@ -669,7 +669,7 @@
   
   <ciManagement>
     <system>Travis CI</system>
-    <url>https://travis-ci.org/oboehm/gdv.xport</url>
+    <url>https://travis-ci.com/oboehm/gdv.xport</url>
   </ciManagement>
 
   <!--
