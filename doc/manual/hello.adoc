@@ -1,0 +1,41 @@
+= Die ersten Schritte
+
+Auch wenn gdv.xport inzwischen aus einem link:../../lib/README.adoc[lib]-
+und einem link:../../service/README.adoc[service]-Modul besteht,
+ist es in erster Linie eine Java-Bibliothek, die den Umgang mit GDV-Dateien vereinfacht.
+Über das link:../../lib/src/main/java/gdv/xport/Main.java[Main]-Programm kann es aber auch direkt aufgerufen werden.
+
+
+== Abhängigkeiten
+
+Wenn du nicht Maven oder Gradle als Build-Tool einsetzt, findest du unter
+http://www.aosd.de/gdv.xport/dependencies.html[dependencies.html]
+die Bibliotheken, von denen gdv.xport abhängig ist.
+Diese müssen in den Classpath eingebunden werden.
+
+
+== Hello World
+
+Für ein erstes Beispiel wollen wir ein leeres Datenpaket erzeugen,
+die VU-Nummer auf "Hello" und den Adressat (im Vorsatz) auf "World" setzen.
+Im Paket link:../../lib/src/main/java/gdv/xport/demo[gdv.xport.demo] findest du die Sourcen zu diesem
+link:../../lib/src/main/java/gdv/xport/demo/HelloWorld.java[HelloWorld]-Beispiel:
+
+[source]
+----
+include::../../lib/src/main/java/gdv/xport/demo/HelloWorld.java[lines=44..52]
+----
+
+Nach Start dieser Anwendung wird
+
+[source]
+----
+0001HelloHello                         World                         2011200920112009 ...
+0001HelloHello                         World                         2011200920112009 ...
+0001HelloHello                         World                         2011200920112009 ...
+99990000000000          00000000000000000000000000000+00000000000000+00000000000000+00...
+----
+
+auf der Console ausgegeben: der Vorsatz mit 3 Teildatensätzen und "Hello" als
+VU-Nummer und Absender sowie "World" als Absender, gefolgt vom Nachsatz mit der
+Satznummer "9999".

@@ -1,0 +1,85 @@
+= Der erste Import
+
+Wenn du eine Datei wie z.B. die http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt[musterdatei_041222.txt]
+von http://www.gdv-online.de/[www.gdv-online.de] importieren willst,
+schau am besten das link:../../lib/src/main/java/gdv/xport/Main.java[Main-Programm] an.
+Dort wird eine beliebige Datei importiert (Option "-import"), als XML (Option "-xml") ausgegeben und anschliessend validiert (Option "-validate").
+
+Und hier jetzt der Import:
+
+[source:java]
+----
+Datenpaket datenpaket = new Datenpaket();
+datenpaket.importFrom(url);
+----
+
+Neben dem Input über eine URL wird auch der Import einer Datein, von einem InputStream oder Reader unterstützt.
+
+
+== Iterieren über die einzelnen Sätze
+
+Wenn du wissen willst, wie du nach einem Import über die einzelnen Sätze interieren kannst,
+schau die ram besten die link:../../lib/src/main/java/gdv/xport/Datenpaket.java[Datenpaket]-Klasse n,
+wie die einzelnen Datensaetze in der export-Methode rausgeschrieben werden:
+
+[source:java]
+----
+for (Iterator<Datensatz> iterator = datensaetze.iterator(); iterator.hasNext();) {
+    Datensatz datensatz = iterator.next();
+    datensatz.export(writer);
+}
+----
+
+
+== Zugriff auf einzelne Felder
+
+Über einen link:../../lib/src/main/java/gdv/xport/satz/Satz.java[Satz]
+oder link:../../lib/src/main/java/gdv/xport/satz/Datensatz.java[Datensatz]
+kommst du an die einen einzelnen link:../../lib/src/main/java/gdv/xport/feld/Feld.java[Feld]er ran.
+Gib dazu den Namen des Feldes an (alternativ kannst du auch über seine Byte-Adresse innerhalb eines Records gehen):
+
+[source:java]
+----
+Feld absenderFeld = vorsatz.getFeld(Bezeichner.of("Absender"));
+----
+
+Für die meisten Bezeichner existiert in link:../../lib/src/main/java/gdv/xport/feld/Bezeichner.java[Bezeichner] eine Konstante,
+die dir dabei hilft, Schreibfehler zu vermeiden:
+
+[source:java]
+----
+Feld absenderFeld = vorsatz.getFeld(Bezeichner.ABSENDER);
+----
+
+(siehe auch testSetAbsender()-Methode in link:../../lib/src/test/java/gdv/xport/satz/VorsatzTest.java[VorsatzTest]).
+
+
+== Weitere Importe
+
+Seit 0.9.2 kannst du _mehrere_ Datenpakete über einen InputStream oder Reader importieren:
+
+[source:java]
+----
+List<Datenpaket> datenpakete = new ArrayList<Datenpaket>();
+while (true) {
+    Datenpaket paket = new Datenpaket();
+    try {
+        paket.importFrom(inputStream);
+        datenpakete.add(paket);
+    } catch (EOFException ex) {
+        log.info("EOF nach " + datenpakete.size() + " Datenpaketen erreicht.");
+        break;
+    }
+}
+----
+
+Soll nur ein einzelner Datensatz importiert werden, kann dies direkt ueber die Datensatz-Klasse erfolgen:
+
+[source:java]
+----
+Datensatz satz100 = SatzRegistry.getInstance().getDatensatz(100);
+satz100.importFrom(file);
+----
+
+Dieses und weitere Beispiele befinden sich in
+link:../../lib/src/main/java/gdv/xport/demo/ImportExport.java[ImportExport].
