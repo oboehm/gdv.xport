@@ -1,0 +1,92 @@
+= Streaming API
+
+Der Nachteil des normalen link:import.adoc[Imports] ist,
+dass erst das kompletten Datenpaket eingelesen werden muss, ehe es weiterverarbeitet werden kann.
+Das kann gerade bei größeren Imports mit mehreren tausend Datensätzen zum Problem werden.
+Deswegen gibt es ab 1.0 den
+link:../../lib/src/main/java/gdv/xport/DatenpaketStreamer.java[DatenpaketStreamer],
+mit dem die Datensätze direkt weiterverarbeitet werden können, sobald sie eingelesen wurden.
+
+Dazu muss man das
+link:../../lib/src/main/java/gdv/xport/event/ImportListener.java[ImportListener]-Interface
+implementieren und sich am
+link:../../lib/src/main/java/gdv/xport/DatenpaketStreamer.java[DatenpaketStreamer],
+registrieren:
+
+
+== Beispiel ImportStatistic
+
+[source:java]
+----
+ImportStatistic statistic = new ImportStatistic();
+DatenpaketStreamer streamer = new DatenpaketStreamer(istream);
+streamer.register(statistic);
+streamer.readDatenpaket();
+LOG.info("Statistik: " + statistic);
+----
+
+Als Beispiel dient hier die
+link:../../lib/src/main/java/gdv/xport/event/ImportStatistic.java[ImportStatistic],
+die das
+link:../../lib/src/main/java/gdv/xport/event/ImportListener.java[ImportListener]-Interface
+implementiert und nach der Registrierung eine Benachrichtigung über jeden importierten Satz erhält.
+
+[Source]
+----
+Statistik: 128 Saetze, 165 Teildatensaetze
+----
+
+Dies ist die Ausgabe, die die
+link:../../lib/src/main/java/gdv/xport/event/ImportStatistic.java[ImportStatistic]-Klasse
+ausgibt.
+Das Beispiel selbst findet sich als Unit-Test im
+link:../../lib/src/test/java/gdv/xport/DatenpaketStreamerTest.java[DatenpaketStreamerTest]
+(Methode "readDatenpaket").
+
+
+== Beispiel Datenpaket
+
+Auch das
+link:../../lib/src/main/java/gdv/xport/Datenpaket.java[Datenpaket]
+implementiert das
+link:../../lib/src/main/java/gdv/xport/event/ImportListener.java[ImportListener]-Interface
+und kann darüber ein (oder mehrere) Datenpaket importieren:
+
+[source]
+----
+include::../../lib/src/test/java/gdv/xport/DatenpaketStreamerTest.java[lines=110..120]
+----
+
+Du verspielst damit den Speichervorteil (Datenpaket wird wieder komplett eingelesen),
+aber du hast die Möglichkeit, weitere Listener zu registrieren.
+So kannst du ihn mit dem
+link:../../lib/src/main/java/gdv/xport/event/SatzValidator.java[SatzValidator]
+kombinieren, der schon während des Imports validiert und das Ergebnis ins Log rausschreibt.
+
+[TIP]
+====
+Wenn du die Valierungsfehler in einem eigener LOG-Datei protokollieren willst, trage folgende Konfiguration in dein `log4j.xml` ein:
+[source:xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    ...
+    <File name="ValidatorFile" fileName="logs/validator.log" append="false">
+      <PatternLayout>
+      <Pattern>%d{yyyy/MM/dd-HH:mm:ss}\t%m%n</Pattern>
+      </PatternLayout>
+    </File>
+    ...
+  </Appenders>
+  <Loggers>
+    ...
+    <logger name="gdv.xport.event.SatzValidator" level="INFO">
+      <AppenderRef ref="ValidatorFile" />
+    </logger>
+    ...
+  </Loggers>
+</Configuration>
+----
+
+
