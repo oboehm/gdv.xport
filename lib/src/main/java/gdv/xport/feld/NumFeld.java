@@ -295,6 +295,16 @@ public class NumFeld extends Feld {
      * @param n Zahl
      * @since 5.0
      */
+    public void setInhalt(BigInteger n) {
+        setInhalt(n.toString());
+    }
+
+    /**
+     * Setzt den Inhalt mit der uebergebenen Zahl.
+     *
+     * @param n Zahl
+     * @since 5.0
+     */
     public void setInhalt(BigDecimal n) {
         setInhalt(n.movePointRight(this.nachkommastellen).setScale(0, RoundingMode.HALF_UP).toString());
     }
@@ -368,6 +378,17 @@ public class NumFeld extends Feld {
      */
     public double toDouble() {
         return toBigDecimal().doubleValue();
+    }
+
+    /**
+     * Fuer grosse Zahlen kann auch schon mal ein {@link BigInteger} noetig
+     * sein.
+     *
+     * @since 5.4
+     * @return die Zahl als {@link BigInteger}
+     */
+    public BigInteger toBigInteger() {
+        return new BigInteger(getInhalt().trim());
     }
 
     /**
