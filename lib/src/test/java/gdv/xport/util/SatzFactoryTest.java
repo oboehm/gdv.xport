@@ -334,7 +334,7 @@ public final class SatzFactoryTest extends AbstractTest {
         }
     }
 
-    private static void checkDatensatz(Datensatz satz) {
+    static void checkDatensatz(Datensatz satz) {
         for (Teildatensatz tds : satz.getTeildatensaetze()) {
             checkTeildatensatz(tds);
         }

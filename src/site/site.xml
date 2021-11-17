@@ -40,13 +40,8 @@
       <item name="Kontakt"					href="contact.html" />
       <item name="Download" href="downloads.html"/>
     </menu>
-    <menu name="Anleitung">
-      <item name="Hello World" href="manual/hello.html"/>
-      <item name="Der erste Import" href="manual/import.html"/>
-      <item name="Das Hauptprogramm" href="manual/main.html"/>
-      <item name="Export" href="manual/export.html"/>
-      <item name="Streaming API"			href="manual/streaming.html" />
-      <item name="Erweiterungen" href="manual/extend.html"/>
+    <menu name="Dokumentation">
+      <item name="Anleitung" href="https://github.com/oboehm/gdv.xport/blob/develop/doc/manual/README.adoc"/>
       <item name="JavaDoc API" href="apidocs/index.html"/>
     </menu>
 

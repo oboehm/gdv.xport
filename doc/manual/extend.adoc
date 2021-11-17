@@ -1,0 +1,57 @@
+= Eigene Erweiterungen
+
+Inzwischen werden alle Satzarten aus der XML-Beschreibung von
+http://www.gdv-online.de/vuvm/bestand/best_2018.htm[gdv-online.de]
+abgeleitet und unterstützt.
+Auf Basis dieser XML-Beschreibung können auch eigene Erweiterungen definiert und bei der
+link:../../lib/src/main/java/gdv/xport/util/SatzRegistry.java[SatzRegistry]
+registriert werden.
+
+Ein Beispiel für solch eine XML-Datei findest du unter
+link:../../lib/src/main/resources/gdv/xport/satz/xml/Satz0221.051.xml[Satz0221.051.xml].
+Im Unterschied zur Original-Beschreibung sind hier die zusammengefassten Währungseinheiten von
+http://www.gdv-online.de/vuvm/bestand/rel2018/ds0221.051.htm[Satzart 0221.051]
+in 3 Teile aufgeteilt.
+Den Test als Beispiel für eine Registrierung findest du unter
+link:../../lib/src/test/java/gdv/xport/util/SatzRegistryTest.java[SatzRegistryTest];
+
+[source:java]
+----
+include::../../lib/src/test/java/gdv/xport/util/SatzRegistryTest.java[lines=52..74]
+----
+
+Normalerweise kannst du zur Registrierung eigener Satzarten nur den vom GDV vorgesehenen Bereich von 800 bis 900 verwenden.
+Willst du Satzarten außerhalb diesen Bereichs registrieren, musst du die Validierung abschalten.
+Dies kannst du, indem du als letzten Parameter einen Validator (hier: `SatzRegistry.NO_VALIDATOR`) angibst.
+
+Du kannst auch eigenen Datensätze registrieren, die von
+link:../../lib/src/main/java/gdv/xport/satz/Datensatz.java[Datensatz] oder
+link:../../lib/src/main/java/gdv/xport/satz/Satz.java[Satz] abgeleitet sind.
+Im link:../../lib/src/main/java/gdv/xport/demo/[demo]-Paket findest du
+link:../../lib/src/main/java/gdv/xport/demo/MyUnfallDatensatz.java[MyUnfallDatensatz] als Beispielklasse.
+In der main-Methode wird die Klasse im Framework registriert.
+Anschliessend wird das
+http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt[Muster-Datenpaket]
+von gdv-online importiert und der erste gefundene MyUnfallDatensatz im GDV-Format und als XML ausgegeben:
+
+[source:xml]
+----
+02109999  030      59999999999019999009999 01052004 ...
+<satz satzart="0210" sparte="030">
+  <teildatensatz nr=" ">
+    <feld bytes="  1-  4" bezeichnung="Satzart                       ">0210</feld>
+    <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
+    <feld bytes=" 10- 10" bezeichnung="Buendelungskennzeichen        "> </feld>
+    <feld bytes=" 11- 13" bezeichnung="Sparte                        ">030</feld>
+    <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
+    <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
+    <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
+    <feld bytes=" 44- 51" bezeichnung="Mein Vertragsbeginn           ">01052004</feld>
+    <feld bytes=" 93- 95" bezeichnung="Meine Waehrung                ">EUR</feld>
+    <feld bytes="256-256" bezeichnung="Satznummer                    "> </feld>
+  </teildatensatz>
+</satz>
+----
+
+In der Anfangsphase von gdv.xport konnten eigene Datensätze auch mithilfe von Enum-Klassen definiert werden.
+Diese Möglichkeit entfällt mit v6.
