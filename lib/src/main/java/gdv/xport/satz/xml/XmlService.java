@@ -77,6 +77,22 @@ public class XmlService {
     }
 
     /**
+     * Liefert Service-Instanz anhand der uebergebenen Konfiguration. Da der Aufruf
+     * des {@link XmlService}-Konstruktors teuer ist und einige Sekunden braucht
+     * (2-3 Sekunden auf einem MacBook-Air von 2011), wird ein interner Cache
+     * verwendet, um nicht jedesmal die Resource parsen zu muessen.
+     *
+     * @param cfg gewuenschte Konfiguration
+     * @return der frisch instantiierte XmlService
+     * @throws XMLStreamException falls die angegebene Resource nicht existiert
+     *                            oder nicht interpretiert werden kann
+     * @throws IOException        bei Lesefehlern
+     */
+    public static XmlService getInstance(final Config cfg) throws XMLStreamException, IOException {
+        return getInstance(cfg.getProperty("gdv.XML-Resource", "VUVM2018.xml"));
+    }
+
+    /**
      * Liefert Service-Instanz anhand der uebergebenen Resource. Da der Aufruf
      * des {@link XmlService}-Konstruktors teuer ist und einige Sekunden braucht
      * (2-3 Sekunden auf einem MacBook-Air von 2011), wird ein interner Cache
@@ -84,7 +100,8 @@ public class XmlService {
      *
      * @param resource Resource-Name (z.B. "VUVM2013.xml")
      * @return der frisch instantiierte XmlService
-     * @throws XMLStreamException falls die angegebene Resource nicht existiert             oder nicht interpretiert werden kann
+     * @throws XMLStreamException falls die angegebene Resource nicht existiert
+     *                            oder nicht interpretiert werden kann
      * @throws IOException        bei Lesefehlern
      */
     public static XmlService getInstance(final String resource) throws XMLStreamException, IOException {
@@ -244,7 +261,7 @@ public class XmlService {
           }
         }
 
-        LOG.debug("GdvRelease found.", this.gdvRelease);
+        LOG.debug("GdvRelease '{}' found.", this.gdvRelease);
       }
       else if (XmlHelper.isEndElement(event, element.getName()))
       {

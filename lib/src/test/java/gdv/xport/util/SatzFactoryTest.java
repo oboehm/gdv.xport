@@ -298,15 +298,16 @@ public final class SatzFactoryTest extends AbstractTest {
     @Test
     public void testSatzart0221051() throws XMLStreamException, IOException {
         SatzTyp kfz = SatzTyp.of(221, 51);
+        SatzRegistry satzRegistry = SatzRegistry.getInstance();
         try {
-            SatzRegistry.getInstance().register(SatzXml.of("Satz0221.051.xml"), kfz, SatzRegistry.NO_VALIDATOR);
-            Datensatz satz = SatzFactory.getDatensatz(kfz);
+            satzRegistry.register(SatzXml.of("Satz0221.051.xml"), kfz, SatzRegistry.NO_VALIDATOR);
+            Datensatz satz = satzRegistry.getDatensatz(kfz);
             checkDatensatz(satz);
             checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1);
             checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2);
             checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3);
         } finally {
-            SatzRegistry.getInstance().unregister(kfz);
+            satzRegistry.unregister(kfz);
         }
     }
 

@@ -22,6 +22,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
+import patterntesting.runtime.junit.ObjectTester;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -77,6 +78,13 @@ public class ConfigTest {
     public void testEOD() {
         String eod = config.getString("gdv.eod");
         assertEquals("\n", eod);
+    }
+
+    @Test
+    public void testEquals() {
+        Config a = new Config();
+        Config b = new Config();
+        ObjectTester.assertEquals(a, b);
     }
 
 }

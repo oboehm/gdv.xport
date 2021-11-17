@@ -63,7 +63,7 @@ public class SatzRegistry implements VersionHandler {
     public static final Validator VALIDATOR = new Validator();
     /** Dieser Validator akzeptiert alle Satzarten zwischen 0 und 9999. */
     public static final Validator NO_VALIDATOR = new Validator(Range.between(0, 9999));
-    private static final Map<String, SatzRegistry> INSTANCES = new HashMap<>();
+    private static final Map<Config, SatzRegistry> INSTANCES = new HashMap<>();
     private final Map<SatzTyp, Satz> registeredSaetze = new ConcurrentHashMap<>();
     private final XmlService xmlService;
 
@@ -78,7 +78,28 @@ public class SatzRegistry implements VersionHandler {
      * @return Factory auf Basis von VUVM2018.xml
      */
     public static SatzRegistry getInstance() {
-        return getInstance(Config.getXmlResource());
+        return getInstance(Config.getInstance());
+    }
+
+    /**
+     * Hierueber kann man sich die Default-Factory anhand der gewuenschten
+     * Konfiguration die XML-Beschreibung der GDV-Datensaetze holen.
+     *
+     * @param cfg gewuenschte Konfiguration
+     * @return Factory auf Basis der uebergebenen Config
+     */
+    public static SatzRegistry getInstance(final Config cfg) {
+        SatzRegistry factory = INSTANCES.get(cfg);
+        try {
+            if (factory == null) {
+                factory = new SatzRegistry(XmlService.getInstance(cfg));
+                INSTANCES.put(cfg, factory);
+                LOG.info("{} wurde angelegt.", factory);
+            }
+            return factory;
+        } catch (XMLStreamException | IOException ex) {
+            throw new IllegalArgumentException("invalid config: " + cfg, ex);
+        }
     }
 
     /**
@@ -90,17 +111,7 @@ public class SatzRegistry implements VersionHandler {
      * @return Factory auf Basis der uebergebenen Resource
      */
     public static SatzRegistry getInstance(final String resource) {
-        SatzRegistry factory = INSTANCES.get(resource);
-        try {
-            if (factory == null) {
-                factory = new SatzRegistry(XmlService.getInstance(resource));
-                INSTANCES.put(resource, factory);
-                LOG.info("{} wurde angelegt.", factory);
-            }
-            return factory;
-        } catch (XMLStreamException | IOException ex) {
-            throw new IllegalArgumentException("invalid resource: " + resource, ex);
-        }
+        return getInstance(Config.EMPTY.withProperty("gdv.XML-Resource", resource));
     }
 
     /**
@@ -541,8 +552,7 @@ public class SatzRegistry implements VersionHandler {
      * @return Datenpaket mit allen unterstuetzten Satzarten
      */
     public Datenpaket getAllSupportedSaetze() {
-        Map<SatzTyp, Satz> supportedSaetze = new HashMap<>();
-        supportedSaetze.putAll(xmlService.getSatzarten());
+        Map<SatzTyp, Satz> supportedSaetze = new HashMap<>(xmlService.getSatzarten());
         for (Map.Entry<SatzTyp, Satz> entry : registeredSaetze.entrySet()) {
             Satz value = entry.getValue();
             if (value instanceof Datensatz) {

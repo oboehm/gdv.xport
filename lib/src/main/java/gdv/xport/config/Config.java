@@ -296,4 +296,17 @@ public final class Config {
         return StringUtils.isNotEmpty(getEOD());
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Config config = (Config) o;
+        return properties.equals(config.properties);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(properties);
+    }
+
 }
