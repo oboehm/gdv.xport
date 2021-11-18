@@ -12,12 +12,22 @@ link:../../lib/src/main/resources/gdv/xport/satz/xml/Satz0221.051.xml[Satz0221.0
 Im Unterschied zur Original-Beschreibung sind hier die zusammengefassten Währungseinheiten von
 http://www.gdv-online.de/vuvm/bestand/rel2018/ds0221.051.htm[Satzart 0221.051]
 in 3 Teile aufgeteilt.
-Den Test als Beispiel für eine Registrierung findest du unter
-link:../../lib/src/test/java/gdv/xport/util/SatzRegistryTest.java[SatzRegistryTest];
+Den Test als Beispiel für eine Registrierung findest du unter link:../../lib/src/test/java/gdv/xport/util/SatzRegistryTest.java[SatzRegistryTest] (Zeile 52 - 74:
 
 [source:java]
 ----
-include::../../lib/src/test/java/gdv/xport/util/SatzRegistryTest.java[lines=52..74]
+    @Test
+    public void testSatzart0221051() throws XMLStreamException, IOException {
+        SatzTyp kfz = SatzTyp.of(221, 51);
+        SatzRegistry satzRegistry = SatzRegistry.getInstance();
+        try {
+            satzRegistry.register(SatzXml.of("Satz0221.051.xml"), kfz, SatzRegistry.NO_VALIDATOR);
+            Datensatz satz = satzRegistry.getDatensatz(kfz);
+            ...
+        } finally {
+            satzRegistry.unregister(kfz);
+        }
+    }
 ----
 
 Normalerweise kannst du zur Registrierung eigener Satzarten nur den vom GDV vorgesehenen Bereich von 800 bis 900 verwenden.
@@ -32,7 +42,7 @@ link:../../lib/src/main/java/gdv/xport/demo/MyUnfallDatensatz.java[MyUnfallDaten
 In der main-Methode wird die Klasse im Framework registriert.
 Anschliessend wird das
 http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt[Muster-Datenpaket]
-von gdv-online importiert und der erste gefundene MyUnfallDatensatz im GDV-Format und als XML ausgegeben:
+von gdv-online importiert und der erste gefundene MyUnfallDatensatz als XML ausgegeben:
 
 [source:xml]
 ----
