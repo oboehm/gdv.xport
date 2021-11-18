@@ -55,7 +55,7 @@ import java.util.Map;
 public class XmlService {
 
     private static final Logger LOG = LogManager.getLogger(XmlService.class);
-    private static final Map<String, XmlService> INSTANCES = new HashMap<>();
+    private static final Map<Config, XmlService> INSTANCES = new HashMap<>();
     private final List<SatzXml> saetze = new ArrayList<>();
     private final Map<SatzTyp, SatzXml> satzarten = new HashMap<>();
     private final Map<String, FeldXml> felder = new HashMap<>();
@@ -89,7 +89,13 @@ public class XmlService {
      * @throws IOException        bei Lesefehlern
      */
     public static XmlService getInstance(final Config cfg) throws XMLStreamException, IOException {
-        return getInstance(cfg.getProperty("gdv.XML-Resource", "VUVM2018.xml"));
+        XmlService service = INSTANCES.get(cfg);
+        if (service == null) {
+            service = createXmlService(cfg.getProperty("gdv.XML-Resource", "VUVM2018.xml"));
+            INSTANCES.put(cfg, service);
+            LOG.info("{} wurde mit Resource {} angelegt.", service, cfg);
+        }
+        return service;
     }
 
     /**
@@ -105,13 +111,7 @@ public class XmlService {
      * @throws IOException        bei Lesefehlern
      */
     public static XmlService getInstance(final String resource) throws XMLStreamException, IOException {
-        XmlService service = INSTANCES.get(resource);
-        if (service == null) {
-            service = createXmlService(resource);
-            INSTANCES.put(resource, service);
-            LOG.info("{} wurde mit Resource {} angelegt.", service, resource);
-        }
-        return service;
+        return getInstance(Config.getInstance().withProperty("gdv.XML-Resource", resource));
     }
 
     /**
@@ -127,10 +127,11 @@ public class XmlService {
      * @since 5.0
      */
     public static XmlService getInstance(URI resource) throws XMLStreamException, IOException {
-        XmlService service = INSTANCES.get(resource.toString());
+        Config cfg = Config.getInstance().withProperty("gdv.XML-Resource", resource.toString());
+        XmlService service = INSTANCES.get(cfg);
         if (service == null) {
             service = createXmlService(resource);
-            INSTANCES.put(resource.toString(), service);
+            INSTANCES.put(cfg, service);
             LOG.info("{} wurde mit Resource {} angelegt.", service, resource);
         }
         return service;
