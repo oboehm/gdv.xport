@@ -547,4 +547,11 @@ public class XmlServiceTest extends AbstractXmlTest {
         assertEquals(" 0123456789abcdef", rechtsbuendig.getInhalt());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testConfig() throws XMLStreamException, IOException {
+        XmlService service = XmlService.getInstance(Config.STRICT);
+        Satz satz100 = service.getSatzart(SatzTyp.of(100));
+        satz100.setFeld(Bezeichner.FOLGENUMMER, "x");
+    }
+
 }

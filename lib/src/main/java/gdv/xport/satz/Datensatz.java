@@ -203,7 +203,11 @@ public class Datensatz extends Satz {
 	 * @since 5.0
 	 */
 	public Datensatz(SatzTyp satzTyp) {
-		this(satzTyp, 1);
+		this(satzTyp, Config.getInstance());
+	}
+
+	protected Datensatz(SatzTyp satzTyp, Config cfg) {
+		this(satzTyp, 1, cfg);
 	}
 
 	/**
@@ -254,7 +258,11 @@ public class Datensatz extends Satz {
 	 * @since 5.0
 	 */
 	public Datensatz(final SatzTyp satzTyp, final int n) {
-		super(satzTyp, n);
+		this(satzTyp, n, Config.getInstance());
+	}
+
+	protected Datensatz(final SatzTyp satzTyp, final int n, final Config cfg) {
+		super(satzTyp, n, cfg);
 		this.init(satzTyp);
 		this.setUpTeildatensaetze();
 	}
@@ -334,7 +342,7 @@ public class Datensatz extends Satz {
 	protected static void setUpTeildatensatz(final Teildatensatz tds, final NumFeld sparte) {
     if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()) && !tds.getFeldInhalt(Kopffelder1bis7.SATZART.getBezeichner())
                                                      .equals("9999")) {
-      setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), Config.getVUNummer());
+      setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), tds.config.getVUNr());
       setUp(tds, Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN));
       setUp(tds, Kopffelder1bis7.SPARTE.getBezeichner(), sparte);
       setUp(tds, Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER));

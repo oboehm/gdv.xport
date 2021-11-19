@@ -27,6 +27,7 @@ import org.junit.Test;
 import patterntesting.runtime.junit.CloneableTester;
 
 import javax.validation.ValidationException;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -225,8 +226,15 @@ public final class FeldTest extends AbstractFeldTest {
     @Test
     public void testValidator() {
         Feld.Validator validator = new Feld.Validator();
-        String ok = "ok";
+        String ok = "Paragraph §218 ok?";
         assertEquals(ok, validator.validate(ok));
+    }
+
+    @Test
+    public void testValidatorMitUmlaute() {
+        Feld.Validator validator = new Feld.Validator();
+        String text = "Gr\u00fc\u00dfe";
+        assertEquals(text, validator.validate(text));
     }
 
     @Test(expected = ValidationException.class)
@@ -235,6 +243,16 @@ public final class FeldTest extends AbstractFeldTest {
         byte[] bytes = { 'a', 'b', 1, -127 };
         String invalid = new String(bytes, StandardCharsets.US_ASCII);
         validator.validate(invalid);
+    }
+
+    @Test
+    public void testBigDecimal() {
+        Feld provision = new NumFeld(Bezeichner.of("GesprovisionsBetrag"), 14, 55).mitNachkommastellen(2);
+        provision.setInhalt(new BigDecimal("12345678.90"));
+        assertEquals("00001234567890", provision.getInhalt());
+        Feld pi = new Feld(new Bezeichner("pi"), 4, 1, Align.LEFT);
+        pi.setInhalt(new BigDecimal("3.14"));
+        assertEquals("3.14", pi.getInhalt());
     }
 
 }

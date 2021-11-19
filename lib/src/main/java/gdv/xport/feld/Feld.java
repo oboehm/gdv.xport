@@ -38,6 +38,7 @@ import java.io.Writer;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
 import java.nio.ByteBuffer;
 import java.util.List;
 
@@ -445,10 +446,18 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     /**
-     * Sets the inhalt.
+     * Setzt den Inhalt aus der uebergebenen Zahl.
      *
-     * @param n
-     *            the new inhalt
+     * @param n der neue Inhalt
+     */
+    public void setInhalt(final BigDecimal n) {
+        this.setInhalt(n.toString());
+    }
+
+    /**
+     * Setzt den Inhalt aus der uebergebenen Zahl.
+     *
+     * @param n der neue Inhalt
      */
     public void setInhalt(final int n) {
         this.setInhalt(Integer.toString(n));
@@ -925,10 +934,23 @@ public class Feld implements Comparable<Feld>, Cloneable {
             if (value == null) {
                 throw new ValidationException("null-Werte sind nicht erlaubt");
             }
-            if (!StringUtils.isAsciiPrintable(Text.replaceUmlaute(value))) {
-                throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen", value));
+            for (char c : value.toCharArray()) {
+                validateChar(value, c);
             }
             return value;
+        }
+
+        private void validateChar(String value, char c) {
+            switch (c) {
+                case '§':
+                    LOG.trace("Zeichen '{}' ist erlaubt.", c);
+                    break;
+                default:
+                    if (!StringUtils.isAsciiPrintable(Text.replaceUmlaute(Character.toString(c)))) {
+                        throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen '%c'", value, c));
+                    }
+                    break;
+            }
         }
 
         /**

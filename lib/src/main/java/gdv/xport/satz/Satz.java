@@ -53,7 +53,7 @@ public abstract class Satz implements Cloneable {
 
 	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
 	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
-	private Config config = Config.getInstance();
+	protected Config config = Config.getInstance();
 
   /**
    * Zum Abspeichern der Satznummer einer 0220er-GdvSatzart der Sparte 010
@@ -70,7 +70,7 @@ public abstract class Satz implements Cloneable {
    * gdv-online.de
    */
   private String gdvSatzartName = "";
-    private final AlphaNumFeld satzVersion = new AlphaNumFeld(3, 1);
+    private final AlphaNumFeld satzVersion = new AlphaNumFeld(Bezeichner.of("Version"), 3, 1, Align.LEFT);
 
 	/**
 	 * Instantiates a new satz.
@@ -126,6 +126,11 @@ public abstract class Satz implements Cloneable {
 	 * @since 5.0
 	 */
 	public Satz(final SatzTyp art, final int n) {
+		this(art, n, Config.getInstance());
+	}
+
+	protected Satz(final SatzTyp art, final int n, final Config cfg) {
+		this.config = cfg;
 		this.satzart.setInhalt(art.getSatzart());
 		this.createTeildatensaetze(n);
 	}
@@ -182,18 +187,9 @@ public abstract class Satz implements Cloneable {
         this.satzVersion.setInhalt(satz.getSatzversion().getInhalt());
         this.gdvSatzartName = satz.getGdvSatzartName();
         this.gdvSatzartNummer = satz.getGdvSatzartNummer();
+		this.config = satz.config;
         this.createTeildatensaetze(tdsList);
     }
-
-	/**
-	 * Hierueber laesst sich die Default-Konfiguration abaendern.
-	 *
-	 * @param config die neue Konfiguration
-	 * @since 5.3
-	 */
-	public void setConfig(Config config) {
-		this.config = config;
-	}
 
     protected void createTeildatensaetze(final int n) {
         teildatensatz = new Teildatensatz[n];
@@ -1079,14 +1075,11 @@ public abstract class Satz implements Cloneable {
   @JsonIgnore
   public final String getKrankenFolgeNr()
   {
-    String inhalt = NULL_STRING;
     if (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF))
-      inhalt = this.get(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF);
-    if (inhalt == NULL_STRING)
-      inhalt =
+      return this.get(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF);
+    else
+      return
           this.get(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF);
-
-    return inhalt;
   }
 
   /**
@@ -1430,14 +1423,24 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
-	 * Validiert die einzelnen Teildatensaetze.
+	 * Validiert die einzelnen Teildatensaetze mit der eingestellten
+	 * Standard-Konfiguration.
 	 *
 	 * @return Liste mit Constraint-Verletzungen
 	 */
 	public List<ConstraintViolation> validate() {
-		return validate(Config.LAX);
+		return validate(config);
 	}
 
+	/**
+	 * Im Unterschied zur normalen validate-Methode kann man hier eine
+	 * die Validierung ueber {@link Config#LAX} oder {@link Config#STRICT}
+	 * verschaerfen oder abmildern.
+	 *
+	 * @param validationConfig z.B. {@link Config#STRICT}
+	 * @return Liste mit Constraint-Verletzungen
+	 * @since 5.4
+	 */
 	public List<ConstraintViolation> validate(Config validationConfig) {
 		Validator validator = new Validator();
 		List<ConstraintViolation> violations = validator.validate(this);
