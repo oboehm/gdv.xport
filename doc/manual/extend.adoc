@@ -46,21 +46,45 @@ von gdv-online importiert und der erste gefundene MyUnfallDatensatz als XML ausg
 
 [source:xml]
 ----
-02109999  030      59999999999019999009999 01052004 ...
-<satz satzart="0210" sparte="030">
-  <teildatensatz nr=" ">
-    <feld bytes="  1-  4" bezeichnung="Satzart                       ">0210</feld>
-    <feld bytes="  5-  9" bezeichnung="VU-Nummer                     ">9999 </feld>
-    <feld bytes=" 10- 10" bezeichnung="Buendelungskennzeichen        "> </feld>
-    <feld bytes=" 11- 13" bezeichnung="Sparte                        ">030</feld>
-    <feld bytes=" 14- 30" bezeichnung="Versicherungsschein-Nummer    ">      59999999999</feld>
-    <feld bytes=" 31- 32" bezeichnung="Folgenummer                   ">01</feld>
-    <feld bytes=" 33- 42" bezeichnung="Geschaeftsstelle/Vermittler   ">9999009999</feld>
-    <feld bytes=" 44- 51" bezeichnung="Mein Vertragsbeginn           ">01052004</feld>
-    <feld bytes=" 93- 95" bezeichnung="Meine Waehrung                ">EUR</feld>
-    <feld bytes="256-256" bezeichnung="Satznummer                    "> </feld>
-  </teildatensatz>
-</satz>
+<service>
+	<info>
+		<stand>(c)reated by gdv-xport at 2021-11-18</stand>
+	</info>
+	<satzarten>
+		<!-- Satzart 0210.030 -->
+		<satzart>
+			<kennzeichnung>
+				<feldreferenz referenz="001-004-Satzart-Numerisch">
+					<name>Satzart</name>
+					<technischerName>Satzart</technischerName>
+					<auspraegung>0210</auspraegung>
+				</feldreferenz>
+				<feldreferenz referenz="011-013-Sparte-Unbekannt">
+					<name>Sparte</name>
+					<technischerName>Sparte</technischerName>
+					<auspraegung>030</auspraegung>
+				</feldreferenz>
+				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+					<name>Satznummer</name>
+					<technischerName>Satznummer</technischerName>
+				</feldreferenz>
+			</kennzeichnung>
+			<version>   </version>
+			<!-- Teildatensatz 1 Satzart 0210.030 -->
+			<satzanfang teilsatz="1"/>
+			<!-- NumFeld Satzart (1-4) -->
+			<feldreferenz referenz="001-004-Satzart-Numerisch">
+				<name>Satzart</name>
+				<technischerName>Satzart</technischerName>
+				<auspraegung>0210</auspraegung>
+			</feldreferenz>
+			<!-- VUNummer VuNr (5-9) -->
+			<feldreferenz referenz="005-009-VuNr-Vunummer">
+				<name>VU-Nummer</name>
+				<technischerName>VuNr</technischerName>
+				<auspraegung>9999</auspraegung>
+			</feldreferenz>
+            ...
 ----
 
 In der Anfangsphase von gdv.xport konnten eigene Datensätze auch mithilfe von Enum-Klassen definiert werden.

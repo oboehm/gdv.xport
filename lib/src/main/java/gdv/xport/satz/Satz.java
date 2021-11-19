@@ -70,7 +70,7 @@ public abstract class Satz implements Cloneable {
    * gdv-online.de
    */
   private String gdvSatzartName = "";
-    private final AlphaNumFeld satzVersion = new AlphaNumFeld(3, 1);
+    private final AlphaNumFeld satzVersion = new AlphaNumFeld(Bezeichner.of("Version"), 3, 1, Align.LEFT);
 
 	/**
 	 * Instantiates a new satz.
@@ -1430,14 +1430,24 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
-	 * Validiert die einzelnen Teildatensaetze.
+	 * Validiert die einzelnen Teildatensaetze mit der eingestellten
+	 * Standard-Konfiguration.
 	 *
 	 * @return Liste mit Constraint-Verletzungen
 	 */
 	public List<ConstraintViolation> validate() {
-		return validate(Config.LAX);
+		return validate(config);
 	}
 
+	/**
+	 * Im Unterschied zur normalen validate-Methode kann man hier eine
+	 * die Validierung ueber {@link Config#LAX} oder {@link Config#STRICT}
+	 * verschaerfen oder abmildern.
+	 *
+	 * @param validationConfig z.B. {@link Config#STRICT}
+	 * @return Liste mit Constraint-Verletzungen
+	 * @since 5.4
+	 */
 	public List<ConstraintViolation> validate(Config validationConfig) {
 		Validator validator = new Validator();
 		List<ConstraintViolation> violations = validator.validate(this);
