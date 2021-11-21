@@ -430,9 +430,7 @@ public class XmlService {
         if (satz == null) {
             throw new NotRegisteredException(satzNr);
         }
-        SatzXml s = new SatzXml(satz);
-        s.setConfig(config);
-        return s;
+        return new SatzXml(satz);
     }
 
     /**
