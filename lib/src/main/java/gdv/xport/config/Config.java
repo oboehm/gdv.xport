@@ -92,7 +92,8 @@ public final class Config {
      * @since 5.3
      */
     public Config() {
-        this(System.getProperty("gdv.config", "/gdv/xport/config/default.properties"));
+        //this(System.getProperty("gdv.config", "/gdv/xport/config/default.properties"));
+        this(System.getProperty("gdv.config", "/gdv.properties"));
     }
 
     /**
@@ -114,7 +115,8 @@ public final class Config {
         Properties properties = new Properties();
         try (InputStream input = Config.class.getResourceAsStream(resource)) {
             if (input == null) {
-                throw new IllegalArgumentException(String.format("Resource '%s' exitiert nicht", resource));
+                LOG.info("default.properties werden geladen, da Resource '{}' nicht vorhanden.", resource);
+                return loadProperties("/gdv/xport/config/default.properties");
             }
             LOG.info("Properties werden aus '{}' eingelesen.", resource);
             properties.load(input);
@@ -307,6 +309,11 @@ public final class Config {
     @Override
     public int hashCode() {
         return Objects.hash(properties);
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + properties;
     }
 
 }
