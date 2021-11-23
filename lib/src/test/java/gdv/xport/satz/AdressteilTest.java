@@ -18,13 +18,12 @@
 
 package gdv.xport.satz;
 
-import static org.junit.Assert.assertEquals;
-import gdv.xport.config.Config;
 import gdv.xport.satz.model.Satz100;
+import org.junit.Test;
 
 import java.io.IOException;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Urspruenglich war diese Klasse fuer den Test der Adressteil-Klasse
@@ -57,7 +56,6 @@ public class AdressteilTest extends AbstractSatzTest {
      */
     @Test
     public void testAdressteil() throws IOException {
-        Config.setEOD("");
         checkExport(adressteil, 256, 256, "1", 1280);
         checkExport(adressteil, 512, 512, "2", 1280);
     }
