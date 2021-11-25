@@ -846,11 +846,11 @@ public class Datensatz extends Satz {
 	 * @param reader the reader
 	 * @return the teildatensatz nummer
 	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @deprecated bitte {@link Satznummer#readSatznummer(PushbackReader)} verwenden
+	 * @deprecated bitte {@link Satznummer#readSatznummer(PushbackLineNumberReader)} verwenden
 	 */
 	@Deprecated
     public static TeildatensatzNummer readTeildatensatzNummer(final PushbackReader reader) throws IOException {
-		Satznummer satznr = Satznummer.readSatznummer(reader);
+		Satznummer satznr = Satznummer.readSatznummer(new PushbackLineNumberReader(reader));
 		return TeildatensatzNummer.of(satznr.toInt());
     }
 

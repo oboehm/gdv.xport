@@ -709,7 +709,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public final boolean equals(final Object obj) {
+    public boolean equals(final Object obj) {
         if (!(obj instanceof Feld)) {
             return false;
         }
@@ -724,7 +724,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @see java.lang.Object#hashCode()
      */
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         return this.byteAdresse + this.getInhalt().hashCode();
     }
 

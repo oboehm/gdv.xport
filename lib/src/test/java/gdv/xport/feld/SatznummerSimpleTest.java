@@ -20,6 +20,7 @@ package gdv.xport.feld;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
+import patterntesting.runtime.junit.ObjectTester;
 
 import static org.junit.Assert.assertTrue;
 
@@ -48,6 +49,13 @@ public final class SatznummerSimpleTest {
         Satznummer x = new Satznummer();
         x.setInhalt('a');
         assertTrue(x.isInvalid());
+    }
+
+    @Test
+    public void testEquals() {
+        Satznummer nummer = new Satznummer();
+        Satznummer nr = new Satznummer(new Zeichen(Bezeichner.SATZ_NR_1, 256));
+        ObjectTester.assertEquals(nummer, nr);
     }
 
 }
