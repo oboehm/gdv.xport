@@ -554,4 +554,11 @@ public class XmlServiceTest extends AbstractXmlTest {
         satz100.setFeld(Bezeichner.FOLGENUMMER, "x");
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetNumFeldWithLetter() throws XMLStreamException, IOException {
+        Config mitValidierung = Config.DEFAULT.withProperty("gdv.feld.validate", "lax");
+        Satz satz200 = XmlService.getInstance(mitValidierung).getSatzart(SatzTyp.of("0200"));
+        satz200.setFeld(Bezeichner.GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN, "A99999999999");
+    }
+
 }

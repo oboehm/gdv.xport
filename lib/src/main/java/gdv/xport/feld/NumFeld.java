@@ -295,16 +295,6 @@ public class NumFeld extends Feld {
      * @param n Zahl
      * @since 5.0
      */
-    public void setInhalt(BigInteger n) {
-        setInhalt(n.toString());
-    }
-
-    /**
-     * Setzt den Inhalt mit der uebergebenen Zahl.
-     *
-     * @param n Zahl
-     * @since 5.0
-     */
     public void setInhalt(BigDecimal n) {
         setInhalt(n.movePointRight(this.nachkommastellen).setScale(0, RoundingMode.HALF_UP).toString());
     }

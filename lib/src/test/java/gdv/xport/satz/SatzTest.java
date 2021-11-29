@@ -44,7 +44,6 @@ import org.junit.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
-import javax.xml.stream.XMLStreamException;
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -581,13 +580,6 @@ public final class SatzTest extends AbstractSatzTest {
         satz102.set(Bezeichner.BERUF_TEXT, "Tester");
         assertThat(testsatz.getFeld(Bezeichner.BERUF_TEXT).getInhalt().trim(), isEmptyString());
         assertNotEquals(satz102.toLongString(), testsatz.toLongString());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testSetNumFeldWithLetter() throws XMLStreamException, IOException {
-        Config mitValidierung = Config.DEFAULT.withProperty("gdv.feld.validate", "lax");
-        Satz satz200 = XmlService.getInstance(mitValidierung).getSatzart(SatzTyp.of("0200"));
-        satz200.setFeld(Bezeichner.GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN, "A99999999999");
     }
 
     @Test

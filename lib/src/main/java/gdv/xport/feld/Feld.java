@@ -39,6 +39,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.util.List;
 
@@ -446,6 +447,16 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     /**
+     * Setzt den Inhalt mit der uebergebenen Zahl.
+     *
+     * @param n Zahl
+     * @since 5.0
+     */
+    public void setInhalt(BigInteger n) {
+        setInhalt(n.toString());
+    }
+
+    /**
      * Setzt den Inhalt aus der uebergebenen Zahl.
      *
      * @param n der neue Inhalt
@@ -460,7 +471,16 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @param n der neue Inhalt
      */
     public void setInhalt(final int n) {
-        this.setInhalt(Integer.toString(n));
+        this.setInhalt((long) n);
+    }
+
+    /**
+     * Setzt den Inhalt aus der uebergebenen Zahl.
+     *
+     * @param n der neue Inhalt
+     */
+    public void setInhalt(final long n) {
+        this.setInhalt(Long.toString(n));
     }
 
     /**
