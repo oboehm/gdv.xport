@@ -65,7 +65,7 @@ import static org.junit.Assert.*;
  */
 public final class DatenpaketTest {
 
-    private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
+    private static final Logger LOG = LogManager.getLogger(DatenpaketTest.class);
     private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance("VUVM2018.xml");
     /** Fuer jeden Test gibt es ein frisches Datenpaket. */
     private final Datenpaket datenpaket = new Datenpaket();

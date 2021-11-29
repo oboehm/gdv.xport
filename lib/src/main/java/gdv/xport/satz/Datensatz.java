@@ -342,7 +342,7 @@ public class Datensatz extends Satz {
 	protected static void setUpTeildatensatz(final Teildatensatz tds, final NumFeld sparte) {
     if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()) && !tds.getFeldInhalt(Kopffelder1bis7.SATZART.getBezeichner())
                                                      .equals("9999")) {
-      setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), tds.config.getVUNr());
+      setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), Config.getInstance().getVUNr());
       setUp(tds, Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN));
       setUp(tds, Kopffelder1bis7.SPARTE.getBezeichner(), sparte);
       setUp(tds, Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER));

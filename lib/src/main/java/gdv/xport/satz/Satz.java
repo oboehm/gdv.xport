@@ -53,7 +53,7 @@ public abstract class Satz implements Cloneable {
 
 	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
 	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
-	protected final Config config;
+	private final Config config;
 
   /**
    * Zum Abspeichern der Satznummer einer 0220er-GdvSatzart der Sparte 010
@@ -174,7 +174,7 @@ public abstract class Satz implements Cloneable {
 	 */
 	public Satz(final SatzTyp art, final List<? extends Teildatensatz> tdsList) {
 		this.satzart.setInhalt(art.getSatzart());
-		this.config = tdsList.get(0).config;
+		this.config = Config.getInstance();
 		this.createTeildatensaetze(tdsList);
 	}
 
