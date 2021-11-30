@@ -33,7 +33,8 @@ import org.junit.Test;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
 /**
@@ -234,6 +235,25 @@ public class TeildatensatzTest extends AbstractSatzTest {
         tds.add(nr);
         assertEquals(1, tds.getSatznummer().toInt());
         assertEquals(222, tds.getSatznummer().getByteAdresse());
+    }
+
+    @Test
+    public void testCopyCtor() {
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of(800), 1);
+        Teildatensatz copy = new Teildatensatz(tds);
+        assertEquals(tds, copy);
+        checkSetSatzart(tds);
+        LOG.info("Original wude geaendert: {}", tds);
+        checkSetSatzart(copy);
+        LOG.info("Kopie wude geaendert: {}", tds);
+    }
+
+    private static void checkSetSatzart(Teildatensatz tds) {
+        Feld f1 = tds.getFeld(Bezeichner.SATZART);
+        Feld f2 = tds.getFeld(ByteAdresse.of(1));
+        assertEquals(f1, f2);
+        f2.setInhalt("0888");
+        assertEquals(f1, f2);
     }
 
 }

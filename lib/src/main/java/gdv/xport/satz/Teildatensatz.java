@@ -143,13 +143,15 @@ public class Teildatensatz extends Satz {
      * @param other der andere Teildatensatz
      */
     public Teildatensatz(final Teildatensatz other) {
-        this(other, other.getSatznummer().toInt());
-
+        super(other, 0);
+        this.satznummer = other.satznummer;
         for (Entry<Bezeichner, Feld> entry : other.datenfelder.entrySet()) {
             Feld copy = (Feld) entry.getValue().clone();
             this.datenfelder.put(entry.getKey(), copy);
             this.sortedFelder.add(copy);
         }
+        remove(Bezeichner.SATZART);
+        initDatenfelder();
     }
     
     /**
@@ -356,7 +358,6 @@ public class Teildatensatz extends Satz {
      *
      * @param name der Name des Feldes
      * @param value der gewuenschte Werte als String
-     * @see Satz#set(String, String)
      * @since 5.2
      */
     @Override
