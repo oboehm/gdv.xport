@@ -142,11 +142,15 @@ public final class Config {
     }
 
     private static InputStream getInputStream(URI uri) throws FileNotFoundException {
-        if (uri.getScheme().equalsIgnoreCase("file")) {
-            File file = new File(uri);
-            return new FileInputStream(file);
+        String scheme = uri.getScheme().toLowerCase();
+        switch (scheme) {
+            case "file":
+                return new FileInputStream(new File(uri));
+            case "classpath":
+                return getInputStream(uri.getPath());
+            default:
+                throw new UnsupportedOperationException(String.format("Schema '%s' in %s wird noch nicht unterstuetzt", scheme, uri));
         }
-        throw new UnsupportedOperationException(String.format("%s wird noch nicht unterstuetzt", uri));
     }
 
     // nur die SystemProperties, die mit "gdv." anfangen, werden uebernommen

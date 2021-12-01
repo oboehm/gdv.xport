@@ -116,4 +116,13 @@ public class ConfigTest {
         assertEquals(c1, c2);
     }
 
+    @Test
+    public void testConfigFromClasspath() {
+        String resource = "/gdv/xport/config/experimental.properties";
+        String classpathURI = "classpath:" + resource;
+        Config c1 = new Config(resource);
+        Config c2 = new Config(classpathURI);
+        assertEquals(c1, c2);
+    }
+
 }
