@@ -29,8 +29,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * Unit-Tests fuer {@link Config}-Klasse.
@@ -90,7 +89,7 @@ public class ConfigTest {
     }
 
     @Test
-    public void testConfigGdvProperties() throws IOException {
+    public void testConfigFromResource() throws IOException {
         Config c1 = new Config("experimental.properties");
         File experimentalFile = new File("src/main/resources/gdv/xport/config/experimental.properties");
         File gdvFile = new File("target/test-classes", "gdv.properties");
@@ -104,6 +103,17 @@ public class ConfigTest {
                 LOG.info("{} wurde wieder geloescht.", gdvFile);
             }
         }
+    }
+
+    @Test
+    public void testConfigFromFile() {
+        String resource = "/gdv/xport/config/experimental.properties";
+        File file = new File("src/main/resources", resource);
+        assertTrue(file.exists());
+        String fileURI = file.toURI().toString();
+        Config c1 = new Config(resource);
+        Config c2 = new Config(fileURI);
+        assertEquals(c1, c2);
     }
 
 }

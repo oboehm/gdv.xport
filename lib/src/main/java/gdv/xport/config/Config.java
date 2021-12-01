@@ -24,8 +24,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.concurrent.Immutable;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
@@ -113,7 +114,7 @@ public final class Config {
 
     private static Properties loadProperties(String resource) {
         Properties properties = new Properties();
-        try (InputStream input = Config.class.getResourceAsStream(resource)) {
+        try (InputStream input = getInputStream(resource)) {
             if (input == null) {
                 LOG.info("default.properties werden geladen, da Resource '{}' nicht vorhanden.", resource);
                 return loadProperties("/gdv/xport/config/default.properties");
@@ -123,8 +124,29 @@ public final class Config {
             addGdvSystemProperties(properties);
             return properties;
         } catch (IOException ex) {
-            throw new IllegalArgumentException(String.format("'%s' ist fehlerhaft", ex));
+            throw new IllegalArgumentException(String.format("'%s' ist fehlerhaft", resource), ex);
         }
+    }
+
+    private static InputStream getInputStream(String resource) throws FileNotFoundException {
+        try {
+            URI uri = new URI(resource);
+            if (uri.getScheme() != null) {
+                return getInputStream(uri);
+            }
+        } catch (URISyntaxException ex) {
+            LOG.debug("'{}' wird als Resource betrachtet ({}).", resource, ex);
+            LOG.trace("Details:", ex);
+        }
+        return Config.class.getResourceAsStream(resource);
+    }
+
+    private static InputStream getInputStream(URI uri) throws FileNotFoundException {
+        if (uri.getScheme().equalsIgnoreCase("file")) {
+            File file = new File(uri);
+            return new FileInputStream(file);
+        }
+        throw new UnsupportedOperationException(String.format("%s wird noch nicht unterstuetzt", uri));
     }
 
     // nur die SystemProperties, die mit "gdv." anfangen, werden uebernommen
