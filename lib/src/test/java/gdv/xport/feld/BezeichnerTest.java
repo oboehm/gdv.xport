@@ -19,8 +19,6 @@
 package gdv.xport.feld;
 
 import gdv.xport.satz.Satz;
-import gdv.xport.satz.feld.Feld0001;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld220Wagnis6ZukSummenaenderungen;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
@@ -231,27 +229,6 @@ public class BezeichnerTest {
     }
 
     /**
-     * Test-Methode fuer {@link Bezeichner#of(Enum)}, die als Ergebnis aus
-     * Issue 10 entstanden ist.
-     */
-    @Test
-    public void testOfEnum() {
-        Bezeichner version = Bezeichner.of(Feld0001.VERSION_SATZART_0210_FEUER);
-        assertEquals(Bezeichner.VERSION_SATZART_0210_FEUER, version);
-    }
-
-    /**
-     * Manchmal sind die Konstanten in den einzelnen Enums leicht
-     * unterschiedlich geschrieben. Trotzdem sollten diese Konstanten
-     * dem entsprechenden Bezeichner zugeordnet werden koennen.
-     */
-    @Test
-    public void testOfEnumName() {
-        Bezeichner beginnDatum = Bezeichner.of(Feld220Wagnis6ZukSummenaenderungen.BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME);
-        assertEquals(Bezeichner.BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME, beginnDatum);
-    }
-
-    /**
      * Test-Methode fuer {@link Bezeichner#of(String)}.
      */
     @Test
@@ -283,18 +260,6 @@ public class BezeichnerTest {
         Bezeichner nr = new Bezeichner("Lfd. Personennummer", "LfdPersonenNrImGevo");
         Bezeichner merged = nrImGevo.mergeWith(nr);
         assertEquals("LfdPersonenNrImGevo", merged.getTechnischerName());
-    }
-
-    /**
-     * Da doppelte Eintraege in Enums nicht erlaubt sind, sind manche
-     * Enum-Felder durch eine laufende Nummer gekennzeichnet. Z.B. gibt
-     * es in vielen enums ein INTRO1 und INTRO2, obwohl der Bezeichner
-     * dazu eigentlich "INTRO" ist.
-     */
-    @Test
-    public void testOfIntro() {
-        Bezeichner intro = Bezeichner.of(Feld0001.INTRO2);
-        assertEquals(Bezeichner.INTRO, intro);
     }
 
     /**
