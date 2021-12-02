@@ -19,7 +19,6 @@
 package gdv.xport.feld;
 
 import gdv.xport.config.Config;
-import gdv.xport.satz.feld.Feld100;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -44,7 +43,7 @@ public final class AlphaNumFeldTest extends AbstractFeldTest {
      */
     @Override
     protected Feld getTestFeld() {
-        return new AlphaNumFeld(Feld100.NAME1);
+        return new AlphaNumFeld(Bezeichner.NAME1, 30, 44);
     }
 
     /**

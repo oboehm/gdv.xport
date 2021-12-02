@@ -24,7 +24,6 @@ import gdv.xport.feld.Feld;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.TeildatensatzTest;
-import gdv.xport.satz.feld.Feld100;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -136,7 +135,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
                     allOf(containsString("Leerstellen"), containsString("Satzart 0100")));
         }
         
-        checkLeerstellen(2, new AlphaNumFeld(Feld100.LEERSTELLEN));
+        checkLeerstellen(2, new AlphaNumFeld(Bezeichner.LEERSTELLEN, 3, 247));
     }
 
     private void checkLeerstellen(final int satznummer, final Feld expected) {
@@ -152,7 +151,7 @@ public class TeildatensatzXmlTest extends TeildatensatzTest {
     @Test
     public void testGetLeerstellenSafe() {
         assertFalse(satz100.getTeildatensatz(1).hasFeld(Bezeichner.of("Leerstellen")));
-        checkLeerstellen(2, new AlphaNumFeld(Feld100.LEERSTELLEN));
+        checkLeerstellen(2, new AlphaNumFeld(Bezeichner.LEERSTELLEN, 3, 247));
     }
 
     /**

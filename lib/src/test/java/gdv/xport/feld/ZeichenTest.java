@@ -18,7 +18,6 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.satz.feld.Feld100;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -36,16 +35,7 @@ public final class ZeichenTest extends AbstractFeldTest {
      */
     @Override
     protected Feld getTestFeld() {
-        return new Zeichen(Feld100.ANREDESCHLUESSEL);
-    }
-
-    /**
-     * Test method for {@link Zeichen#Zeichen(Enum)}.
-     */
-    @Test
-    public void testZeichenEnum() {
-        Zeichen zeichen = new Zeichen(Feld100.ANREDESCHLUESSEL);
-        assertEquals(43, zeichen.getByteAdresse());
+        return new Zeichen(Bezeichner.ANREDESCHLUESSEL, 43);
     }
 
     /**

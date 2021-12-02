@@ -19,7 +19,6 @@
 package gdv.xport.satz;
 
 import gdv.xport.feld.*;
-import gdv.xport.satz.feld.Feld100;
 import gdv.xport.satz.feld.common.VertragsStatus;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
@@ -155,7 +154,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testCopyConstructor() {
         Teildatensatz orig = new Teildatensatz(100, 1);
-        Feld name1 = new AlphaNumFeld(Feld100.NAME1);
+        Feld name1 = new AlphaNumFeld(Bezeichner.NAME1, 30, 44);
         name1.setInhalt("Mickey");
         orig.add(name1);
         Teildatensatz copy = new Teildatensatz(orig);

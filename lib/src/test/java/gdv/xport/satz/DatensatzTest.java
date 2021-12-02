@@ -22,9 +22,7 @@ import gdv.xport.Datenpaket;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.ByteAdresse;
-import gdv.xport.feld.Feld;
 import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.satz.feld.Feld100;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
@@ -119,7 +117,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
     public void testCopyConstructor() {
         List<Teildatensatz> teildatensaetze = new ArrayList<>();
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
-        tds.add(new Feld(Feld100.NAME1));
+        tds.add(new AlphaNumFeld(Bezeichner.NAME1, 30, 44));
         tds.setFeld(Bezeichner.NAME1, "Asterix");
         teildatensaetze.add(tds);
         teildatensaetze.add(new Teildatensatz(100, 2));
