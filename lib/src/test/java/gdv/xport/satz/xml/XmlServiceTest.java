@@ -133,30 +133,6 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz100} uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart100() throws IOException {
-        if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
-            checkSatzart(100, new Satz100());
-        }
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz200} uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart200() throws IOException {
-        if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
-            checkSatzart(200, new Satz200());
-        }
-    }
-
-    /**
      * Hier testen wir, ob die XML-Variante mit {@link Satz210} uebereinstimmt.
      * Fuer diese Satzart gibt es wohl eine allgemeine Definition, weswegen wir
      * hier keine {@link NotUniqueException} erwarten.
