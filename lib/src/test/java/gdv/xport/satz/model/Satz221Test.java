@@ -19,20 +19,16 @@
 package gdv.xport.satz.model;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.feld.sparte10.wagnisart2.Feld221Wagnis2;
-import gdv.xport.satz.feld.sparte10.wagnisart6.Feld221Wagnis6;
 import gdv.xport.satz.feld.sparte10.wagnisart7.Feld221Wagnis7;
-import gdv.xport.satz.feld.sparte10.wagnisart9.Feld220Wagnis9;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -61,14 +57,6 @@ public class Satz221Test extends AbstractDatensatzTest {
     @Override
     protected Satz getSatz() {
         return new Satz221();
-    }
-
-    /**
-     * Der Lesbarkeit halber aktivieren wir das Zeilenende fuer jeden exportierten Satz.
-     */
-    @BeforeClass
-    public static void setUpBeforeClass() {
-        Config.setEOD("\n");
     }
 
     /**

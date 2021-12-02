@@ -124,7 +124,6 @@ public final class VorsatzTest extends AbstractSatzTest {
      * @throws IOException falls was schief geht
      */
     private void checkExport(final int startByte, final int endByte, final String expected) throws IOException {
-        Config.setEOD("");
         super.checkExport(this.vorsatz, startByte, endByte, expected, 768);
     }
 
@@ -186,7 +185,6 @@ public final class VorsatzTest extends AbstractSatzTest {
             + "\n";
         vorsatz.importFrom(input);
         StringWriter swriter = new StringWriter(input.length());
-        Config.setEOD("\n");
         vorsatz.export(swriter);
         swriter.close();
         assertEquals(input, swriter.toString());

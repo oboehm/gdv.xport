@@ -18,28 +18,26 @@
 
 package gdv.xport.satz.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.VertragsspezifischerTeilTest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * JUnit-Tests fuer Satz210.
- * Einige Tests stammen vom {@link VertragsspezifischerTeilTest}.
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (26.03.2011)

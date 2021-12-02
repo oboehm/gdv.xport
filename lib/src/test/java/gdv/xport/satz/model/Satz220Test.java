@@ -19,7 +19,6 @@
 package gdv.xport.satz.model;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.AbstractDatensatzTest;
@@ -35,7 +34,6 @@ import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -64,15 +62,6 @@ public class Satz220Test extends AbstractDatensatzTest {
     @Override
     protected Satz getSatz() {
         return new Satz220();
-    }
-
-    /**
-     * Der Lesbarkeit halber aktivieren wir das Zeilenende fuer jeden
-     * exportierten Satz.
-     */
-    @BeforeClass
-    public static void setUpBeforeClass() {
-        Config.setEOD("\n");
     }
 
     /**
