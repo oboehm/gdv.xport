@@ -846,4 +846,16 @@ public final class DatenpaketTest {
         }
     }
 
+    @Test
+    public void testImport0220_020_1_satz_kaputt() throws IOException {
+        Datenpaket datenpaket = new Datenpaket();
+        File testfile = new File("src/test/resources", "gdv/xport/satz/Test_import_0220_020_1-satz-kaput.txt");
+        datenpaket.importFrom(testfile);
+        File targetFile = new File("target", "satz-kaputt.txt");
+        datenpaket.export(targetFile);
+        FileTester.assertContentEquals(testfile, targetFile);
+        List<ConstraintViolation> violations = datenpaket.validate(Config.LAX);
+        LOG.info("violations = {}", violations);
+    }
+
 }
