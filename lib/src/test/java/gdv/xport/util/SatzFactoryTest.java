@@ -173,14 +173,6 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     /**
-     * Damit wird ueberprueft, ob Satzart 220 mit Sparte 70 registriert ist.
-     */
-    @Test
-    public void testGetSpartenspezifischerTeil70() {
-        checkGetDatensatz(220, 70, gdv.xport.satz.feld.sparte70.Feld220.values());
-    }
-
-    /**
      * Damit wird ueberprueft, ob Satzart 210 mit Sparte 70 registriert ist.
      */
     @Test

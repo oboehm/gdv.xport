@@ -39,7 +39,7 @@ import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Bezugsrechte;
 import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Wertungssummen;
 import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.wagnisart9.*;
-import org.apache.commons.lang3.StringUtils;
+import gdv.xport.satz.feld.sparte130.Feld220;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -104,7 +104,7 @@ public class Satz220 extends SpartensatzX {
         MAPPING.put(59, gdv.xport.satz.feld.sparte59.Feld220.values());
         MAPPING.put(70, gdv.xport.satz.feld.sparte70.Feld220.values());
         MAPPING.put(110, gdv.xport.satz.feld.sparte110.Feld220.values());
-        MAPPING.put(140, gdv.xport.satz.feld.sparte140.Feld220.values());
+        MAPPING.put(140, Feld220.values());
         MAPPING.put(510, gdv.xport.satz.feld.sparte510.Feld220.values());
     }
 

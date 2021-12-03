@@ -1,4 +1,4 @@
-package gdv.xport.satz.feld.sparte140;
+package gdv.xport.satz.feld.sparte130;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
