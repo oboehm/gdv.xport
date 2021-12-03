@@ -197,18 +197,6 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     /**
-     * Test von Satzart 210.
-     * <p>
-     * Nach eine Hinweis von Frank Berger wird jetzt auch die Sparte 130
-     * ueberprueft, da sie vorher gefehlt hatte.
-     * </p>
-     */
-    @Test
-    public void testGetSatzart210() {
-        checkGetDatensatz(210, 50, gdv.xport.satz.feld.sparte50.Feld210.values(), "1");
-    }
-
-    /**
      * Falls der Satz vom XmlService kommt, gab es Probleme, dass die
      * allgemeine Satz fuer z.B. Satzart 210 zurueckkam, und nicht der
      * spezielle Satz fuer die entsprechende Sparte.
@@ -218,22 +206,6 @@ public final class SatzFactoryTest extends AbstractTest {
         Datensatz satz210 = getDatensatz(210, 30);
         Feld vertragsstatus = satz210.getFeld(Bezeichner.VERTRAGSSTATUS);
         assertEquals(43, vertragsstatus.getByteAdresse());
-    }
-
-    /**
-     * Test von Satzart 220.
-     */
-    @Test
-    public void testGetSatzart220() {
-        checkGetDatensatz(220, 10, gdv.xport.satz.feld.sparte10.Feld220Wagnis0.values(), "1");
-        checkGetDatensatz(220, 140, gdv.xport.satz.feld.sparte140.Feld220.values(), "1");
-    }
-
-    private void checkGetDatensatz(final int satzart, final int sparte, final Enum[] felder, final String satzNr) {
-        checkGetDatensatz(satzart, sparte, felder);
-        Satz datensatz = getDatensatz(satzart, sparte);
-        Feld satznummer = datensatz.getFeld(Bezeichner.SATZNUMMER, 1);
-        assertEquals("falsche Satznummer", satzNr, satznummer.getInhalt());
     }
 
     private void checkGetDatensatz(final int satzart, final int sparte, final Enum[] felder) {
