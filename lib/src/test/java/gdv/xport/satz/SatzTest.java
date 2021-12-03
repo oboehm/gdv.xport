@@ -21,9 +21,6 @@ package gdv.xport.satz;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
-import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
@@ -217,23 +214,6 @@ public final class SatzTest extends AbstractSatzTest {
         assertEquals(new BigDecimal("-1.23"), betrag.toBigDecimal());
     }
 
-    /**
-     * Test method for {@link gdv.xport.satz.Satz#getFeld(java.lang.String)}.
-     * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als
-     * Ergebnis erwartet sondern eine IllegalArgumentException.
-     */
-    @Test(expected = IllegalArgumentException.class)
-    public void testGetFeldEnum() {
-        try {
-            satz.getFeld(Feld221Wagnis13ZukSummenaenderungen.ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN);
-            fail("IllegalArgumentException bei fehlendem Feld erwartet");
-        } catch (IllegalArgumentException ex) {
-            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN"), containsString(" 0210")));
-            throw ex;
-        }
-    }
-    
     /**
      * Testfall fuer Issue #12.
      */
@@ -500,7 +480,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGetFeldWithSameNames() {
-        Satz wertungssummen = new SatzX(SatzTyp.of("0220.010.2.9"), Feld220Wagnis2Wertungssummen.class);
+        Satz wertungssummen = XmlService.getInstance().getSatzart(SatzTyp.of("0220.010.2.9"));
         Feld f1 = wertungssummen.getFeld(Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN);
         Feld f2 = wertungssummen.getFeld(Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2);
         assertNotEquals(f1, f2);
