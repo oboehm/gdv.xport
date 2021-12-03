@@ -18,7 +18,6 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.satz.feld.Feld9999;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -54,15 +53,6 @@ public final class BetragTest extends AbstractFeldTest {
     public void testBetrag() {
         assertEquals("00000", betrag.getInhalt());
         assertEquals(0.0, betrag.toDouble(), 0.001);
-    }
-
-    /**
-     * Test-Methode fuer {@link Betrag#Betrag(Enum)}.
-     */
-    @Test
-    public void testBetragEnum() {
-        Betrag b = new Betrag(Feld9999.GESAMTBEITRAG);
-        assertEquals((Bezeichner.GESAMTBEITRAG), b.getBezeichner());
     }
 
     /**
