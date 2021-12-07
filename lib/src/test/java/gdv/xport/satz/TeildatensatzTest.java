@@ -19,7 +19,6 @@
 package gdv.xport.satz;
 
 import gdv.xport.feld.*;
-import gdv.xport.satz.feld.common.VertragsStatus;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
@@ -74,17 +73,6 @@ public class TeildatensatzTest extends AbstractSatzTest {
                     .getByteAdresse());
             prev = next;
         }
-    }
-
-    /**
-     * Test-Methode fuer {@link Teildatensatz#hasFeld(Enum)}.
-     */
-    @Test
-    public void testHasFeld() {
-        Teildatensatz tds = new Teildatensatz(new NumFeld("Feld42", "0042"), 1);
-        tds.add(new NumFeld(VertragsStatus.AUSSCHLUSS));
-        assertFalse("unexpected: VERTRAGSSTATUS in " + tds, tds.hasFeld(VertragsStatus.VERTRAGSSTATUS));
-        assertTrue("expected: AUSSCHLUSS in " + tds, tds.hasFeld(VertragsStatus.AUSSCHLUSS));
     }
 
     /**
