@@ -912,7 +912,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
                 return validate(value);
             } catch (ValidationException ex) {
                 throw new IllegalArgumentException(
-                        String.format("%s: Wert '%s' ist nicht erlaubt", validatedFeld, value), ex);
+                        String.format("%s: Wert '%s' ist nicht erlaubt (%s)", validatedFeld, value, ex.getMessage()), ex);
             }
         }
 

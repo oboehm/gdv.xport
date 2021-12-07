@@ -366,7 +366,12 @@ public class Teildatensatz extends Satz {
         if (x == Feld.NULL_FELD) {
             throw new IllegalArgumentException("Feld \"" + name + "\" not found");
         }
-        x.setInhalt(value);
+        try {
+            x.setInhalt(value);
+        } catch (IllegalArgumentException iae) {
+            throw new IllegalArgumentException(String.format(
+                    "%s: illegal value '%s' for %s", this.toShortString(), value, x), iae);
+        }
     }
 
     /**
