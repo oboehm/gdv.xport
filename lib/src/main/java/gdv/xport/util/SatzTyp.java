@@ -374,7 +374,7 @@ public class SatzTyp {
 	 */
 	public int getTeildatensatzNummer() {
 		assertTrue("TeildatensatzNummer", hasTeildatensatzNummer());
-		return teil.length > 3 ? teil[3] : 0;
+		return teil[3];
 	}
 
 	/**

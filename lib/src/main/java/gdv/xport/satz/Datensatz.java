@@ -824,16 +824,16 @@ public class Datensatz extends Satz {
 				for (int i = 30; i < 42; i++) {
 					if (lastFeld1To7[i] != newLine[i]) return false;
 				}
-				return matchesLastFeld(satznummer, newLine);
+				return matchesLastFeld(satznummer, reader);
 			}
 		}
 		return false;
 	}
 
-	private static boolean matchesLastFeld(Character satznummer, char[] newLine) {
+	private static boolean matchesLastFeld(Character satznummer, PushbackLineNumberReader reader) throws IOException {
 		// Das letzte Feld wird darauf verglichen, dass es groesser als das
 		// vorherige ist, falls Teildatensaetze uebersprungen werden
-		char newSatznummer = readSatznummer(newLine);
+		char newSatznummer = Satznummer.readSatznummer(reader).toChar();
 		return !(Character.isDigit(newSatznummer) && Character.isDigit(satznummer) && newSatznummer <= satznummer);
 	}
 

@@ -1577,22 +1577,6 @@ public abstract class Satz implements Cloneable {
         return false;
     }
 
-    /**
-	 * Liest die Satznummer.
-	 * <p>
-	 * Wird mit v6 entfernt.
-	 * </p>
-     *
-     * @param reader den Reader
-     * @return Teildatensatz-Nummer
-	 * @throws IOException bei Lesefehler
-	 * @deprecated funktioniert nicht fuer alle Faelle (s. Issue 61)
-     */
-	@Deprecated
-    public static Character readSatznummer(final PushbackReader reader) throws IOException {
-		return SatzX.readSatznummer(reader);
-    }
-
 	/**
 	 * Liest die Satznummer.
 	 * <p>

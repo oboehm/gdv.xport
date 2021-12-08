@@ -170,8 +170,16 @@ public class SatzRegistry implements VersionHandler {
     /**
      * Mit dieser Klasse konnen die Registrierungen wieder komplett
      * rueckgaengig gemacht werden. Diese Methode wurde vor allem zur
-     * Unterstuetzung der Unit-Tests eingefuehrt.
+     * Unterstuetzung der Unit-Tests eingefuehrt, wird aber seit der
+     * Umstellung von {@link SatzFactory} auf {@link SatzRegistry}
+     * nicht mehr benoetigt.
+     * <p>
+     * TODO: wird mit v7 entfernt
+     * </p>
+     *
+     * @deprecated wird nicht mehr benoetigt
      */
+    @Deprecated
     public void reset() {
         registeredSaetze.clear();
         LOG.debug("{} wurde zurueckgesetzt.", this);

@@ -343,21 +343,6 @@ public class Teildatensatz extends Satz {
      *
      * @param name der Name des Feldes
      * @param value der gewuenschte Werte als String
-     * @see Satz#set(String, String)
-     * @deprecated wurde durch {@link Teildatensatz#setFeld(Bezeichner, String)} ersetzt
-     */
-    @Deprecated
-    @Override
-    public void set(final Bezeichner name, final String value) {
-        setFeld(name, value);
-    }
-
-    /**
-     * Setzt das gewuenschte Feld. Falls es nicht vorhanden ist, wird analog
-     * zur Oberklasse eine {@link IllegalArgumentException} geworfen.
-     *
-     * @param name der Name des Feldes
-     * @param value der gewuenschte Werte als String
      * @since 5.2
      */
     @Override
@@ -671,10 +656,10 @@ public class Teildatensatz extends Satz {
     @Override
     public String toShortString() {
         if (sortedFelder.size() < 4)
-            return String.format("Teildatensatz %d Satzart %04d", this.getSatznummer()
-			      .toInt(), this.getSatzart());
+            return String.format("Teildatensatz %c Satzart %04d", this.getSatznummer().toChar(),
+			      this.getSatzart());
         else
-            return String.format("Teildatensatz %d Satzart %s", this.getSatznummer().toInt(),
+            return String.format("Teildatensatz %c Satzart %s", this.getSatznummer().toChar(),
                    this.getSatzTyp());
     }
 

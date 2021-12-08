@@ -52,9 +52,14 @@ public final class SatzFactory {
      * Mit dieser Klasse konnen die Registrierungen wieder komplett
      * rueckgaengig gemacht werden. Diese Methode wurde vor allem zur
      * Unterstuetzung der Unit-Tests eingefuehrt.
+     * <p>
+     * TODO: wird mit v7 entfernt
+     * </p>
      *
      * @since 4.1.1
+     * @deprecated wird nicht mehr benoetigt
      */
+    @Deprecated
     public static void reset() {
         FACTORY.reset();
         LOG.debug("Satzfactory wurde zurueckgesetzt.");
