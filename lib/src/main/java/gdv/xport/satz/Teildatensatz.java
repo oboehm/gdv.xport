@@ -351,12 +351,7 @@ public class Teildatensatz extends Satz {
         if (x == Feld.NULL_FELD) {
             throw new IllegalArgumentException("Feld \"" + name + "\" not found");
         }
-        try {
-            x.setInhalt(value);
-        } catch (IllegalArgumentException iae) {
-            throw new IllegalArgumentException(String.format(
-                    "%s: illegal value '%s' for %s", this.toShortString(), value, x), iae);
-        }
+        setFeld(x, value);
     }
 
     /**
@@ -382,7 +377,16 @@ public class Teildatensatz extends Satz {
      */
     public void setFeld(final ByteAdresse adresse, final String value) {
         Feld x = this.getFeld(adresse);
-        x.setInhalt(value);
+        setFeld(x, value);
+    }
+
+    private void setFeld(Feld x, String value) {
+        try {
+            x.setInhalt(value);
+        } catch (IllegalArgumentException iae) {
+            throw new IllegalArgumentException(String.format(
+                    "%s: illegal value '%s' for %s", this.toShortString(), value, x), iae);
+        }
     }
 
     /**
