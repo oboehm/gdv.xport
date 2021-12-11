@@ -24,8 +24,6 @@ import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -39,7 +37,6 @@ import static org.junit.Assert.assertEquals;
  * @author oliver
  * @since 1.2 (06.06.2016)
  */
-@RunWith(SmokeRunner.class)
 public final class CsvFormatterTest extends AbstractFormatterTest {
 
     @Override

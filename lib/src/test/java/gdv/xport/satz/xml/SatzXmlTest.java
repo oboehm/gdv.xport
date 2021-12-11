@@ -30,9 +30,7 @@ import gdv.xport.util.SatzTyp;
 import org.hamcrest.MatcherAssert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.ObjectTester;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
@@ -53,7 +51,6 @@ import static org.junit.Assert.*;
  * @author oliver (oliver.boehm@gmail.com)
  * @since 1.0 (31.07.2014)
  */
-@RunWith(SmokeRunner.class)
 public class SatzXmlTest extends AbstractDatensatzTest {
 
     private static SatzXml satz100;

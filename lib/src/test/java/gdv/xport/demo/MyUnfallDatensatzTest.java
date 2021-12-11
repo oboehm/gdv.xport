@@ -23,9 +23,7 @@ import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
-import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.SatzXml;
-import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.GdvXmlFormatter;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
@@ -33,17 +31,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import javax.xml.stream.XMLStreamException;
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.net.UnknownHostException;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -52,7 +49,6 @@ import static org.junit.Assert.assertEquals;
  * @author oliver (ob@aosd.de)
  * @since 0.4 (11.07.2010)
  */
-@RunWith(SmokeRunner.class)
 public final class MyUnfallDatensatzTest {
 
     private static final Logger LOG = LogManager.getLogger(MyUnfallDatensatzTest.class);

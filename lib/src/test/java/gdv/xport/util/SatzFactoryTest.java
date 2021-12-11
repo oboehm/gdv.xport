@@ -35,8 +35,6 @@ import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -55,7 +53,6 @@ import static org.junit.Assert.*;
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
-@RunWith(SmokeRunner.class)
 public final class SatzFactoryTest extends AbstractTest {
 
     private static final Logger LOG = LogManager.getLogger(SatzFactoryTest.class);

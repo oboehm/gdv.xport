@@ -18,9 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,7 +32,6 @@ import static org.junit.Assert.assertTrue;
  * @author oliver (oliver.boehm@gmail.com)
  * @since 1.0 (14.02.2014)
  */
-@RunWith(SmokeRunner.class)
 public final class DatenpaketStreamerTest {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketStreamerTest.class);

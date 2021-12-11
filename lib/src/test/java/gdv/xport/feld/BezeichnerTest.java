@@ -24,9 +24,7 @@ import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.ObjectTester;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import java.util.Set;
 
@@ -41,7 +39,6 @@ import static org.junit.Assert.*;
  * @author oliver (oliver.boehm@gmail.com)
  * @since 1.0 (25.09.2014)
  */
-@RunWith(SmokeRunner.class)
 public class BezeichnerTest {
 
     private static final Logger LOG = LogManager.getLogger();
