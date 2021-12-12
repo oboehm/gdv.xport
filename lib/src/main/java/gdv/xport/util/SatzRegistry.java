@@ -276,7 +276,7 @@ public class SatzRegistry implements VersionHandler {
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
      * Testen hilfreich sein kann). Diese unregister-Methode ersetzt ab 4.2 die
-     * anderen uregister-Methoden.
+     * anderen unregister-Methoden.
      *
      * @param typ SatzTyp bzw. Satzart
      */

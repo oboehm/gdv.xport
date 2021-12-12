@@ -88,36 +88,6 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
-	 * Instantiates a new satz.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param content die Satzart
-	 * @param n Anzahl
-	 * @deprecated bitte {@link Satz#Satz(SatzTyp, int)} verwenden
-	 */
-	@Deprecated
-	public Satz(final String content, final int n) {
-		this(SatzTyp.of(content), n);
-	}
-
-	/**
-	 * The Constructor.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param art z.B. 100 (f. Adressteil)
-	 * @param n Anzahl der Teildatensaetze
-	 * @deprecated bitte {@link Satz#Satz(SatzTyp, int)} verwenden
-	 */
-	@Deprecated
-	public Satz(final int art, final int n) {
-		this(SatzTyp.of(art), n);
-	}
-
-	/**
 	 * Mit diesem Konstruktor wird ein Satz fuer die entsprechende Satzart
 	 * mit n Teildatensaetzen angelegt.
 	 *
@@ -725,26 +695,6 @@ public abstract class Satz implements Cloneable {
             return Feld.NULL_FELD;
         }
     }
-
-	/**
-	 * Liefert das gewuenschte Feld falls vorhanden oder null.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param name gewuenschter Bezeichner des Feldes
-	 * @return das gesuchte Feld
-	 * @deprecated bitte {@link #hasFeld(Bezeichner)} verwenden
-	 */
-	@Deprecated
-	public Feld containsFeld(final String name) {
-		Bezeichner bezeichner = Bezeichner.of(name);
-		if (hasFeld(bezeichner)) {
-			return getFeld(bezeichner);
-		} else {
-			return null;
-		}
-	}
 
 	/**
 	 * Liefert das gewuenschte Feld.
@@ -1576,21 +1526,6 @@ public abstract class Satz implements Cloneable {
         }
         return false;
     }
-
-	/**
-	 * Liest die Satznummer.
-	 * <p>
-	 * Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param cbuf der eingelesene Satz in char array
-	 * @return Teildatensatz -Nummer
-	 * @deprecated funktioniert nicht fuer alle Faelle (s. Issue 61)
-	 */
-	@Deprecated
-	public static char readSatznummer(char[] cbuf) {
-		return SatzX.readSatznummer(cbuf);
-	}
 
 	/**
 	 * Legt eine Kopie des Satzes an.

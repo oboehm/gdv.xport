@@ -28,6 +28,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import patterntesting.runtime.junit.ObjectTester;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 
@@ -59,6 +60,10 @@ abstract public class AbstractSatzTest {
     @BeforeClass
     public static void setUpBeforeClass() {
         Config.setVUNummer(VU_NUMMER);
+        File exportDir = new File("target", "export");
+        if (!exportDir.exists() && exportDir.mkdir()) {
+            LOG.info("Verzeichnis '{}' wurde angelegt.", exportDir);
+        }
     }
 
     /**
