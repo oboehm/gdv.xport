@@ -53,7 +53,7 @@ public abstract class Satz implements Cloneable {
 
 	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
 	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
-	private Config config = Config.getInstance();
+	private final Config config;
 
   /**
    * Zum Abspeichern der Satznummer einer 0220er-GdvSatzart der Sparte 010
@@ -70,7 +70,7 @@ public abstract class Satz implements Cloneable {
    * gdv-online.de
    */
   private String gdvSatzartName = "";
-    private final AlphaNumFeld satzVersion = new AlphaNumFeld(3, 1);
+    private final AlphaNumFeld satzVersion = new AlphaNumFeld(Bezeichner.of("Version"), 3, 1, Align.LEFT);
 
 	/**
 	 * Instantiates a new satz.
@@ -88,36 +88,6 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
-	 * Instantiates a new satz.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param content die Satzart
-	 * @param n Anzahl
-	 * @deprecated bitte {@link Satz#Satz(SatzTyp, int)} verwenden
-	 */
-	@Deprecated
-	public Satz(final String content, final int n) {
-		this(SatzTyp.of(content), n);
-	}
-
-	/**
-	 * The Constructor.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param art z.B. 100 (f. Adressteil)
-	 * @param n Anzahl der Teildatensaetze
-	 * @deprecated bitte {@link Satz#Satz(SatzTyp, int)} verwenden
-	 */
-	@Deprecated
-	public Satz(final int art, final int n) {
-		this(SatzTyp.of(art), n);
-	}
-
-	/**
 	 * Mit diesem Konstruktor wird ein Satz fuer die entsprechende Satzart
 	 * mit n Teildatensaetzen angelegt.
 	 *
@@ -126,6 +96,11 @@ public abstract class Satz implements Cloneable {
 	 * @since 5.0
 	 */
 	public Satz(final SatzTyp art, final int n) {
+		this(art, n, Config.getInstance());
+	}
+
+	protected Satz(final SatzTyp art, final int n, final Config cfg) {
+		this.config = cfg;
 		this.satzart.setInhalt(art.getSatzart());
 		this.createTeildatensaetze(n);
 	}
@@ -137,6 +112,7 @@ public abstract class Satz implements Cloneable {
      * @param n    Anzahl der Teildatensaetze
      */
     public Satz(final Satz satz, final int n) {
+		this.config = satz.config;
         this.satzart.setInhalt(satz.getSatzart());
         this.gdvSatzartName = satz.getGdvSatzartName();
         this.gdvSatzartNummer = satz.getGdvSatzartNummer();
@@ -168,6 +144,7 @@ public abstract class Satz implements Cloneable {
 	 */
 	public Satz(final SatzTyp art, final List<? extends Teildatensatz> tdsList) {
 		this.satzart.setInhalt(art.getSatzart());
+		this.config = Config.getInstance();
 		this.createTeildatensaetze(tdsList);
 	}
 
@@ -182,18 +159,9 @@ public abstract class Satz implements Cloneable {
         this.satzVersion.setInhalt(satz.getSatzversion().getInhalt());
         this.gdvSatzartName = satz.getGdvSatzartName();
         this.gdvSatzartNummer = satz.getGdvSatzartNummer();
+		this.config = satz.config;
         this.createTeildatensaetze(tdsList);
     }
-
-	/**
-	 * Hierueber laesst sich die Default-Konfiguration abaendern.
-	 *
-	 * @param config die neue Konfiguration
-	 * @since 5.3
-	 */
-	public void setConfig(Config config) {
-		this.config = config;
-	}
 
     protected void createTeildatensaetze(final int n) {
         teildatensatz = new Teildatensatz[n];
@@ -729,26 +697,6 @@ public abstract class Satz implements Cloneable {
     }
 
 	/**
-	 * Liefert das gewuenschte Feld falls vorhanden oder null.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param name gewuenschter Bezeichner des Feldes
-	 * @return das gesuchte Feld
-	 * @deprecated bitte {@link #hasFeld(Bezeichner)} verwenden
-	 */
-	@Deprecated
-	public Feld containsFeld(final String name) {
-		Bezeichner bezeichner = Bezeichner.of(name);
-		if (hasFeld(bezeichner)) {
-			return getFeld(bezeichner);
-		} else {
-			return null;
-		}
-	}
-
-	/**
 	 * Liefert das gewuenschte Feld.
 	 *
 	 * @param name gewuenschter Bezeichner des Feldes
@@ -1079,14 +1027,11 @@ public abstract class Satz implements Cloneable {
   @JsonIgnore
   public final String getKrankenFolgeNr()
   {
-    String inhalt = NULL_STRING;
     if (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF))
-      inhalt = this.get(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF);
-    if (inhalt == NULL_STRING)
-      inhalt =
+      return this.get(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF);
+    else
+      return
           this.get(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF);
-
-    return inhalt;
   }
 
   /**
@@ -1430,14 +1375,24 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
-	 * Validiert die einzelnen Teildatensaetze.
+	 * Validiert die einzelnen Teildatensaetze mit der eingestellten
+	 * Standard-Konfiguration.
 	 *
 	 * @return Liste mit Constraint-Verletzungen
 	 */
 	public List<ConstraintViolation> validate() {
-		return validate(Config.LAX);
+		return validate(config);
 	}
 
+	/**
+	 * Im Unterschied zur normalen validate-Methode kann man hier eine
+	 * die Validierung ueber {@link Config#LAX} oder {@link Config#STRICT}
+	 * verschaerfen oder abmildern.
+	 *
+	 * @param validationConfig z.B. {@link Config#STRICT}
+	 * @return Liste mit Constraint-Verletzungen
+	 * @since 5.4
+	 */
 	public List<ConstraintViolation> validate(Config validationConfig) {
 		Validator validator = new Validator();
 		List<ConstraintViolation> violations = validator.validate(this);
@@ -1571,37 +1526,6 @@ public abstract class Satz implements Cloneable {
         }
         return false;
     }
-
-    /**
-	 * Liest die Satznummer.
-	 * <p>
-	 * Wird mit v6 entfernt.
-	 * </p>
-     *
-     * @param reader den Reader
-     * @return Teildatensatz-Nummer
-	 * @throws IOException bei Lesefehler
-	 * @deprecated funktioniert nicht fuer alle Faelle (s. Issue 61)
-     */
-	@Deprecated
-    public static Character readSatznummer(final PushbackReader reader) throws IOException {
-		return SatzX.readSatznummer(reader);
-    }
-
-	/**
-	 * Liest die Satznummer.
-	 * <p>
-	 * Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param cbuf der eingelesene Satz in char array
-	 * @return Teildatensatz -Nummer
-	 * @deprecated funktioniert nicht fuer alle Faelle (s. Issue 61)
-	 */
-	@Deprecated
-	public static char readSatznummer(char[] cbuf) {
-		return SatzX.readSatznummer(cbuf);
-	}
 
 	/**
 	 * Legt eine Kopie des Satzes an.

@@ -22,8 +22,6 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -42,7 +40,6 @@ import static org.junit.Assert.assertTrue;
  * @since 24.10.2009
  * @version $Revision$
  */
-@RunWith(SmokeRunner.class)
 public final class DatumTest extends AbstractFeldTest {
 
     private static final Logger LOG = LogManager.getLogger();

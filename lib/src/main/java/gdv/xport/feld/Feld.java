@@ -38,6 +38,8 @@ import java.io.Writer;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.util.List;
 
@@ -411,7 +413,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     public void setInhalt(final String neuerInhalt) {
         int anzahlBytes = this.getAnzahlBytes();
         String s = config.getBool("gdv.feld.truncate") ? truncate(neuerInhalt) : neuerInhalt;
-        s = validator.verify(s);
+        s = validator.verify(s, this);
         if (s.length() > anzahlBytes) {
             throw new IllegalArgumentException("Feld " + this.getBezeichner() + ": Parameter \"" + s
                     + "\" ist laenger als " + anzahlBytes + " Zeichen!");
@@ -445,13 +447,40 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     /**
-     * Sets the inhalt.
+     * Setzt den Inhalt mit der uebergebenen Zahl.
      *
-     * @param n
-     *            the new inhalt
+     * @param n Zahl
+     * @since 5.0
+     */
+    public void setInhalt(BigInteger n) {
+        setInhalt(n.toString());
+    }
+
+    /**
+     * Setzt den Inhalt aus der uebergebenen Zahl.
+     *
+     * @param n der neue Inhalt
+     */
+    public void setInhalt(final BigDecimal n) {
+        this.setInhalt(n.toString());
+    }
+
+    /**
+     * Setzt den Inhalt aus der uebergebenen Zahl.
+     *
+     * @param n der neue Inhalt
      */
     public void setInhalt(final int n) {
-        this.setInhalt(Integer.toString(n));
+        this.setInhalt((long) n);
+    }
+
+    /**
+     * Setzt den Inhalt aus der uebergebenen Zahl.
+     *
+     * @param n der neue Inhalt
+     */
+    public void setInhalt(final long n) {
+        this.setInhalt(Long.toString(n));
     }
 
     /**
@@ -700,7 +729,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public final boolean equals(final Object obj) {
+    public boolean equals(final Object obj) {
         if (!(obj instanceof Feld)) {
             return false;
         }
@@ -715,7 +744,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @see java.lang.Object#hashCode()
      */
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         return this.byteAdresse + this.getInhalt().hashCode();
     }
 
@@ -870,6 +899,24 @@ public class Feld implements Comparable<Feld>, Cloneable {
         }
 
         /**
+         * Im Gegensatzu zur validate-Methode wird hier eine
+         * {@link IllegalArgumentException} ausgeloest und das
+         * betroffene Feld noch mit ausgegeben
+         *
+         * @param value Wert, der validiert werden soll
+         * @param validatedFeld Feld, das validiert wurde
+         * @return der Wert selber zur Weiterverarbeitung
+         */
+        public String verify(String value, Feld validatedFeld) {
+            try {
+                return validate(value);
+            } catch (ValidationException ex) {
+                throw new IllegalArgumentException(
+                        String.format("%s: Wert '%s' ist nicht erlaubt (%s)", validatedFeld, value, ex.getMessage()), ex);
+            }
+        }
+
+        /**
          * Dieser validate-Methode validiert nur bei enstsprechender
          * Konfiguration.
          *
@@ -907,10 +954,23 @@ public class Feld implements Comparable<Feld>, Cloneable {
             if (value == null) {
                 throw new ValidationException("null-Werte sind nicht erlaubt");
             }
-            if (!StringUtils.isAsciiPrintable(Text.replaceUmlaute(value))) {
-                throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen", value));
+            for (char c : value.toCharArray()) {
+                validateChar(value, c);
             }
             return value;
+        }
+
+        private void validateChar(String value, char c) {
+            switch (c) {
+                case '§':
+                    LOG.trace("Zeichen '{}' ist erlaubt.", c);
+                    break;
+                default:
+                    if (!StringUtils.isAsciiPrintable(Text.replaceUmlaute(Character.toString(c)))) {
+                        throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen '%c'", value, c));
+                    }
+                    break;
+            }
         }
 
         /**

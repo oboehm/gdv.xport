@@ -19,14 +19,13 @@
 package gdv.xport.satz.xml;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.AbstractSatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
-import gdv.xport.satz.model.*;
 import gdv.xport.util.NotRegisteredException;
-import gdv.xport.util.NotUniqueException;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -132,40 +131,6 @@ public class XmlServiceTest extends AbstractXmlTest {
         checkImport(satz200);
     }
 
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz100} uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart100() throws IOException {
-        if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
-            checkSatzart(100, new Satz100());
-        }
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz200} uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart200() throws IOException {
-        if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
-            checkSatzart(200, new Satz200());
-        }
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz210} uebereinstimmt.
-     * Fuer diese Satzart gibt es wohl eine allgemeine Definition, weswegen wir
-     * hier keine {@link NotUniqueException} erwarten.
-     * <p>
-     * Der Vergleich mit dem Default-Constructor von {@link Satz210} schlaegt
-     * leider fehl. Dies liegt aber an der {@link Satz210}-Klasse, da hier
-     * die allgemeine Definition fuer Sparte "0" fehlt.
-     * </p>
-     */
     @Test
     public void testSatzart210() {
         SatzXml satzXml = xmlService.getSatzart(SatzTyp.of(210));
@@ -178,100 +143,6 @@ public class XmlServiceTest extends AbstractXmlTest {
         SatzXml satzXml = xmlService.getSatzart(SatzTyp.of("0210.000"));
         assertEquals(210, satzXml.getSatzart());
         assertEquals(SatzTyp.of("0210.000"), satzXml.getSatzTyp());
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz210}, Sparte 50
-     * uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart210Sparte50() throws IOException {
-        checkSatzart(SatzTyp.of("0210.050"), new Satz210(50));
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz211} uebereinstimmt.
-     * Fuer diese Satzart gibt es wohl eine allgemeine Definition, weswegen wir
-     * hier keine {@link NotUniqueException} erwarten.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart211() throws IOException {
-        setUpAndCheckSatz(xmlService.getSatzart(SatzTyp.of(211)), new Satz211());
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz220} uebereinstimmt.
-     * Da aber die Angabe der Satzart nicht eindeutig ist, sondern noch die
-     * Angabe der Sparte fehlt, erwarten wir eine {@link NotUniqueException}.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart220() throws IOException {
-        setUpAndCheckSatz(xmlService.getSatzart(SatzTyp.of(220)), new Satz220());
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz221} uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart221() throws IOException {
-        checkSatzart221(30);
-        checkSatzart221(40);
-        checkSatzart221(52);
-        checkSatzart221(53);
-        checkSatzart221(55);
-        checkSatzart221(59);
-    }
-
-    private void checkSatzart221(int sparte) throws IOException {
-        checkSatzart(SatzTyp.of(221, sparte), new Satz221(sparte));
-    }
-
-    /**
-     * Satzart 0221.070 hat einige Eigenheiten wie Satznummer auf Position 53
-     * oder 2 Teildatensaetze. Deswegen wird er hier gesondert getestet.
-     */
-    @Test
-    public void testSatzart0221070() {
-        SatzXml satzXml = xmlService.getSatzart(SatzTyp.of("0221.070"));
-        Satz221 reference = new Satz221(70);
-        checkTeildatensaetze(satzXml, reference.getTeildatensaetze());
-    }
-
-    /**
-     * Hier testen wir, ob die XML-Variante mit {@link Satz230} uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart230() throws IOException {
-        checkSatzart230(10);
-        if ("VUVM2018.xml".equals(Config.getXmlResource())) {
-            checkSatzart230(30);
-        }
-    }
-
-    private void checkSatzart230(int sparte) throws IOException {
-        checkSatzart(SatzTyp.of(230, sparte), new Satz230(sparte));
-    }
-
-    private static void checkSatzart(final int nr, final Satz reference) throws IOException {
-        SatzXml satzXml = xmlService.getSatzart(SatzTyp.of(String.format("%04d", nr)));
-        assertEquals(nr, satzXml.getSatzart());
-        checkSatz(satzXml, reference);
-    }
-
-    private static void checkSatzart(final SatzTyp satzNr, final Satz reference) throws IOException {
-        SatzXml satzXml = xmlService.getSatzart(satzNr);
-        assertEquals(satzNr.getSparte(), satzXml.getSparte());
-        checkSatz(satzXml, reference);
     }
 
     private static void checkSatz(SatzXml satzXml, final Satz reference) throws IOException, AssertionError {
@@ -304,22 +175,6 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     /**
-     * Hier testen wir, ob die XML-Variante mit Satz 220 Wagnisart 0
-     * uebereinstimmt.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testSatzart220Wagnis0() throws IOException {
-        checkSatzart(SatzTyp.of(220, 10, 0), Feld220Wagnis0.class);
-    }
-
-    private static void checkSatzart(final SatzTyp satzNr, final Class<? extends Enum> enumClass)
-            throws IOException {
-        checkSatz(xmlService.getSatzart(satzNr), new SatzX(satzNr, enumClass));
-    }
-
-    /**
      * Dies ist ein weiterer Testfall fuer Issue #33. Hierbei sollte keine
      * {@link NotRegisteredException} auftauchen.
      *
@@ -347,7 +202,6 @@ public class XmlServiceTest extends AbstractXmlTest {
             Teildatensatz tds = teildatensaetze.get(i);
             Zeichen satznummer = tds.getSatznummer();
             assertEquals(i+1, satznummer.toInt());
-            //assertEquals(51, satznummer.getByteAdresse());
         }
         checkImport(satz220);
     }
@@ -545,6 +399,20 @@ public class XmlServiceTest extends AbstractXmlTest {
         Feld rechtsbuendig = satz.getFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER);
         rechtsbuendig.setInhalt("0123456789abcdef");
         assertEquals(" 0123456789abcdef", rechtsbuendig.getInhalt());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testConfig() throws XMLStreamException, IOException {
+        XmlService service = XmlService.getInstance(Config.STRICT);
+        Satz satz100 = service.getSatzart(SatzTyp.of(100));
+        satz100.setFeld(Bezeichner.FOLGENUMMER, "x");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetNumFeldWithLetter() throws XMLStreamException, IOException {
+        Config mitValidierung = Config.DEFAULT.withProperty("gdv.feld.validate", "lax");
+        Satz satz200 = XmlService.getInstance(mitValidierung).getSatzart(SatzTyp.of("0200"));
+        satz200.setFeld(Bezeichner.GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN, "A99999999999");
     }
 
 }

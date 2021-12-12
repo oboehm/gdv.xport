@@ -65,8 +65,8 @@ public final class SatznummerTest {
             data.add(new Object[] { satz });
         }
         Satz satz = SATZ_REGISTRY.getSatz(SatzTyp.of("0220.030"));
-        satz.set(Bezeichner.LFD_NUMMER_VP, "333333");
-        satz.set(Bezeichner.VP_PERSONENNUMMER_VERSICHERER, "22222222222222222");
+        satz.setFeld(Bezeichner.LFD_NUMMER_VP, "333333");
+        satz.setFeld(Bezeichner.VP_PERSONENNUMMER_VERSICHERER, "22222222222222222");
         data.add(new Object[] { satz });
         return data;
     }
@@ -93,6 +93,7 @@ public final class SatznummerTest {
             Satznummer satznummer = Satznummer.readSatznummer(pushbackReader, tds);
             LOG.info("{}: {}", tds.toShortString(), satznummer);
             assertEquals(tds.getSatznummer(), satznummer);
+            assertEquals(satznummer, Satznummer.readSatznummer(pushbackReader));
         }
     }
 

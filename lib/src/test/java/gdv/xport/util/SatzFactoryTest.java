@@ -35,8 +35,6 @@ import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -55,7 +53,6 @@ import static org.junit.Assert.*;
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
-@RunWith(SmokeRunner.class)
 public final class SatzFactoryTest extends AbstractTest {
 
     private static final Logger LOG = LogManager.getLogger(SatzFactoryTest.class);
@@ -173,14 +170,6 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     /**
-     * Damit wird ueberprueft, ob Satzart 220 mit Sparte 70 registriert ist.
-     */
-    @Test
-    public void testGetSpartenspezifischerTeil70() {
-        checkGetDatensatz(220, 70, gdv.xport.satz.feld.sparte70.Feld220.values());
-    }
-
-    /**
      * Damit wird ueberprueft, ob Satzart 210 mit Sparte 70 registriert ist.
      */
     @Test
@@ -197,18 +186,6 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     /**
-     * Test von Satzart 210.
-     * <p>
-     * Nach eine Hinweis von Frank Berger wird jetzt auch die Sparte 130
-     * ueberprueft, da sie vorher gefehlt hatte.
-     * </p>
-     */
-    @Test
-    public void testGetSatzart210() {
-        checkGetDatensatz(210, 50, gdv.xport.satz.feld.sparte50.Feld210.values(), "1");
-    }
-
-    /**
      * Falls der Satz vom XmlService kommt, gab es Probleme, dass die
      * allgemeine Satz fuer z.B. Satzart 210 zurueckkam, und nicht der
      * spezielle Satz fuer die entsprechende Sparte.
@@ -218,22 +195,6 @@ public final class SatzFactoryTest extends AbstractTest {
         Datensatz satz210 = getDatensatz(210, 30);
         Feld vertragsstatus = satz210.getFeld(Bezeichner.VERTRAGSSTATUS);
         assertEquals(43, vertragsstatus.getByteAdresse());
-    }
-
-    /**
-     * Test von Satzart 220.
-     */
-    @Test
-    public void testGetSatzart220() {
-        checkGetDatensatz(220, 10, gdv.xport.satz.feld.sparte10.Feld220Wagnis0.values(), "1");
-        checkGetDatensatz(220, 140, gdv.xport.satz.feld.sparte140.Feld220.values(), "1");
-    }
-
-    private void checkGetDatensatz(final int satzart, final int sparte, final Enum[] felder, final String satzNr) {
-        checkGetDatensatz(satzart, sparte, felder);
-        Satz datensatz = getDatensatz(satzart, sparte);
-        Feld satznummer = datensatz.getFeld(Bezeichner.SATZNUMMER, 1);
-        assertEquals("falsche Satznummer", satzNr, satznummer.getInhalt());
     }
 
     private void checkGetDatensatz(final int satzart, final int sparte, final Enum[] felder) {
@@ -298,15 +259,16 @@ public final class SatzFactoryTest extends AbstractTest {
     @Test
     public void testSatzart0221051() throws XMLStreamException, IOException {
         SatzTyp kfz = SatzTyp.of(221, 51);
+        SatzRegistry satzRegistry = SatzRegistry.getInstance();
         try {
-            SatzRegistry.getInstance().register(SatzXml.of("Satz0221.051.xml"), kfz, SatzRegistry.NO_VALIDATOR);
-            Datensatz satz = SatzFactory.getDatensatz(kfz);
+            satzRegistry.register(SatzXml.of("Satz0221.051.xml"), kfz, SatzRegistry.NO_VALIDATOR);
+            Datensatz satz = satzRegistry.getDatensatz(kfz);
             checkDatensatz(satz);
             checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1);
             checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2);
             checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3);
         } finally {
-            SatzRegistry.getInstance().unregister(kfz);
+            satzRegistry.unregister(kfz);
         }
     }
 
@@ -333,7 +295,7 @@ public final class SatzFactoryTest extends AbstractTest {
         }
     }
 
-    private static void checkDatensatz(Datensatz satz) {
+    static void checkDatensatz(Datensatz satz) {
         for (Teildatensatz tds : satz.getTeildatensaetze()) {
             checkTeildatensatz(tds);
         }

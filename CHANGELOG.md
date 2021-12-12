@@ -15,6 +15,18 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - ByteAdresse durchgängiger verwenden
 
 
+## [Unreleased]
+
+### Security
+
+- Log4J wegen Zero-Day-Lücke auf 2.15 angehoben
+  (s.a. [Log4Shell / Apache Log4j Injection Vulnerability CVE-2021-44228](https://www.truesec.com/hub/blog/apache-log4j-injection-vulnerability-cve-2021-44228-impact-and-response))
+
+### Removed
+
+- einge 'deprecated' Klassen und Methoden wurden im Vorgriff auf v6 bereits entfernt
+
+
 ## [5.3.0] - 2021-11-11
 
 ### Added

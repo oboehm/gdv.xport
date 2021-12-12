@@ -21,9 +21,8 @@ package gdv.xport.satz;
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Feld;
+import gdv.xport.feld.ByteAdresse;
 import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.satz.feld.Feld100;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
@@ -118,7 +117,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
     public void testCopyConstructor() {
         List<Teildatensatz> teildatensaetze = new ArrayList<>();
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
-        tds.add(new Feld(Feld100.NAME1));
+        tds.add(new AlphaNumFeld(Bezeichner.NAME1, 30, 44));
         tds.setFeld(Bezeichner.NAME1, "Asterix");
         teildatensaetze.add(tds);
         teildatensaetze.add(new Teildatensatz(100, 2));
@@ -232,6 +231,15 @@ public class DatensatzTest extends AbstractDatensatzTest {
         assertEquals(1, satz.getNumberOfTeildatensaetze());
         assertTrue(satz.getTeildatensatz(1).hasFeld(art));
         return satz;
+    }
+
+    @Test
+    public void testSetFeldSatzart() {
+        Datensatz satz0200 = SatzRegistry.getInstance().getDatensatz(SatzTyp.of("0200"));
+        Teildatensatz tds1 = satz0200.getTeildatensatzBySatzNr(1);
+        tds1.setFeld(Bezeichner.SATZART, "030");
+        assertEquals("0030", tds1.getFeld(ByteAdresse.of(1)).getInhalt());
+        assertEquals(30, tds1.getSatzart());
     }
 
 }

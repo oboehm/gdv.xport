@@ -18,9 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import patterntesting.runtime.annotation.IntegrationTest;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,7 +32,6 @@ import static org.junit.Assert.assertTrue;
  * @author oliver (oliver.boehm@gmail.com)
  * @since 1.0 (14.02.2014)
  */
-@RunWith(SmokeRunner.class)
 public final class DatenpaketStreamerTest {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketStreamerTest.class);
@@ -47,11 +44,8 @@ public final class DatenpaketStreamerTest {
     @IntegrationTest
     @Test
     public void testReadDatenpaket() throws IOException {
-        InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt");
-        try {
+        try (InputStream istream = this.getClass().getResourceAsStream("/musterdatei_041222.txt")) {
             readDatenpaket(istream);
-        } finally {
-            istream.close();
         }
     }
 
@@ -63,12 +57,9 @@ public final class DatenpaketStreamerTest {
     @IntegrationTest
     @Test
     public void testRead2Datenpakete() throws IOException {
-        InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt");
-        try {
+        try (InputStream istream = this.getClass().getResourceAsStream("/zwei_datenpakete.txt")) {
             readDatenpaket(istream);
             readDatenpaket(istream);
-        } finally {
-            istream.close();
         }
     }
 
@@ -100,7 +91,21 @@ public final class DatenpaketStreamerTest {
 
     @Test
     public void testImportKlausTest() throws IOException {
-        try (InputStream istream = this.getClass().getResourceAsStream("/datenpakete/Klaus_Test_1112345670000301.gdv")) {
+        importStrict("/datenpakete/Klaus_Test.gdv");
+    }
+
+    @Test
+    public void testImportMusterdatei2009() throws IOException {
+        importStrict("/datenpakete/musterdatei_2009.txt");
+    }
+
+    @Test
+    public void testImportZweiDatenpaketeStrict() throws IOException {
+        importStrict("/datenpakete/zwei_datenpakete_strict.txt");
+    }
+
+    private static void importStrict(String resource) throws IOException {
+        try (InputStream istream = DatenpaketStreamer.class.getResourceAsStream(resource)) {
             DatenpaketStreamer streamer = new DatenpaketStreamer(istream);
             Datenpaket datenpaket = new Datenpaket();
             streamer.register(datenpaket);

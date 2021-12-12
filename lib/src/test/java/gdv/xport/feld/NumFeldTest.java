@@ -27,6 +27,7 @@ import org.junit.Test;
 
 import javax.validation.ValidationException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Locale;
 
@@ -178,6 +179,21 @@ public final class NumFeldTest extends AbstractFeldTest {
         assertTrue("should be valid", big.isValid());
         List<ConstraintViolation> violations = big.validate();
         assertTrue(violations + " should be empty", violations.isEmpty());
+    }
+
+    @Test
+    public void testBigDecimal() {
+        NumFeld big = new NumFeld(new Bezeichner("big"), 14, 1);
+        String zahl = "12345000000000";
+        big.setInhalt(new BigInteger(zahl));
+        assertEquals(zahl, big.getInhalt());
+        assertEquals(new BigInteger(zahl), big.toBigInteger());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testBigDecimalMinus() {
+        NumFeld big = new NumFeld(new Bezeichner("big"), 14, 1).mitConfig(Config.LAX);
+        big.setInhalt(new BigInteger("-1"));
     }
 
     /**

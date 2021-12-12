@@ -6,14 +6,14 @@
 |===
 |Server|master |develop |Konfiguration
 
-|https://travis-ci.com/oboehm/gdv.xport/branches[Travis-CI.com]
-|https://travis-ci.com/oboehm/gdv.xport/branches[image:https://travis-ci.com/oboehm/gdv.xport.svg?branch=master[Build Status]]
-|https://travis-ci.com/oboehm/gdv.xport/branches[image:https://travis-ci.com/oboehm/gdv.xport.svg?branch=develop%2F4.x[Build Status]]
+|https://travis-ci.com/github/oboehm/gdv.xport/branches[Travis-CI.com]
+|https://travis-ci.com/github/oboehm/gdv.xport/branches[image:https://travis-ci.com/oboehm/gdv.xport.svg?branch=master[Build Status]]
+|https://travis-ci.com/github/oboehm/gdv.xport/branches[image:https://travis-ci.com/oboehm/gdv.xport.svg?branch=develop%2F4.x[Build Status]]
 |s. link:../.travis.yml[.travis.yml]
 
 |https://travis-ci.org/oboehm/gdv.xport/branches[Travis-CI.org] (alt)
 |https://travis-ci.org/oboehm/gdv.xport/branches[image:https://travis-ci.org/oboehm/gdv.xport.svg?branch=master[Build Status]]
-|https://travis-ci.org/oboehm/gdv.xport/branches[image:https://travis-ci.org/oboehm/gdv.xport.svg?branch=develop%2F4.x[Build Status]]
+|https://travis-ci.com/github/oboehm/gdv.xport/branches[image:https://travis-ci.com/oboehm/gdv.xport.svg?branch=develop%2F4.x[Build Status]]
 |s. link:../.travis.yml[.travis.yml]
 
 |https://sonarcloud.io/projects[sonarcloud.io]
@@ -44,9 +44,10 @@ Voraussetzung für den manuellen Bau der Anwendung sind:
 
 Sind diese Voraussetzungen gegeben, kann die WAR-Datei für den Start als Web-Anwendung über folgendes Kommando gebaut werden:
 
-```
+[source]
+----
 mvn -DskipTests package
-```
+----
 
 Mit der Option `-DskipTests` werden die Unit-Tests übersprungen.
 Nach ca. 30 Sekunden sind dann alle Module gebaut.
@@ -59,14 +60,16 @@ Die WAR-Datei für den Start als Web-Anwendung befindet sich im Verzeichnis `ser
 Sind die Voraussetzung für den manuellen Bau nicht gegeben (kein Java, kein Maven), kann die Anwendung auch über Docker gebaut werden.
 Dazu gibt es auf oberster Ebene ein link:../Dockerfile[Dockerfile], mit dem die gesamte Anwendung in Docker gebaut werden kann:
 
-```
+[source]
+----
 docker build -t gdv.xport -f Dockerfile .
-```
+----
 
 Danach kann dieser Docker-Container über
 
-```
+[source]
+----
 docker run --rm --name gdv-xport -p 2517:2517 gdv.xport
-```
+----
 
 gestartet und unter http://localhost:2517/ aufgerufen werden.

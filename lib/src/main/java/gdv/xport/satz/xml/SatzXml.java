@@ -19,6 +19,7 @@
 package gdv.xport.satz.xml;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import gdv.xport.config.Config;
 import gdv.xport.satz.Datensatz;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlHelper;
@@ -61,7 +62,7 @@ public class SatzXml extends Datensatz {
      * @throws XMLStreamException the XML stream exception
      */
     public SatzXml(final XMLEventReader parser) throws XMLStreamException {
-        this(parser, XmlHelper.getNextStartElement("satzart", parser));
+        this(parser, XmlHelper.getNextStartElement("satzart", parser), Config.getInstance());
     }
 
     /**
@@ -71,8 +72,8 @@ public class SatzXml extends Datensatz {
      * @param element the element
      * @throws XMLStreamException the XML stream exception
      */
-    public SatzXml(final XMLEventReader parser, final StartElement element) throws XMLStreamException {
-        super(SatzTyp.of(0));
+    public SatzXml(final XMLEventReader parser, final StartElement element, final Config config) throws XMLStreamException {
+        super(SatzTyp.of(0), config);
         parse(element, parser);
     }
 

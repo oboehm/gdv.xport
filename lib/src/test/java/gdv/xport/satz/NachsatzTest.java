@@ -18,11 +18,9 @@
 
 package gdv.xport.satz;
 
-import gdv.xport.config.Config;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -50,14 +48,6 @@ public class NachsatzTest extends AbstractSatzTest {
             + "                                                                "
             + "                                                       Z0ZAG999 "
             + "\n";
-
-    /**
-     * Einige Tests erwarten das "\n" am Ende des Nachsatzes.
-     */
-    @Before
-    public void setUpEOD() {
-        Config.setEOD("\n");
-    }
 
     /**
      * Hier erzeugen wir einen Satz zum Testen.

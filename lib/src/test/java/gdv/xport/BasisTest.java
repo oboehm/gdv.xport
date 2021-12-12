@@ -18,12 +18,12 @@
 
 package gdv.xport;
 
-import org.junit.*;
-import org.junit.runner.*;
-import patterntesting.runtime.annotation.*;
-import patterntesting.runtime.junit.*;
+import org.junit.Test;
+import patterntesting.runtime.junit.CloneableTester;
+import patterntesting.runtime.junit.ObjectTester;
+import patterntesting.runtime.junit.SerializableTester;
 
-import java.io.*;
+import java.io.NotSerializableException;
 
 
 /**
@@ -34,8 +34,6 @@ import java.io.*;
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (19.11.2010)
  */
-@RunWith(SmokeRunner.class)
-@IntegrationTest
 public class BasisTest {
 
     private static final Package xportPackage = BasisTest.class.getPackage();

@@ -15,6 +15,7 @@ package gdv.xport;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.config.Config;
 import gdv.xport.event.ImportListener;
+import gdv.xport.event.SatzValidator;
 import gdv.xport.feld.*;
 import gdv.xport.io.*;
 import gdv.xport.satz.Datensatz;
@@ -27,7 +28,6 @@ import gdv.xport.util.SatzTyp;
 import gdv.xport.util.SimpleConstraintViolation;
 import gdv.xport.util.URLReader;
 import net.sf.oval.ConstraintViolation;
-import net.sf.oval.Validator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -748,14 +748,14 @@ public class Datenpaket implements ImportListener {
     }
 
     public List<ConstraintViolation> validate(Config validationConfig) {
-        Validator validator = new Validator();
-        List<ConstraintViolation> violations = validator.validate(this);
-        violations.addAll(validateVUNummer());
-        violations.addAll(this.vorsatz.validate(validationConfig));
+        SatzValidator satzValidator = new SatzValidator(validationConfig);
+        satzValidator.notice(this.vorsatz);
         for (Satz datensatz : this.datensaetze) {
-            violations.addAll(datensatz.validate(validationConfig));
+            satzValidator.notice(datensatz);
         }
-        violations.addAll(this.validateFolgenummern());
+        satzValidator.notice(this.nachsatz);
+        List<ConstraintViolation> violations = satzValidator.getViolations();
+        violations.addAll(validateVUNummer());
         violations.addAll(this.nachsatz.validate(validationConfig));
         return violations;
     }

@@ -19,6 +19,7 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.*;
@@ -30,7 +31,7 @@ import javax.validation.ValidationException;
 import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import static org.hamcrest.Matchers.either;
 import static org.hamcrest.Matchers.is;
@@ -47,6 +48,36 @@ public final class SatzRegistryTest {
     private final SatzRegistry f2009 = SatzRegistry.getInstance("VUVM2009.xml");
     private final SatzRegistry f2015 = SatzRegistry.getInstance("VUVM2015.xml");
     private final SatzRegistry f2018 = SatzRegistry.getInstance("VUVM2018.xml");
+
+    /**
+     * Hier testen wir mit Satz fuer die Kfz-Haftpflicht (0221.051), ob keine
+     * Loecher im Datensatz sind. Problem bereiteten hier urspruenglich die
+     * KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL#-Bezeichner.
+     *
+     * @throws XMLStreamException the xml stream exception
+     * @throws IOException        the io exception
+     */
+    @Test
+    public void testSatzart0221051() throws XMLStreamException, IOException {
+        SatzTyp kfz = SatzTyp.of(221, 51);
+        SatzRegistry satzRegistry = SatzRegistry.getInstance();
+        try {
+            satzRegistry.register(SatzXml.of("Satz0221.051.xml"), kfz, SatzRegistry.NO_VALIDATOR);
+            Datensatz satz = satzRegistry.getDatensatz(kfz);
+            SatzFactoryTest.checkDatensatz(satz);
+            checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1);
+            checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2);
+            checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL3);
+        } finally {
+            satzRegistry.unregister(kfz);
+        }
+    }
+
+    private static void checkDeckungssumme(Datensatz satz, Bezeichner name) {
+        Betrag betrag = (Betrag) satz.getFeld(name);
+        assertEquals(14, betrag.getAnzahlBytes());
+        assertEquals(2, betrag.getNachkommastellen());
+    }
 
     @Test
     public void testGetInstance2015() {
@@ -194,16 +225,15 @@ public final class SatzRegistryTest {
             fail("Fehler bei der Registrierung.");
         }
         Datenpaket datenpaket = new Datenpaket();
-        File testfile = new File("src/test/resources", "test0820satzregistry.txt");
-        datenpaket.importFrom(testfile, Charset.forName("UTF8"));
+        File testfile = new File("src/test/resources", "datenpakete/test0820satzregistry.txt");
+        datenpaket.importFrom(testfile, StandardCharsets.UTF_8);
         assertTrue("Datenpaket muss gueltig sein", datenpaket.isValid());
         assertEquals("Es wergen genau 6 Datensätze erwartet.", 6, datenpaket.getDatensaetze().size());
 
         Datensatz datensatz3 = datenpaket.getDatensaetze().get(2);
         Datensatz datensatz6 = datenpaket.getDatensaetze().get(5);
 
-        assertTrue("Die 0820er-Datensätze dürfen nicht ein und dasselbe Objekt sein.",
-                datensatz3 != datensatz6);
+        assertNotSame("Die 0820er-Datensätze dürfen nicht ein und dasselbe Objekt sein.", datensatz3, datensatz6);
 
         // prüfe Datensatz 3: 0820, VsNr=59999999999, Bemerkung=Hier die Bemerkung D1
         assertEquals("SatzTyp stimmt nicht", SatzTyp.of("0820"), datensatz3.getSatzTyp());

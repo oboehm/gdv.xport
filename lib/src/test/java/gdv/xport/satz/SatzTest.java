@@ -18,19 +18,9 @@
 
 package gdv.xport.satz;
 
-import gdv.xport.annotation.FelderInfo;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
-import gdv.xport.satz.feld.Feld200;
-import gdv.xport.satz.feld.MetaFeldInfo;
-import gdv.xport.satz.feld.common.Feld1bis7;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
-import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld220Wagnis13;
-import gdv.xport.satz.feld.sparte10.wagnisart13.Feld221Wagnis13ZukSummenaenderungen;
-import gdv.xport.satz.feld.sparte10.wagnisart2.Feld220Wagnis2Wertungssummen;
-import gdv.xport.satz.feld.sparte53.Feld220;
-import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
@@ -225,23 +215,6 @@ public final class SatzTest extends AbstractSatzTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.satz.Satz#getFeld(java.lang.String)}.
-     * Fuer ein Feld, das nicht existiert, wird nicht mehr NULL_FELD als
-     * Ergebnis erwartet sondern eine IllegalArgumentException.
-     */
-    @Test(expected = IllegalArgumentException.class)
-    public void testGetFeldEnum() {
-        try {
-            satz.getFeld(Feld221Wagnis13ZukSummenaenderungen.ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN);
-            fail("IllegalArgumentException bei fehlendem Feld erwartet");
-        } catch (IllegalArgumentException ex) {
-            assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN"), containsString(" 0210")));
-            throw ex;
-        }
-    }
-    
-    /**
      * Testfall fuer Issue #12.
      */
     @Test
@@ -433,47 +406,6 @@ public final class SatzTest extends AbstractSatzTest {
         assertEquals(n - 2, s.getTeildatensaetze().size());
     }
 
-    @Test
-    public void testGetAsListSimple() {
-        List<MetaFeldInfo> feldInfos = SatzX.getMetaFeldInfos(Feld200.values());
-        assertFalse("empty list", feldInfos.isEmpty());
-        LOG.info("Feld200 has " + feldInfos.size() + " FeldInfos.");
-        assertTrue("Feld200 should have more than " + Feld200.values().length + " entries",
-                feldInfos.size() >= Feld200.values().length);
-    }
-
-    @Test
-    public void testGetAsListComposite() {
-        List<MetaFeldInfo> feldInfos = SatzX.getMetaFeldInfos(Feld220.values());
-        assertFalse("empty list", feldInfos.isEmpty());
-        LOG.info(Feld220.class.getName() + " has " + feldInfos.size() + " FeldInfos.");
-        assertTrue("elements are missing", feldInfos.size() > Feld220.values().length);
-    }
-
-    /**
-     * {@link Feld1bis7} ist ein Beispiel, wo kein Teildatensatz gesetzt ist.
-     * Dieser wird z.B. beim {@link Feld200} ueber die {@link FelderInfo}-
-     * Annotation gesetzt. Ob dieses Wert tatsaechlich gesetzt wird, wird
-     * ueber diesen Test geprueft.
-     */
-    @Test
-    public void testGetAsListTeildatensatz() {
-        List<MetaFeldInfo> metaFeldInfos = SatzX.getMetaFeldInfos(Feld200.values());
-        int found = 0;
-        for (MetaFeldInfo metaFeldInfo : metaFeldInfos) {
-            if (metaFeldInfo.getName().equals("SATZART")) {
-                found++;
-                checkSatzart(metaFeldInfo, found);
-            }
-        }
-    }
-
-    private static void checkSatzart(final MetaFeldInfo satzart, final int found) {
-        LOG.info(found + ". MetaFeldInfo: " + satzart );
-        assertEquals(1, satzart.getNr());
-        assertEquals(found, satzart.getTeildatensatzNr());
-    }
-
     /**
      * Die Satzart ist im ersten Feld (Byte 1 - 4) enthalten und ist in jedem
      * Satz vorhanden (auch Vorsatz und Nachsatz).
@@ -482,22 +414,6 @@ public final class SatzTest extends AbstractSatzTest {
     public void testSatzartInhalt() {
         Feld satzart = satz.getFeld(Kopffelder1bis7.SATZART.getBezeichner());
         assertEquals("0210", satzart.getInhalt());
-    }
-
-    /**
-     * Test-Methode fuer {@link Satz#getSatzTyp()}.
-     */
-    @Test
-    public void testGetSatzTyp() {
-        Satz satz220 = new SatzX(220, Feld220Wagnis0.class);
-        assertEquals(SatzTyp.of("0220.010.0"), satz220.getSatzTyp());
-    }
-
-    @Test
-    public void testSatzartFeld220Wagnis13() {
-        Satz satz220 = new SatzX(220, Feld220Wagnis13.class);
-        satz220.set(Bezeichner.WAGNISART, "1");
-        assertEquals(SatzTyp.of("0220.010.13"), satz220.getSatzTyp());
     }
 
     @Test
@@ -564,7 +480,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGetFeldWithSameNames() {
-        Satz wertungssummen = new SatzX(SatzTyp.of("0220.010.2.9"), Feld220Wagnis2Wertungssummen.class);
+        Satz wertungssummen = XmlService.getInstance().getSatzart(SatzTyp.of("0220.010.2.9"));
         Feld f1 = wertungssummen.getFeld(Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN);
         Feld f2 = wertungssummen.getFeld(Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2);
         assertNotEquals(f1, f2);
@@ -580,13 +496,6 @@ public final class SatzTest extends AbstractSatzTest {
         satz102.set(Bezeichner.BERUF_TEXT, "Tester");
         assertThat(testsatz.getFeld(Bezeichner.BERUF_TEXT).getInhalt().trim(), isEmptyString());
         assertNotEquals(satz102.toLongString(), testsatz.toLongString());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testSetNumFeldWithLetter() {
-        Satz satz200 = XmlService.getInstance().getSatzart(SatzTyp.of("0200"));
-        satz200.setConfig(Config.EMPTY.withProperty("gdv.feld.validate", "true"));
-        satz200.set(Bezeichner.GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN, "A99999999999");
     }
 
     @Test

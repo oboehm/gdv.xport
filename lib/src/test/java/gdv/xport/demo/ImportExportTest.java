@@ -24,10 +24,8 @@ import gdv.xport.satz.Datensatz;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,7 +41,6 @@ import static org.junit.Assert.assertNotNull;
  * @author oliver (ob@aosd.de)
  * @since 0.9 (01.04.2013)
  */
-@RunWith(SmokeRunner.class)
 public class ImportExportTest {
 
     private static final Log log = LogFactory.getLog(ImportExportTest.class);

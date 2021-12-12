@@ -55,7 +55,8 @@ import java.util.Map;
 public class XmlService {
 
     private static final Logger LOG = LogManager.getLogger(XmlService.class);
-    private static final Map<String, XmlService> INSTANCES = new HashMap<>();
+    private static final Map<Config, XmlService> INSTANCES = new HashMap<>();
+    private final Config config;
     private final List<SatzXml> saetze = new ArrayList<>();
     private final Map<SatzTyp, SatzXml> satzarten = new HashMap<>();
     private final Map<String, FeldXml> felder = new HashMap<>();
@@ -77,6 +78,28 @@ public class XmlService {
     }
 
     /**
+     * Liefert Service-Instanz anhand der uebergebenen Konfiguration. Da der Aufruf
+     * des {@link XmlService}-Konstruktors teuer ist und einige Sekunden braucht
+     * (2-3 Sekunden auf einem MacBook-Air von 2011), wird ein interner Cache
+     * verwendet, um nicht jedesmal die Resource parsen zu muessen.
+     *
+     * @param cfg gewuenschte Konfiguration
+     * @return der frisch instantiierte XmlService
+     * @throws XMLStreamException falls die angegebene Resource nicht existiert
+     *                            oder nicht interpretiert werden kann
+     * @throws IOException        bei Lesefehlern
+     */
+    public static XmlService getInstance(final Config cfg) throws XMLStreamException, IOException {
+        XmlService service = INSTANCES.get(cfg);
+        if (service == null) {
+            service = createXmlService(cfg);
+            INSTANCES.put(cfg, service);
+            LOG.info("{} wurde mit Resource {} angelegt.", service, cfg);
+        }
+        return service;
+    }
+
+    /**
      * Liefert Service-Instanz anhand der uebergebenen Resource. Da der Aufruf
      * des {@link XmlService}-Konstruktors teuer ist und einige Sekunden braucht
      * (2-3 Sekunden auf einem MacBook-Air von 2011), wird ein interner Cache
@@ -84,17 +107,12 @@ public class XmlService {
      *
      * @param resource Resource-Name (z.B. "VUVM2013.xml")
      * @return der frisch instantiierte XmlService
-     * @throws XMLStreamException falls die angegebene Resource nicht existiert             oder nicht interpretiert werden kann
+     * @throws XMLStreamException falls die angegebene Resource nicht existiert
+     *                            oder nicht interpretiert werden kann
      * @throws IOException        bei Lesefehlern
      */
     public static XmlService getInstance(final String resource) throws XMLStreamException, IOException {
-        XmlService service = INSTANCES.get(resource);
-        if (service == null) {
-            service = createXmlService(resource);
-            INSTANCES.put(resource, service);
-            LOG.info("{} wurde mit Resource {} angelegt.", service, resource);
-        }
-        return service;
+        return getInstance(Config.getInstance().withProperty("gdv.XML-Resource", resource));
     }
 
     /**
@@ -110,34 +128,36 @@ public class XmlService {
      * @since 5.0
      */
     public static XmlService getInstance(URI resource) throws XMLStreamException, IOException {
-        XmlService service = INSTANCES.get(resource.toString());
+        Config cfg = Config.getInstance().withProperty("gdv.XML-Resource", resource.toString());
+        XmlService service = INSTANCES.get(cfg);
         if (service == null) {
-            service = createXmlService(resource);
-            INSTANCES.put(resource.toString(), service);
+            service = createXmlService(resource, cfg);
+            INSTANCES.put(cfg, service);
             LOG.info("{} wurde mit Resource {} angelegt.", service, resource);
         }
         return service;
     }
 
-    private static XmlService createXmlService(URI resource) throws XMLStreamException, IOException {
+    private static XmlService createXmlService(URI resource, Config cfg) throws XMLStreamException, IOException {
         try (InputStream istream = resource.toURL().openStream()) {
-            return createXmlService(istream);
+            return createXmlService(istream, cfg);
         }
     }
 
-    private static XmlService createXmlService(String resource) throws XMLStreamException, IOException {
+    private static XmlService createXmlService(Config cfg) throws XMLStreamException, IOException {
+        String resource = cfg.getProperty("gdv.XML-Resource", "VUVM2018.xml");
         try (InputStream istream = XmlService.class.getResourceAsStream(resource)) {
             if (istream == null) {
                 throw new XMLStreamException("resource '" + resource + "' not found");
             }
-            return createXmlService(istream);
+            return createXmlService(istream, cfg);
         }
     }
 
-    private static XmlService createXmlService(InputStream istream) throws XMLStreamException {
+    private static XmlService createXmlService(InputStream istream, Config cfg) throws XMLStreamException {
         XMLEventReader parser = createXMLEventReader(istream);
         try {
-            return new XmlService(parser);
+            return new XmlService(parser, cfg);
         } finally {
             parser.close();
         }
@@ -153,6 +173,7 @@ public class XmlService {
     /** Only for internal fallback. */
     private XmlService() {
         LOG.debug("Default XmlService created.");
+        this.config = Config.EMPTY;
     }
 
     /**
@@ -162,7 +183,11 @@ public class XmlService {
      * @throws XMLStreamException the XML stream exception
      */
     public XmlService(final XMLEventReader parser) throws XMLStreamException {
-        this(parser, XmlHelper.getNextStartElement(parser));
+        this(parser, Config.getInstance());
+    }
+
+    private XmlService(final XMLEventReader parser, final Config config) throws XMLStreamException {
+        this(parser, XmlHelper.getNextStartElement(parser), config);
     }
 
     /**
@@ -172,7 +197,12 @@ public class XmlService {
      * @param startElement the start element
      * @throws XMLStreamException the XML stream exception
      */
-    public XmlService(final XMLEventReader parser, final StartElement startElement)throws XMLStreamException  {
+    public XmlService(final XMLEventReader parser, final StartElement startElement) throws XMLStreamException  {
+        this(parser, startElement, Config.getInstance());
+    }
+
+    public XmlService(final XMLEventReader parser, final StartElement startElement, final Config config) throws XMLStreamException {
+        this.config = config;
         parse(startElement, parser);
     }
 
@@ -214,7 +244,7 @@ public class XmlService {
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
             if (XmlHelper.isStartElement(event, "satzart")) {
-                SatzXml satz = new SatzXml(reader, event.asStartElement());
+                SatzXml satz = new SatzXml(reader, event.asStartElement(), config);
                 this.saetze.add(satz);
                 LOG.debug("Satz {} added .", satz);
             } else if (XmlHelper.isEndElement(event, element.getName())) {
@@ -244,7 +274,7 @@ public class XmlService {
           }
         }
 
-        LOG.debug("GdvRelease found.", this.gdvRelease);
+        LOG.debug("GdvRelease '{}' found.", this.gdvRelease);
       }
       else if (XmlHelper.isEndElement(event, element.getName()))
       {

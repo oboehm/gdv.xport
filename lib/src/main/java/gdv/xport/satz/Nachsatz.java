@@ -19,10 +19,9 @@
 package gdv.xport.satz;
 
 import gdv.xport.feld.*;
-import gdv.xport.satz.feld.Feld9999;
 import gdv.xport.util.SatzFactory;
-import gdv.xport.util.SatzTyp;
 import gdv.xport.util.SatzRegistry;
+import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -522,29 +521,6 @@ public final class Nachsatz extends Satz {
         if (("+").equalsIgnoreCase(strVorzeichen) || ("-").equalsIgnoreCase(strVorzeichen))
             this.getTeildatensatz(1).getFeld(12).setInhalt(strVorzeichen);
         else throw new IllegalArgumentException(strVorzeichen + ": kein Vorzeichen");
-    }
-
-    /**
-     * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
-     * benutzt, um das Feld zu bestimmen. Dazu werden auch die Konstanten in
-     * {@link gdv.xport.feld.Bezeichner} verwendet.
-     * <p>
-     * TODO: Wird in v6 entfernt werden.
-     * </p>
-     *
-     * @param feld gewuenschtes Feld-Element
-     * @return das gesuchte Feld
-     * @throws IllegalArgumentException falls es das Feld nicht gibt
-     * @deprecated inzwischen durch {@link #getFeld(Bezeichner)} abgeloest
-     */
-    @Deprecated
-    @Override
-    public Feld getFeld(final Enum feld) throws IllegalArgumentException {
-        if (feld instanceof Feld9999) {
-            throw new UnsupportedOperationException("Vorzeichen kann jetzt ueber getVorzeichen...() ermitelt werden");
-        } else {
-            return super.getFeld(feld);
-        }
     }
 
 }

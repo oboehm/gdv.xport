@@ -17,6 +17,8 @@
  */
 package gdv.xport.feld;
 
+import gdv.xport.io.PushbackLineNumberReader;
+import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
@@ -44,7 +46,17 @@ public class Satznummer extends Zeichen {
      * Default-Constructor.
      */
     public Satznummer() {
-        this(new Zeichen(SATZNUMMER, 256));
+        this(256);
+    }
+
+    /**
+     * Nicht jede Satznummer faengt auf Position 256 an. Daher dieser
+     * Constructor.
+     *
+     * @param start Start-Adresse (z.B. 256)
+     */
+    public Satznummer(int start) {
+        this(new Zeichen(SATZNUMMER, start));
     }
 
     /**
@@ -65,20 +77,115 @@ public class Satznummer extends Zeichen {
      * @return die Satznummer
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    public static Satznummer readSatznummer(final PushbackReader reader) throws IOException {
+    public static Satznummer readSatznummer(final PushbackLineNumberReader reader) throws IOException {
         Satznummer satznr = new Satznummer();
+        int satzart = Satz.readSatzart(reader);
+        switch (satzart) {
+            case 210:
+            case 211:
+                satznr = getSatznummer21x(reader);
+                break;
+            case 220:
+            case 221:
+                satznr = getSatznummer22x(reader);
+                break;
+            case 250:
+            case 251:
+            case 450:
+                satznr = new Satznummer(51);
+                break;
+            case 270:
+            case 280:
+            case 291:
+            case 292:
+            case 293:
+            case 294:
+            case 295:
+                satznr = new Satznummer(43);
+                break;
+            case 500:
+                satznr.read(reader);
+                if (satznr.toChar() == '2') {
+                    return satznr;
+                }
+                satznr = new Satznummer(66);
+                break;
+            case 550:
+                satznr = new Satznummer(66);
+                break;
+        }
         satznr.read(reader);
         return satznr;
     }
 
-    private void read(PushbackReader reader) throws IOException {
-        char[] cbuf = new char[getByteAdresse()];
-        if (reader.read(cbuf) == -1) {
-            throw new EOFException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
+    private static Satznummer getSatznummer21x(PushbackLineNumberReader reader) throws IOException {
+        char[] satz = readRecord(reader, 14);
+        int sparte = Integer.parseInt(String.valueOf(satz, 10, 3));
+        switch (sparte) {
+            case 0:
+            case 80:
+            case 170:
+            case 190:
+            case 550:
+            case 560:
+            case 570:
+            case 580:
+                return new Satznummer(43);
+            case 130:
+                return new Satznummer(251);
+            default:
+                return new Satznummer(256);
         }
-        reader.unread(cbuf);
+    }
+
+    private static Satznummer getSatznummer22x(PushbackLineNumberReader reader) throws IOException {
+        char[] satz = readRecord(reader, 256);
+        int sparte = Integer.parseInt(String.valueOf(satz, 10, 3));
+        switch (sparte) {
+            case 0:
+                return new Satznummer(47);
+            case 30:
+                if ((satz[48] == '2' && satz[255] == 'X') || satz[48] == '1' || satz[48] == '4') {
+                    return new Satznummer(49);
+                } else if (satz[59] == '9') {
+                    return new Satznummer(60);
+                } else if (satz[42] == '3') {
+                    return new Satznummer(43);
+                }
+                return new Satznummer(60);
+            case 40:
+            case 140:
+                return new Satznummer(51);
+            case 70:
+                return new Satznummer(53);
+            case 80:
+            case 190:
+                return new Satznummer(49);
+            case 170:
+                return new Satznummer(50);
+            case 550:
+            case 560:
+            case 570:
+            case 580:
+                return new Satznummer(43);
+            default:
+                return new Satznummer(256);
+        }
+    }
+
+    private void read(PushbackReader reader) throws IOException {
+        char[] cbuf = readRecord(reader, getByteAdresse());
         String teildatenSatz = new String(cbuf).substring(cbuf.length - 1, cbuf.length);
         setInhalt(teildatenSatz);
+    }
+
+    private static char[] readRecord(PushbackReader reader, int size) throws IOException {
+        char[] cbuf = new char[size];
+        if (reader.read(cbuf) < 0) {
+            throw new EOFException("can't read " + size + " bytes from " + reader);
+        }
+        reader.unread(cbuf);
+        return cbuf;
     }
 
     /**
@@ -135,6 +242,16 @@ public class Satznummer extends Zeichen {
     @Override
     public Object clone() {
         return new Satznummer(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Satznummer)) {
+            return false;
+        }
+        Satznummer other = (Satznummer) obj;
+        return (this.getByteAdresse() == other.getByteAdresse())
+                && (this.getInhalt().equals(other.getInhalt()));
     }
 
 }

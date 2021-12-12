@@ -18,16 +18,18 @@
 
 package gdv.xport.config;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
+import patterntesting.runtime.junit.ObjectTester;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 /**
  * Unit-Tests fuer {@link Config}-Klasse.
@@ -77,6 +79,50 @@ public class ConfigTest {
     public void testEOD() {
         String eod = config.getString("gdv.eod");
         assertEquals("\n", eod);
+    }
+
+    @Test
+    public void testEquals() {
+        Config a = new Config();
+        Config b = new Config();
+        ObjectTester.assertEquals(a, b);
+    }
+
+    @Test
+    public void testConfigFromResource() throws IOException {
+        Config c1 = new Config("experimental.properties");
+        File experimentalFile = new File("src/main/resources/gdv/xport/config/experimental.properties");
+        File gdvFile = new File("target/test-classes", "gdv.properties");
+        try {
+            FileUtils.copyFile(experimentalFile, gdvFile);
+            LOG.info("{} wurde nach {} kopiert.", experimentalFile, gdvFile);
+            Config c2 = new Config();
+            assertEquals(c1, c2);
+        } finally {
+            if (gdvFile.delete()) {
+                LOG.info("{} wurde wieder geloescht.", gdvFile);
+            }
+        }
+    }
+
+    @Test
+    public void testConfigFromFile() {
+        String resource = "/gdv/xport/config/experimental.properties";
+        File file = new File("src/main/resources", resource);
+        assertTrue(file.exists());
+        String fileURI = file.toURI().toString();
+        Config c1 = new Config(resource);
+        Config c2 = new Config(fileURI);
+        assertEquals(c1, c2);
+    }
+
+    @Test
+    public void testConfigFromClasspath() {
+        String resource = "/gdv/xport/config/experimental.properties";
+        String classpathURI = "classpath:" + resource;
+        Config c1 = new Config(resource);
+        Config c2 = new Config(classpathURI);
+        assertEquals(c1, c2);
     }
 
 }

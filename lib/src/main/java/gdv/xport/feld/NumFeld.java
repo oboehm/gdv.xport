@@ -301,7 +301,7 @@ public class NumFeld extends Feld {
 
     @Override
     public void setInhalt(String value) {
-        String s = validator.verify(value);
+        String s = validator.verify(value, this);
         if (config.getBool("gdv.numfeld.fill-blanks")) {
             super.setInhalt(s.trim());
         } else {
@@ -368,6 +368,17 @@ public class NumFeld extends Feld {
      */
     public double toDouble() {
         return toBigDecimal().doubleValue();
+    }
+
+    /**
+     * Fuer grosse Zahlen kann auch schon mal ein {@link BigInteger} noetig
+     * sein.
+     *
+     * @since 5.4
+     * @return die Zahl als {@link BigInteger}
+     */
+    public BigInteger toBigInteger() {
+        return new BigInteger(getInhalt().trim());
     }
 
     /**

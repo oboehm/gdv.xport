@@ -203,7 +203,11 @@ public class Datensatz extends Satz {
 	 * @since 5.0
 	 */
 	public Datensatz(SatzTyp satzTyp) {
-		this(satzTyp, 1);
+		this(satzTyp, Config.getInstance());
+	}
+
+	protected Datensatz(SatzTyp satzTyp, Config cfg) {
+		this(satzTyp, 1, cfg);
 	}
 
 	/**
@@ -254,7 +258,11 @@ public class Datensatz extends Satz {
 	 * @since 5.0
 	 */
 	public Datensatz(final SatzTyp satzTyp, final int n) {
-		super(satzTyp, n);
+		this(satzTyp, n, Config.getInstance());
+	}
+
+	protected Datensatz(final SatzTyp satzTyp, final int n, final Config cfg) {
+		super(satzTyp, n, cfg);
 		this.init(satzTyp);
 		this.setUpTeildatensaetze();
 	}
@@ -334,7 +342,7 @@ public class Datensatz extends Satz {
 	protected static void setUpTeildatensatz(final Teildatensatz tds, final NumFeld sparte) {
     if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()) && !tds.getFeldInhalt(Kopffelder1bis7.SATZART.getBezeichner())
                                                      .equals("9999")) {
-      setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), Config.getVUNummer());
+      setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), Config.getInstance().getVUNr());
       setUp(tds, Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN));
       setUp(tds, Kopffelder1bis7.SPARTE.getBezeichner(), sparte);
       setUp(tds, Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER));
@@ -816,16 +824,16 @@ public class Datensatz extends Satz {
 				for (int i = 30; i < 42; i++) {
 					if (lastFeld1To7[i] != newLine[i]) return false;
 				}
-				return matchesLastFeld(satznummer, newLine);
+				return matchesLastFeld(satznummer, reader);
 			}
 		}
 		return false;
 	}
 
-	private static boolean matchesLastFeld(Character satznummer, char[] newLine) {
+	private static boolean matchesLastFeld(Character satznummer, PushbackLineNumberReader reader) throws IOException {
 		// Das letzte Feld wird darauf verglichen, dass es groesser als das
 		// vorherige ist, falls Teildatensaetze uebersprungen werden
-		char newSatznummer = readSatznummer(newLine);
+		char newSatznummer = Satznummer.readSatznummer(reader).toChar();
 		return !(Character.isDigit(newSatznummer) && Character.isDigit(satznummer) && newSatznummer <= satznummer);
 	}
 
@@ -838,11 +846,11 @@ public class Datensatz extends Satz {
 	 * @param reader the reader
 	 * @return the teildatensatz nummer
 	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @deprecated bitte {@link Satznummer#readSatznummer(PushbackReader)} verwenden
+	 * @deprecated bitte {@link Satznummer#readSatznummer(PushbackLineNumberReader)} verwenden
 	 */
 	@Deprecated
     public static TeildatensatzNummer readTeildatensatzNummer(final PushbackReader reader) throws IOException {
-		Satznummer satznr = Satznummer.readSatznummer(reader);
+		Satznummer satznr = Satznummer.readSatznummer(new PushbackLineNumberReader(reader));
 		return TeildatensatzNummer.of(satznr.toInt());
     }
 

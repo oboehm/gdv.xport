@@ -1,0 +1,62 @@
+= Validierung
+
+
+== Import
+
+Der Import ist so ausgelegt, dass er auch dann durchläuft, wenn er fehlerhafte Daten enthält.
+Um die importieren Sätze dennoch validieren zu können, gibt es beim Datenpaket, bei den Satz-Klassen und den Feld-Klassen jeweils eine `validate()`-Methode.
+Diese liefert eine Liste mit Validierungsfehlern (ConstraintViolation), mit der die fehlerhafte Sätze und Felder identifiziert werden können.
+
+Willst du die Validierungsfehler bereits während des Import protokollieren, steht dir der
+link:../../lib/src/main/java/gdv/xport/event/SatzValidator.java[SatzValidator] im Zusammenspiel mit dem
+link:../../lib/src/main/java/gdv/xport/DatenpaketStreamer.java zur Verfügung.
+Er validiert Satz für Satz, sobald er importiert wurde.
+Am Ende kannst du dann über `getValidations()` die aufgesammelten Validierungsfehler abholen.
+
+
+== Export
+
+Beim Export möchtest du vermutlich vermeiden, dass falsche Werte in ein Datensatz hineinrutschen.
+Bis v6 bleibt dir hier nur die Wahl, die `validate()`-Methode vor dem eigentlichen Export aufzurufen.
+Ab v6 gibt es die Möglichkeit, die Validerung berets beim Setzen der Felder zu aktivieren:
+
+* global über die System-Property `gdv.feld.validate`
+* über eine eigene Property-Datei (s.u.)
+* über den XmlService oder SatzRegistry
+
+Der XmlService (und auch SatzRegistry) bietet ab v6 die Möglichkeit an, eine Instanz mit einer bestimmten Konfiguation zu verwenden:
+
+[source:java]
+----
+XmlService service = XmlService.getInstance(Config.STRICT)
+----
+
+Mit dieser Konfiguration (`Config.STRICT`) bekommst du beim Setzen eines NumFeldes eine `IllegalArgumentExeption`, wenn du keine gültige Zahl übergibst.
+
+
+
+== Lax oder Strict?
+
+Es gibt drei verschiedene Einstellungen für die Validierung:
+
+* off: keine Validierung (Default-Wert)
+* lax: normale Validierung
+* strict: strenge Validierung
+
+Während bei `lax` auch leere NumFelder gesetzt werden können, muss bei `strict` immer eine gültige Zahl (z.B. '0') angegeben werden.
+Zum anderen wird bei 'strict' die Ausrichtung von AlphaNumFelder erzwungen, in dem führende oder nachfolgende Leerzeichen abgeschnitten werden.
+
+
+== Eigene Property-Datei
+
+Neben der Validierung lässt sich auch das Verhalten bei Werten, die zu groß für ein Feld sind, konfigurieren.
+Normalerweise gibt es eine IllegalArgumentException, wenn man einen zu großen Wert angibt.
+Über die SystemProperty `gdv.feld.truncate=true` werden zu große Werte automatisch abgeschnitten bzw. mit dem größtmöglichen Wert (bei NumFeldern) belegt.
+
+Es gibt noch weitere Einstellmöglichkeiten wie das automatische Auffüllen von NumFeldern mit Nullen (`gdv.numfeld.fill-blanks`).
+Die Default-Werte sowie weitere Einstellungen kannst du
+link:../../lib/src/main/resources/gdv/xport/config/default.properties entnehmen.
+
+Du kannst auch eine eigene Property-Datei `gdv.properties` in deinen Classpath legen.
+gdv.xport wird dann die Einstellungen aus dieser Datei verwenden.
+Oder du gibst über `-Dgdv.config=...` den Namen deiner Property-Datei an.

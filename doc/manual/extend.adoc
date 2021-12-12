@@ -1,0 +1,91 @@
+= Eigene Erweiterungen
+
+Inzwischen werden alle Satzarten aus der XML-Beschreibung von
+http://www.gdv-online.de/vuvm/bestand/best_2018.htm[gdv-online.de]
+abgeleitet und unterstützt.
+Auf Basis dieser XML-Beschreibung können auch eigene Erweiterungen definiert und bei der
+link:../../lib/src/main/java/gdv/xport/util/SatzRegistry.java[SatzRegistry]
+registriert werden.
+
+Ein Beispiel für solch eine XML-Datei findest du unter
+link:../../lib/src/main/resources/gdv/xport/satz/xml/Satz0221.051.xml[Satz0221.051.xml].
+Im Unterschied zur Original-Beschreibung sind hier die zusammengefassten Währungseinheiten von
+http://www.gdv-online.de/vuvm/bestand/rel2018/ds0221.051.htm[Satzart 0221.051]
+in 3 Teile aufgeteilt.
+Den Test als Beispiel für eine Registrierung findest du unter link:../../lib/src/test/java/gdv/xport/util/SatzRegistryTest.java[SatzRegistryTest] (Zeile 52 - 74:
+
+[source:java]
+----
+    @Test
+    public void testSatzart0221051() throws XMLStreamException, IOException {
+        SatzTyp kfz = SatzTyp.of(221, 51);
+        SatzRegistry satzRegistry = SatzRegistry.getInstance();
+        try {
+            satzRegistry.register(SatzXml.of("Satz0221.051.xml"), kfz, SatzRegistry.NO_VALIDATOR);
+            Datensatz satz = satzRegistry.getDatensatz(kfz);
+            ...
+        } finally {
+            satzRegistry.unregister(kfz);
+        }
+    }
+----
+
+Normalerweise kannst du zur Registrierung eigener Satzarten nur den vom GDV vorgesehenen Bereich von 800 bis 900 verwenden.
+Willst du Satzarten außerhalb diesen Bereichs registrieren, musst du die Validierung abschalten.
+Dies kannst du, indem du als letzten Parameter einen Validator (hier: `SatzRegistry.NO_VALIDATOR`) angibst.
+
+Du kannst auch eigenen Datensätze registrieren, die von
+link:../../lib/src/main/java/gdv/xport/satz/Datensatz.java[Datensatz] oder
+link:../../lib/src/main/java/gdv/xport/satz/Satz.java[Satz] abgeleitet sind.
+Im link:../../lib/src/main/java/gdv/xport/demo/[demo]-Paket findest du
+link:../../lib/src/main/java/gdv/xport/demo/MyUnfallDatensatz.java[MyUnfallDatensatz] als Beispielklasse.
+In der main-Methode wird die Klasse im Framework registriert.
+Anschliessend wird das
+http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt[Muster-Datenpaket]
+von gdv-online importiert und der erste gefundene MyUnfallDatensatz als XML ausgegeben:
+
+[source:xml]
+----
+<service>
+	<info>
+		<stand>(c)reated by gdv-xport at 2021-11-18</stand>
+	</info>
+	<satzarten>
+		<!-- Satzart 0210.030 -->
+		<satzart>
+			<kennzeichnung>
+				<feldreferenz referenz="001-004-Satzart-Numerisch">
+					<name>Satzart</name>
+					<technischerName>Satzart</technischerName>
+					<auspraegung>0210</auspraegung>
+				</feldreferenz>
+				<feldreferenz referenz="011-013-Sparte-Unbekannt">
+					<name>Sparte</name>
+					<technischerName>Sparte</technischerName>
+					<auspraegung>030</auspraegung>
+				</feldreferenz>
+				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+					<name>Satznummer</name>
+					<technischerName>Satznummer</technischerName>
+				</feldreferenz>
+			</kennzeichnung>
+			<version>   </version>
+			<!-- Teildatensatz 1 Satzart 0210.030 -->
+			<satzanfang teilsatz="1"/>
+			<!-- NumFeld Satzart (1-4) -->
+			<feldreferenz referenz="001-004-Satzart-Numerisch">
+				<name>Satzart</name>
+				<technischerName>Satzart</technischerName>
+				<auspraegung>0210</auspraegung>
+			</feldreferenz>
+			<!-- VUNummer VuNr (5-9) -->
+			<feldreferenz referenz="005-009-VuNr-Vunummer">
+				<name>VU-Nummer</name>
+				<technischerName>VuNr</technischerName>
+				<auspraegung>9999</auspraegung>
+			</feldreferenz>
+            ...
+----
+
+In der Anfangsphase von gdv.xport konnten eigene Datensätze auch mithilfe von Enum-Klassen definiert werden.
+Diese Möglichkeit entfällt mit v6.

@@ -24,8 +24,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.concurrent.Immutable;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
@@ -92,7 +93,8 @@ public final class Config {
      * @since 5.3
      */
     public Config() {
-        this(System.getProperty("gdv.config", "/gdv/xport/config/default.properties"));
+        //this(System.getProperty("gdv.config", "/gdv/xport/config/default.properties"));
+        this(System.getProperty("gdv.config", "/gdv.properties"));
     }
 
     /**
@@ -112,16 +114,42 @@ public final class Config {
 
     private static Properties loadProperties(String resource) {
         Properties properties = new Properties();
-        try (InputStream input = Config.class.getResourceAsStream(resource)) {
+        try (InputStream input = getInputStream(resource)) {
             if (input == null) {
-                throw new IllegalArgumentException(String.format("Resource '%s' exitiert nicht", resource));
+                LOG.info("default.properties werden geladen, da Resource '{}' nicht vorhanden.", resource);
+                return loadProperties("/gdv/xport/config/default.properties");
             }
             LOG.info("Properties werden aus '{}' eingelesen.", resource);
             properties.load(input);
             addGdvSystemProperties(properties);
             return properties;
         } catch (IOException ex) {
-            throw new IllegalArgumentException(String.format("'%s' ist fehlerhaft", ex));
+            throw new IllegalArgumentException(String.format("'%s' ist fehlerhaft", resource), ex);
+        }
+    }
+
+    private static InputStream getInputStream(String resource) throws FileNotFoundException {
+        try {
+            URI uri = new URI(resource);
+            if (uri.getScheme() != null) {
+                return getInputStream(uri);
+            }
+        } catch (URISyntaxException ex) {
+            LOG.debug("'{}' wird als Resource betrachtet ({}).", resource, ex);
+            LOG.trace("Details:", ex);
+        }
+        return Config.class.getResourceAsStream(resource);
+    }
+
+    private static InputStream getInputStream(URI uri) throws FileNotFoundException {
+        String scheme = uri.getScheme().toLowerCase();
+        switch (scheme) {
+            case "file":
+                return new FileInputStream(new File(uri));
+            case "classpath":
+                return getInputStream(uri.getPath());
+            default:
+                throw new UnsupportedOperationException(String.format("Schema '%s' in %s wird noch nicht unterstuetzt", scheme, uri));
         }
     }
 
@@ -294,6 +322,24 @@ public final class Config {
      */
     public static synchronized boolean hasEOD() {
         return StringUtils.isNotEmpty(getEOD());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Config config = (Config) o;
+        return properties.equals(config.properties);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(properties);
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + properties;
     }
 
 }

@@ -1,4 +1,4 @@
-https://travis-ci.org/oboehm/gdv.xport[image:https://api.travis-ci.org/oboehm/gdv.xport.svg[BuildStatus]]
+https://travis-ci.com/github/oboehm/gdv.xport[image:https://api.travis-ci.com/oboehm/gdv.xport.svg[BuildStatus]]
 https://github.com/oboehm/gdv.xport/issues[image:https://img.shields.io/github/issues/oboehm/gdv.xport.svg[Issues]]
 https://sonarcloud.io/dashboard?id=com.github.oboehm%3Agdv-xport[image:https://sonarcloud.io/api/project_badges/measure?metric=alert_status&project=com.github.oboehm:gdv-xport[Quality Gate]]
 https://coveralls.io/github/oboehm/gdv.xport[image:https://coveralls.io/repos/github/oboehm/gdv.xport/badge.svg[Coverage Status]]

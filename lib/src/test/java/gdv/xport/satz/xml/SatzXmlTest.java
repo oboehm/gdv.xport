@@ -18,19 +18,19 @@
 
 package gdv.xport.satz.xml;
 
-import gdv.xport.feld.*;
+import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.ByteAdresse;
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.satz.AbstractDatensatzTest;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
-import gdv.xport.satz.model.Satz100;
 import gdv.xport.util.SatzTyp;
 import org.hamcrest.MatcherAssert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import patterntesting.runtime.junit.ObjectTester;
-import patterntesting.runtime.junit.SmokeRunner;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLStreamException;
@@ -51,7 +51,6 @@ import static org.junit.Assert.*;
  * @author oliver (oliver.boehm@gmail.com)
  * @since 1.0 (31.07.2014)
  */
-@RunWith(SmokeRunner.class)
 public class SatzXmlTest extends AbstractDatensatzTest {
 
     private static SatzXml satz100;
@@ -271,20 +270,6 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         SatzXml satz = getSatz("Satz100.xml");
         assertEquals(satz100.toLongString(), satz.toLongString());
         ObjectTester.assertEquals(satz100, satz);
-    }
-
-    /**
-     * Hier vergleichen wir {@link SatzXml} mit {@link Satz100}. Bei gleichen
-     * Daten sollte die equals-Methode 'true' zurueckliefern.
-     *
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @Test
-    public void testEqualsWithSatz100() throws IOException {
-        Satz100 satz = new Satz100();
-        satz.importFrom(satz100.toLongString());
-        assertEquals(satz.toLongString(), satz100.toLongString());
-        ObjectTester.assertEquals(satz, satz100);
     }
 
     /**

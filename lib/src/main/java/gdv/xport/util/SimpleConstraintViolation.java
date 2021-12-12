@@ -25,6 +25,8 @@ import net.sf.oval.context.ClassContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -37,7 +39,8 @@ import java.util.List;
 public final class SimpleConstraintViolation extends ConstraintViolation {
     
     private static final Logger LOG = LogManager.getLogger(SimpleConstraintViolation.class);
-    
+    private final List<ConstraintViolation> violations = new ArrayList<>();
+
     public SimpleConstraintViolation(Feld validatedObject, Throwable cause) {
         this(cause.getLocalizedMessage(), validatedObject);
         LOG.debug("{} is not valid:", validatedObject, cause);
@@ -53,6 +56,18 @@ public final class SimpleConstraintViolation extends ConstraintViolation {
 
     public SimpleConstraintViolation(Satz satz, List<ConstraintViolation> violations) {
         this(String.format("%s: %d Problem(e)", satz.toShortString(), violations.size()), satz, violations);
+        this.violations.addAll(violations);
+    }
+
+    /**
+     * Hierueber koennen weitere Validierungsfehler abgeholt werden, die
+     * noch an dieser {@link ConstraintViolation} mit dranhaengen.
+     *
+     * @return Liste mit Violations (die wiederum weitere enthalten koennen)
+     * @since 5.4
+     */
+    public List<ConstraintViolation> getViolations() {
+        return Collections.unmodifiableList(violations);
     }
 
     @Override
@@ -65,9 +80,9 @@ public final class SimpleConstraintViolation extends ConstraintViolation {
         for (ConstraintViolation cv : violations) {
             if (cv.getInvalidValue() instanceof List) {
                 buf.append(cv.getValidatedObject()).append(":\n");
-                List<?> cvViolations = (List) cv.getInvalidValue();
-                for (int i = 0; i < cvViolations.size(); i++) {
-                    buf.append("\t- ").append(cvViolations.get(i));
+                List<?> cvViolations = (List<?>) cv.getInvalidValue();
+                for (Object cvViolation : cvViolations) {
+                    buf.append("\t- ").append(cvViolation);
                 }
             } else {
                 buf.append(cv);

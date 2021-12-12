@@ -65,7 +65,7 @@ import static org.junit.Assert.*;
  */
 public final class DatenpaketTest {
 
-    private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
+    private static final Logger LOG = LogManager.getLogger(DatenpaketTest.class);
     private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance("VUVM2018.xml");
     /** Fuer jeden Test gibt es ein frisches Datenpaket. */
     private final Datenpaket datenpaket = new Datenpaket();
@@ -262,13 +262,25 @@ public final class DatenpaketTest {
      */
     @Test
     public void testImport2DatenpaketeWithReader() throws IOException {
-        try (Reader reader = new InputStreamReader(new FileInputStream("src/test/resources/zwei_datenpakete.txt"), StandardCharsets.ISO_8859_1)) {
+        checkZweiDatenpakete("src/test/resources/zwei_datenpakete.txt", Config.LAX);
+    }
+
+    @Test
+    public void testImport2DatenpaketeStrict() throws IOException {
+        checkZweiDatenpakete("src/test/resources/datenpakete/zwei_datenpakete_strict.txt", Config.STRICT);
+    }
+
+    private void checkZweiDatenpakete(String filename, Config config) throws IOException {
+        try (Reader reader = new InputStreamReader(new FileInputStream(filename), StandardCharsets.ISO_8859_1)) {
             checkImport(datenpaket, reader);
             Datenpaket zwei = new Datenpaket();
             checkImport(zwei, reader);
             LOG.info(datenpaket + " / " + zwei + " imported.");
             assertNotEquals(datenpaket, zwei);
         }
+        List<ConstraintViolation> violations = datenpaket.validate(config);
+        LOG.info("violations = {}", violations);
+        assertTrue(violations.isEmpty());
     }
 
     private static void checkImport(final Datenpaket paket, final Reader reader) throws IOException {
@@ -832,6 +844,18 @@ public final class DatenpaketTest {
             Satz satz = Datenpaket.importSatz(reader);
             assertEquals(123, satz.getSatzart());
         }
+    }
+
+    @Test
+    public void testImport0220_020_1_satz_kaputt() throws IOException {
+        Datenpaket datenpaket = new Datenpaket();
+        File testfile = new File("src/test/resources", "gdv/xport/satz/Test_import_0220_020_1-satz-kaput.txt");
+        datenpaket.importFrom(testfile);
+        File targetFile = new File("target", "satz-kaputt.txt");
+        datenpaket.export(targetFile);
+        FileTester.assertContentEquals(testfile, targetFile);
+        List<ConstraintViolation> violations = datenpaket.validate(Config.LAX);
+        LOG.info("violations = {}", violations);
     }
 
 }

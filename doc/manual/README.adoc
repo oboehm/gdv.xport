@@ -1,0 +1,11 @@
+= Anleitung
+
+In diesem Verzeichnis findest du einige Kurz-Anleitungen und Erläuterungen, die den Einstieg in gdv.xport erleichtern.
+
+- link:hello.adoc[Hello World]: der Klassiker, auf gdv.xport übertragen
+- link:import.adoc[Der erste Import]: wie bekomme ich eine GDV-Datei als link:../../lib/src/main/java/gdv/xport/Datenpaket.java[Datenpaket]?
+- link:main.adoc[Das Hauptprogramm]: Verwendung der Library als Kommandozeilen-Programm
+- link:export.adoc[Export]: der Export eines link:../../lib/src/main/java/gdv/xport/Datenpaket.java[Datenpaket]s
+- link:streaming.adoc[Streaming-API]: Importieren on-the-fly
+- link:extend.adoc[Eigene Erweiterungen]: noch mehr Satzarten
+- link:validate.adoc[Validierung]: Einstellungssache

@@ -76,7 +76,7 @@ public final class LogConfig {
 
     /**
      * Hierueber wird die URL fuer die Datenbank eingestellt und der angebene
-     * <tt>username</tt> und <tt>password</tt> an die URL angehaengt.
+     * <i>username</i> und <i>password</i> an die URL angehaengt.
      *
      * @param uri      DB-URI, z.B. "jdbc:postgresql://192.168.99.100:3277/test"
      * @param username DB-User, z.B. "test"

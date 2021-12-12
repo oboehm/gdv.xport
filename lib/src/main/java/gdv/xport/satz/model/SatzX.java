@@ -302,7 +302,7 @@ public class SatzX extends Datensatz {
 
 	/**
 	 * Wandelt das uebergebene Array in eine Liste mit MetaFeldInfos. Seit 0.7.1
-	 * duerfen Feld-Enums wie {@link gdv.xport.satz.feld.Feld100} auch
+	 * duerfen Feld-Enums wie gdv.xport.satz.feld.Feld100 auch
 	 * FelderInfo-Annotationen enthalten, die wiederum auf einen Enum verweisen.
 	 *
 	 * @param felder the felder
@@ -343,7 +343,7 @@ public class SatzX extends Datensatz {
 
 	/**
 	 * Wandelt das uebergebene Array in eine Liste mit Felder. Seit 0.7.1
-	 * duerfen Feld-Enums wie {@link gdv.xport.satz.feld.Feld100} auch
+	 * duerfen Feld-Enums wie gdv.xport.satz.feld.Feld100 auch
 	 * FelderInfo-Annotationen enthalten, die wiederum auf einen Enum verweisen.
 	 *
 	 * @param felder the felder
