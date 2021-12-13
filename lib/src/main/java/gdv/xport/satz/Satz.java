@@ -122,21 +122,6 @@ public abstract class Satz implements Cloneable {
 
 	/**
 	 * Instanziiert einen neuen Satz.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param art z.B. 100 (f. Adressteil)
-	 * @param tdsList Liste mit den Teildatensaetzen
-	 * @deprecated bitte {@link Satz#Satz(SatzTyp, List)} verwenden
-	 */
-	@Deprecated
-	public Satz(final int art, final List<? extends Teildatensatz> tdsList) {
-		this(SatzTyp.of(art), tdsList);
-	}
-
-	/**
-	 * Instanziiert einen neuen Satz.
 	 *
 	 * @param art     Satzart, z.B. 100 (f. Adressteil)
 	 * @param tdsList Liste mit den Teildatensaetzen
@@ -366,6 +351,9 @@ public abstract class Satz implements Cloneable {
 	 * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
 	 * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
 	 * gefunden wird, wird eine IllegalArgumentException geworfen.
+	 * <p>
+	 * TODO: wird mit v7 entfernt
+	 * </p>
 	 *
 	 * @param name Name des Felds (Bezeichnung)
 	 * @param value the value
@@ -393,6 +381,9 @@ public abstract class Satz implements Cloneable {
 
 	/**
      * Setzt den Inhalt des gewuenschten Feldes.
+	 * <p>
+	 * TODO: wird mit v7 entfernt
+	 * </p>
      *
      * @param name  Name des Felds (Bezeichnung)
      * @param value neuer Inhalt
@@ -420,6 +411,9 @@ public abstract class Satz implements Cloneable {
 	 * setzen, da die anderen Teildatensaetze (hoffentlich) auf die gleiche
 	 * Referenz verweisen - aber sicher ist sicher. Falls das Feld nicht
 	 * gefunden wird, wird eine IllegalArgumentException geworfen.
+	 * <p>
+	 * TODO: wird mit v7 entfernt
+	 * </p>
 	 *
 	 * @param name Name des Felds (Bezeichnung)
 	 * @param value the value
@@ -456,54 +450,6 @@ public abstract class Satz implements Cloneable {
 			throw new IllegalArgumentException("Feld \"" + name + "\" not found");
 		}
 	}
-
-	/**
-	 * Setzt den Inhalt des gewuenschten Feldes.
-	 * <p>
-	 * TODO: wird mit v6 entsorgt
-	 * </p>
-	 *
-	 * @param feldX das gewuenschte Feld-Element
-	 * @param value neuer Inhalt
-	 * @deprecated wird ab v6 nicht mehr unterstuetzt
-	 */
-	@Deprecated
-	public final void set(final Enum feldX, final String value) {
-		Bezeichner name = Feld.getAsBezeichner(feldX);
-		this.set(name, value);
-	}
-
-    /**
-     * Setzt den Inhalt des gewuenschten Feldes.
-	 * <p>
-	 * TODO: wird mit v6 entsorgt
-	 * </p>
-     *
-     * @param feldX das gewuenschte Feld-Element
-     * @param value neuer Inhalt
-     * @since 0.9 (oboehm, 1-Apr-2013)
-	 * @deprecated wird ab v6 nicht mehr unterstuetzt
-	 */
-	@Deprecated
-    public final void set(final Enum feldX, final Integer value) {
-        this.set(feldX, Integer.toString(value));
-    }
-
-    /**
-     * Setzt den Inhalt des gewuenschten Feldes.
-	 * <p>
-	 * TODO: wird mit v6 entsorgt
-	 * </p>
-     *
-     * @param feldX das gewuenschte Feld-Element
-     * @param value neuer Inhalt
-     * @since 0.9 (oboehm, 1-Apr-2013)
-	 * @deprecated wird ab v6 nicht mehr unterstuetzt
-	 */
-	@Deprecated
-    public final void set(final Enum feldX, final Character value) {
-        this.set(feldX, Character.toString(value));
-    }
 
 	/**
 	 * Setzt den Vermittler in das entsprechende Feld.
@@ -604,6 +550,9 @@ public abstract class Satz implements Cloneable {
 
     /**
      * Liefert den Inhalt des gewuenschten Feldes.
+	 * <p>
+	 * TODO: wird mit v7 entfernt
+	 * </p>
 	 *
 	 * @param name gesuchtes Feld
 	 * @return Inhalt des gefundenden Felds (NULL_STRING, falls 'name' nicht
@@ -617,6 +566,9 @@ public abstract class Satz implements Cloneable {
 
     /**
      * Liefert den Inhalt des gewuenschten Feldes.
+	 * <p>
+	 * TODO: wird mit v7 entfernt
+	 * </p>
      *
      * @param bezeichner gesuchtes Field
      * @return Inhalt des gefundenden Felds (NULL_STRING, falls 'name' nicht
@@ -635,68 +587,6 @@ public abstract class Satz implements Cloneable {
     }
 
 	/**
-	 * Liefert den Inhalt des gewuenschten Feldes.
-	 * <p>
-	 * TODO: wird ab v6 entfernt werden
-	 * </p>
-	 *
-	 * @param feldX das gewuenschte Feld-Element
-	 * @return Inhalt des gefundenden Felds
-	 * @deprecated wird kuenftig nicht mehr unterstuetzt
-	 */
-	@Deprecated
-	public final String get(final Enum feldX) {
-		Bezeichner name = Feld.getAsBezeichner(feldX);
-		return this.get(name);
-	}
-
-	/**
-	 * Liefert das gewuenschte Feld. Allerdings wird nur der Name des Feldes
-	 * benutzt, um das Feld zu bestimmen. Dazu werden auch die Konstanten in
-     * {@link gdv.xport.feld.Bezeichner} verwendet.
-	 * <p>
-	 * TODO: Wird in v6 entfernt werden.
-	 * </p>
-	 *
-	 * @param feld gewuenschtes Feld-Element
-	 * @return das gesuchte Feld
-	 * @throws IllegalArgumentException falls es das Feld nicht gibt
-	 * @deprecated inzwischen durch {@link #getFeld(Bezeichner)} abgeloest
-	 */
-	@Deprecated
-	public Feld getFeld(final Enum feld) throws IllegalArgumentException {
-		for (int i = 0; i < teildatensatz.length; i++) {
-			if (teildatensatz[i].hasFeld(feld)) {
-				return teildatensatz[i].getFeld(feld);
-			}
-		}
-		throw new IllegalArgumentException("Feld \"" + feld + "\" nicht in " + this.toShortString()
-		        + " vorhanden!");
-	}
-
-    /**
-     * Liefert das gewuenschte Feld oder {@link Feld#NULL_FELD}, wenn nicht
-     * vorhanden. Allerdings wird nur der Name des Feldes benutzt, um das Feld zu
-     * bestimmen. Dazu werden auch die Konstanten in
-     * {@link gdv.xport.feld.Bezeichner} verwendet.
-	 * <p>
-	 * TODO: Wird in v6 entfernt.
-	 * </p>
-     *
-     * @param feld gewuenschtes Feld-Element
-     * @return das gesuchte Feld
-	 * @deprecated durch {@link #getFeldSafe(Bezeichner)} abgeloest
-     */
-    @Deprecated
-    public Feld getFeldSafe(final Enum feld) {
-        try {
-            return getFeld(feld);
-        } catch (IllegalArgumentException ex) {
-            return Feld.NULL_FELD;
-        }
-    }
-
-	/**
 	 * Liefert das gewuenschte Feld.
 	 *
 	 * @param name gewuenschter Bezeichner des Feldes
@@ -706,22 +596,6 @@ public abstract class Satz implements Cloneable {
 	public Feld getFeld(final String name) throws IllegalArgumentException {
 		return this.getFeld(Bezeichner.of(name));
 	}
-	
-    /**
-     * Liefert das gewuenschte Feld oder {@link Feld#NULL_FELD}, wenn nicht
-     * vorhanden.
-	 * <p>
-	 * TODO: wird in v6 entfernt
-	 * </p>
-     *
-     * @param name gewuenschter Bezeichner des Feldes
-     * @return das gesuchte Feld
-	 * @deprecated bitte {@link #hasFeld(Bezeichner)} und {@link #getFeld(Bezeichner)} verwenden
-	 */
-	@Deprecated
-    public Feld getFeldSafe(final String name) {
-        return this.getFeldSafe(Bezeichner.of(name));
-    }
 
     /**
      * Fraegt ab, ob das entsprechende Feld vorhanden ist.
@@ -815,26 +689,6 @@ public abstract class Satz implements Cloneable {
 		}
 		throw new IllegalArgumentException(bezeichner + " does not exist");
 	}
-
-    /**
-     * Liefert das gewuenschte Feld oder {@link Feld#NULL_FELD}, wenn nicht
-     * vorhanden.
-	 * <p>
-	 * TODO: wird mit v6 abgeloest
-	 * </p>
-     *
-     * @param bezeichner gewuenschter Bezeichner des Feldes
-     * @return das gesuchte Feld
-	 * @deprecated bitte {@link #hasFeld(Bezeichner)} und {@link #getFeld(Bezeichner)} verwenden
-     */
-    @Deprecated
-    public Feld getFeldSafe(final Bezeichner bezeichner) {
-        try {
-            return getFeld(bezeichner);
-        } catch (IllegalArgumentException ex) {
-            return Feld.NULL_FELD;
-        }
-    }
 
     /**
      * Liefert den Inhalt des gewuenschten Feldes.

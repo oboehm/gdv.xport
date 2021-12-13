@@ -510,7 +510,7 @@ public final class SatzTest extends AbstractSatzTest {
 
     static class TestSatz extends Satz {
         public TestSatz(int art, List<? extends Teildatensatz> tdsList) {
-            super(art, tdsList);
+            super(SatzTyp.of(art), tdsList);
         }
     }
 

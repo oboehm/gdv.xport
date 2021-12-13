@@ -19,7 +19,6 @@
 package gdv.xport.util;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.Betrag;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
@@ -195,16 +194,6 @@ public final class SatzFactoryTest extends AbstractTest {
         Datensatz satz210 = getDatensatz(210, 30);
         Feld vertragsstatus = satz210.getFeld(Bezeichner.VERTRAGSSTATUS);
         assertEquals(43, vertragsstatus.getByteAdresse());
-    }
-
-    private void checkGetDatensatz(final int satzart, final int sparte, final Enum[] felder) {
-        Satz datensatz = getDatensatz(satzart, sparte);
-        for (Enum feldInfo : felder) {
-            if (feldInfo instanceof FeldInfo) {
-                String inhalt = datensatz.get(feldInfo);
-                assertNotNull("not found: " + feldInfo, inhalt);
-            }
-        }
     }
 
     private static Datensatz getDatensatz(final int satzart, final int sparte) {

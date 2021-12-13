@@ -54,8 +54,8 @@ public class Satz100 extends SatzX {
      * @param nachname z.B. "Mustermann"
      */
     public void setName(final String vorname, final String nachname) {
-        this.set(Feld100.NAME1, vorname);
-        this.set(Feld100.NAME3, nachname);
+        this.set(Feld100.NAME1.name(), vorname);
+        this.set(Feld100.NAME3.name(), nachname);
     }
 
     /**
@@ -68,7 +68,7 @@ public class Satz100 extends SatzX {
      */
     public void setName(final String vorname, final String mittelname, final String nachname) {
         this.setName(vorname, nachname);
-        this.set(Feld100.NAME2, mittelname);
+        this.set(Feld100.NAME2.name(), mittelname);
     }
 
     /**
@@ -80,11 +80,11 @@ public class Satz100 extends SatzX {
     public String getName(final int n) {
         switch (n) {
             case 1:
-                return this.get(Feld100.NAME1).trim();
+                return this.get(Feld100.NAME1.name()).trim();
             case 2:
-                return this.get(Feld100.NAME2).trim();
+                return this.get(Feld100.NAME2.name()).trim();
             case 3:
-                return this.get(Feld100.NAME3).trim();
+                return this.get(Feld100.NAME3.name()).trim();
             default:
                 throw new IllegalArgumentException("1 <= n <= 3 expected, not n=" + n);
         }
