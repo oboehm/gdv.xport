@@ -320,7 +320,8 @@ public final class NumFeldTest extends AbstractFeldTest {
 
     @Test
     public void testSetInhaltWithLeadingBlank() {
-        Feld numFeld4 = new NumFeld(new Bezeichner("numTesttest"), 9, 1, 2).mitConfig(Config.EXPERIMENTAL);
+        Feld numFeld4 = new NumFeld(new Bezeichner("numTesttest"), 9, 1, 2).mitConfig(
+                Config.EXPERIMENTAL.withProperty("gdv.feld.validate", "lax"));
         numFeld4.setInhalt(" 1234567");
         assertEquals("001234567", numFeld4.getInhalt());
     }
@@ -356,6 +357,12 @@ public final class NumFeldTest extends AbstractFeldTest {
     public void testValidatorNegativeNumber() {
         NumFeld.Validator validator = new NumFeld.Validator();
         validator.validate("-1");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNumberWithBlanksConfigStrict() {
+        NumFeld numFeld = new NumFeld(new Bezeichner("numTestFeld"), 5, 1).mitConfig(Config.STRICT);
+        numFeld.setInhalt(" 1 ");
     }
 
 }

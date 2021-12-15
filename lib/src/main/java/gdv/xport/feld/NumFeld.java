@@ -487,8 +487,8 @@ public class NumFeld extends Feld {
 
         @Override
         protected String validateStrict(String value) {
-            if (StringUtils.isBlank(value)) {
-                throw new ValidationException("Zahl darf nicht leer sein");
+            if (!StringUtils.trim(value).equals(value)) {
+                throw new ValidationException("Zahl darf keine Leerzeichen enthalten");
             } else {
                 return validateLax(value);
             }
