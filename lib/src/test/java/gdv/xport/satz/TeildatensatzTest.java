@@ -80,7 +80,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGetFeldString() {
-        Teildatensatz tds = new Teildatensatz(100, 1);
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
         Feld feld = new NumFeld("Hello", 55, "World");
         tds.add(feld);
         assertEquals(feld, tds.getFeld("Hello"));
@@ -88,7 +88,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
 
     @Test
     public void testGetFeldByteAdresse() {
-        Teildatensatz tds = new Teildatensatz(4711, 1);
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of(4711), 1);
         ByteAdresse adresse = ByteAdresse.of(11);
         Feld feld = new NumFeld(Bezeichner.PRODUKTNAME, 47, adresse.intValue() );
         tds.add(feld);
@@ -102,7 +102,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testRemove() {
-        Teildatensatz tds = new Teildatensatz(100, 1);
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
         Zeichen satznummer = new Zeichen(new Bezeichner("Satznummer"), 256);
         satznummer.setInhalt('1');
         tds.add(satznummer);
@@ -125,7 +125,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testRemoveSafe() {
-        Teildatensatz tds = new Teildatensatz(100, 1);
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
         Zeichen satznummer = new Zeichen(new Bezeichner("Satznummer"), 256);
         satznummer.setInhalt('1');
         tds.add(satznummer);
@@ -141,7 +141,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testCopyConstructor() {
-        Teildatensatz orig = new Teildatensatz(100, 1);
+        Teildatensatz orig = new Teildatensatz(SatzTyp.of(100), 1);
         Feld name1 = new AlphaNumFeld(Bezeichner.NAME1, 30, 44);
         name1.setInhalt("Mickey");
         orig.add(name1);
@@ -177,7 +177,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testAddOverlapping() {
-        Teildatensatz tds = new Teildatensatz(4711, 1);
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of(4711), 1);
         tds.add(new AlphaNumFeld(Bezeichner.NAME1, 10, 100));
         tds.add(new AlphaNumFeld(Bezeichner.NAME2, 10, 101));
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 by Oliver Boehm
+ * Copyright (c) 2020-2021 by Oliver Boehm
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -105,16 +105,16 @@ public final class TeildatensatzEnum extends Teildatensatz {
 
     @Deprecated // TODO: mit v6 entsorgen
     public TeildatensatzEnum(NumFeld satzart) {
-        super(satzart);
+        super(SatzTyp.of(satzart.getInhalt()), 0);
     }
 
     public TeildatensatzEnum(NumFeld satzart, int nr) {
-        super(satzart, nr);
+        super(SatzTyp.of(satzart.getInhalt()), nr);
         initSatznummer(nr);
     }
 
     public TeildatensatzEnum(int satzart, int nr) {
-        super(satzart, nr);
+        super(SatzTyp.of(satzart), nr);
         initSatznummer(nr);
     }
 

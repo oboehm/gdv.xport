@@ -120,7 +120,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
         tds.add(new AlphaNumFeld(Bezeichner.NAME1, 30, 44));
         tds.setFeld(Bezeichner.NAME1, "Asterix");
         teildatensaetze.add(tds);
-        teildatensaetze.add(new Teildatensatz(100, 2));
+        teildatensaetze.add(new Teildatensatz(SatzTyp.of(100), 2));
         Datensatz orig = new Datensatz(SatzTyp.of(100), teildatensaetze);
         Datensatz copy = new Datensatz(orig);
         assertEquals(orig.getFeldInhalt(Bezeichner.NAME1), copy.getFeldInhalt(Bezeichner.NAME1));

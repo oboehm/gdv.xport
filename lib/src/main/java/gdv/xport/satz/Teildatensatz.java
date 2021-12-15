@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2019 by Oli B.
+ * Copyright (c) 2009 - 2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,53 +51,6 @@ public class Teildatensatz extends Satz {
 
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
     protected Satznummer satznummer = new Satznummer();
-
-    /**
-     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.
-     * <p>
-     * TODO: Wird mit v5.2 entfernt.
-     * </p>
-     *
-     * @param satzart z.B. 100
-     * @deprecated wird nicht mehr benoetigt
-     */
-    @Deprecated
-    public Teildatensatz(final NumFeld satzart) {
-        super(satzart, 0);
-        this.initDatenfelder();
-    }
-
-    /**
-     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart und
-     * Nummer.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param satzart z.B. 1 (Vorsatz)
-     * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
-     * @deprecated bitte {@link Teildatensatz#Teildatensatz(SatzTyp, int)} verwenden
-     */
-    @Deprecated
-    public Teildatensatz(final NumFeld satzart, final int nr) {
-        this(SatzTyp.of(satzart.getInhalt()), nr);
-    }
-
-    /**
-     * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart
-     * und Nummer.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param satzart z.B. 100
-     * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
-     * @deprecated bitte {@link Teildatensatz#Teildatensatz(SatzTyp, int)} verwenden
-     */
-    @Deprecated
-    public Teildatensatz(final int satzart, final int nr) {
-        this(SatzTyp.of(satzart), nr);
-    }
 
     /**
      * Instantiiert einen neuen Teildatensatz mit der angegebenen Satzart.

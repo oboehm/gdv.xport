@@ -22,6 +22,7 @@ import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
+import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -50,7 +51,7 @@ public final class TeildatensatzXml extends Teildatensatz {
      * @param nr Nummer des Teildatensatzes (zwischen 1 und 9)
      */
     public TeildatensatzXml(final int satzart, final int nr) {
-        super(satzart, nr);
+        super(SatzTyp.of(satzart), nr);
     }
 
     /**
