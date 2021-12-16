@@ -19,6 +19,9 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Security
 
+- Log4J auf 2.16.0 angehoben
+
+
 ## [5.4.0] - 2021-12-12
 
 ### Security
