@@ -337,6 +337,15 @@ public final class BetragMitVorzeichen extends Betrag {
             return nummer;
         }
 
+        @Override
+        protected String validateStrict(String value) {
+            if (value.startsWith("+")) {
+                return super.validateStrict(value.substring(1));
+            } else {
+                return super.validateStrict(value);
+            }
+        }
+
     }
 
 }

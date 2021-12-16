@@ -479,16 +479,14 @@ public class NumFeld extends Feld {
                 } catch (NumberFormatException nfe) {
                     throw new ValidationException(String.format("'%s' ist keine Zahl", nummer), nfe);
                 }
-            } else if ("strict".equals(getConfig().getString("gdv.feld.validate"))) {
-                throw new ValidationException("Zahl darf nicht leer sein");
             }
             return nummer;
         }
 
         @Override
         protected String validateStrict(String value) {
-            if (!StringUtils.trim(value).equals(value)) {
-                throw new ValidationException("Zahl darf keine Leerzeichen enthalten");
+            if (!StringUtils.trim(value).equals(value) || StringUtils.isBlank(value)) {
+                throw new ValidationException("Zahl muss vorhanden sein und darf keine Leerzeichen enthalten");
             } else {
                 return validateLax(value);
             }

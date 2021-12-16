@@ -334,6 +334,12 @@ public final class NumFeldTest extends AbstractFeldTest {
         assertEquals("00001", one.getInhalt());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetInhaltR2D2() {
+        NumFeld one = new NumFeld(Bezeichner.ANTEILE, 5, 1).mitConfig(Config.LAX);
+        one.setInhalt("R2 D2");
+    }
+
     @Test
     public void testValidator() {
         NumFeld.Validator validator = new NumFeld.Validator();
