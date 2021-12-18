@@ -15,6 +15,13 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - ByteAdresse durchgängiger verwenden
 
 
+## [5.4.2] - 2021-12-18
+
+### Security
+
+- Log4J auf 2.17.0 angehoben
+
+
 ## [5.4.1] - 2021-12-17
 
 ### Security
