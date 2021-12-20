@@ -474,7 +474,7 @@ public class NumFeld extends Feld {
                 try {
                     BigInteger n = new BigInteger(nummer.trim());
                     if (n.compareTo(BigInteger.ZERO) < 0) {
-                        throw new ValidationException(String.format("'%s' muss positiv sein", nummer));
+                        throw new ValidationException(String.format("'%s' darf nicht negativ sein", nummer));
                     }
                 } catch (NumberFormatException nfe) {
                     throw new ValidationException(String.format("'%s' ist keine Zahl", nummer), nfe);

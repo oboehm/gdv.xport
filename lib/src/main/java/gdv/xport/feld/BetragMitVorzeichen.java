@@ -210,6 +210,9 @@ public final class BetragMitVorzeichen extends Betrag {
 
     @Override
     public void setInhalt(String value) {
+        if (value == null) {
+            throw new IllegalArgumentException(this + " darf nicht mit null belegt werden");
+        }
         char firstChar = (value + " ").charAt(0);
         String s = ((firstChar == '+') || (firstChar == '-')) ? value.substring(1) + firstChar : value;
         char lastChar = StringUtils.reverse(" " + s).charAt(0);

@@ -18,6 +18,7 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.config.Config;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -139,6 +140,13 @@ public final class BetragMitVorzeichenTest extends AbstractFeldTest {
     public void testCtor() {
         BetragMitVorzeichen betragMitVZ= new BetragMitVorzeichen(new Bezeichner("betragTestVZ"), 10, 2);
         assertEquals('+', betragMitVZ.getVorzeichen());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetInhaltNull() {
+        BetragMitVorzeichen betragMitVz = new BetragMitVorzeichen(new Bezeichner("betragTestVZ"), 10, 2).mitConfig(Config.STRICT);
+        String wert = null;
+        betragMitVz.setInhalt(wert);
     }
 
 }
