@@ -34,22 +34,6 @@ public class Betrag extends NumFeld {
     private static final Feld.Validator DEFAULT_VALIDATOR =new NumFeld.Validator(Config.getInstance());
 
     /**
-     * Legt ein neues Betrags-Feld an. Die Informationen dazu werden
-     * aus der uebergebenen Enum bezogen.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Enum mit den Feldinformationen
-     * @since 0.9
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public Betrag(final Enum feldX) {
-        super(feldX);
-    }
-
-    /**
      * Instantiiert ein neuen Betrag.
      * <p>
      * TODO: Wird mit v6 entfernt.
@@ -128,11 +112,8 @@ public class Betrag extends NumFeld {
         return new Betrag(this, c);
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.feld.NumFeld#setInhalt(int)
-     */
     @Override
-    public void setInhalt(final int n) {
+    public void setInhalt(long n) {
         assert n >= 0 : "Betrag can't store negative number (" + n + ")";
         super.setInhalt(n * 100);
     }

@@ -18,6 +18,7 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.config.Config;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -34,6 +35,9 @@ import static org.junit.Assert.assertEquals;
  */
 public final class BetragTest extends AbstractFeldTest {
 
+    private static final Config TRUNCATE = Config.getInstance()
+            .withProperty("gdv.feld.truncate", "true")
+            .withProperty("gdv.feld.validate", "true");
     private final Betrag betrag = new Betrag(new Bezeichner("test"), 5, 1);
 
     /*
@@ -100,6 +104,17 @@ public final class BetragTest extends AbstractFeldTest {
     public void testSetBigDecimalGerundet() {
         betrag.setInhalt(new BigDecimal("123.456"));
         assertEquals(new BigDecimal("123.46"), betrag.toBigDecimal());
+    }
+
+    @Test
+    public void testTruncate() {
+        Betrag betrag = new Betrag(new Bezeichner("betragTest"), 10, 20).mitConfig(TRUNCATE);
+        betrag.setInhalt(123);
+        assertEquals("0000012300", betrag.getInhalt());
+        betrag.setInhalt(12345678);
+        assertEquals("1234567800", betrag.getInhalt());
+        betrag.setInhalt(1234567890L);
+        assertEquals("9999999999", betrag.getInhalt());
     }
 
 }

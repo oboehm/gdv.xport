@@ -123,9 +123,6 @@ public class FeldUeberlaufTest {
     assertEquals("0012345600", betrag.getInhalt());
 
     betrag.setInhalt(1234567890L);
-    assertEquals("1234567890", betrag.getInhalt());
-
-    betrag.setInhalt(12345678900L);
     assertEquals("9999999999", betrag.getInhalt());
 
     Exception exception1 = assertThrows(IllegalArgumentException.class, () ->
