@@ -412,8 +412,8 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     public void setInhalt(final String neuerInhalt) {
         int anzahlBytes = this.getAnzahlBytes();
-        String s = config.getBool("gdv.feld.truncate") ? truncate(neuerInhalt) : neuerInhalt;
-        s = validator.verify(s, this);
+        String s = validator.verify(neuerInhalt, this);
+        s = config.getBool("gdv.feld.truncate") ? truncate(s) : s;
         if (s.length() > anzahlBytes) {
             throw new IllegalArgumentException("Feld " + this.getBezeichner() + ": Parameter \"" + s
                     + "\" ist laenger als " + anzahlBytes + " Zeichen!");
@@ -775,18 +775,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
             return (Bezeichner) object;
         }
         return new Bezeichner((String) object);
-    }
-
-    /**
-     * Liefert den Namen als Bezeichner zurueck. Dazu verwendet es die
-     * {@link Bezeichner}-Klasse, um festzustellen, ob es den Namen schon als
-     * Bezeichner gibt. Falls nicht, wird der Name zurueckgeliefert.
-     *
-     * @param feldX das Feld-Element mit dem gesuchten Bezeichner
-     * @return z.B. "Inkassoart"
-     */
-    public static String getAsBezeichnung(final Enum feldX) {
-        return getAsObject(feldX).toString();
     }
 
     private static Object getAsObject(final Enum feldX) {
