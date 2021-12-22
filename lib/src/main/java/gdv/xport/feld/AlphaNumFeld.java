@@ -40,22 +40,6 @@ public class AlphaNumFeld extends Feld {
     private static final Validator DEFAULT_VALIDATOR = new Validator(Config.getInstance());
 
     /**
-     * Legt ein neues alphanumerisches Feld an. Die Informationen dazu werden
-     * aus der uebergebenen Enum bezogen.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Enum mit den Feldinformationen
-     * @since 0.9
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public AlphaNumFeld(final Enum feldX) {
-        super(feldX);
-    }
-
-    /**
      * Legt ein neues alphanumerisches Feld an.
      * <p>
      * TODO: wird mit v7 entfernt

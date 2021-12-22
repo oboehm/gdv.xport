@@ -43,22 +43,6 @@ public class Version extends Feld {
     }
 
     /**
-     * Legt ein neues Versions-Feld an. Die Informationen dazu werden
-     * aus der uebergebenen Enum bezogen.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Enum mit den Feldinformationen
-     * @since 0.9
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public Version(final Enum feldX) {
-        super(feldX);
-    }
-
-    /**
      * Legt ein neues Versions-Feld an (Copy-Constructor).
      *
      * @param feld andere Feld, aus dem kopiert wird.

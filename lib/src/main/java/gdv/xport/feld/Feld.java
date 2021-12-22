@@ -79,22 +79,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     /**
-     * Legt ein neues Feld an. Die Informationen dazu werden aus der
-     * uebergebenen Enum bezogen.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Enum mit den Feldinformationen
-     * @since 0.9
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public Feld(final Enum feldX) {
-        this(feldX, getFeldInfo(feldX));
-    }
-
-    /**
      * Kreiert ein neues Feld.
      *
      * <p>
