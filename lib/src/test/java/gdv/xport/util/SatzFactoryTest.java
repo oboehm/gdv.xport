@@ -95,7 +95,7 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     private static Satz getSatz(final int satzart) {
-        Satz satz = SatzFactory.getSatz(new SatzTyp(satzart));
+        Satz satz = SatzFactory.getSatz(SatzTyp.of(satzart));
         assertEquals(satzart, satz.getSatzart());
         return satz;
     }
@@ -105,7 +105,7 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetUnsupportedSatz() {
-        Datensatz unsupported = new Datensatz("0123");
+        Datensatz unsupported = new Datensatz(SatzTyp.of("0123"));
         unsupported.setVuNummer("56789");
         unsupported.setSparte(88);
         unsupported.add(new NumFeld(new Bezeichner("zweiundvierzig"), 4, 200, 42));
@@ -122,28 +122,16 @@ public final class SatzFactoryTest extends AbstractTest {
     public void testRegisterSatz() {
         int satzart = 47;
         SatzFactory.register(Datensatz.class, satzart);
-        Satz satz = SatzFactory.getSatz(new SatzTyp(satzart));
+        Satz satz = SatzFactory.getSatz(SatzTyp.of(satzart));
         assertEquals(Datensatz.class, satz.getClass());
         assertEquals(satzart, satz.getSatzart());
-        SatzFactory.unregister(new SatzTyp(satzart));
+        SatzFactory.unregister(SatzTyp.of(satzart));
         try {
-            satz = SatzFactory.getSatz(new SatzTyp(satzart));
+            satz = SatzFactory.getSatz(SatzTyp.of(satzart));
             fail("unregister failed for " + satz);
         } catch (NotRegisteredException expected) {
             LOG.info(satz + " successful unregistered (" + expected + ")");
         }
-    }
-
-    /**
-     * Testet {@link SatzFactory#register(Class, int, int)}.
-     */
-    @Test
-    public void testRegisterDatensatz() {
-        SatzTyp typ = SatzTyp.of("0047.11");
-        SatzFactory.register(SatzX.class, typ);
-        Satz satz = SatzFactory.getDatensatz(typ);
-        assertEquals(SatzX.class, satz.getClass());
-        SatzFactory.unregister(typ);
     }
 
     /**
@@ -164,7 +152,7 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     private static void checkGetDatensatz(final int satzart) {
-        Satz datensatz = SatzFactory.getDatensatz(new SatzTyp(satzart));
+        Satz datensatz = SatzFactory.getDatensatz(SatzTyp.of(satzart));
         assertEquals(satzart, datensatz.getSatzart());
     }
 
@@ -197,7 +185,7 @@ public final class SatzFactoryTest extends AbstractTest {
     }
 
     private static Datensatz getDatensatz(final int satzart, final int sparte) {
-        Datensatz datensatz = SatzFactory.getDatensatz(new SatzTyp(satzart, sparte));
+        Datensatz datensatz = SatzFactory.getDatensatz(SatzTyp.of(satzart, sparte));
         assertEquals(satzart, datensatz.getSatzart());
         assertEquals(sparte, datensatz.getSparte());
         return datensatz;
@@ -305,8 +293,8 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetSatzDifferent() {
-        Satz one = SatzFactory.getSatz(new SatzTyp(100));
-        Satz two = SatzFactory.getSatz(new SatzTyp(100));
+        Satz one = SatzFactory.getSatz(SatzTyp.of(100));
+        Satz two = SatzFactory.getSatz(SatzTyp.of(100));
         assertEquals(one, two);
         assertNotSame(one, two);
         for (int i = 1; i <= one.getNumberOfTeildatensaetze(); i++) {
@@ -321,8 +309,8 @@ public final class SatzFactoryTest extends AbstractTest {
      */
     @Test
     public void testGetSatzManipulated() {
-        Teildatensatz one = SatzFactory.getSatz(new SatzTyp(100)).getTeildatensatz(4);
-        Teildatensatz two = SatzFactory.getSatz(new SatzTyp(100)).getTeildatensatz(4);
+        Teildatensatz one = SatzFactory.getSatz(SatzTyp.of(100)).getTeildatensatz(4);
+        Teildatensatz two = SatzFactory.getSatz(SatzTyp.of(100)).getTeildatensatz(4);
         assertNotSame(one, two);
         Feld oneIban = one.getFeld(Bezeichner.IBAN1);
         Feld twoIban = two.getFeld(Bezeichner.IBAN1);
@@ -342,7 +330,7 @@ public final class SatzFactoryTest extends AbstractTest {
 
     @Test
     public void testDatensatz200() {
-        Datensatz satz200 = SatzFactory.getDatensatz(new SatzTyp(200));
+        Datensatz satz200 = SatzFactory.getDatensatz(SatzTyp.of(200));
         assertEquals(200, satz200.getSatzart());
     }
 

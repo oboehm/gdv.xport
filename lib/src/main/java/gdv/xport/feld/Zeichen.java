@@ -18,8 +18,6 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.annotation.FeldInfo;
-
 /**
  * Ein Zeichen ist ein Feld der Laenge 1.
  *
@@ -65,51 +63,6 @@ public class Zeichen extends AlphaNumFeld {
     public Zeichen(final Bezeichner bezeichner, final int start, final char c) {
         super(bezeichner, 1, start);
         super.setInhalt(c);
-    }
-
-    /**
-     * Legt ein neues Zeichen-Feld an. Die Informationen dazu werden
-     * aus der uebergebenen Enum bezogen.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Enum mit den Feldinformationen
-     * @since 0.9
-     * @deprecated inzwischen durch {@link #Zeichen(Bezeichner, int)} abgeloest
-     */
-    @Deprecated
-    public Zeichen(final Enum feldX) {
-        this(feldX, Feld.getFeldInfo(feldX));
-    }
-
-    /**
-     * Instantiiert ein neues Zeichen.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Feld
-     * @param info mit Angabe der Start-Adresse
-     * @since 0.6
-     * @deprecated inzwischen durch {@link #Zeichen(Bezeichner, int)} abgeloest
-     */
-    @Deprecated
-    public Zeichen(final Enum feldX, final FeldInfo info) {
-        super(feldX, info);
-        assert info.anzahlBytes() == 1 : "Zeichen kann nur 1 Byte lang sein";
-    }
-
-    /**
-     * Instantiiert ein neues Zeichen.
-     *
-     * @param name Bezeichner
-     * @param info mit Angabe der Start-Adresse
-     * @since 0.6
-     */
-    public Zeichen(final String name, final FeldInfo info) {
-        this(new Bezeichner(name), info.byteAdresse());
-        assert info.anzahlBytes() == 1 : "Zeichen kann nur 1 Byte lang sein";
     }
 
     /**

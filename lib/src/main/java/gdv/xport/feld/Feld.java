@@ -79,31 +79,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     /**
-     * Kreiert ein neues Feld.
-     *
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     * @param feldX der entsprechende Aufzaehlungstyp
-     * @param info Annotation mit den Feldinformationen
-     * @since 0.6
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public Feld(final Enum feldX, final FeldInfo info) {
-        this.bezeichner = Feld.getAsBezeichner(feldX);
-        this.byteAdresse = info.byteAdresse();
-        this.ausrichtung = getAlignmentFrom(info);
-        this.inhalt = new StringBuilder(info.anzahlBytes());
-        this.config = Config.getInstance();
-        this.validator = new Validator(config);
-        for (int i = 0; i < info.anzahlBytes(); i++) {
-            this.inhalt.append(' ');
-        }
-        this.setInhalt(info.value());
-    }
-
-    /**
      * Instantiates a new feld.
      *
      * @param name
@@ -315,13 +290,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     protected Align getDefaultAlignment() {
         return Align.LEFT;
-    }
-
-    private Align getAlignmentFrom(final FeldInfo info) {
-        if (info.align() == Align.UNKNOWN) {
-            return this.getDefaultAlignment();
-        }
-        return info.align();
     }
 
     private Bezeichner createBezeichner() {

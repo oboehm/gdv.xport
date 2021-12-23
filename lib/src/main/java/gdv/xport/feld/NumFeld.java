@@ -49,40 +49,6 @@ public class NumFeld extends Feld {
     private final int nachkommastellen;
 
     /**
-     * Legt ein neues Betrags-Feld an. Die Informationen dazu werden
-     * aus der uebergebenen Enum bezogen.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Enum mit den Feldinformationen
-     * @since 0.9
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public NumFeld(final Enum feldX) {
-        this(feldX, Feld.getFeldInfo(feldX));
-    }
-
-    /**
-     * Instantiiert ein neues numerisches Feld.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Feld
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 0.6
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public NumFeld(final Enum feldX, final FeldInfo info) {
-        super(feldX, info);
-        this.nachkommastellen = info.nachkommaStellen();
-        this.setInhalt(0);
-    }
-
-    /**
      * @param name Feld-Bezeichner (z.B. "Anzahl Saetze")
      * @param s z.B. "4"
      */
@@ -137,22 +103,6 @@ public class NumFeld extends Feld {
     public NumFeld(final String name, final String s, final int nachkommastellen) {
         this(new Bezeichner(name), s.length(), 1, nachkommastellen, DEFAULT_VALIDATOR);
         this.setInhalt(s);
-    }
-
-    /**
-     * Instantiiert ein neues numerisches Feld.
-     * <p>
-     * TODO: wird mit 5.2, spaetestens aber mit 6.0 entfernt
-     * </p>
-     *
-     * @param name Bezeichner
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 1.0
-     * @deprecated FeldInfo wird kuenftig nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public NumFeld(final Bezeichner name, final FeldInfo info) {
-        this(name, info.anzahlBytes(), info.byteAdresse(), info.nachkommaStellen(), DEFAULT_VALIDATOR);
     }
 
     /**

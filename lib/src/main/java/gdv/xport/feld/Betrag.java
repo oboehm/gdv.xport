@@ -18,7 +18,6 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 
 /**
@@ -32,22 +31,6 @@ import gdv.xport.config.Config;
 public class Betrag extends NumFeld {
 
     private static final Feld.Validator DEFAULT_VALIDATOR =new NumFeld.Validator(Config.getInstance());
-
-    /**
-     * Instantiiert ein neuen Betrag.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Feld
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 0.6
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public Betrag(final Enum feldX, final FeldInfo info) {
-        super(feldX, info);
-    }
 
     /**
      * Instantiiert einen neuen Betrag.
@@ -72,22 +55,6 @@ public class Betrag extends NumFeld {
     protected Betrag(final Bezeichner name, final int start, final String value, final Feld.Validator validator) {
         this(name, value.length(), start, validator);
         this.setInhalt(value);
-    }
-
-    /**
-     * Instantiiert einen neuen Betrag.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param name Bezeichner
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 1.0
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public Betrag(final Bezeichner name, final FeldInfo info) {
-        super(name, info);
     }
 
     /**

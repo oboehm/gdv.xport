@@ -116,33 +116,6 @@ public class AlphaNumFeld extends Feld {
     }
 
     /**
-     * Instantiiert ein neues alpha-numerisches Feld.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Feld
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 0.6
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public AlphaNumFeld(final Enum feldX, final FeldInfo info) {
-        super(feldX, info);
-    }
-
-    /**
-     * Instantiiert ein neues alpha-numerisches Feld.
-     *
-     * @param bezeichner Bezeichner
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 1.0
-     */
-    public AlphaNumFeld(final Bezeichner bezeichner, final FeldInfo info) {
-        super(bezeichner, info.anzahlBytes(), info.byteAdresse(), info.align() == Align.UNKNOWN ? Align.LEFT : info.align());
-    }
-
-    /**
      * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
      * kopieren kann.
      *

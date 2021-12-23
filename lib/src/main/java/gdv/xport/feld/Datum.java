@@ -18,7 +18,6 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.annotation.FeldInfo;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
@@ -45,39 +44,6 @@ public final class Datum extends NumFeld {
 
     private static final Logger LOG = LogManager.getLogger(Feld.class);
     private final DateFormat dateFormat;
-
-    /**
-     * Legt ein neues Datums-Feld an. Die Informationen dazu werden
-     * aus der uebergebenen Enum bezogen.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Enum mit den Feldinformationen
-     * @since 0.9
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public Datum(final Enum feldX) {
-        this(feldX, Feld.getFeldInfo(feldX));
-    }
-
-    /**
-     * Instantiiert ein neues Datum.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param feldX Feld
-     * @param info mit Angabe der Start-Adresse
-     * @since 0.6
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public Datum(final Enum feldX, final FeldInfo info) {
-        super(feldX, info);
-        this.dateFormat = getDateFormat(info.anzahlBytes());
-    }
 
     /**
      * Erstellt ein neues Datum.
@@ -120,18 +86,6 @@ public final class Datum extends NumFeld {
     public Datum(Bezeichner bezeichner, int length, int start) {
         super(bezeichner, length, start);
         dateFormat = getDateFormat(length);
-    }
-
-    /**
-     * Instantiiert ein neues Datum.
-     *
-     * @param bezeichner Bezeichner
-     * @param info mit der Start-Adresse und weiteren Angaben
-     * @since 1.0
-     */
-    public Datum(final Bezeichner bezeichner, final FeldInfo info) {
-        super(bezeichner, info);
-        dateFormat = getDateFormat(info.anzahlBytes());
     }
 
     /**
