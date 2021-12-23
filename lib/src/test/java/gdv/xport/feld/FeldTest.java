@@ -183,7 +183,8 @@ public final class FeldTest extends AbstractFeldTest {
      */
     @Test
     public void testEncoding() {
-        Feld feld = new AlphaNumFeld("Gruesse", "Gr\u00fc\u00dfe");
+        Feld feld = new AlphaNumFeld(Bezeichner.of("Gruesse"), 5, 1);
+        feld.setInhalt("Gr\u00fc\u00dfe");
         assertEquals("Gr\u00fc\u00dfe", feld.getInhalt());
     }
 
@@ -253,6 +254,13 @@ public final class FeldTest extends AbstractFeldTest {
         Feld pi = new Feld(new Bezeichner("pi"), 4, 1, Align.LEFT);
         pi.setInhalt(new BigDecimal("3.14"));
         assertEquals("3.14", pi.getInhalt());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetFeldNull() {
+        Feld feld1 = new Feld(new Bezeichner("test"), 5, 4, Align.LEFT).mitConfig(Config.EMPTY);
+        String leer = null;
+        feld1.setInhalt(leer);
     }
 
 }

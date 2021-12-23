@@ -901,6 +901,9 @@ public class Feld implements Comparable<Feld>, Cloneable {
         }
 
         public String validate(String value, Config validationConfig) {
+            if (value == null) {
+                throw new ValidationException("null-Werte sind nicht erlaubt");
+            }
             String feldValidate = validationConfig.getString("gdv.feld.validate").toLowerCase();
             switch (feldValidate) {
                 case "true":
@@ -923,9 +926,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
          */
         protected String validateLax(String value) {
             LOG.debug("Inhalt von '{}' wird validiert.", value);
-            if (value == null) {
-                throw new ValidationException("null-Werte sind nicht erlaubt");
-            }
             for (char c : value.toCharArray()) {
                 validateChar(value, c);
             }
