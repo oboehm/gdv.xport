@@ -209,12 +209,17 @@ public class Feld implements Comparable<Feld>, Cloneable {
 
     /**
      * Instantiates a new feld.
+     * <p>
+     * TODO: wird mit v7 entfernt
+     * </p>
      *
      * @param length
      *            the length
      * @param alignment
      *            the alignment
+     * @deprecated Felder ohne Bezeichner werden ab v7 nicht mehr unterstuetzt
      */
+    @Deprecated
     public Feld(final int length, final Align alignment) {
         this(length, 1, alignment);
     }
@@ -279,9 +284,14 @@ public class Feld implements Comparable<Feld>, Cloneable {
 
     /**
      * Die Default-Ausrichtung ist links-buendig. Diese Vorgabe kann aber von den Unterklassen ueberschrieben werde.
+     * <p>
+     * TODO: wird mit v7 entfernt
+     * </p>
      *
      * @return links-buendig
+     * @deprecated
      */
+    @Deprecated
     protected Align getDefaultAlignment() {
         return Align.LEFT;
     }
