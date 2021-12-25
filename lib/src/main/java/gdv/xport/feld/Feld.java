@@ -21,24 +21,20 @@ package gdv.xport.feld;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.jfachwert.SimpleValidator;
 import de.jfachwert.Text;
-import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.constraint.Min;
 import net.sf.oval.constraint.NotEqual;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.text.WordUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.validation.ValidationException;
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.nio.ByteBuffer;
 import java.util.List;
 
 /**
@@ -677,84 +673,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
     @Override
     public final int compareTo(final Feld other) {
         return this.byteAdresse - other.byteAdresse;
-    }
-
-    /**
-     * Liefert die uebergebene Enum-Konstante als Bezeichner zurueck. Dazu
-     * verwendet es die {@link Bezeichner}-Klasse, um festzustellen, ob es den
-     * Namen schon als Konstante dort gibt.
-     *
-     * @param feldX die Enum-Konstante
-     * @return den Bezeichner
-     * @since 1.0
-     */
-    @Deprecated
-    public static Bezeichner getAsBezeichner(final Enum feldX) {
-        Object object = getAsObject(feldX);
-        if (object instanceof Bezeichner) {
-            return (Bezeichner) object;
-        }
-        return new Bezeichner((String) object);
-    }
-
-    private static Object getAsObject(final Enum feldX) {
-        try {
-            Field field = Bezeichner.class.getField(feldX.name());
-            return field.get(null);
-        } catch (NoSuchFieldException ex) {
-            LOG.info("Bezeichner.{} not found:", feldX.name());
-            LOG.debug("Details:", ex);
-        } catch (IllegalArgumentException ex) {
-            LOG.warn("Can't get {} as object.", feldX, ex);
-        } catch (IllegalAccessException ex) {
-            LOG.warn("Can't access Bezeichner.{}:", feldX.name(), ex);
-        }
-        return toBezeichnung(feldX);
-    }
-
-    /**
-     * Konvertiert einen Bezeichner (in GROSSBUCHSTABEN) in die entsprechende Bezeichnung.
-     * <p>
-     * TODO: wird mit v6 entfernt
-     * </p>
-     *
-     * @param name
-     *            z.B. HELLO_WORLD (als Aufzaehlungstyp)
-     * @return z.B. "Hello World"
-     * @deprecated Enum wird ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public static String toBezeichnung(final Enum name) {
-        FeldInfo feldInfo = getFeldInfo(name);
-        if ((feldInfo == null) || StringUtils.isEmpty(feldInfo.bezeichnung())) {
-            return toBezeichnung(name.name());
-        } else {
-            return feldInfo.bezeichnung();
-        }
-    }
-
-    private static String toBezeichnung(final String name) {
-        String converted = name.replaceAll("_", " ");
-        ByteBuffer outputBuffer = Config.DEFAULT_ENCODING.encode(converted);
-        String convertedISO = new String(outputBuffer.array(), Config.DEFAULT_ENCODING);
-        return WordUtils.capitalize(convertedISO.toLowerCase());
-    }
-
-    /**
-     * Ermittelt die FeldInfo aus dem uebergebenen Enum.
-     *
-     * @param feldX the feld x
-     * @return the feld info
-     * @deprecated FeldInfo wird mit v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    protected static FeldInfo getFeldInfo(final Enum feldX) {
-        try {
-            Field field = feldX.getClass().getField(feldX.name());
-            return field.getAnnotation(FeldInfo.class);
-        } catch (NoSuchFieldException nsfe) {
-            throw new InternalError("no field " + feldX + " (" + nsfe + ")");
-        }
     }
 
     /**
