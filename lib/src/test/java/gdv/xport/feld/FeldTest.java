@@ -169,15 +169,6 @@ public final class FeldTest extends AbstractFeldTest {
     }
 
     /**
-     * Test-Methode fuer {@link Feld#getAsBezeichner(Enum)}.
-     */
-    @Test
-    public void testGetAsBezeichner() {
-        Bezeichner adressat = Feld.getAsBezeichner(Greeting.ADRESSAT);
-        assertEquals(Bezeichner.ADRESSAT, adressat);
-    }
-
-    /**
      * Test-Methode fuer {@link Feld#getInhalt()} in Zusammenhang mit dem
      * Encoding.
      */

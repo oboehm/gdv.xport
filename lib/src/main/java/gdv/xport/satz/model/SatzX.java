@@ -35,7 +35,9 @@ import org.apache.logging.log4j.Logger;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.PushbackReader;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 /**
@@ -173,7 +175,39 @@ public class SatzX extends Datensatz {
     Enum[] constants = enumClass.getEnumConstants();
     return getTeildatensaetzeFor(satzNr, constants);
   }
-	/**
+
+    /**
+     * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation
+     * ergibt (Factory-Methode). Der Name wird dabei aus dem uebergebenen
+     * Enum-Feld abgeleitet.
+     * <p>
+     * TODO: Wird mit v6 entfernt.
+     * </p>
+     *
+     * @param feldX Enum fuer das erzeugte Feld
+     * @param info die FeldInfo-Annotation mit dem gewuenschten Datentyp
+     * @return das erzeugte Feld
+     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
+     */
+    @Deprecated
+    public static Feld createFeld(final Enum feldX, final FeldInfo info) {
+        try {
+            Constructor<? extends Feld> ctor = info.type().getConstructor(Enum.class, FeldInfo.class);
+            return ctor.newInstance(feldX, info);
+        } catch (NoSuchMethodException ex) {
+            throw new IllegalArgumentException("no constructor " + info.type().getSimpleName()
+                    + "(String, FeldInfo) found", ex);
+        } catch (InstantiationException ex) {
+            throw new IllegalArgumentException("can't instantiate " + info.type(), ex);
+        } catch (IllegalAccessException ex) {
+            throw new IllegalArgumentException("can't access ctor for " + info.type(), ex);
+        } catch (InvocationTargetException ex) {
+            throw new IllegalArgumentException("error invoking ctor for " + info.type() + " ("
+                    + ex.getTargetException() + ")", ex);
+        }
+    }
+
+    /**
 	 * Setzt die Teildatensaetze mit den angegebenen Feldern auf.
 	 *
 	 * @param felder Felder fuer die Teildatensaetze.
@@ -383,7 +417,7 @@ public class SatzX extends Datensatz {
 	 */
 	private static void add(final Enum feldX, final Teildatensatz tds) {
 		FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
-		Feld feld = Feld.createFeld(feldX, info);
+		Feld feld = createFeld(feldX, info);
 		if (info.nr() < 7) {      // TODO: diese Abfrage ist eigentlich unnoetig
 			LOG.debug("using default settings for " + feld);
 		} else {
