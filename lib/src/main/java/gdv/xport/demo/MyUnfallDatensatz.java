@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2016 by Oli B.
+ * Copyright (c) 2009 - 2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ package gdv.xport.demo;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.satz.Datensatz;
-import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
@@ -28,7 +27,6 @@ import gdv.xport.util.XmlFormatter;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 
 /**

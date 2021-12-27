@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2012 by Oli B.
+ * Copyright (c) 2009 - 2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.SatzXml;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

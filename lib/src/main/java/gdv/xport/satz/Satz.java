@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009-2020 by Oli B.
+ * Copyright (c) 2009-2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
-import gdv.xport.satz.model.SatzX;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.SimpleConstraintViolation;

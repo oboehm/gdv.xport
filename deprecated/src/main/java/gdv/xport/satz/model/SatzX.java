@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013 by Oli B.
+ * Copyright (c) 2011-2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
