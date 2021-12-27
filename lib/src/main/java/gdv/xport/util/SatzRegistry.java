@@ -25,7 +25,6 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.model.SatzX;
 import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
 import org.apache.commons.lang3.Range;
@@ -130,19 +129,18 @@ public class SatzRegistry implements VersionHandler {
         float satzVersion = asFloat(satz.getVersion());
         float requiredVersion = asFloat(version);
         for (SatzRegistry registry : INSTANCES.values()) {
-            Satz ds = null;
             try {
-                ds = registry.getSatz(satzTyp);
+                Satz ds = registry.getSatz(satzTyp);
+                if (version.equals(ds.getVersion())) {
+                    return ds;
+                } else if ((asFloat(ds.getVersion()) < satzVersion) && (asFloat(ds.getVersion()) > requiredVersion)) {
+                    satz = ds;
+                    satzVersion = asFloat(ds.getVersion());
+                }
             } catch (NotRegisteredException e) {
                 // satzTyp ist in dieser Version nicht registriert, gehe zur nächsten Version
                 LOG.debug("Satzart {} in {} nicht registriert, suche weiter", satzTyp, registry);
-                continue;
-            }
-            if (version.equals(ds.getVersion())) {
-                return ds;
-            } else if ((asFloat(ds.getVersion()) < satzVersion) && (asFloat(ds.getVersion()) > requiredVersion)) {
-                satz = ds;
-                satzVersion = asFloat(ds.getVersion());
+                LOG.trace("Details:", e);
             }
         }
         LOG.info("Exakte Version {} fuer {} wurde nicht gefunden - verwende {} (Version {}).", version,
@@ -152,7 +150,7 @@ public class SatzRegistry implements VersionHandler {
 
     private static float asFloat(String version) {
         try {
-            return Float.valueOf(version);
+            return Float.parseFloat(version);
         } catch (NumberFormatException ex) {
             LOG.info("Kann aus '{}' keine Version ermitteln ({}).", version, ex);
             LOG.debug("Details:", ex);
@@ -218,19 +216,6 @@ public class SatzRegistry implements VersionHandler {
         }
         SatzTyp satzTyp = SatzTyp.of(satzart);
         register(newInstance(satzTyp, clazz), satzTyp, validator);
-    }
-
-    /**
-     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
-     * Datensatz-Beschreibung uebergeben wird.
-     *
-     * @param enumClass ie Aufzaehlungsklasse, z.B. Feld100.class
-     * @param satzNr die SatzNummer (z.B. new SatzNummer(100))
-     * @deprecated durch {@link #register(Satz, SatzTyp)} abgeloest
-     */
-    @Deprecated
-    public void registerEnum(final Class<? extends Enum> enumClass, final SatzTyp satzNr) {
-        register(new SatzX(satzNr, enumClass), satzNr, NO_VALIDATOR);
     }
 
     /**
@@ -541,7 +526,7 @@ public class SatzRegistry implements VersionHandler {
         } catch (NotRegisteredException re) {
             // Dieser Teil wird fuer den Import benoetigt, um auch unsupported Datensaetze zu unterstuetzen
             LOG.warn("Reduced functionality for (unknown or unsupported) Satzart {}:",  satzNr, re);
-            Datensatz satz = new Datensatz(satzNr.getSatzart(), satzNr.getSparte());
+            Datensatz satz = new Datensatz(SatzTyp.of(satzNr.getSatzart(), satzNr.getSparte()));
             satz.addFiller();
             return satz;
         }

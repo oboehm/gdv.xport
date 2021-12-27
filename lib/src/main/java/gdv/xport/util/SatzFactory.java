@@ -80,53 +80,6 @@ public final class SatzFactory {
     }
 
     /**
-     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
-     * Datensatz-Beschreibung uebergeben wird.
-     * <p>
-     * TODO: Wird mit v6 nicht mehr zur Verfuegung stehen.
-     * </p>
-     *
-     * @param enumClass die Aufzaehlungsklasse, z.B. Feld100.class
-     * @param satzart die Satzart (1-9999)
-     * @since 0.6
-     * @deprecated bitte nur noch {@link #registerEnum(Class, SatzTyp)} verwenden
-     */
-    @Deprecated
-    public static void registerEnum(final Class<? extends Enum> enumClass, final int satzart) {
-        registerEnum(enumClass, SatzTyp.of(satzart));
-    }
-
-    /**
-     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
-     * Datensatz-Beschreibung uebergeben wird.
-     * <p>
-     * TODO: Wird mit v6 nicht mehr zur Verfuegung stehen.
-     * </p>
-     *
-     * @param enumClass die Aufzaehlungsklasse, z.B. Feld100.class
-     * @param satzart die Satzart (1-9999)
-     * @param sparte die Sparte (0-999)
-     * @since 0.6
-     * @deprecated bitte nur noch {@link #registerEnum(Class, SatzTyp)} verwenden
-     */
-    @Deprecated
-    public static void registerEnum(final Class<? extends Enum> enumClass, final int satzart, final int sparte) {
-        registerEnum(enumClass, SatzTyp.of(satzart, sparte));
-    }
-
-    /**
-     * Mit dieser Registrierung reicht es, wenn nur ein Aufzaehlungstyp mit der
-     * Datensatz-Beschreibung uebergeben wird.
-     *
-     * @param enumClass ie Aufzaehlungsklasse, z.B. Feld100.class
-     * @param satzNr die SatzNummer (z.B. new SatzNummer(100))
-     * @since 0.9
-     */
-    public static void registerEnum(final Class<? extends Enum> enumClass, final SatzTyp satzNr) {
-        FACTORY.registerEnum(enumClass, satzNr);
-    }
-
-    /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
      * Testen hilfreich sein kann)
      * <p>
