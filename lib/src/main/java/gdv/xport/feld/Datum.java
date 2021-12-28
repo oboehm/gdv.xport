@@ -101,41 +101,8 @@ public final class Datum extends NumFeld {
         this.setInhalt(inhalt);
     }
 
-    /**
-     * Instantiates a new datum.
-     *
-     * @deprecated bitte Constructor mit Bezeichner verwenden
-     */
-    @Deprecated
-    public Datum() {
-        this(1);
-    }
-
-    /**
-     * Instantiates a new datum.
-     *
-     * @param start the start
-     * @deprecated bitte Constructor mit Bezeichner verwenden
-     */
-    @Deprecated
-    public Datum(final int start) {
-        this(8, start);
-    }
-
-    /**
-     * Instantiates a new datum.
-     * <p>
-     * TODO: wird mit v6 entfernt
-     * </p>
-     *
-     * @param length the length
-     * @param start the start
-     * @deprecated bitte {@link Datum#Datum(Bezeichner, int, int)} verwenden
-     */
-    @Deprecated
-    public Datum(final int length, final int start) {
-        super(Bezeichner.of("Datum"), length, start);
-        dateFormat = getDateFormat(length);
+    private Datum() {
+        this(Bezeichner.of("Datum"), 8, 1);
     }
 
     /**

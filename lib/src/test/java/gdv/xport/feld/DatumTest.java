@@ -57,10 +57,10 @@ public final class DatumTest extends AbstractFeldTest {
      */
     @Test
     public void testSetInhaltDate() {
-        Date today = Datum.heute().toDate();
-        Datum datum = new Datum();
+        Date today = new Date();
+        Datum datum = Datum.heute();
         datum.setInhalt(today);
-        assertEquals(today, datum.toDate());
+        assertEquals(LocalDate.now(), datum.toLocalDate());
     }
 
     /**
@@ -95,7 +95,7 @@ public final class DatumTest extends AbstractFeldTest {
      */
     @Test
     public void testValidateEmptyDatum() {
-        Datum empty = new Datum();
+        Datum empty = new Datum(Bezeichner.of("empty"), 8, 1);
         assertTrue(empty + " should be valid", empty.isValid());
     }
 
