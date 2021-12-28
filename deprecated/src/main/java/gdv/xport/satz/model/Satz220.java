@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020 by aosd.de
+ * Copyright (c) 2011-2021 by aosd.de
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 
 package gdv.xport.satz.model;
 
+import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.feld.sparte10.Feld220Wagnis0;
 import gdv.xport.satz.feld.sparte10.wagnisart13.*;
@@ -40,9 +41,11 @@ import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Wertungssummen;
 import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.wagnisart9.*;
 import gdv.xport.satz.feld.sparte130.Feld220;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.reflect.Field;
 import java.util.*;
 
 /**
@@ -204,11 +207,50 @@ public class Satz220 extends SpartensatzX {
 
     private static boolean hasInSparte10(Bezeichner name, Enum[] sparte10Values) {
         for (Enum e : sparte10Values) {
-            if (name.equals(Bezeichner.of(e))) {
+            if (name.equals(bezeichnerOf(e))) {
                 return true;
             }
         }
         return false;
+    }
+
+    private static Bezeichner bezeichnerOf(final Enum enumFeld) {
+        FeldInfo feldInfo = getFeldInfo(enumFeld);
+        String bezeichnung = feldInfo != null && StringUtils.isNotBlank(feldInfo.bezeichnung())
+                ? feldInfo.bezeichnung()
+                : null;
+
+        String name = enumFeld.name();
+        String shortened = name.substring(0, name.length() - 1);
+        Field[] fields = Bezeichner.class.getFields();
+        try {
+            for (Field field : fields) {
+                String fieldName = field.getName();
+                // Vergleiche Enum-Bezeichnung mit Name des Bezeichners
+                if (bezeichnung != null && Bezeichner.class.isAssignableFrom(field.getType())) {
+                    Bezeichner bezeichner = (Bezeichner) field.get(Bezeichner.class);
+                    if (bezeichnung.equals(bezeichner.getName())) {
+                        return bezeichner;
+                    }
+                }
+                // Vergleiche Enum-Konstante mit Name der Bezeichnerkonstante
+                if (name.equalsIgnoreCase(fieldName) || shortened.equalsIgnoreCase(fieldName)) {
+                    return (Bezeichner) field.get(null);
+                }
+            }
+            return Bezeichner.of(name.replaceAll("_", " "));
+        } catch (IllegalAccessException iae) {
+            throw new IllegalArgumentException("cannot get Bezeichner for " + enumFeld);
+        }
+    }
+
+    private static FeldInfo getFeldInfo(final Enum feldX) {
+        try {
+            Field field = feldX.getClass().getField(feldX.name());
+            return field.getAnnotation(FeldInfo.class);
+        } catch (NoSuchFieldException nsfe) {
+            throw new InternalError("no field " + feldX + " (" + nsfe + ")");
+        }
     }
 
     /**

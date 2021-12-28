@@ -19,7 +19,6 @@
 package gdv.xport.feld;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import gdv.xport.annotation.FeldInfo;
 import gdv.xport.feld.internal.UmlautMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
@@ -1595,7 +1594,6 @@ public final class Bezeichner {
     public Set<Bezeichner> getVariants() {
         Set<Bezeichner> vars = new HashSet<>(variants);
         vars.add(this);
-        char lastchar = getName().charAt(getName().length()-1);
         if (getName().startsWith("Satzart")) {
             vars.add(Bezeichner.of("Version " + name));
         } else if (getName().startsWith("Version")) {
@@ -1644,71 +1642,6 @@ public final class Bezeichner {
             return this;
         } else {
             return bezeichner;
-        }
-    }
-
-    /**
-     * Liefert zu einem Feld aus einer Enum-Klasse den entsprechenden
-     * Bezeichner zurueck. Dabei wird die Tatsache ausgenutzt, dass die
-     * Bezeichner-Konstante genauso wie der Eintrag in in der Enum-Klasse
-     * lautet.
-     * <p>
-     * Da manche Enum-Felder noch eine laufende Nummer zur Unterscheidung
-     * haben (Beispiel: INTRO1, INTRO2, ...), wird der letzte Buchstabe bei
-     * der Suche ausgeblendet.
-     * </p>
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param enumFeld Eintrag aus der Enum-Klasse
-     * @return entsprechender Bezeichner
-     * @since 3.1
-     * @deprecated Enums werden ab v6 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public static Bezeichner of(final Enum enumFeld) {
-        FeldInfo feldInfo = getFeldInfo(enumFeld);
-        String bezeichnung = feldInfo != null && StringUtils.isNotBlank(feldInfo.bezeichnung())
-                ? feldInfo.bezeichnung()
-                : null;
-        
-        String name = enumFeld.name();
-        String shortened = name.substring(0, name.length() - 1);
-        Field[] fields = Bezeichner.class.getFields();
-        try {
-            for (Field field : fields) {
-                String fieldName = field.getName();
-                // Vergleiche Enum-Bezeichnung mit Name des Bezeichners
-                if (bezeichnung != null && Bezeichner.class.isAssignableFrom(field.getType())) {
-                    Bezeichner bezeichner = (Bezeichner) field.get(Bezeichner.class);
-                    if (bezeichnung.equals(bezeichner.getName())) {
-                        return bezeichner;
-                    }
-                }
-                // Vergleiche Enum-Konstante mit Name der Bezeichnerkonstante
-                if (name.equalsIgnoreCase(fieldName) || shortened.equalsIgnoreCase(fieldName)) {
-                    return (Bezeichner) field.get(null);
-                }
-            }
-            return of(name.replaceAll("_", " "));
-        } catch (IllegalAccessException iae) {
-            throw new IllegalArgumentException("cannot get Bezeichner for " + enumFeld);
-        }
-    }
-
-    /**
-     * Ermittelt die FeldInfo aus dem uebergebenen Enum.
-     *
-     * @param feldX the feld x
-     * @return the feld info
-     */
-    private static FeldInfo getFeldInfo(final Enum feldX) {
-        try {
-            Field field = feldX.getClass().getField(feldX.name());
-            return field.getAnnotation(FeldInfo.class);
-        } catch (NoSuchFieldException nsfe) {
-            throw new InternalError("no field " + feldX + " (" + nsfe + ")");
         }
     }
 
