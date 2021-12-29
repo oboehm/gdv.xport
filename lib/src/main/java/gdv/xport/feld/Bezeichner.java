@@ -27,6 +27,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Diese Klasse enthaelt die Namen der einzelnen Felder. Die Konstanten sind
@@ -46,6 +47,7 @@ public final class Bezeichner {
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<>();
     private static final List<Bezeichner> CONSTANTS = new ArrayList<>();
+    private static final Map<String, Bezeichner> CACHED = new ConcurrentHashMap<>();
 
     /////////// Bezeichner-Konstanten (alphabetisch geordnet) /////////////////
 
@@ -1655,6 +1657,15 @@ public final class Bezeichner {
      * @since 3.1
      */
     public static Bezeichner of(String name) {
+        Bezeichner b = CACHED.get(name);
+        if (b == null) {
+            b = getBezeichner(name);
+            CACHED.put(name, b);
+        }
+        return b;
+    }
+
+    private static Bezeichner getBezeichner(String name) {
         for (Bezeichner bez : CONSTANTS) {
             if (name.equalsIgnoreCase(bez.getTechnischerName())) {
                 return bez;
