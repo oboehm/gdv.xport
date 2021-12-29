@@ -25,9 +25,6 @@ import gdv.xport.feld.Zeichen;
 
 /**
  * Jeder Datensatz beginnt mit denselben 7 Feldern. Dies sind die Felder, die in diesem Enum zusammengefasst sind.
- * <p>
- * TODO: Wird mit v6 entfernt.
- * </p>
  *
  * @author oliver
  * @since 0.7.1 (28.08.2012)
