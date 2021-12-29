@@ -34,9 +34,6 @@ import static gdv.xport.feld.Bezeichner.SATZNUMMER;
  * In die Klasse TeildatensatzEnum wurde die Teile aus {@link Teildatensatz}
  * herausgezogen, die Enum-spezifisch sind und bei der Umstellung auf die
  * XML-Variante des Teildatensatzes eher hinderlich sind.
- * <p>
- * TODO: Wird mit v6 entfernt.
- * </p>
  *
  * @author oboehm
  * @since 5.0 (25.11.2020)
@@ -103,7 +100,7 @@ public final class TeildatensatzEnum extends Teildatensatz {
         ABWEICHENDE_SATZNUMMERN.put(satzTyp, startAdresse);
     }
 
-    @Deprecated // TODO: mit v6 entsorgen
+    @Deprecated
     public TeildatensatzEnum(NumFeld satzart) {
         super(SatzTyp.of(satzart.getInhalt()), 0);
     }

@@ -63,7 +63,7 @@ public final class Datum extends NumFeld {
      * @param start the start
      */
     public Datum(final String name, final int start) {
-        this(new Bezeichner(name), 8, start);
+        this(Bezeichner.of(name), 8, start);
     }
 
     /**
