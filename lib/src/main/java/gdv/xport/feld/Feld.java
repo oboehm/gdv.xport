@@ -35,6 +35,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -599,8 +600,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     public List<ConstraintViolation> validate(Config validationConfig) {
-        net.sf.oval.Validator ovalValidator = new net.sf.oval.Validator();
-        List<ConstraintViolation> violations = ovalValidator.validate(this);
+        List<ConstraintViolation> violations = validateInvariants(validationConfig);
         if (this.getEndAdresse() > 256) {
             ConstraintViolation cv = new SimpleConstraintViolation(this + ": Endadresse ueberschritten", this,
                     this.getEndAdresse());
@@ -613,6 +613,25 @@ public class Feld implements Comparable<Feld>, Cloneable {
             violations.add(cv);
         }
         return violations;
+    }
+
+    private List<ConstraintViolation> validateInvariants(Config validationConfig) {
+        if ("STRICT".equalsIgnoreCase(validationConfig.getString("gdv.feld.validate"))) {
+            net.sf.oval.Validator ovalValidator = new net.sf.oval.Validator();
+            return ovalValidator.validate(this);
+        } else {
+            LOG.debug("Wegen Performance wird OVal-Validator nur in Mode STRICT aufgerufen.");
+            List<ConstraintViolation> violations = new ArrayList<>();
+            if (byteAdresse < 0) {
+                violations.add(new SimpleConstraintViolation("Adresse darf nicht negativ sein", this,
+                        this.byteAdresse));
+            }
+            if (ausrichtung == Align.UNKNOWN) {
+                violations.add(new SimpleConstraintViolation("Ausrichtung darf nicht UNKNOWN sein", this,
+                        this.ausrichtung));
+            }
+            return violations;
+        }
     }
 
     /**
