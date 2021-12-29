@@ -27,9 +27,6 @@ import java.lang.annotation.RetentionPolicy;
  * Da Java leider keine Ableitung von Annotations zulaesst, muessen wir
  * zu diesem Trick greifen, um Gemeinsamkeiten in eine gemeinsame Enum
  * auslagern zu koennen.
- * <p>
- * TODO: Wird mit v6 entfernt.
- * </p>
  *
  * @author oliver
  * @since 0.7.1 (17.07.2012)
