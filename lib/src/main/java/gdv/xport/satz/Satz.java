@@ -1066,7 +1066,9 @@ public abstract class Satz implements Cloneable {
         for (int i = 0; i < teildatensatz.length; i++) {
             reader.skipNewline();
             if (!matchesNextTeildatensatz(reader, feld1to7, satznummer)) {
-            	LOG.info("Zeile {}: mehr Teildatensaetze erwartet fuer {}.", reader.getLineNumber(), this);
+				if (LOG.isDebugEnabled()) {
+					LOG.debug("Zeile {}: mehr Teildatensaetze erwartet fuer {}.", reader.getLineNumber(), this);
+				}
                 break;
             }
             boolean teildatensatzGefunden = false;

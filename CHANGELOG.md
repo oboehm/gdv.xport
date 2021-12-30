@@ -11,8 +11,20 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Planned]
 
-- Performance-Optimierung und Verringerung des Speicher-Abdrucks (Footprint).
+- Verringerung des Speicher-Abdrucks (Footprint).
 - ByteAdresse durchgängiger verwenden
+
+
+## [Unreleased]
+
+### Changed
+
+- doppelte Performance
+
+### Removed
+
+- Enum-Unterstützung wurde nach gdv-xport-deprecated verschoben
+- eine Reihe von "deprecated" Methoden wurden entfernt
 
 
 ## [5.4.2] - 2021-12-18
@@ -177,7 +189,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
   ([Issue #35](https://github.com/oboehm/gdv.xport/issues/35))
 
 
-### [4.0.0] - 2019-01-20
+## [4.0.0] - 2019-01-20
 
 ### Added
 - es gibt ein neues Modul 'gdv-xport-deprecated', in der Klassen und Enumerationen verschoben wurden, die 'deprecated' sind.

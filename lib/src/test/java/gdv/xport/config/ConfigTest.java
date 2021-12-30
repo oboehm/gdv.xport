@@ -125,4 +125,10 @@ public class ConfigTest {
         assertEquals(c1, c2);
     }
 
+    @Test
+    public void testGetValidateMode() {
+        Config c = Config.EMPTY.withProperty("gdv.feld.validate", "true");
+        assertEquals(Config.ValidateMode.LAX, c.getValidateMode());
+    }
+
 }

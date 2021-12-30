@@ -344,7 +344,9 @@ public class Feld implements Comparable<Feld>, Cloneable {
             throw new IllegalArgumentException("Feld " + this.getBezeichner() + ": Parameter \"" + s
                     + "\" ist laenger als " + anzahlBytes + " Zeichen!");
         }
-        this.resetInhalt();
+        if (s.length() != anzahlBytes) {
+            this.resetInhalt();
+        }
         switch (this.ausrichtung) {
             case LEFT:
                 this.inhalt.replace(0, s.length(), s);
@@ -616,7 +618,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     private List<ConstraintViolation> validateInvariants(Config validationConfig) {
-        if ("STRICT".equalsIgnoreCase(validationConfig.getString("gdv.feld.validate"))) {
+        if (validationConfig.getValidateMode() == Config.ValidateMode.STRICT) {
             net.sf.oval.Validator ovalValidator = new net.sf.oval.Validator();
             return ovalValidator.validate(this);
         } else {
@@ -787,13 +789,10 @@ public class Feld implements Comparable<Feld>, Cloneable {
             if (value == null) {
                 throw new ValidationException("null-Werte sind nicht erlaubt");
             }
-            String feldValidate = validationConfig.getString("gdv.feld.validate").toLowerCase();
-            switch (feldValidate) {
-                case "true":
-                case "on":
-                case "lax":
+            switch (validationConfig.getValidateMode()) {
+                case LAX:
                     return validateLax(value);
-                case "strict":
+                case STRICT:
                     return validateStrict(value);
                 default:
                     return value;

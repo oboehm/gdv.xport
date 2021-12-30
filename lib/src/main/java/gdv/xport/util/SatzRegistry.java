@@ -143,8 +143,10 @@ public class SatzRegistry implements VersionHandler {
                 LOG.trace("Details:", e);
             }
         }
-        LOG.info("Exakte Version {} fuer {} wurde nicht gefunden - verwende {} (Version {}).", version,
-                satzTyp, satz.toShortString(), satz.getVersion());
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Exakte Version {} fuer {} wurde nicht gefunden - verwende {} (Version {}).", version,
+                    satzTyp, satz.toShortString(), satz.getVersion());
+        }
         return satz;
     }
 

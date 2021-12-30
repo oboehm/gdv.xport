@@ -270,6 +270,17 @@ public final class Config {
     }
 
     /**
+     * Liefert den Validierungsmode fuer Felder zurueck, der ueber die
+     * Property "gdv.feld.validate" eingestellt werden kann.
+     *
+     * @return OFF, LAX oder STRICT
+     * @since 6.0
+     */
+    public ValidateMode getValidateMode() {
+        return ValidateMode.of(getProperty("gdv.feld.validate", "off"));
+    }
+
+    /**
      * Liefert den Namen der XML-Resource zurueck, in der die XML-Beschreibung
      * der GDV-Datensaetze enhalten ist. Ueber "-Dgdv.XML-Resource=..." kann
      * hierueber eine andere Resource (z.B. VUVM2015.xml) eingestellt werden.
@@ -340,6 +351,30 @@ public final class Config {
     @Override
     public String toString() {
         return getClass().getSimpleName() + properties;
+    }
+
+
+
+    public enum ValidateMode {
+
+        OFF,
+        LAX,
+        STRICT;
+
+        public static ValidateMode of(String value) {
+            String s = value.toUpperCase();
+            for (ValidateMode mode : values()) {
+                if (mode.name().equals(s)) {
+                    return mode;
+                }
+            }
+            if ("TRUE".equals(s) || "ON".equals(s)) {
+                return LAX;
+            }
+            LOG.debug("'{}' wird als 'OFF' interpretiert.", s);
+            return OFF;
+        }
+
     }
 
 }
