@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2013 by Oli B.
+ * Copyright (c) 2009 - 2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,23 +81,6 @@ public final class SatzFactory {
 
     /**
      * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
-     * Testen hilfreich sein kann)
-     * <p>
-     * TODO: Wird mit v6 nicht mehr zur Verfuegung stehen.
-     * </p>
-     *
-     * @param satzart the satzart
-     * @since 0.2
-     * @deprecated in v5.0 durch {@link #unregister(SatzTyp)} ersetzt
-     */
-    @Deprecated
-    public static void unregister(final int satzart) {
-        SatzTyp key = SatzTyp.of(satzart);
-        unregister(key);
-    }
-
-    /**
-     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
      * Testen hilfreich sein kann). Diese unregister-Methode ersetzt ab 4.2 die
      * anderen uregister-Methoden.
      *
@@ -106,24 +89,6 @@ public final class SatzFactory {
      */
     public static void unregister(SatzTyp typ) {
         FACTORY.unregister(typ);
-    }
-
-    /**
-     * Mit dieser Methode koennen eigene Klassen fuer (z.B. noch nicht
-     * unterstuetzte Datensaetze) registriert werden.
-     * <p>
-     * TODO: Wird mit v6 nicht mehr zur Verfuegung stehen.
-     * </p>
-     *
-     * @param clazz the clazz
-     * @param satzart the satzart
-     * @param sparte the sparte
-     * @since 0.2
-     * @deprecated in v5 durch {@link #register(Class, SatzTyp)} ersetzt
-     */
-    @Deprecated
-    public static void register(final Class<? extends Datensatz> clazz, final int satzart, final int sparte) {
-        register(clazz, SatzTyp.of(satzart, sparte));
     }
 
     /**
@@ -139,42 +104,6 @@ public final class SatzFactory {
     }
 
     /**
-     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
-     * Testen hilfreich sein kann)
-     * <p>
-     * TODO: Wird mit v6 nicht mehr zur Verfuegung stehen.
-     * </p>
-     *
-     * @param satzart the satzart
-     * @param sparte the sparte
-     * @since 0.2
-     * @deprecated in v5.0 durch {@link #unregister(SatzTyp)} ersetzt
-     */
-    @Deprecated
-    public static void unregister(final int satzart, final int sparte) {
-        unregister(SatzTyp.of(satzart, sparte));
-    }
-
-    /**
-     * Hiermit kann man eine Registrierung rueckgaengig machen (was z.B. fuer's
-     * Testen hilfreich sein kann)
-     * <p>
-     * TODO: Wird mit v6 nicht mehr zur Verfuegung stehen.
-     * </p>
-     *
-     * @param satzart the satzart
-     * @param sparte the sparte
-     * @param wagnisart the wagnisart
-     * @since 0.8
-     * @deprecated in v5.0 durch {@link #unregister(SatzTyp)} ersetzt
-     */
-    @Deprecated
-    public static void unregister(final int satzart, final int sparte, final int wagnisart) {
-        SatzTyp key = SatzTyp.of(satzart, sparte, wagnisart);
-        unregister(key);
-    }
-
-    /**
      * Liefert einen Satz mit der angegebenen Satzart.
      * <p>
      * Das klappt nur, wenn satzart= 0001, 0052, 0100, 0102, 0200, 0202, 0300,
@@ -183,7 +112,7 @@ public final class SatzFactory {
      * Deswegen wurde diese Methode durch {@link #getSatz(SatzTyp)} ersetzt
      * </p>
      * <p>
-     * TODO: Wird mit v6 nicht mehr zur Verfuegung stehen.
+     * TODO: Wird mit v7 nicht mehr zur Verfuegung stehen.
      * </p>
      *
      * @param satzart Satzart
@@ -253,6 +182,9 @@ public final class SatzFactory {
 
     /**
      * Gets the datensatz.
+     * <p>
+     * TODO: wird mit v7 entfernt
+     * </p>
      *
      * @param satzart den registrierten Datensatz fuer
      * @return den registrierten Datensatz fuer 'satzart'
@@ -262,40 +194,6 @@ public final class SatzFactory {
     @Deprecated
     public static Datensatz getDatensatz(final int satzart) {
         return (Datensatz) getSatz(satzart);
-    }
-
-    /**
-     * Liefert einen Datensatz.
-     * <p>
-     * TODO: Wird mit v6 nicht mehr zur Verfuegung stehen.
-     * </p>
-     *
-     * @param satzart z.B. 210
-     * @param sparte z.B. 70 (Rechtsschutz)
-     * @return den registrierten Datensatz fuer 'satzart', 'sparte'
-     * @deprecated durch {@link #getDatensatz(SatzTyp)} abgeloest
-     */
-    @Deprecated
-    public static Datensatz getDatensatz(final int satzart, final int sparte) {
-        return getDatensatz(SatzTyp.of(satzart, sparte));
-    }
-
-    /**
-     * Liefert einen Datensatz.
-     * <p>
-     * TODO: Wird mit v6 nicht mehr zur Verfuegung stehen.
-     * </p>
-     *
-     * @param satzart z.B. 210
-     * @param sparte z.B. 70 (Rechtsschutz)
-     * @param wagnisart z.B. 1 (Kapitallebensversicherung)
-     * @return den registrierten Datensatz fuer 'satzart', 'sparte', 'wagnisart'
-     * @since 0.8
-     * @deprecated durch {@link #getDatensatz(SatzTyp)} abgeloest
-     */
-    @Deprecated
-    public static Datensatz getDatensatz(final int satzart, final int sparte, final int wagnisart) {
-        return getDatensatz(SatzTyp.of(satzart, sparte, wagnisart));
     }
 
     /**
