@@ -242,9 +242,12 @@ public final class Config {
 
     /**
      * Damit kann die VU-Nummer gesetzt werden.
+     * <p>
+     * TODO: Wird mit v7 entfernt.
+     * </p>
      *
      * @param nr VU-Nummer
-     * @deprecated wird kuenftig nicht mehr unterstuetzt
+     * @deprecated wird ab v7 nicht mehr unterstuetzt
      */
     @Deprecated
     public static synchronized void setVUNummer(final VUNummer nr) {
@@ -258,6 +261,9 @@ public final class Config {
     /**
      * Hiermit kann die gesetzte VU-Nummer abgefragt werden.
      * Falls sie noch nicht gesetzt wurde, wird ein "DUMMY" zurueckgegeben.
+     * <p>
+     * TODO: Wird mit v7 entfernt.
+     * </p>
      *
      * @return VU-Nummer bzw. "DUMMY"
      * @deprecated ersetzt durch {@link Config#getVUNr()}

@@ -51,7 +51,7 @@ import static org.junit.Assert.*;
  * @author oliver (ob@aosd.de)
  * @since 0.1.0 (30.10.2009)
  */
-public final class SatzFactoryTest extends AbstractTest {
+public final class SatzFactoryTest {
 
     private static final Logger LOG = LogManager.getLogger(SatzFactoryTest.class);
 

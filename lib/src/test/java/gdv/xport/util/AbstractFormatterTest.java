@@ -55,7 +55,7 @@ import static org.hamcrest.Matchers.not;
  * @author oliver (ob@aosd.de)
  * @since 0.5.0 (30.11.2010)
  */
-public abstract class AbstractFormatterTest extends AbstractTest {
+public abstract class AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger(AbstractFormatterTest.class);
     private static final XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();

@@ -18,7 +18,6 @@
 
 package gdv.xport.satz;
 
-import gdv.xport.config.Config;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.VUNummer;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
@@ -59,7 +58,6 @@ abstract public class AbstractSatzTest {
      */
     @BeforeClass
     public static void setUpBeforeClass() {
-        Config.setVUNummer(VU_NUMMER);
         File exportDir = new File("target", "export");
         if (!exportDir.exists() && exportDir.mkdir()) {
             LOG.info("Verzeichnis '{}' wurde angelegt.", exportDir);
@@ -108,8 +106,7 @@ abstract public class AbstractSatzTest {
     private static String export(final Satz satz) throws IOException {
         StringWriter swriter = new StringWriter(768);
         satz.export(swriter, "");
-        String data = swriter.toString();
-        return data;
+        return swriter.toString();
     }
 
     protected static void checkDatensatz(final Satz datensatz, final String expected) throws IOException {
