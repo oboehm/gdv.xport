@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012 by Oli B.
+ * Copyright (c) 2011-2021 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,9 +27,6 @@ import java.lang.annotation.RetentionPolicy;
 /**
  * Diese Annotation dient als Behaelter fuer einige Meta-Informationen wie
  * Byte-Adresse oder Datentyp.
- * <p>
- * TODO: Wird mit v6 entfernt.
- * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (06.03.2011)

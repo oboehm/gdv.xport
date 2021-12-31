@@ -18,7 +18,6 @@
 package gdv.xport.feld;
 
 import de.jfachwert.FachwertFactory;
-import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;

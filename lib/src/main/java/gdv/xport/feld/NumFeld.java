@@ -17,7 +17,6 @@
  */
 package gdv.xport.feld;
 
-import gdv.xport.annotation.FeldInfo;
 import gdv.xport.config.Config;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
