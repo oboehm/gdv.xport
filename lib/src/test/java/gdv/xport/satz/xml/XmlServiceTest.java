@@ -98,10 +98,10 @@ public class XmlServiceTest extends AbstractXmlTest {
             assertEquals(one.getTeildatensatz(i), two.getTeildatensatz(i));
             assertNotSame(one.getTeildatensatz(i), two.getTeildatensatz(i));
         }
-        one.set(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName(), "4711");
-        two.set(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName(), "4722");
-        assertEquals("4722", two.get(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName()).trim());
-        assertEquals("4711", one.get(Bezeichner.VERSICHERUNGSSCHEINNUMMER.getName()).trim());
+        one.setFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER, "4711");
+        two.setFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER, "4722");
+        assertEquals("4722", two.getFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER).getInhalt().trim());
+        assertEquals("4711", one.getFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER).getInhalt().trim());
     }
 
     /**
@@ -266,7 +266,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     @Test
-    public void testCloning() throws IOException {
+    public void testCloning() {
         Map<SatzTyp, SatzXml> satzarten = xmlService.getSatzarten();
         for (Map.Entry<SatzTyp, SatzXml> entry : satzarten.entrySet()) {
             LOG.info("Pruefe Clonen von {}...", entry.getKey());
@@ -274,7 +274,7 @@ public class XmlServiceTest extends AbstractXmlTest {
         }
     }
 
-    private static void checkCloning(SatzXml orig) throws IOException {
+    private static void checkCloning(SatzXml orig) {
         SatzXml copy = new SatzXml(orig);
         assertEquals(orig, copy);
         assertNotSame(orig, copy);
@@ -364,27 +364,27 @@ public class XmlServiceTest extends AbstractXmlTest {
 
     @Test
     public void testVUVM2018() throws XMLStreamException, IOException {
-        compareXml("VUVM2018xL.xml", "VUVM2018.xml");
+        compareXml("VUVM2018xL.xml", Config.VUVM2018);
     }
 
     @Test
     public void testVUVM2015() throws XMLStreamException, IOException {
-        compareXml("VUVM2015xL.xml", "VUVM2015.xml");
+        compareXml("VUVM2015xL.xml", Config.VUVM2015);
     }
 
     @Test
     public void testVUVM2013() throws XMLStreamException, IOException {
-        compareXml("VUVM2013xL.xml", "VUVM2013.xml");
+        compareXml("VUVM2013xL.xml", Config.VUVM2013);
     }
 
     @Test
     public void testVUVM2009() throws XMLStreamException, IOException {
-        compareXml("VUVM2009xL.xml", "VUVM2009.xml");
+        compareXml("VUVM2009xL.xml", Config.VUVM2009);
     }
 
-    private static void compareXml(String refResource, String resource) throws XMLStreamException, IOException {
+    private static void compareXml(String refResource, Config config) throws XMLStreamException, IOException {
         XmlService refService = XmlService.getInstance(refResource);
-        XmlService service = XmlService.getInstance(resource);
+        XmlService service = XmlService.getInstance(config);
         assertEquals(refService.getGdvRelease(), service.getGdvRelease());
         for (Map.Entry<SatzTyp, SatzXml> entry : refService.getSatzarten().entrySet()) {
             SatzXml satz = service.getSatzart(entry.getKey());

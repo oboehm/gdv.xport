@@ -78,6 +78,14 @@ public final class Config {
     public static final Config LAX = EMPTY.withProperty("gdv.feld.validate", "lax");
     /** Die Konfiguration fuer die strikte Validierung. */
     public static final Config STRICT = EMPTY.withProperty("gdv.feld.validate", "strict");
+    /** Default-Konfiguration fuer 2018. */
+    public static final Config VUVM2018 = DEFAULT;
+    /** Default-Konfiguration fuer 2015. */
+    public static final Config VUVM2015 = DEFAULT.withProperty("gdv.XML-Resource", "VUVM2015.xml");
+    /** Default-Konfiguration fuer 2013. */
+    public static final Config VUVM2013 = DEFAULT.withProperty("gdv.XML-Resource", "VUVM2013.xml");
+    /** Default-Konfiguration fuer 2009. */
+    public static final Config VUVM2009 = DEFAULT.withProperty("gdv.XML-Resource", "VUVM2009.xml");
 
     private final Properties properties;
 
