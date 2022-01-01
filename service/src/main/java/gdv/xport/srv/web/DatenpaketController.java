@@ -20,7 +20,6 @@ package gdv.xport.srv.web;
 import gdv.xport.Datenpaket;
 import gdv.xport.srv.config.AppConfig;
 import gdv.xport.srv.service.DatenpaketService;
-import gdv.xport.srv.service.DefaultDatenpaketService;
 import gdv.xport.util.URLReader;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -79,7 +78,7 @@ public final class DatenpaketController {
             return validate(content);
         } catch (IOException ioe) {
             LOG.warn("Cannot validate '{}':", uri, ioe);
-            return DefaultDatenpaketService.asModelList(ioe);
+            return ErrorModel.asModelList(ioe);
         }
     }
 
@@ -117,7 +116,7 @@ public final class DatenpaketController {
             return validate(text);
         } catch (IOException ioe) {
             LOG.warn("Cannot upload and validate {}:", file.getOriginalFilename(), ioe);
-            return DefaultDatenpaketService.asModelList(ioe);
+            return ErrorModel.asModelList(ioe);
         }
     }
 

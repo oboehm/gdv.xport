@@ -19,6 +19,7 @@
 package gdv.xport.srv.service;
 
 import gdv.xport.Datenpaket;
+import gdv.xport.srv.web.ErrorModel;
 import gdv.xport.util.*;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.lang3.StringUtils;
@@ -63,7 +64,7 @@ public final class DefaultDatenpaketService implements DatenpaketService {
             return validate(datenpaket);
         } catch (IOException | IllegalArgumentException ex) {
             LOG.warn("Cannot validate '{}':", uri, ex);
-            return asModelList(ex);
+            return ErrorModel.asModelList(ex);
         }
     }
 
@@ -81,7 +82,7 @@ public final class DefaultDatenpaketService implements DatenpaketService {
             return validate(datenpaket);
         } catch (IOException ioe) {
             LOG.warn("Cannot validate '{}':", StringUtils.abbreviate(text, 18), ioe);
-            return asModelList(ioe);
+            return ErrorModel.asModelList(ioe);
         }
     }
 
@@ -176,33 +177,6 @@ public final class DefaultDatenpaketService implements DatenpaketService {
             m.addAttribute("causes", cv.getCauses());
             models.add(m);
         }
-        return models;
-    }
-
-    /**
-     * Hierueber laesst sich eine {@link IOException} in eine "Violation"-Liste
-     * umwandeln, die fuer die Ausgabe der Validierung zum Einsatz kommt.
-     * <p>
-     *     Die Methode ist public, da sie nicht nur intern, sondern auch an
-     *     anderer Stelle benoetigt wird. Eventuell wird sie in eine eigene
-     *     Util-Klasse wandern (eher ungern) oder an einer besser geeigneten
-     *     Stelle abgelegt (ob, 09-Feb-2017),
-     *     Momentan ist diese Methode hier nur geparkt, bis ich einen besseren
-     *     Platz dafuer
-     * </p>
-     * <p>
-     * TODO: besseren Platz fuer diese Methode suchen (ob, 09-Feb-2017)
-     * </p>
-     *
-     * @param ex Exception
-     * @return the list
-     */
-    public static List<Model> asModelList(Exception ex) {
-        List<Model> models = new ArrayList<>();
-        Model m = new ExtendedModelMap();
-        m.addAttribute("message", ex.getMessage());
-        m.addAttribute("causes", ex);
-        models.add(m);
         return models;
     }
 
