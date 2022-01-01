@@ -18,16 +18,16 @@
 
 package gdv.xport.satz.feld.sparte10;
 
-import gdv.xport.annotation.*;
-import gdv.xport.feld.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 211, Sparte 10.
- * <p>
- * TODO: Wird mit v6 entfernt.
- * </p>
  *
  * @author oliver
  * @since 06.04.11

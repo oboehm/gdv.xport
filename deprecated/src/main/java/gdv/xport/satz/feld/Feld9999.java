@@ -1,15 +1,15 @@
 package gdv.xport.satz.feld;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Betrag;
+import gdv.xport.feld.NumFeld;
+import gdv.xport.feld.Zeichen;
 
 
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 9999
  * (Nachsatz).
- * <p>
- * TODO: wird mit v6 nach gdv-xport-deprecated verschoben
- * </p>
  *
  * @deprecated inwzischen durch die XML-Beschreibungs aus VUVM2018.xml abgeloest
  */

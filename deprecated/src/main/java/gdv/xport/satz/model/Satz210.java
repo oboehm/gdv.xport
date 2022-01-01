@@ -27,9 +27,6 @@ import java.util.Map;
  * Diese Klasse repraesentiert die Satzart 210. Es handelt es sich dabei um eine
  * alternative Implementierung der urspruenglichen
  * gdv.xport.satz.VertragsspezifischerTeil-Klasse, die mit 1.0 entsorgt wurde.
- * <p>
- * TODO: Klasse ist nicht mehr aktuell und wird ab v6 nach gdv-xport-deprecated verschoben.
- * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (26.03.2011)
@@ -39,7 +36,7 @@ import java.util.Map;
 public class Satz210 extends SpartensatzX {
 
     /** Mapping table for sparte to Feldxxx enumeration. */
-    private static Map<Integer, Enum[]> MAPPING = new HashMap<Integer, Enum[]>();
+    private static final Map<Integer, Enum[]> MAPPING = new HashMap<Integer, Enum[]>();
 
     static {
         MAPPING.put(10, gdv.xport.satz.feld.sparte10.Feld210.values());

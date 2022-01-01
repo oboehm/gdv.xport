@@ -25,9 +25,6 @@ import gdv.xport.util.SatzTyp;
  *  Die Klasse Satz250 hat als Besonderheit, dass die Satznummer nicht am Ende
  *  auf Adresse 256 steht, sondern mittendrin auf Adresse 51. Deswegen muessen
  *  wir den Satz, den wir ums vom {@link XmlService} holen, noch anpassen.
- * <p>
- * TODO: Wird ab v6 nach gdv-xport-deprecated verschoben.
- * </p>
  *
  * @author oboehm
  * @since 3.2 (17.04.2018)

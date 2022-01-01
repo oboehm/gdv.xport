@@ -28,9 +28,6 @@ import java.util.Map;
  * alternative Implementierung der ehemaligen Erweiterungssatz211-Klasse, die
  * nach dem Soplet-Ansatz (s. <a
  * href="http://www.soplets.org/">soplets.org</a>) implementiert wurde.
- * <p>
- * TODO: Wird ab v6 nach gdv-xport-deprecated verschoben.
- * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (06.04.2011)

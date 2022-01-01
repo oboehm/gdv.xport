@@ -67,9 +67,6 @@ public class SatzX extends Datensatz {
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
 	 *
 	 * @param satzart z.B. 100
 	 * @param felder mit allen Elementen des Datensatzes
@@ -82,9 +79,6 @@ public class SatzX extends Datensatz {
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
 	 *
 	 * @param satzart z.B. 100
 	 * @param enumClass Enumerationen-Klasse mit den Feldbeschreibungen
@@ -97,9 +91,6 @@ public class SatzX extends Datensatz {
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
 	 *
 	 * @param satzart z.B. 100
 	 * @param sparte Sparte
@@ -108,14 +99,11 @@ public class SatzX extends Datensatz {
 	 */
 	@Deprecated
 	public SatzX(final int satzart, final int sparte, final Enum[] felder) {
-		super(satzart, complete(getTeildatensaetzeFor(satzart, felder), sparte));
+		super(SatzTyp.of(satzart), complete(getTeildatensaetzeFor(satzart, felder), sparte));
 	}
 
 	/**
 	 * Instantiiert einen neuen Datensatz.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
 	 *
 	 * @param satzart z.B. 100
 	 * @param sparte Sparte
@@ -124,7 +112,7 @@ public class SatzX extends Datensatz {
 	 */
 	@Deprecated
 	public SatzX(final int satzart, final int sparte, final Class<? extends Enum> enumClass) {
-		super(satzart, complete(getTeildatensaetzeFor(SatzTyp.of(satzart), enumClass), sparte));
+		super(SatzTyp.of(satzart), complete(getTeildatensaetzeFor(SatzTyp.of(satzart), enumClass), sparte));
 	}
 
 	/**
@@ -180,9 +168,6 @@ public class SatzX extends Datensatz {
      * Legt das gewuenschte Feld an, das sich aus der uebergebenen Annotation
      * ergibt (Factory-Methode). Der Name wird dabei aus dem uebergebenen
      * Enum-Feld abgeleitet.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
      *
      * @param feldX Enum fuer das erzeugte Feld
      * @param info die FeldInfo-Annotation mit dem gewuenschten Datentyp
@@ -407,10 +392,6 @@ public class SatzX extends Datensatz {
 	 * Feld anzulegen und im jeweiligen Teildatensatz einzuhaengen. Zusaetzlich
 	 * wird das Feld "Satznummer" vorbelegt, falls es in den uebergebenen
 	 * Feldern vorhanden ist.
-	 * <p>
-	 * TODO: Vorsatz wird noch nicht richtig behandelt, da die ersten 6 Felder
-	 * hier etwas anders behandelt wird.
-	 * </p>
 	 *
 	 * @param feldX das Feld-Element
 	 * @param tds der entsprechende Teildatensatz
@@ -418,7 +399,7 @@ public class SatzX extends Datensatz {
 	private static void add(final Enum feldX, final Teildatensatz tds) {
 		FeldInfo info = MetaFeldInfo.getFeldInfo(feldX);
 		Feld feld = createFeld(feldX, info);
-		if (info.nr() < 7) {      // TODO: diese Abfrage ist eigentlich unnoetig
+		if (info.nr() < 7) {
 			LOG.debug("using default settings for " + feld);
 		} else {
 			tds.add(feld);
