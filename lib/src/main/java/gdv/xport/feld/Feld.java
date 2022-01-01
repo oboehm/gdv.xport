@@ -620,7 +620,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     private List<ConstraintViolation> validateInvariants(Config validationConfig) {
         if (validationConfig.getValidateMode() == Config.ValidateMode.STRICT) {
             net.sf.oval.Validator ovalValidator = new net.sf.oval.Validator();
-            return ovalValidator.validate(this);
+            return new ArrayList<>(ovalValidator.validate(this));
         } else {
             LOG.debug("Wegen Performance wird OVal-Validator nur in Mode STRICT aufgerufen.");
             List<ConstraintViolation> violations = new ArrayList<>();

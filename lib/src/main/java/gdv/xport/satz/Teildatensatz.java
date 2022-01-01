@@ -23,7 +23,6 @@ import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import gdv.xport.util.SatzTyp;
 import net.sf.oval.ConstraintViolation;
-import net.sf.oval.Validator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -589,8 +588,7 @@ public class Teildatensatz extends Satz {
 
     @Override
     public List<ConstraintViolation> validate(Config validationConfig) {
-        Validator validator = new Validator();
-        List<ConstraintViolation> violations = validator.validate(this);
+        List<ConstraintViolation> violations = new ArrayList<>();
         for (Feld feld : datenfelder.values()) {
             violations.addAll(feld.validate(validationConfig));
         }
