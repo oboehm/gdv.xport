@@ -29,9 +29,6 @@ import gdv.xport.satz.feld.common.Feld1bis7;
 /**
  * Diese Enum-Klasse repraesentiert die Felder fuer Satzart 220, Sparte 10 
  * (Leben - Angaben zur versicherten Person: Person = Wagnisart 0).
- * <p>
- * TODO: Wird mit v6 entfernt.
- * </p>
  *
  * @author ralfklemmer
  * @since 12.11.2012

@@ -41,6 +41,7 @@ import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7Wertungssummen;
 import gdv.xport.satz.feld.sparte10.wagnisart7.Feld220Wagnis7ZukSummenaenderungen;
 import gdv.xport.satz.feld.sparte10.wagnisart9.*;
 import gdv.xport.satz.feld.sparte130.Feld220;
+import gdv.xport.util.SatzTyp;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -53,9 +54,6 @@ import java.util.*;
  * alternative Implementierung der SpartenspezifischerTeil-Klasse, die nach dem
  * Soplet- Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>)
  * implementiert wurde.
- * <p>
- * TODO: Wird ab v6 nach gdv-xport-deprecated verschoben.
- * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (08.04.2011)

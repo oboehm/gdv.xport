@@ -26,9 +26,6 @@ import gdv.xport.util.SatzTyp;
  * alternative Implementierung der ehemaligen AllgemeinerVertragsteil-Klasse,
  * die nach dem Soplet- Ansatz (s. <a
  * href="http://www.soplets.org/">soplets.org</a>) implementiert wurde.
- * <p>
- * TODO: Wird ab v6 nach gdv-xport-deprecated verschoben.
- * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (06.03.2011)

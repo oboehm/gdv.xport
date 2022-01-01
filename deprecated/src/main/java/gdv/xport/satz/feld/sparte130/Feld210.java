@@ -2,11 +2,7 @@ package gdv.xport.satz.feld.sparte130;
 
 import gdv.xport.annotation.FeldInfo;
 import gdv.xport.annotation.FelderInfo;
-import gdv.xport.feld.AlphaNumFeld;
-import gdv.xport.feld.Betrag;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.NumFeld;
-import gdv.xport.feld.Zeichen;
+import gdv.xport.feld.*;
 import gdv.xport.satz.feld.common.Feld1bis7;
 
 /**
@@ -17,9 +13,6 @@ import gdv.xport.satz.feld.common.Feld1bis7;
  * das letzte Feld "Erweiterter BerVersV-Schluessel".
  * Von daher sollte die XML-Variante fuer die Instanziierung von
  * Satz 210.130 herangezogen werden.
- * </p>
- * <p>
- * TODO: Klasse ist nicht mehr aktuell und wird ab v6 nach gdv-xport-deprecated verschoben.
  * </p>
  *
  * @author David

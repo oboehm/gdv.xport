@@ -18,7 +18,8 @@
 
 package gdv.xport.satz.model;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Diese Klasse repraesentiert die Satzart 230 fuer Spartenspezifischer Teil.
@@ -28,13 +29,10 @@ import java.util.*;
  * <code>new SatzX(230, Feld230.values())</code>
  * verwenden.
  * </p>
- * <p>
- * TODO: Wird ab v6 nach gdv-xport-deprecated verschoben.
- * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.9 (29.03.2013)
- * @deprecated besser {@link gdv.xport.util.SatzFactory#getSatz(SatzTyp)} verwenden
+ * @deprecated besser {@link gdv.xport.util.SatzFactory} verwenden
  */
 @Deprecated
 public class Satz230 extends SpartensatzX {

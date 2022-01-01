@@ -19,13 +19,12 @@
 package gdv.xport.satz.feld.common;
 
 import gdv.xport.annotation.FeldInfo;
-import gdv.xport.feld.*;
+import gdv.xport.feld.AlphaNumFeld;
+import gdv.xport.feld.Datum;
+import gdv.xport.feld.NumFeld;
 
 /**
  * Jeder Vorsatz beginnt mit denselben 6 Feldern. Dies sind die Felder, die in diesem Enum zusammengefasst sind.
- * <p>
- * TODO: Wird mit v6 entfernt.
- * </p>
  *
  * @author oliver
  * @since 0.9.0 (22.11.2012)

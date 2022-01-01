@@ -61,12 +61,12 @@ public class DatensatzTest extends AbstractDatensatzTest {
     }
 
     /**
-     * Test method for {@link gdv.xport.satz.Datensatz#Datensatz(java.lang.String, int)}.
+     * Test method for {@link gdv.xport.satz.Datensatz#Datensatz(SatzTyp, int)}.
      * 
      * @throws IOException falls der Export schief gegangen ist
      */
     @Test
-    public void testDatensatzStringInt() throws IOException {
+    public void testDatensatzSatzTypInt() throws IOException {
         Satz adressteil = new Datensatz(SatzTyp.of("0100"), 5);
         AlphaNumFeld schluessel = new AlphaNumFeld((Bezeichner.ANREDESCHLUESSEL), 1, 43);
         schluessel.setInhalt('6');

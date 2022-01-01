@@ -80,107 +80,15 @@ public class Datensatz extends Satz {
 	 * <li>SATZNUMMER</li>
 	 * </ul>
 	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param satzart z.B. "0100"
-	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp)} verwenden
-	 */
-	@Deprecated
-	public Datensatz(final String satzart) {
-		this(SatzTyp.of(satzart));
-	}
-
-	/**
-	 * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.<br>
-	 * Der Teildatensatz besteht nur aus 8 Feldern:<br>
-	 * <ul>
-	 * <li>Satzart</li>
-	 * <li>VU_NUMMER</li>
-	 * <li>BUENDELUNGSKENNZEICHEN</li>
-	 * <li>SPARTE</li>
-	 * <li>VERSICHEURUNGSSCHEINNUMMER</li>
-	 * <li>FOLGENUMMER</li>
-	 * <li>VERMITTLER</li>
-	 * <li>SATZNUMMER</li>
-	 * </ul>
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
+	 * Anm.: Dieser Constructor wird noch von
+	 * 		{@link gdv.xport.util.SatzFactory#register(Class, int)}
+	 * 		verwendet.
 	 * </p>
 	 *
 	 * @param satzart z.B. 100
-	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp)} verwenden
 	 */
-	@Deprecated
 	public Datensatz(final int satzart) {
 		this(SatzTyp.of(satzart));
-	}
-
-	/**
-	 * Instantiiert einen neuen Datensatz.<br>
-	 * Der Teildatensatz besteht nur aus 8 Feldern:<br>
-	 * <ul>
-	 * <li>Satzart</li>
-	 * <li>VU_NUMMER</li>
-	 * <li>BUENDELUNGSKENNZEICHEN</li>
-	 * <li>SPARTE</li>
-	 * <li>VERSICHEURUNGSSCHEINNUMMER</li>
-	 * <li>FOLGENUMMER</li>
-	 * <li>VERMITTLER</li>
-	 * <li>SATZNUMMER</li>
-	 * </ul>
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param satzart z.B. 100
-	 * @param n Anzahl der Teildatensaetze
-	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp, int)} verwenden
-	 */
-	@Deprecated
-	public Datensatz(final String satzart, final int n) {
-		this(SatzTyp.of(satzart), n);
-	}
-
-	/**
-	 * Instantiiert einen neuen Datensatz.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param satzart z.B. 100
-	 * @param tdsList Liste mit den Teildatensaetzen
-	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp, List)} verwenden
-	 */
-	@Deprecated
-	public Datensatz(final int satzart, final List<? extends Teildatensatz> tdsList) {
-		this(SatzTyp.of(satzart), tdsList);
-	}
-
-	/**
-	 * Instantiiert einen neuen Datensatz mit 1 Teildatensatz.<br>
-	 * Der Teildatensatz besteht nur aus 8 Feldern:<br>
-	 * <ul>
-	 * <li>Satzart</li>
-	 * <li>VU_NUMMER</li>
-	 * <li>BUENDELUNGSKENNZEICHEN</li>
-	 * <li>SPARTE</li>
-	 * <li>VERSICHEURUNGSSCHEINNUMMER</li>
-	 * <li>FOLGENUMMER</li>
-	 * <li>VERMITTLER</li>
-	 * <li>SATZNUMMER</li>
-	 * </ul>
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param satzart z.B. 100
-	 * @param sparte z.B. 70 (Rechtsschutz)
-	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp)} verwenden
-	 */
-	@Deprecated
-	public Datensatz(final int satzart, final int sparte) {
-		this(SatzTyp.of(satzart, sparte));
 	}
 
 	/**
@@ -211,33 +119,6 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	   * Instantiiert einen neuen Datensatz.<br>
-	   * Die Teildatensaetze bestehen nur aus 8 Feldern:<br>
-	   * <ul>
-	   * <li>Satzart</li>
-	   * <li>VU_NUMMER</li>
-	   * <li>BUENDELUNGSKENNZEICHEN</li>
-	   * <li>SPARTE</li>
-	   * <li>VERSICHEURUNGSSCHEINNUMMER</li>
-	   * <li>FOLGENUMMER</li>
-	   * <li>VERMITTLER</li>
-	   * <li>SATZNUMMER</li>
-	   * </ul>
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param satzart z.B. 100
-	 * @param sparte z.B. 70 (Rechtsschutz)
-	 * @param n Anzahl der Teildatensaetze
-	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp, int)} verwenden
-	 */
-	@Deprecated
-	public Datensatz(final int satzart, final int sparte, final int n) {
-		this(SatzTyp.of(satzart, sparte), n);
-	}
-
-	/**
      * Instantiiert einen neuen Datensatz.
      * Die Teildatensaetze bestehen nur aus 8 oder 9 Feldern:
      * <ul>
@@ -265,22 +146,6 @@ public class Datensatz extends Satz {
 		super(satzTyp, n, cfg);
 		this.init(satzTyp);
 		this.setUpTeildatensaetze();
-	}
-
-	/**
-	 * Instantiiert einen neuen Datensatz.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param satzart z.B. 100
-	 * @param sparte z.B. 70 (Rechtsschutz)
-	 * @param tdsList Liste mit den Teildatensaetzen
-	 * @deprecated bitte {@link Datensatz#Datensatz(SatzTyp, List)} verwenden
-	 */
-	@Deprecated
-	public Datensatz(final int satzart, final int sparte, final List<Teildatensatz> tdsList) {
-		this(SatzTyp.of(satzart, sparte), tdsList);
 	}
 
 	/**

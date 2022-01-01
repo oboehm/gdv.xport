@@ -42,13 +42,10 @@ import java.util.*;
  * alternative Implementierung der ehemaligen Erweiterungssatz221-Klasse, die
  * nach dem Soplet-Ansatz (s. <a href="http://www.soplets.org/">soplets.org</a>)
  * implementiert wurde.
- * <p>
- * TODO: Wird ab v6 nach gdv-xport-deprecated verschoben.
- * </p>
  *
  * @author oliver (ob@aosd.de)
  * @since 0.6 (14.04.2011)
- * @deprecated besser {@link gdv.xport.util.SatzFactory#getSatz(SatzTyp)} verwenden
+ * @deprecated besser {@link gdv.xport.util.SatzFactory} verwenden
  */
 @Deprecated
 public class Satz221 extends SpartensatzX {

@@ -18,9 +18,11 @@
 
 package gdv.xport.satz.feld.sparte70;
 
-import gdv.xport.annotation.*;
+import gdv.xport.annotation.FeldInfo;
+import gdv.xport.annotation.FelderInfo;
 import gdv.xport.feld.*;
-import gdv.xport.satz.feld.common.*;
+import gdv.xport.satz.feld.common.Feld1bis7;
+import gdv.xport.satz.feld.common.VertragsStatus;
 
 
 /**
@@ -30,9 +32,6 @@ import gdv.xport.satz.feld.common.*;
  * "Erweiterter BerVersV-Schluessel".
  * Von daher sollte die XML-Variante fuer die Instanziierung von
  * Satz 210.070 herangezogen werden.
- * </p>
- * <p>
- * TODO: Klasse ist nicht mehr aktuell und wird ab v6 nach gdv-xport-deprecated verschoben.
  * </p>
  *
  * @author oliver
