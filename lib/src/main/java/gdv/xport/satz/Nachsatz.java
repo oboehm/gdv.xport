@@ -115,7 +115,7 @@ public final class Nachsatz extends Satz {
      * @param n Anzahl der eingeschlossenen Saetze
      */
     public void setAnzahlSaetze(final int n) {
-        this.set(Bezeichner.ANZAHL_SAETZE, n);
+        this.setFeld(Bezeichner.ANZAHL_SAETZE, n);
     }
 
     /**
@@ -137,11 +137,11 @@ public final class Nachsatz extends Satz {
     /**
      * Setzt den Gesamtbeitrag.
      *
-     * @param strBeitrag der neue Gesamtbeitrag
+     * @param beitrag der neue Gesamtbeitrag
      * @since 5.0
      */
-    public void setGesamtBeitrag(final String strBeitrag) {
-        this.set(Bezeichner.GESAMTBEITRAG, strBeitrag);
+    public void setGesamtBeitrag(final String beitrag) {
+        this.setFeld(Bezeichner.GESAMTBEITRAG, beitrag);
     }
 
     /**
@@ -162,7 +162,7 @@ public final class Nachsatz extends Satz {
      * @since 5.0
      */
     public void setGesamtBeitrag(final BigDecimal beitrag) {
-        this.set(Bezeichner.GESAMTBEITRAG, beitrag.movePointRight(2).toString());
+        this.setFeld(Bezeichner.GESAMTBEITRAG, beitrag.movePointRight(2).toString());
     }
 
     /**
@@ -186,20 +186,6 @@ public final class Nachsatz extends Satz {
      */
     public Betrag getGesamtBeitrag() {
         return Betrag.of(this.getFeld(Bezeichner.GESAMTBEITRAG));
-    }
-
-    /**
-     * Setzt den Brutto-Gesamtbeitrag, inklusive dem Vorzeichen.
-     * <p>
-     * TODO: wird in v6 entfernt werden.
-     * </p>
-     *
-     * @param beitrag neuer Gesamtbeitrag (Brutto)
-     * @deprecated durch {@link #setGesamtBeitragBruttoMitVorzeichen(BigDecimal)} abgeloest
-     */
-    @Deprecated
-    public void setGesamtBeitragBrutto(final double beitrag) {
-        this.setGesamtBeitragBruttoMitVorzeichen(BigDecimal.valueOf(beitrag));
     }
 
     /**
@@ -241,23 +227,7 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * Diese Methode wird kuenftig nur den Betragsteil zurueckliefern und damit
-     * auch eine andere Semantik bekommen. Bis dahin ist diese Methode aber
-     * deprecated.
-     * <p>
-     * TODO: Wird mit v6 entfernt oder nur den Betragsteil zurueckliefern.
-     * </p>
-     *
-     * @return Gesamtbeitrag-Brutto(Inkasso) (Feld 5)
-     * @deprecated wurde durch {@link #getGesamtBeitragBruttoMitVorzeichen()} ersetzt
-     */
-    @Deprecated
-    public BetragMitVorzeichen getGesamtBeitragBrutto() {
-        return getGesamtBeitragBruttoMitVorzeichen();
-    }
-
-    /**
-     * Diese Methode ersetzt die alte {@link #getGesamtBeitragBrutto()}.
+     * Liefert den Gesamtbeitrag (Brutto).
      *
      * @return Gesamtbeitrag-Brutto(Inkasso) (Feld 5)
      * @since 5.0
@@ -347,22 +317,7 @@ public final class Nachsatz extends Satz {
     }
 
     /**
-     * Durch {@link #setVersicherungsLeistungenMitVorzeichen(BigDecimal)}
-     * ersetzt.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param betrag neuer Betrag
-     * @deprecated durch {@link #setVersicherungsLeistungenMitVorzeichen(BigDecimal)} ersetzt
-     */
-    @Deprecated
-    public void setVersicherungsLeistungen(final double betrag) {
-        setVersicherungsLeistungenMitVorzeichen(BigDecimal.valueOf(betrag));
-    }
-
-    /**
-     * Ersetzt {@link #setVersicherungsLeistungen(double)}.
+     * Setzt den Betrag fuer die Versicherungsleistungen.
      *
      * @param betrag neuer Betrag
      * @since 5.0
@@ -372,22 +327,6 @@ public final class Nachsatz extends Satz {
         bmv.setInhalt(betrag);
         setVersicherungsLeistungen(bmv.getBetrag().getInhalt());
         setVorzeichenVersicherungsLeistungen(Character.toString(bmv.getVorzeichen()));
-    }
-
-    /**
-     * Diese Methode wird kuenftig nur den Betragsteil zurueckliefern und damit
-     * auch eine andere Semantik bekommen. Bis dahin ist diese Methode aber
-     * deprecated.
-     * <p>
-     * TODO: Wird mit v6 entfernt oder liefert Betrag zurueck.
-     * </p>
-     *
-     * @return VersicherungsLeistungen (Feld 9)
-     * @deprecated durch {@link #getVersicherungsLeistungenMitVorzeichen()} ersetzt
-     */
-    @Deprecated
-    public BetragMitVorzeichen getVersicherungsLeistungen() {
-        return this.getVersicherungsLeistungenMitVorzeichen();
     }
 
     /**
@@ -439,19 +378,6 @@ public final class Nachsatz extends Satz {
 
     /**
      * Setzt die Schadenbearbeitungskosten.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @param kosten  Kosten der Schadensbearbeitung
-     * @deprecated durch {@link #setSchadenbearbeitungskostenMitVorzeichen(BigDecimal)} abgelöst
-     */
-    public void setSchadenbearbeitungsKosten(final double kosten) {
-        setSchadenbearbeitungskostenMitVorzeichen(BigDecimal.valueOf(kosten));
-    }
-
-    /**
-     * Setzt die Schadenbearbeitungskosten.
      *
      * @param beitrag neuer Gesamtbeitrag (Brutto)
      * @since 5.0
@@ -484,20 +410,6 @@ public final class Nachsatz extends Satz {
         BigDecimal summe = getSchadenbearbeitungskostenMitVorzeichen().add(betrag);
         this.setSchadenbearbeitungskostenMitVorzeichen(summe);
         return summe;
-    }
-
-    /**
-     * Liefert die Schandenbearbeitunskosten.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @return Kosten der Schadensbearbeitung
-     * @deprecated durch {@link #getSchadenbearbeitungskostenMitVorzeichen()} abgeloest
-     */
-    @Deprecated
-    public BetragMitVorzeichen getSchadenbearbeitungsKosten() {
-        return getSchadenbearbeitungskostenMitVorzeichen();
     }
 
     /**
