@@ -22,7 +22,6 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
-import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.SimpleConstraintViolation;
@@ -449,7 +448,7 @@ public class Datenpaket implements ImportListener {
 
     private static Satz importSatzFrom(PushbackLineNumberReader reader, int satzart,
                                        Map<SatzTyp, Version> satzartVersionen) throws IOException {
-        SatzTyp satzTyp = readSatzTyp(reader, satzart);
+        SatzTyp satzTyp = SatzTyp.readSatzTyp(reader, satzart);
         Version wanted = satzartVersionen.get(satzTyp);
         if (wanted == null) {
             return importDatensatz(reader, satzart);
@@ -458,32 +457,6 @@ public class Datenpaket implements ImportListener {
             satz.importFrom(reader);
             return satz;
         }
-    }
-    // TODO: nach SatzTyp verschieben
-    private static SatzTyp readSatzTyp(PushbackLineNumberReader reader, int satzart) throws IOException {
-        int sparte = Datensatz.readSparte(reader);
-        SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
-        if (satzart >= 210 && satzart < 300) {
-            if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
-                WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
-                // wagnisart 0 hat immer ein Leerzeichen als teildatenSatzmummer.
-                // Nur groesser 0 besitzt per Definition Werte.
-                Satznummer satznr = Satznummer.readSatznummer(reader);
-                satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), satznr.toInt());
-            } else if (sparte == 20 && satzart == 220) {
-                // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
-                int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
-                satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
-            }  else if (sparte == 580 && satzart == 220) {
-                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
-                // noetig
-                // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart noetig
-                int bausparArt = Datensatz.readBausparenArt(reader);
-                // BausparenArt nicht auslesbar -> Unbekannter Datensatz
-                satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
-            }
-        }
-        return satzTyp;
     }
 
     /**
@@ -512,7 +485,7 @@ public class Datenpaket implements ImportListener {
 
     private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
             throws IOException {
-        SatzTyp satzTyp = readSatzTyp(reader, satzart);
+        SatzTyp satzTyp = SatzTyp.readSatzTyp(reader, satzart);
         Datensatz satz = SatzRegistry.getInstance().getDatensatz(satzTyp);
         satz.importFrom(reader);
         return satz;

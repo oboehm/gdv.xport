@@ -251,11 +251,7 @@ public class NumFeld extends Feld {
     @Override
     public void setInhalt(String value) {
         String s = validator.verify(value, this);
-        if (config.getBool("gdv.numfeld.fill-blanks")) {
-            super.setInhalt(s.trim());
-        } else {
-            super.setInhalt(s);
-        }
+        super.setInhalt(s);
     }
 
     /* (non-Javadoc)

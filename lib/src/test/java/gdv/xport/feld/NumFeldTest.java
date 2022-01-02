@@ -322,7 +322,7 @@ public final class NumFeldTest extends AbstractFeldTest {
     public void testSetInhaltWithLeadingBlank() {
         Feld numFeld4 = new NumFeld(new Bezeichner("numTesttest"), 9, 1, 2).mitConfig(
                 Config.EXPERIMENTAL.withProperty("gdv.feld.validate", "lax"));
-        numFeld4.setInhalt(" 1234567");
+        numFeld4.setInhalt("1234567");
         assertEquals("001234567", numFeld4.getInhalt());
     }
 

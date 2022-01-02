@@ -361,21 +361,8 @@ public class Vorsatz extends Satz {
     /**
      * Setzen der Version.
      * <p>
-     * TODO: wurde nur intern benoetigt und wird mit v5.2 entfernt
+     * TODO: wird ab v7 entfernt
      * </p>
-     *
-     * @param bezeichner Bezeichner
-     * @param version    z.B. "1.2"
-     * @since 4.1.1
-     * @deprecated durch {@link #setVersion(Bezeichner, String)} ersetzt
-     */
-    @Deprecated
-    public void setVersion(String bezeichner, String version) {
-        this.getFeld(bezeichner).setInhalt(version);
-    }
-
-    /**
-     * Setzen der Version.
      *
      * @param art     Satzart
      * @param version z.B. "1.2"

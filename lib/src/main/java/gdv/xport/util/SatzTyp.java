@@ -18,10 +18,15 @@
 
 package gdv.xport.util;
 
+import gdv.xport.feld.Satznummer;
+import gdv.xport.io.PushbackLineNumberReader;
+import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.feld.common.WagnisartLeben;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ValidationException;
+import java.io.IOException;
 import java.util.Arrays;
 
 /**
@@ -166,7 +171,7 @@ public class SatzTyp {
 	/**
 	 * Damit laesst sich ein SatzTyp anhand der Einzelteile zusammensetzen.
 	 * <p>
-	 * TODO: 'private' machen
+	 * TODO: wird ab v7 'private' sein
 	 * </p>
 	 *
 	 * @param args z.B. 0210, 050
@@ -194,6 +199,40 @@ public class SatzTyp {
 
 	private static boolean isAllgemeineSatzart(int satzart) {
 		return (satzart == 210) || (satzart == 211) || (satzart == 220) || (satzart == 221);
+	}
+
+	/**
+	 * Bestimmt den SatzTyp eines Datensatzes.
+	 *
+	 * @param reader  Reader
+	 * @param satzart Satzart, z.B. 100
+	 * @return den ermittelten SatzTyp
+	 * @throws IOException bei Lesefehlern
+	 */
+	public static SatzTyp readSatzTyp(PushbackLineNumberReader reader, int satzart) throws IOException {
+		int sparte = Datensatz.readSparte(reader);
+		SatzTyp satzTyp = of(satzart, sparte);
+		if (satzart >= 210 && satzart < 300) {
+			if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
+				WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
+				// wagnisart 0 hat immer ein Leerzeichen als teildatenSatzmummer.
+				// Nur groesser 0 besitzt per Definition Werte.
+				Satznummer satznr = Satznummer.readSatznummer(reader);
+				satzTyp = of(satzart, sparte, wagnisart.getCode(), satznr.toInt());
+			} else if (sparte == 20 && satzart == 220) {
+				// Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
+				int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
+				satzTyp = of(satzart, sparte, krankenFolgeNr);
+			}  else if (sparte == 580 && satzart == 220) {
+				// Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
+				// noetig
+				// Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart noetig
+				int bausparArt = Datensatz.readBausparenArt(reader);
+				// BausparenArt nicht auslesbar -> Unbekannter Datensatz
+				satzTyp = of(satzart, sparte, bausparArt);
+			}
+		}
+		return satzTyp;
 	}
 
 	private boolean isAllgemeineSatzart() {
@@ -256,21 +295,6 @@ public class SatzTyp {
 	public int getWagnisart() {
 		assertTrue("Wagnisart", hasWagnisart());
 		return teil[2];
-	}
-
-	/**
-	 * Liefert die Wagnisart als String.
-	 * <p>
-	 * TODO: abhaengigen Test ueberarbeiten, Methode eintfernen
-	 * </p>
-	 *
-	 * @return z.B. "9"
-	 * @since 5.0
-	 * @deprecated wird nur zum Testen verwendet
-	 */
-	@Deprecated
-	public String getWagnisartAsString() {
-		return Integer.toString(this.getWagnisart());
 	}
 
 	/**
