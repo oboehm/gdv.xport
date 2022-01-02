@@ -23,6 +23,7 @@ import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.ByteAdresse;
 import gdv.xport.io.PushbackLineNumberReader;
+import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
@@ -33,8 +34,6 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -79,11 +78,11 @@ public class DatensatzTest extends AbstractDatensatzTest {
      * Test mit dem Datensatz "0200".
      */
     @Test
-    public void testSet() {
+    public void testSetFeld() {
         Satz ds = new Datensatz(SatzTyp.of("0200"), 2);
         ds.add(new AlphaNumFeld((Bezeichner.INKASSOART), 1, 43));
-        ds.set(Bezeichner.INKASSOART, "2");
-        assertEquals("2", ds.get(Bezeichner.INKASSOART));
+        ds.setFeld(Bezeichner.INKASSOART, "2");
+        assertEquals("2", ds.getFeld(Bezeichner.INKASSOART).getInhalt());
     }
 
     /**
@@ -115,13 +114,8 @@ public class DatensatzTest extends AbstractDatensatzTest {
      */
     @Test
     public void testCopyConstructor() {
-        List<Teildatensatz> teildatensaetze = new ArrayList<>();
-        Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
-        tds.add(new AlphaNumFeld(Bezeichner.NAME1, 30, 44));
-        tds.setFeld(Bezeichner.NAME1, "Asterix");
-        teildatensaetze.add(tds);
-        teildatensaetze.add(new Teildatensatz(SatzTyp.of(100), 2));
-        Datensatz orig = new Datensatz(SatzTyp.of(100), teildatensaetze);
+        Datensatz orig = XmlService.getInstance().getSatzart(SatzTyp.of(100));
+        orig.setFeld(Bezeichner.NAME1, "Asterix");
         Datensatz copy = new Datensatz(orig);
         assertEquals(orig.getFeldInhalt(Bezeichner.NAME1), copy.getFeldInhalt(Bezeichner.NAME1));
         assertEquals(orig.toLongString(), copy.toLongString());

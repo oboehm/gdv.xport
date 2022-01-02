@@ -57,12 +57,16 @@ public class SatzX extends Datensatz {
 	/**
 	 * Instantiiert einen neuen Datensatz.
 	 *
-	 * @param satzTyp         Satzart
-	 * @param teildatensaetze Teildatensaetze
+	 * @param satzTyp Satzart
+	 * @param tdsList Teildatensaetze
 	 * @since 5.0
 	 */
-	public SatzX(SatzTyp satzTyp, List<Teildatensatz> teildatensaetze) {
-		super(satzTyp, teildatensaetze);
+	public SatzX(SatzTyp satzTyp, List<Teildatensatz> tdsList) {
+		super(satzTyp);
+		if (tdsList.get(0).hasSparte()) {
+			setSparte(tdsList.get(0).getSparte());
+		}
+		this.completeTeildatensaetze();
 	}
 
 	/**
@@ -99,7 +103,7 @@ public class SatzX extends Datensatz {
 	 */
 	@Deprecated
 	public SatzX(final int satzart, final int sparte, final Enum[] felder) {
-		super(SatzTyp.of(satzart), complete(getTeildatensaetzeFor(satzart, felder), sparte));
+		this(SatzTyp.of(satzart), complete(getTeildatensaetzeFor(satzart, felder), sparte));
 	}
 
 	/**
@@ -112,7 +116,7 @@ public class SatzX extends Datensatz {
 	 */
 	@Deprecated
 	public SatzX(final int satzart, final int sparte, final Class<? extends Enum> enumClass) {
-		super(SatzTyp.of(satzart), complete(getTeildatensaetzeFor(SatzTyp.of(satzart), enumClass), sparte));
+		this(SatzTyp.of(satzart), complete(getTeildatensaetzeFor(SatzTyp.of(satzart), enumClass), sparte));
 	}
 
 	/**
@@ -136,7 +140,7 @@ public class SatzX extends Datensatz {
 	 */
   public SatzX(final SatzTyp satzNr, final Class<? extends Enum> enumClass)
   {
-    super(satzNr, getTeildatensaetzeFor(satzNr, enumClass));
+    this(satzNr, getTeildatensaetzeFor(satzNr, enumClass));
 
     this.setGdvSatzartName(satzNr.toString());
     if (satzNr.hasSparte())

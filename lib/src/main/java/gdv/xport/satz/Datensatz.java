@@ -32,7 +32,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.PushbackReader;
-import java.util.List;
 
 import static gdv.xport.feld.Bezeichner.*;
 
@@ -146,26 +145,6 @@ public class Datensatz extends Satz {
 		super(satzTyp, n, cfg);
 		this.init(satzTyp);
 		this.setUpTeildatensaetze();
-	}
-
-	/**
-	 * Instantiiert einen neuen Datensatz. (nur von SatzX)
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param satzNr  die SatzNummer
-	 * @param tdsList Liste mit den Teildatensaetzen
-	 * @since 0.9
-	 * @deprecated Enums mit Annotationen werden ab v6 nicht mehr unterstuetzt
-	 */
-	@Deprecated
-	protected Datensatz(final SatzTyp satzNr, final List<? extends Teildatensatz> tdsList) {
-		super(satzNr, tdsList);
-		if (tdsList.get(0).hasSparte()) {
-			this.sparte.setInhalt(tdsList.get(0).getSparte());
-		}
-		this.completeTeildatensaetze();
 	}
 
 	/**
@@ -463,20 +442,6 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-   	 * Gets the teildatensatz nummer. (wird nur von SatzX verwendet!)
-	 * <p>
-	 * TODO: wird mit v6 entfernt
-	 * </p>
-	 *
-	 * @return the teildatensatz nummer
-	 * @deprecated ohne Funktion
-	 */
-	@Deprecated
-	public String getTeildatensatzNummer() {
-		return " ";
-	}
-
-	/**
 	 * Da nicht alle Satzarten die Satznummer am Ende des Satzes haben, kann
 	 * man dies ueber diese Methode korrigieren.
 	 * <p>
@@ -494,20 +459,6 @@ public class Datensatz extends Satz {
 		for (Teildatensatz tds : getTeildatensaetze()) {
 			tds.setSatznummer(satznummer);
 		}
-	}
-
-	/**
-	 * Sets the teildatensatz nummer.
-	 * <p>
-	 * TODO: wird mit v6 entfernt
-	 * </p>
-	 *
-	 * @param teildatensatzNummer the new teildatensatz nummer
-	 * @deprecated nicht noetig, wird automatisch gesetzt
-	 */
-	@Deprecated
-	public void setTeildatensatzNummer(final String teildatensatzNummer) {
-		LOG.warn("setTeildatensatzNummer({}) wird ignoriert", teildatensatzNummer);
 	}
 
 	/**
