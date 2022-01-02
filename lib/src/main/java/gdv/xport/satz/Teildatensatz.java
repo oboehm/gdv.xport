@@ -133,21 +133,6 @@ public class Teildatensatz extends Satz {
     }
 
     /**
-     * Liefert die Satznummer zurueck.
-     * <p>
-     * TODO: Wird mit v6 entfernt.
-     * </p>
-     *
-     * @return Satznummer als einzelnes Zeichen ('1' ... '9')
-     * @since 0.2
-     * @deprecated durch {@link #getSatznummer()} abgeloest
-     */
-    @Deprecated
-    public Zeichen getNummer() {
-        return this.getSatznummer();
-    }
-
-    /**
      * Liefert die Satznummer zurueck. Sie wurde aus Symmetriegruenden
      * zu {@link #setSatznummer(Zeichen)} eingefuehrt und loest die alte
      * getNummer()-Methode ab.

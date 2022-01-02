@@ -60,11 +60,10 @@ public class SatzXmlTest extends AbstractDatensatzTest {
      * einzelnen Felder in den Teildatensaetzen mit einem Wert, damit wir nicht
      * nur einen leeren Satz zum Testen haben.
      *
-     * @throws IOException Signals that an I/O exception has occurred.
      * @throws XMLStreamException the XML stream exception
      */
     @BeforeClass
-    public static void setUpSatz100() throws IOException, XMLStreamException {
+    public static void setUpSatz100() throws XMLStreamException {
         satz100 = getSatz("Satz100.xml");
     }
 
@@ -152,7 +151,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         assertEquals(2, teildatensaetze.size());
         char expectedNr = '1';
         for (Teildatensatz tds : teildatensaetze) {
-            assertEquals(expectedNr, tds.getNummer().toChar());
+            assertEquals(expectedNr, tds.getSatznummer().toChar());
             expectedNr++;
             checkTeildatensatz(tds);
         }
@@ -360,7 +359,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     public void testGetSupportedSatzTypen() {
         List<SatzTyp> supported = satz100.getSupportedSatzTypen();
         assertEquals(1, supported.size());
-        assertEquals(new SatzTyp(100), supported.get(0));
+        assertEquals(SatzTyp.of(100), supported.get(0));
     }
 
     /**
@@ -382,7 +381,7 @@ public class SatzXmlTest extends AbstractDatensatzTest {
         SatzXml orig = getSatz("Satz0220.010.0.xml");
         SatzXml copy = new SatzXml(orig);
         assertEquals(orig, copy);
-        copy.set(Bezeichner.BERUFSSCHLUESSEL, "123");
+        copy.setFeld(Bezeichner.BERUFSSCHLUESSEL, "123");
         assertNotEquals(orig, copy);
     }
 

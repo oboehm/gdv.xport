@@ -24,7 +24,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 ### Removed
 
 - Enum-Unterstützung wurde nach gdv-xport-deprecated verschoben
-- eine Reihe von "deprecated" Methoden wurden entfernt
+- eine Reihe Methoden, die für v6 als "deprecated" gekennzeichnet waren, wurden entfernt
 
 
 ## [5.4.2] - 2021-12-18

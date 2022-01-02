@@ -167,7 +167,7 @@ public final class XmlFormatter extends AbstractFormatter {
     private void write(final Teildatensatz teildatensatz, final int level) throws XMLStreamException {
         writeIndent(level);
         xmlStreamWriter.writeStartElement("teildatensatz");
-        xmlStreamWriter.writeAttribute("nr", teildatensatz.getNummer().getInhalt());
+        xmlStreamWriter.writeAttribute("nr", teildatensatz.getSatznummer().getInhalt());
         xmlStreamWriter.writeCharacters("\n");
         for (Feld feld : teildatensatz.getFelder()) {
             writeIndent(level + 1);
@@ -315,13 +315,7 @@ public final class XmlFormatter extends AbstractFormatter {
         return swriter.toString();
     }
 
-    /**
-     * Diese Methode ist fuer die Einrueckung verantwortlich.
-     *
-     * @param level
-     *            Einrueckungstiefe
-     */
-    protected void writeIndent(final int level) {
+    private void writeIndent(final int level) {
         try {
             for (int i = 0; i < level; i++) {
                 xmlStreamWriter.writeCharacters("  ");
