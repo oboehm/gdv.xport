@@ -72,21 +72,6 @@ public abstract class Satz implements Cloneable {
     private final AlphaNumFeld satzVersion = new AlphaNumFeld(Bezeichner.of("Version"), 3, 1, Align.LEFT);
 
 	/**
-	 * Instantiates a new satz.
-	 * <p>
-	 * TODO: Wird mit v6 entfernt.
-	 * </p>
-	 *
-	 * @param art Satzart
-	 * @param n Anzahl der Teildatensaetze
-	 * @deprecated bitte {@link Satz#Satz(SatzTyp, int)} verwenden
-	 */
-	@Deprecated
-	public Satz(final NumFeld art, final int n) {
-		this(SatzTyp.of(art.getInhalt()), n);
-	}
-
-	/**
 	 * Mit diesem Konstruktor wird ein Satz fuer die entsprechende Satzart
 	 * mit n Teildatensaetzen angelegt.
 	 *
@@ -1352,7 +1337,7 @@ public abstract class Satz implements Cloneable {
 	 */
 	@Override
 	public int hashCode() {
-		return this.getSatzart();			// TODO: intelligentere Implementierung mit weniger Kollisionen
+		return this.getSatzart() * 1_000_000 + teildatensatz.length;
 	}
 
     /**
