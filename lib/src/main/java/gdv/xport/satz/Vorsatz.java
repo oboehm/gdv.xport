@@ -75,7 +75,7 @@ public class Vorsatz extends Satz {
     private Vorsatz(Satz vorlage, VersionHandler versionHandler) {
         super(vorlage, vorlage.cloneTeildatensaetze());
         this.versionHandler = versionHandler;
-        setVuNummer(Config.getVUNummer().getInhalt());
+        setVuNummer(Config.getInstance().getVUNr().getInhalt());
     }
 
     /**
@@ -205,7 +205,6 @@ public class Vorsatz extends Satz {
 
     /**
      * @return Erstellungszeitraum (VonDatum, BisDatum)
-     * TODO: Hier wuerde ich als Ergebnis eher eine Date-Range erwarten,
      */
     public String getErstellungsZeitraum() {
         return this.getFeld(Bezeichner.ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS).getInhalt().trim();

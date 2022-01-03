@@ -424,7 +424,7 @@ public abstract class Satz implements Cloneable {
 		boolean found = false;
 		for (Teildatensatz tds : teildatensatz) {
 			if (tds.hasFeld(name)) {
-				Feld x = tds.getFeld(name);	// TODO: tds.getFeld(name, config) - fuer Validierung (05-Okt-2021)
+				Feld x = tds.getFeld(name);
 				x.setInhalt(value);
 				x.mitConfig(config).getValidator().verify(value);
 				found = true;

@@ -815,15 +815,8 @@ public class Feld implements Comparable<Feld>, Cloneable {
         }
 
         private void validateChar(String value, char c) {
-            switch (c) {
-                case '§':
-                    LOG.trace("Zeichen '{}' ist erlaubt.", c);
-                    break;
-                default:
-                    if (!StringUtils.isAsciiPrintable(Text.replaceUmlaute(Character.toString(c)))) {
-                        throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen '%c'", value, c));
-                    }
-                    break;
+            if (!Text.of(Character.toString(c)).isPrintable()) {
+                throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen '%c'", value, c));
             }
         }
 
