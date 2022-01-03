@@ -103,7 +103,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test(expected = IllegalArgumentException.class)
     public void testRemove() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
-        Zeichen satznummer = new Zeichen(new Bezeichner("Satznummer"), 256);
+        Zeichen satznummer = new Zeichen(Bezeichner.of("Satznummer"), 256);
         satznummer.setInhalt('1');
         tds.add(satznummer);
         assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
@@ -126,7 +126,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testRemoveSafe() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
-        Zeichen satznummer = new Zeichen(new Bezeichner("Satznummer"), 256);
+        Zeichen satznummer = new Zeichen(Bezeichner.of("Satznummer"), 256);
         satznummer.setInhalt('1');
         tds.add(satznummer);
         assertEquals(satznummer, tds.getFeld(satznummer.getBezeichner()));

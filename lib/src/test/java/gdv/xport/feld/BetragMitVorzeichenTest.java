@@ -35,7 +35,7 @@ import static org.junit.Assert.assertTrue;
  */
 public final class BetragMitVorzeichenTest extends AbstractFeldTest {
 
-    private final BetragMitVorzeichen betrag = new BetragMitVorzeichen(new Bezeichner("Test"), 5, 1);
+    private final BetragMitVorzeichen betrag = new BetragMitVorzeichen(Bezeichner.of("Test"), 5, 1);
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
@@ -138,13 +138,13 @@ public final class BetragMitVorzeichenTest extends AbstractFeldTest {
 
     @Test
     public void testCtor() {
-        BetragMitVorzeichen betragMitVZ= new BetragMitVorzeichen(new Bezeichner("betragTestVZ"), 10, 2);
+        BetragMitVorzeichen betragMitVZ= new BetragMitVorzeichen(Bezeichner.of("betragTestVZ"), 10, 2);
         assertEquals('+', betragMitVZ.getVorzeichen());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testSetInhaltNull() {
-        BetragMitVorzeichen betragMitVz = new BetragMitVorzeichen(new Bezeichner("betragTestVZ"), 10, 2).mitConfig(Config.STRICT);
+        BetragMitVorzeichen betragMitVz = new BetragMitVorzeichen(Bezeichner.of("betragTestVZ"), 10, 2).mitConfig(Config.STRICT);
         String wert = null;
         betragMitVz.setInhalt(wert);
     }

@@ -34,7 +34,7 @@ public final class Undefiniert extends Feld {
      * @param start Start-Adresse
      */
     public Undefiniert(final int length, final int start) {
-        super(new Bezeichner("undefiniert"), length, start, Align.LEFT);
+        super(Bezeichner.of("undefiniert"), length, start, Align.LEFT);
     }
 
 }

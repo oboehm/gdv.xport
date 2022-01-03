@@ -84,7 +84,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            the alignment
      */
     public Feld(final String name, final String s, final Align alignment) {
-        this(new Bezeichner(name), 1, s, alignment);
+        this(Bezeichner.of(name), 1, s, alignment);
     }
 
     /**
@@ -152,7 +152,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            the alignment
      */
     public Feld(final String name, final int length, final int start, final char c, final Align alignment) {
-        this(new Bezeichner(name), length, start, alignment);
+        this(Bezeichner.of(name), length, start, alignment);
         this.setInhalt(c);
     }
 
@@ -171,7 +171,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            the alignment
      */
     public Feld(final String name, final int length, final int start, final String s, final Align alignment) {
-        this(new Bezeichner(name), length, start, alignment);
+        this(Bezeichner.of(name), length, start, alignment);
         this.setInhalt(s);
     }
 
@@ -298,7 +298,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
     }
 
     private Bezeichner createBezeichner() {
-        return new Bezeichner(this.getClass().getSimpleName() + "@" + Integer.toHexString(this.hashCode()));
+        return Bezeichner.of(this.getClass().getSimpleName() + "@" + Integer.toHexString(this.hashCode()));
     }
 
     /**

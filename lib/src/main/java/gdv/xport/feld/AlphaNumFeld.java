@@ -50,7 +50,7 @@ public class AlphaNumFeld extends Feld {
      */
     @Deprecated
     public AlphaNumFeld(final String name, final String s) {
-        this(new Bezeichner(name), s.length(), 1);
+        this(Bezeichner.of(name), s.length(), 1);
         this.setInhalt(s);
     }
 

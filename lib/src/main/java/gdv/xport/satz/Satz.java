@@ -313,7 +313,7 @@ public abstract class Satz implements Cloneable {
 	 * @param name Name des Feldes
 	 */
 	public void remove(final String name) {
-		this.remove(new Bezeichner(name));
+		this.remove(Bezeichner.of(name));
 	}
 
     /**
@@ -345,7 +345,7 @@ public abstract class Satz implements Cloneable {
 	 */
 	@Deprecated
 	public void set(final String name, final String value) {
-		this.setFeld(new Bezeichner(name), value);
+		this.setFeld(Bezeichner.of(name), value);
 	}
 
 	/**
@@ -360,7 +360,7 @@ public abstract class Satz implements Cloneable {
 	 * @since 5.2
 	 */
 	public void setFeld(final String name, final String value) {
-		this.setFeld(new Bezeichner(name), value);
+		this.setFeld(Bezeichner.of(name), value);
 	}
 
 	/**

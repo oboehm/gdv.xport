@@ -499,7 +499,7 @@ public class Teildatensatz extends Satz {
                 "Satznummer", "ZusaetzlicheSatzkennung"};
         List<Zeichen> satzIdent = new ArrayList<>();
         for (String s : identBezeichner) {
-            Bezeichner b = new Bezeichner(s);
+            Bezeichner b = Bezeichner.of(s);
             if (hasFeld(b)) {
                 satzIdent.add(getFeld(b, Zeichen.class));
             }

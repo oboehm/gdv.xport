@@ -91,7 +91,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test(expected = IllegalArgumentException.class)
     public void testAdd() {
         satz.add(new AlphaNumFeld((Bezeichner.NAME1), 30, 44));
-        satz.add(new AlphaNumFeld(new Bezeichner("Bumm"), 4, 50));
+        satz.add(new AlphaNumFeld(Bezeichner.of("Bumm"), 4, 50));
     }
 
     /**

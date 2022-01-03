@@ -49,7 +49,7 @@ public class BezeichnerTest {
     @Test
     public void testToString() {
         String name = "Anrede";
-        String s = new Bezeichner(name).toString();
+        String s = Bezeichner.of(name).toString();
         assertTrue(s, s.contains(name));
     }
 
@@ -59,7 +59,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testNAME1toString() {
-        Bezeichner createdName1 = new Bezeichner(Bezeichner.NAME1.toString());
+        Bezeichner createdName1 = Bezeichner.of(Bezeichner.NAME1.toString());
         assertEquals(Bezeichner.NAME1, createdName1);
     }
 
@@ -69,7 +69,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testGetTechnischerName() {
-        Bezeichner vermittler = new Bezeichner("Gesch\u00e4ftsstelle / Vermittler");
+        Bezeichner vermittler = Bezeichner.of("Gesch\u00e4ftsstelle / Vermittler");
         assertEquals("GeschaeftsstelleVermittler", vermittler.getTechnischerName());
     }
 
@@ -80,7 +80,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testGetTechnischerNameForDatum() {
-        Bezeichner zuzahlungsdatum = new Bezeichner("Zuzahlungsdatum");
+        Bezeichner zuzahlungsdatum = Bezeichner.of("Zuzahlungsdatum");
         assertEquals("Zuzahlungsdat", zuzahlungsdatum.getTechnischerName());
     }
 
@@ -91,7 +91,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testGetTechnischerNameForDatumInside() {
-        Bezeichner dat = new Bezeichner("Aufgabedatum dieses Geschaeftsvorfalls");
+        Bezeichner dat = Bezeichner.of("Aufgabedatum dieses Geschaeftsvorfalls");
         assertEquals("AufgabedatDiesesGeschaeftsvorfalls", dat.getTechnischerName());
     }
 
@@ -102,7 +102,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testGetTechnischerNameForWaehrungseinheit() {
-        Bezeichner zuzahlungsdatum = new Bezeichner("Zuzahlungsbetrag in Waehrungseinheiten");
+        Bezeichner zuzahlungsdatum = Bezeichner.of("Zuzahlungsbetrag in Waehrungseinheiten");
         assertEquals("ZuzahlungsbetragInWE", zuzahlungsdatum.getTechnischerName());
     }
 
@@ -113,7 +113,7 @@ public class BezeichnerTest {
      */
     @Test
     public void testGetTechnischerNameForVS() {
-        Bezeichner zuzahlungsdatum = new Bezeichner("Erlebensfall VS");
+        Bezeichner zuzahlungsdatum = Bezeichner.of("Erlebensfall VS");
         assertEquals("ErlebensfallVs", zuzahlungsdatum.getTechnischerName());
     }
 

@@ -313,7 +313,7 @@ public class Vorsatz extends Satz {
         if (parts.length > 1)
             buf.append(parts[1]);
 
-        Bezeichner bezeichner = new Bezeichner(buf.toString());
+        Bezeichner bezeichner = Bezeichner.of(buf.toString());
 
         if (this.hasFeld(bezeichner)) {
             this.setFeld(bezeichner, satz.getSatzversion().getInhalt());
@@ -337,7 +337,7 @@ public class Vorsatz extends Satz {
         if (parts.length > 1)
             buf.append(parts[1]);
 
-        Bezeichner bezeichner = new Bezeichner(buf.toString());
+        Bezeichner bezeichner = Bezeichner.of(buf.toString());
 
         if (this.hasFeld(bezeichner)) {
             this.setFeld(bezeichner, versionHandler.getVersionOf(satzTyp));

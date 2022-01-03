@@ -97,9 +97,9 @@ public final class FeldTest extends AbstractFeldTest {
      */
     @Test
     public void testOverlapsWith() {
-        Feld a = new Feld(new Bezeichner("a"), 2, 1, Align.LEFT);    // Byte 1-2
-        Feld b = new Feld(new Bezeichner("b"), 2, 3, Align.LEFT);    // Byte 3-4
-        Feld c = new Feld(new Bezeichner("c"), 2, 2, Align.LEFT);    // Byte 2-3
+        Feld a = new Feld(Bezeichner.of("a"), 2, 1, Align.LEFT);    // Byte 1-2
+        Feld b = new Feld(Bezeichner.of("b"), 2, 3, Align.LEFT);    // Byte 3-4
+        Feld c = new Feld(Bezeichner.of("c"), 2, 2, Align.LEFT);    // Byte 2-3
         assertFalse(a + " overlaps with " + b, a.overlapsWith(b));
         assertFalse(b + " overlaps with " + a, b.overlapsWith(a));
         assertTrue(b + " doesn't overlap with " + c, b.overlapsWith(c));
@@ -112,9 +112,9 @@ public final class FeldTest extends AbstractFeldTest {
      */
     @Test
     public void testIsValid() {
-        Feld a = new Feld(new Bezeichner("a"), 257, -1, Align.UNKNOWN);
+        Feld a = new Feld(Bezeichner.of("a"), 257, -1, Align.UNKNOWN);
         assertFalse(a + " is not valid - to long, wrong start byte, unknow alignment", a.isValid());
-        Feld b = new Feld(new Bezeichner("b"), 2, 256, Align.LEFT);
+        Feld b = new Feld(Bezeichner.of("b"), 2, 256, Align.LEFT);
         assertFalse(b + " geht ueber Satz-Grenze hinweg", b.isValid());
         Feld c = new Feld("c", 1, 'c');
         assertTrue(c + " should be valid", c.isValid());
@@ -125,7 +125,7 @@ public final class FeldTest extends AbstractFeldTest {
      */
     @Test
     public void testValidate() {
-        Feld a = new Feld(new Bezeichner("a"), 10, -1, Align.UNKNOWN);
+        Feld a = new Feld(Bezeichner.of("a"), 10, -1, Align.UNKNOWN);
         List<ConstraintViolation> violations = a.validate();
         for (ConstraintViolation violation : violations) {
             LOG.info("ConstraintViolation: " + violation);
@@ -138,8 +138,8 @@ public final class FeldTest extends AbstractFeldTest {
      */
     @Test
     public void testEquals() {
-        Feld a = new Feld(new Bezeichner("x"), 2, 1, Align.LEFT);
-        Feld b = new Feld(new Bezeichner("x"), 2, 1, Align.LEFT);
+        Feld a = new Feld(Bezeichner.of("x"), 2, 1, Align.LEFT);
+        Feld b = new Feld(Bezeichner.of("x"), 2, 1, Align.LEFT);
         assertEquals(a, b);
         assertEquals(a.hashCode(), b.hashCode());
         b.setInhalt('b');
@@ -164,8 +164,8 @@ public final class FeldTest extends AbstractFeldTest {
      */
     @Test
     public void testGetBezeichnerConstructed() {
-        Feld x = new Feld(new Bezeichner("Version Satzart 0100"), 99, 3, Align.LEFT);
-        assertEquals(new Bezeichner("VERSION_SATZART_0100"), x.getBezeichner());
+        Feld x = new Feld(Bezeichner.of("Version Satzart 0100"), 99, 3, Align.LEFT);
+        assertEquals(Bezeichner.of("VERSION_SATZART_0100"), x.getBezeichner());
     }
 
     /**
@@ -242,14 +242,14 @@ public final class FeldTest extends AbstractFeldTest {
         Feld provision = new NumFeld(Bezeichner.of("GesprovisionsBetrag"), 14, 55).mitNachkommastellen(2);
         provision.setInhalt(new BigDecimal("12345678.90"));
         assertEquals("00001234567890", provision.getInhalt());
-        Feld pi = new Feld(new Bezeichner("pi"), 4, 1, Align.LEFT);
+        Feld pi = new Feld(Bezeichner.of("pi"), 4, 1, Align.LEFT);
         pi.setInhalt(new BigDecimal("3.14"));
         assertEquals("3.14", pi.getInhalt());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testSetFeldNull() {
-        Feld feld1 = new Feld(new Bezeichner("test"), 5, 4, Align.LEFT).mitConfig(Config.EMPTY);
+        Feld feld1 = new Feld(Bezeichner.of("test"), 5, 4, Align.LEFT).mitConfig(Config.EMPTY);
         String leer = null;
         feld1.setInhalt(leer);
     }

@@ -56,7 +56,7 @@ public final class NumFeldTest extends AbstractFeldTest {
      */
     @Test
     public void testNumFeld() {
-        NumFeld nummer = new NumFeld(new Bezeichner("Feld X"), 4, 1);
+        NumFeld nummer = new NumFeld(Bezeichner.of("Feld X"), 4, 1);
         assertEquals("0000", nummer.getInhalt());
     }
 
@@ -174,7 +174,7 @@ public final class NumFeldTest extends AbstractFeldTest {
      */
     @Test
     public void testBigNumber() {
-        NumFeld big = new NumFeld(new Bezeichner("big"), 14, 1).mitNachkommastellen(2);
+        NumFeld big = new NumFeld(Bezeichner.of("big"), 14, 1).mitNachkommastellen(2);
         big.setInhalt("00005000000000");
         assertTrue("should be valid", big.isValid());
         List<ConstraintViolation> violations = big.validate();
@@ -183,7 +183,7 @@ public final class NumFeldTest extends AbstractFeldTest {
 
     @Test
     public void testBigDecimal() {
-        NumFeld big = new NumFeld(new Bezeichner("big"), 14, 1);
+        NumFeld big = new NumFeld(Bezeichner.of("big"), 14, 1);
         String zahl = "12345000000000";
         big.setInhalt(new BigInteger(zahl));
         assertEquals(zahl, big.getInhalt());
@@ -192,7 +192,7 @@ public final class NumFeldTest extends AbstractFeldTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testBigDecimalMinus() {
-        NumFeld big = new NumFeld(new Bezeichner("big"), 14, 1).mitConfig(Config.LAX);
+        NumFeld big = new NumFeld(Bezeichner.of("big"), 14, 1).mitConfig(Config.LAX);
         big.setInhalt(new BigInteger("-1"));
     }
 
@@ -202,7 +202,7 @@ public final class NumFeldTest extends AbstractFeldTest {
      */
     @Test
     public void testFormatInt() {
-        NumFeld betrag = new NumFeld(new Bezeichner("betrag"), 5, 1);
+        NumFeld betrag = new NumFeld(Bezeichner.of("betrag"), 5, 1);
         betrag.setInhalt("120");
         assertEquals("120", betrag.format());
     }
@@ -213,7 +213,7 @@ public final class NumFeldTest extends AbstractFeldTest {
      */
     @Test
     public void testFormatDouble() {
-        NumFeld betrag = new NumFeld(new Bezeichner("betrag"), 5, 1).mitNachkommastellen(2);
+        NumFeld betrag = new NumFeld(Bezeichner.of("betrag"), 5, 1).mitNachkommastellen(2);
         betrag.setInhalt("120");
         if ("DE".equals(Locale.getDefault().getCountry())) {
             assertEquals("1,20", betrag.format());
@@ -320,7 +320,7 @@ public final class NumFeldTest extends AbstractFeldTest {
 
     @Test
     public void testSetInhaltWithLeadingBlank() {
-        Feld numFeld4 = new NumFeld(new Bezeichner("numTesttest"), 9, 1, 2).mitConfig(
+        Feld numFeld4 = new NumFeld(Bezeichner.of("numTesttest"), 9, 1, 2).mitConfig(
                 Config.EXPERIMENTAL.withProperty("gdv.feld.validate", "lax"));
         numFeld4.setInhalt("1234567");
         assertEquals("001234567", numFeld4.getInhalt());
@@ -367,7 +367,7 @@ public final class NumFeldTest extends AbstractFeldTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testNumberWithBlanksConfigStrict() {
-        NumFeld numFeld = new NumFeld(new Bezeichner("numTestFeld"), 5, 1).mitConfig(Config.STRICT);
+        NumFeld numFeld = new NumFeld(Bezeichner.of("numTestFeld"), 5, 1).mitConfig(Config.STRICT);
         numFeld.setInhalt(" 1 ");
     }
 

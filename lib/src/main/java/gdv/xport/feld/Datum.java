@@ -97,7 +97,7 @@ public final class Datum extends NumFeld {
      * @param inhalt Datum der Form "ddmmjjjj" oder "ddjjjj" oder "dd"
      */
     public Datum(final String name, final int length, final int start, final String inhalt) {
-        this(new Bezeichner(name), length, start);
+        this(Bezeichner.of(name), length, start);
         this.setInhalt(inhalt);
     }
 

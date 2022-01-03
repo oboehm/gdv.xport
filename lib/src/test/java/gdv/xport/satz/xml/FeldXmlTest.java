@@ -72,7 +72,7 @@ public class FeldXmlTest extends AbstractXmlTest {
      */
     @Test
     public void testGetBezeichner() {
-        assertEquals(new Bezeichner("Sparte"), feldXml.getBezeichner());
+        assertEquals(Bezeichner.of("Sparte"), feldXml.getBezeichner());
     }
 
     /**

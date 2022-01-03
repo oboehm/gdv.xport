@@ -24,7 +24,7 @@ public class FeldUeberlaufTest {
   public void testAlphaNumFeldRechtsbuendig()
   {
     AlphaNumFeld alphaNumFeldRechts =
-        new AlphaNumFeld(new Bezeichner("alphaNumRechtsTestFeld"), 8, 1, Align.RIGHT).mitConfig(TRUNCATE);
+        new AlphaNumFeld(Bezeichner.of("alphaNumRechtsTestFeld"), 8, 1, Align.RIGHT).mitConfig(TRUNCATE);
 
     alphaNumFeldRechts.setInhalt("hello world helle lello");
     assertEquals("hello wo", alphaNumFeldRechts.getInhalt());
@@ -52,7 +52,7 @@ public class FeldUeberlaufTest {
   public void testAlphaNumFeldLinksbuendig()
   {
     AlphaNumFeld alphaNumFeldLinks =
-        new AlphaNumFeld(new Bezeichner("alphaNumLinksTestFeld"), 9, 10, Align.LEFT).mitConfig(TRUNCATE);
+        new AlphaNumFeld(Bezeichner.of("alphaNumLinksTestFeld"), 9, 10, Align.LEFT).mitConfig(TRUNCATE);
 
     alphaNumFeldLinks.setInhalt("hello world helle lello");
     assertEquals("hello wor", alphaNumFeldLinks.getInhalt());
@@ -79,7 +79,7 @@ public class FeldUeberlaufTest {
   @Test
   public void testNumFeld()
   {
-    NumFeld numFeldOhneNachkomma = new NumFeld(new Bezeichner("numOhneNachkommaTestFeld"), 5, 1).mitConfig(TRUNCATE);
+    NumFeld numFeldOhneNachkomma = new NumFeld(Bezeichner.of("numOhneNachkommaTestFeld"), 5, 1).mitConfig(TRUNCATE);
 
     numFeldOhneNachkomma.setInhalt(100000);
     assertEquals("99999", numFeldOhneNachkomma.getInhalt());
@@ -111,7 +111,7 @@ public class FeldUeberlaufTest {
   @Test
   public void testBetrag()
   {
-    Betrag betrag = new Betrag(new Bezeichner("betragTest"), 10, 20).mitConfig(TRUNCATE);
+    Betrag betrag = new Betrag(Bezeichner.of("betragTest"), 10, 20).mitConfig(TRUNCATE);
 
     betrag.setInhalt("123");
     assertEquals("0000000123", betrag.getInhalt());
@@ -146,7 +146,7 @@ public class FeldUeberlaufTest {
   @Test
   public void testBetragMitVorzeichen()
   {
-    BetragMitVorzeichen betragMVz = new BetragMitVorzeichen(new Bezeichner("betragTEstVZ"), 10, 2).mitConfig(STRICT);
+    BetragMitVorzeichen betragMVz = new BetragMitVorzeichen(Bezeichner.of("betragTEstVZ"), 10, 2).mitConfig(STRICT);
 
     betragMVz.setInhalt("123");
     assertEquals("000000123+", betragMVz.getInhalt());

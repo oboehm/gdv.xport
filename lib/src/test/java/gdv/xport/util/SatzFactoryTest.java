@@ -107,7 +107,7 @@ public final class SatzFactoryTest {
         Datensatz unsupported = new Datensatz(SatzTyp.of("0123"));
         unsupported.setVuNummer("56789");
         unsupported.setSparte(88);
-        unsupported.add(new NumFeld(new Bezeichner("zweiundvierzig"), 4, 200, 42));
+        unsupported.add(new NumFeld(Bezeichner.of("zweiundvierzig"), 4, 200, 42));
         String content = unsupported.toLongString();
         Satz imported = SatzFactory.getSatz(content);
         assertEquals(content, imported.toLongString());

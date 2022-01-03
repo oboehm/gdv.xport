@@ -38,7 +38,7 @@ public final class BetragTest extends AbstractFeldTest {
     private static final Config TRUNCATE = Config.getInstance()
             .withProperty("gdv.feld.truncate", "true")
             .withProperty("gdv.feld.validate", "true");
-    private final Betrag betrag = new Betrag(new Bezeichner("test"), 5, 1);
+    private final Betrag betrag = new Betrag(Bezeichner.of("test"), 5, 1);
 
     /*
      * (non-Javadoc)
@@ -94,7 +94,7 @@ public final class BetragTest extends AbstractFeldTest {
 
     @Test
     public void testToDoubleTooLong() {
-        Betrag betrag = new Betrag(new Bezeichner("test"), 14, 1);
+        Betrag betrag = new Betrag(Bezeichner.of("test"), 14, 1);
         betrag.setInhalt("12345678901234");
         double value = betrag.toDouble();
         assertEquals(123456789012.34, value, 0.0);
@@ -108,7 +108,7 @@ public final class BetragTest extends AbstractFeldTest {
 
     @Test
     public void testTruncate() {
-        Betrag betrag = new Betrag(new Bezeichner("betragTest"), 10, 20).mitConfig(TRUNCATE);
+        Betrag betrag = new Betrag(Bezeichner.of("betragTest"), 10, 20).mitConfig(TRUNCATE);
         betrag.setInhalt(123);
         assertEquals("0000012300", betrag.getInhalt());
         betrag.setInhalt(12345678);

@@ -52,7 +52,7 @@ public class NumFeld extends Feld {
      * @param s z.B. "4"
      */
     public NumFeld(final String name, final String s) {
-        this(new Bezeichner(name), s.length(), 1, 0, DEFAULT_VALIDATOR);
+        this(Bezeichner.of(name), s.length(), 1, 0, DEFAULT_VALIDATOR);
         this.setInhalt(s);
     }
 
@@ -89,7 +89,7 @@ public class NumFeld extends Feld {
      * @param value z.B. "01"
      */
     public NumFeld(final String name, final int start, final String value) {
-        this(new Bezeichner(name), value.length(), start);
+        this(Bezeichner.of(name), value.length(), start);
         this.setInhalt(value);
     }
 
@@ -100,7 +100,7 @@ public class NumFeld extends Feld {
      * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
      */
     public NumFeld(final String name, final String s, final int nachkommastellen) {
-        this(new Bezeichner(name), s.length(), 1, nachkommastellen, DEFAULT_VALIDATOR);
+        this(Bezeichner.of(name), s.length(), 1, nachkommastellen, DEFAULT_VALIDATOR);
         this.setInhalt(s);
     }
 

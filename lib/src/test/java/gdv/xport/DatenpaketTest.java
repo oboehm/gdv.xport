@@ -120,7 +120,7 @@ public final class DatenpaketTest {
         datenpaket.setAbsender("World");
         datenpaket.setAdressat("Test-Adressat");
         datenpaket.setVermittler("845/666666");
-        Datum datum = new Datum(new Bezeichner("Testdatum"), 1);
+        Datum datum = new Datum(Bezeichner.of("Testdatum"), 1);
         datum.setInhalt("13022014");
         datenpaket.setErstellungsDatumVon(datum);
         datenpaket.setErstellungsDatumBis(datum);
