@@ -55,8 +55,8 @@ public class ConfigTest {
     /**
      * Hier testen wir, ob das File-Encoding auf ISO-8859-1 eingestellt ist.
      * Falls nicht, wird der Test fehlschlagen. In diesem Fall kann man
-     * versuchen, bei der Run-Konfiguration die VM mit <tt>java
-     * -Dfile.encoding=ISO-8859-1 ...</tt> aufzurufen. Aber normalerweise
+     * versuchen, bei der Run-Konfiguration die VM mit <i>java
+     * -Dfile.encoding=ISO-8859-1 ...</i> aufzurufen. Aber normalerweise
      * sollte die Config-Klasse das Encoding richtig einstellen.
      *
      * @throws IOException Signals that an I/O exception has occurred.
