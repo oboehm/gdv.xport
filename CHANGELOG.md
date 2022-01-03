@@ -15,7 +15,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - ByteAdresse durchgängiger verwenden
 
 
-## [Unreleased]
+## [6.0.0] - 2022-01-03
 
 ### Changed
 
