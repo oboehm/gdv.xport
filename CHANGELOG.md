@@ -54,7 +54,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - einge 'deprecated' Klassen und Methoden wurden im Vorgriff auf v6 bereits entfernt
 
 
-## [5.3.0] - 2021-11-11
+## [5.3] - 2021-11-11
 
 ### Added
 
@@ -73,7 +73,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
   ([Issue #66](https://github.com/oboehm/gdv.xport/issues/66))
 
 
-## [5.2.0] - 2021-10-10
+## [5.2] - 2021-10-10
 
 ### Added
 
@@ -98,7 +98,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - Satz#set(..) durch Satz#setFeld(..) ersetzt und Satz#get(..) als @Deprecated markiert
 
 
-## [5.1.0] - 2021-08-29
+## [5.1] - 2021-08-29
 
 ### Changed
 
@@ -106,7 +106,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
   ([Issue #61](https://github.com/oboehm/gdv.xport/issues/61))
 
 
-## [5.0.0] - 2021-07-22
+## [5.0] - 2021-07-22
 
 ### Added
 
