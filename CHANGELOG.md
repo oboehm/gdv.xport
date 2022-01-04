@@ -15,6 +15,14 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - ByteAdresse durchgängiger verwenden
 
 
+## [Unreleased]
+
+### Security
+
+- Log4J auf 2.17.1 angehoben
+  ([CVE-2021-44832](https://github.com/advisories/GHSA-8489-44mv-ggj8))
+
+
 ## [6.0.0] - 2022-01-03
 
 ### Changed
