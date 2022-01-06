@@ -62,4 +62,5 @@ Weitere Infos wie z.B. die [JavaDocs](http://www.aosd.de/gdv.xport/apidocs/index
 * Projekt-Seite: http://www.aosd.de/gdv.xport/
 * [Architektur-Doku](src/asciidoc/README.adoc) mit [Glossar](src/asciidoc/de/12_glossary.adoc)
 * die eigentliche [gdv-xport-lib](lib/README.adoc)-Bibliothek
+* [Hello-World](doc/manual/hello.adoc) und andere [Anleitungen](doc/manual/README.adoc)
 * [GDV Online-Handbuch](http://www.gdv-online.de/vuvm/bestand/rel2018/samenue.html) zu den verschiedene Satzarten
