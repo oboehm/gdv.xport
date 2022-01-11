@@ -498,7 +498,7 @@
       <dependency>
         <groupId>de.jfachwert</groupId>
         <artifactId>jfachwert</artifactId>
-        <version>4.0.4</version>
+        <version>4.1.0</version>
       </dependency>
 
       <!-- for JsonFormatter -->
