@@ -11,6 +11,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Planned]
 
+- Auslagerung Import-/Export-Funktionalität in eigene Klassen (Importer/Exporter)
 - Verringerung des Speicher-Abdrucks (Footprint).
 - ByteAdresse durchgängiger verwenden
 
@@ -28,6 +29,8 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 ### Changed
 
 - doppelte Performance
+- Umstieg auf Java 11
+
 
 ### Removed
 

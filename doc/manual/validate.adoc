@@ -53,7 +53,6 @@ Neben der Validierung lässt sich auch das Verhalten bei Werten, die zu groß f�
 Normalerweise gibt es eine IllegalArgumentException, wenn man einen zu großen Wert angibt.
 Über die SystemProperty `gdv.feld.truncate=true` werden zu große Werte automatisch abgeschnitten bzw. mit dem größtmöglichen Wert (bei NumFeldern) belegt.
 
-Es gibt noch weitere Einstellmöglichkeiten wie das automatische Auffüllen von NumFeldern mit Nullen (`gdv.numfeld.fill-blanks`).
 Die Default-Werte sowie weitere Einstellungen kannst du
 link:../../lib/src/main/resources/gdv/xport/config/default.properties entnehmen.
 
