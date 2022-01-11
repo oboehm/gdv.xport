@@ -26,7 +26,6 @@ import javax.validation.ValidationException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import static java.math.BigDecimal.ZERO;
@@ -161,16 +160,6 @@ public class NumFeld extends Feld {
     }
 
     /**
-     * Die Default-Ausrichtung ist rechts-buendig fuer Zahlen.
-     *
-     * @return rechts-buendig
-     */
-    @Override
-    protected Align getDefaultAlignment() {
-        return Align.RIGHT;
-    }
-
-    /**
      * Liefert ein neues NumFeld mit der gewuenschten Anzahl von Nachkommastellen zurueck.
      *
      * @since 0.4
@@ -219,39 +208,12 @@ public class NumFeld extends Feld {
     /**
      * Setzt den Inhalt mit der uebergebenen Zahl.
      *
-     * @param n neuer Inhalt
-     */
-    @Override
-    public void setInhalt(final int n) {
-        this.setInhalt((long) n);
-    }
-
-    /**
-     * Setzt den Inhalt mit der uebergebenen Zahl.
-     *
-     * @param n neuer Inhalt
-     */
-    public void setInhalt(final long n) {
-        String pattern = StringUtils.repeat("0", this.getAnzahlBytes());
-        NumberFormat format = new DecimalFormat(pattern);
-        String formatted = format.format(n);
-        this.setInhalt(formatted);
-    }
-
-    /**
-     * Setzt den Inhalt mit der uebergebenen Zahl.
-     *
      * @param n Zahl
      * @since 5.0
      */
+    @Override
     public void setInhalt(BigDecimal n) {
         setInhalt(n.movePointRight(this.nachkommastellen).setScale(0, RoundingMode.HALF_UP).toString());
-    }
-
-    @Override
-    public void setInhalt(String value) {
-        String s = validator.verify(value, this);
-        super.setInhalt(s);
     }
 
     /* (non-Javadoc)

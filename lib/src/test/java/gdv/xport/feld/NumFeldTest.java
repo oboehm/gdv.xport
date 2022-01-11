@@ -89,6 +89,16 @@ public final class NumFeldTest extends AbstractFeldTest {
         assertEquals("0002", nummer.getInhalt());
     }
 
+    @Test
+    public void testSetInhaltBigInteger() {
+        NumFeld nummer = new NumFeld(Bezeichner.LFD_NUMMER, 4, 1);
+        nummer.setInhalt("    ");
+        nummer.setInhalt(BigInteger.TEN);
+        assertEquals("0010", nummer.getInhalt());
+        nummer.setInhalt(BigInteger.ONE);
+        assertEquals("0001", nummer.getInhalt());
+    }
+
     /**
      * Hier pruefen wir mit einem ungueltigen Inhalt.
      */
