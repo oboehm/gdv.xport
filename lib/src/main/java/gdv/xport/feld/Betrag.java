@@ -81,18 +81,7 @@ public class Betrag extends NumFeld {
 
     @Override
     public void setInhalt(long n) {
-        assert n >= 0 : "Betrag can't store negative number (" + n + ")";
         super.setInhalt(n * 100);
-    }
-
-    /**
-     * Setzt den Inhalt eines Feldes neu.
-     * @param x der neue Inhalt
-     */
-    public void setInhalt(final double x) {
-        assert x >= 0 : "Betrag can't store negative number (" + x + ")";
-        long n = Math.round(x * 100);
-        super.setInhalt(n);
     }
 
     /* (non-Javadoc)

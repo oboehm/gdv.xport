@@ -216,6 +216,18 @@ public class NumFeld extends Feld {
         setInhalt(n.movePointRight(this.nachkommastellen).setScale(0, RoundingMode.HALF_UP).toString());
     }
 
+    /**
+     * Setzt den Inhalt eines Feldes als Double. Nach Moeglichkeit soll
+     * {@link NumFeld#setInhalt(BigDecimal)} verwendet werden, da die
+     * interne Darstellung von double-Werten nie exakt sind.
+     *
+     * @param x der neue Inhalt
+     * @since 6.1
+     */
+    public void setInhalt(final double x) {
+        this.setInhalt(BigDecimal.valueOf(x));
+    }
+
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#resetInhalt()
      */

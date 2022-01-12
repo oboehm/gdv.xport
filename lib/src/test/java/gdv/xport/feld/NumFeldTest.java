@@ -42,6 +42,7 @@ import static org.junit.Assert.*;
 public final class NumFeldTest extends AbstractFeldTest {
 
     private static final Logger LOG = LogManager.getLogger(NumFeldTest.class);
+    private final NumFeld nummer = new NumFeld(Bezeichner.LFD_NUMMER, 4, 1);
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
@@ -56,7 +57,6 @@ public final class NumFeldTest extends AbstractFeldTest {
      */
     @Test
     public void testNumFeld() {
-        NumFeld nummer = new NumFeld(Bezeichner.of("Feld X"), 4, 1);
         assertEquals("0000", nummer.getInhalt());
     }
 
@@ -70,12 +70,12 @@ public final class NumFeldTest extends AbstractFeldTest {
     }
 
     /**
-     * Wir sollten keine {@link NumberFormatException} bekommen, wenn wir
-     * den Konstruktor mit Enum verwenden.
+     * Wir sollten keine {@link NumberFormatException} bei den Kopffeldern
+     * bekommen.
      */
     @Test
     public void testNumFeldWithEnum() {
-        NumFeld sparte = new NumFeld(Kopffelder1bis7.SPARTE);
+        NumFeld sparte = Kopffelder1bis7.SPARTE;
         assertEquals(0, sparte.toInt());
     }
 
@@ -84,19 +84,37 @@ public final class NumFeldTest extends AbstractFeldTest {
      */
     @Test
     public void testSetInhaltInt() {
-        NumFeld nummer = new NumFeld("Feld X", "0001");
         nummer.setInhalt(2);
         assertEquals("0002", nummer.getInhalt());
     }
 
     @Test
     public void testSetInhaltBigInteger() {
-        NumFeld nummer = new NumFeld(Bezeichner.LFD_NUMMER, 4, 1);
         nummer.setInhalt("    ");
         nummer.setInhalt(BigInteger.TEN);
         assertEquals("0010", nummer.getInhalt());
         nummer.setInhalt(BigInteger.ONE);
         assertEquals("0001", nummer.getInhalt());
+    }
+
+    @Test
+    public void testSetInhaltBigDecimal() {
+        NumFeld betrag = nummer.mitNachkommastellen(2);
+        betrag.setInhalt(new BigDecimal("1.5"));
+        assertEquals("0150", betrag.getInhalt());
+    }
+
+    @Test
+    public void testSetInhaltDoublie() {
+        NumFeld betrag = nummer.mitNachkommastellen(2);
+        betrag.setInhalt(1.5);
+        assertEquals("0150", betrag.getInhalt());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetInhaltNegative() {
+        NumFeld positiv = nummer.mitConfig(Config.STRICT);
+        positiv.setInhalt(-1);
     }
 
     /**
