@@ -468,10 +468,14 @@ public class Feld implements Comparable<Feld>, Cloneable {
     /**
      * Wenn sich das Feld vergroessert, werden rechts Leerzeichen aufgefuellt (alphanumerische Zeichen sind
      * standardmaessig linksbuendig).
+     * <p>
+     * TODO: wird in v7 entsorgt
+     * </p>
      *
-     * @param n
-     *            neue Groesse
+     * @param n neue Groesse
+     * @deprecated wird nicht mehr benoetigt
      */
+    @Deprecated
     public void setAnzahlBytes(final int n) {
         assert this.inhalt.length() <= n : "drohender Datenverlust";
         for (int i = this.inhalt.length(); i < n; i++) {
