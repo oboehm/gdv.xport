@@ -206,9 +206,58 @@ public class NumFeld extends Feld {
     }
 
     /**
+     * Setzt den Inhalt mit der uebergebenen Zahl unter Beruecksichtigung
+     * der Nachkommastellen.
+     * <p>
+     * ACHTUNG: Ab 5.1 werden hier die Nachkommastellen beruecksichtigt.
+     * </p>
+     *
+     * @param n neuer Inhalt
+     * @throws IllegalArgumentException wenn n &lt; 0
+     */
+    @Override
+    public void setInhalt(final int n) {
+        this.setInhalt((long) n);
+    }
+
+    /**
+     * Setzt den Inhalt mit der uebergebenen Zahl unter Beruecksichtigung
+     * der Nachkommastellen.
+     * <p>
+     * ACHTUNG: Ab 5.1 werden hier die Nachkommastellen beruecksichtigt.
+     * </p>
+     *
+     * @param n neuer Inhalt
+     * @throws IllegalArgumentException wenn n &lt; 0
+     */
+    @Override
+    public void setInhalt(final long n) {
+        if (LOG.isDebugEnabled() && getNachkommastellen() > 0) {
+            LOG.debug("Ab v5.1 wird hier Zahl {} mit {} 0en gesetzt.", n, getNachkommastellen());
+        }
+        this.setInhalt(new BigDecimal(n));
+    }
+
+    /**
+     * Setzt den Inhalt mit der uebergebenen Zahl unter Beruecksichtigung
+     * der Nachkommastellen.
+     * <p>
+     * ACHTUNG: Ab 5.1 werden hier die Nachkommastellen beruecksichtigt.
+     * </p>
+     *
+     * @param n neuer Inhalt
+     * @throws IllegalArgumentException wenn n &lt; 0
+     */
+    @Override
+    public void setInhalt(final BigInteger n) {
+        setInhalt(new BigDecimal(n.toString()));
+    }
+
+    /**
      * Setzt den Inhalt mit der uebergebenen Zahl.
      *
      * @param n Zahl
+     * @throws IllegalArgumentException wenn n &lt; 0
      * @since 5.0
      */
     @Override
@@ -222,6 +271,7 @@ public class NumFeld extends Feld {
      * interne Darstellung von double-Werten nie exakt sind.
      *
      * @param x der neue Inhalt
+     * @throws IllegalArgumentException wenn n &lt; 0
      * @since 6.1
      */
     public void setInhalt(final double x) {
@@ -257,11 +307,7 @@ public class NumFeld extends Feld {
      * @return den Inhalt als int
      */
     public int toInt() {
-        String s = this.getInhalt().trim();
-        if (s.startsWith("+")) {
-            return Integer.parseInt(s.substring(1));
-        }
-        return Integer.parseInt(s);
+        return toBigDecimal().intValue();
     }
 
     /**
@@ -271,11 +317,7 @@ public class NumFeld extends Feld {
      * @return den Inhalt als long
      */
     public long toLong() {
-        String s = this.getInhalt().trim();
-        if (s.startsWith("+")) {
-            return Long.parseLong(s.substring(1));
-        }
-        return Long.parseLong(s);
+        return toBigDecimal().longValue();
     }
 
     /**
@@ -297,7 +339,7 @@ public class NumFeld extends Feld {
      * @return die Zahl als {@link BigInteger}
      */
     public BigInteger toBigInteger() {
-        return new BigInteger(getInhalt().trim());
+        return toBigDecimal().toBigInteger();
     }
 
     /**

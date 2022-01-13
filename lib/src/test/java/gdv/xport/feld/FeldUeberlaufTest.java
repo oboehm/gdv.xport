@@ -119,9 +119,6 @@ public class FeldUeberlaufTest {
     betrag.setInhalt("");
     assertEquals("0000000000", betrag.getInhalt());
 
-    betrag.setInhalt(123456);
-    assertEquals("0012345600", betrag.getInhalt());
-
     betrag.setInhalt(1234567890L);
     assertEquals("9999999999", betrag.getInhalt());
 

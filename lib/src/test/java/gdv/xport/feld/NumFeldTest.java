@@ -89,6 +89,22 @@ public final class NumFeldTest extends AbstractFeldTest {
     }
 
     @Test
+    public void testSetInhaltIntMitNachkommastellen() {
+        NumFeld betrag = nummer.mitNachkommastellen(2);
+        betrag.setInhalt(12);
+        assertEquals("1200", betrag.getInhalt());
+        assertEquals(12, betrag.toInt());
+    }
+
+    @Test
+    public void testSetInhaltBigIntegerMitNachkommastellen() {
+        NumFeld betrag = nummer.mitNachkommastellen(2);
+        betrag.setInhalt(BigInteger.ONE);
+        assertEquals("0100", betrag.getInhalt());
+        assertEquals(BigInteger.ONE, betrag.toBigInteger());
+    }
+
+    @Test
     public void testSetInhaltBigInteger() {
         nummer.setInhalt("    ");
         nummer.setInhalt(BigInteger.TEN);

@@ -16,6 +16,13 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - ByteAdresse durchgängiger verwenden
 
 
+## [Unreleased]
+
+### Changes
+
+- **ACHTUNG**: bei NumFeld und abgeleitete Klassen werden Nachkommastellen beim Setzen von Zahlen berücksichtigt
+
+
 ## [6.0.1] - 2022-01-06
 
 ### Security
