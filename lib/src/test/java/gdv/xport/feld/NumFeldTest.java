@@ -19,7 +19,6 @@
 package gdv.xport.feld;
 
 import gdv.xport.config.Config;
-import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,7 +28,6 @@ import javax.validation.ValidationException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
-import java.util.Locale;
 
 import static org.junit.Assert.*;
 
@@ -49,81 +47,6 @@ public class NumFeldTest extends AbstractNumFeldTest {
         return nummer.mitNachkommastellen(2);
     }
 
-    /**
-     * Einfacher Test, ob das Anlegen erfolgreich war.
-     */
-    @Test
-    public void testNumFeld() {
-        assertEquals("00000", nummer.getInhalt());
-    }
-
-    /**
-     * Hier testen wir, ob eine negative Zahl richtig umgewandelt wird.
-     */
-    @Test
-    public void testNumFeldNegativ() {
-        NumFeld einsminus = new NumFeld("einsminus", "-001");
-        assertEquals(-1, einsminus.toInt());
-    }
-
-    /**
-     * Wir sollten keine {@link NumberFormatException} bei den Kopffeldern
-     * bekommen.
-     */
-    @Test
-    public void testNumFeldWithEnum() {
-        NumFeld sparte = Kopffelder1bis7.SPARTE;
-        assertEquals(0, sparte.toInt());
-    }
-
-    /**
-     * Test method for {@link gdv.xport.feld.NumFeld#setInhalt(int)}.
-     */
-    @Test
-    public void testSetInhaltInt() {
-        nummer.setInhalt(2);
-        assertEquals("00002", nummer.getInhalt());
-    }
-
-    @Test
-    public void testSetInhaltIntMitNachkommastellen() {
-        NumFeld betrag = nummer.mitNachkommastellen(2);
-        betrag.setInhalt(12);
-        assertEquals("01200", betrag.getInhalt());
-        assertEquals(12, betrag.toInt());
-    }
-
-    @Test
-    public void testSetInhaltBigIntegerMitNachkommastellen() {
-        NumFeld betrag = nummer.mitNachkommastellen(2);
-        betrag.setInhalt(BigInteger.ONE);
-        assertEquals("00100", betrag.getInhalt());
-        assertEquals(BigInteger.ONE, betrag.toBigInteger());
-    }
-
-    @Test
-    public void testSetInhaltBigInteger() {
-        nummer.setInhalt("    ");
-        nummer.setInhalt(BigInteger.TEN);
-        assertEquals("00010", nummer.getInhalt());
-        nummer.setInhalt(BigInteger.ONE);
-        assertEquals("00001", nummer.getInhalt());
-    }
-
-    @Test
-    public void testSetInhaltBigDecimal() {
-        NumFeld betrag = nummer.mitNachkommastellen(2);
-        betrag.setInhalt(new BigDecimal("1.5"));
-        assertEquals("00150", betrag.getInhalt());
-    }
-
-    @Test
-    public void testSetInhaltDoublie() {
-        NumFeld betrag = nummer.mitNachkommastellen(2);
-        betrag.setInhalt(1.5);
-        assertEquals("00150", betrag.getInhalt());
-    }
-
     @Test(expected = IllegalArgumentException.class)
     public void testSetInhaltNegative() {
         NumFeld positiv = nummer.mitConfig(Config.STRICT);
@@ -135,8 +58,8 @@ public class NumFeldTest extends AbstractNumFeldTest {
      */
     @Test
     public void testIsInvalid() {
-        NumFeld x = new NumFeld("x", "xxxx");
-        assertFalse(x + " is invalid", x.isValid());
+        nummer.setInhalt("xxxx");
+        assertFalse(nummer + " is invalid", nummer.isValid());
     }
 
     /**
@@ -144,8 +67,8 @@ public class NumFeldTest extends AbstractNumFeldTest {
      */
     @Test
     public void testIsValid() {
-        NumFeld three = new NumFeld("testIsValid", "3     ");
-        assertTrue("should be valid", three.isValid());
+        nummer.setInhalt("3    ");
+        assertTrue("should be valid", nummer.isValid());
     }
 
     /**
@@ -165,8 +88,8 @@ public class NumFeldTest extends AbstractNumFeldTest {
      */
     @Test
     public void testInvalidate() {
-        NumFeld x = new NumFeld("x", "xxxx");
-        List<ConstraintViolation> violations = x.validate();
+        nummer.setInhalt("xxxx");
+        List<ConstraintViolation> violations = nummer.validate();
         for (ConstraintViolation violation : violations) {
             LOG.info(violation.getValidatedObject() + ": " + violation.getMessage());
         }
@@ -178,8 +101,8 @@ public class NumFeldTest extends AbstractNumFeldTest {
      */
     @Test
     public void testValidate() {
-        NumFeld three = new NumFeld("testValidate", "3     ");
-        assertEquals(0, three.validate().size());
+        nummer.setInhalt("3    ");
+        assertEquals(0, nummer.validate().size());
     }
 
     /**
@@ -190,8 +113,8 @@ public class NumFeldTest extends AbstractNumFeldTest {
      */
     @Test
     public void testIntAsDouble() {
-        NumFeld x = new NumFeld("x", "1");
-        assertEquals(1.0, x.toDouble(), 0.01);
+        nummer.setInhalt("1");
+        assertEquals(1.0, nummer.toDouble(), 0.01);
     }
 
     /**
@@ -243,36 +166,8 @@ public class NumFeldTest extends AbstractNumFeldTest {
      */
     @Test
     public void testFormatInt() {
-        NumFeld betrag = new NumFeld(Bezeichner.of("betrag"), 5, 1);
-        betrag.setInhalt("120");
-        assertEquals("120", betrag.format());
-    }
-
-    /**
-     * Ein Betrag sollte als entsprechender Text formattiert werden.
-     * @since 0.5.1
-     */
-    @Test
-    public void testFormatDouble() {
-        NumFeld betrag = new NumFeld(Bezeichner.of("betrag"), 5, 1).mitNachkommastellen(2);
-        betrag.setInhalt("120");
-        if ("DE".equals(Locale.getDefault().getCountry())) {
-            assertEquals("1,20", betrag.format());
-        }
-    }
-
-    @Test
-    public void testToDoubleTooLong() {
-        NumFeld feld = new NumFeld("name", "123456789012");
-        double value = feld.toDouble();
-        assertEquals(123456789012.0, value, 0.0);
-    }
-
-    @Test
-    public void testToBigDecimal() {
-        NumFeld feld = new NumFeld("test", "12345").mitNachkommastellen(2);
-        BigDecimal betrag = feld.toBigDecimal();
-        assertEquals(new BigDecimal("123.45"), feld.toBigDecimal());
+        nummer.setInhalt("120");
+        assertEquals("120", nummer.format());
     }
 
     @Test
@@ -336,43 +231,6 @@ public class NumFeldTest extends AbstractNumFeldTest {
         NumFeld n = new NumFeld(Bezeichner.of("Test-Datum"), 8, 1);
         n.setInhalt("xxxxxxxx");
         assertFalse(n.hasValue());
-    }
-
-    @Test
-    public void testTruncate() {
-        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1).mitConfig(Config.EXPERIMENTAL);
-        feld.setInhalt("123456");
-        assertEquals("99999", feld.getInhalt());
-    }
-
-    @Test
-    public void testTruncate0003210() {
-        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 6, 1).mitConfig(Config.EXPERIMENTAL);
-        feld.setInhalt("0003210");
-        assertEquals("003210", feld.getInhalt());
-    }
-
-    @Test
-    public void testNoTruncate() {
-        NumFeld feld = new NumFeld(Bezeichner.ANTEILE, 5, 1).mitConfig(Config.EXPERIMENTAL);
-        feld.setInhalt("42");
-        assertEquals("00042", feld.getInhalt());
-    }
-
-    @Test
-    public void testSetInhaltWithLeadingBlank() {
-        Feld numFeld4 = new NumFeld(Bezeichner.of("numTesttest"), 9, 1, 2).mitConfig(
-                Config.EXPERIMENTAL.withProperty("gdv.feld.validate", "lax"));
-        numFeld4.setInhalt("1234567");
-        assertEquals("001234567", numFeld4.getInhalt());
-    }
-
-    @Test
-    public void testSetInhaltChar() {
-        NumFeld one = new NumFeld(Bezeichner.ANTEILE, 5, 1);
-        one.setInhalt('1');
-        assertEquals(1, one.toInt());
-        assertEquals("00001", one.getInhalt());
     }
 
     @Test(expected = IllegalArgumentException.class)

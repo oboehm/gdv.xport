@@ -18,14 +18,6 @@
 
 package gdv.xport.feld;
 
-import gdv.xport.config.Config;
-import org.junit.Test;
-
-import java.math.BigDecimal;
-import java.util.Locale;
-
-import static org.junit.Assert.assertEquals;
-
 /**
  * JUnit-Test fuer die Betrag-Klasse.
  *
@@ -35,9 +27,6 @@ import static org.junit.Assert.assertEquals;
  */
 public final class BetragTest extends AbstractNumFeldTest {
 
-    private static final Config TRUNCATE = Config.getInstance()
-            .withProperty("gdv.feld.truncate", "true")
-            .withProperty("gdv.feld.validate", "true");
     private final Betrag betrag = new Betrag(Bezeichner.of("test"), 5, 1);
 
     /*
@@ -48,73 +37,6 @@ public final class BetragTest extends AbstractNumFeldTest {
     @Override
     protected Betrag getTestBetrag() {
         return this.betrag;
-    }
-
-    /**
-     * Test-Methode fuer {@link Betrag#toDouble()}.
-     */
-    @Test
-    public void testBetrag() {
-        assertEquals("00000", betrag.getInhalt());
-        assertEquals(0.0, betrag.toDouble(), 0.001);
-    }
-
-    /**
-     * Test-Methode fuer {@link Betrag#setInhalt(int)}.
-     */
-    @Test
-    public void testSetInhaltInt() {
-        betrag.setInhalt(50);
-        assertEquals("05000", betrag.getInhalt());
-        assertEquals(50, betrag.toInt());
-    }
-
-    /**
-     * Test-Methode fuer {@link Betrag#setInhalt(double)}.
-     */
-    @Test
-    public void testSetInhaltDouble() {
-        betrag.setInhalt(1.23);
-        assertEquals("00123", betrag.getInhalt());
-        assertEquals(1.23, betrag.toDouble(), 0.001);
-    }
-
-    /**
-     * Ein Betrag sollte als entsprechender Text formattiert werden.
-     * 
-     * @since 0.5.1
-     */
-    @Test
-    public void testFormat() {
-        betrag.setInhalt(1.23);
-        if ("DE".equals(Locale.getDefault().getCountry())) {
-            assertEquals("1,23", betrag.format());
-        }
-    }
-
-    @Test
-    public void testToDoubleTooLong() {
-        Betrag betrag = new Betrag(Bezeichner.of("test"), 14, 1);
-        betrag.setInhalt("12345678901234");
-        double value = betrag.toDouble();
-        assertEquals(123456789012.34, value, 0.0);
-    }
-
-    @Test
-    public void testSetBigDecimalGerundet() {
-        betrag.setInhalt(new BigDecimal("123.456"));
-        assertEquals(new BigDecimal("123.46"), betrag.toBigDecimal());
-    }
-
-    @Test
-    public void testTruncate() {
-        Betrag betrag = new Betrag(Bezeichner.of("betragTest"), 10, 20).mitConfig(TRUNCATE);
-        betrag.setInhalt(123);
-        assertEquals("0000012300", betrag.getInhalt());
-        betrag.setInhalt(12345678);
-        assertEquals("1234567800", betrag.getInhalt());
-        betrag.setInhalt(1234567890L);
-        assertEquals("9999999999", betrag.getInhalt());
     }
 
 }

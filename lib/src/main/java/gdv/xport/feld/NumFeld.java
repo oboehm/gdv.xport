@@ -202,7 +202,7 @@ public class NumFeld extends Feld {
      */
     @Override
     public void setInhalt(final char c) {
-        this.setInhalt(Character.toString(c));
+        this.setInhalt(Character.digit(c, 10));
     }
 
     /**
