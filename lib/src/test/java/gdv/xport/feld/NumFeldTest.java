@@ -39,17 +39,14 @@ import static org.junit.Assert.*;
  * @author oliver
  * @since 05.10.2009
  */
-public final class NumFeldTest extends AbstractFeldTest {
+public class NumFeldTest extends AbstractNumFeldTest {
 
     private static final Logger LOG = LogManager.getLogger(NumFeldTest.class);
-    private final NumFeld nummer = new NumFeld(Bezeichner.LFD_NUMMER, 4, 1);
+    private final NumFeld nummer = new NumFeld(Bezeichner.LFD_NUMMER, 5, 1);
 
-    /* (non-Javadoc)
-     * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
-     */
     @Override
-    protected Feld getTestFeld() {
-        return new NumFeld(Kopffelder1bis7.SPARTE);
+    protected NumFeld getTestBetrag() {
+        return nummer.mitNachkommastellen(2);
     }
 
     /**
@@ -57,7 +54,7 @@ public final class NumFeldTest extends AbstractFeldTest {
      */
     @Test
     public void testNumFeld() {
-        assertEquals("0000", nummer.getInhalt());
+        assertEquals("00000", nummer.getInhalt());
     }
 
     /**
@@ -85,14 +82,14 @@ public final class NumFeldTest extends AbstractFeldTest {
     @Test
     public void testSetInhaltInt() {
         nummer.setInhalt(2);
-        assertEquals("0002", nummer.getInhalt());
+        assertEquals("00002", nummer.getInhalt());
     }
 
     @Test
     public void testSetInhaltIntMitNachkommastellen() {
         NumFeld betrag = nummer.mitNachkommastellen(2);
         betrag.setInhalt(12);
-        assertEquals("1200", betrag.getInhalt());
+        assertEquals("01200", betrag.getInhalt());
         assertEquals(12, betrag.toInt());
     }
 
@@ -100,7 +97,7 @@ public final class NumFeldTest extends AbstractFeldTest {
     public void testSetInhaltBigIntegerMitNachkommastellen() {
         NumFeld betrag = nummer.mitNachkommastellen(2);
         betrag.setInhalt(BigInteger.ONE);
-        assertEquals("0100", betrag.getInhalt());
+        assertEquals("00100", betrag.getInhalt());
         assertEquals(BigInteger.ONE, betrag.toBigInteger());
     }
 
@@ -108,23 +105,23 @@ public final class NumFeldTest extends AbstractFeldTest {
     public void testSetInhaltBigInteger() {
         nummer.setInhalt("    ");
         nummer.setInhalt(BigInteger.TEN);
-        assertEquals("0010", nummer.getInhalt());
+        assertEquals("00010", nummer.getInhalt());
         nummer.setInhalt(BigInteger.ONE);
-        assertEquals("0001", nummer.getInhalt());
+        assertEquals("00001", nummer.getInhalt());
     }
 
     @Test
     public void testSetInhaltBigDecimal() {
         NumFeld betrag = nummer.mitNachkommastellen(2);
         betrag.setInhalt(new BigDecimal("1.5"));
-        assertEquals("0150", betrag.getInhalt());
+        assertEquals("00150", betrag.getInhalt());
     }
 
     @Test
     public void testSetInhaltDoublie() {
         NumFeld betrag = nummer.mitNachkommastellen(2);
         betrag.setInhalt(1.5);
-        assertEquals("0150", betrag.getInhalt());
+        assertEquals("00150", betrag.getInhalt());
     }
 
     @Test(expected = IllegalArgumentException.class)

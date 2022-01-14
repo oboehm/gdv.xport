@@ -33,7 +33,7 @@ import static org.junit.Assert.assertEquals;
  * @since 11.10.2009
  * @version $Revision$
  */
-public final class BetragTest extends AbstractFeldTest {
+public final class BetragTest extends AbstractNumFeldTest {
 
     private static final Config TRUNCATE = Config.getInstance()
             .withProperty("gdv.feld.truncate", "true")
@@ -46,7 +46,7 @@ public final class BetragTest extends AbstractFeldTest {
      * @see gdv.xport.feld.AbstractFeldTest#getTestFeld()
      */
     @Override
-    protected Feld getTestFeld() {
+    protected Betrag getTestBetrag() {
         return this.betrag;
     }
 
