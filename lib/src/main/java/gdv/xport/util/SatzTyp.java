@@ -206,7 +206,9 @@ public class SatzTyp {
 	 * @param satzart Satzart, z.B. 100
 	 * @return den ermittelten SatzTyp
 	 * @throws IOException bei Lesefehlern
+	 * @deprecated wurde nach {@link Importer#readSatzTyp(int)} verschoben
 	 */
+	@Deprecated
 	public static SatzTyp readSatzTyp(PushbackLineNumberReader reader, int satzart) throws IOException {
 		return Importer.of(reader).readSatzTyp(satzart);
 	}

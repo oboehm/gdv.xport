@@ -448,7 +448,7 @@ public class Datenpaket implements ImportListener {
 
     private static Satz importSatzFrom(PushbackLineNumberReader reader, int satzart,
                                        Map<SatzTyp, Version> satzartVersionen) throws IOException {
-        SatzTyp satzTyp = SatzTyp.readSatzTyp(reader, satzart);
+        SatzTyp satzTyp = Importer.of(reader).readSatzTyp(satzart);
         Version wanted = satzartVersionen.get(satzTyp);
         if (wanted == null) {
             return importDatensatz(reader, satzart);
@@ -485,7 +485,7 @@ public class Datenpaket implements ImportListener {
 
     private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
             throws IOException {
-        SatzTyp satzTyp = SatzTyp.readSatzTyp(reader, satzart);
+        SatzTyp satzTyp = Importer.of(reader).readSatzTyp(satzart);
         Datensatz satz = SatzRegistry.getInstance().getDatensatz(satzTyp);
         satz.importFrom(reader);
         return satz;
