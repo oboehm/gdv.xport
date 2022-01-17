@@ -246,7 +246,7 @@ public class Datenpaket implements ImportListener {
         } else if (datensatz.getSatzTyp().equals(SatzTyp.of(500))) {
             setNachsatzSummenAus0500(datensatz);
         }
-        nachsatz.setAnzahlSaetze(datensaetze.size());
+        nachsatz.setAnzahlSaetze(nachsatz.getAnzahlSaetze() + datensatz.getNumberOfTeildatensaetze());
     }
 
     private void preset(Datensatz datensatz) {
@@ -321,7 +321,7 @@ public class Datenpaket implements ImportListener {
         }
         nachsatz.export(writer);
         writer.flush();
-        LOG.info(datensaetze.size() + " Datensaetze exported.");
+        LOG.info("{} Saetze exportiert.", nachsatz.getAnzahlSaetze());
     }
 
     /**

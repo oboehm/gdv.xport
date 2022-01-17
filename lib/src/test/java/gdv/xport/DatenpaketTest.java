@@ -67,15 +67,17 @@ public final class DatenpaketTest {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketTest.class);
     private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance("VUVM2018.xml");
+    private static String muster;
     /** Fuer jeden Test gibt es ein frisches Datenpaket. */
     private final Datenpaket datenpaket = new Datenpaket();
 
     @BeforeClass
-    public static void setUpExportDir() {
+    public static void setUpExportDir() throws IOException {
         File exportDir = new File("target", "export");
         if (exportDir.mkdir()) {
             LOG.info("Verzeichnis {} wurde angelegt.", exportDir);
         }
+        muster = getResourceAsString("/musterdatei_041222.txt");
     }
 
     /**
@@ -146,7 +148,17 @@ public final class DatenpaketTest {
         }
         assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
-        assertEquals(1, nachsatz.getAnzahlSaetze());
+        assertEquals(2, nachsatz.getAnzahlSaetze());
+    }
+
+    @Test
+    public void testAddMehrereDatensaetze() throws IOException {
+        datenpaket.importFrom(muster);
+        Datenpaket dp = new Datenpaket();
+        for (Datensatz datensatz : datenpaket.getDatensaetze()) {
+            dp.add(datensatz);
+        }
+        assertEquals(datenpaket.getNachsatz().getAnzahlSaetze(), dp.getNachsatz().getAnzahlSaetze());
     }
 
     @Test
@@ -404,7 +416,6 @@ public final class DatenpaketTest {
      */
     @Test
     public void testImportExport() throws IOException {
-        String muster = getResourceAsString("/musterdatei_041222.txt");
         datenpaket.importFrom(muster);
         Satz vertragsteil = datenpaket.getDatensaetze().get(1);
         Feld vertragsstatus = vertragsteil.getFeld(Bezeichner.VERTRAGSSTATUS);
