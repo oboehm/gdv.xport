@@ -1106,7 +1106,7 @@ public abstract class Satz implements Cloneable {
 	 */
 	protected boolean matchesNextTeildatensatz(final PushbackLineNumberReader reader, char[] lastFeld1To7, Character satznummer) throws IOException {
 		try {
-            int art = readSatzart(reader);
+            int art = Importer.of(reader).readSatzart();
             return art == this.getSatzart();
         } catch (EOFException ex) {
             LOG.info("No next teildatensatz found ({}).", ex.getLocalizedMessage());
@@ -1129,7 +1129,9 @@ public abstract class Satz implements Cloneable {
 	 * @param reader the reader
 	 * @return Satzart
 	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @deprecated wurde nach {@link Importer#readSatzart()} verschoben
 	 */
+	@Deprecated
 	public static int readSatzart(final PushbackLineNumberReader reader) throws IOException {
 		return Importer.of(reader).readSatzart();
 	}

@@ -437,7 +437,7 @@ public class Datenpaket implements ImportListener {
      * @throws IOException falls was schief gelaufen ist
      */
     protected static Satz importSatz(PushbackLineNumberReader reader, Map<SatzTyp, Version> satzartVersionen) throws IOException {
-        int satzart = Satz.readSatzart(reader);
+        int satzart = Importer.of(reader).readSatzart();
         LOG.debug("Satzart {} wird importiert...", satzart);
         if (satzart == 9999) {
             return importNachsatzFrom(reader);
@@ -468,7 +468,7 @@ public class Datenpaket implements ImportListener {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public static Satz importSatz(final PushbackLineNumberReader reader) throws IOException {
-        int satzart = Satz.readSatzart(reader);
+        int satzart = Importer.of(reader).readSatzart();
         LOG.debug("reading Satzart " + satzart + "...");
         if (satzart == 9999) {
             return importNachsatzFrom(reader);

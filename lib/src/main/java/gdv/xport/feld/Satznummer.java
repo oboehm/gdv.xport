@@ -17,8 +17,8 @@
  */
 package gdv.xport.feld;
 
+import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
-import gdv.xport.satz.Satz;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
@@ -79,7 +79,7 @@ public class Satznummer extends Zeichen {
      */
     public static Satznummer readSatznummer(final PushbackLineNumberReader reader) throws IOException {
         Satznummer satznr = new Satznummer();
-        int satzart = Satz.readSatzart(reader);
+        int satzart = Importer.of(reader).readSatzart();
         switch (satzart) {
             case 210:
             case 211:

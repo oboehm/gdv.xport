@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
+import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.satz.feld.common.TeildatensatzNummer;
@@ -515,7 +516,7 @@ public class Datensatz extends Satz {
      * @throws IOException falls was schief gegangen ist
      */
     public static int readKrankenFolgeNr(final PushbackLineNumberReader reader) throws IOException {
-        int satzart = readSatzart(reader);
+        int satzart = Importer.of(reader).readSatzart();
         if (satzart != 220) {
             throw new IllegalArgumentException("can't read Kranken Folge-Nr., wrong satzart " + satzart +", must be 220");
         }
@@ -548,7 +549,7 @@ public class Datensatz extends Satz {
      * @throws IOException falls was schief gegangen ist
      */
     public static int readBausparenArt(final PushbackLineNumberReader reader) throws IOException {
-		int satzart = readSatzart(reader);
+		int satzart = Importer.of(reader).readSatzart();
 		if (satzart != 220) {
 			throw new IllegalArgumentException("can't read Bauspar-Art, wrong satzart " + satzart +", must be 220");
 		}

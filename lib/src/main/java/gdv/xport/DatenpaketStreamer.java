@@ -14,6 +14,7 @@ package gdv.xport;
 import gdv.xport.config.Config;
 import gdv.xport.event.ImportListener;
 import gdv.xport.feld.Version;
+import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.io.RecordReader;
 import gdv.xport.io.RecyclingInputStreamReader;
@@ -39,7 +40,7 @@ import java.util.Map;
 public class DatenpaketStreamer {
 
     private final PushbackLineNumberReader reader;
-    private final List<ImportListener> importListener = new ArrayList<ImportListener>();
+    private final List<ImportListener> importListener = new ArrayList<>();
     private Map<SatzTyp, Version> satzartVersionen = new HashMap<>();
 
     /**
@@ -108,10 +109,8 @@ public class DatenpaketStreamer {
      */
     public boolean canReadDatenpaket() {
         try {
-            return Vorsatz.readSatzart(reader) == 1;
-        } catch (IOException ex) {
-            return false;
-        } catch (NumberFormatException ex) {
+            return Importer.of(reader).readSatzart() == 1;
+        } catch (IOException | NumberFormatException ex) {
             return false;
         }
     }
