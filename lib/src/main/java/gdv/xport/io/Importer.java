@@ -22,6 +22,7 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzTyp;
 
+import java.io.EOFException;
 import java.io.IOException;
 
 /**
@@ -48,6 +49,29 @@ public class Importer {
      */
     public static Importer of(PushbackLineNumberReader reader) {
         return new Importer(reader);
+    }
+
+    /**
+     * Liest 4 Bytes, um die Satzart zu bestimmen und stellt die Bytes
+     * anschliessend wieder zurueck in den Reader.
+     *
+     * @return Satzart (z.B. 100)
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public int readSatzart() throws IOException {
+        reader.skipWhitespace();
+        char[] cbuf = new char[4];
+        importFrom(cbuf);
+        reader.unread(cbuf);
+        return Integer.parseInt(new String(cbuf).trim());
+    }
+
+    private void importFrom(final char[] cbuf) throws IOException {
+        if (reader.read(cbuf) == -1) {
+            String s = new String(cbuf).trim();
+            throw new EOFException("can't read " + cbuf.length + " bytes from " + reader + ", only \""
+                    + s + "\" ("+ s.length() + " bytes)");
+        }
     }
 
     /**

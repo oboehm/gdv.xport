@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
+import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
 import gdv.xport.util.SatzRegistry;
@@ -1130,19 +1131,7 @@ public abstract class Satz implements Cloneable {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static int readSatzart(final PushbackLineNumberReader reader) throws IOException {
-        reader.skipWhitespace();
-		char[] cbuf = new char[4];
-		importFrom(reader, cbuf);
-		reader.unread(cbuf);
-        return Integer.parseInt(new String(cbuf).trim());
-	}
-
-	private static void importFrom(final Reader reader, final char[] cbuf) throws IOException {
-		if (reader.read(cbuf) == -1) {
-			String s = new String(cbuf).trim();
-			throw new EOFException("can't read " + cbuf.length + " bytes from " + reader + ", only \""
-			        + s + "\" ("+ s.length() + " bytes)");
-		}
+		return Importer.of(reader).readSatzart();
 	}
 
     /**
