@@ -349,9 +349,9 @@ public class XmlService {
     }
   }
 
-    private SatzXml registerSatzart(SatzTyp type, SatzXml satz) {
+    private void registerSatzart(SatzTyp type, SatzXml satz) {
         satz.init(type);
-        return this.satzarten.put(type, satz);
+        this.satzarten.put(type, satz);
     }
 
     /**
@@ -371,10 +371,6 @@ public class XmlService {
      */
     @Deprecated
     public SatzXml getSatzart(final int satzart)  {
-        StringBuilder satzartBuf = new StringBuilder();
-        satzartBuf.append(String.format("%03d", satzart));
-
-        // SatzXml satz = this.satzarten.get(SatzTyp.of(satzartBuf.toString()));
         SatzXml satz = this.satzarten.get(SatzTyp.of(Integer.toString(satzart)));
         if (satz != null) {
             return new SatzXml(satz);
@@ -471,6 +467,16 @@ public class XmlService {
     public String getGdvRelease()
     {
         return this.gdvRelease;
+    }
+
+    /**
+     * Liefert die eingestellt Config zurueck.
+     *
+     * @return eingestellte Config
+     * @since 6.1
+     */
+    public Config getConfig() {
+        return this.config;
     }
 
     @Override
