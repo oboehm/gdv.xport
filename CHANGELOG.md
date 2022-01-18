@@ -23,6 +23,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - **ACHTUNG**: bei NumFeld und abgeleitete Klassen werden Nachkommastellen beim Setzen von Zahlen berücksichtigt
 - `Datenpaket.add(Datensatz)` setzt jetzt korrekte Anzahl (Teildaten-)-Saetze im Nachsatz
 - `SatzRegistry.getDatensatz(SatzTyp)` liefert im STRICT-Mode nur registrierte Datensätze
+- verteilte Import-Funktionalität in Importer-Klasse zusammengefasst
 
 
 ## [6.0.1] - 2022-01-06

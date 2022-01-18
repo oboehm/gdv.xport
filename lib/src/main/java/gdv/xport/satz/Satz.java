@@ -1037,15 +1037,13 @@ public abstract class Satz implements Cloneable {
 
 	/**
 	 * Der hier verwendete PushbackReader wird benoetigt, damit die gelesene
-	 * Satzart und Sparte wieder zurueckgesetllt werden kann. Seit 0.5.1 ist
-	 * diese Methode nicht mehr final, da manche Satzarten wohl Eigenarten haben
-	 * koennen (wie z.B. fehlende Sparten-Eintraege).
+	 * Satzart und Sparte wieder zurueckgesetllt werden kann.
 	 *
 	 * @param reader the reader
 	 * @return Satz zur Weiterverabeitung (seit 5.2)
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-    public Satz importFrom(final PushbackLineNumberReader reader) throws IOException {
+    public final Satz importFrom(final PushbackLineNumberReader reader) throws IOException {
     	SortedSet<Integer> used = new TreeSet<>();
         char[] feld1to7 = null;
         char satznummer = '0';

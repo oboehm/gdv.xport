@@ -21,7 +21,6 @@ package gdv.xport.satz;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
-import gdv.xport.io.ImportException;
 import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
@@ -493,17 +492,7 @@ public class Datensatz extends Satz {
 	 * @throws IOException falls was schief gegangen ist
 	 */
 	public static int readSparte(final PushbackReader reader) throws IOException {
-		char[] cbuf = new char[14];
-		if (reader.read(cbuf) == -1) {
-			throw new IOException("can't read 14 bytes (" + new String(cbuf) + ") from " + reader);
-		}
-		reader.unread(cbuf);
-		String intro = new String(cbuf);
-		try {
-            return Integer.parseInt(intro.substring(10, 13));
-        } catch (NumberFormatException ex) {
-            throw new ImportException("cannot read sparte from first 14 bytes (\"" + intro + "\")");
-        }
+		return Importer.of(reader).readSparte();
 	}
 
 	/**

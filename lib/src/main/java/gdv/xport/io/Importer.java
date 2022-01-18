@@ -24,6 +24,7 @@ import gdv.xport.util.SatzTyp;
 
 import java.io.EOFException;
 import java.io.IOException;
+import java.io.PushbackReader;
 
 /**
  * In der Klasse Importer sind einige (statische) Methoden zum Lesen von
@@ -49,6 +50,20 @@ public class Importer {
      */
     public static Importer of(PushbackLineNumberReader reader) {
         return new Importer(reader);
+    }
+
+    /**
+     * Liefert einen Importer mit dem angegebenen Reader.
+     *
+     * @param reader zum Lesen
+     * @return eine Importer
+     */
+    public static Importer of(PushbackReader reader) {
+        if (reader instanceof PushbackLineNumberReader) {
+            return of((PushbackLineNumberReader) reader);
+        } else {
+            return of(new PushbackLineNumberReader(reader));
+        }
     }
 
     /**
@@ -105,6 +120,28 @@ public class Importer {
             }
         }
         return satzTyp;
+    }
+
+    /**
+     * Liest 14 Bytes, um die Sparte zu bestimmen und stellt die Bytes
+     * anschliessend wieder zurueck in den Reader.
+     *
+     * bereitstellen
+     * @return Sparte
+     * @throws IOException falls was schief gegangen ist
+     */
+    public int readSparte() throws IOException {
+        char[] cbuf = new char[14];
+        if (reader.read(cbuf) == -1) {
+            throw new IOException("can't read 14 bytes (" + new String(cbuf) + ") from " + reader);
+        }
+        reader.unread(cbuf);
+        String intro = new String(cbuf);
+        try {
+            return Integer.parseInt(intro.substring(10, 13));
+        } catch (NumberFormatException ex) {
+            throw new ImportException("cannot read sparte from first 14 bytes (\"" + intro + "\")");
+        }
     }
 
 }
