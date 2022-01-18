@@ -97,7 +97,7 @@ public class Importer {
      * @throws IOException bei Lesefehlern
      */
     public SatzTyp readSatzTyp(int satzart) throws IOException {
-        int sparte = Datensatz.readSparte(reader);
+        int sparte = readSparte();
         SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
         if (satzart >= 210 && satzart < 300) {
             if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
@@ -126,7 +126,6 @@ public class Importer {
      * Liest 14 Bytes, um die Sparte zu bestimmen und stellt die Bytes
      * anschliessend wieder zurueck in den Reader.
      *
-     * bereitstellen
      * @return Sparte
      * @throws IOException falls was schief gegangen ist
      */

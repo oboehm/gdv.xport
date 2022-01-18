@@ -485,13 +485,18 @@ public class Datensatz extends Satz {
 	/**
 	 * Liest 14 Bytes, um die Sparte zu bestimmen und stellt die Bytes
 	 * anschliessend wieder zurueck in den Reader.
+	 * <p>
+	 * ACHTUNG: Ab v6.1 nur fuer den internen Gebrauch gedacht. Ansonsten auf
+	 * {@link Importer#readSparte()} ausweichen.
+	 * </p>
 	 *
 	 * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen
 	 * bereitstellen
 	 * @return Sparte
 	 * @throws IOException falls was schief gegangen ist
+	 * @see Importer#readSparte()
 	 */
-	public static int readSparte(final PushbackReader reader) throws IOException {
+	protected static int readSparte(final PushbackReader reader) throws IOException {
 		return Importer.of(reader).readSparte();
 	}
 
