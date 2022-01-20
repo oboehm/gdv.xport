@@ -24,7 +24,7 @@ import gdv.xport.util.SatzTyp;
 
 import java.io.EOFException;
 import java.io.IOException;
-import java.io.PushbackReader;
+import java.io.Reader;
 
 /**
  * In der Klasse Importer sind einige (statische) Methoden zum Lesen von
@@ -58,7 +58,7 @@ public class Importer {
      * @param reader zum Lesen
      * @return eine Importer
      */
-    public static Importer of(PushbackReader reader) {
+    public static Importer of(Reader reader) {
         if (reader instanceof PushbackLineNumberReader) {
             return of((PushbackLineNumberReader) reader);
         } else {
@@ -97,15 +97,20 @@ public class Importer {
      * @throws IOException bei Lesefehlern
      */
     public SatzTyp readSatzTyp(int satzart) throws IOException {
+        if ((satzart == 1) || (satzart == 9999)) {
+            return SatzTyp.of(satzart);
+        }
         int sparte = readSparte();
         SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
         if (satzart >= 210 && satzart < 300) {
             if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
                 WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
-                // wagnisart 0 hat immer ein Leerzeichen als teildatenSatzmummer.
-                // Nur groesser 0 besitzt per Definition Werte.
-                Satznummer satznr = Satznummer.readSatznummer(reader);
-                satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), satznr.toInt());
+                if (wagnisart.getCode() > 0) {
+                    int satznr = Satznummer.readSatznummer(reader).toInt();
+                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), satznr > 5 ? satznr : 1);
+                } else {
+                    satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode());
+                }
             } else if (sparte == 20 && satzart == 220) {
                 // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
                 int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);

@@ -182,7 +182,7 @@
       <scope>test</scope>
     </dependency>
 
-	<!-- PatternTesting -->
+	<!-- (Pattern-)Testing -->
     <dependency>
       <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-rt</artifactId>
@@ -204,11 +204,19 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
+      <version>5.8.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-engine</artifactId>
+      <version>1.8.2</version>
       <scope>test</scope>
     </dependency>
 
