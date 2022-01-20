@@ -526,10 +526,6 @@ public class SatzRegistry implements VersionHandler {
             }
             return fallback;
         } catch (NotRegisteredException re) {
-            if (xmlService.getConfig().getValidateMode() == Config.ValidateMode.STRICT) {
-                LOG.error("Es ist kein Datensatz {} vorhanden.", satzNr);
-                throw re;
-            }
             // Dieser Teil wird fuer den Import benoetigt, um auch unsupported Datensaetze zu unterstuetzen
             LOG.warn("Reduced functionality for (unknown or unsupported) Satzart {}:",  satzNr, re);
             Datensatz satz = new Datensatz(SatzTyp.of(satzNr.getSatzart(), satzNr.getSparte()));
