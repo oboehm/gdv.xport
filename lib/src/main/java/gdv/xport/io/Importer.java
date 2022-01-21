@@ -104,7 +104,7 @@ public class Importer {
         SatzTyp satzTyp = SatzTyp.of(satzart, sparte);
         if (satzart >= 210 && satzart < 300) {
             if (sparte == 10 && ((satzart == 220) || (satzart == 221))) {
-                WagnisartLeben wagnisart = Datensatz.readWagnisart(reader);
+                WagnisartLeben wagnisart = readWagnisart();
                 if (wagnisart.getCode() > 0) {
                     int satznr = Satznummer.readSatznummer(reader).toInt();
                     satzTyp = SatzTyp.of(satzart, sparte, wagnisart.getCode(), satznr > 5 ? satznr : 1);
@@ -146,6 +146,23 @@ public class Importer {
         } catch (NumberFormatException ex) {
             throw new ImportException("cannot read sparte from first 14 bytes (\"" + intro + "\")");
         }
+    }
+
+    /**
+     * Liest 1 Byte, um die Wagnisart zu bestimmen und stellt das Byte
+     * anschliessend wieder zurueck in den Reader.
+     *
+     * @return Wagnisart
+     * @throws IOException falls was schief gegangen ist
+     */
+    public WagnisartLeben readWagnisart() throws IOException {
+        char[] cbuf = new char[60];
+        if (reader.read(cbuf) == -1) {
+            throw new IOException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
+        }
+        reader.unread(cbuf);
+        String wagnisart = new String(cbuf).substring(59, 60);
+        return WagnisartLeben.isIn(wagnisart);
     }
 
 }

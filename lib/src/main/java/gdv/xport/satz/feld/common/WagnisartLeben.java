@@ -16,6 +16,9 @@
 
 package gdv.xport.satz.feld.common;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * The Enum WagnisartLeben.
  */
@@ -54,9 +57,10 @@ public enum WagnisartLeben {
 	/** The fondsgebundene rentenversicherung. */
 	FONDSGEBUNDENE_RENTENVERSICHERUNG(9);
 
+	private static final Logger LOG = LogManager.getLogger(WagnisartLeben.class);
 	private final int code;
 
-	private WagnisartLeben(final int code) {
+	WagnisartLeben(final int code) {
 		this.code = code;
 	}
 
@@ -75,12 +79,13 @@ public enum WagnisartLeben {
 	 * @param code the code
 	 * @return the wagnisart leben
 	 */
-	public static WagnisartLeben isIn(final int code) {
+	public static WagnisartLeben isIn(final String code) {
 		for (WagnisartLeben existing : WagnisartLeben.values()) {
-			if (existing.getCode() == code) {
+			if (code.equals(Integer.toString(existing.getCode()))) {
 				return existing;
 			}
 		}
+		LOG.warn("Unbekannte Wagnisart '{}' wird auf 'NULL' abgebildet", code);
 		return WagnisartLeben.NULL;
 	}
 

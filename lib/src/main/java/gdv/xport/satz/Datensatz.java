@@ -568,29 +568,14 @@ public class Datensatz extends Satz {
 	 * Liest 1 Byte, um die Wagnisart zu bestimmen und stellt das Byte
 	 * anschliessend wieder zurueck in den Reader.
 	 *
-     * @param reader muss mind. einen Pushback-Puffer von 1 Zeichen bereitstellen
+     * @param reader muss mind. einen Pushback-Puffer von 60 Zeichen bereitstellen
 	 * @return Wagnisart
 	 * @throws IOException falls was schief gegangen ist
+	 * @deprecated wurde nach {@link Importer#readWagnisart()} verschoben
 	 */
+	@Deprecated
 	public static WagnisartLeben readWagnisart(final PushbackReader reader) throws IOException {
-		char[] cbuf = new char[60];
-		if (reader.read(cbuf) == -1) {
-			throw new IOException("can't read 1 bytes (" + new String(cbuf) + ") from " + reader);
-		}
-		reader.unread(cbuf);
-		String wagnisart = new String(cbuf).substring(59, 60);
-
-		if (wagnisart.trim().length() == 0) {
-			return WagnisartLeben.NULL;
-		} else {
-			try {
-				return WagnisartLeben.isIn(Integer.parseInt(wagnisart));
-			} catch (NumberFormatException e) {
-				LOG.warn("Not allowed value for wagnisart found. Type Number is required but was \""
-				        + wagnisart + "\".");
-				return WagnisartLeben.NULL;
-			}
-		}
+		return Importer.of(reader).readWagnisart();
 	}
 
 	/**
