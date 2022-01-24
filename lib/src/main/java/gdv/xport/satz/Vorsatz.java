@@ -69,7 +69,7 @@ public class Vorsatz extends Satz {
      * @since 5.0
      */
     public Vorsatz(SatzRegistry factory) {
-        this(factory.getDatensatz(SATZART), factory);
+        this(factory.getSatz(SATZART), factory);
     }
 
     private Vorsatz(Satz vorlage, VersionHandler versionHandler) {

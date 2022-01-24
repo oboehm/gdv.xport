@@ -67,7 +67,7 @@ public final class Nachsatz extends Satz {
      * @since 5.0
      */
     public Nachsatz(SatzRegistry factory) {
-        this(factory.getDatensatz(SATZART));
+        this(factory.getSatz(SATZART));
     }
 
     private Nachsatz(Satz vorlage) {

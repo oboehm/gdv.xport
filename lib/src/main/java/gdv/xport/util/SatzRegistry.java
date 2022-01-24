@@ -161,10 +161,10 @@ public class SatzRegistry implements VersionHandler {
     }
 
     private static void createInstances() {
-        getInstance("VUVM2009.xml");
-        getInstance("VUVM2013.xml");
-        getInstance("VUVM2015.xml");
-        getInstance("VUVM2018.xml");
+        getInstance(Config.VUVM2009);
+        getInstance(Config.VUVM2013);
+        getInstance(Config.VUVM2015);
+        getInstance(Config.VUVM2018);
     }
 
     /**
