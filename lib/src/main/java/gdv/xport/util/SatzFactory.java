@@ -213,9 +213,12 @@ public final class SatzFactory {
      *
      * @param satzNr z.B. SatzTyp.of("0210.070.1.6")
      * @return den passenden Datensatz
+     * @deprecated durch {@link SatzRegistry#getSatz(SatzTyp)} und
+     *             {@link SatzRegistry#generateDatensatz(SatzTyp)} abgeloest
      */
+    @Deprecated
     public static Datensatz getDatensatz(final SatzTyp satzNr) {
-        return FACTORY.getDatensatz(satzNr);
+        return (Datensatz) FACTORY.getSatz(satzNr);
     }
 
     /**

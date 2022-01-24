@@ -22,10 +22,7 @@ import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
-import gdv.xport.util.SatzRegistry;
-import gdv.xport.util.SatzTyp;
-import gdv.xport.util.SimpleConstraintViolation;
-import gdv.xport.util.URLReader;
+import gdv.xport.util.*;
 import net.sf.oval.ConstraintViolation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -483,12 +480,22 @@ public class Datenpaket implements ImportListener {
         return nachsatz;
     }
 
-    private static Datensatz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
+    private static Satz importDatensatz(final PushbackLineNumberReader reader, final int satzart)
             throws IOException {
         SatzTyp satzTyp = Importer.of(reader).readSatzTyp(satzart);
-        Datensatz satz = SatzRegistry.getInstance().getDatensatz(satzTyp);
+        Satz satz = getSatz(satzTyp);
         satz.importFrom(reader);
         return satz;
+    }
+
+    private static Satz getSatz(SatzTyp satzTyp) {
+        try {
+            return SatzRegistry.getInstance().getSatz(satzTyp);
+        } catch (NotRegisteredException ex) {
+            LOG.warn("Satzart '{}' ist nicht registriert und wird generiert.", satzTyp);
+            LOG.debug("Details:", ex);
+            return SatzRegistry.getInstance().generateDatensatz(satzTyp);
+        }
     }
 
     /**

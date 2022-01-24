@@ -20,7 +20,7 @@ package gdv.xport.demo;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Bezeichner;
-import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
@@ -60,7 +60,7 @@ public class ImportExportTest {
     private void checkImportSatz100(File tmpFile) throws IOException {
         try {
             ImportExport.exportSatz100(tmpFile);
-            Datensatz satz100 = ImportExport.importSatz100(tmpFile);
+            Satz satz100 = ImportExport.importSatz100(tmpFile);
             assertEquals(100, satz100.getSatzart());
             assertEquals("1", satz100.getFeld(Bezeichner.ANREDESCHLUESSEL).getInhalt());
             assertEquals("Duck", satz100.getFeld(Bezeichner.NAME1).getInhalt().trim());

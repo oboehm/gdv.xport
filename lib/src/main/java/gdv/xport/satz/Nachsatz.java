@@ -50,7 +50,7 @@ public final class Nachsatz extends Satz {
     public static final SatzTyp SATZART = SatzTyp.of("9999");
 
     private static final Logger LOG = LogManager.getLogger(Nachsatz.class);
-    private static final Datensatz satz9999 = SatzFactory.getDatensatz(SATZART);
+    private static final Satz satz9999 = SatzFactory.getSatz(SATZART);
 
     /**
      * Default-Constructor.

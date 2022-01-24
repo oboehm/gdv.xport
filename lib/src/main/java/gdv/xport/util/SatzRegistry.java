@@ -346,11 +346,6 @@ public class SatzRegistry implements VersionHandler {
         }
     }
 
-    private Datensatz generateDatensatz(final SatzTyp satzNr) {
-        LOG.trace("Will use fallback for Satz {}:", satzNr);
-        return useFallback(satzNr);
-    }
-
     /**
      * Versucht anhand des uebergebenen Strings herauszufinden, um was fuer eine
      * Satzart es sich handelt und liefert dann einen entsprechenden (gefuellten)
@@ -389,8 +384,8 @@ public class SatzRegistry implements VersionHandler {
         try {
             satz = getSatz(satzTyp);
         } catch (NotRegisteredException e) {
-            LOG.debug("can't get Satz " + satzTyp.toString() + " (" + e + "), try fallback...");
-            satz = getDatensatz(satzTyp);
+            LOG.debug("Kann Satz '{}' nicht bestimmen und verwende Fallback:", satzTyp, e);
+            satz = generateDatensatz(satzTyp);
         }
         try {
             satz.importFrom(content);
@@ -456,7 +451,10 @@ public class SatzRegistry implements VersionHandler {
      *
      * @param satzNr z.B. SatzTyp.of("0210.070.1.6")
      * @return den passenden Datensatz
+     * @deprecated wurde durch {@link #getSatz(SatzTyp)} und {@link #generateDatensatz(SatzTyp)}
+     *             abgeloest
      */
+    @Deprecated
     public Datensatz getDatensatz(final SatzTyp satzNr) {
         Satz satz = registeredSaetze.get(satzNr);
         if (satz instanceof Datensatz) {
@@ -511,14 +509,13 @@ public class SatzRegistry implements VersionHandler {
     }
 
     /**
-     * Als Fallback wird nur der Datensatz fuer die entsprechende Satzart
-     * zurueckgeben. Falls dieser nicht existiert, wird ein (allgemeiner)
-     * Datensatz mit Satzart und Sparte als Parameter erzeugt.
+     * Falls ein gewuenschter Datensatz nicht registriert ist, kann er ueber
+     * diese Methode generiert werden.
      *
      * @param satzNr die SatzNummer
      * @return der erzeugte Datensatz
      */
-    private Datensatz useFallback(final SatzTyp satzNr) {
+    public Datensatz generateDatensatz(final SatzTyp satzNr) {
         try {
             Datensatz fallback = (Datensatz) getSatz(satzNr);
             if (satzNr.hasSparte()) {
@@ -527,7 +524,8 @@ public class SatzRegistry implements VersionHandler {
             return fallback;
         } catch (NotRegisteredException re) {
             // Dieser Teil wird fuer den Import benoetigt, um auch unsupported Datensaetze zu unterstuetzen
-            LOG.warn("Reduced functionality for (unknown or unsupported) Satzart {}:",  satzNr, re);
+            LOG.info("Datensatz fuer Satzart {} wird kreiert.",  satzNr);
+            LOG.debug("Details:", re);
             Datensatz satz = new Datensatz(SatzTyp.of(satzNr.getSatzart(), satzNr.getSparte()));
             satz.addFiller();
             return satz;
@@ -603,7 +601,7 @@ public class SatzRegistry implements VersionHandler {
      */
     @Override
     public String getVersionOf(SatzTyp satzTyp) {
-        return getDatensatz(satzTyp).getSatzversion().getInhalt();
+        return getSatz(satzTyp).getSatzversion().getInhalt();
     }
 
 

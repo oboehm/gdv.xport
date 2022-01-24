@@ -20,7 +20,7 @@ package gdv.xport.demo;
 
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Bezeichner;
-import gdv.xport.satz.Datensatz;
+import gdv.xport.satz.Satz;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
@@ -61,11 +61,11 @@ public final class ImportExport {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public static void exportSatz100(final File file) throws IOException {
-        Datensatz satz100 = SatzFactory.getDatensatz(SatzTyp.of("0100"));
-        satz100.set(Bezeichner.ANREDESCHLUESSEL, 1);
-        satz100.set(Bezeichner.NAME1, "Duck");
-        satz100.set(Bezeichner.NAME3, "Dagobert");
-        satz100.set(Bezeichner.GESCHLECHT, "1");
+        Satz satz100 = SatzFactory.getSatz(SatzTyp.of("0100"));
+        satz100.setFeld(Bezeichner.ANREDESCHLUESSEL, 1);
+        satz100.setFeld(Bezeichner.NAME1, "Duck");
+        satz100.setFeld(Bezeichner.NAME3, "Dagobert");
+        satz100.setFeld(Bezeichner.GESCHLECHT, "1");
         satz100.export(file);
     }
 
@@ -77,8 +77,8 @@ public final class ImportExport {
      * @return importierter Satz 100
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    public static Datensatz importSatz100(final File file) throws IOException {
-        Datensatz satz100 = SatzFactory.getDatensatz(SatzTyp.of("0100"));
+    public static Satz importSatz100(final File file) throws IOException {
+        Satz satz100 = SatzFactory.getSatz(SatzTyp.of("0100"));
         satz100.importFrom(file);
         LOG.info("Datensatz " + satz100.getSatzart() + " von " + satz100.getFeld(Bezeichner.NAME3) + " "
                 + satz100.getFeld(Bezeichner.NAME1) + " importiert.");
