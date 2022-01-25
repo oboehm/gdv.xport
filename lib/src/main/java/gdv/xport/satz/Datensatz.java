@@ -184,45 +184,20 @@ public class Datensatz extends Satz {
 	}
 
 	protected static void setUpTeildatensatz(final Teildatensatz tds, final NumFeld sparte) {
-    if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()) && !tds.getFeldInhalt(Kopffelder1bis7.SATZART.getBezeichner())
-                                                     .equals("9999")) {
-      setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), Config.getInstance().getVUNr());
-      setUp(tds, Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN));
-      setUp(tds, Kopffelder1bis7.SPARTE.getBezeichner(), sparte);
-      setUp(tds, Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER));
-      setUp(tds, Kopffelder1bis7.FOLGENUMMER.getBezeichner(), new NumFeld(Kopffelder1bis7.FOLGENUMMER));
-      setUp(tds, Kopffelder1bis7.VERMITTLER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERMITTLER));
-
-
-      /**
-       * @Oli: wenn dieser Teildatensatz via "Datensatz(final SatzTyp satzTyp, final int n)" erzeugt
-       *       wurde, handelte es sich bisher um einen "TeildatensatzEnum". Er beinhaltete immer ein
-       *       Feld "Satznummer". Mit der Aenderung in "Satz.createTeildatensaetze(final int n)"
-       *       gibt es aus "Datensatz(final SatzTyp satzTyp, final int n)" nur noch einen
-       *       "Teildatensatz". Also muss das Feld "Satznummer" wieder ergaenzt werden, falls nicht
-       *       vorhanden.
-       **/
-      if (!tds.hasFeld(Bezeichner.SATZNUMMER))
-      {
-        try
-        {
-          setUp(tds, Bezeichner.SATZNUMMER, new Satznummer(tds.getSatznummer()));
-        }
-        catch (IllegalArgumentException e)
-        {
-          /**
-           * @Oli: "Teildatensatz.add(final Feld feld)" wirft diese Exception, wenn es beim
-           *       Einfuegen eines Feldes zur Ueberschneidung kommt. Das geschieht hier besonders
-           *       dann, wenn ein Teildatensatz per definitionem keine Satznummer hat (z.B. 0220.110
-           *       oder 0210.030)!
-           */
-          LOG.debug("Teildatensatz {} hat kein Platz fuer Satznummer", tds.toLongString());
-        }
-      }
-
-      LOG.trace(tds + " is set up.");
-    } else if (tds.hasFeld(Kopffelder1bis7.SPARTE)) {
-      tds.getFeld(Kopffelder1bis7.SPARTE.getBezeichner()).setInhalt(sparte.getInhalt());
+		if (!tds.hasFeld(Kopffelder1bis7.VU_NUMMER.getBezeichner()) && !tds.getFeldInhalt(Kopffelder1bis7.SATZART.getBezeichner())
+				.equals("9999")) {
+			setUp(tds, Kopffelder1bis7.VU_NUMMER.getBezeichner(), Config.getInstance().getVUNr());
+			setUp(tds, Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN));
+			setUp(tds, Kopffelder1bis7.SPARTE.getBezeichner(), sparte);
+			setUp(tds, Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERSICHERUNGSSCHEINNUMMER));
+			setUp(tds, Kopffelder1bis7.FOLGENUMMER.getBezeichner(), new NumFeld(Kopffelder1bis7.FOLGENUMMER));
+			setUp(tds, Kopffelder1bis7.VERMITTLER.getBezeichner(), new AlphaNumFeld(Kopffelder1bis7.VERMITTLER));
+			if (!tds.hasFeld(Bezeichner.SATZNUMMER)) {
+				setUp(tds, Bezeichner.SATZNUMMER, new Satznummer(tds.getSatznummer()));
+			}
+			LOG.trace("{} is set up.", tds);
+		} else if (tds.hasFeld(Kopffelder1bis7.SPARTE)) {
+			tds.getFeld(Kopffelder1bis7.SPARTE.getBezeichner()).setInhalt(sparte.getInhalt());
 		}
 	}
 
@@ -508,29 +483,11 @@ public class Datensatz extends Satz {
      * bereitstellen
      * @return Folge-Nr
      * @throws IOException falls was schief gegangen ist
+	 * @deprecated wurde nach {@link Importer#readKrankenFolgeNr()} verschoben
      */
+	@Deprecated
     public static int readKrankenFolgeNr(final PushbackLineNumberReader reader) throws IOException {
-        int satzart = Importer.of(reader).readSatzart();
-        if (satzart != 220) {
-            throw new IllegalArgumentException("can't read Kranken Folge-Nr., wrong satzart " + satzart +", must be 220");
-        }
-
-        int sparte = readSparte(reader);
-        if (sparte != 20) {
-            throw new IllegalArgumentException("can't read Kranken Folge-Nr., wrong sparte " + sparte + ", must be 20");
-        }
-        
-        char[] cbuf = new char[49];
-        if (reader.read(cbuf) == -1) {
-            throw new IOException("can't read 49 bytes (" + new String(cbuf) + ") from " + reader);
-        }
-        reader.unread(cbuf);
-        String first10Fields = new String(cbuf);
-        try {
-            return Integer.parseInt(first10Fields.substring(47, 48));
-        } catch (NumberFormatException ex) {
-            return -1;
-        }
+		return Importer.of(reader).readKrankenFolgeNr();
     }
 
     /**

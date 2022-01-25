@@ -113,7 +113,7 @@ public class Importer {
                 }
             } else if (sparte == 20 && satzart == 220) {
                 // Fuer 0220.020.x ist die Krankenfolgenummer zur Identifikation der Satzart noetig
-                int krankenFolgeNr = Datensatz.readKrankenFolgeNr(reader);
+                int krankenFolgeNr = readKrankenFolgeNr();
                 satzTyp = SatzTyp.of(satzart, sparte, krankenFolgeNr);
             }  else if (sparte == 580 && satzart == 220) {
                 // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
@@ -163,6 +163,37 @@ public class Importer {
         reader.unread(cbuf);
         String wagnisart = new String(cbuf).substring(59, 60);
         return WagnisartLeben.isIn(wagnisart);
+    }
+
+    /**
+     * Liest 49 Bytes, um die Folge-Nr. in Satzart 220, Sparte 20 (Kranken) zu bestimmen und stellt die Bytes
+     * anschliessend wieder zurueck in den Reader.
+     *
+     * @return Folge-Nr
+     * @throws IOException falls was schief gegangen ist
+     */
+    public int readKrankenFolgeNr() throws IOException {
+        int satzart = Importer.of(reader).readSatzart();
+        if (satzart != 220) {
+            throw new IllegalArgumentException("can't read Kranken Folge-Nr., wrong satzart " + satzart +", must be 220");
+        }
+
+        int sparte = readSparte();
+        if (sparte != 20) {
+            throw new IllegalArgumentException("can't read Kranken Folge-Nr., wrong sparte " + sparte + ", must be 20");
+        }
+
+        char[] cbuf = new char[49];
+        if (reader.read(cbuf) == -1) {
+            throw new IOException("can't read 49 bytes (" + new String(cbuf) + ") from " + reader);
+        }
+        reader.unread(cbuf);
+        String first10Fields = new String(cbuf);
+        try {
+            return Integer.parseInt(first10Fields.substring(47, 48));
+        } catch (NumberFormatException ex) {
+            return -1;
+        }
     }
 
 }
