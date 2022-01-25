@@ -149,7 +149,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
     public void testReadBauspartArt() throws IOException {
         int art = 2;
         SatzTyp bausparen = SatzTyp.of("0220.580.2");
-        Datensatz datensatz = SatzFactory.getDatensatz(bausparen);
+        Satz datensatz = SatzFactory.getSatz(bausparen);
         datensatz.getFeld(Bezeichner.of("Produkt")).setInhalt("580");
         datensatz.getFeld(Bezeichner.of("Art")).setInhalt(art);
         try (PushbackLineNumberReader reader = new PushbackLineNumberReader(
@@ -181,7 +181,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
 
     private Datensatz checkVuNummer(SatzTyp satzTyp) {
         String vunr = "12345";
-        Datensatz datensatz = SatzRegistry.getInstance().getDatensatz(satzTyp);
+        Datensatz datensatz = (Datensatz) SatzRegistry.getInstance().getSatz(satzTyp);
         datensatz.setVuNummer(vunr);
         assertEquals(vunr, datensatz.getVuNummer());
         for (Teildatensatz tds : datensatz.getTeildatensaetze()) {
@@ -194,7 +194,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
 
     @Test
     public void testHasVuNummer() {
-        Datensatz datensatz = SatzRegistry.getInstance().getDatensatz(SatzTyp.of("0220.580.01"));
+        Datensatz datensatz = (Datensatz) SatzRegistry.getInstance().getSatz(SatzTyp.of("0220.580.01"));
         assertFalse(datensatz.hasVuNummer());
     }
 
@@ -229,7 +229,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
 
     @Test
     public void testSetFeldSatzart() {
-        Datensatz satz0200 = SatzRegistry.getInstance().getDatensatz(SatzTyp.of("0200"));
+        Satz satz0200 = SatzRegistry.getInstance().getSatz(SatzTyp.of("0200"));
         Teildatensatz tds1 = satz0200.getTeildatensatzBySatzNr(1);
         tds1.setFeld(Bezeichner.SATZART, "030");
         assertEquals("0030", tds1.getFeld(ByteAdresse.of(1)).getInhalt());

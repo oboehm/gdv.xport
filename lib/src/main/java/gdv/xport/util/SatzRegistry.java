@@ -282,7 +282,9 @@ public class SatzRegistry implements VersionHandler {
         registeredSaetze.put(satzNr, generateDatensatz(satzNr, clazz));    }
 
     /**
-     * Holt einen Satz.
+     * Liefert einen (normalerweise) einen {@link Datensatz} zurueck.
+     * Ausser bei Satzart 0001 und 9999 (Vorsatz und Nachsatz), da dies
+     * nur normale Saetze sind.
      * 
      * @param satztyp der Satztyp
      * @return angeforderter Satz
@@ -463,7 +465,6 @@ public class SatzRegistry implements VersionHandler {
             } catch (CloneNotSupportedException ex) {
                 throw new IllegalArgumentException(satzNr + " laesst sich nicht clonen", ex);
             }
-
         }
         return generateDatensatz(satzNr);
     }

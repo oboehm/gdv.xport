@@ -184,7 +184,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
 
     @Test
     public void testGetSatznummer() {
-        Datensatz satz220 = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.010.13.1"));
+        Satz satz220 = SATZ_REGISTRY.getSatz(SatzTyp.of("0220.010.13.1"));
         for (int n = 1; n < satz220.getNumberOfTeildatensaetze(); n++) {
             checkSatznummer(satz220, n, ByteAdresse.of(256), Character.forDigit(n, 10));
         }
@@ -192,14 +192,14 @@ public class TeildatensatzTest extends AbstractSatzTest {
 
     @Test
     public void testGetSatznummer220Fahrzeughaftpflicht() {
-        Datensatz satz220 = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.051"));
+        Satz satz220 = SATZ_REGISTRY.getSatz(SatzTyp.of("0220.051"));
         checkSatznummer(satz220, 1, ByteAdresse.of(256), '1');
         checkSatznummer(satz220, 2, ByteAdresse.of(256), '2');
     }
 
     @Test
     public void testGetSatznummer220Wagnisdaten() {
-        Datensatz satz220 = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.030"));
+        Satz satz220 = SATZ_REGISTRY.getSatz(SatzTyp.of("0220.030"));
         checkSatznummer(satz220, 1, ByteAdresse.of(49), '1');
         checkSatznummer(satz220, 2, ByteAdresse.of(49), '2');
         checkSatznummer(satz220, 3, ByteAdresse.of(43), '3');
@@ -207,7 +207,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
         checkSatznummer(satz220, 5, ByteAdresse.of(60), '9');
     }
 
-    private void checkSatznummer(Datensatz satz, int n, ByteAdresse start, char inhalt) {
+    private void checkSatznummer(Satz satz, int n, ByteAdresse start, char inhalt) {
         Teildatensatz tds = satz.getTeildatensatz(n);
         Zeichen satznummer = tds.getSatznummer();
         Zeichen expected = new Zeichen(satznummer.getBezeichner(), start.intValue(), inhalt);

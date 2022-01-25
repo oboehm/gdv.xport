@@ -31,7 +31,6 @@ import gdv.xport.satz.xml.SatzXml;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
-import org.junit.Before;
 import org.junit.Test;
 
 import javax.xml.stream.XMLStreamException;
@@ -54,11 +53,6 @@ import static org.junit.Assert.*;
 public final class SatzFactoryTest {
 
     private static final Logger LOG = LogManager.getLogger(SatzFactoryTest.class);
-
-    @Before
-    public void resetSatzFactory() {
-        SatzFactory.reset();
-    }
 
     /**
      * Testet getSatz().
@@ -151,7 +145,7 @@ public final class SatzFactoryTest {
     }
 
     private static void checkGetDatensatz(final int satzart) {
-        Satz datensatz = SatzFactory.getDatensatz(SatzTyp.of(satzart));
+        Satz datensatz = SatzFactory.getSatz(SatzTyp.of(satzart));
         assertEquals(satzart, datensatz.getSatzart());
     }
 
@@ -178,13 +172,13 @@ public final class SatzFactoryTest {
      */
     @Test
     public void testGetSatzart210Sparte30() {
-        Datensatz satz210 = getDatensatz(210, 30);
+        Satz satz210 = getDatensatz(210, 30);
         Feld vertragsstatus = satz210.getFeld(Bezeichner.VERTRAGSSTATUS);
         assertEquals(43, vertragsstatus.getByteAdresse());
     }
 
-    private static Datensatz getDatensatz(final int satzart, final int sparte) {
-        Datensatz datensatz = SatzFactory.getDatensatz(SatzTyp.of(satzart, sparte));
+    private static Satz getDatensatz(final int satzart, final int sparte) {
+        Satz datensatz = SatzFactory.getSatz(SatzTyp.of(satzart, sparte));
         assertEquals(satzart, datensatz.getSatzart());
         assertEquals(sparte, datensatz.getSparte());
         return datensatz;
@@ -198,7 +192,7 @@ public final class SatzFactoryTest {
      */
     @Test
     public void testImport() throws IOException {
-        Datensatz datensatz = SatzFactory.getDatensatz(SatzTyp.of("210.30"));
+        Datensatz datensatz = (Datensatz) SatzFactory.getSatz(SatzTyp.of("210.30"));
         String s = "02109999  030      599999999990199990099991010520040105200901052"
                 + "0040901 0000000000000000000 EUR000000000000000000000000000000041"
                 + "1410000000000 0001000                                           "
@@ -238,7 +232,7 @@ public final class SatzFactoryTest {
         SatzRegistry satzRegistry = SatzRegistry.getInstance();
         try {
             satzRegistry.register(SatzXml.of("Satz0221.051.xml"), kfz, SatzRegistry.NO_VALIDATOR);
-            Datensatz satz = satzRegistry.getDatensatz(kfz);
+            Satz satz = satzRegistry.getSatz(kfz);
             checkDatensatz(satz);
             checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1);
             checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2);
@@ -248,7 +242,7 @@ public final class SatzFactoryTest {
         }
     }
 
-    private static void checkDeckungssumme(Datensatz satz, Bezeichner name) {
+    private static void checkDeckungssumme(Satz satz, Bezeichner name) {
         Betrag betrag = (Betrag) satz.getFeld(name);
         assertEquals(14, betrag.getAnzahlBytes());
         assertEquals(2, betrag.getNachkommastellen());
@@ -271,7 +265,7 @@ public final class SatzFactoryTest {
         }
     }
 
-    static void checkDatensatz(Datensatz satz) {
+    static void checkDatensatz(Satz satz) {
         for (Teildatensatz tds : satz.getTeildatensaetze()) {
             checkTeildatensatz(tds);
         }
@@ -322,14 +316,14 @@ public final class SatzFactoryTest {
      */
     @Test
     public void testIssue33() {
-        Datensatz satz350 = SatzFactory.getDatensatz(SatzTyp.of("350.30"));
+        Satz satz350 = SatzFactory.getSatz(SatzTyp.of("350.30"));
         checkDatensatz(satz350);
         assertEquals(30, satz350.getSparte());
     }
 
     @Test
     public void testDatensatz200() {
-        Datensatz satz200 = SatzFactory.getDatensatz(SatzTyp.of(200));
+        Satz satz200 = SatzFactory.getSatz(SatzTyp.of(200));
         assertEquals(200, satz200.getSatzart());
     }
 
@@ -340,8 +334,8 @@ public final class SatzFactoryTest {
      */
     @Test
     public void testGetWagnisart1u3() {
-        Datensatz a = SatzFactory.getDatensatz(SatzTyp.of("0220.010.13.1"));
-        Datensatz b = SatzFactory.getDatensatz(SatzTyp.of("0220.010.13"));
+        Satz a = SatzFactory.getSatz(SatzTyp.of("0220.010.13.1"));
+        Satz b = SatzFactory.getSatz(SatzTyp.of("0220.010.13"));
         assertEquals(a, b);
     }
 
@@ -366,7 +360,7 @@ public final class SatzFactoryTest {
     @Test
     public void testGetDatensatz100() {
         SatzTyp satzart100 = SatzTyp.of("0100");
-        Satz a = SatzFactory.getDatensatz(satzart100);
+        Satz a = SatzFactory.getSatz(satzart100);
         Satz b = SatzFactory.getSatz(satzart100);
         assertEquals(a, b);
     }

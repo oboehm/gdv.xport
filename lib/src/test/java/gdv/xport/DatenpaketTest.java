@@ -141,7 +141,7 @@ public final class DatenpaketTest {
      */
     @Test
     public void testAdd() {
-        datenpaket.add(SatzFactory.getDatensatz(SatzTyp.of(220)));
+        datenpaket.add((Datensatz) SatzFactory.getSatz(SatzTyp.of(220)));
         Vorsatz vorsatz = datenpaket.getVorsatz();
         if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
             assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
@@ -165,7 +165,7 @@ public final class DatenpaketTest {
     public void testAddVorbelegung() {
         datenpaket.setVuNummer("007");
         datenpaket.setVermittler("JamesBond");
-        datenpaket.add(SatzFactory.getDatensatz(SatzTyp.of(100)));
+        datenpaket.add((Datensatz) SatzFactory.getSatz(SatzTyp.of(100)));
         assertEquals(datenpaket.getVuNummer(), datenpaket.getDatensaetze().get(0).getVuNummer());
         assertEquals(datenpaket.getVermittler(), datenpaket.getDatensaetze().get(0).getVermittler());
     }
@@ -656,17 +656,14 @@ public final class DatenpaketTest {
         assertEquals(summe, nachsatz.getSchadenbearbeitungskostenMitVorzeichen().toBigDecimal());
     }
 
-    private BigDecimal addDatensatz(SatzTyp satzTyp, Bezeichner bezeichner, ByteAdresse vorzeichen, BigDecimal...beitraege) {
+    private BigDecimal addDatensatz(SatzTyp satzTyp, Bezeichner bezeichner, ByteAdresse vorzeichen, BigDecimal... beitraege) {
         BigDecimal summe = BigDecimal.ZERO;
         for (BigDecimal beitrag : beitraege) {
             BigDecimal positiv = beitrag.abs();
-            Datensatz datensatz = SatzFactory.getDatensatz(satzTyp);
-      datensatz.setFeld(bezeichner, positiv.movePointRight(2)
-          .toString());
-      if (beitrag.compareTo(BigDecimal.ZERO) < 0)
-      {
-        datensatz.getTeildatensatz(1)
-            .setFeld(vorzeichen, "-");
+            Datensatz datensatz = (Datensatz) SatzFactory.getSatz(satzTyp);
+            datensatz.setFeld(bezeichner, positiv.movePointRight(2).toString());
+            if (beitrag.compareTo(BigDecimal.ZERO) < 0) {
+                datensatz.getTeildatensatz(1).setFeld(vorzeichen, "-");
             }
             datenpaket.add(datensatz);
             summe = summe.add(beitrag);
@@ -691,7 +688,7 @@ public final class DatenpaketTest {
     @Test
     public void testNotEquals() {
         Datenpaket x = new Datenpaket();
-        x.add(SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.010.13.1")));
+        x.add((Datensatz) SATZ_REGISTRY.getSatz(SatzTyp.of("0220.010.13.1")));
         assertNotEquals(datenpaket, x);
     }
 
@@ -726,10 +723,10 @@ public final class DatenpaketTest {
     @Test
     public void testExportImportWagnisart13() throws IOException {
         File testfile = new File("target", "issue61.gdv");
-        Datensatz leben = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.010.13.1"));
+        Datensatz leben = (Datensatz) SATZ_REGISTRY.getSatz(SatzTyp.of("0220.010.13.1"));
         leben.removeTeildatensatz(3);
         datenpaket.add(leben);
-        datenpaket.add(SATZ_REGISTRY.getDatensatz(SatzTyp.of("0220.010.13.6")));
+        datenpaket.add((Datensatz) SATZ_REGISTRY.getSatz(SatzTyp.of("0220.010.13.6")));
         datenpaket.export(testfile);
         Datenpaket imported = new Datenpaket();
         imported.importFrom(testfile);
@@ -739,7 +736,7 @@ public final class DatenpaketTest {
     @Test
     public void testExportImport221Wagnisdaten() throws IOException {
         File testfile = new File("target", "exported_0221_030.txt");
-        Datensatz unfall = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0221.030"));
+        Datensatz unfall = (Datensatz) SATZ_REGISTRY.getSatz(SatzTyp.of("0221.030"));
         datenpaket.add(unfall);
         datenpaket.export(testfile);
         Datenpaket imported = new Datenpaket();
@@ -789,9 +786,9 @@ public final class DatenpaketTest {
         Der Rueckimport muss korrekt zwei Datensaetze erkennen, selbst wenn wir jeweils den zweiten Datensatz nicht exportieren.
          */
         File testfile = new File("target", "schadensatz_500_zwei_datensaetze.gdv");
-        Datensatz schaden = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0500"));
+        Datensatz schaden = (Datensatz) SATZ_REGISTRY.getSatz(SatzTyp.of("0500"));
         schaden.removeTeildatensatz(2);
-        Datensatz schaden2 = SATZ_REGISTRY.getDatensatz(SatzTyp.of("0500"));
+        Datensatz schaden2 = (Datensatz) SATZ_REGISTRY.getSatz(SatzTyp.of("0500"));
         schaden2.removeTeildatensatz(2);
         datenpaket.add(schaden);
         datenpaket.add(schaden2);
@@ -813,9 +810,9 @@ public final class DatenpaketTest {
          */
         SatzRegistry satzRegistry2009 = SatzRegistry.getInstance("VUVM2009.xml");
         File testfile = new File("target", "schadensatz_500_zwei_datensaetze_v1_5.gdv");
-        Datensatz schaden = satzRegistry2009.getDatensatz(SatzTyp.of("0500"));
+        Datensatz schaden = (Datensatz) satzRegistry2009.getSatz(SatzTyp.of("0500"));
         schaden.removeTeildatensatz(2);
-        Datensatz schaden2 = satzRegistry2009.getDatensatz(SatzTyp.of("0500"));
+        Datensatz schaden2 = (Datensatz) satzRegistry2009.getSatz(SatzTyp.of("0500"));
         schaden2.removeTeildatensatz(2);
         datenpaket.add(schaden);
         datenpaket.add(schaden2);

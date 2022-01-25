@@ -63,7 +63,7 @@ public final class SatzRegistryTest {
         SatzRegistry satzRegistry = SatzRegistry.getInstance();
         try {
             satzRegistry.register(SatzXml.of("Satz0221.051.xml"), kfz, SatzRegistry.NO_VALIDATOR);
-            Datensatz satz = satzRegistry.getDatensatz(kfz);
+            Satz satz = satzRegistry.getSatz(kfz);
             SatzFactoryTest.checkDatensatz(satz);
             checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL1);
             checkDeckungssumme(satz, Bezeichner.KH_DECKUNGSSUMMEN_IN_WAEHRUNGSEINHEITEN_TEIL2);
@@ -73,7 +73,7 @@ public final class SatzRegistryTest {
         }
     }
 
-    private static void checkDeckungssumme(Datensatz satz, Bezeichner name) {
+    private static void checkDeckungssumme(Satz satz, Bezeichner name) {
         Betrag betrag = (Betrag) satz.getFeld(name);
         assertEquals(14, betrag.getAnzahlBytes());
         assertEquals(2, betrag.getNachkommastellen());

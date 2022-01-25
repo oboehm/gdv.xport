@@ -364,7 +364,7 @@ public final class SatzTest extends AbstractSatzTest {
 
     @Test
     public void testValidateDifferentVuNr() {
-        Datensatz x = SatzRegistry.getInstance().getDatensatz(SatzTyp.of(200));
+        Datensatz x = (Datensatz) SatzRegistry.getInstance().getSatz(SatzTyp.of(200));
         x.setVuNummer("12345");
         Teildatensatz tds = x.getTeildatensatz(2);
         tds.setFeld(Bezeichner.VU_NR, "67890");
@@ -374,7 +374,7 @@ public final class SatzTest extends AbstractSatzTest {
 
     @Test
     public void testValidateBausparen() {
-        Datensatz darlehen = SatzRegistry.getInstance().getDatensatz(SatzTyp.of("0220.580.2"));
+        Satz darlehen = SatzRegistry.getInstance().getSatz(SatzTyp.of("0220.580.2"));
         darlehen.validate();
     }
 
@@ -466,7 +466,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testWagnisartSparte40() {
         SatzTyp expectedSatzTyp = SatzTyp.of("0220.040");
-        Satz satz = SatzFactory.getDatensatz(expectedSatzTyp);
+        Satz satz = SatzFactory.getSatz(expectedSatzTyp);
         satz.set(Bezeichner.WAGNISART, "220456");
         SatzTyp satzTyp = satz.getSatzTyp();
         assertFalse("SatzFactory.getDatensatz(220, 40) hat keine Wagnisart im SatzTyp", satzTyp.hasWagnisart());
@@ -494,7 +494,7 @@ public final class SatzTest extends AbstractSatzTest {
         Satz testsatz = new TestSatz(102, satz102.getTeildatensaetze());
         assertEquals(satz102.toLongString(), testsatz.toLongString());
         satz102.set(Bezeichner.BERUF_TEXT, "Tester");
-        assertThat(testsatz.getFeld(Bezeichner.BERUF_TEXT).getInhalt().trim(), isEmptyString());
+        assertThat(testsatz.getFeld(Bezeichner.BERUF_TEXT).getInhalt().trim(), emptyString());
         assertNotEquals(satz102.toLongString(), testsatz.toLongString());
     }
 
