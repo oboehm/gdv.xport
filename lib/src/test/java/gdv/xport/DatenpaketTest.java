@@ -66,9 +66,8 @@ import static org.junit.Assert.*;
 public final class DatenpaketTest {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketTest.class);
-    private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance("VUVM2018.xml");
+    private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance(Config.VUVM2018);
     private static String muster;
-    /** Fuer jeden Test gibt es ein frisches Datenpaket. */
     private final Datenpaket datenpaket = new Datenpaket();
 
     @BeforeClass
@@ -521,32 +520,24 @@ public final class DatenpaketTest {
         assertLines(content, swriter.toString());
     }
 
-  private static void assertLines(final String expected, final String paket) throws IOException
-  {
-    try (BufferedReader expectedReader = new BufferedReader(new StringReader(expected));
-        BufferedReader paketReader = new BufferedReader(new StringReader(paket)))
-    {
-      for (int line = 1;; line++)
-      {
-            String expectedLine = readNextLine(expectedReader);
-            String paketLine = readNextLine(paketReader);
-        if (expectedLine == null)
-        {
-                LOG.info(line + " lines compared (no difference)");
-                break;
-            }
-        if (expectedLine.startsWith("0001"))
-        {
-          assertEquals("difference in Feld 1-6 of line " + line, expectedLine.substring(0, 96),
-              paketLine.substring(0, 96));
-        }
-        else
-        {
-                assertEquals("difference in line " + line, expectedLine, paketLine);
+    private static void assertLines(final String expected, final String paket) throws IOException {
+        try (BufferedReader expectedReader = new BufferedReader(new StringReader(expected));
+             BufferedReader paketReader = new BufferedReader(new StringReader(paket))) {
+            for (int line = 1; ; line++) {
+                String expectedLine = readNextLine(expectedReader);
+                String paketLine = readNextLine(paketReader);
+                if (expectedLine == null) {
+                    LOG.info("{} lines compared (no difference)", line);
+                    break;
+                }
+                if (expectedLine.startsWith("0001")) {
+                    assertEquals("difference in Feld 1-6 of line " + line, expectedLine.substring(0, 96),
+                            paketLine.substring(0, 96));
+                } else {
+                    assertEquals("difference in line " + line, expectedLine, paketLine);
+                }
             }
         }
-    }
-    // expectedReader.close();
     }
 
     private static String readNextLine(final BufferedReader reader) throws IOException {
@@ -808,7 +799,7 @@ public final class DatenpaketTest {
         Wir simulieren das, indem die Satznummerwiederholung mit 'leer' geliefert wird.
         Trotzdem muss der Rueckimport korrekt zwei Datensaetze erkennen und nicht nur einen.
          */
-        SatzRegistry satzRegistry2009 = SatzRegistry.getInstance("VUVM2009.xml");
+        SatzRegistry satzRegistry2009 = SatzRegistry.getInstance(Config.VUVM2009);
         File testfile = new File("target", "schadensatz_500_zwei_datensaetze_v1_5.gdv");
         Datensatz schaden = (Datensatz) satzRegistry2009.getSatz(SatzTyp.of("0500"));
         schaden.removeTeildatensatz(2);

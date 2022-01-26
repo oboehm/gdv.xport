@@ -22,6 +22,7 @@ import gdv.xport.Datenpaket;
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.ByteAdresse;
+import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzFactory;
@@ -154,7 +155,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
         datensatz.getFeld(Bezeichner.of("Art")).setInhalt(art);
         try (PushbackLineNumberReader reader = new PushbackLineNumberReader(
                 new StringReader(datensatz.toLongString()), 50)) {
-            int bausparArt = Datensatz.readBausparenArt(reader);
+            int bausparArt = Importer.of(reader).readBausparenArt();
             assertEquals(art, bausparArt);
         }
     }

@@ -18,7 +18,6 @@
 package gdv.xport.io;
 
 import gdv.xport.feld.Satznummer;
-import gdv.xport.satz.Datensatz;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzTyp;
 
@@ -119,7 +118,7 @@ public class Importer {
                 // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart
                 // noetig
                 // Fuer 0220.580.x ist die BausparArt zur Identifikation der Satzart noetig
-                int bausparArt = Datensatz.readBausparenArt(reader);
+                int bausparArt = readBausparenArt();
                 // BausparenArt nicht auslesbar -> Unbekannter Datensatz
                 satzTyp = SatzTyp.of(satzart, sparte, bausparArt);
             }
@@ -194,6 +193,32 @@ public class Importer {
         } catch (NumberFormatException ex) {
             return -1;
         }
+    }
+
+    /**
+     * Liest 45 Bytes, um die Bauspar-Art in Satzart 220, Sparte 580 (Bausparen)
+     * zu bestimmen und stellt die Bytes anschliessend wieder zurueck in den
+     * Reader.
+     *
+     * @return Folge-Nr
+     * @throws IOException falls was schief gegangen ist
+     */
+    public int readBausparenArt() throws IOException {
+        int satzart = readSatzart();
+        if (satzart != 220) {
+            throw new IllegalArgumentException("can't read Bauspar-Art, wrong satzart " + satzart +", must be 220");
+        }
+        int sparte = readSparte();
+        if (sparte != 580) {
+            throw new IllegalArgumentException("can't read Bauspar-Art, wrong sparte " + sparte + ", must be 580");
+        }
+        char[] cbuf = new char[45];
+        if (reader.read(cbuf) == -1) {
+            throw new IOException("can't read 45 bytes (" + new String(cbuf) + ") from " + reader);
+        }
+        reader.unread(cbuf);
+        String first10Fields = new String(cbuf);
+        return Integer.parseInt(first10Fields.substring(43, 44));
     }
 
 }

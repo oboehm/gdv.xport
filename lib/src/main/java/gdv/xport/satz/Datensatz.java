@@ -498,27 +498,11 @@ public class Datensatz extends Satz {
      * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen bereitstellen
      * @return Folge-Nr
      * @throws IOException falls was schief gegangen ist
+	 * @deprecated wurde nach {@link Importer#readBausparenArt()} verschoben
      */
+	@Deprecated
     public static int readBausparenArt(final PushbackLineNumberReader reader) throws IOException {
-		int satzart = Importer.of(reader).readSatzart();
-		if (satzart != 220) {
-			throw new IllegalArgumentException("can't read Bauspar-Art, wrong satzart " + satzart +", must be 220");
-		}
-		int sparte = readSparte(reader);
-		if (sparte != 580) {
-			throw new IllegalArgumentException("can't read Bauspar-Art, wrong sparte " + sparte + ", must be 580");
-		}
-		char[] cbuf = new char[45];
-		if (reader.read(cbuf) == -1) {
-			throw new IOException("can't read 45 bytes (" + new String(cbuf) + ") from " + reader);
-		}
-		reader.unread(cbuf);
-		String first10Fields = new String(cbuf);
-		try {
-			return Integer.parseInt(first10Fields.substring(43, 44));
-		} catch (NumberFormatException ex) {
-			return -1;
-		}
+		return Importer.of(reader).readBausparenArt();
 	}
 
 	/**
