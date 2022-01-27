@@ -337,17 +337,30 @@ public class XmlService {
         }
     }
 
-  private void registerSatzart(SatzXml satz)  {
-    List<SatzTyp> supportedSatzTypen = satz.getSupportedSatzTypen();
-    if (supportedSatzTypen.isEmpty())    {
-      registerSatzart(SatzTyp.of(satz.getGdvSatzartName()), satz);
-    } else {
-      for (SatzTyp type : supportedSatzTypen)      {
-        registerSatzart(type, satz);
-        LOG.trace("Satz {} registered as {}.", satz, type);
-      }
+    /**
+     * Ueber diese Methode kann man eigene Satzarten an der aktuellen Instanz
+     * registrieren. Eigene Satzarten duerfen im Bereich von 800 - 900 liegen.
+     *
+     * @param uri URI der Resource (z.B. "classpath:/mein/satz.xml")
+     * @throws IOException        the io exception
+     * @throws XMLStreamException the xml stream exception
+     * @since 6.1
+     */
+    public void registerSatzart(URI uri) throws XMLStreamException, IOException {
+        registerSatzart(SatzXml.of(uri));
     }
-  }
+
+    private void registerSatzart(SatzXml satz) {
+        List<SatzTyp> supportedSatzTypen = satz.getSupportedSatzTypen();
+        if (supportedSatzTypen.isEmpty()) {
+            registerSatzart(SatzTyp.of(satz.getGdvSatzartName()), satz);
+        } else {
+            for (SatzTyp type : supportedSatzTypen) {
+                registerSatzart(type, satz);
+                LOG.trace("Satz {} registered as {}.", satz, type);
+            }
+        }
+    }
 
     private void registerSatzart(SatzTyp type, SatzXml satz) {
         satz.init(type);

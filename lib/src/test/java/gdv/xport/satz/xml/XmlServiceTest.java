@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 by Oli B.
+ * Copyright (c) 2014-2022 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,8 +31,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.collection.IsIn;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
@@ -46,7 +46,7 @@ import java.util.Map;
 
 import static org.hamcrest.Matchers.either;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit-Test fuer {@link XmlService}-Klasse
@@ -59,7 +59,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     private static final Logger LOG = LogManager.getLogger(XmlServiceTest.class);
     private static XmlService xmlService;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpXmlService() throws XMLStreamException, IOException {
         xmlService = XmlService.getInstance("VUVM2018.xml");
     }
@@ -78,9 +78,9 @@ public class XmlServiceTest extends AbstractXmlTest {
      * Fuer eine nicht registrierte Satzart sollte eine entsprechende
      * Excption kommen.
      */
-    @Test(expected = NotRegisteredException.class)
+    @Test
     public void testGetSatzartNonExisting() {
-        xmlService.getSatzart(SatzTyp.of(451));
+        assertThrows(NotRegisteredException.class, () -> xmlService.getSatzart(SatzTyp.of(451)));
     }
 
     /**
@@ -309,7 +309,7 @@ public class XmlServiceTest extends AbstractXmlTest {
         Feld haftungsbeginn = teildatensatz9.getFeld(20);
         assertEquals(128, haftungsbeginn.getEndAdresse());
         Feld beitragssumme = teildatensatz9.getFeld(21);
-        assertEquals("Feld 21 ist nicht Beitragssumme, sondern " + beitragssumme, 129, beitragssumme.getByteAdresse());
+        assertEquals(129, beitragssumme.getByteAdresse(), "Feld 21 ist nicht Beitragssumme, sondern " + beitragssumme);
     }
 
     @Test
@@ -359,7 +359,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     public void testGetInstanceURI() throws URISyntaxException, XMLStreamException, IOException {
         URI uri = getClass().getResource("VUVM2018.xml").toURI();
         XmlService instance = XmlService.getInstance(uri);
-        assertNotNull(uri);
+        assertNotNull(instance);
     }
 
     @Test
@@ -401,18 +401,27 @@ public class XmlServiceTest extends AbstractXmlTest {
         assertEquals(" 0123456789abcdef", rechtsbuendig.getInhalt());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testConfig() throws XMLStreamException, IOException {
         XmlService service = XmlService.getInstance(Config.STRICT);
         Satz satz100 = service.getSatzart(SatzTyp.of(100));
-        satz100.setFeld(Bezeichner.FOLGENUMMER, "x");
+        assertThrows(IllegalArgumentException.class, () -> satz100.setFeld(Bezeichner.FOLGENUMMER, "x"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testSetNumFeldWithLetter() throws XMLStreamException, IOException {
         Config mitValidierung = Config.DEFAULT.withProperty("gdv.feld.validate", "lax");
         Satz satz200 = XmlService.getInstance(mitValidierung).getSatzart(SatzTyp.of("0200"));
-        satz200.setFeld(Bezeichner.GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN, "A99999999999");
+        assertThrows(IllegalArgumentException.class,
+                () -> satz200.setFeld(Bezeichner.GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN, "A99999999999"));
+    }
+
+    @Test
+    public void testRegisterSatzart() throws XMLStreamException, IOException {
+        xmlService.registerSatzart(URI.create("classpath:/gdv/xport/satz/xml/Satz0820.xml"));
+        Satz satz820 = xmlService.getSatzart(SatzTyp.of(820));
+        assertNotNull(satz820);
+        assertEquals(SatzTyp.of(820), satz820.getSatzTyp());
     }
 
 }

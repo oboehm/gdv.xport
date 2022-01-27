@@ -20,6 +20,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Added
 
+- XmlService erlaubt jetzt die Registrierung eigener Sätze per XML-Resource
 - SatzXml.of(..) akzeptiert jetzt auch URI (z.B. "classpath:/com/panik/unfall.xml") als Parameter
 
 ### Changes
