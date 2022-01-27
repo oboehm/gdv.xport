@@ -37,6 +37,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -278,6 +279,29 @@ public class SatzXml extends Datensatz {
                 throw new IllegalArgumentException("not a resource: " + resource);
             }
             return createSatzXml(istream);
+        }
+    }
+
+    /**
+     * Im Gegensatz zu {@link SatzXml#of(String)} und {@link SatzXml#of(File)}
+     * kann hier eine beliebige URI als Parameter uebergeben werden. Allerdings
+     * werden momentan nur "classpath:" und "file:" als Protokoll unterstuetzt.
+     *
+     * @param resource URI der Resource (z.B. "classpath:/mein/satz.xml")
+     * @return einen Satz gemaess der XML-Beschreibung
+     * @throws IOException        the io exception
+     * @throws XMLStreamException the xml stream exception
+     * @since 6.1
+     */
+    public static SatzXml of(URI resource) throws IOException, XMLStreamException {
+        String scheme = resource.getScheme();
+        switch (scheme.toLowerCase()) {
+            case "classpath":
+                return of(resource.getPath());
+            case "file":
+                return of(new File(resource));
+            default:
+                throw new UnsupportedOperationException("Protokoll '" + scheme + "' wird (noch) nicht unterstuetzt");
         }
     }
 

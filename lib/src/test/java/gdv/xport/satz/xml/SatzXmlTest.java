@@ -37,6 +37,7 @@ import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.net.URI;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -399,6 +400,18 @@ public class SatzXmlTest extends AbstractDatensatzTest {
     public void testOfResource() throws IOException, XMLStreamException {
         SatzXml fromXML = SatzXml.of("Satz0221.051.xml");
         assertEquals(SatzTyp.of("0221.051"), fromXML.getSatzTyp());
+    }
+
+    @Test
+    public void testOfURI() throws IOException, XMLStreamException {
+        String resource = "/gdv/xport/satz/xml/Satz0820.xml";
+        URI classpathURI = URI.create("classpath:" + resource);
+        URI fileURI = new File("src/test/resources", resource).toURI();
+        SatzXml fromResource = SatzXml.of(resource);
+        SatzXml fromClasspath = SatzXml.of(classpathURI);
+        SatzXml fromFile = SatzXml.of(fileURI);
+        assertEquals(fromResource, fromClasspath);
+        assertEquals(fromResource, fromFile);
     }
 
 }
