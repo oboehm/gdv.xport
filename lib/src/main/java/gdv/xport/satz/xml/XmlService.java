@@ -347,7 +347,14 @@ public class XmlService {
      * @since 6.1
      */
     public void registerSatzart(URI uri) throws XMLStreamException, IOException {
-        registerSatzart(SatzXml.of(uri));
+        SatzXml satz = SatzXml.of(uri);
+        if (config.getValidateMode() == Config.ValidateMode.STRICT) {
+            int satzart = satz.getSatzart();
+            if ((satzart < 800) || (satzart > 900)) {
+                throw new IllegalArgumentException("Satzart " + satzart + " liegt ausserhalb von 800 - 900");
+            }
+        }
+        registerSatzart(satz);
     }
 
     private void registerSatzart(SatzXml satz) {
