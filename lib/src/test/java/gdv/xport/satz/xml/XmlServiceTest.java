@@ -37,7 +37,6 @@ import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
 import javax.xml.stream.XMLStreamException;
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -423,13 +422,6 @@ public class XmlServiceTest extends AbstractXmlTest {
         Satz satz820 = xmlService.getSatzart(SatzTyp.of(820));
         assertNotNull(satz820);
         assertEquals(SatzTyp.of(820), satz820.getSatzTyp());
-    }
-
-    @Test
-    public void testRegisterSatzartNotAllowed() throws XMLStreamException, IOException {
-        XmlService strictXmlService = XmlService.getInstance(Config.STRICT);
-        assertThrows(IllegalArgumentException.class, () ->
-                strictXmlService.registerSatzart(new File("src/test/resources/gdv/xport/satz/xml/Satz100.xml").toURI()));
     }
 
 }
