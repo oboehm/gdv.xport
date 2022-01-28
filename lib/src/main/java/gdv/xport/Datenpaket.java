@@ -494,7 +494,9 @@ public class Datenpaket implements ImportListener {
         } catch (NotRegisteredException ex) {
             LOG.warn("Satzart '{}' ist nicht registriert und wird generiert.", satzTyp);
             LOG.debug("Details:", ex);
-            return SatzRegistry.getInstance().generateDatensatz(satzTyp);
+            Datensatz satz = new Datensatz(SatzTyp.of(satzTyp.getSatzart(), satzTyp.getSparte()));
+            satz.addFiller();
+            return satz;
         }
     }
 

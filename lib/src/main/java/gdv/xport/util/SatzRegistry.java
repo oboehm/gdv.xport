@@ -328,24 +328,9 @@ public class SatzRegistry implements VersionHandler {
     }
 
     private Satz getSatzFromXmlService(SatzTyp satztyp) {
-        try {
             SatzXml satz = xmlService.getSatzart(satztyp);
             satz.init(satztyp);
             return satz;
-        } catch (NotRegisteredException ex) {
-            if (satztyp.hasParent()) {
-                LOG.warn("{} is not available via XmlService, trying {} now.", satztyp, satztyp.getParent());
-                LOG.trace("Details:", ex);
-                SatzXml satz = xmlService.getSatzart(satztyp.getParent());
-                satz.setSparte(satztyp.getSparte());
-                if (satztyp.getSparte() != satz.getSatzTyp().getSparte()) {
-                    satz.resetGdvSatzartName();
-                }
-                return satz;
-            } else {
-                throw ex;
-            }
-        }
     }
 
     /**
