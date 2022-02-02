@@ -337,18 +337,18 @@ public class XmlService {
         }
     }
 
-    /**
-     * Ueber diese Methode kann man eigene Satzarten an der aktuellen Instanz
-     * registrieren. Eigene Satzarten duerfen im Bereich von 800 - 900 liegen.
-     *
-     * @param uri URI der Resource (z.B. "classpath:/mein/satz.xml")
-     * @throws IOException        the io exception
-     * @throws XMLStreamException the xml stream exception
-     * @since 6.1
-     */
-    public void registerSatzart(URI uri) throws XMLStreamException, IOException {
-        registerSatzart(SatzXml.of(uri));
-    }
+//    /**
+//     * Ueber diese Methode kann man eigene Satzarten an der aktuellen Instanz
+//     * registrieren. Eigene Satzarten duerfen im Bereich von 800 - 900 liegen.
+//     *
+//     * @param uri URI der Resource (z.B. "classpath:/mein/satz.xml")
+//     * @throws IOException        the io exception
+//     * @throws XMLStreamException the xml stream exception
+//     * @since 6.1
+//     */
+//    public void registerSatzart(URI uri) throws XMLStreamException, IOException {
+//        registerSatzart(SatzXml.of(uri));
+//    }
 
     private void registerSatzart(SatzXml satz) {
         List<SatzTyp> supportedSatzTypen = satz.getSupportedSatzTypen();
