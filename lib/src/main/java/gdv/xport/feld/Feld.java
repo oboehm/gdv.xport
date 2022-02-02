@@ -48,6 +48,7 @@ import java.util.List;
 public class Feld implements Comparable<Feld>, Cloneable {
 
     private static final Logger LOG = LogManager.getLogger(Feld.class);
+    private static final Validator DEFAULT_VALIDATOR = new Validator(Config.getInstance());
     /** statt "null". */
     public static final Feld NULL_FELD = new Feld();
     private final Bezeichner bezeichner;
@@ -112,7 +113,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.byteAdresse = start;
         this.ausrichtung = alignment;
         this.config = Config.getInstance();
-        this.validator = new Validator(config);
+        this.validator = DEFAULT_VALIDATOR;
     }
 
     /**
@@ -125,7 +126,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      * @since 1.0
      */
     public Feld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
-        this(bezeichner, length, start, alignment, new Validator(Config.getInstance()));
+        this(bezeichner, length, start, alignment, DEFAULT_VALIDATOR);
     }
 
     protected Feld(Bezeichner bezeichner, int length, int start, Align alignment, Validator validator) {
@@ -205,7 +206,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
-        this.validator = new Validator(config);
+        this.validator = DEFAULT_VALIDATOR;
     }
 
     /**
@@ -246,7 +247,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
-        this.validator = new Validator(config);
+        this.validator = DEFAULT_VALIDATOR;
     }
 
     /**
