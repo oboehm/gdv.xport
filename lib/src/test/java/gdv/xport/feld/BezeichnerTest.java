@@ -25,7 +25,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import patterntesting.runtime.junit.ObjectTester;
+import patterntesting.runtime.junit.SerializableTester;
 
+import java.io.NotSerializableException;
 import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -296,6 +298,11 @@ public class BezeichnerTest {
     public void testVersionSatzart9999() {
         Bezeichner nachsatzart = new Bezeichner("Nachsatzsatzart9999");
         assertThat(Bezeichner.VERSION_SATZART_9999.getVariants(), hasItem(nachsatzart));
+    }
+
+    @Test
+    public void testSerializable() throws NotSerializableException {
+        SerializableTester.assertSerialization(Bezeichner.ABLAUF);
     }
 
 }

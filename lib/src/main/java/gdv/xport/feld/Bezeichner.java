@@ -25,6 +25,7 @@ import org.apache.commons.text.WordUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -42,7 +43,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author oliver
  * @since 15.10.2009
  */
-public final class Bezeichner {
+public final class Bezeichner implements Serializable {
 
     private static final Logger LOG = LogManager.getLogger(Bezeichner.class);
     private static final Map<String, String> MAPPING = new HashMap<>();
