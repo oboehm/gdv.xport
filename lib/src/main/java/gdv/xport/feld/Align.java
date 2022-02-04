@@ -18,6 +18,8 @@
 
 package gdv.xport.feld;
 
+import java.io.Serializable;
+
 /**
  * Ausrichtung: rechts- oder linksbuendig (left, right).
  * 
@@ -25,7 +27,7 @@ package gdv.xport.feld;
  * @since 12.10.2009
  * @version $Revision$
  */
-public enum Align {
+public enum Align implements Serializable {
     /** unbekannt. */
     UNKNOWN,
     /** linksbuendig. */

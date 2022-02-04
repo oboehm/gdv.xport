@@ -55,7 +55,7 @@ import java.util.Properties;
  * @since 08.10.2009
  */
 @Immutable
-public final class Config {
+public final class Config implements Serializable {
 
     private static final Logger LOG = LogManager.getLogger(Config.class);
     private static Config instance = new Config();

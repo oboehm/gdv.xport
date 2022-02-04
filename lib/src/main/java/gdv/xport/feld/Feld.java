@@ -32,6 +32,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.validation.ValidationException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.io.Writer;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -45,23 +46,23 @@ import java.util.List;
  * @author oliver
  * @since 04.10.2009
  */
-public class Feld implements Comparable<Feld>, Cloneable {
+public class Feld implements Comparable<Feld>, Cloneable, Serializable {
 
     private static final Logger LOG = LogManager.getLogger(Feld.class);
     private static final Validator DEFAULT_VALIDATOR = new Validator(Config.getInstance());
     /** statt "null". */
     public static final Feld NULL_FELD = new Feld();
     private final Bezeichner bezeichner;
-    private final StringBuilder inhalt;
+    private String inhalt;
     /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256. */
     @Min(1)
-    private final int byteAdresse;
+    private final short byteAdresse;
     /** Ausrichtung: rechts- oder linksbuendig. */
     @NotEqual("UNKNOWN")
     private final Align ausrichtung;
     protected final Config config;
     @JsonIgnore
-    protected final Validator validator;
+    private final Validator validator;
 
     /**
      * Legt ein neues Feld an. Dieser Default-Konstruktor ist fuer Unterklassen
@@ -109,8 +110,8 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     public Feld(final Bezeichner name, final int start, final String s, final Align alignment) {
         this.bezeichner = name;
-        this.inhalt = new StringBuilder(s);
-        this.byteAdresse = start;
+        this.inhalt = s;
+        this.byteAdresse = (short) start;
         this.ausrichtung = alignment;
         this.config = Config.getInstance();
         this.validator = DEFAULT_VALIDATOR;
@@ -131,8 +132,8 @@ public class Feld implements Comparable<Feld>, Cloneable {
 
     protected Feld(Bezeichner bezeichner, int length, int start, Align alignment, Validator validator) {
         this.bezeichner = bezeichner;
-        this.inhalt = getEmptyStringBuilder(length);
-        this.byteAdresse = start;
+        this.inhalt = StringUtils.repeat(" ", length);
+        this.byteAdresse = (short) start;
         this.ausrichtung = alignment;
         this.validator = validator;
         this.config = validator.getConfig();
@@ -201,8 +202,8 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            the alignment
      */
     public Feld(final int start, final String s, final Align alignment) {
-        this.inhalt = new StringBuilder(s);
-        this.byteAdresse = start;
+        this.inhalt = s;
+        this.byteAdresse = (short) start;
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
@@ -242,8 +243,8 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     @Deprecated
     public Feld(final int length, final int start, final Align alignment) {
-        this.inhalt = getEmptyStringBuilder(length);
-        this.byteAdresse = start;
+        this.inhalt = StringUtils.repeat(" ", length);
+        this.byteAdresse = (short) start;
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
@@ -264,14 +265,6 @@ public class Feld implements Comparable<Feld>, Cloneable {
     protected Feld(final Feld other, final Validator validator) {
         this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.ausrichtung, validator);
         this.setInhalt(other.getInhalt());
-    }
-
-    private static StringBuilder getEmptyStringBuilder(final int length) {
-        StringBuilder sbuf = new StringBuilder(length);
-        for (int i = 0; i < length; i++) {
-            sbuf.append(' ');
-        }
-        return sbuf;
     }
 
     /**
@@ -350,12 +343,12 @@ public class Feld implements Comparable<Feld>, Cloneable {
         }
         switch (this.ausrichtung) {
             case LEFT:
-                this.inhalt.replace(0, s.length(), s);
+                this.inhalt = new StringBuilder(this.inhalt).replace(0, s.length(), s).toString();
                 break;
             case RIGHT:
                 int l = s.length();
                 int start = anzahlBytes - l;
-                this.inhalt.replace(start, start + l, s);
+                this.inhalt = new StringBuilder(this.inhalt).replace(start, start + l, s).toString();
                 break;
             default:
                 throw new IllegalStateException("object was not properly initialized");
@@ -432,7 +425,9 @@ public class Feld implements Comparable<Feld>, Cloneable {
      *            index, beginnend bei 0
      */
     public void setInhalt(final char c, final int i) {
-        this.inhalt.setCharAt(i, c);
+        StringBuilder sb = new StringBuilder(this.inhalt);
+        sb.setCharAt(i, c);
+        this.inhalt = sb.toString();
     }
 
     /**
@@ -461,9 +456,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     public void resetInhalt() {
         int anzahlBytes = this.getAnzahlBytes();
-        for (int i = 0; i < anzahlBytes; i++) {
-            this.inhalt.setCharAt(i, ' ');
-        }
+        this.inhalt = StringUtils.repeat(" ", anzahlBytes);
     }
 
     /**
@@ -478,10 +471,7 @@ public class Feld implements Comparable<Feld>, Cloneable {
      */
     @Deprecated
     public void setAnzahlBytes(final int n) {
-        assert this.inhalt.length() <= n : "drohender Datenverlust";
-        for (int i = this.inhalt.length(); i < n; i++) {
-            this.inhalt.append(' ');
-        }
+        this.inhalt = this.inhalt + StringUtils.repeat(" ", n - this.inhalt.length());
     }
 
     /**

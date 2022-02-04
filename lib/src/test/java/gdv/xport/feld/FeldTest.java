@@ -25,10 +25,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import patterntesting.runtime.junit.CloneableTester;
+import patterntesting.runtime.junit.SerializableTester;
 
 import javax.validation.ValidationException;
+import java.io.NotSerializableException;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -252,6 +257,31 @@ public final class FeldTest extends AbstractFeldTest {
         Feld feld1 = new Feld(Bezeichner.of("test"), 5, 4, Align.LEFT).mitConfig(Config.EMPTY);
         String leer = null;
         feld1.setInhalt(leer);
+    }
+
+    @Test
+    public void testSerializable() throws NotSerializableException {
+        Feld feld = new Feld(Bezeichner.of("test"), 10, 1, Align.LEFT);
+        SerializableTester.assertSerialization(feld);
+    }
+
+    @Test
+    public void testMemorySize() {
+        Feld f1 = new Feld(Bezeichner.of("test"), 99, 1, Align.LEFT);
+        Feld f2 = new Feld(Bezeichner.of("test"), 100, 1, Align.LEFT);
+        logMemSize(f1);
+        logMemSize(f2);
+        logMemSize(new ArrayList<>(Arrays.asList(f1)));
+        logMemSize(new ArrayList<>(Arrays.asList(f1, f2)));
+        logMemSize("1234567890");
+        logMemSize("1234567890ab");
+        logMemSize(new StringBuilder("1234567890"));
+        logMemSize(new char[10]);
+    }
+
+    private static void logMemSize(Serializable obj) {
+        int size = SerializableTester.getSizeOf(obj);
+        LOG.info("{} Bytes: {}", size, obj);
     }
 
 }
