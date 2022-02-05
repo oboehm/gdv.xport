@@ -61,8 +61,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     @NotEqual("UNKNOWN")
     private final Align ausrichtung;
     protected final Config config;
-    @JsonIgnore
-    private final Validator validator;
 
     /**
      * Legt ein neues Feld an. Dieser Default-Konstruktor ist fuer Unterklassen
@@ -114,7 +112,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         this.byteAdresse = (short) start;
         this.ausrichtung = alignment;
         this.config = Config.getInstance();
-        this.validator = DEFAULT_VALIDATOR;
     }
 
     /**
@@ -135,7 +132,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         this.inhalt = StringUtils.repeat(" ", length);
         this.byteAdresse = (short) start;
         this.ausrichtung = alignment;
-        this.validator = validator;
         this.config = validator.getConfig();
     }
 
@@ -207,7 +203,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
-        this.validator = DEFAULT_VALIDATOR;
     }
 
     /**
@@ -248,7 +243,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
-        this.validator = DEFAULT_VALIDATOR;
     }
 
     /**
@@ -332,7 +326,8 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      */
     public void setInhalt(final String neuerInhalt) {
         int anzahlBytes = this.getAnzahlBytes();
-        String s = validator.verify(neuerInhalt, this);
+        //String s = validator.verify(neuerInhalt, this);
+        String s = getValidator().verify(neuerInhalt, this);
         s = config.getBool("gdv.feld.truncate") ? truncate(s) : s;
         if (s.length() > anzahlBytes) {
             throw new IllegalArgumentException("Feld " + this.getBezeichner() + ": Parameter \"" + s
@@ -436,7 +431,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @return the inhalt
      */
     public String getInhalt() {
-        return this.inhalt.toString();
+        return this.inhalt;
     }
 
     /**
@@ -528,7 +523,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *             Signals that an I/O exception has occurred.
      */
     public final void write(final Writer writer) throws IOException {
-        writer.write(this.inhalt.toString());
+        writer.write(this.inhalt);
     }
 
     /**
@@ -604,7 +599,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
             violations.add(cv);
         }
         try {
-            this.validator.validate(getInhalt(), validationConfig);
+            this.getValidator().validate(getInhalt(), validationConfig);
         } catch (ValidationException ex) {
             ConstraintViolation cv = new SimpleConstraintViolation(this, ex);
             violations.add(cv);
@@ -707,8 +702,9 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *
      * @return aktuellen Validator
      */
+    @JsonIgnore
     public Feld.Validator getValidator() {
-        return this.validator;
+        return config.getValidatorFor(getClass());
     }
 
     /**

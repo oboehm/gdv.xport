@@ -857,4 +857,35 @@ public final class DatenpaketTest {
         LOG.info("violations = {}", violations);
     }
 
+    /**
+     * Dieser Test dient zum Messen des Speicherverbrauchs. Aktuell steigt er
+     * nach 7946 kompletten Datensaetzen (ca. 1.26 Mio Saetze) mit einer OOME
+     * aus (nach 4 Minunten bei 8 GB Haupt-Speicher).
+     *
+     * @throws CloneNotSupportedException sollte nicht vorkommen
+     */
+    @Test
+    public void testMemoryVerbrauch() throws CloneNotSupportedException {
+        Datenpaket datenpaket = new Datenpaket();
+        Datenpaket supportedSaetze = SATZ_REGISTRY.getAllSupportedSaetze();
+        //fill(datenpaket, supportedSaetze.getDatensaetze(), 20_000);
+        LOG.info("{} wurde aufgebaut.", datenpaket);
+    }
+
+    private void fill(Datenpaket datenpaket, List<Datensatz> datensaetze, int n) throws CloneNotSupportedException {
+        for (int i = 1; i <= n; i++) {
+            try {
+                for (Datensatz datensetz : datensaetze) {
+                    datenpaket.add((Datensatz) datensetz.clone());
+                }
+                if (i % 1000 == 0) {
+                    LOG.info("{} komplette Datensaetze wurden hinzugefuegt ({} Saetze).", i, datenpaket.getAllSaetze().size());
+                }
+            } catch (OutOfMemoryError ex) {
+                LOG.error("Abbruch nach {} kompletten Datensaetzen:", i, ex);
+                throw ex;
+            }
+        }
+    }
+
 }

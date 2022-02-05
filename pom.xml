@@ -225,14 +225,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <parallel>none</parallel>
-          <forkCount>1</forkCount>
-          <perCoreThreadCount>false</perCoreThreadCount>
-          <reuseForks>true</reuseForks>
-          <childDelegation>false</childDelegation>
-          <excludes>
-            <exclude>**/Abstract*.java</exclude>
-          </excludes>
+          <argLine>-XX:MaxMetaspaceSize=64m</argLine>
           <systemProperties>
             <property>
               <name>gdv.VU-Nummer</name>
@@ -246,6 +239,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
+          <argLine>-XX:MaxMetaspaceSize=64m</argLine>
           <!-- disable parallel execution so that JaCoCo listener can properly work -->
           <parallel>none</parallel>
           <forkCount>1</forkCount>

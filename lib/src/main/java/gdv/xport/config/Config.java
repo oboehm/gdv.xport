@@ -18,7 +18,8 @@
 
 package gdv.xport.config;
 
-import gdv.xport.feld.VUNummer;
+import gdv.xport.feld.*;
+import gdv.xport.satz.xml.FeldXml;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,6 +30,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
@@ -88,6 +90,7 @@ public final class Config implements Serializable {
     public static final Config VUVM2009 = DEFAULT.withProperty("gdv.XML-Resource", "VUVM2009.xml");
 
     private final Properties properties;
+    private final Map<Class<? extends Feld>, Feld.Validator> defaultValidators = new HashMap<>();
 
     public static Config getInstance() {
         return instance;
@@ -118,6 +121,17 @@ public final class Config implements Serializable {
 
     private Config(Properties props) {
         this.properties = props;
+        this.defaultValidators.put(Feld.class, new Feld.Validator(this));
+        this.defaultValidators.put(FeldXml.class, new FeldXml.Validator(this));
+        this.defaultValidators.put(NumFeld.class, new NumFeld.Validator(this));
+        this.defaultValidators.put(AlphaNumFeld.class, new AlphaNumFeld.Validator(this));
+        this.defaultValidators.put(Zeichen.class, new Zeichen.Validator(this));
+        this.defaultValidators.put(Satznummer.class, new Satznummer.Validator(this));
+        this.defaultValidators.put(Betrag.class, new Betrag.Validator(this));
+        this.defaultValidators.put(BetragMitVorzeichen.class, new BetragMitVorzeichen.Validator(this));
+        this.defaultValidators.put(Datum.class, new Datum.Validator(this));
+        this.defaultValidators.put(VUNummer.class, new VUNummer.Validator(this));
+        this.defaultValidators.put(Version.class, new Version.Validator(this));
     }
 
     private static Properties loadProperties(String resource) {
@@ -195,6 +209,18 @@ public final class Config implements Serializable {
      */
     public String getProperty(String key, String defaultValue) {
         return this.properties.getProperty(key, defaultValue);
+    }
+
+    /**
+     * Liefert den Validator mit dieser Konfiguration fuer die gewuenschte
+     * Feld-Klasse.
+     *
+     * @param clazz Klasse, fuer den der Validator bestimmt ist
+     * @return Validator
+     * @since 6.2
+     */
+    public Feld.Validator getValidatorFor(Class<? extends Feld> clazz) {
+        return defaultValidators.get(clazz);
     }
 
     /**
