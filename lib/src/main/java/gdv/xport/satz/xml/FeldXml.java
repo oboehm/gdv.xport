@@ -70,7 +70,7 @@ public final class FeldXml extends Feld {
     }
 
     private FeldXml(final Properties props) {
-        super(new Bezeichner(props), 0, toInhalt(props), Align.LEFT);
+        super(new Bezeichner(props), 1, toInhalt(props), Align.LEFT);
         this.id = props.getProperty("ID");
         this.datentyp = Datentyp.asValue(props.getProperty("datentyp"));
         this.nachkommastellen = Integer.parseInt(props.getProperty("nachkommastellen", "0"));

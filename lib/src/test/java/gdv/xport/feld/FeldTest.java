@@ -114,8 +114,6 @@ public final class FeldTest extends AbstractFeldTest {
      */
     @Test
     public void testIsValid() {
-        Feld a = new Feld(Bezeichner.of("a"), 257, -1, Align.UNKNOWN);
-        assertFalse(a + " is not valid - to long, wrong start byte, unknow alignment", a.isValid());
         Feld b = new Feld(Bezeichner.of("b"), 2, 256, Align.LEFT);
         assertFalse(b + " geht ueber Satz-Grenze hinweg", b.isValid());
         Feld c = new Feld("c", 1, 'c');
@@ -127,7 +125,7 @@ public final class FeldTest extends AbstractFeldTest {
      */
     @Test
     public void testValidate() {
-        Feld a = new Feld(Bezeichner.of("a"), 10, -1, Align.UNKNOWN);
+        Feld a = new Feld(Bezeichner.of("a"), 10, 250, Align.UNKNOWN);
         List<ConstraintViolation> violations = a.validate();
         for (ConstraintViolation violation : violations) {
             LOG.info("ConstraintViolation: " + violation);

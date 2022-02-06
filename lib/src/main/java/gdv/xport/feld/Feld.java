@@ -24,7 +24,6 @@ import de.jfachwert.Text;
 import gdv.xport.config.Config;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
-import net.sf.oval.constraint.Min;
 import net.sf.oval.constraint.NotEqual;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -54,9 +53,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     public static final Feld NULL_FELD = new Feld();
     private final Bezeichner bezeichner;
     private String inhalt;
-    /** Achtung - die ByteAdresse beginnt bei 1 und geht bis 256. */
-    @Min(1)
-    private final short byteAdresse;
+    private final byte byteAdresse;
     /** Ausrichtung: rechts- oder linksbuendig. */
     @NotEqual("UNKNOWN")
     private final Align ausrichtung;
@@ -109,7 +106,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     public Feld(final Bezeichner name, final int start, final String s, final Align alignment) {
         this.bezeichner = name;
         this.inhalt = s;
-        this.byteAdresse = (short) start;
+        this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment;
         this.config = Config.getInstance();
     }
@@ -130,7 +127,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     protected Feld(Bezeichner bezeichner, int length, int start, Align alignment, Validator validator) {
         this.bezeichner = bezeichner;
         this.inhalt = StringUtils.repeat(" ", length);
-        this.byteAdresse = (short) start;
+        this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment;
         this.config = validator.getConfig();
     }
@@ -199,7 +196,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      */
     public Feld(final int start, final String s, final Align alignment) {
         this.inhalt = s;
-        this.byteAdresse = (short) start;
+        this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
@@ -239,7 +236,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     @Deprecated
     public Feld(final int length, final int start, final Align alignment) {
         this.inhalt = StringUtils.repeat(" ", length);
-        this.byteAdresse = (short) start;
+        this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment;
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
@@ -484,7 +481,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @return Byte-Adresse, beginnend bei 1
      */
     public final int getByteAdresse() {
-        return this.byteAdresse;
+        return ByteAdresse.of(this.byteAdresse).intValue();
     }
 
     /**
@@ -493,7 +490,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @return absolute End-Adresse
      */
     public final int getEndAdresse() {
-        return this.byteAdresse + this.getAnzahlBytes() - 1;
+        return this.getByteAdresse() + this.getAnzahlBytes() - 1;
     }
 
     /**
@@ -508,9 +505,9 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
             return false;
         }
         if (this.byteAdresse < other.byteAdresse) {
-            return this.getEndAdresse() >= other.byteAdresse;
+            return this.getEndAdresse() >= other.getByteAdresse();
         }
-        return other.getEndAdresse() >= this.byteAdresse;
+        return other.getEndAdresse() >= this.getByteAdresse();
     }
 
     /**
@@ -614,10 +611,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         } else {
             LOG.debug("Wegen Performance wird OVal-Validator nur in Mode STRICT aufgerufen.");
             List<ConstraintViolation> violations = new ArrayList<>();
-            if (byteAdresse < 0) {
-                violations.add(new SimpleConstraintViolation("Adresse darf nicht negativ sein", this,
-                        this.byteAdresse));
-            }
             if (ausrichtung == Align.UNKNOWN) {
                 violations.add(new SimpleConstraintViolation("Ausrichtung darf nicht UNKNOWN sein", this,
                         this.ausrichtung));
@@ -648,7 +641,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     }
 
     public String toShortString() {
-        return this.getClass().getSimpleName() + " " + this.getBezeichner() + " (" + this.byteAdresse + "-"
+        return this.getClass().getSimpleName() + " " + this.getBezeichner() + " (" + this.getByteAdresse() + "-"
                     + this.getEndAdresse() + ")";
     }
 

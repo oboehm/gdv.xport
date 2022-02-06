@@ -35,6 +35,14 @@ public final class ByteAdresseTest {
         assertEquals(256, ByteAdresse.of(256).intValue());
     }
 
+    @Test
+    public void testByteValue() {
+        for (int i = 1; i <= 256; i++) {
+            ByteAdresse adresse = ByteAdresse.of(i);
+            assertEquals(adresse, ByteAdresse.of(adresse.byteValue()));
+        }
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testAdresseZuGross() {
        ByteAdresse.of(257);

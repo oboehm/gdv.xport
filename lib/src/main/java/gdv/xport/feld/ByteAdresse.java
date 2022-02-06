@@ -43,6 +43,14 @@ public class ByteAdresse extends Number implements Fachwert {
         return new ByteAdresse(n);
     }
 
+    public static ByteAdresse of(byte n) {
+        return new ByteAdresse(129+n);
+    }
+
+    public byte byteValue() {
+        return adresse;
+    }
+
     @Override
     public int intValue() {
         return 129 + ((int) adresse);
@@ -66,6 +74,19 @@ public class ByteAdresse extends Number implements Fachwert {
     @Override
     public String toString() {
         return Integer.toString(intValue());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ByteAdresse that = (ByteAdresse) o;
+        return adresse == that.adresse;
+    }
+
+    @Override
+    public int hashCode() {
+        return adresse;
     }
 
 
