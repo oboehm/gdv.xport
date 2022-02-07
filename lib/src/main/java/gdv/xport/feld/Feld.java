@@ -56,7 +56,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     private final byte byteAdresse;
     /** Ausrichtung: rechts- oder linksbuendig. */
     @NotEqual("UNKNOWN")
-    private final Align ausrichtung;
+    private final byte ausrichtung;
     protected final Config config;
 
     /**
@@ -107,7 +107,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         this.bezeichner = name;
         this.inhalt = s;
         this.byteAdresse = ByteAdresse.of(start).byteValue();
-        this.ausrichtung = alignment;
+        this.ausrichtung = alignment.getCode();
         this.config = Config.getInstance();
     }
 
@@ -128,7 +128,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         this.bezeichner = bezeichner;
         this.inhalt = StringUtils.repeat(" ", length);
         this.byteAdresse = ByteAdresse.of(start).byteValue();
-        this.ausrichtung = alignment;
+        this.ausrichtung = alignment.getCode();
         this.config = validator.getConfig();
     }
 
@@ -197,7 +197,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     public Feld(final int start, final String s, final Align alignment) {
         this.inhalt = s;
         this.byteAdresse = ByteAdresse.of(start).byteValue();
-        this.ausrichtung = alignment;
+        this.ausrichtung = alignment.getCode();
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
     }
@@ -237,7 +237,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     public Feld(final int length, final int start, final Align alignment) {
         this.inhalt = StringUtils.repeat(" ", length);
         this.byteAdresse = ByteAdresse.of(start).byteValue();
-        this.ausrichtung = alignment;
+        this.ausrichtung = alignment.getCode();
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
     }
@@ -249,12 +249,12 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @param other das originale Feld
      */
     public Feld(final Feld other) {
-        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.ausrichtung);
+        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.getAusrichtung());
         this.setInhalt(other.getInhalt());
     }
 
     protected Feld(final Feld other, final Validator validator) {
-        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.ausrichtung, validator);
+        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.getAusrichtung(), validator);
         this.setInhalt(other.getInhalt());
     }
 
@@ -265,7 +265,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @return linksbuendig oder rechtsbuendig
      */
     public Align getAusrichtung() {
-        return ausrichtung;
+        return Align.of(ausrichtung);
     }
 
     /**
@@ -333,7 +333,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         if (s.length() != anzahlBytes) {
             this.resetInhalt();
         }
-        switch (this.ausrichtung) {
+        switch (this.getAusrichtung()) {
             case LEFT:
                 this.inhalt = new StringBuilder(this.inhalt).replace(0, s.length(), s).toString();
                 break;
@@ -542,7 +542,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      */
     public boolean hasValue() {
         String value = getInhalt();
-        return StringUtils.isNotBlank((this.ausrichtung.compareTo(Align.RIGHT) == 0) ? StringUtils.replaceChars(value, '0', ' ') : value);
+        return StringUtils.isNotBlank((this.getAusrichtung().compareTo(Align.RIGHT) == 0) ? StringUtils.replaceChars(value, '0', ' ') : value);
     }
 
     /**
@@ -564,7 +564,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         if (this.getEndAdresse() > 256) {
             return false;
         }
-        if (this.ausrichtung == Align.UNKNOWN) {
+        if (this.getAusrichtung() == Align.UNKNOWN) {
             return false;
         }
         return this.validate().isEmpty();
@@ -611,7 +611,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         } else {
             LOG.debug("Wegen Performance wird OVal-Validator nur in Mode STRICT aufgerufen.");
             List<ConstraintViolation> violations = new ArrayList<>();
-            if (ausrichtung == Align.UNKNOWN) {
+            if (getAusrichtung() == Align.UNKNOWN) {
                 violations.add(new SimpleConstraintViolation("Ausrichtung darf nicht UNKNOWN sein", this,
                         this.ausrichtung));
             }
