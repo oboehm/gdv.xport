@@ -278,6 +278,10 @@ public class NumFeld extends Feld {
         this.setInhalt(BigDecimal.valueOf(x));
     }
 
+    protected String pack(String s) {
+        return StringUtils.stripStart(s, "0");
+    }
+
     public String getInhalt() {
         String zeroes = StringUtils.repeat('0', this.getAnzahlBytes() - this.inhalt.length());
         return zeroes + this.inhalt;

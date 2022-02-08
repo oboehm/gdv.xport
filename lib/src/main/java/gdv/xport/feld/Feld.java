@@ -342,7 +342,15 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         if (s.length() != anzahlBytes) {
             this.resetInhalt();
         }
-        this.inhalt = s;
+        this.inhalt = pack(s);
+    }
+
+    protected String pack(String s) {
+        if (getAusrichtung() == Align.LEFT) {
+            return StringUtils.stripEnd(s, " ");
+        } else {
+            return StringUtils.stripStart(s, " ");
+        }
     }
 
     /**
