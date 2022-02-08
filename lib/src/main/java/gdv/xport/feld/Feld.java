@@ -24,7 +24,6 @@ import de.jfachwert.Text;
 import gdv.xport.config.Config;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
-import net.sf.oval.constraint.NotEqual;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -52,10 +51,9 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     /** statt "null". */
     public static final Feld NULL_FELD = new Feld();
     private final Bezeichner bezeichner;
-    private String inhalt;
+    protected String inhalt;
     private final byte byteAdresse;
-    /** Ausrichtung: rechts- oder linksbuendig. */
-    @NotEqual("UNKNOWN")
+    private final byte length;
     private final byte ausrichtung;
     protected final Config config;
 
@@ -106,9 +104,18 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     public Feld(final Bezeichner name, final int start, final String s, final Align alignment) {
         this.bezeichner = name;
         this.inhalt = s;
+        this.length = toByteLength(s.length());
         this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment.getCode();
         this.config = Config.getInstance();
+    }
+
+    private static byte toByteLength(int n) {
+        if (n > 0) {
+            return ByteAdresse.of(n).byteValue();
+        } else {
+            return ByteAdresse.of(1).byteValue();
+        }
     }
 
     /**
@@ -127,6 +134,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     protected Feld(Bezeichner bezeichner, int length, int start, Align alignment, Validator validator) {
         this.bezeichner = bezeichner;
         this.inhalt = StringUtils.repeat(" ", length);
+        this.length = toByteLength(length);
         this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment.getCode();
         this.config = validator.getConfig();
@@ -196,6 +204,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      */
     public Feld(final int start, final String s, final Align alignment) {
         this.inhalt = s;
+        this.length = toByteLength(s.length());
         this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment.getCode();
         this.bezeichner = createBezeichner();
@@ -236,6 +245,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     @Deprecated
     public Feld(final int length, final int start, final Align alignment) {
         this.inhalt = StringUtils.repeat(" ", length);
+        this.length = toByteLength(length);
         this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment.getCode();
         this.bezeichner = createBezeichner();
@@ -323,7 +333,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      */
     public void setInhalt(final String neuerInhalt) {
         int anzahlBytes = this.getAnzahlBytes();
-        //String s = validator.verify(neuerInhalt, this);
         String s = getValidator().verify(neuerInhalt, this);
         s = config.getBool("gdv.feld.truncate") ? truncate(s) : s;
         if (s.length() > anzahlBytes) {
@@ -333,18 +342,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         if (s.length() != anzahlBytes) {
             this.resetInhalt();
         }
-        switch (this.getAusrichtung()) {
-            case LEFT:
-                this.inhalt = new StringBuilder(this.inhalt).replace(0, s.length(), s).toString();
-                break;
-            case RIGHT:
-                int l = s.length();
-                int start = anzahlBytes - l;
-                this.inhalt = new StringBuilder(this.inhalt).replace(start, start + l, s).toString();
-                break;
-            default:
-                throw new IllegalStateException("object was not properly initialized");
-        }
+        this.inhalt = s;
     }
 
     /**
@@ -417,18 +415,23 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *            index, beginnend bei 0
      */
     public void setInhalt(final char c, final int i) {
-        StringBuilder sb = new StringBuilder(this.inhalt);
+        StringBuilder sb = new StringBuilder(this.getInhalt());
         sb.setCharAt(i, c);
         this.inhalt = sb.toString();
     }
 
     /**
-     * Gets the inhalt.
+     * Liefert den Inhalt, so wie er im Record steht (ungetrimm't).
      *
-     * @return the inhalt
+     * @return den Inhalt
      */
     public String getInhalt() {
-        return this.inhalt;
+        String blanks = StringUtils.repeat(' ', this.getAnzahlBytes() - this.inhalt.length());
+        if (getAusrichtung() == Align.LEFT) {
+            return this.inhalt + blanks;
+        } else {
+            return blanks + inhalt;
+        }
     }
 
     /**
@@ -472,7 +475,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @return the anzahl bytes
      */
     public final int getAnzahlBytes() {
-        return this.inhalt.length();
+        return ByteAdresse.of(length).intValue();
     }
 
     /**

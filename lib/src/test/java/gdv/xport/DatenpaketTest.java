@@ -878,7 +878,7 @@ public final class DatenpaketTest {
                 for (Datensatz datensetz : datensaetze) {
                     datenpaket.add((Datensatz) datensetz.clone());
                 }
-                if (i % 1000 == 0) {
+                if (i % 100 == 0) {
                     LOG.info("{} komplette Datensaetze wurden hinzugefuegt ({} Saetze).", i, datenpaket.getAllSaetze().size());
                 }
             } catch (OutOfMemoryError ex) {

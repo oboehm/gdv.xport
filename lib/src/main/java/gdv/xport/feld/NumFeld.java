@@ -278,6 +278,11 @@ public class NumFeld extends Feld {
         this.setInhalt(BigDecimal.valueOf(x));
     }
 
+    public String getInhalt() {
+        String zeroes = StringUtils.repeat('0', this.getAnzahlBytes() - this.inhalt.length());
+        return zeroes + this.inhalt;
+    }
+
     /* (non-Javadoc)
      * @see gdv.xport.feld.Feld#resetInhalt()
      */
