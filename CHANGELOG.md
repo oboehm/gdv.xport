@@ -9,13 +9,6 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
-## [Planned]
-
-- Auslagerung Import-/Export-Funktionalität in eigene Klassen (Importer/Exporter)
-- Verringerung des Speicher-Abdrucks (Footprint).
-- ByteAdresse durchgängiger verwenden
-
-
 ## [Unreleased]
 
 ### Added
@@ -26,6 +19,8 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 ### Changes
 
 - **ACHTUNG**: bei NumFeld und abgeleitete Klassen werden Nachkommastellen beim Setzen von Zahlen berücksichtigt
+- Speicherbrauch um ca. 50% reduziert.
+  Damit können ca. 2 Mio. Datensätze (ca. 3 Mio. Records) bei 8 GB Hauptspeicher eingelesen werden.
 - `Datenpaket.add(Datensatz)` setzt jetzt korrekte Anzahl (Teildaten-)-Saetze im Nachsatz
 - verteilte Import-Funktionalität in Importer-Klasse zusammengefasst
 

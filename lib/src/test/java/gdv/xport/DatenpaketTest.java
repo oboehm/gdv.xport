@@ -861,6 +861,11 @@ public final class DatenpaketTest {
      * Dieser Test dient zum Messen des Speicherverbrauchs. Aktuell steigt er
      * nach 7946 kompletten Datensaetzen (ca. 1.26 Mio Saetze) mit einer OOME
      * aus (nach 4 Minunten bei 8 GB Haupt-Speicher).
+     * <p>
+     * Nach der Optimierung des Speicherabrdrucks steigt dieser Test unter
+     * gleichen Ausgangsbedingungen erst nach 15.000 kompletten Datensaetzen
+     * (2.0 Mio Saetzen, 2.9 Mio Teildatensaetzen) aus.
+     * </p>
      *
      * @throws CloneNotSupportedException sollte nicht vorkommen
      */
@@ -879,7 +884,12 @@ public final class DatenpaketTest {
                     datenpaket.add((Datensatz) datensetz.clone());
                 }
                 if (i % 100 == 0) {
-                    LOG.info("{} komplette Datensaetze wurden hinzugefuegt ({} Saetze).", i, datenpaket.getAllSaetze().size());
+                    int records = 0;
+                    for (Satz s : datenpaket.getAllSaetze()) {
+                        records += s.getNumberOfTeildatensaetze();
+                    }
+                    LOG.info("{} komplette Datensaetze wurden hinzugefuegt ({} Saetze, {} Teildatensaetze).",
+                            i, datenpaket.getAllSaetze().size(), records);
                 }
             } catch (OutOfMemoryError ex) {
                 LOG.error("Abbruch nach {} kompletten Datensaetzen:", i, ex);

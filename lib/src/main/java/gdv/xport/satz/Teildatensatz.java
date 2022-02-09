@@ -41,13 +41,7 @@ import java.util.Map.Entry;
 public class Teildatensatz extends Satz {
 
     private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
-
-    /** Diese Map dient fuer den Zugriff ueber den Namen. */
     private final Map<Bezeichner, Feld> datenfelder = new HashMap<>();
-
-    /** Dieses Set dient zum Zugriff ueber die Nummer. */
-    private final SortedSet<Feld> sortedFelder = new TreeSet<>();
-
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
     protected Satznummer satznummer = new Satznummer();
 
@@ -100,7 +94,6 @@ public class Teildatensatz extends Satz {
         for (Entry<Bezeichner, Feld> entry : other.datenfelder.entrySet()) {
             Feld copy = (Feld) entry.getValue().clone();
             this.datenfelder.put(entry.getKey(), copy);
-            this.sortedFelder.add(copy);
         }
         remove(Bezeichner.SATZART);
         initDatenfelder();
@@ -202,9 +195,6 @@ public class Teildatensatz extends Satz {
         }
         setUpFeld(feld);
         datenfelder.put(feld.getBezeichner(), feld);
-        if (!sortedFelder.add(feld)) {
-            LOG.debug("Bezeichner {} schon vorhanden in {} {}.", feld.getBezeichner(), this, this.getSatznummer());
-        }
     }
 
     private void setUpFeld(Feld feld) {
@@ -269,7 +259,6 @@ public class Teildatensatz extends Satz {
         Feld feld = this.datenfelder.get(bezeichner);
         if (feld != null) {
             this.datenfelder.remove(bezeichner);
-            this.sortedFelder.remove(feld);
             LOG.debug("{} was removed from {}.", bezeichner, this);
         }
     }
@@ -413,7 +402,7 @@ public class Teildatensatz extends Satz {
       default:
         break;
     }
-        return (Feld) sortedFelder.toArray()[myNr - 1];
+        return (Feld) getFelder().toArray()[myNr - 1];
     }
 
     /**
@@ -481,7 +470,8 @@ public class Teildatensatz extends Satz {
      * @since 0.2
      */
     @Override
-    public Collection<Feld> getFelder() {
+    public SortedSet<Feld> getFelder() {
+        SortedSet<Feld> sortedFelder = new TreeSet<>(datenfelder.values());
         return sortedFelder;
     }
 
@@ -582,7 +572,7 @@ public class Teildatensatz extends Satz {
 
     @Override
     public String toShortString() {
-        if (sortedFelder.size() < 4)
+        if (datenfelder.size() < 4)
             return String.format("Teildatensatz %c Satzart %04d", this.getSatznummer().toChar(),
 			      this.getSatzart());
         else
