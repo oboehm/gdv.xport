@@ -177,20 +177,17 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public void add(final Feld feld) {
-        for (Feld f : datenfelder.values()) {
+        for (Feld f : getFelder()) {
             if (LOG.isDebugEnabled() && f.getBezeichnung().startsWith("Satznummer")
                     && feld.getBezeichnung().startsWith("Satznummer")) {
                 LOG.debug(f.getBezeichnung() + "(" + f.getBezeichner().getTechnischerName() + ") gefunden in "
                         + this + this.getSatznummer());
             }
             if (!feld.equals(f) && feld.overlapsWith(f)) {
-                if (isSatznummer(f)) {
-                    remove(f);
-                    LOG.debug(f + " is removed from " + this);
-                    break;
-                } else {
-                    throw new IllegalArgumentException("conflict: " + feld + " overlaps with " + f);
-                }
+                throw new IllegalArgumentException("conflict: " + feld + " overlaps with " + f);
+            } else if (feld.compareTo(f) == 0) {
+                remove(f);
+                LOG.debug("{} wird durch {} ersetzt.", f, feld);
             }
         }
         setUpFeld(feld);
@@ -470,7 +467,7 @@ public class Teildatensatz extends Satz {
      * @since 0.2
      */
     @Override
-    public SortedSet<Feld> getFelder() {
+    public Collection<Feld> getFelder() {
         SortedSet<Feld> sortedFelder = new TreeSet<>(datenfelder.values());
         return sortedFelder;
     }
@@ -531,7 +528,7 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public Teildatensatz importFrom(final String content) throws IOException {
-        for (Feld feld : datenfelder.values()) {
+        for (Feld feld : getFelder()) {
             int begin = (feld.getByteAdresse() - 1) % 256;
             int end = begin + feld.getAnzahlBytes();
             if (end > content.length()) {
@@ -552,7 +549,7 @@ public class Teildatensatz extends Satz {
         if (!super.isValid()) {
             return false;
         }
-        for (Feld feld : datenfelder.values()) {
+        for (Feld feld : getFelder()) {
             if (!feld.isValid()) {
                 LOG.info(feld + " is not valid");
                 return false;
@@ -564,7 +561,7 @@ public class Teildatensatz extends Satz {
     @Override
     public List<ConstraintViolation> validate(Config validationConfig) {
         List<ConstraintViolation> violations = new ArrayList<>();
-        for (Feld feld : datenfelder.values()) {
+        for (Feld feld : getFelder()) {
             violations.addAll(feld.validate(validationConfig));
         }
         return violations;
