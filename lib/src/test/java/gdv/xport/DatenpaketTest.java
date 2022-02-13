@@ -866,6 +866,13 @@ public final class DatenpaketTest {
      * gleichen Ausgangsbedingungen erst nach 15.000 kompletten Datensaetzen
      * (2.0 Mio Saetzen, 2.9 Mio Teildatensaetzen) aus.
      * </p>
+     * <p>
+     * Eine Abloesung der Speicherung der Felder als HashMap durch eine
+     * SortedSet lies den Speicherverbrauch wieder um ca. 20% anstelgen
+     * (ca. 12.200 komplette Datensaetze). Durch den Austausch der SortedSet
+     * durch eine Arraylist brachte hingegen einen weiteren Speicherreduktion
+     * um 20% (17.000 Datensaetze).
+     * </p>
      *
      * @throws CloneNotSupportedException sollte nicht vorkommen
      */

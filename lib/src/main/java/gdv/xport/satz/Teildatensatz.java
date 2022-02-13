@@ -91,12 +91,16 @@ public class Teildatensatz extends Satz {
     public Teildatensatz(final Teildatensatz other) {
         super(other, 0);
         this.satznummer = other.satznummer;
-        for (Entry<Bezeichner, Feld> entry : other.datenfelder.entrySet()) {
-            Feld copy = (Feld) entry.getValue().clone();
-            this.datenfelder.put(entry.getKey(), copy);
+        for (Feld f : other.getFelder()) {
+            Feld copy = (Feld) f.clone();
+            addToDatenfelder(copy);
         }
         remove(Bezeichner.SATZART);
         initDatenfelder();
+    }
+
+    private void addToDatenfelder(Feld f) {
+        this.datenfelder.put(f.getBezeichner(), f);
     }
     
     /**
@@ -191,7 +195,7 @@ public class Teildatensatz extends Satz {
             }
         }
         setUpFeld(feld);
-        datenfelder.put(feld.getBezeichner(), feld);
+        addToDatenfelder(feld);
     }
 
     private void setUpFeld(Feld feld) {
@@ -512,9 +516,8 @@ public class Teildatensatz extends Satz {
         for (int i = 0; i < 256; i++) {
             data.append(' ');
         }
-        for (Entry<Bezeichner, Feld> entry : datenfelder.entrySet()) {
-            Feld feld = datenfelder.get(entry.getKey());
-            int start = (feld.getByteAdresse() - 1) % 256;
+        for (Feld feld : getFelder()) {
+            int start = feld.getByteAdresse() - 1;
             int end = start + feld.getAnzahlBytes();
             data.replace(start, end, feld.getInhalt());
         }
