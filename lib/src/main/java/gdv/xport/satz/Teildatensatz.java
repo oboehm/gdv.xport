@@ -334,9 +334,9 @@ public class Teildatensatz extends Satz {
     }
 
     private Feld findFeld(final Bezeichner bezeichner) {
-        for (Entry<Bezeichner, Feld> entry : datenfelder.entrySet()) {
-            if (entry.getKey().getName().equals(bezeichner.getName())) {
-                return entry.getValue();
+        for (Feld f : getFelder()) {
+            if (f.getBezeichner().getName().equals(bezeichner.getName())) {
+                return f;
             }
         }
         throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
