@@ -40,7 +40,7 @@ import java.util.*;
 public class Teildatensatz extends Satz {
 
     private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
-    private final Map<Bezeichner, Feld> datenfelder = new HashMap<>();
+    private final Collection<Feld> datenfelder = new TreeSet<>();
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
     protected Satznummer satznummer = new Satznummer();
 
@@ -99,7 +99,7 @@ public class Teildatensatz extends Satz {
     }
 
     private void addToDatenfelder(Feld f) {
-        this.datenfelder.put(f.getBezeichner(), f);
+        this.datenfelder.add(f);
     }
     
     /**
@@ -256,9 +256,8 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public void remove(final Bezeichner bezeichner) {
-        Feld feld = this.datenfelder.get(bezeichner);
-        if (feld != null) {
-            this.datenfelder.remove(bezeichner);
+        if (hasFeld(bezeichner)) {
+            datenfelder.remove(getFeld(bezeichner));
             LOG.debug("{} was removed from {}.", bezeichner, this);
         }
     }
@@ -481,7 +480,7 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public Collection<Feld> getFelder() {
-        SortedSet<Feld> sortedFelder = new TreeSet<>(datenfelder.values());
+        SortedSet<Feld> sortedFelder = new TreeSet<>(datenfelder);
         return sortedFelder;
     }
 
