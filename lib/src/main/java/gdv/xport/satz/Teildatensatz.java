@@ -29,7 +29,6 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.*;
-import java.util.Map.Entry;
 
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
@@ -331,17 +330,21 @@ public class Teildatensatz extends Satz {
                 }
             }
         }
-        return findFeld(bezeichner);
-    }
-
-    private Feld findFeld(final Bezeichner bezeichner) {
-        for (Feld f : getFelder()) {
-            if (f.getBezeichner().getName().equals(bezeichner.getName())) {
-                return f;
-            }
+        Optional<Feld> feld = findFeld(bezeichner);
+        if (feld.isPresent()) {
+            return feld.get();
         }
         throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
                 + " nicht vorhanden!");
+    }
+
+    private Optional<Feld> findFeld(final Bezeichner bezeichner) {
+        for (Feld f : getFelder()) {
+            if (f.getBezeichner().getName().equals(bezeichner.getName())) {
+                return Optional.of(f);
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -436,13 +439,13 @@ public class Teildatensatz extends Satz {
     @Override
     public boolean hasFeld(final Bezeichner bezeichner) {
         for (Bezeichner b : bezeichner.getVariants()) {
-            if (this.datenfelder.containsKey(b)) {
-                return true;
-            }
-            for (Entry<Bezeichner, Feld> entry : datenfelder.entrySet()) {
-                if (entry.getKey().getName().equals(bezeichner.getName())) {
+            for (Feld f : getFelder()) {
+                if (b.equals(f.getBezeichner())) {
                     return true;
                 }
+            }
+            if (findFeld(b).isPresent()) {
+                return true;
             }
         }
         return false;
@@ -461,7 +464,12 @@ public class Teildatensatz extends Satz {
      * @since 1.0
      */
     public boolean hasFeld(final Feld feld) {
-        return this.datenfelder.containsKey(feld.getBezeichner());
+        for (Feld f : getFelder()) {
+            if (feld.getBezeichner().equals(f.getBezeichner())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
