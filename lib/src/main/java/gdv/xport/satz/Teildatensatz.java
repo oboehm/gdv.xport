@@ -325,9 +325,10 @@ public class Teildatensatz extends Satz {
     @Override
     public Feld getFeld(final Bezeichner bezeichner) {
         for (Bezeichner b : bezeichner.getVariants()) {
-            Feld feld = datenfelder.get(b);
-            if (feld != null) {
-                return feld;
+            for (Feld feld : getFelder()) {
+                if (b.equals(feld.getBezeichner())) {
+                    return feld;
+                }
             }
         }
         return findFeld(bezeichner);
