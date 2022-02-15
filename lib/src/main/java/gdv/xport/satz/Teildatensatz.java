@@ -90,16 +90,12 @@ public class Teildatensatz extends Satz {
     public Teildatensatz(final Teildatensatz other) {
         super(other, 0);
         this.satznummer = other.satznummer;
-        for (Feld f : other.getFelder()) {
+        for (Feld f : other.datenfelder) {
             Feld copy = (Feld) f.clone();
-            addToDatenfelder(copy);
+            this.datenfelder.add(copy);
         }
         remove(Bezeichner.SATZART);
         initDatenfelder();
-    }
-
-    private void addToDatenfelder(Feld f) {
-        this.datenfelder.add(f);
     }
 
     /**
@@ -194,7 +190,7 @@ public class Teildatensatz extends Satz {
             }
         }
         setUpFeld(feld);
-        addToDatenfelder(feld);
+        this.datenfelder.add(feld);
     }
 
     private void setUpFeld(Feld feld) {
@@ -323,7 +319,7 @@ public class Teildatensatz extends Satz {
     @Override
     public Feld getFeld(final Bezeichner bezeichner) {
         for (Bezeichner b : bezeichner.getVariants()) {
-            for (Feld feld : getFelder()) {
+            for (Feld feld : datenfelder) {
                 if (b.equals(feld.getBezeichner())) {
                     return feld;
                 }
@@ -338,7 +334,7 @@ public class Teildatensatz extends Satz {
     }
 
     private Optional<Feld> findFeld(final Bezeichner bezeichner) {
-        for (Feld f : getFelder()) {
+        for (Feld f : datenfelder) {
             if (f.getBezeichner().getName().equals(bezeichner.getName())) {
                 return Optional.of(f);
             }
@@ -419,7 +415,7 @@ public class Teildatensatz extends Satz {
      * @since 5.0
      */
     public Feld getFeld(final ByteAdresse adresse) {
-        for (Feld f : getFelder()) {
+        for (Feld f : datenfelder) {
             if (adresse.intValue() == f.getByteAdresse()) {
                 return f;
             }
@@ -438,7 +434,7 @@ public class Teildatensatz extends Satz {
     @Override
     public boolean hasFeld(final Bezeichner bezeichner) {
         for (Bezeichner b : bezeichner.getVariants()) {
-            for (Feld f : getFelder()) {
+            for (Feld f : datenfelder) {
                 if (b.equals(f.getBezeichner())) {
                     return true;
                 }
@@ -463,7 +459,7 @@ public class Teildatensatz extends Satz {
      * @since 1.0
      */
     public boolean hasFeld(final Feld feld) {
-        for (Feld f : getFelder()) {
+        for (Feld f : datenfelder) {
             if (feld.getBezeichner().equals(f.getBezeichner())) {
                 return true;
             }
@@ -479,7 +475,7 @@ public class Teildatensatz extends Satz {
      * @since 0.2
      */
     @Override
-    public Collection<Feld> getFelder() {
+    public final Collection<Feld> getFelder() {
         return new TreeSet<>(datenfelder);
     }
 
@@ -523,7 +519,7 @@ public class Teildatensatz extends Satz {
         for (int i = 0; i < 256; i++) {
             data.append(' ');
         }
-        for (Feld feld : getFelder()) {
+        for (Feld feld : datenfelder) {
             int start = feld.getByteAdresse() - 1;
             int end = start + feld.getAnzahlBytes();
             data.replace(start, end, feld.getInhalt());
@@ -538,7 +534,7 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public Teildatensatz importFrom(final String content) throws IOException {
-        for (Feld feld : getFelder()) {
+        for (Feld feld : datenfelder) {
             int begin = (feld.getByteAdresse() - 1) % 256;
             int end = begin + feld.getAnzahlBytes();
             if (end > content.length()) {
@@ -559,7 +555,7 @@ public class Teildatensatz extends Satz {
         if (!super.isValid()) {
             return false;
         }
-        for (Feld feld : getFelder()) {
+        for (Feld feld : datenfelder) {
             if (!feld.isValid()) {
                 LOG.info(feld + " is not valid");
                 return false;
@@ -571,7 +567,7 @@ public class Teildatensatz extends Satz {
     @Override
     public List<ConstraintViolation> validate(Config validationConfig) {
         List<ConstraintViolation> violations = new ArrayList<>();
-        for (Feld feld : getFelder()) {
+        for (Feld feld : datenfelder) {
             violations.addAll(feld.validate(validationConfig));
         }
         return violations;
