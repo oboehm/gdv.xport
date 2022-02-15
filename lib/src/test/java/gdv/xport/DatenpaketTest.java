@@ -871,17 +871,19 @@ public final class DatenpaketTest {
      * SortedSet lies den Speicherverbrauch wieder um ca. 20% anstelgen
      * (ca. 12.200 komplette Datensaetze). Durch den Austausch der SortedSet
      * durch eine Arraylist brachte hingegen einen weiteren Speicherreduktion
-     * um 20% (17.000 Datensaetze).
+     * um 20% (17.700 Datensaetze).
      * </p>
      *
      * @throws CloneNotSupportedException sollte nicht vorkommen
      */
     @Test
     public void testMemoryVerbrauch() throws CloneNotSupportedException {
-        Datenpaket datenpaket = new Datenpaket();
-        Datenpaket supportedSaetze = SATZ_REGISTRY.getAllSupportedSaetze();
-        //fill(datenpaket, supportedSaetze.getDatensaetze(), 20_000);
-        LOG.info("{} wurde aufgebaut.", datenpaket);
+        if (System.getProperty("memtest", "false").equalsIgnoreCase("true")) {
+            Datenpaket datenpaket = new Datenpaket();
+            Datenpaket supportedSaetze = SATZ_REGISTRY.getAllSupportedSaetze();
+            fill(datenpaket, supportedSaetze.getDatensaetze(), 20_000);
+            LOG.info("{} wurde aufgebaut.", datenpaket);
+        }
     }
 
     private void fill(Datenpaket datenpaket, List<Datensatz> datensaetze, int n) throws CloneNotSupportedException {
@@ -891,10 +893,7 @@ public final class DatenpaketTest {
                     datenpaket.add((Datensatz) datensetz.clone());
                 }
                 if (i % 100 == 0) {
-                    int records = 0;
-                    for (Satz s : datenpaket.getAllSaetze()) {
-                        records += s.getNumberOfTeildatensaetze();
-                    }
+                    int records = 4 + i * 228;
                     LOG.info("{} komplette Datensaetze wurden hinzugefuegt ({} Saetze, {} Teildatensaetze).",
                             i, datenpaket.getAllSaetze().size(), records);
                 }

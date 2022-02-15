@@ -310,6 +310,16 @@ public final class Config implements Serializable {
     }
 
     /**
+     * Ist der Debug-Mode eingestellt?
+     *
+     * @return 'true' oder 'false'
+     * @since 6.2
+     */
+    public boolean isDebug() {
+        return getBool("gdv.debug");
+    }
+
+    /**
      * Liefert den Validierungsmode fuer Felder zurueck, der ueber die
      * Property "gdv.feld.validate" eingestellt werden kann.
      *

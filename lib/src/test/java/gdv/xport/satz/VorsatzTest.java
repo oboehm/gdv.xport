@@ -19,7 +19,6 @@
 package gdv.xport.satz;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
@@ -65,7 +64,7 @@ public final class VorsatzTest extends AbstractSatzTest {
      */
     @Test
     public void testVorsatz() throws IOException {
-        String expected = "0001" + Config.getVUNummer().getInhalt();
+        String expected = "0001     ";
         checkExport(1, 9, expected);
         checkExport(257, 265, expected);
         checkExport(256+246, 256+256, "          2");

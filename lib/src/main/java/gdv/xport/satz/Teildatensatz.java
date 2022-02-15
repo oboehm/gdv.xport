@@ -40,7 +40,7 @@ import java.util.*;
 public class Teildatensatz extends Satz {
 
     private static final Logger LOG = LogManager.getLogger(Teildatensatz.class);
-    private final Collection<Feld> datenfelder = new TreeSet<>();
+    private final Collection<Feld> datenfelder = Config.getInstance().isDebug() ? new TreeSet<>() : new ArrayList<>();
     /** Dieses Feld brauchen wir, um die Satznummer abzuspeichern. */
     protected Satznummer satznummer = new Satznummer();
 
@@ -101,7 +101,7 @@ public class Teildatensatz extends Satz {
     private void addToDatenfelder(Feld f) {
         this.datenfelder.add(f);
     }
-    
+
     /**
      * Inits the satznummer.
      *
@@ -480,8 +480,7 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public Collection<Feld> getFelder() {
-        SortedSet<Feld> sortedFelder = new TreeSet<>(datenfelder);
-        return sortedFelder;
+        return new TreeSet<>(datenfelder);
     }
 
     /**

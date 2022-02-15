@@ -19,10 +19,14 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 ### Changes
 
 - **ACHTUNG**: bei NumFeld und abgeleitete Klassen werden Nachkommastellen beim Setzen von Zahlen berücksichtigt
-- Speicherbrauch um ca. 50% reduziert.
+- Speicherbrauch um 55% reduziert.
   Damit können ca. 2 Mio. Datensätze (ca. 3 Mio. Records) bei 8 GB Hauptspeicher eingelesen werden.
 - `Datenpaket.add(Datensatz)` setzt jetzt korrekte Anzahl (Teildaten-)-Saetze im Nachsatz
 - verteilte Import-Funktionalität in Importer-Klasse zusammengefasst
+
+### Removed
+
+- VU-Nummer wird nicht mehr standardmäßig über Default-Properties vorbelegt
 
 
 ## [6.0.1] - 2022-01-06
