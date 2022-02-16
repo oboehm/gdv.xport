@@ -398,10 +398,24 @@ public class SatzTyp {
 		return teil.length > 1 && teil[1] > 0;
 	}
 
+	/**
+	 * Wird nicht mehr benoetigt und wird mit v7 entfernt.
+	 *
+	 * @return true, false
+	 * @deprecated Begriff "Parent" ist mehrdeutig
+	 */
+	@Deprecated
 	public boolean hasParent() {
 		return teil.length > 1;
 	}
 
+	/**
+	 * Wird nicht mehr benoetigt und wird mit v7 entfernt.
+	 *
+	 * @return SatzTyp des Parents
+	 * @deprecated Begriff "Parent" ist mehrdeutig
+	 */
+	@Deprecated
 	public SatzTyp getParent() {
 		String parent = StringUtils.substringBeforeLast(this.toString(), ".");
 		return SatzTyp.of(parent);
