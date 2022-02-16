@@ -94,8 +94,6 @@ public class Teildatensatz extends Satz {
             Feld copy = (Feld) f.clone();
             this.datenfelder.add(copy);
         }
-        remove(Bezeichner.SATZART);
-        initDatenfelder();
     }
 
     /**
@@ -122,6 +120,12 @@ public class Teildatensatz extends Satz {
 
     private void initDatenfelder() {
         this.add(this.getSatzartFeld());
+    }
+
+    @Override
+    public int getSatzart() {
+        Optional<Feld> satzart = findFeld(Bezeichner.SATZART);
+        return satzart.map(feld -> Integer.valueOf(feld.getInhalt())).orElse(0);
     }
 
     /**
@@ -576,8 +580,7 @@ public class Teildatensatz extends Satz {
     @Override
     public String toShortString() {
         if (datenfelder.size() < 4)
-            return String.format("Teildatensatz %c Satzart %04d", this.getSatznummer().toChar(),
-			      this.getSatzart());
+            return String.format("Teildatensatz Satzart %04d", getSatzart());
         else
             return String.format("Teildatensatz %c Satzart %s", this.getSatznummer().toChar(),
                    this.getSatzTyp());

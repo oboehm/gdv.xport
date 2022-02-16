@@ -740,7 +740,7 @@ public abstract class Satz implements Cloneable {
 	 * @return die Satzart als int
      * @since 0.3
 	 */
-	public final int getSatzart() {
+	public int getSatzart() {
 		return this.satzart.toInt();
 	}
 
