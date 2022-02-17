@@ -243,4 +243,12 @@ public class TeildatensatzTest extends AbstractSatzTest {
         assertEquals(f1, f2);
     }
 
+    @Test
+    public void testCtorSatzart() {
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of(800), 1);
+        assertEquals(800, tds.getSatzart());
+        assertEquals(SatzTyp.of(800), tds.getSatzTyp());
+        assertEquals("0800", tds.getFeld(Bezeichner.SATZART).getInhalt());
+    }
+
 }

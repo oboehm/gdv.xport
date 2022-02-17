@@ -50,7 +50,7 @@ public class Teildatensatz extends Satz {
      * @param satzTyp z.B. 0220.050
      */
     public Teildatensatz(final SatzTyp satzTyp) {
-        super(satzTyp, 0);
+        super(satzTyp);
         this.initDatenfelder();
     }
 
@@ -62,7 +62,7 @@ public class Teildatensatz extends Satz {
      * @param nr      Nummer des Teildatensatzes (zwischen 1 und 9)
      */
     public Teildatensatz(final SatzTyp satzTyp, final int nr) {
-        super(satzTyp, 0);
+        this(satzTyp);
         initSatznummer(nr);
         this.setGdvSatzartName(satzTyp.toString());
  		if (satzTyp.hasGdvSatzartNummer())

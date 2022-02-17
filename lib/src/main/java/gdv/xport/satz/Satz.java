@@ -52,7 +52,7 @@ public abstract class Satz implements Cloneable {
 	private static final Logger LOG = LogManager.getLogger(Satz.class);
 
 	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
-	private Teildatensatz[] teildatensatz = new Teildatensatz[1];
+	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
 	private final Config config;
 
   /**
@@ -87,6 +87,11 @@ public abstract class Satz implements Cloneable {
 	protected Satz(final SatzTyp art, final int n, final Config cfg) {
 		this.config = cfg;
 		this.createTeildatensaetze(art, n);
+	}
+
+	protected Satz(final SatzTyp satzart) {
+		this.config = Config.getInstance();
+		this.satzart.setInhalt(satzart.getSatzart());
 	}
 
     /**
