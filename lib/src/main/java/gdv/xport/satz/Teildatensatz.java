@@ -110,14 +110,6 @@ public class Teildatensatz extends Satz {
         this.initDatenfelder();
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.satz.Satz#createTeildatensaetze(int)
-     */
-    @Override
-    protected void createTeildatensaetze(final int n) {
-        assert n == 0 : "ein Teildatensatz hat keine weiteren Teildatensaetze";
-    }
-
     private void initDatenfelder() {
         this.add(this.getSatzartFeld());
     }

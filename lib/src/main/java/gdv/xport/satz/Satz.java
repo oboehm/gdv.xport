@@ -52,7 +52,7 @@ public abstract class Satz implements Cloneable {
 	private static final Logger LOG = LogManager.getLogger(Satz.class);
 
 	private final NumFeld satzart = new NumFeld((SATZART), 4, 1);
-	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
+	private Teildatensatz[] teildatensatz = new Teildatensatz[1];
 	private final Config config;
 
   /**
@@ -86,8 +86,7 @@ public abstract class Satz implements Cloneable {
 
 	protected Satz(final SatzTyp art, final int n, final Config cfg) {
 		this.config = cfg;
-		this.satzart.setInhalt(art.getSatzart());
-		this.createTeildatensaetze(n);
+		this.createTeildatensaetze(art, n);
 	}
 
     /**
@@ -98,11 +97,10 @@ public abstract class Satz implements Cloneable {
      */
     public Satz(final Satz satz, final int n) {
 		this.config = satz.config;
-        this.satzart.setInhalt(satz.getSatzart());
+		this.createTeildatensaetze(satz.getSatzTyp(), n);
         this.gdvSatzartName = satz.getGdvSatzartName();
         this.gdvSatzartNummer = satz.getGdvSatzartNummer();
         this.setSatzversion(satz.getSatzversion().getInhalt());
-        this.createTeildatensaetze(n);
     }
 
 	/**
@@ -113,9 +111,9 @@ public abstract class Satz implements Cloneable {
 	 * @since 5.0
 	 */
 	public Satz(final SatzTyp art, final List<? extends Teildatensatz> tdsList) {
-		this.satzart.setInhalt(art.getSatzart());
 		this.config = Config.getInstance();
 		this.createTeildatensaetze(tdsList);
+		this.satzart.setInhalt(art.getSatzart());
 	}
 
 	/**
@@ -125,20 +123,20 @@ public abstract class Satz implements Cloneable {
      * @param tdsList     Liste mit den Teildatensaetzen
      */
     protected Satz(final Satz satz, final List<? extends Teildatensatz> tdsList) {
+		this.config = satz.config;
+		this.createTeildatensaetze(tdsList);
         this.satzart.setInhalt(satz.getSatzart());
         this.satzVersion.setInhalt(satz.getSatzversion().getInhalt());
         this.gdvSatzartName = satz.getGdvSatzartName();
         this.gdvSatzartNummer = satz.getGdvSatzartNummer();
-		this.config = satz.config;
-        this.createTeildatensaetze(tdsList);
     }
 
-    protected void createTeildatensaetze(final int n) {
-        teildatensatz = new Teildatensatz[n];
+	private void createTeildatensaetze(final SatzTyp satzart, final int n) {
+		teildatensatz = new Teildatensatz[n];
 		for (int i = 0; i < n; i++) {
-      // teildatensatz[i] = new TeildatensatzEnum(satzart, i + 1);
-      teildatensatz[i] = new Teildatensatz(SatzTyp.of(satzart.getInhalt()), i + 1);
+			teildatensatz[i] = new Teildatensatz(satzart, i + 1);
 		}
+		this.satzart.setInhalt(satzart.getSatzart());
 	}
 
 	protected void createTeildatensaetze(final List<? extends Teildatensatz> tdsList) {
@@ -741,7 +739,12 @@ public abstract class Satz implements Cloneable {
      * @since 0.3
 	 */
 	public int getSatzart() {
-		return this.satzart.toInt();
+		if (teildatensatz.length > 0) {
+			return teildatensatz[0].getSatzart();
+		} else {
+			return this.satzart.toInt();
+		}
+		//return this.satzart.toInt();
 	}
 
 	/**
