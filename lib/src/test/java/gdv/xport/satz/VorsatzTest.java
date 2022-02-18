@@ -23,7 +23,6 @@ import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Datum;
 import gdv.xport.feld.Feld;
 import gdv.xport.feld.Version;
-import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.junit.Test;
@@ -204,7 +203,7 @@ public final class VorsatzTest extends AbstractSatzTest {
     public void testSetVersion() {
         SatzTyp satzTyp = SatzTyp.of("0100");
         vorsatz.setVersion(satzTyp);
-        String expected = SatzFactory.getDatensatz(satzTyp).getSatzversion().getInhalt();
+        String expected = SatzRegistry.getInstance().getSatz(satzTyp).getSatzversion().getInhalt();
         assertEquals(expected, vorsatz.getVersion(100));
     }
 
@@ -212,7 +211,7 @@ public final class VorsatzTest extends AbstractSatzTest {
     public void testSetVersionSatzartSparte() {
         SatzTyp satzTyp = SatzTyp.of("0210.050");
         vorsatz.setVersion(satzTyp);
-        String expected = SatzFactory.getDatensatz(satzTyp).getSatzversion().getInhalt();
+        String expected = SatzRegistry.getInstance().getSatz(satzTyp).getSatzversion().getInhalt();
         assertEquals(expected, vorsatz.getVersion(210, 50));
     }
 
