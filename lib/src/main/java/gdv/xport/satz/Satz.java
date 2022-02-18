@@ -117,7 +117,6 @@ public abstract class Satz implements Cloneable {
 	public Satz(final SatzTyp art, final List<? extends Teildatensatz> tdsList) {
 		this.config = Config.getInstance();
 		this.createTeildatensaetze(tdsList);
-		this.satzart.setInhalt(art.getSatzart());
 	}
 
 	/**
@@ -129,21 +128,21 @@ public abstract class Satz implements Cloneable {
     protected Satz(final Satz satz, final List<? extends Teildatensatz> tdsList) {
 		this.config = satz.config;
 		this.createTeildatensaetze(tdsList);
-        this.satzart.setInhalt(satz.getSatzart());
+        this.getSatzartFeld().setInhalt(satz.getSatzart());
         this.satzVersion.setInhalt(satz.getSatzversion().getInhalt());
         this.gdvSatzartName = satz.getGdvSatzartName();
         this.gdvSatzartNummer = satz.getGdvSatzartNummer();
     }
 
-	private void createTeildatensaetze(final SatzTyp satzart, final int n) {
+	private void createTeildatensaetze(final SatzTyp art, final int n) {
 		teildatensatz = new Teildatensatz[n];
 		for (int i = 0; i < n; i++) {
-			teildatensatz[i] = new Teildatensatz(satzart, i + 1);
+			teildatensatz[i] = new Teildatensatz(art, i + 1);
 		}
-		this.satzart.setInhalt(satzart.getSatzart());
+		this.getSatzartFeld().setInhalt(art.getSatzart());
 	}
 
-	protected void createTeildatensaetze(final List<? extends Teildatensatz> tdsList) {
+	private void createTeildatensaetze(final List<? extends Teildatensatz> tdsList) {
 		teildatensatz = new Teildatensatz[tdsList.size()];
 		for (int i = 0; i < tdsList.size(); i++) {
 			teildatensatz[i] = new Teildatensatz(tdsList.get(i));
@@ -746,9 +745,8 @@ public abstract class Satz implements Cloneable {
 		if (teildatensatz.length > 0) {
 			return teildatensatz[0].getSatzart();
 		} else {
-			return this.satzart.toInt();
+			return this.getSatzartFeld().toInt();
 		}
-		//return this.satzart.toInt();
 	}
 
 	/**
@@ -1148,7 +1146,7 @@ public abstract class Satz implements Cloneable {
 	 * @return true/false
 	 */
 	public boolean isValid() {
-		if (!this.satzart.isValid() || (this.getSatzart() < 1)) {
+		if (!this.getSatzartFeld().isValid() || (this.getSatzart() < 1)) {
 			return false;
 		}
 		if (this.teildatensatz != null) {
@@ -1232,9 +1230,9 @@ public abstract class Satz implements Cloneable {
 	public List<ConstraintViolation> validate(Config validationConfig) {
 		Validator validator = new Validator();
 		List<ConstraintViolation> violations = new ArrayList<>(validator.validate(this));
-		if (!this.satzart.isValid() || (this.getSatzart() < 1)) {
+		if (!this.getSatzartFeld().isValid() || (this.getSatzart() < 1)) {
 			ConstraintViolation cv =
-					new SimpleConstraintViolation("invalid Satzart " + this.satzart.getInhalt(), this, this.satzart);
+					new SimpleConstraintViolation("invalid Satzart " + this.getSatzartFeld().getInhalt(), this, this.getSatzartFeld());
 			violations.add(cv);
 		}
 		if (this.teildatensatz != null) {

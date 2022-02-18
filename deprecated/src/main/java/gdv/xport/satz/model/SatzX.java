@@ -202,8 +202,14 @@ public class SatzX extends Datensatz {
 	 * @param felder Felder fuer die Teildatensaetze.
 	 */
 	protected void setUpTeildatensaetze(final Enum[] felder) {
-		super.createTeildatensaetze(getTeildatensaetzeFor(SatzTyp.of(this.getSatzart()), felder));
+		createTeildatensaetze(getTeildatensaetzeFor(SatzTyp.of(this.getSatzart()), felder));
 		super.completeTeildatensaetze();
+	}
+
+	private void createTeildatensaetze(final List<? extends Teildatensatz> tdsList) {
+		for (int i = 0; i < tdsList.size(); i++) {
+			add(new Teildatensatz(tdsList.get(i)));
+		}
 	}
 
 	/**
