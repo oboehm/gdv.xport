@@ -89,9 +89,8 @@ public abstract class Satz implements Cloneable {
 		this.createTeildatensaetze(art, n);
 	}
 
-	protected Satz(final SatzTyp satzart) {
+	protected Satz() {
 		this.config = Config.getInstance();
-		this.satzart.setInhalt(satzart.getSatzart());
 	}
 
     /**

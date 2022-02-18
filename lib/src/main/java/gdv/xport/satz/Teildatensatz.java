@@ -30,6 +30,8 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.*;
 
+import static gdv.xport.feld.Bezeichner.SATZART;
+
 /**
  * Ein Teildatensatz hat immer genau 256 Bytes. Dies wird beim Export
  * beruecksichtigt. Und ein Teildatensatz besteht aus mehreren Datenfeldern.
@@ -50,8 +52,8 @@ public class Teildatensatz extends Satz {
      * @param satzTyp z.B. 0220.050
      */
     public Teildatensatz(final SatzTyp satzTyp) {
-        super(satzTyp);
-        this.initDatenfelder();
+        super();
+        this.initDatenfelder(satzTyp);
     }
 
     /**
@@ -63,7 +65,7 @@ public class Teildatensatz extends Satz {
      */
     public Teildatensatz(final SatzTyp satzTyp, final int nr) {
         this(satzTyp);
-        initSatznummer(nr);
+        initSatznummer(satzTyp, nr);
         this.setGdvSatzartName(satzTyp.toString());
  		if (satzTyp.hasGdvSatzartNummer())
 			this.setGdvSatzartNummer(String.valueOf(satzTyp.getGdvSatzartNummer()));
@@ -78,7 +80,7 @@ public class Teildatensatz extends Satz {
      */
     public Teildatensatz(final Satz satz, final int nr) {
         super(satz, 0);
-        initSatznummer(nr);
+        initSatznummer(satz.getSatzTyp(), nr);
     }
 
     /**
@@ -101,17 +103,19 @@ public class Teildatensatz extends Satz {
      *
      * @param nr the nr
      */
-    private void initSatznummer(final int nr) {
+    private void initSatznummer(final SatzTyp satzTyp, final int nr) {
         if ((nr < 1) || (nr > 9)) {
             throw new IllegalArgumentException("Satznummer (" + nr
                     + ") muss zwischen 1 und 9 liegen");
         }
         this.satznummer.setInhalt(Character.forDigit(nr, 10));
-        this.initDatenfelder();
+        this.initDatenfelder(satzTyp);
     }
 
-    private void initDatenfelder() {
-        this.add(this.getSatzartFeld());
+    private void initDatenfelder(SatzTyp satzTyp) {
+        NumFeld satzart = new NumFeld((SATZART), 4, 1);
+        satzart.setInhalt(satzTyp.getSatzart());
+        this.add(satzart);
     }
 
     @Override
