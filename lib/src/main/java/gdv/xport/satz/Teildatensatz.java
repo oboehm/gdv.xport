@@ -119,9 +119,9 @@ public class Teildatensatz extends Satz {
     }
 
     @Override
-    public int getSatzart() {
+    public NumFeld getSatzartFeld() {
         Optional<Feld> satzart = findFeld(Bezeichner.SATZART);
-        return satzart.map(feld -> Integer.valueOf(feld.getInhalt())).orElse(0);
+        return satzart.map(feld -> (NumFeld) feld).orElseGet(() -> new NumFeld((SATZART), 4, 1));
     }
 
     /**
@@ -334,6 +334,9 @@ public class Teildatensatz extends Satz {
     }
 
     private Optional<Feld> findFeld(final Bezeichner bezeichner) {
+        if (datenfelder == null) {
+            return Optional.empty();
+        }
         for (Feld f : datenfelder) {
             if (f.getBezeichner().getName().equals(bezeichner.getName())) {
                 return Optional.of(f);

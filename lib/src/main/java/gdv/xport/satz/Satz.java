@@ -731,8 +731,12 @@ public abstract class Satz implements Cloneable {
 	 *
 	 * @return the satzart
 	 */
-	public final NumFeld getSatzartFeld() {
-		return this.satzart;
+	public NumFeld getSatzartFeld() {
+		if (teildatensatz.length > 0) {
+			return teildatensatz[0].getSatzartFeld();
+		} else {
+			return this.satzart;
+		}
 	}
 
 	/**
@@ -742,11 +746,7 @@ public abstract class Satz implements Cloneable {
      * @since 0.3
 	 */
 	public int getSatzart() {
-		if (teildatensatz.length > 0) {
-			return teildatensatz[0].getSatzart();
-		} else {
-			return this.getSatzartFeld().toInt();
-		}
+		return getSatzartFeld().toInt();
 	}
 
 	/**
