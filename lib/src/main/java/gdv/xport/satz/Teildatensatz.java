@@ -121,7 +121,7 @@ public class Teildatensatz extends Satz {
     @Override
     public NumFeld getSatzartFeld() {
         Optional<Feld> satzart = findFeld(Bezeichner.SATZART);
-        return satzart.map(feld -> (NumFeld) feld).orElseGet(() -> new NumFeld((SATZART), 4, 1));
+        return satzart.map(feld -> (NumFeld) feld).orElseGet(() -> new NumFeld(SATZART, 4, 1));
     }
 
     /**

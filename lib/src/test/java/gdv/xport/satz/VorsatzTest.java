@@ -64,7 +64,8 @@ public final class VorsatzTest extends AbstractSatzTest {
      */
     @Test
     public void testVorsatz() throws IOException {
-        String expected = "0001     ";
+        vorsatz.setVuNummer("08/15");
+        String expected = "000108/15";
         checkExport(1, 9, expected);
         checkExport(257, 265, expected);
         checkExport(256+246, 256+256, "          2");
