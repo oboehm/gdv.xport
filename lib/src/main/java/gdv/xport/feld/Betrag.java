@@ -41,19 +41,19 @@ public class Betrag extends NumFeld {
      * @since 1.0
      */
     public Betrag(final Bezeichner name, final int length, final int start) {
-        this(name, length, start, DEFAULT_VALIDATOR);
+        this(name, length, start, Config.getInstance());
     }
 
     private Betrag(final Betrag other, final Config config) {
-        this(other.getBezeichner(), other.getByteAdresse(), other.getInhalt(), new NumFeld.Validator(config));
+        this(other.getBezeichner(), other.getByteAdresse(), other.getInhalt(), config);
     }
 
-    private Betrag(final Bezeichner name, final int length, final int start, final Feld.Validator validator) {
-        super(name, length, start, 2, validator);
+    private Betrag(final Bezeichner name, final int length, final int start, Config config) {
+        super(name, length, start, 2, config);
     }
 
-    protected Betrag(final Bezeichner name, final int start, final String value, final Feld.Validator validator) {
-        this(name, value.length(), start, validator);
+    protected Betrag(final Bezeichner name, final int start, final String value, Config config) {
+        this(name, value.length(), start, config);
         this.setInhalt(value);
     }
 

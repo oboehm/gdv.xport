@@ -51,7 +51,7 @@ public class NumFeld extends Feld {
      * @param s z.B. "4"
      */
     public NumFeld(final String name, final String s) {
-        this(Bezeichner.of(name), s.length(), 1, 0, DEFAULT_VALIDATOR);
+        this(Bezeichner.of(name), s.length(), 1, 0, Config.getInstance());
         this.setInhalt(s);
     }
 
@@ -64,7 +64,7 @@ public class NumFeld extends Feld {
      * @since 1.0
      */
     public NumFeld(Bezeichner bezeichner, int length, int start) {
-        this(bezeichner, length, start, 0, DEFAULT_VALIDATOR);
+        this(bezeichner, length, start, 0, Config.getInstance());
     }
 
     /**
@@ -99,7 +99,7 @@ public class NumFeld extends Feld {
      * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
      */
     public NumFeld(final String name, final String s, final int nachkommastellen) {
-        this(Bezeichner.of(name), s.length(), 1, nachkommastellen, DEFAULT_VALIDATOR);
+        this(Bezeichner.of(name), s.length(), 1, nachkommastellen, Config.getInstance());
         this.setInhalt(s);
     }
 
@@ -113,7 +113,7 @@ public class NumFeld extends Feld {
      * @since 4.0
      */
     public NumFeld(final Bezeichner name, final int start, final String value, final int nachkommastellen) {
-        this(name, value.length(), start, nachkommastellen, DEFAULT_VALIDATOR);
+        this(name, value.length(), start, nachkommastellen, Config.getInstance());
         this.setInhalt(value);
     }
 
@@ -129,13 +129,13 @@ public class NumFeld extends Feld {
      */
     public NumFeld(final Bezeichner name, final int length, final int start, final int value,
             final int nachkommastellen) {
-        this(name, length, start, nachkommastellen, DEFAULT_VALIDATOR);
+        this(name, length, start, nachkommastellen, Config.getInstance());
         this.setInhalt(value);
     }
 
     protected NumFeld(final Bezeichner name, final int length, final int start,
-                      final int nachkommastellen, final Feld.Validator validator) {
-        super(name, length, start, Align.RIGHT, validator);
+                      final int nachkommastellen, final Config config) {
+        super(name, length, start, Align.RIGHT, config);
         this.nachkommastellen = nachkommastellen;
         this.setInhalt(0);
     }
@@ -147,11 +147,11 @@ public class NumFeld extends Feld {
      * @param other das originale Feld
      */
     public NumFeld(final Feld other) {
-        this(other, Config.getInstance());
+        this(other, other.config);
     }
 
     private NumFeld(Feld other, Config config) {
-        super(other, new Validator(config));
+        super(other, config);
         if (other instanceof NumFeld) {
             this.nachkommastellen = ((NumFeld) other).nachkommastellen;
         } else {

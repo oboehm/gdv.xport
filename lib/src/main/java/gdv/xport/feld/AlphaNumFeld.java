@@ -76,11 +76,7 @@ public class AlphaNumFeld extends Feld {
      * @since 1.0
      */
     public AlphaNumFeld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
-        this(bezeichner, length, start, alignment, DEFAULT_VALIDATOR);
-    }
-
-    protected AlphaNumFeld(Bezeichner bezeichner, int length, int start, Align alignment, Feld.Validator validator) {
-        super(bezeichner, length, start, alignment, validator);
+        super(bezeichner, length, start, alignment, Config.getInstance());
     }
 
     /**
@@ -121,11 +117,11 @@ public class AlphaNumFeld extends Feld {
      * @param other das originale Feld
      */
     public AlphaNumFeld(final Feld other) {
-        super(other, DEFAULT_VALIDATOR);
+        super(other);
     }
 
     protected AlphaNumFeld(AlphaNumFeld other, Config c) {
-        super(other, new Validator(c));
+        super(other, c);
     }
 
     /**

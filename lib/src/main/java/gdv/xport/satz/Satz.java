@@ -52,7 +52,7 @@ public abstract class Satz implements Cloneable {
 	private static final Logger LOG = LogManager.getLogger(Satz.class);
 
 	private Teildatensatz[] teildatensatz = new Teildatensatz[0];
-	private final Config config;
+	protected final Config config;
 
   /**
    * Zum Abspeichern der Satznummer einer 0220er-GdvSatzart der Sparte 010

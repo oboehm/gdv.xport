@@ -406,6 +406,8 @@ public class XmlServiceTest extends AbstractXmlTest {
         XmlService service = XmlService.getInstance(Config.STRICT);
         Satz satz100 = service.getSatzart(SatzTyp.of(100));
         assertThrows(IllegalArgumentException.class, () -> satz100.setFeld(Bezeichner.FOLGENUMMER, "x"));
+        Feld folgenummer = satz100.getFeld(Bezeichner.FOLGENUMMER);
+        assertThrows(IllegalArgumentException.class, () -> folgenummer.setInhalt("x"));
     }
 
     @Test

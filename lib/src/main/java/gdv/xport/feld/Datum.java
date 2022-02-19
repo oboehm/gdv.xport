@@ -45,6 +45,18 @@ public final class Datum extends NumFeld {
     private static final Logger LOG = LogManager.getLogger(Feld.class);
     private final DateFormat dateFormat;
 
+
+    /**
+     * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
+     * kopieren kann.
+     *
+     * @param other das originale Feld
+     */
+    public Datum(final Feld other) {
+        super(other);
+        dateFormat = getDateFormat(other.getAnzahlBytes());
+    }
+
     /**
      * Erstellt ein neues Datum.
      *

@@ -18,10 +18,13 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.config.Config;
 import org.junit.Test;
 
 import patterntesting.runtime.junit.CloneableTester;
 import patterntesting.runtime.junit.ObjectTester;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Die gemeinsame Oberklasse fuer alle Tests mit einem {@link Feld}-Objekt.
@@ -55,6 +58,14 @@ public abstract class AbstractFeldTest {
     @Test
     public void testCloneable() {
         CloneableTester.assertCloning(getTestFeld());
+    }
+
+    @Test
+    public void testClone() {
+        Feld a = getTestFeld().mitConfig(Config.STRICT);
+        Feld b = (Feld) a.clone();
+        assertEquals(a, b);
+        assertEquals(a.config, b.config);
     }
 
 }

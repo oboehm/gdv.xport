@@ -90,13 +90,13 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @since 5.3
      */
     public Feld mitConfig(Config c) {
-        return new Feld(this, new Validator(c));
+        return new Feld(this, c);
     }
 
     /**
-     * Instantiates a new feld.
+     * Erzeugt ein neues Feld.
      *
-     * @param name the name
+     * @param name  Name
      * @param start Start-Adresse
      * @param s der Inhalt
      * @param alignment the alignment
@@ -128,16 +128,16 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @since 1.0
      */
     public Feld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
-        this(bezeichner, length, start, alignment, DEFAULT_VALIDATOR);
+        this(bezeichner, length, start, alignment, Config.getInstance());
     }
 
-    protected Feld(Bezeichner bezeichner, int length, int start, Align alignment, Validator validator) {
+    protected Feld(Bezeichner bezeichner, int length, int start, Align alignment, Config config) {
         this.bezeichner = bezeichner;
         this.inhalt = StringUtils.repeat(" ", length);
         this.length = toByteLength(length);
         this.byteAdresse = ByteAdresse.of(start).byteValue();
         this.ausrichtung = alignment.getCode();
-        this.config = validator.getConfig();
+        this.config = config;
     }
 
     /**
@@ -259,12 +259,12 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @param other das originale Feld
      */
     public Feld(final Feld other) {
-        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.getAusrichtung());
+        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.getAusrichtung(), other.config);
         this.setInhalt(other.getInhalt());
     }
 
-    protected Feld(final Feld other, final Validator validator) {
-        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.getAusrichtung(), validator);
+    protected Feld(final Feld other, final Config cfg) {
+        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), other.getAusrichtung(), cfg);
         this.setInhalt(other.getInhalt());
     }
 

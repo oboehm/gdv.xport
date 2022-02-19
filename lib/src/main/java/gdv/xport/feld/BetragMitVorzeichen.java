@@ -50,16 +50,16 @@ public final class BetragMitVorzeichen extends Betrag {
      * @since 1.0
      */
     public BetragMitVorzeichen(final Bezeichner name, final int length, final int start) {
-        this(name, length, start, DEFAULT_VALIDATOR);
+        this(name, length, start, Config.getInstance());
     }
 
-    public BetragMitVorzeichen(final Bezeichner name, final int length, final int start, Feld.Validator validator) {
-        super(name, start, StringUtils.repeat('0', length-1) + "+", validator);
+    public BetragMitVorzeichen(final Bezeichner name, final int length, final int start, Config config) {
+        super(name, start, StringUtils.repeat('0', length-1) + "+", config);
         this.setVorzeichen('+');
     }
 
     private BetragMitVorzeichen(final BetragMitVorzeichen other, final Config config) {
-        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), new BetragMitVorzeichen.Validator(config));
+        this(other.getBezeichner(), other.getAnzahlBytes(), other.getByteAdresse(), config);
     }
 
     /**
