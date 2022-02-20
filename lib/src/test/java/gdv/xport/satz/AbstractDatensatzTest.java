@@ -99,7 +99,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testBuendelungskennzeichen() {
-    this.datensatz.set(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), "1");
+    this.datensatz.setFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner(), "1");
     Feld kennzeichen =
         this.datensatz.getFeld(Kopffelder1bis7.BUENDELUNGSKENNZEICHEN.getBezeichner());
         assertEquals("1", kennzeichen.getInhalt());
@@ -136,7 +136,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
      */
     @Test
     public void testFolgenummer() {
-    this.datensatz.set(Kopffelder1bis7.FOLGENUMMER.getBezeichner(), 42);
+        this.datensatz.setFeld(Kopffelder1bis7.FOLGENUMMER.getBezeichner(), 42);
         assertEquals(42, this.datensatz.getFolgenummer());
     }
 
@@ -146,7 +146,7 @@ public abstract class AbstractDatensatzTest extends AbstractSatzTest {
     @Test
     public void testVermittler() {
         String vermittler = "Fritz";
-    this.datensatz.set(Kopffelder1bis7.VERMITTLER.getBezeichner(), vermittler);
+        this.datensatz.setFeld(Kopffelder1bis7.VERMITTLER.getBezeichner(), vermittler);
         assertEquals(vermittler, this.datensatz.getVermittler());
     }
 

@@ -387,7 +387,7 @@ public abstract class Satz implements Cloneable {
 	 * @since 5.2
 	 */
 	public void setFeld(final Bezeichner name, final Integer value) {
-		this.set(name, Integer.toString(value));
+		this.setFeld(name, Integer.toString(value));
 	}
 
 	/**

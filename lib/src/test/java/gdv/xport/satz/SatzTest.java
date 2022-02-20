@@ -96,13 +96,13 @@ public final class SatzTest extends AbstractSatzTest {
 
     /**
      * Test method for
-     * {@link gdv.xport.satz.Satz#set(java.lang.String, java.lang.String)}. Es
+     * {@link gdv.xport.satz.Satz#setFeld(java.lang.String, java.lang.String)}. Es
      * kann nur ein Feld gesetzt werden, das vorher ueber "add(..)" hinzugefuegt
      * wurde.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testSetUndefined() {
-        satz.set("gibtsnet", "plopp");
+        satz.setFeld(Bezeichner.of("gibtsnet"), "plopp");
     }
 
     /**
@@ -113,18 +113,18 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testSetEnum() {
         Satz satz100 = SatzFactory.getSatz(SatzTyp.of("0100"));
-        satz100.set(Kopffelder1bis7.FOLGENUMMER.getBezeichner(), "13");
-        assertEquals("13", satz100.get(Kopffelder1bis7.FOLGENUMMER.getBezeichner()));
+        satz100.setFeld(Kopffelder1bis7.FOLGENUMMER.getBezeichner(), "13");
+        assertEquals("13", satz100.getFeldInhalt(Kopffelder1bis7.FOLGENUMMER.getBezeichner()));
     }
 
     /**
-     * Test method for {@link gdv.xport.satz.Satz#get(java.lang.String)}.
+     * Test method for {@link gdv.xport.satz.Satz#getFeldInhalt(Bezeichner)}.
      */
     @Test
     public void testGet() {
         satz.add(new AlphaNumFeld((Bezeichner.ORT), 30, 50));
-        satz.set(Bezeichner.ORT.getName(), "Stuttgart");
-        assertEquals("Stuttgart", satz.get(Bezeichner.ORT.getName()).trim());
+        satz.setFeld(Bezeichner.ORT, "Stuttgart");
+        assertEquals("Stuttgart", satz.getFeldInhalt(Bezeichner.ORT).trim());
     }
 
     /**
@@ -206,8 +206,8 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testGetBetragMitVorzeichen() {
         Satz satz = SatzFactory.getSatz(SatzTyp.of(500));
-        satz.set(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, "00000000123");
-        satz.getTeildatensatz(1).set(ByteAdresse.of(167), "-");
+        satz.setFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, "00000000123");
+        satz.getTeildatensatz(1).setFeld(ByteAdresse.of(167), "-");
         BetragMitVorzeichen betrag = satz.getFeld(Bezeichner.SCHADENBEARBEITUNGSKOSTEN_IN_WAEHRUNGSEINHEITEN, BetragMitVorzeichen.class);
         assertEquals(14, betrag.getAnzahlBytes());
         assertEquals('-', betrag.getVorzeichen());
@@ -467,7 +467,7 @@ public final class SatzTest extends AbstractSatzTest {
     public void testWagnisartSparte40() {
         SatzTyp expectedSatzTyp = SatzTyp.of("0220.040");
         Satz satz = SatzFactory.getSatz(expectedSatzTyp);
-        satz.set(Bezeichner.WAGNISART, "220456");
+        satz.setFeld(Bezeichner.WAGNISART, "220456");
         SatzTyp satzTyp = satz.getSatzTyp();
         assertFalse("SatzFactory.getDatensatz(220, 40) hat keine Wagnisart im SatzTyp", satzTyp.hasWagnisart());
         assertEquals("SatzTyp von SatzFactory.getDatensatz(220, 40) sollte new SatzTyp(220, 40) entsprechen", expectedSatzTyp, satzTyp);
@@ -493,7 +493,7 @@ public final class SatzTest extends AbstractSatzTest {
         Satz satz102 = SatzFactory.getSatz(SatzTyp.of("0102"));
         Satz testsatz = new TestSatz(102, satz102.getTeildatensaetze());
         assertEquals(satz102.toLongString(), testsatz.toLongString());
-        satz102.set(Bezeichner.BERUF_TEXT, "Tester");
+        satz102.setFeld(Bezeichner.BERUF_TEXT, "Tester");
         assertThat(testsatz.getFeld(Bezeichner.BERUF_TEXT).getInhalt().trim(), emptyString());
         assertNotEquals(satz102.toLongString(), testsatz.toLongString());
     }
