@@ -54,7 +54,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     protected String inhalt;
     private final byte byteAdresse;
     private final byte length;
-    private final byte ausrichtung;
+    private byte ausrichtung;
     protected final Config config;
 
     /**
@@ -290,6 +290,16 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     @Deprecated
     protected Align getDefaultAlignment() {
         return Align.LEFT;
+    }
+
+    /**
+     * Hiermit kann man die Ausrichtung umstellen.
+     *
+     * @param alignment z.B. {@link Align#LEFT}
+     * @since 6.1
+     */
+    public void setAusrichtung(Align alignment) {
+        this.ausrichtung = alignment.getCode();
     }
 
     private Bezeichner createBezeichner() {

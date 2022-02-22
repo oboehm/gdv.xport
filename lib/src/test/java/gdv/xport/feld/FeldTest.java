@@ -260,4 +260,13 @@ public final class FeldTest extends AbstractFeldTest {
         SerializableTester.assertSerialization(feld);
     }
 
+    @Test
+    public void testAusrichtung() {
+        Feld f = new Feld(Bezeichner.NAME1, 8, 1, Align.LEFT);
+        f.setInhalt("Hello");
+        assertEquals("Hello   ", f.getInhalt());
+        f.setAusrichtung(Align.RIGHT);
+        assertEquals("   Hello", f.getInhalt());
+    }
+
 }
