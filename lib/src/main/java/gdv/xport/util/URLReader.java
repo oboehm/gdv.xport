@@ -19,9 +19,9 @@
 package gdv.xport.util;
 
 import gdv.xport.config.Config;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.io.FileUtils;
+import org.apache.hc.client5.http.fluent.Content;
+import org.apache.hc.client5.http.fluent.Request;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -64,14 +64,10 @@ public class URLReader {
             return readFile();
         }
         try {
-            HttpClient httpClient = new HttpClient();
-            GetMethod get = new GetMethod(url.toString());
-            httpClient.executeMethod(get);
-            String content = get.getResponseBodyAsString();
-            get.releaseConnection();
-            return content;
-        } catch(IllegalStateException ise) {
-            LOG.info(ise + " - fallback to URLConnection");
+            Content content = Request.get(url).execute().returnContent();
+            return content.asString();
+        } catch(IOException ioe) {
+            LOG.info(ioe + " - fallback to URLConnection");
             URLConnection connection = url.toURL().openConnection();
             return read(connection);
         }

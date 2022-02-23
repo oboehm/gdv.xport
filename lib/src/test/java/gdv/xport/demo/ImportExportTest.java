@@ -21,8 +21,8 @@ package gdv.xport.demo;
 import gdv.xport.Datenpaket;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.satz.Satz;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import patterntesting.runtime.annotation.IntegrationTest;
 import patterntesting.runtime.annotation.SkipTestOn;
@@ -43,7 +43,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class ImportExportTest {
 
-    private static final Log log = LogFactory.getLog(ImportExportTest.class);
+    private static final Logger LOG = LogManager.getLogger(ImportExportTest.class);
 
     /**
      * Test-Methode fuer {@link ImportExport#importSatz100(File)}.
@@ -53,7 +53,7 @@ public class ImportExportTest {
     @Test
     public void testImportSatz100() throws IOException {
         File tmpFile = File.createTempFile("datensatz", ".gdv");
-        log.info("file \"" + tmpFile + "\" created.");
+        LOG.info("file \"" + tmpFile + "\" created.");
         checkImportSatz100(tmpFile);
     }
 
@@ -67,7 +67,7 @@ public class ImportExportTest {
             assertEquals("1", satz100.getFeld(Bezeichner.GESCHLECHT).getInhalt());
         } finally {
             tmpFile.delete();
-            log.info("file \"" + tmpFile + "\" deleted.");
+            LOG.info("file \"" + tmpFile + "\" deleted.");
         }
     }
 

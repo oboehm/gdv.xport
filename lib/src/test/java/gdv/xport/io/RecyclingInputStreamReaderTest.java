@@ -26,9 +26,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.CharBuffer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Unit-Test fuer {@link RecyclingInputStreamReader}.
@@ -38,7 +38,7 @@ import org.junit.Test;
  */
 public class RecyclingInputStreamReaderTest {
 
-    private static Log log = LogFactory.getLog(RecyclingInputStreamReaderTest.class);
+    private static Logger log = LoggerFactory.getLogger(RecyclingInputStreamReaderTest.class);
     private static String HELLO = "hello world";
     private final InputStream istream = new ByteArrayInputStream(HELLO.getBytes());
 

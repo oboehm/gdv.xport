@@ -381,9 +381,14 @@
         <version>1.5.0</version>
       </dependency>
       <dependency>
-        <groupId>commons-httpclient</groupId>
-        <artifactId>commons-httpclient</artifactId>
-        <version>3.1</version>
+        <groupId>org.apache.httpcomponents.client5</groupId>
+        <artifactId>httpclient5</artifactId>
+        <version>5.1.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents.client5</groupId>
+        <artifactId>httpclient5-fluent</artifactId>
+        <version>5.1.2</version>
       </dependency>
       <dependency>
         <groupId>commons-io</groupId>
@@ -519,7 +524,7 @@
       <dependency>
         <groupId>net.sf.oval</groupId>
         <artifactId>oval</artifactId>
-        <version>1.90</version>
+        <version>3.2.1</version>
       </dependency>
       <dependency>
         <groupId>de.jfachwert</groupId>
