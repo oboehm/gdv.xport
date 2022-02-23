@@ -18,17 +18,17 @@
 
 package gdv.xport.io;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.CharBuffer;
 
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit-Test fuer {@link RecyclingInputStreamReader}.
@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
  */
 public class RecyclingInputStreamReaderTest {
 
-    private static Logger log = LoggerFactory.getLogger(RecyclingInputStreamReaderTest.class);
+    private static final Logger LOG = LogManager.getLogger(RecyclingInputStreamReaderTest.class);
     private static String HELLO = "hello world";
     private final InputStream istream = new ByteArrayInputStream(HELLO.getBytes());
 
@@ -58,7 +58,7 @@ public class RecyclingInputStreamReaderTest {
             assertEquals(HELLO, new String(cbuf));
         } finally {
             reader.close();
-            log.info(reader + " was closed.");
+            LOG.info(reader + " was closed.");
         }
     }
 
