@@ -150,7 +150,7 @@ public class NumFeld extends Feld {
         this(other, other.config);
     }
 
-    private NumFeld(Feld other, Config config) {
+    protected NumFeld(Feld other, Config config) {
         super(other, config);
         if (other instanceof NumFeld) {
             this.nachkommastellen = ((NumFeld) other).nachkommastellen;

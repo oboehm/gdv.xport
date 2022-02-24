@@ -18,6 +18,7 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.config.Config;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,6 +33,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Testklasse fuer Datum-Klasse.
@@ -238,5 +241,13 @@ public final class DatumTest extends AbstractFeldTest {
         assertEquals(d, e);
     }
 
-}
+    @Test
+    public void testConfig() {
+        Datum d = new Datum(Bezeichner.DATUM_SEPA, 1);
+        Datum strict = d.mitConfig(Config.STRICT);
+        d.setInhalt("a");
+        assertFalse(d.isValid());
+        assertThrows(IllegalArgumentException.class, () -> strict.setInhalt("b"));
+    }
 
+}

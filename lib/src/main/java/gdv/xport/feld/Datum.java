@@ -18,6 +18,7 @@
 
 package gdv.xport.feld;
 
+import gdv.xport.config.Config;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
@@ -45,7 +46,6 @@ public final class Datum extends NumFeld {
     private static final Logger LOG = LogManager.getLogger(Feld.class);
     private final DateFormat dateFormat;
 
-
     /**
      * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
      * kopieren kann.
@@ -53,7 +53,11 @@ public final class Datum extends NumFeld {
      * @param other das originale Feld
      */
     public Datum(final Feld other) {
-        super(other);
+        this(other, other.config);
+    }
+
+    private Datum(final Feld other, final Config cfg) {
+        super(other, cfg);
         dateFormat = getDateFormat(other.getAnzahlBytes());
     }
 
@@ -126,6 +130,18 @@ public final class Datum extends NumFeld {
     public Datum(final Datum other) {
         super(other);
         this.dateFormat = other.dateFormat;
+    }
+
+    /**
+     * Liefert eine neues Datum mit neuer Konfiguration.
+     *
+     * @param c neue Konfiguration
+     * @return neues Datzm
+     * @since 6.1
+     */
+    @Override
+    public Datum mitConfig(Config c) {
+        return new Datum(this, c);
     }
 
     private static DateFormat getDateFormat(final int length) {
