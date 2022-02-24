@@ -626,18 +626,12 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     }
 
     private List<ConstraintViolation> validateInvariants(Config validationConfig) {
-        if (validationConfig.getValidateMode() == Config.ValidateMode.STRICT) {
-            net.sf.oval.Validator ovalValidator = new net.sf.oval.Validator();
-            return new ArrayList<>(ovalValidator.validate(this));
-        } else {
-            LOG.debug("Wegen Performance wird OVal-Validator nur in Mode STRICT aufgerufen.");
-            List<ConstraintViolation> violations = new ArrayList<>();
-            if (getAusrichtung() == Align.UNKNOWN) {
-                violations.add(new SimpleConstraintViolation("Ausrichtung darf nicht UNKNOWN sein", this,
-                        this.ausrichtung));
-            }
-            return violations;
+        List<ConstraintViolation> violations = new ArrayList<>();
+        if (getAusrichtung() == Align.UNKNOWN) {
+            violations.add(new SimpleConstraintViolation("Ausrichtung darf nicht UNKNOWN sein", this,
+                    this.ausrichtung));
         }
+        return violations;
     }
 
     /**
