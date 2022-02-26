@@ -610,7 +610,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     }
 
     public List<ConstraintViolation> validate(Config validationConfig) {
-        List<ConstraintViolation> violations = validateInvariants(validationConfig);
+        List<ConstraintViolation> violations = validateInvariants();
         if (this.getEndAdresse() > 256) {
             ConstraintViolation cv = new SimpleConstraintViolation(this + ": Endadresse ueberschritten", this,
                     this.getEndAdresse());
@@ -625,7 +625,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         return violations;
     }
 
-    private List<ConstraintViolation> validateInvariants(Config validationConfig) {
+    private List<ConstraintViolation> validateInvariants() {
         List<ConstraintViolation> violations = new ArrayList<>();
         if (getAusrichtung() == Align.UNKNOWN) {
             violations.add(new SimpleConstraintViolation("Ausrichtung darf nicht UNKNOWN sein", this,
