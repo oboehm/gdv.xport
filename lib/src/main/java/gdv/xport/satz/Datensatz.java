@@ -256,14 +256,14 @@ public class Datensatz extends Satz {
 
 	private void initWagnisart(int art) {
 		if (!hasWagnisart()) {
-			add(new AlphaNumFeld(WAGNISART, 1, 60));
+			addAll(new AlphaNumFeld(WAGNISART, 1, 60));
 		}
         setFeld(WAGNISART, Integer.toString(art).substring(0, 1));
 	}
 
 	private void initBausparenart(int art) {
 		if (!hasBausparenArt()) {
-			add(new AlphaNumFeld(ART1, 1, 44));
+			addAll(new AlphaNumFeld(ART1, 1, 44));
 		}
         setFeld(ART1, art);
 	}

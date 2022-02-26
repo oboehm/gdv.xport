@@ -284,6 +284,18 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
+	 * Fuegt das uebergebene Feld in jeden Teildatensatz hinzu.
+	 *
+	 * @param feld das Feld
+	 * @since 6.1
+	 */
+	public void addAll(final Feld feld) {
+		for (int n = 1; n <= getNumberOfTeildatensaetze(); n++) {
+			add(feld, n);
+		}
+	}
+
+	/**
 	 * Fuegt das uebergebene Feld zur Liste der Datenfelder hinzu.
 	 *
 	 * @param feld the feld
