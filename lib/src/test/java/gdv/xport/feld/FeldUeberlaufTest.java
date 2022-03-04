@@ -135,7 +135,7 @@ public class FeldUeberlaufTest {
     assertEquals("99999", numFeldOhneNachkomma.getInhalt());
 
     numFeldOhneNachkomma.setInhalt("  ");
-    assertEquals("000  ", numFeldOhneNachkomma.getInhalt());
+    assertEquals("00000", numFeldOhneNachkomma.getInhalt());
 
     numFeldOhneNachkomma.setInhalt("123000");
     assertEquals("99999", numFeldOhneNachkomma.getInhalt());

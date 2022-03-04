@@ -438,11 +438,11 @@ public class NumFeld extends Feld {
 
         @Override
         protected String validateLax(String value) {
-            String nummer = super.validateLax(value);
+            String nummer = super.validateLax(value).trim();
             LOG.debug("{} wird als Zahl validiert.", nummer);
             if (StringUtils.isNotBlank(nummer)) {
                 try {
-                    BigInteger n = new BigInteger(nummer.trim());
+                    BigInteger n = new BigInteger(nummer);
                     if (n.compareTo(BigInteger.ZERO) < 0) {
                         throw new ValidationException(String.format("'%s' darf nicht negativ sein", nummer));
                     }
