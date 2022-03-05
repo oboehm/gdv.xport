@@ -17,7 +17,7 @@
   <modules>
     <module>lib</module>
     <module>service</module>
-    <module>deprecated</module>
+<!--    <module>deprecated</module>-->
   </modules>
 
   <url>http://www.aosd.de/gdv.xport/</url>

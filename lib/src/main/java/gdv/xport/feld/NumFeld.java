@@ -438,7 +438,7 @@ public class NumFeld extends Feld {
 
         @Override
         protected String validateLax(String value) {
-            String nummer = super.validateLax(value).trim();
+            String nummer = value.trim();
             LOG.debug("{} wird als Zahl validiert.", nummer);
             if (StringUtils.isNotBlank(nummer)) {
                 try {
