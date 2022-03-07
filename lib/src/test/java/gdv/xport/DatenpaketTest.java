@@ -904,4 +904,11 @@ public final class DatenpaketTest {
         }
     }
 
+    @Test
+    public void testConfigVorsatzNachsatz() {
+        Datenpaket datenpaket = new Datenpaket(Config.STRICT);
+        assertEquals(Config.STRICT, datenpaket.getVorsatz().getConfig());
+        assertEquals(Config.STRICT, datenpaket.getNachsatz().getConfig());
+    }
+
 }

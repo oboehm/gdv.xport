@@ -418,6 +418,13 @@ public class XmlServiceTest extends AbstractXmlTest {
                 () -> satz200.setFeld(Bezeichner.GESAMTBEITRAG_NETTO_IN_WAEHRUNGSEINHEITEN, "A99999999999"));
     }
 
+    @Test
+    public void testConfigVorsatz() throws XMLStreamException, IOException {
+        SatzXml vorsatz = XmlService.getInstance(Config.STRICT).getSatzart(SatzTyp.of(1));
+        assertEquals(SatzTyp.of(1), vorsatz.getSatzTyp());
+        assertEquals(Config.STRICT, vorsatz.getConfig());
+    }
+
 //    @Test
 //    public void testRegisterSatzart() throws XMLStreamException, IOException {
 //        xmlService.registerSatzart(URI.create("classpath:/gdv/xport/satz/xml/Satz0820.xml"));

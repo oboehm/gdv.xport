@@ -113,7 +113,7 @@ public class Teildatensatz extends Satz {
     }
 
     private void initDatenfelder(SatzTyp satzTyp) {
-        NumFeld satzart = new NumFeld((SATZART), 4, 1).mitConfig(config);
+        NumFeld satzart = new NumFeld((SATZART), 4, 1).mitConfig(getConfig());
         satzart.setInhalt(satzTyp.getSatzart());
         this.add(satzart);
     }

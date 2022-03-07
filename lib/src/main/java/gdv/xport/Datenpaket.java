@@ -44,10 +44,10 @@ import java.util.*;
 public class Datenpaket implements ImportListener {
 
     private static final Logger LOG = LogManager.getLogger(Datenpaket.class);
-    private Vorsatz vorsatz = new Vorsatz();
+    private Vorsatz vorsatz;
     private final List<Datensatz> datensaetze = new ArrayList<>();
     private final Config config;
-    private Nachsatz nachsatz = new Nachsatz();
+    private Nachsatz nachsatz;
 
     /**
      * Wenn man den Default-Konstruktor verwendet, sollte man vorher die
@@ -67,6 +67,8 @@ public class Datenpaket implements ImportListener {
      */
     public Datenpaket(Config config) {
         this.config = config;
+        this.vorsatz = new Vorsatz(SatzRegistry.getInstance(config));
+        this.nachsatz = new Nachsatz(SatzRegistry.getInstance(config));
         this.vorsatz.setVersion(this.nachsatz);
         Datum heute = Datum.heute();
         this.setErstellungsDatumVon(heute);
