@@ -73,7 +73,7 @@ public class Datenpaket implements ImportListener {
         Datum heute = Datum.heute();
         this.setErstellungsDatumVon(heute);
         this.setVuNummer(config.getVUNr().getInhalt());
-        LOG.debug(this + " created.");
+        LOG.debug("{} created.", this);
     }
 
     /**
