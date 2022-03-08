@@ -9,7 +9,7 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
-## [Unreleased]
+## [6.1.1] - 2020-03-08
 
 ### Changed
 
@@ -59,25 +59,11 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - Property "gdv.numfeld.fill-blanks" wurde wieder entfernt
 
 
-## [5.4.2] - 2021-12-18
+## [5.4] - 2021-12-12
 
 ### Security
 
 - Log4J auf 2.17.0 angehoben
-
-
-## [5.4.1] - 2021-12-17
-
-### Security
-
-- Log4J auf 2.16.0 angehoben
-
-
-## [5.4.0] - 2021-12-12
-
-### Security
-
-- Log4J wegen Zero-Day-Lücke auf 2.15 angehoben
   (s.a. [Log4Shell / Apache Log4j Injection Vulnerability CVE-2021-44228](https://www.truesec.com/hub/blog/apache-log4j-injection-vulnerability-cve-2021-44228-impact-and-response))
 
 ### Removed

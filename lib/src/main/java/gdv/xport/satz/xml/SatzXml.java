@@ -71,6 +71,7 @@ public class SatzXml extends Datensatz {
      *
      * @param parser XML-Event-Parser
      * @param element the element
+     * @param config Konfiguration
      * @throws XMLStreamException the XML stream exception
      */
     public SatzXml(final XMLEventReader parser, final StartElement element, final Config config) throws XMLStreamException {
