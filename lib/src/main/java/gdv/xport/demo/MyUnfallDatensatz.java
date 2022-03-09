@@ -26,8 +26,8 @@ import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlFormatter;
 
 import javax.xml.stream.XMLStreamException;
+import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * Diese Demo-Klasse zeigt u.a., wie man eine Enumeration beim gdv-xport-Framework registriert. Sie repraesentiert den
@@ -58,7 +58,7 @@ public class MyUnfallDatensatz extends SatzXml {
     private static void importMusterdatei() throws IOException {
         // Datenpaket importieren
         Datenpaket datenpaket = new Datenpaket();
-        datenpaket.importFrom(new URL("http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt"));
+        datenpaket.importFrom(new File("src/test/resources/musterdatei_041222.txt"));
         // jetzt den ersten Datensatz 210, Sparte 30 suchen und ausgeben
         for (Datensatz datensatz : datenpaket.getDatensaetze()) {
             if ((datensatz.getSatzart() == 210) && (datensatz.getSparte() == 30)) {
