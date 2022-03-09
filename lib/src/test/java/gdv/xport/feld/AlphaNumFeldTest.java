@@ -94,4 +94,16 @@ public final class AlphaNumFeldTest extends AbstractFeldTest {
         assertEquals("Boss    ", name.getInhalt());
     }
 
+    @Test
+    public void testAlignment() {
+        AlphaNumFeld feld = new AlphaNumFeld(Bezeichner.VP_PERSONENNUMMER_VERSICHERER, 16, 43, Align.RIGHT);
+        checkRightAlignment(feld, "      12345678  ", "12345678  ");
+        checkRightAlignment(feld.mitConfig(Config.STRICT), "        12345678", "12345678  ");
+    }
+
+    private void checkRightAlignment(AlphaNumFeld feld, String expected, String content) {
+        feld.setInhalt(content);
+        assertEquals(expected, feld.getInhalt());
+    }
+
 }
