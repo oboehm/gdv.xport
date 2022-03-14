@@ -50,8 +50,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 /**
@@ -745,9 +744,28 @@ public final class DatenpaketTest {
     @Test
     public void testPack() throws IOException {
         Datenpaket x = checkImport("gdv/xport/satz/testcase_0220_mit_0221_versetzt.txt", Charset.forName("IBM850"));
-        int anzahlSaetze = x.getDatensaetze().size();
+//        MatcherAssert.assertThat(x.getDatensaetze().size(), equalTo(27));
+
         Datenpaket unpacked = x.pack();
-        MatcherAssert.assertThat(unpacked.getDatensaetze().size(), lessThan(anzahlSaetze));
+        /*
+        After pack, expected the following:
+        3x0100 for 2222222
+        1x0200 for 2222222
+        1x0210 for 2222222
+        1x0220.010.0 for 2222222
+        1x0220.010.13.1 for 2222222
+        1x0221.010.13.1 for 2222222
+        3x0220.010.13.6 for 2222222
+        3x0100 for 2222244
+        1x0200 for 2222244
+        1x0210 for 2222244
+        1x0220.010.0 for 2222244
+        1x0220.010.13.1 for 2222244
+        1x0221.010.13.1 for 2222244
+        3x0220.010.13.6 for 2222244
+        Total: 22
+         */
+        MatcherAssert.assertThat(unpacked.getDatensaetze().size(), equalTo(22));
         checkDatensatz(x, SatzTyp.of("0220.010.13.1"));
         checkDatensatz(x, SatzTyp.of("0221.010.13.1"));
     }
