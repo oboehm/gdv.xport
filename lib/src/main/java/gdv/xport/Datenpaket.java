@@ -579,9 +579,17 @@ public class Datenpaket implements ImportListener {
     public Datenpaket pack() {
         for (int i = 0; i < datensaetze.size(); i++) {
             Datensatz ds = datensaetze.get(i);
-            if (!ds.isComplete()) {
-                Optional<Datensatz> next = findNextDatensatz(ds.getSatzTyp(), i+1);
+            if (ds.getTeildatensaetze().size() == 0) {
+                // keine Teildatensätze, evtl. bereits gemergt, übergehe den Datensatz
+                continue;
+            }
+            boolean nextVsnrReached = false;
+            for (int j = i+1; j < datensaetze.size() && !ds.isComplete() && !nextVsnrReached; j++) {
+                Optional<Datensatz> next = findNextDatensatzWithinVsnr(ds.getVersicherungsscheinNummer(), ds.getSatzTyp(), j);
                 next.ifPresent(ds::mergeWith);
+                if (!next.isPresent()) {
+                    nextVsnrReached = true;
+                }
             }
         }
         removeEmptyDatensaetze();
@@ -599,10 +607,19 @@ public class Datenpaket implements ImportListener {
         datensaetze.addAll(cleaned);
     }
 
-    private Optional<Datensatz> findNextDatensatz(SatzTyp satzTyp, int position) {
+    private Optional<Datensatz> findNextDatensatzWithinVsnr(String vsNr, SatzTyp satzTyp, int position) {
         for (int i = position; i < datensaetze.size(); i++) {
             Datensatz ds = datensaetze.get(i);
+            if (ds.getTeildatensaetze().size() == 0) {
+                // keine Teildatensätze, evtl. bereits gemergt, übergehe den Datensatz
+                continue;
+            }
+            if (!ds.getVersicherungsscheinNummer().equals(vsNr)) {
+                // Versicherungsscheinnummer hat geändert, fertig
+                break;
+            }
             if (satzTyp.equals(ds.getSatzTyp())) {
+                // Potentieller Datensatz gefunden, fertig
                 return Optional.of(ds);
             }
         }
