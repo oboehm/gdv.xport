@@ -133,6 +133,19 @@ public final class DatumTest extends AbstractFeldTest {
         assertThat(violations.size(), greaterThan(0));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetInhaltStrict() {
+        Datum datumTest = new Datum(Bezeichner.DATUM_SEPA, 3).mitConfig(Config.STRICT.withProperty("gdv.feld.truncate", "true"));
+        datumTest.setInhalt("33011800");
+    }
+
+    @Test
+    public void testIsInvalidLax() {
+        Datum datumTest = new Datum(Bezeichner.DATUM_SEPA, 3).mitConfig(Config.LAX);
+        datumTest.setInhalt("33011800");
+        assertTrue(datumTest.isInvalid());
+    }
+
     /**
      * Wenn ein Datum nur aus 6 Zeichen besteht, hat es laut
      * Broschuere Vermittler das Format MMJJJJ.

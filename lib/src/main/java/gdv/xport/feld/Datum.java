@@ -24,6 +24,7 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.validation.ValidationException;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -44,6 +45,7 @@ import java.util.List;
 public final class Datum extends NumFeld {
 
     private static final Logger LOG = LogManager.getLogger(Feld.class);
+    private static final Feld.Validator DEFAULT_VALIDATOR = new Datum.Validator(Config.getInstance());
     private final DateFormat dateFormat;
 
     /**
@@ -182,6 +184,15 @@ public final class Datum extends NumFeld {
         this.setInhalt(dateFormat.format(d));
     }
 
+    @Override
+    public void setInhalt(String neuerInhalt) {
+        if (!isEmpty(neuerInhalt)) {
+            Datum.Validator validator = (Datum.Validator) getValidator();
+            String value = validator.verifyFormat(dateFormat, neuerInhalt);
+        }
+        super.setInhalt(neuerInhalt);
+    }
+
     /**
      * Setzt den Inhalt anhand des uebergebenen Datums.
      *
@@ -252,8 +263,12 @@ public final class Datum extends NumFeld {
         if (super.isEmpty()) {
             return true;
         }
+        return isEmpty(this.getInhalt());
+    }
+
+    private static boolean isEmpty(String value) {
         try {
-            int n = Integer.parseInt(this.getInhalt());
+            int n = Integer.parseInt(value);
             return n == 0;
         } catch (NumberFormatException e) {
             return false;
@@ -288,15 +303,11 @@ public final class Datum extends NumFeld {
     }
 
     private boolean hasValidDate() {
-        String orig = this.getInhalt();
-        if (orig.startsWith("00")) {
-            return true;
-        }
+        Datum.Validator validator = (Datum.Validator) getValidator();
         try {
-            Date date = this.toDate();
-            String conv = this.dateFormat.format(date);
-            return conv.equals(orig);
-        } catch (RuntimeException e) {
+            validator.validateFormat(dateFormat, this.getInhalt());
+            return true;
+        } catch (ValidationException e) {
             LOG.info(e + " -> mapped to false");
             return false;
         }
@@ -332,6 +343,55 @@ public final class Datum extends NumFeld {
     @Override
     public Object clone() {
         return new Datum(this);
+    }
+
+
+
+    /**
+     * Die Validierung von Datum-Felder ist etwas strikter als bei NumFeldern.
+     * Einze Zahl ist nicht automatisch ein gueltiges Datum. Es muss schon mit
+     * dem eingestellten Datumsformat uebereinstimmen.
+     *
+     * @since 6.2
+     */
+    public static class Validator extends NumFeld.Validator {
+
+        public Validator() {
+            super();
+        }
+
+        public Validator(Config config) {
+            super(config);
+        }
+
+        public String verifyFormat(DateFormat format, String value) {
+            if ((getConfig().getValidateMode() == Config.ValidateMode.STRICT) && (format != null)) {
+                try {
+                    return validateFormat(format, value);
+                } catch (ValidationException ex) {
+                    throw new IllegalArgumentException("kein Datum: " + value, ex);
+                }
+            }
+            return value;
+        }
+
+        public String validateFormat(DateFormat format, String value) {
+            if (value.startsWith("00")) {
+                return value;
+            }
+            try {
+                Date date = format.parse(value);
+                String converted = format.format(date);
+                if (!value.equals(converted)) {
+                    throw new ValidationException(String.format(
+                            "'%s' ist kein korrektes Datum - ist vielleicht '%s' gemeint?", value, converted));
+                }
+            } catch (ParseException ex) {
+                throw new ValidationException(String.format("'%s' ist kein Datum", value), ex);
+            }
+            return value;
+        }
+
     }
 
 }

@@ -9,11 +9,20 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
-## [6.1.1] - 2020-03-08
+## [Unreleased]
 
 ### Changed
 
 - _fixed_: Vorsatz und Nachsatz im Datenpaket haben jetzt die gleiche Config wie das Datenpaket
+
+
+## [6.1.1] - 2020-03-08
+
+### Changed
+
+- _fixed_: Datenpaket.pack()-Methode funktioniert jetzt korrekt bei Lücken
+  ([Issue #79](https://github.com/oboehm/gdv.xport/issues/79))
+- Datum.setInhalt(..) überprüft das Datumsformat im STRICT-Modus
 
 
 ## [6.1.0] - 2022-03-04
