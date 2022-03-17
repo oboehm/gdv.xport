@@ -136,7 +136,7 @@ public final class DatumTest extends AbstractFeldTest {
     @Test(expected = IllegalArgumentException.class)
     public void testSetInhaltStrict() {
         Datum datumTest = new Datum(Bezeichner.DATUM_SEPA, 3).mitConfig(Config.STRICT.withProperty("gdv.feld.truncate", "true"));
-        datumTest.setInhalt("33011800");
+        datumTest.setInhalt("00011800");
     }
 
     @Test
@@ -154,7 +154,7 @@ public final class DatumTest extends AbstractFeldTest {
      */
     @Test
     public void testDatumMMJJJJ() {
-        checkDatum("112009");
+        checkDatum("112009", true);
     }
 
     /**
@@ -162,7 +162,7 @@ public final class DatumTest extends AbstractFeldTest {
      */
     @Test
     public void testDatumMMJJ() {
-        checkDatum("1109");
+        checkDatum("1109", true);
     }
 
     /**
@@ -170,21 +170,21 @@ public final class DatumTest extends AbstractFeldTest {
      */
     @Test
     public void testDatumTT() {
-        checkDatum("30");
+        checkDatum("30", true);
     }
 
     /**
-     * Bei Datumsangaben ist bei Tag und Monat auch die Eingabe "00" gueltig
-     * (ausser im Vorsatz).
+     * Bei Datumsangaben ist bei Tag und Monat auch die Eingabe "00" zwar
+     * moeglich, aber ab 6.2 nicht mehr guetig.
      *
      * @since 0.2
      */
     @Test
     public void testDatum00() {
-        checkDatum("00");
-        checkDatum("002009");
-        checkDatum("00112009");
-        checkDatum("00002009");
+        checkDatum("00", true);
+        checkDatum("002009", false);
+        checkDatum("00112009", false);
+        checkDatum("00002009", false);
     }
 
     /**
@@ -192,10 +192,10 @@ public final class DatumTest extends AbstractFeldTest {
      *
      * @param inhalt the inhalt
      */
-    private static void checkDatum(final String inhalt) {
-        Datum datum = new Datum("Test-Datum", inhalt);
+    private static void checkDatum(final String inhalt, final boolean valid) {
+        Datum datum = new Datum("Test-Datum", inhalt).mitConfig(Config.LAX);
         assertEquals(inhalt, datum.getInhalt());
-        assertTrue(datum + " should be a valid date", datum.isValid());
+        assertEquals(datum + " gueltig?", valid, datum.isValid());
     }
 
     /**

@@ -13,15 +13,16 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Changed
 
+- _fixed_: Datenpaket.pack()-Methode funktioniert jetzt korrekt bei Lücken
+  ([Issue #79](https://github.com/oboehm/gdv.xport/issues/79))
 - _fixed_: Vorsatz und Nachsatz im Datenpaket haben jetzt die gleiche Config wie das Datenpaket
+- Datum mit "00" als Tag oder Monat (z.B. "00032022") werden nicht mehr als gültig angesehen
 
 
 ## [6.1.1] - 2020-03-08
 
 ### Changed
 
-- _fixed_: Datenpaket.pack()-Methode funktioniert jetzt korrekt bei Lücken
-  ([Issue #79](https://github.com/oboehm/gdv.xport/issues/79))
 - Datum.setInhalt(..) überprüft das Datumsformat im STRICT-Modus
 
 
