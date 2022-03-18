@@ -119,6 +119,16 @@ public class Datenpaket implements ImportListener {
     }
 
     /**
+     * Liefert die eingestelle Konfiguration des Datenpakets zurueck.
+     *
+     * @return Konfiguration
+     * @since 6.2
+     */
+    public Config getConfig() {
+        return config;
+    }
+
+    /**
      * Um die VU-Nummer setzen zu koennen.
      *
      * @param vuNummer VU-Nummer (max. 5-stellig)

@@ -288,9 +288,6 @@ public final class Datum extends NumFeld {
         if (this.isEmpty()) {
             return true;
         }
-        if (!super.isValid()) {
-            return false;
-        }
         return this.hasValidDate();
     }
 
@@ -364,7 +361,7 @@ public final class Datum extends NumFeld {
             super(config);
         }
 
-        public String verifyFormat(DateFormat format, String value) {
+        protected String verifyFormat(DateFormat format, String value) {
             if ((getConfig().getValidateMode() == Config.ValidateMode.STRICT) && (format != null)) {
                 try {
                     return validateFormat(format, value);
@@ -375,7 +372,7 @@ public final class Datum extends NumFeld {
             return value;
         }
 
-        public String validateFormat(DateFormat format, String value) {
+        protected String validateFormat(DateFormat format, String value) {
             try {
                 Date date = format.parse(value);
                 String converted = format.format(date);

@@ -695,19 +695,27 @@ public final class DatenpaketTest {
     private static Datenpaket checkImport(String filename, Charset encoding) throws IOException {
         File testfile = new File("src/test/resources", filename);
         Datenpaket imported = new Datenpaket();
+        assertEquals(Config.DEFAULT, imported.getConfig());
         imported.importFrom(testfile, encoding);
+        for (Datensatz ds : imported.getDatensaetze()) {
+            assertTrue(ds.isValid());
+        }
+        checkWithExport(imported, encoding, testfile);
+        return imported;
+    }
+
+    private static void checkWithExport(Datenpaket imported, Charset encoding, File testfile) throws IOException {
         File exportDir = new File("target", "export");
         if (exportDir.mkdir()) {
             LOG.info("Verzeichnis {} wurde angelegt.", exportDir);
         }
         File exportFile = new File(exportDir, testfile.getName());
-        for (Datensatz ds : imported.getDatensaetze()) {
-            assertTrue(ds.isValid());
-        }
         imported.export(exportFile, encoding);
-        FileTester.assertContentEquals(testfile, exportFile);
+        Datenpaket exported = new Datenpaket();
+        exported.importFrom(exportFile, encoding);
+        assertEquals(imported, exported);
+        //FileTester.assertContentEquals(testfile, exportFile);
         LOG.info("{} wurde nach {} exportiert.", imported, exportFile);
-        return imported;
     }
 
     @Test
