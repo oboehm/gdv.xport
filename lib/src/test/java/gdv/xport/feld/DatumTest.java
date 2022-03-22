@@ -158,6 +158,15 @@ public final class DatumTest extends AbstractFeldTest {
     }
 
     /**
+     * Wenn der Monat nicht vohanden ist, kann er mit '00' geschluesselt
+     * werden.
+     */
+    @Test
+    public void testDatum00JJJJ() {
+        checkDatum("002022", true);
+    }
+
+    /**
      * Test datum mmjj.
      */
     @Test
@@ -182,7 +191,7 @@ public final class DatumTest extends AbstractFeldTest {
     @Test
     public void testDatum00() {
         checkDatum("00", true);
-        checkDatum("002009", false);
+        checkDatum("002009", true);
         checkDatum("00112009", false);
         checkDatum("00002009", false);
     }
