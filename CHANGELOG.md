@@ -9,6 +9,11 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
+## [Unreleased]
+
+- numerische Felder mit Format 'MMJJJJ' werden als Datum erkannt
+
+
 ## [6.1.2] - 2020-03-18
 
 ### Changed
@@ -33,7 +38,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - XmlService erlaubt jetzt die Registrierung eigener Sätze per XML-Resource
 - SatzXml.of(..) akzeptiert jetzt auch URI (z.B. "classpath:/com/panik/unfall.xml") als Parameter
 
-### Changes
+### Changed
 
 - **ACHTUNG**: bei NumFeld und abgeleitete Klassen werden Nachkommastellen beim Setzen von Zahlen berücksichtigt
 - Speicherbrauch um 55% reduziert.
