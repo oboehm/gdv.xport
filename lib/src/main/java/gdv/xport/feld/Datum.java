@@ -46,7 +46,7 @@ public final class Datum extends NumFeld {
 
     private static final Logger LOG = LogManager.getLogger(Feld.class);
     private static final Feld.Validator DEFAULT_VALIDATOR = new Datum.Validator(Config.getInstance());
-    private final DateFormat dateFormat;
+    private final SimpleDateFormat dateFormat;
 
     /**
      * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
@@ -146,11 +146,11 @@ public final class Datum extends NumFeld {
         return new Datum(this, c);
     }
 
-    private static DateFormat getDateFormat(final int length) {
+    private static SimpleDateFormat getDateFormat(final int length) {
         return getDateFormat(length, "");
     }
 
-    private static DateFormat getDateFormat(final int length, final String separator) {
+    private static SimpleDateFormat getDateFormat(final int length, final String separator) {
         switch (length) {
             case 2:
                 return new SimpleDateFormat("dd");
@@ -239,8 +239,7 @@ public final class Datum extends NumFeld {
      * @since 5.0
      */
     public LocalDate toLocalDate() {
-        SimpleDateFormat df = (SimpleDateFormat) dateFormat;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(df.toPattern());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat.toPattern());
         return LocalDate.parse(this.getInhalt(), formatter);
     }
 
@@ -331,6 +330,17 @@ public final class Datum extends NumFeld {
     public String format() {
         DateFormat df = getDateFormat(this.getAnzahlBytes(), ".");
         return df.format(this.toDate());
+    }
+
+    /**
+     * Liefert das Datumsformat zurueck, so wie es in der GDV-Beschreibung
+     * steht.
+     *
+     * @return z.B. "TTMMJJJJ"
+     * @since 6.2
+     */
+    public String getFormat() {
+        return dateFormat.toPattern().replace('y', 'J').replace('d', 'T');
     }
 
     /* (non-Javadoc)

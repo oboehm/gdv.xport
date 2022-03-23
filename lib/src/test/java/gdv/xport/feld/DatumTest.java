@@ -254,6 +254,12 @@ public final class DatumTest extends AbstractFeldTest {
     }
 
     @Test
+    public void testGetFormat() {
+        Datum datum = new Datum(Bezeichner.DATUM_SEPA, 8, 1);
+        assertEquals("TTMMJJJJ", datum.getFormat());
+    }
+
+    @Test
     public void testAddOne() {
         Datum d = new Datum("Test-Datum", "31032021");
         Datum e = new Datum(d);

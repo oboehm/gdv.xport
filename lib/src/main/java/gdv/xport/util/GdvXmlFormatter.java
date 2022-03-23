@@ -254,8 +254,8 @@ public final class GdvXmlFormatter extends AbstractFormatter {
         }
         if (feld instanceof AlphaNumFeld) {
             writeAlignment((AlphaNumFeld) feld);
-//        } else if (feld instanceof Datum) {
-//            writeElement("bemerkung", "MMJJJJ");
+        } else if (feld instanceof Datum) {
+            writeElement("bemerkung", ((Datum) feld).getFormat());
         }
         xmlStreamWriter.writeEndElement();
     }
