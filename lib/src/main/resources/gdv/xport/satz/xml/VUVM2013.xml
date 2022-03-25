@@ -20,7 +20,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0001</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -765,7 +765,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>550</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -846,6 +846,7 @@
 			<feldreferenz referenz="101-108-GueltigAb-Datum">
 				<name>Gültig ab</name>
 				<technischerName>GueltigAb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AnteilInProz (109-115) -->
 			<feldreferenz referenz="109-115-AnteilInProz-Fliesskomma">
@@ -861,6 +862,7 @@
 			<feldreferenz referenz="118-125-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld IsinNr (126-137) -->
 			<feldreferenz referenz="126-137-IsinNr-Alphanumerisch">
@@ -887,7 +889,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>140</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -953,16 +955,19 @@
 			<feldreferenz referenz="052-059-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (60-67) -->
 			<feldreferenz referenz="060-067-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (68-75) -->
 			<feldreferenz referenz="068-075-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld LKZZurRisikoanschrift (76-78) -->
 			<feldreferenz referenz="076-078-LKZZurRisikoanschrift-Alphanumerisch">
@@ -1028,6 +1033,7 @@
 			<feldreferenz referenz="158-165-DatBezugsfertigkeit-Datum">
 				<name>Datum der Bezugsfertigkeit</name>
 				<technischerName>DatBezugsfertigkeit</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RohbauEinmalbetragInWE (166-177) -->
 			<feldreferenz referenz="166-177-RohbauEinmalbetragInWE-Fliesskomma">
@@ -1175,6 +1181,7 @@
 			<feldreferenz referenz="166-173-DatLetztenSummenanpassung-Datum">
 				<name>Datum der letzten Summenanpassung</name>
 				<technischerName>DatLetztenSummenanpassung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld SelbstbeteiligungProz (174-177) -->
 			<feldreferenz referenz="174-177-SelbstbeteiligungProz-Fliesskomma">
@@ -1262,7 +1269,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>010</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -1392,6 +1399,7 @@
 			<feldreferenz referenz="151-158-Zahlungsanfang-Datum">
 				<name>Zahlungsanfang</name>
 				<technischerName>Zahlungsanfang</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zuzahlungsrecht (159-159) -->
 			<feldreferenz referenz="159-159-Zuzahlungsrecht-Alphanumerisch">
@@ -1407,6 +1415,7 @@
 			<feldreferenz referenz="172-179-Zuzahlungsdat-Datum">
 				<name>Zuzahlungsdatum</name>
 				<technischerName>Zuzahlungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerGesbeitragInWE (180-191) -->
 			<feldreferenz referenz="180-191-ZukuenftigerGesbeitragInWE-Fliesskomma">
@@ -1422,6 +1431,7 @@
 			<feldreferenz referenz="193-200-Beitragsumstellungdat-Datum">
 				<name>Beitragsumstellungsdatum</name>
 				<technischerName>Beitragsumstellungdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Beitragsumstellunggrund (201-202) -->
 			<feldreferenz referenz="201-202-Beitragsumstellunggrund-Alphanumerisch">
@@ -1514,6 +1524,7 @@
 			<feldreferenz referenz="045-052-Diensteintrittsdat-Datum">
 				<name>Diensteintrittsdatum</name>
 				<technischerName>Diensteintrittsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld BilanzmonatArbeitgeber (53-54) -->
 			<feldreferenz referenz="053-054-BilanzmonatArbeitgeber-Numerisch">
@@ -1535,10 +1546,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (91-96) -->
-			<feldreferenz referenz="091-096-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (91-96) -->
+			<feldreferenz referenz="091-096-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktname (97-116) -->
 			<feldreferenz referenz="097-116-Produktname-Alphanumerisch">
@@ -1594,6 +1606,7 @@
 			<feldreferenz referenz="224-231-FaelligkeitDerLetztenBeitragszahlung-Datum">
 				<name>Fälligkeit der letzten Beitragszahlung</name>
 				<technischerName>FaelligkeitDerLetztenBeitragszahlung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld LebenslangeBeitragszahlung (232-232) -->
 			<feldreferenz referenz="232-232-LebenslangeBeitragszahlung-Alphanumerisch">
@@ -1626,7 +1639,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>130</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -1681,16 +1694,19 @@
 			<feldreferenz referenz="044-051-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (52-59) -->
 			<feldreferenz referenz="052-059-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (60-67) -->
 			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld VersicherteGefahren (68-77) -->
 			<feldreferenz referenz="068-077-VersicherteGefahren-Alphanumerisch">
@@ -1837,10 +1853,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (241-246) -->
-			<feldreferenz referenz="241-246-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (241-246) -->
+			<feldreferenz referenz="241-246-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (247-250) -->
 			<feldreferenz referenz="247-250-Leerstellen-Alphanumerisch">
@@ -2105,7 +2122,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0372</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -2216,7 +2233,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>580.2</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -2282,6 +2299,7 @@
 			<feldreferenz referenz="048-055-Bereitstellungsbeginn-Datum">
 				<name>Bereitstellungsbeginn</name>
 				<technischerName>Bereitstellungsbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Bereitstellungssumme (56-67) -->
 			<feldreferenz referenz="056-067-Bereitstellungssumme-Fliesskomma">
@@ -2317,6 +2335,7 @@
 			<feldreferenz referenz="106-113-Tilgungsbeginn-Datum">
 				<name>Tilgungsbeginn</name>
 				<technischerName>Tilgungsbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld RisikolebensVers (114-114) -->
 			<feldreferenz referenz="114-114-RisikolebensVers-Alphanumerisch">
@@ -2352,6 +2371,7 @@
 			<feldreferenz referenz="150-157-BeginnTilgungsstreckung-Datum">
 				<name>Beginn Tilgungsstreckung</name>
 				<technischerName>BeginnTilgungsstreckung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld BetragTilgungsstreckung (158-169) -->
 			<feldreferenz referenz="158-169-BetragTilgungsstreckung-Fliesskomma">
@@ -2434,11 +2454,13 @@
 			<feldreferenz referenz="047-054-gueltigAb-Datum">
 				<name>gültig ab</name>
 				<technischerName>gueltigAb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum gueltigBis (55-62) -->
 			<feldreferenz referenz="055-062-gueltigBis-Datum">
 				<name>gültig bis</name>
 				<technischerName>gueltigBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ErteilterFreibetrag (63-72) -->
 			<feldreferenz referenz="063-072-ErteilterFreibetrag-Fliesskomma">
@@ -2469,6 +2491,7 @@
 			<feldreferenz referenz="175-182-DatumDerBewertungszahl-Datum">
 				<name>Datum der Bewertungszahl</name>
 				<technischerName>DatumDerBewertungszahl</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld BewertungszahlAktuell (183-192) -->
 			<feldreferenz referenz="183-192-BewertungszahlAktuell-Fliesskomma">
@@ -2479,16 +2502,19 @@
 			<feldreferenz referenz="193-200-VoraussichtlicherZuteilungstermin-Datum">
 				<name>Voraussichtlicher Zuteilungstermin</name>
 				<technischerName>VoraussichtlicherZuteilungstermin</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatumDerWiedergeltendmachung (201-208) -->
 			<feldreferenz referenz="201-208-DatumDerWiedergeltendmachung-Datum">
 				<name>Datum der Wiedergeltendmachung</name>
 				<technischerName>DatumDerWiedergeltendmachung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatumDerErstenAuszahlung (209-216) -->
 			<feldreferenz referenz="209-216-DatumDerErstenAuszahlung-Datum">
 				<name>Datum der ersten Auszahlung</name>
 				<technischerName>DatumDerErstenAuszahlung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Effektivzins (217-221) -->
 			<feldreferenz referenz="217-221-Effektivzins-Fliesskomma">
@@ -2591,6 +2617,7 @@
 			<feldreferenz referenz="102-109-erteilteNichtveranlagungsbescheinigunggueltigbis-Datum">
 				<name>erteilte Nichtveranlagungsbescheinigung gültig bis</name>
 				<technischerName>erteilteNichtveranlagungsbescheinigunggueltigbis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Zinsrhythmus (110-110) -->
 			<feldreferenz referenz="110-110-Zinsrhythmus-Numerisch">
@@ -2760,7 +2787,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>030</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -2897,7 +2924,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>190</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -2984,7 +3011,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0400</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -3043,16 +3070,19 @@
 			<feldreferenz referenz="046-053-Buchungsdat-Datum">
 				<name>Buchungsdatum</name>
 				<technischerName>Buchungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum AbrechnungszeitraumVon (54-61) -->
 			<feldreferenz referenz="054-061-AbrechnungszeitraumVon-Datum">
 				<name>Abrechnungszeitraum von</name>
 				<technischerName>AbrechnungszeitraumVon</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum AbrechnungszeitraumBis (62-69) -->
 			<feldreferenz referenz="062-069-AbrechnungszeitraumBis-Datum">
 				<name>Abrechnungszeitraum bis</name>
 				<technischerName>AbrechnungszeitraumBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zahlungsweise (70-70) -->
 			<feldreferenz referenz="070-070-Zahlungsweise-Alphanumerisch">
@@ -3063,11 +3093,13 @@
 			<feldreferenz referenz="071-078-Erstellungsdat-Datum">
 				<name>Erstellungsdatum</name>
 				<technischerName>Erstellungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (79-86) -->
 			<feldreferenz referenz="079-086-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld NachtragsNr (87-89) -->
 			<feldreferenz referenz="087-089-NachtragsNr-Numerisch">
@@ -3322,7 +3354,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>070</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -3609,7 +3641,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>130</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -3659,16 +3691,19 @@
 			<feldreferenz referenz="043-050-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (51-58) -->
 			<feldreferenz referenz="051-058-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (59-66) -->
 			<feldreferenz referenz="059-066-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ArtSumme3AN (67-69) -->
 			<feldreferenz referenz="067-069-ArtSumme3AN-Alphanumerisch">
@@ -3729,6 +3764,7 @@
 			<feldreferenz referenz="151-158-DatLetztenSummenanpassungVereinbart-Datum">
 				<name>Datum der letzten Summenanpassung - vereinbart -</name>
 				<technischerName>DatLetztenSummenanpassungVereinbart</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KzSummenanpassungIndividuell (159-159) -->
 			<feldreferenz referenz="159-159-KzSummenanpassungIndividuell-Alphanumerisch">
@@ -3744,6 +3780,7 @@
 			<feldreferenz referenz="165-172-DatLetztenSummenanpassungIndividuell-Datum">
 				<name>Datum der letzten Summenanpassung - individuell -</name>
 				<technischerName>DatLetztenSummenanpassungIndividuell</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KzZusaetzlicheRisikoanschrift (173-173) -->
 			<feldreferenz referenz="173-173-KzZusaetzlicheRisikoanschrift-Alphanumerisch">
@@ -3769,6 +3806,7 @@
 			<feldreferenz referenz="183-190-DatLetztenPraemienanpassung-Datum">
 				<name>Datum der letzten Prämienanpassung</name>
 				<technischerName>DatLetztenPraemienanpassung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GefahrenLfdNr (191-196) -->
 			<feldreferenz referenz="191-196-GefahrenLfdNr-Alphanumerisch">
@@ -3810,7 +3848,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>010.0</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -3885,6 +3923,7 @@
 			<feldreferenz referenz="122-129-GeburtsdatVp-Datum">
 				<name>Geburtsdatum der VP</name>
 				<technischerName>GeburtsdatVp</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschlechtVp (130-130) -->
 			<feldreferenz referenz="130-130-GeschlechtVp-Alphanumerisch">
@@ -3910,6 +3949,7 @@
 			<feldreferenz referenz="165-172-Geburtsdat2Vp-Datum">
 				<name>Geburtsdatum der 2. VP</name>
 				<technischerName>Geburtsdat2Vp</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld PersonenKundenNrVersicherers (173-189) -->
 			<feldreferenz referenz="173-189-PersonenKundenNrVersicherers-Alphanumerisch">
@@ -3927,6 +3967,7 @@
 			<feldreferenz referenz="207-214-Diensteintritt-Datum">
 				<name>Diensteintritt</name>
 				<technischerName>Diensteintritt</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld MitarbeiterStatus (215-216) -->
 			<feldreferenz referenz="215-216-MitarbeiterStatus-Numerisch">
@@ -3937,6 +3978,7 @@
 			<feldreferenz referenz="217-224-StatusSeit-Datum">
 				<name>Status seit</name>
 				<technischerName>StatusSeit</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Sozialversicherung (225-236) -->
 			<feldreferenz referenz="225-236-Sozialversicherung-Alphanumerisch">
@@ -3957,6 +3999,7 @@
 			<feldreferenz referenz="241-248-DatumUnverfallbarkeit-Datum">
 				<name>Datum Unverfallbarkeit</name>
 				<technischerName>DatumUnverfallbarkeit</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ArtDesBerufsschluesselverzeichnisses (249-249) -->
 			<feldreferenz referenz="249-249-ArtDesBerufsschluesselverzeichnisses-Alphanumerisch">
@@ -4112,7 +4155,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>020</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -4227,6 +4270,7 @@
 			<feldreferenz referenz="199-206-GueltigAb-Datum">
 				<name>gültig ab</name>
 				<technischerName>GueltigAb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld WertZuschreibungVorsorgezuschlag (207-218) -->
 			<feldreferenz referenz="207-218-WertZuschreibungVorsorgezuschlag-Fliesskomma">
@@ -4263,10 +4307,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (239-244) -->
-			<feldreferenz referenz="239-244-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (239-244) -->
+			<feldreferenz referenz="239-244-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ArtDesBerufsschluesselverzeichnisses (245-245) -->
 			<feldreferenz referenz="245-245-ArtDesBerufsschluesselverzeichnisses-Alphanumerisch">
@@ -4422,16 +4467,19 @@
 			<feldreferenz referenz="062-069-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ablauf (70-77) -->
 			<feldreferenz referenz="070-077-Ablauf-Datum">
 				<name>Ablauf</name>
 				<technischerName>Ablauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderung (78-85) -->
 			<feldreferenz referenz="078-085-Aenderung-Datum">
 				<name>Änderung</name>
 				<technischerName>Aenderung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Vertragslaufzeit (86-88) -->
 			<feldreferenz referenz="086-088-Vertragslaufzeit-Numerisch">
@@ -4492,11 +4540,13 @@
 			<feldreferenz referenz="125-132-Dynamikstop-Datum">
 				<name>Dynamikstop</name>
 				<technischerName>Dynamikstop</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatLetztenPositivenDynamik (133-140) -->
 			<feldreferenz referenz="133-140-DatLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
 				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld JahresrenteInWE (141-152) -->
 			<feldreferenz referenz="141-152-JahresrenteInWE-Fliesskomma">
@@ -4542,11 +4592,13 @@
 			<feldreferenz referenz="181-188-BuzLeistungVon-Datum">
 				<name>BUZ Leistung von</name>
 				<technischerName>BuzLeistungVon</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum BuzLeistungBis (189-196) -->
 			<feldreferenz referenz="189-196-BuzLeistungBis-Datum">
 				<name>BUZ Leistung bis</name>
 				<technischerName>BuzLeistungBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld BuzProzentSatz (197-201) -->
 			<feldreferenz referenz="197-201-BuzProzentSatz-Fliesskomma">
@@ -4562,6 +4614,7 @@
 			<feldreferenz referenz="205-212-AbweichenderAblauf-Datum">
 				<name>Abweichender Ablauf</name>
 				<technischerName>AbweichenderAblauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RisikozuschlagInWE (213-224) -->
 			<feldreferenz referenz="213-224-RisikozuschlagInWE-Fliesskomma">
@@ -4628,6 +4681,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -4668,6 +4722,7 @@
 			<feldreferenz referenz="122-129-UmstellungsdatFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
 				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitrag (130-141) -->
 			<feldreferenz referenz="130-141-ZukuenftigerBeitrag-Fliesskomma">
@@ -4683,6 +4738,7 @@
 			<feldreferenz referenz="172-179-Dynamikbeginn-Datum">
 				<name>Dynamikbeginn</name>
 				<technischerName>Dynamikbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AbweichendesDynamikendalter (180-182) -->
 			<feldreferenz referenz="180-182-AbweichendesDynamikendalter-Numerisch">
@@ -4740,7 +4796,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>140</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -4795,16 +4851,19 @@
 			<feldreferenz referenz="044-051-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (52-59) -->
 			<feldreferenz referenz="052-059-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (60-67) -->
 			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (68-70) -->
 			<feldreferenz referenz="068-070-Waehrungsschluessel-Alphanumerisch">
@@ -4871,10 +4930,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (146-151) -->
-			<feldreferenz referenz="146-151-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (146-151) -->
+			<feldreferenz referenz="146-151-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktname (152-171) -->
 			<feldreferenz referenz="152-171-Produktname-Alphanumerisch">
@@ -4911,7 +4971,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>110</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -5099,6 +5159,7 @@
 			<feldreferenz referenz="109-116-BeginndatNaechstenJahresrente-Datum">
 				<name>Beginndatum der nächsten Jahresrente</name>
 				<technischerName>BeginndatNaechstenJahresrente</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (117-255) -->
 			<feldreferenz referenz="117-255-Leerstellen-Alphanumerisch">
@@ -5126,7 +5187,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>190</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -5622,16 +5683,19 @@
 			<feldreferenz referenz="105-112-HaftungAb1-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis1 (113-120) -->
 			<feldreferenz referenz="113-120-HaftungBis1-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
 			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
 				<name>Ursprüngliches Haftungsbeginndatum</name>
 				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
 			<feldreferenz referenz="129-140-ProvisionspflichtigeBeitragssummeInWE2-Fliesskomma">
@@ -5667,11 +5731,13 @@
 			<feldreferenz referenz="170-177-HaftungAb2-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis2 (178-185) -->
 			<feldreferenz referenz="178-185-HaftungBis2-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
@@ -5694,7 +5760,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0382</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -5941,6 +6007,7 @@
 			<feldreferenz referenz="103-110-BeginndatNaechstenUnfallsumme-Datum">
 				<name>Beginndatum der nächsten Unfallsumme</name>
 				<technischerName>BeginndatNaechstenUnfallsumme</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (111-255) -->
 			<feldreferenz referenz="111-255-Leerstellen-Alphanumerisch">
@@ -6066,7 +6133,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>510</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -6264,16 +6331,19 @@
 			<feldreferenz referenz="105-112-HaftungAb1-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis1 (113-120) -->
 			<feldreferenz referenz="113-120-HaftungBis1-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
 			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
 				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
 			<feldreferenz referenz="129-140-ProvisionspflichtigeBeitragssummeInWE2-Fliesskomma">
@@ -6309,11 +6379,13 @@
 			<feldreferenz referenz="170-177-HaftungAb2-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis2 (178-185) -->
 			<feldreferenz referenz="178-185-HaftungBis2-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
@@ -6555,16 +6627,19 @@
 			<feldreferenz referenz="105-112-HaftungAb1-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis1 (113-120) -->
 			<feldreferenz referenz="113-120-HaftungBis1-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
 			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
 				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
 			<feldreferenz referenz="129-140-ProvisionspflichtigeBeitragssummeInWE2-Fliesskomma">
@@ -6600,11 +6675,13 @@
 			<feldreferenz referenz="170-177-HaftungAb2-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis2 (178-185) -->
 			<feldreferenz referenz="178-185-HaftungBis2-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
@@ -6632,7 +6709,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>140</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -6845,6 +6922,7 @@
 			<feldreferenz referenz="100-107-BeginndatNaechstenTodesfallVs-Datum">
 				<name>Beginndatum der nächsten Todesfall VS</name>
 				<technischerName>BeginndatNaechstenTodesfallVs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AnfaenglicheJahresrenteInWE (108-119) -->
 			<feldreferenz referenz="108-119-AnfaenglicheJahresrenteInWE-Fliesskomma">
@@ -6880,6 +6958,7 @@
 			<feldreferenz referenz="153-160-BeginndatNaechstenJahresrente-Datum">
 				<name>Beginndatum der nächsten Jahresrente</name>
 				<technischerName>BeginndatNaechstenJahresrente</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (161-255) -->
 			<feldreferenz referenz="161-255-Leerstellen-Alphanumerisch">
@@ -6907,7 +6986,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>080</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -7080,6 +7159,7 @@
 			<feldreferenz referenz="073-080-NaechsterAuszahlungstermin-Datum">
 				<name>Nächster Auszahlungstermin</name>
 				<technischerName>NaechsterAuszahlungstermin</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Auszahlungsweise (81-83) -->
 			<feldreferenz referenz="081-083-Auszahlungsweise-Numerisch">
@@ -7117,7 +7197,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>010</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -7217,6 +7297,7 @@
 			<feldreferenz referenz="159-166-Bezugsdatum-Datum">
 				<name>Bezugsdatum</name>
 				<technischerName>Bezugsdatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Prozentsatz (167-173) -->
 			<feldreferenz referenz="167-173-Prozentsatz-Fliesskomma">
@@ -7448,16 +7529,19 @@
 			<feldreferenz referenz="062-069-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ablauf (70-77) -->
 			<feldreferenz referenz="070-077-Ablauf-Datum">
 				<name>Ablauf</name>
 				<technischerName>Ablauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderung (78-85) -->
 			<feldreferenz referenz="078-085-Aenderung-Datum">
 				<name>Änderung</name>
 				<technischerName>Aenderung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Vertragslaufzeit (86-88) -->
 			<feldreferenz referenz="086-088-Vertragslaufzeit-Numerisch">
@@ -7503,11 +7587,13 @@
 			<feldreferenz referenz="113-120-Dynamikstop-Datum">
 				<name>Dynamikstop</name>
 				<technischerName>Dynamikstop</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatLetztenPositivenDynamik (121-128) -->
 			<feldreferenz referenz="121-128-DatLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
 				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Endalter (129-131) -->
 			<feldreferenz referenz="129-131-Endalter-Numerisch">
@@ -7538,6 +7624,7 @@
 			<feldreferenz referenz="154-161-AbweichenderAblauf-Datum">
 				<name>Abweichender Ablauf</name>
 				<technischerName>AbweichenderAblauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld NettobeitragInWE (162-173) -->
 			<feldreferenz referenz="162-173-NettobeitragInWE-Fliesskomma">
@@ -7630,6 +7717,7 @@
 			<feldreferenz referenz="122-129-UmstellungsdatFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
 				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitrag (130-141) -->
 			<feldreferenz referenz="130-141-ZukuenftigerBeitrag-Fliesskomma">
@@ -7645,6 +7733,7 @@
 			<feldreferenz referenz="172-179-Dynamikbeginn-Datum">
 				<name>Dynamikbeginn</name>
 				<technischerName>Dynamikbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AbweichendesDynamikendalter (180-182) -->
 			<feldreferenz referenz="180-182-AbweichendesDynamikendalter-Numerisch">
@@ -7702,7 +7791,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>550</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -7778,6 +7867,7 @@
 			<feldreferenz referenz="070-077-Stichtag-Datum">
 				<name>Stichtag</name>
 				<technischerName>Stichtag</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Waehrungskurs (78-88) -->
 			<feldreferenz referenz="078-088-Waehrungskurs-Fliesskomma">
@@ -7814,7 +7904,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0410</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -7863,11 +7953,13 @@
 			<feldreferenz referenz="043-050-AbrechnungszeitraumVon-Datum">
 				<name>Abrechnungszeitraum von</name>
 				<technischerName>AbrechnungszeitraumVon</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum AbrechnungszeitraumBis (51-58) -->
 			<feldreferenz referenz="051-058-AbrechnungszeitraumBis-Datum">
 				<name>Abrechnungszeitraum bis</name>
 				<technischerName>AbrechnungszeitraumBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld TeilspartenbeitragNettoinWE (59-69) -->
 			<feldreferenz referenz="059-069-TeilspartenbeitragNettoinWE-Fliesskomma">
@@ -8141,16 +8233,19 @@
 			<feldreferenz referenz="062-069-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ablauf (70-77) -->
 			<feldreferenz referenz="070-077-Ablauf-Datum">
 				<name>Ablauf</name>
 				<technischerName>Ablauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderung (78-85) -->
 			<feldreferenz referenz="078-085-Aenderung-Datum">
 				<name>Änderung</name>
 				<technischerName>Aenderung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Vertragslaufzeit (86-88) -->
 			<feldreferenz referenz="086-088-Vertragslaufzeit-Numerisch">
@@ -8186,6 +8281,7 @@
 			<feldreferenz referenz="124-131-UeberschussGueltigAb-Datum">
 				<name>Überschuss gültig ab</name>
 				<technischerName>UeberschussGueltigAb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Risikoeinschraenkung (132-132) -->
 			<feldreferenz referenz="132-132-Risikoeinschraenkung-Alphanumerisch">
@@ -8216,21 +8312,24 @@
 			<feldreferenz referenz="141-148-Dynamikstop-Datum">
 				<name>Dynamikstop</name>
 				<technischerName>Dynamikstop</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatLetztenPositivenDynamik (149-156) -->
 			<feldreferenz referenz="149-156-DatLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
 				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RueckkaufswertInWE (157-165) -->
 			<feldreferenz referenz="157-165-RueckkaufswertInWE-Numerisch">
 				<name>Rückkaufswert in Währungseinheiten</name>
 				<technischerName>RueckkaufswertInWE</technischerName>
 			</feldreferenz>
-			<!-- NumFeld RueckkaufswertGueltigAb (166-171) -->
-			<feldreferenz referenz="166-171-RueckkaufswertGueltigAb-Numerisch">
+			<!-- Datum RueckkaufswertGueltigAb (166-171) -->
+			<feldreferenz referenz="166-171-RueckkaufswertGueltigAb-Datum">
 				<name>Rückkaufswert gültig ab</name>
 				<technischerName>RueckkaufswertGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld GuthabenDividAnsammlungInWE (172-180) -->
 			<feldreferenz referenz="172-180-GuthabenDividAnsammlungInWE-Numerisch">
@@ -8241,6 +8340,7 @@
 			<feldreferenz referenz="181-188-BeginnRentenzahlung-Datum">
 				<name>Beginn der Rentenzahlung</name>
 				<technischerName>BeginnRentenzahlung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Mindestlaufzeit (189-190) -->
 			<feldreferenz referenz="189-190-Mindestlaufzeit-Numerisch">
@@ -8321,6 +8421,7 @@
 			<feldreferenz referenz="244-251-BeginnAbrufphase-Datum">
 				<name>Beginn Abrufphase</name>
 				<technischerName>BeginnAbrufphase</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (252-255) -->
 			<feldreferenz referenz="252-255-Leerstellen-Alphanumerisch">
@@ -8398,6 +8499,7 @@
 			<feldreferenz referenz="065-072-AbweichenderAblauf-Datum">
 				<name>Abweichender Ablauf</name>
 				<technischerName>AbweichenderAblauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld NettobeitragInWE (73-84) -->
 			<feldreferenz referenz="073-084-NettobeitragInWE-Fliesskomma">
@@ -8428,6 +8530,7 @@
 			<feldreferenz referenz="129-136-GeburtsdatMitzuversicherndenPerson-Datum">
 				<name>Geburtsdatum der mitzuversichernden Person</name>
 				<technischerName>GeburtsdatMitzuversicherndenPerson</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschlechtMitzuversicherndenPerson (137-137) -->
 			<feldreferenz referenz="137-137-GeschlechtMitzuversicherndenPerson-Alphanumerisch">
@@ -8443,6 +8546,7 @@
 			<feldreferenz referenz="168-175-UmstellungsdatFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
 				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitragInWE (176-187) -->
 			<feldreferenz referenz="176-187-ZukuenftigerBeitragInWE-Fliesskomma">
@@ -8458,6 +8562,7 @@
 			<feldreferenz referenz="218-225-Dynamikbeginn-Datum">
 				<name>Dynamikbeginn</name>
 				<technischerName>Dynamikbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AbweichendesDynamikendalter (226-228) -->
 			<feldreferenz referenz="226-228-AbweichendesDynamikendalter-Numerisch">
@@ -8611,10 +8716,11 @@
 				<name>Kapitalzahlungssumme inkl. Gewinnbeteiligung in WE</name>
 				<technischerName>KapitalzahlungssummeInklGewinnbeteiligungInWE</technischerName>
 			</feldreferenz>
-			<!-- NumFeld TerminDerBerechnung (186-191) -->
-			<feldreferenz referenz="186-191-TerminDerBerechnung-Numerisch">
+			<!-- Datum TerminDerBerechnung (186-191) -->
+			<feldreferenz referenz="186-191-TerminDerBerechnung-Datum">
 				<name>Termin der Berechnung</name>
 				<technischerName>TerminDerBerechnung</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Altersvorsorgevermoegen (192-205) -->
 			<feldreferenz referenz="192-205-Altersvorsorgevermoegen-Fliesskomma">
@@ -8652,7 +8758,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>030</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -8744,7 +8850,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>000</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -8804,16 +8910,19 @@
 			<feldreferenz referenz="048-055-Einschluss-Datum">
 				<name>Einschluss</name>
 				<technischerName>Einschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (56-63) -->
 			<feldreferenz referenz="056-063-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (64-71) -->
 			<feldreferenz referenz="064-071-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (72-74) -->
 			<feldreferenz referenz="072-074-Waehrungsschluessel-Alphanumerisch">
@@ -8970,6 +9079,7 @@
 			<feldreferenz referenz="158-165-Dat-Datum">
 				<name>Datum</name>
 				<technischerName>Dat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Zeitraum (166-168) -->
 			<feldreferenz referenz="166-168-Zeitraum-Numerisch">
@@ -9006,7 +9116,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>040</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -9172,21 +9282,25 @@
 			<feldreferenz referenz="179-186-LetzteErhoehung8IiiAhb-Datum">
 				<name>letzte Erhöhung § 8,III AHB</name>
 				<technischerName>LetzteErhoehung8IiiAhb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Beginn (187-194) -->
 			<feldreferenz referenz="187-194-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (195-202) -->
 			<feldreferenz referenz="195-202-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (203-210) -->
 			<feldreferenz referenz="203-210-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (211-256) -->
 			<feldreferenz referenz="211-256-Leerstellen-Alphanumerisch">
@@ -9300,7 +9414,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>550</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -9416,11 +9530,13 @@
 			<feldreferenz referenz="147-154-DatErsteEinzahlung-Datum">
 				<name>Datum erste Einzahlung</name>
 				<technischerName>DatErsteEinzahlung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatLetzteEinzahlung (155-162) -->
 			<feldreferenz referenz="155-162-DatLetzteEinzahlung-Datum">
 				<name>Datum letzte Einzahlung</name>
 				<technischerName>DatLetzteEinzahlung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld DynamikEinzahlungen (163-167) -->
 			<feldreferenz referenz="163-167-DynamikEinzahlungen-Fliesskomma">
@@ -9451,6 +9567,7 @@
 			<feldreferenz referenz="182-189-DatDynamisierungEinzahlungen-Datum">
 				<name>Datum Dynamisierung Einzahlungen</name>
 				<technischerName>DatDynamisierungEinzahlungen</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld MindestguthabenAusschuettung (190-201) -->
 			<feldreferenz referenz="190-201-MindestguthabenAusschuettung-Fliesskomma">
@@ -9471,16 +9588,19 @@
 			<feldreferenz referenz="210-217-DatDynamisierungAusschuettungen-Datum">
 				<name>Datum Dynamisierung Ausschüttungen</name>
 				<technischerName>DatDynamisierungAusschuettungen</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatErsteAusschuettung (218-225) -->
 			<feldreferenz referenz="218-225-DatErsteAusschuettung-Datum">
 				<name>Datum erste Ausschüttung</name>
 				<technischerName>DatErsteAusschuettung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatLetzteAusschuettung (226-233) -->
 			<feldreferenz referenz="226-233-DatLetzteAusschuettung-Datum">
 				<name>Datum letzte Ausschüttung</name>
 				<technischerName>DatLetzteAusschuettung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (234-256) -->
 			<feldreferenz referenz="234-256-Leerstellen-Alphanumerisch">
@@ -9502,7 +9622,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>030</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -9557,16 +9677,19 @@
 			<feldreferenz referenz="044-051-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (52-59) -->
 			<feldreferenz referenz="052-059-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (60-67) -->
 			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AllgemeineVerssbedingungen (68-71) -->
 			<feldreferenz referenz="068-071-AllgemeineVerssbedingungen-Numerisch">
@@ -9593,15 +9716,17 @@
 				<name>Dynamik in %</name>
 				<technischerName>DynamikInProz</technischerName>
 			</feldreferenz>
-			<!-- NumFeld LetzteErhoehung (80-85) -->
-			<feldreferenz referenz="080-085-LetzteErhoehung-Numerisch">
+			<!-- Datum LetzteErhoehung (80-85) -->
+			<feldreferenz referenz="080-085-LetzteErhoehung-Datum">
 				<name>Letzte Erhöhung</name>
 				<technischerName>LetzteErhoehung</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- NumFeld NaechsteErhoehung (86-91) -->
-			<feldreferenz referenz="086-091-NaechsteErhoehung-Numerisch">
+			<!-- Datum NaechsteErhoehung (86-91) -->
+			<feldreferenz referenz="086-091-NaechsteErhoehung-Datum">
 				<name>Nächste Erhöhung</name>
 				<technischerName>NaechsteErhoehung</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Beitragsregulierung (92-92) -->
 			<feldreferenz referenz="092-092-Beitragsregulierung-Alphanumerisch">
@@ -9683,10 +9808,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (204-209) -->
-			<feldreferenz referenz="204-209-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (204-209) -->
+			<feldreferenz referenz="204-209-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktname (210-229) -->
 			<feldreferenz referenz="210-229-Produktname-Alphanumerisch">
@@ -9728,7 +9854,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>080</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -9970,7 +10096,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0392</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -10034,16 +10160,19 @@
 			<feldreferenz referenz="054-061-AbrufbarBis-Datum">
 				<name>Abrufbar bis</name>
 				<technischerName>AbrufbarBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum GueltigBis (62-69) -->
 			<feldreferenz referenz="062-069-GueltigBis-Datum">
 				<name>Gültig bis</name>
 				<technischerName>GueltigBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum BeginnVersicherungsschutz (70-77) -->
 			<feldreferenz referenz="070-077-BeginnVersicherungsschutz-Datum">
 				<name>Beginn Versicherungsschutz (Gültig ab)</name>
 				<technischerName>BeginnVersicherungsschutz</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld FahrtenMitUngestempeltemKennzeichen (78-78) -->
 			<feldreferenz referenz="078-078-FahrtenMitUngestempeltemKennzeichen-Alphanumerisch">
@@ -10424,7 +10553,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0390</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -10498,6 +10627,7 @@
 			<feldreferenz referenz="129-136-VersiondesSchluesselverzeichnisses-Datum">
 				<name>Version des Schlüsselverzeichnisses</name>
 				<technischerName>VersiondesSchluesselverzeichnisses</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RabattZuschlaginProzent (137-141) -->
 			<feldreferenz referenz="137-141-RabattZuschlaginProzent-Fliesskomma">
@@ -10518,11 +10648,13 @@
 			<feldreferenz referenz="155-162-GueltigAbDatum-Datum">
 				<name>Gültig ab-Datum</name>
 				<technischerName>GueltigAbDatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum GueltigBisDatum (163-170) -->
 			<feldreferenz referenz="163-170-GueltigBisDatum-Datum">
 				<name>Gültig bis-Datum</name>
 				<technischerName>GueltigBisDatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen1 (171-211) -->
 			<feldreferenz referenz="171-211-Leerstellen1-Alphanumerisch">
@@ -10693,7 +10825,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>190</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -10780,7 +10912,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>110</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -10965,7 +11097,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0420</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -11185,7 +11317,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>051</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -11297,7 +11429,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0300</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -11346,6 +11478,7 @@
 			<feldreferenz referenz="043-050-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AnteilVersicherersAmVertrag (51-55) -->
 			<feldreferenz referenz="051-055-AnteilVersicherersAmVertrag-Fliesskomma">
@@ -11545,7 +11678,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>170</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -11637,7 +11770,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>040</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -11692,16 +11825,19 @@
 			<feldreferenz referenz="044-051-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (52-59) -->
 			<feldreferenz referenz="052-059-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (60-67) -->
 			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Summenart1 (68-68) -->
 			<feldreferenz referenz="068-068-Summenart1-Alphanumerisch">
@@ -11838,10 +11974,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (189-194) -->
-			<feldreferenz referenz="189-194-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (189-194) -->
+			<feldreferenz referenz="189-194-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktname (195-214) -->
 			<feldreferenz referenz="195-214-Produktname-Alphanumerisch">
@@ -11873,7 +12010,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>190</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -11949,11 +12086,13 @@
 			<feldreferenz referenz="084-091-AbrechnungszeitraumVon-Datum">
 				<name>Abrechnungszeitraum von</name>
 				<technischerName>AbrechnungszeitraumVon</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum AbrechnungszeitraumBis (92-99) -->
 			<feldreferenz referenz="092-099-AbrechnungszeitraumBis-Datum">
 				<name>Abrechnungszeitraum bis</name>
 				<technischerName>AbrechnungszeitraumBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeltungsbereichUmsatzanmeldung (100-129) -->
 			<feldreferenz referenz="100-129-GeltungsbereichUmsatzanmeldung-Alphanumerisch">
@@ -12045,7 +12184,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>580.01</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -12111,6 +12250,7 @@
 			<feldreferenz referenz="048-055-LetzterStichtag-Datum">
 				<name>Letzter Stichtag</name>
 				<technischerName>LetzterStichtag</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld BewertungszahlLetzterStichtag (56-62) -->
 			<feldreferenz referenz="056-062-BewertungszahlLetzterStichtag-Fliesskomma">
@@ -12166,31 +12306,37 @@
 			<feldreferenz referenz="117-124-MindestansparungErreicht-Datum">
 				<name>Mindestansparung erreicht</name>
 				<technischerName>MindestansparungErreicht</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Zuteilung (125-132) -->
 			<feldreferenz referenz="125-132-Zuteilung-Datum">
 				<name>Zuteilung</name>
 				<technischerName>Zuteilung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Zuteilungsangebot (133-140) -->
 			<feldreferenz referenz="133-140-Zuteilungsangebot-Datum">
 				<name>Zuteilungsangebot</name>
 				<technischerName>Zuteilungsangebot</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Zuteilungsannahme (141-148) -->
 			<feldreferenz referenz="141-148-Zuteilungsannahme-Datum">
 				<name>Zuteilungsannahme</name>
 				<technischerName>Zuteilungsannahme</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Zuteilungswiderruf (149-156) -->
 			<feldreferenz referenz="149-156-Zuteilungswiderruf-Datum">
 				<name>Zuteilungswiderruf</name>
 				<technischerName>Zuteilungswiderruf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Zuteilungssperre (157-164) -->
 			<feldreferenz referenz="157-164-Zuteilungssperre-Datum">
 				<name>Zuteilungssperre</name>
 				<technischerName>Zuteilungssperre</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld TatsaechlicheBewertungszahlBeiZuteilung (165-171) -->
 			<feldreferenz referenz="165-171-TatsaechlicheBewertungszahlBeiZuteilung-Fliesskomma">
@@ -12201,11 +12347,13 @@
 			<feldreferenz referenz="172-179-AblaufBindefristWopVl-Datum">
 				<name>Ablauf Bindefrist WOP/VL</name>
 				<technischerName>AblaufBindefristWopVl</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum AblaufSteuerlicheBindung (180-187) -->
 			<feldreferenz referenz="180-187-AblaufSteuerlicheBindung-Datum">
 				<name>Ablauf steuerliche Bindung</name>
 				<technischerName>AblaufSteuerlicheBindung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld VorgerechneterZinsLaufendeJahr (188-195) -->
 			<feldreferenz referenz="188-195-VorgerechneterZinsLaufendeJahr-Fliesskomma">
@@ -12231,6 +12379,7 @@
 			<feldreferenz referenz="215-222-Vertragsaenderung-Datum">
 				<name>Vertragsänderung</name>
 				<technischerName>Vertragsaenderung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ArtVertragsaenderung (223-223) -->
 			<feldreferenz referenz="223-223-ArtVertragsaenderung-Alphanumerisch">
@@ -12400,11 +12549,13 @@
 			<feldreferenz referenz="047-054-gueltigAb-Datum">
 				<name>gültig ab</name>
 				<technischerName>gueltigAb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum gueltigBis (55-62) -->
 			<feldreferenz referenz="055-062-gueltigBis-Datum">
 				<name>gültig bis</name>
 				<technischerName>gueltigBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ErteilterFreibetrag (63-72) -->
 			<feldreferenz referenz="063-072-ErteilterFreibetrag-Fliesskomma">
@@ -12435,6 +12586,7 @@
 			<feldreferenz referenz="175-182-DatumDerBewertungszahl-Datum">
 				<name>Datum der Bewertungszahl</name>
 				<technischerName>DatumDerBewertungszahl</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld BewertungszahlAktuell (183-192) -->
 			<feldreferenz referenz="183-192-BewertungszahlAktuell-Fliesskomma">
@@ -12445,16 +12597,19 @@
 			<feldreferenz referenz="193-200-VoraussichtlicherZuteilungstermin-Datum">
 				<name>Voraussichtlicher Zuteilungstermin</name>
 				<technischerName>VoraussichtlicherZuteilungstermin</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatumDerWiedergeltendmachung (201-208) -->
 			<feldreferenz referenz="201-208-DatumDerWiedergeltendmachung-Datum">
 				<name>Datum der Wiedergeltendmachung</name>
 				<technischerName>DatumDerWiedergeltendmachung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatumDerErstenAuszahlung (209-216) -->
 			<feldreferenz referenz="209-216-DatumDerErstenAuszahlung-Datum">
 				<name>Datum der ersten Auszahlung</name>
 				<technischerName>DatumDerErstenAuszahlung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld EffektivzinsInProzent (217-221) -->
 			<feldreferenz referenz="217-221-EffektivzinsInProzent-Fliesskomma">
@@ -12542,7 +12697,6 @@
 			<feldreferenz referenz="086-086-VorzeichenKontostandVorjahr-Alphanumerisch">
 				<name>Vorzeichen Kontostand Vorjahr</name>
 				<technischerName>VorzeichenKontostandVorjahr</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld LeistungsstandTilgerkonto (87-100) -->
 			<feldreferenz referenz="087-100-LeistungsstandTilgerkonto-Fliesskomma">
@@ -12558,6 +12712,7 @@
 			<feldreferenz referenz="102-109-erteilteNichtveranlagungsbescheinigunggueltigbis-Datum">
 				<name>erteilte Nichtveranlagungsbescheinigung gültig bis</name>
 				<technischerName>erteilteNichtveranlagungsbescheinigunggueltigbis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Zinsrhythmus (110-110) -->
 			<feldreferenz referenz="110-110-Zinsrhythmus-Numerisch">
@@ -12634,7 +12789,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>550</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -12720,6 +12875,7 @@
 			<feldreferenz referenz="133-140-Stichtag-Datum">
 				<name>Stichtag</name>
 				<technischerName>Stichtag</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Anteile (141-154) -->
 			<feldreferenz referenz="141-154-Anteile-Fliesskomma">
@@ -12770,6 +12926,7 @@
 			<feldreferenz referenz="203-210-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Sparrate (211-222) -->
 			<feldreferenz referenz="211-222-Sparrate-Fliesskomma">
@@ -12806,7 +12963,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>684</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -12861,16 +13018,19 @@
 			<feldreferenz referenz="044-051-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (52-59) -->
 			<feldreferenz referenz="052-059-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdatum (60-67) -->
 			<feldreferenz referenz="060-067-Aenderungsdatum-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Tarifbezeichnung (68-97) -->
 			<feldreferenz referenz="068-097-Tarifbezeichnung-Alphanumerisch">
@@ -12993,7 +13153,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>030</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -13074,6 +13234,7 @@
 			<feldreferenz referenz="146-153-GeburtsdatVp-Datum">
 				<name>Geburtsdatum der VP</name>
 				<technischerName>GeburtsdatVp</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschlechtVp (154-154) -->
 			<feldreferenz referenz="154-154-GeschlechtVp-Alphanumerisch">
@@ -13129,16 +13290,19 @@
 			<feldreferenz referenz="216-223-EinschlussdatVpPersonengruppe-Datum">
 				<name>Einschlussdatum VP / Personengruppe</name>
 				<technischerName>EinschlussdatVpPersonengruppe</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum AusschlussdatVpPersonengruppe (224-231) -->
 			<feldreferenz referenz="224-231-AusschlussdatVpPersonengruppe-Datum">
 				<name>Ausschlussdatum VP / Personengruppe</name>
 				<technischerName>AusschlussdatVpPersonengruppe</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (232-239) -->
 			<feldreferenz referenz="232-239-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld BesondereVereinbarungenZumFluggastrisiko (240-240) -->
 			<feldreferenz referenz="240-240-BesondereVereinbarungenZumFluggastrisiko-Alphanumerisch">
@@ -13619,11 +13783,13 @@
 			<feldreferenz referenz="050-057-BeitragszahlungBis-Datum">
 				<name>Beitragszahlung bis</name>
 				<technischerName>BeitragszahlungBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Rueckgewaehrdatum (58-65) -->
 			<feldreferenz referenz="058-065-Rueckgewaehrdatum-Datum">
 				<name>Rückgewährdatum</name>
 				<technischerName>Rueckgewaehrdatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RueckgewaehrsummeZumAblaufInWaehrungseinheiten (66-79) -->
 			<feldreferenz referenz="066-079-RueckgewaehrsummeZumAblaufInWaehrungseinheiten-Fliesskomma">
@@ -13654,6 +13820,7 @@
 			<feldreferenz referenz="136-143-BerechnungsstichtagZumRueckkaufswert-Datum">
 				<name>Berechnungsstichtag zum Rückkaufswert</name>
 				<technischerName>BerechnungsstichtagZumRueckkaufswert</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld KapitalertragssteuerBeiRueckkaufZumBerechnungsstichtag (144-157) -->
 			<feldreferenz referenz="144-157-KapitalertragssteuerBeiRueckkaufZumBerechnungsstichtag-Fliesskomma">
@@ -13772,6 +13939,7 @@
 			<feldreferenz referenz="107-114-GeburtsdatumDerBezugsberechtigtenPerson-Datum">
 				<name>Geburtsdatum der bezugsberechtigten Person</name>
 				<technischerName>GeburtsdatumDerBezugsberechtigtenPerson</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (115-249) -->
 			<feldreferenz referenz="115-249-Leerstellen-Alphanumerisch">
@@ -13804,7 +13972,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>560</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -13875,6 +14043,7 @@
 			<feldreferenz referenz="079-086-DatumLetzteBuchung-Datum">
 				<name>Datum letzte Buchung</name>
 				<technischerName>DatumLetzteBuchung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Lastschriftbetrag (87-98) -->
 			<feldreferenz referenz="087-098-Lastschriftbetrag-Fliesskomma">
@@ -13911,7 +14080,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>550</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -13992,6 +14161,7 @@
 			<feldreferenz referenz="103-110-Valuta-Datum">
 				<name>Valuta</name>
 				<technischerName>Valuta</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ReferenzNr (111-127) -->
 			<feldreferenz referenz="111-127-ReferenzNr-Alphanumerisch">
@@ -14068,7 +14238,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>550</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -14139,11 +14309,13 @@
 			<feldreferenz referenz="067-074-Termin-Datum">
 				<name>Termin</name>
 				<technischerName>Termin</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Stichtag (75-82) -->
 			<feldreferenz referenz="075-082-Stichtag-Datum">
 				<name>Stichtag</name>
 				<technischerName>Stichtag</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Ausschuettung (83-94) -->
 			<feldreferenz referenz="083-094-Ausschuettung-Fliesskomma">
@@ -14205,7 +14377,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>054</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -14515,16 +14687,19 @@
 			<feldreferenz referenz="105-112-HaftungAb1-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis1 (113-120) -->
 			<feldreferenz referenz="113-120-HaftungBis1-Datum">
 				<name>Kopie von Haftung bis</name>
 				<technischerName>HaftungBis1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
 			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
 				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
 			<feldreferenz referenz="129-140-ProvisionspflichtigeBeitragssummeInWE2-Fliesskomma">
@@ -14560,11 +14735,13 @@
 			<feldreferenz referenz="170-177-HaftungAb2-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis2 (178-185) -->
 			<feldreferenz referenz="178-185-HaftungBis2-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
@@ -14592,7 +14769,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>055</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -14805,6 +14982,7 @@
 			<feldreferenz referenz="109-116-BeginndatNaechstenTodesfallVs-Datum">
 				<name>Beginndatum der nächsten Todesfall VS</name>
 				<technischerName>BeginndatNaechstenTodesfallVs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AnfaenglicheJahresrenteInWE (117-128) -->
 			<feldreferenz referenz="117-128-AnfaenglicheJahresrenteInWE-Fliesskomma">
@@ -14840,6 +15018,7 @@
 			<feldreferenz referenz="162-169-BeginndatNaechstenJahresrente-Datum">
 				<name>Beginndatum der nächsten Jahresrente</name>
 				<technischerName>BeginndatNaechstenJahresrente</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (170-255) -->
 			<feldreferenz referenz="170-255-Leerstellen-Alphanumerisch">
@@ -14867,7 +15046,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>052</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -15060,6 +15239,7 @@
 			<feldreferenz referenz="076-083-NaechsterAuszahlungstermin-Datum">
 				<name>Nächster Auszahlungstermin</name>
 				<technischerName>NaechsterAuszahlungstermin</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Auszahlungsweise (84-86) -->
 			<feldreferenz referenz="084-086-Auszahlungsweise-Numerisch">
@@ -15097,7 +15277,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>053</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -15443,16 +15623,19 @@
 			<feldreferenz referenz="105-112-HaftungAb1-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis1 (113-120) -->
 			<feldreferenz referenz="113-120-HaftungBis1-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
 			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
 				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
 			<feldreferenz referenz="129-140-ProvisionspflichtigeBeitragssummeInWE2-Fliesskomma">
@@ -15488,11 +15671,13 @@
 			<feldreferenz referenz="170-177-HaftungAb2-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis2 (178-185) -->
 			<feldreferenz referenz="178-185-HaftungBis2-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
@@ -15520,7 +15705,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>059</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -15723,6 +15908,7 @@
 			<feldreferenz referenz="100-107-BeginndatNaechstenTodesfallVs-Datum">
 				<name>Beginndatum der nächsten Todesfall VS</name>
 				<technischerName>BeginndatNaechstenTodesfallVs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (108-255) -->
 			<feldreferenz referenz="108-255-Leerstellen-Alphanumerisch">
@@ -15929,16 +16115,19 @@
 			<feldreferenz referenz="062-069-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ablauf (70-77) -->
 			<feldreferenz referenz="070-077-Ablauf-Datum">
 				<name>Ablauf</name>
 				<technischerName>Ablauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderung (78-85) -->
 			<feldreferenz referenz="078-085-Aenderung-Datum">
 				<name>Änderung</name>
 				<technischerName>Aenderung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Vertragslaufzeit (86-88) -->
 			<feldreferenz referenz="086-088-Vertragslaufzeit-Numerisch">
@@ -15974,6 +16163,7 @@
 			<feldreferenz referenz="124-131-UeberschussGueltigAb-Datum">
 				<name>Überschuss gültig ab</name>
 				<technischerName>UeberschussGueltigAb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Risikoeinschraenkung (132-132) -->
 			<feldreferenz referenz="132-132-Risikoeinschraenkung-Alphanumerisch">
@@ -16004,21 +16194,24 @@
 			<feldreferenz referenz="141-148-Dynamikstop-Datum">
 				<name>Dynamikstop</name>
 				<technischerName>Dynamikstop</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatLetztenPositivenDynamik (149-156) -->
 			<feldreferenz referenz="149-156-DatLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
 				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RueckkaufswertInWE (157-168) -->
 			<feldreferenz referenz="157-168-RueckkaufswertInWE-Fliesskomma">
 				<name>Rückkaufswert in Währungseinheiten</name>
 				<technischerName>RueckkaufswertInWE</technischerName>
 			</feldreferenz>
-			<!-- NumFeld RueckkaufswertGueltigAb (169-174) -->
-			<feldreferenz referenz="169-174-RueckkaufswertGueltigAb-Numerisch">
+			<!-- Datum RueckkaufswertGueltigAb (169-174) -->
+			<feldreferenz referenz="169-174-RueckkaufswertGueltigAb-Datum">
 				<name>Rückkaufswert gültig ab</name>
 				<technischerName>RueckkaufswertGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld GuthabenDividAnsammlungInWE (175-186) -->
 			<feldreferenz referenz="175-186-GuthabenDividAnsammlungInWE-Fliesskomma">
@@ -16029,6 +16222,7 @@
 			<feldreferenz referenz="187-194-BeginnRentenzahlung-Datum">
 				<name>Beginn der Rentenzahlung</name>
 				<technischerName>BeginnRentenzahlung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Mindestlaufzeit (195-196) -->
 			<feldreferenz referenz="195-196-Mindestlaufzeit-Numerisch">
@@ -16181,6 +16375,7 @@
 			<feldreferenz referenz="065-072-AbweichenderAblauf-Datum">
 				<name>Abweichender Ablauf</name>
 				<technischerName>AbweichenderAblauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld NettobeitragInWE (73-84) -->
 			<feldreferenz referenz="073-084-NettobeitragInWE-Fliesskomma">
@@ -16211,6 +16406,7 @@
 			<feldreferenz referenz="129-136-GeburtsdatMitzuversicherndenPerson-Datum">
 				<name>Geburtsdatum der mitzuversichernden Person</name>
 				<technischerName>GeburtsdatMitzuversicherndenPerson</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschlechtMitzuversicherndenPerson (137-137) -->
 			<feldreferenz referenz="137-137-GeschlechtMitzuversicherndenPerson-Alphanumerisch">
@@ -16226,6 +16422,7 @@
 			<feldreferenz referenz="168-175-UmstellungsdatFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
 				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitragInWE (176-187) -->
 			<feldreferenz referenz="176-187-ZukuenftigerBeitragInWE-Fliesskomma">
@@ -16236,6 +16433,7 @@
 			<feldreferenz referenz="188-195-Dynamikbeginn-Datum">
 				<name>Dynamikbeginn</name>
 				<technischerName>Dynamikbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AbweichendesDynamikendalter (196-198) -->
 			<feldreferenz referenz="196-198-AbweichendesDynamikendalter-Numerisch">
@@ -16271,6 +16469,7 @@
 			<feldreferenz referenz="227-234-BeginnAbrufphase-Datum">
 				<name>Beginn Abrufphase</name>
 				<technischerName>BeginnAbrufphase</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld JahresrenteInWaehrungseinheiten (235-248) -->
 			<feldreferenz referenz="235-248-JahresrenteInWaehrungseinheiten-Fliesskomma">
@@ -16496,10 +16695,11 @@
 				<name>Kapitalzahlungssumme inkl. Gewinnbeteiligung in WE</name>
 				<technischerName>KapitalzahlungssummeInklGewinnbeteiligungInWE</technischerName>
 			</feldreferenz>
-			<!-- NumFeld TerminDerBerechnung (123-128) -->
-			<feldreferenz referenz="123-128-TerminDerBerechnung-Numerisch">
+			<!-- Datum TerminDerBerechnung (123-128) -->
+			<feldreferenz referenz="123-128-TerminDerBerechnung-Datum">
 				<name>Termin der Berechnung</name>
 				<technischerName>TerminDerBerechnung</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Altersvorsorgevermoegen (129-142) -->
 			<feldreferenz referenz="129-142-Altersvorsorgevermoegen-Fliesskomma">
@@ -16542,7 +16742,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>000</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -16704,16 +16904,19 @@
 			<feldreferenz referenz="062-069-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ablauf (70-77) -->
 			<feldreferenz referenz="070-077-Ablauf-Datum">
 				<name>Ablauf</name>
 				<technischerName>Ablauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderung (78-85) -->
 			<feldreferenz referenz="078-085-Aenderung-Datum">
 				<name>Änderung</name>
 				<technischerName>Aenderung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Vertragslaufzeit (86-88) -->
 			<feldreferenz referenz="086-088-Vertragslaufzeit-Numerisch">
@@ -16784,11 +16987,13 @@
 			<feldreferenz referenz="135-142-Dynamikstop-Datum">
 				<name>Dynamikstop</name>
 				<technischerName>Dynamikstop</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatLetztenPositivenDynamik (143-150) -->
 			<feldreferenz referenz="143-150-DatLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
 				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld JahresrenteInWE (151-162) -->
 			<feldreferenz referenz="151-162-JahresrenteInWE-Fliesskomma">
@@ -16824,6 +17029,7 @@
 			<feldreferenz referenz="184-191-AbweichenderAblauf-Datum">
 				<name>Abweichender Ablauf</name>
 				<technischerName>AbweichenderAblauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RisikozuschlagInWE (192-203) -->
 			<feldreferenz referenz="192-203-RisikozuschlagInWE-Fliesskomma">
@@ -16911,6 +17117,7 @@
 			<feldreferenz referenz="122-129-UmstellungsdatFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
 				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitrag (130-141) -->
 			<feldreferenz referenz="130-141-ZukuenftigerBeitrag-Fliesskomma">
@@ -16926,6 +17133,7 @@
 			<feldreferenz referenz="172-179-Dynamikbeginn-Datum">
 				<name>Dynamikbeginn</name>
 				<technischerName>Dynamikbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AbweichendesDynamikendalter (180-182) -->
 			<feldreferenz referenz="180-182-AbweichendesDynamikendalter-Numerisch">
@@ -16978,7 +17186,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0550</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -17076,16 +17284,19 @@
 			<feldreferenz referenz="134-141-RisikoTransportbeginndat-Datum">
 				<name>Risiko- / Transportbeginndatum</name>
 				<technischerName>RisikoTransportbeginndat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Schadendat (142-149) -->
 			<feldreferenz referenz="142-149-Schadendat-Datum">
 				<name>Schadendatum</name>
 				<technischerName>Schadendat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Schadenmeldedat (150-157) -->
 			<feldreferenz referenz="150-157-Schadenmeldedat-Datum">
 				<name>Schadenmeldedatum</name>
 				<technischerName>Schadenmeldedat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Schadensparte (158-160) -->
 			<feldreferenz referenz="158-160-Schadensparte-Alphanumerisch">
@@ -17172,7 +17383,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0430</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -17277,7 +17488,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>050</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -17367,6 +17578,7 @@
 			<feldreferenz referenz="126-133-Erstzulassung-Datum">
 				<name>Erstzulassung</name>
 				<technischerName>Erstzulassung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld NeupreisInWE (134-140) -->
 			<feldreferenz referenz="134-140-NeupreisInWE-Numerisch">
@@ -17506,10 +17718,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (48-53) -->
-			<feldreferenz referenz="048-053-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (48-53) -->
+			<feldreferenz referenz="048-053-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Fahrzeugart (54-83) -->
 			<feldreferenz referenz="054-083-Fahrzeugart-Alphanumerisch">
@@ -17530,11 +17743,13 @@
 			<feldreferenz referenz="089-096-Baujahr-Datum">
 				<name>Baujahr</name>
 				<technischerName>Baujahr</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum ErsteZulassungAufDenVn (97-104) -->
 			<feldreferenz referenz="097-104-ErsteZulassungAufDenVn-Datum">
 				<name>Erste Zulassung auf den VN</name>
 				<technischerName>ErsteZulassungAufDenVn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ArtZulassungBeimVorbesitzer (105-106) -->
 			<feldreferenz referenz="105-106-ArtZulassungBeimVorbesitzer-Alphanumerisch">
@@ -17605,11 +17820,13 @@
 			<feldreferenz referenz="195-202-BeginnVersicherungsschutz-Datum">
 				<name>Beginn Versicherungsschutz</name>
 				<technischerName>BeginnVersicherungsschutz</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum EndedatumBeiRotenKennzeichen (203-210) -->
 			<feldreferenz referenz="203-210-EndedatumBeiRotenKennzeichen-Datum">
 				<name>Endedatum des Versicherungsschutzes bei roten Kennzeichen</name>
 				<technischerName>EndedatumBeiRotenKennzeichen</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld GueltigkeitsdauerInTagenBeiKurzzeitkennzeichen (211-212) -->
 			<feldreferenz referenz="211-212-GueltigkeitsdauerInTagenBeiKurzzeitkennzeichen-Numerisch">
@@ -17677,7 +17894,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>170</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -17738,16 +17955,19 @@
 			<feldreferenz referenz="045-052-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (53-60) -->
 			<feldreferenz referenz="053-060-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (61-68) -->
 			<feldreferenz referenz="061-068-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (69-71) -->
 			<feldreferenz referenz="069-071-Waehrungsschluessel-Alphanumerisch">
@@ -17904,10 +18124,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (243-248) -->
-			<feldreferenz referenz="243-248-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (243-248) -->
+			<feldreferenz referenz="243-248-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (249-256) -->
 			<feldreferenz referenz="249-256-Leerstellen-Alphanumerisch">
@@ -17991,7 +18212,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>020.1</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -18081,6 +18302,7 @@
 			<feldreferenz referenz="131-138-GeburtsdatVp-Datum">
 				<name>Geburtsdatum der VP</name>
 				<technischerName>GeburtsdatVp</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Staatsangehoerigkeit (139-141) -->
 			<feldreferenz referenz="139-141-Staatsangehoerigkeit-Alphanumerisch">
@@ -18121,6 +18343,7 @@
 			<feldreferenz referenz="181-188-VerssbeginnVpUrsprungsbeginn-Datum">
 				<name>Versicherungsbeginn der VP / Ursprungsbeginn</name>
 				<technischerName>VerssbeginnVpUrsprungsbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ReferenzVsNrBeiVertragstrennungZusammenlegung (189-205) -->
 			<feldreferenz referenz="189-205-ReferenzVsNrBeiVertragstrennungZusammenlegung-Alphanumerisch">
@@ -18177,7 +18400,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>570</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -18268,16 +18491,19 @@
 			<feldreferenz referenz="120-127-Zusagedatum-Datum">
 				<name>Zusagedatum</name>
 				<technischerName>Zusagedatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum LetzteProlongation (128-135) -->
 			<feldreferenz referenz="128-135-LetzteProlongation-Datum">
 				<name>Letzte Prolongation</name>
 				<technischerName>LetzteProlongation</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum LetzteBuchung (136-143) -->
 			<feldreferenz referenz="136-143-LetzteBuchung-Datum">
 				<name>Letzte Buchung</name>
 				<technischerName>LetzteBuchung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KennzeichenKontogebuehr (144-144) -->
 			<feldreferenz referenz="144-144-KennzeichenKontogebuehr-Alphanumerisch">
@@ -18314,7 +18540,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>020.3</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -18389,11 +18615,13 @@
 			<feldreferenz referenz="053-060-Risikozuschlag1Ab-Datum">
 				<name>Risikozuschlag 1 ab</name>
 				<technischerName>Risikozuschlag1Ab</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Risikozuschlag1Bis (61-68) -->
 			<feldreferenz referenz="061-068-Risikozuschlag1Bis-Datum">
 				<name>Risikozuschlag 1 bis</name>
 				<technischerName>Risikozuschlag1Bis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Risikozuschlag2InProzent (69-71) -->
 			<feldreferenz referenz="069-071-Risikozuschlag2InProzent-Numerisch">
@@ -18404,11 +18632,13 @@
 			<feldreferenz referenz="072-079-Risikozuschlag2Ab-Datum">
 				<name>Risikozuschlag 2 ab</name>
 				<technischerName>Risikozuschlag2Ab</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Risikozuschlag2Bis (80-87) -->
 			<feldreferenz referenz="080-087-Risikozuschlag2Bis-Datum">
 				<name>Risikozuschlag 2 bis</name>
 				<technischerName>Risikozuschlag2Bis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Risikozuschlag3InProzent (88-90) -->
 			<feldreferenz referenz="088-090-Risikozuschlag3InProzent-Numerisch">
@@ -18419,41 +18649,49 @@
 			<feldreferenz referenz="091-098-Risikozuschlag3Ab-Datum">
 				<name>Risikozuschlag 3 ab</name>
 				<technischerName>Risikozuschlag3Ab</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Risikozuschlag3Bis (99-106) -->
 			<feldreferenz referenz="099-106-Risikozuschlag3Bis-Datum">
 				<name>Risikozuschlag 3 bis</name>
 				<technischerName>Risikozuschlag3Bis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Leistungsausschluss1Ab (107-114) -->
 			<feldreferenz referenz="107-114-Leistungsausschluss1Ab-Datum">
 				<name>Leistungsausschluss 1 ab</name>
 				<technischerName>Leistungsausschluss1Ab</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Leistungsausschluss1Bis (115-122) -->
 			<feldreferenz referenz="115-122-Leistungsausschluss1Bis-Datum">
 				<name>Leistungsausschluss 1 bis</name>
 				<technischerName>Leistungsausschluss1Bis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Leistungsausschluss2Ab (123-130) -->
 			<feldreferenz referenz="123-130-Leistungsausschluss2Ab-Datum">
 				<name>Leistungsausschluss 2 ab</name>
 				<technischerName>Leistungsausschluss2Ab</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Leistungsausschluss2Bis (131-138) -->
 			<feldreferenz referenz="131-138-Leistungsausschluss2Bis-Datum">
 				<name>Leistungsausschluss 2 bis</name>
 				<technischerName>Leistungsausschluss2Bis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Leistungsausschluss3Ab (139-146) -->
 			<feldreferenz referenz="139-146-Leistungsausschluss3Ab-Datum">
 				<name>Leistungsausschluss 3 ab</name>
 				<technischerName>Leistungsausschluss3Ab</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Leistungsausschluss3Bis (147-154) -->
 			<feldreferenz referenz="147-154-Leistungsausschluss3Bis-Datum">
 				<name>Leistungsausschluss 3 bis</name>
 				<technischerName>Leistungsausschluss3Bis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KennzeichenBerufsunfallrisikoEingeschlossen (155-155) -->
 			<feldreferenz referenz="155-155-KennzeichenBerufsunfallrisikoEingeschlossen-Alphanumerisch">
@@ -18494,11 +18732,13 @@
 			<feldreferenz referenz="182-189-BeginnAnwartschaft-Datum">
 				<name>Beginn der Anwartschaft</name>
 				<technischerName>BeginnAnwartschaft</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum EndeAnwartschaft (190-197) -->
 			<feldreferenz referenz="190-197-EndeAnwartschaft-Datum">
 				<name>Ende der Anwartschaft</name>
 				<technischerName>EndeAnwartschaft</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProzentsatzVorsorgezuschlag (198-200) -->
 			<feldreferenz referenz="198-200-ProzentsatzVorsorgezuschlag-Numerisch">
@@ -18540,7 +18780,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>020.2</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -18660,16 +18900,19 @@
 			<feldreferenz referenz="110-117-VerssbeginnUrsprungsbeginnTarifart-Datum">
 				<name>Versicherungsbeginn / Ursprungsbeginn der Tarifart</name>
 				<technischerName>VerssbeginnUrsprungsbeginnTarifart</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum VerssbeginnTarifes (118-125) -->
 			<feldreferenz referenz="118-125-VerssbeginnTarifes-Datum">
 				<name>Versicherungsbeginn des Tarifes</name>
 				<technischerName>VerssbeginnTarifes</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum TechnischerVersBeginnTarifes (126-133) -->
 			<feldreferenz referenz="126-133-TechnischerVersBeginnTarifes-Datum">
 				<name>Technischer Vers.-Beginn des Tarifes</name>
 				<technischerName>TechnischerVersBeginnTarifes</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Aenderungsgrund (134-135) -->
 			<feldreferenz referenz="134-135-Aenderungsgrund-Alphanumerisch">
@@ -18680,11 +18923,13 @@
 			<feldreferenz referenz="136-143-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ablauftermin (144-151) -->
 			<feldreferenz referenz="144-151-Ablauftermin-Datum">
 				<name>Ablauftermin</name>
 				<technischerName>Ablauftermin</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (152-154) -->
 			<feldreferenz referenz="152-154-Waehrungsschluessel-Alphanumerisch">
@@ -18725,6 +18970,7 @@
 			<feldreferenz referenz="217-224-Abgangsdat-Datum">
 				<name>Abgangsdatum</name>
 				<technischerName>Abgangsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Abschlussprovision (225-229) -->
 			<feldreferenz referenz="225-229-Abschlussprovision-Fliesskomma">
@@ -18761,7 +19007,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0450</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -18821,11 +19067,13 @@
 			<feldreferenz referenz="052-059-AbrechnungszeitraumVon-Datum">
 				<name>Abrechnungszeitraum von</name>
 				<technischerName>AbrechnungszeitraumVon</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum AbrechnungszeitraumBis (60-67) -->
 			<feldreferenz referenz="060-067-AbrechnungszeitraumBis-Datum">
 				<name>Abrechnungszeitraum bis</name>
 				<technischerName>AbrechnungszeitraumBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld GdvSpartenschluessel (68-69) -->
 			<feldreferenz referenz="068-069-GdvSpartenschluessel-Numerisch">
@@ -19013,6 +19261,7 @@
 			<feldreferenz referenz="014-030-VsNr-Alphanumerisch">
 				<name>Versicherungsschein-Nummer</name>
 				<technischerName>VsNr</technischerName>
+				<bemerkung>rechtsbuendig</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld FolgeNr (31-32) -->
 			<feldreferenz referenz="031-032-FolgeNr-Numerisch">
@@ -19167,7 +19416,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>140</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -19259,7 +19508,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0052</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -19313,6 +19562,7 @@
 			<feldreferenz referenz="046-053-AufgabedatDiesesGeschaeftsvorfalls-Datum">
 				<name>Aufgabedatum dieses Geschäftsvorfalls</name>
 				<technischerName>AufgabedatDiesesGeschaeftsvorfalls</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AufgabeuhrzeitDiesesGeschaeftsvorfall (54-59) -->
 			<feldreferenz referenz="054-059-AufgabeuhrzeitDiesesGeschaeftsvorfall-Numerisch">
@@ -19323,6 +19573,7 @@
 			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld VorgangsNrVu (68-84) -->
 			<feldreferenz referenz="068-084-VorgangsNrVu-Alphanumerisch">
@@ -19434,6 +19685,7 @@
 			<feldreferenz referenz="043-050-VerfalldatumDesGeschaeftsvorfalls-Datum">
 				<name>Verfalldatum des Geschäftsvorfalls</name>
 				<technischerName>VerfalldatumDesGeschaeftsvorfalls</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Mehrzweckfeld (51-80) -->
 			<feldreferenz referenz="051-080-Mehrzweckfeld-Alphanumerisch">
@@ -19461,7 +19713,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0600</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -19525,6 +19777,7 @@
 			<feldreferenz referenz="086-093-VersionsDat-Datum">
 				<name>Versions-Datum</name>
 				<technischerName>VersionsDat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld FeldidentifikationKlartext (94-123) -->
 			<feldreferenz referenz="094-123-FeldidentifikationKlartext-Alphanumerisch">
@@ -19540,21 +19793,24 @@
 			<feldreferenz referenz="126-133-GueltigAb-Datum">
 				<name>Gültig ab</name>
 				<technischerName>GueltigAb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum GueltigBis (134-141) -->
 			<feldreferenz referenz="134-141-GueltigBis-Datum">
 				<name>Gültig bis</name>
 				<technischerName>GueltigBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktform (142-146) -->
 			<feldreferenz referenz="142-146-Produktform-Alphanumerisch">
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (147-152) -->
-			<feldreferenz referenz="147-152-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (147-152) -->
+			<feldreferenz referenz="147-152-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Bezugsfeldart (153-153) -->
 			<feldreferenz referenz="153-153-Bezugsfeldart-Alphanumerisch">
@@ -19882,7 +20138,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0202</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -19958,7 +20214,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0200</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -20012,16 +20268,19 @@
 			<feldreferenz referenz="044-051-Vertragsbeginn-Datum">
 				<name>Vertragsbeginn</name>
 				<technischerName>Vertragsbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Vertragsablauf (52-59) -->
 			<feldreferenz referenz="052-059-Vertragsablauf-Datum">
 				<name>Vertragsablauf</name>
 				<technischerName>Vertragsablauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Hauptfaelligkeit (60-67) -->
 			<feldreferenz referenz="060-067-Hauptfaelligkeit-Datum">
 				<name>Hauptfälligkeit</name>
 				<technischerName>Hauptfaelligkeit</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zahlungsweise (68-68) -->
 			<feldreferenz referenz="068-068-Zahlungsweise-Alphanumerisch">
@@ -20042,6 +20301,7 @@
 			<feldreferenz referenz="072-079-Abgangsdat-Datum">
 				<name>Abgangsdatum</name>
 				<technischerName>Abgangsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Aenderungsgrund (80-89) -->
 			<feldreferenz referenz="080-089-Aenderungsgrund-Alphanumerisch">
@@ -20052,6 +20312,7 @@
 			<feldreferenz referenz="090-097-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld AFB (98-98) -->
 			<feldreferenz referenz="098-098-AFB-Alphanumerisch">
@@ -20125,6 +20386,7 @@
 			<feldreferenz referenz="201-208-Antragsdat-Datum">
 				<name>Antragsdatum</name>
 				<technischerName>Antragsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ReferenzVsNr (209-225) -->
 			<feldreferenz referenz="209-225-ReferenzVsNr-Alphanumerisch">
@@ -20223,10 +20485,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (66-71) -->
-			<feldreferenz referenz="066-071-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (66-71) -->
+			<feldreferenz referenz="066-071-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld GesbeitragBruttoInWE (72-83) -->
 			<feldreferenz referenz="072-083-GesbeitragBruttoInWE-Fliesskomma">
@@ -20252,11 +20515,13 @@
 			<feldreferenz referenz="139-146-Antragseingangsdatum-Datum">
 				<name>Antragseingangsdatum</name>
 				<technischerName>Antragseingangsdatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Policierungsdatum (147-154) -->
 			<feldreferenz referenz="147-154-Policierungsdatum-Datum">
 				<name>Policierungsdatum</name>
 				<technischerName>Policierungsdatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld RegistrierungsnummerVermittler (155-169) -->
 			<feldreferenz referenz="155-169-RegistrierungsnummerVermittler-Alphanumerisch">
@@ -20299,7 +20564,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>010</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -20381,7 +20646,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>130</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -20462,7 +20727,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>059</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -20512,16 +20777,19 @@
 			<feldreferenz referenz="043-050-GepaeckBeginn-Datum">
 				<name>Gepäck-Beginn</name>
 				<technischerName>GepaeckBeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum GepaeckAusschluss (51-58) -->
 			<feldreferenz referenz="051-058-GepaeckAusschluss-Datum">
 				<name>Gepäck-Ausschluss</name>
 				<technischerName>GepaeckAusschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum GepaeckAenderungsdat (59-66) -->
 			<feldreferenz referenz="059-066-GepaeckAenderungsdat-Datum">
 				<name>Gepäck-Änderungsdatum</name>
 				<technischerName>GepaeckAenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld GepaeckVersssummeInTausendWE (67-70) -->
 			<feldreferenz referenz="067-070-GepaeckVersssummeInTausendWE-Numerisch">
@@ -20671,7 +20939,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>570</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -20767,6 +21035,7 @@
 			<feldreferenz referenz="098-105-BeginnTilgungsstrecke-Datum">
 				<name>Beginn Tilgungsstrecke</name>
 				<technischerName>BeginnTilgungsstrecke</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld BetragTilgungsstrecke (106-119) -->
 			<feldreferenz referenz="106-119-BetragTilgungsstrecke-Fliesskomma">
@@ -20797,6 +21066,7 @@
 			<feldreferenz referenz="166-173-Bereitstellungsdatum-Datum">
 				<name>Bereitstellungsdatum</name>
 				<technischerName>Bereitstellungsdatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld RisikoLVNummer (174-190) -->
 			<feldreferenz referenz="174-190-RisikoLVNummer-Alphanumerisch">
@@ -20879,6 +21149,7 @@
 			<feldreferenz referenz="064-071-ZinsenFestBis-Datum">
 				<name>Zinsen fest bis</name>
 				<technischerName>ZinsenFestBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Tilgungsart (72-81) -->
 			<feldreferenz referenz="072-081-Tilgungsart-Alphanumerisch">
@@ -20909,6 +21180,7 @@
 			<feldreferenz referenz="086-093-Tilgungsbeginn-Datum">
 				<name>Tilgungsbeginn</name>
 				<technischerName>Tilgungsbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Sondertilgung (94-107) -->
 			<feldreferenz referenz="094-107-Sondertilgung-Fliesskomma">
@@ -20924,6 +21196,7 @@
 			<feldreferenz referenz="113-120-BereitstellungszinsAb-Datum">
 				<name>Bereitstellungszins ab</name>
 				<technischerName>BereitstellungszinsAb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Saldo1 (121-134) -->
 			<feldreferenz referenz="121-134-Saldo1-Fliesskomma">
@@ -21000,7 +21273,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>053</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -21050,16 +21323,19 @@
 			<feldreferenz referenz="043-050-KftBeginn-Datum">
 				<name>KFT-Beginn</name>
 				<technischerName>KftBeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum KftAusschluss (51-58) -->
 			<feldreferenz referenz="051-058-KftAusschluss-Datum">
 				<name>KFT-Ausschluss</name>
 				<technischerName>KftAusschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum KftAenderungsdat (59-66) -->
 			<feldreferenz referenz="059-066-KftAenderungsdat-Datum">
 				<name>KFT-Änderungsdatum</name>
 				<technischerName>KftAenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KftTarifgruppe (67-70) -->
 			<feldreferenz referenz="067-070-KftTarifgruppe-Alphanumerisch">
@@ -21274,7 +21550,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>054</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -21324,16 +21600,19 @@
 			<feldreferenz referenz="043-050-KuBeginn-Datum">
 				<name>KU-Beginn</name>
 				<technischerName>KuBeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum KuAusschluss (51-58) -->
 			<feldreferenz referenz="051-058-KuAusschluss-Datum">
 				<name>KU-Ausschluss</name>
 				<technischerName>KuAusschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum KuAenderungsdat (59-66) -->
 			<feldreferenz referenz="059-066-KuAenderungsdat-Datum">
 				<name>KU-Änderungsdatum</name>
 				<technischerName>KuAenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KuDeckungRisiko1 (67-67) -->
 			<feldreferenz referenz="067-067-KuDeckungRisiko1-Alphanumerisch">
@@ -21583,7 +21862,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>055</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -21643,16 +21922,19 @@
 			<feldreferenz referenz="093-100-BausteinBeginn-Datum">
 				<name>Baustein-Beginn</name>
 				<technischerName>BausteinBeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum BausteinAusschluss (101-108) -->
 			<feldreferenz referenz="101-108-BausteinAusschluss-Datum">
 				<name>Baustein-Ausschluss</name>
 				<technischerName>BausteinAusschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum BausteinAenderungsdat (109-116) -->
 			<feldreferenz referenz="109-116-BausteinAenderungsdat-Datum">
 				<name>Baustein-Änderungsdatum</name>
 				<technischerName>BausteinAenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Tarifierungsmerkmal (117-126) -->
 			<feldreferenz referenz="117-126-Tarifierungsmerkmal-Alphanumerisch">
@@ -21892,7 +22174,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>170</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -22045,16 +22327,19 @@
 			<feldreferenz referenz="051-058-Einschluss-Datum">
 				<name>Einschluss</name>
 				<technischerName>Einschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Auschluss (59-66) -->
 			<feldreferenz referenz="059-066-Auschluss-Datum">
 				<name>Auschluss</name>
 				<technischerName>Auschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (67-74) -->
 			<feldreferenz referenz="067-074-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Objektkennziffer (75-78) -->
 			<feldreferenz referenz="075-078-Objektkennziffer-Numerisch">
@@ -22237,11 +22522,13 @@
 			<feldreferenz referenz="071-078-Fristueberwachungsdat1-Datum">
 				<name>Fristüberwachungsdatum 1</name>
 				<technischerName>Fristueberwachungsdat1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Fristueberwachungsdat2 (79-86) -->
 			<feldreferenz referenz="079-086-Fristueberwachungsdat2-Datum">
 				<name>Fristüberwachungsdatum 2</name>
 				<technischerName>Fristueberwachungsdat2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld InfoFeld1 (87-106) -->
 			<feldreferenz referenz="087-106-InfoFeld1-Alphanumerisch">
@@ -22278,7 +22565,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>9950</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -22354,7 +22641,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>051</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -22404,16 +22691,19 @@
 			<feldreferenz referenz="043-050-KhBeginn-Datum">
 				<name>KH-Beginn</name>
 				<technischerName>KhBeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum KhAusschluss (51-58) -->
 			<feldreferenz referenz="051-058-KhAusschluss-Datum">
 				<name>KH-Ausschluß</name>
 				<technischerName>KhAusschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum KhAenderungsdat (59-66) -->
 			<feldreferenz referenz="059-066-KhAenderungsdat-Datum">
 				<name>KH-Änderungsdatum</name>
 				<technischerName>KhAenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KhTarifgruppe (67-70) -->
 			<feldreferenz referenz="067-070-KhTarifgruppe-Alphanumerisch">
@@ -22648,7 +22938,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>050</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -22708,6 +22998,7 @@
 			<feldreferenz referenz="057-064-Erwerbsdat-Datum">
 				<name>Erwerbsdatum</name>
 				<technischerName>Erwerbsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Vorsteuerabzugsberechtigt (65-65) -->
 			<feldreferenz referenz="065-065-Vorsteuerabzugsberechtigt-Alphanumerisch">
@@ -22750,7 +23041,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>052</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -22800,16 +23091,19 @@
 			<feldreferenz referenz="043-050-KfvBeginn-Datum">
 				<name>KFV-Beginn</name>
 				<technischerName>KfvBeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum KfvAusschluss (51-58) -->
 			<feldreferenz referenz="051-058-KfvAusschluss-Datum">
 				<name>KFV-Ausschluss</name>
 				<technischerName>KfvAusschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum KfvAenderungsdat (59-66) -->
 			<feldreferenz referenz="059-066-KfvAenderungsdat-Datum">
 				<name>KFV-Änderungsdatum</name>
 				<technischerName>KfvAenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KfvTarifgruppe (67-70) -->
 			<feldreferenz referenz="067-070-KfvTarifgruppe-Alphanumerisch">
@@ -23049,7 +23343,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>9951</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -23125,7 +23419,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>580</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -23211,11 +23505,13 @@
 			<feldreferenz referenz="096-103-SteuerlicherVertragsbeginn-Datum">
 				<name>Steuerlicher Vertragsbeginn</name>
 				<technischerName>SteuerlicherVertragsbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum TechnischerVertragsbeginn (104-111) -->
 			<feldreferenz referenz="104-111-TechnischerVertragsbeginn-Datum">
 				<name>Technischer Vertragsbeginn</name>
 				<technischerName>TechnischerVertragsbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zugangsgrund (112-112) -->
 			<feldreferenz referenz="112-112-Zugangsgrund-Alphanumerisch">
@@ -23226,6 +23522,7 @@
 			<feldreferenz referenz="113-120-Vertragsaufloesung-Datum">
 				<name>Vertragsauflösung</name>
 				<technischerName>Vertragsaufloesung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Aufloesungsgrund (121-122) -->
 			<feldreferenz referenz="121-122-Aufloesungsgrund-Alphanumerisch">
@@ -23408,21 +23705,25 @@
 			<feldreferenz referenz="058-065-DatLetzteBuchung-Datum">
 				<name>Datum Letzte Buchung</name>
 				<technischerName>DatLetzteBuchung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatLetzteEinzahlung (66-73) -->
 			<feldreferenz referenz="066-073-DatLetzteEinzahlung-Datum">
 				<name>Datum Letzte Einzahlung</name>
 				<technischerName>DatLetzteEinzahlung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum GueltigeAbbVon (74-81) -->
 			<feldreferenz referenz="074-081-GueltigeAbbVon-Datum">
 				<name>Gültige ABB von</name>
 				<technischerName>GueltigeAbbVon</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum GueltigeAbbBis (82-89) -->
 			<feldreferenz referenz="082-089-GueltigeAbbBis-Datum">
 				<name>Gültige ABB bis</name>
 				<technischerName>GueltigeAbbBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (90-256) -->
 			<feldreferenz referenz="090-256-Leerstellen-Alphanumerisch">
@@ -23439,7 +23740,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>9952</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -23520,7 +23821,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>030</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -23735,7 +24036,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>140</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -23817,7 +24118,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>040</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -23924,7 +24225,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>684</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -23979,16 +24280,19 @@
 			<feldreferenz referenz="047-054-Einschlussdatum-Datum">
 				<name>Einschlussdatum</name>
 				<technischerName>Einschlussdatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschlussdatum (55-62) -->
 			<feldreferenz referenz="055-062-Ausschlussdatum-Datum">
 				<name>Ausschlussdatum</name>
 				<technischerName>Ausschlussdatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdatum (63-70) -->
 			<feldreferenz referenz="063-070-Aenderungsdatum-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Tierart (71-72) -->
 			<feldreferenz referenz="071-072-Tierart-Numerisch">
@@ -24034,6 +24338,7 @@
 			<feldreferenz referenz="164-171-Wartezeit-Datum">
 				<name>Wartezeit</name>
 				<technischerName>Wartezeit</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld NameDesTieres (172-201) -->
 			<feldreferenz referenz="172-201-NameDesTieres-Alphanumerisch">
@@ -24044,6 +24349,7 @@
 			<feldreferenz referenz="202-209-GeburtsdatumDesTieres-Datum">
 				<name>Geburtsdatum des Tieres</name>
 				<technischerName>GeburtsdatumDesTieres</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (210-255) -->
 			<feldreferenz referenz="210-255-Leerstellen-Alphanumerisch">
@@ -24218,7 +24524,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>550</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -24299,11 +24605,13 @@
 			<feldreferenz referenz="103-110-Valuta-Datum">
 				<name>Valuta</name>
 				<technischerName>Valuta</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Stichtag (111-118) -->
 			<feldreferenz referenz="111-118-Stichtag-Datum">
 				<name>Stichtag</name>
 				<technischerName>Stichtag</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Buchungsschluessel (119-122) -->
 			<feldreferenz referenz="119-122-Buchungsschluessel-Alphanumerisch">
@@ -24319,7 +24627,6 @@
 			<feldreferenz referenz="135-135-Vorzeichen1-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen1</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel1 (136-138) -->
 			<feldreferenz referenz="136-138-Waehrungsschluessel1-Alphanumerisch">
@@ -24345,7 +24652,6 @@
 			<feldreferenz referenz="163-163-Vorzeichen2-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen2</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel2 (164-166) -->
 			<feldreferenz referenz="164-166-Waehrungsschluessel2-Alphanumerisch">
@@ -24366,7 +24672,6 @@
 			<feldreferenz referenz="184-184-Vorzeichen3-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen3</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel3 (185-187) -->
 			<feldreferenz referenz="185-187-Waehrungsschluessel3-Alphanumerisch">
@@ -24479,7 +24784,6 @@
 			<feldreferenz referenz="115-115-Vorzeichen4-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen4</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel4 (116-118) -->
 			<feldreferenz referenz="116-118-Waehrungsschluessel4-Alphanumerisch">
@@ -24495,7 +24799,6 @@
 			<feldreferenz referenz="131-131-Vorzeichen5-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen5</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel5 (132-134) -->
 			<feldreferenz referenz="132-134-Waehrungsschluessel5-Alphanumerisch">
@@ -24511,7 +24814,6 @@
 			<feldreferenz referenz="147-147-Vorzeichen6-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen6</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel6 (148-150) -->
 			<feldreferenz referenz="148-150-Waehrungsschluessel6-Alphanumerisch">
@@ -24527,7 +24829,6 @@
 			<feldreferenz referenz="163-163-Vorzeichen7-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen7</technischerName>
-				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel7 (164-166) -->
 			<feldreferenz referenz="164-166-Waehrungsschluessel7-Alphanumerisch">
@@ -24559,7 +24860,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>070</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -24614,16 +24915,19 @@
 			<feldreferenz referenz="044-051-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (52-59) -->
 			<feldreferenz referenz="052-059-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (60-67) -->
 			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zahlungsweise (68-68) -->
 			<feldreferenz referenz="068-068-Zahlungsweise-Alphanumerisch">
@@ -24634,6 +24938,7 @@
 			<feldreferenz referenz="069-076-Hauptfaelligkeit-Datum">
 				<name>Hauptfälligkeit</name>
 				<technischerName>Hauptfaelligkeit</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (77-79) -->
 			<feldreferenz referenz="077-079-Waehrungsschluessel-Alphanumerisch">
@@ -24690,10 +24995,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (121-126) -->
-			<feldreferenz referenz="121-126-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (121-126) -->
+			<feldreferenz referenz="121-126-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktname (127-146) -->
 			<feldreferenz referenz="127-146-Produktname-Alphanumerisch">
@@ -24725,7 +25031,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>190</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -24807,16 +25113,19 @@
 			<feldreferenz referenz="082-089-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (90-97) -->
 			<feldreferenz referenz="090-097-Ausschluss-Datum">
 				<name>Ausschluß</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (98-105) -->
 			<feldreferenz referenz="098-105-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld WaehrungsschluesselGesVersssumme (106-108) -->
 			<feldreferenz referenz="106-108-WaehrungsschluesselGesVersssumme-Alphanumerisch">
@@ -24963,7 +25272,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>560</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -25069,16 +25378,19 @@
 			<feldreferenz referenz="142-149-Faelligkeit-Datum">
 				<name>Fälligkeit</name>
 				<technischerName>Faelligkeit</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum gueltigAb (150-157) -->
 			<feldreferenz referenz="150-157-gueltigAb-Datum">
 				<name>gültig ab</name>
 				<technischerName>gueltigAb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum gueltigBis (158-165) -->
 			<feldreferenz referenz="158-165-gueltigBis-Datum">
 				<name>gültig bis</name>
 				<technischerName>gueltigBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ErteilterFreibetrag (166-175) -->
 			<feldreferenz referenz="166-175-ErteilterFreibetrag-Fliesskomma">
@@ -25089,6 +25401,7 @@
 			<feldreferenz referenz="176-183-erteilteNichtveranlagungsbescheinigungGueltigBis-Datum">
 				<name>erteilte Nichtveranlagungsbescheinigung gültig bis</name>
 				<technischerName>erteilteNichtveranlagungsbescheinigungGueltigBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KennzeichenKontogebuehr (184-184) -->
 			<feldreferenz referenz="184-184-KennzeichenKontogebuehr-Alphanumerisch">
@@ -25114,6 +25427,7 @@
 			<feldreferenz referenz="208-215-DatumZinsenBisHeute-Datum">
 				<name>Datum Zinsen bis heute</name>
 				<technischerName>DatumZinsenBisHeute</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (216-256) -->
 			<feldreferenz referenz="216-256-Leerstellen-Alphanumerisch">
@@ -25135,7 +25449,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>510</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -25190,16 +25504,19 @@
 			<feldreferenz referenz="044-051-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (52-59) -->
 			<feldreferenz referenz="052-059-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (60-67) -->
 			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zahlungsweise (68-68) -->
 			<feldreferenz referenz="068-068-Zahlungsweise-Alphanumerisch">
@@ -25210,6 +25527,7 @@
 			<feldreferenz referenz="069-076-Hauptfaelligkeit-Datum">
 				<name>Hauptfälligkeit</name>
 				<technischerName>Hauptfaelligkeit</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (77-79) -->
 			<feldreferenz referenz="077-079-Waehrungsschluessel-Alphanumerisch">
@@ -25256,10 +25574,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (115-120) -->
-			<feldreferenz referenz="115-120-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (115-120) -->
+			<feldreferenz referenz="115-120-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktname (121-140) -->
 			<feldreferenz referenz="121-140-Produktname-Alphanumerisch">
@@ -25357,16 +25676,19 @@
 			<feldreferenz referenz="062-069-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ablauf (70-77) -->
 			<feldreferenz referenz="070-077-Ablauf-Datum">
 				<name>Ablauf</name>
 				<technischerName>Ablauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderung (78-85) -->
 			<feldreferenz referenz="078-085-Aenderung-Datum">
 				<name>Änderung</name>
 				<technischerName>Aenderung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Vertragslaufzeit (86-88) -->
 			<feldreferenz referenz="086-088-Vertragslaufzeit-Numerisch">
@@ -25442,6 +25764,7 @@
 			<feldreferenz referenz="183-190-UeberschussGueltigAb-Datum">
 				<name>Überschuss gültig ab</name>
 				<technischerName>UeberschussGueltigAb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Risikoeinschraenkung (191-191) -->
 			<feldreferenz referenz="191-191-Risikoeinschraenkung-Alphanumerisch">
@@ -25472,11 +25795,13 @@
 			<feldreferenz referenz="200-207-Dynamikstop-Datum">
 				<name>Dynamikstop</name>
 				<technischerName>Dynamikstop</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatLetztenPositivenDynamik (208-215) -->
 			<feldreferenz referenz="208-215-DatLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
 				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Endalter (216-218) -->
 			<feldreferenz referenz="216-218-Endalter-Numerisch">
@@ -25498,10 +25823,11 @@
 				<name>Rückkaufswert in Währungseinheiten</name>
 				<technischerName>RueckkaufswertInWE</technischerName>
 			</feldreferenz>
-			<!-- NumFeld RueckkaufswertGueltigAb (231-236) -->
-			<feldreferenz referenz="231-236-RueckkaufswertGueltigAb-Numerisch">
+			<!-- Datum RueckkaufswertGueltigAb (231-236) -->
+			<feldreferenz referenz="231-236-RueckkaufswertGueltigAb-Datum">
 				<name>Rückkaufswert gültig ab</name>
 				<technischerName>RueckkaufswertGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld GuthabenDividAnsammlungenInWE (237-245) -->
 			<feldreferenz referenz="237-245-GuthabenDividAnsammlungenInWE-Numerisch">
@@ -25522,6 +25848,7 @@
 			<feldreferenz referenz="248-255-GestundetAusgesetztBis-Datum">
 				<name>gestundet / ausgesetzt bis</name>
 				<technischerName>GestundetAusgesetztBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld SatzNr (256-256) -->
 			<feldreferenz referenz="256-256-SatzNr-Numerisch">
@@ -25594,6 +25921,7 @@
 			<feldreferenz referenz="065-072-AbweichenderAblauf-Datum">
 				<name>Abweichender Ablauf</name>
 				<technischerName>AbweichenderAblauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RisikozuschlagInWE (73-84) -->
 			<feldreferenz referenz="073-084-RisikozuschlagInWE-Fliesskomma">
@@ -25609,6 +25937,7 @@
 			<feldreferenz referenz="115-122-UmstellungsdatFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
 				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitragInWE (123-134) -->
 			<feldreferenz referenz="123-134-ZukuenftigerBeitragInWE-Fliesskomma">
@@ -25624,6 +25953,7 @@
 			<feldreferenz referenz="165-172-Dynamikbeginn-Datum">
 				<name>Dynamikbeginn</name>
 				<technischerName>Dynamikbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AbweichendesDynamikendalter (173-175) -->
 			<feldreferenz referenz="173-175-AbweichendesDynamikendalter-Numerisch">
@@ -25674,6 +26004,7 @@
 			<feldreferenz referenz="236-243-BeginnAbrufphase-Datum">
 				<name>Beginn Abrufphase</name>
 				<technischerName>BeginnAbrufphase</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (244-255) -->
 			<feldreferenz referenz="244-255-Leerstellen-Alphanumerisch">
@@ -25783,7 +26114,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>110</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -25838,16 +26169,19 @@
 			<feldreferenz referenz="044-051-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss1 (52-59) -->
 			<feldreferenz referenz="052-059-Ausschluss1-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (60-67) -->
 			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (68-70) -->
 			<feldreferenz referenz="068-070-Waehrungsschluessel-Alphanumerisch">
@@ -25914,10 +26248,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (146-151) -->
-			<feldreferenz referenz="146-151-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (146-151) -->
+			<feldreferenz referenz="146-151-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktname (152-171) -->
 			<feldreferenz referenz="152-171-Produktname-Alphanumerisch">
@@ -25949,7 +26284,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>080</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -26167,6 +26502,7 @@
 			<feldreferenz referenz="133-140-DatLetztenSummenanpassung-Datum">
 				<name>Datum der letzten Summenanpassung</name>
 				<technischerName>DatLetztenSummenanpassung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld VorauszahlungInProzent (141-143) -->
 			<feldreferenz referenz="141-143-VorauszahlungInProzent-Fliesskomma">
@@ -26477,6 +26813,7 @@
 			<feldreferenz referenz="100-107-BeginndatNaechstenTodesfallVs-Datum">
 				<name>Beginndatum der nächsten Todesfall VS</name>
 				<technischerName>BeginndatNaechstenTodesfallVs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AnfaenglicheErlebensfallVsInWE (108-116) -->
 			<feldreferenz referenz="108-116-AnfaenglicheErlebensfallVsInWE-Numerisch">
@@ -26512,6 +26849,7 @@
 			<feldreferenz referenz="144-151-BeginndatNaechstenErlebensfallVs-Datum">
 				<name>Beginndatum der nächsten Erlebensfall VS</name>
 				<technischerName>BeginndatNaechstenErlebensfallVs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (152-255) -->
 			<feldreferenz referenz="152-255-Leerstellen-Alphanumerisch">
@@ -26534,7 +26872,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0350</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -26614,10 +26952,11 @@
 				<name>Formularbezeichnung</name>
 				<technischerName>Formularbezeichnung</technischerName>
 			</feldreferenz>
-			<!-- NumFeld Fassung (206-211) -->
-			<feldreferenz referenz="206-211-Fassung-Numerisch">
+			<!-- Datum Fassung (206-211) -->
+			<feldreferenz referenz="206-211-Fassung-Datum">
 				<name>Fassung</name>
 				<technischerName>Fassung</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld LfdNrPerson (212-228) -->
 			<feldreferenz referenz="212-228-LfdNrPerson-Alphanumerisch">
@@ -26680,7 +27019,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>000</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -26852,6 +27191,7 @@
 			<feldreferenz referenz="073-080-NaechsterAuszahlungstermin-Datum">
 				<name>Nächster Auszahlungstermin</name>
 				<technischerName>NaechsterAuszahlungstermin</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Auszahlungsweise (81-83) -->
 			<feldreferenz referenz="081-083-Auszahlungsweise-Numerisch">
@@ -26990,16 +27330,19 @@
 			<feldreferenz referenz="105-112-HaftungAb1-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis1 (113-120) -->
 			<feldreferenz referenz="113-120-HaftungBis1-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
 			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
 				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
 			<feldreferenz referenz="129-140-ProvisionspflichtigeBeitragssummeInWE2-Fliesskomma">
@@ -27035,11 +27378,13 @@
 			<feldreferenz referenz="170-177-HaftungAb2-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis2 (178-185) -->
 			<feldreferenz referenz="178-185-HaftungBis2-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
@@ -27067,7 +27412,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>050</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -27160,7 +27505,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0500</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -27231,6 +27576,7 @@
 			<feldreferenz referenz="068-075-Bearbeitungsdat-Datum">
 				<name>Bearbeitungsdatum</name>
 				<technischerName>Bearbeitungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld SchadenNrVermittlers1 (76-95) -->
 			<feldreferenz referenz="076-095-SchadenNrVermittlers1-Alphanumerisch">
@@ -27252,16 +27598,19 @@
 			<feldreferenz referenz="102-109-Schadendat-Datum">
 				<name>Schadendatum</name>
 				<technischerName>Schadendat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Schadenmeldedat (110-117) -->
 			<feldreferenz referenz="110-117-Schadenmeldedat-Datum">
 				<name>Schadenmeldedatum</name>
 				<technischerName>Schadenmeldedat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum RisikoBeginnDatZeichnungsjahr (118-125) -->
 			<feldreferenz referenz="118-125-RisikoBeginnDatZeichnungsjahr-Datum">
 				<name>Risiko-Beginn-Datum/Zeichnungsjahr</name>
 				<technischerName>RisikoBeginnDatZeichnungsjahr</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Schadensparte (126-128) -->
 			<feldreferenz referenz="126-128-Schadensparte-Alphanumerisch">
@@ -27462,7 +27811,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0102</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -27558,7 +27907,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0100</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -27657,6 +28006,7 @@
 			<feldreferenz referenz="226-233-Geburtsdat-Datum">
 				<name>Geburtsdatum</name>
 				<technischerName>Geburtsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Staatsangehoerigkeit (234-236) -->
 			<feldreferenz referenz="234-236-Staatsangehoerigkeit-Alphanumerisch">
@@ -28128,6 +28478,7 @@
 			<feldreferenz referenz="230-237-SEPAMandatAusstellungsdatum-Datum">
 				<name>SEPA-Mandat Ausstellungsdatum</name>
 				<technischerName>SEPAMandatAusstellungsdatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld SEPAMandatKontoreferenz (238-238) -->
 			<feldreferenz referenz="238-238-SEPAMandatKontoreferenz-Alphanumerisch">
@@ -28155,7 +28506,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0342</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -28219,6 +28570,7 @@
 			<feldreferenz referenz="088-095-Versionsdatum-Datum">
 				<name>Versionsdatum</name>
 				<technischerName>Versionsdatum</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld VersionsNr (96-135) -->
 			<feldreferenz referenz="096-135-VersionsNr-Alphanumerisch">
@@ -28229,6 +28581,7 @@
 			<feldreferenz referenz="136-143-DatumDerUnterschriftsgabe-Datum">
 				<name>Datum der Unterschriftsgabe</name>
 				<technischerName>DatumDerUnterschriftsgabe</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld OrtDerUnterschriftsgabe (144-183) -->
 			<feldreferenz referenz="144-183-OrtDerUnterschriftsgabe-Alphanumerisch">
@@ -28423,7 +28776,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>550</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -28494,6 +28847,7 @@
 			<feldreferenz referenz="067-074-Stichtag-Datum">
 				<name>Stichtag</name>
 				<technischerName>Stichtag</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Zwischengewinne (75-86) -->
 			<feldreferenz referenz="075-086-Zwischengewinne-Fliesskomma">
@@ -28540,7 +28894,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>510</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -28615,16 +28969,19 @@
 			<feldreferenz referenz="051-058-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Auschluss (59-66) -->
 			<feldreferenz referenz="059-066-Auschluss-Datum">
 				<name>Auschluss</name>
 				<technischerName>Auschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (67-74) -->
 			<feldreferenz referenz="067-074-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zahlungsweise (75-75) -->
 			<feldreferenz referenz="075-075-Zahlungsweise-Alphanumerisch">
@@ -28635,6 +28992,7 @@
 			<feldreferenz referenz="076-083-Hauptfaelligkeit-Datum">
 				<name>Hauptfälligkeit</name>
 				<technischerName>Hauptfaelligkeit</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (84-86) -->
 			<feldreferenz referenz="084-086-Waehrungsschluessel-Alphanumerisch">
@@ -28655,6 +29013,7 @@
 			<feldreferenz referenz="129-136-VoraussichtlichesEnde-Datum">
 				<name>Voraussichtliches Ende</name>
 				<technischerName>VoraussichtlichesEnde</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld AllgemeineBedingungenVerkehrsserviceVers (137-140) -->
 			<feldreferenz referenz="137-140-AllgemeineBedingungenVerkehrsserviceVers-Alphanumerisch">
@@ -28732,7 +29091,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>080</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -28793,16 +29152,19 @@
 			<feldreferenz referenz="045-052-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (53-60) -->
 			<feldreferenz referenz="053-060-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (61-68) -->
 			<feldreferenz referenz="061-068-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (69-71) -->
 			<feldreferenz referenz="069-071-Waehrungsschluessel-Alphanumerisch">
@@ -28868,6 +29230,7 @@
 			<feldreferenz referenz="142-149-Dat1-Datum">
 				<name>Datum 1</name>
 				<technischerName>Dat1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Zeitraum1 (150-152) -->
 			<feldreferenz referenz="150-152-Zeitraum1-Numerisch">
@@ -28883,6 +29246,7 @@
 			<feldreferenz referenz="155-162-Dat2-Datum">
 				<name>Datum 2</name>
 				<technischerName>Dat2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Zeitraum2 (163-165) -->
 			<feldreferenz referenz="163-165-Zeitraum2-Numerisch">
@@ -28898,6 +29262,7 @@
 			<feldreferenz referenz="168-175-Dat3-Datum">
 				<name>Datum 3</name>
 				<technischerName>Dat3</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Zeitraum3 (176-178) -->
 			<feldreferenz referenz="176-178-Zeitraum3-Numerisch">
@@ -28913,6 +29278,7 @@
 			<feldreferenz referenz="181-188-Dat4-Datum">
 				<name>Datum 4</name>
 				<technischerName>Dat4</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Zeitraum4 (189-191) -->
 			<feldreferenz referenz="189-191-Zeitraum4-Numerisch">
@@ -29036,10 +29402,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (49-54) -->
-			<feldreferenz referenz="049-054-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (49-54) -->
+			<feldreferenz referenz="049-054-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktname (55-74) -->
 			<feldreferenz referenz="055-074-Produktname-Alphanumerisch">
@@ -29071,7 +29438,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>110</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -29121,16 +29488,19 @@
 			<feldreferenz referenz="043-050-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss1 (51-58) -->
 			<feldreferenz referenz="051-058-Ausschluss1-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (59-66) -->
 			<feldreferenz referenz="059-066-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld LKZRisikoanschrift (67-69) -->
 			<feldreferenz referenz="067-069-LKZRisikoanschrift-Alphanumerisch">
@@ -29226,6 +29596,7 @@
 			<feldreferenz referenz="201-208-DatLetztenGlaspreisangleichung-Datum">
 				<name>Datum der letzten Glaspreisangleichung</name>
 				<technischerName>DatLetztenGlaspreisangleichung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld PauschaleGlasVersOhneAngabeVersssumme (209-209) -->
 			<feldreferenz referenz="209-209-PauschaleGlasVersOhneAngabeVersssumme-Alphanumerisch">
@@ -29262,7 +29633,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>000</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -29332,16 +29703,19 @@
 			<feldreferenz referenz="080-087-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (88-95) -->
 			<feldreferenz referenz="088-095-Ausschluss-Datum">
 				<name>Ausschluß</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (96-103) -->
 			<feldreferenz referenz="096-103-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (104-106) -->
 			<feldreferenz referenz="104-106-Waehrungsschluessel-Alphanumerisch">
@@ -29508,6 +29882,7 @@
 			<feldreferenz referenz="154-161-Dat-Datum">
 				<name>Datum zum Fristüberwachungsgrund</name>
 				<technischerName>Dat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Zeitraum (162-164) -->
 			<feldreferenz referenz="162-164-Zeitraum-Numerisch">
@@ -29524,10 +29899,11 @@
 				<name>Produktform</name>
 				<technischerName>Produktform</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ProduktformGueltigAb (190-195) -->
-			<feldreferenz referenz="190-195-ProduktformGueltigAb-Numerisch">
+			<!-- Datum ProduktformGueltigAb (190-195) -->
+			<feldreferenz referenz="190-195-ProduktformGueltigAb-Datum">
 				<name>Produktform gültig ab</name>
 				<technischerName>ProduktformGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktname (196-215) -->
 			<feldreferenz referenz="196-215-Produktname-Alphanumerisch">
@@ -29559,7 +29935,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>190</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -29625,16 +30001,19 @@
 			<feldreferenz referenz="050-057-Einschluss-Datum">
 				<name>Einschluss</name>
 				<technischerName>Einschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (58-65) -->
 			<feldreferenz referenz="058-065-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (66-73) -->
 			<feldreferenz referenz="066-073-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld VersichertesRisiko (74-123) -->
 			<feldreferenz referenz="074-123-VersichertesRisiko-Alphanumerisch">
@@ -29798,7 +30177,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>070</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -29869,16 +30248,19 @@
 			<feldreferenz referenz="055-062-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ausschluss (63-70) -->
 			<feldreferenz referenz="063-070-Ausschluss-Datum">
 				<name>Ausschluss</name>
 				<technischerName>Ausschluss</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdat (71-78) -->
 			<feldreferenz referenz="071-078-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zahlungsweise (79-79) -->
 			<feldreferenz referenz="079-079-Zahlungsweise-Alphanumerisch">
@@ -29889,6 +30271,7 @@
 			<feldreferenz referenz="080-087-Hauptfaelligkeit-Datum">
 				<name>Hauptfälligkeit</name>
 				<technischerName>Hauptfaelligkeit</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (88-90) -->
 			<feldreferenz referenz="088-090-Waehrungsschluessel-Alphanumerisch">
@@ -29914,6 +30297,7 @@
 			<feldreferenz referenz="135-142-VoraussichtlichesEnde-Datum">
 				<name>voraussichtliches Ende</name>
 				<technischerName>VoraussichtlichesEnde</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Selbstbeteiligung (143-143) -->
 			<feldreferenz referenz="143-143-Selbstbeteiligung-Alphanumerisch">
@@ -29939,6 +30323,7 @@
 			<feldreferenz referenz="162-169-DatLetztenBeitragsangleichung-Datum">
 				<name>Datum der letzten Beitragsangleichung</name>
 				<technischerName>DatLetztenBeitragsangleichung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Beitragsklasse (170-170) -->
 			<feldreferenz referenz="170-170-Beitragsklasse-Numerisch">
@@ -30142,7 +30527,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0362</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -30211,6 +30596,7 @@
 			<feldreferenz referenz="101-108-AblaufdatVorVers-Datum">
 				<name>Ablaufdatum der Vor-/ Mitversicherung</name>
 				<technischerName>AblaufdatVorVers</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld AbgangsgrundVorVers (109-110) -->
 			<feldreferenz referenz="109-110-AbgangsgrundVorVers-Alphanumerisch">
@@ -30252,11 +30638,13 @@
 			<feldreferenz referenz="153-160-Verkaufsdat-Datum">
 				<name>Verkaufsdatum</name>
 				<technischerName>Verkaufsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Abmeldedat (161-168) -->
 			<feldreferenz referenz="161-168-Abmeldedat-Datum">
 				<name>Abmeldedatum</name>
 				<technischerName>Abmeldedat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zweitwagenregelung (169-169) -->
 			<feldreferenz referenz="169-169-Zweitwagenregelung-Alphanumerisch">
@@ -30425,7 +30813,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>050</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -30624,16 +31012,19 @@
 			<feldreferenz referenz="105-112-HaftungAb1-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis1 (113-120) -->
 			<feldreferenz referenz="113-120-HaftungBis1-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis1</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
 			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
 				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
 			<feldreferenz referenz="129-140-ProvisionspflichtigeBeitragssummeInWE2-Fliesskomma">
@@ -30669,11 +31060,13 @@
 			<feldreferenz referenz="170-177-HaftungAb2-Datum">
 				<name>Haftung ab</name>
 				<technischerName>HaftungAb2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum HaftungBis2 (178-185) -->
 			<feldreferenz referenz="178-185-HaftungBis2-Datum">
 				<name>Haftung bis</name>
 				<technischerName>HaftungBis2</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (186-255) -->
 			<feldreferenz referenz="186-255-Leerstellen-Alphanumerisch">
@@ -30802,6 +31195,7 @@
 			<feldreferenz referenz="100-107-BeginndatNaechstenTodesfallVs-Datum">
 				<name>Beginndatum der nächsten Todesfall VS</name>
 				<technischerName>BeginndatNaechstenTodesfallVs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AnfaenglicheBeitragssummeInWE (108-116) -->
 			<feldreferenz referenz="108-116-AnfaenglicheBeitragssummeInWE-Numerisch">
@@ -30837,6 +31231,7 @@
 			<feldreferenz referenz="144-151-BeginndatNaechstenBeitragssumme-Datum">
 				<name>Beginndatum der nächsten Beitragssumme</name>
 				<technischerName>BeginndatNaechstenBeitragssumme</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (152-255) -->
 			<feldreferenz referenz="152-255-Leerstellen-Alphanumerisch">
@@ -30864,7 +31259,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>170</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -30946,7 +31341,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>130</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -31170,7 +31565,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>190</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -31257,11 +31652,13 @@
 			<feldreferenz referenz="093-100-TransportBeginn-Datum">
 				<name>Transport-Beginn</name>
 				<technischerName>TransportBeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum TransportEnde (101-108) -->
 			<feldreferenz referenz="101-108-TransportEnde-Datum">
 				<name>Transport-Ende</name>
 				<technischerName>TransportEnde</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld TransportmittelSchluessel (109-110) -->
 			<feldreferenz referenz="109-110-TransportmittelSchluessel-Alphanumerisch">
@@ -31517,16 +31914,19 @@
 			<feldreferenz referenz="062-069-Beginn-Datum">
 				<name>Beginn</name>
 				<technischerName>Beginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ablauf (70-77) -->
 			<feldreferenz referenz="070-077-Ablauf-Datum">
 				<name>Ablauf</name>
 				<technischerName>Ablauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderung (78-85) -->
 			<feldreferenz referenz="078-085-Aenderung-Datum">
 				<name>Änderung</name>
 				<technischerName>Aenderung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Vertragslaufzeit (86-88) -->
 			<feldreferenz referenz="086-088-Vertragslaufzeit-Numerisch">
@@ -31602,6 +32002,7 @@
 			<feldreferenz referenz="183-190-UeberschussGueltigAb-Datum">
 				<name>Überschuss gültig ab</name>
 				<technischerName>UeberschussGueltigAb</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Risikoeinschraenkung (191-191) -->
 			<feldreferenz referenz="191-191-Risikoeinschraenkung-Alphanumerisch">
@@ -31632,11 +32033,13 @@
 			<feldreferenz referenz="200-207-Dynamikstop-Datum">
 				<name>Dynamikstop</name>
 				<technischerName>Dynamikstop</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum DatLetztenPositivenDynamik (208-215) -->
 			<feldreferenz referenz="208-215-DatLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
 				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Endalter (216-218) -->
 			<feldreferenz referenz="216-218-Endalter-Numerisch">
@@ -31658,10 +32061,11 @@
 				<name>Rückkaufswert in Währungseinheiten</name>
 				<technischerName>RueckkaufswertInWE</technischerName>
 			</feldreferenz>
-			<!-- NumFeld RueckkaufswertGueltigAb (231-236) -->
-			<feldreferenz referenz="231-236-RueckkaufswertGueltigAb-Numerisch">
+			<!-- Datum RueckkaufswertGueltigAb (231-236) -->
+			<feldreferenz referenz="231-236-RueckkaufswertGueltigAb-Datum">
 				<name>Rückkaufswert gültig ab</name>
 				<technischerName>RueckkaufswertGueltigAb</technischerName>
+				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld TodesfallLeistungInProz (237-241) -->
 			<feldreferenz referenz="237-241-TodesfallLeistungInProz-Fliesskomma">
@@ -31682,6 +32086,7 @@
 			<feldreferenz referenz="244-251-GestundetAusgesetztBis-Datum">
 				<name>gestundet / ausgesetzt bis</name>
 				<technischerName>GestundetAusgesetztBis</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (252-255) -->
 			<feldreferenz referenz="252-255-Leerstellen-Alphanumerisch">
@@ -31759,6 +32164,7 @@
 			<feldreferenz referenz="065-072-AbweichenderAblauf-Datum">
 				<name>Abweichender Ablauf</name>
 				<technischerName>AbweichenderAblauf</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RisikozuschlagInWE (73-84) -->
 			<feldreferenz referenz="073-084-RisikozuschlagInWE-Fliesskomma">
@@ -31774,6 +32180,7 @@
 			<feldreferenz referenz="115-122-UmstellungsdatFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
 				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitragInWE (123-134) -->
 			<feldreferenz referenz="123-134-ZukuenftigerBeitragInWE-Fliesskomma">
@@ -31789,6 +32196,7 @@
 			<feldreferenz referenz="165-172-Dynamikbeginn-Datum">
 				<name>Dynamikbeginn</name>
 				<technischerName>Dynamikbeginn</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AbweichendesDynamikendalter (173-175) -->
 			<feldreferenz referenz="173-175-AbweichendesDynamikendalter-Numerisch">
@@ -31839,6 +32247,7 @@
 			<feldreferenz referenz="236-243-BeginnAbrufphase-Datum">
 				<name>Beginn Abrufphase</name>
 				<technischerName>BeginnAbrufphase</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (244-255) -->
 			<feldreferenz referenz="244-255-Leerstellen-Alphanumerisch">
@@ -31943,7 +32352,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>040</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -32035,7 +32444,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>0352</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -32094,6 +32503,7 @@
 			<feldreferenz referenz="093-100-BeginnVorlaeufigenDeckung-Datum">
 				<name>Beginn der Vorläufigen Deckung</name>
 				<technischerName>BeginnVorlaeufigenDeckung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ArtVorlaeufigenDeckung (101-101) -->
 			<feldreferenz referenz="101-101-ArtVorlaeufigenDeckung-Alphanumerisch">
@@ -32104,6 +32514,7 @@
 			<feldreferenz referenz="102-109-AblaufVorlaeufigenDeckung-Datum">
 				<name>Ablauf der Vorläufigen Deckung</name>
 				<technischerName>AblaufVorlaeufigenDeckung</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld VorlaeufigeDeckung (110-111) -->
 			<feldreferenz referenz="110-111-VorlaeufigeDeckung-Numerisch">
@@ -32176,7 +32587,7 @@
 					<technischerName>Sparte</technischerName>
 					<auspraegung>550</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -32292,6 +32703,7 @@
 			<feldreferenz referenz="173-180-LaufzeitEnde-Datum">
 				<name>Laufzeit Ende</name>
 				<technischerName>LaufzeitEnde</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Aenderungsgrund (181-182) -->
 			<feldreferenz referenz="181-182-Aenderungsgrund-Alphanumerisch">
@@ -32302,6 +32714,7 @@
 			<feldreferenz referenz="183-190-Aenderungsdat-Datum">
 				<name>Änderungsdatum</name>
 				<technischerName>Aenderungsdat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld IsinNr (191-202) -->
 			<feldreferenz referenz="191-202-IsinNr-Alphanumerisch">
@@ -32323,7 +32736,7 @@
 					<technischerName>Satzart</technischerName>
 					<auspraegung>9999</auspraegung>
 				</feldreferenz>
-				<feldreferenz referenz="256-255-Satznummer-Unbekannt">
+				<feldreferenz referenz="256-256-Satznummer-Unbekannt">
 					<name>Satznummer</name>
 					<technischerName>Satznummer</technischerName>
 				</feldreferenz>
@@ -33517,10 +33930,10 @@
 			<bytes>5</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="048-053-ProduktformGueltigAb-Numerisch">
+		<feld referenz="048-053-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="048-055-Bereitstellungsbeginn-Datum">
 			<name>Bereitstellungsbeginn</name>
@@ -33640,10 +34053,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>3</nachkommastellen>
 		</feld>
-		<feld referenz="049-054-ProduktformGueltigAb-Numerisch">
+		<feld referenz="049-054-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="049-058-Fondskennung-Alphanumerisch">
 			<name>Fondskennung</name>
@@ -34967,10 +35380,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="066-071-ProduktformGueltigAb-Numerisch">
+		<feld referenz="066-071-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="066-071-Wertpapierkennnummer-Alphanumerisch">
 			<name>Wertpapierkennnummer</name>
@@ -36122,10 +36535,10 @@
 			<bytes>6</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="080-085-LetzteErhoehung-Numerisch">
+		<feld referenz="080-085-LetzteErhoehung-Datum">
 			<name>Letzte Erhöhung</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="080-086-Referenznummer-Alphanumerisch">
 			<name>Referenznummer</name>
@@ -36655,10 +37068,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>3</nachkommastellen>
 		</feld>
-		<feld referenz="086-091-NaechsteErhoehung-Numerisch">
+		<feld referenz="086-091-NaechsteErhoehung-Datum">
 			<name>Nächste Erhöhung</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="086-093-Tilgungsbeginn-Datum">
 			<name>Tilgungsbeginn</name>
@@ -37089,10 +37502,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="091-096-ProduktformGueltigAb-Numerisch">
+		<feld referenz="091-096-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="091-097-ReferenzNr-Alphanumerisch">
 			<name>Referenznummer</name>
@@ -39102,10 +39515,10 @@
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="115-120-ProduktformGueltigAb-Numerisch">
+		<feld referenz="115-120-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="115-121-ReferenzNr-Alphanumerisch">
 			<name>Referenznummer</name>
@@ -39591,10 +40004,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="121-126-ProduktformGueltigAb-Numerisch">
+		<feld referenz="121-126-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="121-128-DatLetztenPositivenDynamik-Datum">
 			<name>Datum der letzten positiven Dynamik</name>
@@ -39766,10 +40179,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="123-128-TerminDerBerechnung-Numerisch">
+		<feld referenz="123-128-TerminDerBerechnung-Datum">
 			<name>Termin der Berechnung</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="123-130-Leistungsausschluss2Ab-Datum">
 			<name>Leistungsausschluss 2 ab</name>
@@ -41674,10 +42087,10 @@
 			<bytes>5</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="146-151-ProduktformGueltigAb-Numerisch">
+		<feld referenz="146-151-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="146-153-GeburtsdatVp-Datum">
 			<name>Geburtsdatum der VP</name>
@@ -41778,10 +42191,10 @@
 			<bytes>4</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="147-152-ProduktformGueltigAb-Numerisch">
+		<feld referenz="147-152-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="147-153-PraemiensatzInPromille-Fliesskomma">
 			<name>Prämiensatz in Promille</name>
@@ -43130,10 +43543,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="166-171-RueckkaufswertGueltigAb-Numerisch">
+		<feld referenz="166-171-RueckkaufswertGueltigAb-Datum">
 			<name>Rückkaufswert gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="166-171-ZuschlagInWE-Fliesskomma">
 			<name>Zuschlag in Währungseinheiten</name>
@@ -43348,10 +43761,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="169-174-RueckkaufswertGueltigAb-Numerisch">
+		<feld referenz="169-174-RueckkaufswertGueltigAb-Datum">
 			<name>Rückkaufswert gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="169-180-GesVersssummeInWE-Numerisch">
 			<name>Gesamtversicherungssumme in Währungseinheiten</name>
@@ -44509,10 +44922,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="186-191-TerminDerBerechnung-Numerisch">
+		<feld referenz="186-191-TerminDerBerechnung-Datum">
 			<name>Termin der Berechnung</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="186-197-Ueberlaufbetrag-Fliesskomma">
 			<name>Überlaufbetrag</name>
@@ -44676,10 +45089,10 @@
 			<bytes>5</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="189-194-ProduktformGueltigAb-Numerisch">
+		<feld referenz="189-194-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="189-195-FesteRenteBeitragssatz-Fliesskomma">
 			<name>Feste Rente Beitragssatz</name>
@@ -44738,10 +45151,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="190-195-ProduktformGueltigAb-Numerisch">
+		<feld referenz="190-195-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="190-197-EndeAnwartschaft-Datum">
 			<name>Ende der Anwartschaft</name>
@@ -45642,10 +46055,10 @@
 			<bytes>4</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="204-209-ProduktformGueltigAb-Numerisch">
+		<feld referenz="204-209-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="204-212-KapitalzahlungssummeInWE-Numerisch">
 			<name>Kapitalzahlungssumme in Währungseinheiten</name>
@@ -45751,10 +46164,10 @@
 			<bytes>3</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="206-211-Fassung-Numerisch">
+		<feld referenz="206-211-Fassung-Datum">
 			<name>Fassung</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="206-216-BeitragsstundunginWE-Fliesskomma">
 			<name>Beitragsstundung in Währungseinheiten</name>
@@ -46862,10 +47275,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="231-236-RueckkaufswertGueltigAb-Numerisch">
+		<feld referenz="231-236-RueckkaufswertGueltigAb-Datum">
 			<name>Rückkaufswert gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="231-237-Referenznummer-Alphanumerisch">
 			<name>Referenznummer</name>
@@ -47210,10 +47623,10 @@
 			<bytes>2</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="239-244-ProduktformGueltigAb-Numerisch">
+		<feld referenz="239-244-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="239-248-Signierung-Alphanumerisch">
 			<name>Signierung</name>
@@ -47285,10 +47698,10 @@
 			<bytes>6</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="241-246-ProduktformGueltigAb-Numerisch">
+		<feld referenz="241-246-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="241-248-DatumUnverfallbarkeit-Datum">
 			<name>Datum Unverfallbarkeit</name>
@@ -47377,10 +47790,10 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="243-248-ProduktformGueltigAb-Numerisch">
+		<feld referenz="243-248-ProduktformGueltigAb-Datum">
 			<name>Produktform gültig ab</name>
 			<bytes>6</bytes>
-			<datentyp>Numerisch</datentyp>
+			<datentyp>Datum</datentyp>
 		</feld>
 		<feld referenz="243-249-Referenznummer-Alphanumerisch">
 			<name>Referenznummer</name>
