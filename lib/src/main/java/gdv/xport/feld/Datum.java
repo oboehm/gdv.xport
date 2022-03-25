@@ -384,9 +384,6 @@ public final class Datum extends NumFeld {
 
         protected String validateFormat(DateFormat format, String value) {
             try {
-                if ((value.length() == 6) && value.startsWith("00")) {
-                    return value;
-                }
                 Date date = format.parse(value);
                 String converted = format.format(date);
                 if (!value.equals(converted)) {
