@@ -2655,6 +2655,7 @@
 			<feldreferenz referenz="086-086-VorzeichenKontostandVorjahr-Alphanumerisch">
 				<name>Vorzeichen Kontostand Vorjahr</name>
 				<technischerName>VorzeichenKontostandVorjahr</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld LeistungsstandTilgerkonto (87-100) -->
 			<feldreferenz referenz="087-100-LeistungsstandTilgerkonto-Fliesskomma">
@@ -2665,6 +2666,7 @@
 			<feldreferenz referenz="101-101-VorzeichenLeistungsstandTilgerkonto-Alphanumerisch">
 				<name>Vorzeichen Leistungsstand Tilgerkonto</name>
 				<technischerName>VorzeichenLeistungsstandTilgerkonto</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- Datum erteilteNichtveranlagungsbescheinigunggueltigbis (102-109) -->
 			<feldreferenz referenz="102-109-erteilteNichtveranlagungsbescheinigunggueltigbis-Datum">
@@ -3199,6 +3201,7 @@
 			<feldreferenz referenz="121-121-Vorzeichen1-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen1</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld VerssteuerinWE (122-132) -->
 			<feldreferenz referenz="122-132-VerssteuerinWE-Fliesskomma">
@@ -3209,6 +3212,7 @@
 			<feldreferenz referenz="133-133-Vorzeichen2-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen2</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld GebuehrInWE (134-137) -->
 			<feldreferenz referenz="134-137-GebuehrInWE-Fliesskomma">
@@ -3219,6 +3223,7 @@
 			<feldreferenz referenz="138-138-Vorzeichen3-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen3</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld GesbeitragBruttoInWE (139-149) -->
 			<feldreferenz referenz="139-149-GesbeitragBruttoInWE-Fliesskomma">
@@ -3229,6 +3234,7 @@
 			<feldreferenz referenz="150-150-Vorzeichen4-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen4</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld GesProvisionsbetraginWE (151-161) -->
 			<feldreferenz referenz="151-161-GesProvisionsbetraginWE-Fliesskomma">
@@ -3239,6 +3245,7 @@
 			<feldreferenz referenz="162-162-Vorzeichen5-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen5</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld BeitragFuehrungsgeschaeftinWE (163-173) -->
 			<feldreferenz referenz="163-173-BeitragFuehrungsgeschaeftinWE-Fliesskomma">
@@ -3249,6 +3256,7 @@
 			<feldreferenz referenz="174-174-Vorzeichen6-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen6</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Retourengrund (175-176) -->
 			<feldreferenz referenz="175-176-Retourengrund-Alphanumerisch">
@@ -3269,6 +3277,7 @@
 			<feldreferenz referenz="218-218-Vorzeichen7-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen7</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld AbweichendeVuNr (219-223) -->
 			<feldreferenz referenz="219-223-AbweichendeVuNr-Alphanumerisch">
@@ -3386,6 +3395,7 @@
 			<feldreferenz referenz="118-118-Vorzeichen-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel2 (119-121) -->
 			<feldreferenz referenz="119-121-Waehrungsschluessel2-Alphanumerisch">
@@ -8217,6 +8227,7 @@
 			<feldreferenz referenz="070-070-Vorzeichen1-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen1</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld TeilspartensteuerinWE (71-81) -->
 			<feldreferenz referenz="071-081-TeilspartensteuerinWE-Fliesskomma">
@@ -8227,6 +8238,7 @@
 			<feldreferenz referenz="082-082-Vorzeichen2-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen2</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Teilspartensteuersatz (83-86) -->
 			<feldreferenz referenz="083-086-Teilspartensteuersatz-Fliesskomma">
@@ -8242,6 +8254,7 @@
 			<feldreferenz referenz="098-098-Vorzeichen3-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen3</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Provisionssatz1 (99-103) -->
 			<feldreferenz referenz="099-103-Provisionssatz1-Fliesskomma">
@@ -8257,6 +8270,7 @@
 			<feldreferenz referenz="115-115-Vorzeichen4-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen4</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Provisionsart1 (116-116) -->
 			<feldreferenz referenz="116-116-Provisionsart1-Alphanumerisch">
@@ -8272,6 +8286,7 @@
 			<feldreferenz referenz="128-128-Vorzeichen5-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen5</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Provisionssatz2 (129-133) -->
 			<feldreferenz referenz="129-133-Provisionssatz2-Fliesskomma">
@@ -8287,6 +8302,7 @@
 			<feldreferenz referenz="145-145-Vorzeichen6-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen6</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Provisionsart2 (146-146) -->
 			<feldreferenz referenz="146-146-Provisionsart2-Alphanumerisch">
@@ -8302,6 +8318,7 @@
 			<feldreferenz referenz="158-158-Vorzeichen7-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen7</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Provisionssatz3 (159-163) -->
 			<feldreferenz referenz="159-163-Provisionssatz3-Fliesskomma">
@@ -8317,6 +8334,7 @@
 			<feldreferenz referenz="175-175-Vorzeichen8-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen8</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Provisionsart3 (176-176) -->
 			<feldreferenz referenz="176-176-Provisionsart3-Alphanumerisch">
@@ -8338,6 +8356,7 @@
 			<feldreferenz referenz="205-205-Vorzeichen9-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen9</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld BeitragsstundunginWE (206-216) -->
 			<feldreferenz referenz="206-216-BeitragsstundunginWE-Fliesskomma">
@@ -8348,6 +8367,7 @@
 			<feldreferenz referenz="217-217-Vorzeichen10-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen10</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld NettobeitragAusZusatzVersinWE (218-228) -->
 			<feldreferenz referenz="218-228-NettobeitragAusZusatzVersinWE-Fliesskomma">
@@ -8358,6 +8378,7 @@
 			<feldreferenz referenz="229-229-Vorzeichen11-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen11</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld VerrechnungAusDividendeninWE (230-240) -->
 			<feldreferenz referenz="230-240-VerrechnungAusDividendeninWE-Fliesskomma">
@@ -8368,6 +8389,7 @@
 			<feldreferenz referenz="241-241-Vorzeichen12-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen12</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld AbweichendeVuNr (242-246) -->
 			<feldreferenz referenz="242-246-AbweichendeVuNr-Alphanumerisch">
@@ -10970,6 +10992,7 @@
 			<feldreferenz referenz="154-154-VorzeichenZumRabattZuschlag-Alphanumerisch">
 				<name>Vorzeichen zum Rabatt/Zuschlag</name>
 				<technischerName>VorzeichenZumRabattZuschlag</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- Datum GueltigAbDatum (155-162) -->
 			<feldreferenz referenz="155-162-GueltigAbDatum-Datum">
@@ -11503,6 +11526,7 @@
 			<feldreferenz referenz="085-085-Vorzeichen11-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen11</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld SteuerBetragInWE1 (86-99) -->
 			<feldreferenz referenz="086-099-SteuerBetragInWE1-Fliesskomma">
@@ -11513,6 +11537,7 @@
 			<feldreferenz referenz="100-100-Vorzeichen12-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen12</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel1 (101-103) -->
 			<feldreferenz referenz="101-103-Waehrungsschluessel1-Alphanumerisch">
@@ -11553,6 +11578,7 @@
 			<feldreferenz referenz="145-145-Vorzeichen21-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen21</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld SteuerBetragInWE2 (146-159) -->
 			<feldreferenz referenz="146-159-SteuerBetragInWE2-Fliesskomma">
@@ -11563,6 +11589,7 @@
 			<feldreferenz referenz="160-160-Vorzeichen22-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen22</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel2 (161-163) -->
 			<feldreferenz referenz="161-163-Waehrungsschluessel2-Alphanumerisch">
@@ -11603,6 +11630,7 @@
 			<feldreferenz referenz="205-205-Vorzeichen31-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen31</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld SteuerBetragInWE3 (206-219) -->
 			<feldreferenz referenz="206-219-SteuerBetragInWE3-Fliesskomma">
@@ -11613,6 +11641,7 @@
 			<feldreferenz referenz="220-220-Vorzeichen32-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen32</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel3 (221-223) -->
 			<feldreferenz referenz="221-223-Waehrungsschluessel3-Alphanumerisch">
@@ -13029,6 +13058,7 @@
 			<feldreferenz referenz="086-086-VorzeichenKontostandVorjahr-Alphanumerisch">
 				<name>Vorzeichen Kontostand Vorjahr</name>
 				<technischerName>VorzeichenKontostandVorjahr</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld LeistungsstandTilgerkonto (87-100) -->
 			<feldreferenz referenz="087-100-LeistungsstandTilgerkonto-Fliesskomma">
@@ -13039,6 +13069,7 @@
 			<feldreferenz referenz="101-101-VorzeichenLeistungsstandTilgerkonto-Alphanumerisch">
 				<name>Vorzeichen Leistungsstand Tilgerkonto</name>
 				<technischerName>VorzeichenLeistungsstandTilgerkonto</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- Datum erteilteNichtveranlagungsbescheinigunggueltigbis (102-109) -->
 			<feldreferenz referenz="102-109-erteilteNichtveranlagungsbescheinigunggueltigbis-Datum">
@@ -14520,6 +14551,7 @@
 			<feldreferenz referenz="140-140-Vorzeichen1-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen1</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel1 (141-143) -->
 			<feldreferenz referenz="141-143-Waehrungsschluessel1-Alphanumerisch">
@@ -14535,6 +14567,7 @@
 			<feldreferenz referenz="156-156-Vorzeichen2-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen2</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel2 (157-159) -->
 			<feldreferenz referenz="157-159-Waehrungsschluessel2-Alphanumerisch">
@@ -17670,6 +17703,7 @@
 			<feldreferenz referenz="178-178-Vorzeichen1-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen1</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Leistungsart (179-180) -->
 			<feldreferenz referenz="179-180-Leistungsart-Numerisch">
@@ -17695,6 +17729,7 @@
 			<feldreferenz referenz="199-199-Vorzeichen2-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen2</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Schadenbeschreibung (200-229) -->
 			<feldreferenz referenz="200-229-Schadenbeschreibung-Alphanumerisch">
@@ -19452,6 +19487,7 @@
 			<feldreferenz referenz="081-081-Vorzeichen1-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen1</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld RabattInProzent (82-85) -->
 			<feldreferenz referenz="082-085-RabattInProzent-Fliesskomma">
@@ -19472,6 +19508,7 @@
 			<feldreferenz referenz="103-103-Vorzeichen2-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen2</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld VerssteuerInProz (104-107) -->
 			<feldreferenz referenz="104-107-VerssteuerInProz-Fliesskomma">
@@ -19487,6 +19524,7 @@
 			<feldreferenz referenz="119-119-Vorzeichen3-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen3</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Provisionsart1 (120-120) -->
 			<feldreferenz referenz="120-120-Provisionsart1-Alphanumerisch">
@@ -19502,6 +19540,7 @@
 			<feldreferenz referenz="132-132-Vorzeichen4-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen4</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Provisionssatz1 (133-137) -->
 			<feldreferenz referenz="133-137-Provisionssatz1-Fliesskomma">
@@ -19517,6 +19556,7 @@
 			<feldreferenz referenz="149-149-Vorzeichen5-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen5</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Provisionsart2 (150-150) -->
 			<feldreferenz referenz="150-150-Provisionsart2-Alphanumerisch">
@@ -19532,6 +19572,7 @@
 			<feldreferenz referenz="162-162-Vorzeichen6-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen6</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Provisionssatz2 (163-167) -->
 			<feldreferenz referenz="163-167-Provisionssatz2-Fliesskomma">
@@ -19547,6 +19588,7 @@
 			<feldreferenz referenz="179-179-Vorzeichen7-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen7</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Zeichnungsjahr (180-183) -->
 			<feldreferenz referenz="180-183-Zeichnungsjahr-Numerisch">
@@ -21580,6 +21622,7 @@
 			<feldreferenz referenz="135-135-Vorzeichen1-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen1</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Saldo2 (136-149) -->
 			<feldreferenz referenz="136-149-Saldo2-Fliesskomma">
@@ -21590,6 +21633,7 @@
 			<feldreferenz referenz="150-150-Vorzeichen2-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen2</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Saldo3 (151-164) -->
 			<feldreferenz referenz="151-164-Saldo3-Fliesskomma">
@@ -21600,6 +21644,7 @@
 			<feldreferenz referenz="165-165-Vorzeichen3-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen3</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Betrag (166-179) -->
 			<feldreferenz referenz="166-179-Betrag-Fliesskomma">
@@ -21610,6 +21655,7 @@
 			<feldreferenz referenz="180-180-Vorzeichen-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Saldo4 (181-194) -->
 			<feldreferenz referenz="181-194-Saldo4-Fliesskomma">
@@ -21620,6 +21666,7 @@
 			<feldreferenz referenz="195-195-Vorzeichen4-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen4</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Ueberzahlung (196-209) -->
 			<feldreferenz referenz="196-209-Ueberzahlung-Fliesskomma">
@@ -23926,6 +23973,7 @@
 			<feldreferenz referenz="152-152-VorzeichenKontostand-Alphanumerisch">
 				<name>Vorzeichen Kontostand</name>
 				<technischerName>VorzeichenKontostand</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Sparzins (153-157) -->
 			<feldreferenz referenz="153-157-Sparzins-Fliesskomma">
@@ -25020,6 +25068,7 @@
 			<feldreferenz referenz="135-135-Vorzeichen1-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen1</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel1 (136-138) -->
 			<feldreferenz referenz="136-138-Waehrungsschluessel1-Alphanumerisch">
@@ -25045,6 +25094,7 @@
 			<feldreferenz referenz="163-163-Vorzeichen2-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen2</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel2 (164-166) -->
 			<feldreferenz referenz="164-166-Waehrungsschluessel2-Alphanumerisch">
@@ -25065,6 +25115,7 @@
 			<feldreferenz referenz="184-184-Vorzeichen3-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen3</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel3 (185-187) -->
 			<feldreferenz referenz="185-187-Waehrungsschluessel3-Alphanumerisch">
@@ -25177,6 +25228,7 @@
 			<feldreferenz referenz="115-115-Vorzeichen4-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen4</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel4 (116-118) -->
 			<feldreferenz referenz="116-118-Waehrungsschluessel4-Alphanumerisch">
@@ -25192,6 +25244,7 @@
 			<feldreferenz referenz="131-131-Vorzeichen5-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen5</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel5 (132-134) -->
 			<feldreferenz referenz="132-134-Waehrungsschluessel5-Alphanumerisch">
@@ -25207,6 +25260,7 @@
 			<feldreferenz referenz="147-147-Vorzeichen6-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen6</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel6 (148-150) -->
 			<feldreferenz referenz="148-150-Waehrungsschluessel6-Alphanumerisch">
@@ -25222,6 +25276,7 @@
 			<feldreferenz referenz="163-163-Vorzeichen7-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen7</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel7 (164-166) -->
 			<feldreferenz referenz="164-166-Waehrungsschluessel7-Alphanumerisch">
@@ -28069,6 +28124,7 @@
 			<feldreferenz referenz="153-153-Vorzeichen1-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen1</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld SchadenbearbeitungskostinWE (154-166) -->
 			<feldreferenz referenz="154-166-SchadenbearbeitungskostinWE-Fliesskomma">
@@ -28079,6 +28135,7 @@
 			<feldreferenz referenz="167-167-Vorzeichen2-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen2</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Selbstbehalt (168-168) -->
 			<feldreferenz referenz="168-168-Selbstbehalt-Alphanumerisch">
@@ -28094,6 +28151,7 @@
 			<feldreferenz referenz="182-182-Vorzeichen3-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen3</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Teilungsabkommen (183-183) -->
 			<feldreferenz referenz="183-183-Teilungsabkommen-Alphanumerisch">
@@ -31473,6 +31531,7 @@
 			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
 				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
 			<feldreferenz referenz="129-140-ProvisionspflichtigeBeitragssummeInWE2-Fliesskomma">
@@ -33232,6 +33291,7 @@
 			<feldreferenz referenz="054-054-Vorzeichen1-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen1</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld GesprovisionsBetrag (55-68) -->
 			<feldreferenz referenz="055-068-GesprovisionsBetrag-Fliesskomma">
@@ -33242,6 +33302,7 @@
 			<feldreferenz referenz="069-069-Vorzeichen2-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen2</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Verssleistungen (70-83) -->
 			<feldreferenz referenz="070-083-Verssleistungen-Fliesskomma">
@@ -33252,6 +33313,7 @@
 			<feldreferenz referenz="084-084-Vorzeichen3-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen3</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- NumFeld Schadenbearbeitungskost (85-98) -->
 			<feldreferenz referenz="085-098-Schadenbearbeitungskost-Fliesskomma">
@@ -33262,6 +33324,7 @@
 			<feldreferenz referenz="099-099-Vorzeichen4-Alphanumerisch">
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen4</technischerName>
+				<auspraegung>+</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (100-256) -->
 			<feldreferenz referenz="100-256-Leerstellen-Alphanumerisch">
