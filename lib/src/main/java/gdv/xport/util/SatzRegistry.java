@@ -37,6 +37,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -63,6 +64,7 @@ public class SatzRegistry implements VersionHandler {
     /** Dieser Validator akzeptiert alle Satzarten zwischen 0 und 9999. */
     public static final Validator NO_VALIDATOR = new Validator(Range.between(0, 9999));
     private static final Map<Config, SatzRegistry> INSTANCES = new HashMap<>();
+    private static final Map<Map.Entry<SatzTyp, String>, Satz> SATZTYP_VERSIONEN = new HashMap<>();
     private final Map<SatzTyp, Satz> registeredSaetze = new ConcurrentHashMap<>();
     private final XmlService xmlService;
 
@@ -124,8 +126,25 @@ public class SatzRegistry implements VersionHandler {
      * @since 5.2
      */
     public static Satz getSatz(SatzTyp satzTyp, String version) {
+        Map.Entry<SatzTyp, String> satzTypVersion = new AbstractMap.SimpleEntry<>(satzTyp, version);
+        Satz satz = SATZTYP_VERSIONEN.get(satzTypVersion);
+        if (satz == null) {
+            satz = getSatz(satzTypVersion);
+            SATZTYP_VERSIONEN.put(satzTypVersion, satz);
+        }
+        try {
+            return (Satz) satz.clone();
+        } catch (CloneNotSupportedException ex) {
+            LOG.warn("Clone von {} hat nicht geklappt:", satz, ex);
+            return getSatz(satzTypVersion);
+        }
+    }
+
+    private static Satz getSatz(Map.Entry<SatzTyp, String> satzTypVersion) {
         createInstances();
+        SatzTyp satzTyp = satzTypVersion.getKey();
         Satz satz = getInstance().getSatz(satzTyp);
+        String version = satzTypVersion.getValue();
         float satzVersion = asFloat(satz.getVersion());
         float requiredVersion = asFloat(version);
         for (SatzRegistry registry : INSTANCES.values()) {
@@ -269,6 +288,7 @@ public class SatzRegistry implements VersionHandler {
      */
     public void unregister(SatzTyp typ) {
         registeredSaetze.remove(typ);
+        SATZTYP_VERSIONEN.clear();
     }
 
     /**

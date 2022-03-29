@@ -11,6 +11,9 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Unreleased]
 
+### Changed
+
+- Performance um ca. 20% verbessert
 - numerische Felder mit Format 'MMJJJJ' werden als Datum erkannt
 
 

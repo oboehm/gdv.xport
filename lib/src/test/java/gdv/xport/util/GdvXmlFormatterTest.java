@@ -29,7 +29,6 @@ import gdv.xport.satz.xml.SatzXml;
 import gdv.xport.satz.xml.XmlService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -120,7 +119,6 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
         assertEquals(bausparen, generated.getSatzTyp());
     }
 
-    @NotNull
     private static SatzXml formatSatz(Satz adressteil, File output) throws IOException, XMLStreamException {
         formatTo(output, adressteil);
         SatzXml generated = SatzXml.of(output);
