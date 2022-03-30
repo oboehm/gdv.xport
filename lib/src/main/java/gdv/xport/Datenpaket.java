@@ -100,7 +100,20 @@ public class Datenpaket implements ImportListener {
      * @since 5.2
      */
     public static Datenpaket of(Collection<Satz> datensaetze) {
-        Datenpaket datenpaket = new Datenpaket();
+        Config cfg = datensaetze.isEmpty() ? Config.DEFAULT : datensaetze.iterator().next().getConfig();
+        return of(datensaetze, cfg);
+    }
+
+    /**
+     * Legt ein Datenpaket mit den angegebenen Datensaetze an.
+     *
+     * @param datensaetze fuers Datenpaket
+     * @param cfg         gemeinsame Config fuer alle Datensaetzt
+     * @return ein neues Datenpaket
+     * @since 6.2
+     */
+    public static Datenpaket of(Collection<Satz> datensaetze, Config cfg) {
+        Datenpaket datenpaket = new Datenpaket(cfg);
         List<Datensatz> dsList = new ArrayList<>();
         for (Satz satz : datensaetze) {
             if (satz instanceof Vorsatz) {

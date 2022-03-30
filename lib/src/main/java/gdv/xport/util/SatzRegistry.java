@@ -573,7 +573,7 @@ public class SatzRegistry implements VersionHandler {
         supportedSaetze.put(Vorsatz.SATZART, new Vorsatz(this));
         supportedSaetze.remove(Nachsatz.SATZART);
         supportedSaetze.put(Nachsatz.SATZART, new Nachsatz(this));
-        return Datenpaket.of(supportedSaetze.values());
+        return Datenpaket.of(supportedSaetze.values(), xmlService.getConfig());
     }
 
     /**
