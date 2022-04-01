@@ -108,7 +108,7 @@ public class Datenpaket implements ImportListener {
      * Legt ein Datenpaket mit den angegebenen Datensaetze an.
      *
      * @param datensaetze fuers Datenpaket
-     * @param cfg         gemeinsame Config fuer alle Datensaetzt
+     * @param cfg         gemeinsame Config fuer alle Datensaetze
      * @return ein neues Datenpaket
      * @since 6.2
      */

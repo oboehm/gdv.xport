@@ -186,12 +186,12 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
             LOG.debug("{} wird geprueft.", satz);
             checkSatz(satz, xmlService.getSatzart(satz.getSatzTyp()));
         }
-        writeResettedDatenpnaket(datenpaket, stand, filename);
+        writeResettedDatenpaket(datenpaket, stand, filename);
     }
 
     // fuer eine potentielle neue Volage wird hier ein Datenpaket ohne Werte herausgeschrieben
-    private void writeResettedDatenpnaket(Datenpaket datenpaket, String stand, String filename) throws IOException {
-        String[] namen = {"Satzart0", "Satzart9", "Wagnisart", "Art", "Vorzeichen", "ZusaetzlicheSatzkennung", "Folge",
+    private void writeResettedDatenpaket(Datenpaket datenpaket, String stand, String filename) throws IOException {
+        String[] namen = {"Satzart0", "Satzart9", "Wagnisart", "Art", "Vorzeichen", "SatzN", "ZusaetzlicheSatzkennung", "Folge",
                           "AnzSaetze"};
         for (Satz satz : datenpaket.getAllSaetze()) {
             for (Teildatensatz tds: satz.getTeildatensaetze()) {
