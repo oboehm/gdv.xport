@@ -27,6 +27,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -110,18 +111,24 @@ public final class TeildatensatzXml extends Teildatensatz {
     }
 
     private void updateSatzendeWith(final int startAddress, final Map<String, FeldXml> felder) {
+        List<Feld> endeDatenfelder = new ArrayList<>();
         List<FeldReferenz> referenzen = this.satzende.getFeldReferenzen();
         int endAddress = 256;
         for (int i = referenzen.size() - 1; i >= 0; i--) {
             FeldReferenz referenz = referenzen.get(i);
             FeldXml feldXml = felder.get(referenz.getId());
             endAddress -= feldXml.getAnzahlBytes();
-            this.addFeld(feldXml, endAddress+1, referenz);
+            Feld feld = feldXml.toFeld(endAddress + 1, referenz).mitConfig(getConfig());
+            endeDatenfelder.add(feld);
         }
         int length = endAddress + 1 - startAddress;
         if (length > 0) {
             Feld leerstelle = new AlphaNumFeld((Bezeichner.LEERSTELLEN), endAddress + 1 - startAddress, startAddress);
-            this.add(leerstelle);
+            endeDatenfelder.add(leerstelle);
+        }
+        Collections.sort(endeDatenfelder);
+        for (Feld feld : endeDatenfelder) {
+            this.add(feld);
         }
     }
 
