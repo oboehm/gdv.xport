@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 by Oliver Boehm
+ * Copyright (c) 2017-2022 by Oliver Boehm
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,19 +17,22 @@
  */
 package gdv.xport.srv.config;
 
-import org.apache.logging.log4j.*;
-import org.springframework.util.*;
-import org.springframework.web.servlet.handler.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.HandlerInterceptor;
 
-import javax.servlet.http.*;
-import java.util.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Enumeration;
+import java.util.Map;
 
 /**
  * Der LogInterceptor protokolliert die ein- und ausgehenden Requests.
  *
  * @author <a href="ob@aosd.de">oliver</a>
  */
-public final class LogInterceptor extends HandlerInterceptorAdapter {
+public final class LogInterceptor implements HandlerInterceptor {
 
     private static final Logger LOG = LogManager.getLogger(LogInterceptor.class);
 
