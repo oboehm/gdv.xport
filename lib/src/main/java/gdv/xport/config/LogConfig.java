@@ -46,7 +46,7 @@ public final class LogConfig {
         } catch (ConfigException ex) {
             LogManager.getLogger().fatal("Kann keine LogConfig-Instanz anlegen:", ex);
         }
-        LOG = LogManager.getLogger();
+        LOG = LogManager.getLogger(LogConfig.class);
         LOG.debug("{} ist registriert.", driver);
     }
 
@@ -99,7 +99,6 @@ public final class LogConfig {
     private static URI readDatabaseURL() {
         String dbURL = System.getenv("DATABASE_URL");
         if (dbURL != null) {
-            LOG.info("Read DATABASE_URL='{}' from environment.", dbURL);
             return URI.create(dbURL);
         }
         return URI.create(System.getProperty("DATABASE_URL","jdbc:hsqldb:mem:logdb"));

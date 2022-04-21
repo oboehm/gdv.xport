@@ -17,13 +17,17 @@
  */
 package gdv.xport.config;
 
-import org.apache.logging.log4j.*;
-import org.junit.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.hamcrest.MatcherAssert;
+import org.junit.AfterClass;
+import org.junit.Test;
 
 import java.sql.*;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Unit-Tests fuer {@link LogConfig}. Standardmaessig wird eine In-Memory-DB
@@ -46,7 +50,7 @@ public final class LogConfigTest {
         try (Connection connection = getConnection();
              Statement stmt = connection.createStatement()) {
             assertNotNull(stmt);
-            assertThat(connection.isClosed(), is(Boolean.FALSE));
+            MatcherAssert.assertThat(connection.isClosed(), is(Boolean.FALSE));
             LOG.info("Got connection {}.", connection);
         }
     }
@@ -76,8 +80,14 @@ public final class LogConfigTest {
                 LOG.debug("{}. entry: {} {} {}", n, ts, level, msg);
             }
         }
-        assertThat(n, greaterThan(0));
+        MatcherAssert.assertThat(n, greaterThan(0));
         LOG.info("{} entries read from logbook.", n);
+    }
+
+    @Test
+    public void testCtor() {
+        LogConfig cfg = new LogConfig();
+        assertNotNull(cfg);
     }
 
     /**
