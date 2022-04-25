@@ -1167,7 +1167,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner VERSICHERUNGSBEGINN_URSPRUNGSBEGINN_DER_TARIFART = new Bezeichner("Versicherungsbeginn / Ursprungsbeginn der Tarifart", "VerssbeginnUrsprungsbeginnTarifart");
     public static final Bezeichner VERSICHERUNGSBEGINN_VP_URSPRUNGSBEGINN = new Bezeichner("Versicherungsbeginn der VP / Ursprungsbeginn", "VerssbeginnVpUrsprungsbeginn");
     public static final Bezeichner VERSICHERUNGSLEISTUNGEN = new Bezeichner("Versicherungsleistungen");
-    public static final Bezeichner VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Versicherungsschein-Nummer", "VsNr");
+    public static final Bezeichner VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Versicherungsschein-Nummer", "VsNr", "VertragsNr");
     public static final Bezeichner VERSICHERUNGSSCHEINNUMMER_DER_VORVERSICHERUNG = new Bezeichner("Versicherungsscheinnummer der Vorversicherung", "VersicherungsscheinnummerDerVorversicherung");
     public static final Bezeichner VERSICHERUNGSSCHEINNUMMER_VM = new Bezeichner("Versicherungsscheinnummer VM", "VsNrVm");
     public static final Bezeichner VERSICHERUNGSSCHUTZ = new Bezeichner("Versicherungsschutz");

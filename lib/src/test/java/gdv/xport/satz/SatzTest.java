@@ -506,6 +506,35 @@ public final class SatzTest extends AbstractSatzTest {
         assertFalse(satz100.isComplete());
     }
 
+    @Test
+    public void testMergeWithLeben() {
+        checkMergeWith(SatzTyp.of("0220.010.13.1"));
+    }
+
+    @Test
+    public void testMergeWithBausparen() {
+        checkMergeWith(SatzTyp.of("0210.580"));
+    }
+
+    private void checkMergeWith(SatzTyp typ) {
+        Satz s1 = getSatzWithVsNr(typ, "TEST4711");
+        Satz s2 = getSatzWithVsNr(typ, "TEST4711");
+        int n = s1.getNumberOfTeildatensaetze();
+        for (int i = n; i > 1; i--) {
+            s1.removeTeildatensatz(i);
+        }
+        s2.removeTeildatensatz(1);
+        s1.mergeWith(s2);
+        assertEquals(n, s1.getNumberOfTeildatensaetze());
+        assertEquals(0, s2.getNumberOfTeildatensaetze());
+    }
+
+    private static Satz getSatzWithVsNr(SatzTyp typ, String vsNr) {
+        Satz satz = SatzRegistry.getInstance().getSatz(typ);
+        satz.setFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER, vsNr);
+        return satz;
+    }
+
 
 
     static class TestSatz extends Satz {
