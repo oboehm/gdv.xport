@@ -449,7 +449,6 @@ public abstract class Satz implements Cloneable {
 			if (tds.hasFeld(name)) {
 				Feld x = tds.getFeld(name);
 				x.setInhalt(value);
-				x.mitConfig(config).getValidator().verify(value);
 				found = true;
 			}
 		}
