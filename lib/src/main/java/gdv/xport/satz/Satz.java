@@ -458,6 +458,23 @@ public abstract class Satz implements Cloneable {
 	}
 
 	/**
+	 * Setzt das angegebene Feld anhand der Adresse in allen Teildatensaetzen.
+	 * Das macht nur Sinn fuer Felder, die in allen Teildatensaezten vorkommen
+	 * (z.B. die ersten 7 Felder). Moechte man hingegen nur das Feld in einem
+	 * Teildatensatz setzen, so sollte man sich den entsprechenden
+	 * Teildatensatz holen und das Feld dort setzen.
+	 *
+	 * @param adresse Adresse des Felds (Bezeichnung)
+	 * @param value   neuer Wert
+	 * @since 6.2
+	 */
+	public void setFeld(final ByteAdresse adresse, final String value) {
+		for (Teildatensatz tds : teildatensatz) {
+			tds.setFeld(adresse, value);
+		}
+	}
+
+	/**
 	 * Setzt den Vermittler in das entsprechende Feld.
 	 *
 	 * @param vermittler der Vermittler
@@ -1211,15 +1228,16 @@ public abstract class Satz implements Cloneable {
 	}
 
 	private boolean canBeMergedWith(Satz other) {
+		ByteAdresse vsNrAdresse = ByteAdresse.of(14);
 		for (Teildatensatz otherTds : other.teildatensatz) {
 			Zeichen satznr = otherTds.getSatznummer();
-			Feld versicherungscheinnr = otherTds.getFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER);
+			Feld versicherungscheinnr = otherTds.getFeld(ByteAdresse.VERSICHERUNGSSCHEINNUMMER);
 			Feld folgenummer = otherTds.getFeld(Bezeichner.FOLGENUMMER);
 			for (Teildatensatz thisTds : teildatensatz) {
 				if (satznr.equals(thisTds.getSatznummer())) {
 					return false;
 				}
-				if (!versicherungscheinnr.equals(thisTds.getFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER)) &&
+				if (!versicherungscheinnr.equals(thisTds.getFeld(ByteAdresse.VERSICHERUNGSSCHEINNUMMER)) &&
 						!folgenummer.equals(thisTds.getFeld(Bezeichner.FOLGENUMMER))) {
 					return false;
 				}

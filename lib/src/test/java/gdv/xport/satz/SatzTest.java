@@ -516,6 +516,16 @@ public final class SatzTest extends AbstractSatzTest {
         checkMergeWith(SatzTyp.of("0210.580"));
     }
 
+    @Test
+    public void testMergeWithAntragSparen() {
+        checkMergeWith(SatzTyp.of("0220.580.01"));
+    }
+
+    @Test
+    public void testMergeWithDarlehen() {
+        checkMergeWith(SatzTyp.of("0220.580.2"));
+    }
+
     private void checkMergeWith(SatzTyp typ) {
         Satz s1 = getSatzWithVsNr(typ, "TEST4711");
         Satz s2 = getSatzWithVsNr(typ, "TEST4711");
@@ -531,7 +541,7 @@ public final class SatzTest extends AbstractSatzTest {
 
     private static Satz getSatzWithVsNr(SatzTyp typ, String vsNr) {
         Satz satz = SatzRegistry.getInstance().getSatz(typ);
-        satz.setFeld(Bezeichner.VERSICHERUNGSSCHEINNUMMER, vsNr);
+        satz.setFeld(ByteAdresse.VERSICHERUNGSSCHEINNUMMER, vsNr);
         return satz;
     }
 
