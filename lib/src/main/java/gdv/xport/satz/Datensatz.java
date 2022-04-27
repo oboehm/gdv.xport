@@ -47,8 +47,6 @@ public class Datensatz extends Satz {
 	private static final Logger LOG = LogManager.getLogger(Datensatz.class);
 	/** 3 Zeichen, Byte 11 - 13. */
   	private final NumFeld sparte = new NumFeld(Kopffelder1bis7.SPARTE);
-	/** 1 Zeichen, Byte 59. */
-	private final AlphaNumFeld wagnisart = new AlphaNumFeld((WAGNISART), 1, 59);
 
 	/**
 	 * Default-Konstruktor (wird zur Registrierung bei der {@link gdv.xport.util.SatzFactory}
@@ -156,7 +154,6 @@ public class Datensatz extends Satz {
 	public Datensatz(final Datensatz other) {
 		super(other, other.cloneTeildatensaetze());
 		this.sparte.setInhalt(other.sparte.getInhalt());
-		this.wagnisart.setInhalt(other.wagnisart.getInhalt());
 	}
 
     /**
