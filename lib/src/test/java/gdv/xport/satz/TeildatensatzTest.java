@@ -251,4 +251,11 @@ public class TeildatensatzTest extends AbstractSatzTest {
         assertEquals("0800", tds.getFeld(Bezeichner.SATZART).getInhalt());
     }
 
+    @Test
+    public void testGetBezeichnerClass() {
+        Teildatensatz tds = SATZ_REGISTRY.getSatz(SatzTyp.of("0210.040")).getTeildatensatz(1);
+        NumFeld summe = tds.getFeld(Bezeichner.DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN, NumFeld.class);
+        assertNotNull(summe);
+    }
+
 }
