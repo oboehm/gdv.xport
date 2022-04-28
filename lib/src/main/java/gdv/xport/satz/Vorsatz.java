@@ -19,10 +19,7 @@
 package gdv.xport.satz;
 
 import gdv.xport.config.Config;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.Version;
+import gdv.xport.feld.*;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.VersionHandler;
@@ -125,14 +122,14 @@ public class Vorsatz extends Satz {
      */
     public void setVuNummer(final String s) {
         assert s.length() <= 5 : s + " darf nur max. 5 Zeichen lang sein";
-        this.setFeld(Bezeichner.VU_NUMMER, s);
+        this.setFeld(ByteAdresse.VU_NUMMER, s);
     }
 
     /**
      * @return VU-Nummer
      */
     public String getVuNummer() {
-        return this.getFeld(Bezeichner.VU_NUMMER)
+        return this.getFeld(ByteAdresse.VU_NUMMER)
                 .getInhalt()
                 .trim();
     }

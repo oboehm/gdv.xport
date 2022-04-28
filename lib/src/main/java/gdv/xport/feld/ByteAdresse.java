@@ -35,6 +35,8 @@ public class ByteAdresse extends Number implements Fachwert {
     private static final Validator VALIDATOR = new Validator();
     final byte adresse;
 
+    /** Default-Adresse fuer Nummer des Versischerungsunternehmen. */
+    public static final ByteAdresse VU_NUMMER = ByteAdresse.of(5);
     /** Default-Adresse fuer Versichungsschein- und Vertragsnummer. */
     public static final ByteAdresse VERSICHERUNGSSCHEINNUMMER = ByteAdresse.of(14);
 

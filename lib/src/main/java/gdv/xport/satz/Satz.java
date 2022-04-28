@@ -653,6 +653,17 @@ public abstract class Satz implements Cloneable {
 		return findFeld(bezeichner);
 	}
 
+	/**
+	 * Holt sich das entsprechende Feld aus dem Teildatensatz.
+	 *
+	 * @param adresse ByteAdresse des entsprechende Feld
+	 * @return das Feld aus dem ersten Teildatensatz.
+	 * @since 6.2
+	 */
+	public Feld getFeld(final ByteAdresse adresse) {
+		return getTeildatensatz(1).getFeld(adresse);
+	}
+
 	private Feld findFeld(final Bezeichner bezeichner) throws IllegalArgumentException {
 		for (Teildatensatz tds : teildatensatz) {
 			if (tds.hasFeld(bezeichner)) {
@@ -1118,7 +1129,7 @@ public abstract class Satz implements Cloneable {
 			}
 			used.add(i);
 			char[] cbuf = new char[257];
-			importFrom(reader, cbuf, 0);
+			importFrom(reader, cbuf);
 			teildatensatz[i].importFrom(new String(cbuf));
 			feld1to7 = Arrays.copyOfRange(cbuf, 0, 42);
         }
@@ -1155,9 +1166,9 @@ public abstract class Satz implements Cloneable {
         }
 	}
 
-	private static void importFrom(final Reader reader, final char[] cbuf, final int i)
+	private static void importFrom(final Reader reader, final char[] cbuf)
 	        throws IOException {
-		if (reader.read(cbuf, i, 256) == -1) {
+		if (reader.read(cbuf, 0, 256) == -1) {
 			throw new EOFException("can't read 256 bytes from " + reader);
 		}
 	}

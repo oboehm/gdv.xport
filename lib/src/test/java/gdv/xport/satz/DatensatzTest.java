@@ -187,7 +187,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
         assertEquals(vunr, datensatz.getVuNummer());
         for (Teildatensatz tds : datensatz.getTeildatensaetze()) {
             if (tds.hasFeld(Bezeichner.VU_NUMMER)) {
-                assertEquals(vunr, tds.getFeld(Bezeichner.VU_NUMMER).getInhalt());
+                assertEquals(vunr, tds.getFeld(ByteAdresse.VU_NUMMER).getInhalt());
             }
         }
         return datensatz;
