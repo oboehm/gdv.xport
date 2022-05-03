@@ -11,6 +11,17 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Unreleased]
 
+
+### Security
+
+- _fixed_: jackson-databind-Abhängigkeit aktualisiert
+  ([Issue #81](https://github.com/oboehm/gdv.xport/issues/81))
+
+### Added
+
+- Doku um Docker-Einstieg ergänzt
+
+
 ### Changed
 
 - Performance um ca. 20% verbessert

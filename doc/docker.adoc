@@ -1,0 +1,46 @@
+= Docker
+
+Hier findest du die wichtigsten Schritte für den Einstieg in das Leben mit Docker.
+Vorausgesetzt wird dafür eine aktuelle Docker-Installation.
+
+
+== Inbetriebnahme
+
+Während in link:build.adoc[Build] bereits der Bau (und Start) des Docker-Images beschrieben ist, kannst du dir das Image auch auf foldendem Weg holen und starten:
+
+[source]
+----
+docker pull oboehm/gdv.xport
+docker run -p 127.0.0.1:2517:2517 oboehm/gdv.xport
+----
+
+Danach kann die Web-Anwendung unter http://localhost:2517/ aufgerufen werden.
+
+
+== Bauen...
+
+=== ...ohne Docker
+
+Über das https://github.com/GoogleContainerTools/jib/blob/master/jib-maven-plugin/README.md[Jib-Plugin] kann das Docker-Image auch ohne lokales Docker gebaut werden:
+
+[source]
+----
+cd service
+mvn compile jib:build
+----
+
+Allerdings braucht man dazu die Berechtigung, nach https://hub.docker.com/r/oboehm/gdv.xport[docker hub] pushen zu dürfen.
+Für Mac gibt es dazu die https://github.com/docker/docker-credential-helpers/blob/master/README.md[docker-credential-osxkeychain] mit entsprechender Anleitung.
+
+
+=== ...mit Docker
+
+Soll das Image nicht gleich auf Docker-Hub, kann es auch lokal bereitgestellt werden:
+
+[source]
+----
+cd service
+mvn compile jib:dockerBuild
+----
+
+Allerdings muss dazu verständlicherweise Docker lokal installiert sein.

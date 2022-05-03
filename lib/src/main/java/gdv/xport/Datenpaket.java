@@ -587,7 +587,7 @@ public class Datenpaket implements ImportListener {
         for (int i = 0; i < datensaetze.size(); i++) {
             Datensatz ds = datensaetze.get(i);
             if (ds.getTeildatensaetze().size() == 0) {
-                // keine Teildatensätze, evtl. bereits gemergt, übergehe den Datensatz
+                // keine Teildatensaetze, evtl. bereits gemergt, uebergehe den Datensatz
                 continue;
             }
             boolean nextVsnrReached = false;
