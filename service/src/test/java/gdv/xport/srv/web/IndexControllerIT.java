@@ -18,27 +18,52 @@
 
 package gdv.xport.srv.web;
 
+import gdv.xport.srv.config.AppConfig;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
-import org.junit.Test;
-import org.springframework.http.ResponseEntity;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 /**
  * Integrationstests fuer den {@link IndexController}.
  *
  * @author oboehm
  */
-public final class IndexControllerIT extends AbstractControllerIT{
+@AutoConfigureMockMvc
+@ContextConfiguration(classes = {IndexController.class, AppConfig.class})
+@WebMvcTest
+class IndexControllerIT {
+
+    private static final Logger log = LogManager.getLogger(IndexControllerIT.class);
+
+    @Autowired
+    private MockMvc mockMVC;
+
+    @Test
+    void testSetup() {
+        log.info("testSetup() wurde gestartet.");
+        assertNotNull(mockMVC);
+    }
 
     /**
      * Mit diesem Test pruefen wir, ob wir die "index.html"-Seite bekommen.
      */
     @Test
-    public void testIndexHtml() {
-        ResponseEntity<String> response = getResponseEntityFor("/", String.class);
-        MatcherAssert.assertThat(response.getBody(), containsString("<title>"));
+    void testIndexHtml() throws Exception {
+        MockHttpServletResponse response = mockMVC.perform(get("/")).andReturn().getResponse();
+        assertEquals(200, response.getStatus());
+        MatcherAssert.assertThat(response.getContentAsString(), containsString("<title>"));
     }
 
 }
