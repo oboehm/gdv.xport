@@ -937,4 +937,51 @@ public final class DatenpaketTest {
         assertEquals(Config.STRICT, datenpaket.getNachsatz().getConfig());
     }
 
+    /**
+     * Test fuer Issue #82. Problem ist, dass Teildatensaetze bei Leben in der falschen Reihenfolge (Wagnisarten) nicht
+     * korrekt auf die Saetze geparst werden. So wird z.B. ein Tds2 von Wagnisart 2 (der direkt auf einen Tds1 von
+     * Wagnisart 48 folgt), faelschlicherweise als Tds2 der Wagnisart 48 interpretiert. Hiermit wurde das
+     * Problem nachgestellt.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    @Test
+    public void testImportLebenFromFileMixedTeildatensaetze() throws IOException {
+        File file = new File("src/test/resources", "testdatei_leben_mixed_teildatensaetze.txt");
+        datenpaket.importFrom(file);
+        List<ConstraintViolation> violations = datenpaket.validate();
+        LOG.info("violations = {}", violations);
+
+        // test that every teildatensatz of all datensaetze has the correct satznummer (according to the identified
+        // teildatensatz) and the correct wagnisart
+        List<Pair<Integer, Integer>> wrongDatensatzTeildatensatzList = new ArrayList<>();
+        for (int i = 0; i < datenpaket.getDatensaetze().size(); i++) {
+            Datensatz datensatz = datenpaket.getDatensaetze().get(i);
+            for (int j = 0; j < datensatz.getTeildatensaetze().size(); j++) {
+                Teildatensatz teildatensatz = datensatz.getTeildatensaetze().get(j);
+                char satznummerOfTeildatensatz = teildatensatz.getSatznummer().toChar();
+                String wagnisartOfTeildatensatz = datensatz.hasWagnisart() ? datensatz.getWagnisart() : ""; // nimm wagnisart vom Datensatz (erster Teildatensatz, soll fuer alle folgenden gleich sein)
+                if (teildatensatz.hasFeld(Bezeichner.SATZNUMMER)
+                        && StringUtils.isNumeric(teildatensatz.getFeldInhalt(Bezeichner.SATZNUMMER))
+                        && !String.valueOf(satznummerOfTeildatensatz).equals(teildatensatz.getFeldInhalt(Bezeichner.SATZNUMMER))) {
+                    wrongDatensatzTeildatensatzList.add(Pair.of(i, j));
+                }
+                // leben: pruefe dass wagnisart fuer alle tds dieselbe ist
+                else if (wagnisartOfTeildatensatz != null
+                        && wagnisartOfTeildatensatz.length() > 0
+                        && teildatensatz.hasFeld(Bezeichner.WAGNISART)
+                        && StringUtils.isNumeric(teildatensatz.getFeldInhalt(Bezeichner.WAGNISART))
+                        && !wagnisartOfTeildatensatz.equals(teildatensatz.getFeldInhalt(Bezeichner.WAGNISART))) {
+                    wrongDatensatzTeildatensatzList.add(Pair.of(i, j));
+                }
+            }
+        }
+
+        assertTrue("There are teildatensaetze with wrong satznummern: (datensatz, teildatensatz) -> " + wrongDatensatzTeildatensatzList, wrongDatensatzTeildatensatzList.isEmpty());
+
+        datenpaket.pack();
+
+        assertEquals("Size of datensaetze not as expected", 8, datenpaket.getDatensaetze().size());
+    }
+
 }
