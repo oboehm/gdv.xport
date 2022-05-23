@@ -21,9 +21,10 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 - Doku um Docker-Einstieg ergänzt
 
-
 ### Changed
 
+- _fixed_: gemischte Teildatensätze für Sparte Leben werden beim Import richtig erkannt
+  ([Issue #82](https://github.com/oboehm/gdv.xport/issues/82))
 - Performance um ca. 20% verbessert
 - numerische Felder mit Format 'MMJJJJ' werden als Datum erkannt
 
