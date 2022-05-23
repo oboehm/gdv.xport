@@ -558,7 +558,9 @@ public class Datensatz extends Satz {
 				for (int i = 30; i < 42; i++) {
 					if (lastFeld1To7[i] != newLine[i]) return false;
 				}
-				return matchesLastFeld(satznummer, reader);
+				if (!matchesLastFeld(satznummer, reader)) return false;
+
+				return matchesNextSatztyp(reader);
 			}
 		}
 		return false;
@@ -569,6 +571,25 @@ public class Datensatz extends Satz {
 		// vorherige ist, falls Teildatensaetze uebersprungen werden
 		char newSatznummer = Satznummer.readSatznummer(reader).toChar();
 		return !(Character.isDigit(newSatznummer) && Character.isDigit(satznummer) && newSatznummer <= satznummer);
+	}
+
+	/**
+	 * Prueft, ob die kommende Zeile noch den gleichen Satztyp hat wie der aktuelle Datensatz
+	 *
+	 * @param reader       den Reader
+	 * @return true, wenn der Satztyp uebereinstimmt
+	 */
+	private boolean matchesNextSatztyp(PushbackLineNumberReader reader) {
+
+		try {
+			int satzart = Importer.of(reader).readSatzart();
+			SatzTyp satztyp = Importer.of(reader).readSatzTyp(satzart);
+			return satztyp != null && satztyp.equals(getSatzTyp());
+		} catch (IOException ex) {
+			LOG.info("No next satztyp found ({}).", ex.getLocalizedMessage());
+			LOG.debug("Details:", ex);
+			return false;
+		}
 	}
 
 	/**
