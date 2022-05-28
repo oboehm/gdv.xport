@@ -424,7 +424,8 @@ public class Teildatensatz extends Satz {
                 return f;
             }
         }
-        throw new IllegalArgumentException("invalid address " + adresse);
+        throw new IllegalArgumentException(
+                String.format("Adresse %s existiert nicht in %s", adresse, this.toShortString()));
     }
 
     /**

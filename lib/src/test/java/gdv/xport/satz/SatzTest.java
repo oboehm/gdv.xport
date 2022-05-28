@@ -105,6 +105,15 @@ public final class SatzTest extends AbstractSatzTest {
         satz.setFeld(Bezeichner.of("gibtsnet"), "plopp");
     }
 
+    @Test
+    public void testSetFeldByteAdresseIllegal() {
+        IllegalArgumentException x = assertThrows(IllegalArgumentException.class,
+                () -> satz.setFeld(ByteAdresse.of(42), "x"));
+        LOG.info("Message = \"{}\"", x.getMessage());
+        assertThat(x.getMessage(), containsString("42"));
+        assertThat(x.getMessage(), containsString(satz.getSatzTyp().toString()));
+    }
+
     /**
      * Bei der Umstellung auf "VUVM2018.xml" ist aufgefallen, dass nach der
      * Korrektur der Feldzugriffe die Folgenummer nicht mehr erkannt wurde.
