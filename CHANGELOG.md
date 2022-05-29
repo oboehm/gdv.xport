@@ -9,8 +9,15 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
-## [Unreleased]
+## [6.2.0] - 2022-05-30
 
+
+### Changed
+
+- Performance um ca. 20% verbessert
+- numerische Felder mit Format 'MMJJJJ' werden als Datum erkannt
+- _fixed_: gemischte Teildatensätze für Sparte Leben werden beim Import richtig erkannt
+  ([Issue #82](https://github.com/oboehm/gdv.xport/issues/82))
 
 ### Security
 
@@ -21,15 +28,8 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 - Doku um Docker-Einstieg ergänzt
 
-### Changed
 
-- _fixed_: gemischte Teildatensätze für Sparte Leben werden beim Import richtig erkannt
-  ([Issue #82](https://github.com/oboehm/gdv.xport/issues/82))
-- Performance um ca. 20% verbessert
-- numerische Felder mit Format 'MMJJJJ' werden als Datum erkannt
-
-
-## [6.1.2] - 2020-03-18
+## [6.1.2] - 2022-03-18
 
 ### Changed
 
@@ -39,7 +39,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - Datum mit "00" als Tag oder Monat (z.B. "00032022") werden nicht mehr als gültig angesehen
 
 
-## [6.1.1] - 2020-03-08
+## [6.1.1] - 2022-03-08
 
 ### Changed
 
@@ -66,21 +66,17 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - VU-Nummer wird nicht mehr standardmäßig über Default-Properties vorbelegt
 
 
-## [6.0.1] - 2022-01-06
+## [6.0] - 2022-01-03
 
 ### Security
 
 - Log4J auf 2.17.1 angehoben
   ([CVE-2021-44832](https://github.com/advisories/GHSA-8489-44mv-ggj8))
 
-
-## [6.0.0] - 2022-01-03
-
 ### Changed
 
 - doppelte Performance
 - Umstieg auf Java 11
-
 
 ### Removed
 
