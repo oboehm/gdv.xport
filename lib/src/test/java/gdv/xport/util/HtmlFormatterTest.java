@@ -24,6 +24,8 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import javax.xml.stream.XMLStreamException;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import static org.junit.Assert.assertFalse;
@@ -81,6 +83,14 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
     @Test
     public void testMusterdatei() throws IOException {
         exportMusterdatei(new HtmlFormatter(), "musterdatei_041222.html");
+    }
+
+    @Test
+    public void testFormatKlaus() throws IOException {
+        Datenpaket datenpaket = Datenpaket.of(new File("src/test/resources/datenpakete/Klaus_Test.gdv"));
+        try (HtmlFormatter formatter = new HtmlFormatter(new FileOutputStream("target/Klaus_Test.html"))) {
+            formatter.write(datenpaket);
+        }
     }
 
     /**

@@ -105,6 +105,20 @@ public class Datenpaket implements ImportListener {
     }
 
     /**
+     * Legt ein Datenpaket anhand der uebergebenen Datei an.
+     *
+     * @param file Datei mit Datenpaket
+     * @return Datenpaket
+     * @throws IOException bei Lesefehlern
+     * @since 6.3
+     */
+    public static Datenpaket of(File file) throws IOException {
+        Datenpaket datenpaket = new Datenpaket();
+        datenpaket.importFrom(file);
+        return datenpaket;
+    }
+
+    /**
      * Legt ein Datenpaket mit den angegebenen Datensaetze an.
      *
      * @param datensaetze fuers Datenpaket
