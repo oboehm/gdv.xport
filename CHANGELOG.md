@@ -9,7 +9,7 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
-## [Unreleased]
+## [6.2.1] - 2022-06-29
 
 ### Fixed
 
@@ -39,24 +39,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - Doku um Docker-Einstieg ergänzt
 
 
-## [6.1.2] - 2022-03-18
-
-### Changed
-
-- _fixed_: Datenpaket.pack()-Methode funktioniert jetzt korrekt bei Lücken
-  ([Issue #79](https://github.com/oboehm/gdv.xport/issues/79))
-- _fixed_: Vorsatz und Nachsatz im Datenpaket haben jetzt die gleiche Config wie das Datenpaket
-- Datum mit "00" als Tag oder Monat (z.B. "00032022") werden nicht mehr als gültig angesehen
-
-
-## [6.1.1] - 2022-03-08
-
-### Changed
-
-- Datum.setInhalt(..) überprüft das Datumsformat im STRICT-Modus
-
-
-## [6.1.0] - 2022-03-04
+## [6.1] - 2022-03-04
 
 ### Added
 
@@ -70,6 +53,14 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
   Damit können ca. 2 Mio. Datensätze (ca. 3 Mio. Records) bei 8 GB Hauptspeicher eingelesen werden.
 - `Datenpaket.add(Datensatz)` setzt jetzt korrekte Anzahl (Teildaten-)-Saetze im Nachsatz
 - verteilte Import-Funktionalität in Importer-Klasse zusammengefasst
+- Datum mit "00" als Tag oder Monat (z.B. "00032022") werden nicht mehr als gültig angesehen
+- Datum.setInhalt(..) überprüft das Datumsformat im STRICT-Modus
+
+### Fixed
+
+- Datenpaket.pack()-Methode funktioniert jetzt korrekt bei Lücken
+  ([Issue #79](https://github.com/oboehm/gdv.xport/issues/79))
+- Vorsatz und Nachsatz im Datenpaket haben jetzt die gleiche Config wie das Datenpaket
 
 ### Removed
 
