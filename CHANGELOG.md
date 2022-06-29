@@ -9,6 +9,16 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
+## [Unreleased]
+
+### Fixed
+
+- Feld "KFV-Deckungsart" in [Satzart 0220.052](http://www.gdv-online.de/vuvm/bestand/rel2018/ds0220.052.htm) ist jetzt numerisch ohne Nachkommastellen
+  ([Issue #85](https://github.com/oboehm/gdv.xport/issues/85))
+- Downgrade zu [PatternTesting 2.1.2](https://github.com/oboehm/PatternTesting2) wg. Java-8-Kompatibilität
+  ([Issue #84](https://github.com/oboehm/gdv.xport/issues/84))
+
+
 ## [6.2.0] - 2022-05-30
 
 

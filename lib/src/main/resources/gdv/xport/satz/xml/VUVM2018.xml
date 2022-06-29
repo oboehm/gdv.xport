@@ -23329,7 +23329,7 @@
 				<technischerName>KfvTarifgruppe</technischerName>
 			</feldreferenz>
 			<!-- NumFeld KfvDeckungsart (71-72) -->
-			<feldreferenz referenz="071-072-KfvDeckungsart-Fliesskomma">
+			<feldreferenz referenz="071-072-KfvDeckungsart-Numerisch">
 				<name>KFV-Deckungsart</name>
 				<technischerName>KfvDeckungsart</technischerName>
 			</feldreferenz>
@@ -36024,11 +36024,10 @@
 			<bytes>2</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="071-072-KfvDeckungsart-Fliesskomma">
+		<feld referenz="071-072-KfvDeckungsart-Numerisch">
 			<name>KFV-Deckungsart</name>
 			<bytes>2</bytes>
 			<datentyp>Fliesskomma</datentyp>
-			<nachkommastellen>2</nachkommastellen>
 		</feld>
 		<feld referenz="071-072-KhDeckungsart-Numerisch">
 			<name>KH Deckungsart</name>

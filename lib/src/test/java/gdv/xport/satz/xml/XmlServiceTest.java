@@ -21,6 +21,7 @@ package gdv.xport.satz.xml;
 import gdv.xport.config.Config;
 import gdv.xport.feld.Bezeichner;
 import gdv.xport.feld.Feld;
+import gdv.xport.feld.NumFeld;
 import gdv.xport.feld.Zeichen;
 import gdv.xport.satz.AbstractSatzTest;
 import gdv.xport.satz.Satz;
@@ -236,6 +237,18 @@ public class XmlServiceTest extends AbstractXmlTest {
             assertEquals(n, satznr.toInt());
             assertEquals(43, satznr.getByteAdresse());
         }
+    }
+
+    /**
+     * Testfall fuer Issue
+     * <a href="https://github.com/oboehm/gdv.xport/issues/85">#85</a>.
+     */
+    @Test
+    public void testSatzart220052() {
+        SatzXml satz = xmlService.getSatzart(SatzTyp.of("0220.052"));
+        NumFeld deckungsart = satz.getFeld(Bezeichner.KFV_DECKUNGSART, NumFeld.class);
+        assertEquals(2, deckungsart.getAnzahlBytes());
+        assertEquals(0, deckungsart.getNachkommastellen());
     }
 
     @Test
