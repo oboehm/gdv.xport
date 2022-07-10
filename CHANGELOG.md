@@ -9,6 +9,12 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
+## [6.2.2] - 2022-07-10
+
+- Update auf [jFachwert](https://github.com/oboehm/jfachwert) 4.2.2
+  ([#16](https://github.com/oboehm/jfachwert/issues/16))
+
+
 ## [6.2.1] - 2022-06-29
 
 ### Fixed
