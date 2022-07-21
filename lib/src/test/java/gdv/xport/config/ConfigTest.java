@@ -18,6 +18,8 @@
 
 package gdv.xport.config;
 
+import gdv.xport.feld.Feld;
+import gdv.xport.feld.NullValidator;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -129,6 +131,22 @@ public class ConfigTest {
     public void testGetValidateMode() {
         Config c = Config.EMPTY.withProperty("gdv.feld.validate", "true");
         assertEquals(Config.ValidateMode.LAX, c.getValidateMode());
+    }
+
+    @Test
+    public void testValidator() {
+        registerValidator(NullValidator.class);
+    }
+
+    @Test
+    public void testValidatorInnerClass() {
+        registerValidator(Feld.Validator.class);
+    }
+
+    private void registerValidator(Class<? extends Feld.Validator> validatorClass) {
+        Config c = Config.EMPTY.withProperty("gdv.validator.gdv.xport.feld.Feld", validatorClass.getName());
+        Feld.Validator validator = c.getValidatorFor(Feld.class);
+        assertEquals(validatorClass, validator.getClass());
     }
 
 }

@@ -706,7 +706,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
 
     /**
      * Hierueber kann der Validator zur Pruefung im Vorfeld
-     * geholot werden.
+     * geholt werden.
      *
      * @return aktuellen Validator
      */

@@ -132,6 +132,28 @@ public final class Config implements Serializable {
         this.defaultValidators.put(Datum.class, new Datum.Validator(this));
         this.defaultValidators.put(VUNummer.class, new VUNummer.Validator(this));
         this.defaultValidators.put(Version.class, new Version.Validator(this));
+        init(this.defaultValidators, props);
+    }
+
+    private void init(Map<Class<? extends Feld>, Feld.Validator> validators, Properties props) {
+        for (String key : props.stringPropertyNames()) {
+            if (key.startsWith("gdv.validator.")) {
+                String classname = key.substring(14);
+                addTo(validators, classname, props.getProperty(key));
+            }
+        }
+    }
+
+    private void addTo(Map<Class<? extends Feld>, Feld.Validator> validators, String classname, String validatorName) {
+        try {
+            Class<? extends Feld> feldClass = (Class<? extends Feld>) Class.forName(classname);
+            Class<? extends Feld.Validator> validatorClass = (Class<? extends Feld.Validator>) Class.forName(validatorName);
+            Feld.Validator v = validatorClass.getConstructor().newInstance();
+            validators.put(feldClass, v);
+            LOG.info("Validator {} wurde fuer {} registriert.", v, feldClass);
+        } catch (ReflectiveOperationException ex) {
+            throw new ConfigException(String.format("Validator '%s' fuer '%s' nicht gefunden", classname, validatorName), ex);
+        }
     }
 
     private static Properties loadProperties(String resource) {
