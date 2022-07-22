@@ -9,8 +9,9 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
-## [Unreleased]
+## [6.3.10-YEARS] - 2022-07-22
 
+- Jubiläums-Edition: 10 Jahre GDV.XPORT
 - eigene Validatoren können jetzt konfiguriert / registriert werden
   (s. [experimental.properties](lib/src/main/resources/gdv/xport/config/experimental.properties))
 

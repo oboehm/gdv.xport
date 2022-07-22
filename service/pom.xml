@@ -6,7 +6,7 @@
   <parent>
     <groupId>com.github.oboehm</groupId>
     <artifactId>gdv-xport</artifactId>
-    <version>6.2.3-SNAPSHOT</version>
+    <version>6.3.10-YEARS</version>
   </parent>
 
   <artifactId>gdv-xport-service</artifactId>
