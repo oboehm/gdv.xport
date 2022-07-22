@@ -149,4 +149,22 @@ public class ConfigTest {
         assertEquals(validatorClass, validator.getClass());
     }
 
+    @Test
+    public void testValidatorConfig() {
+        Config cfg = Config.STRICT.withProperty("gdv.validator.gdv.xport.feld.Feld", TestValidator.class.getName());
+        TestValidator v = (TestValidator) cfg.getValidatorFor(Feld.class);
+        assertEquals(Config.ValidateMode.STRICT, v.getValidateMode());
+    }
+
+
+
+    public static class TestValidator extends Feld.Validator {
+        public TestValidator(Config c) {
+            super(c);
+        }
+        public Config.ValidateMode getValidateMode() {
+            return getConfig().getValidateMode();
+        }
+    }
+
 }

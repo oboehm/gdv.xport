@@ -23,6 +23,7 @@ import gdv.xport.satz.xml.FeldXml;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.concurrent.Immutable;
 import java.io.*;
@@ -148,11 +149,22 @@ public final class Config implements Serializable {
         try {
             Class<? extends Feld> feldClass = (Class<? extends Feld>) Class.forName(classname);
             Class<? extends Feld.Validator> validatorClass = (Class<? extends Feld.Validator>) Class.forName(validatorName);
-            Feld.Validator v = validatorClass.getConstructor().newInstance();
+            Feld.Validator v = createValidator(validatorClass);
             validators.put(feldClass, v);
             LOG.info("Validator {} wurde fuer {} registriert.", v, feldClass);
         } catch (ReflectiveOperationException ex) {
-            throw new ConfigException(String.format("Validator '%s' fuer '%s' nicht gefunden", classname, validatorName), ex);
+            throw new ConfigException(String.format("Validator '%s' fuer '%s' nicht gefunden", validatorName, classname), ex);
+        }
+    }
+
+    @NotNull
+    private Feld.Validator createValidator(Class<? extends Feld.Validator> validatorClass) throws ReflectiveOperationException {
+        try {
+            return validatorClass.getConstructor(Config.class).newInstance(this);
+        } catch (ReflectiveOperationException ex) {
+            LOG.debug("Verwende Default-Ctor, da {} keinen Config-Ctor hat.", validatorClass);
+            LOG.trace("Details:", ex);
+            return validatorClass.getConstructor().newInstance();
         }
     }
 
