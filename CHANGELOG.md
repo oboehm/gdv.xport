@@ -9,6 +9,11 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
+## [Unreleased]
+
+- eigene Validatoren können jetzt konfiguriert / registriert werden
+  (s. [experimental.properties](lib/src/main/resources/gdv/xport/config/experimental.properties))
+
 ## [6.2.2] - 2022-07-10
 
 - Update auf [jFachwert](https://github.com/oboehm/jfachwert) 4.2.2
