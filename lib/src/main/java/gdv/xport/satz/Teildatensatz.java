@@ -511,7 +511,7 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public void export(final Writer writer) throws IOException {
-        String eod = Config.hasEOD() ? Config.getEOD() : "";
+        String eod = getConfig().getProperty("gdv.eod", System.lineSeparator());
         export(writer, eod);
     }
 

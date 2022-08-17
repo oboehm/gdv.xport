@@ -18,6 +18,7 @@
 
 package gdv.xport.satz;
 
+import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
@@ -28,6 +29,8 @@ import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.Iterator;
 import java.util.List;
 
@@ -256,6 +259,17 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Teildatensatz tds = SATZ_REGISTRY.getSatz(SatzTyp.of("0210.040")).getTeildatensatz(1);
         NumFeld summe = tds.getFeld(Bezeichner.DECKUNGSSUMME_4_IN_TAUSEND_WAEHRUNGSEINHEITEN, NumFeld.class);
         assertNotNull(summe);
+    }
+
+    @Test
+    public void testEOD() throws IOException {
+        Config cfg = Config.DEFAULT.withProperty("gdv.eod", "\t==ende==\n\n");
+        Teildatensatz tds = SatzRegistry.getInstance(cfg).getSatz(SatzTyp.of(100)).getTeildatensatz(1);
+        try (StringWriter writer = new StringWriter()) {
+            tds.export(writer);
+            writer.flush();
+            MatcherAssert.assertThat(writer.toString(), containsString("==ende=="));
+        }
     }
 
 }

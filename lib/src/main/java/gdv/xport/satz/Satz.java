@@ -1349,7 +1349,7 @@ public abstract class Satz implements Cloneable {
 	public String toLongString() {
 		StringWriter swriter = new StringWriter();
 		try {
-			this.export(swriter);
+			this.export(swriter, System.lineSeparator());
 		} catch (IOException canthappen) {
 			LOG.warn(canthappen + " ignored", canthappen);
 			swriter.write(canthappen.getLocalizedMessage());
