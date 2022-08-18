@@ -8,7 +8,7 @@
 
 # set up some constants
 URL=https://oss.sonatype.org/service/local/staging/deploy/maven2/
-VERSION=6.3.10-YEARS
+VERSION=6.4.0
 options="gpg:sign-and-deploy-file -Durl=$URL -DrepositoryId=sonatype-nexus-staging"
 
 # passphrase is needed for signing

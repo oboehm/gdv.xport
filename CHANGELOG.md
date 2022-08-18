@@ -9,7 +9,7 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
-## [Unreleased]
+## [6.4.0] - 2022-08-18
 
 - Property "gdv.eod" (End-of-Datensatz) wird beim Export berücksichtigt
 
@@ -20,40 +20,33 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - eigene Validatoren können jetzt konfiguriert / registriert werden
   (s. [experimental.properties](lib/src/main/resources/gdv/xport/config/experimental.properties))
 
-## [6.2.2] - 2022-07-10
 
-- Update auf [jFachwert](https://github.com/oboehm/jfachwert) 4.2.2
-  ([#16](https://github.com/oboehm/jfachwert/issues/16))
+## [6.2] - 2022-05-30
 
+### Added
 
-## [6.2.1] - 2022-06-29
-
-### Fixed
-
-- Feld "KFV-Deckungsart" in [Satzart 0220.052](http://www.gdv-online.de/vuvm/bestand/rel2018/ds0220.052.htm) ist jetzt numerisch ohne Nachkommastellen
-  ([Issue #85](https://github.com/oboehm/gdv.xport/issues/85))
-- Downgrade zu [PatternTesting 2.1.2](https://github.com/oboehm/PatternTesting2) wg. Java-8-Kompatibilität
-  ([Issue #84](https://github.com/oboehm/gdv.xport/issues/84))
-
-
-## [6.2.0] - 2022-05-30
-
+- Doku um Docker-Einstieg ergänzt
 
 ### Changed
 
 - Performance um ca. 20% verbessert
 - numerische Felder mit Format 'MMJJJJ' werden als Datum erkannt
-- _fixed_: gemischte Teildatensätze für Sparte Leben werden beim Import richtig erkannt
-  ([Issue #82](https://github.com/oboehm/gdv.xport/issues/82))
 
 ### Security
 
-- _fixed_: jackson-databind-Abhängigkeit aktualisiert
+- jackson-databind-Abhängigkeit aktualisiert
   ([Issue #81](https://github.com/oboehm/gdv.xport/issues/81))
 
-### Added
+### Fixed
 
-- Doku um Docker-Einstieg ergänzt
+- Update auf [jFachwert](https://github.com/oboehm/jfachwert) 4.2.2
+  ([#16](https://github.com/oboehm/jfachwert/issues/16))
+- Feld "KFV-Deckungsart" in [Satzart 0220.052](http://www.gdv-online.de/vuvm/bestand/rel2018/ds0220.052.htm) ist jetzt numerisch ohne Nachkommastellen
+  ([Issue #85](https://github.com/oboehm/gdv.xport/issues/85))
+- Downgrade zu [PatternTesting 2.1.2](https://github.com/oboehm/PatternTesting2) wg. Java-8-Kompatibilität
+  ([Issue #84](https://github.com/oboehm/gdv.xport/issues/84))
+- gemischte Teildatensätze für Sparte Leben werden beim Import richtig erkannt
+  ([Issue #82](https://github.com/oboehm/gdv.xport/issues/82))
 
 
 ## [6.1] - 2022-03-04
