@@ -20,6 +20,9 @@ In gdv.xport wird dieses zusammengesetzte Kennzeichen über http://www.aosd.de/g
 | Die Sparte kennzeichnet einen Versicherungsbereich (z.B. Lebensvericherung = Sparte 010).
 Eine Übersicht aller Sparte sind im http://www.gdv-online.de/vuvm/bestand/rel2018/anl1.htm[Spartenverzeichnis] aufgeführt.
 
+Der Schlüssel für die Sparte orientiert sich nach dem https://www.gesetze-im-internet.de/berversv_2017/anlage_1.html[BerVersVerzeichnis des BaFin].
+So entspricht Sparte `052` ("Fahrzeugvollversicherung") der Vz-Kz `05.2` in der Anlage 1 Abschnitt C.
+
 | VU
 | Versicherungsunternehmen
 
