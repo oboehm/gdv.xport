@@ -283,4 +283,12 @@ public class SatzTypTest {
         assertEquals("0220.000", x.getGdvSatzartName());
     }
 
+    @Test
+    public void testSparte29() {
+        SatzTyp a = SatzTyp.of(210, 20);
+        SatzTyp b = SatzTyp.of(210, 29);
+        assertEquals(a.getSatzart(), b.getSatzart());
+        assertEquals(29, b.getSparte());
+    }
+
 }
