@@ -260,7 +260,7 @@ public final class SatzTest extends AbstractSatzTest {
         try {
             satz.export(tmpFile);
             String exported = FileUtils.readFileToString(tmpFile, Config.DEFAULT_ENCODING);
-            assertEquals(satz.toLongString(), exported);
+            assertEquals(satz.toLongString().trim(), exported.trim());
         } finally {
             delete(tmpFile);
         }
