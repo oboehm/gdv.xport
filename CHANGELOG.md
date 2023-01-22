@@ -9,6 +9,13 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
+## [Unreleased]
+
+### Changed
+
+- Log4j2- und andere Bibliotheken aktualisiert
+
+
 ## [6.4.0] - 2022-08-18
 
 - Property "gdv.eod" (End-of-Datensatz) wird beim Export berücksichtigt
