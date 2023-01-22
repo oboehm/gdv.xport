@@ -30,6 +30,10 @@ Check-Liste für die Auslieferung eines neuen Releases:
 sollte das maven-surefire-plugin unter Java 11 mit einer NullPointerException aussteigen, den Build mit Java 8 versuchen
 
 |D-Day
+|Docker-Image bauen und pushen
+|s.u.
+
+|D-Day
 |JARs auf https://oss.sonatype.org/[oss.sonatype.org] hochladen
 |verwende das Skript link:../src/script/deploy.sh[src/script/deploy.sh], um die Artefakte nach
 https://oss.sonatype.org/[oss.sonatype.org] hochzuladen
@@ -56,10 +60,6 @@ Kopiere `/tmp/gdv-xport` anschließend auf die Web-Seite.
 |Label setzen
 |`git tag gdv-xport-4.1.0` (lokal)
 `git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-4.1.0` (remote)
-
-|D-Day
-|Docker-Image bauen und pushen
-|s.u.
 
 |nachher
 |Tickets schließen
