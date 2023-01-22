@@ -13,6 +13,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Changed
 
+- Build von Travis auf GitHub Actions umgestellt
 - Log4j2- und andere Bibliotheken aktualisiert
 
 
