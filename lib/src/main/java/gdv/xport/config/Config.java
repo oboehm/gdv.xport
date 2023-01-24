@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2021 by Oli B.
+ * Copyright (c) 2009 - 2023 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,7 @@ import gdv.xport.satz.xml.FeldXml;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.concurrent.Immutable;
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -57,7 +55,6 @@ import java.util.Properties;
  * @author oliver
  * @since 08.10.2009
  */
-@Immutable
 public final class Config implements Serializable {
 
     private static final Logger LOG = LogManager.getLogger(Config.class);
@@ -157,7 +154,6 @@ public final class Config implements Serializable {
         }
     }
 
-    @NotNull
     private Feld.Validator createValidator(Class<? extends Feld.Validator> validatorClass) throws ReflectiveOperationException {
         try {
             return validatorClass.getConstructor(Config.class).newInstance(this);
