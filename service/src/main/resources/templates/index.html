@@ -15,8 +15,8 @@
 <body>
 <!-- add bootstrap styling -->
 <div class="container">
-    <div layout:fragment="header"> </div>
-    <div layout:fragment="content">
+    <div th:fragment="header"> </div>
+    <div data-layout-fragment="content">
         <h1>GDV.XPort-Services <span th:text="${appVersion}"></span></h1>
         <p>
             Die GDV.XPort-Services bauen auf der
