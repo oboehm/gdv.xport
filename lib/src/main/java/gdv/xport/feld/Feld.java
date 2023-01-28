@@ -395,14 +395,14 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         this.setInhalt(n.toString());
     }
 
-    /**
-     * Setzt den Inhalt aus der uebergebenen Zahl.
-     *
-     * @param n der neue Inhalt
-     */
-    public void setInhalt(final int n) {
-        this.setInhalt((long) n);
-    }
+//    /**
+//     * Setzt den Inhalt aus der uebergebenen Zahl.
+//     *
+//     * @param n der neue Inhalt
+//     */
+//    public void setInhalt(final int n) {
+//        this.setInhalt((long) n);
+//    }
 
     /**
      * Setzt den Inhalt aus der uebergebenen Zahl.
@@ -419,6 +419,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @param c
      *            the new inhalt
      */
+    @JsonIgnore
     public void setInhalt(final char c) {
         this.resetInhalt();
         this.setInhalt(c, 0);

@@ -18,6 +18,7 @@
 
 package gdv.xport.satz;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.util.SatzRegistry;
@@ -299,6 +300,7 @@ public class Vorsatz extends Satz {
      *
      * @param satz der Satz
      */
+    @JsonIgnore
     public void setVersion(Satz satz) {
         StringBuilder buf = new StringBuilder();
         String[] parts = StringUtils.split(satz.getSatzTyp()

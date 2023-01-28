@@ -134,13 +134,13 @@ public final class BetragMitVorzeichen extends Betrag {
         setInhalt(x.setScale(n, RoundingMode.HALF_UP).doubleValue());
     }
 
-    /* (non-Javadoc)
-     * @see gdv.xport.feld.Betrag#setInhalt(int)
-     */
-    @Override
-    public void setInhalt(final int n) {
-        this.setInhalt((long) n);
-    }
+//    /* (non-Javadoc)
+//     * @see gdv.xport.feld.Betrag#setInhalt(int)
+//     */
+//    @Override
+//    public void setInhalt(final int n) {
+//        this.setInhalt((long) n);
+//    }
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.NumFeld#setInhalt(long)

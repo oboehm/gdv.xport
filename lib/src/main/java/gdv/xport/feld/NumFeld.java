@@ -205,20 +205,20 @@ public class NumFeld extends Feld {
         this.setInhalt(Character.digit(c, 10));
     }
 
-    /**
-     * Setzt den Inhalt mit der uebergebenen Zahl unter Beruecksichtigung
-     * der Nachkommastellen.
-     * <p>
-     * ACHTUNG: Ab 5.1 werden hier die Nachkommastellen beruecksichtigt.
-     * </p>
-     *
-     * @param n neuer Inhalt
-     * @throws IllegalArgumentException wenn n &lt; 0
-     */
-    @Override
-    public void setInhalt(final int n) {
-        this.setInhalt((long) n);
-    }
+//    /**
+//     * Setzt den Inhalt mit der uebergebenen Zahl unter Beruecksichtigung
+//     * der Nachkommastellen.
+//     * <p>
+//     * ACHTUNG: Ab 5.1 werden hier die Nachkommastellen beruecksichtigt.
+//     * </p>
+//     *
+//     * @param n neuer Inhalt
+//     * @throws IllegalArgumentException wenn n &lt; 0
+//     */
+//    @Override
+//    public void setInhalt(final int n) {
+//        this.setInhalt((long) n);
+//    }
 
     /**
      * Setzt den Inhalt mit der uebergebenen Zahl unter Beruecksichtigung
