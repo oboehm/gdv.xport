@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 by Oliver Boehm
+ * Copyright (c) 2017-2023 by Oliver Boehm
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@ import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.util.MimeType;
 import org.springframework.util.MimeTypeUtils;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import patterntesting.runtime.log.LogWatch;
@@ -42,10 +43,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static gdv.xport.srv.config.AppConfig.TEXT_CSV;
 
@@ -97,6 +95,22 @@ public final class DatenpaketController {
             @ApiParam(value = "Datenpaket im GDV-Format") @RequestBody(required = false) String body,
             @ApiParam(value = "Datenpaket im GDV-Format (alternativ als Parameter)") @RequestParam(required = false) String text) {
         String content = (StringUtils.isBlank(text)) ? body : text;
+        return validate(content);
+    }
+
+    /**
+     * Validiert das eingegebene Formular und gibt die gefundenen
+     * Abweichungen bzw. Verletzungen als Liste zurueck.
+     *
+     * @param map Eingabe-Formular mit "text"-Eintrag
+     * @return gefundene Abweichungen bzw. Validierungs-Fehler
+     * @since 6.5 (30.01.23)
+     */
+    @ApiOperation(value = "validiert den eingegebenen Text im GDV-Format und gibt die gefundenen Abweichungen zurueck")
+    @PostMapping("/v1/Abweichungen/form")
+    public List<Model> someControllerMethod(
+            @ApiParam(value = "Eingabe-Formular mit Text im GDV-Format") @RequestParam MultiValueMap map) {
+        String content = Objects.toString(map.getFirst("text"), "");
         return validate(content);
     }
 

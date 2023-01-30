@@ -18,29 +18,26 @@
 package gdv.xport.srv.config;
 
 import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * Klasse ThymeleafConfig.
  *
  * @author oboehm
- * @since x.x (29.01.23)
+ * @since 6.5 (29.01.23)
  */
 @Configuration
 @EnableWebMvc
-public class ThymeleafConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
+public class ThymeleafConfig { //extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
-    private ApplicationContext applicationContext;
-
-    public void setApplicationContext(ApplicationContext applicationContext) {
-        this.applicationContext = applicationContext;
-    }
-
+//    private ApplicationContext applicationContext;
+//
+//    public void setApplicationContext(ApplicationContext applicationContext) {
+//        this.applicationContext = applicationContext;
+//    }
+//
 //    @Bean
 //    public ViewResolver viewResolver() {
 //        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
