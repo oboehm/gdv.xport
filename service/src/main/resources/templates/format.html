@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout" >
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout" lang="de">
 
 <head lang="de">
     <title>Formatierung</title>
@@ -44,7 +44,7 @@
                     </div>
                 </form>
                 <!-- Text formattieren -->
-                <form id="inputText" action="#" th:action="@{/api/v1/Datenpaket}" method="post">
+                <form id="inputText" action="#" th:action="@{/api/v1/Datenpaket/form}" method="post">
                     <div class="form-group">
                         <label class="control-label">Text:</label>
                         <!-- TODO: hier muessen wir noch die Textarea als Body und nicht als Parameter schicken -->

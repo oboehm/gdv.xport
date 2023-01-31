@@ -30,9 +30,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.InvalidMediaTypeException;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.util.MimeType;
-import org.springframework.util.MimeTypeUtils;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -108,7 +108,7 @@ public final class DatenpaketController {
      */
     @ApiOperation(value = "validiert den eingegebenen Text im GDV-Format und gibt die gefundenen Abweichungen zurueck")
     @PostMapping("/v1/Abweichungen/form")
-    public List<Model> someControllerMethod(
+    public List<Model> validate(
             @ApiParam(value = "Eingabe-Formular mit Text im GDV-Format") @RequestParam MultiValueMap map) {
         String content = Objects.toString(map.getFirst("text"), "");
         return validate(content);
@@ -227,8 +227,35 @@ public final class DatenpaketController {
         return formatDatenpaket(content, format, request);
     }
 
+    /**
+     * Die Umwandlung eines Datenpakets in das gewuenschte Datenformat wird
+     * anhand des Accept-Headers (Content Negotiation) oder anhand des Suffixes
+     * durchgefuehrt. Das Datenpaket kommt dabei als Text im GDV-Format rein.
+     *
+     * @param body     Eingabe-Formular mit "text"- und "format"-Eintrag
+     * @param request  der HTTP-Request
+     * @return Datenpaket Datenpaket
+     */
+    @ApiOperation("Liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck.")
+    @PostMapping(
+            path = "/v1/Datenpaket/form", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
+            MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
+    )
+    public @ResponseBody ResponseEntity<Datenpaket> importDatenpaket(
+            @ApiParam(value = "Eingabe-Formular mit Text im GDV-Format") @RequestParam MultiValueMap body,
+            HttpServletRequest request) {
+        String content = Objects.toString(body.getFirst("text"), "");
+        String format = Objects.toString(body.getFirst("format"), "");
+        Datenpaket datenpaket = service.importDatenpaket(content);
+        MediaType type = toMediaType(format, request);
+        return ResponseEntity
+                .ok()
+                .contentType(type)
+                .body(datenpaket);
+    }
+
     private String formatDatenpaket(String content, String format, HttpServletRequest request) {
-        MimeType type = toMimeType(format, request);
+        MimeType type = toMediaType(format, request);
         return service.format(content, type);
     }
 
@@ -263,29 +290,29 @@ public final class DatenpaketController {
         return datenpaket;
     }
 
-    private static MimeType toMimeType(String format, HttpServletRequest request) {
+    private static MediaType toMediaType(String format, HttpServletRequest request) {
         if (StringUtils.isBlank(format)) {
-            return toMimeTypes(request).get(0);
+            return toMediaTypes(request).get(0);
         } else {
-            return toMimeType(format);
+            return toMediaType(format);
         }
     }
 
-    private static List<MimeType> toMimeTypes(HttpServletRequest request) {
-        Set<MimeType> mimeTypes = new LinkedHashSet<>();
+    private static List<MediaType> toMediaTypes(HttpServletRequest request) {
+        Set<MediaType> mimeTypes = new LinkedHashSet<>();
         String format = StringUtils.substringAfterLast(request.getServletPath(), ".");
         if (StringUtils.isNotBlank(format)) {
-            mimeTypes.add(toMimeType(format));
+            mimeTypes.add(toMediaType(format));
         }
         String[] accepted = request.getHeader("accept").split(",");
         for (String accept : accepted) {
-            mimeTypes.add(toMimeType(accept));
+            mimeTypes.add(toMediaType(accept));
         }
-        mimeTypes.add(MimeTypeUtils.TEXT_PLAIN);
+        mimeTypes.add(MediaType.TEXT_PLAIN);
         return new ArrayList<>(mimeTypes);
     }
 
-    private static MimeType toMimeType(String format) {
+    private static MediaType toMediaType(String format) {
         switch (format.toLowerCase()) {
             case "html":
                 return MediaType.TEXT_HTML;
