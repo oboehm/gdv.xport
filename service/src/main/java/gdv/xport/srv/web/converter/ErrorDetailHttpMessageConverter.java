@@ -59,7 +59,7 @@ public final class ErrorDetailHttpMessageConverter extends AbstractHttpMessageCo
 
     @Override
     protected ErrorDetail readInternal(Class<? extends ErrorDetail> clazz, HttpInputMessage inputMessage)
-            throws IOException, HttpMessageNotReadableException {
+            throws HttpMessageNotReadableException {
         LOG.info("Reading internal {}...", clazz);
         throw new UnsupportedOperationException("not yet implemented");
     }
@@ -71,6 +71,8 @@ public final class ErrorDetailHttpMessageConverter extends AbstractHttpMessageCo
         Writer writer = new OutputStreamWriter(outputMessage.getBody(), StandardCharsets.ISO_8859_1);
         switch (getSupportedMediaTypes().get(0).toString()) {
             case MediaType.TEXT_HTML_VALUE:
+            case MediaType.TEXT_XML_VALUE:
+            case MediaType.APPLICATION_XML_VALUE:
                 writeInternalHTML(errorDetail, writer);
                 break;
             case TEXT_CSV:
