@@ -23,6 +23,7 @@ import gdv.xport.srv.service.DatenpaketService;
 import gdv.xport.util.URLReader;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,6 +44,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 import static gdv.xport.srv.config.AppConfig.TEXT_CSV;
@@ -202,10 +204,9 @@ public final class DatenpaketController {
      * anhand des Accept-Headers (Content Negotiation) oder anhand des Suffixes
      * durchgefuehrt. Das Datenpaket kommt dabei als Text im GDV-Format rein.
      *
-     * @param body    Datenpaket im GDV-Format
      * @param text    alternativ kann das Datenpaket auch als Parameter reinkommen
      * @param format  statt per Content Negotiation kann auch der format-Parameter               belegt werden
-     * @param request der HTTP-Request
+     * @param request der HTTP-Request mit Datenpaket im Body
      * @return Datenpaket string
      */
     @ApiOperation("Liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck." +
@@ -216,15 +217,14 @@ public final class DatenpaketController {
             path = "/v1/Datenpaket*", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
-    public @ResponseBody String importDatenpaket(
-            @ApiParam(value = "Datenpaket im GDV-Format") @RequestBody(required = false) String body,
+    public @ResponseBody ResponseEntity<Datenpaket> importDatenpaket(
             @ApiParam(value = "Datenpaket im GDV-Format (als Alternative zur Uebergabe im Body)") @RequestParam(required = false) String text,
             @ApiParam(value = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
                     " normalerweise wird das Format ueber den Accept-Header vorgegeben, kann aber hierueber explizit gesetzt werden.",
                     example = "JSON") @RequestParam(required = false) String format,
-            HttpServletRequest request) {
-        String content = (StringUtils.isBlank(text)) ? body : text;
-        return formatDatenpaket(content, format, request);
+            HttpServletRequest request) throws IOException {
+        String content = IOUtils.toString(request.getInputStream(), StandardCharsets.ISO_8859_1);
+        return getDatenpaketResponseEntity(format, content, request);
     }
 
     /**
@@ -241,11 +241,15 @@ public final class DatenpaketController {
             path = "/v1/Datenpaket/form", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
-    public @ResponseBody ResponseEntity<Datenpaket> importDatenpaket(
+    public @ResponseBody ResponseEntity<Datenpaket> importDatenpaketForm(
             @ApiParam(value = "Eingabe-Formular mit Text im GDV-Format") @RequestParam MultiValueMap body,
             HttpServletRequest request) {
         String content = Objects.toString(body.getFirst("text"), "");
         String format = Objects.toString(body.getFirst("format"), "");
+        return getDatenpaketResponseEntity(format, content, request);
+    }
+
+    private ResponseEntity<Datenpaket> getDatenpaketResponseEntity(String format, String content, HttpServletRequest request) {
         Datenpaket datenpaket = service.importDatenpaket(content);
         MediaType type = toMediaType(format, request);
         return ResponseEntity

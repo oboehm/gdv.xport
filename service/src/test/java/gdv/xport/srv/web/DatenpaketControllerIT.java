@@ -17,27 +17,34 @@
  */
 package gdv.xport.srv.web;
 
-import gdv.xport.*;
-import gdv.xport.config.*;
-import org.apache.logging.log4j.*;
+import gdv.xport.Datenpaket;
+import gdv.xport.config.Config;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.*;
-import org.junit.runner.*;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.http.*;
-import org.springframework.mock.web.*;
-import org.springframework.test.context.junit4.*;
-import org.springframework.util.*;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.net.URI;
 
-import static org.hamcrest.CoreMatchers.*;
+import static gdv.xport.srv.config.AppConfig.TEXT_CSV;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.StringContains.containsString;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Integrationstests fuer den {@link DatenpaketController}.
@@ -98,7 +105,7 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
      */
     @Test
     public void testDatenpaketAsHtml() throws IOException {
-        String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket.html");
+        String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket.html", MediaType.TEXT_HTML);
         MatcherAssert.assertThat(response, containsString("<html"));
     }
 
@@ -223,11 +230,25 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
 
     private String callRestWithDummyDatenpaket(String path, MediaType... mediaTypes) throws IOException {
         String text = createDummyDatenpaketText();
+        mediaTypes = addMediaTypeFor(path, mediaTypes);
         String response = postResponseObjectFor(path, text, String.class, mediaTypes);
         LOG.info("Response of '{}' is '{}'.", path, response);
         MatcherAssert.assertThat(response, not(containsString("Internal Server Error")));
         MatcherAssert.assertThat(response, notNullValue());
         return response;
+    }
+
+    private static MediaType[] addMediaTypeFor(String path, MediaType[] mediaTypes) {
+        String extension = FilenameUtils.getExtension(path);
+        switch (extension.toLowerCase()) {
+            case "xml":
+                mediaTypes = ArrayUtils.add(mediaTypes, MediaType.TEXT_XML);
+                break;
+            case "csv":
+                mediaTypes = ArrayUtils.add(mediaTypes, MediaType.valueOf(TEXT_CSV));
+                break;
+        }
+        return mediaTypes;
     }
 
     private static String createDummyDatenpaketText() throws IOException {
