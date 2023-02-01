@@ -86,16 +86,17 @@ public final class DatenpaketController {
      * Validiert die eingelesenen Datenpakete und gibt die gefundenen
      * Abweichungen bzw. Verletzungen als Liste zurueck.
      *
-     * @param body Text, der ueber die Leitung reinkommt.
      * @param text alternativ kann der Text auch als Parameter reinkommen
      * @return gefundene Abweichungen bzw. Validierungs-Fehler
+     * @throws IOException bei Lesefehlern
      */
     @ApiOperation(value = "validiert den uebergebene Text im GDV-Format und gibt die gefundenen Abweichungen zurueck")
     @PostMapping("/v1/Abweichungen")
     public @ResponseBody
     List<Model> validate(
-            @ApiParam(value = "Datenpaket im GDV-Format") @RequestBody(required = false) String body,
-            @ApiParam(value = "Datenpaket im GDV-Format (alternativ als Parameter)") @RequestParam(required = false) String text) {
+            @ApiParam(value = "Datenpaket im GDV-Format (alternativ als Parameter)") @RequestParam(required = false) String text,
+            HttpServletRequest request) throws IOException {
+        String body = IOUtils.toString(request.getInputStream(), StandardCharsets.ISO_8859_1);
         String content = (StringUtils.isBlank(text)) ? body : text;
         return validate(content);
     }
