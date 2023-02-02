@@ -33,7 +33,6 @@ import org.springframework.http.InvalidMediaTypeException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.util.MimeType;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -155,7 +154,7 @@ public final class DatenpaketController {
      * @param uri     z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
      * @param format  statt per Content Negotiation kann auch der format-Parameter               belegt werden
      * @param request der HTTP-Request
-     * @return Datenpaket, das dann ueber Content Negotiation in das         angeforderte Format transformiert wird
+     * @return Datenpaket, das in das angeforderte Format transformiert wird
      * @throws IOException the io exception
      */
     @ApiOperation(value = "Liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck." +
@@ -163,7 +162,7 @@ public final class DatenpaketController {
             " So kann z.B. auch /Datenpaket.csv als URI angegeben werden." +
             " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser.")
     @GetMapping(path = "/v1/Datenpaket*")
-    public @ResponseBody String importDatenpaket(
+    public @ResponseBody ResponseEntity<Datenpaket> importDatenpaket(
             @ApiParam(value = "URI, die auf einen Datensatz verweist",
                     example = "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri,
             @ApiParam(value = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
@@ -171,7 +170,7 @@ public final class DatenpaketController {
                     example = "JSON") @RequestParam(required = false) String format,
             HttpServletRequest request) throws IOException {
         String content = readFrom(uri);
-        return formatDatenpaket(content, format, request);
+        return getDatenpaketResponseEntity(format, content, request);
     }
 
     @ApiOperation(value = "Liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck." +
@@ -205,8 +204,7 @@ public final class DatenpaketController {
      * anhand des Accept-Headers (Content Negotiation) oder anhand des Suffixes
      * durchgefuehrt. Das Datenpaket kommt dabei als Text im GDV-Format rein.
      *
-     * @param text    alternativ kann das Datenpaket auch als Parameter reinkommen
-     * @param format  statt per Content Negotiation kann auch der format-Parameter               belegt werden
+     * @param format  statt per Content Negotiation kann auch der format-Parameter belegt werden
      * @param request der HTTP-Request mit Datenpaket im Body
      * @return Datenpaket string
      */
@@ -219,7 +217,6 @@ public final class DatenpaketController {
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
     public @ResponseBody ResponseEntity<Datenpaket> importDatenpaket(
-            @ApiParam(value = "Datenpaket im GDV-Format (als Alternative zur Uebergabe im Body)") @RequestParam(required = false) String text,
             @ApiParam(value = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
                     " normalerweise wird das Format ueber den Accept-Header vorgegeben, kann aber hierueber explizit gesetzt werden.",
                     example = "JSON") @RequestParam(required = false) String format,
@@ -257,11 +254,6 @@ public final class DatenpaketController {
                 .ok()
                 .contentType(type)
                 .body(datenpaket);
-    }
-
-    private String formatDatenpaket(String content, String format, HttpServletRequest request) {
-        MimeType type = toMediaType(format, request);
-        return service.format(content, type);
     }
 
     /**
