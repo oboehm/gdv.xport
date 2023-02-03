@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 by Oli B.
+ * Copyright (c) 2017-2023 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Arrays;
 
@@ -30,7 +29,6 @@ import java.util.Arrays;
  * Haupt-Anwendung fuer Spring.
  */
 @SpringBootApplication(scanBasePackages = {"gdv.xport.srv"})
-@EnableSwagger2
 public class XPortApplication {
 
     private static final Logger LOG = LogManager.getLogger(XPortApplication.class);

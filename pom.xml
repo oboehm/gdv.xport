@@ -503,9 +503,11 @@
 
       <!-- for REST API Doc -->
       <dependency>
-        <groupId>io.springfox</groupId>
-        <artifactId>springfox-boot-starter</artifactId>
-        <version>3.0.0</version>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi</artifactId>
+        <version>1.6.14</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
 
       <!-- Thymeleaf + WebJars (see https://igorski.co/java/spring-boot/layout-dialect-spring-boot-2/) -->

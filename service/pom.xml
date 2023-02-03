@@ -72,8 +72,8 @@
 
     <!-- REST API doc -->
     <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-boot-starter</artifactId>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
     </dependency>
 
     <!-- Thymeleaf + WebJars (see https://igorski.co/java/spring-boot/layout-dialect-spring-boot-2/) -->

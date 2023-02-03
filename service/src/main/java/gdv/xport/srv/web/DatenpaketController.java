@@ -21,8 +21,8 @@ import gdv.xport.Datenpaket;
 import gdv.xport.srv.config.AppConfig;
 import gdv.xport.srv.service.DatenpaketService;
 import gdv.xport.util.URLReader;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -68,10 +68,10 @@ public final class DatenpaketController {
      * @param uri z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt
      * @return gefundene Abweichungen bzw. Validierungs-Fehler
      */
-    @ApiOperation(value = "validiert die uebergebene URI und gibt die gefundenen Abweichungen zurueck")
+    @Operation(summary = "validiert die uebergebene URI und gibt die gefundenen Abweichungen zurueck")
     @GetMapping("/v1/Abweichungen")
     public @ResponseBody List<Model> validate(
-            @ApiParam(value = "z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri) {
+            @Parameter(description = "z.B. http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri) {
         try {
             String content = readFrom(uri);
             return validate(content);
@@ -89,11 +89,11 @@ public final class DatenpaketController {
      * @return gefundene Abweichungen bzw. Validierungs-Fehler
      * @throws IOException bei Lesefehlern
      */
-    @ApiOperation(value = "validiert den uebergebene Text im GDV-Format und gibt die gefundenen Abweichungen zurueck")
+    @Operation(summary = "validiert den uebergebene Text im GDV-Format und gibt die gefundenen Abweichungen zurueck")
     @PostMapping("/v1/Abweichungen")
     public @ResponseBody
     List<Model> validate(
-            @ApiParam(value = "Datenpaket im GDV-Format (alternativ als Parameter)") @RequestParam(required = false) String text,
+            @Parameter(description = "Datenpaket im GDV-Format (alternativ als Parameter)") @RequestParam(required = false) String text,
             HttpServletRequest request) throws IOException {
         String body = IOUtils.toString(request.getInputStream(), StandardCharsets.ISO_8859_1);
         String content = (StringUtils.isBlank(text)) ? body : text;
@@ -108,10 +108,10 @@ public final class DatenpaketController {
      * @return gefundene Abweichungen bzw. Validierungs-Fehler
      * @since 6.5 (30.01.23)
      */
-    @ApiOperation(value = "validiert den eingegebenen Text im GDV-Format und gibt die gefundenen Abweichungen zurueck")
+    @Operation(summary = "validiert den eingegebenen Text im GDV-Format und gibt die gefundenen Abweichungen zurueck")
     @PostMapping("/v1/Abweichungen/form")
     public List<Model> validate(
-            @ApiParam(value = "Eingabe-Formular mit Text im GDV-Format") @RequestParam MultiValueMap map) {
+            @Parameter(description = "Eingabe-Formular mit Text im GDV-Format") @RequestParam MultiValueMap map) {
         String content = Objects.toString(map.getFirst("text"), "");
         return validate(content);
     }
@@ -124,7 +124,7 @@ public final class DatenpaketController {
      * @param file gewuenschte Datei
      * @return gefundene Abweichungen bzw. Validierungs-Fehler
      */
-    @ApiOperation("dient zur Validierung einer Datei im GDV-Format")
+    @Operation(summary = "dient zur Validierung einer Datei im GDV-Format")
     @PostMapping("/v1/Abweichungen/uploaded")
     public @ResponseBody List<Model> validate(@RequestParam("file") MultipartFile file) {
         try {
@@ -157,15 +157,15 @@ public final class DatenpaketController {
      * @return Datenpaket, das in das angeforderte Format transformiert wird
      * @throws IOException the io exception
      */
-    @ApiOperation(value = "Liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck." +
+    @Operation(summary = "Liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck." +
             " Der Stern '*' in /Datenpaket* steht dabei fuer ein beliebiges Muster." +
             " So kann z.B. auch /Datenpaket.csv als URI angegeben werden." +
             " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser.")
     @GetMapping(path = "/v1/Datenpaket*")
     public @ResponseBody ResponseEntity<Datenpaket> importDatenpaket(
-            @ApiParam(value = "URI, die auf einen Datensatz verweist",
+            @Parameter(description = "URI, die auf einen Datensatz verweist",
                     example = "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri,
-            @ApiParam(value = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
+            @Parameter(description = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
                     " normalerweise wird das Format ueber den Accept-Header vorgegeben, kann aber hierueber explizit gesetzt werden.",
                     example = "JSON") @RequestParam(required = false) String format,
             HttpServletRequest request) throws IOException {
@@ -173,7 +173,7 @@ public final class DatenpaketController {
         return getDatenpaketResponseEntity(format, content, request);
     }
 
-    @ApiOperation(value = "Liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck." +
+    @Operation(summary = "Liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck." +
             " Der Stern '*' in /Datenpaket* steht dabei fuer ein beliebiges Muster." +
             " So kann z.B. auch /Datenpaket.csv als URI angegeben werden." +
             " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser." +
@@ -183,7 +183,7 @@ public final class DatenpaketController {
             produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE, MediaType.APPLICATION_XML_VALUE,
                     MediaType.APPLICATION_JSON_VALUE, AppConfig.TEXT_CSV, MediaType.TEXT_PLAIN_VALUE})
     public @ResponseBody Datenpaket importDatenpaketV2(
-            @ApiParam(value = "URI, die auf einen Datensatz verweist",
+            @Parameter(description = "URI, die auf einen Datensatz verweist",
                     example = "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri)
             throws IOException {
         String content = readFrom(uri);
@@ -208,7 +208,7 @@ public final class DatenpaketController {
      * @param request der HTTP-Request mit Datenpaket im Body
      * @return Datenpaket string
      */
-    @ApiOperation("Liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck." +
+    @Operation(summary = "Liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck." +
             " Der Stern '*' in /Datenpaket* steht dabei fuer ein beliebiges Muster." +
             " So kann z.B. auch /Datenpaket.csv als URI angegeben werden." +
             " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser.")
@@ -217,7 +217,7 @@ public final class DatenpaketController {
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
     public @ResponseBody ResponseEntity<Datenpaket> importDatenpaket(
-            @ApiParam(value = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
+            @Parameter(description = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
                     " normalerweise wird das Format ueber den Accept-Header vorgegeben, kann aber hierueber explizit gesetzt werden.",
                     example = "JSON") @RequestParam(required = false) String format,
             HttpServletRequest request) throws IOException {
@@ -234,13 +234,13 @@ public final class DatenpaketController {
      * @param request  der HTTP-Request
      * @return Datenpaket Datenpaket
      */
-    @ApiOperation("Liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck.")
+    @Operation(summary = "Liest das uebergebene Datenpaket und gibt es im gewuenschten Format zurueck.")
     @PostMapping(
             path = "/v1/Datenpaket/form", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
     )
     public @ResponseBody ResponseEntity<Datenpaket> importDatenpaketForm(
-            @ApiParam(value = "Eingabe-Formular mit Text im GDV-Format") @RequestParam MultiValueMap body,
+            @Parameter(description = "Eingabe-Formular mit Text im GDV-Format") @RequestParam MultiValueMap body,
             HttpServletRequest request) {
         String content = Objects.toString(body.getFirst("text"), "");
         String format = Objects.toString(body.getFirst("format"), "");
@@ -265,7 +265,7 @@ public final class DatenpaketController {
      * @return erzeugtes Format als Text
      * @throws IOException the io exception
      */
-    @ApiOperation("dient zum Laden und Anzeigen einer Datei im GDV-Format")
+    @Operation(summary = "dient zum Laden und Anzeigen einer Datei im GDV-Format")
     @PostMapping("/v1/Datenpaket/uploaded")
     public @ResponseBody Datenpaket uploadDatenpaket (
             @RequestParam("file") MultipartFile file) throws IOException {
