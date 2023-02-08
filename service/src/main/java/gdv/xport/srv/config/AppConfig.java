@@ -17,14 +17,21 @@
  */
 package gdv.xport.srv.config;
 
-import gdv.xport.srv.web.converter.*;
-import org.apache.logging.log4j.*;
-import org.springframework.context.annotation.*;
-import org.springframework.http.*;
-import org.springframework.http.converter.*;
-import org.springframework.web.servlet.config.annotation.*;
+import gdv.xport.srv.web.converter.DatenpaketHttpMessageConverter;
+import gdv.xport.srv.web.converter.ErrorDetailHttpMessageConverter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * Ueber AppConfig werden einige Konfigurationseinstellungen vorgenommen.
@@ -61,14 +68,19 @@ public class AppConfig implements WebMvcConfigurer {
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        // see https://github.com/springdoc/springdoc-openapi/issues/624
+        converters.add(new StringHttpMessageConverter());
+        converters.add(new MappingJackson2HttpMessageConverter());
+        converters.add(new ByteArrayHttpMessageConverter());
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_HTML));
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_XML, MediaType.APPLICATION_XML));
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_PLAIN));
-        converters.add(new DatenpaketHttpMessageConverter(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON_UTF8));
+        converters.add(new DatenpaketHttpMessageConverter(MediaType.APPLICATION_JSON));
         converters.add(new DatenpaketHttpMessageConverter(MEDIA_TYPE_TEXT_CSV));
         converters.add(new ErrorDetailHttpMessageConverter(MediaType.TEXT_HTML));
         converters.add(new ErrorDetailHttpMessageConverter(MediaType.TEXT_XML, MediaType.APPLICATION_XML));
         converters.add(new ErrorDetailHttpMessageConverter(MediaType.TEXT_PLAIN));
+        //converters.add(new ErrorDetailHttpMessageConverter(MediaType.APPLICATION_JSON, MediaType.APPLICATION_JSON_UTF8));
         converters.add(new ErrorDetailHttpMessageConverter(MEDIA_TYPE_TEXT_CSV));
         LOG.info("Message converters {} are configured.", converters);
     }

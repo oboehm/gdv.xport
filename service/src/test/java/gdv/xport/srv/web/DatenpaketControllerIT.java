@@ -45,6 +45,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Integrationstests fuer den {@link DatenpaketController}.
@@ -52,7 +53,33 @@ import static org.junit.Assert.assertEquals;
  * @author <a href="ob@aosd.de">oliver</a>
  */
 @RunWith(SpringRunner.class)
-public final class DatenpaketControllerIT extends AbstractControllerIT {
+public final class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DatenpaketControllerIT extends AbstractControllerIT {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketControllerIT.class);
 
@@ -163,7 +190,8 @@ public final class DatenpaketControllerIT extends AbstractControllerIT {
     private void checkMalformedURL(String format) {
         ResponseEntity<String> response =
                 getResponseEntityFor("/api/v1/Datenpaket." + format + "?uri=xxx:gibts.net", String.class);
-        MatcherAssert.assertThat(response.getBody().toLowerCase(), containsString("status"));
+        assertNotNull(response.getBody());
+        MatcherAssert.assertThat(response.getBody().toLowerCase(), containsString("bad"));
         MatcherAssert.assertThat(response.getBody(), not(containsString("500")));
     }
 

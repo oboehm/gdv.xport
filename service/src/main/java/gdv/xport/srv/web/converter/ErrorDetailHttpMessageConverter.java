@@ -17,6 +17,7 @@
  */
 package gdv.xport.srv.web.converter;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import gdv.xport.srv.web.*;
 import org.apache.logging.log4j.*;
 import org.springframework.http.*;
@@ -36,6 +37,7 @@ import static gdv.xport.srv.config.AppConfig.*;
 public final class ErrorDetailHttpMessageConverter extends AbstractHttpMessageConverter<ErrorDetail> {
 
     private static final Logger LOG = LogManager.getLogger(ErrorDetailHttpMessageConverter.class);
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     /**
      * Erzeugt eine MessageConverter fuer die angegebene Media-Typen.
@@ -77,6 +79,9 @@ public final class ErrorDetailHttpMessageConverter extends AbstractHttpMessageCo
                 break;
             case TEXT_CSV:
                 writeInternalCSV(errorDetail, writer);
+                break;
+            case MediaType.APPLICATION_JSON_VALUE:
+                OBJECT_MAPPER.writeValue(writer, errorDetail);
                 break;
             default:
                 writer.write(errorDetail.toString());
