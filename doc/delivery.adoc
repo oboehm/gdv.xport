@@ -58,8 +58,8 @@ Kopiere `/tmp/gdv-xport` anschließend auf die Web-Seite.
 
 |D-Day
 |Label setzen
-|`git tag gdv-xport-4.1.0` (lokal)
-`git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-4.1.0` (remote)
+|`git tag gdv-xport-6.5.0` (lokal)
+`git push git@github.com:oboehm/gdv.xport.git tag gdv-xport-6.5.0` (remote)
 
 |nachher
 |Tickets schließen
@@ -88,8 +88,8 @@ Um ein Docker-Image auf https://hub.docker.com/r/oboehm/gdv.xport zu bringen, si
 
 * Docker-Image bauen: `docker build -t gdv.xport -f Dockerfile .`
 * Image-ID ermitteln: `docker images`
-* Docker-Image taggen: `docker tag <Image-ID> oboehm/gdv.xport:6.4.0`
-* Docker-Image pushen: `docker push oboehm/gdv.xport:6.4.0`
+* Docker-Image taggen: `docker tag <Image-ID> oboehm/gdv.xport:6.5.0`
+* Docker-Image pushen: `docker push oboehm/gdv.xport:6.5.0`
 
 
 
