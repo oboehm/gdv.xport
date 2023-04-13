@@ -9,6 +9,13 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
+## [Unreleased]
+
+### Changed
+
+- kleinere Korrektur zu `VUVM2009.xml` eingespielt
+
+
 ## [6.5.0] - 2023-02-11
 
 ### Changed
@@ -16,22 +23,15 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - service-Modul auf Spring-Boot 2.6, Thymeleaf 3 und OpenApi 3 angehoben
 
 
-## [6.4.2] - 2023-01-22
+## [6.4] - 2022-08-18
 
 ### Changed
 
 - Backport für Java 8
-
-
-## [6.4.1] - 2023-01-22
-
-### Changed
-
 - Build von Travis auf GitHub Actions umgestellt
 - Log4j2- und andere Bibliotheken aktualisiert
 
-
-## [6.4.0] - 2022-08-18
+### Fixed
 
 - Property "gdv.eod" (End-of-Datensatz) wird beim Export berücksichtigt
 

@@ -27146,15 +27146,10 @@
                 <name>Ordnungsbegriff</name>
                 <technischerName>Ordnungsbegriff</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld Leerstellen (254-255) -->
-            <feldreferenz referenz="254-255-Leerstellen-Alphanumerisch">
+            <!-- AlphaNumFeld Leerstellen (254-256) -->
+            <feldreferenz referenz="254-256-Leerstellen-Alphanumerisch">
                 <name>Leerstellen</name>
                 <technischerName>Leerstellen</technischerName>
-            </feldreferenz>
-            <!-- AlphaNumFeld SatzNr2 (256-256) -->
-            <feldreferenz referenz="256-256-SatzNr2-Alphanumerisch">
-                <name>Satznummer</name>
-                <technischerName>SatzNr2</technischerName>
             </feldreferenz>
             <satzende/>
             <!-- Teildatensatz 2 Satzart 0500 -->
