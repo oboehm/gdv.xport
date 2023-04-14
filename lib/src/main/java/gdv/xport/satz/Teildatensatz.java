@@ -22,6 +22,7 @@ import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
 import gdv.xport.util.SatzTyp;
+import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -217,20 +218,6 @@ public class Teildatensatz extends Satz {
                     .getTechnischerName(), this);
             feld.setInhalt(this.getSatzTyp().getKrankenFolgeNr());
         }
-    }
-
-    /**
-     * Checks if is satznummer.
-     *
-     * @param feld the feld
-     * @return true, if is satznummer
-     */
-    private static boolean isSatznummer(final Feld feld) {
-        if ((feld.getByteAdresse() == 256) && (feld.getAnzahlBytes() == 1)) {
-            String bezeichnung = feld.getBezeichnung();
-            return bezeichnung.length() <= 11 && bezeichnung.startsWith("Satznummer");
-        }
-        return false;
     }
 
     /**
@@ -571,9 +558,26 @@ public class Teildatensatz extends Satz {
 
     @Override
     public List<ConstraintViolation> validate(Config validationConfig) {
-        List<ConstraintViolation> violations = new ArrayList<>();
+        List<ConstraintViolation> violations = validateSatznummern(validationConfig);
         for (Feld feld : datenfelder) {
             violations.addAll(feld.validate(validationConfig));
+        }
+        return violations;
+    }
+
+    private List<ConstraintViolation> validateSatznummern(Config validationConfig) {
+        List<ConstraintViolation> violations = new ArrayList<>();
+        if (validationConfig.getValidateMode() == Config.ValidateMode.STRICT) {
+            LOG.debug("Satznummern werden validiert in {}.", this);
+            Zeichen satznr = getSatznummer();
+            for (Feld feld : datenfelder) {
+                if (feld.getBezeichner().isVariantOf(Bezeichner.SATZNUMMER)
+                        && !satznr.getInhalt().equals(feld.getInhalt())) {
+                    ConstraintViolation cv = new SimpleConstraintViolation("different Satznummern: " + satznr,
+                            this, feld);
+                    violations.add(cv);
+                }
+            }
         }
         return violations;
     }

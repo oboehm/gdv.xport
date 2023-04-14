@@ -272,6 +272,17 @@ public class BezeichnerTest {
     }
 
     @Test
+    public void testIsVariantOf() {
+        assertTrue(Bezeichner.SATZ_NR_2.isVariantOf(Bezeichner.SATZNUMMER));
+        assertFalse(Bezeichner.SATZNUMMER.isVariantOf(Bezeichner.SATZ_NR_2));
+    }
+
+    @Test
+    public void testIsNotVariantOf() {
+        assertFalse(Bezeichner.ABSENDER.isVariantOf(Bezeichner.ADRESSAT));
+    }
+
+    @Test
     public void testGetVariants() {
         Set<Bezeichner> variants = Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN.getVariants();
         assertThat(variants.size(), greaterThan(1));

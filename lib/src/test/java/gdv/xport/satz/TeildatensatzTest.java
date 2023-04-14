@@ -20,6 +20,7 @@ package gdv.xport.satz;
 
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
+import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzFactory;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
@@ -29,6 +30,7 @@ import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Iterator;
@@ -215,6 +217,57 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Zeichen satznummer = tds.getSatznummer();
         Zeichen expected = new Zeichen(satznummer.getBezeichner(), start.intValue(), inhalt);
         assertEquals(expected, satznummer);
+    }
+
+    @Test
+    public void testGetMulipleSatznummer() throws XMLStreamException, IOException {
+        Satz satz220 = XmlService.getInstance("VUVM2013.xml").getSatzart(SatzTyp.of("0220.140"));
+        Teildatensatz tds = satz220.getTeildatensatz(2);
+        Zeichen satznummer = tds.getSatznummer();
+        Feld satzNr2 = tds.getFeld(ByteAdresse.of(51));
+        Feld satzNr = tds.getFeld(ByteAdresse.of(256));
+        assertEquals("2", satznummer.getInhalt());
+        assertEquals("2", satzNr2.getInhalt());
+        assertEquals("2", satzNr.getInhalt());
+    }
+
+    /**
+     * Dieser Test geht auf Klaus zurueck. Hier der Auszug aus seiner Mail:
+     * <p>
+     * In der Version 2013 gibt es 2 Teildatensaetze, die irrtuemlich 2x das
+     * Feld „Satznummer“ beinhalten:
+     * </p>
+     * <ul>
+     * <li>SA0220.140, TD2, Feld 10 und Feld 38</li>
+     * <li>SA0500, TD1, Feld 10 und Feld 40.</li>
+     * </ul>
+     * <p>
+     * Die Adresse der „Satznummer“-Felder spielt hier keine Rolle, weil
+     * nirgends festgelegt ist, welche Adresse massgeblich ist für die Adresse
+     * in SATZNUMMER! Sie muss nur zu der eines Feldes mit Bezeichnung
+     * „Satznummer“ passen.
+     * Das Problem ist hier einfach der Fehler in der Satzstruktur.
+     * </p>
+     *
+     * @throws XMLStreamException im Fehlerfall
+     * @throws IOException im Fehlerfall
+     */
+    @Test
+    public void testValidateMulipleSatznummer() throws XMLStreamException, IOException {
+        Satz satz220 = XmlService.getInstance("VUVM2013.xml").getSatzart(SatzTyp.of("0220.140"));
+        Teildatensatz tds = satz220.getTeildatensatz(2);
+        List<ConstraintViolation> violations = tds.validate();
+        assertTrue(violations.isEmpty());
+        tds.setFeld(ByteAdresse.of(256), "9");
+        violations = tds.validate(Config.STRICT);
+        assertFalse("unterschiedliche Satznummern", violations.isEmpty());
+    }
+
+    @Test
+    public void testValidateWithNoSatznummer() {
+        Satz hausrat = SATZ_REGISTRY.getSatz(SatzTyp.of("0221.130"));
+        List<ConstraintViolation> violations = hausrat.getTeildatensatz(1).validate(Config.STRICT);
+        assertEquals(0, violations.size());
     }
 
     @Test

@@ -93,7 +93,7 @@ public final class SatznummerTest {
             Satznummer satznummer = Satznummer.readSatznummer(pushbackReader, tds);
             LOG.info("{}: {}", tds.toShortString(), satznummer);
             assertEquals(tds.getSatznummer(), satznummer);
-            assertEquals(satznummer, Satznummer.readSatznummer(pushbackReader));
+            assertEquals(satznummer.getInhalt(), Satznummer.readSatznummer(pushbackReader).getInhalt());
         }
     }
 

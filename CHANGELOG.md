@@ -13,8 +13,8 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Changed
 
+- Validierung Satznummern
 - kleinere Korrektur zu `VUVM2009.xml` eingespielt
-
 
 ## [6.5.0] - 2023-02-11
 
