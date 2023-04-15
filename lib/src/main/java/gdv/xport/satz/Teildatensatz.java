@@ -567,7 +567,7 @@ public class Teildatensatz extends Satz {
 
     private List<ConstraintViolation> validateSatznummern(Config validationConfig) {
         List<ConstraintViolation> violations = new ArrayList<>();
-        if (validationConfig.getValidateMode() == Config.ValidateMode.STRICT) {
+        if (validationConfig.getValidateMode() != Config.ValidateMode.OFF) {
             LOG.debug("Satznummern werden validiert in {}.", this);
             Zeichen satznr = getSatznummer();
             for (Feld feld : datenfelder) {
