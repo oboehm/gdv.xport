@@ -486,11 +486,6 @@
         <artifactId>patterntesting-rt</artifactId>
         <version>${patterntesting.version}</version>
       </dependency>
-      <dependency>
-        <groupId>org.patterntesting</groupId>
-        <artifactId>patterntesting-concurrent</artifactId>
-        <version>${patterntesting.version}</version>
-      </dependency>
 
       <!-- Import dependency management from Spring Boot -->
       <dependency>

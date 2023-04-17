@@ -194,6 +194,7 @@
     <dependency>
       <groupId>org.patterntesting</groupId>
       <artifactId>patterntesting-rt</artifactId>
+      <scope>test</scope>
       <exclusions>
         <exclusion>
           <groupId>com.jamonapi</groupId>

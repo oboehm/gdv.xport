@@ -25,7 +25,6 @@ import gdv.xport.util.SatzTyp;
 import gdv.xport.util.XmlHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import patterntesting.runtime.log.LogWatch;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
@@ -207,14 +206,12 @@ public class XmlService {
     }
 
     private void parse(final StartElement element, final XMLEventReader reader) throws XMLStreamException {
-        LogWatch watch = new LogWatch();
         while (reader.hasNext()) {
             XMLEvent event = reader.nextEvent();
             if (event.isStartElement()) {
                 parseElement(event.asStartElement(), reader);
             } else if (XmlHelper.isEndElement(event, element.getName())) {
-                LOG.info("{} Satzarten successful parsed from {}...{} in {}.", this.saetze.size(), element, event,
-                        watch);
+                LOG.info("{} Satzarten successful parsed from {}...{}.", this.saetze.size(), element, event);
                 return;
             }
             LOG.trace("Event {} is ignored.", event);

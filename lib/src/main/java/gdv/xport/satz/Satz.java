@@ -39,7 +39,6 @@ import java.lang.reflect.Constructor;
 import java.util.*;
 
 import static gdv.xport.feld.Bezeichner.SATZART;
-import static patterntesting.runtime.NullConstants.NULL_STRING;
 
 /**
  * Die Satz-Klasse ist die oberste Klasse, von der alle weiteren Saetze
@@ -603,7 +602,7 @@ public abstract class Satz implements Cloneable {
     public String get(final Bezeichner bezeichner) {
         Feld f = getFeld(bezeichner);
         if (f == Feld.NULL_FELD) {
-            return NULL_STRING;
+            return "";
         } else {
             return f.getInhalt();
         }
