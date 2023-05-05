@@ -115,15 +115,9 @@ public class BezeichnerIT {
         VuvmHandler handler = new VuvmHandler();
         handler.scan("src/main/resources/gdv/xport/satz/xml/VUVM2018.xml");
         TECHNISCHE_NAMEN.addAll(handler.getTechnischeNamen());
-        TECHNISCHE_NAMEN.addAll(Arrays.asList("AblaufleistungInclUeberschussanteileInWaehrungseinheiten",
-                "AktuelleFondsjahresrenteZumBeginnDerAbrufphase",
-                "DynamikInProz", "GueltigeAVB", "Hersteller",
-                "KapitalertragssteuerBeiRueckkaufZumBerechnungsstichtag", "KhDeckungsart",
+        TECHNISCHE_NAMEN.addAll(Arrays.asList(
                 "KhDeckungssummenInWETeil1", "KhDeckungssummenInWETeil2", "KhDeckungssummenInWETeil3",
-                "Mengenschluessel", "NeuwertListenpreisImAnschaffungsjahrInWE",
-                "RisikoPostleitzahl", "Risikozuschlag", "Risikozuschlag2Bis", "RueckkaufswertGueltigAb",
-                "SelbstbehaltInProz", "SEPAMandatReferenznummer", "UebergangsentschaedigungBeitragssatz",
-                "VpPersonenNrVersicherers", "Wartungsvertrag"));
+                "RueckkaufswertGueltigAb"));
     }
 
     /**
