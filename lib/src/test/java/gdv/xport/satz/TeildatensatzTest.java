@@ -29,6 +29,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.junit.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
@@ -39,6 +40,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Test-Klasse fuer {@link Teildatensatz}.
@@ -71,7 +73,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Teildatensatz teildatensatz = new Vorsatz().getTeildatensatz(1);
         Iterator<Feld> iterator = teildatensatz.getFelder().iterator();
         Feld prev = iterator.next();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Feld next = iterator.next();
             LOG.info("Feld: {}", next);
             assertTrue("wrong sorted: " + prev + " > " + next, prev.getByteAdresse() < next
@@ -95,7 +97,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     public void testGetFeldByteAdresse() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(4711), 1);
         ByteAdresse adresse = ByteAdresse.of(11);
-        Feld feld = new NumFeld(Bezeichner.PRODUKTNAME, 47, adresse.intValue() );
+        Feld feld = new NumFeld(Bezeichner.PRODUKTNAME, 47, adresse.intValue());
         tds.add(feld);
         assertEquals(feld, tds.getFeld(adresse));
     }
@@ -105,7 +107,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      * erweiterte {@link Bezeichner}-Klasse gab es Probleme mit dem Loeschen
      * von Feldern.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testRemove() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
         Zeichen satznummer = new Zeichen(Bezeichner.of("Satznummer"), 256);
@@ -113,16 +115,12 @@ public class TeildatensatzTest extends AbstractSatzTest {
         tds.add(satznummer);
         assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
         tds.remove(satznummer.getBezeichnung());
-        try {
-            tds.getFeld(satznummer.getBezeichnung());
-            fail("IllegalArgumentException bei fehlendem Feld erwartet");
-        } catch (IllegalArgumentException ex) {
-            MatcherAssert.assertThat("Exception sollte Bezeichner und Satzart beschreiben", ex.getMessage(),
-                    allOf(containsString("Satznummer"), containsString("Satzart 0100")));
-            throw ex;
-        }
+        Executable executable = () -> tds.getFeld(satznummer.getBezeichnung());
+        IllegalArgumentException assertThrows = assertThrows(IllegalArgumentException.class, executable);
+        MatcherAssert.assertThat("Exception sollte Bezeichner und Satzart beschreiben", assertThrows.getMessage(),
+                allOf(containsString(satznummer.getBezeichnung()), containsString("Satzart 0100")));
     }
-    
+
     /**
      * Bei der internen Umstellung des {@link Teildatensatz}es auf die
      * erweiterte {@link Bezeichner}-Klasse gab es Probleme mit dem Loeschen
@@ -250,7 +248,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
      * </p>
      *
      * @throws XMLStreamException im Fehlerfall
-     * @throws IOException im Fehlerfall
+     * @throws IOException        im Fehlerfall
      */
     @Test
     public void testValidateMulipleSatznummer() throws XMLStreamException, IOException {
