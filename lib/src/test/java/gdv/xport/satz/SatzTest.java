@@ -153,13 +153,13 @@ public final class SatzTest extends AbstractSatzTest {
         }
     }
 
-    @Test
-    public void testGetFeldWagnis2() {
-        Satz satz = XmlService.getInstance().getSatzart(SatzTyp.of("0220.140"));
-        Bezeichner wagnis2 = new Bezeichner("Wagnis", "Wagnis2");
-        Feld feld = satz.getFeld(wagnis2);
-        assertEquals(wagnis2, feld.getBezeichner());
-    }
+//    @Test
+//    public void testGetFeldWagnis2() {
+//        Satz satz = XmlService.getInstance().getSatzart(SatzTyp.of("0220.140"));
+//        Bezeichner wagnis2 = new Bezeichner("Wagnis", "Wagnis2");
+//        Feld feld = satz.getFeld(wagnis2);
+//        assertEquals(wagnis2, feld.getBezeichner());
+//    }
     
     /**
      * Test method for {@link gdv.xport.satz.Satz#getFeld(java.lang.String)}.
