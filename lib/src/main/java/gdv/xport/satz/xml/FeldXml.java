@@ -153,21 +153,62 @@ public final class FeldXml extends Feld {
         return toFeld(byteAddress, referenz.getBezeichner(), referenz.getBemerkung());
     }
 
+    /**
+     * Wandelt das FeldXml-Objekt in ein {@link Feld}-Objekt um, dessen Bezeichner eindeutig im
+     * aktuellen Teildatensatz ist.
+     * <p>
+     * In Feldern innerhalb der TDs von SA > "0001" wird der technischen Namen aus der
+     * Feld-Bezeichnung ermitteln. Dadurch kann ein Feld, dessen Bezeichnung im
+     * Teildatensatz eindeutig ist, sicher durch die Feld-Bezeichnung aus GDV-Online
+     * adressiert werden. Felder mit mehrdeutigem Namen im Teildatensatz (s.u.) koennen nur
+     * via ByteAdresse adressiert werden (wie bisher auch).
+     * </p><p>
+     * Eine Ausnahme ist das Feld an Position 43 in SA0220.030, TD9. Dieses Feld ist durch
+     * einen Kopierfehler beim GDV entstanden. Aus 'historischen' Gruenden und wg.
+     * Abwaertskompatibilitaet muss der technische Name hier identisch sein zu
+     * {@link gdv.xport.feld.Bezeichner#LFD_NUMMER_VP_PERSONENGRUPPE9}. Ergo wird hier wie
+     * bisher der Bezeichner aus der Referenz verwendet.
+     * </p>
+     *
+     * @param byteAddress die Byte-Adresse
+     * @param referenz    mit Bezeichner und Bemerkung
+     * @param tdXml       der aktuelle Teildatensatz
+     * @return das entsprechende Feld
+     */
+    public Feld toFeld(final int byteAddress, final FeldReferenz referenz, final TeildatensatzXml tdXml) {
+        Bezeichner bezeichner = referenz.getBezeichner();
+        if ((!(tdXml.getGdvSatzartName().equals("0001") && byteAddress >= 96)) &&
+                (!(tdXml.getGdvSatzartName().equals("0220.030")
+                        && tdXml.getSatznummer().toChar() == '9'
+                        && byteAddress == 43))) {
+            bezeichner = new Bezeichner(referenz.getBezeichner().getName());
+        }
+        Feld feld = toFeld(byteAddress, bezeichner, referenz.getBemerkung());
+        if (!feld.getBezeichner().getTechnischerName().equalsIgnoreCase("Satzart")) {
+            int inc = 0;
+            while (tdXml.hasFeld(feld)) {
+                Bezeichner bezeichnerNeu = new Bezeichner(bezeichner.getName(),
+                        bezeichner.getTechnischerName() + ++inc);
+                feld = toFeld(byteAddress, bezeichnerNeu, referenz.getBemerkung());
+            }
+        }
+        return feld;
+    }
+
     private Feld toFeld(final int byteAddress, final Bezeichner neuerBezeichner, final String bemerkung) {
-        Bezeichner merged = this.getBezeichner().mergeWith(neuerBezeichner);
-        Feld f = this.datentyp.asFeld(merged, this.getAnzahlBytes(), byteAddress);
+        Feld f = this.datentyp.asFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress);
         switch (this.datentyp) {
             case NUMERISCH:
             case FLIESSKOMMA:
-                f = new NumFeld(merged, this.getAnzahlBytes(), byteAddress)
+                f = new NumFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress)
                         .mitNachkommastellen(this.nachkommastellen);
                 if (bemerkung.contains("MMJJJJ")) {
-                    f = new Datum(merged, this.getAnzahlBytes(), byteAddress);
+                    f = new Datum(neuerBezeichner, this.getAnzahlBytes(), byteAddress);
                 }
                 break;
             case ALPHANUMERISCH:
                 if (Text.replaceUmlaute(bemerkung).toLowerCase().contains("rechtsbuendig")) {
-                    f = new AlphaNumFeld(merged, this.getAnzahlBytes(), byteAddress, Align.RIGHT);
+                    f = new AlphaNumFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress, Align.RIGHT);
                 }
                 break;
         }
