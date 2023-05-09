@@ -136,7 +136,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     public void testSatzart210() {
         SatzXml satzXml = xmlService.getSatzart(SatzTyp.of(210));
         assertEquals(210, satzXml.getSatzart());
-        assertNotNull(satzXml.getFeld(Bezeichner.SATZ_NR_1));
+        assertNotNull(satzXml.getFeld(Bezeichner.SATZNUMMER));
     }
 
     @Test
@@ -144,11 +144,6 @@ public class XmlServiceTest extends AbstractXmlTest {
         SatzXml satzXml = xmlService.getSatzart(SatzTyp.of("0210.000"));
         assertEquals(210, satzXml.getSatzart());
         assertEquals(SatzTyp.of("0210.000"), satzXml.getSatzTyp());
-    }
-
-    private static void checkSatz(SatzXml satzXml, final Satz reference) throws IOException, AssertionError {
-        checkTeildatensaetze(satzXml, reference.getTeildatensaetze());
-        setUpAndCheckSatz(satzXml, reference);
     }
 
     private static void checkImport(SatzXml satz) throws IOException {
