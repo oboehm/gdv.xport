@@ -200,7 +200,9 @@ public class Teildatensatz extends Satz {
         } else if (feld.getBezeichnung().startsWith("Satznummer")) {
             LOG.debug("{}({}) einfuegen in {} +", feld.getBezeichnung(), feld.getBezeichner().getTechnischerName(), this);
             feld.setInhalt(this.satznummer.getInhalt());
-            this.satznummer = new Satznummer(feld);
+            if (this.getSatznummer().getByteAdresse() >= feld.getByteAdresse()) {
+                this.satznummer = new Satznummer(feld);
+            }
         } else if (feld.getBezeichner().equals(Bezeichner.ZUSAETZLICHE_SATZKENNUNG)) {
             feld.setInhalt("X");
         } else if (feld.getBezeichnung().startsWith("Vorzeichen")) {
@@ -299,7 +301,9 @@ public class Teildatensatz extends Satz {
     }
 
     /**
-     * Liefert das gewuenschte Feld.
+     * Liefert das gewuenschte Feld. </br>
+     * Falls kein Feld mit dem Bezeichner vorhanden ist, wird eine {@link IllegalArgumentException}
+     * geworfen.
      *
      * @param bezeichner gewuenschter Bezeichner des Feldes
      * @return das gesuchte Feld
