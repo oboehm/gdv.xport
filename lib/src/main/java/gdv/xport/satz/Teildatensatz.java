@@ -21,6 +21,7 @@ package gdv.xport.satz;
 import gdv.xport.config.Config;
 import gdv.xport.feld.*;
 import gdv.xport.io.ImportException;
+import gdv.xport.util.NotUniqueException;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.SimpleConstraintViolation;
 import net.sf.oval.ConstraintViolation;
@@ -229,7 +230,7 @@ public class Teildatensatz extends Satz {
      * @param feld das Feld, das entfernt werden soll
      */
     public void remove(final Feld feld) {
-        this.remove(feld.getBezeichnung());
+        datenfelder.remove(feld);
     }
 
     /**
@@ -257,11 +258,14 @@ public class Teildatensatz extends Satz {
      */
     @Override
     public void setFeld(final Bezeichner name, final String value) {
-        Feld x = this.getFeld(name);
-        if (x == Feld.NULL_FELD) {
+        List<Feld> felder = this.getAllFelder(name);
+        if (felder.isEmpty()) {
             throw new IllegalArgumentException("Feld \"" + name + "\" not found");
         }
-        setFeld(x, value);
+        LOG.debug("{} in {} wird '{}' zugewiesen.", felder, this, value);
+        for (Feld x : felder) {
+            setFeld(x, value);
+        }
     }
 
     /**
@@ -301,28 +305,42 @@ public class Teildatensatz extends Satz {
     }
 
     /**
-     * Liefert das gewuenschte Feld. </br>
-     * Falls kein Feld mit dem Bezeichner vorhanden ist, wird eine {@link IllegalArgumentException}
-     * geworfen.
-     *
+     * Liefert das gewuenschte Feld.
+     * <p>
+     * Falls kein Feld mit dem Bezeichner vorhanden ist, wird eine
+     * {@link IllegalArgumentException} geworfen. Ebenso wenn das Feld
+     * nicht eindeutig ist. Dann gibt es eine {@link NotUniqueException}
+     * (Ausnahme: Satznummer).
+     * </p>
      * @param bezeichner gewuenschter Bezeichner des Feldes
      * @return das gesuchte Feld
      */
     @Override
     public Feld getFeld(final Bezeichner bezeichner) {
+        List<Feld> found = getAllFelder(bezeichner);
+        if (found.isEmpty()) {
+            Optional<Feld> feld = findFeld(bezeichner);
+            if (feld.isPresent()) {
+                return feld.get();
+            }
+            throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
+                    + " nicht vorhanden!");
+        } else if ((found.size() > 1) && !bezeichner.equals(Bezeichner.SATZNUMMER)) {
+            throw new NotUniqueException("Bezeichner '" + bezeichner + "' is not unique");
+        }
+        return found.get(0);
+    }
+
+    private List<Feld> getAllFelder(Bezeichner bezeichner) {
+        List<Feld> found = new ArrayList<>();
         for (Bezeichner b : bezeichner.getVariants()) {
             for (Feld feld : datenfelder) {
                 if (b.equals(feld.getBezeichner())) {
-                    return feld;
+                    found.add(feld);
                 }
             }
         }
-        Optional<Feld> feld = findFeld(bezeichner);
-        if (feld.isPresent()) {
-            return feld.get();
-        }
-        throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
-                + " nicht vorhanden!");
+        return found;
     }
 
     private Optional<Feld> findFeld(final Bezeichner bezeichner) {

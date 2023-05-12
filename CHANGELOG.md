@@ -18,10 +18,8 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Breaking Changes
 
-- Gleichlautende Bezeichner, die mehrfach in einem Satz auftreten können (wie z.B. "Satznummer"), können nicht mehr unterschieden werden.
-  D.h. der Bezeichner SATZ_NR_1 funktioniert nicht mehr.
-  Es wird immer das erste gefundene Feld zurueckgeliefert.
-  Fuer andere Felder muss die Adressierung über den Teildatensatz gewählt werden.
+- Gleichlautende Felder, die mehrfach in einem Satz auftreten können (wie z.B. "Satznummer"), müssen eindeutig sein.
+  Ansonsten muss über Teildatensatz und Byte-Adresse auf das gewünschte Feld zugegriffen werden.
 
 
 ## [6.5.0] - 2023-02-11
