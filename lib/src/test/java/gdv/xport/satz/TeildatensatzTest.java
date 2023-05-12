@@ -330,11 +330,24 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Bezeichner b = Bezeichner.of("Testfeld");
         Zeichen z1 = new Zeichen(b, 50);
         Zeichen z2 = new Zeichen(b, 51);
+        z1.setInhalt('x');
+        z2.setInhalt('y');
         tds.add(z1);
         tds.add(z2);
         assertThrows(NotUniqueException.class, () -> tds.getFeld(b));
         tds.remove(z1);
         assertEquals(z2, tds.getFeld(b));
+    }
+
+    @Test
+    public void testGetUniqFeld() {
+        Teildatensatz tds = new Teildatensatz(SatzTyp.of("0815"));
+        Bezeichner b = Bezeichner.of("Testfeld");
+        Zeichen z1 = new Zeichen(b, 50);
+        Zeichen z2 = new Zeichen(b, 51);
+        tds.add(z1);
+        tds.add(z2);
+        assertEquals(tds.getFeld(b).getInhalt(), z2.getInhalt());
     }
 
 }

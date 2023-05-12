@@ -325,10 +325,22 @@ public class Teildatensatz extends Satz {
             }
             throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
                     + " nicht vorhanden!");
-        } else if ((found.size() > 1) && !bezeichner.equals(Bezeichner.SATZNUMMER)) {
-            throw new NotUniqueException("Bezeichner '" + bezeichner + "' is not unique");
+        } else if ((found.size() > 1)) {
+            checkUniqueness(found);
         }
         return found.get(0);
+    }
+
+    private static void checkUniqueness(List<Feld> felder) {
+        Feld f1 = felder.get(0);
+        for (int i = 1; i < felder.size(); i++) {
+            Feld fn = felder.get(i);
+            if (!f1.getInhalt().equals(fn.getInhalt())) {
+                throw new NotUniqueException(String.format("different values for Bezeichner '%s': '%s', '%s'",
+                        f1.getBezeichner(),  f1.getInhalt(), fn.getInhalt()));
+            }
+        }
+        LOG.debug("{} hat gleichen Wert wie gleichlautende Felder.", f1);
     }
 
     private List<Feld> getAllFelder(Bezeichner bezeichner) {
