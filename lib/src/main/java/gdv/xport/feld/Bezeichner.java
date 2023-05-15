@@ -666,6 +666,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner LEISTUNGSZAHLUNGSWEISE = new Bezeichner("Leistungszahlungsweise");
     public static final Bezeichner LETZTE_ERHOEHUNG = new Bezeichner("letzte Erhoehung");
     public static final Bezeichner LETZTE_ERHOEHUNG_8_III_AHB = new Bezeichner("Letzte Erhoehung \u00a78, III AHB", "LetzteErhoehung8IiiAhb");
+    // Teildatensatz 1 Satzart 0210.684 Adresse 105-110
     public static final Bezeichner LETZE_ERHOEHUNG_DURCH_DYNAMIK = new Bezeichner("Letze Erhöhung durch Dynamik");
     public static final Bezeichner LFD_NUMMER = new Bezeichner("Lfd. Nummer");
     public static final Bezeichner LFD_NUMMER1 = new Bezeichner("Lfd. Nummer");
@@ -1485,7 +1486,7 @@ public final class Bezeichner implements Serializable {
             return techName;
         }
         StringBuilder buf = new StringBuilder();
-        String[] words = input.split(" ");
+        String[] words = input.split("[\\s\\.,;=?/\u00a7]");
         for (String word : words) {
             buf.append(toShortcut(word));
         }
@@ -1504,8 +1505,6 @@ public final class Bezeichner implements Serializable {
                 return "";
             case "Nummer":
                 return "Nr";
-            case "Gesamtbeitrag":
-                return "Gesbeitrag";
             case "VN":
                 return "Vn";
             case "VP":
@@ -1531,6 +1530,24 @@ public final class Bezeichner implements Serializable {
                 } else if (word.startsWith("KH")) {
                     return "Kh" + WordUtils.capitalize(word.substring(2));
                 }
+
+//    if (word.length() <= 4) {
+//        return WordUtils.capitalizeFully(word);
+//    }
+//
+//    word = StringUtils.replaceIgnoreCase(word, "versicherungsschein", "Vs");
+//    word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Vs");
+//    word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
+//    word = StringUtils.replaceIgnoreCase(word, "Unternehmens", "U");
+//    word = StringUtils.replaceIgnoreCase(word, "nummer", "Nr");
+//    word = StringUtils.replaceIgnoreCase(word, "Laenderkennzeichen", "Lkz");
+//    word = StringUtils.replaceIgnoreCase(word, "Postleitzahl", "Plz");
+//    word = StringUtils.replaceIgnoreCase(word, "Wagniskennziffer", "Wkz");
+//    word = StringUtils.replaceIgnoreCase(word, "Strasse", "Str");
+//    word = StringUtils.replaceIgnoreCase(word, "Anzahl", "Anz");
+//    word = StringUtils.replace(word, "Waehrungseinheiten", "We");
+
+                word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");
                 return WordUtils.capitalize(word);
         }
     }
