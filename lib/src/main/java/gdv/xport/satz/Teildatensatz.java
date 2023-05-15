@@ -336,8 +336,7 @@ public class Teildatensatz extends Satz {
         for (int i = 1; i < felder.size(); i++) {
             Feld fn = felder.get(i);
             if (!f1.getInhalt().equals(fn.getInhalt())) {
-                throw new NotUniqueException(String.format("different values for Bezeichner '%s': '%s', '%s'",
-                        f1.getBezeichner(),  f1.getInhalt(), fn.getInhalt()));
+                throw new NotUniqueException(String.format("same Bezeichner, different values: '%s', '%s'", f1, fn));
             }
         }
         LOG.debug("{} hat gleichen Wert wie gleichlautende Felder.", f1);

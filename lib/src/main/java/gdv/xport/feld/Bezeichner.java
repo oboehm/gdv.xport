@@ -506,7 +506,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner INVALIDITAET_BEITRAGSSATZ = new Bezeichner("Invaliditaet Beitragssatz");
     public static final Bezeichner INVALIDITAET_RISIKO1 = new Bezeichner("Invalidität (Risiko 1)");
     public static final Bezeichner INVALIDITAET_RISIKO2 = new Bezeichner("Invalidität (Risiko 2)");
-    public static final Bezeichner ISIN_NUMMER = new Bezeichner("ISIN-Nummer");
+    public static final Bezeichner ISIN_NUMMER = new Bezeichner("ISIN-Nummer", "IsinNr");
 
     public static final Bezeichner JAEHRLICHE_FAHRLEISTUNG = new Bezeichner("Jaehrliche Fahrleistung");
     public static final Bezeichner JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Jahresrente in W\u00e4hrungseinheiten");
@@ -1503,8 +1503,6 @@ public final class Bezeichner implements Serializable {
         switch (word) {
             case "fuer":
                 return "";
-            case "Nummer":
-                return "Nr";
             case "VN":
                 return "Vn";
             case "VP":
@@ -1539,7 +1537,8 @@ public final class Bezeichner implements Serializable {
 //    word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Vs");
 //    word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
 //    word = StringUtils.replaceIgnoreCase(word, "Unternehmens", "U");
-//    word = StringUtils.replaceIgnoreCase(word, "nummer", "Nr");
+                word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");
+                word = StringUtils.replace(word, "Nummer", "Nr");
 //    word = StringUtils.replaceIgnoreCase(word, "Laenderkennzeichen", "Lkz");
 //    word = StringUtils.replaceIgnoreCase(word, "Postleitzahl", "Plz");
 //    word = StringUtils.replaceIgnoreCase(word, "Wagniskennziffer", "Wkz");
@@ -1547,7 +1546,6 @@ public final class Bezeichner implements Serializable {
 //    word = StringUtils.replaceIgnoreCase(word, "Anzahl", "Anz");
 //    word = StringUtils.replace(word, "Waehrungseinheiten", "We");
 
-                word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");
                 return WordUtils.capitalize(word);
         }
     }
