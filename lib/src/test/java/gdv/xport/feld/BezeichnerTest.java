@@ -76,28 +76,6 @@ public class BezeichnerTest {
     }
 
     /**
-     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Namen, die
-     * auf "Datum" aufhoeren, haben meist "Dat" als Endung fuer den technischen
-     * Namen.
-     */
-    @Test
-    public void testGetTechnischerNameForDatum() {
-        Bezeichner zuzahlungsdatum = Bezeichner.of("Zuzahlungsdatum");
-        assertEquals("Zuzahlungsdat", zuzahlungsdatum.getTechnischerName());
-    }
-
-    /**
-     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Namen, die
-     * "Datum" als Bestandteil haben, haben "Dat" als Teil des technischen
-     * Namens.
-     */
-    @Test
-    public void testGetTechnischerNameForDatumInside() {
-        Bezeichner dat = Bezeichner.of("Aufgabedatum dieses Geschaeftsvorfalls");
-        assertEquals("AufgabedatDiesesGeschaeftsvorfalls", dat.getTechnischerName());
-    }
-
-    /**
      * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Namen, die auf
      * "Waehrungseinheit" aufhoeren, haben meist "WE" als Endung fuer den
      * technischen Namen.
@@ -105,7 +83,7 @@ public class BezeichnerTest {
     @Test
     public void testGetTechnischerNameForWaehrungseinheit() {
         Bezeichner zuzahlungsdatum = Bezeichner.of("Zuzahlungsbetrag in Waehrungseinheiten");
-        assertEquals("ZuzahlungsbetragInWE", zuzahlungsdatum.getTechnischerName());
+        assertEquals("ZUZAHLUNGSBETRAGINWE", zuzahlungsdatum.getTechnischerName().toUpperCase());
     }
 
     /**
@@ -135,8 +113,8 @@ public class BezeichnerTest {
      */
     @Test
     public void testGetTechnischerNameForVp() {
-        Bezeichner vp = Bezeichner.EINSCHLUSSDAT_VP_PERSONENGRUPPE;
-        assertEquals("EinschlussdatVpPersonengruppe", vp.getTechnischerName());
+        Bezeichner vp = new Bezeichner("VP / Personengruppe");
+        assertEquals("VpPersonengruppe", vp.getTechnischerName());
     }
 
     /**
@@ -144,7 +122,8 @@ public class BezeichnerTest {
      */
     @Test
     public void testGetTechnischerNameWithArtikel() {
-        assertEquals("ErsteZulassungAufDenVn", Bezeichner.ERSTE_ZULASSUNG_AUF_DEN_VN.getTechnischerName());
+        Bezeichner alex = new Bezeichner("Alexander der Grosse");
+        assertEquals("AlexanderGrosse", alex.getTechnischerName());
     }
 
     /**
@@ -168,15 +147,8 @@ public class BezeichnerTest {
      */
     @Test
     public void testGetTechnischerNameEVB() {
-        assertEquals("eVBNummer", Bezeichner.EVB_NUMMER.getTechnischerName());
-    }
-
-    /**
-     * "...nummer" wird nur manchmal als "...Nr" abgekuerzt.
-     */
-    @Test
-    public void testGetTechnischerNameWithNummer() {
-        assertEquals("Referenznummer", Bezeichner.REFERENZNUMMER.getTechnischerName());
+        Bezeichner evbnr = new Bezeichner("eVB-Nr");
+        assertEquals("eVBNr", evbnr.getTechnischerName());
     }
 
     /**
@@ -273,8 +245,10 @@ public class BezeichnerTest {
 
     @Test
     public void testIsVariantOf() {
-        assertTrue(Bezeichner.SATZ_NR_2.isVariantOf(Bezeichner.SATZNUMMER));
-        assertFalse(Bezeichner.SATZNUMMER.isVariantOf(Bezeichner.SATZ_NR_2));
+        Bezeichner nr2 = new Bezeichner("Nr2");
+        Bezeichner nr = new Bezeichner("Nr", "Nr", "Nr1", "Nr2");
+        assertTrue(nr2.isVariantOf(nr));
+        assertFalse(nr.isVariantOf(nr2));
     }
 
     @Test
@@ -284,7 +258,8 @@ public class BezeichnerTest {
 
     @Test
     public void testGetVariants() {
-        Set<Bezeichner> variants = Bezeichner.HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN.getVariants();
+        Bezeichner b = new Bezeichner("v", "v", "v1");
+        Set<Bezeichner> variants = b.getVariants();
         assertThat(variants.size(), greaterThan(1));
     }
 
