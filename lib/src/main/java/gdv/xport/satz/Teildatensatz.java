@@ -262,7 +262,9 @@ public class Teildatensatz extends Satz {
         if (felder.isEmpty()) {
             throw new IllegalArgumentException("Feld \"" + name + "\" not found");
         }
-        LOG.debug("{} in {} wird '{}' zugewiesen.", felder, this, value);
+        if (felder.size() > 1) {
+            LOG.info("Mit Bezeichner {} werden mehrere Felder in '{}' mit '{}' belegt: {}", name,this, value, felder);
+        }
         for (Feld x : felder) {
             setFeld(x, value);
         }
@@ -297,6 +299,7 @@ public class Teildatensatz extends Satz {
 
     private void setFeld(Feld x, String value) {
         try {
+            LOG.debug("{} in '{}' wird mit '{}' belegt.", x, this, value);
             x.setInhalt(value);
         } catch (IllegalArgumentException iae) {
             throw new IllegalArgumentException(String.format(
