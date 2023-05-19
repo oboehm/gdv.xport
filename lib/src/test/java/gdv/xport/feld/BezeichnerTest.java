@@ -87,17 +87,6 @@ public class BezeichnerTest {
     }
 
     /**
-     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Namen, die auf
-     * "VS" aufhoeren, haben meist "Vs" (mit kleinem 's') als Endung fuer den
-     * technischen Namen.
-     */
-    @Test
-    public void testGetTechnischerNameForVS() {
-        Bezeichner zuzahlungsdatum = Bezeichner.of("Erlebensfall VS");
-        assertEquals("ErlebensfallVs", zuzahlungsdatum.getTechnischerName());
-    }
-
-    /**
      * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Aus "%-Satz"
      * wird "...ProzSatz" als technischer Name.
      */
@@ -105,16 +94,6 @@ public class BezeichnerTest {
     public void testGetTechnischerNameForProzSatz() {
         Bezeichner prozSatz = Bezeichner.EINSCHLUSS_PROZENT_SATZ;
         assertEquals("EinschlussProzSatz", prozSatz.getTechnischerName());
-    }
-
-    /**
-     * Test-Methode fuer {@link Bezeichner#getTechnischerName()}. Aus
-     * "...VP..." wird "...Vp..." als technischer Name.
-     */
-    @Test
-    public void testGetTechnischerNameForVp() {
-        Bezeichner vp = new Bezeichner("VP / Personengruppe");
-        assertEquals("VpPersonengruppe", vp.getTechnischerName());
     }
 
     /**

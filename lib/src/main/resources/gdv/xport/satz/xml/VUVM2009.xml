@@ -3852,15 +3852,15 @@
                 <name>lfd. Nummer zur Wagnisart</name>
                 <technischerName>LfdNrZurWagnisart</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld NameVp (62-91) -->
-            <feldreferenz referenz="062-091-NameVp-Alphanumerisch">
+            <!-- AlphaNumFeld NameVP (62-91) -->
+            <feldreferenz referenz="062-091-NameVP-Alphanumerisch">
                 <name>Name der VP</name>
-                <technischerName>NameVp</technischerName>
+                <technischerName>NameVP</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld VornameVp (92-121) -->
-            <feldreferenz referenz="092-121-VornameVp-Alphanumerisch">
+            <!-- AlphaNumFeld VornameVP (92-121) -->
+            <feldreferenz referenz="092-121-VornameVP-Alphanumerisch">
                 <name>Vorname der VP</name>
-                <technischerName>VornameVp</technischerName>
+                <technischerName>VornameVP</technischerName>
             </feldreferenz>
             <!-- Datum GeburtsdatVp (122-129) -->
             <feldreferenz referenz="122-129-GeburtsdatVp-Datum">
@@ -4051,20 +4051,20 @@
                 <name>Nächste Todesfall VS in Währungseinheiten</name>
                 <technischerName>NaechsteTodesfallVsInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld AnfaenglicheErlebensfallVsInWE (106-119) -->
-            <feldreferenz referenz="106-119-AnfaenglicheErlebensfallVsInWE-Fliesskomma">
+            <!-- NumFeld AnfaenglicheErlebensfallVSInWE (106-119) -->
+            <feldreferenz referenz="106-119-AnfaenglicheErlebensfallVSInWE-Fliesskomma">
                 <name>Anfängliche Erlebensfall VS in Währungseinheiten</name>
-                <technischerName>AnfaenglicheErlebensfallVsInWE</technischerName>
+                <technischerName>AnfaenglicheErlebensfallVSInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld AbsoluteErlebensfallVsInWE (120-133) -->
-            <feldreferenz referenz="120-133-AbsoluteErlebensfallVsInWE-Fliesskomma">
+            <!-- NumFeld AbsoluteErlebensfallVSInWE (120-133) -->
+            <feldreferenz referenz="120-133-AbsoluteErlebensfallVSInWE-Fliesskomma">
                 <name>Absolute Erlebensfall VS in Währungseinheiten</name>
-                <technischerName>AbsoluteErlebensfallVsInWE</technischerName>
+                <technischerName>AbsoluteErlebensfallVSInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld NaechsteErlebensfallVsInWE (134-147) -->
-            <feldreferenz referenz="134-147-NaechsteErlebensfallVsInWE-Fliesskomma">
+            <!-- NumFeld NaechsteErlebensfallVSInWE (134-147) -->
+            <feldreferenz referenz="134-147-NaechsteErlebensfallVSInWE-Fliesskomma">
                 <name>Nächste Erlebensfall VS in Währungseinheiten</name>
-                <technischerName>NaechsteErlebensfallVsInWE</technischerName>
+                <technischerName>NaechsteErlebensfallVSInWE</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Leerstellen (148-255) -->
             <feldreferenz referenz="148-255-Leerstellen-Alphanumerisch">
@@ -5250,25 +5250,25 @@
                 <name>lfd. Nummer zur Wagnisart</name>
                 <technischerName>LfdNrZurWagnisart</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErlebensfallVsInWE (62-75) -->
-            <feldreferenz referenz="062-075-ErlebensfallVsInWE-Fliesskomma">
+            <!-- NumFeld ErlebensfallVSInWE (62-75) -->
+            <feldreferenz referenz="062-075-ErlebensfallVSInWE-Fliesskomma">
                 <name>Erlebensfall VS in Währungseinheiten</name>
-                <technischerName>ErlebensfallVsInWE</technischerName>
+                <technischerName>ErlebensfallVSInWE</technischerName>
             </feldreferenz>
             <!-- NumFeld TodesfallVsInWE (76-89) -->
             <feldreferenz referenz="076-089-TodesfallVsInWE-Fliesskomma">
                 <name>Todesfall VS in Währungseinheiten</name>
                 <technischerName>TodesfallVsInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErlebensfallVsIiInWE (90-103) -->
-            <feldreferenz referenz="090-103-ErlebensfallVsIiInWE-Fliesskomma">
+            <!-- NumFeld ErlebensfallVSIiInWE (90-103) -->
+            <feldreferenz referenz="090-103-ErlebensfallVSIiInWE-Fliesskomma">
                 <name>Erlebensfall VS II in Währungseinheiten</name>
-                <technischerName>ErlebensfallVsIiInWE</technischerName>
+                <technischerName>ErlebensfallVSIiInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld BeitragsfreieErlebensfallVsInWE (104-117) -->
-            <feldreferenz referenz="104-117-BeitragsfreieErlebensfallVsInWE-Fliesskomma">
+            <!-- NumFeld BeitragsfreieErlebensfallVSInWE (104-117) -->
+            <feldreferenz referenz="104-117-BeitragsfreieErlebensfallVSInWE-Fliesskomma">
                 <name>Beitragsfreie Erlebensfall VS in Währungseinheiten</name>
-                <technischerName>BeitragsfreieErlebensfallVsInWE</technischerName>
+                <technischerName>BeitragsfreieErlebensfallVSInWE</technischerName>
             </feldreferenz>
             <!-- NumFeld BeitragsfreieTodesfallVsInWE (118-131) -->
             <feldreferenz referenz="118-131-BeitragsfreieTodesfallVsInWE-Fliesskomma">
@@ -12945,15 +12945,15 @@
                 <name>Anzahl der VP pro Personengruppe</name>
                 <technischerName>AnzVpProPersonengruppe</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld NameVp (86-115) -->
-            <feldreferenz referenz="086-115-NameVp-Alphanumerisch">
+            <!-- AlphaNumFeld NameVP (86-115) -->
+            <feldreferenz referenz="086-115-NameVP-Alphanumerisch">
                 <name>Name der VP</name>
-                <technischerName>NameVp</technischerName>
+                <technischerName>NameVP</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld VornameVp (116-145) -->
-            <feldreferenz referenz="116-145-VornameVp-Alphanumerisch">
+            <!-- AlphaNumFeld VornameVP (116-145) -->
+            <feldreferenz referenz="116-145-VornameVP-Alphanumerisch">
                 <name>Vorname der VP</name>
-                <technischerName>VornameVp</technischerName>
+                <technischerName>VornameVP</technischerName>
             </feldreferenz>
             <!-- Datum GeburtsdatVp (146-153) -->
             <feldreferenz referenz="146-153-GeburtsdatVp-Datum">
@@ -13017,10 +13017,10 @@
                 <technischerName>EinschlussdatVpPersonengruppe</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
-            <!-- Datum AusschlussdatVpPersonengruppe (224-231) -->
-            <feldreferenz referenz="224-231-AusschlussdatVpPersonengruppe-Datum">
+            <!-- Datum AusschlussdatVPPersonengruppe (224-231) -->
+            <feldreferenz referenz="224-231-AusschlussdatVPPersonengruppe-Datum">
                 <name>Ausschlussdatum VP / Personengruppe</name>
-                <technischerName>AusschlussdatVpPersonengruppe</technischerName>
+                <technischerName>AusschlussdatVPPersonengruppe</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
             <!-- Datum Aenderungsdat (232-239) -->
@@ -13039,10 +13039,10 @@
                 <name>passives Kriegsrisiko</name>
                 <technischerName>PassivesKriegsrisiko</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld KuendigungsklauselVpPersonengruppeGestrichen (242-242) -->
-            <feldreferenz referenz="242-242-KuendigungsklauselVpPersonengruppeGestrichen-Alphanumerisch">
+            <!-- AlphaNumFeld KuendigungsklauselVPPersonengruppeGestrichen (242-242) -->
+            <feldreferenz referenz="242-242-KuendigungsklauselVPPersonengruppeGestrichen-Alphanumerisch">
                 <name>Kündigungsklausel VP/ Personengruppe gestrichen</name>
-                <technischerName>KuendigungsklauselVpPersonengruppeGestrichen</technischerName>
+                <technischerName>KuendigungsklauselVPPersonengruppeGestrichen</technischerName>
             </feldreferenz>
             <!-- NumFeld EintrittsalterDerVP (243-244) -->
             <feldreferenz referenz="243-244-EintrittsalterDerVP-Numerisch">
@@ -17401,10 +17401,10 @@
                 <technischerName>Baujahr</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
-            <!-- Datum ErsteZulassungAufDenVn (97-104) -->
-            <feldreferenz referenz="097-104-ErsteZulassungAufDenVn-Datum">
+            <!-- Datum ErsteZulassungAufDenVN (97-104) -->
+            <feldreferenz referenz="097-104-ErsteZulassungAufDenVN-Datum">
                 <name>Erste Zulassung auf den VN</name>
-                <technischerName>ErsteZulassungAufDenVn</technischerName>
+                <technischerName>ErsteZulassungAufDenVN</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
             <!-- AlphaNumFeld ArtZulassungBeimVorbesitzer (105-106) -->
@@ -17926,20 +17926,20 @@
                 <name>Personenstatus</name>
                 <technischerName>Personenstatus</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld NameVersichertenPersonVp (51-80) -->
-            <feldreferenz referenz="051-080-NameVersichertenPersonVp-Alphanumerisch">
+            <!-- AlphaNumFeld NameVersichertenPersonVP (51-80) -->
+            <feldreferenz referenz="051-080-NameVersichertenPersonVP-Alphanumerisch">
                 <name>Name der versicherten Person (VP)</name>
-                <technischerName>NameVersichertenPersonVp</technischerName>
+                <technischerName>NameVersichertenPersonVP</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld VornameVersichertenPersonVp (81-110) -->
-            <feldreferenz referenz="081-110-VornameVersichertenPersonVp-Alphanumerisch">
+            <!-- AlphaNumFeld VornameVersichertenPersonVP (81-110) -->
+            <feldreferenz referenz="081-110-VornameVersichertenPersonVP-Alphanumerisch">
                 <name>Vorname der versicherten Person (VP)</name>
-                <technischerName>VornameVersichertenPersonVp</technischerName>
+                <technischerName>VornameVersichertenPersonVP</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld TitelVp (111-130) -->
-            <feldreferenz referenz="111-130-TitelVp-Alphanumerisch">
+            <!-- AlphaNumFeld TitelVP (111-130) -->
+            <feldreferenz referenz="111-130-TitelVP-Alphanumerisch">
                 <name>Titel der VP</name>
-                <technischerName>TitelVp</technischerName>
+                <technischerName>TitelVP</technischerName>
             </feldreferenz>
             <!-- Datum GeburtsdatVp (131-138) -->
             <feldreferenz referenz="131-138-GeburtsdatVp-Datum">
@@ -18904,10 +18904,10 @@
                 <name>Todesfall VS in Währungseinheiten</name>
                 <technischerName>TodesfallVsInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErlebensfallVsIiInWE (90-103) -->
-            <feldreferenz referenz="090-103-ErlebensfallVsIiInWE-Fliesskomma">
+            <!-- NumFeld ErlebensfallVSIiInWE (90-103) -->
+            <feldreferenz referenz="090-103-ErlebensfallVSIiInWE-Fliesskomma">
                 <name>Erlebensfall VS II in Währungseinheiten</name>
-                <technischerName>ErlebensfallVsIiInWE</technischerName>
+                <technischerName>ErlebensfallVSIiInWE</technischerName>
             </feldreferenz>
             <!-- NumFeld BeitragsfreieBeitragssummeInWE (104-117) -->
             <feldreferenz referenz="104-117-BeitragsfreieBeitragssummeInWE-Fliesskomma">
@@ -19999,10 +19999,10 @@
                 <name>Ordnungsbegriff</name>
                 <technischerName>Ordnungsbegriff</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld WaehrungDokumenteVn (244-246) -->
-            <feldreferenz referenz="244-246-WaehrungDokumenteVn-Alphanumerisch">
+            <!-- AlphaNumFeld WaehrungDokumenteVN (244-246) -->
+            <feldreferenz referenz="244-246-WaehrungDokumenteVN-Alphanumerisch">
                 <name>Währung der Dokumente für VN</name>
-                <technischerName>WaehrungDokumenteVn</technischerName>
+                <technischerName>WaehrungDokumenteVN</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld ErweiterungssatzVorhanden (247-247) -->
             <feldreferenz referenz="247-247-ErweiterungssatzVorhanden-Alphanumerisch">
@@ -25259,10 +25259,10 @@
                 <name>Beitrag</name>
                 <technischerName>Beitrag</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErlebensfallVsInWE (102-110) -->
-            <feldreferenz referenz="102-110-ErlebensfallVsInWE-Numerisch">
+            <!-- NumFeld ErlebensfallVSInWE (102-110) -->
+            <feldreferenz referenz="102-110-ErlebensfallVSInWE-Numerisch">
                 <name>Erlebensfall VS in Währungseinheiten zum Ablauf</name>
-                <technischerName>ErlebensfallVsInWE</technischerName>
+                <technischerName>ErlebensfallVSInWE</technischerName>
             </feldreferenz>
             <!-- NumFeld TodesfallVsInWE (111-119) -->
             <feldreferenz referenz="111-119-TodesfallVsInWE-Numerisch">
@@ -25279,10 +25279,10 @@
                 <name>Nettobeitrag in Währungseinheiten</name>
                 <technischerName>NettobeitragInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErlebensfallVsIiInWE (133-141) -->
-            <feldreferenz referenz="133-141-ErlebensfallVsIiInWE-Numerisch">
+            <!-- NumFeld ErlebensfallVSIiInWE (133-141) -->
+            <feldreferenz referenz="133-141-ErlebensfallVSIiInWE-Numerisch">
                 <name>Erlebensfall VS II in Währungseinheiten zum Ablauf</name>
-                <technischerName>ErlebensfallVsIiInWE</technischerName>
+                <technischerName>ErlebensfallVSIiInWE</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Tarifbezeichnung (142-161) -->
             <feldreferenz referenz="142-161-Tarifbezeichnung-Alphanumerisch">
@@ -25294,10 +25294,10 @@
                 <name>Status</name>
                 <technischerName>Status</technischerName>
             </feldreferenz>
-            <!-- NumFeld BeitragsfreieErlebensfallVsInWE (163-171) -->
-            <feldreferenz referenz="163-171-BeitragsfreieErlebensfallVsInWE-Numerisch">
+            <!-- NumFeld BeitragsfreieErlebensfallVSInWE (163-171) -->
+            <feldreferenz referenz="163-171-BeitragsfreieErlebensfallVSInWE-Numerisch">
                 <name>Beitragsfreie Erlebensfall VS in Währungseinheiten</name>
-                <technischerName>BeitragsfreieErlebensfallVsInWE</technischerName>
+                <technischerName>BeitragsfreieErlebensfallVSInWE</technischerName>
             </feldreferenz>
             <!-- NumFeld BeitragsfreieTodesfallVsInWE (172-180) -->
             <feldreferenz referenz="172-180-BeitragsfreieTodesfallVsInWE-Numerisch">
@@ -26353,40 +26353,40 @@
                 <technischerName>BeginndatNaechstenTodesfallVs</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
-            <!-- NumFeld AnfaenglicheErlebensfallVsInWE (108-116) -->
-            <feldreferenz referenz="108-116-AnfaenglicheErlebensfallVsInWE-Numerisch">
+            <!-- NumFeld AnfaenglicheErlebensfallVSInWE (108-116) -->
+            <feldreferenz referenz="108-116-AnfaenglicheErlebensfallVSInWE-Numerisch">
                 <name>Anfängliche Erlebensfall VS in Währungseinheiten</name>
-                <technischerName>AnfaenglicheErlebensfallVsInWE</technischerName>
+                <technischerName>AnfaenglicheErlebensfallVSInWE</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld AenderungErlebensfallVs (117-117) -->
-            <feldreferenz referenz="117-117-AenderungErlebensfallVs-Alphanumerisch">
+            <!-- AlphaNumFeld AenderungErlebensfallVS (117-117) -->
+            <feldreferenz referenz="117-117-AenderungErlebensfallVS-Alphanumerisch">
                 <name>Änderung der Erlebensfall VS</name>
-                <technischerName>AenderungErlebensfallVs</technischerName>
+                <technischerName>AenderungErlebensfallVS</technischerName>
             </feldreferenz>
-            <!-- NumFeld AbstandErlebensfallVsAenderungstermine (118-120) -->
-            <feldreferenz referenz="118-120-AbstandErlebensfallVsAenderungstermine-Numerisch">
+            <!-- NumFeld AbstandErlebensfallVSAenderungstermine (118-120) -->
+            <feldreferenz referenz="118-120-AbstandErlebensfallVSAenderungstermine-Numerisch">
                 <name>Abstand der Erlebensfall VS-änderungstermine</name>
-                <technischerName>AbstandErlebensfallVsAenderungstermine</technischerName>
+                <technischerName>AbstandErlebensfallVSAenderungstermine</technischerName>
             </feldreferenz>
             <!-- NumFeld ErlebensfalllVsAenderungsProzentsatz (121-125) -->
             <feldreferenz referenz="121-125-ErlebensfalllVsAenderungsProzentsatz-Fliesskomma">
                 <name>Erlebensfall VS-Änderungs-Prozentsatz</name>
                 <technischerName>ErlebensfalllVsAenderungsProzentsatz</technischerName>
             </feldreferenz>
-            <!-- NumFeld AbsoluteErlebensfallVsInWE (126-134) -->
-            <feldreferenz referenz="126-134-AbsoluteErlebensfallVsInWE-Numerisch">
+            <!-- NumFeld AbsoluteErlebensfallVSInWE (126-134) -->
+            <feldreferenz referenz="126-134-AbsoluteErlebensfallVSInWE-Numerisch">
                 <name>Absolute Erlebensfall VS- in Währungseinheiten</name>
-                <technischerName>AbsoluteErlebensfallVsInWE</technischerName>
+                <technischerName>AbsoluteErlebensfallVSInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld NaechsteErlebensfallVsInWE (135-143) -->
-            <feldreferenz referenz="135-143-NaechsteErlebensfallVsInWE-Numerisch">
+            <!-- NumFeld NaechsteErlebensfallVSInWE (135-143) -->
+            <feldreferenz referenz="135-143-NaechsteErlebensfallVSInWE-Numerisch">
                 <name>Nächste Erlebensfall VS in Währungseinheiten</name>
-                <technischerName>NaechsteErlebensfallVsInWE</technischerName>
+                <technischerName>NaechsteErlebensfallVSInWE</technischerName>
             </feldreferenz>
-            <!-- Datum BeginndatNaechstenErlebensfallVs (144-151) -->
-            <feldreferenz referenz="144-151-BeginndatNaechstenErlebensfallVs-Datum">
+            <!-- Datum BeginndatNaechstenErlebensfallVS (144-151) -->
+            <feldreferenz referenz="144-151-BeginndatNaechstenErlebensfallVS-Datum">
                 <name>Beginndatum der nächsten Erlebensfall VS</name>
-                <technischerName>BeginndatNaechstenErlebensfallVs</technischerName>
+                <technischerName>BeginndatNaechstenErlebensfallVS</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
             <!-- AlphaNumFeld Leerstellen (152-255) -->
@@ -31315,10 +31315,10 @@
                 <name>Nettobeitrag in Währungseinheiten</name>
                 <technischerName>NettobeitragInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErlebensfallVsIiInWE (133-141) -->
-            <feldreferenz referenz="133-141-ErlebensfallVsIiInWE-Numerisch">
+            <!-- NumFeld ErlebensfallVSIiInWE (133-141) -->
+            <feldreferenz referenz="133-141-ErlebensfallVSIiInWE-Numerisch">
                 <name>Erlebensfall VS II in Währungseinheiten</name>
-                <technischerName>ErlebensfallVsIiInWE</technischerName>
+                <technischerName>ErlebensfallVSIiInWE</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Tarifbezeichnung (142-161) -->
             <feldreferenz referenz="142-161-Tarifbezeichnung-Alphanumerisch">
@@ -31671,10 +31671,10 @@
                 <name>Anlagestrategie</name>
                 <technischerName>Anlagestrategie</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErlebensfallVsInWE (92-105) -->
-            <feldreferenz referenz="092-105-ErlebensfallVsInWE-Fliesskomma">
+            <!-- NumFeld ErlebensfallVSInWE (92-105) -->
+            <feldreferenz referenz="092-105-ErlebensfallVSInWE-Fliesskomma">
                 <name>Erlebensfall VS in Währungseinheiten</name>
-                <technischerName>ErlebensfallVsInWE</technischerName>
+                <technischerName>ErlebensfallVSInWE</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Leerstellen (106-255) -->
             <feldreferenz referenz="106-255-Leerstellen-Alphanumerisch">
@@ -33647,7 +33647,7 @@
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="051-080-NameVersichertenPersonVp-Alphanumerisch">
+        <feld referenz="051-080-NameVersichertenPersonVP-Alphanumerisch">
             <name>Name der versicherten Person (VP)</name>
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -34302,7 +34302,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="062-075-ErlebensfallVsInWE-Fliesskomma">
+        <feld referenz="062-075-ErlebensfallVSInWE-Fliesskomma">
             <name>Erlebensfall VS in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -34343,7 +34343,7 @@
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="062-091-NameVp-Alphanumerisch">
+        <feld referenz="062-091-NameVP-Alphanumerisch">
             <name>Name der VP</name>
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -35935,7 +35935,7 @@
             <bytes>7</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="081-110-VornameVersichertenPersonVp-Alphanumerisch">
+        <feld referenz="081-110-VornameVersichertenPersonVP-Alphanumerisch">
             <name>Vorname der versicherten Person (VP)</name>
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -36389,7 +36389,7 @@
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="086-115-NameVp-Alphanumerisch">
+        <feld referenz="086-115-NameVP-Alphanumerisch">
             <name>Name der VP</name>
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -36732,7 +36732,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="090-103-ErlebensfallVsIiInWE-Fliesskomma">
+        <feld referenz="090-103-ErlebensfallVSIiInWE-Fliesskomma">
             <name>Erlebensfall VS II in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -36884,7 +36884,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="092-105-ErlebensfallVsInWE-Fliesskomma">
+        <feld referenz="092-105-ErlebensfallVSInWE-Fliesskomma">
             <name>Erlebensfall VS in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -36917,7 +36917,7 @@
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="092-121-VornameVp-Alphanumerisch">
+        <feld referenz="092-121-VornameVP-Alphanumerisch">
             <name>Vorname der VP</name>
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -37288,7 +37288,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="097-104-ErsteZulassungAufDenVn-Datum">
+        <feld referenz="097-104-ErsteZulassungAufDenVN-Datum">
             <name>Erste Zulassung auf den VN</name>
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
@@ -37727,7 +37727,7 @@
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="102-110-ErlebensfallVsInWE-Numerisch">
+        <feld referenz="102-110-ErlebensfallVSInWE-Numerisch">
             <name>Erlebensfall VS in Währungseinheiten zum Ablauf</name>
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
@@ -37921,7 +37921,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="104-117-BeitragsfreieErlebensfallVsInWE-Fliesskomma">
+        <feld referenz="104-117-BeitragsfreieErlebensfallVSInWE-Fliesskomma">
             <name>Beitragsfreie Erlebensfall VS in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -38075,7 +38075,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="106-119-AnfaenglicheErlebensfallVsInWE-Fliesskomma">
+        <feld referenz="106-119-AnfaenglicheErlebensfallVSInWE-Fliesskomma">
             <name>Anfängliche Erlebensfall VS in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -38254,7 +38254,7 @@
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="108-116-AnfaenglicheErlebensfallVsInWE-Numerisch">
+        <feld referenz="108-116-AnfaenglicheErlebensfallVSInWE-Numerisch">
             <name>Anfängliche Erlebensfall VS in Währungseinheiten</name>
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
@@ -38553,7 +38553,7 @@
             <bytes>17</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="111-130-TitelVp-Alphanumerisch">
+        <feld referenz="111-130-TitelVP-Alphanumerisch">
             <name>Titel der VP</name>
             <bytes>20</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -38885,7 +38885,7 @@
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="116-145-VornameVp-Alphanumerisch">
+        <feld referenz="116-145-VornameVP-Alphanumerisch">
             <name>Vorname der VP</name>
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -38895,7 +38895,7 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="117-117-AenderungErlebensfallVs-Alphanumerisch">
+        <feld referenz="117-117-AenderungErlebensfallVS-Alphanumerisch">
             <name>Änderung der Erlebensfall VS</name>
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -39000,7 +39000,7 @@
             <bytes>3</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="118-120-AbstandErlebensfallVsAenderungstermine-Numerisch">
+        <feld referenz="118-120-AbstandErlebensfallVSAenderungstermine-Numerisch">
             <name>Abstand der Erlebensfall VS-änderungstermine</name>
             <bytes>3</bytes>
             <datentyp>Numerisch</datentyp>
@@ -39206,7 +39206,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="120-133-AbsoluteErlebensfallVsInWE-Fliesskomma">
+        <feld referenz="120-133-AbsoluteErlebensfallVSInWE-Fliesskomma">
             <name>Absolute Erlebensfall VS in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -39663,7 +39663,7 @@
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="126-134-AbsoluteErlebensfallVsInWE-Numerisch">
+        <feld referenz="126-134-AbsoluteErlebensfallVSInWE-Numerisch">
             <name>Absolute Erlebensfall VS- in Währungseinheiten</name>
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
@@ -40246,7 +40246,7 @@
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="133-141-ErlebensfallVsIiInWE-Numerisch">
+        <feld referenz="133-141-ErlebensfallVSIiInWE-Numerisch">
             <name>Erlebensfall VS II in Währungseinheiten zum Ablauf</name>
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
@@ -40357,7 +40357,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="134-147-NaechsteErlebensfallVsInWE-Fliesskomma">
+        <feld referenz="134-147-NaechsteErlebensfallVSInWE-Fliesskomma">
             <name>Nächste Erlebensfall VS in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -40458,7 +40458,7 @@
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="135-143-NaechsteErlebensfallVsInWE-Numerisch">
+        <feld referenz="135-143-NaechsteErlebensfallVSInWE-Numerisch">
             <name>Nächste Erlebensfall VS in Währungseinheiten</name>
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
@@ -41167,7 +41167,7 @@
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
         </feld>
-        <feld referenz="144-151-BeginndatNaechstenErlebensfallVs-Datum">
+        <feld referenz="144-151-BeginndatNaechstenErlebensfallVS-Datum">
             <name>Beginndatum der nächsten Erlebensfall VS</name>
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
@@ -42517,7 +42517,7 @@
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="163-171-BeitragsfreieErlebensfallVsInWE-Numerisch">
+        <feld referenz="163-171-BeitragsfreieErlebensfallVSInWE-Numerisch">
             <name>Beitragsfreie Erlebensfall VS in Währungseinheiten</name>
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
@@ -46069,7 +46069,7 @@
             <bytes>7</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="224-231-AusschlussdatVpPersonengruppe-Datum">
+        <feld referenz="224-231-AusschlussdatVPPersonengruppe-Datum">
             <name>Ausschlussdatum VP / Personengruppe</name>
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
@@ -46793,7 +46793,7 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="242-242-KuendigungsklauselVpPersonengruppeGestrichen-Alphanumerisch">
+        <feld referenz="242-242-KuendigungsklauselVPPersonengruppeGestrichen-Alphanumerisch">
             <name>Kündigungsklausel VP/ Personengruppe gestrichen</name>
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -46890,7 +46890,7 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="244-246-WaehrungDokumenteVn-Alphanumerisch">
+        <feld referenz="244-246-WaehrungDokumenteVN-Alphanumerisch">
             <name>Währung der Dokumente für VN</name>
             <bytes>3</bytes>
             <datentyp>Alphanumerisch</datentyp>

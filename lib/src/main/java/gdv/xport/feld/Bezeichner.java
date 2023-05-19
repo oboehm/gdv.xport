@@ -76,7 +76,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ABWEICHENDES_DYNAMIKENDALTER = new Bezeichner("Abweichendes Dynamikendalter");
     public static final Bezeichner ABSOLUTE_JAHRESRENTENAENDERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absolute Jahresrentenaenderungssumme in W\u00e4hrungseinheiten", "AbsoluteJahresrentenaenderungssummeInWE");
     public static final Bezeichner ABSOLUTER_DYNAMIKERHOEHUNGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Absoluter Dynamikerhoehungsbetrag in W\u00e4hrungseinheiten");
-    public static final Bezeichner ABSTAND_DER_ERLEBENSFALL_VS_AENDERUNGSTERMINE = new Bezeichner("Abstand der Erlebensfall VS-Aenderungstermine","AbstandErlebensfallVsAenderungstermine");
+    public static final Bezeichner ABSTAND_DER_ERLEBENSFALL_VS_AENDERUNGSTERMINE = new Bezeichner("Abstand der Erlebensfall VS-Aenderungstermine");
     public static final Bezeichner ABSTAND_DER_BEITRAGSSUMMENAENDERUNGSTERMINE = new Bezeichner("Abstand der Beitragssummenaenderungstermine", "AbstandBeitragssummenaenderungstermine");
     public static final Bezeichner ABSTAND_DER_JAHRESRENTENAENDERUNGSTERMINE = new Bezeichner("Abstand der Jahresrentenaenderungstermine");
     public static final Bezeichner ABSTAND_DER_TODESFALLAENDERUNGSTERMINE = new Bezeichner("Abstand der Todesfallaenderungstermine");
@@ -130,7 +130,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ANWARTSCHAFTSGRUND = new Bezeichner("Anwartschaftsgrund");
     public static final Bezeichner AUSLANDSDECKUNG = new Bezeichner("Auslandsdeckung");
     public static final Bezeichner AUSSCHLUSSDATUM = new Bezeichner("Ausschlussdatum", "Ausschlussdatum");
-    public static final Bezeichner AUSSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner("Ausschlussdatum VP / Personengruppe", "AusschlussdatVpPersonengruppe");
+    public static final Bezeichner AUSSCHLUSSDAT_VP_PERSONENGRUPPE = new Bezeichner("Ausschlussdatum VP / Personengruppe");
     public static final Bezeichner AUSZAHLUNGSWEISE = new Bezeichner("Auszahlungsweise");
     public static final Bezeichner ADRESSAT = new Bezeichner("Adressat");
     public static final Bezeichner ADRESSKENNZEICHEN = new Bezeichner("Adresskennzeichen", "AdressKennzeichen");
@@ -210,7 +210,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner BEGINNDAT_DER_NAECHSTEN_JAHRESRENTE = new Bezeichner("Beginndatum der naechsten Jahresrente", "BeginndatNaechstenJahresrente");
     public static final Bezeichner BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME = new Bezeichner("Beginndatum der naechsten Unfallsumme", "BeginndatNaechstenUnfallsumme");
     public static final Bezeichner BEGINNDAT_NAECHSTEN_BEITRAGSSUMME = new Bezeichner("Beginndatum der naechsten Beitragssumme");
-    public static final Bezeichner BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS = new Bezeichner("Beginndatum der naechsten Erlebensfall VS", "BeginndatNaechstenErlebensfallVs");
+    public static final Bezeichner BEGINNDAT_NAECHSTEN_ERLEBENSFALL_VS = new Bezeichner("Beginndatum der naechsten Erlebensfall VS");
     public static final Bezeichner BEGINNDAT_NAECHSTEN_JAHRESRENTE = new Bezeichner("Beginndatum der naechsten Jahresrente", "BeginndatNaechstenJahresrente");
     public static final Bezeichner BEGINNDAT_NAECHSTEN_TODESFALL_VS = new Bezeichner("Beginndatum der naechsten Todesfall VS");
     public static final Bezeichner BEGINNDAT_DER_NAECHSTEN_TODESFALL_VS = BEGINNDAT_NAECHSTEN_TODESFALL_VS; 
@@ -376,11 +376,11 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ERKRANKUNGEN = new Bezeichner("Erkrankungen");
     public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT = new Bezeichner("Erlebensfall VS in W\u00e4hrungseinheiten");
     public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Erlebensfall VS in W\u00e4hrungseinheiten zum Ablauf");
-    public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Erlebensfall VS II in W\u00e4hrungseinheiten zum Ablauf", "ErlebensfallVsIiInWE");
+    public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Erlebensfall VS II in W\u00e4hrungseinheiten zum Ablauf");
     public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Erlebensfall VS II in W\u00e4hrungseinheiten");
     public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Erlebensfall VS in W\u00e4hrungseinheiten");
-    public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Erlebensfall VS in W\u00e4hrungseinheiten zum Beginn der Abrufphase", "ErlebensfallVSInWaehrungseinheitenZumBeginnDerAbrufphase");
-    public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Erlebensfall VS II in W\u00e4hrungseinheiten zum Beginn der Abrufphase", "ErlebensfallVSIIInWaehrungseinheitenZumBeginnDerAbrufphase");
+    public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Erlebensfall VS in W\u00e4hrungseinheiten zum Beginn der Abrufphase");
+    public static final Bezeichner ERLEBENSFALL_VS_II_IN_WAEHRUNGSEINHEITEN_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Erlebensfall VS II in W\u00e4hrungseinheiten zum Beginn der Abrufphase");
     public static final Bezeichner ERLEBENSFALL_VS_AENDERUNGS_PROZENTSATZ = new Bezeichner("Erlebensfall VS-Aenderungs-Prozentsatz", "ErlebensfalllVsAenderungsProzentsatz");
     public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_BIS = new Bezeichner("Erstellungs-Datum-Zeitraum bis");
     public static final Bezeichner ERSTELLUNGSDAT_ZEITRAUM_VOM = new Bezeichner("Erstellungs-Datum-Zeitraum vom");
@@ -1503,12 +1503,6 @@ public final class Bezeichner implements Serializable {
         switch (word) {
             case "fuer":
                 return "";
-            case "VN":
-                return "Vn";
-            case "VP":
-                return "Vp";
-            case "VS":
-                return "Vs";
             case "Waehrungseinheiten":
                 return "WE";
             default:
