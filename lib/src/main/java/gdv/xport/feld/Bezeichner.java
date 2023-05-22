@@ -414,7 +414,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner FONDSNAME = new Bezeichner("Fondsname");
     public static final Bezeichner FORM = new Bezeichner("Form");
     public static final Bezeichner FORMART = new Bezeichner("Formart");
-    public static final Bezeichner FREMDER_GRUND_UND_BODEN = new Bezeichner("fremder Grund und Boden", "FremderGrundBoden");
+    public static final Bezeichner FREMDER_GRUND_UND_BODEN = new Bezeichner("fremder Grund und Boden");
     public static final Bezeichner FREMDNUTZUNG = new Bezeichner("Fremdnutzung");
     public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_KH = new Bezeichner("Frei vereinbarte Selbstbeteiligung in W\u00e4hrungseinheiten für KH", "FreiVereinbarteSelbstbeteiligungInWEKh");
     public static final Bezeichner FREI_VEREINBARTE_SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_FUER_TEILKASKO = new Bezeichner("Frei vereinbarte Selbstbeteiligung in W\u00e4hrungseinheiten fuer Teilkasko im Rahmen der Vollkasko", "FreiVereinbarteSelbstbeteiligungInWETeilkaskoImRahmenVollkasko");
@@ -1502,11 +1502,12 @@ public final class Bezeichner implements Serializable {
         String word = converted.toString();
         switch (word) {
             case "fuer":
+            case "und":
                 return "";
             case "Waehrungseinheiten":
                 return "WE";
             default:
-                if ((word.length() == 3) && (word.toLowerCase().charAt(0) == 'd') && (word.charAt(2) != 'n')) {
+                if ((word.length() == 3) && (word.toLowerCase().charAt(0) == 'd')) {
                     return "";
                 } else if (word.endsWith("datum")) {
                     return word.substring(0, word.length() - 2);

@@ -17973,10 +17973,10 @@
 				<technischerName>Baujahr</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum ErsteZulassungAufDenVN (97-104) -->
-			<feldreferenz referenz="097-104-ErsteZulassungAufDenVN-Datum">
+			<!-- Datum ErsteZulassungAufVN (97-104) -->
+			<feldreferenz referenz="097-104-ErsteZulassungAufVN-Datum">
 				<name>Erste Zulassung auf den VN</name>
-				<technischerName>ErsteZulassungAufDenVN</technischerName>
+				<technischerName>ErsteZulassungAufVN</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ArtZulassungBeimVorbesitzer (105-106) -->
@@ -38288,7 +38288,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="097-104-ErsteZulassungAufDenVN-Datum">
+		<feld referenz="097-104-ErsteZulassungAufVN-Datum">
 			<name>Erste Zulassung auf den VN</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
