@@ -372,7 +372,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner EINTRITTSALTER_DER_VP = new Bezeichner("Eintrittsalter der VP", "EintrittsalterDerVP");
     public static final Bezeichner ELEMENTARSCHAEDEN = new Bezeichner("Elementarschaeden");
     public static final Bezeichner ENDEDATUM_BEI_ROTEN_KENNZEICHEN = new Bezeichner("Endedatum des Versicherungsschutzes bei roten Kennzeichen", "EndedatumBeiRotenKennzeichen");
-    public static final Bezeichner ERHOEHUNGSSATZ_8_III_AHB = new Bezeichner("Erhoehungssatz \u00a78, III AHB", "Erhoehungssatz8IiiAhb");
+    public static final Bezeichner ERHOEHUNGSSATZ_8_III_AHB = new Bezeichner("Erhoehungssatz \u00a78, III AHB");
     public static final Bezeichner ERKRANKUNGEN = new Bezeichner("Erkrankungen");
     public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT = new Bezeichner("Erlebensfall VS in W\u00e4hrungseinheiten");
     public static final Bezeichner ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEIT_ZUM_ABLAUF = new Bezeichner("Erlebensfall VS in W\u00e4hrungseinheiten zum Ablauf");

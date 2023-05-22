@@ -9023,10 +9023,10 @@
                 <name>Kennung Erhöhungssatz</name>
                 <technischerName>KennungErhoehungssatz</technischerName>
             </feldreferenz>
-            <!-- NumFeld Erhoehungssatz8IiiAhb (174-178) -->
-            <feldreferenz referenz="174-178-Erhoehungssatz8IiiAhb-Fliesskomma">
+            <!-- NumFeld Erhoehungssatz8IIIAHB (174-178) -->
+            <feldreferenz referenz="174-178-Erhoehungssatz8IIIAHB-Fliesskomma">
                 <name>Erhöhungssatz § 8, III AHB</name>
-                <technischerName>Erhoehungssatz8IiiAhb</technischerName>
+                <technischerName>Erhoehungssatz8IIIAHB</technischerName>
             </feldreferenz>
             <!-- Datum LetzteErhoehung8IiiAhb (179-186) -->
             <feldreferenz referenz="179-186-LetzteErhoehung8IiiAhb-Datum">
@@ -43327,7 +43327,7 @@
             <bytes>4</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="174-178-Erhoehungssatz8IiiAhb-Fliesskomma">
+        <feld referenz="174-178-Erhoehungssatz8IIIAHB-Fliesskomma">
             <name>Erhöhungssatz § 8, III AHB</name>
             <bytes>5</bytes>
             <datentyp>Fliesskomma</datentyp>
