@@ -867,10 +867,10 @@
 				<name>Änderungsgrund</name>
 				<technischerName>Aenderungsgrund</technischerName>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (118-125) -->
-			<feldreferenz referenz="118-125-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (118-125) -->
+			<feldreferenz referenz="118-125-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld IsinNr (126-137) -->
@@ -971,10 +971,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (68-75) -->
-			<feldreferenz referenz="068-075-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (68-75) -->
+			<feldreferenz referenz="068-075-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld LKZZurRisikoanschrift (76-78) -->
@@ -1442,10 +1442,10 @@
 				<name>Zuzahlungsbetrag in Währungseinheiten</name>
 				<technischerName>ZuzahlungsbetragInWE</technischerName>
 			</feldreferenz>
-			<!-- Datum Zuzahlungsdat (172-179) -->
-			<feldreferenz referenz="172-179-Zuzahlungsdat-Datum">
+			<!-- Datum Zuzahlungsdatum (172-179) -->
+			<feldreferenz referenz="172-179-Zuzahlungsdatum">
 				<name>Zuzahlungsdatum</name>
-				<technischerName>Zuzahlungsdat</technischerName>
+				<technischerName>Zuzahlungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerGesbeitragInWE (180-191) -->
@@ -1458,10 +1458,10 @@
 				<name>Zahlungsweise des zukünftigen Gesamtbeitrags</name>
 				<technischerName>ZahlungsweiseZukuenftigenGesbeitrags</technischerName>
 			</feldreferenz>
-			<!-- Datum Beitragsumstellungdat (193-200) -->
-			<feldreferenz referenz="193-200-Beitragsumstellungdat-Datum">
+			<!-- Datum Beitragsumstellungdatum (193-200) -->
+			<feldreferenz referenz="193-200-Beitragsumstellungdatum">
 				<name>Beitragsumstellungsdatum</name>
-				<technischerName>Beitragsumstellungdat</technischerName>
+				<technischerName>Beitragsumstellungdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Beitragsumstellunggrund (201-202) -->
@@ -1550,10 +1550,10 @@
 				<name>Unverfallbarkeit</name>
 				<technischerName>Unverfallbarkeit</technischerName>
 			</feldreferenz>
-			<!-- Datum Diensteintrittsdat (45-52) -->
-			<feldreferenz referenz="045-052-Diensteintrittsdat-Datum">
+			<!-- Datum Diensteintrittsdatum (45-52) -->
+			<feldreferenz referenz="045-052-Diensteintrittsdatum">
 				<name>Diensteintrittsdatum</name>
-				<technischerName>Diensteintrittsdat</technischerName>
+				<technischerName>Diensteintrittsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld BilanzmonatArbeitgeber (53-54) -->
@@ -1741,10 +1741,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (60-67) -->
-			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (60-67) -->
+			<feldreferenz referenz="060-067-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld VersicherteGefahren (68-77) -->
@@ -3116,10 +3116,10 @@
 				<name>Sollstellungsart</name>
 				<technischerName>Sollstellungsart</technischerName>
 			</feldreferenz>
-			<!-- Datum Buchungsdat (46-53) -->
-			<feldreferenz referenz="046-053-Buchungsdat-Datum">
+			<!-- Datum Buchungsdatum (46-53) -->
+			<feldreferenz referenz="046-053-Buchungsdatum">
 				<name>Buchungsdatum</name>
-				<technischerName>Buchungsdat</technischerName>
+				<technischerName>Buchungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum AbrechnungszeitraumVon (54-61) -->
@@ -3139,16 +3139,16 @@
 				<name>Zahlungsweise</name>
 				<technischerName>Zahlungsweise</technischerName>
 			</feldreferenz>
-			<!-- Datum Erstellungsdat (71-78) -->
-			<feldreferenz referenz="071-078-Erstellungsdat-Datum">
+			<!-- Datum Erstellungsdatum (71-78) -->
+			<feldreferenz referenz="071-078-Erstellungsdatum">
 				<name>Erstellungsdatum</name>
-				<technischerName>Erstellungsdat</technischerName>
+				<technischerName>Erstellungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (79-86) -->
-			<feldreferenz referenz="079-086-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (79-86) -->
+			<feldreferenz referenz="079-086-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld NachtragsNr (87-89) -->
@@ -3744,10 +3744,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (59-66) -->
-			<feldreferenz referenz="059-066-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (59-66) -->
+			<feldreferenz referenz="059-066-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ArtSumme3AN (67-69) -->
@@ -5044,10 +5044,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (60-67) -->
-			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (60-67) -->
+			<feldreferenz referenz="060-067-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (68-70) -->
@@ -5880,10 +5880,10 @@
 				<technischerName>HaftungBis1</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
-			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
+			<!-- Datum UrspruenglichesHaftungsbeginndatum (121-128) -->
+			<feldreferenz referenz="121-128-UrspruenglichesHaftungsbeginndatum">
 				<name>Ursprüngliches Haftungsbeginndatum</name>
-				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<technischerName>UrspruenglichesHaftungsbeginndatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
@@ -6523,10 +6523,10 @@
 				<technischerName>HaftungBis1</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
-			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
+			<!-- Datum UrspruenglichesHaftungsbeginndatum (121-128) -->
+			<feldreferenz referenz="121-128-UrspruenglichesHaftungsbeginndatum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
-				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<technischerName>UrspruenglichesHaftungsbeginndatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
@@ -6817,10 +6817,10 @@
 				<technischerName>HaftungBis1</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
-			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
+			<!-- Datum UrspruenglichesHaftungsbeginndatum (121-128) -->
+			<feldreferenz referenz="121-128-UrspruenglichesHaftungsbeginndatum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
-				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<technischerName>UrspruenglichesHaftungsbeginndatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
@@ -8722,10 +8722,10 @@
 				<name>Mitzuversichernde Person</name>
 				<technischerName>MitzuversicherndePerson</technischerName>
 			</feldreferenz>
-			<!-- Datum GeburtsdatMitzuversicherndenPerson (129-136) -->
-			<feldreferenz referenz="129-136-GeburtsdatMitzuversicherndenPerson-Datum">
+			<!-- Datum GeburtsdatumMitzuversicherndenPerson (129-136) -->
+			<feldreferenz referenz="129-136-GeburtsdatumMitzuversicherndenPerson-Datum">
 				<name>Geburtsdatum der mitzuversichernden Person</name>
-				<technischerName>GeburtsdatMitzuversicherndenPerson</technischerName>
+				<technischerName>GeburtsdatumMitzuversicherndenPerson</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschlechtMitzuversicherndenPerson (137-137) -->
@@ -9125,10 +9125,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (64-71) -->
-			<feldreferenz referenz="064-071-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (64-71) -->
+			<feldreferenz referenz="064-071-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (72-74) -->
@@ -9501,10 +9501,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (203-210) -->
-			<feldreferenz referenz="203-210-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (203-210) -->
+			<feldreferenz referenz="203-210-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld SelbstbeteiligungInWeMind (211-222) -->
@@ -9908,10 +9908,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (60-67) -->
-			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (60-67) -->
+			<feldreferenz referenz="060-067-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AllgemeineVerssbedingungen (68-71) -->
@@ -11724,10 +11724,10 @@
 				<name>Geschäftsstelle / Vermittler</name>
 				<technischerName>GeschaeftsstelleVermittler</technischerName>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (43-50) -->
-			<feldreferenz referenz="043-050-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (43-50) -->
+			<feldreferenz referenz="043-050-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld AnteilVersicherersAmVertrag (51-55) -->
@@ -12080,10 +12080,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (60-67) -->
-			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (60-67) -->
+			<feldreferenz referenz="060-067-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Summenart1 (68-68) -->
@@ -13169,10 +13169,10 @@
 				<name>Änderungsgrund</name>
 				<technischerName>Aenderungsgrund</technischerName>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (203-210) -->
-			<feldreferenz referenz="203-210-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (203-210) -->
+			<feldreferenz referenz="203-210-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Sparrate (211-222) -->
@@ -13537,16 +13537,16 @@
 				<technischerName>EinschlussdatVpPersonengruppe</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum AusschlussdatVPPersonengruppe (224-231) -->
-			<feldreferenz referenz="224-231-AusschlussdatVPPersonengruppe-Datum">
+			<!-- Datum AusschlussdatumVPPersonengruppe (224-231) -->
+			<feldreferenz referenz="224-231-AusschlussdatumVPPersonengruppe-Datum">
 				<name>Ausschlussdatum VP / Personengruppe</name>
-				<technischerName>AusschlussdatVPPersonengruppe</technischerName>
+				<technischerName>AusschlussdatumVPPersonengruppe</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (232-239) -->
-			<feldreferenz referenz="232-239-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (232-239) -->
+			<feldreferenz referenz="232-239-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld BesondereVereinbarungenZumFluggastrisiko (240-240) -->
@@ -14938,10 +14938,10 @@
 				<technischerName>HaftungBis1</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
-			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
+			<!-- Datum UrspruenglichesHaftungsbeginndatum (121-128) -->
+			<feldreferenz referenz="121-128-UrspruenglichesHaftungsbeginndatum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
-				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<technischerName>UrspruenglichesHaftungsbeginndatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
@@ -15867,10 +15867,10 @@
 				<technischerName>HaftungBis1</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
-			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
+			<!-- Datum UrspruenglichesHaftungsbeginndatum (121-128) -->
+			<feldreferenz referenz="121-128-UrspruenglichesHaftungsbeginndatum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
-				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<technischerName>UrspruenglichesHaftungsbeginndatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
@@ -16633,10 +16633,10 @@
 				<name>Mitzuversichernde Person</name>
 				<technischerName>MitzuversicherndePerson</technischerName>
 			</feldreferenz>
-			<!-- Datum GeburtsdatMitzuversicherndenPerson (129-136) -->
-			<feldreferenz referenz="129-136-GeburtsdatMitzuversicherndenPerson-Datum">
+			<!-- Datum GeburtsdatumMitzuversicherndenPerson (129-136) -->
+			<feldreferenz referenz="129-136-GeburtsdatumMitzuversicherndenPerson-Datum">
 				<name>Geburtsdatum der mitzuversichernden Person</name>
-				<technischerName>GeburtsdatMitzuversicherndenPerson</technischerName>
+				<technischerName>GeburtsdatumMitzuversicherndenPerson</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschlechtMitzuversicherndenPerson (137-137) -->
@@ -17509,22 +17509,22 @@
 				<name>Zeichnungsjahr</name>
 				<technischerName>Zeichnungsjahr</technischerName>
 			</feldreferenz>
-			<!-- Datum RisikoTransportbeginndat (134-141) -->
-			<feldreferenz referenz="134-141-RisikoTransportbeginndat-Datum">
+			<!-- Datum RisikoTransportbeginndatum (134-141) -->
+			<feldreferenz referenz="134-141-RisikoTransportbeginndatum">
 				<name>Risiko- / Transportbeginndatum</name>
-				<technischerName>RisikoTransportbeginndat</technischerName>
+				<technischerName>RisikoTransportbeginndatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Schadendat (142-149) -->
-			<feldreferenz referenz="142-149-Schadendat-Datum">
+			<!-- Datum Schadendatum (142-149) -->
+			<feldreferenz referenz="142-149-Schadendatum">
 				<name>Schadendatum</name>
-				<technischerName>Schadendat</technischerName>
+				<technischerName>Schadendatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Schadenmeldedat (150-157) -->
-			<feldreferenz referenz="150-157-Schadenmeldedat-Datum">
+			<!-- Datum Schadenmeldedatum (150-157) -->
+			<feldreferenz referenz="150-157-Schadenmeldedatum">
 				<name>Schadenmeldedatum</name>
-				<technischerName>Schadenmeldedat</technischerName>
+				<technischerName>Schadenmeldedatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Schadensparte (158-160) -->
@@ -18189,10 +18189,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (61-68) -->
-			<feldreferenz referenz="061-068-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (61-68) -->
+			<feldreferenz referenz="061-068-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (69-71) -->
@@ -19153,10 +19153,10 @@
 				<name>Änderungsgrund</name>
 				<technischerName>Aenderungsgrund</technischerName>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (136-143) -->
-			<feldreferenz referenz="136-143-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (136-143) -->
+			<feldreferenz referenz="136-143-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Ablauftermin (144-151) -->
@@ -19200,10 +19200,10 @@
 				<name>Abgangsgrund</name>
 				<technischerName>Abgangsgrund</technischerName>
 			</feldreferenz>
-			<!-- Datum Abgangsdat (217-224) -->
-			<feldreferenz referenz="217-224-Abgangsdat-Datum">
+			<!-- Datum Abgangsdatum (217-224) -->
+			<feldreferenz referenz="217-224-Abgangsdatum">
 				<name>Abgangsdatum</name>
-				<technischerName>Abgangsdat</technischerName>
+				<technischerName>Abgangsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Abschlussprovision (225-229) -->
@@ -19804,10 +19804,10 @@
 				<name>Aufgabeuhrzeit dieses Geschäftsvorfall</name>
 				<technischerName>AufgabeuhrzeitDiesesGeschaeftsvorfall</technischerName>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (60-67) -->
-			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (60-67) -->
+			<feldreferenz referenz="060-067-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld VorgangsNrVu (68-84) -->
@@ -20535,10 +20535,10 @@
 				<name>Abgangsgrund</name>
 				<technischerName>Abgangsgrund</technischerName>
 			</feldreferenz>
-			<!-- Datum Abgangsdat (72-79) -->
-			<feldreferenz referenz="072-079-Abgangsdat-Datum">
+			<!-- Datum Abgangsdatum (72-79) -->
+			<feldreferenz referenz="072-079-Abgangsdatum">
 				<name>Abgangsdatum</name>
-				<technischerName>Abgangsdat</technischerName>
+				<technischerName>Abgangsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Aenderungsgrund (80-89) -->
@@ -20546,10 +20546,10 @@
 				<name>Änderungsgrund</name>
 				<technischerName>Aenderungsgrund</technischerName>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (90-97) -->
-			<feldreferenz referenz="090-097-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (90-97) -->
+			<feldreferenz referenz="090-097-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld AFB (98-98) -->
@@ -20620,10 +20620,10 @@
 				<name>Laufzeitrabatt in %</name>
 				<technischerName>LaufzeitrabattInProz</technischerName>
 			</feldreferenz>
-			<!-- Datum Antragsdat (201-208) -->
-			<feldreferenz referenz="201-208-Antragsdat-Datum">
+			<!-- Datum Antragsdatum (201-208) -->
+			<feldreferenz referenz="201-208-Antragsdatum">
 				<name>Antragsdatum</name>
-				<technischerName>Antragsdat</technischerName>
+				<technischerName>Antragsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ReferenzVsNr (209-225) -->
@@ -21020,10 +21020,10 @@
 				<technischerName>GepaeckAusschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum GepaeckAenderungsdat (59-66) -->
-			<feldreferenz referenz="059-066-GepaeckAenderungsdat-Datum">
+			<!-- Datum GepaeckAenderungsdatum (59-66) -->
+			<feldreferenz referenz="059-066-GepaeckAenderungsdatum">
 				<name>Gepäck-Änderungsdatum</name>
-				<technischerName>GepaeckAenderungsdat</technischerName>
+				<technischerName>GepaeckAenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld GepaeckVersssummeInTausendWE (67-70) -->
@@ -21562,10 +21562,10 @@
 				<technischerName>KftAusschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum KftAenderungsdat (59-66) -->
-			<feldreferenz referenz="059-066-KftAenderungsdat-Datum">
+			<!-- Datum KftAenderungsdatum (59-66) -->
+			<feldreferenz referenz="059-066-KftAenderungsdatum">
 				<name>KFT-Änderungsdatum</name>
-				<technischerName>KftAenderungsdat</technischerName>
+				<technischerName>KftAenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KftTarifgruppe (67-70) -->
@@ -21837,10 +21837,10 @@
 				<technischerName>KuAusschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum KuAenderungsdat (59-66) -->
-			<feldreferenz referenz="059-066-KuAenderungsdat-Datum">
+			<!-- Datum KuAenderungsdatum (59-66) -->
+			<feldreferenz referenz="059-066-KuAenderungsdatum">
 				<name>KU-Änderungsdatum</name>
-				<technischerName>KuAenderungsdat</technischerName>
+				<technischerName>KuAenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KuDeckungRisiko1 (67-67) -->
@@ -22157,10 +22157,10 @@
 				<technischerName>BausteinAusschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum BausteinAenderungsdat (109-116) -->
-			<feldreferenz referenz="109-116-BausteinAenderungsdat-Datum">
+			<!-- Datum BausteinAenderungsdatum (109-116) -->
+			<feldreferenz referenz="109-116-BausteinAenderungsdatum">
 				<name>Baustein-Änderungsdatum</name>
-				<technischerName>BausteinAenderungsdat</technischerName>
+				<technischerName>BausteinAenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Tarifierungsmerkmal (117-126) -->
@@ -22558,10 +22558,10 @@
 				<technischerName>Auschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (67-74) -->
-			<feldreferenz referenz="067-074-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (67-74) -->
+			<feldreferenz referenz="067-074-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Objektkennziffer (75-78) -->
@@ -22920,10 +22920,10 @@
 				<technischerName>KhAusschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum KhAenderungsdat (59-66) -->
-			<feldreferenz referenz="059-066-KhAenderungsdat-Datum">
+			<!-- Datum KhAenderungsdatum (59-66) -->
+			<feldreferenz referenz="059-066-KhAenderungsdatum">
 				<name>KH-Änderungsdatum</name>
-				<technischerName>KhAenderungsdat</technischerName>
+				<technischerName>KhAenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KhTarifgruppe (67-70) -->
@@ -23213,10 +23213,10 @@
 				<name>Kilometerstand bei Geschäftsvorfall</name>
 				<technischerName>KmstandBeiGeschaeftsvorfall</technischerName>
 			</feldreferenz>
-			<!-- Datum Erwerbsdat (57-64) -->
-			<feldreferenz referenz="057-064-Erwerbsdat-Datum">
+			<!-- Datum Erwerbsdatum (57-64) -->
+			<feldreferenz referenz="057-064-Erwerbsdatum">
 				<name>Erwerbsdatum</name>
-				<technischerName>Erwerbsdat</technischerName>
+				<technischerName>Erwerbsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Vorsteuerabzugsberechtigt (65-65) -->
@@ -23317,10 +23317,10 @@
 				<technischerName>KfvAusschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum KfvAenderungsdat (59-66) -->
-			<feldreferenz referenz="059-066-KfvAenderungsdat-Datum">
+			<!-- Datum KfvAenderungsdatum (59-66) -->
+			<feldreferenz referenz="059-066-KfvAenderungsdatum">
 				<name>KFV-Änderungsdatum</name>
-				<technischerName>KfvAenderungsdat</technischerName>
+				<technischerName>KfvAenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KfvTarifgruppe (67-70) -->
@@ -25146,10 +25146,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (60-67) -->
-			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (60-67) -->
+			<feldreferenz referenz="060-067-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zahlungsweise (68-68) -->
@@ -25348,10 +25348,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (98-105) -->
-			<feldreferenz referenz="098-105-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (98-105) -->
+			<feldreferenz referenz="098-105-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld WaehrungsschluesselGesVersssumme (106-108) -->
@@ -25743,10 +25743,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (60-67) -->
-			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (60-67) -->
+			<feldreferenz referenz="060-067-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zahlungsweise (68-68) -->
@@ -26415,10 +26415,10 @@
 				<technischerName>Ausschluss1</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (60-67) -->
-			<feldreferenz referenz="060-067-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (60-67) -->
+			<feldreferenz referenz="060-067-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (68-70) -->
@@ -27574,10 +27574,10 @@
 				<technischerName>HaftungBis1</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
-			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
+			<!-- Datum UrspruenglichesHaftungsbeginndatum (121-128) -->
+			<feldreferenz referenz="121-128-UrspruenglichesHaftungsbeginndatum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
-				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<technischerName>UrspruenglichesHaftungsbeginndatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
@@ -27805,10 +27805,10 @@
 				<name>Lieferart</name>
 				<technischerName>Lieferart</technischerName>
 			</feldreferenz>
-			<!-- Datum Bearbeitungsdat (68-75) -->
-			<feldreferenz referenz="068-075-Bearbeitungsdat-Datum">
+			<!-- Datum Bearbeitungsdatum (68-75) -->
+			<feldreferenz referenz="068-075-Bearbeitungsdatum">
 				<name>Bearbeitungsdatum</name>
-				<technischerName>Bearbeitungsdat</technischerName>
+				<technischerName>Bearbeitungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld SchadenNrVermittlers1 (76-95) -->
@@ -27827,16 +27827,16 @@
 				<name>Anteil in %</name>
 				<technischerName>AnteilInProz</technischerName>
 			</feldreferenz>
-			<!-- Datum Schadendat (102-109) -->
-			<feldreferenz referenz="102-109-Schadendat-Datum">
+			<!-- Datum Schadendatum (102-109) -->
+			<feldreferenz referenz="102-109-Schadendatum">
 				<name>Schadendatum</name>
-				<technischerName>Schadendat</technischerName>
+				<technischerName>Schadendatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Schadenmeldedat (110-117) -->
-			<feldreferenz referenz="110-117-Schadenmeldedat-Datum">
+			<!-- Datum Schadenmeldedatum (110-117) -->
+			<feldreferenz referenz="110-117-Schadenmeldedatum">
 				<name>Schadenmeldedatum</name>
-				<technischerName>Schadenmeldedat</technischerName>
+				<technischerName>Schadenmeldedatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum RisikoBeginnDatZeichnungsjahr (118-125) -->
@@ -28242,10 +28242,10 @@
 				<name>Postfach</name>
 				<technischerName>Postfach</technischerName>
 			</feldreferenz>
-			<!-- Datum Geburtsdat (226-233) -->
-			<feldreferenz referenz="226-233-Geburtsdat-Datum">
+			<!-- Datum Geburtsdatum (226-233) -->
+			<feldreferenz referenz="226-233-Geburtsdatum">
 				<name>Geburtsdatum</name>
-				<technischerName>Geburtsdat</technischerName>
+				<technischerName>Geburtsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Staatsangehoerigkeit (234-236) -->
@@ -28707,28 +28707,28 @@
 			</feldreferenz>
 			<!-- AlphaNumFeld SEPAMandatReferenznummer (195-229) -->
 			<feldreferenz referenz="195-229-SEPAMandatReferenznummer-Alphanumerisch">
-				<name>SEPA-Mandat Referenznummer</name>
+				<name>SEPA-Mandatum Referenznummer</name>
 				<technischerName>SEPAMandatReferenznummer</technischerName>
 			</feldreferenz>
 			<!-- Datum SEPAMandatAusstellungsdatum (230-237) -->
 			<feldreferenz referenz="230-237-SEPAMandatAusstellungsdatum-Datum">
-				<name>SEPA-Mandat Ausstellungsdatum</name>
+				<name>SEPA-Mandatum Ausstellungsdatum</name>
 				<technischerName>SEPAMandatAusstellungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld SEPAMandatKontoreferenz (238-238) -->
 			<feldreferenz referenz="238-238-SEPAMandatKontoreferenz-Alphanumerisch">
-				<name>SEPA-Mandat Kontoreferenz</name>
+				<name>SEPA-Mandatum Kontoreferenz</name>
 				<technischerName>SEPAMandatKontoreferenz</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld SEPAMandatEinmaligWiederkehrend (239-239) -->
 			<feldreferenz referenz="239-239-SEPAMandatEinmaligWiederkehrend-Alphanumerisch">
-				<name>SEPA-Mandat einmalig/wiederkehrend</name>
+				<name>SEPA-Mandatum einmalig/wiederkehrend</name>
 				<technischerName>SEPAMandatEinmaligWiederkehrend</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld SEPAMandatBasisFirmenlastschrift (240-240) -->
 			<feldreferenz referenz="240-240-SEPAMandatBasisFirmenlastschrift-Alphanumerisch">
-				<name>SEPA-Mandat Basis-/Firmenlastschrift</name>
+				<name>SEPA-Mandatum Basis-/Firmenlastschrift</name>
 				<technischerName>SEPAMandatBasisFirmenlastschrift</technischerName>
 			</feldreferenz>
 			<!-- Datum SEPA (241-248) -->
@@ -29224,10 +29224,10 @@
 				<technischerName>Auschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (67-74) -->
-			<feldreferenz referenz="067-074-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (67-74) -->
+			<feldreferenz referenz="067-074-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zahlungsweise (75-75) -->
@@ -29406,10 +29406,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (61-68) -->
-			<feldreferenz referenz="061-068-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (61-68) -->
+			<feldreferenz referenz="061-068-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (69-71) -->
@@ -29746,10 +29746,10 @@
 				<technischerName>Ausschluss1</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (59-66) -->
-			<feldreferenz referenz="059-066-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (59-66) -->
+			<feldreferenz referenz="059-066-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld LKZRisikoanschrift (67-69) -->
@@ -29960,10 +29960,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (96-103) -->
-			<feldreferenz referenz="096-103-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (96-103) -->
+			<feldreferenz referenz="096-103-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Waehrungsschluessel (104-106) -->
@@ -30256,10 +30256,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (66-73) -->
-			<feldreferenz referenz="066-073-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (66-73) -->
+			<feldreferenz referenz="066-073-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld VersichertesRisiko (74-123) -->
@@ -30501,10 +30501,10 @@
 				<technischerName>Ausschluss</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (71-78) -->
-			<feldreferenz referenz="071-078-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (71-78) -->
+			<feldreferenz referenz="071-078-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zahlungsweise (79-79) -->
@@ -30878,16 +30878,16 @@
 				<name>Amtl. Kennzeichen des Vorfahrzeuges</name>
 				<technischerName>AmtlKennzeichenVorfahrzeuges</technischerName>
 			</feldreferenz>
-			<!-- Datum Verkaufsdat (153-160) -->
-			<feldreferenz referenz="153-160-Verkaufsdat-Datum">
+			<!-- Datum Verkaufsdatum (153-160) -->
+			<feldreferenz referenz="153-160-Verkaufsdatum">
 				<name>Verkaufsdatum</name>
-				<technischerName>Verkaufsdat</technischerName>
+				<technischerName>Verkaufsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum Abmeldedat (161-168) -->
-			<feldreferenz referenz="161-168-Abmeldedat-Datum">
+			<!-- Datum Abmeldedatum (161-168) -->
+			<feldreferenz referenz="161-168-Abmeldedatum">
 				<name>Abmeldedatum</name>
-				<technischerName>Abmeldedat</technischerName>
+				<technischerName>Abmeldedatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Zweitwagenregelung (169-169) -->
@@ -31261,10 +31261,10 @@
 				<technischerName>HaftungBis1</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum UerspruenglichesHaftungsbeginndat (121-128) -->
-			<feldreferenz referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
+			<!-- Datum UrspruenglichesHaftungsbeginndatum (121-128) -->
+			<feldreferenz referenz="121-128-UrspruenglichesHaftungsbeginndatum">
 				<name>Ürsprüngliches Haftungsbeginndatum</name>
-				<technischerName>UerspruenglichesHaftungsbeginndat</technischerName>
+				<technischerName>UrspruenglichesHaftungsbeginndatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ProvisionspflichtigeBeitragssummeInWE2 (129-140) -->
@@ -32949,10 +32949,10 @@
 				<name>Änderungsgrund</name>
 				<technischerName>Aenderungsgrund</technischerName>
 			</feldreferenz>
-			<!-- Datum Aenderungsdat (183-190) -->
-			<feldreferenz referenz="183-190-Aenderungsdat-Datum">
+			<!-- Datum Aenderungsdatum (183-190) -->
+			<feldreferenz referenz="183-190-Aenderungsdatum">
 				<name>Änderungsdatum</name>
-				<technischerName>Aenderungsdat</technischerName>
+				<technischerName>Aenderungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld IsinNr (191-202) -->
@@ -33450,7 +33450,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="043-050-Aenderungsdat-Datum">
+		<feld referenz="043-050-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -33896,7 +33896,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="045-052-Diensteintrittsdat-Datum">
+		<feld referenz="045-052-Diensteintrittsdatum">
 			<name>Diensteintrittsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -33999,7 +33999,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="046-053-Buchungsdat-Datum">
+		<feld referenz="046-053-Buchungsdatum">
 			<name>Buchungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -34885,7 +34885,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="057-064-Erwerbsdat-Datum">
+		<feld referenz="057-064-Erwerbsdatum">
 			<name>Erwerbsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -34973,7 +34973,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>5</nachkommastellen>
 		</feld>
-		<feld referenz="059-066-Aenderungsdat-Datum">
+		<feld referenz="059-066-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -34983,27 +34983,27 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="059-066-GepaeckAenderungsdat-Datum">
+		<feld referenz="059-066-GepaeckAenderungsdatum">
 			<name>Gepäck-Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="059-066-KftAenderungsdat-Datum">
+		<feld referenz="059-066-KftAenderungsdatum">
 			<name>KFT-Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="059-066-KfvAenderungsdat-Datum">
+		<feld referenz="059-066-KfvAenderungsdatum">
 			<name>KFV-Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="059-066-KhAenderungsdat-Datum">
+		<feld referenz="059-066-KhAenderungsdatum">
 			<name>KH-Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="059-066-KuAenderungsdat-Datum">
+		<feld referenz="059-066-KuAenderungsdatum">
 			<name>KU-Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -35070,7 +35070,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="060-067-Aenderungsdat-Datum">
+		<feld referenz="060-067-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -35157,7 +35157,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>3</nachkommastellen>
 		</feld>
-		<feld referenz="061-068-Aenderungsdat-Datum">
+		<feld referenz="061-068-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -35436,7 +35436,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="064-071-Aenderungsdat-Datum">
+		<feld referenz="064-071-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -35649,7 +35649,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="066-073-Aenderungsdat-Datum">
+		<feld referenz="066-073-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -35748,7 +35748,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="067-074-Aenderungsdat-Datum">
+		<feld referenz="067-074-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -35832,12 +35832,12 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="068-075-Aenderungsdat-Datum">
+		<feld referenz="068-075-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="068-075-Bearbeitungsdat-Datum">
+		<feld referenz="068-075-Bearbeitungsdatum">
 			<name>Bearbeitungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -36054,12 +36054,12 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="071-078-Aenderungsdat-Datum">
+		<feld referenz="071-078-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="071-078-Erstellungsdat-Datum">
+		<feld referenz="071-078-Erstellungsdatum">
 			<name>Erstellungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -36141,7 +36141,7 @@
 			<bytes>3</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="072-079-Abgangsdat-Datum">
+		<feld referenz="072-079-Abgangsdatum">
 			<name>Abgangsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -36706,7 +36706,7 @@
 			<bytes>6</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="079-086-Aenderungsdat-Datum">
+		<feld referenz="079-086-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -37659,7 +37659,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="090-097-Aenderungsdat-Datum">
+		<feld referenz="090-097-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -38199,7 +38199,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="096-103-Aenderungsdat-Datum">
+		<feld referenz="096-103-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -38391,7 +38391,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="098-105-Aenderungsdat-Datum">
+		<feld referenz="098-105-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -38707,7 +38707,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="102-109-Schadendat-Datum">
+		<feld referenz="102-109-Schadendatum">
 			<name>Schadendatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -39399,7 +39399,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>4</nachkommastellen>
 		</feld>
-		<feld referenz="109-116-BausteinAenderungsdat-Datum">
+		<feld referenz="109-116-BausteinAenderungsdatum">
 			<name>Baustein-Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -39495,7 +39495,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>1</nachkommastellen>
 		</feld>
-		<feld referenz="110-117-Schadenmeldedat-Datum">
+		<feld referenz="110-117-Schadenmeldedatum">
 			<name>Schadenmeldedatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -40112,7 +40112,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>1</nachkommastellen>
 		</feld>
-		<feld referenz="118-125-Aenderungsdat-Datum">
+		<feld referenz="118-125-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -40374,7 +40374,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="121-128-UerspruenglichesHaftungsbeginndat-Datum">
+		<feld referenz="121-128-UrspruenglichesHaftungsbeginndatum">
 			<name>Ursprüngliches Haftungsbeginndatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -41041,7 +41041,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="129-136-GeburtsdatMitzuversicherndenPerson-Datum">
+		<feld referenz="129-136-GeburtsdatumMitzuversicherndenPerson-Datum">
 			<name>Geburtsdatum der mitzuversichernden Person</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -41476,7 +41476,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="134-141-RisikoTransportbeginndat-Datum">
+		<feld referenz="134-141-RisikoTransportbeginndatum">
 			<name>Risiko- / Transportbeginndatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -41667,7 +41667,7 @@
 			<bytes>4</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="136-143-Aenderungsdat-Datum">
+		<feld referenz="136-143-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -42173,7 +42173,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="142-149-Schadendat-Datum">
+		<feld referenz="142-149-Schadendatum">
 			<name>Schadendatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -42790,7 +42790,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="150-157-Schadenmeldedat-Datum">
+		<feld referenz="150-157-Schadenmeldedatum">
 			<name>Schadenmeldedatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -43031,7 +43031,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="153-160-Verkaufsdat-Datum">
+		<feld referenz="153-160-Verkaufsdatum">
 			<name>Verkaufsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -43626,7 +43626,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="161-168-Abmeldedat-Datum">
+		<feld referenz="161-168-Abmeldedatum">
 			<name>Abmeldedatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -44421,7 +44421,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="172-179-Zuzahlungsdat-Datum">
+		<feld referenz="172-179-Zuzahlungsdatum">
 			<name>Zuzahlungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -45167,7 +45167,7 @@
 			<bytes>3</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="183-190-Aenderungsdat-Datum">
+		<feld referenz="183-190-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -45855,7 +45855,7 @@
 			<bytes>5</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="193-200-Beitragsumstellungdat-Datum">
+		<feld referenz="193-200-Beitragsumstellungdatum">
 			<name>Beitragsumstellungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -45998,7 +45998,7 @@
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
 		<feld referenz="195-229-SEPAMandatReferenznummer-Alphanumerisch">
-			<name>SEPA-Mandat Referenznummer</name>
+			<name>SEPA-Mandatum Referenznummer</name>
 			<bytes>35</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
@@ -46378,7 +46378,7 @@
 			<bytes>5</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="201-208-Antragsdat-Datum">
+		<feld referenz="201-208-Antragsdatum">
 			<name>Antragsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -46480,7 +46480,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="203-210-Aenderungsdat-Datum">
+		<feld referenz="203-210-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -47157,7 +47157,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>3</nachkommastellen>
 		</feld>
-		<feld referenz="217-224-Abgangsdat-Datum">
+		<feld referenz="217-224-Abgangsdatum">
 			<name>Abgangsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -47462,7 +47462,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="224-231-AusschlussdatVPPersonengruppe-Datum">
+		<feld referenz="224-231-AusschlussdatumVPPersonengruppe-Datum">
 			<name>Ausschlussdatum VP / Personengruppe</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -47569,7 +47569,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="226-233-Geburtsdat-Datum">
+		<feld referenz="226-233-Geburtsdatum">
 			<name>Geburtsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -47739,7 +47739,7 @@
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
 		<feld referenz="230-237-SEPAMandatAusstellungsdatum-Datum">
-			<name>SEPA-Mandat Ausstellungsdatum</name>
+			<name>SEPA-Mandatum Ausstellungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
@@ -47852,7 +47852,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="232-239-Aenderungsdat-Datum">
+		<feld referenz="232-239-Aenderungsdatum">
 			<name>Änderungsdatum</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -48131,7 +48131,7 @@
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
 		<feld referenz="238-238-SEPAMandatKontoreferenz-Alphanumerisch">
-			<name>SEPA-Mandat Kontoreferenz</name>
+			<name>SEPA-Mandatum Kontoreferenz</name>
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
@@ -48163,7 +48163,7 @@
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
 		<feld referenz="239-239-SEPAMandatEinmaligWiederkehrend-Alphanumerisch">
-			<name>SEPA-Mandat einmalig/wiederkehrend</name>
+			<name>SEPA-Mandatum einmalig/wiederkehrend</name>
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
@@ -48220,7 +48220,7 @@
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
 		<feld referenz="240-240-SEPAMandatBasisFirmenlastschrift-Alphanumerisch">
-			<name>SEPA-Mandat Basis-/Firmenlastschrift</name>
+			<name>SEPA-Mandatum Basis-/Firmenlastschrift</name>
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>

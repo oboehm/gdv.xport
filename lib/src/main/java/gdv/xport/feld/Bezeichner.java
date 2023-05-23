@@ -52,7 +52,7 @@ public final class Bezeichner implements Serializable {
 
     /////////// Bezeichner-Konstanten (alphabetisch geordnet) /////////////////
 
-    public static final Bezeichner ABGANGSDAT = new Bezeichner("Abgangsdatum", "Abgangsdat");
+    public static final Bezeichner ABGANGSDAT = new Bezeichner("Abgangsdatum");
     public static final Bezeichner ABGANGSGRUND = new Bezeichner("Abgangsgrund");
     public static final Bezeichner ABLAUF = new Bezeichner("Ablauf");
     public static final Bezeichner ABLAUFTERMIN = new Bezeichner("Ablauftermin");
@@ -92,7 +92,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner AENDERUNG_DER_TODESFALLLEISTUNG = new Bezeichner("Aenderung der Todesfallleistung", "AenderungTodesfalleistung");
     public static final Bezeichner AENDERUNG_DER_JAHRESRENTE = new Bezeichner("Aenderung der Jahresrente");
     public static final Bezeichner AENDERUNG_DER_UNFALLLEISTUNG = new Bezeichner("Aenderung der Unfallleistung");
-    public static final Bezeichner AENDERUNGSDAT = new Bezeichner("Aenderungsdatum", "Aenderungsdat");
+    public static final Bezeichner AENDERUNGSDAT = new Bezeichner("Aenderungsdatum");
     public static final Bezeichner AENDERUNGSDATUM = new Bezeichner("Aenderungsdatum", "Aenderungsdatum");
     public static final Bezeichner ANFAENGLICHE_BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Anfaengliche Beitragssumme in W\u00e4hrungseinheiten", "AnfaenglicheBeitragssummeInWE");
     public static final Bezeichner ANFAENGLICHE_ERLEBENSFALL_VS_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Anfaengliche Erlebensfall VS in W\u00e4hrungseinheiten");
@@ -101,7 +101,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ANFAENGLICHE_UNFALLSUMME = new Bezeichner("Anfaengliche Unfallsumme");
     public static final Bezeichner ANLAGESTRATEGIE = new Bezeichner("Anlagestrategie");
     public static final Bezeichner ANTEILIGER_DYNAMIKPROZENTSATZ = new Bezeichner("Anteiliger Dynamikprozentsatz", "AnteiligerDynamikProzentsatz");
-    public static final Bezeichner ANTRAGSDAT = new Bezeichner("Antragsdatum", "Antragsdat");
+    public static final Bezeichner ANTRAGSDAT = new Bezeichner("Antragsdatum");
     public static final Bezeichner ANTRAGSEINGANGSDAT = new Bezeichner("Antragseingangsdatum", "Antragseingangsdatum");
     public static final Bezeichner ANZAHL_DER_AUSZAHLUNGEN = new Bezeichner("Anzahl der Auszahlungen", "AnzAuszahlungen");
     public static final Bezeichner ANZAHL_DER_KINDER = new Bezeichner("Anzahl der Kinder", "AnzahlDerKinder");
@@ -255,7 +255,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner BEITRAGSSATZ_FUER_BERECHNUNGSART = new Bezeichner("Beitragssatz für Berechnungsart");
     public static final Bezeichner BEITRAGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Beitragssumme in W\u00e4hrungseinheiten");
     public static final Bezeichner BEITRAGSSUMMENAENDERUNGS_PROZENTSATZ = new Bezeichner("Beitragssummenaenderungs-Prozentsatz");
-    public static final Bezeichner BEITRAGSUMSTELLUNGSDAT = new Bezeichner("Beitragsumstellungsdatum", "Beitragsumstellungsdat");
+    public static final Bezeichner BEITRAGSUMSTELLUNGSDAT = new Bezeichner("Beitragsumstellungsdatum");
     public static final Bezeichner BEITRAGSZAHLUNG_BIS = new Bezeichner("Beitragszahlung bis");
     public static final Bezeichner BERECHNUNGSART = new Bezeichner("Berechnungsart");
     public static final Bezeichner BERECHNUNGSEINHEIT = new Bezeichner("Berechnungseinheit");
@@ -285,7 +285,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner BEZUGSBERECHTIGT_IM_ERLEBENSFALL = new Bezeichner("Bezugsberechtigt im Erlebensfall");
     public static final Bezeichner BEZUGSBERECHTIGT_IM_LEISTUNGSFALL = new Bezeichner("Bezugsberechtigt im Leistungsfall");
     public static final Bezeichner BEZUGSBERECHTIGT_IM_TODESFALL = new Bezeichner("Bezugsberechtigt im Todesfall");
-    public static final Bezeichner BEZUGSDAT = new Bezeichner("Bezugsdatum", "Bezugsdat");
+    public static final Bezeichner BEZUGSDAT = new Bezeichner("Bezugsdatum");
     public static final Bezeichner BEZUGSRECHTANTEIL_IM_ERLEBENSFALL = new Bezeichner("Bezugsrechtanteil im Erlebensfall");
     public static final Bezeichner BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL = new Bezeichner("Bezugsrechtanteil im Leistungsfall");
     public static final Bezeichner BEZUGSRECHTANTEIL_IM_TODESFALL = new Bezeichner("Bezugsrechtanteil im Todesfall");
@@ -332,7 +332,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner DECKUNGS_VERSICHERUNGSSUMME = new Bezeichner("Deckungs-/Versicherungssumme", "DeckungsVersssumme");
     public static final Bezeichner DENKMALSCHUTZ = new Bezeichner("Denkmalschutz");
     public static final Bezeichner DIENSTEINTRITT = new Bezeichner("Diensteintritt");
-    public static final Bezeichner DIENSTEINTRITTSDAT = new Bezeichner("Diensteintrittsdatum", "Diensteintrittsdat");
+    public static final Bezeichner DIENSTEINTRITTSDAT = new Bezeichner("Diensteintrittsdatum");
     public static final Bezeichner DIREKTANSPRUCH = new Bezeichner("Direktanspruch");
     public static final Bezeichner DRUCKAUFBEREITETE_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Druckaufbereitete Versicherungsscheinnummer");
     public static final Bezeichner DURCHFUEHRUNGSWEG = new Bezeichner("Durchfuehrungsweg");
@@ -426,7 +426,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner GARANTIERTE_FONDSJAHRESRENTE_ZUM_BEGINN_DER_ABRUFPHASE = new Bezeichner("Garantierte Fondsjahresrente zum Beginn der Abrufphase", "GarantierteFondsjahresrenteZumBeginnDerAbrufphase");
     public static final Bezeichner GARANTIERTER_STEIGERUNGSSATZ_BEI_BU = new Bezeichner("Garantierter Steigerungssatz bei BU", "GarantierterSteigerungssatzBeiBU");
     public static final Bezeichner GEBAEUDETYP = new Bezeichner("Gebaeudetyp");
-    public static final Bezeichner GEBURTSDAT = new Bezeichner("Geburtsdatum", "Geburtsdat");
+    public static final Bezeichner GEBURTSDAT = new Bezeichner("Geburtsdatum");
     public static final Bezeichner GEBURTSDATUM_DES_TIERES = new Bezeichner("Geburtsdatum des Tieres", "GeburtsdatumDesTieres");
     public static final Bezeichner GEBURTSDAT_VP = new Bezeichner("Geburtsdatum der VP", "GeburtsdatVp");
     public static final Bezeichner GEBURTSDAT_VP2 = new Bezeichner("Geburtsdatum der 2. VP", "Geburtsdat2Vp");
@@ -548,7 +548,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner KENNZEICHEN_VERTRAGSENTSTEHUNG = new Bezeichner("Kennzeichen Vertragsentstehung");
     public static final Bezeichner KFT_ABSCHLAEGE_IN_PROZENT = new Bezeichner("KFT-Abschlaege in %");
     public static final Bezeichner KFT_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KFT-Abschlaege in W\u00e4hrungseinheiten");
-    public static final Bezeichner KFT_AENDERUNGSDAT = new Bezeichner("KFT-aenderungsdatum", "KftAenderungsdat");
+    public static final Bezeichner KFT_AENDERUNGSDAT = new Bezeichner("KFT-aenderungsdatum");
     public static final Bezeichner KFT_AUSSCHLUSS = new Bezeichner("KFT-Ausschluss");
     public static final Bezeichner KFT_BEGINN = new Bezeichner("KFT-Beginn");
     public static final Bezeichner KFT_BEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KFT-Beitrag in W\u00e4hrungseinheiten");
@@ -558,7 +558,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner KFT_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KFT-Zuschlaege in W\u00e4hrungseinheiten");
     public static final Bezeichner KFV_ABSCHLAEGE_IN_PROZENT = new Bezeichner("KFV-Abschlaege in %");
     public static final Bezeichner KFV_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KFV-Abschlaege in W\u00e4hrungseinheiten");
-    public static final Bezeichner KFV_AENDERUNGSDAT = new Bezeichner("KFV-aenderungsdatum", "KfvAenderungsdat");
+    public static final Bezeichner KFV_AENDERUNGSDAT = new Bezeichner("KFV-aenderungsdatum");
     public static final Bezeichner KFV_AUSSCHLUSS = new Bezeichner("KFV-Ausschluss");
     public static final Bezeichner KFV_BEGINN = new Bezeichner("KFV-Beginn");
     public static final Bezeichner KFV_BEITRAGSSATZ = new Bezeichner("KFV-Beitragssatz");
@@ -572,7 +572,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner KFV_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KFV-Zuschlaege in W\u00e4hrungseinheiten");
     public static final Bezeichner KH_ABSCHLAEGE_IN_PROZENT = new Bezeichner("KH-Abschlaege in %");
     public static final Bezeichner KH_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KH-Abschlaege in W\u00e4hrungseinheiten");
-    public static final Bezeichner KH_AENDERUNGSDAT = new Bezeichner("KH-aenderungsdatum", "KhAenderungsdat");
+    public static final Bezeichner KH_AENDERUNGSDAT = new Bezeichner("KH-aenderungsdatum");
     public static final Bezeichner KH_AUSSCHLUSS = new Bezeichner("KH-Ausschluss");
     public static final Bezeichner KH_BEGINN = new Bezeichner("KH-Beginn");
     public static final Bezeichner KH_BEITRAGSSAETZE = new Bezeichner("KH-Beitragssaetze");
@@ -629,7 +629,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner KURKOSTEN_BEITRAGSSATZ = new Bezeichner("Kurkosten Beitragssatz", "KurkostBeitragssatz");
     public static final Bezeichner KU_ABSCHLAEGE_IN_PROZENT = new Bezeichner("KU-Abschläge in %", "KuAbschlaegeInProz");
     public static final Bezeichner KU_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KU-Abschläge in Währungseinheiten", "KuAbschlaegeInWE");
-    public static final Bezeichner KU_AENDERUNGSDATUM = new Bezeichner("KU-Änderungsdatum", "KuAenderungsdat");
+    public static final Bezeichner KU_AENDERUNGSDATUM = new Bezeichner("KU-Änderungsdatum");
     public static final Bezeichner KU_AUSSCHLUSS = new Bezeichner("KU-Ausschluss", "KuAusschluss");
     public static final Bezeichner KU_BEGINN = new Bezeichner("KU-Beginn", "KuBeginn");
     public static final Bezeichner KU_BEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KU-Beitrag in Währungseinheiten", "KuBeitragInWE");
@@ -1155,7 +1155,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner UNWIDERRUFLICHES_BEZUGSRECHT_IM_ERLEBENSFALL = new Bezeichner("Unwiderrufliches Bezugsrecht im Erlebensfall");
     public static final Bezeichner UNWIDERRUFLICHES_BEZUGSRECHT_IM_LEISTUNGSFALL = new Bezeichner("Unwiderrufliches Bezugsrecht im Leistungsfall");
     public static final Bezeichner UNWIDERRUFLICHES_BEZUGSRECHT_IM_TODESFALL = new Bezeichner("Unwiderrufliches Bezugsrecht im Todesfall");
-    public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner("Urspruengliches Haftungsbeginndatum", "UerspruenglichesHaftungsbeginndat");
+    public static final Bezeichner URSPRUENGLICHES_HAFTUNGSBEGINNDAT = new Bezeichner("Urspruengliches Haftungsbeginndatum");
 
     public static final Bezeichner VEREINBARTER_DYNAMIKMAXIMALANPASSUNGSPROZENTSATZ = new Bezeichner("Vereinbarter Dynamikmaximalanpassungsprozentsatz");
     public static final Bezeichner VEREINBARTER_DYNAMIKMINDESTANPASSUNGSPROZENTSATZ = new Bezeichner("Vereinbarter Dynamikmindestanpassungsprozentsatz");
@@ -1388,7 +1388,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ZUSCHLAG_IN_PROZENT = new Bezeichner("Zuschlag in %");
     public static final Bezeichner ZUSCHLAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zuschlag in W\u00e4hrungseinheiten");
     public static final Bezeichner ZUZAHLUNGSBETRAG_IN_WE = new Bezeichner("Zuzahlungsbetrag in W\u00e4hrungseinheiten", "ZuzahlungsbetragInWE");
-    public static final Bezeichner ZUZAHLUNGSDAT = new Bezeichner("Zuzahlungsdatum", "Zuzahlungsdat");
+    public static final Bezeichner ZUZAHLUNGSDAT = new Bezeichner("Zuzahlungsdatum");
     public static final Bezeichner ZUZAHLUNGSRECHT = new Bezeichner("Zuzahlungsrecht");
     public static final Bezeichner ZWANG_ZUR_BUZ = new Bezeichner("Zwang zur BUZ", "ZwangZurBuz");
 
@@ -1509,8 +1509,8 @@ public final class Bezeichner implements Serializable {
             default:
                 if ((word.length() == 3) && (word.toLowerCase().charAt(0) == 'd')) {
                     return "";
-                } else if (word.endsWith("datum")) {
-                    return word.substring(0, word.length() - 2);
+//                } else if (word.endsWith("datum")) {
+//                    return word.substring(0, word.length() - 2);
                 } else if (word.toLowerCase().endsWith("versicherung")) {
                     String versicherung = WordUtils.capitalize(word);
                     return versicherung.substring(0, versicherung.length() - 12) + "Vers";
@@ -1539,8 +1539,6 @@ public final class Bezeichner implements Serializable {
 //    word = StringUtils.replaceIgnoreCase(word, "Wagniskennziffer", "Wkz");
 //    word = StringUtils.replaceIgnoreCase(word, "Strasse", "Str");
 //    word = StringUtils.replaceIgnoreCase(word, "Anzahl", "Anz");
-//    word = StringUtils.replace(word, "Waehrungseinheiten", "We");
-
                 return WordUtils.capitalize(word);
         }
     }
