@@ -1486,7 +1486,7 @@ public final class Bezeichner implements Serializable {
             return techName;
         }
         StringBuilder buf = new StringBuilder();
-        String[] words = input.split("[\\s\\.,;=?/\u00a7]");
+        String[] words = input.split("[\\s\\.,;=?/\\-\u00a7]");
         for (String word : words) {
             buf.append(toShortcut(word));
         }
@@ -1506,16 +1506,14 @@ public final class Bezeichner implements Serializable {
                 return "";
             case "Waehrungseinheiten":
                 return "WE";
+            case "eVB":
+                return word;
             default:
                 if ((word.length() == 3) && (word.toLowerCase().charAt(0) == 'd')) {
                     return "";
-//                } else if (word.endsWith("datum")) {
-//                    return word.substring(0, word.length() - 2);
                 } else if (word.toLowerCase().endsWith("versicherung")) {
                     String versicherung = WordUtils.capitalize(word);
                     return versicherung.substring(0, versicherung.length() - 12) + "Vers";
-                } else if (word.startsWith("eVB")) {
-                    return "eVB" + WordUtils.capitalize(word.substring(3));
                 } else if (word.startsWith("KFT")) {
                     return "Kft" + WordUtils.capitalize(word.substring(3));
                 } else if (word.startsWith("KFV")) {

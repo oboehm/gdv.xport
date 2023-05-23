@@ -10371,10 +10371,10 @@
 				<name>Geschäftsstelle des VU</name>
 				<technischerName>GeschaeftsstelleDesVU</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld eVBNummer (46-52) -->
-			<feldreferenz referenz="046-052-eVBNummer-Alphanumerisch">
+			<!-- AlphaNumFeld eVBNr (46-52) -->
+			<feldreferenz referenz="046-052-eVBNr-Alphanumerisch">
 				<name>eVB-Nummer</name>
-				<technischerName>eVBNummer</technischerName>
+				<technischerName>eVBNr</technischerName>
 			</feldreferenz>
 			<!-- NumFeld ArtdereVB (53-53) -->
 			<feldreferenz referenz="053-053-ArtdereVB-Numerisch">
@@ -18061,10 +18061,10 @@
 				<name>Gültigkeitsdauer in Tagen bei Kurzzeitkennzeichen</name>
 				<technischerName>GueltigkeitsdauerInTagenBeiKurzzeitkennzeichen</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld eVBNummer (213-219) -->
-			<feldreferenz referenz="213-219-eVBNummer-Alphanumerisch">
+			<!-- AlphaNumFeld eVBNr (213-219) -->
+			<feldreferenz referenz="213-219-eVBNr-Alphanumerisch">
 				<name>eVB-Nummer</name>
-				<technischerName>eVBNummer</technischerName>
+				<technischerName>eVBNr</technischerName>
 			</feldreferenz>
 			<!-- NumFeld Aufbauart (220-221) -->
 			<feldreferenz referenz="220-221-Aufbauart-Numerisch">
@@ -33989,7 +33989,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>1</nachkommastellen>
 		</feld>
-		<feld referenz="046-052-eVBNummer-Alphanumerisch">
+		<feld referenz="046-052-eVBNr-Alphanumerisch">
 			<name>eVB-Nummer</name>
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -46973,7 +46973,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="213-219-eVBNummer-Alphanumerisch">
+		<feld referenz="213-219-eVBNr-Alphanumerisch">
 			<name>eVB-Nummer</name>
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
