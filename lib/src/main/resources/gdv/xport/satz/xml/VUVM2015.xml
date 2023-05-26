@@ -13205,10 +13205,10 @@
 				<name>Entschädigungsgrenze pro Leistungsfall</name>
 				<technischerName>EntschaedigungsgrenzeProLeistungsfall</technischerName>
 			</feldreferenz>
-			<!-- NumFeld EntschaedigungsgrenzeProVersicherungsjahr (179-190) -->
-			<feldreferenz referenz="179-190-EntschaedigungsgrenzeProVersicherungsjahr-Fliesskomma">
+			<!-- NumFeld EntschaedigungsgrenzeProVersjahr (179-190) -->
+			<feldreferenz referenz="179-190-EntschaedigungsgrenzeProVersjahr-Fliesskomma">
 				<name>Entschädigungsgrenze pro Versicherungsjahr</name>
-				<technischerName>EntschaedigungsgrenzeProVersicherungsjahr</technischerName>
+				<technischerName>EntschaedigungsgrenzeProVersjahr</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld BesondereVereinbarungen (191-191) -->
 			<feldreferenz referenz="191-191-BesondereVereinbarungen-Alphanumerisch">
@@ -24489,10 +24489,10 @@
 				<name>Verwendungszweck</name>
 				<technischerName>Verwendungszweck</technischerName>
 			</feldreferenz>
-			<!-- NumFeld TarifwahlVersicherungsumfang (146-147) -->
-			<feldreferenz referenz="146-147-TarifwahlVersicherungsumfang-Numerisch">
+			<!-- NumFeld TarifwahlVersumfang (146-147) -->
+			<feldreferenz referenz="146-147-TarifwahlVersumfang-Numerisch">
 				<name>Tarifwahl / Versicherungsumfang</name>
-				<technischerName>TarifwahlVersicherungsumfang</technischerName>
+				<technischerName>TarifwahlVersumfang</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld ZusatzversicherungZurTierkranken (148-167) -->
 			<feldreferenz referenz="148-167-ZusatzversicherungZurTierkranken-Alphanumerisch">
@@ -42180,7 +42180,7 @@
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="146-147-TarifwahlVersicherungsumfang-Numerisch">
+		<feld referenz="146-147-TarifwahlVersumfang-Numerisch">
 			<name>Tarifwahl / Versicherungsumfang</name>
 			<bytes>2</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -44593,7 +44593,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="179-190-EntschaedigungsgrenzeProVersicherungsjahr-Fliesskomma">
+		<feld referenz="179-190-EntschaedigungsgrenzeProVersjahr-Fliesskomma">
 			<name>Entschädigungsgrenze pro Versicherungsjahr</name>
 			<bytes>12</bytes>
 			<datentyp>Fliesskomma</datentyp>

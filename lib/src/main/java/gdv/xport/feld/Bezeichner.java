@@ -1513,9 +1513,6 @@ public final class Bezeichner implements Serializable {
             default:
                 if ((word.length() == 3) && (word.toLowerCase().charAt(0) == 'd')) {
                     return "";
-                } else if (word.toLowerCase().endsWith("versicherung")) {
-                    String versicherung = WordUtils.capitalize(word);
-                    return versicherung.substring(0, versicherung.length() - 12) + "Vers";
                 } else if (word.startsWith("KFT")) {
                     return "Kft" + WordUtils.capitalize(word.substring(3));
                 } else if (word.startsWith("KFV")) {
@@ -1530,7 +1527,8 @@ public final class Bezeichner implements Serializable {
 //
                 word = StringUtils.replaceIgnoreCase(word, "versicherungsschein", "Vs");
 //                word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Vs");
-//    word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
+                word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
+                word = StringUtils.replace(word, "Verss", "Vers");
 //    word = StringUtils.replaceIgnoreCase(word, "Unternehmens", "U");
                 word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");
                 word = StringUtils.replace(word, "Nummer", "Nr");
