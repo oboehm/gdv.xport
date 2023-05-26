@@ -796,11 +796,11 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner RECHTSFORM = new Bezeichner("Rechtsform");
     public static final Bezeichner REFERENZNUMMER = new Bezeichner("Referenznummer");
     public static final Bezeichner REFERENZ_NR = new Bezeichner("Referenz-Nr");
-    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Referenz-Versicherungsscheinnummer", "ReferenzVsNr");
+    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Referenz-Versicherungsscheinnummer");
     public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_1 = new Bezeichner("1. Referenz-Versicherungsscheinnummer", "ReferenzVsNr1");
     public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_2 = new Bezeichner("2. Referenz-Versicherungsscheinnummer", "ReferenzVsNr2");
     public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEINNUMMER_3 = new Bezeichner("3. Referenz-Versicherungsscheinnummer", "ReferenzVsNr3");
-    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEIN_NUMMER_BEI_VERTRAGSTRENNUNG_ZUSAMMENLEGUNG = new Bezeichner("Referenz-Versicherungsschein-Nummer bei Vertragstrennung/-zusammenlegung", "ReferenzVsNrBeiVertragstrennungZusammenlegung");
+    public static final Bezeichner REFERENZ_VERSICHERUNGSSCHEIN_NUMMER_BEI_VERTRAGSTRENNUNG_ZUSAMMENLEGUNG = new Bezeichner("Referenz-Versicherungsschein-Nummer bei Vertragstrennung/-zusammenlegung");
     public static final Bezeichner REGISTRIERUNGSNUMMER_VERMITTLER = new Bezeichner("Registrierungsnummer Vermittler");
     public static final Bezeichner RENTE_INCL_UEBERSCHUSSBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rente incl. Ueberschussbeteiligung in W\u00e4hrungseinheiten");
     public static final Bezeichner RENTE_INCL_UEBERSCHUSSANRECHNUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Rente incl. Ueberschussanrechnung in W\u00e4hrungseinheiten");
@@ -1054,7 +1054,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner SPARTE2 = new Bezeichner("Sparte2", "Sparte2");
     public static final Bezeichner SPARTE_SA0100_TD5_FELD15 = SPARTE2;
     public static final Bezeichner SPARVORGANG = new Bezeichner("Sparvorgang");
-    public static final Bezeichner SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Spezifikation der Referenz-Versicherungsscheinnummer", "SpezifikationReferenzVsNr");
+    public static final Bezeichner SPEZIFIKATION_REFERENZ_VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Spezifikation der Referenz-Versicherungsscheinnummer");
     public static final Bezeichner STAATSANGEHOERIGKEIT = new Bezeichner("Staatsangehoerigkeit");
     public static final Bezeichner STAENDIG_BEWOHNT = new Bezeichner("Staendig bewohnt");
     public static final Bezeichner STAERKE = new Bezeichner("Staerke");
@@ -1169,9 +1169,9 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner VERSICHERUNGSBEGINN_URSPRUNGSBEGINN_DER_TARIFART = new Bezeichner("Versicherungsbeginn / Ursprungsbeginn der Tarifart", "VerssbeginnUrsprungsbeginnTarifart");
     public static final Bezeichner VERSICHERUNGSBEGINN_VP_URSPRUNGSBEGINN = new Bezeichner("Versicherungsbeginn der VP / Ursprungsbeginn", "VerssbeginnVpUrsprungsbeginn");
     public static final Bezeichner VERSICHERUNGSLEISTUNGEN = new Bezeichner("Versicherungsleistungen");
-    public static final Bezeichner VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Versicherungsschein-Nummer", "VsNr");
+    public static final Bezeichner VERSICHERUNGSSCHEINNUMMER = new Bezeichner("Versicherungsschein-Nummer");
     public static final Bezeichner VERSICHERUNGSSCHEINNUMMER_DER_VORVERSICHERUNG = new Bezeichner("Versicherungsscheinnummer der Vorversicherung", "VersicherungsscheinnummerDerVorversicherung");
-    public static final Bezeichner VERSICHERUNGSSCHEINNUMMER_VM = new Bezeichner("Versicherungsscheinnummer VM", "VsNrVm");
+    public static final Bezeichner VERSICHERUNGSSCHEINNUMMER_VM = new Bezeichner("Versicherungsscheinnummer VM");
     public static final Bezeichner VERSICHERUNGSSCHUTZ = new Bezeichner("Versicherungsschutz");
     public static final Bezeichner VERSICHERUNGSSUMME_AKTUELL_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme aktuell in W\u00e4hrungseinheiten");
     public static final Bezeichner VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme in W\u00e4hrungseinheiten");
@@ -1504,6 +1504,8 @@ public final class Bezeichner implements Serializable {
             case "fuer":
             case "und":
                 return "";
+            case "Versicherungsscheinnummer":
+                return "VsNr";
             case "Waehrungseinheiten":
                 return "WE";
             case "eVB":
@@ -1526,8 +1528,8 @@ public final class Bezeichner implements Serializable {
 //        return WordUtils.capitalizeFully(word);
 //    }
 //
-//    word = StringUtils.replaceIgnoreCase(word, "versicherungsschein", "Vs");
-//    word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Vs");
+                word = StringUtils.replaceIgnoreCase(word, "versicherungsschein", "Vs");
+//                word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Vs");
 //    word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
 //    word = StringUtils.replaceIgnoreCase(word, "Unternehmens", "U");
                 word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");

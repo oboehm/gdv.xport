@@ -20563,10 +20563,10 @@
 				<name>Gesamtbeitrag (Brutto) in Währungseinheiten</name>
 				<technischerName>GesbeitragBruttoInWE</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld DruckaufbereiteteVersicherungsscheinnummer (84-113) -->
-			<feldreferenz referenz="084-113-DruckaufbereiteteVersicherungsscheinnummer-Alphanumerisch">
+			<!-- AlphaNumFeld DruckaufbereiteteVsNr (84-113) -->
+			<feldreferenz referenz="084-113-DruckaufbereiteteVsNr-Alphanumerisch">
 				<name>Druckaufbereitete Versicherungsscheinnummer</name>
-				<technischerName>DruckaufbereiteteVersicherungsscheinnummer</technischerName>
+				<technischerName>DruckaufbereiteteVsNr</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Produktname (114-133) -->
 			<feldreferenz referenz="114-133-Produktname-Alphanumerisch">
@@ -36912,7 +36912,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="084-113-DruckaufbereiteteVersicherungsscheinnummer-Alphanumerisch">
+		<feld referenz="084-113-DruckaufbereiteteVsNr-Alphanumerisch">
 			<name>Druckaufbereitete Versicherungsscheinnummer</name>
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
