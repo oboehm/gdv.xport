@@ -1124,7 +1124,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner TRAEGERUNTERNEHMEN_SCHLUESSEL = new Bezeichner("Traegerunternehmen Schl\u00fcssel");
     public static final Bezeichner TYPKLASSE = new Bezeichner("Typklasse");
     public static final Bezeichner TYKLASSE_KH = new Bezeichner("Tyklasse KH", "TyklasseKh");
-    public static final Bezeichner TYPKLASSE_FUER_KFT = new Bezeichner("Typklasse fuer KFT", "TypklasseKft");
+    public static final Bezeichner TYPKLASSE_FUER_KFT = new Bezeichner("Typklasse fuer KFT");
     public static final Bezeichner TYPKLASSE_FUER_KFV = new Bezeichner("Typklasse fuer KFV", "TypklasseKfv");
     public static final Bezeichner TYPSCHLUESSEL_NR = new Bezeichner("Typschl\u00fcssel-Nr.");
     public static final Bezeichner TYP = new Bezeichner("Typ");
@@ -1510,13 +1510,13 @@ public final class Bezeichner implements Serializable {
                 return "WE";
             case "eVB":
                 return word;
+            case "KFT":
+                return "Kft";
+            case "KFV":
+                return "Kfv";
             default:
                 if ((word.length() == 3) && (word.toLowerCase().charAt(0) == 'd')) {
                     return "";
-                } else if (word.startsWith("KFT")) {
-                    return "Kft" + WordUtils.capitalize(word.substring(3));
-                } else if (word.startsWith("KFV")) {
-                    return "Kfv" + WordUtils.capitalize(word.substring(3));
                 } else if (word.startsWith("KH")) {
                     return "Kh" + WordUtils.capitalize(word.substring(2));
                 }
