@@ -1514,11 +1514,11 @@ public final class Bezeichner implements Serializable {
                 return "Kft";
             case "KFV":
                 return "Kfv";
+            case "KH":
+                return "Kh";
             default:
                 if ((word.length() == 3) && (word.toLowerCase().charAt(0) == 'd')) {
                     return "";
-                } else if (word.startsWith("KH")) {
-                    return "Kh" + WordUtils.capitalize(word.substring(2));
                 }
 
 //    if (word.length() <= 4) {
