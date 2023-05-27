@@ -13019,10 +13019,10 @@
 				<name>Entsch‰digungsgrenze pro Leistungsfall</name>
 				<technischerName>EntschaedigungsgrenzeProLeistungsfall</technischerName>
 			</feldreferenz>
-			<!-- NumFeld EntschaedigungsgrenzeProVersjahr (179-190) -->
-			<feldreferenz referenz="179-190-EntschaedigungsgrenzeProVersjahr-Fliesskomma">
+			<!-- NumFeld EntschaedigungsgrenzeProVerssjahr (179-190) -->
+			<feldreferenz referenz="179-190-EntschaedigungsgrenzeProVerssjahr-Fliesskomma">
 				<name>Entsch‰digungsgrenze pro Versicherungsjahr</name>
-				<technischerName>EntschaedigungsgrenzeProVersjahr</technischerName>
+				<technischerName>EntschaedigungsgrenzeProVerssjahr</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld BesondereVereinbarungen (191-191) -->
 			<feldreferenz referenz="191-191-BesondereVereinbarungen-Alphanumerisch">
@@ -24160,10 +24160,10 @@
 				<name>Risiko Straﬂe</name>
 				<technischerName>RisikoStrasse</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld RisikoLaenderkennzeichen (160-162) -->
-			<feldreferenz referenz="160-162-RisikoLaenderkennzeichen-Alphanumerisch">
+			<!-- AlphaNumFeld RisikoLKZ (160-162) -->
+			<feldreferenz referenz="160-162-RisikoLKZ-Alphanumerisch">
 				<name>Risiko L‰nderkennzeichen</name>
-				<technischerName>RisikoLaenderkennzeichen</technischerName>
+				<technischerName>RisikoLKZ</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Auslandsdeckung (163-163) -->
 			<feldreferenz referenz="163-163-Auslandsdeckung-Alphanumerisch">
@@ -24278,10 +24278,10 @@
 				<name>Verwendungszweck</name>
 				<technischerName>Verwendungszweck</technischerName>
 			</feldreferenz>
-			<!-- NumFeld TarifwahlVersumfang (146-147) -->
-			<feldreferenz referenz="146-147-TarifwahlVersumfang-Numerisch">
+			<!-- NumFeld TarifwahlVerssumfang (146-147) -->
+			<feldreferenz referenz="146-147-TarifwahlVerssumfang-Numerisch">
 				<name>Tarifwahl / Versicherungsumfang</name>
-				<technischerName>TarifwahlVersumfang</technischerName>
+				<technischerName>TarifwahlVerssumfang</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld ZusatzversicherungZurTierkranken (148-167) -->
 			<feldreferenz referenz="148-167-ZusatzversicherungZurTierkranken-Alphanumerisch">
@@ -41841,7 +41841,7 @@
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="146-147-TarifwahlVersumfang-Numerisch">
+		<feld referenz="146-147-TarifwahlVerssumfang-Numerisch">
 			<name>Tarifwahl / Versicherungsumfang</name>
 			<bytes>2</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -42869,7 +42869,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>1</nachkommastellen>
 		</feld>
-		<feld referenz="160-162-RisikoLaenderkennzeichen-Alphanumerisch">
+		<feld referenz="160-162-RisikoLKZ-Alphanumerisch">
 			<name>Risiko L‰nderkennzeichen</name>
 			<bytes>3</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -44239,7 +44239,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="179-190-EntschaedigungsgrenzeProVersjahr-Fliesskomma">
+		<feld referenz="179-190-EntschaedigungsgrenzeProVerssjahr-Fliesskomma">
 			<name>Entsch‰digungsgrenze pro Versicherungsjahr</name>
 			<bytes>12</bytes>
 			<datentyp>Fliesskomma</datentyp>

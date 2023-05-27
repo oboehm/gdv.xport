@@ -182,7 +182,7 @@ public final class Bezeichner implements Serializable {
 
     public static final Bezeichner BASISBEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Basisbeitrag in Währungseinheiten");
     public static final Bezeichner BASISJAHR = new Bezeichner("Basisjahr");
-    public static final Bezeichner BASISVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Basiversicherungssumme in W\u00e4hrungseinheiten", "BasisVersssummeInWE");
+    public static final Bezeichner BASISVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Basisversicherungssumme in W\u00e4hrungseinheiten");
     public static final Bezeichner BAUARTKLASSE = new Bezeichner("Bauartklasse", "BauartklasseN");
     public static final Bezeichner BAUPREISINDEX_WERTZUSCHLAG = new Bezeichner("Baupreisindex / Wertzuschlag", "BaupreisindexWertzuschlag");
     public static final Bezeichner BAUJAHR = new Bezeichner("Baujahr");
@@ -446,8 +446,8 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner GEPAECK_BEGINN = new Bezeichner("Gepäck-Beginn");
     public static final Bezeichner GEPAECK_AUSSCHLUSS = new Bezeichner("Gepäck-Ausschluss");
     public static final Bezeichner GEPAECK_AENDERUNGSDAT = new Bezeichner("Gepäck-Änderungsdatum");
-    public static final Bezeichner GEPAECKVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gepaeckversicherungssumme in W\u00e4hrungseinheiten", "GepaeckVersssummeInWE");
-    public static final Bezeichner GEPAECKVERSICHERUNGSSUMME_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Gepaeckversicherungssumme in Tausend Währungseinheiten", "GepaeckVersssummeInTausendWE");
+    public static final Bezeichner GEPAECKVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gepaeckversicherungssumme in W\u00e4hrungseinheiten");
+    public static final Bezeichner GEPAECKVERSICHERUNGSSUMME_IN_TAUSEND_WAEHRUNGSEINHEITEN = new Bezeichner("Gepaeckversicherungssumme in Tausend Währungseinheiten");
     public static final Bezeichner GEPAECK_BEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gepaeck-Beitrag in W\u00e4hrungseinheiten");
     public static final Bezeichner GESAMTBEITRAG = new Bezeichner("Gesamtbeitrag");
     public static final Bezeichner GESAMTBEITRAG_BRUTTO = new Bezeichner("Gesamtbeitrag-Brutto(Inkasso)", "GesbeitragBruttoInkasso");
@@ -638,8 +638,8 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner KU_ZUSCHLAEGE_IN_PROZENT = new Bezeichner("KU-Zuschläge in %", "KuZuschlaegeInProz");
     public static final Bezeichner KU_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KU-Zuschläge in Währungseinheiten", "KuZuschlaegeInWE");
 
-    public static final Bezeichner LAENDERKENNZEICHEN = new Bezeichner("Laenderkennzeichen", "LKZ");
-    public static final Bezeichner LAENDERKENNZEICHEN_DER_RISIKOANSCHRIFT = new Bezeichner("Laenderkennzeichen der Risikoanschrift", "LKZZurRisikoanschrift");
+    public static final Bezeichner LAENDERKENNZEICHEN = new Bezeichner("Laenderkennzeichen");
+    public static final Bezeichner LAENDERKENNZEICHEN_DER_RISIKOANSCHRIFT = new Bezeichner("Laenderkennzeichen der Risikoanschrift");
     public static final Bezeichner LAND_DES_AMTL_KENNZEICHENS = new Bezeichner("Land des amtl. Kennzeichens");
     public static final Bezeichner LAUFZEITRABATT_IN_PROZENT = new Bezeichner("Laufzeitrabatt in %");
     public static final Bezeichner LAUFZEITVERKUERZUNG = new Bezeichner("Laufzeitverkuerzung");
@@ -1504,6 +1504,12 @@ public final class Bezeichner implements Serializable {
             case "fuer":
             case "und":
                 return "";
+            case "Laenderkennzeichen":
+                return "LKZ";
+            case "Nummer":
+                return "Nr";
+            case "Unternehmens":
+                return "U";
             case "Versicherungsscheinnummer":
                 return "VsNr";
             case "Waehrungseinheiten":
@@ -1520,19 +1526,13 @@ public final class Bezeichner implements Serializable {
                 if ((word.length() == 3) && (word.toLowerCase().charAt(0) == 'd')) {
                     return "";
                 }
-
 //    if (word.length() <= 4) {
 //        return WordUtils.capitalizeFully(word);
 //    }
-//
                 word = StringUtils.replaceIgnoreCase(word, "versicherungsschein", "Vs");
-//                word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Vs");
+                word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Versssumme");
                 word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
-                word = StringUtils.replace(word, "Verss", "Vers");
-//    word = StringUtils.replaceIgnoreCase(word, "Unternehmens", "U");
                 word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");
-                word = StringUtils.replace(word, "Nummer", "Nr");
-//    word = StringUtils.replaceIgnoreCase(word, "Laenderkennzeichen", "Lkz");
 //    word = StringUtils.replaceIgnoreCase(word, "Postleitzahl", "Plz");
 //    word = StringUtils.replaceIgnoreCase(word, "Wagniskennziffer", "Wkz");
 //    word = StringUtils.replaceIgnoreCase(word, "Strasse", "Str");
