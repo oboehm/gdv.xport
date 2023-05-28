@@ -103,13 +103,13 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ANTEILIGER_DYNAMIKPROZENTSATZ = new Bezeichner("Anteiliger Dynamikprozentsatz", "AnteiligerDynamikProzentsatz");
     public static final Bezeichner ANTRAGSDAT = new Bezeichner("Antragsdatum");
     public static final Bezeichner ANTRAGSEINGANGSDAT = new Bezeichner("Antragseingangsdatum", "Antragseingangsdatum");
-    public static final Bezeichner ANZAHL_DER_AUSZAHLUNGEN = new Bezeichner("Anzahl der Auszahlungen", "AnzAuszahlungen");
-    public static final Bezeichner ANZAHL_DER_KINDER = new Bezeichner("Anzahl der Kinder", "AnzahlDerKinder");
-    public static final Bezeichner ANZAHL_DER_VERSICHERTEN_FAHRZEUGE = new Bezeichner("Anzahl der versicherten Fahrzeuge", "AnzVersichertenFahrzeuge");
-    public static final Bezeichner ANZAHL_DER_VERSICHERTEN_PERSONEN = new Bezeichner("Anzahl der versicherten Personen", "AnzVersichertenPersonen");
+    public static final Bezeichner ANZAHL_DER_AUSZAHLUNGEN = new Bezeichner("Anzahl der Auszahlungen");
+    public static final Bezeichner ANZAHL_DER_KINDER = new Bezeichner("Anzahl der Kinder");
+    public static final Bezeichner ANZAHL_DER_VERSICHERTEN_FAHRZEUGE = new Bezeichner("Anzahl der versicherten Fahrzeuge");
+    public static final Bezeichner ANZAHL_DER_VERSICHERTEN_PERSONEN = new Bezeichner("Anzahl der versicherten Personen");
     public static final Bezeichner ANZAHL_DER_VERSICHERTEN_TIERE_OHNE_NAMENSANGABE_TIERGRUPPE = new Bezeichner("Anzahl der versicherten Tiere ohne Namensangabe (Tiergruppe)", "AnzahlDerVersichertenTiereOhneNamensangabeTiergruppe");
-    public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO1 = new Bezeichner("Anzahl der Plaetze (Risiko 1)", "AnzPlaetzeRisiko1");
-    public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO2 = new Bezeichner("Anzahl der Plaetze (Risiko 2)", "AnzPlaetzeRisiko2");
+    public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO1 = new Bezeichner("Anzahl der Plaetze (Risiko 1)");
+    public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO2 = new Bezeichner("Anzahl der Plaetze (Risiko 2)");
     public static final Bezeichner ART1 = new Bezeichner("Art1", "Art1", "Art");
     /** Fuer 0220.580 */
     public static final Bezeichner ART_580 = new Bezeichner("Art");
@@ -151,12 +151,12 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ANREDESCHLUESSEL = new Bezeichner("Anredeschluessel");
     public static final Bezeichner ANTEIL_IN_PROZENT = new Bezeichner("Anteil in %");
     public static final Bezeichner ANTEILE = new Bezeichner("Anteile");
-    public static final Bezeichner ANZAHL_DER_VORBESITZER = new Bezeichner("Anzahl der Vorbesitzer", "AnzVorbesitzer");
-    public static final Bezeichner ANZAHL_MONATE_UNBEWOHNT = new Bezeichner("Anzahl Monate unbewohnt", "AnzMonateUnbewohnt");
-    public static final Bezeichner ANZAHL_SAETZE = new Bezeichner("Anzahl der Saetze", "AnzSaetze");
-    public static final Bezeichner ANZAHL_VERBLEIBENDE_DYNAMIKWIDERSPRUECHE = new Bezeichner("Anzahl verbleibende Dynamikwidersprueche", "AnzVerbleibendeDynamikwidersprueche");
-    public static final Bezeichner ANZAHL_VP_PRO_PERSONENGRUPPE = new Bezeichner("Anzahl der VP pro Personengruppe", "AnzVpProPersonengruppe");
-    public static final Bezeichner ANZAHL_WOHNEINHEITEN = new Bezeichner("Anzahl Wohneinheiten", "AnzWohneinheiten");
+    public static final Bezeichner ANZAHL_DER_VORBESITZER = new Bezeichner("Anzahl der Vorbesitzer");
+    public static final Bezeichner ANZAHL_MONATE_UNBEWOHNT = new Bezeichner("Anzahl Monate unbewohnt");
+    public static final Bezeichner ANZAHL_SAETZE = new Bezeichner("Anzahl der Saetze");
+    public static final Bezeichner ANZAHL_VERBLEIBENDE_DYNAMIKWIDERSPRUECHE = new Bezeichner("Anzahl verbleibende Dynamikwidersprueche");
+    public static final Bezeichner ANZAHL_VP_PRO_PERSONENGRUPPE = new Bezeichner("Anzahl der VP pro Personengruppe");
+    public static final Bezeichner ANZAHL_WOHNEINHEITEN = new Bezeichner("Anzahl Wohneinheiten");
     public static final Bezeichner ARB = new Bezeichner("ARB (Allgemeine Bedingungen fuer die Rechtschutzvers.)", "ArbAllgemeineBedingungenRechtschutzvers");
     public static final Bezeichner ART_DER_AUSZAHLUNG = new Bezeichner("Art der Auszahlung", "ArtDerAuszahlung");
     public static final Bezeichner ART_DES_BEITRAGSSATZES = new Bezeichner("Art des Beitragssatzes", "ArtDesBeitragssatzes");
@@ -1504,6 +1504,8 @@ public final class Bezeichner implements Serializable {
             case "fuer":
             case "und":
                 return "";
+            case "Anzahl":
+                return "Anz";
             case "Laenderkennzeichen":
                 return "LKZ";
             case "Nummer":
@@ -1532,15 +1534,10 @@ public final class Bezeichner implements Serializable {
                 if ((word.length() == 3) && (word.toLowerCase().charAt(0) == 'd')) {
                     return "";
                 }
-//    if (word.length() <= 4) {
-//        return WordUtils.capitalizeFully(word);
-//    }
                 word = StringUtils.replaceIgnoreCase(word, "versicherungsschein", "Vs");
                 word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Versssumme");
                 word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
                 word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");
-//    word = StringUtils.replaceIgnoreCase(word, "Strasse", "Str");
-//    word = StringUtils.replaceIgnoreCase(word, "Anzahl", "Anz");
                 return WordUtils.capitalize(word);
         }
     }

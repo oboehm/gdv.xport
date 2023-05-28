@@ -8823,10 +8823,10 @@
 				<name>Dauerzulagenantrag</name>
 				<technischerName>Dauerzulagenantrag</technischerName>
 			</feldreferenz>
-			<!-- NumFeld AnzahlDerKinder (207-208) -->
-			<feldreferenz referenz="207-208-AnzahlDerKinder-Numerisch">
+			<!-- NumFeld AnzKinder (207-208) -->
+			<feldreferenz referenz="207-208-AnzKinder-Numerisch">
 				<name>Anzahl der Kinder</name>
-				<technischerName>AnzahlDerKinder</technischerName>
+				<technischerName>AnzKinder</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (209-255) -->
 			<feldreferenz referenz="209-255-Leerstellen-Alphanumerisch">
@@ -13316,10 +13316,10 @@
 				<name>Bezeichnung Personengruppe</name>
 				<technischerName>BezeichnungPersonengruppe</technischerName>
 			</feldreferenz>
-			<!-- NumFeld AnzVpProPersonengruppe (80-85) -->
-			<feldreferenz referenz="080-085-AnzVpProPersonengruppe-Numerisch">
+			<!-- NumFeld AnzVPProPersonengruppe (80-85) -->
+			<feldreferenz referenz="080-085-AnzVPProPersonengruppe-Numerisch">
 				<name>Anzahl der VP pro Personengruppe</name>
-				<technischerName>AnzVpProPersonengruppe</technischerName>
+				<technischerName>AnzVPProPersonengruppe</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld NameVP (86-115) -->
 			<feldreferenz referenz="086-115-NameVP-Alphanumerisch">
@@ -16790,10 +16790,10 @@
 				<name>Dauerzulagenantrag</name>
 				<technischerName>Dauerzulagenantrag</technischerName>
 			</feldreferenz>
-			<!-- NumFeld AnzahlDerKinder (149-150) -->
-			<feldreferenz referenz="149-150-AnzahlDerKinder-Numerisch">
+			<!-- NumFeld AnzKinder (149-150) -->
+			<feldreferenz referenz="149-150-AnzKinder-Numerisch">
 				<name>Anzahl der Kinder</name>
-				<technischerName>AnzahlDerKinder</technischerName>
+				<technischerName>AnzKinder</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (151-255) -->
 			<feldreferenz referenz="151-255-Leerstellen-Alphanumerisch">
@@ -23773,10 +23773,10 @@
 				<name>Dauerzulagenantrag</name>
 				<technischerName>Dauerzulagenantrag</technischerName>
 			</feldreferenz>
-			<!-- NumFeld AnzahlDerKinder (91-92) -->
-			<feldreferenz referenz="091-092-AnzahlDerKinder-Numerisch">
+			<!-- NumFeld AnzKinder (91-92) -->
+			<feldreferenz referenz="091-092-AnzKinder-Numerisch">
 				<name>Anzahl der Kinder</name>
-				<technischerName>AnzahlDerKinder</technischerName>
+				<technischerName>AnzKinder</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (93-256) -->
 			<feldreferenz referenz="093-256-Leerstellen-Alphanumerisch">
@@ -36558,7 +36558,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="080-085-AnzVpProPersonengruppe-Numerisch">
+		<feld referenz="080-085-AnzVPProPersonengruppe-Numerisch">
 			<name>Anzahl der VP pro Personengruppe</name>
 			<bytes>6</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -37487,7 +37487,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="091-092-AnzahlDerKinder-Numerisch">
+		<feld referenz="091-092-AnzKinder-Numerisch">
 			<name>Anzahl der Kinder</name>
 			<bytes>2</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -42414,7 +42414,7 @@
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="149-150-AnzahlDerKinder-Numerisch">
+		<feld referenz="149-150-AnzKinder-Numerisch">
 			<name>Anzahl der Kinder</name>
 			<bytes>2</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -46336,7 +46336,7 @@
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="207-208-AnzahlDerKinder-Numerisch">
+		<feld referenz="207-208-AnzKinder-Numerisch">
 			<name>Anzahl der Kinder</name>
 			<bytes>2</bytes>
 			<datentyp>Numerisch</datentyp>
