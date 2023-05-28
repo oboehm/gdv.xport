@@ -767,8 +767,8 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner POLICIERUNGSDAT = new Bezeichner("Policierungsdatum", "Policierungsdatum");
     public static final Bezeichner POSTALISCHES_KENNZEICHEN = new Bezeichner("postalisches Kennzeichen");
     public static final Bezeichner POSTFACH = new Bezeichner("postfach");
-    public static final Bezeichner POSTLEITZAHL = new Bezeichner("Postleitzahl", "PLZ");
-    public static final Bezeichner POSTLEITZAHL_DER_RISIKOANSCHRIFT = new Bezeichner("Postleitzahl der Risikoanschrift", "PLZRisikoanschrift");
+    public static final Bezeichner POSTLEITZAHL = new Bezeichner("Postleitzahl");
+    public static final Bezeichner POSTLEITZAHL_DER_RISIKOANSCHRIFT = new Bezeichner("Postleitzahl der Risikoanschrift");
     public static final Bezeichner PRAEMIENFAKTOR = new Bezeichner("Praemienfaktor");
     public static final Bezeichner PRAEMIENRICHTZAHL = new Bezeichner("Praemienrichtzahl");    
     public static final Bezeichner PRAEMIENSATZ_IN_PROMILLE = new Bezeichner("Prämiensatz in Promille");
@@ -1508,6 +1508,8 @@ public final class Bezeichner implements Serializable {
                 return "LKZ";
             case "Nummer":
                 return "Nr";
+            case "Postleitzahl":
+                return "PLZ";
             case "Unternehmens":
                 return "U";
             case "Versicherungsscheinnummer":
@@ -1533,7 +1535,6 @@ public final class Bezeichner implements Serializable {
                 word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Versssumme");
                 word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
                 word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");
-//    word = StringUtils.replaceIgnoreCase(word, "Postleitzahl", "Plz");
 //    word = StringUtils.replaceIgnoreCase(word, "Wagniskennziffer", "Wkz");
 //    word = StringUtils.replaceIgnoreCase(word, "Strasse", "Str");
 //    word = StringUtils.replaceIgnoreCase(word, "Anzahl", "Anz");

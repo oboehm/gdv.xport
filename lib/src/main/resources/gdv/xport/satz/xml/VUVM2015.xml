@@ -24361,10 +24361,10 @@
 				<name>Risiko Ort</name>
 				<technischerName>RisikoOrt</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld RisikoPostleitzahl (124-129) -->
-			<feldreferenz referenz="124-129-RisikoPostleitzahl-Alphanumerisch">
+			<!-- AlphaNumFeld RisikoPLZ (124-129) -->
+			<feldreferenz referenz="124-129-RisikoPLZ-Alphanumerisch">
 				<name>Risiko Postleitzahl</name>
-				<technischerName>RisikoPostleitzahl</technischerName>
+				<technischerName>RisikoPLZ</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld RisikoStrasse (130-159) -->
 			<feldreferenz referenz="130-159-RisikoStrasse-Alphanumerisch">
@@ -40359,7 +40359,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="124-129-RisikoPostleitzahl-Alphanumerisch">
+		<feld referenz="124-129-RisikoPLZ-Alphanumerisch">
 			<name>Risiko Postleitzahl</name>
 			<bytes>6</bytes>
 			<datentyp>Alphanumerisch</datentyp>
