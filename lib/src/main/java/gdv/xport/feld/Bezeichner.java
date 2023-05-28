@@ -1347,7 +1347,7 @@ public final class Bezeichner implements Serializable {
     /** @deprecated bitte {@link #WAGNISART} benutzen. */
     public static final Bezeichner WAGNISART4 = WAGNISART;
     public static final Bezeichner WAGNISBESCHREIBUNG = new Bezeichner("Wagnisbeschreibung");
-    public static final Bezeichner WAGNISKENNZIFFER = new Bezeichner("Wagniskennziffer", "WKZ");
+    public static final Bezeichner WAGNISKENNZIFFER = new Bezeichner("Wagniskennziffer");
     public static final Bezeichner WAGNISMENGE = new Bezeichner("Wagnismenge");
     public static final Bezeichner WAGNISTEXT = new Bezeichner("Wagnistext");
     public static final Bezeichner WAISENRENTE_IN_PROZENT = new Bezeichner("Waisenrente in Prozent", "WaisenrenteProz");
@@ -1514,6 +1514,8 @@ public final class Bezeichner implements Serializable {
                 return "U";
             case "Versicherungsscheinnummer":
                 return "VsNr";
+            case "Wagniskennziffer":
+                return "WKZ";
             case "Waehrungseinheiten":
                 return "WE";
             case "eVB":
@@ -1535,7 +1537,6 @@ public final class Bezeichner implements Serializable {
                 word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Versssumme");
                 word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
                 word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");
-//    word = StringUtils.replaceIgnoreCase(word, "Wagniskennziffer", "Wkz");
 //    word = StringUtils.replaceIgnoreCase(word, "Strasse", "Str");
 //    word = StringUtils.replaceIgnoreCase(word, "Anzahl", "Anz");
                 return WordUtils.capitalize(word);
