@@ -1066,7 +1066,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner STERILISATION_KASTRATION = new Bezeichner("Sterilisation / Kastration");
     public static final Bezeichner STEUERNR_JURISTISCHE_PERSON = new Bezeichner("Steuernummer bei juristischen Personen");
     public static final Bezeichner STOCKWERKE = new Bezeichner("Stockwerke");
-    public static final Bezeichner STRASSE = new Bezeichner("Straße", "Str");
+    public static final Bezeichner STRASSE = new Bezeichner("Straße");
     public static final Bezeichner SUMME_VORSORGEZUSCHLAG = new Bezeichner("Summe Vorsorgezuschlag");
     public static final Bezeichner SUMMENANPASSUNG_PROZENTSATZ = new Bezeichner("Summenanpassung - %-Satz");
     public static final Bezeichner STUNDUNG = new Bezeichner("Stundung");
@@ -1510,6 +1510,8 @@ public final class Bezeichner implements Serializable {
                 return "Nr";
             case "Postleitzahl":
                 return "PLZ";
+            case "Strasse":
+                return "Str";
             case "Unternehmens":
                 return "U";
             case "Versicherungsscheinnummer":
