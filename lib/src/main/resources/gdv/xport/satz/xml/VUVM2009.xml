@@ -46,10 +46,10 @@
                 <name>Adressat</name>
                 <technischerName>Adressat</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErstellungsDatZeitraumVomZeitraumBis (70-85) -->
-            <feldreferenz referenz="070-085-ErstellungsDatZeitraumVomZeitraumBis-Numerisch">
+            <!-- NumFeld ErstellungsDatumZeitraumVomZeitraumBis(70-85) -->
+            <feldreferenz referenz="070-085-ErstellungsDatumZeitraumVomZeitraumBis-Numerisch">
                 <name>Erstellungs-Datum, Zeitraum von, Zeitraum bis</name>
-                <technischerName>ErstellungsDatZeitraumVomZeitraumBis</technischerName>
+                <technischerName>ErstellungsDatumZeitraumVomZeitraumBis</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld GeschaeftsstelleVermittler (86-95) -->
             <feldreferenz referenz="086-095-GeschaeftsstelleVermittler-Alphanumerisch">
@@ -350,10 +350,10 @@
                 <name>Adressat</name>
                 <technischerName>Adressat</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErstellungsDatZeitraumVomZeitraumBis (70-85) -->
-            <feldreferenz referenz="070-085-ErstellungsDatZeitraumVomZeitraumBis-Numerisch">
+            <!-- NumFeld ErstellungsDatumZeitraumVomZeitraumBis(70-85) -->
+            <feldreferenz referenz="070-085-ErstellungsDatumZeitraumVomZeitraumBis-Numerisch">
                 <name>Erstellungs-Datum, Zeitraum von, Zeitraum bis</name>
-                <technischerName>ErstellungsDatZeitraumVomZeitraumBis</technischerName>
+                <technischerName>ErstellungsDatumZeitraumVomZeitraumBis</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld GeschaeftsstelleVermittler (86-95) -->
             <feldreferenz referenz="086-095-GeschaeftsstelleVermittler-Alphanumerisch">
@@ -644,10 +644,10 @@
                 <name>Adressat</name>
                 <technischerName>Adressat</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErstellungsDatZeitraumVomZeitraumBis (70-85) -->
-            <feldreferenz referenz="070-085-ErstellungsDatZeitraumVomZeitraumBis-Numerisch">
+            <!-- NumFeld ErstellungsDatumZeitraumVomZeitraumBis(70-85) -->
+            <feldreferenz referenz="070-085-ErstellungsDatumZeitraumVomZeitraumBis-Numerisch">
                 <name>Erstellungs-Datum, Zeitraum von, Zeitraum bis</name>
-                <technischerName>ErstellungsDatZeitraumVomZeitraumBis</technischerName>
+                <technischerName>ErstellungsDatumZeitraumVomZeitraumBis</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld GeschaeftsstelleVermittler (86-95) -->
             <feldreferenz referenz="086-095-GeschaeftsstelleVermittler-Alphanumerisch">
@@ -13011,10 +13011,10 @@
                 <name>Beitrag pro VP oder pro Personengruppe in Währungseinheiten</name>
                 <technischerName>BeitragProVpOderProPersonengruppeInWE</technischerName>
             </feldreferenz>
-            <!-- Datum EinschlussdatVpPersonengruppe (216-223) -->
-            <feldreferenz referenz="216-223-EinschlussdatVpPersonengruppe-Datum">
+            <!-- Datum EinschlussdatVPPersonengruppe (216-223) -->
+            <feldreferenz referenz="216-223-EinschlussdatVPPersonengruppe-Datum">
                 <name>Einschlussdatum VP / Personengruppe</name>
-                <technischerName>EinschlussdatVpPersonengruppe</technischerName>
+                <technischerName>EinschlussdatVPPersonengruppe</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
             <!-- Datum AusschlussdatumVPPersonengruppe (224-231) -->
@@ -13044,10 +13044,10 @@
                 <name>Kündigungsklausel VP/ Personengruppe gestrichen</name>
                 <technischerName>KuendigungsklauselVPPersonengruppeGestrichen</technischerName>
             </feldreferenz>
-            <!-- NumFeld EintrittsalterDerVP (243-244) -->
-            <feldreferenz referenz="243-244-EintrittsalterDerVP-Numerisch">
+            <!-- NumFeld EintrittsalterVP (243-244) -->
+            <feldreferenz referenz="243-244-EintrittsalterVP-Numerisch">
                 <name>Eintrittsalter der VP</name>
-                <technischerName>EintrittsalterDerVP</technischerName>
+                <technischerName>EintrittsalterVP</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Altersgruppe (245-246) -->
             <feldreferenz referenz="245-246-Altersgruppe-Alphanumerisch">
@@ -17478,10 +17478,10 @@
                 <technischerName>BeginnVersicherungsschutz</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
-            <!-- Datum EndedatumBeiRotenKennzeichen (203-210) -->
-            <feldreferenz referenz="203-210-EndedatumBeiRotenKennzeichen-Datum">
+            <!-- Datum EndedatumVerssschutzesBeiRotenKennzeichen (203-210) -->
+            <feldreferenz referenz="203-210-EndedatumVerssschutzesBeiRotenKennzeichen-Datum">
                 <name>Endedatum des Versicherungsschutzes bei roten Kennzeichen</name>
-                <technischerName>EndedatumBeiRotenKennzeichen</technischerName>
+                <technischerName>EndedatumVerssschutzesBeiRotenKennzeichen</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
             <!-- NumFeld GueltigkeitsdauerInTagenBeiKurzzeitkennzeichen (211-212) -->
@@ -23838,8 +23838,8 @@
             </feldreferenz>
             <!-- Datum Einschlussdatum (47-54) -->
             <feldreferenz referenz="047-054-Einschlussdatum-Datum">
-                <name>Einschlussdatum</name>
-                <technischerName>Einschlussdatum</technischerName>
+                <name>Einschlussdat</name>
+                <technischerName>Einschlussdat</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
             <!-- Datum Ausschlussdatum (55-62) -->
@@ -33169,7 +33169,7 @@
             <datentyp>Alphanumerisch</datentyp>
         </feld>
         <feld referenz="047-054-Einschlussdatum-Datum">
-            <name>Einschlussdatum</name>
+            <name>Einschlussdat</name>
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
         </feld>
@@ -35051,7 +35051,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="070-085-ErstellungsDatZeitraumVomZeitraumBis-Numerisch">
+        <feld referenz="070-085-ErstellungsDatumZeitraumVomZeitraumBis-Numerisch">
             <name>Erstellungs-Datum, Zeitraum von, Zeitraum bis</name>
             <bytes>16</bytes>
             <datentyp>Numerisch</datentyp>
@@ -45163,7 +45163,7 @@
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
         </feld>
-        <feld referenz="203-210-EndedatumBeiRotenKennzeichen-Datum">
+        <feld referenz="203-210-EndedatumVerssschutzesBeiRotenKennzeichen-Datum">
             <name>Endedatum des Versicherungsschutzes bei roten Kennzeichen</name>
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
@@ -45750,7 +45750,7 @@
             <bytes>7</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="216-223-EinschlussdatVpPersonengruppe-Datum">
+        <feld referenz="216-223-EinschlussdatVPPersonengruppe-Datum">
             <name>Einschlussdatum VP / Personengruppe</name>
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
@@ -46834,7 +46834,7 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="243-244-EintrittsalterDerVP-Numerisch">
+        <feld referenz="243-244-EintrittsalterVP-Numerisch">
             <name>Eintrittsalter der VP</name>
             <bytes>2</bytes>
             <datentyp>Numerisch</datentyp>
