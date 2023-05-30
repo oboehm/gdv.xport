@@ -976,10 +976,10 @@
                 <name>Sturmzone</name>
                 <technischerName>Sturmzone</technischerName>
             </feldreferenz>
-            <!-- NumFeld BauartklasseN (141-141) -->
-            <feldreferenz referenz="141-141-BauartklasseN-Numerisch">
+            <!-- NumFeld Bauartklasse (141-141) -->
+            <feldreferenz referenz="141-141-Bauartklasse-Numerisch">
                 <name>Bauartklasse</name>
-                <technischerName>BauartklasseN</technischerName>
+                <technischerName>Bauartklasse</technischerName>
             </feldreferenz>
             <!-- NumFeld Baujahr (142-145) -->
             <feldreferenz referenz="142-145-Baujahr-Numerisch">
@@ -1108,20 +1108,20 @@
                 <name>Gefahrenschlüssel</name>
                 <technischerName>Gefahrenschluessel</technischerName>
             </feldreferenz>
-            <!-- NumFeld ArtSumme3N (91-93) -->
-            <feldreferenz referenz="091-093-ArtSumme3N-Numerisch">
+            <!-- NumFeld ArtSumme (91-93) -->
+            <feldreferenz referenz="091-093-ArtSumme-Numerisch">
                 <name>Art der Summe</name>
-                <technischerName>ArtSumme3N</technischerName>
+                <technischerName>ArtSumme</technischerName>
             </feldreferenz>
             <!-- NumFeld Basisjahr (94-97) -->
             <feldreferenz referenz="094-097-Basisjahr-Numerisch">
                 <name>Basisjahr</name>
                 <technischerName>Basisjahr</technischerName>
             </feldreferenz>
-            <!-- NumFeld BasisVersssummeInWE (98-109) -->
-            <feldreferenz referenz="098-109-BasisVersssummeInWE-Numerisch">
+            <!-- NumFeld BasisVsInWE (98-109) -->
+            <feldreferenz referenz="098-109-BasisVsInWE-Numerisch">
                 <name>Basisversicherungssumme in Währungseinheiten</name>
-                <technischerName>BasisVersssummeInWE</technischerName>
+                <technischerName>BasisVsInWE</technischerName>
             </feldreferenz>
             <!-- NumFeld BaupreisindexWertzuschlag (110-115) -->
             <feldreferenz referenz="110-115-BaupreisindexWertzuschlag-Fliesskomma">
@@ -1531,10 +1531,10 @@
                 <name>Produktname</name>
                 <technischerName>Produktname</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld ArtdersteuerlichenFoerderung (117-117) -->
-            <feldreferenz referenz="117-117-ArtdersteuerlichenFoerderung-Alphanumerisch">
+            <!-- AlphaNumFeld ArtSteuerlichenFoerderung (117-117) -->
+            <feldreferenz referenz="117-117-ArtSteuerlichenFoerderung-Alphanumerisch">
                 <name>Art der steuerlichen Förderung</name>
-                <technischerName>ArtdersteuerlichenFoerderung</technischerName>
+                <technischerName>ArtSteuerlichenFoerderung</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Finanzierungsart (118-118) -->
             <feldreferenz referenz="118-118-Finanzierungsart-Alphanumerisch">
@@ -2803,25 +2803,25 @@
                 <name>Lfd. Nummer der versicherten Person (VP) / Personengruppe</name>
                 <technischerName>LfdNummerDerPersonPersonengruppe</technischerName>
             </feldreferenz>
-            <!-- NumFeld ArtDerLeistung (49-51) -->
-            <feldreferenz referenz="049-051-ArtDerLeistung-Numerisch">
+            <!-- NumFeld ArtLeistung (49-51) -->
+            <feldreferenz referenz="049-051-ArtLeistung-Numerisch">
                 <name>Art der Leistung</name>
-                <technischerName>ArtDerLeistung</technischerName>
+                <technischerName>ArtLeistung</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld BezeichnungDerLeistung (52-81) -->
             <feldreferenz referenz="052-081-BezeichnungDerLeistung-Alphanumerisch">
                 <name>Bezeichnung der Leistung</name>
                 <technischerName>BezeichnungDerLeistung</technischerName>
             </feldreferenz>
-            <!-- NumFeld LaufendeNummerZurArtDerLeistung (82-84) -->
-            <feldreferenz referenz="082-084-LaufendeNummerZurArtDerLeistung-Numerisch">
+            <!-- NumFeld LaufendeNrZurArtLeistung (82-84) -->
+            <feldreferenz referenz="082-084-LaufendeNrZurArtLeistung-Numerisch">
                 <name>Laufende Nummer zur Art der Leistung</name>
-                <technischerName>LaufendeNummerZurArtDerLeistung</technischerName>
+                <technischerName>LaufendeNrZurArtLeistung</technischerName>
             </feldreferenz>
-            <!-- NumFeld ArtDerAuszahlung (85-86) -->
-            <feldreferenz referenz="085-086-ArtDerAuszahlung-Numerisch">
+            <!-- NumFeld ArtAuszahlung (85-86) -->
+            <feldreferenz referenz="085-086-ArtAuszahlung-Numerisch">
                 <name>Art der Auszahlung</name>
-                <technischerName>ArtDerAuszahlung</technischerName>
+                <technischerName>ArtAuszahlung</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Leistungszahlungsweise (87-87) -->
             <feldreferenz referenz="087-087-Leistungszahlungsweise-Alphanumerisch">
@@ -2843,10 +2843,10 @@
                 <name>Beitragssatz</name>
                 <technischerName>Beitragssatz</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld ArtDesBeitragssatzes (112-113) -->
-            <feldreferenz referenz="112-113-ArtDesBeitragssatzes-Alphanumerisch">
+            <!-- AlphaNumFeld ArtBeitragssatzes (112-113) -->
+            <feldreferenz referenz="112-113-ArtBeitragssatzes-Alphanumerisch">
                 <name>Art des Beitragssatzes</name>
-                <technischerName>ArtDesBeitragssatzes</technischerName>
+                <technischerName>ArtBeitragssatzes</technischerName>
             </feldreferenz>
             <!-- NumFeld BeitragInWE (114-125) -->
             <feldreferenz referenz="114-125-BeitragInWE-Fliesskomma">
@@ -3653,10 +3653,10 @@
                 <technischerName>Aenderungsdatum</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
-            <!-- AlphaNumFeld ArtSumme3AN (67-69) -->
-            <feldreferenz referenz="067-069-ArtSumme3AN-Alphanumerisch">
+            <!-- AlphaNumFeld ArtSumme (67-69) -->
+            <feldreferenz referenz="067-069-ArtSumme-Alphanumerisch">
                 <name>Art der Summe</name>
-                <technischerName>ArtSumme3AN</technischerName>
+                <technischerName>ArtSumme</technischerName>
             </feldreferenz>
             <!-- NumFeld AktuellerPromilleSatzVerssSumme (70-75) -->
             <feldreferenz referenz="070-075-AktuellerPromilleSatzVerssSumme-Fliesskomma">
@@ -3938,10 +3938,10 @@
                 <name>Unverfallbarkeit</name>
                 <technischerName>Unverfallbarkeit</technischerName>
             </feldreferenz>
-            <!-- Datum DatumUnverfallbarkeit (241-248) -->
-            <feldreferenz referenz="241-248-DatumUnverfallbarkeit-Datum">
+            <!-- Datum DatUnverfallbarkeit (241-248) -->
+            <feldreferenz referenz="241-248-DatUnverfallbarkeit-Datum">
                 <name>Datum Unverfallbarkeit</name>
-                <technischerName>DatumUnverfallbarkeit</technischerName>
+                <technischerName>DatUnverfallbarkeit</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
             <!-- AlphaNumFeld Leerstellen (249-255) -->
@@ -4668,10 +4668,10 @@
                 <name>Absoluter Dynamikerhöhungsbetrag in Währungseinheiten</name>
                 <technischerName>AbsoluterDynamikerhoehungsbetragInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld AnteiligerDynamikProzentsatz (192-196) -->
-            <feldreferenz referenz="192-196-AnteiligerDynamikProzentsatz-Fliesskomma">
+            <!-- NumFeld AnteiligerDynamikprozentsatz (192-196) -->
+            <feldreferenz referenz="192-196-AnteiligerDynamikprozentsatz-Fliesskomma">
                 <name>Anteiliger Dynamikprozentsatz</name>
-                <technischerName>AnteiligerDynamikProzentsatz</technischerName>
+                <technischerName>AnteiligerDynamikprozentsatz</technischerName>
             </feldreferenz>
             <!-- NumFeld VereinbarterDynamikmindestanpassungsProzentsatz (197-201) -->
             <feldreferenz referenz="197-201-VereinbarterDynamikmindestanpassungsProzentsatz-Fliesskomma">
@@ -6837,10 +6837,10 @@
                 <name>Satznummer</name>
                 <technischerName>SatzNr</technischerName>
             </feldreferenz>
-            <!-- NumFeld BasisVersssummeInWE (50-63) -->
-            <feldreferenz referenz="050-063-BasisVersssummeInWE-Fliesskomma">
+            <!-- NumFeld BasisVsInWE (50-63) -->
+            <feldreferenz referenz="050-063-BasisVsInWE-Fliesskomma">
                 <name>Basisversicherungssumme in Währungseinheiten</name>
-                <technischerName>BasisVersssummeInWE</technischerName>
+                <technischerName>BasisVsInWE</technischerName>
             </feldreferenz>
             <!-- NumFeld VersssummeAktuellInWE (64-77) -->
             <feldreferenz referenz="064-077-VersssummeAktuellInWE-Fliesskomma">
@@ -7530,10 +7530,10 @@
                 <name>Absoluter Dynamikerhöhungsbetrag in Währungseinheiten</name>
                 <technischerName>AbsoluterDynamikerhoehungsbetragInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld AnteiligerDynamikProzentsatz (192-196) -->
-            <feldreferenz referenz="192-196-AnteiligerDynamikProzentsatz-Fliesskomma">
+            <!-- NumFeld AnteiligerDynamikprozentsatz (192-196) -->
+            <feldreferenz referenz="192-196-AnteiligerDynamikprozentsatz-Fliesskomma">
                 <name>Anteiliger Dynamikprozentsatz</name>
-                <technischerName>AnteiligerDynamikProzentsatz</technischerName>
+                <technischerName>AnteiligerDynamikprozentsatz</technischerName>
             </feldreferenz>
             <!-- NumFeld VereinbarterDynamikmindestanpassungsProzentsatz (197-201) -->
             <feldreferenz referenz="197-201-VereinbarterDynamikmindestanpassungsProzentsatz-Fliesskomma">
@@ -8356,10 +8356,10 @@
                 <name>Absoluter Dynamikerhöhungsbetrag in Währungseinheiten</name>
                 <technischerName>AbsoluterDynamikerhoehungsbetragInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld AnteiligerDynamikProzentsatz (238-242) -->
-            <feldreferenz referenz="238-242-AnteiligerDynamikProzentsatz-Fliesskomma">
+            <!-- NumFeld AnteiligerDynamikprozentsatz (238-242) -->
+            <feldreferenz referenz="238-242-AnteiligerDynamikprozentsatz-Fliesskomma">
                 <name>Anteiliger Dynamikprozentsatz</name>
-                <technischerName>AnteiligerDynamikProzentsatz</technischerName>
+                <technischerName>AnteiligerDynamikprozentsatz</technischerName>
             </feldreferenz>
             <!-- NumFeld VereinbarterDynamikmindestanpassungsProzentsatz (243-247) -->
             <feldreferenz referenz="243-247-VereinbarterDynamikmindestanpassungsProzentsatz-Fliesskomma">
@@ -8457,25 +8457,25 @@
                 <name>Leistungsbeginn ab</name>
                 <technischerName>LeistungsbeginnAb</technischerName>
             </feldreferenz>
-            <!-- NumFeld JahresrenteInWaehrungseinheitenZumBeginnDerAbrufphase (97-110) -->
-            <feldreferenz referenz="097-110-JahresrenteInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+            <!-- NumFeld JahresrenteInWEZumBeginnDerAbrufphase (97-110) -->
+            <feldreferenz referenz="097-110-JahresrenteInWEZumBeginnDerAbrufphase-Fliesskomma">
                 <name>Jahresrente in Währungseinheiten zum Beginn der Abrufphase</name>
-                <technischerName>JahresrenteInWaehrungseinheitenZumBeginnDerAbrufphase</technischerName>
+                <technischerName>JahresrenteInWEZumBeginnDerAbrufphase</technischerName>
             </feldreferenz>
-            <!-- NumFeld KapitalzahlungssummeInWaehrungseinheitenZumBeginnDerAbrufphase (111-124) -->
-            <feldreferenz referenz="111-124-KapitalzahlungssummeInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+            <!-- NumFeld KapitalzahlungssummeInWEZumBeginnDerAbrufphase (111-124) -->
+            <feldreferenz referenz="111-124-KapitalzahlungssummeInWEZumBeginnDerAbrufphase-Fliesskomma">
                 <name>Kapitalzahlungssumme in Währungseinheiten zum Beginn der Abrufphase</name>
-                <technischerName>KapitalzahlungssummeInWaehrungseinheitenZumBeginnDerAbrufphase</technischerName>
+                <technischerName>KapitalzahlungssummeInWEZumBeginnDerAbrufphase</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Teilkapitalisierung (125-125) -->
             <feldreferenz referenz="125-125-Teilkapitalisierung-Alphanumerisch">
                 <name>Teilkapitalisierung</name>
                 <technischerName>Teilkapitalisierung</technischerName>
             </feldreferenz>
-            <!-- NumFeld TodesfallleistungInWaehrungseinheiten (126-139) -->
-            <feldreferenz referenz="126-139-TodesfallleistungInWaehrungseinheiten-Fliesskomma">
+            <!-- NumFeld TodesfallleistungInWE (126-139) -->
+            <feldreferenz referenz="126-139-TodesfallleistungInWE-Fliesskomma">
                 <name>Todesfallleistung in Währungseinheiten</name>
-                <technischerName>TodesfallleistungInWaehrungseinheiten</technischerName>
+                <technischerName>TodesfallleistungInWE</technischerName>
             </feldreferenz>
             <!-- NumFeld EingerechneteZulage (140-153) -->
             <feldreferenz referenz="140-153-EingerechneteZulage-Fliesskomma">
@@ -12799,10 +12799,10 @@
                 <name>Selbstbehalt in Prozent</name>
                 <technischerName>SelbstbehaltInProzent</technischerName>
             </feldreferenz>
-            <!-- NumFeld ArtDesSelbstbehalts (134-134) -->
-            <feldreferenz referenz="134-134-ArtDesSelbstbehalts-Numerisch">
+            <!-- NumFeld ArtSelbstbehalts (134-134) -->
+            <feldreferenz referenz="134-134-ArtSelbstbehalts-Numerisch">
                 <name>Art des Selbstbehalts</name>
-                <technischerName>ArtDesSelbstbehalts</technischerName>
+                <technischerName>ArtSelbstbehalts</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld AusschlussDerBeitragsanpassung (135-135) -->
             <feldreferenz referenz="135-135-AusschlussDerBeitragsanpassung-Alphanumerisch">
@@ -13220,10 +13220,10 @@
                 <name>Heilkosten</name>
                 <technischerName>Heilkost</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld ArtHeilkost (172-172) -->
-            <feldreferenz referenz="172-172-ArtHeilkost-Alphanumerisch">
+            <!-- AlphaNumFeld ArtHeilkosten (172-172) -->
+            <feldreferenz referenz="172-172-ArtHeilkosten-Alphanumerisch">
                 <name>Art der Heilkosten</name>
-                <technischerName>ArtHeilkost</technischerName>
+                <technischerName>ArtHeilkosten</technischerName>
             </feldreferenz>
             <!-- NumFeld HeilkostBeitragssatz (173-179) -->
             <feldreferenz referenz="173-179-HeilkostBeitragssatz-Fliesskomma">
@@ -13506,15 +13506,15 @@
                 <technischerName>Rueckgewaehrdatum</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
-            <!-- NumFeld RueckgewaehrsummeZumAblaufInWaehrungseinheiten (66-79) -->
-            <feldreferenz referenz="066-079-RueckgewaehrsummeZumAblaufInWaehrungseinheiten-Fliesskomma">
+            <!-- NumFeld RueckgewaehrsummeZumAblaufInWE (66-79) -->
+            <feldreferenz referenz="066-079-RueckgewaehrsummeZumAblaufInWE-Fliesskomma">
                 <name>Rückgewährsumme zum Ablauf in Währungseinheiten</name>
-                <technischerName>RueckgewaehrsummeZumAblaufInWaehrungseinheiten</technischerName>
+                <technischerName>RueckgewaehrsummeZumAblaufInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld AblaufleistungInclUeberschussanteileInWaehrungseinheiten (80-93) -->
-            <feldreferenz referenz="080-093-AblaufleistungInclUeberschussanteileInWaehrungseinheiten-Fliesskomma">
+            <!-- NumFeld AblaufleistungInclUeberschussanteileInWE (80-93) -->
+            <feldreferenz referenz="080-093-AblaufleistungInclUeberschussanteileInWE-Fliesskomma">
                 <name>Ablaufleistung incl. Überschussanteile in Währungseinheiten</name>
-                <technischerName>AblaufleistungInclUeberschussanteileInWaehrungseinheiten</technischerName>
+                <technischerName>AblaufleistungInclUeberschussanteileInWE</technischerName>
             </feldreferenz>
             <!-- NumFeld KapitalertragssteuerBeiAblauf (94-107) -->
             <feldreferenz referenz="094-107-KapitalertragssteuerBeiAblauf-Fliesskomma">
@@ -13526,10 +13526,10 @@
                 <name>Solidaritätszuschlag bei Ablauf</name>
                 <technischerName>SolidaritaetszuschlagBeiAblauf</technischerName>
             </feldreferenz>
-            <!-- NumFeld RueckkaufswertZumBerechnugsstichtagInWaehrungseinheiten (122-135) -->
-            <feldreferenz referenz="122-135-RueckkaufswertZumBerechnugsstichtagInWaehrungseinheiten-Fliesskomma">
+            <!-- NumFeld RueckkaufswertZumBerechnungsstichtagInWE (122-135) -->
+            <feldreferenz referenz="122-135-RueckkaufswertZumBerechnungsstichtagInWE-Fliesskomma">
                 <name>Rückkaufswert zum Berechnugsstichtag in Währungseinheiten</name>
-                <technischerName>RueckkaufswertZumBerechnugsstichtagInWaehrungseinheiten</technischerName>
+                <technischerName>RueckkaufswertZumBerechnungsstichtagInWE</technischerName>
             </feldreferenz>
             <!-- Datum BerechnungsstichtagZumRueckkaufswert (136-143) -->
             <feldreferenz referenz="136-143-BerechnungsstichtagZumRueckkaufswert-Datum">
@@ -13547,10 +13547,10 @@
                 <name>Solidaritätszuschlag bei Rückkauf zum Berechnungsstichtag</name>
                 <technischerName>SolidaritaetszuschlagBeiRueckkaufZumBerechnungsstichtag</technischerName>
             </feldreferenz>
-            <!-- NumFeld UeberschussanteileZumBerechnungsstichtagInWaehrungseinheiten (172-185) -->
-            <feldreferenz referenz="172-185-UeberschussanteileZumBerechnungsstichtagInWaehrungseinheiten-Fliesskomma">
+            <!-- NumFeld UeberschussanteileZumBerechnungsstichtagInWE (172-185) -->
+            <feldreferenz referenz="172-185-UeberschussanteileZumBerechnungsstichtagInWE-Fliesskomma">
                 <name>Überschussanteile zum Berechnungsstichtag in Währungseinheiten</name>
-                <technischerName>UeberschussanteileZumBerechnungsstichtagInWaehrungseinheiten</technischerName>
+                <technischerName>UeberschussanteileZumBerechnungsstichtagInWE</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Leerstellen4 (186-249) -->
             <feldreferenz referenz="186-249-Leerstellen4-Alphanumerisch">
@@ -16140,10 +16140,10 @@
                 <name>Absoluter Dynamikerhöhungsbetrag in Währungseinheiten</name>
                 <technischerName>AbsoluterDynamikerhoehungsbetragInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld AnteiligerDynamikProzentsatz (211-215) -->
-            <feldreferenz referenz="211-215-AnteiligerDynamikProzentsatz-Fliesskomma">
+            <!-- NumFeld AnteiligerDynamikprozentsatz (211-215) -->
+            <feldreferenz referenz="211-215-AnteiligerDynamikprozentsatz-Fliesskomma">
                 <name>Anteiliger Dynamikprozentsatz</name>
-                <technischerName>AnteiligerDynamikProzentsatz</technischerName>
+                <technischerName>AnteiligerDynamikprozentsatz</technischerName>
             </feldreferenz>
             <!-- NumFeld VereinbarterDynamikmindestanpassungsProzentsatz (216-220) -->
             <feldreferenz referenz="216-220-VereinbarterDynamikmindestanpassungsProzentsatz-Fliesskomma">
@@ -16166,10 +16166,10 @@
                 <technischerName>BeginnAbrufphase</technischerName>
                 <bemerkung>TTMMJJJJ</bemerkung>
             </feldreferenz>
-            <!-- NumFeld JahresrenteInWaehrungseinheiten (235-248) -->
-            <feldreferenz referenz="235-248-JahresrenteInWaehrungseinheiten-Fliesskomma">
+            <!-- NumFeld JahresrenteInWE (235-248) -->
+            <feldreferenz referenz="235-248-JahresrenteInWE-Fliesskomma">
                 <name>Jahresrente in Währungseinheiten</name>
-                <technischerName>JahresrenteInWaehrungseinheiten</technischerName>
+                <technischerName>JahresrenteInWE</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Leerstellen (249-255) -->
             <feldreferenz referenz="249-255-Leerstellen-Alphanumerisch">
@@ -16257,10 +16257,10 @@
                 <name>Leistungsbeginn ab</name>
                 <technischerName>LeistungsbeginnAb</technischerName>
             </feldreferenz>
-            <!-- NumFeld KapitalzahlungssummeInWaehrungseinheitenZumBeginnDerAbrufphase (127-140) -->
-            <feldreferenz referenz="127-140-KapitalzahlungssummeInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+            <!-- NumFeld KapitalzahlungssummeInWEZumBeginnDerAbrufphase (127-140) -->
+            <feldreferenz referenz="127-140-KapitalzahlungssummeInWEZumBeginnDerAbrufphase-Fliesskomma">
                 <name>Kapitalzahlungssumme in Währungseinheiten zum Beginn der Abrufphase</name>
-                <technischerName>KapitalzahlungssummeInWaehrungseinheitenZumBeginnDerAbrufphase</technischerName>
+                <technischerName>KapitalzahlungssummeInWEZumBeginnDerAbrufphase</technischerName>
             </feldreferenz>
             <!-- NumFeld garantierteFondsjahresrenteZumAblaufInklAbrufphase (141-154) -->
             <feldreferenz referenz="141-154-garantierteFondsjahresrenteZumAblaufInklAbrufphase-Fliesskomma">
@@ -16277,20 +16277,20 @@
                 <name>Aktuelle Fondsjahresrente zum Ablauf (inkl. Abrufphase)</name>
                 <technischerName>AktuelleFondsjahresrenteZumAblaufInklAbrufphase</technischerName>
             </feldreferenz>
-            <!-- NumFeld AktuelleFondsjahresrenteZumBeginnDerAbrufphase (183-196) -->
-            <feldreferenz referenz="183-196-AktuelleFondsjahresrenteZumBeginnDerAbrufphase-Fliesskomma">
+            <!-- NumFeld AktuelleFondsjahresrenteZumBeginnAbrufphase (183-196) -->
+            <feldreferenz referenz="183-196-AktuelleFondsjahresrenteZumBeginnAbrufphase-Fliesskomma">
                 <name>Aktuelle Fondsjahresrente zum Beginn der Abrufphase</name>
-                <technischerName>AktuelleFondsjahresrenteZumBeginnDerAbrufphase</technischerName>
+                <technischerName>AktuelleFondsjahresrenteZumBeginnAbrufphase</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Anlagestrategie (197-226) -->
             <feldreferenz referenz="197-226-Anlagestrategie-Alphanumerisch">
                 <name>Anlagestrategie</name>
                 <technischerName>Anlagestrategie</technischerName>
             </feldreferenz>
-            <!-- NumFeld BeitragssummeInWaehrungseinheiten (227-240) -->
-            <feldreferenz referenz="227-240-BeitragssummeInWaehrungseinheiten-Fliesskomma">
+            <!-- NumFeld BeitragssummeInWE (227-240) -->
+            <feldreferenz referenz="227-240-BeitragssummeInWE-Fliesskomma">
                 <name>Beitragssumme in Währungseinheiten</name>
-                <technischerName>BeitragssummeInWaehrungseinheiten</technischerName>
+                <technischerName>BeitragssummeInWE</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Leerstellen (241-255) -->
             <feldreferenz referenz="241-255-Leerstellen-Alphanumerisch">
@@ -16363,10 +16363,10 @@
                 <name>Teilkapitalisierung</name>
                 <technischerName>Teilkapitalisierung</technischerName>
             </feldreferenz>
-            <!-- NumFeld TodesfallleistungInWaehrungseinheiten (63-76) -->
-            <feldreferenz referenz="063-076-TodesfallleistungInWaehrungseinheiten-Fliesskomma">
+            <!-- NumFeld TodesfallleistungInWE (63-76) -->
+            <feldreferenz referenz="063-076-TodesfallleistungInWE-Fliesskomma">
                 <name>Todesfallleistung in Währungseinheiten</name>
-                <technischerName>TodesfallleistungInWaehrungseinheiten</technischerName>
+                <technischerName>TodesfallleistungInWE</technischerName>
             </feldreferenz>
             <!-- NumFeld EingerechneteZulage (77-90) -->
             <feldreferenz referenz="077-090-EingerechneteZulage-Fliesskomma">
@@ -16804,10 +16804,10 @@
                 <name>Absoluter Dynamikerhöhungsbetrag in Währungseinheiten</name>
                 <technischerName>AbsoluterDynamikerhoehungsbetragInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld AnteiligerDynamikProzentsatz (192-196) -->
-            <feldreferenz referenz="192-196-AnteiligerDynamikProzentsatz-Fliesskomma">
+            <!-- NumFeld AnteiligerDynamikprozentsatz (192-196) -->
+            <feldreferenz referenz="192-196-AnteiligerDynamikprozentsatz-Fliesskomma">
                 <name>Anteiliger Dynamikprozentsatz</name>
-                <technischerName>AnteiligerDynamikProzentsatz</technischerName>
+                <technischerName>AnteiligerDynamikprozentsatz</technischerName>
             </feldreferenz>
             <!-- NumFeld VereinbarterDynamikmindestanpassungsProzentsatz (197-201) -->
             <feldreferenz referenz="197-201-VereinbarterDynamikmindestanpassungsProzentsatz-Fliesskomma">
@@ -19081,10 +19081,10 @@
                 <name>Satznummer</name>
                 <technischerName>SatzNr</technischerName>
             </feldreferenz>
-            <!-- NumFeld BasisVersssummeInWE (52-65) -->
-            <feldreferenz referenz="052-065-BasisVersssummeInWE-Fliesskomma">
+            <!-- NumFeld BasisVsInWE (52-65) -->
+            <feldreferenz referenz="052-065-BasisVsInWE-Fliesskomma">
                 <name>Basisversicherungssumme in Währungseinheiten</name>
-                <technischerName>BasisVersssummeInWE</technischerName>
+                <technischerName>BasisVsInWE</technischerName>
             </feldreferenz>
             <!-- NumFeld VersssummeAktuellInWE (66-79) -->
             <feldreferenz referenz="066-079-VersssummeAktuellInWE-Fliesskomma">
@@ -19156,10 +19156,10 @@
                 <name>Geschäftsstelle / Vermittler</name>
                 <technischerName>GeschaeftsstelleVermittler</technischerName>
             </feldreferenz>
-            <!-- NumFeld ArtDesGeschaeftsvorfalls (43-45) -->
-            <feldreferenz referenz="043-045-ArtDesGeschaeftsvorfalls-Numerisch">
+            <!-- NumFeld ArtGeschaeftsvorfalls (43-45) -->
+            <feldreferenz referenz="043-045-ArtGeschaeftsvorfalls-Numerisch">
                 <name>Art des Geschäftsvorfalls - Kategorie</name>
-                <technischerName>ArtDesGeschaeftsvorfalls</technischerName>
+                <technischerName>ArtGeschaeftsvorfalls</technischerName>
             </feldreferenz>
             <!-- Datum AufgabedatDiesesGeschaeftsvorfalls (46-53) -->
             <feldreferenz referenz="046-053-AufgabedatDiesesGeschaeftsvorfalls-Datum">
@@ -19218,10 +19218,10 @@
                 <name>Kategorie des Geschäftsvorfalls</name>
                 <technischerName>KategorieDesGeschaeftsvorfalls</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld ArtDesGeschaefstvorfallsKlartext (160-179) -->
-            <feldreferenz referenz="160-179-ArtDesGeschaefstvorfallsKlartext-Alphanumerisch">
+            <!-- AlphaNumFeld ArtGeschaefstvorfallsKlartext (160-179) -->
+            <feldreferenz referenz="160-179-ArtGeschaefstvorfallsKlartext-Alphanumerisch">
                 <name>Art des Geschäfstvorfalls - Klartext</name>
-                <technischerName>ArtDesGeschaefstvorfallsKlartext</technischerName>
+                <technischerName>ArtGeschaefstvorfallsKlartext</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Eingangsbestaetigung_erforderlich (180-180) -->
             <feldreferenz referenz="180-180-Eingangsbestaetigung_erforderlich-Alphanumerisch">
@@ -21957,10 +21957,10 @@
                 <name>Versicherungssumme in Währungseinheiten</name>
                 <technischerName>VersssummeInWE</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld ArtSumme2AN (187-188) -->
-            <feldreferenz referenz="187-188-ArtSumme2AN-Alphanumerisch">
+            <!-- AlphaNumFeld ArtSumme (187-188) -->
+            <feldreferenz referenz="187-188-ArtSumme-Alphanumerisch">
                 <name>Art der Summe</name>
-                <technischerName>ArtSumme2AN</technischerName>
+                <technischerName>ArtSumme</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Nachhaftung (189-189) -->
             <feldreferenz referenz="189-189-Nachhaftung-Alphanumerisch">
@@ -23864,10 +23864,10 @@
                 <name>Tierart (Sonstige)</name>
                 <technischerName>TierartSonstige</technischerName>
             </feldreferenz>
-            <!-- NumFeld AnzahlDerVersichertenTiereOhneNamensangabeTiergruppe (93-98) -->
-            <feldreferenz referenz="093-098-AnzahlDerVersichertenTiereOhneNamensangabeTiergruppe-Numerisch">
+            <!-- NumFeld AnzVersichertenTiereOhneNamensangabeTiergruppe (93-98) -->
+            <feldreferenz referenz="093-098-AnzVersichertenTiereOhneNamensangabeTiergruppe-Numerisch">
                 <name>Anzahl der versicherten Tiere ohne Namensangabe (Tiergruppe)</name>
-                <technischerName>AnzahlDerVersichertenTiereOhneNamensangabeTiergruppe</technischerName>
+                <technischerName>AnzVersichertenTiereOhneNamensangabeTiergruppe</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld RisikoOrt (99-123) -->
             <feldreferenz referenz="099-123-RisikoOrt-Alphanumerisch">
@@ -23982,20 +23982,20 @@
                 <name>Sterilisation / Kastration</name>
                 <technischerName>SterilisationKastration</technischerName>
             </feldreferenz>
-            <!-- NumFeld ArtDerTierkennzeichnung (99-99) -->
-            <feldreferenz referenz="099-099-ArtDerTierkennzeichnung-Numerisch">
+            <!-- NumFeld ArtTierkennzeichnung (99-99) -->
+            <feldreferenz referenz="099-099-ArtTierkennzeichnung-Numerisch">
                 <name>Art der Tierkennzeichnung</name>
-                <technischerName>ArtDerTierkennzeichnung</technischerName>
+                <technischerName>ArtTierkennzeichnung</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Tierkennzeichnungsdetails (100-124) -->
             <feldreferenz referenz="100-124-Tierkennzeichnungsdetails-Alphanumerisch">
                 <name>Tierkennzeichnungsdetails</name>
                 <technischerName>Tierkennzeichnungsdetails</technischerName>
             </feldreferenz>
-            <!-- NumFeld ArtDerHaltung (125-125) -->
-            <feldreferenz referenz="125-125-ArtDerHaltung-Numerisch">
+            <!-- NumFeld ArtHaltung (125-125) -->
+            <feldreferenz referenz="125-125-ArtHaltung-Numerisch">
                 <name>Art der Haltung</name>
-                <technischerName>ArtDerHaltung</technischerName>
+                <technischerName>ArtHaltung</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Verwendungszweck (126-145) -->
             <feldreferenz referenz="126-145-Verwendungszweck-Alphanumerisch">
@@ -24032,10 +24032,10 @@
                 <name>Selbstbehalt in %</name>
                 <technischerName>SelbstbehaltIn</technischerName>
             </feldreferenz>
-            <!-- NumFeld ArtDesSelbstbehalts (192-192) -->
-            <feldreferenz referenz="192-192-ArtDesSelbstbehalts-Numerisch">
+            <!-- NumFeld ArtSelbstbehalts (192-192) -->
+            <feldreferenz referenz="192-192-ArtSelbstbehalts-Numerisch">
                 <name>Art des Selbstbehalts</name>
-                <technischerName>ArtDesSelbstbehalts</technischerName>
+                <technischerName>ArtSelbstbehalts</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Altersdynamik (193-193) -->
             <feldreferenz referenz="193-193-Altersdynamik-Alphanumerisch">
@@ -25518,10 +25518,10 @@
                 <name>Absoluter Dynamikerhöhungsbetrag</name>
                 <technischerName>AbsoluterDynamikerhoehungsbetrag</technischerName>
             </feldreferenz>
-            <!-- NumFeld AnteiligerDynamikProzentsatz (185-189) -->
-            <feldreferenz referenz="185-189-AnteiligerDynamikProzentsatz-Fliesskomma">
+            <!-- NumFeld AnteiligerDynamikprozentsatz (185-189) -->
+            <feldreferenz referenz="185-189-AnteiligerDynamikprozentsatz-Fliesskomma">
                 <name>Anteiliger Dynamikprozentsatz</name>
-                <technischerName>AnteiligerDynamikProzentsatz</technischerName>
+                <technischerName>AnteiligerDynamikprozentsatz</technischerName>
             </feldreferenz>
             <!-- NumFeld VereinbarterDynamikmindestanpassungsProzentsatz (190-194) -->
             <feldreferenz referenz="190-194-VereinbarterDynamikmindestanpassungsProzentsatz-Fliesskomma">
@@ -25625,20 +25625,20 @@
                 <name>lfd. Nummer zur Wagnisart</name>
                 <technischerName>LfdNrZurWagnisart</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErlebensfallVSInWaehrungseinheitenZumBeginnDerAbrufphase (62-75) -->
-            <feldreferenz referenz="062-075-ErlebensfallVSInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+            <!-- NumFeld ErlebensfallVSInWEZumBeginnDerAbrufphase (62-75) -->
+            <feldreferenz referenz="062-075-ErlebensfallVSInWEZumBeginnDerAbrufphase-Fliesskomma">
                 <name>Erlebensfall VS in Währungseinheiten zum Beginn der Abrufphase</name>
-                <technischerName>ErlebensfallVSInWaehrungseinheitenZumBeginnDerAbrufphase</technischerName>
+                <technischerName>ErlebensfallVSInWEZumBeginnDerAbrufphase</technischerName>
             </feldreferenz>
-            <!-- NumFeld TodesfallVSInWaehrungseinheitenZumBeginnDerAbrufphase (76-89) -->
-            <feldreferenz referenz="076-089-TodesfallVSInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+            <!-- NumFeld TodesfallVSInWEZumBeginnDerAbrufphase (76-89) -->
+            <feldreferenz referenz="076-089-TodesfallVSInWEZumBeginnDerAbrufphase-Fliesskomma">
                 <name>Todesfall VS in Währungseinheiten zum Beginn der Abrufphase</name>
-                <technischerName>TodesfallVSInWaehrungseinheitenZumBeginnDerAbrufphase</technischerName>
+                <technischerName>TodesfallVSInWEZumBeginnDerAbrufphase</technischerName>
             </feldreferenz>
-            <!-- NumFeld ErlebensfallVSIIInWaehrungseinheitenZumBeginnDerAbrufphase (90-103) -->
-            <feldreferenz referenz="090-103-ErlebensfallVSIIInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+            <!-- NumFeld ErlebensfallVSIIInWEZumBeginnDerAbrufphase (90-103) -->
+            <feldreferenz referenz="090-103-ErlebensfallVSIIInWEZumBeginnDerAbrufphase-Fliesskomma">
                 <name>Erlebensfall VS II in Währungseinheiten zum Beginn der Abrufphase</name>
-                <technischerName>ErlebensfallVSIIInWaehrungseinheitenZumBeginnDerAbrufphase</technischerName>
+                <technischerName>ErlebensfallVSIIInWEZumBeginnDerAbrufphase</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Leerstellen (104-255) -->
             <feldreferenz referenz="104-255-Leerstellen-Alphanumerisch">
@@ -27422,10 +27422,10 @@
                 <name>Staatsangehörigkeit</name>
                 <technischerName>Staatsangehoerigkeit</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld AdressKennzeichen (237-238) -->
-            <feldreferenz referenz="237-238-AdressKennzeichen-Alphanumerisch">
+            <!-- AlphaNumFeld Adresskennzeichen (237-238) -->
+            <feldreferenz referenz="237-238-Adresskennzeichen-Alphanumerisch">
                 <name>Adresskennzeichen</name>
-                <technischerName>AdressKennzeichen</technischerName>
+                <technischerName>Adresskennzeichen</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld AktenzeichenSicherungsglaeubigers (239-250) -->
             <feldreferenz referenz="239-250-AktenzeichenSicherungsglaeubigers-Alphanumerisch">
@@ -27966,10 +27966,10 @@
                 <name>Rolle Unterzeichner</name>
                 <technischerName>RolleUnterzeichner</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld ArtDerSignatur (186-187) -->
-            <feldreferenz referenz="186-187-ArtDerSignatur-Alphanumerisch">
+            <!-- AlphaNumFeld ArtSignatur (186-187) -->
+            <feldreferenz referenz="186-187-ArtSignatur-Alphanumerisch">
                 <name>Art der Signatur</name>
-                <technischerName>ArtDerSignatur</technischerName>
+                <technischerName>ArtSignatur</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Uebermittlungsweg (188-189) -->
             <feldreferenz referenz="188-189-Uebermittlungsweg-Alphanumerisch">
@@ -30742,10 +30742,10 @@
                 <name>Geschäftsstelle / Vermittler</name>
                 <technischerName>GeschaeftsstelleVermittler</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld ArtSumme3AN (43-45) -->
-            <feldreferenz referenz="043-045-ArtSumme3AN-Alphanumerisch">
+            <!-- AlphaNumFeld ArtSumme (43-45) -->
+            <feldreferenz referenz="043-045-ArtSumme-Alphanumerisch">
                 <name>Art der Summe</name>
-                <technischerName>ArtSumme3AN</technischerName>
+                <technischerName>ArtSumme</technischerName>
             </feldreferenz>
             <!-- NumFeld VersssummeEntschaedigungsgrenzeInWE (46-59) -->
             <feldreferenz referenz="046-059-VersssummeEntschaedigungsgrenzeInWE-Fliesskomma">
@@ -31559,10 +31559,10 @@
                 <name>Absoluter Dynamikerhöhungsbetrag in Währungseinheiten</name>
                 <technischerName>AbsoluterDynamikerhoehungsbetragInWE</technischerName>
             </feldreferenz>
-            <!-- NumFeld AnteiligerDynamikProzentsatz (185-189) -->
-            <feldreferenz referenz="185-189-AnteiligerDynamikProzentsatz-Fliesskomma">
+            <!-- NumFeld AnteiligerDynamikprozentsatz (185-189) -->
+            <feldreferenz referenz="185-189-AnteiligerDynamikprozentsatz-Fliesskomma">
                 <name>Anteiliger Dynamikprozentsatz</name>
-                <technischerName>AnteiligerDynamikProzentsatz</technischerName>
+                <technischerName>AnteiligerDynamikprozentsatz</technischerName>
             </feldreferenz>
             <!-- NumFeld VereinbarterDynamikmindestanpassungsProzentsatz (190-194) -->
             <feldreferenz referenz="190-194-VereinbarterDynamikmindestanpassungsProzentsatz-Fliesskomma">
@@ -32367,12 +32367,12 @@
             <bytes>2</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="043-045-ArtDesGeschaeftsvorfalls-Numerisch">
+        <feld referenz="043-045-ArtGeschaeftsvorfalls-Numerisch">
             <name>Art des Geschäftsvorfalls - Kategorie</name>
             <bytes>3</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="043-045-ArtSumme3AN-Alphanumerisch">
+        <feld referenz="043-045-ArtSumme-Alphanumerisch">
             <name>Art der Summe</name>
             <bytes>3</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -33363,7 +33363,7 @@
             <bytes>2</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="049-051-ArtDerLeistung-Numerisch">
+        <feld referenz="049-051-ArtLeistung-Numerisch">
             <name>Art der Leistung</name>
             <bytes>3</bytes>
             <datentyp>Numerisch</datentyp>
@@ -33485,7 +33485,7 @@
             <bytes>9</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="050-063-BasisVersssummeInWE-Fliesskomma">
+        <feld referenz="050-063-BasisVsInWE-Fliesskomma">
             <name>Basisversicherungssumme in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -33697,7 +33697,7 @@
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
         </feld>
-        <feld referenz="052-065-BasisVersssummeInWE-Fliesskomma">
+        <feld referenz="052-065-BasisVsInWE-Fliesskomma">
             <name>Basisversicherungssumme in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -34296,7 +34296,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="062-075-ErlebensfallVSInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+        <feld referenz="062-075-ErlebensfallVSInWEZumBeginnDerAbrufphase-Fliesskomma">
             <name>Erlebensfall VS in Währungseinheiten zum Beginn der Abrufphase</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -34416,7 +34416,7 @@
             <bytes>12</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="063-076-TodesfallleistungInWaehrungseinheiten-Fliesskomma">
+        <feld referenz="063-076-TodesfallleistungInWE-Fliesskomma">
             <name>Todesfallleistung in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -34723,7 +34723,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="066-079-RueckgewaehrsummeZumAblaufInWaehrungseinheiten-Fliesskomma">
+        <feld referenz="066-079-RueckgewaehrsummeZumAblaufInWE-Fliesskomma">
             <name>Rückgewährsumme zum Ablauf in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -34750,7 +34750,7 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="067-069-ArtSumme3AN-Alphanumerisch">
+        <feld referenz="067-069-ArtSumme-Alphanumerisch">
             <name>Art der Summe</name>
             <bytes>3</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -35508,7 +35508,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="076-089-TodesfallVSInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+        <feld referenz="076-089-TodesfallVSInWEZumBeginnDerAbrufphase-Fliesskomma">
             <name>Todesfall VS in Währungseinheiten zum Beginn der Abrufphase</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -35866,7 +35866,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="080-093-AblaufleistungInclUeberschussanteileInWaehrungseinheiten-Fliesskomma">
+        <feld referenz="080-093-AblaufleistungInclUeberschussanteileInWE-Fliesskomma">
             <name>Ablaufleistung incl. Überschussanteile in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -35970,7 +35970,7 @@
             <bytes>2</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="082-084-LaufendeNummerZurArtDerLeistung-Numerisch">
+        <feld referenz="082-084-LaufendeNrZurArtLeistung-Numerisch">
             <name>Laufende Nummer zur Art der Leistung</name>
             <bytes>3</bytes>
             <datentyp>Numerisch</datentyp>
@@ -36209,7 +36209,7 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="085-086-ArtDerAuszahlung-Numerisch">
+        <feld referenz="085-086-ArtAuszahlung-Numerisch">
             <name>Art der Auszahlung</name>
             <bytes>2</bytes>
             <datentyp>Numerisch</datentyp>
@@ -36726,7 +36726,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="090-103-ErlebensfallVSIIInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+        <feld referenz="090-103-ErlebensfallVSIIInWEZumBeginnDerAbrufphase-Fliesskomma">
             <name>Erlebensfall VS II in Währungseinheiten zum Beginn der Abrufphase</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -36754,7 +36754,7 @@
             <bytes>2</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="091-093-ArtSumme3N-Numerisch">
+        <feld referenz="091-093-ArtSumme-Numerisch">
             <name>Art der Summe</name>
             <bytes>3</bytes>
             <datentyp>Numerisch</datentyp>
@@ -36959,7 +36959,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="093-098-AnzahlDerVersichertenTiereOhneNamensangabeTiergruppe-Numerisch">
+        <feld referenz="093-098-AnzVersichertenTiereOhneNamensangabeTiergruppe-Numerisch">
             <name>Anzahl der versicherten Tiere ohne Namensangabe (Tiergruppe)</name>
             <bytes>6</bytes>
             <datentyp>Numerisch</datentyp>
@@ -37317,7 +37317,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="097-110-JahresrenteInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+        <feld referenz="097-110-JahresrenteInWEZumBeginnDerAbrufphase-Fliesskomma">
             <name>Jahresrente in Währungseinheiten zum Beginn der Abrufphase</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -37417,7 +37417,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="098-109-BasisVersssummeInWE-Numerisch">
+        <feld referenz="098-109-BasisVsInWE-Numerisch">
             <name>Basisversicherungssumme in Währungseinheiten</name>
             <bytes>12</bytes>
             <datentyp>Numerisch</datentyp>
@@ -37433,7 +37433,7 @@
             <bytes>159</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="099-099-ArtDerTierkennzeichnung-Numerisch">
+        <feld referenz="099-099-ArtTierkennzeichnung-Numerisch">
             <name>Art der Tierkennzeichnung</name>
             <bytes>1</bytes>
             <datentyp>Numerisch</datentyp>
@@ -38537,7 +38537,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="111-124-KapitalzahlungssummeInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+        <feld referenz="111-124-KapitalzahlungssummeInWEZumBeginnDerAbrufphase-Fliesskomma">
             <name>Kapitalzahlungssumme in Währungseinheiten zum Beginn der Abrufphase</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -38583,7 +38583,7 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="112-113-ArtDesBeitragssatzes-Alphanumerisch">
+        <feld referenz="112-113-ArtBeitragssatzes-Alphanumerisch">
             <name>Art des Beitragssatzes</name>
             <bytes>2</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -38900,7 +38900,7 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="117-117-ArtdersteuerlichenFoerderung-Alphanumerisch">
+        <feld referenz="117-117-ArtSteuerlichenFoerderung-Alphanumerisch">
             <name>Art der steuerlichen Förderung</name>
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -39361,7 +39361,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="122-135-RueckkaufswertZumBerechnugsstichtagInWaehrungseinheiten-Fliesskomma">
+        <feld referenz="122-135-RueckkaufswertZumBerechnungsstichtagInWE-Fliesskomma">
             <name>Rückkaufswert zum Berechnugsstichtag in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -39550,7 +39550,7 @@
             <bytes>50</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="125-125-ArtDerHaltung-Numerisch">
+        <feld referenz="125-125-ArtHaltung-Numerisch">
             <name>Art der Haltung</name>
             <bytes>1</bytes>
             <datentyp>Numerisch</datentyp>
@@ -39685,7 +39685,7 @@
             <bytes>12</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="126-139-TodesfallleistungInWaehrungseinheiten-Fliesskomma">
+        <feld referenz="126-139-TodesfallleistungInWE-Fliesskomma">
             <name>Todesfallleistung in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -39738,7 +39738,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="127-140-KapitalzahlungssummeInWaehrungseinheitenZumBeginnDerAbrufphase-Fliesskomma">
+        <feld referenz="127-140-KapitalzahlungssummeInWEZumBeginnDerAbrufphase-Fliesskomma">
             <name>Kapitalzahlungssumme in Währungseinheiten zum Beginn der Abrufphase</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -40268,7 +40268,7 @@
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="134-134-ArtDesSelbstbehalts-Numerisch">
+        <feld referenz="134-134-ArtSelbstbehalts-Numerisch">
             <name>Art des Selbstbehalts</name>
             <bytes>1</bytes>
             <datentyp>Numerisch</datentyp>
@@ -40848,7 +40848,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="141-141-BauartklasseN-Numerisch">
+        <feld referenz="141-141-Bauartklasse-Numerisch">
             <name>Bauartklasse</name>
             <bytes>1</bytes>
             <datentyp>Numerisch</datentyp>
@@ -42327,7 +42327,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="160-179-ArtDesGeschaefstvorfallsKlartext-Alphanumerisch">
+        <feld referenz="160-179-ArtGeschaefstvorfallsKlartext-Alphanumerisch">
             <name>Art des Geschäfstvorfalls - Klartext</name>
             <bytes>20</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -43122,7 +43122,7 @@
             <bytes>41</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="172-172-ArtHeilkost-Alphanumerisch">
+        <feld referenz="172-172-ArtHeilkosten-Alphanumerisch">
             <name>Art der Heilkosten</name>
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -43185,7 +43185,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="172-185-UeberschussanteileZumBerechnungsstichtagInWaehrungseinheiten-Fliesskomma">
+        <feld referenz="172-185-UeberschussanteileZumBerechnungsstichtagInWE-Fliesskomma">
             <name>Überschussanteile zum Berechnungsstichtag in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -43948,7 +43948,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="183-196-AktuelleFondsjahresrenteZumBeginnDerAbrufphase-Fliesskomma">
+        <feld referenz="183-196-AktuelleFondsjahresrenteZumBeginnAbrufphase-Fliesskomma">
             <name>Aktuelle Fondsjahresrente zum Beginn der Abrufphase</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -44041,7 +44041,7 @@
             <bytes>3</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="185-189-AnteiligerDynamikProzentsatz-Fliesskomma">
+        <feld referenz="185-189-AnteiligerDynamikprozentsatz-Fliesskomma">
             <name>Anteiliger Dynamikprozentsatz</name>
             <bytes>5</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -44078,7 +44078,7 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="186-187-ArtDerSignatur-Alphanumerisch">
+        <feld referenz="186-187-ArtSignatur-Alphanumerisch">
             <name>Art der Signatur</name>
             <bytes>2</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -44120,7 +44120,7 @@
             <bytes>70</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="187-188-ArtSumme2AN-Alphanumerisch">
+        <feld referenz="187-188-ArtSumme-Alphanumerisch">
             <name>Art der Summe</name>
             <bytes>2</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -44435,7 +44435,7 @@
             <bytes>66</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="192-192-ArtDesSelbstbehalts-Numerisch">
+        <feld referenz="192-192-ArtSelbstbehalts-Numerisch">
             <name>Art des Selbstbehalts</name>
             <bytes>1</bytes>
             <datentyp>Numerisch</datentyp>
@@ -44480,7 +44480,7 @@
             <bytes>4</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="192-196-AnteiligerDynamikProzentsatz-Fliesskomma">
+        <feld referenz="192-196-AnteiligerDynamikprozentsatz-Fliesskomma">
             <name>Anteiliger Dynamikprozentsatz</name>
             <bytes>5</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -45543,7 +45543,7 @@
             <bytes>3</bytes>
             <datentyp>Numerisch</datentyp>
         </feld>
-        <feld referenz="211-215-AnteiligerDynamikProzentsatz-Fliesskomma">
+        <feld referenz="211-215-AnteiligerDynamikprozentsatz-Fliesskomma">
             <name>Anteiliger Dynamikprozentsatz</name>
             <bytes>5</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -46219,7 +46219,7 @@
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
         </feld>
-        <feld referenz="227-240-BeitragssummeInWaehrungseinheiten-Fliesskomma">
+        <feld referenz="227-240-BeitragssummeInWE-Fliesskomma">
             <name>Beitragssumme in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -46536,7 +46536,7 @@
             <bytes>10</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="235-248-JahresrenteInWaehrungseinheiten-Fliesskomma">
+        <feld referenz="235-248-JahresrenteInWE-Fliesskomma">
             <name>Jahresrente in Währungseinheiten</name>
             <bytes>14</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -46593,7 +46593,7 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="237-238-AdressKennzeichen-Alphanumerisch">
+        <feld referenz="237-238-Adresskennzeichen-Alphanumerisch">
             <name>Adresskennzeichen</name>
             <bytes>2</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -46666,7 +46666,7 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="238-242-AnteiligerDynamikProzentsatz-Fliesskomma">
+        <feld referenz="238-242-AnteiligerDynamikprozentsatz-Fliesskomma">
             <name>Anteiliger Dynamikprozentsatz</name>
             <bytes>5</bytes>
             <datentyp>Fliesskomma</datentyp>
@@ -46773,7 +46773,7 @@
             <bytes>6</bytes>
             <datentyp>Datum</datentyp>
         </feld>
-        <feld referenz="241-248-DatumUnverfallbarkeit-Datum">
+        <feld referenz="241-248-DatUnverfallbarkeit-Datum">
             <name>Datum Unverfallbarkeit</name>
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
