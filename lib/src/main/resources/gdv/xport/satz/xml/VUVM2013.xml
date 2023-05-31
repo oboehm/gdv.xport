@@ -49,10 +49,10 @@
 				<name>Adressat</name>
 				<technischerName>Adressat</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ErstellungsDatumZeitraumVomZeitraumBis(70-85) -->
-			<feldreferenz referenz="070-085-ErstellungsDatumZeitraumVomZeitraumBis-Numerisch">
+			<!-- NumFeld ErstellungsDatZeitraumVomZeitraumBis(70-85) -->
+			<feldreferenz referenz="070-085-ErstellungsDatZeitraumVomZeitraumBis-Numerisch">
 				<name>Erstellungs-Datum, Zeitraum von, Zeitraum bis</name>
-				<technischerName>ErstellungsDatumZeitraumVomZeitraumBis</technischerName>
+				<technischerName>ErstellungsDatZeitraumVomZeitraumBis</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschaeftsstelleVermittler (86-95) -->
 			<feldreferenz referenz="086-095-GeschaeftsstelleVermittler-Alphanumerisch">
@@ -353,10 +353,10 @@
 				<name>Adressat</name>
 				<technischerName>Adressat</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ErstellungsDatumZeitraumVomZeitraumBis(70-85) -->
-			<feldreferenz referenz="070-085-ErstellungsDatumZeitraumVomZeitraumBis-Numerisch">
+			<!-- NumFeld ErstellungsDatZeitraumVomZeitraumBis(70-85) -->
+			<feldreferenz referenz="070-085-ErstellungsDatZeitraumVomZeitraumBis-Numerisch">
 				<name>Erstellungs-Datum, Zeitraum von, Zeitraum bis</name>
-				<technischerName>ErstellungsDatumZeitraumVomZeitraumBis</technischerName>
+				<technischerName>ErstellungsDatZeitraumVomZeitraumBis</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschaeftsstelleVermittler (86-95) -->
 			<feldreferenz referenz="086-095-GeschaeftsstelleVermittler-Alphanumerisch">
@@ -647,10 +647,10 @@
 				<name>Adressat</name>
 				<technischerName>Adressat</technischerName>
 			</feldreferenz>
-			<!-- NumFeld ErstellungsDatumZeitraumVomZeitraumBis(70-85) -->
-			<feldreferenz referenz="070-085-ErstellungsDatumZeitraumVomZeitraumBis-Numerisch">
+			<!-- NumFeld ErstellungsDatZeitraumVomZeitraumBis(70-85) -->
+			<feldreferenz referenz="070-085-ErstellungsDatZeitraumVomZeitraumBis-Numerisch">
 				<name>Erstellungs-Datum, Zeitraum von, Zeitraum bis</name>
-				<technischerName>ErstellungsDatumZeitraumVomZeitraumBis</technischerName>
+				<technischerName>ErstellungsDatZeitraumVomZeitraumBis</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschaeftsstelleVermittler (86-95) -->
 			<feldreferenz referenz="086-095-GeschaeftsstelleVermittler-Alphanumerisch">
@@ -1564,10 +1564,10 @@
 				<name>Durchführungsweg</name>
 				<technischerName>Durchfuehrungsweg</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld FinanzierungDerZusage (120-120) -->
-			<feldreferenz referenz="120-120-FinanzierungDerZusage-Alphanumerisch">
+			<!-- AlphaNumFeld FinanzierungZusage (120-120) -->
+			<feldreferenz referenz="120-120-FinanzierungZusage-Alphanumerisch">
 				<name>Finanzierung der Zusage</name>
-				<technischerName>FinanzierungDerZusage</technischerName>
+				<technischerName>FinanzierungZusage</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld UnterstuetzungskasseSchluessel (121-124) -->
 			<feldreferenz referenz="121-124-UnterstuetzungskasseSchluessel-Alphanumerisch">
@@ -1594,10 +1594,10 @@
 				<name>Kollektiv-Nr.</name>
 				<technischerName>KollektivNr</technischerName>
 			</feldreferenz>
-			<!-- Datum FaelligkeitDerLetztenBeitragszahlung (224-231) -->
-			<feldreferenz referenz="224-231-FaelligkeitDerLetztenBeitragszahlung-Datum">
+			<!-- Datum FaelligkeitLetztenBeitragszahlung (224-231) -->
+			<feldreferenz referenz="224-231-FaelligkeitLetztenBeitragszahlung-Datum">
 				<name>Fälligkeit der letzten Beitragszahlung</name>
-				<technischerName>FaelligkeitDerLetztenBeitragszahlung</technischerName>
+				<technischerName>FaelligkeitLetztenBeitragszahlung</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld LebenslangeBeitragszahlung (232-232) -->
@@ -3885,20 +3885,20 @@
 				<name>lfd. Nummer zur Wagnisart</name>
 				<technischerName>LfdNrZurWagnisart</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld NameVP (62-91) -->
-			<feldreferenz referenz="062-091-NameVP-Alphanumerisch">
+			<!-- AlphaNumFeld NameVp (62-91) -->
+			<feldreferenz referenz="062-091-NameVp-Alphanumerisch">
 				<name>Name der VP</name>
-				<technischerName>NameVP</technischerName>
+				<technischerName>NameVp</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld VornameVP (92-121) -->
-			<feldreferenz referenz="092-121-VornameVP-Alphanumerisch">
+			<!-- AlphaNumFeld VornameVp (92-121) -->
+			<feldreferenz referenz="092-121-VornameVp-Alphanumerisch">
 				<name>Vorname der VP</name>
-				<technischerName>VornameVP</technischerName>
+				<technischerName>VornameVp</technischerName>
 			</feldreferenz>
-			<!-- Datum GeburtsdatVp (122-129) -->
-			<feldreferenz referenz="122-129-GeburtsdatVp-Datum">
+			<!-- Datum GeburtsdatumVp (122-129) -->
+			<feldreferenz referenz="122-129-GeburtsdatumVp-Datum">
 				<name>Geburtsdatum der VP</name>
-				<technischerName>GeburtsdatVp</technischerName>
+				<technischerName>GeburtsdatumVp</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschlechtVp (130-130) -->
@@ -3921,10 +3921,10 @@
 				<name>Anzahl der versicherten Personen</name>
 				<technischerName>AnzVersichertenPersonen</technischerName>
 			</feldreferenz>
-			<!-- Datum Geburtsdat2Vp (165-172) -->
-			<feldreferenz referenz="165-172-Geburtsdat2Vp-Datum">
+			<!-- Datum Geburtsdatum2Vp (165-172) -->
+			<feldreferenz referenz="165-172-Geburtsdatum2Vp-Datum">
 				<name>Geburtsdatum der 2. VP</name>
-				<technischerName>Geburtsdat2Vp</technischerName>
+				<technischerName>Geburtsdatum2Vp</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld PersonenKundenNrVersicherers (173-189) -->
@@ -3956,10 +3956,10 @@
 				<technischerName>StatusSeit</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- AlphaNumFeld Sozialversicherung (225-236) -->
+			<!-- AlphaNumFeld SozialVersNr (225-236) -->
 			<feldreferenz referenz="225-236-Sozialversicherung-Alphanumerisch">
 				<name>Sozialversicherung Nummer</name>
-				<technischerName>Sozialversicherung</technischerName>
+				<technischerName>SozialVersNr</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Staatsangehoerigkeit (237-239) -->
 			<feldreferenz referenz="237-239-Staatsangehoerigkeit-Alphanumerisch">
@@ -4608,10 +4608,10 @@
 				<name>Garantierter Steigerungssatz bei BU</name>
 				<technischerName>GarantierterSteigerungssatzBeiBU</technischerName>
 			</feldreferenz>
-			<!-- NumFeld SteigerungssatzFuerBURente (234-238) -->
-			<feldreferenz referenz="234-238-SteigerungssatzFuerBURente-Fliesskomma">
+			<!-- NumFeld SteigerungssatzBURente (234-238) -->
+			<feldreferenz referenz="234-238-SteigerungssatzBURente-Fliesskomma">
 				<name>Steigerungssatz für BU-Rente</name>
-				<technischerName>SteigerungssatzFuerBURente</technischerName>
+				<technischerName>SteigerungssatzBURente</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (239-255) -->
 			<feldreferenz referenz="239-255-Leerstellen-Alphanumerisch">
@@ -7210,10 +7210,10 @@
 				<name>lfd. Nummer zur Wagnisart</name>
 				<technischerName>LfdNrZurWagnisart</technischerName>
 			</feldreferenz>
-			<!-- NumFeld LfdNummerDesFonds (62-65) -->
-			<feldreferenz referenz="062-065-LfdNummerDesFonds-Numerisch">
+			<!-- NumFeld LfdNrFonds (62-65) -->
+			<feldreferenz referenz="062-065-LfdNrFonds-Numerisch">
 				<name>Lfd. Nummer des Fonds</name>
-				<technischerName>LfdNummerDesFonds</technischerName>
+				<technischerName>LfdNrFonds</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Wertpapierkennnummer (66-71) -->
 			<feldreferenz referenz="066-071-Wertpapierkennnummer-Alphanumerisch">
@@ -8661,10 +8661,10 @@
 				<name>Kapitalzahlungssumme inkl. Gewinnbeteiligung in WE</name>
 				<technischerName>KapitalzahlungssummeInklGewinnbeteiligungInWE</technischerName>
 			</feldreferenz>
-			<!-- Datum TerminDerBerechnung (186-191) -->
-			<feldreferenz referenz="186-191-TerminDerBerechnung-Datum">
+			<!-- Datum TerminBerechnung (186-191) -->
+			<feldreferenz referenz="186-191-TerminBerechnung-Datum">
 				<name>Termin der Berechnung</name>
-				<technischerName>TerminDerBerechnung</technischerName>
+				<technischerName>TerminBerechnung</technischerName>
 				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Altersvorsorgevermoegen (192-205) -->
@@ -8748,10 +8748,10 @@
 				<name>Geschäftsstelle / Vermittler</name>
 				<technischerName>GeschaeftsstelleVermittler</technischerName>
 			</feldreferenz>
-			<!-- NumFeld LfdNummerDerVersichertenPersonVPPersonengruppe (43-48) -->
-			<feldreferenz referenz="043-048-LfdNummerDerVersichertenPersonVPPersonengruppe-Numerisch">
+			<!-- NumFeld LfdNummerDerVersichertenPersonVpPersonengruppe (43-48) -->
+			<feldreferenz referenz="043-048-LfdNummerDerVersichertenPersonVpPersonengruppe-Numerisch">
 				<name>Lfd. Nummer der versicherten Person (VP) / Personengruppe</name>
-				<technischerName>LfdNummerDerVersichertenPersonVPPersonengruppe</technischerName>
+				<technischerName>LfdNummerDerVersichertenPersonVpPersonengruppe</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Erkrankungen (49-49) -->
 			<feldreferenz referenz="049-049-Erkrankungen-Alphanumerisch">
@@ -9213,10 +9213,10 @@
 				<name>Kennung Erhöhungssatz</name>
 				<technischerName>KennungErhoehungssatz</technischerName>
 			</feldreferenz>
-			<!-- NumFeld Erhoehungssatz8IIIAHB (174-178) -->
-			<feldreferenz referenz="174-178-Erhoehungssatz8IIIAHB-Fliesskomma">
+			<!-- NumFeld Erhoehungssatz8IiiAhb (174-178) -->
+			<feldreferenz referenz="174-178-Erhoehungssatz8IiiAhb-Fliesskomma">
 				<name>Erhöhungssatz § 8, III AHB</name>
-				<technischerName>Erhoehungssatz8IIIAHB</technischerName>
+				<technischerName>Erhoehungssatz8IiiAhb</technischerName>
 			</feldreferenz>
 			<!-- Datum LetzteErhoehung8IiiAhb (179-186) -->
 			<feldreferenz referenz="179-186-LetzteErhoehung8IiiAhb-Datum">
@@ -13034,10 +13034,10 @@
 				<name>Vertragsform</name>
 				<technischerName>Vertragsform</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld VorversicherungBeiVU (193-197) -->
-			<feldreferenz referenz="193-197-VorversicherungBeiVU-Alphanumerisch">
+			<!-- AlphaNumFeld VorVersBeiVu (193-197) -->
+			<feldreferenz referenz="193-197-VorVersBeiVu-Alphanumerisch">
 				<name>Vorversicherung bei VU</name>
-				<technischerName>VorversicherungBeiVU</technischerName>
+				<technischerName>VorVersBeiVu</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld VersicherungsscheinnummerDerVorversicherung (198-214) -->
 			<feldreferenz referenz="198-214-VersicherungsscheinnummerDerVorversicherung-Alphanumerisch">
@@ -13130,25 +13130,25 @@
 				<name>Bezeichnung Personengruppe</name>
 				<technischerName>BezeichnungPersonengruppe</technischerName>
 			</feldreferenz>
-			<!-- NumFeld AnzVPProPersonengruppe (80-85) -->
-			<feldreferenz referenz="080-085-AnzVPProPersonengruppe-Numerisch">
+			<!-- NumFeld AnzVpProPersonengruppe (80-85) -->
+			<feldreferenz referenz="080-085-AnzVpProPersonengruppe-Numerisch">
 				<name>Anzahl der VP pro Personengruppe</name>
-				<technischerName>AnzVPProPersonengruppe</technischerName>
+				<technischerName>AnzVpProPersonengruppe</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld NameVP (86-115) -->
-			<feldreferenz referenz="086-115-NameVP-Alphanumerisch">
+			<!-- AlphaNumFeld NameVp (86-115) -->
+			<feldreferenz referenz="086-115-NameVp-Alphanumerisch">
 				<name>Name der VP</name>
-				<technischerName>NameVP</technischerName>
+				<technischerName>NameVp</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld VornameVP (116-145) -->
-			<feldreferenz referenz="116-145-VornameVP-Alphanumerisch">
+			<!-- AlphaNumFeld VornameVp (116-145) -->
+			<feldreferenz referenz="116-145-VornameVp-Alphanumerisch">
 				<name>Vorname der VP</name>
-				<technischerName>VornameVP</technischerName>
+				<technischerName>VornameVp</technischerName>
 			</feldreferenz>
-			<!-- Datum GeburtsdatVp (146-153) -->
-			<feldreferenz referenz="146-153-GeburtsdatVp-Datum">
+			<!-- Datum GeburtsdatumVp (146-153) -->
+			<feldreferenz referenz="146-153-GeburtsdatumVp-Datum">
 				<name>Geburtsdatum der VP</name>
-				<technischerName>GeburtsdatVp</technischerName>
+				<technischerName>GeburtsdatumVp</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschlechtVp (154-154) -->
@@ -13201,16 +13201,16 @@
 				<name>Beitrag pro VP oder pro Personengruppe in Währungseinheiten</name>
 				<technischerName>BeitragProVpOderProPersonengruppeInWE</technischerName>
 			</feldreferenz>
-			<!-- Datum EinschlussdatVPPersonengruppe (216-223) -->
-			<feldreferenz referenz="216-223-EinschlussdatVPPersonengruppe-Datum">
+			<!-- Datum EinschlussdatVpPersonengruppe (216-223) -->
+			<feldreferenz referenz="216-223-EinschlussdatVpPersonengruppe-Datum">
 				<name>Einschlussdatum VP / Personengruppe</name>
-				<technischerName>EinschlussdatVPPersonengruppe</technischerName>
+				<technischerName>EinschlussdatVpPersonengruppe</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum AusschlussdatumVPPersonengruppe (224-231) -->
-			<feldreferenz referenz="224-231-AusschlussdatumVPPersonengruppe-Datum">
+			<!-- Datum AusschlussdatumVpPersonengruppe (224-231) -->
+			<feldreferenz referenz="224-231-AusschlussdatumVpPersonengruppe-Datum">
 				<name>Ausschlussdatum VP / Personengruppe</name>
-				<technischerName>AusschlussdatumVPPersonengruppe</technischerName>
+				<technischerName>AusschlussdatumVpPersonengruppe</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- Datum Aenderungsdatum (232-239) -->
@@ -13229,15 +13229,15 @@
 				<name>passives Kriegsrisiko</name>
 				<technischerName>PassivesKriegsrisiko</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld KuendigungsklauselVPPersonengruppeGestrichen (242-242) -->
-			<feldreferenz referenz="242-242-KuendigungsklauselVPPersonengruppeGestrichen-Alphanumerisch">
+			<!-- AlphaNumFeld KuendigungsklauselVpPersonengruppeGestrichen (242-242) -->
+			<feldreferenz referenz="242-242-KuendigungsklauselVpPersonengruppeGestrichen-Alphanumerisch">
 				<name>Kündigungsklausel VP/ Personengruppe gestrichen</name>
-				<technischerName>KuendigungsklauselVPPersonengruppeGestrichen</technischerName>
+				<technischerName>KuendigungsklauselVpPersonengruppeGestrichen</technischerName>
 			</feldreferenz>
-			<!-- NumFeld EintrittsalterVP (243-244) -->
-			<feldreferenz referenz="243-244-EintrittsalterVP-Numerisch">
+			<!-- NumFeld EintrittsalterVp (243-244) -->
+			<feldreferenz referenz="243-244-EintrittsalterVp-Numerisch">
 				<name>Eintrittsalter der VP</name>
-				<technischerName>EintrittsalterVP</technischerName>
+				<technischerName>EintrittsalterVp</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Altersgruppe (245-246) -->
 			<feldreferenz referenz="245-246-Altersgruppe-Alphanumerisch">
@@ -13415,10 +13415,10 @@
 				<name>Heilkosten</name>
 				<technischerName>Heilkost</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld ArtHeilkosten (172-172) -->
-			<feldreferenz referenz="172-172-ArtHeilkosten-Alphanumerisch">
+			<!-- AlphaNumFeld ArtHeilkost (172-172) -->
+			<feldreferenz referenz="172-172-ArtHeilkost-Alphanumerisch">
 				<name>Art der Heilkosten</name>
-				<technischerName>ArtHeilkosten</technischerName>
+				<technischerName>ArtHeilkost</technischerName>
 			</feldreferenz>
 			<!-- NumFeld HeilkostBeitragssatz (173-179) -->
 			<feldreferenz referenz="173-179-HeilkostBeitragssatz-Fliesskomma">
@@ -13843,10 +13843,10 @@
 				<name>Referenznummer</name>
 				<technischerName>Referenznummer</technischerName>
 			</feldreferenz>
-			<!-- Datum GeburtsdatumDerBezugsberechtigtenPerson (107-114) -->
-			<feldreferenz referenz="107-114-GeburtsdatumDerBezugsberechtigtenPerson-Datum">
+			<!-- Datum GeburtsdatumBezugsberechtigtenPerson (107-114) -->
+			<feldreferenz referenz="107-114-GeburtsdatumBezugsberechtigtenPerson-Datum">
 				<name>Geburtsdatum der bezugsberechtigten Person</name>
-				<technischerName>GeburtsdatumDerBezugsberechtigtenPerson</technischerName>
+				<technischerName>GeburtsdatumBezugsberechtigtenPerson</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (115-249) -->
@@ -16457,15 +16457,15 @@
 				<name>Kapitalzahlungssumme in Währungseinheiten zum Beginn der Abrufphase</name>
 				<technischerName>KapitalzahlungssummeInWEZumBeginnDerAbrufphase</technischerName>
 			</feldreferenz>
-			<!-- NumFeld garantierteFondsjahresrenteZumAblaufInklAbrufphase (141-154) -->
-			<feldreferenz referenz="141-154-garantierteFondsjahresrenteZumAblaufInklAbrufphase-Fliesskomma">
+			<!-- NumFeld GarantierteFondsjahresrenteZumAblaufInklAbrufphase (141-154) -->
+			<feldreferenz referenz="141-154-GarantierteFondsjahresrenteZumAblaufInklAbrufphase-Fliesskomma">
 				<name>Garantierte Fondsjahresrente zum Ablauf (inkl. Abrufphase)</name>
-				<technischerName>garantierteFondsjahresrenteZumAblaufInklAbrufphase</technischerName>
+				<technischerName>GarantierteFondsjahresrenteZumAblaufInklAbrufphase</technischerName>
 			</feldreferenz>
-			<!-- NumFeld GarantierteFondsjahresrenteZumBeginnDerAbrufphase (155-168) -->
-			<feldreferenz referenz="155-168-GarantierteFondsjahresrenteZumBeginnDerAbrufphase-Fliesskomma">
+			<!-- NumFeld GarantierteFondsjahresrenteZumBeginnAbrufphase (155-168) -->
+			<feldreferenz referenz="155-168-GarantierteFondsjahresrenteZumBeginnAbrufphase-Fliesskomma">
 				<name>Garantierte Fondsjahresrente zum Beginn der Abrufphase</name>
-				<technischerName>GarantierteFondsjahresrenteZumBeginnDerAbrufphase</technischerName>
+				<technischerName>GarantierteFondsjahresrenteZumBeginnAbrufphase</technischerName>
 			</feldreferenz>
 			<!-- NumFeld AktuelleFondsjahresrenteZumAblaufInklAbrufphase (169-182) -->
 			<feldreferenz referenz="169-182-AktuelleFondsjahresrenteZumAblaufInklAbrufphase-Fliesskomma">
@@ -16583,10 +16583,10 @@
 				<name>Kapitalzahlungssumme inkl. Gewinnbeteiligung in WE</name>
 				<technischerName>KapitalzahlungssummeInklGewinnbeteiligungInWE</technischerName>
 			</feldreferenz>
-			<!-- Datum TerminDerBerechnung (123-128) -->
-			<feldreferenz referenz="123-128-TerminDerBerechnung-Datum">
+			<!-- Datum TerminBerechnung (123-128) -->
+			<feldreferenz referenz="123-128-TerminBerechnung-Datum">
 				<name>Termin der Berechnung</name>
-				<technischerName>TerminDerBerechnung</technischerName>
+				<technischerName>TerminBerechnung</technischerName>
 				<bemerkung>MMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Altersvorsorgevermoegen (129-142) -->
@@ -17693,10 +17693,10 @@
 				<name>Kreisgemeindeschlüssel</name>
 				<technischerName>Kreisgemeindeschluessel</technischerName>
 			</feldreferenz>
-			<!-- NumFeld KreisgemeindeschlüsselZusatzinformation (194-194) -->
-			<feldreferenz referenz="194-194-KreisgemeindeschlüsselZusatzinformation-Numerisch">
+			<!-- NumFeld KreisgemeindeschluesselZusatzinformation (194-194) -->
+			<feldreferenz referenz="194-194-KreisgemeindeschluesselZusatzinformation-Numerisch">
 				<name>Kreisgemeindeschlüssel Zusatzinformation</name>
-				<technischerName>KreisgemeindeschlüsselZusatzinformation</technischerName>
+				<technischerName>KreisgemeindeschluesselZusatzinformation</technischerName>
 			</feldreferenz>
 			<!-- Datum BeginnVersicherungsschutz (195-202) -->
 			<feldreferenz referenz="195-202-BeginnVersicherungsschutz-Datum">
@@ -18162,25 +18162,25 @@
 				<name>Personenstatus</name>
 				<technischerName>Personenstatus</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld NameVersichertenPersonVP (51-80) -->
-			<feldreferenz referenz="051-080-NameVersichertenPersonVP-Alphanumerisch">
+			<!-- AlphaNumFeld NameVersichertenPersonVp (51-80) -->
+			<feldreferenz referenz="051-080-NameVersichertenPersonVp-Alphanumerisch">
 				<name>Name der versicherten Person (VP)</name>
-				<technischerName>NameVersichertenPersonVP</technischerName>
+				<technischerName>NameVersichertenPersonVp</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld VornameVersichertenPersonVP (81-110) -->
-			<feldreferenz referenz="081-110-VornameVersichertenPersonVP-Alphanumerisch">
+			<!-- AlphaNumFeld VornameVersichertenPersonVp (81-110) -->
+			<feldreferenz referenz="081-110-VornameVersichertenPersonVp-Alphanumerisch">
 				<name>Vorname der versicherten Person (VP)</name>
-				<technischerName>VornameVersichertenPersonVP</technischerName>
+				<technischerName>VornameVersichertenPersonVp</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld TitelVP (111-130) -->
-			<feldreferenz referenz="111-130-TitelVP-Alphanumerisch">
+			<!-- AlphaNumFeld TitelVp (111-130) -->
+			<feldreferenz referenz="111-130-TitelVp-Alphanumerisch">
 				<name>Titel der VP</name>
-				<technischerName>TitelVP</technischerName>
+				<technischerName>TitelVp</technischerName>
 			</feldreferenz>
-			<!-- Datum GeburtsdatVp (131-138) -->
-			<feldreferenz referenz="131-138-GeburtsdatVp-Datum">
+			<!-- Datum GeburtsdatumVp (131-138) -->
+			<feldreferenz referenz="131-138-GeburtsdatumVp-Datum">
 				<name>Geburtsdatum der VP</name>
-				<technischerName>GeburtsdatVp</technischerName>
+				<technischerName>GeburtsdatumVp</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Staatsangehoerigkeit (139-141) -->
@@ -19499,10 +19499,10 @@
 				<name>Eingangsbestätigung erforderlich</name>
 				<technischerName>Eingangsbestaetigung_erforderlich</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld RegistrierungsnummerVermittler (181-195) -->
-			<feldreferenz referenz="181-195-RegistrierungsnummerVermittler-Alphanumerisch">
+			<!-- AlphaNumFeld RegistrierungsNrVermittler (181-195) -->
+			<feldreferenz referenz="181-195-RegistrierungsNrVermittler-Alphanumerisch">
 				<name>Registrierungsnummer Vermittler</name>
-				<technischerName>RegistrierungsnummerVermittler</technischerName>
+				<technischerName>RegistrierungsNrVermittler</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (196-255) -->
 			<feldreferenz referenz="196-255-Leerstellen-Alphanumerisch">
@@ -20372,10 +20372,10 @@
 				<name>Produktname</name>
 				<technischerName>Produktname</technischerName>
 			</feldreferenz>
-			<!-- NumFeld RatenzahlungszuschlagIn (134-138) -->
-			<feldreferenz referenz="134-138-RatenzahlungszuschlagIn-Fliesskomma">
+			<!-- NumFeld RatenzahlungszuschlagInProz (134-138) -->
+			<feldreferenz referenz="134-138-RatenzahlungszuschlagInProz-Fliesskomma">
 				<name>Ratenzahlungszuschlag in %</name>
-				<technischerName>RatenzahlungszuschlagIn</technischerName>
+				<technischerName>RatenzahlungszuschlagInProz</technischerName>
 			</feldreferenz>
 			<!-- Datum Antragseingangsdatum (139-146) -->
 			<feldreferenz referenz="139-146-Antragseingangsdatum-Datum">
@@ -20389,15 +20389,15 @@
 				<technischerName>Policierungsdatum</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- AlphaNumFeld RegistrierungsnummerVermittler (155-169) -->
-			<feldreferenz referenz="155-169-RegistrierungsnummerVermittler-Alphanumerisch">
+			<!-- AlphaNumFeld RegistrierungsNrVermittler (155-169) -->
+			<feldreferenz referenz="155-169-RegistrierungsNrVermittler-Alphanumerisch">
 				<name>Registrierungsnummer Vermittler</name>
-				<technischerName>RegistrierungsnummerVermittler</technischerName>
+				<technischerName>RegistrierungsNrVermittler</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld InternesOrdnungsmerkmalDesVM (170-219) -->
-			<feldreferenz referenz="170-219-InternesOrdnungsmerkmalDesVM-Alphanumerisch">
+			<!-- AlphaNumFeld InternesOrdnungsmerkmalVM (170-219) -->
+			<feldreferenz referenz="170-219-InternesOrdnungsmerkmalVM-Alphanumerisch">
 				<name>Internes Ordnungsmerkmal des VM</name>
-				<technischerName>InternesOrdnungsmerkmalDesVM</technischerName>
+				<technischerName>InternesOrdnungsmerkmalVM</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Vertragsverbindungsnummer (220-236) -->
 			<feldreferenz referenz="220-236-Vertragsverbindungsnummer-Alphanumerisch">
@@ -21363,15 +21363,15 @@
 				<name>Selbstbeteiligung in %</name>
 				<technischerName>SelbstbeteiligungInProz</technischerName>
 			</feldreferenz>
-			<!-- NumFeld SelbstbeteiligungInWeMind (98-109) -->
-			<feldreferenz referenz="098-109-SelbstbeteiligungInWeMind-Fliesskomma">
+			<!-- NumFeld SelbstbeteiligungInWEMind (98-109) -->
+			<feldreferenz referenz="098-109-SelbstbeteiligungInWEMind-Fliesskomma">
 				<name>Selbstbeteiligung in WE (mind.)</name>
-				<technischerName>SelbstbeteiligungInWeMind</technischerName>
+				<technischerName>SelbstbeteiligungInWEMind</technischerName>
 			</feldreferenz>
-			<!-- NumFeld SelbstbeteiligungInWeMax (110-121) -->
-			<feldreferenz referenz="110-121-SelbstbeteiligungInWeMax-Fliesskomma">
+			<!-- NumFeld SelbstbeteiligungInWEMax (110-121) -->
+			<feldreferenz referenz="110-121-SelbstbeteiligungInWEMax-Fliesskomma">
 				<name>Selbstbeteiligung in WE (max.)</name>
-				<technischerName>SelbstbeteiligungInWeMax</technischerName>
+				<technischerName>SelbstbeteiligungInWEMax</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Geltungsbereich (122-151) -->
 			<feldreferenz referenz="122-151-Geltungsbereich-Alphanumerisch">
@@ -21993,15 +21993,15 @@
 				<name>Selbstbeteiligung in %</name>
 				<technischerName>SelbstbeteiligungInProz</technischerName>
 			</feldreferenz>
-			<!-- NumFeld SelbstbeteiligungInWeMind (170-181) -->
-			<feldreferenz referenz="170-181-SelbstbeteiligungInWeMind-Fliesskomma">
+			<!-- NumFeld SelbstbeteiligungInWEMind (170-181) -->
+			<feldreferenz referenz="170-181-SelbstbeteiligungInWEMind-Fliesskomma">
 				<name>Selbstbeteiligung in WE (mind.)</name>
-				<technischerName>SelbstbeteiligungInWeMind</technischerName>
+				<technischerName>SelbstbeteiligungInWEMind</technischerName>
 			</feldreferenz>
-			<!-- NumFeld SelbstbeteiligungInWeMax (182-193) -->
-			<feldreferenz referenz="182-193-SelbstbeteiligungInWeMax-Fliesskomma">
+			<!-- NumFeld SelbstbeteiligungInWEMax (182-193) -->
+			<feldreferenz referenz="182-193-SelbstbeteiligungInWEMax-Fliesskomma">
 				<name>Selbstbeteiligung in WE (max.)</name>
-				<technischerName>SelbstbeteiligungInWeMax</technischerName>
+				<technischerName>SelbstbeteiligungInWEMax</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (194-255) -->
 			<feldreferenz referenz="194-255-Leerstellen-Alphanumerisch">
@@ -22741,15 +22741,15 @@
 				<name>Selbstbeteiligung in %</name>
 				<technischerName>SelbstbeteiligungInProz</technischerName>
 			</feldreferenz>
-			<!-- NumFeld SelbstbeteiligungInWeMind (98-109) -->
-			<feldreferenz referenz="098-109-SelbstbeteiligungInWeMind-Fliesskomma">
+			<!-- NumFeld SelbstbeteiligungInWEMind (98-109) -->
+			<feldreferenz referenz="098-109-SelbstbeteiligungInWEMind-Fliesskomma">
 				<name>Selbstbeteiligung in WE (mind.)</name>
-				<technischerName>SelbstbeteiligungInWeMind</technischerName>
+				<technischerName>SelbstbeteiligungInWEMind</technischerName>
 			</feldreferenz>
-			<!-- NumFeld SelbstbeteiligungInWeMax (110-121) -->
-			<feldreferenz referenz="110-121-SelbstbeteiligungInWeMax-Fliesskomma">
+			<!-- NumFeld SelbstbeteiligungInWEMax (110-121) -->
+			<feldreferenz referenz="110-121-SelbstbeteiligungInWEMax-Fliesskomma">
 				<name>Selbstbeteiligung in WE (max.)</name>
-				<technischerName>SelbstbeteiligungInWeMax</technischerName>
+				<technischerName>SelbstbeteiligungInWEMax</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Geltungsbereich (122-151) -->
 			<feldreferenz referenz="122-151-Geltungsbereich-Alphanumerisch">
@@ -23148,15 +23148,15 @@
 				<name>Selbstbeteiligung in %</name>
 				<technischerName>SelbstbeteiligungInProz</technischerName>
 			</feldreferenz>
-			<!-- NumFeld SelbstbeteiligungInWeMind (98-109) -->
-			<feldreferenz referenz="098-109-SelbstbeteiligungInWeMind-Fliesskomma">
+			<!-- NumFeld SelbstbeteiligungInWEMind (98-109) -->
+			<feldreferenz referenz="098-109-SelbstbeteiligungInWEMind-Fliesskomma">
 				<name>Selbstbeteiligung in WE (mind.)</name>
-				<technischerName>SelbstbeteiligungInWeMind</technischerName>
+				<technischerName>SelbstbeteiligungInWEMind</technischerName>
 			</feldreferenz>
-			<!-- NumFeld SelbstbeteiligungInWeMax (110-121) -->
-			<feldreferenz referenz="110-121-SelbstbeteiligungInWeMax-Fliesskomma">
+			<!-- NumFeld SelbstbeteiligungInWEMax (110-121) -->
+			<feldreferenz referenz="110-121-SelbstbeteiligungInWEMax-Fliesskomma">
 				<name>Selbstbeteiligung in WE (max.)</name>
-				<technischerName>SelbstbeteiligungInWeMax</technischerName>
+				<technischerName>SelbstbeteiligungInWEMax</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Geltungsbereich (122-151) -->
 			<feldreferenz referenz="122-151-Geltungsbereich-Alphanumerisch">
@@ -24107,10 +24107,10 @@
 				<name>Geschäftsstelle / Vermittler</name>
 				<technischerName>GeschaeftsstelleVermittler</technischerName>
 			</feldreferenz>
-			<!-- NumFeld LaufendeNummerDesVersichertenTieres1 (43-46) -->
-			<feldreferenz referenz="043-046-LaufendeNummerDesVersichertenTieres1-Numerisch">
+			<!-- NumFeld LaufendeNrVersichertenTieres1 (43-46) -->
+			<feldreferenz referenz="043-046-LaufendeNrVersichertenTieres1-Numerisch">
 				<name>Laufende Nummer des versicherten Tieres</name>
-				<technischerName>LaufendeNummerDesVersichertenTieres1</technischerName>
+				<technischerName>LaufendeNrVersichertenTieres1</technischerName>
 			</feldreferenz>
 			<!-- Datum Einschlussdatum (47-54) -->
 			<feldreferenz referenz="047-054-Einschlussdatum-Datum">
@@ -24135,10 +24135,10 @@
 				<name>Tierart</name>
 				<technischerName>Tierart</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld TierartSonstige (73-92) -->
-			<feldreferenz referenz="073-092-TierartSonstige-Alphanumerisch">
+			<!-- AlphaNumFeld TierartSonst (73-92) -->
+			<feldreferenz referenz="073-092-TierartSonst-Alphanumerisch">
 				<name>Tierart (Sonstige)</name>
-				<technischerName>TierartSonstige</technischerName>
+				<technischerName>TierartSonst</technischerName>
 			</feldreferenz>
 			<!-- NumFeld AnzVersichertenTiereOhneNamensangabeTiergruppe (93-98) -->
 			<feldreferenz referenz="093-098-AnzVersichertenTiereOhneNamensangabeTiergruppe-Numerisch">
@@ -24176,15 +24176,15 @@
 				<technischerName>Wartezeit</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- AlphaNumFeld NameDesTieres (172-201) -->
-			<feldreferenz referenz="172-201-NameDesTieres-Alphanumerisch">
+			<!-- AlphaNumFeld NameTieres (172-201) -->
+			<feldreferenz referenz="172-201-NameTieres-Alphanumerisch">
 				<name>Name des Tieres</name>
-				<technischerName>NameDesTieres</technischerName>
+				<technischerName>NameTieres</technischerName>
 			</feldreferenz>
-			<!-- Datum GeburtsdatumDesTieres (202-209) -->
-			<feldreferenz referenz="202-209-GeburtsdatumDesTieres-Datum">
+			<!-- Datum GeburtsdatumTieres (202-209) -->
+			<feldreferenz referenz="202-209-GeburtsdatumTieres-Datum">
 				<name>Geburtsdatum des Tieres</name>
-				<technischerName>GeburtsdatumDesTieres</technischerName>
+				<technischerName>GeburtsdatumTieres</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (210-255) -->
@@ -24238,10 +24238,10 @@
 				<name>Geschäftsstelle / Vermittler</name>
 				<technischerName>GeschaeftsstelleVermittler</technischerName>
 			</feldreferenz>
-			<!-- NumFeld LaufendeNummerDesVersichertenTieres2 (43-46) -->
-			<feldreferenz referenz="043-046-LaufendeNummerDesVersichertenTieres2-Numerisch">
+			<!-- NumFeld LaufendeNrVersichertenTieres2 (43-46) -->
+			<feldreferenz referenz="043-046-LaufendeNrVersichertenTieres2-Numerisch">
 				<name>Laufende Nummer des versicherten Tieres</name>
-				<technischerName>LaufendeNummerDesVersichertenTieres2</technischerName>
+				<technischerName>LaufendeNrVersichertenTieres2</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Rasse (47-96) -->
 			<feldreferenz referenz="047-096-Rasse-Alphanumerisch">
@@ -26354,10 +26354,10 @@
 				<name>Nachhaftung</name>
 				<technischerName>Nachhaftung</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld KombinationsschluesselEc (154-162) -->
-			<feldreferenz referenz="154-162-KombinationsschluesselEc-Alphanumerisch">
+			<!-- AlphaNumFeld KombinationsschluesselEC (154-162) -->
+			<feldreferenz referenz="154-162-KombinationsschluesselEC-Alphanumerisch">
 				<name>Kombinationsschlüssel (EC)</name>
-				<technischerName>KombinationsschluesselEc</technischerName>
+				<technischerName>KombinationsschluesselEC</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld StatistischesHauptkontoRisikokennziffer (163-166) -->
 			<feldreferenz referenz="163-166-StatistischesHauptkontoRisikokennziffer-Alphanumerisch">
@@ -27469,10 +27469,10 @@
 				<name>Vorzeichen</name>
 				<technischerName>Vorzeichen1</technischerName>
 			</feldreferenz>
-			<!-- NumFeld SchadenbearbeitungskostinWE (154-166) -->
-			<feldreferenz referenz="154-166-SchadenbearbeitungskostinWE-Fliesskomma">
+			<!-- NumFeld SchadenbearbeitungskostInWE (154-166) -->
+			<feldreferenz referenz="154-166-SchadenbearbeitungskostInWE-Fliesskomma">
 				<name>Schadenbearbeitungskosten in Währungseinheiten</name>
-				<technischerName>SchadenbearbeitungskostinWE</technischerName>
+				<technischerName>SchadenbearbeitungskostInWE</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Vorzeichen2 (167-167) -->
 			<feldreferenz referenz="167-167-Vorzeichen2-Alphanumerisch">
@@ -27584,10 +27584,10 @@
 				<name>Schadenursache - alle Sparten</name>
 				<technischerName>SchadenursacheAlleSparten</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld InternesOrdnungsmerkmalDesVM (47-96) -->
-			<feldreferenz referenz="047-096-InternesOrdnungsmerkmalDesVM-Alphanumerisch">
+			<!-- AlphaNumFeld InternesOrdnungsmerkmalVM (47-96) -->
+			<feldreferenz referenz="047-096-InternesOrdnungsmerkmalVM-Alphanumerisch">
 				<name>Internes Ordnungsmerkmal des VM</name>
-				<technischerName>InternesOrdnungsmerkmalDesVM</technischerName>
+				<technischerName>InternesOrdnungsmerkmalVM</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld Referenznummer (97-103) -->
 			<feldreferenz referenz="097-103-Referenznummer-Alphanumerisch">
@@ -28244,15 +28244,15 @@
 				<name>Geburtsland</name>
 				<technischerName>Geburtsland</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld SteuernummerBeiJuristischenPersonen (110-126) -->
-			<feldreferenz referenz="110-126-SteuernummerBeiJuristischenPersonen-Alphanumerisch">
+			<!-- AlphaNumFeld SteuerNrBeiJuristischenPersonen (110-126) -->
+			<feldreferenz referenz="110-126-SteuerNrBeiJuristischenPersonen-Alphanumerisch">
 				<name>Steuernummer bei juristischen Personen</name>
-				<technischerName>SteuernummerBeiJuristischenPersonen</technischerName>
+				<technischerName>SteuerNrBeiJuristischenPersonen</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld UmsatzsteuerIdentifikationsnummer (127-143) -->
-			<feldreferenz referenz="127-143-UmsatzsteuerIdentifikationsnummer-Alphanumerisch">
+			<!-- AlphaNumFeld UmsatzsteuerIdentifikationsNr (127-143) -->
+			<feldreferenz referenz="127-143-UmsatzsteuerIdentifikationsNr-Alphanumerisch">
 				<name>Umsatzsteuer-Identifikationsnummer</name>
-				<technischerName>UmsatzsteuerIdentifikationsnummer</technischerName>
+				<technischerName>UmsatzsteuerIdentifikationsNr</technischerName>
 			</feldreferenz>
 			<!-- AlphaNumFeld VorsteuerabszugsberechtigungJaNein (144-144) -->
 			<feldreferenz referenz="144-144-VorsteuerabszugsberechtigungJaNein-Alphanumerisch">
@@ -28274,15 +28274,15 @@
 				<name>Referenznummer</name>
 				<technischerName>Referenznummer</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld SEPAGlaeubigeridentifikationsnummer (160-194) -->
-			<feldreferenz referenz="160-194-SEPAGlaeubigeridentifikationsnummer-Alphanumerisch">
+			<!-- AlphaNumFeld SEPAGlaeubigeridentifikationsNr (160-194) -->
+			<feldreferenz referenz="160-194-SEPAGlaeubigeridentifikationsNr-Alphanumerisch">
 				<name>SEPA-Gläubigeridentifikationsnummer</name>
-				<technischerName>SEPAGlaeubigeridentifikationsnummer</technischerName>
+				<technischerName>SEPAGlaeubigeridentifikationsNr</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld SEPAMandatReferenznummer (195-229) -->
-			<feldreferenz referenz="195-229-SEPAMandatReferenznummer-Alphanumerisch">
+			<!-- AlphaNumFeld SEPAMandatReferenzNr (195-229) -->
+			<feldreferenz referenz="195-229-SEPAMandatReferenzNr-Alphanumerisch">
 				<name>SEPA-Mandatum Referenznummer</name>
-				<technischerName>SEPAMandatReferenznummer</technischerName>
+				<technischerName>SEPAMandatReferenzNr</technischerName>
 			</feldreferenz>
 			<!-- Datum SEPAMandatAusstellungsdatum (230-237) -->
 			<feldreferenz referenz="230-237-SEPAMandatAusstellungsdatum-Datum">
@@ -32873,12 +32873,12 @@
 			<bytes>4</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="043-046-LaufendeNummerDesVersichertenTieres1-Numerisch">
+		<feld referenz="043-046-LaufendeNrVersichertenTieres1-Numerisch">
 			<name>Laufende Nummer des versicherten Tieres</name>
 			<bytes>4</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="043-046-LaufendeNummerDesVersichertenTieres2-Numerisch">
+		<feld referenz="043-046-LaufendeNrVersichertenTieres2-Numerisch">
 			<name>Laufende Nummer des versicherten Tieres</name>
 			<bytes>4</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -32968,7 +32968,7 @@
 			<bytes>6</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="043-048-LfdNummerDerVersichertenPersonVPPersonengruppe-Numerisch">
+		<feld referenz="043-048-LfdNummerDerVersichertenPersonVpPersonengruppe-Numerisch">
 			<name>Lfd. Nummer der versicherten Person (VP) / Personengruppe</name>
 			<bytes>6</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -33662,7 +33662,7 @@
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="047-096-InternesOrdnungsmerkmalDesVM-Alphanumerisch">
+		<feld referenz="047-096-InternesOrdnungsmerkmalVM-Alphanumerisch">
 			<name>Internes Ordnungsmerkmal des VM</name>
 			<bytes>50</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -34108,7 +34108,7 @@
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="051-080-NameVersichertenPersonVP-Alphanumerisch">
+		<feld referenz="051-080-NameVersichertenPersonVp-Alphanumerisch">
 			<name>Name der versicherten Person (VP)</name>
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -34740,7 +34740,7 @@
 			<bytes>3</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="062-065-LfdNummerDesFonds-Numerisch">
+		<feld referenz="062-065-LfdNrFonds-Numerisch">
 			<name>Lfd. Nummer des Fonds</name>
 			<bytes>4</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -34824,7 +34824,7 @@
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="062-091-NameVP-Alphanumerisch">
+		<feld referenz="062-091-NameVp-Alphanumerisch">
 			<name>Name der VP</name>
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -35532,7 +35532,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="070-085-ErstellungsDatumZeitraumVomZeitraumBis-Numerisch">
+		<feld referenz="070-085-ErstellungsDatZeitraumVomZeitraumBis-Numerisch">
 			<name>Erstellungs-Datum, Zeitraum von, Zeitraum bis</name>
 			<bytes>16</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -35792,7 +35792,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="073-092-TierartSonstige-Alphanumerisch">
+		<feld referenz="073-092-TierartSonst-Alphanumerisch">
 			<name>Tierart (Sonstige)</name>
 			<bytes>20</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -36311,7 +36311,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="080-085-AnzVPProPersonengruppe-Numerisch">
+		<feld referenz="080-085-AnzVpProPersonengruppe-Numerisch">
 			<name>Anzahl der VP pro Personengruppe</name>
 			<bytes>6</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -36421,7 +36421,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="081-110-VornameVersichertenPersonVP-Alphanumerisch">
+		<feld referenz="081-110-VornameVersichertenPersonVp-Alphanumerisch">
 			<name>Vorname der versicherten Person (VP)</name>
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -36880,7 +36880,7 @@
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="086-115-NameVP-Alphanumerisch">
+		<feld referenz="086-115-NameVp-Alphanumerisch">
 			<name>Name der VP</name>
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -37408,7 +37408,7 @@
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="092-121-VornameVP-Alphanumerisch">
+		<feld referenz="092-121-VornameVp-Alphanumerisch">
 			<name>Vorname der VP</name>
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -37925,7 +37925,7 @@
 			<bytes>12</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="098-109-SelbstbeteiligungInWeMind-Fliesskomma">
+		<feld referenz="098-109-SelbstbeteiligungInWEMind-Fliesskomma">
 			<name>Selbstbeteiligung in WE (mind.)</name>
 			<bytes>12</bytes>
 			<datentyp>Fliesskomma</datentyp>
@@ -38647,7 +38647,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="107-114-GeburtsdatumDerBezugsberechtigtenPerson-Datum">
+		<feld referenz="107-114-GeburtsdatumBezugsberechtigtenPerson-Datum">
 			<name>Geburtsdatum der bezugsberechtigten Person</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -38967,13 +38967,13 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="110-121-SelbstbeteiligungInWeMax-Fliesskomma">
+		<feld referenz="110-121-SelbstbeteiligungInWEMax-Fliesskomma">
 			<name>Selbstbeteiligung in WE (max.)</name>
 			<bytes>12</bytes>
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="110-126-SteuernummerBeiJuristischenPersonen-Alphanumerisch">
+		<feld referenz="110-126-SteuerNrBeiJuristischenPersonen-Alphanumerisch">
 			<name>Steuernummer bei juristischen Personen</name>
 			<bytes>17</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -39073,7 +39073,7 @@
 			<bytes>17</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="111-130-TitelVP-Alphanumerisch">
+		<feld referenz="111-130-TitelVp-Alphanumerisch">
 			<name>Titel der VP</name>
 			<bytes>20</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -39410,7 +39410,7 @@
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="116-145-VornameVP-Alphanumerisch">
+		<feld referenz="116-145-VornameVp-Alphanumerisch">
 			<name>Vorname der VP</name>
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -39658,7 +39658,7 @@
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="120-120-FinanzierungDerZusage-Alphanumerisch">
+		<feld referenz="120-120-FinanzierungZusage-Alphanumerisch">
 			<name>Finanzierung der Zusage</name>
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -39865,7 +39865,7 @@
 			<bytes>4</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="122-129-GeburtsdatVp-Datum">
+		<feld referenz="122-129-GeburtsdatumVp-Datum">
 			<name>Geburtsdatum der VP</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -39960,7 +39960,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="123-128-TerminDerBerechnung-Datum">
+		<feld referenz="123-128-TerminBerechnung-Datum">
 			<name>Termin der Berechnung</name>
 			<bytes>6</bytes>
 			<datentyp>Datum</datentyp>
@@ -40284,7 +40284,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="127-143-UmsatzsteuerIdentifikationsnummer-Alphanumerisch">
+		<feld referenz="127-143-UmsatzsteuerIdentifikationsNr-Alphanumerisch">
 			<name>Umsatzsteuer-Identifikationsnummer</name>
 			<bytes>17</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -40569,7 +40569,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="131-138-GeburtsdatVp-Datum">
+		<feld referenz="131-138-GeburtsdatumVp-Datum">
 			<name>Geburtsdatum der VP</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -40858,7 +40858,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="134-138-RatenzahlungszuschlagIn-Fliesskomma">
+		<feld referenz="134-138-RatenzahlungszuschlagInProz-Fliesskomma">
 			<name>Ratenzahlungszuschlag in %</name>
 			<bytes>5</bytes>
 			<datentyp>Fliesskomma</datentyp>
@@ -41500,7 +41500,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="141-154-garantierteFondsjahresrenteZumAblaufInklAbrufphase-Fliesskomma">
+		<feld referenz="141-154-GarantierteFondsjahresrenteZumAblaufInklAbrufphase-Fliesskomma">
 			<name>Garantierte Fondsjahresrente zum Ablauf (inkl. Abrufphase)</name>
 			<bytes>14</bytes>
 			<datentyp>Fliesskomma</datentyp>
@@ -41873,7 +41873,7 @@
 			<bytes>6</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="146-153-GeburtsdatVp-Datum">
+		<feld referenz="146-153-GeburtsdatumVp-Datum">
 			<name>Geburtsdatum der VP</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -42471,7 +42471,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>1</nachkommastellen>
 		</feld>
-		<feld referenz="154-162-KombinationsschluesselEc-Alphanumerisch">
+		<feld referenz="154-162-KombinationsschluesselEC-Alphanumerisch">
 			<name>Kombinationsschlüssel (EC)</name>
 			<bytes>9</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -42494,7 +42494,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="154-166-SchadenbearbeitungskostinWE-Fliesskomma">
+		<feld referenz="154-166-SchadenbearbeitungskostInWE-Fliesskomma">
 			<name>Schadenbearbeitungskosten in Währungseinheiten</name>
 			<bytes>13</bytes>
 			<datentyp>Fliesskomma</datentyp>
@@ -42562,7 +42562,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="155-168-GarantierteFondsjahresrenteZumBeginnDerAbrufphase-Fliesskomma">
+		<feld referenz="155-168-GarantierteFondsjahresrenteZumBeginnAbrufphase-Fliesskomma">
 			<name>Garantierte Fondsjahresrente zum Beginn der Abrufphase</name>
 			<bytes>14</bytes>
 			<datentyp>Fliesskomma</datentyp>
@@ -42574,7 +42574,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="155-169-RegistrierungsnummerVermittler-Alphanumerisch">
+		<feld referenz="155-169-RegistrierungsNrVermittler-Alphanumerisch">
 			<name>Registrierungsnummer Vermittler</name>
 			<bytes>15</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -42915,7 +42915,7 @@
 			<bytes>20</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="160-194-SEPAGlaeubigeridentifikationsnummer-Alphanumerisch">
+		<feld referenz="160-194-SEPAGlaeubigeridentifikationsNr-Alphanumerisch">
 			<name>SEPA-Gläubigeridentifikationsnummer</name>
 			<bytes>35</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -43278,7 +43278,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="165-172-Geburtsdat2Vp-Datum">
+		<feld referenz="165-172-Geburtsdatum2Vp-Datum">
 			<name>Geburtsdatum der 2. VP</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -43637,7 +43637,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="170-181-SelbstbeteiligungInWeMind-Fliesskomma">
+		<feld referenz="170-181-SelbstbeteiligungInWEMind-Fliesskomma">
 			<name>Selbstbeteiligung in WE (mind.)</name>
 			<bytes>12</bytes>
 			<datentyp>Fliesskomma</datentyp>
@@ -43648,7 +43648,7 @@
 			<bytes>20</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="170-219-InternesOrdnungsmerkmalDesVM-Alphanumerisch">
+		<feld referenz="170-219-InternesOrdnungsmerkmalVM-Alphanumerisch">
 			<name>Internes Ordnungsmerkmal des VM</name>
 			<bytes>50</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -43710,7 +43710,7 @@
 			<bytes>41</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="172-172-ArtHeilkosten-Alphanumerisch">
+		<feld referenz="172-172-ArtHeilkost-Alphanumerisch">
 			<name>Art der Heilkosten</name>
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -43790,7 +43790,7 @@
 			<bytes>20</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="172-201-NameDesTieres-Alphanumerisch">
+		<feld referenz="172-201-NameTieres-Alphanumerisch">
 			<name>Name des Tieres</name>
 			<bytes>30</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -43921,7 +43921,7 @@
 			<bytes>4</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="174-178-Erhoehungssatz8IIIAHB-Fliesskomma">
+		<feld referenz="174-178-Erhoehungssatz8IiiAhb-Fliesskomma">
 			<name>Erhöhungssatz § 8, III AHB</name>
 			<bytes>5</bytes>
 			<datentyp>Fliesskomma</datentyp>
@@ -44405,7 +44405,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="181-195-RegistrierungsnummerVermittler-Alphanumerisch">
+		<feld referenz="181-195-RegistrierungsNrVermittler-Alphanumerisch">
 			<name>Registrierungsnummer Vermittler</name>
 			<bytes>15</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -44456,7 +44456,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="182-193-SelbstbeteiligungInWeMax-Fliesskomma">
+		<feld referenz="182-193-SelbstbeteiligungInWEMax-Fliesskomma">
 			<name>Selbstbeteiligung in WE (max.)</name>
 			<bytes>12</bytes>
 			<datentyp>Fliesskomma</datentyp>
@@ -44703,7 +44703,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="186-191-TerminDerBerechnung-Datum">
+		<feld referenz="186-191-TerminBerechnung-Datum">
 			<name>Termin der Berechnung</name>
 			<bytes>6</bytes>
 			<datentyp>Datum</datentyp>
@@ -45164,7 +45164,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="193-197-VorversicherungBeiVU-Alphanumerisch">
+		<feld referenz="193-197-VorVersBeiVu-Alphanumerisch">
 			<name>Vorversicherung bei VU</name>
 			<bytes>5</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -45189,7 +45189,7 @@
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="194-194-KreisgemeindeschlüsselZusatzinformation-Numerisch">
+		<feld referenz="194-194-KreisgemeindeschluesselZusatzinformation-Numerisch">
 			<name>Kreisgemeindeschlüssel Zusatzinformation</name>
 			<bytes>1</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -45306,7 +45306,7 @@
 			<bytes>20</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="195-229-SEPAMandatReferenznummer-Alphanumerisch">
+		<feld referenz="195-229-SEPAMandatReferenzNr-Alphanumerisch">
 			<name>SEPA-Mandatum Referenznummer</name>
 			<bytes>35</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -45741,7 +45741,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="202-209-GeburtsdatumDesTieres-Datum">
+		<feld referenz="202-209-GeburtsdatumTieres-Datum">
 			<name>Geburtsdatum des Tieres</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -46397,7 +46397,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="216-223-EinschlussdatVPPersonengruppe-Datum">
+		<feld referenz="216-223-EinschlussdatVpPersonengruppe-Datum">
 			<name>Einschlussdatum VP / Personengruppe</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -46728,12 +46728,12 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="224-231-AusschlussdatumVPPersonengruppe-Datum">
+		<feld referenz="224-231-AusschlussdatumVpPersonengruppe-Datum">
 			<name>Ausschlussdatum VP / Personengruppe</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="224-231-FaelligkeitDerLetztenBeitragszahlung-Datum">
+		<feld referenz="224-231-FaelligkeitLetztenBeitragszahlung-Datum">
 			<name>Fälligkeit der letzten Beitragszahlung</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -47175,7 +47175,7 @@
 			<bytes>5</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="234-238-SteigerungssatzFuerBURente-Fliesskomma">
+		<feld referenz="234-238-SteigerungssatzBURente-Fliesskomma">
 			<name>Steigerungssatz für BU-Rente</name>
 			<bytes>5</bytes>
 			<datentyp>Fliesskomma</datentyp>
@@ -47504,7 +47504,7 @@
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="242-242-KuendigungsklauselVPPersonengruppeGestrichen-Alphanumerisch">
+		<feld referenz="242-242-KuendigungsklauselVpPersonengruppeGestrichen-Alphanumerisch">
 			<name>Kündigungsklausel VP/ Personengruppe gestrichen</name>
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
@@ -47545,7 +47545,7 @@
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="243-244-EintrittsalterVP-Numerisch">
+		<feld referenz="243-244-EintrittsalterVp-Numerisch">
 			<name>Eintrittsalter der VP</name>
 			<bytes>2</bytes>
 			<datentyp>Numerisch</datentyp>
