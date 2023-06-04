@@ -24674,10 +24674,10 @@
 				<name>Tarifwahl / Versicherungsumfang</name>
 				<technischerName>TarifwahlVerssumfang</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld ZusatzversicherungZurTierkranken (148-167) -->
-			<feldreferenz referenz="148-167-ZusatzversicherungZurTierkranken-Alphanumerisch">
+			<!-- AlphaNumFeld ZusatzVersZurTierkranken (148-167) -->
+			<feldreferenz referenz="148-167-ZusatzVersZurTierkranken-Alphanumerisch">
 				<name>Zusatzversicherung zur Tierkranken</name>
-				<technischerName>ZusatzversicherungZurTierkranken</technischerName>
+				<technischerName>ZusatzVersZurTierkranken</technischerName>
 			</feldreferenz>
 			<!-- NumFeld GueltigeAVB (168-173) -->
 			<feldreferenz referenz="168-173-GueltigeAVB-Numerisch">
@@ -42678,7 +42678,7 @@
 			<bytes>20</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="148-167-ZusatzversicherungZurTierkranken-Alphanumerisch">
+		<feld referenz="148-167-ZusatzVersZurTierkranken-Alphanumerisch">
 			<name>Zusatzversicherung zur Tierkranken</name>
 			<bytes>20</bytes>
 			<datentyp>Alphanumerisch</datentyp>

@@ -1389,7 +1389,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner VP_PERSONENNUMMER_VERMITTLER = new Bezeichner("VP-Personennummer des Vermittlers");
     public static final Bezeichner VP_PERSONENNUMMER_VERSICHERER = new Bezeichner("VP-Personennummer des Versicherers");
     public static final Bezeichner VS_NR = VERSICHERUNGSSCHEINNUMMER;
-    public static final Bezeichner VU_ABRECHNUNGSSTELLE = new Bezeichner("VU-Abrechnungsstelle", "VuAbrechnungsstelle");
+    public static final Bezeichner VU_ABRECHNUNGSSTELLE = new Bezeichner("VU-Abrechnungsstelle");
     public static final Bezeichner VU_NR = new Bezeichner("VU-Nummer", "VuNr");
     public static final Bezeichner VU_NUMMER = VU_NR;
 
@@ -1425,13 +1425,17 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner WAGNISKENNZIFFER = new Bezeichner("Wagniskennziffer");
     public static final Bezeichner WAGNISMENGE = new Bezeichner("Wagnismenge");
     public static final Bezeichner WAGNISTEXT = new Bezeichner("Wagnistext");
-    public static final Bezeichner WAISENRENTE_IN_PROZENT = new Bezeichner("Waisenrente in Prozent", "WaisenrenteProz");
+  public static final Bezeichner WAISENRENTE_PROZENT = new Bezeichner("Waisenrente %");
+  /** @deprecated bitte WAISENRENTE_PROZENT verwenden. */
+  @Deprecated
+  public static final Bezeichner WAISENRENTE_IN_PROZENT = WAISENRENTE_PROZENT;
+
     public static final Bezeichner WARTEZEIT = new Bezeichner("Wartezeit");
     public static final Bezeichner WARTUNGSVERTRAG = new Bezeichner("Wartungsvertrag");
-    public static final Bezeichner WECHSELKENNZEICHEN_W_AKZ = new Bezeichner("Wechselkennzeichen W-AKZ", "WechselkennzeichenWAKZ");
-    public static final Bezeichner WEITERE_REFERENZNUMMERN = new Bezeichner("Weitere Referenznummern", "WeitereReferenzNrn");
-    public static final Bezeichner WERT_1914_PRO_QM_WOHNFLAECHE_IN_MARK = new Bezeichner("Wert 1914 pro qm Wohnflaeche in Mark", "Wert1914ProQmWohnflaecheInMark");
-    public static final Bezeichner WERTERMITTLUNGS_SCHAETZJAHR = new Bezeichner("Wertermittlungs-/Schaetzjahr", "WertermittlungsSchaetzjahr");
+    public static final Bezeichner WECHSELKENNZEICHEN_W_AKZ = new Bezeichner("Wechselkennzeichen W-AKZ");
+    public static final Bezeichner WEITERE_REFERENZNUMMERN = new Bezeichner("Weitere Referenznummern");
+    public static final Bezeichner WERT_1914_PRO_QM_WOHNFLAECHE_IN_MARK = new Bezeichner("Wert 1914 pro qm Wohnflaeche in Mark");
+    public static final Bezeichner WERTERMITTLUNGS_SCHAETZJAHR = new Bezeichner("Wertermittlungs-/Schaetzjahr");
     public static final Bezeichner WERT_ZUSCHREIBUNG_VORSORGEZUSCHLAG = new Bezeichner("Wert Zuschreibung Vorsorgezuschlag");
     public static final Bezeichner WERTPAPIERKENNNUMMER = new Bezeichner("Wertpapierkennnummer");
     public static final Bezeichner WERTUNGSBASIS = new Bezeichner("Wertungsbasis");
@@ -1439,7 +1443,11 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner WERTUNGSMODELL = new Bezeichner("Wertungsmodell");
     public static final Bezeichner WERTUNGSMODELL2 = new Bezeichner("Wertungsmodell2");
     public static final Bezeichner WIDERSPRUCH_VORSORGEZUSCHLAG = new Bezeichner("Widerspruch Vorsorgezuschlag");
-    public static final Bezeichner WITWEN_WITWERRENTE_IN_PROZENT = new Bezeichner("Witwen- / Witwerrente in Prozent", "WitwenWitwerrenteProz");
+    public static final Bezeichner WITWEN_WITWERRENTE_PROZENT = new Bezeichner("Witwen- / Witwerrente %");
+    /** @deprecated bitte WITWEN_WITWERRENTE_PROZENT verwenden. */
+    @Deprecated
+    public static final Bezeichner WITWEN_WITWERRENTE_IN_PROZENT = WITWEN_WITWERRENTE_PROZENT;
+
     public static final Bezeichner WOHNEIGENTUM = new Bezeichner("Wohneigentum");
     public static final Bezeichner WOHNFLAECHE_QM = new Bezeichner("Wohnflaeche qm");
 
@@ -1447,14 +1455,17 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ZAHLUNGSANFANG = new Bezeichner("Zahlungsanfang");
     public static final Bezeichner ZAHLUNGSART = new Bezeichner("Zahlungsart /-weg");
     public static final Bezeichner ZAHLUNGSWEISE = new Bezeichner("Zahlungsweise");
-    public static final Bezeichner ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG = new Bezeichner("Zahlungsweise des zukuenftigen Gesamtbetrags", "ZahlungsweiseZukuenftigenGesbeitrags");
+    public static final Bezeichner ZAHLUNGSWEISE_KUENFTIGER_GESAMTBEITRAG = new Bezeichner("Zahlungsweise des zukuenftigen Gesamtbeitrags");
+    /** @deprecated bitte ZAHLUNGSWEISE_KUENFTIGER_GESAMTBEITRAG verwenden. */
+    @Deprecated
+    public static final Bezeichner ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG = ZAHLUNGSWEISE_KUENFTIGER_GESAMTBEITRAG;
     public static final Bezeichner ZIELGRUPPENSCHLUESSEL = new Bezeichner("Zielgruppenschl\u00fcssel");
     public static final Bezeichner ZUKUENFTIGER_BEITRAG = new Bezeichner("Zukuenftiger Beitrag");
     public static final Bezeichner ZUKUENFTIGER_BEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zukuenftiger Beitrag in W\u00e4hrungseinheiten");
     public static final Bezeichner ZUKUENFTIGER_GESAMTBEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zukuenftiger Gesamtbeitrag in W\u00e4hrungseinheiten");
     public static final Bezeichner ZUSAETZLICHE_SATZKENNUNG = new Bezeichner("zusaetzliche Satzkennung");
     public static final Bezeichner ZUSAETZLICHE_TEXTE = new Bezeichner("zusaetzliche Texte");
-    public static final Bezeichner ZUSATZVERSICHERUNG_ZUR_TIERKRANKEN = new Bezeichner("Zusatzversicherung zur Tierkranken", "ZusatzversicherungZurTierkranken");
+    public static final Bezeichner ZUSATZVERSICHERUNG_ZUR_TIERKRANKEN = new Bezeichner("Zusatzversicherung zur Tierkranken");
     public static final Bezeichner ZUSCHLAG1_IN_PROZENT = new Bezeichner("Zuschlag-1 in %");
     public static final Bezeichner ZUSCHLAG1_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zuschlag-1 in W\u00e4hrungseinheiten");
     public static final Bezeichner ZUSCHLAG2_IN_PROZENT = new Bezeichner("Zuschlag-2 in %");
@@ -1462,10 +1473,10 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ZUSCHLAGSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zuschlagsbetrag in W\u00e4hrungseinheiten");
     public static final Bezeichner ZUSCHLAG_IN_PROZENT = new Bezeichner("Zuschlag in %");
     public static final Bezeichner ZUSCHLAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Zuschlag in W\u00e4hrungseinheiten");
-    public static final Bezeichner ZUZAHLUNGSBETRAG_IN_WE = new Bezeichner("Zuzahlungsbetrag in W\u00e4hrungseinheiten", "ZuzahlungsbetragInWE");
+    public static final Bezeichner ZUZAHLUNGSBETRAG_IN_WE = new Bezeichner("Zuzahlungsbetrag in W\u00e4hrungseinheiten");
     public static final Bezeichner ZUZAHLUNGSDAT = new Bezeichner("Zuzahlungsdatum");
     public static final Bezeichner ZUZAHLUNGSRECHT = new Bezeichner("Zuzahlungsrecht");
-    public static final Bezeichner ZWANG_ZUR_BUZ = new Bezeichner("Zwang zur BUZ", "ZwangZurBuz");
+    public static final Bezeichner ZWANG_ZUR_BUZ = new Bezeichner("Zwang zur BUZ");
 
     private final String name;
     private final String technischerName;
@@ -1595,6 +1606,8 @@ public final class Bezeichner implements Serializable {
                 return "Berversv";
             case "BRE":
                 return "Bre";
+            case "BUZ":
+                return "Buz";
             case "Datum":
                 return "Dat";
             case "EG":
