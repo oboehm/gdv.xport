@@ -21,6 +21,11 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - Gleichlautende Felder, die mehrfach in einem Satz auftreten können (wie z.B. "Satznummer"), müssen eindeutig sein.
   Ansonsten muss über Teildatensatz und Byte-Adresse auf das gewünschte Feld zugegriffen werden.
 
+### Fixed
+
+- nur noch Test-Abhängigkeit zu patterntesting
+  ([Issue #90](https://github.com/oboehm/gdv.xport/issues/90))
+
 
 ## [6.5.0] - 2023-02-11
 
