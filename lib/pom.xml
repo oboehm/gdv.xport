@@ -102,7 +102,7 @@
         <artifactId>clirr-maven-plugin</artifactId>
         <configuration>
           <!-- Compare the current code against last release -->
-          <comparisonVersion>4.2.0</comparisonVersion>
+          <comparisonVersion>5.4.2</comparisonVersion>
         </configuration>
       </plugin>
 
@@ -254,6 +254,10 @@
     <dependency>
       <groupId>de.jfachwert</groupId>
       <artifactId>jfachwert</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
     </dependency>
     <dependency>
       <groupId>javax.money</groupId>
