@@ -4,7 +4,7 @@ COPY . .
 RUN mvn -DskipTests package
 
 # Starting the service
-FROM openjdk:17-alpine
+FROM bellsoft/liberica-openjdk-alpine-musl:17
 WORKDIR /usr/src/myapp
 COPY --from=build-env /service/target/gdv-xport-service.war /usr/src/myapp/app.war
 EXPOSE 2517
