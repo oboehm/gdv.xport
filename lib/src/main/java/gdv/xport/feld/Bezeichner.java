@@ -1592,8 +1592,6 @@ public final class Bezeichner implements Serializable {
             case "und":
             case "Laufzeit":
                 return "";
-            case "Ablaufdatum":
-                return "Ablaufdat";
             case "Anzahl":
                 return "Anz";
             case "AHB":
@@ -1608,8 +1606,6 @@ public final class Bezeichner implements Serializable {
                 return "Bre";
             case "BUZ":
                 return "Buz";
-            case "Datum":
-                return "Dat";
             case "EG":
                 return "Eg";
             case "Einschlussdatum":
@@ -1654,8 +1650,6 @@ public final class Bezeichner implements Serializable {
                 return "WE";
             case "Ueberfuehrungskosten":
                 return "Ueberfuehrungskost";
-            case "Umstellungsdatum":
-                return "Umstellungsdat";
             case "KFT":
                 return "Kft";
             case "KFV":

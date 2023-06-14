@@ -1037,10 +1037,10 @@
 				<name>Fremder Grund und Boden</name>
 				<technischerName>FremderGrundBoden</technischerName>
 			</feldreferenz>
-			<!-- Datum DatBezugsfertigkeit (158-165) -->
-			<feldreferenz referenz="158-165-DatBezugsfertigkeit-Datum">
+			<!-- Datum DatumBezugsfertigkeit (158-165) -->
+			<feldreferenz referenz="158-165-DatumBezugsfertigkeit-Datum">
 				<name>Datum der Bezugsfertigkeit</name>
-				<technischerName>DatBezugsfertigkeit</technischerName>
+				<technischerName>DatumBezugsfertigkeit</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RohbauEinmalbetragInWE (166-177) -->
@@ -1194,10 +1194,10 @@
 				<name>Beitrag aktuell in Währungseinheiten</name>
 				<technischerName>BeitragAktuellInWE</technischerName>
 			</feldreferenz>
-			<!-- Datum DatLetztenSummenanpassung (166-173) -->
-			<feldreferenz referenz="166-173-DatLetztenSummenanpassung-Datum">
+			<!-- Datum DatumLetztenSummenanpassung (166-173) -->
+			<feldreferenz referenz="166-173-DatumLetztenSummenanpassung-Datum">
 				<name>Datum der letzten Summenanpassung</name>
-				<technischerName>DatLetztenSummenanpassung</technischerName>
+				<technischerName>DatumLetztenSummenanpassung</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld SelbstbeteiligungProz (174-177) -->
@@ -3805,10 +3805,10 @@
 				<name>Summenanpassung - vereinbart -</name>
 				<technischerName>SummenanpassungVereinbart</technischerName>
 			</feldreferenz>
-			<!-- Datum DatLetztenSummenanpassungVereinbart (151-158) -->
-			<feldreferenz referenz="151-158-DatLetztenSummenanpassungVereinbart-Datum">
+			<!-- Datum DatumLetztenSummenanpassungVereinbart (151-158) -->
+			<feldreferenz referenz="151-158-DatumLetztenSummenanpassungVereinbart-Datum">
 				<name>Datum der letzten Summenanpassung - vereinbart -</name>
-				<technischerName>DatLetztenSummenanpassungVereinbart</technischerName>
+				<technischerName>DatumLetztenSummenanpassungVereinbart</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KzSummenanpassungIndividuell (159-159) -->
@@ -3821,10 +3821,10 @@
 				<name>Summenanpassung - individuell -</name>
 				<technischerName>SummenanpassungIndividuell</technischerName>
 			</feldreferenz>
-			<!-- Datum DatLetztenSummenanpassungIndividuell (165-172) -->
-			<feldreferenz referenz="165-172-DatLetztenSummenanpassungIndividuell-Datum">
+			<!-- Datum DatumLetztenSummenanpassungIndividuell (165-172) -->
+			<feldreferenz referenz="165-172-DatumLetztenSummenanpassungIndividuell-Datum">
 				<name>Datum der letzten Summenanpassung - individuell -</name>
-				<technischerName>DatLetztenSummenanpassungIndividuell</technischerName>
+				<technischerName>DatumLetztenSummenanpassungIndividuell</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KzZusaetzlicheRisikoanschrift (173-173) -->
@@ -3847,10 +3847,10 @@
 				<name>Erhöhung der Prämienanpassung in Prozent</name>
 				<technischerName>ErhoehungPraemienanpassungInProzent</technischerName>
 			</feldreferenz>
-			<!-- Datum DatLetztenPraemienanpassung (183-190) -->
-			<feldreferenz referenz="183-190-DatLetztenPraemienanpassung-Datum">
+			<!-- Datum DatumLetztenPraemienanpassung (183-190) -->
+			<feldreferenz referenz="183-190-DatumLetztenPraemienanpassung-Datum">
 				<name>Datum der letzten Prämienanpassung</name>
-				<technischerName>DatLetztenPraemienanpassung</technischerName>
+				<technischerName>DatumLetztenPraemienanpassung</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GefahrenLfdNr (191-196) -->
@@ -4040,10 +4040,10 @@
 				<name>Unverfallbarkeit</name>
 				<technischerName>Unverfallbarkeit</technischerName>
 			</feldreferenz>
-			<!-- Datum DatUnverfallbarkeit (241-248) -->
-			<feldreferenz referenz="241-248-DatUnverfallbarkeit-Datum">
+			<!-- Datum DatumUnverfallbarkeit (241-248) -->
+			<feldreferenz referenz="241-248-DatumUnverfallbarkeit-Datum">
 				<name>Datum Unverfallbarkeit</name>
-				<technischerName>DatUnverfallbarkeit</technischerName>
+				<technischerName>DatumUnverfallbarkeit</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld ArtBerufsschluesselverzeichnisses (249-249) -->
@@ -4714,10 +4714,10 @@
 				<technischerName>Dynamikstop</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum DatLetztenPositivenDynamik (133-140) -->
-			<feldreferenz referenz="133-140-DatLetztenPositivenDynamik-Datum">
+			<!-- Datum DatumLetztenPositivenDynamik (133-140) -->
+			<feldreferenz referenz="133-140-DatumLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
-				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<technischerName>DatumLetztenPositivenDynamik</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld JahresrenteInWE (141-152) -->
@@ -4904,10 +4904,10 @@
 				<name>Tarifbezeichnung des Folgetarifs</name>
 				<technischerName>TarifbezeichnungFolgetarifs</technischerName>
 			</feldreferenz>
-			<!-- Datum UmstellungsdatFolgetarifs (122-129) -->
-			<feldreferenz referenz="122-129-UmstellungsdatFolgetarifs-Datum">
+			<!-- Datum UmstellungsdatumFolgetarifs (122-129) -->
+			<feldreferenz referenz="122-129-UmstellungsdatumFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
-				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<technischerName>UmstellungsdatumFolgetarifs</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitrag (130-141) -->
@@ -7784,10 +7784,10 @@
 				<technischerName>Dynamikstop</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum DatLetztenPositivenDynamik (121-128) -->
-			<feldreferenz referenz="121-128-DatLetztenPositivenDynamik-Datum">
+			<!-- Datum DatumLetztenPositivenDynamik (121-128) -->
+			<feldreferenz referenz="121-128-DatumLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
-				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<technischerName>DatumLetztenPositivenDynamik</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Endalter (129-131) -->
@@ -7907,10 +7907,10 @@
 				<name>Tarifbezeichnung des Folgetarifs</name>
 				<technischerName>TarifbezeichnungFolgetarifs</technischerName>
 			</feldreferenz>
-			<!-- Datum UmstellungsdatFolgetarifs (122-129) -->
-			<feldreferenz referenz="122-129-UmstellungsdatFolgetarifs-Datum">
+			<!-- Datum UmstellungsdatumFolgetarifs (122-129) -->
+			<feldreferenz referenz="122-129-UmstellungsdatumFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
-				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<technischerName>UmstellungsdatumFolgetarifs</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitrag (130-141) -->
@@ -8506,10 +8506,10 @@
 				<technischerName>Dynamikstop</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum DatLetztenPositivenDynamik (149-156) -->
-			<feldreferenz referenz="149-156-DatLetztenPositivenDynamik-Datum">
+			<!-- Datum DatumLetztenPositivenDynamik (149-156) -->
+			<feldreferenz referenz="149-156-DatumLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
-				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<technischerName>DatumLetztenPositivenDynamik</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RueckkaufswertInWE (157-165) -->
@@ -8738,10 +8738,10 @@
 				<name>Tarifbezeichnung des Folgetarifs</name>
 				<technischerName>TarifbezeichnungFolgetarifs</technischerName>
 			</feldreferenz>
-			<!-- Datum UmstellungsdatFolgetarifs (168-175) -->
-			<feldreferenz referenz="168-175-UmstellungsdatFolgetarifs-Datum">
+			<!-- Datum UmstellungsdatumFolgetarifs (168-175) -->
+			<feldreferenz referenz="168-175-UmstellungsdatumFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
-				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<technischerName>UmstellungsdatumFolgetarifs</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitragInWE (176-187) -->
@@ -16428,10 +16428,10 @@
 				<technischerName>Dynamikstop</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum DatLetztenPositivenDynamik (149-156) -->
-			<feldreferenz referenz="149-156-DatLetztenPositivenDynamik-Datum">
+			<!-- Datum DatumLetztenPositivenDynamik (149-156) -->
+			<feldreferenz referenz="149-156-DatumLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
-				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<technischerName>DatumLetztenPositivenDynamik</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld RueckkaufswertInWE (157-168) -->
@@ -16649,10 +16649,10 @@
 				<name>Tarifbezeichnung des Folgetarifs</name>
 				<technischerName>TarifbezeichnungFolgetarifs</technischerName>
 			</feldreferenz>
-			<!-- Datum UmstellungsdatFolgetarifs (168-175) -->
-			<feldreferenz referenz="168-175-UmstellungsdatFolgetarifs-Datum">
+			<!-- Datum UmstellungsdatumFolgetarifs (168-175) -->
+			<feldreferenz referenz="168-175-UmstellungsdatumFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
-				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<technischerName>UmstellungsdatumFolgetarifs</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitragInWE (176-187) -->
@@ -17221,10 +17221,10 @@
 				<technischerName>Dynamikstop</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum DatLetztenPositivenDynamik (143-150) -->
-			<feldreferenz referenz="143-150-DatLetztenPositivenDynamik-Datum">
+			<!-- Datum DatumLetztenPositivenDynamik (143-150) -->
+			<feldreferenz referenz="143-150-DatumLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
-				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<technischerName>DatumLetztenPositivenDynamik</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld JahresrenteInWE (151-162) -->
@@ -17344,10 +17344,10 @@
 				<name>Tarifbezeichnung des Folgetarifs</name>
 				<technischerName>TarifbezeichnungFolgetarifs</technischerName>
 			</feldreferenz>
-			<!-- Datum UmstellungsdatFolgetarifs (122-129) -->
-			<feldreferenz referenz="122-129-UmstellungsdatFolgetarifs-Datum">
+			<!-- Datum UmstellungsdatumFolgetarifs (122-129) -->
+			<feldreferenz referenz="122-129-UmstellungsdatumFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
-				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<technischerName>UmstellungsdatumFolgetarifs</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitrag (130-141) -->
@@ -26028,10 +26028,10 @@
 				<technischerName>Dynamikstop</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum DatLetztenPositivenDynamik (208-215) -->
-			<feldreferenz referenz="208-215-DatLetztenPositivenDynamik-Datum">
+			<!-- Datum DatumLetztenPositivenDynamik (208-215) -->
+			<feldreferenz referenz="208-215-DatumLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
-				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<technischerName>DatumLetztenPositivenDynamik</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Endalter (216-218) -->
@@ -26163,10 +26163,10 @@
 				<name>Tarifbezeichnung des Folgetarifs</name>
 				<technischerName>TarifbezeichnungFolgetarifs</technischerName>
 			</feldreferenz>
-			<!-- Datum UmstellungsdatFolgetarifs (115-122) -->
-			<feldreferenz referenz="115-122-UmstellungsdatFolgetarifs-Datum">
+			<!-- Datum UmstellungsdatumFolgetarifs (115-122) -->
+			<feldreferenz referenz="115-122-UmstellungsdatumFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
-				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<technischerName>UmstellungsdatumFolgetarifs</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitragInWE (123-134) -->
@@ -26739,10 +26739,10 @@
 				<name>Summenanpassung - %-Satz</name>
 				<technischerName>SummenanpassungProzSatz</technischerName>
 			</feldreferenz>
-			<!-- Datum DatLetztenSummenanpassung (133-140) -->
-			<feldreferenz referenz="133-140-DatLetztenSummenanpassung-Datum">
+			<!-- Datum DatumLetztenSummenanpassung (133-140) -->
+			<feldreferenz referenz="133-140-DatumLetztenSummenanpassung-Datum">
 				<name>Datum der letzten Summenanpassung</name>
-				<technischerName>DatLetztenSummenanpassung</technischerName>
+				<technischerName>DatumLetztenSummenanpassung</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld VorauszahlungInProzent (141-143) -->
@@ -28734,7 +28734,7 @@
 			<!-- Datum SEPA (241-248) -->
 			<feldreferenz referenz="241-248-SEPA-Datum">
 				<name>SEPA-Ablaufdatum oder erloschen am</name>
-				<technischerName>SEPAAblaufdatOderErloschenAm</technischerName>
+				<technischerName>SEPAAblaufdatumOderErloschenAm</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Leerstellen (249-255) -->
@@ -29842,10 +29842,10 @@
 				<name>%-Satz Erhöhung der letzten Glaspreisangleichung</name>
 				<technischerName>ProzSatzErhoehungLetztenGlaspreisangleichung</technischerName>
 			</feldreferenz>
-			<!-- Datum DatLetztenGlaspreisangleichung (201-208) -->
-			<feldreferenz referenz="201-208-DatLetztenGlaspreisangleichung-Datum">
+			<!-- Datum DatumLetztenGlaspreisangleichung (201-208) -->
+			<feldreferenz referenz="201-208-DatumLetztenGlaspreisangleichung-Datum">
 				<name>Datum der letzten Glaspreisangleichung</name>
-				<technischerName>DatLetztenGlaspreisangleichung</technischerName>
+				<technischerName>DatumLetztenGlaspreisangleichung</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld PauschaleGlasVersOhneAngabeVersssumme (209-209) -->
@@ -30564,10 +30564,10 @@
 				<name>Beitragsangleichungsklausel</name>
 				<technischerName>Beitragsangleichungsklausel</technischerName>
 			</feldreferenz>
-			<!-- Datum DatLetztenBeitragsangleichung (162-169) -->
-			<feldreferenz referenz="162-169-DatLetztenBeitragsangleichung-Datum">
+			<!-- Datum DatumLetztenBeitragsangleichung (162-169) -->
+			<feldreferenz referenz="162-169-DatumLetztenBeitragsangleichung-Datum">
 				<name>Datum der letzten Beitragsangleichung</name>
-				<technischerName>DatLetztenBeitragsangleichung</technischerName>
+				<technischerName>DatumLetztenBeitragsangleichung</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Beitragsklasse (170-170) -->
@@ -32270,10 +32270,10 @@
 				<technischerName>Dynamikstop</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
-			<!-- Datum DatLetztenPositivenDynamik (208-215) -->
-			<feldreferenz referenz="208-215-DatLetztenPositivenDynamik-Datum">
+			<!-- Datum DatumLetztenPositivenDynamik (208-215) -->
+			<feldreferenz referenz="208-215-DatumLetztenPositivenDynamik-Datum">
 				<name>Datum der letzten positiven Dynamik</name>
-				<technischerName>DatLetztenPositivenDynamik</technischerName>
+				<technischerName>DatumLetztenPositivenDynamik</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld Endalter (216-218) -->
@@ -32410,10 +32410,10 @@
 				<name>Tarifbezeichnung des Folgetarifs</name>
 				<technischerName>TarifbezeichnungFolgetarifs</technischerName>
 			</feldreferenz>
-			<!-- Datum UmstellungsdatFolgetarifs (115-122) -->
-			<feldreferenz referenz="115-122-UmstellungsdatFolgetarifs-Datum">
+			<!-- Datum UmstellungsdatumFolgetarifs (115-122) -->
+			<feldreferenz referenz="115-122-UmstellungsdatumFolgetarifs-Datum">
 				<name>Umstellungsdatum des Folgetarifs</name>
-				<technischerName>UmstellungsdatFolgetarifs</technischerName>
+				<technischerName>UmstellungsdatumFolgetarifs</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- NumFeld ZukuenftigerBeitragInWE (123-134) -->
@@ -36027,7 +36027,7 @@
 		<feld referenz="071-072-KfvDeckungsart-Numerisch">
 			<name>KFV-Deckungsart</name>
 			<bytes>2</bytes>
-			<datentyp>Fliesskomma</datentyp>
+			<datentyp>Numerisch</datentyp>
 		</feld>
 		<feld referenz="071-072-KhDeckungsart-Numerisch">
 			<name>KH Deckungsart</name>
@@ -39876,7 +39876,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="115-122-UmstellungsdatFolgetarifs-Datum">
+		<feld referenz="115-122-UmstellungsdatumFolgetarifs-Datum">
 			<name>Umstellungsdatum des Folgetarifs</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -40369,7 +40369,7 @@
 			<bytes>6</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="121-128-DatLetztenPositivenDynamik-Datum">
+		<feld referenz="121-128-DatumLetztenPositivenDynamik-Datum">
 			<name>Datum der letzten positiven Dynamik</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -40459,7 +40459,7 @@
 			<bytes>8</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="122-129-UmstellungsdatFolgetarifs-Datum">
+		<feld referenz="122-129-UmstellungsdatumFolgetarifs-Datum">
 			<name>Umstellungsdatum des Folgetarifs</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -41363,12 +41363,12 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="133-140-DatLetztenPositivenDynamik-Datum">
+		<feld referenz="133-140-DatumLetztenPositivenDynamik-Datum">
 			<name>Datum der letzten positiven Dynamik</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="133-140-DatLetztenSummenanpassung-Datum">
+		<feld referenz="133-140-DatumLetztenSummenanpassung-Datum">
 			<name>Datum der letzten Summenanpassung</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -42253,7 +42253,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="143-150-DatLetztenPositivenDynamik-Datum">
+		<feld referenz="143-150-DatumLetztenPositivenDynamik-Datum">
 			<name>Datum der letzten positiven Dynamik</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -42713,7 +42713,7 @@
 			<bytes>5</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="149-156-DatLetztenPositivenDynamik-Datum">
+		<feld referenz="149-156-DatumLetztenPositivenDynamik-Datum">
 			<name>Datum der letzten positiven Dynamik</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -42841,7 +42841,7 @@
 			<bytes>6</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="151-158-DatLetztenSummenanpassungVereinbart-Datum">
+		<feld referenz="151-158-DatumLetztenSummenanpassungVereinbart-Datum">
 			<name>Datum der letzten Summenanpassung - vereinbart -</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -43417,7 +43417,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="158-165-DatBezugsfertigkeit-Datum">
+		<feld referenz="158-165-DatumBezugsfertigkeit-Datum">
 			<name>Datum der Bezugsfertigkeit</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -43691,7 +43691,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="162-169-DatLetztenBeitragsangleichung-Datum">
+		<feld referenz="162-169-DatumLetztenBeitragsangleichung-Datum">
 			<name>Datum der letzten Beitragsangleichung</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -43937,7 +43937,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>4</nachkommastellen>
 		</feld>
-		<feld referenz="165-172-DatLetztenSummenanpassungIndividuell-Datum">
+		<feld referenz="165-172-DatumLetztenSummenanpassungIndividuell-Datum">
 			<name>Datum der letzten Summenanpassung - individuell -</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -44015,7 +44015,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="166-173-DatLetztenSummenanpassung-Datum">
+		<feld referenz="166-173-DatumLetztenSummenanpassung-Datum">
 			<name>Datum der letzten Summenanpassung</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -44168,7 +44168,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="168-175-UmstellungsdatFolgetarifs-Datum">
+		<feld referenz="168-175-UmstellungsdatumFolgetarifs-Datum">
 			<name>Umstellungsdatum des Folgetarifs</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -45172,7 +45172,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="183-190-DatLetztenPraemienanpassung-Datum">
+		<feld referenz="183-190-DatumLetztenPraemienanpassung-Datum">
 			<name>Datum der letzten Prämienanpassung</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -46383,7 +46383,7 @@
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="201-208-DatLetztenGlaspreisangleichung-Datum">
+		<feld referenz="201-208-DatumLetztenGlaspreisangleichung-Datum">
 			<name>Datum der letzten Glaspreisangleichung</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -46753,7 +46753,7 @@
 			<bytes>5</bytes>
 			<datentyp>Numerisch</datentyp>
 		</feld>
-		<feld referenz="208-215-DatLetztenPositivenDynamik-Datum">
+		<feld referenz="208-215-DatumLetztenPositivenDynamik-Datum">
 			<name>Datum der letzten positiven Dynamik</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
@@ -48269,7 +48269,7 @@
 			<bytes>6</bytes>
 			<datentyp>Datum</datentyp>
 		</feld>
-		<feld referenz="241-248-DatUnverfallbarkeit-Datum">
+		<feld referenz="241-248-DatumUnverfallbarkeit-Datum">
 			<name>Datum Unverfallbarkeit</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
