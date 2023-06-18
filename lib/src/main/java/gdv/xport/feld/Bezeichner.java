@@ -1038,7 +1038,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner SATZART_0220_684 = new Bezeichner("Satzart 0220.684");
     public static final Bezeichner SATZART_0372 = new Bezeichner("Satzart 0372");
     public static final Bezeichner SATZART_0600 = new Bezeichner("Satzart 0600");
-    public static final Bezeichner SATZ_NR_1 = new Bezeichner("Satznummer1", "SatzNr1");
+    public static final Bezeichner SATZ_NR_1 = new Bezeichner("Satznummer1", "SatzNr1", "SatzNr", "Satznummer");
     public static final Bezeichner SATZ_NR_2 = new Bezeichner("Satznummer2", "SatzNr2");
     public static final Bezeichner SATZ_NR_3 = new Bezeichner("Satznummer3", "SatzNr3");
     public static final Bezeichner SATZ_NR_4 = new Bezeichner("Satznummer4", "SatzNr4");

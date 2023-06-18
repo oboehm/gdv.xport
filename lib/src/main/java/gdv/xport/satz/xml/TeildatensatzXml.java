@@ -118,7 +118,7 @@ public final class TeildatensatzXml extends Teildatensatz {
             FeldReferenz referenz = referenzen.get(i);
             FeldXml feldXml = felder.get(referenz.getId());
             endAddress -= feldXml.getAnzahlBytes();
-            Feld feld = feldXml.toFeld(endAddress + 1, referenz).mitConfig(getConfig());
+            Feld feld = feldXml.toFeld(endAddress + 1, referenz, this).mitConfig(getConfig());
             endeDatenfelder.add(feld);
         }
         int length = endAddress + 1 - startAddress;
@@ -133,7 +133,7 @@ public final class TeildatensatzXml extends Teildatensatz {
     }
 
     private void addFeld(final FeldXml feldXml, final int byteAddress, final FeldReferenz referenz) {
-        Feld feld = feldXml.toFeld(byteAddress, referenz).mitConfig(getConfig());
+        Feld feld = feldXml.toFeld(byteAddress, referenz, this).mitConfig(getConfig());
         if (!this.hasFeld(feld)) {
             super.add(feld);
         } else {
