@@ -1634,8 +1634,6 @@ public final class Bezeichner implements Serializable {
                 return "Sf";
             case "Sonstige":
                 return "Sonst";
-            case "Strasse":
-                return "Str";
             case "Unternehmens":
                 return "U";
             case "Versicherungsscheinnummer":
@@ -1665,6 +1663,7 @@ public final class Bezeichner implements Serializable {
                 word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
                 word = StringUtils.replaceIgnoreCase(word, "nummer", "Nr");
                 word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");
+                word = StringUtils.replaceIgnoreCase(word, "Strasse", "Str");
                 return WordUtils.capitalize(word);
         }
     }

@@ -979,10 +979,10 @@
                 <name>Risikoort</name>
                 <technischerName>Risikoort</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld Risikostrasse (110-139) -->
-            <feldreferenz referenz="110-139-Risikostrasse-Alphanumerisch">
+            <!-- AlphaNumFeld RisikoStr (110-139) -->
+            <feldreferenz referenz="110-139-RisikoStr-Alphanumerisch">
                 <name>Risikostraﬂe</name>
-                <technischerName>Risikostrasse</technischerName>
+                <technischerName>RisikoStr</technischerName>
             </feldreferenz>
             <!-- NumFeld Sturmzone (140-140) -->
             <feldreferenz referenz="140-140-Sturmzone-Numerisch">
@@ -1719,10 +1719,10 @@
                 <name>Risikoort</name>
                 <technischerName>Risikoort</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld Risikostrasse (112-141) -->
-            <feldreferenz referenz="112-141-Risikostrasse-Alphanumerisch">
+            <!-- AlphaNumFeld RisikoStr (112-141) -->
+            <feldreferenz referenz="112-141-RisikoStr-Alphanumerisch">
                 <name>Risikostraﬂe</name>
-                <technischerName>Risikostrasse</technischerName>
+                <technischerName>RisikoStr</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Waehrungsschluessel (142-144) -->
             <feldreferenz referenz="142-144-Waehrungsschluessel-Alphanumerisch">
@@ -9322,10 +9322,10 @@
                 <name>Risikoort</name>
                 <technischerName>Risikoort</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld Risikostrasse (213-242) -->
-            <feldreferenz referenz="213-242-Risikostrasse-Alphanumerisch">
+            <!-- AlphaNumFeld RisikoStr (213-242) -->
+            <feldreferenz referenz="213-242-RisikoStr-Alphanumerisch">
                 <name>Risikostraﬂe</name>
-                <technischerName>Risikostrasse</technischerName>
+                <technischerName>RisikoStr</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld ReferenzNr (243-249) -->
             <feldreferenz referenz="243-249-ReferenzNr-Alphanumerisch">
@@ -29319,10 +29319,10 @@
                 <name>Risikoort</name>
                 <technischerName>Risikoort</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld Risikostrasse (101-130) -->
-            <feldreferenz referenz="101-130-Risikostrasse-Alphanumerisch">
+            <!-- AlphaNumFeld RisikoStr (101-130) -->
+            <feldreferenz referenz="101-130-RisikoStr-Alphanumerisch">
                 <name>Risikostraﬂe</name>
-                <technischerName>Risikostrasse</technischerName>
+                <technischerName>RisikoStr</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Form (131-131) -->
             <feldreferenz referenz="131-131-Form-Alphanumerisch">
@@ -37769,7 +37769,7 @@
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
         </feld>
-        <feld referenz="101-130-Risikostrasse-Alphanumerisch">
+        <feld referenz="101-130-RisikoStr-Alphanumerisch">
             <name>Risikostraﬂe</name>
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -38577,7 +38577,7 @@
             <bytes>17</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="110-139-Risikostrasse-Alphanumerisch">
+        <feld referenz="110-139-RisikoStr-Alphanumerisch">
             <name>Risikostraﬂe</name>
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -38740,7 +38740,7 @@
             <bytes>17</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="112-141-Risikostrasse-Alphanumerisch">
+        <feld referenz="112-141-RisikoStr-Alphanumerisch">
             <name>Risikostraﬂe</name>
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
@@ -45885,7 +45885,7 @@
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
         </feld>
-        <feld referenz="213-242-Risikostrasse-Alphanumerisch">
+        <feld referenz="213-242-RisikoStr-Alphanumerisch">
             <name>Risikostraﬂe</name>
             <bytes>30</bytes>
             <datentyp>Alphanumerisch</datentyp>
