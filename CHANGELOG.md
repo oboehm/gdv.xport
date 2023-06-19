@@ -9,6 +9,13 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
+## [Unreleased]
+
+### Changed
+
+- technische Namen innerhalb eines Datensatzes sind immer eindeutig (im Gegensatz zur Original-VUVM20xx.xml)
+
+
 ## [6.6.0] - 2023-06-13
 
 ### Changed
