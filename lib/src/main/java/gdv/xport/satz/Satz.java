@@ -1276,10 +1276,6 @@ public abstract class Satz implements Cloneable {
 	 */
 	public List<ConstraintViolation> validate(Config validationConfig) {
 		List<ConstraintViolation> violations = new ArrayList<>();
-		if (validationConfig.getValidateMode() == Config.ValidateMode.STRICT) {
-			Validator validator = new Validator();
-			violations.addAll(validator.validate(this));
-		}
 		if (!this.getSatzartFeld().isValid() || (this.getSatzart() < 1)) {
 			ConstraintViolation cv =
 					new SimpleConstraintViolation("invalid Satzart " + this.getSatzartFeld().getInhalt(), this, this.getSatzartFeld());
