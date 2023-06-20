@@ -161,8 +161,7 @@ public class BezeichnerTest {
 
     /**
      * Auch die VU-Nummer hat so ihre Besonderheiten. So ist der technische
-     * Name dafuer "VuNr", was sich nicht direkt aus dem Name ("VU-Nummer")
-     * ableiten laesst.
+     * Name dafuer "VuNr".
      */
     @Test
     public void testEqualsVuNummer() {
