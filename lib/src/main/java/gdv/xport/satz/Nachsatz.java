@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2019 by Oli B.
+ * Copyright (c) 2009 - 2023 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -232,7 +232,7 @@ public final class Nachsatz extends Satz {
      */
     public BetragMitVorzeichen getGesamtBeitragBruttoMitVorzeichen() {
         NumFeld brutto = (NumFeld) getFeld(GESAMTBEITRAG_BRUTTO);
-        AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(VORZEICHEN);
+		AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(ByteAdresse.of(brutto.getEndAdresse() + 1));
         return BetragMitVorzeichen.of(brutto, vorzeichen);
     }
 
@@ -294,7 +294,7 @@ public final class Nachsatz extends Satz {
      */
     public BetragMitVorzeichen getGesamtProvisionsBetragMitVorzeichen() {
         NumFeld brutto = getFeld(GESAMTPROVISIONSBETRAG, NumFeld.class);
-        AlphaNumFeld vorzeichen = getFeld(VORZEICHEN2, AlphaNumFeld.class);
+        AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(ByteAdresse.of(brutto.getEndAdresse() + 1));
         return BetragMitVorzeichen.of(brutto, vorzeichen);
     }
 
@@ -358,7 +358,7 @@ public final class Nachsatz extends Satz {
      */
     public BetragMitVorzeichen getVersicherungsLeistungenMitVorzeichen() {
         NumFeld brutto = (NumFeld) getFeld(VERSICHERUNGSLEISTUNGEN);
-        AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(VORZEICHEN3);
+		AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(ByteAdresse.of(brutto.getEndAdresse() + 1));
         return BetragMitVorzeichen.of(brutto, vorzeichen);
     }
 
@@ -418,7 +418,7 @@ public final class Nachsatz extends Satz {
      */
     public BetragMitVorzeichen getSchadenbearbeitungskostenMitVorzeichen() {
         NumFeld betrag = (NumFeld) getFeld(SCHADENBEARBEITUNGSKOSTEN);
-        AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(VORZEICHEN4);
+		AlphaNumFeld vorzeichen = (AlphaNumFeld) getFeld(ByteAdresse.of(betrag.getEndAdresse() + 1));
         return BetragMitVorzeichen.of(betrag, vorzeichen);
     }
 
