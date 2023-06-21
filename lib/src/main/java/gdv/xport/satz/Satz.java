@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009-2021 by Oli B.
+ * Copyright (c) 2009-2023 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -907,22 +907,21 @@ public abstract class Satz implements Cloneable {
     }
 
 	/**
-   * Liefert den Inhalt des 10. Feldes in Satzart 220, Sparte 20 (Kranken). Vorhersollte allerdings
-   * mittels {@link #hasKrankenFolgeNr()} geprueft werden, ob der Satz eine KrankenfolgeNr-Feld
-   * besitzt.
-   * <p>
-   *
-   * @return die KrankenFolgeNr
-   */
-  @JsonIgnore
-  public final String getKrankenFolgeNr()
-  {
-    if (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF))
-      return this.get(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF);
-    else
-      return
-          this.get(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF);
-  }
+	 * Liefert den Inhalt des 10. Feldes in Satzart 220, Sparte 20 (Kranken). Vorhersollte allerdings
+	 * mittels {@link #hasKrankenFolgeNr()} geprueft werden, ob der Satz eine KrankenfolgeNr-Feld
+	 * besitzt.
+	 * <p>
+	 *
+	 * @return die KrankenFolgeNr
+	 */
+	@JsonIgnore
+	public final String getKrankenFolgeNr() {
+		if (this.hasFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF)) {
+			return this.getFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_LAUFENDE_NR_TARIF).getInhalt();
+		} else {
+			return this.getFeld(Bezeichner.FOLGE_NR_ZUR_LAUFENDEN_PERSONEN_NR_UNTER_NR_BZW_LAUFENDEN_NR_TARIF).getInhalt();
+		}
+	}
 
   /**
    * Liefert den Inhalt des 9. Feldes in Satzart 0220, Sparte 580 (Bausparen). Vorher sollte
