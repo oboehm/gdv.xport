@@ -1250,7 +1250,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner VERSICHERUNGSSCHUTZ = new Bezeichner("Versicherungsschutz");
     public static final Bezeichner VERSICHERUNGSSUMME_AKTUELL_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme aktuell in W\u00e4hrungseinheiten");
     public static final Bezeichner VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme in W\u00e4hrungseinheiten");
-    public static final Bezeichner VERSION_SATZART_9999 = new Bezeichner("Version Satzart 9999 Nachsatz", "Satzart9999", "Nachsatzsatzart9999");
+    public static final Bezeichner VERSION_SATZART_9999 = new Bezeichner("Version Satzart 9999 Nachsatz", "Satzart9999");
     public static final Bezeichner VERTRAG_MIT_ZUWACHSGARANTIE = new Bezeichner("Vertrag mit Zuwachsgarantie");
     public static final Bezeichner VERSION_SATZART_0001 = new Bezeichner("Version Satzart 0001");
     public static final Bezeichner VERSION_SATZART_0100 = new Bezeichner("Version Satzart 0100");
@@ -1390,7 +1390,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner VP_PERSONENNUMMER_VERSICHERER = new Bezeichner("VP-Personennummer des Versicherers");
     public static final Bezeichner VS_NR = VERSICHERUNGSSCHEINNUMMER;
     public static final Bezeichner VU_ABRECHNUNGSSTELLE = new Bezeichner("VU-Abrechnungsstelle");
-    public static final Bezeichner VU_NR = new Bezeichner("VU-Nummer", "VuNr");
+  public static final Bezeichner VU_NR = new Bezeichner("VU-Nummer");
     public static final Bezeichner VU_NUMMER = VU_NR;
 
     public static final Bezeichner WAEHRUNG_DOKUMENTE_FUER_VN = new Bezeichner("Waehrung der Dokumente fuer VN");
@@ -1413,22 +1413,26 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_4 = WAEHRUNGSSCHLUESSEL4;
     public static final Bezeichner WAGNIS = new Bezeichner("Wagnis");
     /** @deprecated bitte {@link #WAGNIS} benutzen. */
+    @Deprecated
     public static final Bezeichner WAGNIS2 = WAGNIS;
     public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart");
     /** @deprecated bitte {@link #WAGNISART} benutzen. */
+    @Deprecated
     public static final Bezeichner WAGNISART2 = WAGNISART;
     /** @deprecated bitte {@link #WAGNISART} benutzen. */
+    @Deprecated
     public static final Bezeichner WAGNISART3 = WAGNISART;
     /** @deprecated bitte {@link #WAGNISART} benutzen. */
+    @Deprecated
     public static final Bezeichner WAGNISART4 = WAGNISART;
     public static final Bezeichner WAGNISBESCHREIBUNG = new Bezeichner("Wagnisbeschreibung");
     public static final Bezeichner WAGNISKENNZIFFER = new Bezeichner("Wagniskennziffer");
     public static final Bezeichner WAGNISMENGE = new Bezeichner("Wagnismenge");
     public static final Bezeichner WAGNISTEXT = new Bezeichner("Wagnistext");
-  public static final Bezeichner WAISENRENTE_PROZENT = new Bezeichner("Waisenrente %");
-  /** @deprecated bitte WAISENRENTE_PROZENT verwenden. */
-  @Deprecated
-  public static final Bezeichner WAISENRENTE_IN_PROZENT = WAISENRENTE_PROZENT;
+    public static final Bezeichner WAISENRENTE_PROZENT = new Bezeichner("Waisenrente %");
+    /** @deprecated bitte WAISENRENTE_PROZENT verwenden. */
+    @Deprecated
+    public static final Bezeichner WAISENRENTE_IN_PROZENT = WAISENRENTE_PROZENT;
 
     public static final Bezeichner WARTEZEIT = new Bezeichner("Wartezeit");
     public static final Bezeichner WARTUNGSVERTRAG = new Bezeichner("Wartungsvertrag");

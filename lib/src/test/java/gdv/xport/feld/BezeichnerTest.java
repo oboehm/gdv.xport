@@ -259,12 +259,6 @@ public class BezeichnerTest {
     }
 
     @Test
-    public void testVersionSatzart9999() {
-        Bezeichner nachsatzart = new Bezeichner("Nachsatzsatzart9999");
-        assertThat(Bezeichner.VERSION_SATZART_9999.getVariants(), hasItem(nachsatzart));
-    }
-
-    @Test
     public void testSerializable() throws NotSerializableException {
         SerializableTester.assertSerialization(Bezeichner.ABLAUF);
     }
