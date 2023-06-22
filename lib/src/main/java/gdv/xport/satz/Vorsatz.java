@@ -110,7 +110,7 @@ public class Vorsatz extends Satz {
 
     private static Bezeichner getVersionBezeichner(final int art, final int sparte) {
         try (Formatter formatter = new Formatter()) {
-            String bezeichnung = formatter.format("Version Satzart %04d %03d", art, sparte).toString();
+            String bezeichnung = formatter.format("Version Satzart %04d.%03d", art, sparte).toString();
             return Bezeichner.of(bezeichnung);
         }
     }
