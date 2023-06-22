@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 by Oli B.
+ * Copyright (c) 2021-2023 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ import java.util.List;
  */
 public class SatzValidator implements ImportListener {
 
-    private static final Logger LOG = LogManager.getLogger();
+    private static final Logger LOG = LogManager.getLogger(SatzValidator.class);
     private final Config config;
     private final List<ConstraintViolation> violations = new ArrayList<>();
     private int satzNr = 1;

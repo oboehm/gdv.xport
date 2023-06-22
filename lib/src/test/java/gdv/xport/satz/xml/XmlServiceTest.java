@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2022 by Oli B.
+ * Copyright (c) 2014-2023 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -250,7 +250,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     public void testGetSatzarten() throws IOException {
         Map<SatzTyp, SatzXml> satzarten = xmlService.getSatzarten();
         for (Map.Entry<SatzTyp, SatzXml> entry : satzarten.entrySet()) {
-            LOG.info("Pruefe Import fuer {}...", entry.getKey());
+            LOG.debug("Pruefe Import fuer {}...", entry.getKey());
             checkImport(entry.getValue());
         }
     }
@@ -277,7 +277,7 @@ public class XmlServiceTest extends AbstractXmlTest {
     public void testCloning() {
         Map<SatzTyp, SatzXml> satzarten = xmlService.getSatzarten();
         for (Map.Entry<SatzTyp, SatzXml> entry : satzarten.entrySet()) {
-            LOG.info("Pruefe Clonen von {}...", entry.getKey());
+            LOG.debug("Pruefe Clonen von {}...", entry.getKey());
             checkCloning(entry.getValue());
         }
     }
