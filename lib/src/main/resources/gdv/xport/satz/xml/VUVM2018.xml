@@ -28,9 +28,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0001</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.4</version>
@@ -775,9 +775,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>550</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -898,9 +898,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>140</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.6</version>
@@ -1300,9 +1300,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.9</version>
@@ -1678,9 +1678,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>130</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.8</version>
@@ -2004,9 +2004,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.5</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -2162,9 +2162,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0372</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -2272,9 +2272,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>580.2</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -2730,9 +2730,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.48</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -2822,9 +2822,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>030</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -2974,9 +2974,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>190</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -3060,9 +3060,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0400</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.7</version>
@@ -3401,9 +3401,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>070</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -3578,9 +3578,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.5</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -3685,9 +3685,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>130</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.6</version>
@@ -3892,9 +3892,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.0</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.2</version>
@@ -4075,9 +4075,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.13</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -4197,9 +4197,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -4323,9 +4323,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>020</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.7</version>
@@ -4572,9 +4572,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.48</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -4980,9 +4980,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>140</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.6</version>
@@ -5165,9 +5165,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>110</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -5251,9 +5251,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.48</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -5379,9 +5379,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>190</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -5465,9 +5465,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.13</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -5658,9 +5658,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.48</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>6</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -5770,9 +5770,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.6</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>9</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -5947,9 +5947,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0382</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -6092,9 +6092,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.6</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -6220,9 +6220,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.13</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>7</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -6317,9 +6317,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>510</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -6413,9 +6413,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.48</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>9</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -6595,9 +6595,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.6</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>6</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -6707,9 +6707,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.2</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>9</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -6889,9 +6889,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>140</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -7020,9 +7020,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.2</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -7184,9 +7184,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>080</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -7280,9 +7280,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.2</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>7</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -7393,9 +7393,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -7525,9 +7525,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.2</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>6</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -7657,9 +7657,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.6</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -7983,9 +7983,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>550</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -8095,9 +8095,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0410</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.6</version>
@@ -8358,9 +8358,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.2</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -8966,9 +8966,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>030</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -9057,9 +9057,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>000</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.3</version>
@@ -9321,9 +9321,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>040</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.8</version>
@@ -9637,9 +9637,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>550</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -9844,9 +9844,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>030</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.9</version>
@@ -10081,9 +10081,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>080</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -10162,9 +10162,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.6</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -10320,9 +10320,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0392</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -10543,9 +10543,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.2</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -10716,9 +10716,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.2</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>7</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -10808,9 +10808,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0390</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -10976,9 +10976,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.6</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -11078,9 +11078,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>190</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -11164,9 +11164,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>110</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -11245,9 +11245,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.2</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -11347,9 +11347,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0420</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -11567,9 +11567,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>051</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -11678,9 +11678,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0300</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.4</version>
@@ -11925,9 +11925,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>170</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -12016,9 +12016,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>040</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.7</version>
@@ -12261,9 +12261,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>190</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.3</version>
@@ -12435,9 +12435,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>580.01</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -13036,9 +13036,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>550</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -13209,9 +13209,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>684</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -13398,9 +13398,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>030</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.4</version>
@@ -14219,9 +14219,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>560</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -14326,9 +14326,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>550</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -14483,9 +14483,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>550</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -14621,9 +14621,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>054</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -14828,9 +14828,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.9</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>9</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -15010,9 +15010,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>055</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -15121,9 +15121,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.9</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -15285,9 +15285,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>052</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -15401,9 +15401,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.9</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>7</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -15514,9 +15514,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>053</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -15625,9 +15625,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.9</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>6</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -15757,9 +15757,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.5</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>9</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -15939,9 +15939,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>059</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -16040,9 +16040,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.5</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -16168,9 +16168,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.5</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>6</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -16280,9 +16280,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.9</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -16974,9 +16974,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>000</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -17069,9 +17069,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.5</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -17415,9 +17415,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0550</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.4</version>
@@ -17611,9 +17611,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0430</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -17716,9 +17716,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>050</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.6</version>
@@ -18120,9 +18120,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>170</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.6</version>
@@ -18441,9 +18441,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>020.1</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.6</version>
@@ -18634,9 +18634,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>570</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -18773,9 +18773,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>020.3</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.6</version>
@@ -19013,9 +19013,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>020.2</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.6</version>
@@ -19245,9 +19245,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0450</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.3</version>
@@ -19463,9 +19463,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.7</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -19651,9 +19651,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>140</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -19742,9 +19742,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0052</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -19955,9 +19955,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0600</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -20259,9 +20259,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.7</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -20376,9 +20376,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0202</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -20451,9 +20451,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0200</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.5</version>
@@ -20799,9 +20799,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -20880,9 +20880,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>130</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -20961,9 +20961,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>059</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.1</version>
@@ -21171,9 +21171,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>570</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -21503,9 +21503,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>053</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.3</version>
@@ -21778,9 +21778,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>054</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.3</version>
@@ -22088,9 +22088,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>055</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.1</version>
@@ -22398,9 +22398,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>170</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.3</version>
@@ -22786,9 +22786,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>9950</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -22861,9 +22861,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>051</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.5</version>
@@ -23156,9 +23156,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>050</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -23258,9 +23258,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>052</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.4</version>
@@ -23558,9 +23558,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>9951</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -23633,9 +23633,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>580</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -23962,9 +23962,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>9952</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -24052,9 +24052,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>030</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -24264,9 +24264,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>140</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -24345,9 +24345,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>040</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -24451,9 +24451,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>684</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -24748,9 +24748,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>550</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -25082,9 +25082,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>070</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.5</version>
@@ -25258,9 +25258,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>190</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.7</version>
@@ -25503,9 +25503,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>560</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -25679,9 +25679,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>510</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.4</version>
@@ -25840,9 +25840,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.13</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -26351,9 +26351,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>110</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.6</version>
@@ -26526,9 +26526,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>080</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.5</version>
@@ -26819,9 +26819,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.13</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>6</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -26951,9 +26951,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.13</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -27110,9 +27110,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0350</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.3</version>
@@ -27256,9 +27256,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>000</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -27351,9 +27351,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.13</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>7</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -27464,9 +27464,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.13</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>9</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -27646,9 +27646,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>050</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -27738,9 +27738,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0500</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.8</version>
@@ -28051,9 +28051,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0102</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -28146,9 +28146,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0100</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>2.3</version>
@@ -28756,9 +28756,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0342</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -29023,9 +29023,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>550</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -29140,9 +29140,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>510</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.4</version>
@@ -29337,9 +29337,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>080</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.5</version>
@@ -29687,9 +29687,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>110</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.4</version>
@@ -29882,9 +29882,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>000</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.5</version>
@@ -30182,9 +30182,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>190</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.3</version>
@@ -30422,9 +30422,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>070</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.4</version>
@@ -30770,9 +30770,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0362</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -31054,9 +31054,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>050</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -31151,9 +31151,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.7</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>9</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -31333,9 +31333,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.7</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>8</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -31497,9 +31497,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>170</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -31578,9 +31578,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>130</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -31669,9 +31669,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.7</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>6</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -31801,9 +31801,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>190</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.3</version>
@@ -32082,9 +32082,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>010.7</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                     <auspraegung>1</auspraegung>
                 </feldreferenz>
             </kennzeichnung>
@@ -32593,9 +32593,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>040</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>
@@ -32684,9 +32684,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>0352</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.0</version>
@@ -32826,9 +32826,9 @@
                     <technischerName>Sparte</technischerName>
                     <auspraegung>550</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.2</version>
@@ -32974,9 +32974,9 @@
                     <technischerName>Satzart</technischerName>
                     <auspraegung>9999</auspraegung>
                 </feldreferenz>
-                <feldreferenz referenz="256-256-Satznummer-Unbekannt">
+                <feldreferenz referenz="256-256-SatzNr-Unbekannt">
                     <name>Satznummer</name>
-                    <technischerName>Satznummer</technischerName>
+                    <technischerName>SatzNr</technischerName>
                 </feldreferenz>
             </kennzeichnung>
             <version>1.1</version>

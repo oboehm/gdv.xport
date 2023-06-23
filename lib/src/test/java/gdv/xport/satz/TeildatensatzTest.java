@@ -119,7 +119,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
         Executable executable = () -> tds.getFeld(satznummer.getBezeichnung());
         IllegalArgumentException assertThrows = assertThrows(IllegalArgumentException.class, executable);
         MatcherAssert.assertThat("Exception sollte Bezeichner und Satzart beschreiben", assertThrows.getMessage(),
-                allOf(containsString(satznummer.getBezeichnung()), containsString("Satzart 0100")));
+                allOf(containsString(satznummer.getBezeichner().toString()), containsString("Satzart 0100")));
     }
 
     /**
