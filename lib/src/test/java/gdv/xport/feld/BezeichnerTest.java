@@ -200,15 +200,10 @@ public class BezeichnerTest {
         assertEquals(Bezeichner.VERSION_SATZART_0210_050, version);
     }
 
-    /**
-     * Test-Method fuer {@link Bezeichner#mergeWith(Bezeichner)}.
-     */
     @Test
-    public void testMergeWith() {
-        Bezeichner nrImGevo = new Bezeichner("Lfd. Personennummer im GeVo");
-        Bezeichner nr = new Bezeichner("Lfd. Personennummer", "LfdPersonenNrImGevo");
-        Bezeichner merged = nrImGevo.mergeWith(nr);
-        assertEquals("LfdPersonenNrImGevo", merged.getTechnischerName());
+    public void testKagNrAbsendendenGesellschaft() {
+        Bezeichner b = new Bezeichner("KAG-Nummer der absendenden Gesellschaft");
+        assertEquals("KagNrAbsendendenGesellschaft", b.getTechnischerName());
     }
 
     /**

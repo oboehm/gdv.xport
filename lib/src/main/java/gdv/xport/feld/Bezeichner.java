@@ -1622,6 +1622,8 @@ public final class Bezeichner implements Serializable {
                 return "Iii";
             case "ISIN":
                 return "Isin";
+            case "KAG":
+                return "Kag";
             case "Kurkosten":
                 return "Kurkost";
             case "Laenderkennzeichen":
@@ -1793,7 +1795,9 @@ public final class Bezeichner implements Serializable {
      *
      * @param bezeichner the bezeichner
      * @return the bezeichner
+     * @deprecated nicht mehr notwendig, wird mit v7 entfernt (TODO)
      */
+    @Deprecated
     public Bezeichner mergeWith(final Bezeichner bezeichner) {
         if (this.getTechnischerName().equals(bezeichner.getTechnischerName())) {
             LOG.trace("Merge of {} and {} is ignored.", this, bezeichner);

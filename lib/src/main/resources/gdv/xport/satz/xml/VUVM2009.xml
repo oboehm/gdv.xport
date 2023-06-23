@@ -763,10 +763,10 @@
                 <technischerName>Satzart</technischerName>
                 <auspraegung>0291</auspraegung>
             </feldreferenz>
-            <!-- AlphaNumFeld KAGNrAbsendendenGesellschaft (5-9) -->
-            <feldreferenz referenz="005-009-KAGNrAbsendendenGesellschaft-Alphanumerisch">
+            <!-- AlphaNumFeld KagNrAbsendendenGesellschaft (5-9) -->
+            <feldreferenz referenz="005-009-KagNrAbsendendenGesellschaft-Alphanumerisch">
                 <name>KAG-Nummer der absendenden Gesellschaft</name>
-                <technischerName>KAGNrAbsendendenGesellschaft</technischerName>
+                <technischerName>KagNrAbsendendenGesellschaft</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Buendelungskennzeichen (10-10) -->
             <feldreferenz referenz="010-010-Buendelungskennzeichen-Alphanumerisch">
@@ -7588,10 +7588,10 @@
                 <technischerName>Satzart</technischerName>
                 <auspraegung>0295</auspraegung>
             </feldreferenz>
-            <!-- AlphaNumFeld KAGNrAbsendendenGesellschaft (5-9) -->
-            <feldreferenz referenz="005-009-KAGNrAbsendendenGesellschaft-Alphanumerisch">
+            <!-- AlphaNumFeld KagNrAbsendendenGesellschaft (5-9) -->
+            <feldreferenz referenz="005-009-KagNrAbsendendenGesellschaft-Alphanumerisch">
                 <name>KAG-Nummer der absendenden Gesellschaft</name>
-                <technischerName>KAGNrAbsendendenGesellschaft</technischerName>
+                <technischerName>KagNrAbsendendenGesellschaft</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Buendelungskennzeichen (10-10) -->
             <feldreferenz referenz="010-010-Buendelungskennzeichen-Alphanumerisch">
@@ -13961,10 +13961,10 @@
                 <technischerName>Satzart</technischerName>
                 <auspraegung>0293</auspraegung>
             </feldreferenz>
-            <!-- AlphaNumFeld KAGNrAbsendendenGesellschaft (5-9) -->
-            <feldreferenz referenz="005-009-KAGNrAbsendendenGesellschaft-Alphanumerisch">
+            <!-- AlphaNumFeld KagNrAbsendendenGesellschaft (5-9) -->
+            <feldreferenz referenz="005-009-KagNrAbsendendenGesellschaft-Alphanumerisch">
                 <name>KAG-Nummer der absendenden Gesellschaft</name>
-                <technischerName>KAGNrAbsendendenGesellschaft</technischerName>
+                <technischerName>KagNrAbsendendenGesellschaft</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Buendelungskennzeichen (10-10) -->
             <feldreferenz referenz="010-010-Buendelungskennzeichen-Alphanumerisch">
@@ -28159,10 +28159,10 @@
                 <technischerName>Satzart</technischerName>
                 <auspraegung>0294</auspraegung>
             </feldreferenz>
-            <!-- AlphaNumFeld KAGNrAbsendendenGesellschaft (5-9) -->
-            <feldreferenz referenz="005-009-KAGNrAbsendendenGesellschaft-Alphanumerisch">
+            <!-- AlphaNumFeld KagNrAbsendendenGesellschaft (5-9) -->
+            <feldreferenz referenz="005-009-KagNrAbsendendenGesellschaft-Alphanumerisch">
                 <name>KAG-Nummer der absendenden Gesellschaft</name>
-                <technischerName>KAGNrAbsendendenGesellschaft</technischerName>
+                <technischerName>KagNrAbsendendenGesellschaft</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Buendelungskennzeichen (10-10) -->
             <feldreferenz referenz="010-010-Buendelungskennzeichen-Alphanumerisch">
@@ -31947,10 +31947,10 @@
                 <technischerName>Satzart</technischerName>
                 <auspraegung>0292</auspraegung>
             </feldreferenz>
-            <!-- AlphaNumFeld KAGNrAbsendendenGesellschaft (5-9) -->
-            <feldreferenz referenz="005-009-KAGNrAbsendendenGesellschaft-Alphanumerisch">
+            <!-- AlphaNumFeld KagNrAbsendendenGesellschaft (5-9) -->
+            <feldreferenz referenz="005-009-KagNrAbsendendenGesellschaft-Alphanumerisch">
                 <name>KAG-Nummer der absendenden Gesellschaft</name>
-                <technischerName>KAGNrAbsendendenGesellschaft</technischerName>
+                <technischerName>KagNrAbsendendenGesellschaft</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Buendelungskennzeichen (10-10) -->
             <feldreferenz referenz="010-010-Buendelungskennzeichen-Alphanumerisch">
@@ -32174,7 +32174,7 @@
             <bytes>5</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="005-009-KAGNrAbsendendenGesellschaft-Alphanumerisch">
+        <feld referenz="005-009-KagNrAbsendendenGesellschaft-Alphanumerisch">
             <name>KAG-Nummer der absendenden Gesellschaft</name>
             <bytes>5</bytes>
             <datentyp>Alphanumerisch</datentyp>
