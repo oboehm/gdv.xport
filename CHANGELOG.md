@@ -16,6 +16,10 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - schnellere Validierung
 - technische Namen innerhalb eines Datensatzes sind immer eindeutig (im Gegensatz zur Original-VUVM20xx.xml)
 
+### Fixed
+
+- Downgrade HSQLDB-Treiber auf 2.6.1 wegen Java-8-Kompatibilität
+
 
 ## [6.6.0] - 2023-06-13
 
