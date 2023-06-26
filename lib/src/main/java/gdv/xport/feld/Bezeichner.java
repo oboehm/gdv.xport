@@ -395,7 +395,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ERHOEHUNGSBASIS_DYNAMIK = new Bezeichner("Erhoehungsbasis Dynamik");
     public static final Bezeichner ERHOEHUNGSSATZ_LETZTER_GLASPREISANGLEICHUNG = new Bezeichner("%-Satz Erhöhung der letzten Glaspreisangleichung");
     public static final Bezeichner ERSTATTUNG_OP = new Bezeichner("Erstattung OP");
-    public static final Bezeichner ERSTE_ZULASSUNG_AUF_DEN_VN = new Bezeichner("Erste Zulassung auf den VN");
+    public static final Bezeichner ERSTE_ZULASSUNG_AUF_DEN_VN = new Bezeichner("Erste Zulassung auf den VN", "ErsteZulassungAufDenVn");
     public static final Bezeichner ERSTZULASSUNG = new Bezeichner("Erstzulassung");
     public static final Bezeichner ERWEITERTE_NEUWERTVERSICHERUNG = new Bezeichner("erweiterte Neuwertversicherung");
     public static final Bezeichner ERWEITERUNG_DES_GELTUNGSBEREICHES = new Bezeichner("Erweiterung des Geltungsbereiches");
@@ -602,9 +602,9 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner KFV_BEITRAGSSATZ = new Bezeichner("KFV-Beitragssatz");
     public static final Bezeichner KFV_BEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KFV-Beitrag in W\u00e4hrungseinheiten");
     public static final Bezeichner KFV_DECKUNGSART = new Bezeichner("KFV-Deckungsart");
-  public static final Bezeichner KFV_RGJ = new Bezeichner("KFV-RGJ");
+    public static final Bezeichner KFV_RGJ = new Bezeichner("KFV-RGJ");
     public static final Bezeichner KFV_SCHAEDEN_AUS_RUECKSTUFUNG = new Bezeichner("KFV-Schaeden aus Rueckstufung");
-  public static final Bezeichner KFV_SFS_KLASSE = new Bezeichner("KFV-SF/S-Klasse");
+    public static final Bezeichner KFV_SFS_KLASSE = new Bezeichner("KFV-SF/S-Klasse");
     public static final Bezeichner KFV_TARIFGRUPPE = new Bezeichner("KFV-Tarifgruppe");
     public static final Bezeichner KFV_ZUSCHLAEGE_IN_PROZENT = new Bezeichner("KFV-Zuschlaege in %");
     public static final Bezeichner KFV_ZUSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("KFV-Zuschlaege in W\u00e4hrungseinheiten");
@@ -1648,6 +1648,8 @@ public final class Bezeichner implements Serializable {
                 return "VsNr";
             case "VP":
                 return "Vp";
+            case "VS":
+                return "Vs";
             case "VU":
                 return "Vu";
             case "Wagniskennziffer":
@@ -1666,12 +1668,14 @@ public final class Bezeichner implements Serializable {
                 if ((word.length() == 3) && (word.toLowerCase().charAt(0) == 'd')) {
                     return "";
                 }
-                word = StringUtils.replaceIgnoreCase(word, "versicherungsschein", "Vs");
-                word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Versssumme");
-                word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
-                word = StringUtils.replaceIgnoreCase(word, "nummer", "Nr");
-                word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");
-                word = StringUtils.replaceIgnoreCase(word, "Strasse", "Str");
+                if (word.length() > 5) {
+                    word = StringUtils.replaceIgnoreCase(word, "versicherungsschein", "Vs");
+                    word = StringUtils.replaceIgnoreCase(word, "versicherungssumme", "Versssumme");
+                    word = StringUtils.replaceIgnoreCase(word, "versicherung", "Vers");
+                    word = StringUtils.replaceIgnoreCase(word, "nummer", "Nr");
+                    word = StringUtils.replaceIgnoreCase(word, "gesamt", "Ges");
+                    word = StringUtils.replaceIgnoreCase(word, "Strasse", "Str");
+                }
                 return WordUtils.capitalize(word);
         }
     }
