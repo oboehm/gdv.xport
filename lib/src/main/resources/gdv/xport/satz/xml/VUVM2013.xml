@@ -23431,15 +23431,15 @@
                 <name>Bewertungszahl-Faktor</name>
                 <technischerName>BewertungszahlFaktor</technischerName>
             </feldreferenz>
-            <!-- NumFeld LEVBetrag (184-192) -->
-            <feldreferenz referenz="184-192-LEVBetrag-Fliesskomma">
-                <name>LEV-Betrag</name>
-                <technischerName>LEVBetrag</technischerName>
+            <!-- NumFeld LevBetrag (184-192) -->
+            <feldreferenz referenz="184-192-LevBetrag-Fliesskomma">
+                <name>Lev-Betrag</name>
+                <technischerName>LevBetrag</technischerName>
             </feldreferenz>
-            <!-- AlphaNumFeld LEVTurnus (193-193) -->
-            <feldreferenz referenz="193-193-LEVTurnus-Alphanumerisch">
-                <name>LEV-Turnus</name>
-                <technischerName>LEVTurnus</technischerName>
+            <!-- AlphaNumFeld LevTurnus (193-193) -->
+            <feldreferenz referenz="193-193-LevTurnus-Alphanumerisch">
+                <name>Lev-Turnus</name>
+                <technischerName>LevTurnus</technischerName>
             </feldreferenz>
             <!-- NumFeld ZinsBonus (194-199) -->
             <feldreferenz referenz="194-199-ZinsBonus-Fliesskomma">
@@ -44228,8 +44228,8 @@
             <bytes>8</bytes>
             <datentyp>Datum</datentyp>
         </feld>
-        <feld referenz="184-192-LEVBetrag-Fliesskomma">
-            <name>LEV-Betrag</name>
+        <feld referenz="184-192-LevBetrag-Fliesskomma">
+            <name>Lev-Betrag</name>
             <bytes>9</bytes>
             <datentyp>Fliesskomma</datentyp>
             <nachkommastellen>2</nachkommastellen>
@@ -44757,8 +44757,8 @@
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="193-193-LEVTurnus-Alphanumerisch">
-            <name>LEV-Turnus</name>
+        <feld referenz="193-193-LevTurnus-Alphanumerisch">
+            <name>Lev-Turnus</name>
             <bytes>1</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>

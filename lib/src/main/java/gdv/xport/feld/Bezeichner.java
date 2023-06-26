@@ -1626,6 +1626,8 @@ public final class Bezeichner implements Serializable {
                 return "Kag";
             case "Kurkosten":
                 return "Kurkost";
+            case "LEV":
+                return "Lev";
             case "Laenderkennzeichen":
                 return "LKZ";
             case "Postleitzahl":
