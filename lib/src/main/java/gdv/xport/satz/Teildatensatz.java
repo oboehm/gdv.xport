@@ -467,9 +467,6 @@ public class Teildatensatz extends Satz {
                     return true;
                 }
             }
-            if (findFeld(b).isPresent()) {
-                return true;
-            }
         }
         return false;
     }
