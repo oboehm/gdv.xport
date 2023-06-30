@@ -50,7 +50,7 @@ public class SatzValidatorTest {
     @RegisterExtension
     LogCapturer logCapturer = LogCapturer.create().captureForType(SatzValidator.class);
 
-    private static final Logger LOG = LogManager.getLogger();
+    private static final Logger LOG = LogManager.getLogger(SatzValidatorTest.class);
     private final SatzValidator satzValidator = new SatzValidator();
 
     @Test
