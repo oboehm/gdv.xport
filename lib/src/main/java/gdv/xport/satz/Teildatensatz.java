@@ -264,6 +264,7 @@ public class Teildatensatz extends Satz {
         }
         if (felder.size() > 1) {
             LOG.info("Mit Bezeichner {} werden mehrere Felder in '{}' mit '{}' belegt: {}", name,this, value, felder);
+            throw new NotUniqueException(String.format("Bezeichner '%s' in %s nicht eindeutig: %s, %s...", name, toShortString(), felder.get(0), felder.get(1)));
         }
         for (Feld x : felder) {
             setFeld(x, value);
