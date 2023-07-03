@@ -642,13 +642,12 @@ public abstract class Satz implements Cloneable {
      */
 	public Feld getFeld(final Bezeichner bezeichner) throws IllegalArgumentException {
 		for (Teildatensatz tds : teildatensatz) {
-			for (Feld f : tds.getFelder()) {
-				if (bezeichner.equals(f.getBezeichner())) {
-					return f;
-				}
+			if (tds.hasFeld(bezeichner)) {
+				return tds.getFeld(bezeichner);
 			}
 		}
-		return findFeld(bezeichner);
+		throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
+				+ " vorhanden!");
 	}
 
 	/**
@@ -660,16 +659,6 @@ public abstract class Satz implements Cloneable {
 	 */
 	public Feld getFeld(final ByteAdresse adresse) {
 		return getTeildatensatz(1).getFeld(adresse);
-	}
-
-	private Feld findFeld(final Bezeichner bezeichner) throws IllegalArgumentException {
-		for (Teildatensatz tds : teildatensatz) {
-			if (tds.hasFeld(bezeichner)) {
-				return tds.getFeld(bezeichner);
-			}
-		}
-		throw new IllegalArgumentException("Feld \"" + bezeichner + "\" nicht in " + this.toShortString()
-				+ " vorhanden!");
 	}
 
 	/**
