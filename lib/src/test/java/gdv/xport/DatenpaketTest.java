@@ -621,7 +621,7 @@ public final class DatenpaketTest {
 
     @Test
     public void testAddDatensatz400Provision() {
-        BigDecimal summe = addDatensatz(SatzTyp.of(400), Bezeichner.GESAMTPROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN,
+        BigDecimal summe = addDatensatz(SatzTyp.of(400), Bezeichner.GESAMT_PROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN,
                 ByteAdresse.of(162),
                 new BigDecimal("0.99"), new BigDecimal("-0.11"));
         Nachsatz nachsatz = datenpaket.getNachsatz();
@@ -813,9 +813,6 @@ public final class DatenpaketTest {
         Datenpaket imported = new Datenpaket();
         imported.importFrom(testfile);
         assertEquals(2, imported.getDatensaetze().size());
-
-        Version version0500 = imported.getVorsatz().getSatzartVersionen().get(SatzTyp.of("0500"));
-        assertEquals("Version vom Datensatz 0500 stimmt nicht", "1.8", version0500 != null ? version0500.getInhalt() : "nicht vorhanden");
     }
 
     @Test

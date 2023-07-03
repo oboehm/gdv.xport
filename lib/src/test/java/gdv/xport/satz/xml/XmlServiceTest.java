@@ -372,27 +372,27 @@ public class XmlServiceTest extends AbstractXmlTest {
 
     @Test
     public void testVUVM2018() throws XMLStreamException, IOException {
-        compareXml("VUVM2018xL.xml", Config.VUVM2018);
+        compareXml("VUVM2018xL.xml", "VUVM2018.xml");
     }
 
     @Test
     public void testVUVM2015() throws XMLStreamException, IOException {
-        compareXml("VUVM2015xL.xml", Config.VUVM2015);
+        compareXml("VUVM2015xL.xml", "VUVM2015.xml");
     }
 
     @Test
     public void testVUVM2013() throws XMLStreamException, IOException {
-        compareXml("VUVM2013xL.xml", Config.VUVM2013);
+        compareXml("VUVM2013xL.xml", "VUVM2013.xml");
     }
 
     @Test
     public void testVUVM2009() throws XMLStreamException, IOException {
-        compareXml("VUVM2009xL.xml", Config.VUVM2009);
+        compareXml("VUVM2009xL.xml", "VUVM2009.xml");
     }
 
-    private static void compareXml(String refResource, Config config) throws XMLStreamException, IOException {
+    private static void compareXml(String refResource, String resource) throws XMLStreamException, IOException {
         XmlService refService = XmlService.getInstance(refResource);
-        XmlService service = XmlService.getInstance(config);
+        XmlService service = XmlService.getInstance(resource);
         assertEquals(refService.getGdvRelease(), service.getGdvRelease());
         for (Map.Entry<SatzTyp, SatzXml> entry : refService.getSatzarten().entrySet()) {
             SatzXml satz = service.getSatzart(entry.getKey());

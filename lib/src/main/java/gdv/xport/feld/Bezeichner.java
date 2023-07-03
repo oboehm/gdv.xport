@@ -496,7 +496,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner GESAMTMASSE = new Bezeichner("Gesamtmasse");
     public static final Bezeichner GESAMTPROVISIONSBETRAG = new Bezeichner("Gesamtprovisions-Betrag");
     public static final Bezeichner GESAMT_PROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gesamt-Provisionsbetrag in W\u00e4hrungseinheiten");
-    /** @deprecated bitte GESAMT-PROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN verwenden. */
+    /** @deprecated bitte GESAMT_PROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN verwenden. */
     @Deprecated
     public static final Bezeichner GESAMTPROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN = GESAMT_PROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN;
     public static final Bezeichner GESAMTVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gesamtversicherungssumme in W\u00e4hrungseinheiten");
