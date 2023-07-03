@@ -15,8 +15,12 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 - schnellere Validierung
 - technische Namen innerhalb eines Datensatzes sind immer eindeutig (im Gegensatz zur Original-VUVM20xx.xml)
+
+### Breaking Changes
+
 - Bezeichner muss fuer getFeld(..) und setFeld(..) eindeutig sein.
   Ansonsten sollte der Zugriff über die Byte-Adresse erfolgen
+- Teildatensatz.hasFeld(Feld) geht nicht mehr nur über den Namen, sondern es müssen alle Attribute übereinstimmen
 
 ### Fixed
 

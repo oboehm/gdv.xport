@@ -186,7 +186,7 @@ public final class FeldXml extends Feld {
         Feld feld = toFeld(byteAddress, bezeichner, referenz.getBemerkung());
         if (!feld.getBezeichner().getTechnischerName().equalsIgnoreCase("Satzart")) {
             int inc = 1;
-            while (tdXml.hasFeld(feld)) {
+            while (tdXml.hasFeld(feld.getBezeichner())) {
                 Bezeichner bezeichnerNeu = new Bezeichner(bezeichner.getName(),
                         bezeichner.getTechnischerName() + ++inc);
                 feld = toFeld(byteAddress, bezeichnerNeu, referenz.getBemerkung());

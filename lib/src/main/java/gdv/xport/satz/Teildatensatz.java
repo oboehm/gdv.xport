@@ -475,9 +475,8 @@ public class Teildatensatz extends Satz {
     /**
      * Ueberprueft, ob das uebergebene Feld vorhanden ist.
      * <p>
-     * Anmerkung: Es wird nur der Name ueberprueft. D.h. es wird nicht
-     * ueberprueft, ob es evtl. einen Konflikt mit der Start- und End-Adresse
-     * gibt.
+     * Anmerkung: Mit 4.4 wird nicht nur der Name ueberprueft sondern alle
+     * Attribute.
      * </p>
      *
      * @param feld the feld
@@ -486,7 +485,7 @@ public class Teildatensatz extends Satz {
      */
     public boolean hasFeld(final Feld feld) {
         for (Feld f : datenfelder) {
-            if (feld.getBezeichner().equals(f.getBezeichner())) {
+            if (feld.equals(f)) {
                 return true;
             }
         }

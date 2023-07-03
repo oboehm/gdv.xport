@@ -134,7 +134,7 @@ public final class TeildatensatzXml extends Teildatensatz {
 
     private void addFeld(final FeldXml feldXml, final int byteAddress, final FeldReferenz referenz) {
         Feld feld = feldXml.toFeld(byteAddress, referenz, this).mitConfig(getConfig());
-        if (!this.hasFeld(feld)) {
+        if (!this.hasFeld(feld.getBezeichner())) {
             super.add(feld);
         } else {
             LOG.trace("{} not added again.", feld);
