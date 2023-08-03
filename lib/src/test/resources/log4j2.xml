@@ -29,9 +29,9 @@
     <logger name="gdv.xport.util" level="INFO" />
     <logger name="gdv.xport.util.AbstractFormatterTest" level="WARN" />
     <logger name="gdv.xport.util.XmlFormatterTest" level="WARN" />
-    <logger name="gdv.xport.event.SatzValidator" level="INFO">
-      <AppenderRef ref="ValidatorFile" />
-    </logger>
+<!--    <logger name="gdv.xport.event.SatzValidator" level="INFO">-->
+<!--      <AppenderRef ref="ValidatorFile" />-->
+<!--    </logger>-->
     <logger name="patterntesting.runtime.junit" level="WARN" />
     <Root level="INFO" additivity="false">
       <AppenderRef ref="CONSOLE" />
