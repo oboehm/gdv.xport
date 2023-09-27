@@ -124,6 +124,10 @@ public final class TeildatensatzXml extends Teildatensatz {
         int length = endAddress + 1 - startAddress;
         if (length > 0) {
             Feld leerstelle = new AlphaNumFeld((Bezeichner.LEERSTELLEN), endAddress + 1 - startAddress, startAddress);
+            for (int i = 2; this.hasFeld(leerstelle.getBezeichner()); i++) {
+                Bezeichner bezeichnerLeerstelleNeu = new Bezeichner(Bezeichner.LEERSTELLEN.getName(), Bezeichner.LEERSTELLEN.getTechnischerName() + i);
+                leerstelle = new AlphaNumFeld(bezeichnerLeerstelleNeu, endAddress + 1 - startAddress, startAddress);
+            }
             endeDatenfelder.add(leerstelle);
         }
         Collections.sort(endeDatenfelder);
