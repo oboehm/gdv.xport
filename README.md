@@ -1,6 +1,7 @@
 [![Maven Metadata](https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport)
 [![Issues](https://img.shields.io/github/issues/oboehm/gdv.xport.svg)](https://github.com/oboehm/gdv.xport/issues)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+[![Umfrage](https://img.shields.io/badge/zur%20Umfrage-FFCC00)](https://nuudel.digitalcourage.de/CqLHF4HX5SfKZ24I)
 
 # Was ist gdv.xport?
 
@@ -64,3 +65,4 @@ Weitere Infos wie z.B. die [JavaDocs](http://www.aosd.de/gdv.xport/apidocs/index
 * die eigentliche [gdv-xport-lib](lib/README.adoc)-Bibliothek
 * [Hello-World](doc/manual/hello.adoc) und andere [Anleitungen](doc/manual/README.adoc)
 * [GDV Online-Handbuch](http://www.gdv-online.de/vuvm/bestand/rel2018/samenue.html) zu den verschiedene Satzarten
+* Umfrage zu [Bezeichner-Konstanten](https://nuudel.digitalcourage.de/CqLHF4HX5SfKZ24I)
