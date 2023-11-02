@@ -1,4 +1,4 @@
-[![Maven Metadata](https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.oboehm/gdv-xport)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.oboehm/gdv-xport.svg)](https://central.sonatype.com/artifact/com.github.oboehm/gdv-xport)
 [![Issues](https://img.shields.io/github/issues/oboehm/gdv.xport.svg)](https://github.com/oboehm/gdv.xport/issues)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Umfrage](https://img.shields.io/badge/zur%20Umfrage-FFCC00)](https://nuudel.digitalcourage.de/CqLHF4HX5SfKZ24I)
