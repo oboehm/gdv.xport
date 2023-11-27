@@ -64,5 +64,9 @@ Weitere Infos wie z.B. die [JavaDocs](http://www.aosd.de/gdv.xport/apidocs/index
 * [Architektur-Doku](src/asciidoc/README.adoc) mit [Glossar](src/asciidoc/de/12_glossary.adoc)
 * die eigentliche [gdv-xport-lib](lib/README.adoc)-Bibliothek
 * [Hello-World](doc/manual/hello.adoc) und andere [Anleitungen](doc/manual/README.adoc)
-* [GDV Online-Handbuch](http://www.gdv-online.de/vuvm/bestand/rel2018/samenue.html) zu den verschiedene Satzarten
+* [GDV Online-Handbuch](http://www.gdv-online.de/vuvm/bestand/rel2023/samenue.html) zu den verschiedene Satzarten
+
+
+### Umfragen
+
 * Umfrage zu [Bezeichner-Konstanten](https://nuudel.digitalcourage.de/CqLHF4HX5SfKZ24I)

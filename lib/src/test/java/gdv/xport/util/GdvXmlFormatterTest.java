@@ -35,6 +35,7 @@ import org.junit.Test;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
+import java.nio.file.Files;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -86,7 +87,7 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
         Satz satz = XmlService.getInstance().getSatzart(SatzTyp.of(102));
         Teildatensatz tds = satz.getTeildatensatz(1);
         tds.remove(Bezeichner.of("Taetigkeit"));
-        try (OutputStream ostream = new FileOutputStream(output);
+        try (OutputStream ostream = Files.newOutputStream(output.toPath());
              GdvXmlFormatter formatter = new GdvXmlFormatter(ostream)) {
             formatter.write(satz);
         }
@@ -164,6 +165,7 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
     @Test
     @Ignore // kein Unit-Test mehr, dauern zu lang (> 2s)
     public void testFormatAllSupportedSaetze20xxxL() throws IOException, XMLStreamException {
+        formatDatenpaket("VUVM2023xL.xml", "datenpaket2023xL.xml");
         formatDatenpaket("VUVM2018xL.xml", "datenpaket2018xL.xml");
         formatDatenpaket("VUVM2015xL.xml", "datenpaket2015xL.xml");
         formatDatenpaket("VUVM2013xL.xml", "datenpaket2013xL.xml");

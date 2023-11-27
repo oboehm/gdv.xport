@@ -56,4 +56,16 @@ public class VersionTest {
         assertEquals(SatzTyp.of("0210.080"), v.getSatzTyp());
     }
 
+    @Test
+    public void testGetSatzTyp02102() {
+        Version v = new Version(new Bezeichner("Satzart 0210", "Satzart02102"), 183);
+        assertEquals(SatzTyp.of("0210.170"), v.getSatzTyp());
+    }
+
+    @Test
+    public void testGetSatzTyp0300() {
+        Version v = new Version(new Bezeichner("Beteiligungs-Informationssatz Satzart 0300", "BeteiligungsInformationssatzsatzart0300"), 210);
+        assertEquals(SatzTyp.of("0300"), v.getSatzTyp());
+    }
+
 }

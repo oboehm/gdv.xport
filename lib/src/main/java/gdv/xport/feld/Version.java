@@ -22,6 +22,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import gdv.xport.util.SatzTyp;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Versions-Feld.
  *
@@ -30,6 +33,20 @@ import org.apache.commons.lang3.StringUtils;
  * @version $Revision$
  */
 public class Version extends Feld {
+
+    private static final Map<String, SatzTyp> MAPPING = new HashMap<>();
+
+    static {
+        MAPPING.put("Satzart02102", SatzTyp.of("0210.170"));
+        MAPPING.put("Satzart02202", SatzTyp.of("0220.170"));
+        MAPPING.put("Satzart02103", SatzTyp.of("0210.190"));
+        MAPPING.put("Satzart02203", SatzTyp.of("0220.190"));
+        MAPPING.put("Satzart0250Einzelanmeldung", SatzTyp.of("0250.190"));
+        MAPPING.put("Satzart0260Umsatzanmeldung", SatzTyp.of("0260.190"));
+        MAPPING.put("Satzart02104", SatzTyp.of("0210.000"));
+        MAPPING.put("Satzart02204", SatzTyp.of("0220.000"));
+        MAPPING.put("KfzBaustein", SatzTyp.of("0220.055"));
+    }
 
     /**
      * Legt ein neues Versions-Feld an.
@@ -83,12 +100,21 @@ public class Version extends Feld {
      */
     @JsonIgnore
     public SatzTyp getSatzTyp() {
+        String technischerName = getBezeichner().getTechnischerName();
+        SatzTyp satzTyp = MAPPING.get(technischerName);
+        if (satzTyp == null) {
+            satzTyp = getSatzTypFrom(technischerName);
+        }
+        return satzTyp;
+    }
+
+    private static SatzTyp getSatzTypFrom(String technischerName) {
         StringBuilder bufSatzTyp = new StringBuilder();
-        String typ = StringUtils.substringAfter(getBezeichner().getTechnischerName(), "Satzart").trim();
-        bufSatzTyp.append(typ.substring(0, 4));
+        String typ = StringUtils.substringAfter(technischerName.toLowerCase(), "satzart").trim();
+        bufSatzTyp.append(typ, 0, 4);
         if (typ.length() > 4) {
             bufSatzTyp.append('.');
-            bufSatzTyp.append(typ.substring(4, 7));
+            bufSatzTyp.append(typ, 4, 7);
         }
         return SatzTyp.of(bufSatzTyp.toString());
     }
