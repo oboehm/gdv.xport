@@ -37,6 +37,7 @@ public class Version extends Feld {
     private static final Map<String, SatzTyp> MAPPING = new HashMap<>();
 
     static {
+        MAPPING.put("Satzart0220", SatzTyp.of("0220.080"));
         MAPPING.put("Satzart02102", SatzTyp.of("0210.170"));
         MAPPING.put("Satzart02202", SatzTyp.of("0220.170"));
         MAPPING.put("Satzart02103", SatzTyp.of("0210.190"));
@@ -46,6 +47,12 @@ public class Version extends Feld {
         MAPPING.put("Satzart02104", SatzTyp.of("0210.000"));
         MAPPING.put("Satzart02204", SatzTyp.of("0220.000"));
         MAPPING.put("KfzBaustein", SatzTyp.of("0220.055"));
+        MAPPING.put("Satzart02112", SatzTyp.of("0211.080"));
+        MAPPING.put("Satzart02212", SatzTyp.of("0221.080"));
+        MAPPING.put("Satzart02113", SatzTyp.of("0211.190"));
+        MAPPING.put("Satzart02213", SatzTyp.of("0221.190"));
+        MAPPING.put("Satzart02214", SatzTyp.of("0221.000"));
+        MAPPING.put("Satzart02114", SatzTyp.of("0211.000"));
     }
 
     /**
@@ -113,8 +120,10 @@ public class Version extends Feld {
         String typ = StringUtils.substringAfter(technischerName.toLowerCase(), "satzart").trim();
         bufSatzTyp.append(typ, 0, 4);
         if (typ.length() > 4) {
-            bufSatzTyp.append('.');
-            bufSatzTyp.append(typ, 4, 7);
+            String subTyp = typ.substring(4, 7);
+            if (StringUtils.isNumeric(subTyp)) {
+                bufSatzTyp.append('.').append(subTyp);
+            }
         }
         return SatzTyp.of(bufSatzTyp.toString());
     }

@@ -205,7 +205,7 @@ public class Vorsatz extends Satz {
      * @return Erstellungszeitraum (VonDatum, BisDatum)
      */
     public String getErstellungsZeitraum() {
-        return this.getFeld(Bezeichner.ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS).getInhalt().trim();
+        return this.getFeld(ByteAdresse.of(70)).getInhalt().trim();
     }
 
     public void setErstellungsZeitraumVon(Datum von) {
@@ -213,9 +213,9 @@ public class Vorsatz extends Satz {
     }
 
     public Datum getErstellungsZeitraumVon() {
-        Feld vonBis = super.getFeld(Bezeichner.ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS);
-        Datum von = new Datum(ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, vonBis.getByteAdresse());
-        von.setInhalt(vonBis.getInhalt().substring(0, 8));
+        String vonBis = getErstellungsZeitraum();
+        Datum von = new Datum(ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, 70);
+        von.setInhalt(vonBis.substring(0, 8));
         return von;
     }
 
@@ -224,9 +224,9 @@ public class Vorsatz extends Satz {
     }
 
     public Datum getErstellungsZeitraumBis() {
-        Feld vonBis = super.getFeld(Bezeichner.ERSTELLUNGS_DAT_ZEITRAUM_VOM_ZEITRAUM_BIS);
-        Datum bis = new Datum(ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, vonBis.getByteAdresse() + 8);
-        bis.setInhalt(vonBis.getInhalt().substring(8));
+        String vonBis = getErstellungsZeitraum();
+        Datum bis = new Datum(ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, 78);
+        bis.setInhalt(vonBis.substring(8));
         return bis;
     }
 

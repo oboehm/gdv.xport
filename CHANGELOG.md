@@ -11,6 +11,15 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Unreleased]
 
+### Planned
+
+- Umstellugn Feld-Constructor auf ByteAdresse
+
+
+### Added
+
+- Unterstützung GDV-Version 2023
+
 ### Changed
 
 - schnellere Validierung

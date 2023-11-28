@@ -64,8 +64,20 @@ public class VersionTest {
 
     @Test
     public void testGetSatzTyp0300() {
-        Version v = new Version(new Bezeichner("Beteiligungs-Informationssatz Satzart 0300", "BeteiligungsInformationssatzsatzart0300"), 210);
+        Version v = new Version(new Bezeichner("Beteiligungs-Informationssatz Satzart 0300"), 210);
         assertEquals(SatzTyp.of("0300"), v.getSatzTyp());
+    }
+
+    @Test
+    public void testGetSatzTyp0251() {
+        Version v = new Version(new Bezeichner("Satzart 0251 Einzelanmeldung"), 174);
+        assertEquals(SatzTyp.of("0251"), v.getSatzTyp());
+    }
+
+    @Test
+    public void testGetSatzTyp9999() {
+        Version v = new Version(new Bezeichner("Nachsatz Satzart 9999", "Nachsatzsatzart9999"), 225);
+        assertEquals(SatzTyp.of("9999"), v.getSatzTyp());
     }
 
 }
