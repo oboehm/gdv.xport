@@ -24,7 +24,6 @@ import gdv.xport.feld.*;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import gdv.xport.util.VersionHandler;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -302,27 +301,11 @@ public class Vorsatz extends Satz {
      */
     @JsonIgnore
     public void setVersion(Satz satz) {
-        StringBuilder buf = new StringBuilder();
-        String[] parts = StringUtils.split(satz.getSatzTyp()
-                .toString(), '.');
-
-        buf.append("Satzart");
-        buf.append(parts[0]);
-
-        if (parts.length > 1)
-            buf.append(parts[1]);
-
-        Bezeichner bezeichner = Bezeichner.of(buf.toString());
-
-        if (this.hasFeld(bezeichner)) {
-            this.setFeld(bezeichner, satz.getSatzversion().getInhalt());
+        Version v = Version.of(satz.getSatzTyp());
+        if (this.hasFeld(v.getBezeichner())) {
+            this.setFeld(v.getBezeichner(), satz.getSatzversion().getInhalt());
         } else {
-            Version version = Version.of(satz.getSatzTyp());
-            if (this.hasFeld(version.getBezeichner())) {
-                this.setFeld(version.getBezeichner(), satz.getSatzversion().getInhalt());
-            } else {
-                LOG.warn("Version Satzart {} ist im Vorsatz unbekannt.", satz.getSatzTyp());
-            }
+            LOG.warn("Version Satzart {} ist im Vorsatz unbekannt.", satz.getSatzTyp());
         }
     }
 
@@ -332,21 +315,11 @@ public class Vorsatz extends Satz {
      * @param satzTyp der Satztyp
      */
     public void setVersion(SatzTyp satzTyp) {
-        StringBuilder buf = new StringBuilder();
-        String[] parts = StringUtils.split(satzTyp.toString(), '.');
-
-        buf.append("Satzart");
-        buf.append(parts[0]);
-
-        if (parts.length > 1)
-            buf.append(parts[1]);
-
-        Bezeichner bezeichner = Bezeichner.of(buf.toString());
-
-        if (this.hasFeld(bezeichner)) {
-            this.setFeld(bezeichner, versionHandler.getVersionOf(satzTyp));
+        Version v = Version.of(satzTyp);
+        if (this.hasFeld(v.getBezeichner())) {
+            this.setFeld(v.getBezeichner(), versionHandler.getVersionOf(satzTyp));
         } else {
-            throw new IllegalArgumentException("Version Satzart " + bezeichner + " unbekannt");
+            throw new IllegalArgumentException("Version Satzart " + v.getBezeichner() + " unbekannt");
         }
     }
 
