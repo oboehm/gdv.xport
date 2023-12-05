@@ -317,7 +317,7 @@ public class Vorsatz extends Satz {
         if (this.hasFeld(bezeichner)) {
             this.setFeld(bezeichner, satz.getSatzversion().getInhalt());
         } else {
-            Version version = Version.of(satz.getSatzTyp(), getFelder());
+            Version version = Version.of(satz.getSatzTyp());
             if (this.hasFeld(version.getBezeichner())) {
                 this.setFeld(version.getBezeichner(), satz.getSatzversion().getInhalt());
             } else {
