@@ -33357,7 +33357,6 @@
 			<feldreferenz referenz="005-014-AnzSaetze-Numerisch">
 				<name>Anzahl der Sätze</name>
 				<technischerName>AnzSaetze</technischerName>
-				<auspraegung>0000000228</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld GeschaeftsstelleVermittler (15-24) -->
 			<feldreferenz referenz="015-024-GeschaeftsstelleVermittler-Alphanumerisch">

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2012 by Oli B.
+ * Copyright (c) 2009 - 2023 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,13 +30,14 @@ import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Gemeinsame Oberklasse fuer SatzTest.
@@ -107,7 +108,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
         assertEquals(2, ds.getArt());
         String s = ds.toString();
         LOG.info("s = \"{}\"", s);
-        assertTrue(s, s.contains("220.580.2"));
+        assertTrue(s.contains("220.580.2"), s);
     }
 
     /**
@@ -175,6 +176,7 @@ public class DatensatzTest extends AbstractDatensatzTest {
     }
 
     @Test
+    @Disabled("VU-Nummer wurde in VUVM2023 durch BausparkassenNr ersetzt")
     public void testSetVuNummerBausparen() {
         Datensatz satz = checkVuNummer(SatzTyp.of("0220.580.2"));
         assertTrue(satz.hasVuNummer());

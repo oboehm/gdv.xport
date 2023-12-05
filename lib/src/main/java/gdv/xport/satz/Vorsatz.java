@@ -317,7 +317,12 @@ public class Vorsatz extends Satz {
         if (this.hasFeld(bezeichner)) {
             this.setFeld(bezeichner, satz.getSatzversion().getInhalt());
         } else {
-            LOG.warn("Version Satzart {} ist im Vorsatz unbekannt.", satz.getSatzTyp());
+            Version version = Version.of(satz.getSatzTyp(), getFelder());
+            if (this.hasFeld(version.getBezeichner())) {
+                this.setFeld(version.getBezeichner(), satz.getSatzversion().getInhalt());
+            } else {
+                LOG.warn("Version Satzart {} ist im Vorsatz unbekannt.", satz.getSatzTyp());
+            }
         }
     }
 
@@ -393,7 +398,7 @@ public class Vorsatz extends Satz {
     public Map<SatzTyp, Version> getSatzartVersionen() {
         Map<SatzTyp, Version> versionen = new HashMap<>();
         for (Feld f : getFelder()) {
-            if (!f.isEmpty() && f.getBezeichner().getTechnischerName().startsWith("Satzart")
+            if (!f.isEmpty() && f.getBezeichner().getTechnischerName().toLowerCase().contains("satzart")
                     && !f.getBezeichner().equals(Bezeichner.SATZART)) {
                 Version v = new Version(f);
                 switch (f.getBezeichner().getTechnischerName()) {

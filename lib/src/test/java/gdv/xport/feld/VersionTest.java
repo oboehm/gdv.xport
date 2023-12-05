@@ -71,13 +71,25 @@ public class VersionTest {
     @Test
     public void testGetSatzTyp0251() {
         Version v = new Version(new Bezeichner("Satzart 0251 Einzelanmeldung"), 174);
-        assertEquals(SatzTyp.of("0251"), v.getSatzTyp());
+        assertEquals(251, v.getSatzTyp().getSatzart());
     }
 
     @Test
     public void testGetSatzTyp9999() {
         Version v = new Version(new Bezeichner("Nachsatz Satzart 9999", "Nachsatzsatzart9999"), 225);
         assertEquals(SatzTyp.of("9999"), v.getSatzTyp());
+    }
+
+    @Test
+    public void testOf() {
+        Version rente = Version.of(SatzTyp.of("0220.684"));
+        assertEquals("Satzart0220684", rente.getBezeichner().getTechnischerName());
+    }
+
+    @Test
+    public void testOfRente() {
+        Version rente = Version.of(SatzTyp.of("0225.010"));
+        assertEquals("LebenRenteLeistungsarten", rente.getBezeichner().getTechnischerName());
     }
 
 }

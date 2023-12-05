@@ -1390,7 +1390,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner VP_PERSONENNUMMER_VERSICHERER = new Bezeichner("VP-Personennummer des Versicherers");
     public static final Bezeichner VS_NR = VERSICHERUNGSSCHEINNUMMER;
     public static final Bezeichner VU_ABRECHNUNGSSTELLE = new Bezeichner("VU-Abrechnungsstelle");
-  public static final Bezeichner VU_NR = new Bezeichner("VU-Nummer");
+    public static final Bezeichner VU_NR = new Bezeichner("VU-Nummer");
     public static final Bezeichner VU_NUMMER = VU_NR;
 
     public static final Bezeichner WAEHRUNG_DOKUMENTE_FUER_VN = new Bezeichner("Waehrung der Dokumente fuer VN");
@@ -1760,11 +1760,16 @@ public final class Bezeichner implements Serializable {
     public Set<Bezeichner> getVariants() {
         Set<Bezeichner> vars = new HashSet<>(variants);
         vars.add(this);
-        if (getName().startsWith("Satzart")) {
+        if (getTechnischerName().startsWith("VersionSatzart")) {
+            vars.add(Bezeichner.of(getTechnischerName().substring(7).trim()));
+        } else if (getName().startsWith("Satzart")) {
             vars.add(Bezeichner.of("Version " + name));
-        } else if (getName().startsWith("Version")) {
-            vars.add(Bezeichner.of(getName().substring(7).trim()));
         }
+//        if (getName().startsWith("Satzart")) {
+//            vars.add(Bezeichner.of("Version " + name));
+//        } else if (getName().startsWith("Version")) {
+//            vars.add(Bezeichner.of(getName().substring(7).trim()));
+//        }
         return vars;
     }
 
