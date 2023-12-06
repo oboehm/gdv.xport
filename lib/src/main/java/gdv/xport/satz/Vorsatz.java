@@ -230,7 +230,7 @@ public class Vorsatz extends Satz {
     }
 
     /**
-     * Setzen der Satzart-Version eines Datensatzes, falls die Satzart im Vorsatz
+     * Abfrage der Satzart-Version eines Datensatzes, falls die Satzart im Vorsatz
      * bekannt ist.
      *
      * @param satz der Satz
@@ -302,11 +302,7 @@ public class Vorsatz extends Satz {
     @JsonIgnore
     public void setVersion(Satz satz) {
         Version v = Version.of(satz.getSatzTyp());
-        if (this.hasFeld(v.getBezeichner())) {
-            this.setFeld(v.getBezeichner(), satz.getSatzversion().getInhalt());
-        } else {
-            LOG.warn("Version Satzart {} ist im Vorsatz unbekannt.", satz.getSatzTyp());
-        }
+        this.setVersion(v.getBezeichner(), satz.getSatzversion().getInhalt());
     }
 
     /**
@@ -316,11 +312,7 @@ public class Vorsatz extends Satz {
      */
     public void setVersion(SatzTyp satzTyp) {
         Version v = Version.of(satzTyp);
-        if (this.hasFeld(v.getBezeichner())) {
-            this.setFeld(v.getBezeichner(), versionHandler.getVersionOf(satzTyp));
-        } else {
-            throw new IllegalArgumentException("Version Satzart " + v.getBezeichner() + " unbekannt");
-        }
+        setVersion(v.getBezeichner(), versionHandler.getVersionOf(satzTyp));
     }
 
     /**
@@ -331,7 +323,11 @@ public class Vorsatz extends Satz {
      * @since 4.1.1
      */
     public void setVersion(Bezeichner bezeichner, String version) {
-        this.getFeld(bezeichner).setInhalt(version);
+        if (this.hasFeld(bezeichner)) {
+            this.getFeld(bezeichner).setInhalt(version);
+        } else {
+            throw new IllegalArgumentException("Version Satzart " + bezeichner + " unbekannt");
+        }
     }
 
     /**
