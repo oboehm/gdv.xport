@@ -85,7 +85,7 @@ public class BezeichnerIT {
                         "FALLENDE", "GES", "INTRO", "KARENZZEIT", "KENN", "KU_", 
                         "LAUFZEITVERKUERZUNG", "LEISTUNGSDAUER", "NAECHSTE", "ORDNUNGS_NUMMER_FUER_WAGNISZU",
                         "PRODUKTSPEZIFISCHE_ANTRAGSDATEN", "TEILDATENSATZNUMMER", "RENTE_INCL_UEBERSCHUSS",
-                        "SONSTIGER_BEZUGSBERECHTIGTER_IM_", "TODESFALL", "SPARVORGANG", "UN", "VER"};
+                        "SONSTIGER_BEZUGSBERECHTIGTER_IM_", "TODESFALL", "SATZART", "SPARVORGANG", "UN", "VER"};
         for (String prefix : prefixes) {
             if (field.getName().startsWith(prefix)) {
                 return true;
