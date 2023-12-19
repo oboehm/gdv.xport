@@ -24,6 +24,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Versions-Feld.
@@ -158,6 +159,10 @@ public class Version extends Feld {
     }
 
     private static SatzTyp getSatzTypFrom(Bezeichner b) {
+        Optional<SatzTyp> satzTyp = getMappedSatzTyp(b);
+        if (satzTyp.isPresent()) {
+            return satzTyp.get();
+        }
         StringBuilder bufSatzTyp = new StringBuilder();
         String typ = b.getTechnischerName().replaceAll("[a-zA-Z]", "");
         bufSatzTyp.append(typ, 0, 4);
@@ -168,6 +173,24 @@ public class Version extends Feld {
             }
         }
         return SatzTyp.of(bufSatzTyp.toString());
+    }
+
+    private static Optional<SatzTyp> getMappedSatzTyp(Bezeichner bezeichner) {
+        for (Map.Entry<Bezeichner, SatzTyp> entry : MAPPING.entrySet()) {
+            if (entry.getKey().getVariants().contains(bezeichner)) {
+                return Optional.of(entry.getValue());
+            }
+        }
+        return Optional.empty();
+    }
+
+    public static boolean isVersionBezeichner(Bezeichner bezeichner) {
+        if (bezeichner.getTechnischerName().toLowerCase().contains("satzart")
+                && !bezeichner.equals(Bezeichner.SATZART)) {
+            return true;
+        } else {
+            return getMappedSatzTyp(bezeichner).isPresent();
+        }
     }
 
 }

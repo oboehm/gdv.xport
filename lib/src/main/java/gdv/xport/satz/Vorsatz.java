@@ -367,8 +367,7 @@ public class Vorsatz extends Satz {
     public Map<SatzTyp, Version> getSatzartVersionen() {
         Map<SatzTyp, Version> versionen = new HashMap<>();
         for (Feld f : getFelder()) {
-            if (!f.isEmpty() && f.getBezeichner().getTechnischerName().toLowerCase().contains("satzart")
-                    && !f.getBezeichner().equals(Bezeichner.SATZART)) {
+            if (!f.isEmpty() && Version.isVersionBezeichner(f.getBezeichner())) {
                 Version v = new Version(f);
                 switch (f.getBezeichner().getTechnischerName()) {
                     case "Satzart0220020":

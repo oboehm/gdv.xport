@@ -22,6 +22,8 @@ import gdv.xport.util.SatzTyp;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Unit-Tests fuer {@link Version}-Klasse.
@@ -89,7 +91,22 @@ public class VersionTest {
     @Test
     public void testOfRente() {
         Version rente = Version.of(SatzTyp.of("0225.010"));
-        assertEquals("LebenRenteLeistungsarten", rente.getBezeichner().getTechnischerName());
+        assertEquals(Bezeichner.SATZART_0225_LEBEN, rente.getBezeichner());
+    }
+
+    @Test
+    public void isVersionBezeichner() {
+        assertTrue(Version.isVersionBezeichner(Bezeichner.SATZART_0001));
+    }
+
+    @Test
+    public void isVersionSatzart() {
+        assertFalse(Version.isVersionBezeichner(Bezeichner.SATZART));
+    }
+
+    @Test
+    public void isVersionKfzBaustein() {
+        assertTrue(Version.isVersionBezeichner(Bezeichner.of("Kfz-Baustein")));
     }
 
 }
