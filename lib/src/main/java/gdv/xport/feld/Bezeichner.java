@@ -188,6 +188,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner AUFTRAGSNR_VERMITTLER = new Bezeichner("Auftrags-Nr. des Vermittlers");
     public static final Bezeichner AUSFALLZIFFER_IN_PROZENT = new Bezeichner("Ausfallziffer in %");
     public static final Bezeichner AUSLOESUNG_DER_LEISTUNG = new Bezeichner("Ausloesung der Leistung");
+    /** @deprecated bitte Konstante AUSSCHLUSS verwenden */
     public static final Bezeichner AUSCHLUSS = new Bezeichner("Auschluss");
     public static final Bezeichner AUSSCHLUSS = new Bezeichner("Ausschluss", "Ausschluss", "Auschluss");
     public static final Bezeichner AUSSCHLUSS2 = new Bezeichner("Ausschluss2", "Ausschluss2");
@@ -395,7 +396,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ERHOEHUNGSBASIS_DYNAMIK = new Bezeichner("Erhoehungsbasis Dynamik");
     public static final Bezeichner ERHOEHUNGSSATZ_LETZTER_GLASPREISANGLEICHUNG = new Bezeichner("%-Satz Erhöhung der letzten Glaspreisangleichung");
     public static final Bezeichner ERSTATTUNG_OP = new Bezeichner("Erstattung OP");
-    public static final Bezeichner ERSTE_ZULASSUNG_AUF_DEN_VN = new Bezeichner("Erste Zulassung auf den VN", "ErsteZulassungAufDenVn");
+    public static final Bezeichner ERSTE_ZULASSUNG_AUF_DEN_VN = new Bezeichner("Erste Zulassung auf den VN", "ErsteZulassungAufVN", "ErsteZulassungAufDenVn");
     public static final Bezeichner ERSTZULASSUNG = new Bezeichner("Erstzulassung");
     public static final Bezeichner ERWEITERTE_NEUWERTVERSICHERUNG = new Bezeichner("erweiterte Neuwertversicherung");
     public static final Bezeichner ERWEITERUNG_DES_GELTUNGSBEREICHES = new Bezeichner("Erweiterung des Geltungsbereiches");

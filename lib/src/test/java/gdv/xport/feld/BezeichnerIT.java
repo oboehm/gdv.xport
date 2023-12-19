@@ -37,7 +37,7 @@ import static org.junit.Assert.fail;
 
 /**
  * Klasse BezeichnerIT ueberpreuft die Konstanten in der {@link Bezeichner}-
- * Klasse, ob der technische Name in "VUVM2018.xml" tatsaechlich existiert.
+ * Klasse, ob der technische Name in "VUVM2023.xml" tatsaechlich existiert.
  * Da der Test die komplette Bezeichner-Klasse durchscannt und mit der
  * 5MB-großen XML-Datei abgleicht, dauert er etwas laenger und ist daher als
  * Integrations-Test mit Suffix IT gekennzeichnet.
@@ -79,7 +79,7 @@ public class BezeichnerIT {
 
     private static boolean isExcludedFromTest(Field field) {
         String[] prefixes =
-                {"ABSTAND", "ABWEICHENDE_LEISTUNGSDAUER", "AENDERUNG", "ANFAENGLICHE", "AUSZAHLUNGSWEISE",
+                {"ABSTAND", "ABWEICHENDE_LEISTUNGSDAUER", "AENDERUNG", "ANFAENGLICHE", "AUSCHLUSS", "AUSZAHLUNGSWEISE",
                         "ANZAHL_DER_AUSZAHLUNGEN",
                         "BE", "BUZ", "EINSCHLUSS_PROZENT_SATZ", "ERLEBENSFALL_VS", "ERSTELLUNGSDAT_ZEITRAUM",
                         "FALLENDE", "GES", "INTRO", "KARENZZEIT", "KENN", "KU_", 
@@ -102,8 +102,8 @@ public class BezeichnerIT {
 
     /**
      * Hier werden die moeglichen technischen Namen aus der XML-Beschreibung
-     * ("VUVM2018.xml") ausgelesen und gesammelt. Ergaenzt wird die Liste um
-     * technische Namen, die manuell mit "VUVM2018.xml" abgeglichen wurden,
+     * ("VUVM2023.xml") ausgelesen und gesammelt. Ergaenzt wird die Liste um
+     * technische Namen, die manuell mit "VUVM2023.xml" abgeglichen wurden,
      * aber nicht ueber die Satzarten eingelesen wurden.
      *
      * @throws ParserConfigurationException im Fehlerfall
@@ -113,7 +113,7 @@ public class BezeichnerIT {
     @BeforeClass
     public static void readTechnischeNamen() throws ParserConfigurationException, SAXException, IOException {
         VuvmHandler handler = new VuvmHandler();
-        handler.scan("src/main/resources/gdv/xport/satz/xml/VUVM2018.xml");
+        handler.scan("src/main/resources/gdv/xport/satz/xml/VUVM2023.xml");
         TECHNISCHE_NAMEN.addAll(handler.getTechnischeNamen());
         TECHNISCHE_NAMEN.addAll(Arrays.asList(
                 "KhDeckungssummenInWETeil1", "KhDeckungssummenInWETeil2", "KhDeckungssummenInWETeil3",
@@ -123,13 +123,26 @@ public class BezeichnerIT {
     /**
      * Dieser Test ueberprueft die technische Schreibweise eines Bezeichners.
      * Falls die technische Schreibweise richtig ist, muss sie auch in der
-     * XML-Beschreibung (VUVM2018.xml) vorkommen.
+     * XML-Beschreibung (VUVM2023.xml) vorkommen.
+     * <p>
+     * Wegen der Rechtschreibkorrekturen in 2023 gibt es nun weitere Varianten.
+     * Das wird jetzt beruecksichtigt.
+     * </p>
      */
     @Test
     public void testTechnischerName() {
-        if (!mapsTechnischerName(bezeichner.getTechnischerName())) {
+        if (!mapsTechnischerName(bezeichner)) {
             fail("wrong technischer Name: " + bezeichner);
         }
+    }
+
+    private boolean mapsTechnischerName(Bezeichner bez) {
+        for (Bezeichner b : bez.getVariants()) {
+            if (mapsTechnischerName(b.getTechnischerName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean mapsTechnischerName(String name) {
