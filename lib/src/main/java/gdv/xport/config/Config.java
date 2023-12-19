@@ -29,6 +29,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -180,7 +181,7 @@ public final class Config implements Serializable {
         }
     }
 
-    private static InputStream getInputStream(String resource) throws FileNotFoundException {
+    private static InputStream getInputStream(String resource) throws IOException {
         try {
             URI uri = new URI(resource);
             if (uri.getScheme() != null) {
@@ -193,11 +194,11 @@ public final class Config implements Serializable {
         return Config.class.getResourceAsStream(resource);
     }
 
-    private static InputStream getInputStream(URI uri) throws FileNotFoundException {
+    private static InputStream getInputStream(URI uri) throws IOException {
         String scheme = uri.getScheme().toLowerCase();
         switch (scheme) {
             case "file":
-                return new FileInputStream(new File(uri));
+                return Files.newInputStream(new File(uri).toPath());
             case "classpath":
                 return getInputStream(uri.getPath());
             default:
@@ -365,12 +366,12 @@ public final class Config implements Serializable {
      * der GDV-Datensaetze enhalten ist. Ueber "-Dgdv.XML-Resource=..." kann
      * hierueber eine andere Resource (z.B. VUVM2015.xml) eingestellt werden.
      *
-     * @return "VUVM2018.xml", wenn nicht per System-Property was anderes
+     * @return "VUVM2023.xml", wenn nicht per System-Property was anderes
      *         angegeben ist
      * @since 5.0
      */
     public static String getXmlResource() {
-        return System.getProperty("gdv.XML-Resource", "VUVM2018.xml");
+        return getInstance().getProperty("gdv.XML-Resource", "VUVM2023.xml");
     }
 
     /**
