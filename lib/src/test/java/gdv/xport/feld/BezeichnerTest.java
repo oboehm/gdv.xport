@@ -19,6 +19,8 @@
 package gdv.xport.feld;
 
 import gdv.xport.satz.Satz;
+import gdv.xport.satz.xml.SatzXml;
+import gdv.xport.satz.xml.XmlService;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
@@ -27,6 +29,8 @@ import org.junit.Test;
 import patterntesting.runtime.junit.ObjectTester;
 import patterntesting.runtime.junit.SerializableTester;
 
+import javax.xml.stream.XMLStreamException;
+import java.io.IOException;
 import java.io.NotSerializableException;
 import java.util.Set;
 
@@ -256,6 +260,17 @@ public class BezeichnerTest {
     @Test
     public void testSerializable() throws NotSerializableException {
         SerializableTester.assertSerialization(Bezeichner.ABLAUF);
+    }
+
+    @Test
+    public void testOf() throws XMLStreamException, IOException {
+        XmlService xmlService = XmlService.getInstance();
+        SatzXml testsatz022101051 = xmlService.getSatzart(SatzTyp.of("0221.010.5.1"));
+        // Feld 8 "Lfd. Nummer der versicherten Person (VP)"
+        Bezeichner bezeichnerAusSatz = testsatz022101051.getTeildatensatzBySatzNr(1).getFeld(ByteAdresse.of(43))
+                .getBezeichner();
+        Bezeichner bezeichnerAusBezeichnerOf = Bezeichner.of(bezeichnerAusSatz.getName());
+        assertEquals(bezeichnerAusBezeichnerOf, bezeichnerAusSatz);
     }
 
 }

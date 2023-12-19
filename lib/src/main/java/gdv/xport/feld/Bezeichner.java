@@ -744,7 +744,7 @@ public final class Bezeichner implements Serializable {
      * Fuer Satzart 0220.020.2 und 0220.020.3 (Allgemeine Tarifdaten und Spezielle Tarifdaten)
      */
     public static final Bezeichner LAUFENDE_NUMMER_TARIF = new Bezeichner("Laufende Nummer Tarif");
-    public static final Bezeichner LFD_NUMMER_VP = new Bezeichner("Lfd. Nummer der versicherten Person (VP)", "LfdNrVersichertenPersonVpPersonengruppe", "LfdNrVersichertenPersonVp9", "LfdNrVersichertenPersonVp");
+    public static final Bezeichner LFD_NUMMER_VP = new Bezeichner("Lfd. Nummer der versicherten Person (VP)", "LfdNrVersichertenPersonVp", "LfdNrVersichertenPersonVp9");
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
     /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden. */
     @Deprecated
@@ -1706,7 +1706,6 @@ public final class Bezeichner implements Serializable {
             case "einer":
             case "fuer":
             case "und":
-            case "Laufzeit":
                 return "";
             case "Anzahl":
                 return "Anz";

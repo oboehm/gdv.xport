@@ -30533,9 +30533,9 @@
                 <technischerName>Risikotext</technischerName>
             </feldreferenz>
             <!-- AlphaNumFeld Tarifierungsmerkmal (133-134) -->
-            <feldreferenz referenz="133-134-Tarifierungsmerkmal-Alphanumerisch">
+			<feldreferenz referenz="133-134-TarifierungsmerkmalLaufzeit-Alphanumerisch">
                 <name>Tarifierungsmerkmal Laufzeit</name>
-                <technischerName>Tarifierungsmerkmal</technischerName>
+				<technischerName>TarifierungsmerkmalLaufzeit</technischerName>
             </feldreferenz>
             <!-- Datum VoraussichtlichesEnde (135-142) -->
             <feldreferenz referenz="135-142-VoraussichtlichesEnde-Datum">
@@ -40944,7 +40944,7 @@
             <bytes>2</bytes>
             <datentyp>Alphanumerisch</datentyp>
         </feld>
-        <feld referenz="133-134-Tarifierungsmerkmal-Alphanumerisch">
+		<feld referenz="133-134-TarifierungsmerkmalLaufzeit-Alphanumerisch">
             <name>Tarifierungsmerkmal Laufzeit</name>
             <bytes>2</bytes>
             <datentyp>Alphanumerisch</datentyp>
