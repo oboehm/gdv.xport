@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 by Oli B.
+ * Copyright (c) 2014-2023 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,7 +144,7 @@ public class XmlService {
     }
 
     private static XmlService createXmlService(Config cfg) throws XMLStreamException, IOException {
-        String resource = cfg.getProperty("gdv.XML-Resource", "VUVM2018.xml");
+        String resource = cfg.getProperty("gdv.XML-Resource", "VUVM2023.xml");
         try (InputStream istream = XmlService.class.getResourceAsStream(resource)) {
             if (istream == null) {
                 throw new XMLStreamException("resource '" + resource + "' not found");
