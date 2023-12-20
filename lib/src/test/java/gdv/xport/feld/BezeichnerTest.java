@@ -29,8 +29,6 @@ import org.junit.Test;
 import patterntesting.runtime.junit.ObjectTester;
 import patterntesting.runtime.junit.SerializableTester;
 
-import javax.xml.stream.XMLStreamException;
-import java.io.IOException;
 import java.io.NotSerializableException;
 import java.util.Set;
 
@@ -269,7 +267,7 @@ public class BezeichnerTest {
     }
 
     @Test
-    public void testOf() throws XMLStreamException, IOException {
+    public void testOf() {
         XmlService xmlService = XmlService.getInstance();
         SatzXml testsatz022101051 = xmlService.getSatzart(SatzTyp.of("0221.010.5.1"));
         // Feld 8 "Lfd. Nummer der versicherten Person (VP)"
