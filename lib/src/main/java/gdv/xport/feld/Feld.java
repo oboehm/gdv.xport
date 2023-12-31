@@ -619,7 +619,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         }
         try {
             this.getValidator().validate(getInhalt(), validationConfig);
-        } catch (ValidationException ex) {
+        } catch (RuntimeException ex) {
             ConstraintViolation cv = new SimpleConstraintViolation(this, ex);
             violations.add(cv);
         }
@@ -767,7 +767,7 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         public String verify(String value, Feld validatedFeld) {
             try {
                 return validate(value);
-            } catch (ValidationException ex) {
+            } catch (RuntimeException ex) {
                 throw new IllegalArgumentException(
                         String.format("%s: Wert '%s' ist nicht erlaubt (%s)", validatedFeld.toShortString(), value, ex.getMessage()), ex);
             }

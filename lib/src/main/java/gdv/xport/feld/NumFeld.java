@@ -17,6 +17,7 @@
  */
 package gdv.xport.feld;
 
+import de.jfachwert.pruefung.exception.LocalizedIllegalArgumentException;
 import de.jfachwert.pruefung.exception.ValidationException;
 import gdv.xport.config.Config;
 import org.apache.commons.lang3.StringUtils;
@@ -444,10 +445,10 @@ public class NumFeld extends Feld {
                 try {
                     BigInteger n = new BigInteger(nummer);
                     if (n.compareTo(BigInteger.ZERO) < 0) {
-                        throw new ValidationException(String.format("'%s' darf nicht negativ sein", nummer));
+                        throw new javax.validation.ValidationException(String.format("'%s' darf nicht negativ sein", nummer));
                     }
                 } catch (NumberFormatException nfe) {
-                    throw new ValidationException(String.format("'%s' ist keine Zahl", nummer), nfe);
+                    throw new javax.validation.ValidationException(String.format("'%s' ist keine Zahl", nummer), nfe);
                 }
             }
             return nummer;
@@ -459,6 +460,15 @@ public class NumFeld extends Feld {
                 throw new ValidationException("Zahl muss vorhanden sein und darf keine Leerzeichen enthalten");
             } else {
                 return validateLax(value);
+            }
+        }
+
+        @Override
+        public String verify(String value) {
+            try {
+                return super.verify(value);
+            } catch (javax.validation.ValidationException ex) {
+                throw new LocalizedIllegalArgumentException(ex);
             }
         }
 

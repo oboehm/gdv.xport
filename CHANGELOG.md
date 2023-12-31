@@ -13,7 +13,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Planned
 
-- Umstellugn Feld-Constructor auf ByteAdresse
+- Umstellung Feld-Constructor auf ByteAdresse
 
 
 ### Added

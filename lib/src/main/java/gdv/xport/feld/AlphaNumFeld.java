@@ -24,7 +24,6 @@ import net.sf.oval.ConstraintViolation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.validation.ValidationException;
 import java.util.List;
 
 /**
@@ -159,7 +158,7 @@ public class AlphaNumFeld extends Feld {
             try {
                 String name = this.getBezeichner().getName();
                 FachwertFactory.getInstance().validate(name, this.getInhalt().trim());
-            } catch (ValidationException ex) {
+            } catch (RuntimeException ex) {
                 ConstraintViolation cv = new SimpleConstraintViolation(this, ex);
                 violations.add(cv);
             }
@@ -190,7 +189,7 @@ public class AlphaNumFeld extends Feld {
         @Override
         protected String validateStrict(String value) {
             String trimmed = validateLax(value).trim();
-            if ((trimmed.length() < value.length()) && (trimmed.length() > 0)) {
+            if ((trimmed.length() < value.length()) && (!trimmed.isEmpty())) {
                 LOG.debug("Wert '{}' wurde auf '{}' fuer die weitere Verabeitung verkuerzt.", value, trimmed);
             }
             return trimmed;
