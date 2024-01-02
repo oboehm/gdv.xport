@@ -127,8 +127,7 @@ public class Teildatensatz extends Satz {
     }
 
     /**
-     * Liefert die Satznummer zurueck. Sie wurde aus Symmetriegruenden
-     * zu {@link #setSatznummer(Zeichen)} eingefuehrt und loest die alte
+     * Liefert die Satznummer zurueck. Sie loest die alte
      * getNummer()-Methode ab.
      *
      * @return Satznummer als einzelnes Zeichen ('1' ... '9')
@@ -143,27 +142,6 @@ public class Teildatensatz extends Satz {
             this.satznummer = nr;
         }
         return new Zeichen(this.satznummer);
-    }
-
-    /**
-     * Da nicht alle Satzarten die Satznummer am Ende des Satzes haben, kann
-     * man dies ueber diese Methode korrigieren.
-     * <p>
-     * TODO: wird ab v7 nicht mehr unterstuetzt
-     * </p>
-     *
-     * @param satznummer das neue Feld fuer die Satznummer
-     * @since 3.2
-     * @deprecated ab 5.1 nicht mehr noetig, da {@link #getSatznummer()}
-     *             jetzt die tatsaechliche Satznummer liefert
-     */
-    @Deprecated
-    public void setSatznummer(Zeichen satznummer) {
-        String nr = this.satznummer.getInhalt();
-        remove(Bezeichner.SATZNUMMER);
-        this.satznummer = new Satznummer(satznummer);
-        this.satznummer.setInhalt(nr);
-        add(this.satznummer);
     }
 
     /**

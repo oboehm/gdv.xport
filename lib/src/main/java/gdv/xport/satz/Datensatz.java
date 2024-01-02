@@ -24,7 +24,6 @@ import gdv.xport.feld.*;
 import gdv.xport.io.Importer;
 import gdv.xport.io.PushbackLineNumberReader;
 import gdv.xport.satz.feld.common.Kopffelder1bis7;
-import gdv.xport.satz.feld.common.TeildatensatzNummer;
 import gdv.xport.satz.feld.common.WagnisartLeben;
 import gdv.xport.util.SatzTyp;
 import org.apache.logging.log4j.LogManager;
@@ -206,20 +205,6 @@ public class Datensatz extends Satz {
 			tds.add(value);
 		}
     }
-
-    /**
-	 * Kann von Unterklassen verwendet werden, um fehlende Felder in den
-	 * Teildatensaetze zu vervollstaendigen. Kann aber seit 1.0 nicht mehr
-	 * ueberschrieben werden, da diese Methode vom Konstruktor waehrend der
-	 * Objekt-Kreierung benoetigt wird.
-	 *
-	 * @since 0.6
-	 */
-	protected final void completeTeildatensaetze() {
-		for (Teildatensatz tds : this.getTeildatensaetze()) {
-			setUpTeildatensatz(tds);
-		}
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -414,26 +399,6 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Da nicht alle Satzarten die Satznummer am Ende des Satzes haben, kann
-	 * man dies ueber diese Methode korrigieren.
-	 * <p>
-	 * TODO: wird ab v7 nicht mehr unterstuetzt
-	 * </p>
-	 * 
-	 * @param satznummer das neue Feld fuer die Satznummer
-	 * @since 3.2
-	 * @deprecated ab 5.1 nicht mehr noetig, da {@link Teildatensatz#getSatznummer()}
-	 *             jetzt die tatsaechliche Satznummer liefert
-	 */
-	@Deprecated
-	public void setSatznummer(Zeichen satznummer) {
-		remove(Bezeichner.SATZNUMMER);
-		for (Teildatensatz tds : getTeildatensaetze()) {
-			tds.setSatznummer(satznummer);
-		}
-	}
-
-	/**
 	 * Hiermit kann die Folgenummer gesetzt werden.
 	 *
 	 * @param nr man sollte hier bei 1 anfangen mit zaehlen
@@ -455,24 +420,6 @@ public class Datensatz extends Satz {
 	}
 
 	/**
-	 * Liest 14 Bytes, um die Sparte zu bestimmen und stellt die Bytes
-	 * anschliessend wieder zurueck in den Reader.
-	 * <p>
-	 * ACHTUNG: Ab v6.1 nur fuer den internen Gebrauch gedacht. Ansonsten auf
-	 * {@link Importer#readSparte()} ausweichen.
-	 * </p>
-	 *
-	 * @param reader muss mind. einen Pushback-Puffer von 14 Zeichen
-	 * bereitstellen
-	 * @return Sparte
-	 * @throws IOException falls was schief gegangen ist
-	 * @see Importer#readSparte()
-	 */
-	protected static int readSparte(final PushbackReader reader) throws IOException {
-		return Importer.of(reader).readSparte();
-	}
-
-	/**
      * Liest 49 Bytes, um die Folge-Nr. in Satzart 220, Sparte 20 (Kranken) zu bestimmen und stellt die Bytes
      * anschliessend wieder zurueck in den Reader.
      *
@@ -480,7 +427,7 @@ public class Datensatz extends Satz {
      * bereitstellen
      * @return Folge-Nr
      * @throws IOException falls was schief gegangen ist
-	 * @deprecated wurde nach {@link Importer#readKrankenFolgeNr()} verschoben
+	 * @deprecated wurde nach {@link Importer#readKrankenFolgeNr()} verschoben (TODO: wird mit v8 entfennt)
      */
 	@Deprecated
     public static int readKrankenFolgeNr(final PushbackLineNumberReader reader) throws IOException {
@@ -591,22 +538,5 @@ public class Datensatz extends Satz {
 			return false;
 		}
 	}
-
-	/**
-	 * Read teildatensatz nummer.
-	 * <p>
-	 * TODO: wird mit v7 entfernt
-	 * </p>
-	 *
-	 * @param reader the reader
-	 * @return the teildatensatz nummer
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 * @deprecated bitte {@link Satznummer#readSatznummer(PushbackLineNumberReader)} verwenden
-	 */
-	@Deprecated
-    public static TeildatensatzNummer readTeildatensatzNummer(final PushbackReader reader) throws IOException {
-		Satznummer satznr = Satznummer.readSatznummer(new PushbackLineNumberReader(reader));
-		return TeildatensatzNummer.of(satznr.toInt());
-    }
 
 }

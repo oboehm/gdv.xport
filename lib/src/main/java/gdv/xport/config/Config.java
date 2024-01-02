@@ -287,50 +287,6 @@ public final class Config implements Serializable {
     }
 
     /**
-     * Damit kann die VU-Nummer gesetzt werden.
-     *
-     * @param nr die VU-Nummer als String
-     * @deprecated wird kuenftig nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public static synchronized void setVUNummer(final String nr) {
-        setVUNummer(new VUNummer(nr));
-    }
-
-    /**
-     * Damit kann die VU-Nummer gesetzt werden.
-     * <p>
-     * TODO: Wird mit v7 entfernt.
-     * </p>
-     *
-     * @param nr VU-Nummer
-     * @deprecated wird ab v7 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public static synchronized void setVUNummer(final VUNummer nr) {
-        if (!getVUNummer().equals(nr)) {
-            // da die Config nicht veraendert werden soll, muessen wir eine eine neue Config erzeugen
-            instance = createConfigWith(GDV_VU_NUMMER, nr.getInhalt());
-            LOG.info("konfigurierte VU-Nummer: " + nr);
-        }
-    }
-
-    /**
-     * Hiermit kann die gesetzte VU-Nummer abgefragt werden.
-     * Falls sie noch nicht gesetzt wurde, wird ein "DUMMY" zurueckgegeben.
-     * <p>
-     * TODO: Wird mit v7 entfernt.
-     * </p>
-     *
-     * @return VU-Nummer bzw. "DUMMY"
-     * @deprecated ersetzt durch {@link Config#getVUNr()}
-     */
-    @Deprecated
-    public static synchronized VUNummer getVUNummer() {
-        return new VUNummer(instance.getProperty(GDV_VU_NUMMER, DUMMY_VU_NUMMER));
-    }
-
-    /**
      * Hiermit kann die voreingestellte VU-Nummer abgefragt werden.
      *
      * @return VU-Nummer

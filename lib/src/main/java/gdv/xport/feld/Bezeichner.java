@@ -1913,24 +1913,6 @@ public final class Bezeichner implements Serializable {
     }
     
     /**
-     * Verwendet den uebergebenen Bezeichner, um den technischen Namen zu
-     * aktualisieren.
-     *
-     * @param bezeichner the bezeichner
-     * @return the bezeichner
-     * @deprecated nicht mehr notwendig, wird mit v7 entfernt (TODO)
-     */
-    @Deprecated
-    public Bezeichner mergeWith(final Bezeichner bezeichner) {
-        if (this.getTechnischerName().equals(bezeichner.getTechnischerName())) {
-            LOG.trace("Merge of {} and {} is ignored.", this, bezeichner);
-            return this;
-        } else {
-            return bezeichner;
-        }
-    }
-
-    /**
      * Liefert zum angegebenen Namen den entsprechenden Bezeichner, falls es
      * ihn als Konstante gibt. Falls nicht, wird er ganz normal ueber den
      * Konstruktor erzeugt.

@@ -39,22 +39,6 @@ public class AlphaNumFeld extends Feld {
 
     /**
      * Legt ein neues alphanumerisches Feld an.
-     * <p>
-     * TODO: wird mit v7 entfernt
-     * </p>
-     *
-     * @param name Bezeichner
-     * @param s Inhalt
-     * @deprecated wird in v7 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public AlphaNumFeld(final String name, final String s) {
-        this(Bezeichner.of(name), s.length(), 1);
-        this.setInhalt(s);
-    }
-
-    /**
-     * Legt ein neues alphanumerisches Feld an.
      *
      * @param bezeichner Bezeichner
      * @param length Laenge in Bytes
@@ -76,37 +60,6 @@ public class AlphaNumFeld extends Feld {
      */
     public AlphaNumFeld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
         super(bezeichner, length, start, alignment, Config.getInstance());
-    }
-
-    /**
-     * Legt ein neues alpha-numerisches Feld an.
-     * <p>
-     * TODO: wird mit v7 entfernt
-     * </p>
-     *
-     * @param length Laenge in Bytes
-     * @param start Start-Byte (beginnend bei 1)
-     * @deprecated Felder ohne Bezeichner werden ab v7 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public AlphaNumFeld(final int length, final int start) {
-        this(length, start, Align.LEFT);
-    }
-
-    /**
-     * Legt ein neues alpha-numerisches Feld an.
-     * <p>
-     * TODO: wird mit v7 entfernt
-     * </p>
-     *
-     * @param length Laenge in Bytes
-     * @param start Start-Byte (beginnend bei 1)
-     * @param alignment Ausrichtung
-     * @deprecated Felder ohne Bezeichner werden ab v7 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public AlphaNumFeld(final int length, final int start, final Align alignment) {
-        this(Bezeichner.of("NN"), length, start, alignment);
     }
 
     /**

@@ -35,8 +35,8 @@ import java.util.Arrays;
  * (siehe auch {{@link #getGdvSatzartName()})
  * </p>
  * <p>
- * Näheres findet sich unter "online-version" z.B. hier (rel 01.07.2018):<br>
- * "http://www.gdv-online.de/vuvm/bestand/best_2018.htm"
+ * Näheres findet sich unter "online-version" z.B. hier (rel 01.12.2023):<br>
+ * <a href="http://www.gdv-online.de/vuvm/bestand/best_2023.htm">VU-Vermittler</a>
  * Es gilt:
  * <ul>
  * <li><b>&lt;satzart&gt; </b>: 1. Teil aus 4 Ziffern z.B. "0200" bzw. "0100" bzw. "0220"</li>
@@ -52,8 +52,8 @@ import java.util.Arrays;
  * "0220.000", "0221.000" beschrieben. <br>
  * GDV-Sparten "080", "081", "082, "083" und "089" werden über GDV-Satzarten "0210.080", "0211.080",
  * "0220.080", "0221.080" beschrieben.<br>
- * Weitere Infos liefern finden sich z.B. hier (rel 01.07.2018):
- * "http://www.gdv-online.de/vuvm/bestand/rel2018/anl1.htm"</li>
+ * Weitere Infos liefern finden sich z.B. hier (rel 01.12.2023): <a href=
+ * "http://www.gdv-online.de/vuvm/bestand/rel2023/anl1.htm">Anlage 1</a></li>
  * <li><b>&lt;art&gt; </b>: 3. Teil aus 1-2 Ziffern, Bedeutung ist abhängig von &lt;sparte&gt;:
  * <ul>
  * <li>&lt;sparte&gt; <b>"010"</b> (Leben): Wagnisart "13", "2", "48", "5", "6", "7", "9". <br>
@@ -66,7 +66,8 @@ import java.util.Arrays;
  * <li>&lt;sparte&gt; <b>"580"</b>; (Bausparen): Bausparart "01", "2" im Feld 9 (Adresse 44-44) bei
  * Satzart "0220.580.01", "0220.580.2". "01" steht als Abkürzung fuer Bausparart "0" und "1".</li>
  * </ul>
- * Weitere Infos liefern finden sich hier: "http://www.gdv-online.de/vuvm/bestand/best_2018.htm"
+ * Weitere Infos liefern finden sich hier: <a href=
+ * "http://www.gdv-online.de/vuvm/bestand/best_2023.htm">VU-Vermittler</a>
  * </li>
  * <li><b>&lt;gdvsatzartnummer&gt; </b>: 4. Teil aus 1 Ziffer (nur fuer &lt;sparte&gt; <b>"010"</b>
  * in den Satzarten "0220" bzw. "0221"). Wird benoetigt, um zu unterscheiden zwischen<br>
@@ -166,17 +167,7 @@ public class SatzTyp {
 		}
 	}
 
-	/**
-	 * Damit laesst sich ein SatzTyp anhand der Einzelteile zusammensetzen.
-	 * <p>
-	 * TODO: wird ab v7 'private' sein
-	 * </p>
-	 *
-	 * @param args z.B. 0210, 050
-	 * @deprecated bitte {@link SatzTyp#of(int...)} verwenden
-	 */
-	@Deprecated
-	public SatzTyp(int... args) {
+	private SatzTyp(int... args) {
 		this.teil = createArray(VALIDATOR.verify(args));
 	}
 

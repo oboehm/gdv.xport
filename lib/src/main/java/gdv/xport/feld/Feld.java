@@ -47,7 +47,6 @@ import java.util.List;
 public class Feld implements Comparable<Feld>, Cloneable, Serializable {
 
     private static final Logger LOG = LogManager.getLogger(Feld.class);
-    private static final Validator DEFAULT_VALIDATOR = new Validator(Config.getInstance());
     /** statt "null". */
     public static final Feld NULL_FELD = new Feld();
     private final Bezeichner bezeichner;
@@ -212,47 +211,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     }
 
     /**
-     * Instantiates a new feld.
-     * <p>
-     * TODO: wird mit v7 entfernt
-     * </p>
-     *
-     * @param length
-     *            the length
-     * @param alignment
-     *            the alignment
-     * @deprecated Felder ohne Bezeichner werden ab v7 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public Feld(final int length, final Align alignment) {
-        this(length, 1, alignment);
-    }
-
-    /**
-     * Instantiates a new feld.
-     * <p>
-     * TODO: wird mit v7 entfernt
-     * </p>
-     *
-     * @param length
-     *            the length
-     * @param start
-     *            the start
-     * @param alignment
-     *            the alignment
-     * @deprecated Felder ohne Bezeichner werden ab v7 nicht mehr unterstuetzt
-     */
-    @Deprecated
-    public Feld(final int length, final int start, final Align alignment) {
-        this.inhalt = StringUtils.repeat(" ", length);
-        this.length = toByteLength(length);
-        this.byteAdresse = ByteAdresse.of(start).byteValue();
-        this.ausrichtung = alignment.getCode();
-        this.bezeichner = createBezeichner();
-        this.config = Config.getInstance();
-    }
-
-    /**
      * Dies ist der Copy-Constructor, mit dem man ein bestehendes Feld
      * kopieren kann.
      *
@@ -276,20 +234,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      */
     public Align getAusrichtung() {
         return Align.of(ausrichtung);
-    }
-
-    /**
-     * Die Default-Ausrichtung ist links-buendig. Diese Vorgabe kann aber von den Unterklassen ueberschrieben werde.
-     * <p>
-     * TODO: wird mit v7 entfernt
-     * </p>
-     *
-     * @return links-buendig
-     * @deprecated
-     */
-    @Deprecated
-    protected Align getDefaultAlignment() {
-        return Align.LEFT;
     }
 
     /**
@@ -471,21 +415,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     public void resetInhalt() {
         int anzahlBytes = this.getAnzahlBytes();
         this.inhalt = StringUtils.repeat(" ", anzahlBytes);
-    }
-
-    /**
-     * Wenn sich das Feld vergroessert, werden rechts Leerzeichen aufgefuellt (alphanumerische Zeichen sind
-     * standardmaessig linksbuendig).
-     * <p>
-     * TODO: wird in v7 entsorgt
-     * </p>
-     *
-     * @param n neue Groesse
-     * @deprecated wird nicht mehr benoetigt
-     */
-    @Deprecated
-    public void setAnzahlBytes(final int n) {
-        this.inhalt = this.inhalt + StringUtils.repeat(" ", n - this.inhalt.length());
     }
 
     /**

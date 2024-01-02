@@ -62,7 +62,7 @@ public class SatzRegistry implements VersionHandler {
     /** Default-Validator, der nur Satzart 800 - 899 akzeptiert. */
     public static final Validator VALIDATOR = new Validator();
     /** Dieser Validator akzeptiert alle Satzarten zwischen 0 und 9999. */
-    public static final Validator NO_VALIDATOR = new Validator(Range.between(0, 9999));
+    public static final Validator NO_VALIDATOR = new Validator(Range.of(0, 9999));
     private static final Map<Config, SatzRegistry> INSTANCES = new HashMap<>();
     private static final Map<Map.Entry<SatzTyp, String>, Satz> SATZTYP_VERSIONEN = new HashMap<>();
     private final Map<SatzTyp, Satz> registeredSaetze = new ConcurrentHashMap<>();
@@ -184,24 +184,6 @@ public class SatzRegistry implements VersionHandler {
         getInstance(Config.VUVM2013);
         getInstance(Config.VUVM2015);
         getInstance(Config.VUVM2018);
-    }
-
-    /**
-     * Mit dieser Klasse konnen die Registrierungen wieder komplett
-     * rueckgaengig gemacht werden. Diese Methode wurde vor allem zur
-     * Unterstuetzung der Unit-Tests eingefuehrt, wird aber seit der
-     * Umstellung von {@link SatzFactory} auf {@link SatzRegistry}
-     * nicht mehr benoetigt.
-     * <p>
-     * TODO: wird mit v7 entfernt
-     * </p>
-     *
-     * @deprecated wird nicht mehr benoetigt
-     */
-    @Deprecated
-    public void reset() {
-        registeredSaetze.clear();
-        LOG.debug("{} wurde zurueckgesetzt.", this);
     }
 
     /**
@@ -532,10 +514,10 @@ public class SatzRegistry implements VersionHandler {
 
     /**
      * Liefert ein Datenpaket mit allen unterstuetzten Satzarten.
-     * 
+     * <p>
      * Satzarten, die mit <b>{@link #register(Class, int)}</b> registriert wurden,
      * werden nicht aufgefuehrt!
-     * <p>
+     * </p><p>
      * Grund: Ein Objekt vom Typ &lt;code&gt;Satz&lt;/code&gt; kann
      * nicht auf &lt;code&gt;Datensatz&lt;/code&gt; gecastet werden.
      * </p>
@@ -607,7 +589,7 @@ public class SatzRegistry implements VersionHandler {
     static class Validator {
         private final Range<Integer> allowed;
         public Validator() {
-            this(Range.between(800, 899));
+            this(Range.of(800, 899));
         }
         public Validator(Range<Integer> allowed) {
             this.allowed = allowed;

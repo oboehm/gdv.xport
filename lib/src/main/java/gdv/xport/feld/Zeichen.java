@@ -31,10 +31,11 @@ public class Zeichen extends AlphaNumFeld {
      *
      * @param start the start
      * @param c the c
+     * @deprecated wird mit v8 entfernt (TODO)
      */
+    @Deprecated
     public Zeichen(final int start, final char c) {
-        super(1, start);
-        super.setInhalt(c);
+        this(Bezeichner.of("NN"), start, c);
     }
 
     /**

@@ -24,8 +24,6 @@ import gdv.xport.satz.Nachsatz;
 import gdv.xport.satz.Satz;
 import gdv.xport.satz.Vorsatz;
 import gdv.xport.satz.xml.XmlService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * Diese Klasse dient dazu, um einen vorgegebene Satz, der z.B. aus einem Import
@@ -42,27 +40,9 @@ import org.apache.logging.log4j.Logger;
  */
 public final class SatzFactory {
 
-    private static final Logger LOG = LogManager.getLogger(SatzFactory.class);
     private static final SatzRegistry FACTORY = SatzRegistry.getInstance();
 
     private SatzFactory() {
-    }
-
-    /**
-     * Mit dieser Klasse konnen die Registrierungen wieder komplett
-     * rueckgaengig gemacht werden. Diese Methode wurde vor allem zur
-     * Unterstuetzung der Unit-Tests eingefuehrt.
-     * <p>
-     * TODO: wird mit v7 entfernt
-     * </p>
-     *
-     * @since 4.1.1
-     * @deprecated wird nicht mehr benoetigt
-     */
-    @Deprecated
-    public static void reset() {
-        FACTORY.reset();
-        LOG.debug("Satzfactory wurde zurueckgesetzt.");
     }
 
     /**
@@ -103,28 +83,6 @@ public final class SatzFactory {
         FACTORY.register(clazz, satzNr);
     }
 
-    /**
-     * Liefert einen Satz mit der angegebenen Satzart.
-     * <p>
-     * Das klappt nur, wenn satzart= 0001, 0052, 0100, 0102, 0200, 0202, 0300,
-     * 0342, 0350, 0352, 0372, 0382, 0390, 0392, 0400, 0410, 0420, 0430, 0450,
-     * 0500, 0550, 0600, 9950, 9951, 9952, 9999 !!
-     * Deswegen wurde diese Methode durch {@link #getSatz(SatzTyp)} ersetzt
-     * </p>
-     * <p>
-     * TODO: Wird mit v7 nicht mehr zur Verfuegung stehen.
-     * </p>
-     *
-     * @param satzart Satzart
-     * @return angeforderte Satz
-     * @since 0.2
-     * @deprecated durch {@link #getSatz(SatzTyp)} abgeloest
-     */
-    @Deprecated
-    public static Satz getSatz(final int satzart) {
-        return getSatz(SatzTyp.of(satzart));
-    }
-    
     /**
      * Holt einen Satz.
      * 
@@ -181,22 +139,6 @@ public final class SatzFactory {
     }
 
     /**
-     * Gets the datensatz.
-     * <p>
-     * TODO: wird mit v7 entfernt
-     * </p>
-     *
-     * @param satzart den registrierten Datensatz fuer
-     * @return den registrierten Datensatz fuer 'satzart'
-     * @since 0.2
-     * @deprecated durch {@link #getDatensatz(SatzTyp)} abgeloest
-     */
-    @Deprecated
-    public static Datensatz getDatensatz(final int satzart) {
-        return (Datensatz) getSatz(satzart);
-    }
-
-    /**
      * Liefert den gewuenschten Datensatz. Mit der uebergebenen Satznummer wird
      * der Datensatz spezifizert, der folgendes enthaelt:
      * <ul>
@@ -213,8 +155,7 @@ public final class SatzFactory {
      *
      * @param satzNr z.B. SatzTyp.of("0210.070.1.6")
      * @return den passenden Datensatz
-     * @deprecated durch {@link SatzRegistry#getSatz(SatzTyp)} und
-     *             {@link SatzRegistry#generateDatensatz(SatzTyp)} abgeloest
+     * @deprecated durch {@link SatzRegistry#getSatz(SatzTyp)} abgeloest (TODO: wird mit v8 entfernt)
      */
     @Deprecated
     public static Datensatz getDatensatz(final SatzTyp satzNr) {
@@ -223,10 +164,10 @@ public final class SatzFactory {
 
     /**
      * Liefert ein Datenpaket mit allen unterstuetzten Satzarten.
-     * 
+     * <p>
      * Satzarten, die mit <b>{@link #register(Class, int)}</b> registriert wurden,
      * werden nicht aufgefuehrt!
-     * <p>
+     * </p><p>
      * Grund: Ein Objekt vom Typ &lt;code&gt;Satz&lt;/code&gt; kann
      * nicht auf &lt;code&gt;Datensatz&lt;/code&gt; gecastet werden.
      * </p>
