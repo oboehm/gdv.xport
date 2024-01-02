@@ -516,7 +516,7 @@
       <dependency>
         <groupId>org.springdoc</groupId>
         <artifactId>springdoc-openapi</artifactId>
-        <version>1.6.14</version>
+        <version>1.7.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -530,12 +530,12 @@
       <dependency>
         <groupId>org.thymeleaf</groupId>
         <artifactId>thymeleaf</artifactId>
-        <version>3.1.1.RELEASE</version>
+        <version>3.1.2.RELEASE</version>
       </dependency>
       <dependency>
         <groupId>org.thymeleaf</groupId>
         <artifactId>thymeleaf-spring5</artifactId>
-        <version>3.1.1.RELEASE</version>
+        <version>3.1.2.RELEASE</version>
       </dependency>
       <dependency>
         <groupId>org.webjars</groupId>
