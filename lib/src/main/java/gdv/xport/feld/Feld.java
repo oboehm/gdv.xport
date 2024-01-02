@@ -737,16 +737,10 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
          */
         protected String validateLax(String value) {
             LOG.debug("Inhalt von '{}' wird validiert.", value);
-            for (char c : value.toCharArray()) {
-                validateChar(value, c);
+            if (!Text.of(value).isPrintable()) {
+                throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen", value));
             }
             return value;
-        }
-
-        private void validateChar(String value, char c) {
-            if (!Text.of(Character.toString(c)).isPrintable()) {
-                throw new ValidationException(String.format("Text '%s' enthaelt ungueltige Zeichen '%c'", value, c));
-            }
         }
 
         /**
