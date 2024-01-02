@@ -40,7 +40,7 @@
   <properties>
 
     <patterntesting.version>2.3.0</patterntesting.version>
-    <spring-boot.version>2.6.15</spring-boot.version>
+    <spring-boot.version>2.7.18</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>8</java.version>
     <maven.compiler.source>8</maven.compiler.source>
@@ -557,7 +557,7 @@
       <dependency>
         <groupId>de.jfachwert</groupId>
         <artifactId>jfachwert</artifactId>
-        <version>5.0.1</version>
+        <version>5.1.0</version>
       </dependency>
       <dependency>
         <groupId>javax.validation</groupId>
