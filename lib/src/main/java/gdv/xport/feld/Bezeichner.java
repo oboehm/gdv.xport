@@ -118,25 +118,25 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ART_DER_SCHAETZUNG = new Bezeichner("Art der Schaetzung");
     public static final Bezeichner ART_DER_SUMME = new Bezeichner("Art der Summe");
     /** Fuer 0220.170 */
-    /** @deprecated bitte ART_DER_SUMME verwenden. */
+    /** @deprecated bitte ART_DER_SUMME verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner ART_DER_SUMME_2AN = ART_DER_SUMME;
     /**  Fuer 022x.130 */
-    /** @deprecated bitte ART_DER_SUMME verwenden. */
+    /** @deprecated bitte ART_DER_SUMME verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner ART_DER_SUMME_3AN = ART_DER_SUMME;
-    /** @deprecated bitte ART_DER_SUMME verwenden. */
+    /** @deprecated bitte ART_DER_SUMME verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner ART_DER_SUMME_2N = ART_DER_SUMME;
     /**  Fuer 0220.140 */
-    /** @deprecated bitte ART_DER_SUMME verwenden. */
+    /** @deprecated bitte ART_DER_SUMME verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner ART_DER_SUMME_3N = ART_DER_SUMME;
 
     public static final Bezeichner ART_DER_SUMMENANPASSUNG = new Bezeichner("Art der Summenanpassung");
 
     public static final Bezeichner ART_DES_SELBSTBEHALTS = new Bezeichner("Art des Selbstbehalts");
-    /** @deprecated bitte ART_DES_SELBSTBEHALTS verwenden. */
+    /** @deprecated bitte ART_DES_SELBSTBEHALTS verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner ART_DES_SELBSTBEHALT = ART_DES_SELBSTBEHALTS;
 
@@ -188,7 +188,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner AUFTRAGSNR_VERMITTLER = new Bezeichner("Auftrags-Nr. des Vermittlers");
     public static final Bezeichner AUSFALLZIFFER_IN_PROZENT = new Bezeichner("Ausfallziffer in %");
     public static final Bezeichner AUSLOESUNG_DER_LEISTUNG = new Bezeichner("Ausloesung der Leistung");
-    /** @deprecated bitte Konstante AUSSCHLUSS verwenden */
+    /** @deprecated bitte Konstante AUSSCHLUSS verwenden (TODO: wird mit v8 entfernt). */
     public static final Bezeichner AUSCHLUSS = new Bezeichner("Auschluss");
     public static final Bezeichner AUSSCHLUSS = new Bezeichner("Ausschluss", "Ausschluss", "Auschluss");
     public static final Bezeichner AUSSCHLUSS2 = new Bezeichner("Ausschluss2", "Ausschluss2");
@@ -204,7 +204,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner BAUSTEINSCHLUESSEL = new Bezeichner("Bausteinschluessel");
     public static final Bezeichner BAUSTEINBEZEICHNUNG = new Bezeichner("Bausteinbezeichnung");
     public static final Bezeichner BAUSTEIN_ABSCHLAEGE_IN_PROZENT =  new Bezeichner("Baustein-Abschlaege in %");
-    /** @deprecated bitte BAUSTEIN_ABSCHLAEGE_IN_PROZENT verwenden. */
+    /** @deprecated bitte BAUSTEIN_ABSCHLAEGE_IN_PROZENT verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner BAUSTEIN_ABSCHLAEGE_PROZENT = BAUSTEIN_ABSCHLAEGE_IN_PROZENT;
     public static final Bezeichner BAUSTEIN_ABSCHLAEGE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Baustein-Abschlaege in W\u00e4hrungseinheiten");
@@ -232,10 +232,10 @@ public final class Bezeichner implements Serializable {
   public static final Bezeichner BEGINNDAT_NAECHSTEN_JAHRESRENTE = new Bezeichner("Beginndatum der naechsten Jahresrente");
     public static final Bezeichner BEGINNDAT_NAECHSTEN_TODESFALL_VS = new Bezeichner("Beginndatum der naechsten Todesfall VS");
     public static final Bezeichner BEGINNDAT_DER_NAECHSTEN_TODESFALL_VS = BEGINNDAT_NAECHSTEN_TODESFALL_VS; 
-  /** @deprecated bitte BEGINNDAT_DER_NAECHSTEN_JAHRESRENTE verwenden. */
+  /** @deprecated bitte BEGINNDAT_DER_NAECHSTEN_JAHRESRENTE verwenden (TODO: wird mit v8 entfernt). */
   @Deprecated
   public static final Bezeichner BEGINNDAT_NAECHSTEN_JAHRESRENTESUMME = BEGINNDAT_DER_NAECHSTEN_JAHRESRENTE;
-  /** @deprecated bitte BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME verwenden. */
+  /** @deprecated bitte BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner BEGINNDAT_NAECHSTEN_UNFALLSUMME = BEGINNDAT_DER_NAECHSTEN_UNFALLSUMME;
     public static final Bezeichner BEIHILFESTATUS = new Bezeichner("Beihilfestatus");
@@ -300,10 +300,10 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner BETRAG_VORSORGEZUSCHLAG = new Bezeichner("Betrag Vorsorgezuschlag");
     public static final Bezeichner BETRIEBSART = new Bezeichner("Betriebsart");
     public static final Bezeichner BETRIEBLICHE_ALTERSVERSORGUNG = new Bezeichner("Betriebliche Altersversorgung");
-    /** @deprecated bitte BETRIEBLICHE_ALTERSVERSORGUNG verwenden. */
+    /** @deprecated bitte BETRIEBLICHE_ALTERSVERSORGUNG verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner BETRIEBLICHE_ALTERSVORSORGUNG = BETRIEBLICHE_ALTERSVERSORGUNG;
-    /** @deprecated bitte BETRIEBLICHE_ALTERSVERSORGUNG verwenden. */
+    /** @deprecated bitte BETRIEBLICHE_ALTERSVERSORGUNG verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner BETRIEBLICHE_ALTERSVORSORGE = BETRIEBLICHE_ALTERSVERSORGUNG;
     public static final Bezeichner BEWEGUNGSRISIKO = new Bezeichner("Bewegungsrisiko");
@@ -317,10 +317,10 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner BEZUGSRECHTANTEIL_IM_LEISTUNGSFALL = new Bezeichner("Bezugsrechtanteil im Leistungsfall");
     public static final Bezeichner BEZUGSRECHTANTEIL_IM_TODESFALL = new Bezeichner("Bezugsrechtanteil im Todesfall");
     public static final Bezeichner BEZUG_ZUR_TEILSPARTE = new Bezeichner("Bezug zur Teilsparte");
-    /** @deprecated bitte BEZUG_ZUR_TEILSPARTE verwenden. */
+    /** @deprecated bitte BEZUG_ZUR_TEILSPARTE verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner BEZUG_ZUR_TEILSPARTE1 = BEZUG_ZUR_TEILSPARTE;
-    /** @deprecated bitte BEZUG_ZUR_TEILSPARTE verwenden. */
+    /** @deprecated bitte BEZUG_ZUR_TEILSPARTE verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner BEZUG_ZUR_TEILSPARTE2 = BEZUG_ZUR_TEILSPARTE;
     public static final Bezeichner BIC1 = new Bezeichner("BIC 1");
@@ -338,7 +338,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner BUZ_LEISTUNG_BIS = new Bezeichner("Leistung bis");
     public static final Bezeichner BUZ_PROZENT_SATZ = new Bezeichner("Prozent-Satz");
     public static final Bezeichner VERWENDUNGSART = new Bezeichner("Verwendungsart");
-    /** @deprecated bitte VERWENDUNGSART verwenden. */
+    /** @deprecated bitte VERWENDUNGSART verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner BUZ_VERWENDUNGSART = VERWENDUNGSART;
 
@@ -497,7 +497,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner GESAMTMASSE = new Bezeichner("Gesamtmasse");
     public static final Bezeichner GESAMTPROVISIONSBETRAG = new Bezeichner("Gesamtprovisions-Betrag");
     public static final Bezeichner GESAMT_PROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gesamt-Provisionsbetrag in W\u00e4hrungseinheiten");
-    /** @deprecated bitte GESAMT_PROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN verwenden. */
+    /** @deprecated bitte GESAMT_PROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner GESAMTPROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN = GESAMT_PROVISIONSBETRAG_IN_WAEHRUNGSEINHEITEN;
     public static final Bezeichner GESAMTVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Gesamtversicherungssumme in W\u00e4hrungseinheiten");
@@ -547,7 +547,7 @@ public final class Bezeichner implements Serializable {
 
     public static final Bezeichner JAEHRLICHE_FAHRLEISTUNG = new Bezeichner("Jaehrliche Fahrleistung");
     public static final Bezeichner JAHRESRENTE_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Jahresrente in W\u00e4hrungseinheiten");
-    /** @Deprecated bitte JAHRESRENTE_IN_WAEHRUNGSEINHEITEN verwenden! */
+    /** @Deprecated bitte JAHRESRENTE_IN_WAEHRUNGSEINHEITEN verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner JAHRESRENTE_IN_WAEHRUNGSEINHEITEN2 = JAHRESRENTE_IN_WAEHRUNGSEINHEITEN;
 
@@ -708,33 +708,33 @@ public final class Bezeichner implements Serializable {
     // Teildatensatz 1 Satzart 0210.684 Adresse 105-110
     public static final Bezeichner LETZE_ERHOEHUNG_DURCH_DYNAMIK = new Bezeichner("Letze Erhöhung durch Dynamik");
     public static final Bezeichner LFD_NUMMER = new Bezeichner("Lfd. Nummer");
-    /** @Deprecated bitte LFD_NUMMER verwenden! */
+    /** @Deprecated bitte LFD_NUMMER verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER1 = LFD_NUMMER;
-    /** @Deprecated bitte LFD_NUMMER verwenden! */
+    /** @Deprecated bitte LFD_NUMMER verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER2 = LFD_NUMMER;
     public static final Bezeichner LFD_NR_DER_DEKLARATION = new Bezeichner("Lfd. Nr. der Deklaration");
-    /** @Deprecated bitte LFD_NR_DER_DEKLARATION verwenden! */
+    /** @Deprecated bitte LFD_NR_DER_DEKLARATION verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_DEKLARATION = LFD_NR_DER_DEKLARATION;
-    /** @Deprecated bitte LFD_NR_DER_DEKLARATION verwenden! */
+    /** @Deprecated bitte LFD_NR_DER_DEKLARATION verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NR_DEKLARATION_1 = LFD_NR_DER_DEKLARATION;
-    /** @Deprecated bitte LFD_NR_DER_DEKLARATION verwenden! */
+    /** @Deprecated bitte LFD_NR_DER_DEKLARATION verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NR_DEKLARATION_2 = LFD_NR_DER_DEKLARATION;
     public static final Bezeichner LFD_NUMMER_DES_FONDS = new Bezeichner("Lfd. Nummer des Fonds");
     public static final Bezeichner LFD_NUMMER_DES_VERSICHERTEN_FAHRZEUGES = new Bezeichner("lfd. Nummer des versicherten Fahrzeuges");
     public static final Bezeichner LFD_NUMMER_DES_VERSICHERTEN_TIERES = new Bezeichner("Laufende Nummer des versicherten Tieres");
-    /** @Deprecated bitte LFD_NUMMER_DES_VERSICHERTEN_TIERES verwenden! */
+    /** @Deprecated bitte LFD_NUMMER_DES_VERSICHERTEN_TIERES verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_DES_VERSICHERTEN_TIERES_2 = LFD_NUMMER_DES_VERSICHERTEN_TIERES;
     public static final Bezeichner LFD_NUMMER_OBJEKT_KOMPLEX = new Bezeichner("lfd. Nr. Objekt / Komplex");
     public static final Bezeichner LFD_NUMMER_POSITION_DES_MASCHINENVERZEICHNISSES = new Bezeichner("lfd. Nr. Position des Maschinenverzeichnisses");
     public static final Bezeichner LFD_NUMMER_SATZART = new Bezeichner("Lfd. Nummer der Satzart");
     public static final Bezeichner LFD_NUMMER_VERSICHERUNGSGRUNDSTUECK = new Bezeichner("lfd. Nr. Versicherungsgrundst\u00fcck");
-    /** @Deprecated bitte LFD_NUMMER_VERSICHERUNGSGRUNDSTUECK verwenden! */
+    /** @Deprecated bitte LFD_NUMMER_VERSICHERUNGSGRUNDSTUECK verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_VERSICHERUNGSGRUNDSTUECK_2 = LFD_NUMMER_VERSICHERUNGSGRUNDSTUECK;
     /**
@@ -747,35 +747,35 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner LAUFENDE_NUMMER_TARIF = new Bezeichner("Laufende Nummer Tarif");
     public static final Bezeichner LFD_NUMMER_VP = new Bezeichner("Lfd. Nummer der versicherten Person (VP)", "LfdNrVersichertenPersonVp", "LfdNrVersichertenPersonVp9");
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / Personengruppe");
-    /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden. */
+    /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE1 = LFD_NUMMER_VP_PERSONENGRUPPE;
-    /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden. */
+    /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE2 = LFD_NUMMER_VP_PERSONENGRUPPE;
-    /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden. */
+    /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE3 = LFD_NUMMER_VP_PERSONENGRUPPE;
-    /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden. */
+    /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE4 = LFD_NUMMER_VP_PERSONENGRUPPE;
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE9 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / PersonengruppeAN", "LfdNrVersichertenPersonVp9");
-    /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden. */
+    /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE10 = LFD_NUMMER_VP_PERSONENGRUPPE;
 
     public static final Bezeichner LFD_NUMMER_ZUR_ART_DER_LEISTUNG = new Bezeichner("Laufende Nummer zur Art der Leistung");
     public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART = new Bezeichner("Lfd. Nummer zur Wagnisart");
-    /** @deprecated bitte LFD_NUMMER_ZUR_WAGNISART verwenden. */
+    /** @deprecated bitte LFD_NUMMER_ZUR_WAGNISART verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART1 = LFD_NUMMER_ZUR_WAGNISART;
-    /** @deprecated bitte LFD_NUMMER_ZUR_WAGNISART verwenden. */
+    /** @deprecated bitte LFD_NUMMER_ZUR_WAGNISART verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART2 = LFD_NUMMER_ZUR_WAGNISART;
-    /** @deprecated bitte LFD_NUMMER_ZUR_WAGNISART verwenden. */
+    /** @deprecated bitte LFD_NUMMER_ZUR_WAGNISART verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART3 = LFD_NUMMER_ZUR_WAGNISART;
-    /** @deprecated bitte LFD_NUMMER_ZUR_WAGNISART verwenden. */
+    /** @deprecated bitte LFD_NUMMER_ZUR_WAGNISART verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_ZUR_WAGNISART4 = LFD_NUMMER_ZUR_WAGNISART;
     public static final Bezeichner LFD_PERSONENNR_GEVO = new Bezeichner("Lfd. Personennummer", "LfdPersonenNrimGeVo");
@@ -822,10 +822,10 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner OBJEKTBESCHREIBUNG = new Bezeichner("Objektbeschreibung");
     public static final Bezeichner OBJEKTKENNZIFFER = new Bezeichner("Objektkennziffer");
     public static final Bezeichner OBJEKTNUMMER = new Bezeichner("Objektnummer");
-    /** @deprecated bitte OBJEKTNUMMER verwenden. */
+    /** @deprecated bitte OBJEKTNUMMER verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner OBJEKTNUMMER1 = OBJEKTNUMMER;
-    /** @deprecated bitte OBJEKTNUMMER verwenden. */
+    /** @deprecated bitte OBJEKTNUMMER verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner OBJEKTNUMMER2 = OBJEKTNUMMER;
     public static final Bezeichner ORDNUNGS_NUMMER_FUER_WAGNISZUATZ = new Bezeichner("Ordnungs-Nummer fuer Wagniszuatz");
@@ -1046,22 +1046,22 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner SATZ_NR_9 = new Bezeichner("Satznummer9", "SatzNr9");
     public static final Bezeichner SATZNUMMER = new Bezeichner("Satznummer", "SatzNr", "Satznummer",
             "SatzNr1", "SatzNr2", "SatzNr3", "SatzNr4", "SatzNr9");
-    /** @deprecated bitte SATZNUMMER oder SATZ_NR_1 verwenden. */
+    /** @deprecated bitte SATZNUMMER oder SATZ_NR_1 verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner SATZNUMMER1 = SATZNUMMER;
-    /** @deprecated bitte SATZNUMMER oder SATZ_NR_2 verwenden. */
+    /** @deprecated bitte SATZNUMMER oder SATZ_NR_2 verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner SATZNUMMER2 = SATZNUMMER;
-    /** @deprecated bitte SATZNUMMER oder SATZ_NR_3 verwenden. */
+    /** @deprecated bitte SATZNUMMER oder SATZ_NR_3 verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner SATZNUMMER3 = SATZNUMMER;
-    /** @deprecated bitte SATZNUMMER oder SATZ_NR_4 verwenden. */
+    /** @deprecated bitte SATZNUMMER oder SATZ_NR_4 verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner SATZNUMMER4 = SATZNUMMER;
-    /** @deprecated bitte SATZNUMMER verwenden. */
+    /** @deprecated bitte SATZNUMMER verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner SATZNUMMER5 = SATZNUMMER;
-    /** @deprecated bitte SATZNUMMER oder SATZ_NR_9 verwenden. */
+    /** @deprecated bitte SATZNUMMER oder SATZ_NR_9 verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner SATZNUMMER9 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER38 = new Bezeichner("Satznummer38", "SatzNr");
@@ -1093,10 +1093,10 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Selbstbeteiligung in W\u00e4hrungseinheiten");
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WE_MAX = new Bezeichner("Selbstbeteiligung in WE (max.)");
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WE_MIND = new Bezeichner("Selbstbeteiligung in WE (mind.)");
-    /** @deprecated bitte {@link #SELBSTBETEILIGUNG_IN_WE_MAX} verwenden. */
+    /** @deprecated bitte {@link #SELBSTBETEILIGUNG_IN_WE_MAX} verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_MAX = SELBSTBETEILIGUNG_IN_WE_MAX;
-    /** @deprecated bitte {@link #SELBSTBETEILIGUNG_IN_WE_MIND} verwenden. */
+    /** @deprecated bitte {@link #SELBSTBETEILIGUNG_IN_WE_MIND} verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner SELBSTBETEILIGUNG_IN_WAEHRUNGSEINHEITEN_MIND = SELBSTBETEILIGUNG_IN_WE_MIND;
     public static final Bezeichner SEPA_GLAEUBIGERIDENTIFIKATIONSNUMMER = new Bezeichner("SEPA-Glaeubigeridentifikationsnummer");
@@ -1224,7 +1224,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner UNTERSTUETZUNGSKASSE_NAME = new Bezeichner("Unterstuetzungskasse Name");
     public static final Bezeichner UNTERSTUETZUNGSKASSE_SCHLUESSEL = new Bezeichner("Unterstuetzungskasse Schl\u00fcssel");
     public static final Bezeichner UNTERVERSICHERUNGSVERZICHT = new Bezeichner("Unterversicherungsverzicht");
-    /** @deprecated bitte #UNTERVERSICHERUNGSVERZICHT verwenden. */
+    /** @deprecated bitte #UNTERVERSICHERUNGSVERZICHT verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner UNTERVERS_VERZICHT = UNTERVERSICHERUNGSVERZICHT;
     public static final Bezeichner UNVERFALLBARKEIT = new Bezeichner("Unverfallbarkeit");
@@ -1512,30 +1512,30 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner WAEHRUNGSSCHLUESSEL2 = new Bezeichner("Waehrungsschl\u00fcssel 2");
     public static final Bezeichner WAEHRUNGSSCHLUESSEL3 = new Bezeichner("Waehrungsschl\u00fcssel 3");
     public static final Bezeichner WAEHRUNGSSCHLUESSEL4 = new Bezeichner("Waehrungsschl\u00fcssel 4");
-    /** @deprecated bitte Konstanten ohne '_' benutzen. */
+    /** @deprecated bitte Konstanten ohne '_' benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_1 = WAEHRUNGSSCHLUESSEL1;
-    /** @deprecated bitte Konstanten ohne '_' benutzen. */
+    /** @deprecated bitte Konstanten ohne '_' benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_2 = WAEHRUNGSSCHLUESSEL2;
-    /** @deprecated bitte Konstanten ohne '_' benutzen. */
+    /** @deprecated bitte Konstanten ohne '_' benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_3 = WAEHRUNGSSCHLUESSEL3;
-    /** @deprecated bitte Konstanten ohne '_' benutzen. */
+    /** @deprecated bitte Konstanten ohne '_' benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAEHRUNGSSCHLUESSEL_4 = WAEHRUNGSSCHLUESSEL4;
     public static final Bezeichner WAGNIS = new Bezeichner("Wagnis");
-    /** @deprecated bitte {@link #WAGNIS} benutzen. */
+    /** @deprecated bitte {@link #WAGNIS} benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAGNIS2 = WAGNIS;
     public static final Bezeichner WAGNISART = new Bezeichner("Wagnisart");
-    /** @deprecated bitte {@link #WAGNISART} benutzen. */
+    /** @deprecated bitte {@link #WAGNISART} benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAGNISART2 = WAGNISART;
-    /** @deprecated bitte {@link #WAGNISART} benutzen. */
+    /** @deprecated bitte {@link #WAGNISART} benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAGNISART3 = WAGNISART;
-    /** @deprecated bitte {@link #WAGNISART} benutzen. */
+    /** @deprecated bitte {@link #WAGNISART} benutzen (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAGNISART4 = WAGNISART;
     public static final Bezeichner WAGNISBESCHREIBUNG = new Bezeichner("Wagnisbeschreibung");
@@ -1543,7 +1543,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner WAGNISMENGE = new Bezeichner("Wagnismenge");
     public static final Bezeichner WAGNISTEXT = new Bezeichner("Wagnistext");
     public static final Bezeichner WAISENRENTE_PROZENT = new Bezeichner("Waisenrente %");
-    /** @deprecated bitte WAISENRENTE_PROZENT verwenden. */
+    /** @deprecated bitte WAISENRENTE_PROZENT verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WAISENRENTE_IN_PROZENT = WAISENRENTE_PROZENT;
 
@@ -1561,7 +1561,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner WERTUNGSMODELL2 = new Bezeichner("Wertungsmodell2");
     public static final Bezeichner WIDERSPRUCH_VORSORGEZUSCHLAG = new Bezeichner("Widerspruch Vorsorgezuschlag");
     public static final Bezeichner WITWEN_WITWERRENTE_PROZENT = new Bezeichner("Witwen- / Witwerrente %");
-    /** @deprecated bitte WITWEN_WITWERRENTE_PROZENT verwenden. */
+    /** @deprecated bitte WITWEN_WITWERRENTE_PROZENT verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner WITWEN_WITWERRENTE_IN_PROZENT = WITWEN_WITWERRENTE_PROZENT;
 
@@ -1573,7 +1573,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ZAHLUNGSART = new Bezeichner("Zahlungsart /-weg");
     public static final Bezeichner ZAHLUNGSWEISE = new Bezeichner("Zahlungsweise");
     public static final Bezeichner ZAHLUNGSWEISE_KUENFTIGER_GESAMTBEITRAG = new Bezeichner("Zahlungsweise des zukuenftigen Gesamtbeitrags");
-    /** @deprecated bitte ZAHLUNGSWEISE_KUENFTIGER_GESAMTBEITRAG verwenden. */
+    /** @deprecated bitte ZAHLUNGSWEISE_KUENFTIGER_GESAMTBEITRAG verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner ZAHLUNGSWEISE_KUENFTIGER_GESAMTBETRAG = ZAHLUNGSWEISE_KUENFTIGER_GESAMTBEITRAG;
     public static final Bezeichner ZIELGRUPPENSCHLUESSEL = new Bezeichner("Zielgruppenschl\u00fcssel");
