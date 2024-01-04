@@ -75,16 +75,10 @@ public abstract class AbstractControllerIT {
     /**
      * Baut die URL zusammen und ruft den Service als GET-Request auf.
      *
-     * @param <T>        Typ-Parameter
      * @param path       Context-Pfad der URL
-     * @param type       Typ der erwarteten Antwort
      * @param mediaTypes Content-Types
      * @return Antwort des abgesendeten Requests
      */
-    protected <T> ResponseEntity<T> getResponseEntityFor(String path, Class<T> type, MediaType... mediaTypes) {
-        return exchangeResponseEntity(HttpMethod.GET, path, null, type, mediaTypes);
-    }
-
     protected String getResponseStringFor(String path, MediaType... mediaTypes) throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(path)
                         .headers(createHeaders(mediaTypes)))
