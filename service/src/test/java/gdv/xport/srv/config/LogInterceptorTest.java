@@ -80,7 +80,7 @@ public final class LogInterceptorTest {
     public void testError() {
         response.setStatus(404);
         request.setRequestURI("/error");
-        request.setAttribute("javax.servlet.error.request_uri", "/gibts/net");
+        request.setAttribute("jakarta.servlet.error.request_uri", "/gibts/net");
         interceptor.preHandle(request, response, "testError");
     }
 

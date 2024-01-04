@@ -26,19 +26,15 @@ import io.swagger.v3.oas.models.info.License;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * Ueber diese Klasse wird Swagger aktiviert. Die Doku dazu stammt aus
- * <a href="https://springfox.github.io/springfox/docs/current/">Springfox Reference Documentation</a>.
+ * Ueber diese Klasse wird Swagger aktiviert.
  *
  * @author oboehm
  * @since 3.0 (20.02.2017)
  */
 @Configuration
-public class SwaggerConfig implements WebMvcConfigurer {
+public class SwaggerConfig {
 
     @Value("${application.version: application.version}")
     private String version;
@@ -55,19 +51,6 @@ public class SwaggerConfig implements WebMvcConfigurer {
                         .description("Home")
                         .url("/")
                 );
-    }
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/swagger-ui/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/")
-                .resourceChain(false);
-    }
-
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/swagger-ui/")
-                .setViewName("forward:" + "/swagger-ui/index.html");
     }
 
 }

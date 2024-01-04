@@ -17,7 +17,6 @@
     Dies ist die Service-Schnittstelle zu GDV-Xport-Lib.
   </description>
 
-
   <dependencies>
 
     <dependency>
@@ -81,11 +80,7 @@
     <!-- REST API doc -->
     <dependency>
       <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-ui</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-webmvc-core</artifactId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
     </dependency>
 
     <!-- Thymeleaf + WebJars (see https://igorski.co/java/spring-boot/layout-dialect-spring-boot-2/) -->

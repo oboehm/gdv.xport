@@ -39,7 +39,7 @@ import org.springframework.web.multipart.MultipartFile;
 import patterntesting.runtime.log.LogWatch;
 import patterntesting.runtime.util.Converter;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -199,6 +199,22 @@ public final class DatenpaketController {
         return content;
     }
 
+    @Operation(summary = "Liest das Datenpaket von der angegebenen URI und gibt es im gewuenschten Format zurueck." +
+            " Der Stern '*' in /Datenpaket* steht dabei fuer ein beliebiges Muster." +
+            " So kann z.B. auch /Datenpaket.csv als URI angegeben werden." +
+            " Das erleichtert das Abspeichern des Ergebnisses im Web-Browser." +
+            " Im Gegensatz zu v1 wird hier das Format nicht ueber den format-Parameter bestimmt," +
+            " sondern ueber den Content-Type (Content-Negotiation).")
+    @PostMapping(
+            path = "/v2/Datenpaket*", produces = {MediaType.TEXT_HTML_VALUE, MediaType.TEXT_XML_VALUE,
+            MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE, TEXT_CSV}
+    )
+    public @ResponseBody ResponseEntity<Datenpaket> importDatenpaketV2(
+            HttpServletRequest request) throws IOException {
+        String content = IOUtils.toString(request.getInputStream(), StandardCharsets.ISO_8859_1);
+        return getDatenpaketResponseEntity("", content, request);
+    }
+
     /**
      * Die Umwandlung eines Datenpakets in das gewuenschte Datenformat wird
      * anhand des Accept-Headers (Content Negotiation) oder anhand des Suffixes
@@ -301,7 +317,7 @@ public final class DatenpaketController {
         if (StringUtils.isNotBlank(format)) {
             mimeTypes.add(toMediaType(format));
         }
-        String[] accepted = request.getHeader("accept").split(",");
+        String[] accepted = Objects.toString(request.getHeader("accept"), "").split(",");
         for (String accept : accepted) {
             mimeTypes.add(toMediaType(accept));
         }

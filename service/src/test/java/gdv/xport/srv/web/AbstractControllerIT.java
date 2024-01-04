@@ -19,17 +19,22 @@ package gdv.xport.srv.web;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import patterntesting.runtime.log.LogWatch;
 
 import java.net.URI;
 import java.util.Arrays;
-import java.util.Collections;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * In AbstractControllerIT sind einige Gemeinsamkeiter der verschiedenen
@@ -37,15 +42,19 @@ import java.util.Collections;
  *
  * @author <a href="ob@aosd.de">oliver</a>
  */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest
+@AutoConfigureMockMvc
 public abstract class AbstractControllerIT {
 
     private static final Logger LOG = LogManager.getLogger(AbstractControllerIT.class);
 
-    @LocalServerPort
+    @Autowired
+    protected MockMvc mockMvc;
+
+    //@LocalServerPort
     private int port;
 
-    @Autowired
+    //@Autowired
     protected TestRestTemplate template;
 
     protected URI baseURI;
@@ -53,9 +62,14 @@ public abstract class AbstractControllerIT {
     /**
      * REST-URI aufsetzen.
      */
-    @Before
+    @BeforeEach
     public void setUp() {
         this.baseURI = URI.create("http://localhost:" + port);
+    }
+
+    @Test
+    void testSetUp() {
+        assertNotNull(mockMvc);
     }
 
     /**
@@ -71,34 +85,37 @@ public abstract class AbstractControllerIT {
         return exchangeResponseEntity(HttpMethod.GET, path, null, type, mediaTypes);
     }
 
-    /**
-     * Baut die URL zusammen und ruft den Service als POST-Request auf.
-     *
-     * @param <T>        Typ-Parameter
-     * @param path       Context-Pfad der URL
-     * @param text       Text
-     * @param type       Typ der erwarteten Antwort
-     * @param mediaTypes Content-Types
-     * @return Antwort des abgesendeten Requests
-     */
-    protected <T> T postResponseObjectFor(String path, T text, Class<T> type, MediaType... mediaTypes) {
-        ResponseEntity<T> response = exchangeResponseEntity(HttpMethod.POST, path, text, type, mediaTypes);
-        return response.getBody();
+    protected String getResponseStringFor(String path, MediaType... mediaTypes) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(path)
+                        .headers(createHeaders(mediaTypes)))
+                .andReturn();
+        return mvcResult.getResponse().getContentAsString();
+    }
+
+    protected String postResponseStringFor(String path, String text, MediaType... mediaTypes) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(path)
+                        .content(text)
+                        .headers(createHeaders(mediaTypes)))
+                .andReturn();
+        return mvcResult.getResponse().getContentAsString();
     }
 
     private <T> ResponseEntity<T> exchangeResponseEntity(HttpMethod method, String path, T text, Class<T> type, MediaType[] mediaTypes) {
         LogWatch watch = new LogWatch();
         LOG.info("Requesting {}{}...", baseURI, path);
-        HttpHeaders headers = new HttpHeaders();
-        if (mediaTypes.length > 0) {
-            headers.setAccept(Arrays.asList(mediaTypes));
-        } else {
-            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        }
+        HttpHeaders headers = createHeaders(mediaTypes);
         ResponseEntity<T> response =
                 template.exchange(baseURI.toString() + path, method, new HttpEntity<>(text, headers), type);
         LOG.info("{}} {}{} finished with {} after {}.", method, baseURI, path, response.getStatusCode(), watch);
         return response;
+    }
+
+    private static HttpHeaders createHeaders(MediaType[] mediaTypes) {
+        HttpHeaders headers = new HttpHeaders();
+        if (mediaTypes.length > 0) {
+            headers.setAccept(Arrays.asList(mediaTypes));
+        }
+        return headers;
     }
 
 }

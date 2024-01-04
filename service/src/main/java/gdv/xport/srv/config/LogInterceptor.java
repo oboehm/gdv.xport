@@ -22,8 +22,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.Enumeration;
 import java.util.Map;
 
@@ -96,7 +96,7 @@ public final class LogInterceptor implements HandlerInterceptor {
     private static String getRequestURIwithParams(HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         if ("/error".equals(requestURI)) {
-            Object errorRequestURI = request.getAttribute("javax.servlet.error.request_uri");
+            Object errorRequestURI = request.getAttribute("jakarta.servlet.error.request_uri");
             if (errorRequestURI != null) {
                 LOG.debug("Request '{}' is mapped to '{}'.", requestURI, errorRequestURI);
                 requestURI = errorRequestURI.toString();

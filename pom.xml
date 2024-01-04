@@ -40,7 +40,7 @@
   <properties>
 
     <patterntesting.version>2.3.0</patterntesting.version>
-    <spring-boot.version>2.7.18</spring-boot.version>
+    <spring-boot.version>3.0.13</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>8</java.version>
     <maven.compiler.source>8</maven.compiler.source>
@@ -506,19 +506,15 @@
       <!-- Import dependency management from Spring Boot -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
+        <artifactId>spring-boot-starter-parent</artifactId>
         <version>${spring-boot.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
-      <!-- for REST API Doc -->
       <dependency>
         <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi</artifactId>
-        <version>1.7.0</version>
-        <type>pom</type>
-        <scope>import</scope>
+        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        <version>2.0.4</version>
       </dependency>
 
       <!-- Thymeleaf + WebJars (see https://igorski.co/java/spring-boot/layout-dialect-spring-boot-2/) -->
@@ -534,7 +530,7 @@
       </dependency>
       <dependency>
         <groupId>org.thymeleaf</groupId>
-        <artifactId>thymeleaf-spring5</artifactId>
+        <artifactId>thymeleaf-spring6</artifactId>
         <version>3.1.2.RELEASE</version>
       </dependency>
       <dependency>

@@ -25,17 +25,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.http.*;
+import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 
 import java.io.IOException;
 import java.io.StringWriter;
-import java.net.URI;
 
 import static gdv.xport.srv.config.AppConfig.TEXT_CSV;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -44,42 +40,16 @@ import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.StringContains.containsString;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+;
 
 /**
  * Integrationstests fuer den {@link DatenpaketController}.
  *
  * @author <a href="ob@aosd.de">oliver</a>
  */
-@RunWith(SpringRunner.class)
-public final class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-DatenpaketControllerIT extends AbstractControllerIT {
+public final class DatenpaketControllerIT extends AbstractControllerIT {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketControllerIT.class);
 
@@ -92,24 +62,26 @@ DatenpaketControllerIT extends AbstractControllerIT {
      *     <li>die verwendete URI ist nicht (mehr) erreichbar,</li>
      *     <li>Programmierfehler.</li>
      * </ul>
+     *
+     * @throws Exception im Fehlerfall
      */
     @Test
-    public void testValidateURI() {
-        ResponseEntity<String> response = getResponseEntityFor(
+    public void testValidateURI() throws Exception {
+        String response = getResponseStringFor(
                 "/api/v1/Abweichungen?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
-                String.class, MediaType.APPLICATION_JSON);
-        MatcherAssert.assertThat(response.getBody(), equalTo("[]"));
+                MediaType.APPLICATION_JSON);
+        MatcherAssert.assertThat(response, equalTo("[]"));
     }
 
     /**
      * Hier testen wir ein leeres Dummy-Datenpaket, bei dem die VU-Nummer nicht
      * gesetzt ist. Dies sollte zu einem Validierungs-Fehler fuehren.
      *
-     * @throws IOException the io exception
+     * @throws Exception im Fehlerfall
      */
     @Test
-    public void testValidatePost() throws IOException {
-        String response = callRestWithDummyDatenpaket("/api/v1/Abweichungen");
+    public void testValidatePost() throws Exception {
+        String response = callRestWithDummyDatenpaket("/api/v1/Abweichungen", MediaType.APPLICATION_JSON);
         MatcherAssert.assertThat(response, containsString("VU-Nummer is not set"));
     }
 
@@ -117,10 +89,10 @@ DatenpaketControllerIT extends AbstractControllerIT {
      * Hier schicken wir ein leeres Dummy-Paket und erwarten als Antwort das
      * Datenpaket wieder zurueck.
      *
-     * @throws IOException the io exception
+     * @throws Exception im Fehlerfall
      */
     @Test
-    public void testFormat() throws IOException {
+    public void testFormat() throws Exception {
         String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket");
         MatcherAssert.assertThat(response, not(emptyString()));
     }
@@ -128,16 +100,16 @@ DatenpaketControllerIT extends AbstractControllerIT {
     /**
      * Hier testen wir die HTML-Formatierung.
      *
-     * @throws IOException the io exception
+     * @throws Exception im Fehlerfall
      */
     @Test
-    public void testDatenpaketAsHtml() throws IOException {
+    public void testDatenpaketAsHtml() throws Exception {
         String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket.html", MediaType.TEXT_HTML);
         MatcherAssert.assertThat(response, containsString("<html"));
     }
 
     @Test
-    public void testDatenpaketV2() throws IOException {
+    public void testDatenpaketV2() throws Exception {
         String response = callRestWithDummyDatenpaket("/api/v2/Datenpaket", MediaType.TEXT_HTML);
         MatcherAssert.assertThat(response, containsString("<html"));
     }
@@ -150,21 +122,24 @@ DatenpaketControllerIT extends AbstractControllerIT {
      *     <li>die verwendete URI ist nicht (mehr) erreichbar,</li>
      *     <li>Programmierfehler.</li>
      * </ul>
+     *
+     * @throws Exception im Fehlerfall
      */
     @Test
-    public void testDatenpaketFromURI() {
-        ResponseEntity<String> response = getResponseEntityFor(
-                "/api/v1/Datenpaket.csv?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
-                String.class);
-        MatcherAssert.assertThat(response.getBody(), containsString(";"));
+    public void testDatenpaketFromURI() throws Exception {
+        String response = getResponseStringFor(
+                "/api/v1/Datenpaket.csv?uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
+        MatcherAssert.assertThat(response, containsString(";"));
     }
 
     /**
      * Hier testen wir, ob die Fehlermeldung im bevorzugten Format (JSON)
      * zurueckgegeben wird.
+     *
+     * @throws Exception im Fehlerfall
      */
     @Test
-    public void testErrorDetailAsJSON() {
+    public void testErrorDetailAsJSON() throws Exception {
         checkMalformedURL("json");
     }
 
@@ -173,26 +148,30 @@ DatenpaketControllerIT extends AbstractControllerIT {
      * eingebunden sein. Falls dies nicht der Fall ist, kommt eine
      * "ClassNotFoundException: com.fasterxml.jackson.dataformat.xml.XmlMapper"
      * oder eine HttpMediaTypeNotAcceptableException.
+     *
+     * @throws Exception im Fehlerfall
      */
     @Test
-    public void testErrorDetailAsXML()  {
+    public void testErrorDetailAsXML() throws Exception {
         checkMalformedURL("xml");
     }
 
     /**
-     * Test, ob ErorDetail auch als HTML geliefert wird
+     * Test, ob ErorDetail auch als HTML geliefert wird.
+     *
+     * @throws Exception im Fehlerfall
      */
     @Test
-    public void testErrorDetailAsHTML() {
+    public void testErrorDetailAsHTML() throws Exception {
         checkMalformedURL("html");
     }
 
-    private void checkMalformedURL(String format) {
-        ResponseEntity<String> response =
-                getResponseEntityFor("/api/v1/Datenpaket." + format + "?uri=xxx:gibts.net", String.class);
-        assertNotNull(response.getBody());
-        MatcherAssert.assertThat(response.getBody().toLowerCase(), containsString("bad"));
-        MatcherAssert.assertThat(response.getBody(), not(containsString("500")));
+    private void checkMalformedURL(String format) throws Exception {
+        String response =
+                getResponseStringFor("/api/v1/Datenpaket." + format + "?uri=xxx:gibts.net");
+        assertNotNull(response);
+        MatcherAssert.assertThat(response.toLowerCase(), containsString("bad"));
+        MatcherAssert.assertThat(response, not(containsString("500")));
     }
 
     /**
@@ -218,10 +197,10 @@ DatenpaketControllerIT extends AbstractControllerIT {
      * Mit der Endung ".txt" soll der Restservice ein Datenpaket in Textform
      * zurueckliefern.
      *
-     * @throws IOException sollte nicht passieren
+     * @throws Exception im Fehlerfall
      */
     @Test
-    public void testGetDatenpaketAsText() throws IOException {
+    public void testGetDatenpaketAsText() throws Exception {
         checkGetDatenpaketAs(".txt");
     }
 
@@ -229,10 +208,10 @@ DatenpaketControllerIT extends AbstractControllerIT {
      * Mit der Endung ".xml" soll der Restservice ein Datenpaket als XML
      * zurueckliefern.
      *
-     * @throws IOException sollte nicht passieren
+     * @throws Exception im Fehlerfall
      */
     @Test
-    public void testGetDatenpaketAsXML() throws IOException {
+    public void testGetDatenpaketAsXML() throws Exception {
         String response = checkGetDatenpaketAs(".xml");
         MatcherAssert.assertThat(response, containsString("<"));
     }
@@ -241,25 +220,26 @@ DatenpaketControllerIT extends AbstractControllerIT {
      * Mit der Endung ".csv" soll der Restservice ein Datenpaket als CSV
      * zurueckliefern.
      *
-     * @throws IOException sollte nicht passieren
+     * @throws Exception sollte nicht passieren
      */
     @Test
-    public void testGetDatenpaketAsCSV() throws IOException {
+    public void testGetDatenpaketAsCSV() throws Exception {
         String response = checkGetDatenpaketAs(".csv");
         MatcherAssert.assertThat(response, containsString(";"));
     }
 
-    private String checkGetDatenpaketAs(String suffix) throws IOException {
+    private String checkGetDatenpaketAs(String suffix) throws Exception {
         String response = callRestWithDummyDatenpaket("/api/v1/Datenpaket" + suffix);
         MatcherAssert.assertThat(response, not(emptyString()));
         MatcherAssert.assertThat(response, not(containsString("error")));
         return response;
     }
 
-    private String callRestWithDummyDatenpaket(String path, MediaType... mediaTypes) throws IOException {
+    private String callRestWithDummyDatenpaket(String path, MediaType... mediaTypes) throws Exception {
         String text = createDummyDatenpaketText();
         mediaTypes = addMediaTypeFor(path, mediaTypes);
-        String response = postResponseObjectFor(path, text, String.class, mediaTypes);
+        //String response = postResponseObjectFor(path, text, String.class, mediaTypes);
+        String response = postResponseStringFor(path, text, mediaTypes);
         LOG.info("Response of '{}' is '{}'.", path, response);
         MatcherAssert.assertThat(response, not(containsString("Internal Server Error")));
         MatcherAssert.assertThat(response, notNullValue());
@@ -290,36 +270,26 @@ DatenpaketControllerIT extends AbstractControllerIT {
 
     /**
      * Hier setzen wir nur den Accept-Header auf XML, um die Funktionsweise
-     * der Content-Negotiation zu testen. Das Beispiel mit dem Aufsetzen des
-     * Headers stammt aus dem Buch "Spring im Einsatz" (S. 326).
+     * der Content-Negotiation zu testen.
      *
-     * @throws IOException sollte nicht passieren
+     * @throws Exception sollte nicht passieren
      */
     @Test
-    public void testContentNegotiation() throws IOException {
-        HttpEntity<Object> requestEntity = createPostRequestWithAcceptHeader();
-        URI uri = URI.create(baseURI.toString() + "/api/v1/Datenpaket");
-        ResponseEntity<String> response = template.exchange(uri, HttpMethod.POST, requestEntity, String.class);
-        MatcherAssert.assertThat(response.getBody(), containsString("<"));
-    }
-
-    private static HttpEntity<Object> createPostRequestWithAcceptHeader() throws IOException {
-        String text = createDummyDatenpaketText();
-        MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        headers.add("Accept", MediaType.TEXT_XML_VALUE);
-        return new HttpEntity<>(text, headers);
+    public void testContentNegotiation() throws Exception {
+        String response = postResponseStringFor("/api/v1/Datenpaket", createDummyDatenpaketText(), MediaType.TEXT_XML);
+        MatcherAssert.assertThat(response, containsString("<"));
     }
 
     /**
      * Dies ist der Testfall fuer Issue 48.
+     *
+     * @throws Exception im Fehlerfall
      */
     @Test
-    public void testFormatArgument() {
-        ResponseEntity<String> response = getResponseEntityFor(
-                "/api/v1/Datenpaket*?format=JSON&uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt",
-                String.class);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        String json = response.getBody().trim();
+    public void testFormatArgument() throws Exception {
+        String response = getResponseStringFor(
+                "/api/v1/Datenpaket*?format=JSON&uri=http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt");
+        String json = response.trim();
         MatcherAssert.assertThat(json, startsWith("{"));
     }
 

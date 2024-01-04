@@ -17,15 +17,16 @@
  */
 package gdv.xport.srv.web;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import gdv.xport.srv.web.util.*;
-import org.apache.logging.log4j.*;
-import org.springframework.http.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import gdv.xport.srv.web.util.LocalDateTimeDeserializer;
+import gdv.xport.srv.web.util.LocalDateTimeSerializer;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 
-import javax.servlet.http.*;
-import java.io.*;
-import java.net.*;
-import java.time.*;
+import java.io.Serializable;
+import java.net.URI;
+import java.time.LocalDateTime;
 
 /**
  * Klasse ErrorDetail enthaelt Angaben zum Fehler und aufgetretener Exception.
