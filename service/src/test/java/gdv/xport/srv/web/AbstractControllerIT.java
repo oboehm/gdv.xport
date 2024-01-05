@@ -17,21 +17,16 @@
  */
 package gdv.xport.srv.web;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.*;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import patterntesting.runtime.log.LogWatch;
 
-import java.net.URI;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -46,26 +41,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @AutoConfigureMockMvc
 public abstract class AbstractControllerIT {
 
-    private static final Logger LOG = LogManager.getLogger(AbstractControllerIT.class);
-
     @Autowired
     protected MockMvc mockMvc;
-
-    //@LocalServerPort
-    private int port;
-
-    //@Autowired
-    protected TestRestTemplate template;
-
-    protected URI baseURI;
-
-    /**
-     * REST-URI aufsetzen.
-     */
-    @BeforeEach
-    public void setUp() {
-        this.baseURI = URI.create("http://localhost:" + port);
-    }
 
     @Test
     void testSetUp() {
@@ -92,16 +69,6 @@ public abstract class AbstractControllerIT {
                         .headers(createHeaders(mediaTypes)))
                 .andReturn();
         return mvcResult.getResponse().getContentAsString();
-    }
-
-    private <T> ResponseEntity<T> exchangeResponseEntity(HttpMethod method, String path, T text, Class<T> type, MediaType[] mediaTypes) {
-        LogWatch watch = new LogWatch();
-        LOG.info("Requesting {}{}...", baseURI, path);
-        HttpHeaders headers = createHeaders(mediaTypes);
-        ResponseEntity<T> response =
-                template.exchange(baseURI.toString() + path, method, new HttpEntity<>(text, headers), type);
-        LOG.info("{}} {}{} finished with {} after {}.", method, baseURI, path, response.getStatusCode(), watch);
-        return response;
     }
 
     private static HttpHeaders createHeaders(MediaType[] mediaTypes) {
