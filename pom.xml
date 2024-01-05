@@ -40,7 +40,7 @@
   <properties>
 
     <patterntesting.version>2.3.0</patterntesting.version>
-    <spring-boot.version>3.1.7</spring-boot.version>
+    <spring-boot.version>3.2.1</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>8</java.version>
     <maven.compiler.source>8</maven.compiler.source>
@@ -514,14 +514,14 @@
       <dependency>
         <groupId>org.springdoc</groupId>
         <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-        <version>2.0.4</version>
+        <version>2.3.0</version>
       </dependency>
 
       <!-- Thymeleaf + WebJars (see https://igorski.co/java/spring-boot/layout-dialect-spring-boot-2/) -->
       <dependency>
         <groupId>nz.net.ultraq.thymeleaf</groupId>
         <artifactId>thymeleaf-layout-dialect</artifactId>
-        <version>3.2.0</version>
+        <version>3.3.0</version>
       </dependency>
       <dependency>
         <groupId>org.thymeleaf</groupId>
@@ -536,12 +536,12 @@
       <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>bootstrap</artifactId>
-        <version>4.6.0</version>
+        <version>5.3.2</version>
       </dependency>
       <dependency>
         <groupId>org.webjars</groupId>
         <artifactId>jquery</artifactId>
-        <version>3.6.0</version>
+        <version>3.7.1</version>
       </dependency>
 
       <!-- Object Validation Framework (OVal) -->
