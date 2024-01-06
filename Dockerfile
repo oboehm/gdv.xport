@@ -1,5 +1,5 @@
 # Packaging the gdv-xport-service.war
-FROM maven:3.6.3-openjdk-11-slim AS build-env
+FROM maven:3.6.3-openjdk-17-slim AS build-env
 COPY . .
 RUN mvn -DskipTests package
 
