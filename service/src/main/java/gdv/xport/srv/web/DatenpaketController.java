@@ -23,6 +23,7 @@ import gdv.xport.srv.service.DatenpaketService;
 import gdv.xport.util.URLReader;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -39,7 +40,6 @@ import org.springframework.web.multipart.MultipartFile;
 import patterntesting.runtime.log.LogWatch;
 import patterntesting.runtime.util.Converter;
 
-import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -93,7 +93,7 @@ public final class DatenpaketController {
     @PostMapping("/v1/Abweichungen")
     public @ResponseBody
     List<Model> validate(
-            @Parameter(description = "Datenpaket im GDV-Format (alternativ als Parameter)") @RequestParam(required = false) String text,
+            @Parameter(description = "Datenpaket im GDV-Format (alternativ als Parameter)") @RequestParam(value = "text", required = false) String text,
             HttpServletRequest request) throws IOException {
         String body = IOUtils.toString(request.getInputStream(), StandardCharsets.ISO_8859_1);
         String content = (StringUtils.isBlank(text)) ? body : text;
@@ -111,7 +111,7 @@ public final class DatenpaketController {
     @Operation(summary = "validiert den eingegebenen Text im GDV-Format und gibt die gefundenen Abweichungen zurueck")
     @PostMapping("/v1/Abweichungen/form")
     public List<Model> validate(
-            @Parameter(description = "Eingabe-Formular mit Text im GDV-Format") @RequestParam MultiValueMap map) {
+            @Parameter(description = "Eingabe-Formular mit Text im GDV-Format") @RequestParam("map") MultiValueMap map) {
         String content = Objects.toString(map.getFirst("text"), "");
         return validate(content);
     }
@@ -167,7 +167,7 @@ public final class DatenpaketController {
                     example = "http://www.gdv-online.de/vuvm/musterdatei_bestand/musterdatei_041222.txt") @RequestParam("uri") URI uri,
             @Parameter(description = "Ausgabe-Format (HTML, XML, JSON, CSV oder TEXT);" +
                     " normalerweise wird das Format ueber den Accept-Header vorgegeben, kann aber hierueber explizit gesetzt werden.",
-                    example = "JSON") @RequestParam(required = false) String format,
+                    example = "JSON") @RequestParam(value = "format", required = false) String format,
             HttpServletRequest request) throws IOException {
         String content = readFrom(uri);
         return getDatenpaketResponseEntity(format, content, request);
@@ -190,7 +190,7 @@ public final class DatenpaketController {
         return service.importDatenpaket(content);
     }
 
-    private static String readFrom(@RequestParam("uri") URI uri) throws IOException {
+    private static String readFrom(URI uri) throws IOException {
         LogWatch watch = new LogWatch();
         LOG.info("Reading Datenpakete from {}...", uri);
         URLReader urlReader = new URLReader(uri.toURL());
@@ -284,12 +284,12 @@ public final class DatenpaketController {
     @Operation(summary = "dient zum Laden und Anzeigen einer Datei im GDV-Format")
     @PostMapping("/v1/Datenpaket/uploaded")
     public @ResponseBody Datenpaket uploadDatenpaket (
-            @RequestParam("file") MultipartFile file) throws IOException {
+            @RequestParam MultipartFile file) throws IOException {
         String text = readFrom(file);
         return importDatenpaketFrom(text);
     }
 
-    private String readFrom(@RequestParam("file") MultipartFile file) throws IOException {
+    private String readFrom(MultipartFile file) throws IOException {
         LogWatch watch = new LogWatch();
         LOG.info("Reading Datenpakete from {}...", file);
         String text = new String(file.getBytes());

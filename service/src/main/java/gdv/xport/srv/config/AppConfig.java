@@ -68,10 +68,10 @@ public class AppConfig implements WebMvcConfigurer {
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        // see https://github.com/springdoc/springdoc-openapi/issues/624
+        // see https://github.com/springdoc/springdoc-openapi/issues/2143
         converters.add(new StringHttpMessageConverter());
-        converters.add(new MappingJackson2HttpMessageConverter());
         converters.add(new ByteArrayHttpMessageConverter());
+        converters.add(new MappingJackson2HttpMessageConverter());
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_HTML));
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_XML, MediaType.APPLICATION_XML));
         converters.add(new DatenpaketHttpMessageConverter(MediaType.TEXT_PLAIN));
