@@ -11,11 +11,6 @@
 |https://github.com/oboehm/gdv.xport/actions/workflows/maven.yml[image:https://github.com/oboehm/gdv.xport/actions/workflows/maven.yml/badge.svg[Build Status]]
 |s. link:../.github/workflows/maven.yml[maven.yml]
 
-|https://sonarcloud.io/projects[sonarcloud.io]
-|https://sonarcloud.io/dashboard?id=com.github.oboehm%3Agdv-xport%3Amaster[image:https://sonarcloud.io/api/project_badges/measure?metric=alert_status&project=com.github.oboehm:gdv-xport[Quality Gate]]
-|https://sonarcloud.io/dashboard?id=com.github.oboehm%3Agdv-xport[image:https://sonarcloud.io/api/project_badges/measure?metric=alert_status&project=com.github.oboehm:gdv-xport[Quality Gate]]
-|`sonar:sonar`
-
 |https://coveralls.io/github/oboehm/gdv.xport[CoverAlls.io]
 |https://coveralls.io/github/oboehm/gdv.xport?branch=master[image:https://coveralls.io/repos/github/oboehm/gdv.xport/badge.svg?branch=master[Coverage Status]]
 |https://coveralls.io/github/oboehm/gdv.xport?branch=develop%2F4.x[image:https://coveralls.io/repos/github/oboehm/gdv.xport/badge.svg?branch=develop%2F4.x[Coverage Status]]
@@ -34,7 +29,7 @@ Der CI-Build (CI: Continuous Integration) läuft nach einem Commit und einem Pus
 
 Voraussetzung für den manuellen Bau der Anwendung sind:
 
-* Java 8
+* Java 17
 * http://maven.apache.org/[Maven], mindestens in Version 3.6
 
 Sind diese Voraussetzungen gegeben, kann die WAR-Datei für den Start als Web-Anwendung über folgendes Kommando gebaut werden:
