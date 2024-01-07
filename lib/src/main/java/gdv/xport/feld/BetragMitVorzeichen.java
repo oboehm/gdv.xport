@@ -39,7 +39,6 @@ import java.text.NumberFormat;
 public final class BetragMitVorzeichen extends Betrag {
 
     private static final Logger LOG = LogManager.getLogger();
-    private static final Validator DEFAULT_VALIDATOR = new Validator(Config.getInstance());
 
     /**
      * Instantiiert einen neuen BetragMitVorzeichen.
@@ -48,12 +47,52 @@ public final class BetragMitVorzeichen extends Betrag {
      * @param length das Vorzeichen muss dabei mitgezaehlt werden
      * @param start Start-Byte (beginnend bei 1)
      * @since 1.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public BetragMitVorzeichen(final Bezeichner name, final int length, final int start) {
         this(name, length, start, Config.getInstance());
     }
 
+    /**
+     * Instantiiert einen neuen BetragMitVorzeichen.
+     *
+     * @param name Bezeichner
+     * @param length das Vorzeichen muss dabei mitgezaehlt werden
+     * @param start Start-Adresse
+     * @since 7.0 (07-Jan-2024)
+     */
+    public BetragMitVorzeichen(final Bezeichner name, final int length, final ByteAdresse start) {
+        this(name, length, start, Config.getInstance());
+    }
+
+    /**
+     * Instantiiert einen neuen BetragMitVorzeichen.
+     *
+     * @param name   Bezeichner
+     * @param length Laenge
+     * @param start  Byte-Adresse
+     * @param config Konfiguration
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
+     */
+    @Deprecated
     public BetragMitVorzeichen(final Bezeichner name, final int length, final int start, Config config) {
+        super(name, start, StringUtils.repeat('0', length-1) + "+", config);
+        this.setVorzeichen('+');
+    }
+
+    /**
+     * Instantiiert einen neuen BetragMitVorzeichen.
+     *
+     * @param name   Bezeichner
+     * @param length Laenge
+     * @param start  Byte-Adresse
+     * @param config Konfiguration
+     * @since 7.0 (07-Jan-2024)
+     */
+    public BetragMitVorzeichen(final Bezeichner name, final int length, final ByteAdresse start, Config config) {
         super(name, start, StringUtils.repeat('0', length-1) + "+", config);
         this.setVorzeichen('+');
     }
@@ -133,14 +172,6 @@ public final class BetragMitVorzeichen extends Betrag {
         int n = getNachkommastellen();
         setInhalt(x.setScale(n, RoundingMode.HALF_UP).doubleValue());
     }
-
-//    /* (non-Javadoc)
-//     * @see gdv.xport.feld.Betrag#setInhalt(int)
-//     */
-//    @Override
-//    public void setInhalt(final int n) {
-//        this.setInhalt((long) n);
-//    }
 
     /* (non-Javadoc)
      * @see gdv.xport.feld.NumFeld#setInhalt(long)

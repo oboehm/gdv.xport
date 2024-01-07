@@ -32,8 +32,22 @@ public final class Undefiniert extends Feld {
      *
      * @param length Byte-Laenge
      * @param start Start-Adresse
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Undefiniert(final int length, final int start) {
+        super(Bezeichner.of("undefiniert"), length, start, Align.LEFT);
+    }
+
+    /**
+     * Dies ist der einzige Konstruktor.
+     *
+     * @param length Byte-Laenge
+     * @param start Start-Adresse
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Undefiniert(final int length, final ByteAdresse start) {
         super(Bezeichner.of("undefiniert"), length, start, Align.LEFT);
     }
 

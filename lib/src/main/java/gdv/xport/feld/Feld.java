@@ -209,20 +209,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     }
 
     /**
-     * Legt ein neues Feld an.
-     *
-     * @param name      Name
-     * @param length    Laenge
-     * @param start     Start-Adresse
-     * @param c         Inhalt
-     * @param alignment Ausrichtung
-     */
-    public Feld(final String name, final int length, final ByteAdresse start, final char c, final Align alignment) {
-        this(Bezeichner.of(name), length, start, alignment);
-        this.setInhalt(c);
-    }
-
-    /**
      * Instantiates a new feld.
      *
      * @param name
@@ -235,26 +221,11 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *            the s
      * @param alignment
      *            the alignment
-     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     * @deprecated durch entsprechenden Constructor mit Bezeichner und ByteAdresse ersetzt
      *             (TODO: wird mit v8 entsorgt)
      */
     @Deprecated
     public Feld(final String name, final int length, final int start, final String s, final Align alignment) {
-        this(Bezeichner.of(name), length, start, alignment);
-        this.setInhalt(s);
-    }
-
-    /**
-     * Legt ein neues Feld an.
-     *
-     * @param name      Name
-     * @param length    Laenge
-     * @param start     Start-Adresse
-     * @param s         Inhalt
-     * @param alignment Ausrichtung
-     * @since 7.0 (07-Jan-2024)
-     */
-    public Feld(final String name, final int length, final ByteAdresse start, final String s, final Align alignment) {
         this(Bezeichner.of(name), length, start, alignment);
         this.setInhalt(s);
     }
@@ -268,23 +239,11 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *            the start
      * @param c
      *            the c
-     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     * @deprecated durch entsprechenden Constructor mit Bezeichner und ByteAdresse ersetzt
      *             (TODO: wird mit v8 entsorgt)
      */
     @Deprecated
     public Feld(final String name, final int start, final char c) {
-        this(name, 1, start, c, Align.LEFT);
-    }
-
-    /**
-     * Legt ein neues Feld an.
-     *
-     * @param name      Name
-     * @param start     Start-Adresse
-     * @param c         Inhalt
-     * @since 7.0 (07-Jan-2024)
-     */
-    public Feld(final String name, final ByteAdresse start, final char c) {
         this(name, 1, start, c, Align.LEFT);
     }
 

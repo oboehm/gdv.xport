@@ -69,8 +69,22 @@ public final class Datum extends NumFeld {
      * @param bezeichner Bezeichner
      * @param start the start
      * @since 2.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Datum(final Bezeichner bezeichner, final int start) {
+        this(bezeichner, 8, start);
+    }
+
+    /**
+     * Erstellt ein neues Datum.
+     *
+     * @param bezeichner Bezeichner
+     * @param start the start
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Datum(final Bezeichner bezeichner, final ByteAdresse start) {
         this(bezeichner, 8, start);
     }
 
@@ -79,7 +93,10 @@ public final class Datum extends NumFeld {
      *
      * @param name the name
      * @param start the start
+     * @deprecated durch entsprechenden Constructor mit Bezeichner und ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Datum(final String name, final int start) {
         this(Bezeichner.of(name), 8, start);
     }
@@ -89,7 +106,10 @@ public final class Datum extends NumFeld {
      *
      * @param name the name
      * @param inhalt Datum der Form "ddmmjjjj" oder "ddjjjj" oder "dd"
+     * @deprecated durch entsprechenden Constructor mit Bezeichner ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Datum(final String name, final String inhalt) {
         this(name, inhalt.length(), 1, inhalt);
     }
@@ -100,8 +120,24 @@ public final class Datum extends NumFeld {
      * @param bezeichner Bezeichner
      * @param length Anzahl Bytes
      * @param start Byte-Adresse
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Datum(Bezeichner bezeichner, int length, int start) {
+        super(bezeichner, length, start);
+        dateFormat = getDateFormat(length);
+    }
+
+    /**
+     * Legt ein neues Datum an.
+     *
+     * @param bezeichner Bezeichner
+     * @param length Anzahl Bytes
+     * @param start Byte-Adresse
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Datum(Bezeichner bezeichner, int length, ByteAdresse start) {
         super(bezeichner, length, start);
         dateFormat = getDateFormat(length);
     }
@@ -113,9 +149,26 @@ public final class Datum extends NumFeld {
      * @param length the length
      * @param start the start
      * @param inhalt Datum der Form "ddmmjjjj" oder "ddjjjj" oder "dd"
+     * @deprecated durch entsprechenden Constructor mit Bezeichner und ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Datum(final String name, final int length, final int start, final String inhalt) {
         this(Bezeichner.of(name), length, start);
+        this.setInhalt(inhalt);
+    }
+
+    /**
+     * Legt ein neues Datum an.
+     *
+     * @param name   Bezeichner
+     * @param length Laenge
+     * @param start  Start-Adresse
+     * @param inhalt Datum der Form "ddmmjjjj" oder "ddjjjj" oder "dd"
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Datum(final Bezeichner name, final int length, final ByteAdresse start, final String inhalt) {
+        this(name, length, start);
         this.setInhalt(inhalt);
     }
 

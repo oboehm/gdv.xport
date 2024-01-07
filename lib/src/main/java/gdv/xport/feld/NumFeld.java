@@ -50,7 +50,10 @@ public class NumFeld extends Feld {
     /**
      * @param name Feld-Bezeichner (z.B. "Anzahl Saetze")
      * @param s z.B. "4"
+     * @deprecated bitte anderen Constructor verwenden
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public NumFeld(final String name, final String s) {
         this(Bezeichner.of(name), s.length(), 1, 0, Config.getInstance());
         this.setInhalt(s);
@@ -63,8 +66,23 @@ public class NumFeld extends Feld {
      * @param length Anzahl Bytes
      * @param start Start-Byte (beginnend bei 1)
      * @since 1.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public NumFeld(Bezeichner bezeichner, int length, int start) {
+        this(bezeichner, length, start, 0, Config.getInstance());
+    }
+
+    /**
+     * Legt ein neues numerisches Feld an.
+     *
+     * @param bezeichner Feld-Bezeichner (z.B. "Anzahl Saetze")
+     * @param length Anzahl Bytes
+     * @param start Start-Adresse
+     * @since 7.0 (07-Jan-2024)
+     */
+    public NumFeld(Bezeichner bezeichner, int length, ByteAdresse start) {
         this(bezeichner, length, start, 0, Config.getInstance());
     }
 
@@ -76,8 +94,25 @@ public class NumFeld extends Feld {
      * @param start Start-Byte (beginnend bei 1)
      * @param value z.B. "01"
      * @since 1.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public NumFeld(final Bezeichner bezeichner, final int length, final int start, final int value) {
+        this(bezeichner, length, start);
+        this.setInhalt(value);
+    }
+
+    /**
+     * Legt ein neues numerisches Feld an.
+     *
+     * @param bezeichner Feld-Bezeichner (z.B. "Anzahl Saetze")
+     * @param length Anzahl Bytes
+     * @param start Start-Byte (beginnend bei 1)
+     * @param value z.B. "01"
+     * @since 7.0 (07-Jan-2024)
+     */
+    public NumFeld(final Bezeichner bezeichner, final int length, final ByteAdresse start, final int value) {
         this(bezeichner, length, start);
         this.setInhalt(value);
     }
@@ -87,7 +122,10 @@ public class NumFeld extends Feld {
      * @param name Feld-Bezeichner (z.B. "Anzahl Saetze")
      * @param start Start-Byte (beginnend bei 1)
      * @param value z.B. "01"
+     * @deprecated durch entsprechenden Constructor mit Bezeichner und ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public NumFeld(final String name, final int start, final String value) {
         this(Bezeichner.of(name), value.length(), start);
         this.setInhalt(value);
@@ -98,7 +136,10 @@ public class NumFeld extends Feld {
      * @param name Feld-Bezeichner (z.B. "pi")
      * @param s der Inhalt (z.B. "314")
      * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
+     * @deprecated durch entsprechenden Constructor mit Bezeichner ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public NumFeld(final String name, final String s, final int nachkommastellen) {
         this(Bezeichner.of(name), s.length(), 1, nachkommastellen, Config.getInstance());
         this.setInhalt(s);
@@ -112,8 +153,25 @@ public class NumFeld extends Feld {
      * @param value der Inhalt (z.B. "314")
      * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
      * @since 4.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public NumFeld(final Bezeichner name, final int start, final String value, final int nachkommastellen) {
+        this(name, value.length(), start, nachkommastellen, Config.getInstance());
+        this.setInhalt(value);
+    }
+
+    /**
+     * Instantiiert ein neues numerisches Feld.
+     *
+     * @param name Feld-Bezeichner (z.B. "pi")
+     * @param start Start-Byte (beginnend ab 1)
+     * @param value der Inhalt (z.B. "314")
+     * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
+     * @since 7.0 (07-Jan-2024)
+     */
+    public NumFeld(final Bezeichner name, final ByteAdresse start, final String value, final int nachkommastellen) {
         this(name, value.length(), start, nachkommastellen, Config.getInstance());
         this.setInhalt(value);
     }
@@ -127,15 +185,42 @@ public class NumFeld extends Feld {
      * @param value der Inhalt (z.B. 314)
      * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
      * @since 1.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public NumFeld(final Bezeichner name, final int length, final int start, final int value,
             final int nachkommastellen) {
         this(name, length, start, nachkommastellen, Config.getInstance());
         this.setInhalt(value);
     }
 
+    /**
+     * Legt ein neues numerisches Feld an.
+     *
+     * @param name Feld-Bezeichner (z.B. "pi")
+     * @param length Gesamtlaenge
+     * @param start Start-Byte (beginnend ab 1)
+     * @param value der Inhalt (z.B. 314)
+     * @param nachkommastellen Anzahl der Nachkommastellen (z.B. 2)
+     * @since 7.0 (07-Jan-2024)
+     */
+    public NumFeld(final Bezeichner name, final int length, final ByteAdresse start, final int value,
+            final int nachkommastellen) {
+        this(name, length, start, nachkommastellen, Config.getInstance());
+        this.setInhalt(value);
+    }
+
+    @Deprecated // TODO: wird mit v8 entsorgt
     protected NumFeld(final Bezeichner name, final int length, final int start,
-                      final int nachkommastellen, final Config config) {
+            final int nachkommastellen, final Config config) {
+        super(name, length, start, Align.RIGHT, config);
+        this.nachkommastellen = nachkommastellen;
+        this.setInhalt(0);
+    }
+
+    protected NumFeld(final Bezeichner name, final int length, final ByteAdresse start,
+            final int nachkommastellen, final Config config) {
         super(name, length, start, Align.RIGHT, config);
         this.nachkommastellen = nachkommastellen;
         this.setInhalt(0);
@@ -205,21 +290,6 @@ public class NumFeld extends Feld {
     public void setInhalt(final char c) {
         this.setInhalt(Character.digit(c, 10));
     }
-
-//    /**
-//     * Setzt den Inhalt mit der uebergebenen Zahl unter Beruecksichtigung
-//     * der Nachkommastellen.
-//     * <p>
-//     * ACHTUNG: Ab 5.1 werden hier die Nachkommastellen beruecksichtigt.
-//     * </p>
-//     *
-//     * @param n neuer Inhalt
-//     * @throws IllegalArgumentException wenn n &lt; 0
-//     */
-//    @Override
-//    public void setInhalt(final int n) {
-//        this.setInhalt((long) n);
-//    }
 
     /**
      * Setzt den Inhalt mit der uebergebenen Zahl unter Beruecksichtigung

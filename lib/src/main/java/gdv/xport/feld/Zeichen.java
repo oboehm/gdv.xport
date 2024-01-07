@@ -44,12 +44,30 @@ public class Zeichen extends AlphaNumFeld {
      * @param bezeichner der Bezeichner
      * @param start die Byte-Adresse
      * @since 1.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Zeichen(final Bezeichner bezeichner, final int start) {
+        this(bezeichner, 1, ByteAdresse.of(start));
+    }
+
+    /**
+     * Instanziiert ein neues Zeichen.
+     *
+     * @param bezeichner der Bezeichner
+     * @param start die Byte-Adresse
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Zeichen(final Bezeichner bezeichner, final ByteAdresse start) {
         this(bezeichner, 1, start);
     }
 
     private Zeichen(Bezeichner bezeichner, int length, int start) {
+        this(bezeichner, length, ByteAdresse.of(start));
+    }
+
+    private Zeichen(Bezeichner bezeichner, int length, ByteAdresse start) {
         super(bezeichner, length, start);
     }
 
@@ -60,8 +78,24 @@ public class Zeichen extends AlphaNumFeld {
      * @param start die Byte-Adresse
      * @param c Zeichen
      * @since 5.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Zeichen(final Bezeichner bezeichner, final int start, final char c) {
+        super(bezeichner, 1, start);
+        super.setInhalt(c);
+    }
+
+    /**
+     * Instanziiert ein neues Zeichen.
+     *
+     * @param bezeichner der Bezeichner
+     * @param start die Byte-Adresse
+     * @param c Zeichen
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Zeichen(final Bezeichner bezeichner, final ByteAdresse start, final char c) {
         super(bezeichner, 1, start);
         super.setInhalt(c);
     }

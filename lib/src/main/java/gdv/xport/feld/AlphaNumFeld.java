@@ -35,7 +35,6 @@ import java.util.List;
 public class AlphaNumFeld extends Feld {
 
     private static final Logger LOG = LogManager.getLogger();
-    private static final Validator DEFAULT_VALIDATOR = new Validator(Config.getInstance());
 
     /**
      * Legt ein neues alphanumerisches Feld an.
@@ -44,8 +43,23 @@ public class AlphaNumFeld extends Feld {
      * @param length Laenge in Bytes
      * @param start Start-Byte (beginnend bei 1)
      * @since 1.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public AlphaNumFeld(final Bezeichner bezeichner, final int length, final int start) {
+        this(bezeichner, length, start, Align.LEFT);
+    }
+
+    /**
+     * Legt ein neues alphanumerisches Feld an.
+     *
+     * @param bezeichner Bezeichner
+     * @param length     Laenge in Bytes
+     * @param start      ByteAdresse
+     * @since 7.0 (07-Jan-2024)
+     */
+    public AlphaNumFeld(final Bezeichner bezeichner, final int length, final ByteAdresse start) {
         this(bezeichner, length, start, Align.LEFT);
     }
 
@@ -57,8 +71,24 @@ public class AlphaNumFeld extends Feld {
      * @param start Start-Byte (beginnend bei 1)
      * @param alignment Ausrichtung
      * @since 1.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public AlphaNumFeld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
+        super(bezeichner, length, start, alignment, Config.getInstance());
+    }
+
+    /**
+     * Legt ein neues alpha-numerisches Feld an.
+     *
+     * @param bezeichner Bezeichner
+     * @param length Laenge in Bytes
+     * @param start ByteAdresse
+     * @param alignment Ausrichtung
+     * @since 7.0 (07-Jan-2024)
+     */
+    public AlphaNumFeld(final Bezeichner bezeichner, final int length, final ByteAdresse start, final Align alignment) {
         super(bezeichner, length, start, alignment, Config.getInstance());
     }
 

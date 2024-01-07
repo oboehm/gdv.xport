@@ -49,6 +49,10 @@ public class VUNummer extends AlphaNumFeld {
     }
 
     private VUNummer(Bezeichner bezeichner, int length, int start) {
+        this(bezeichner, length, ByteAdresse.of(start));
+    }
+
+    private VUNummer(Bezeichner bezeichner, int length, ByteAdresse start) {
         super(bezeichner, length, start);
     }
 

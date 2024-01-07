@@ -38,12 +38,9 @@ public final class ZeichenTest extends AbstractFeldTest {
         return new Zeichen(Bezeichner.ANREDESCHLUESSEL, 43);
     }
 
-    /**
-     * Test-Methode fuer {@link Zeichen#Zeichen(int, char)}.
-     */
     @Test
     public void testZeichen() {
-        Zeichen zeichen = new Zeichen(42, 'c');
+        Zeichen zeichen = new Zeichen(Bezeichner.of("NN"),42, 'c');
         assertEquals(42, zeichen.getByteAdresse());
         assertEquals(42, zeichen.getEndAdresse());
     }

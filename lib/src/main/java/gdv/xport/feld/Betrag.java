@@ -39,8 +39,23 @@ public class Betrag extends NumFeld {
      * @param length Laenge
      * @param start Start-Byte (beginnend bei 1)
      * @since 1.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Betrag(final Bezeichner name, final int length, final int start) {
+        this(name, length, ByteAdresse.of(start), Config.getInstance());
+    }
+
+    /**
+     * Instantiiert einen neuen Betrag.
+     *
+     * @param name Name des Feldes
+     * @param length Laenge
+     * @param start Start-Byte (beginnend bei 1)
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Betrag(final Bezeichner name, final int length, final ByteAdresse start) {
         this(name, length, start, Config.getInstance());
     }
 
@@ -48,11 +63,17 @@ public class Betrag extends NumFeld {
         this(other.getBezeichner(), other.getByteAdresse(), other.getInhalt(), config);
     }
 
-    private Betrag(final Bezeichner name, final int length, final int start, Config config) {
+    private Betrag(final Bezeichner name, final int length, final ByteAdresse start, Config config) {
         super(name, length, start, 2, config);
     }
 
+    @Deprecated // TODO: wird mit v8 entsorgt
     protected Betrag(final Bezeichner name, final int start, final String value, Config config) {
+        this(name, value.length(), ByteAdresse.of(start), config);
+        this.setInhalt(value);
+    }
+
+    protected Betrag(final Bezeichner name, final ByteAdresse start, final String value, Config config) {
         this(name, value.length(), start, config);
         this.setInhalt(value);
     }

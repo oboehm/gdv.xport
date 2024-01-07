@@ -11,17 +11,13 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ## [Unreleased]
 
-### Planned
-
-- Umstellung Feld-Constructor auf ByteAdresse
-
-
 ### Added
 
 - Unterstützung GDV-Version 2023
 
 ### Changed
 
+- Umstellung Feld-Constructor auf ByteAdresse
 - schnellere Validierung
 - technische Namen innerhalb eines Datensatzes sind immer eindeutig (im Gegensatz zur Original-VUVM20xx.xml)
 

@@ -91,8 +91,22 @@ public class Version extends Feld {
      * @param name Name des Feldes
      * @param start Start-Byte (beginnend bei 1)
      * @since 1.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Version(final Bezeichner name, final int start) {
+        super(name, 3, start, Align.LEFT);
+    }
+
+    /**
+     * Legt ein neues Versions-Feld an.
+     *
+     * @param name Name des Feldes
+     * @param start Start-Byte (beginnend bei 1)
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Version(final Bezeichner name, final ByteAdresse start) {
         super(name, 3, start, Align.LEFT);
     }
 
@@ -112,7 +126,10 @@ public class Version extends Feld {
      * @param bezeichner Name des Feldes
      * @param start Start-Byte (beginnend bei 1)
      * @param v Versions-String (z.B. "1.1")
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Version(final Bezeichner bezeichner, final int start, final String v) {
         this(bezeichner.getName(), start, v);
     }
@@ -123,10 +140,27 @@ public class Version extends Feld {
      * @param name Name des Feldes
      * @param start Start-Byte (beginnend bei 1)
      * @param v Versions-String (z.B. "1.1")
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Version(final String name, final int start, final String v) {
         super(name, 3, start, v, Align.LEFT);
         assert v.length() == 3 : "Version hat nicht das Format x.x";
+    }
+
+    /**
+     * Instantiiert ein neues Versions-Objekt.
+     *
+     * @param name Name des Feldes
+     * @param start Start-Byte (beginnend bei 1)
+     * @param v Versions-String (z.B. "1.1")
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Version(final Bezeichner name, final ByteAdresse start, final String v) {
+        super(name, 3, start, Align.LEFT);
+        assert v.length() == 3 : "Version hat nicht das Format x.x";
+        this.setInhalt(v);
     }
 
     public static Version of(SatzTyp satzTyp) {

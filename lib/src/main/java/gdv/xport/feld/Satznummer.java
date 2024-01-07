@@ -46,7 +46,7 @@ public class Satznummer extends Zeichen {
      * Default-Constructor.
      */
     public Satznummer() {
-        this(256);
+        this(ByteAdresse.of(256));
     }
 
     /**
@@ -54,8 +54,22 @@ public class Satznummer extends Zeichen {
      * Constructor.
      *
      * @param start Start-Adresse (z.B. 256)
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Satznummer(int start) {
+        this(new Zeichen(SATZNUMMER, start));
+    }
+
+    /**
+     * Nicht jede Satznummer faengt auf Position 256 an. Daher dieser
+     * Constructor.
+     *
+     * @param start Start-Adresse (z.B. 256)
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Satznummer(ByteAdresse start) {
         this(new Zeichen(SATZNUMMER, start));
     }
 
