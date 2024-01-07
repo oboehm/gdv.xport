@@ -11,7 +11,7 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>pom</packaging>
-  <version>6.6.1-SNAPSHOT</version>
+  <version>7.0.0-SNAPSHOT</version>
   <name>GDV.XPort</name>
 
   <modules>
@@ -98,7 +98,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.4.1</version>
+          <version>3.6.3</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -349,9 +349,10 @@
           <source>${java.version}</source>
           <show>protected</show>
           <links>
-            <link>http://docs.oracle.com/javase/8/docs/api/</link>
+            <link>http://docs.oracle.com/javase/17/docs/api/</link>
             <link>http://www.eclipse.org/aspectj/doc/released/runtime-api</link>
           </links>
+          <failOnError>false</failOnError>
         </configuration>
       </plugin>
 
@@ -756,7 +757,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
+            <version>3.1.0</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>

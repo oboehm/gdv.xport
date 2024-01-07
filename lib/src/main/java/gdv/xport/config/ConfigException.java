@@ -19,6 +19,8 @@
 package gdv.xport.config;
 
 /**
+ * Exception fuer Konfigurationsprobleme.
+ *
  * @author oliver
  * @since 08.10.2009
  */

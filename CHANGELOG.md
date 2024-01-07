@@ -9,7 +9,7 @@ genauso wie an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Patch-Versionen nicht extra aufgeführt, sondern in der Minor-Version.
 
 
-## [Unreleased]
+## [7.0.0] - 2024-01-07
 
 ### Added
 
@@ -17,7 +17,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 
 ### Changed
 
-- Umstellung Feld-Constructor auf ByteAdresse
+- Umstellung Feld-Constructor auf ByteAdresse (alte Constructoren sind damit 'deprecated')
 - schnellere Validierung
 - technische Namen innerhalb eines Datensatzes sind immer eindeutig (im Gegensatz zur Original-VUVM20xx.xml)
 
@@ -33,7 +33,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
 - Downgrade HSQLDB-Treiber auf 2.6.1 wegen Java-8-Kompatibilität
 
 
-## [6.6.0] - 2023-06-13
+## [6.6] - 2023-06-13
 
 ### Changed
 
@@ -51,7 +51,7 @@ Aus Gründen der Übersichtlichkeit sind bei älteren Versionen die einzelnen Pa
   ([Issue #90](https://github.com/oboehm/gdv.xport/issues/90))
 
 
-## [6.5.0] - 2023-02-11
+## [6.5] - 2023-02-11
 
 ### Changed
 
