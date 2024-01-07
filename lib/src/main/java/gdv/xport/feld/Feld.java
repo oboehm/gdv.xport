@@ -601,6 +601,12 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
         return validate(Config.LAX);
     }
 
+    /**
+     * Validiert das Feld mit der angegebenen Konfiguration.
+     *
+     * @param validationConfig Konfiguration
+     * @return Liste mit Validierungsfehler
+     */
     public List<ConstraintViolation> validate(Config validationConfig) {
         List<ConstraintViolation> violations = validateInvariants();
         if (this.getEndAdresse() > 256) {

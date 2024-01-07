@@ -299,10 +299,18 @@ public final class BetragMitVorzeichen extends Betrag {
      */
     public static class Validator extends NumFeld.Validator {
 
+        /**
+         * Default-Constructor.
+         */
         public Validator() {
             super();
         }
 
+        /**
+         * Legt einen Validator mit der angegebenen Konfiguration an.
+         *
+         * @param config Konfiguration
+         */
         public Validator(Config config) {
             super(config);
         }

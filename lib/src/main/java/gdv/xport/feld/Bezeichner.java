@@ -1251,237 +1251,231 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner VERSICHERUNGSSCHUTZ = new Bezeichner("Versicherungsschutz");
     public static final Bezeichner VERSICHERUNGSSUMME_AKTUELL_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme aktuell in W\u00e4hrungseinheiten");
     public static final Bezeichner VERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Versicherungssumme in W\u00e4hrungseinheiten");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_9999 = new Bezeichner("Version Satzart 9999 Nachsatz", "Satzart9999", "Nachsatzsatzart9999");
     public static final Bezeichner VERTRAG_MIT_ZUWACHSGARANTIE = new Bezeichner("Vertrag mit Zuwachsgarantie");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0001 = new Bezeichner("Version Satzart 0001");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0100 = new Bezeichner("Version Satzart 0100");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0200 = new Bezeichner("Version Satzart 0200");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0202_ALLG_ANTRAGSDATEN = SATZART_0202_ALLG_ANTRAGSDATEN;
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_050 = new Bezeichner("Version Satzart 0210.050");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_051 = new Bezeichner("Version Satzart 0220.051");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_052 = new Bezeichner("Version Satzart 0220.052");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_053 = new Bezeichner("Version Satzart 0220.053");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_054 = new Bezeichner("Version Satzart 0220.054");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_059 = new Bezeichner("Version Satzart 0220.059");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_040 = new Bezeichner("Version Satzart 0210.040");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_040 = new Bezeichner("Version Satzart 0220.040");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_030 = new Bezeichner("Version Satzart 0210.030");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_030 = new Bezeichner("Version Satzart 0220.030");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_010 = new Bezeichner("Version Satzart 0210.010");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_010 = new Bezeichner("Version Satzart 0220.010");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_130 = new Bezeichner("Version Satzart 0210.130");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_130 = new Bezeichner("Version Satzart 0220.130");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_110 = new Bezeichner("Version Satzart 0210.110");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_110 = new Bezeichner("Version Satzart 0220.110");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_140 = new Bezeichner("Version Satzart 0210.140");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_140 = new Bezeichner("Version Satzart 0220.140");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_020 = new Bezeichner("Version Satzart 0210.020");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_020 = new Bezeichner("Version Satzart 0220.020");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_070 = new Bezeichner("Version Satzart 0210.070");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_070 = new Bezeichner("Version Satzart 0220.070");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_FEUER = new Bezeichner("Version Satzart 0210 Feuer-Industrie/Gewerbliche Sachversicherung");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_FEUER = new Bezeichner("Version Satzart 0220 Feuer-Industrie/Gewerbliche Sachversicherung");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_510 = new Bezeichner("Version Satzart 0210.510");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_510 = new Bezeichner("Version Satzart 0220.510");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_TRANSPORT = new Bezeichner("Version Satzart 0210 Transport");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_TRANSPORT = new Bezeichner("Version Satzart 0220 Transport");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0250_TRANSPORT = new Bezeichner("Version Satzart 0250 Transport Einzelanmeldung");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0260_TRANSPORT = new Bezeichner("Version Satzart 0260 Transport Umsatzanmeldung");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_NICHT_DEF_SPARTEN = new Bezeichner("Version Satzart 0210 Nicht einzeln definierte Sparten");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_TECH_VERS = new Bezeichner("Version Satzart 0210 Technische Versicherungen");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_NICHT_DEF_SPARTEN = new Bezeichner("Version Satzart 0220 Nicht einzeln definierte Sparten");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_TECH_VERS = new Bezeichner("Version Satzart 0220 Technische Versicherungen");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_KFZ_BAUSTEIN = new Bezeichner("Version KFZ-Baustein");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0300_BETEILIGUNGSINFORMATION = new Bezeichner("Version Satzart 0300 Beteiligungsinformation");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0342_BEGLEITDOK = new Bezeichner("Version Satzart 0342 Begleitdokumente und Signaturen");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0400_INKASSO = new Bezeichner("Version Satzart 0400 Inkasso");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0410_INKASSO = new Bezeichner("Version Satzart 0410 Inkasso");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0430_INKASSO = new Bezeichner("Version Satzart 0430 Inkasso");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0500_SCHADENINFORMATION = new Bezeichner("Version Satzart 0500 Schadeninformation");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0420_VERSICHERUNGSTEUERABRECHNUNG = new Bezeichner("Version Satzart 0420 Versicherungsteuerabrechnung");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0450_INKASSOABRECHNUNG = new Bezeichner("Version Satzart 0450 Inkassoabrechnung");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0550_SCHADENABRECHNUNG = new Bezeichner("Version Satzart 0550 Schadenabrechnung");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0350_KLAUSELN = new Bezeichner("Version Satzart 0350 Klausel");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0211_050 = new Bezeichner("Version Satzart 0211.050");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_051 = new Bezeichner("Version Satzart 0221.051");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_052 = new Bezeichner("Version Satzart 0221.052");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_053 = new Bezeichner("Version Satzart 0221.053");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_054 = new Bezeichner("Version Satzart 0221.054");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_055 = new Bezeichner("Version Satzart 0221.055");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_059 = new Bezeichner("Version Satzart 0221.059");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0211_040 = new Bezeichner("Version Satzart 0211.040");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_040 = new Bezeichner("Version Satzart 0221.040");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_030 = new Bezeichner("Version Satzart 0221.030");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0211_010 = new Bezeichner("Version Satzart 0211.010");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_010 = new Bezeichner("Version Satzart 0221.010");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0211_130 = new Bezeichner("Version Satzart 0211.130");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_130 = new Bezeichner("Version Satzart 0221.130");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0211_110 = new Bezeichner("Version Satzart 0211.110");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_110 = new Bezeichner("Version Satzart 0221.110");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0211_140 = new Bezeichner("Version Satzart 0211.140");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_140 = new Bezeichner("Version Satzart 0221.140");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_070 = new Bezeichner("Version Satzart 0221.070");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0211_FEUER = new Bezeichner("Version Satzart 0211 Feuer-Industrie/Gewerbliche Sachversicherung");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_FEUER = new Bezeichner("Version Satzart 0221 Feuer-Industrie/Gewerbliche Sachversicherung");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_510 = new Bezeichner("Version Satzart 0221.510");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0211_TRANSPORT = new Bezeichner("Version Satzart 0211 Transport");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_TRANSPORT = new Bezeichner("Version Satzart 0221 Transport");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0222 = new Bezeichner("Version Satzart 0222");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0230_LEBEN = new Bezeichner("Version Satzart 0230 Fondsdatensatz - Leben");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0230_UNFALL = new Bezeichner("Version Satzart 0230 Unfall Leistungsarten");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0251_TRANSPORT = new Bezeichner("Version Satzart 0251 Transport Einzelanmeldung");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0211_NICHT_DEF_SPARTEN = new Bezeichner("Version Satzart 0211 Nicht einzeln definierte Sparten");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0211_TECH_VERS = new Bezeichner("Version Satzart 0211 Technische Versicherungen");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_NICHT_DEF_SPARTEN = new Bezeichner("Version Satzart 0221 Nicht einzeln definierte Sparten");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0221_TECH_VERS = new Bezeichner("Version Satzart 0221 Technische Versicherungen");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_550 = new Bezeichner("Version Satzart 0210.550");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_560 = new Bezeichner("Version Satzart 0210.560");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_570 = new Bezeichner("Version Satzart 0210.570");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_550 = new Bezeichner("Version Satzart 0220.550");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_560 = new Bezeichner("Version Satzart 0220.560");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_570 = new Bezeichner("Version Satzart 0220.570");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0270_550 = new Bezeichner("Version Satzart 0270.550");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0280_550 = new Bezeichner("Version Satzart 0280.550");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0291_550 = new Bezeichner("Version Satzart 0291.550");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0292_550 = new Bezeichner("Version Satzart 0292.550");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0293_550 = new Bezeichner("Version Satzart 0293.550");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0294_550 = new Bezeichner("Version Satzart 0294.550");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0295_550 = new Bezeichner("Version Satzart 0295.550");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0052 = new Bezeichner("Version Satzart 0052");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0102 = new Bezeichner("Version Satzart 0102");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0212 = new Bezeichner("Version Satzart 0212");
-    /**
-     *  @deprecated: bitte ohne Prefix "VERSION_" verwenden
-     */
-    @Deprecated
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0352 = new Bezeichner("Version Satzart 0352");
-    /**
-     *  @deprecated: bitte ohne Prefix "VERSION_" verwenden
-     */
-    @Deprecated
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0362 = new Bezeichner("Version Satzart 0362");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0382 = new Bezeichner("Version Satzart 0382");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0390_RABATTE = new Bezeichner("Version Satzart 0390 Rabatte und Zuschlaege");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0392_EVB = new Bezeichner("Version Satzart 0392 eVB-Nummer");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_9950 = new Bezeichner("Version Satzart 9950");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_9951_MIME = new Bezeichner("Version Satzart 9951 MIME-Datei");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_9952 = new Bezeichner("Version Satzart 9952");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_580 = new Bezeichner("Version Satzart 0210.580");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0210_684 = new Bezeichner("Version Satzart 0210.684");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_580 = new Bezeichner("Version Satzart 0220.580");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0220_684 = new Bezeichner("Version Satzart 0220.684");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0372 = new Bezeichner("Version Satzart 0372");
-    /** @deprecated: bitte ohne Prefix "VERSION_" verwenden */
+    /** @deprecated bitte ohne Prefix "VERSION_" verwenden (TODO: wird mit v8 entsorgt) */
     public static final Bezeichner VERSION_SATZART_0600 = new Bezeichner("Version Satzart 0600");
     public static final Bezeichner VERTRAGSABLAUF = new Bezeichner("Vertragsablauf");
     public static final Bezeichner VERTRAGSART = new Bezeichner("Vertragsart");

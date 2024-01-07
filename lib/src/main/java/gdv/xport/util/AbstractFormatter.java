@@ -39,6 +39,12 @@ public abstract class AbstractFormatter implements ImportListener, AutoCloseable
         this(writer, Config.getInstance());
     }
 
+    /**
+     * Legt einen neuen Formatter an.
+     *
+     * @param writer Writer
+     * @param config Konfiguration
+     */
     protected AbstractFormatter(final Writer writer, final Config config) {
         this.writer = writer;
         this.config = config;
@@ -53,6 +59,11 @@ public abstract class AbstractFormatter implements ImportListener, AutoCloseable
         this(new OutputStreamWriter(ostream, Config.DEFAULT_ENCODING));
     }
 
+    /**
+     * Liefert die Konfiguratipn zurueck.
+     *
+     * @return Konfiguration
+     */
     protected final Config getConfig() {
         return config;
     }

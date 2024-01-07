@@ -67,12 +67,29 @@ public class Betrag extends NumFeld {
         super(name, length, start, 2, config);
     }
 
-    @Deprecated // TODO: wird mit v8 entsorgt
+    /**
+     * Legt einen neuen Betrag an.
+     *
+     * @param name   Name
+     * @param start  Start-Adresse
+     * @param value  Wert
+     * @param config Konfiguration
+     * @deprecated wird mit v8 entsorgt (TODO)
+     */
+    @Deprecated
     protected Betrag(final Bezeichner name, final int start, final String value, Config config) {
         this(name, value.length(), ByteAdresse.of(start), config);
         this.setInhalt(value);
     }
 
+    /**
+     * Legt einen neuen Betrag an.
+     *
+     * @param name   Name
+     * @param start  Start-Adresse
+     * @param value  Wert
+     * @param config Konfiguration
+     */
     protected Betrag(final Bezeichner name, final ByteAdresse start, final String value, Config config) {
         this(name, value.length(), start, config);
         this.setInhalt(value);
@@ -109,6 +126,12 @@ public class Betrag extends NumFeld {
         return new Betrag(this);
     }
 
+    /**
+     * Erzeugt einen Betrag mit den Daten des uebergebenen Feldes.
+     *
+     * @param feld Feld
+     * @return Betrag
+     */
     public static Betrag of(Feld feld) {
         Betrag betrag = new Betrag(feld.getBezeichner(), feld.getAnzahlBytes(), feld.getByteAdresse());
         betrag.setInhalt(feld.getInhalt());

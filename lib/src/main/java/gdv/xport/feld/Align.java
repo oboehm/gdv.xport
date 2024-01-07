@@ -39,10 +39,21 @@ public enum Align {
         code = (byte) n;
     }
 
+    /**
+     * Liefert den Code zurueck.
+     *
+     * @return 1 oder 2
+     */
     public byte getCode() {
         return code;
     }
 
+    /**
+     * Wandelt das uebergebene Byte in ein Aling-Objekt um.
+     *
+     * @param b 1 oder 2
+     * @return LEFT oder RIGHT
+     */
     public static Align of(byte b) {
         switch (b) {
             case 1:

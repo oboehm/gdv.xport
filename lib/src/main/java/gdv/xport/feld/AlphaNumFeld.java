@@ -102,6 +102,12 @@ public class AlphaNumFeld extends Feld {
         super(other);
     }
 
+    /**
+     * Dies ist der Copy-Constructor mit einem Feld mit neuer Konfiguration.
+     *
+     * @param other das originale Feld
+     * @param c     Konfiguration
+     */
     protected AlphaNumFeld(AlphaNumFeld other, Config c) {
         super(other, c);
     }
@@ -161,10 +167,18 @@ public class AlphaNumFeld extends Feld {
      */
     public static class Validator extends Feld.Validator {
 
+        /**
+         * Default-Constructor.
+         */
         public Validator() {
             super();
         }
 
+        /**
+         * Legt einen Validator mit der angegebenen Konfiguration an.
+         *
+         * @param config Konfiguration
+         */
         public Validator(Config config) {
             super(config);
         }
