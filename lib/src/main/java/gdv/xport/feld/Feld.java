@@ -99,12 +99,33 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @param start Start-Adresse
      * @param s der Inhalt
      * @param alignment the alignment
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Feld(final Bezeichner name, final int start, final String s, final Align alignment) {
         this.bezeichner = name;
         this.inhalt = s;
         this.length = toByteLength(s.length());
         this.byteAdresse = ByteAdresse.of(start).byteValue();
+        this.ausrichtung = alignment.getCode();
+        this.config = Config.getInstance();
+    }
+
+    /**
+     * Erzeugt ein neues Feld.
+     *
+     * @param name      Name
+     * @param start     Start-Adresse
+     * @param s         der Inhalt
+     * @param alignment Ausrichtung
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Feld(final Bezeichner name, final ByteAdresse start, final String s, final Align alignment) {
+        this.bezeichner = name;
+        this.inhalt = s;
+        this.length = toByteLength(s.length());
+        this.byteAdresse = start.byteValue();
         this.ausrichtung = alignment.getCode();
         this.config = Config.getInstance();
     }
@@ -125,16 +146,42 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      * @param start die Start-Adresse
      * @param alignment die Ausrichtung
      * @since 1.0
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Feld(final Bezeichner bezeichner, final int length, final int start, final Align alignment) {
         this(bezeichner, length, start, alignment, Config.getInstance());
     }
 
+    /**
+     * Erzeugt ein neues Feld.
+     *
+     * @param bezeichner der Name des Felds
+     * @param length die Anzahl der Bytes
+     * @param start die Start-Adresse
+     * @param alignment die Ausrichtung
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Feld(final Bezeichner bezeichner, final int length, final ByteAdresse start, final Align alignment) {
+        this(bezeichner, length, start, alignment, Config.getInstance());
+    }
+
+    @Deprecated // TODO: wird mit v8 entsorgt
     protected Feld(Bezeichner bezeichner, int length, int start, Align alignment, Config config) {
         this.bezeichner = bezeichner;
         this.inhalt = StringUtils.repeat(" ", length);
         this.length = toByteLength(length);
         this.byteAdresse = ByteAdresse.of(start).byteValue();
+        this.ausrichtung = alignment.getCode();
+        this.config = config;
+    }
+
+    protected Feld(Bezeichner bezeichner, int length, ByteAdresse start, Align alignment, Config config) {
+        this.bezeichner = bezeichner;
+        this.inhalt = StringUtils.repeat(" ", length);
+        this.length = toByteLength(length);
+        this.byteAdresse = start.byteValue();
         this.ausrichtung = alignment.getCode();
         this.config = config;
     }
@@ -152,8 +199,25 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *            the c
      * @param alignment
      *            the alignment
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Feld(final String name, final int length, final int start, final char c, final Align alignment) {
+        this(Bezeichner.of(name), length, start, alignment);
+        this.setInhalt(c);
+    }
+
+    /**
+     * Legt ein neues Feld an.
+     *
+     * @param name      Name
+     * @param length    Laenge
+     * @param start     Start-Adresse
+     * @param c         Inhalt
+     * @param alignment Ausrichtung
+     */
+    public Feld(final String name, final int length, final ByteAdresse start, final char c, final Align alignment) {
         this(Bezeichner.of(name), length, start, alignment);
         this.setInhalt(c);
     }
@@ -171,8 +235,26 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *            the s
      * @param alignment
      *            the alignment
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Feld(final String name, final int length, final int start, final String s, final Align alignment) {
+        this(Bezeichner.of(name), length, start, alignment);
+        this.setInhalt(s);
+    }
+
+    /**
+     * Legt ein neues Feld an.
+     *
+     * @param name      Name
+     * @param length    Laenge
+     * @param start     Start-Adresse
+     * @param s         Inhalt
+     * @param alignment Ausrichtung
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Feld(final String name, final int length, final ByteAdresse start, final String s, final Align alignment) {
         this(Bezeichner.of(name), length, start, alignment);
         this.setInhalt(s);
     }
@@ -186,8 +268,23 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *            the start
      * @param c
      *            the c
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Feld(final String name, final int start, final char c) {
+        this(name, 1, start, c, Align.LEFT);
+    }
+
+    /**
+     * Legt ein neues Feld an.
+     *
+     * @param name      Name
+     * @param start     Start-Adresse
+     * @param c         Inhalt
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Feld(final String name, final ByteAdresse start, final char c) {
         this(name, 1, start, c, Align.LEFT);
     }
 
@@ -200,11 +297,26 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
      *            the s
      * @param alignment
      *            the alignment
+     * @deprecated durch entsprechenden Constructor mit ByteAdresse ersetzt
+     *             (TODO: wird mit v8 entsorgt)
      */
+    @Deprecated
     public Feld(final int start, final String s, final Align alignment) {
+        this(ByteAdresse.of(start), s, alignment);
+    }
+
+    /**
+     * Legt ein neues Feld an.
+     *
+     * @param start     Start-Adresse
+     * @param s         Inhalt
+     * @param alignment Ausrichtung
+     * @since 7.0 (07-Jan-2024)
+     */
+    public Feld(final ByteAdresse start, final String s, final Align alignment) {
         this.inhalt = s;
         this.length = toByteLength(s.length());
-        this.byteAdresse = ByteAdresse.of(start).byteValue();
+        this.byteAdresse = start.byteValue();
         this.ausrichtung = alignment.getCode();
         this.bezeichner = createBezeichner();
         this.config = Config.getInstance();
@@ -338,15 +450,6 @@ public class Feld implements Comparable<Feld>, Cloneable, Serializable {
     public void setInhalt(final BigDecimal n) {
         this.setInhalt(n.toString());
     }
-
-//    /**
-//     * Setzt den Inhalt aus der uebergebenen Zahl.
-//     *
-//     * @param n der neue Inhalt
-//     */
-//    public void setInhalt(final int n) {
-//        this.setInhalt((long) n);
-//    }
 
     /**
      * Setzt den Inhalt aus der uebergebenen Zahl.
