@@ -11,7 +11,7 @@
   <groupId>com.github.oboehm</groupId>
   <artifactId>gdv-xport</artifactId>
   <packaging>pom</packaging>
-  <version>7.0.0-SNAPSHOT</version>
+  <version>7.0.0</version>
   <name>GDV.XPort</name>
 
   <modules>
@@ -741,81 +741,7 @@
       <archive>https://groups.google.com/forum/#!forum/gdv-xport</archive>
     </mailingList>
   </mailingLists>
-  
-  
-  
-  <profiles>
 
-    <!-- 
-        for releases we have higher quality requirements
-     -->
-    <profile>
-      <id>release</id>
-      <build>
-        <plugins>
-          <!-- We want to sign the artifacts -->
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>3.1.0</version>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <artifactId>maven-install-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>attach-sources</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <artifactId>maven-release-plugin</artifactId>
-            <configuration>
-              <!-- Pass these arguments to the deploy plugin. -->
-              <arguments>-Prelease</arguments>
-            </configuration>
-          </plugin>
-          <!-- see http://maven.apache.org/plugins/maven-changes-plugin/examples/changes-file-validation.html -->
-		  <plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-changes-plugin</artifactId>
-            <version>2.12.1</version>
-			<executions>
-				<execution>
-					<id>validate-changes</id>
-					<phase>pre-site</phase>
-					<goals>
-						<goal>changes-validate</goal>
-					</goals>
-					<configuration>
-						<!--
-							if set to true the build will fail if the changes file is invalid,
-							if set to false warnings will be logged.
-						-->
-						<failOnError>true</failOnError>
-					</configuration>
-				</execution>
-			</executions>
-		  </plugin>   
-        </plugins>
-      </build>
-    </profile>
-    
-  </profiles>
+
 
 </project>
