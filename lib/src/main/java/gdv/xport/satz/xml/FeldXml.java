@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 by Oli B.
+ * Copyright (c) 2014-2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -124,8 +124,21 @@ public final class FeldXml extends Feld {
      *
      * @param byteAddress die Byte-Adresse
      * @return das entsprechende Feld
+     * @deprecated bitte Methode mit ByteAdresse verwenden (TODO: wird mit v9 entsorgt)
      */
+    @Deprecated
     public Feld toFeld(final int byteAddress) {
+        return this.toFeld(ByteAdresse.of(byteAddress));
+    }
+
+    /**
+     * Wandelt das FeldXml-Objekt in ein {@link Feld}-Objekt um.
+     *
+     * @param byteAddress die Byte-Adresse
+     * @return das entsprechende Feld
+     * @since 7.1
+     */
+    public Feld toFeld(final ByteAdresse byteAddress) {
         return this.toFeld(byteAddress, this.getBezeichner(), "");
     }
 
@@ -135,11 +148,11 @@ public final class FeldXml extends Feld {
      * @param byteAddress die Byte-Adresse
      * @param neuerBezeichner the neuer bezeichner
      * @return das entsprechende Feld
-     * @deprecated alte Version
+     * @deprecated alte Version (TODO: wird mit v8 entsorgt)
      */
     @Deprecated
     public Feld toFeld(final int byteAddress, final Bezeichner neuerBezeichner) {
-        return toFeld(byteAddress, neuerBezeichner, "");
+        return toFeld(ByteAdresse.of(byteAddress), neuerBezeichner, "");
     }
 
     /**
@@ -148,8 +161,22 @@ public final class FeldXml extends Feld {
      * @param byteAddress die Byte-Adresse
      * @param referenz mit Bezeichner und Bemerkung
      * @return das entsprechende Feld
+     * @deprecated bitte Methode mit ByteAdresse verwenden (TODO: wird mit v9 entsorgt)
      */
+    @Deprecated
     public Feld toFeld(final int byteAddress, final FeldReferenz referenz) {
+        return toFeld(ByteAdresse.of(byteAddress), referenz);
+    }
+
+    /**
+     * Wandelt das FeldXml-Objekt in ein {@link Feld}-Objekt um.
+     *
+     * @param byteAddress die Byte-Adresse
+     * @param referenz mit Bezeichner und Bemerkung
+     * @return das entsprechende Feld
+     * @since 7.1
+     */
+    public Feld toFeld(final ByteAdresse byteAddress, final FeldReferenz referenz) {
         return toFeld(byteAddress, referenz.getBezeichner(), referenz.getBemerkung());
     }
 
@@ -174,13 +201,42 @@ public final class FeldXml extends Feld {
      * @param referenz    mit Bezeichner und Bemerkung
      * @param tdXml       der aktuelle Teildatensatz
      * @return das entsprechende Feld
+     * @deprecated bitte Methode mit ByteAdresse-Parameter verwenden (TODO: wird mit v9 entsorgt)
      */
+    @Deprecated
     public Feld toFeld(final int byteAddress, final FeldReferenz referenz, final TeildatensatzXml tdXml) {
+        return toFeld(ByteAdresse.of(byteAddress), referenz, tdXml);
+    }
+
+    /**
+     * Wandelt das FeldXml-Objekt in ein {@link Feld}-Objekt um, dessen Bezeichner eindeutig im
+     * aktuellen Teildatensatz ist.
+     * <p>
+     * In Feldern innerhalb der TDs von SA > "0001" wird der technischen Namen aus der
+     * Feld-Bezeichnung ermitteln. Dadurch kann ein Feld, dessen Bezeichnung im
+     * Teildatensatz eindeutig ist, sicher durch die Feld-Bezeichnung aus GDV-Online
+     * adressiert werden. Felder mit mehrdeutigem Namen im Teildatensatz (s.u.) koennen nur
+     * via ByteAdresse adressiert werden (wie bisher auch).
+     * </p><p>
+     * Eine Ausnahme ist das Feld an Position 43 in SA0220.030, TD9. Dieses Feld ist durch
+     * einen Kopierfehler beim GDV entstanden. Aus 'historischen' Gruenden und wg.
+     * Abwaertskompatibilitaet muss der technische Name hier identisch sein zu
+     * {@link gdv.xport.feld.Bezeichner#LFD_NUMMER_VP_PERSONENGRUPPE9}. Ergo wird hier wie
+     * bisher der Bezeichner aus der Referenz verwendet.
+     * </p>
+     *
+     * @param byteAddress die Byte-Adresse
+     * @param referenz    mit Bezeichner und Bemerkung
+     * @param tdXml       der aktuelle Teildatensatz
+     * @return das entsprechende Feld
+     * @since 7.1
+     */
+    public Feld toFeld(final ByteAdresse byteAddress, final FeldReferenz referenz, final TeildatensatzXml tdXml) {
         Bezeichner bezeichner = referenz.getBezeichner();
-        if ((!(tdXml.getGdvSatzartName().equals("0001") && byteAddress >= 96)) &&
+        if ((!(tdXml.getGdvSatzartName().equals("0001") && byteAddress.intValue() >= 96)) &&
                 (!(tdXml.getGdvSatzartName().equals("0220.030")
                         && tdXml.getSatznummer().toChar() == '9'
-                        && byteAddress == 43))) {
+                        && byteAddress.intValue() == 43))) {
             bezeichner = new Bezeichner(referenz.getBezeichner().getName());
         }
         Feld feld = toFeld(byteAddress, bezeichner, referenz.getBemerkung());
@@ -194,7 +250,7 @@ public final class FeldXml extends Feld {
         return feld;
     }
 
-    private Feld toFeld(final int byteAddress, final Bezeichner neuerBezeichner, final String bemerkung) {
+    private Feld toFeld(final ByteAdresse byteAddress, final Bezeichner neuerBezeichner, final String bemerkung) {
         Feld f = this.datentyp.asFeld(neuerBezeichner, this.getAnzahlBytes(), byteAddress);
         switch (this.datentyp) {
             case NUMERISCH:
