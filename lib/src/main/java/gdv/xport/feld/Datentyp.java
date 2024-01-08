@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 by Oli B.
+ * Copyright (c) 2014-2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,15 +86,29 @@ public enum Datentyp {
      * @param anzahlBytes die Anzahl an Bytes
      * @param byteAddress die Byte-Adresse
      * @return z.B. ein {@link NumFeld}-Objekt
+     * @deprecated bitte entsprechende Methode mit ByteAdresse verwenden
+     *             (TODO: wird mit v9 entsorgt)
      */
+    @Deprecated
     public Feld asFeld(final Bezeichner bezeichner, final int anzahlBytes, final int byteAddress) {
+        return asFeld(bezeichner, anzahlBytes, ByteAdresse.of(byteAddress));
+    }
+
+    /**
+     * Liefert den Datentyp als Feld zurueck.
+     *
+     * @param bezeichner der Bezeichner
+     * @param anzahlBytes die Anzahl an Bytes
+     * @param byteAddress die Byte-Adresse
+     * @return z.B. ein {@link NumFeld}-Objekt
+     * @since 7.1 (08-Jan-2024)
+     */
+    public Feld asFeld(final Bezeichner bezeichner, final int anzahlBytes, final ByteAdresse byteAddress) {
         Class<? extends Feld> clazz = this.asClass();
         try {
             Constructor<? extends Feld> ctor = getConstructor(clazz);
-            return ctor.newInstance(bezeichner, anzahlBytes, byteAddress);
-        } catch (SecurityException ex) {
-            throw new ShitHappenedException("cannot instantiate " + clazz, ex);
-        } catch (InstantiationException ex) {
+            return ctor.newInstance(bezeichner, anzahlBytes, byteAddress.intValue());
+        } catch (SecurityException | InstantiationException ex) {
             throw new ShitHappenedException("cannot instantiate " + clazz, ex);
         } catch (IllegalAccessException ex) {
             throw new ShitHappenedException("cannot access constructor of " + clazz, ex);
@@ -105,8 +119,7 @@ public enum Datentyp {
 
     private Constructor<? extends Feld> getConstructor(Class<? extends Feld> clazz) {
         try {
-            Constructor<? extends Feld> ctor = clazz.getConstructor(Bezeichner.class, int.class, int.class);
-            return ctor;
+            return clazz.getConstructor(Bezeichner.class, int.class, int.class);
         } catch (NoSuchMethodException ex) {
             LOG.debug("{} hat keinen public Constructor ({}).", clazz, ex.getMessage());
             LOG.trace("Details:", ex);
