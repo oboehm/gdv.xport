@@ -20,6 +20,7 @@ package gdv.xport.satz.xml;
 
 import gdv.xport.feld.AlphaNumFeld;
 import gdv.xport.feld.Bezeichner;
+import gdv.xport.feld.ByteAdresse;
 import gdv.xport.feld.Feld;
 import gdv.xport.satz.Teildatensatz;
 import gdv.xport.util.SatzTyp;
@@ -95,7 +96,7 @@ public final class TeildatensatzXml extends Teildatensatz {
         for (FeldReferenz referenz : this.feldReferenzen) {
             FeldXml feldXml = getFeld(felder, referenz.getId());
             feldXml.setInhalt(referenz.getAuspraegung());
-            this.addFeld(feldXml, byteAddress, referenz);
+            this.addFeld(feldXml, ByteAdresse.of(byteAddress), referenz);
             byteAddress += feldXml.getAnzahlBytes();
         }
         updateSatzendeWith(byteAddress, felder);
@@ -118,7 +119,7 @@ public final class TeildatensatzXml extends Teildatensatz {
             FeldReferenz referenz = referenzen.get(i);
             FeldXml feldXml = felder.get(referenz.getId());
             endAddress -= feldXml.getAnzahlBytes();
-            Feld feld = feldXml.toFeld(endAddress + 1, referenz, this).mitConfig(getConfig());
+            Feld feld = feldXml.toFeld(ByteAdresse.of(endAddress + 1), referenz, this).mitConfig(getConfig());
             endeDatenfelder.add(feld);
         }
         int length = endAddress + 1 - startAddress;
@@ -136,7 +137,7 @@ public final class TeildatensatzXml extends Teildatensatz {
         }
     }
 
-    private void addFeld(final FeldXml feldXml, final int byteAddress, final FeldReferenz referenz) {
+    private void addFeld(final FeldXml feldXml, final ByteAdresse byteAddress, final FeldReferenz referenz) {
         Feld feld = feldXml.toFeld(byteAddress, referenz, this).mitConfig(getConfig());
         if (!this.hasFeld(feld.getBezeichner())) {
             super.add(feld);

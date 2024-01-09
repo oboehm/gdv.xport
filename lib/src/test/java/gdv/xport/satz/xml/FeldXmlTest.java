@@ -104,40 +104,21 @@ public class FeldXmlTest extends AbstractXmlTest {
         assertEquals("test ", vuNr.getInhalt());
     }
 
-    /**
-     * Test-Methode fuer {@link FeldXml#toFeld(int)}.
-     */
     @Test
     public void testToNumFeld() {
         checkToFeld(feldXml, NumFeld.class);
     }
 
-    /**
-     * Test-Methode fuer {@link FeldXml#toFeld(int)}.
-     *
-     * @throws XMLStreamException the XML stream exception
-     */
     @Test
     public void testToAlphaNumFeld() throws XMLStreamException {
         checkToFeld(createFeldXmlFrom("feldVuNr.xml"), AlphaNumFeld.class);
     }
 
-    /**
-     * Test-Methode fuer {@link FeldXml#toFeld(int)}.
-     *
-     * @throws XMLStreamException the XML stream exception
-     */
     @Test
     public void testToDatumFeld() throws XMLStreamException {
         checkToFeld(createFeldXmlFrom("feldDatum.xml"), Datum.class);
     }
 
-    /**
-     * Test-Methode fuer {@link FeldXml#toFeld(int)} mit einer
-     * Gleitkommazahl.
-     *
-     * @throws XMLStreamException the XML stream exception
-     */
     @Test
     public void testToGleitkomma() throws XMLStreamException {
         FeldXml gleitkomma = createFeldXmlFrom("feldFliesskomma.xml");
@@ -155,23 +136,17 @@ public class FeldXmlTest extends AbstractXmlTest {
     public void testToFeldBezeichner() throws XMLStreamException {
         FeldXml gleitkomma = createFeldXmlFrom("feldFliesskomma.xml");
         FeldReferenz referenz = new FeldReferenz(createXMLEventReader("feldreferenzZuzahlungsbetragInWE.xml"));
-        Feld feld = gleitkomma.toFeld(160, referenz);
+        Feld feld = gleitkomma.toFeld(ByteAdresse.of(160), referenz);
         assertEquals(Bezeichner.ZUZAHLUNGSBETRAG_IN_WE, feld.getBezeichner());
     }
 
-    /**
-     * Test-Methode fuer {@link FeldXml#toFeld(int)} mit einer
-     * Gleitkommazahl.
-     *
-     * @throws XMLStreamException the XML stream exception
-     */
     @Test
     public void testToUhrzeit() throws XMLStreamException {
         checkToFeld(createFeldXmlFrom("feldUhrzeit.xml"), NumFeld.class);
     }
 
     private static void checkToFeld(final FeldXml input, final Class<? extends Feld> expected) {
-        Feld converted = input.toFeld(42);
+        Feld converted = input.toFeld(ByteAdresse.of(42));
         assertEquals(42, converted.getByteAdresse());
         assertTrue(converted + ": bezeichnung expected", StringUtils.isNotEmpty(converted.getBezeichnung()));
         assertEquals(input.getBezeichnung(), converted.getBezeichnung());
@@ -184,7 +159,7 @@ public class FeldXmlTest extends AbstractXmlTest {
         FeldXml datum = createFeldXmlFrom("feldDatum.xml");
         datum.setInhalt("21052021");
         FeldReferenz referenz = new FeldReferenz(createXMLEventReader("feldreferenzDatum.xml"));
-        Feld converted = datum.toFeld(10, referenz);
+        Feld converted = datum.toFeld(ByteAdresse.of(10), referenz);
         assertEquals(datum.getInhalt(), converted.getInhalt());
     }
 
