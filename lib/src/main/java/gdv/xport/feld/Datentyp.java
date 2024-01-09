@@ -91,7 +91,17 @@ public enum Datentyp {
      */
     @Deprecated
     public Feld asFeld(final Bezeichner bezeichner, final int anzahlBytes, final int byteAddress) {
-        return asFeld(bezeichner, anzahlBytes, ByteAdresse.of(byteAddress));
+        Class<? extends Feld> clazz = this.asClass();
+        try {
+            Constructor<? extends Feld> ctor = getConstructor(clazz, int.class);
+            return ctor.newInstance(bezeichner, anzahlBytes, byteAddress);
+        } catch (SecurityException | InstantiationException ex) {
+            throw new ShitHappenedException("cannot instantiate " + clazz, ex);
+        } catch (IllegalAccessException ex) {
+            throw new ShitHappenedException("cannot access constructor of " + clazz, ex);
+        } catch (InvocationTargetException ex) {
+            throw new ShitHappenedException("cannot invoke " + clazz, ex);
+        }
     }
 
     /**
@@ -106,8 +116,8 @@ public enum Datentyp {
     public Feld asFeld(final Bezeichner bezeichner, final int anzahlBytes, final ByteAdresse byteAddress) {
         Class<? extends Feld> clazz = this.asClass();
         try {
-            Constructor<? extends Feld> ctor = getConstructor(clazz);
-            return ctor.newInstance(bezeichner, anzahlBytes, byteAddress.intValue());
+            Constructor<? extends Feld> ctor = getConstructor(clazz, ByteAdresse.class);
+            return ctor.newInstance(bezeichner, anzahlBytes, byteAddress);
         } catch (SecurityException | InstantiationException ex) {
             throw new ShitHappenedException("cannot instantiate " + clazz, ex);
         } catch (IllegalAccessException ex) {
@@ -117,15 +127,15 @@ public enum Datentyp {
         }
     }
 
-    private Constructor<? extends Feld> getConstructor(Class<? extends Feld> clazz) {
+    private Constructor<? extends Feld> getConstructor(Class<? extends Feld> clazz, Class<?> arg3) {
         try {
-            return clazz.getConstructor(Bezeichner.class, int.class, int.class);
+            return clazz.getConstructor(Bezeichner.class, int.class, arg3);
         } catch (NoSuchMethodException ex) {
             LOG.debug("{} hat keinen public Constructor ({}).", clazz, ex.getMessage());
             LOG.trace("Details:", ex);
             for (Constructor<?> ctor : clazz.getDeclaredConstructors()) {
                 Class<?>[] types = ctor.getParameterTypes();
-                if ((types.length == 3) && types[0].isAssignableFrom(Bezeichner.class) && types[1].isAssignableFrom(int.class) && types[2].isAssignableFrom(int.class)) {
+                if ((types.length == 3) && types[0].isAssignableFrom(Bezeichner.class) && types[1].isAssignableFrom(int.class) && types[2].isAssignableFrom(arg3)) {
                     ctor.setAccessible(true);
                     return (Constructor<? extends Feld>) ctor;
                 }
