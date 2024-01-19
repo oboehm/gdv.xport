@@ -143,8 +143,13 @@ public final class GdvXmlFormatterTest extends AbstractFormatterTest {
 
     @Test
     public void testFormatAllSupportedSaetze() throws IOException, XMLStreamException {
+        formatDatenpaket("VUVM2023.xml", "datenpaket2023.xml");
+        formatDatenpaket("VUVM2023xL.xml", "datenpaket2023xL.xml");
+    }
+
+    @Test
+    public void testFormatAllSupportedSaetze2018() throws IOException, XMLStreamException {
         formatDatenpaket("VUVM2018.xml", "datenpaket2018.xml");
-        formatDatenpaket("VUVM2018xL.xml", "datenpaket2018xL.xml");
     }
 
     @Test

@@ -191,7 +191,6 @@
 			<feldreferenz referenz="168-170-Satzart0220070-Alphanumerisch">
 				<name>Satzart 0220 070</name>
 				<technischerName>Satzart0220070</technischerName>
-				<auspraegung>1.4</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Satzart0210 (171-173) -->
 			<feldreferenz referenz="171-173-Satzart0210-Alphanumerisch">
@@ -737,7 +736,6 @@
 			<feldreferenz referenz="135-137-Satzart0220684-Alphanumerisch">
 				<name>Satzart 0220 684</name>
 				<technischerName>Satzart0220684</technischerName>
-				<auspraegung>1.0</auspraegung>
 			</feldreferenz>
 			<!-- AlphaNumFeld KFZWechselkennzeichenWAKZ (138-140) -->
 			<feldreferenz referenz="138-140-KFZWechselkennzeichenWAKZ-Alphanumerisch">
@@ -30875,7 +30873,7 @@
 				<name>Risikotext</name>
 				<technischerName>Risikotext</technischerName>
 			</feldreferenz>
-			<!-- AlphaNumFeld Tarifierungsmerkmal (133-134) -->
+			<!-- AlphaNumFeld TarifierungsmerkmalLaufzeit (133-134) -->
 			<feldreferenz referenz="133-134-TarifierungsmerkmalLaufzeit-Alphanumerisch">
 				<name>Tarifierungsmerkmal Laufzeit</name>
 				<technischerName>TarifierungsmerkmalLaufzeit</technischerName>

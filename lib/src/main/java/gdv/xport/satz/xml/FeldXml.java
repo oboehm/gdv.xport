@@ -70,7 +70,7 @@ public final class FeldXml extends Feld {
     }
 
     private FeldXml(final Properties props) {
-        super(new Bezeichner(props), 1, toInhalt(props), Align.LEFT);
+        super(new Bezeichner(props), ByteAdresse.of(1), toInhalt(props), Align.LEFT);
         this.id = props.getProperty("ID");
         this.datentyp = Datentyp.asValue(props.getProperty("datentyp"));
         this.nachkommastellen = Integer.parseInt(props.getProperty("nachkommastellen", "0"));
@@ -217,12 +217,6 @@ public final class FeldXml extends Feld {
      * Teildatensatz eindeutig ist, sicher durch die Feld-Bezeichnung aus GDV-Online
      * adressiert werden. Felder mit mehrdeutigem Namen im Teildatensatz (s.u.) koennen nur
      * via ByteAdresse adressiert werden (wie bisher auch).
-     * </p><p>
-     * Eine Ausnahme ist das Feld an Position 43 in SA0220.030, TD9. Dieses Feld ist durch
-     * einen Kopierfehler beim GDV entstanden. Aus 'historischen' Gruenden und wg.
-     * Abwaertskompatibilitaet muss der technische Name hier identisch sein zu
-     * {@link gdv.xport.feld.Bezeichner#LFD_NUMMER_VP_PERSONENGRUPPE9}. Ergo wird hier wie
-     * bisher der Bezeichner aus der Referenz verwendet.
      * </p>
      *
      * @param byteAddress die Byte-Adresse
@@ -233,12 +227,12 @@ public final class FeldXml extends Feld {
      */
     public Feld toFeld(final ByteAdresse byteAddress, final FeldReferenz referenz, final TeildatensatzXml tdXml) {
         Bezeichner bezeichner = referenz.getBezeichner();
-        if ((!(tdXml.getGdvSatzartName().equals("0001") && byteAddress.intValue() >= 96)) &&
-                (!(tdXml.getGdvSatzartName().equals("0220.030")
-                        && tdXml.getSatznummer().toChar() == '9'
-                        && byteAddress.intValue() == 43))) {
-            bezeichner = new Bezeichner(referenz.getBezeichner().getName());
-        }
+//        if ((!(tdXml.getGdvSatzartName().equals("0001") && byteAddress.intValue() >= 96)) &&
+//                (!(tdXml.getGdvSatzartName().equals("0220.030")
+//                        && tdXml.getSatznummer().toChar() == '9'
+//                        && byteAddress.intValue() == 43))) {
+//            bezeichner = new Bezeichner(referenz.getBezeichner().getName());
+//        }
         Feld feld = toFeld(byteAddress, bezeichner, referenz.getBemerkung());
         if (!feld.getBezeichner().getTechnischerName().equalsIgnoreCase("Satzart")) {
             for (int i = 2; tdXml.hasFeld(feld.getBezeichner()); i++) {

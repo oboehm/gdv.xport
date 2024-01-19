@@ -34,14 +34,12 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.collection.IsIn;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import patterntesting.runtime.junit.CollectionTester;
 import patterntesting.runtime.junit.ObjectTester;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -157,17 +155,6 @@ public class XmlServiceTest extends AbstractXmlTest {
         satzXml.importFrom(importString);
         assertEquals(importString, satzXml.toLongString());
         ObjectTester.assertEquals(reference, satzXml);
-    }
-
-    private static void checkTeildatensaetze(final SatzXml satzXml, final List<Teildatensatz> reference) {
-        for (int i = 0; i < reference.size(); i++) {
-            LOG.debug("Checking Teildatensatz {}...", i+1);
-            checkFelder(satzXml.getTeildatensatz(i+1), reference.get(i).getFelder());
-        }
-    }
-
-    private static void checkFelder(final Teildatensatz tds, Collection<Feld> felder) {
-        CollectionTester.assertEquals(tds.getFelder(), felder);
     }
 
     /**
@@ -371,6 +358,11 @@ public class XmlServiceTest extends AbstractXmlTest {
     }
 
     @Test
+    public void testVUVM2023() throws XMLStreamException, IOException {
+        compareXml("VUVM2023xL.xml", "VUVM2023.xml");
+    }
+
+    @Test
     public void testVUVM2018() throws XMLStreamException, IOException {
         compareXml("VUVM2018xL.xml", "VUVM2018.xml");
     }
@@ -396,7 +388,7 @@ public class XmlServiceTest extends AbstractXmlTest {
         assertEquals(refService.getGdvRelease(), service.getGdvRelease());
         for (Map.Entry<SatzTyp, SatzXml> entry : refService.getSatzarten().entrySet()) {
             SatzXml satz = service.getSatzart(entry.getKey());
-            assertEquals(entry.getValue().toLongString(), satz.toLongString());
+            assertEquals(entry.getValue().toLongString(), satz.toLongString(), "Satztyp " + entry.getKey());
         }
     }
 
