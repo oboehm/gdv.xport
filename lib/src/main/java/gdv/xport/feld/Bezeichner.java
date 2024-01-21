@@ -759,6 +759,8 @@ public final class Bezeichner implements Serializable {
     /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE4 = LFD_NUMMER_VP_PERSONENGRUPPE;
+    /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden (TODO: wird mit v8 entfernt). */
+    @Deprecated
     public static final Bezeichner LFD_NUMMER_VP_PERSONENGRUPPE9 = new Bezeichner("Lfd. Nummer der versicherten Person (VP) / PersonengruppeAN", "LfdNrVersichertenPersonVp9");
     /** @deprecated bitte LFD_NUMMER_VP_PERSONENGRUPPE verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated

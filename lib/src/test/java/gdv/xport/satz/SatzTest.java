@@ -90,8 +90,8 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testAdd() {
-        satz.add(new AlphaNumFeld((Bezeichner.NAME1), 30, 44));
-        satz.add(new AlphaNumFeld(Bezeichner.of("Bumm"), 4, 50));
+        satz.add(new AlphaNumFeld((Bezeichner.NAME1), 30, ByteAdresse.of(44)));
+        satz.add(new AlphaNumFeld(Bezeichner.of("Bumm"), 4, ByteAdresse.of(50)));
     }
 
     /**
@@ -131,7 +131,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testGet() {
-        satz.add(new AlphaNumFeld((Bezeichner.ORT), 30, 50));
+        satz.add(new AlphaNumFeld((Bezeichner.ORT), 30, ByteAdresse.of(50)));
         satz.setFeld(Bezeichner.ORT, "Stuttgart");
         assertEquals("Stuttgart", satz.getFeldInhalt(Bezeichner.ORT).trim());
     }
@@ -275,7 +275,7 @@ public final class SatzTest extends AbstractSatzTest {
     @Test
     public void testImport() throws IOException {
         Satz x = new Datensatz(SatzTyp.of(210));
-        x.add(new AlphaNumFeld(new Bezeichner("F1"), 5, 5));
+        x.add(new AlphaNumFeld(new Bezeichner("F1"), 5, ByteAdresse.of(5)));
         x.importFrom(INPUT_SATZ_210);
         assertEquals(210, x.getSatzart());
         assertEquals("Hello", x.getFeld("F1").getInhalt());
@@ -354,7 +354,7 @@ public final class SatzTest extends AbstractSatzTest {
      */
     @Test
     public void testIsValidWithInvalidFeld() {
-        NumFeld schrott = new NumFeld("schrott", "xxxx");
+        NumFeld schrott = new NumFeld(Bezeichner.of("schrott"), ByteAdresse.of(1), "xxxx", 0);
         satz.add(schrott);
         assertFalse(satz + " has invalid fields!", satz.isValid());
     }
@@ -396,7 +396,7 @@ public final class SatzTest extends AbstractSatzTest {
         Satz a = new Datensatz(SatzTyp.of(220));
         Satz b = new Datensatz(SatzTyp.of(220));
         ObjectTester.assertEquals(a, b);
-        b.add(new Feld("c", 55, 'c'));
+        b.add(new Feld(ByteAdresse.of(55), "c", Align.LEFT));
         assertNotEquals(a, b);
     }
 
@@ -495,6 +495,21 @@ public final class SatzTest extends AbstractSatzTest {
         assertNotEquals(f1, f2);
         Feld summe = wertungssummen.getFeld(Bezeichner.of("Haftungswertungssumme in W\u00e4hrungseinheiten 1"));
         assertEquals(f1, summe);
+    }
+
+    /**
+     * Im Teildatenatz 9 von Satzart 0220.030 gibt es zweimal das Feld "Lfd.
+     * Nummer der versicherten Person (VP) / Personengruppe", einnaml an
+     * Position 43 (Kopierfehler) und einem an Position 251. Das korrekte
+     * Feld ist das an Position 251.
+     */
+    @Test
+    public void testGetLfdNummerDerVersichertenPerson() {
+        Satz wagnisdaten = XmlService.getInstance().getSatzart(SatzTyp.of("0220.030"));
+        Feld f1 = wagnisdaten.getFeld(Bezeichner.of("Lfd. Nummer der versicherten Person (VP) / Personengruppe"), 5);
+        assertEquals(251, f1.getByteAdresse());
+        Feld f2 = wagnisdaten.getFeld(Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE, 5);
+        assertEquals(f1, f2);
     }
 
     @Test
