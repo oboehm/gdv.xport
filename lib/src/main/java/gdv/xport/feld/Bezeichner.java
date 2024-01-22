@@ -1043,29 +1043,38 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner SATZART_0220_684 = new Bezeichner("Satzart 0220.684");
     public static final Bezeichner SATZART_0372 = new Bezeichner("Satzart 0372", "Satzart0372", "ProduktspezifischeAntragsdaten0372");
     public static final Bezeichner SATZART_0600 = new Bezeichner("Satzart 0600", "Satzart0600", "ProduktspezifischeStammdaten");
-    public static final Bezeichner SATZ_NR_1 = new Bezeichner("Satznummer1", "SatzNr1", "SatzNr", "Satznummer");
-    public static final Bezeichner SATZ_NR_2 = new Bezeichner("Satznummer2", "SatzNr2");
-    public static final Bezeichner SATZ_NR_3 = new Bezeichner("Satznummer3", "SatzNr3");
-    public static final Bezeichner SATZ_NR_4 = new Bezeichner("Satznummer4", "SatzNr4");
-    public static final Bezeichner SATZ_NR_9 = new Bezeichner("Satznummer9", "SatzNr9");
-    public static final Bezeichner SATZNUMMER = new Bezeichner("Satznummer", "SatzNr", "Satznummer",
-            "SatzNr1", "SatzNr2", "SatzNr3", "SatzNr4", "SatzNr9");
-    /** @deprecated bitte SATZNUMMER oder SATZ_NR_1 verwenden (TODO: wird mit v8 entfernt). */
-    @Deprecated
-    public static final Bezeichner SATZNUMMER1 = SATZNUMMER;
-    /** @deprecated bitte SATZNUMMER oder SATZ_NR_2 verwenden (TODO: wird mit v8 entfernt). */
-    @Deprecated
-    public static final Bezeichner SATZNUMMER2 = SATZNUMMER;
-    /** @deprecated bitte SATZNUMMER oder SATZ_NR_3 verwenden (TODO: wird mit v8 entfernt). */
-    @Deprecated
-    public static final Bezeichner SATZNUMMER3 = SATZNUMMER;
-    /** @deprecated bitte SATZNUMMER oder SATZ_NR_4 verwenden (TODO: wird mit v8 entfernt). */
-    @Deprecated
-    public static final Bezeichner SATZNUMMER4 = SATZNUMMER;
     /** @deprecated bitte SATZNUMMER verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
+    public static final Bezeichner SATZ_NR_1 = new Bezeichner("Satznummer1", "SatzNr1", "SatzNr", "Satznummer");
+    /** @deprecated bitte SATZNUMMER verwenden (TODO: wird mit v8 entfernt). */
+    @Deprecated
+    public static final Bezeichner SATZ_NR_2 = new Bezeichner("Satznummer2", "SatzNr2");
+    /** @deprecated bitte SATZNUMMER verwenden (TODO: wird mit v8 entfernt). */
+    @Deprecated
+    public static final Bezeichner SATZ_NR_3 = new Bezeichner("Satznummer3", "SatzNr3");
+    /** @deprecated bitte SATZNUMMER verwenden (TODO: wird mit v8 entfernt). */
+    @Deprecated
+    public static final Bezeichner SATZ_NR_4 = new Bezeichner("Satznummer4", "SatzNr4");
+    /** @deprecated bitte SATZNUMMER verwenden (TODO: wird mit v8 entfernt). */
+    @Deprecated
+    public static final Bezeichner SATZ_NR_9 = new Bezeichner("Satznummer9", "SatzNr9");
+    public static final Bezeichner SATZNUMMER = new Bezeichner("Satznummer", "SatzNr", "SatzNr2");
+    /** @deprecated bitte SATZNUMMER verwenden (TODO: wird mit v8 entfernt). */
+    @Deprecated
+    public static final Bezeichner SATZNUMMER1 = SATZNUMMER;
+    /** @deprecated bitte SATZNUMMER verwenden (TODO: wird mit v8 entfernt). */
+    @Deprecated
+    public static final Bezeichner SATZNUMMER2 = SATZNUMMER;
+    /** @deprecated bitte SATZNUMMER verwenden (TODO: wird mit v8 entfernt). */
+    @Deprecated
+    public static final Bezeichner SATZNUMMER3 = SATZNUMMER;
+    /** @deprecated bitte SATZNUMMER verwenden (TODO: wird mit v8 entfernt). */
+    @Deprecated
+    public static final Bezeichner SATZNUMMER4 = SATZNUMMER;
+    /** @deprecated bitte SATZNUMMER (TODO: wird mit v8 entfernt). */
+    @Deprecated
     public static final Bezeichner SATZNUMMER5 = SATZNUMMER;
-    /** @deprecated bitte SATZNUMMER oder SATZ_NR_9 verwenden (TODO: wird mit v8 entfernt). */
+    /** @deprecated bitte SATZNUMMER verwenden (TODO: wird mit v8 entfernt). */
     @Deprecated
     public static final Bezeichner SATZNUMMER9 = SATZNUMMER;
     public static final Bezeichner SATZNUMMER38 = new Bezeichner("Satznummer38", "SatzNr");
