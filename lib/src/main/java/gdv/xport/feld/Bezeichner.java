@@ -1506,7 +1506,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner VORNAME_DER_VERSICHERTEN_PERSON_VP = new Bezeichner("Vorname der versicherten Person (VP)");
     public static final Bezeichner VORNAME_VP = new Bezeichner("Vorname der VP");
     public static final Bezeichner VORSTEUERABZUGSBERECHTIGT = new Bezeichner("Vorsteuerabzugsberechtigt");
-    public static final Bezeichner VORZEICHEN = new Bezeichner("Vorzeichen", "Vorzeichen", "Vorzeichen1");
+	public static final Bezeichner VORZEICHEN = new Bezeichner("Vorzeichen");
     public static final Bezeichner VORZEICHEN2 = new Bezeichner("Vorzeichen2");
     public static final Bezeichner VORZEICHEN3 = new Bezeichner("Vorzeichen3");
     public static final Bezeichner VORZEICHEN4 = new Bezeichner("Vorzeichen4");
