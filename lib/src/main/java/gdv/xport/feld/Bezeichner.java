@@ -110,7 +110,9 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ANZAHL_DER_VERSICHERTEN_TIERE_OHNE_NAMENSANGABE_TIERGRUPPE = new Bezeichner("Anzahl der versicherten Tiere ohne Namensangabe (Tiergruppe)");
     public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO1 = new Bezeichner("Anzahl der Plaetze (Risiko 1)");
     public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO2 = new Bezeichner("Anzahl der Plaetze (Risiko 2)");
-    public static final Bezeichner ART1 = new Bezeichner("Art1", "Art1", "Art");
+    /** @deprected wird mit v8 entfernt (TDOD) */
+    @Deprecated
+    public static final Bezeichner ART1 = new Bezeichner("Art1", "Art");
     /** Fuer 0220.580 */
     public static final Bezeichner ART_580 = new Bezeichner("Art");
     public static final Bezeichner ART_DER_HALTUNG = new Bezeichner("Art der Haltung");
@@ -192,12 +194,12 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner AUSCHLUSS = new Bezeichner("Auschluss");
     public static final Bezeichner AUSSCHLUSS = new Bezeichner("Ausschluss", "Ausschluss", "Auschluss");
     public static final Bezeichner AUSSCHLUSS2 = new Bezeichner("Ausschluss2", "Ausschluss2");
-    public static final Bezeichner AUSSCHLUSS_DER_BEITRAGSANPASSUNG = new Bezeichner("Ausschluss der Beitragsanpassung", "AusschlussBeitragsanpassung", "AusschlussDerBeitragsanpassung");
+	public static final Bezeichner AUSSCHLUSS_DER_BEITRAGSANPASSUNG = new Bezeichner("Ausschluss der Beitragsanpassung");
     public static final Bezeichner AUSSCHLUSSDATUM_VP = new Bezeichner("Ausschlussdatum VP / Personengruppe");
 
     public static final Bezeichner BASISBEITRAG_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Basisbeitrag in Währungseinheiten");
     public static final Bezeichner BASISJAHR = new Bezeichner("Basisjahr");
-    public static final Bezeichner BASISVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Basisversicherungssumme in W\u00e4hrungseinheiten", "BasisVersssummeInWE", "BasisVsInWE", "BasiVsInWE");
+	public static final Bezeichner BASISVERSICHERUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Basisversicherungssumme in W\u00e4hrungseinheiten", "BasisVersssummeInWE", "BasiVersssummeInWE");
     public static final Bezeichner BAUARTKLASSE = new Bezeichner("Bauartklasse");
     public static final Bezeichner BAUPREISINDEX_WERTZUSCHLAG = new Bezeichner("Baupreisindex / Wertzuschlag");
     public static final Bezeichner BAUJAHR = new Bezeichner("Baujahr");
@@ -396,7 +398,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ERHOEHUNGSBASIS_DYNAMIK = new Bezeichner("Erhoehungsbasis Dynamik");
     public static final Bezeichner ERHOEHUNGSSATZ_LETZTER_GLASPREISANGLEICHUNG = new Bezeichner("%-Satz Erhöhung der letzten Glaspreisangleichung");
     public static final Bezeichner ERSTATTUNG_OP = new Bezeichner("Erstattung OP");
-    public static final Bezeichner ERSTE_ZULASSUNG_AUF_DEN_VN = new Bezeichner("Erste Zulassung auf den VN", "ErsteZulassungAufVN", "ErsteZulassungAufDenVn");
+	public static final Bezeichner ERSTE_ZULASSUNG_AUF_DEN_VN = new Bezeichner("Erste Zulassung auf den VN");
     public static final Bezeichner ERSTZULASSUNG = new Bezeichner("Erstzulassung");
     public static final Bezeichner ERWEITERTE_NEUWERTVERSICHERUNG = new Bezeichner("erweiterte Neuwertversicherung");
     public static final Bezeichner ERWEITERUNG_DES_GELTUNGSBEREICHES = new Bezeichner("Erweiterung des Geltungsbereiches");
@@ -522,8 +524,8 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner HAFTUNG_AB2 = new Bezeichner("Haftung ab 2");
     public static final Bezeichner HAFTUNG_BIS = new Bezeichner("Haftung bis");
     public static final Bezeichner HAFTUNG_BIS2 = new Bezeichner("Haftung bis 2");
-    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten", "HaftungswertungssummeInWE", "HaftungswertungssummeInWE1");
-    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN1 = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten 1", "HaftungswertungssummeInWE1", "HaftungswertungssummeInWE");
+	public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten");
+    public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN1 = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten 1", "HaftungswertungssummeInWE");
     public static final Bezeichner HAFTUNGSWERTUNGSSUMME_IN_WAEHRUNGSEINHEITEN2 = new Bezeichner("Haftungswertungssumme in W\u00e4hrungseinheiten 2");
     public static final Bezeichner HAUPTFAELLIGKEIT = new Bezeichner("Hauptfaelligkeit");
     public static final Bezeichner HEILKOSTEN = new Bezeichner("Heilkosten");

@@ -247,7 +247,7 @@ public class BezeichnerTest {
     @Test
     public void testVariantsWEs() {
         Satz satz220 = SatzRegistry.getInstance("VUVM2018.xml").getSatz(SatzTyp.of("0220.010.13.9"));
-        Feld we1 = satz220.getFeld(Bezeichner.of("HaftungswertungssummeInWE1"));
+        Feld we1 = satz220.getFeld(Bezeichner.of("HaftungswertungssummeInWE"));
         Feld we2 = satz220.getFeld(Bezeichner.of("HaftungswertungssummeInWE2"));
         assertNotEquals(we1, we2);
         LOG.info("{} und {} sind unterschiedlich.", we1, we2);
