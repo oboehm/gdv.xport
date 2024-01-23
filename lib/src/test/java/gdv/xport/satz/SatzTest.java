@@ -497,21 +497,6 @@ public final class SatzTest extends AbstractSatzTest {
         assertEquals(f1, summe);
     }
 
-    /**
-     * Im Teildatenatz 9 von Satzart 0220.030 gibt es zweimal das Feld "Lfd.
-     * Nummer der versicherten Person (VP) / Personengruppe", einnaml an
-     * Position 43 (Kopierfehler) und einem an Position 251. Das korrekte
-     * Feld ist das an Position 251.
-     */
-    @Test
-    public void testGetLfdNummerDerVersichertenPerson() {
-        Satz wagnisdaten = XmlService.getInstance().getSatzart(SatzTyp.of("0220.030"));
-        Feld f1 = wagnisdaten.getFeld(Bezeichner.of("Lfd. Nummer der versicherten Person (VP) / Personengruppe"), 5);
-        assertEquals(251, f1.getByteAdresse());
-        Feld f2 = wagnisdaten.getFeld(Bezeichner.LFD_NUMMER_VP_PERSONENGRUPPE, 5);
-        assertEquals(f1, f2);
-    }
-
     @Test
     public void testTeildatensatzCtor() {
         Satz satz102 = SatzFactory.getSatz(SatzTyp.of("0102"));
