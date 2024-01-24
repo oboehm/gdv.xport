@@ -25893,15 +25893,15 @@
 				<name>Zinsen pro Laufzeitjahr</name>
 				<technischerName>ZinsenProLaufzeitjahr</technischerName>
 			</feldreferenz>
-			<!-- NumFeld InJahren (135-136) -->
-			<feldreferenz referenz="135-136-InJahren-Numerisch">
+			<!-- NumFeld LaufzeitInJahren (135-136) -->
+			<feldreferenz referenz="135-136-LaufzeitInJahren-Numerisch">
 				<name>Laufzeit in Jahren</name>
-				<technischerName>InJahren</technischerName>
+				<technischerName>LaufzeitInJahren</technischerName>
 			</feldreferenz>
-			<!-- NumFeld InTagen (137-141) -->
-			<feldreferenz referenz="137-141-InTagen-Numerisch">
+			<!-- NumFeld LaufzeitInTagen (137-141) -->
+			<feldreferenz referenz="137-141-LaufzeitInTagen-Numerisch">
 				<name>Laufzeit in Tagen</name>
-				<technischerName>InTagen</technischerName>
+				<technischerName>LaufzeitInTagen</technischerName>
 			</feldreferenz>
 			<!-- Datum Faelligkeit (142-149) -->
 			<feldreferenz referenz="142-149-Faelligkeit-Datum">
@@ -33300,10 +33300,10 @@
 				<name>Währungsschlüssel</name>
 				<technischerName>Waehrungsschluessel</technischerName>
 			</feldreferenz>
-			<!-- Datum Ende (173-180) -->
-			<feldreferenz referenz="173-180-Ende-Datum">
+			<!-- Datum LaufzeitEnde (173-180) -->
+			<feldreferenz referenz="173-180-LaufzeitEnde-Datum">
 				<name>Laufzeit Ende</name>
-				<technischerName>Ende</technischerName>
+				<technischerName>LaufzeitEnde</technischerName>
 				<bemerkung>TTMMJJJJ</bemerkung>
 			</feldreferenz>
 			<!-- AlphaNumFeld Aenderungsgrund (181-182) -->
@@ -41506,7 +41506,7 @@
 			<bytes>1</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="135-136-InJahren-Numerisch">
+		<feld referenz="135-136-LaufzeitInJahren-Numerisch">
 			<name>Laufzeit in Jahren</name>
 			<bytes>2</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -41698,7 +41698,7 @@
 			<datentyp>Fliesskomma</datentyp>
 			<nachkommastellen>2</nachkommastellen>
 		</feld>
-		<feld referenz="137-141-InTagen-Numerisch">
+		<feld referenz="137-141-LaufzeitInTagen-Numerisch">
 			<name>Laufzeit in Tagen</name>
 			<bytes>5</bytes>
 			<datentyp>Numerisch</datentyp>
@@ -44463,7 +44463,7 @@
 			<bytes>7</bytes>
 			<datentyp>Alphanumerisch</datentyp>
 		</feld>
-		<feld referenz="173-180-Ende-Datum">
+		<feld referenz="173-180-LaufzeitEnde-Datum">
 			<name>Laufzeit Ende</name>
 			<bytes>8</bytes>
 			<datentyp>Datum</datentyp>
