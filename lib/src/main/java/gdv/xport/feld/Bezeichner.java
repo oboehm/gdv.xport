@@ -110,7 +110,7 @@ public final class Bezeichner implements Serializable {
     public static final Bezeichner ANZAHL_DER_VERSICHERTEN_TIERE_OHNE_NAMENSANGABE_TIERGRUPPE = new Bezeichner("Anzahl der versicherten Tiere ohne Namensangabe (Tiergruppe)");
     public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO1 = new Bezeichner("Anzahl der Plaetze (Risiko 1)");
     public static final Bezeichner ANZAHL_DER_PLAETZE_RISIKO2 = new Bezeichner("Anzahl der Plaetze (Risiko 2)");
-    /** @deprected wird mit v8 entfernt (TDOD) */
+    /** @deprecated wird mit v8 entfernt (TDOD) */
     @Deprecated
     public static final Bezeichner ART1 = new Bezeichner("Art1", "Art");
     /** Fuer 0220.580 */
