@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 - 2014 by Oli B.
+ * Copyright (c) 2010 - 2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ package gdv.xport.util;
 import gdv.xport.Datenpaket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.xml.stream.XMLStreamException;
@@ -40,10 +41,18 @@ import static org.junit.Assert.assertTrue;
 public class HtmlFormatterTest extends AbstractFormatterTest {
 
     private static final Logger LOG = LogManager.getLogger(HtmlFormatter.class);
+    private static final File HTML_DIR = new File("target", "html");
 
     @Override
     protected AbstractFormatter createFormatter() {
         return new HtmlFormatter();
+    }
+
+    @BeforeClass
+    public static void setUpXmlDir() {
+        if (HTML_DIR.mkdirs()) {
+            LOG.info("Verzeichnis '{}' wurde angelegt.", HTML_DIR);
+        }
     }
 
     /**
@@ -88,7 +97,7 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
     @Test
     public void testFormatKlaus() throws IOException {
         Datenpaket datenpaket = Datenpaket.of(new File("src/test/resources/datenpakete/Klaus_Test.gdv"));
-        try (HtmlFormatter formatter = new HtmlFormatter(new FileOutputStream("target/Klaus_Test.html"))) {
+        try (HtmlFormatter formatter = new HtmlFormatter(new FileOutputStream(new File(HTML_DIR, "Klaus_Test.html")))) {
             formatter.write(datenpaket);
         }
     }
@@ -102,6 +111,14 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
     @Test
     public void testNotice() throws IOException {
         checkNotice(new HtmlFormatter(), "musterdatei_041222.html");
+    }
+
+    @Test
+    public void formatAllSupportedSaetze() throws IOException {
+        Datenpaket datenpaket = SatzRegistry.getInstance().getAllSupportedSaetze();
+        try (HtmlFormatter formatter = new HtmlFormatter(new FileOutputStream(new File(HTML_DIR, "datenpaket.html")))) {
+            formatter.write(datenpaket);
+        }
     }
 
 }
