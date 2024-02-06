@@ -49,7 +49,7 @@ public class HtmlFormatterTest extends AbstractFormatterTest {
     }
 
     @BeforeClass
-    public static void setUpXmlDir() {
+    public static void setUpHtmlDir() {
         if (HTML_DIR.mkdirs()) {
             LOG.info("Verzeichnis '{}' wurde angelegt.", HTML_DIR);
         }
