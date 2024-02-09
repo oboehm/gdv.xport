@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2012 by Oli B.
+ * Copyright (c) 2009 - 20124 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -89,7 +89,8 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testGetFeldString() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
-        Feld feld = new NumFeld("Hello", 55, "World");
+        Feld feld = new NumFeld(Bezeichner.of("Hello"), 5, ByteAdresse.of(55));
+        feld.setInhalt("World");
         tds.add(feld);
         assertEquals(feld, tds.getFeld("Hello"));
     }
@@ -98,7 +99,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     public void testGetFeldByteAdresse() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(4711), 1);
         ByteAdresse adresse = ByteAdresse.of(11);
-        Feld feld = new NumFeld(Bezeichner.PRODUKTNAME, 47, adresse.intValue());
+        Feld feld = new NumFeld(Bezeichner.PRODUKTNAME, 47, adresse);
         tds.add(feld);
         assertEquals(feld, tds.getFeld(adresse));
     }
@@ -111,7 +112,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testRemove() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
-        Zeichen satznummer = new Zeichen(Bezeichner.of("Satznummer"), 256);
+        Zeichen satznummer = new Zeichen(Bezeichner.of("Satznummer"), ByteAdresse.of(256));
         satznummer.setInhalt('1');
         tds.add(satznummer);
         assertEquals(satznummer, tds.getFeld(satznummer.getBezeichnung()));
@@ -130,7 +131,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testRemoveSafe() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(100), 1);
-        Zeichen satznummer = new Zeichen(Bezeichner.of("Satznummer"), 256);
+        Zeichen satznummer = new Zeichen(Bezeichner.of("Satznummer"), ByteAdresse.of(256));
         satznummer.setInhalt('1');
         tds.add(satznummer);
         assertEquals(satznummer, tds.getFeld(satznummer.getBezeichner()));
@@ -146,7 +147,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testCopyConstructor() {
         Teildatensatz orig = new Teildatensatz(SatzTyp.of(100), 1);
-        Feld name1 = new AlphaNumFeld(Bezeichner.NAME1, 30, 44);
+        Feld name1 = new AlphaNumFeld(Bezeichner.NAME1, 30, ByteAdresse.of(44));
         name1.setInhalt("Mickey");
         orig.add(name1);
         Teildatensatz copy = new Teildatensatz(orig);
@@ -182,8 +183,8 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test(expected = IllegalArgumentException.class)
     public void testAddOverlapping() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(4711), 1);
-        tds.add(new AlphaNumFeld(Bezeichner.NAME1, 10, 100));
-        tds.add(new AlphaNumFeld(Bezeichner.NAME2, 10, 101));
+        tds.add(new AlphaNumFeld(Bezeichner.NAME1, 10, ByteAdresse.of(100)));
+        tds.add(new AlphaNumFeld(Bezeichner.NAME2, 10, ByteAdresse.of(101)));
     }
 
     @Test
@@ -214,7 +215,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     private void checkSatznummer(Satz satz, int n, ByteAdresse start, char inhalt) {
         Teildatensatz tds = satz.getTeildatensatz(n);
         Zeichen satznummer = tds.getSatznummer();
-        Zeichen expected = new Zeichen(satznummer.getBezeichner(), start.intValue(), inhalt);
+        Zeichen expected = new Zeichen(satznummer.getBezeichner(), start, inhalt);
         assertEquals(expected, satznummer);
     }
 
@@ -272,7 +273,7 @@ public class TeildatensatzTest extends AbstractSatzTest {
     @Test
     public void testGetSatznummerInvalid() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of(123), 1);
-        Zeichen nr = new Zeichen(Bezeichner.SATZNUMMER, 222, '0');
+        Zeichen nr = new Zeichen(Bezeichner.SATZNUMMER, ByteAdresse.of(222), '0');
         new Satznummer(nr);
         tds.add(nr);
         assertEquals(1, tds.getSatznummer().toInt());
@@ -328,8 +329,8 @@ public class TeildatensatzTest extends AbstractSatzTest {
     public void testGetNotUniqFeld() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of("0815"));
         Bezeichner b = Bezeichner.of("Testfeld");
-        Zeichen z1 = new Zeichen(b, 50);
-        Zeichen z2 = new Zeichen(b, 51);
+        Zeichen z1 = new Zeichen(b, ByteAdresse.of(50));
+        Zeichen z2 = new Zeichen(b, ByteAdresse.of(51));
         z1.setInhalt('x');
         z2.setInhalt('y');
         tds.add(z1);
@@ -344,8 +345,8 @@ public class TeildatensatzTest extends AbstractSatzTest {
     public void testSetNotUniqFeld() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of("0815"));
         Bezeichner b = Bezeichner.of("Testfeld");
-        Zeichen z1 = new Zeichen(b, 50);
-        Zeichen z2 = new Zeichen(b, 51);
+        Zeichen z1 = new Zeichen(b, ByteAdresse.of(50));
+        Zeichen z2 = new Zeichen(b, ByteAdresse.of(51));
         tds.add(z1);
         tds.add(z2);
         assertThrows(NotUniqueException.class, () -> tds.setFeld(b, "z"));
@@ -355,11 +356,38 @@ public class TeildatensatzTest extends AbstractSatzTest {
     public void testGetUniqFeld() {
         Teildatensatz tds = new Teildatensatz(SatzTyp.of("0815"));
         Bezeichner b = Bezeichner.of("Testfeld");
-        Zeichen z1 = new Zeichen(b, 50);
-        Zeichen z2 = new Zeichen(b, 51);
+        Zeichen z1 = new Zeichen(b, ByteAdresse.of(50));
+        Zeichen z2 = new Zeichen(b, ByteAdresse.of(51));
         tds.add(z1);
         tds.add(z2);
         assertEquals(tds.getFeld(b).getInhalt(), z2.getInhalt());
+    }
+
+    /**
+     * In Satzart 100 hat TDS 1 die Besonderheit, dass bis 2018 im PDF das
+     * Satznummer-Feld die Nummer 27 statt 26 traegt. Daher kann man auf
+     * dieses Feld sowohl mit Nr. 26 als auch 27 zugreifen.
+     * <p>
+     * Aehnliches gilt auch fuer Satzart 0210.050, 0220.010.13.1, 0600, 9950
+     * und 9951.
+     * </p>
+     */
+    @Test
+    public void testGetFeldSatznummer() {
+        checkGetSatznummerFeld(SatzTyp.of("100"), 1, 26);
+        checkGetSatznummerFeld(SatzTyp.of("0210.050"), 1, 34);
+        checkGetSatznummerFeld(SatzTyp.of("0220.010.13.1"), 1, 45);
+        checkGetSatznummerFeld(SatzTyp.of("0600"), 2, 12);
+        checkGetSatznummerFeld(SatzTyp.of("0600"), 3, 13);
+        checkGetSatznummerFeld(SatzTyp.of("9950"), 1, 10);
+        checkGetSatznummerFeld(SatzTyp.of("9951"), 1, 10);
+    }
+
+    private static void checkGetSatznummerFeld(SatzTyp satzTyp, int tdsNr, int feldNr) {
+        Teildatensatz tds = XmlService.getInstance().getSatzart(satzTyp).getTeildatensatz(tdsNr);
+        Zeichen satznummer = tds.getSatznummer();
+        assertEquals(satznummer, tds.getFeld(feldNr));
+        assertEquals(satznummer, tds.getFeld(feldNr+1));
     }
 
 }
