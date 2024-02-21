@@ -115,7 +115,7 @@ public class Teildatensatz extends Satz {
     }
 
     private void initDatenfelder(SatzTyp satzTyp) {
-        NumFeld satzart = new NumFeld((SATZART), 4, 1).mitConfig(getConfig());
+        NumFeld satzart = new NumFeld((SATZART), 4, ByteAdresse.of(1)).mitConfig(getConfig());
         satzart.setInhalt(satzTyp.getSatzart());
         this.add(satzart);
     }
@@ -123,7 +123,7 @@ public class Teildatensatz extends Satz {
     @Override
     public NumFeld getSatzartFeld() {
         Optional<Feld> satzart = findFeld(Bezeichner.SATZART);
-        return satzart.map(feld -> (NumFeld) feld).orElseGet(() -> new NumFeld(SATZART, 4, 1));
+        return satzart.map(feld -> (NumFeld) feld).orElseGet(() -> new NumFeld(SATZART, 4, ByteAdresse.of(1)));
     }
 
     /**
@@ -350,65 +350,76 @@ public class Teildatensatz extends Satz {
 
     /**
      * Liefert das Feld mit der gewuenschten Nummer zurueck.
+     * <p>
+     * In der Beschreibung zur 2018er-Version gibt es bei der Feld-Nr. bei
+     * manchen Satzarten Ungereimtheiten. So hat im Teildatensatz 1 der
+     * Satzart 100 das Feld fuer die Satznummer die Feld-Nr. 27 und es gibt
+     * kein Feld 26. Auch bei diesen Satzarten ist eine Luecke in der
+     * Nummerierung:
+     * </p>
+     * <ul>
+     * <li>Satart 0100, TDS 1: Feld 26 fehlt</li>
+     * <li>Satart 0210.050, TDS 1: Feld 34 fehlt</li>
+     * <li>Satart SA0220.010.13.1, TDS 1: Feld 45 fehlt</li>
+     * <li>Satart 0600, TDS 2: Feld 12 fehlt</li>
+     * <li>Satart 0600, TDS 3: Feld 13 fehlt</li>
+     * <li>Satart 9950, TDS 1: Feld 10 fehlt</li>
+     * <li>Satart 9951, TDS 1: Feld 10 fehlt</li>
+     * </ul>
+     * <p>
+     * In der 2023er-Version wurde das in der Beschreibung korrigiert.
+     * Um den Zugriff zu vereinfachen, wird daher bei Feld-Nummern, die
+     * zu gross sind, das letzte Feld zurueckgegeben.
+     * </p>
      *
      * @param nr z.B. 1
      * @return das Feld (z.B. mit der Satzart)
      */
-    public Feld getFeld(final int nr) {
-     int myNr = nr;
-
-    // 2018er-Version: in SA0100, TD1: es gibt kein Feld-Nr 27! Die SatzNr ist
-    // Feld 26 !!!
-    // 2018er-Version: in SA0210.050, TD1: es gibt kein Feld-Nr 35! Die SatzNr
-    // ist Feld 34 !!!
-    // 2018er-Version: in SA0220.010.13.1, TD1: es gibt kein Feld-Nr 46! Die
-    // Satznummer ist Feld 45 !!!
-    // 2018er-Version: in SA0600, TD2: es gibt kein Feld-Nr 13! Die Satznummer
-    // ist Feld 12 !!!
-    // 2018er-Version: in SA0600, TD3: es gibt kein Feld-Nr 14! Die Satznummer
-    // ist Feld 13 !!!
-    // 2018er-Version: in SA9950, TD1: es gibt kein Feld-Nr 11! Die Satznummer
-    // ist Feld 10 !!!
-    // 2018er-Version: in SA9951, TD1: es gibt kein Feld-Nr 11! Die Satznummer
-    // ist Feld 10 !!!
-
-    switch (this.getGdvSatzartName()) {
-      case "0100":
-        if (("1").equals(this.getSatznummer()
-            .getInhalt()) && myNr == 27)
-          myNr--;
-        break;
-      case "0210.050":
-        if (("1").equals(this.getSatznummer()
-            .getInhalt()) && myNr == 35)
-          myNr--;
-        break;
-      case "0220.010.13.1":
-        if (("1").equals(this.getSatznummer()
-            .getInhalt()) && myNr == 46)
-          myNr--;
-        break;
-      case "0600":
-        if (("2").equals(this.getSatznummer()
-            .getInhalt()) && myNr == 13)
-        {
-          myNr--;
+    public Feld getFeld(int nr) {
+//     int myNr = nr;
+//     switch (this.getGdvSatzartName()) {
+//      case "0100":
+//        if (("1").equals(this.getSatznummer()
+//            .getInhalt()) && myNr == 27)
+//          myNr--;
+//        break;
+//      case "0210.050":
+//        if (("1").equals(this.getSatznummer()
+//            .getInhalt()) && myNr == 35)
+//          myNr--;
+//        break;
+//      case "0220.010.13.1":
+//        if (("1").equals(this.getSatznummer()
+//            .getInhalt()) && myNr == 46)
+//          myNr--;
+//        break;
+//      case "0600":
+//        if (("2").equals(this.getSatznummer()
+//            .getInhalt()) && myNr == 13)
+//        {
+//          myNr--;
+//        }
+//        else if (("3").equals(this.getSatznummer()
+//            .getInhalt()) && myNr == 14)
+//          myNr--;
+//
+//        break;
+//      case "9950":
+//      case "9951":
+//        if (("1").equals(this.getSatznummer()
+//            .getInhalt()) && myNr == 11)
+//          myNr--;
+//        break;
+//      default:
+//        break;
+//    }
+//        return (Feld) getFelder().toArray()[myNr - 1];
+        Feld[] array = getFelder().toArray(new Feld[0]);
+        if (nr > array.length) {
+            LOG.info("Feld {} in {} wird auf letztes Feld {} abgebildet.", nr, toShortString(), array.length);
+            nr = array.length;
         }
-        else if (("3").equals(this.getSatznummer()
-            .getInhalt()) && myNr == 14)
-          myNr--;
-
-        break;
-      case "9950":
-      case "9951":
-        if (("1").equals(this.getSatznummer()
-            .getInhalt()) && myNr == 11)
-          myNr--;
-        break;
-      default:
-        break;
-    }
-        return (Feld) getFelder().toArray()[myNr - 1];
+        return array[nr - 1];
     }
 
     /**
