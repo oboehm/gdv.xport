@@ -19,10 +19,7 @@
 package gdv.xport.satz;
 
 import gdv.xport.Datenpaket;
-import gdv.xport.feld.Bezeichner;
-import gdv.xport.feld.Datum;
-import gdv.xport.feld.Feld;
-import gdv.xport.feld.Version;
+import gdv.xport.feld.*;
 import gdv.xport.util.SatzRegistry;
 import gdv.xport.util.SatzTyp;
 import org.junit.Test;
@@ -105,8 +102,8 @@ public final class VorsatzTest extends AbstractSatzTest {
 
     @Test
     public void testGetFeldErstellungsdat() {
-        Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, 70);
-        Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, 78);
+        Datum von = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_VOM, 8, ByteAdresse.of(70));
+        Datum bis = new Datum(Bezeichner.ERSTELLUNGSDAT_ZEITRAUM_BIS, 8, ByteAdresse.of(78));
         von.setInhalt("20201220");
         bis.setInhalt("20201222");
         vorsatz.setErstellungsZeitraum(von, bis);
@@ -219,23 +216,23 @@ public final class VorsatzTest extends AbstractSatzTest {
 
     @Test
     public void testSetVersionVorsatz() {
-        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
+        assertNotNull(vorsatz.getVersion(Bezeichner.SATZART_0001));
     }
 
     @Test
     public void testSetVersionNachsatz() {
-        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
+        assertNotNull(vorsatz.getVersion(Bezeichner.SATZART_9999));
     }
 
     @Test
     public void testSetVersion100() {
-        vorsatz.setVersion(Bezeichner.VERSION_SATZART_0100, "2.1");
+        vorsatz.setVersion(Bezeichner.SATZART_0100, "2.1");
         assertEquals("2.1", vorsatz.getVersion(100));
     }
 
     @Test
     public void testSetVersionString() {
-        vorsatz.setVersion(Bezeichner.VERSION_SATZART_0102, "1.2");
+        vorsatz.setVersion(Bezeichner.SATZART_0102, "1.2");
         assertEquals("1.2", vorsatz.getVersion(102));
     }
 
@@ -280,14 +277,16 @@ public final class VorsatzTest extends AbstractSatzTest {
     }
 
     private Map<SatzTyp, Version> getVersionen(String resource) throws IOException {
-        Datenpaket dp = SatzRegistry.getInstance(resource).getAllSupportedSaetze();
+        SatzRegistry satzRegistry = SatzRegistry.getInstance(resource);
+        Vorsatz vs = new Vorsatz(satzRegistry);
+        Datenpaket dp = satzRegistry.getAllSupportedSaetze();
         for (Satz satz : dp.getAllSaetze()) {
             AbstractSatzTest.setUp(satz);
         }
         File exportFile = new File("target/export/testVersionen-" + resource + ".txt");
         dp.export(exportFile);
-        vorsatz.importFrom(exportFile);
-        Map<SatzTyp, Version> versionen = vorsatz.getSatzartVersionen();
+        vs.importFrom(exportFile);
+        Map<SatzTyp, Version> versionen = vs.getSatzartVersionen();
         MatcherAssert.assertThat(versionen.size(), greaterThan(160));
         return versionen;
     }
