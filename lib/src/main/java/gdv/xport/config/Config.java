@@ -80,7 +80,9 @@ public final class Config implements Serializable {
     /** Die Konfiguration fuer die strikte Validierung. */
     public static final Config STRICT = EMPTY.withProperty("gdv.feld.validate", "strict");
     /** Default-Konfiguration fuer 2018. */
-    public static final Config VUVM2018 = DEFAULT;
+    public static final Config VUVM2023 = DEFAULT;
+    /** Default-Konfiguration fuer 2018. */
+    public static final Config VUVM2018 = DEFAULT.withProperty("gdv.XML-Resource", "VUVM2018.xml");
     /** Default-Konfiguration fuer 2015. */
     public static final Config VUVM2015 = DEFAULT.withProperty("gdv.XML-Resource", "VUVM2015.xml");
     /** Default-Konfiguration fuer 2013. */

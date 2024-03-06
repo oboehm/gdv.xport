@@ -26,6 +26,7 @@
     <logger name="gdv.xport.satz.Satz" level="INFO" />
     <logger name="gdv.xport.satz.TeildatensatzTest" level="INFO" />
     <logger name="gdv.xport.Datenpaket" level="INFO" />
+    <logger name="gdv.xport.DatenpaketTest" level="DEBUG" />
     <logger name="gdv.xport.util" level="INFO" />
     <logger name="gdv.xport.util.AbstractFormatterTest" level="WARN" />
     <logger name="gdv.xport.util.XmlFormatterTest" level="WARN" />

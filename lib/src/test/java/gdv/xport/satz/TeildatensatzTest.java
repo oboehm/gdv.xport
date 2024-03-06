@@ -40,6 +40,7 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -316,12 +317,18 @@ public class TeildatensatzTest extends AbstractSatzTest {
 
     @Test
     public void testEOD() throws IOException {
-        Config cfg = Config.DEFAULT.withProperty("gdv.eod", "\t==ende==\n\n");
+        String exported = exportSatz100(Config.DEFAULT.withProperty("gdv.eod", "\t==ende==\n\n"));
+        MatcherAssert.assertThat(exported, containsString("==ende=="));
+        exported = exportSatz100(Config.DEFAULT);
+        MatcherAssert.assertThat(exported, not(containsString("==ende==")));
+    }
+
+    private static String exportSatz100(Config cfg) throws IOException {
         Teildatensatz tds = SatzRegistry.getInstance(cfg).getSatz(SatzTyp.of(100)).getTeildatensatz(1);
         try (StringWriter writer = new StringWriter()) {
             tds.export(writer);
             writer.flush();
-            MatcherAssert.assertThat(writer.toString(), containsString("==ende=="));
+            return writer.toString();
         }
     }
 

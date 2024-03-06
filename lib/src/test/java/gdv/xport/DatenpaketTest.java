@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009 - 2021 by Oli B.
+ * Copyright (c) 2009 - 2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,7 +65,7 @@ import static org.junit.Assert.*;
 public final class DatenpaketTest {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketTest.class);
-    private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance(Config.VUVM2018);
+    private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance(Config.DEFAULT);
     private static String muster;
     private final Datenpaket datenpaket = new Datenpaket();
 
@@ -96,9 +96,9 @@ public final class DatenpaketTest {
         assertEquals(expectedLength, data.length());
         Vorsatz vorsatz = datenpaket.getVorsatz();
         if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
-            assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
+            assertEquals("2.4", vorsatz.getVersion(Bezeichner.SATZART_0001));
         }
-        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
+        assertNotNull(vorsatz.getVersion(Bezeichner.SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(0, nachsatz.getAnzahlSaetze());
         assertEquals(0.0, nachsatz.getGesamtBeitrag().toDouble(), 0.001);
@@ -120,11 +120,11 @@ public final class DatenpaketTest {
         datenpaket.setAbsender("World");
         datenpaket.setAdressat("Test-Adressat");
         datenpaket.setVermittler("845/666666");
-        Datum datum = new Datum(Bezeichner.of("Testdatum"), 1);
+        Datum datum = new Datum(Bezeichner.of("Testdatum"), ByteAdresse.of(1));
         datum.setInhalt("13022014");
         datenpaket.setErstellungsDatumVon(datum);
         datenpaket.setErstellungsDatumBis(datum);
-        datenpaket.getVorsatz().setFeld(Bezeichner.VERSION_SATZART_9999, "1.1");
+        datenpaket.getVorsatz().setFeld(Bezeichner.SATZART_9999, "1.1");
         File file = File.createTempFile("datenpaket", ".txt");
         datenpaket.export(file);
         LOG.info(datenpaket + " was exported to " + file);
@@ -142,7 +142,7 @@ public final class DatenpaketTest {
         datenpaket.add((Datensatz) SatzFactory.getSatz(SatzTyp.of(220)));
         Vorsatz vorsatz = datenpaket.getVorsatz();
         if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
-            assertEquals("2.4", vorsatz.getVersion(Bezeichner.VERSION_SATZART_0001));
+            assertEquals("2.4", vorsatz.getVersion(Bezeichner.SATZART_0001));
         }
         assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
