@@ -65,7 +65,7 @@ import static org.junit.Assert.*;
 public final class DatenpaketTest {
 
     private static final Logger LOG = LogManager.getLogger(DatenpaketTest.class);
-    private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance(Config.DEFAULT);
+    private static final SatzRegistry SATZ_REGISTRY = SatzRegistry.getInstance();
     private static String muster;
     private final Datenpaket datenpaket = new Datenpaket();
 
@@ -144,7 +144,7 @@ public final class DatenpaketTest {
         if ("VUVM2018.xml".equals(Config.getXmlResource()) || "VUVM2015.xml".equals(Config.getXmlResource())) {
             assertEquals("2.4", vorsatz.getVersion(Bezeichner.SATZART_0001));
         }
-        assertNotNull(vorsatz.getVersion(Bezeichner.VERSION_SATZART_9999));
+        assertNotNull(vorsatz.getVersion(Bezeichner.SATZART_9999));
         Nachsatz nachsatz = datenpaket.getNachsatz();
         assertEquals(2, nachsatz.getAnzahlSaetze());
     }
@@ -572,7 +572,7 @@ public final class DatenpaketTest {
     private void checkViolations(final Datenpaket defect) {
         if (LOG.isTraceEnabled()) {
             List<ConstraintViolation> violations = defect.validate();
-            assertTrue("at least 1 violation is expected", (violations.size() > 0));
+            assertTrue("at least 1 violation is expected", (!violations.isEmpty()));
             for (ConstraintViolation cv : violations) {
                 LOG.trace("Violation: " + cv);
             }
@@ -663,7 +663,7 @@ public final class DatenpaketTest {
 
     @Test
     public void testSetVersionNachsatz() {
-        Bezeichner satzart9999 = Bezeichner.VERSION_SATZART_9999;
+        Bezeichner satzart9999 = Bezeichner.SATZART_9999;
         datenpaket.getVorsatz().setVersion(satzart9999, "0.9");
         assertEquals("0.9", datenpaket.getVorsatz().getVersion(satzart9999));
     }
@@ -965,7 +965,7 @@ public final class DatenpaketTest {
                 }
                 // leben: pruefe dass wagnisart fuer alle tds dieselbe ist
                 else if (wagnisartOfTeildatensatz != null
-                        && wagnisartOfTeildatensatz.length() > 0
+                        && !wagnisartOfTeildatensatz.isEmpty()
                         && teildatensatz.hasFeld(Bezeichner.WAGNISART)
                         && StringUtils.isNumeric(teildatensatz.getFeldInhalt(Bezeichner.WAGNISART))
                         && !wagnisartOfTeildatensatz.equals(teildatensatz.getFeldInhalt(Bezeichner.WAGNISART))) {
