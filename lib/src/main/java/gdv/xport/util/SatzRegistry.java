@@ -184,6 +184,7 @@ public class SatzRegistry implements VersionHandler {
         getInstance(Config.VUVM2013);
         getInstance(Config.VUVM2015);
         getInstance(Config.VUVM2018);
+        getInstance(Config.VUVM2023);
     }
 
     /**
