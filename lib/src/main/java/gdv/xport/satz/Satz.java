@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009-2023 by Oli B.
+ * Copyright (c) 2009-2024 by Oli B.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -521,7 +521,10 @@ public abstract class Satz implements Cloneable {
 	 * @param name gewuenschter Bezeichner des Feldes
 	 * @return das gesuchte Feld
 	 * @throws IllegalArgumentException falls es das Feld nicht gibt
+	 * @deprecated bitte getFeld(Bezeichner) verwenden
+	 * 			   (TODO: wird mit v8 oder v9 entsorgt)
 	 */
+	@Deprecated
 	public Feld getFeld(final String name) throws IllegalArgumentException {
 		return this.getFeld(Bezeichner.of(name));
 	}
@@ -641,7 +644,7 @@ public abstract class Satz implements Cloneable {
      * @since 2.0
      */
 	public final Feld getFeld(final Bezeichner bezeichner, final int nr) throws IllegalArgumentException {
-	    return getFeld(bezeichner.getName(), nr);
+		return teildatensatz[nr - 1].getFeld(bezeichner);
 	}
 
 	/**
@@ -651,7 +654,10 @@ public abstract class Satz implements Cloneable {
 	 * @param nr Nummer des Teildatensatzes (1, 2, ...)
 	 * @return NULL_FELD, falls das angegebene Feld nicht gefunden wird
 	 * @since 0.2
+	 * @deprecated bitte getFeld(Bezeichner, int) verwenden
+	 * 	           (TODO: wird mit v8 oder v9 entsorgt)
 	 */
+	@Deprecated
 	public final Feld getFeld(final String name, final int nr) {
 		assert (0 < nr) && (nr <= teildatensatz.length) : nr + " liegt ausserhalb des Bereichs";
 		return teildatensatz[nr - 1].getFeld(name);
